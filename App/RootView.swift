@@ -4,6 +4,8 @@ import SettingsFeature
 import SwiftUI
 
 struct RootView: View {
+    let environment: AppEnvironment
+
     var body: some View {
         TabView {
             NavigationStack {
@@ -21,7 +23,7 @@ struct RootView: View {
             }
 
             NavigationStack {
-                SettingsView()
+                SettingsView(settings: environment.llmSettings, router: environment.llmRouter)
             }
             .tabItem {
                 Label("设置", systemImage: "gearshape")
@@ -31,5 +33,5 @@ struct RootView: View {
 }
 
 #Preview {
-    RootView()
+    RootView(environment: AppEnvironment())
 }

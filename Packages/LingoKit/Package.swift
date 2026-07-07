@@ -33,7 +33,7 @@ let featureTargets: [Target] = [
     feature("RosterFeature"),
     feature("MapFeature"),
     feature("FavoritesFeature"),
-    feature("SettingsFeature"),
+    feature("SettingsFeature", extraDependencies: ["LLMKit"]),
 ]
 
 // 测试不在此声明：全部测试由 xcodeproj 的 LingoTripTests bundle（App 托管）编译运行，
