@@ -1,0 +1,145 @@
+import CoreKit
+import Foundation
+import SwiftData
+
+/// 角色名册仓库：主角色导入、角色查询、好友管理。所有写操作经此 actor。
+@ModelActor
+public actor RosterStore {
+    public enum RosterError: Error {
+        case characterNotFound
+        case friendSlotsFull
+    }
+
+    /// 首启导入 3 主角色（幂等：按 name+isMainCharacter 去重）。
+    /// 主角色默认进好友列表且不占好友位（plan.md §3.7）。
+    public func importMainCharactersIfNeeded(cards: [CharacterCard], difficulty: DifficultyLevel = .junior3) throws {
+        let existing = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isMainCharacter })
+        )
+        let existingNames = Set(existing.map(\.name))
+        var importedCount = 0
+        for card in cards where !existingNames.contains(card.name) {
+            let entity = CharacterEntity(
+                name: card.name,
+                age: card.age,
+                genderRaw: card.gender.rawValue,
+                nationality: card.nationality,
+                regionID: card.regionID,
+                occupation: card.occupation,
+                hobbies: card.hobbies,
+                appearance: card.appearance,
+                personality: card.personality,
+                avatarAssetName: card.avatarAssetName,
+                difficultyLevelRaw: difficulty.rawValue,
+                isMainCharacter: true,
+                isFriend: true,
+                cardJSON: card.encodedJSON()
+            )
+            modelContext.insert(entity)
+            importedCount += 1
+        }
+        if importedCount > 0 {
+            try modelContext.save()
+            Log.persistence.info("导入主角色 \(importedCount) 名")
+        }
+    }
+
+    /// 保存一个（偶遇生成的）新角色。
+    public func addCharacter(card: CharacterCard, difficulty: DifficultyLevel, isFriend: Bool) throws -> UUID {
+        let entity = CharacterEntity(
+            name: card.name,
+            age: card.age,
+            genderRaw: card.gender.rawValue,
+            nationality: card.nationality,
+            regionID: card.regionID,
+            occupation: card.occupation,
+            hobbies: card.hobbies,
+            appearance: card.appearance,
+            personality: card.personality,
+            avatarAssetName: card.avatarAssetName,
+            difficultyLevelRaw: difficulty.rawValue,
+            isMainCharacter: false,
+            isFriend: isFriend,
+            cardJSON: card.encodedJSON()
+        )
+        modelContext.insert(entity)
+        try modelContext.save()
+        return entity.characterID
+    }
+
+    public func allCharacters() throws -> [CharacterDTO] {
+        var descriptor = FetchDescriptor<CharacterEntity>()
+        descriptor.sortBy = [SortDescriptor(\.metAt)]
+        return try modelContext.fetch(descriptor).map(Self.dto(from:))
+    }
+
+    public func friends() throws -> [CharacterDTO] {
+        var descriptor = FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isFriend })
+        descriptor.sortBy = [SortDescriptor(\.metAt)]
+        return try modelContext.fetch(descriptor).map(Self.dto(from:))
+    }
+
+    public func character(id: UUID) throws -> CharacterDTO? {
+        try fetchEntity(id: id).map(Self.dto(from:))
+    }
+
+    /// 占用的好友位数量（主角色不占位）。
+    public func occupiedFriendSlots() throws -> Int {
+        try modelContext.fetchCount(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isFriend && !$0.isMainCharacter })
+        )
+    }
+
+    /// 加好友（校验好友位）。
+    public func makeFriend(characterID: UUID, slotLimit: Int) throws {
+        guard let entity = try fetchEntity(id: characterID) else {
+            throw RosterError.characterNotFound
+        }
+        guard !entity.isFriend else { return }
+        if !entity.isMainCharacter {
+            let occupied = try occupiedFriendSlots()
+            guard occupied < slotLimit else { throw RosterError.friendSlotsFull }
+        }
+        entity.isFriend = true
+        try modelContext.save()
+    }
+
+    public func setDifficulty(characterID: UUID, level: DifficultyLevel) throws {
+        guard let entity = try fetchEntity(id: characterID) else {
+            throw RosterError.characterNotFound
+        }
+        entity.difficultyLevelRaw = level.rawValue
+        try modelContext.save()
+    }
+
+    // MARK: - 私有
+
+    private func fetchEntity(id: UUID) throws -> CharacterEntity? {
+        try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == id })
+        ).first
+    }
+
+    static func dto(from entity: CharacterEntity) -> CharacterDTO {
+        let card = CharacterCard.decode(fromJSON: entity.cardJSON) ?? CharacterCard(
+            name: entity.name,
+            age: entity.age,
+            gender: CharacterGender(rawValue: entity.genderRaw) ?? .other,
+            nationality: entity.nationality,
+            regionID: entity.regionID,
+            occupation: entity.occupation,
+            hobbies: entity.hobbies,
+            appearance: entity.appearance,
+            personality: entity.personality,
+            avatarAssetName: entity.avatarAssetName
+        )
+        return CharacterDTO(
+            id: entity.characterID,
+            card: card,
+            difficultyLevel: DifficultyLevel(rawValue: entity.difficultyLevelRaw) ?? .junior3,
+            isMainCharacter: entity.isMainCharacter,
+            isFriend: entity.isFriend,
+            metAt: entity.metAt
+        )
+    }
+}

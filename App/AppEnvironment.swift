@@ -1,7 +1,10 @@
 import CoreKit
 import DictKit
+import DomainKit
 import Foundation
 import LLMKit
+import PersistenceKit
+import SwiftData
 
 /// 组合根：持有全部服务实例并向下注入。后续单元逐步填充。
 @MainActor
@@ -12,6 +15,12 @@ final class AppEnvironment {
     let llmRouter: LLMRouter
     let dictionary: DictDatabase
     let grammarPoints: GrammarPointStore
+    let regionCatalog: RegionCatalog
+
+    let modelContainer: ModelContainer
+    let chatStore: ChatStore
+    let rosterStore: RosterStore
+    let economyStore: EconomyStore
 
     init() {
         let keychain = KeychainStore()
@@ -22,14 +31,37 @@ final class AppEnvironment {
             try await MainActor.run { try settings.currentConfiguration() }
         }
 
-        // 词典与语法点是随包资源，缺失/损坏属于构建错误，直接崩溃暴露。
+        // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。
         let dictURL = Bundle.main.url(forResource: "ecdict_lite", withExtension: "sqlite")!
-        // swiftlint:disable:next force_try
         self.dictionary = try! DictDatabase(databaseURL: dictURL)
         let grammarURL = Bundle.main.url(forResource: "grammar_points", withExtension: "json")!
-        // swiftlint:disable:next force_try
         self.grammarPoints = try! GrammarPointStore(url: grammarURL)
+        let regionsURL = Bundle.main.url(forResource: "regions", withExtension: "json")!
+        self.regionCatalog = try! RegionCatalog(url: regionsURL)
+
+        let container = try! ModelContainerFactory.makeContainer()
+        self.modelContainer = container
+        self.chatStore = ChatStore(modelContainer: container)
+        self.rosterStore = RosterStore(modelContainer: container)
+        self.economyStore = EconomyStore(modelContainer: container)
 
         Log.app.info("AppEnvironment initialized")
+        bootstrap()
+    }
+
+    /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等）。
+    private func bootstrap() {
+        let rosterStore = self.rosterStore
+        let economyStore = self.economyStore
+        Task {
+            do {
+                _ = try await economyStore.profile()
+                let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
+                let cards = try SeedData.mainCharacterCards(url: seedsURL)
+                try await rosterStore.importMainCharactersIfNeeded(cards: cards)
+            } catch {
+                Log.app.error("bootstrap 失败：\(error)")
+            }
+        }
     }
 }

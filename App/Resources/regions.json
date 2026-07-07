@@ -1,0 +1,49 @@
+{
+  "regions": [
+    {
+      "id": "london",
+      "name_en": "London",
+      "name_zh": "伦敦",
+      "country_code": "GB",
+      "country_name_en": "United Kingdom",
+      "country_name_zh": "英国",
+      "tagline_zh": "红色巴士与雾中钟声，博物馆和酒馆一样多的城市。",
+      "landmarks": ["Big Ben", "Tower Bridge", "British Museum", "Camden Market"],
+      "activities": [
+        { "id": "stroll_market", "title_zh": "逛集市", "detail_zh": "去 Camden Market 淘点小玩意" },
+        { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "找一家街角咖啡馆坐坐" },
+        { "id": "park", "title_zh": "公园散步", "detail_zh": "去海德公园喂喂鸽子" }
+      ]
+    },
+    {
+      "id": "melbourne",
+      "name_en": "Melbourne",
+      "name_zh": "墨尔本",
+      "country_code": "AU",
+      "country_name_en": "Australia",
+      "country_name_zh": "澳大利亚",
+      "tagline_zh": "涂鸦巷子里飘着咖啡香，电车叮叮驶向海边。",
+      "landmarks": ["Flinders Street Station", "Hosier Lane", "St Kilda Beach", "Queen Victoria Market"],
+      "activities": [
+        { "id": "stroll_market", "title_zh": "逛市场", "detail_zh": "去维多利亚女王市场转转" },
+        { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "在巷子咖啡馆点杯 flat white" },
+        { "id": "park", "title_zh": "海滩漫步", "detail_zh": "去 St Kilda 海滩看企鹅" }
+      ]
+    },
+    {
+      "id": "newyork",
+      "name_en": "New York",
+      "name_zh": "纽约",
+      "country_code": "US",
+      "country_name_en": "United States",
+      "country_name_zh": "美国",
+      "tagline_zh": "永不熄灯的城市，每个街角都有一个故事。",
+      "landmarks": ["Times Square", "Central Park", "Brooklyn Bridge", "The Met"],
+      "activities": [
+        { "id": "stroll_market", "title_zh": "逛街", "detail_zh": "在 SoHo 的街区里闲逛" },
+        { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "端杯咖啡看人来人往" },
+        { "id": "park", "title_zh": "公园散步", "detail_zh": "去中央公园走走" }
+      ]
+    }
+  ]
+}
