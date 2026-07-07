@@ -25,6 +25,10 @@ targets:
       - package: LingoKit
         product: CoreKit
       - package: LingoKit
+        product: LLMKit
+      - package: LingoKit
+        product: DictKit
+      - package: LingoKit
         product: HomeFeature
       - package: LingoKit
         product: ChatFeature
@@ -69,6 +73,8 @@ targets:
         product: CoreKit
       - package: LingoKit
         product: LLMKit
+      - package: LingoKit
+        product: DictKit
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.lingotrip.app.tests

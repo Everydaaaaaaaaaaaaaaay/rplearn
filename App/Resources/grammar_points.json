@@ -1,0 +1,411 @@
+{
+  "points": [
+    {
+      "id": "as-as",
+      "triggers": ["as"],
+      "title": "as ... as ... 和…一样",
+      "explanation_zh": "表示两者程度相同：as + 形容词/副词原级 + as。否定式 not as/so ... as 表示「不如」。",
+      "examples": [
+        { "en": "She runs as fast as her brother.", "zh": "她跑得和她哥哥一样快。" },
+        { "en": "This book is not as interesting as that one.", "zh": "这本书不如那本有趣。" }
+      ],
+      "related": ["comparative-than"]
+    },
+    {
+      "id": "comparative-than",
+      "triggers": ["than"],
+      "title": "比较级 + than",
+      "explanation_zh": "两者比较用比较级加 than。比较级前可用 much / a little / even 修饰程度。",
+      "examples": [
+        { "en": "This problem is much easier than the last one.", "zh": "这道题比上一道容易得多。" }
+      ],
+      "related": ["as-as", "the-more-the-more"]
+    },
+    {
+      "id": "the-more-the-more",
+      "triggers": ["more"],
+      "title": "the more ..., the more ... 越…越…",
+      "explanation_zh": "「the + 比较级, the + 比较级」表示一方随另一方程度变化。",
+      "examples": [
+        { "en": "The more you practice, the better you speak.", "zh": "你练得越多，说得越好。" }
+      ],
+      "related": ["comparative-than"]
+    },
+    {
+      "id": "so-that-result",
+      "triggers": ["so"],
+      "title": "so ... that ... 如此…以至于",
+      "explanation_zh": "so + 形容词/副词 + that 从句，表示结果。so 后面接形容词或副词，接名词时要用 such。",
+      "examples": [
+        { "en": "He was so tired that he fell asleep at once.", "zh": "他太累了，立刻就睡着了。" }
+      ],
+      "related": ["such-that", "too-to", "so-that-purpose"]
+    },
+    {
+      "id": "such-that",
+      "triggers": ["such"],
+      "title": "such ... that ... 如此…以至于",
+      "explanation_zh": "such + (a/an) + 形容词 + 名词 + that 从句。名词是复数或不可数时不加冠词。",
+      "examples": [
+        { "en": "It was such a good film that I watched it twice.", "zh": "这部电影太好看了，我看了两遍。" }
+      ],
+      "related": ["so-that-result"]
+    },
+    {
+      "id": "so-that-purpose",
+      "triggers": ["that"],
+      "title": "so that 以便（目的状语）",
+      "explanation_zh": "so that 引导目的状语从句，从句中常用 can / could / may / might。",
+      "examples": [
+        { "en": "Speak louder so that everyone can hear you.", "zh": "说大声点，好让大家都能听见。" }
+      ],
+      "related": ["so-that-result", "in-order-to"]
+    },
+    {
+      "id": "too-to",
+      "triggers": ["too"],
+      "title": "too ... to ... 太…而不能",
+      "explanation_zh": "too + 形容词/副词 + to do，形式肯定、意义否定。",
+      "examples": [
+        { "en": "The box is too heavy to carry.", "zh": "这箱子太重了，搬不动。" }
+      ],
+      "related": ["so-that-result", "enough-to"]
+    },
+    {
+      "id": "enough-to",
+      "triggers": ["enough"],
+      "title": "enough to do 足以…",
+      "explanation_zh": "enough 修饰形容词/副词时放在其后：adj./adv. + enough + to do。修饰名词时放在名词前。",
+      "examples": [
+        { "en": "He is old enough to go to school.", "zh": "他到上学的年龄了。" }
+      ],
+      "related": ["too-to"]
+    },
+    {
+      "id": "not-only-but-also",
+      "triggers": ["only"],
+      "title": "not only ... but also ... 不但…而且…",
+      "explanation_zh": "连接两个并列成分；连接主语时谓语与靠近的主语一致（就近原则）。not only 位于句首时句子要部分倒装。",
+      "examples": [
+        { "en": "She is not only smart but also hardworking.", "zh": "她不但聪明而且勤奋。" }
+      ],
+      "related": ["both-and", "either-or"]
+    },
+    {
+      "id": "both-and",
+      "triggers": ["both"],
+      "title": "both ... and ... 两者都",
+      "explanation_zh": "连接两个并列成分，作主语时谓语用复数。",
+      "examples": [
+        { "en": "Both Tom and Jerry like cheese.", "zh": "汤姆和杰瑞都喜欢奶酪。" }
+      ],
+      "related": ["either-or", "neither-nor"]
+    },
+    {
+      "id": "either-or",
+      "triggers": ["either", "or"],
+      "title": "either ... or ... 要么…要么…",
+      "explanation_zh": "表示两者选其一；作主语时谓语与靠近的主语一致（就近原则）。",
+      "examples": [
+        { "en": "Either you or I am wrong.", "zh": "不是你错就是我错。" }
+      ],
+      "related": ["neither-nor", "both-and"]
+    },
+    {
+      "id": "neither-nor",
+      "triggers": ["neither", "nor"],
+      "title": "neither ... nor ... 既不…也不…",
+      "explanation_zh": "表示两者都否定；作主语时谓语与靠近的主语一致（就近原则）。",
+      "examples": [
+        { "en": "Neither he nor his parents were at home.", "zh": "他和他父母都不在家。" }
+      ],
+      "related": ["either-or", "both-and"]
+    },
+    {
+      "id": "would-rather",
+      "triggers": ["rather"],
+      "title": "would rather 宁愿",
+      "explanation_zh": "would rather do sth. 宁愿做某事；would rather do A than do B 宁愿做 A 也不做 B。",
+      "examples": [
+        { "en": "I would rather stay home than go out in the rain.", "zh": "我宁愿待在家里也不愿冒雨出门。" }
+      ],
+      "related": ["prefer-to"]
+    },
+    {
+      "id": "prefer-to",
+      "triggers": ["prefer"],
+      "title": "prefer A to B 更喜欢 A",
+      "explanation_zh": "prefer + 名词/doing + to + 名词/doing，表示两者中更喜欢前者；prefer to do rather than do 也常用。",
+      "examples": [
+        { "en": "I prefer tea to coffee.", "zh": "比起咖啡我更喜欢茶。" }
+      ],
+      "related": ["would-rather"]
+    },
+    {
+      "id": "used-to",
+      "triggers": ["used"],
+      "title": "used to / be used to / be used for",
+      "explanation_zh": "used to do 过去常常做（现在不做了）；be/get used to doing 习惯于做；be used for doing 被用来做。三者含义完全不同，注意区分。",
+      "examples": [
+        { "en": "I used to get up early.", "zh": "我过去常早起。" },
+        { "en": "She is used to living alone.", "zh": "她习惯了独自生活。" }
+      ],
+      "related": []
+    },
+    {
+      "id": "as-soon-as",
+      "triggers": ["soon"],
+      "title": "as soon as 一…就…",
+      "explanation_zh": "引导时间状语从句；主句是将来时时，从句用一般现在时表将来（主将从现）。",
+      "examples": [
+        { "en": "I'll call you as soon as I arrive.", "zh": "我一到就给你打电话。" }
+      ],
+      "related": ["if-conditional", "hardly-when"]
+    },
+    {
+      "id": "hardly-when",
+      "triggers": ["hardly"],
+      "title": "hardly ... when ... 刚…就…",
+      "explanation_zh": "hardly + 过去完成时 + when + 一般过去时。hardly 位于句首时要部分倒装。",
+      "examples": [
+        { "en": "Hardly had I sat down when the phone rang.", "zh": "我刚坐下电话就响了。" }
+      ],
+      "related": ["no-sooner-than", "as-soon-as"]
+    },
+    {
+      "id": "no-sooner-than",
+      "triggers": ["sooner"],
+      "title": "no sooner ... than ... 一…就…",
+      "explanation_zh": "no sooner + 过去完成时 + than + 一般过去时；no sooner 位于句首时要部分倒装。",
+      "examples": [
+        { "en": "No sooner had he left than it began to rain.", "zh": "他刚走天就下起雨来。" }
+      ],
+      "related": ["hardly-when"]
+    },
+    {
+      "id": "it-takes",
+      "triggers": ["take", "takes", "took"],
+      "title": "It takes sb. + 时间 + to do 花费",
+      "explanation_zh": "It takes/took sb. + 时间 + to do sth. 表示做某事花某人多少时间。spend / cost / pay 的搭配各不相同。",
+      "examples": [
+        { "en": "It took me two hours to finish the homework.", "zh": "我花了两个小时完成作业。" }
+      ],
+      "related": ["spend-on"]
+    },
+    {
+      "id": "spend-on",
+      "triggers": ["spend", "spent"],
+      "title": "spend ... on / (in) doing 花费",
+      "explanation_zh": "sb. spend + 时间/钱 + on sth. 或 + (in) doing sth.。主语必须是人，这一点与 it takes / sth. costs 不同。",
+      "examples": [
+        { "en": "She spends an hour reading every day.", "zh": "她每天花一小时阅读。" }
+      ],
+      "related": ["it-takes"]
+    },
+    {
+      "id": "there-be",
+      "triggers": ["there"],
+      "title": "there be 存在句",
+      "explanation_zh": "表示「某地有某物」；be 与靠近的名词保持一致（就近原则）。注意与 have（拥有）区分。",
+      "examples": [
+        { "en": "There is a book and two pens on the desk.", "zh": "桌上有一本书和两支钢笔。" }
+      ],
+      "related": []
+    },
+    {
+      "id": "have-been-to",
+      "triggers": ["been", "gone"],
+      "title": "have been to / have gone to",
+      "explanation_zh": "have been to 去过（人已回来）；have gone to 去了（人还没回来）。",
+      "examples": [
+        { "en": "He has been to Paris twice.", "zh": "他去过巴黎两次。" },
+        { "en": "He has gone to Paris.", "zh": "他去巴黎了（人不在这里）。" }
+      ],
+      "related": []
+    },
+    {
+      "id": "stop-doing",
+      "triggers": ["stop", "stopped"],
+      "title": "stop doing / stop to do",
+      "explanation_zh": "stop doing 停止正在做的事；stop to do 停下来去做另一件事。",
+      "examples": [
+        { "en": "He stopped smoking last year.", "zh": "他去年戒烟了。" },
+        { "en": "He stopped to smoke.", "zh": "他停下来去抽烟。" }
+      ],
+      "related": ["remember-doing", "forget-doing"]
+    },
+    {
+      "id": "remember-doing",
+      "triggers": ["remember"],
+      "title": "remember doing / remember to do",
+      "explanation_zh": "remember doing 记得做过某事（已发生）；remember to do 记得要去做某事（未发生）。",
+      "examples": [
+        { "en": "I remember locking the door.", "zh": "我记得锁过门了。" },
+        { "en": "Remember to lock the door.", "zh": "记得要锁门。" }
+      ],
+      "related": ["forget-doing", "stop-doing"]
+    },
+    {
+      "id": "forget-doing",
+      "triggers": ["forget", "forgot"],
+      "title": "forget doing / forget to do",
+      "explanation_zh": "forget doing 忘记做过某事（事已做）；forget to do 忘记去做某事（事没做）。",
+      "examples": [
+        { "en": "Don't forget to send the email.", "zh": "别忘了发邮件。" }
+      ],
+      "related": ["remember-doing", "stop-doing"]
+    },
+    {
+      "id": "look-forward-to",
+      "triggers": ["forward"],
+      "title": "look forward to doing 期待",
+      "explanation_zh": "look forward to 中的 to 是介词，后接名词或动名词，不接动词原形。",
+      "examples": [
+        { "en": "I'm looking forward to hearing from you.", "zh": "我期待收到你的回信。" }
+      ],
+      "related": ["used-to"]
+    },
+    {
+      "id": "be-worth-doing",
+      "triggers": ["worth"],
+      "title": "be worth doing 值得做",
+      "explanation_zh": "sth. is worth doing，用主动形式表达被动含义，doing 后不再接宾语。",
+      "examples": [
+        { "en": "This museum is worth visiting.", "zh": "这座博物馆值得一游。" }
+      ],
+      "related": []
+    },
+    {
+      "id": "cant-help",
+      "triggers": ["help"],
+      "title": "can't help doing 忍不住",
+      "explanation_zh": "can't help doing 忍不住做某事；注意区分 can't help (to) do 不能帮忙做某事。",
+      "examples": [
+        { "en": "I couldn't help laughing.", "zh": "我忍不住笑了。" }
+      ],
+      "related": []
+    },
+    {
+      "id": "had-better",
+      "triggers": ["better"],
+      "title": "had better do 最好…",
+      "explanation_zh": "had better + 动词原形，表示建议；否定式为 had better not do。",
+      "examples": [
+        { "en": "You'd better take an umbrella.", "zh": "你最好带把伞。" }
+      ],
+      "related": ["why-not"]
+    },
+    {
+      "id": "why-not",
+      "triggers": ["why"],
+      "title": "Why not ...? 何不…？",
+      "explanation_zh": "Why not + 动词原形 = Why don't you + 动词原形，表建议。",
+      "examples": [
+        { "en": "Why not go for a walk?", "zh": "何不去散散步？" }
+      ],
+      "related": ["had-better", "what-about"]
+    },
+    {
+      "id": "what-about",
+      "triggers": ["about"],
+      "title": "What / How about ...? …怎么样？",
+      "explanation_zh": "about 是介词，后接名词或动名词，用于提出建议或征求意见。",
+      "examples": [
+        { "en": "What about playing basketball after school?", "zh": "放学后打篮球怎么样？" }
+      ],
+      "related": ["why-not"]
+    },
+    {
+      "id": "if-conditional",
+      "triggers": ["if"],
+      "title": "if 条件句：主将从现",
+      "explanation_zh": "if 引导真实条件句时，主句用一般将来时，从句用一般现在时。if 还可引导虚拟条件句，表示与事实相反的假设。",
+      "examples": [
+        { "en": "If it rains tomorrow, we will stay at home.", "zh": "如果明天下雨，我们就待在家里。" }
+      ],
+      "related": ["unless", "wish-subjunctive"]
+    },
+    {
+      "id": "unless",
+      "triggers": ["unless"],
+      "title": "unless 除非 (= if ... not)",
+      "explanation_zh": "unless 引导条件状语从句，相当于 if ... not；从句同样遵循主将从现。",
+      "examples": [
+        { "en": "You'll miss the bus unless you hurry.", "zh": "除非你快点，否则你会错过公交车。" }
+      ],
+      "related": ["if-conditional"]
+    },
+    {
+      "id": "although-but",
+      "triggers": ["although", "though"],
+      "title": "although 不与 but 连用",
+      "explanation_zh": "although/though 引导让步状语从句，同一句中不能再用 but；同理 because 不与 so 连用。",
+      "examples": [
+        { "en": "Although it was late, he kept working.", "zh": "虽然很晚了，他仍继续工作。" }
+      ],
+      "related": ["because-so"]
+    },
+    {
+      "id": "because-so",
+      "triggers": ["because"],
+      "title": "because 不与 so 连用",
+      "explanation_zh": "because 引导原因状语从句，同一句中不能再用 so。回答 why 提问必须用 because。",
+      "examples": [
+        { "en": "Because he was ill, he didn't come.", "zh": "因为他病了，所以没来。" }
+      ],
+      "related": ["although-but"]
+    },
+    {
+      "id": "wish-subjunctive",
+      "triggers": ["wish"],
+      "title": "wish 后的虚拟语气",
+      "explanation_zh": "wish 表示难以实现的愿望：对现在用过去时（be 用 were），对过去用过去完成时。注意与 hope（可实现的希望）区分。",
+      "examples": [
+        { "en": "I wish I were taller.", "zh": "我真希望我再高一点。" },
+        { "en": "I wish I had studied harder.", "zh": "我真希望当初更努力学习。" }
+      ],
+      "related": ["if-conditional"]
+    },
+    {
+      "id": "suggest-clause",
+      "triggers": ["suggest"],
+      "title": "suggest 的宾语从句用 (should) do",
+      "explanation_zh": "suggest / insist / demand / order 等词后的宾语从句用 should + 动词原形，should 可省略。suggest doing 也很常用。",
+      "examples": [
+        { "en": "I suggest that he (should) see a doctor.", "zh": "我建议他去看医生。" }
+      ],
+      "related": ["wish-subjunctive"]
+    },
+    {
+      "id": "make-sb-do",
+      "triggers": ["make", "let", "made"],
+      "title": "make / let / have sb. do 使役动词",
+      "explanation_zh": "使役动词 make / let / have 后接不带 to 的不定式；但被动语态中 to 要还原：be made to do。",
+      "examples": [
+        { "en": "The teacher made us clean the classroom.", "zh": "老师让我们打扫教室。" }
+      ],
+      "related": ["see-sb-doing"]
+    },
+    {
+      "id": "see-sb-doing",
+      "triggers": ["see", "hear", "watch", "saw", "heard"],
+      "title": "see sb. do / doing 感官动词",
+      "explanation_zh": "感官动词 see / hear / watch / notice 后接 do 表示看到全过程，接 doing 表示看到正在进行。",
+      "examples": [
+        { "en": "I saw him cross the street.", "zh": "我看见他过了马路（全过程）。" },
+        { "en": "I saw him crossing the street.", "zh": "我看见他正在过马路。" }
+      ],
+      "related": ["make-sb-do"]
+    },
+    {
+      "id": "in-order-to",
+      "triggers": ["order"],
+      "title": "in order to 为了",
+      "explanation_zh": "in order to do 表目的，可置于句首或句中；否定式 in order not to do。",
+      "examples": [
+        { "en": "He got up early in order to catch the first bus.", "zh": "为了赶上头班车，他起得很早。" }
+      ],
+      "related": ["so-that-purpose"]
+    }
+  ]
+}
