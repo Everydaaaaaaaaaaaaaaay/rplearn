@@ -16,6 +16,7 @@ public struct ChatDependencies: Sendable {
     public let speech: any SpeechService
     public let translator: TranslationService
     public let audioSession: AudioSessionCoordinator
+    public let memoryStore: MemoryStore
 
     public init(
         chatStore: ChatStore,
@@ -26,7 +27,8 @@ public struct ChatDependencies: Sendable {
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
         translator: TranslationService,
-        audioSession: AudioSessionCoordinator
+        audioSession: AudioSessionCoordinator,
+        memoryStore: MemoryStore
     ) {
         self.chatStore = chatStore
         self.rosterStore = rosterStore
@@ -37,5 +39,6 @@ public struct ChatDependencies: Sendable {
         self.speech = speech
         self.translator = translator
         self.audioSession = audioSession
+        self.memoryStore = memoryStore
     }
 }

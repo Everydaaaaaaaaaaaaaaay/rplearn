@@ -147,6 +147,10 @@ public final class ChatViewModel {
         }
     }
 
+    private var memoryService: MemoryService {
+        MemoryService(llm: deps.llm, chatStore: deps.chatStore, memoryStore: deps.memoryStore)
+    }
+
     private func streamAssistantReply() async {
         guard let conversation else { return }
         isStreaming = true
@@ -158,10 +162,13 @@ public final class ChatViewModel {
             streamingMessageID = nil
         }
 
+        // 注入分级记忆（v1 仅 short 层）
+        let memorySections = await memoryService.memorySections(characterID: character.id)
         let request = PromptBuilder.roleplayRequest(
             card: character.card,
             difficulty: character.difficultyLevel,
-            history: messages
+            history: messages,
+            memorySections: memorySections
         )
 
         var accumulated = ""
@@ -173,6 +180,13 @@ public final class ChatViewModel {
                 }
             }
             try await persistAssistantMessage(conversationID: conversation.id, text: accumulated, interrupted: false)
+            // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
+            let memoryService = self.memoryService
+            let conversationID = conversation.id
+            let characterName = character.card.name
+            Task(priority: .utility) {
+                await memoryService.compressIfNeeded(conversationID: conversationID, characterName: characterName)
+            }
         } catch {
             Log.llm.error("流式回复失败：\(error)")
             if accumulated.isEmpty {

@@ -23,6 +23,7 @@ final class AppEnvironment {
     let rosterStore: RosterStore
     let economyStore: EconomyStore
     let favoritesStore: FavoritesStore
+    let memoryStore: MemoryStore
 
     let audioSession: AudioSessionCoordinator
     let speech: AppleTTSService
@@ -51,6 +52,7 @@ final class AppEnvironment {
         self.rosterStore = RosterStore(modelContainer: container)
         self.economyStore = EconomyStore(modelContainer: container)
         self.favoritesStore = FavoritesStore(modelContainer: container)
+        self.memoryStore = MemoryStore(modelContainer: container)
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession

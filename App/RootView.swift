@@ -52,7 +52,8 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
             translator: environment.translator,
-            audioSession: environment.audioSession
+            audioSession: environment.audioSession,
+            memoryStore: environment.memoryStore
         )
     }
 
