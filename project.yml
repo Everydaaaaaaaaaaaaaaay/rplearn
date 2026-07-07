@@ -2,6 +2,18 @@ name: LingoTrip
 packages:
   LingoKit:
     path: Packages/LingoKit
+schemes:
+  LingoTrip:
+    build:
+      targets:
+        LingoTrip: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: false
+      targets:
+        - LingoTripTests
 targets:
   LingoTrip:
     type: application
@@ -42,3 +54,21 @@ targets:
         UILaunchScreen: {}
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
+
+  # App 托管的测试 bundle：钥匙串/SwiftData 等依赖 App 环境的测试必须有宿主。
+  # 测试源码仍位于 package 的 Tests/ 目录下，按被测模块分子目录。
+  LingoTripTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Packages/LingoKit/Tests
+    dependencies:
+      - target: LingoTrip
+      - package: LingoKit
+        product: CoreKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lingotrip.app.tests
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES

@@ -36,6 +36,10 @@ let featureTargets: [Target] = [
     feature("SettingsFeature"),
 ]
 
+// 测试不在此声明：全部测试由 xcodeproj 的 LingoTripTests bundle（App 托管）编译运行，
+// 源码位于本 package 的 Tests/ 目录下按被测模块分子目录（见 project.yml）。
+// 原因：钥匙串/SwiftData 等测试需要宿主 App 环境，无宿主的 SwiftPM 测试 runner 会报 -34018。
+
 let allTargets = infraTargets + serviceTargets + domainTargets + featureTargets
 
 let package = Package(
