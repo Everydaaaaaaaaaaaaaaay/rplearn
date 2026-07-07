@@ -45,9 +45,13 @@ public final class ChatViewModel {
             Log.app.error("openConversation 失败：\(error)")
         }
         #if DEBUG
-        if ProcessInfo.processInfo.environment["DEBUG_INJECT_QUIZ"] == "1",
-           !messages.contains(where: { $0.quizJSON != nil }) {
-            await debugInjectQuiz()
+        if ProcessInfo.processInfo.environment["DEBUG_INJECT_QUIZ"] == "1" {
+            if !messages.contains(where: { $0.speechReviewJSON != nil }) {
+                await debugInjectSpeechReview()
+            }
+            if !messages.contains(where: { $0.quizJSON != nil }) {
+                await debugInjectQuiz()
+            }
         }
         #endif
     }
@@ -115,7 +119,22 @@ public final class ChatViewModel {
             return
         }
         runCoachReview(for: userMessage)
+        runSpeechReview(for: userMessage)
         await streamAssistantReply()
+    }
+
+    /// 后台口语点评（仅语音消息）：结果写 speechReviewJSON；超时/失败静默放弃（plan.md §2.8）。
+    private func runSpeechReview(for message: MessageDTO) {
+        let coach = CoachService(llm: deps.llm)
+        let chatStore = deps.chatStore
+        let transcript = message.text
+        Task(priority: .utility) { [weak self] in
+            guard !transcript.isEmpty,
+                  let review = try? await coach.reviewSpeech(transcript: transcript),
+                  let json = CoachService.encode(review) else { return }
+            try? await chatStore.setSpeechReview(messageID: message.id, json: json)
+            await self?.reloadMessages()
+        }
     }
 
     /// 重试：删除中断的助手消息并按当前历史重新请求。
@@ -311,6 +330,26 @@ public final class ChatViewModel {
     }
 
     #if DEBUG
+    /// 模拟器/调试用：注入一条带口语点评的语音消息，验证口语点评 UI。
+    public func debugInjectSpeechReview() async {
+        guard let conversation else { return }
+        let review = SpeechReview(
+            rating: 4,
+            commentZh: "说得挺清楚的，语气也自然！再注意一下连读会更地道。",
+            tips: [.init(quote: "how to say", better: "how do you say", explanationZh: "口语里更常说 how do you say")]
+        )
+        guard let message = try? await deps.chatStore.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            kind: .voice,
+            text: "how to say this word in english",
+            audioFileName: nil,
+            audioDuration: 3
+        ), let json = CoachService.encode(review) else { return }
+        try? await deps.chatStore.setSpeechReview(messageID: message.id, json: json)
+        await reloadMessages()
+    }
+
     /// 模拟器/调试用：直接注入一条带 quiz 的助手消息，验证出题 UI 全流程。
     public func debugInjectQuiz() async {
         guard let conversation else { return }

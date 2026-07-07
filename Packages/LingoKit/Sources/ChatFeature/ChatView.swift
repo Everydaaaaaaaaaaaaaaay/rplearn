@@ -116,6 +116,7 @@ public struct ChatView: View {
                 }
                 translationFootnote(message, alignment: .trailing)
                 coachCard(message)
+                speechReviewCard(message)
             }
         case .assistant:
             VStack(alignment: .leading, spacing: 4) {
@@ -252,6 +253,48 @@ public struct ChatView: View {
             .padding(10)
             .background(Color.yellow.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .transition(.opacity.combined(with: .move(edge: .top)))
+        }
+    }
+
+    // MARK: - 口语点评
+
+    /// 语音消息的口语点评卡：自然度星级 + 中文点评 + 更自然说法建议（plan.md §2.8）。
+    @ViewBuilder
+    private func speechReviewCard(_ message: MessageDTO) -> some View {
+        if message.kind == .voice, let review = CoachService.decodeSpeech(fromJSON: message.speechReviewJSON) {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 6) {
+                    Label("口语点评", systemImage: "waveform.badge.mic")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.teal)
+                    Spacer()
+                    Text(String(repeating: "★", count: review.clampedRating)
+                        + String(repeating: "☆", count: 5 - review.clampedRating))
+                        .font(.caption)
+                        .foregroundStyle(.teal)
+                }
+                Text(review.commentZh)
+                    .font(.footnote)
+                    .foregroundStyle(.primary)
+                ForEach(Array(review.tips.enumerated()), id: \.offset) { _, tip in
+                    VStack(alignment: .leading, spacing: 2) {
+                        HStack(spacing: 6) {
+                            Text(tip.quote)
+                                .strikethrough()
+                                .foregroundStyle(.secondary)
+                            Image(systemName: "arrow.right").font(.caption2).foregroundStyle(.secondary)
+                            Text(tip.better).foregroundStyle(.teal)
+                        }
+                        .font(.subheadline)
+                        Text(tip.explanationZh)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            .padding(10)
+            .frame(maxWidth: 300, alignment: .leading)
+            .background(Color.teal.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
     }
 

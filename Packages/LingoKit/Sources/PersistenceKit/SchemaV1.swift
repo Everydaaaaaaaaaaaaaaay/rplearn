@@ -182,6 +182,8 @@ extension SchemaV1 {
         public var tokenEstimate: Int
         public var keywordRangesJSON: String?
         public var coachReviewJSON: String?
+        /// 口语点评（语音消息，plan.md §2.8）。
+        public var speechReviewJSON: String?
         public var quizJSON: String?
         /// 已作答的 quiz 选项下标（nil 表示未作答）。
         public var quizChosenIndex: Int?
@@ -204,6 +206,7 @@ extension SchemaV1 {
             tokenEstimate: Int = 0,
             keywordRangesJSON: String? = nil,
             coachReviewJSON: String? = nil,
+            speechReviewJSON: String? = nil,
             quizJSON: String? = nil,
             quizChosenIndex: Int? = nil,
             translationZh: String? = nil,
@@ -220,6 +223,7 @@ extension SchemaV1 {
             self.tokenEstimate = tokenEstimate
             self.keywordRangesJSON = keywordRangesJSON
             self.coachReviewJSON = coachReviewJSON
+            self.speechReviewJSON = speechReviewJSON
             self.quizJSON = quizJSON
             self.quizChosenIndex = quizChosenIndex
             self.translationZh = translationZh

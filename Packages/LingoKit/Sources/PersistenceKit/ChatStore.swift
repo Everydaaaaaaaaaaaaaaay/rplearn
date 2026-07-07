@@ -100,6 +100,12 @@ public actor ChatStore {
         try modelContext.save()
     }
 
+    public func setSpeechReview(messageID: UUID, json: String?) throws {
+        guard let message = try fetchMessage(id: messageID) else { return }
+        message.speechReviewJSON = json
+        try modelContext.save()
+    }
+
     public func setTranslation(messageID: UUID, translationZh: String) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.translationZh = translationZh
@@ -243,6 +249,7 @@ public actor ChatStore {
             tokenEstimate: entity.tokenEstimate,
             keywordRangesJSON: entity.keywordRangesJSON,
             coachReviewJSON: entity.coachReviewJSON,
+            speechReviewJSON: entity.speechReviewJSON,
             quizJSON: entity.quizJSON,
             quizChosenIndex: entity.quizChosenIndex,
             translationZh: entity.translationZh,

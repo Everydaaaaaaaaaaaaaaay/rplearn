@@ -97,6 +97,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var tokenEstimate: Int
     public var keywordRangesJSON: String?
     public var coachReviewJSON: String?
+    public var speechReviewJSON: String?
     public var quizJSON: String?
     public var quizChosenIndex: Int?
     public var translationZh: String?
@@ -114,6 +115,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         tokenEstimate: Int = 0,
         keywordRangesJSON: String? = nil,
         coachReviewJSON: String? = nil,
+        speechReviewJSON: String? = nil,
         quizJSON: String? = nil,
         quizChosenIndex: Int? = nil,
         translationZh: String? = nil,
@@ -130,6 +132,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.tokenEstimate = tokenEstimate
         self.keywordRangesJSON = keywordRangesJSON
         self.coachReviewJSON = coachReviewJSON
+        self.speechReviewJSON = speechReviewJSON
         self.quizJSON = quizJSON
         self.quizChosenIndex = quizChosenIndex
         self.translationZh = translationZh
