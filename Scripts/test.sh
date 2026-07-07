@@ -3,11 +3,8 @@ set -euo pipefail
 
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# Regenerate the Xcode project if project.yml changed (or the project doesn't exist yet).
-if [ ! -d "LingoTrip.xcodeproj" ] || [ "project.yml" -nt "LingoTrip.xcodeproj" ]; then
-  echo "Generating LingoTrip.xcodeproj via xcodegen..."
-  xcodegen generate
-fi
+# Always regenerate: 新增源文件也需要进入工程（xcodegen 秒级完成）。
+xcodegen generate --quiet
 
 # Auto-pick the first available iPhone simulator (avoid hard-coding a device name that drifts).
 UDID=$(xcrun simctl list devices available \
