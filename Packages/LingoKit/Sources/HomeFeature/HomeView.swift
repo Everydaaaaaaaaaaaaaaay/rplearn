@@ -1,4 +1,5 @@
 import DomainKit
+import LLMKit
 import PersistenceKit
 import SwiftUI
 
@@ -7,11 +8,24 @@ public struct HomeDependencies: Sendable {
     public let economyStore: EconomyStore
     public let storyProgress: StoryProgressStore
     public let regionCatalog: RegionCatalog
+    public let rosterStore: RosterStore
+    public let chatStore: ChatStore
+    public let llm: any LLMClient
 
-    public init(economyStore: EconomyStore, storyProgress: StoryProgressStore, regionCatalog: RegionCatalog) {
+    public init(
+        economyStore: EconomyStore,
+        storyProgress: StoryProgressStore,
+        regionCatalog: RegionCatalog,
+        rosterStore: RosterStore,
+        chatStore: ChatStore,
+        llm: any LLMClient
+    ) {
         self.economyStore = economyStore
         self.storyProgress = storyProgress
         self.regionCatalog = regionCatalog
+        self.rosterStore = rosterStore
+        self.chatStore = chatStore
+        self.llm = llm
     }
 }
 
@@ -21,14 +35,19 @@ public enum HomeDestination: Hashable, Sendable {
     case ticketStubs
 }
 
-/// 主页 hub：当前地区卡片、主线剧情入口、地图/票根夹入口。活动入口在 2.4 补齐。
+/// 主页 hub：当前地区卡片、活动偶遇、主线剧情、地图/票根夹入口。
 public struct HomeView: View {
     private let deps: HomeDependencies
+    private let encounterChatBuilder: @MainActor (CharacterDTO) -> AnyView
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
 
-    public init(deps: HomeDependencies) {
+    public init(
+        deps: HomeDependencies,
+        encounterChatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView
+    ) {
         self.deps = deps
+        self.encounterChatBuilder = encounterChatBuilder
     }
 
     private var currentRegion: Region? {
@@ -40,6 +59,9 @@ public struct HomeView: View {
             VStack(spacing: 16) {
                 regionCard
                 entryGrid
+                if let region = currentRegion {
+                    EncounterSection(region: region, deps: deps, chatBuilder: encounterChatBuilder)
+                }
                 mainlineSection
             }
             .padding(16)

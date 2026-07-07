@@ -106,6 +106,19 @@ public actor ChatStore {
         try modelContext.save()
     }
 
+    /// 归档某角色的全部会话（偶遇未加好友离开后只读，plan.md §3.7）。
+    public func archiveConversations(characterID: UUID) throws {
+        let conversations = try modelContext.fetch(
+            FetchDescriptor<ConversationEntity>(
+                predicate: #Predicate { $0.character?.characterID == characterID }
+            )
+        )
+        for conversation in conversations {
+            conversation.isArchived = true
+        }
+        try modelContext.save()
+    }
+
     /// 记忆压缩成功后推进已压缩游标（只进不退）。
     public func setLastSummarizedIndex(conversationID: UUID, index: Int) throws {
         guard let conversation = try fetchConversation(id: conversationID) else {

@@ -46,8 +46,14 @@ struct RootView: View {
                     deps: HomeDependencies(
                         economyStore: environment.economyStore,
                         storyProgress: environment.storyProgressStore,
-                        regionCatalog: environment.regionCatalog
-                    )
+                        regionCatalog: environment.regionCatalog,
+                        rosterStore: environment.rosterStore,
+                        chatStore: environment.chatStore,
+                        llm: environment.llmRouter
+                    ),
+                    encounterChatBuilder: { character in
+                        AnyView(ChatView(character: character, deps: chatDeps))
+                    }
                 )
                 .navigationDestination(for: MainlineChapter.self) { chapter in
                     AVGStoryView(
