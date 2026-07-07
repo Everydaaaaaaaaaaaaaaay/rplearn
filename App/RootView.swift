@@ -16,7 +16,13 @@ struct RootView: View {
             }
 
             NavigationStack {
-                ConversationListView()
+                ConversationListView(
+                    deps: ChatDependencies(
+                        chatStore: environment.chatStore,
+                        rosterStore: environment.rosterStore,
+                        llm: environment.llmRouter
+                    )
+                )
             }
             .tabItem {
                 Label("消息", systemImage: "bubble.left.and.bubble.right")
