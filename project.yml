@@ -1,4 +1,7 @@
 name: LingoTrip
+packages:
+  LingoKit:
+    path: Packages/LingoKit
 targets:
   LingoTrip:
     type: application
@@ -6,6 +9,25 @@ targets:
     deploymentTarget: "18.0"
     sources:
       - App
+    dependencies:
+      - package: LingoKit
+        product: CoreKit
+      - package: LingoKit
+        product: HomeFeature
+      - package: LingoKit
+        product: ChatFeature
+      - package: LingoKit
+        product: OnboardingFeature
+      - package: LingoKit
+        product: StoryFeature
+      - package: LingoKit
+        product: RosterFeature
+      - package: LingoKit
+        product: MapFeature
+      - package: LingoKit
+        product: FavoritesFeature
+      - package: LingoKit
+        product: SettingsFeature
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.lingotrip.app
