@@ -1,0 +1,22 @@
+name: LingoTrip
+targets:
+  LingoTrip:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - App
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lingotrip.app
+        SWIFT_VERSION: "6.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    info:
+      path: build/Generated-Info.plist
+      properties:
+        NSMicrophoneUsageDescription: "用于录制语音消息，练习英语口语"
+        NSSpeechRecognitionUsageDescription: "用于将你的语音转换为文字发送给 AI 角色"
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
