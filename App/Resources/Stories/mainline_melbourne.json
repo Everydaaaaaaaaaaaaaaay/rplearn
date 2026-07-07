@@ -1,0 +1,33 @@
+{
+  "id": "mainline_melbourne",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "凌晨五点半，手机在枕头边疯狂震动。是 Ruby 发来的第七条语音。", "bg": "melbourne_cafe", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Ruby", "text": "Wakey wakey!! The sunrise waits for NO ONE. I'm outside in ten, hey!", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「It's 5:30 in the morning...」（挣扎）", "next": "n03a", "setFlags": { "sleepy": true } },
+      { "text": "「Already up! Let's go!」（秒起）", "next": "n03b" }
+    ] },
+    { "id": "n03a", "type": "line", "speaker": "Ruby", "text": "Exactly! We're already late! Grab a jumper, it gets chilly by the water. Chop chop!", "next": "n04" },
+    { "id": "n03b", "type": "line", "speaker": "Ruby", "text": "That's the spirit!! Knew I picked the right person to drag out of bed.", "next": "n04" },
+    { "id": "n04", "type": "line", "speaker": "旁白", "text": "圣基尔达海滩的清晨安静得出奇。天边刚泛起一线橘红，Ruby 把两块冲浪板插在沙滩上。", "bg": "melbourne_beach", "next": "n05" },
+    { "id": "n05", "type": "line", "speaker": "Ruby", "text": "Look at that. Heaps good, right? This is my favourite classroom.", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "旁白", "text": "她忽然噤声，指向防波堤的岩石缝——那里卡着一只小企鹅，正笨拙地扑腾。", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "Ruby", "text": "Oh no. Stay low and quiet, okay? It's a little penguin - he's stuck between the rocks.", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「What should I do?」（听指挥）", "next": "n08a", "setFlags": { "helper": true } },
+      { "text": "「Should we call someone?」（想找救助站）", "next": "n08b" }
+    ] },
+    { "id": "n08a", "type": "line", "speaker": "Ruby", "text": "Hold my board and block the wind, just like that. I'll do the rest. Slowly... slowly...", "next": "n09" },
+    { "id": "n08b", "type": "line", "speaker": "Ruby", "text": "Good instinct! But the rescue team needs forty minutes, and the tide won't wait. We've got this - hold my board.", "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "旁白", "text": "Ruby 半跪在湿滑的岩石上，双手稳得不可思议。三分钟后，小企鹅扑通一声滑回了海里。", "next": "n10" },
+    { "id": "n10", "type": "line", "speaker": "Ruby", "text": "And off he goes! Did you see that little waddle? Best. Morning. Ever.", "next": "n11" },
+    { "id": "n11", "type": "line", "speaker": "旁白", "text": "她坐回沙滩上，头发上还挂着海水，笑得比初升的太阳还亮。", "next": "n12" },
+    { "id": "n12", "type": "line", "speaker": "Ruby", "text": "You know why I study marine bio? Moments like this. The ocean gives you a gift every single day, you just have to show up.", "next": "n13" },
+    { "id": "n13", "type": "line", "speaker": "Ruby", "text": "Next arvo I'm teaching you to surf, no excuses. Deal?", "next": "n14" },
+    { "id": "n14", "type": "line", "speaker": "旁白", "text": "回程的电车上，你的鞋里全是沙子，心里却装着一整片被朝阳染红的海。", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 100, "next": "n15" },
+    { "id": "n15", "type": "line", "speaker": "旁白", "text": "【获得 100 金币】墨尔本的故事，从一只小企鹅开始。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

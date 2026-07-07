@@ -1,8 +1,10 @@
 import ChatFeature
+import DomainKit
 import FavoritesFeature
 import HomeFeature
 import OnboardingFeature
 import SettingsFeature
+import StoryFeature
 import SwiftUI
 
 struct RootView: View {
@@ -39,7 +41,26 @@ struct RootView: View {
     private var tabs: some View {
         TabView {
             NavigationStack {
-                HomeView()
+                HomeView(
+                    deps: HomeDependencies(
+                        economyStore: environment.economyStore,
+                        storyProgress: environment.storyProgressStore,
+                        regionCatalog: environment.regionCatalog
+                    )
+                )
+                .navigationDestination(for: MainlineChapter.self) { chapter in
+                    AVGStoryView(
+                        storyID: chapter.storyID,
+                        scriptURL: Bundle.main.url(forResource: chapter.storyID, withExtension: "json")!,
+                        deps: StoryDependencies(
+                            storyProgress: environment.storyProgressStore,
+                            economyStore: environment.economyStore,
+                            itemStore: environment.itemStore,
+                            dictionary: environment.dictionary,
+                            grammarPoints: environment.grammarPoints
+                        )
+                    )
+                }
             }
             .tabItem {
                 Label("主页", systemImage: "house")

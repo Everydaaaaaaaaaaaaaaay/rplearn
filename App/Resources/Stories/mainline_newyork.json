@@ -1,0 +1,32 @@
+{
+  "id": "mainline_newyork",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "布鲁克林的午后，Marcus 在唱片店门口等你，脖子上挂着那台老宾得。", "bg": "newyork_street", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Marcus", "text": "Yo! Right on time. Today I'm showing you the realest museum in New York. No tickets needed.", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "旁白", "text": "他带你钻进了地铁站。晚高峰前的站台，光线从格栅间斜切下来。", "bg": "newyork_subway", "next": "n04" },
+    { "id": "n04", "type": "line", "speaker": "Marcus", "text": "The subway, my man. Eight million stories a day, and nobody's posing. That's why I shoot here.", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「Isn't it rude to photograph strangers?」", "next": "n05a", "setFlags": { "thoughtful": true } },
+      { "text": "「Show me how you do it!」", "next": "n05b" }
+    ] },
+    { "id": "n05a", "type": "line", "speaker": "Marcus", "text": "Real question. I shoot hands, shoes, reflections - never faces without asking. Respect first, photo second. Always.", "next": "n06" },
+    { "id": "n05b", "type": "line", "speaker": "Marcus", "text": "A'ight, watch. You don't hunt the shot, you wait for it. Like fishing, but the fish is light.", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "旁白", "text": "一列 Q 线进站，气流掀起报纸。Marcus 半蹲下来，快门轻响了一声。", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "Marcus", "text": "Got it. An old man's hands holding a bag of oranges. That's somebody's whole Sunday right there.", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "旁白", "text": "他把相机递给你，示意你也试一张。取景框里，城市忽然变得很慢。", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "拍下站台尽头拉小提琴的艺人", "next": "n09a", "setFlags": { "shot_musician": true } },
+      { "text": "拍下并排睡着的一对母女", "next": "n09b" }
+    ] },
+    { "id": "n09a", "type": "line", "speaker": "Marcus", "text": "The busker? Nice eye. Music you can see - that's a real New York picture, no cap.", "next": "n10" },
+    { "id": "n09b", "type": "line", "speaker": "Marcus", "text": "Oh that's tender, for real. The city moves fast but people still find a place to rest. You got the eye.", "next": "n10" },
+    { "id": "n10", "type": "line", "speaker": "Marcus", "text": "You know what my grandma says? \"The city talks with its hands.\" That's the name of my show one day.", "next": "n11" },
+    { "id": "n11", "type": "line", "speaker": "旁白", "text": "走出地铁站时天已经擦黑，热狗摊的蒸汽混着黄昏的光。Marcus 请你吃了这顿——作为你当他一下午助手的报酬。", "bg": "newyork_street", "next": "n12" },
+    { "id": "n12", "type": "line", "speaker": "Marcus", "text": "Next time we hit the Brooklyn Bridge at golden hour. Bring comfortable shoes, we're walking the whole thing.", "next": "n13" },
+    { "id": "n13", "type": "line", "speaker": "旁白", "text": "你翻看着相机背屏里自己拍的第一张纽约照片，突然有点懂他说的『最真实的博物馆』了。", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 100, "next": "n14" },
+    { "id": "n14", "type": "line", "speaker": "旁白", "text": "【获得 100 金币】纽约的故事，定格在第一张快门里。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

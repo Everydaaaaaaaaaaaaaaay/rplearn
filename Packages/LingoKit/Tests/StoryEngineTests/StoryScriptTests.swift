@@ -59,6 +59,23 @@ struct StoryScriptTests {
         }
     }
 
+    @Test("随包主线脚本可加载且含奖励节点", arguments: ["mainline_london", "mainline_melbourne", "mainline_newyork"])
+    func bundledMainlineScripts(storyID: String) throws {
+        let url = try #require(Bundle.main.url(forResource: storyID, withExtension: "json"))
+        let script = try StoryScript.load(from: url)
+        #expect(script.id == storyID)
+        let hasReward = script.nodes.values.contains { node in
+            if case .reward(let reward, _) = node.payload { return reward.coins > 0 }
+            return false
+        }
+        #expect(hasReward)
+        let hasChoice = script.nodes.values.contains { node in
+            if case .choice = node.payload { return true }
+            return false
+        }
+        #expect(hasChoice)
+    }
+
     @Test("随包 onboarding_chat.json 可加载且以 end 结束")
     func bundledOnboardingScript() throws {
         let url = try #require(Bundle.main.url(forResource: "onboarding_chat", withExtension: "json"))

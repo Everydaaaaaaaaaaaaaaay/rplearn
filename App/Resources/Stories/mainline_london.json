@@ -1,0 +1,35 @@
+{
+  "id": "mainline_london",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "伦敦的雨下得没完没了。你按照 Oliver 发来的地址，在一条小巷深处找到了那家二手书店。", "bg": "london_street", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "旁白", "text": "推门进去，风铃轻响。潮湿的空气里混着旧纸张的味道。", "bg": "london_bookshop", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "Oliver", "text": "Look what the rain dragged in. You actually found the place, mate.", "next": "n04" },
+    { "id": "n04", "type": "line", "speaker": "Oliver", "text": "Most customers give up at the second turn. I'm mildly impressed.", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「Your map was terrible.」（吐槽他画的地图）", "next": "n05a", "setFlags": { "teased_back": true } },
+      { "text": "「It's like a maze here!」（感叹小巷像迷宫）", "next": "n05b" }
+    ] },
+    { "id": "n05a", "type": "line", "speaker": "Oliver", "text": "Terrible? That map is a work of art. The smudge was on purpose, obviously.", "next": "n06" },
+    { "id": "n05b", "type": "line", "speaker": "Oliver", "text": "That's half the charm. A good bookshop should be earned, not found.", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "旁白", "text": "他从柜台下拿出一个用牛皮纸包着的东西，在手里掂了掂。", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "Oliver", "text": "Right. Since you're new to London, I've got something for you. Found it in a donation box last week.", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "旁白", "text": "拆开牛皮纸，是一本 1953 年版的《伦敦漫步指南》，扉页上有一行褪色的钢笔字。", "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "Oliver", "text": "Look at the first page. Someone wrote a message there, seventy years ago. Give it a read.", "next": "n10" },
+    { "id": "n10", "type": "line", "speaker": "旁白", "text": "『To the one who finds this book — the city is a library, and every street is a sentence. — E.M.』", "next": "n11" },
+    { "id": "n11", "type": "line", "speaker": "Oliver", "text": "\"The city is a library.\" Not bad, eh? Whoever E.M. was, they got it.", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「Who do you think E.M. was?」", "next": "n12a", "setFlags": { "curious": true } },
+      { "text": "「Can I really keep this?」", "next": "n12b" }
+    ] },
+    { "id": "n12a", "type": "line", "speaker": "Oliver", "text": "No idea. A poet? A lonely clerk? That's the fun of second-hand books - every one of them has a ghost.", "next": "n13" },
+    { "id": "n12b", "type": "line", "speaker": "Oliver", "text": "Course you can. Books don't belong to shops, they belong to whoever reads them. Don't tell my boss I said that.", "next": "n13" },
+    { "id": "n13", "type": "line", "speaker": "Oliver", "text": "Anyway. Rule one of London: always carry a book, because the Tube will absolutely let you down.", "next": "n14" },
+    { "id": "n14", "type": "line", "speaker": "旁白", "text": "雨声渐渐小了。Oliver 泡了两杯浓得发苦的英式红茶，你们聊到了打烊。", "next": "n15" },
+    { "id": "n15", "type": "line", "speaker": "Oliver", "text": "Come by on Thursday. It's pub quiz night, and our team is desperate. You in?", "next": "n16" },
+    { "id": "n16", "type": "line", "speaker": "旁白", "text": "你接过那本旧书，把它小心地放进包里。伦敦的第一天，就这样被一行七十年前的字迹点亮了。", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 100, "next": "n17" },
+    { "id": "n17", "type": "line", "speaker": "旁白", "text": "【获得 100 金币】与 Oliver 的故事，才刚刚开始。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

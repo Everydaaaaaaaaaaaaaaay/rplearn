@@ -25,6 +25,7 @@ final class AppEnvironment {
     let favoritesStore: FavoritesStore
     let memoryStore: MemoryStore
     let itemStore: ItemStore
+    let storyProgressStore: StoryProgressStore
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -58,6 +59,7 @@ final class AppEnvironment {
         self.favoritesStore = FavoritesStore(modelContainer: container)
         self.memoryStore = MemoryStore(modelContainer: container)
         self.itemStore = ItemStore(modelContainer: container)
+        self.storyProgressStore = StoryProgressStore(modelContainer: container)
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession

@@ -1,0 +1,388 @@
+import CoreKit
+import DesignSystem
+import DictKit
+import PersistenceKit
+import StoryEngine
+import SwiftUI
+
+/// StoryFeature 依赖。
+public struct StoryDependencies: Sendable {
+    public let storyProgress: StoryProgressStore
+    public let economyStore: EconomyStore
+    public let itemStore: ItemStore
+    public let dictionary: DictDatabase
+    public let grammarPoints: GrammarPointStore
+
+    public init(
+        storyProgress: StoryProgressStore,
+        economyStore: EconomyStore,
+        itemStore: ItemStore,
+        dictionary: DictDatabase,
+        grammarPoints: GrammarPointStore
+    ) {
+        self.storyProgress = storyProgress
+        self.economyStore = economyStore
+        self.itemStore = itemStore
+        self.dictionary = dictionary
+        self.grammarPoints = grammarPoints
+    }
+}
+
+/// 竖屏 AVG（plan.md §3.6）：背景 + 立绘 → 底部对话框（名牌 + 打字机台词）→
+/// 顶部快进/自动/跳过 → 选项中上部垂直排列。台词定稿后接 TappableText 可查词。
+public struct AVGStoryView: View {
+    private let storyID: String
+    private let scriptURL: URL
+    private let deps: StoryDependencies
+
+    @State private var player: StoryPlayer?
+    @State private var typewriter = TypewriterState()
+    @State private var isAuto = false
+    @State private var wordSelection: TokenSelection?
+    @State private var showSkipConfirm = false
+    @State private var loadFailed = false
+    @Environment(\.dismiss) private var dismiss
+
+    public init(storyID: String, scriptURL: URL, deps: StoryDependencies) {
+        self.storyID = storyID
+        self.scriptURL = scriptURL
+        self.deps = deps
+    }
+
+    public var body: some View {
+        ZStack {
+            background
+            VStack(spacing: 0) {
+                topBar
+                Spacer()
+                if let choices = player?.currentChoices {
+                    choiceStack(choices)
+                    Spacer()
+                }
+                dialogBox
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar(.hidden, for: .tabBar)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            handleTap()
+        }
+        .wordLookupOverlay(
+            selection: $wordSelection,
+            dictionary: deps.dictionary,
+            grammar: deps.grammarPoints
+        )
+        .task {
+            await loadPlayerIfNeeded()
+        }
+        .task(id: isAuto) {
+            await autoLoopIfNeeded()
+        }
+        .confirmationDialog("跳过本章剧情？", isPresented: $showSkipConfirm, titleVisibility: .visible) {
+            Button("跳过", role: .destructive) {
+                skipAll()
+            }
+        }
+        .alert("剧情加载失败", isPresented: $loadFailed) {
+            Button("返回") { dismiss() }
+        }
+    }
+
+    // MARK: - 背景与立绘
+
+    private var currentLine: StoryPlayer.Line? {
+        player?.history.last
+    }
+
+    private var background: some View {
+        ZStack {
+            LinearGradient(
+                colors: BackgroundPalette.colors(for: currentLine?.bg),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            if let emoji = BackgroundPalette.emoji(for: currentLine?.bg) {
+                Text(emoji)
+                    .font(.system(size: 120))
+                    .opacity(0.25)
+                    .offset(y: -140)
+            }
+            // 立绘占位：说话人首字母大圆徽章（美术素材接入前的形象锚点）
+            if let line = currentLine, line.speaker != "旁白" {
+                VStack {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .fill(.white.opacity(0.25))
+                        Text(String(line.speaker.prefix(1)))
+                            .font(.system(size: 64, weight: .bold))
+                            .foregroundStyle(.white)
+                    }
+                    .frame(width: 140, height: 140)
+                    .padding(.bottom, 210)
+                }
+                .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.35), value: currentLine?.bg)
+    }
+
+    // MARK: - 顶部控制条
+
+    private var topBar: some View {
+        HStack(spacing: 18) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.backward")
+            }
+            Spacer()
+            Button {
+                player?.skipToNextChoiceOrEnd()
+                typewriter.showFull(currentLine?.text ?? "")
+            } label: {
+                Image(systemName: "forward.fill")
+            }
+            .accessibilityLabel("快进")
+            Button {
+                isAuto.toggle()
+            } label: {
+                Image(systemName: isAuto ? "pause.circle" : "play.circle")
+            }
+            .accessibilityLabel("自动播放")
+            Button {
+                showSkipConfirm = true
+            } label: {
+                Image(systemName: "chevron.forward.2")
+            }
+            .accessibilityLabel("跳过")
+        }
+        .font(.title3)
+        .foregroundStyle(.white)
+        .padding(.horizontal, 18)
+        .padding(.vertical, 10)
+    }
+
+    // MARK: - 对话框
+
+    @ViewBuilder
+    private var dialogBox: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if let line = currentLine {
+                Text(line.speaker)
+                    .font(.subheadline.weight(.bold))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 4)
+                    .background(Color.accentColor, in: Capsule())
+                    .foregroundStyle(.white)
+
+                Group {
+                    if typewriter.isTyping {
+                        Text(typewriter.visibleText)
+                    } else {
+                        TappableText(
+                            tokens: TokenCache.tokens(for: line.text, cacheKey: "avg-\(storyID)-\(line.id)"),
+                            contextID: "avg-\(line.id)",
+                            selection: wordSelection,
+                            onSelect: { wordSelection = $0 }
+                        )
+                    }
+                }
+                .font(.body)
+                .frame(minHeight: 76, alignment: .topLeading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                Text(player?.isFinished == true ? "本章完 · 点击退出" : "点击继续")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            } else {
+                ProgressView()
+                    .frame(maxWidth: .infinity, minHeight: 100)
+            }
+        }
+        .padding(14)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .padding(.horizontal, 12)
+        .padding(.bottom, 16)
+    }
+
+    // MARK: - 选项
+
+    private func choiceStack(_ choices: [StoryChoiceOption]) -> some View {
+        VStack(spacing: 12) {
+            ForEach(Array(choices.enumerated()), id: \.offset) { index, option in
+                Button {
+                    player?.choose(index)
+                    advanceWithTyping()
+                } label: {
+                    Text(option.text)
+                        .font(.body.weight(.medium))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.white.opacity(0.9))
+                .foregroundStyle(.black)
+            }
+        }
+        .padding(.horizontal, 32)
+        .transition(.opacity.combined(with: .scale(scale: 0.96)))
+    }
+
+    // MARK: - 行为
+
+    private func handleTap() {
+        guard let player else { return }
+        if player.isFinished {
+            dismiss()
+            return
+        }
+        guard player.currentChoices == nil else { return }
+        if typewriter.isTyping {
+            typewriter.showFull(currentLine?.text ?? "")
+        } else {
+            advanceWithTyping()
+        }
+    }
+
+    private func advanceWithTyping() {
+        guard let player, !player.isFinished else { return }
+        withAnimation(.easeOut(duration: 0.2)) {
+            player.advance()
+        }
+        if let text = currentLine?.text {
+            typewriter.start(text: text)
+        }
+    }
+
+    private func autoLoopIfNeeded() async {
+        guard isAuto else { return }
+        while isAuto, let player, !player.isFinished {
+            try? await Task.sleep(for: .milliseconds(300))
+            if typewriter.isTyping || player.currentChoices != nil {
+                continue
+            }
+            try? await Task.sleep(for: .seconds(1.2))
+            if isAuto, player.currentChoices == nil, !player.isFinished {
+                advanceWithTyping()
+            }
+        }
+    }
+
+    private func skipAll() {
+        guard let player else { return }
+        while !player.isFinished {
+            if player.currentChoices != nil {
+                player.choose(0)
+            }
+            player.skipToNextChoiceOrEnd()
+        }
+        typewriter.showFull(currentLine?.text ?? "")
+    }
+
+    private func loadPlayerIfNeeded() async {
+        guard player == nil else { return }
+        guard let script = try? StoryScript.load(from: scriptURL) else {
+            loadFailed = true
+            return
+        }
+        let progress = try? await deps.storyProgress.progress(storyID: storyID)
+        let resumeNode = (progress?.isCompleted == true) ? nil : progress?.currentNodeID
+        let player = StoryPlayer(script: script, resumeFrom: resumeNode, flags: progress?.flags ?? [:])
+
+        let storyID = self.storyID
+        let progressStore = deps.storyProgress
+        let economy = deps.economyStore
+        let items = deps.itemStore
+
+        player.onStateChange = { nodeID, flags in
+            Task {
+                try? await progressStore.saveCheckpoint(storyID: storyID, nodeID: nodeID, flags: flags)
+            }
+        }
+        player.onReward = { reward in
+            Task {
+                if reward.coins > 0 {
+                    _ = try? await economy.addCoins(reward.coins)
+                }
+                if let ticket = reward.ticket {
+                    if ticket == "universal" {
+                        _ = try? await items.addTicket(type: .ticketUniversal, source: .story)
+                    } else {
+                        _ = try? await items.addTicket(type: .ticketCountry, countryCode: ticket, source: .story)
+                    }
+                }
+            }
+        }
+        player.onCompleted = { _ in
+            Task {
+                try? await progressStore.markCompleted(storyID: storyID)
+            }
+        }
+
+        self.player = player
+        advanceWithTyping()
+    }
+}
+
+// MARK: - 打字机
+
+/// 打字机台词状态：点击先跳完打字、再推进。
+@MainActor
+@Observable
+final class TypewriterState {
+    private(set) var visibleText = ""
+    private(set) var isTyping = false
+    private var task: Task<Void, Never>?
+
+    func start(text: String) {
+        task?.cancel()
+        visibleText = ""
+        isTyping = true
+        task = Task { @MainActor in
+            for character in text {
+                guard !Task.isCancelled else { return }
+                visibleText.append(character)
+                try? await Task.sleep(for: .milliseconds(28))
+            }
+            isTyping = false
+        }
+    }
+
+    func showFull(_ text: String) {
+        task?.cancel()
+        visibleText = text
+        isTyping = false
+    }
+}
+
+// MARK: - 背景配色（美术素材接入前的占位方案）
+
+enum BackgroundPalette {
+    static func colors(for key: String?) -> [Color] {
+        switch key {
+        case "london_bookshop": [Color(red: 0.32, green: 0.28, blue: 0.24), Color(red: 0.12, green: 0.10, blue: 0.09)]
+        case "london_street": [Color(red: 0.45, green: 0.50, blue: 0.58), Color(red: 0.20, green: 0.23, blue: 0.30)]
+        case "melbourne_beach": [Color(red: 0.99, green: 0.75, blue: 0.44), Color(red: 0.22, green: 0.48, blue: 0.65)]
+        case "melbourne_cafe": [Color(red: 0.55, green: 0.42, blue: 0.32), Color(red: 0.25, green: 0.18, blue: 0.14)]
+        case "newyork_subway": [Color(red: 0.35, green: 0.35, blue: 0.40), Color(red: 0.12, green: 0.12, blue: 0.16)]
+        case "newyork_street": [Color(red: 0.85, green: 0.60, blue: 0.35), Color(red: 0.30, green: 0.22, blue: 0.30)]
+        default: [Color(red: 0.30, green: 0.34, blue: 0.44), Color(red: 0.10, green: 0.12, blue: 0.18)]
+        }
+    }
+
+    static func emoji(for key: String?) -> String? {
+        switch key {
+        case "london_bookshop": "📚"
+        case "london_street": "🌧️"
+        case "melbourne_beach": "🌅"
+        case "melbourne_cafe": "☕️"
+        case "newyork_subway": "🚇"
+        case "newyork_street": "🌆"
+        default: nil
+        }
+    }
+}
