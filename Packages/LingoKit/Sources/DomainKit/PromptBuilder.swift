@@ -115,7 +115,8 @@ public enum PromptBuilder {
         history: [MessageDTO],
         memorySections: [String] = [],
         guidance: String? = nil,
-        quizRequested: Bool = false
+        quizRequested: Bool = false,
+        rawWindow: Int = 24
     ) -> LLMRequest {
         LLMRequest(
             tier: .balanced,
@@ -126,7 +127,7 @@ public enum PromptBuilder {
                 guidance: guidance,
                 quizRequested: quizRequested
             ),
-            messages: chatMessages(history: history),
+            messages: chatMessages(history: history, rawWindow: rawWindow),
             // 出题时给足输出空间，避免 quiz JSON 被截断。
             maxTokens: quizRequested ? 900 : 512,
             temperature: 0.9

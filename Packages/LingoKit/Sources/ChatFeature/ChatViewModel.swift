@@ -160,7 +160,12 @@ public final class ChatViewModel {
     }
 
     private var memoryService: MemoryService {
-        MemoryService(llm: deps.llm, chatStore: deps.chatStore, memoryStore: deps.memoryStore)
+        MemoryService(
+            llm: deps.llm,
+            chatStore: deps.chatStore,
+            memoryStore: deps.memoryStore,
+            economyStore: deps.economyStore
+        )
     }
 
     private func streamAssistantReply() async {
@@ -174,8 +179,10 @@ public final class ChatViewModel {
             streamingMessageID = nil
         }
 
-        // 注入分级记忆（v1 仅 short 层）；主线机票未发放前附加引导任务清单
+        // 注入分级记忆（long + short/mid）；原文窗口与记忆按订阅配额；主线机票未发放前附加引导
+        let memoryService = self.memoryService
         let memorySections = await memoryService.memorySections(characterID: character.id)
+        let rawWindow = await memoryService.quota().rawWindow
         let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
         let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
@@ -185,7 +192,8 @@ public final class ChatViewModel {
             history: messages,
             memorySections: memorySections,
             guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
-            quizRequested: quizRequested
+            quizRequested: quizRequested,
+            rawWindow: rawWindow
         )
 
         var accumulated = ""
@@ -218,7 +226,6 @@ public final class ChatViewModel {
             }
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
-            let memoryService = self.memoryService
             let conversationID = conversation.id
             let characterName = character.card.name
             Task(priority: .utility) {

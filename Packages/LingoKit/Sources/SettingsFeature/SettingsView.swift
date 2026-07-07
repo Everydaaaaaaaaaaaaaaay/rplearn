@@ -16,6 +16,9 @@ public struct SettingsView: View {
     private let router: LLMRouter
     private let economyStore: EconomyStore
     private let economyService: EconomyService
+    private let memoryStore: MemoryStore
+    private let rosterStore: RosterStore
+    private let chatStore: ChatStore
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
 
@@ -23,12 +26,22 @@ public struct SettingsView: View {
         settings: LLMSettingsStore,
         router: LLMRouter,
         economyStore: EconomyStore,
-        economyService: EconomyService
+        economyService: EconomyService,
+        memoryStore: MemoryStore,
+        rosterStore: RosterStore,
+        chatStore: ChatStore
     ) {
         self.settings = settings
         self.router = router
         self.economyStore = economyStore
         self.economyService = economyService
+        self.memoryStore = memoryStore
+        self.rosterStore = rosterStore
+        self.chatStore = chatStore
+    }
+
+    private var memoryService: MemoryService {
+        MemoryService(llm: router, chatStore: chatStore, memoryStore: memoryStore, economyStore: economyStore)
     }
 
     public var body: some View {
@@ -133,6 +146,14 @@ public struct SettingsView: View {
                     await economyService.grantDebugCoins()
                     await reloadProfile()
                 }
+            }
+            NavigationLink("调试：记忆面板") {
+                MemoryDebugView(
+                    memoryStore: memoryStore,
+                    rosterStore: rosterStore,
+                    economyStore: economyStore,
+                    memoryService: memoryService
+                )
             }
             #endif
         } header: {

@@ -115,7 +115,10 @@ struct RootView: View {
                     settings: environment.llmSettings,
                     router: environment.llmRouter,
                     economyStore: environment.economyStore,
-                    economyService: environment.economyService
+                    economyService: environment.economyService,
+                    memoryStore: environment.memoryStore,
+                    rosterStore: environment.rosterStore,
+                    chatStore: environment.chatStore
                 )
             }
             .tabItem {
