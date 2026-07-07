@@ -23,6 +23,12 @@ public final class ChatViewModel {
 
     private var streamingMessageID: UUID?
 
+    /// 本会话下一次出题的阈值（N=6±2，每次出题后重掷）。
+    private var quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
+
+    /// 本会话「不再弹题」状态（供 UI 复选框读取）。
+    public var conversationOptedOut: Bool { conversation?.quizOptOut ?? false }
+
     public init(character: CharacterDTO, deps: ChatDependencies) {
         self.character = character
         self.deps = deps
@@ -37,6 +43,12 @@ public final class ChatViewModel {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
         }
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["DEBUG_INJECT_QUIZ"] == "1",
+           !messages.contains(where: { $0.quizJSON != nil }) {
+            await debugInjectQuiz()
+        }
+        #endif
     }
 
     /// 正在翻译中的消息（气泡下方转圈）。
@@ -166,12 +178,14 @@ public final class ChatViewModel {
         let memorySections = await memoryService.memorySections(characterID: character.id)
         let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
+        let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
         let request = PromptBuilder.roleplayRequest(
             card: character.card,
             difficulty: character.difficultyLevel,
             history: messages,
             memorySections: memorySections,
-            guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil
+            guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
+            quizRequested: quizRequested
         )
 
         var accumulated = ""
@@ -182,7 +196,26 @@ public final class ChatViewModel {
                     streamingText = accumulated
                 }
             }
-            try await persistAssistantMessage(conversationID: conversation.id, text: accumulated, interrupted: false)
+            // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
+            let (replyText, quiz) = quizRequested
+                ? QuizService.extract(from: accumulated)
+                : (accumulated, nil)
+            if quizRequested {
+                streamingText = replyText // 让流式收尾不闪现 quiz 原文
+            }
+            let assistantMessage = try await persistAssistantMessage(
+                conversationID: conversation.id, text: replyText, interrupted: false
+            )
+            if let assistantMessage, let quiz, let json = QuizService.encode(quiz) {
+                try? await deps.chatStore.attachQuiz(
+                    messageID: assistantMessage.id, quizJSON: json, conversationID: conversation.id
+                )
+                quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
+            } else if quizRequested {
+                // 指令已发但没解析出 quiz：清零计数，避免每轮重复追加出题指令。
+                try? await deps.chatStore.resetQuizCounter(conversationID: conversation.id)
+                quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
+            }
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
             let memoryService = self.memoryService
@@ -197,14 +230,15 @@ public final class ChatViewModel {
                 errorMessage = error.localizedDescription
             } else {
                 // 已收增量落库并标记中断，气泡上提供重试。
-                try? await persistAssistantMessage(conversationID: conversation.id, text: accumulated, interrupted: true)
+                _ = try? await persistAssistantMessage(conversationID: conversation.id, text: accumulated, interrupted: true)
             }
         }
         await reloadMessages()
     }
 
-    private func persistAssistantMessage(conversationID: UUID, text: String, interrupted: Bool) async throws {
-        guard !text.isEmpty else { return }
+    @discardableResult
+    private func persistAssistantMessage(conversationID: UUID, text: String, interrupted: Bool) async throws -> MessageDTO? {
+        guard !text.isEmpty else { return nil }
         let message = try await deps.chatStore.appendMessage(
             conversationID: conversationID,
             role: .assistant,
@@ -215,7 +249,73 @@ public final class ChatViewModel {
             try await deps.chatStore.updateMessageText(messageID: message.id, text: text, isInterrupted: true)
         }
         await annotateKeywords(message: message, text: text)
+        return message
     }
+
+    // MARK: - 语境出题（plan.md §3.8）
+
+    /// 双开关都开、且距上次出题已达阈值 → 本回合请求出题。
+    private func shouldRequestQuiz(conversationID: UUID) async -> Bool {
+        let globallyEnabled = (try? await deps.economyStore.profile().quizGloballyEnabled) ?? true
+        guard let conversation = try? await deps.chatStore.conversation(id: conversationID) else { return false }
+        return QuizService.shouldRequestQuiz(
+            globallyEnabled: globallyEnabled,
+            conversationOptedOut: conversation.quizOptOut,
+            turnsSinceQuiz: conversation.turnsSinceQuiz,
+            threshold: quizThreshold
+        )
+    }
+
+    /// 作答某道 quiz：本地判分、落库记录、答对奖励金币。
+    public func answerQuiz(message: MessageDTO, chosenIndex: Int) async {
+        guard message.quizChosenIndex == nil,
+              let quiz = QuizService.decode(fromJSON: message.quizJSON),
+              let optionsJSON = encodeOptions(quiz.options) else { return }
+        try? await deps.chatStore.recordQuizAnswer(
+            messageID: message.id,
+            chosenIndex: chosenIndex,
+            question: quiz.question,
+            optionsJSON: optionsJSON,
+            correctIndex: quiz.answer,
+            characterName: character.card.name
+        )
+        if chosenIndex == quiz.answer {
+            _ = try? await deps.economyStore.addCoins(QuizService.correctReward)
+        }
+        await reloadMessages()
+    }
+
+    /// 本会话「不再弹题」开关。
+    public func setQuizOptOut(_ optedOut: Bool) async {
+        guard let conversation else { return }
+        try? await deps.chatStore.setQuizOptOut(conversationID: conversation.id, optedOut: optedOut)
+        self.conversation = try? await deps.chatStore.conversation(id: conversation.id)
+    }
+
+    private func encodeOptions(_ options: [String]) -> String? {
+        guard let data = try? JSONEncoder().encode(options) else { return nil }
+        return String(decoding: data, as: UTF8.self)
+    }
+
+    #if DEBUG
+    /// 模拟器/调试用：直接注入一条带 quiz 的助手消息，验证出题 UI 全流程。
+    public func debugInjectQuiz() async {
+        guard let conversation else { return }
+        let sample = Quiz(
+            question: "Which word means \"very tired\"?",
+            options: ["keen", "exhausted", "brave", "tidy"],
+            answer: 1,
+            explanationZh: "exhausted 表示筋疲力尽；keen 是热衷的、brave 是勇敢的、tidy 是整洁的。"
+        )
+        guard let message = try? await persistAssistantMessage(
+            conversationID: conversation.id,
+            text: "Honestly I'm knackered after that shift 😴",
+            interrupted: false
+        ), let json = QuizService.encode(sample) else { return }
+        try? await deps.chatStore.attachQuiz(messageID: message.id, quizJSON: json, conversationID: conversation.id)
+        await reloadMessages()
+    }
+    #endif
 
     /// 角色回复完成后本地词频标注关键词（划线可点，plan.md §3.8）。
     private func annotateKeywords(message: MessageDTO, text: String) async {

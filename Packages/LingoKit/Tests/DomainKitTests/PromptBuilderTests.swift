@@ -92,4 +92,18 @@ struct PromptBuilderTests {
         #expect(request.temperature == 0.9)
         #expect(request.responseFormat == .text)
     }
+
+    @Test("出题回合：附加出题指令并放宽 maxTokens")
+    func quizRequestedAppendsInstruction() {
+        let plain = PromptBuilder.roleplaySystemPrompt(card: card, difficulty: .junior3)
+        #expect(!plain.contains("Optional pop quiz"))
+
+        let withQuiz = PromptBuilder.roleplaySystemPrompt(card: card, difficulty: .junior3, quizRequested: true)
+        #expect(withQuiz.contains("## Optional pop quiz"))
+        #expect(withQuiz.contains("<quiz>"))
+
+        let request = PromptBuilder.roleplayRequest(card: card, difficulty: .junior3, history: [], quizRequested: true)
+        #expect(request.system?.contains("Optional pop quiz") == true)
+        #expect(request.maxTokens == 900)
+    }
 }

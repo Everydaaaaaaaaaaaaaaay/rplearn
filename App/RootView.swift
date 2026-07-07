@@ -136,7 +136,8 @@ struct RootView: View {
             translator: environment.translator,
             audioSession: environment.audioSession,
             memoryStore: environment.memoryStore,
-            itemStore: environment.itemStore
+            itemStore: environment.itemStore,
+            economyStore: environment.economyStore
         )
     }
 

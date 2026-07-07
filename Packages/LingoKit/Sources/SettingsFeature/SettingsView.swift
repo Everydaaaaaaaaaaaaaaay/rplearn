@@ -34,6 +34,7 @@ public struct SettingsView: View {
     public var body: some View {
         Form {
             accountSection
+            learningSection
             Section {
                 Picker("供应商", selection: $settings.providerKind) {
                     ForEach(LLMProviderKind.allCases, id: \.self) { kind in
@@ -139,6 +140,32 @@ public struct SettingsView: View {
         } footer: {
             Text("订阅为本地模拟，未接入真实支付。订阅等级影响角色记忆容量。")
         }
+    }
+
+    // MARK: - 学习
+
+    @ViewBuilder
+    private var learningSection: some View {
+        Section {
+            if profile != nil {
+                Toggle("聊天中随机出题", isOn: quizEnabledBinding)
+            }
+        } header: {
+            Text("学习")
+        } footer: {
+            Text("开启后，与朋友聊到一定轮次会随手出一道小测；每个对话里也能单独关闭。")
+        }
+    }
+
+    private var quizEnabledBinding: Binding<Bool> {
+        Binding(
+            get: { profile?.quizGloballyEnabled ?? true },
+            set: { newValue in
+                Task {
+                    profile = try? await economyStore.updateProfile { $0.quizGloballyEnabled = newValue }
+                }
+            }
+        )
     }
 
     private var subscriptionBinding: Binding<SubscriptionTier> {

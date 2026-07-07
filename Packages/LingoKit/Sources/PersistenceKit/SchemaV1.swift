@@ -183,6 +183,8 @@ extension SchemaV1 {
         public var keywordRangesJSON: String?
         public var coachReviewJSON: String?
         public var quizJSON: String?
+        /// 已作答的 quiz 选项下标（nil 表示未作答）。
+        public var quizChosenIndex: Int?
         /// 整句翻译缓存。
         public var translationZh: String?
         /// 流式中断标记（已收增量落库，气泡提供重试）。
@@ -203,6 +205,7 @@ extension SchemaV1 {
             keywordRangesJSON: String? = nil,
             coachReviewJSON: String? = nil,
             quizJSON: String? = nil,
+            quizChosenIndex: Int? = nil,
             translationZh: String? = nil,
             isInterrupted: Bool = false,
             createdAt: Date = .now
@@ -218,6 +221,7 @@ extension SchemaV1 {
             self.keywordRangesJSON = keywordRangesJSON
             self.coachReviewJSON = coachReviewJSON
             self.quizJSON = quizJSON
+            self.quizChosenIndex = quizChosenIndex
             self.translationZh = translationZh
             self.isInterrupted = isInterrupted
             self.createdAt = createdAt

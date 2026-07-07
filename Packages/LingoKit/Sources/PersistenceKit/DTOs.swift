@@ -98,6 +98,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var keywordRangesJSON: String?
     public var coachReviewJSON: String?
     public var quizJSON: String?
+    public var quizChosenIndex: Int?
     public var translationZh: String?
     public var isInterrupted: Bool
     public var createdAt: Date
@@ -114,6 +115,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         keywordRangesJSON: String? = nil,
         coachReviewJSON: String? = nil,
         quizJSON: String? = nil,
+        quizChosenIndex: Int? = nil,
         translationZh: String? = nil,
         isInterrupted: Bool = false,
         createdAt: Date = .now
@@ -129,6 +131,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.keywordRangesJSON = keywordRangesJSON
         self.coachReviewJSON = coachReviewJSON
         self.quizJSON = quizJSON
+        self.quizChosenIndex = quizChosenIndex
         self.translationZh = translationZh
         self.isInterrupted = isInterrupted
         self.createdAt = createdAt

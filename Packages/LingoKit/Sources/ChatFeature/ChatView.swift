@@ -34,6 +34,18 @@ public struct ChatView: View {
         }
         .navigationTitle(viewModel.character.card.name)
         .navigationBarTitleDisplayMode(.inline)
+        #if targetEnvironment(simulator)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    Task { await viewModel.debugInjectQuiz() }
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+                .accessibilityLabel("调试：注入小测")
+            }
+        }
+        #endif
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -121,6 +133,7 @@ public struct ChatView: View {
                     }
                     .buttonStyle(.borderless)
                 }
+                quizCard(message)
             }
         case .coach:
             // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位
@@ -240,6 +253,99 @@ public struct ChatView: View {
             .background(Color.yellow.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .transition(.opacity.combined(with: .move(edge: .top)))
         }
+    }
+
+    // MARK: - 语境出题
+
+    /// 角色回复附带的小测：选项气泡 + 作答反馈 + 「不再弹题」（plan.md §3.8）。
+    @ViewBuilder
+    private func quizCard(_ message: MessageDTO) -> some View {
+        if let quiz = QuizService.decode(fromJSON: message.quizJSON) {
+            let chosen = message.quizChosenIndex
+            VStack(alignment: .leading, spacing: 10) {
+                Label("小测验", systemImage: "checkmark.bubble.fill")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.purple)
+                Text(quiz.question)
+                    .font(.subheadline.weight(.medium))
+                VStack(spacing: 6) {
+                    ForEach(Array(quiz.options.enumerated()), id: \.offset) { index, option in
+                        quizOption(message: message, quiz: quiz, index: index, option: option, chosen: chosen)
+                    }
+                }
+                if let chosen {
+                    let correct = chosen == quiz.answer
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(correct
+                            ? "🎉 答对了！+\(QuizService.correctReward) 金币"
+                            : "正确答案：\(QuizService.optionLabel(quiz.answer)). \(quiz.options[quiz.answer])")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(correct ? .green : .orange)
+                        Text(quiz.explanationZh)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    .transition(.opacity)
+                }
+                Button {
+                    Task { await viewModel.setQuizOptOut(!viewModel.conversationOptedOut) }
+                } label: {
+                    Label(
+                        "不再弹题",
+                        systemImage: viewModel.conversationOptedOut ? "checkmark.square.fill" : "square"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(12)
+            .frame(maxWidth: 300, alignment: .leading)
+            .background(Color.purple.opacity(0.10), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .animation(.snappy, value: chosen)
+        }
+    }
+
+    private func quizOption(
+        message: MessageDTO,
+        quiz: Quiz,
+        index: Int,
+        option: String,
+        chosen: Int?
+    ) -> some View {
+        let isAnswered = chosen != nil
+        let isCorrect = index == quiz.answer
+        let isChosen = index == chosen
+        return Button {
+            Task { await viewModel.answerQuiz(message: message, chosenIndex: index) }
+        } label: {
+            HStack(spacing: 8) {
+                Text(QuizService.optionLabel(index))
+                    .font(.subheadline.weight(.bold))
+                    .monospaced()
+                Text(option)
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                if isAnswered, isCorrect {
+                    Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
+                } else if isChosen {
+                    Image(systemName: "xmark.circle.fill").foregroundStyle(.red)
+                }
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(quizOptionColor(isAnswered: isAnswered, isCorrect: isCorrect, isChosen: isChosen),
+                        in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .disabled(isAnswered)
+    }
+
+    private func quizOptionColor(isAnswered: Bool, isCorrect: Bool, isChosen: Bool) -> Color {
+        if isAnswered, isCorrect { return .green.opacity(0.22) }
+        if isChosen { return .red.opacity(0.16) }
+        return Color(.tertiarySystemBackground)
     }
 
     @ViewBuilder

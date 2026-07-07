@@ -21,7 +21,8 @@ public enum PromptBuilder {
         card: CharacterCard,
         difficulty: DifficultyLevel,
         memorySections: [String] = [],
-        guidance: String? = nil
+        guidance: String? = nil,
+        quizRequested: Bool = false
     ) -> String {
         var sections: [String] = []
 
@@ -81,6 +82,9 @@ public enum PromptBuilder {
             sections.append(guidance)
         }
         sections.append(contentsOf: memorySections)
+        if quizRequested {
+            sections.append(QuizService.promptInstruction)
+        }
 
         return sections
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -110,7 +114,8 @@ public enum PromptBuilder {
         difficulty: DifficultyLevel,
         history: [MessageDTO],
         memorySections: [String] = [],
-        guidance: String? = nil
+        guidance: String? = nil,
+        quizRequested: Bool = false
     ) -> LLMRequest {
         LLMRequest(
             tier: .balanced,
@@ -118,10 +123,12 @@ public enum PromptBuilder {
                 card: card,
                 difficulty: difficulty,
                 memorySections: memorySections,
-                guidance: guidance
+                guidance: guidance,
+                quizRequested: quizRequested
             ),
             messages: chatMessages(history: history),
-            maxTokens: 512,
+            // 出题时给足输出空间，避免 quiz JSON 被截断。
+            maxTokens: quizRequested ? 900 : 512,
             temperature: 0.9
         )
     }

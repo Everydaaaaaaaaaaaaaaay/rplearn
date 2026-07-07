@@ -106,6 +106,54 @@ public actor ChatStore {
         try modelContext.save()
     }
 
+    // MARK: - 语境出题（plan.md §3.8）
+
+    /// 出题成功：把 quiz 挂到该助手消息，并清零本会话的 turnsSinceQuiz。
+    public func attachQuiz(messageID: UUID, quizJSON: String, conversationID: UUID) throws {
+        guard let message = try fetchMessage(id: messageID) else { return }
+        message.quizJSON = quizJSON
+        if let conversation = try fetchConversation(id: conversationID) {
+            conversation.turnsSinceQuiz = 0
+        }
+        try modelContext.save()
+    }
+
+    /// 出题指令已发但模型未产出 quiz：仅清零计数，避免每轮重复追加指令。
+    public func resetQuizCounter(conversationID: UUID) throws {
+        guard let conversation = try fetchConversation(id: conversationID) else { return }
+        conversation.turnsSinceQuiz = 0
+        try modelContext.save()
+    }
+
+    /// 本会话「不再弹题」开关。
+    public func setQuizOptOut(conversationID: UUID, optedOut: Bool) throws {
+        guard let conversation = try fetchConversation(id: conversationID) else { return }
+        conversation.quizOptOut = optedOut
+        try modelContext.save()
+    }
+
+    /// 作答：记录选项到消息，并写一条出题记录（供后续统计）。
+    public func recordQuizAnswer(
+        messageID: UUID,
+        chosenIndex: Int,
+        question: String,
+        optionsJSON: String,
+        correctIndex: Int,
+        characterName: String?
+    ) throws {
+        guard let message = try fetchMessage(id: messageID), message.quizChosenIndex == nil else { return }
+        message.quizChosenIndex = chosenIndex
+        let record = QuizRecordEntity(
+            question: question,
+            optionsJSON: optionsJSON,
+            correctIndex: correctIndex,
+            chosenIndex: chosenIndex,
+            characterName: characterName
+        )
+        modelContext.insert(record)
+        try modelContext.save()
+    }
+
     /// 归档某角色的全部会话（偶遇未加好友离开后只读，plan.md §3.7）。
     public func archiveConversations(characterID: UUID) throws {
         let conversations = try modelContext.fetch(
@@ -196,6 +244,7 @@ public actor ChatStore {
             keywordRangesJSON: entity.keywordRangesJSON,
             coachReviewJSON: entity.coachReviewJSON,
             quizJSON: entity.quizJSON,
+            quizChosenIndex: entity.quizChosenIndex,
             translationZh: entity.translationZh,
             isInterrupted: entity.isInterrupted,
             createdAt: entity.createdAt
