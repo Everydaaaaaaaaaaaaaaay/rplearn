@@ -10,6 +10,7 @@ import SwiftUI
 public struct ChatView: View {
     @State private var viewModel: ChatViewModel
     @State private var wordSelection: TokenSelection?
+    @State private var expandedCoachMessageIDs: Set<UUID> = []
     private let deps: ChatDependencies
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
@@ -89,7 +90,11 @@ public struct ChatView: View {
                     tappableText(message, textColor: .white)
                 }
                 .contextMenu { bubbleMenu(message) }
+                .overlay(alignment: .topLeading) {
+                    coachBadge(message)
+                }
                 translationFootnote(message, alignment: .trailing)
+                coachCard(message)
             }
         case .assistant:
             VStack(alignment: .leading, spacing: 4) {
@@ -135,6 +140,75 @@ public struct ChatView: View {
             Task { await viewModel.speak(message: message) }
         } label: {
             Label("播放", systemImage: "speaker.wave.2")
+        }
+    }
+
+    // MARK: - 教练纠错
+
+    /// 用户气泡角落的小黄点：有纠错建议时出现，点击展开纠错卡。
+    @ViewBuilder
+    private func coachBadge(_ message: MessageDTO) -> some View {
+        if CoachService.decode(fromJSON: message.coachReviewJSON)?.hasIssues == true {
+            Button {
+                withAnimation(.snappy) {
+                    if expandedCoachMessageIDs.contains(message.id) {
+                        expandedCoachMessageIDs.remove(message.id)
+                    } else {
+                        expandedCoachMessageIDs.insert(message.id)
+                    }
+                }
+            } label: {
+                Circle()
+                    .fill(.yellow)
+                    .frame(width: 12, height: 12)
+                    .overlay(Circle().stroke(.background, lineWidth: 2))
+            }
+            .offset(x: 42, y: -3)
+            .accessibilityLabel("查看改进建议")
+        }
+    }
+
+    /// 展开的纠错卡：错误片段 → 改法 + 中文讲解 + 采纳按钮（改不改随用户）。
+    @ViewBuilder
+    private func coachCard(_ message: MessageDTO) -> some View {
+        if expandedCoachMessageIDs.contains(message.id),
+           let review = CoachService.decode(fromJSON: message.coachReviewJSON),
+           review.hasIssues {
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(Array(review.issues.enumerated()), id: \.offset) { _, issue in
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack(spacing: 6) {
+                            Text(issue.quote)
+                                .strikethrough()
+                                .foregroundStyle(.secondary)
+                            Image(systemName: "arrow.right")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                            Text(issue.correction)
+                                .foregroundStyle(.green)
+                        }
+                        .font(.subheadline)
+                        Text(issue.explanationZh)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        Button("采纳") {
+                            viewModel.draft = message.text.replacingOccurrences(
+                                of: issue.quote,
+                                with: issue.correction
+                            )
+                            withAnimation(.snappy) {
+                                expandedCoachMessageIDs.remove(message.id)
+                            }
+                        }
+                        .font(.footnote)
+                        .buttonStyle(.bordered)
+                        .controlSize(.mini)
+                    }
+                }
+            }
+            .padding(10)
+            .background(Color.yellow.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .transition(.opacity.combined(with: .move(edge: .top)))
         }
     }
 

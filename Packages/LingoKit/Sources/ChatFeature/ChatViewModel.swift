@@ -94,8 +94,9 @@ public final class ChatViewModel {
 
     private func send(userText: String) async {
         guard let conversation else { return }
+        let userMessage: MessageDTO
         do {
-            try await deps.chatStore.appendMessage(
+            userMessage = try await deps.chatStore.appendMessage(
                 conversationID: conversation.id,
                 role: .user,
                 text: userText,
@@ -106,7 +107,21 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
+        // 教练审核与主链路并行，互不阻塞（plan.md §3.4）。
+        runCoachReview(for: userMessage)
         await streamAssistantReply()
+    }
+
+    /// 后台教练审核：结果写 coachReviewJSON；超时/失败静默放弃。
+    private func runCoachReview(for message: MessageDTO) {
+        let coach = CoachService(llm: deps.llm)
+        let chatStore = deps.chatStore
+        Task(priority: .utility) { [weak self] in
+            guard let review = try? await coach.review(userText: message.text) else { return }
+            guard review.hasIssues, let json = CoachService.encode(review) else { return }
+            try? await chatStore.setCoachReview(messageID: message.id, json: json)
+            await self?.reloadMessages()
+        }
     }
 
     private func streamAssistantReply() async {
