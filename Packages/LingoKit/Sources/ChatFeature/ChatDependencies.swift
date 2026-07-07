@@ -1,3 +1,4 @@
+import CoreKit
 import DictKit
 import DomainKit
 import LLMKit
@@ -14,6 +15,7 @@ public struct ChatDependencies: Sendable {
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
     public let translator: TranslationService
+    public let audioSession: AudioSessionCoordinator
 
     public init(
         chatStore: ChatStore,
@@ -23,7 +25,8 @@ public struct ChatDependencies: Sendable {
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
-        translator: TranslationService
+        translator: TranslationService,
+        audioSession: AudioSessionCoordinator
     ) {
         self.chatStore = chatStore
         self.rosterStore = rosterStore
@@ -33,5 +36,6 @@ public struct ChatDependencies: Sendable {
         self.grammarPoints = grammarPoints
         self.speech = speech
         self.translator = translator
+        self.audioSession = audioSession
     }
 }

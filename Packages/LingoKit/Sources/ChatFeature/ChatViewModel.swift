@@ -80,6 +80,29 @@ public final class ChatViewModel {
         await send(userText: text)
     }
 
+    /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核（plan.md §3.2）。
+    public func sendVoice(capture: VoiceRecorder.Capture) async {
+        guard let conversation, !isStreaming else { return }
+        let userMessage: MessageDTO
+        do {
+            userMessage = try await deps.chatStore.appendMessage(
+                conversationID: conversation.id,
+                role: .user,
+                kind: .voice,
+                text: capture.transcript,
+                audioFileName: capture.fileName,
+                audioDuration: capture.duration,
+                tokenEstimate: TokenEstimator.estimate(capture.transcript)
+            )
+            await reloadMessages()
+        } catch {
+            errorMessage = "发送失败：\(error.localizedDescription)"
+            return
+        }
+        runCoachReview(for: userMessage)
+        await streamAssistantReply()
+    }
+
     /// 重试：删除中断的助手消息并按当前历史重新请求。
     public func retryInterrupted(messageID: UUID) async {
         guard !isStreaming else { return }

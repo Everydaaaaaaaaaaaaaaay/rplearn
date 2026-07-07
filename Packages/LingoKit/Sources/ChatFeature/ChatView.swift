@@ -4,17 +4,26 @@ import DictKit
 import DomainKit
 import LLMKit
 import PersistenceKit
+import SpeechKit
 import SwiftUI
 
-/// 聊天页：消息列表 + 输入栏 + 流式回复 + 点词查词。
+/// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
     @State private var viewModel: ChatViewModel
     @State private var wordSelection: TokenSelection?
     @State private var expandedCoachMessageIDs: Set<UUID> = []
+    @State private var transcriptVisibleMessageIDs: Set<UUID> = []
+    @State private var isVoiceMode = false
+    @State private var recorder: VoiceRecorder
+    @State private var voicePlayer: VoiceMessagePlayer
+    @State private var showSimulatorInjection = false
+    @State private var simulatorInjectionText = ""
     private let deps: ChatDependencies
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
         _viewModel = State(initialValue: ChatViewModel(character: character, deps: deps))
+        _recorder = State(initialValue: VoiceRecorder(audioSession: deps.audioSession))
+        _voicePlayer = State(initialValue: VoiceMessagePlayer(audioSession: deps.audioSession))
         self.deps = deps
     }
 
@@ -141,6 +150,20 @@ public struct ChatView: View {
         } label: {
             Label("播放", systemImage: "speaker.wave.2")
         }
+        if message.kind == .voice {
+            Button {
+                if transcriptVisibleMessageIDs.contains(message.id) {
+                    transcriptVisibleMessageIDs.remove(message.id)
+                } else {
+                    transcriptVisibleMessageIDs.insert(message.id)
+                }
+            } label: {
+                Label(
+                    transcriptVisibleMessageIDs.contains(message.id) ? "隐藏文字" : "查看文字",
+                    systemImage: "text.bubble"
+                )
+            }
+        }
     }
 
     // MARK: - 教练纠错
@@ -227,17 +250,35 @@ public struct ChatView: View {
         }
     }
 
+    @ViewBuilder
     private func tappableText(_ message: MessageDTO, textColor: Color?) -> some View {
-        TappableText(
-            tokens: TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString),
-            contextID: message.id.uuidString,
-            keywords: message.role == .assistant
-                ? KeywordAnnotator.decodeWords(fromJSON: message.keywordRangesJSON)
-                : [],
-            textColor: textColor,
-            selection: wordSelection,
-            onSelect: { wordSelection = $0 }
-        )
+        if message.kind == .voice {
+            VoiceBubbleContent(
+                message: .init(
+                    duration: message.audioDuration ?? 0,
+                    transcript: message.text,
+                    hasAudio: message.audioFileName != nil
+                ),
+                isPlaying: voicePlayer.playingFileName != nil && voicePlayer.playingFileName == message.audioFileName,
+                showTranscript: transcriptVisibleMessageIDs.contains(message.id),
+                textColor: textColor,
+                onTogglePlay: {
+                    guard let fileName = message.audioFileName else { return }
+                    Task { await voicePlayer.togglePlay(fileName: fileName) }
+                }
+            )
+        } else {
+            TappableText(
+                tokens: TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString),
+                contextID: message.id.uuidString,
+                keywords: message.role == .assistant
+                    ? KeywordAnnotator.decodeWords(fromJSON: message.keywordRangesJSON)
+                    : [],
+                textColor: textColor,
+                selection: wordSelection,
+                onSelect: { wordSelection = $0 }
+            )
+        }
     }
 
     /// 词典未收录时的 AI 简释兜底（fast 档）。
@@ -257,23 +298,64 @@ public struct ChatView: View {
 
     private var inputBar: some View {
         HStack(spacing: 8) {
-            TextField("用英语说点什么…", text: $viewModel.draft, axis: .vertical)
-                .lineLimit(1...4)
-                .textFieldStyle(.plain)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                .onSubmit {
-                    Task { await viewModel.sendDraft() }
-                }
-
             Button {
-                Task { await viewModel.sendDraft() }
+                withAnimation(.snappy) {
+                    isVoiceMode.toggle()
+                    recorder.resetFailure()
+                }
             } label: {
-                Image(systemName: "arrow.up.circle.fill")
-                    .font(.system(size: 30))
+                Image(systemName: isVoiceMode ? "keyboard" : "mic")
+                    .font(.system(size: 22))
+                    .frame(width: 32, height: 32)
             }
-            .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isStreaming)
+            .accessibilityLabel(isVoiceMode ? "切换到键盘" : "切换到语音")
+
+            if isVoiceMode {
+                VoiceInputBar(recorder: recorder) { capture in
+                    Task { await viewModel.sendVoice(capture: capture) }
+                }
+                .disabled(viewModel.isStreaming)
+                #if targetEnvironment(simulator)
+                // 模拟器兜底：麦克风/识别不可用时注入文本验证全流程（plan.md §3.2）
+                Button {
+                    showSimulatorInjection = true
+                } label: {
+                    Image(systemName: "hammer")
+                }
+                .alert("模拟语音注入", isPresented: $showSimulatorInjection) {
+                    TextField("转写文本", text: $simulatorInjectionText)
+                    Button("发送") {
+                        let text = simulatorInjectionText
+                        simulatorInjectionText = ""
+                        guard !text.isEmpty else { return }
+                        Task {
+                            await viewModel.sendVoice(
+                                capture: .init(fileName: nil, duration: 3, transcript: text)
+                            )
+                        }
+                    }
+                    Button("取消", role: .cancel) {}
+                }
+                #endif
+            } else {
+                TextField("用英语说点什么…", text: $viewModel.draft, axis: .vertical)
+                    .lineLimit(1...4)
+                    .textFieldStyle(.plain)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .onSubmit {
+                        Task { await viewModel.sendDraft() }
+                    }
+
+                Button {
+                    Task { await viewModel.sendDraft() }
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .font(.system(size: 30))
+                }
+                .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isStreaming)
+            }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)

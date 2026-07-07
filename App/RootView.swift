@@ -51,7 +51,8 @@ struct RootView: View {
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
-            translator: environment.translator
+            translator: environment.translator,
+            audioSession: environment.audioSession
         )
     }
 
