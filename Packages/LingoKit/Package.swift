@@ -6,13 +6,14 @@ import PackageDescription
 
 let infraTargets: [Target] = [
     .target(name: "CoreKit"),
-    .target(name: "DesignSystem"),
+    .target(name: "DesignSystem", dependencies: ["CoreKit"]),
 ]
 
 let serviceTargets: [Target] = [
     .target(name: "LLMKit", dependencies: ["CoreKit"]),
     .target(name: "SpeechKit", dependencies: ["CoreKit"]),
-    .target(name: "DictKit", dependencies: ["CoreKit"]),
+    // DictKit 附带词典卡 UI（DictCardView/浮窗），故依赖 DesignSystem——层级仍严格向下。
+    .target(name: "DictKit", dependencies: ["CoreKit", "DesignSystem"]),
     .target(name: "PersistenceKit", dependencies: ["CoreKit"]),
 ]
 
@@ -27,7 +28,7 @@ func feature(_ name: String, extraDependencies: [Target.Dependency] = []) -> Tar
 
 let featureTargets: [Target] = [
     feature("HomeFeature"),
-    feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit"]),
+    feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit", "DictKit"]),
     feature("OnboardingFeature", extraDependencies: ["StoryEngine"]),
     feature("StoryFeature", extraDependencies: ["StoryEngine"]),
     feature("RosterFeature"),

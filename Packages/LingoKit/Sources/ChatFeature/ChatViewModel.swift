@@ -123,6 +123,16 @@ public final class ChatViewModel {
         if interrupted {
             try await deps.chatStore.updateMessageText(messageID: message.id, text: text, isInterrupted: true)
         }
+        await annotateKeywords(message: message, text: text)
+    }
+
+    /// 角色回复完成后本地词频标注关键词（划线可点，plan.md §3.8）。
+    private func annotateKeywords(message: MessageDTO, text: String) async {
+        let annotator = KeywordAnnotator(dictionary: deps.dictionary)
+        let threshold = character.difficultyLevel.keywordFrequencyThreshold
+        let words = await annotator.keywords(in: text, frequencyThreshold: threshold)
+        guard let json = KeywordAnnotator.encode(words: words) else { return }
+        try? await deps.chatStore.setKeywordRanges(messageID: message.id, json: json)
     }
 
     private func reloadMessages() async {

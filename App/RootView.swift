@@ -20,7 +20,9 @@ struct RootView: View {
                     deps: ChatDependencies(
                         chatStore: environment.chatStore,
                         rosterStore: environment.rosterStore,
-                        llm: environment.llmRouter
+                        llm: environment.llmRouter,
+                        dictionary: environment.dictionary,
+                        grammarPoints: environment.grammarPoints
                     )
                 )
             }

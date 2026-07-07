@@ -1,13 +1,20 @@
+import CoreKit
 import DesignSystem
+import DictKit
+import DomainKit
+import LLMKit
 import PersistenceKit
 import SwiftUI
 
-/// 聊天页：消息列表 + 输入栏 + 流式回复。
+/// 聊天页：消息列表 + 输入栏 + 流式回复 + 点词查词。
 public struct ChatView: View {
     @State private var viewModel: ChatViewModel
+    @State private var wordSelection: TokenSelection?
+    private let deps: ChatDependencies
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
         _viewModel = State(initialValue: ChatViewModel(character: character, deps: deps))
+        self.deps = deps
     }
 
     public var body: some View {
@@ -17,6 +24,12 @@ public struct ChatView: View {
         }
         .navigationTitle(viewModel.character.card.name)
         .navigationBarTitleDisplayMode(.inline)
+        .wordLookupOverlay(
+            selection: $wordSelection,
+            dictionary: deps.dictionary,
+            grammar: deps.grammarPoints,
+            aiFallback: aiWordFallback
+        )
         .task {
             await viewModel.load()
         }
@@ -35,6 +48,7 @@ public struct ChatView: View {
                             if streaming.isEmpty {
                                 TypingIndicator()
                             } else {
+                                // 流式期间用普通 Text，定稿后换 TappableText（plan.md §3.1）
                                 Text(streaming)
                             }
                         }
@@ -67,13 +81,12 @@ public struct ChatView: View {
         switch message.role {
         case .user:
             MessageBubble(side: .outgoing) {
-                Text(message.text)
-                    .foregroundStyle(.white)
+                tappableText(message, textColor: .white)
             }
         case .assistant:
             VStack(alignment: .leading, spacing: 4) {
                 MessageBubble(side: .incoming) {
-                    Text(message.text)
+                    tappableText(message, textColor: nil)
                 }
                 if message.isInterrupted {
                     Button {
@@ -87,6 +100,34 @@ public struct ChatView: View {
             }
         case .coach:
             EmptyView()
+        }
+    }
+
+    private func tappableText(_ message: MessageDTO, textColor: Color?) -> some View {
+        TappableText(
+            tokens: TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString),
+            contextID: message.id.uuidString,
+            keywords: message.role == .assistant
+                ? KeywordAnnotator.decodeWords(fromJSON: message.keywordRangesJSON)
+                : [],
+            textColor: textColor,
+            selection: wordSelection,
+            onSelect: { wordSelection = $0 }
+        )
+    }
+
+    /// 词典未收录时的 AI 简释兜底（fast 档）。
+    private var aiWordFallback: @Sendable (String) async -> String? {
+        let llm = deps.llm
+        return { word in
+            let request = LLMRequest(
+                tier: .fast,
+                system: "你是一个简明的英汉词典助手。用中文简要解释用户给出的英文词，格式：词性. 释义（不超过 3 条）；如是俚语/缩写/网络用语请注明。总长不超过 80 字。",
+                messages: [.user(word)],
+                maxTokens: 200,
+                temperature: 0.2
+            )
+            return try? await llm.complete(request)
         }
     }
 
