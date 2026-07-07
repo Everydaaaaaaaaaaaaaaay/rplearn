@@ -8,6 +8,7 @@ struct VoiceInputBar: View {
     let onSend: (VoiceRecorder.Capture) -> Void
 
     @State private var isPressing = false
+    @State private var startTask: Task<Void, Never>?
     @GestureState private var dragOffset: CGFloat = 0
 
     private var isRecording: Bool {
@@ -60,7 +61,8 @@ struct VoiceInputBar: View {
                 if !isPressing {
                     isPressing = true
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    Task { await recorder.startRecording() }
+                    startTask?.cancel()
+                    startTask = Task { await recorder.startRecording() }
                 } else {
                     let nowInZone = value.translation.height < -80
                     if nowInZone != inCancelZone {
@@ -71,6 +73,8 @@ struct VoiceInputBar: View {
             }
             .onEnded { value in
                 isPressing = false
+                startTask?.cancel()
+                startTask = nil
                 let cancelled = value.translation.height < -80
                 Task {
                     if cancelled, recorder.pendingAutoCapture == nil {
