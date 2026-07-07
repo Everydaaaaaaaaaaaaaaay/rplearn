@@ -162,13 +162,16 @@ public final class ChatViewModel {
             streamingMessageID = nil
         }
 
-        // 注入分级记忆（v1 仅 short 层）
+        // 注入分级记忆（v1 仅 short 层）；主线机票未发放前附加引导任务清单
         let memorySections = await memoryService.memorySections(characterID: character.id)
+        let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
+        let mainlineActive = character.isMainCharacter && !hasStoryTicket
         let request = PromptBuilder.roleplayRequest(
             card: character.card,
             difficulty: character.difficultyLevel,
             history: messages,
-            memorySections: memorySections
+            memorySections: memorySections,
+            guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil
         )
 
         var accumulated = ""
@@ -180,6 +183,7 @@ public final class ChatViewModel {
                 }
             }
             try await persistAssistantMessage(conversationID: conversation.id, text: accumulated, interrupted: false)
+            await grantMainlineTicketIfEligible(conversationID: conversation.id)
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
             let memoryService = self.memoryService
             let conversationID = conversation.id
@@ -220,6 +224,25 @@ public final class ChatViewModel {
         let words = await annotator.keywords(in: text, frequencyThreshold: threshold)
         guard let json = KeywordAnnotator.encode(words: words) else { return }
         try? await deps.chatStore.setKeywordRanges(messageID: message.id, json: json)
+    }
+
+    /// 主线奖励：与主角色对话满 3 轮且尚未发放过剧情机票 → 送 1 张通用机票（plan.md §3.6/1.10）。
+    private func grantMainlineTicketIfEligible(conversationID: UUID) async {
+        guard character.isMainCharacter else { return }
+        guard let conversation = try? await deps.chatStore.conversation(id: conversationID),
+              conversation.turnCount >= 3 else { return }
+        guard (try? await deps.itemStore.hasTicket(source: .story)) == false else { return }
+        do {
+            _ = try await deps.itemStore.addTicket(type: .ticketUniversal, source: .story)
+            _ = try await deps.chatStore.appendMessage(
+                conversationID: conversationID,
+                role: .coach,
+                kind: .storyLine,
+                text: "🎫 主办方送来一张通用机票！之后可以在地图里用它前往新的城市。"
+            )
+        } catch {
+            Log.app.warning("主线机票发放失败：\(error)")
+        }
     }
 
     private func reloadMessages() async {

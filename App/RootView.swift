@@ -1,13 +1,42 @@
 import ChatFeature
 import FavoritesFeature
 import HomeFeature
+import OnboardingFeature
 import SettingsFeature
 import SwiftUI
 
 struct RootView: View {
     let environment: AppEnvironment
 
+    private var showsOnboarding: Binding<Bool> {
+        Binding(
+            get: { environment.needsOnboarding == true },
+            set: { newValue in
+                if !newValue {
+                    environment.needsOnboarding = false
+                }
+            }
+        )
+    }
+
     var body: some View {
+        tabs
+            .fullScreenCover(isPresented: showsOnboarding) {
+                OnboardingFlowView(
+                    deps: OnboardingDependencies(
+                        rosterStore: environment.rosterStore,
+                        scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!
+                    )
+                ) { character in
+                    Task {
+                        await environment.completeOnboarding(selected: character)
+                    }
+                }
+                .interactiveDismissDisabled()
+            }
+    }
+
+    private var tabs: some View {
         TabView {
             NavigationStack {
                 HomeView()
@@ -53,7 +82,8 @@ struct RootView: View {
             speech: environment.speech,
             translator: environment.translator,
             audioSession: environment.audioSession,
-            memoryStore: environment.memoryStore
+            memoryStore: environment.memoryStore,
+            itemStore: environment.itemStore
         )
     }
 

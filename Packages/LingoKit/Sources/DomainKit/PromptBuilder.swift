@@ -4,12 +4,24 @@ import PersistenceKit
 
 /// 全部 prompt 集中在此，便于迭代与 snapshot 测试锁定（plan.md §3.7）。
 public enum PromptBuilder {
+    /// 主线引导任务清单：主角色首段对话（发机票前）附加（plan.md §3.6）。
+    public static let mainlineGuidance = """
+    ## Current situation (first days)
+    Your Chinese friend just arrived in your city - they won a year-long cultural exchange prize, \
+    and you are the local buddy assigned to them. This is one of your first chats. \
+    Over the next few messages, naturally: welcome them, ask how the trip went, share one thing \
+    you love about your city, and suggest something you could do together soon. \
+    One step at a time - don't dump everything in one message.
+    """
+
     /// 角色扮演 system prompt v1。
     /// - memorySections: 记忆注入段落（1.9 起使用），拼在末尾。
+    /// - guidance: 主线引导任务清单（可选）。
     public static func roleplaySystemPrompt(
         card: CharacterCard,
         difficulty: DifficultyLevel,
-        memorySections: [String] = []
+        memorySections: [String] = [],
+        guidance: String? = nil
     ) -> String {
         var sections: [String] = []
 
@@ -65,6 +77,9 @@ public enum PromptBuilder {
             """
         )
 
+        if let guidance {
+            sections.append(guidance)
+        }
         sections.append(contentsOf: memorySections)
 
         return sections
@@ -94,11 +109,17 @@ public enum PromptBuilder {
         card: CharacterCard,
         difficulty: DifficultyLevel,
         history: [MessageDTO],
-        memorySections: [String] = []
+        memorySections: [String] = [],
+        guidance: String? = nil
     ) -> LLMRequest {
         LLMRequest(
             tier: .balanced,
-            system: roleplaySystemPrompt(card: card, difficulty: difficulty, memorySections: memorySections),
+            system: roleplaySystemPrompt(
+                card: card,
+                difficulty: difficulty,
+                memorySections: memorySections,
+                guidance: guidance
+            ),
             messages: chatMessages(history: history),
             maxTokens: 512,
             temperature: 0.9

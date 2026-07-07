@@ -123,7 +123,14 @@ public struct ChatView: View {
                 }
             }
         case .coach:
-            EmptyView()
+            // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位
+            if message.kind == .storyLine {
+                Text(message.text)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 6)
+            }
         }
     }
 

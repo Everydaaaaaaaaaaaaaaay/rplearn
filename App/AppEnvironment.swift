@@ -24,6 +24,10 @@ final class AppEnvironment {
     let economyStore: EconomyStore
     let favoritesStore: FavoritesStore
     let memoryStore: MemoryStore
+    let itemStore: ItemStore
+
+    /// nil = 尚未加载；true = 需要走首启引导。
+    var needsOnboarding: Bool?
 
     let audioSession: AudioSessionCoordinator
     let speech: AppleTTSService
@@ -53,6 +57,7 @@ final class AppEnvironment {
         self.economyStore = EconomyStore(modelContainer: container)
         self.favoritesStore = FavoritesStore(modelContainer: container)
         self.memoryStore = MemoryStore(modelContainer: container)
+        self.itemStore = ItemStore(modelContainer: container)
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
@@ -63,19 +68,35 @@ final class AppEnvironment {
         bootstrap()
     }
 
-    /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等）。
+    /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
     private func bootstrap() {
-        let rosterStore = self.rosterStore
-        let economyStore = self.economyStore
         Task {
             do {
-                _ = try await economyStore.profile()
+                let profile = try await economyStore.profile()
                 let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
                 let cards = try SeedData.mainCharacterCards(url: seedsURL)
                 try await rosterStore.importMainCharactersIfNeeded(cards: cards)
+                needsOnboarding = !profile.hasCompletedOnboarding
             } catch {
                 Log.app.error("bootstrap 失败：\(error)")
+                needsOnboarding = false
             }
+        }
+    }
+
+    /// 首启引导完成：写当前地区/解锁地区/完成标记。
+    func completeOnboarding(selected character: CharacterDTO) async {
+        do {
+            _ = try await economyStore.updateProfile { profile in
+                profile.currentRegionID = character.card.regionID
+                if !profile.unlockedRegionIDs.contains(character.card.regionID) {
+                    profile.unlockedRegionIDs.append(character.card.regionID)
+                }
+                profile.hasCompletedOnboarding = true
+            }
+            needsOnboarding = false
+        } catch {
+            Log.app.error("完成首启引导失败：\(error)")
         }
     }
 }
