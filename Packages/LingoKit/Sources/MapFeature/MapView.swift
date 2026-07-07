@@ -1,3 +1,4 @@
+import DesignSystem
 import DomainKit
 import PersistenceKit
 import SwiftUI
@@ -205,6 +206,7 @@ private struct TravelSheet: View {
         Task {
             do {
                 let stub = try await deps.travelService.travel(to: region, using: ticket)
+                Haptics.notify(.success)
                 onDone("✈️ 已抵达\(region.nameZh)！票根 \(stub.serialNumber) 已收入票根夹。")
             } catch {
                 onDone("出发失败：\(errorText(error))")
@@ -218,6 +220,7 @@ private struct TravelSheet: View {
             do {
                 let ticket = try await deps.economyService.buyTicket(type: .ticketUniversal)
                 let stub = try await deps.travelService.travel(to: region, using: ticket)
+                Haptics.notify(.success)
                 onDone("✈️ 已抵达\(region.nameZh)！票根 \(stub.serialNumber) 已收入票根夹。")
             } catch {
                 onDone("购票失败：\(errorText(error))")

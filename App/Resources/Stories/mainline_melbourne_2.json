@@ -1,0 +1,38 @@
+{
+  "id": "mainline_melbourne_2",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "周六下午，Ruby 发来定位：一家藏在巷子里的咖啡烘焙工作坊。", "bg": "melbourne_cafe", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Ruby", "text": "You made it! Today we're not just drinking coffee - we're making it. From bean to cup.", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "Ruby", "text": "I begged the roaster to let us in. He owes me - I once saved his dog from a very rude seagull.", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「A seagull?!」（一只海鸥？）", "next": "n04a", "setFlags": { "amused": true } },
+      { "text": "「I've never roasted coffee before.」", "next": "n04b" }
+    ] },
+    { "id": "n04a", "type": "line", "speaker": "Ruby", "text": "A MASSIVE seagull. Melbourne seagulls have no fear and no manners. Respect them.", "next": "n05" },
+    { "id": "n04b", "type": "line", "speaker": "Ruby", "text": "Nobody has, first time! That's the fun. You'll burn a batch, we'll laugh, we'll try again.", "next": "n05" },
+    { "id": "n05", "type": "line", "speaker": "旁白", "text": "工作坊里，生豆在滚筒里翻动，渐渐从青绿转为琥珀色，空气里爆开坚果与焦糖的香气。", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "Ruby", "text": "Listen - hear that crack? That's 'first crack'. It means the beans are waking up. Magic, right?", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "Ruby", "text": "Coffee's a bit like language, you know? Same bean, but roast it differently and it tells a whole new story.", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「That's actually kind of deep.」", "next": "n08a", "setFlags": { "connected": true } },
+      { "text": "「Can I try pulling a shot?」（我想试试拉一杯）", "next": "n08b" }
+    ] },
+    { "id": "n08a", "type": "line", "speaker": "Ruby", "text": "Ha! Don't tell anyone, I have my moments. Usually right before I say something ridiculous.", "next": "n09" },
+    { "id": "n08b", "type": "line", "speaker": "Ruby", "text": "Yes! Here - tamp it flat, lock it in, and... watch the honey drip. Oh, that's a beauty!", "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "旁白", "text": "你亲手拉出的第一杯 flat white，奶泡上歪歪扭扭画着一片叶子。Ruby 举起手机一通狂拍。", "next": "n10" },
+    { "id": "n10", "type": "line", "speaker": "Ruby", "text": "First latte art and it's a... leaf? A very brave leaf. I'm framing this photo, no arguments.", "next": "n11" },
+    { "id": "n11", "type": "line", "speaker": "旁白", "text": "你们坐在工作坊门口的台阶上，捧着自己烘的咖啡，看巷子里的午后阳光一点点挪动。", "next": "n12" },
+    { "id": "n12", "type": "line", "speaker": "Ruby", "text": "This is my favourite kind of day. No plan, good coffee, someone to share it with. Cheers to that.", "next": "c03" },
+    { "id": "c03", "type": "choice", "options": [
+      { "text": "「Cheers, Ruby.」（碰杯）", "next": "n13a", "setFlags": { "toast": true } },
+      { "text": "「Teach me to surf next?」（下次教我冲浪？）", "next": "n13b" }
+    ] },
+    { "id": "n13a", "type": "line", "speaker": "Ruby", "text": "Cheers! To brave leaves and rude seagulls. Best city in the world, honestly.", "next": "n14" },
+    { "id": "n13b", "type": "line", "speaker": "Ruby", "text": "Oh you're ON. Dawn patrol, next weekend. Bring courage and a wetsuit. I'll bring the coffee.", "next": "n14" },
+    { "id": "n14", "type": "line", "speaker": "旁白", "text": "回去的路上，你手里那杯咖啡早就凉了，可心里却暖暖的。墨尔本的慢时光，正慢慢变成你的日常。", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n15" },
+    { "id": "n15", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】你和 Ruby 的默契，就像一杯恰到好处的咖啡。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

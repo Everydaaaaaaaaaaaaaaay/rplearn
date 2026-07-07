@@ -59,7 +59,11 @@ struct StoryScriptTests {
         }
     }
 
-    @Test("随包主线脚本可加载且含奖励节点", arguments: ["mainline_london", "mainline_melbourne", "mainline_newyork"])
+    @Test("随包主线脚本可加载且含奖励节点", arguments: [
+        "mainline_london", "mainline_london_2",
+        "mainline_melbourne", "mainline_melbourne_2",
+        "mainline_newyork", "mainline_newyork_2",
+    ])
     func bundledMainlineScripts(storyID: String) throws {
         let url = try #require(Bundle.main.url(forResource: storyID, withExtension: "json"))
         let script = try StoryScript.load(from: url)

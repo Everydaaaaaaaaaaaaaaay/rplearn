@@ -24,16 +24,34 @@ public enum MainlineCatalog {
             subtitle: "Oliver 的二手书店里藏着一个秘密"
         ),
         MainlineChapter(
+            storyID: "mainline_london_2",
+            regionID: "london",
+            title: "第二章 · 酒馆问答之夜",
+            subtitle: "跟着 Oliver 参加一场兵荒马乱的 pub quiz"
+        ),
+        MainlineChapter(
             storyID: "mainline_melbourne",
             regionID: "melbourne",
             title: "第一章 · 清晨的海",
             subtitle: "Ruby 拉你去看日出，还有一个意外的访客"
         ),
         MainlineChapter(
+            storyID: "mainline_melbourne_2",
+            regionID: "melbourne",
+            title: "第二章 · 从豆子到一杯",
+            subtitle: "和 Ruby 一起烘一炉咖啡，拉第一杯 flat white"
+        ),
+        MainlineChapter(
             storyID: "mainline_newyork",
             regionID: "newyork",
             title: "第一章 · 快门与地铁",
             subtitle: "跟着 Marcus 的镜头，读懂这座城市"
+        ),
+        MainlineChapter(
+            storyID: "mainline_newyork_2",
+            regionID: "newyork",
+            title: "第二章 · 地铁里的肖像",
+            subtitle: "Marcus 教你用尊重换来一张真实的照片"
         ),
     ]
 

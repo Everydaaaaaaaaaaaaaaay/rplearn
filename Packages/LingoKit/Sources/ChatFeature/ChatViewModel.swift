@@ -1,4 +1,5 @@
 import CoreKit
+import DesignSystem
 import DomainKit
 import Foundation
 import LLMKit
@@ -70,6 +71,7 @@ public final class ChatViewModel {
 
     /// 收藏语句（带上已有翻译缓存）。
     public func favorite(message: MessageDTO) async {
+        Haptics.impact(.light)
         let name = message.role == .user ? "我" : character.card.name
         _ = try? await deps.favorites.add(
             sentence: message.text,
@@ -88,6 +90,7 @@ public final class ChatViewModel {
     public func sendDraft() async {
         let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty, !isStreaming else { return }
+        Haptics.impact(.light)
         draft = ""
         await send(userText: text)
     }
@@ -287,7 +290,10 @@ public final class ChatViewModel {
             characterName: character.card.name
         )
         if chosenIndex == quiz.answer {
+            Haptics.notify(.success)
             _ = try? await deps.economyStore.addCoins(QuizService.correctReward)
+        } else {
+            Haptics.notify(.error)
         }
         await reloadMessages()
     }

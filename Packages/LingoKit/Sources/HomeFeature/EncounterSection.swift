@@ -1,4 +1,5 @@
 import CoreKit
+import DesignSystem
 import DomainKit
 import PersistenceKit
 import SwiftUI
@@ -230,6 +231,7 @@ private struct EncounterCardSheet: View {
                     slotLimit: profile.friendSlotLimit
                 )
                 isFriend = true
+                Haptics.notify(.success)
                 friendMessage = "已加入好友，以后随时可以在消息里找到 TA"
             } catch RosterStore.RosterError.friendSlotsFull {
                 friendMessage = "好友位已满（上限 \((try? await deps.economyStore.profile())?.friendSlotLimit ?? 10) 个）"
