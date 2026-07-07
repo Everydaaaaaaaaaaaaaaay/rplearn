@@ -28,12 +28,12 @@ func feature(_ name: String, extraDependencies: [Target.Dependency] = []) -> Tar
 
 let featureTargets: [Target] = [
     feature("HomeFeature"),
-    feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit", "DictKit"]),
+    feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit", "DictKit", "SpeechKit"]),
     feature("OnboardingFeature", extraDependencies: ["StoryEngine"]),
     feature("StoryFeature", extraDependencies: ["StoryEngine"]),
     feature("RosterFeature"),
     feature("MapFeature"),
-    feature("FavoritesFeature"),
+    feature("FavoritesFeature", extraDependencies: ["PersistenceKit", "DictKit", "SpeechKit"]),
     feature("SettingsFeature", extraDependencies: ["LLMKit"]),
 ]
 

@@ -28,6 +28,10 @@ public struct ChatView: View {
             selection: $wordSelection,
             dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
+            onSpeak: { word in
+                let speech = deps.speech
+                Task { await speech.speak(word, language: "en-US") }
+            },
             aiFallback: aiWordFallback
         )
         .task {
@@ -80,14 +84,20 @@ public struct ChatView: View {
     private func messageRow(_ message: MessageDTO) -> some View {
         switch message.role {
         case .user:
-            MessageBubble(side: .outgoing) {
-                tappableText(message, textColor: .white)
+            VStack(alignment: .trailing, spacing: 4) {
+                MessageBubble(side: .outgoing) {
+                    tappableText(message, textColor: .white)
+                }
+                .contextMenu { bubbleMenu(message) }
+                translationFootnote(message, alignment: .trailing)
             }
         case .assistant:
             VStack(alignment: .leading, spacing: 4) {
                 MessageBubble(side: .incoming) {
                     tappableText(message, textColor: nil)
                 }
+                .contextMenu { bubbleMenu(message) }
+                translationFootnote(message, alignment: .leading)
                 if message.isInterrupted {
                     Button {
                         Task { await viewModel.retryInterrupted(messageID: message.id) }
@@ -100,6 +110,46 @@ public struct ChatView: View {
             }
         case .coach:
             EmptyView()
+        }
+    }
+
+    /// 长按菜单四功能：复制/收藏/翻译/播放（plan.md 聊天模块）。
+    @ViewBuilder
+    private func bubbleMenu(_ message: MessageDTO) -> some View {
+        Button {
+            UIPasteboard.general.string = message.text
+        } label: {
+            Label("复制", systemImage: "doc.on.doc")
+        }
+        Button {
+            Task { await viewModel.favorite(message: message) }
+        } label: {
+            Label("收藏", systemImage: "star")
+        }
+        Button {
+            Task { await viewModel.translate(message: message) }
+        } label: {
+            Label("翻译", systemImage: "character.book.closed.zh")
+        }
+        Button {
+            Task { await viewModel.speak(message: message) }
+        } label: {
+            Label("播放", systemImage: "speaker.wave.2")
+        }
+    }
+
+    @ViewBuilder
+    private func translationFootnote(_ message: MessageDTO, alignment: HorizontalAlignment) -> some View {
+        if viewModel.translatingMessageIDs.contains(message.id) {
+            ProgressView()
+                .controlSize(.small)
+        } else if let translation = message.translationZh {
+            Text(translation)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: alignment == .trailing ? .trailing : .leading)
+                .padding(alignment == .trailing ? .leading : .trailing, 48)
+                .transition(.opacity)
         }
     }
 

@@ -4,6 +4,7 @@ import DomainKit
 import Foundation
 import LLMKit
 import PersistenceKit
+import SpeechKit
 import SwiftData
 
 /// 组合根：持有全部服务实例并向下注入。后续单元逐步填充。
@@ -21,6 +22,11 @@ final class AppEnvironment {
     let chatStore: ChatStore
     let rosterStore: RosterStore
     let economyStore: EconomyStore
+    let favoritesStore: FavoritesStore
+
+    let audioSession: AudioSessionCoordinator
+    let speech: AppleTTSService
+    let translator: TranslationService
 
     init() {
         let keychain = KeychainStore()
@@ -44,6 +50,12 @@ final class AppEnvironment {
         self.chatStore = ChatStore(modelContainer: container)
         self.rosterStore = RosterStore(modelContainer: container)
         self.economyStore = EconomyStore(modelContainer: container)
+        self.favoritesStore = FavoritesStore(modelContainer: container)
+
+        let audioSession = AudioSessionCoordinator()
+        self.audioSession = audioSession
+        self.speech = AppleTTSService(audioSession: audioSession)
+        self.translator = TranslationService(llm: llmRouter)
 
         Log.app.info("AppEnvironment initialized")
         bootstrap()

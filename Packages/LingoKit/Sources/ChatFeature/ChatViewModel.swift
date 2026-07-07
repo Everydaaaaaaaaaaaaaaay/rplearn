@@ -4,6 +4,7 @@ import Foundation
 import LLMKit
 import Observation
 import PersistenceKit
+import SpeechKit
 
 /// 单个聊天页的状态与编排：发送 → 落库 → 流式回复 → 定稿。
 @MainActor
@@ -36,6 +37,40 @@ public final class ChatViewModel {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
         }
+    }
+
+    /// 正在翻译中的消息（气泡下方转圈）。
+    public private(set) var translatingMessageIDs: Set<UUID> = []
+
+    /// 翻译整句并缓存到 translationZh（重复点击直接用缓存）。
+    public func translate(message: MessageDTO) async {
+        guard message.translationZh == nil, !translatingMessageIDs.contains(message.id) else { return }
+        translatingMessageIDs.insert(message.id)
+        defer { translatingMessageIDs.remove(message.id) }
+        do {
+            let translation = try await deps.translator.translateToChinese(message.text)
+            try await deps.chatStore.setTranslation(messageID: message.id, translationZh: translation)
+            await reloadMessages()
+        } catch {
+            errorMessage = "翻译失败：\(error.localizedDescription)"
+        }
+    }
+
+    /// 收藏语句（带上已有翻译缓存）。
+    public func favorite(message: MessageDTO) async {
+        let name = message.role == .user ? "我" : character.card.name
+        _ = try? await deps.favorites.add(
+            sentence: message.text,
+            sourceMessageID: message.id,
+            characterName: name,
+            translationZh: message.translationZh
+        )
+    }
+
+    /// 播放消息音频（按角色国籍口音）。
+    public func speak(message: MessageDTO) async {
+        let language = AccentMapper.language(forNationality: character.card.nationality)
+        await deps.speech.speak(message.text, language: language)
     }
 
     public func sendDraft() async {
