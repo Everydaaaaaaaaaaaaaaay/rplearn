@@ -15,7 +15,13 @@ public struct HomeDependencies: Sendable {
     }
 }
 
-/// 主页 hub：当前地区卡片、主线剧情入口。活动/地图/票根夹入口在 2.3/2.4 补齐。
+/// 主页导航目标（组合根映射到具体 Feature 页面，Feature 间零依赖）。
+public enum HomeDestination: Hashable, Sendable {
+    case map
+    case ticketStubs
+}
+
+/// 主页 hub：当前地区卡片、主线剧情入口、地图/票根夹入口。活动入口在 2.4 补齐。
 public struct HomeView: View {
     private let deps: HomeDependencies
     @State private var profile: UserProfileDTO?
@@ -33,6 +39,7 @@ public struct HomeView: View {
         ScrollView {
             VStack(spacing: 16) {
                 regionCard
+                entryGrid
                 mainlineSection
             }
             .padding(16)
@@ -80,6 +87,41 @@ public struct HomeView: View {
             ProgressView()
                 .frame(maxWidth: .infinity, minHeight: 100)
         }
+    }
+
+    // MARK: - 功能入口
+
+    private var entryGrid: some View {
+        HStack(spacing: 12) {
+            entryTile(destination: .map, title: "地图", subtitle: "去别的城市", systemImage: "map.fill", tint: .blue)
+            entryTile(destination: .ticketStubs, title: "票根夹", subtitle: "旅行的记忆", systemImage: "ticket.fill", tint: .orange)
+        }
+    }
+
+    private func entryTile(
+        destination: HomeDestination,
+        title: String,
+        subtitle: String,
+        systemImage: String,
+        tint: Color
+    ) -> some View {
+        NavigationLink(value: destination) {
+            VStack(alignment: .leading, spacing: 6) {
+                Image(systemName: systemImage)
+                    .font(.title3)
+                    .foregroundStyle(tint)
+                Text(title)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                Text(subtitle)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - 主线剧情

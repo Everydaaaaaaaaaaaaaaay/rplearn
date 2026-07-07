@@ -2,6 +2,7 @@ import ChatFeature
 import DomainKit
 import FavoritesFeature
 import HomeFeature
+import MapFeature
 import OnboardingFeature
 import SettingsFeature
 import StoryFeature
@@ -60,6 +61,26 @@ struct RootView: View {
                             grammarPoints: environment.grammarPoints
                         )
                     )
+                }
+                .navigationDestination(for: HomeDestination.self) { destination in
+                    switch destination {
+                    case .map:
+                        MapView(
+                            deps: MapDependencies(
+                                economyStore: environment.economyStore,
+                                itemStore: environment.itemStore,
+                                stubStore: environment.ticketStubStore,
+                                travelService: environment.travelService,
+                                economyService: environment.economyService,
+                                regionCatalog: environment.regionCatalog
+                            )
+                        )
+                    case .ticketStubs:
+                        TicketStubsView(
+                            stubStore: environment.ticketStubStore,
+                            regionCatalog: environment.regionCatalog
+                        )
+                    }
                 }
             }
             .tabItem {

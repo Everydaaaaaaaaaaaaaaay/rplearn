@@ -26,6 +26,8 @@ final class AppEnvironment {
     let memoryStore: MemoryStore
     let itemStore: ItemStore
     let storyProgressStore: StoryProgressStore
+    let ticketStubStore: TicketStubStore
+    let travelService: TravelService
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -61,6 +63,13 @@ final class AppEnvironment {
         self.memoryStore = MemoryStore(modelContainer: container)
         self.itemStore = ItemStore(modelContainer: container)
         self.storyProgressStore = StoryProgressStore(modelContainer: container)
+        let ticketStubStore = TicketStubStore(modelContainer: container)
+        self.ticketStubStore = ticketStubStore
+        self.travelService = TravelService(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            stubStore: ticketStubStore
+        )
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
