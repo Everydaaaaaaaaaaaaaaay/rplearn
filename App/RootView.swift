@@ -84,7 +84,12 @@ struct RootView: View {
             }
 
             NavigationStack {
-                SettingsView(settings: environment.llmSettings, router: environment.llmRouter)
+                SettingsView(
+                    settings: environment.llmSettings,
+                    router: environment.llmRouter,
+                    economyStore: environment.economyStore,
+                    economyService: environment.economyService
+                )
             }
             .tabItem {
                 Label("设置", systemImage: "gearshape")

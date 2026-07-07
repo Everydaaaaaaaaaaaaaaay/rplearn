@@ -1,8 +1,9 @@
+import DomainKit
 import LLMKit
+import PersistenceKit
 import SwiftUI
 
-/// 设置页：LLM 供应商、API Key、模型与连接测试。
-/// 出题开关、订阅调试面板等在后续单元加入。
+/// 设置页：LLM 供应商、API Key、模型、连接测试、账户（订阅/金币）与调试面板。
 public struct SettingsView: View {
     private enum TestState: Equatable {
         case idle
@@ -13,15 +14,26 @@ public struct SettingsView: View {
 
     @Bindable private var settings: LLMSettingsStore
     private let router: LLMRouter
+    private let economyStore: EconomyStore
+    private let economyService: EconomyService
     @State private var testState: TestState = .idle
+    @State private var profile: UserProfileDTO?
 
-    public init(settings: LLMSettingsStore, router: LLMRouter) {
+    public init(
+        settings: LLMSettingsStore,
+        router: LLMRouter,
+        economyStore: EconomyStore,
+        economyService: EconomyService
+    ) {
         self.settings = settings
         self.router = router
+        self.economyStore = economyStore
+        self.economyService = economyService
     }
 
     public var body: some View {
         Form {
+            accountSection
             Section {
                 Picker("供应商", selection: $settings.providerKind) {
                     ForEach(LLMProviderKind.allCases, id: \.self) { kind in
@@ -90,6 +102,58 @@ public struct SettingsView: View {
         }
         .navigationTitle("设置")
         .animation(.default, value: testState)
+        .task {
+            await reloadProfile()
+        }
+    }
+
+    // MARK: - 账户
+
+    @ViewBuilder
+    private var accountSection: some View {
+        Section {
+            if let profile {
+                LabeledContent("金币") {
+                    Label("\(profile.coins)", systemImage: "circle.grid.2x1.fill")
+                        .foregroundStyle(.orange)
+                        .font(.subheadline.monospacedDigit())
+                }
+                Picker("订阅", selection: subscriptionBinding) {
+                    ForEach(SubscriptionTier.allCases, id: \.self) { tier in
+                        Text(tier.displayName).tag(tier)
+                    }
+                }
+            } else {
+                ProgressView()
+            }
+            #if DEBUG
+            Button("调试：+500 金币") {
+                Task {
+                    await economyService.grantDebugCoins()
+                    await reloadProfile()
+                }
+            }
+            #endif
+        } header: {
+            Text("账户")
+        } footer: {
+            Text("订阅为本地模拟，未接入真实支付。订阅等级影响角色记忆容量。")
+        }
+    }
+
+    private var subscriptionBinding: Binding<SubscriptionTier> {
+        Binding(
+            get: { profile?.subscriptionTier ?? .free },
+            set: { newTier in
+                Task {
+                    profile = try? await economyService.subscribe(to: newTier)
+                }
+            }
+        )
+    }
+
+    private func reloadProfile() async {
+        profile = try? await economyStore.profile()
     }
 
     private var apiKeyBinding: Binding<String> {
@@ -127,11 +191,3 @@ public struct SettingsView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        SettingsView(
-            settings: LLMSettingsStore(),
-            router: LLMRouter { LLMProviderConfig(kind: .anthropic, apiKey: "", baseURL: URL(string: "https://api.anthropic.com")!, models: [:]) }
-        )
-    }
-}

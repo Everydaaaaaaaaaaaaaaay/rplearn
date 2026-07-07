@@ -34,7 +34,7 @@ let featureTargets: [Target] = [
     feature("RosterFeature"),
     feature("MapFeature"),
     feature("FavoritesFeature", extraDependencies: ["PersistenceKit", "DictKit", "SpeechKit"]),
-    feature("SettingsFeature", extraDependencies: ["LLMKit"]),
+    feature("SettingsFeature", extraDependencies: ["LLMKit", "PersistenceKit"]),
 ]
 
 // 测试不在此声明：全部测试由 xcodeproj 的 LingoTripTests bundle（App 托管）编译运行，

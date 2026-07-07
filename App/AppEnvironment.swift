@@ -33,6 +33,7 @@ final class AppEnvironment {
     let audioSession: AudioSessionCoordinator
     let speech: AppleTTSService
     let translator: TranslationService
+    let economyService: EconomyService
 
     init() {
         let keychain = KeychainStore()
@@ -65,6 +66,7 @@ final class AppEnvironment {
         self.audioSession = audioSession
         self.speech = AppleTTSService(audioSession: audioSession)
         self.translator = TranslationService(llm: llmRouter)
+        self.economyService = EconomyService(economyStore: economyStore, itemStore: itemStore)
 
         Log.app.info("AppEnvironment initialized")
         bootstrap()
