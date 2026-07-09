@@ -5,11 +5,15 @@ import HomeFeature
 import MapFeature
 import OnboardingFeature
 import SettingsFeature
+import SpeechKit
 import StoryFeature
 import SwiftUI
 
 struct RootView: View {
     let environment: AppEnvironment
+
+    @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
+    @State private var showVoiceUpgrade = false
 
     private var showsOnboarding: Binding<Bool> {
         Binding(
@@ -37,6 +41,34 @@ struct RootView: View {
                 }
                 .interactiveDismissDisabled()
             }
+            .sheet(isPresented: $showVoiceUpgrade) {
+                VoiceUpgradeSheet(
+                    onPreview: {
+                        Task {
+                            await environment.speech.speak(
+                                "Hello! This is how I sound. Nice to meet you.",
+                                language: "en-US"
+                            )
+                        }
+                    },
+                    onNeverRemind: { suppressVoicePrompt = true }
+                )
+            }
+            .task {
+                await maybePromptVoiceUpgrade()
+            }
+    }
+
+    /// 仅有机械音、未被永久关闭、且不在引导流程中时，弹出语音升级引导。
+    private func maybePromptVoiceUpgrade() async {
+        guard !suppressVoicePrompt,
+              environment.needsOnboarding != true,
+              !AppleTTSService.bestAvailableEnglishQuality().isNatural
+        else { return }
+        // 等主界面稳定后再弹，避免与启动/引导动画抢镜。
+        try? await Task.sleep(for: .seconds(0.6))
+        guard environment.needsOnboarding != true else { return }
+        showVoiceUpgrade = true
     }
 
     private var tabs: some View {
