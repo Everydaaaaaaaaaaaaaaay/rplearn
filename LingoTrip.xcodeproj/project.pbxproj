@@ -38,6 +38,7 @@
 		68671290238CBAA30174B413 /* PersistenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78F2D654270FFBB386CCDEC9 /* PersistenceKit */; };
 		6B3E1E953AEA985250D85362 /* VoiceMessageStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D63F5301662A53D2935A13 /* VoiceMessageStorageTests.swift */; };
 		6D0ADCEB5A224610E185D2AE /* EncounterServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549B06C0402189D103AE53 /* EncounterServiceTests.swift */; };
+		70E304A7524ADB2411C7F7BE /* SpeechServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42878F973AB0C5F98DA76F14 /* SpeechServiceTests.swift */; };
 		7597AEEB0894C809C32E7B57 /* StoryEngine in Frameworks */ = {isa = PBXBuildFile; productRef = 16BFCCC2111C69CBF318368F /* StoryEngine */; };
 		826663134C0398E039AA2260 /* RosterFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51AFB3524D459C8DFF98B0 /* RosterFeature */; };
 		8293DA0C168163375E0FCC4D /* DomainKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5BCF53F99E895503BFC1D41 /* DomainKit */; };
@@ -101,6 +102,7 @@
 		32D6FF846FF7831288D8D2CD /* MemoryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryServiceTests.swift; sourceTree = "<group>"; };
 		39F5A2919145A4AE51A4CFA6 /* AudioLevelMeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLevelMeterTests.swift; sourceTree = "<group>"; };
 		3B46CCD925E81E2FF58C780A /* EconomyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyServiceTests.swift; sourceTree = "<group>"; };
+		42878F973AB0C5F98DA76F14 /* SpeechServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechServiceTests.swift; sourceTree = "<group>"; };
 		437084555A8B9E59092F17FC /* CoachServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachServiceTests.swift; sourceTree = "<group>"; };
 		54CF0C59B4ACB6B349ADB241 /* FavoritesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStoreTests.swift; sourceTree = "<group>"; };
 		629072758C66D5651DFED880 /* LLMRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMRouterTests.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				39F5A2919145A4AE51A4CFA6 /* AudioLevelMeterTests.swift */,
+				42878F973AB0C5F98DA76F14 /* SpeechServiceTests.swift */,
 				69D63F5301662A53D2935A13 /* VoiceMessageStorageTests.swift */,
 				A40F29953285D5DA498F9EA3 /* VoiceRecorderTests.swift */,
 			);
@@ -418,6 +421,16 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					8B2190284B1A25B97FCF3025 = {
+						DevelopmentTeam = Z3M5BAW698;
+						ProvisioningStyle = Automatic;
+					};
+					9657F14A51CEAE0D4C4F0156 = {
+						DevelopmentTeam = Z3M5BAW698;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 8AE9E348085ABAECBA2C7909 /* Build configuration list for PBXProject "LingoTrip" */;
 			developmentRegion = en;
@@ -492,6 +505,7 @@
 				65E100B8E2ECF091E865DDCD /* RosterStoreTests.swift in Sources */,
 				A09E5FF3747991CF8113D9F4 /* SSEParserTests.swift in Sources */,
 				3399BCD613F2F449F3807699 /* SeedDataTests.swift in Sources */,
+				70E304A7524ADB2411C7F7BE /* SpeechServiceTests.swift in Sources */,
 				AD50A51EB26A4E22416D0F0C /* StoryPlayerTests.swift in Sources */,
 				F49DB99BF7419FDD92BCE744 /* StoryProgressStoreTests.swift in Sources */,
 				EE65829B12BE8A7EB6FFACA6 /* StoryScriptTests.swift in Sources */,
@@ -531,14 +545,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = L28WGN9J8T;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z3M5BAW698;
 				INFOPLIST_FILE = "build/Generated-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lingotrip.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiantian.lingotrip;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -549,6 +564,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z3M5BAW698;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -556,7 +573,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lingotrip.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiantian.lingotrip.tests;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -570,14 +587,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = L28WGN9J8T;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z3M5BAW698;
 				INFOPLIST_FILE = "build/Generated-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lingotrip.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiantian.lingotrip;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -588,6 +606,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z3M5BAW698;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -595,7 +615,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lingotrip.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiantian.lingotrip.tests;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

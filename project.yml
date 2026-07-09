@@ -52,7 +52,9 @@ targets:
         product: SettingsFeature
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.lingotrip.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.tiantian.lingotrip
+        DEVELOPMENT_TEAM: Z3M5BAW698
+        CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "6.0"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -91,6 +93,8 @@ targets:
         product: StoryEngine
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.lingotrip.app.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.tiantian.lingotrip.tests
+        DEVELOPMENT_TEAM: Z3M5BAW698
+        CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "6.0"
         GENERATE_INFOPLIST_FILE: YES
