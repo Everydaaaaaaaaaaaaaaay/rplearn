@@ -2,6 +2,7 @@ import CoreKit
 import DesignSystem
 import DictKit
 import PersistenceKit
+import SpeechKit
 import StoryEngine
 import SwiftUI
 
@@ -12,19 +13,22 @@ public struct StoryDependencies: Sendable {
     public let itemStore: ItemStore
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
+    public let speech: any SpeechService
 
     public init(
         storyProgress: StoryProgressStore,
         economyStore: EconomyStore,
         itemStore: ItemStore,
         dictionary: DictDatabase,
-        grammarPoints: GrammarPointStore
+        grammarPoints: GrammarPointStore,
+        speech: any SpeechService
     ) {
         self.storyProgress = storyProgress
         self.economyStore = economyStore
         self.itemStore = itemStore
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
+        self.speech = speech
     }
 }
 
@@ -71,7 +75,11 @@ public struct AVGStoryView: View {
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
-            grammar: deps.grammarPoints
+            grammar: deps.grammarPoints,
+            onSpeak: { word in
+                let speech = deps.speech
+                Task { await speech.speak(word, language: "en-US") }
+            }
         )
         .task {
             await loadPlayerIfNeeded()

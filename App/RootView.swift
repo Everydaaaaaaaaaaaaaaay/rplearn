@@ -64,7 +64,8 @@ struct RootView: View {
                             economyStore: environment.economyStore,
                             itemStore: environment.itemStore,
                             dictionary: environment.dictionary,
-                            grammarPoints: environment.grammarPoints
+                            grammarPoints: environment.grammarPoints,
+                            speech: environment.speech
                         )
                     )
                 }

@@ -30,7 +30,7 @@ let featureTargets: [Target] = [
     feature("HomeFeature", extraDependencies: ["PersistenceKit", "LLMKit"]),
     feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit", "DictKit", "SpeechKit"]),
     feature("OnboardingFeature", extraDependencies: ["StoryEngine", "PersistenceKit"]),
-    feature("StoryFeature", extraDependencies: ["StoryEngine", "PersistenceKit", "DictKit"]),
+    feature("StoryFeature", extraDependencies: ["StoryEngine", "PersistenceKit", "DictKit", "SpeechKit"]),
     feature("RosterFeature"),
     feature("MapFeature", extraDependencies: ["PersistenceKit"]),
     feature("FavoritesFeature", extraDependencies: ["PersistenceKit", "DictKit", "SpeechKit"]),
