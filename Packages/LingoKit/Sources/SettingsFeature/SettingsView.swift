@@ -1,7 +1,9 @@
 import DomainKit
 import LLMKit
 import PersistenceKit
+import SpeechKit
 import SwiftUI
+import UIKit
 
 /// 设置页：LLM 供应商、API Key、模型、连接测试、账户（订阅/金币）与调试面板。
 public struct SettingsView: View {
@@ -19,8 +21,12 @@ public struct SettingsView: View {
     private let memoryStore: MemoryStore
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
+    private let speech: any SpeechService
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
+    @State private var voiceReports: [VoiceReport] = []
+    @State private var voiceQuality: VoiceReport.Quality = .standard
+    @Environment(\.openURL) private var openURL
 
     public init(
         settings: LLMSettingsStore,
@@ -29,7 +35,8 @@ public struct SettingsView: View {
         economyService: EconomyService,
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
-        chatStore: ChatStore
+        chatStore: ChatStore,
+        speech: any SpeechService
     ) {
         self.settings = settings
         self.router = router
@@ -38,6 +45,7 @@ public struct SettingsView: View {
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.chatStore = chatStore
+        self.speech = speech
     }
 
     private var memoryService: MemoryService {
@@ -48,6 +56,7 @@ public struct SettingsView: View {
         Form {
             accountSection
             learningSection
+            voiceSection
             Section {
                 Picker("供应商", selection: $settings.providerKind) {
                     ForEach(LLMProviderKind.allCases, id: \.self) { kind in
@@ -119,6 +128,71 @@ public struct SettingsView: View {
         .task {
             await reloadProfile()
         }
+        .task {
+            reloadVoiceInfo()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            // 从系统设置下载语音回来后，刷新音源并让新音质立即生效。
+            reloadVoiceInfo()
+            Task { await speech.refreshVoices() }
+        }
+    }
+
+    // MARK: - 语音音质
+
+    private var voiceSection: some View {
+        Section {
+            LabeledContent("当前英语语音") {
+                Text(voiceQuality.label)
+                    .foregroundStyle(voiceQuality.isNatural ? .green : .orange)
+                    .fontWeight(.medium)
+            }
+            ForEach(voiceReports) { report in
+                LabeledContent(report.accentLabel) {
+                    HStack(spacing: 6) {
+                        if let name = report.voiceName {
+                            Text(name).foregroundStyle(.secondary)
+                        }
+                        Text(report.quality.label)
+                            .font(.caption)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(
+                                (report.quality.isNatural ? Color.green : Color.orange).opacity(0.15),
+                                in: Capsule()
+                            )
+                            .foregroundStyle(report.quality.isNatural ? .green : .orange)
+                    }
+                }
+            }
+            Button {
+                Task { await speech.speak("Hello! This is how I sound. Nice to meet you.", language: "en-US") }
+            } label: {
+                Label("试听当前语音", systemImage: "play.circle")
+            }
+            if !voiceQuality.isNatural {
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURL(url)
+                    }
+                } label: {
+                    Label("前往系统设置下载", systemImage: "arrow.down.circle")
+                }
+            }
+        } header: {
+            Text("语音音质")
+        } footer: {
+            if voiceQuality.isNatural {
+                Text("已启用增强/高级音质，听感更自然。想为更多口音提升音质，可在「设置 › 辅助功能 › 朗读内容 › 声音 › 英语」继续下载。")
+            } else {
+                Text("系统自带的标准语音偏机械。前往「设置 › 辅助功能 › 朗读内容 › 声音 › 英语」，下载带「增强」或「高级」标记的语音（如 Ava、Zoe、Serena），下载后回到 App 即自动生效、明显更像真人。")
+            }
+        }
+    }
+
+    private func reloadVoiceInfo() {
+        voiceReports = AppleTTSService.voiceReports()
+        voiceQuality = AppleTTSService.bestAvailableEnglishQuality()
     }
 
     // MARK: - 账户

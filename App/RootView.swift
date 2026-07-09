@@ -119,7 +119,8 @@ struct RootView: View {
                     economyService: environment.economyService,
                     memoryStore: environment.memoryStore,
                     rosterStore: environment.rosterStore,
-                    chatStore: environment.chatStore
+                    chatStore: environment.chatStore,
+                    speech: environment.speech
                 )
             }
             .tabItem {
