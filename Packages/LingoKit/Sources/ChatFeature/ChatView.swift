@@ -6,6 +6,7 @@ import LLMKit
 import PersistenceKit
 import SpeechKit
 import SwiftUI
+import Translation
 
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
@@ -18,6 +19,7 @@ public struct ChatView: View {
     @State private var voicePlayer: VoiceMessagePlayer
     @State private var showSimulatorInjection = false
     @State private var simulatorInjectionText = ""
+    @State private var appleTranslator = AppleTranslator()
     private let deps: ChatDependencies
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
@@ -56,7 +58,19 @@ public struct ChatView: View {
             },
             aiFallback: aiWordFallback
         )
+        .translationTask(appleTranslator.configuration) { @Sendable session in
+            // session 非 Sendable，只能在本闭包内内联使用；仅与协调器交换纯数据。
+            try? await session.prepareTranslation()
+            for item in await appleTranslator.takeBatch() {
+                let zh = try? await session.translate(item.text).targetText
+                await appleTranslator.complete(item.id, with: zh)
+            }
+        }
         .task {
+            // 注入 Apple 端上翻译作为云端翻译失败/离线时的兜底。
+            viewModel.translationFallback = { [appleTranslator] text in
+                await appleTranslator.translate(text)
+            }
             await viewModel.load()
         }
     }

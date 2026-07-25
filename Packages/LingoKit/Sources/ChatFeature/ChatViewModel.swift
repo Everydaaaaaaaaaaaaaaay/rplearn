@@ -59,7 +59,11 @@ public final class ChatViewModel {
     /// 正在翻译中的消息（气泡下方转圈）。
     public private(set) var translatingMessageIDs: Set<UUID> = []
 
+    /// 云端翻译失败（离线/报错）时的兜底翻译，由 ChatView 注入 Apple 端上翻译。
+    public var translationFallback: (@MainActor (String) async -> String?)?
+
     /// 翻译整句并缓存到 translationZh（重复点击直接用缓存）。
+    /// 正常走云端 LLM；离线或失败时回退 Apple 端上翻译（Translation 框架）。
     public func translate(message: MessageDTO) async {
         guard message.translationZh == nil, !translatingMessageIDs.contains(message.id) else { return }
         translatingMessageIDs.insert(message.id)
@@ -69,7 +73,13 @@ public final class ChatViewModel {
             try await deps.chatStore.setTranslation(messageID: message.id, translationZh: translation)
             await reloadMessages()
         } catch {
-            errorMessage = "翻译失败：\(error.localizedDescription)"
+            // 云端失败 → Apple 端上翻译兜底；仍失败才报错。
+            if let fallback = translationFallback, let local = await fallback(message.text) {
+                try? await deps.chatStore.setTranslation(messageID: message.id, translationZh: local)
+                await reloadMessages()
+            } else {
+                errorMessage = "翻译失败：\(error.localizedDescription)"
+            }
         }
     }
 
