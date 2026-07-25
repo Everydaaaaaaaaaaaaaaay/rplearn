@@ -6,6 +6,8 @@ import { registerAuthRoutes } from "./modules/auth/routes.js";
 import { createAuthService } from "./modules/auth/service.js";
 import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
 import { createAppleAuthService } from "./modules/auth/apple/service.js";
+import { registerDomainRoutes } from "./modules/domain/routes.js";
+import { createDomainService } from "./modules/domain/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -46,6 +48,10 @@ async function main(): Promise<void> {
     );
     registerAppleAuthRoutes(app, appleAuthService, authService);
   }
+  const domainService = createDomainService(dependencies.database);
+  registerDomainRoutes(app, authService, domainService, {
+    enableDebugRoutes: config.nodeEnv !== "production",
+  });
   let closing = false;
 
   dependencies.onRedisError((error) => {
