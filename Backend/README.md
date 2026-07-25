@@ -38,6 +38,7 @@ pnpm test:integration
 
 - `GET /health/live`
 - `GET /health/ready`
+- `GET /.well-known/jwks.json`
 - `GET /docs/openapi.json`（仅非生产环境）
 
 邮箱认证端点位于
@@ -101,6 +102,11 @@ Manager；不要把输出复制进仓库或聊天记录：
 ```bash
 pnpm auth:generate-keys
 ```
+
+Access Token 只使用 `AUTH_JWT_KEY_ID`
+对应的当前私钥签发。轮换时把仍可能验证在线 token 的历史公钥以 `kid=base64(SPKI PEM)`
+形式放入 `AUTH_JWT_PREVIOUS_PUBLIC_KEYS`；服务会在 `/.well-known/jwks.json`
+同时发布当前和历史公钥，但永远不会用历史 key 签发。完整的无停机轮换和回滚顺序见部署文档。
 
 停止本地依赖使用 `pnpm infra:down`。该命令默认保留数据库卷；只有显式执行
 `docker compose down --volumes` 才会删除本地开发数据。

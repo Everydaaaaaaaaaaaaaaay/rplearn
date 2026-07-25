@@ -126,6 +126,19 @@ function publicTokenPair(pair: Awaited<ReturnType<AuthService["login"]>>) {
 }
 
 export function registerAuthRoutes(app: FastifyInstance, service: AuthService): void {
+  app.get(
+    "/.well-known/jwks.json",
+    {
+      schema: {
+        tags: ["auth-metadata"],
+      },
+    },
+    (_request, reply) => {
+      reply.header("cache-control", "public, max-age=300, stale-while-revalidate=300");
+      return service.jwks();
+    },
+  );
+
   app.post(
     "/v1/auth/register",
     {

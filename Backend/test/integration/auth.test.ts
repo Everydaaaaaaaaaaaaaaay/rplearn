@@ -79,6 +79,22 @@ describe.runIf(runIntegrationTests)("email authentication", () => {
   });
 
   it("registers, verifies, rotates, detects reuse, resets, and revokes", async () => {
+    const jwks = await app.inject({
+      method: "GET",
+      url: "/.well-known/jwks.json",
+    });
+    expect(jwks.statusCode).toBe(200);
+    expect(jwks.headers["cache-control"]).toBe(
+      "public, max-age=300, stale-while-revalidate=300",
+    );
+    const publishedKeys = jwks.json<{
+      keys: readonly { alg: string; kid: string; use: string }[];
+    }>().keys;
+    expect(publishedKeys).toHaveLength(1);
+    expect(publishedKeys[0]?.alg).toBe("EdDSA");
+    expect(publishedKeys[0]?.kid).not.toHaveLength(0);
+    expect(publishedKeys[0]?.use).toBe("sig");
+
     const registration = await app.inject({
       method: "POST",
       payload: {

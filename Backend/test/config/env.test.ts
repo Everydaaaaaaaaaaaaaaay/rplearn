@@ -91,4 +91,13 @@ describe("loadConfig", () => {
       }),
     ).toThrow(ConfigurationError);
   });
+
+  it("rejects duplicate JWT key IDs during rotation", () => {
+    expect(() =>
+      loadConfig({
+        AUTH_JWT_KEY_ID: "same-key",
+        AUTH_JWT_PREVIOUS_PUBLIC_KEYS: "same-key=YWJj",
+      }),
+    ).toThrow(ConfigurationError);
+  });
 });

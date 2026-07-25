@@ -68,6 +68,7 @@ const rawEnvironmentSchema = z.object({
   AUTH_JWT_KEY_ID: optionalSecret,
   AUTH_JWT_PRIVATE_KEY_BASE64: optionalSecret,
   AUTH_JWT_PUBLIC_KEY_BASE64: optionalSecret,
+  AUTH_JWT_PREVIOUS_PUBLIC_KEYS: z.string().default(""),
   AUTH_REFRESH_TOKEN_TTL_DAYS: z.coerce.number().int().min(1).max(180).default(30),
   AUTH_TOKEN_HASH_PEPPER: optionalSecret,
   CORS_ALLOWED_ORIGINS: z.string().default("http://localhost:3000"),
@@ -164,6 +165,10 @@ export type RuntimeConfig = Readonly<{
   authJwtKeyId?: string;
   authJwtPrivateKeyBase64?: string;
   authJwtPublicKeyBase64?: string;
+  authJwtPreviousPublicKeys: readonly Readonly<{
+    keyId: string;
+    publicKeyBase64: string;
+  }>[];
   authRefreshTokenTtlDays: number;
   authTokenHashPepper: string;
   corsAllowedOrigins: readonly string[];
@@ -254,6 +259,27 @@ function parsePreviousJobKeys(
     });
 }
 
+function parsePreviousJwtKeys(
+  raw: string,
+): readonly Readonly<{ keyId: string; publicKeyBase64: string }>[] {
+  return raw
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter((entry) => entry.length > 0)
+    .map((entry) => {
+      const separator = entry.indexOf("=");
+      if (separator <= 0 || separator === entry.length - 1) {
+        throw new ConfigurationError([
+          "AUTH_JWT_PREVIOUS_PUBLIC_KEYS entries must use key-id=base64 format",
+        ]);
+      }
+      return {
+        keyId: entry.slice(0, separator),
+        publicKeyBase64: entry.slice(separator + 1),
+      };
+    });
+}
+
 export function loadConfig(
   environment: NodeJS.ProcessEnv = process.env,
 ): RuntimeConfig {
@@ -274,6 +300,9 @@ export function loadConfig(
   ).map((certificate) => Buffer.from(certificate, "base64"));
   const jobPayloadPreviousKeys = parsePreviousJobKeys(
     result.data.JOB_PAYLOAD_PREVIOUS_KEYS,
+  );
+  const authJwtPreviousPublicKeys = parsePreviousJwtKeys(
+    result.data.AUTH_JWT_PREVIOUS_PUBLIC_KEYS,
   );
   const issues: string[] = [];
 
@@ -317,6 +346,22 @@ export function loadConfig(
       result.data.AUTH_JWT_KEY_ID === undefined)
   ) {
     issues.push("persistent AUTH_JWT keys and key ID are required in production");
+  }
+
+  const jwtKeyIds = [
+    ...(result.data.AUTH_JWT_KEY_ID === undefined ? [] : [result.data.AUTH_JWT_KEY_ID]),
+    ...authJwtPreviousPublicKeys.map((key) => key.keyId),
+  ];
+  if (new Set(jwtKeyIds).size !== jwtKeyIds.length) {
+    issues.push("JWT key IDs must be unique across current and previous keys");
+  }
+  if (
+    authJwtPreviousPublicKeys.some(
+      (key) =>
+        Buffer.from(key.publicKeyBase64, "base64").toString("utf8").trim().length === 0,
+    )
+  ) {
+    issues.push("AUTH_JWT_PREVIOUS_PUBLIC_KEYS must contain valid base64 values");
   }
 
   if (result.data.NODE_ENV === "production" && result.data.SMTP_HOST === undefined) {
@@ -490,6 +535,7 @@ export function loadConfig(
     ...(result.data.AUTH_JWT_PUBLIC_KEY_BASE64 === undefined
       ? {}
       : { authJwtPublicKeyBase64: result.data.AUTH_JWT_PUBLIC_KEY_BASE64 }),
+    authJwtPreviousPublicKeys,
     authRefreshTokenTtlDays: result.data.AUTH_REFRESH_TOKEN_TTL_DAYS,
     authTokenHashPepper: result.data.AUTH_TOKEN_HASH_PEPPER ?? DEVELOPMENT_AUTH_PEPPER,
     corsAllowedOrigins,

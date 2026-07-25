@@ -14,7 +14,7 @@ import {
   type EmailAccount,
   type RotationResult,
 } from "./repository.js";
-import { createAuthTokenService } from "./token-service.js";
+import { createAuthTokenService, type AuthTokenService } from "./token-service.js";
 import type {
   AccessIdentity,
   AuthActionType,
@@ -31,6 +31,7 @@ export type AuthService = Readonly<{
     userAgent: string | undefined,
   ) => RequestMetadata;
   forgotPassword: (email: string) => Promise<void>;
+  jwks: () => AuthTokenService["jwks"];
   listSessions: (identity: AccessIdentity) => Promise<readonly SessionSummary[]>;
   loginFederated: (
     userId: string,
@@ -256,6 +257,8 @@ export async function createAuthService(
     forgotPassword: async (email) => {
       await issueActionForEmail(email, "password_reset");
     },
+
+    jwks: () => tokenService.jwks,
 
     listSessions: async (identity) =>
       repository.listSessions(identity.userId, identity.sessionId),

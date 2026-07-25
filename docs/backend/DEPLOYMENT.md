@@ -28,6 +28,7 @@ ConfigMap 和 Secret，不把值写进 manifest。
 
 - PostgreSQL、Redis、SMTP 凭据；
 - Ed25519 JWT 私钥、公钥、key ID 与 token HMAC pepper；
+- 仍在轮换观察期内的 JWT 历史公钥；
 - DeepSeek API key；
 - metrics 独立 bearer token；
 - 后台任务 payload AES-256-GCM key 与 key version；
@@ -42,6 +43,31 @@ API 在账号业务事务中写入加密任务，只有 worker 执行 SMTP 投�
 数据库租约与 `FOR UPDATE SKIP LOCKED` 负责互斥领取；失败任务指数退避，达到最大次数后
 进入 `dead`。API 和 worker 必须通过 `JOB_PAYLOAD_PREVIOUS_KEYS` 同时保留仍有未完成任务
 引用的历史 key version；确认旧版本任务全部结束并超过保留期后才能移除旧 key。
+
+## JWT 无停机密钥轮换
+
+JWT 私钥只存在 Secret Manager，历史配置只保存公钥。每次轮换使用全新的、不可复用的
+`kid`：
+
+1. 在受控终端执行 `pnpm auth:generate-keys`，把新私钥、公钥和 key ID 直接写入 Secret
+   Manager，禁止进入仓库、聊天或 CI 输出。
+2. 建立一个原子 Secret 版本：把新 key 配置为 `AUTH_JWT_PRIVATE_KEY`、
+   `AUTH_JWT_PUBLIC_KEY` 和 `AUTH_JWT_KEY_ID`，同时把旧公钥加入
+   `AUTH_JWT_PREVIOUS_PUBLIC_KEYS`。格式为
+   `old-kid=BASE64_SPKI_PEM`，多个历史 key 用逗号分隔。
+3. 滚动发布全部 API 副本。进程启动时会验证当前私钥与公钥确实配对；key ID
+   重复、未知算法或无效历史公钥都会拒绝启动。确认旧 Pod 已完全排空。
+4. 请求 `/.well-known/jwks.json`，确认新旧 `kid` 均存在；再用新登录签发的 token
+   验证 `kid` 已切换到新 key。JWKS 最长缓存五分钟。
+5. 至少保留旧公钥一个 Access Token TTL（当前为 15 分钟），再加发布时钟偏差和
+   JWKS 缓存余量。生产建议观察不少于 30 分钟，并确认没有旧版本 Pod 继续签发。
+6. 从 `AUTH_JWT_PREVIOUS_PUBLIC_KEYS` 移除旧公钥，滚动发布并验证 JWKS 只剩仍有效的
+   key。
+
+若步骤 3 后需要应用回滚，优先回滚应用镜像但保持新 key 为当前签发 key，并继续发布旧
+公钥。只有确认必须恢复旧 key 签发时才重新启用保管中的旧私钥，同时把新公钥放进历史
+列表；否则回滚会立即拒绝刚签发的新 token。当前私钥泄露时不能等待观察窗口：立即切换
+新 key，撤销全部会话或提升 token version，并按安全事故流程处理。
 
 ## 回滚
 
