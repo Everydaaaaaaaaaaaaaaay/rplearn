@@ -32,7 +32,8 @@ readiness 应立即失败并停止接流量。禁止切换到本地缓存继续�
 
 ### Redis 不可用
 
-readiness 失败。账号 challenge、AI 分钟限流等采用 fail-closed，不允许绕过风控。PostgreSQL
+readiness 失败。登录、注册、验证码/密码邮件、账号 challenge 和 AI 分钟限流等认证敏感路径采用
+fail-closed，不允许绕过风控；普通业务的全局 IP 保护可短暂 fail-open，但会以限频告警记录。PostgreSQL
 业务数据不受影响。替换 Redis 后无需数据恢复。
 
 ### DeepSeek 故障或成本异常

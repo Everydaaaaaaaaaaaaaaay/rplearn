@@ -23,6 +23,7 @@ import { createAccountService } from "./modules/account/service.js";
 import { createContentCursorCodec } from "./modules/content/cursor.js";
 import { registerContentRoutes } from "./modules/content/routes.js";
 import { createContentService } from "./modules/content/service.js";
+import { registerHttpAbuseProtection } from "./modules/abuse/http-limiter.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -43,6 +44,7 @@ async function main(): Promise<void> {
   const app = await buildApp(config, {
     readinessChecks: dependencies.readinessChecks,
   });
+  registerHttpAbuseProtection(app, config, dependencies.redis);
   registerAuditHooks(app, config, dependencies.database);
   const authService = await createAuthService(config, dependencies.database);
   registerAuthRoutes(app, authService);

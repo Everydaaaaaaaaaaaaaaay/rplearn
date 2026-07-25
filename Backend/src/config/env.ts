@@ -53,6 +53,8 @@ const rawEnvironmentSchema = z.object({
     .min(300)
     .max(86_400)
     .default(3600),
+  AUTH_EMAIL_ACCOUNT_HOUR_LIMIT: z.coerce.number().int().min(1).max(100).default(5),
+  AUTH_EMAIL_IP_HOUR_LIMIT: z.coerce.number().int().min(1).max(1_000).default(30),
   AUTH_ACTION_URL_BASE: z.url().default("http://localhost:3000/auth"),
   AUTH_AUDIENCE: z.string().trim().min(1).default("lingotrip-clients"),
   AUTH_EMAIL_FROM: z
@@ -61,6 +63,8 @@ const rawEnvironmentSchema = z.object({
     .min(3)
     .default("LingoTrip <no-reply@local.lingotrip>"),
   AUTH_ISSUER: z.url().default("https://api.lingotrip.app"),
+  AUTH_LOGIN_ACCOUNT_15M_LIMIT: z.coerce.number().int().min(1).max(100).default(10),
+  AUTH_LOGIN_IP_15M_LIMIT: z.coerce.number().int().min(1).max(1_000).default(60),
   AUTH_JWT_KEY_ID: optionalSecret,
   AUTH_JWT_PRIVATE_KEY_BASE64: optionalSecret,
   AUTH_JWT_PUBLIC_KEY_BASE64: optionalSecret,
@@ -84,6 +88,12 @@ const rawEnvironmentSchema = z.object({
   DEEPSEEK_API_KEY: optionalSecret,
   DEEPSEEK_BASE_URL: z.url().default("https://api.deepseek.com"),
   HOST: z.string().trim().min(1).default("127.0.0.1"),
+  HTTP_GLOBAL_IP_MINUTE_LIMIT: z.coerce
+    .number()
+    .int()
+    .min(10)
+    .max(100_000)
+    .default(3_000),
   JOB_LEASE_SECONDS: z.coerce.number().int().min(15).max(900).default(60),
   JOB_PAYLOAD_ENCRYPTION_KEY_BASE64: optionalSecret,
   JOB_PAYLOAD_KEY_VERSION: optionalSecret,
@@ -143,10 +153,14 @@ export type RuntimeConfig = Readonly<{
   appleTokenEndpoint: string;
   authAccessTokenTtlSeconds: number;
   authActionTokenTtlSeconds: number;
+  authEmailAccountHourLimit: number;
+  authEmailIpHourLimit: number;
   authActionUrlBase: string;
   authAudience: string;
   authEmailFrom: string;
   authIssuer: string;
+  authLoginAccount15MinuteLimit: number;
+  authLoginIp15MinuteLimit: number;
   authJwtKeyId?: string;
   authJwtPrivateKeyBase64?: string;
   authJwtPublicKeyBase64?: string;
@@ -160,6 +174,7 @@ export type RuntimeConfig = Readonly<{
   deepSeekApiKey?: string;
   deepSeekBaseUrl: string;
   host: string;
+  httpGlobalIpMinuteLimit: number;
   jobLeaseSeconds: number;
   jobPayloadEncryptionKeyBase64: string;
   jobPayloadKeyVersion: string;
@@ -458,10 +473,14 @@ export function loadConfig(
     appleTokenEndpoint: result.data.APPLE_TOKEN_ENDPOINT,
     authAccessTokenTtlSeconds: result.data.AUTH_ACCESS_TOKEN_TTL_SECONDS,
     authActionTokenTtlSeconds: result.data.AUTH_ACTION_TOKEN_TTL_SECONDS,
+    authEmailAccountHourLimit: result.data.AUTH_EMAIL_ACCOUNT_HOUR_LIMIT,
+    authEmailIpHourLimit: result.data.AUTH_EMAIL_IP_HOUR_LIMIT,
     authActionUrlBase: result.data.AUTH_ACTION_URL_BASE,
     authAudience: result.data.AUTH_AUDIENCE,
     authEmailFrom: result.data.AUTH_EMAIL_FROM,
     authIssuer: result.data.AUTH_ISSUER,
+    authLoginAccount15MinuteLimit: result.data.AUTH_LOGIN_ACCOUNT_15M_LIMIT,
+    authLoginIp15MinuteLimit: result.data.AUTH_LOGIN_IP_15M_LIMIT,
     ...(result.data.AUTH_JWT_KEY_ID === undefined
       ? {}
       : { authJwtKeyId: result.data.AUTH_JWT_KEY_ID }),
@@ -483,6 +502,7 @@ export function loadConfig(
       : { deepSeekApiKey: result.data.DEEPSEEK_API_KEY }),
     deepSeekBaseUrl: result.data.DEEPSEEK_BASE_URL,
     host: result.data.HOST,
+    httpGlobalIpMinuteLimit: result.data.HTTP_GLOBAL_IP_MINUTE_LIMIT,
     jobLeaseSeconds: result.data.JOB_LEASE_SECONDS,
     jobPayloadEncryptionKeyBase64:
       result.data.JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 ??

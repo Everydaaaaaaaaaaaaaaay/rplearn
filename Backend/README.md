@@ -44,6 +44,11 @@ pnpm test:integration
 `/v1/auth`，支持注册、邮箱验证、登录、刷新令牌轮换、密码重置、设备会话列表和单设备/全设备撤销。刷新令牌重放会把整个 token
 family 标记为 compromised。
 
+所有 `/v1`
+请求先经过 Redis 分布式固定窗口保护；登录同时按 HMAC 化的 IP 和规范化账号计数，注册、重发验证和找回密码另设小时级 IP/邮箱额度。Redis 不可用时认证敏感接口 fail-closed 返回 503，普通已认证业务可暂时 fail-open，并由 readiness 将异常实例摘流。响应包含标准化限流余量和重试时间，Redis
+key 不保存原始邮箱或 IP。阈值可通过 `HTTP_GLOBAL_IP_MINUTE_LIMIT` 与 `AUTH_*_LIMIT`
+环境变量按部署容量调整。
+
 `GET /v1/account/export` 返回不含凭据和原始第三方 payload 的可移植一致性快照。
 `DELETE /v1/account`
 支持即时删除或带一次性取消 token 的冷静期删除；请求一旦接受即冻结账号并撤销全部会话，最终清除由 worker 执行。绑定 Apple 的账号会先调用 Apple
@@ -65,10 +70,10 @@ token。Apple 邮箱不会自动与已有邮箱账号合并；已有账号只能
 `/v1/sync/changes`。离线写入可批量提交到
 `/v1/sync/commands`；每个 command 有独立 UUID 和幂等结果。业务变更、同步事件与命令回执在同一个数据库事务中提交。
 
-跨平台用户内容通过 `/v1/content/records` 分页启动，并通过
-`/v1/content/commands` 提交类型化的角色、会话、消息、收藏、记忆、答题记录与剧情断点。记录使用客户端稳定 ID、服务端递增版本和软删除墓碑；更新必须携带
-`expectedVersion`，冲突会返回当前服务器记录而不会静默覆盖。分页 cursor 绑定账号且带
-HMAC，第一页同时固定全局同步 cursor，分页期间发生的变更由 `/v1/sync/changes`
+跨平台用户内容通过 `/v1/content/records` 分页启动，并通过 `/v1/content/commands`
+提交类型化的角色、会话、消息、收藏、记忆、答题记录与剧情断点。记录使用客户端稳定 ID、服务端递增版本和软删除墓碑；更新必须携带
+`expectedVersion`，冲突会返回当前服务器记录而不会静默覆盖。分页 cursor 绑定账号且带 HMAC，第一页同时固定全局同步 cursor，分页期间发生的变更由
+`/v1/sync/changes`
 补齐。服务端校验每类 payload、父子关系、单记录大小与账号级资源上限，账号导出和删除也覆盖这些内容。
 
 订阅使用平台无关的 plan、store
