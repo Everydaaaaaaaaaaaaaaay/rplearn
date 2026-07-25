@@ -54,9 +54,12 @@ public struct FavoritesView: View {
                     }
                 }
                 .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .background(Color.dsBackground)
             }
         }
         .navigationTitle("收藏夹")
+        .background(Color.dsBackground)
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -95,6 +98,7 @@ public struct FavoritesView: View {
                     Task { await speech.speak(sentence, language: "en-US") }
                 } label: {
                     Image(systemName: "speaker.wave.2")
+                        .foregroundStyle(Color.dsSky)
                 }
                 .buttonStyle(.borderless)
             }

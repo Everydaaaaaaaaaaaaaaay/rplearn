@@ -53,8 +53,12 @@ public struct DictCardView: View {
         .frame(width: 320)
         .frame(maxHeight: 380)
         .fixedSize(horizontal: false, vertical: true)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .shadow(color: .black.opacity(0.18), radius: 14, y: 6)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
+                .stroke(Color.dsBorder, lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.14), radius: 14, y: 6)
         .task(id: path) {
             await loadCurrentTarget()
         }
@@ -162,7 +166,7 @@ public struct DictCardView: View {
                             Label("用 AI 简单解释", systemImage: "sparkles")
                         }
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.duo(.tinted(.dsSky), fullWidth: false, compact: true))
                     .disabled(isLoadingAI)
                 }
             }
@@ -189,11 +193,7 @@ public struct DictCardView: View {
     }
 
     private func chip(_ text: String) -> some View {
-        Text(text)
-            .padding(.horizontal, 6)
-            .padding(.vertical, 2)
-            .background(Color.accentColor.opacity(0.12), in: Capsule())
-            .foregroundStyle(Color.accentColor)
+        DSChip(text, tint: .dsSky)
     }
 
     private func tagName(_ tag: String) -> String {
@@ -248,7 +248,7 @@ public struct DictCardView: View {
             }
             .padding(8)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 8))
+            .background(Color.dsBubbleIncoming, in: RoundedRectangle(cornerRadius: DSRadius.inline))
         }
         if !point.related.isEmpty {
             HStack(spacing: 8) {

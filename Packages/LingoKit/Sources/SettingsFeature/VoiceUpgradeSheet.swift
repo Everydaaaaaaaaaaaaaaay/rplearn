@@ -1,3 +1,4 @@
+import DesignSystem
 import SwiftUI
 import UIKit
 
@@ -55,7 +56,7 @@ public struct VoiceUpgradeSheet: View {
         VStack(alignment: .leading, spacing: 12) {
             Image(systemName: "waveform.circle.fill")
                 .font(.system(size: 52))
-                .foregroundStyle(.tint)
+                .foregroundStyle(Color.dsSky)
             Text("现在的语音是系统自带的「标准」音，听起来偏机械。")
                 .font(.headline)
             Text("花 1 分钟下载 Apple 的「增强 / 高级」语音，角色台词和单词发音都会明显更自然、更像真人——完全免费、离线可用。")
@@ -73,7 +74,7 @@ public struct VoiceUpgradeSheet: View {
                         .font(.footnote.weight(.bold))
                         .foregroundStyle(.white)
                         .frame(width: 24, height: 24)
-                        .background(Color.accentColor, in: Circle())
+                        .background(Color.dsSky, in: Circle())
                     Text(step.text)
                         .font(.subheadline)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -101,8 +102,7 @@ public struct VoiceUpgradeSheet: View {
                 Text("打开系统设置")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
+            .buttonStyle(.duoPrimary)
 
             HStack {
                 Button {
@@ -132,12 +132,7 @@ private struct FlowChips: View {
         // 数量少，两行即可容纳，用自适应网格避免手写换行。
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 84), spacing: 8)], alignment: .leading, spacing: 8) {
             ForEach(items, id: \.self) { name in
-                Text(name)
-                    .font(.subheadline.weight(.medium))
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color.accentColor.opacity(0.12), in: Capsule())
-                    .foregroundStyle(Color.accentColor)
+                DSChip(name, tint: .dsSky)
             }
         }
     }

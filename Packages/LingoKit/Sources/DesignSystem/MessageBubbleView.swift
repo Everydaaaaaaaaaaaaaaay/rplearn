@@ -25,7 +25,7 @@ public struct MessageBubble<Content: View>: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .background(background)
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
             if side == .incoming {
                 Spacer(minLength: 48)
             }
@@ -36,35 +36,29 @@ public struct MessageBubble<Content: View>: View {
     private var background: some View {
         switch side {
         case .incoming:
-            Color(.systemGray5)
+            Color.dsBubbleIncoming
         case .outgoing:
-            Color.accentColor
+            Color.dsSky
         }
     }
 }
 
 /// 「正在输入」三点动画。
 public struct TypingIndicator: View {
-    @State private var phase = 0
-
     public init() {}
 
     public var body: some View {
-        HStack(spacing: 5) {
-            ForEach(0..<3, id: \.self) { index in
-                Circle()
-                    .fill(.secondary)
-                    .frame(width: 7, height: 7)
-                    .opacity(phase == index ? 1 : 0.35)
-            }
-        }
-        .task {
-            while !Task.isCancelled {
-                try? await Task.sleep(for: .milliseconds(300))
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    phase = (phase + 1) % 3
+        PhaseAnimator([0, 1, 2]) { phase in
+            HStack(spacing: 5) {
+                ForEach(0..<3, id: \.self) { index in
+                    Circle()
+                        .fill(.secondary)
+                        .frame(width: 7, height: 7)
+                        .opacity(phase == index ? 1 : 0.35)
                 }
             }
+        } animation: { _ in
+            .easeInOut(duration: 0.3)
         }
         .accessibilityLabel("对方正在输入")
     }

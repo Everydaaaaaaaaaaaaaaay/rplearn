@@ -45,6 +45,7 @@ public struct AVGStoryView: View {
     @State private var wordSelection: TokenSelection?
     @State private var showSkipConfirm = false
     @State private var loadFailed = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dismiss) private var dismiss
 
     public init(storyID: String, scriptURL: URL, deps: StoryDependencies) {
@@ -68,6 +69,7 @@ public struct AVGStoryView: View {
         }
         .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)
+        .dsTabBarHidden()
         .contentShape(Rectangle())
         .onTapGesture {
             handleTap()
@@ -106,7 +108,7 @@ public struct AVGStoryView: View {
     private var background: some View {
         ZStack {
             LinearGradient(
-                colors: BackgroundPalette.colors(for: currentLine?.bg),
+                colors: DSScenePalette.story(currentLine?.bg),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -130,6 +132,11 @@ public struct AVGStoryView: View {
                     }
                     .frame(width: 140, height: 140)
                     .padding(.bottom, 210)
+                    .phaseAnimator(reduceMotion ? [false] : [false, true]) { content, phase in
+                        content.offset(y: phase ? -7 : 5)
+                    } animation: { _ in
+                        .easeInOut(duration: 1.8)
+                    }
                 }
                 .transition(.opacity)
             }
@@ -183,7 +190,7 @@ public struct AVGStoryView: View {
                     .font(.subheadline.weight(.bold))
                     .padding(.horizontal, 12)
                     .padding(.vertical, 4)
-                    .background(Color.accentColor, in: Capsule())
+                    .background(Color.dsSky, in: Capsule())
                     .foregroundStyle(.white)
 
                 Group {
@@ -231,9 +238,7 @@ public struct AVGStoryView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.white.opacity(0.9))
-                .foregroundStyle(.black)
+                .buttonStyle(.duo(.outline))
             }
         }
         .padding(.horizontal, 32)
@@ -367,21 +372,9 @@ final class TypewriterState {
     }
 }
 
-// MARK: - 背景配色（美术素材接入前的占位方案）
+// MARK: - 背景符号（配色由 DesignSystem.DSScenePalette 统一提供）
 
 enum BackgroundPalette {
-    static func colors(for key: String?) -> [Color] {
-        switch key {
-        case "london_bookshop": [Color(red: 0.32, green: 0.28, blue: 0.24), Color(red: 0.12, green: 0.10, blue: 0.09)]
-        case "london_street": [Color(red: 0.45, green: 0.50, blue: 0.58), Color(red: 0.20, green: 0.23, blue: 0.30)]
-        case "melbourne_beach": [Color(red: 0.99, green: 0.75, blue: 0.44), Color(red: 0.22, green: 0.48, blue: 0.65)]
-        case "melbourne_cafe": [Color(red: 0.55, green: 0.42, blue: 0.32), Color(red: 0.25, green: 0.18, blue: 0.14)]
-        case "newyork_subway": [Color(red: 0.35, green: 0.35, blue: 0.40), Color(red: 0.12, green: 0.12, blue: 0.16)]
-        case "newyork_street": [Color(red: 0.85, green: 0.60, blue: 0.35), Color(red: 0.30, green: 0.22, blue: 0.30)]
-        default: [Color(red: 0.30, green: 0.34, blue: 0.44), Color(red: 0.10, green: 0.12, blue: 0.18)]
-        }
-    }
-
     static func emoji(for key: String?) -> String? {
         switch key {
         case "london_bookshop": "📚"

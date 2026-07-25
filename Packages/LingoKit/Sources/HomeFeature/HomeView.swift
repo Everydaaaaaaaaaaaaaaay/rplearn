@@ -1,9 +1,9 @@
+import DesignSystem
 import DomainKit
 import LLMKit
 import PersistenceKit
 import SwiftUI
 
-/// HomeFeature 依赖。
 public struct HomeDependencies: Sendable {
     public let economyStore: EconomyStore
     public let storyProgress: StoryProgressStore
@@ -29,25 +29,30 @@ public struct HomeDependencies: Sendable {
     }
 }
 
-/// 主页导航目标（组合根映射到具体 Feature 页面，Feature 间零依赖）。
 public enum HomeDestination: Hashable, Sendable {
-    case map
-    case ticketStubs
+    case mainline
+    case activities
 }
 
-/// 主页 hub：当前地区卡片、活动偶遇、主线剧情、地图/票根夹入口。
+/// 首页聚合 Hub：城市氛围、最近会话与两个核心探索入口。
 public struct HomeView: View {
     private let deps: HomeDependencies
-    private let encounterChatBuilder: @MainActor (CharacterDTO) -> AnyView
+    private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
+    private let onOpenMessages: @MainActor () -> Void
+
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
+    @State private var recentRows: [RecentChatRow] = []
+    @State private var scrollOffset: CGFloat = 0
 
     public init(
         deps: HomeDependencies,
-        encounterChatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView
+        chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
+        onOpenMessages: @escaping @MainActor () -> Void
     ) {
         self.deps = deps
-        self.encounterChatBuilder = encounterChatBuilder
+        self.chatBuilder = chatBuilder
+        self.onOpenMessages = onOpenMessages
     }
 
     private var currentRegion: Region? {
@@ -55,154 +60,249 @@ public struct HomeView: View {
     }
 
     public var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                regionCard
-                entryGrid
-                if let region = currentRegion {
-                    EncounterSection(region: region, deps: deps, chatBuilder: encounterChatBuilder)
-                }
-                mainlineSection
+        ZStack {
+            if let currentRegion {
+                CityBackdropView(region: currentRegion, parallax: scrollOffset)
+            } else {
+                Color.dsBackground.ignoresSafeArea()
             }
-            .padding(16)
+
+            ScrollView {
+                VStack(spacing: DSSpacing.md) {
+                    cityHeader
+                    recentChats
+                    exploreSection
+                }
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.top, DSSpacing.xs)
+                .padding(.bottom, 110)
+            }
+            .onScrollGeometryChange(for: CGFloat.self) { geometry in
+                geometry.contentOffset.y
+            } action: { _, newValue in
+                scrollOffset = newValue
+            }
+            .refreshable { await reload() }
         }
-        .navigationTitle("主页")
-        .task {
-            await reload()
-        }
-        .refreshable {
-            await reload()
-        }
+        .toolbar(.hidden, for: .navigationBar)
+        .task { await reload() }
     }
 
-    // MARK: - 当前地区
-
     @ViewBuilder
-    private var regionCard: some View {
+    private var cityHeader: some View {
         if let region = currentRegion {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text(regionFlag(region.countryCode))
-                        .font(.system(size: 40))
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(region.nameZh)
-                            .font(.title2.bold())
-                        Text("\(region.nameEn) · \(region.countryNameZh)")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    if let profile {
-                        Label("\(profile.coins)", systemImage: "circle.grid.2x1.fill")
-                            .font(.subheadline.monospacedDigit())
-                            .foregroundStyle(.orange)
-                    }
+            HStack(spacing: DSSpacing.sm) {
+                Text(flag(region.countryCode))
+                    .font(.system(size: 28))
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(region.nameZh)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                    Text(region.taglineZh)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
-                Text(region.taglineZh)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                Spacer(minLength: DSSpacing.xs)
+                if let profile {
+                    Label("\(profile.coins)", systemImage: "circle.grid.2x1.fill")
+                        .font(.system(.subheadline, design: .rounded, weight: .bold))
+                        .monospacedDigit()
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 11)
+                        .padding(.vertical, 8)
+                        .background(Color.dsSunset, in: Capsule())
+                }
             }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .padding(DSSpacing.sm)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
+                    .stroke(.white.opacity(0.25), lineWidth: 1)
+            }
         } else {
             ProgressView()
-                .frame(maxWidth: .infinity, minHeight: 100)
+                .frame(maxWidth: .infinity, minHeight: 64)
         }
     }
 
-    // MARK: - 功能入口
-
-    private var entryGrid: some View {
-        HStack(spacing: 12) {
-            entryTile(destination: .map, title: "地图", subtitle: "去别的城市", systemImage: "map.fill", tint: .blue)
-            entryTile(destination: .ticketStubs, title: "票根夹", subtitle: "旅行的记忆", systemImage: "ticket.fill", tint: .orange)
-        }
-    }
-
-    private func entryTile(
-        destination: HomeDestination,
-        title: String,
-        subtitle: String,
-        systemImage: String,
-        tint: Color
-    ) -> some View {
-        NavigationLink(value: destination) {
-            VStack(alignment: .leading, spacing: 6) {
-                Image(systemName: systemImage)
-                    .font(.title3)
-                    .foregroundStyle(tint)
-                Text(title)
+    private var recentChats: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            HStack {
+                Text("最近会话")
+                    .font(.system(.headline, design: .rounded, weight: .bold))
+                Spacer()
+                Button("查看全部 ›") { onOpenMessages() }
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.primary)
-                Text(subtitle)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.dsSky)
             }
-            .padding(14)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-        }
-        .buttonStyle(.plain)
-    }
 
-    // MARK: - 主线剧情
-
-    @ViewBuilder
-    private var mainlineSection: some View {
-        if let region = currentRegion {
-            let chapters = MainlineCatalog.chapters(forRegion: region.id)
-            if !chapters.isEmpty {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("主线剧情")
-                        .font(.headline)
-                    ForEach(chapters) { chapter in
-                        NavigationLink(value: chapter) {
-                            chapterRow(chapter)
+            if recentRows.isEmpty {
+                VStack(spacing: DSSpacing.xs) {
+                    Image(systemName: "bubble.left.and.sparkles")
+                        .font(.title2)
+                        .foregroundStyle(Color.dsSky)
+                    Text("伙伴正在等你打招呼")
+                        .font(.subheadline.weight(.semibold))
+                    Text("完成开场剧情后，最近的聊天会出现在这里")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, DSSpacing.lg)
+            } else {
+                ForEach(Array(recentRows.prefix(3).enumerated()), id: \.element.id) { index, row in
+                    NavigationLink {
+                        chatBuilder(row.character)
+                    } label: {
+                        HStack(spacing: DSSpacing.sm) {
+                            AvatarBadge(name: row.character.card.name, size: 46)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(row.character.card.name)
+                                    .font(.subheadline.weight(.bold))
+                                    .foregroundStyle(.primary)
+                                Text(row.summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : row.summary.lastMessageText)
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(1)
+                            }
+                            Spacer()
+                            VStack(alignment: .trailing, spacing: 8) {
+                                Text(row.summary.lastMessageAt, format: .relative(presentation: .named))
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                                if index == 0 {
+                                    Circle()
+                                        .fill(Color.dsDanger)
+                                        .frame(width: 8, height: 8)
+                                }
+                            }
                         }
-                        .buttonStyle(.plain)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+
+                    if index < min(recentRows.count, 3) - 1 {
+                        Divider().padding(.leading, 58)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .dsCard()
+    }
+
+    @ViewBuilder
+    private var exploreSection: some View {
+        if let region = currentRegion {
+            VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                Text("探索\(region.nameZh)")
+                    .font(.system(.headline, design: .rounded, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                NavigationLink(value: HomeDestination.mainline) {
+                    ExploreCard(
+                        title: "主线剧情",
+                        subtitle: "\(completedCount(for: region)) / \(chapterCount(for: region)) 章",
+                        icon: "book.pages.fill",
+                        colors: [Color.dsSky, Color.dsCyan],
+                        progress: chapterCount(for: region) == 0
+                            ? 0
+                            : Double(completedCount(for: region)) / Double(chapterCount(for: region))
+                    )
+                }
+                .buttonStyle(.pressableCard)
+
+                NavigationLink(value: HomeDestination.activities) {
+                    ExploreCard(
+                        title: "城市活动",
+                        subtitle: "参与活动，认识新朋友",
+                        icon: "figure.walk.motion",
+                        colors: [Color.dsSunset, Color.dsWarning],
+                        progress: nil
+                    )
+                }
+                .buttonStyle(.pressableCard)
             }
         }
     }
 
-    private func chapterRow(_ chapter: MainlineChapter) -> some View {
-        HStack(spacing: 12) {
-            Image(systemName: completedStories.contains(chapter.storyID) ? "checkmark.seal.fill" : "book.pages")
-                .font(.title3)
-                .foregroundStyle(completedStories.contains(chapter.storyID) ? .green : Color.accentColor)
-                .frame(width: 36)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(chapter.title)
-                    .font(.subheadline.weight(.semibold))
-                Text(chapter.subtitle)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-            }
-            Spacer()
-            Image(systemName: "chevron.forward")
-                .font(.caption)
-                .foregroundStyle(.tertiary)
-        }
-        .padding(14)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+    private func completedCount(for region: Region) -> Int {
+        MainlineCatalog.chapters(forRegion: region.id).filter { completedStories.contains($0.storyID) }.count
     }
 
-    // MARK: - 数据
+    private func chapterCount(for region: Region) -> Int {
+        MainlineCatalog.chapters(forRegion: region.id).count
+    }
 
     private func reload() async {
-        profile = try? await deps.economyStore.profile()
-        completedStories = (try? await deps.storyProgress.completedStoryIDs()) ?? []
+        async let loadedProfile = try? deps.economyStore.profile()
+        async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
+        async let loadedFriends = try? deps.rosterStore.friends()
+        async let loadedSummaries = try? deps.chatStore.conversationSummaries()
+
+        profile = await loadedProfile
+        completedStories = await loadedCompleted ?? []
+        let friends = await loadedFriends ?? []
+        let summaries = await loadedSummaries ?? []
+        let friendsByID = Dictionary(uniqueKeysWithValues: friends.map { ($0.id, $0) })
+        recentRows = summaries.compactMap { summary in
+            friendsByID[summary.characterID].map { RecentChatRow(character: $0, summary: summary) }
+        }
     }
 
-    private func regionFlag(_ countryCode: String) -> String {
-        countryCode.unicodeScalars.reduce(into: "") { result, scalar in
-            if let flagScalar = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
-                result.unicodeScalars.append(flagScalar)
+    private func flag(_ countryCode: String) -> String {
+        countryCode.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
+            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
+                result.unicodeScalars.append(value)
             }
         }
+    }
+}
+
+private struct RecentChatRow: Identifiable {
+    let character: CharacterDTO
+    let summary: ConversationSummaryDTO
+    var id: UUID { summary.id }
+}
+
+private struct ExploreCard: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+    let colors: [Color]
+    let progress: Double?
+
+    var body: some View {
+        HStack(spacing: DSSpacing.md) {
+            Image(systemName: icon)
+                .font(.system(size: 30, weight: .bold))
+                .frame(width: 54, height: 54)
+                .background(.white.opacity(0.18), in: RoundedRectangle(cornerRadius: DSRadius.inline))
+            VStack(alignment: .leading, spacing: DSSpacing.xs) {
+                Text(title)
+                    .font(.system(.title3, design: .rounded, weight: .bold))
+                Text(subtitle)
+                    .font(.subheadline)
+                    .opacity(0.88)
+                if let progress {
+                    ProgressView(value: progress)
+                        .tint(.white)
+                        .background(.black.opacity(0.12), in: Capsule())
+                }
+            }
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.headline)
+                .padding(10)
+                .background(.white, in: Circle())
+                .foregroundStyle(colors[0])
+        }
+        .foregroundStyle(.white)
+        .padding(DSSpacing.md)
+        .background(
+            LinearGradient(colors: colors, startPoint: .leading, endPoint: .trailing),
+            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+        )
+        .shadow(color: colors[0].opacity(0.24), radius: 10, y: 5)
     }
 }

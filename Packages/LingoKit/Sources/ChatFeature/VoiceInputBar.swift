@@ -1,3 +1,4 @@
+import DesignSystem
 import SpeechKit
 import SwiftUI
 
@@ -27,8 +28,10 @@ struct VoiceInputBar: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 10)
             .background(
-                isRecording ? (inCancelZone ? Color.red.opacity(0.85) : Color.accentColor.opacity(0.85)) : Color(.systemGray6),
-                in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+                isRecording
+                    ? (inCancelZone ? Color.dsDanger.opacity(0.9) : Color.dsSky.opacity(0.9))
+                    : Color.dsBubbleIncoming,
+                in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
             )
             .foregroundStyle(isRecording ? .white : .primary)
             .gesture(pressGesture)
@@ -38,8 +41,9 @@ struct VoiceInputBar: View {
                         .offset(y: -120)
                 }
             }
-            .animation(.snappy(duration: 0.18), value: isRecording)
-            .animation(.snappy(duration: 0.18), value: inCancelZone)
+            .scaleEffect(isRecording ? 0.985 : 1)
+            .animation(DSAnimation.gentle, value: isRecording)
+            .animation(DSAnimation.gentle, value: inCancelZone)
     }
 
     private var labelText: String {
@@ -60,13 +64,13 @@ struct VoiceInputBar: View {
             .onChanged { value in
                 if !isPressing {
                     isPressing = true
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    Haptics.impact(.medium)
                     startTask?.cancel()
                     startTask = Task { await recorder.startRecording() }
                 } else {
                     let nowInZone = value.translation.height < -80
                     if nowInZone != inCancelZone {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        Haptics.impact(.light)
                         recorder.setCancelZone(nowInZone)
                     }
                 }
@@ -98,8 +102,8 @@ struct VoiceInputBar: View {
         }
         .padding(16)
         .background(
-            (inCancelZone ? Color.red : Color.black).opacity(0.75),
-            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+            (inCancelZone ? Color.dsDanger : Color.black).opacity(0.78),
+            in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
         )
     }
 

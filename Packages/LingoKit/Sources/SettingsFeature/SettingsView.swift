@@ -1,3 +1,4 @@
+import DesignSystem
 import DomainKit
 import LLMKit
 import PersistenceKit
@@ -54,7 +55,6 @@ public struct SettingsView: View {
 
     public var body: some View {
         Form {
-            accountSection
             learningSection
             voiceSection
             Section {
@@ -312,4 +312,3 @@ public struct SettingsView: View {
         }
     }
 }
-

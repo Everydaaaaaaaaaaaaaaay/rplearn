@@ -2,7 +2,7 @@
 
 > 面向接手的开发者：读完本文你应能独立构建、运行、扩展本项目。
 > 配套文档：`docs/plan.md`（原始开发计划与技术决策，本文是它落地后的现状快照）。
-> 最后更新：2026-07（M0/M1/M2 全部完成，137 用例 / 30 套件通过）。
+> 最后更新：2026-07-25（M0/M1/M2 + UI 全面重构完成，137 用例 / 30 套件通过）。
 
 ---
 
@@ -72,6 +72,23 @@ App（组合根 AppEnvironment / RootView）
 - **密钥只进钥匙串**：API Key 存 `CoreKit/KeychainStore`，绝不落 prompt / 日志。
 - **测试框架用 Swift Testing**（`@Test` / `#expect`），不是 XCTest。
 
+### 3.4 UI 信息架构与视觉约定
+
+根视图是四个独立 `NavigationStack` 的原生 `TabView`；每栏都通过 `.tabItem` 注册给系统，保留原生切换、导航状态、安全区、键盘与辅助功能行为，仅用 DesignSystem tint 统一品牌色：
+
+```
+首页（城市 Hub → 主线剧情 / 城市活动 / 聊天）
+地图（MapKit 3D → 城市卡 / 飞行转场 / 票根夹）
+消息（会话列表 → 好友 / 角色资料 / 聊天）
+我的（资料 / 订阅 → 收藏 / 设置）
+```
+
+- 深层页面用 `.dsTabBarHidden()` 映射到系统 `.toolbar(.hidden, for: .tabBar)`；返回时由系统自动恢复。
+- 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。
+- 首页背景优先加载 `city_backdrop_<regionID>` 资产；当前无素材时 `CityBackdropView` 以多层城市剪影和云动画兜底。后续投图只需按此命名加入 Assets，无需改页面代码。
+- `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。
+- 会话已读/置顶用 UserDefaults 轻量状态，不改 SwiftData schema；聊天页进入即标记已读。
+
 ---
 
 ## 4. 模块详解
@@ -81,7 +98,7 @@ App（组合根 AppEnvironment / RootView）
 | 模块 | 职责 | 关键文件 |
 |---|---|---|
 | **CoreKit** | 日志、错误、钥匙串、token 估算、分词、音频会话协调（录/放互斥的 actor） | `Log` `AppError` `KeychainStore` `TokenEstimator` `WordTokenizer` `AudioSessionCoordinator` |
-| **DesignSystem** | 通用 UI：气泡、FlowLayout、可点词文本、触觉封装 | `MessageBubbleView` `FlowLayout` `TappableText` `Haptics` |
+| **DesignSystem** | 动态色板、布局/动画/场景 token、3D 按钮、卡片、头像、Chip、批注卡、庆祝粒子、原生 Tab 可见性桥接、气泡与触觉 | `Tokens/` `Styles/` `Components/` `MessageBubbleView` `TappableText` `Haptics` |
 
 ### Service 层
 
@@ -116,14 +133,14 @@ DomainKit 服务清单：
 
 | 模块 | 页面 | 关键点 |
 |---|---|---|
-| **ChatFeature** | 聊天页 + 会话列表 | `ChatViewModel` 编排发送→落库→流式→定稿；quiz / 口语点评 / 教练卡 / 语音气泡 UI |
-| **HomeFeature** | 主页 hub | 当前地区、活动偶遇（`EncounterSection`）、主线剧情、地图 / 票根入口 |
-| **MapFeature** | 地图 + 票根夹 | 前往城市（`TravelSheet`）、精美票根卡（6 套配色） |
-| **StoryFeature** | AVG 剧情 | 竖屏 ZStack、打字机台词、背景配色 |
-| **OnboardingFeature** | 首启引导 | 复用 StoryEngine 的聊天皮肤演出 + 选主角色 |
-| **SettingsFeature** | 设置 | 供应商 / Key / 模型 / 连接测试、账户订阅、出题总开关、记忆调试面板（DEBUG） |
+| **ChatFeature** | 消息列表 + 聊天页 | QQ 式搜索/未读/置顶/滑动已读；聊天流式链路、统一批注卡、quiz 庆祝/错误反馈、语音条、Apple 端上翻译兜底 |
+| **HomeFeature** | 首页聚合 Hub + 主线/活动二级页 | 城市动态剪影背景、最近会话、两张探索入口；`MainlineListView` / `ActivitiesView` |
+| **MapFeature** | MapKit 3D 地图 + 飞行转场 + 票根夹 | realistic elevation 相机、三态 Pin、城市卡、购票/出行、`FlightTransitionOverlay`、6 套动态票根色 |
+| **StoryFeature** | AVG 剧情 | 竖屏 ZStack、打字机台词、动态深浅场景色、Duo 选项 |
+| **OnboardingFeature** | 首启引导 | 聊天剧情内角色资料卡 + 3D 横滑实体选角卡 |
+| **SettingsFeature** | 我的 + 设置 | `MyPageView` 聚合资料/订阅/收藏/设置；二级设置保留 AI、模型、语音、学习开关 |
 | **FavoritesFeature** | 收藏夹 | 收藏语句翻阅、句内查词、朗读 |
-| **RosterFeature** | 角色 / 好友（占位） | — |
+| **RosterFeature** | 好友与角色资料 | 好友位、伙伴/偶遇分区、角色全字段资料卡、发消息入口 |
 
 ---
 
@@ -200,8 +217,12 @@ DomainKit 服务清单：
 | | 2.6 记忆完整版（mid/long + 配额 + 面板） | ✅ |
 | | 2.7 打磨（图标 / 触觉 / 剧情补章 / 深色模式 / 空态） | ✅ |
 | | 2.8 口语点评 | ✅ |
+| UI | DesignSystem token / 样式 / 组件地基 | ✅ |
+| | 四 Tab 信息架构、首页 Hub、MapKit 3D 与飞行转场 | ✅ |
+| | 消息/好友/聊天/我的全面重构 | ✅ |
+| | 首启选角、AVG、词典、收藏、票根长尾换肤 | ✅ |
 
-**代码规模**：Sources + App 约 9.5k 行 Swift；16 个 Sources 模块；30 个测试套件，**137 用例全绿**。提交历史（`git log --oneline`）按单元一一对应，可据此回溯每个功能的引入点。
+当前为 16 个 Sources 模块、30 个测试套件，**137 用例全绿**。
 
 ---
 
@@ -217,7 +238,7 @@ xcodebuild -project LingoTrip.xcodeproj -scheme LingoTrip \
 
 - 测试是 **App 托管的 `LingoTripTests` bundle**（`bundle.unit-test`，host=LingoTrip），源码在 `Packages/LingoKit/Tests/` 下按被测模块分子目录。**为什么托管**：钥匙串 / SwiftData 等测试在无宿主的 SwiftPM runner 下会报 `errSecMissingEntitlement(-34018)`。
 - Mock LLM 在 `Tests/TestSupport/MockLLMProvider.swift`，所有依赖 LLM 的服务都用它做确定性测试。
-- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。若需注入难以手动触发的状态，用 DEBUG 环境变量 / 工具栏按钮（如 `SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 会在打开聊天时注入样例 quiz 与口语点评卡，方便截图核对 UI）。
+- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
 
 ---
 
@@ -241,7 +262,7 @@ xcodebuild -project LingoTrip.xcodeproj -scheme LingoTrip \
 3. **偶遇头像 / 立绘**：现为字母占位，可接内置多样化头像组或 AI 生图。
 4. **更多地区与剧情**：`RegionCatalog` / `MainlineCatalog` + `App/Resources/Stories` 加数据即可扩展；每个地区目前 2 章。
 5. **记忆与出题调参**：配额、压缩阈值、出题频率都在 `MemoryService.Config` / `QuizService` 里集中，可按真实体验调。
-6. **RosterFeature 充实**：好友列表 / 角色资料页目前较薄。
+6. **城市背景与角色头像美术**：代码兜底已完成，可按 `city_backdrop_<regionID>` 与角色资产约定逐步替换为正式素材。
 7. **国际化与无障碍**：文案目前中英混排硬编码，后续可上 `String Catalog`。
 
 ---

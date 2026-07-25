@@ -1,3 +1,4 @@
+import DesignSystem
 import DomainKit
 import PersistenceKit
 import SwiftUI
@@ -49,14 +50,7 @@ struct TicketStubCard: View {
     private static let airportCodes = ["london": "LON", "melbourne": "MEL", "newyork": "NYC"]
 
     private var palette: [Color] {
-        switch stub.artSeed % 6 {
-        case 0: [Color(red: 0.98, green: 0.55, blue: 0.35), Color(red: 0.90, green: 0.30, blue: 0.40)]
-        case 1: [Color(red: 0.35, green: 0.65, blue: 0.95), Color(red: 0.25, green: 0.35, blue: 0.75)]
-        case 2: [Color(red: 0.45, green: 0.78, blue: 0.55), Color(red: 0.15, green: 0.50, blue: 0.45)]
-        case 3: [Color(red: 0.95, green: 0.75, blue: 0.30), Color(red: 0.85, green: 0.50, blue: 0.20)]
-        case 4: [Color(red: 0.75, green: 0.50, blue: 0.90), Color(red: 0.45, green: 0.30, blue: 0.75)]
-        default: [Color(red: 0.40, green: 0.75, blue: 0.80), Color(red: 0.20, green: 0.45, blue: 0.60)]
-        }
+        DSScenePalette.ticket(stub.artSeed)
     }
 
     private func code(_ regionID: String) -> String {
@@ -128,8 +122,12 @@ struct TicketStubCard: View {
         .foregroundStyle(.white)
         .background(
             LinearGradient(colors: palette, startPoint: .topLeading, endPoint: .bottomTrailing),
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
         )
-        .shadow(color: palette[1].opacity(0.35), radius: 8, y: 4)
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
+                .stroke(.white.opacity(0.14), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
     }
 }

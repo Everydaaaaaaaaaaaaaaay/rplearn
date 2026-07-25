@@ -1,2 +1,1 @@
-// DesignSystem — 纯 UI 组件库。
-// 气泡、词典浮窗、票根卡片等通用组件在后续单元中加入，本文件仅作为模块占位。
+// DesignSystem — LingoTrip 视觉 token、样式与跨 Feature 复用组件。

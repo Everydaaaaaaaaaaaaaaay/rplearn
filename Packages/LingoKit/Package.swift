@@ -31,7 +31,7 @@ let featureTargets: [Target] = [
     feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit", "DictKit", "SpeechKit"]),
     feature("OnboardingFeature", extraDependencies: ["StoryEngine", "PersistenceKit"]),
     feature("StoryFeature", extraDependencies: ["StoryEngine", "PersistenceKit", "DictKit", "SpeechKit"]),
-    feature("RosterFeature"),
+    feature("RosterFeature", extraDependencies: ["PersistenceKit"]),
     feature("MapFeature", extraDependencies: ["PersistenceKit"]),
     feature("FavoritesFeature", extraDependencies: ["PersistenceKit", "DictKit", "SpeechKit"]),
     feature("SettingsFeature", extraDependencies: ["LLMKit", "PersistenceKit", "SpeechKit"]),

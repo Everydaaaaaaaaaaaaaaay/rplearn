@@ -39,12 +39,12 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 y: showBelow ? wordRect.maxY + 8 + 190 : max(198, wordRect.minY - 8 - 190)
                             )
                         }
-                        .transition(.opacity)
+                        .transition(.scale(scale: 0.94, anchor: .center).combined(with: .opacity))
                     }
                     .ignoresSafeArea(.keyboard)
                 }
             }
-            .animation(.easeOut(duration: 0.18), value: selection)
+            .animation(DSAnimation.bouncy, value: selection)
     }
 }
 

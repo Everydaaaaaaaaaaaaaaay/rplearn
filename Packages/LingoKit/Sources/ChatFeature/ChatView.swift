@@ -20,6 +20,9 @@ public struct ChatView: View {
     @State private var showSimulatorInjection = false
     @State private var simulatorInjectionText = ""
     @State private var appleTranslator = AppleTranslator()
+    @State private var quizCelebrationTrigger = 0
+    @State private var shakingMessageID: UUID?
+    @State private var shakePhase = false
     private let deps: ChatDependencies
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
@@ -34,10 +37,22 @@ public struct ChatView: View {
             messageList
             inputBar
         }
-        .navigationTitle(viewModel.character.card.name)
+        .background(Color.dsBackground)
         .navigationBarTitleDisplayMode(.inline)
-        #if targetEnvironment(simulator)
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack(spacing: 8) {
+                    AvatarBadge(name: viewModel.character.card.name, size: 32)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(viewModel.character.card.name)
+                            .font(.subheadline.bold())
+                        Text(chatStatus)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            #if targetEnvironment(simulator)
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     Task { await viewModel.debugInjectQuiz() }
@@ -46,8 +61,8 @@ public struct ChatView: View {
                 }
                 .accessibilityLabel("调试：注入小测")
             }
+            #endif
         }
-        #endif
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -72,7 +87,19 @@ public struct ChatView: View {
                 await appleTranslator.translate(text)
             }
             await viewModel.load()
+            if let conversation = viewModel.conversation {
+                ConversationReadState.markRead(conversationID: conversation.id)
+            }
         }
+        .dsTabBarHidden()
+    }
+
+    private var chatStatus: String {
+        let regions = ["london": "伦敦", "melbourne": "墨尔本", "newyork": "纽约"]
+        if viewModel.conversation?.isEncounterSession == true {
+            return "偶遇中 · \(viewModel.character.difficultyLevel.displayName)"
+        }
+        return "⌖ \(regions[viewModel.character.card.regionID] ?? viewModel.character.card.regionID) · \(viewModel.character.difficultyLevel.displayName)"
     }
 
     private var messageList: some View {
@@ -105,6 +132,7 @@ public struct ChatView: View {
                 .padding(.vertical, 10)
             }
             .defaultScrollAnchor(.bottom)
+            .background(Color.dsBackground)
             .onChange(of: viewModel.streamingText) {
                 proxy.scrollTo("streaming", anchor: .bottom)
             }
@@ -216,10 +244,13 @@ public struct ChatView: View {
                     }
                 }
             } label: {
-                Circle()
-                    .fill(.yellow)
-                    .frame(width: 12, height: 12)
+                Image(systemName: "sparkles")
+                    .font(.system(size: 9, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 18, height: 18)
+                    .background(Color.dsCoach, in: Circle())
                     .overlay(Circle().stroke(.background, lineWidth: 2))
+                    .symbolEffect(.pulse, options: .repeating)
             }
             .offset(x: 42, y: -3)
             .accessibilityLabel("查看改进建议")
@@ -232,40 +263,39 @@ public struct ChatView: View {
         if expandedCoachMessageIDs.contains(message.id),
            let review = CoachService.decode(fromJSON: message.coachReviewJSON),
            review.hasIssues {
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(Array(review.issues.enumerated()), id: \.offset) { _, issue in
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(spacing: 6) {
-                            Text(issue.quote)
-                                .strikethrough()
-                                .foregroundStyle(.secondary)
-                            Image(systemName: "arrow.right")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                            Text(issue.correction)
-                                .foregroundStyle(.green)
-                        }
-                        .font(.subheadline)
-                        Text(issue.explanationZh)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                        Button("采纳") {
-                            viewModel.draft = message.text.replacingOccurrences(
-                                of: issue.quote,
-                                with: issue.correction
-                            )
-                            withAnimation(.snappy) {
-                                expandedCoachMessageIDs.remove(message.id)
+            CalloutCard(kind: .coach) {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(Array(review.issues.enumerated()), id: \.offset) { _, issue in
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack(spacing: 6) {
+                                Text(issue.quote)
+                                    .strikethrough()
+                                    .foregroundStyle(.secondary)
+                                Image(systemName: "arrow.right")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                Text(issue.correction)
+                                    .foregroundStyle(Color.dsSuccess)
                             }
+                            .font(.subheadline)
+                            Text(issue.explanationZh)
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            Button("采纳") {
+                                viewModel.draft = message.text.replacingOccurrences(
+                                    of: issue.quote,
+                                    with: issue.correction
+                                )
+                                _ = withAnimation(.snappy) {
+                                    expandedCoachMessageIDs.remove(message.id)
+                                }
+                            }
+                            .font(.footnote)
+                            .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
                         }
-                        .font(.footnote)
-                        .buttonStyle(.bordered)
-                        .controlSize(.mini)
                     }
                 }
             }
-            .padding(10)
-            .background(Color.yellow.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .transition(.opacity.combined(with: .move(edge: .top)))
         }
     }
@@ -276,39 +306,33 @@ public struct ChatView: View {
     @ViewBuilder
     private func speechReviewCard(_ message: MessageDTO) -> some View {
         if message.kind == .voice, let review = CoachService.decodeSpeech(fromJSON: message.speechReviewJSON) {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack(spacing: 6) {
-                    Label("口语点评", systemImage: "waveform.badge.mic")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.teal)
-                    Spacer()
+            CalloutCard(kind: .speech, trailing: {
                     Text(String(repeating: "★", count: review.clampedRating)
                         + String(repeating: "☆", count: 5 - review.clampedRating))
                         .font(.caption)
-                        .foregroundStyle(.teal)
-                }
-                Text(review.commentZh)
-                    .font(.footnote)
-                    .foregroundStyle(.primary)
-                ForEach(Array(review.tips.enumerated()), id: \.offset) { _, tip in
-                    VStack(alignment: .leading, spacing: 2) {
-                        HStack(spacing: 6) {
-                            Text(tip.quote)
-                                .strikethrough()
+                        .foregroundStyle(Color.dsSpeech)
+                }) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(review.commentZh)
+                        .font(.footnote)
+                        .foregroundStyle(.primary)
+                    ForEach(Array(review.tips.enumerated()), id: \.offset) { _, tip in
+                        VStack(alignment: .leading, spacing: 2) {
+                            HStack(spacing: 6) {
+                                Text(tip.quote)
+                                    .strikethrough()
+                                    .foregroundStyle(.secondary)
+                                Image(systemName: "arrow.right").font(.caption2).foregroundStyle(.secondary)
+                                Text(tip.better).foregroundStyle(Color.dsSpeech)
+                            }
+                            .font(.subheadline)
+                            Text(tip.explanationZh)
+                                .font(.footnote)
                                 .foregroundStyle(.secondary)
-                            Image(systemName: "arrow.right").font(.caption2).foregroundStyle(.secondary)
-                            Text(tip.better).foregroundStyle(.teal)
                         }
-                        .font(.subheadline)
-                        Text(tip.explanationZh)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
                     }
                 }
             }
-            .padding(10)
-            .frame(maxWidth: 300, alignment: .leading)
-            .background(Color.teal.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
     }
 
@@ -319,47 +343,45 @@ public struct ChatView: View {
     private func quizCard(_ message: MessageDTO) -> some View {
         if let quiz = QuizService.decode(fromJSON: message.quizJSON) {
             let chosen = message.quizChosenIndex
-            VStack(alignment: .leading, spacing: 10) {
-                Label("小测验", systemImage: "checkmark.bubble.fill")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.purple)
-                Text(quiz.question)
-                    .font(.subheadline.weight(.medium))
-                VStack(spacing: 6) {
-                    ForEach(Array(quiz.options.enumerated()), id: \.offset) { index, option in
-                        quizOption(message: message, quiz: quiz, index: index, option: option, chosen: chosen)
+            CalloutCard(kind: .quiz) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(quiz.question)
+                        .font(.subheadline.weight(.medium))
+                    VStack(spacing: 6) {
+                        ForEach(Array(quiz.options.enumerated()), id: \.offset) { index, option in
+                            quizOption(message: message, quiz: quiz, index: index, option: option, chosen: chosen)
+                        }
                     }
-                }
-                if let chosen {
-                    let correct = chosen == quiz.answer
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(correct
-                            ? "🎉 答对了！+\(QuizService.correctReward) 金币"
-                            : "正确答案：\(QuizService.optionLabel(quiz.answer)). \(quiz.options[quiz.answer])")
-                            .font(.footnote.weight(.semibold))
-                            .foregroundStyle(correct ? .green : .orange)
-                        Text(quiz.explanationZh)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                    if let chosen {
+                        let correct = chosen == quiz.answer
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(correct
+                                ? "🎉 答对了！+\(QuizService.correctReward) 金币"
+                                : "正确答案：\(QuizService.optionLabel(quiz.answer)). \(quiz.options[quiz.answer])")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(correct ? Color.dsSuccess : Color.dsWarning)
+                            Text(quiz.explanationZh)
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .transition(.opacity)
                     }
-                    .transition(.opacity)
+                    Button {
+                        Task { await viewModel.setQuizOptOut(!viewModel.conversationOptedOut) }
+                    } label: {
+                        Label(
+                            "不再弹题",
+                            systemImage: viewModel.conversationOptedOut ? "checkmark.square.fill" : "square"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
                 }
-                Button {
-                    Task { await viewModel.setQuizOptOut(!viewModel.conversationOptedOut) }
-                } label: {
-                    Label(
-                        "不再弹题",
-                        systemImage: viewModel.conversationOptedOut ? "checkmark.square.fill" : "square"
-                    )
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                }
-                .buttonStyle(.plain)
             }
-            .padding(12)
-            .frame(maxWidth: 300, alignment: .leading)
-            .background(Color.purple.opacity(0.10), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
             .animation(.snappy, value: chosen)
+            .offset(x: shakingMessageID == message.id ? (shakePhase ? 7 : -7) : 0)
+            .celebration(chosen == quiz.answer, tint: .dsSuccess, trigger: quizCelebrationTrigger)
         }
     }
 
@@ -374,7 +396,19 @@ public struct ChatView: View {
         let isCorrect = index == quiz.answer
         let isChosen = index == chosen
         return Button {
-            Task { await viewModel.answerQuiz(message: message, chosenIndex: index) }
+            Task {
+                await viewModel.answerQuiz(message: message, chosenIndex: index)
+                if index == quiz.answer {
+                    quizCelebrationTrigger += 1
+                } else {
+                    shakingMessageID = message.id
+                    withAnimation(.linear(duration: 0.07).repeatCount(5, autoreverses: true)) {
+                        shakePhase.toggle()
+                    }
+                    try? await Task.sleep(for: .milliseconds(420))
+                    shakingMessageID = nil
+                }
+            }
         } label: {
             HStack(spacing: 8) {
                 Text(QuizService.optionLabel(index))
@@ -400,9 +434,9 @@ public struct ChatView: View {
     }
 
     private func quizOptionColor(isAnswered: Bool, isCorrect: Bool, isChosen: Bool) -> Color {
-        if isAnswered, isCorrect { return .green.opacity(0.22) }
-        if isChosen { return .red.opacity(0.16) }
-        return Color(.tertiarySystemBackground)
+        if isAnswered, isCorrect { return .dsSuccess.opacity(0.22) }
+        if isChosen { return .dsDanger.opacity(0.16) }
+        return .dsSurface
     }
 
     @ViewBuilder
@@ -513,7 +547,7 @@ public struct ChatView: View {
                     .textFieldStyle(.plain)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .background(Color.dsBubbleIncoming, in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
                     .onSubmit {
                         Task { await viewModel.sendDraft() }
                     }
@@ -523,12 +557,13 @@ public struct ChatView: View {
                 } label: {
                     Image(systemName: "arrow.up.circle.fill")
                         .font(.system(size: 30))
+                        .foregroundStyle(Color.dsSky)
                 }
                 .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isStreaming)
             }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .background(.bar)
+        .background(.ultraThinMaterial)
     }
 }

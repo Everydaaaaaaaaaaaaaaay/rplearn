@@ -17,6 +17,63 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
     public var taglineZh: String
     public var landmarks: [String]
     public var activities: [Activity]
+    public var latitude: Double
+    public var longitude: Double
+
+    public init(
+        id: String,
+        nameEn: String,
+        nameZh: String,
+        countryCode: String,
+        countryNameEn: String,
+        countryNameZh: String,
+        taglineZh: String,
+        landmarks: [String],
+        activities: [Activity],
+        latitude: Double = 0,
+        longitude: Double = 0
+    ) {
+        self.id = id
+        self.nameEn = nameEn
+        self.nameZh = nameZh
+        self.countryCode = countryCode
+        self.countryNameEn = countryNameEn
+        self.countryNameZh = countryNameZh
+        self.taglineZh = taglineZh
+        self.landmarks = landmarks
+        self.activities = activities
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case nameEn
+        case nameZh
+        case countryCode
+        case countryNameEn
+        case countryNameZh
+        case taglineZh
+        case landmarks
+        case activities
+        case latitude
+        case longitude
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        nameEn = try container.decode(String.self, forKey: .nameEn)
+        nameZh = try container.decode(String.self, forKey: .nameZh)
+        countryCode = try container.decode(String.self, forKey: .countryCode)
+        countryNameEn = try container.decode(String.self, forKey: .countryNameEn)
+        countryNameZh = try container.decode(String.self, forKey: .countryNameZh)
+        taglineZh = try container.decode(String.self, forKey: .taglineZh)
+        landmarks = try container.decode([String].self, forKey: .landmarks)
+        activities = try container.decode([Activity].self, forKey: .activities)
+        latitude = try container.decodeIfPresent(Double.self, forKey: .latitude) ?? 0
+        longitude = try container.decodeIfPresent(Double.self, forKey: .longitude) ?? 0
+    }
 }
 
 public struct RegionCatalog: Sendable {

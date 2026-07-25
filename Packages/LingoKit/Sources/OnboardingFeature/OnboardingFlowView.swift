@@ -38,7 +38,7 @@ public struct OnboardingFlowView: View {
             switch phase {
             case .story:
                 if let player {
-                    ChatStoryView(player: player) {
+                    ChatStoryView(player: player, characters: characters) {
                         withAnimation(.snappy) {
                             phase = .selection
                         }
@@ -91,6 +91,7 @@ public struct OnboardingFlowView: View {
 /// 聊天皮肤的剧情播放：气泡逐条点击推进（plan.md §3.6 首启剧情复用引擎、换渲染皮肤）。
 struct ChatStoryView: View {
     let player: StoryPlayer
+    let characters: [CharacterDTO]
     let onFinished: () -> Void
 
     var body: some View {
@@ -99,7 +100,7 @@ struct ChatStoryView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 10) {
-                        ForEach(player.history) { line in
+                        ForEach(Array(player.history.enumerated()), id: \.element.id) { index, line in
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(line.speaker)
                                     .font(.caption2)
@@ -107,6 +108,12 @@ struct ChatStoryView: View {
                                     .padding(.leading, 6)
                                 MessageBubble(side: .incoming) {
                                     Text(line.text)
+                                }
+                                if shouldShowCard(at: index, line: line),
+                                   let character = character(for: line.sprite) {
+                                    CharacterIntroCard(character: character)
+                                        .padding(.leading, 6)
+                                        .transition(.scale(scale: 0.94).combined(with: .opacity))
                                 }
                             }
                             .id(line.id)
@@ -133,11 +140,7 @@ struct ChatStoryView: View {
 
     private var header: some View {
         HStack {
-            ZStack {
-                Circle().fill(Color.pink.opacity(0.2))
-                Text("雨").foregroundStyle(.pink).font(.headline)
-            }
-            .frame(width: 36, height: 36)
+            AvatarBadge(name: "小雨", tint: .pink, size: 36)
             Text("小雨")
                 .font(.headline)
             Spacer()
@@ -161,7 +164,7 @@ struct ChatStoryView: View {
                         Text(option.text)
                             .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.duo(.outline))
                 }
             }
             .padding(12)
@@ -183,6 +186,17 @@ struct ChatStoryView: View {
             }
         }
     }
+
+    private func shouldShowCard(at index: Int, line: StoryPlayer.Line) -> Bool {
+        guard line.sprite?.hasPrefix("card:") == true else { return false }
+        guard index > 0 else { return true }
+        return player.history[index - 1].sprite != line.sprite
+    }
+
+    private func character(for sprite: String?) -> CharacterDTO? {
+        guard let regionID = sprite?.split(separator: ":").last.map(String.init) else { return nil }
+        return characters.first { $0.card.regionID == regionID && $0.isMainCharacter }
+    }
 }
 
 /// 主角色资料浏览与选择。
@@ -192,67 +206,167 @@ struct CharacterSelectView: View {
 
     private static let regionNames = ["london": "伦敦", "melbourne": "墨尔本", "newyork": "纽约"]
     private static let regionFlags = ["london": "🇬🇧", "melbourne": "🇦🇺", "newyork": "🇺🇸"]
+    @State private var selectedID: UUID?
+    @State private var celebrationTrigger = 0
+    @State private var isConfirming = false
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                Text("选择你的出发城市")
-                    .font(.title2.bold())
-                    .padding(.top, 24)
-                Text("每个城市都有一位伙伴在等你")
+        ZStack {
+            LinearGradient(
+                colors: [Color.dsSky.opacity(0.22), Color.dsBackground],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+
+            VStack(spacing: DSSpacing.sm) {
+                HStack(spacing: 6) {
+                    ForEach(1...3, id: \.self) { step in
+                        Text("\(step)")
+                            .font(.caption.bold())
+                            .foregroundStyle(step == 2 ? .white : Color.dsSky)
+                            .frame(width: 26, height: 26)
+                            .background(step == 2 ? Color.dsSky : Color.dsSurface, in: Circle())
+                        if step < 3 {
+                            Capsule()
+                                .fill(step < 2 ? Color.dsSky : Color.dsBorder)
+                                .frame(width: 22, height: 3)
+                        }
+                    }
+                }
+                .padding(.top, DSSpacing.sm)
+
+                Text("选择你的旅伴")
+                    .font(.largeTitle.bold())
+                Text("左右滑动，认识来自不同城市的朋友")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                ForEach(characters) { character in
-                    card(character)
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: DSSpacing.md) {
+                        ForEach(characters) { character in
+                            physicalCard(character)
+                                .containerRelativeFrame(.horizontal, count: 10, span: 8, spacing: DSSpacing.md)
+                                .id(character.id)
+                                .scrollTransition(.interactive, axis: .horizontal) { content, phase in
+                                    content
+                                        .scaleEffect(phase.isIdentity ? 1 : 0.92)
+                                        .rotation3DEffect(
+                                            .degrees(Double(phase.value) * -9),
+                                            axis: (x: 0, y: 1, z: 0),
+                                            perspective: 0.65
+                                        )
+                                        .opacity(phase.isIdentity ? 1 : 0.74)
+                                }
+                        }
+                    }
+                    .scrollTargetLayout()
+                }
+                .scrollTargetBehavior(.viewAligned)
+                .scrollPosition(id: $selectedID)
+                .contentMargins(.horizontal, 28, for: .scrollContent)
+
+                HStack(spacing: 7) {
+                    ForEach(characters) { character in
+                        Circle()
+                            .fill(selectedID == character.id ? Color.dsSky : Color.dsBorder)
+                            .frame(width: selectedID == character.id ? 18 : 7, height: 7)
+                            .animation(DSAnimation.bouncy, value: selectedID)
+                    }
+                }
+
+                Button {
+                    confirmSelection()
+                } label: {
+                    Text(buttonTitle)
+                }
+                .buttonStyle(.duoPrimary)
+                .disabled(selectedCharacter == nil || isConfirming)
+                .celebration(true, tint: .dsSky, trigger: celebrationTrigger)
+                .padding(.horizontal, DSSpacing.xl)
+                .padding(.bottom, DSSpacing.md)
+            }
+        }
+        .onAppear { selectedID = selectedID ?? characters.first?.id }
+        .sensoryFeedback(.impact(flexibility: .soft), trigger: selectedID)
+    }
+
+    private var selectedCharacter: CharacterDTO? {
+        selectedID.flatMap { id in characters.first { $0.id == id } }
+    }
+
+    private var buttonTitle: String {
+        guard let character = selectedCharacter else { return "选择一位旅伴" }
+        return "去\(Self.regionNames[character.card.regionID] ?? "这座城市")找 \(firstName(character.card.name))"
+    }
+
+    private func physicalCard(_ character: CharacterDTO) -> some View {
+        let palette = DSScenePalette.city(character.card.regionID)
+        return VStack(spacing: DSSpacing.md) {
+            HStack {
+                Text(firstName(character.card.name))
+                    .font(.system(size: 34, weight: .black, design: .rounded))
+                Spacer()
+                Text(Self.regionFlags[character.card.regionID] ?? "🌍")
+                    .font(.system(size: 32))
+                    .padding(7)
+                    .background(.white.opacity(0.9), in: RoundedRectangle(cornerRadius: 6))
+                    .rotationEffect(.degrees(3))
+            }
+
+            AvatarBadge(name: character.card.name, tint: .white, size: 112)
+                .background(.white.opacity(0.16), in: Circle())
+
+            VStack(spacing: 4) {
+                Text("\(character.card.age) 岁 · \(Self.regionNames[character.card.regionID] ?? character.card.regionID) · \(character.card.occupation)")
+                    .font(.subheadline.bold())
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                Text(character.card.personality)
+                    .font(.footnote)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(3)
+                    .opacity(0.88)
+            }
+
+            FlowLayout(spacing: 6, lineSpacing: 6) {
+                ForEach(character.card.hobbies.prefix(3), id: \.self) { hobby in
+                    DSChip(hobby, tint: .white)
                 }
             }
-            .padding(16)
+        }
+        .foregroundStyle(.white)
+        .padding(DSSpacing.lg)
+        .frame(maxHeight: 520)
+        .background(
+            LinearGradient(
+                colors: [palette.skyTop, palette.accent, palette.silhouetteNear],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: 30, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                .stroke(.white.opacity(0.78), lineWidth: 7)
+        }
+        .shadow(color: palette.silhouetteNear.opacity(0.35), radius: 18, y: 12)
+        .scaleEffect(isConfirming && selectedID == character.id ? 1.04 : 1)
+        .animation(DSAnimation.pop, value: isConfirming)
+        .padding(.vertical, 18)
+    }
+
+    private func confirmSelection() {
+        guard let character = selectedCharacter else { return }
+        isConfirming = true
+        celebrationTrigger += 1
+        Task {
+            try? await Task.sleep(for: .milliseconds(600))
+            onSelect(character)
         }
     }
 
-    private func card(_ character: CharacterDTO) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 12) {
-                ZStack {
-                    Circle().fill(Color.accentColor.opacity(0.15))
-                    Text(String(character.card.name.prefix(1)))
-                        .font(.title2.bold())
-                        .foregroundStyle(Color.accentColor)
-                }
-                .frame(width: 56, height: 56)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(character.card.name)
-                        .font(.headline)
-                    Text("\(Self.regionFlags[character.card.regionID] ?? "🌍") \(Self.regionNames[character.card.regionID] ?? character.card.regionID) · \(character.card.age) 岁")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
-            }
-            Text(character.card.occupation)
-                .font(.subheadline)
-            Text(character.card.personality)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(3)
-            HStack(spacing: 6) {
-                ForEach(character.card.hobbies.prefix(3), id: \.self) { hobby in
-                    Text(hobby)
-                        .font(.caption2)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 3)
-                        .background(Color.accentColor.opacity(0.1), in: Capsule())
-                }
-            }
-            Button {
-                onSelect(character)
-            } label: {
-                Text("去\(Self.regionNames[character.card.regionID] ?? "这里")找 TA")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-        }
-        .padding(16)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+    private func firstName(_ name: String) -> String {
+        name.split(separator: " ").first.map(String.init) ?? name
     }
 }

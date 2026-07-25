@@ -1,6 +1,6 @@
 # LingoTrip UI 全面重构计划（视觉风格 + 结构重设计）
 
-> 状态：**已定稿，未开始实施**（2026-07-08）。实施时按 §五 任务拆分表执行，每任务一次 commit。
+> 状态：**已实施并通过构建、测试与浅/深模式截图回归**（2026-07-25）。本文件继续作为视觉与信息架构事实源。
 
 ## Context（背景）
 
@@ -61,7 +61,7 @@ LingoTrip 是 SwiftUI 原生 iOS 语言学习 app（M0–M2 功能全落地，�
 DesignSystem/
 ├── Tokens/     DSColor · DSLayout(Radius/Spacing) · DSAnimation · DSTypography · DSScenePalette
 ├── Styles/     DuoButtonStyle · PressableCardStyle · DSCard(.dsCard())
-├── Components/ AvatarBadge · DSChip · CalloutCard · CelebrationBurst · DSTabBar · TabBarVisibility
+├── Components/ AvatarBadge · DSChip · CalloutCard · CelebrationBurst · TabBarVisibility
 └── 现有：MessageBubbleView（内部 token 化，签名不变）· TappableText · FlowLayout · Haptics
 ```
 
@@ -70,8 +70,8 @@ DesignSystem/
 - **`AvatarBadge(name:tint:size:)`**：36/46/56/88pt；tint nil 时按 name 哈希 6 色盘稳定取色；Circle tint.opacity(0.15) + 首字母 rounded bold。
 - **`DSChip(_:tint:prominent:)`**：Capsule caption2，tint.opacity(0.12) 底；prominent 实底白字。
 - **`CalloutCard(kind:maxWidth:trailing:content:)`**：kind 预设 `.coach`/`.speech`/`.quiz`（tint+icon+title），统一骨架（标题行+trailing 槽+content）。
-- **`DSTabBar(selection:items:)`** + `DSTabItem(title:icon:filledIcon:)`：选中 `contentTransition(.symbolEffect(.replace))` + `.symbolEffect(.bounce, value: 仅选中时自增的 token)` + 选中 pill `matchedGeometryEffect` 滑动 + `Haptics.selection()`；`.ignoresSafeArea(.keyboard)`；a11y label/trait/字号封顶。
-- **`TabBarVisibility`**：`DSTabBarHiddenKey` PreferenceKey + `.dsTabBarHidden(_:)`。**RootView 按 tab 记录 `[AppTab: Bool]`**（防跨 tab 泄漏——TabView 非选中 tab 的 preference 也会上抛）。
+- **原生 `TabView` + `.tabItem`**：系统负责切换、重选、导航状态、安全区、键盘避让、badge 与辅助功能；品牌层只设置 `Color.dsSky` tint，不覆盖点击层。
+- **`TabBarVisibility`**：`.dsTabBarHidden(_:)` 直接映射系统 `.toolbar(visibility, for: .tabBar)`，由导航层级自动恢复。
 - **`.celebration(_:tint:trigger:)`**：12–14 粒星形/圆点（dsSunset/dsSky/dsSuccess），keyframeAnimator 0.8s 外抛+旋转+淡出；ReduceMotion 降级 opacity 闪现。
 
 每组件自带 `#Preview`（浅/深 + `.dynamicTypeSize(.accessibility1)`）。
@@ -81,14 +81,12 @@ DesignSystem/
 ```
 RootView
 ├─ @State selectedTab: AppTab { home, map, messages, me }
-├─ @State tabBarHiddenByTab: [AppTab: Bool]
-├─ TabView(selection:)（每 tab 根 .toolbar(.hidden, for: .tabBar) 杀原生栏）
+├─ TabView(selection:)（每 tab 通过 .tabItem 注册原生栏）
 │   ├─ home:     NavigationStack { HomeView }
 │   │     navigationDestination: HomeDestination(.mainline/.activities) + MainlineChapter→AVGStoryView（保留）
 │   ├─ map:      NavigationStack { MapView }（票根 MapFeature 内部 push）
 │   ├─ messages: NavigationStack { ConversationListView }（toolbar 好友入口→AnyView(RosterView)）
 │   └─ me:       NavigationStack { MyPageView(favoritesBuilder:) }（→SettingsView 二级页）
-├─ overlay(.bottom): DSTabBar（hidden: tabBarHiddenByTab[selectedTab]）
 └─ fullScreenCover: OnboardingFlowView（不变）
 ```
 
@@ -113,7 +111,7 @@ ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= �
 
 ### 消息页（ConversationListView 重做，QQ 式）
 大标题「消息」+ toolbar 好友入口（person.2 → RosterView）；行 = AvatarBadge 48pt + 未读红点徽章 + 名字/智能时间（今天 HH:mm、昨天、星期、M/d）+ 摘要（语音→「[语音]」、quiz→「[小测验]」）；置顶行浅主色底衬排前；滑动操作 = 置顶/标记已读（**不做删除**——非现有能力）；`.searchable` 按名字过滤。
-**未读实现（不动 Schema）**：新 `ConversationListState.swift` — `LastReadTracker`（UserDefaults 存 conversationID→lastReadAt，未读 = lastMessageAt 更新且末条为 assistant；进 ChatView 标记已读）+ 置顶 ID 集合。DSTabBar 消息角标可复用此计数（增强项）。
+**未读实现（不动 Schema）**：新 `ConversationListState.swift` — `LastReadTracker`（UserDefaults 存 conversationID→lastReadAt，未读 = lastMessageAt 更新且末条为 assistant；进 ChatView 标记已读）+ 置顶 ID 集合。原生消息 Tab 通过 `.badge(unreadCount)` 展示角标。
 
 ### 好友二级页 + 角色资料卡（RosterFeature 基础版）
 `RosterView`：好友位使用条（occupiedFriendSlots/friendSlotLimit）+ 分区（伙伴=isMainCharacter / 旅途遇到的朋友）+ 行（AvatarBadge+名字+国籍+职业）。
@@ -144,7 +142,7 @@ DictCardView（chip→DSChip、例句底→dsBubbleIncoming、AI 解释钮→`.d
 | 1 | `feat(design): token 地基 + 全局 rounded/tint/AccentColor` | DesignSystem/Tokens/ 5 文件、LingoTripApp.swift、AccentColor.colorset | 任意页截图：主色天空蓝、圆体生效、深浅双模式 | — |
 | 2 | `feat(design): DuoButtonStyle / PressableCardStyle / .dsCard()` | Styles/ 3 文件 | Preview：按压位移/缩放动效 | 1 |
 | 3 | `feat(design): AvatarBadge / DSChip / CalloutCard / CelebrationBurst` | Components/ 4 文件 | Preview：哈希配色稳定、三卡骨架、粒子 | 1 |
-| 4 | `refactor(app): 四 tab 骨架 + 自绘 DSTabBar + 按 tab 隐藏 preference + 导航迁移` | DSTabBar/TabBarVisibility、RootView 重写、AVGStoryView/ChatView 挂 dsTabBarHidden、MapView 票根入口暂挂 | 4 tab 截图（me 暂显 SettingsView）；进聊天/AVG 藏栏返回恢复；**跨 tab 无泄漏**；pill 滑动 | 1,3 |
+| 4 | `refactor(app): 四 tab 骨架 + 原生 Tab 行为 + 导航迁移` | 原生 TabView/TabBarVisibility、RootView 重写、AVGStoryView/ChatView 挂 dsTabBarHidden、MapView 票根入口暂挂 | 4 tab 截图（me 暂显 SettingsView）；进聊天/AVG 藏栏返回恢复；系统切换、badge 与 a11y 正常 | 1,3 |
 | 5 | `feat(domain): Region 加经纬度 + regions.json 三城坐标` | RegionCatalog.swift、regions.json | 测试全绿（默认值保 fixture） | — |
 | 6 | `feat(home): 城市动态背景（DSScenePalette 城市色+剪影兜底+视差+scrim）` | DSScenePalette、CityBackdropView.swift、HomeView（仅挂背景） | 3 城截图、深浅、视差录屏 | 1 |
 | 7 | `feat(home): 主线剧情二级页 MainlineListView` | MainlineListView.swift、RootView(.mainline) | 0 完成/部分完成两态；进 AVG 完成回流 | 2,4 |

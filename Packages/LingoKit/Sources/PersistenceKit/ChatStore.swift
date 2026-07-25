@@ -202,7 +202,9 @@ public actor ChatStore {
                 characterName: character.name,
                 avatarAssetName: character.avatarAssetName,
                 lastMessageText: lastMessage?.text ?? "",
-                lastMessageAt: conversation.lastMessageAt
+                lastMessageAt: conversation.lastMessageAt,
+                lastMessageRole: lastMessage.flatMap { MessageRole(rawValue: $0.roleRaw) },
+                lastMessageKind: lastMessage.flatMap { MessageKind(rawValue: $0.kindRaw) }
             )
         }
         .sorted { $0.lastMessageAt > $1.lastMessageAt }
@@ -267,6 +269,8 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
     public var avatarAssetName: String?
     public var lastMessageText: String
     public var lastMessageAt: Date
+    public var lastMessageRole: MessageRole?
+    public var lastMessageKind: MessageKind?
 
     public var id: UUID { conversationID }
 
@@ -276,7 +280,9 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
         characterName: String,
         avatarAssetName: String?,
         lastMessageText: String,
-        lastMessageAt: Date
+        lastMessageAt: Date,
+        lastMessageRole: MessageRole? = nil,
+        lastMessageKind: MessageKind? = nil
     ) {
         self.conversationID = conversationID
         self.characterID = characterID
@@ -284,5 +290,7 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
         self.avatarAssetName = avatarAssetName
         self.lastMessageText = lastMessageText
         self.lastMessageAt = lastMessageAt
+        self.lastMessageRole = lastMessageRole
+        self.lastMessageKind = lastMessageKind
     }
 }
