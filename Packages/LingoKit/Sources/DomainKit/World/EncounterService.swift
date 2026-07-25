@@ -91,6 +91,7 @@ public struct EncounterService: Sendable {
         existingNames: Set<String>
     ) async throws -> Encounter {
         let request = LLMRequest(
+            task: .characterGeneration,
             tier: .balanced,
             system: Self.generationPrompt(origin: origin, region: region, userLevel: userLevel, existingNames: existingNames),
             messages: [.user("Generate one character now.")],

@@ -10,6 +10,7 @@ public struct TranslationService: Sendable {
 
     public func translateToChinese(_ sentence: String) async throws -> String {
         let request = LLMRequest(
+            task: .translation,
             tier: .balanced,
             system: """
             你是资深中英翻译。把用户给出的英文句子翻译成自然、地道的中文口语，符合原文的语气与随意程度。\

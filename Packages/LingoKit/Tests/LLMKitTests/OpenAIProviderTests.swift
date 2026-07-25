@@ -50,6 +50,7 @@ struct OpenAIProviderTests {
     @Test("json_schema 降级为 prompt 内嵌 schema")
     func schemaDegradation() {
         let request = LLMRequest(
+            task: .conversation,
             tier: .fast,
             system: "原始 system",
             messages: [.user("hi")],
@@ -65,6 +66,7 @@ struct OpenAIProviderTests {
     func bodyBuilding() {
         let provider = OpenAIProvider(config: config)
         let request = LLMRequest(
+            task: .conversation,
             tier: .balanced,
             system: "sys",
             messages: [.user("hi")],

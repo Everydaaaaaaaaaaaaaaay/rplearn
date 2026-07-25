@@ -190,6 +190,17 @@ public actor BackendClient {
         )
     }
 
+    public func eventStream<Request: Encodable & Sendable>(
+        path: String,
+        body: Request
+    ) async throws -> AsyncThrowingStream<BackendServerSentEvent, Error> {
+        try await openEventStream(
+            path: path,
+            body: try encoder.encode(body),
+            retryAfterUnauthorized: true
+        )
+    }
+
     private func request<Response: Decodable & Sendable>(
         path: String,
         method: String,
@@ -227,29 +238,14 @@ public actor BackendClient {
         guard path.hasPrefix("/v1/") else {
             throw BackendClientError.invalidResponse
         }
-        let endpoint = configuration.baseURL.appendingPathComponent(String(path.dropFirst()))
-        guard var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false) else {
-            throw BackendClientError.invalidResponse
-        }
-        components.queryItems = queryItems.isEmpty ? nil : queryItems
-        guard let url = components.url else {
-            throw BackendClientError.invalidResponse
-        }
-        var request = URLRequest(
-            url: url,
-            timeoutInterval: configuration.requestTimeout
+        let request = try await makeRequest(
+            path: path,
+            method: method,
+            body: body,
+            queryItems: queryItems,
+            authenticated: authenticated,
+            idempotencyKey: idempotencyKey
         )
-        request.httpMethod = method
-        request.httpBody = body
-        request.setValue("application/json", forHTTPHeaderField: "accept")
-        request.setValue("application/json", forHTTPHeaderField: "content-type")
-        request.setValue(UUID().uuidString.lowercased(), forHTTPHeaderField: "x-request-id")
-        if let idempotencyKey {
-            request.setValue(idempotencyKey.uuidString.lowercased(), forHTTPHeaderField: "idempotency-key")
-        }
-        if authenticated {
-            request.setValue("Bearer \(try await validAccessToken())", forHTTPHeaderField: "authorization")
-        }
 
         let response: BackendTransportResponse
         do {
@@ -275,15 +271,145 @@ public actor BackendClient {
             )
         }
         guard (200..<300).contains(response.statusCode) else {
-            let envelope = try? decoder.decode(BackendErrorEnvelope.self, from: response.data)
-            throw BackendClientError.api(
-                code: envelope?.code ?? "HTTP_\(response.statusCode)",
-                message: envelope?.message ?? "Request failed.",
-                requestID: envelope?.requestId ?? response.headers["x-request-id"],
-                status: response.statusCode
+            throw apiError(
+                data: response.data,
+                headers: response.headers,
+                statusCode: response.statusCode
             )
         }
         return response.data
+    }
+
+    private func makeRequest(
+        path: String,
+        method: String,
+        body: Data?,
+        queryItems: [URLQueryItem],
+        authenticated: Bool,
+        idempotencyKey: UUID?
+    ) async throws -> URLRequest {
+        let endpoint = configuration.baseURL.appendingPathComponent(String(path.dropFirst()))
+        guard var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false) else {
+            throw BackendClientError.invalidResponse
+        }
+        components.queryItems = queryItems.isEmpty ? nil : queryItems
+        guard let url = components.url else {
+            throw BackendClientError.invalidResponse
+        }
+        var request = URLRequest(
+            url: url,
+            timeoutInterval: configuration.requestTimeout
+        )
+        request.httpMethod = method
+        request.httpBody = body
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        request.setValue(UUID().uuidString.lowercased(), forHTTPHeaderField: "x-request-id")
+        if let idempotencyKey {
+            request.setValue(idempotencyKey.uuidString.lowercased(), forHTTPHeaderField: "idempotency-key")
+        }
+        if authenticated {
+            request.setValue("Bearer \(try await validAccessToken())", forHTTPHeaderField: "authorization")
+        }
+        return request
+    }
+
+    private func openEventStream(
+        path: String,
+        body: Data,
+        retryAfterUnauthorized: Bool
+    ) async throws -> AsyncThrowingStream<BackendServerSentEvent, Error> {
+        guard path.hasPrefix("/v1/") else {
+            throw BackendClientError.invalidResponse
+        }
+        let request = try await makeRequest(
+            path: path,
+            method: "POST",
+            body: body,
+            queryItems: [],
+            authenticated: true,
+            idempotencyKey: nil
+        )
+        let response: BackendLineStreamResponse
+        do {
+            response = try await transport.lines(for: request)
+        } catch let error as BackendClientError {
+            throw error
+        } catch {
+            throw BackendClientError.transport(String(describing: type(of: error)))
+        }
+        if response.statusCode == 401, retryAfterUnauthorized {
+            accessToken = nil
+            accessTokenExpiresAt = nil
+            _ = try await refreshSession()
+            return try await openEventStream(
+                path: path,
+                body: body,
+                retryAfterUnauthorized: false
+            )
+        }
+        guard (200..<300).contains(response.statusCode) else {
+            var bodyText = ""
+            for try await line in response.lines {
+                bodyText += line
+                if bodyText.utf8.count >= 8_192 { break }
+            }
+            throw apiError(
+                data: Data(bodyText.utf8),
+                headers: response.headers,
+                statusCode: response.statusCode
+            )
+        }
+        return Self.parseEventStream(response.lines)
+    }
+
+    private func apiError(
+        data: Data,
+        headers: [String: String],
+        statusCode: Int
+    ) -> BackendClientError {
+        let envelope = try? decoder.decode(BackendErrorEnvelope.self, from: data)
+        return BackendClientError.api(
+            code: envelope?.code ?? "HTTP_\(statusCode)",
+            message: envelope?.message ?? "Request failed.",
+            requestID: envelope?.requestId ?? headers["x-request-id"],
+            status: statusCode
+        )
+    }
+
+    private static func parseEventStream(
+        _ lines: AsyncThrowingStream<String, Error>
+    ) -> AsyncThrowingStream<BackendServerSentEvent, Error> {
+        AsyncThrowingStream { continuation in
+            let task = Task {
+                var eventName: String?
+                do {
+                    for try await line in lines {
+                        try Task.checkCancellation()
+                        if line.hasPrefix("event:") {
+                            eventName = fieldValue(line)
+                        } else if line.hasPrefix("data:") {
+                            continuation.yield(
+                                BackendServerSentEvent(
+                                    name: eventName,
+                                    data: fieldValue(line)
+                                )
+                            )
+                        }
+                    }
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
+            continuation.onTermination = { _ in task.cancel() }
+        }
+    }
+
+    private static func fieldValue(_ line: String) -> String {
+        guard let separator = line.firstIndex(of: ":") else { return "" }
+        let raw = line[line.index(after: separator)...]
+        return raw.first == " " ? String(raw.dropFirst()) : String(raw)
     }
 
     private func validAccessToken() async throws -> String {

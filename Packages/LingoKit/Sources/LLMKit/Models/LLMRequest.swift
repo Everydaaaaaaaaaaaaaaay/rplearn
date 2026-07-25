@@ -7,6 +7,7 @@ public struct LLMRequest: Sendable {
         case jsonSchema(name: String, schema: JSONValue)
     }
 
+    public var task: LLMTask
     public var tier: LLMTier
     public var system: String?
     public var messages: [LLMMessage]
@@ -16,6 +17,7 @@ public struct LLMRequest: Sendable {
     public var responseFormat: ResponseFormat
 
     public init(
+        task: LLMTask,
         tier: LLMTier,
         system: String? = nil,
         messages: [LLMMessage],
@@ -23,6 +25,7 @@ public struct LLMRequest: Sendable {
         temperature: Double? = nil,
         responseFormat: ResponseFormat = .text
     ) {
+        self.task = task
         self.tier = tier
         self.system = system
         self.messages = messages

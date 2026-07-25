@@ -490,6 +490,7 @@ public struct ChatView: View {
         let llm = deps.llm
         return { word in
             let request = LLMRequest(
+                task: .dictionaryExplain,
                 tier: .fast,
                 system: "你是一个简明的英汉词典助手。用中文简要解释用户给出的英文词，格式：词性. 释义（不超过 3 条）；如是俚语/缩写/网络用语请注明。总长不超过 80 字。",
                 messages: [.user(word)],

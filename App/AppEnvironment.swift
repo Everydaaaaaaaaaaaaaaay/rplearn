@@ -17,7 +17,6 @@ final class AppEnvironment {
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
-    let llmSettings: LLMSettingsStore
     let llmRouter: LLMRouter
     let dictionary: DictDatabase
     let grammarPoints: GrammarPointStore
@@ -47,6 +46,7 @@ final class AppEnvironment {
     init() {
         let keychain = KeychainStore()
         self.keychain = keychain
+        LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain)
         let backendClient = BackendClient(
             configuration: .live,
             credentialStore: KeychainAuthCredentialStore(keychain: keychain)
@@ -66,11 +66,9 @@ final class AppEnvironment {
                 deviceName: UIDevice.current.name
             )
         )
-        let settings = LLMSettingsStore(keychain: keychain)
-        self.llmSettings = settings
-        self.llmRouter = LLMRouter {
-            try await MainActor.run { try settings.currentConfiguration() }
-        }
+        self.llmRouter = LLMRouter(
+            client: BackendLLMProvider(backend: backendClient)
+        )
 
         // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。
         let dictURL = Bundle.main.url(forResource: "ecdict_lite", withExtension: "sqlite")!

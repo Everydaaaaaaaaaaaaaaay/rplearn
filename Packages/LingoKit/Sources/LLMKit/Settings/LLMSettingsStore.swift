@@ -42,6 +42,21 @@ public final class LLMSettingsStore {
         }
     }
 
+    /// 后端中转启用后清除旧版本遗留的设备端供应商密钥与路由偏好。
+    public static func purgeLegacyClientConfiguration(
+        defaults: UserDefaults = .standard,
+        keychain: KeychainStore
+    ) {
+        for kind in LLMProviderKind.allCases {
+            try? keychain.removeValue(for: Keys.apiKey(kind))
+            for tier in LLMTier.allCases {
+                defaults.removeObject(forKey: Keys.model(kind, tier))
+            }
+        }
+        defaults.removeObject(forKey: Keys.providerKind)
+        defaults.removeObject(forKey: Keys.customBaseURL)
+    }
+
     // MARK: - API Key
 
     public func apiKey(for kind: LLMProviderKind) -> String {

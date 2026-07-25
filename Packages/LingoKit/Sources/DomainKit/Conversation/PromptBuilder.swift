@@ -119,6 +119,7 @@ public enum PromptBuilder {
         rawWindow: Int = 24
     ) -> LLMRequest {
         LLMRequest(
+            task: .conversation,
             tier: .balanced,
             system: roleplaySystemPrompt(
                 card: card,

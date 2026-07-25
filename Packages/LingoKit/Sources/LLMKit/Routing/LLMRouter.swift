@@ -5,17 +5,25 @@ import Foundation
 /// 流式请求只在「尚未收到任何增量」时重试，避免重复输出。
 public final class LLMRouter: LLMClient, Sendable {
     public typealias ConfigProvider = @Sendable () async throws -> LLMProviderConfig
+    public typealias ClientProvider = @Sendable () async throws -> any LLMClient
 
-    private let configProvider: ConfigProvider
+    private let clientProvider: ClientProvider
     private let maxRetries: Int
 
     public init(maxRetries: Int = 2, configProvider: @escaping ConfigProvider) {
         self.maxRetries = maxRetries
-        self.configProvider = configProvider
+        self.clientProvider = {
+            try await configProvider().makeProvider()
+        }
+    }
+
+    public init(client: any LLMClient, maxRetries: Int = 2) {
+        self.maxRetries = maxRetries
+        self.clientProvider = { client }
     }
 
     public func complete(_ request: LLMRequest) async throws -> String {
-        let provider = try await currentProvider()
+        let provider = try await currentClient()
         var attempt = 0
         while true {
             do {
@@ -36,7 +44,7 @@ public final class LLMRouter: LLMClient, Sendable {
                 var deliveredAnyDelta = false
                 while true {
                     do {
-                        let provider = try await self.currentProvider()
+                        let provider = try await self.currentClient()
                         for try await event in await provider.stream(request) {
                             if case .textDelta = event { deliveredAnyDelta = true }
                             continuation.yield(event)
@@ -62,6 +70,7 @@ public final class LLMRouter: LLMClient, Sendable {
     /// 设置页「测试连接」。
     public func testConnection() async throws -> String {
         let request = LLMRequest(
+            task: .translation,
             tier: .fast,
             messages: [.user("Reply with exactly: OK")],
             maxTokens: 8
@@ -70,11 +79,12 @@ public final class LLMRouter: LLMClient, Sendable {
     }
 
     public func modelID(for tier: LLMTier) async throws -> String {
-        try await configProvider().modelID(for: tier)
+        let client = try await currentClient()
+        return (client as? any LLMProvider)?.modelID(for: tier) ?? "server-managed"
     }
 
-    private func currentProvider() async throws -> any LLMProvider {
-        try await configProvider().makeProvider()
+    private func currentClient() async throws -> any LLMClient {
+        try await clientProvider()
     }
 
     static func isRetryable(_ error: Error) -> Bool {

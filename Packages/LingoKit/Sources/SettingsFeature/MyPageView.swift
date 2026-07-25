@@ -8,7 +8,6 @@ import SwiftUI
 
 /// “我的”聚合页：资料、订阅、金币与二级入口。
 public struct MyPageView: View {
-    @Bindable private var settings: LLMSettingsStore
     private let router: LLMRouter
     private let economyStore: EconomyStore
     private let economyService: EconomyService
@@ -27,7 +26,6 @@ public struct MyPageView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(
-        settings: LLMSettingsStore,
         router: LLMRouter,
         economyStore: EconomyStore,
         economyService: EconomyService,
@@ -39,7 +37,6 @@ public struct MyPageView: View {
         authSession: AuthSession,
         favoritesBuilder: @escaping @MainActor () -> AnyView
     ) {
-        self.settings = settings
         self.router = router
         self.economyStore = economyStore
         self.economyService = economyService
@@ -214,7 +211,6 @@ public struct MyPageView: View {
             Divider().padding(.leading, 56)
             NavigationLink {
                 SettingsView(
-                    settings: settings,
                     router: router,
                     economyStore: economyStore,
                     economyService: economyService,

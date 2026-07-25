@@ -74,6 +74,7 @@ public struct CoachService: Sendable {
 
     public func review(userText: String) async throws -> CoachReview {
         let request = LLMRequest(
+            task: .coachReview,
             tier: .fast,
             system: Self.systemPrompt,
             messages: [.user(userText)],
@@ -91,6 +92,7 @@ public struct CoachService: Sendable {
     /// 口语点评：对语音转写文本做口语自然度点评（fast 档、JSON、超时静默放弃）。
     public func reviewSpeech(transcript: String) async throws -> SpeechReview {
         let request = LLMRequest(
+            task: .speechFeedback,
             tier: .fast,
             system: Self.speechSystemPrompt,
             messages: [.user(transcript)],

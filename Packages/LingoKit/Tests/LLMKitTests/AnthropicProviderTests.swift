@@ -70,6 +70,7 @@ struct AnthropicProviderTests {
     func bodyBuilding() throws {
         let provider = AnthropicProvider(config: config)
         let request = LLMRequest(
+            task: .conversation,
             tier: .fast,
             system: "You are a coach.",
             messages: [.user("hi")],
@@ -93,7 +94,12 @@ struct AnthropicProviderTests {
         #expect(AnthropicProvider.supportsSamplingParameters(modelID: "claude-haiku-4-5"))
 
         let provider = AnthropicProvider(config: config)
-        let request = LLMRequest(tier: .balanced, messages: [.user("hi")], temperature: 0.9)
+        let request = LLMRequest(
+            task: .conversation,
+            tier: .balanced,
+            messages: [.user("hi")],
+            temperature: 0.9
+        )
         let body = provider.makeBody(request, stream: true)
         #expect(body["temperature"] == nil)
         #expect(body["stream"] as? Bool == true)

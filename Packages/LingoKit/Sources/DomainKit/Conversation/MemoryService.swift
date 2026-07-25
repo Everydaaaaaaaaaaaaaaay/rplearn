@@ -230,6 +230,7 @@ public struct MemoryService: Sendable {
         .joined(separator: "\n")
 
         let request = LLMRequest(
+            task: .memorySummary,
             tier: .fast,
             system: """
             You are the memory system of \(characterName), extracting durable memories from a chat excerpt \
@@ -284,6 +285,7 @@ public struct MemoryService: Sendable {
         }
 
         let request = LLMRequest(
+            task: .memorySummary,
             tier: .fast,
             system: system,
             messages: [.user(userText)],

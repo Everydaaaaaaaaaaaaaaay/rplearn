@@ -262,7 +262,6 @@ struct RootView: View {
     private var meStack: some View {
         NavigationStack {
             MyPageView(
-                settings: environment.llmSettings,
                 router: environment.llmRouter,
                 economyStore: environment.economyStore,
                 economyService: environment.economyService,

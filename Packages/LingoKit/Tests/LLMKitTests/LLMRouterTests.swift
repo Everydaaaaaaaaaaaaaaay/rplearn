@@ -19,7 +19,9 @@ struct LLMRouterTests {
     func missingKeySurfaces() async {
         let router = LLMRouter { throw LLMError.missingAPIKey }
         await #expect(throws: LLMError.missingAPIKey) {
-            _ = try await router.complete(LLMRequest(tier: .fast, messages: [.user("hi")]))
+            _ = try await router.complete(
+                LLMRequest(task: .conversation, tier: .fast, messages: [.user("hi")])
+            )
         }
     }
 }

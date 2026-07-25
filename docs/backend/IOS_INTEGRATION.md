@@ -37,3 +37,12 @@
 - 账号切换会先清除整个本机账号域缓存，防止上一账号的对话、资产或资料短暂泄露给下一账号。
 
 所有跨平台业务状态通过 `BackendClient` 接入同一套 `/v1` API。后续订阅权益和 AI 配额同样只读取服务器结果。
+
+## AI 中转
+
+- iOS 只提交 `conversation`、`coach_review`、`speech_feedback`、`memory_summary`、`translation`、`character_generation`、`dictionary_explain` 等稳定任务名；
+- 客户端不能提交供应商密钥、模型名、温度或任意服务地址；这些值由服务端版本化路由控制并接受审计；
+- 普通完成使用 JSON API，角色对话使用经过认证的 SSE；取消界面任务会向上游传播取消信号；
+- 结构化输出在客户端把 JSON Schema 作为约束提示附加，服务端仍决定该任务是否允许 `json_object`；
+- App 升级后主动删除旧版本遗留在 Keychain 的第三方 AI 密钥和本地模型偏好；
+- 服务端只记录任务、耗时、token 和状态等元数据，不把完整对话写入 AI 请求日志。

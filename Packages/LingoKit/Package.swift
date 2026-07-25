@@ -15,7 +15,7 @@ let infraTargets: [Target] = [
 
 let serviceTargets: [Target] = [
     .target(name: "BackendKit", dependencies: [module("CoreKit")]),
-    .target(name: "LLMKit", dependencies: [module("CoreKit")]),
+    .target(name: "LLMKit", dependencies: [module("BackendKit"), module("CoreKit")]),
     .target(name: "SpeechKit", dependencies: [module("CoreKit")]),
     // DictKit 附带词典卡 UI（DictCardView/浮窗），故依赖 DesignSystem——层级仍严格向下。
     .target(name: "DictKit", dependencies: [module("CoreKit"), module("DesignSystem")]),
