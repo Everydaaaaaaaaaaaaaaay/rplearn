@@ -11,40 +11,15 @@ struct EconomyServiceTests {
         let service: EconomyService
     }
 
-    private struct FailingGateway: PurchaseGateway {
-        struct Failure: Error {}
-        func purchaseSubscription(_ tier: SubscriptionTier) async throws {
-            throw Failure()
-        }
-        func restorePurchases() async throws -> SubscriptionTier? { nil }
-    }
-
-    private func makeFixture(gateway: any PurchaseGateway = LocalPurchaseGateway()) throws -> Fixture {
+    private func makeFixture() throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let economyStore = EconomyStore(modelContainer: container)
         let itemStore = ItemStore(modelContainer: container)
         return Fixture(
             economyStore: economyStore,
             itemStore: itemStore,
-            service: EconomyService(economyStore: economyStore, itemStore: itemStore, gateway: gateway)
+            service: EconomyService(economyStore: economyStore, itemStore: itemStore)
         )
-    }
-
-    @Test("本地模拟订阅切换写入档案")
-    func subscribeUpdatesProfile() async throws {
-        let fixture = try makeFixture()
-        let profile = try await fixture.service.subscribe(to: .plus)
-        #expect(profile.subscriptionTier == .plus)
-        #expect(try await fixture.economyStore.profile().subscriptionTier == .plus)
-    }
-
-    @Test("网关失败不改档案")
-    func gatewayFailureKeepsProfile() async throws {
-        let fixture = try makeFixture(gateway: FailingGateway())
-        await #expect(throws: Error.self) {
-            _ = try await fixture.service.subscribe(to: .pro)
-        }
-        #expect(try await fixture.economyStore.profile().subscriptionTier == .free)
     }
 
     @Test("订阅配额表", arguments: [

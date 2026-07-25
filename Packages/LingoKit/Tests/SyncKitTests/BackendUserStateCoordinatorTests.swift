@@ -178,6 +178,10 @@ struct BackendUserStateCoordinatorTests {
 
         #expect(try await coordinator.activate(userID: userID) == .synchronized)
         #expect(try await economy.profile().coins == 500)
+        try await economy.applyAuthoritativeEntitlement(
+            tier: .pro,
+            friendSlotLimit: 30
+        )
 
         let ticket = try await coordinator.purchaseTicket(
             type: .ticketUniversal,
@@ -185,6 +189,8 @@ struct BackendUserStateCoordinatorTests {
         )
         #expect(ticket.source == .purchase)
         #expect(try await economy.profile().coins == 0)
+        #expect(try await economy.profile().subscriptionTier == .pro)
+        #expect(try await economy.profile().friendSlotLimit == 30)
         #expect(try await items.unconsumedTickets().count == 1)
 
         _ = try await coordinator.travel(targetRegionID: "newyork", ticketID: ticket.id)

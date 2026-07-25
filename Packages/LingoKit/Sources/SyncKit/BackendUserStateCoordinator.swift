@@ -111,7 +111,7 @@ public actor BackendUserStateCoordinator:
         guard let current = snapshot?.state.profile else {
             throw BackendClientError.invalidResponse
         }
-        var desired = map(current)
+        var desired = await mapPreservingEntitlement(current)
         mutate(&desired)
         let patch = ProfilePatch(
             difficulty: desired.difficultyLevel.rawValue == current.difficulty
@@ -154,7 +154,7 @@ public actor BackendUserStateCoordinator:
             guard let updated = snapshot?.state.profile else {
                 throw BackendClientError.invalidResponse
             }
-            return map(updated)
+            return await mapPreservingEntitlement(updated)
         } catch let error as BackendClientError {
             if error.code == "PROFILE_VERSION_CONFLICT", retryAfterConflict {
                 completeCommand(for: intent)
@@ -314,7 +314,7 @@ public actor BackendUserStateCoordinator:
     }
 
     private func apply(_ loaded: BackendSyncSnapshot) async throws {
-        let profile = map(loaded.state.profile)
+        let profile = await mapPreservingEntitlement(loaded.state.profile)
         let tickets = try loaded.state.tickets.map(map)
         try await economyCache.replaceAuthoritativeProfile(profile)
         try await itemCache.replaceAvailableTickets(tickets)
@@ -391,6 +391,21 @@ public actor BackendUserStateCoordinator:
             difficultyLevel: DifficultyLevel(rawValue: profile.difficulty) ?? .junior1,
             hasCompletedOnboarding: profile.hasCompletedOnboarding
         )
+    }
+
+    /// 业务状态快照不包含计费权益，合并时保留 BillingKit 已验证的本地投影。
+    private func mapPreservingEntitlement(
+        _ profile: BackendUserProfile
+    ) async -> UserProfileDTO {
+        var mapped = map(profile)
+        guard let cached = try? await economyCache.profile() else {
+            return mapped
+        }
+        mapped.subscriptionTier = cached.subscriptionTier
+        if cached.subscriptionTier != .free {
+            mapped.friendSlotLimit = max(mapped.friendSlotLimit, cached.friendSlotLimit)
+        }
+        return mapped
     }
 
     private func map(_ ticket: BackendTicket) throws -> ItemDTO {

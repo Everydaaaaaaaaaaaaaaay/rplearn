@@ -1,9 +1,11 @@
 import BackendKit
+import BillingKit
 import DesignSystem
 import DomainKit
 import LLMKit
 import PersistenceKit
 import SpeechKit
+import StoreKit
 import SwiftUI
 
 /// “我的”聚合页：资料、订阅、金币与二级入口。
@@ -17,11 +19,13 @@ public struct MyPageView: View {
     private let chatStore: ChatStore
     private let speech: any SpeechService
     private let authSession: AuthSession
+    private let billing: BillingController
     private let favoritesBuilder: @MainActor () -> AnyView
 
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
     @State private var showsTierPicker = false
+    @State private var showsManageSubscriptions = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -35,6 +39,7 @@ public struct MyPageView: View {
         chatStore: ChatStore,
         speech: any SpeechService,
         authSession: AuthSession,
+        billing: BillingController,
         favoritesBuilder: @escaping @MainActor () -> AnyView
     ) {
         self.router = router
@@ -46,6 +51,7 @@ public struct MyPageView: View {
         self.chatStore = chatStore
         self.speech = speech
         self.authSession = authSession
+        self.billing = billing
         self.favoritesBuilder = favoritesBuilder
     }
 
@@ -74,6 +80,7 @@ public struct MyPageView: View {
         .toolbar(.hidden, for: .navigationBar)
         .task { await reload() }
         .refreshable { await reload() }
+        .manageSubscriptionsSheet(isPresented: $showsManageSubscriptions)
     }
 
     private var profileCard: some View {
@@ -86,13 +93,11 @@ public struct MyPageView: View {
                             .font(.title2.bold())
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    if let tier = profile?.subscriptionTier {
-                        DSChip(
-                            tier.displayName,
-                            tint: tier == .free ? .secondary : .dsSky,
-                            prominent: tier != .free
-                        )
-                    }
+                    DSChip(
+                        billing.tier.displayName,
+                        tint: billing.tier == .free ? .secondary : .dsSky,
+                        prominent: billing.tier != .free
+                    )
                     Label("已认识 \(occupiedFriendSlots) 位旅途朋友", systemImage: "person.2.fill")
                         .foregroundStyle(.secondary)
                     Label("\(profile?.coins ?? 0) 金币", systemImage: "circle.grid.2x1.fill")
@@ -105,13 +110,11 @@ public struct MyPageView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(displayName)
                             .font(.title2.bold())
-                        if let tier = profile?.subscriptionTier {
-                            DSChip(
-                                tier.displayName,
-                                tint: tier == .free ? .secondary : .dsSky,
-                                prominent: tier != .free
-                            )
-                        }
+                        DSChip(
+                            billing.tier.displayName,
+                            tint: billing.tier == .free ? .secondary : .dsSky,
+                            prominent: billing.tier != .free
+                        )
                         Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -136,27 +139,94 @@ public struct MyPageView: View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             subscriptionHeader
 
-            Button {
-                withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
-                    showsTierPicker.toggle()
+            HStack {
+                Button {
+                    withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
+                        showsTierPicker.toggle()
+                    }
+                } label: {
+                    Label(showsTierPicker ? "收起方案" : "查看订阅方案", systemImage: "sparkles")
                 }
-            } label: {
-                Label(showsTierPicker ? "收起" : "更换订阅", systemImage: "arrow.triangle.2.circlepath")
+                .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+                .tint(.white)
+
+                if billing.tier != .free {
+                    Button("管理") {
+                        showsManageSubscriptions = true
+                    }
+                    .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+                    .tint(.white)
+                }
             }
-            .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
-            .tint(.white)
 
             if showsTierPicker {
-                Picker("订阅等级", selection: subscriptionBinding) {
-                    ForEach(SubscriptionTier.allCases, id: \.self) { tier in
-                        Text(tier.displayName).tag(tier)
+                VStack(spacing: DSSpacing.xs) {
+                    if billing.operation == .loading {
+                        ProgressView()
+                            .tint(.white)
+                            .frame(maxWidth: .infinity)
+                    } else if billing.products.isEmpty {
+                        Text("当前 App Store 账户暂无可购买方案。")
+                            .font(.footnote)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
+                        ForEach(billing.products) { product in
+                            Button {
+                                Task {
+                                    await billing.purchase(product)
+                                    await reload()
+                                }
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(product.tier.displayName)
+                                            .fontWeight(.bold)
+                                        if let period = product.periodDescription {
+                                            Text(period)
+                                                .font(.caption)
+                                                .opacity(0.76)
+                                        }
+                                    }
+                                    Spacer()
+                                    Text(product.displayPrice)
+                                        .fontWeight(.bold)
+                                        .monospacedDigit()
+                                }
+                                .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.duo(.outline, fullWidth: true, compact: true))
+                            .tint(.white)
+                            .disabled(billing.operation != .idle)
+                        }
                     }
+
+                    Button("恢复购买") {
+                        Task {
+                            await billing.restorePurchases()
+                            await reload()
+                        }
+                    }
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .disabled(billing.operation != .idle)
                 }
-                .pickerStyle(.segmented)
                 .transition(reduceMotion ? .opacity : .move(edge: .top).combined(with: .opacity))
-                Text("本地模拟订阅，暂未接入真实支付。")
+            }
+
+            if let validity = billing.currentValidityDescription {
+                Text(validity)
                     .font(.caption2)
-                    .opacity(0.72)
+                    .opacity(0.76)
+            }
+            if let message = billing.message {
+                Label(message, systemImage: "checkmark.circle.fill")
+                    .font(.caption)
+                    .foregroundStyle(.white)
+            }
+            if let error = billing.lastError {
+                Label(error, systemImage: "exclamationmark.triangle.fill")
+                    .font(.caption)
+                    .foregroundStyle(.white)
             }
         }
         .foregroundStyle(.white)
@@ -178,7 +248,7 @@ public struct MyPageView: View {
             VStack(alignment: .leading, spacing: DSSpacing.xs) {
                 Image(systemName: "sparkles.rectangle.stack.fill")
                     .font(.title)
-                Text("LingoTrip \(profile?.subscriptionTier.displayName ?? "免费版")")
+                Text("LingoTrip \(billing.tier.displayName)")
                     .font(.headline.bold())
                 Text("更长的角色记忆，让每段友谊都有延续")
                     .font(.body)
@@ -187,7 +257,7 @@ public struct MyPageView: View {
         } else {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("LingoTrip \(profile?.subscriptionTier.displayName ?? "免费版")")
+                    Text("LingoTrip \(billing.tier.displayName)")
                         .font(.title3.bold())
                     Text("更长的角色记忆，让每段友谊都有延续")
                         .font(.footnote)
@@ -213,7 +283,6 @@ public struct MyPageView: View {
                 SettingsView(
                     router: router,
                     economyStore: economyStore,
-                    economyService: economyService,
                     profileCommands: profileCommands,
                     memoryStore: memoryStore,
                     rosterStore: rosterStore,
@@ -291,17 +360,6 @@ public struct MyPageView: View {
         }
         .padding(DSSpacing.sm)
         .contentShape(Rectangle())
-    }
-
-    private var subscriptionBinding: Binding<SubscriptionTier> {
-        Binding(
-            get: { profile?.subscriptionTier ?? .free },
-            set: { tier in
-                Task {
-                    profile = try? await economyService.subscribe(to: tier)
-                }
-            }
-        )
     }
 
     private var displayName: String {

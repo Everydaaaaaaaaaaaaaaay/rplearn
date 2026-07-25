@@ -1,4 +1,5 @@
 import BackendKit
+import BillingKit
 import CoreKit
 import DictKit
 import DomainKit
@@ -17,6 +18,7 @@ final class AppEnvironment {
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
+    let billing: BillingController
     let llmRouter: LLMRouter
     let dictionary: DictDatabase
     let grammarPoints: GrammarPointStore
@@ -98,6 +100,10 @@ final class AppEnvironment {
             itemCache: itemStore
         )
         self.userState = userState
+        self.billing = BillingController(
+            backend: backendClient,
+            economyStore: economyStore
+        )
         self.travelService = TravelService(
             economyStore: economyStore,
             itemStore: itemStore,
@@ -123,6 +129,7 @@ final class AppEnvironment {
     func activateUser(_ identity: AuthIdentity) async throws -> UserStateActivation {
         needsOnboarding = nil
         let activation = try await userState.activate(userID: identity.userID)
+        await billing.activate(identity: identity)
         let profile = try await economyStore.profile()
         let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
         let cards = try SeedData.mainCharacterCards(url: seedsURL)

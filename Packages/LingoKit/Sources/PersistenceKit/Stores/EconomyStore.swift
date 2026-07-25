@@ -71,6 +71,19 @@ public actor EconomyStore {
         try modelContext.save()
     }
 
+    /// 缓存服务端统一权益。订阅等级与权益派生配额不能由普通档案修改接口写入。
+    public func applyAuthoritativeEntitlement(
+        tier: SubscriptionTier,
+        friendSlotLimit: Int?
+    ) throws {
+        let entity = try fetchOrCreateProfile()
+        entity.subscriptionTierRaw = tier.rawValue
+        if let friendSlotLimit {
+            entity.friendSlotLimit = max(0, friendSlotLimit)
+        }
+        try modelContext.save()
+    }
+
     /// 切换到另一个账号前清除服务器权威状态缓存，防止跨账号短暂串读。
     public func clearAuthoritativeCache() throws {
         try modelContext.delete(model: UserProfileEntity.self)

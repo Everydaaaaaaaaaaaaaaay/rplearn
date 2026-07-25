@@ -17,7 +17,6 @@ public struct SettingsView: View {
 
     private let router: LLMRouter
     private let economyStore: EconomyStore
-    private let economyService: EconomyService
     private let profileCommands: any ProfileCommandGateway
     private let memoryStore: MemoryStore
     private let rosterStore: RosterStore
@@ -32,7 +31,6 @@ public struct SettingsView: View {
     public init(
         router: LLMRouter,
         economyStore: EconomyStore,
-        economyService: EconomyService,
         profileCommands: any ProfileCommandGateway,
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
@@ -41,16 +39,11 @@ public struct SettingsView: View {
     ) {
         self.router = router
         self.economyStore = economyStore
-        self.economyService = economyService
         self.profileCommands = profileCommands
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.chatStore = chatStore
         self.speech = speech
-    }
-
-    private var memoryService: MemoryService {
-        MemoryService(llm: router, chatStore: chatStore, memoryStore: memoryStore, economyStore: economyStore)
     }
 
     public var body: some View {
@@ -161,48 +154,6 @@ public struct SettingsView: View {
         voiceQuality = AppleTTSService.bestAvailableEnglishQuality()
     }
 
-    // MARK: - 账户
-
-    @ViewBuilder
-    private var accountSection: some View {
-        Section {
-            if let profile {
-                LabeledContent("金币") {
-                    Label("\(profile.coins)", systemImage: "circle.grid.2x1.fill")
-                        .foregroundStyle(.orange)
-                        .font(.subheadline.monospacedDigit())
-                }
-                Picker("订阅", selection: subscriptionBinding) {
-                    ForEach(SubscriptionTier.allCases, id: \.self) { tier in
-                        Text(tier.displayName).tag(tier)
-                    }
-                }
-            } else {
-                ProgressView()
-            }
-            #if DEBUG
-            Button("调试：+500 金币") {
-                Task {
-                    await economyService.grantDebugCoins()
-                    await reloadProfile()
-                }
-            }
-            NavigationLink("调试：记忆面板") {
-                MemoryDebugView(
-                    memoryStore: memoryStore,
-                    rosterStore: rosterStore,
-                    economyStore: economyStore,
-                    memoryService: memoryService
-                )
-            }
-            #endif
-        } header: {
-            Text("账户")
-        } footer: {
-            Text("订阅为本地模拟，未接入真实支付。订阅等级影响角色记忆容量。")
-        }
-    }
-
     // MARK: - 学习
 
     @ViewBuilder
@@ -226,17 +177,6 @@ public struct SettingsView: View {
                     profile = try? await profileCommands.updateProfile {
                         $0.quizGloballyEnabled = newValue
                     }
-                }
-            }
-        )
-    }
-
-    private var subscriptionBinding: Binding<SubscriptionTier> {
-        Binding(
-            get: { profile?.subscriptionTier ?? .free },
-            set: { newTier in
-                Task {
-                    profile = try? await economyService.subscribe(to: newTier)
                 }
             }
         )

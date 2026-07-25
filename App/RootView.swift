@@ -1,5 +1,6 @@
 import AuthFeature
 import BackendKit
+import BillingKit
 import ChatFeature
 import DesignSystem
 import DomainKit
@@ -76,6 +77,7 @@ struct RootView: View {
         }
         .onChange(of: environment.authSession.phase) { _, phase in
             if case .signedOut = phase {
+                environment.billing.deactivate()
                 activeUserID = nil
                 activationError = nil
                 usingOfflineCache = false
@@ -86,6 +88,7 @@ struct RootView: View {
             Task {
                 do {
                     try await environment.userState.synchronize()
+                    await environment.billing.synchronize()
                     usingOfflineCache = false
                     stateRevision += 1
                 } catch {
@@ -271,6 +274,7 @@ struct RootView: View {
                 chatStore: environment.chatStore,
                 speech: environment.speech,
                 authSession: environment.authSession,
+                billing: environment.billing,
                 favoritesBuilder: { AnyView(FavoritesView(deps: favoritesDeps)) }
             )
         }

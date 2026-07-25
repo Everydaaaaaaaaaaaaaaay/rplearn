@@ -41,7 +41,7 @@ public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
     }
 }
 
-/// 订阅等级（本地模拟，正式数据模型；真实支付经 PurchaseGateway 接入）。
+/// 服务端统一权益系统返回的订阅等级；本地字段仅作为离线显示缓存。
 public enum SubscriptionTier: String, Sendable, Codable, CaseIterable {
     case free
     case plus
