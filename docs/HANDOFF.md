@@ -48,6 +48,7 @@ Scripts/test.sh
 - 所有业务代码放在**一个本地 Swift Package `Packages/LingoKit`**，内部拆成多个 library target。
 - App 壳 `App/`（`LingoTripApp` / `RootView` / `AppEnvironment`）只负责组合根接线与 SwiftUI 入口。
 - 资源（词典 sqlite、角色 / 地区 / 剧情 JSON、App 图标）在 `App/Resources` 与 `App/Assets.xcassets`，随 App 打包，用 `Bundle.main` 读取。
+- 较大的 Module 在 target 内按领域职责继续分目录；子目录不产生新 target 或依赖 seam。当前重点分组为 `DomainKit/{Conversation,Progression,Story,World}`、`LLMKit/{Contracts,Models,Providers,Routing,Settings,StructuredOutput,Transport}` 与 `PersistenceKit/{Contracts,Schema,Stores}`。
 
 ### 3.2 严格分层依赖图
 

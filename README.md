@@ -41,6 +41,19 @@ App
 
 Feature Module 之间不直接依赖；跨 Feature 导航在 `App/RootView.swift` 的组合根接线。
 
+较大的 Module 在 target 内继续按职责分组；这些子目录只改善 Locality，不创建新的依赖 seam：
+
+```text
+DomainKit/        Conversation / Progression / Story / World
+LLMKit/           Contracts / Models / Providers / Routing / Settings /
+                  StructuredOutput / Transport
+PersistenceKit/   Contracts / Schema / Stores
+HomeFeature/      Contracts / Models / Views
+MapFeature/       Contracts / Views
+```
+
+`Contracts` 存放该 Module 暴露或共享的 Interface 类型，`Schema` 存放 SwiftData schema 与容器启动逻辑，`Stores` 存放持久化 Adapter。不要为了文件数量机械创建空目录。
+
 ## 事实源
 
 | 内容 | 文件 |
