@@ -3,6 +3,7 @@ import DomainKit
 import LLMKit
 import PersistenceKit
 import SwiftUI
+import UIKit
 
 public struct HomeDependencies: Sendable {
     public let economyStore: EconomyStore
@@ -73,7 +74,7 @@ public struct HomeView: View {
         if dynamicTypeSize.isAccessibilitySize {
             return 72
         }
-        return verticalSizeClass == .compact ? 80 : 232
+        return verticalSizeClass == .compact ? 80 : 196
     }
 
     public var body: some View {
@@ -125,14 +126,14 @@ public struct HomeView: View {
                 VStack(alignment: .leading, spacing: 1) {
                     Text(region.nameZh)
                         .font(.system(.title2, design: .rounded, weight: .bold))
-                    Text(region.taglineZh)
+                    Text("在城市中认识朋友，练习真实英语")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
                 Spacer(minLength: DSSpacing.xs)
                 if let profile {
-                    Label("\(profile.coins)", systemImage: "circle.grid.2x1.fill")
+                    Label("\(profile.coins)", systemImage: "dollarsign.circle.fill")
                         .font(.system(.subheadline, design: .rounded, weight: .bold))
                         .monospacedDigit()
                         .foregroundStyle(.white)
@@ -150,6 +151,11 @@ public struct HomeView: View {
                 RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
                     .stroke(.white.opacity(0.25), lineWidth: 1)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(
+                "\(region.nameZh)，\(region.taglineZh)"
+                    + (profile.map { "，\($0.coins) 金币" } ?? "")
+            )
         } else {
             ProgressView()
                 .frame(maxWidth: .infinity, minHeight: 64)
@@ -160,7 +166,7 @@ public struct HomeView: View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             HStack {
                 Text("最近会话")
-                    .font(.system(.headline, design: .rounded, weight: .bold))
+                    .font(.system(.title3, design: .rounded, weight: .bold))
                 Spacer()
                 Button("查看全部 ›") { onOpenMessages() }
                     .font(.subheadline.weight(.semibold))
@@ -187,20 +193,20 @@ public struct HomeView: View {
                         chatBuilder(row.character)
                     } label: {
                         HStack(spacing: DSSpacing.sm) {
-                            AvatarBadge(name: row.character.card.name, size: 46)
+                            AvatarBadge(name: row.character.card.name, size: 48)
                             VStack(alignment: .leading, spacing: 3) {
                                 Text(row.character.card.name)
-                                    .font(.subheadline.weight(.bold))
+                                    .font(.body.weight(.bold))
                                     .foregroundStyle(.primary)
                                 Text(row.summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : row.summary.lastMessageText)
-                                    .font(.footnote)
+                                    .font(.callout)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(1)
                             }
                             Spacer()
                             VStack(alignment: .trailing, spacing: 8) {
                                 Text(row.summary.lastMessageAt, format: .relative(presentation: .named))
-                                    .font(.caption2)
+                                    .font(.caption)
                                     .foregroundStyle(.tertiary)
                                 if index == 0 {
                                     Circle()
@@ -214,7 +220,7 @@ public struct HomeView: View {
                     .buttonStyle(.plain)
 
                     if index < min(recentRows.count, 3) - 1 {
-                        Divider().padding(.leading, 58)
+                        Divider().padding(.leading, 60)
                     }
                 }
             }
@@ -225,17 +231,18 @@ public struct HomeView: View {
     @ViewBuilder
     private var exploreSection: some View {
         if let region = currentRegion {
-            VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            VStack(alignment: .leading, spacing: DSSpacing.xs) {
                 Text("探索\(region.nameZh)")
-                    .font(.system(.headline, design: .rounded, weight: .bold))
+                    .font(.system(.title3, design: .rounded, weight: .bold))
                     .foregroundStyle(.primary)
 
                 NavigationLink(value: HomeDestination.mainline) {
                     ExploreCard(
                         title: "主线剧情",
                         subtitle: "\(completedCount(for: region)) / \(chapterCount(for: region)) 章",
-                        icon: "book.pages.fill",
-                        colors: [Color.dsSky, Color.dsCyan],
+                        artworkName: "home_mainline_\(region.id)",
+                        fallbackIcon: "book.pages.fill",
+                        tint: Color.dsSky,
                         progress: chapterCount(for: region) == 0
                             ? 0
                             : Double(completedCount(for: region)) / Double(chapterCount(for: region))
@@ -247,8 +254,9 @@ public struct HomeView: View {
                     ExploreCard(
                         title: "城市活动",
                         subtitle: "参与活动，认识新朋友",
-                        icon: "figure.walk.motion",
-                        colors: [Color.dsSunset, Color.dsWarning],
+                        artworkName: "home_activity_\(region.id)",
+                        fallbackIcon: "figure.walk.motion",
+                        tint: Color.dsSunset,
                         progress: nil
                     )
                 }
@@ -299,41 +307,77 @@ private struct RecentChatRow: Identifiable {
 private struct ExploreCard: View {
     let title: String
     let subtitle: String
-    let icon: String
-    let colors: [Color]
+    let artworkName: String
+    let fallbackIcon: String
+    let tint: Color
     let progress: Double?
 
     var body: some View {
-        HStack(spacing: DSSpacing.md) {
-            Image(systemName: icon)
-                .font(.system(size: 30, weight: .bold))
-                .frame(width: 54, height: 54)
-                .background(.white.opacity(0.18), in: RoundedRectangle(cornerRadius: DSRadius.inline))
-            VStack(alignment: .leading, spacing: DSSpacing.xs) {
+        HStack(spacing: DSSpacing.sm) {
+            VStack(alignment: .leading, spacing: DSSpacing.xxs) {
                 Text(title)
-                    .font(.system(.title3, design: .rounded, weight: .bold))
+                    .font(.system(.title2, design: .rounded, weight: .bold))
                 Text(subtitle)
                     .font(.subheadline)
-                    .opacity(0.88)
+                    .opacity(0.9)
                 if let progress {
                     ProgressView(value: progress)
                         .tint(.white)
-                        .background(.black.opacity(0.12), in: Capsule())
+                        .frame(width: 126)
+                        .background(.black.opacity(0.14), in: Capsule())
                 }
             }
-            Spacer()
+            Spacer(minLength: DSSpacing.sm)
             Image(systemName: "chevron.right")
-                .font(.headline)
-                .padding(10)
+                .font(.subheadline.weight(.bold))
+                .frame(width: 34, height: 34)
                 .background(.white, in: Circle())
-                .foregroundStyle(colors[0])
+                .foregroundStyle(tint)
+                .shadow(color: .black.opacity(0.08), radius: 4, y: 2)
         }
         .foregroundStyle(.white)
-        .padding(DSSpacing.md)
-        .background(
-            LinearGradient(colors: colors, startPoint: .leading, endPoint: .trailing),
-            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-        )
-        .shadow(color: colors[0].opacity(0.24), radius: 10, y: 5)
+        .padding(.horizontal, DSSpacing.md)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, minHeight: 88)
+        .background {
+            ZStack {
+                artwork
+                LinearGradient(
+                    stops: [
+                        .init(color: tint, location: 0),
+                        .init(color: tint, location: 0.42),
+                        .init(color: tint.opacity(0.92), location: 0.47),
+                        .init(color: tint.opacity(0.28), location: 0.59),
+                        .init(color: .clear, location: 0.68),
+                    ],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
+                .stroke(.white.opacity(0.2), lineWidth: 1)
+        }
+        .shadow(color: tint.opacity(0.2), radius: 8, y: 4)
+    }
+
+    @ViewBuilder
+    private var artwork: some View {
+        if UIImage(named: artworkName) != nil {
+            Image(artworkName)
+                .resizable()
+                .scaledToFill()
+                .accessibilityHidden(true)
+        } else {
+            tint
+            Image(systemName: fallbackIcon)
+                .font(.system(size: 52, weight: .bold))
+                .foregroundStyle(.white.opacity(0.2))
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.trailing, 72)
+                .accessibilityHidden(true)
+        }
     }
 }

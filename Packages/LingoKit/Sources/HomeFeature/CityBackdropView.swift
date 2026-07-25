@@ -54,11 +54,12 @@ struct CityBackdropView: View {
                             location: 0
                         ),
                         .init(color: .clear, location: 0.28),
-                        .init(color: .clear, location: 0.68),
+                        .init(color: .clear, location: 0.42),
                         .init(
-                            color: Color.dsBackground.opacity(colorScheme == .dark ? 0.78 : 0.42),
-                            location: 0.84
+                            color: Color.dsBackground.opacity(colorScheme == .dark ? 0.88 : 0.58),
+                            location: 0.54
                         ),
+                        .init(color: Color.dsBackground.opacity(0.96), location: 0.68),
                         .init(color: Color.dsBackground, location: 1),
                     ],
                     startPoint: .top,
