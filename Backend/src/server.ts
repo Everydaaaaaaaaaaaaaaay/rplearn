@@ -8,6 +8,9 @@ import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
 import { createAppleAuthService } from "./modules/auth/apple/service.js";
 import { registerDomainRoutes } from "./modules/domain/routes.js";
 import { createDomainService } from "./modules/domain/service.js";
+import { createSyncCursorCodec } from "./modules/sync/cursor.js";
+import { registerSyncRoutes } from "./modules/sync/routes.js";
+import { createSyncService } from "./modules/sync/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -52,6 +55,12 @@ async function main(): Promise<void> {
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",
   });
+  const syncService = createSyncService(
+    dependencies.database,
+    domainService,
+    createSyncCursorCodec(config.authTokenHashPepper),
+  );
+  registerSyncRoutes(app, authService, syncService);
   let closing = false;
 
   dependencies.onRedisError((error) => {

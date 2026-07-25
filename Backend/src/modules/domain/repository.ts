@@ -2,6 +2,7 @@ import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import { newEntityId } from "../../shared/id.js";
+import { appendSyncChange } from "../sync/change-writer.js";
 import type {
   CommandIdentity,
   DifficultyLevel,
@@ -186,6 +187,12 @@ export class DomainRepository {
       }
 
       const response = await operation(sql);
+      await appendSyncChange(sql, {
+        commandId: command.commandId,
+        eventType: command.route,
+        payload: response,
+        userId,
+      });
       await sql`
         insert into app.command_receipts (
           user_id,
@@ -213,11 +220,8 @@ export class DomainRepository {
     patch: ProfilePatch,
   ): Promise<UserProfile> {
     await this.ensureProfile(userId);
-    const profile = await this.executeCommand(
-      userId,
-      command,
-      async (sql): Promise<ProfileRow> => {
-        const [row] = await sql<ProfileRow[]>`
+    return this.executeCommand(userId, command, async (sql): Promise<UserProfile> => {
+      const [row] = await sql<ProfileRow[]>`
           update app.user_profiles
           set display_name = coalesce(${patch.displayName ?? null}, display_name),
               difficulty = coalesce(
@@ -249,26 +253,24 @@ export class DomainRepository {
             updated_at,
             version
         `;
-        if (row === undefined) {
-          throw new AppError({
-            code: "PROFILE_VERSION_CONFLICT",
-            message: "The profile changed on another device.",
-            statusCode: 409,
-          });
-        }
-        return row;
-      },
-    );
-    const unlocks = await this.resource.sql<{ region_id: string }[]>`
-      select region_id
-      from app.region_unlocks
-      where user_id = ${userId}
-      order by unlocked_at, region_id
-    `;
-    return mapProfile(
-      profile,
-      unlocks.map((row) => row.region_id),
-    );
+      if (row === undefined) {
+        throw new AppError({
+          code: "PROFILE_VERSION_CONFLICT",
+          message: "The profile changed on another device.",
+          statusCode: 409,
+        });
+      }
+      const unlocks = await sql<{ region_id: string }[]>`
+          select region_id
+          from app.region_unlocks
+          where user_id = ${userId}
+          order by unlocked_at, region_id
+        `;
+      return mapProfile(
+        row,
+        unlocks.map((unlock) => unlock.region_id),
+      );
+    });
   }
 
   async purchaseTicket(
