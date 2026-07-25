@@ -1,8 +1,9 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
-import type { AccessIdentity, DeviceDescriptor } from "./types.js";
+import { authenticateRequest } from "./http.js";
 import type { AuthService } from "./service.js";
+import type { DeviceDescriptor } from "./types.js";
 
 const emailSchema = z.email().max(254);
 const passwordSchema = z.string().min(12).max(128);
@@ -60,26 +61,6 @@ function parseBody<T>(schema: ZodType<T>, body: unknown): T {
     message: "The request is invalid.",
     statusCode: 400,
   });
-}
-
-function getBearerToken(request: FastifyRequest): string {
-  const authorization = request.headers.authorization;
-  const match = /^Bearer ([^\s]+)$/i.exec(authorization ?? "");
-  if (match?.[1] === undefined) {
-    throw new AppError({
-      code: "UNAUTHORIZED",
-      message: "A valid access token is required.",
-      statusCode: 401,
-    });
-  }
-  return match[1];
-}
-
-async function authenticate(
-  request: FastifyRequest,
-  service: AuthService,
-): Promise<AccessIdentity> {
-  return service.authenticate(getBearerToken(request));
 }
 
 function requestMetadata(request: FastifyRequest, service: AuthService) {
@@ -387,7 +368,7 @@ export function registerAuthRoutes(app: FastifyInstance, service: AuthService): 
       },
     },
     async (request) => {
-      const identity = await authenticate(request, service);
+      const identity = await authenticateRequest(request, service);
       const sessions = await service.listSessions(identity);
       return { sessions: sessions.map(publicSession) };
     },
@@ -410,7 +391,7 @@ export function registerAuthRoutes(app: FastifyInstance, service: AuthService): 
       },
     },
     async (request, reply) => {
-      const identity = await authenticate(request, service);
+      const identity = await authenticateRequest(request, service);
       const parameters = z.object({ sessionId: z.uuid() }).parse(request.params);
       await service.revokeSession(identity, parameters.sessionId);
       return reply.status(204).send();
@@ -431,7 +412,7 @@ export function registerAuthRoutes(app: FastifyInstance, service: AuthService): 
       },
     },
     async (request, reply) => {
-      const identity = await authenticate(request, service);
+      const identity = await authenticateRequest(request, service);
       const body = parseBody(logoutBodySchema, request.body ?? {});
       if (body.allDevices) {
         await service.revokeAllSessions(identity);

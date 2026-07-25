@@ -19,5 +19,8 @@ export function authenticateRequest(
   request: FastifyRequest,
   authService: AuthService,
 ): Promise<AccessIdentity> {
-  return authService.authenticate(bearerToken(request));
+  return authService.authenticate(bearerToken(request)).then((identity) => {
+    request.authUserId = identity.userId;
+    return identity;
+  });
 }

@@ -1,4 +1,4 @@
-import type { LoggerOptions } from "pino";
+import { stdSerializers, type LoggerOptions } from "pino";
 
 const REDACTED = "[REDACTED]";
 
@@ -44,6 +44,35 @@ export function createLoggerOptions(
     redact: {
       censor: REDACTED,
       paths: [...SENSITIVE_LOG_PATHS],
+    },
+    serializers: {
+      err: stdSerializers.err,
+      req: (request: unknown) => {
+        const serialized = stdSerializers.req(
+          request as Parameters<typeof stdSerializers.req>[0],
+        ) as {
+          method?: string;
+          remoteAddress?: string;
+          remotePort?: number;
+          url?: string;
+        };
+        return {
+          method: serialized.method,
+          remoteAddress: serialized.remoteAddress,
+          remotePort: serialized.remotePort,
+          url: serialized.url?.split("?")[0],
+        };
+      },
+      res: (response: unknown) => {
+        const serialized = stdSerializers.res(
+          response as Parameters<typeof stdSerializers.res>[0],
+        ) as {
+          statusCode?: number;
+        };
+        return {
+          statusCode: serialized.statusCode,
+        };
+      },
     },
   };
 }

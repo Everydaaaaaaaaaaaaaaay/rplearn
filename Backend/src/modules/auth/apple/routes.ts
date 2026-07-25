@@ -1,6 +1,7 @@
-import type { FastifyInstance, FastifyRequest } from "fastify";
+import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { AppError } from "../../../shared/errors.js";
+import { authenticateRequest } from "../http.js";
 import type { AuthService } from "../service.js";
 import type { AppleAuthService, AppleAuthentication } from "./service.js";
 
@@ -31,18 +32,6 @@ function parseAuthentication(value: unknown): AppleAuthentication {
     });
   }
   return result.data;
-}
-
-function bearerToken(request: FastifyRequest): string {
-  const match = /^Bearer ([^\s]+)$/i.exec(request.headers.authorization ?? "");
-  if (match?.[1] === undefined) {
-    throw new AppError({
-      code: "UNAUTHORIZED",
-      message: "A valid access token is required.",
-      statusCode: 401,
-    });
-  }
-  return match[1];
 }
 
 function publicTokenPair(pair: Awaited<ReturnType<AppleAuthService["login"]>>) {
@@ -130,7 +119,7 @@ export function registerAppleAuthRoutes(
       },
     },
     async (request, reply) => {
-      const identity = await authService.authenticate(bearerToken(request));
+      const identity = await authenticateRequest(request, authService);
       await appleService.link(identity, parseAuthentication(request.body));
       return reply.status(204).send();
     },

@@ -53,6 +53,9 @@ describe("loadConfig", () => {
       expect(error.issues).toContain("DATABASE_URL is required in production");
       expect(error.issues).toContain("REDIS_URL is required in production");
       expect(error.issues).toContain("DEEPSEEK_API_KEY is required in production");
+      expect(error.issues).toContain(
+        "METRICS_BEARER_TOKEN must contain at least 32 characters when metrics are enabled",
+      );
     }
   });
 

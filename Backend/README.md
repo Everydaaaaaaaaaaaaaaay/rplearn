@@ -69,6 +69,10 @@ AI 请求统一经 `/v1/ai/completions` 或 `/v1/ai/stream`
 转发。任务路由从数据库热读取，默认模型全部为
 `deepseek-v4-flash`；客户端不能指定 provider、模型或提高服务端上限。系统按 entitlement 执行持久日配额、按用户执行 Redis 分钟限流，并只记录 task、模型、token 用量、延迟和稳定错误码，不保存 prompt 或模型回复。
 
+`/internal/metrics` 输出低基数 Prometheus 指标；生产环境必须用独立 bearer
+token 保护。所有 HTTP 写操作会追加不含请求载荷的审计事件，IP 只保存 HMAC 摘要。部署环境应每天执行
+`pnpm maintenance:cleanup`，按配置的保留期清理审计记录和 AI 用量明细。
+
 生产环境需要持久的 Ed25519 签名密钥。以下命令仅把新密钥打印到当前终端，由操作者直接存入 Secret
 Manager；不要把输出复制进仓库或聊天记录：
 

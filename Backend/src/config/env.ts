@@ -34,7 +34,9 @@ const rawEnvironmentSchema = z.object({
   APPLE_TEAM_ID: optionalSecret,
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
   AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
+  AI_USAGE_RETENTION_DAYS: z.coerce.number().int().min(30).max(730).default(90),
   AI_USER_MINUTE_LIMIT: z.coerce.number().int().min(1).max(300).default(30),
+  AUDIT_RETENTION_DAYS: z.coerce.number().int().min(30).max(2555).default(365),
   AUTH_ACCESS_TOKEN_TTL_SECONDS: z.coerce.number().int().min(60).max(3600).default(900),
   AUTH_ACTION_TOKEN_TTL_SECONDS: z.coerce
     .number()
@@ -76,6 +78,8 @@ const rawEnvironmentSchema = z.object({
   LOG_LEVEL: z
     .enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"])
     .default("info"),
+  METRICS_BEARER_TOKEN: optionalSecret,
+  METRICS_ENABLED: booleanFromString.default(true),
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().int().min(1).max(65_535).default(8080),
   READINESS_TIMEOUT_MS: z.coerce.number().int().min(100).max(30_000).default(2000),
@@ -99,7 +103,9 @@ const rawEnvironmentSchema = z.object({
 
 export type RuntimeConfig = Readonly<{
   aiRetryMaxAttempts: number;
+  aiUsageRetentionDays: number;
   aiUserMinuteLimit: number;
+  auditRetentionDays: number;
   appleAuthEnabled: boolean;
   appleBillingAppAppleId?: number;
   appleBillingBundleId: string;
@@ -136,6 +142,8 @@ export type RuntimeConfig = Readonly<{
   deepSeekBaseUrl: string;
   host: string;
   logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "trace" | "silent";
+  metricsBearerToken?: string;
+  metricsEnabled: boolean;
   nodeEnv: "development" | "test" | "production";
   port: number;
   readinessTimeoutMs: number;
@@ -249,6 +257,16 @@ export function loadConfig(
   }
 
   if (
+    result.data.NODE_ENV === "production" &&
+    result.data.METRICS_ENABLED &&
+    (result.data.METRICS_BEARER_TOKEN?.length ?? 0) < 32
+  ) {
+    issues.push(
+      "METRICS_BEARER_TOKEN must contain at least 32 characters when metrics are enabled",
+    );
+  }
+
+  if (
     (result.data.SMTP_USER === undefined) !==
     (result.data.SMTP_PASSWORD === undefined)
   ) {
@@ -301,7 +319,9 @@ export function loadConfig(
 
   return {
     aiRetryMaxAttempts: result.data.AI_RETRY_MAX_ATTEMPTS,
+    aiUsageRetentionDays: result.data.AI_USAGE_RETENTION_DAYS,
     aiUserMinuteLimit: result.data.AI_USER_MINUTE_LIMIT,
+    auditRetentionDays: result.data.AUDIT_RETENTION_DAYS,
     appleAuthEnabled: result.data.APPLE_AUTH_ENABLED,
     ...(result.data.APPLE_BILLING_APP_APPLE_ID === undefined
       ? {}
@@ -365,6 +385,10 @@ export function loadConfig(
     deepSeekBaseUrl: result.data.DEEPSEEK_BASE_URL,
     host: result.data.HOST,
     logLevel: result.data.LOG_LEVEL,
+    ...(result.data.METRICS_BEARER_TOKEN === undefined
+      ? {}
+      : { metricsBearerToken: result.data.METRICS_BEARER_TOKEN }),
+    metricsEnabled: result.data.METRICS_ENABLED,
     nodeEnv: result.data.NODE_ENV,
     port: result.data.PORT,
     readinessTimeoutMs: result.data.READINESS_TIMEOUT_MS,

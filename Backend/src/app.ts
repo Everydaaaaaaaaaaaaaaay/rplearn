@@ -13,6 +13,7 @@ import { registerErrorHandling } from "./app/error-handler.js";
 import { registerHealthRoutes } from "./app/health.js";
 import { createLoggerOptions } from "./app/logger.js";
 import type { ReadinessCheck } from "./app/readiness.js";
+import { registerMetrics } from "./modules/observability/metrics.js";
 
 type BuildAppOptions = Readonly<{
   logger?: FastifyServerOptions["logger"];
@@ -42,6 +43,8 @@ export async function buildApp(
     requestIdHeader: false,
     trustProxy: config.trustProxy,
   });
+
+  app.decorateRequest("authUserId", null);
 
   app.addHook("onRequest", (request, reply, done) => {
     reply.header("x-request-id", request.id);
@@ -89,6 +92,7 @@ export async function buildApp(
 
   registerErrorHandling(app);
   registerHealthRoutes(app, options.readinessChecks ?? [], config.readinessTimeoutMs);
+  registerMetrics(app, config);
 
   return app;
 }

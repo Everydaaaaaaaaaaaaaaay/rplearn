@@ -17,6 +17,7 @@ import { createDomainService } from "./modules/domain/service.js";
 import { createSyncCursorCodec } from "./modules/sync/cursor.js";
 import { registerSyncRoutes } from "./modules/sync/routes.js";
 import { createSyncService } from "./modules/sync/service.js";
+import { registerAuditHooks } from "./modules/observability/audit.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -37,6 +38,7 @@ async function main(): Promise<void> {
   const app = await buildApp(config, {
     readinessChecks: dependencies.readinessChecks,
   });
+  registerAuditHooks(app, config, dependencies.database);
   const authService = await createAuthService(config, dependencies.database, {
     onNotificationError: (error) => {
       app.log.error(
