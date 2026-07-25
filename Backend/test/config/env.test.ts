@@ -67,4 +67,13 @@ describe("loadConfig", () => {
       }),
     ).toThrow(ConfigurationError);
   });
+
+  it("requires App Store identity and root certificates for Apple billing", () => {
+    expect(() =>
+      loadConfig({
+        APPLE_BILLING_APP_APPLE_ID: "",
+        APPLE_BILLING_ENABLED: "true",
+      }),
+    ).toThrow(ConfigurationError);
+  });
 });

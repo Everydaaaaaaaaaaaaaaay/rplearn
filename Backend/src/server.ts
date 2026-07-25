@@ -6,6 +6,9 @@ import { registerAuthRoutes } from "./modules/auth/routes.js";
 import { createAuthService } from "./modules/auth/service.js";
 import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
 import { createAppleAuthService } from "./modules/auth/apple/service.js";
+import { createAppleBillingVerifier } from "./modules/billing/apple/verifier.js";
+import { registerBillingRoutes } from "./modules/billing/routes.js";
+import { createBillingService } from "./modules/billing/service.js";
 import { registerDomainRoutes } from "./modules/domain/routes.js";
 import { createDomainService } from "./modules/domain/service.js";
 import { createSyncCursorCodec } from "./modules/sync/cursor.js";
@@ -51,6 +54,14 @@ async function main(): Promise<void> {
     );
     registerAppleAuthRoutes(app, appleAuthService, authService);
   }
+  const billingService = createBillingService(
+    dependencies.database,
+    config.appleBillingEnabled ? createAppleBillingVerifier(config) : undefined,
+  );
+  registerBillingRoutes(app, authService, billingService, {
+    appleBillingEnabled: config.appleBillingEnabled,
+    enableDebugRoutes: config.nodeEnv !== "production",
+  });
   const domainService = createDomainService(dependencies.database);
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",

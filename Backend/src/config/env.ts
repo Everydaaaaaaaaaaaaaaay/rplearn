@@ -10,8 +10,19 @@ const optionalSecret = z
   .transform((value) => (value.length === 0 ? undefined : value))
   .optional();
 
+const optionalPositiveInteger = z.preprocess(
+  (value) =>
+    typeof value === "string" && value.trim().length === 0 ? undefined : value,
+  z.coerce.number().int().positive().optional(),
+);
+
 const rawEnvironmentSchema = z.object({
   APPLE_AUTH_ENABLED: booleanFromString.default(false),
+  APPLE_BILLING_APP_APPLE_ID: optionalPositiveInteger,
+  APPLE_BILLING_BUNDLE_ID: z.string().trim().min(3).default("com.tiantian.lingotrip"),
+  APPLE_BILLING_ENABLED: booleanFromString.default(false),
+  APPLE_BILLING_ENABLE_ONLINE_CHECKS: booleanFromString.default(true),
+  APPLE_BILLING_ROOT_CA_CERTIFICATES_BASE64: z.string().default(""),
   APPLE_CHALLENGE_TTL_SECONDS: z.coerce.number().int().min(60).max(900).default(300),
   APPLE_CLIENT_IDS: z.string().default(""),
   APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64: optionalSecret,
@@ -86,6 +97,11 @@ const rawEnvironmentSchema = z.object({
 
 export type RuntimeConfig = Readonly<{
   appleAuthEnabled: boolean;
+  appleBillingAppAppleId?: number;
+  appleBillingBundleId: string;
+  appleBillingEnabled: boolean;
+  appleBillingEnableOnlineChecks: boolean;
+  appleBillingRootCaCertificates: readonly Buffer[];
   appleChallengeTtlSeconds: number;
   appleClientIds: readonly string[];
   appleCredentialEncryptionKeyBase64?: string;
@@ -170,6 +186,9 @@ export function loadConfig(
 
   const corsAllowedOrigins = parseOrigins(result.data.CORS_ALLOWED_ORIGINS);
   const appleClientIds = parseOrigins(result.data.APPLE_CLIENT_IDS);
+  const appleBillingRootCaCertificates = parseOrigins(
+    result.data.APPLE_BILLING_ROOT_CA_CERTIFICATES_BASE64,
+  ).map((certificate) => Buffer.from(certificate, "base64"));
   const issues: string[] = [];
 
   if (corsAllowedOrigins.length === 0) {
@@ -239,6 +258,22 @@ export function loadConfig(
     );
   }
 
+  if (
+    result.data.APPLE_BILLING_ENABLED &&
+    (result.data.APPLE_BILLING_APP_APPLE_ID === undefined ||
+      appleBillingRootCaCertificates.length === 0)
+  ) {
+    issues.push(
+      "Apple billing requires the App Apple ID and at least one DER root certificate",
+    );
+  }
+
+  if (
+    appleBillingRootCaCertificates.some((certificate) => certificate.byteLength === 0)
+  ) {
+    issues.push("Apple billing root certificates must be valid base64 values");
+  }
+
   if (result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64 !== undefined) {
     const keyLength = Buffer.from(
       result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64,
@@ -255,6 +290,13 @@ export function loadConfig(
 
   return {
     appleAuthEnabled: result.data.APPLE_AUTH_ENABLED,
+    ...(result.data.APPLE_BILLING_APP_APPLE_ID === undefined
+      ? {}
+      : { appleBillingAppAppleId: result.data.APPLE_BILLING_APP_APPLE_ID }),
+    appleBillingBundleId: result.data.APPLE_BILLING_BUNDLE_ID,
+    appleBillingEnabled: result.data.APPLE_BILLING_ENABLED,
+    appleBillingEnableOnlineChecks: result.data.APPLE_BILLING_ENABLE_ONLINE_CHECKS,
+    appleBillingRootCaCertificates,
     appleChallengeTtlSeconds: result.data.APPLE_CHALLENGE_TTL_SECONDS,
     appleClientIds,
     ...(result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64 === undefined

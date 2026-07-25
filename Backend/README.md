@@ -58,6 +58,13 @@ token。Apple 邮箱不会自动与已有邮箱账号合并；已有账号只能
 `/v1/sync/changes`。离线写入可批量提交到
 `/v1/sync/commands`；每个 command 有独立 UUID 和幂等结果。业务变更、同步事件与命令回执在同一个数据库事务中提交。
 
+订阅使用平台无关的 plan、store
+product、transaction、subscription 和 entitlement 模型。Apple 适配器只接受官方 App Store
+Server Library 验签后的 transaction，以及 App Store Server Notifications
+V2；新购买必须把后端 `userId` 作为 StoreKit 2 的
+`appAccountToken`，客户端不能自行声明会员等级。开发环境可用
+`/v1/dev/billing/entitlements` 发放有时限的本地调试权益。
+
 生产环境需要持久的 Ed25519 签名密钥。以下命令仅把新密钥打印到当前终端，由操作者直接存入 Secret
 Manager；不要把输出复制进仓库或聊天记录：
 
