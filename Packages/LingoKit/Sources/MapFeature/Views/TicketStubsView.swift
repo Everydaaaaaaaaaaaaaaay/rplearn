@@ -21,7 +21,7 @@ public struct TicketStubsView: View {
                 ContentUnavailableView(
                     "还没有票根",
                     systemImage: "ticket",
-                    description: Text("使用机票旅行后，票根会收藏在这里")
+                    description: Text("完成旅行后，票根会收藏在这里")
                 )
             } else {
                 ScrollView {

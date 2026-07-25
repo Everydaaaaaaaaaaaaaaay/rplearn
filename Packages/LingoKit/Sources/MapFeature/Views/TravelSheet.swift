@@ -10,6 +10,7 @@ enum TravelOutcome {
 
 struct TravelSheet: View {
     let region: Region
+    let requiresTicket: Bool
     let deps: MapDependencies
     let tickets: [ItemDTO]
     let onDone: (TravelOutcome) -> Void
@@ -39,9 +40,23 @@ struct TravelSheet: View {
                 }
             }
 
-            if let ticket = usable.first {
+            if !requiresTicket {
+                Label("已经去过，可直接前往", systemImage: "checkmark.seal.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.dsSuccess)
+
+                Button {
+                    travel()
+                } label: {
+                    workingLabel("直接出发")
+                }
+                .buttonStyle(.duoPrimary)
+                .disabled(isWorking)
+            } else if let ticket = usable.first {
                 Label(
-                    ticket.type == .ticketUniversal ? "使用通用机票" : "使用 \(ticket.countryCode ?? "") 国家机票",
+                    ticket.type == .ticketUniversal
+                        ? "使用通用机票解锁"
+                        : "使用 \(ticket.countryCode ?? "") 国家机票解锁",
                     systemImage: "ticket.fill"
                 )
                 .font(.subheadline.weight(.semibold))
@@ -50,25 +65,29 @@ struct TravelSheet: View {
                 Button {
                     travel(with: ticket)
                 } label: {
-                    workingLabel("确认出发")
+                    workingLabel("使用机票并出发")
                 }
                 .buttonStyle(.duoPrimary)
                 .disabled(isWorking)
             } else {
-                Label("当前没有可用机票", systemImage: "ticket")
+                Label("首次前往需要一张可用机票", systemImage: "lock.fill")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
 
                 Button {
                     buyAndTravel()
                 } label: {
-                    workingLabel("花 \(EconomyService.Price.universalTicket) 金币购票并出发")
+                    workingLabel("花 \(EconomyService.Price.universalTicket) 金币购票并解锁")
                 }
                 .buttonStyle(.duoPrimary)
                 .disabled(isWorking)
             }
 
-            Text("确认后将生成一张新的旅行票根。")
+            Text(
+                requiresTicket
+                    ? "机票只在首次解锁城市时消耗；以后可以自由往返。"
+                    : "这次旅行不会消耗机票，并会生成一张新的旅行票根。"
+            )
                 .font(.caption)
                 .foregroundStyle(.tertiary)
         }
@@ -83,7 +102,7 @@ struct TravelSheet: View {
         }
     }
 
-    private func travel(with ticket: ItemDTO) {
+    private func travel(with ticket: ItemDTO? = nil) {
         isWorking = true
         Task {
             do {
@@ -112,6 +131,16 @@ struct TravelSheet: View {
 
     private func errorText(_ error: Error) -> String {
         if case EconomyStore.EconomyError.insufficientCoins = error { return "金币不足" }
+        if let travelError = error as? TravelService.TravelError {
+            switch travelError {
+            case .ticketRequired:
+                return "首次前往需要一张可用机票"
+            case .ticketNotUsable:
+                return "这张机票不能用于解锁该城市"
+            case .alreadyThere:
+                return "你已经在这里了"
+            }
+        }
         return error.localizedDescription
     }
 }

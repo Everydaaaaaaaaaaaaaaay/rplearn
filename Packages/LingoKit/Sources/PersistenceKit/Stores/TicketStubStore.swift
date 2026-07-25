@@ -12,7 +12,7 @@ public struct TicketStubDTO: Sendable, Equatable, Identifiable {
     public var artSeed: Int
 }
 
-/// 票根仓库：机票使用后生成，票根夹翻阅。
+/// 票根仓库：每次旅行后生成，票根夹翻阅。
 @ModelActor
 public actor TicketStubStore {
     @discardableResult

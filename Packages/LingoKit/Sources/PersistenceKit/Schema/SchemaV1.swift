@@ -314,7 +314,7 @@ extension SchemaV1 {
         }
     }
 
-    /// 票根：机票使用后生成，artSeed 决定配色花纹。
+    /// 票根：每次旅行后生成，artSeed 决定配色花纹。
     @Model
     public final class TicketStubEntity {
         @Attribute(.unique) public var stubID: UUID

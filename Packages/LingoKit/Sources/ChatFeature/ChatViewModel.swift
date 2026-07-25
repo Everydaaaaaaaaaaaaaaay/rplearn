@@ -400,7 +400,7 @@ public final class ChatViewModel {
                 conversationID: conversationID,
                 role: .coach,
                 kind: .storyLine,
-                text: "🎫 主办方送来一张通用机票！之后可以在地图里用它前往新的城市。"
+                text: "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。"
             )
         } catch {
             Log.app.warning("主线机票发放失败：\(error)")

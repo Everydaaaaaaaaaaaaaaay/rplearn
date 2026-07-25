@@ -25,9 +25,9 @@ struct CityCard: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 if state != .current {
-                    Label(ticketLabel, systemImage: "ticket.fill")
+                    Label(statusLabel, systemImage: statusIcon)
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(ticketCount > 0 ? Color.dsSunset : Color.gray)
+                        .foregroundStyle(statusTint)
                 }
             }
 
@@ -37,7 +37,7 @@ struct CityCard: View {
                 Button {
                     onTravel()
                 } label: {
-                    Label("前往", systemImage: "airplane")
+                    Label(actionLabel, systemImage: actionIcon)
                 }
                 .buttonStyle(.duo(.primary, fullWidth: false, compact: true))
             } else {
@@ -50,8 +50,35 @@ struct CityCard: View {
         .dsCard()
     }
 
-    private var ticketLabel: String {
-        ticketCount > 0 ? "\(ticketCount) 张机票可用" : "下一步可购票"
+    private var statusLabel: String {
+        switch state {
+        case .current:
+            ""
+        case .unlocked:
+            "已去过，可直接前往"
+        case .locked:
+            ticketCount > 0 ? "\(ticketCount) 张机票可解锁" : "首次前往需要机票"
+        }
+    }
+
+    private var statusIcon: String {
+        state == .unlocked ? "arrow.triangle.2.circlepath" : "ticket.fill"
+    }
+
+    private var statusTint: Color {
+        switch state {
+        case .current: .dsSuccess
+        case .unlocked: .dsSky
+        case .locked: ticketCount > 0 ? .dsSunset : .gray
+        }
+    }
+
+    private var actionLabel: String {
+        state == .locked ? "解锁" : "前往"
+    }
+
+    private var actionIcon: String {
+        state == .locked ? "ticket.fill" : "airplane"
     }
 
     private var stateTint: Color {

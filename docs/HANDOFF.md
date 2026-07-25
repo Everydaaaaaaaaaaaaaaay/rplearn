@@ -16,7 +16,7 @@
 - **会话与记忆**：分层记忆（short→mid→long）按订阅配额压缩注入，长对话不爆上下文。
 - **AVG 剧情模块**：竖屏视觉小说，3 位主角色各有主线章节。
 - **角色系统**：3 位手工设计主角色（伦敦 / 墨尔本 / 纽约）+ AI 随机生成的「偶遇」角色；好友位机制。
-- **地区 / 机票 / 票根**：地图前往新城市，机票消耗生成收藏级票根。
+- **地区 / 机票 / 票根**：机票是首次前往新城市的解锁道具；已去过的城市可自由往返，每次旅行都会生成收藏级票根。
 - **经济系统**：金币 + 订阅（本地模拟，支付网关占位）。
 - **首启引导**：以聊天皮肤演出的开场剧情 → 选主角色 → 引导主线。
 
@@ -126,7 +126,7 @@ DomainKit 服务清单：
 - `MemoryService`：分层记忆压缩（short→mid→long 级联）、按订阅配额裁剪、注入段落。
 - `EconomyService`：金币 / 订阅（`PurchaseGateway` 占位）、道具定价、记忆配额（`MemoryQuota`）。
 - `EncounterService`：偶遇概率与来源掷骰（纯函数可测）、LLM 结构化生成角色卡（重试 + 本地模板兜底）。
-- `TravelService`：机票可用性判定与出行、票根生成。
+- `TravelService`：首次解锁地区的机票校验/消耗、已解锁地区免费往返与票根生成。
 - `QuizService`：出题触发判定、prompt 指令、`<quiz>` 截取解析、本地判分。
 - `KeywordAnnotator`：本地词频给角色回复关键词划线。
 - `TranslationService`：整句翻译（结果缓存）。
@@ -138,7 +138,7 @@ DomainKit 服务清单：
 |---|---|---|
 | **ChatFeature** | 消息列表 + 聊天页 | QQ 式搜索/未读/置顶/滑动已读；聊天流式链路、统一批注卡、quiz 庆祝/错误反馈、语音条、Apple 端上翻译兜底 |
 | **HomeFeature** | 首页聚合 Hub + 主线/活动二级页 | 城市动态剪影背景、最近会话、两张探索入口；`MainlineListView` / `ActivitiesView` |
-| **MapFeature** | 二维目的地选择器 + 飞行转场 + 票根夹 | 洲级宽视角、弱化底图、三态 Pin、紧凑城市卡、购票/出行、`FlightTransitionOverlay`、6 套动态票根色 |
+| **MapFeature** | 二维目的地选择器 + 飞行转场 + 票根夹 | 洲级宽视角、弱化底图、三态 Pin、首次解锁耗票/已解锁直达、`FlightTransitionOverlay`、6 套动态票根色 |
 | **StoryFeature** | AVG 剧情 | 竖屏 ZStack、打字机台词、动态深浅场景色、Duo 选项 |
 | **OnboardingFeature** | 首启引导 | 聊天剧情内角色资料卡 + 3D 横滑实体选角卡 |
 | **SettingsFeature** | 我的 + 设置 | `MyPageView` 聚合资料/订阅/收藏/设置；二级设置保留 AI、模型、语音、学习开关 |

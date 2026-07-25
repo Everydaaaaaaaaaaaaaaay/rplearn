@@ -83,7 +83,12 @@ public struct MapView: View {
             }
         }
         .sheet(item: $travelTarget) { region in
-            TravelSheet(region: region, deps: deps, tickets: tickets) { outcome in
+            TravelSheet(
+                region: region,
+                requiresTicket: requiresTicket(for: region),
+                deps: deps,
+                tickets: tickets
+            ) { outcome in
                 travelTarget = nil
                 handle(outcome)
             }
@@ -255,8 +260,13 @@ public struct MapView: View {
 
     private func pinState(_ region: Region) -> CityPinView.PinState {
         if profile?.currentRegionID == region.id { return .current }
-        if profile?.unlockedRegionIDs.contains(region.id) == true { return .unlocked }
+        if !requiresTicket(for: region) { return .unlocked }
         return .locked
+    }
+
+    private func requiresTicket(for region: Region) -> Bool {
+        guard let profile else { return true }
+        return TravelService.requiresTicket(to: region, profile: profile)
     }
 
     private func usableTickets(for region: Region) -> [ItemDTO] {

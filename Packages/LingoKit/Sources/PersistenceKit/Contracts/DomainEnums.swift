@@ -82,9 +82,9 @@ public enum CharacterGender: String, Sendable, Codable, CaseIterable {
 }
 
 public enum ItemType: String, Sendable, Codable {
-    /// 通用机票：可前往任意已知地区。
+    /// 通用机票：可解锁任意未到访地区。
     case ticketUniversal
-    /// 指定国家机票：countryCode 限定。
+    /// 指定国家机票：只能解锁 countryCode 匹配的未到访地区。
     case ticketCountry
 }
 
