@@ -22,6 +22,7 @@ export type AccountExport = Readonly<{
     subscriptions: readonly unknown[];
     transactions: readonly unknown[];
   }>;
+  contentRecords: readonly unknown[];
   economy: Readonly<{
     coinLedger: readonly unknown[];
     tickets: readonly unknown[];
@@ -32,7 +33,7 @@ export type AccountExport = Readonly<{
     deletionRequests: readonly unknown[];
   }>;
   profile: unknown;
-  schemaVersion: 1;
+  schemaVersion: 2;
   securityEvents: readonly unknown[];
   sessions: readonly unknown[];
   syncChanges: readonly unknown[];

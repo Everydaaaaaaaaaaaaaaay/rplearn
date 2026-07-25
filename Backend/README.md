@@ -65,6 +65,12 @@ token。Apple 邮箱不会自动与已有邮箱账号合并；已有账号只能
 `/v1/sync/changes`。离线写入可批量提交到
 `/v1/sync/commands`；每个 command 有独立 UUID 和幂等结果。业务变更、同步事件与命令回执在同一个数据库事务中提交。
 
+跨平台用户内容通过 `/v1/content/records` 分页启动，并通过
+`/v1/content/commands` 提交类型化的角色、会话、消息、收藏、记忆、答题记录与剧情断点。记录使用客户端稳定 ID、服务端递增版本和软删除墓碑；更新必须携带
+`expectedVersion`，冲突会返回当前服务器记录而不会静默覆盖。分页 cursor 绑定账号且带
+HMAC，第一页同时固定全局同步 cursor，分页期间发生的变更由 `/v1/sync/changes`
+补齐。服务端校验每类 payload、父子关系、单记录大小与账号级资源上限，账号导出和删除也覆盖这些内容。
+
 订阅使用平台无关的 plan、store
 product、transaction、subscription 和 entitlement 模型。Apple 适配器只接受官方 App Store
 Server Library 验签后的 transaction，以及 App Store Server Notifications

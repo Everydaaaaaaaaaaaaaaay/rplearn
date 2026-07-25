@@ -214,6 +214,20 @@ export class AccountRepository {
           where user_id = ${userId}
           order by sequence
         `;
+        const contentRecords = await sql<JsonRow[]>`
+          select
+            resource_type as "resourceType",
+            resource_id as "resourceId",
+            parent_id as "parentId",
+            payload,
+            version,
+            created_at as "createdAt",
+            updated_at as "updatedAt",
+            deleted_at as "deletedAt"
+          from app.content_records
+          where user_id = ${userId}
+          order by resource_type, resource_id
+        `;
         const securityEvents = await sql<JsonRow[]>`
           select
             event_type as "eventType",
@@ -255,6 +269,7 @@ export class AccountRepository {
             subscriptions,
             transactions,
           },
+          contentRecords,
           economy: {
             coinLedger,
             tickets,
@@ -265,7 +280,7 @@ export class AccountRepository {
             deletionRequests,
           },
           profile: profile ?? null,
-          schemaVersion: 1,
+          schemaVersion: 2,
           securityEvents,
           sessions,
           syncChanges,

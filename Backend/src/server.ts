@@ -20,6 +20,9 @@ import { createSyncService } from "./modules/sync/service.js";
 import { registerAuditHooks } from "./modules/observability/audit.js";
 import { registerAccountRoutes } from "./modules/account/routes.js";
 import { createAccountService } from "./modules/account/service.js";
+import { createContentCursorCodec } from "./modules/content/cursor.js";
+import { registerContentRoutes } from "./modules/content/routes.js";
+import { createContentService } from "./modules/content/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -77,10 +80,17 @@ async function main(): Promise<void> {
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",
   });
+  const syncCursor = createSyncCursorCodec(config.authTokenHashPepper);
+  const contentService = createContentService(
+    dependencies.database,
+    createContentCursorCodec(config.authTokenHashPepper),
+    syncCursor,
+  );
+  registerContentRoutes(app, authService, contentService);
   const syncService = createSyncService(
     dependencies.database,
     domainService,
-    createSyncCursorCodec(config.authTokenHashPepper),
+    syncCursor,
   );
   registerSyncRoutes(app, authService, syncService);
   let closing = false;
