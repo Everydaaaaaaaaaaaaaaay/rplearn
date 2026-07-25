@@ -1,40 +1,88 @@
 // swift-tools-version: 6.0
 import PackageDescription
 
-// LingoKit — 全部模块 target 与依赖图的唯一清单。
-// 依赖方向严格向下：Feature → Domain → Service → Infra，Feature 之间互不依赖。
+// LingoKit — 全部 Module target 与依赖图的唯一清单。
+// Feature 只按需依赖下层 Module，Feature 之间互不依赖。
+
+func module(_ name: String) -> Target.Dependency {
+    .target(name: name)
+}
 
 let infraTargets: [Target] = [
     .target(name: "CoreKit"),
-    .target(name: "DesignSystem", dependencies: ["CoreKit"]),
+    .target(name: "DesignSystem", dependencies: [module("CoreKit")]),
 ]
 
 let serviceTargets: [Target] = [
-    .target(name: "LLMKit", dependencies: ["CoreKit"]),
-    .target(name: "SpeechKit", dependencies: ["CoreKit"]),
+    .target(name: "LLMKit", dependencies: [module("CoreKit")]),
+    .target(name: "SpeechKit", dependencies: [module("CoreKit")]),
     // DictKit 附带词典卡 UI（DictCardView/浮窗），故依赖 DesignSystem——层级仍严格向下。
-    .target(name: "DictKit", dependencies: ["CoreKit", "DesignSystem"]),
-    .target(name: "PersistenceKit", dependencies: ["CoreKit"]),
+    .target(name: "DictKit", dependencies: [module("CoreKit"), module("DesignSystem")]),
+    .target(name: "PersistenceKit", dependencies: [module("CoreKit")]),
 ]
 
 let domainTargets: [Target] = [
-    .target(name: "DomainKit", dependencies: ["CoreKit", "LLMKit", "SpeechKit", "DictKit", "PersistenceKit"]),
-    .target(name: "StoryEngine", dependencies: ["CoreKit"]),
+    .target(
+        name: "DomainKit",
+        dependencies: [
+            module("CoreKit"),
+            module("LLMKit"),
+            module("DictKit"),
+            module("PersistenceKit"),
+        ]
+    ),
+    .target(name: "StoryEngine"),
 ]
 
-func feature(_ name: String, extraDependencies: [Target.Dependency] = []) -> Target {
-    .target(name: name, dependencies: ["DomainKit", "DesignSystem"] + extraDependencies)
+func feature(_ name: String, dependencies: [Target.Dependency]) -> Target {
+    .target(name: name, dependencies: [module("DesignSystem")] + dependencies)
 }
 
 let featureTargets: [Target] = [
-    feature("HomeFeature", extraDependencies: ["PersistenceKit", "LLMKit"]),
-    feature("ChatFeature", extraDependencies: ["LLMKit", "PersistenceKit", "DictKit", "SpeechKit"]),
-    feature("OnboardingFeature", extraDependencies: ["StoryEngine", "PersistenceKit"]),
-    feature("StoryFeature", extraDependencies: ["StoryEngine", "PersistenceKit", "DictKit", "SpeechKit"]),
-    feature("RosterFeature", extraDependencies: ["PersistenceKit"]),
-    feature("MapFeature", extraDependencies: ["PersistenceKit"]),
-    feature("FavoritesFeature", extraDependencies: ["PersistenceKit", "DictKit", "SpeechKit"]),
-    feature("SettingsFeature", extraDependencies: ["LLMKit", "PersistenceKit", "SpeechKit"]),
+    feature("HomeFeature", dependencies: [
+        module("CoreKit"),
+        module("DomainKit"),
+        module("LLMKit"),
+        module("PersistenceKit"),
+    ]),
+    feature("ChatFeature", dependencies: [
+        module("CoreKit"),
+        module("DomainKit"),
+        module("LLMKit"),
+        module("PersistenceKit"),
+        module("DictKit"),
+        module("SpeechKit"),
+    ]),
+    feature("OnboardingFeature", dependencies: [
+        module("StoryEngine"),
+        module("PersistenceKit"),
+    ]),
+    feature("StoryFeature", dependencies: [
+        module("CoreKit"),
+        module("StoryEngine"),
+        module("PersistenceKit"),
+        module("DictKit"),
+        module("SpeechKit"),
+    ]),
+    feature("RosterFeature", dependencies: [
+        module("PersistenceKit"),
+    ]),
+    feature("MapFeature", dependencies: [
+        module("DomainKit"),
+        module("PersistenceKit"),
+    ]),
+    feature("FavoritesFeature", dependencies: [
+        module("CoreKit"),
+        module("PersistenceKit"),
+        module("DictKit"),
+        module("SpeechKit"),
+    ]),
+    feature("SettingsFeature", dependencies: [
+        module("DomainKit"),
+        module("LLMKit"),
+        module("PersistenceKit"),
+        module("SpeechKit"),
+    ]),
 ]
 
 // 测试不在此声明：全部测试由 xcodeproj 的 LingoTripTests bundle（App 托管）编译运行，
