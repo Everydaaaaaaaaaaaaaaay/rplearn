@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type { DatabaseResource } from "../../db/client.js";
+import { AppError } from "../../shared/errors.js";
 import { DomainRepository } from "./repository.js";
 import type {
   CommandIdentity,
@@ -14,6 +15,11 @@ import type {
 
 export type DomainService = Readonly<{
   claimStarterTicket: (userId: string, commandId: string) => Promise<Ticket>;
+  completeStory: (
+    userId: string,
+    commandId: string,
+    storyId: string,
+  ) => Promise<Readonly<{ coins: number; rewardCoins: number; storyId: string }>>;
   getSnapshot: (userId: string) => Promise<UserSnapshot>;
   grantCoins: (
     userId: string,
@@ -47,6 +53,15 @@ export type DomainService = Readonly<{
   ) => Promise<UserProfile>;
 }>;
 
+const STORY_REWARDS = new Map<string, number>([
+  ["mainline_london", 100],
+  ["mainline_london_2", 120],
+  ["mainline_melbourne", 100],
+  ["mainline_melbourne_2", 120],
+  ["mainline_newyork", 100],
+  ["mainline_newyork_2", 120],
+]);
+
 function command(commandId: string, route: string, payload: unknown): CommandIdentity {
   return {
     commandId,
@@ -65,6 +80,24 @@ export function createDomainService(database: DatabaseResource): DomainService {
           reward: "starter-ticket-v1",
         }),
       ),
+    completeStory: (userId, commandId, storyId) => {
+      const rewardCoins = STORY_REWARDS.get(storyId);
+      if (rewardCoins === undefined) {
+        return Promise.reject(
+          new AppError({
+            code: "STORY_NOT_FOUND",
+            message: "This story does not exist.",
+            statusCode: 404,
+          }),
+        );
+      }
+      return repository.completeStory(
+        userId,
+        command(commandId, "progression.completeStory", { storyId }),
+        storyId,
+        rewardCoins,
+      );
+    },
     getSnapshot: (userId) => repository.snapshot(userId),
     grantCoins: (userId, commandId, amount, reason) =>
       repository.grantCoins(

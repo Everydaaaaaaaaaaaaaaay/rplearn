@@ -131,9 +131,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       url: "/v1/progression/starter-ticket",
     });
     expect(prematureStarter.statusCode).toBe(409);
-    expect(prematureStarter.json<{ code: string }>().code).toBe(
-      "ONBOARDING_REQUIRED",
-    );
+    expect(prematureStarter.json<{ code: string }>().code).toBe("ONBOARDING_REQUIRED");
 
     const profileCommand = newEntityId();
     const profileUpdate = await app.inject({
@@ -335,5 +333,46 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     `;
     expect(ledger?.current_balance).toBe(500);
     expect(ledger?.ledger_sum).toBe(500);
+
+    const storyCommand = newEntityId();
+    const storyCompletion = await app.inject({
+      headers: authenticated({ idempotencyKey: storyCommand }),
+      method: "POST",
+      url: "/v1/progression/stories/mainline_london/complete",
+    });
+    expect(storyCompletion.statusCode).toBe(200);
+    expect(
+      storyCompletion.json<{
+        coins: number;
+        rewardCoins: number;
+        storyId: string;
+      }>(),
+    ).toEqual({
+      coins: 600,
+      rewardCoins: 100,
+      storyId: "mainline_london",
+    });
+    const storyRetry = await app.inject({
+      headers: authenticated({ idempotencyKey: storyCommand }),
+      method: "POST",
+      url: "/v1/progression/stories/mainline_london/complete",
+    });
+    expect(storyRetry.json<unknown>()).toEqual(storyCompletion.json<unknown>());
+    const duplicateStory = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "POST",
+      url: "/v1/progression/stories/mainline_london/complete",
+    });
+    expect(duplicateStory.statusCode).toBe(409);
+    expect(duplicateStory.json<{ code: string }>().code).toBe(
+      "STORY_ALREADY_COMPLETED",
+    );
+    const unknownStory = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "POST",
+      url: "/v1/progression/stories/mainline_unknown/complete",
+    });
+    expect(unknownStory.statusCode).toBe(404);
+    expect(unknownStory.json<{ code: string }>().code).toBe("STORY_NOT_FOUND");
   }, 30_000);
 });

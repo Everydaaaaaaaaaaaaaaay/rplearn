@@ -210,6 +210,74 @@ export class DomainRepository {
     });
   }
 
+  async completeStory(
+    userId: string,
+    command: CommandIdentity,
+    storyId: string,
+    rewardCoins: number,
+  ): Promise<Readonly<{ coins: number; rewardCoins: number; storyId: string }>> {
+    await this.ensureProfile(userId);
+    return this.executeCommand(userId, command, async (sql) => {
+      await sql`
+        select pg_advisory_xact_lock(
+          hashtextextended(${`${userId}:story:${storyId}`}, 0)
+        )
+      `;
+      const [existing] = await sql<{ id: string }[]>`
+        select id::text
+        from app.coin_ledger
+        where user_id = ${userId}
+          and reference_type = 'story_completion'
+          and reference_id = ${storyId}
+      `;
+      if (existing !== undefined) {
+        throw new AppError({
+          code: "STORY_ALREADY_COMPLETED",
+          message: "This story reward was already granted.",
+          statusCode: 409,
+        });
+      }
+      const [profile] = await sql<{ coins: number }[]>`
+        select coins
+        from app.user_profiles
+        where user_id = ${userId}
+        for update
+      `;
+      if (profile === undefined) {
+        throw new Error("Profile does not exist");
+      }
+      const coins = profile.coins + rewardCoins;
+      await sql`
+        update app.user_profiles
+        set coins = ${coins},
+            version = version + 1,
+            updated_at = now()
+        where user_id = ${userId}
+      `;
+      await sql`
+        insert into app.coin_ledger (
+          id,
+          user_id,
+          delta,
+          balance_after,
+          reason,
+          reference_type,
+          reference_id
+        )
+        values (
+          ${newEntityId()},
+          ${userId},
+          ${rewardCoins},
+          ${coins},
+          'story_completion',
+          'story_completion',
+          ${storyId}
+        )
+      `;
+      return { coins, rewardCoins, storyId };
+    });
+  }
+
   private async executeCommand<T>(
     userId: string,
     command: CommandIdentity,
