@@ -397,8 +397,17 @@ public typealias TicketStubEntity = SchemaV1.TicketStubEntity
 public typealias StoryProgressEntity = SchemaV1.StoryProgressEntity
 public typealias QuizRecordEntity = SchemaV1.QuizRecordEntity
 
-/// 迁移计划占位：后续新增 SchemaV2 时在 stages 里补 MigrationStage。
 public enum LingoMigrationPlan: SchemaMigrationPlan {
-    public static var schemas: [any VersionedSchema.Type] { [SchemaV1.self] }
-    public static var stages: [MigrationStage] { [] }
+    public static var schemas: [any VersionedSchema.Type] {
+        [SchemaV1.self, SchemaV2.self]
+    }
+
+    public static var stages: [MigrationStage] {
+        [
+            .lightweight(
+                fromVersion: SchemaV1.self,
+                toVersion: SchemaV2.self
+            )
+        ]
+    }
 }

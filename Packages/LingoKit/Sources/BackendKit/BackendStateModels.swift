@@ -38,6 +38,7 @@ public struct BackendSyncChange: Decodable, Sendable, Equatable {
     public let eventId: UUID
     public let eventType: String
     public let occurredAt: String
+    public let payload: BackendJSONValue?
     public let sequence: String
 }
 

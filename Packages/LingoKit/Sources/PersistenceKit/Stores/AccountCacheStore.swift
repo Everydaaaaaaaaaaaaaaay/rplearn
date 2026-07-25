@@ -4,6 +4,9 @@ import SwiftData
 @ModelActor
 public actor AccountCacheStore {
     public func clearAll() throws {
+        try modelContext.delete(model: ContentOutboxEntity.self)
+        try modelContext.delete(model: ContentSyncMetadataEntity.self)
+        try modelContext.delete(model: ContentSyncOwnerEntity.self)
         try modelContext.delete(model: QuizRecordEntity.self)
         try modelContext.delete(model: MessageEntity.self)
         try modelContext.delete(model: ConversationEntity.self)

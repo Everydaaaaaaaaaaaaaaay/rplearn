@@ -49,6 +49,7 @@ public actor FavoritesStore {
             translationZh: translationZh
         )
         modelContext.insert(entity)
+        try journal(entity)
         try modelContext.save()
         return Self.dto(from: entity)
     }
@@ -63,6 +64,11 @@ public actor FavoritesStore {
         guard let entity = try modelContext.fetch(
             FetchDescriptor<FavoriteEntity>(predicate: #Predicate { $0.favoriteID == id })
         ).first else { return }
+        try ContentMutationJournal.delete(
+            in: modelContext,
+            resourceType: .favorite,
+            resourceID: entity.favoriteID.uuidString.lowercased()
+        )
         modelContext.delete(entity)
         try modelContext.save()
     }
@@ -72,6 +78,7 @@ public actor FavoritesStore {
             FetchDescriptor<FavoriteEntity>(predicate: #Predicate { $0.favoriteID == id })
         ).first else { return }
         entity.translationZh = translationZh
+        try journal(entity)
         try modelContext.save()
     }
 
@@ -83,6 +90,24 @@ public actor FavoritesStore {
         try modelContext.fetch(
             FetchDescriptor<FavoriteEntity>(predicate: #Predicate { $0.sourceMessageID == sourceMessageID })
         ).first
+    }
+
+    private func journal(_ entity: FavoriteEntity) throws {
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .favorite,
+            resourceID: entity.favoriteID.uuidString.lowercased(),
+            parentID: nil,
+            payloadJSON: try ContentMutationJournal.encode(
+                ContentFavoritePayload(
+                    characterName: entity.characterName,
+                    createdAt: entity.createdAt,
+                    sentence: entity.sentence,
+                    sourceMessageId: entity.sourceMessageID,
+                    translationZh: entity.translationZh
+                )
+            )
+        )
     }
 
     static func dto(from entity: FavoriteEntity) -> FavoriteDTO {

@@ -30,6 +30,7 @@ public actor StoryProgressStore {
         let entity = try fetchOrCreate(storyID)
         entity.currentNodeID = nodeID
         entity.flagsJSON = Self.encodeFlags(flags)
+        try journal(entity)
         try modelContext.save()
     }
 
@@ -37,6 +38,7 @@ public actor StoryProgressStore {
         let entity = try fetchOrCreate(storyID)
         entity.completedAt = .now
         entity.currentNodeID = nil
+        try journal(entity)
         try modelContext.save()
     }
 
@@ -62,6 +64,22 @@ public actor StoryProgressStore {
         let entity = StoryProgressEntity(storyID: storyID)
         modelContext.insert(entity)
         return entity
+    }
+
+    private func journal(_ entity: StoryProgressEntity) throws {
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .storyProgress,
+            resourceID: entity.storyID,
+            parentID: nil,
+            payloadJSON: try ContentMutationJournal.encode(
+                ContentStoryProgressPayload(
+                    completedAt: entity.completedAt,
+                    currentNodeId: entity.currentNodeID,
+                    flags: Self.decodeFlags(entity.flagsJSON)
+                )
+            )
+        )
     }
 
     static func dto(from entity: StoryProgressEntity) -> StoryProgressDTO {

@@ -26,6 +26,7 @@ final class AppEnvironment {
 
     let modelContainer: ModelContainer
     let accountCacheStore: AccountCacheStore
+    let contentSyncStore: ContentSyncStore
     let chatStore: ChatStore
     let rosterStore: RosterStore
     let economyStore: EconomyStore
@@ -36,6 +37,7 @@ final class AppEnvironment {
     let ticketStubStore: TicketStubStore
     let travelService: TravelService
     let userState: BackendUserStateCoordinator
+    let contentSync: BackendContentSyncCoordinator
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -84,6 +86,8 @@ final class AppEnvironment {
         self.modelContainer = container
         let accountCacheStore = AccountCacheStore(modelContainer: container)
         self.accountCacheStore = accountCacheStore
+        let contentSyncStore = ContentSyncStore(modelContainer: container)
+        self.contentSyncStore = contentSyncStore
         self.chatStore = ChatStore(modelContainer: container)
         self.rosterStore = RosterStore(modelContainer: container)
         self.economyStore = EconomyStore(modelContainer: container)
@@ -100,6 +104,10 @@ final class AppEnvironment {
             itemCache: itemStore
         )
         self.userState = userState
+        self.contentSync = BackendContentSyncCoordinator(
+            backend: backendClient,
+            store: contentSyncStore
+        )
         self.billing = BillingController(
             backend: backendClient,
             economyStore: economyStore
@@ -134,6 +142,7 @@ final class AppEnvironment {
         let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
         let cards = try SeedData.mainCharacterCards(url: seedsURL)
         try await rosterStore.importMainCharactersIfNeeded(cards: cards)
+        try await contentSync.activate(userID: identity.userID)
         needsOnboarding = !profile.hasCompletedOnboarding
         return activation
     }

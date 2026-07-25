@@ -23,6 +23,7 @@ public actor ChatStore {
         let conversation = ConversationEntity(isEncounterSession: isEncounterSession)
         conversation.character = character
         modelContext.insert(conversation)
+        try journal(conversation)
         try modelContext.save()
         return Self.dto(from: conversation, characterID: characterID)
     }
@@ -73,6 +74,8 @@ public actor ChatStore {
             conversation.turnCount += 1
             conversation.turnsSinceQuiz += 1
         }
+        try journal(message)
+        try journal(conversation)
         try modelContext.save()
         return Self.dto(from: message)
     }
@@ -85,30 +88,35 @@ public actor ChatStore {
         if let tokenEstimate {
             message.tokenEstimate = tokenEstimate
         }
+        try journal(message)
         try modelContext.save()
     }
 
     public func setKeywordRanges(messageID: UUID, json: String?) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.keywordRangesJSON = json
+        try journal(message)
         try modelContext.save()
     }
 
     public func setCoachReview(messageID: UUID, json: String?) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.coachReviewJSON = json
+        try journal(message)
         try modelContext.save()
     }
 
     public func setSpeechReview(messageID: UUID, json: String?) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.speechReviewJSON = json
+        try journal(message)
         try modelContext.save()
     }
 
     public func setTranslation(messageID: UUID, translationZh: String) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.translationZh = translationZh
+        try journal(message)
         try modelContext.save()
     }
 
@@ -120,7 +128,9 @@ public actor ChatStore {
         message.quizJSON = quizJSON
         if let conversation = try fetchConversation(id: conversationID) {
             conversation.turnsSinceQuiz = 0
+            try journal(conversation)
         }
+        try journal(message)
         try modelContext.save()
     }
 
@@ -128,6 +138,7 @@ public actor ChatStore {
     public func resetQuizCounter(conversationID: UUID) throws {
         guard let conversation = try fetchConversation(id: conversationID) else { return }
         conversation.turnsSinceQuiz = 0
+        try journal(conversation)
         try modelContext.save()
     }
 
@@ -135,6 +146,7 @@ public actor ChatStore {
     public func setQuizOptOut(conversationID: UUID, optedOut: Bool) throws {
         guard let conversation = try fetchConversation(id: conversationID) else { return }
         conversation.quizOptOut = optedOut
+        try journal(conversation)
         try modelContext.save()
     }
 
@@ -157,6 +169,9 @@ public actor ChatStore {
             characterName: characterName
         )
         modelContext.insert(record)
+        try journal(message)
+        try modelContext.save()
+        try journal(record)
         try modelContext.save()
     }
 
@@ -169,6 +184,7 @@ public actor ChatStore {
         )
         for conversation in conversations {
             conversation.isArchived = true
+            try journal(conversation)
         }
         try modelContext.save()
     }
@@ -179,11 +195,17 @@ public actor ChatStore {
             throw ChatError.conversationNotFound
         }
         conversation.lastSummarizedMessageIndex = max(conversation.lastSummarizedMessageIndex, index)
+        try journal(conversation)
         try modelContext.save()
     }
 
     public func deleteMessage(messageID: UUID) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
+        try ContentMutationJournal.delete(
+            in: modelContext,
+            resourceType: .message,
+            resourceID: message.messageID.uuidString.lowercased()
+        )
         modelContext.delete(message)
         try modelContext.save()
     }
@@ -222,6 +244,82 @@ public actor ChatStore {
         try modelContext.fetch(
             FetchDescriptor<MessageEntity>(predicate: #Predicate { $0.messageID == id })
         ).first
+    }
+
+    private func journal(_ conversation: ConversationEntity) throws {
+        guard let characterID = conversation.character?.characterID else { return }
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .conversation,
+            resourceID: conversation.conversationID.uuidString.lowercased(),
+            parentID: characterID.uuidString.lowercased(),
+            payloadJSON: try ContentMutationJournal.encode(
+                ContentConversationPayload(
+                    createdAt: conversation.createdAt,
+                    isArchived: conversation.isArchived,
+                    isEncounterSession: conversation.isEncounterSession,
+                    lastMessageAt: conversation.lastMessageAt,
+                    lastSummarizedMessageIndex: conversation.lastSummarizedMessageIndex,
+                    quizOptOut: conversation.quizOptOut,
+                    turnCount: conversation.turnCount,
+                    turnsSinceQuiz: conversation.turnsSinceQuiz
+                )
+            )
+        )
+    }
+
+    private func journal(_ message: MessageEntity) throws {
+        guard let conversationID = message.conversation?.conversationID else { return }
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .message,
+            resourceID: message.messageID.uuidString.lowercased(),
+            parentID: conversationID.uuidString.lowercased(),
+            payloadJSON: try ContentMutationJournal.encode(
+                ContentMessagePayload(
+                    audioDuration: message.audioDuration,
+                    coachReviewJson: message.coachReviewJSON,
+                    createdAt: message.createdAt,
+                    isInterrupted: message.isInterrupted,
+                    keywordRangesJson: message.keywordRangesJSON,
+                    kind: message.kindRaw,
+                    orderIndex: message.orderIndex,
+                    quizChosenIndex: message.quizChosenIndex,
+                    quizJson: message.quizJSON,
+                    role: message.roleRaw,
+                    speechReviewJson: message.speechReviewJSON,
+                    text: message.text,
+                    tokenEstimate: message.tokenEstimate,
+                    translationZh: message.translationZh
+                )
+            )
+        )
+    }
+
+    private func journal(_ quiz: QuizRecordEntity) throws {
+        guard let chosenIndex = quiz.chosenIndex else { return }
+        let localKey = ContentMutationJournal.persistentKey(quiz.persistentModelID)
+        let resourceID = try ContentMutationJournal.resourceID(
+            in: modelContext,
+            resourceType: .quizRecord,
+            localKey: localKey
+        )
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .quizRecord,
+            resourceID: resourceID,
+            parentID: nil,
+            payloadJSON: try ContentMutationJournal.encode(
+                ContentQuizRecordPayload(
+                    characterName: quiz.characterName,
+                    chosenIndex: chosenIndex,
+                    correctIndex: quiz.correctIndex,
+                    createdAt: quiz.createdAt,
+                    optionsJson: quiz.optionsJSON,
+                    question: quiz.question
+                )
+            )
+        )
     }
 
     static func dto(from entity: ConversationEntity, characterID: UUID) -> ConversationDTO {

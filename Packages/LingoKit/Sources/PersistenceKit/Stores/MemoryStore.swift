@@ -40,6 +40,7 @@ public actor MemoryStore {
         ).first else {
             throw MemoryError.characterNotFound
         }
+        var inserted: [MemoryEntity] = []
         for fact in facts {
             let entity = MemoryEntity(
                 tierRaw: tier.rawValue,
@@ -49,6 +50,11 @@ public actor MemoryStore {
             )
             entity.character = character
             modelContext.insert(entity)
+            inserted.append(entity)
+        }
+        try modelContext.save()
+        for entity in inserted {
+            try journal(entity)
         }
         try modelContext.save()
     }
@@ -86,9 +92,47 @@ public actor MemoryStore {
     public func deleteMemories(ids: [PersistentIdentifier]) throws {
         for id in ids {
             if let entity = modelContext.model(for: id) as? MemoryEntity {
+                let localKey = ContentMutationJournal.persistentKey(
+                    entity.persistentModelID
+                )
+                let resourceID = try ContentMutationJournal.resourceID(
+                    in: modelContext,
+                    resourceType: .memory,
+                    localKey: localKey
+                )
+                try ContentMutationJournal.delete(
+                    in: modelContext,
+                    resourceType: .memory,
+                    resourceID: resourceID
+                )
                 modelContext.delete(entity)
             }
         }
         try modelContext.save()
+    }
+
+    private func journal(_ entity: MemoryEntity) throws {
+        guard let characterID = entity.character?.characterID else { return }
+        let localKey = ContentMutationJournal.persistentKey(entity.persistentModelID)
+        let resourceID = try ContentMutationJournal.resourceID(
+            in: modelContext,
+            resourceType: .memory,
+            localKey: localKey
+        )
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .memory,
+            resourceID: resourceID,
+            parentID: characterID.uuidString.lowercased(),
+            payloadJSON: try ContentMutationJournal.encode(
+                ContentMemoryPayload(
+                    content: entity.content,
+                    createdAt: entity.createdAt,
+                    importance: entity.importance,
+                    sourceUpToIndex: entity.sourceUpToIndex,
+                    tier: entity.tierRaw
+                )
+            )
+        )
     }
 }

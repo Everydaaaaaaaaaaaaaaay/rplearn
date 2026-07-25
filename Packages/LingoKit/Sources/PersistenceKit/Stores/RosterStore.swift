@@ -17,9 +17,15 @@ public actor RosterStore {
             FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isMainCharacter })
         )
         let existingNames = Set(existing.map(\.name))
+        for entity in existing {
+            if let stableID = Self.mainCharacterID(avatarAssetName: entity.avatarAssetName) {
+                entity.characterID = stableID
+            }
+        }
         var importedCount = 0
         for card in cards where !existingNames.contains(card.name) {
             let entity = CharacterEntity(
+                characterID: Self.mainCharacterID(avatarAssetName: card.avatarAssetName) ?? UUID(),
                 name: card.name,
                 age: card.age,
                 genderRaw: card.gender.rawValue,
@@ -38,9 +44,24 @@ public actor RosterStore {
             modelContext.insert(entity)
             importedCount += 1
         }
-        if importedCount > 0 {
+        if importedCount > 0 || !existing.isEmpty {
             try modelContext.save()
+        }
+        if importedCount > 0 {
             Log.persistence.info("导入主角色 \(importedCount) 名")
+        }
+    }
+
+    private static func mainCharacterID(avatarAssetName: String?) -> UUID? {
+        switch avatarAssetName {
+        case "avatar_oliver":
+            UUID(uuidString: "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E001")
+        case "avatar_ruby":
+            UUID(uuidString: "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E002")
+        case "avatar_marcus":
+            UUID(uuidString: "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E003")
+        default:
+            nil
         }
     }
 
@@ -63,6 +84,7 @@ public actor RosterStore {
             cardJSON: card.encodedJSON()
         )
         modelContext.insert(entity)
+        try journal(entity)
         try modelContext.save()
         return entity.characterID
     }
@@ -101,6 +123,7 @@ public actor RosterStore {
             guard occupied < slotLimit else { throw RosterError.friendSlotsFull }
         }
         entity.isFriend = true
+        try journal(entity)
         try modelContext.save()
     }
 
@@ -109,6 +132,7 @@ public actor RosterStore {
             throw RosterError.characterNotFound
         }
         entity.difficultyLevelRaw = level.rawValue
+        try journal(entity)
         try modelContext.save()
     }
 
@@ -118,6 +142,37 @@ public actor RosterStore {
         try modelContext.fetch(
             FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == id })
         ).first
+    }
+
+    private func journal(_ entity: CharacterEntity) throws {
+        let card = CharacterCard.decode(fromJSON: entity.cardJSON)
+        let payload = ContentCharacterPayload(
+            card: .init(
+                age: entity.age,
+                appearance: entity.appearance,
+                avatarAssetName: entity.avatarAssetName,
+                background: card?.background,
+                gender: entity.genderRaw,
+                hobbies: entity.hobbies,
+                name: entity.name,
+                nationality: entity.nationality,
+                occupation: entity.occupation,
+                personality: entity.personality,
+                regionId: entity.regionID,
+                speechStyle: card?.speechStyle
+            ),
+            difficulty: entity.difficultyLevelRaw,
+            isFriend: entity.isFriend,
+            isMainCharacter: entity.isMainCharacter,
+            metAt: entity.metAt
+        )
+        try ContentMutationJournal.upsert(
+            in: modelContext,
+            resourceType: .character,
+            resourceID: entity.characterID.uuidString.lowercased(),
+            parentID: nil,
+            payloadJSON: try ContentMutationJournal.encode(payload)
+        )
     }
 
     static func dto(from entity: CharacterEntity) -> CharacterDTO {
