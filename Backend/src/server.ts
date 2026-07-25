@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { buildApp } from "./app.js";
 import { ConfigurationError, loadConfig } from "./config/env.js";
+import { createRuntimeDependencies } from "./infrastructure/runtime-dependencies.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -17,8 +18,24 @@ async function main(): Promise<void> {
     throw error;
   }
 
-  const app = await buildApp(config);
+  const dependencies = createRuntimeDependencies(config);
+  const app = await buildApp(config, {
+    readinessChecks: dependencies.readinessChecks,
+  });
   let closing = false;
+
+  dependencies.onRedisError((error) => {
+    app.log.error(
+      {
+        errorName: error.name,
+      },
+      "Redis client error",
+    );
+  });
+
+  app.addHook("onClose", async () => {
+    await dependencies.close();
+  });
 
   const shutdown = async (signal: NodeJS.Signals): Promise<void> => {
     if (closing) {
@@ -48,10 +65,25 @@ async function main(): Promise<void> {
     void shutdown("SIGTERM");
   });
 
-  await app.listen({
-    host: config.host,
-    port: config.port,
-  });
+  try {
+    await dependencies.start();
+    await app.listen({
+      host: config.host,
+      port: config.port,
+    });
+  } catch (error) {
+    app.log.fatal(
+      {
+        errorName: error instanceof Error ? error.name : "UnknownError",
+      },
+      "Server failed to start",
+    );
+    await app.close();
+    process.exitCode = 1;
+  }
 }
 
-void main();
+void main().catch(() => {
+  process.stderr.write("Server failed before structured logging was available.\n");
+  process.exitCode = 1;
+});

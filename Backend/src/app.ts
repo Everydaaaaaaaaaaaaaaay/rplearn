@@ -12,9 +12,11 @@ import type { RuntimeConfig } from "./config/env.js";
 import { registerErrorHandling } from "./app/error-handler.js";
 import { registerHealthRoutes } from "./app/health.js";
 import { createLoggerOptions } from "./app/logger.js";
+import type { ReadinessCheck } from "./app/readiness.js";
 
 type BuildAppOptions = Readonly<{
   logger?: FastifyServerOptions["logger"];
+  readinessChecks?: readonly ReadinessCheck[];
 }>;
 
 const REQUEST_ID_PATTERN = /^[A-Za-z0-9._-]{1,64}$/;
@@ -77,7 +79,7 @@ export async function buildApp(
   }
 
   registerErrorHandling(app);
-  registerHealthRoutes(app);
+  registerHealthRoutes(app, options.readinessChecks ?? [], config.readinessTimeoutMs);
 
   return app;
 }

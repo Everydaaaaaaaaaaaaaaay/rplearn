@@ -38,6 +38,23 @@ describe("loadConfig", () => {
     ).toThrow(ConfigurationError);
   });
 
+  it("requires explicit persistent dependencies in production", () => {
+    try {
+      loadConfig({
+        CORS_ALLOWED_ORIGINS: "https://app.example.com",
+        NODE_ENV: "production",
+      });
+      expect.unreachable("production configuration should be rejected");
+    } catch (error) {
+      expect(error).toBeInstanceOf(ConfigurationError);
+      if (!(error instanceof ConfigurationError)) {
+        return;
+      }
+      expect(error.issues).toContain("DATABASE_URL is required in production");
+      expect(error.issues).toContain("REDIS_URL is required in production");
+    }
+  });
+
   it("rejects invalid ports", () => {
     expect(() => loadConfig({ PORT: "70000" })).toThrow(ConfigurationError);
   });

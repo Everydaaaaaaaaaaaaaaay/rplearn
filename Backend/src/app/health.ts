@@ -1,12 +1,14 @@
 import type { FastifyInstance } from "fastify";
+import { checkReadiness, type ReadinessCheck } from "./readiness.js";
 
-export function registerHealthRoutes(app: FastifyInstance): void {
+export function registerHealthRoutes(
+  app: FastifyInstance,
+  readinessChecks: readonly ReadinessCheck[],
+  timeoutMs: number,
+): void {
   app.get(
     "/health/live",
     {
-      config: {
-        rateLimit: false,
-      },
       schema: {
         response: {
           200: {
@@ -23,12 +25,19 @@ export function registerHealthRoutes(app: FastifyInstance): void {
     () => ({ status: "ok" as const }),
   );
 
-  app.get(
+  app.get<{
+    Reply:
+      | { status: "ready" }
+      | {
+          checks: readonly {
+            name: string;
+            status: "available" | "unavailable";
+          }[];
+          status: "unavailable";
+        };
+  }>(
     "/health/ready",
     {
-      config: {
-        rateLimit: false,
-      },
       schema: {
         response: {
           200: {
@@ -39,9 +48,43 @@ export function registerHealthRoutes(app: FastifyInstance): void {
               status: { const: "ready", type: "string" },
             },
           },
+          503: {
+            type: "object",
+            additionalProperties: false,
+            required: ["checks", "status"],
+            properties: {
+              checks: {
+                type: "array",
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  required: ["name", "status"],
+                  properties: {
+                    name: { type: "string" },
+                    status: {
+                      enum: ["available", "unavailable"],
+                      type: "string",
+                    },
+                  },
+                },
+              },
+              status: { const: "unavailable", type: "string" },
+            },
+          },
         },
       },
     },
-    () => ({ status: "ready" as const }),
+    async (_request, reply) => {
+      const checks = await checkReadiness(readinessChecks, timeoutMs);
+
+      if (checks.some((check) => check.status === "unavailable")) {
+        return reply.status(503).send({
+          checks,
+          status: "unavailable",
+        });
+      }
+
+      return { status: "ready" };
+    },
   );
 }

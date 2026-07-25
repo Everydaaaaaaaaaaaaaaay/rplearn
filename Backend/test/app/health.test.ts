@@ -43,4 +43,30 @@ describe("health routes", () => {
     });
     expect(body.requestId).toBeTypeOf("string");
   });
+
+  it("reports dependency failures without leaking their errors", async () => {
+    app = await buildApp(loadConfig({ NODE_ENV: "test" }), {
+      logger: false,
+      readinessChecks: [
+        {
+          check: () =>
+            Promise.reject(new Error("postgres://user:password@private-host")),
+          name: "postgresql",
+        },
+      ],
+    });
+
+    const response = await app.inject({
+      method: "GET",
+      url: "/health/ready",
+    });
+
+    expect(response.statusCode).toBe(503);
+    expect(response.json()).toEqual({
+      checks: [{ name: "postgresql", status: "unavailable" }],
+      status: "unavailable",
+    });
+    expect(response.body).not.toContain("private-host");
+    expect(response.body).not.toContain("password");
+  });
 });
