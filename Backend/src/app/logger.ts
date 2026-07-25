@@ -25,10 +25,13 @@ export const SENSITIVE_LOG_PATHS = [
   "req.body.authorization",
   "req.body.authorizationCode",
   "req.body.identityToken",
+  "req.body.messages",
   "req.body.newPassword",
   "req.body.password",
   "req.body.refreshToken",
   "req.body.secret",
+  "req.body.signedPayload",
+  "req.body.signedTransaction",
   "req.body.token",
   "res.headers.set-cookie",
 ] as const;

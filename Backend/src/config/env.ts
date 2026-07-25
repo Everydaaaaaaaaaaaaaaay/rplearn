@@ -33,6 +33,8 @@ const rawEnvironmentSchema = z.object({
   APPLE_REDIRECT_URI: optionalSecret.pipe(z.url().optional()),
   APPLE_TEAM_ID: optionalSecret,
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
+  AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
+  AI_USER_MINUTE_LIMIT: z.coerce.number().int().min(1).max(300).default(30),
   AUTH_ACCESS_TOKEN_TTL_SECONDS: z.coerce.number().int().min(60).max(3600).default(900),
   AUTH_ACTION_TOKEN_TTL_SECONDS: z.coerce
     .number()
@@ -96,6 +98,8 @@ const rawEnvironmentSchema = z.object({
 });
 
 export type RuntimeConfig = Readonly<{
+  aiRetryMaxAttempts: number;
+  aiUserMinuteLimit: number;
   appleAuthEnabled: boolean;
   appleBillingAppAppleId?: number;
   appleBillingBundleId: string;
@@ -238,6 +242,13 @@ export function loadConfig(
   }
 
   if (
+    result.data.NODE_ENV === "production" &&
+    result.data.DEEPSEEK_API_KEY === undefined
+  ) {
+    issues.push("DEEPSEEK_API_KEY is required in production");
+  }
+
+  if (
     (result.data.SMTP_USER === undefined) !==
     (result.data.SMTP_PASSWORD === undefined)
   ) {
@@ -289,6 +300,8 @@ export function loadConfig(
   }
 
   return {
+    aiRetryMaxAttempts: result.data.AI_RETRY_MAX_ATTEMPTS,
+    aiUserMinuteLimit: result.data.AI_USER_MINUTE_LIMIT,
     appleAuthEnabled: result.data.APPLE_AUTH_ENABLED,
     ...(result.data.APPLE_BILLING_APP_APPLE_ID === undefined
       ? {}

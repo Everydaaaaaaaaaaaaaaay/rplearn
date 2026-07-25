@@ -4,6 +4,9 @@ import { ConfigurationError, loadConfig } from "./config/env.js";
 import { createRuntimeDependencies } from "./infrastructure/runtime-dependencies.js";
 import { registerAuthRoutes } from "./modules/auth/routes.js";
 import { createAuthService } from "./modules/auth/service.js";
+import { createDeepSeekClient } from "./modules/ai/deepseek/client.js";
+import { registerAiRoutes } from "./modules/ai/routes.js";
+import { createAiService } from "./modules/ai/service.js";
 import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
 import { createAppleAuthService } from "./modules/auth/apple/service.js";
 import { createAppleBillingVerifier } from "./modules/billing/apple/verifier.js";
@@ -62,6 +65,14 @@ async function main(): Promise<void> {
     appleBillingEnabled: config.appleBillingEnabled,
     enableDebugRoutes: config.nodeEnv !== "production",
   });
+  const aiService = createAiService(
+    config,
+    dependencies.database,
+    dependencies.redis,
+    billingService,
+    createDeepSeekClient(config),
+  );
+  registerAiRoutes(app, authService, aiService);
   const domainService = createDomainService(dependencies.database);
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",

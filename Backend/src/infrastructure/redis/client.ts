@@ -4,6 +4,7 @@ import type { RuntimeConfig } from "../../config/env.js";
 export type RedisResource = Readonly<{
   close: () => Promise<void>;
   connect: () => Promise<void>;
+  consumeFixedWindow: (key: string, ttlSeconds: number) => Promise<number>;
   onError: (listener: (error: Error) => void) => void;
   ping: () => Promise<void>;
   putOneTime: (key: string, value: string, ttlSeconds: number) => Promise<void>;
@@ -30,6 +31,25 @@ export function createRedisResource(config: RuntimeConfig): RedisResource {
       if (!client.isOpen) {
         await client.connect();
       }
+    },
+    consumeFixedWindow: async (key, ttlSeconds) => {
+      const result = await client.eval(
+        `
+          local count = redis.call('INCR', KEYS[1])
+          if count == 1 then
+            redis.call('EXPIRE', KEYS[1], ARGV[1])
+          end
+          return count
+        `,
+        {
+          arguments: [String(ttlSeconds)],
+          keys: [key],
+        },
+      );
+      if (typeof result !== "number") {
+        throw new Error("Redis rate limit script returned an invalid result");
+      }
+      return result;
     },
     onError: (listener) => {
       client.on("error", listener);

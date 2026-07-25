@@ -65,6 +65,10 @@ V2；新购买必须把后端 `userId` 作为 StoreKit 2 的
 `appAccountToken`，客户端不能自行声明会员等级。开发环境可用
 `/v1/dev/billing/entitlements` 发放有时限的本地调试权益。
 
+AI 请求统一经 `/v1/ai/completions` 或 `/v1/ai/stream`
+转发。任务路由从数据库热读取，默认模型全部为
+`deepseek-v4-flash`；客户端不能指定 provider、模型或提高服务端上限。系统按 entitlement 执行持久日配额、按用户执行 Redis 分钟限流，并只记录 task、模型、token 用量、延迟和稳定错误码，不保存 prompt 或模型回复。
+
 生产环境需要持久的 Ed25519 签名密钥。以下命令仅把新密钥打印到当前终端，由操作者直接存入 Secret
 Manager；不要把输出复制进仓库或聊天记录：
 

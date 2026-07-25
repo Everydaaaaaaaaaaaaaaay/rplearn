@@ -52,6 +52,7 @@ describe("loadConfig", () => {
       }
       expect(error.issues).toContain("DATABASE_URL is required in production");
       expect(error.issues).toContain("REDIS_URL is required in production");
+      expect(error.issues).toContain("DEEPSEEK_API_KEY is required in production");
     }
   });
 
