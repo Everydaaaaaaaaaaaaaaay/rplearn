@@ -21,6 +21,9 @@ services:
       DATABASE_URL: postgres://lingotrip:lingotrip_dev@postgres:5432/lingotrip
       DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
       HOST: 0.0.0.0
+      JOB_PAYLOAD_ENCRYPTION_KEY_BASE64: ${JOB_PAYLOAD_ENCRYPTION_KEY_BASE64:-}
+      JOB_PAYLOAD_KEY_VERSION: ${JOB_PAYLOAD_KEY_VERSION:-}
+      JOB_PAYLOAD_PREVIOUS_KEYS: ${JOB_PAYLOAD_PREVIOUS_KEYS:-}
       LOG_LEVEL: debug
       NODE_ENV: development
       REDIS_URL: redis://redis:6379
@@ -39,6 +42,30 @@ services:
       retries: 20
     ports:
       - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+  worker:
+    profiles: ["app"]
+    build:
+      context: .
+    command: ["node", "dist/worker.js"]
+    depends_on:
+      mailpit:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    environment:
+      AUTH_ACTION_URL_BASE: http://127.0.0.1:8080/auth
+      DATABASE_URL: postgres://lingotrip:lingotrip_dev@postgres:5432/lingotrip
+      JOB_PAYLOAD_ENCRYPTION_KEY_BASE64: ${JOB_PAYLOAD_ENCRYPTION_KEY_BASE64:-}
+      JOB_PAYLOAD_KEY_VERSION: ${JOB_PAYLOAD_KEY_VERSION:-}
+      JOB_PAYLOAD_PREVIOUS_KEYS: ${JOB_PAYLOAD_PREVIOUS_KEYS:-}
+      LOG_LEVEL: debug
+      NODE_ENV: development
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+    healthcheck:
+      disable: true
     restart: unless-stopped
 
   mailpit:

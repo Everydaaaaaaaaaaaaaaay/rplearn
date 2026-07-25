@@ -19,6 +19,7 @@ import type {
   VerifiedStoreTransaction,
 } from "../../src/modules/billing/types.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -58,9 +59,8 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
       },
       sendPasswordReset: () => Promise.resolve(),
     };
-    const authService = await createAuthService(config, dependencies.database, {
-      notifier,
-    });
+    const authService = await createAuthService(config, dependencies.database);
+    const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     const fakeVerifier: AppleBillingVerifier = {
       verifyNotification: () => Promise.resolve(verifiedNotification),
       verifyTransaction: () => Promise.resolve(verifiedTransaction),
@@ -78,6 +78,7 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
       payload: { email, password },
       url: "/v1/auth/register",
     });
+    expect(await jobWorker.runOnce()).toBe("succeeded");
     await app.inject({
       method: "POST",
       payload: { token: verificationTokens.get(email) },
@@ -133,6 +134,10 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
 
   afterAll(async () => {
     await app.close();
+    await dependencies.database.sql`
+      delete from app.jobs
+      where user_id = ${userId}
+    `;
     await dependencies.database.sql`
       delete from app.auth_security_events
       where user_id = ${userId}

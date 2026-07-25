@@ -54,6 +54,9 @@ describe("loadConfig", () => {
       expect(error.issues).toContain("REDIS_URL is required in production");
       expect(error.issues).toContain("DEEPSEEK_API_KEY is required in production");
       expect(error.issues).toContain(
+        "JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 and JOB_PAYLOAD_KEY_VERSION are required in production",
+      );
+      expect(error.issues).toContain(
         "METRICS_BEARER_TOKEN must contain at least 32 characters when metrics are enabled",
       );
     }
@@ -77,6 +80,14 @@ describe("loadConfig", () => {
       loadConfig({
         APPLE_BILLING_APP_APPLE_ID: "",
         APPLE_BILLING_ENABLED: "true",
+      }),
+    ).toThrow(ConfigurationError);
+  });
+
+  it("rejects malformed historical job encryption keys", () => {
+    expect(() =>
+      loadConfig({
+        JOB_PAYLOAD_PREVIOUS_KEYS: "jobs-v1=not-a-32-byte-key",
       }),
     ).toThrow(ConfigurationError);
   });

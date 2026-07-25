@@ -23,10 +23,12 @@
     "lint": "eslint .",
     "maintenance:cleanup": "tsx src/cli/cleanup-operational-data.ts",
     "start": "node dist/server.js",
+    "start:worker": "node dist/worker.js",
     "test": "vitest run",
-    "test:integration": "cross-env RUN_INTEGRATION_TESTS=true DATABASE_URL=postgres://lingotrip:lingotrip_dev@127.0.0.1:54329/lingotrip REDIS_URL=redis://127.0.0.1:63799 vitest run test/integration",
+    "test:integration": "cross-env RUN_INTEGRATION_TESTS=true DATABASE_URL=postgres://lingotrip:lingotrip_dev@127.0.0.1:54329/lingotrip REDIS_URL=redis://127.0.0.1:63799 vitest run --maxWorkers=1 --no-file-parallelism test/integration",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "worker": "tsx src/worker.ts"
   },
   "dependencies": {
     "@apple/app-store-server-library": "3.1.0",

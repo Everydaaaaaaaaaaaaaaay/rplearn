@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { z } from "zod";
 
 const booleanFromString = z
@@ -75,6 +76,13 @@ const rawEnvironmentSchema = z.object({
   DEEPSEEK_API_KEY: optionalSecret,
   DEEPSEEK_BASE_URL: z.url().default("https://api.deepseek.com"),
   HOST: z.string().trim().min(1).default("127.0.0.1"),
+  JOB_LEASE_SECONDS: z.coerce.number().int().min(15).max(900).default(60),
+  JOB_PAYLOAD_ENCRYPTION_KEY_BASE64: optionalSecret,
+  JOB_PAYLOAD_KEY_VERSION: optionalSecret,
+  JOB_PAYLOAD_PREVIOUS_KEYS: z.string().default(""),
+  JOB_POLL_INTERVAL_MS: z.coerce.number().int().min(100).max(60_000).default(1000),
+  JOB_RETENTION_DAYS: z.coerce.number().int().min(1).max(90).default(14),
+  JOB_RETRY_BASE_SECONDS: z.coerce.number().int().min(1).max(3600).default(30),
   LOG_LEVEL: z
     .enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"])
     .default("info"),
@@ -141,6 +149,16 @@ export type RuntimeConfig = Readonly<{
   deepSeekApiKey?: string;
   deepSeekBaseUrl: string;
   host: string;
+  jobLeaseSeconds: number;
+  jobPayloadEncryptionKeyBase64: string;
+  jobPayloadKeyVersion: string;
+  jobPayloadPreviousKeys: readonly Readonly<{
+    keyBase64: string;
+    keyVersion: string;
+  }>[];
+  jobPollIntervalMs: number;
+  jobRetentionDays: number;
+  jobRetryBaseSeconds: number;
   logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "trace" | "silent";
   metricsBearerToken?: string;
   metricsEnabled: boolean;
@@ -166,6 +184,12 @@ const DEVELOPMENT_REDIS_URL = "redis://127.0.0.1:63799";
 const DEVELOPMENT_AUTH_PEPPER = "local-only-auth-token-pepper-change-before-production";
 const DEVELOPMENT_SMTP_HOST = "127.0.0.1";
 
+function developmentJobKey(pepper: string): string {
+  return createHash("sha256")
+    .update(`lingotrip-job-payload:${pepper}`)
+    .digest("base64");
+}
+
 export class ConfigurationError extends Error {
   readonly issues: readonly string[];
 
@@ -181,6 +205,27 @@ function parseOrigins(raw: string): readonly string[] {
     .split(",")
     .map((origin) => origin.trim())
     .filter((origin) => origin.length > 0);
+}
+
+function parsePreviousJobKeys(
+  raw: string,
+): readonly Readonly<{ keyBase64: string; keyVersion: string }>[] {
+  return raw
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter((entry) => entry.length > 0)
+    .map((entry) => {
+      const separator = entry.indexOf("=");
+      if (separator <= 0 || separator === entry.length - 1) {
+        throw new ConfigurationError([
+          "JOB_PAYLOAD_PREVIOUS_KEYS entries must use version=base64 format",
+        ]);
+      }
+      return {
+        keyBase64: entry.slice(separator + 1),
+        keyVersion: entry.slice(0, separator),
+      };
+    });
 }
 
 export function loadConfig(
@@ -201,6 +246,9 @@ export function loadConfig(
   const appleBillingRootCaCertificates = parseOrigins(
     result.data.APPLE_BILLING_ROOT_CA_CERTIFICATES_BASE64,
   ).map((certificate) => Buffer.from(certificate, "base64"));
+  const jobPayloadPreviousKeys = parsePreviousJobKeys(
+    result.data.JOB_PAYLOAD_PREVIOUS_KEYS,
+  );
   const issues: string[] = [];
 
   if (corsAllowedOrigins.length === 0) {
@@ -247,6 +295,42 @@ export function loadConfig(
 
   if (result.data.NODE_ENV === "production" && result.data.SMTP_HOST === undefined) {
     issues.push("SMTP_HOST is required in production");
+  }
+
+  if (
+    result.data.NODE_ENV === "production" &&
+    (result.data.JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 === undefined ||
+      result.data.JOB_PAYLOAD_KEY_VERSION === undefined)
+  ) {
+    issues.push(
+      "JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 and JOB_PAYLOAD_KEY_VERSION are required in production",
+    );
+  }
+
+  if (result.data.JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 !== undefined) {
+    const keyLength = Buffer.from(
+      result.data.JOB_PAYLOAD_ENCRYPTION_KEY_BASE64,
+      "base64",
+    ).byteLength;
+    if (keyLength !== 32) {
+      issues.push("JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 must decode to 32 bytes");
+    }
+  }
+
+  if (
+    jobPayloadPreviousKeys.some(
+      (key) => Buffer.from(key.keyBase64, "base64").byteLength !== 32,
+    )
+  ) {
+    issues.push("JOB_PAYLOAD_PREVIOUS_KEYS values must decode to 32 bytes");
+  }
+
+  const jobKeyVersions = [
+    result.data.JOB_PAYLOAD_KEY_VERSION ?? "local-v1",
+    ...jobPayloadPreviousKeys.map((key) => key.keyVersion),
+  ];
+  if (new Set(jobKeyVersions).size !== jobKeyVersions.length) {
+    issues.push("Job payload key versions must be unique");
   }
 
   if (
@@ -384,6 +468,15 @@ export function loadConfig(
       : { deepSeekApiKey: result.data.DEEPSEEK_API_KEY }),
     deepSeekBaseUrl: result.data.DEEPSEEK_BASE_URL,
     host: result.data.HOST,
+    jobLeaseSeconds: result.data.JOB_LEASE_SECONDS,
+    jobPayloadEncryptionKeyBase64:
+      result.data.JOB_PAYLOAD_ENCRYPTION_KEY_BASE64 ??
+      developmentJobKey(result.data.AUTH_TOKEN_HASH_PEPPER ?? DEVELOPMENT_AUTH_PEPPER),
+    jobPayloadKeyVersion: result.data.JOB_PAYLOAD_KEY_VERSION ?? "local-v1",
+    jobPayloadPreviousKeys,
+    jobPollIntervalMs: result.data.JOB_POLL_INTERVAL_MS,
+    jobRetentionDays: result.data.JOB_RETENTION_DAYS,
+    jobRetryBaseSeconds: result.data.JOB_RETRY_BASE_SECONDS,
     logLevel: result.data.LOG_LEVEL,
     ...(result.data.METRICS_BEARER_TOKEN === undefined
       ? {}

@@ -10,7 +10,9 @@ import {
 import type { AuthNotifier } from "../../src/modules/auth/notifier.js";
 import { registerAuthRoutes } from "../../src/modules/auth/routes.js";
 import { createAuthService } from "../../src/modules/auth/service.js";
+import type { JobWorker } from "../../src/modules/jobs/worker.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -27,6 +29,7 @@ type TokenResponse = Readonly<{
 describe.runIf(runIntegrationTests)("email authentication", () => {
   let app: FastifyInstance;
   let dependencies: RuntimeDependencies;
+  let jobWorker: JobWorker;
   const verificationTokens = new Map<string, string>();
   const passwordResetTokens = new Map<string, string>();
   const email = `auth-${newEntityId()}@example.com`;
@@ -50,9 +53,8 @@ describe.runIf(runIntegrationTests)("email authentication", () => {
         return Promise.resolve();
       },
     };
-    const authService = await createAuthService(config, dependencies.database, {
-      notifier,
-    });
+    const authService = await createAuthService(config, dependencies.database);
+    jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     app = await buildApp(config, { logger: false });
     registerAuthRoutes(app, authService);
   });
@@ -60,6 +62,10 @@ describe.runIf(runIntegrationTests)("email authentication", () => {
   afterAll(async () => {
     await app.close();
     if (userId !== undefined) {
+      await dependencies.database.sql`
+        delete from app.jobs
+        where user_id = ${userId}
+      `;
       await dependencies.database.sql`
         delete from app.auth_security_events
         where user_id = ${userId}
@@ -85,6 +91,7 @@ describe.runIf(runIntegrationTests)("email authentication", () => {
     expect(registration.json<{ status: string }>()).toEqual({
       status: "accepted",
     });
+    expect(await jobWorker.runOnce()).toBe("succeeded");
 
     const unverifiedLogin = await app.inject({
       method: "POST",
@@ -179,6 +186,7 @@ describe.runIf(runIntegrationTests)("email authentication", () => {
       url: "/v1/auth/password/forgot",
     });
     expect(forgot.statusCode).toBe(202);
+    expect(await jobWorker.runOnce()).toBe("succeeded");
     const resetToken = passwordResetTokens.get(email);
     expect(resetToken).toBeTypeOf("string");
 

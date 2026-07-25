@@ -15,6 +15,7 @@ import { createDomainService } from "../../src/modules/domain/service.js";
 import type { UserSnapshot } from "../../src/modules/domain/types.js";
 import { registerAuditHooks } from "../../src/modules/observability/audit.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -45,9 +46,8 @@ describe.runIf(runIntegrationTests)("persistent audit events", () => {
       },
       sendPasswordReset: () => Promise.resolve(),
     };
-    const authService = await createAuthService(config, dependencies.database, {
-      notifier,
-    });
+    const authService = await createAuthService(config, dependencies.database);
+    const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     const domainService = createDomainService(dependencies.database);
     app = await buildApp(config, { logger: false });
     registerAuditHooks(app, config, dependencies.database);
@@ -62,6 +62,7 @@ describe.runIf(runIntegrationTests)("persistent audit events", () => {
       url: "/v1/auth/register",
     });
     requestIds.push(String(registration.headers["x-request-id"]));
+    expect(await jobWorker.runOnce()).toBe("succeeded");
     const verification = await app.inject({
       method: "POST",
       payload: { token: verificationTokens.get(email) },
@@ -94,6 +95,10 @@ describe.runIf(runIntegrationTests)("persistent audit events", () => {
         where request_id = ${requestId}
       `;
     }
+    await dependencies.database.sql`
+      delete from app.jobs
+      where user_id = ${userId}
+    `;
     await dependencies.database.sql`
       delete from app.auth_security_events
       where user_id = ${userId}

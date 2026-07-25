@@ -39,16 +39,7 @@ async function main(): Promise<void> {
     readinessChecks: dependencies.readinessChecks,
   });
   registerAuditHooks(app, config, dependencies.database);
-  const authService = await createAuthService(config, dependencies.database, {
-    onNotificationError: (error) => {
-      app.log.error(
-        {
-          errorName: error.name,
-        },
-        "Authentication notification delivery failed",
-      );
-    },
-  });
+  const authService = await createAuthService(config, dependencies.database);
   registerAuthRoutes(app, authService);
   if (config.appleAuthEnabled) {
     const appleAuthService = await createAppleAuthService(

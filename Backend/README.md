@@ -16,6 +16,8 @@ cp .env.example .env
 pnpm infra:up
 pnpm db:migrate
 pnpm dev
+# 另开一个终端
+pnpm worker
 ```
 
 `.env` 不受版本控制。不要把 AI、数据库、JWT 或第三方凭据写入示例文件、源码或日志。
@@ -71,7 +73,11 @@ AI 请求统一经 `/v1/ai/completions` 或 `/v1/ai/stream`
 
 `/internal/metrics` 输出低基数 Prometheus 指标；生产环境必须用独立 bearer
 token 保护。所有 HTTP 写操作会追加不含请求载荷的审计事件，IP 只保存 HMAC 摘要。部署环境应每天执行
-`pnpm maintenance:cleanup`，按配置的保留期清理审计记录和 AI 用量明细。
+`pnpm maintenance:cleanup`，按配置的保留期清理审计记录、AI 用量明细和已终结任务。
+
+注册验证和密码重置邮件通过 PostgreSQL 持久任务投递：action token 与加密 payload
+在同一事务落库，worker 采用租约、`SKIP LOCKED`、指数退避和死信状态执行。生产必须提供稳定的
+任务加密 key；轮换时将旧版本放入 `JOB_PAYLOAD_PREVIOUS_KEYS`，直至旧任务全部终结。
 
 生产环境需要持久的 Ed25519 签名密钥。以下命令仅把新密钥打印到当前终端，由操作者直接存入 Secret
 Manager；不要把输出复制进仓库或聊天记录：

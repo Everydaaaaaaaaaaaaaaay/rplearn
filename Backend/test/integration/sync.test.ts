@@ -18,6 +18,7 @@ import { registerSyncRoutes } from "../../src/modules/sync/routes.js";
 import { createSyncService } from "../../src/modules/sync/service.js";
 import type { SyncPage, SyncSnapshot } from "../../src/modules/sync/types.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -51,9 +52,8 @@ describe.runIf(runIntegrationTests)("cross-device synchronization", () => {
       },
       sendPasswordReset: () => Promise.resolve(),
     };
-    const authService = await createAuthService(config, dependencies.database, {
-      notifier,
-    });
+    const authService = await createAuthService(config, dependencies.database);
+    const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     const domainService = createDomainService(dependencies.database);
     const syncService = createSyncService(
       dependencies.database,
@@ -72,6 +72,7 @@ describe.runIf(runIntegrationTests)("cross-device synchronization", () => {
       payload: { email, password },
       url: "/v1/auth/register",
     });
+    expect(await jobWorker.runOnce()).toBe("succeeded");
     await app.inject({
       method: "POST",
       payload: { token: verificationTokens.get(email) },
@@ -96,6 +97,10 @@ describe.runIf(runIntegrationTests)("cross-device synchronization", () => {
 
   afterAll(async () => {
     await app.close();
+    await dependencies.database.sql`
+      delete from app.jobs
+      where user_id = ${userId}
+    `;
     await dependencies.database.sql`
       delete from app.auth_security_events
       where user_id = ${userId}

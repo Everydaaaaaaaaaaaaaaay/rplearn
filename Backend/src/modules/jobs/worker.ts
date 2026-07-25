@@ -1,0 +1,114 @@
+import { z } from "zod";
+import type { RuntimeConfig } from "../../config/env.js";
+import type { AuthNotifier } from "../auth/notifier.js";
+import type { JobPayloadCipher } from "./crypto.js";
+import type { JobFailureResult, JobRepository } from "./repository.js";
+import {
+  AUTH_EMAIL_VERIFICATION_JOB,
+  AUTH_PASSWORD_RESET_JOB,
+  type ClaimedJob,
+} from "./types.js";
+
+const authEmailPayloadSchema = z.object({
+  email: z.email().max(254),
+  token: z.string().min(32).max(1024),
+});
+
+export type JobRunResult = "idle" | "succeeded" | JobFailureResult;
+
+type WorkerLogger = Readonly<{
+  error: (fields: Record<string, unknown>, message: string) => void;
+  info: (fields: Record<string, unknown>, message: string) => void;
+  warn: (fields: Record<string, unknown>, message: string) => void;
+}>;
+
+type JobWorkerDependencies = Readonly<{
+  cipher: JobPayloadCipher;
+  config: RuntimeConfig;
+  logger: WorkerLogger;
+  notifier: AuthNotifier;
+  repository: Pick<JobRepository, "claim" | "complete" | "fail">;
+  workerId: string;
+}>;
+
+function retryDelay(baseSeconds: number, attempts: number): number {
+  return Math.min(3600, baseSeconds * 2 ** Math.max(0, attempts - 1));
+}
+
+function safeErrorName(error: unknown): string {
+  return error instanceof Error ? error.name.slice(0, 200) : "UnknownJobError";
+}
+
+export class JobWorker {
+  constructor(private readonly dependencies: JobWorkerDependencies) {}
+
+  private async dispatch(job: ClaimedJob): Promise<void> {
+    const payload = authEmailPayloadSchema.parse(this.dependencies.cipher.open(job));
+    switch (job.type) {
+      case AUTH_EMAIL_VERIFICATION_JOB:
+        await this.dependencies.notifier.sendEmailVerification(
+          payload.email,
+          payload.token,
+        );
+        return;
+      case AUTH_PASSWORD_RESET_JOB:
+        await this.dependencies.notifier.sendPasswordReset(
+          payload.email,
+          payload.token,
+        );
+        return;
+      default:
+        throw new Error("UnsupportedJobType");
+    }
+  }
+
+  async runOnce(now = new Date()): Promise<JobRunResult> {
+    const job = await this.dependencies.repository.claim(
+      this.dependencies.workerId,
+      now,
+      this.dependencies.config.jobLeaseSeconds,
+    );
+    if (job === undefined) {
+      return "idle";
+    }
+
+    try {
+      await this.dispatch(job);
+      const completed = await this.dependencies.repository.complete(
+        job.id,
+        this.dependencies.workerId,
+        new Date(),
+      );
+      if (!completed) {
+        this.dependencies.logger.warn(
+          { jobId: job.id, jobType: job.type },
+          "Job lease was lost before completion",
+        );
+        return "lease_lost";
+      }
+      this.dependencies.logger.info(
+        { attempts: job.attempts, jobId: job.id, jobType: job.type },
+        "Job completed",
+      );
+      return "succeeded";
+    } catch (error) {
+      const result = await this.dependencies.repository.fail(
+        job,
+        this.dependencies.workerId,
+        new Date(),
+        retryDelay(this.dependencies.config.jobRetryBaseSeconds, job.attempts),
+        safeErrorName(error),
+      );
+      this.dependencies.logger.error(
+        {
+          attempts: job.attempts,
+          jobId: job.id,
+          jobType: job.type,
+          result,
+        },
+        "Job execution failed",
+      );
+      return result;
+    }
+  }
+}

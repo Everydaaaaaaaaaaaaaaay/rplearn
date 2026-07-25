@@ -18,6 +18,7 @@ import type {
   UserSnapshot,
 } from "../../src/modules/domain/types.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -58,9 +59,8 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       },
       sendPasswordReset: () => Promise.resolve(),
     };
-    const authService = await createAuthService(config, dependencies.database, {
-      notifier,
-    });
+    const authService = await createAuthService(config, dependencies.database);
+    const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     const domainService = createDomainService(dependencies.database);
     app = await buildApp(config, { logger: false });
     registerAuthRoutes(app, authService);
@@ -73,6 +73,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       payload: { email, password },
       url: "/v1/auth/register",
     });
+    expect(await jobWorker.runOnce()).toBe("succeeded");
     await app.inject({
       method: "POST",
       payload: { token: verificationTokens.get(email) },
@@ -97,6 +98,10 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
 
   afterAll(async () => {
     await app.close();
+    await dependencies.database.sql`
+      delete from app.jobs
+      where user_id = ${userId}
+    `;
     await dependencies.database.sql`
       delete from app.auth_security_events
       where user_id = ${userId}

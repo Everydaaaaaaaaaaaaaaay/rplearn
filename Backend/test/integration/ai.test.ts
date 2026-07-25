@@ -15,6 +15,7 @@ import { registerAuthRoutes } from "../../src/modules/auth/routes.js";
 import { createAuthService } from "../../src/modules/auth/service.js";
 import { createBillingService } from "../../src/modules/billing/service.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -48,9 +49,8 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
       },
       sendPasswordReset: () => Promise.resolve(),
     };
-    const authService = await createAuthService(config, dependencies.database, {
-      notifier,
-    });
+    const authService = await createAuthService(config, dependencies.database);
+    const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     const billingService = createBillingService(dependencies.database);
     const deepSeek: DeepSeekClient = {
       complete: () =>
@@ -104,6 +104,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
       payload: { email, password },
       url: "/v1/auth/register",
     });
+    expect(await jobWorker.runOnce()).toBe("succeeded");
     await app.inject({
       method: "POST",
       payload: { token: verificationTokens.get(email) },
@@ -128,6 +129,10 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
 
   afterAll(async () => {
     await app.close();
+    await dependencies.database.sql`
+      delete from app.jobs
+      where user_id = ${userId}
+    `;
     await dependencies.database.sql`
       delete from app.auth_security_events
       where user_id = ${userId}

@@ -18,6 +18,7 @@
 - AI 上游 429/5xx/timeout 激增或 token 成本异常；
 - 未处理 billing provider event 增长；
 - PostgreSQL 复制/WAL/备份延迟；
+- 后台任务最老等待时间超过 5 分钟，或新增任意 `dead` 任务；
 - 审计持久化失败或 maintenance job 连续失败。
 
 Prometheus 只采集低基数 route/method/status 标签，禁止加入 user ID、request
@@ -44,6 +45,17 @@ readiness 失败。账号 challenge、AI 分钟限流等采用 fail-closed，不
 
 确认验签、bundle、environment 和产品映射。重复通知可以安全重放；乱序事件不会覆盖更晚状态。不得手工把客户端声明写成有效 entitlement。修复配置后使用受控补偿程序重新处理
 `processing_error` 事件并记录审计。
+
+### 邮件任务积压或死信
+
+1. 查询 `app.jobs` 中 `pending` 的最老 `available_at`，以及 `dead` 的
+   `type`、`attempts`、`last_error`；禁止导出或解密 payload。
+2. 核对 worker 副本、SMTP 连通性和 `JOB_PAYLOAD_KEY_VERSION`。`last_error`
+   只记录异常类型，不含收件地址、token 或 SMTP 响应正文。
+3. SMTP 恢复后，可将确认属于暂时故障的死信改回 `pending`，同时清空租约字段并设置
+   新的 `available_at`。操作必须走审计变更单，禁止降低 `attempts`。
+4. 如果是密钥版本或 payload schema 不兼容，先回滚 worker；不要直接删除任务。
+5. 已完成、取消和死信任务由 `maintenance:cleanup` 按 `JOB_RETENTION_DAYS` 清理。
 
 ### 凭据泄露
 

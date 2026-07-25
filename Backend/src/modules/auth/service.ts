@@ -2,7 +2,12 @@ import type { RuntimeConfig } from "../../config/env.js";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import { newEntityId } from "../../shared/id.js";
-import { createSmtpAuthNotifier, type AuthNotifier } from "./notifier.js";
+import { createJobPayloadCipher } from "../jobs/crypto.js";
+import {
+  AUTH_EMAIL_VERIFICATION_JOB,
+  AUTH_PASSWORD_RESET_JOB,
+  type AuthEmailJobType,
+} from "../jobs/types.js";
 import { createPasswordHasher, type PasswordHasher } from "./password.js";
 import {
   AuthRepository,
@@ -18,8 +23,6 @@ import type {
   RequestMetadata,
   SessionSummary,
 } from "./types.js";
-
-type NotificationErrorHandler = (error: Error) => void;
 
 export type AuthService = Readonly<{
   authenticate: (accessToken: string) => Promise<AccessIdentity>;
@@ -51,8 +54,6 @@ export type AuthService = Readonly<{
 }>;
 
 type AuthServiceDependencies = Readonly<{
-  notifier?: AuthNotifier;
-  onNotificationError?: NotificationErrorHandler;
   passwordHasher?: PasswordHasher;
 }>;
 
@@ -99,19 +100,9 @@ export async function createAuthService(
 ): Promise<AuthService> {
   const repository = new AuthRepository(database);
   const passwordHasher = dependencies.passwordHasher ?? createPasswordHasher();
-  const notifier = dependencies.notifier ?? createSmtpAuthNotifier(config);
+  const jobPayloadCipher = createJobPayloadCipher(config);
   const tokenService = await createAuthTokenService(config);
   const dummyPasswordHash = await passwordHasher.hash(tokenService.createOpaqueToken());
-
-  const notifySafely = async (operation: () => Promise<void>): Promise<void> => {
-    try {
-      await operation();
-    } catch (error) {
-      dependencies.onNotificationError?.(
-        error instanceof Error ? error : new Error("Unknown notification error"),
-      );
-    }
-  };
 
   const createActionToken = (
     now: Date,
@@ -136,19 +127,28 @@ export async function createAuthService(
   ): Promise<void> => {
     const email = normalizeEmail(rawEmail);
     const action = createActionToken(new Date());
-    const deliverTo = await repository.issueActionTokenForEmail(email, type, {
-      expiresAt: action.expiresAt,
-      id: action.id,
-      tokenHash: action.hash,
-    });
-    if (deliverTo === undefined) {
-      return;
-    }
-
-    await notifySafely(() =>
+    const jobType: AuthEmailJobType =
       type === "email_verification"
-        ? notifier.sendEmailVerification(deliverTo, action.raw)
-        : notifier.sendPasswordReset(deliverTo, action.raw),
+        ? AUTH_EMAIL_VERIFICATION_JOB
+        : AUTH_PASSWORD_RESET_JOB;
+    await repository.issueActionTokenForEmail(
+      email,
+      type,
+      {
+        expiresAt: action.expiresAt,
+        id: action.id,
+        tokenHash: action.hash,
+      },
+      jobPayloadCipher.prepare(
+        jobType,
+        {
+          email,
+          token: action.raw,
+        },
+        {
+          uniqueKey: `auth-action:${action.id}`,
+        },
+      ),
     );
   };
 
@@ -321,6 +321,7 @@ export async function createAuthService(
       const email = normalizeEmail(rawEmail);
       const passwordHash = await passwordHasher.hash(password);
       const action = createActionToken(new Date());
+      const userId = newEntityId();
       const result = await repository.createEmailAccount({
         actionToken: {
           expiresAt: action.expiresAt,
@@ -329,12 +330,22 @@ export async function createAuthService(
         },
         email,
         identityId: newEntityId(),
+        notificationJob: jobPayloadCipher.prepare(
+          AUTH_EMAIL_VERIFICATION_JOB,
+          {
+            email,
+            token: action.raw,
+          },
+          {
+            uniqueKey: `auth-action:${action.id}`,
+            userId,
+          },
+        ),
         passwordHash,
-        userId: newEntityId(),
+        userId,
       });
 
       if (result === "created") {
-        await notifySafely(() => notifier.sendEmailVerification(email, action.raw));
         return;
       }
 

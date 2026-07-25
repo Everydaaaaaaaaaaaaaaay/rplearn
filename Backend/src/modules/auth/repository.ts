@@ -1,5 +1,7 @@
 import type { DatabaseResource } from "../../db/client.js";
 import { newEntityId } from "../../shared/id.js";
+import { insertPreparedJob } from "../jobs/repository.js";
+import type { PreparedJob } from "../jobs/types.js";
 import type {
   AuthActionType,
   DeviceDescriptor,
@@ -41,6 +43,7 @@ type CreateEmailAccountParameters = Readonly<{
   actionToken: ActionTokenParameters;
   email: string;
   identityId: string;
+  notificationJob: PreparedJob;
   passwordHash: string;
   userId: string;
 }>;
@@ -173,6 +176,7 @@ export class AuthRepository {
             ${parameters.actionToken.expiresAt.toISOString()}
           )
         `;
+        await insertPreparedJob(sql, parameters.notificationJob);
       });
       return "created";
     } catch (error) {
@@ -187,7 +191,8 @@ export class AuthRepository {
     email: string,
     type: AuthActionType,
     actionToken: ActionTokenParameters,
-  ): Promise<string | undefined> {
+    notificationJob: PreparedJob,
+  ): Promise<boolean> {
     return this.resource.sql.begin(async (sql) => {
       const [account] = await sql<
         {
@@ -214,7 +219,7 @@ export class AuthRepository {
         (type === "email_verification" && account.email_verified_at !== null) ||
         (type === "password_reset" && account.email_verified_at === null)
       ) {
-        return undefined;
+        return false;
       }
 
       await sql`
@@ -240,8 +245,12 @@ export class AuthRepository {
           ${actionToken.expiresAt.toISOString()}
         )
       `;
+      await insertPreparedJob(sql, {
+        ...notificationJob,
+        userId: account.user_id,
+      });
 
-      return account.email;
+      return true;
     });
   }
 

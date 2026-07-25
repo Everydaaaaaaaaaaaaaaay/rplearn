@@ -35,12 +35,20 @@ async function main(): Promise<void> {
         (now() at time zone 'utc')::date - ${config.aiUsageRetentionDays}
       returning usage_date::text
     `;
+    const jobRows = await database.sql<{ id: string }[]>`
+      delete from app.jobs
+      where status in ('succeeded', 'dead', 'cancelled')
+        and completed_at <
+          now() - (${config.jobRetentionDays} * interval '1 day')
+      returning id::text
+    `;
     process.stdout.write(
       `${JSON.stringify({
         deleted: {
           aiDailyUsage: usageRows.length,
           aiRequests: requestRows.length,
           auditEvents: auditRows.length,
+          jobs: jobRows.length,
         },
       })}\n`,
     );

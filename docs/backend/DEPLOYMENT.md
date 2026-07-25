@@ -2,7 +2,7 @@
 
 ## 运行拓扑
 
-生产环境使用无状态 API 副本、托管 PostgreSQL、托管 Redis、SMTP
+生产环境使用无状态 API 副本、独立后台 worker 副本、托管 PostgreSQL、托管 Redis、SMTP
 提供商和外部 Secret Manager。PostgreSQL 是唯一权威业务存储；Redis
 丢失只影响短时 challenge、限流窗口等可重建数据。公网入口必须在负载均衡或 Ingress
 终止 TLS 1.2+，容器自身不直接暴露公网端口。
@@ -17,7 +17,7 @@ ConfigMap 和 Secret，不把值写进 manifest。
 2. 为镜像生成 SBOM，并由镜像扫描器阻止 critical/high 且无豁免的漏洞。
 3. 确认最近一次 PostgreSQL 基础备份和 WAL/PITR 流连续可用。
 4. 使用与 API 完全相同 digest 的一次性 Job 执行 `node dist/cli/migrate.js`。
-5. 等迁移 Job 成功，再滚动更新 API；readiness 失败的 Pod 不接收流量。
+5. 等迁移 Job 成功，再滚动更新 API 与 worker；readiness 失败的 API Pod 不接收流量。
 6. 验证 live、ready、metrics、注册/刷新、同步、计费沙盒通知与 AI canary。
 7. 观察错误率、P95/P99、数据库连接、Redis 错误和 AI 上游错误至少一个正常业务峰值窗口。
 
@@ -30,12 +30,18 @@ ConfigMap 和 Secret，不把值写进 manifest。
 - Ed25519 JWT 私钥、公钥、key ID 与 token HMAC pepper；
 - DeepSeek API key；
 - metrics 独立 bearer token；
+- 后台任务 payload AES-256-GCM key 与 key version；
 - Apple 登录私钥与 Apple credential AES-256-GCM key；
 - 启用 Apple Billing 时的 App Apple ID 和 Apple PKI 根证书。
 
 生产配置校验采用 fail-closed：缺少数据库、Redis、SMTP、持久 JWT、DeepSeek 或 metrics
 保护凭据时进程拒绝启动。Secret 只通过运行时环境或挂载式 Secret
 注入，禁止进入镜像层、CI 日志、崩溃报告或聊天记录。
+
+API 在账号业务事务中写入加密任务，只有 worker 执行 SMTP 投递。worker 可横向扩容，
+数据库租约与 `FOR UPDATE SKIP LOCKED` 负责互斥领取；失败任务指数退避，达到最大次数后
+进入 `dead`。API 和 worker 必须通过 `JOB_PAYLOAD_PREVIOUS_KEYS` 同时保留仍有未完成任务
+引用的历史 key version；确认旧版本任务全部结束并超过保留期后才能移除旧 key。
 
 ## 回滚
 
@@ -55,6 +61,6 @@ cd Backend
 DEEPSEEK_API_KEY='从本机安全环境注入' docker compose --profile app up --build --wait
 ```
 
-API 为 `http://127.0.0.1:8080`，Mailpit 为
+API 为 `http://127.0.0.1:8080`，worker 自动处理邮件任务，Mailpit 为
 `http://127.0.0.1:8025`。Compose 开发配置使用临时 JWT
 密钥，容器重启会使现有 access token 失效；生产绝不能使用这一开发行为。
