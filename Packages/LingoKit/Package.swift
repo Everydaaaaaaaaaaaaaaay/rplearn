@@ -14,6 +14,7 @@ let infraTargets: [Target] = [
 ]
 
 let serviceTargets: [Target] = [
+    .target(name: "BackendKit", dependencies: [module("CoreKit")]),
     .target(name: "LLMKit", dependencies: [module("CoreKit")]),
     .target(name: "SpeechKit", dependencies: [module("CoreKit")]),
     // DictKit 附带词典卡 UI（DictCardView/浮窗），故依赖 DesignSystem——层级仍严格向下。
@@ -39,6 +40,10 @@ func feature(_ name: String, dependencies: [Target.Dependency]) -> Target {
 }
 
 let featureTargets: [Target] = [
+    feature("AuthFeature", dependencies: [
+        module("BackendKit"),
+        module("CoreKit"),
+    ]),
     feature("HomeFeature", dependencies: [
         module("CoreKit"),
         module("DomainKit"),
@@ -78,6 +83,7 @@ let featureTargets: [Target] = [
         module("SpeechKit"),
     ]),
     feature("SettingsFeature", dependencies: [
+        module("BackendKit"),
         module("DomainKit"),
         module("LLMKit"),
         module("PersistenceKit"),

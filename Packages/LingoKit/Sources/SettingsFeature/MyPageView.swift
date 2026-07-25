@@ -1,3 +1,4 @@
+import BackendKit
 import DesignSystem
 import DomainKit
 import LLMKit
@@ -15,6 +16,7 @@ public struct MyPageView: View {
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
     private let speech: any SpeechService
+    private let authSession: AuthSession
     private let favoritesBuilder: @MainActor () -> AnyView
 
     @State private var profile: UserProfileDTO?
@@ -32,6 +34,7 @@ public struct MyPageView: View {
         rosterStore: RosterStore,
         chatStore: ChatStore,
         speech: any SpeechService,
+        authSession: AuthSession,
         favoritesBuilder: @escaping @MainActor () -> AnyView
     ) {
         self.settings = settings
@@ -42,6 +45,7 @@ public struct MyPageView: View {
         self.rosterStore = rosterStore
         self.chatStore = chatStore
         self.speech = speech
+        self.authSession = authSession
         self.favoritesBuilder = favoritesBuilder
     }
 
@@ -218,6 +222,18 @@ public struct MyPageView: View {
                 )
             } label: {
                 entryRow("设置", subtitle: "AI、语音与学习偏好", icon: "gearshape.fill", tint: .dsSky)
+            }
+            .buttonStyle(.plain)
+            Divider().padding(.leading, 56)
+            Button(role: .destructive) {
+                Task { await authSession.logout() }
+            } label: {
+                entryRow(
+                    "退出登录",
+                    subtitle: "移除本机登录凭据",
+                    icon: "rectangle.portrait.and.arrow.right",
+                    tint: .red
+                )
             }
             .buttonStyle(.plain)
         }

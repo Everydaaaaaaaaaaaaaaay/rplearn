@@ -1,3 +1,4 @@
+import BackendKit
 import CoreKit
 import DictKit
 import DomainKit
@@ -6,12 +7,15 @@ import LLMKit
 import PersistenceKit
 import SpeechKit
 import SwiftData
+import UIKit
 
 /// 组合根：持有全部服务实例并向下注入。后续单元逐步填充。
 @MainActor
 @Observable
 final class AppEnvironment {
     let keychain: KeychainStore
+    let backendClient: BackendClient
+    let authSession: AuthSession
     let llmSettings: LLMSettingsStore
     let llmRouter: LLMRouter
     let dictionary: DictDatabase
@@ -40,6 +44,25 @@ final class AppEnvironment {
     init() {
         let keychain = KeychainStore()
         self.keychain = keychain
+        let backendClient = BackendClient(
+            configuration: .live,
+            credentialStore: KeychainAuthCredentialStore(keychain: keychain)
+        )
+        self.backendClient = backendClient
+        let deviceID =
+            (try? DeviceIdentifierStore(keychain: keychain).loadOrCreate())
+            ?? UUID().uuidString.lowercased()
+        let version =
+            Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+            as? String
+        self.authSession = AuthSession(
+            client: backendClient,
+            device: BackendDevice(
+                appVersion: version,
+                deviceID: deviceID,
+                deviceName: UIDevice.current.name
+            )
+        )
         let settings = LLMSettingsStore(keychain: keychain)
         self.llmSettings = settings
         self.llmRouter = LLMRouter {
@@ -78,6 +101,7 @@ final class AppEnvironment {
         self.economyService = EconomyService(economyStore: economyStore, itemStore: itemStore)
 
         Log.app.info("AppEnvironment initialized")
+        Task { await authSession.bootstrap() }
         bootstrap()
     }
 

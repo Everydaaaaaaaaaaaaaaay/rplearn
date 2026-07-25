@@ -1,3 +1,5 @@
+import AuthFeature
+import BackendKit
 import ChatFeature
 import DesignSystem
 import DomainKit
@@ -50,6 +52,21 @@ struct RootView: View {
     }
 
     var body: some View {
+        Group {
+            switch environment.authSession.phase {
+            case .loading:
+                ProgressView("正在恢复旅程…")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.dsBackground)
+            case .signedOut:
+                SignInView(session: environment.authSession)
+            case .signedIn:
+                authenticatedContent
+            }
+        }
+    }
+
+    private var authenticatedContent: some View {
         tabs
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
@@ -172,6 +189,7 @@ struct RootView: View {
                 rosterStore: environment.rosterStore,
                 chatStore: environment.chatStore,
                 speech: environment.speech,
+                authSession: environment.authSession,
                 favoritesBuilder: { AnyView(FavoritesView(deps: favoritesDeps)) }
             )
         }
