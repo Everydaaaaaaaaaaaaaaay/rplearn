@@ -11,7 +11,7 @@ LingoTrip 是 SwiftUI 原生 iOS 语言学习 app。重构前的 UI 以原生控
 **B. 结构层**：页面布局、信息架构按成熟 App 标准大规模重设计，功能不受影响。已拍板：
 - **四 tab**：首页（聚合 hub）/ 地图 / 消息 / 我的
 - **首页 = 游戏式聚合 hub**：不做硬 hero 大卡，头部轻量透出城市信息；背景为当前城市**半写真半卡通动态背景**（视差/缓动）；模块含新消息/最近会话（核心）、功能入口（主线剧情、活动/偶遇→二级页）
-- **地图 = MapKit + overlay**：缩略 3D 视角选地点、城市 pin；前往时**蓝底飞机动画全屏转场**；票根入口归地图 tab
+- **地图 = MapKit + overlay**：平面洲级宽视角选地点、城市 pin；只保留原生平移/缩放，前往时**蓝底飞机动画全屏转场**；票根入口归地图 tab
 - **消息 = QQ 式成熟消息列表**：会话列表为主体，好友/角色资料收二级页（Roster 本轮做基础版）
 - **我的**：收藏、订阅/账户、设置（降级为二级页）
 - **开局引导重设计**：剧情聊天流里主角色信息做成消息卡片；选角改左右滑动实体感角色卡
@@ -107,7 +107,7 @@ ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= �
 
 ### 地图页（MapView 重写为 MapKit）
 数据前置：`Region` 加 `latitude/longitude: Double`（带默认值保测试 fixture）+ regions.json 三城坐标（伦敦 51.5074,-0.1278；墨尔本 -37.8136,144.9631；纽约 40.7128,-74.0060）；坐标转换放 MapFeature，DomainKit 保持纯 Foundation。
-`Map(position:)` + `.mapStyle(.standard(elevation: .realistic, pointsOfInterest: .excludingAll))`；初始镜头 = 当前城市缩略 3D（`MapCamera(distance: 6_000, heading: 30, pitch: 55)`），「地球」按钮切总览（distance ~20M、pitch 0），`bouncy` 飞行过渡 + 顶部三城 chips；**CityPinView 三态**（当前=大 pin+呼吸光环+国旗 / 已解锁=实心 / 未解锁=灰+锁）；点 pin 底部滑出 **CityCard**（.dsCard：城市信息+状态 chip+`DuoButton`「前往 ✈️」→ 现有 TravelSheet 逻辑零改动）；toolbar 票根夹入口（同模块 push）；顶部钱包胶囊。
+`Map(position:interactionModes:)` 只开放 `.pan/.zoom`，配合 `.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll, showsTraffic: false)`；初始镜头与城市切换统一为当前目标的洲级二维宽视角（`distance: 5.8M`、heading/pitch 均为 0），顶部三城 chips 保证所有目的地直接可达，复位按钮只恢复目标城市宽视角。隐藏正式地图应用才需要的指南针、比例尺、用户定位、俯仰和旋转；**CityPinView 三态**改为紧凑国旗标记（当前/已解锁/未解锁），点 pin 底部淡入紧凑 **CityCard**（城市、状态、票况与「前往」）；票根夹保留在顶部，钱包信息不在地图重复展示。
 **`FlightTransitionOverlay`**（新）：TravelSheet 成功分支不再 alert，改 fullScreenCover 动画序列 ~2.6s：起飞（蓝底渐变淡入+出发城市+票根飞入 0.6s）→ 航线（白虚线弧线描画+✈️ 沿弧飞行随切线旋转+云反向流动+目的地渐显 1.2s）→ 降落揭幕（「已抵达 XX！票根已收入」+CelebrationBurst+遮罩揭开，镜头已 fly-to 新城市 0.8s）；ReduceMotion 走 0.4s 交叉淡入；失败分支维持 alert。
 
 ### 消息页（ConversationListView 重做，QQ 式）
@@ -149,7 +149,7 @@ DictCardView（chip→DSChip、例句底→dsBubbleIncoming、AI 解释钮→`.d
 | 7 | `feat(home): 主线剧情二级页 MainlineListView` | MainlineListView.swift、RootView(.mainline) | 0 完成/部分完成两态；进 AVG 完成回流 | 2,4 |
 | 8 | `feat(home): 活动二级页 ActivitiesView（偶遇整体迁入）` | ActivitiesView.swift（吸收 EncounterSection）、RootView(.activities) | 活动卡/骰运中态；偶遇 sheet→聊聊/加好友链路 | 2,4 |
 | 9 | `refactor(home): 首页聚合 hub 重排（信息条+最近会话+探索入口，删旧布局）` | HomeView 重写、RecentChatsCard.swift、RootView（chatBuilder/onOpenMessages，删 .map/.ticketStubs） | 新首页两态；会话点击进聊天；查看全部切 tab；两个二级页可达 | 6,7,8 |
-| 10 | `feat(map): MapKit 3D 地图（相机/pin 三态/城市卡/总览切换/票根落位）` | MapView 重写、CityPinView.swift、TicketStubsView 入口 | 3D 聚焦/总览/pin 城市卡三态；TravelSheet 购票出行回归；票根可达 | 4,5 |
+| 10 | `feat(map): MapKit 二维目的地选择器（宽视角/pin 三态/城市卡/票根落位）` | MapView 重写、CityPinView.swift、TicketStubsView 入口 | 平面宽视角/原生平移缩放/pin 城市卡三态；TravelSheet 购票出行回归；票根可达 | 4,5 |
 | 11 | `feat(map): 蓝底飞机全屏转场 FlightTransitionOverlay` | FlightTransitionOverlay.swift、MapView | 完整转场录屏；镜头落新城市；ReduceMotion 淡入；失败仍 alert | 10 |
 | 12 | `refactor(chat): 消息列表 QQ 化（未读/置顶/滑动/智能时间/搜索）` | ConversationListView 重做、ConversationListState.swift、ChatView 进入即已读 | 未读红点、置顶排序、滑动菜单、搜索；返回未读消失 | 3,4 |
 | 13 | `feat(roster): 好友列表 + 角色资料卡（基础版）` | RosterView/CharacterProfileView.swift、Package.swift(+PersistenceKit)、RootView 接线 | 分区列表+好友位条；资料卡全字段两态；发消息进聊天 | 3,4 |
@@ -166,7 +166,7 @@ DictCardView（chip→DSChip、例句底→dsBubbleIncoming、AI 解释钮→`.d
 
 ## 六、风险与预案
 
-1. **MapKit 3D 模拟器表现**：realistic 地形在模拟器常不渲染/帧率低——聚焦镜头 distance ≥4km、excludingAll POI 减负；验收以 pin/城市卡/前往流程为准，3D 观感真机复核；总览模式明确 pitch 0（远距 pitch 会被系统钳制）。
+1. **MapKit 宽视角与标注可见性**：三城跨越超过 180° 经度，竖屏无法同时清晰展示全部标注——以当前城市的洲级宽视角作为初始画面，顶部城市 chips 作为全量目的地入口；切换后目标 pin 必须位于可用内容区内。
 2. **无网络地图底图空白**：Map 底垫 DSScenePalette 深蓝渐变；城市卡/出行流程不依赖瓦片。
 3. **动态背景无素材**：剪影自绘是默认路径而非降级；scrim 恒在；素材命名约定写进 HANDOFF，后续投图零代码。
 4. **TabBar preference 跨 tab 泄漏**：`[AppTab: Bool]` 按 tab 记录；任务 4 显式验收「A tab 深层隐藏→切 B tab 必须显示」；任务 21 复检 fullScreenCover 叠加场景。

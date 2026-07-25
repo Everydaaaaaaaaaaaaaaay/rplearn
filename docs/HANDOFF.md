@@ -79,7 +79,7 @@ App（组合根 AppEnvironment / RootView）
 
 ```
 首页（城市 Hub → 主线剧情 / 城市活动 / 聊天）
-地图（MapKit 3D → 城市卡 / 飞行转场 / 票根夹）
+地图（二维目的地选择器 → 城市卡 / 飞行转场 / 票根夹）
 消息（会话列表 → 好友 / 角色资料 / 聊天）
 我的（资料 / 订阅 → 收藏 / 设置）
 ```
@@ -88,6 +88,7 @@ App（组合根 AppEnvironment / RootView）
 - 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。透明材质统一用 `.dsMaterial(_:in:)`，开启“降低透明度”时会自动降级为不透明 surface。
 - 首页已接入 `city_backdrop_london`、`city_backdrop_melbourne`、`city_backdrop_newyork` 三张正式生成式背景；`CityBackdropView` 在未知城市或素材缺失时仍以多层城市剪影和云动画兜底。首页内容在城市栏下保留自适应景观窗口，深色模式会压低素材亮度与饱和度。
 - 首页两个核心入口按城市加载 `home_mainline_<regionID>` 与 `home_activity_<regionID>` 横幅美术；当前三城共 6 张正式素材。左侧只使用单一品牌实色与短透明度过渡，缺图时 `ExploreCard` 自动退回品牌实色与 SF Symbol，不影响导航和可访问性。
+- 地图只承担目的地选择：MapKit 使用平面、弱化、无兴趣点样式，只开放系统平移与缩放手势，不提供俯仰、旋转、指南针、比例尺或用户定位。进入页面及切换城市时保持洲级宽视角，城市 chip、三态标记与底部卡共同完成选择。
 - `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。
 - 会话已读/置顶用 UserDefaults 轻量状态，不改 SwiftData schema；聊天页进入即标记已读。
 
@@ -137,7 +138,7 @@ DomainKit 服务清单：
 |---|---|---|
 | **ChatFeature** | 消息列表 + 聊天页 | QQ 式搜索/未读/置顶/滑动已读；聊天流式链路、统一批注卡、quiz 庆祝/错误反馈、语音条、Apple 端上翻译兜底 |
 | **HomeFeature** | 首页聚合 Hub + 主线/活动二级页 | 城市动态剪影背景、最近会话、两张探索入口；`MainlineListView` / `ActivitiesView` |
-| **MapFeature** | MapKit 3D 地图 + 飞行转场 + 票根夹 | realistic elevation 相机、三态 Pin、城市卡、购票/出行、`FlightTransitionOverlay`、6 套动态票根色 |
+| **MapFeature** | 二维目的地选择器 + 飞行转场 + 票根夹 | 洲级宽视角、弱化底图、三态 Pin、紧凑城市卡、购票/出行、`FlightTransitionOverlay`、6 套动态票根色 |
 | **StoryFeature** | AVG 剧情 | 竖屏 ZStack、打字机台词、动态深浅场景色、Duo 选项 |
 | **OnboardingFeature** | 首启引导 | 聊天剧情内角色资料卡 + 3D 横滑实体选角卡 |
 | **SettingsFeature** | 我的 + 设置 | `MyPageView` 聚合资料/订阅/收藏/设置；二级设置保留 AI、模型、语音、学习开关 |
@@ -220,7 +221,7 @@ DomainKit 服务清单：
 | | 2.7 打磨（图标 / 触觉 / 剧情补章 / 深色模式 / 空态） | ✅ |
 | | 2.8 口语点评 | ✅ |
 | UI | DesignSystem token / 样式 / 组件地基 | ✅ |
-| | 四 Tab 信息架构、首页 Hub、MapKit 3D 与飞行转场 | ✅ |
+| | 四 Tab 信息架构、首页 Hub、二维 MapKit 目的地选择与飞行转场 | ✅ |
 | | 消息/好友/聊天/我的全面重构 | ✅ |
 | | 首启选角、AVG、词典、收藏、票根长尾换肤 | ✅ |
 

@@ -21,60 +21,54 @@ struct CityPinView: View {
     let state: PinState
     let isSelected: Bool
 
-    @State private var pulse = false
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
     var body: some View {
-        VStack(spacing: 2) {
-            ZStack {
-                if state == .current {
-                    Circle()
-                        .stroke(Color.dsSky.opacity(0.5), lineWidth: 5)
-                        .frame(width: 58, height: 58)
-                        .scaleEffect(pulse ? 1.25 : 0.85)
-                        .opacity(pulse ? 0 : 0.9)
-                }
-                Image(systemName: state == .locked ? "mappin.slash.circle.fill" : "mappin.circle.fill")
-                    .font(.system(size: state == .current ? 48 : 38))
-                    .foregroundStyle(pinColor)
-                    .background {
-                        if state == .current {
-                            Text(flag(region.countryCode))
-                                .font(.system(size: 17))
-                                .offset(y: -4)
-                        }
-                    }
-                    .symbolEffect(.bounce, value: reduceMotion ? false : isSelected)
+        VStack(spacing: 4) {
+            ZStack(alignment: .bottomTrailing) {
+                Circle()
+                    .fill(Color.dsSurface)
+                Text(region.flagEmoji)
+                    .font(.system(size: 24))
+                Image(systemName: stateIcon)
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 17, height: 17)
+                    .background(stateTint, in: Circle())
+                    .overlay(Circle().stroke(Color.dsSurface, lineWidth: 2))
             }
+            .frame(width: 48, height: 48)
+            .overlay {
+                Circle()
+                    .stroke(isSelected ? Color.dsSky : Color.dsBorder, lineWidth: isSelected ? 3 : 1)
+            }
+            .shadow(color: .black.opacity(isSelected ? 0.18 : 0.1), radius: isSelected ? 7 : 4, y: 2)
+
             Text(region.nameZh)
                 .font(.caption2.weight(.bold))
                 .foregroundStyle(.primary)
-                .padding(.horizontal, 7)
-                .padding(.vertical, 3)
-                .dsMaterial(.regularMaterial, in: Capsule())
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.dsSurface, in: Capsule())
+                .overlay(Capsule().stroke(Color.dsBorder, lineWidth: 1))
         }
+        .opacity(state == .locked ? 0.78 : 1)
         .scaleEffect(isSelected ? 1.08 : 1)
-        .task {
-            guard state == .current, !reduceMotion else { return }
-            withAnimation(.easeOut(duration: 1.4).repeatForever(autoreverses: false)) {
-                pulse = true
-            }
-        }
+        .animation(DSAnimation.gentle, value: isSelected)
+        .contentShape(Rectangle())
     }
 
-    private var pinColor: Color {
+    private var stateTint: Color {
         switch state {
-        case .current: .dsSky
-        case .unlocked: .dsCyan
+        case .current: .dsSuccess
+        case .unlocked: .dsSky
         case .locked: .gray
         }
     }
 
-    private func flag(_ code: String) -> String {
-        code.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
-            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
-                result.unicodeScalars.append(value)
-            }
+    private var stateIcon: String {
+        switch state {
+        case .current: "location.fill"
+        case .unlocked: "checkmark"
+        case .locked: "lock.fill"
         }
     }
 }

@@ -21,28 +21,32 @@ struct TravelSheet: View {
     }
 
     var body: some View {
-        VStack(spacing: DSSpacing.lg) {
-            Capsule().fill(.tertiary).frame(width: 38, height: 5).padding(.top, 8)
-            ZStack {
-                Circle().fill(Color.dsSky.opacity(0.12))
-                Image(systemName: "airplane.departure")
-                    .font(.system(size: 34, weight: .bold))
-                    .foregroundStyle(Color.dsSky)
+        VStack(alignment: .leading, spacing: DSSpacing.lg) {
+            HStack(spacing: DSSpacing.sm) {
+                Text(region.flagEmoji)
+                    .font(.system(size: 32))
+                    .frame(width: 56, height: 56)
+                    .background(Color.dsBackground, in: Circle())
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("确认目的地")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(region.nameZh)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                    Text(region.countryNameZh)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
             }
-            .frame(width: 76, height: 76)
-            Text("前往 \(region.nameZh)")
-                .font(.title2.bold())
-            Text(region.taglineZh)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
 
             if let ticket = usable.first {
                 Label(
                     ticket.type == .ticketUniversal ? "使用通用机票" : "使用 \(ticket.countryCode ?? "") 国家机票",
                     systemImage: "ticket.fill"
                 )
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Color.dsSunset)
+
                 Button {
                     travel(with: ticket)
                 } label: {
@@ -51,9 +55,10 @@ struct TravelSheet: View {
                 .buttonStyle(.duoPrimary)
                 .disabled(isWorking)
             } else {
-                Text("没有可用的机票")
+                Label("当前没有可用机票", systemImage: "ticket")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+
                 Button {
                     buyAndTravel()
                 } label: {
@@ -62,9 +67,13 @@ struct TravelSheet: View {
                 .buttonStyle(.duoPrimary)
                 .disabled(isWorking)
             }
-            Spacer()
+
+            Text("确认后将生成一张新的旅行票根。")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
         }
-        .padding(.horizontal, DSSpacing.xl)
+        .padding(.horizontal, DSSpacing.lg)
+        .padding(.top, DSSpacing.md)
     }
 
     private func workingLabel(_ title: String) -> some View {

@@ -9,66 +9,56 @@ struct CityCard: View {
     let onTravel: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack(alignment: .top, spacing: DSSpacing.sm) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    DSScenePalette.city(region.id).skyTop,
-                                    DSScenePalette.city(region.id).silhouetteNear,
-                                ],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-                    Image(systemName: landmarkIcon)
-                        .font(.system(size: 30, weight: .bold))
-                        .foregroundStyle(.white.opacity(0.9))
-                }
-                .frame(width: 76, height: 76)
+        HStack(spacing: DSSpacing.sm) {
+            Text(region.flagEmoji)
+                .font(.system(size: 30))
+                .frame(width: 54, height: 54)
+                .background(Color.dsBackground, in: Circle())
 
-                VStack(alignment: .leading, spacing: 5) {
-                    HStack {
-                        Text(region.nameZh)
-                            .font(.title2.bold())
-                        DSChip(state.accessibilityText, tint: state == .current ? .dsSuccess : .dsSky)
-                    }
-                    Text("\(region.countryNameZh) · \(region.taglineZh)")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
+            VStack(alignment: .leading, spacing: 5) {
+                HStack(spacing: DSSpacing.xs) {
+                    Text(region.nameZh)
+                        .font(.system(.title3, design: .rounded, weight: .bold))
+                    DSChip(state.accessibilityText, tint: stateTint)
+                }
+                Text(region.countryNameZh)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                if state != .current {
+                    Label(ticketLabel, systemImage: "ticket.fill")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(ticketCount > 0 ? Color.dsSunset : Color.gray)
                 }
             }
 
-            HStack(spacing: DSSpacing.sm) {
-                Label("可用机票 ×\(ticketCount)", systemImage: "ticket.fill")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSunset)
-                Spacer()
-                if state != .current {
-                    Button {
-                        onTravel()
-                    } label: {
-                        Label("前往", systemImage: "airplane")
-                    }
-                    .buttonStyle(.duo(.primary, fullWidth: false, compact: true))
-                } else {
-                    Label("你在这里", systemImage: "location.fill")
-                        .font(.subheadline.bold())
-                        .foregroundStyle(Color.dsSuccess)
+            Spacer(minLength: DSSpacing.xs)
+
+            if state != .current {
+                Button {
+                    onTravel()
+                } label: {
+                    Label("前往", systemImage: "airplane")
                 }
+                .buttonStyle(.duo(.primary, fullWidth: false, compact: true))
+            } else {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title2)
+                    .foregroundStyle(Color.dsSuccess)
+                    .accessibilityLabel("当前所在城市")
             }
         }
         .dsCard()
     }
 
-    private var landmarkIcon: String {
-        switch region.id {
-        case "melbourne": "tram.fill"
-        case "newyork": "building.2.fill"
-        default: "clock.fill"
+    private var ticketLabel: String {
+        ticketCount > 0 ? "\(ticketCount) 张机票可用" : "下一步可购票"
+    }
+
+    private var stateTint: Color {
+        switch state {
+        case .current: .dsSuccess
+        case .unlocked: .dsSky
+        case .locked: .gray
         }
     }
 }
