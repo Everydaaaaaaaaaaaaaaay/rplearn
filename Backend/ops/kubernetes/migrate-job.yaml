@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lingotrip-migrate-replace-with-release-id
+spec:
+  backoffLimit: 2
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: migrate
+          image: registry.example.com/lingotrip/backend:replace-with-digest
+          command: ["node", "dist/cli/migrate.js"]
+          envFrom:
+            - configMapRef:
+                name: lingotrip-backend-config
+            - secretRef:
+                name: lingotrip-backend-secrets
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+            readOnlyRootFilesystem: true

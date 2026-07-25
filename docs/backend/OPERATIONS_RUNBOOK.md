@@ -1,0 +1,65 @@
+# 运行与事故手册
+
+## SLO 与告警
+
+建议初始 SLO：
+
+- 月度 API 可用性 99.9%；
+- 非 AI API P95 小于 400ms，P99 小于 1s；
+- AI 首 token P95 小于 4s，完整请求按任务单独观测；
+- 计费通知 99% 在 60 秒内处理；
+- 审计写入失败为零容忍告警。
+
+必须告警：
+
+- 5xx 比例 5 分钟超过 2%，或错误预算快速消耗；
+- readiness 失败、Pod 重启循环、数据库连接耗尽；
+- Redis 错误持续 1 分钟；
+- AI 上游 429/5xx/timeout 激增或 token 成本异常；
+- 未处理 billing provider event 增长；
+- PostgreSQL 复制/WAL/备份延迟；
+- 审计持久化失败或 maintenance job 连续失败。
+
+Prometheus 只采集低基数 route/method/status 标签，禁止加入 user ID、request
+ID、邮箱、transaction ID 或模型 prompt。
+
+## 常见事故
+
+### PostgreSQL 不可用
+
+readiness 应立即失败并停止接流量。禁止切换到本地缓存继续接受资产、旅行、订阅或同步写入。确认托管实例、网络和连接池后恢复；若涉及数据损坏，执行 PITR 流程。
+
+### Redis 不可用
+
+readiness 失败。账号 challenge、AI 分钟限流等采用 fail-closed，不允许绕过风控。PostgreSQL
+业务数据不受影响。替换 Redis 后无需数据恢复。
+
+### DeepSeek 故障或成本异常
+
+在 `app.ai_routes` 禁用受影响 task，或把 task 指向已配置的受控提供商；客户端不能覆盖路由。检查
+`ai_requests` 的稳定错误码和 token 聚合，禁止查看或记录用户 prompt。若 key
+疑似泄露，先吊销并生成新 key，再更新 Secret Manager 和滚动重启。
+
+### Apple 通知积压
+
+确认验签、bundle、environment 和产品映射。重复通知可以安全重放；乱序事件不会覆盖更晚状态。不得手工把客户端声明写成有效 entitlement。修复配置后使用受控补偿程序重新处理
+`processing_error` 事件并记录审计。
+
+### 凭据泄露
+
+1. 立即吊销受影响提供商 key；
+2. 保存不含 Secret 的证据和时间线；
+3. 在 Secret Manager 写入新版本并滚动更新；
+4. JWT 私钥泄露时轮换签名 key、提高用户 token version 或撤销会话；
+5. 数据加密 key 泄露时先增加新 key version，再后台重加密，最后移除旧 key；
+6. 检查审计和提供商用量，通知安全与合规负责人。
+
+任何 Secret 一旦出现在聊天、工单正文或普通日志中，都按已泄露处理。
+
+## 日常作业
+
+- 每天：`pnpm maintenance:cleanup`；
+- 每天：检查备份、WAL 和未处理计费事件；
+- 每周：依赖审计、镜像扫描、成本与配额复核；
+- 每月：隔离恢复演练、权限复核、Secret 轮换演练；
+- 每季度：威胁模型、数据保留和事故手册复审。

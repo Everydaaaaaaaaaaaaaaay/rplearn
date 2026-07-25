@@ -1,6 +1,46 @@
 name: lingotrip
 
 services:
+  api:
+    profiles: ["app"]
+    build:
+      context: .
+    command: ["sh", "-c", "node dist/cli/migrate.js && exec node dist/server.js"]
+    depends_on:
+      mailpit:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      AI_USER_MINUTE_LIMIT: 30
+      AUTH_ACTION_URL_BASE: http://127.0.0.1:8080/auth
+      AUTH_ISSUER: http://127.0.0.1:8080
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      DATABASE_URL: postgres://lingotrip:lingotrip_dev@postgres:5432/lingotrip
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      HOST: 0.0.0.0
+      LOG_LEVEL: debug
+      NODE_ENV: development
+      REDIS_URL: redis://redis:6379
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:8080/health/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
   mailpit:
     image: axllent/mailpit:v1.27
     healthcheck:

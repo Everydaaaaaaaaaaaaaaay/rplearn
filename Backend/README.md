@@ -82,3 +82,8 @@ pnpm auth:generate-keys
 
 停止本地依赖使用 `pnpm infra:down`。该命令默认保留数据库卷；只有显式执行
 `docker compose down --volumes` 才会删除本地开发数据。
+
+生产发布、回滚、备份恢复和事故处理分别见
+[`../docs/backend/DEPLOYMENT.md`](../docs/backend/DEPLOYMENT.md)、
+[`../docs/backend/BACKUP_RESTORE.md`](../docs/backend/BACKUP_RESTORE.md) 与
+[`../docs/backend/OPERATIONS_RUNBOOK.md`](../docs/backend/OPERATIONS_RUNBOOK.md)。

@@ -1,0 +1,70 @@
+name: Backend
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/backend.yml"
+      - "Backend/**"
+      - "docs/backend/**"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/backend.yml"
+      - "Backend/**"
+      - "docs/backend/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: lingotrip
+          POSTGRES_PASSWORD: lingotrip_dev
+          POSTGRES_USER: lingotrip
+        ports:
+          - 54329:5432
+        options: >-
+          --health-cmd "pg_isready -U lingotrip -d lingotrip"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 20
+      redis:
+        image: redis:8-alpine
+        ports:
+          - 63799:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 20
+    defaults:
+      run:
+        working-directory: Backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          cache-dependency-path: Backend/pnpm-lock.yaml
+          node-version: 24
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm check
+      - run: pnpm build
+      - run: pnpm db:migrate
+      - run: pnpm test:integration
+      - run: pnpm audit --prod
+      - run: docker build --tag lingotrip-backend:ci .
