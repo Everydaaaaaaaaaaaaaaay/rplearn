@@ -125,6 +125,16 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     expect(initialSnapshot.profile.coins).toBe(0);
     expect(initialSnapshot.profile.unlockedRegionIds).toEqual(["london"]);
 
+    const prematureStarter = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "POST",
+      url: "/v1/progression/starter-ticket",
+    });
+    expect(prematureStarter.statusCode).toBe(409);
+    expect(prematureStarter.json<{ code: string }>().code).toBe(
+      "ONBOARDING_REQUIRED",
+    );
+
     const profileCommand = newEntityId();
     const profileUpdate = await app.inject({
       headers: authenticated({ idempotencyKey: profileCommand }),
@@ -132,6 +142,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       payload: {
         displayName: "跨平台旅行者",
         expectedVersion: initialSnapshot.profile.version,
+        hasCompletedOnboarding: true,
       },
       url: "/v1/me",
     });
@@ -165,6 +176,33 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     });
     expect(noTicket.statusCode).toBe(409);
     expect(noTicket.json<{ code: string }>().code).toBe("TICKET_REQUIRED");
+
+    const starterCommand = newEntityId();
+    const starterTicket = await app.inject({
+      headers: authenticated({ idempotencyKey: starterCommand }),
+      method: "POST",
+      url: "/v1/progression/starter-ticket",
+    });
+    expect(starterTicket.statusCode).toBe(200);
+    expect(starterTicket.json<Ticket>()).toMatchObject({
+      source: "quest",
+      type: "universal",
+    });
+    const starterRetry = await app.inject({
+      headers: authenticated({ idempotencyKey: starterCommand }),
+      method: "POST",
+      url: "/v1/progression/starter-ticket",
+    });
+    expect(starterRetry.json<Ticket>()).toEqual(starterTicket.json<Ticket>());
+    const duplicateStarter = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "POST",
+      url: "/v1/progression/starter-ticket",
+    });
+    expect(duplicateStarter.statusCode).toBe(409);
+    expect(duplicateStarter.json<{ code: string }>().code).toBe(
+      "STARTER_TICKET_ALREADY_CLAIMED",
+    );
 
     const grantCommand = newEntityId();
     const grant = await app.inject({
@@ -282,7 +320,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       "melbourne",
       "newyork",
     ]);
-    expect(finalSnapshot.tickets).toHaveLength(1);
+    expect(finalSnapshot.tickets).toHaveLength(2);
 
     const [ledger] = await dependencies.database.sql<
       { current_balance: number; ledger_sum: number }[]

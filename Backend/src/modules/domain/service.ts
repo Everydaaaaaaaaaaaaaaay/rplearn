@@ -13,6 +13,7 @@ import type {
 } from "./types.js";
 
 export type DomainService = Readonly<{
+  claimStarterTicket: (userId: string, commandId: string) => Promise<Ticket>;
   getSnapshot: (userId: string) => Promise<UserSnapshot>;
   grantCoins: (
     userId: string,
@@ -57,6 +58,13 @@ function command(commandId: string, route: string, payload: unknown): CommandIde
 export function createDomainService(database: DatabaseResource): DomainService {
   const repository = new DomainRepository(database);
   return {
+    claimStarterTicket: (userId, commandId) =>
+      repository.claimStarterTicket(
+        userId,
+        command(commandId, "progression.claimStarterTicket", {
+          reward: "starter-ticket-v1",
+        }),
+      ),
     getSnapshot: (userId) => repository.snapshot(userId),
     grantCoins: (userId, commandId, amount, reason) =>
       repository.grantCoins(

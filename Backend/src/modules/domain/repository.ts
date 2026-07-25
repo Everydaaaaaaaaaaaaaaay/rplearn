@@ -146,6 +146,70 @@ export class DomainRepository {
     };
   }
 
+  async claimStarterTicket(userId: string, command: CommandIdentity): Promise<Ticket> {
+    await this.ensureProfile(userId);
+    return this.executeCommand(userId, command, async (sql) => {
+      const [profile] = await sql<{ has_completed_onboarding: boolean }[]>`
+        select has_completed_onboarding
+        from app.user_profiles
+        where user_id = ${userId}
+        for update
+      `;
+      if (profile?.has_completed_onboarding !== true) {
+        throw new AppError({
+          code: "ONBOARDING_REQUIRED",
+          message: "Complete onboarding before claiming the starter ticket.",
+          statusCode: 409,
+        });
+      }
+      const [existing] = await sql<{ id: string }[]>`
+        select id::text
+        from app.inventory_items
+        where user_id = ${userId}
+          and source = 'quest'
+          and source_reference_id = 'starter-ticket-v1'
+      `;
+      if (existing !== undefined) {
+        throw new AppError({
+          code: "STARTER_TICKET_ALREADY_CLAIMED",
+          message: "The starter ticket was already claimed.",
+          statusCode: 409,
+        });
+      }
+      const [ticket] = await sql<
+        {
+          country_code: string | null;
+          created_at: string;
+          id: string;
+          source: TicketSource;
+          type: TicketType;
+        }[]
+      >`
+        insert into app.inventory_items (
+          id,
+          user_id,
+          type,
+          country_code,
+          source,
+          source_reference_id
+        )
+        values (
+          ${newEntityId()},
+          ${userId},
+          'universal',
+          null,
+          'quest',
+          'starter-ticket-v1'
+        )
+        returning id::text, type, country_code, source, created_at
+      `;
+      if (ticket === undefined) {
+        throw new Error("Starter ticket insert did not return a row");
+      }
+      return mapTicket(ticket);
+    });
+  }
+
   private async executeCommand<T>(
     userId: string,
     command: CommandIdentity,

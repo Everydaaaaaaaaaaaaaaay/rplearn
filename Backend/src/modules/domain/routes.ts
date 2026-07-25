@@ -142,6 +142,20 @@ export function registerDomainRoutes(
   );
 
   app.post(
+    "/v1/progression/starter-ticket",
+    {
+      schema: {
+        security: [{ bearerAuth: [] }],
+        tags: ["progression"],
+      },
+    },
+    async (request) => {
+      const identity = await authenticateRequest(request, authService);
+      return domainService.claimStarterTicket(identity.userId, commandId(request));
+    },
+  );
+
+  app.post(
     "/v1/economy/tickets/purchase",
     {
       schema: {
