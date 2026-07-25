@@ -9,9 +9,19 @@ struct CityBackdropView: View {
     let parallax: CGFloat
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorScheme) private var colorScheme
 
     private var palette: DSScenePalette.City {
         DSScenePalette.city(region.id)
+    }
+
+    private var assetName: String {
+        "city_backdrop_\(region.id)"
+    }
+
+    private var assetParallax: CGFloat {
+        guard !reduceMotion else { return 0 }
+        return min(max(parallax * 0.12, -36), 36)
     }
 
     var body: some View {
@@ -23,11 +33,14 @@ struct CityBackdropView: View {
                     endPoint: .bottom
                 )
 
-                if UIImage(named: "city_backdrop_\(region.id)") != nil {
-                    Image("city_backdrop_\(region.id)")
+                if UIImage(named: assetName) != nil {
+                    Image(assetName)
                         .resizable()
                         .scaledToFill()
-                        .offset(y: reduceMotion ? 0 : parallax * 0.18)
+                        .scaleEffect(1.04)
+                        .saturation(colorScheme == .dark ? 0.82 : 1)
+                        .brightness(colorScheme == .dark ? -0.08 : 0)
+                        .offset(y: assetParallax)
                 } else {
                     cloudLayer(size: geometry.size)
                     CitySilhouetteView(regionID: region.id, palette: palette)
@@ -35,11 +48,18 @@ struct CityBackdropView: View {
                 }
 
                 LinearGradient(
-                    colors: [
-                        .black.opacity(0.06),
-                        .clear,
-                        Color.dsBackground.opacity(0.68),
-                        Color.dsBackground,
+                    stops: [
+                        .init(
+                            color: .black.opacity(colorScheme == .dark ? 0.18 : 0.03),
+                            location: 0
+                        ),
+                        .init(color: .clear, location: 0.28),
+                        .init(color: .clear, location: 0.68),
+                        .init(
+                            color: Color.dsBackground.opacity(colorScheme == .dark ? 0.78 : 0.42),
+                            location: 0.84
+                        ),
+                        .init(color: Color.dsBackground, location: 1),
                     ],
                     startPoint: .top,
                     endPoint: .bottom

@@ -85,7 +85,7 @@ App（组合根 AppEnvironment / RootView）
 
 - 深层页面用 `.dsTabBarHidden()` 映射到系统 `.toolbar(.hidden, for: .tabBar)`；返回时由系统自动恢复。
 - 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。透明材质统一用 `.dsMaterial(_:in:)`，开启“降低透明度”时会自动降级为不透明 surface。
-- 首页背景优先加载 `city_backdrop_<regionID>` 资产；当前无素材时 `CityBackdropView` 以多层城市剪影和云动画兜底。后续投图只需按此命名加入 Assets，无需改页面代码。
+- 首页已接入 `city_backdrop_london`、`city_backdrop_melbourne`、`city_backdrop_newyork` 三张正式生成式背景；`CityBackdropView` 在未知城市或素材缺失时仍以多层城市剪影和云动画兜底。首页内容在城市栏下保留自适应景观窗口，深色模式会压低素材亮度与饱和度。
 - `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。
 - 会话已读/置顶用 UserDefaults 轻量状态，不改 SwiftData schema；聊天页进入即标记已读。
 
@@ -238,7 +238,7 @@ xcodebuild -project LingoTrip.xcodeproj -scheme LingoTrip \
 
 - 测试是 **App 托管的 `LingoTripTests` bundle**（`bundle.unit-test`，host=LingoTrip），源码在 `Packages/LingoKit/Tests/` 下按被测模块分子目录。**为什么托管**：钥匙串 / SwiftData 等测试在无宿主的 SwiftPM runner 下会报 `errSecMissingEntitlement(-34018)`。
 - Mock LLM 在 `Tests/TestSupport/MockLLMProvider.swift`，所有依赖 LLM 的服务都用它做确定性测试。
-- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
+- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；首页可附加 `SIMCTL_CHILD_UI_TEST_REGION=london|melbourne|newyork` 验证三城背景；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
 
 ---
 
@@ -262,7 +262,7 @@ xcodebuild -project LingoTrip.xcodeproj -scheme LingoTrip \
 3. **偶遇头像 / 立绘**：现为字母占位，可接内置多样化头像组或 AI 生图。
 4. **更多地区与剧情**：`RegionCatalog` / `MainlineCatalog` + `App/Resources/Stories` 加数据即可扩展；每个地区目前 2 章。
 5. **记忆与出题调参**：配额、压缩阈值、出题频率都在 `MemoryService.Config` / `QuizService` 里集中，可按真实体验调。
-6. **城市背景与角色头像美术**：代码兜底已完成，可按 `city_backdrop_<regionID>` 与角色资产约定逐步替换为正式素材。
+6. **角色头像美术**：三城正式背景与代码兜底均已完成；角色仍使用 `AvatarBadge` 代码占位，可按资产约定逐步替换。
 7. **国际化与无障碍**：文案目前中英混排硬编码，后续可上 `String Catalog`。
 
 ---

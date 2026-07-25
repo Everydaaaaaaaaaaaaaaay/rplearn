@@ -40,6 +40,9 @@ public struct HomeView: View {
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
     private let onOpenMessages: @MainActor () -> Void
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
     @State private var recentRows: [RecentChatRow] = []
@@ -56,7 +59,21 @@ public struct HomeView: View {
     }
 
     private var currentRegion: Region? {
-        profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
+        #if DEBUG
+        if let requestedRegionID = ProcessInfo.processInfo.environment["UI_TEST_REGION"],
+           let requestedRegion = deps.regionCatalog.region(id: requestedRegionID)
+        {
+            return requestedRegion
+        }
+        #endif
+        return profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
+    }
+
+    private var cityVistaHeight: CGFloat {
+        if dynamicTypeSize.isAccessibilitySize {
+            return 72
+        }
+        return verticalSizeClass == .compact ? 80 : 232
     }
 
     public var body: some View {
@@ -70,6 +87,7 @@ public struct HomeView: View {
             ScrollView {
                 VStack(spacing: DSSpacing.md) {
                     cityHeader
+                    cityVista
                     recentChats
                     exploreSection
                 }
@@ -86,6 +104,16 @@ public struct HomeView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .task { await reload() }
+    }
+
+    @ViewBuilder
+    private var cityVista: some View {
+        if currentRegion != nil {
+            Color.clear
+                .frame(height: cityVistaHeight)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+        }
     }
 
     @ViewBuilder
