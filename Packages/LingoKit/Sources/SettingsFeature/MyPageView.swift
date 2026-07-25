@@ -20,6 +20,7 @@ public struct MyPageView: View {
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
     @State private var showsTierPicker = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         settings: LLMSettingsStore,
@@ -113,7 +114,7 @@ public struct MyPageView: View {
             }
 
             Button {
-                withAnimation(DSAnimation.bouncy) {
+                withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
                     showsTierPicker.toggle()
                 }
             } label: {
@@ -129,7 +130,7 @@ public struct MyPageView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .transition(.move(edge: .top).combined(with: .opacity))
+                .transition(reduceMotion ? .opacity : .move(edge: .top).combined(with: .opacity))
                 Text("本地模拟订阅，暂未接入真实支付。")
                     .font(.caption2)
                     .opacity(0.72)

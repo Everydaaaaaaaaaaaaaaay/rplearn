@@ -40,6 +40,7 @@ public struct MapView: View {
     @State private var flight: FlightPresentation?
     @State private var feedback: String?
     @State private var isOverview = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(deps: MapDependencies) {
         self.deps = deps
@@ -134,7 +135,7 @@ public struct MapView: View {
             Button("好", role: .cancel) {}
         }
         .task { await reload() }
-        .animation(DSAnimation.bouncy, value: selectedRegionID)
+        .animation(reduceMotion ? nil : DSAnimation.bouncy, value: selectedRegionID)
         .dsTabBarHidden(flight != nil)
     }
 
@@ -211,7 +212,7 @@ public struct MapView: View {
     }
 
     private func focus(on region: Region) {
-        withAnimation(DSAnimation.bouncy) {
+        withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
             position = .camera(
                 MapCamera(
                     centerCoordinate: coordinate(region),
@@ -225,7 +226,7 @@ public struct MapView: View {
 
     private func toggleOverview() {
         isOverview.toggle()
-        withAnimation(DSAnimation.bouncy) {
+        withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
             if isOverview {
                 position = .camera(
                     MapCamera(
@@ -337,7 +338,7 @@ struct CityPinView: View {
                                 .offset(y: -4)
                         }
                     }
-                    .symbolEffect(.bounce, value: isSelected)
+                    .symbolEffect(.bounce, value: reduceMotion ? false : isSelected)
             }
             Text(region.nameZh)
                 .font(.caption2.weight(.bold))

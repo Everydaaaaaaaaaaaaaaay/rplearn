@@ -42,7 +42,6 @@ public struct DuoButtonStyle: ButtonStyle {
             }
             .offset(y: configuration.isPressed ? 4 : 0)
             .animation(DSAnimation.press, value: configuration.isPressed)
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.65), trigger: configuration.isPressed)
     }
 
     private var isOutline: Bool {

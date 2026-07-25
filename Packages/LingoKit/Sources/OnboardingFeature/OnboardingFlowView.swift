@@ -27,6 +27,7 @@ public struct OnboardingFlowView: View {
     @State private var phase: Phase = .story
     @State private var player: StoryPlayer?
     @State private var characters: [CharacterDTO] = []
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(deps: OnboardingDependencies, onComplete: @escaping (CharacterDTO) -> Void) {
         self.deps = deps
@@ -39,7 +40,7 @@ public struct OnboardingFlowView: View {
             case .story:
                 if let player {
                     ChatStoryView(player: player, characters: characters) {
-                        withAnimation(.snappy) {
+                        withAnimation(reduceMotion ? nil : .snappy) {
                             phase = .selection
                         }
                     }
@@ -48,7 +49,7 @@ public struct OnboardingFlowView: View {
                 }
             case .selection:
                 CharacterSelectView(characters: characters, onSelect: onComplete)
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .move(edge: .trailing).combined(with: .opacity))
             }
         }
         .task {
@@ -93,6 +94,7 @@ struct ChatStoryView: View {
     let player: StoryPlayer
     let characters: [CharacterDTO]
     let onFinished: () -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         VStack(spacing: 0) {
@@ -113,18 +115,18 @@ struct ChatStoryView: View {
                                    let character = character(for: line.sprite) {
                                     CharacterIntroCard(character: character)
                                         .padding(.leading, 6)
-                                        .transition(.scale(scale: 0.94).combined(with: .opacity))
+                                        .transition(reduceMotion ? .opacity : .scale(scale: 0.94).combined(with: .opacity))
                                 }
                             }
                             .id(line.id)
-                            .transition(.opacity.combined(with: .move(edge: .bottom)))
+                            .transition(reduceMotion ? .opacity : .opacity.combined(with: .move(edge: .bottom)))
                         }
                     }
                     .padding(12)
                 }
                 .onChange(of: player.history.count) {
                     if let last = player.history.last {
-                        withAnimation(.snappy) {
+                        withAnimation(reduceMotion ? nil : .snappy) {
                             proxy.scrollTo(last.id, anchor: .bottom)
                         }
                     }
@@ -156,7 +158,7 @@ struct ChatStoryView: View {
             VStack(spacing: 8) {
                 ForEach(Array(choices.enumerated()), id: \.offset) { index, option in
                     Button {
-                        withAnimation(.snappy) {
+                        withAnimation(reduceMotion ? nil : .snappy) {
                             player.choose(index)
                             player.advance()
                         }
@@ -181,7 +183,7 @@ struct ChatStoryView: View {
         if player.isFinished {
             onFinished()
         } else if player.currentChoices == nil {
-            withAnimation(.snappy) {
+            withAnimation(reduceMotion ? nil : .snappy) {
                 player.advance()
             }
         }
@@ -209,8 +211,10 @@ struct CharacterSelectView: View {
     @State private var selectedID: UUID?
     @State private var celebrationTrigger = 0
     @State private var isConfirming = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
+        let shouldReduceMotion = reduceMotion
         ZStack {
             LinearGradient(
                 colors: [Color.dsSky.opacity(0.22), Color.dsBackground],
@@ -250,13 +254,13 @@ struct CharacterSelectView: View {
                                 .id(character.id)
                                 .scrollTransition(.interactive, axis: .horizontal) { content, phase in
                                     content
-                                        .scaleEffect(phase.isIdentity ? 1 : 0.92)
+                                        .scaleEffect(shouldReduceMotion || phase.isIdentity ? 1 : 0.92)
                                         .rotation3DEffect(
-                                            .degrees(Double(phase.value) * -9),
+                                            .degrees(shouldReduceMotion ? 0 : Double(phase.value) * -9),
                                             axis: (x: 0, y: 1, z: 0),
                                             perspective: 0.65
                                         )
-                                        .opacity(phase.isIdentity ? 1 : 0.74)
+                                        .opacity(shouldReduceMotion || phase.isIdentity ? 1 : 0.74)
                                 }
                         }
                     }
@@ -271,7 +275,7 @@ struct CharacterSelectView: View {
                         Circle()
                             .fill(selectedID == character.id ? Color.dsSky : Color.dsBorder)
                             .frame(width: selectedID == character.id ? 18 : 7, height: 7)
-                            .animation(DSAnimation.bouncy, value: selectedID)
+                            .animation(reduceMotion ? nil : DSAnimation.bouncy, value: selectedID)
                     }
                 }
 
@@ -351,8 +355,8 @@ struct CharacterSelectView: View {
                 .stroke(.white.opacity(0.78), lineWidth: 7)
         }
         .shadow(color: palette.silhouetteNear.opacity(0.35), radius: 18, y: 12)
-        .scaleEffect(isConfirming && selectedID == character.id ? 1.04 : 1)
-        .animation(DSAnimation.pop, value: isConfirming)
+        .scaleEffect(!reduceMotion && isConfirming && selectedID == character.id ? 1.04 : 1)
+        .animation(reduceMotion ? nil : DSAnimation.pop, value: isConfirming)
         .padding(.vertical, 18)
     }
 
@@ -361,7 +365,7 @@ struct CharacterSelectView: View {
         isConfirming = true
         celebrationTrigger += 1
         Task {
-            try? await Task.sleep(for: .milliseconds(600))
+            try? await Task.sleep(for: .milliseconds(reduceMotion ? 150 : 600))
             onSelect(character)
         }
     }

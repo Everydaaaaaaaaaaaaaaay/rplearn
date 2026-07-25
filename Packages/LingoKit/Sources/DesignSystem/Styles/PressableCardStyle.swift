@@ -8,7 +8,6 @@ public struct PressableCardStyle: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.97 : 1)
             .opacity(configuration.isPressed ? 0.86 : 1)
             .animation(DSAnimation.press, value: configuration.isPressed)
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.55), trigger: configuration.isPressed)
     }
 }
 

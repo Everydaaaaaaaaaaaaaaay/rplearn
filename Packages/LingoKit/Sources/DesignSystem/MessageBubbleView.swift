@@ -45,22 +45,34 @@ public struct MessageBubble<Content: View>: View {
 
 /// 「正在输入」三点动画。
 public struct TypingIndicator: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     public init() {}
 
     public var body: some View {
-        PhaseAnimator([0, 1, 2]) { phase in
-            HStack(spacing: 5) {
-                ForEach(0..<3, id: \.self) { index in
-                    Circle()
-                        .fill(.secondary)
-                        .frame(width: 7, height: 7)
-                        .opacity(phase == index ? 1 : 0.35)
+        Group {
+            if reduceMotion {
+                dots(activeIndex: nil)
+            } else {
+                PhaseAnimator([0, 1, 2]) { phase in
+                    dots(activeIndex: phase)
+                } animation: { _ in
+                    .easeInOut(duration: 0.3)
                 }
             }
-        } animation: { _ in
-            .easeInOut(duration: 0.3)
         }
         .accessibilityLabel("对方正在输入")
+    }
+
+    private func dots(activeIndex: Int?) -> some View {
+        HStack(spacing: 5) {
+            ForEach(0..<3, id: \.self) { index in
+                Circle()
+                    .fill(.secondary)
+                    .frame(width: 7, height: 7)
+                    .opacity(activeIndex == nil || activeIndex == index ? 1 : 0.35)
+            }
+        }
     }
 }
 

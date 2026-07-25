@@ -23,6 +23,7 @@ public struct ChatView: View {
     @State private var quizCelebrationTrigger = 0
     @State private var shakingMessageID: UUID?
     @State private var shakePhase = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
@@ -250,7 +251,6 @@ public struct ChatView: View {
                     .frame(width: 18, height: 18)
                     .background(Color.dsCoach, in: Circle())
                     .overlay(Circle().stroke(.background, lineWidth: 2))
-                    .symbolEffect(.pulse, options: .repeating)
             }
             .offset(x: 42, y: -3)
             .accessibilityLabel("查看改进建议")
@@ -400,7 +400,7 @@ public struct ChatView: View {
                 await viewModel.answerQuiz(message: message, chosenIndex: index)
                 if index == quiz.answer {
                     quizCelebrationTrigger += 1
-                } else {
+                } else if !reduceMotion {
                     shakingMessageID = message.id
                     withAnimation(.linear(duration: 0.07).repeatCount(5, autoreverses: true)) {
                         shakePhase.toggle()
