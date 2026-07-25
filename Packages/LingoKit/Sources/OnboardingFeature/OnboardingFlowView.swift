@@ -138,6 +138,9 @@ struct ChatStoryView: View {
         .onTapGesture {
             advanceOrFinish()
         }
+        .accessibilityAction(named: player.isFinished ? "查看伙伴资料" : "继续") {
+            advanceOrFinish()
+        }
     }
 
     private var header: some View {

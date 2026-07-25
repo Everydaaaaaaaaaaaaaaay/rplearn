@@ -74,6 +74,9 @@ public struct AVGStoryView: View {
         .onTapGesture {
             handleTap()
         }
+        .accessibilityAction(named: player?.isFinished == true ? "退出本章" : "继续") {
+            handleTap()
+        }
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -219,7 +222,7 @@ public struct AVGStoryView: View {
             }
         }
         .padding(14)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .dsMaterial(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
     }

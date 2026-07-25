@@ -44,6 +44,14 @@ struct VoiceInputBar: View {
             .scaleEffect(isRecording ? 0.985 : 1)
             .animation(DSAnimation.gentle, value: isRecording)
             .animation(DSAnimation.gentle, value: inCancelZone)
+            .accessibilityLabel("语音输入")
+            .accessibilityValue(labelText)
+            .accessibilityHint(isRecording ? "双击发送录音" : "双击开始录音")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityAction { toggleAccessibleRecording() }
+            .accessibilityAction(named: "取消录音") {
+                Task { await recorder.cancelRecording() }
+            }
     }
 
     private var labelText: String {
@@ -107,6 +115,19 @@ struct VoiceInputBar: View {
         )
     }
 
+    private func toggleAccessibleRecording() {
+        if isRecording {
+            Task {
+                if let capture = await recorder.finishRecording() {
+                    onSend(capture)
+                }
+            }
+        } else {
+            startTask?.cancel()
+            startTask = Task { await recorder.startRecording() }
+        }
+    }
+
     private var levelBars: some View {
         HStack(spacing: 3) {
             ForEach(0..<12, id: \.self) { index in
@@ -137,19 +158,15 @@ struct VoiceBubbleContent: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 8) {
-                Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                    .font(.title3)
-                waveform
-                Text("\(Int(message.duration.rounded()))″")
-                    .font(.subheadline.monospacedDigit())
-            }
-            .foregroundStyle(textColor ?? .primary)
-            .contentShape(Rectangle())
-            .onTapGesture {
-                if message.hasAudio {
-                    onTogglePlay()
+            if message.hasAudio {
+                Button(action: onTogglePlay) {
+                    playbackRow
                 }
+                .buttonStyle(.plain)
+                .accessibilityLabel(isPlaying ? "暂停语音消息" : "播放语音消息")
+                .accessibilityValue("\(Int(message.duration.rounded())) 秒")
+            } else {
+                playbackRow
             }
             if showTranscript {
                 Text(message.transcript)
@@ -157,6 +174,18 @@ struct VoiceBubbleContent: View {
                     .foregroundStyle((textColor ?? .primary).opacity(0.85))
             }
         }
+    }
+
+    private var playbackRow: some View {
+        HStack(spacing: 8) {
+            Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                .font(.title3)
+            waveform
+            Text("\(Int(message.duration.rounded()))″")
+                .font(.subheadline.monospacedDigit())
+        }
+        .foregroundStyle(textColor ?? .primary)
+        .contentShape(Rectangle())
     }
 
     private var waveform: some View {

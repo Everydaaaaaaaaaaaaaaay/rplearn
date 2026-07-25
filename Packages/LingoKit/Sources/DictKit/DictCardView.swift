@@ -14,6 +14,7 @@ public struct DictCardView: View {
     private let grammar: GrammarPointStore
     private let onSpeak: (@MainActor (String) -> Void)?
     private let aiFallback: (@Sendable (String) async -> String?)?
+    private let onDismiss: (@MainActor () -> Void)?
 
     @State private var path: [DictTarget]
     @State private var entry: DictEntry?
@@ -21,19 +22,22 @@ public struct DictCardView: View {
     @State private var isLoading = true
     @State private var aiExplanation: String?
     @State private var isLoadingAI = false
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     public init(
         target: DictTarget,
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
-        aiFallback: (@Sendable (String) async -> String?)? = nil
+        aiFallback: (@Sendable (String) async -> String?)? = nil,
+        onDismiss: (@MainActor () -> Void)? = nil
     ) {
         _path = State(initialValue: [target])
         self.dictionary = dictionary
         self.grammar = grammar
         self.onSpeak = onSpeak
         self.aiFallback = aiFallback
+        self.onDismiss = onDismiss
     }
 
     private var currentTarget: DictTarget? { path.last }
@@ -53,7 +57,12 @@ public struct DictCardView: View {
         .frame(width: 320)
         .frame(maxHeight: 380)
         .fixedSize(horizontal: false, vertical: true)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
+        .background(
+            reduceTransparency
+                ? AnyShapeStyle(Color.dsSurface)
+                : AnyShapeStyle(.regularMaterial),
+            in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
+        )
         .overlay {
             RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
                 .stroke(Color.dsBorder, lineWidth: 1)
@@ -101,6 +110,14 @@ public struct DictCardView: View {
                 EmptyView()
             }
             Spacer(minLength: 0)
+            if let onDismiss {
+                Button(action: onDismiss) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.borderless)
+                .accessibilityLabel("关闭释义")
+            }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)

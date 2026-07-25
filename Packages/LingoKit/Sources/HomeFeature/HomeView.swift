@@ -114,7 +114,10 @@ public struct HomeView: View {
                 }
             }
             .padding(DSSpacing.sm)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
+            .dsMaterial(
+                .ultraThinMaterial,
+                in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
+            )
             .overlay {
                 RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
                     .stroke(.white.opacity(0.25), lineWidth: 1)

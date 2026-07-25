@@ -564,6 +564,6 @@ public struct ChatView: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .background(.ultraThinMaterial)
+        .dsMaterial(.ultraThinMaterial, in: Rectangle())
     }
 }

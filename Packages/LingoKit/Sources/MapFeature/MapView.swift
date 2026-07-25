@@ -186,7 +186,7 @@ public struct MapView: View {
                         .foregroundStyle(Color.dsSunset)
                         .padding(.horizontal, 11)
                         .padding(.vertical, 9)
-                        .background(.ultraThinMaterial, in: Capsule())
+                        .dsMaterial(.ultraThinMaterial, in: Capsule())
                 }
                 Spacer()
                 Button {
@@ -195,7 +195,7 @@ public struct MapView: View {
                     Image(systemName: isOverview ? "location.fill" : "globe.americas.fill")
                         .font(.title3)
                         .frame(width: 42, height: 42)
-                        .background(.ultraThinMaterial, in: Circle())
+                        .dsMaterial(.ultraThinMaterial, in: Circle())
                         .overlay { Circle().stroke(Color.dsBorder, lineWidth: 1) }
                 }
                 .accessibilityLabel(isOverview ? "聚焦当前城市" : "查看地球")
@@ -345,7 +345,7 @@ struct CityPinView: View {
                 .foregroundStyle(.primary)
                 .padding(.horizontal, 7)
                 .padding(.vertical, 3)
-                .background(.regularMaterial, in: Capsule())
+                .dsMaterial(.regularMaterial, in: Capsule())
         }
         .scaleEffect(isSelected ? 1.08 : 1)
         .task {

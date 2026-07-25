@@ -10,6 +10,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
     let grammar: GrammarPointStore
     let onSpeak: (@MainActor (String) -> Void)?
     let aiFallback: (@Sendable (String) async -> String?)?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public func body(content: Content) -> some View {
         content
@@ -26,12 +27,14 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 .onTapGesture {
                                     self.selection = nil
                                 }
+                                .accessibilityHidden(true)
                             DictCardView(
                                 target: .word(selection.word),
                                 dictionary: dictionary,
                                 grammar: grammar,
                                 onSpeak: onSpeak,
-                                aiFallback: aiFallback
+                                aiFallback: aiFallback,
+                                onDismiss: { self.selection = nil }
                             )
                             .id(selection)
                             .position(
@@ -39,12 +42,17 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 y: showBelow ? wordRect.maxY + 8 + 190 : max(198, wordRect.minY - 8 - 190)
                             )
                         }
-                        .transition(.scale(scale: 0.94, anchor: .center).combined(with: .opacity))
+                        .transition(
+                            reduceMotion
+                                ? .opacity
+                                : .scale(scale: 0.96, anchor: showBelow ? .top : .bottom)
+                                    .combined(with: .opacity)
+                        )
                     }
                     .ignoresSafeArea(.keyboard)
                 }
             }
-            .animation(DSAnimation.bouncy, value: selection)
+            .animation(reduceMotion ? .easeOut(duration: 0.15) : DSAnimation.snappy, value: selection)
     }
 }
 

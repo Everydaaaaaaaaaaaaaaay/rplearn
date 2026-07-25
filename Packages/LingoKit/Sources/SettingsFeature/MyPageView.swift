@@ -21,6 +21,7 @@ public struct MyPageView: View {
     @State private var occupiedFriendSlots = 0
     @State private var showsTierPicker = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(
         settings: LLMSettingsStore,
@@ -72,27 +73,56 @@ public struct MyPageView: View {
     }
 
     private var profileCard: some View {
-        HStack(spacing: DSSpacing.md) {
-            AvatarBadge(name: displayName, tint: .dsSky, size: 68)
-            VStack(alignment: .leading, spacing: 5) {
-                Text(displayName)
-                    .font(.title2.bold())
-                if let tier = profile?.subscriptionTier {
-                    DSChip(tier.displayName, tint: tier == .free ? .secondary : .dsSky, prominent: tier != .free)
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                    HStack(spacing: DSSpacing.sm) {
+                        AvatarBadge(name: displayName, tint: .dsSky, size: 60)
+                        Text(displayName)
+                            .font(.title2.bold())
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    if let tier = profile?.subscriptionTier {
+                        DSChip(
+                            tier.displayName,
+                            tint: tier == .free ? .secondary : .dsSky,
+                            prominent: tier != .free
+                        )
+                    }
+                    Label("已认识 \(occupiedFriendSlots) 位旅途朋友", systemImage: "person.2.fill")
+                        .foregroundStyle(.secondary)
+                    Label("\(profile?.coins ?? 0) 金币", systemImage: "circle.grid.2x1.fill")
+                        .foregroundStyle(Color.dsSunset)
+                        .monospacedDigit()
                 }
-                Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-            VStack(spacing: 4) {
-                Image(systemName: "circle.grid.2x1.fill")
-                    .foregroundStyle(Color.dsSunset)
-                Text("\(profile?.coins ?? 0)")
-                    .font(.title3.bold().monospacedDigit())
-                Text("金币")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+            } else {
+                HStack(spacing: DSSpacing.md) {
+                    AvatarBadge(name: displayName, tint: .dsSky, size: 68)
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(displayName)
+                            .font(.title2.bold())
+                        if let tier = profile?.subscriptionTier {
+                            DSChip(
+                                tier.displayName,
+                                tint: tier == .free ? .secondary : .dsSky,
+                                prominent: tier != .free
+                            )
+                        }
+                        Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    VStack(spacing: 4) {
+                        Image(systemName: "circle.grid.2x1.fill")
+                            .foregroundStyle(Color.dsSunset)
+                        Text("\(profile?.coins ?? 0)")
+                            .font(.title3.bold().monospacedDigit())
+                        Text("金币")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
             }
         }
         .dsCard()
@@ -100,18 +130,7 @@ public struct MyPageView: View {
 
     private var subscriptionCard: some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("LingoTrip \(profile?.subscriptionTier.displayName ?? "免费版")")
-                        .font(.title3.bold())
-                    Text("更长的角色记忆，让每段友谊都有延续")
-                        .font(.footnote)
-                        .opacity(0.86)
-                }
-                Spacer()
-                Image(systemName: "sparkles.rectangle.stack.fill")
-                    .font(.largeTitle)
-            }
+            subscriptionHeader
 
             Button {
                 withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
@@ -147,6 +166,34 @@ public struct MyPageView: View {
             in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
         )
         .shadow(color: Color.dsSky.opacity(0.24), radius: 12, y: 5)
+    }
+
+    @ViewBuilder
+    private var subscriptionHeader: some View {
+        if dynamicTypeSize.isAccessibilitySize {
+            VStack(alignment: .leading, spacing: DSSpacing.xs) {
+                Image(systemName: "sparkles.rectangle.stack.fill")
+                    .font(.title)
+                Text("LingoTrip \(profile?.subscriptionTier.displayName ?? "免费版")")
+                    .font(.headline.bold())
+                Text("更长的角色记忆，让每段友谊都有延续")
+                    .font(.body)
+                    .opacity(0.86)
+            }
+        } else {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("LingoTrip \(profile?.subscriptionTier.displayName ?? "免费版")")
+                        .font(.title3.bold())
+                    Text("更长的角色记忆，让每段友谊都有延续")
+                        .font(.footnote)
+                        .opacity(0.86)
+                }
+                Spacer()
+                Image(systemName: "sparkles.rectangle.stack.fill")
+                    .font(.largeTitle)
+            }
+        }
     }
 
     private var entryList: some View {

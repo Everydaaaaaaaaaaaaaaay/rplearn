@@ -63,14 +63,20 @@ public struct TappableText: View {
         let isKeyword = token.word.map { keywords.contains($0) } ?? false
 
         if let word = token.word {
-            Text(token.display)
-                .underline(isKeyword, pattern: .dot)
-                .foregroundStyle(textColor ?? .primary)
-                .background(isSelected ? Color.yellow.opacity(0.35) : .clear, in: RoundedRectangle(cornerRadius: 4))
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    onSelect(TokenSelection(contextID: contextID, tokenID: token.id, word: word))
-                }
+            Button {
+                onSelect(TokenSelection(contextID: contextID, tokenID: token.id, word: word))
+            } label: {
+                Text(token.display)
+                    .underline(isKeyword, pattern: .dot)
+                    .foregroundStyle(textColor ?? .primary)
+                    .background(
+                        isSelected ? Color.yellow.opacity(0.35) : .clear,
+                        in: RoundedRectangle(cornerRadius: 4)
+                    )
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("查看释义")
                 .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
                     isSelected ? anchor : nil
                 }

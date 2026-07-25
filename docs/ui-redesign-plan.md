@@ -60,13 +60,14 @@ LingoTrip 是 SwiftUI 原生 iOS 语言学习 app（M0–M2 功能全落地，�
 ```
 DesignSystem/
 ├── Tokens/     DSColor · DSLayout(Radius/Spacing) · DSAnimation · DSTypography · DSScenePalette
-├── Styles/     DuoButtonStyle · PressableCardStyle · DSCard(.dsCard())
+├── Styles/     DuoButtonStyle · PressableCardStyle · DSCard(.dsCard()) · DSMaterial(.dsMaterial())
 ├── Components/ AvatarBadge · DSChip · CalloutCard · CelebrationBurst · TabBarVisibility
 └── 现有：MessageBubbleView（内部 token 化，签名不变）· TappableText · FlowLayout · Haptics
 ```
 
 - **`DuoButtonStyle`**（多邻国 3D 按钮）：variant `primary`/`success`/`tinted(Color)`/`outline`，`fullWidth`/`compact`；双层 RoundedRectangle，底边 4pt，按下面层 offset(y:4) 吃掉底边 + `Haptics.impact(.light)`；便捷入口 `.duoPrimary`/`.duo(...)`。
 - **`PressableCardStyle`**：scale 0.97 + opacity；**`.dsCard(padding:radius:)`**：dsSurface 底 + 浅色投影/深色描边。
+- **`.dsMaterial(_:in:)`**：系统材质背景；开启 Reduce Transparency 时自动降级为不透明 `dsSurface`。
 - **`AvatarBadge(name:tint:size:)`**：36/46/56/88pt；tint nil 时按 name 哈希 6 色盘稳定取色；Circle tint.opacity(0.15) + 首字母 rounded bold。
 - **`DSChip(_:tint:prominent:)`**：Capsule caption2，tint.opacity(0.12) 底；prominent 实底白字。
 - **`CalloutCard(kind:maxWidth:trailing:content:)`**：kind 预设 `.coach`/`.speech`/`.quiz`（tint+icon+title），统一骨架（标题行+trailing 槽+content）。

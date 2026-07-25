@@ -84,7 +84,7 @@ App（组合根 AppEnvironment / RootView）
 ```
 
 - 深层页面用 `.dsTabBarHidden()` 映射到系统 `.toolbar(.hidden, for: .tabBar)`；返回时由系统自动恢复。
-- 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。
+- 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。透明材质统一用 `.dsMaterial(_:in:)`，开启“降低透明度”时会自动降级为不透明 surface。
 - 首页背景优先加载 `city_backdrop_<regionID>` 资产；当前无素材时 `CityBackdropView` 以多层城市剪影和云动画兜底。后续投图只需按此命名加入 Assets，无需改页面代码。
 - `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。
 - 会话已读/置顶用 UserDefaults 轻量状态，不改 SwiftData schema；聊天页进入即标记已读。
