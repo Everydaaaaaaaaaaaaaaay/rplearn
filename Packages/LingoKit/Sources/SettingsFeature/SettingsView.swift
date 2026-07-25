@@ -19,6 +19,7 @@ public struct SettingsView: View {
     private let router: LLMRouter
     private let economyStore: EconomyStore
     private let economyService: EconomyService
+    private let profileCommands: any ProfileCommandGateway
     private let memoryStore: MemoryStore
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
@@ -34,6 +35,7 @@ public struct SettingsView: View {
         router: LLMRouter,
         economyStore: EconomyStore,
         economyService: EconomyService,
+        profileCommands: any ProfileCommandGateway,
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
         chatStore: ChatStore,
@@ -43,6 +45,7 @@ public struct SettingsView: View {
         self.router = router
         self.economyStore = economyStore
         self.economyService = economyService
+        self.profileCommands = profileCommands
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.chatStore = chatStore
@@ -257,7 +260,9 @@ public struct SettingsView: View {
             get: { profile?.quizGloballyEnabled ?? true },
             set: { newValue in
                 Task {
-                    profile = try? await economyStore.updateProfile { $0.quizGloballyEnabled = newValue }
+                    profile = try? await profileCommands.updateProfile {
+                        $0.quizGloballyEnabled = newValue
+                    }
                 }
             }
         )

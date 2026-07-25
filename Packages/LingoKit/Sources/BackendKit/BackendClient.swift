@@ -141,12 +141,14 @@ public actor BackendClient {
     }
 
     public func get<Response: Decodable & Sendable>(
-        _ path: String
+        _ path: String,
+        queryItems: [URLQueryItem] = []
     ) async throws -> Response {
         try await request(
             path: path,
             method: "GET",
             body: nil,
+            queryItems: queryItems,
             authenticated: true,
             retryAfterUnauthorized: true
         )
@@ -163,6 +165,7 @@ public actor BackendClient {
             path: path,
             method: method,
             body: try encoder.encode(body),
+            queryItems: [],
             authenticated: authenticated,
             idempotencyKey: idempotencyKey,
             retryAfterUnauthorized: authenticated
@@ -180,6 +183,7 @@ public actor BackendClient {
             path: path,
             method: method,
             body: try encoder.encode(body),
+            queryItems: [],
             authenticated: authenticated,
             idempotencyKey: idempotencyKey,
             retryAfterUnauthorized: authenticated
@@ -190,6 +194,7 @@ public actor BackendClient {
         path: String,
         method: String,
         body: Data?,
+        queryItems: [URLQueryItem],
         authenticated: Bool,
         idempotencyKey: UUID? = nil,
         retryAfterUnauthorized: Bool
@@ -198,6 +203,7 @@ public actor BackendClient {
             path: path,
             method: method,
             body: body,
+            queryItems: queryItems,
             authenticated: authenticated,
             idempotencyKey: idempotencyKey,
             retryAfterUnauthorized: retryAfterUnauthorized
@@ -213,6 +219,7 @@ public actor BackendClient {
         path: String,
         method: String,
         body: Data?,
+        queryItems: [URLQueryItem],
         authenticated: Bool,
         idempotencyKey: UUID?,
         retryAfterUnauthorized: Bool
@@ -220,8 +227,16 @@ public actor BackendClient {
         guard path.hasPrefix("/v1/") else {
             throw BackendClientError.invalidResponse
         }
+        let endpoint = configuration.baseURL.appendingPathComponent(String(path.dropFirst()))
+        guard var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false) else {
+            throw BackendClientError.invalidResponse
+        }
+        components.queryItems = queryItems.isEmpty ? nil : queryItems
+        guard let url = components.url else {
+            throw BackendClientError.invalidResponse
+        }
         var request = URLRequest(
-            url: configuration.baseURL.appendingPathComponent(String(path.dropFirst())),
+            url: url,
             timeoutInterval: configuration.requestTimeout
         )
         request.httpMethod = method
@@ -253,6 +268,7 @@ public actor BackendClient {
                 path: path,
                 method: method,
                 body: body,
+                queryItems: queryItems,
                 authenticated: true,
                 idempotencyKey: idempotencyKey,
                 retryAfterUnauthorized: false

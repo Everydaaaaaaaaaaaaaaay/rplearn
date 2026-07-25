@@ -320,7 +320,7 @@ public final class ChatViewModel {
         )
         if chosenIndex == quiz.answer {
             Haptics.notify(.success)
-            _ = try? await deps.economyStore.addCoins(QuizService.correctReward)
+            // 只有服务端签发的题目挑战才能产生资产奖励；本地题目只记录学习结果。
         } else {
             Haptics.notify(.error)
         }
@@ -393,9 +393,9 @@ public final class ChatViewModel {
         guard character.isMainCharacter else { return }
         guard let conversation = try? await deps.chatStore.conversation(id: conversationID),
               conversation.turnCount >= 3 else { return }
-        guard (try? await deps.itemStore.hasTicket(source: .story)) == false else { return }
+        guard (try? await deps.itemStore.hasTicket(source: .quest)) == false else { return }
         do {
-            _ = try await deps.itemStore.addTicket(type: .ticketUniversal, source: .story)
+            guard try await deps.progression.claimStarterTicket() else { return }
             _ = try await deps.chatStore.appendMessage(
                 conversationID: conversationID,
                 role: .coach,

@@ -27,6 +27,12 @@ struct RootView: View {
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .home
     @State private var showVoiceUpgrade = false
+    @State private var activeUserID: UUID?
+    @State private var activationAttempt = 0
+    @State private var activationError: String?
+    @State private var usingOfflineCache = false
+    @State private var stateRevision = 0
+    @Environment(\.scenePhase) private var scenePhase
 
     init(environment: AppEnvironment) {
         self.environment = environment
@@ -60,14 +66,89 @@ struct RootView: View {
                     .background(Color.dsBackground)
             case .signedOut:
                 SignInView(session: environment.authSession)
-            case .signedIn:
-                authenticatedContent
+            case .signedIn(let identity):
+                if activeUserID == identity.userID {
+                    authenticatedContent
+                } else {
+                    userStateGate(identity)
+                }
+            }
+        }
+        .onChange(of: environment.authSession.phase) { _, phase in
+            if case .signedOut = phase {
+                activeUserID = nil
+                activationError = nil
+                usingOfflineCache = false
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            guard phase == .active, activeUserID != nil else { return }
+            Task {
+                do {
+                    try await environment.userState.synchronize()
+                    usingOfflineCache = false
+                    stateRevision += 1
+                } catch {
+                    if environment.authSession.handleAuthenticationFailure(error) {
+                        return
+                    }
+                    usingOfflineCache = true
+                }
+            }
+        }
+    }
+
+    private func userStateGate(_ identity: AuthIdentity) -> some View {
+        VStack(spacing: 16) {
+            if let activationError {
+                Image(systemName: "wifi.exclamationmark")
+                    .font(.largeTitle)
+                    .foregroundStyle(Color.dsSunset)
+                Text("无法载入旅程")
+                    .font(.headline)
+                Text(activationError)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                Button("重试") { activationAttempt += 1 }
+                    .buttonStyle(.duoPrimary)
+                    .frame(maxWidth: 240)
+            } else {
+                ProgressView("正在同步旅程…")
+            }
+        }
+        .padding(32)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.dsBackground)
+        .task(id: "\(identity.userID.uuidString)-\(activationAttempt)") {
+            activationError = nil
+            do {
+                let activation = try await environment.activateUser(identity)
+                usingOfflineCache = activation == .offlineCache
+                activeUserID = identity.userID
+            } catch {
+                if environment.authSession.handleAuthenticationFailure(error) {
+                    return
+                }
+                activationError = error.localizedDescription
             }
         }
     }
 
     private var authenticatedContent: some View {
         tabs
+            .id(stateRevision)
+            .safeAreaInset(edge: .top, spacing: 0) {
+                if usingOfflineCache {
+                    Label("离线模式 · 联网后将自动同步", systemImage: "wifi.slash")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color.dsSunset)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 7)
+                        .frame(maxWidth: .infinity)
+                        .background(.thinMaterial)
+                }
+            }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
                     deps: OnboardingDependencies(
@@ -185,6 +266,7 @@ struct RootView: View {
                 router: environment.llmRouter,
                 economyStore: environment.economyStore,
                 economyService: environment.economyService,
+                profileCommands: environment.userState,
                 memoryStore: environment.memoryStore,
                 rosterStore: environment.rosterStore,
                 chatStore: environment.chatStore,
@@ -238,15 +320,15 @@ struct RootView: View {
             audioSession: environment.audioSession,
             memoryStore: environment.memoryStore,
             itemStore: environment.itemStore,
-            economyStore: environment.economyStore
+            economyStore: environment.economyStore,
+            progression: environment.userState
         )
     }
 
     private var storyDeps: StoryDependencies {
         StoryDependencies(
             storyProgress: environment.storyProgressStore,
-            economyStore: environment.economyStore,
-            itemStore: environment.itemStore,
+            progression: environment.userState,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech

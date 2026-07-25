@@ -80,4 +80,23 @@ public final class AuthSession {
         phase = .signedOut
         lastError = nil
     }
+
+    /// 将后端明确拒绝的会话反映到根导航；普通网络错误不退出登录。
+    @discardableResult
+    public func handleAuthenticationFailure(_ error: Error) -> Bool {
+        guard let backendError = error as? BackendClientError else { return false }
+        let isAuthenticationFailure: Bool
+        switch backendError {
+        case .signedOut:
+            isAuthenticationFailure = true
+        case .api(_, _, _, let status):
+            isAuthenticationFailure = status == 401
+        case .invalidResponse, .transport:
+            isAuthenticationFailure = false
+        }
+        guard isAuthenticationFailure else { return false }
+        phase = .signedOut
+        lastError = backendError.localizedDescription
+        return true
+    }
 }

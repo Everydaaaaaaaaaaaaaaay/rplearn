@@ -12,6 +12,7 @@ public struct MyPageView: View {
     private let router: LLMRouter
     private let economyStore: EconomyStore
     private let economyService: EconomyService
+    private let profileCommands: any ProfileCommandGateway
     private let memoryStore: MemoryStore
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
@@ -30,6 +31,7 @@ public struct MyPageView: View {
         router: LLMRouter,
         economyStore: EconomyStore,
         economyService: EconomyService,
+        profileCommands: any ProfileCommandGateway,
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
         chatStore: ChatStore,
@@ -41,6 +43,7 @@ public struct MyPageView: View {
         self.router = router
         self.economyStore = economyStore
         self.economyService = economyService
+        self.profileCommands = profileCommands
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.chatStore = chatStore
@@ -215,6 +218,7 @@ public struct MyPageView: View {
                     router: router,
                     economyStore: economyStore,
                     economyService: economyService,
+                    profileCommands: profileCommands,
                     memoryStore: memoryStore,
                     rosterStore: rosterStore,
                     chatStore: chatStore,

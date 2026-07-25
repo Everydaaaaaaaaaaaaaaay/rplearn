@@ -1,6 +1,7 @@
 import CoreKit
 import DesignSystem
 import DictKit
+import DomainKit
 import PersistenceKit
 import SpeechKit
 import StoryEngine
@@ -9,23 +10,20 @@ import SwiftUI
 /// StoryFeature 依赖。
 public struct StoryDependencies: Sendable {
     public let storyProgress: StoryProgressStore
-    public let economyStore: EconomyStore
-    public let itemStore: ItemStore
+    public let progression: any ProgressionRewardGateway
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
 
     public init(
         storyProgress: StoryProgressStore,
-        economyStore: EconomyStore,
-        itemStore: ItemStore,
+        progression: any ProgressionRewardGateway,
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService
     ) {
         self.storyProgress = storyProgress
-        self.economyStore = economyStore
-        self.itemStore = itemStore
+        self.progression = progression
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
@@ -311,8 +309,7 @@ public struct AVGStoryView: View {
 
         let storyID = self.storyID
         let progressStore = deps.storyProgress
-        let economy = deps.economyStore
-        let items = deps.itemStore
+        let progression = deps.progression
 
         player.onStateChange = { nodeID, flags in
             Task {
@@ -320,22 +317,17 @@ public struct AVGStoryView: View {
             }
         }
         player.onReward = { reward in
-            Task {
-                if reward.coins > 0 {
-                    _ = try? await economy.addCoins(reward.coins)
-                }
-                if let ticket = reward.ticket {
-                    if ticket == "universal" {
-                        _ = try? await items.addTicket(type: .ticketUniversal, source: .story)
-                    } else {
-                        _ = try? await items.addTicket(type: .ticketCountry, countryCode: ticket, source: .story)
-                    }
-                }
-            }
+            // 客户端脚本只负责演出；奖励值由服务端白名单与账本决定。
+            _ = reward
         }
         player.onCompleted = { _ in
             Task {
-                try? await progressStore.markCompleted(storyID: storyID)
+                do {
+                    _ = try await progression.completeStory(storyID)
+                    try await progressStore.markCompleted(storyID: storyID)
+                } catch {
+                    Log.app.warning("剧情完成同步失败：\(error)")
+                }
             }
         }
 

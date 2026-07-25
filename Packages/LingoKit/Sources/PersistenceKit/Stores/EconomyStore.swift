@@ -56,6 +56,27 @@ public actor EconomyStore {
         try modelContext.save()
     }
 
+    /// 用服务器权威快照替换本地显示缓存。不能通过此入口增量修改资产。
+    public func replaceAuthoritativeProfile(_ profile: UserProfileDTO) throws {
+        let entity = try fetchOrCreateProfile()
+        entity.displayName = profile.displayName
+        entity.currentRegionID = profile.currentRegionID
+        entity.coins = profile.coins
+        entity.subscriptionTierRaw = profile.subscriptionTier.rawValue
+        entity.friendSlotLimit = profile.friendSlotLimit
+        entity.quizGloballyEnabled = profile.quizGloballyEnabled
+        entity.unlockedRegionIDs = profile.unlockedRegionIDs
+        entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
+        entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
+        try modelContext.save()
+    }
+
+    /// 切换到另一个账号前清除服务器权威状态缓存，防止跨账号短暂串读。
+    public func clearAuthoritativeCache() throws {
+        try modelContext.delete(model: UserProfileEntity.self)
+        try modelContext.save()
+    }
+
     // MARK: - 私有
 
     private func fetchOrCreateProfile() throws -> UserProfileEntity {

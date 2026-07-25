@@ -28,6 +28,33 @@ public actor TicketStubStore {
         return Self.dto(from: entity)
     }
 
+    /// 缓存服务端旅行事实；相同 travel ID 重试时保持幂等。
+    public func cacheServerTravel(
+        id: UUID,
+        fromRegionID: String,
+        toRegionID: String,
+        usedAt: Date
+    ) throws -> TicketStubDTO {
+        if let existing = try modelContext.fetch(
+            FetchDescriptor<TicketStubEntity>(
+                predicate: #Predicate { $0.stubID == id }
+            )
+        ).first {
+            return Self.dto(from: existing)
+        }
+        let entity = TicketStubEntity(
+            stubID: id,
+            fromRegionID: fromRegionID,
+            toRegionID: toRegionID,
+            usedAt: usedAt,
+            serialNumber: Self.serialNumber(for: id),
+            artSeed: Int(UInt(bitPattern: id.hashValue) % 6)
+        )
+        modelContext.insert(entity)
+        try modelContext.save()
+        return Self.dto(from: entity)
+    }
+
     /// 全部票根（新→旧）。
     public func all() throws -> [TicketStubDTO] {
         var descriptor = FetchDescriptor<TicketStubEntity>()
@@ -38,6 +65,11 @@ public actor TicketStubStore {
     static func makeSerialNumber() -> String {
         let digits = (0..<6).map { _ in String(Int.random(in: 0...9)) }.joined()
         return "LT-\(digits)"
+    }
+
+    private static func serialNumber(for id: UUID) -> String {
+        let compact = id.uuidString.replacingOccurrences(of: "-", with: "")
+        return "LT-\(compact.prefix(6).uppercased())"
     }
 
     static func dto(from entity: TicketStubEntity) -> TicketStubDTO {

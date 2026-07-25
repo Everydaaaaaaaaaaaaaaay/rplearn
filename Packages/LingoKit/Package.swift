@@ -33,6 +33,14 @@ let domainTargets: [Target] = [
         ]
     ),
     .target(name: "StoryEngine"),
+    .target(
+        name: "SyncKit",
+        dependencies: [
+            module("BackendKit"),
+            module("DomainKit"),
+            module("PersistenceKit"),
+        ]
+    ),
 ]
 
 func feature(_ name: String, dependencies: [Target.Dependency]) -> Target {
@@ -64,6 +72,7 @@ let featureTargets: [Target] = [
     ]),
     feature("StoryFeature", dependencies: [
         module("CoreKit"),
+        module("DomainKit"),
         module("StoryEngine"),
         module("PersistenceKit"),
         module("DictKit"),

@@ -92,5 +92,7 @@ public enum ItemSource: String, Sendable, Codable {
     case story
     case quest
     case purchase
+    case subscription
+    case support
     case debug
 }

@@ -46,11 +46,18 @@ public struct EconomyService: Sendable {
     private let economyStore: EconomyStore
     private let itemStore: ItemStore
     private let gateway: any PurchaseGateway
+    private let ticketPurchaseGateway: (any TicketPurchaseGateway)?
 
-    public init(economyStore: EconomyStore, itemStore: ItemStore, gateway: any PurchaseGateway = LocalPurchaseGateway()) {
+    public init(
+        economyStore: EconomyStore,
+        itemStore: ItemStore,
+        gateway: any PurchaseGateway = LocalPurchaseGateway(),
+        ticketPurchaseGateway: (any TicketPurchaseGateway)? = nil
+    ) {
         self.economyStore = economyStore
         self.itemStore = itemStore
         self.gateway = gateway
+        self.ticketPurchaseGateway = ticketPurchaseGateway
     }
 
     // MARK: - 订阅
@@ -75,6 +82,12 @@ public struct EconomyService: Sendable {
     /// 金币购买机票：先扣款后发券。
     @discardableResult
     public func buyTicket(type: ItemType, countryCode: String? = nil) async throws -> ItemDTO {
+        if let ticketPurchaseGateway {
+            return try await ticketPurchaseGateway.purchaseTicket(
+                type: type,
+                countryCode: countryCode
+            )
+        }
         let price = type == .ticketUniversal ? Price.universalTicket : Price.countryTicket
         _ = try await economyStore.spendCoins(price)
         do {

@@ -21,6 +21,14 @@ extension BackendClientError: LocalizedError {
             case "INVALID_CREDENTIALS": "邮箱或密码不正确。"
             case "ACCOUNT_UNAVAILABLE": "这个账号目前不可用。"
             case "REFRESH_TOKEN_REUSE_DETECTED": "会话存在安全风险，请重新登录。"
+            case "INSUFFICIENT_COINS": "金币不足。"
+            case "TICKET_REQUIRED": "首次前往需要一张可用机票。"
+            case "TICKET_NOT_USABLE": "这张机票不能用于解锁该城市。"
+            case "ALREADY_IN_REGION": "你已经在这里了。"
+            case "REGION_NOT_FOUND": "这个目的地目前不可用。"
+            case "PROFILE_VERSION_CONFLICT": "资料已在另一台设备更新，正在重新同步。"
+            case "ONBOARDING_REQUIRED": "请先完成初次旅程。"
+            case "STORY_NOT_FOUND": "这个剧情目前不可用。"
             default: message
             }
         case .invalidResponse:

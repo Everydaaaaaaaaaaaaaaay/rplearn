@@ -1,0 +1,207 @@
+import BackendKit
+import Foundation
+import PersistenceKit
+import Testing
+@testable import SyncKit
+
+@Suite("Backend user state coordinator")
+struct BackendUserStateCoordinatorTests {
+    private final class MemoryCredentials: AuthCredentialStore, @unchecked Sendable {
+        private let credential: StoredAuthCredential
+
+        init(userID: UUID) {
+            credential = StoredAuthCredential(
+                refreshToken: "refresh",
+                refreshTokenExpiresAt: Date(timeIntervalSince1970: 1_893_456_000),
+                sessionID: UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456789")!,
+                userID: userID
+            )
+        }
+
+        func load() throws -> StoredAuthCredential? { credential }
+        func remove() throws {}
+        func save(_ credential: StoredAuthCredential) throws {}
+    }
+
+    private actor StateTransport: BackendTransport {
+        private var coins = 500
+        private var currentRegion = "london"
+        private var difficulty = "junior1"
+        private var hasCompletedOnboarding = false
+        private var tickets: [UUID] = []
+        private var ticketSource = "purchase"
+        private var version = 1
+        private(set) var mutationHeaders: [String?] = []
+
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            switch (request.httpMethod, request.url?.path) {
+            case ("POST", "/v1/auth/refresh"):
+                return json(
+                    """
+                    {
+                      "accessToken":"access",
+                      "accessTokenExpiresIn":900,
+                      "refreshToken":"rotated",
+                      "refreshTokenExpiresAt":"2030-01-01T00:00:00.000Z",
+                      "sessionId":"019c0123-4567-789a-8bcd-ef0123456789",
+                      "tokenType":"Bearer",
+                      "userId":"019c0123-4567-789a-8bcd-ef0123456790"
+                    }
+                    """
+                )
+            case ("GET", "/v1/sync/snapshot"):
+                return json(snapshotJSON())
+            case ("PATCH", "/v1/me"):
+                mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                hasCompletedOnboarding = true
+                version += 1
+                return json(profileJSON())
+            case ("POST", "/v1/economy/tickets/purchase"):
+                mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                let ticket = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456791")!
+                tickets = [ticket]
+                ticketSource = "purchase"
+                coins = 0
+                version += 1
+                return json(#"{"coins":0,"ticket":\#(ticketJSON(ticket))}"#)
+            case ("POST", "/v1/travel"):
+                mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                currentRegion = "newyork"
+                tickets = []
+                version += 1
+                return json(
+                    """
+                    {
+                      "consumedTicketId":"019c0123-4567-789a-8bcd-ef0123456791",
+                      "fromRegionId":"london",
+                      "profileVersion":\(version),
+                      "toRegionId":"newyork",
+                      "travelId":"019c0123-4567-789a-8bcd-ef0123456792",
+                      "traveledAt":"2026-07-26T00:00:00.000Z",
+                      "unlockedNow":true
+                    }
+                    """
+                )
+            case ("POST", "/v1/progression/starter-ticket"):
+                mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                let ticket = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456793")!
+                tickets = [ticket]
+                ticketSource = "quest"
+                return json(ticketJSON(ticket, source: "quest"))
+            case ("POST", "/v1/progression/stories/mainline_london/complete"):
+                mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                coins += 100
+                version += 1
+                return json(
+                    #"{"coins":\#(coins),"rewardCoins":100,"storyId":"mainline_london"}"#
+                )
+            default:
+                return json(
+                    #"{"code":"NOT_FOUND","message":"not found","requestId":"request"}"#,
+                    status: 404
+                )
+            }
+        }
+
+        private func snapshotJSON() -> String {
+            let ticketValues = tickets
+                .map { ticketJSON($0, source: ticketSource) }
+                .joined(separator: ",")
+            return #"{"cursor":"cursor","state":{"profile":\#(profileJSON()),"tickets":[\#(ticketValues)]}}"#
+        }
+
+        private func profileJSON() -> String {
+            """
+            {
+              "coins":\(coins),
+              "currentRegionId":"\(currentRegion)",
+              "difficulty":"\(difficulty)",
+              "displayName":"旅行者",
+              "experiencePoints":0,
+              "friendSlotLimit":3,
+              "gameLevel":1,
+              "hasCompletedOnboarding":\(hasCompletedOnboarding),
+              "quizGloballyEnabled":true,
+              "unlockedRegionIds":["london"\(currentRegion == "newyork" ? ",\"newyork\"" : "")],
+              "updatedAt":"2026-07-26T00:00:00.000Z",
+              "version":\(version)
+            }
+            """
+        }
+
+        private func ticketJSON(_ id: UUID, source: String = "purchase") -> String {
+            """
+            {
+              "countryCode":null,
+              "createdAt":"2026-07-26T00:00:00.000Z",
+              "id":"\(id.uuidString.lowercased())",
+              "source":"\(source)",
+              "type":"universal"
+            }
+            """
+        }
+
+        private func json(
+            _ string: String,
+            status: Int = 200
+        ) -> BackendTransportResponse {
+            BackendTransportResponse(
+                data: Data(string.utf8),
+                headers: [:],
+                statusCode: status
+            )
+        }
+    }
+
+    @Test("server snapshots and commands replace local authority caches")
+    func commandAndSnapshotFlow() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = StateTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: transport
+        )
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let accountCache = AccountCacheStore(modelContainer: container)
+        let economy = EconomyStore(modelContainer: container)
+        let items = ItemStore(modelContainer: container)
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: accountCache,
+            economyCache: economy,
+            itemCache: items,
+            defaults: defaults
+        )
+
+        #expect(try await coordinator.activate(userID: userID) == .synchronized)
+        #expect(try await economy.profile().coins == 500)
+
+        let ticket = try await coordinator.purchaseTicket(
+            type: .ticketUniversal,
+            countryCode: nil
+        )
+        #expect(ticket.source == .purchase)
+        #expect(try await economy.profile().coins == 0)
+        #expect(try await items.unconsumedTickets().count == 1)
+
+        _ = try await coordinator.travel(targetRegionID: "newyork", ticketID: ticket.id)
+        #expect(try await economy.profile().currentRegionID == "newyork")
+        #expect(try await items.unconsumedTickets().isEmpty)
+
+        let updated = try await coordinator.updateProfile {
+            $0.hasCompletedOnboarding = true
+        }
+        #expect(updated.hasCompletedOnboarding)
+
+        #expect(try await coordinator.claimStarterTicket())
+        #expect(try await items.unconsumedTickets().first?.source == .quest)
+        #expect(try await coordinator.completeStory("mainline_london"))
+        #expect(try await economy.profile().coins == 100)
+        let headers = await transport.mutationHeaders
+        #expect(headers.count == 5)
+        #expect(headers.allSatisfy { $0?.isEmpty == false })
+    }
+}

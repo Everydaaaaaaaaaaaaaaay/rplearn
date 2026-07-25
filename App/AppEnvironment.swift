@@ -7,6 +7,7 @@ import LLMKit
 import PersistenceKit
 import SpeechKit
 import SwiftData
+import SyncKit
 import UIKit
 
 /// 组合根：持有全部服务实例并向下注入。后续单元逐步填充。
@@ -23,6 +24,7 @@ final class AppEnvironment {
     let regionCatalog: RegionCatalog
 
     let modelContainer: ModelContainer
+    let accountCacheStore: AccountCacheStore
     let chatStore: ChatStore
     let rosterStore: RosterStore
     let economyStore: EconomyStore
@@ -32,6 +34,7 @@ final class AppEnvironment {
     let storyProgressStore: StoryProgressStore
     let ticketStubStore: TicketStubStore
     let travelService: TravelService
+    let userState: BackendUserStateCoordinator
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -79,6 +82,8 @@ final class AppEnvironment {
 
         let container = try! ModelContainerFactory.makeContainer()
         self.modelContainer = container
+        let accountCacheStore = AccountCacheStore(modelContainer: container)
+        self.accountCacheStore = accountCacheStore
         self.chatStore = ChatStore(modelContainer: container)
         self.rosterStore = RosterStore(modelContainer: container)
         self.economyStore = EconomyStore(modelContainer: container)
@@ -88,47 +93,50 @@ final class AppEnvironment {
         self.storyProgressStore = StoryProgressStore(modelContainer: container)
         let ticketStubStore = TicketStubStore(modelContainer: container)
         self.ticketStubStore = ticketStubStore
+        let userState = BackendUserStateCoordinator(
+            backend: backendClient,
+            accountCache: accountCacheStore,
+            economyCache: economyStore,
+            itemCache: itemStore
+        )
+        self.userState = userState
         self.travelService = TravelService(
             economyStore: economyStore,
             itemStore: itemStore,
-            stubStore: ticketStubStore
+            stubStore: ticketStubStore,
+            commandGateway: userState
         )
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
         self.speech = AppleTTSService(audioSession: audioSession)
         self.translator = TranslationService(llm: llmRouter)
-        self.economyService = EconomyService(economyStore: economyStore, itemStore: itemStore)
+        self.economyService = EconomyService(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            ticketPurchaseGateway: userState
+        )
 
         Log.app.info("AppEnvironment initialized")
         Task { await authSession.bootstrap() }
-        bootstrap()
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
-    private func bootstrap() {
-        Task {
-            do {
-                let profile = try await economyStore.profile()
-                let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
-                let cards = try SeedData.mainCharacterCards(url: seedsURL)
-                try await rosterStore.importMainCharactersIfNeeded(cards: cards)
-                needsOnboarding = !profile.hasCompletedOnboarding
-            } catch {
-                Log.app.error("bootstrap 失败：\(error)")
-                needsOnboarding = false
-            }
-        }
+    func activateUser(_ identity: AuthIdentity) async throws -> UserStateActivation {
+        needsOnboarding = nil
+        let activation = try await userState.activate(userID: identity.userID)
+        let profile = try await economyStore.profile()
+        let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
+        let cards = try SeedData.mainCharacterCards(url: seedsURL)
+        try await rosterStore.importMainCharactersIfNeeded(cards: cards)
+        needsOnboarding = !profile.hasCompletedOnboarding
+        return activation
     }
 
     /// 首启引导完成：写当前地区/解锁地区/完成标记。
     func completeOnboarding(selected character: CharacterDTO) async {
         do {
-            _ = try await economyStore.updateProfile { profile in
-                profile.currentRegionID = character.card.regionID
-                if !profile.unlockedRegionIDs.contains(character.card.regionID) {
-                    profile.unlockedRegionIDs.append(character.card.regionID)
-                }
+            _ = try await userState.updateProfile { profile in
                 profile.hasCompletedOnboarding = true
             }
             needsOnboarding = false

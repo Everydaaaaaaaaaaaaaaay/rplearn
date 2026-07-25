@@ -11,6 +11,22 @@ public struct ItemDTO: Sendable, Equatable, Identifiable {
     public var consumedAt: Date?
 
     public var isConsumed: Bool { consumedAt != nil }
+
+    public init(
+        id: UUID,
+        type: ItemType,
+        countryCode: String? = nil,
+        source: ItemSource,
+        createdAt: Date,
+        consumedAt: Date? = nil
+    ) {
+        self.id = id
+        self.type = type
+        self.countryCode = countryCode
+        self.source = source
+        self.createdAt = createdAt
+        self.consumedAt = consumedAt
+    }
 }
 
 /// 道具仓库（机票的获得与消耗）。
@@ -60,6 +76,28 @@ public actor ItemStore {
             throw ItemError.alreadyConsumed
         }
         entity.consumedAt = .now
+        try modelContext.save()
+    }
+
+    /// 用服务器返回的可用机票集合原子替换本地缓存。
+    public func replaceAvailableTickets(_ tickets: [ItemDTO]) throws {
+        try modelContext.delete(model: ItemEntity.self)
+        for ticket in tickets where !ticket.isConsumed {
+            modelContext.insert(
+                ItemEntity(
+                    itemID: ticket.id,
+                    typeRaw: ticket.type.rawValue,
+                    countryCode: ticket.countryCode,
+                    sourceRaw: ticket.source.rawValue,
+                    createdAt: ticket.createdAt
+                )
+            )
+        }
+        try modelContext.save()
+    }
+
+    public func clearAuthoritativeCache() throws {
+        try modelContext.delete(model: ItemEntity.self)
         try modelContext.save()
     }
 

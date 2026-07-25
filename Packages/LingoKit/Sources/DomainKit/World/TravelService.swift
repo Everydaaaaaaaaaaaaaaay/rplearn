@@ -12,11 +12,18 @@ public struct TravelService: Sendable {
     private let economyStore: EconomyStore
     private let itemStore: ItemStore
     private let stubStore: TicketStubStore
+    private let commandGateway: (any TravelCommandGateway)?
 
-    public init(economyStore: EconomyStore, itemStore: ItemStore, stubStore: TicketStubStore) {
+    public init(
+        economyStore: EconomyStore,
+        itemStore: ItemStore,
+        stubStore: TicketStubStore,
+        commandGateway: (any TravelCommandGateway)? = nil
+    ) {
         self.economyStore = economyStore
         self.itemStore = itemStore
         self.stubStore = stubStore
+        self.commandGateway = commandGateway
     }
 
     /// 机票是否可用于解锁某地区（纯函数）。
@@ -45,6 +52,18 @@ public struct TravelService: Sendable {
     /// 前往地区。首次解锁必须提供可用机票，已解锁地区无需机票。
     @discardableResult
     public func travel(to region: Region, using ticket: ItemDTO? = nil) async throws -> TicketStubDTO {
+        if let commandGateway {
+            let result = try await commandGateway.travel(
+                targetRegionID: region.id,
+                ticketID: ticket?.id
+            )
+            return try await stubStore.cacheServerTravel(
+                id: result.travelID,
+                fromRegionID: result.fromRegionID,
+                toRegionID: result.toRegionID,
+                usedAt: result.traveledAt
+            )
+        }
         let profile = try await economyStore.profile()
         guard profile.currentRegionID != region.id else {
             throw TravelError.alreadyThere
