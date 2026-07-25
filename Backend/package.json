@@ -8,6 +8,7 @@
     "node": ">=24.0.0"
   },
   "scripts": {
+    "auth:generate-keys": "tsx src/cli/generate-auth-keys.ts",
     "build": "tsc -p tsconfig.build.json",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "db:generate": "drizzle-kit generate",
@@ -31,9 +32,12 @@
     "@fastify/helmet": "^13.1.0",
     "@fastify/sensible": "^6.0.4",
     "@fastify/swagger": "^9.8.1",
+    "@node-rs/argon2": "^2.0.2",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "fastify": "^5.10.0",
+    "jose": "^6.2.4",
+    "nodemailer": "^9.0.3",
     "pino": "^10.3.1",
     "postgres": "^3.4.9",
     "redis": "^6.1.0",
@@ -43,6 +47,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.1.1",
+    "@types/nodemailer": "^8.0.1",
     "@vitest/coverage-v8": "^4.1.10",
     "cross-env": "^10.1.0",
     "drizzle-kit": "^0.31.10",

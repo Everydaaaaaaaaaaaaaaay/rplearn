@@ -2,6 +2,8 @@ import "dotenv/config";
 import { buildApp } from "./app.js";
 import { ConfigurationError, loadConfig } from "./config/env.js";
 import { createRuntimeDependencies } from "./infrastructure/runtime-dependencies.js";
+import { registerAuthRoutes } from "./modules/auth/routes.js";
+import { createAuthService } from "./modules/auth/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -22,6 +24,17 @@ async function main(): Promise<void> {
   const app = await buildApp(config, {
     readinessChecks: dependencies.readinessChecks,
   });
+  const authService = await createAuthService(config, dependencies.database, {
+    onNotificationError: (error) => {
+      app.log.error(
+        {
+          errorName: error.name,
+        },
+        "Authentication notification delivery failed",
+      );
+    },
+  });
+  registerAuthRoutes(app, authService);
   let closing = false;
 
   dependencies.onRedisError((error) => {

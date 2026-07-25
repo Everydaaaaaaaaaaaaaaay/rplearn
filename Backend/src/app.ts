@@ -59,6 +59,15 @@ export async function buildApp(
 
   await app.register(swagger, {
     openapi: {
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            bearerFormat: "JWT",
+            scheme: "bearer",
+            type: "http",
+          },
+        },
+      },
       info: {
         title: "LingoTrip API",
         version: "0.1.0",

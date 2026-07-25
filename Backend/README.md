@@ -29,13 +29,25 @@ pnpm test:integration
 ```
 
 `test:integration` 需要先运行 `pnpm infra:up`。PostgreSQL 映射到本机
-`54329`，Redis 映射到 `63799`，避免占用常见的默认端口。
+`54329`，Redis 映射到 `63799`，避免占用常见的默认端口。开发邮件进入 Mailpit，可在
+`http://127.0.0.1:8025` 查看。
 
 开发服务默认监听 `http://127.0.0.1:8080`：
 
 - `GET /health/live`
 - `GET /health/ready`
 - `GET /docs/openapi.json`（仅非生产环境）
+
+邮箱认证端点位于
+`/v1/auth`，支持注册、邮箱验证、登录、刷新令牌轮换、密码重置、设备会话列表和单设备/全设备撤销。刷新令牌重放会把整个 token
+family 标记为 compromised。
+
+生产环境需要持久的 Ed25519 签名密钥。以下命令仅把新密钥打印到当前终端，由操作者直接存入 Secret
+Manager；不要把输出复制进仓库或聊天记录：
+
+```bash
+pnpm auth:generate-keys
+```
 
 停止本地依赖使用 `pnpm infra:down`。该命令默认保留数据库卷；只有显式执行
 `docker compose down --volumes` 才会删除本地开发数据。
