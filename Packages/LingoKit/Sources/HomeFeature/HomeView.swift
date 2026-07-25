@@ -75,7 +75,7 @@ public struct HomeView: View {
                 }
                 .padding(.horizontal, DSSpacing.md)
                 .padding(.top, DSSpacing.xs)
-                .padding(.bottom, 110)
+                .padding(.bottom, DSSpacing.md)
             }
             .onScrollGeometryChange(for: CGFloat.self) { geometry in
                 geometry.contentOffset.y

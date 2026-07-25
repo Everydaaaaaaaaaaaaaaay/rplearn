@@ -33,7 +33,6 @@ public struct MainlineListView: View {
                 }
             }
             .padding(DSSpacing.md)
-            .padding(.bottom, 90)
         }
         .background(Color.dsBackground)
         .navigationTitle("主线剧情")

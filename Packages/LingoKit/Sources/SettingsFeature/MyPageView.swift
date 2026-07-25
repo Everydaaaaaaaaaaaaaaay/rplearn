@@ -63,7 +63,6 @@ public struct MyPageView: View {
                 #endif
             }
             .padding(DSSpacing.md)
-            .padding(.bottom, 105)
         }
         .background(Color.dsBackground)
         .toolbar(.hidden, for: .navigationBar)

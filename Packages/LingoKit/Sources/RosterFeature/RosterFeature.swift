@@ -151,7 +151,6 @@ public struct CharacterProfileView: View {
                 .buttonStyle(.duoPrimary)
             }
             .padding(DSSpacing.md)
-            .padding(.bottom, 90)
         }
         .background(Color.dsBackground)
         .navigationTitle(card.name)

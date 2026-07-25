@@ -80,7 +80,7 @@ public struct MapView: View {
                 MapCompass()
                 MapScaleView()
             }
-            .safeAreaPadding(.bottom, selectedRegion == nil ? 96 : 290)
+            .safeAreaPadding(.bottom, selectedRegion == nil ? DSSpacing.md : 250)
 
             VStack(spacing: DSSpacing.sm) {
                 topControls
@@ -94,7 +94,7 @@ public struct MapView: View {
                     )
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                     .padding(.horizontal, DSSpacing.md)
-                    .padding(.bottom, 96)
+                    .padding(.bottom, DSSpacing.md)
                 }
             }
         }

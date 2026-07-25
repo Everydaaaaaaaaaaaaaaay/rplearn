@@ -50,7 +50,6 @@ public struct ActivitiesView: View {
                 }
             }
             .padding(DSSpacing.md)
-            .padding(.bottom, 90)
         }
         .background(Color.dsBackground)
         .navigationTitle("城市活动")
