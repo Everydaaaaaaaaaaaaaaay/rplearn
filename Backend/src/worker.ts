@@ -10,6 +10,9 @@ import { createJobPayloadCipher } from "./modules/jobs/crypto.js";
 import { JobRepository } from "./modules/jobs/repository.js";
 import { JobWorker } from "./modules/jobs/worker.js";
 import { newEntityId } from "./shared/id.js";
+import { createAccountService } from "./modules/account/service.js";
+import { createCredentialSealer } from "./modules/auth/apple/credential-crypto.js";
+import { createAppleTokenRevoker } from "./modules/auth/apple/token-revoker.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -28,11 +31,23 @@ async function main(): Promise<void> {
   const database = createDatabase(config);
   const controller = new AbortController();
   const workerId = `worker-${newEntityId()}`;
+  const accountService = createAccountService(config, database, {
+    onAppleRevocationUnavailable: (fields) => {
+      logger.warn(fields, "Apple token revocation was unavailable during deletion");
+    },
+    ...(config.appleAuthEnabled
+      ? {
+          appleTokenRevoker: await createAppleTokenRevoker(config),
+          credentialSealer: createCredentialSealer(config),
+        }
+      : {}),
+  });
   const worker = new JobWorker({
     cipher: createJobPayloadCipher(config),
     config,
     logger,
     notifier: createSmtpAuthNotifier(config),
+    processAccountPurge: accountService.processDeletion,
     repository: new JobRepository(database),
     workerId,
   });

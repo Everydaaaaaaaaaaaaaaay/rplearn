@@ -1,8 +1,9 @@
-import { createCipheriv, randomBytes } from "node:crypto";
+import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
 import type { RuntimeConfig } from "../../../config/env.js";
 import type { SealedProviderCredential } from "../repository.js";
 
 export type CredentialSealer = Readonly<{
+  open: (credential: SealedProviderCredential) => string;
   seal: (plaintext: string) => SealedProviderCredential;
 }>;
 
@@ -21,6 +22,19 @@ export function createCredentialSealer(config: RuntimeConfig): CredentialSealer 
   const keyVersion = config.appleCredentialKeyVersion;
 
   return {
+    open: (credential) => {
+      if (credential.keyVersion !== keyVersion) {
+        throw new Error(
+          `Unsupported Apple credential key version: ${credential.keyVersion}`,
+        );
+      }
+      const decipher = createDecipheriv("aes-256-gcm", key, credential.nonce);
+      decipher.setAuthTag(credential.tag);
+      return Buffer.concat([
+        decipher.update(credential.ciphertext),
+        decipher.final(),
+      ]).toString("utf8");
+    },
     seal: (plaintext) => {
       const nonce = randomBytes(12);
       const cipher = createCipheriv("aes-256-gcm", key, nonce);

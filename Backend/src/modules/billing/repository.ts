@@ -138,14 +138,14 @@ export class BillingRepository {
     environment: StoreEnvironment,
     originalTransactionId: string,
   ): Promise<string | undefined> {
-    const [row] = await this.database.sql<{ user_id: string }[]>`
+    const [row] = await this.database.sql<{ user_id: string | null }[]>`
       select user_id::text
       from app.subscriptions
       where provider = 'apple'
         and environment = ${environment}::app.billing_environment
         and original_transaction_id = ${originalTransactionId}
     `;
-    return row?.user_id;
+    return row?.user_id ?? undefined;
   }
 
   async userExists(userId: string): Promise<boolean> {
@@ -185,7 +185,7 @@ export class BillingRepository {
       });
     }
 
-    const [existingTransaction] = await sql<{ user_id: string }[]>`
+    const [existingTransaction] = await sql<{ user_id: string | null }[]>`
       select user_id::text
       from app.billing_transactions
       where provider = 'apple'
@@ -205,7 +205,7 @@ export class BillingRepository {
     const [existingSubscription] = await sql<
       {
         provider_event_at: string;
-        user_id: string;
+        user_id: string | null;
       }[]
     >`
       select user_id::text, provider_event_at

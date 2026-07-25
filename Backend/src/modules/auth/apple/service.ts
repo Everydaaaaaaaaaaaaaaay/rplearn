@@ -155,6 +155,7 @@ export async function createAppleAuthService(
       }
       await repository.saveProviderCredential(
         linked.identityId,
+        verified.identity.audience,
         credentialSealer.seal(verified.refreshToken),
       );
     },
@@ -171,6 +172,7 @@ export async function createAppleAuthService(
       assertAccountAvailable(account.status);
       await repository.saveProviderCredential(
         account.identityId,
+        verified.identity.audience,
         credentialSealer.seal(verified.refreshToken),
       );
       return authService.loginFederated(

@@ -57,6 +57,16 @@ readiness 失败。账号 challenge、AI 分钟限流等采用 fail-closed，不
 4. 如果是密钥版本或 payload schema 不兼容，先回滚 worker；不要直接删除任务。
 5. 已完成、取消和死信任务由 `maintenance:cleanup` 按 `JOB_RETENTION_DAYS` 清理。
 
+### 账号删除任务失败
+
+1. `account.purge` 进入死信即按高优先级隐私事故处理，记录 request ID，禁止读取 payload。
+2. 查询删除请求的状态和不可逆 reference，核对 Apple revocation endpoint、client ID 与 credential
+   key version；不得把 `processing` 账号手工恢复为 active。
+3. Apple 暂时错误恢复后重排同一任务；缺少历史 credential client ID 时按 Apple
+   手工撤销流程通知用户，同时仍须完成本系统数据删除。
+4. 最终清除后验证用户主记录不存在、支付事实已匿名化、删除回执为 `completed`。
+5. 从备份恢复数据时重新应用已完成删除回执，防止账号或个人数据复活。
+
 ### 凭据泄露
 
 1. 立即吊销受影响提供商 key；

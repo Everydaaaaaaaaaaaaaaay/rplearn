@@ -18,6 +18,8 @@ import { createSyncCursorCodec } from "./modules/sync/cursor.js";
 import { registerSyncRoutes } from "./modules/sync/routes.js";
 import { createSyncService } from "./modules/sync/service.js";
 import { registerAuditHooks } from "./modules/observability/audit.js";
+import { registerAccountRoutes } from "./modules/account/routes.js";
+import { createAccountService } from "./modules/account/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -41,6 +43,11 @@ async function main(): Promise<void> {
   registerAuditHooks(app, config, dependencies.database);
   const authService = await createAuthService(config, dependencies.database);
   registerAuthRoutes(app, authService);
+  registerAccountRoutes(
+    app,
+    authService,
+    createAccountService(config, dependencies.database),
+  );
   if (config.appleAuthEnabled) {
     const appleAuthService = await createAppleAuthService(
       config,

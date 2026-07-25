@@ -13,6 +13,7 @@ export const SENSITIVE_LOG_PATHS = [
   "deepSeekApiKey",
   "authJwtPrivateKeyBase64",
   "authTokenHashPepper",
+  "cancellationToken",
   "jobPayloadEncryptionKeyBase64",
   "password",
   "refreshToken",

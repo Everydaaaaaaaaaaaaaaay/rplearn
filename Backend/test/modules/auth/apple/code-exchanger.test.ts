@@ -3,6 +3,7 @@ import { exportPKCS8, generateKeyPair } from "jose";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { loadConfig } from "../../../../src/config/env.js";
 import { createAppleCodeExchanger } from "../../../../src/modules/auth/apple/code-exchanger.js";
+import { createAppleTokenRevoker } from "../../../../src/modules/auth/apple/token-revoker.js";
 
 describe("Apple authorization code exchange", () => {
   afterEach(() => {
@@ -59,5 +60,38 @@ describe("Apple authorization code exchange", () => {
       idToken: "id-token",
       refreshToken: "refresh-token",
     });
+  });
+
+  it("revokes the stored refresh token with its original client ID", async () => {
+    const keys = await generateKeyPair("ES256", { extractable: true });
+    const privateKey = await exportPKCS8(keys.privateKey);
+    const config = loadConfig({
+      APPLE_AUTH_ENABLED: "true",
+      APPLE_CLIENT_IDS: "com.example.app",
+      APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64: randomBytes(32).toString("base64"),
+      APPLE_CREDENTIAL_KEY_VERSION: "test-v1",
+      APPLE_KEY_ID: "APPLEKEY1",
+      APPLE_PRIVATE_KEY_BASE64: Buffer.from(privateKey).toString("base64"),
+      APPLE_TEAM_ID: "TEAMID1234",
+      NODE_ENV: "test",
+    });
+    const fetchStub: typeof fetch = (_input, init) => {
+      expect(init?.method).toBe("POST");
+      expect(init?.body).toBeInstanceOf(URLSearchParams);
+      if (!(init?.body instanceof URLSearchParams)) {
+        throw new Error("Expected form body");
+      }
+      expect(init.body.get("client_id")).toBe("com.example.app");
+      expect(init.body.get("token")).toBe("stored-refresh-token");
+      expect(init.body.get("token_type_hint")).toBe("refresh_token");
+      expect(init.body.get("client_secret")).toBeTypeOf("string");
+      return Promise.resolve(new Response(null, { status: 200 }));
+    };
+    vi.stubGlobal("fetch", fetchStub);
+
+    const revoker = await createAppleTokenRevoker(config);
+    await expect(
+      revoker.revokeRefreshToken("com.example.app", "stored-refresh-token"),
+    ).resolves.toBeUndefined();
   });
 });

@@ -64,6 +64,7 @@ describe.runIf(runIntegrationTests)("Sign in with Apple", () => {
             }),
         },
         credentialSealer: {
+          open: () => "apple-refresh-token",
           seal: () => ({
             ciphertext: Buffer.from("ciphertext"),
             keyVersion: "test-v1",
@@ -139,15 +140,20 @@ describe.runIf(runIntegrationTests)("Sign in with Apple", () => {
     userId = pair.userId;
 
     const [credential] = await dependencies.database.sql<
-      { ciphertext: Buffer; key_version: string }[]
+      {
+        ciphertext: Buffer;
+        key_version: string;
+        provider_client_id: string;
+      }[]
     >`
-      select c.ciphertext, c.key_version
+      select c.ciphertext, c.key_version, c.provider_client_id
       from app.identity_provider_credentials c
       join app.user_identities i on i.id = c.identity_id
       where i.user_id = ${pair.userId}
         and i.provider = 'apple'
     `;
     expect(credential?.key_version).toBe("test-v1");
+    expect(credential?.provider_client_id).toBe("com.tiantian.lingotrip");
     expect(credential?.ciphertext).toEqual(Buffer.from("ciphertext"));
 
     const sessions = await app.inject({

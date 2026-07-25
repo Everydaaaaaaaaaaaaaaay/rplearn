@@ -42,12 +42,21 @@ async function main(): Promise<void> {
           now() - (${config.jobRetentionDays} * interval '1 day')
       returning id::text
     `;
+    const deletionReceiptRows = await database.sql<{ id: string }[]>`
+      delete from app.account_deletion_requests
+      where status in ('completed', 'cancelled')
+        and coalesce(completed_at, cancelled_at) <
+          now() -
+          (${config.accountDeletionReceiptRetentionDays} * interval '1 day')
+      returning id::text
+    `;
     process.stdout.write(
       `${JSON.stringify({
         deleted: {
           aiDailyUsage: usageRows.length,
           aiRequests: requestRows.length,
           auditEvents: auditRows.length,
+          deletionReceipts: deletionReceiptRows.length,
           jobs: jobRows.length,
         },
       })}\n`,

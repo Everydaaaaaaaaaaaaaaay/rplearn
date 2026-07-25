@@ -143,6 +143,18 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
       where user_id = ${userId}
     `;
     await dependencies.database.sql`
+      delete from app.billing_provider_events
+      where user_id = ${userId}
+    `;
+    await dependencies.database.sql`
+      delete from app.subscriptions
+      where user_id = ${userId}
+    `;
+    await dependencies.database.sql`
+      delete from app.billing_transactions
+      where user_id = ${userId}
+    `;
+    await dependencies.database.sql`
       delete from app.users
       where id = ${userId}
     `;

@@ -32,11 +32,19 @@ const rawEnvironmentSchema = z.object({
   APPLE_KEY_ID: optionalSecret,
   APPLE_PRIVATE_KEY_BASE64: optionalSecret,
   APPLE_REDIRECT_URI: optionalSecret.pipe(z.url().optional()),
+  APPLE_REVOCATION_ENDPOINT: z.url().default("https://appleid.apple.com/auth/revoke"),
   APPLE_TEAM_ID: optionalSecret,
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
   AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
   AI_USAGE_RETENTION_DAYS: z.coerce.number().int().min(30).max(730).default(90),
   AI_USER_MINUTE_LIMIT: z.coerce.number().int().min(1).max(300).default(30),
+  ACCOUNT_DELETION_GRACE_DAYS: z.coerce.number().int().min(1).max(30).default(7),
+  ACCOUNT_DELETION_RECEIPT_RETENTION_DAYS: z.coerce
+    .number()
+    .int()
+    .min(365)
+    .max(3650)
+    .default(2555),
   AUDIT_RETENTION_DAYS: z.coerce.number().int().min(30).max(2555).default(365),
   AUTH_ACCESS_TOKEN_TTL_SECONDS: z.coerce.number().int().min(60).max(3600).default(900),
   AUTH_ACTION_TOKEN_TTL_SECONDS: z.coerce
@@ -110,6 +118,8 @@ const rawEnvironmentSchema = z.object({
 });
 
 export type RuntimeConfig = Readonly<{
+  accountDeletionGraceDays: number;
+  accountDeletionReceiptRetentionDays: number;
   aiRetryMaxAttempts: number;
   aiUsageRetentionDays: number;
   aiUserMinuteLimit: number;
@@ -128,6 +138,7 @@ export type RuntimeConfig = Readonly<{
   appleKeyId?: string;
   applePrivateKeyBase64?: string;
   appleRedirectUri?: string;
+  appleRevocationEndpoint: string;
   appleTeamId?: string;
   appleTokenEndpoint: string;
   authAccessTokenTtlSeconds: number;
@@ -402,6 +413,9 @@ export function loadConfig(
   }
 
   return {
+    accountDeletionGraceDays: result.data.ACCOUNT_DELETION_GRACE_DAYS,
+    accountDeletionReceiptRetentionDays:
+      result.data.ACCOUNT_DELETION_RECEIPT_RETENTION_DAYS,
     aiRetryMaxAttempts: result.data.AI_RETRY_MAX_ATTEMPTS,
     aiUsageRetentionDays: result.data.AI_USAGE_RETENTION_DAYS,
     aiUserMinuteLimit: result.data.AI_USER_MINUTE_LIMIT,
@@ -437,6 +451,7 @@ export function loadConfig(
     ...(result.data.APPLE_REDIRECT_URI === undefined
       ? {}
       : { appleRedirectUri: result.data.APPLE_REDIRECT_URI }),
+    appleRevocationEndpoint: result.data.APPLE_REVOCATION_ENDPOINT,
     ...(result.data.APPLE_TEAM_ID === undefined
       ? {}
       : { appleTeamId: result.data.APPLE_TEAM_ID }),

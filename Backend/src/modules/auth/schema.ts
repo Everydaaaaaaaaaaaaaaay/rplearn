@@ -261,6 +261,7 @@ export const identityProviderCredentials = applicationSchema.table(
       .primaryKey()
       .references(() => userIdentities.id, { onDelete: "cascade" }),
     keyVersion: text("key_version").notNull(),
+    providerClientId: text("provider_client_id"),
     nonce: binary("nonce").notNull(),
     tag: binary("tag").notNull(),
     updatedAt: timestamp("updated_at", {

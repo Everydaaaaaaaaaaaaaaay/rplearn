@@ -16,12 +16,20 @@ export function createTestJobWorker(
   config: RuntimeConfig,
   database: DatabaseResource,
   notifier: AuthNotifier,
+  options: Readonly<{
+    processAccountPurge?: (
+      payload: Readonly<{ requestId: string; userId: string }>,
+    ) => Promise<void>;
+  }> = {},
 ): JobWorker {
   return new JobWorker({
     cipher: createJobPayloadCipher(config),
     config,
     logger: silentLogger,
     notifier,
+    ...(options.processAccountPurge === undefined
+      ? {}
+      : { processAccountPurge: options.processAccountPurge }),
     repository: new JobRepository(database),
     workerId: `test-worker-${newEntityId()}`,
   });

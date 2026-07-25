@@ -44,6 +44,11 @@ pnpm test:integration
 `/v1/auth`，支持注册、邮箱验证、登录、刷新令牌轮换、密码重置、设备会话列表和单设备/全设备撤销。刷新令牌重放会把整个 token
 family 标记为 compromised。
 
+`GET /v1/account/export` 返回不含凭据和原始第三方 payload 的可移植一致性快照。
+`DELETE /v1/account`
+支持即时删除或带一次性取消 token 的冷静期删除；请求一旦接受即冻结账号并撤销全部会话，最终清除由 worker 执行。绑定 Apple 的账号会先调用 Apple
+token revocation，再删除用户数据并匿名化依法需要保留的支付与审计事实。
+
 配置 `APPLE_AUTH_ENABLED=true` 后会开放 Apple
 challenge、login 和 link 端点。客户端先取得一次性 challenge，并把返回的 `nonce`
 原样设置到 `ASAuthorizationAppleIDRequest`；随后把 identity
@@ -75,9 +80,9 @@ AI 请求统一经 `/v1/ai/completions` 或 `/v1/ai/stream`
 token 保护。所有 HTTP 写操作会追加不含请求载荷的审计事件，IP 只保存 HMAC 摘要。部署环境应每天执行
 `pnpm maintenance:cleanup`，按配置的保留期清理审计记录、AI 用量明细和已终结任务。
 
-注册验证和密码重置邮件通过 PostgreSQL 持久任务投递：action token 与加密 payload
-在同一事务落库，worker 采用租约、`SKIP LOCKED`、指数退避和死信状态执行。生产必须提供稳定的
-任务加密 key；轮换时将旧版本放入 `JOB_PAYLOAD_PREVIOUS_KEYS`，直至旧任务全部终结。
+注册验证和密码重置邮件通过 PostgreSQL 持久任务投递：action
+token 与加密 payload 在同一事务落库，worker 采用租约、`SKIP LOCKED`、指数退避和死信状态执行。生产必须提供稳定的任务加密 key；轮换时将旧版本放入
+`JOB_PAYLOAD_PREVIOUS_KEYS`，直至旧任务全部终结。
 
 生产环境需要持久的 Ed25519 签名密钥。以下命令仅把新密钥打印到当前终端，由操作者直接存入 Secret
 Manager；不要把输出复制进仓库或聊天记录：

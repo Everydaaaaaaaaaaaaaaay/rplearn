@@ -798,6 +798,7 @@ export class AuthRepository {
 
   async saveProviderCredential(
     identityId: string,
+    providerClientId: string,
     credential: SealedProviderCredential,
   ): Promise<void> {
     await this.resource.sql`
@@ -806,20 +807,23 @@ export class AuthRepository {
         ciphertext,
         nonce,
         tag,
-        key_version
+        key_version,
+        provider_client_id
       )
       values (
         ${identityId},
         ${credential.ciphertext},
         ${credential.nonce},
         ${credential.tag},
-        ${credential.keyVersion}
+        ${credential.keyVersion},
+        ${providerClientId}
       )
       on conflict (identity_id) do update
       set ciphertext = excluded.ciphertext,
           nonce = excluded.nonce,
           tag = excluded.tag,
           key_version = excluded.key_version,
+          provider_client_id = excluded.provider_client_id,
           updated_at = now()
     `;
   }

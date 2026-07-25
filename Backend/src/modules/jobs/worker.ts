@@ -4,6 +4,7 @@ import type { AuthNotifier } from "../auth/notifier.js";
 import type { JobPayloadCipher } from "./crypto.js";
 import type { JobFailureResult, JobRepository } from "./repository.js";
 import {
+  ACCOUNT_PURGE_JOB,
   AUTH_EMAIL_VERIFICATION_JOB,
   AUTH_PASSWORD_RESET_JOB,
   type ClaimedJob,
@@ -12,6 +13,10 @@ import {
 const authEmailPayloadSchema = z.object({
   email: z.email().max(254),
   token: z.string().min(32).max(1024),
+});
+const accountPurgePayloadSchema = z.object({
+  requestId: z.uuid(),
+  userId: z.uuid(),
 });
 
 export type JobRunResult = "idle" | "succeeded" | JobFailureResult;
@@ -27,6 +32,9 @@ type JobWorkerDependencies = Readonly<{
   config: RuntimeConfig;
   logger: WorkerLogger;
   notifier: AuthNotifier;
+  processAccountPurge?: (
+    payload: z.infer<typeof accountPurgePayloadSchema>,
+  ) => Promise<void>;
   repository: Pick<JobRepository, "claim" | "complete" | "fail">;
   workerId: string;
 }>;
@@ -43,18 +51,27 @@ export class JobWorker {
   constructor(private readonly dependencies: JobWorkerDependencies) {}
 
   private async dispatch(job: ClaimedJob): Promise<void> {
-    const payload = authEmailPayloadSchema.parse(this.dependencies.cipher.open(job));
+    const payload = this.dependencies.cipher.open(job);
     switch (job.type) {
-      case AUTH_EMAIL_VERIFICATION_JOB:
+      case AUTH_EMAIL_VERIFICATION_JOB: {
+        const email = authEmailPayloadSchema.parse(payload);
         await this.dependencies.notifier.sendEmailVerification(
-          payload.email,
-          payload.token,
+          email.email,
+          email.token,
         );
         return;
-      case AUTH_PASSWORD_RESET_JOB:
-        await this.dependencies.notifier.sendPasswordReset(
-          payload.email,
-          payload.token,
+      }
+      case AUTH_PASSWORD_RESET_JOB: {
+        const email = authEmailPayloadSchema.parse(payload);
+        await this.dependencies.notifier.sendPasswordReset(email.email, email.token);
+        return;
+      }
+      case ACCOUNT_PURGE_JOB:
+        if (this.dependencies.processAccountPurge === undefined) {
+          throw new Error("AccountPurgeHandlerUnavailable");
+        }
+        await this.dependencies.processAccountPurge(
+          accountPurgePayloadSchema.parse(payload),
         );
         return;
       default:

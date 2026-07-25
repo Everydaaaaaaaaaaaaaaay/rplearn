@@ -136,9 +136,9 @@ export const billingTransactions = applicationSchema.table(
     })
       .defaultNow()
       .notNull(),
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+    userId: uuid("user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
     verifiedAt: timestamp("verified_at", {
       mode: "date",
       withTimezone: true,
@@ -194,9 +194,9 @@ export const subscriptions = applicationSchema.table(
     })
       .defaultNow()
       .notNull(),
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+    userId: uuid("user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
   },
   (table) => [
     uniqueIndex("subscriptions_provider_original_unique").on(

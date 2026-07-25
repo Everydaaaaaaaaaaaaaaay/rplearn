@@ -9,6 +9,14 @@ type CursorPayload = Readonly<{
 
 const SEQUENCE_PATTERN = /^(0|[1-9][0-9]*)$/;
 
+function decodeCanonicalBase64Url(value: string): Buffer {
+  const decoded = Buffer.from(value, "base64url");
+  if (decoded.toString("base64url") !== value) {
+    throw invalidCursor();
+  }
+  return decoded;
+}
+
 function invalidCursor(): AppError {
   return new AppError({
     code: "INVALID_SYNC_CURSOR",
@@ -40,7 +48,7 @@ export function createSyncCursorCodec(secret: string): SyncCursorCodec {
       }
 
       try {
-        const suppliedSignature = Buffer.from(encodedSignature, "base64url");
+        const suppliedSignature = decodeCanonicalBase64Url(encodedSignature);
         const expectedSignature = sign(encodedPayload);
         if (
           suppliedSignature.byteLength !== expectedSignature.byteLength ||
@@ -50,7 +58,7 @@ export function createSyncCursorCodec(secret: string): SyncCursorCodec {
         }
 
         const payload = JSON.parse(
-          Buffer.from(encodedPayload, "base64url").toString("utf8"),
+          decodeCanonicalBase64Url(encodedPayload).toString("utf8"),
         ) as Partial<CursorPayload>;
         if (
           payload.version !== 1 ||

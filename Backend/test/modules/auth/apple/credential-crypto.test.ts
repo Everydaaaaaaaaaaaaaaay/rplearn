@@ -20,5 +20,6 @@ describe("Apple credential encryption", () => {
     expect(first.ciphertext.equals(Buffer.from("refresh-token"))).toBe(false);
     expect(first.nonce.equals(second.nonce)).toBe(false);
     expect(first.ciphertext.equals(second.ciphertext)).toBe(false);
+    expect(sealer.open(first)).toBe("refresh-token");
   });
 });
