@@ -23,7 +23,7 @@ LingoTrip 是 SwiftUI 原生 iOS 语言学习 app。重构前的 UI 以原生控
 - iOS 18 / Swift 6 严格并发 / XcodeGen（`Scripts/build.sh`、`Scripts/test.sh` 自动 `xcodegen generate`）。单一本地包 Packages/LingoKit 严格分层，Feature 间零依赖（跨 Feature 跳转由 App 组合根闭包/`AnyView` 注入）。
 - **`DesignSystem` 模块已在 Infra 层**，8 个 Feature + DictKit 已全部依赖——就地扩建，零依赖图改动。现有仅 256 行（MessageBubble/TappableText/FlowLayout/Haptics）。
 - `AccentColor.colorset` 是空的（系统蓝）；深色模式纯靠语义色；两处硬编码 RGB 不适配深色（AVGStoryView `BackgroundPalette`、TicketStubsView 票根 palette）；0 自定义 ButtonStyle；圆角 10-18 混用；头像徽章/chip/批注卡三类模式重复未抽象。
-- `Region`（DomainKit/RegionCatalog.swift）**无经纬度**——需给 struct + regions.json 加坐标；`ChatStore.conversationSummaries()` 已存在（首页最近会话直接复用）；RosterStore 已就位（好友标记、cardJSON）。
+- `Region`（DomainKit/World/RegionCatalog.swift）**无经纬度**——需给 struct + regions.json 加坐标；`ChatStore.conversationSummaries()` 已存在（首页最近会话直接复用）；RosterStore 已就位（好友标记、cardJSON）。
 - `StoryPlayer.Line` 已透出可选 `sprite` 字段——引导消息卡片零 StoryEngine 改动。
 - DEBUG 验证钩子已核实存在：`ONBOARDING_AUTOPLAY=1|full`（OnboardingFlowView:70）、聊天工具栏「注入小测」（ChatView:41）、「模拟语音注入」（ChatView:481）、`DEBUG_INJECT_QUIZ=1`。
 

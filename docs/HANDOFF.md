@@ -68,7 +68,7 @@ App（组合根 AppEnvironment / RootView）
 
 - **Swift 6 严格并发**：所有写库操作收敛到 `@ModelActor` 仓库；跨 actor 只传 `Sendable` DTO；视图模型 `@MainActor @Observable`。
 - **UI 只读库**：SwiftUI 用 DTO / `@State`，不直接持有 `@Model` 实体跨线程。
-- **Prompt 集中管理**：所有 LLM prompt 收敛在 `DomainKit/PromptBuilder.swift`（角色扮演）与各 Service 内，便于迭代与 snapshot 测试锁定。
+- **Prompt 集中管理**：所有 LLM prompt 收敛在 `DomainKit/Conversation/PromptBuilder.swift`（角色扮演）与各 Module 内，便于迭代与 snapshot 测试锁定。
 - **密钥只进钥匙串**：API Key 存 `CoreKit/KeychainStore`，绝不落 prompt / 日志。
 - **测试框架用 Swift Testing**（`@Test` / `#expect`），不是 XCTest。
 
@@ -147,7 +147,7 @@ DomainKit 服务清单：
 
 ## 5. 数据模型（SchemaV1）
 
-定义在 `PersistenceKit/SchemaV1.swift`，`VersionedSchema` + `LingoMigrationPlan`（迁移占位，新增 SchemaV2 时补 stage）。10 个实体：
+定义在 `PersistenceKit/Schema/SchemaV1.swift`，`VersionedSchema` + `LingoMigrationPlan`（迁移占位，新增 SchemaV2 时补 stage）。10 个实体：
 
 | 实体 | 说明 |
 |---|---|
