@@ -1,12 +1,12 @@
 # LingoTrip UI 全面重构计划（视觉风格 + 结构重设计）
 
-> 状态：**已实施并通过构建、测试与浅/深模式截图回归**（2026-07-25）。本文件继续作为视觉与信息架构事实源。
+> 状态：**已实施并通过构建、测试与浅/深模式截图回归**（2026-07-25）。本文记录视觉与信息架构；当前工程事实以 `docs/HANDOFF.md` 为准。
 
 ## Context（背景）
 
-LingoTrip 是 SwiftUI 原生 iOS 语言学习 app（M0–M2 功能全落地，约 9.5k 行，137 用例全绿）。目前 UI 是原生组件平铺，既无品牌视觉也无成熟 App 的结构设计。本轮做两层重构：
+LingoTrip 是 SwiftUI 原生 iOS 语言学习 app。重构前的 UI 以原生控件平铺为主，缺少统一品牌视觉和成熟的信息架构。本轮做两层重构：
 
-**A. 视觉层**：保留原生组件行为的前提下自绘外观，对标多邻国的简单、灵动风格与小动画。已拍板：**天空蓝青主色**、**SF Rounded 圆体**、**自绘 Tab 栏**。
+**A. 视觉层**：保留原生组件行为的前提下定制外观，对标多邻国的简单、灵动风格与小动画。已拍板：**天空蓝青主色**、**SF Rounded 圆体**、**原生 TabView 行为 + 品牌化样式**。
 
 **B. 结构层**：页面布局、信息架构按成熟 App 标准大规模重设计，功能不受影响。已拍板：
 - **四 tab**：首页（聚合 hub）/ 地图 / 消息 / 我的
@@ -16,7 +16,7 @@ LingoTrip 是 SwiftUI 原生 iOS 语言学习 app（M0–M2 功能全落地，�
 - **我的**：收藏、订阅/账户、设置（降级为二级页）
 - **开局引导重设计**：剧情聊天流里主角色信息做成消息卡片；选角改左右滑动实体感角色卡
 
-约束：不引入第三方库（MapKit 是 Apple 框架，允许；无 Lottie）；功能不受影响；不动 ViewModel 业务逻辑（允许加纯查询/组装层）；国际化暂不管。**每个任务独立 commit（构建+137 测试全绿为门槛）**。
+约束：不引入第三方库（MapKit 是 Apple 框架，允许；无 Lottie）；功能不受影响；不动 ViewModel 业务逻辑（允许加纯查询/组装层）；国际化暂不管。**每个任务独立 commit（构建与全量测试通过为门槛）**。
 
 ## 工程事实（已调研核实）
 
@@ -134,7 +134,7 @@ DictCardView（chip→DSChip、例句底→dsBubbleIncoming、AI 解释钮→`.d
 
 ---
 
-## 五、任务拆分表（每任务 = 构建 + 137 测试全绿 + 一次 commit）
+## 五、任务拆分表（每任务 = 构建 + 全量测试通过 + 一次 commit）
 
 > 每项验收基线：`Scripts/build.sh` + `Scripts/test.sh` + 指定截图（`xcrun simctl` 浅/深双模式）。表中只写增量验收。未列前置即可并行。
 
@@ -178,7 +178,7 @@ DictCardView（chip→DSChip、例句底→dsBubbleIncoming、AI 解释钮→`.d
 ## 七、验证方案
 
 每任务固定流程：
-1. `Scripts/build.sh` → `Scripts/test.sh`（137 全绿硬门槛）→ commit。
+1. `Scripts/build.sh` → `Scripts/test.sh`（全量通过为硬门槛）→ commit。
 2. 双模式截图：`xcrun simctl ui <UDID> appearance light|dark` + `simctl io screenshot`；首启 `SIMCTL_CHILD_ONBOARDING_AUTOPLAY=full` 直达主界面（`=1` 停选角页核对任务 17/18）。
 3. 聊天卡片：模拟器 ChatView 工具栏「注入小测」+「模拟语音注入」验证三卡/庆祝/shake；口语点评卡样式靠 CalloutCard preview mock。
 4. 专项：tab 弹跳/pill/跨 tab 泄漏、飞行转场全程、键盘盖栏、`simctl ui content_size extra-extra-large` 抽查 Home/Chat、Reduce Motion 降级、无网络开地图。
