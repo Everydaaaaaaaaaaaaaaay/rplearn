@@ -96,8 +96,8 @@ RootView
 ## 四、逐页面结构设计
 
 ### 首页（HomeView 重写，游戏式聚合 hub）
-ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= 天空渐变（DSScenePalette.city 深浅双值）+ 三城正式生成式素材（`city_backdrop_london` / `city_backdrop_melbourne` / `city_backdrop_newyork`）+ **代码自绘兜底 `CitySilhouetteView`**（landmarks 关键词→钟塔/桥/树冠/hash 播种天际线，2-3 层剪影叠景深 + TimelineView 云朵漂移）+ scrim 渐变保可读；滚动 `onScrollGeometryChange` 驱动受限视差，ReduceMotion 全静止，深色模式自动压低亮度与饱和度。内容在城市栏与最近会话间保留约 196pt 景观窗口（紧凑高度 / 辅助功能字号自动缩短），让城市地标完整露出并贴近预览稿比例。
-**内容层**：`CityHeaderBar`（~52pt 轻量条：国旗+城市名+统一短副文案，右侧金币胶囊）→ `RecentChatsCard`（.dsCard：最多 3 条最近会话，`conversationSummaries()` join `friends()`，AvatarBadge+摘要+相对时间+未读红点；行点击 chatBuilder 进聊天；「查看全部 ›」onOpenMessages；空态引导语）→ **探索入口区**（两张 88pt 横幅大卡 PressableCardStyle：左侧单一品牌实色承载文字，以短透明度渐变干净过渡到右侧 `home_mainline_<regionID>` / `home_activity_<regionID>` 生成式场景美术；主线剧情卡带进度 x/y 章 → `.mainline`；活动卡 → `.activities`）。删除旧 regionCard/entryGrid/内嵌 EncounterSection/章节列表。
+ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= 天空渐变（DSScenePalette.city 深浅双值）+ 三城正式生成式素材（`city_backdrop_london` / `city_backdrop_melbourne` / `city_backdrop_newyork`）+ **代码自绘兜底 `CitySilhouetteView`**（landmarks 关键词→钟塔/桥/树冠/hash 播种天际线，2-3 层剪影叠景深 + TimelineView 云朵漂移）+ scrim 渐变保可读；滚动 `onScrollGeometryChange` 驱动受限视差，ReduceMotion 全静止，深色模式自动压低亮度与饱和度。内容在城市 HUD 与最近会话间保留约 196pt 景观窗口（紧凑高度 / 辅助功能字号自动缩短），让城市地标完整露出并贴近预览稿比例。
+**内容层**：`HomeStatusBar`（取消整块材质卡，国旗徽章 + 当前城市/国家直接叠在场景上；右侧两个紧凑 HUD 资源槽展示真实 `difficultyLevel` 与金币，辅助功能字号自动改为纵向布局）→ `RecentChatsCard`（.dsCard：最多 3 条最近会话，`conversationSummaries()` join `friends()`，AvatarBadge+摘要+相对时间+未读红点；行点击 chatBuilder 进聊天；「查看全部 ›」onOpenMessages；空态引导语）→ **探索入口区**（两张 88pt 横幅大卡 PressableCardStyle：左侧单一品牌实色承载文字，以短透明度渐变干净过渡到右侧 `home_mainline_<regionID>` / `home_activity_<regionID>` 生成式场景美术；主线剧情卡带进度 x/y 章 → `.mainline`；活动卡 → `.activities`）。删除旧 regionCard/entryGrid/内嵌 EncounterSection/章节列表。
 
 ### 主线剧情二级页 `MainlineListView`（新）
 城市 chip + 总进度条；章节卡三态：已完成（绿勾+淡化+「重温」）、当前章（DSScenePalette 渐变高亮卡 + DuoButton 大 CTA）、后续章（软锁定视觉但**保持可点**——硬锁会改变功能）。push `MainlineChapter` 命中现有 destination。

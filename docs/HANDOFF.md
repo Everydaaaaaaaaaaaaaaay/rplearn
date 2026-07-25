@@ -86,7 +86,7 @@ App（组合根 AppEnvironment / RootView）
 
 - 深层页面用 `.dsTabBarHidden()` 映射到系统 `.toolbar(.hidden, for: .tabBar)`；返回时由系统自动恢复。
 - 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。透明材质统一用 `.dsMaterial(_:in:)`，开启“降低透明度”时会自动降级为不透明 surface。
-- 首页已接入 `city_backdrop_london`、`city_backdrop_melbourne`、`city_backdrop_newyork` 三张正式生成式背景；`CityBackdropView` 在未知城市或素材缺失时仍以多层城市剪影和云动画兜底。首页内容在城市栏下保留自适应景观窗口，深色模式会压低素材亮度与饱和度。
+- 首页已接入 `city_backdrop_london`、`city_backdrop_melbourne`、`city_backdrop_newyork` 三张正式生成式背景；`CityBackdropView` 在未知城市或素材缺失时仍以多层城市剪影和云动画兜底。`HomeStatusBar` 不使用整块卡片，直接在场景上呈现当前城市，并以游戏 HUD 资源槽展示真实英语等级与金币；其下保留自适应景观窗口，深色模式会压低素材亮度与饱和度。
 - 首页两个核心入口按城市加载 `home_mainline_<regionID>` 与 `home_activity_<regionID>` 横幅美术；当前三城共 6 张正式素材。左侧只使用单一品牌实色与短透明度过渡，缺图时 `ExploreCard` 自动退回品牌实色与 SF Symbol，不影响导航和可访问性。
 - 地图只承担目的地选择：MapKit 使用平面、弱化、无兴趣点样式，只开放系统平移与缩放手势，不提供俯仰、旋转、指南针、比例尺或用户定位。进入页面及切换城市时保持洲级宽视角，城市 chip、三态标记与底部卡共同完成选择。
 - `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。

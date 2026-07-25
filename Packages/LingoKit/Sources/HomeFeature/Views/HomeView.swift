@@ -55,7 +55,7 @@ public struct HomeView: View {
 
             ScrollView {
                 VStack(spacing: DSSpacing.md) {
-                    cityHeader
+                    cityStatusBar
                     cityVista
                     recentChats
                     exploreSection
@@ -86,47 +86,12 @@ public struct HomeView: View {
     }
 
     @ViewBuilder
-    private var cityHeader: some View {
+    private var cityStatusBar: some View {
         if let region = currentRegion {
-            HStack(spacing: DSSpacing.sm) {
-                Text(flag(region.countryCode))
-                    .font(.system(size: 28))
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(region.nameZh)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                    Text("在城市中认识朋友，练习真实英语")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                }
-                Spacer(minLength: DSSpacing.xs)
-                if let profile {
-                    Label("\(profile.coins)", systemImage: "dollarsign.circle.fill")
-                        .font(.system(.subheadline, design: .rounded, weight: .bold))
-                        .monospacedDigit()
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 11)
-                        .padding(.vertical, 8)
-                        .background(Color.dsSunset, in: Capsule())
-                }
-            }
-            .padding(DSSpacing.sm)
-            .dsMaterial(
-                .ultraThinMaterial,
-                in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-            )
-            .overlay {
-                RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                    .stroke(.white.opacity(0.25), lineWidth: 1)
-            }
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel(
-                "\(region.nameZh)，\(region.taglineZh)"
-                    + (profile.map { "，\($0.coins) 金币" } ?? "")
-            )
+            HomeStatusBar(region: region, profile: profile)
         } else {
             ProgressView()
-                .frame(maxWidth: .infinity, minHeight: 64)
+                .frame(maxWidth: .infinity, minHeight: 52)
         }
     }
 
@@ -257,11 +222,4 @@ public struct HomeView: View {
         }
     }
 
-    private func flag(_ countryCode: String) -> String {
-        countryCode.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
-            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
-                result.unicodeScalars.append(value)
-            }
-        }
-    }
 }
