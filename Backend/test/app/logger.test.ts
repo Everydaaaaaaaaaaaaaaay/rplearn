@@ -16,9 +16,11 @@ describe("logger redaction", () => {
       {
         apiKey: "api-key-value",
         authTokenHashPepper: "pepper-value",
+        authorizationCode: "authorization-code-value",
         password: "password-value",
         req: {
           body: {
+            identityToken: "identity-token-value",
             newPassword: "new-password-value",
             refreshToken: "refresh-token-value",
           },
@@ -32,6 +34,8 @@ describe("logger redaction", () => {
 
     const output = lines.join("");
     expect(output).not.toContain("api-key-value");
+    expect(output).not.toContain("authorization-code-value");
+    expect(output).not.toContain("identity-token-value");
     expect(output).not.toContain("pepper-value");
     expect(output).not.toContain("new-password-value");
     expect(output).not.toContain("password-value");

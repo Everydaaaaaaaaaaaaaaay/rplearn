@@ -5,6 +5,9 @@ const REDACTED = "[REDACTED]";
 export const SENSITIVE_LOG_PATHS = [
   "accessToken",
   "apiKey",
+  "appleCredentialEncryptionKeyBase64",
+  "applePrivateKeyBase64",
+  "authorizationCode",
   "authorization",
   "cookie",
   "deepSeekApiKey",
@@ -20,6 +23,8 @@ export const SENSITIVE_LOG_PATHS = [
   "req.body.accessToken",
   "req.body.apiKey",
   "req.body.authorization",
+  "req.body.authorizationCode",
+  "req.body.identityToken",
   "req.body.newPassword",
   "req.body.password",
   "req.body.refreshToken",

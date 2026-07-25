@@ -4,6 +4,8 @@ import { ConfigurationError, loadConfig } from "./config/env.js";
 import { createRuntimeDependencies } from "./infrastructure/runtime-dependencies.js";
 import { registerAuthRoutes } from "./modules/auth/routes.js";
 import { createAuthService } from "./modules/auth/service.js";
+import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
+import { createAppleAuthService } from "./modules/auth/apple/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -35,6 +37,15 @@ async function main(): Promise<void> {
     },
   });
   registerAuthRoutes(app, authService);
+  if (config.appleAuthEnabled) {
+    const appleAuthService = await createAppleAuthService(
+      config,
+      dependencies.database,
+      dependencies.redis,
+      authService,
+    );
+    registerAppleAuthRoutes(app, appleAuthService, authService);
+  }
   let closing = false;
 
   dependencies.onRedisError((error) => {

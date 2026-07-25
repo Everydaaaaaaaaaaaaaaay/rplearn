@@ -31,4 +31,12 @@ describe.runIf(runIntegrationTests)("runtime infrastructure", () => {
 
     expect(results).toEqual(["postgresql", "redis"]);
   });
+
+  it("consumes one-time Redis values exactly once", async () => {
+    const key = `integration:one-time:${Date.now().toString()}`;
+    await dependencies.redis.putOneTime(key, "value", 10);
+
+    await expect(dependencies.redis.takeOneTime(key)).resolves.toBe("value");
+    await expect(dependencies.redis.takeOneTime(key)).resolves.toBeNull();
+  });
 });

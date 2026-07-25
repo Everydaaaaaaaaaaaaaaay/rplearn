@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 import {
   char,
+  customType,
   index,
   integer,
   jsonb,
@@ -10,6 +11,10 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
+
+const binary = customType<{ data: Buffer; driverData: Buffer }>({
+  dataType: () => "bytea",
+});
 
 export const userStatus = applicationSchema.enum("user_status", [
   "active",
@@ -240,4 +245,30 @@ export const authSecurityEvents = applicationSchema.table(
       table.createdAt,
     ),
   ],
+);
+
+export const identityProviderCredentials = applicationSchema.table(
+  "identity_provider_credentials",
+  {
+    ciphertext: binary("ciphertext").notNull(),
+    createdAt: timestamp("created_at", {
+      mode: "date",
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    identityId: uuid("identity_id")
+      .primaryKey()
+      .references(() => userIdentities.id, { onDelete: "cascade" }),
+    keyVersion: text("key_version").notNull(),
+    nonce: binary("nonce").notNull(),
+    tag: binary("tag").notNull(),
+    updatedAt: timestamp("updated_at", {
+      mode: "date",
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [index("identity_credentials_key_version_index").on(table.keyVersion)],
 );

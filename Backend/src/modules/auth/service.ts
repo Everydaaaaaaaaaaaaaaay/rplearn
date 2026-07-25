@@ -29,6 +29,12 @@ export type AuthService = Readonly<{
   ) => RequestMetadata;
   forgotPassword: (email: string) => Promise<void>;
   listSessions: (identity: AccessIdentity) => Promise<readonly SessionSummary[]>;
+  loginFederated: (
+    userId: string,
+    tokenVersion: number,
+    device: DeviceDescriptor,
+    metadata: RequestMetadata,
+  ) => Promise<AuthTokenPair>;
   login: (
     email: string,
     password: string,
@@ -177,6 +183,37 @@ export async function createAuthService(
     }
   };
 
+  const createSessionForUser = async (
+    userId: string,
+    tokenVersion: number,
+    device: DeviceDescriptor,
+    metadata: RequestMetadata,
+  ): Promise<AuthTokenPair> => {
+    const now = new Date();
+    const rawRefreshToken = tokenService.createOpaqueToken();
+    const refreshTokenExpiresAt = addDays(now, config.authRefreshTokenTtlDays);
+    const identity: AccessIdentity = {
+      sessionId: newEntityId(),
+      tokenVersion,
+      userId,
+    };
+
+    await repository.createSession({
+      device,
+      familyId: newEntityId(),
+      metadata,
+      refreshToken: {
+        expiresAt: refreshTokenExpiresAt,
+        hash: tokenService.hashOpaqueValue(rawRefreshToken),
+        id: newEntityId(),
+      },
+      sessionId: identity.sessionId,
+      userId: identity.userId,
+    });
+
+    return issueTokenPair(identity, rawRefreshToken, refreshTokenExpiresAt);
+  };
+
   return {
     authenticate: async (accessToken) => {
       let identity: AccessIdentity;
@@ -223,6 +260,8 @@ export async function createAuthService(
     listSessions: async (identity) =>
       repository.listSessions(identity.userId, identity.sessionId),
 
+    loginFederated: createSessionForUser,
+
     login: async (rawEmail, password, device, metadata) => {
       const email = normalizeEmail(rawEmail);
       const account = await repository.findEmailAccount(email);
@@ -241,29 +280,12 @@ export async function createAuthService(
       }
       ensureAccountCanLogin(account);
 
-      const now = new Date();
-      const rawRefreshToken = tokenService.createOpaqueToken();
-      const refreshTokenExpiresAt = addDays(now, config.authRefreshTokenTtlDays);
-      const identity: AccessIdentity = {
-        sessionId: newEntityId(),
-        tokenVersion: account.tokenVersion,
-        userId: account.userId,
-      };
-
-      await repository.createSession({
+      return createSessionForUser(
+        account.userId,
+        account.tokenVersion,
         device,
-        familyId: newEntityId(),
         metadata,
-        refreshToken: {
-          expiresAt: refreshTokenExpiresAt,
-          hash: tokenService.hashOpaqueValue(rawRefreshToken),
-          id: newEntityId(),
-        },
-        sessionId: identity.sessionId,
-        userId: identity.userId,
-      });
-
-      return issueTokenPair(identity, rawRefreshToken, refreshTokenExpiresAt);
+      );
     },
 
     refresh: async (refreshToken) => {

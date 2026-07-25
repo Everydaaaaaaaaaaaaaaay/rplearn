@@ -58,4 +58,13 @@ describe("loadConfig", () => {
   it("rejects invalid ports", () => {
     expect(() => loadConfig({ PORT: "70000" })).toThrow(ConfigurationError);
   });
+
+  it("requires the complete Apple credential set when Apple auth is enabled", () => {
+    expect(() =>
+      loadConfig({
+        APPLE_AUTH_ENABLED: "true",
+        APPLE_CLIENT_IDS: "com.example.app",
+      }),
+    ).toThrow(ConfigurationError);
+  });
 });

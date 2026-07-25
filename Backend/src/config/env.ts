@@ -11,6 +11,17 @@ const optionalSecret = z
   .optional();
 
 const rawEnvironmentSchema = z.object({
+  APPLE_AUTH_ENABLED: booleanFromString.default(false),
+  APPLE_CHALLENGE_TTL_SECONDS: z.coerce.number().int().min(60).max(900).default(300),
+  APPLE_CLIENT_IDS: z.string().default(""),
+  APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64: optionalSecret,
+  APPLE_CREDENTIAL_KEY_VERSION: optionalSecret,
+  APPLE_JWKS_URL: z.url().default("https://appleid.apple.com/auth/keys"),
+  APPLE_KEY_ID: optionalSecret,
+  APPLE_PRIVATE_KEY_BASE64: optionalSecret,
+  APPLE_REDIRECT_URI: optionalSecret.pipe(z.url().optional()),
+  APPLE_TEAM_ID: optionalSecret,
+  APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
   AUTH_ACCESS_TOKEN_TTL_SECONDS: z.coerce.number().int().min(60).max(3600).default(900),
   AUTH_ACTION_TOKEN_TTL_SECONDS: z.coerce
     .number()
@@ -74,6 +85,17 @@ const rawEnvironmentSchema = z.object({
 });
 
 export type RuntimeConfig = Readonly<{
+  appleAuthEnabled: boolean;
+  appleChallengeTtlSeconds: number;
+  appleClientIds: readonly string[];
+  appleCredentialEncryptionKeyBase64?: string;
+  appleCredentialKeyVersion?: string;
+  appleJwksUrl: string;
+  appleKeyId?: string;
+  applePrivateKeyBase64?: string;
+  appleRedirectUri?: string;
+  appleTeamId?: string;
+  appleTokenEndpoint: string;
   authAccessTokenTtlSeconds: number;
   authActionTokenTtlSeconds: number;
   authActionUrlBase: string;
@@ -147,6 +169,7 @@ export function loadConfig(
   }
 
   const corsAllowedOrigins = parseOrigins(result.data.CORS_ALLOWED_ORIGINS);
+  const appleClientIds = parseOrigins(result.data.APPLE_CLIENT_IDS);
   const issues: string[] = [];
 
   if (corsAllowedOrigins.length === 0) {
@@ -202,11 +225,63 @@ export function loadConfig(
     issues.push("SMTP_USER and SMTP_PASSWORD must be provided together");
   }
 
+  if (
+    result.data.APPLE_AUTH_ENABLED &&
+    (appleClientIds.length === 0 ||
+      result.data.APPLE_TEAM_ID === undefined ||
+      result.data.APPLE_KEY_ID === undefined ||
+      result.data.APPLE_PRIVATE_KEY_BASE64 === undefined ||
+      result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64 === undefined ||
+      result.data.APPLE_CREDENTIAL_KEY_VERSION === undefined)
+  ) {
+    issues.push(
+      "Apple auth requires client IDs, developer key, and credential encryption settings",
+    );
+  }
+
+  if (result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64 !== undefined) {
+    const keyLength = Buffer.from(
+      result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64,
+      "base64",
+    ).byteLength;
+    if (keyLength !== 32) {
+      issues.push("APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64 must decode to 32 bytes");
+    }
+  }
+
   if (issues.length > 0) {
     throw new ConfigurationError(issues);
   }
 
   return {
+    appleAuthEnabled: result.data.APPLE_AUTH_ENABLED,
+    appleChallengeTtlSeconds: result.data.APPLE_CHALLENGE_TTL_SECONDS,
+    appleClientIds,
+    ...(result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64 === undefined
+      ? {}
+      : {
+          appleCredentialEncryptionKeyBase64:
+            result.data.APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64,
+        }),
+    ...(result.data.APPLE_CREDENTIAL_KEY_VERSION === undefined
+      ? {}
+      : {
+          appleCredentialKeyVersion: result.data.APPLE_CREDENTIAL_KEY_VERSION,
+        }),
+    appleJwksUrl: result.data.APPLE_JWKS_URL,
+    ...(result.data.APPLE_KEY_ID === undefined
+      ? {}
+      : { appleKeyId: result.data.APPLE_KEY_ID }),
+    ...(result.data.APPLE_PRIVATE_KEY_BASE64 === undefined
+      ? {}
+      : { applePrivateKeyBase64: result.data.APPLE_PRIVATE_KEY_BASE64 }),
+    ...(result.data.APPLE_REDIRECT_URI === undefined
+      ? {}
+      : { appleRedirectUri: result.data.APPLE_REDIRECT_URI }),
+    ...(result.data.APPLE_TEAM_ID === undefined
+      ? {}
+      : { appleTeamId: result.data.APPLE_TEAM_ID }),
+    appleTokenEndpoint: result.data.APPLE_TOKEN_ENDPOINT,
     authAccessTokenTtlSeconds: result.data.AUTH_ACCESS_TOKEN_TTL_SECONDS,
     authActionTokenTtlSeconds: result.data.AUTH_ACTION_TOKEN_TTL_SECONDS,
     authActionUrlBase: result.data.AUTH_ACTION_URL_BASE,

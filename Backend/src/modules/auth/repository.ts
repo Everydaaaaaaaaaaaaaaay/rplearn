@@ -17,6 +17,20 @@ export type EmailAccount = Readonly<{
   userId: string;
 }>;
 
+export type FederatedAccount = Readonly<{
+  identityId: string;
+  status: EmailAccount["status"];
+  tokenVersion: number;
+  userId: string;
+}>;
+
+export type SealedProviderCredential = Readonly<{
+  ciphertext: Buffer;
+  keyVersion: string;
+  nonce: Buffer;
+  tag: Buffer;
+}>;
+
 type ActionTokenParameters = Readonly<{
   expiresAt: Date;
   id: string;
@@ -628,5 +642,176 @@ export class AuthRepository {
         where id = ${userId}
       `;
     });
+  }
+
+  async findAppleAccount(subject: string): Promise<FederatedAccount | undefined> {
+    const [row] = await this.resource.sql<
+      {
+        identity_id: string;
+        status: EmailAccount["status"];
+        token_version: number;
+        user_id: string;
+      }[]
+    >`
+      select
+        i.id::text as identity_id,
+        u.id::text as user_id,
+        u.status,
+        u.token_version
+      from app.user_identities i
+      join app.users u on u.id = i.user_id
+      where i.provider = 'apple'
+        and i.provider_subject = ${subject}
+      limit 1
+    `;
+
+    if (row === undefined) {
+      return undefined;
+    }
+    return {
+      identityId: row.identity_id,
+      status: row.status,
+      tokenVersion: row.token_version,
+      userId: row.user_id,
+    };
+  }
+
+  async findOrCreateAppleAccount(parameters: {
+    email?: string;
+    emailVerified: boolean;
+    subject: string;
+  }): Promise<FederatedAccount> {
+    const existing = await this.findAppleAccount(parameters.subject);
+    if (existing !== undefined) {
+      return existing;
+    }
+
+    const userId = newEntityId();
+    const identityId = newEntityId();
+    const verifiedAt = parameters.emailVerified ? new Date().toISOString() : null;
+    try {
+      await this.resource.sql.begin(async (sql) => {
+        await sql`
+          insert into app.users (id)
+          values (${userId})
+        `;
+        await sql`
+          insert into app.user_identities (
+            id,
+            user_id,
+            provider,
+            provider_subject,
+            email,
+            email_verified_at
+          )
+          values (
+            ${identityId},
+            ${userId},
+            'apple',
+            ${parameters.subject},
+            ${parameters.email ?? null},
+            ${verifiedAt}
+          )
+        `;
+      });
+      return {
+        identityId,
+        status: "active",
+        tokenVersion: 0,
+        userId,
+      };
+    } catch (error) {
+      if (!hasPostgresCode(error, "23505")) {
+        throw error;
+      }
+      const racedAccount = await this.findAppleAccount(parameters.subject);
+      if (racedAccount === undefined) {
+        throw error;
+      }
+      return racedAccount;
+    }
+  }
+
+  async linkAppleIdentity(parameters: {
+    email?: string;
+    emailVerified: boolean;
+    subject: string;
+    userId: string;
+  }): Promise<
+    | Readonly<{ identityId: string; status: "linked" }>
+    | Readonly<{ status: "conflict" }>
+  > {
+    const existing = await this.findAppleAccount(parameters.subject);
+    if (existing !== undefined) {
+      return existing.userId === parameters.userId
+        ? { identityId: existing.identityId, status: "linked" }
+        : { status: "conflict" };
+    }
+
+    const identityId = newEntityId();
+    const verifiedAt = parameters.emailVerified ? new Date().toISOString() : null;
+    try {
+      const rows = await this.resource.sql<{ id: string }[]>`
+        insert into app.user_identities (
+          id,
+          user_id,
+          provider,
+          provider_subject,
+          email,
+          email_verified_at
+        )
+        select
+          ${identityId},
+          u.id,
+          'apple',
+          ${parameters.subject},
+          ${parameters.email ?? null},
+          ${verifiedAt}
+        from app.users u
+        where u.id = ${parameters.userId}
+          and u.status = 'active'
+        returning id::text
+      `;
+      if (rows.length === 0) {
+        return { status: "conflict" };
+      }
+      return { identityId, status: "linked" };
+    } catch (error) {
+      if (!hasPostgresCode(error, "23505")) {
+        throw error;
+      }
+      const racedAccount = await this.findAppleAccount(parameters.subject);
+      return racedAccount?.userId === parameters.userId
+        ? { identityId: racedAccount.identityId, status: "linked" }
+        : { status: "conflict" };
+    }
+  }
+
+  async saveProviderCredential(
+    identityId: string,
+    credential: SealedProviderCredential,
+  ): Promise<void> {
+    await this.resource.sql`
+      insert into app.identity_provider_credentials (
+        identity_id,
+        ciphertext,
+        nonce,
+        tag,
+        key_version
+      )
+      values (
+        ${identityId},
+        ${credential.ciphertext},
+        ${credential.nonce},
+        ${credential.tag},
+        ${credential.keyVersion}
+      )
+      on conflict (identity_id) do update
+      set ciphertext = excluded.ciphertext,
+          nonce = excluded.nonce,
+          tag = excluded.tag,
+          key_version = excluded.key_version,
+          updated_at = now()
+    `;
   }
 }

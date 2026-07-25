@@ -6,6 +6,8 @@ export type RedisResource = Readonly<{
   connect: () => Promise<void>;
   onError: (listener: (error: Error) => void) => void;
   ping: () => Promise<void>;
+  putOneTime: (key: string, value: string, ttlSeconds: number) => Promise<void>;
+  takeOneTime: (key: string) => Promise<string | null>;
 }>;
 
 export function createRedisResource(config: RuntimeConfig): RedisResource {
@@ -38,5 +40,15 @@ export function createRedisResource(config: RuntimeConfig): RedisResource {
       }
       await client.ping();
     },
+    putOneTime: async (key, value, ttlSeconds) => {
+      const result = await client.set(key, value, {
+        EX: ttlSeconds,
+        NX: true,
+      });
+      if (result !== "OK") {
+        throw new Error("One-time key already exists");
+      }
+    },
+    takeOneTime: async (key) => client.getDel(key),
   };
 }
