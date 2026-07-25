@@ -46,6 +46,8 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
   const password = "Correct Horse Account 1!";
   const verificationTokens = new Map<string, string>();
   const revokedAppleTokens: string[] = [];
+  const deletedMediaObjectKeys: string[] = [];
+  const mediaAssetId = newEntityId();
 
   beforeAll(async () => {
     const config = loadConfig({
@@ -74,6 +76,10 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
         },
       },
       credentialSealer,
+      deleteMediaObjects: (objectKeys) => {
+        deletedMediaObjectKeys.push(...objectKeys);
+        return Promise.resolve();
+      },
     });
     jobWorker = createTestJobWorker(config, dependencies.database, notifier, {
       processAccountPurge: accountService.processDeletion,
@@ -183,6 +189,28 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
         now()
       )
     `;
+    await dependencies.database.sql`
+      insert into app.media_assets (
+        id,
+        user_id,
+        purpose,
+        object_key,
+        content_type,
+        byte_size,
+        checksum_sha256,
+        pending_expires_at
+      )
+      values (
+        ${mediaAssetId},
+        ${userId},
+        'voice_message',
+        ${`${userId}/${mediaAssetId}`},
+        'audio/x-caf',
+        128,
+        ${"A".repeat(43) + "="},
+        now() + interval '1 hour'
+      )
+    `;
   });
 
   afterAll(async () => {
@@ -241,6 +269,7 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
     );
     expect(exported.body).toContain(email);
     expect(exported.body).toContain(transactionId);
+    expect(exported.body).toContain(mediaAssetId);
     expect(exported.body).not.toContain(password);
     expect(exported.body).not.toContain("passwordHash");
     expect(exported.body).not.toContain("rawPayload");
@@ -314,6 +343,7 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
     expect(revokedAppleTokens).toEqual([
       "com.tiantian.lingotrip:account-apple-refresh-token",
     ]);
+    expect(deletedMediaObjectKeys).toEqual([`${userId}/${mediaAssetId}`]);
 
     const deletedLogin = await app.inject({
       method: "POST",

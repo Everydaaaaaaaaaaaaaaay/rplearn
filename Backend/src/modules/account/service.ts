@@ -29,6 +29,7 @@ export type AccountService = Readonly<{
 type AccountServiceDependencies = Readonly<{
   appleTokenRevoker?: AppleTokenRevoker;
   credentialSealer?: CredentialSealer;
+  deleteMediaObjects?: (objectKeys: readonly string[]) => Promise<void>;
   onAppleRevocationUnavailable?: (
     fields: Readonly<{ reason: string; requestId: string }>,
   ) => void;
@@ -75,6 +76,12 @@ export function createAccountService(
       );
       if (work === undefined) {
         return;
+      }
+      if (work.mediaObjectKeys.length > 0) {
+        if (dependencies.deleteMediaObjects === undefined) {
+          throw new Error("MediaDeletionHandlerUnavailable");
+        }
+        await dependencies.deleteMediaObjects(work.mediaObjectKeys);
       }
       if (work.appleCredentials.length > 0) {
         if (

@@ -7,6 +7,7 @@ import {
   ACCOUNT_PURGE_JOB,
   AUTH_EMAIL_VERIFICATION_JOB,
   AUTH_PASSWORD_RESET_JOB,
+  MEDIA_DELETE_JOB,
   type ClaimedJob,
 } from "./types.js";
 
@@ -17,6 +18,13 @@ const authEmailPayloadSchema = z.object({
 const accountPurgePayloadSchema = z.object({
   requestId: z.uuid(),
   userId: z.uuid(),
+});
+const mediaDeletePayloadSchema = z.object({
+  assetId: z.uuid(),
+  objectKey: z
+    .string()
+    .regex(/^[0-9a-f-]{36}\/[0-9a-f-]{36}$/i)
+    .max(73),
 });
 
 export type JobRunResult = "idle" | "succeeded" | JobFailureResult;
@@ -34,6 +42,9 @@ type JobWorkerDependencies = Readonly<{
   notifier: AuthNotifier;
   processAccountPurge?: (
     payload: z.infer<typeof accountPurgePayloadSchema>,
+  ) => Promise<void>;
+  processMediaDelete?: (
+    payload: z.infer<typeof mediaDeletePayloadSchema>,
   ) => Promise<void>;
   repository: Pick<JobRepository, "claim" | "complete" | "fail">;
   workerId: string;
@@ -72,6 +83,14 @@ export class JobWorker {
         }
         await this.dependencies.processAccountPurge(
           accountPurgePayloadSchema.parse(payload),
+        );
+        return;
+      case MEDIA_DELETE_JOB:
+        if (this.dependencies.processMediaDelete === undefined) {
+          throw new Error("MediaDeleteHandlerUnavailable");
+        }
+        await this.dependencies.processMediaDelete(
+          mediaDeletePayloadSchema.parse(payload),
         );
         return;
       default:

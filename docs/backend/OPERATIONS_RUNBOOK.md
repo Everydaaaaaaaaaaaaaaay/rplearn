@@ -19,6 +19,7 @@
 - 未处理 billing provider event 增长；
 - PostgreSQL 复制/WAL/备份延迟；
 - 后台任务最老等待时间超过 5 分钟，或新增任意 `dead` 任务；
+- 对象存储错误、`media.delete` 死信、过期 pending 媒体或用量异常增长；
 - 审计持久化失败或 maintenance job 连续失败。
 
 Prometheus 只采集低基数 route/method/status 标签，禁止加入 user ID、request
@@ -58,6 +59,19 @@ fail-closed，不允许绕过风控；普通业务的全局 IP 保护可短暂 f
 4. 如果是密钥版本或 payload schema 不兼容，先回滚 worker；不要直接删除任务。
 5. 已完成、取消和死信任务由 `maintenance:cleanup` 按 `JOB_RETENTION_DAYS` 清理。
 
+### 对象存储故障或媒体删除积压
+
+1. readiness 失败时先确认桶、区域、私网 DNS、workload identity 和 HeadBucket
+   权限；不要临时开放公网桶。
+2. 上传或下载签名异常时核对服务端时钟，以及目标存储对签名
+   `Content-Length`、`Content-Type` 和 checksum query 的支持；禁止关闭完整性校验绕过。
+3. `media.delete` 可以安全重试。只记录 asset/job ID，不把对象 URL、对象内容或签名 query
+   写入工单和日志。
+4. 每日维护会把过期 `pending` 预留转成删除任务。持续增长表示 worker、维护 CronJob
+   或对象存储权限异常。
+5. 对账数据库中 `deleted`/`purged_at` 与桶对象清单时只使用受控批处理；对象清单属于敏感
+   元数据，差异删除先经过 dry-run 与审计。
+
 ### 账号删除任务失败
 
 1. `account.purge` 进入死信即按高优先级隐私事故处理，记录 request ID，禁止读取 payload。
@@ -85,7 +99,7 @@ TTL 加缓存余量。只有泄露事故才立即撤销会话；不能为了例�
 ## 日常作业
 
 - 每天：`pnpm maintenance:cleanup`；
-- 每天：检查备份、WAL 和未处理计费事件；
+- 每天：检查备份、WAL、未处理计费事件与媒体生命周期；
 - 每周：依赖审计、镜像扫描、成本与配额复核；
 - 每月：隔离恢复演练、权限复核、Secret 轮换演练；
 - 每季度：威胁模型、数据保留和事故手册复审。

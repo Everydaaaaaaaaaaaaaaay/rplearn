@@ -107,6 +107,30 @@ const rawEnvironmentSchema = z.object({
     .default("info"),
   METRICS_BEARER_TOKEN: optionalSecret,
   METRICS_ENABLED: booleanFromString.default(true),
+  MEDIA_DOWNLOAD_URL_TTL_SECONDS: z.coerce.number().int().min(60).max(900).default(300),
+  MEDIA_MAX_VOICE_BYTES: z.coerce
+    .number()
+    .int()
+    .min(1024)
+    .max(50 * 1024 * 1024)
+    .default(20 * 1024 * 1024),
+  MEDIA_PENDING_TTL_HOURS: z.coerce.number().int().min(1).max(168).default(24),
+  MEDIA_RECORD_RETENTION_DAYS: z.coerce.number().int().min(1).max(365).default(30),
+  MEDIA_S3_ACCESS_KEY_ID: optionalSecret,
+  MEDIA_S3_BUCKET: optionalSecret,
+  MEDIA_S3_ENDPOINT: optionalSecret.pipe(z.url().optional()),
+  MEDIA_S3_FORCE_PATH_STYLE: booleanFromString.default(false),
+  MEDIA_S3_REGION: z.string().trim().min(1).default("us-east-1"),
+  MEDIA_S3_SECRET_ACCESS_KEY: optionalSecret,
+  MEDIA_STORAGE_ENABLED: booleanFromString.default(false),
+  MEDIA_UPLOAD_URL_TTL_SECONDS: z.coerce.number().int().min(60).max(900).default(300),
+  MEDIA_USER_ASSET_LIMIT: z.coerce.number().int().min(100).max(100_000).default(10_000),
+  MEDIA_USER_STORAGE_BYTES: z.coerce
+    .number()
+    .int()
+    .min(1024 * 1024)
+    .max(100 * 1024 * 1024 * 1024)
+    .default(1024 * 1024 * 1024),
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().int().min(1).max(65_535).default(8080),
   READINESS_TIMEOUT_MS: z.coerce.number().int().min(100).max(30_000).default(2000),
@@ -193,6 +217,20 @@ export type RuntimeConfig = Readonly<{
   logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "trace" | "silent";
   metricsBearerToken?: string;
   metricsEnabled: boolean;
+  mediaDownloadUrlTtlSeconds: number;
+  mediaMaxVoiceBytes: number;
+  mediaPendingTtlHours: number;
+  mediaRecordRetentionDays: number;
+  mediaS3AccessKeyId?: string;
+  mediaS3Bucket: string;
+  mediaS3Endpoint?: string;
+  mediaS3ForcePathStyle: boolean;
+  mediaS3Region: string;
+  mediaS3SecretAccessKey?: string;
+  mediaStorageEnabled: boolean;
+  mediaUploadUrlTtlSeconds: number;
+  mediaUserAssetLimit: number;
+  mediaUserStorageBytes: number;
   nodeEnv: "development" | "test" | "production";
   port: number;
   readinessTimeoutMs: number;
@@ -421,6 +459,23 @@ export function loadConfig(
     );
   }
 
+  if (result.data.NODE_ENV === "production" && !result.data.MEDIA_STORAGE_ENABLED) {
+    issues.push("MEDIA_STORAGE_ENABLED must be true in production");
+  }
+
+  if (result.data.MEDIA_STORAGE_ENABLED && result.data.MEDIA_S3_BUCKET === undefined) {
+    issues.push("MEDIA_S3_BUCKET is required when media storage is enabled");
+  }
+
+  if (
+    (result.data.MEDIA_S3_ACCESS_KEY_ID === undefined) !==
+    (result.data.MEDIA_S3_SECRET_ACCESS_KEY === undefined)
+  ) {
+    issues.push(
+      "MEDIA_S3_ACCESS_KEY_ID and MEDIA_S3_SECRET_ACCESS_KEY must be provided together",
+    );
+  }
+
   if (
     (result.data.SMTP_USER === undefined) !==
     (result.data.SMTP_PASSWORD === undefined)
@@ -563,6 +618,26 @@ export function loadConfig(
       ? {}
       : { metricsBearerToken: result.data.METRICS_BEARER_TOKEN }),
     metricsEnabled: result.data.METRICS_ENABLED,
+    mediaDownloadUrlTtlSeconds: result.data.MEDIA_DOWNLOAD_URL_TTL_SECONDS,
+    mediaMaxVoiceBytes: result.data.MEDIA_MAX_VOICE_BYTES,
+    mediaPendingTtlHours: result.data.MEDIA_PENDING_TTL_HOURS,
+    mediaRecordRetentionDays: result.data.MEDIA_RECORD_RETENTION_DAYS,
+    ...(result.data.MEDIA_S3_ACCESS_KEY_ID === undefined
+      ? {}
+      : { mediaS3AccessKeyId: result.data.MEDIA_S3_ACCESS_KEY_ID }),
+    mediaS3Bucket: result.data.MEDIA_S3_BUCKET ?? "lingotrip-media-dev",
+    ...(result.data.MEDIA_S3_ENDPOINT === undefined
+      ? {}
+      : { mediaS3Endpoint: result.data.MEDIA_S3_ENDPOINT }),
+    mediaS3ForcePathStyle: result.data.MEDIA_S3_FORCE_PATH_STYLE,
+    mediaS3Region: result.data.MEDIA_S3_REGION,
+    ...(result.data.MEDIA_S3_SECRET_ACCESS_KEY === undefined
+      ? {}
+      : { mediaS3SecretAccessKey: result.data.MEDIA_S3_SECRET_ACCESS_KEY }),
+    mediaStorageEnabled: result.data.MEDIA_STORAGE_ENABLED,
+    mediaUploadUrlTtlSeconds: result.data.MEDIA_UPLOAD_URL_TTL_SECONDS,
+    mediaUserAssetLimit: result.data.MEDIA_USER_ASSET_LIMIT,
+    mediaUserStorageBytes: result.data.MEDIA_USER_STORAGE_BYTES,
     nodeEnv: result.data.NODE_ENV,
     port: result.data.PORT,
     readinessTimeoutMs: result.data.READINESS_TIMEOUT_MS,

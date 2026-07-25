@@ -59,6 +59,9 @@ describe("loadConfig", () => {
       expect(error.issues).toContain(
         "METRICS_BEARER_TOKEN must contain at least 32 characters when metrics are enabled",
       );
+      expect(error.issues).toContain(
+        "MEDIA_STORAGE_ENABLED must be true in production",
+      );
     }
   });
 
@@ -97,6 +100,15 @@ describe("loadConfig", () => {
       loadConfig({
         AUTH_JWT_KEY_ID: "same-key",
         AUTH_JWT_PREVIOUS_PUBLIC_KEYS: "same-key=YWJj",
+      }),
+    ).toThrow(ConfigurationError);
+  });
+
+  it("requires a bucket and complete static credentials for enabled media", () => {
+    expect(() =>
+      loadConfig({
+        MEDIA_S3_ACCESS_KEY_ID: "incomplete",
+        MEDIA_STORAGE_ENABLED: "true",
       }),
     ).toThrow(ConfigurationError);
   });

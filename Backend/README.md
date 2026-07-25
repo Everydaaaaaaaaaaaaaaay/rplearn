@@ -32,7 +32,7 @@ pnpm test:integration
 
 `test:integration` 需要先运行 `pnpm infra:up`。PostgreSQL 映射到本机
 `54329`，Redis 映射到 `63799`，避免占用常见的默认端口。开发邮件进入 Mailpit，可在
-`http://127.0.0.1:8025` 查看。
+`http://127.0.0.1:8025` 查看；私有媒体存入 MinIO，管理台位于 `http://127.0.0.1:9001`。
 
 开发服务默认监听 `http://127.0.0.1:8080`：
 
@@ -76,6 +76,11 @@ token。Apple 邮箱不会自动与已有邮箱账号合并；已有账号只能
 `expectedVersion`，冲突会返回当前服务器记录而不会静默覆盖。分页 cursor 绑定账号且带 HMAC，第一页同时固定全局同步 cursor，分页期间发生的变更由
 `/v1/sync/changes`
 补齐。服务端校验每类 payload、父子关系、单记录大小与账号级资源上限，账号导出和删除也覆盖这些内容。
+
+语音等二进制内容不进入 PostgreSQL 或 JSON 同步载荷。客户端先向 `/v1/media/assets`
+预留稳定资产 ID，再按短时签名 URL 直传私有 S3 兼容桶；签名固定字节数、内容类型和 SHA-256，完成接口用对象元数据再次校验。只有
+`ready`
+且属于当前账号的资产能下载或被消息引用。删除先写数据库墓碑，再由持久 worker 幂等清除对象；过期未完成上传由每日维护任务回收。
 
 订阅使用平台无关的 plan、store
 product、transaction、subscription 和 entitlement 模型。Apple 适配器只接受官方 App Store

@@ -87,7 +87,25 @@ const messagePayload = z
     tokenEstimate: z.number().int().min(0).max(1_000_000),
     translationZh: nullableText(40_000),
   })
-  .strict();
+  .strict()
+  .superRefine((value, context) => {
+    if (value.audioAssetId !== null && value.audioAssetId !== undefined) {
+      if (value.kind !== "voice") {
+        context.addIssue({
+          code: "custom",
+          message: "Only voice messages can reference an audio asset.",
+          path: ["audioAssetId"],
+        });
+      }
+      if (value.audioDuration === null || value.audioDuration === undefined) {
+        context.addIssue({
+          code: "custom",
+          message: "An uploaded voice message requires its audio duration.",
+          path: ["audioDuration"],
+        });
+      }
+    }
+  });
 
 const favoritePayload = z
   .object({

@@ -257,6 +257,34 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
       status: "rejected",
     });
 
+    const unavailableMedia = await app.inject({
+      headers: headers(),
+      method: "POST",
+      payload: {
+        commands: [
+          {
+            ...commands[2],
+            commandId: newEntityId(),
+            parentId: conversationId,
+            payload: {
+              ...commands[2].payload,
+              audioAssetId: newEntityId(),
+              audioDuration: 1.5,
+              kind: "voice",
+            },
+            resourceId: newEntityId(),
+          },
+        ],
+      },
+      url: "/v1/content/commands",
+    });
+    expect(
+      unavailableMedia.json<{ results: readonly ContentCommandResult[] }>().results[0],
+    ).toMatchObject({
+      error: { code: "MEDIA_ASSET_NOT_READY" },
+      status: "rejected",
+    });
+
     const firstPageResponse = await app.inject({
       headers: headers(),
       method: "GET",

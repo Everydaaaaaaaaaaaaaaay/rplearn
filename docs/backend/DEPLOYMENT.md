@@ -32,6 +32,7 @@ ConfigMap 和 Secret，不把值写进 manifest。
 - DeepSeek API key；
 - metrics 独立 bearer token；
 - 后台任务 payload AES-256-GCM key 与 key version；
+- 私有媒体桶名称、区域；非 workload identity 环境才注入对象存储访问凭据；
 - Apple 登录私钥与 Apple credential AES-256-GCM key；
 - 启用 Apple Billing 时的 App Apple ID 和 Apple PKI 根证书。
 
@@ -43,6 +44,24 @@ API 在账号业务事务中写入加密任务，只有 worker 执行 SMTP 投�
 数据库租约与 `FOR UPDATE SKIP LOCKED` 负责互斥领取；失败任务指数退避，达到最大次数后
 进入 `dead`。API 和 worker 必须通过 `JOB_PAYLOAD_PREVIOUS_KEYS` 同时保留仍有未完成任务
 引用的历史 key version；确认旧版本任务全部结束并超过保留期后才能移除旧 key。
+
+## 私有媒体桶
+
+生产设置 `MEDIA_STORAGE_ENABLED=true` 并提供 `MEDIA_S3_BUCKET` 与区域。优先让 API 和
+worker 使用不同、最小权限的 workload identity；只有兼容存储不支持工作负载身份时才成对
+注入 access key 与 secret。API 需要 `HeadBucket`、指定前缀的
+`PutObject/GetObject/HeadObject` 签名权限，worker 额外需要批量删除权限。
+
+桶必须阻止全部公网访问、禁用 ACL、强制 TLS、启用默认静态加密和版本控制，并把读写数据
+事件送入云审计。生命周期至少覆盖：删除标记和非当前版本清理、未完成 multipart
+上传清理，以及数据库任务异常时的孤儿对象兜底保留期。不能设置允许匿名 GET 的桶策略。
+跨域只在 Web 客户端上线时为明确的生产 origin、PUT/GET 方法和必要 header 开白名单；
+iOS 不需要 CORS。
+
+发布前用真实目标存储运行媒体集成测试，验证签名的 `Content-Length`、`Content-Type` 和
+checksum 兼容性。`/health/ready` 会执行 HeadBucket；对象存储不可用的实例不接收流量。
+worker 的 `media.delete` 死信和 `pending` 资产年龄必须进入告警。MinIO
+只供本地联调，不能作为当前 Compose 配置直接用于生产。
 
 ## JWT 无停机密钥轮换
 
@@ -87,6 +106,7 @@ cd Backend
 DEEPSEEK_API_KEY='从本机安全环境注入' docker compose --profile app up --build --wait
 ```
 
-API 为 `http://127.0.0.1:8080`，worker 自动处理邮件任务，Mailpit 为
-`http://127.0.0.1:8025`。Compose 开发配置使用临时 JWT
+API 为 `http://127.0.0.1:8080`，worker 自动处理邮件和媒体删除任务，Mailpit 为
+`http://127.0.0.1:8025`，MinIO 控制台为
+`http://127.0.0.1:9001`。Compose 开发配置使用临时 JWT
 密钥，容器重启会使现有 access token 失效；生产绝不能使用这一开发行为。

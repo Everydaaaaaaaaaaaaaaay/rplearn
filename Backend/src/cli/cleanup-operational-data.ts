@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { ConfigurationError, loadConfig } from "../config/env.js";
 import { createDatabase } from "../db/client.js";
+import { createMediaObjectStore } from "../modules/media/object-store.js";
+import { createMediaService } from "../modules/media/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -17,6 +19,13 @@ async function main(): Promise<void> {
 
   const database = createDatabase(config);
   try {
+    const expiredMediaUploads = config.mediaStorageEnabled
+      ? await createMediaService(
+          config,
+          database,
+          createMediaObjectStore(config),
+        ).expirePendingUploads()
+      : 0;
     const auditRows = await database.sql<{ id: string }[]>`
       delete from app.audit_events
       where created_at <
@@ -50,6 +59,13 @@ async function main(): Promise<void> {
           (${config.accountDeletionReceiptRetentionDays} * interval '1 day')
       returning id::text
     `;
+    const mediaRows = await database.sql<{ id: string }[]>`
+      delete from app.media_assets
+      where status = 'deleted'
+        and purged_at <
+          now() - (${config.mediaRecordRetentionDays} * interval '1 day')
+      returning id::text
+    `;
     process.stdout.write(
       `${JSON.stringify({
         deleted: {
@@ -58,7 +74,9 @@ async function main(): Promise<void> {
           auditEvents: auditRows.length,
           deletionReceipts: deletionReceiptRows.length,
           jobs: jobRows.length,
+          mediaRecords: mediaRows.length,
         },
+        expiredMediaUploads,
       })}\n`,
     );
   } finally {

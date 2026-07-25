@@ -228,6 +228,21 @@ export class AccountRepository {
           where user_id = ${userId}
           order by resource_type, resource_id
         `;
+        const mediaAssets = await sql<JsonRow[]>`
+          select
+            id::text,
+            purpose,
+            content_type as "contentType",
+            byte_size::text as "byteSize",
+            checksum_sha256 as "checksumSha256",
+            status,
+            created_at as "createdAt",
+            ready_at as "readyAt",
+            deleted_at as "deletedAt"
+          from app.media_assets
+          where user_id = ${userId}
+          order by created_at, id
+        `;
         const securityEvents = await sql<JsonRow[]>`
           select
             event_type as "eventType",
@@ -276,11 +291,12 @@ export class AccountRepository {
           },
           generatedAt: generatedAt.toISOString(),
           identities,
+          mediaAssets,
           privacy: {
             deletionRequests,
           },
           profile: profile ?? null,
-          schemaVersion: 2,
+          schemaVersion: 3,
           securityEvents,
           sessions,
           syncChanges,
@@ -461,8 +477,16 @@ export class AccountRepository {
           tag: row.tag,
         },
       }));
+      const mediaRows = await sql<{ object_key: string }[]>`
+        select object_key
+        from app.media_assets
+        where user_id = ${userId}
+          and purged_at is null
+        order by id
+      `;
       return {
         appleCredentials,
+        mediaObjectKeys: mediaRows.map((row) => row.object_key),
         requestId,
         userId,
       };

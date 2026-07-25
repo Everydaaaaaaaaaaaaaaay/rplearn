@@ -208,6 +208,7 @@ export class ContentRepository {
       throw versionConflict(existing);
     }
     await this.requireParent(sql, userId, command.resourceType, command.parentId);
+    await this.requireReadyMediaAsset(sql, userId, command);
     if (existing?.deletedAt !== null) {
       await this.requireCapacity(sql, userId, command.resourceType);
     }
@@ -370,6 +371,39 @@ export class ContentRepository {
       throw new AppError({
         code: "CONTENT_PARENT_NOT_FOUND",
         message: "The parent record does not exist.",
+        statusCode: 409,
+      });
+    }
+  }
+
+  private async requireReadyMediaAsset(
+    sql: TransactionSql,
+    userId: string,
+    command: ContentUpsertCommand,
+  ): Promise<void> {
+    if (
+      command.resourceType !== "message" ||
+      typeof command.payload !== "object" ||
+      command.payload === null
+    ) {
+      return;
+    }
+    const audioAssetId = (command.payload as { audioAssetId?: unknown }).audioAssetId;
+    if (typeof audioAssetId !== "string") {
+      return;
+    }
+    const [asset] = await sql<{ id: string }[]>`
+      select id::text
+      from app.media_assets
+      where id = ${audioAssetId}
+        and user_id = ${userId}
+        and purpose = 'voice_message'
+        and status = 'ready'
+    `;
+    if (asset === undefined) {
+      throw new AppError({
+        code: "MEDIA_ASSET_NOT_READY",
+        message: "The referenced media asset is not ready for this account.",
         statusCode: 409,
       });
     }

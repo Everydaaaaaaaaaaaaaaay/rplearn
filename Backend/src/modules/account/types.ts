@@ -29,11 +29,12 @@ export type AccountExport = Readonly<{
   }>;
   generatedAt: string;
   identities: readonly unknown[];
+  mediaAssets: readonly unknown[];
   privacy: Readonly<{
     deletionRequests: readonly unknown[];
   }>;
   profile: unknown;
-  schemaVersion: 2;
+  schemaVersion: 3;
   securityEvents: readonly unknown[];
   sessions: readonly unknown[];
   syncChanges: readonly unknown[];
@@ -45,6 +46,7 @@ export type AccountExport = Readonly<{
 
 export type DeletionWork = Readonly<{
   appleCredentials: readonly AppleDeletionCredential[];
+  mediaObjectKeys: readonly string[];
   requestId: string;
   userId: string;
 }>;

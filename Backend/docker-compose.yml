@@ -9,6 +9,8 @@ services:
     depends_on:
       mailpit:
         condition: service_healthy
+      minio-init:
+        condition: service_healthy
       postgres:
         condition: service_healthy
       redis:
@@ -25,6 +27,13 @@ services:
       JOB_PAYLOAD_KEY_VERSION: ${JOB_PAYLOAD_KEY_VERSION:-}
       JOB_PAYLOAD_PREVIOUS_KEYS: ${JOB_PAYLOAD_PREVIOUS_KEYS:-}
       LOG_LEVEL: debug
+      MEDIA_S3_ACCESS_KEY_ID: lingotrip_dev
+      MEDIA_S3_BUCKET: lingotrip-media-dev
+      MEDIA_S3_ENDPOINT: http://minio:9000
+      MEDIA_S3_FORCE_PATH_STYLE: "true"
+      MEDIA_S3_REGION: us-east-1
+      MEDIA_S3_SECRET_ACCESS_KEY: lingotrip_dev_only
+      MEDIA_STORAGE_ENABLED: "true"
       NODE_ENV: development
       REDIS_URL: redis://redis:6379
       SMTP_HOST: mailpit
@@ -52,6 +61,8 @@ services:
     depends_on:
       mailpit:
         condition: service_healthy
+      minio-init:
+        condition: service_healthy
       postgres:
         condition: service_healthy
     environment:
@@ -61,6 +72,13 @@ services:
       JOB_PAYLOAD_KEY_VERSION: ${JOB_PAYLOAD_KEY_VERSION:-}
       JOB_PAYLOAD_PREVIOUS_KEYS: ${JOB_PAYLOAD_PREVIOUS_KEYS:-}
       LOG_LEVEL: debug
+      MEDIA_S3_ACCESS_KEY_ID: lingotrip_dev
+      MEDIA_S3_BUCKET: lingotrip-media-dev
+      MEDIA_S3_ENDPOINT: http://minio:9000
+      MEDIA_S3_FORCE_PATH_STYLE: "true"
+      MEDIA_S3_REGION: us-east-1
+      MEDIA_S3_SECRET_ACCESS_KEY: lingotrip_dev_only
+      MEDIA_STORAGE_ENABLED: "true"
       NODE_ENV: development
       SMTP_HOST: mailpit
       SMTP_PORT: 1025
@@ -78,6 +96,42 @@ services:
     ports:
       - "127.0.0.1:1025:1025"
       - "127.0.0.1:8025:8025"
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_PASSWORD: lingotrip_dev_only
+      MINIO_ROOT_USER: lingotrip_dev
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    restart: unless-stopped
+    volumes:
+      - minio-data:/data
+
+  minio-init:
+    image: minio/mc:RELEASE.2025-04-16T18-13-26Z
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >
+        mc alias set local http://minio:9000 lingotrip_dev lingotrip_dev_only && mc mb
+        --ignore-existing local/lingotrip-media-dev && mc anonymous set none
+        local/lingotrip-media-dev && while true; do sleep 3600; done
+    healthcheck:
+      test: ["CMD", "mc", "stat", "local/lingotrip-media-dev"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     restart: unless-stopped
 
   postgres:
@@ -110,4 +164,5 @@ services:
     restart: unless-stopped
 
 volumes:
+  minio-data:
   postgres-data:

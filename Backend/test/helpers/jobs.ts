@@ -20,6 +20,9 @@ export function createTestJobWorker(
     processAccountPurge?: (
       payload: Readonly<{ requestId: string; userId: string }>,
     ) => Promise<void>;
+    processMediaDelete?: (
+      payload: Readonly<{ assetId: string; objectKey: string }>,
+    ) => Promise<void>;
   }> = {},
 ): JobWorker {
   return new JobWorker({
@@ -30,6 +33,9 @@ export function createTestJobWorker(
     ...(options.processAccountPurge === undefined
       ? {}
       : { processAccountPurge: options.processAccountPurge }),
+    ...(options.processMediaDelete === undefined
+      ? {}
+      : { processMediaDelete: options.processMediaDelete }),
     repository: new JobRepository(database),
     workerId: `test-worker-${newEntityId()}`,
   });

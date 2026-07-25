@@ -24,6 +24,9 @@ import { createContentCursorCodec } from "./modules/content/cursor.js";
 import { registerContentRoutes } from "./modules/content/routes.js";
 import { createContentService } from "./modules/content/service.js";
 import { registerHttpAbuseProtection } from "./modules/abuse/http-limiter.js";
+import { createMediaObjectStore } from "./modules/media/object-store.js";
+import { registerMediaRoutes } from "./modules/media/routes.js";
+import { createMediaService } from "./modules/media/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -41,8 +44,16 @@ async function main(): Promise<void> {
   }
 
   const dependencies = createRuntimeDependencies(config);
+  const mediaObjectStore = config.mediaStorageEnabled
+    ? createMediaObjectStore(config)
+    : undefined;
   const app = await buildApp(config, {
-    readinessChecks: dependencies.readinessChecks,
+    readinessChecks: [
+      ...dependencies.readinessChecks,
+      ...(mediaObjectStore === undefined
+        ? []
+        : [{ check: mediaObjectStore.ping, name: "object_storage" }]),
+    ],
   });
   registerHttpAbuseProtection(app, config, dependencies.redis);
   registerAuditHooks(app, config, dependencies.database);
@@ -89,6 +100,13 @@ async function main(): Promise<void> {
     syncCursor,
   );
   registerContentRoutes(app, authService, contentService);
+  if (mediaObjectStore !== undefined) {
+    registerMediaRoutes(
+      app,
+      authService,
+      createMediaService(config, dependencies.database, mediaObjectStore),
+    );
+  }
   const syncService = createSyncService(
     dependencies.database,
     domainService,

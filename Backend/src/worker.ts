@@ -13,6 +13,8 @@ import { newEntityId } from "./shared/id.js";
 import { createAccountService } from "./modules/account/service.js";
 import { createCredentialSealer } from "./modules/auth/apple/credential-crypto.js";
 import { createAppleTokenRevoker } from "./modules/auth/apple/token-revoker.js";
+import { createMediaObjectStore } from "./modules/media/object-store.js";
+import { createMediaService } from "./modules/media/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -31,6 +33,13 @@ async function main(): Promise<void> {
   const database = createDatabase(config);
   const controller = new AbortController();
   const workerId = `worker-${newEntityId()}`;
+  const mediaObjectStore = config.mediaStorageEnabled
+    ? createMediaObjectStore(config)
+    : undefined;
+  const mediaService =
+    mediaObjectStore === undefined
+      ? undefined
+      : createMediaService(config, database, mediaObjectStore);
   const accountService = createAccountService(config, database, {
     onAppleRevocationUnavailable: (fields) => {
       logger.warn(fields, "Apple token revocation was unavailable during deletion");
@@ -41,6 +50,9 @@ async function main(): Promise<void> {
           credentialSealer: createCredentialSealer(config),
         }
       : {}),
+    ...(mediaObjectStore === undefined
+      ? {}
+      : { deleteMediaObjects: mediaObjectStore.deleteObjects }),
   });
   const worker = new JobWorker({
     cipher: createJobPayloadCipher(config),
@@ -48,6 +60,9 @@ async function main(): Promise<void> {
     logger,
     notifier: createSmtpAuthNotifier(config),
     processAccountPurge: accountService.processDeletion,
+    ...(mediaService === undefined
+      ? {}
+      : { processMediaDelete: mediaService.processDeletion }),
     repository: new JobRepository(database),
     workerId,
   });
