@@ -341,7 +341,8 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
 
     await dependencies.database.sql`
       update app.subscriptions
-      set reconcile_after = now()
+      set reconcile_after = now() - interval '1 second',
+          reconciliation_started_at = null
       where user_id = ${userId}
     `;
     reconciliationStatuses = [];
