@@ -125,29 +125,40 @@ public struct HomeView: View {
                     NavigationLink {
                         chatBuilder(row.character)
                     } label: {
-                        HStack(spacing: DSSpacing.sm) {
-                            AvatarBadge(name: row.character.card.name, size: 48)
+                        HStack(alignment: .top, spacing: DSSpacing.sm) {
+                            ZStack(alignment: .topTrailing) {
+                                AvatarBadge(name: row.character.card.name, size: 48)
+                                if index == 0 {
+                                    Circle()
+                                        .fill(Color.dsDanger)
+                                        .frame(width: 10, height: 10)
+                                        .overlay {
+                                            Circle().stroke(Color.dsSurface, lineWidth: 2)
+                                        }
+                                }
+                            }
                             VStack(alignment: .leading, spacing: 3) {
-                                Text(row.character.card.name)
-                                    .font(.body.weight(.bold))
-                                    .foregroundStyle(.primary)
+                                HStack(alignment: .firstTextBaseline, spacing: DSSpacing.xs) {
+                                    Text(row.character.card.name)
+                                        .font(.body.weight(.bold))
+                                        .foregroundStyle(.primary)
+                                        .lineLimit(1)
+                                    Spacer(minLength: DSSpacing.xs)
+                                    Text(row.summary.lastMessageAt, format: .relative(presentation: .named))
+                                        .font(.caption)
+                                        .foregroundStyle(.tertiary)
+                                        .lineLimit(1)
+                                        .fixedSize(horizontal: true, vertical: false)
+                                }
                                 Text(row.summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : row.summary.lastMessageText)
                                     .font(.callout)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(1)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                            Spacer()
-                            VStack(alignment: .trailing, spacing: 8) {
-                                Text(row.summary.lastMessageAt, format: .relative(presentation: .named))
-                                    .font(.caption)
-                                    .foregroundStyle(.tertiary)
-                                if index == 0 {
-                                    Circle()
-                                        .fill(Color.dsDanger)
-                                        .frame(width: 8, height: 8)
-                                }
-                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
