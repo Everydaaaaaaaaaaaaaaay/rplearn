@@ -34,11 +34,16 @@ ConfigMap 和 Secret，不把值写进 manifest。
 - 后台任务 payload AES-256-GCM key 与 key version；
 - 私有媒体桶名称、区域；非 workload identity 环境才注入对象存储访问凭据；
 - Apple 登录私钥与 Apple credential AES-256-GCM key；
-- 启用 Apple Billing 时的 App Apple ID 和 Apple PKI 根证书。
+- 启用 Apple Billing 时的 App Apple ID、Apple PKI 根证书，以及独立的 In-App
+  Purchase issuer ID、key ID 与 PKCS#8 私钥。
 
 生产配置校验采用 fail-closed：缺少数据库、Redis、SMTP、持久 JWT、DeepSeek 或 metrics
 保护凭据时进程拒绝启动。Secret 只通过运行时环境或挂载式 Secret
 注入，禁止进入镜像层、CI 日志、崩溃报告或聊天记录。
+
+部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
+`node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple
+Billing Secret；允许并发实例依靠数据库租约分片，但禁止配置无限并发。
 
 API 在账号业务事务中写入加密任务，只有 worker 执行 SMTP 投递。worker 可横向扩容，
 数据库租约与 `FOR UPDATE SKIP LOCKED` 负责互斥领取；失败任务指数退避，达到最大次数后

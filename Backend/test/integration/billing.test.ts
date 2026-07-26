@@ -11,10 +11,12 @@ import type { AuthNotifier } from "../../src/modules/auth/notifier.js";
 import { registerAuthRoutes } from "../../src/modules/auth/routes.js";
 import { createAuthService } from "../../src/modules/auth/service.js";
 import type { AppleBillingVerifier } from "../../src/modules/billing/apple/verifier.js";
+import type { AppleBillingStatusClient } from "../../src/modules/billing/apple/server-api-client.js";
 import { registerBillingRoutes } from "../../src/modules/billing/routes.js";
 import { createBillingService } from "../../src/modules/billing/service.js";
 import type {
   EntitlementSnapshot,
+  VerifiedSubscriptionStatus,
   VerifiedStoreNotification,
   VerifiedStoreTransaction,
 } from "../../src/modules/billing/types.js";
@@ -35,6 +37,8 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
   let userId: string;
   let verifiedTransaction: VerifiedStoreTransaction;
   let verifiedNotification: VerifiedStoreNotification;
+  let reconciliationStatuses: readonly VerifiedSubscriptionStatus[] = [];
+  let billingService: ReturnType<typeof createBillingService>;
   const verificationTokens = new Map<string, string>();
   const email = `billing-${newEntityId()}@example.com`;
   const password = "Correct Horse Billing 1!";
@@ -63,9 +67,17 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
     const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
     const fakeVerifier: AppleBillingVerifier = {
       verifyNotification: () => Promise.resolve(verifiedNotification),
+      verifyRenewal: () => Promise.resolve({ rawPayload: {} }),
       verifyTransaction: () => Promise.resolve(verifiedTransaction),
     };
-    const billingService = createBillingService(dependencies.database, fakeVerifier);
+    const fakeStatusClient: AppleBillingStatusClient = {
+      statuses: () => Promise.resolve(reconciliationStatuses),
+    };
+    billingService = createBillingService(
+      dependencies.database,
+      fakeVerifier,
+      fakeStatusClient,
+    );
     app = await buildApp(config, { logger: false });
     registerAuthRoutes(app, authService);
     registerBillingRoutes(app, authService, billingService, {
@@ -251,8 +263,39 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
     });
     expect(revoked.json<EntitlementSnapshot>().tier).toBe("free");
 
+    reconciliationStatuses = [
+      {
+        providerStatus: 1,
+        transaction: {
+          ...verifiedTransaction,
+          appAccountToken: userId,
+          rawPayload: { source: "status-api" },
+          signedAt: new Date("2030-01-03T00:00:00.000Z"),
+        },
+      },
+    ];
+    const reconciliation = await billingService.reconcileAppleSubscriptions();
+    expect(reconciliation).toEqual({
+      claimed: 1,
+      failed: 0,
+      succeeded: 1,
+    });
+    const reconciled = await app.inject({
+      headers: headers(),
+      method: "GET",
+      url: "/v1/billing/entitlements",
+    });
+    expect(reconciled.json<EntitlementSnapshot>().tier).toBe("plus");
+
     const [counts] = await dependencies.database.sql<
-      { event_count: number; sync_count: number; transaction_count: number }[]
+      {
+        event_count: number;
+        last_reconciled: boolean;
+        reconciliation_attempts: number;
+        reconciliation_error: string | null;
+        sync_count: number;
+        transaction_count: number;
+      }[]
     >`
       select
         (
@@ -270,12 +313,61 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
           from app.sync_changes
           where user_id = ${userId}
             and event_type = 'billing.entitlementsUpdated'
-        ) as sync_count
+        ) as sync_count,
+        (
+          select last_reconciled_at is not null
+          from app.subscriptions
+          where user_id = ${userId}
+        ) as last_reconciled,
+        (
+          select reconciliation_attempts
+          from app.subscriptions
+          where user_id = ${userId}
+        ) as reconciliation_attempts,
+        (
+          select reconciliation_error
+          from app.subscriptions
+          where user_id = ${userId}
+        ) as reconciliation_error
     `;
     expect(counts).toEqual({
       event_count: 2,
-      sync_count: 2,
+      last_reconciled: true,
+      reconciliation_attempts: 0,
+      reconciliation_error: null,
+      sync_count: 3,
       transaction_count: 1,
+    });
+
+    await dependencies.database.sql`
+      update app.subscriptions
+      set reconcile_after = now()
+      where user_id = ${userId}
+    `;
+    reconciliationStatuses = [];
+    expect(await billingService.reconcileAppleSubscriptions()).toEqual({
+      claimed: 1,
+      failed: 1,
+      succeeded: 0,
+    });
+    const [failedReconciliation] = await dependencies.database.sql<
+      {
+        reconciliation_attempts: number;
+        reconciliation_error: string | null;
+        retry_scheduled: boolean;
+      }[]
+    >`
+      select
+        reconciliation_attempts,
+        reconciliation_error,
+        reconcile_after > now() as retry_scheduled
+      from app.subscriptions
+      where user_id = ${userId}
+    `;
+    expect(failedReconciliation).toEqual({
+      reconciliation_attempts: 1,
+      reconciliation_error: "APPLE_SUBSCRIPTION_STATUS_MISSING",
+      retry_scheduled: true,
     });
   }, 30_000);
 

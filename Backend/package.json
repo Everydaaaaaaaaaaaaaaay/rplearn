@@ -9,6 +9,7 @@
   },
   "scripts": {
     "auth:generate-keys": "tsx src/cli/generate-auth-keys.ts",
+    "billing:reconcile": "tsx src/cli/reconcile-apple-billing.ts",
     "build": "tsc -p tsconfig.build.json",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "db:generate": "drizzle-kit generate",

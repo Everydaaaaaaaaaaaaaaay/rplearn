@@ -87,7 +87,9 @@ product、transaction、subscription 和 entitlement 模型。Apple 适配器只
 Server Library 验签后的 transaction，以及 App Store Server Notifications
 V2；新购买必须把后端 `userId` 作为 StoreKit 2 的
 `appAccountToken`，客户端不能自行声明会员等级。开发环境可用
-`/v1/dev/billing/entitlements` 发放有时限的本地调试权益。
+`/v1/dev/billing/entitlements` 发放有时限的本地调试权益。生产定时运行
+`pnpm billing:reconcile`，按租约批量调用 Get All Subscription
+Statuses 补偿漏失通知，并再次验签响应中的交易与续订信息。
 
 AI 请求统一经 `/v1/ai/completions` 或 `/v1/ai/stream`
 转发。任务路由从数据库热读取，默认模型全部为

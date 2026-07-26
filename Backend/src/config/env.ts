@@ -23,6 +23,33 @@ const rawEnvironmentSchema = z.object({
   APPLE_BILLING_BUNDLE_ID: z.string().trim().min(3).default("com.tiantian.lingotrip"),
   APPLE_BILLING_ENABLED: booleanFromString.default(false),
   APPLE_BILLING_ENABLE_ONLINE_CHECKS: booleanFromString.default(true),
+  APPLE_BILLING_ISSUER_ID: optionalSecret,
+  APPLE_BILLING_KEY_ID: optionalSecret,
+  APPLE_BILLING_PRIVATE_KEY_BASE64: optionalSecret,
+  APPLE_BILLING_RECONCILE_ACTIVE_HOURS: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(24)
+    .default(6),
+  APPLE_BILLING_RECONCILE_BATCH_SIZE: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(500)
+    .default(100),
+  APPLE_BILLING_RECONCILE_INACTIVE_HOURS: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(168)
+    .default(24),
+  APPLE_BILLING_RECONCILE_RETRY_MINUTES: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(60)
+    .default(15),
   APPLE_BILLING_ROOT_CA_CERTIFICATES_BASE64: z.string().default(""),
   APPLE_CHALLENGE_TTL_SECONDS: z.coerce.number().int().min(60).max(900).default(300),
   APPLE_CLIENT_IDS: z.string().default(""),
@@ -164,6 +191,13 @@ export type RuntimeConfig = Readonly<{
   appleBillingBundleId: string;
   appleBillingEnabled: boolean;
   appleBillingEnableOnlineChecks: boolean;
+  appleBillingIssuerId?: string;
+  appleBillingKeyId?: string;
+  appleBillingPrivateKeyBase64?: string;
+  appleBillingReconcileActiveHours: number;
+  appleBillingReconcileBatchSize: number;
+  appleBillingReconcileInactiveHours: number;
+  appleBillingReconcileRetryMinutes: number;
   appleBillingRootCaCertificates: readonly Buffer[];
   appleChallengeTtlSeconds: number;
   appleClientIds: readonly string[];
@@ -500,11 +534,33 @@ export function loadConfig(
   if (
     result.data.APPLE_BILLING_ENABLED &&
     (result.data.APPLE_BILLING_APP_APPLE_ID === undefined ||
-      appleBillingRootCaCertificates.length === 0)
+      appleBillingRootCaCertificates.length === 0 ||
+      result.data.APPLE_BILLING_ISSUER_ID === undefined ||
+      result.data.APPLE_BILLING_KEY_ID === undefined ||
+      result.data.APPLE_BILLING_PRIVATE_KEY_BASE64 === undefined)
   ) {
     issues.push(
-      "Apple billing requires the App Apple ID and at least one DER root certificate",
+      "Apple billing requires App identity, root certificates, and App Store Server API credentials",
     );
+  }
+
+  if (
+    result.data.APPLE_BILLING_ISSUER_ID !== undefined &&
+    !z.uuid().safeParse(result.data.APPLE_BILLING_ISSUER_ID).success
+  ) {
+    issues.push("APPLE_BILLING_ISSUER_ID must be a UUID");
+  }
+
+  if (result.data.APPLE_BILLING_PRIVATE_KEY_BASE64 !== undefined) {
+    const privateKey = Buffer.from(
+      result.data.APPLE_BILLING_PRIVATE_KEY_BASE64,
+      "base64",
+    ).toString("utf8");
+    if (!privateKey.includes("BEGIN PRIVATE KEY")) {
+      issues.push(
+        "APPLE_BILLING_PRIVATE_KEY_BASE64 must contain a base64-encoded PKCS#8 private key",
+      );
+    }
   }
 
   if (
@@ -542,6 +598,23 @@ export function loadConfig(
     appleBillingBundleId: result.data.APPLE_BILLING_BUNDLE_ID,
     appleBillingEnabled: result.data.APPLE_BILLING_ENABLED,
     appleBillingEnableOnlineChecks: result.data.APPLE_BILLING_ENABLE_ONLINE_CHECKS,
+    ...(result.data.APPLE_BILLING_ISSUER_ID === undefined
+      ? {}
+      : { appleBillingIssuerId: result.data.APPLE_BILLING_ISSUER_ID }),
+    ...(result.data.APPLE_BILLING_KEY_ID === undefined
+      ? {}
+      : { appleBillingKeyId: result.data.APPLE_BILLING_KEY_ID }),
+    ...(result.data.APPLE_BILLING_PRIVATE_KEY_BASE64 === undefined
+      ? {}
+      : {
+          appleBillingPrivateKeyBase64: result.data.APPLE_BILLING_PRIVATE_KEY_BASE64,
+        }),
+    appleBillingReconcileActiveHours: result.data.APPLE_BILLING_RECONCILE_ACTIVE_HOURS,
+    appleBillingReconcileBatchSize: result.data.APPLE_BILLING_RECONCILE_BATCH_SIZE,
+    appleBillingReconcileInactiveHours:
+      result.data.APPLE_BILLING_RECONCILE_INACTIVE_HOURS,
+    appleBillingReconcileRetryMinutes:
+      result.data.APPLE_BILLING_RECONCILE_RETRY_MINUTES,
     appleBillingRootCaCertificates,
     appleChallengeTtlSeconds: result.data.APPLE_CHALLENGE_TTL_SECONDS,
     appleClientIds,

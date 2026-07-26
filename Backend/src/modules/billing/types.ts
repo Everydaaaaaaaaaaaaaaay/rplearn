@@ -40,6 +40,28 @@ export type VerifiedStoreNotification = Readonly<{
   transaction?: VerifiedStoreTransaction;
 }>;
 
+export type VerifiedSubscriptionStatus = Readonly<{
+  providerStatus: number;
+  renewal?: VerifiedRenewalInfo;
+  transaction: VerifiedStoreTransaction;
+}>;
+
+export type SubscriptionReconciliationClaim = Readonly<{
+  attempts: number;
+  environment: Exclude<StoreEnvironment, "test">;
+  latestTransactionId: string;
+  originalTransactionId: string;
+  startedAt: Date;
+  status: EntitlementStatus;
+  userId: string;
+}>;
+
+export type SubscriptionReconciliationResult = Readonly<{
+  claimed: number;
+  failed: number;
+  succeeded: number;
+}>;
+
 export type BillingProduct = Readonly<{
   featureFlags: Readonly<Record<string, boolean | number | string>>;
   planId: string;

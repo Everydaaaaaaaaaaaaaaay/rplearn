@@ -187,6 +187,22 @@ export const subscriptions = applicationSchema.table(
       withTimezone: true,
     }).notNull(),
     providerStatus: integer("provider_status"),
+    reconcileAfter: timestamp("reconcile_after", {
+      mode: "date",
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    reconciliationAttempts: integer("reconciliation_attempts").default(0).notNull(),
+    reconciliationError: text("reconciliation_error"),
+    reconciliationStartedAt: timestamp("reconciliation_started_at", {
+      mode: "date",
+      withTimezone: true,
+    }),
+    lastReconciledAt: timestamp("last_reconciled_at", {
+      mode: "date",
+      withTimezone: true,
+    }),
     status: entitlementStatus("status").notNull(),
     updatedAt: timestamp("updated_at", {
       mode: "date",
@@ -204,6 +220,17 @@ export const subscriptions = applicationSchema.table(
       table.environment,
       table.originalTransactionId,
     ),
+    check(
+      "subscriptions_reconciliation_attempts_nonnegative",
+      sql`${table.reconciliationAttempts} >= 0`,
+    ),
+    index("subscriptions_reconcile_due_index")
+      .on(table.reconcileAfter, table.updatedAt)
+      .where(
+        sql`${table.provider} = 'apple'
+          and ${table.userId} is not null
+          and ${table.environment} in ('production', 'sandbox')`,
+      ),
     index("subscriptions_user_status_index").on(table.userId, table.status),
   ],
 );

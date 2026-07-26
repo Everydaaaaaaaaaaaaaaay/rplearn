@@ -96,7 +96,14 @@ function mapRenewal(payload: JWSRenewalInfoDecodedPayload): VerifiedRenewalInfo 
 
 export type AppleBillingVerifier = Readonly<{
   verifyNotification: (signedPayload: string) => Promise<VerifiedStoreNotification>;
-  verifyTransaction: (signedTransaction: string) => Promise<VerifiedStoreTransaction>;
+  verifyRenewal: (
+    signedRenewalInfo: string,
+    expectedEnvironment?: StoreEnvironment,
+  ) => Promise<VerifiedRenewalInfo>;
+  verifyTransaction: (
+    signedTransaction: string,
+    expectedEnvironment?: StoreEnvironment,
+  ) => Promise<VerifiedStoreTransaction>;
 }>;
 
 export function createAppleBillingVerifier(
@@ -157,9 +164,14 @@ export function createAppleBillingVerifier(
 
   const verifyTransaction = async (
     signedTransaction: string,
+    expectedEnvironment?: StoreEnvironment,
   ): Promise<VerifiedStoreTransaction> => {
     let lastError: unknown;
-    for (const entry of verifiers) {
+    for (const entry of verifiers.filter(
+      (candidate) =>
+        expectedEnvironment === undefined ||
+        candidate.environment === expectedEnvironment,
+    )) {
       try {
         const payload =
           await entry.verifier.verifyAndDecodeTransaction(signedTransaction);
@@ -172,6 +184,32 @@ export function createAppleBillingVerifier(
       cause: lastError,
       code: "APPLE_JWS_VERIFICATION_FAILED",
       message: "The App Store transaction signature is invalid.",
+      statusCode: 400,
+    });
+  };
+
+  const verifyRenewal = async (
+    signedRenewalInfo: string,
+    expectedEnvironment?: StoreEnvironment,
+  ): Promise<VerifiedRenewalInfo> => {
+    let lastError: unknown;
+    for (const entry of verifiers.filter(
+      (candidate) =>
+        expectedEnvironment === undefined ||
+        candidate.environment === expectedEnvironment,
+    )) {
+      try {
+        return mapRenewal(
+          await entry.verifier.verifyAndDecodeRenewalInfo(signedRenewalInfo),
+        );
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    throw new AppError({
+      cause: lastError,
+      code: "APPLE_JWS_VERIFICATION_FAILED",
+      message: "The App Store renewal signature is invalid.",
       statusCode: 400,
     });
   };
@@ -211,6 +249,7 @@ export function createAppleBillingVerifier(
         ...(transaction === undefined ? {} : { transaction }),
       };
     },
+    verifyRenewal,
     verifyTransaction,
   };
 }

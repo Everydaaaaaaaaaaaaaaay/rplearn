@@ -87,6 +87,29 @@ describe("loadConfig", () => {
     ).toThrow(ConfigurationError);
   });
 
+  it("parses complete App Store Server API reconciliation settings", () => {
+    const config = loadConfig({
+      APPLE_BILLING_APP_APPLE_ID: "123456789",
+      APPLE_BILLING_BUNDLE_ID: "com.example.app",
+      APPLE_BILLING_ENABLED: "true",
+      APPLE_BILLING_ISSUER_ID: "019c0123-4567-789a-8bcd-ef0123456789",
+      APPLE_BILLING_KEY_ID: "TESTKEY123",
+      APPLE_BILLING_PRIVATE_KEY_BASE64: Buffer.from(
+        "-----BEGIN PRIVATE KEY-----\ntest\n-----END PRIVATE KEY-----",
+      ).toString("base64"),
+      APPLE_BILLING_RECONCILE_BATCH_SIZE: "25",
+      APPLE_BILLING_ROOT_CA_CERTIFICATES_BASE64:
+        Buffer.from("certificate").toString("base64"),
+    });
+
+    expect(config).toMatchObject({
+      appleBillingEnabled: true,
+      appleBillingIssuerId: "019c0123-4567-789a-8bcd-ef0123456789",
+      appleBillingKeyId: "TESTKEY123",
+      appleBillingReconcileBatchSize: 25,
+    });
+  });
+
   it("rejects malformed historical job encryption keys", () => {
     expect(() =>
       loadConfig({

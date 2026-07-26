@@ -2,12 +2,15 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
+import type { AppleBillingStatusClient } from "./apple/server-api-client.js";
 import type { AppleBillingVerifier } from "./apple/verifier.js";
 import { BillingRepository } from "./repository.js";
 import type {
   BillingProduct,
   EntitlementSnapshot,
   EntitlementStatus,
+  SubscriptionReconciliationClaim,
+  SubscriptionReconciliationResult,
   SubscriptionTier,
   VerifiedRenewalInfo,
   VerifiedStoreNotification,
@@ -61,7 +64,24 @@ export type BillingService = Readonly<{
     signedTransaction: string,
   ) => Promise<EntitlementSnapshot>;
   listProducts: () => Promise<readonly BillingProduct[]>;
+  reconcileAppleSubscriptions: (
+    limit?: number,
+  ) => Promise<SubscriptionReconciliationResult>;
 }>;
+
+export type BillingReconciliationPolicy = Readonly<{
+  activeHours: number;
+  batchSize: number;
+  inactiveHours: number;
+  retryMinutes: number;
+}>;
+
+const DEFAULT_RECONCILIATION_POLICY: BillingReconciliationPolicy = {
+  activeHours: 6,
+  batchSize: 100,
+  inactiveHours: 24,
+  retryMinutes: 15,
+};
 
 async function resolveNotificationUser(
   repository: BillingRepository,
@@ -84,6 +104,8 @@ async function resolveNotificationUser(
 export function createBillingService(
   database: DatabaseResource,
   appleVerifier?: AppleBillingVerifier,
+  appleStatusClient?: AppleBillingStatusClient,
+  reconciliationPolicy: BillingReconciliationPolicy = DEFAULT_RECONCILIATION_POLICY,
 ): BillingService {
   const repository = new BillingRepository(database);
 
@@ -96,6 +118,88 @@ export function createBillingService(
       });
     }
     return appleVerifier;
+  };
+
+  const reconcileOne = async (
+    claim: SubscriptionReconciliationClaim,
+  ): Promise<boolean> => {
+    const now = new Date();
+    try {
+      if (appleStatusClient === undefined) {
+        throw new AppError({
+          code: "APPLE_BILLING_NOT_CONFIGURED",
+          message: "Apple billing reconciliation is not configured.",
+          statusCode: 503,
+        });
+      }
+      const statuses = await appleStatusClient.statuses(
+        claim.environment,
+        claim.latestTransactionId,
+      );
+      const latest = statuses
+        .filter(
+          (candidate) =>
+            candidate.transaction.originalTransactionId === claim.originalTransactionId,
+        )
+        .sort(
+          (left, right) =>
+            right.transaction.signedAt.getTime() - left.transaction.signedAt.getTime(),
+        )[0];
+      if (latest === undefined) {
+        throw new AppError({
+          code: "APPLE_SUBSCRIPTION_STATUS_MISSING",
+          message: "The App Store response did not include the expected subscription.",
+          statusCode: 502,
+        });
+      }
+      const appAccountToken =
+        latest.transaction.appAccountToken ?? latest.renewal?.appAccountToken;
+      if (
+        appAccountToken !== undefined &&
+        appAccountToken.toLowerCase() !== claim.userId.toLowerCase()
+      ) {
+        throw new AppError({
+          code: "APP_ACCOUNT_TOKEN_MISMATCH",
+          message: "The subscription belongs to another app account.",
+          statusCode: 409,
+        });
+      }
+      const status = entitlementStatusForApple(
+        latest.transaction,
+        latest.renewal,
+        latest.providerStatus,
+        now,
+      );
+      const hours =
+        status === "active"
+          ? reconciliationPolicy.activeHours
+          : status === "grace" || status === "billing_retry"
+            ? 1
+            : reconciliationPolicy.inactiveHours;
+      return await repository.completeSubscriptionReconciliation(
+        claim,
+        latest,
+        status,
+        now,
+        new Date(now.getTime() + hours * 60 * 60 * 1000),
+      );
+    } catch (error) {
+      const errorCode =
+        error instanceof AppError
+          ? error.code
+          : "APPLE_SUBSCRIPTION_RECONCILIATION_FAILED";
+      const retryMinutes = Math.min(
+        reconciliationPolicy.inactiveHours * 60,
+        reconciliationPolicy.retryMinutes *
+          2 ** Math.min(Math.max(0, claim.attempts - 1), 6),
+      );
+      await repository.failSubscriptionReconciliation(
+        claim,
+        errorCode,
+        new Date(now.getTime() + retryMinutes * 60 * 1000),
+      );
+      return false;
+    }
   };
 
   return {
@@ -155,5 +259,30 @@ export function createBillingService(
       );
     },
     listProducts: () => repository.listProducts(),
+    reconcileAppleSubscriptions: async (requestedLimit) => {
+      const limit = Math.max(
+        1,
+        Math.min(500, requestedLimit ?? reconciliationPolicy.batchSize),
+      );
+      const startedAt = new Date();
+      const claims = await repository.claimSubscriptionsForReconciliation(
+        limit,
+        startedAt,
+        new Date(startedAt.getTime() + 5 * 60 * 1000),
+      );
+      let succeeded = 0;
+      const concurrency = 5;
+      for (let offset = 0; offset < claims.length; offset += concurrency) {
+        const results = await Promise.all(
+          claims.slice(offset, offset + concurrency).map(reconcileOne),
+        );
+        succeeded += results.filter(Boolean).length;
+      }
+      return {
+        claimed: claims.length,
+        failed: claims.length - succeeded,
+        succeeded,
+      };
+    },
   };
 }

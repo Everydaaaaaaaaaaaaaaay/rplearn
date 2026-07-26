@@ -12,6 +12,7 @@ import { createAppleAuthService } from "./modules/auth/apple/service.js";
 import { createAppleBillingVerifier } from "./modules/billing/apple/verifier.js";
 import { registerBillingRoutes } from "./modules/billing/routes.js";
 import { createBillingService } from "./modules/billing/service.js";
+import { createAppleBillingStatusClient } from "./modules/billing/apple/server-api-client.js";
 import { registerDomainRoutes } from "./modules/domain/routes.js";
 import { createDomainService } from "./modules/domain/service.js";
 import { createSyncCursorCodec } from "./modules/sync/cursor.js";
@@ -73,9 +74,21 @@ async function main(): Promise<void> {
     );
     registerAppleAuthRoutes(app, appleAuthService, authService);
   }
+  const appleBillingVerifier = config.appleBillingEnabled
+    ? createAppleBillingVerifier(config)
+    : undefined;
   const billingService = createBillingService(
     dependencies.database,
-    config.appleBillingEnabled ? createAppleBillingVerifier(config) : undefined,
+    appleBillingVerifier,
+    appleBillingVerifier === undefined
+      ? undefined
+      : createAppleBillingStatusClient(config, appleBillingVerifier),
+    {
+      activeHours: config.appleBillingReconcileActiveHours,
+      batchSize: config.appleBillingReconcileBatchSize,
+      inactiveHours: config.appleBillingReconcileInactiveHours,
+      retryMinutes: config.appleBillingReconcileRetryMinutes,
+    },
   );
   registerBillingRoutes(app, authService, billingService, {
     appleBillingEnabled: config.appleBillingEnabled,

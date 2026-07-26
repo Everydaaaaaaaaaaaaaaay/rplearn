@@ -8,8 +8,10 @@ import type {
   EntitlementSnapshot,
   EntitlementStatus,
   StoreEnvironment,
+  SubscriptionReconciliationClaim,
   SubscriptionTier,
   VerifiedRenewalInfo,
+  VerifiedSubscriptionStatus,
   VerifiedStoreNotification,
   VerifiedStoreTransaction,
 } from "./types.js";
@@ -629,6 +631,129 @@ export class BillingRepository {
         `;
       }
     });
+  }
+
+  async claimSubscriptionsForReconciliation(
+    limit: number,
+    now: Date,
+    leaseUntil: Date,
+  ): Promise<readonly SubscriptionReconciliationClaim[]> {
+    const rows = await this.database.sql<
+      {
+        environment: "production" | "sandbox";
+        latest_transaction_id: string;
+        original_transaction_id: string;
+        reconciliation_attempts: number;
+        status: EntitlementStatus;
+        user_id: string;
+      }[]
+    >`
+      with candidates as (
+        select id
+        from app.subscriptions
+        where provider = 'apple'
+          and environment in ('production', 'sandbox')
+          and user_id is not null
+          and reconcile_after <= ${now.toISOString()}
+        order by reconcile_after asc, updated_at asc
+        for update skip locked
+        limit ${limit}
+      )
+      update app.subscriptions s
+      set reconciliation_started_at = ${now.toISOString()},
+          reconciliation_attempts = s.reconciliation_attempts + 1,
+          reconcile_after = ${leaseUntil.toISOString()},
+          updated_at = now()
+      from candidates
+      where s.id = candidates.id
+      returning
+        s.user_id::text,
+        s.environment,
+        s.original_transaction_id,
+        s.latest_transaction_id,
+        s.status,
+        s.reconciliation_attempts
+    `;
+    return rows.map((row) => ({
+      attempts: row.reconciliation_attempts,
+      environment: row.environment,
+      latestTransactionId: row.latest_transaction_id,
+      originalTransactionId: row.original_transaction_id,
+      startedAt: now,
+      status: row.status,
+      userId: row.user_id,
+    }));
+  }
+
+  async completeSubscriptionReconciliation(
+    claim: SubscriptionReconciliationClaim,
+    verified: VerifiedSubscriptionStatus,
+    status: EntitlementStatus,
+    reconciledAt: Date,
+    nextReconcileAt: Date,
+  ): Promise<boolean> {
+    return this.database.sql.begin(async (sql) => {
+      const applied = await this.applyVerifiedState(
+        sql,
+        claim.userId,
+        verified.transaction,
+        verified.renewal,
+        status,
+        verified.providerStatus,
+      );
+      if (applied.changed) {
+        await appendSyncChange(sql, {
+          commandId: newEntityId(),
+          eventType: "billing.entitlementsUpdated",
+          payload: {
+            planId: applied.planId,
+            status: applied.status,
+            tier: applied.tier,
+            validUntil: applied.validUntil?.toISOString() ?? null,
+          },
+          userId: claim.userId,
+        });
+      }
+      const rows = await sql<{ id: string }[]>`
+        update app.subscriptions
+        set last_reconciled_at = ${reconciledAt.toISOString()},
+            reconciliation_started_at = null,
+            reconciliation_attempts = 0,
+            reconciliation_error = null,
+            reconcile_after = ${nextReconcileAt.toISOString()},
+            updated_at = now()
+        where provider = 'apple'
+          and environment =
+            ${claim.environment}::app.billing_environment
+          and original_transaction_id = ${claim.originalTransactionId}
+          and user_id = ${claim.userId}
+          and reconciliation_started_at = ${claim.startedAt.toISOString()}
+        returning id::text
+      `;
+      return rows.length === 1;
+    });
+  }
+
+  async failSubscriptionReconciliation(
+    claim: SubscriptionReconciliationClaim,
+    errorCode: string,
+    retryAt: Date,
+  ): Promise<boolean> {
+    const rows = await this.database.sql<{ id: string }[]>`
+      update app.subscriptions
+      set reconciliation_started_at = null,
+          reconciliation_error = ${errorCode.slice(0, 100)},
+          reconcile_after = ${retryAt.toISOString()},
+          updated_at = now()
+      where provider = 'apple'
+        and environment =
+          ${claim.environment}::app.billing_environment
+        and original_transaction_id = ${claim.originalTransactionId}
+        and user_id = ${claim.userId}
+        and reconciliation_started_at = ${claim.startedAt.toISOString()}
+      returning id::text
+    `;
+    return rows.length === 1;
   }
 
   async grantDebugEntitlement(

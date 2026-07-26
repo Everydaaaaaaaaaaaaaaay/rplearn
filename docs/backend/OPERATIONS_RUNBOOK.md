@@ -48,6 +48,13 @@ fail-closed，不允许绕过风控；普通业务的全局 IP 保护可短暂 f
 确认验签、bundle、environment 和产品映射。重复通知可以安全重放；乱序事件不会覆盖更晚状态。不得手工把客户端声明写成有效 entitlement。修复配置后使用受控补偿程序重新处理
 `processing_error` 事件并记录审计。
 
+即使通知正常，也要每 15 分钟运行一次 `pnpm billing:reconcile`。它使用带租约的
+`FOR UPDATE SKIP LOCKED` 批次领取到期订阅，调用 Apple Get All Subscription
+Statuses，并再次验签其中每个 transaction/renewal JWS。退出码非零表示本批有失败；
+查看 `reconciliation_error` 的稳定错误码和到期批次数量，禁止把 transaction ID、
+原始 JWS 或 App Store API 响应写入日志/工单。多个实例可以并行，但总请求率不应逼近
+Apple 限额。
+
 ### 邮件任务积压或死信
 
 1. 查询 `app.jobs` 中 `pending` 的最老 `available_at`，以及 `dead` 的
@@ -99,6 +106,8 @@ TTL 加缓存余量。只有泄露事故才立即撤销会话；不能为了例�
 ## 日常作业
 
 - 每天：`pnpm maintenance:cleanup`；
+- 每 15 分钟：`pnpm billing:reconcile`，并告警连续失败、租约反复超时或最老
+  `reconcile_after` 延迟超过 2 小时；
 - 每天：检查备份、WAL、未处理计费事件与媒体生命周期；
 - 每周：依赖审计、镜像扫描、成本与配额复核；
 - 每月：隔离恢复演练、权限复核、Secret 轮换演练；
