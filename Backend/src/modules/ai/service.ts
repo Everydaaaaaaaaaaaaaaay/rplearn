@@ -45,6 +45,7 @@ export type AiService = Readonly<{
       requestId: string;
     }>
   >;
+  resolveGuestUser: (deviceId: string) => Promise<string>;
 }>;
 
 function errorIdentity(error: unknown): Readonly<{
@@ -124,6 +125,23 @@ export function createAiService(
     createHmac("sha256", config.authTokenHashPepper)
       .update(`ai-user:${userId}`)
       .digest("hex");
+  const guestReference = (deviceId: string): string =>
+    createHmac("sha256", config.authTokenHashPepper)
+      .update(`ai-guest-device:${deviceId}`)
+      .digest("hex");
+  const guestUserId = (reference: string): string => {
+    const hex = reference.slice(0, 32).split("");
+    hex[12] = "5";
+    hex[16] = ((Number.parseInt(hex[16] ?? "0", 16) & 0x3) | 0x8).toString(16);
+    const value = hex.join("");
+    return [
+      value.slice(0, 8),
+      value.slice(8, 12),
+      value.slice(12, 16),
+      value.slice(16, 20),
+      value.slice(20),
+    ].join("-");
+  };
 
   const prepare = async (
     userId: string,
@@ -276,6 +294,10 @@ export function createAiService(
         })(),
         requestId: prepared.requestId,
       };
+    },
+    resolveGuestUser: async (deviceId) => {
+      const reference = guestReference(deviceId);
+      return repository.ensureGuestPrincipal(guestUserId(reference), reference);
     },
   };
 }

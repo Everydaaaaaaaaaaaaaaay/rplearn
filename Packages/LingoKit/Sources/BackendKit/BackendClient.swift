@@ -172,6 +172,36 @@ public actor BackendClient {
         )
     }
 
+    /// Uses the registered account when one is available and otherwise sends a
+    /// device-scoped guest request. Guest identity is intentionally limited to
+    /// endpoints that explicitly opt into this header on the server.
+    public func sendWithGuestAccess<
+        Request: Encodable & Sendable,
+        Response: Decodable & Sendable
+    >(
+        path: String,
+        method: String,
+        body: Request,
+        guestID: String
+    ) async throws -> Response {
+        if try hasStoredSession() {
+            do {
+                return try await send(path: path, method: method, body: body)
+            } catch {
+                guard Self.isAuthenticationFailure(error) else { throw error }
+            }
+        }
+        return try await request(
+            path: path,
+            method: method,
+            body: try encoder.encode(body),
+            queryItems: [],
+            authenticated: false,
+            additionalHeaders: ["x-lingotrip-guest-id": guestID],
+            retryAfterUnauthorized: false
+        )
+    }
+
     public func sendWithoutResponse<Request: Encodable & Sendable>(
         path: String,
         method: String,
@@ -197,7 +227,37 @@ public actor BackendClient {
         try await openEventStream(
             path: path,
             body: try encoder.encode(body),
+            authenticated: true,
+            additionalHeaders: [:],
             retryAfterUnauthorized: true
+        )
+    }
+
+    public func eventStreamWithGuestAccess<Request: Encodable & Sendable>(
+        path: String,
+        body: Request,
+        guestID: String
+    ) async throws -> AsyncThrowingStream<BackendServerSentEvent, Error> {
+        let encodedBody = try encoder.encode(body)
+        if try hasStoredSession() {
+            do {
+                return try await openEventStream(
+                    path: path,
+                    body: encodedBody,
+                    authenticated: true,
+                    additionalHeaders: [:],
+                    retryAfterUnauthorized: true
+                )
+            } catch {
+                guard Self.isAuthenticationFailure(error) else { throw error }
+            }
+        }
+        return try await openEventStream(
+            path: path,
+            body: encodedBody,
+            authenticated: false,
+            additionalHeaders: ["x-lingotrip-guest-id": guestID],
+            retryAfterUnauthorized: false
         )
     }
 
@@ -208,6 +268,7 @@ public actor BackendClient {
         queryItems: [URLQueryItem],
         authenticated: Bool,
         idempotencyKey: UUID? = nil,
+        additionalHeaders: [String: String] = [:],
         retryAfterUnauthorized: Bool
     ) async throws -> Response {
         let data = try await perform(
@@ -217,6 +278,7 @@ public actor BackendClient {
             queryItems: queryItems,
             authenticated: authenticated,
             idempotencyKey: idempotencyKey,
+            additionalHeaders: additionalHeaders,
             retryAfterUnauthorized: retryAfterUnauthorized
         )
         do {
@@ -233,6 +295,7 @@ public actor BackendClient {
         queryItems: [URLQueryItem],
         authenticated: Bool,
         idempotencyKey: UUID?,
+        additionalHeaders: [String: String] = [:],
         retryAfterUnauthorized: Bool
     ) async throws -> Data {
         guard path.hasPrefix("/v1/") else {
@@ -244,7 +307,8 @@ public actor BackendClient {
             body: body,
             queryItems: queryItems,
             authenticated: authenticated,
-            idempotencyKey: idempotencyKey
+            idempotencyKey: idempotencyKey,
+            additionalHeaders: additionalHeaders
         )
 
         let response: BackendTransportResponse
@@ -267,6 +331,7 @@ public actor BackendClient {
                 queryItems: queryItems,
                 authenticated: true,
                 idempotencyKey: idempotencyKey,
+                additionalHeaders: additionalHeaders,
                 retryAfterUnauthorized: false
             )
         }
@@ -286,7 +351,8 @@ public actor BackendClient {
         body: Data?,
         queryItems: [URLQueryItem],
         authenticated: Bool,
-        idempotencyKey: UUID?
+        idempotencyKey: UUID?,
+        additionalHeaders: [String: String] = [:]
     ) async throws -> URLRequest {
         let endpoint = configuration.baseURL.appendingPathComponent(String(path.dropFirst()))
         guard var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false) else {
@@ -308,6 +374,9 @@ public actor BackendClient {
         if let idempotencyKey {
             request.setValue(idempotencyKey.uuidString.lowercased(), forHTTPHeaderField: "idempotency-key")
         }
+        for (field, value) in additionalHeaders {
+            request.setValue(value, forHTTPHeaderField: field)
+        }
         if authenticated {
             request.setValue("Bearer \(try await validAccessToken())", forHTTPHeaderField: "authorization")
         }
@@ -317,6 +386,8 @@ public actor BackendClient {
     private func openEventStream(
         path: String,
         body: Data,
+        authenticated: Bool,
+        additionalHeaders: [String: String],
         retryAfterUnauthorized: Bool
     ) async throws -> AsyncThrowingStream<BackendServerSentEvent, Error> {
         guard path.hasPrefix("/v1/") else {
@@ -327,8 +398,9 @@ public actor BackendClient {
             method: "POST",
             body: body,
             queryItems: [],
-            authenticated: true,
-            idempotencyKey: nil
+            authenticated: authenticated,
+            idempotencyKey: nil,
+            additionalHeaders: additionalHeaders
         )
         let response: BackendLineStreamResponse
         do {
@@ -338,13 +410,15 @@ public actor BackendClient {
         } catch {
             throw BackendClientError.transport(String(describing: type(of: error)))
         }
-        if response.statusCode == 401, retryAfterUnauthorized {
+        if response.statusCode == 401, authenticated, retryAfterUnauthorized {
             accessToken = nil
             accessTokenExpiresAt = nil
             _ = try await refreshSession()
             return try await openEventStream(
                 path: path,
                 body: body,
+                authenticated: true,
+                additionalHeaders: additionalHeaders,
                 retryAfterUnauthorized: false
             )
         }
@@ -361,6 +435,34 @@ public actor BackendClient {
             )
         }
         return Self.parseEventStream(response.lines)
+    }
+
+    private func hasStoredSession() throws -> Bool {
+        if let accessToken,
+           let accessTokenExpiresAt,
+           !accessToken.isEmpty,
+           accessTokenExpiresAt.timeIntervalSinceNow > 30
+        {
+            return true
+        }
+        guard let stored = try credentialStore.load() else { return false }
+        guard stored.refreshTokenExpiresAt > .now else {
+            try clearSession()
+            return false
+        }
+        return true
+    }
+
+    private static func isAuthenticationFailure(_ error: Error) -> Bool {
+        guard let backendError = error as? BackendClientError else { return false }
+        switch backendError {
+        case .signedOut:
+            return true
+        case .api(_, _, _, let status):
+            return status == 401
+        case .invalidResponse, .transport:
+            return false
+        }
     }
 
     private func apiError(

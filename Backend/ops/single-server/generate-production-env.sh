@@ -57,6 +57,7 @@ jwt_key_id="production-$(date -u +%Y%m%d)-$(random_hex 4)"
   printf 'DEEPSEEK_API_KEY=%s\n' "${DEEPSEEK_API_KEY}"
   printf 'DEEPSEEK_BASE_URL=https://api.deepseek.com\n'
   printf 'AI_DEEPSEEK_ALLOWED_MODELS=deepseek-v4-flash\n'
+  printf 'AI_GUEST_ACCESS_ENABLED=true\n'
   printf 'MEDIA_STORAGE_ENABLED=true\n'
   printf 'MEDIA_S3_BUCKET=lingotrip-media\n'
   printf 'MEDIA_S3_REGION=us-east-1\n'

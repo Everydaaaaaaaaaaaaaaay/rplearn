@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 import {
   boolean,
+  char,
   check,
   date,
   index,
@@ -96,6 +97,34 @@ export const aiDailyUsage = applicationSchema.table(
     check("ai_daily_usage_input_nonnegative", sql`${table.inputTokens} >= 0`),
     check("ai_daily_usage_output_nonnegative", sql`${table.outputTokens} >= 0`),
     check("ai_daily_usage_quota_positive", sql`${table.quotaLimit} >= 1`),
+  ],
+);
+
+/// Development guest identities are deliberately separate from registered
+/// identities. They can consume the AI free tier, but cannot authenticate to
+/// account, sync, billing, or media routes.
+export const aiGuestPrincipals = applicationSchema.table(
+  "ai_guest_principals",
+  {
+    createdAt: timestamp("created_at", {
+      mode: "date",
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    deviceReference: char("device_reference", { length: 64 }).notNull(),
+    lastSeenAt: timestamp("last_seen_at", {
+      mode: "date",
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    userId: uuid("user_id")
+      .primaryKey()
+      .references(() => users.id, { onDelete: "cascade" }),
+  },
+  (table) => [
+    uniqueIndex("ai_guest_principals_device_unique").on(table.deviceReference),
   ],
 );
 

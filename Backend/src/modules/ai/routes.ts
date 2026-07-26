@@ -21,6 +21,12 @@ const aiRequestSchema = z.object({
   responseFormat: z.enum(["text", "json_object"]).default("text"),
   task: z.string().regex(/^[a-z][a-z0-9_]{1,63}$/),
 });
+const guestDeviceIdSchema = z
+  .string()
+  .trim()
+  .min(8)
+  .max(128)
+  .regex(/^[a-zA-Z0-9._:-]+$/);
 
 function parse<T>(schema: ZodType<T>, value: unknown): T {
   const result = schema.safeParse(value);
@@ -75,19 +81,38 @@ export function registerAiRoutes(
   app: FastifyInstance,
   authService: AuthService,
   aiService: AiService,
+  options: Readonly<{ guestAccessEnabled: boolean }> = {
+    guestAccessEnabled: false,
+  },
 ): void {
+  const userIdFor = async (request: Parameters<typeof authenticateRequest>[0]) => {
+    if (request.headers.authorization !== undefined) {
+      return (await authenticateRequest(request, authService)).userId;
+    }
+    if (!options.guestAccessEnabled) {
+      return (await authenticateRequest(request, authService)).userId;
+    }
+    const guestDeviceId = parse(
+      guestDeviceIdSchema,
+      request.headers["x-lingotrip-guest-id"],
+    );
+    const userId = await aiService.resolveGuestUser(guestDeviceId);
+    request.authUserId = userId;
+    return userId;
+  };
+
   app.post(
     "/v1/ai/completions",
     {
       schema: {
-        security: [{ bearerAuth: [] }],
+        security: [{ bearerAuth: [] }, {}],
         tags: ["ai"],
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
-      return aiService.complete(identity.userId, {
+      return aiService.complete(userId, {
         ...(body.maxOutputTokens === undefined
           ? {}
           : { maxOutputTokens: body.maxOutputTokens }),
@@ -102,12 +127,12 @@ export function registerAiRoutes(
     "/v1/ai/stream",
     {
       schema: {
-        security: [{ bearerAuth: [] }],
+        security: [{ bearerAuth: [] }, {}],
         tags: ["ai"],
       },
     },
     async (request, reply) => {
-      const identity = await authenticateRequest(request, authService);
+      const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
       const cancellation = new AbortController();
       request.raw.once("aborted", () => {
@@ -118,7 +143,7 @@ export function registerAiRoutes(
           cancellation.abort();
         }
       });
-      const stream = await aiService.stream(identity.userId, {
+      const stream = await aiService.stream(userId, {
         ...(body.maxOutputTokens === undefined
           ? {}
           : { maxOutputTokens: body.maxOutputTokens }),

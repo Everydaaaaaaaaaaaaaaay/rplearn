@@ -67,6 +67,7 @@ const rawEnvironmentSchema = z.object({
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
   AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
   AI_DEEPSEEK_ALLOWED_MODELS: z.string().default("deepseek-v4-flash"),
+  AI_GUEST_ACCESS_ENABLED: booleanFromString.default(false),
   AI_USAGE_RETENTION_DAYS: z.coerce.number().int().min(30).max(730).default(90),
   AI_USER_MINUTE_LIMIT: z.coerce.number().int().min(1).max(300).default(30),
   ACCOUNT_DELETION_GRACE_DAYS: z.coerce.number().int().min(1).max(30).default(7),
@@ -198,6 +199,7 @@ export type RuntimeConfig = Readonly<{
   accountDeletionReceiptRetentionDays: number;
   aiRetryMaxAttempts: number;
   aiDeepSeekAllowedModels: readonly string[];
+  aiGuestAccessEnabled: boolean;
   aiUsageRetentionDays: number;
   aiUserMinuteLimit: number;
   auditRetentionDays: number;
@@ -692,6 +694,7 @@ export function loadConfig(
       result.data.ACCOUNT_DELETION_RECEIPT_RETENTION_DAYS,
     aiRetryMaxAttempts: result.data.AI_RETRY_MAX_ATTEMPTS,
     aiDeepSeekAllowedModels,
+    aiGuestAccessEnabled: result.data.AI_GUEST_ACCESS_ENABLED,
     aiUsageRetentionDays: result.data.AI_USAGE_RETENTION_DAYS,
     aiUserMinuteLimit: result.data.AI_USER_MINUTE_LIMIT,
     auditRetentionDays: result.data.AUDIT_RETENTION_DAYS,

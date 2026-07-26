@@ -20,6 +20,33 @@ type RouteRow = Readonly<{
 export class AiRepository {
   constructor(private readonly database: DatabaseResource) {}
 
+  async ensureGuestPrincipal(userId: string, deviceReference: string): Promise<string> {
+    return this.database.sql.begin(async (sql) => {
+      await sql`
+        insert into app.users (id)
+        values (${userId})
+        on conflict (id) do nothing
+      `;
+      const [principal] = await sql<{ user_id: string }[]>`
+        insert into app.ai_guest_principals (
+          user_id,
+          device_reference
+        )
+        values (
+          ${userId},
+          ${deviceReference}
+        )
+        on conflict (device_reference) do update
+        set last_seen_at = now()
+        returning user_id::text
+      `;
+      if (principal === undefined) {
+        throw new Error("Failed to provision the AI guest principal");
+      }
+      return principal.user_id;
+    });
+  }
+
   async route(task: string): Promise<AiRouteConfig> {
     const [row] = await this.database.sql<RouteRow[]>`
       select

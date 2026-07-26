@@ -19,8 +19,16 @@ struct BackendLLMProviderTests {
         func save(_ credential: StoredAuthCredential) throws {}
     }
 
+    private final class GuestCredentials: AuthCredentialStore, @unchecked Sendable {
+        func load() throws -> StoredAuthCredential? { nil }
+        func remove() throws {}
+        func save(_ credential: StoredAuthCredential) throws {}
+    }
+
     private actor Transport: BackendTransport {
         private(set) var aiBodies: [[String: AnySendable]] = []
+        private(set) var authorizationHeaders: [String] = []
+        private(set) var guestIDs: [String] = []
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             switch request.url?.path {
@@ -81,6 +89,12 @@ struct BackendLLMProviderTests {
         }
 
         private func capture(_ request: URLRequest) throws {
+            authorizationHeaders.append(
+                request.value(forHTTPHeaderField: "authorization") ?? ""
+            )
+            guestIDs.append(
+                request.value(forHTTPHeaderField: "x-lingotrip-guest-id") ?? ""
+            )
             let object = try JSONSerialization.jsonObject(with: request.httpBody ?? Data())
             guard let dictionary = object as? [String: Any] else {
                 throw LLMError.invalidResponse("test body")
@@ -99,6 +113,32 @@ struct BackendLLMProviderTests {
                 statusCode: status
             )
         }
+    }
+
+    @Test("signed-out clients use device-scoped guest AI access")
+    func guestAccess() async throws {
+        let transport = Transport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: GuestCredentials(),
+            transport: transport
+        )
+        let provider = BackendLLMProvider(
+            backend: client,
+            guestID: "guest-device-12345678"
+        )
+
+        let output = try await provider.complete(
+            LLMRequest(
+                task: .conversation,
+                tier: .balanced,
+                messages: [.user("hello")]
+            )
+        )
+
+        #expect(output == "你好")
+        #expect(await transport.authorizationHeaders.last == "")
+        #expect(await transport.guestIDs.last == "guest-device-12345678")
     }
 
     /// Test-only unchecked box around JSONSerialization values; inspected only inside the suite.

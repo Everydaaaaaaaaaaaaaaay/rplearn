@@ -16,6 +16,9 @@ import UIKit
 @MainActor
 @Observable
 final class AppEnvironment {
+    /// Temporary product policy while the app is in active development.
+    private static let grantsFullGuestAccess = true
+
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
@@ -77,7 +80,7 @@ final class AppEnvironment {
             )
         )
         self.llmRouter = LLMRouter(
-            client: BackendLLMProvider(backend: backendClient)
+            client: BackendLLMProvider(backend: backendClient, guestID: deviceID)
         )
 
         // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。
@@ -186,6 +189,12 @@ final class AppEnvironment {
         await contentSync.deactivate()
         await voiceMedia.deactivate()
         try await userState.activateGuest()
+        if Self.grantsFullGuestAccess {
+            try await economyStore.applyAuthoritativeEntitlement(
+                tier: .pro,
+                friendSlotLimit: 30
+            )
+        }
 
         let profile = try await economyStore.profile()
         let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!

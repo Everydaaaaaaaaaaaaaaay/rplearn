@@ -28,9 +28,11 @@ public struct BackendLLMProvider: LLMProvider {
     }
 
     private let backend: BackendClient
+    private let guestID: String?
 
-    public init(backend: BackendClient) {
+    public init(backend: BackendClient, guestID: String? = nil) {
         self.backend = backend
+        self.guestID = guestID
     }
 
     public func modelID(for tier: LLMTier) -> String {
@@ -39,11 +41,22 @@ public struct BackendLLMProvider: LLMProvider {
 
     public func complete(_ request: LLMRequest) async throws -> String {
         do {
-            let completion: Completion = try await backend.send(
-                path: "/v1/ai/completions",
-                method: "POST",
-                body: try makeBody(request)
-            )
+            let body = try makeBody(request)
+            let completion: Completion
+            if let guestID {
+                completion = try await backend.sendWithGuestAccess(
+                    path: "/v1/ai/completions",
+                    method: "POST",
+                    body: body,
+                    guestID: guestID
+                )
+            } else {
+                completion = try await backend.send(
+                    path: "/v1/ai/completions",
+                    method: "POST",
+                    body: body
+                )
+            }
             guard !completion.content.isEmpty else {
                 throw LLMError.emptyResponse
             }
@@ -57,10 +70,20 @@ public struct BackendLLMProvider: LLMProvider {
         _ request: LLMRequest
     ) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
         do {
-            let events = try await backend.eventStream(
-                path: "/v1/ai/stream",
-                body: try makeBody(request)
-            )
+            let body = try makeBody(request)
+            let events: AsyncThrowingStream<BackendServerSentEvent, Error>
+            if let guestID {
+                events = try await backend.eventStreamWithGuestAccess(
+                    path: "/v1/ai/stream",
+                    body: body,
+                    guestID: guestID
+                )
+            } else {
+                events = try await backend.eventStream(
+                    path: "/v1/ai/stream",
+                    body: body
+                )
+            }
             return AsyncThrowingStream { continuation in
                 let task = Task {
                     var receivedDone = false
@@ -159,7 +182,7 @@ public struct BackendLLMProvider: LLMProvider {
         case .invalidResponse:
             return LLMError.invalidResponse("后端 AI 响应无法解析")
         case .signedOut:
-            return LLMError.http(status: 401, message: "登录后可使用云端 AI 对话")
+            return LLMError.http(status: 401, message: "云端 AI 暂时不可用")
         case .transport:
             return URLError(.networkConnectionLost)
         }

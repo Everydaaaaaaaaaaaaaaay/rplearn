@@ -30,6 +30,7 @@ services:
         condition: service_healthy
     environment:
       AI_USER_MINUTE_LIMIT: 30
+      AI_GUEST_ACCESS_ENABLED: "true"
       AUTH_ACTION_URL_BASE: http://127.0.0.1:8080/auth
       AUTH_ISSUER: http://127.0.0.1:8080
       CORS_ALLOWED_ORIGINS: http://localhost:3000

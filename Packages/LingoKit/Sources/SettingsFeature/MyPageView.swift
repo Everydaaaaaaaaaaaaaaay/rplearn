@@ -256,9 +256,9 @@ public struct MyPageView: View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("当前为本地游客")
+                    Text("开发期完整体验")
                         .font(.title3.bold())
-                    Text("城市探索、剧情和学习记录均可正常使用")
+                    Text("AI 对话、城市探索、剧情和学习功能均可使用")
                         .font(.footnote)
                         .opacity(0.86)
                 }
@@ -273,7 +273,7 @@ public struct MyPageView: View {
             .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
             .tint(.white)
 
-            Text("登录用于跨设备同步、订阅恢复和云端 AI；不会影响本地功能。")
+            Text("登录仅用于跨设备同步和订阅恢复；未登录时功能不受限。")
                 .font(.caption2)
                 .opacity(0.76)
         }
@@ -347,7 +347,7 @@ public struct MyPageView: View {
                 Button(action: onSignIn) {
                     entryRow(
                         "登录或创建账号",
-                        subtitle: "同步进度、恢复订阅并使用云端 AI",
+                        subtitle: "用于跨设备同步与订阅恢复",
                         icon: "person.crop.circle.badge.plus",
                         tint: .dsSky
                     )
@@ -417,7 +417,7 @@ public struct MyPageView: View {
     }
 
     private var accountBadgeTitle: String {
-        isSignedIn ? billing.tier.displayName : "本地游客"
+        isSignedIn ? billing.tier.displayName : "完整游客"
     }
 
     private var accountBadgeTint: Color {

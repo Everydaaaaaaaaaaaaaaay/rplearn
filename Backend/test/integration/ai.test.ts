@@ -28,6 +28,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
   let app: FastifyInstance;
   let dependencies: RuntimeDependencies;
   let accessToken: string;
+  let guestUserId: string | undefined;
   let userId: string;
   const verificationTokens = new Map<string, string>();
   const email = `ai-${newEntityId()}@example.com`;
@@ -36,6 +37,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
   beforeAll(async () => {
     const config = loadConfig({
       AI_USER_MINUTE_LIMIT: "20",
+      AI_GUEST_ACCESS_ENABLED: "true",
       DEEPSEEK_API_KEY: "integration-test-key",
       NODE_ENV: "test",
     });
@@ -97,7 +99,9 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
     );
     app = await buildApp(config, { logger: false });
     registerAuthRoutes(app, authService);
-    registerAiRoutes(app, authService, aiService);
+    registerAiRoutes(app, authService, aiService, {
+      guestAccessEnabled: config.aiGuestAccessEnabled,
+    });
 
     await app.inject({
       method: "POST",
@@ -140,6 +144,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
     await dependencies.database.sql`
       delete from app.users
       where id = ${userId}
+         or id = ${guestUserId ?? userId}
     `;
     await dependencies.close();
   });
@@ -225,6 +230,30 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
     `;
     expect(contentColumns).toEqual([]);
   }, 30_000);
+
+  it("allows a device-scoped guest to use AI without an account session", async () => {
+    const response = await app.inject({
+      headers: { "x-lingotrip-guest-id": "integration-guest-device" },
+      method: "POST",
+      payload: {
+        messages: [{ content: "Say hello", role: "user" }],
+        task: "conversation",
+      },
+      url: "/v1/ai/completions",
+    });
+    expect(response.statusCode).toBe(200);
+    expect(response.json<{ content: string }>().content).toBe("Hello from the gateway");
+
+    const [principal] = await dependencies.database.sql<{ user_id: string }[]>`
+      select user_id::text
+      from app.ai_guest_principals
+      where device_reference is not null
+      order by created_at desc
+      limit 1
+    `;
+    expect(principal?.user_id).toBeDefined();
+    guestUserId = principal?.user_id;
+  });
 
   it("enforces the persistent entitlement quota", async () => {
     await dependencies.database.sql`

@@ -107,7 +107,9 @@ async function main(): Promise<void> {
     billingService,
     createDeepSeekClient(config),
   );
-  registerAiRoutes(app, authService, aiService);
+  registerAiRoutes(app, authService, aiService, {
+    guestAccessEnabled: config.aiGuestAccessEnabled,
+  });
   if (config.adminApiEnabled) {
     registerAiAdminRoutes(
       app,
