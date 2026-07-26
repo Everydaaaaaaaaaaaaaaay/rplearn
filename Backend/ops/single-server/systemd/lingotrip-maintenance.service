@@ -1,0 +1,10 @@
+[Unit]
+Description=LingoTrip operational data retention cleanup
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/lingotrip/backend
+ExecStart=/opt/lingotrip/backend/ops/single-server/maintenance.sh
+Nice=10

@@ -1,0 +1,12 @@
+[Unit]
+Description=LingoTrip PostgreSQL backup
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/lingotrip/backend
+ExecStart=/opt/lingotrip/backend/ops/single-server/backup.sh
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

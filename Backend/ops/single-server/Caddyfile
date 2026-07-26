@@ -1,0 +1,25 @@
+{
+	admin off
+}
+
+{$PUBLIC_HOST} {
+	encode zstd gzip
+
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+	}
+
+	route {
+		@private path /internal/*
+		respond @private 404
+
+		@media path /{$MEDIA_S3_BUCKET}/*
+		reverse_proxy @media minio:9000
+
+		reverse_proxy api:8080 {
+			flush_interval -1
+		}
+	}
+}

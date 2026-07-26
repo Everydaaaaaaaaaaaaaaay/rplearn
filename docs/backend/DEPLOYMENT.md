@@ -1,5 +1,57 @@
 # 后端部署基线
 
+## 单机生产运行
+
+`Backend/compose.production.yml` 是资源受限单机的可重复部署入口，适用于当前
+`rplearn.haruyuki.cn` 主机。它保持 `NODE_ENV=production`，并将 API、worker、PostgreSQL、
+Redis、私有 S3 兼容存储和 SMTP 捕获服务放在无宿主端口的 Docker 网络中；公网只开放
+Caddy 的 80/443。Caddy 自动申请和续期 TLS 证书，并将
+`/<MEDIA_S3_BUCKET>/*` 原路径转发到对象存储，因此后端生成的短时签名上传/下载 URL
+仍使用同一个 HTTPS 域名。`/internal/*` 在公网入口固定返回 404。
+
+单机部署不能替代托管 PostgreSQL 的跨可用区高可用、PITR、外部对象存储和独立 Secret
+Manager。迁移与运行时数据库账号已经分离，Redis 开启 AOF，数据库/缓存/对象和证书均使用
+独立持久卷；每日自定义格式 `pg_dump` 是本机恢复层，仍应异步复制到另一故障域。
+
+首次部署：
+
+```bash
+cd /opt/lingotrip/backend
+read -rsp 'DeepSeek API key: ' DEEPSEEK_API_KEY
+export DEEPSEEK_API_KEY
+./ops/single-server/generate-production-env.sh
+unset DEEPSEEK_API_KEY
+./ops/single-server/deploy.sh
+```
+
+生成的 `.env.production` 权限为 `0600`，包含独立 PostgreSQL/Redis/媒体凭据、Ed25519
+JWT 密钥、token pepper、任务 AES key 和 metrics token。脚本拒绝覆盖已有文件；发布更新
+必须保留原文件，避免让在线会话、加密任务或持久卷凭据失效。部署脚本先构建候选镜像，再按
+依赖、对象桶初始化、迁移、最小权限授权、API/worker/Caddy 的顺序启动，最后通过公网 HTTPS
+readiness 验证。
+
+安装本机备份和保留期清理定时任务：
+
+```bash
+install -m 0644 ops/single-server/systemd/* /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable --now lingotrip-backup.timer lingotrip-maintenance.timer
+systemctl start lingotrip-backup.service
+```
+
+查看状态时必须显式使用生产文件：
+
+```bash
+docker compose --env-file .env.production -f compose.production.yml ps
+docker compose --env-file .env.production -f compose.production.yml logs --tail=200 api worker caddy
+```
+
+Compose 内置的 Mailpit 只监听宿主机 `127.0.0.1:8025`，用于在正式 SMTP
+凭据到位前安全捕获验证邮件，不具备公网送达能力。开放真实账号注册前必须把
+`.env.production` 的 SMTP 配置替换为已完成 SPF/DKIM/DMARC 的事务邮件服务。Apple
+登录和计费也保持关闭，直到 Developer 与 App Store Connect 凭据齐全；因此在这些外部凭据
+补齐前，服务虽然以生产模式和 HTTPS 运行，仍不能通过完整的商业发布验收门。
+
 ## 运行拓扑
 
 生产环境使用无状态 API 副本、独立后台 worker 副本、托管 PostgreSQL、托管 Redis、SMTP
