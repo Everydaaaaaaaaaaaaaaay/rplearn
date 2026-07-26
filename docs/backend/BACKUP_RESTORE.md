@@ -21,11 +21,20 @@ Redis 不作为权威业务备份。其恢复方式是创建空实例并让限�
 发布前额外生成逻辑备份用于快速核验：
 
 ```bash
-pg_dump --format=custom --no-owner --no-acl \
-  --dbname="$DATABASE_URL" --file=lingotrip-predeploy.dump
+systemctl start lingotrip-backup.service
+journalctl -u lingotrip-backup.service -n 50
 ```
 
-备份文件属于敏感生产数据，只能进入加密对象存储，不能提交仓库或发送到聊天。
+原生单机备份写入 `/opt/lingotrip/backups/lingotrip-<UTC timestamp>/`，包含
+`postgres.dump` 与 `minio.tar.gz`。备份文件属于敏感生产数据，只能进入权限为
+`0700` 的本机目录和加密异地存储，不能提交仓库或发送到聊天。
+
+恢复到隔离实例时使用与生产相同 PostgreSQL 主版本：
+
+```bash
+pg_restore --no-owner --no-acl --dbname=lingotrip postgres.dump
+tar -C /var/lib/lingotrip -xzf minio.tar.gz
+```
 
 ## 隔离恢复演练
 

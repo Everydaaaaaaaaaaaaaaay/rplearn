@@ -1,0 +1,25 @@
+[Unit]
+Description=LingoTrip private object storage
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+User=minio
+Group=minio
+EnvironmentFile=/etc/lingotrip/minio.env
+ExecStart=/usr/local/bin/minio server /var/lib/lingotrip/minio --address 127.0.0.1:9000 --console-address 127.0.0.1:9001
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lingotrip/minio
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,35 @@
+[Unit]
+Description=LingoTrip background worker
+Wants=network-online.target
+After=network-online.target postgresql.service lingotrip-minio.service
+Requires=postgresql.service lingotrip-minio.service
+
+[Service]
+Type=simple
+User=lingotrip
+Group=lingotrip
+WorkingDirectory=/opt/lingotrip/current
+EnvironmentFile=/etc/lingotrip/backend.env
+EnvironmentFile=/etc/lingotrip/release.env
+Environment=PATH=/opt/lingotrip/runtime/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/opt/lingotrip/runtime/bin/node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/worker.js
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+KillSignal=SIGTERM
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=false
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

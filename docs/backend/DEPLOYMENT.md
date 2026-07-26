@@ -2,16 +2,16 @@
 
 ## 单机生产运行
 
-`Backend/compose.production.yml` 是资源受限单机的可重复部署入口，适用于当前
-`rplearn.haruyuki.cn` 主机。它保持 `NODE_ENV=production`，并将 API、worker、PostgreSQL、
-Redis、私有 S3 兼容存储和 SMTP 捕获服务放在无宿主端口的 Docker 网络中；公网只开放
-Caddy 的 80/443。Caddy 自动申请和续期 TLS 证书，并将
+当前 `rplearn.haruyuki.cn` 使用原生 systemd 部署，不依赖 Docker。API、worker、
+PostgreSQL 17、Redis、MinIO、Mailpit 与 Caddy 分别由 systemd 管理；除 Caddy 的
+80/443 外，其余服务只监听 `127.0.0.1`。Caddy 自动申请和续期 TLS 证书，并将
 `/<MEDIA_S3_BUCKET>/*` 原路径转发到对象存储，因此后端生成的短时签名上传/下载 URL
 仍使用同一个 HTTPS 域名。`/internal/*` 在公网入口固定返回 404。
 
 单机部署不能替代托管 PostgreSQL 的跨可用区高可用、PITR、外部对象存储和独立 Secret
-Manager。迁移与运行时数据库账号已经分离，Redis 开启 AOF，数据库/缓存/对象和证书均使用
-独立持久卷；每日自定义格式 `pg_dump` 是本机恢复层，仍应异步复制到另一故障域。
+Manager。迁移与运行时数据库账号已经分离，Redis 开启 AOF；数据库、缓存、对象和证书
+分别落在 PostgreSQL 数据目录、`/var/lib/lingotrip` 和 `/var/lib/caddy`。每日备份同时
+包含自定义格式 `pg_dump` 与 MinIO 数据，仍应异步复制到另一故障域。
 
 首次部署：
 
@@ -19,53 +19,67 @@ Manager。迁移与运行时数据库账号已经分离，Redis 开启 AOF，数
 cd /opt/lingotrip/backend
 read -rsp 'DeepSeek API key: ' DEEPSEEK_API_KEY
 export DEEPSEEK_API_KEY
-./ops/single-server/generate-production-env.sh
+./ops/native-server/generate-production-env.sh
 unset DEEPSEEK_API_KEY
-./ops/single-server/deploy.sh
+sudo ./ops/native-server/bootstrap-ubuntu.sh
+sudo ./ops/native-server/install-services.sh
 ```
+
+`install-services.sh` 会幂等创建 `lingotrip_migrator`、`lingotrip` 数据库和各服务的最小权限
+Unix 账户；重复执行只轮换迁移账号密码和刷新配置，不删除数据库或业务数据。
+
+bootstrap 脚本从官方发行地址安装固定版本的 Node、Caddy、MinIO 与 Mailpit，并校验发行方
+校验和或仓库固定的 SHA-256/SHA-512；所有运行、发布、备份和维护流程都不调用 Docker。
 
 生成的 `.env.production` 权限为 `0600`，包含独立 PostgreSQL/Redis/媒体凭据、Ed25519
-JWT 密钥、token pepper、任务 AES key 和 metrics token。脚本拒绝覆盖已有文件；发布更新
-必须保留原文件，避免让在线会话、加密任务或持久卷凭据失效。部署脚本先构建候选镜像，再按
-依赖、对象桶初始化、迁移、最小权限授权、API/worker/Caddy 的顺序启动，最后通过公网 HTTPS
-readiness 验证。
+JWT 密钥、token pepper、任务 AES key 和 metrics token。脚本拒绝覆盖已有文件；发布
+更新必须保留原文件，避免让在线会话、加密任务或持久数据凭据失效。
 
-若部署网络不能直接访问 GCR，可在生成配置前设置
-`DISTROLESS_REGISTRY=m.daocloud.io/gcr.io`。Dockerfile 仍固定相同的 Distroless
-SHA-256 digest，代理只能提供逐字节一致的镜像，不能用浮动 tag 替换运行层。
-
-安装本机备份和保留期清理定时任务：
+Node 固定安装在 `/opt/lingotrip/runtime`。发布包在开发机完成 TypeScript 编译，不把
+开发依赖传到服务器：
 
 ```bash
-install -m 0644 ops/single-server/systemd/* /etc/systemd/system/
-systemctl daemon-reload
-systemctl enable --now lingotrip-backup.timer lingotrip-maintenance.timer
-systemctl start lingotrip-backup.service
+cd Backend
+./ops/native-server/package-release.sh dec8674
+scp build/lingotrip-backend-dec8674.tar.gz root@server:/tmp/
+ssh root@server \
+  '/opt/lingotrip/backend/ops/native-server/deploy.sh /tmp/lingotrip-backend-dec8674.tar.gz dec8674'
 ```
 
-查看状态时必须显式使用生产文件：
+生产依赖按 `package.json + pnpm-lock.yaml` 内容寻址并共享；依赖未变化的发布不会重新安装。
+部署先执行只增不减的数据库迁移和权限收紧，再原子切换 `/opt/lingotrip/current` 软链接，
+同步更新独立的 `/etc/lingotrip/release.env`，重启 API/worker 并验证本机 readiness。
+失败时自动切回上一软链接和版本标识，数据库迁移不回滚。
+
+查看状态与日志：
 
 ```bash
-docker compose --env-file .env.production -f compose.production.yml ps
-docker compose --env-file .env.production -f compose.production.yml logs --tail=200 api worker caddy
+systemctl status lingotrip-api lingotrip-worker lingotrip-caddy \
+  lingotrip-minio lingotrip-redis postgresql
+journalctl -u lingotrip-api -u lingotrip-worker -u lingotrip-caddy --since -1h
 ```
 
-Compose 内置的 Mailpit 只监听宿主机 `127.0.0.1:8025`，用于在正式 SMTP
+Mailpit 只监听宿主机 `127.0.0.1:8025`，用于在正式 SMTP
 凭据到位前安全捕获验证邮件，不具备公网送达能力。开放真实账号注册前必须把
 `.env.production` 的 SMTP 配置替换为已完成 SPF/DKIM/DMARC 的事务邮件服务。Apple
 登录和计费也保持关闭，直到 Developer 与 App Store Connect 凭据齐全；因此在这些外部凭据
 补齐前，服务虽然以生产模式和 HTTPS 运行，仍不能通过完整的商业发布验收门。
 
+每天由 `lingotrip-backup.timer` 与 `lingotrip-maintenance.timer` 执行备份和保留期清理。
+应用、数据库和媒体服务均设置独立 Unix 用户、只读系统视图、最小可写目录、空 capability
+集合（Caddy 仅保留绑定低端口所需能力）及自动重启策略。
+
 ## 运行拓扑
 
 生产环境使用无状态 API 副本、独立后台 worker 副本、托管 PostgreSQL、托管 Redis、SMTP
 提供商和外部 Secret Manager。PostgreSQL 是唯一权威业务存储；Redis
-丢失只影响短时 challenge、限流窗口等可重建数据。公网入口必须在负载均衡或 Ingress
-终止 TLS 1.2+，容器自身不直接暴露公网端口。
+丢失只影响短时 challenge、限流窗口等可重建数据。公网入口必须在负载均衡、Ingress 或
+Caddy 终止 TLS 1.2+，应用进程自身不直接暴露公网端口。
 
-`Backend/Dockerfile` 使用固定 digest 的 Node 24.18 构建层，最终运行层采用固定 digest
+`Backend/Dockerfile` 继续用于 CI 冒烟、本地联调和 Kubernetes 构建，使用固定 digest
+的 Node 24.18 构建层，最终运行层采用固定 digest
 的 Distroless Node 24 / Debian 13：没有 shell、包管理器或构建工具，以 UID/GID 65532
-运行且只包含生产依赖。部署应用镜像也必须使用 digest 固定，不使用浮动 tag。
+运行且只包含生产依赖。容器平台的应用镜像必须使用 digest 固定，不使用浮动 tag。
 `Backend/ops/kubernetes` 是最低安全基线；上线时由部署系统注入 ConfigMap 和 Secret，
 不把值写进 manifest。
 

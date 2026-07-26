@@ -127,7 +127,7 @@ TTL 加缓存余量。只有泄露事故才立即撤销会话；不能为了例�
 
 ## 日常作业
 
-- 每天：`pnpm maintenance:cleanup`；
+- 每天：检查 `lingotrip-maintenance.timer` 与 `lingotrip-backup.timer` 的最近结果；
 - 每 15 分钟：`pnpm billing:reconcile`，并告警连续失败、租约反复超时或最老
   `reconcile_after` 延迟超过 2 小时；
 - 每天：检查备份、WAL、未处理计费事件与媒体生命周期；

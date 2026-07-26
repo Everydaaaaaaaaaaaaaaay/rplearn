@@ -1,0 +1,27 @@
+[Unit]
+Description=LingoTrip HTTPS gateway
+Wants=network-online.target
+After=network-online.target lingotrip-api.service lingotrip-minio.service
+Requires=lingotrip-api.service lingotrip-minio.service
+
+[Service]
+Type=notify
+User=caddy
+Group=caddy
+EnvironmentFile=/etc/lingotrip/caddy.env
+Environment=HOME=/var/lib/caddy
+ExecStart=/usr/local/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile --force
+TimeoutStopSec=10
+LimitNOFILE=1048576
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/caddy
+NoNewPrivileges=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target

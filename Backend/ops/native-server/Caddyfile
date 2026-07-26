@@ -16,9 +16,9 @@
 		respond @private 404
 
 		@media path /{$MEDIA_S3_BUCKET}/*
-		reverse_proxy @media minio:9000
+		reverse_proxy @media 127.0.0.1:9000
 
-		reverse_proxy api:8080 {
+		reverse_proxy 127.0.0.1:8080 {
 			flush_interval -1
 		}
 	}

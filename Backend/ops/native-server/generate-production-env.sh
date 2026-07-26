@@ -33,7 +33,6 @@ jwt_key_id="production-$(date -u +%Y%m%d)-$(random_hex 4)"
 {
   printf 'PUBLIC_HOST=%s\n' "${public_host}"
   printf 'APP_VERSION=%s\n' "${app_version}"
-  printf 'DISTROLESS_REGISTRY=%s\n' "${DISTROLESS_REGISTRY:-gcr.io}"
   printf 'POSTGRES_PASSWORD=%s\n' "$(random_hex 24)"
   printf 'RUNTIME_DB_PASSWORD=%s\n' "$(random_hex 24)"
   printf 'REDIS_PASSWORD=%s\n' "$(random_hex 24)"

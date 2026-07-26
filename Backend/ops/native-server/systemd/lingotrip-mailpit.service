@@ -1,0 +1,24 @@
+[Unit]
+Description=LingoTrip local SMTP capture
+After=network.target
+
+[Service]
+Type=simple
+User=mailpit
+Group=mailpit
+Environment=MP_DATABASE=/var/lib/lingotrip/mailpit/mailpit.db
+Environment=MP_SMTP_BIND_ADDR=127.0.0.1:1025
+Environment=MP_UI_BIND_ADDR=127.0.0.1:8025
+ExecStart=/usr/local/bin/mailpit
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lingotrip/mailpit
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target
