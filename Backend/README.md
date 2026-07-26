@@ -28,6 +28,7 @@ pnpm worker
 pnpm check
 pnpm build
 pnpm test:integration
+pnpm test:e2e
 pnpm production:check
 ```
 
@@ -37,6 +38,9 @@ pnpm production:check
 
 `production:check` 只接受完整的 `NODE_ENV=production`
 配置，执行发布前的只读依赖、权限、模型目录和 Apple 商业服务检查，并以单行 JSON 和进程退出码供部署系统判定。
+
+`test:e2e` 启动编译后的真实 API 进程，覆盖邮箱认证、refresh
+token 重放、幂等用户状态、机票奖励、同步快照和优雅关闭；测试内置 OTLP 接收器同时断言日志与 trace 不含请求正文、认证材料、query 或动态资源 ID。CI 还会启动最终 Distroless 镜像执行独立健康冒烟。
 
 开发服务默认监听 `http://127.0.0.1:8080`：
 

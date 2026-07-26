@@ -1,5 +1,6 @@
 import { trace, type SpanContext } from "@opentelemetry/api";
 import { stdSerializers, type LoggerOptions } from "pino";
+import { sanitizedTelemetryPath } from "../config/telemetry.js";
 
 const REDACTED = "[REDACTED]";
 
@@ -77,7 +78,10 @@ export function createLoggerOptions(
           method: serialized.method,
           remoteAddress: serialized.remoteAddress,
           remotePort: serialized.remotePort,
-          url: serialized.url?.split("?")[0],
+          url:
+            serialized.url === undefined
+              ? undefined
+              : sanitizedTelemetryPath(serialized.url),
         };
       },
       res: (response: unknown) => {

@@ -27,6 +27,7 @@
     "start": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/server.js",
     "start:worker": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/worker.js",
     "test": "vitest run",
+    "test:e2e": "pnpm build && cross-env RUN_E2E_TESTS=true DATABASE_URL=postgres://lingotrip:lingotrip_dev@127.0.0.1:54329/lingotrip REDIS_URL=redis://127.0.0.1:63799 vitest run --maxWorkers=1 --no-file-parallelism test/e2e",
     "test:integration": "cross-env RUN_INTEGRATION_TESTS=true DATABASE_URL=postgres://lingotrip:lingotrip_dev@127.0.0.1:54329/lingotrip REDIS_URL=redis://127.0.0.1:63799 vitest run --maxWorkers=1 --no-file-parallelism test/integration",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",

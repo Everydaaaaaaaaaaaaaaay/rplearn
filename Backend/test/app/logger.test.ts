@@ -75,4 +75,29 @@ describe("logger redaction", () => {
     expect(record.spanId).toBe("bbbbbbbbbbbbbbbb");
     expect(record).not.toHaveProperty("userId");
   });
+
+  it("removes query values and dynamic identifiers from request URLs", () => {
+    const lines: string[] = [];
+    const logger = pino(createLoggerOptions("info"), {
+      write(chunk: string): void {
+        lines.push(chunk);
+      },
+    });
+    const sessionId = "9d7e1c2b-6f4a-4cf8-916b-c11ca3128fb1";
+
+    logger.info(
+      {
+        req: {
+          method: "DELETE",
+          url: `/v1/auth/sessions/${sessionId}?credential=query-secret`,
+        },
+      },
+      "request URL sanitation test",
+    );
+
+    const output = lines.join("");
+    expect(output).toContain("/v1/auth/sessions/:id");
+    expect(output).not.toContain(sessionId);
+    expect(output).not.toContain("query-secret");
+  });
 });

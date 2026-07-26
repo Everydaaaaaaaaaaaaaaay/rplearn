@@ -92,6 +92,7 @@ jobs:
       - run: pnpm build
       - run: pnpm db:migrate
       - run: pnpm test:integration
+      - run: pnpm test:e2e
       - run: pnpm audit --prod
       - run: docker build --tag lingotrip-backend:${{ github.sha }} .
       - name: Scan the release container image
@@ -106,6 +107,8 @@ jobs:
           severity: HIGH,CRITICAL
           skip-setup-trivy: true
           version: v0.72.0
+      - name: Smoke test the release container
+        run: ./ops/ci/container-smoke.sh lingotrip-backend:${{ github.sha }}
       - name: Generate the release image SBOM
         uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
         with:
