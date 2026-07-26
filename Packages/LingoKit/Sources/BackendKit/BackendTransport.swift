@@ -57,11 +57,17 @@ public struct URLSessionBackendTransport: BackendTransport {
         if let session {
             self.session = session
         } else {
-            let configuration = URLSessionConfiguration.ephemeral
-            configuration.waitsForConnectivity = true
-            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-            self.session = URLSession(configuration: configuration)
+            self.session = URLSession(configuration: Self.defaultSessionConfiguration())
         }
+    }
+
+    static func defaultSessionConfiguration() -> URLSessionConfiguration {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.waitsForConnectivity = false
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        configuration.timeoutIntervalForRequest = 30
+        configuration.timeoutIntervalForResource = 120
+        return configuration
     }
 
     public func data(for request: URLRequest) async throws -> BackendTransportResponse {
