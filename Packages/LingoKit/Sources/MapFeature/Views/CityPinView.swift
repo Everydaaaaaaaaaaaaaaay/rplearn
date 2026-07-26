@@ -2,6 +2,125 @@ import DesignSystem
 import DomainKit
 import SwiftUI
 
+struct CityPinAnnotationView: View {
+    static let mapAnchor = UnitPoint(x: 0.5, y: 0.69)
+
+    let region: Region
+    let state: CityPinView.PinState
+    let isSelected: Bool
+    let hasUsableTicket: Bool
+    let onSelect: () -> Void
+    let onAction: () -> Void
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        VStack(spacing: 4) {
+            Button(action: onSelect) {
+                CityPinView(
+                    region: region,
+                    state: state,
+                    isSelected: isSelected
+                )
+            }
+            .buttonStyle(.pressableCard)
+            .frame(height: 76, alignment: .top)
+            .accessibilityLabel("\(region.nameZh)，\(state.accessibilityText)")
+            .accessibilityHint("显示这个地点的前往操作")
+
+            if isSelected {
+                actionButton
+                    .transition(
+                        .opacity.combined(
+                            with: reduceMotion
+                                ? .identity
+                                : .scale(scale: 0.96, anchor: .top)
+                        )
+                    )
+            } else {
+                Color.clear
+                    .frame(height: 30)
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
+        }
+        .frame(height: 110, alignment: .top)
+        .animation(reduceMotion ? nil : .easeOut(duration: 0.18), value: isSelected)
+        .zIndex(isSelected ? 1 : 0)
+    }
+
+    private var actionButton: some View {
+        Button {
+            guard state != .current else { return }
+            onAction()
+        } label: {
+            Label(actionTitle, systemImage: actionIcon)
+                .font(.system(size: 10, weight: .black, design: .rounded))
+                .foregroundStyle(actionForeground)
+                .padding(.horizontal, 10)
+                .frame(height: 30)
+                .background(actionBackground, in: Capsule())
+                .overlay {
+                    Capsule()
+                        .stroke(.white.opacity(state == .current ? 0.58 : 0.8), lineWidth: 1)
+                }
+                .shadow(color: .black.opacity(0.14), radius: 6, y: 2)
+        }
+        .buttonStyle(.pressableCard)
+        .disabled(state == .current)
+        .accessibilityLabel("\(actionTitle)：\(region.nameZh)")
+        .accessibilityHint(actionAccessibilityHint)
+    }
+
+    private var actionTitle: String {
+        switch state {
+        case .current:
+            "已在这里"
+        case .unlocked:
+            "前往"
+        case .locked:
+            hasUsableTicket ? "使用机票" : "购买机票"
+        }
+    }
+
+    private var actionIcon: String {
+        switch state {
+        case .current:
+            "location.fill"
+        case .unlocked:
+            "airplane"
+        case .locked:
+            "ticket.fill"
+        }
+    }
+
+    private var actionForeground: Color {
+        state == .current ? .secondary : .white
+    }
+
+    private var actionBackground: Color {
+        switch state {
+        case .current:
+            Color.dsSurface.opacity(0.92)
+        case .unlocked:
+            Color.dsSky
+        case .locked:
+            Color.dsSunset
+        }
+    }
+
+    private var actionAccessibilityHint: String {
+        switch state {
+        case .current:
+            "当前已经在这个城市"
+        case .unlocked:
+            "打开出发确认"
+        case .locked:
+            hasUsableTicket ? "使用已有机票解锁并前往" : "购买机票并解锁这个城市"
+        }
+    }
+}
+
 struct CityPinView: View {
     enum PinState {
         case current

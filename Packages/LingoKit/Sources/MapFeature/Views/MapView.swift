@@ -83,19 +83,19 @@ public struct MapView: View {
 
             Map(position: $position, interactionModes: [.pan, .zoom]) {
                 ForEach(deps.regionCatalog.regions) { region in
-                    Annotation("", coordinate: coordinate(region), anchor: .bottom) {
-                        Button {
-                            select(region)
-                        } label: {
-                            CityPinView(
-                                region: region,
-                                state: pinState(region),
-                                isSelected: selectedRegionID == region.id
-                            )
-                        }
-                        .buttonStyle(.pressableCard)
-                        .accessibilityLabel("\(region.nameZh)，\(pinState(region).accessibilityText)")
-                        .accessibilityHint("选择这个目的地")
+                    Annotation(
+                        "",
+                        coordinate: coordinate(region),
+                        anchor: CityPinAnnotationView.mapAnchor
+                    ) {
+                        CityPinAnnotationView(
+                            region: region,
+                            state: pinState(region),
+                            isSelected: selectedRegionID == region.id,
+                            hasUsableTicket: !usableTickets(for: region).isEmpty,
+                            onSelect: { select(region) },
+                            onAction: { travelTarget = region }
+                        )
                     }
                 }
             }
@@ -316,9 +316,15 @@ public struct MapView: View {
         profile = await loadedProfile
         tickets = await loadedTickets ?? []
         completedStories = await loadedStories ?? []
-        if selectedRegionID == nil,
-           let region = profile.flatMap({ deps.regionCatalog.region(id: $0.currentRegionID) }) {
-            selectedRegionID = region.id
+        if selectedRegionID == nil {
+            #if DEBUG
+            if let regionID = ProcessInfo.processInfo.environment["UI_TEST_MAP_SELECTED"],
+               let region = deps.regionCatalog.region(id: regionID) {
+                selectedRegionID = region.id
+                show(region, animated: false)
+                return
+            }
+            #endif
             resetOverview()
         }
     }

@@ -88,7 +88,7 @@ App（组合根 AppEnvironment / RootView）
 - 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。透明材质统一用 `.dsMaterial(_:in:)`，开启“降低透明度”时会自动降级为不透明 surface。
 - 首页已接入 `city_backdrop_london`、`city_backdrop_melbourne`、`city_backdrop_newyork` 三张正式生成式背景；`CityBackdropView` 在未知城市或素材缺失时仍以多层城市剪影和云动画兜底。`HomeStatusBar` 不使用整块卡片，直接在场景上呈现当前城市，并以游戏 HUD 资源槽展示真实英语等级与金币；其下保留自适应景观窗口，深色模式会压低素材亮度与饱和度。
 - 首页两个核心入口按城市加载 `home_mainline_<regionID>` 与 `home_activity_<regionID>` 横幅美术；当前三城共 6 张正式素材。左侧只使用单一品牌实色与短透明度过渡，缺图时 `ExploreCard` 自动退回品牌实色与 SF Symbol，不影响导航和可访问性。
-- 地图只承担目的地选择：MapKit 使用平面、弱化、无兴趣点样式，只开放系统平移与缩放手势，不提供俯仰、旋转、指南针、比例尺或用户定位。进入页面时同时容纳当前城市与下一站；三态标记和底部单卡/双卡/多卡旅程引导完成选择，当前城市不再重复显示为底部卡。
+- 地图只承担目的地选择：MapKit 使用平面、弱化、无兴趣点样式，只开放系统平移与缩放手势，不提供俯仰、旋转、指南针、比例尺或用户定位。进入页面时同时容纳当前城市与下一站；选中三态标记后在标记下方原位显示前往/购票操作，底部单卡/双卡/多卡只承担旅程引导，当前城市不再重复显示为底部卡。
 - `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。
 - 会话已读/置顶用 UserDefaults 轻量状态，不改 SwiftData schema；聊天页进入即标记已读。
 
@@ -241,7 +241,7 @@ xcodebuild -project LingoTrip.xcodeproj -scheme LingoTrip \
 
 - 测试是 **App 托管的 `LingoTripTests` bundle**（`bundle.unit-test`，host=LingoTrip），源码在 `Packages/LingoKit/Tests/` 下按被测模块分子目录。**为什么托管**：钥匙串 / SwiftData 等测试在无宿主的 SwiftPM runner 下会报 `errSecMissingEntitlement(-34018)`。
 - Mock LLM 在 `Tests/TestSupport/MockLLMProvider.swift`，所有依赖 LLM 的服务都用它做确定性测试。
-- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；地图可附加 `SIMCTL_CHILD_UI_TEST_MAP_GUIDE=single|two|multiple|complete` 验证旅程引导密度与回退态；首页可附加 `SIMCTL_CHILD_UI_TEST_REGION=<regionID>` 验证城市背景；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
+- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；地图可附加 `SIMCTL_CHILD_UI_TEST_MAP_GUIDE=single|two|multiple|complete` 验证旅程引导密度与回退态，或用 `SIMCTL_CHILD_UI_TEST_MAP_SELECTED=<regionID>` 直接展开某个城市标记的前往/购票操作；首页可附加 `SIMCTL_CHILD_UI_TEST_REGION=<regionID>` 验证城市背景；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
 
 ---
 
