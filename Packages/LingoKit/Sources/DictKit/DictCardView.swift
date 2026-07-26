@@ -264,14 +264,22 @@ public struct DictCardView: View {
         grammar.points(forTrigger: word)
     }
 
+    @ViewBuilder
     private func tagChips(_ entry: DictEntry) -> some View {
-        HStack(spacing: 6) {
-            ForEach(DictTagDisplayPolicy.visibleTitles(for: entry), id: \.self) { title in
-                chip(title)
+        let titles = DictTagDisplayPolicy.orderedTitles(for: entry)
+        if !titles.isEmpty {
+            ViewThatFits(in: .horizontal) {
+                ForEach(Array(stride(from: titles.count, through: 1, by: -1)), id: \.self) { count in
+                    HStack(spacing: 6) {
+                        ForEach(titles.prefix(count), id: \.self) { title in
+                            chip(title)
+                        }
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .font(.caption2)
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func chip(_ text: String) -> some View {

@@ -3,8 +3,8 @@ import Testing
 
 @Suite("词典标签展示策略")
 struct DictTagDisplayPolicyTests {
-    @Test("标签过多时只展示三个最低等级考试标签")
-    func limitsAndPrioritizesExamLevels() {
+    @Test("返回全部标签并按考试等级由低到高排列")
+    func ordersAllExamLevelsWithoutPrematureTruncation() {
         let entry = DictEntry(
             word: "example",
             collins: 4,
@@ -12,15 +12,17 @@ struct DictTagDisplayPolicyTests {
             tag: "gre ielts toefl ky cet6 cet4 gk zk"
         )
 
-        #expect(DictTagDisplayPolicy.maximumVisibleCount == 3)
         #expect(
-            DictTagDisplayPolicy.visibleTitles(for: entry)
-                == ["中考", "高考", "四级"]
+            DictTagDisplayPolicy.orderedTitles(for: entry)
+                == [
+                    "中考", "高考", "四级", "六级", "考研",
+                    "托福", "雅思", "GRE", "牛津3000", "柯林斯4星",
+                ]
         )
     }
 
-    @Test("考试标签不足三个时再补充其它词典标签")
-    func fillsRemainingSlots() {
+    @Test("考试标签之后继续保留其它词典标签")
+    func appendsOtherDictionaryTags() {
         let entry = DictEntry(
             word: "example",
             collins: 5,
@@ -29,8 +31,8 @@ struct DictTagDisplayPolicyTests {
         )
 
         #expect(
-            DictTagDisplayPolicy.visibleTitles(for: entry)
-                == ["六级", "考研", "牛津3000"]
+            DictTagDisplayPolicy.orderedTitles(for: entry)
+                == ["六级", "考研", "牛津3000", "柯林斯5星"]
         )
     }
 
@@ -42,7 +44,7 @@ struct DictTagDisplayPolicyTests {
         )
 
         #expect(
-            DictTagDisplayPolicy.visibleTitles(for: entry)
+            DictTagDisplayPolicy.orderedTitles(for: entry)
                 == ["中考", "高考", "custom"]
         )
     }

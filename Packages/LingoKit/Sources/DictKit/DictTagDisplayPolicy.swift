@@ -1,7 +1,7 @@
-/// 词典标签的统一展示策略：优先呈现由低到高的考试等级，并限制可见数量。
+/// 词典标签的统一排序策略：考试等级由低到高，其它来源随后。
+///
+/// 可见数量由视图根据真实可用宽度决定，策略层不再提前截断。
 enum DictTagDisplayPolicy {
-    static let maximumVisibleCount = 3
-
     private static let orderedExamTags: [(rawValue: String, title: String)] = [
         ("zk", "中考"),
         ("gk", "高考"),
@@ -13,7 +13,7 @@ enum DictTagDisplayPolicy {
         ("gre", "GRE"),
     ]
 
-    static func visibleTitles(for entry: DictEntry) -> [String] {
+    static func orderedTitles(for entry: DictEntry) -> [String] {
         let rawTags = stableUnique(entry.tags)
         let rawTagSet = Set(rawTags)
         let knownRawValues = Set(orderedExamTags.map(\.rawValue))
@@ -32,7 +32,7 @@ enum DictTagDisplayPolicy {
             titles.append("柯林斯\(entry.collins)星")
         }
 
-        return Array(titles.prefix(maximumVisibleCount))
+        return stableUnique(titles)
     }
 
     private static func stableUnique(_ values: [String]) -> [String] {
