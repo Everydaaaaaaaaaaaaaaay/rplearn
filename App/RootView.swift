@@ -2,6 +2,7 @@ import AuthFeature
 import BackendKit
 import BillingKit
 import ChatFeature
+import CoreKit
 import DesignSystem
 import DomainKit
 import FavoritesFeature
@@ -31,10 +32,6 @@ struct RootView: View {
     @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
     @State private var activeUserID: UUID?
-    @State private var activationAttempt = 0
-    @State private var activationError: String?
-    @State private var isActivatingAccount = false
-    @State private var usingOfflineCache = false
     @State private var stateRevision = 0
     @Environment(\.scenePhase) private var scenePhase
 
@@ -85,23 +82,24 @@ struct RootView: View {
             }
             .onChange(of: scenePhase) { _, phase in
                 guard phase == .active,
-                      let activeUserID,
-                      case .signedIn(let identity) = environment.authSession.phase,
-                      identity.userID == activeUserID
+                      case .signedIn(let identity) = environment.authSession.phase
                 else { return }
+                guard identity.userID == activeUserID else {
+                    Task { await handleAuthenticationPhase() }
+                    return
+                }
                 Task {
                     do {
                         try await environment.userState.synchronize()
                         try await environment.contentSync.synchronize()
                         await environment.voiceMedia.synchronize()
                         await environment.billing.synchronize()
-                        usingOfflineCache = false
                         stateRevision += 1
                     } catch {
                         if environment.authSession.handleAuthenticationFailure(error) {
                             return
                         }
-                        usingOfflineCache = true
+                        Log.app.warning("后台同步暂未完成，继续使用本地状态：\(error)")
                     }
                 }
             }
@@ -116,7 +114,7 @@ struct RootView: View {
         case .signedIn(let identity):
             "account-\(identity.userID.uuidString)"
         }
-        return "\(phaseID)-\(activationAttempt)"
+        return phaseID
     }
 
     private func handleAuthenticationPhase() async {
@@ -126,27 +124,20 @@ struct RootView: View {
             return
         case .signedOut:
             activeUserID = nil
-            activationError = nil
-            isActivatingAccount = false
-            usingOfflineCache = false
             do {
                 try await environment.activateGuest()
                 stateRevision += 1
             } catch {
-                activationError = "本地旅程载入失败：\(error.localizedDescription)"
+                Log.app.error("本地旅程载入失败：\(error)")
             }
         case .signedIn(let identity):
             showSignIn = false
             guard activeUserID != identity.userID else { return }
-            activationError = nil
-            isActivatingAccount = true
-            defer { isActivatingAccount = false }
             do {
-                let activation = try await environment.activateUser(identity)
+                _ = try await environment.activateUser(identity)
                 guard case .signedIn(let currentIdentity) = environment.authSession.phase,
                       currentIdentity.userID == identity.userID
                 else { return }
-                usingOfflineCache = activation == .offlineCache
                 activeUserID = identity.userID
                 stateRevision += 1
             } catch {
@@ -154,7 +145,13 @@ struct RootView: View {
                     return
                 }
                 activeUserID = nil
-                activationError = error.localizedDescription
+                Log.app.warning("账号空间暂未载入，继续使用完整游客模式：\(error)")
+                do {
+                    try await environment.activateGuest()
+                    stateRevision += 1
+                } catch {
+                    Log.app.error("游客空间回退失败：\(error)")
+                }
             }
         }
     }
@@ -162,41 +159,6 @@ struct RootView: View {
     private var appContent: some View {
         tabs
             .id(stateRevision)
-            .safeAreaInset(edge: .top, spacing: 0) {
-                if isActivatingAccount {
-                    Label("正在同步云端旅程，本地功能可继续使用", systemImage: "arrow.triangle.2.circlepath.icloud")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color.dsSky)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 7)
-                        .frame(maxWidth: .infinity)
-                        .background(.thinMaterial)
-                } else if activationError != nil {
-                    HStack(spacing: 8) {
-                        Label("云端同步失败，当前使用本地模式", systemImage: "wifi.exclamationmark")
-                            .lineLimit(1)
-                        Spacer(minLength: 4)
-                        Button("重试") {
-                            self.activationError = nil
-                            activationAttempt += 1
-                        }
-                    }
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSunset)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 7)
-                    .frame(maxWidth: .infinity)
-                    .background(.thinMaterial)
-                } else if usingOfflineCache {
-                    Label("离线模式 · 联网后将自动同步", systemImage: "wifi.slash")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color.dsSunset)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 7)
-                        .frame(maxWidth: .infinity)
-                        .background(.thinMaterial)
-                }
-            }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
                     deps: OnboardingDependencies(
