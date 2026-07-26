@@ -67,7 +67,7 @@ struct HomeStatusBar: View {
 
     private var statusItems: some View {
         HStack(spacing: 7) {
-            HUDStat(
+            DSHUDStat(
                 title: "等级",
                 value: profile?.difficultyLevel.hudShortName ?? "—",
                 icon: "star.fill",
@@ -77,7 +77,7 @@ struct HomeStatusBar: View {
                 background: statusBackground,
                 accessibilityValue: profile?.difficultyLevel.displayName ?? "载入中"
             )
-            HUDStat(
+            DSHUDStat(
                 title: "金币",
                 value: profile.map { $0.coins.formatted() } ?? "—",
                 icon: "dollarsign",
@@ -112,55 +112,6 @@ struct HomeStatusBar: View {
                 result.unicodeScalars.append(value)
             }
         }
-    }
-}
-
-private struct HUDStat: View {
-    let title: String
-    let value: String
-    let icon: String
-    let tint: Color
-    let usesMonospacedDigits: Bool
-    let foreground: Color
-    let background: Color
-    let accessibilityValue: String
-
-    var body: some View {
-        HStack(spacing: 6) {
-            Image(systemName: icon)
-                .font(.system(size: 11, weight: .black))
-                .foregroundStyle(.white)
-                .frame(width: 26, height: 26)
-                .background(tint.gradient, in: Circle())
-
-            VStack(alignment: .leading, spacing: -1) {
-                Text(title)
-                    .font(.system(size: 9, weight: .bold, design: .rounded))
-                    .foregroundStyle(foreground.opacity(0.58))
-                Text(value)
-                    .font(
-                        .system(
-                            .caption,
-                            design: usesMonospacedDigits ? .monospaced : .rounded,
-                            weight: .heavy
-                        )
-                    )
-                    .foregroundStyle(foreground)
-                    .lineLimit(1)
-            }
-        }
-        .padding(.leading, 5)
-        .padding(.trailing, 9)
-        .padding(.vertical, 5)
-        .background(background, in: Capsule())
-        .overlay {
-            Capsule()
-                .stroke(.white.opacity(0.68), lineWidth: 1)
-        }
-        .shadow(color: .black.opacity(0.1), radius: 6, y: 2)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(title)
-        .accessibilityValue(accessibilityValue)
     }
 }
 

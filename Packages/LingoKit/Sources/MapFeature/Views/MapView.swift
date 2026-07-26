@@ -24,6 +24,10 @@ public struct MapView: View {
         selectedRegionID.flatMap(deps.regionCatalog.region(id:))
     }
 
+    private var currentRegion: Region? {
+        profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
+    }
+
     public var body: some View {
         ZStack {
             Color.dsBackground.ignoresSafeArea()
@@ -54,11 +58,11 @@ public struct MapView: View {
                     showsTraffic: false
                 )
             )
-            .safeAreaPadding(.top, 132)
+            .safeAreaPadding(.top, 76)
             .safeAreaPadding(.bottom, selectedRegion == nil ? DSSpacing.md : 154)
 
-            VStack(spacing: DSSpacing.sm) {
-                topControls
+            VStack(spacing: 0) {
+                mapHUD
                 Spacer()
                 if let selectedRegion {
                     CityCard(
@@ -121,80 +125,66 @@ public struct MapView: View {
         .dsTabBarHidden(flight != nil)
     }
 
-    private var topControls: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack(alignment: .center, spacing: DSSpacing.sm) {
-                VStack(alignment: .leading, spacing: 1) {
-                    Text("选择目的地")
-                        .font(.system(.title3, design: .rounded, weight: .bold))
-                    Text("点按地图标记或城市名称")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
+    private var mapHUD: some View {
+        ZStack(alignment: .topTrailing) {
+            MapStatusHUD(
+                currentRegion: currentRegion,
+                ticketCount: tickets.count,
+                coins: profile?.coins
+            )
+            .padding(.horizontal, DSSpacing.md)
+            .padding(.top, DSSpacing.xs)
+
+            HStack(spacing: 8) {
                 Button {
                     resetOverview()
                 } label: {
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
-                        .font(.subheadline.weight(.semibold))
-                        .frame(width: 36, height: 36)
-                        .background(Color.dsSurface, in: Circle())
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.primary)
+                        .frame(width: 38, height: 38)
+                        .background(.regularMaterial, in: Circle())
+                        .overlay {
+                            Circle().stroke(.white.opacity(0.72), lineWidth: 1)
+                        }
+                        .shadow(color: .black.opacity(0.11), radius: 6, y: 2)
                 }
                 .buttonStyle(.pressableCard)
                 .accessibilityLabel("显示全部目的地")
 
                 NavigationLink(value: MapDestination.ticketStubs) {
                     Image(systemName: "ticket.fill")
-                        .font(.subheadline.weight(.semibold))
+                        .font(.caption.weight(.bold))
                         .foregroundStyle(Color.dsSunset)
-                        .frame(width: 36, height: 36)
-                        .background(Color.dsSunset.opacity(0.13), in: Circle())
+                        .frame(width: 38, height: 38)
+                        .background(.regularMaterial, in: Circle())
+                        .overlay {
+                            Circle().stroke(.white.opacity(0.72), lineWidth: 1)
+                        }
+                        .shadow(color: .black.opacity(0.11), radius: 6, y: 2)
                 }
                 .buttonStyle(.pressableCard)
                 .accessibilityLabel("票根夹")
             }
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: DSSpacing.xs) {
-                    ForEach(deps.regionCatalog.regions) { region in
-                        Button {
-                            select(region)
-                        } label: {
-                            HStack(spacing: 5) {
-                                Text(region.flagEmoji)
-                                Text(region.nameZh)
-                            }
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(selectedRegionID == region.id ? .white : .primary)
-                            .padding(.horizontal, 11)
-                            .padding(.vertical, 8)
-                            .background(
-                                selectedRegionID == region.id ? Color.dsSky : Color.dsSurface,
-                                in: Capsule()
-                            )
-                            .overlay {
-                                Capsule().stroke(
-                                    selectedRegionID == region.id ? Color.clear : Color.dsBorder,
-                                    lineWidth: 1
-                                )
-                            }
-                        }
-                        .buttonStyle(.pressableCard)
-                    }
-                }
-            }
+            .padding(.trailing, DSSpacing.md)
+            .padding(.top, 58)
         }
-        .padding(DSSpacing.sm)
-        .dsMaterial(
-            .regularMaterial,
-            in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-        )
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(Color.dsBorder, lineWidth: 1)
+        .dynamicTypeSize(...DynamicTypeSize.large)
+        .frame(height: 104)
+        .background(alignment: .top) {
+            LinearGradient(
+                colors: [
+                    Color.dsBackground.opacity(0.68),
+                    Color.dsBackground.opacity(0.24),
+                    .clear,
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .frame(height: 116)
+            .ignoresSafeArea(edges: .top)
+            .allowsHitTesting(false)
         }
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.top, DSSpacing.xs)
     }
 
     private func select(_ region: Region) {
