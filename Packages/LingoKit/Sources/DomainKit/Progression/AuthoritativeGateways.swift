@@ -20,7 +20,7 @@ public struct TravelCommandResult: Sendable, Equatable {
     }
 }
 
-/// 资产修改由服务器事务执行；客户端只提交意图。
+/// 资产修改入口：登录账号由服务器事务执行，游客空间由本地协调器执行。
 public protocol TicketPurchaseGateway: Sendable {
     func purchaseTicket(type: ItemType, countryCode: String?) async throws -> ItemDTO
 }
@@ -32,7 +32,7 @@ public protocol ProfileCommandGateway: Sendable {
 }
 
 public protocol ProgressionRewardGateway: Sendable {
-    /// 返回 true 表示本次首次领取；false 表示服务端已发放过。
+    /// 返回 true 表示本次首次领取；false 表示当前状态空间已发放过。
     func claimStarterTicket() async throws -> Bool
     func completeStory(_ storyID: String) async throws -> Bool
 }

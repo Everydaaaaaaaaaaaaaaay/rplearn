@@ -159,7 +159,7 @@ public struct BackendLLMProvider: LLMProvider {
         case .invalidResponse:
             return LLMError.invalidResponse("后端 AI 响应无法解析")
         case .signedOut:
-            return LLMError.http(status: 401, message: "登录已失效")
+            return LLMError.http(status: 401, message: "登录后可使用云端 AI 对话")
         case .transport:
             return URLError(.networkConnectionLost)
         }

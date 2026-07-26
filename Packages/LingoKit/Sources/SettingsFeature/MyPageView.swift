@@ -20,6 +20,8 @@ public struct MyPageView: View {
     private let speech: any SpeechService
     private let authSession: AuthSession
     private let billing: BillingController
+    private let isSignedIn: Bool
+    private let onSignIn: @MainActor () -> Void
     private let favoritesBuilder: @MainActor () -> AnyView
 
     @State private var profile: UserProfileDTO?
@@ -40,6 +42,8 @@ public struct MyPageView: View {
         speech: any SpeechService,
         authSession: AuthSession,
         billing: BillingController,
+        isSignedIn: Bool,
+        onSignIn: @escaping @MainActor () -> Void,
         favoritesBuilder: @escaping @MainActor () -> AnyView
     ) {
         self.router = router
@@ -52,6 +56,8 @@ public struct MyPageView: View {
         self.speech = speech
         self.authSession = authSession
         self.billing = billing
+        self.isSignedIn = isSignedIn
+        self.onSignIn = onSignIn
         self.favoritesBuilder = favoritesBuilder
     }
 
@@ -94,9 +100,9 @@ public struct MyPageView: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     DSChip(
-                        billing.tier.displayName,
-                        tint: billing.tier == .free ? .secondary : .dsSky,
-                        prominent: billing.tier != .free
+                        accountBadgeTitle,
+                        tint: accountBadgeTint,
+                        prominent: isSignedIn && billing.tier != .free
                     )
                     Label("已认识 \(occupiedFriendSlots) 位旅途朋友", systemImage: "person.2.fill")
                         .foregroundStyle(.secondary)
@@ -111,9 +117,9 @@ public struct MyPageView: View {
                         Text(displayName)
                             .font(.title2.bold())
                         DSChip(
-                            billing.tier.displayName,
-                            tint: billing.tier == .free ? .secondary : .dsSky,
-                            prominent: billing.tier != .free
+                            accountBadgeTitle,
+                            tint: accountBadgeTint,
+                            prominent: isSignedIn && billing.tier != .free
                         )
                         Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
                             .font(.caption)
@@ -137,96 +143,100 @@ public struct MyPageView: View {
 
     private var subscriptionCard: some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            subscriptionHeader
+            if isSignedIn {
+                subscriptionHeader
 
-            HStack {
-                Button {
-                    withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
-                        showsTierPicker.toggle()
-                    }
-                } label: {
-                    Label(showsTierPicker ? "收起方案" : "查看订阅方案", systemImage: "sparkles")
-                }
-                .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
-                .tint(.white)
-
-                if billing.tier != .free {
-                    Button("管理") {
-                        showsManageSubscriptions = true
+                HStack {
+                    Button {
+                        withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
+                            showsTierPicker.toggle()
+                        }
+                    } label: {
+                        Label(showsTierPicker ? "收起方案" : "查看订阅方案", systemImage: "sparkles")
                     }
                     .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
                     .tint(.white)
-                }
-            }
 
-            if showsTierPicker {
-                VStack(spacing: DSSpacing.xs) {
-                    if billing.operation == .loading {
-                        ProgressView()
-                            .tint(.white)
-                            .frame(maxWidth: .infinity)
-                    } else if billing.products.isEmpty {
-                        Text("当前 App Store 账户暂无可购买方案。")
-                            .font(.footnote)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    } else {
-                        ForEach(billing.products) { product in
-                            Button {
-                                Task {
-                                    await billing.purchase(product)
-                                    await reload()
-                                }
-                            } label: {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(product.tier.displayName)
-                                            .fontWeight(.bold)
-                                        if let period = product.periodDescription {
-                                            Text(period)
-                                                .font(.caption)
-                                                .opacity(0.76)
-                                        }
-                                    }
-                                    Spacer()
-                                    Text(product.displayPrice)
-                                        .fontWeight(.bold)
-                                        .monospacedDigit()
-                                }
+                    if billing.tier != .free {
+                        Button("管理") {
+                            showsManageSubscriptions = true
+                        }
+                        .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+                        .tint(.white)
+                    }
+                }
+
+                if showsTierPicker {
+                    VStack(spacing: DSSpacing.xs) {
+                        if billing.operation == .loading {
+                            ProgressView()
+                                .tint(.white)
                                 .frame(maxWidth: .infinity)
+                        } else if billing.products.isEmpty {
+                            Text("当前 App Store 账户暂无可购买方案。")
+                                .font(.footnote)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        } else {
+                            ForEach(billing.products) { product in
+                                Button {
+                                    Task {
+                                        await billing.purchase(product)
+                                        await reload()
+                                    }
+                                } label: {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(product.tier.displayName)
+                                                .fontWeight(.bold)
+                                            if let period = product.periodDescription {
+                                                Text(period)
+                                                    .font(.caption)
+                                                    .opacity(0.76)
+                                            }
+                                        }
+                                        Spacer()
+                                        Text(product.displayPrice)
+                                            .fontWeight(.bold)
+                                            .monospacedDigit()
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
+                                .buttonStyle(.duo(.outline, fullWidth: true, compact: true))
+                                .tint(.white)
+                                .disabled(billing.operation != .idle)
                             }
-                            .buttonStyle(.duo(.outline, fullWidth: true, compact: true))
-                            .tint(.white)
-                            .disabled(billing.operation != .idle)
                         }
-                    }
 
-                    Button("恢复购买") {
-                        Task {
-                            await billing.restorePurchases()
-                            await reload()
+                        Button("恢复购买") {
+                            Task {
+                                await billing.restorePurchases()
+                                await reload()
+                            }
                         }
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .disabled(billing.operation != .idle)
                     }
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .disabled(billing.operation != .idle)
+                    .transition(reduceMotion ? .opacity : .move(edge: .top).combined(with: .opacity))
                 }
-                .transition(reduceMotion ? .opacity : .move(edge: .top).combined(with: .opacity))
-            }
 
-            if let validity = billing.currentValidityDescription {
-                Text(validity)
-                    .font(.caption2)
-                    .opacity(0.76)
-            }
-            if let message = billing.message {
-                Label(message, systemImage: "checkmark.circle.fill")
-                    .font(.caption)
-                    .foregroundStyle(.white)
-            }
-            if let error = billing.lastError {
-                Label(error, systemImage: "exclamationmark.triangle.fill")
-                    .font(.caption)
-                    .foregroundStyle(.white)
+                if let validity = billing.currentValidityDescription {
+                    Text(validity)
+                        .font(.caption2)
+                        .opacity(0.76)
+                }
+                if let message = billing.message {
+                    Label(message, systemImage: "checkmark.circle.fill")
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                }
+                if let error = billing.lastError {
+                    Label(error, systemImage: "exclamationmark.triangle.fill")
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                }
+            } else {
+                guestAccountPrompt
             }
         }
         .foregroundStyle(.white)
@@ -240,6 +250,33 @@ public struct MyPageView: View {
             in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
         )
         .shadow(color: Color.dsSky.opacity(0.24), radius: 12, y: 5)
+    }
+
+    private var guestAccountPrompt: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("当前为本地游客")
+                        .font(.title3.bold())
+                    Text("城市探索、剧情和学习记录均可正常使用")
+                        .font(.footnote)
+                        .opacity(0.86)
+                }
+                Spacer()
+                Image(systemName: "person.crop.circle.badge.plus")
+                    .font(.largeTitle)
+            }
+
+            Button(action: onSignIn) {
+                Label("登录或创建账号", systemImage: "icloud.and.arrow.up")
+            }
+            .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+            .tint(.white)
+
+            Text("登录用于跨设备同步、订阅恢复和云端 AI；不会影响本地功能。")
+                .font(.caption2)
+                .opacity(0.76)
+        }
     }
 
     @ViewBuilder
@@ -294,17 +331,29 @@ public struct MyPageView: View {
             }
             .buttonStyle(.plain)
             Divider().padding(.leading, 56)
-            Button(role: .destructive) {
-                Task { await authSession.logout() }
-            } label: {
-                entryRow(
-                    "退出登录",
-                    subtitle: "移除本机登录凭据",
-                    icon: "rectangle.portrait.and.arrow.right",
-                    tint: .red
-                )
+            if isSignedIn {
+                Button(role: .destructive) {
+                    Task { await authSession.logout() }
+                } label: {
+                    entryRow(
+                        "退出登录",
+                        subtitle: "退出账号并回到本地游客空间",
+                        icon: "rectangle.portrait.and.arrow.right",
+                        tint: .red
+                    )
+                }
+                .buttonStyle(.plain)
+            } else {
+                Button(action: onSignIn) {
+                    entryRow(
+                        "登录或创建账号",
+                        subtitle: "同步进度、恢复订阅并使用云端 AI",
+                        icon: "person.crop.circle.badge.plus",
+                        tint: .dsSky
+                    )
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
         .dsCard(padding: 0)
     }
@@ -365,6 +414,15 @@ public struct MyPageView: View {
     private var displayName: String {
         let value = profile?.displayName.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         return value.isEmpty ? "旅行者" : value
+    }
+
+    private var accountBadgeTitle: String {
+        isSignedIn ? billing.tier.displayName : "本地游客"
+    }
+
+    private var accountBadgeTint: Color {
+        guard isSignedIn else { return .secondary }
+        return billing.tier == .free ? .secondary : .dsSky
     }
 
     private func reload() async {

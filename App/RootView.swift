@@ -27,10 +27,12 @@ struct RootView: View {
     @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .home
+    @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
     @State private var activeUserID: UUID?
     @State private var activationAttempt = 0
     @State private var activationError: String?
+    @State private var isActivatingAccount = false
     @State private var usingOfflineCache = false
     @State private var stateRevision = 0
     @Environment(\.scenePhase) private var scenePhase
@@ -59,96 +61,127 @@ struct RootView: View {
     }
 
     var body: some View {
-        Group {
-            switch environment.authSession.phase {
-            case .loading:
-                ProgressView("正在恢复旅程…")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.dsBackground)
-            case .signedOut:
-                SignInView(session: environment.authSession)
-            case .signedIn(let identity):
-                if activeUserID == identity.userID {
-                    authenticatedContent
-                } else {
-                    userStateGate(identity)
+        appContent
+            .sheet(isPresented: $showSignIn) {
+                NavigationStack {
+                    SignInView(session: environment.authSession)
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("稍后") {
+                                    showSignIn = false
+                                }
+                            }
+                        }
                 }
             }
-        }
-        .onChange(of: environment.authSession.phase) { _, phase in
-            if case .signedOut = phase {
-                environment.billing.deactivate()
+            .task(id: authenticationTaskID) {
+                await handleAuthenticationPhase()
+            }
+            .onChange(of: scenePhase) { _, phase in
+                guard phase == .active,
+                      let activeUserID,
+                      case .signedIn(let identity) = environment.authSession.phase,
+                      identity.userID == activeUserID
+                else { return }
                 Task {
-                    await environment.contentSync.deactivate()
-                    await environment.voiceMedia.deactivate()
-                }
-                activeUserID = nil
-                activationError = nil
-                usingOfflineCache = false
-            }
-        }
-        .onChange(of: scenePhase) { _, phase in
-            guard phase == .active, activeUserID != nil else { return }
-            Task {
-                do {
-                    try await environment.userState.synchronize()
-                    try await environment.contentSync.synchronize()
-                    await environment.voiceMedia.synchronize()
-                    await environment.billing.synchronize()
-                    usingOfflineCache = false
-                    stateRevision += 1
-                } catch {
-                    if environment.authSession.handleAuthenticationFailure(error) {
-                        return
+                    do {
+                        try await environment.userState.synchronize()
+                        try await environment.contentSync.synchronize()
+                        await environment.voiceMedia.synchronize()
+                        await environment.billing.synchronize()
+                        usingOfflineCache = false
+                        stateRevision += 1
+                    } catch {
+                        if environment.authSession.handleAuthenticationFailure(error) {
+                            return
+                        }
+                        usingOfflineCache = true
                     }
-                    usingOfflineCache = true
                 }
             }
-        }
     }
 
-    private func userStateGate(_ identity: AuthIdentity) -> some View {
-        VStack(spacing: 16) {
-            if let activationError {
-                Image(systemName: "wifi.exclamationmark")
-                    .font(.largeTitle)
-                    .foregroundStyle(Color.dsSunset)
-                Text("无法载入旅程")
-                    .font(.headline)
-                Text(activationError)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                Button("重试") { activationAttempt += 1 }
-                    .buttonStyle(.duoPrimary)
-                    .frame(maxWidth: 240)
-            } else {
-                ProgressView("正在同步旅程…")
-            }
+    private var authenticationTaskID: String {
+        let phaseID: String = switch environment.authSession.phase {
+        case .loading:
+            "loading"
+        case .signedOut:
+            "guest"
+        case .signedIn(let identity):
+            "account-\(identity.userID.uuidString)"
         }
-        .padding(32)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.dsBackground)
-        .task(id: "\(identity.userID.uuidString)-\(activationAttempt)") {
+        return "\(phaseID)-\(activationAttempt)"
+    }
+
+    private func handleAuthenticationPhase() async {
+        switch environment.authSession.phase {
+        case .loading:
+            // 会话恢复在后台进行，本地界面无需等待。
+            return
+        case .signedOut:
+            activeUserID = nil
             activationError = nil
+            isActivatingAccount = false
+            usingOfflineCache = false
+            do {
+                try await environment.activateGuest()
+                stateRevision += 1
+            } catch {
+                activationError = "本地旅程载入失败：\(error.localizedDescription)"
+            }
+        case .signedIn(let identity):
+            showSignIn = false
+            guard activeUserID != identity.userID else { return }
+            activationError = nil
+            isActivatingAccount = true
+            defer { isActivatingAccount = false }
             do {
                 let activation = try await environment.activateUser(identity)
+                guard case .signedIn(let currentIdentity) = environment.authSession.phase,
+                      currentIdentity.userID == identity.userID
+                else { return }
                 usingOfflineCache = activation == .offlineCache
                 activeUserID = identity.userID
+                stateRevision += 1
             } catch {
                 if environment.authSession.handleAuthenticationFailure(error) {
                     return
                 }
+                activeUserID = nil
                 activationError = error.localizedDescription
             }
         }
     }
 
-    private var authenticatedContent: some View {
+    private var appContent: some View {
         tabs
             .id(stateRevision)
             .safeAreaInset(edge: .top, spacing: 0) {
-                if usingOfflineCache {
+                if isActivatingAccount {
+                    Label("正在同步云端旅程，本地功能可继续使用", systemImage: "arrow.triangle.2.circlepath.icloud")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Color.dsSky)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 7)
+                        .frame(maxWidth: .infinity)
+                        .background(.thinMaterial)
+                } else if activationError != nil {
+                    HStack(spacing: 8) {
+                        Label("云端同步失败，当前使用本地模式", systemImage: "wifi.exclamationmark")
+                            .lineLimit(1)
+                        Spacer(minLength: 4)
+                        Button("重试") {
+                            self.activationError = nil
+                            activationAttempt += 1
+                        }
+                    }
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.dsSunset)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 7)
+                    .frame(maxWidth: .infinity)
+                    .background(.thinMaterial)
+                } else if usingOfflineCache {
                     Label("离线模式 · 联网后将自动同步", systemImage: "wifi.slash")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Color.dsSunset)
@@ -165,7 +198,12 @@ struct RootView: View {
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!
                     )
                 ) { character in
-                    Task { await environment.completeOnboarding(selected: character) }
+                    Task {
+                        await environment.completeOnboarding(
+                            selected: character,
+                            profileCommands: profileCommands
+                        )
+                    }
                 }
                 .interactiveDismissDisabled()
             }
@@ -273,14 +311,16 @@ struct RootView: View {
             MyPageView(
                 router: environment.llmRouter,
                 economyStore: environment.economyStore,
-                economyService: environment.economyService,
-                profileCommands: environment.userState,
+                economyService: economyService,
+                profileCommands: profileCommands,
                 memoryStore: environment.memoryStore,
                 rosterStore: environment.rosterStore,
                 chatStore: environment.chatStore,
                 speech: environment.speech,
                 authSession: environment.authSession,
                 billing: environment.billing,
+                isSignedIn: usesCloudState,
+                onSignIn: { showSignIn = true },
                 favoritesBuilder: { AnyView(FavoritesView(deps: favoritesDeps)) }
             )
         }
@@ -310,8 +350,8 @@ struct RootView: View {
             economyStore: environment.economyStore,
             itemStore: environment.itemStore,
             stubStore: environment.ticketStubStore,
-            travelService: environment.travelService,
-            economyService: environment.economyService,
+            travelService: travelService,
+            economyService: economyService,
             regionCatalog: environment.regionCatalog
         )
     }
@@ -330,7 +370,7 @@ struct RootView: View {
             memoryStore: environment.memoryStore,
             itemStore: environment.itemStore,
             economyStore: environment.economyStore,
-            progression: environment.userState,
+            progression: progression,
             voiceMedia: environment.voiceMedia
         )
     }
@@ -338,7 +378,7 @@ struct RootView: View {
     private var storyDeps: StoryDependencies {
         StoryDependencies(
             storyProgress: environment.storyProgressStore,
-            progression: environment.userState,
+            progression: progression,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech
@@ -352,6 +392,37 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech
         )
+    }
+
+    private var usesCloudState: Bool {
+        guard let activeUserID,
+              case .signedIn(let identity) = environment.authSession.phase
+        else { return false }
+        return identity.userID == activeUserID
+    }
+
+    private var profileCommands: any ProfileCommandGateway {
+        if usesCloudState {
+            environment.userState
+        } else {
+            environment.localUserState
+        }
+    }
+
+    private var progression: any ProgressionRewardGateway {
+        if usesCloudState {
+            environment.userState
+        } else {
+            environment.localUserState
+        }
+    }
+
+    private var travelService: TravelService {
+        usesCloudState ? environment.travelService : environment.localTravelService
+    }
+
+    private var economyService: EconomyService {
+        usesCloudState ? environment.economyService : environment.localEconomyService
     }
 
     private func maybePromptVoiceUpgrade() async {

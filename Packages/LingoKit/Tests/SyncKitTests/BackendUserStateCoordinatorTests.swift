@@ -210,4 +210,59 @@ struct BackendUserStateCoordinatorTests {
         #expect(headers.count == 5)
         #expect(headers.allSatisfy { $0?.isEmpty == false })
     }
+
+    @Test("切换游客空间会隔离账号权威缓存")
+    func guestActivationClearsAccountCache() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: StateTransport()
+        )
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let economy = EconomyStore(modelContainer: container)
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: economy,
+            itemCache: ItemStore(modelContainer: container),
+            defaults: defaults
+        )
+
+        #expect(try await coordinator.activate(userID: userID) == .synchronized)
+        #expect(try await economy.profile().coins == 500)
+
+        try await coordinator.activateGuest()
+
+        #expect(try await economy.profile().coins == 0)
+        await #expect(throws: BackendClientError.signedOut) {
+            try await coordinator.synchronize()
+        }
+    }
+
+    @Test("首次登录保留游客内容以便后续上传")
+    func firstLoginPreservesGuestContent() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: StateTransport()
+        )
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let storyProgress = StoryProgressStore(modelContainer: container)
+        try await storyProgress.markCompleted(storyID: "guest_story")
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: EconomyStore(modelContainer: container),
+            itemCache: ItemStore(modelContainer: container),
+            defaults: try #require(UserDefaults(suiteName: suite))
+        )
+
+        #expect(try await coordinator.activate(userID: userID) == .synchronized)
+        #expect(try await storyProgress.progress(storyID: "guest_story")?.isCompleted == true)
+    }
 }

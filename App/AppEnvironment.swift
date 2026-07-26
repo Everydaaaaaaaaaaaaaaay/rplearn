@@ -37,6 +37,9 @@ final class AppEnvironment {
     let itemStore: ItemStore
     let storyProgressStore: StoryProgressStore
     let ticketStubStore: TicketStubStore
+    let localUserState: LocalUserStateCoordinator
+    let localTravelService: TravelService
+    let localEconomyService: EconomyService
     let travelService: TravelService
     let userState: BackendUserStateCoordinator
     let contentSync: BackendContentSyncCoordinator
@@ -103,6 +106,12 @@ final class AppEnvironment {
         self.storyProgressStore = StoryProgressStore(modelContainer: container)
         let ticketStubStore = TicketStubStore(modelContainer: container)
         self.ticketStubStore = ticketStubStore
+        let localUserState = LocalUserStateCoordinator(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            storyProgressStore: storyProgressStore
+        )
+        self.localUserState = localUserState
         let userState = BackendUserStateCoordinator(
             backend: backendClient,
             accountCache: accountCacheStore,
@@ -129,6 +138,11 @@ final class AppEnvironment {
             stubStore: ticketStubStore,
             commandGateway: userState
         )
+        self.localTravelService = TravelService(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            stubStore: ticketStubStore
+        )
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
@@ -138,6 +152,10 @@ final class AppEnvironment {
             economyStore: economyStore,
             itemStore: itemStore,
             ticketPurchaseGateway: userState
+        )
+        self.localEconomyService = EconomyService(
+            economyStore: economyStore,
+            itemStore: itemStore
         )
 
         Log.app.info("AppEnvironment initialized")
@@ -159,10 +177,28 @@ final class AppEnvironment {
         return activation
     }
 
+    /// 启用不依赖账号的本地游客空间。若刚退出账号，会先隔离账号缓存。
+    func activateGuest() async throws {
+        needsOnboarding = nil
+        billing.deactivate()
+        await contentSync.deactivate()
+        await voiceMedia.deactivate()
+        try await userState.activateGuest()
+
+        let profile = try await economyStore.profile()
+        let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
+        let cards = try SeedData.mainCharacterCards(url: seedsURL)
+        try await rosterStore.importMainCharactersIfNeeded(cards: cards)
+        needsOnboarding = !profile.hasCompletedOnboarding
+    }
+
     /// 首启引导完成：写当前地区/解锁地区/完成标记。
-    func completeOnboarding(selected character: CharacterDTO) async {
+    func completeOnboarding(
+        selected character: CharacterDTO,
+        profileCommands: any ProfileCommandGateway
+    ) async {
         do {
-            _ = try await userState.updateProfile { profile in
+            _ = try await profileCommands.updateProfile { profile in
                 profile.hasCompletedOnboarding = true
             }
             needsOnboarding = false

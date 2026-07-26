@@ -68,7 +68,8 @@ public actor BackendUserStateCoordinator:
     public func activate(userID: UUID) async throws -> UserStateActivation {
         let owner = defaults.string(forKey: cachedOwnerKey).flatMap(UUID.init(uuidString:))
         let canUseOfflineCache = owner == userID
-        if !canUseOfflineCache {
+        let isAccountSwitch = owner != nil && owner != userID
+        if isAccountSwitch {
             try await accountCache.clearAll()
             snapshot = nil
         }
@@ -89,6 +90,16 @@ public actor BackendUserStateCoordinator:
             }
             throw error
         }
+    }
+
+    /// 切换到游客空间。只有设备上曾激活过账号时才清理缓存，避免误删既有游客进度。
+    public func activateGuest() async throws {
+        currentUserID = nil
+        snapshot = nil
+        guard defaults.string(forKey: cachedOwnerKey) != nil else { return }
+
+        try await accountCache.clearAll()
+        defaults.removeObject(forKey: cachedOwnerKey)
     }
 
     public func synchronize() async throws {
