@@ -14,6 +14,7 @@ public struct MapView: View {
     @State private var position: MapCameraPosition = .automatic
     @State private var selectedRegionID: String?
     @State private var travelTarget: Region?
+    @State private var pendingTravelOutcome: TravelOutcome?
     @State private var flight: FlightPresentation?
     @State private var feedback: String?
     @State private var showsTicketStubsPreview = false
@@ -143,15 +144,15 @@ public struct MapView: View {
             TicketStubsView(stubStore: deps.stubStore, regionCatalog: deps.regionCatalog)
                 .dsTabBarHidden()
         }
-        .sheet(item: $travelTarget) { region in
+        .sheet(item: $travelTarget, onDismiss: finishPendingTravel) { region in
             TravelSheet(
                 region: region,
                 requiresTicket: requiresTicket(for: region),
                 deps: deps,
                 tickets: tickets
             ) { outcome in
+                pendingTravelOutcome = outcome
                 travelTarget = nil
-                handle(outcome)
             }
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
@@ -171,15 +172,14 @@ public struct MapView: View {
                 }
             }
         }
-        .alert(
-            feedback ?? "",
+        .dsModalDialog(
             isPresented: Binding(
                 get: { feedback != nil },
                 set: { if !$0 { feedback = nil } }
-            )
-        ) {
-            Button("好", role: .cancel) {}
-        }
+            ),
+            configuration: feedbackDialog,
+            onPrimary: {}
+        )
         .task {
             await reload()
             #if DEBUG
@@ -328,6 +328,30 @@ public struct MapView: View {
         case .failure(let message):
             feedback = message
         }
+    }
+
+    private func finishPendingTravel() {
+        guard let outcome = pendingTravelOutcome else { return }
+        pendingTravelOutcome = nil
+        handle(outcome)
+    }
+
+    private var feedbackDialog: DSModalDialogConfiguration {
+        let message = feedback ?? ""
+        let isFailure = ["失败", "不足", "不能", "需要"].contains {
+            message.localizedStandardContains($0)
+        }
+        return DSModalDialogConfiguration(
+            eyebrow: "旅行提示",
+            title: isFailure ? "暂时无法出发" : "旅程提示",
+            message: message,
+            icon: isFailure ? "exclamationmark.triangle.fill" : "airplane",
+            tone: isFailure ? .danger : .info,
+            primaryTitle: "知道了",
+            primaryIcon: "checkmark",
+            primaryRole: .cancel,
+            secondaryTitle: nil
+        )
     }
 
     private func reload() async {

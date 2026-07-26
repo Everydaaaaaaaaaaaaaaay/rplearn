@@ -93,14 +93,37 @@ public struct AVGStoryView: View {
         .task(id: isAuto) {
             await autoLoopIfNeeded()
         }
-        .confirmationDialog("跳过本章剧情？", isPresented: $showSkipConfirm, titleVisibility: .visible) {
-            Button("跳过", role: .destructive) {
-                skipAll()
-            }
-        }
-        .alert("剧情加载失败", isPresented: $loadFailed) {
-            Button("返回") { dismiss() }
-        }
+        .dsModalDialog(
+            isPresented: $showSkipConfirm,
+            configuration: .init(
+                eyebrow: "剧情抉择",
+                title: "跳过本章剧情？",
+                message: "将直接推进到本章结尾，并按默认选项处理尚未做出的选择。之后仍可从剧情列表重温。",
+                icon: "forward.end.fill",
+                tone: .warning,
+                primaryTitle: "确认跳过",
+                primaryIcon: "forward.end.fill",
+                primaryRole: .destructive,
+                secondaryTitle: "继续剧情",
+                secondaryIcon: "play.fill"
+            ),
+            onPrimary: skipAll
+        )
+        .dsModalDialog(
+            isPresented: $loadFailed,
+            configuration: .init(
+                eyebrow: "剧情中断",
+                title: "暂时无法载入剧情",
+                message: "剧情资源未能读取，请返回剧情列表后重试。",
+                icon: "exclamationmark.triangle.fill",
+                tone: .danger,
+                primaryTitle: "返回剧情列表",
+                primaryIcon: "arrow.backward",
+                secondaryTitle: nil,
+                allowsInteractiveDismiss: false
+            ),
+            onPrimary: { dismiss() }
+        )
     }
 
     // MARK: - 背景与立绘
