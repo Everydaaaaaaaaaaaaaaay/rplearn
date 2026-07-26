@@ -82,6 +82,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    healthcheck:
+      disable: true
     mem_limit: 256m
     pids_limit: 160
 
