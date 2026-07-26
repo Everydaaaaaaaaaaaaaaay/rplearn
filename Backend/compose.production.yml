@@ -93,7 +93,7 @@ services:
       - ALL
     depends_on:
       api:
-        condition: service_healthy
+        condition: service_started
     environment:
       MEDIA_S3_BUCKET: ${MEDIA_S3_BUCKET:-lingotrip-media}
       PUBLIC_HOST: ${PUBLIC_HOST}
@@ -276,6 +276,7 @@ services:
         && mc anonymous set none "local/$${MEDIA_S3_BUCKET}" && mc version enable
         "local/$${MEDIA_S3_BUCKET}"
     environment:
+      MC_CONFIG_DIR: /tmp/.mc
       MEDIA_S3_BUCKET: ${MEDIA_S3_BUCKET:-lingotrip-media}
       MINIO_ROOT_PASSWORD: ${MEDIA_S3_SECRET_ACCESS_KEY}
       MINIO_ROOT_USER: ${MEDIA_S3_ACCESS_KEY_ID}
@@ -284,6 +285,8 @@ services:
     read_only: true
     security_opt:
       - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=8m,mode=1777
 
   production-check:
     <<: *app
