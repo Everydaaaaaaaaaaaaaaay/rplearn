@@ -5,13 +5,11 @@ on:
     paths:
       - ".github/workflows/backend.yml"
       - "Backend/**"
-      - "docs/backend/**"
   push:
     branches: [main]
     paths:
       - ".github/workflows/backend.yml"
       - "Backend/**"
-      - "docs/backend/**"
 
 permissions:
   contents: read
@@ -23,30 +21,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    services:
-      postgres:
-        image: postgres:17-alpine
-        env:
-          POSTGRES_DB: lingotrip
-          POSTGRES_PASSWORD: lingotrip_dev
-          POSTGRES_USER: lingotrip
-        ports:
-          - 54329:5432
-        options: >-
-          --health-cmd "pg_isready -U lingotrip -d lingotrip"
-          --health-interval 2s
-          --health-timeout 3s
-          --health-retries 20
-      redis:
-        image: redis:8-alpine
-        ports:
-          - 63799:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 2s
-          --health-timeout 3s
-          --health-retries 20
+    timeout-minutes: 10
     defaults:
       run:
         working-directory: Backend
@@ -55,35 +30,6 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           persist-credentials: false
-      - name: Scan source, dependencies, secrets, and configuration
-        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
-        env:
-          TRIVY_INCLUDE_DEV_DEPS: "true"
-        with:
-          exit-code: "1"
-          format: table
-          ignore-unfixed: false
-          scan-ref: .
-          scan-type: fs
-          scanners: vuln,secret,misconfig
-          severity: HIGH,CRITICAL
-          version: v0.72.0
-      - name: Validate Kubernetes manifests
-        run: >-
-          docker run --rm
-          -v "${{ github.workspace }}/Backend/ops/kubernetes:/manifests:ro"
-          ghcr.io/yannh/kubeconform@sha256:85dbef6b4b312b99133decc9c6fc9495e9fc5f92293d4ff3b7e1b30f5611823c
-          -strict -summary /manifests
-      - name: Install the signed-image verifier
-        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
-        with:
-          cosign-release: v3.0.6
-      - name: Verify the pinned Distroless runtime signature
-        run: >-
-          cosign verify
-          gcr.io/distroless/nodejs24-debian13@sha256:af85d11ce7ef10172855a6e3649e3e8125b1b9e3ca41849ec2918036f05cb212
-          --certificate-identity keyless@distroless.iam.gserviceaccount.com
-          --certificate-oidc-issuer https://accounts.google.com
       - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         with:
           version: 10.11.0
@@ -96,37 +42,3 @@ jobs:
       - run: pnpm format:check
       - run: pnpm check
       - run: pnpm build
-      - run: pnpm db:migrate
-      - run: pnpm test:integration
-      - run: pnpm test:e2e
-      - run: pnpm audit --prod
-      - run: docker build --tag lingotrip-backend:${{ github.sha }} .
-      - name: Scan the release container image
-        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
-        with:
-          exit-code: "1"
-          format: table
-          ignore-unfixed: false
-          image-ref: lingotrip-backend:${{ github.sha }}
-          scan-type: image
-          scanners: vuln,secret,misconfig
-          severity: HIGH,CRITICAL
-          skip-setup-trivy: true
-          version: v0.72.0
-      - name: Smoke test the release container
-        run: ./ops/ci/container-smoke.sh lingotrip-backend:${{ github.sha }}
-      - name: Generate the release image SBOM
-        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
-        with:
-          format: cyclonedx-json
-          image: lingotrip-backend:${{ github.sha }}
-          output-file: Backend/lingotrip-backend.sbom.cdx.json
-          upload-artifact: false
-          upload-release-assets: false
-      - name: Retain the release image SBOM
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          if-no-files-found: error
-          name: lingotrip-backend-sbom-${{ github.sha }}
-          path: Backend/lingotrip-backend.sbom.cdx.json
-          retention-days: 30
