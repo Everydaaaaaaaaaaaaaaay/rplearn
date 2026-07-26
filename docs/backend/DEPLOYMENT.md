@@ -7,14 +7,18 @@
 丢失只影响短时 challenge、限流窗口等可重建数据。公网入口必须在负载均衡或 Ingress
 终止 TLS 1.2+，容器自身不直接暴露公网端口。
 
-`Backend/Dockerfile` 生成 Node 24、非 root、只含生产依赖的镜像。部署镜像必须使用 digest
-固定，不使用浮动 tag。`Backend/ops/kubernetes` 是最低安全基线；上线时由部署系统注入
-ConfigMap 和 Secret，不把值写进 manifest。
+`Backend/Dockerfile` 使用固定 digest 的 Node 24.18 构建层，最终运行层采用固定 digest
+的 Distroless Node 24 / Debian 13：没有 shell、包管理器或构建工具，以 UID/GID 65532
+运行且只包含生产依赖。部署应用镜像也必须使用 digest 固定，不使用浮动 tag。
+`Backend/ops/kubernetes` 是最低安全基线；上线时由部署系统注入 ConfigMap 和 Secret，
+不把值写进 manifest。
 
 ## 发布顺序
 
 1. CI 完成格式、lint、类型、单元测试、真实 PostgreSQL/Redis 集成测试、生产依赖审计和镜像构建。
-2. 为镜像生成 SBOM，并由镜像扫描器阻止 critical/high 且无豁免的漏洞。
+2. Trivy 在安装和构建前扫描仓库依赖、密钥与 IaC 配置，并在构建后扫描实际发布镜像；
+   high/critical 发现会阻止合并。Syft 为该镜像生成 CycloneDX JSON SBOM，并作为 CI
+   artifact 保留 30 天。
 3. 确认最近一次 PostgreSQL 基础备份和 WAL/PITR 流连续可用。
 4. 使用与 API 完全相同 digest 的一次性 Job 执行 `node dist/cli/migrate.js`。
 5. 使用待发布 Secret 运行 `node dist/cli/check-production-readiness.js`。只有 JSON
@@ -73,6 +77,13 @@ DeepSeek `/models` 中的 allowlist、Apple Billing 密钥/证书，以及启用
 签名密钥。它不发送邮件、不创建对象、不发起模型推理、不访问用户数据。检查超时由
 `READINESS_TIMEOUT_MS` 控制；失败只输出稳定错误码，详细连接错误应从受控平台日志和
 供应商控制台排查。
+
+工作流使用的 GitHub Actions 全部固定到不可变 commit SHA，并在旁注中保留语义版本，
+Distroless 运行层的 keyless 签名也会在构建前用固定身份和 OIDC issuer 验证。Dependabot
+每周为 Actions、pnpm 依赖和 Docker 基础镜像提出升级。漏洞例外不得直接放宽全局
+severity 或 `exit-code`；必须使用最窄规则，记录 CVE/规则 ID、影响分析、负责人、批准人
+和不超过 30 天的到期日，到期前修复或重新评审。任何 secret 命中都不能豁免，只能移除并
+轮换。
 
 部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
 `node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple

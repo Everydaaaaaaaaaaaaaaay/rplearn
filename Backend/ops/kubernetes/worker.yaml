@@ -26,7 +26,14 @@ spec:
         - name: worker
           image: registry.example.com/lingotrip/backend:replace-with-digest
           imagePullPolicy: IfNotPresent
-          command: ["node", "dist/worker.js"]
+          args:
+            [
+              "--import",
+              "./dist/instrumentation-loader.js",
+              "--import",
+              "./dist/instrumentation.js",
+              "dist/worker.js",
+            ]
           envFrom:
             - configMapRef:
                 name: lingotrip-backend-config

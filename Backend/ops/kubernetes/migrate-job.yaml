@@ -15,7 +15,7 @@ spec:
       containers:
         - name: migrate
           image: registry.example.com/lingotrip/backend:replace-with-digest
-          command: ["node", "dist/cli/migrate.js"]
+          args: ["dist/cli/migrate.js"]
           envFrom:
             - configMapRef:
                 name: lingotrip-backend-config
