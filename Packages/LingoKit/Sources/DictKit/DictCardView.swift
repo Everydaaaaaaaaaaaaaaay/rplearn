@@ -196,35 +196,16 @@ public struct DictCardView: View {
 
     private func tagChips(_ entry: DictEntry) -> some View {
         HStack(spacing: 6) {
-            if entry.oxford {
-                chip("牛津3000")
-            }
-            if entry.collins > 0 {
-                chip("柯林斯\(entry.collins)星")
-            }
-            ForEach(entry.tags, id: \.self) { tag in
-                chip(tagName(tag))
+            ForEach(DictTagDisplayPolicy.visibleTitles(for: entry), id: \.self) { title in
+                chip(title)
             }
         }
         .font(.caption2)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func chip(_ text: String) -> some View {
         DSChip(text, tint: .dsSky)
-    }
-
-    private func tagName(_ tag: String) -> String {
-        switch tag {
-        case "zk": "中考"
-        case "gk": "高考"
-        case "cet4": "四级"
-        case "cet6": "六级"
-        case "ky": "考研"
-        case "toefl": "托福"
-        case "ielts": "雅思"
-        case "gre": "GRE"
-        default: tag
-        }
     }
 
     @ViewBuilder

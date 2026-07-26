@@ -15,6 +15,7 @@ public struct DSChip: View {
         Text(title)
             .font(.system(.caption2, design: .rounded, weight: .semibold))
             .lineLimit(1)
+            .fixedSize(horizontal: true, vertical: true)
             .foregroundStyle(prominent ? .white : tint)
             .padding(.horizontal, 9)
             .padding(.vertical, 5)
