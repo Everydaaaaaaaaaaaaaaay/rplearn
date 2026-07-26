@@ -2,6 +2,7 @@ import CoreKit
 import DictKit
 import DomainKit
 import LLMKit
+import MediaKit
 import PersistenceKit
 import SpeechKit
 
@@ -20,6 +21,7 @@ public struct ChatDependencies: Sendable {
     public let itemStore: ItemStore
     public let economyStore: EconomyStore
     public let progression: any ProgressionRewardGateway
+    public let voiceMedia: VoiceMediaCoordinator
 
     public init(
         chatStore: ChatStore,
@@ -34,7 +36,8 @@ public struct ChatDependencies: Sendable {
         memoryStore: MemoryStore,
         itemStore: ItemStore,
         economyStore: EconomyStore,
-        progression: any ProgressionRewardGateway
+        progression: any ProgressionRewardGateway,
+        voiceMedia: VoiceMediaCoordinator
     ) {
         self.chatStore = chatStore
         self.rosterStore = rosterStore
@@ -49,5 +52,6 @@ public struct ChatDependencies: Sendable {
         self.itemStore = itemStore
         self.economyStore = economyStore
         self.progression = progression
+        self.voiceMedia = voiceMedia
     }
 }

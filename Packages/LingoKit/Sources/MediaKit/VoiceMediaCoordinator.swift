@@ -1,0 +1,291 @@
+import BackendKit
+import CoreKit
+import CryptoKit
+import Foundation
+import PersistenceKit
+import SpeechKit
+
+public protocol VoiceMediaBackend: Sendable {
+    func completeVoiceMedia(assetID: UUID) async throws -> BackendMediaAsset
+    func deleteVoiceMedia(assetID: UUID) async throws
+    func reserveVoiceMedia(
+        assetID: UUID,
+        byteSize: Int,
+        checksumSha256: String,
+        contentType: String
+    ) async throws -> BackendMediaReservation
+    func voiceMediaDownload(assetID: UUID) async throws -> BackendMediaDownload
+}
+
+extension BackendClient: VoiceMediaBackend {}
+
+public protocol VoiceMediaOwnerStore: Sendable {
+    func load() -> UUID?
+    func save(_ userID: UUID)
+}
+
+public final class UserDefaultsVoiceMediaOwnerStore: VoiceMediaOwnerStore, @unchecked Sendable {
+    private let defaults: UserDefaults
+    private let key: String
+    private let lock = NSLock()
+
+    public init(
+        defaults: UserDefaults = .standard,
+        key: String = "voice.media.cached-owner.v1"
+    ) {
+        self.defaults = defaults
+        self.key = key
+    }
+
+    public func load() -> UUID? {
+        lock.withLock {
+            defaults.string(forKey: key).flatMap(UUID.init(uuidString:))
+        }
+    }
+
+    public func save(_ userID: UUID) {
+        lock.withLock {
+            defaults.set(userID.uuidString.lowercased(), forKey: key)
+        }
+    }
+}
+
+public actor VoiceMediaCoordinator {
+    private let backend: any VoiceMediaBackend
+    private let binaryTransport: any VoiceMediaBinaryTransport
+    private let chatStore: ChatStore
+    private let ownerStore: any VoiceMediaOwnerStore
+    private let queueStore: VoiceMediaQueueStore
+    private var currentUserID: UUID?
+    private var isSynchronizing = false
+    private var retryTask: Task<Void, Never>?
+
+    public init(
+        backend: any VoiceMediaBackend,
+        chatStore: ChatStore,
+        queueStore: VoiceMediaQueueStore,
+        binaryTransport: any VoiceMediaBinaryTransport = URLSessionVoiceMediaTransport(),
+        ownerStore: any VoiceMediaOwnerStore = UserDefaultsVoiceMediaOwnerStore()
+    ) {
+        self.backend = backend
+        self.chatStore = chatStore
+        self.queueStore = queueStore
+        self.binaryTransport = binaryTransport
+        self.ownerStore = ownerStore
+    }
+
+    public func activate(userID: UUID) {
+        let previous = ownerStore.load()
+        if let previous, previous != userID {
+            VoiceMessageStorage.removeAccountDirectory(userID: previous)
+            VoiceMessageStorage.removeLegacyUnscopedFiles()
+        }
+        currentUserID = userID
+        ownerStore.save(userID)
+        scheduleSynchronization()
+    }
+
+    public func deactivate() {
+        retryTask?.cancel()
+        retryTask = nil
+        currentUserID = nil
+    }
+
+    @discardableResult
+    public func enqueue(
+        messageID: UUID,
+        sourceFileName: String
+    ) async throws -> UUID {
+        guard let userID = currentUserID else {
+            throw BackendClientError.signedOut
+        }
+        let assetID = UUID()
+        let scopedFileName = try VoiceMessageStorage.adopt(
+            fileName: sourceFileName,
+            userID: userID,
+            assetID: assetID
+        )
+        do {
+            let data = try Data(contentsOf: VoiceMessageStorage.url(for: scopedFileName))
+            let upload = PendingVoiceMediaUpload(
+                assetID: assetID,
+                attemptCount: 0,
+                byteSize: data.count,
+                checksumSha256: Self.checksum(data),
+                contentType: "audio/x-caf",
+                localFileName: scopedFileName,
+                messageID: messageID,
+                nextAttemptAt: .now,
+                ownerUserID: userID
+            )
+            try await chatStore.stageVoiceMediaUpload(upload)
+            scheduleSynchronization()
+            return assetID
+        } catch {
+            if let scopedURL = try? VoiceMessageStorage.url(for: scopedFileName),
+               let sourceURL = try? VoiceMessageStorage.url(for: sourceFileName),
+               FileManager.default.fileExists(atPath: scopedURL.path),
+               !FileManager.default.fileExists(atPath: sourceURL.path) {
+                try? FileManager.default.moveItem(at: scopedURL, to: sourceURL)
+            }
+            throw error
+        }
+    }
+
+    public func synchronize() async {
+        guard let userID = currentUserID, !isSynchronizing else { return }
+        isSynchronizing = true
+        retryTask?.cancel()
+        retryTask = nil
+        defer { isSynchronizing = false }
+
+        while !Task.isCancelled {
+            guard currentUserID == userID else { return }
+            let upload: PendingVoiceMediaUpload
+            do {
+                guard let next = try await queueStore.next(ownerUserID: userID) else {
+                    return
+                }
+                upload = next
+            } catch {
+                return
+            }
+            do {
+                try await process(upload)
+            } catch {
+                let delay = min(300, 5 * (1 << min(upload.attemptCount, 6)))
+                try? await queueStore.fail(
+                    assetID: upload.assetID,
+                    errorCode: Self.safeErrorCode(error),
+                    retryAt: .now.addingTimeInterval(TimeInterval(delay))
+                )
+                scheduleRetry(after: delay)
+                return
+            }
+        }
+    }
+
+    public func localFile(
+        messageID: UUID,
+        assetID: UUID?,
+        existingFileName: String?
+    ) async throws -> String {
+        guard let userID = currentUserID else {
+            throw BackendClientError.signedOut
+        }
+        if let existingFileName,
+           VoiceMessageStorage.exists(fileName: existingFileName) {
+            return existingFileName
+        }
+        guard let assetID else {
+            throw VoiceMediaError.remoteAssetUnavailable
+        }
+        let download = try await backend.voiceMediaDownload(assetID: assetID)
+        guard download.asset.id == assetID,
+              download.asset.status == "ready"
+        else {
+            throw VoiceMediaError.invalidServerAsset
+        }
+        let data = try await binaryTransport.download(from: download.download.url)
+        guard data.count == download.asset.byteSize,
+              Self.checksum(data) == download.asset.checksumSha256
+        else {
+            throw VoiceMediaError.integrityMismatch
+        }
+        let fileName = try VoiceMessageStorage.store(
+            data,
+            userID: userID,
+            assetID: assetID
+        )
+        try await chatStore.setDownloadedVoiceFileName(
+            messageID: messageID,
+            assetID: assetID,
+            fileName: fileName
+        )
+        return fileName
+    }
+
+    private func process(_ upload: PendingVoiceMediaUpload) async throws {
+        guard currentUserID == upload.ownerUserID else {
+            throw VoiceMediaError.accountChanged
+        }
+        let fileURL = try VoiceMessageStorage.url(for: upload.localFileName)
+        let data = try Data(contentsOf: fileURL)
+        guard data.count == upload.byteSize,
+              Self.checksum(data) == upload.checksumSha256
+        else {
+            throw VoiceMediaError.localFileChanged
+        }
+        let reservation = try await backend.reserveVoiceMedia(
+            assetID: upload.assetID,
+            byteSize: upload.byteSize,
+            checksumSha256: upload.checksumSha256,
+            contentType: upload.contentType
+        )
+        guard reservation.asset.id == upload.assetID else {
+            throw VoiceMediaError.invalidServerAsset
+        }
+        if let transfer = reservation.upload {
+            try await binaryTransport.upload(
+                data,
+                to: transfer.url,
+                method: transfer.method,
+                headers: transfer.headers
+            )
+        }
+        let completed = try await backend.completeVoiceMedia(assetID: upload.assetID)
+        guard completed.id == upload.assetID, completed.status == "ready" else {
+            throw VoiceMediaError.invalidServerAsset
+        }
+        guard currentUserID == upload.ownerUserID else {
+            throw VoiceMediaError.accountChanged
+        }
+        let attached = try await chatStore.markVoiceMediaReady(
+            messageID: upload.messageID,
+            assetID: upload.assetID
+        )
+        if !attached {
+            try await backend.deleteVoiceMedia(assetID: upload.assetID)
+        }
+        try await queueStore.complete(assetID: upload.assetID)
+    }
+
+    private func scheduleSynchronization() {
+        Task(priority: .utility) { [weak self] in
+            await self?.synchronize()
+        }
+    }
+
+    private func scheduleRetry(after seconds: Int) {
+        retryTask?.cancel()
+        retryTask = Task(priority: .utility) { [weak self] in
+            try? await Task.sleep(for: .seconds(Int64(seconds)))
+            guard !Task.isCancelled else { return }
+            await self?.synchronize()
+        }
+    }
+
+    private static func checksum(_ data: Data) -> String {
+        Data(SHA256.hash(data: data)).base64EncodedString()
+    }
+
+    private static func safeErrorCode(_ error: Error) -> String {
+        if let backend = error as? BackendClientError {
+            switch backend {
+            case .api(let code, _, _, _): return code
+            case .invalidResponse: return "INVALID_RESPONSE"
+            case .signedOut: return "SIGNED_OUT"
+            case .transport: return "TRANSPORT_ERROR"
+            }
+        }
+        return String(describing: type(of: error))
+    }
+}
+
+public enum VoiceMediaError: Error, Sendable, Equatable {
+    case accountChanged
+    case integrityMismatch
+    case invalidServerAsset
+    case localFileChanged
+    case remoteAssetUnavailable
+}

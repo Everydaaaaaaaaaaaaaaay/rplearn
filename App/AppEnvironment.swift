@@ -5,6 +5,7 @@ import DictKit
 import DomainKit
 import Foundation
 import LLMKit
+import MediaKit
 import PersistenceKit
 import SpeechKit
 import SwiftData
@@ -27,6 +28,7 @@ final class AppEnvironment {
     let modelContainer: ModelContainer
     let accountCacheStore: AccountCacheStore
     let contentSyncStore: ContentSyncStore
+    let voiceMediaQueueStore: VoiceMediaQueueStore
     let chatStore: ChatStore
     let rosterStore: RosterStore
     let economyStore: EconomyStore
@@ -38,6 +40,7 @@ final class AppEnvironment {
     let travelService: TravelService
     let userState: BackendUserStateCoordinator
     let contentSync: BackendContentSyncCoordinator
+    let voiceMedia: VoiceMediaCoordinator
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -88,7 +91,10 @@ final class AppEnvironment {
         self.accountCacheStore = accountCacheStore
         let contentSyncStore = ContentSyncStore(modelContainer: container)
         self.contentSyncStore = contentSyncStore
-        self.chatStore = ChatStore(modelContainer: container)
+        let chatStore = ChatStore(modelContainer: container)
+        self.chatStore = chatStore
+        let voiceMediaQueueStore = VoiceMediaQueueStore(modelContainer: container)
+        self.voiceMediaQueueStore = voiceMediaQueueStore
         self.rosterStore = RosterStore(modelContainer: container)
         self.economyStore = EconomyStore(modelContainer: container)
         self.favoritesStore = FavoritesStore(modelContainer: container)
@@ -107,6 +113,11 @@ final class AppEnvironment {
         self.contentSync = BackendContentSyncCoordinator(
             backend: backendClient,
             store: contentSyncStore
+        )
+        self.voiceMedia = VoiceMediaCoordinator(
+            backend: backendClient,
+            chatStore: chatStore,
+            queueStore: voiceMediaQueueStore
         )
         self.billing = BillingController(
             backend: backendClient,
@@ -143,6 +154,7 @@ final class AppEnvironment {
         let cards = try SeedData.mainCharacterCards(url: seedsURL)
         try await rosterStore.importMainCharactersIfNeeded(cards: cards)
         try await contentSync.activate(userID: identity.userID)
+        await voiceMedia.activate(userID: identity.userID)
         needsOnboarding = !profile.hasCompletedOnboarding
         return activation
     }

@@ -104,6 +104,70 @@ public final class ContentOutboxEntity {
     }
 }
 
+@Model
+public final class VoiceMediaLinkEntity {
+    @Attribute(.unique) public var messageID: UUID
+    public var assetID: UUID?
+    public var isRemoteReady: Bool
+    public var localFileName: String?
+    public var updatedAt: Date
+
+    public init(
+        messageID: UUID,
+        assetID: UUID? = nil,
+        isRemoteReady: Bool = false,
+        localFileName: String? = nil,
+        updatedAt: Date = .now
+    ) {
+        self.messageID = messageID
+        self.assetID = assetID
+        self.isRemoteReady = isRemoteReady
+        self.localFileName = localFileName
+        self.updatedAt = updatedAt
+    }
+}
+
+@Model
+public final class VoiceMediaUploadEntity {
+    @Attribute(.unique) public var assetID: UUID
+    public var ownerUserID: UUID
+    public var messageID: UUID
+    public var localFileName: String
+    public var byteSize: Int
+    public var checksumSha256: String
+    public var contentType: String
+    public var attemptCount: Int
+    public var nextAttemptAt: Date
+    public var lastErrorCode: String?
+    public var createdAt: Date
+
+    public init(
+        assetID: UUID,
+        ownerUserID: UUID,
+        messageID: UUID,
+        localFileName: String,
+        byteSize: Int,
+        checksumSha256: String,
+        contentType: String,
+        attemptCount: Int = 0,
+        nextAttemptAt: Date = .now,
+        lastErrorCode: String? = nil,
+        createdAt: Date = .now
+    ) {
+        self.assetID = assetID
+        self.ownerUserID = ownerUserID
+        self.messageID = messageID
+        self.localFileName = localFileName
+        self.byteSize = byteSize
+        self.checksumSha256 = checksumSha256
+        self.contentType = contentType
+        self.attemptCount = attemptCount
+        self.nextAttemptAt = nextAttemptAt
+        self.lastErrorCode = lastErrorCode
+        self.createdAt = createdAt
+    }
+}
+
 public enum SchemaV2: VersionedSchema {
     public static var versionIdentifier: Schema.Version { Schema.Version(2, 0, 0) }
 
@@ -112,6 +176,17 @@ public enum SchemaV2: VersionedSchema {
             ContentSyncOwnerEntity.self,
             ContentSyncMetadataEntity.self,
             ContentOutboxEntity.self,
+        ]
+    }
+}
+
+public enum SchemaV3: VersionedSchema {
+    public static var versionIdentifier: Schema.Version { Schema.Version(3, 0, 0) }
+
+    public static var models: [any PersistentModel.Type] {
+        SchemaV2.models + [
+            VoiceMediaLinkEntity.self,
+            VoiceMediaUploadEntity.self,
         ]
     }
 }

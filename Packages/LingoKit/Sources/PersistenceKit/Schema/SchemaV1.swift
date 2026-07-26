@@ -399,7 +399,7 @@ public typealias QuizRecordEntity = SchemaV1.QuizRecordEntity
 
 public enum LingoMigrationPlan: SchemaMigrationPlan {
     public static var schemas: [any VersionedSchema.Type] {
-        [SchemaV1.self, SchemaV2.self]
+        [SchemaV1.self, SchemaV2.self, SchemaV3.self]
     }
 
     public static var stages: [MigrationStage] {
@@ -407,6 +407,10 @@ public enum LingoMigrationPlan: SchemaMigrationPlan {
             .lightweight(
                 fromVersion: SchemaV1.self,
                 toVersion: SchemaV2.self
+            ),
+            .lightweight(
+                fromVersion: SchemaV2.self,
+                toVersion: SchemaV3.self
             )
         ]
     }

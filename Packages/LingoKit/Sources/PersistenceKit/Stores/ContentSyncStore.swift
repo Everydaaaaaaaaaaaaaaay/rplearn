@@ -372,7 +372,26 @@ public actor ContentSyncStore {
         entity.roleRaw = payload.role
         entity.kindRaw = payload.kind
         entity.text = payload.text
-        entity.audioFileName = nil
+        let existingMedia = try voiceMediaLink(messageID: id)
+        if let assetID = payload.audioAssetId {
+            let link = existingMedia ?? {
+                let created = VoiceMediaLinkEntity(messageID: id)
+                modelContext.insert(created)
+                return created
+            }()
+            if link.assetID != assetID {
+                link.localFileName = nil
+            }
+            link.assetID = assetID
+            link.isRemoteReady = true
+            link.updatedAt = record.updatedAt
+            entity.audioFileName = link.localFileName
+        } else if try voiceMediaUpload(messageID: id) == nil {
+            existingMedia?.assetID = nil
+            existingMedia?.isRemoteReady = false
+            existingMedia?.updatedAt = record.updatedAt
+            entity.audioFileName = existingMedia?.localFileName
+        }
         entity.audioDuration = payload.audioDuration
         entity.orderIndex = payload.orderIndex
         entity.tokenEstimate = payload.tokenEstimate
@@ -525,9 +544,16 @@ public actor ContentSyncStore {
                 modelContext.delete(entity)
             }
         case .message:
-            if let id = UUID(uuidString: record.resourceID),
-               let entity = try message(id: id) {
-                modelContext.delete(entity)
+            if let id = UUID(uuidString: record.resourceID) {
+                if let upload = try voiceMediaUpload(messageID: id) {
+                    modelContext.delete(upload)
+                }
+                if let link = try voiceMediaLink(messageID: id) {
+                    modelContext.delete(link)
+                }
+                if let entity = try message(id: id) {
+                    modelContext.delete(entity)
+                }
             }
         case .quizRecord:
             if let localKey = try metadata(
@@ -606,6 +632,7 @@ public actor ContentSyncStore {
         }
         for entity in try modelContext.fetch(FetchDescriptor<MessageEntity>()) {
             guard let parent = entity.conversation?.conversationID else { continue }
+            let media = try voiceMediaLink(messageID: entity.messageID)
             records.append(
                 LocalContentRecord(
                     resourceType: .message,
@@ -613,6 +640,7 @@ public actor ContentSyncStore {
                     parentID: parent.uuidString.lowercased(),
                     payloadJSON: try ContentMutationJournal.encode(
                         ContentMessagePayload(
+                            audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                             audioDuration: entity.audioDuration,
                             coachReviewJson: entity.coachReviewJSON,
                             createdAt: entity.createdAt,
@@ -803,6 +831,22 @@ public actor ContentSyncStore {
             predicate: #Predicate { $0.messageID == id }
         )
         return try modelContext.fetch(descriptor).first
+    }
+
+    private func voiceMediaLink(messageID: UUID) throws -> VoiceMediaLinkEntity? {
+        try modelContext.fetch(
+            FetchDescriptor<VoiceMediaLinkEntity>(
+                predicate: #Predicate { $0.messageID == messageID }
+            )
+        ).first
+    }
+
+    private func voiceMediaUpload(messageID: UUID) throws -> VoiceMediaUploadEntity? {
+        try modelContext.fetch(
+            FetchDescriptor<VoiceMediaUploadEntity>(
+                predicate: #Predicate { $0.messageID == messageID }
+            )
+        ).first
     }
 
     private func memory(localKey: String) throws -> MemoryEntity? {

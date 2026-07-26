@@ -461,14 +461,18 @@ public struct ChatView: View {
                 message: .init(
                     duration: message.audioDuration ?? 0,
                     transcript: message.text,
-                    hasAudio: message.audioFileName != nil
+                    hasAudio: message.audioFileName != nil || message.audioAssetID != nil
                 ),
                 isPlaying: voicePlayer.playingFileName != nil && voicePlayer.playingFileName == message.audioFileName,
                 showTranscript: transcriptVisibleMessageIDs.contains(message.id),
                 textColor: textColor,
                 onTogglePlay: {
-                    guard let fileName = message.audioFileName else { return }
-                    Task { await voicePlayer.togglePlay(fileName: fileName) }
+                    Task {
+                        guard let fileName = await viewModel.localVoiceFile(for: message) else {
+                            return
+                        }
+                        await voicePlayer.togglePlay(fileName: fileName)
+                    }
                 }
             )
         } else {

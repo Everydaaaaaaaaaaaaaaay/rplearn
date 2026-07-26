@@ -78,7 +78,10 @@ struct RootView: View {
         .onChange(of: environment.authSession.phase) { _, phase in
             if case .signedOut = phase {
                 environment.billing.deactivate()
-                Task { await environment.contentSync.deactivate() }
+                Task {
+                    await environment.contentSync.deactivate()
+                    await environment.voiceMedia.deactivate()
+                }
                 activeUserID = nil
                 activationError = nil
                 usingOfflineCache = false
@@ -90,6 +93,7 @@ struct RootView: View {
                 do {
                     try await environment.userState.synchronize()
                     try await environment.contentSync.synchronize()
+                    await environment.voiceMedia.synchronize()
                     await environment.billing.synchronize()
                     usingOfflineCache = false
                     stateRevision += 1
@@ -326,7 +330,8 @@ struct RootView: View {
             memoryStore: environment.memoryStore,
             itemStore: environment.itemStore,
             economyStore: environment.economyStore,
-            progression: environment.userState
+            progression: environment.userState,
+            voiceMedia: environment.voiceMedia
         )
     }
 

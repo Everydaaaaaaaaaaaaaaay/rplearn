@@ -91,6 +91,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var role: MessageRole
     public var kind: MessageKind
     public var text: String
+    public var audioAssetID: UUID?
     public var audioFileName: String?
     public var audioDuration: Double?
     public var orderIndex: Int
@@ -109,6 +110,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         role: MessageRole,
         kind: MessageKind,
         text: String,
+        audioAssetID: UUID? = nil,
         audioFileName: String? = nil,
         audioDuration: Double? = nil,
         orderIndex: Int,
@@ -126,6 +128,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.role = role
         self.kind = kind
         self.text = text
+        self.audioAssetID = audioAssetID
         self.audioFileName = audioFileName
         self.audioDuration = audioDuration
         self.orderIndex = orderIndex

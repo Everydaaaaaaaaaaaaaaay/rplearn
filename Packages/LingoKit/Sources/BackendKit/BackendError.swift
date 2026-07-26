@@ -29,6 +29,10 @@ extension BackendClientError: LocalizedError {
             case "PROFILE_VERSION_CONFLICT": "资料已在另一台设备更新，正在重新同步。"
             case "ONBOARDING_REQUIRED": "请先完成初次旅程。"
             case "STORY_NOT_FOUND": "这个剧情目前不可用。"
+            case "MEDIA_STORAGE_QUOTA_EXCEEDED": "语音云空间已满。"
+            case "MEDIA_ASSET_LIMIT_EXCEEDED": "语音云端记录已达到上限。"
+            case "MEDIA_STORAGE_UNAVAILABLE": "语音云服务暂时不可用，请稍后重试。"
+            case "MEDIA_UPLOAD_EXPIRED": "语音上传已过期，正在重新尝试。"
             default: message
             }
         case .invalidResponse:

@@ -3,6 +3,7 @@ import DesignSystem
 import DomainKit
 import Foundation
 import LLMKit
+import MediaKit
 import Observation
 import PersistenceKit
 import SpeechKit
@@ -113,8 +114,10 @@ public final class ChatViewModel {
     public func sendVoice(capture: VoiceRecorder.Capture) async {
         guard let conversation, !isStreaming else { return }
         let userMessage: MessageDTO
+        let messageID = UUID()
         do {
             userMessage = try await deps.chatStore.appendMessage(
+                messageID: messageID,
                 conversationID: conversation.id,
                 role: .user,
                 kind: .voice,
@@ -123,6 +126,17 @@ public final class ChatViewModel {
                 audioDuration: capture.duration,
                 tokenEstimate: TokenEstimator.estimate(capture.transcript)
             )
+            if let sourceFileName = capture.fileName {
+                do {
+                    _ = try await deps.voiceMedia.enqueue(
+                        messageID: messageID,
+                        sourceFileName: sourceFileName
+                    )
+                } catch {
+                    errorMessage = "语音已保存在本机，云端备份暂未完成。"
+                    Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                }
+            }
             await reloadMessages()
         } catch {
             errorMessage = "发送失败：\(error.localizedDescription)"
@@ -131,6 +145,21 @@ public final class ChatViewModel {
         runCoachReview(for: userMessage)
         runSpeechReview(for: userMessage)
         await streamAssistantReply()
+    }
+
+    public func localVoiceFile(for message: MessageDTO) async -> String? {
+        do {
+            let fileName = try await deps.voiceMedia.localFile(
+                messageID: message.id,
+                assetID: message.audioAssetID,
+                existingFileName: message.audioFileName
+            )
+            await reloadMessages()
+            return fileName
+        } catch {
+            errorMessage = "语音下载失败，请稍后重试。"
+            return nil
+        }
     }
 
     /// 后台口语点评（仅语音消息）：结果写 speechReviewJSON；超时/失败静默放弃（plan.md §2.8）。

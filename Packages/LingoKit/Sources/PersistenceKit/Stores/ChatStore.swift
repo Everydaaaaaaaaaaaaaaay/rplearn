@@ -8,6 +8,8 @@ public actor ChatStore {
     public enum ChatError: Error {
         case characterNotFound
         case conversationNotFound
+        case voiceMediaConflict
+        case voiceMessageNotFound
     }
 
     /// 取角色的主会话，没有则创建。
@@ -40,12 +42,13 @@ public actor ChatStore {
         }
         return conversation.messages
             .sorted { $0.orderIndex < $1.orderIndex }
-            .map(Self.dto(from:))
+            .map(dto(from:))
     }
 
     /// 追加一条消息，返回落库后的 DTO（orderIndex 自动递增）。
     @discardableResult
     public func appendMessage(
+        messageID: UUID = UUID(),
         conversationID: UUID,
         role: MessageRole,
         kind: MessageKind = .text,
@@ -59,6 +62,7 @@ public actor ChatStore {
         }
         let nextIndex = (conversation.messages.map(\.orderIndex).max() ?? -1) + 1
         let message = MessageEntity(
+            messageID: messageID,
             roleRaw: role.rawValue,
             kindRaw: kind.rawValue,
             text: text,
@@ -77,7 +81,7 @@ public actor ChatStore {
         try journal(message)
         try journal(conversation)
         try modelContext.save()
-        return Self.dto(from: message)
+        return dto(from: message)
     }
 
     /// 更新消息文本（流式增量写入 / 结束时定稿）。
@@ -117,6 +121,94 @@ public actor ChatStore {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.translationZh = translationZh
         try journal(message)
+        try modelContext.save()
+    }
+
+    public func stageVoiceMediaUpload(_ upload: PendingVoiceMediaUpload) throws {
+        guard let message = try fetchMessage(id: upload.messageID) else {
+            throw ChatError.voiceMessageNotFound
+        }
+        let link = try voiceMediaLink(messageID: upload.messageID) ?? {
+            let created = VoiceMediaLinkEntity(messageID: upload.messageID)
+            modelContext.insert(created)
+            return created
+        }()
+        guard link.assetID == nil || link.assetID == upload.assetID else {
+            throw ChatError.voiceMediaConflict
+        }
+        link.assetID = upload.assetID
+        link.isRemoteReady = false
+        link.localFileName = upload.localFileName
+        link.updatedAt = .now
+        message.audioFileName = upload.localFileName
+        let assetID = upload.assetID
+        let existingUpload = try modelContext.fetch(
+            FetchDescriptor<VoiceMediaUploadEntity>(
+                predicate: #Predicate { $0.assetID == assetID }
+            )
+        ).first
+        if let existingUpload {
+            guard existingUpload.ownerUserID == upload.ownerUserID,
+                  existingUpload.messageID == upload.messageID,
+                  existingUpload.localFileName == upload.localFileName,
+                  existingUpload.byteSize == upload.byteSize,
+                  existingUpload.checksumSha256 == upload.checksumSha256,
+                  existingUpload.contentType == upload.contentType
+            else {
+                throw ChatError.voiceMediaConflict
+            }
+        } else {
+            modelContext.insert(
+                VoiceMediaUploadEntity(
+                    assetID: upload.assetID,
+                    ownerUserID: upload.ownerUserID,
+                    messageID: upload.messageID,
+                    localFileName: upload.localFileName,
+                    byteSize: upload.byteSize,
+                    checksumSha256: upload.checksumSha256,
+                    contentType: upload.contentType
+                )
+            )
+        }
+        try modelContext.save()
+    }
+
+    public func markVoiceMediaReady(
+        messageID: UUID,
+        assetID: UUID
+    ) throws -> Bool {
+        guard let message = try fetchMessage(id: messageID),
+              let link = try voiceMediaLink(messageID: messageID),
+              link.assetID == assetID
+        else { return false }
+        link.isRemoteReady = true
+        link.updatedAt = .now
+        try journal(message)
+        try modelContext.save()
+        return true
+    }
+
+    public func setDownloadedVoiceFileName(
+        messageID: UUID,
+        assetID: UUID,
+        fileName: String
+    ) throws {
+        guard let message = try fetchMessage(id: messageID) else { return }
+        let link = try voiceMediaLink(messageID: messageID) ?? {
+            let created = VoiceMediaLinkEntity(
+                messageID: messageID,
+                assetID: assetID,
+                isRemoteReady: true
+            )
+            modelContext.insert(created)
+            return created
+        }()
+        guard link.assetID == nil || link.assetID == assetID else { return }
+        link.assetID = assetID
+        link.isRemoteReady = true
+        link.localFileName = fileName
+        link.updatedAt = .now
+        message.audioFileName = fileName
         try modelContext.save()
     }
 
@@ -206,6 +298,16 @@ public actor ChatStore {
             resourceType: .message,
             resourceID: message.messageID.uuidString.lowercased()
         )
+        if let upload = try modelContext.fetch(
+            FetchDescriptor<VoiceMediaUploadEntity>(
+                predicate: #Predicate { $0.messageID == messageID }
+            )
+        ).first {
+            modelContext.delete(upload)
+        }
+        if let link = try voiceMediaLink(messageID: messageID) {
+            modelContext.delete(link)
+        }
         modelContext.delete(message)
         try modelContext.save()
     }
@@ -246,6 +348,14 @@ public actor ChatStore {
         ).first
     }
 
+    private func voiceMediaLink(messageID: UUID) throws -> VoiceMediaLinkEntity? {
+        try modelContext.fetch(
+            FetchDescriptor<VoiceMediaLinkEntity>(
+                predicate: #Predicate { $0.messageID == messageID }
+            )
+        ).first
+    }
+
     private func journal(_ conversation: ConversationEntity) throws {
         guard let characterID = conversation.character?.characterID else { return }
         try ContentMutationJournal.upsert(
@@ -270,6 +380,7 @@ public actor ChatStore {
 
     private func journal(_ message: MessageEntity) throws {
         guard let conversationID = message.conversation?.conversationID else { return }
+        let media = try voiceMediaLink(messageID: message.messageID)
         try ContentMutationJournal.upsert(
             in: modelContext,
             resourceType: .message,
@@ -277,6 +388,7 @@ public actor ChatStore {
             parentID: conversationID.uuidString.lowercased(),
             payloadJSON: try ContentMutationJournal.encode(
                 ContentMessagePayload(
+                    audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                     audioDuration: message.audioDuration,
                     coachReviewJson: message.coachReviewJSON,
                     createdAt: message.createdAt,
@@ -337,13 +449,15 @@ public actor ChatStore {
         )
     }
 
-    static func dto(from entity: MessageEntity) -> MessageDTO {
-        MessageDTO(
+    private func dto(from entity: MessageEntity) -> MessageDTO {
+        let media = try? voiceMediaLink(messageID: entity.messageID)
+        return MessageDTO(
             id: entity.messageID,
             role: MessageRole(rawValue: entity.roleRaw) ?? .assistant,
             kind: MessageKind(rawValue: entity.kindRaw) ?? .text,
             text: entity.text,
-            audioFileName: entity.audioFileName,
+            audioAssetID: media?.isRemoteReady == true ? media?.assetID : nil,
+            audioFileName: media?.localFileName ?? entity.audioFileName,
             audioDuration: entity.audioDuration,
             orderIndex: entity.orderIndex,
             tokenEstimate: entity.tokenEstimate,

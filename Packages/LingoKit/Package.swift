@@ -24,6 +24,15 @@ let serviceTargets: [Target] = [
     ),
     .target(name: "LLMKit", dependencies: [module("BackendKit"), module("CoreKit")]),
     .target(name: "SpeechKit", dependencies: [module("CoreKit")]),
+    .target(
+        name: "MediaKit",
+        dependencies: [
+            module("BackendKit"),
+            module("CoreKit"),
+            module("PersistenceKit"),
+            module("SpeechKit"),
+        ]
+    ),
     // DictKit 附带词典卡 UI（DictCardView/浮窗），故依赖 DesignSystem——层级仍严格向下。
     .target(name: "DictKit", dependencies: [module("CoreKit"), module("DesignSystem")]),
     .target(name: "PersistenceKit", dependencies: [module("CoreKit")]),
@@ -72,6 +81,7 @@ let featureTargets: [Target] = [
         module("PersistenceKit"),
         module("DictKit"),
         module("SpeechKit"),
+        module("MediaKit"),
     ]),
     feature("OnboardingFeature", dependencies: [
         module("StoryEngine"),
