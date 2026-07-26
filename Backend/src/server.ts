@@ -22,6 +22,7 @@ import { createSyncCursorCodec } from "./modules/sync/cursor.js";
 import { registerSyncRoutes } from "./modules/sync/routes.js";
 import { createSyncService } from "./modules/sync/service.js";
 import { registerAuditHooks } from "./modules/observability/audit.js";
+import { createDatabaseMetricsSource } from "./modules/observability/database-metrics.js";
 import { registerAccountRoutes } from "./modules/account/routes.js";
 import { createAccountService } from "./modules/account/service.js";
 import { createContentCursorCodec } from "./modules/content/cursor.js";
@@ -52,6 +53,7 @@ async function main(): Promise<void> {
     ? createMediaObjectStore(config)
     : undefined;
   const app = await buildApp(config, {
+    operationalMetricsSource: createDatabaseMetricsSource(dependencies.database),
     readinessChecks: [
       ...dependencies.readinessChecks,
       ...(mediaObjectStore === undefined

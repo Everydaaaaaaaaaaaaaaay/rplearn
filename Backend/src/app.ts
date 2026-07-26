@@ -13,10 +13,14 @@ import { registerErrorHandling } from "./app/error-handler.js";
 import { registerHealthRoutes } from "./app/health.js";
 import { createLoggerOptions } from "./app/logger.js";
 import type { ReadinessCheck } from "./app/readiness.js";
-import { registerMetrics } from "./modules/observability/metrics.js";
+import {
+  registerMetrics,
+  type OperationalMetricsSource,
+} from "./modules/observability/metrics.js";
 
 type BuildAppOptions = Readonly<{
   logger?: FastifyServerOptions["logger"];
+  operationalMetricsSource?: OperationalMetricsSource;
   readinessChecks?: readonly ReadinessCheck[];
 }>;
 
@@ -93,7 +97,7 @@ export async function buildApp(
 
   registerErrorHandling(app);
   registerHealthRoutes(app, options.readinessChecks ?? [], config.readinessTimeoutMs);
-  registerMetrics(app, config);
+  registerMetrics(app, config, options.operationalMetricsSource);
 
   return app;
 }

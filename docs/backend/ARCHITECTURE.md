@@ -250,7 +250,7 @@ provider options 永远不能覆盖服务端生成的 messages、model、token �
 - 应用日志：Pino JSON，字段白名单与递归脱敏；
 - 访问日志：请求 ID、路由模板、状态、耗时、响应尺寸；
 - 审计日志：身份、计费、权益、后台配置和高风险操作，追加写入；
-- 指标：请求率/错误率/延迟、数据库池、Redis、AI token/费用/错误、登录失败、收据验证积压；
+- 指标：请求率/错误率/延迟，以及从 PostgreSQL 权威事实聚合的任务、订阅对账、商店通知与 AI token/错误窗口；所有标签保持低基数且不含用户或内容；
 - 追踪：OpenTelemetry 贯穿 API、数据库、Redis 和上游 HTTP；
 - 健康检查：`/health/live` 只表示进程存活，`/health/ready` 检查依赖与迁移状态；
 - 告警：SLO 燃尽、认证异常、AI 成本突增、通知积压和数据库容量。

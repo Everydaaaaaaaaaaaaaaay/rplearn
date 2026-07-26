@@ -1,0 +1,170 @@
+groups:
+  - name: lingotrip-api-slo
+    interval: 30s
+    rules:
+      - alert: LingoTripApiFastErrorBudgetBurn
+        expr: |
+          (
+            sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics",
+              status_family="5xx"
+            }[5m]))
+            /
+            clamp_min(sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics"
+            }[5m])), 0.001)
+          ) > 0.0144
+          and
+          (
+            sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics",
+              status_family="5xx"
+            }[1h]))
+            /
+            clamp_min(sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics"
+            }[1h])), 0.001)
+          ) > 0.0144
+        for: 2m
+        labels:
+          severity: critical
+          service: lingotrip-backend
+        annotations:
+          summary: LingoTrip API is rapidly consuming its availability error budget
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#api-错误率或延迟
+      - alert: LingoTripApiSlowErrorBudgetBurn
+        expr: |
+          (
+            sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics",
+              status_family="5xx"
+            }[30m]))
+            /
+            clamp_min(sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics"
+            }[30m])), 0.001)
+          ) > 0.006
+          and
+          (
+            sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics",
+              status_family="5xx"
+            }[6h]))
+            /
+            clamp_min(sum(rate(lingotrip_http_requests_total{
+              route!~"/health/.*|/internal/metrics"
+            }[6h])), 0.001)
+          ) > 0.006
+        for: 15m
+        labels:
+          severity: warning
+          service: lingotrip-backend
+        annotations:
+          summary: LingoTrip API is steadily consuming its availability error budget
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#api-错误率或延迟
+      - alert: LingoTripSyncLatencyHigh
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum by (le) (
+              rate(lingotrip_http_request_duration_seconds_bucket{
+                route=~"/v1/sync.*",
+                status_family="2xx"
+              }[10m])
+            )
+          ) > 1
+        for: 10m
+        labels:
+          severity: warning
+          service: lingotrip-backend
+        annotations:
+          summary: Sync API p95 latency is above one second
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#api-错误率或延迟
+      - alert: LingoTripReadinessFailing
+        expr: |
+          increase(lingotrip_http_requests_total{
+            route="/health/ready",
+            status_family="5xx"
+          }[5m]) > 0
+        for: 5m
+        labels:
+          severity: critical
+          service: lingotrip-backend
+        annotations:
+          summary: LingoTrip dependency readiness has been failing
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#服务不可用
+
+  - name: lingotrip-operational-state
+    interval: 30s
+    rules:
+      - alert: LingoTripOperationalMetricsUnavailable
+        expr: lingotrip_operational_metrics_collection_success == 0
+        for: 5m
+        labels:
+          severity: critical
+          service: lingotrip-backend
+        annotations:
+          summary: Database-backed operational metrics cannot be refreshed
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#运营指标停止更新
+      - alert: LingoTripOperationalMetricsStale
+        expr: |
+          time() - lingotrip_operational_metrics_collection_timestamp_seconds > 120
+        for: 5m
+        labels:
+          severity: critical
+          service: lingotrip-backend
+        annotations:
+          summary: Database-backed operational metrics are stale
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#运营指标停止更新
+      - alert: LingoTripDeadLetterJob
+        expr: sum(lingotrip_jobs{status="dead"}) > 0
+        for: 2m
+        labels:
+          severity: critical
+          service: lingotrip-worker
+        annotations:
+          summary: One or more background jobs reached dead-letter state
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#后台任务积压或死信
+      - alert: LingoTripJobBacklogOld
+        expr: max(lingotrip_job_oldest_pending_age_seconds) > 300
+        for: 10m
+        labels:
+          severity: warning
+          service: lingotrip-worker
+        annotations:
+          summary: A background job has waited for more than five minutes
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#后台任务积压或死信
+      - alert: LingoTripBillingNotificationBacklog
+        expr: max(lingotrip_billing_event_oldest_age_seconds) > 300
+        for: 10m
+        labels:
+          severity: critical
+          service: lingotrip-billing
+        annotations:
+          summary: An App Store server notification is unprocessed for over five minutes
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#订阅通知或主动对账滞后
+      - alert: LingoTripBillingReconciliationOverdue
+        expr: sum(lingotrip_billing_reconciliation_overdue) > 0
+        for: 30m
+        labels:
+          severity: warning
+          service: lingotrip-billing
+        annotations:
+          summary: Apple subscription reconciliation is overdue
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#订阅通知或主动对账滞后
+      - alert: LingoTripAiFailureRatioHigh
+        expr: |
+          (
+            sum(lingotrip_ai_requests_5m{status="failed"})
+            /
+            clamp_min(sum(lingotrip_ai_requests_5m), 1)
+          ) > 0.2
+          and
+          sum(lingotrip_ai_requests_5m) >= 10
+        for: 10m
+        labels:
+          severity: warning
+          service: lingotrip-ai
+        annotations:
+          summary: More than 20 percent of persisted AI requests are failing
+          runbook_url: https://github.com/Everydaaaaaaaaaaaaaaay/rplearn/blob/main/docs/backend/OPERATIONS_RUNBOOK.md#ai-服务异常

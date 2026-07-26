@@ -2,12 +2,12 @@
 
 ## SLO 与告警
 
-建议初始 SLO：
+完整口径见 `OBSERVABILITY.md`。首个商业版本采用：
 
 - 月度 API 可用性 99.9%；
-- 非 AI API P95 小于 400ms，P99 小于 1s；
+- 登录、状态读取与普通写入 P95 小于 750ms，增量同步 P95 小于 1s；
 - AI 首 token P95 小于 4s，完整请求按任务单独观测；
-- 计费通知 99% 在 60 秒内处理；
+- 商店通知 P95 在 5 分钟内完成处理，主动订阅对账延迟不超过 30 分钟；
 - 审计写入失败为零容忍告警。
 
 必须告警：
@@ -27,6 +27,27 @@ ID、邮箱、transaction ID 或模型 prompt。
 
 ## 常见事故
 
+### 服务不可用
+
+先区分进程存活与依赖就绪：`/health/live` 失败时处理实例或运行时故障，
+`/health/ready` 失败时停止向实例分配新流量并按失败依赖继续排查。禁止为了恢复
+readiness 临时关闭身份验证、账本事务、订阅验签或对象存储完整性校验。
+
+### API 错误率或延迟
+
+1. 按 `route`、状态族和最近部署版本缩小范围，确认是单一接口还是全局依赖；
+2. 查看 readiness 与 PostgreSQL、Redis、对象存储延迟，健康检查流量不计入用户 SLO；
+3. 若刚部署，按发布流程回滚到已验证镜像；若为突增流量，先启用边缘限流和受控扩容；
+4. AI 流式接口属于长连接，不与普通接口共用延迟阈值；
+5. 事件结束后记录受影响窗口、错误预算消耗、根因和防复发项。
+
+### 运营指标停止更新
+
+1. 比较 `lingotrip_operational_metrics_collection_success` 与最后成功时间；
+2. 检查 API 实例到 PostgreSQL 的连接池、查询超时和读取权限；
+3. 指标端点保留上次成功快照，不能据此认定任务或账单状态仍健康；
+4. 恢复后确认时间戳继续推进，并抽样核对数据库事实与仪表盘数值。
+
 ### PostgreSQL 不可用
 
 readiness 应立即失败并停止接流量。禁止切换到本地缓存继续接受资产、旅行、订阅或同步写入。确认托管实例、网络和连接池后恢复；若涉及数据损坏，执行 PITR 流程。
@@ -44,7 +65,7 @@ fail-closed，不允许绕过风控；普通业务的全局 IP 保护可短暂 f
 `ai_requests` 的稳定错误码和 token 聚合，禁止查看或记录用户 prompt。若 key
 疑似泄露，先吊销并生成新 key，再更新 Secret Manager 和滚动重启。
 
-### Apple 通知积压
+### 订阅通知或主动对账滞后
 
 确认验签、bundle、environment 和产品映射。重复通知可以安全重放；乱序事件不会覆盖更晚状态。不得手工把客户端声明写成有效 entitlement。修复配置后使用受控补偿程序重新处理
 `processing_error` 事件并记录审计。
@@ -56,9 +77,9 @@ Statuses，并再次验签其中每个 transaction/renewal JWS。退出码非零
 原始 JWS 或 App Store API 响应写入日志/工单。多个实例可以并行，但总请求率不应逼近
 Apple 限额。
 
-### 邮件任务积压或死信
+### 后台任务积压或死信
 
-1. 查询 `app.jobs` 中 `pending` 的最老 `available_at`，以及 `dead` 的
+1. 按任务类型查询 `app.jobs` 中 `pending` 的最老 `available_at`，以及 `dead` 的
    `type`、`attempts`、`last_error`；禁止导出或解密 payload。
 2. 核对 worker 副本、SMTP 连通性和 `JOB_PAYLOAD_KEY_VERSION`。`last_error`
    只记录异常类型，不含收件地址、token 或 SMTP 响应正文。

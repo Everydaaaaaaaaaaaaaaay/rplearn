@@ -126,4 +126,5 @@ Access Token 只使用 `AUTH_JWT_KEY_ID`
 生产发布、回滚、备份恢复和事故处理分别见
 [`../docs/backend/DEPLOYMENT.md`](../docs/backend/DEPLOYMENT.md)、
 [`../docs/backend/BACKUP_RESTORE.md`](../docs/backend/BACKUP_RESTORE.md) 与
-[`../docs/backend/OPERATIONS_RUNBOOK.md`](../docs/backend/OPERATIONS_RUNBOOK.md)。
+[`../docs/backend/OPERATIONS_RUNBOOK.md`](../docs/backend/OPERATIONS_RUNBOOK.md)。指标、SLO 和告警规则见
+[`../docs/backend/OBSERVABILITY.md`](../docs/backend/OBSERVABILITY.md)。

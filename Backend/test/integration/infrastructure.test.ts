@@ -5,6 +5,7 @@ import {
   createRuntimeDependencies,
   type RuntimeDependencies,
 } from "../../src/infrastructure/runtime-dependencies.js";
+import { createDatabaseMetricsSource } from "../../src/modules/observability/database-metrics.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -38,5 +39,37 @@ describe.runIf(runIntegrationTests)("runtime infrastructure", () => {
 
     await expect(dependencies.redis.takeOneTime(key)).resolves.toBe("value");
     await expect(dependencies.redis.takeOneTime(key)).resolves.toBeNull();
+  });
+
+  it("collects bounded operational state from persisted facts", async () => {
+    const snapshot = await createDatabaseMetricsSource(dependencies.database)();
+    const values = [
+      ...snapshot.aiRequests.flatMap((row) => [
+        row.count,
+        row.inputTokens,
+        row.outputTokens,
+      ]),
+      ...snapshot.billingEventBacklog.flatMap((row) => [
+        row.count,
+        row.oldestAgeSeconds,
+      ]),
+      ...snapshot.billingReconciliationOverdue.map((row) => row.count),
+      ...snapshot.jobCounts.map((row) => row.count),
+      ...snapshot.oldestPendingJobs.map((row) => row.ageSeconds),
+      ...snapshot.subscriptionCounts.map((row) => row.count),
+    ];
+
+    expect(values.every((value) => Number.isFinite(value) && value >= 0)).toBe(true);
+    expect(
+      snapshot.jobCounts.every((row) =>
+        [
+          "account.purge",
+          "auth.email_verification",
+          "auth.password_reset",
+          "media.delete",
+          "other",
+        ].includes(row.type),
+      ),
+    ).toBe(true);
   });
 });
