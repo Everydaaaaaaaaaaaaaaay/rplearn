@@ -1,0 +1,27 @@
+{
+  "id": "city_vancouver",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "沿 Stanley Park 海堤骑行时，你在长椅下发现一台旧胶片相机。最后一张照片停在取景框里：红围巾、白帆和远处的雪山。", "bg": "vancouver_seawall", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Noah", "text": "Let's find the owner before sunset. Start with a clear description — details travel faster than guesses.", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "旁白", "text": "前方的租车亭正在播放失物招领广播，工作人员示意你描述物品。", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「We found a small silver film camera near the seawall.」", "next": "n04a", "setFlags": { "clear_description": true } },
+      { "text": "「We found someone's camera over there.」", "next": "n04b" }
+    ] },
+    { "id": "n04a", "type": "line", "speaker": "工作人员", "text": "Perfect. Location, colour, and type — that gives the owner something specific to recognise.", "next": "n05" },
+    { "id": "n04b", "type": "line", "speaker": "Noah", "text": "Add what it looks like and where we found it. 'Over there' disappears the moment we move.", "next": "n05" },
+    { "id": "n05", "type": "line", "speaker": "旁白", "text": "广播刚结束，一位戴红围巾的女士气喘吁吁地跑来。她能说出相机皮套内侧刻着的两个字母。", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「Could you describe one photo still on the roll?」", "next": "n06a", "setFlags": { "verified_owner": true } },
+      { "text": "直接把相机递给她", "next": "n06b" }
+    ] },
+    { "id": "n06a", "type": "line", "speaker": "女士", "text": "A white sail beneath the mountains. It was the last photo my father took here twenty years ago.", "next": "n07" },
+    { "id": "n06b", "type": "line", "speaker": "Noah", "text": "One quick check first. Returning something safely means being kind and careful at the same time.", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "女士", "text": "Thank you. I came back to take the same photograph for him. Would you press the shutter?", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "旁白", "text": "你等到白帆进入雪山之间，轻轻按下快门。旧相机发出一声清脆的咔哒，像两段时间终于接上。", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】你继续沿海堤前行，开始留意每一个值得被准确描述的细节。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

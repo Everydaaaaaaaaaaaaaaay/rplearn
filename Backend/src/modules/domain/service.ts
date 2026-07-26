@@ -68,6 +68,16 @@ const STORY_REWARDS = new Map<string, number>([
   ["mainline_newyork_2", 120],
   ["mainline_capetown", 140],
   ["mainline_singapore", 200],
+  ["city_capetown", 120],
+  ["city_singapore", 120],
+  ["city_dublin", 120],
+  ["city_edinburgh", 120],
+  ["city_vancouver", 120],
+  ["city_auckland", 120],
+  ["city_nairobi", 120],
+  ["city_reykjavik", 120],
+  ["city_lisbon", 120],
+  ["city_tokyo", 120],
 ]);
 
 const STARTER_REGION_IDS = new Set(["london", "melbourne", "newyork"]);

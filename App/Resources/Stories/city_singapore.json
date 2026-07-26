@@ -1,0 +1,28 @@
+{
+  "id": "city_singapore",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "午餐时间的熟食中心像一台全速运转的机器。锅铲声、点单声和四面八方的语言挤在一起，只有一张桌子还留着空位。", "bg": "singapore_hawker", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Mei", "text": "Before you sit, check the tissue packet. Here, it can mean the seat is reserved.", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "旁白", "text": "桌边放着一包纸巾，一位端着托盘的老人正朝这边走来。", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「Excuse me, is this seat taken?」", "next": "n04a", "setFlags": { "asked_before_sitting": true } },
+      { "text": "把纸巾挪开，先占下座位", "next": "n04b" }
+    ] },
+    { "id": "n04a", "type": "line", "speaker": "Uncle Tan", "text": "Only this one. The other seats are free. Join me — eating alone is too quiet.", "next": "n05" },
+    { "id": "n04b", "type": "line", "speaker": "Mei", "text": "Wait — better ask first. A tiny question can save a very awkward lunch.", "next": "n05" },
+    { "id": "n05", "type": "line", "speaker": "旁白", "text": "你们围着桌子坐下。Uncle Tan 推荐了一碗香气逼人的叻沙，但摊位上的辣度让你有些犹豫。", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「Could I have it less spicy, please?」", "next": "n06a", "setFlags": { "ordered_clearly": true } },
+      { "text": "「No chilli. Not spicy.」", "next": "n06b" }
+    ] },
+    { "id": "n06a", "type": "line", "speaker": "摊主", "text": "Can! Less spicy for you. Try it first, then come back braver next time.", "next": "n07" },
+    { "id": "n06b", "type": "line", "speaker": "摊主", "text": "No problem. You can also say, 'Could I have it less spicy?' Polite and very clear.", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "Uncle Tan", "text": "This table is Singapore in miniature. Different food, different accents, same question: can I sit here?", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "旁白", "text": "一场骤雨砸上铁皮屋顶，陌生人把椅子往里挪了挪。空桌很快变成了交换口味、路线和笑话的小岛。", "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "Mei", "text": "You did it. One useful sentence found you a seat, a meal, and two new friends.", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n10" },
+    { "id": "n10", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】雨停了，但你已经不急着离开这张热闹的共享餐桌。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "city_capetown",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "午后的博卡普，薄荷绿、柠檬黄和珊瑚粉沿着石板路一路铺开。只有街角一面墙，灰得像忘记了自己的故事。", "bg": "capetown_bokaap", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Amina", "text": "You came at the right time. This wall needs a new story, but the colour must come from the neighbourhood.", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "旁白", "text": "Amina 递给你三张色卡，请你先去问问附近的居民，而不是替他们做决定。", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「What colour feels like home to you?」", "next": "n04a", "setFlags": { "asked_open_question": true } },
+      { "text": "「Do you like the blue one?」", "next": "n04b" }
+    ] },
+    { "id": "n04a", "type": "line", "speaker": "街坊奶奶", "text": "Home? Turquoise. It is the colour of the sea we can smell, even when we cannot see it.", "next": "n05" },
+    { "id": "n04b", "type": "line", "speaker": "街坊奶奶", "text": "Blue is lovely, but ask me what it reminds me of. A good question leaves room for a story.", "next": "n05" },
+    { "id": "n05", "type": "line", "speaker": "旁白", "text": "你记下海的青绿、香料的金黄和傍晚天空的粉红。每种颜色后面，都跟着一个人的回忆。", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "Amina", "text": "Now tell me: what should people feel when they pass this wall?", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「They should feel invited to stop and talk.」", "next": "n07a", "setFlags": { "chose_welcome": true } },
+      { "text": "「They should feel proud of the stories here.」", "next": "n07b", "setFlags": { "chose_pride": true } }
+    ] },
+    { "id": "n07a", "type": "line", "speaker": "Amina", "text": "Then we paint an open doorway. A mural can begin a conversation before anyone speaks.", "next": "n08" },
+    { "id": "n07b", "type": "line", "speaker": "Amina", "text": "Then every colour gets a name from the person who gave it to us. Pride should have signatures.", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "旁白", "text": "太阳落到信号山背后时，灰墙已经变成一张巨大的社区明信片。路过的人不断停下，认出属于自己的那一种颜色。", "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "Amina", "text": "Beautiful English is not about big words. It is about asking a question that lets someone be seen.", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n10" },
+    { "id": "n10", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】你留下了一枚手掌大小的色块，也带走了一个更好的提问方式。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

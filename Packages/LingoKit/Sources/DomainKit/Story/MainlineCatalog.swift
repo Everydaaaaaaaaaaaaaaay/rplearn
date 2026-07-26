@@ -103,26 +103,8 @@ public enum MainlineCatalog {
 
     public static let chapters: [MainlineChapter] = [
         london,
-        MainlineChapter(
-            storyID: "mainline_london_2",
-            regionID: "london",
-            title: "城市篇 · 酒馆问答之夜",
-            subtitle: "跟着 Oliver 参加一场兵荒马乱的 pub quiz"
-        ),
         melbourne,
-        MainlineChapter(
-            storyID: "mainline_melbourne_2",
-            regionID: "melbourne",
-            title: "城市篇 · 从豆子到一杯",
-            subtitle: "和 Ruby 一起烘一炉咖啡，拉第一杯 flat white"
-        ),
         newYork,
-        MainlineChapter(
-            storyID: "mainline_newyork_2",
-            regionID: "newyork",
-            title: "城市篇 · 地铁里的肖像",
-            subtitle: "Marcus 教你用尊重换来一张真实的照片"
-        ),
         capeTown,
         singapore,
     ]

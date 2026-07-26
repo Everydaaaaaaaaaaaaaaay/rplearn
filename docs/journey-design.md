@@ -46,6 +46,15 @@
 
 所有 13 座城市均不在中国，并拥有 `city_backdrop_<regionID>` 场景素材或既有同规格素材。
 
+## 剧情入口与城市故事
+
+首页统一使用“剧情”入口，进入后再选择两类内容：
+
+- **主线剧情**：五城连续旅程，按当前角色路线顺序推进；
+- **城市剧情**：13 座城市各一篇独立在地故事，首次抵达对应城市后解锁，需身处当地开展或重温。
+
+城市剧情不参与主线路线判定，也不改变三位主角的解锁顺序。伦敦、墨尔本、纽约沿用已有进度 ID，避免升级后丢失玩家完成记录；其余十城使用 `city_<regionID>` ID。全部城市剧情完成后奖励 120 金币，客户端脚本与后端奖励白名单必须同步登记。
+
 ## 地图引导规则
 
 地图底部不再投影“当前选中的城市”，而是投影旅程状态：
@@ -70,6 +79,8 @@
 - 城市角色、坐标、活动：`App/Resources/regions.json`
 - 主线路线、目标文案、支线推荐顺序：`MainlineCatalog.journeys`
 - 主线脚本：`App/Resources/Stories/mainline_*.json`
+- 城市剧情目录：`CityStoryCatalog.chapters`
+- 城市剧情脚本：`App/Resources/Stories/city_*.json`（三篇兼容旧进度的脚本仍使用 `mainline_*_2.json`）
 - 城市主题色：`DSScenePalette.city(_:)`
 - 城市背景：`App/Assets.xcassets/city_backdrop_<regionID>.imageset`
 - 首页入口：`App/Assets.xcassets/home_mainline_<regionID>.imageset` 与

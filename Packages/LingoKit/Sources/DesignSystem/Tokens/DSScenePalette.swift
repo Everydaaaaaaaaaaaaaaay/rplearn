@@ -144,6 +144,16 @@ public enum DSScenePalette {
         case "capetown_signal_hill": dynamicPair(0xE7A56D, 0x355B6C, darkTop: 0x7A5940, darkBottom: 0x203946)
         case "singapore_rain": dynamicPair(0x6CB8C5, 0x31525D, darkTop: 0x3E6C75, darkBottom: 0x1D3238)
         case "singapore_supertree": dynamicPair(0x4E9B8A, 0x353B6B, darkTop: 0x315E56, darkBottom: 0x222643)
+        case "capetown_bokaap": dynamicPair(0xE99375, 0x267B82, darkTop: 0x754A3D, darkBottom: 0x17474C)
+        case "singapore_hawker": dynamicPair(0xE9A552, 0x287B70, darkTop: 0x7A5731, darkBottom: 0x18473F)
+        case "dublin_library": dynamicPair(0x9A7952, 0x345641, darkTop: 0x554431, darkBottom: 0x1D3327)
+        case "edinburgh_royal_mile": dynamicPair(0x77879C, 0x4C405F, darkTop: 0x424B58, darkBottom: 0x2A2435)
+        case "vancouver_seawall": dynamicPair(0x5AA8C9, 0x2F665C, darkTop: 0x345F70, darkBottom: 0x1C3B36)
+        case "auckland_harbour": dynamicPair(0x52B9CF, 0x236B78, darkTop: 0x316B77, darkBottom: 0x173F47)
+        case "nairobi_karura": dynamicPair(0x8AA45C, 0x31543A, darkTop: 0x4C5B37, darkBottom: 0x1D3224)
+        case "reykjavik_pool": dynamicPair(0x86C5D1, 0x39566E, darkTop: 0x4C7077, darkBottom: 0x233544)
+        case "lisbon_tram": dynamicPair(0xE9BD54, 0xA34F43, darkTop: 0x7C6635, darkBottom: 0x592F2B)
+        case "tokyo_shimokitazawa": dynamicPair(0xB25D86, 0x303557, darkTop: 0x66374F, darkBottom: 0x1D2138)
         default: dynamicPair(0x566D8D, 0x202B40, darkTop: 0x354458, darkBottom: 0x141A27)
         }
     }

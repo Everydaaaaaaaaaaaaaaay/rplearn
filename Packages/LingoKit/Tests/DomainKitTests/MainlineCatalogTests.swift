@@ -3,6 +3,13 @@ import Testing
 
 @Suite("MainlineCatalog")
 struct MainlineCatalogTests {
+    @Test("主线目录只包含五个主线章节")
+    func mainlineChapterCatalog() {
+        #expect(MainlineCatalog.chapters.count == 5)
+        #expect(Set(MainlineCatalog.chapters.map(\.regionID)).count == 5)
+        #expect(MainlineCatalog.chapters.allSatisfy { $0.storyID.hasPrefix("mainline_") })
+    }
+
     @Test("三条路线都经过五个主线城市，初始选择改变前期顺序")
     func routeShape() {
         #expect(MainlineCatalog.journeys.count == 3)
@@ -94,5 +101,26 @@ struct MainlineCatalogTests {
                 completedStoryIDs: ["mainline_london"]
             ) == ["melbourne", "london"]
         )
+    }
+}
+
+@Suite("CityStoryCatalog")
+struct CityStoryCatalogTests {
+    @Test("十三座城市各有且仅有一篇城市剧情")
+    func everyCityHasOneStory() {
+        let chapters = CityStoryCatalog.chapters
+        #expect(chapters.count == 13)
+        #expect(Set(chapters.map(\.storyID)).count == 13)
+        #expect(Set(chapters.map(\.regionID)) == [
+            "london", "melbourne", "newyork", "capetown", "singapore",
+            "dublin", "edinburgh", "vancouver", "auckland", "nairobi",
+            "reykjavik", "lisbon", "tokyo",
+        ])
+    }
+
+    @Test("可按城市查找对应剧情")
+    func lookupByRegion() {
+        #expect(CityStoryCatalog.chapter(forRegion: "tokyo")?.title == "下北泽的 B 面")
+        #expect(CityStoryCatalog.chapter(forRegion: "unknown") == nil)
     }
 }

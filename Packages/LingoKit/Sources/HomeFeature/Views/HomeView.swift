@@ -169,16 +169,16 @@ public struct HomeView: View {
                     .font(.system(.title3, design: .rounded, weight: .bold))
                     .foregroundStyle(.primary)
 
-                NavigationLink(value: HomeDestination.mainline) {
+                NavigationLink(value: HomeDestination.stories) {
                     ExploreCard(
-                        title: "主线剧情",
-                        subtitle: "\(completedMainlineStops) / \(mainlineStopCount) 站",
+                        title: "剧情",
+                        subtitle: "主线 \(completedMainlineStops)/\(mainlineStopCount) · 城市 \(completedCityStories)/\(cityStoryCount)",
                         artworkName: "home_mainline_\(region.id)",
                         fallbackIcon: "book.pages.fill",
                         tint: Color.dsSky,
-                        progress: mainlineStopCount == 0
+                        progress: totalStoryCount == 0
                             ? 0
-                            : Double(completedMainlineStops) / Double(mainlineStopCount)
+                            : Double(completedMainlineStops + completedCityStories) / Double(totalStoryCount)
                     )
                 }
                 .buttonStyle(.pressableCard)
@@ -210,6 +210,20 @@ public struct HomeView: View {
 
     private var mainlineStopCount: Int {
         mainlineJourney.stops.count
+    }
+
+    private var completedCityStories: Int {
+        CityStoryCatalog.chapters.filter {
+            completedStories.contains($0.storyID)
+        }.count
+    }
+
+    private var cityStoryCount: Int {
+        CityStoryCatalog.chapters.count
+    }
+
+    private var totalStoryCount: Int {
+        mainlineStopCount + cityStoryCount
     }
 
     private func reload() async {

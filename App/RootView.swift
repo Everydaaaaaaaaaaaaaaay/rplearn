@@ -261,12 +261,19 @@ struct RootView: View {
                 }
             )
             .navigationDestination(for: MainlineChapter.self) { chapter in
-                storyView(chapter)
+                storyView(storyID: chapter.storyID)
+            }
+            .navigationDestination(for: CityStoryChapter.self) { chapter in
+                storyView(storyID: chapter.storyID)
             }
             .navigationDestination(for: HomeDestination.self) { destination in
                 switch destination {
+                case .stories:
+                    StoryHubView(deps: homeDeps)
                 case .mainline:
                     MainlineListView(deps: homeDeps)
+                case .cityStories:
+                    CityStoryListView(deps: homeDeps)
                 case .activities:
                     ActivitiesView(
                         deps: homeDeps,
@@ -330,10 +337,10 @@ struct RootView: View {
         }
     }
 
-    private func storyView(_ chapter: MainlineChapter) -> some View {
+    private func storyView(storyID: String) -> some View {
         AVGStoryView(
-            storyID: chapter.storyID,
-            scriptURL: Bundle.main.url(forResource: chapter.storyID, withExtension: "json")!,
+            storyID: storyID,
+            scriptURL: Bundle.main.url(forResource: storyID, withExtension: "json")!,
             deps: storyDeps
         )
     }

@@ -390,6 +390,16 @@ enum BackgroundPalette {
         case "capetown_signal_hill": "📻"
         case "singapore_rain": "🌦️"
         case "singapore_supertree": "🌿"
+        case "capetown_bokaap": "🎨"
+        case "singapore_hawker": "🍜"
+        case "dublin_library": "📖"
+        case "edinburgh_royal_mile": "🎭"
+        case "vancouver_seawall": "📷"
+        case "auckland_harbour": "⛵️"
+        case "nairobi_karura": "🌧️"
+        case "reykjavik_pool": "♨️"
+        case "lisbon_tram": "🚋"
+        case "tokyo_shimokitazawa": "🎵"
         default: nil
         }
     }

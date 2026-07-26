@@ -1,0 +1,27 @@
+{
+  "id": "city_auckland",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "港湾上的练习帆船刚离开码头，风向就突然改变。原本的体验课变成了一场需要所有人配合的小考验。", "bg": "auckland_harbour", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Hana", "text": "No panic. On a boat, short and clear beats clever. Repeat the instruction so I know you heard it.", "next": "n03" },
+    { "id": "n03", "type": "line", "speaker": "Hana", "text": "Ease the blue line, then pull the red one. Ready?", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「Ease blue, pull red. Got it.」", "next": "n04a", "setFlags": { "used_closed_loop": true } },
+      { "text": "「Okay, I'll handle the ropes.」", "next": "n04b" }
+    ] },
+    { "id": "n04a", "type": "line", "speaker": "Hana", "text": "Perfect. Repeating an instruction is not hesitation — it is how a crew prevents mistakes.", "next": "n05" },
+    { "id": "n04b", "type": "line", "speaker": "Hana", "text": "Which ropes? Say the colours back to me. Clear language keeps everyone pulling the same direction.", "next": "n05" },
+    { "id": "n05", "type": "line", "speaker": "旁白", "text": "船身顺着风侧倾，远处的天空塔从船帆后滑过。另一位学员没听清下一条指令，紧张地看向你。", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「Hana, could you repeat that more slowly?」", "next": "n06a", "setFlags": { "asked_to_repeat": true } },
+      { "text": "凭感觉示意对方继续拉绳", "next": "n06b" }
+    ] },
+    { "id": "n06a", "type": "line", "speaker": "Hana", "text": "Of course: hold the red line steady. Good sailors ask before uncertainty becomes danger.", "next": "n07" },
+    { "id": "n06b", "type": "line", "speaker": "Hana", "text": "Pause. If you're unsure, ask me to repeat. Guessing is expensive when the wind is involved.", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "旁白", "text": "几轮口令后，帆重新吃满了风。你们没有和风较劲，而是靠每一句准确的确认找到了回港的角度。", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "Hana", "text": "Welcome to the City of Sails. Today you learned the most useful nautical phrase: 'Could you repeat that?'", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】船靠上码头，你发现清楚表达本身就是一种可靠的方向感。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

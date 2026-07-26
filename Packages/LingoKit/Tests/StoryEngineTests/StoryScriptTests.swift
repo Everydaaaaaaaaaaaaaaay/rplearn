@@ -1,5 +1,6 @@
 import Foundation
 import Testing
+@testable import DomainKit
 @testable import StoryEngine
 
 @Suite("StoryScript 校验")
@@ -59,25 +60,27 @@ struct StoryScriptTests {
         }
     }
 
-    @Test("随包主线脚本可加载且含奖励节点", arguments: [
-        "mainline_london", "mainline_london_2",
-        "mainline_melbourne", "mainline_melbourne_2",
-        "mainline_newyork", "mainline_newyork_2",
-    ])
-    func bundledMainlineScripts(storyID: String) throws {
-        let url = try #require(Bundle.main.url(forResource: storyID, withExtension: "json"))
-        let script = try StoryScript.load(from: url)
-        #expect(script.id == storyID)
-        let hasReward = script.nodes.values.contains { node in
-            if case .reward(let reward, _) = node.payload { return reward.coins > 0 }
-            return false
+    @Test("随包主线与城市脚本均可加载且含选择和奖励")
+    func bundledStoryScripts() throws {
+        let storyIDs = MainlineCatalog.chapters.map(\.storyID)
+            + CityStoryCatalog.chapters.map(\.storyID)
+        #expect(storyIDs.count == 18)
+
+        for storyID in storyIDs {
+            let url = try #require(Bundle.main.url(forResource: storyID, withExtension: "json"))
+            let script = try StoryScript.load(from: url)
+            #expect(script.id == storyID)
+            let hasReward = script.nodes.values.contains { node in
+                if case .reward(let reward, _) = node.payload { return reward.coins > 0 }
+                return false
+            }
+            #expect(hasReward)
+            let hasChoice = script.nodes.values.contains { node in
+                if case .choice = node.payload { return true }
+                return false
+            }
+            #expect(hasChoice)
         }
-        #expect(hasReward)
-        let hasChoice = script.nodes.values.contains { node in
-            if case .choice = node.payload { return true }
-            return false
-        }
-        #expect(hasChoice)
     }
 
     @Test("随包 onboarding_chat.json 可加载且以 end 结束")

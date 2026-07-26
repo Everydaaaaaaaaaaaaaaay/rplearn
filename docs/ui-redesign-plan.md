@@ -10,7 +10,7 @@ LingoTrip 是 SwiftUI 原生 iOS 语言学习 app。重构前的 UI 以原生控
 
 **B. 结构层**：页面布局、信息架构按成熟 App 标准大规模重设计，功能不受影响。已拍板：
 - **四 tab**：首页（聚合 hub）/ 地图 / 消息 / 我的
-- **首页 = 游戏式聚合 hub**：不做硬 hero 大卡，头部轻量透出城市信息；背景为当前城市**半写真半卡通动态背景**（视差/缓动）；模块含新消息/最近会话（核心）、功能入口（主线剧情、活动/偶遇→二级页）
+- **首页 = 游戏式聚合 hub**：不做硬 hero 大卡，头部轻量透出城市信息；背景为当前城市**半写真半卡通动态背景**（视差/缓动）；模块含新消息/最近会话（核心）、功能入口（剧情〔主线剧情 / 城市剧情〕、活动/偶遇→二级页）
 - **地图 = MapKit + overlay**：平面洲级宽视角选地点、城市 pin；只保留原生平移/缩放，前往时**蓝底飞机动画全屏转场**；票根入口归地图 tab
 - **消息 = QQ 式成熟消息列表**：会话列表为主体，好友/角色资料收二级页（Roster 本轮做基础版）
 - **我的**：收藏、订阅/账户、设置（降级为二级页）
@@ -97,7 +97,7 @@ RootView
 
 ### 首页（HomeView 重写，游戏式聚合 hub）
 ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= 天空渐变（DSScenePalette.city 深浅双值）+ 13 城正式生成式素材（`city_backdrop_<regionID>`）+ **代码自绘兜底 `CitySilhouetteView`**（landmarks 关键词→钟塔/桥/树冠/hash 播种天际线，2-3 层剪影叠景深 + TimelineView 云朵漂移）+ scrim 渐变保可读；滚动 `onScrollGeometryChange` 驱动受限视差，ReduceMotion 全静止，深色模式自动压低亮度与饱和度。内容在城市 HUD 与最近会话间保留约 196pt 景观窗口（紧凑高度 / 辅助功能字号自动缩短），让城市地标完整露出并贴近预览稿比例。
-**内容层**：`HomeStatusBar`（取消整块材质卡，国旗徽章 + 当前城市/国家直接叠在场景上；右侧两个紧凑 HUD 资源槽展示真实 `difficultyLevel` 与金币，辅助功能字号自动改为纵向布局）→ `RecentChatsCard`（.dsCard：最多 3 条最近会话，`conversationSummaries()` join `friends()`，AvatarBadge+摘要+相对时间+未读红点；行点击 chatBuilder 进聊天；「查看全部 ›」onOpenMessages；空态引导语）→ **探索入口区**（两张 88pt 横幅大卡 PressableCardStyle：左侧单一品牌实色承载文字，以短透明度渐变干净过渡到右侧 `home_mainline_<regionID>` / `home_activity_<regionID>` 生成式场景美术；主线剧情卡带进度 x/y 章 → `.mainline`；活动卡 → `.activities`）。删除旧 regionCard/entryGrid/内嵌 EncounterSection/章节列表。
+**内容层**：`HomeStatusBar`（取消整块材质卡，国旗徽章 + 当前城市/国家直接叠在场景上；右侧两个紧凑 HUD 资源槽展示真实 `difficultyLevel` 与金币，辅助功能字号自动改为纵向布局）→ `RecentChatsCard`（.dsCard：最多 3 条最近会话，`conversationSummaries()` join `friends()`，AvatarBadge+摘要+相对时间+未读红点；行点击 chatBuilder 进聊天；「查看全部 ›」onOpenMessages；空态引导语）→ **探索入口区**（两张 88pt 横幅大卡 PressableCardStyle：左侧单一品牌实色承载文字，以短透明度渐变干净过渡到右侧 `home_mainline_<regionID>` / `home_activity_<regionID>` 生成式场景美术；剧情卡显示主线与城市剧情总进度 → `.stories`，再进入主线剧情 / 城市剧情二级分类；活动卡 → `.activities`）。删除旧 regionCard/entryGrid/内嵌 EncounterSection/章节列表。
 
 ### 主线剧情二级页 `MainlineListView`（新）
 展示由初始角色决定的五座必经城市与总进度；章节卡三态：已完成（绿勾+淡化）、当前目标（DSScenePalette 渐变高亮）、后续站（锁定）。只有已完成/当前目标且玩家身处对应城市时才可进入章节；其余状态明确提示前往目标城市或完成上一站。push `MainlineChapter` 命中现有 destination。
