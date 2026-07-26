@@ -176,13 +176,7 @@ public struct ChatView: View {
         switch message.role {
         case .user:
             VStack(alignment: .trailing, spacing: 4) {
-                MessageBubble(side: .outgoing) {
-                    tappableText(message, textColor: .white)
-                }
-                .contextMenu { bubbleMenu(message) }
-                .overlay(alignment: .topLeading) {
-                    coachBadge(message)
-                }
+                userMessageBubble(message)
                 translationFootnote(message, alignment: .trailing)
                 coachCard(message)
                 speechReviewCard(message)
@@ -258,32 +252,64 @@ public struct ChatView: View {
 
     // MARK: - 教练纠错
 
-    /// 用户气泡角落的小黄点：有纠错建议时出现，点击展开纠错卡。
     @ViewBuilder
-    private func coachBadge(_ message: MessageDTO) -> some View {
+    private func userMessageBubble(_ message: MessageDTO) -> some View {
         if CoachService.decode(fromJSON: message.coachReviewJSON)?.hasIssues == true {
-            Button {
-                withAnimation(.snappy) {
-                    if expandedCoachMessageIDs.contains(message.id) {
-                        expandedCoachMessageIDs.remove(message.id)
-                    } else {
-                        expandedCoachMessageIDs.insert(message.id)
-                    }
-                }
-            } label: {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 9, weight: .bold))
-                    .foregroundStyle(.white)
-                    .frame(width: 18, height: 18)
-                    .background(Color.dsCoach, in: Circle())
-                    .overlay(Circle().stroke(.background, lineWidth: 2))
+            MessageBubble(
+                side: .outgoing,
+                leadingAccessory: { coachButton(message) }
+            ) {
+                tappableText(message, textColor: .white)
             }
-            .offset(x: 42, y: -3)
-            .accessibilityLabel("查看改进建议")
+            .contextMenu { bubbleMenu(message) }
+        } else {
+            MessageBubble(side: .outgoing) {
+                tappableText(message, textColor: .white)
+            }
+            .contextMenu { bubbleMenu(message) }
         }
     }
 
-    /// 展开的纠错卡：错误片段 → 改法 + 中文讲解 + 采纳按钮（改不改随用户）。
+    /// 紧贴用户气泡中线的纠错入口；可见尺寸克制，触控区域保持 44pt。
+    private func coachButton(_ message: MessageDTO) -> some View {
+        let isExpanded = expandedCoachMessageIDs.contains(message.id)
+        return Button {
+            Haptics.selection()
+            withAnimation(DSAnimation.snappy) {
+                if isExpanded {
+                    expandedCoachMessageIDs.remove(message.id)
+                } else {
+                    expandedCoachMessageIDs.insert(message.id)
+                }
+            }
+        } label: {
+            Text("纠")
+                .font(.system(size: 13, weight: .black, design: .rounded))
+                .foregroundStyle(isExpanded ? Color.white : Color.dsCoach)
+                .frame(width: 30, height: 30)
+                .background {
+                    Circle()
+                        .fill(isExpanded ? Color.dsCoach : Color.dsSurface)
+                        .shadow(color: Color.dsCoach.opacity(0.18), radius: 4, y: 2)
+                }
+                .overlay {
+                    Circle()
+                        .fill(isExpanded ? Color.clear : Color.dsCoach.opacity(0.1))
+                }
+                .overlay {
+                    Circle()
+                        .stroke(Color.dsCoach.opacity(isExpanded ? 0.55 : 0.3), lineWidth: 1)
+                }
+                .frame(width: 44, height: 44)
+                .contentShape(Circle())
+                .animation(DSAnimation.snappy, value: isExpanded)
+        }
+        .buttonStyle(.pressableCard)
+        .accessibilityLabel(isExpanded ? "收起改进建议" : "查看改进建议")
+        .accessibilityAddTraits(isExpanded ? .isSelected : [])
+    }
+
+    /// 展开的纠错卡：错误片段 → 改法 + 中文讲解。
     @ViewBuilder
     private func coachCard(_ message: MessageDTO) -> some View {
         if expandedCoachMessageIDs.contains(message.id),
@@ -307,17 +333,6 @@ public struct ChatView: View {
                             Text(issue.explanationZh)
                                 .font(.footnote)
                                 .foregroundStyle(.secondary)
-                            Button("采纳") {
-                                viewModel.draft = message.text.replacingOccurrences(
-                                    of: issue.quote,
-                                    with: issue.correction
-                                )
-                                _ = withAnimation(.snappy) {
-                                    expandedCoachMessageIDs.remove(message.id)
-                                }
-                            }
-                            .font(.footnote)
-                            .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
                         }
                     }
                 }

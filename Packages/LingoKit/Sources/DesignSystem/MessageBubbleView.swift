@@ -9,17 +9,35 @@ public struct MessageBubble<Content: View>: View {
     }
 
     private let side: Side
+    private let leadingAccessory: AnyView?
     private let content: Content
 
     public init(side: Side, @ViewBuilder content: () -> Content) {
         self.side = side
+        self.leadingAccessory = nil
+        self.content = content()
+    }
+
+    /// 为发出气泡提供一个紧贴气泡左侧、垂直居中的附件槽位。
+    ///
+    /// 附件使用类型擦除，避免让所有现有调用方承担第二个泛型参数。
+    public init<Accessory: View>(
+        side: Side,
+        @ViewBuilder leadingAccessory: () -> Accessory,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.side = side
+        self.leadingAccessory = AnyView(leadingAccessory())
         self.content = content()
     }
 
     public var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             if side == .outgoing {
-                Spacer(minLength: 48)
+                Spacer(minLength: leadingAccessory == nil ? 48 : 4)
+                if let leadingAccessory {
+                    leadingAccessory
+                }
             }
             content
                 .padding(.horizontal, 14)
