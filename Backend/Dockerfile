@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
+ARG DISTROLESS_REGISTRY=gcr.io
+
 FROM node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d AS base
 ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
@@ -19,7 +21,7 @@ COPY tsconfig.json tsconfig.build.json ./
 COPY src ./src
 RUN pnpm build
 
-FROM gcr.io/distroless/nodejs24-debian13:nonroot@sha256:af85d11ce7ef10172855a6e3649e3e8125b1b9e3ca41849ec2918036f05cb212 AS runtime
+FROM ${DISTROLESS_REGISTRY}/distroless/nodejs24-debian13:nonroot@sha256:af85d11ce7ef10172855a6e3649e3e8125b1b9e3ca41849ec2918036f05cb212 AS runtime
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 WORKDIR /app

@@ -34,6 +34,8 @@ services:
   api:
     <<: *app
     build:
+      args:
+        DISTROLESS_REGISTRY: ${DISTROLESS_REGISTRY:-gcr.io}
       context: .
     cap_drop:
       - ALL

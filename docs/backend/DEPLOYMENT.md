@@ -30,6 +30,10 @@ JWT 密钥、token pepper、任务 AES key 和 metrics token。脚本拒绝覆�
 依赖、对象桶初始化、迁移、最小权限授权、API/worker/Caddy 的顺序启动，最后通过公网 HTTPS
 readiness 验证。
 
+若部署网络不能直接访问 GCR，可在生成配置前设置
+`DISTROLESS_REGISTRY=m.daocloud.io/gcr.io`。Dockerfile 仍固定相同的 Distroless
+SHA-256 digest，代理只能提供逐字节一致的镜像，不能用浮动 tag 替换运行层。
+
 安装本机备份和保留期清理定时任务：
 
 ```bash
