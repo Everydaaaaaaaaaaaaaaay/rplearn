@@ -281,7 +281,7 @@ public struct AVGStoryView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                 }
-                .buttonStyle(.duo(.outline))
+                .buttonStyle(.dsAction(.glass))
             }
         }
         .padding(.horizontal, 32)

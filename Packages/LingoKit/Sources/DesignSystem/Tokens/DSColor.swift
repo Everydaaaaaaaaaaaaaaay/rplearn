@@ -50,20 +50,24 @@ public extension Color {
         dark: UIColor(red: 0.655, green: 0.545, blue: 0.980, alpha: 1)
     )
     static let dsBubbleIncoming = Color(
-        light: UIColor(red: 0.937, green: 0.957, blue: 0.976, alpha: 1),
-        dark: UIColor(red: 0.149, green: 0.169, blue: 0.200, alpha: 1)
+        light: UIColor(red: 0.941, green: 0.953, blue: 0.965, alpha: 1),
+        dark: UIColor(red: 0.137, green: 0.157, blue: 0.184, alpha: 1)
     )
     static let dsBackground = Color(
-        light: UIColor(red: 0.953, green: 0.973, blue: 0.988, alpha: 1),
-        dark: UIColor(red: 0.078, green: 0.094, blue: 0.114, alpha: 1)
+        light: UIColor(red: 0.969, green: 0.973, blue: 0.976, alpha: 1),
+        dark: UIColor(red: 0.059, green: 0.071, blue: 0.086, alpha: 1)
     )
     static let dsSurface = Color(
         light: .white,
-        dark: UIColor(red: 0.118, green: 0.141, blue: 0.169, alpha: 1)
+        dark: UIColor(red: 0.098, green: 0.114, blue: 0.137, alpha: 1)
+    )
+    static let dsSurfaceMuted = Color(
+        light: UIColor(red: 0.937, green: 0.949, blue: 0.957, alpha: 1),
+        dark: UIColor(red: 0.129, green: 0.149, blue: 0.176, alpha: 1)
     )
     static let dsBorder = Color(
-        light: UIColor(red: 0.894, green: 0.929, blue: 0.957, alpha: 1),
-        dark: UIColor.white.withAlphaComponent(0.08)
+        light: UIColor(red: 0.855, green: 0.882, blue: 0.902, alpha: 1),
+        dark: UIColor.white.withAlphaComponent(0.1)
     )
 }
 

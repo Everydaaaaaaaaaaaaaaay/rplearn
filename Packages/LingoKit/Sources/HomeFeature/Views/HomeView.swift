@@ -169,7 +169,7 @@ public struct HomeView: View {
                 }
             }
         }
-        .dsCard()
+        .dsSurface(.elevated)
     }
 
     @ViewBuilder

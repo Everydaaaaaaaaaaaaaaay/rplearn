@@ -13,12 +13,18 @@ public struct DSChip: View {
 
     public var body: some View {
         Text(title)
-            .font(.system(.caption2, design: .rounded, weight: .semibold))
+            .font(.system(.caption2, design: .rounded, weight: .bold))
             .lineLimit(1)
             .fixedSize(horizontal: true, vertical: true)
             .foregroundStyle(prominent ? .white : tint)
-            .padding(.horizontal, 9)
+            .padding(.horizontal, 10)
             .padding(.vertical, 5)
-            .background(prominent ? tint : tint.opacity(0.13), in: Capsule())
+            .background(prominent ? tint : tint.opacity(0.09), in: Capsule())
+            .overlay {
+                if !prominent {
+                    Capsule()
+                        .stroke(tint.opacity(0.16), lineWidth: 1)
+                }
+            }
     }
 }

@@ -117,7 +117,7 @@ public struct SignInView: View {
                     .frame(maxWidth: .infinity)
             }
         }
-        .buttonStyle(.duoPrimary)
+        .buttonStyle(.dsActionPrimary)
         .disabled(isBusy || !isFormValid)
     }
 
@@ -169,7 +169,7 @@ public struct SignInView: View {
                 mode = .login
                 password = ""
             }
-            .buttonStyle(.duoPrimary)
+            .buttonStyle(.dsActionPrimary)
             Button("重新发送验证邮件") {
                 Task {
                     do {

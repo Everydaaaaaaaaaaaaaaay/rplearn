@@ -179,17 +179,14 @@ private struct DSModalDialogView: View {
         VStack(spacing: DSSpacing.xs) {
             ZStack {
                 Circle()
-                    .fill(tint.opacity(0.14))
-                    .frame(width: 72, height: 72)
+                    .fill(tint.opacity(0.11))
+                    .frame(width: 58, height: 58)
                 Circle()
-                    .stroke(tint.opacity(0.28), lineWidth: 1)
-                    .frame(width: 72, height: 72)
-                Circle()
-                    .fill(tint)
-                    .frame(width: 52, height: 52)
+                    .stroke(tint.opacity(0.2), lineWidth: 1)
+                    .frame(width: 58, height: 58)
                 Image(systemName: configuration.icon)
-                    .font(.system(size: 23, weight: .bold))
-                    .foregroundStyle(.white)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundStyle(tint)
             }
             .accessibilityHidden(true)
 
@@ -198,7 +195,7 @@ private struct DSModalDialogView: View {
                 .foregroundStyle(tint)
 
             Text(configuration.title)
-                .font(.system(.title2, design: .rounded, weight: .bold))
+                .font(.system(.title2, design: .rounded, weight: .heavy))
                 .multilineTextAlignment(.center)
                 .accessibilityAddTraits(.isHeader)
 
@@ -209,11 +206,8 @@ private struct DSModalDialogView: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity)
-        .padding(DSSpacing.md)
-        .background(
-            tint.opacity(0.085),
-            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-        )
+        .padding(.horizontal, DSSpacing.md)
+        .padding(.vertical, DSSpacing.xs)
     }
 
     private var actions: some View {
@@ -221,13 +215,13 @@ private struct DSModalDialogView: View {
             Button(role: buttonRole, action: onPrimary) {
                 actionLabel(configuration.primaryTitle, icon: configuration.primaryIcon)
             }
-            .buttonStyle(.duo(.tinted(tint)))
+            .buttonStyle(.dsAction(.tinted(tint)))
 
             if let secondaryTitle = configuration.secondaryTitle {
                 Button(role: .cancel, action: onCancel) {
                     actionLabel(secondaryTitle, icon: configuration.secondaryIcon)
                 }
-                .buttonStyle(.duo(.outline))
+                .buttonStyle(.dsAction(.secondary))
             }
         }
     }

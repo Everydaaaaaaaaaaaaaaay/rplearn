@@ -253,7 +253,7 @@ public struct DictCardView: View {
                             Label("用 AI 简单解释", systemImage: "sparkles")
                         }
                     }
-                    .buttonStyle(.duo(.tinted(.dsSky), fullWidth: false, compact: true))
+                    .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
                     .disabled(isLoadingAI)
                 }
             }

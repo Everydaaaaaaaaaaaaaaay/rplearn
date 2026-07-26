@@ -185,7 +185,7 @@ struct CityPinView: View {
         }
         .opacity(state == .locked ? 0.88 : 1)
         .scaleEffect(isSelected ? 1.08 : 1)
-        .animation(DSAnimation.gentle, value: isSelected)
+        .animation(DSAnimation.snappy, value: isSelected)
         .contentShape(Rectangle())
     }
 

@@ -148,7 +148,7 @@ public struct CharacterProfileView: View {
                 } label: {
                     Label("发消息", systemImage: "bubble.left.fill")
                 }
-                .buttonStyle(.duoPrimary)
+                .buttonStyle(.dsActionPrimary)
             }
             .padding(DSSpacing.md)
         }
@@ -168,7 +168,7 @@ public struct CharacterProfileView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .dsCard()
+        .dsSurface(.grouped)
     }
 
     private var hobbiesCard: some View {
@@ -181,7 +181,7 @@ public struct CharacterProfileView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .dsCard()
+        .dsSurface(.grouped)
     }
 
     private func infoCard(_ title: String, text: String, icon: String) -> some View {
@@ -194,6 +194,6 @@ public struct CharacterProfileView: View {
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .dsCard()
+        .dsSurface(.grouped)
     }
 }

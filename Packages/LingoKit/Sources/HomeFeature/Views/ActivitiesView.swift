@@ -589,7 +589,7 @@ private struct ActivityMomentSheet: View {
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
                 }
-                .dsCard()
+                .dsSurface(.elevated)
 
                 Label(
                     "这次没有遇见新角色，但城市依然留下了一段只属于你的片刻。",
@@ -602,7 +602,7 @@ private struct ActivityMomentSheet: View {
                 Button("收下这段见闻") {
                     onDismiss()
                 }
-                .buttonStyle(.duo(.tinted(activity.category.tint)))
+                .buttonStyle(.dsAction(.tinted(activity.category.tint)))
             }
             .padding(DSSpacing.md)
         }
@@ -654,9 +654,9 @@ private struct EncounterCardSheet: View {
 
                 HStack(spacing: DSSpacing.sm) {
                     Button("开始聊天") { showChat = true }
-                        .buttonStyle(.duo(.tinted(tint)))
+                        .buttonStyle(.dsAction(.tinted(tint)))
                     Button(isFriend ? "已加好友" : "加为好友") { addFriend() }
-                        .buttonStyle(.duo(.outline))
+                        .buttonStyle(.dsAction(.secondary))
                         .disabled(isFriend)
                 }
 
@@ -674,7 +674,7 @@ private struct EncounterCardSheet: View {
         .presentationDragIndicator(.hidden)
         .interactiveDismissDisabled()
         .onAppear {
-            withAnimation(reduceMotion ? DSAnimation.gentle : DSAnimation.bouncy) {
+            withAnimation(reduceMotion ? DSAnimation.feedback : DSAnimation.scene) {
                 hasRevealed = true
             }
         }
@@ -743,7 +743,7 @@ private struct EncounterCardSheet: View {
             }
             .scrollIndicators(.hidden)
         }
-        .dsCard()
+        .dsSurface(.grouped)
     }
 
     private var rarityLabel: String {

@@ -74,7 +74,7 @@ public struct TicketStubsView: View {
             )
             .tint(.dsSunset)
         }
-        .dsCard()
+        .dsSurface(.elevated)
         .accessibilityElement(children: .combine)
     }
 }

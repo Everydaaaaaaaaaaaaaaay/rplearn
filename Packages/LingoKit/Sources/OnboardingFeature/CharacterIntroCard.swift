@@ -39,7 +39,7 @@ struct CharacterIntroCard: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(3)
         }
-        .dsCard(padding: DSSpacing.sm)
+        .dsSurface(.floating, padding: DSSpacing.sm)
         .overlay(alignment: .topTrailing) {
             Text(Self.regionFlags[character.card.regionID] ?? "🌍")
                 .font(.title3)

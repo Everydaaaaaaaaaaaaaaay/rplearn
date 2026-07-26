@@ -42,8 +42,8 @@ struct VoiceInputBar: View {
                 }
             }
             .scaleEffect(isRecording ? 0.985 : 1)
-            .animation(DSAnimation.gentle, value: isRecording)
-            .animation(DSAnimation.gentle, value: inCancelZone)
+            .animation(DSAnimation.feedback, value: isRecording)
+            .animation(DSAnimation.feedback, value: inCancelZone)
             .accessibilityLabel("语音输入")
             .accessibilityValue(labelText)
             .accessibilityHint(isRecording ? "双击发送录音" : "双击开始录音")

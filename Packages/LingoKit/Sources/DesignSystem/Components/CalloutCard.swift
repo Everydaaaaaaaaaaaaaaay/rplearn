@@ -61,11 +61,21 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
         }
         .padding(DSSpacing.sm)
         .frame(maxWidth: maxWidth, alignment: .leading)
-        .background(kind.tint.opacity(0.14), in: RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous))
+        .background(
+            Color.dsSurface,
+            in: RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
+        )
+        .overlay(alignment: .leading) {
+            Capsule()
+                .fill(kind.tint)
+                .frame(width: 3, height: 36)
+                .padding(.leading, 1)
+        }
         .overlay {
             RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
-                .stroke(kind.tint.opacity(0.16), lineWidth: 1)
+                .stroke(kind.tint.opacity(0.22), lineWidth: 1)
         }
+        .shadow(color: .black.opacity(0.035), radius: 6, y: 2)
     }
 }
 

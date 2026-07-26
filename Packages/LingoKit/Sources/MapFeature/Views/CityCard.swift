@@ -212,7 +212,7 @@ private struct ContinueStoryGuide: View {
             Button("去主线") {
                 onOpenMainline()
             }
-            .buttonStyle(.duo(.primary, fullWidth: false, compact: true))
+            .buttonStyle(.dsAction(.primary, fullWidth: false, compact: true))
         }
         .padding(12)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))

@@ -50,7 +50,7 @@ struct TravelSheet: View {
                 } label: {
                     workingLabel("直接出发")
                 }
-                .buttonStyle(.duoPrimary)
+                .buttonStyle(.dsActionPrimary)
                 .disabled(isWorking)
             } else if let ticket = usable.first {
                 Label(
@@ -67,7 +67,7 @@ struct TravelSheet: View {
                 } label: {
                     workingLabel("使用机票并出发")
                 }
-                .buttonStyle(.duoPrimary)
+                .buttonStyle(.dsActionPrimary)
                 .disabled(isWorking)
             } else {
                 Label("首次前往需要一张可用机票", systemImage: "lock.fill")
@@ -79,7 +79,7 @@ struct TravelSheet: View {
                 } label: {
                     workingLabel("花 \(EconomyService.Price.universalTicket) 金币购票并解锁")
                 }
-                .buttonStyle(.duoPrimary)
+                .buttonStyle(.dsActionPrimary)
                 .disabled(isWorking)
             }
 

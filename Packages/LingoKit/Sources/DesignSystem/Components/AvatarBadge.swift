@@ -26,14 +26,21 @@ public struct AvatarBadge: View {
     public var body: some View {
         ZStack {
             Circle()
-                .fill(stableTint.opacity(0.16))
+                .fill(
+                    LinearGradient(
+                        colors: [stableTint.opacity(0.22), stableTint.opacity(0.08)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
             Circle()
-                .stroke(stableTint.opacity(0.28), lineWidth: max(1, size / 32))
+                .stroke(.white.opacity(0.72), lineWidth: max(1, size / 34))
             Text(String(name.trimmingCharacters(in: .whitespacesAndNewlines).prefix(1)).uppercased())
-                .font(.system(size: size * 0.42, weight: .bold, design: .rounded))
+                .font(.system(size: size * 0.4, weight: .black, design: .rounded))
                 .foregroundStyle(stableTint)
         }
         .frame(width: size, height: size)
+        .shadow(color: stableTint.opacity(0.13), radius: size * 0.12, y: size * 0.045)
         .accessibilityLabel(name)
     }
 }

@@ -138,7 +138,7 @@ public struct MyPageView: View {
                 }
             }
         }
-        .dsCard()
+        .dsSurface(.elevated)
     }
 
     private var subscriptionCard: some View {
@@ -148,20 +148,20 @@ public struct MyPageView: View {
 
                 HStack {
                     Button {
-                        withAnimation(reduceMotion ? nil : DSAnimation.bouncy) {
+                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                             showsTierPicker.toggle()
                         }
                     } label: {
                         Label(showsTierPicker ? "收起方案" : "查看订阅方案", systemImage: "sparkles")
                     }
-                    .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+                    .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
                     .tint(.white)
 
                     if billing.tier != .free {
                         Button("管理") {
                             showsManageSubscriptions = true
                         }
-                        .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+                        .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
                         .tint(.white)
                     }
                 }
@@ -201,7 +201,7 @@ public struct MyPageView: View {
                                     }
                                     .frame(maxWidth: .infinity)
                                 }
-                                .buttonStyle(.duo(.outline, fullWidth: true, compact: true))
+                                .buttonStyle(.dsAction(.glass, fullWidth: true, compact: true))
                                 .tint(.white)
                                 .disabled(billing.operation != .idle)
                             }
@@ -270,7 +270,7 @@ public struct MyPageView: View {
             Button(action: onSignIn) {
                 Label("登录或创建账号", systemImage: "icloud.and.arrow.up")
             }
-            .buttonStyle(.duo(.outline, fullWidth: false, compact: true))
+            .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
             .tint(.white)
 
             Text("登录仅用于跨设备同步和订阅恢复；未登录时功能不受限。")
@@ -355,7 +355,7 @@ public struct MyPageView: View {
                 .buttonStyle(.plain)
             }
         }
-        .dsCard(padding: 0)
+        .dsSurface(.grouped, padding: 0)
     }
 
     #if DEBUG
@@ -383,7 +383,7 @@ public struct MyPageView: View {
             }
             .buttonStyle(.plain)
         }
-        .dsCard(padding: 0)
+        .dsSurface(.grouped, padding: 0)
     }
     #endif
 

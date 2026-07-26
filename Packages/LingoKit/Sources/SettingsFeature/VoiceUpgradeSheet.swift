@@ -102,7 +102,7 @@ public struct VoiceUpgradeSheet: View {
                 Text("打开系统设置")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.duoPrimary)
+            .buttonStyle(.dsActionPrimary)
 
             HStack {
                 Button {

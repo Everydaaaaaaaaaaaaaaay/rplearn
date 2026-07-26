@@ -169,7 +169,7 @@ struct ChatStoryView: View {
                         Text(option.text)
                             .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.duo(.outline))
+                    .buttonStyle(.dsAction(.secondary))
                 }
             }
             .padding(12)
@@ -278,7 +278,7 @@ struct CharacterSelectView: View {
                         Circle()
                             .fill(selectedID == character.id ? Color.dsSky : Color.dsBorder)
                             .frame(width: selectedID == character.id ? 18 : 7, height: 7)
-                            .animation(reduceMotion ? nil : DSAnimation.bouncy, value: selectedID)
+                            .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedID)
                     }
                 }
 
@@ -287,7 +287,7 @@ struct CharacterSelectView: View {
                 } label: {
                     Text(buttonTitle)
                 }
-                .buttonStyle(.duoPrimary)
+                .buttonStyle(.dsActionPrimary)
                 .disabled(selectedCharacter == nil || isConfirming)
                 .celebration(true, tint: .dsSky, trigger: celebrationTrigger)
                 .padding(.horizontal, DSSpacing.xl)
@@ -359,7 +359,7 @@ struct CharacterSelectView: View {
         }
         .shadow(color: palette.silhouetteNear.opacity(0.35), radius: 18, y: 12)
         .scaleEffect(!reduceMotion && isConfirming && selectedID == character.id ? 1.04 : 1)
-        .animation(reduceMotion ? nil : DSAnimation.pop, value: isConfirming)
+        .animation(reduceMotion ? nil : DSAnimation.celebration, value: isConfirming)
         .padding(.vertical, 18)
     }
 
