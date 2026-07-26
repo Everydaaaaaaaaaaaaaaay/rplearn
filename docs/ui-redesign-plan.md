@@ -96,18 +96,18 @@ RootView
 ## 四、逐页面结构设计
 
 ### 首页（HomeView 重写，游戏式聚合 hub）
-ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= 天空渐变（DSScenePalette.city 深浅双值）+ 三城正式生成式素材（`city_backdrop_london` / `city_backdrop_melbourne` / `city_backdrop_newyork`）+ **代码自绘兜底 `CitySilhouetteView`**（landmarks 关键词→钟塔/桥/树冠/hash 播种天际线，2-3 层剪影叠景深 + TimelineView 云朵漂移）+ scrim 渐变保可读；滚动 `onScrollGeometryChange` 驱动受限视差，ReduceMotion 全静止，深色模式自动压低亮度与饱和度。内容在城市 HUD 与最近会话间保留约 196pt 景观窗口（紧凑高度 / 辅助功能字号自动缩短），让城市地标完整露出并贴近预览稿比例。
+ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= 天空渐变（DSScenePalette.city 深浅双值）+ 13 城正式生成式素材（`city_backdrop_<regionID>`）+ **代码自绘兜底 `CitySilhouetteView`**（landmarks 关键词→钟塔/桥/树冠/hash 播种天际线，2-3 层剪影叠景深 + TimelineView 云朵漂移）+ scrim 渐变保可读；滚动 `onScrollGeometryChange` 驱动受限视差，ReduceMotion 全静止，深色模式自动压低亮度与饱和度。内容在城市 HUD 与最近会话间保留约 196pt 景观窗口（紧凑高度 / 辅助功能字号自动缩短），让城市地标完整露出并贴近预览稿比例。
 **内容层**：`HomeStatusBar`（取消整块材质卡，国旗徽章 + 当前城市/国家直接叠在场景上；右侧两个紧凑 HUD 资源槽展示真实 `difficultyLevel` 与金币，辅助功能字号自动改为纵向布局）→ `RecentChatsCard`（.dsCard：最多 3 条最近会话，`conversationSummaries()` join `friends()`，AvatarBadge+摘要+相对时间+未读红点；行点击 chatBuilder 进聊天；「查看全部 ›」onOpenMessages；空态引导语）→ **探索入口区**（两张 88pt 横幅大卡 PressableCardStyle：左侧单一品牌实色承载文字，以短透明度渐变干净过渡到右侧 `home_mainline_<regionID>` / `home_activity_<regionID>` 生成式场景美术；主线剧情卡带进度 x/y 章 → `.mainline`；活动卡 → `.activities`）。删除旧 regionCard/entryGrid/内嵌 EncounterSection/章节列表。
 
 ### 主线剧情二级页 `MainlineListView`（新）
-城市 chip + 总进度条；章节卡三态：已完成（绿勾+淡化+「重温」）、当前章（DSScenePalette 渐变高亮卡 + DuoButton 大 CTA）、后续章（软锁定视觉但**保持可点**——硬锁会改变功能）。push `MainlineChapter` 命中现有 destination。
+展示由初始角色决定的五座必经城市与总进度；章节卡三态：已完成（绿勾+淡化）、当前目标（DSScenePalette 渐变高亮）、后续站（锁定）。只有已完成/当前目标且玩家身处对应城市时才可进入章节；其余状态明确提示前往目标城市或完成上一站。push `MainlineChapter` 命中现有 destination。
 
 ### 活动二级页 `ActivitiesView`（新，EncounterSection 逻辑整体迁入）
 城市 chip + 活动大卡纵列（region.activities 每项一卡：emoji+标题+副文案+「出发」）；点击骰运中 loading 态；`runActivity` 业务逻辑原样搬（EncounterService→落库→EncounterCardSheet）；未遇到内联 toast；EncounterCardSheet 逻辑不动仅换肤。
 
 ### 地图页（MapView 重写为 MapKit）
-数据前置：`Region` 加 `latitude/longitude: Double`（带默认值保测试 fixture）+ regions.json 三城坐标（伦敦 51.5074,-0.1278；墨尔本 -37.8136,144.9631；纽约 40.7128,-74.0060）；坐标转换放 MapFeature，DomainKit 保持纯 Foundation。
-`Map(position:interactionModes:)` 只开放 `.pan/.zoom`，配合 `.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll, showsTraffic: false)`；初始镜头与城市切换统一为当前目标的洲级二维宽视角（`distance: 5.8M`、heading/pitch 均为 0），顶部三城 chips 保证所有目的地直接可达，复位按钮只恢复目标城市宽视角。隐藏正式地图应用才需要的指南针、比例尺、用户定位、俯仰和旋转；**CityPinView 三态**改为紧凑国旗标记（当前/已解锁/未解锁），点 pin 底部淡入紧凑 **CityCard**（城市、状态与「解锁/前往」）。机票只用于首次解锁未到访城市，已解锁城市直接往返且不消耗机票；每次旅行仍生成票根。票根夹保留在顶部，钱包信息不在地图重复展示。
+数据前置：`Region` 包含 `latitude/longitude` 与 `mainline/side` 角色；`regions.json` 配置 5 座主线城市、8 座支线城市。坐标转换放 MapFeature，DomainKit 保持纯 Foundation。
+`Map(position:interactionModes:)` 只开放 `.pan/.zoom`，配合 `.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll, showsTraffic: false)`；初始镜头同时容纳当前城市与剧情引导目的地，heading/pitch 均为 0。隐藏正式地图应用才需要的指南针、比例尺、用户定位、俯仰和旋转；**CityPinView 三态**为紧凑国旗标记（当前/已解锁/未解锁）。底部 `JourneyGuideView` 不展示当前选中城市，而按 `MainlineCatalog` 显示下一座必经城市、双目的地、多个横滑目的地、继续主线或完成回退态。机票只用于首次解锁未到访城市，已解锁城市直接往返且不消耗机票；每次旅行仍生成票根。票根夹保留在顶部。
 **`FlightTransitionOverlay`**（新）：TravelSheet 成功分支不再 alert，改 fullScreenCover 动画序列 ~2.6s：起飞（蓝底渐变淡入+出发城市+票根飞入 0.6s）→ 航线（白虚线弧线描画+✈️ 沿弧飞行随切线旋转+云反向流动+目的地渐显 1.2s）→ 降落揭幕（「已抵达 XX！票根已收入」+CelebrationBurst+遮罩揭开，镜头已 fly-to 新城市 0.8s）；ReduceMotion 走 0.4s 交叉淡入；失败分支维持 alert。
 
 ### 消息页（ConversationListView 重做，QQ 式）

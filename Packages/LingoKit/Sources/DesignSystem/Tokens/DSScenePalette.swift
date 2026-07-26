@@ -42,6 +42,86 @@ public enum DSScenePalette {
                 silhouetteNear: Color(light: UIColor(hex: 0x354C6A), dark: UIColor(hex: 0x202B3A)),
                 accent: Color(light: UIColor(hex: 0xFF7967), dark: UIColor(hex: 0xE17468))
             )
+        case "capetown":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x2FAFE8), dark: UIColor(hex: 0x245A73)),
+                skyBottom: Color(light: UIColor(hex: 0xF8D4A5), dark: UIColor(hex: 0x493B34)),
+                silhouetteFar: Color(light: UIColor(hex: 0x78A47A), dark: UIColor(hex: 0x385648)),
+                silhouetteNear: Color(light: UIColor(hex: 0x315C57), dark: UIColor(hex: 0x203D3A)),
+                accent: Color(light: UIColor(hex: 0xF07B64), dark: UIColor(hex: 0xD36C5B))
+            )
+        case "singapore":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x51C9DE), dark: UIColor(hex: 0x256878)),
+                skyBottom: Color(light: UIColor(hex: 0xFFF0C2), dark: UIColor(hex: 0x3D443E)),
+                silhouetteFar: Color(light: UIColor(hex: 0x6FB5A1), dark: UIColor(hex: 0x315A51)),
+                silhouetteNear: Color(light: UIColor(hex: 0x247767), dark: UIColor(hex: 0x1B433D)),
+                accent: Color(light: UIColor(hex: 0xEE8C57), dark: UIColor(hex: 0xCC744A))
+            )
+        case "dublin":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x68BDED), dark: UIColor(hex: 0x285873)),
+                skyBottom: Color(light: UIColor(hex: 0xE7F2D1), dark: UIColor(hex: 0x34443B)),
+                silhouetteFar: Color(light: UIColor(hex: 0x83A98A), dark: UIColor(hex: 0x3C5948)),
+                silhouetteNear: Color(light: UIColor(hex: 0x46694E), dark: UIColor(hex: 0x273D31)),
+                accent: Color(light: UIColor(hex: 0x3FA268), dark: UIColor(hex: 0x39845A))
+            )
+        case "edinburgh":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x72A9D8), dark: UIColor(hex: 0x334D67)),
+                skyBottom: Color(light: UIColor(hex: 0xDDE7D7), dark: UIColor(hex: 0x3A403E)),
+                silhouetteFar: Color(light: UIColor(hex: 0x7B8D85), dark: UIColor(hex: 0x414B48)),
+                silhouetteNear: Color(light: UIColor(hex: 0x4B5655), dark: UIColor(hex: 0x2B3233)),
+                accent: Color(light: UIColor(hex: 0x8C73B5), dark: UIColor(hex: 0x78639A))
+            )
+        case "vancouver":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x3FB4EC), dark: UIColor(hex: 0x245D7A)),
+                skyBottom: Color(light: UIColor(hex: 0xD8F1EA), dark: UIColor(hex: 0x314846)),
+                silhouetteFar: Color(light: UIColor(hex: 0x6E9C91), dark: UIColor(hex: 0x38564F)),
+                silhouetteNear: Color(light: UIColor(hex: 0x315D58), dark: UIColor(hex: 0x203D3B)),
+                accent: Color(light: UIColor(hex: 0x3B9F8B), dark: UIColor(hex: 0x358472))
+            )
+        case "auckland":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x32B8E8), dark: UIColor(hex: 0x23627A)),
+                skyBottom: Color(light: UIColor(hex: 0xDFF5D2), dark: UIColor(hex: 0x344A3A)),
+                silhouetteFar: Color(light: UIColor(hex: 0x72A987), dark: UIColor(hex: 0x395A49)),
+                silhouetteNear: Color(light: UIColor(hex: 0x2E7167), dark: UIColor(hex: 0x21453E)),
+                accent: Color(light: UIColor(hex: 0x20A99A), dark: UIColor(hex: 0x26877D))
+            )
+        case "nairobi":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x4CB9E6), dark: UIColor(hex: 0x295E73)),
+                skyBottom: Color(light: UIColor(hex: 0xF3D89C), dark: UIColor(hex: 0x4A4032)),
+                silhouetteFar: Color(light: UIColor(hex: 0x92A866), dark: UIColor(hex: 0x4A5938)),
+                silhouetteNear: Color(light: UIColor(hex: 0x536A42), dark: UIColor(hex: 0x33412B)),
+                accent: Color(light: UIColor(hex: 0xE3944A), dark: UIColor(hex: 0xC47A3D))
+            )
+        case "reykjavik":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x347BC6), dark: UIColor(hex: 0x203E68)),
+                skyBottom: Color(light: UIColor(hex: 0xCFE9EE), dark: UIColor(hex: 0x324450)),
+                silhouetteFar: Color(light: UIColor(hex: 0x7896A7), dark: UIColor(hex: 0x3C4D59)),
+                silhouetteNear: Color(light: UIColor(hex: 0x405A70), dark: UIColor(hex: 0x293A48)),
+                accent: Color(light: UIColor(hex: 0x4DBDAA), dark: UIColor(hex: 0x409988))
+            )
+        case "lisbon":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x4DBCEB), dark: UIColor(hex: 0x28627C)),
+                skyBottom: Color(light: UIColor(hex: 0xFFE0A8), dark: UIColor(hex: 0x504032)),
+                silhouetteFar: Color(light: UIColor(hex: 0xC99A72), dark: UIColor(hex: 0x6A5040)),
+                silhouetteNear: Color(light: UIColor(hex: 0x855B4A), dark: UIColor(hex: 0x4A352F)),
+                accent: Color(light: UIColor(hex: 0xF2A52B), dark: UIColor(hex: 0xCE8525))
+            )
+        case "tokyo":
+            City(
+                skyTop: Color(light: UIColor(hex: 0x48B9ED), dark: UIColor(hex: 0x285C7B)),
+                skyBottom: Color(light: UIColor(hex: 0xFFE3E6), dark: UIColor(hex: 0x493A45)),
+                silhouetteFar: Color(light: UIColor(hex: 0x8DA7B1), dark: UIColor(hex: 0x44545D)),
+                silhouetteNear: Color(light: UIColor(hex: 0x4D6371), dark: UIColor(hex: 0x2D3B45)),
+                accent: Color(light: UIColor(hex: 0xE95E5B), dark: UIColor(hex: 0xC95452))
+            )
         default:
             City(
                 skyTop: Color(light: UIColor(hex: 0x28AEEF), dark: UIColor(hex: 0x1D5583)),
@@ -61,6 +141,9 @@ public enum DSScenePalette {
         case "melbourne_cafe": dynamicPair(0x9D7A5C, 0x453125, darkTop: 0x594536, darkBottom: 0x251C18)
         case "newyork_subway": dynamicPair(0x666A73, 0x252833, darkTop: 0x3C3E45, darkBottom: 0x15161B)
         case "newyork_street": dynamicPair(0xE39A5C, 0x59405E, darkTop: 0x76533B, darkBottom: 0x302536)
+        case "capetown_signal_hill": dynamicPair(0xE7A56D, 0x355B6C, darkTop: 0x7A5940, darkBottom: 0x203946)
+        case "singapore_rain": dynamicPair(0x6CB8C5, 0x31525D, darkTop: 0x3E6C75, darkBottom: 0x1D3238)
+        case "singapore_supertree": dynamicPair(0x4E9B8A, 0x353B6B, darkTop: 0x315E56, darkBottom: 0x222643)
         default: dynamicPair(0x566D8D, 0x202B40, darkTop: 0x354458, darkBottom: 0x141A27)
         }
     }

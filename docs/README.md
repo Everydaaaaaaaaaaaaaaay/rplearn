@@ -4,6 +4,7 @@
 
 - `HANDOFF.md`：当前功能、工程结构、Module 职责、构建方式与已知限制。
 - `ui-redesign-plan.md`：已落地的视觉语言、信息架构与验收约束。
+- `journey-design.md`：五城主线、三条初始角色路线、支线城市与地图引导规则。
 - `backend/ARCHITECTURE.md`：生产后端的模块边界、权威状态、同步、订阅、AI 与部署架构。
 - `backend/IMPLEMENTATION_PLAN.md`：按独立提交拆分的后端与 iOS 迁移交付计划。
 - `backend/THREAT_MODEL.md`：账号、支付、AI、数据与运维的威胁模型和上线安全门。
