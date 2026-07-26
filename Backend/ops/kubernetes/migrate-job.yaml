@@ -16,11 +16,14 @@ spec:
         - name: migrate
           image: registry.example.com/lingotrip/backend:replace-with-digest
           args: ["dist/cli/migrate.js"]
-          envFrom:
-            - configMapRef:
-                name: lingotrip-backend-config
-            - secretRef:
-                name: lingotrip-backend-secrets
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: MIGRATION_DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: database-url
+                  name: lingotrip-migration-secrets
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:

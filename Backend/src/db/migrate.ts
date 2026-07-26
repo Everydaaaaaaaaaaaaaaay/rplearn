@@ -16,12 +16,16 @@ export function environmentForMigrations(
   environment: NodeJS.ProcessEnv,
 ): NodeJS.ProcessEnv {
   const migrationDatabaseUrl = environment.MIGRATION_DATABASE_URL?.trim();
-  return migrationDatabaseUrl === undefined || migrationDatabaseUrl.length === 0
-    ? environment
-    : {
-        ...environment,
-        DATABASE_URL: migrationDatabaseUrl,
-      };
+  if (migrationDatabaseUrl === undefined || migrationDatabaseUrl.length === 0) {
+    if (environment.NODE_ENV === "production") {
+      throw new Error("MIGRATION_DATABASE_URL is required in production");
+    }
+    return environment;
+  }
+  return {
+    ...environment,
+    DATABASE_URL: migrationDatabaseUrl,
+  };
 }
 
 async function expectedMigrationCount(): Promise<number> {

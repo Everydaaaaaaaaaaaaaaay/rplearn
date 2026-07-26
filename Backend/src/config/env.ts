@@ -183,6 +183,14 @@ const rawEnvironmentSchema = z.object({
   TRUST_PROXY: booleanFromString.default(false),
 });
 
+export type DatabaseConnectionConfig = Readonly<{
+  databaseConnectTimeoutMs: number;
+  databaseIdleTimeoutMs: number;
+  databaseMaxConnections: number;
+  databaseUrl: string;
+  shutdownGraceMs: number;
+}>;
+
 export type RuntimeConfig = Readonly<{
   adminApiEnabled: boolean;
   adminApiKeys: readonly Readonly<{ keyId: string; token: string }>[];
@@ -308,6 +316,39 @@ export class ConfigurationError extends Error {
     this.name = "ConfigurationError";
     this.issues = issues;
   }
+}
+
+const databaseEnvironmentSchema = rawEnvironmentSchema.pick({
+  DATABASE_CONNECT_TIMEOUT_MS: true,
+  DATABASE_IDLE_TIMEOUT_MS: true,
+  DATABASE_MAX_CONNECTIONS: true,
+  DATABASE_URL: true,
+  NODE_ENV: true,
+  SHUTDOWN_GRACE_MS: true,
+});
+
+export function loadDatabaseConnectionConfig(
+  environment: NodeJS.ProcessEnv = process.env,
+): DatabaseConnectionConfig {
+  const result = databaseEnvironmentSchema.safeParse(environment);
+  if (!result.success) {
+    throw new ConfigurationError(
+      result.error.issues.map(
+        (issue) => `${issue.path.join(".") || "environment"}: ${issue.message}`,
+      ),
+    );
+  }
+  if (result.data.NODE_ENV === "production" && result.data.DATABASE_URL === undefined) {
+    throw new ConfigurationError(["DATABASE_URL is required in production"]);
+  }
+
+  return {
+    databaseConnectTimeoutMs: result.data.DATABASE_CONNECT_TIMEOUT_MS,
+    databaseIdleTimeoutMs: result.data.DATABASE_IDLE_TIMEOUT_MS,
+    databaseMaxConnections: result.data.DATABASE_MAX_CONNECTIONS,
+    databaseUrl: result.data.DATABASE_URL ?? DEVELOPMENT_DATABASE_URL,
+    shutdownGraceMs: result.data.SHUTDOWN_GRACE_MS,
+  };
 }
 
 function parseOrigins(raw: string): readonly string[] {
