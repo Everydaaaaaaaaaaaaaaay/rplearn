@@ -16,7 +16,7 @@
 - **会话与记忆**：分层记忆（short→mid→long）按订阅配额压缩注入，长对话不爆上下文。
 - **AVG 剧情模块**：竖屏视觉小说；“五城回声”主线固定经过 5 座城市，初始角色决定前期顺序。
 - **角色系统**：3 位手工设计主角色（伦敦 / 墨尔本 / 纽约）+ AI 随机生成的「偶遇」角色；首选角色立即解锁，另外两位在主线相遇后解锁。
-- **地区 / 机票 / 票根**：机票是首次前往新城市的解锁道具；已去过的城市可自由往返，每次旅行都会生成收藏级票根。
+- **地区 / 机票 / 票根**：机票是首次前往新城市的解锁道具；每座城市首次抵达时签发一张唯一纪念票根，已去过的城市可自由往返且不重复生成；登录账号的首次抵达记录会随服务端状态快照同步，换设备后可恢复收藏。
 - **经济系统**：金币 + 订阅（本地模拟，支付网关占位）。
 - **首启引导**：以聊天皮肤演出的开场剧情 → 选主角色 → 引导主线。
 
@@ -126,7 +126,7 @@ DomainKit 服务清单：
 - `MemoryService`：分层记忆压缩（short→mid→long 级联）、按订阅配额裁剪、注入段落。
 - `EconomyService`：金币 / 订阅（`PurchaseGateway` 占位）、道具定价、记忆配额（`MemoryQuota`）。
 - `EncounterService`：偶遇概率与来源掷骰（纯函数可测）、LLM 结构化生成角色卡（重试 + 本地模板兜底）。
-- `TravelService`：首次解锁地区的机票校验/消耗、已解锁地区免费往返与票根生成。
+- `TravelService`：首次解锁地区的机票校验/消耗与唯一票根生成；已解锁地区免费往返且不重复签发。
 - `QuizService`：出题触发判定、prompt 指令、`<quiz>` 截取解析、本地判分。
 - `KeywordAnnotator`：本地词频给角色回复关键词划线。
 - `TranslationService`：整句翻译（结果缓存）。
@@ -138,7 +138,7 @@ DomainKit 服务清单：
 |---|---|---|
 | **ChatFeature** | 消息列表 + 聊天页 | QQ 式搜索/未读/置顶/滑动已读；聊天流式链路、统一批注卡、quiz 庆祝/错误反馈、语音条、Apple 端上翻译兜底 |
 | **HomeFeature** | 首页聚合 Hub + 主线/活动二级页 | 城市动态剪影背景、最近会话、两张探索入口；`MainlineListView` / `ActivitiesView` |
-| **MapFeature** | 二维目的地选择器 + 飞行转场 + 票根夹 | 洲级宽视角、弱化底图、三态 Pin、首次解锁耗票/已解锁直达、`FlightTransitionOverlay`、6 套动态票根色 |
+| **MapFeature** | 二维目的地选择器 + 飞行转场 + 票根夹 | 洲级宽视角、弱化底图、三态 Pin、首次解锁耗票/已解锁直达、首次抵达收藏仪式、城市美术纪念票根 |
 | **StoryFeature** | AVG 剧情 | 竖屏 ZStack、打字机台词、动态深浅场景色、Duo 选项 |
 | **OnboardingFeature** | 首启引导 | 聊天剧情内角色资料卡 + 3D 横滑实体选角卡 |
 | **SettingsFeature** | 我的 + 设置 | `MyPageView` 聚合资料/订阅/收藏/设置；二级设置保留 AI、模型、语音、学习开关 |
@@ -160,7 +160,7 @@ DomainKit 服务清单：
 | `MemoryEntity` | 分层记忆条目（short / mid / long + 重要度） |
 | `FavoriteEntity` | 收藏语句（弱引用消息） |
 | `ItemEntity` | 道具（机票：通用 / 指定国家） |
-| `TicketStubEntity` | 票根（serialNumber + artSeed 决定配色花纹） |
+| `TicketStubEntity` | 每个目的地唯一的首次抵达票根（serialNumber + artSeed 决定配色） |
 | `StoryProgressEntity` | 剧情进度（断点续播） |
 | `QuizRecordEntity` | 出题记录（供统计） |
 
@@ -241,7 +241,7 @@ xcodebuild -project LingoTrip.xcodeproj -scheme LingoTrip \
 
 - 测试是 **App 托管的 `LingoTripTests` bundle**（`bundle.unit-test`，host=LingoTrip），源码在 `Packages/LingoKit/Tests/` 下按被测模块分子目录。**为什么托管**：钥匙串 / SwiftData 等测试在无宿主的 SwiftPM runner 下会报 `errSecMissingEntitlement(-34018)`。
 - Mock LLM 在 `Tests/TestSupport/MockLLMProvider.swift`，所有依赖 LLM 的服务都用它做确定性测试。
-- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；地图可附加 `SIMCTL_CHILD_UI_TEST_MAP_GUIDE=single|two|multiple|complete` 验证旅程引导密度与回退态，或用 `SIMCTL_CHILD_UI_TEST_MAP_SELECTED=<regionID>` 直接展开某个城市标记的前往/购票操作；首页可附加 `SIMCTL_CHILD_UI_TEST_REGION=<regionID>` 验证城市背景；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
+- **UI 验证**：模拟器 `xcrun simctl` 安装 / 启动 / 截图。`SIMCTL_CHILD_UI_TEST_TAB=home|map|messages|me` 可直接启动到指定 Tab；地图可附加 `SIMCTL_CHILD_UI_TEST_MAP_GUIDE=single|two|multiple|complete` 验证旅程引导密度与回退态，或用 `SIMCTL_CHILD_UI_TEST_MAP_SELECTED=<regionID>` 直接展开某个城市标记的前往/购票操作。`SIMCTL_CHILD_UI_TEST_FLIGHT_ARRIVAL=<regionID>` / `SIMCTL_CHILD_UI_TEST_FLIGHT_REVISIT=<regionID>` 验证首次抵达与自由往返结果态，配合 `SIMCTL_CHILD_UI_TEST_FLIGHT_HOLD=1` 定格；`SIMCTL_CHILD_UI_TEST_TICKET_STUBS=1` 直接进入票根夹。首页可附加 `SIMCTL_CHILD_UI_TEST_REGION=<regionID>` 验证城市背景；`SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1|full` 验证首启；`SIMCTL_CHILD_DEBUG_INJECT_QUIZ=1` 在聊天中注入 quiz 与口语点评卡。
 
 ---
 

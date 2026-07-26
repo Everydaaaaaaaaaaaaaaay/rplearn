@@ -16,6 +16,7 @@ public struct MapView: View {
     @State private var travelTarget: Region?
     @State private var flight: FlightPresentation?
     @State private var feedback: String?
+    @State private var showsTicketStubsPreview = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -138,6 +139,10 @@ public struct MapView: View {
                     .dsTabBarHidden()
             }
         }
+        .navigationDestination(isPresented: $showsTicketStubsPreview) {
+            TicketStubsView(stubStore: deps.stubStore, regionCatalog: deps.regionCatalog)
+                .dsTabBarHidden()
+        }
         .sheet(item: $travelTarget) { region in
             TravelSheet(
                 region: region,
@@ -152,7 +157,10 @@ public struct MapView: View {
             .presentationDragIndicator(.visible)
         }
         .fullScreenCover(item: $flight) { presentation in
-            FlightTransitionOverlay(presentation: presentation) {
+            FlightTransitionOverlay(
+                presentation: presentation,
+                regionCatalog: deps.regionCatalog
+            ) {
                 flight = nil
                 Task {
                     await reload()
@@ -172,7 +180,20 @@ public struct MapView: View {
         ) {
             Button("好", role: .cancel) {}
         }
-        .task { await reload() }
+        .task {
+            await reload()
+            #if DEBUG
+            let environment = ProcessInfo.processInfo.environment
+            showsTicketStubsPreview = environment["UI_TEST_TICKET_STUBS"] == "1"
+            if environment["UI_TEST_FLIGHT_ARRIVAL"] != nil
+                || environment["UI_TEST_FLIGHT_REVISIT"] != nil
+            {
+                // 首帧事务结束后再呈现 cover，避免 SwiftUI 丢弃冷启动时的测试状态。
+                try? await Task.sleep(for: .milliseconds(250))
+            }
+            #endif
+            presentDebugFlightIfRequested()
+        }
         .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedRegionID)
         .dsTabBarHidden(flight != nil)
     }
@@ -295,14 +316,14 @@ public struct MapView: View {
 
     private func handle(_ outcome: TravelOutcome) {
         switch outcome {
-        case .success(let destination, let serial):
-            let from = profile?.currentRegionID ?? destination.id
+        case .success(let destination, let result):
+            let from = result.fromRegionID
             flight = FlightPresentation(
                 fromRegionID: from,
                 toRegionID: destination.id,
                 fromName: deps.regionCatalog.region(id: from)?.nameZh ?? from,
                 toName: destination.nameZh,
-                serialNumber: serial
+                ticketStub: result.ticketStub
             )
         case .failure(let message):
             feedback = message
@@ -346,5 +367,35 @@ public struct MapView: View {
 
     private func coordinate(_ region: Region) -> CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: region.latitude, longitude: region.longitude)
+    }
+
+    private func presentDebugFlightIfRequested() {
+        #if DEBUG
+        let environment = ProcessInfo.processInfo.environment
+        let firstArrivalID = environment["UI_TEST_FLIGHT_ARRIVAL"]
+        let revisitID = environment["UI_TEST_FLIGHT_REVISIT"]
+        guard let destinationID = firstArrivalID ?? revisitID,
+              let destination = deps.regionCatalog.region(id: destinationID)
+        else { return }
+
+        let from = currentRegion ?? deps.regionCatalog.region(id: "london")
+        let stub = firstArrivalID.map { _ in
+            TicketStubDTO(
+                id: UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456799")!,
+                fromRegionID: from?.id ?? "london",
+                toRegionID: destination.id,
+                usedAt: .now,
+                serialNumber: "LT-FIRST",
+                artSeed: 4
+            )
+        }
+        flight = FlightPresentation(
+            fromRegionID: from?.id ?? "london",
+            toRegionID: destination.id,
+            fromName: from?.nameZh ?? "伦敦",
+            toName: destination.nameZh,
+            ticketStub: stub
+        )
+        #endif
     }
 }

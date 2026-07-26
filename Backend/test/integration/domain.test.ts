@@ -125,6 +125,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     expect(initialSnapshot.profile.coins).toBe(0);
     expect(initialSnapshot.profile.starterRegionId).toBeNull();
     expect(initialSnapshot.profile.unlockedRegionIds).toEqual([]);
+    expect(initialSnapshot.firstArrivals).toEqual([]);
 
     const prematureStarter = await app.inject({
       headers: authenticated({ idempotencyKey: newEntityId() }),
@@ -330,6 +331,15 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       "london",
       "newyork",
     ]);
+    expect(finalSnapshot.firstArrivals.map((arrival) => arrival.toRegionId)).toEqual([
+      "london",
+      "newyork",
+    ]);
+    expect(finalSnapshot.firstArrivals[0]).toMatchObject({
+      fromRegionId: "melbourne",
+      id: firstTravelResult.travelId,
+      toRegionId: "london",
+    });
     expect(finalSnapshot.tickets).toHaveLength(2);
 
     const [ledger] = await dependencies.database.sql<

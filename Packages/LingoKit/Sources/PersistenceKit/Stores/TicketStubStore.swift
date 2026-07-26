@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-/// 票根快照。
+/// 首次抵达城市时保存的纪念票根。
 public struct TicketStubDTO: Sendable, Equatable, Identifiable {
     public var id: UUID
     public var fromRegionID: String
@@ -10,13 +10,35 @@ public struct TicketStubDTO: Sendable, Equatable, Identifiable {
     public var serialNumber: String
     /// 决定票根配色花纹。
     public var artSeed: Int
+
+    public init(
+        id: UUID,
+        fromRegionID: String,
+        toRegionID: String,
+        usedAt: Date,
+        serialNumber: String,
+        artSeed: Int
+    ) {
+        self.id = id
+        self.fromRegionID = fromRegionID
+        self.toRegionID = toRegionID
+        self.usedAt = usedAt
+        self.serialNumber = serialNumber
+        self.artSeed = artSeed
+    }
 }
 
-/// 票根仓库：每次旅行后生成，票根夹翻阅。
+/// 票根仓库：每个目的地只收藏首次抵达的唯一票根。
 @ModelActor
 public actor TicketStubStore {
     @discardableResult
-    public func addStub(fromRegionID: String, toRegionID: String) throws -> TicketStubDTO {
+    public func addFirstArrival(
+        fromRegionID: String,
+        toRegionID: String
+    ) throws -> TicketStubDTO {
+        if let existing = try firstArrivalEntity(toRegionID: toRegionID) {
+            return Self.dto(from: existing)
+        }
         let entity = TicketStubEntity(
             fromRegionID: fromRegionID,
             toRegionID: toRegionID,
@@ -28,8 +50,8 @@ public actor TicketStubStore {
         return Self.dto(from: entity)
     }
 
-    /// 缓存服务端旅行事实；相同 travel ID 重试时保持幂等。
-    public func cacheServerTravel(
+    /// 缓存服务端首次抵达事实；同一目的地或相同 travel ID 重试时保持幂等。
+    public func cacheFirstServerArrival(
         id: UUID,
         fromRegionID: String,
         toRegionID: String,
@@ -40,6 +62,9 @@ public actor TicketStubStore {
                 predicate: #Predicate { $0.stubID == id }
             )
         ).first {
+            return Self.dto(from: existing)
+        }
+        if let existing = try firstArrivalEntity(toRegionID: toRegionID) {
             return Self.dto(from: existing)
         }
         let entity = TicketStubEntity(
@@ -55,11 +80,27 @@ public actor TicketStubStore {
         return Self.dto(from: entity)
     }
 
-    /// 全部票根（新→旧）。
+    /// 全部首次抵达票根（新→旧）；旧版本遗留的重复航段只投影最早一张。
     public func all() throws -> [TicketStubDTO] {
         var descriptor = FetchDescriptor<TicketStubEntity>()
-        descriptor.sortBy = [SortDescriptor(\.usedAt, order: .reverse)]
-        return try modelContext.fetch(descriptor).map(Self.dto(from:))
+        descriptor.sortBy = [SortDescriptor(\.usedAt)]
+        var destinations: Set<String> = []
+        var firstArrivals: [TicketStubEntity] = []
+        var removedDuplicate = false
+        for entity in try modelContext.fetch(descriptor) {
+            if destinations.insert(entity.toRegionID).inserted {
+                firstArrivals.append(entity)
+            } else {
+                modelContext.delete(entity)
+                removedDuplicate = true
+            }
+        }
+        if removedDuplicate {
+            try modelContext.save()
+        }
+        return firstArrivals
+            .sorted { $0.usedAt > $1.usedAt }
+            .map(Self.dto(from:))
     }
 
     static func makeSerialNumber() -> String {
@@ -70,6 +111,15 @@ public actor TicketStubStore {
     private static func serialNumber(for id: UUID) -> String {
         let compact = id.uuidString.replacingOccurrences(of: "-", with: "")
         return "LT-\(compact.prefix(6).uppercased())"
+    }
+
+    private func firstArrivalEntity(toRegionID: String) throws -> TicketStubEntity? {
+        var descriptor = FetchDescriptor<TicketStubEntity>(
+            predicate: #Predicate { $0.toRegionID == toRegionID }
+        )
+        descriptor.sortBy = [SortDescriptor(\.usedAt)]
+        descriptor.fetchLimit = 1
+        return try modelContext.fetch(descriptor).first
     }
 
     static func dto(from entity: TicketStubEntity) -> TicketStubDTO {

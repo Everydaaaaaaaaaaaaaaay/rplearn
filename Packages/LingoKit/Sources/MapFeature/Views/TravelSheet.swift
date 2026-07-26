@@ -4,7 +4,7 @@ import PersistenceKit
 import SwiftUI
 
 enum TravelOutcome {
-    case success(region: Region, serial: String)
+    case success(region: Region, result: TravelResult)
     case failure(String)
 }
 
@@ -85,8 +85,8 @@ struct TravelSheet: View {
 
             Text(
                 requiresTicket
-                    ? "机票只在首次解锁城市时消耗；以后可以自由往返。"
-                    : "这次旅行不会消耗机票，并会生成一张新的旅行票根。"
+                    ? "首次解锁会收藏一张唯一的城市纪念票根；以后可以自由往返。"
+                    : "这次旅行不会消耗机票，也不会重复生成票根。"
             )
                 .font(.caption)
                 .foregroundStyle(.tertiary)
@@ -106,9 +106,9 @@ struct TravelSheet: View {
         isWorking = true
         Task {
             do {
-                let stub = try await deps.travelService.travel(to: region, using: ticket)
+                let result = try await deps.travelService.travel(to: region, using: ticket)
                 Haptics.notify(.success)
-                onDone(.success(region: region, serial: stub.serialNumber))
+                onDone(.success(region: region, result: result))
             } catch {
                 onDone(.failure("出发失败：\(errorText(error))"))
             }
@@ -120,9 +120,9 @@ struct TravelSheet: View {
         Task {
             do {
                 let ticket = try await deps.economyService.buyTicket(type: .ticketUniversal)
-                let stub = try await deps.travelService.travel(to: region, using: ticket)
+                let result = try await deps.travelService.travel(to: region, using: ticket)
                 Haptics.notify(.success)
-                onDone(.success(region: region, serial: stub.serialNumber))
+                onDone(.success(region: region, result: result))
             } catch {
                 onDone(.failure("购票失败：\(errorText(error))"))
             }

@@ -116,7 +116,8 @@ final class AppEnvironment {
             backend: backendClient,
             accountCache: accountCacheStore,
             economyCache: economyStore,
-            itemCache: itemStore
+            itemCache: itemStore,
+            ticketStubCache: ticketStubStore
         )
         self.userState = userState
         self.contentSync = BackendContentSyncCoordinator(

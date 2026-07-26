@@ -6,17 +6,20 @@ public struct TravelCommandResult: Sendable, Equatable {
     public let toRegionID: String
     public let travelID: UUID
     public let traveledAt: Date
+    public let unlockedNow: Bool
 
     public init(
         fromRegionID: String,
         toRegionID: String,
         travelID: UUID,
-        traveledAt: Date
+        traveledAt: Date,
+        unlockedNow: Bool
     ) {
         self.fromRegionID = fromRegionID
         self.toRegionID = toRegionID
         self.travelID = travelID
         self.traveledAt = traveledAt
+        self.unlockedNow = unlockedNow
     }
 }
 

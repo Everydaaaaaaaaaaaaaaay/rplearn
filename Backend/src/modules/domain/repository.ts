@@ -6,6 +6,7 @@ import { appendSyncChange } from "../sync/change-writer.js";
 import type {
   CommandIdentity,
   DifficultyLevel,
+  FirstArrival,
   ProfilePatch,
   Ticket,
   TicketSource,
@@ -64,6 +65,20 @@ function mapTicket(row: {
     id: row.id,
     source: row.source,
     type: row.type,
+  };
+}
+
+function mapFirstArrival(row: {
+  arrived_at: string;
+  from_region_id: string;
+  id: string;
+  to_region_id: string;
+}): FirstArrival {
+  return {
+    arrivedAt: new Date(row.arrived_at).toISOString(),
+    fromRegionId: row.from_region_id,
+    id: row.id,
+    toRegionId: row.to_region_id,
   };
 }
 
@@ -132,8 +147,35 @@ export class DomainRepository {
         and status = 'available'
       order by created_at, id
     `;
+    const firstArrivalRows = await this.resource.sql<
+      {
+        arrived_at: string;
+        from_region_id: string;
+        id: string;
+        to_region_id: string;
+      }[]
+    >`
+      select
+        id,
+        from_region_id,
+        to_region_id,
+        arrived_at
+      from (
+        select distinct on (to_region_id)
+          id::text,
+          from_region_id,
+          to_region_id,
+          traveled_at as arrived_at
+        from app.travel_records
+        where user_id = ${userId}
+          and ticket_item_id is not null
+        order by to_region_id, traveled_at, id
+      ) as first_arrivals
+      order by arrived_at, id
+    `;
 
     return {
+      firstArrivals: firstArrivalRows.map(mapFirstArrival),
       profile: mapProfile(
         profile,
         unlockRows.map((row) => row.region_id),

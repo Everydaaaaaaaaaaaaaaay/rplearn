@@ -27,6 +27,13 @@ export type Ticket = Readonly<{
   type: TicketType;
 }>;
 
+export type FirstArrival = Readonly<{
+  arrivedAt: string;
+  fromRegionId: string;
+  id: string;
+  toRegionId: string;
+}>;
+
 export type UserProfile = Readonly<{
   coins: number;
   currentRegionId: string;
@@ -44,6 +51,7 @@ export type UserProfile = Readonly<{
 }>;
 
 export type UserSnapshot = Readonly<{
+  firstArrivals: readonly FirstArrival[];
   profile: UserProfile;
   tickets: readonly Ticket[];
 }>;

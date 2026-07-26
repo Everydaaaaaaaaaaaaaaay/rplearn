@@ -28,6 +28,7 @@ struct BackendUserStateCoordinatorTests {
         private var currentRegion = "london"
         private var difficulty = "junior1"
         private var hasCompletedOnboarding = false
+        private var firstArrivalTravelID: UUID?
         private var tickets: [UUID] = []
         private var ticketSource = "purchase"
         private var version = 1
@@ -66,6 +67,10 @@ struct BackendUserStateCoordinatorTests {
                 return json(#"{"coins":0,"ticket":\#(ticketJSON(ticket))}"#)
             case ("POST", "/v1/travel"):
                 mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                let travelID = UUID(
+                    uuidString: "019c0123-4567-789a-8bcd-ef0123456792"
+                )!
+                firstArrivalTravelID = travelID
                 currentRegion = "newyork"
                 tickets = []
                 version += 1
@@ -76,7 +81,7 @@ struct BackendUserStateCoordinatorTests {
                       "fromRegionId":"london",
                       "profileVersion":\(version),
                       "toRegionId":"newyork",
-                      "travelId":"019c0123-4567-789a-8bcd-ef0123456792",
+                      "travelId":"\(travelID.uuidString.lowercased())",
                       "traveledAt":"2026-07-26T00:00:00.000Z",
                       "unlockedNow":true
                     }
@@ -107,7 +112,17 @@ struct BackendUserStateCoordinatorTests {
             let ticketValues = tickets
                 .map { ticketJSON($0, source: ticketSource) }
                 .joined(separator: ",")
-            return #"{"cursor":"cursor","state":{"profile":\#(profileJSON()),"tickets":[\#(ticketValues)]}}"#
+            let firstArrivalValues = firstArrivalTravelID.map {
+                """
+                {
+                  "arrivedAt":"2026-07-26T00:00:00.000Z",
+                  "fromRegionId":"london",
+                  "id":"\($0.uuidString.lowercased())",
+                  "toRegionId":"newyork"
+                }
+                """
+            } ?? ""
+            return #"{"cursor":"cursor","state":{"firstArrivals":[\#(firstArrivalValues)],"profile":\#(profileJSON()),"tickets":[\#(ticketValues)]}}"#
         }
 
         private func profileJSON() -> String {
@@ -166,6 +181,7 @@ struct BackendUserStateCoordinatorTests {
         let accountCache = AccountCacheStore(modelContainer: container)
         let economy = EconomyStore(modelContainer: container)
         let items = ItemStore(modelContainer: container)
+        let ticketStubs = TicketStubStore(modelContainer: container)
         let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
         let defaults = try #require(UserDefaults(suiteName: suite))
         let coordinator = BackendUserStateCoordinator(
@@ -173,6 +189,7 @@ struct BackendUserStateCoordinatorTests {
             accountCache: accountCache,
             economyCache: economy,
             itemCache: items,
+            ticketStubCache: ticketStubs,
             defaults: defaults
         )
 
@@ -193,9 +210,14 @@ struct BackendUserStateCoordinatorTests {
         #expect(try await economy.profile().friendSlotLimit == 30)
         #expect(try await items.unconsumedTickets().count == 1)
 
-        _ = try await coordinator.travel(targetRegionID: "newyork", ticketID: ticket.id)
+        let travel = try await coordinator.travel(
+            targetRegionID: "newyork",
+            ticketID: ticket.id
+        )
+        #expect(travel.unlockedNow)
         #expect(try await economy.profile().currentRegionID == "newyork")
         #expect(try await items.unconsumedTickets().isEmpty)
+        #expect(try await ticketStubs.all().map(\.toRegionID) == ["newyork"])
 
         let updated = try await coordinator.updateProfile {
             $0.hasCompletedOnboarding = true
@@ -228,6 +250,7 @@ struct BackendUserStateCoordinatorTests {
             accountCache: AccountCacheStore(modelContainer: container),
             economyCache: economy,
             itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
             defaults: defaults
         )
 
@@ -259,6 +282,7 @@ struct BackendUserStateCoordinatorTests {
             accountCache: AccountCacheStore(modelContainer: container),
             economyCache: EconomyStore(modelContainer: container),
             itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
             defaults: try #require(UserDefaults(suiteName: suite))
         )
 

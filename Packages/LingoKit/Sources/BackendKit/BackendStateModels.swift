@@ -24,9 +24,43 @@ public struct BackendTicket: Codable, Sendable, Equatable, Identifiable {
     public let type: String
 }
 
+public struct BackendFirstArrival: Codable, Sendable, Equatable, Identifiable {
+    public let arrivedAt: String
+    public let fromRegionId: String
+    public let id: UUID
+    public let toRegionId: String
+}
+
 public struct BackendUserSnapshot: Codable, Sendable, Equatable {
+    public let firstArrivals: [BackendFirstArrival]
     public let profile: BackendUserProfile
     public let tickets: [BackendTicket]
+
+    public init(
+        firstArrivals: [BackendFirstArrival] = [],
+        profile: BackendUserProfile,
+        tickets: [BackendTicket]
+    ) {
+        self.firstArrivals = firstArrivals
+        self.profile = profile
+        self.tickets = tickets
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case firstArrivals
+        case profile
+        case tickets
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        firstArrivals = try container.decodeIfPresent(
+            [BackendFirstArrival].self,
+            forKey: .firstArrivals
+        ) ?? []
+        profile = try container.decode(BackendUserProfile.self, forKey: .profile)
+        tickets = try container.decode([BackendTicket].self, forKey: .tickets)
+    }
 }
 
 public struct BackendSyncSnapshot: Codable, Sendable, Equatable {

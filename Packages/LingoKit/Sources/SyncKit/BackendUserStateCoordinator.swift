@@ -49,6 +49,7 @@ public actor BackendUserStateCoordinator:
     private let accountCache: AccountCacheStore
     private let economyCache: EconomyStore
     private let itemCache: ItemStore
+    private let ticketStubCache: TicketStubStore
     private let defaults: UserDefaults
     private let cachedOwnerKey = "backend.state.cached-owner.v1"
     private let cursorKeyPrefix = "backend.sync.cursor.v1."
@@ -61,12 +62,14 @@ public actor BackendUserStateCoordinator:
         accountCache: AccountCacheStore,
         economyCache: EconomyStore,
         itemCache: ItemStore,
+        ticketStubCache: TicketStubStore,
         defaults: UserDefaults = .standard
     ) {
         self.backend = backend
         self.accountCache = accountCache
         self.economyCache = economyCache
         self.itemCache = itemCache
+        self.ticketStubCache = ticketStubCache
         self.defaults = defaults
     }
 
@@ -297,7 +300,8 @@ public actor BackendUserStateCoordinator:
                 fromRegionID: result.fromRegionId,
                 toRegionID: result.toRegionId,
                 travelID: result.travelId,
-                traveledAt: try parseDate(result.traveledAt)
+                traveledAt: try parseDate(result.traveledAt),
+                unlockedNow: result.unlockedNow
             )
         } catch let error as BackendClientError {
             abandonCommand(for: intent, ifDeterministic: error)
@@ -356,6 +360,14 @@ public actor BackendUserStateCoordinator:
         let tickets = try loaded.state.tickets.map(map)
         try await economyCache.replaceAuthoritativeProfile(profile)
         try await itemCache.replaceAvailableTickets(tickets)
+        for arrival in loaded.state.firstArrivals {
+            _ = try await ticketStubCache.cacheFirstServerArrival(
+                id: arrival.id,
+                fromRegionID: arrival.fromRegionId,
+                toRegionID: arrival.toRegionId,
+                usedAt: try parseDate(arrival.arrivedAt)
+            )
+        }
     }
 
     private func cursor(for userID: UUID) -> String? {

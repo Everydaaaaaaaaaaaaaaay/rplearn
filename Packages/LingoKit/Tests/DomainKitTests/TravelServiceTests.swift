@@ -80,10 +80,13 @@ struct TravelServiceTests {
         let fixture = try await makeFixture()
         let ticket = try await fixture.itemStore.addTicket(type: .ticketUniversal, source: .story)
 
-        let stub = try await fixture.service.travel(to: melbourne, using: ticket)
-        #expect(stub.fromRegionID == "london")
-        #expect(stub.toRegionID == "melbourne")
-        #expect(stub.serialNumber.hasPrefix("LT-"))
+        let result = try await fixture.service.travel(to: melbourne, using: ticket)
+        #expect(result.unlockedNow)
+        #expect(result.fromRegionID == "london")
+        #expect(result.toRegionID == "melbourne")
+        #expect(result.ticketStub?.fromRegionID == "london")
+        #expect(result.ticketStub?.toRegionID == "melbourne")
+        #expect(result.ticketStub?.serialNumber.hasPrefix("LT-") == true)
 
         let profile = try await fixture.economyStore.profile()
         #expect(profile.currentRegionID == "melbourne")
@@ -92,7 +95,7 @@ struct TravelServiceTests {
         #expect(try await fixture.stubStore.all().count == 1)
     }
 
-    @Test("已解锁地区可自由往返且不消耗机票")
+    @Test("已解锁地区可自由往返，不消耗机票也不重复生成票根")
     func revisitUnlockedRegionsForFree() async throws {
         let fixture = try await makeFixture()
         try await fixture.economyStore.unlockRegion("melbourne")
@@ -101,13 +104,59 @@ struct TravelServiceTests {
         let outbound = try await fixture.service.travel(to: melbourne)
         let inbound = try await fixture.service.travel(to: london)
 
+        #expect(!outbound.unlockedNow)
+        #expect(outbound.ticketStub == nil)
         #expect(outbound.fromRegionID == "london")
         #expect(outbound.toRegionID == "melbourne")
+        #expect(!inbound.unlockedNow)
+        #expect(inbound.ticketStub == nil)
         #expect(inbound.fromRegionID == "melbourne")
         #expect(inbound.toRegionID == "london")
         #expect(try await fixture.economyStore.profile().currentRegionID == "london")
         #expect(try await fixture.itemStore.unconsumedTickets().count == 1)
-        #expect(try await fixture.stubStore.all().count == 2)
+        #expect(try await fixture.stubStore.all().isEmpty)
+    }
+
+    @Test("首次解锁后往返同一城市只保留一张票根")
+    func onlyFirstArrivalCreatesStub() async throws {
+        let fixture = try await makeFixture()
+        let ticket = try await fixture.itemStore.addTicket(
+            type: .ticketUniversal,
+            source: .story
+        )
+
+        let firstArrival = try await fixture.service.travel(
+            to: melbourne,
+            using: ticket
+        )
+        let returnTrip = try await fixture.service.travel(to: london)
+        let revisit = try await fixture.service.travel(to: melbourne)
+
+        #expect(firstArrival.ticketStub != nil)
+        #expect(returnTrip.ticketStub == nil)
+        #expect(revisit.ticketStub == nil)
+        #expect(try await fixture.stubStore.all().count == 1)
+    }
+
+    @Test("相同目的地的服务端首次抵达重试保持唯一")
+    func serverArrivalCacheIsUniquePerDestination() async throws {
+        let fixture = try await makeFixture()
+        let first = try await fixture.stubStore.cacheFirstServerArrival(
+            id: UUID(),
+            fromRegionID: "london",
+            toRegionID: "melbourne",
+            usedAt: Date(timeIntervalSince1970: 100)
+        )
+        let duplicate = try await fixture.stubStore.cacheFirstServerArrival(
+            id: UUID(),
+            fromRegionID: "newyork",
+            toRegionID: "melbourne",
+            usedAt: Date(timeIntervalSince1970: 200)
+        )
+
+        #expect(duplicate.id == first.id)
+        #expect(duplicate.fromRegionID == "london")
+        #expect(try await fixture.stubStore.all().count == 1)
     }
 
     @Test("旧档案离开当前城市后会补记为已去过")

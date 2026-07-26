@@ -1,7 +1,26 @@
 import Foundation
 import PersistenceKit
 
-/// 地区旅行：首次前往用机票解锁，已解锁地区可直接往返；每次旅行都会生成票根。
+public struct TravelResult: Sendable, Equatable {
+    public let fromRegionID: String
+    public let toRegionID: String
+    public let unlockedNow: Bool
+    public let ticketStub: TicketStubDTO?
+
+    public init(
+        fromRegionID: String,
+        toRegionID: String,
+        unlockedNow: Bool,
+        ticketStub: TicketStubDTO?
+    ) {
+        self.fromRegionID = fromRegionID
+        self.toRegionID = toRegionID
+        self.unlockedNow = unlockedNow
+        self.ticketStub = ticketStub
+    }
+}
+
+/// 地区旅行：首次前往用机票解锁并收藏唯一票根，已解锁地区可直接往返。
 public struct TravelService: Sendable {
     public enum TravelError: Error, Equatable {
         case ticketRequired
@@ -51,17 +70,27 @@ public struct TravelService: Sendable {
 
     /// 前往地区。首次解锁必须提供可用机票，已解锁地区无需机票。
     @discardableResult
-    public func travel(to region: Region, using ticket: ItemDTO? = nil) async throws -> TicketStubDTO {
+    public func travel(to region: Region, using ticket: ItemDTO? = nil) async throws -> TravelResult {
         if let commandGateway {
             let result = try await commandGateway.travel(
                 targetRegionID: region.id,
                 ticketID: ticket?.id
             )
-            return try await stubStore.cacheServerTravel(
-                id: result.travelID,
+            let stub: TicketStubDTO? = if result.unlockedNow {
+                try await stubStore.cacheFirstServerArrival(
+                    id: result.travelID,
+                    fromRegionID: result.fromRegionID,
+                    toRegionID: result.toRegionID,
+                    usedAt: result.traveledAt
+                )
+            } else {
+                nil
+            }
+            return TravelResult(
                 fromRegionID: result.fromRegionID,
                 toRegionID: result.toRegionID,
-                usedAt: result.traveledAt
+                unlockedNow: result.unlockedNow,
+                ticketStub: stub
             )
         }
         let profile = try await economyStore.profile()
@@ -69,7 +98,8 @@ public struct TravelService: Sendable {
             throw TravelError.alreadyThere
         }
 
-        if Self.requiresTicket(to: region, profile: profile) {
+        let unlockedNow = Self.requiresTicket(to: region, profile: profile)
+        if unlockedNow {
             guard let ticket else {
                 throw TravelError.ticketRequired
             }
@@ -89,6 +119,19 @@ public struct TravelService: Sendable {
                 p.unlockedRegionIDs.append(region.id)
             }
         }
-        return try await stubStore.addStub(fromRegionID: originRegionID, toRegionID: region.id)
+        let stub: TicketStubDTO? = if unlockedNow {
+            try await stubStore.addFirstArrival(
+                fromRegionID: originRegionID,
+                toRegionID: region.id
+            )
+        } else {
+            nil
+        }
+        return TravelResult(
+            fromRegionID: originRegionID,
+            toRegionID: region.id,
+            unlockedNow: unlockedNow,
+            ticketStub: stub
+        )
     }
 }

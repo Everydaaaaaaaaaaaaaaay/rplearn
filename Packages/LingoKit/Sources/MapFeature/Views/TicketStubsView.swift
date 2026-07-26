@@ -3,7 +3,7 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 票根夹：翻阅精致票根卡片（artSeed 决定配色）。
+/// 票根夹：每座城市只收藏一张首次抵达纪念票根。
 public struct TicketStubsView: View {
     private let stubStore: TicketStubStore
     private let regionCatalog: RegionCatalog
@@ -16,21 +16,24 @@ public struct TicketStubsView: View {
     }
 
     public var body: some View {
-        Group {
+        ZStack {
+            Color.dsBackground.ignoresSafeArea()
+
             if stubs.isEmpty && !isLoading {
                 ContentUnavailableView(
-                    "还没有票根",
+                    "还没有纪念票根",
                     systemImage: "ticket",
-                    description: Text("完成旅行后，票根会收藏在这里")
+                    description: Text("首次解锁一座城市后，它的唯一票根会收藏在这里")
                 )
             } else {
                 ScrollView {
-                    VStack(spacing: 14) {
+                    LazyVStack(spacing: DSSpacing.md) {
+                        collectionHeader
                         ForEach(stubs) { stub in
                             TicketStubCard(stub: stub, regionCatalog: regionCatalog)
                         }
                     }
-                    .padding(16)
+                    .padding(DSSpacing.md)
                 }
             }
         }
@@ -40,17 +43,82 @@ public struct TicketStubsView: View {
             isLoading = false
         }
     }
+
+    private var collectionHeader: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            HStack(spacing: DSSpacing.sm) {
+                Image(systemName: "rosette")
+                    .font(.title2.weight(.bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 46, height: 46)
+                    .background(Color.dsSunset.gradient, in: Circle())
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("首次抵达纪念")
+                        .font(.headline)
+                    Text("每座城市只签发一张")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text("\(stubs.count) / \(regionCatalog.regions.count)")
+                    .font(.system(.headline, design: .rounded, weight: .black))
+                    .monospacedDigit()
+                    .foregroundStyle(Color.dsSky)
+            }
+
+            ProgressView(
+                value: regionCatalog.regions.isEmpty
+                    ? 0
+                    : Double(stubs.count) / Double(regionCatalog.regions.count)
+            )
+            .tint(.dsSunset)
+        }
+        .dsCard()
+        .accessibilityElement(children: .combine)
+    }
 }
 
-/// 单张票根：登机牌风格，配色花纹由 artSeed 决定。
+/// 收藏级城市票根：目的地场景、首次抵达印章和唯一编号共同构成纪念物。
 struct TicketStubCard: View {
+    enum Mode {
+        case collection
+        case arrival
+
+        var height: CGFloat {
+            switch self {
+            case .collection: 236
+            case .arrival: 220
+            }
+        }
+    }
+
     let stub: TicketStubDTO
     let regionCatalog: RegionCatalog
+    var mode: Mode = .collection
 
-    private static let airportCodes = ["london": "LON", "melbourne": "MEL", "newyork": "NYC"]
+    private static let airportCodes = [
+        "london": "LON",
+        "melbourne": "MEL",
+        "newyork": "NYC",
+        "capetown": "CPT",
+        "singapore": "SIN",
+        "dublin": "DUB",
+        "edinburgh": "EDI",
+        "vancouver": "YVR",
+        "auckland": "AKL",
+        "nairobi": "NBO",
+        "reykjavik": "KEF",
+        "lisbon": "LIS",
+        "tokyo": "TYO",
+    ]
 
     private var palette: [Color] {
         DSScenePalette.ticket(stub.artSeed)
+    }
+
+    private var destination: Region? {
+        regionCatalog.region(id: stub.toRegionID)
     }
 
     private func code(_ regionID: String) -> String {
@@ -62,72 +130,113 @@ struct TicketStubCard: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            // 上联：航段
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(code(stub.fromRegionID))
-                        .font(.system(size: 30, weight: .black, design: .rounded))
-                    Text(name(stub.fromRegionID))
-                        .font(.caption2)
-                        .opacity(0.85)
-                }
-                Spacer()
-                VStack(spacing: 2) {
-                    Image(systemName: "airplane")
-                        .font(.title3)
-                    Rectangle()
-                        .frame(height: 1)
-                        .opacity(0.5)
-                }
-                .frame(maxWidth: 90)
-                Spacer()
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(code(stub.toRegionID))
-                        .font(.system(size: 30, weight: .black, design: .rounded))
-                    Text(name(stub.toRegionID))
-                        .font(.caption2)
-                        .opacity(0.85)
-                }
-            }
-            .padding(16)
+        GeometryReader { geometry in
+            ZStack {
+                LinearGradient(
+                    colors: palette,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
 
-            // 撕票线
-            HStack(spacing: 5) {
-                ForEach(0..<24, id: \.self) { _ in
-                    Rectangle()
-                        .fill(.white.opacity(0.55))
-                        .frame(height: 1.5)
-                }
-            }
-            .padding(.horizontal, 12)
+                Image("city_backdrop_\(stub.toRegionID)")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .clipped()
 
-            // 下联：序列号与日期
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("BOARDING PASS")
-                        .font(.system(size: 8, weight: .bold))
-                        .opacity(0.7)
-                    Text(stub.serialNumber)
-                        .font(.footnote.monospaced().bold())
+                LinearGradient(
+                    colors: [
+                        .black.opacity(0.08),
+                        .black.opacity(0.24),
+                        .black.opacity(0.86),
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Label("FIRST ARRIVAL", systemImage: "rosette")
+                            .font(.system(size: 9, weight: .black, design: .rounded))
+                            .tracking(1)
+                            .padding(.horizontal, 10)
+                            .frame(height: 28)
+                            .background(.ultraThinMaterial, in: Capsule())
+
+                        Spacer()
+
+                        Text(stub.serialNumber)
+                            .font(.system(size: 9, weight: .bold, design: .monospaced))
+                            .padding(.horizontal, 9)
+                            .frame(height: 28)
+                            .background(.black.opacity(0.24), in: Capsule())
+                    }
+
+                    Spacer()
+
+                    HStack(alignment: .bottom, spacing: DSSpacing.sm) {
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(destination?.flagEmoji ?? "🌍")
+                                .font(.title2)
+                            Text(destination?.nameZh ?? stub.toRegionID)
+                                .font(.system(.title, design: .rounded, weight: .black))
+                                .lineLimit(1)
+                            Text("首次抵达 · \(destination?.countryNameZh ?? "")")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.white.opacity(0.82))
+                        }
+                        Spacer()
+                        Text(code(stub.toRegionID))
+                            .font(.system(size: 42, weight: .black, design: .rounded))
+                            .minimumScaleFactor(0.8)
+                    }
+
+                    perforation
+                        .padding(.vertical, 9)
+
+                    HStack(spacing: DSSpacing.sm) {
+                        Label(
+                            "\(code(stub.fromRegionID)) → \(code(stub.toRegionID))",
+                            systemImage: "airplane"
+                        )
+                        .font(.caption.weight(.bold))
+
+                        Spacer()
+
+                        VStack(alignment: .trailing, spacing: 1) {
+                            Text("ISSUED")
+                                .font(.system(size: 7, weight: .black))
+                                .tracking(1)
+                                .foregroundStyle(.white.opacity(0.66))
+                            Text(stub.usedAt, style: .date)
+                                .font(.caption2.weight(.semibold))
+                        }
+                    }
                 }
-                Spacer()
-                Text(stub.usedAt, style: .date)
-                    .font(.caption2)
-                    .opacity(0.85)
+                .padding(DSSpacing.md)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
         }
+        .frame(height: mode.height)
         .foregroundStyle(.white)
-        .background(
-            LinearGradient(colors: palette, startPoint: .topLeading, endPoint: .bottomTrailing),
-            in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
-        )
+        .clipShape(RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
-                .stroke(.white.opacity(0.14), lineWidth: 1)
+            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+                .stroke(.white.opacity(0.55), lineWidth: 1)
         }
-        .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+        .shadow(color: .black.opacity(0.16), radius: 12, y: 5)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(
+            "\(name(stub.fromRegionID))前往\(name(stub.toRegionID))的首次抵达纪念票根，编号\(stub.serialNumber)"
+        )
+    }
+
+    private var perforation: some View {
+        HStack(spacing: 5) {
+            ForEach(0..<26, id: \.self) { _ in
+                Capsule()
+                    .fill(.white.opacity(0.52))
+                    .frame(width: 5, height: 1.5)
+            }
+        }
     }
 }
