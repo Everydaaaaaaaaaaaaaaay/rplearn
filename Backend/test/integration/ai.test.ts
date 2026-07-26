@@ -248,12 +248,26 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
 
   it("seeds every initial task to DeepSeek v4 Flash", async () => {
     const routes = await dependencies.database.sql<
-      { model: string; provider: string }[]
+      {
+        model: string;
+        provider: string;
+        thinkingMode: string | null;
+      }[]
     >`
-      select distinct model, provider
+      select
+        model,
+        provider,
+        provider_options #>> '{thinking,type}' as "thinkingMode"
       from app.ai_routes
       where enabled = true
+      group by model, provider, provider_options #>> '{thinking,type}'
     `;
-    expect(routes).toEqual([{ model: "deepseek-v4-flash", provider: "deepseek" }]);
+    expect(routes).toEqual([
+      {
+        model: "deepseek-v4-flash",
+        provider: "deepseek",
+        thinkingMode: "disabled",
+      },
+    ]);
   });
 });

@@ -39,7 +39,8 @@ fail-closed，不允许绕过风控；普通业务的全局 IP 保护可短暂 f
 
 ### DeepSeek 故障或成本异常
 
-在 `app.ai_routes` 禁用受影响 task，或把 task 指向已配置的受控提供商；客户端不能覆盖路由。检查
+通过私网管理面禁用受影响 task，或把 task 指向部署 allowlist
+中的模型；禁止直接修改 `app.ai_routes` 绕过版本历史。客户端不能覆盖路由。检查
 `ai_requests` 的稳定错误码和 token 聚合，禁止查看或记录用户 prompt。若 key
 疑似泄露，先吊销并生成新 key，再更新 Secret Manager 和滚动重启。
 

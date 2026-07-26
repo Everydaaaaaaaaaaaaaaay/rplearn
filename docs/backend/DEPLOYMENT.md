@@ -31,6 +31,7 @@ ConfigMap 和 Secret，不把值写进 manifest。
 - 仍在轮换观察期内的 JWT 历史公钥；
 - DeepSeek API key；
 - metrics 独立 bearer token；
+- 管理面启用时的一个主 operator token 和一个预置轮换 token；
 - 后台任务 payload AES-256-GCM key 与 key version；
 - 私有媒体桶名称、区域；非 workload identity 环境才注入对象存储访问凭据；
 - Apple 登录私钥与 Apple credential AES-256-GCM key；
@@ -40,6 +41,11 @@ ConfigMap 和 Secret，不把值写进 manifest。
 生产配置校验采用 fail-closed：缺少数据库、Redis、SMTP、持久 JWT、DeepSeek 或 metrics
 保护凭据时进程拒绝启动。Secret 只通过运行时环境或挂载式 Secret
 注入，禁止进入镜像层、CI 日志、崩溃报告或聊天记录。
+
+`/internal/admin` 只能放在私网 ingress、VPN 或零信任代理之后，不能配置到公共移动端
+API 域名的外部路由。轮换时先追加新 key ID/token，验证审计中的新 key ID，再移除旧 key；
+token 不进入数据库。`AI_DEEPSEEK_ALLOWED_MODELS` 是部署层安全边界，先滚动放行新模型，
+再通过管理面修改任务路由。
 
 部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
 `node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple

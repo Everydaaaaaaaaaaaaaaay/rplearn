@@ -45,6 +45,7 @@ export async function buildApp(
   });
 
   app.decorateRequest("authUserId", null);
+  app.decorateRequest("operatorKeyId", null);
 
   app.addHook("onRequest", (request, reply, done) => {
     reply.header("x-request-id", request.id);

@@ -8,6 +8,9 @@ const MUTATING_METHODS = new Set(["DELETE", "PATCH", "POST", "PUT"]);
 const SKIPPED_ROUTES = new Set(["/health/live", "/health/ready", "/internal/metrics"]);
 
 function actorKind(request: FastifyRequest, route: string): string {
+  if (request.operatorKeyId !== null) {
+    return "operator";
+  }
   if (request.authUserId !== null) {
     return "user";
   }
@@ -65,7 +68,12 @@ export function registerAuditHooks(
           ${outcome(reply.statusCode)},
           ${request.id},
           ${ipHash},
-          ${JSON.stringify({ statusCode: reply.statusCode })}::jsonb
+          ${JSON.stringify({
+            ...(request.operatorKeyId === null
+              ? {}
+              : { operatorKeyId: request.operatorKeyId }),
+            statusCode: reply.statusCode,
+          })}::jsonb
         )
       `;
     } catch (error) {

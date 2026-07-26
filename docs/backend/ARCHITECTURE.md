@@ -217,6 +217,12 @@ Apple 首期流程：
 
 开发配置中全部路由默认使用 DeepSeek 的 `deepseek-v4-flash`。配置保留切换能力，生产修改经过审计，不让客户端直接覆盖安全参数。
 
+管理面仅通过私网 `/internal/admin` 暴露，使用可并行轮换的高熵 operator key。AI 路由变更
+必须携带期望版本、独立幂等键和变更原因；事务同时更新活动配置并追加完整前后快照。
+历史版本可回滚，但仍要通过当前部署的模型 allowlist 和 provider-options 严格 schema。
+provider options 永远不能覆盖服务端生成的 messages、model、token 上限、stream 或
+匿名化 `user_id`。
+
 ### 安全与隐私
 
 - DeepSeek API 密钥只来自运行时 Secret；

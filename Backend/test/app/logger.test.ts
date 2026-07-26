@@ -15,6 +15,13 @@ describe("logger redaction", () => {
     logger.info(
       {
         apiKey: "api-key-value",
+        adminApiKeys: [
+          {
+            keyId: "primary",
+            token: "admin-api-token-value",
+          },
+        ],
+        appleBillingPrivateKeyBase64: "apple-billing-private-key-value",
         authTokenHashPepper: "pepper-value",
         authorizationCode: "authorization-code-value",
         password: "password-value",
@@ -34,6 +41,8 @@ describe("logger redaction", () => {
 
     const output = lines.join("");
     expect(output).not.toContain("api-key-value");
+    expect(output).not.toContain("admin-api-token-value");
+    expect(output).not.toContain("apple-billing-private-key-value");
     expect(output).not.toContain("authorization-code-value");
     expect(output).not.toContain("identity-token-value");
     expect(output).not.toContain("pepper-value");

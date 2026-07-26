@@ -95,6 +95,11 @@ AI 请求统一经 `/v1/ai/completions` 或 `/v1/ai/stream`
 转发。任务路由从数据库热读取，默认模型全部为
 `deepseek-v4-flash`；客户端不能指定 provider、模型或提高服务端上限。系统按 entitlement 执行持久日配额、按用户执行 Redis 分钟限流，并只记录 task、模型、token 用量、延迟和稳定错误码，不保存 prompt 或模型回复。
 
+启用 `ADMIN_API_ENABLED` 后，私网 `/internal/admin/ai/routes` 提供受轮换 operator
+key 保护的 AI 路由读取、乐观锁更新、历史查询和回滚。每次变更需要 UUID 幂等键与原因，完整前后配置写入不可变 revision，operator
+key ID 写入审计；运行时只接受 `AI_DEEPSEEK_ALLOWED_MODELS` 中的模型和严格白名单 provider
+options。operator token 本身不写数据库或日志。
+
 `/internal/metrics` 输出低基数 Prometheus 指标；生产环境必须用独立 bearer
 token 保护。所有 HTTP 写操作会追加不含请求载荷的审计事件，IP 只保存 HMAC 摘要。部署环境应每天执行
 `pnpm maintenance:cleanup`，按配置的保留期清理审计记录、AI 用量明细和已终结任务。

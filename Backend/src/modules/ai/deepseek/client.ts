@@ -89,6 +89,7 @@ function protocolError(cause?: unknown): AppError {
 
 function requestBody(request: AiProviderRequest, stream: boolean): unknown {
   return {
+    ...request.route.providerOptions,
     max_tokens: request.maxOutputTokens,
     messages: request.messages,
     model: request.route.model,
@@ -100,8 +101,7 @@ function requestBody(request: AiProviderRequest, stream: boolean): unknown {
     ...(request.route.temperature === null
       ? {}
       : { temperature: request.route.temperature }),
-    user: request.userReference,
-    ...request.route.providerOptions,
+    user_id: request.userReference,
   };
 }
 

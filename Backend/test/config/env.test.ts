@@ -29,6 +29,30 @@ describe("loadConfig", () => {
     expect(config.trustProxy).toBe(true);
   });
 
+  it("requires long, identified operator keys for the admin API", () => {
+    expect(() =>
+      loadConfig({
+        ADMIN_API_ENABLED: "true",
+        ADMIN_API_KEYS: "operator=short",
+      }),
+    ).toThrow(ConfigurationError);
+
+    const config = loadConfig({
+      ADMIN_API_ENABLED: "true",
+      ADMIN_API_KEYS:
+        "primary=primary-operator-token-with-at-least-32-characters,rotation=rotation-operator-token-with-at-least-32-characters",
+      AI_DEEPSEEK_ALLOWED_MODELS: "deepseek-v4-flash,deepseek-v4-pro",
+    });
+    expect(config.adminApiKeys.map((key) => key.keyId)).toEqual([
+      "primary",
+      "rotation",
+    ]);
+    expect(config.aiDeepSeekAllowedModels).toEqual([
+      "deepseek-v4-flash",
+      "deepseek-v4-pro",
+    ]);
+  });
+
   it("rejects wildcard CORS in production", () => {
     expect(() =>
       loadConfig({

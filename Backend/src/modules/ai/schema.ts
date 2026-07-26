@@ -10,6 +10,7 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
@@ -95,6 +96,41 @@ export const aiDailyUsage = applicationSchema.table(
     check("ai_daily_usage_input_nonnegative", sql`${table.inputTokens} >= 0`),
     check("ai_daily_usage_output_nonnegative", sql`${table.outputTokens} >= 0`),
     check("ai_daily_usage_quota_positive", sql`${table.quotaLimit} >= 1`),
+  ],
+);
+
+export const aiRouteRevisions = applicationSchema.table(
+  "ai_route_revisions",
+  {
+    changedAt: timestamp("changed_at", {
+      mode: "date",
+      withTimezone: true,
+    })
+      .defaultNow()
+      .notNull(),
+    changeReason: text("change_reason").notNull(),
+    commandId: uuid("command_id").notNull(),
+    configVersion: integer("config_version").notNull(),
+    id: uuid("id").primaryKey(),
+    newConfig: jsonb("new_config").notNull(),
+    operatorKeyId: text("operator_key_id").notNull(),
+    previousConfig: jsonb("previous_config").notNull(),
+    requestHash: text("request_hash").notNull(),
+    task: text("task")
+      .notNull()
+      .references(() => aiRoutes.task, { onDelete: "restrict" }),
+  },
+  (table) => [
+    check(
+      "ai_route_revisions_config_version_positive",
+      sql`${table.configVersion} >= 1`,
+    ),
+    uniqueIndex("ai_route_revisions_command_unique").on(table.commandId),
+    uniqueIndex("ai_route_revisions_task_version_unique").on(
+      table.task,
+      table.configVersion,
+    ),
+    index("ai_route_revisions_task_time_index").on(table.task, table.changedAt),
   ],
 );
 

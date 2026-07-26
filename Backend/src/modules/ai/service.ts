@@ -5,6 +5,7 @@ import type { RedisResource } from "../../infrastructure/redis/client.js";
 import { AppError } from "../../shared/errors.js";
 import type { BillingService } from "../billing/service.js";
 import type { DeepSeekClient } from "./deepseek/client.js";
+import { validateRuntimeRoute } from "./config.js";
 import { AiRepository } from "./repository.js";
 import type {
   AiCompletion,
@@ -134,7 +135,10 @@ export function createAiService(
       startedAt: number;
     }>
   > => {
-    const route = await repository.route(input.task);
+    const route = validateRuntimeRoute(
+      await repository.route(input.task),
+      config.aiDeepSeekAllowedModels,
+    );
     if (route.provider !== "deepseek" || !deepSeek.configured) {
       throw new AppError({
         code: "AI_PROVIDER_NOT_CONFIGURED",

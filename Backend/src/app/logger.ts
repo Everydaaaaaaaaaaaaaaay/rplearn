@@ -4,8 +4,11 @@ const REDACTED = "[REDACTED]";
 
 export const SENSITIVE_LOG_PATHS = [
   "accessToken",
+  "adminApiKeys",
+  "adminApiKeys[*].token",
   "apiKey",
   "appleCredentialEncryptionKeyBase64",
+  "appleBillingPrivateKeyBase64",
   "applePrivateKeyBase64",
   "authorizationCode",
   "authorization",

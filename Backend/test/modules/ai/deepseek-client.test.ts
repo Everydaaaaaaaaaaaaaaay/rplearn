@@ -61,7 +61,20 @@ describe("DeepSeek client", () => {
     );
     const client = createDeepSeekClient(config(), fetchMock);
 
-    await expect(client.complete(request())).resolves.toEqual({
+    const protectedRequest = {
+      ...request(),
+      route: {
+        ...route,
+        providerOptions: {
+          max_tokens: 999_999,
+          messages: [],
+          model: "injected-model",
+          stream: true,
+          user_id: "injected-user",
+        },
+      },
+    };
+    await expect(client.complete(protectedRequest)).resolves.toEqual({
       content: '{"answer":"B"}',
       model: "deepseek-v4-flash",
       providerRequestId: "provider-request-1",
@@ -84,7 +97,7 @@ describe("DeepSeek client", () => {
       model: "deepseek-v4-flash",
       response_format: { type: "json_object" },
       stream: false,
-      user: "pseudonymous-user",
+      user_id: "pseudonymous-user",
     });
     expect(new Headers(options.headers).get("authorization")).toBe(
       "Bearer test-only-key",

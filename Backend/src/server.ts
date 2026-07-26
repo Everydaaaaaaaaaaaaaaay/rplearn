@@ -7,6 +7,9 @@ import { createAuthService } from "./modules/auth/service.js";
 import { createDeepSeekClient } from "./modules/ai/deepseek/client.js";
 import { registerAiRoutes } from "./modules/ai/routes.js";
 import { createAiService } from "./modules/ai/service.js";
+import { registerAiAdminRoutes } from "./modules/ai/admin-routes.js";
+import { createAiConfigService } from "./modules/ai/config-service.js";
+import { createAdminAuthenticator } from "./modules/admin/http.js";
 import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
 import { createAppleAuthService } from "./modules/auth/apple/service.js";
 import { createAppleBillingVerifier } from "./modules/billing/apple/verifier.js";
@@ -102,6 +105,13 @@ async function main(): Promise<void> {
     createDeepSeekClient(config),
   );
   registerAiRoutes(app, authService, aiService);
+  if (config.adminApiEnabled) {
+    registerAiAdminRoutes(
+      app,
+      createAdminAuthenticator(config.adminApiKeys),
+      createAiConfigService(config, dependencies.database),
+    );
+  }
   const domainService = createDomainService(dependencies.database);
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",

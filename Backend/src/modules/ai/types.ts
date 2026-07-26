@@ -19,6 +19,34 @@ export type AiRouteConfig = Readonly<{
   timeoutMs: number;
 }>;
 
+export type AiRouteSettings = Readonly<{
+  allowJsonResponse: boolean;
+  enabled: boolean;
+  maxInputCharacters: number;
+  maxMessages: number;
+  maxOutputTokens: number;
+  model: string;
+  provider: "deepseek" | "openai" | "anthropic" | "google";
+  providerOptions: Readonly<Record<string, unknown>>;
+  temperature: number | null;
+  timeoutMs: number;
+}>;
+
+export type AiManagedRoute = AiRouteSettings &
+  Readonly<{
+    configVersion: number;
+    task: string;
+    updatedAt: string;
+  }>;
+
+export type AiRouteRevision = Readonly<{
+  changedAt: string;
+  changeReason: string;
+  configVersion: number;
+  operatorKeyId: string;
+  settings: AiRouteSettings;
+}>;
+
 export type AiUsage = Readonly<{
   inputTokens: number;
   outputTokens: number;

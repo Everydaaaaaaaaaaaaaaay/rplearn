@@ -18,6 +18,8 @@ const optionalPositiveInteger = z.preprocess(
 );
 
 const rawEnvironmentSchema = z.object({
+  ADMIN_API_ENABLED: booleanFromString.default(false),
+  ADMIN_API_KEYS: z.string().default(""),
   APPLE_AUTH_ENABLED: booleanFromString.default(false),
   APPLE_BILLING_APP_APPLE_ID: optionalPositiveInteger,
   APPLE_BILLING_BUNDLE_ID: z.string().trim().min(3).default("com.tiantian.lingotrip"),
@@ -63,6 +65,7 @@ const rawEnvironmentSchema = z.object({
   APPLE_TEAM_ID: optionalSecret,
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
   AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
+  AI_DEEPSEEK_ALLOWED_MODELS: z.string().default("deepseek-v4-flash"),
   AI_USAGE_RETENTION_DAYS: z.coerce.number().int().min(30).max(730).default(90),
   AI_USER_MINUTE_LIMIT: z.coerce.number().int().min(1).max(300).default(30),
   ACCOUNT_DELETION_GRACE_DAYS: z.coerce.number().int().min(1).max(30).default(7),
@@ -180,9 +183,12 @@ const rawEnvironmentSchema = z.object({
 });
 
 export type RuntimeConfig = Readonly<{
+  adminApiEnabled: boolean;
+  adminApiKeys: readonly Readonly<{ keyId: string; token: string }>[];
   accountDeletionGraceDays: number;
   accountDeletionReceiptRetentionDays: number;
   aiRetryMaxAttempts: number;
+  aiDeepSeekAllowedModels: readonly string[];
   aiUsageRetentionDays: number;
   aiUserMinuteLimit: number;
   auditRetentionDays: number;
@@ -352,6 +358,34 @@ function parsePreviousJwtKeys(
     });
 }
 
+function parseAdminApiKeys(
+  raw: string,
+): readonly Readonly<{ keyId: string; token: string }>[] {
+  const entries = raw
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter((entry) => entry.length > 0)
+    .map((entry) => {
+      const separator = entry.indexOf("=");
+      const keyId = entry.slice(0, separator);
+      const token = entry.slice(separator + 1);
+      if (
+        separator <= 0 ||
+        !/^[a-zA-Z0-9._-]{1,64}$/.test(keyId) ||
+        token.length < 32
+      ) {
+        throw new ConfigurationError([
+          "ADMIN_API_KEYS entries must use key-id=token with a token of at least 32 characters",
+        ]);
+      }
+      return { keyId, token };
+    });
+  if (new Set(entries.map((entry) => entry.keyId)).size !== entries.length) {
+    throw new ConfigurationError(["ADMIN_API_KEYS key IDs must be unique"]);
+  }
+  return entries;
+}
+
 export function loadConfig(
   environment: NodeJS.ProcessEnv = process.env,
 ): RuntimeConfig {
@@ -376,10 +410,25 @@ export function loadConfig(
   const authJwtPreviousPublicKeys = parsePreviousJwtKeys(
     result.data.AUTH_JWT_PREVIOUS_PUBLIC_KEYS,
   );
+  const adminApiKeys = parseAdminApiKeys(result.data.ADMIN_API_KEYS);
+  const aiDeepSeekAllowedModels = parseOrigins(result.data.AI_DEEPSEEK_ALLOWED_MODELS);
   const issues: string[] = [];
 
   if (corsAllowedOrigins.length === 0) {
     issues.push("CORS_ALLOWED_ORIGINS must contain at least one origin");
+  }
+
+  if (result.data.ADMIN_API_ENABLED && adminApiKeys.length === 0) {
+    issues.push("ADMIN_API_KEYS is required when the admin API is enabled");
+  }
+
+  if (
+    aiDeepSeekAllowedModels.length === 0 ||
+    aiDeepSeekAllowedModels.some(
+      (model) => !/^[a-zA-Z0-9][a-zA-Z0-9._-]{1,127}$/.test(model),
+    )
+  ) {
+    issues.push("AI_DEEPSEEK_ALLOWED_MODELS must contain valid model identifiers");
   }
 
   if (
@@ -584,10 +633,13 @@ export function loadConfig(
   }
 
   return {
+    adminApiEnabled: result.data.ADMIN_API_ENABLED,
+    adminApiKeys,
     accountDeletionGraceDays: result.data.ACCOUNT_DELETION_GRACE_DAYS,
     accountDeletionReceiptRetentionDays:
       result.data.ACCOUNT_DELETION_RECEIPT_RETENTION_DAYS,
     aiRetryMaxAttempts: result.data.AI_RETRY_MAX_ATTEMPTS,
+    aiDeepSeekAllowedModels,
     aiUsageRetentionDays: result.data.AI_USAGE_RETENTION_DAYS,
     aiUserMinuteLimit: result.data.AI_USER_MINUTE_LIMIT,
     auditRetentionDays: result.data.AUDIT_RETENTION_DAYS,
