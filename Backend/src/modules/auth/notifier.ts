@@ -6,13 +6,18 @@ export type AuthNotifier = Readonly<{
   sendPasswordReset: (email: string, token: string) => Promise<void>;
 }>;
 
+export type SmtpAuthNotifier = AuthNotifier &
+  Readonly<{
+    verify: () => Promise<void>;
+  }>;
+
 function buildActionUrl(baseUrl: string, action: string, token: string): string {
   const url = new URL(`${baseUrl.replace(/\/$/, "")}/${action}`);
   url.searchParams.set("token", token);
   return url.toString();
 }
 
-export function createSmtpAuthNotifier(config: RuntimeConfig): AuthNotifier {
+export function createSmtpAuthNotifier(config: RuntimeConfig): SmtpAuthNotifier {
   const auth =
     config.smtpUser === undefined || config.smtpPassword === undefined
       ? undefined
@@ -45,6 +50,9 @@ export function createSmtpAuthNotifier(config: RuntimeConfig): AuthNotifier {
         text: `Open this link to reset your LingoTrip password:\n\n${url}\n\nIf you did not request this, you can ignore this message.`,
         to: email,
       });
+    },
+    verify: async () => {
+      await transporter.verify();
     },
   };
 }

@@ -39,6 +39,33 @@ function config() {
 }
 
 describe("DeepSeek client", () => {
+  it("verifies provider access and returns the deployment model catalog", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+      Response.json({
+        data: [
+          { id: "deepseek-v4-flash", object: "model" },
+          { id: "deepseek-v4-pro", object: "model" },
+        ],
+        object: "list",
+      }),
+    );
+    const client = createDeepSeekClient(config(), fetchMock);
+
+    await expect(client.availableModels()).resolves.toEqual([
+      "deepseek-v4-flash",
+      "deepseek-v4-pro",
+    ]);
+    expect(fetchMock).toHaveBeenCalledWith(
+      new URL("https://api.deepseek.com/models"),
+      expect.objectContaining({
+        headers: {
+          authorization: "Bearer test-only-key",
+        },
+        method: "GET",
+      }),
+    );
+  });
+
   it("sends the configured model and normalizes a completion", async () => {
     const fetchMock = vi.fn<typeof fetch>();
     fetchMock.mockResolvedValue(

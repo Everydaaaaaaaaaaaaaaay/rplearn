@@ -23,6 +23,7 @@
     "infra:up": "docker compose up -d --wait",
     "lint": "eslint .",
     "maintenance:cleanup": "tsx src/cli/cleanup-operational-data.ts",
+    "production:check": "tsx src/cli/check-production-readiness.ts",
     "start": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/server.js",
     "start:worker": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/worker.js",
     "test": "vitest run",

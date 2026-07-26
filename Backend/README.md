@@ -28,11 +28,15 @@ pnpm worker
 pnpm check
 pnpm build
 pnpm test:integration
+pnpm production:check
 ```
 
 `test:integration` 需要先运行 `pnpm infra:up`。PostgreSQL 映射到本机
 `54329`，Redis 映射到 `63799`，避免占用常见的默认端口。开发邮件进入 Mailpit，可在
 `http://127.0.0.1:8025` 查看；私有媒体存入 MinIO，管理台位于 `http://127.0.0.1:9001`。
+
+`production:check` 只接受完整的 `NODE_ENV=production`
+配置，执行发布前的只读依赖、权限、模型目录和 Apple 商业服务检查，并以单行 JSON 和进程退出码供部署系统判定。
 
 开发服务默认监听 `http://127.0.0.1:8080`：
 

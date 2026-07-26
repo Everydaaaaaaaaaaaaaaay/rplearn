@@ -6,6 +6,7 @@ import {
   type RuntimeDependencies,
 } from "../../src/infrastructure/runtime-dependencies.js";
 import { createDatabaseMetricsSource } from "../../src/modules/observability/database-metrics.js";
+import { assertRuntimeDatabaseRole } from "../../src/modules/operations/production-readiness.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
 
@@ -39,6 +40,14 @@ describe.runIf(runIntegrationTests)("runtime infrastructure", () => {
 
     await expect(dependencies.redis.takeOneTime(key)).resolves.toBe("value");
     await expect(dependencies.redis.takeOneTime(key)).resolves.toBeNull();
+  });
+
+  it("detects the deliberately elevated local database role", async () => {
+    await expect(
+      assertRuntimeDatabaseRole(dependencies.database),
+    ).rejects.toMatchObject({
+      code: "DATABASE_ROLE_OVER_PRIVILEGED",
+    });
   });
 
   it("collects bounded operational state from persisted facts", async () => {

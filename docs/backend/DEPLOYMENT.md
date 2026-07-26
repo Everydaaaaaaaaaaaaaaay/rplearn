@@ -17,9 +17,12 @@ ConfigMap 和 Secret，不把值写进 manifest。
 2. 为镜像生成 SBOM，并由镜像扫描器阻止 critical/high 且无豁免的漏洞。
 3. 确认最近一次 PostgreSQL 基础备份和 WAL/PITR 流连续可用。
 4. 使用与 API 完全相同 digest 的一次性 Job 执行 `node dist/cli/migrate.js`。
-5. 等迁移 Job 成功，再滚动更新 API 与 worker；readiness 失败的 API Pod 不接收流量。
-6. 验证 live、ready、metrics、注册/刷新、同步、计费沙盒通知与 AI canary。
-7. 观察错误率、P95/P99、数据库连接、Redis 错误和 AI 上游错误至少一个正常业务峰值窗口。
+5. 使用待发布 Secret 运行 `node dist/cli/check-production-readiness.js`。只有 JSON
+   报告的 `passed=true` 才能继续；报告不含连接地址、角色名、模型目录或底层异常。
+6. 等迁移和生产检查成功，再滚动更新 API 与 worker；readiness 失败的 API Pod
+   不接收流量。
+7. 验证 live、ready、metrics、注册/刷新、同步、计费沙盒通知与 AI canary。
+8. 观察错误率、P95/P99、数据库连接、Redis 错误和 AI 上游错误至少一个正常业务峰值窗口。
 
 迁移只允许向前追加，并在至少一个发布窗口内保持旧应用版本可读。破坏性列删除、重命名和
 `NOT NULL` 收紧必须按 expand → backfill → contract 跨多个版本完成。
@@ -58,6 +61,18 @@ Collector 鉴权放入 Secret `OTEL_EXPORTER_OTLP_HEADERS`。先在预发布确�
 `node dist/cli/migrate.js` 后立即销毁；API、Worker 和其它 CronJob 只注入低权限
 `DATABASE_URL`，不能获得迁移 Secret。开发/CI 未设置迁移 URL 时命令才兼容回退到
 `DATABASE_URL`。
+
+运行时数据库角色必须能登录、使用 `app` schema，并对全部 `app` 表拥有
+`SELECT/INSERT/UPDATE/DELETE`；它不能是 superuser，不能创建 role/database、复制或绕过
+RLS，也不能对当前 database 或 `app` schema 执行 `CREATE`。另需单独授予对
+`drizzle.__drizzle_migrations` 的 `SELECT`，用于版本就绪检查。迁移角色独占 DDL，
+不能注入 API 或 worker。
+
+生产检查是只读发布门禁：验证迁移版本、运行时数据库权限、Redis、私有桶、SMTP 握手、
+DeepSeek `/models` 中的 allowlist、Apple Billing 密钥/证书，以及启用 Apple 登录时的
+签名密钥。它不发送邮件、不创建对象、不发起模型推理、不访问用户数据。检查超时由
+`READINESS_TIMEOUT_MS` 控制；失败只输出稳定错误码，详细连接错误应从受控平台日志和
+供应商控制台排查。
 
 部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
 `node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple

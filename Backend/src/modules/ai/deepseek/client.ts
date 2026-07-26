@@ -47,6 +47,13 @@ const streamChunkSchema = z.object({
   model: z.string().optional(),
   usage: usageSchema.nullish(),
 });
+const modelListSchema = z.object({
+  data: z.array(
+    z.object({
+      id: z.string().min(1),
+    }),
+  ),
+});
 
 function mapUsage(usage: z.infer<typeof usageSchema>): AiUsage {
   return {
@@ -140,21 +147,29 @@ export type DeepSeekClient = Readonly<{
   stream: (request: AiProviderRequest) => Promise<AsyncIterable<AiProviderStreamEvent>>;
 }>;
 
+export type DeepSeekOperationalClient = DeepSeekClient &
+  Readonly<{
+    availableModels: () => Promise<readonly string[]>;
+  }>;
+
 export function createDeepSeekClient(
   config: RuntimeConfig,
   fetchImplementation: typeof fetch = fetch,
-): DeepSeekClient {
-  const endpoint = new URL(
+): DeepSeekOperationalClient {
+  const completionsEndpoint = new URL(
     "chat/completions",
     config.deepSeekBaseUrl.endsWith("/")
       ? config.deepSeekBaseUrl
       : `${config.deepSeekBaseUrl}/`,
   );
+  const modelsEndpoint = new URL(
+    "models",
+    config.deepSeekBaseUrl.endsWith("/")
+      ? config.deepSeekBaseUrl
+      : `${config.deepSeekBaseUrl}/`,
+  );
 
-  const execute = async (
-    request: AiProviderRequest,
-    stream: boolean,
-  ): Promise<Response> => {
+  const authorization = (): string => {
     if (config.deepSeekApiKey === undefined) {
       throw new AppError({
         code: "AI_PROVIDER_NOT_CONFIGURED",
@@ -162,7 +177,13 @@ export function createDeepSeekClient(
         statusCode: 503,
       });
     }
+    return `Bearer ${config.deepSeekApiKey}`;
+  };
 
+  const execute = async (
+    request: AiProviderRequest,
+    stream: boolean,
+  ): Promise<Response> => {
     let lastError: unknown;
     for (let attempt = 1; attempt <= config.aiRetryMaxAttempts; attempt += 1) {
       const timeoutSignal = AbortSignal.timeout(request.route.timeoutMs);
@@ -171,10 +192,10 @@ export function createDeepSeekClient(
           ? timeoutSignal
           : AbortSignal.any([request.signal, timeoutSignal]);
       try {
-        const response = await fetchImplementation(endpoint, {
+        const response = await fetchImplementation(completionsEndpoint, {
           body: JSON.stringify(requestBody(request, stream)),
           headers: {
-            authorization: `Bearer ${config.deepSeekApiKey}`,
+            authorization: authorization(),
             "content-type": "application/json",
           },
           method: "POST",
@@ -231,6 +252,35 @@ export function createDeepSeekClient(
   };
 
   return {
+    availableModels: async () => {
+      const authorizationHeader = authorization();
+      let response: Response;
+      try {
+        response = await fetchImplementation(modelsEndpoint, {
+          headers: {
+            authorization: authorizationHeader,
+          },
+          method: "GET",
+          signal: AbortSignal.timeout(Math.min(config.requestTimeoutMs, 10_000)),
+        });
+      } catch {
+        throw upstreamError(502);
+      }
+      if (!response.ok) {
+        throw upstreamError(response.status);
+      }
+      let decoded: unknown;
+      try {
+        decoded = await response.json();
+      } catch (error) {
+        throw protocolError(error);
+      }
+      const result = modelListSchema.safeParse(decoded);
+      if (!result.success) {
+        throw protocolError(result.error);
+      }
+      return result.data.data.map((model) => model.id);
+    },
     complete: async (request) => {
       const response = await execute(request, false);
       let decoded: unknown;
