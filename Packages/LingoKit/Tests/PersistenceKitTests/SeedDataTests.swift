@@ -56,7 +56,7 @@ struct SeedDataTests {
         )
     }
 
-    @Test("首页：每座城市都有背景、主线与活动美术")
+    @Test("城市：每座城市都有背景、主线与活动美术")
     func homeArtworkCoverage() throws {
         let regionsURL = try #require(
             Bundle.main.url(forResource: "regions", withExtension: "json")

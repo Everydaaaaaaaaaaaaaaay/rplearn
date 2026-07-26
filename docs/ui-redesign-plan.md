@@ -113,7 +113,7 @@ ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= �
 
 ### 地图页（MapView 重写为 MapKit）
 数据前置：`Region` 包含 `latitude/longitude` 与 `mainline/side` 角色；`regions.json` 配置 5 座主线城市、8 座支线城市。坐标转换放 MapFeature，DomainKit 保持纯 Foundation。
-`Map(position:interactionModes:)` 只开放 `.pan/.zoom`，配合 `.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll, showsTraffic: false)`；初始镜头同时容纳当前城市与剧情引导目的地，heading/pitch 均为 0。隐藏正式地图应用才需要的指南针、比例尺、用户定位、俯仰和旋转；**CityPinView 三态**为紧凑国旗标记（当前/已解锁/未解锁），选中后在标记下方原位显示“前往 / 使用机票 / 购买机票 / 已在这里”。底部 `JourneyGuideView` 不展示当前选中城市，而按 `MainlineCatalog` 显示下一座必经城市、双目的地、多个横滑目的地、继续主线或完成回退态。机票只用于首次解锁未到访城市；首次抵达为该目的地签发唯一纪念票根，已解锁城市直接往返且不消耗机票、不重复生成票根。票根夹保留在顶部。
+`Map(position:interactionModes:)` 只开放 `.pan/.zoom`，配合 `.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll, showsTraffic: false)`；初始镜头同时容纳当前城市与剧情引导目的地，heading/pitch 均为 0。隐藏正式地图应用才需要的指南针、比例尺、用户定位、俯仰和旋转；**CityPinView 三态**使用 `city_backdrop_<regionID>` 城市美术圆形缩略图，左下保留国旗、右下叠加当前位置/已解锁/未解锁徽章，锁定态降低饱和度但仍可识别城市；选中后在标记下方原位显示“前往 / 使用机票 / 购买机票 / 已在这里”。底部 `JourneyGuideView` 不展示当前选中城市，而按 `MainlineCatalog` 显示下一座必经城市、双目的地、多个横滑目的地、继续主线或完成回退态。机票只用于首次解锁未到访城市；首次抵达为该目的地签发唯一纪念票根，已解锁城市直接往返且不消耗机票、不重复生成票根。票根夹保留在顶部。
 **`FlightTransitionOverlay`**（新）：TravelSheet 成功分支不再 alert，改 fullScreenCover 动画序列：起飞（蓝底渐变+出发/抵达城市）→ 航线（白虚线弧线+✈️ 沿弧飞行+云层反向流动）→ 降落。首次解锁走隆重的“城市收藏 +1”分支，展示带目的地场景、唯一编号与日期的完整纪念票根并触发庆祝粒子；自由往返走克制的“欢迎回来”分支并明确不产生新票根。ReduceMotion 直接交叉淡入结果态；失败分支维持 alert。
 
 ### 消息页（ConversationListView 重做，QQ 式）

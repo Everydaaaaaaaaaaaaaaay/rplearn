@@ -1,6 +1,7 @@
 import DesignSystem
 import DomainKit
 import SwiftUI
+import UIKit
 
 struct CityPinAnnotationView: View {
     static let mapAnchor = UnitPoint(x: 0.5, y: 0.69)
@@ -142,37 +143,98 @@ struct CityPinView: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            ZStack(alignment: .bottomTrailing) {
-                Circle()
-                    .fill(Color.dsSurface)
-                Text(region.flagEmoji)
-                    .font(.system(size: 24))
-                Image(systemName: stateIcon)
-                    .font(.system(size: 8, weight: .bold))
-                    .foregroundStyle(.white)
-                    .frame(width: 17, height: 17)
-                    .background(stateTint, in: Circle())
-                    .overlay(Circle().stroke(Color.dsSurface, lineWidth: 2))
+            ZStack {
+                cityThumbnail
+
+                VStack {
+                    Spacer()
+                    HStack(alignment: .bottom) {
+                        Text(region.flagEmoji)
+                            .font(.system(size: 10))
+                            .frame(width: 18, height: 18)
+                            .background(Color.dsSurface.opacity(0.96), in: Circle())
+                            .overlay(Circle().stroke(.white.opacity(0.88), lineWidth: 1))
+                            .shadow(color: .black.opacity(0.13), radius: 2, y: 1)
+                        Spacer()
+                        stateBadge
+                    }
+                    .offset(y: 2)
+                }
             }
             .frame(width: 48, height: 48)
             .overlay {
                 Circle()
-                    .stroke(isSelected ? Color.dsSky : Color.dsBorder, lineWidth: isSelected ? 3 : 1)
+                    .stroke(
+                        ringColor,
+                        lineWidth: isSelected ? 3 : (state == .current ? 2 : 1)
+                    )
             }
-            .shadow(color: .black.opacity(isSelected ? 0.18 : 0.1), radius: isSelected ? 7 : 4, y: 2)
+            .shadow(
+                color: .black.opacity(isSelected ? 0.2 : 0.12),
+                radius: isSelected ? 7 : 4,
+                y: 2
+            )
 
             Text(region.nameZh)
                 .font(.caption2.weight(.bold))
                 .foregroundStyle(.primary)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color.dsSurface, in: Capsule())
-                .overlay(Capsule().stroke(Color.dsBorder, lineWidth: 1))
+                .background(Color.dsSurface.opacity(0.96), in: Capsule())
+                .overlay(Capsule().stroke(ringColor.opacity(isSelected ? 0.7 : 0.28), lineWidth: 1))
         }
-        .opacity(state == .locked ? 0.78 : 1)
+        .opacity(state == .locked ? 0.88 : 1)
         .scaleEffect(isSelected ? 1.08 : 1)
         .animation(DSAnimation.gentle, value: isSelected)
         .contentShape(Rectangle())
+    }
+
+    @ViewBuilder
+    private var cityThumbnail: some View {
+        if UIImage(named: "city_backdrop_\(region.id)") != nil {
+            Image("city_backdrop_\(region.id)")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 48, height: 48)
+                .clipShape(Circle())
+                .saturation(state == .locked ? 0.3 : 1)
+                .brightness(state == .locked ? -0.08 : 0)
+                .overlay {
+                    Circle()
+                        .fill(.black.opacity(state == .locked ? 0.14 : 0))
+                }
+        } else {
+            ZStack {
+                DSScenePalette.city(region.id).accent.opacity(0.2)
+                Text(region.flagEmoji)
+                    .font(.system(size: 22))
+            }
+            .clipShape(Circle())
+        }
+    }
+
+    private var stateBadge: some View {
+        Image(systemName: stateIcon)
+            .font(.system(size: 8, weight: .bold))
+            .foregroundStyle(.white)
+            .frame(width: 17, height: 17)
+            .background(stateTint, in: Circle())
+            .overlay(Circle().stroke(Color.dsSurface, lineWidth: 2))
+            .shadow(color: .black.opacity(0.12), radius: 2, y: 1)
+    }
+
+    private var ringColor: Color {
+        if isSelected {
+            return .dsSky
+        }
+        switch state {
+        case .current:
+            return .dsSuccess
+        case .unlocked:
+            return .white.opacity(0.92)
+        case .locked:
+            return Color.dsBorder
+        }
     }
 
     private var stateTint: Color {

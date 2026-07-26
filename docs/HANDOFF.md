@@ -88,7 +88,7 @@ App（组合根 AppEnvironment / RootView）
 - 视觉唯一事实源在 `DesignSystem/Tokens`：`DSColor`、`DSLayout`、`DSAnimation`、`DSScenePalette`；页面不要新增硬编码品牌色与混用圆角。透明材质统一用 `.dsMaterial(_:in:)`，开启“降低透明度”时会自动降级为不透明 surface。
 - 首页 13 座城市均已接入 `city_backdrop_<regionID>` 正式生成式背景；`CityBackdropView` 在未知城市或素材缺失时仍以多层城市剪影和云动画兜底。`HomeStatusBar` 不使用整块卡片，直接在场景上呈现当前城市，并以游戏 HUD 资源槽展示真实英语等级与金币；其下保留自适应景观窗口，深色模式会压低素材亮度与饱和度。
 - 首页两个核心入口按城市加载 `home_mainline_<regionID>` 与 `home_activity_<regionID>` 横幅美术；13 城共 26 张正式素材，并由种子数据测试校验完整覆盖。左侧只使用单一品牌实色与短透明度过渡；`ExploreCard` 仍保留 SF Symbol 作为未知城市的容错兜底。
-- 地图只承担目的地选择：MapKit 使用平面、弱化、无兴趣点样式，只开放系统平移与缩放手势，不提供俯仰、旋转、指南针、比例尺或用户定位。进入页面时同时容纳当前城市与下一站；选中三态标记后在标记下方原位显示前往/购票操作，底部单卡/双卡/多卡只承担旅程引导，当前城市不再重复显示为底部卡。
+- 地图只承担目的地选择：MapKit 使用平面、弱化、无兴趣点样式，只开放系统平移与缩放手势，不提供俯仰、旋转、指南针、比例尺或用户定位。城市标记复用 `city_backdrop_<regionID>` 美术缩略图，并以国旗、状态徽章、选中描边区分城市与解锁状态；选中后在标记下方原位显示前往/购票操作。进入页面时同时容纳当前城市与下一站，底部单卡/双卡/多卡只承担旅程引导，当前城市不再重复显示为底部卡。
 - `AccentColor.colorset` 与 `Color.dsSky` 手工保持一致；根视图统一 `.fontDesign(.rounded)` 与 `.tint(.dsSky)`。
 - 会话已读/置顶用 UserDefaults 轻量状态，不改 SwiftData schema；聊天页进入即标记已读。
 
