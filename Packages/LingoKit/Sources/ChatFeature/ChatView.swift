@@ -53,7 +53,7 @@ public struct ChatView: View {
                     }
                 }
             }
-            #if targetEnvironment(simulator)
+            #if DEBUG && targetEnvironment(simulator)
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     Task { await viewModel.debugInjectQuiz() }
