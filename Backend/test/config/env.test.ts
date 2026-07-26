@@ -29,6 +29,21 @@ describe("loadConfig", () => {
     expect(config.trustProxy).toBe(true);
   });
 
+  it("validates opt-in tracing before the service starts", () => {
+    expect(() =>
+      loadConfig({
+        OTEL_TRACING_ENABLED: "true",
+      }),
+    ).toThrow(ConfigurationError);
+    expect(() =>
+      loadConfig({
+        OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: "https://collector.example/v1/traces",
+        OTEL_TRACE_SAMPLE_RATIO: "0.1",
+        OTEL_TRACING_ENABLED: "true",
+      }),
+    ).not.toThrow();
+  });
+
   it("requires long, identified operator keys for the admin API", () => {
     expect(() =>
       loadConfig({

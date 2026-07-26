@@ -47,6 +47,13 @@ API 域名的外部路由。轮换时先追加新 key ID/token，验证审计中
 token 不进入数据库。`AI_DEEPSEEK_ALLOWED_MODELS` 是部署层安全边界，先滚动放行新模型，
 再通过管理面修改任务路由。
 
+生产 OpenTelemetry Collector 使用私网 TLS 地址。API 和 Worker 分别设置稳定的
+`OTEL_SERVICE_NAME`，并把不可变镜像/发布编号写入 `APP_VERSION`。通过
+`OTEL_TRACING_ENABLED=true` 启用，`OTEL_TRACE_SAMPLE_RATIO` 首发建议为 `0.1`；
+Collector 鉴权放入 Secret `OTEL_EXPORTER_OTLP_HEADERS`。先在预发布确认 span 不含 query、
+认证 header、交易/对象 ID 或用户内容，再逐步提高采样率。Collector 故障不能阻塞 API，
+但连续导出失败必须告警。
+
 部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
 `node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple
 Billing Secret；允许并发实例依靠数据库租约分片，但禁止配置无限并发。

@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { shutdownTelemetry } from "./instrumentation.js";
 import { buildApp } from "./app.js";
 import { ConfigurationError, loadConfig } from "./config/env.js";
 import { createRuntimeDependencies } from "./infrastructure/runtime-dependencies.js";
@@ -171,6 +172,7 @@ async function main(): Promise<void> {
       await app.close();
     } finally {
       clearTimeout(forceClose);
+      await shutdownTelemetry();
     }
   };
 
@@ -195,6 +197,7 @@ async function main(): Promise<void> {
       "Server failed to start",
     );
     await app.close();
+    await shutdownTelemetry();
     process.exitCode = 1;
   }
 }

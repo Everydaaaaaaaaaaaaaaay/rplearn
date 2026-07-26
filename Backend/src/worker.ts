@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { shutdownTelemetry } from "./instrumentation.js";
 import { setTimeout as delay } from "node:timers/promises";
 import pino from "pino";
 import { createLoggerOptions } from "./app/logger.js";
@@ -111,6 +112,7 @@ async function main(): Promise<void> {
   } finally {
     await database.close();
     logger.info({ workerId }, "Worker stopped");
+    await shutdownTelemetry();
   }
 }
 

@@ -52,4 +52,27 @@ describe("logger redaction", () => {
     expect(output).not.toContain("access-token-value");
     expect(output).toContain("[REDACTED]");
   });
+
+  it("correlates structured logs with the active trace without adding user data", () => {
+    const lines: string[] = [];
+    const logger = pino(
+      createLoggerOptions("info", () => ({
+        spanId: "bbbbbbbbbbbbbbbb",
+        traceFlags: 1,
+        traceId: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      })),
+      {
+        write(chunk: string): void {
+          lines.push(chunk);
+        },
+      },
+    );
+
+    logger.info("trace correlation test");
+
+    const record = JSON.parse(lines.join("")) as Record<string, unknown>;
+    expect(record.traceId).toBe("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    expect(record.spanId).toBe("bbbbbbbbbbbbbbbb");
+    expect(record).not.toHaveProperty("userId");
+  });
 });

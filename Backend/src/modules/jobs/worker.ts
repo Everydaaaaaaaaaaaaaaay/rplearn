@@ -1,3 +1,4 @@
+import { SpanStatusCode, trace } from "@opentelemetry/api";
 import { z } from "zod";
 import type { RuntimeConfig } from "../../config/env.js";
 import type { AuthNotifier } from "../auth/notifier.js";
@@ -26,6 +27,12 @@ const mediaDeletePayloadSchema = z.object({
     .regex(/^[0-9a-f-]{36}\/[0-9a-f-]{36}$/i)
     .max(73),
 });
+const OBSERVABLE_JOB_TYPES: ReadonlySet<string> = new Set([
+  ACCOUNT_PURGE_JOB,
+  AUTH_EMAIL_VERIFICATION_JOB,
+  AUTH_PASSWORD_RESET_JOB,
+  MEDIA_DELETE_JOB,
+]);
 
 export type JobRunResult = "idle" | "succeeded" | JobFailureResult;
 
@@ -108,43 +115,69 @@ export class JobWorker {
       return "idle";
     }
 
-    try {
-      await this.dispatch(job);
-      const completed = await this.dependencies.repository.complete(
-        job.id,
-        this.dependencies.workerId,
-        new Date(),
-      );
-      if (!completed) {
-        this.dependencies.logger.warn(
-          { jobId: job.id, jobType: job.type },
-          "Job lease was lost before completion",
-        );
-        return "lease_lost";
-      }
-      this.dependencies.logger.info(
-        { attempts: job.attempts, jobId: job.id, jobType: job.type },
-        "Job completed",
-      );
-      return "succeeded";
-    } catch (error) {
-      const result = await this.dependencies.repository.fail(
-        job,
-        this.dependencies.workerId,
-        new Date(),
-        retryDelay(this.dependencies.config.jobRetryBaseSeconds, job.attempts),
-        safeErrorName(error),
-      );
-      this.dependencies.logger.error(
-        {
-          attempts: job.attempts,
-          jobId: job.id,
-          jobType: job.type,
-          result,
+    return trace.getTracer("lingotrip.jobs").startActiveSpan(
+      "job.process",
+      {
+        attributes: {
+          "lingotrip.job.attempt": job.attempts,
+          "lingotrip.job.type": OBSERVABLE_JOB_TYPES.has(job.type) ? job.type : "other",
         },
-        "Job execution failed",
-      );
-      return result;
-    }
+      },
+      async (span): Promise<JobRunResult> => {
+        try {
+          await this.dispatch(job);
+          const completed = await this.dependencies.repository.complete(
+            job.id,
+            this.dependencies.workerId,
+            new Date(),
+          );
+          if (!completed) {
+            span.setAttribute("lingotrip.job.result", "lease_lost");
+            span.setStatus({
+              code: SpanStatusCode.ERROR,
+              message: "JobLeaseLost",
+            });
+            this.dependencies.logger.warn(
+              { jobId: job.id, jobType: job.type },
+              "Job lease was lost before completion",
+            );
+            return "lease_lost";
+          }
+          span.setAttribute("lingotrip.job.result", "succeeded");
+          span.setStatus({ code: SpanStatusCode.OK });
+          this.dependencies.logger.info(
+            { attempts: job.attempts, jobId: job.id, jobType: job.type },
+            "Job completed",
+          );
+          return "succeeded";
+        } catch (error) {
+          const errorName = safeErrorName(error);
+          const result = await this.dependencies.repository.fail(
+            job,
+            this.dependencies.workerId,
+            new Date(),
+            retryDelay(this.dependencies.config.jobRetryBaseSeconds, job.attempts),
+            errorName,
+          );
+          span.setAttribute("lingotrip.job.result", result);
+          span.setStatus({
+            code: SpanStatusCode.ERROR,
+            message: errorName,
+          });
+          this.dependencies.logger.error(
+            {
+              attempts: job.attempts,
+              jobId: job.id,
+              jobType: job.type,
+              result,
+            },
+            "Job execution failed",
+          );
+          return result;
+        } finally {
+          span.end();
+        }
+      },
+    );
   }
 }

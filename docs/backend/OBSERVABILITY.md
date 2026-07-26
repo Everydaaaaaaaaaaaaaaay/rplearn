@@ -5,6 +5,7 @@
 - PostgreSQL 保存业务事实，Prometheus 指标用于趋势、告警和快速定位，二者不能互相替代；
 - 指标标签只使用路由模板、状态族、任务类型、环境和有限枚举，不使用用户、设备、交易、对象或请求 ID；
 - 应用日志是结构化 JSON，以 `requestId` 关联一次请求；不记录 AI 正文、语音、Token、收据或管理凭据；
+- 启用 OpenTelemetry 后，日志自动增加 `traceId`/`spanId`；span URL 会移除 query 并把动态路径段归一化为 `:id`；
 - `/health/live` 只说明进程可响应，`/health/ready` 才检查 PostgreSQL、Redis 和启用后的对象存储；
 - `/internal/metrics` 必须由独立长随机令牌保护，并只能从监控网络访问。
 
@@ -53,6 +54,32 @@ HTTP 指标：
 - `critical`：立即通知当班人员，并在 5 分钟内确认；
 - `warning`：工作时间处理，持续恶化或同时影响 SLO 时升级；
 - 账单、账号接管和数据隔离事件，无论当前请求量大小都按 `critical` 处理。
+
+## 分布式追踪
+
+追踪默认关闭。生产通过 Secret/配置注入以下变量后启用：
+
+```text
+OTEL_TRACING_ENABLED=true
+OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=https://collector.example/v1/traces
+OTEL_EXPORTER_OTLP_TRACES_TIMEOUT=3000
+OTEL_TRACE_SAMPLE_RATIO=0.1
+OTEL_SERVICE_NAME=lingotrip-api
+APP_VERSION=<immutable release id>
+```
+
+Worker 使用同一镜像时设置 `OTEL_SERVICE_NAME=lingotrip-worker`。未显式设置服务名时，启动器会根据 API/Worker 入口自动区分。OTLP 鉴权头使用标准 `OTEL_EXPORTER_OTLP_HEADERS` 注入，它属于 Secret，不写入仓库或日志。
+
+采样器对根请求按 trace ID 做稳定比例采样，对来自公网的 `traceparent` 仍重新应用本服务比例，避免客户端强制采样耗尽额度；本地子 span 保持父级决定。健康检查和 metrics 抓取不生成 span。
+
+HTTP/Fastify 与基于 Undici 的上游调用自动建立 span，并传播 W3C 上下文。为了隐私和低基数：
+
+- 不采集请求/响应 body、Cookie、Authorization 或自定义业务 header；
+- 所有 query 值都从 span URL 中移除；
+- UUID、数字交易 ID、对象 key 等动态路径段统一记录为 `:id`；
+- 上游 span 只在已有父 span 时创建；
+- Worker 为每个已领取任务建立 `job.process` 根 span，只记录有限任务类型、尝试次数与稳定结果，不记录 job/user/object ID 或加密 payload；
+- OTLP Collector 置于私网，生产使用 TLS，并在 Collector 侧执行保留、访问控制和二次过滤。
 
 ## 仪表盘最低内容
 

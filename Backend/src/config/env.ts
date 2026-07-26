@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { resolveTelemetrySettings, TelemetryConfigurationError } from "./telemetry.js";
 
 const booleanFromString = z
   .enum(["true", "false"])
@@ -413,6 +414,16 @@ export function loadConfig(
   const adminApiKeys = parseAdminApiKeys(result.data.ADMIN_API_KEYS);
   const aiDeepSeekAllowedModels = parseOrigins(result.data.AI_DEEPSEEK_ALLOWED_MODELS);
   const issues: string[] = [];
+
+  try {
+    resolveTelemetrySettings(environment);
+  } catch (error) {
+    if (error instanceof TelemetryConfigurationError) {
+      issues.push(error.message);
+    } else {
+      throw error;
+    }
+  }
 
   if (corsAllowedOrigins.length === 0) {
     issues.push("CORS_ALLOWED_ORIGINS must contain at least one origin");

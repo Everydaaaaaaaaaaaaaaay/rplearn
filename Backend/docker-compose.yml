@@ -5,7 +5,13 @@ services:
     profiles: ["app"]
     build:
       context: .
-    command: ["sh", "-c", "node dist/cli/migrate.js && exec node dist/server.js"]
+    command:
+      [
+        "sh",
+        "-c",
+        "node dist/cli/migrate.js && exec node --import ./dist/instrumentation-loader.js
+        --import ./dist/instrumentation.js dist/server.js",
+      ]
     depends_on:
       mailpit:
         condition: service_healthy
@@ -57,7 +63,15 @@ services:
     profiles: ["app"]
     build:
       context: .
-    command: ["node", "dist/worker.js"]
+    command:
+      [
+        "node",
+        "--import",
+        "./dist/instrumentation-loader.js",
+        "--import",
+        "./dist/instrumentation.js",
+        "dist/worker.js",
+      ]
     depends_on:
       mailpit:
         condition: service_healthy

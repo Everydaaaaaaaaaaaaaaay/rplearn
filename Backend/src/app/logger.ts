@@ -1,3 +1,4 @@
+import { trace, type SpanContext } from "@opentelemetry/api";
 import { stdSerializers, type LoggerOptions } from "pino";
 
 const REDACTED = "[REDACTED]";
@@ -43,9 +44,20 @@ export const SENSITIVE_LOG_PATHS = [
 
 export function createLoggerOptions(
   level: NonNullable<LoggerOptions["level"]>,
+  activeSpanContext: () => SpanContext | undefined = () =>
+    trace.getActiveSpan()?.spanContext(),
 ): LoggerOptions {
   return {
     level,
+    mixin: () => {
+      const spanContext = activeSpanContext();
+      return spanContext === undefined
+        ? {}
+        : {
+            spanId: spanContext.spanId,
+            traceId: spanContext.traceId,
+          };
+    },
     redact: {
       censor: REDACTED,
       paths: [...SENSITIVE_LOG_PATHS],
