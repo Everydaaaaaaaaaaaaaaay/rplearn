@@ -30,7 +30,8 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 }
                                 .accessibilityHidden(true)
                             DictCardView(
-                                target: .word(selection.word),
+                                target: selection.grammarPointID.map(DictTarget.grammarPoint)
+                                    ?? .word(selection.word),
                                 dictionary: dictionary,
                                 grammar: grammar,
                                 onSpeak: onSpeak,

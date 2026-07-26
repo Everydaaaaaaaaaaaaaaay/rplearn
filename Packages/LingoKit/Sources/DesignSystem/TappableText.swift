@@ -6,11 +6,18 @@ public struct TokenSelection: Hashable, Sendable {
     public let contextID: String
     public let tokenID: Int
     public let word: String
+    public let grammarPointID: String?
 
-    public init(contextID: String, tokenID: Int, word: String) {
+    public init(
+        contextID: String,
+        tokenID: Int,
+        word: String,
+        grammarPointID: String? = nil
+    ) {
         self.contextID = contextID
         self.tokenID = tokenID
         self.word = word
+        self.grammarPointID = grammarPointID
     }
 }
 
@@ -29,6 +36,7 @@ public struct TappableText: View {
     private let tokens: [TextToken]
     private let contextID: String
     private let keywords: Set<String>
+    private let grammarPointIDs: [Int: String]
     private let textColor: Color?
     private let selection: TokenSelection?
     private let onSelect: (TokenSelection) -> Void
@@ -37,6 +45,7 @@ public struct TappableText: View {
         tokens: [TextToken],
         contextID: String,
         keywords: Set<String> = [],
+        grammarPointIDs: [Int: String] = [:],
         textColor: Color? = nil,
         selection: TokenSelection? = nil,
         onSelect: @escaping (TokenSelection) -> Void
@@ -44,6 +53,7 @@ public struct TappableText: View {
         self.tokens = tokens
         self.contextID = contextID
         self.keywords = keywords
+        self.grammarPointIDs = grammarPointIDs
         self.textColor = textColor
         self.selection = selection
         self.onSelect = onSelect
@@ -63,26 +73,83 @@ public struct TappableText: View {
         let isKeyword = token.word.map { keywords.contains($0) } ?? false
 
         if let word = token.word {
-            Button {
-                onSelect(TokenSelection(contextID: contextID, tokenID: token.id, word: word))
-            } label: {
-                Text(token.display)
-                    .underline(isKeyword, pattern: .dot)
-                    .foregroundStyle(textColor ?? .primary)
-                    .background(
-                        isSelected ? Color.yellow.opacity(0.35) : .clear,
-                        in: RoundedRectangle(cornerRadius: 4)
+            if let grammarPointID = grammarPointIDs[token.id] {
+                Menu {
+                    Button {
+                        onSelect(
+                            TokenSelection(
+                                contextID: contextID,
+                                tokenID: token.id,
+                                word: word
+                            )
+                        )
+                    } label: {
+                        Label("单词释义", systemImage: "character.book.closed")
+                    }
+                    Button {
+                        onSelect(
+                            TokenSelection(
+                                contextID: contextID,
+                                tokenID: token.id,
+                                word: word,
+                                grammarPointID: grammarPointID
+                            )
+                        )
+                    } label: {
+                        Label("语法释义", systemImage: "text.book.closed")
+                    }
+                } label: {
+                    tokenLabel(
+                        token,
+                        isKeyword: false,
+                        isGrammar: true,
+                        isSelected: isSelected
                     )
-                    .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .accessibilityHint("查看释义")
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(token.display)
+                .accessibilityHint("选择查看单词释义或语法释义")
                 .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
                     isSelected ? anchor : nil
                 }
+            } else {
+                Button {
+                    onSelect(TokenSelection(contextID: contextID, tokenID: token.id, word: word))
+                } label: {
+                    tokenLabel(
+                        token,
+                        isKeyword: isKeyword,
+                        isGrammar: false,
+                        isSelected: isSelected
+                    )
+                }
+                .buttonStyle(.plain)
+                .accessibilityHint("查看单词释义")
+                .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
+                    isSelected ? anchor : nil
+                }
+            }
         } else {
             Text(token.display)
                 .foregroundStyle(textColor ?? .primary)
         }
+    }
+
+    private func tokenLabel(
+        _ token: TextToken,
+        isKeyword: Bool,
+        isGrammar: Bool,
+        isSelected: Bool
+    ) -> some View {
+        Text(token.display)
+            .underline(isKeyword, pattern: .dot)
+            .foregroundStyle(isGrammar ? Color.dsSkyDeep : (textColor ?? .primary))
+            .background(
+                isSelected
+                    ? (isGrammar ? Color.dsSky.opacity(0.18) : Color.yellow.opacity(0.35))
+                    : .clear,
+                in: RoundedRectangle(cornerRadius: 4)
+            )
+            .contentShape(Rectangle())
     }
 }

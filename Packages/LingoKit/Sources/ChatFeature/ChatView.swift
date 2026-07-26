@@ -516,12 +516,19 @@ public struct ChatView: View {
             let displayText = message.role == .assistant
                 ? RoleplayReplyFormatter.streamingPreview(from: message.text)
                 : message.text
+            let tokens = TokenCache.tokens(
+                for: displayText,
+                cacheKey: message.id.uuidString
+            )
             TappableText(
-                tokens: TokenCache.tokens(for: displayText, cacheKey: message.id.uuidString),
+                tokens: tokens,
                 contextID: message.id.uuidString,
                 keywords: message.role == .assistant
                     ? KeywordAnnotator.decodeWords(fromJSON: message.keywordRangesJSON)
                     : [],
+                grammarPointIDs: message.role == .assistant
+                    ? deps.grammarPoints.annotations(in: tokens)
+                    : [:],
                 textColor: textColor,
                 selection: wordSelection,
                 onSelect: { wordSelection = $0 }

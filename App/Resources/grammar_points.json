@@ -3,6 +3,9 @@
     {
       "id": "as-as",
       "triggers": ["as"],
+      "patterns": [
+        { "steps": ["as", "as"], "maximum_gaps": [8] }
+      ],
       "title": "as ... as ... 和…一样",
       "explanation_zh": "表示两者程度相同：as + 形容词/副词原级 + as。否定式 not as/so ... as 表示「不如」。",
       "examples": [
@@ -14,6 +17,9 @@
     {
       "id": "comparative-than",
       "triggers": ["than"],
+      "patterns": [
+        { "steps": ["than"], "maximum_gaps": [] }
+      ],
       "title": "比较级 + than",
       "explanation_zh": "两者比较用比较级加 than。比较级前可用 much / a little / even 修饰程度。",
       "examples": [
@@ -24,6 +30,9 @@
     {
       "id": "the-more-the-more",
       "triggers": ["more"],
+      "patterns": [
+        { "steps": ["the", "more", "the", "more"], "maximum_gaps": [0, 10, 0] }
+      ],
       "title": "the more ..., the more ... 越…越…",
       "explanation_zh": "「the + 比较级, the + 比较级」表示一方随另一方程度变化。",
       "examples": [
@@ -34,6 +43,9 @@
     {
       "id": "so-that-result",
       "triggers": ["so"],
+      "patterns": [
+        { "steps": ["so", "that"], "maximum_gaps": [8] }
+      ],
       "title": "so ... that ... 如此…以至于",
       "explanation_zh": "so + 形容词/副词 + that 从句，表示结果。so 后面接形容词或副词，接名词时要用 such。",
       "examples": [
@@ -44,6 +56,9 @@
     {
       "id": "such-that",
       "triggers": ["such"],
+      "patterns": [
+        { "steps": ["such", "that"], "maximum_gaps": [8] }
+      ],
       "title": "such ... that ... 如此…以至于",
       "explanation_zh": "such + (a/an) + 形容词 + 名词 + that 从句。名词是复数或不可数时不加冠词。",
       "examples": [
@@ -54,6 +69,13 @@
     {
       "id": "so-that-purpose",
       "triggers": ["that"],
+      "patterns": [
+        {
+          "steps": ["so", "that", "can|could|may|might|will|would"],
+          "maximum_gaps": [0, 5],
+          "highlighted_steps": [0, 1]
+        }
+      ],
       "title": "so that 以便（目的状语）",
       "explanation_zh": "so that 引导目的状语从句，从句中常用 can / could / may / might。",
       "examples": [
@@ -64,6 +86,9 @@
     {
       "id": "too-to",
       "triggers": ["too"],
+      "patterns": [
+        { "steps": ["too", "to"], "maximum_gaps": [6] }
+      ],
       "title": "too ... to ... 太…而不能",
       "explanation_zh": "too + 形容词/副词 + to do，形式肯定、意义否定。",
       "examples": [
@@ -74,6 +99,9 @@
     {
       "id": "enough-to",
       "triggers": ["enough"],
+      "patterns": [
+        { "steps": ["enough", "to"], "maximum_gaps": [4] }
+      ],
       "title": "enough to do 足以…",
       "explanation_zh": "enough 修饰形容词/副词时放在其后：adj./adv. + enough + to do。修饰名词时放在名词前。",
       "examples": [
@@ -84,6 +112,9 @@
     {
       "id": "not-only-but-also",
       "triggers": ["only"],
+      "patterns": [
+        { "steps": ["not", "only", "but", "also"], "maximum_gaps": [0, 12, 0] }
+      ],
       "title": "not only ... but also ... 不但…而且…",
       "explanation_zh": "连接两个并列成分；连接主语时谓语与靠近的主语一致（就近原则）。not only 位于句首时句子要部分倒装。",
       "examples": [
@@ -94,6 +125,9 @@
     {
       "id": "both-and",
       "triggers": ["both"],
+      "patterns": [
+        { "steps": ["both", "and"], "maximum_gaps": [10] }
+      ],
       "title": "both ... and ... 两者都",
       "explanation_zh": "连接两个并列成分，作主语时谓语用复数。",
       "examples": [
@@ -104,6 +138,9 @@
     {
       "id": "either-or",
       "triggers": ["either", "or"],
+      "patterns": [
+        { "steps": ["either", "or"], "maximum_gaps": [10] }
+      ],
       "title": "either ... or ... 要么…要么…",
       "explanation_zh": "表示两者选其一；作主语时谓语与靠近的主语一致（就近原则）。",
       "examples": [
@@ -114,6 +151,9 @@
     {
       "id": "neither-nor",
       "triggers": ["neither", "nor"],
+      "patterns": [
+        { "steps": ["neither", "nor"], "maximum_gaps": [10] }
+      ],
       "title": "neither ... nor ... 既不…也不…",
       "explanation_zh": "表示两者都否定；作主语时谓语与靠近的主语一致（就近原则）。",
       "examples": [
@@ -124,6 +164,9 @@
     {
       "id": "would-rather",
       "triggers": ["rather"],
+      "patterns": [
+        { "steps": ["would", "rather"], "maximum_gaps": [0] }
+      ],
       "title": "would rather 宁愿",
       "explanation_zh": "would rather do sth. 宁愿做某事；would rather do A than do B 宁愿做 A 也不做 B。",
       "examples": [
@@ -134,6 +177,9 @@
     {
       "id": "prefer-to",
       "triggers": ["prefer"],
+      "patterns": [
+        { "steps": ["prefer|prefers|preferred", "to"], "maximum_gaps": [8] }
+      ],
       "title": "prefer A to B 更喜欢 A",
       "explanation_zh": "prefer + 名词/doing + to + 名词/doing，表示两者中更喜欢前者；prefer to do rather than do 也常用。",
       "examples": [
@@ -144,6 +190,9 @@
     {
       "id": "used-to",
       "triggers": ["used"],
+      "patterns": [
+        { "steps": ["used", "to"], "maximum_gaps": [0] }
+      ],
       "title": "used to / be used to / be used for",
       "explanation_zh": "used to do 过去常常做（现在不做了）；be/get used to doing 习惯于做；be used for doing 被用来做。三者含义完全不同，注意区分。",
       "examples": [
@@ -155,6 +204,9 @@
     {
       "id": "as-soon-as",
       "triggers": ["soon"],
+      "patterns": [
+        { "steps": ["as", "soon", "as"], "maximum_gaps": [0, 0] }
+      ],
       "title": "as soon as 一…就…",
       "explanation_zh": "引导时间状语从句；主句是将来时时，从句用一般现在时表将来（主将从现）。",
       "examples": [
@@ -165,6 +217,9 @@
     {
       "id": "hardly-when",
       "triggers": ["hardly"],
+      "patterns": [
+        { "steps": ["hardly", "when"], "maximum_gaps": [12] }
+      ],
       "title": "hardly ... when ... 刚…就…",
       "explanation_zh": "hardly + 过去完成时 + when + 一般过去时。hardly 位于句首时要部分倒装。",
       "examples": [
@@ -175,6 +230,9 @@
     {
       "id": "no-sooner-than",
       "triggers": ["sooner"],
+      "patterns": [
+        { "steps": ["no", "sooner", "than"], "maximum_gaps": [0, 12] }
+      ],
       "title": "no sooner ... than ... 一…就…",
       "explanation_zh": "no sooner + 过去完成时 + than + 一般过去时；no sooner 位于句首时要部分倒装。",
       "examples": [
@@ -185,6 +243,9 @@
     {
       "id": "it-takes",
       "triggers": ["take", "takes", "took"],
+      "patterns": [
+        { "steps": ["it", "take|takes|took", "to"], "maximum_gaps": [0, 8] }
+      ],
       "title": "It takes sb. + 时间 + to do 花费",
       "explanation_zh": "It takes/took sb. + 时间 + to do sth. 表示做某事花某人多少时间。spend / cost / pay 的搭配各不相同。",
       "examples": [
@@ -195,6 +256,9 @@
     {
       "id": "spend-on",
       "triggers": ["spend", "spent"],
+      "patterns": [
+        { "steps": ["spend|spends|spent", "on"], "maximum_gaps": [8] }
+      ],
       "title": "spend ... on / (in) doing 花费",
       "explanation_zh": "sb. spend + 时间/钱 + on sth. 或 + (in) doing sth.。主语必须是人，这一点与 it takes / sth. costs 不同。",
       "examples": [
@@ -205,6 +269,9 @@
     {
       "id": "there-be",
       "triggers": ["there"],
+      "patterns": [
+        { "steps": ["there", "am|is|are|was|were|be|been"], "maximum_gaps": [1] }
+      ],
       "title": "there be 存在句",
       "explanation_zh": "表示「某地有某物」；be 与靠近的名词保持一致（就近原则）。注意与 have（拥有）区分。",
       "examples": [
@@ -215,6 +282,9 @@
     {
       "id": "have-been-to",
       "triggers": ["been", "gone"],
+      "patterns": [
+        { "steps": ["have|has|had", "been|gone", "to"], "maximum_gaps": [0, 0] }
+      ],
       "title": "have been to / have gone to",
       "explanation_zh": "have been to 去过（人已回来）；have gone to 去了（人还没回来）。",
       "examples": [
@@ -226,6 +296,9 @@
     {
       "id": "stop-doing",
       "triggers": ["stop", "stopped"],
+      "patterns": [
+        { "steps": ["stop|stops|stopped", "<gerund>|to"], "maximum_gaps": [0] }
+      ],
       "title": "stop doing / stop to do",
       "explanation_zh": "stop doing 停止正在做的事；stop to do 停下来去做另一件事。",
       "examples": [
@@ -237,6 +310,9 @@
     {
       "id": "remember-doing",
       "triggers": ["remember"],
+      "patterns": [
+        { "steps": ["remember|remembers|remembered", "<gerund>|to"], "maximum_gaps": [0] }
+      ],
       "title": "remember doing / remember to do",
       "explanation_zh": "remember doing 记得做过某事（已发生）；remember to do 记得要去做某事（未发生）。",
       "examples": [
@@ -248,6 +324,9 @@
     {
       "id": "forget-doing",
       "triggers": ["forget", "forgot"],
+      "patterns": [
+        { "steps": ["forget|forgets|forgot", "<gerund>|to"], "maximum_gaps": [0] }
+      ],
       "title": "forget doing / forget to do",
       "explanation_zh": "forget doing 忘记做过某事（事已做）；forget to do 忘记去做某事（事没做）。",
       "examples": [
@@ -258,6 +337,12 @@
     {
       "id": "look-forward-to",
       "triggers": ["forward"],
+      "patterns": [
+        {
+          "steps": ["look|looks|looked|looking", "forward", "to"],
+          "maximum_gaps": [0, 0]
+        }
+      ],
       "title": "look forward to doing 期待",
       "explanation_zh": "look forward to 中的 to 是介词，后接名词或动名词，不接动词原形。",
       "examples": [
@@ -268,6 +353,12 @@
     {
       "id": "be-worth-doing",
       "triggers": ["worth"],
+      "patterns": [
+        {
+          "steps": ["am|is|are|was|were|be|been", "worth", "<gerund>"],
+          "maximum_gaps": [1, 1]
+        }
+      ],
       "title": "be worth doing 值得做",
       "explanation_zh": "sth. is worth doing，用主动形式表达被动含义，doing 后不再接宾语。",
       "examples": [
@@ -278,6 +369,12 @@
     {
       "id": "cant-help",
       "triggers": ["help"],
+      "patterns": [
+        {
+          "steps": ["can't|cannot|couldn't", "help", "<gerund>"],
+          "maximum_gaps": [0, 0]
+        }
+      ],
       "title": "can't help doing 忍不住",
       "explanation_zh": "can't help doing 忍不住做某事；注意区分 can't help (to) do 不能帮忙做某事。",
       "examples": [
@@ -288,6 +385,12 @@
     {
       "id": "had-better",
       "triggers": ["better"],
+      "patterns": [
+        {
+          "steps": ["had|i'd|you'd|he'd|she'd|we'd|they'd", "better"],
+          "maximum_gaps": [0]
+        }
+      ],
       "title": "had better do 最好…",
       "explanation_zh": "had better + 动词原形，表示建议；否定式为 had better not do。",
       "examples": [
@@ -298,6 +401,9 @@
     {
       "id": "why-not",
       "triggers": ["why"],
+      "patterns": [
+        { "steps": ["why", "not"], "maximum_gaps": [0] }
+      ],
       "title": "Why not ...? 何不…？",
       "explanation_zh": "Why not + 动词原形 = Why don't you + 动词原形，表建议。",
       "examples": [
@@ -308,6 +414,9 @@
     {
       "id": "what-about",
       "triggers": ["about"],
+      "patterns": [
+        { "steps": ["what|how", "about"], "maximum_gaps": [0] }
+      ],
       "title": "What / How about ...? …怎么样？",
       "explanation_zh": "about 是介词，后接名词或动名词，用于提出建议或征求意见。",
       "examples": [
@@ -318,6 +427,9 @@
     {
       "id": "if-conditional",
       "triggers": ["if"],
+      "patterns": [
+        { "steps": ["if"], "maximum_gaps": [] }
+      ],
       "title": "if 条件句：主将从现",
       "explanation_zh": "if 引导真实条件句时，主句用一般将来时，从句用一般现在时。if 还可引导虚拟条件句，表示与事实相反的假设。",
       "examples": [
@@ -328,6 +440,9 @@
     {
       "id": "unless",
       "triggers": ["unless"],
+      "patterns": [
+        { "steps": ["unless"], "maximum_gaps": [] }
+      ],
       "title": "unless 除非 (= if ... not)",
       "explanation_zh": "unless 引导条件状语从句，相当于 if ... not；从句同样遵循主将从现。",
       "examples": [
@@ -338,6 +453,9 @@
     {
       "id": "although-but",
       "triggers": ["although", "though"],
+      "patterns": [
+        { "steps": ["although|though"], "maximum_gaps": [] }
+      ],
       "title": "although 不与 but 连用",
       "explanation_zh": "although/though 引导让步状语从句，同一句中不能再用 but；同理 because 不与 so 连用。",
       "examples": [
@@ -348,6 +466,9 @@
     {
       "id": "because-so",
       "triggers": ["because"],
+      "patterns": [
+        { "steps": ["because"], "maximum_gaps": [] }
+      ],
       "title": "because 不与 so 连用",
       "explanation_zh": "because 引导原因状语从句，同一句中不能再用 so。回答 why 提问必须用 because。",
       "examples": [
@@ -358,6 +479,9 @@
     {
       "id": "wish-subjunctive",
       "triggers": ["wish"],
+      "patterns": [
+        { "steps": ["wish|wishes|wished"], "maximum_gaps": [] }
+      ],
       "title": "wish 后的虚拟语气",
       "explanation_zh": "wish 表示难以实现的愿望：对现在用过去时（be 用 were），对过去用过去完成时。注意与 hope（可实现的希望）区分。",
       "examples": [
@@ -369,6 +493,9 @@
     {
       "id": "suggest-clause",
       "triggers": ["suggest"],
+      "patterns": [
+        { "steps": ["suggest|suggests|suggested", "that"], "maximum_gaps": [2] }
+      ],
       "title": "suggest 的宾语从句用 (should) do",
       "explanation_zh": "suggest / insist / demand / order 等词后的宾语从句用 should + 动词原形，should 可省略。suggest doing 也很常用。",
       "examples": [
@@ -379,6 +506,13 @@
     {
       "id": "make-sb-do",
       "triggers": ["make", "let", "made"],
+      "patterns": [
+        {
+          "steps": ["make|makes|made|let|lets", "<word>", "<word>"],
+          "maximum_gaps": [0, 0],
+          "highlighted_steps": [0]
+        }
+      ],
       "title": "make / let / have sb. do 使役动词",
       "explanation_zh": "使役动词 make / let / have 后接不带 to 的不定式；但被动语态中 to 要还原：be made to do。",
       "examples": [
@@ -389,6 +523,17 @@
     {
       "id": "see-sb-doing",
       "triggers": ["see", "hear", "watch", "saw", "heard"],
+      "patterns": [
+        {
+          "steps": [
+            "see|sees|saw|hear|hears|heard|watch|watches|watched",
+            "<word>",
+            "<word>|<gerund>"
+          ],
+          "maximum_gaps": [0, 0],
+          "highlighted_steps": [0]
+        }
+      ],
       "title": "see sb. do / doing 感官动词",
       "explanation_zh": "感官动词 see / hear / watch / notice 后接 do 表示看到全过程，接 doing 表示看到正在进行。",
       "examples": [
@@ -400,6 +545,9 @@
     {
       "id": "in-order-to",
       "triggers": ["order"],
+      "patterns": [
+        { "steps": ["in", "order", "to"], "maximum_gaps": [0, 0] }
+      ],
       "title": "in order to 为了",
       "explanation_zh": "in order to do 表目的，可置于句首或句中；否定式 in order not to do。",
       "examples": [
