@@ -68,6 +68,12 @@ jobs:
           scanners: vuln,secret,misconfig
           severity: HIGH,CRITICAL
           version: v0.72.0
+      - name: Validate Kubernetes manifests
+        run: >-
+          docker run --rm
+          -v "${{ github.workspace }}/Backend/ops/kubernetes:/manifests:ro"
+          ghcr.io/yannh/kubeconform@sha256:85dbef6b4b312b99133decc9c6fc9495e9fc5f92293d4ff3b7e1b30f5611823c
+          -strict -summary /manifests
       - name: Install the signed-image verifier
         uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
         with:

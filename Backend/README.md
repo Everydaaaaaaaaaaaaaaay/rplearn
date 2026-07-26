@@ -139,4 +139,5 @@ Access Token 只使用 `AUTH_JWT_KEY_ID`
 [`../docs/backend/DEPLOYMENT.md`](../docs/backend/DEPLOYMENT.md)、
 [`../docs/backend/BACKUP_RESTORE.md`](../docs/backend/BACKUP_RESTORE.md) 与
 [`../docs/backend/OPERATIONS_RUNBOOK.md`](../docs/backend/OPERATIONS_RUNBOOK.md)。指标、SLO 和告警规则见
-[`../docs/backend/OBSERVABILITY.md`](../docs/backend/OBSERVABILITY.md)。
+[`../docs/backend/OBSERVABILITY.md`](../docs/backend/OBSERVABILITY.md)。Kubernetes 安全基线位于
+[`ops/kubernetes`](./ops/kubernetes)，包含 API、worker、迁移、发布前检查、Apple 对账和数据保留任务；部署前必须把示例镜像替换为候选 digest。

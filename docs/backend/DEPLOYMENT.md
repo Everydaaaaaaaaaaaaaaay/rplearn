@@ -20,8 +20,11 @@
    high/critical 发现会阻止合并。Syft 为该镜像生成 CycloneDX JSON SBOM，并作为 CI
    artifact 保留 30 天。
 3. 确认最近一次 PostgreSQL 基础备份和 WAL/PITR 流连续可用。
-4. 使用与 API 完全相同 digest 的一次性 Job 执行 `node dist/cli/migrate.js`。
-5. 使用待发布 Secret 运行 `node dist/cli/check-production-readiness.js`。只有 JSON
+4. 从 [`migrate-job.yaml`](../../Backend/ops/kubernetes/migrate-job.yaml) 生成带发布编号的
+   一次性 Job，使用与 API 完全相同的 digest 执行 `node dist/cli/migrate.js`。
+5. 从
+   [`production-check-job.yaml`](../../Backend/ops/kubernetes/production-check-job.yaml)
+   生成一次性 Job，使用待发布 Secret 运行 `node dist/cli/check-production-readiness.js`。只有 JSON
    报告的 `passed=true` 才能继续；报告不含连接地址、角色名、模型目录或底层异常。
 6. 等迁移和生产检查成功，再滚动更新 API 与 worker；readiness 失败的 API Pod
    不接收流量。
@@ -85,9 +88,11 @@ severity 或 `exit-code`；必须使用最窄规则，记录 CVE/规则 ID、影
 和不超过 30 天的到期日，到期前修复或重新评审。任何 secret 命中都不能豁免，只能移除并
 轮换。
 
-部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
-`node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple
-Billing Secret；允许并发实例依靠数据库租约分片，但禁止配置无限并发。
+[`scheduled-jobs.yaml`](../../Backend/ops/kubernetes/scheduled-jobs.yaml) 编排两个同镜像
+CronJob：Apple 订阅每 15 分钟对账，运营数据每天 03:17 UTC 清理。两者使用
+`concurrencyPolicy: Forbid`、有限重试和执行期限，避免调度重叠形成无界并发。CronJob 与
+API 使用同一版本、低权限数据库凭据及所需运行时 Secret；Apple 对账还依靠数据库租约实现
+实例级互斥。部署平台必须把每次运行成功/失败和执行延迟接入告警，不能只依靠 Job 历史保留。
 
 API 在账号业务事务中写入加密任务，只有 worker 执行 SMTP 投递。worker 可横向扩容，
 数据库租约与 `FOR UPDATE SKIP LOCKED` 负责互斥领取；失败任务指数退避，达到最大次数后
