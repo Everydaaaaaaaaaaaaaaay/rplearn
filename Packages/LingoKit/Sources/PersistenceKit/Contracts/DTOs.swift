@@ -186,6 +186,8 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
 public struct UserProfileDTO: Sendable, Equatable {
     public var displayName: String
     public var currentRegionID: String
+    /// 首次选择伙伴所对应的起始城市；旅行后仍保持不变，用于恢复跨平台主线路线。
+    public var starterRegionID: String?
     public var coins: Int
     public var subscriptionTier: SubscriptionTier
     public var friendSlotLimit: Int
@@ -197,6 +199,7 @@ public struct UserProfileDTO: Sendable, Equatable {
     public init(
         displayName: String,
         currentRegionID: String,
+        starterRegionID: String? = nil,
         coins: Int,
         subscriptionTier: SubscriptionTier,
         friendSlotLimit: Int,
@@ -207,6 +210,7 @@ public struct UserProfileDTO: Sendable, Equatable {
     ) {
         self.displayName = displayName
         self.currentRegionID = currentRegionID
+        self.starterRegionID = starterRegionID
         self.coins = coins
         self.subscriptionTier = subscriptionTier
         self.friendSlotLimit = friendSlotLimit

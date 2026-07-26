@@ -10,6 +10,7 @@ public struct BackendUserProfile: Codable, Sendable, Equatable {
     public let gameLevel: Int
     public let hasCompletedOnboarding: Bool
     public let quizGloballyEnabled: Bool
+    public let starterRegionId: String?
     public let unlockedRegionIds: [String]
     public let updatedAt: String
     public let version: Int

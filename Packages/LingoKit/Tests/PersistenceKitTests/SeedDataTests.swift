@@ -28,11 +28,17 @@ struct SeedDataTests {
         }
     }
 
-    @Test("regions.json：初始三地区齐全且都有活动")
+    @Test("regions.json：5 个主线城市、8 个支线城市且不含中国城市")
     func regions() throws {
         let regionsURL = try #require(Bundle.main.url(forResource: "regions", withExtension: "json"))
         let catalog = try RegionCatalog(url: regionsURL)
-        #expect(Set(catalog.regions.map(\.id)) == ["london", "melbourne", "newyork"])
+        #expect(catalog.regions.count == 13)
+        #expect(catalog.mainlineRegions.count == 5)
+        #expect(catalog.sideRegions.count == 8)
+        #expect(Set(catalog.mainlineRegions.map(\.id)) == [
+            "london", "melbourne", "newyork", "capetown", "singapore",
+        ])
+        #expect(!catalog.regions.contains { $0.countryCode == "CN" })
         for region in catalog.regions {
             #expect(!region.activities.isEmpty)
             #expect(!region.landmarks.isEmpty)

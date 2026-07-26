@@ -27,6 +27,7 @@ struct RootView: View {
     @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .home
+    @State private var homePath = NavigationPath()
     @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
     @State private var activeUserID: UUID?
@@ -201,7 +202,7 @@ struct RootView: View {
                     Task {
                         await environment.completeOnboarding(
                             selected: character,
-                            profileCommands: profileCommands
+                            onboardingCommands: onboardingCommands
                         )
                     }
                 }
@@ -251,7 +252,7 @@ struct RootView: View {
     }
 
     private var homeStack: some View {
-        NavigationStack {
+        NavigationStack(path: $homePath) {
             HomeView(
                 deps: homeDeps,
                 chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
@@ -278,7 +279,10 @@ struct RootView: View {
 
     private var mapStack: some View {
         NavigationStack {
-            MapView(deps: mapDeps)
+            MapView(deps: mapDeps) {
+                selectedTab = .home
+                homePath.append(HomeDestination.mainline)
+            }
         }
     }
 
@@ -352,7 +356,8 @@ struct RootView: View {
             stubStore: environment.ticketStubStore,
             travelService: travelService,
             economyService: economyService,
-            regionCatalog: environment.regionCatalog
+            regionCatalog: environment.regionCatalog,
+            storyProgress: environment.storyProgressStore
         )
     }
 
@@ -379,6 +384,7 @@ struct RootView: View {
         StoryDependencies(
             storyProgress: environment.storyProgressStore,
             progression: progression,
+            rosterStore: environment.rosterStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech
@@ -402,6 +408,14 @@ struct RootView: View {
     }
 
     private var profileCommands: any ProfileCommandGateway {
+        if usesCloudState {
+            environment.userState
+        } else {
+            environment.localUserState
+        }
+    }
+
+    private var onboardingCommands: any OnboardingCommandGateway {
         if usesCloudState {
             environment.userState
         } else {

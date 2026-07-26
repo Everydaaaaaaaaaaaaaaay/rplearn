@@ -62,6 +62,10 @@ const storyParametersSchema = z.object({
   storyId: z.string().regex(/^mainline_[a-z0-9_]{2,48}$/),
 });
 
+const onboardingSchema = z.object({
+  starterRegionId: z.enum(["london", "melbourne", "newyork"]),
+});
+
 const grantCoinsSchema = z.object({
   amount: z.number().int().min(1).max(100_000),
 });
@@ -142,6 +146,25 @@ export function registerDomainRoutes(
           ? {}
           : { quizGloballyEnabled: patch.quizGloballyEnabled }),
       });
+    },
+  );
+
+  app.post(
+    "/v1/progression/onboarding",
+    {
+      schema: {
+        security: [{ bearerAuth: [] }],
+        tags: ["progression"],
+      },
+    },
+    async (request) => {
+      const identity = await authenticateRequest(request, authService);
+      const selection = parse(onboardingSchema, request.body);
+      return domainService.completeOnboarding(
+        identity.userId,
+        commandId(request),
+        selection,
+      );
     },
   );
 

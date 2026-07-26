@@ -37,6 +37,7 @@ struct EconomyStoreTests {
         _ = try await store.updateProfile { profile in
             profile.displayName = "旅人"
             profile.currentRegionID = "london"
+            profile.starterRegionID = "london"
             profile.hasCompletedOnboarding = true
         }
         try await store.unlockRegion("london")
@@ -44,6 +45,7 @@ struct EconomyStoreTests {
         let profile = try await store.profile()
         #expect(profile.displayName == "旅人")
         #expect(profile.currentRegionID == "london")
+        #expect(profile.starterRegionID == "london")
         #expect(profile.unlockedRegionIDs == ["london"])
         #expect(profile.hasCompletedOnboarding)
     }

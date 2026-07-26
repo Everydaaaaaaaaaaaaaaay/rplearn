@@ -172,6 +172,7 @@ final class AppEnvironment {
         let cards = try SeedData.mainCharacterCards(url: seedsURL)
         try await rosterStore.importMainCharactersIfNeeded(cards: cards)
         try await contentSync.activate(userID: identity.userID)
+        try await reconcileMainCharacters(profile: profile)
         await voiceMedia.activate(userID: identity.userID)
         needsOnboarding = !profile.hasCompletedOnboarding
         return activation
@@ -189,21 +190,42 @@ final class AppEnvironment {
         let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
         let cards = try SeedData.mainCharacterCards(url: seedsURL)
         try await rosterStore.importMainCharactersIfNeeded(cards: cards)
+        try await reconcileMainCharacters(profile: profile)
         needsOnboarding = !profile.hasCompletedOnboarding
     }
 
-    /// 首启引导完成：写当前地区/解锁地区/完成标记。
+    /// 首启引导完成：原子写入路线与起始城市，只解锁用户选择的第一位伙伴。
     func completeOnboarding(
         selected character: CharacterDTO,
-        profileCommands: any ProfileCommandGateway
+        onboardingCommands: any OnboardingCommandGateway
     ) async {
         do {
-            _ = try await profileCommands.updateProfile { profile in
-                profile.hasCompletedOnboarding = true
-            }
+            let profile = try await onboardingCommands.completeOnboarding(
+                starterRegionID: character.card.regionID
+            )
+            try await reconcileMainCharacters(profile: profile)
             needsOnboarding = false
         } catch {
             Log.app.error("完成首启引导失败：\(error)")
         }
+    }
+
+    private func reconcileMainCharacters(profile: UserProfileDTO) async throws {
+        guard profile.hasCompletedOnboarding else { return }
+        let starterRegionID =
+            profile.starterRegionID
+            ?? MainlineCatalog.journeys.first(where: { $0.starterRegionID == profile.currentRegionID })?.starterRegionID
+            ?? "london"
+        if profile.starterRegionID == nil {
+            _ = try await economyStore.updateProfile {
+                $0.starterRegionID = starterRegionID
+            }
+        }
+        let completed = try await storyProgressStore.completedStoryIDs()
+        let unlocked = MainlineCatalog.unlockedMainCharacterRegionIDs(
+            starterRegionID: starterRegionID,
+            completedStoryIDs: completed
+        )
+        try await rosterStore.configureMainCharacters(unlockedRegionIDs: unlocked)
     }
 }

@@ -31,6 +31,11 @@ public protocol ProfileCommandGateway: Sendable {
     ) async throws -> UserProfileDTO
 }
 
+/// 首启选择必须原子地确定起始城市、主线路线与初始解锁，不能复用普通档案修改接口。
+public protocol OnboardingCommandGateway: Sendable {
+    func completeOnboarding(starterRegionID: String) async throws -> UserProfileDTO
+}
+
 public protocol ProgressionRewardGateway: Sendable {
     /// 返回 true 表示本次首次领取；false 表示当前状态空间已发放过。
     func claimStarterTicket() async throws -> Bool

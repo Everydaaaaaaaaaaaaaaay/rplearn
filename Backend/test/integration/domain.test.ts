@@ -123,7 +123,8 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const initialSnapshot = initial.json<UserSnapshot>();
     expect(initialSnapshot.profile.currentRegionId).toBe("london");
     expect(initialSnapshot.profile.coins).toBe(0);
-    expect(initialSnapshot.profile.unlockedRegionIds).toEqual(["london"]);
+    expect(initialSnapshot.profile.starterRegionId).toBeNull();
+    expect(initialSnapshot.profile.unlockedRegionIds).toEqual([]);
 
     const prematureStarter = await app.inject({
       headers: authenticated({ idempotencyKey: newEntityId() }),
@@ -133,14 +134,25 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     expect(prematureStarter.statusCode).toBe(409);
     expect(prematureStarter.json<{ code: string }>().code).toBe("ONBOARDING_REQUIRED");
 
+    const onboarding = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "POST",
+      payload: { starterRegionId: "melbourne" },
+      url: "/v1/progression/onboarding",
+    });
+    expect(onboarding.statusCode).toBe(200);
+    const onboardedProfile = onboarding.json<UserSnapshot["profile"]>();
+    expect(onboardedProfile.currentRegionId).toBe("melbourne");
+    expect(onboardedProfile.starterRegionId).toBe("melbourne");
+    expect(onboardedProfile.unlockedRegionIds).toEqual(["melbourne"]);
+
     const profileCommand = newEntityId();
     const profileUpdate = await app.inject({
       headers: authenticated({ idempotencyKey: profileCommand }),
       method: "PATCH",
       payload: {
         displayName: "跨平台旅行者",
-        expectedVersion: initialSnapshot.profile.version,
-        hasCompletedOnboarding: true,
+        expectedVersion: onboardedProfile.version,
       },
       url: "/v1/me",
     });
@@ -149,7 +161,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       profileUpdate.json<{ displayName: string; version: number }>(),
     ).toMatchObject({
       displayName: "跨平台旅行者",
-      version: initialSnapshot.profile.version + 1,
+      version: onboardedProfile.version + 1,
     });
 
     const staleProfileUpdate = await app.inject({
@@ -169,7 +181,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const noTicket = await app.inject({
       headers: authenticated({ idempotencyKey: newEntityId() }),
       method: "POST",
-      payload: { targetRegionId: "melbourne" },
+      payload: { targetRegionId: "newyork" },
       url: "/v1/travel",
     });
     expect(noTicket.statusCode).toBe(409);
@@ -246,7 +258,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       headers: authenticated({ idempotencyKey: travelCommand }),
       method: "POST",
       payload: {
-        targetRegionId: "melbourne",
+        targetRegionId: "london",
         ticketId: purchased.ticket.id,
       },
       url: "/v1/travel",
@@ -260,7 +272,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       headers: authenticated({ idempotencyKey: travelCommand }),
       method: "POST",
       payload: {
-        targetRegionId: "melbourne",
+        targetRegionId: "london",
         ticketId: purchased.ticket.id,
       },
       url: "/v1/travel",
@@ -268,14 +280,14 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     expect(travelRetry.statusCode).toBe(200);
     expect(travelRetry.json<TravelResult>()).toEqual(firstTravelResult);
 
-    const returnToLondon = await app.inject({
+    const returnToMelbourne = await app.inject({
       headers: authenticated({ idempotencyKey: newEntityId() }),
       method: "POST",
-      payload: { targetRegionId: "london" },
+      payload: { targetRegionId: "melbourne" },
       url: "/v1/travel",
     });
-    expect(returnToLondon.statusCode).toBe(200);
-    expect(returnToLondon.json<TravelResult>().consumedTicketId).toBeNull();
+    expect(returnToMelbourne.statusCode).toBe(200);
+    expect(returnToMelbourne.json<TravelResult>().consumedTicketId).toBeNull();
 
     const ticketResponses = await Promise.all(
       [newEntityId(), newEntityId()].map((idempotencyKey) =>
@@ -314,8 +326,8 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const finalSnapshot = finalSnapshotResponse.json<UserSnapshot>();
     expect(finalSnapshot.profile.currentRegionId).toBe("newyork");
     expect(finalSnapshot.profile.unlockedRegionIds).toEqual([
-      "london",
       "melbourne",
+      "london",
       "newyork",
     ]);
     expect(finalSnapshot.tickets).toHaveLength(2);

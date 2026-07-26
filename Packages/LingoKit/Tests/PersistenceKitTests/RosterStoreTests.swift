@@ -22,15 +22,27 @@ struct RosterStoreTests {
         )
     }
 
-    @Test("主角色导入幂等，且默认进好友列表")
+    @Test("主角色导入幂等，选择与剧情相遇后才进入好友列表")
     func importIdempotent() async throws {
         let store = try makeStore()
-        let cards = [sampleCard(name: "A"), sampleCard(name: "B"), sampleCard(name: "C")]
+        let cards = [
+            sampleCard(name: "A", regionID: "london"),
+            sampleCard(name: "B", regionID: "melbourne"),
+            sampleCard(name: "C", regionID: "newyork"),
+        ]
         try await store.importMainCharactersIfNeeded(cards: cards)
         try await store.importMainCharactersIfNeeded(cards: cards)
-        let all = try await store.allCharacters()
+        var all = try await store.allCharacters()
         #expect(all.count == 3)
-        #expect(all.allSatisfy { $0.isMainCharacter && $0.isFriend })
+        #expect(all.allSatisfy { $0.isMainCharacter && !$0.isFriend })
+
+        try await store.configureMainCharacters(unlockedRegionIDs: ["melbourne"])
+        all = try await store.allCharacters()
+        #expect(all.first { $0.card.regionID == "melbourne" }?.isFriend == true)
+        #expect(all.filter(\.isFriend).count == 1)
+
+        try await store.unlockMainCharacter(regionID: "newyork")
+        #expect(try await store.friends().count == 2)
         // 主角色不占好友位
         #expect(try await store.occupiedFriendSlots() == 0)
     }

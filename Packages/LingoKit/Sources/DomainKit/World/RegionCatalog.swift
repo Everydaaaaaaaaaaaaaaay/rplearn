@@ -1,5 +1,10 @@
 import Foundation
 
+public enum RegionRole: String, Sendable, Codable, Equatable {
+    case mainline
+    case side
+}
+
 /// 地区静态数据（regions.json），不建实体。
 public struct Region: Sendable, Codable, Equatable, Identifiable {
     public struct Activity: Sendable, Codable, Equatable, Identifiable {
@@ -14,6 +19,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
     public var countryCode: String
     public var countryNameEn: String
     public var countryNameZh: String
+    public var role: RegionRole
     public var taglineZh: String
     public var landmarks: [String]
     public var activities: [Activity]
@@ -27,6 +33,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         countryCode: String,
         countryNameEn: String,
         countryNameZh: String,
+        role: RegionRole = .side,
         taglineZh: String,
         landmarks: [String],
         activities: [Activity],
@@ -39,6 +46,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         self.countryCode = countryCode
         self.countryNameEn = countryNameEn
         self.countryNameZh = countryNameZh
+        self.role = role
         self.taglineZh = taglineZh
         self.landmarks = landmarks
         self.activities = activities
@@ -53,6 +61,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         case countryCode
         case countryNameEn
         case countryNameZh
+        case role
         case taglineZh
         case landmarks
         case activities
@@ -68,6 +77,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         countryCode = try container.decode(String.self, forKey: .countryCode)
         countryNameEn = try container.decode(String.self, forKey: .countryNameEn)
         countryNameZh = try container.decode(String.self, forKey: .countryNameZh)
+        role = try container.decodeIfPresent(RegionRole.self, forKey: .role) ?? .side
         taglineZh = try container.decode(String.self, forKey: .taglineZh)
         landmarks = try container.decode([String].self, forKey: .landmarks)
         activities = try container.decode([Activity].self, forKey: .activities)
@@ -97,5 +107,13 @@ public struct RegionCatalog: Sendable {
 
     public func region(id: String) -> Region? {
         regionsByID[id]
+    }
+
+    public var mainlineRegions: [Region] {
+        regions.filter { $0.role == .mainline }
+    }
+
+    public var sideRegions: [Region] {
+        regions.filter { $0.role == .side }
     }
 }

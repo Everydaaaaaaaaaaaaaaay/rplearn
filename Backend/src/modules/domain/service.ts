@@ -4,6 +4,7 @@ import { AppError } from "../../shared/errors.js";
 import { DomainRepository } from "./repository.js";
 import type {
   CommandIdentity,
+  OnboardingSelection,
   ProfilePatch,
   Ticket,
   TicketSource,
@@ -15,6 +16,11 @@ import type {
 
 export type DomainService = Readonly<{
   claimStarterTicket: (userId: string, commandId: string) => Promise<Ticket>;
+  completeOnboarding: (
+    userId: string,
+    commandId: string,
+    selection: OnboardingSelection,
+  ) => Promise<UserProfile>;
   completeStory: (
     userId: string,
     commandId: string,
@@ -60,7 +66,11 @@ const STORY_REWARDS = new Map<string, number>([
   ["mainline_melbourne_2", 120],
   ["mainline_newyork", 100],
   ["mainline_newyork_2", 120],
+  ["mainline_capetown", 140],
+  ["mainline_singapore", 200],
 ]);
+
+const STARTER_REGION_IDS = new Set(["london", "melbourne", "newyork"]);
 
 function command(commandId: string, route: string, payload: unknown): CommandIdentity {
   return {
@@ -80,6 +90,22 @@ export function createDomainService(database: DatabaseResource): DomainService {
           reward: "starter-ticket-v1",
         }),
       ),
+    completeOnboarding: (userId, commandId, selection) => {
+      if (!STARTER_REGION_IDS.has(selection.starterRegionId)) {
+        return Promise.reject(
+          new AppError({
+            code: "INVALID_STARTER_REGION",
+            message: "The selected region does not have a starter character.",
+            statusCode: 400,
+          }),
+        );
+      }
+      return repository.completeOnboarding(
+        userId,
+        command(commandId, "progression.completeOnboarding", selection),
+        selection.starterRegionId,
+      );
+    },
     completeStory: (userId, commandId, storyId) => {
       const rewardCoins = STORY_REWARDS.get(storyId);
       if (rewardCoins === undefined) {

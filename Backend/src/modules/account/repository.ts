@@ -80,6 +80,7 @@ export class AccountRepository {
             friend_slot_limit as "friendSlotLimit",
             quiz_globally_enabled as "quizGloballyEnabled",
             has_completed_onboarding as "hasCompletedOnboarding",
+            starter_region_id as "starterRegionId",
             version,
             created_at as "createdAt",
             updated_at as "updatedAt"

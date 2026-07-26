@@ -25,6 +25,7 @@ type ProfileRow = Readonly<{
   game_level: number;
   has_completed_onboarding: boolean;
   quiz_globally_enabled: boolean;
+  starter_region_id: string | null;
   updated_at: string;
   version: number;
 }>;
@@ -43,6 +44,7 @@ function mapProfile(
     gameLevel: row.game_level,
     hasCompletedOnboarding: row.has_completed_onboarding,
     quizGloballyEnabled: row.quiz_globally_enabled,
+    starterRegionId: row.starter_region_id,
     unlockedRegionIds,
     updatedAt: new Date(row.updated_at).toISOString(),
     version: row.version,
@@ -69,18 +71,11 @@ export class DomainRepository {
   constructor(private readonly resource: DatabaseResource) {}
 
   async ensureProfile(userId: string): Promise<void> {
-    await this.resource.sql.begin(async (sql) => {
-      await sql`
-        insert into app.user_profiles (user_id)
-        values (${userId})
-        on conflict (user_id) do nothing
-      `;
-      await sql`
-        insert into app.region_unlocks (user_id, region_id, source)
-        values (${userId}, 'london', 'initial')
-        on conflict (user_id, region_id) do nothing
-      `;
-    });
+    await this.resource.sql`
+      insert into app.user_profiles (user_id)
+      values (${userId})
+      on conflict (user_id) do nothing
+    `;
   }
 
   async snapshot(userId: string): Promise<UserSnapshot> {
@@ -96,6 +91,7 @@ export class DomainRepository {
         game_level,
         has_completed_onboarding,
         quiz_globally_enabled,
+        starter_region_id,
         updated_at,
         version
       from app.user_profiles
@@ -144,6 +140,73 @@ export class DomainRepository {
       ),
       tickets: ticketRows.map(mapTicket),
     };
+  }
+
+  async completeOnboarding(
+    userId: string,
+    command: CommandIdentity,
+    starterRegionId: string,
+  ): Promise<UserProfile> {
+    await this.ensureProfile(userId);
+    return this.executeCommand(userId, command, async (sql): Promise<UserProfile> => {
+      const [profile] = await sql<{ has_completed_onboarding: boolean }[]>`
+        select has_completed_onboarding
+        from app.user_profiles
+        where user_id = ${userId}
+        for update
+      `;
+      if (profile === undefined) {
+        throw new Error("Profile does not exist");
+      }
+      if (profile.has_completed_onboarding) {
+        throw new AppError({
+          code: "ONBOARDING_ALREADY_COMPLETED",
+          message: "The onboarding selection is already final.",
+          statusCode: 409,
+        });
+      }
+
+      const [row] = await sql<ProfileRow[]>`
+        update app.user_profiles
+        set current_region_id = ${starterRegionId},
+            starter_region_id = ${starterRegionId},
+            has_completed_onboarding = true,
+            version = version + 1,
+            updated_at = now()
+        where user_id = ${userId}
+        returning
+          coins,
+          current_region_id,
+          difficulty,
+          display_name,
+          experience_points,
+          friend_slot_limit,
+          game_level,
+          has_completed_onboarding,
+          quiz_globally_enabled,
+          starter_region_id,
+          updated_at,
+          version
+      `;
+      if (row === undefined) {
+        throw new Error("Onboarding update did not return a profile");
+      }
+      await sql`
+        insert into app.region_unlocks (user_id, region_id, source)
+        values (${userId}, ${starterRegionId}, 'onboarding')
+        on conflict (user_id, region_id) do nothing
+      `;
+      const unlocks = await sql<{ region_id: string }[]>`
+        select region_id
+        from app.region_unlocks
+        where user_id = ${userId}
+        order by unlocked_at, region_id
+      `;
+      return mapProfile(
+        row,
+        unlocks.map((unlock) => unlock.region_id),
+      );
+    });
   }
 
   async claimStarterTicket(userId: string, command: CommandIdentity): Promise<Ticket> {
@@ -353,6 +416,21 @@ export class DomainRepository {
   ): Promise<UserProfile> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql): Promise<UserProfile> => {
+      if (patch.hasCompletedOnboarding === true) {
+        const [journey] = await sql<{ starter_region_id: string | null }[]>`
+          select starter_region_id
+          from app.user_profiles
+          where user_id = ${userId}
+          for update
+        `;
+        if (journey?.starter_region_id === null) {
+          throw new AppError({
+            code: "ONBOARDING_SELECTION_REQUIRED",
+            message: "Choose a starter character before completing onboarding.",
+            statusCode: 409,
+          });
+        }
+      }
       const [row] = await sql<ProfileRow[]>`
           update app.user_profiles
           set display_name = coalesce(${patch.displayName ?? null}, display_name),
@@ -382,6 +460,7 @@ export class DomainRepository {
             game_level,
             has_completed_onboarding,
             quiz_globally_enabled,
+            starter_region_id,
             updated_at,
             version
         `;

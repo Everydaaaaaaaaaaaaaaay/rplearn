@@ -11,6 +11,7 @@ public enum UserStateActivation: Sendable, Equatable {
 /// 把跨平台服务器状态投影到 SwiftData。所有资产修改仍由服务端事务决定。
 public actor BackendUserStateCoordinator:
     ProfileCommandGateway,
+    OnboardingCommandGateway,
     ProgressionRewardGateway,
     TicketPurchaseGateway,
     TravelCommandGateway
@@ -36,6 +37,10 @@ public actor BackendUserStateCoordinator:
     private struct TravelCommand: Encodable, Sendable {
         let targetRegionId: String
         let ticketId: UUID?
+    }
+
+    private struct OnboardingCommand: Encodable, Sendable {
+        let starterRegionId: String
     }
 
     private struct EmptyCommand: Encodable, Sendable {}
@@ -227,6 +232,28 @@ public actor BackendUserStateCoordinator:
         }
     }
 
+    public func completeOnboarding(starterRegionID: String) async throws -> UserProfileDTO {
+        let intent = "progression:onboarding:\(starterRegionID)"
+        let commandID = pendingCommandID(for: intent)
+        do {
+            let _: BackendUserProfile = try await backend.send(
+                path: "/v1/progression/onboarding",
+                method: "POST",
+                body: OnboardingCommand(starterRegionId: starterRegionID),
+                idempotencyKey: commandID
+            )
+            try await refreshCurrentSnapshot()
+            completeCommand(for: intent)
+            guard let profile = snapshot?.state.profile else {
+                throw BackendClientError.invalidResponse
+            }
+            return await mapPreservingEntitlement(profile)
+        } catch let error as BackendClientError {
+            abandonCommand(for: intent, ifDeterministic: error)
+            throw error
+        }
+    }
+
     public func completeStory(_ storyID: String) async throws -> Bool {
         let intent = "progression:story:\(storyID)"
         let commandID = pendingCommandID(for: intent)
@@ -394,6 +421,7 @@ public actor BackendUserStateCoordinator:
         UserProfileDTO(
             displayName: profile.displayName,
             currentRegionID: profile.currentRegionId,
+            starterRegionID: profile.starterRegionId,
             coins: profile.coins,
             subscriptionTier: .free,
             friendSlotLimit: profile.friendSlotLimit,

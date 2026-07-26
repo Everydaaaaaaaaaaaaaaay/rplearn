@@ -8,6 +8,7 @@ public struct MapDependencies: Sendable {
     public let travelService: TravelService
     public let economyService: EconomyService
     public let regionCatalog: RegionCatalog
+    public let storyProgress: StoryProgressStore
 
     public init(
         economyStore: EconomyStore,
@@ -15,7 +16,8 @@ public struct MapDependencies: Sendable {
         stubStore: TicketStubStore,
         travelService: TravelService,
         economyService: EconomyService,
-        regionCatalog: RegionCatalog
+        regionCatalog: RegionCatalog,
+        storyProgress: StoryProgressStore
     ) {
         self.economyStore = economyStore
         self.itemStore = itemStore
@@ -23,6 +25,7 @@ public struct MapDependencies: Sendable {
         self.travelService = travelService
         self.economyService = economyService
         self.regionCatalog = regionCatalog
+        self.storyProgress = storyProgress
     }
 }
 

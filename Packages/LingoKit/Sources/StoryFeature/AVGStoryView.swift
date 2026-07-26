@@ -11,6 +11,7 @@ import SwiftUI
 public struct StoryDependencies: Sendable {
     public let storyProgress: StoryProgressStore
     public let progression: any ProgressionRewardGateway
+    public let rosterStore: RosterStore
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
@@ -18,12 +19,14 @@ public struct StoryDependencies: Sendable {
     public init(
         storyProgress: StoryProgressStore,
         progression: any ProgressionRewardGateway,
+        rosterStore: RosterStore,
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService
     ) {
         self.storyProgress = storyProgress
         self.progression = progression
+        self.rosterStore = rosterStore
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
@@ -310,6 +313,7 @@ public struct AVGStoryView: View {
         let storyID = self.storyID
         let progressStore = deps.storyProgress
         let progression = deps.progression
+        let rosterStore = deps.rosterStore
 
         player.onStateChange = { nodeID, flags in
             Task {
@@ -320,10 +324,15 @@ public struct AVGStoryView: View {
             // 客户端脚本只负责演出；奖励值由服务端白名单与账本决定。
             _ = reward
         }
-        player.onCompleted = { _ in
+        player.onCompleted = { unlocks in
             Task {
                 do {
                     _ = try await progression.completeStory(storyID)
+                    for unlock in unlocks {
+                        guard unlock.hasPrefix("character:") else { continue }
+                        let regionID = String(unlock.dropFirst("character:".count))
+                        try await rosterStore.unlockMainCharacter(regionID: regionID)
+                    }
                     try await progressStore.markCompleted(storyID: storyID)
                 } catch {
                     Log.app.warning("剧情完成同步失败：\(error)")
@@ -378,6 +387,9 @@ enum BackgroundPalette {
         case "melbourne_cafe": "☕️"
         case "newyork_subway": "🚇"
         case "newyork_street": "🌆"
+        case "capetown_signal_hill": "📻"
+        case "singapore_rain": "🌦️"
+        case "singapore_supertree": "🌿"
         default: nil
         }
     }

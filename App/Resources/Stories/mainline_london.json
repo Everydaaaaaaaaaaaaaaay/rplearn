@@ -30,6 +30,6 @@
     { "id": "n16", "type": "line", "speaker": "旁白", "text": "你接过那本旧书，把它小心地放进包里。伦敦的第一天，就这样被一行七十年前的字迹点亮了。", "next": "r01" },
     { "id": "r01", "type": "reward", "coins": 100, "next": "n17" },
     { "id": "n17", "type": "line", "speaker": "旁白", "text": "【获得 100 金币】与 Oliver 的故事，才刚刚开始。", "next": "end" },
-    { "id": "end", "type": "end", "unlocks": [] }
+    { "id": "end", "type": "end", "unlocks": ["character:london"] }
   ]
 }

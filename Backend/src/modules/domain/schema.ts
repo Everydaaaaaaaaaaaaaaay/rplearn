@@ -82,6 +82,7 @@ export const userProfiles = applicationSchema.table(
       .default(false)
       .notNull(),
     quizGloballyEnabled: boolean("quiz_globally_enabled").default(true).notNull(),
+    starterRegionId: text("starter_region_id").references(() => regions.id),
     updatedAt: timestamp("updated_at", {
       mode: "date",
       withTimezone: true,

@@ -52,6 +52,20 @@ struct LocalUserStateCoordinatorTests {
         #expect(try await fixture.itemStore.unconsumedTickets().count == 1)
     }
 
+    @Test("首选伙伴原子确定起始城市与路线")
+    func onboardingSelection() async throws {
+        let fixture = try makeFixture()
+
+        let profile = try await fixture.coordinator.completeOnboarding(
+            starterRegionID: "melbourne"
+        )
+
+        #expect(profile.hasCompletedOnboarding)
+        #expect(profile.currentRegionID == "melbourne")
+        #expect(profile.starterRegionID == "melbourne")
+        #expect(profile.unlockedRegionIDs == ["melbourne"])
+    }
+
     @Test("游客剧情奖励只发放一次")
     func storyRewardIsIdempotent() async throws {
         let fixture = try makeFixture()

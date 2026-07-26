@@ -6,9 +6,11 @@ import SwiftUI
 
 public struct MapView: View {
     private let deps: MapDependencies
+    private let onOpenMainline: @MainActor () -> Void
 
     @State private var profile: UserProfileDTO?
     @State private var tickets: [ItemDTO] = []
+    @State private var completedStories: Set<String> = []
     @State private var position: MapCameraPosition = .automatic
     @State private var selectedRegionID: String?
     @State private var travelTarget: Region?
@@ -16,8 +18,12 @@ public struct MapView: View {
     @State private var feedback: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(deps: MapDependencies) {
+    public init(
+        deps: MapDependencies,
+        onOpenMainline: @escaping @MainActor () -> Void = {}
+    ) {
         self.deps = deps
+        self.onOpenMainline = onOpenMainline
     }
 
     private var selectedRegion: Region? {
@@ -26,6 +32,49 @@ public struct MapView: View {
 
     private var currentRegion: Region? {
         profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
+    }
+
+    private var guidance: JourneyMapGuidance? {
+        #if DEBUG
+        switch ProcessInfo.processInfo.environment["UI_TEST_MAP_GUIDE"] {
+        case "single":
+            return .travel(
+                eyebrow: "主线下一站",
+                title: MainlineCatalog.capeTown.title,
+                detail: "前往信号山追踪跨洋广播，确认这不是一场巧合。",
+                regionIDs: ["capetown"]
+            )
+        case "two":
+            return .travel(
+                eyebrow: "分支目标",
+                title: "选择下一段城市回声",
+                detail: "两个目的地都会推进当前阶段。",
+                regionIDs: ["capetown", "singapore"]
+            )
+        case "multiple":
+            return .travel(
+                eyebrow: "主线之外",
+                title: "把旅程写成自己的故事",
+                detail: "选择一座尚未到访的城市继续探索。",
+                regionIDs: ["dublin", "edinburgh", "vancouver", "auckland"]
+            )
+        case "complete":
+            return .complete(
+                title: "世界地图已经点亮",
+                detail: "返回主线重温旅途，或等待下一段城市故事。"
+            )
+        default:
+            break
+        }
+        #endif
+        guard let profile else { return nil }
+        return MainlineCatalog.mapGuidance(
+            starterRegionID: profile.starterRegionID,
+            currentRegionID: profile.currentRegionID,
+            completedStoryIDs: completedStories,
+            unlockedRegionIDs: Set(profile.unlockedRegionIDs),
+            availableSideRegionIDs: deps.regionCatalog.sideRegions.map(\.id)
+        )
     }
 
     public var body: some View {
@@ -59,19 +108,22 @@ public struct MapView: View {
                 )
             )
             .safeAreaPadding(.top, 76)
-            .safeAreaPadding(.bottom, selectedRegion == nil ? DSSpacing.md : 154)
+            .safeAreaPadding(.bottom, guidance == nil ? DSSpacing.md : 172)
 
             VStack(spacing: 0) {
                 mapHUD
                 Spacer()
-                if let selectedRegion {
-                    CityCard(
-                        region: selectedRegion,
-                        state: pinState(selectedRegion),
-                        ticketCount: usableTickets(for: selectedRegion).count,
-                        onTravel: { travelTarget = selectedRegion }
+                if let guidance {
+                    JourneyGuideView(
+                        guidance: guidance,
+                        regionCatalog: deps.regionCatalog,
+                        state: pinState,
+                        ticketCount: { usableTickets(for: $0).count },
+                        onTravel: { travelTarget = $0 },
+                        onOpenMainline: onOpenMainline
                     )
-                    .id(selectedRegion.id)
+                    .dynamicTypeSize(...DynamicTypeSize.large)
+                    .id(guidance)
                     .transition(.opacity.combined(with: .scale(scale: 0.98, anchor: .bottom)))
                     .padding(.horizontal, DSSpacing.md)
                     .padding(.bottom, DSSpacing.md)
@@ -194,17 +246,36 @@ public struct MapView: View {
     }
 
     private func resetOverview() {
-        guard let region = selectedRegion
-            ?? profile.flatMap({ deps.regionCatalog.region(id: $0.currentRegionID) })
-            ?? deps.regionCatalog.regions.first
-        else { return }
-
-        show(region)
+        let guidedRegions = guidance?.destinationRegionIDs.compactMap(
+            deps.regionCatalog.region(id:)
+        ) ?? []
+        let regions = ([currentRegion].compactMap { $0 } + guidedRegions)
+        if regions.count > 1 {
+            show(regions)
+        } else if let region = regions.first ?? selectedRegion ?? deps.regionCatalog.regions.first {
+            show(region)
+        }
     }
 
     private func show(_ region: Region, animated: Bool = true) {
         withAnimation(animated && !reduceMotion ? .easeInOut(duration: 0.35) : nil) {
             position = Self.overviewPosition(for: region)
+        }
+    }
+
+    private func show(_ regions: [Region], animated: Bool = true) {
+        guard !regions.isEmpty else { return }
+        let points = regions.map { MKMapPoint(coordinate($0)) }
+        var rect = points.reduce(MKMapRect.null) { partial, point in
+            partial.union(MKMapRect(x: point.x, y: point.y, width: 1, height: 1))
+        }
+        let minimumPadding = 1_800_000.0
+        rect = rect.insetBy(
+            dx: -max(rect.width * 0.28, minimumPadding),
+            dy: -max(rect.height * 0.28, minimumPadding)
+        )
+        withAnimation(animated && !reduceMotion ? .easeInOut(duration: 0.35) : nil) {
+            position = .rect(rect)
         }
     }
 
@@ -239,12 +310,16 @@ public struct MapView: View {
     }
 
     private func reload() async {
-        profile = try? await deps.economyStore.profile()
-        tickets = (try? await deps.itemStore.unconsumedTickets()) ?? []
+        async let loadedProfile = try? deps.economyStore.profile()
+        async let loadedTickets = try? deps.itemStore.unconsumedTickets()
+        async let loadedStories = try? deps.storyProgress.completedStoryIDs()
+        profile = await loadedProfile
+        tickets = await loadedTickets ?? []
+        completedStories = await loadedStories ?? []
         if selectedRegionID == nil,
            let region = profile.flatMap({ deps.regionCatalog.region(id: $0.currentRegionID) }) {
             selectedRegionID = region.id
-            show(region, animated: false)
+            resetOverview()
         }
     }
 

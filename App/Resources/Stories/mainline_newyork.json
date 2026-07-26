@@ -27,6 +27,6 @@
     { "id": "n13", "type": "line", "speaker": "旁白", "text": "你翻看着相机背屏里自己拍的第一张纽约照片，突然有点懂他说的『最真实的博物馆』了。", "next": "r01" },
     { "id": "r01", "type": "reward", "coins": 100, "next": "n14" },
     { "id": "n14", "type": "line", "speaker": "旁白", "text": "【获得 100 金币】纽约的故事，定格在第一张快门里。", "next": "end" },
-    { "id": "end", "type": "end", "unlocks": [] }
+    { "id": "end", "type": "end", "unlocks": ["character:newyork"] }
   ]
 }

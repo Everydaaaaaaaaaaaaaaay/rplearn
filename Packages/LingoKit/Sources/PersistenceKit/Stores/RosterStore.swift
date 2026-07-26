@@ -11,7 +11,7 @@ public actor RosterStore {
     }
 
     /// 首启导入 3 主角色（幂等：按 name+isMainCharacter 去重）。
-    /// 主角色默认进好友列表且不占好友位（plan.md §3.7）。
+    /// 角色先作为候选写入名册，只有首选伙伴与主线中相遇的伙伴会进入好友列表。
     public func importMainCharactersIfNeeded(cards: [CharacterCard], difficulty: DifficultyLevel = .junior3) throws {
         let existing = try modelContext.fetch(
             FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isMainCharacter })
@@ -38,7 +38,7 @@ public actor RosterStore {
                 avatarAssetName: card.avatarAssetName,
                 difficultyLevelRaw: difficulty.rawValue,
                 isMainCharacter: true,
-                isFriend: true,
+                isFriend: false,
                 cardJSON: card.encodedJSON()
             )
             modelContext.insert(entity)
@@ -103,6 +103,36 @@ public actor RosterStore {
 
     public func character(id: UUID) throws -> CharacterDTO? {
         try fetchEntity(id: id).map(Self.dto(from:))
+    }
+
+    /// 以主线权威进度重建三位主角的可见状态，兼容旧版本曾默认全部解锁的数据。
+    public func configureMainCharacters(unlockedRegionIDs: Set<String>) throws {
+        let entities = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isMainCharacter })
+        )
+        var changed = false
+        for entity in entities {
+            let shouldBeFriend = unlockedRegionIDs.contains(entity.regionID)
+            guard entity.isFriend != shouldBeFriend else { continue }
+            entity.isFriend = shouldBeFriend
+            try journal(entity)
+            changed = true
+        }
+        if changed {
+            try modelContext.save()
+        }
+    }
+
+    public func unlockMainCharacter(regionID: String) throws {
+        let entities = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(
+                predicate: #Predicate { $0.isMainCharacter && $0.regionID == regionID }
+            )
+        )
+        guard let entity = entities.first, !entity.isFriend else { return }
+        entity.isFriend = true
+        try journal(entity)
+        try modelContext.save()
     }
 
     /// 占用的好友位数量（主角色不占位）。

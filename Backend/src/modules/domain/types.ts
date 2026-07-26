@@ -37,6 +37,7 @@ export type UserProfile = Readonly<{
   gameLevel: number;
   hasCompletedOnboarding: boolean;
   quizGloballyEnabled: boolean;
+  starterRegionId: string | null;
   unlockedRegionIds: readonly string[];
   updatedAt: string;
   version: number;
@@ -59,6 +60,10 @@ export type ProfilePatch = Readonly<{
   expectedVersion: number;
   hasCompletedOnboarding?: boolean;
   quizGloballyEnabled?: boolean;
+}>;
+
+export type OnboardingSelection = Readonly<{
+  starterRegionId: string;
 }>;
 
 export type TravelResult = Readonly<{

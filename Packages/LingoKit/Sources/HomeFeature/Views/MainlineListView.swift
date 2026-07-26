@@ -12,21 +12,25 @@ public struct MainlineListView: View {
         self.deps = deps
     }
 
-    private var region: Region? {
-        profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
+    private var journey: MainlineJourney? {
+        profile.map { MainlineCatalog.journey(starterRegionID: $0.starterRegionID) }
     }
 
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DSSpacing.md) {
-                if let region {
-                    header(region)
-                    let chapters = MainlineCatalog.chapters(forRegion: region.id)
-                    ForEach(Array(chapters.enumerated()), id: \.element.id) { index, chapter in
-                        NavigationLink(value: chapter) {
-                            chapterCard(chapter, index: index, chapters: chapters)
+                if let journey, let profile {
+                    header(journey)
+                    ForEach(Array(journey.stops.enumerated()), id: \.element.id) { index, stop in
+                        let status = stopStatus(index: index, journey: journey)
+                        if canOpen(stop, status: status, profile: profile) {
+                            NavigationLink(value: stop.chapter) {
+                                stopCard(stop, index: index, status: status, profile: profile)
+                            }
+                            .buttonStyle(.pressableCard)
+                        } else {
+                            stopCard(stop, index: index, status: status, profile: profile)
                         }
-                        .buttonStyle(.pressableCard)
                     }
                 } else {
                     ProgressView().frame(maxWidth: .infinity, minHeight: 220)
@@ -40,62 +44,115 @@ public struct MainlineListView: View {
         .onAppear { Task { await reload() } }
     }
 
-    private func header(_ region: Region) -> some View {
-        let chapters = MainlineCatalog.chapters(forRegion: region.id)
-        let done = chapters.filter { completed.contains($0.storyID) }.count
+    private func header(_ journey: MainlineJourney) -> some View {
+        let done = journey.stops.filter { completed.contains($0.chapter.storyID) }.count
         return VStack(alignment: .leading, spacing: DSSpacing.sm) {
             HStack {
-                DSChip("\(flag(region.countryCode)) \(region.nameZh)", tint: .dsSky, prominent: true)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("五城回声")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(Color.dsSky)
+                    Text(journey.title)
+                        .font(.headline)
+                }
                 Spacer()
-                Text("\(done) / \(chapters.count) 章")
+                Text("\(done) / \(journey.stops.count) 站")
                     .font(.subheadline.monospacedDigit().weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-            ProgressView(value: chapters.isEmpty ? 0 : Double(done) / Double(chapters.count))
+            ProgressView(value: Double(done) / Double(journey.stops.count))
                 .tint(.dsSuccess)
         }
         .dsCard()
     }
 
-    private func chapterCard(
-        _ chapter: MainlineChapter,
+    private enum StopStatus: Equatable {
+        case completed
+        case active
+        case future
+    }
+
+    private func stopStatus(index: Int, journey: MainlineJourney) -> StopStatus {
+        let stop = journey.stops[index]
+        if completed.contains(stop.chapter.storyID) {
+            return .completed
+        }
+        let activeIndex = journey.stops.firstIndex {
+            !completed.contains($0.chapter.storyID)
+        } ?? journey.stops.count
+        return index == activeIndex ? .active : .future
+    }
+
+    private func canOpen(
+        _ stop: MainlineStop,
+        status: StopStatus,
+        profile: UserProfileDTO
+    ) -> Bool {
+        status != .future && profile.currentRegionID == stop.regionID
+    }
+
+    private func stopCard(
+        _ stop: MainlineStop,
         index: Int,
-        chapters: [MainlineChapter]
+        status: StopStatus,
+        profile: UserProfileDTO
     ) -> some View {
-        let isDone = completed.contains(chapter.storyID)
-        let firstOpenIndex = chapters.firstIndex { !completed.contains($0.storyID) } ?? chapters.count
-        let isCurrent = !isDone && index == firstOpenIndex
-        let isFuture = !isDone && !isCurrent
+        let chapter = stop.chapter
+        let isDone = status == .completed
+        let isActive = status == .active
+        let isFuture = status == .future
+        let isHere = profile.currentRegionID == stop.regionID
+        let region = deps.regionCatalog.region(id: stop.regionID)
 
         return HStack(spacing: DSSpacing.sm) {
-            Image(systemName: isDone ? "checkmark.seal.fill" : (isFuture ? "lock.open.fill" : "book.pages.fill"))
+            ZStack {
+                Text(region.map { flag($0.countryCode) } ?? "🌍")
+                    .font(.title2)
+                if isDone {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.caption)
+                        .foregroundStyle(Color.dsSuccess)
+                        .background(Color.dsSurface, in: Circle())
+                        .offset(x: 15, y: 15)
+                }
+            }
                 .font(.title2)
-                .foregroundStyle(isDone ? Color.dsSuccess : (isFuture ? .secondary : .white))
                 .frame(width: 44, height: 44)
                 .background(
-                    isCurrent ? .white.opacity(0.18) : Color.dsSky.opacity(0.1),
+                    isActive ? .white.opacity(0.18) : Color.dsSky.opacity(0.1),
                     in: RoundedRectangle(cornerRadius: DSRadius.inline)
                 )
             VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 6) {
+                    Text("第 \(index + 1) 站 · \(region?.nameZh ?? stop.regionID)")
+                        .font(.caption.weight(.black))
+                    if isHere {
+                        Text("当前城市")
+                            .font(.system(size: 9, weight: .black))
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(Color.dsSuccess.opacity(isActive ? 0.26 : 0.12), in: Capsule())
+                    }
+                }
                 Text(chapter.title)
-                    .font(.headline)
+                    .font(.subheadline.weight(.bold))
                 Text(chapter.subtitle)
                     .font(.footnote)
-                    .foregroundStyle(isCurrent ? .white.opacity(0.86) : .secondary)
+                    .foregroundStyle(isActive ? .white.opacity(0.86) : .secondary)
                     .lineLimit(2)
-                Text(isDone ? "重温" : (isCurrent ? "继续故事" : "可提前浏览"))
+                Text(actionText(status: status, isHere: isHere, regionName: region?.nameZh))
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(isCurrent ? .white : (isDone ? Color.dsSuccess : Color.dsSky))
+                    .foregroundStyle(isActive ? .white : (isDone ? Color.dsSuccess : .secondary))
             }
             Spacer()
-            Image(systemName: "chevron.right")
+            Image(systemName: canOpen(stop, status: status, profile: profile) ? "chevron.right" : "lock.fill")
                 .font(.caption.bold())
-                .foregroundStyle(isCurrent ? Color.white : Color.secondary.opacity(0.55))
+                .foregroundStyle(isActive ? Color.white : Color.secondary.opacity(0.55))
         }
-        .foregroundStyle(isCurrent ? .white : .primary)
+        .foregroundStyle(isActive ? .white : .primary)
         .padding(DSSpacing.md)
         .background {
-            if isCurrent {
+            if isActive {
                 LinearGradient(
                     colors: [Color.dsSky, DSScenePalette.city(chapter.regionID).accent],
                     startPoint: .topLeading,
@@ -108,9 +165,20 @@ public struct MainlineListView: View {
         .clipShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(isCurrent ? .white.opacity(0.22) : Color.dsBorder, lineWidth: 1)
+                .stroke(isActive ? .white.opacity(0.22) : Color.dsBorder, lineWidth: 1)
         }
-        .opacity(isDone ? 0.76 : 1)
+        .opacity(isFuture ? 0.6 : (isDone ? 0.82 : 1))
+    }
+
+    private func actionText(status: StopStatus, isHere: Bool, regionName: String?) -> String {
+        switch status {
+        case .completed:
+            isHere ? "可重温" : "回到\(regionName ?? "这座城市")后重温"
+        case .active:
+            isHere ? "开展剧情" : "请先前往\(regionName ?? "目标城市")"
+        case .future:
+            "完成上一站后解锁"
+        }
     }
 
     private func reload() async {

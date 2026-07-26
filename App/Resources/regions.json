@@ -7,6 +7,7 @@
       "country_code": "GB",
       "country_name_en": "United Kingdom",
       "country_name_zh": "英国",
+      "role": "mainline",
       "latitude": 51.5074,
       "longitude": -0.1278,
       "tagline_zh": "红色巴士与雾中钟声，博物馆和酒馆一样多的城市。",
@@ -24,6 +25,7 @@
       "country_code": "AU",
       "country_name_en": "Australia",
       "country_name_zh": "澳大利亚",
+      "role": "mainline",
       "latitude": -37.8136,
       "longitude": 144.9631,
       "tagline_zh": "涂鸦巷子里飘着咖啡香，电车叮叮驶向海边。",
@@ -41,6 +43,7 @@
       "country_code": "US",
       "country_name_en": "United States",
       "country_name_zh": "美国",
+      "role": "mainline",
       "latitude": 40.7128,
       "longitude": -74.0060,
       "tagline_zh": "永不熄灯的城市，每个街角都有一个故事。",
@@ -49,6 +52,186 @@
         { "id": "stroll_market", "title_zh": "逛街", "detail_zh": "在 SoHo 的街区里闲逛" },
         { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "端杯咖啡看人来人往" },
         { "id": "park", "title_zh": "公园散步", "detail_zh": "去中央公园走走" }
+      ]
+    },
+    {
+      "id": "capetown",
+      "name_en": "Cape Town",
+      "name_zh": "开普敦",
+      "country_code": "ZA",
+      "country_name_en": "South Africa",
+      "country_name_zh": "南非",
+      "role": "mainline",
+      "latitude": -33.9249,
+      "longitude": 18.4241,
+      "tagline_zh": "桌山把云铺成桌布，两片大洋在彩色街区外相遇。",
+      "landmarks": ["Table Mountain", "Bo-Kaap", "V&A Waterfront", "Cape Point"],
+      "activities": [
+        { "id": "mountain", "title_zh": "登桌山", "detail_zh": "搭缆车俯瞰城市与海湾" },
+        { "id": "market", "title_zh": "逛海港市集", "detail_zh": "在 Waterfront 听街头乐队" },
+        { "id": "coast", "title_zh": "沿海公路", "detail_zh": "去好望角寻找两洋交汇的风" }
+      ]
+    },
+    {
+      "id": "singapore",
+      "name_en": "Singapore",
+      "name_zh": "新加坡",
+      "country_code": "SG",
+      "country_name_en": "Singapore",
+      "country_name_zh": "新加坡",
+      "role": "mainline",
+      "latitude": 1.3521,
+      "longitude": 103.8198,
+      "tagline_zh": "雨林长进天际线，世界各地的语言在熟食中心同桌。",
+      "landmarks": ["Gardens by the Bay", "Marina Bay", "Jewel Changi", "Kampong Glam"],
+      "activities": [
+        { "id": "hawker", "title_zh": "熟食中心", "detail_zh": "用英语点一桌跨文化早餐" },
+        { "id": "garden", "title_zh": "夜游滨海湾", "detail_zh": "在超级树下看灯光亮起" },
+        { "id": "heritage", "title_zh": "街区漫步", "detail_zh": "穿过甘榜格南的彩色骑楼" }
+      ]
+    },
+    {
+      "id": "dublin",
+      "name_en": "Dublin",
+      "name_zh": "都柏林",
+      "country_code": "IE",
+      "country_name_en": "Ireland",
+      "country_name_zh": "爱尔兰",
+      "role": "side",
+      "latitude": 53.3498,
+      "longitude": -6.2603,
+      "tagline_zh": "文学、海风和现场音乐，把每间酒馆都变成故事现场。",
+      "landmarks": ["Trinity College", "Ha'penny Bridge", "Temple Bar", "Dublin Castle"],
+      "activities": [
+        { "id": "library", "title_zh": "拜访老图书馆", "detail_zh": "在长厅寻找作家的手稿" },
+        { "id": "music", "title_zh": "听现场音乐", "detail_zh": "学会用一句 cheers 加入合唱" },
+        { "id": "coast", "title_zh": "海边小火车", "detail_zh": "搭 DART 去 Howth 看悬崖" }
+      ]
+    },
+    {
+      "id": "edinburgh",
+      "name_en": "Edinburgh",
+      "name_zh": "爱丁堡",
+      "country_code": "GB",
+      "country_name_en": "United Kingdom",
+      "country_name_zh": "英国",
+      "role": "side",
+      "latitude": 55.9533,
+      "longitude": -3.1883,
+      "tagline_zh": "火山岩上的古堡俯瞰石巷，风里总像藏着一段传说。",
+      "landmarks": ["Edinburgh Castle", "Royal Mile", "Arthur's Seat", "Victoria Street"],
+      "activities": [
+        { "id": "castle", "title_zh": "古堡探访", "detail_zh": "沿皇家一英里登上城堡" },
+        { "id": "hike", "title_zh": "登亚瑟王座", "detail_zh": "从休眠火山俯瞰老城屋顶" },
+        { "id": "story", "title_zh": "夜间故事会", "detail_zh": "听向导讲一段苏格兰传说" }
+      ]
+    },
+    {
+      "id": "vancouver",
+      "name_en": "Vancouver",
+      "name_zh": "温哥华",
+      "country_code": "CA",
+      "country_name_en": "Canada",
+      "country_name_zh": "加拿大",
+      "role": "side",
+      "latitude": 49.2827,
+      "longitude": -123.1207,
+      "tagline_zh": "雪山贴着玻璃城市，骑一圈海堤就能从森林回到街头。",
+      "landmarks": ["Stanley Park", "Granville Island", "Canada Place", "Grouse Mountain"],
+      "activities": [
+        { "id": "seawall", "title_zh": "骑行海堤", "detail_zh": "沿 Stanley Park 绕海一周" },
+        { "id": "market", "title_zh": "逛格兰维尔岛", "detail_zh": "在公共市场尝本地小吃" },
+        { "id": "mountain", "title_zh": "上山看夜景", "detail_zh": "搭缆车去 Grouse Mountain" }
+      ]
+    },
+    {
+      "id": "auckland",
+      "name_en": "Auckland",
+      "name_zh": "奥克兰",
+      "country_code": "NZ",
+      "country_name_en": "New Zealand",
+      "country_name_zh": "新西兰",
+      "role": "side",
+      "latitude": -36.8485,
+      "longitude": 174.7633,
+      "tagline_zh": "帆船穿过火山环抱的海湾，城市尽头就是长满银蕨的步道。",
+      "landmarks": ["Sky Tower", "Waiheke Island", "Mount Eden", "Viaduct Harbour"],
+      "activities": [
+        { "id": "ferry", "title_zh": "搭船去海岛", "detail_zh": "从港口前往 Waiheke" },
+        { "id": "volcano", "title_zh": "走上伊甸山", "detail_zh": "沿火山口看城市全景" },
+        { "id": "sail", "title_zh": "体验帆船", "detail_zh": "在风帆之都学几个航海口令" }
+      ]
+    },
+    {
+      "id": "nairobi",
+      "name_en": "Nairobi",
+      "name_zh": "内罗毕",
+      "country_code": "KE",
+      "country_name_en": "Kenya",
+      "country_name_zh": "肯尼亚",
+      "role": "side",
+      "latitude": -1.2921,
+      "longitude": 36.8219,
+      "tagline_zh": "现代街区与草原只隔一道天际线，清晨常从鸟鸣开始。",
+      "landmarks": ["Nairobi National Park", "Karura Forest", "KICC", "Maasai Market"],
+      "activities": [
+        { "id": "safari", "title_zh": "城市边缘观兽", "detail_zh": "清晨去国家公园看长颈鹿" },
+        { "id": "forest", "title_zh": "森林步道", "detail_zh": "在 Karura Forest 骑行" },
+        { "id": "market", "title_zh": "逛马赛市集", "detail_zh": "和摊主聊手工艺背后的故事" }
+      ]
+    },
+    {
+      "id": "reykjavik",
+      "name_en": "Reykjavík",
+      "name_zh": "雷克雅未克",
+      "country_code": "IS",
+      "country_name_en": "Iceland",
+      "country_name_zh": "冰岛",
+      "role": "side",
+      "latitude": 64.1466,
+      "longitude": -21.9426,
+      "tagline_zh": "彩色屋顶贴着北大西洋，地热蒸汽把漫长冬夜变得温暖。",
+      "landmarks": ["Hallgrímskirkja", "Harpa", "Sun Voyager", "Tjörnin"],
+      "activities": [
+        { "id": "harbour", "title_zh": "旧港散步", "detail_zh": "沿海寻找 Sun Voyager" },
+        { "id": "pool", "title_zh": "泡地热泳池", "detail_zh": "在热气里和本地人闲聊" },
+        { "id": "aurora", "title_zh": "追极光", "detail_zh": "带上热饮去城外等夜空变绿" }
+      ]
+    },
+    {
+      "id": "lisbon",
+      "name_en": "Lisbon",
+      "name_zh": "里斯本",
+      "country_code": "PT",
+      "country_name_en": "Portugal",
+      "country_name_zh": "葡萄牙",
+      "role": "side",
+      "latitude": 38.7223,
+      "longitude": -9.1393,
+      "tagline_zh": "黄色电车爬过瓷砖山坡，塔霍河把夕阳铺满整座城。",
+      "landmarks": ["Belém Tower", "Tram 28", "Alfama", "Praça do Comércio"],
+      "activities": [
+        { "id": "tram", "title_zh": "搭 28 路电车", "detail_zh": "穿过 Alfama 的陡坡小巷" },
+        { "id": "bakery", "title_zh": "寻找蛋挞", "detail_zh": "在老烘焙店学会点单" },
+        { "id": "viewpoint", "title_zh": "看河边日落", "detail_zh": "去观景台听一段 Fado" }
+      ]
+    },
+    {
+      "id": "tokyo",
+      "name_en": "Tokyo",
+      "name_zh": "东京",
+      "country_code": "JP",
+      "country_name_en": "Japan",
+      "country_name_zh": "日本",
+      "role": "side",
+      "latitude": 35.6762,
+      "longitude": 139.6503,
+      "tagline_zh": "安静神社与霓虹路口共享一条街，秩序里藏着无限细节。",
+      "landmarks": ["Shibuya Crossing", "Tokyo Tower", "Asakusa", "Meiji Shrine"],
+      "activities": [
+        { "id": "crossing", "title_zh": "穿过涩谷路口", "detail_zh": "在街角记录城市节奏" },
+        { "id": "shrine", "title_zh": "清晨逛神社", "detail_zh": "沿林荫道去明治神宫" },
+        { "id": "record", "title_zh": "淘唱片", "detail_zh": "在下北泽找一张城市主题黑胶" }
       ]
     }
   ]

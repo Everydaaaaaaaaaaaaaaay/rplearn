@@ -261,14 +261,26 @@ describe.runIf(runEndToEndTests)("compiled backend process", () => {
       headers: { authorization },
     });
     expect(initialSnapshotResponse.status).toBe(200);
-    const initialSnapshot = (await initialSnapshotResponse.json()) as ProfileSnapshot;
+
+    const onboardingResponse = await fetch(`${baseUrl}/v1/progression/onboarding`, {
+      body: JSON.stringify({ starterRegionId: "london" }),
+      headers: {
+        authorization,
+        "content-type": "application/json",
+        "idempotency-key": crypto.randomUUID(),
+      },
+      method: "POST",
+    });
+    expect(onboardingResponse.status).toBe(200);
+    const onboardedProfile = (await onboardingResponse.json()) as {
+      version: number;
+    };
 
     const profileCommandId = crypto.randomUUID();
     const profileRequest = {
       body: JSON.stringify({
         displayName: profileSecret,
-        expectedVersion: initialSnapshot.profile.version,
-        hasCompletedOnboarding: true,
+        expectedVersion: onboardedProfile.version,
       }),
       headers: {
         authorization,

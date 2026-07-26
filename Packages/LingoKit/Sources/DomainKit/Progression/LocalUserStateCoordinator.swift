@@ -7,6 +7,7 @@ import PersistenceKit
 /// `BackendUserStateCoordinator` 接管这些命令，避免客户端与服务端同时修改资产。
 public actor LocalUserStateCoordinator:
     ProfileCommandGateway,
+    OnboardingCommandGateway,
     ProgressionRewardGateway
 {
     public static let storyCompletionReward = 100
@@ -29,6 +30,17 @@ public actor LocalUserStateCoordinator:
         _ mutate: @Sendable (inout UserProfileDTO) -> Void
     ) async throws -> UserProfileDTO {
         try await economyStore.updateProfile(mutate)
+    }
+
+    public func completeOnboarding(starterRegionID: String) async throws -> UserProfileDTO {
+        try await economyStore.updateProfile { profile in
+            profile.currentRegionID = starterRegionID
+            profile.starterRegionID = starterRegionID
+            if !profile.unlockedRegionIDs.contains(starterRegionID) {
+                profile.unlockedRegionIDs.append(starterRegionID)
+            }
+            profile.hasCompletedOnboarding = true
+        }
     }
 
     public func claimStarterTicket() async throws -> Bool {
