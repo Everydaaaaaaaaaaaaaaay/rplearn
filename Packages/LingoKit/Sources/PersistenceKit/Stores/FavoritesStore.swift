@@ -1,9 +1,15 @@
 import Foundation
 import SwiftData
 
-/// 收藏语句快照。
+public enum FavoriteKind: String, Sendable, Equatable {
+    case word
+    case sentence
+}
+
+/// 收藏快照。保留旧版句子收藏，新版入口只新增单词收藏。
 public struct FavoriteDTO: Sendable, Equatable, Identifiable {
     public var id: UUID
+    public var kind: FavoriteKind
     public var sentence: String
     public var sourceMessageID: UUID?
     public var characterName: String
@@ -12,6 +18,7 @@ public struct FavoriteDTO: Sendable, Equatable, Identifiable {
 
     public init(
         id: UUID,
+        kind: FavoriteKind = .sentence,
         sentence: String,
         sourceMessageID: UUID?,
         characterName: String,
@@ -19,6 +26,7 @@ public struct FavoriteDTO: Sendable, Equatable, Identifiable {
         createdAt: Date
     ) {
         self.id = id
+        self.kind = kind
         self.sentence = sentence
         self.sourceMessageID = sourceMessageID
         self.characterName = characterName
@@ -27,9 +35,56 @@ public struct FavoriteDTO: Sendable, Equatable, Identifiable {
     }
 }
 
-/// 收藏夹仓库。收藏为句子快照（弱引用消息，消息删除不影响收藏）。
+/// 收藏夹仓库。保留旧版句子快照，并以规范化单词作为新版收藏的幂等键。
 @ModelActor
 public actor FavoritesStore {
+    private static let wordCollectionMarker = "__word__"
+
+    /// 收藏一个单词；同一单词忽略大小写并保持幂等。
+    @discardableResult
+    public func addWord(_ rawWord: String, translationZh: String? = nil) throws -> FavoriteDTO? {
+        let word = Self.normalizedWord(rawWord)
+        guard !word.isEmpty else { return nil }
+        if let existing = try fetchWord(word) {
+            return Self.dto(from: existing)
+        }
+        let entity = FavoriteEntity(
+            sentence: word,
+            sourceMessageID: nil,
+            characterName: Self.wordCollectionMarker,
+            translationZh: translationZh
+        )
+        modelContext.insert(entity)
+        try journal(entity)
+        try modelContext.save()
+        return Self.dto(from: entity)
+    }
+
+    /// 切换单词收藏，返回切换后的收藏状态。
+    public func toggleWord(_ rawWord: String, translationZh: String? = nil) throws -> Bool {
+        let word = Self.normalizedWord(rawWord)
+        guard !word.isEmpty else { return false }
+        if let existing = try fetchWord(word) {
+            try ContentMutationJournal.delete(
+                in: modelContext,
+                resourceType: .favorite,
+                resourceID: existing.favoriteID.uuidString.lowercased()
+            )
+            modelContext.delete(existing)
+            try modelContext.save()
+            return false
+        }
+        _ = try addWord(word, translationZh: translationZh)
+        return true
+    }
+
+    public func isWordFavorited(_ rawWord: String) throws -> Bool {
+        let word = Self.normalizedWord(rawWord)
+        guard !word.isEmpty else { return false }
+        return try fetchWord(word) != nil
+    }
+
+    /// 旧版句子收藏写入接口，仅用于兼容已有调用和数据测试。
     @discardableResult
     public func add(
         sentence: String,
@@ -92,6 +147,23 @@ public actor FavoritesStore {
         ).first
     }
 
+    private func fetchWord(_ word: String) throws -> FavoriteEntity? {
+        let marker = Self.wordCollectionMarker
+        return try modelContext.fetch(
+            FetchDescriptor<FavoriteEntity>(
+                predicate: #Predicate {
+                    $0.sourceMessageID == nil
+                        && $0.characterName == marker
+                        && $0.sentence == word
+                }
+            )
+        ).first
+    }
+
+    private static func normalizedWord(_ word: String) -> String {
+        word.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    }
+
     private func journal(_ entity: FavoriteEntity) throws {
         try ContentMutationJournal.upsert(
             in: modelContext,
@@ -113,6 +185,7 @@ public actor FavoritesStore {
     static func dto(from entity: FavoriteEntity) -> FavoriteDTO {
         FavoriteDTO(
             id: entity.favoriteID,
+            kind: entity.characterName == wordCollectionMarker ? .word : .sentence,
             sentence: entity.sentence,
             sourceMessageID: entity.sourceMessageID,
             characterName: entity.characterName,

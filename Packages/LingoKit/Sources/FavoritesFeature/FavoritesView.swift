@@ -25,7 +25,7 @@ public struct FavoritesDependencies: Sendable {
     }
 }
 
-/// 收藏夹：翻阅收藏语句，句内单词可点查词，可播放朗读。
+/// 收藏夹：以单词为新版收藏单位，同时兼容展示旧版句子收藏。
 public struct FavoritesView: View {
     private let deps: FavoritesDependencies
     @State private var favorites: [FavoriteDTO] = []
@@ -42,7 +42,7 @@ public struct FavoritesView: View {
                 ContentUnavailableView(
                     "收藏夹是空的",
                     systemImage: "star",
-                    description: Text("长按聊天中的句子气泡，选择「收藏」")
+                    description: Text("点击聊天或剧情中的单词，在释义弹窗右上角点亮星标")
                 )
             } else {
                 List {
@@ -67,8 +67,14 @@ public struct FavoritesView: View {
             onSpeak: { word in
                 let speech = deps.speech
                 Task { await speech.speak(word, language: "en-US") }
-            }
+            },
+            favoriteActions: wordFavoriteActions
         )
+        .onChange(of: wordSelection) { _, selection in
+            if selection == nil {
+                Task { await reload() }
+            }
+        }
         .task {
             await reload()
         }
@@ -82,14 +88,14 @@ public struct FavoritesView: View {
                 selection: wordSelection,
                 onSelect: { wordSelection = $0 }
             )
-            .font(.body)
+            .font(favorite.kind == .word ? .title3.weight(.semibold) : .body)
             if let translation = favorite.translationZh {
                 Text(translation)
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
             HStack {
-                Text(favorite.characterName)
+                Text(favorite.kind == .word ? "单词" : favorite.characterName)
                 Spacer()
                 Text(favorite.createdAt, style: .date)
                 Button {
@@ -106,6 +112,18 @@ public struct FavoritesView: View {
             .foregroundStyle(.tertiary)
         }
         .padding(.vertical, 4)
+    }
+
+    private var wordFavoriteActions: WordFavoriteActions {
+        let favoritesStore = deps.favorites
+        return WordFavoriteActions(
+            contains: { word in
+                (try? await favoritesStore.isWordFavorited(word)) ?? false
+            },
+            toggle: { word, translationZh in
+                (try? await favoritesStore.toggleWord(word, translationZh: translationZh)) ?? false
+            }
+        )
     }
 
     private func reload() async {

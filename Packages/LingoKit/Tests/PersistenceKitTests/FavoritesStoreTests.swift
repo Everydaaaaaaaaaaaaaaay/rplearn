@@ -55,4 +55,36 @@ struct FavoritesStoreTests {
         let all = try await store.all()
         #expect(all.map(\.sentence) == ["second", "first"])
     }
+
+    @Test("单词收藏忽略大小写并保持幂等")
+    func wordFavoriteIsNormalizedAndIdempotent() async throws {
+        let store = try makeStore()
+        let first = try #require(
+            try await store.addWord("  Seeking ", translationZh: "寻找；寻求")
+        )
+        let second = try #require(
+            try await store.addWord("seeking", translationZh: "不应覆盖")
+        )
+
+        #expect(first.id == second.id)
+        #expect(first.kind == .word)
+        #expect(first.sentence == "seeking")
+        #expect(try await store.isWordFavorited("SEEKING"))
+        #expect(try await store.all().count == 1)
+    }
+
+    @Test("单词收藏可切换并与旧句子收藏共存")
+    func togglesWordWithoutRemovingLegacySentence() async throws {
+        let store = try makeStore()
+        _ = try await store.add(
+            sentence: "I am seeking a quiet place.",
+            sourceMessageID: UUID(),
+            characterName: "Oliver"
+        )
+
+        #expect(try await store.toggleWord("seeking", translationZh: "寻找"))
+        #expect(try await store.all().map(\.kind).contains(.word))
+        #expect(!(try await store.toggleWord("seeking")))
+        #expect(try await store.all().map(\.kind) == [.sentence])
+    }
 }

@@ -9,6 +9,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
     let dictionary: DictDatabase
     let grammar: GrammarPointStore
     let onSpeak: (@MainActor (String) -> Void)?
+    let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -33,6 +34,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 dictionary: dictionary,
                                 grammar: grammar,
                                 onSpeak: onSpeak,
+                                favoriteActions: favoriteActions,
                                 aiFallback: aiFallback,
                                 onDismiss: { self.selection = nil }
                             )
@@ -63,6 +65,7 @@ extension View {
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
+        favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil
     ) -> some View {
         modifier(
@@ -71,6 +74,7 @@ extension View {
                 dictionary: dictionary,
                 grammar: grammar,
                 onSpeak: onSpeak,
+                favoriteActions: favoriteActions,
                 aiFallback: aiFallback
             )
         )

@@ -312,7 +312,7 @@ public struct MyPageView: View {
             NavigationLink {
                 favoritesBuilder()
             } label: {
-                entryRow("收藏夹", subtitle: "保存喜欢的表达", icon: "star.fill", tint: .dsSunset)
+                entryRow("收藏夹", subtitle: "收集旅途中遇到的单词", icon: "star.fill", tint: .dsSunset)
             }
             .buttonStyle(.plain)
             Divider().padding(.leading, 56)

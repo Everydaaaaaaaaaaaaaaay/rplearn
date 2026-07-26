@@ -72,6 +72,7 @@ public struct ChatView: View {
                 let speech = deps.speech
                 Task { await speech.speak(word, language: "en-US") }
             },
+            favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback
         )
         .translationTask(appleTranslator.configuration) { @Sendable session in
@@ -211,18 +212,13 @@ public struct ChatView: View {
         }
     }
 
-    /// 长按菜单四功能：复制/收藏/翻译/播放（plan.md 聊天模块）。
+    /// 长按菜单仅保留消息级操作；单词收藏统一收敛到释义弹窗。
     @ViewBuilder
     private func bubbleMenu(_ message: MessageDTO) -> some View {
         Button {
             UIPasteboard.general.string = message.text
         } label: {
             Label("复制", systemImage: "doc.on.doc")
-        }
-        Button {
-            Task { await viewModel.favorite(message: message) }
-        } label: {
-            Label("收藏", systemImage: "star")
         }
         Button {
             Task { await viewModel.translate(message: message) }
@@ -547,6 +543,18 @@ public struct ChatView: View {
             )
             return try? await llm.complete(request)
         }
+    }
+
+    private var wordFavoriteActions: WordFavoriteActions {
+        let favorites = deps.favorites
+        return WordFavoriteActions(
+            contains: { word in
+                (try? await favorites.isWordFavorited(word)) ?? false
+            },
+            toggle: { word, translationZh in
+                (try? await favorites.toggleWord(word, translationZh: translationZh)) ?? false
+            }
+        )
     }
 
     private var inputBar: some View {

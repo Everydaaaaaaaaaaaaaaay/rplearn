@@ -8,11 +8,34 @@ public enum DictTarget: Hashable, Sendable {
     case grammarPoint(String)
 }
 
+/// 词典卡与收藏仓库之间的轻量接口，避免 DictKit 直接依赖具体持久化实现。
+public struct WordFavoriteActions: Sendable {
+    private let containsAction: @Sendable (String) async -> Bool
+    private let toggleAction: @Sendable (String, String?) async -> Bool
+
+    public init(
+        contains: @escaping @Sendable (String) async -> Bool,
+        toggle: @escaping @Sendable (String, String?) async -> Bool
+    ) {
+        self.containsAction = contains
+        self.toggleAction = toggle
+    }
+
+    func contains(_ word: String) async -> Bool {
+        await containsAction(word)
+    }
+
+    func toggle(_ word: String, translationZh: String?) async -> Bool {
+        await toggleAction(word, translationZh)
+    }
+}
+
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
 public struct DictCardView: View {
     private let dictionary: DictDatabase
     private let grammar: GrammarPointStore
     private let onSpeak: (@MainActor (String) -> Void)?
+    private let favoriteActions: WordFavoriteActions?
     private let aiFallback: (@Sendable (String) async -> String?)?
     private let onDismiss: (@MainActor () -> Void)?
 
@@ -22,6 +45,8 @@ public struct DictCardView: View {
     @State private var isLoading = true
     @State private var aiExplanation: String?
     @State private var isLoadingAI = false
+    @State private var isFavorite = false
+    @State private var isUpdatingFavorite = false
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     public init(
@@ -29,6 +54,7 @@ public struct DictCardView: View {
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
+        favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil,
         onDismiss: (@MainActor () -> Void)? = nil
     ) {
@@ -36,6 +62,7 @@ public struct DictCardView: View {
         self.dictionary = dictionary
         self.grammar = grammar
         self.onSpeak = onSpeak
+        self.favoriteActions = favoriteActions
         self.aiFallback = aiFallback
         self.onDismiss = onDismiss
     }
@@ -71,6 +98,9 @@ public struct DictCardView: View {
         .task(id: path) {
             await loadCurrentTarget()
         }
+        .accessibilityAction(named: "关闭释义") {
+            onDismiss?()
+        }
     }
 
     // MARK: - Header
@@ -89,38 +119,78 @@ public struct DictCardView: View {
             case .word(let word):
                 Text(entry?.word ?? word)
                     .font(.headline)
+                    .lineLimit(1)
+                    .layoutPriority(1)
                 if let phonetic = entry?.phonetic {
                     Text("/\(phonetic)/")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
-                if let onSpeak {
-                    Button {
-                        onSpeak(entry?.word ?? word)
-                    } label: {
-                        Image(systemName: "speaker.wave.2.fill")
-                    }
-                    .buttonStyle(.borderless)
-                }
+                Spacer(minLength: 4)
+                wordActions(word)
             case .grammarPoint(let id):
                 Text(grammar.point(id: id)?.title ?? "语法点")
                     .font(.headline)
                     .lineLimit(1)
+                Spacer(minLength: 4)
+                dismissButton
             case nil:
                 EmptyView()
             }
-            Spacer(minLength: 0)
-            if let onDismiss {
-                Button(action: onDismiss) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.secondary)
+        }
+        .padding(.leading, 12)
+        .padding(.trailing, 4)
+        .padding(.vertical, 2)
+    }
+
+    @ViewBuilder
+    private func wordActions(_ word: String) -> some View {
+        HStack(spacing: 0) {
+            if let onSpeak {
+                Button {
+                    onSpeak(entry?.word ?? word)
+                } label: {
+                    Image(systemName: "speaker.wave.2.fill")
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
                 }
-                .buttonStyle(.borderless)
-                .accessibilityLabel("关闭释义")
+                .buttonStyle(.plain)
+                .foregroundStyle(Color.dsSky)
+                .accessibilityLabel("播放读音")
+            }
+            if favoriteActions != nil {
+                Button {
+                    toggleFavorite(word)
+                } label: {
+                    Image(systemName: isFavorite ? "star.fill" : "star")
+                        .contentTransition(.symbolEffect(.replace))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(isFavorite ? Color.dsSunset : Color.secondary)
+                .disabled(isUpdatingFavorite)
+                .accessibilityLabel(isFavorite ? "取消收藏单词" : "收藏单词")
+                .accessibilityAddTraits(isFavorite ? .isSelected : [])
+            } else {
+                dismissButton
             }
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
+    }
+
+    @ViewBuilder
+    private var dismissButton: some View {
+        if let onDismiss {
+            Button(action: onDismiss) {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundStyle(.secondary)
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("关闭释义")
+        }
     }
 
     // MARK: - Content
@@ -274,10 +344,30 @@ public struct DictCardView: View {
             return
         }
         isLoading = true
+        isFavorite = false
+        isUpdatingFavorite = false
         aiExplanation = nil
-        entry = await dictionary.lookup(word)
+        let loadedEntry = await dictionary.lookup(word)
+        entry = loadedEntry
         grammarPoints = grammar.points(forTrigger: word)
+        let resolvedWord = loadedEntry?.word ?? word
+        isFavorite = await favoriteActions?.contains(resolvedWord) ?? false
         isLoading = false
+    }
+
+    private func toggleFavorite(_ word: String) {
+        guard let favoriteActions, !isUpdatingFavorite else { return }
+        isUpdatingFavorite = true
+        Haptics.selection()
+        let resolvedWord = entry?.word ?? word
+        let translation = entry?.translationLines.joined(separator: "；") ?? aiExplanation
+        Task {
+            isFavorite = await favoriteActions.toggle(
+                resolvedWord,
+                translationZh: translation
+            )
+            isUpdatingFavorite = false
+        }
     }
 
     private func requestAIExplanation(_ word: String) {

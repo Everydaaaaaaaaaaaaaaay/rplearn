@@ -372,6 +372,7 @@ struct RootView: View {
             storyProgress: environment.storyProgressStore,
             progression: progression,
             rosterStore: environment.rosterStore,
+            favorites: environment.favoritesStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech

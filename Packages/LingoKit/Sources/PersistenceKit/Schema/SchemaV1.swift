@@ -260,7 +260,7 @@ extension SchemaV1 {
         }
     }
 
-    /// 收藏语句：弱引用消息（消息删除不影响收藏）。
+    /// 收藏快照：兼容旧版句子收藏，新版单词收藏以 characterName 内部标记区分。
     @Model
     public final class FavoriteEntity {
         @Attribute(.unique) public var favoriteID: UUID

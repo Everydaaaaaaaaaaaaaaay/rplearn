@@ -82,18 +82,6 @@ public final class ChatViewModel {
         }
     }
 
-    /// 收藏语句（带上已有翻译缓存）。
-    public func favorite(message: MessageDTO) async {
-        Haptics.impact(.light)
-        let name = message.role == .user ? "我" : character.card.name
-        _ = try? await deps.favorites.add(
-            sentence: message.text,
-            sourceMessageID: message.id,
-            characterName: name,
-            translationZh: message.translationZh
-        )
-    }
-
     /// 播放消息音频（按角色国籍口音）。
     public func speak(message: MessageDTO) async {
         let language = AccentMapper.language(forNationality: character.card.nationality)

@@ -12,6 +12,7 @@ public struct StoryDependencies: Sendable {
     public let storyProgress: StoryProgressStore
     public let progression: any ProgressionRewardGateway
     public let rosterStore: RosterStore
+    public let favorites: FavoritesStore
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
@@ -20,6 +21,7 @@ public struct StoryDependencies: Sendable {
         storyProgress: StoryProgressStore,
         progression: any ProgressionRewardGateway,
         rosterStore: RosterStore,
+        favorites: FavoritesStore,
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService
@@ -27,6 +29,7 @@ public struct StoryDependencies: Sendable {
         self.storyProgress = storyProgress
         self.progression = progression
         self.rosterStore = rosterStore
+        self.favorites = favorites
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
@@ -85,7 +88,8 @@ public struct AVGStoryView: View {
             onSpeak: { word in
                 let speech = deps.speech
                 Task { await speech.speak(word, language: "en-US") }
-            }
+            },
+            favoriteActions: wordFavoriteActions
         )
         .task {
             await loadPlayerIfNeeded()
@@ -123,6 +127,18 @@ public struct AVGStoryView: View {
                 allowsInteractiveDismiss: false
             ),
             onPrimary: { dismiss() }
+        )
+    }
+
+    private var wordFavoriteActions: WordFavoriteActions {
+        let favorites = deps.favorites
+        return WordFavoriteActions(
+            contains: { word in
+                (try? await favorites.isWordFavorited(word)) ?? false
+            },
+            toggle: { word, translationZh in
+                (try? await favorites.toggleWord(word, translationZh: translationZh)) ?? false
+            }
         )
     }
 
