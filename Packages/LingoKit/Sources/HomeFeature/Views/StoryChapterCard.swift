@@ -15,6 +15,7 @@ struct StoryChapterCard: View {
     let accent: Color
     let isHighlighted: Bool
     let isDimmed: Bool
+    let isLoading: Bool
 
     var body: some View {
         HStack(spacing: DSSpacing.sm) {
@@ -48,7 +49,16 @@ struct StoryChapterCard: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
 
-                Label(statusText, systemImage: statusIcon)
+                HStack(spacing: 5) {
+                    if isLoading {
+                        ProgressView()
+                            .controlSize(.small)
+                            .tint(accent)
+                    } else {
+                        Image(systemName: statusIcon)
+                    }
+                    Text(statusText)
+                }
                     .font(.caption.weight(.bold))
                     .foregroundStyle(isHighlighted ? accent : .secondary)
                     .lineLimit(1)

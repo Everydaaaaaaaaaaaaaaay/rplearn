@@ -50,6 +50,14 @@ struct RootView: View {
             var path = NavigationPath()
             path.append(HomeDestination.activities)
             _homePath = State(initialValue: path)
+        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
+            var path = NavigationPath()
+            path.append(HomeDestination.mainline)
+            _homePath = State(initialValue: path)
+        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "cityStories" {
+            var path = NavigationPath()
+            path.append(HomeDestination.cityStories)
+            _homePath = State(initialValue: path)
         }
         #endif
     }
@@ -238,9 +246,13 @@ struct RootView: View {
                 case .stories:
                     StoryHubView(deps: homeDeps)
                 case .mainline:
-                    MainlineListView(deps: homeDeps)
+                    MainlineListView(deps: homeDeps) { chapter in
+                        homePath.append(chapter)
+                    }
                 case .cityStories:
-                    CityStoryListView(deps: homeDeps)
+                    CityStoryListView(deps: homeDeps) { chapter in
+                        homePath.append(chapter)
+                    }
                 case .activities:
                     ActivitiesView(
                         deps: homeDeps,
@@ -316,6 +328,7 @@ struct RootView: View {
         HomeDependencies(
             economyStore: environment.economyStore,
             storyProgress: environment.storyProgressStore,
+            travelService: travelService,
             regionCatalog: environment.regionCatalog,
             rosterStore: environment.rosterStore,
             chatStore: environment.chatStore,

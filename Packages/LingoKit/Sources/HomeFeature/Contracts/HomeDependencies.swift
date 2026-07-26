@@ -5,6 +5,7 @@ import PersistenceKit
 public struct HomeDependencies: Sendable {
     public let economyStore: EconomyStore
     public let storyProgress: StoryProgressStore
+    public let travelService: TravelService
     public let regionCatalog: RegionCatalog
     public let rosterStore: RosterStore
     public let chatStore: ChatStore
@@ -13,6 +14,7 @@ public struct HomeDependencies: Sendable {
     public init(
         economyStore: EconomyStore,
         storyProgress: StoryProgressStore,
+        travelService: TravelService,
         regionCatalog: RegionCatalog,
         rosterStore: RosterStore,
         chatStore: ChatStore,
@@ -20,6 +22,7 @@ public struct HomeDependencies: Sendable {
     ) {
         self.economyStore = economyStore
         self.storyProgress = storyProgress
+        self.travelService = travelService
         self.regionCatalog = regionCatalog
         self.rosterStore = rosterStore
         self.chatStore = chatStore
