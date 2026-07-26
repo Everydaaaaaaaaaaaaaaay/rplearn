@@ -10,6 +10,7 @@
 - `backend/DEPLOYMENT.md`：容器、迁移、滚动发布、Secret 与回滚基线。
 - `backend/BACKUP_RESTORE.md`：PostgreSQL PITR、备份和隔离恢复演练。
 - `backend/OPERATIONS_RUNBOOK.md`：SLO、告警、常见事故与日常作业。
+- `backend/PRODUCTION_ACCEPTANCE.md`：商业发布自动化、容量、故障演练与外部签字清单。
 - `backend/ACCOUNT_DATA_GOVERNANCE.md`：账号导出、即时/冷静期删除与必要留存边界。
 - `adr/0001-production-backend-platform.md`：后端技术平台与关键架构决策。
 
