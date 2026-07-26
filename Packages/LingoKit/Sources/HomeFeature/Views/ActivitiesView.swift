@@ -736,7 +736,7 @@ private struct EncounterCardSheet: View {
 
             ScrollView(.horizontal) {
                 HStack(spacing: DSSpacing.xs) {
-                    ForEach(card.hobbies.prefix(4), id: \.self) {
+                    ForEach(card.localizedHobbies.prefix(4), id: \.self) {
                         DSChip($0, tint: tint)
                     }
                 }

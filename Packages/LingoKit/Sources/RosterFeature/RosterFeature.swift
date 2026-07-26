@@ -177,7 +177,7 @@ public struct CharacterProfileView: View {
                 .font(.headline)
                 .foregroundStyle(Color.dsSunset)
             FlowLayout(spacing: 6, lineSpacing: 7) {
-                ForEach(card.hobbies, id: \.self) { DSChip($0, tint: .dsSky) }
+                ForEach(card.localizedHobbies, id: \.self) { DSChip($0, tint: .dsSky) }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

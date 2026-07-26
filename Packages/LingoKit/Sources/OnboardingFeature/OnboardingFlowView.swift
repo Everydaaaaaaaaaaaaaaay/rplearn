@@ -337,7 +337,7 @@ struct CharacterSelectView: View {
             }
 
             FlowLayout(spacing: 6, lineSpacing: 6) {
-                ForEach(character.card.hobbies.prefix(3), id: \.self) { hobby in
+                ForEach(character.card.localizedHobbies.prefix(3), id: \.self) { hobby in
                     DSChip(hobby, tint: .white)
                 }
             }

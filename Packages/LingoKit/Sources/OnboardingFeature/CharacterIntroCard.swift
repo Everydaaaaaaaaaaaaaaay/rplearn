@@ -30,7 +30,7 @@ struct CharacterIntroCard: View {
                 }
             }
             FlowLayout(spacing: 6, lineSpacing: 6) {
-                ForEach(character.card.hobbies.prefix(3), id: \.self) {
+                ForEach(character.card.localizedHobbies.prefix(3), id: \.self) {
                     DSChip($0, tint: DSScenePalette.city(character.card.regionID).accent)
                 }
             }

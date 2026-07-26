@@ -112,7 +112,8 @@ public struct EncounterService: Sendable {
               !existingNames.contains(generated.name),
               (14...85).contains(generated.age),
               !generated.openingLine.isEmpty,
-              !generated.hobbies.isEmpty else {
+              !generated.hobbies.isEmpty,
+              generated.hobbies.allSatisfy(Self.isChineseHobbyTag) else {
             throw LLMError.invalidResponse("角色卡字段校验未通过")
         }
 
@@ -130,6 +131,12 @@ public struct EncounterService: Sendable {
             background: generated.background
         )
         return Encounter(card: card, openingLine: generated.openingLine, origin: origin, isFallback: false)
+    }
+
+    private static func isChineseHobbyTag(_ value: String) -> Bool {
+        value.unicodeScalars.contains { scalar in
+            (0x4E00...0x9FFF).contains(scalar.value)
+        }
     }
 
     static func generationPrompt(
@@ -157,6 +164,9 @@ public struct EncounterService: Sendable {
         - Diverse and specific: a real-feeling occupation, 3-4 concrete hobbies, distinctive \
         personality with one small flaw, vivid appearance, one-sentence speech style, \
         a two-sentence background. \(namesRule)
+        - Write every item in hobbies as a concise, natural Simplified Chinese UI tag \
+        (for example: "做手工意面", "收藏黑胶唱片", "打乒乓球"). Do not include English translations \
+        or punctuation in those hobby tags.
         - The user is a Chinese English learner at level: \(PromptBuilder.languageGuidance(for: userLevel))
         - opening_line: the character's first casual words to the user in English \
         (they just met during an activity), matching that level. 1-2 sentences, friendly, natural.
@@ -191,9 +201,9 @@ public struct EncounterService: Sendable {
 
     static func fallbackEncounter(origin: Origin, region: Region, existingNames: Set<String>) -> Encounter {
         let templates: [(String, Int, CharacterGender, String, [String])] = [
-            ("Sam Porter", 29, .male, "street food vendor", ["cooking", "cycling", "old movies"]),
-            ("Mia Chen", 24, .female, "graduate student", ["photography", "board games", "hiking"]),
-            ("Alex Novak", 33, .other, "freelance designer", ["sketching", "coffee tasting", "vinyl records"]),
+            ("Sam Porter", 29, .male, "street food vendor", ["烹饪", "骑行", "经典电影"]),
+            ("Mia Chen", 24, .female, "graduate student", ["摄影", "桌游", "徒步"]),
+            ("Alex Novak", 33, .other, "freelance designer", ["素描", "咖啡品鉴", "黑胶收藏"]),
         ]
         let pick = templates.first { !existingNames.contains($0.0) } ?? templates[0]
         let nationality = origin == .foreigner ? "Canadian" : region.countryNameEn

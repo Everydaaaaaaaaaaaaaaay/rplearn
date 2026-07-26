@@ -13,7 +13,7 @@ struct EncounterServiceTests {
 
     private let validJSON = """
     {"name":"Poppy Hale","age":27,"gender":"female","nationality":"British",
-    "occupation":"florist","hobbies":["gardening","cycling"],"appearance":"red coat",
+    "occupation":"florist","hobbies":["园艺","骑行"],"appearance":"red coat",
     "personality":"warm, a bit forgetful","speech_style":"soft and quick",
     "background":"Runs a flower stall near the market. Loves rainy days.",
     "opening_line":"Oh! Sorry, mind the buckets - are you lost, love?"}
@@ -48,6 +48,7 @@ struct EncounterServiceTests {
         #expect(!encounter.isFallback)
         #expect(encounter.card.name == "Poppy Hale")
         #expect(encounter.card.regionID == "london")
+        #expect(encounter.card.hobbies == ["园艺", "骑行"])
         #expect(encounter.openingLine.contains("Sorry"))
     }
 
@@ -62,6 +63,24 @@ struct EncounterServiceTests {
         #expect(encounter.isFallback)
         #expect(encounter.card.name != "Poppy Hale")
         #expect(!encounter.openingLine.isEmpty)
+    }
+
+    @Test("模型返回英文爱好时重试并回退中文模板")
+    func englishHobbiesFallBackToLocalizedTemplate() async {
+        let englishJSON = validJSON.replacingOccurrences(
+            of: #""hobbies":["园艺","骑行"]"#,
+            with: #""hobbies":["gardening","cycling"]"#
+        )
+        let mock = MockLLMProvider(completeHandler: { _ in englishJSON })
+        let encounter = await EncounterService(llm: mock).generateEncounter(
+            origin: .local,
+            region: region,
+            userLevel: .junior3,
+            existingNames: []
+        )
+
+        #expect(encounter.isFallback)
+        #expect(encounter.card.hobbies == ["烹饪", "骑行", "经典电影"])
     }
 
     @Test("LLM 全挂时回退模板卡，且避开已有姓名")
@@ -86,5 +105,6 @@ struct EncounterServiceTests {
         )
         #expect(prompt.contains("ANOTHER city"))
         #expect(prompt.contains("Do NOT use these names: A, B"))
+        #expect(prompt.contains("Simplified Chinese UI tag"))
     }
 }
