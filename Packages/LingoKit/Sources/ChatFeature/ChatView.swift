@@ -88,11 +88,23 @@ public struct ChatView: View {
                 await appleTranslator.translate(text)
             }
             await viewModel.load()
-            if let conversation = viewModel.conversation {
-                ConversationReadState.markRead(conversationID: conversation.id)
-            }
+            markVisibleConversationRead()
+        }
+        .onChange(of: viewModel.messages.last?.id) {
+            markVisibleConversationRead()
+        }
+        .onDisappear {
+            markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private func markVisibleConversationRead() {
+        guard let conversation = viewModel.conversation else { return }
+        ConversationReadState.markRead(
+            conversationID: conversation.id,
+            at: viewModel.messages.last?.createdAt ?? .now
+        )
     }
 
     private var chatStatus: String {

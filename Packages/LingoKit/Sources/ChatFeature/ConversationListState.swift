@@ -13,14 +13,33 @@ public enum ConversationReadState {
         lastMessageAt: Date,
         lastMessageRole: MessageRole?
     ) -> Bool {
+        isUnread(
+            conversationID: conversationID,
+            lastMessageAt: lastMessageAt,
+            lastMessageRole: lastMessageRole,
+            defaults: .standard
+        )
+    }
+
+    static func isUnread(
+        conversationID: UUID,
+        lastMessageAt: Date,
+        lastMessageRole: MessageRole?,
+        defaults: UserDefaults
+    ) -> Bool {
         guard lastMessageRole == .assistant else { return false }
-        return lastReadAt(conversationID: conversationID) < lastMessageAt
+        return lastReadAt(conversationID: conversationID, defaults: defaults) < lastMessageAt
     }
 
     public static func markRead(conversationID: UUID, at date: Date = .now) {
-        var values = UserDefaults.standard.dictionary(forKey: readKey) as? [String: Double] ?? [:]
-        values[conversationID.uuidString] = date.timeIntervalSince1970
-        UserDefaults.standard.set(values, forKey: readKey)
+        markRead(conversationID: conversationID, at: date, defaults: .standard)
+    }
+
+    static func markRead(conversationID: UUID, at date: Date, defaults: UserDefaults) {
+        var values = defaults.dictionary(forKey: readKey) as? [String: Double] ?? [:]
+        let key = conversationID.uuidString
+        values[key] = max(values[key] ?? 0, date.timeIntervalSince1970)
+        defaults.set(values, forKey: readKey)
         NotificationCenter.default.post(name: didChange, object: nil)
     }
 
@@ -39,8 +58,8 @@ public enum ConversationReadState {
         NotificationCenter.default.post(name: didChange, object: nil)
     }
 
-    private static func lastReadAt(conversationID: UUID) -> Date {
-        let values = UserDefaults.standard.dictionary(forKey: readKey) as? [String: Double] ?? [:]
+    private static func lastReadAt(conversationID: UUID, defaults: UserDefaults) -> Date {
+        let values = defaults.dictionary(forKey: readKey) as? [String: Double] ?? [:]
         return Date(timeIntervalSince1970: values[conversationID.uuidString] ?? 0)
     }
 
