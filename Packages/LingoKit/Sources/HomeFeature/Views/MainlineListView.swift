@@ -18,7 +18,7 @@ public struct MainlineListView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: DSSpacing.md) {
+            LazyVStack(alignment: .leading, spacing: DSSpacing.sm) {
                 if let journey, let profile {
                     header(journey)
                     ForEach(Array(journey.stops.enumerated()), id: \.element.id) { index, stop in
@@ -46,24 +46,28 @@ public struct MainlineListView: View {
 
     private func header(_ journey: MainlineJourney) -> some View {
         let done = journey.stops.filter { completed.contains($0.chapter.storyID) }.count
-        return VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack {
+        return VStack(alignment: .leading, spacing: DSSpacing.xs) {
+            HStack(alignment: .firstTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("五城回声")
                         .font(.caption.weight(.bold))
                         .foregroundStyle(Color.dsSky)
                     Text(journey.title)
-                        .font(.headline)
+                        .font(.system(.title3, design: .rounded, weight: .bold))
                 }
                 Spacer()
                 Text("\(done) / \(journey.stops.count) 站")
                     .font(.subheadline.monospacedDigit().weight(.semibold))
                     .foregroundStyle(.secondary)
             }
+            Text("依次前往五座城市推进故事。完成当前章节后，下一站才会开放。")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
             ProgressView(value: Double(done) / Double(journey.stops.count))
                 .tint(.dsSuccess)
         }
-        .dsCard()
+        .padding(.bottom, DSSpacing.xs)
     }
 
     private enum StopStatus: Equatable {
@@ -98,76 +102,27 @@ public struct MainlineListView: View {
         profile: UserProfileDTO
     ) -> some View {
         let chapter = stop.chapter
-        let isDone = status == .completed
+        let isCompleted = status == .completed
         let isActive = status == .active
         let isFuture = status == .future
         let isHere = profile.currentRegionID == stop.regionID
         let region = deps.regionCatalog.region(id: stop.regionID)
+        let accent = DSScenePalette.city(chapter.regionID).accent
 
-        return HStack(spacing: DSSpacing.sm) {
-            ZStack {
-                Text(region.map { flag($0.countryCode) } ?? "🌍")
-                    .font(.title2)
-                if isDone {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.caption)
-                        .foregroundStyle(Color.dsSuccess)
-                        .background(Color.dsSurface, in: Circle())
-                        .offset(x: 15, y: 15)
-                }
-            }
-                .font(.title2)
-                .frame(width: 44, height: 44)
-                .background(
-                    isActive ? .white.opacity(0.18) : Color.dsSky.opacity(0.1),
-                    in: RoundedRectangle(cornerRadius: DSRadius.inline)
-                )
-            VStack(alignment: .leading, spacing: 4) {
-                HStack(spacing: 6) {
-                    Text("第 \(index + 1) 站 · \(region?.nameZh ?? stop.regionID)")
-                        .font(.caption.weight(.black))
-                    if isHere {
-                        Text("当前城市")
-                            .font(.system(size: 9, weight: .black))
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 3)
-                            .background(Color.dsSuccess.opacity(isActive ? 0.26 : 0.12), in: Capsule())
-                    }
-                }
-                Text(chapter.title)
-                    .font(.subheadline.weight(.bold))
-                Text(chapter.subtitle)
-                    .font(.footnote)
-                    .foregroundStyle(isActive ? .white.opacity(0.86) : .secondary)
-                    .lineLimit(2)
-                Text(actionText(status: status, isHere: isHere, regionName: region?.nameZh))
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(isActive ? .white : (isDone ? Color.dsSuccess : .secondary))
-            }
-            Spacer()
-            Image(systemName: canOpen(stop, status: status, profile: profile) ? "chevron.right" : "lock.fill")
-                .font(.caption.bold())
-                .foregroundStyle(isActive ? Color.white : Color.secondary.opacity(0.55))
-        }
-        .foregroundStyle(isActive ? .white : .primary)
-        .padding(DSSpacing.md)
-        .background {
-            if isActive {
-                LinearGradient(
-                    colors: [Color.dsSky, DSScenePalette.city(chapter.regionID).accent],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            } else {
-                Color.dsSurface
-            }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(isActive ? .white.opacity(0.22) : Color.dsBorder, lineWidth: 1)
-        }
-        .opacity(isFuture ? 0.6 : (isDone ? 0.82 : 1))
+        return StoryChapterCard(
+            artworkName: "home_mainline_\(chapter.regionID)",
+            countryCode: region?.countryCode,
+            artworkBadge: index + 1 < 10 ? "0\(index + 1)" : "\(index + 1)",
+            eyebrow: "第 \(index + 1) 站 · \(region?.nameZh ?? stop.regionID)",
+            badge: isHere ? "当前城市" : nil,
+            title: chapter.title,
+            subtitle: chapter.subtitle,
+            statusText: actionText(status: status, isHere: isHere, regionName: region?.nameZh),
+            statusIcon: statusIcon(status: status, isHere: isHere),
+            accent: accent,
+            isHighlighted: isActive || (isCompleted && isHere),
+            isDimmed: isFuture
+        )
     }
 
     private func actionText(status: StopStatus, isHere: Bool, regionName: String?) -> String {
@@ -181,16 +136,19 @@ public struct MainlineListView: View {
         }
     }
 
+    private func statusIcon(status: StopStatus, isHere: Bool) -> String {
+        switch status {
+        case .completed:
+            "checkmark.circle.fill"
+        case .active:
+            isHere ? "play.circle.fill" : "location.fill"
+        case .future:
+            "lock.fill"
+        }
+    }
+
     private func reload() async {
         profile = try? await deps.economyStore.profile()
         completed = (try? await deps.storyProgress.completedStoryIDs()) ?? []
-    }
-
-    private func flag(_ code: String) -> String {
-        code.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
-            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
-                result.unicodeScalars.append(value)
-            }
-        }
     }
 }

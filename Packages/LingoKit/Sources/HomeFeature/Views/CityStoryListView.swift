@@ -70,73 +70,29 @@ public struct CityStoryListView: View {
         let isCompleted = completed.contains(chapter.storyID)
         let accent = DSScenePalette.city(chapter.regionID).accent
 
-        return HStack(spacing: DSSpacing.sm) {
-            ZStack(alignment: .bottomLeading) {
-                Image("home_mainline_\(chapter.regionID)")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 92, height: 108)
-                    .clipped()
-                LinearGradient(
-                    colors: [.clear, .black.opacity(0.58)],
-                    startPoint: .center,
-                    endPoint: .bottom
-                )
-                Text(region.map { flag($0.countryCode) } ?? "🌍")
-                    .font(.title3)
-                    .padding(8)
-            }
-            .frame(width: 92, height: 108)
-            .clipShape(RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous))
-
-            VStack(alignment: .leading, spacing: 5) {
-                HStack(spacing: 6) {
-                    Text(region?.nameZh ?? chapter.regionID)
-                        .font(.caption.weight(.black))
-                        .foregroundStyle(accent)
-                    if isHere {
-                        Text("当前城市")
-                            .font(.system(size: 9, weight: .black))
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 3)
-                            .foregroundStyle(.white)
-                            .background(accent, in: Capsule())
-                    }
-                }
-                Text(chapter.title)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                Text(chapter.subtitle)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-                Label(
-                    actionText(
-                        isHere: isHere,
-                        isUnlocked: isUnlocked,
-                        isCompleted: isCompleted,
-                        regionName: region?.nameZh
-                    ),
-                    systemImage: statusIcon(
-                        isHere: isHere,
-                        isUnlocked: isUnlocked,
-                        isCompleted: isCompleted
-                    )
-                )
-                .font(.caption.weight(.bold))
-                .foregroundStyle(isHere ? accent : .secondary)
-            }
-            Spacer(minLength: 0)
-        }
-        .padding(DSSpacing.sm)
-        .background(Color.dsSurface)
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(isHere ? accent.opacity(0.45) : Color.dsBorder, lineWidth: 1)
-        }
-        .opacity(isUnlocked ? 1 : 0.58)
-        .contentShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
+        return StoryChapterCard(
+            artworkName: "home_mainline_\(chapter.regionID)",
+            countryCode: region?.countryCode,
+            artworkBadge: nil,
+            eyebrow: region?.nameZh ?? chapter.regionID,
+            badge: isHere ? "当前城市" : nil,
+            title: chapter.title,
+            subtitle: chapter.subtitle,
+            statusText: actionText(
+                isHere: isHere,
+                isUnlocked: isUnlocked,
+                isCompleted: isCompleted,
+                regionName: region?.nameZh
+            ),
+            statusIcon: statusIcon(
+                isHere: isHere,
+                isUnlocked: isUnlocked,
+                isCompleted: isCompleted
+            ),
+            accent: accent,
+            isHighlighted: isHere,
+            isDimmed: !isUnlocked
+        )
     }
 
     private func sortRank(
@@ -191,11 +147,4 @@ public struct CityStoryListView: View {
         completed = await loadedCompleted ?? []
     }
 
-    private func flag(_ code: String) -> String {
-        code.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
-            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
-                result.unicodeScalars.append(value)
-            }
-        }
-    }
 }
