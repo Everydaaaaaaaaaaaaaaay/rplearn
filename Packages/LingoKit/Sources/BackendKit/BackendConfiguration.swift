@@ -18,7 +18,7 @@ public struct BackendConfiguration: Sendable, Equatable {
         #if DEBUG
         return BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:8080")!)
         #else
-        return BackendConfiguration(baseURL: URL(string: "https://api.lingotrip.app")!)
+        return BackendConfiguration(baseURL: URL(string: "https://rplearn.haruyuki.cn")!)
         #endif
     }
 }

@@ -93,7 +93,7 @@ const rawEnvironmentSchema = z.object({
     .trim()
     .min(3)
     .default("LingoTrip <no-reply@local.lingotrip>"),
-  AUTH_ISSUER: z.url().default("https://api.lingotrip.app"),
+  AUTH_ISSUER: z.url().default("https://rplearn.haruyuki.cn"),
   AUTH_LOGIN_ACCOUNT_15M_LIMIT: z.coerce.number().int().min(1).max(100).default(10),
   AUTH_LOGIN_IP_15M_LIMIT: z.coerce.number().int().min(1).max(1_000).default(60),
   AUTH_JWT_KEY_ID: optionalSecret,

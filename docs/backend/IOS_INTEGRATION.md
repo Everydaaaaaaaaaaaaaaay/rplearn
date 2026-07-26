@@ -3,7 +3,7 @@
 ## 环境
 
 - Debug 默认连接 `http://127.0.0.1:8080`，仅允许本机网络明文传输；
-- Release 默认连接 `https://api.lingotrip.app`；
+- Release 默认连接 `https://rplearn.haruyuki.cn`；
 - 自动化测试和开发联调可用 `LINGOTRIP_BACKEND_URL` 覆盖地址；
 - 生产构建不得通过环境变量或设置页接受用户自定义后端地址。
 
