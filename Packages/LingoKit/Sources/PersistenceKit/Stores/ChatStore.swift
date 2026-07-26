@@ -84,6 +84,47 @@ public actor ChatStore {
         return dto(from: message)
     }
 
+    /// 将模型的一次回复保存为多条连续气泡，但会话轮次只递增一次。
+    ///
+    /// 角色可以像真人一样连续发送几条短消息，同时剧情进度、测验频率仍按一次
+    /// 用户与角色的往返计算。
+    public func appendAssistantReply(
+        conversationID: UUID,
+        texts: [String]
+    ) throws -> [MessageDTO] {
+        guard let conversation = try fetchConversation(id: conversationID) else {
+            throw ChatError.conversationNotFound
+        }
+        let parts = texts
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+        guard !parts.isEmpty else { return [] }
+
+        let firstIndex = (conversation.messages.map(\.orderIndex).max() ?? -1) + 1
+        var inserted: [MessageEntity] = []
+        inserted.reserveCapacity(parts.count)
+
+        for (offset, text) in parts.enumerated() {
+            let message = MessageEntity(
+                roleRaw: MessageRole.assistant.rawValue,
+                text: text,
+                orderIndex: firstIndex + offset,
+                tokenEstimate: TokenEstimator.estimate(text)
+            )
+            message.conversation = conversation
+            modelContext.insert(message)
+            try journal(message)
+            inserted.append(message)
+        }
+
+        conversation.lastMessageAt = .now
+        conversation.turnCount += 1
+        conversation.turnsSinceQuiz += 1
+        try journal(conversation)
+        try modelContext.save()
+        return inserted.map(dto(from:))
+    }
+
     /// 更新消息文本（流式增量写入 / 结束时定稿）。
     public func updateMessageText(messageID: UUID, text: String, isInterrupted: Bool = false, tokenEstimate: Int? = nil) throws {
         guard let message = try fetchMessage(id: messageID) else { return }

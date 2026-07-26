@@ -23,8 +23,6 @@ public final class ChatViewModel {
     public var errorMessage: String?
     public var draft = ""
 
-    private var streamingMessageID: UUID?
-
     /// 本会话下一次出题的阈值（N=6±2，每次出题后重掷）。
     private var quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
 
@@ -237,7 +235,6 @@ public final class ChatViewModel {
         defer {
             isStreaming = false
             streamingText = nil
-            streamingMessageID = nil
         }
 
         // 注入分级记忆（long + short/mid）；原文窗口与记忆按订阅配额；主线机票未发放前附加引导
@@ -262,20 +259,20 @@ public final class ChatViewModel {
             for try await event in await deps.llm.stream(request) {
                 if case .textDelta(let delta) = event {
                     accumulated += delta
-                    streamingText = accumulated
+                    streamingText = RoleplayReplyFormatter.streamingPreview(from: accumulated)
                 }
             }
             // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
             let (replyText, quiz) = quizRequested
                 ? QuizService.extract(from: accumulated)
                 : (accumulated, nil)
-            if quizRequested {
-                streamingText = replyText // 让流式收尾不闪现 quiz 原文
-            }
-            let assistantMessage = try await persistAssistantMessage(
+            streamingText = RoleplayReplyFormatter.streamingPreview(from: replyText)
+            let assistantMessages = try await persistAssistantReply(
                 conversationID: conversation.id, text: replyText, interrupted: false
             )
-            if let assistantMessage, let quiz, let json = QuizService.encode(quiz) {
+            if let assistantMessage = assistantMessages.last,
+               let quiz,
+               let json = QuizService.encode(quiz) {
                 try? await deps.chatStore.attachQuiz(
                     messageID: assistantMessage.id, quizJSON: json, conversationID: conversation.id
                 )
@@ -298,26 +295,49 @@ public final class ChatViewModel {
                 errorMessage = error.localizedDescription
             } else {
                 // 已收增量落库并标记中断，气泡上提供重试。
-                _ = try? await persistAssistantMessage(conversationID: conversation.id, text: accumulated, interrupted: true)
+                _ = try? await persistAssistantReply(
+                    conversationID: conversation.id,
+                    text: accumulated,
+                    interrupted: true
+                )
             }
         }
         await reloadMessages()
     }
 
     @discardableResult
-    private func persistAssistantMessage(conversationID: UUID, text: String, interrupted: Bool) async throws -> MessageDTO? {
-        guard !text.isEmpty else { return nil }
-        let message = try await deps.chatStore.appendMessage(
-            conversationID: conversationID,
-            role: .assistant,
-            text: text,
-            tokenEstimate: TokenEstimator.estimate(text)
-        )
+    private func persistAssistantReply(
+        conversationID: UUID,
+        text: String,
+        interrupted: Bool
+    ) async throws -> [MessageDTO] {
         if interrupted {
-            try await deps.chatStore.updateMessageText(messageID: message.id, text: text, isInterrupted: true)
+            let cleanedText = RoleplayReplyFormatter.streamingPreview(from: text)
+            guard !cleanedText.isEmpty else { return [] }
+            let message = try await deps.chatStore.appendMessage(
+                conversationID: conversationID,
+                role: .assistant,
+                text: cleanedText,
+                tokenEstimate: TokenEstimator.estimate(cleanedText)
+            )
+            try await deps.chatStore.updateMessageText(
+                messageID: message.id,
+                text: cleanedText,
+                isInterrupted: true
+            )
+            await annotateKeywords(message: message, text: cleanedText)
+            return [message]
         }
-        await annotateKeywords(message: message, text: text)
-        return message
+
+        let texts = RoleplayReplyFormatter.messages(from: text)
+        let messages = try await deps.chatStore.appendAssistantReply(
+            conversationID: conversationID,
+            texts: texts
+        )
+        for message in messages {
+            await annotateKeywords(message: message, text: message.text)
+        }
+        return messages
     }
 
     // MARK: - 语境出题（plan.md §3.8）
@@ -398,11 +418,12 @@ public final class ChatViewModel {
             answer: 1,
             explanationZh: "exhausted 表示筋疲力尽；keen 是热衷的、brave 是勇敢的、tidy 是整洁的。"
         )
-        guard let message = try? await persistAssistantMessage(
+        guard let messages = try? await persistAssistantReply(
             conversationID: conversation.id,
             text: "Honestly I'm knackered after that shift 😴",
             interrupted: false
-        ), let json = QuizService.encode(sample) else { return }
+        ), let message = messages.last,
+           let json = QuizService.encode(sample) else { return }
         try? await deps.chatStore.attachQuiz(messageID: message.id, quizJSON: json, conversationID: conversation.id)
         await reloadMessages()
     }

@@ -66,6 +66,24 @@ struct ChatStoreTests {
         #expect(updated?.turnsSinceQuiz == 2)
     }
 
+    @Test("同一角色回复可保存多条气泡但只计一个回合")
+    func assistantReplyBurstCountsAsOneTurn() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+
+        let inserted = try await chat.appendAssistantReply(
+            conversationID: conversation.id,
+            texts: ["hey mate", "you alright?"]
+        )
+
+        let updated = try await chat.conversation(id: conversation.id)
+        #expect(inserted.map(\.text) == ["hey mate", "you alright?"])
+        #expect(inserted.map(\.orderIndex) == [0, 1])
+        #expect(updated?.turnCount == 1)
+        #expect(updated?.turnsSinceQuiz == 1)
+    }
+
     @Test("流式定稿：更新文本与中断标记")
     func updateText() async throws {
         let (chat, roster) = try makeStores()

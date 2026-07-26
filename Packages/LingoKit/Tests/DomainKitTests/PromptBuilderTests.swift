@@ -35,6 +35,9 @@ struct PromptBuilderTests {
         #expect(prompt.contains("## Roleplay rules"))
         #expect(prompt.contains("Never mention that you are an AI"))
         #expect(prompt.contains("## Texting style"))
+        #expect(prompt.contains("1-3 separate chat messages"))
+        #expect(prompt.contains("each message on its own single line"))
+        #expect(prompt.contains("each message to 1-2 short sentences"))
         #expect(prompt.contains("skip the final punctuation"))
         #expect(prompt.contains("## Language level"))
         #expect(prompt.contains("## Gentle correction"))
@@ -74,13 +77,18 @@ struct PromptBuilderTests {
             )
         }
         let mapped = PromptBuilder.chatMessages(history: history.shuffled(), rawWindow: 10)
-        #expect(mapped.count == 10)
-        // 不含 coach 消息，且保持相对顺序
-        let texts = mapped.map(\.content)
-        let indices = texts.compactMap { Int($0.dropFirst()) }
+        #expect(mapped.count <= 10)
+        // 不含 coach 消息，连续同角色气泡已合并，且原始消息保持相对顺序
+        let indices = mapped
+            .flatMap { $0.content.split(separator: "\n") }
+            .compactMap { Int($0.dropFirst()) }
+        #expect(indices.count == 10)
         #expect(indices == indices.sorted())
         for index in indices {
             #expect(index % 3 != 2)
+        }
+        for pair in zip(mapped, mapped.dropFirst()) {
+            #expect(pair.0.role != pair.1.role)
         }
     }
 

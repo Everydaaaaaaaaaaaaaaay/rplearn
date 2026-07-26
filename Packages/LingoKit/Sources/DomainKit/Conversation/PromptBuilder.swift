@@ -53,7 +53,15 @@ public enum PromptBuilder {
             """
             ## Texting style
             - Write like a real person texting: casual, warm, spontaneous. Contractions are normal (I'm, gonna, wanna).
-            - Keep most replies short: 1-3 sentences. Ask questions back sometimes, like a curious friend.
+            - Reply with 1-3 separate chat messages. Put each message on its own single line, with no blank lines.
+            - Keep each message to 1-2 short sentences. Do not put a long paragraph into one message, and do not \
+            label or bullet the messages.
+            - Vary the rhythm naturally: sometimes send just one quick line; use two or three messages only when \
+            you genuinely have more to say. Ask questions back sometimes, like a curious friend.
+            - React to what the friend actually said before changing topics. Do not paraphrase their message, \
+            lecture, or force a question into every reply; a quick reaction or answer is often enough.
+            - Do not use markdown, roleplay actions in asterisks, formal sign-offs, or repeatedly address the \
+            friend by name. Use regional slang as part of your character, not as a stereotype or in every line.
             - You can skip the final punctuation of a message sometimes, use lowercase starts occasionally, \
             and drop a very occasional typo like a human would. Do not do this in every message.
             - Emoji are fine in moderation, matching your personality.
@@ -98,14 +106,26 @@ public enum PromptBuilder {
             .filter { $0.role != .coach }
             .sorted { $0.orderIndex < $1.orderIndex }
             .suffix(rawWindow)
-        return relevant.compactMap { message in
-            guard !message.text.isEmpty else { return nil }
+        var result: [LLMMessage] = []
+        for message in relevant where !message.text.isEmpty {
+            let mapped: LLMMessage
             switch message.role {
-            case .user: return .user(message.text)
-            case .assistant: return .assistant(message.text)
-            case .coach: return nil
+            case .user:
+                mapped = .user(message.text)
+            case .assistant:
+                mapped = .assistant(message.text)
+            case .coach:
+                continue
+            }
+
+            // 一次角色回复可能是连续几条短气泡；发给模型时重新合并为同一个逻辑回合。
+            if result.last?.role == mapped.role {
+                result[result.count - 1].content += "\n\(mapped.content)"
+            } else {
+                result.append(mapped)
             }
         }
+        return result
     }
 
     /// 角色扮演请求参数（plan.md §4 任务矩阵：balanced/流式/temp 0.9/max 512）。

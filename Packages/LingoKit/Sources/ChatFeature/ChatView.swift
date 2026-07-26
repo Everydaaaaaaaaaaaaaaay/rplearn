@@ -118,10 +118,11 @@ public struct ChatView: View {
     private var messageList: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                LazyVStack(spacing: 10) {
-                    ForEach(viewModel.messages) { message in
+                LazyVStack(spacing: 0) {
+                    ForEach(Array(viewModel.messages.enumerated()), id: \.element.id) { index, message in
                         messageRow(message)
                             .id(message.id)
+                            .padding(.top, messageTopSpacing(at: index))
                     }
                     if let streaming = viewModel.streamingText {
                         MessageBubble(side: .incoming) {
@@ -133,6 +134,7 @@ public struct ChatView: View {
                             }
                         }
                         .id("streaming")
+                        .padding(.top, streamingTopSpacing)
                     }
                     if let error = viewModel.errorMessage {
                         Label(error, systemImage: "exclamationmark.triangle")
@@ -155,6 +157,18 @@ public struct ChatView: View {
                 }
             }
         }
+    }
+
+    private func messageTopSpacing(at index: Int) -> CGFloat {
+        guard index > 0 else { return 0 }
+        let previous = viewModel.messages[index - 1]
+        let current = viewModel.messages[index]
+        guard previous.role != .coach, current.role != .coach else { return 10 }
+        return previous.role == current.role ? 4 : 10
+    }
+
+    private var streamingTopSpacing: CGFloat {
+        viewModel.messages.last?.role == .assistant ? 4 : 10
     }
 
     @ViewBuilder
@@ -488,8 +502,11 @@ public struct ChatView: View {
                 }
             )
         } else {
+            let displayText = message.role == .assistant
+                ? RoleplayReplyFormatter.streamingPreview(from: message.text)
+                : message.text
             TappableText(
-                tokens: TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString),
+                tokens: TokenCache.tokens(for: displayText, cacheKey: message.id.uuidString),
                 contextID: message.id.uuidString,
                 keywords: message.role == .assistant
                     ? KeywordAnnotator.decodeWords(fromJSON: message.keywordRangesJSON)
