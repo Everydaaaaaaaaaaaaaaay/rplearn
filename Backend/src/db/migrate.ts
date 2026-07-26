@@ -12,6 +12,18 @@ type MigrationJournal = Readonly<{
   entries: readonly unknown[];
 }>;
 
+export function environmentForMigrations(
+  environment: NodeJS.ProcessEnv,
+): NodeJS.ProcessEnv {
+  const migrationDatabaseUrl = environment.MIGRATION_DATABASE_URL?.trim();
+  return migrationDatabaseUrl === undefined || migrationDatabaseUrl.length === 0
+    ? environment
+    : {
+        ...environment,
+        DATABASE_URL: migrationDatabaseUrl,
+      };
+}
+
 async function expectedMigrationCount(): Promise<number> {
   const journal = JSON.parse(await readFile(JOURNAL_PATH, "utf8")) as MigrationJournal;
   return journal.entries.length;

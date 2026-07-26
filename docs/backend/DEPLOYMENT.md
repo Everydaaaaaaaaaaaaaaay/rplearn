@@ -54,6 +54,11 @@ Collector 鉴权放入 Secret `OTEL_EXPORTER_OTLP_HEADERS`。先在预发布确�
 认证 header、交易/对象 ID 或用户内容，再逐步提高采样率。Collector 故障不能阻塞 API，
 但连续导出失败必须告警。
 
+数据库迁移 Job 只注入具备 DDL 权限的 `MIGRATION_DATABASE_URL`，执行
+`node dist/cli/migrate.js` 后立即销毁；API、Worker 和其它 CronJob 只注入低权限
+`DATABASE_URL`，不能获得迁移 Secret。开发/CI 未设置迁移 URL 时命令才兼容回退到
+`DATABASE_URL`。
+
 部署平台另建每 15 分钟一次的同镜像 CronJob，命令为
 `node dist/cli/reconcile-apple-billing.js`。CronJob 与 API 使用同一版本、数据库和 Apple
 Billing Secret；允许并发实例依靠数据库租约分片，但禁止配置无限并发。
