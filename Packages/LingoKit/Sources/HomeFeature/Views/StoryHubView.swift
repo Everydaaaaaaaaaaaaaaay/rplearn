@@ -53,6 +53,7 @@ public struct StoryHubView: View {
                     )
                 }
                 .buttonStyle(.pressableCard)
+                .frame(maxWidth: .infinity)
 
                 NavigationLink(value: HomeDestination.cityStories) {
                     categoryCard(
@@ -66,6 +67,7 @@ public struct StoryHubView: View {
                     )
                 }
                 .buttonStyle(.pressableCard)
+                .frame(maxWidth: .infinity)
             }
             .padding(DSSpacing.md)
         }
@@ -95,30 +97,35 @@ public struct StoryHubView: View {
         tint: Color
     ) -> some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            ZStack(alignment: .bottomLeading) {
-                Image(artworkName)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 154)
-                    .clipped()
+            GeometryReader { proxy in
+                ZStack(alignment: .bottomLeading) {
+                    Image(artworkName)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: proxy.size.width, height: 154)
+                        .clipped()
 
-                LinearGradient(
-                    colors: [.clear, .black.opacity(0.72)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+                    LinearGradient(
+                        colors: [.clear, .black.opacity(0.72)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
 
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(eyebrow.uppercased())
-                        .font(.caption2.weight(.black))
-                        .tracking(1)
-                        .opacity(0.82)
-                    Text(title)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(eyebrow.uppercased())
+                            .font(.caption2.weight(.black))
+                            .tracking(1)
+                            .opacity(0.82)
+                        Text(title)
+                            .font(.system(.title2, design: .rounded, weight: .bold))
+                    }
+                    .foregroundStyle(.white)
+                    .padding(DSSpacing.md)
                 }
-                .foregroundStyle(.white)
-                .padding(DSSpacing.md)
+                .frame(width: proxy.size.width, height: 154)
             }
+            .frame(height: 154)
+            .clipped()
 
             Text(detail)
                 .font(.subheadline)
@@ -130,6 +137,8 @@ public struct StoryHubView: View {
                 Text(progressText)
                     .font(.caption.weight(.bold))
                     .foregroundStyle(tint)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.78)
                 Spacer()
                 Image(systemName: "arrow.right")
                     .font(.caption.bold())
