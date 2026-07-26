@@ -81,6 +81,7 @@
 - 主线脚本：`App/Resources/Stories/mainline_*.json`
 - 城市剧情目录：`CityStoryCatalog.chapters`
 - 城市剧情脚本：`App/Resources/Stories/city_*.json`（三篇兼容旧进度的脚本仍使用 `mainline_*_2.json`）
+- 城市活动：`regions.json` 中每城固定配置 5 条路线；每条路线包含类型、预计时长、独立邂逅率与普通探索见闻
 - 城市主题色：`DSScenePalette.city(_:)`
 - 城市背景：`App/Assets.xcassets/city_backdrop_<regionID>.imageset`
 - 首页入口：`App/Assets.xcassets/home_mainline_<regionID>.imageset` 与

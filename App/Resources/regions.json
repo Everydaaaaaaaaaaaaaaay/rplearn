@@ -13,9 +13,11 @@
       "tagline_zh": "红色巴士与雾中钟声，博物馆和酒馆一样多的城市。",
       "landmarks": ["Big Ben", "Tower Bridge", "British Museum", "Camden Market"],
       "activities": [
-        { "id": "stroll_market", "title_zh": "逛集市", "detail_zh": "去 Camden Market 淘点小玩意" },
-        { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "找一家街角咖啡馆坐坐" },
-        { "id": "park", "title_zh": "公园散步", "detail_zh": "去海德公园喂喂鸽子" }
+        { "id": "stroll_market", "title_zh": "卡姆登寻宝", "detail_zh": "穿过唱片摊与古着店，找一件只属于伦敦的小玩意", "category": "culture", "duration_minutes": 45, "encounter_probability": 0.46, "outcome_zh": "你在旧唱片封套里发现一张手绘地图，摊主还教会你一句地道的 bargain 用法。" },
+        { "id": "cafe", "title_zh": "街角茶歇", "detail_zh": "在雨声里点一壶茶，听邻桌聊今天的城市新闻", "category": "food", "duration_minutes": 25, "encounter_probability": 0.42, "outcome_zh": "窗上的雨滴把红色巴士拉成长长的光带，你记住了点单时那句自然的 “That'll be all, thanks.”" },
+        { "id": "park", "title_zh": "海德公园慢走", "detail_zh": "沿湖散步，在演说角和天鹅之间放慢脚步", "category": "outdoors", "duration_minutes": 50, "encounter_probability": 0.28, "outcome_zh": "风吹过湖面，一场临时的街头演说吸引了你；即使没有加入讨论，你也听懂了几个鲜活的观点。" },
+        { "id": "museum_late", "title_zh": "博物馆夜场", "detail_zh": "赶在闭馆前挑一件展品，为它写一句英文旁白", "category": "culture", "duration_minutes": 60, "encounter_probability": 0.38, "outcome_zh": "你为一件古老展品写下自己的英文说明，离开时，展厅像多了一段只对你开放的注释。" },
+        { "id": "west_end", "title_zh": "西区散场", "detail_zh": "在剧院灯牌下等人群散开，听演员与观众交换感想", "category": "night", "duration_minutes": 40, "encounter_probability": 0.52, "outcome_zh": "谢幕后的街道仍像舞台，你学会用 “The part that stayed with me was…” 开启一场观后闲聊。" }
       ]
     },
     {
@@ -31,9 +33,11 @@
       "tagline_zh": "涂鸦巷子里飘着咖啡香，电车叮叮驶向海边。",
       "landmarks": ["Flinders Street Station", "Hosier Lane", "St Kilda Beach", "Queen Victoria Market"],
       "activities": [
-        { "id": "stroll_market", "title_zh": "逛市场", "detail_zh": "去维多利亚女王市场转转" },
-        { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "在巷子咖啡馆点杯 flat white" },
-        { "id": "park", "title_zh": "海滩漫步", "detail_zh": "去 St Kilda 海滩看企鹅" }
+        { "id": "stroll_market", "title_zh": "女王市场早午餐", "detail_zh": "边尝本地食材，边向摊主问今天最值得买什么", "category": "food", "duration_minutes": 45, "encounter_probability": 0.47, "outcome_zh": "你按摊主的建议拼出一份临时野餐，也学会了用 “What’s good today?” 问出真正的本地推荐。" },
+        { "id": "cafe", "title_zh": "巷弄咖啡巡礼", "detail_zh": "钻进小巷点一杯 flat white，观察咖啡师的节奏", "category": "social", "duration_minutes": 30, "encounter_probability": 0.5, "outcome_zh": "咖啡师在杯垫背面画下下一家店的位置，一条只有熟客知道的咖啡路线就此展开。" },
+        { "id": "park", "title_zh": "圣基尔达追夕阳", "detail_zh": "沿栈桥走到海风里，等小企鹅结束一天的远行", "category": "outdoors", "duration_minutes": 70, "encounter_probability": 0.32, "outcome_zh": "天色从金色变成深蓝，小企鹅在石缝间一闪而过；海边的人群同时安静下来。" },
+        { "id": "tram_loop", "title_zh": "老电车环城", "detail_zh": "跳上一班复古电车，用沿途站名拼出城市轮廓", "category": "culture", "duration_minutes": 50, "encounter_probability": 0.4, "outcome_zh": "叮叮声把街区串成一条线，你已经能自然地问出 “Does this tram stop near…?”" },
+        { "id": "rooftop_cinema", "title_zh": "屋顶露天电影", "detail_zh": "在夜风与城市灯光之间看一场本地老电影", "category": "night", "duration_minutes": 90, "encounter_probability": 0.52, "outcome_zh": "字幕结束后没有人急着走，你听见周围的人用不同口音争论同一个结局。" }
       ]
     },
     {
@@ -49,9 +53,11 @@
       "tagline_zh": "永不熄灯的城市，每个街角都有一个故事。",
       "landmarks": ["Times Square", "Central Park", "Brooklyn Bridge", "The Met"],
       "activities": [
-        { "id": "stroll_market", "title_zh": "逛街", "detail_zh": "在 SoHo 的街区里闲逛" },
-        { "id": "cafe", "title_zh": "泡咖啡馆", "detail_zh": "端杯咖啡看人来人往" },
-        { "id": "park", "title_zh": "公园散步", "detail_zh": "去中央公园走走" }
+        { "id": "stroll_market", "title_zh": "SoHo 橱窗侦察", "detail_zh": "沿铸铁街区寻找最大胆的一扇橱窗", "category": "culture", "duration_minutes": 45, "encounter_probability": 0.44, "outcome_zh": "你给最喜欢的橱窗拍下照片，并用三个英文形容词记住了它的气质。" },
+        { "id": "deli", "title_zh": "熟食店快速点单", "detail_zh": "在午餐队伍抵达前，完成一次利落的纽约式点单", "category": "food", "duration_minutes": 20, "encounter_probability": 0.48, "outcome_zh": "你顺利跟上了飞快的点单节奏，店员在纸袋上写下一个大大的 “Perfect” 。" },
+        { "id": "park", "title_zh": "中央公园偏航", "detail_zh": "离开主路，跟着萨克斯声寻找一处临时舞台", "category": "outdoors", "duration_minutes": 55, "encounter_probability": 0.34, "outcome_zh": "树影深处果然有一场小演出，你坐到最后一首曲子结束，才重新回到城市的速度。" },
+        { "id": "gallery", "title_zh": "切尔西画廊漫游", "detail_zh": "挑一幅看不懂的作品，试着向别人描述你的感受", "category": "culture", "duration_minutes": 50, "encounter_probability": 0.4, "outcome_zh": "你没有找到标准答案，却说出了一段完全属于自己的英文观感。" },
+        { "id": "jazz", "title_zh": "地下爵士夜", "detail_zh": "走进没有招牌的地下室，等一次即兴独奏", "category": "night", "duration_minutes": 75, "encounter_probability": 0.56, "outcome_zh": "鼓点停下的一刻，全场同时屏住呼吸；你终于明白 spontaneous 不只属于词典。" }
       ]
     },
     {
@@ -67,9 +73,11 @@
       "tagline_zh": "桌山把云铺成桌布，两片大洋在彩色街区外相遇。",
       "landmarks": ["Table Mountain", "Bo-Kaap", "V&A Waterfront", "Cape Point"],
       "activities": [
-        { "id": "mountain", "title_zh": "登桌山", "detail_zh": "搭缆车俯瞰城市与海湾" },
-        { "id": "market", "title_zh": "逛海港市集", "detail_zh": "在 Waterfront 听街头乐队" },
-        { "id": "coast", "title_zh": "沿海公路", "detail_zh": "去好望角寻找两洋交汇的风" }
+        { "id": "mountain", "title_zh": "桌山云端步道", "detail_zh": "搭缆车越过云桌，辨认海湾与城市的边界", "category": "outdoors", "duration_minutes": 75, "encounter_probability": 0.28, "outcome_zh": "云层短暂散开，整座城市像地图一样铺在脚下；你记住了 guide 指方向时的每个词。" },
+        { "id": "market", "title_zh": "海港音乐市集", "detail_zh": "跟着鼓点穿过摊位，寻找最有感染力的街头乐队", "category": "social", "duration_minutes": 50, "encounter_probability": 0.52, "outcome_zh": "一段合唱把陌生人围成圆圈，你没有认识谁，却和所有人共享了同一个节拍。" },
+        { "id": "coast", "title_zh": "两洋海风公路", "detail_zh": "沿海岸驶向岬角，收集三种不同的海色", "category": "outdoors", "duration_minutes": 90, "encounter_probability": 0.3, "outcome_zh": "风把海水吹成不同层次的蓝，你在旅途笔记里为每一种蓝写下了英文名字。" },
+        { "id": "bokaap", "title_zh": "博卡普香料地图", "detail_zh": "沿彩色房屋寻找香气来源，听店主讲一味香料的旅程", "category": "culture", "duration_minutes": 45, "encounter_probability": 0.45, "outcome_zh": "店主让你闭眼分辨肉桂与豆蔻，整条街忽然从颜色变成了气味地图。" },
+        { "id": "observatory", "title_zh": "观景台爵士夜", "detail_zh": "在老街区的小舞台听一场跨越年代的即兴演出", "category": "night", "duration_minutes": 70, "encounter_probability": 0.55, "outcome_zh": "乐手把熟悉的旋律改得面目一新，你学会用 “I didn’t expect that turn.” 描述惊喜。" }
       ]
     },
     {
@@ -85,9 +93,11 @@
       "tagline_zh": "雨林长进天际线，世界各地的语言在熟食中心同桌。",
       "landmarks": ["Gardens by the Bay", "Marina Bay", "Jewel Changi", "Kampong Glam"],
       "activities": [
-        { "id": "hawker", "title_zh": "熟食中心", "detail_zh": "用英语点一桌跨文化早餐" },
-        { "id": "garden", "title_zh": "夜游滨海湾", "detail_zh": "在超级树下看灯光亮起" },
-        { "id": "heritage", "title_zh": "街区漫步", "detail_zh": "穿过甘榜格南的彩色骑楼" }
+        { "id": "hawker", "title_zh": "熟食中心拼桌", "detail_zh": "用英语点一桌跨文化早餐，再找到一张愿意分享的桌子", "category": "food", "duration_minutes": 35, "encounter_probability": 0.58, "outcome_zh": "你从三家摊位拼出一顿早餐，也自然地说出了 “Mind if I share this table?”" },
+        { "id": "garden", "title_zh": "超级树夜巡", "detail_zh": "在灯光亮起前找到最佳位置，等雨林变成星空", "category": "night", "duration_minutes": 55, "encounter_probability": 0.4, "outcome_zh": "音乐响起时，巨树像慢慢醒来；四周的人同时举起相机，又同时放下欣赏最后一段光。" },
+        { "id": "heritage", "title_zh": "甘榜格南色彩搜集", "detail_zh": "穿过骑楼与壁画，为五种颜色找到街区里的名字", "category": "culture", "duration_minutes": 50, "encounter_probability": 0.46, "outcome_zh": "你在一面壁画前完成了色彩清单，还听懂了店主讲述这条街旧名字的由来。" },
+        { "id": "reservoir", "title_zh": "蓄水池雨林栈道", "detail_zh": "沿树冠步道离开天际线，听城市深处的鸟声", "category": "outdoors", "duration_minutes": 70, "encounter_probability": 0.28, "outcome_zh": "高楼从树叶间消失了半小时，你用声音而不是路牌记住了返回的方向。" },
+        { "id": "kopitiam", "title_zh": "咖啡店暗号", "detail_zh": "在老式 kopitiam 学会一套本地咖啡点单法", "category": "social", "duration_minutes": 25, "encounter_probability": 0.52, "outcome_zh": "一杯 kopi 的名字像暗号一样被准确接住，邻桌为你的第一次本地点单轻轻鼓掌。" }
       ]
     },
     {
@@ -103,9 +113,11 @@
       "tagline_zh": "文学、海风和现场音乐，把每间酒馆都变成故事现场。",
       "landmarks": ["Trinity College", "Ha'penny Bridge", "Temple Bar", "Dublin Castle"],
       "activities": [
-        { "id": "library", "title_zh": "拜访老图书馆", "detail_zh": "在长厅寻找作家的手稿" },
-        { "id": "music", "title_zh": "听现场音乐", "detail_zh": "学会用一句 cheers 加入合唱" },
-        { "id": "coast", "title_zh": "海边小火车", "detail_zh": "搭 DART 去 Howth 看悬崖" }
+        { "id": "library", "title_zh": "长厅句子猎人", "detail_zh": "在老图书馆寻找一句愿意抄进旅行本的话", "category": "culture", "duration_minutes": 55, "encounter_probability": 0.32, "outcome_zh": "你在一本旧书里找到一句恰好写给旅行者的话，抄写时连周围的脚步声都变轻了。" },
+        { "id": "music", "title_zh": "酒馆合唱席", "detail_zh": "循着小提琴声入座，用一句 cheers 加入今晚的副歌", "category": "night", "duration_minutes": 70, "encounter_probability": 0.57, "outcome_zh": "第三遍副歌时你已经能跟上，散场的人们像认识很久一样互道晚安。" },
+        { "id": "coast", "title_zh": "DART 海岸出逃", "detail_zh": "搭小火车去 Howth，让城市在悬崖风里暂时退后", "category": "outdoors", "duration_minutes": 90, "encounter_probability": 0.36, "outcome_zh": "海风让每句话都必须说得更清楚，你在悬崖边学会了真正响亮地表达。" },
+        { "id": "market", "title_zh": "周末市集试吃", "detail_zh": "只凭摊主的三句描述，挑一份从没吃过的本地味道", "category": "food", "duration_minutes": 40, "encounter_probability": 0.48, "outcome_zh": "你选中的味道出乎意料，摊主笑着把配方里最关键的一步写在纸袋上。" },
+        { "id": "poetry_walk", "title_zh": "利菲河诗句接龙", "detail_zh": "沿河寻找刻在城市里的文字，再补上自己的最后一行", "category": "social", "duration_minutes": 45, "encounter_probability": 0.5, "outcome_zh": "你把最后一行留在旅行本里，没有公开，却第一次觉得英语也能装下自己的节奏。" }
       ]
     },
     {
@@ -121,9 +133,11 @@
       "tagline_zh": "火山岩上的古堡俯瞰石巷，风里总像藏着一段传说。",
       "landmarks": ["Edinburgh Castle", "Royal Mile", "Arthur's Seat", "Victoria Street"],
       "activities": [
-        { "id": "castle", "title_zh": "古堡探访", "detail_zh": "沿皇家一英里登上城堡" },
-        { "id": "hike", "title_zh": "登亚瑟王座", "detail_zh": "从休眠火山俯瞰老城屋顶" },
-        { "id": "story", "title_zh": "夜间故事会", "detail_zh": "听向导讲一段苏格兰传说" }
+        { "id": "castle", "title_zh": "古堡守望路线", "detail_zh": "沿皇家一英里登上城堡，寻找三处仍在工作的防御细节", "category": "culture", "duration_minutes": 65, "encounter_probability": 0.38, "outcome_zh": "你从城墙看见新城与旧城同时展开，终于理解 guide 口中的 layered city。" },
+        { "id": "hike", "title_zh": "亚瑟王座登高", "detail_zh": "走上休眠火山，在风里辨认老城屋顶", "category": "outdoors", "duration_minutes": 80, "encounter_probability": 0.3, "outcome_zh": "山顶的风把云推得飞快，你用刚学会的地标词为另一位游客指明了城堡方向。" },
+        { "id": "story", "title_zh": "石巷夜间故事会", "detail_zh": "跟着提灯向导穿过小巷，判断哪段传说最像真的", "category": "night", "duration_minutes": 60, "encounter_probability": 0.54, "outcome_zh": "最后一个故事没有答案；回到亮处后，你和所有人一样忍不住回头看了看。" },
+        { "id": "market", "title_zh": "周末农夫市集", "detail_zh": "向摊主问清产地，为自己的早餐挑三样本地食材", "category": "food", "duration_minutes": 40, "encounter_probability": 0.46, "outcome_zh": "一份简单早餐因为知道了产地而变得具体，你也熟练说出了 “Was this made locally?”" },
+        { "id": "bookshop", "title_zh": "旧书店盲选", "detail_zh": "请店员只问三个问题，为你挑一本不会主动拿起的书", "category": "social", "duration_minutes": 35, "encounter_probability": 0.48, "outcome_zh": "那本书完全不在预期之内，扉页上的旧题字却让你当场决定把它带走。" }
       ]
     },
     {
@@ -139,9 +153,11 @@
       "tagline_zh": "雪山贴着玻璃城市，骑一圈海堤就能从森林回到街头。",
       "landmarks": ["Stanley Park", "Granville Island", "Canada Place", "Grouse Mountain"],
       "activities": [
-        { "id": "seawall", "title_zh": "骑行海堤", "detail_zh": "沿 Stanley Park 绕海一周" },
-        { "id": "market", "title_zh": "逛格兰维尔岛", "detail_zh": "在公共市场尝本地小吃" },
-        { "id": "mountain", "title_zh": "上山看夜景", "detail_zh": "搭缆车去 Grouse Mountain" }
+        { "id": "seawall", "title_zh": "Stanley Park 海堤骑行", "detail_zh": "在森林与海湾之间绕行，收集三处不同的天际线", "category": "outdoors", "duration_minutes": 75, "encounter_probability": 0.36, "outcome_zh": "同一座城市从三个方向看起来完全不同，你在停靠点为后来者留下了一句路线提醒。" },
+        { "id": "market", "title_zh": "格兰维尔岛试味", "detail_zh": "用摊主的推荐拼出一份只在市场里成立的午餐", "category": "food", "duration_minutes": 45, "encounter_probability": 0.52, "outcome_zh": "你在码头边吃完了临时组合的午餐，海鸥全程虎视眈眈，却没有成功抢走一口。" },
+        { "id": "mountain", "title_zh": "松鸡山蓝调时刻", "detail_zh": "搭最后几班缆车上山，等城市灯光从海边亮起", "category": "night", "duration_minutes": 90, "encounter_probability": 0.34, "outcome_zh": "暮色把海、山和玻璃高楼连在一起，你终于拍到一张不用滤镜的蓝调城市。" },
+        { "id": "gastown", "title_zh": "煤气镇声音地图", "detail_zh": "从蒸汽钟出发，记录老街里五种机械与人声", "category": "culture", "duration_minutes": 40, "encounter_probability": 0.46, "outcome_zh": "你发现最响亮的并不是蒸汽钟，而是街角艺人结束时来自四面八方的掌声。" },
+        { "id": "sunset_beach", "title_zh": "日落海滩野餐", "detail_zh": "带一份简单晚餐，在落日前和附近的人交换今日推荐", "category": "social", "duration_minutes": 55, "encounter_probability": 0.5, "outcome_zh": "太阳沉下去时，你的地图上多了三处来自陌生人的手写推荐。" }
       ]
     },
     {
@@ -157,9 +173,11 @@
       "tagline_zh": "帆船穿过火山环抱的海湾，城市尽头就是长满银蕨的步道。",
       "landmarks": ["Sky Tower", "Waiheke Island", "Mount Eden", "Viaduct Harbour"],
       "activities": [
-        { "id": "ferry", "title_zh": "搭船去海岛", "detail_zh": "从港口前往 Waiheke" },
-        { "id": "volcano", "title_zh": "走上伊甸山", "detail_zh": "沿火山口看城市全景" },
-        { "id": "sail", "title_zh": "体验帆船", "detail_zh": "在风帆之都学几个航海口令" }
+        { "id": "ferry", "title_zh": "Waiheke 渡轮日", "detail_zh": "从港口迎着风出发，把城市留在船尾", "category": "outdoors", "duration_minutes": 90, "encounter_probability": 0.38, "outcome_zh": "返程时天际线一点点靠近，你已经能听懂广播里的登船与靠岸提示。" },
+        { "id": "volcano", "title_zh": "伊甸山火山口环行", "detail_zh": "沿休眠火山绕一圈，从四个方向看奥克兰", "category": "outdoors", "duration_minutes": 60, "encounter_probability": 0.3, "outcome_zh": "每走一段，港湾就换一个角度出现；你用 north、south、harbour 和 ridge 重画了方向感。" },
+        { "id": "sail", "title_zh": "风帆体验课", "detail_zh": "加入临时船员，用简短口令完成第一次协作", "category": "social", "duration_minutes": 70, "encounter_probability": 0.5, "outcome_zh": "帆吃满风的瞬间，全船人的动作终于同步；你大声确认的那句 “Ready!” 也成了其中一部分。" },
+        { "id": "night_market", "title_zh": "港区夜市拼盘", "detail_zh": "只选没吃过的味道，完成一份跨文化晚餐", "category": "food", "duration_minutes": 45, "encounter_probability": 0.54, "outcome_zh": "你用五个摊位拼出一只餐盒，也收到五种不同口音的 “Enjoy!”" },
+        { "id": "waterfront_art", "title_zh": "码头公共艺术线", "detail_zh": "沿旧仓库寻找藏在步道里的雕塑与毛利纹样", "category": "culture", "duration_minutes": 50, "encounter_probability": 0.43, "outcome_zh": "最后一件作品藏在低头才能看见的位置，像城市特意奖励认真行走的人。" }
       ]
     },
     {
@@ -175,9 +193,11 @@
       "tagline_zh": "现代街区与草原只隔一道天际线，清晨常从鸟鸣开始。",
       "landmarks": ["Nairobi National Park", "Karura Forest", "KICC", "Maasai Market"],
       "activities": [
-        { "id": "safari", "title_zh": "城市边缘观兽", "detail_zh": "清晨去国家公园看长颈鹿" },
-        { "id": "forest", "title_zh": "森林步道", "detail_zh": "在 Karura Forest 骑行" },
-        { "id": "market", "title_zh": "逛马赛市集", "detail_zh": "和摊主聊手工艺背后的故事" }
+        { "id": "safari", "title_zh": "天际线观兽晨行", "detail_zh": "在城市醒来前寻找长颈鹿与高楼同框的瞬间", "category": "outdoors", "duration_minutes": 90, "encounter_probability": 0.28, "outcome_zh": "长颈鹿从远处慢慢走过，背后就是城市天际线；两种速度在清晨短暂重叠。" },
+        { "id": "forest", "title_zh": "卡鲁拉森林骑行", "detail_zh": "穿过竹林与瀑布，让鸟鸣替你标记转弯", "category": "outdoors", "duration_minutes": 65, "encounter_probability": 0.35, "outcome_zh": "林间小路让你彻底忘记高楼就在几公里外，回程时你已经能用英文复述每个岔路。" },
+        { "id": "market", "title_zh": "马赛市集手艺课", "detail_zh": "不急着还价，先问一件手工作品从哪里来", "category": "social", "duration_minutes": 50, "encounter_probability": 0.55, "outcome_zh": "摊主讲完图案的含义后，你带走的不只是一件纪念品，还有它应该被怎样介绍的故事。" },
+        { "id": "coffee", "title_zh": "本地咖啡杯测", "detail_zh": "从香气到余味，学会描述一杯肯尼亚咖啡", "category": "food", "duration_minutes": 35, "encounter_probability": 0.47, "outcome_zh": "你第一次不用 good 来形容咖啡，而是准确说出了 bright、fruity 和 clean。" },
+        { "id": "rooftop", "title_zh": "屋顶城市节拍", "detail_zh": "在夜色降临时听一场年轻乐队的露台演出", "category": "night", "duration_minutes": 70, "encounter_probability": 0.54, "outcome_zh": "灯光亮起后，白天的街道变成另一座城市；副歌结束时，你已经站到了人群最前面。" }
       ]
     },
     {
@@ -193,9 +213,11 @@
       "tagline_zh": "彩色屋顶贴着北大西洋，地热蒸汽把漫长冬夜变得温暖。",
       "landmarks": ["Hallgrímskirkja", "Harpa", "Sun Voyager", "Tjörnin"],
       "activities": [
-        { "id": "harbour", "title_zh": "旧港散步", "detail_zh": "沿海寻找 Sun Voyager" },
-        { "id": "pool", "title_zh": "泡地热泳池", "detail_zh": "在热气里和本地人闲聊" },
-        { "id": "aurora", "title_zh": "追极光", "detail_zh": "带上热饮去城外等夜空变绿" }
+        { "id": "harbour", "title_zh": "旧港风向散步", "detail_zh": "迎着北大西洋走到 Sun Voyager，猜下一场天气", "category": "outdoors", "duration_minutes": 45, "encounter_probability": 0.4, "outcome_zh": "短短一段路经历了晴、雨和风，你终于懂了本地人为什么总把外套带在手边。" },
+        { "id": "pool", "title_zh": "地热泳池闲聊", "detail_zh": "在白雾里找到一池合适的温度，听懂本地人的天气话题", "category": "social", "duration_minutes": 60, "encounter_probability": 0.58, "outcome_zh": "热气让谈话变得松弛，你从天气聊到旅行，离开时已经收获了一条明天的路线。" },
+        { "id": "aurora", "title_zh": "城外极光守候", "detail_zh": "带上热饮离开灯光，练习耐心等待天空改变", "category": "night", "duration_minutes": 100, "encounter_probability": 0.3, "outcome_zh": "绿色只出现了短短一分钟，却让之前漫长的黑夜全部有了意义。" },
+        { "id": "bakery", "title_zh": "肉桂卷避风站", "detail_zh": "在下一阵雨前钻进烘焙店，问问刚出炉的是什么", "category": "food", "duration_minutes": 25, "encounter_probability": 0.48, "outcome_zh": "窗外雨横着落下，你捧着刚出炉的肉桂卷，学会了这座城市最实用的避风方式。" },
+        { "id": "harpa", "title_zh": "Harpa 声音折射", "detail_zh": "沿玻璃大厅寻找免费演出，让回声带你找到舞台", "category": "culture", "duration_minutes": 45, "encounter_probability": 0.5, "outcome_zh": "音乐从看不见的楼层落下来，你跟着回声转过几次弯，正好赶上第一首曲子。" }
       ]
     },
     {
@@ -211,9 +233,11 @@
       "tagline_zh": "黄色电车爬过瓷砖山坡，塔霍河把夕阳铺满整座城。",
       "landmarks": ["Belém Tower", "Tram 28", "Alfama", "Praça do Comércio"],
       "activities": [
-        { "id": "tram", "title_zh": "搭 28 路电车", "detail_zh": "穿过 Alfama 的陡坡小巷" },
-        { "id": "bakery", "title_zh": "寻找蛋挞", "detail_zh": "在老烘焙店学会点单" },
-        { "id": "viewpoint", "title_zh": "看河边日落", "detail_zh": "去观景台听一段 Fado" }
+        { "id": "tram", "title_zh": "28 路电车穿城", "detail_zh": "抓稳扶手穿过 Alfama，用站名串起山城路线", "category": "culture", "duration_minutes": 55, "encounter_probability": 0.48, "outcome_zh": "电车贴着墙角拐过最后一个急弯，你已经能听懂司机提醒乘客让出车门的那句话。" },
+        { "id": "bakery", "title_zh": "老店蛋挞出炉", "detail_zh": "赶上新一炉蛋挞，向店员问清本地人的吃法", "category": "food", "duration_minutes": 25, "encounter_probability": 0.54, "outcome_zh": "肉桂粉落在温热的蛋挞上，你照着店员的建议吃下第一口，也记住了 “fresh from the oven”。" },
+        { "id": "viewpoint", "title_zh": "山城日落观景台", "detail_zh": "在塔霍河变成金色前占一小块台阶，等法朵声响起", "category": "night", "duration_minutes": 60, "encounter_probability": 0.46, "outcome_zh": "歌声没有麦克风，却让整个观景台安静下来；你第一次从语气里听懂了 saudade。" },
+        { "id": "market", "title_zh": "里贝拉市场一口挑战", "detail_zh": "请摊主推荐五样小份味道，不重复任何一种食材", "category": "food", "duration_minutes": 45, "encounter_probability": 0.52, "outcome_zh": "你完成了五口挑战，最后还用 “What would you pair this with?” 问出了隐藏搭配。" },
+        { "id": "azulejo", "title_zh": "瓷砖图案寻踪", "detail_zh": "沿旧街寻找三组蓝白瓷砖，猜它们讲述的年代", "category": "culture", "duration_minutes": 50, "encounter_probability": 0.38, "outcome_zh": "最后一组图案藏在不起眼的门廊里，你发现城市的历史并不总挂在博物馆墙上。" }
       ]
     },
     {
@@ -229,9 +253,11 @@
       "tagline_zh": "安静神社与霓虹路口共享一条街，秩序里藏着无限细节。",
       "landmarks": ["Shibuya Crossing", "Tokyo Tower", "Asakusa", "Meiji Shrine"],
       "activities": [
-        { "id": "crossing", "title_zh": "穿过涩谷路口", "detail_zh": "在街角记录城市节奏" },
-        { "id": "shrine", "title_zh": "清晨逛神社", "detail_zh": "沿林荫道去明治神宫" },
-        { "id": "record", "title_zh": "淘唱片", "detail_zh": "在下北泽找一张城市主题黑胶" }
+        { "id": "crossing", "title_zh": "涩谷节奏观察", "detail_zh": "在路口四个方向各停一次，记录人潮如何切换", "category": "social", "duration_minutes": 35, "encounter_probability": 0.46, "outcome_zh": "几百人同时穿过却几乎没有碰撞，你用 crowded、ordered 和 electric 记住了这段节奏。" },
+        { "id": "shrine", "title_zh": "明治神宫清晨线", "detail_zh": "沿林荫道慢慢入场，在城市醒来前完成一次安静参拜", "category": "outdoors", "duration_minutes": 55, "encounter_probability": 0.28, "outcome_zh": "碎石路吸收了城市的噪音，你没有遇见谁，却久违地听清了自己的脚步。" },
+        { "id": "record", "title_zh": "下北泽黑胶盲听", "detail_zh": "不看封面听三段前奏，只凭声音选一张城市 B 面", "category": "culture", "duration_minutes": 45, "encounter_probability": 0.52, "outcome_zh": "你选中的唱片封面和想象完全不同，店员却说你的描述准确得像一篇短乐评。" },
+        { "id": "izakaya", "title_zh": "小巷居酒屋拼桌", "detail_zh": "坐到吧台空位，用一句自然的推荐请求打开菜单", "category": "food", "duration_minutes": 60, "encounter_probability": 0.58, "outcome_zh": "厨师替你选了三样小菜，邻座则替每一道菜补上了自己的英文解释。" },
+        { "id": "night_view", "title_zh": "天台末班夜景", "detail_zh": "赶在入口关闭前登高，辨认霓虹里仍然安静的街区", "category": "night", "duration_minutes": 50, "encounter_probability": 0.42, "outcome_zh": "高处的东京不再喧闹，列车像发光的线穿过城市，你一直看到最后一班驶远。" }
       ]
     }
   ]

@@ -41,9 +41,19 @@ struct SeedDataTests {
         ])
         #expect(!catalog.regions.contains { $0.countryCode == "CN" })
         for region in catalog.regions {
-            #expect(!region.activities.isEmpty)
+            #expect(region.activities.count == 5, "\(region.nameZh) 应配置 5 条活动路线")
+            #expect(Set(region.activities.map(\.id)).count == region.activities.count)
             #expect(!region.landmarks.isEmpty)
+            for activity in region.activities {
+                #expect(activity.durationMinutes >= 20)
+                #expect((0.25...0.6).contains(activity.encounterProbability))
+                #expect(!activity.outcomeZh.isEmpty)
+            }
         }
+        #expect(
+            Set(catalog.regions.flatMap(\.activities).map(\.category))
+                == Set(Region.ActivityCategory.allCases)
+        )
     }
 
     @Test("首页：每座城市都有背景、主线与活动美术")

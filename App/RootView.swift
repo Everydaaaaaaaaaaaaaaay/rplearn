@@ -49,6 +49,11 @@ struct RootView: View {
         default: .home
         }
         _selectedTab = State(initialValue: initial)
+        if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+            var path = NavigationPath()
+            path.append(HomeDestination.activities)
+            _homePath = State(initialValue: path)
+        }
         #endif
     }
 

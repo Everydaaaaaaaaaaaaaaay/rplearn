@@ -7,10 +7,79 @@ public enum RegionRole: String, Sendable, Codable, Equatable {
 
 /// 地区静态数据（regions.json），不建实体。
 public struct Region: Sendable, Codable, Equatable, Identifiable {
+    public enum ActivityCategory: String, Sendable, Codable, Equatable, CaseIterable {
+        case culture
+        case food
+        case outdoors
+        case social
+        case night
+    }
+
     public struct Activity: Sendable, Codable, Equatable, Identifiable {
         public var id: String
         public var titleZh: String
         public var detailZh: String
+        public var category: ActivityCategory
+        public var durationMinutes: Int
+        public var encounterProbability: Double
+        public var outcomeZh: String
+
+        public init(
+            id: String,
+            titleZh: String,
+            detailZh: String,
+            category: ActivityCategory = .culture,
+            durationMinutes: Int = 30,
+            encounterProbability: Double = 0.35,
+            outcomeZh: String = "你放慢脚步，记住了这座城市此刻的声音与光线。"
+        ) {
+            self.id = id
+            self.titleZh = titleZh
+            self.detailZh = detailZh
+            self.category = category
+            self.durationMinutes = max(5, durationMinutes)
+            self.encounterProbability = min(max(encounterProbability, 0), 1)
+            self.outcomeZh = outcomeZh
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case id
+            case titleZh
+            case detailZh
+            case category
+            case durationMinutes
+            case encounterProbability
+            case outcomeZh
+        }
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            id = try container.decode(String.self, forKey: .id)
+            titleZh = try container.decode(String.self, forKey: .titleZh)
+            detailZh = try container.decode(String.self, forKey: .detailZh)
+            category = try container.decodeIfPresent(
+                ActivityCategory.self,
+                forKey: .category
+            ) ?? .culture
+            durationMinutes = max(
+                5,
+                try container.decodeIfPresent(Int.self, forKey: .durationMinutes) ?? 30
+            )
+            encounterProbability = min(
+                max(
+                    try container.decodeIfPresent(
+                        Double.self,
+                        forKey: .encounterProbability
+                    ) ?? 0.35,
+                    0
+                ),
+                1
+            )
+            outcomeZh = try container.decodeIfPresent(
+                String.self,
+                forKey: .outcomeZh
+            ) ?? "你放慢脚步，记住了这座城市此刻的声音与光线。"
+        }
     }
 
     public var id: String

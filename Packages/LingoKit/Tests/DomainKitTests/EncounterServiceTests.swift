@@ -24,6 +24,8 @@ struct EncounterServiceTests {
         #expect(EncounterService.shouldEncounter(roll: 0))
         #expect(EncounterService.shouldEncounter(roll: 0.349))
         #expect(!EncounterService.shouldEncounter(roll: 0.35))
+        #expect(EncounterService.shouldEncounter(roll: 0.54, probability: 0.55))
+        #expect(!EncounterService.shouldEncounter(roll: 0.55, probability: 0.55))
         #expect(EncounterService.rollOrigin(roll: 0) == .local)
         #expect(EncounterService.rollOrigin(roll: 0.599) == .local)
         #expect(EncounterService.rollOrigin(roll: 0.6) == .domestic)

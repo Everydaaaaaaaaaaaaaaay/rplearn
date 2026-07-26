@@ -131,6 +131,7 @@ DomainKit 服务清单：
 - `KeywordAnnotator`：本地词频给角色回复关键词划线。
 - `TranslationService`：整句翻译（结果缓存）。
 - `RegionCatalog` / `MainlineCatalog` / `CityStoryCatalog` / `SeedData`：13 座地区（5 主线 + 8 支线）、三条五城路线、每城一篇城市剧情、内置角色种子数据。
+- `ActivitiesView`：游戏式城市探索页；13 城共 65 条可配置路线，按活动类型筛选，并区分普通见闻结算与角色邂逅结算。
 
 ### Feature 层
 

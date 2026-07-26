@@ -99,6 +99,12 @@ RootView
 ZStack 两层：**背景层 `CityBackdropView`**（全屏 ignoresSafeArea）= 天空渐变（DSScenePalette.city 深浅双值）+ 13 城正式生成式素材（`city_backdrop_<regionID>`）+ **代码自绘兜底 `CitySilhouetteView`**（landmarks 关键词→钟塔/桥/树冠/hash 播种天际线，2-3 层剪影叠景深 + TimelineView 云朵漂移）+ scrim 渐变保可读；滚动 `onScrollGeometryChange` 驱动受限视差，ReduceMotion 全静止，深色模式自动压低亮度与饱和度。内容在城市 HUD 与最近会话间保留约 196pt 景观窗口（紧凑高度 / 辅助功能字号自动缩短），让城市地标完整露出并贴近预览稿比例。
 **内容层**：`HomeStatusBar`（取消整块材质卡，国旗徽章 + 当前城市/国家直接叠在场景上；右侧两个紧凑 HUD 资源槽展示真实 `difficultyLevel` 与金币，辅助功能字号自动改为纵向布局）→ `RecentChatsCard`（.dsCard：最多 3 条最近会话，`conversationSummaries()` join `friends()`，AvatarBadge+摘要+相对时间+未读红点；行点击 chatBuilder 进聊天；「查看全部 ›」onOpenMessages；空态引导语）→ **探索入口区**（两张 88pt 横幅大卡 PressableCardStyle：左侧单一品牌实色承载文字，以短透明度渐变干净过渡到右侧 `home_mainline_<regionID>` / `home_activity_<regionID>` 生成式场景美术；剧情卡显示主线与城市剧情总进度 → `.stories`，再进入主线剧情 / 城市剧情二级分类；活动卡 → `.activities`）。删除旧 regionCard/entryGrid/内嵌 EncounterSection/章节列表。
 
+### 城市活动二级页 `ActivitiesView`
+
+以当前城市美术构成“城市探索局”头图，展示可选路线数、活动专属邂逅率区间与当前语言难度。每天稳定轮换一条推荐路线，其余路线可按人文、美食、户外、社交、夜游筛选。每条路线由 `regions.json` 配置时长、邂逅率和无偶遇时的城市见闻；普通探索与角色邂逅分别进入完整结算页，不把“未遇见角色”表现为失败。
+
+调试时可使用 `UI_TEST_HOME_DESTINATION=activities` 直接打开活动页，并配合 `UI_TEST_REGION=<regionID>` 检查 13 城美术。
+
 ### 主线剧情二级页 `MainlineListView`（新）
 展示由初始角色决定的五座必经城市与总进度；章节卡三态：已完成（绿勾+淡化）、当前目标（DSScenePalette 渐变高亮）、后续站（锁定）。只有已完成/当前目标且玩家身处对应城市时才可进入章节；其余状态明确提示前往目标城市或完成上一站。push `MainlineChapter` 命中现有 destination。
 
