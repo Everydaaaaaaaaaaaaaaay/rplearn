@@ -1,6 +1,7 @@
 import DomainKit
 import Foundation
 import Testing
+import UIKit
 @testable import PersistenceKit
 
 /// 校验随包种子数据的完整性与一致性。
@@ -42,6 +43,28 @@ struct SeedDataTests {
         for region in catalog.regions {
             #expect(!region.activities.isEmpty)
             #expect(!region.landmarks.isEmpty)
+        }
+    }
+
+    @Test("首页：每座城市都有背景、主线与活动美术")
+    func homeArtworkCoverage() throws {
+        let regionsURL = try #require(
+            Bundle.main.url(forResource: "regions", withExtension: "json")
+        )
+        let catalog = try RegionCatalog(url: regionsURL)
+
+        for region in catalog.regions {
+            for prefix in ["city_backdrop", "home_mainline", "home_activity"] {
+                let assetName = "\(prefix)_\(region.id)"
+                #expect(
+                    UIImage(
+                        named: assetName,
+                        in: Bundle.main,
+                        compatibleWith: nil
+                    ) != nil,
+                    "缺少城市美术：\(assetName)"
+                )
+            }
         }
     }
 }

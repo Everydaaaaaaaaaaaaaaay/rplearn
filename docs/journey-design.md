@@ -71,7 +71,9 @@
 - 主线路线、目标文案、支线推荐顺序：`MainlineCatalog.journeys`
 - 主线脚本：`App/Resources/Stories/mainline_*.json`
 - 城市主题色：`DSScenePalette.city(_:)`
-- 城市美术：`App/Assets.xcassets/city_backdrop_<regionID>.imageset`
+- 城市背景：`App/Assets.xcassets/city_backdrop_<regionID>.imageset`
+- 首页入口：`App/Assets.xcassets/home_mainline_<regionID>.imageset` 与
+  `home_activity_<regionID>.imageset`
 - 地图布局演示：启动环境变量 `UI_TEST_MAP_GUIDE=single|two|multiple|complete`
 
 调整路线时必须保持每条路线恰好包含 5 个不重复的主线城市，并同步更新 `MainlineCatalogTests`。
