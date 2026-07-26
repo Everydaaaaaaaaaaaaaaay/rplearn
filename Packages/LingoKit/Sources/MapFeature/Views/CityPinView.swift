@@ -145,6 +145,13 @@ struct CityPinView: View {
         VStack(spacing: 4) {
             ZStack {
                 cityThumbnail
+                    .overlay {
+                        Circle()
+                            .stroke(
+                                ringColor,
+                                lineWidth: isSelected ? 3 : (state == .current ? 2 : 1)
+                            )
+                    }
 
                 VStack {
                     Spacer()
@@ -162,13 +169,6 @@ struct CityPinView: View {
                 }
             }
             .frame(width: 48, height: 48)
-            .overlay {
-                Circle()
-                    .stroke(
-                        ringColor,
-                        lineWidth: isSelected ? 3 : (state == .current ? 2 : 1)
-                    )
-            }
             .shadow(
                 color: .black.opacity(isSelected ? 0.2 : 0.12),
                 radius: isSelected ? 7 : 4,
