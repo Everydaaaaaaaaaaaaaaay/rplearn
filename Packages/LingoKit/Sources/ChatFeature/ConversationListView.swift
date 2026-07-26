@@ -6,31 +6,34 @@ import SwiftUI
 public struct ConversationListView: View {
     private let deps: ChatDependencies
 
-    @State private var rows: [Row] = []
+    @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
     @State private var searchText = ""
     @State private var stateRevision = 0
     @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
 
-    struct Row: Identifiable {
-        let character: CharacterDTO
-        let summary: ConversationSummaryDTO
-        var id: UUID { summary.conversationID }
-    }
-
     public init(deps: ChatDependencies) {
         self.deps = deps
     }
 
-    private var visibleRows: [Row] {
+    private var visibleRows: [ConversationListRow] {
         let searched = searchText.isEmpty
             ? rows
             : rows.filter { $0.character.card.name.localizedCaseInsensitiveContains(searchText) }
         return searched.sorted {
-            let lhsPinned = ConversationReadState.isPinned($0.summary.conversationID)
-            let rhsPinned = ConversationReadState.isPinned($1.summary.conversationID)
+            let lhsPinned = $0.summary.map { ConversationReadState.isPinned($0.conversationID) } ?? false
+            let rhsPinned = $1.summary.map { ConversationReadState.isPinned($0.conversationID) } ?? false
             if lhsPinned != rhsPinned { return lhsPinned }
-            return $0.summary.lastMessageAt > $1.summary.lastMessageAt
+            switch ($0.summary, $1.summary) {
+            case (.some(let lhs), .some(let rhs)):
+                return lhs.lastMessageAt > rhs.lastMessageAt
+            case (.some, .none):
+                return true
+            case (.none, .some):
+                return false
+            case (.none, .none):
+                return $0.friendOrder < $1.friendOrder
+            }
         }
     }
 
@@ -48,43 +51,52 @@ public struct ConversationListView: View {
                         NavigationLink {
                             ChatView(character: row.character, deps: deps)
                                 .onAppear {
-                                    ConversationReadState.markRead(
-                                        conversationID: row.summary.conversationID,
-                                        at: row.summary.lastMessageAt
-                                    )
+                                    if let summary = row.summary {
+                                        ConversationReadState.markRead(
+                                            conversationID: summary.conversationID,
+                                            at: summary.lastMessageAt
+                                        )
+                                    }
+                                }
+                                .onDisappear {
+                                    Task { await reload() }
                                 }
                         } label: {
                             rowLabel(row)
                         }
                         .listRowBackground(
-                            ConversationReadState.isPinned(row.summary.conversationID)
+                            row.summary.map { ConversationReadState.isPinned($0.conversationID) } == true
                                 ? Color.dsSky.opacity(0.075)
                                 : Color.clear
                         )
                         .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            Button {
-                                ConversationReadState.togglePinned(row.summary.conversationID)
-                                stateRevision += 1
-                            } label: {
-                                Label(
-                                    ConversationReadState.isPinned(row.summary.conversationID) ? "取消置顶" : "置顶",
-                                    systemImage: "pin.fill"
-                                )
+                            if let conversationID = row.summary?.conversationID {
+                                Button {
+                                    ConversationReadState.togglePinned(conversationID)
+                                    stateRevision += 1
+                                } label: {
+                                    Label(
+                                        ConversationReadState.isPinned(conversationID) ? "取消置顶" : "置顶",
+                                        systemImage: "pin.fill"
+                                    )
+                                }
+                                .tint(.dsSky)
                             }
-                            .tint(.dsSky)
                         }
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Button {
-                                ConversationReadState.markRead(
-                                    conversationID: row.summary.conversationID,
-                                    at: row.summary.lastMessageAt
-                                )
-                                stateRevision += 1
-                                updateUnreadCount()
-                            } label: {
-                                Label("标记已读", systemImage: "envelope.open.fill")
+                            if let summary = row.summary {
+                                Button {
+                                    ConversationReadState.markRead(
+                                        conversationID: summary.conversationID,
+                                        at: summary.lastMessageAt
+                                    )
+                                    stateRevision += 1
+                                    updateUnreadCount()
+                                } label: {
+                                    Label("标记已读", systemImage: "envelope.open.fill")
+                                }
+                                .tint(.dsCyan)
                             }
-                            .tint(.dsCyan)
                         }
                     }
                 }
@@ -104,12 +116,14 @@ public struct ConversationListView: View {
         .onChange(of: stateRevision) { updateUnreadCount() }
     }
 
-    private func rowLabel(_ row: Row) -> some View {
-        let unread = ConversationReadState.isUnread(
-            conversationID: row.summary.conversationID,
-            lastMessageAt: row.summary.lastMessageAt,
-            lastMessageRole: row.summary.lastMessageRole
-        )
+    private func rowLabel(_ row: ConversationListRow) -> some View {
+        let unread = row.summary.map {
+            ConversationReadState.isUnread(
+                conversationID: $0.conversationID,
+                lastMessageAt: $0.lastMessageAt,
+                lastMessageRole: $0.lastMessageRole
+            )
+        } ?? false
 
         return HStack(spacing: DSSpacing.sm) {
             ZStack(alignment: .topTrailing) {
@@ -126,17 +140,19 @@ public struct ConversationListView: View {
                     Text(row.character.card.name)
                         .font(.headline)
                         .foregroundStyle(.primary)
-                    if ConversationReadState.isPinned(row.summary.conversationID) {
+                    if row.summary.map({ ConversationReadState.isPinned($0.conversationID) }) == true {
                         Image(systemName: "pin.fill")
                             .font(.caption2)
                             .foregroundStyle(Color.dsSky)
                     }
                     Spacer()
-                    Text(smartTime(row.summary.lastMessageAt))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    if let summary = row.summary {
+                        Text(smartTime(summary.lastMessageAt))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                Text(summaryText(row.summary))
+                Text(row.summary.map(summaryText) ?? "打个招呼吧 👋")
                     .font(.subheadline)
                     .foregroundStyle(unread ? .primary : .secondary)
                     .fontWeight(unread ? .medium : .regular)
@@ -171,10 +187,7 @@ public struct ConversationListView: View {
         do {
             let friends = try await deps.rosterStore.friends()
             let summaries = try await deps.chatStore.conversationSummaries()
-            let friendsByID = Dictionary(uniqueKeysWithValues: friends.map { ($0.id, $0) })
-            rows = summaries.compactMap { summary in
-                friendsByID[summary.characterID].map { Row(character: $0, summary: summary) }
-            }
+            rows = ConversationListProjection.rows(friends: friends, summaries: summaries)
             updateUnreadCount()
         } catch {
             // 下拉刷新可重试；不以错误页打断导航。
@@ -183,10 +196,11 @@ public struct ConversationListView: View {
 
     private func updateUnreadCount() {
         persistedUnreadCount = rows.filter {
-            ConversationReadState.isUnread(
-                conversationID: $0.summary.conversationID,
-                lastMessageAt: $0.summary.lastMessageAt,
-                lastMessageRole: $0.summary.lastMessageRole
+            guard let summary = $0.summary else { return false }
+            return ConversationReadState.isUnread(
+                conversationID: summary.conversationID,
+                lastMessageAt: summary.lastMessageAt,
+                lastMessageRole: summary.lastMessageRole
             )
         }.count
     }
