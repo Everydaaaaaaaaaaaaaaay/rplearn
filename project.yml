@@ -81,6 +81,7 @@ targets:
       properties:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        ITSAppUsesNonExemptEncryption: false
         NSMicrophoneUsageDescription: "用于录制语音消息，练习英语口语"
         NSSpeechRecognitionUsageDescription: "用于将你的语音转换为文字发送给 AI 角色"
         NSAppTransportSecurity:
