@@ -36,6 +36,31 @@ struct ChatStoreTests {
         #expect(first.id == second.id)
     }
 
+    @Test("角色第一条主动消息只能写入一次")
+    func initialMessageIsIdempotent() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+
+        #expect(try await chat.needsInitialMessage(characterID: characterID))
+        let first = try await chat.appendInitialMessageIfNeeded(
+            characterID: characterID,
+            text: "What kind of music do you enjoy?"
+        )
+        let duplicate = try await chat.appendInitialMessageIfNeeded(
+            characterID: characterID,
+            text: "This should not be added."
+        )
+
+        let conversation = try #require(
+            try await chat.conversationSummaries().first
+        )
+        let messages = try await chat.messages(conversationID: conversation.conversationID)
+        #expect(first != nil)
+        #expect(duplicate == nil)
+        #expect(messages.map(\.text) == ["What kind of music do you enjoy?"])
+        #expect(!(try await chat.needsInitialMessage(characterID: characterID)))
+    }
+
     @Test("消息 orderIndex 单调递增，读取按序返回")
     func messageOrdering() async throws {
         let (chat, roster) = try makeStores()

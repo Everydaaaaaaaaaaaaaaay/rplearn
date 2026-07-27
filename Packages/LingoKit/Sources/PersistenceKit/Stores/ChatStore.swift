@@ -45,6 +45,58 @@ public actor ChatStore {
             .map(dto(from:))
     }
 
+    /// 角色是否还没有任何聊天内容。供“结识后主动开场”在生成文案前快速判断。
+    public func needsInitialMessage(characterID: UUID) throws -> Bool {
+        guard let character = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
+        ).first else {
+            throw ChatError.characterNotFound
+        }
+        return character.conversations
+            .filter { !$0.isArchived }
+            .allSatisfy(\.messages.isEmpty)
+    }
+
+    /// 幂等写入角色的第一条消息；多个入口同时触发时也只会保存一次。
+    @discardableResult
+    public func appendInitialMessageIfNeeded(
+        characterID: UUID,
+        text: String
+    ) throws -> MessageDTO? {
+        guard let character = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
+        ).first else {
+            throw ChatError.characterNotFound
+        }
+        let conversation: ConversationEntity
+        if let existing = character.conversations.first(where: { !$0.isArchived }) {
+            guard existing.messages.isEmpty else { return nil }
+            conversation = existing
+        } else {
+            let created = ConversationEntity()
+            created.character = character
+            modelContext.insert(created)
+            try journal(created)
+            conversation = created
+        }
+
+        let message = MessageEntity(
+            roleRaw: MessageRole.assistant.rawValue,
+            text: text,
+            orderIndex: 0,
+            tokenEstimate: TokenEstimator.estimate(text)
+        )
+        message.conversation = conversation
+        modelContext.insert(message)
+        conversation.lastMessageAt = message.createdAt
+        conversation.turnCount += 1
+        conversation.turnsSinceQuiz += 1
+        try journal(message)
+        try journal(conversation)
+        try modelContext.save()
+        return dto(from: message)
+    }
+
     /// 追加一条消息，返回落库后的 DTO（orderIndex 自动递增）。
     @discardableResult
     public func appendMessage(
