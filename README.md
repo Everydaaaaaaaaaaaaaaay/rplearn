@@ -21,7 +21,11 @@ Scripts/test.sh
 
 真机调试前复制 `Config/Signing.local.xcconfig.example` 为
 `Config/Signing.local.xcconfig`，填写自己的 Team ID；若共享 App ID 不属于该 Team，再
-覆盖 `LINGOTRIP_BUNDLE_ID`。本地签名文件不会进入 Git。
+覆盖 `LINGOTRIP_BUNDLE_ID`。该文件只影响 Debug，不会改变 Release 归档。
+
+Release 固定使用 `com.ut7ad253x8.lingotrip` 与项目分发团队。首次上传前，需要在同一
+App Store Connect 团队创建一次使用该 Bundle ID 的 App 记录；之后所有版本沿用，不再
+更换标识。
 
 后端需要 Node.js 24、pnpm 10、PostgreSQL 17 和 Redis，启动方式见
 [`Backend/README.md`](Backend/README.md)。

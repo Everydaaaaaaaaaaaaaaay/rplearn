@@ -20,7 +20,7 @@ targets:
     platform: iOS
     deploymentTarget: "18.0"
     configFiles:
-      Debug: Config/Signing.xcconfig
+      Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
     sources:
       - App
@@ -96,7 +96,7 @@ targets:
     platform: iOS
     deploymentTarget: "18.0"
     configFiles:
-      Debug: Config/Signing.xcconfig
+      Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
     sources:
       - Packages/LingoKit/Tests

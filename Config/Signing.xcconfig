@@ -1,5 +1,3 @@
-// 共享签名入口。个人 Team 和个人调试 Bundle ID 放在不入库的本地文件中。
-LINGOTRIP_BUNDLE_ID = com.tiantian.lingotrip
-DEVELOPMENT_TEAM =
-
-#include? "Signing.local.xcconfig"
+// 固定的正式应用身份。App Store Connect、Release 归档和后续版本必须始终一致。
+LINGOTRIP_BUNDLE_ID = com.ut7ad253x8.lingotrip
+DEVELOPMENT_TEAM = L28WGN9J8T
