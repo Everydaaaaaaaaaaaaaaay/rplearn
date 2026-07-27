@@ -1,5 +1,11 @@
 import AVFoundation
 import CoreKit
+import Foundation
+
+public extension Notification.Name {
+    /// 用户实际开始一次语音播放；用于在首次使用时展示音质升级引导。
+    static let speechPlaybackDidBegin = Notification.Name("LingoTripSpeechPlaybackDidBegin")
+}
 
 /// 语音朗读服务。隐藏在协议后，未来可换云端 TTS。
 public protocol SpeechService: Sendable {
@@ -39,6 +45,9 @@ public actor AppleTTSService: SpeechService {
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
         utterance.postUtteranceDelay = 0.1
         synthesizer.speak(utterance)
+        await MainActor.run {
+            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+        }
     }
 
     public func stopSpeaking() async {
@@ -157,6 +166,21 @@ public actor AppleTTSService: SpeechService {
                 quality: best.map { VoiceReport.Quality(quality: $0.quality) } ?? .unavailable
             )
         }
+    }
+}
+
+/// 首次播放时的高级语音提示规则，独立为纯逻辑以避免页面生命周期误触发。
+public enum VoiceUpgradePromptPolicy {
+    public static func shouldPresent(
+        isSuppressed: Bool,
+        hasPresented: Bool,
+        isOnboarding: Bool,
+        quality: VoiceReport.Quality
+    ) -> Bool {
+        !isSuppressed
+            && !hasPresented
+            && !isOnboarding
+            && !quality.isNatural
     }
 }
 

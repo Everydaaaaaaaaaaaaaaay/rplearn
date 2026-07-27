@@ -157,11 +157,14 @@ public struct SettingsView: View {
             }
             if !voiceQuality.isNatural {
                 Button {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                    if let url = VoiceSettingsNavigation.prepareToOpenSettings() {
                         openURL(url)
                     }
                 } label: {
-                    Label("前往系统设置下载", systemImage: "arrow.down.circle")
+                    Label(
+                        "复制“\(VoiceSettingsNavigation.searchTerm)”并打开设置",
+                        systemImage: "arrow.down.circle"
+                    )
                 }
             }
         } header: {

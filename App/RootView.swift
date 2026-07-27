@@ -27,6 +27,7 @@ struct RootView: View {
     let environment: AppEnvironment
 
     @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
+    @AppStorage("hasPresentedVoiceUpgradePrompt") private var hasPresentedVoicePrompt = false
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .home
     @State private var homePath = NavigationPath()
@@ -229,7 +230,9 @@ struct RootView: View {
                     onNeverRemind: { suppressVoicePrompt = true }
                 )
             }
-            .task { await maybePromptVoiceUpgrade() }
+            .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in
+                maybePromptVoiceUpgrade()
+            }
     }
 
     private var tabs: some View {
@@ -463,13 +466,14 @@ struct RootView: View {
         usesCloudState ? environment.economyService : environment.localEconomyService
     }
 
-    private func maybePromptVoiceUpgrade() async {
-        guard !suppressVoicePrompt,
-              environment.needsOnboarding != true,
-              !AppleTTSService.bestAvailableEnglishQuality().isNatural
-        else { return }
-        try? await Task.sleep(for: .seconds(0.6))
-        guard environment.needsOnboarding != true else { return }
+    private func maybePromptVoiceUpgrade() {
+        guard VoiceUpgradePromptPolicy.shouldPresent(
+            isSuppressed: suppressVoicePrompt,
+            hasPresented: hasPresentedVoicePrompt,
+            isOnboarding: environment.needsOnboarding == true,
+            quality: AppleTTSService.bestAvailableEnglishQuality()
+        ) else { return }
+        hasPresentedVoicePrompt = true
         showVoiceUpgrade = true
     }
 

@@ -57,4 +57,40 @@ struct SpeechServiceTests {
         #expect(VoiceReport.Quality.premium > .enhanced)
         #expect(VoiceReport.Quality.standard > .unavailable)
     }
+
+    @Test("只在第一次实际播放且音质仍为标准时提示")
+    func upgradePromptPolicy() {
+        #expect(
+            VoiceUpgradePromptPolicy.shouldPresent(
+                isSuppressed: false,
+                hasPresented: false,
+                isOnboarding: false,
+                quality: .standard
+            )
+        )
+        #expect(
+            !VoiceUpgradePromptPolicy.shouldPresent(
+                isSuppressed: false,
+                hasPresented: true,
+                isOnboarding: false,
+                quality: .standard
+            )
+        )
+        #expect(
+            !VoiceUpgradePromptPolicy.shouldPresent(
+                isSuppressed: true,
+                hasPresented: false,
+                isOnboarding: false,
+                quality: .standard
+            )
+        )
+        #expect(
+            !VoiceUpgradePromptPolicy.shouldPresent(
+                isSuppressed: false,
+                hasPresented: false,
+                isOnboarding: false,
+                quality: .enhanced
+            )
+        )
+    }
 }

@@ -2,6 +2,19 @@ import DesignSystem
 import SwiftUI
 import UIKit
 
+/// iOS 未提供“朗读内容 › 声音 › 英语”的公开深链；用设置搜索词缩短安全路径。
+@MainActor
+enum VoiceSettingsNavigation {
+    static let searchTerm = "朗读内容"
+    static let destination = "声音 › 英语"
+
+    /// 复制可直接粘贴到系统设置搜索框的词，并返回审核安全的 App 设置入口。
+    static func prepareToOpenSettings() -> URL? {
+        UIPasteboard.general.string = searchTerm
+        return URL(string: UIApplication.openSettingsURLString)
+    }
+}
+
 /// 语音升级引导弹窗：检测到仅有机械音时提示用户下载 Apple 增强/高级语音。
 /// 说明：第三方 App 无法直接下载系统语音，只能引导到「设置 › 辅助功能 › 朗读内容 › 声音」。
 public struct VoiceUpgradeSheet: View {
@@ -22,10 +35,10 @@ public struct VoiceUpgradeSheet: View {
     }
 
     private let steps: [Step] = [
-        .init(id: 1, text: "打开「系统设置 › 辅助功能」"),
-        .init(id: 2, text: "进入「朗读内容 › 声音 › 英语」"),
-        .init(id: 3, text: "下载带「增强」或「高级」标记的语音"),
-        .init(id: 4, text: "回到本 App，新语音自动生效"),
+        .init(id: 1, text: "点击下方按钮，自动复制「\(VoiceSettingsNavigation.searchTerm)」并打开设置"),
+        .init(id: 2, text: "返回设置首页，在搜索框粘贴并进入「\(VoiceSettingsNavigation.searchTerm)」"),
+        .init(id: 3, text: "进入「\(VoiceSettingsNavigation.destination)」"),
+        .init(id: 4, text: "下载带「增强」或「高级」标记的语音，回到 App 即生效"),
     ]
 
     private let recommended = ["Ava", "Zoe", "Samantha", "Serena", "Daniel", "Matilda"]
@@ -95,11 +108,14 @@ public struct VoiceUpgradeSheet: View {
     private var actions: some View {
         VStack(spacing: 10) {
             Button {
-                if let url = URL(string: UIApplication.openSettingsURLString) {
+                if let url = VoiceSettingsNavigation.prepareToOpenSettings() {
                     openURL(url)
                 }
             } label: {
-                Text("打开系统设置")
+                Label(
+                    "复制“\(VoiceSettingsNavigation.searchTerm)”并打开设置",
+                    systemImage: "gearshape.fill"
+                )
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.dsActionPrimary)
