@@ -1,236 +1,60 @@
-# 后端部署基线
+# 后端部署
 
-## 单机生产运行
+当前开发服务运行在 `rplearn.haruyuki.cn`，采用 Ubuntu 原生 systemd，不使用 Docker。
+Caddy 是唯一公网入口；API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机
+监听。
 
-当前 `rplearn.haruyuki.cn` 使用原生 systemd 部署，不依赖 Docker。API、worker、
-PostgreSQL 17、Redis、MinIO、Mailpit 与 Caddy 分别由 systemd 管理；除 Caddy 的
-80/443 外，其余服务只监听 `127.0.0.1`。Caddy 自动申请和续期 TLS 证书，并将
-`/<MEDIA_S3_BUCKET>/*` 原路径转发到对象存储，因此后端生成的短时签名上传/下载 URL
-仍使用同一个 HTTPS 域名。`/internal/*` 在公网入口固定返回 404。
+## 首次初始化
 
-单机部署不能替代托管 PostgreSQL 的跨可用区高可用、PITR、外部对象存储和独立 Secret
-Manager。迁移与运行时数据库账号已经分离，Redis 开启 AOF；数据库、缓存、对象和证书
-分别落在 PostgreSQL 数据目录、`/var/lib/lingotrip` 和 `/var/lib/caddy`。每日备份同时
-包含自定义格式 `pg_dump` 与 MinIO 数据，仍应异步复制到另一故障域。
-
-首次部署：
+服务器上的项目目录为 `/opt/lingotrip/backend`：
 
 ```bash
 cd /opt/lingotrip/backend
-read -rsp 'DeepSeek API key: ' DEEPSEEK_API_KEY
-export DEEPSEEK_API_KEY
 ./ops/native-server/generate-production-env.sh
-unset DEEPSEEK_API_KEY
-sudo ./ops/native-server/bootstrap-ubuntu.sh
-sudo ./ops/native-server/install-services.sh
+./ops/native-server/bootstrap-ubuntu.sh
+./ops/native-server/install-services.sh
 ```
 
-`install-services.sh` 会幂等创建 `lingotrip_migrator`、`lingotrip` 数据库和各服务的最小权限
-Unix 账户；重复执行只轮换迁移账号密码和刷新配置，不删除数据库或业务数据。
+`.env.production` 是不受版本控制的唯一源配置。初始化脚本把它拆分成
+`/etc/lingotrip/` 下各服务可读的最小环境文件，并创建独立的数据库迁移和运行时账号。
+已有配置不会自动覆盖。
 
-bootstrap 脚本从官方发行地址安装固定版本的 Node、Caddy、MinIO 与 Mailpit，并校验发行方
-校验和或仓库固定的 SHA-256/SHA-512；所有运行、发布、备份和维护流程都不调用 Docker。
+## 发布
 
-生成的 `.env.production` 权限为 `0600`，包含独立 PostgreSQL/Redis/媒体凭据、Ed25519
-JWT 密钥、token pepper、任务 AES key 和 metrics token。脚本拒绝覆盖已有文件；发布
-更新必须保留原文件，避免让在线会话、加密任务或持久数据凭据失效。
-
-Node 固定安装在 `/opt/lingotrip/runtime`。发布包在开发机完成 TypeScript 编译，不把
-开发依赖传到服务器：
+发布包在开发机编译，只包含 `dist`、当前迁移基线和生产依赖清单：
 
 ```bash
 cd Backend
-./ops/native-server/package-release.sh dec8674
-scp build/lingotrip-backend-dec8674.tar.gz root@server:/tmp/
-ssh root@server \
-  '/opt/lingotrip/backend/ops/native-server/deploy.sh /tmp/lingotrip-backend-dec8674.tar.gz dec8674'
+./ops/native-server/package-release.sh <commit>
+scp build/lingotrip-backend-<commit>.tar.gz root@<server>:/tmp/
+ssh root@<server> \
+  "/opt/lingotrip/backend/ops/native-server/deploy.sh /tmp/lingotrip-backend-<commit>.tar.gz <commit>"
 ```
 
-生产依赖按 `package.json + pnpm-lock.yaml` 内容寻址并共享；依赖未变化的发布不会重新安装。
-部署先执行只增不减的数据库迁移和权限收紧，再原子切换 `/opt/lingotrip/current` 软链接，
-同步更新独立的 `/etc/lingotrip/release.env`，重启 API/worker 并验证本机 readiness。
-失败时自动切回上一软链接和版本标识，数据库迁移不回滚。
+部署脚本会安装内容寻址的生产依赖、执行数据库迁移、收紧运行时权限、原子切换
+`/opt/lingotrip/current`，然后重启 API 和 Worker 并检查 readiness。应用启动失败会切回
+上一个发布目录；数据库结构不自动回滚。
 
-查看状态与日志：
+## 开发期数据策略
+
+产品尚未发布且没有真实用户，因此服务端和 SwiftData 都只保留当前基线：
+
+- 数据模型变化时可在停服后重置测试数据库和媒体对象；
+- 不维护历史迁移兼容、PITR、定时备份或长期备份保留；
+- 破坏性操作前只按当次需要创建临时快照；
+- 正式发布前冻结首个公开基线，再补迁移、备份和恢复演练。
+
+这项策略只适用于无真实用户阶段。一旦开始邀请需要保留数据的测试用户，就必须先调整
+本节并恢复持久数据保护。
+
+## 日常检查
 
 ```bash
 systemctl status lingotrip-api lingotrip-worker lingotrip-caddy \
   lingotrip-minio lingotrip-redis postgresql
-journalctl -u lingotrip-api -u lingotrip-worker -u lingotrip-caddy --since -1h
+journalctl -u lingotrip-api -u lingotrip-worker --since -1h
+curl --fail https://rplearn.haruyuki.cn/health/ready
 ```
 
-Mailpit 只监听宿主机 `127.0.0.1:8025`，用于在正式 SMTP
-凭据到位前安全捕获验证邮件，不具备公网送达能力。开放真实账号注册前必须把
-`.env.production` 的 SMTP 配置替换为已完成 SPF/DKIM/DMARC 的事务邮件服务。Apple
-登录和计费也保持关闭，直到 Developer 与 App Store Connect 凭据齐全；因此在这些外部凭据
-补齐前，服务虽然以生产模式和 HTTPS 运行，仍不能通过完整的商业发布验收门。
-
-每天由 `lingotrip-backup.timer` 与 `lingotrip-maintenance.timer` 执行备份和保留期清理。
-应用、数据库和媒体服务均设置独立 Unix 用户、只读系统视图、最小可写目录、空 capability
-集合（Caddy 仅保留绑定低端口所需能力）及自动重启策略。
-
-## 运行拓扑
-
-生产环境使用无状态 API 副本、独立后台 worker 副本、托管 PostgreSQL、托管 Redis、SMTP
-提供商和外部 Secret Manager。PostgreSQL 是唯一权威业务存储；Redis
-丢失只影响短时 challenge、限流窗口等可重建数据。公网入口必须在负载均衡、Ingress 或
-Caddy 终止 TLS 1.2+，应用进程自身不直接暴露公网端口。
-
-`Backend/Dockerfile` 继续用于 CI 冒烟、本地联调和 Kubernetes 构建，使用固定 digest
-的 Node 24.18 构建层，最终运行层采用固定 digest
-的 Distroless Node 24 / Debian 13：没有 shell、包管理器或构建工具，以 UID/GID 65532
-运行且只包含生产依赖。容器平台的应用镜像必须使用 digest 固定，不使用浮动 tag。
-`Backend/ops/kubernetes` 是最低安全基线；上线时由部署系统注入 ConfigMap 和 Secret，
-不把值写进 manifest。
-
-## 发布顺序
-
-1. CI 完成格式、lint、类型、单元测试、真实 PostgreSQL/Redis 集成测试、生产依赖审计和镜像构建。
-2. Trivy 在安装和构建前扫描仓库依赖、密钥与 IaC 配置，并在构建后扫描实际发布镜像；
-   high/critical 发现会阻止合并。Syft 为该镜像生成 CycloneDX JSON SBOM，并作为 CI
-   artifact 保留 30 天。
-3. 确认最近一次 PostgreSQL 基础备份和 WAL/PITR 流连续可用。
-4. 从 [`migrate-job.yaml`](../../Backend/ops/kubernetes/migrate-job.yaml) 生成带发布编号的
-   一次性 Job，使用与 API 完全相同的 digest 执行 `node dist/cli/migrate.js`。
-5. 从
-   [`production-check-job.yaml`](../../Backend/ops/kubernetes/production-check-job.yaml)
-   生成一次性 Job，使用待发布 Secret 运行 `node dist/cli/check-production-readiness.js`。只有 JSON
-   报告的 `passed=true` 才能继续；报告不含连接地址、角色名、模型目录或底层异常。
-6. 等迁移和生产检查成功，再滚动更新 API 与 worker；readiness 失败的 API Pod
-   不接收流量。
-7. 验证 live、ready、metrics、注册/刷新、同步、计费沙盒通知与 AI canary。
-8. 观察错误率、P95/P99、数据库连接、Redis 错误和 AI 上游错误至少一个正常业务峰值窗口。
-
-迁移只允许向前追加，并在至少一个发布窗口内保持旧应用版本可读。破坏性列删除、重命名和
-`NOT NULL` 收紧必须按 expand → backfill → contract 跨多个版本完成。
-
-## 必需 Secret
-
-- PostgreSQL、Redis、SMTP 凭据；
-- Ed25519 JWT 私钥、公钥、key ID 与 token HMAC pepper；
-- 仍在轮换观察期内的 JWT 历史公钥；
-- DeepSeek API key；
-- metrics 独立 bearer token；
-- 管理面启用时的一个主 operator token 和一个预置轮换 token；
-- 后台任务 payload AES-256-GCM key 与 key version；
-- 私有媒体桶名称、区域；非 workload identity 环境才注入对象存储访问凭据；
-- Apple 登录私钥与 Apple credential AES-256-GCM key；
-- 启用 Apple Billing 时的 App Apple ID、Apple PKI 根证书，以及独立的 In-App
-  Purchase issuer ID、key ID 与 PKCS#8 私钥。
-
-生产配置校验采用 fail-closed：缺少数据库、Redis、SMTP、持久 JWT、DeepSeek 或 metrics
-保护凭据时进程拒绝启动。Secret 只通过运行时环境或挂载式 Secret
-注入，禁止进入镜像层、CI 日志、崩溃报告或聊天记录。
-
-`/internal/admin` 只能放在私网 ingress、VPN 或零信任代理之后，不能配置到公共移动端
-API 域名的外部路由。轮换时先追加新 key ID/token，验证审计中的新 key ID，再移除旧 key；
-token 不进入数据库。`AI_DEEPSEEK_ALLOWED_MODELS` 是部署层安全边界，先滚动放行新模型，
-再通过管理面修改任务路由。
-
-生产 OpenTelemetry Collector 使用私网 TLS 地址。API 和 Worker 分别设置稳定的
-`OTEL_SERVICE_NAME`，并把不可变镜像/发布编号写入 `APP_VERSION`。通过
-`OTEL_TRACING_ENABLED=true` 启用，`OTEL_TRACE_SAMPLE_RATIO` 首发建议为 `0.1`；
-Collector 鉴权放入 Secret `OTEL_EXPORTER_OTLP_HEADERS`。先在预发布确认 span 不含 query、
-认证 header、交易/对象 ID 或用户内容，再逐步提高采样率。Collector 故障不能阻塞 API，
-但连续导出失败必须告警。
-
-数据库迁移 Job 只注入具备 DDL 权限的 `MIGRATION_DATABASE_URL`，执行
-`node dist/cli/migrate.js` 后立即销毁；API、Worker 和其它 CronJob 只注入低权限
-`DATABASE_URL`，不能获得迁移 Secret。开发/CI 未设置迁移 URL 时命令才兼容回退到
-`DATABASE_URL`。
-
-运行时数据库角色必须能登录、使用 `app` schema，并对全部 `app` 表拥有
-`SELECT/INSERT/UPDATE/DELETE`；它不能是 superuser，不能创建 role/database、复制或绕过
-RLS，也不能对当前 database 或 `app` schema 执行 `CREATE`。另需单独授予对
-`drizzle.__drizzle_migrations` 的 `SELECT`，用于版本就绪检查。迁移角色独占 DDL，
-不能注入 API 或 worker。
-
-生产检查是只读发布门禁：验证迁移版本、运行时数据库权限、Redis、私有桶、SMTP 握手、
-DeepSeek `/models` 中的 allowlist、Apple Billing 密钥/证书，以及启用 Apple 登录时的
-签名密钥。它不发送邮件、不创建对象、不发起模型推理、不访问用户数据。检查超时由
-`READINESS_TIMEOUT_MS` 控制；失败只输出稳定错误码，详细连接错误应从受控平台日志和
-供应商控制台排查。
-
-工作流使用的 GitHub Actions 全部固定到不可变 commit SHA，并在旁注中保留语义版本，
-Distroless 运行层的 keyless 签名也会在构建前用固定身份和 OIDC issuer 验证。Dependabot
-每周为 Actions、pnpm 依赖和 Docker 基础镜像提出升级。漏洞例外不得直接放宽全局
-severity 或 `exit-code`；必须使用最窄规则，记录 CVE/规则 ID、影响分析、负责人、批准人
-和不超过 30 天的到期日，到期前修复或重新评审。任何 secret 命中都不能豁免，只能移除并
-轮换。
-
-[`scheduled-jobs.yaml`](../../Backend/ops/kubernetes/scheduled-jobs.yaml) 编排两个同镜像
-CronJob：Apple 订阅每 15 分钟对账，运营数据每天 03:17 UTC 清理。两者使用
-`concurrencyPolicy: Forbid`、有限重试和执行期限，避免调度重叠形成无界并发。CronJob 与
-API 使用同一版本、低权限数据库凭据及所需运行时 Secret；Apple 对账还依靠数据库租约实现
-实例级互斥。部署平台必须把每次运行成功/失败和执行延迟接入告警，不能只依靠 Job 历史保留。
-
-API 在账号业务事务中写入加密任务，只有 worker 执行 SMTP 投递。worker 可横向扩容，
-数据库租约与 `FOR UPDATE SKIP LOCKED` 负责互斥领取；失败任务指数退避，达到最大次数后
-进入 `dead`。API 和 worker 必须通过 `JOB_PAYLOAD_PREVIOUS_KEYS` 同时保留仍有未完成任务
-引用的历史 key version；确认旧版本任务全部结束并超过保留期后才能移除旧 key。
-
-## 私有媒体桶
-
-生产设置 `MEDIA_STORAGE_ENABLED=true` 并提供 `MEDIA_S3_BUCKET` 与区域。优先让 API 和
-worker 使用不同、最小权限的 workload identity；只有兼容存储不支持工作负载身份时才成对
-注入 access key 与 secret。API 需要 `HeadBucket`、指定前缀的
-`PutObject/GetObject/HeadObject` 签名权限，worker 额外需要批量删除权限。
-
-桶必须阻止全部公网访问、禁用 ACL、强制 TLS、启用默认静态加密和版本控制，并把读写数据
-事件送入云审计。生命周期至少覆盖：删除标记和非当前版本清理、未完成 multipart
-上传清理，以及数据库任务异常时的孤儿对象兜底保留期。不能设置允许匿名 GET 的桶策略。
-跨域只在 Web 客户端上线时为明确的生产 origin、PUT/GET 方法和必要 header 开白名单；
-iOS 不需要 CORS。
-
-发布前用真实目标存储运行媒体集成测试，验证签名的 `Content-Length`、`Content-Type` 和
-checksum 兼容性。`/health/ready` 会执行 HeadBucket；对象存储不可用的实例不接收流量。
-worker 的 `media.delete` 死信和 `pending` 资产年龄必须进入告警。MinIO
-只供本地联调，不能作为当前 Compose 配置直接用于生产。
-
-## JWT 无停机密钥轮换
-
-JWT 私钥只存在 Secret Manager，历史配置只保存公钥。每次轮换使用全新的、不可复用的
-`kid`：
-
-1. 在受控终端执行 `pnpm auth:generate-keys`，把新私钥、公钥和 key ID 直接写入 Secret
-   Manager，禁止进入仓库、聊天或 CI 输出。
-2. 建立一个原子 Secret 版本：把新 key 配置为 `AUTH_JWT_PRIVATE_KEY`、
-   `AUTH_JWT_PUBLIC_KEY` 和 `AUTH_JWT_KEY_ID`，同时把旧公钥加入
-   `AUTH_JWT_PREVIOUS_PUBLIC_KEYS`。格式为
-   `old-kid=BASE64_SPKI_PEM`，多个历史 key 用逗号分隔。
-3. 滚动发布全部 API 副本。进程启动时会验证当前私钥与公钥确实配对；key ID
-   重复、未知算法或无效历史公钥都会拒绝启动。确认旧 Pod 已完全排空。
-4. 请求 `/.well-known/jwks.json`，确认新旧 `kid` 均存在；再用新登录签发的 token
-   验证 `kid` 已切换到新 key。JWKS 最长缓存五分钟。
-5. 至少保留旧公钥一个 Access Token TTL（当前为 15 分钟），再加发布时钟偏差和
-   JWKS 缓存余量。生产建议观察不少于 30 分钟，并确认没有旧版本 Pod 继续签发。
-6. 从 `AUTH_JWT_PREVIOUS_PUBLIC_KEYS` 移除旧公钥，滚动发布并验证 JWKS 只剩仍有效的
-   key。
-
-若步骤 3 后需要应用回滚，优先回滚应用镜像但保持新 key 为当前签发 key，并继续发布旧
-公钥。只有确认必须恢复旧 key 签发时才重新启用保管中的旧私钥，同时把新公钥放进历史
-列表；否则回滚会立即拒绝刚签发的新 token。当前私钥泄露时不能等待观察窗口：立即切换
-新 key，撤销全部会话或提升 token version，并按安全事故流程处理。
-
-## 回滚
-
-应用回滚只切回上一镜像 digest，不回滚已执行的数据库迁移。若新版本产生不可兼容写入：
-
-1. 先停止新版本流量；
-2. 启用对应功能开关或只读保护；
-3. 回滚到仍兼容当前 schema 的上一 digest；
-4. 以新迁移修复数据，不执行手工 `DROP` 或 migration table 篡改。
-
-若数据库数据已被破坏，按恢复手册在隔离实例执行 PITR，验证后通过受控切换恢复服务。
-
-## 本地完整容器联调
-
-```bash
-cd Backend
-DEEPSEEK_API_KEY='从本机安全环境注入' docker compose --profile app up --build --wait
-```
-
-API 为 `http://127.0.0.1:8080`，worker 自动处理邮件和媒体删除任务，Mailpit 为
-`http://127.0.0.1:8025`，MinIO 控制台为
-`http://127.0.0.1:9001`。Compose 开发配置使用临时 JWT
-密钥，容器重启会使现有 access token 失效；生产绝不能使用这一开发行为。
+Mailpit 仍只负责捕获开发邮件。Apple 登录和计费在外部凭据齐全前保持关闭。密钥、完整
+环境文件和用户内容不得进入 Git、命令参数、聊天记录或日志。

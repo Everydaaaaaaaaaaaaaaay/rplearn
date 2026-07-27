@@ -23,7 +23,6 @@ create_system_user minio /var/lib/lingotrip/minio
 create_system_user mailpit /var/lib/lingotrip/mailpit
 
 install -d -m 0755 -o root -g root /opt/lingotrip/releases /opt/lingotrip/dependencies
-install -d -m 0700 -o root -g root /opt/lingotrip/backups
 install -d -m 0755 -o root -g root /etc/caddy
 install -d -m 0751 -o root -g lingotrip /var/lib/lingotrip
 install -d -m 0750 -o redis -g redis /var/lib/lingotrip/redis
@@ -33,7 +32,6 @@ install -d -m 0750 -o caddy -g caddy /var/lib/caddy
 
 for executable in \
   /opt/lingotrip/runtime/bin/node \
-  /usr/bin/pg_dump \
   /usr/bin/psql \
   /usr/bin/redis-server \
   /usr/local/bin/caddy \
@@ -49,8 +47,15 @@ done
 "${script_dir}/render-environment.sh" "${environment_file}"
 "${script_dir}/initialize-database.sh"
 install -m 0644 "${script_dir}/Caddyfile" /etc/caddy/Caddyfile
-install -m 0644 "${script_dir}"/systemd/*.service "${script_dir}"/systemd/*.timer \
-  /etc/systemd/system/
+systemctl disable --now \
+  lingotrip-backup.timer \
+  lingotrip-maintenance.timer 2>/dev/null || true
+rm -f \
+  /etc/systemd/system/lingotrip-backup.service \
+  /etc/systemd/system/lingotrip-backup.timer \
+  /etc/systemd/system/lingotrip-maintenance.service \
+  /etc/systemd/system/lingotrip-maintenance.timer
+install -m 0644 "${script_dir}"/systemd/*.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable \
   lingotrip-api.service \
@@ -58,6 +63,4 @@ systemctl enable \
   lingotrip-redis.service \
   lingotrip-minio.service \
   lingotrip-mailpit.service \
-  lingotrip-caddy.service \
-  lingotrip-backup.timer \
-  lingotrip-maintenance.timer
+  lingotrip-caddy.service

@@ -17,13 +17,3 @@ updates:
       - backend
       - dependencies
     open-pull-requests-limit: 5
-
-  - package-ecosystem: docker
-    directory: /Backend
-    schedule:
-      interval: weekly
-    labels:
-      - backend
-      - dependencies
-      - security
-    open-pull-requests-limit: 5

@@ -19,7 +19,7 @@ Scripts/test.sh
 脚本会从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。不要提交生成的工程或 `build/`，
 也不要在 `Packages/LingoKit` 中直接运行 `swift build`。
 
-后端需要 Node.js 24、pnpm 10 和 Docker，启动方式见
+后端需要 Node.js 24、pnpm 10、PostgreSQL 17 和 Redis，启动方式见
 [`Backend/README.md`](Backend/README.md)。
 
 ## 仓库结构

@@ -9,7 +9,6 @@ export default tseslint.config(
       "dist/**",
       "node_modules/**",
       "eslint.config.mjs",
-      "ops/load/**",
       "prettier.config.mjs",
     ],
   },

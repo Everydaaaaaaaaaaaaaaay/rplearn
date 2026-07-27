@@ -298,9 +298,8 @@ export type RuntimeConfig = Readonly<{
   trustProxy: boolean;
 }>;
 
-const DEVELOPMENT_DATABASE_URL =
-  "postgres://lingotrip:lingotrip_dev@127.0.0.1:54329/lingotrip";
-const DEVELOPMENT_REDIS_URL = "redis://127.0.0.1:63799";
+const DEVELOPMENT_DATABASE_URL = "postgres://127.0.0.1:5432/lingotrip";
+const DEVELOPMENT_REDIS_URL = "redis://127.0.0.1:6379";
 const DEVELOPMENT_AUTH_PEPPER = "local-only-auth-token-pepper-change-before-production";
 const DEVELOPMENT_SMTP_HOST = "127.0.0.1";
 
