@@ -88,11 +88,13 @@ struct RootView: View {
             }
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
+                await reloadUnreadCount()
             }
             .task {
                 if ProactiveMessageRoute.consumeNotificationTap() {
                     selectedTab = .messages
                 }
+                try? await UNUserNotificationCenter.current().setBadgeCount(unreadCount)
             }
             .onChange(of: scenePhase) { _, phase in
                 guard phase == .active else { return }
@@ -115,6 +117,7 @@ struct RootView: View {
                         }
                     }
                     await environment.refreshProactiveMessages(requestAuthorization: false)
+                    await reloadUnreadCount()
                     stateRevision += 1
                 }
             }
@@ -126,7 +129,10 @@ struct RootView: View {
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
-                stateRevision += 1
+                Task {
+                    await reloadUnreadCount()
+                    stateRevision += 1
+                }
             }
             .onReceive(NotificationCenter.default.publisher(for: .didOpenProactiveMessage)) { _ in
                 _ = ProactiveMessageRoute.consumeNotificationTap()
@@ -134,6 +140,9 @@ struct RootView: View {
             }
             .onChange(of: unreadCount) { _, count in
                 Task { try? await UNUserNotificationCenter.current().setBadgeCount(count) }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
+                Task { await reloadUnreadCount() }
             }
     }
 
@@ -462,6 +471,21 @@ struct RootView: View {
         try? await Task.sleep(for: .seconds(0.6))
         guard environment.needsOnboarding != true else { return }
         showVoiceUpgrade = true
+    }
+
+    private func reloadUnreadCount() async {
+        guard let friends = try? await environment.rosterStore.friends(),
+              let summaries = try? await environment.chatStore.conversationSummaries()
+        else { return }
+        let friendIDs = Set(friends.map(\.id))
+        unreadCount = summaries
+            .filter { friendIDs.contains($0.characterID) }
+            .reduce(into: 0) { total, summary in
+                total += ConversationReadState.unreadCount(
+                    conversationID: summary.conversationID,
+                    assistantMessageDates: summary.assistantMessageDates
+                )
+            }
     }
 }
 

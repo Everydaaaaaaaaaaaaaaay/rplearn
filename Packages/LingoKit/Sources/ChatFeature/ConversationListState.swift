@@ -31,6 +31,26 @@ public enum ConversationReadState {
         return lastReadAt(conversationID: conversationID, defaults: defaults) < lastMessageAt
     }
 
+    public static func unreadCount(
+        conversationID: UUID,
+        assistantMessageDates: [Date]
+    ) -> Int {
+        unreadCount(
+            conversationID: conversationID,
+            assistantMessageDates: assistantMessageDates,
+            defaults: .standard
+        )
+    }
+
+    static func unreadCount(
+        conversationID: UUID,
+        assistantMessageDates: [Date],
+        defaults: UserDefaults
+    ) -> Int {
+        let lastRead = lastReadAt(conversationID: conversationID, defaults: defaults)
+        return assistantMessageDates.count { $0 > lastRead }
+    }
+
     public static func markRead(conversationID: UUID, at date: Date = .now) {
         markRead(conversationID: conversationID, at: date, defaults: .standard)
     }

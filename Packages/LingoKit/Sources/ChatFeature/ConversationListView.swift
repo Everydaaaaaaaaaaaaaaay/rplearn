@@ -134,17 +134,23 @@ public struct ConversationListView: View {
     }
 
     private func rowLabel(_ row: ConversationListRow) -> some View {
-        let unread = isUnread(row)
+        let unreadCount = unreadCount(row)
+        let unread = unreadCount > 0
         let pinned = row.summary.map { ConversationReadState.isPinned($0.conversationID) } ?? false
 
         return HStack(spacing: DSSpacing.sm) {
             ZStack(alignment: .topTrailing) {
                 AvatarBadge(name: row.character.card.name, size: 54)
                 if unread {
-                    Circle()
-                        .fill(Color.dsDanger)
-                        .frame(width: 13, height: 13)
-                        .overlay { Circle().stroke(Color.dsSurface, lineWidth: 2.5) }
+                    Text(unreadCount > 99 ? "99+" : "\(unreadCount)")
+                        .font(.caption2.weight(.black))
+                        .foregroundStyle(.white)
+                        .monospacedDigit()
+                        .padding(.horizontal, 5)
+                        .frame(minWidth: 19, minHeight: 19)
+                        .background(Color.dsDanger, in: Capsule())
+                        .overlay { Capsule().stroke(Color.dsSurface, lineWidth: 2) }
+                        .offset(x: 5, y: -4)
                 }
             }
 
@@ -214,14 +220,13 @@ public struct ConversationListView: View {
         .background(Color.dsBackground)
     }
 
-    private func isUnread(_ row: ConversationListRow) -> Bool {
+    private func unreadCount(_ row: ConversationListRow) -> Int {
         row.summary.map {
-            ConversationReadState.isUnread(
+            ConversationReadState.unreadCount(
                 conversationID: $0.conversationID,
-                lastMessageAt: $0.lastMessageAt,
-                lastMessageRole: $0.lastMessageRole
+                assistantMessageDates: $0.assistantMessageDates
             )
-        } ?? false
+        } ?? 0
     }
 
     private func summaryText(_ summary: ConversationSummaryDTO) -> String {
@@ -257,13 +262,12 @@ public struct ConversationListView: View {
     }
 
     private func updateUnreadCount() {
-        persistedUnreadCount = rows.filter {
-            guard let summary = $0.summary else { return false }
-            return ConversationReadState.isUnread(
+        persistedUnreadCount = rows.reduce(into: 0) { total, row in
+            guard let summary = row.summary else { return }
+            total += ConversationReadState.unreadCount(
                 conversationID: summary.conversationID,
-                lastMessageAt: summary.lastMessageAt,
-                lastMessageRole: summary.lastMessageRole
+                assistantMessageDates: summary.assistantMessageDates
             )
-        }.count
+        }
     }
 }

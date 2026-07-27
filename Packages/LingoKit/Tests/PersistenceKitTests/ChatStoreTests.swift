@@ -157,5 +157,6 @@ struct ChatStoreTests {
         #expect(summaries.count == 1)
         #expect(summaries.first?.characterName == "Chat Partner")
         #expect(summaries.first?.lastMessageText == "g'day!")
+        #expect(summaries.first?.assistantMessageDates.count == 1)
     }
 }

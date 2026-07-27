@@ -65,6 +65,28 @@ struct ConversationReadStateTests {
         )
     }
 
+    @Test("按最后阅读时间统计实际未读助手消息数")
+    func countsUnreadAssistantMessages() throws {
+        let (defaults, suiteName) = try isolatedDefaults()
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        let conversationID = UUID()
+        let dates = [100.0, 200.0, 300.0].map(Date.init(timeIntervalSince1970:))
+        ConversationReadState.markRead(
+            conversationID: conversationID,
+            at: Date(timeIntervalSince1970: 200),
+            defaults: defaults
+        )
+
+        #expect(
+            ConversationReadState.unreadCount(
+                conversationID: conversationID,
+                assistantMessageDates: dates,
+                defaults: defaults
+            ) == 1
+        )
+    }
+
     private func isolatedDefaults() throws -> (UserDefaults, String) {
         let suiteName = "ConversationReadStateTests.\(UUID().uuidString)"
         let defaults = try #require(UserDefaults(suiteName: suiteName))

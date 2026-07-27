@@ -455,6 +455,10 @@ public actor ChatStore {
         return conversations.compactMap { conversation -> ConversationSummaryDTO? in
             guard let character = conversation.character else { return nil }
             let lastMessage = conversation.messages.max { $0.orderIndex < $1.orderIndex }
+            let assistantMessageDates = conversation.messages
+                .filter { $0.roleRaw == MessageRole.assistant.rawValue }
+                .map(\.createdAt)
+                .sorted()
             return ConversationSummaryDTO(
                 conversationID: conversation.conversationID,
                 characterID: character.characterID,
@@ -463,7 +467,8 @@ public actor ChatStore {
                 lastMessageText: lastMessage?.text ?? "",
                 lastMessageAt: conversation.lastMessageAt,
                 lastMessageRole: lastMessage.flatMap { MessageRole(rawValue: $0.roleRaw) },
-                lastMessageKind: lastMessage.flatMap { MessageKind(rawValue: $0.kindRaw) }
+                lastMessageKind: lastMessage.flatMap { MessageKind(rawValue: $0.kindRaw) },
+                assistantMessageDates: assistantMessageDates
             )
         }
         .sorted { $0.lastMessageAt > $1.lastMessageAt }
@@ -618,6 +623,8 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
     public var lastMessageAt: Date
     public var lastMessageRole: MessageRole?
     public var lastMessageKind: MessageKind?
+    /// 用于端内计算该会话的实际未读消息数，不参与持久化。
+    public var assistantMessageDates: [Date]
 
     public var id: UUID { conversationID }
 
@@ -629,7 +636,8 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
         lastMessageText: String,
         lastMessageAt: Date,
         lastMessageRole: MessageRole? = nil,
-        lastMessageKind: MessageKind? = nil
+        lastMessageKind: MessageKind? = nil,
+        assistantMessageDates: [Date] = []
     ) {
         self.conversationID = conversationID
         self.characterID = characterID
@@ -639,5 +647,6 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
         self.lastMessageAt = lastMessageAt
         self.lastMessageRole = lastMessageRole
         self.lastMessageKind = lastMessageKind
+        self.assistantMessageDates = assistantMessageDates
     }
 }
