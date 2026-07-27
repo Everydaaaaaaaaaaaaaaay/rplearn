@@ -16,5 +16,5 @@ install -m 0644 package.json pnpm-lock.yaml "${staging}/release/"
 printf '%s\n' "${version}" >"${staging}/release/RELEASE"
 
 install -d "$(dirname "${output}")"
-tar -C "${staging}/release" -czf "${output}" .
+COPYFILE_DISABLE=1 tar -C "${staging}/release" -czf "${output}" .
 echo "${output}"

@@ -118,16 +118,25 @@ rollback() {
   if [[ -n "${previous}" && -d "${previous}" ]]; then
     ln -s "${previous}" /opt/lingotrip/current.rollback
     mv -Tf /opt/lingotrip/current.rollback /opt/lingotrip/current
-    systemctl restart lingotrip-api.service lingotrip-worker.service || true
+    systemctl restart \
+      lingotrip-api.service \
+      lingotrip-worker.service \
+      lingotrip-caddy.service || true
   else
-    systemctl stop lingotrip-api.service lingotrip-worker.service || true
+    systemctl stop \
+      lingotrip-api.service \
+      lingotrip-worker.service \
+      lingotrip-caddy.service || true
     rm -f /opt/lingotrip/current
   fi
 }
 trap rollback ERR
 
 write_release_environment "${version}"
-systemctl restart lingotrip-api.service lingotrip-worker.service
+systemctl restart \
+  lingotrip-api.service \
+  lingotrip-worker.service \
+  lingotrip-caddy.service
 for _ in {1..30}; do
   if curl --fail --silent http://127.0.0.1:8080/health/ready >/dev/null; then
     trap - ERR
