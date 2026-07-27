@@ -23,6 +23,7 @@ public struct ChatView: View {
     @State private var quizCelebrationTrigger = 0
     @State private var shakingMessageID: UUID?
     @State private var shakePhase = false
+    @FocusState private var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
 
@@ -148,6 +149,7 @@ public struct ChatView: View {
                 .padding(.vertical, 10)
             }
             .defaultScrollAnchor(.bottom)
+            .scrollDismissesKeyboard(.interactively)
             .background(Color.dsBackground)
             .onChange(of: viewModel.streamingText) {
                 proxy.scrollTo("streaming", anchor: .bottom)
@@ -531,9 +533,14 @@ public struct ChatView: View {
                     : [:],
                 textColor: textColor,
                 selection: wordSelection,
-                onSelect: { wordSelection = $0 }
+                onSelect: selectWord
             )
         }
+    }
+
+    private func selectWord(_ selection: TokenSelection) {
+        isTextInputFocused = false
+        wordSelection = selection
     }
 
     /// 词典未收录时的 AI 简释兜底（fast 档）。
@@ -568,6 +575,7 @@ public struct ChatView: View {
         HStack(spacing: 8) {
             Button {
                 withAnimation(.snappy) {
+                    isTextInputFocused = false
                     isVoiceMode.toggle()
                     recorder.resetFailure()
                 }
@@ -608,6 +616,7 @@ public struct ChatView: View {
             } else {
                 TextField("用英语说点什么…", text: $viewModel.draft, axis: .vertical)
                     .lineLimit(1...4)
+                    .focused($isTextInputFocused)
                     .textFieldStyle(.plain)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)

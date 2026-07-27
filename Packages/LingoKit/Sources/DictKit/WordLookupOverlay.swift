@@ -52,7 +52,6 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                     .combined(with: .opacity)
                         )
                     }
-                    .ignoresSafeArea(.keyboard)
                 }
             }
             .animation(reduceMotion ? .easeOut(duration: 0.15) : DSAnimation.snappy, value: selection)
