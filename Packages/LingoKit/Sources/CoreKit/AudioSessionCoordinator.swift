@@ -1,6 +1,6 @@
 import AVFoundation
 
-/// AVAudioSession 单点管理：录音/播放/TTS 三方互斥（plan.md §3.2）。
+/// AVAudioSession 单点管理：录音/播放/TTS 三方互斥。
 public actor AudioSessionCoordinator {
     public enum Mode: Sendable, Equatable {
         case idle

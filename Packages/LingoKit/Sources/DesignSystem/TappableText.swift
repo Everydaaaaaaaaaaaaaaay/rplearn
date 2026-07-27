@@ -31,7 +31,7 @@ public struct SelectedTokenAnchorKey: PreferenceKey {
 }
 
 /// 逐词可点文本：FlowLayout + 每 token 一个 Text。
-/// 流式输出期间请用普通 Text，finished 后再换本组件（plan.md §3.1）。
+/// 流式输出期间请用普通 Text，finished 后再换本组件。
 public struct TappableText: View {
     private let tokens: [TextToken]
     private let contextID: String

@@ -3,7 +3,7 @@ import Foundation
 import LLMKit
 import PersistenceKit
 
-/// 分级记忆（plan.md §3.5）：short 压缩 → mid 合并 → long 提炼，注入 + 触发 + 订阅配额。
+/// 分级记忆：short 压缩 → mid 合并 → long 提炼，注入 + 触发 + 订阅配额。
 public struct MemoryService: Sendable {
     public struct Config: Sendable {
         /// 未压缩消息达到该数触发压缩。

@@ -3,7 +3,7 @@ import Foundation
 import LLMKit
 import PersistenceKit
 
-/// 偶遇系统（plan.md §3.7）：
+/// 偶遇系统：
 /// 活动 → 默认 P(偶遇)=0.35（可由活动配置覆盖）→ 60/30/10 掷来源 →
 /// balanced 档 LLM 生成角色卡（失败重试 1 次，再失败回退本地模板卡）→ 偶遇卡 + 开场白。
 public struct EncounterService: Sendable {

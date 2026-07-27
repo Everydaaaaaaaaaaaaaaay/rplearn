@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ECDICT 全量 CSV → ecdict_lite.sqlite 预处理脚本（仅用 Python 标准库）。
 
-过滤策略（plan.md §3.3）：保留 oxford==1 或 collins>=1 或 tag 非空（zk/gk/cet4/6/ky/
+过滤策略：保留 oxford==1 或 collins>=1 或 tag 非空（zk/gk/cet4/6/ky/
 toefl/ielts/gre 等）或 frq/bnc 在 1..40000 之间的词条。预计 6-9 万主词条。
 
 产出两张表：

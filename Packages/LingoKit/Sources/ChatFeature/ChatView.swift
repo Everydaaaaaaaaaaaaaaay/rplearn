@@ -131,7 +131,7 @@ public struct ChatView: View {
                             if streaming.isEmpty {
                                 TypingIndicator()
                             } else {
-                                // 流式期间用普通 Text，定稿后换 TappableText（plan.md §3.1）
+                                // 流式期间用普通 Text，定稿后换 TappableText
                                 Text(streaming)
                             }
                         }
@@ -341,7 +341,7 @@ public struct ChatView: View {
 
     // MARK: - 口语点评
 
-    /// 语音消息的口语点评卡：自然度星级 + 中文点评 + 更自然说法建议（plan.md §2.8）。
+    /// 语音消息的口语点评卡：自然度星级 + 中文点评 + 更自然说法建议。
     @ViewBuilder
     private func speechReviewCard(_ message: MessageDTO) -> some View {
         if message.kind == .voice, let review = CoachService.decodeSpeech(fromJSON: message.speechReviewJSON) {
@@ -377,7 +377,7 @@ public struct ChatView: View {
 
     // MARK: - 语境出题
 
-    /// 角色回复附带的小测：选项气泡 + 作答反馈 + 「不再弹题」（plan.md §3.8）。
+    /// 角色回复附带的小测：选项气泡 + 作答反馈 + 「不再弹题」。
     @ViewBuilder
     private func quizCard(_ message: MessageDTO) -> some View {
         if let quiz = QuizService.decode(fromJSON: message.quizJSON) {
@@ -592,7 +592,7 @@ public struct ChatView: View {
                 }
                 .disabled(viewModel.isStreaming)
                 #if targetEnvironment(simulator)
-                // 模拟器兜底：麦克风/识别不可用时注入文本验证全流程（plan.md §3.2）
+                // 模拟器兜底：麦克风/识别不可用时注入文本验证全流程
                 Button {
                     showSimulatorInjection = true
                 } label: {

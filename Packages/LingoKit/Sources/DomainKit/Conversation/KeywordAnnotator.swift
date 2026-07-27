@@ -2,7 +2,7 @@ import CoreKit
 import DictKit
 import Foundation
 
-/// 关键词标注：本地词频方案（确定性/离线/零成本，plan.md §3.8）。
+/// 关键词标注：本地词频方案（确定性/离线/零成本）。
 /// 角色回复逐词查词典，词频排名超过用户等级阈值且非停用词 → 划线。
 public struct KeywordAnnotator: Sendable {
     private let dictionary: DictDatabase

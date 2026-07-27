@@ -27,7 +27,7 @@ private final class AudioBufferFileWriter: @unchecked Sendable {
     }
 }
 
-/// 语音输入录制器：录制/转写状态机（plan.md §3.2）。
+/// 语音输入录制器：录制/转写状态机。
 /// AVAudioEngine.inputNode tap 双路：① 写 .caf 供回放 ② feed SFSpeechRecognizer(en_US) 实时识别。
 @MainActor
 @Observable

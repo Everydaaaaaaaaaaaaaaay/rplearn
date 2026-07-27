@@ -3,7 +3,7 @@ import SwiftUI
 
 /// 点词查词浮窗：挂在聊天根视图上。
 /// 被点词经 anchorPreference 上报 bounds，在词上/下方渲染 DictCardView（空间不足自动翻转），
-/// 渐入动画，点遮罩关闭（plan.md §3.1）。
+/// 渐入动画，点遮罩关闭。
 public struct WordLookupOverlayModifier: ViewModifier {
     @Binding var selection: TokenSelection?
     let dictionary: DictDatabase

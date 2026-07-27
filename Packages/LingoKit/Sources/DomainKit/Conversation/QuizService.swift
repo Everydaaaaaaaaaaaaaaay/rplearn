@@ -1,6 +1,6 @@
 import Foundation
 
-/// 内联小测题（plan.md §3.8）。角色回复末尾 <quiz>{...}</quiz> 解析而来。
+/// 内联小测题。角色回复末尾 <quiz>{...}</quiz> 解析而来。
 public struct Quiz: Sendable, Codable, Equatable {
     public var question: String
     public var options: [String]

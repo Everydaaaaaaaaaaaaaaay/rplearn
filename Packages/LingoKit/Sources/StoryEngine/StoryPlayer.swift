@@ -1,7 +1,7 @@
 import Foundation
 import Observation
 
-/// 剧情播放器（@Observable、无 UI 依赖，plan.md §3.6）。
+/// 剧情播放器（@Observable、无 UI 依赖）。
 /// 聊天皮肤与竖屏 AVG 共用：advance()/choose()/skipToNextChoiceOrEnd()。
 @MainActor
 @Observable

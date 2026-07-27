@@ -89,7 +89,7 @@ public struct OnboardingFlowView: View {
     #endif
 }
 
-/// 聊天皮肤的剧情播放：气泡逐条点击推进（plan.md §3.6 首启剧情复用引擎、换渲染皮肤）。
+/// 聊天皮肤的剧情播放：复用剧情引擎，气泡逐条点击推进。
 struct ChatStoryView: View {
     let player: StoryPlayer
     let characters: [CharacterDTO]

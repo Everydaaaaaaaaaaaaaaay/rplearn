@@ -1,6 +1,6 @@
 import Foundation
 
-/// 剧情脚本 JSON DSL（plan.md §3.6）。
+/// 剧情脚本 JSON DSL。
 /// 节点类型：line（台词）/ choice（选项）/ branch（按 flag 分支）/ reward（奖励）/ end（结束）。
 public struct StoryScript: Sendable, Equatable {
     public var id: String

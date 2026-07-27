@@ -2,9 +2,9 @@ import Foundation
 import LLMKit
 import PersistenceKit
 
-/// 全部 prompt 集中在此，便于迭代与 snapshot 测试锁定（plan.md §3.7）。
+/// 全部 prompt 集中在此，便于迭代与 snapshot 测试锁定。
 public enum PromptBuilder {
-    /// 主线引导任务清单：主角色首段对话（发机票前）附加（plan.md §3.6）。
+    /// 主线引导任务清单：主角色首段对话（发机票前）附加。
     public static let mainlineGuidance = """
     ## Current situation (first days)
     Your Chinese friend just arrived in your city - they won a year-long cultural exchange prize, \
@@ -128,7 +128,7 @@ public enum PromptBuilder {
         return result
     }
 
-    /// 角色扮演请求参数（plan.md §4 任务矩阵：balanced/流式/temp 0.9/max 512）。
+    /// 角色扮演请求参数：balanced、流式、temperature 0.9、最多 512 tokens。
     public static func roleplayRequest(
         card: CharacterCard,
         difficulty: DifficultyLevel,

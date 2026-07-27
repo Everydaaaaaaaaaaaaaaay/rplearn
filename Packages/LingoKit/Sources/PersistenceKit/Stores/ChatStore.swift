@@ -253,7 +253,7 @@ public actor ChatStore {
         try modelContext.save()
     }
 
-    // MARK: - 语境出题（plan.md §3.8）
+    // MARK: - 语境出题
 
     /// 出题成功：把 quiz 挂到该助手消息，并清零本会话的 turnsSinceQuiz。
     public func attachQuiz(messageID: UUID, quizJSON: String, conversationID: UUID) throws {
@@ -308,7 +308,7 @@ public actor ChatStore {
         try modelContext.save()
     }
 
-    /// 归档某角色的全部会话（偶遇未加好友离开后只读，plan.md §3.7）。
+    /// 归档某角色的全部会话（偶遇未加好友离开后只读）。
     public func archiveConversations(characterID: UUID) throws {
         let conversations = try modelContext.fetch(
             FetchDescriptor<ConversationEntity>(

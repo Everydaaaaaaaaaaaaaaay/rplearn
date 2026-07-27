@@ -1,7 +1,7 @@
 import AVFoundation
 import CoreKit
 
-/// 语音朗读服务。隐藏在协议后，未来可换云端 TTS（plan.md 决策 2）。
+/// 语音朗读服务。隐藏在协议后，未来可换云端 TTS。
 public protocol SpeechService: Sendable {
     /// 朗读一段英文。language 为 BCP-47 口音（en-GB/en-AU/en-US）。
     func speak(_ text: String, language: String) async

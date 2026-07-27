@@ -2,7 +2,7 @@ import CoreKit
 import Foundation
 import PersistenceKit
 
-/// 分级记忆配额（plan.md §3.5）：raw 原文窗口 / short+mid / long。
+/// 分级记忆配额：raw 原文窗口 / short+mid / long。
 public struct MemoryQuota: Sendable, Equatable {
     public var rawWindow: Int
     public var shortMid: Int

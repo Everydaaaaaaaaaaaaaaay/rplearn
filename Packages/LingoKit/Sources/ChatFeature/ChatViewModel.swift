@@ -96,7 +96,7 @@ public final class ChatViewModel {
         await send(userText: text)
     }
 
-    /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核（plan.md §3.2）。
+    /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核。
     public func sendVoice(capture: VoiceRecorder.Capture) async {
         guard let conversation, !isStreaming else { return }
         let userMessage: MessageDTO
@@ -148,7 +148,7 @@ public final class ChatViewModel {
         }
     }
 
-    /// 后台口语点评（仅语音消息）：结果写 speechReviewJSON；超时/失败静默放弃（plan.md §2.8）。
+    /// 后台口语点评（仅语音消息）：结果写 speechReviewJSON；超时/失败静默放弃。
     private func runSpeechReview(for message: MessageDTO) {
         let coach = CoachService(llm: deps.llm)
         let chatStore = deps.chatStore
@@ -189,7 +189,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
-        // 教练审核与主链路并行，互不阻塞（plan.md §3.4）。
+        // 教练审核与主链路并行，互不阻塞。
         runCoachReview(for: userMessage)
         await streamAssistantReply()
     }
@@ -328,7 +328,7 @@ public final class ChatViewModel {
         return messages
     }
 
-    // MARK: - 语境出题（plan.md §3.8）
+    // MARK: - 语境出题
 
     /// 双开关都开、且距上次出题已达阈值 → 本回合请求出题。
     private func shouldRequestQuiz(conversationID: UUID) async -> Bool {
@@ -417,7 +417,7 @@ public final class ChatViewModel {
     }
     #endif
 
-    /// 角色回复完成后本地词频标注关键词（划线可点，plan.md §3.8）。
+    /// 角色回复完成后本地词频标注关键词（划线可点）。
     private func annotateKeywords(message: MessageDTO, text: String) async {
         let annotator = KeywordAnnotator(dictionary: deps.dictionary)
         let threshold = character.difficultyLevel.keywordFrequencyThreshold
@@ -426,7 +426,7 @@ public final class ChatViewModel {
         try? await deps.chatStore.setKeywordRanges(messageID: message.id, json: json)
     }
 
-    /// 主线奖励：与主角色对话满 3 轮且尚未发放过剧情机票 → 送 1 张通用机票（plan.md §3.6/1.10）。
+    /// 主线奖励：与主角色对话满 3 轮且尚未发放过剧情机票 → 送 1 张通用机票。
     private func grantMainlineTicketIfEligible(conversationID: UUID) async {
         guard character.isMainCharacter else { return }
         guard let conversation = try? await deps.chatStore.conversation(id: conversationID),

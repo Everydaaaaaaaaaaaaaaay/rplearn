@@ -28,7 +28,7 @@ public struct CoachReview: Sendable, Codable, Equatable {
     }
 }
 
-/// 口语点评结果（plan.md §2.8）：对语音消息转写文本的口语自然度点评。
+/// 口语点评结果：对语音消息转写文本的口语自然度点评。
 public struct SpeechReview: Sendable, Codable, Equatable {
     public struct Tip: Sendable, Codable, Equatable {
         /// 原说法（转写中的片段）。

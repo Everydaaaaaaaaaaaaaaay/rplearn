@@ -36,7 +36,7 @@ public struct StoryDependencies: Sendable {
     }
 }
 
-/// 竖屏 AVG（plan.md §3.6）：背景 + 立绘 → 底部对话框（名牌 + 打字机台词）→
+/// 竖屏 AVG：背景 + 立绘 → 底部对话框（名牌 + 打字机台词）→
 /// 顶部快进/自动/跳过 → 选项中上部垂直排列。台词定稿后接 TappableText 可查词。
 public struct AVGStoryView: View {
     private let storyID: String

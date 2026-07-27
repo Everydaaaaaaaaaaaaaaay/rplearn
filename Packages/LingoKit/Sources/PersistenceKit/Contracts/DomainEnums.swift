@@ -1,6 +1,6 @@
 /// 领域枚举。实体内一律以 String rawValue 落库（SwiftData 枚举演进更安全）。
 
-/// 难度/熟练度等级，按中国学制细分（plan.md §2）。
+/// 难度/熟练度等级，按中国学制细分。
 public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
     case primary1, primary2, primary3, primary4, primary5, primary6
     case junior1, junior2, junior3
@@ -29,7 +29,7 @@ public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
         }
     }
 
-    /// 词频阈值：角色回复中排名超过该值的词视为「关键词」划线（plan.md §3.8）。
+    /// 词频阈值：角色回复中排名超过该值的词视为「关键词」划线。
     public var keywordFrequencyThreshold: Int {
         switch self {
         case .primary1, .primary2, .primary3, .primary4, .primary5, .primary6: 3000

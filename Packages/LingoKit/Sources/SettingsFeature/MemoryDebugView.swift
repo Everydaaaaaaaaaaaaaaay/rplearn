@@ -2,7 +2,7 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 记忆调试面板（plan.md §3.5）：按角色可视化 long/mid/short 三层记忆、对照订阅配额，
+/// 记忆调试面板：按角色可视化 long/mid/short 三层记忆、对照订阅配额，
 /// 可删除单条、手动整理、注入示例，便于开发期观察分层压缩行为。
 public struct MemoryDebugView: View {
     private let memoryStore: MemoryStore

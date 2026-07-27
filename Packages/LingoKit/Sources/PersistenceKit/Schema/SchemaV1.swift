@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-/// SwiftData SchemaV1（plan.md §2）。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
+/// SwiftData SchemaV1。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
 public enum SchemaV1: VersionedSchema {
     public static var versionIdentifier: Schema.Version { Schema.Version(1, 0, 0) }
 
@@ -182,7 +182,7 @@ extension SchemaV1 {
         public var tokenEstimate: Int
         public var keywordRangesJSON: String?
         public var coachReviewJSON: String?
-        /// 口语点评（语音消息，plan.md §2.8）。
+        /// 口语点评（语音消息）。
         public var speechReviewJSON: String?
         public var quizJSON: String?
         /// 已作答的 quiz 选项下标（nil 表示未作答）。

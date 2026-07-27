@@ -1,7 +1,7 @@
 #if canImport(UIKit)
 import UIKit
 
-/// 触觉反馈统一入口（plan.md §2.7 打磨）。全部主线程执行。
+/// 触觉反馈统一入口，全部在主线程执行。
 @MainActor
 public enum Haptics {
     /// 轻/中/重碰撞——用于发送、点选、进入等一般动作。

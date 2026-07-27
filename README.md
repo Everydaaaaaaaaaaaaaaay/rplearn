@@ -1,67 +1,69 @@
 # LingoTrip
 
-LingoTrip 是一款原生 SwiftUI 英语学习 App。用户以旅行世界为叙事框架，与不同城市的 AI 角色聊天、学习词汇、完成剧情，并收集机票与票根。
+LingoTrip 是一款原生 SwiftUI 英语学习 App。用户以世界旅行为线索，与城市中的 AI
+角色聊天、练习语音、学习词汇和语法、推进剧情，并收集机票与票根。
+
+仓库同时包含 iOS 客户端和生产后端。客户端本地优先；登录后，账号、订阅、虚拟资产、
+旅行进度和跨设备内容由后端同步并校验。
 
 ## 开始开发
 
-前置环境：macOS、Xcode、[XcodeGen](https://github.com/yonaskolb/XcodeGen)。
+客户端需要 macOS、Xcode 26+ 和
+[XcodeGen](https://github.com/yonaskolb/XcodeGen)：
 
 ```bash
 Scripts/build.sh
 Scripts/test.sh
 ```
 
-两个脚本都会先用 `project.yml` 重新生成 `LingoTrip.xcodeproj`。工程文件与 `build/` 均为本地产物，不提交到 Git。
+脚本会从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。不要提交生成的工程或 `build/`，
+也不要在 `Packages/LingoKit` 中直接运行 `swift build`。
 
-不要在 `Packages/LingoKit` 内直接运行 `swift build`；项目测试需要 App 宿主，并由 `LingoTripTests` 统一执行。
+后端需要 Node.js 24、pnpm 10 和 Docker，启动方式见
+[`Backend/README.md`](Backend/README.md)。
 
-## 工程地图
-
-```text
-App/                              App 生命周期、组合根与随包资源
-Packages/LingoKit/
-  Package.swift                   Module 与直接依赖的唯一清单
-  Sources/<TargetName>/           业务实现
-  Tests/<TargetName>Tests/        由 App 托管的 Swift Testing 测试
-Scripts/                          构建与测试入口
-tools/                            离线数据预处理工具
-docs/                             当前说明、设计记录与历史计划
-project.yml                       Xcode 工程的唯一事实源
-```
-
-依赖方向：
+## 仓库结构
 
 ```text
-App
-└─ Feature Modules
-   └─ DomainKit / StoryEngine
-      └─ LLMKit / SpeechKit / DictKit / PersistenceKit
-         └─ CoreKit / DesignSystem
+App/                    iOS App 入口、组合根和随包资源
+Packages/LingoKit/      客户端模块、领域实现和测试
+Backend/                TypeScript API、Worker、迁移和部署文件
+Scripts/                客户端构建与测试入口
+tools/                  离线数据处理工具
+docs/                   架构、产品与按需运维说明
+project.yml             Xcode 工程配置的唯一事实源
 ```
 
-Feature Module 之间不直接依赖；跨 Feature 导航在 `App/RootView.swift` 的组合根接线。
-
-较大的 Module 在 target 内继续按职责分组；这些子目录只改善 Locality，不创建新的依赖 seam：
+客户端模块的直接依赖以
+[`Packages/LingoKit/Package.swift`](Packages/LingoKit/Package.swift) 为准：
 
 ```text
-DomainKit/        Conversation / Progression / Story / World
-LLMKit/           Contracts / Models / Providers / Routing / Settings /
-                  StructuredOutput / Transport
-PersistenceKit/   Contracts / Schema / Stores
-HomeFeature/      Contracts / Models / Views
-MapFeature/       Contracts / Views
+App 组合根
+├── Feature：Auth / Home / Chat / Onboarding / Story / Roster / Map /
+│            Favorites / Settings
+├── 领域与集成：DomainKit / StoryEngine / SyncKit
+├── 服务：BackendKit / BillingKit / LLMKit / MediaKit / SpeechKit /
+│        DictKit / PersistenceKit
+└── 基础：CoreKit / DesignSystem
 ```
 
-`Contracts` 存放该 Module 暴露或共享的 Interface 类型，`Schema` 存放 SwiftData schema 与容器启动逻辑，`Stores` 存放持久化 Adapter。不要为了文件数量机械创建空目录。
+Feature 之间不直接依赖。跨页面导航和服务选择在 `App/RootView.swift` 与
+`App/AppEnvironment.swift` 中完成。
 
-## 事实源
+## 数据边界
 
-| 内容 | 文件 |
-|---|---|
-| 构建 target、签名与 App 依赖 | `project.yml` |
-| Swift Module 与直接依赖 | `Packages/LingoKit/Package.swift` |
-| 当前功能、架构与开发约定 | `docs/HANDOFF.md` |
-| 当前视觉与信息架构 | `docs/ui-redesign-plan.md` |
-| 初始产品和技术规划（历史） | `docs/plan.md` |
+- 游客使用本地领域服务，离线也能完成主要体验。
+- 登录用户的资产、权益和进度由服务端权威接口处理。
+- SwiftData 当前为 SchemaV4，负责本地投影、内容 Outbox 和语音上传队列。
+- AI 请求统一经过后端；客户端不保存模型供应商密钥。
+- 用户内容采用稳定 ID 和版本号同步，语音二进制存入私有对象存储。
 
-更多文档说明见 `docs/README.md`。
+## 轻量开发约定
+
+- 一个逻辑工作一个提交，不把无关修改混入同一提交。
+- 新增 Swift 文件或模块依赖后运行 `Scripts/test.sh`。
+- SwiftData 已发布模型不原地改结构；新增版本并提供迁移。
+- 跨 actor 传递 `Sendable` DTO，不把 SwiftData 实体带出仓库 actor。
+- 文档只记录稳定边界、设计意图和操作入口；完成的计划与阶段快照不长期保留。
+
+更多说明见 [`docs/README.md`](docs/README.md)。日常开发通常只需阅读本文件和对应模块代码。
