@@ -183,12 +183,8 @@
           "tableFrom": "account_deletion_requests",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -257,12 +253,8 @@
           "tableFrom": "ai_daily_usage",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -270,10 +262,7 @@
       "compositePrimaryKeys": {
         "ai_daily_usage_user_date_pk": {
           "name": "ai_daily_usage_user_date_pk",
-          "columns": [
-            "user_id",
-            "usage_date"
-          ]
+          "columns": ["user_id", "usage_date"]
         }
       },
       "uniqueConstraints": {},
@@ -352,12 +341,8 @@
           "tableFrom": "ai_guest_principals",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -517,12 +502,8 @@
           "tableFrom": "ai_requests",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -681,12 +662,8 @@
           "tableFrom": "ai_route_revisions",
           "tableTo": "ai_routes",
           "schemaTo": "app",
-          "columnsFrom": [
-            "task"
-          ],
-          "columnsTo": [
-            "task"
-          ],
+          "columnsFrom": ["task"],
+          "columnsTo": ["task"],
           "onDelete": "restrict",
           "onUpdate": "no action"
         }
@@ -933,12 +910,8 @@
           "tableFrom": "auth_action_tokens",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1209,12 +1182,8 @@
           "tableFrom": "device_sessions",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1303,12 +1272,8 @@
           "tableFrom": "identity_provider_credentials",
           "tableTo": "user_identities",
           "schemaTo": "app",
-          "columnsFrom": [
-            "identity_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["identity_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1447,12 +1412,8 @@
           "tableFrom": "refresh_tokens",
           "tableTo": "device_sessions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "session_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["session_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1569,12 +1530,8 @@
           "tableFrom": "user_identities",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1877,12 +1834,8 @@
           "tableFrom": "billing_provider_events",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2087,12 +2040,8 @@
           "tableFrom": "billing_transactions",
           "tableTo": "billing_plans",
           "schemaTo": "app",
-          "columnsFrom": [
-            "plan_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["plan_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2101,12 +2050,8 @@
           "tableFrom": "billing_transactions",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2261,12 +2206,8 @@
           "tableFrom": "entitlement_grants",
           "tableTo": "billing_plans",
           "schemaTo": "app",
-          "columnsFrom": [
-            "plan_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["plan_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2275,12 +2216,8 @@
           "tableFrom": "entitlement_grants",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2380,12 +2317,8 @@
           "tableFrom": "store_products",
           "tableTo": "billing_plans",
           "schemaTo": "app",
-          "columnsFrom": [
-            "plan_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["plan_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2605,12 +2538,8 @@
           "tableFrom": "subscriptions",
           "tableTo": "billing_plans",
           "schemaTo": "app",
-          "columnsFrom": [
-            "plan_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["plan_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2619,12 +2548,8 @@
           "tableFrom": "subscriptions",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2759,12 +2684,8 @@
           "tableFrom": "content_records",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2772,11 +2693,7 @@
       "compositePrimaryKeys": {
         "content_records_primary": {
           "name": "content_records_primary",
-          "columns": [
-            "user_id",
-            "resource_type",
-            "resource_id"
-          ]
+          "columns": ["user_id", "resource_type", "resource_id"]
         }
       },
       "uniqueConstraints": {},
@@ -2908,12 +2825,8 @@
           "tableFrom": "coin_ledger",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3019,12 +2932,8 @@
           "tableFrom": "command_receipts",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3162,12 +3071,8 @@
           "tableFrom": "inventory_items",
           "tableTo": "regions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "consumed_for_region_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["consumed_for_region_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3176,12 +3081,8 @@
           "tableFrom": "inventory_items",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3277,12 +3178,8 @@
           "tableFrom": "region_unlocks",
           "tableTo": "regions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "region_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["region_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3291,12 +3188,8 @@
           "tableFrom": "region_unlocks",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3422,12 +3315,8 @@
           "tableFrom": "travel_records",
           "tableTo": "regions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "from_region_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["from_region_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3436,12 +3325,8 @@
           "tableFrom": "travel_records",
           "tableTo": "inventory_items",
           "schemaTo": "app",
-          "columnsFrom": [
-            "ticket_item_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["ticket_item_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3450,12 +3335,8 @@
           "tableFrom": "travel_records",
           "tableTo": "regions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "to_region_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["to_region_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3464,12 +3345,8 @@
           "tableFrom": "travel_records",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3589,12 +3466,8 @@
           "tableFrom": "user_profiles",
           "tableTo": "regions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "current_region_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["current_region_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3603,12 +3476,8 @@
           "tableFrom": "user_profiles",
           "tableTo": "regions",
           "schemaTo": "app",
-          "columnsFrom": [
-            "starter_region_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["starter_region_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -3617,12 +3486,8 @@
           "tableFrom": "user_profiles",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3869,12 +3734,8 @@
           "tableFrom": "jobs",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -4054,12 +3915,8 @@
           "tableFrom": "media_assets",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4069,9 +3926,7 @@
         "media_assets_object_key_unique": {
           "name": "media_assets_object_key_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "object_key"
-          ]
+          "columns": ["object_key"]
         }
       },
       "policies": {},
@@ -4233,12 +4088,8 @@
           "tableFrom": "audit_events",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "actor_user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["actor_user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -4341,12 +4192,8 @@
           "tableFrom": "sync_changes",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4354,10 +4201,7 @@
       "compositePrimaryKeys": {
         "sync_changes_user_sequence_pk": {
           "name": "sync_changes_user_sequence_pk",
-          "columns": [
-            "user_id",
-            "sequence"
-          ]
+          "columns": ["user_id", "sequence"]
         }
       },
       "uniqueConstraints": {},
@@ -4396,12 +4240,8 @@
           "tableFrom": "sync_heads",
           "tableTo": "users",
           "schemaTo": "app",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4417,117 +4257,62 @@
     "app.account_deletion_status": {
       "name": "account_deletion_status",
       "schema": "app",
-      "values": [
-        "scheduled",
-        "processing",
-        "cancelled",
-        "completed"
-      ]
+      "values": ["scheduled", "processing", "cancelled", "completed"]
     },
     "app.ai_provider": {
       "name": "ai_provider",
       "schema": "app",
-      "values": [
-        "deepseek",
-        "openai",
-        "anthropic",
-        "google"
-      ]
+      "values": ["deepseek", "openai", "anthropic", "google"]
     },
     "app.ai_request_status": {
       "name": "ai_request_status",
       "schema": "app",
-      "values": [
-        "started",
-        "succeeded",
-        "failed",
-        "cancelled"
-      ]
+      "values": ["started", "succeeded", "failed", "cancelled"]
     },
     "app.auth_action_type": {
       "name": "auth_action_type",
       "schema": "app",
-      "values": [
-        "email_verification",
-        "password_reset"
-      ]
+      "values": ["email_verification", "password_reset"]
     },
     "app.identity_provider": {
       "name": "identity_provider",
       "schema": "app",
-      "values": [
-        "email",
-        "apple",
-        "google"
-      ]
+      "values": ["email", "apple", "google"]
     },
     "app.session_platform": {
       "name": "session_platform",
       "schema": "app",
-      "values": [
-        "ios",
-        "android",
-        "web",
-        "macos",
-        "unknown"
-      ]
+      "values": ["ios", "android", "web", "macos", "unknown"]
     },
     "app.session_status": {
       "name": "session_status",
       "schema": "app",
-      "values": [
-        "active",
-        "revoked",
-        "compromised"
-      ]
+      "values": ["active", "revoked", "compromised"]
     },
     "app.user_status": {
       "name": "user_status",
       "schema": "app",
-      "values": [
-        "active",
-        "locked",
-        "pending_deletion"
-      ]
+      "values": ["active", "locked", "pending_deletion"]
     },
     "app.billing_environment": {
       "name": "billing_environment",
       "schema": "app",
-      "values": [
-        "sandbox",
-        "production",
-        "test"
-      ]
+      "values": ["sandbox", "production", "test"]
     },
     "app.billing_provider": {
       "name": "billing_provider",
       "schema": "app",
-      "values": [
-        "apple",
-        "google_play",
-        "stripe",
-        "manual"
-      ]
+      "values": ["apple", "google_play", "stripe", "manual"]
     },
     "app.entitlement_status": {
       "name": "entitlement_status",
       "schema": "app",
-      "values": [
-        "active",
-        "grace",
-        "billing_retry",
-        "expired",
-        "revoked"
-      ]
+      "values": ["active", "grace", "billing_retry", "expired", "revoked"]
     },
     "app.subscription_tier": {
       "name": "subscription_tier",
       "schema": "app",
-      "values": [
-        "free",
-        "plus",
-        "pro"
-      ]
+      "values": ["free", "plus", "pro"]
     },
     "app.content_resource_type": {
       "name": "content_resource_type",
@@ -4566,51 +4351,27 @@
     "app.inventory_status": {
       "name": "inventory_status",
       "schema": "app",
-      "values": [
-        "available",
-        "consumed",
-        "revoked"
-      ]
+      "values": ["available", "consumed", "revoked"]
     },
     "app.ticket_source": {
       "name": "ticket_source",
       "schema": "app",
-      "values": [
-        "story",
-        "quest",
-        "purchase",
-        "subscription",
-        "support",
-        "debug"
-      ]
+      "values": ["story", "quest", "purchase", "subscription", "support", "debug"]
     },
     "app.ticket_type": {
       "name": "ticket_type",
       "schema": "app",
-      "values": [
-        "universal",
-        "country"
-      ]
+      "values": ["universal", "country"]
     },
     "app.job_status": {
       "name": "job_status",
       "schema": "app",
-      "values": [
-        "pending",
-        "running",
-        "succeeded",
-        "dead",
-        "cancelled"
-      ]
+      "values": ["pending", "running", "succeeded", "dead", "cancelled"]
     },
     "app.media_status": {
       "name": "media_status",
       "schema": "app",
-      "values": [
-        "pending",
-        "ready",
-        "deleted"
-      ]
+      "values": ["pending", "ready", "deleted"]
     }
   },
   "schemas": {
