@@ -20,6 +20,9 @@ public struct RosterView: View {
     @State private var profile: UserProfileDTO?
     @State private var occupiedSlots = 0
     @State private var isLoading = true
+    @State private var searchText = ""
+    @State private var arePartnersExpanded = true
+    @State private var areEncountersExpanded = true
 
     public init(
         deps: RosterDependencies,
@@ -32,308 +35,207 @@ public struct RosterView: View {
     private var partners: [CharacterDTO] { friends.filter(\.isMainCharacter) }
     private var encounters: [CharacterDTO] { friends.filter { !$0.isMainCharacter } }
     private var slotLimit: Int { max(profile?.friendSlotLimit ?? 10, 1) }
-    private var remainingSlots: Int { max(slotLimit - occupiedSlots, 0) }
+    private var isSearching: Bool {
+        !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    private var searchResults: [CharacterDTO] {
+        guard isSearching else { return [] }
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        return friends.filter { character in
+            [
+                character.card.name,
+                character.card.nationality,
+                character.card.occupation,
+            ].contains { $0.localizedCaseInsensitiveContains(query) }
+        }
+    }
 
     public var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: DSSpacing.xl) {
-                relationshipOverview
+        List {
+            if isSearching {
+                searchSection
+            } else if friends.isEmpty && !isLoading {
+                emptyState
+            } else {
                 partnerSection
                 encounterSection
+                capacityNote
             }
-            .padding(.horizontal, DSSpacing.md)
-            .padding(.top, DSSpacing.sm)
-            .padding(.bottom, 40)
         }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
         .background(Color.dsBackground)
         .navigationTitle("好友")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "搜索好友"
+        )
         .task { await reload() }
         .refreshable { await reload() }
         .overlay {
             if isLoading {
                 ProgressView()
-                    .controlSize(.large)
-                    .padding(DSSpacing.lg)
-                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card))
             }
         }
-    }
-
-    private var relationshipOverview: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.md) {
-            HStack(alignment: .bottom) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("JOURNEY BONDS")
-                        .font(.caption2.weight(.black))
-                        .tracking(1.15)
-                        .foregroundStyle(Color.dsSkyDeep)
-                    Text("旅途关系")
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                    Text(heroDetail)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                Spacer(minLength: DSSpacing.md)
-
-                VStack(alignment: .trailing, spacing: 0) {
-                    Text("\(friends.count)")
-                        .font(.system(.title, design: .rounded, weight: .bold))
-                        .foregroundStyle(.primary)
-                        .monospacedDigit()
-                    Text("同行者")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                }
-            }
-
-            ProgressView(
-                value: Double(occupiedSlots),
-                total: Double(slotLimit)
-            )
-            .tint(.dsSky)
-
-            HStack {
-                Label("\(partners.count) 位剧情旅伴", systemImage: "star.fill")
-                Spacer()
-                Text("\(occupiedSlots) / \(slotLimit) 好友位")
-                    .monospacedDigit()
-            }
-            .font(.caption.weight(.medium))
-            .foregroundStyle(.secondary)
-
-            Divider()
-        }
-        .padding(.horizontal, 2)
-        .accessibilityElement(children: .combine)
-    }
-
-    private var heroDetail: String {
-        if occupiedSlots >= slotLimit {
-            return "好友位已满，剧情旅伴仍然可以继续加入"
-        }
-        return "还可结识 \(remainingSlots) 位城市朋友，剧情旅伴不占好友位"
     }
 
     private var partnerSection: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            sectionHeader(
-                eyebrow: "STORY COMPANIONS",
-                title: "剧情旅伴",
-                detail: "与你共同推进旅程的核心角色"
+        Section {
+            groupHeader(
+                title: "特别关心",
+                count: partners.count,
+                isExpanded: $arePartnersExpanded
             )
 
-            if partners.isEmpty {
-                companionEmptyState
-            } else {
-                VStack(spacing: DSSpacing.sm) {
-                    ForEach(partners) { character in
-                        NavigationLink {
-                            CharacterProfileView(character: character, chatBuilder: chatBuilder)
-                        } label: {
-                            partnerCard(character)
-                        }
-                        .buttonStyle(.plain)
-                    }
+            if arePartnersExpanded {
+                ForEach(partners) { character in
+                    friendLink(character)
                 }
             }
         }
     }
 
     private var encounterSection: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            sectionHeader(
-                eyebrow: "CITY ENCOUNTERS",
-                title: "城市邂逅",
-                detail: "\(encounters.count) 位在路上认识的朋友"
+        Section {
+            groupHeader(
+                title: "我的好友",
+                count: encounters.count,
+                isExpanded: $areEncountersExpanded
             )
 
-            if encounters.isEmpty {
-                encounterEmptyState
-            } else {
-                VStack(spacing: 0) {
-                    ForEach(Array(encounters.enumerated()), id: \.element.id) { index, character in
-                        NavigationLink {
-                            CharacterProfileView(character: character, chatBuilder: chatBuilder)
-                        } label: {
-                            encounterRow(character)
-                        }
-                        .buttonStyle(.plain)
-
-                        if index < encounters.count - 1 {
-                            Divider()
-                                .padding(.leading, 76)
-                        }
-                    }
+            if areEncountersExpanded {
+                ForEach(encounters) { character in
+                    friendLink(character)
                 }
-                .dsSurface(.grouped, padding: 0)
             }
         }
     }
 
-    private func sectionHeader(eyebrow: String, title: String, detail: String) -> some View {
-        HStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(eyebrow)
-                    .font(.caption2.weight(.black))
-                    .tracking(1.15)
-                    .foregroundStyle(Color.dsSkyDeep)
-                Text(title)
-                    .font(.system(.title3, design: .rounded, weight: .bold))
-                Text(detail)
-                    .font(.caption)
+    @ViewBuilder
+    private var searchSection: some View {
+        if searchResults.isEmpty {
+            ContentUnavailableView.search(text: searchText)
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+        } else {
+            Section {
+                ForEach(searchResults) { character in
+                    friendLink(character)
+                }
+            } header: {
+                Text("搜索结果")
+                    .textCase(nil)
+            }
+        }
+    }
+
+    private func groupHeader(
+        title: String,
+        count: Int,
+        isExpanded: Binding<Bool>
+    ) -> some View {
+        Button {
+            isExpanded.wrappedValue.toggle()
+        } label: {
+            HStack(spacing: DSSpacing.sm) {
+                Image(systemName: "chevron.right")
+                    .font(.caption2.weight(.bold))
                     .foregroundStyle(.secondary)
+                    .rotationEffect(.degrees(isExpanded.wrappedValue ? 90 : 0))
+                    .frame(width: 12)
+                Text(title)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.primary)
+                Spacer()
+                Text("\(count)")
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(.tertiary)
             }
-            Spacer()
+            .frame(minHeight: 42)
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
+        .listRowInsets(
+            EdgeInsets(top: 0, leading: DSSpacing.md, bottom: 0, trailing: DSSpacing.md)
+        )
+        .listRowBackground(Color.dsSurface)
+        .listRowSeparator(.hidden)
+        .accessibilityLabel("\(title)，\(count) 位好友")
+        .accessibilityValue(isExpanded.wrappedValue ? "已展开" : "已收起")
+        .accessibilityHint(isExpanded.wrappedValue ? "轻点收起分组" : "轻点展开分组")
     }
 
-    private func partnerCard(_ character: CharacterDTO) -> some View {
-        let tint = characterTint(character.card.name)
+    private func friendLink(_ character: CharacterDTO) -> some View {
+        NavigationLink {
+            CharacterProfileView(character: character, chatBuilder: chatBuilder)
+        } label: {
+            HStack(spacing: DSSpacing.sm) {
+                AvatarBadge(name: character.card.name, size: 46)
 
-        return ZStack(alignment: .trailing) {
-            LinearGradient(
-                colors: [tint.opacity(0.16), Color.dsSurface],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-
-            HStack(spacing: DSSpacing.md) {
-                ZStack {
-                    Circle()
-                        .stroke(tint.opacity(0.24), lineWidth: 2)
-                        .frame(width: 72, height: 72)
-                    AvatarBadge(name: character.card.name, tint: tint, size: 62)
-                }
-
-                VStack(alignment: .leading, spacing: 5) {
-                    HStack(spacing: 6) {
-                        Image(systemName: "star.fill")
-                            .font(.caption2)
-                            .foregroundStyle(tint)
-                        Text("旅程核心角色")
-                            .font(.caption2.weight(.bold))
-                            .foregroundStyle(tint)
-                    }
-
+                VStack(alignment: .leading, spacing: 3) {
                     Text(character.card.name)
-                        .font(.system(.title3, design: .rounded, weight: .bold))
+                        .font(.body.weight(.medium))
                         .foregroundStyle(.primary)
                         .lineLimit(1)
-
-                    Text("\(character.card.nationality) · \(character.card.occupation)")
-                        .font(.footnote)
+                    Text(friendStatus(character))
+                        .font(.caption)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
-
-                    if let hobby = character.card.localizedHobbies.first {
-                        Label(hobby, systemImage: "heart.fill")
-                            .font(.caption)
-                            .foregroundStyle(tint)
-                            .lineLimit(1)
-                    }
                 }
-
-                Spacer(minLength: 0)
-
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.tertiary)
             }
-            .padding(DSSpacing.md)
         }
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(tint.opacity(0.2), lineWidth: 1)
+        .buttonStyle(.plain)
+        .listRowInsets(
+            EdgeInsets(top: 5, leading: DSSpacing.md, bottom: 5, trailing: DSSpacing.md)
+        )
+        .listRowBackground(Color.dsSurface)
+        .listRowSeparatorTint(Color.dsBorder.opacity(0.72))
+        .alignmentGuide(.listRowSeparatorLeading) { _ in
+            DSSpacing.md + 46 + DSSpacing.sm
         }
     }
 
-    private func encounterRow(_ character: CharacterDTO) -> some View {
-        HStack(spacing: DSSpacing.sm) {
-            AvatarBadge(
-                name: character.card.name,
-                tint: characterTint(character.card.name),
-                size: 52
+    private func friendStatus(_ character: CharacterDTO) -> String {
+        if character.isMainCharacter {
+            return "剧情旅伴 · \(character.card.occupation)"
+        }
+        return "\(character.card.nationality) · \(character.card.occupation)"
+    }
+
+    private var capacityNote: some View {
+        HStack(spacing: DSSpacing.xs) {
+            Image(systemName: "person.2")
+            Text("好友位 \(occupiedSlots)/\(slotLimit)")
+                .monospacedDigit()
+            Text("·")
+            Text("剧情旅伴不占好友位")
+        }
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .listRowInsets(
+            EdgeInsets(
+                top: DSSpacing.sm,
+                leading: DSSpacing.md,
+                bottom: DSSpacing.lg,
+                trailing: DSSpacing.md
             )
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text(character.card.name)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                    .lineLimit(1)
-                Text("\(character.card.nationality) · \(character.card.occupation)")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-
-                if !character.card.localizedHobbies.isEmpty {
-                    Text(character.card.localizedHobbies.prefix(2).joined(separator: " · "))
-                        .font(.caption)
-                        .foregroundStyle(characterTint(character.card.name))
-                        .lineLimit(1)
-                }
-            }
-
-            Spacer(minLength: DSSpacing.xs)
-
-            VStack(alignment: .trailing, spacing: 5) {
-                Text(character.metAt.formatted(.dateTime.month().day()))
-                    .font(.caption2.monospacedDigit())
-                    .foregroundStyle(.secondary)
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.tertiary)
-            }
-        }
-        .contentShape(Rectangle())
-        .padding(DSSpacing.md)
+        )
+        .listRowBackground(Color.dsBackground)
+        .listRowSeparator(.hidden)
     }
 
-    private var companionEmptyState: some View {
-        HStack(spacing: DSSpacing.md) {
-            Image(systemName: "sparkles")
-                .font(.title2.weight(.bold))
-                .foregroundStyle(Color.dsSunset)
-                .frame(width: 48, height: 48)
-                .background(Color.dsSunset.opacity(0.12), in: Circle())
-            VStack(alignment: .leading, spacing: 3) {
-                Text("旅伴尚未加入")
-                    .font(.headline)
-                Text("继续主线剧情，会遇见与你并肩旅行的伙伴")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .dsSurface(.grouped)
-    }
-
-    private var encounterEmptyState: some View {
-        HStack(spacing: DSSpacing.md) {
-            Image(systemName: "mappin.and.ellipse")
-                .font(.title2.weight(.bold))
-                .foregroundStyle(Color.dsCyan)
-                .frame(width: 48, height: 48)
-                .background(Color.dsCyan.opacity(0.12), in: Circle())
-            VStack(alignment: .leading, spacing: 3) {
-                Text("下一次邂逅还在路上")
-                    .font(.headline)
-                Text("去城市活动走走，也许会认识新的当地朋友")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .dsSurface(.grouped)
-    }
-
-    private func characterTint(_ name: String) -> Color {
-        let palette: [Color] = [.dsSky, .dsCyan, .dsSunset, .dsSuccess, .dsQuiz, .pink]
-        let value = name.unicodeScalars.reduce(0) { ($0 &* 31) &+ Int($1.value) }
-        return palette[Int(value.magnitude % UInt(palette.count))]
+    private var emptyState: some View {
+        ContentUnavailableView(
+            "还没有好友",
+            systemImage: "person.2",
+            description: Text("继续旅行，认识的伙伴会出现在这里")
+        )
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
     }
 
     private func reload() async {
