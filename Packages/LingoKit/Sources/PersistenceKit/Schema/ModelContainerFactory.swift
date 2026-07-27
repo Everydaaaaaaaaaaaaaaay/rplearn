@@ -2,14 +2,10 @@ import Foundation
 import SwiftData
 
 public enum ModelContainerFactory {
-    /// 生产容器：走 VersionedSchema + MigrationPlan。
+    /// 当前开发期只有一个数据基线；发布前可直接重置测试数据。
     public static func makeContainer(inMemory: Bool = false) throws -> ModelContainer {
-        let schema = Schema(versionedSchema: SchemaV4.self)
+        let schema = Schema(versionedSchema: LingoSchema.self)
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
-        return try ModelContainer(
-            for: schema,
-            migrationPlan: LingoMigrationPlan.self,
-            configurations: [configuration]
-        )
+        return try ModelContainer(for: schema, configurations: [configuration])
     }
 }

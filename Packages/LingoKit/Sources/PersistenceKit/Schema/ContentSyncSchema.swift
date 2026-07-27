@@ -168,30 +168,7 @@ public final class VoiceMediaUploadEntity {
     }
 }
 
-public enum SchemaV2: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(2, 0, 0) }
-
-    public static var models: [any PersistentModel.Type] {
-        SchemaV1.models + [
-            ContentSyncOwnerEntity.self,
-            ContentSyncMetadataEntity.self,
-            ContentOutboxEntity.self,
-        ]
-    }
-}
-
-public enum SchemaV3: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(3, 0, 0) }
-
-    public static var models: [any PersistentModel.Type] {
-        SchemaV2.models + [
-            VoiceMediaLinkEntity.self,
-            VoiceMediaUploadEntity.self,
-        ]
-    }
-}
-
-/// 单独保存路线选择，避免修改已经发布的 UserProfileEntity 历史结构。
+/// 当前旅程的路线选择。
 @Model
 public final class JourneyStateEntity {
     @Attribute(.unique) public var singletonKey: String
@@ -200,13 +177,5 @@ public final class JourneyStateEntity {
     public init(singletonKey: String = "current", starterRegionID: String? = nil) {
         self.singletonKey = singletonKey
         self.starterRegionID = starterRegionID
-    }
-}
-
-public enum SchemaV4: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(4, 0, 0) }
-
-    public static var models: [any PersistentModel.Type] {
-        SchemaV3.models + [JourneyStateEntity.self]
     }
 }

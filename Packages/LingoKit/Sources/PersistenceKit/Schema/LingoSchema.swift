@@ -1,8 +1,8 @@
 import Foundation
 import SwiftData
 
-/// SwiftData SchemaV1。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
-public enum SchemaV1: VersionedSchema {
+/// 当前开发期 SwiftData 基线。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
+public enum LingoSchema: VersionedSchema {
     public static var versionIdentifier: Schema.Version { Schema.Version(1, 0, 0) }
 
     public static var models: [any PersistentModel.Type] {
@@ -17,11 +17,17 @@ public enum SchemaV1: VersionedSchema {
             TicketStubEntity.self,
             StoryProgressEntity.self,
             QuizRecordEntity.self,
+            ContentSyncOwnerEntity.self,
+            ContentSyncMetadataEntity.self,
+            ContentOutboxEntity.self,
+            VoiceMediaLinkEntity.self,
+            VoiceMediaUploadEntity.self,
+            JourneyStateEntity.self,
         ]
     }
 }
 
-extension SchemaV1 {
+extension LingoSchema {
     /// 用户档案（单例行）。
     @Model
     public final class UserProfileEntity {
@@ -385,37 +391,14 @@ extension SchemaV1 {
     }
 }
 
-// 顶层别名，调用方免写 SchemaV1 前缀。
-public typealias UserProfileEntity = SchemaV1.UserProfileEntity
-public typealias CharacterEntity = SchemaV1.CharacterEntity
-public typealias ConversationEntity = SchemaV1.ConversationEntity
-public typealias MessageEntity = SchemaV1.MessageEntity
-public typealias MemoryEntity = SchemaV1.MemoryEntity
-public typealias FavoriteEntity = SchemaV1.FavoriteEntity
-public typealias ItemEntity = SchemaV1.ItemEntity
-public typealias TicketStubEntity = SchemaV1.TicketStubEntity
-public typealias StoryProgressEntity = SchemaV1.StoryProgressEntity
-public typealias QuizRecordEntity = SchemaV1.QuizRecordEntity
-
-public enum LingoMigrationPlan: SchemaMigrationPlan {
-    public static var schemas: [any VersionedSchema.Type] {
-        [SchemaV1.self, SchemaV2.self, SchemaV3.self, SchemaV4.self]
-    }
-
-    public static var stages: [MigrationStage] {
-        [
-            .lightweight(
-                fromVersion: SchemaV1.self,
-                toVersion: SchemaV2.self
-            ),
-            .lightweight(
-                fromVersion: SchemaV2.self,
-                toVersion: SchemaV3.self
-            ),
-            .lightweight(
-                fromVersion: SchemaV3.self,
-                toVersion: SchemaV4.self
-            )
-        ]
-    }
-}
+// 顶层别名，调用方免写 LingoSchema 前缀。
+public typealias UserProfileEntity = LingoSchema.UserProfileEntity
+public typealias CharacterEntity = LingoSchema.CharacterEntity
+public typealias ConversationEntity = LingoSchema.ConversationEntity
+public typealias MessageEntity = LingoSchema.MessageEntity
+public typealias MemoryEntity = LingoSchema.MemoryEntity
+public typealias FavoriteEntity = LingoSchema.FavoriteEntity
+public typealias ItemEntity = LingoSchema.ItemEntity
+public typealias TicketStubEntity = LingoSchema.TicketStubEntity
+public typealias StoryProgressEntity = LingoSchema.StoryProgressEntity
+public typealias QuizRecordEntity = LingoSchema.QuizRecordEntity
