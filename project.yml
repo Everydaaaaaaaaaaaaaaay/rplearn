@@ -81,6 +81,11 @@ targets:
         UILaunchScreen: {}
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
 
   # App 托管的测试 bundle：钥匙串/SwiftData 等依赖 App 环境的测试必须有宿主。
   # 测试源码仍位于 package 的 Tests/ 目录下，按被测模块分子目录。
