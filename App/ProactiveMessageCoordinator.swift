@@ -1,3 +1,4 @@
+import ChatFeature
 import CoreKit
 import DomainKit
 import Foundation
@@ -222,7 +223,8 @@ final class ProactiveMessageCoordinator {
                 || settings.authorizationStatus == .ephemeral
         else { return }
 
-        let baseBadge = defaults.integer(forKey: Self.unreadCountKey)
+        let baseBadge = await currentUnreadCount()
+        defaults.set(baseBadge, forKey: Self.unreadCountKey)
         for (index, message) in pending.sorted(by: { $0.dueAt < $1.dueAt }).enumerated() {
             let content = UNMutableNotificationContent()
             content.title = message.characterName
@@ -254,6 +256,18 @@ final class ProactiveMessageCoordinator {
             .filter { $0.hasPrefix(Self.notificationPrefix) }
         guard !identifiers.isEmpty else { return }
         notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+
+    private func currentUnreadCount() async -> Int {
+        guard let friends = try? await rosterStore.friends(),
+              let summaries = try? await chatStore.conversationSummaries()
+        else {
+            return defaults.integer(forKey: Self.unreadCountKey)
+        }
+        return ConversationReadState.totalUnreadCount(
+            friends: friends,
+            summaries: summaries
+        )
     }
 
     private var pendingKey: String {

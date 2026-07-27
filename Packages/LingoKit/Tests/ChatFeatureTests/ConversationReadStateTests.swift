@@ -87,10 +87,61 @@ struct ConversationReadStateTests {
         )
     }
 
+    @Test("总数只统计好友会话")
+    func totalOnlyIncludesFriends() {
+        let friend = character()
+        let stranger = character()
+        let summaries = [
+            summary(characterID: friend.id, messageDate: Date(timeIntervalSince1970: 100)),
+            summary(characterID: stranger.id, messageDate: Date(timeIntervalSince1970: 200)),
+        ]
+
+        #expect(
+            ConversationReadState.totalUnreadCount(
+                friends: [friend],
+                summaries: summaries
+            ) == 1
+        )
+    }
+
     private func isolatedDefaults() throws -> (UserDefaults, String) {
         let suiteName = "ConversationReadStateTests.\(UUID().uuidString)"
         let defaults = try #require(UserDefaults(suiteName: suiteName))
         defaults.removePersistentDomain(forName: suiteName)
         return (defaults, suiteName)
+    }
+
+    private func character() -> CharacterDTO {
+        CharacterDTO(
+            id: UUID(),
+            card: CharacterCard(
+                name: "Friend",
+                age: 25,
+                gender: .other,
+                nationality: "Test",
+                regionID: "test",
+                occupation: "tester",
+                hobbies: [],
+                appearance: "",
+                personality: ""
+            ),
+            difficultyLevel: .junior3,
+            isMainCharacter: false,
+            isFriend: true,
+            metAt: .now
+        )
+    }
+
+    private func summary(characterID: UUID, messageDate: Date) -> ConversationSummaryDTO {
+        ConversationSummaryDTO(
+            conversationID: UUID(),
+            characterID: characterID,
+            characterName: "Friend",
+            avatarAssetName: nil,
+            lastMessageText: "Hello",
+            lastMessageAt: messageDate,
+            lastMessageRole: .assistant,
+            assistantMessageDates: [messageDate]
+        )
     }
 }

@@ -51,6 +51,21 @@ public enum ConversationReadState {
         return assistantMessageDates.count { $0 > lastRead }
     }
 
+    public static func totalUnreadCount(
+        friends: [CharacterDTO],
+        summaries: [ConversationSummaryDTO]
+    ) -> Int {
+        let friendIDs = Set(friends.map(\.id))
+        return summaries
+            .filter { friendIDs.contains($0.characterID) }
+            .reduce(into: 0) { total, summary in
+                total += unreadCount(
+                    conversationID: summary.conversationID,
+                    assistantMessageDates: summary.assistantMessageDates
+                )
+            }
+    }
+
     public static func markRead(conversationID: UUID, at date: Date = .now) {
         markRead(conversationID: conversationID, at: date, defaults: .standard)
     }

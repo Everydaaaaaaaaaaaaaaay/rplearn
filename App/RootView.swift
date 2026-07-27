@@ -477,15 +477,10 @@ struct RootView: View {
         guard let friends = try? await environment.rosterStore.friends(),
               let summaries = try? await environment.chatStore.conversationSummaries()
         else { return }
-        let friendIDs = Set(friends.map(\.id))
-        unreadCount = summaries
-            .filter { friendIDs.contains($0.characterID) }
-            .reduce(into: 0) { total, summary in
-                total += ConversationReadState.unreadCount(
-                    conversationID: summary.conversationID,
-                    assistantMessageDates: summary.assistantMessageDates
-                )
-            }
+        unreadCount = ConversationReadState.totalUnreadCount(
+            friends: friends,
+            summaries: summaries
+        )
     }
 }
 
