@@ -97,6 +97,48 @@ public actor ChatStore {
         return dto(from: message)
     }
 
+    /// 幂等保存一条已经到期的主动消息。事件 UUID 同时作为消息 UUID，避免重复唤醒造成重复气泡。
+    @discardableResult
+    public func appendProactiveMessageIfNeeded(
+        messageID: UUID,
+        characterID: UUID,
+        text: String
+    ) throws -> MessageDTO? {
+        if try fetchMessage(id: messageID) != nil { return nil }
+        guard let character = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
+        ).first else {
+            throw ChatError.characterNotFound
+        }
+        let conversation: ConversationEntity
+        if let existing = character.conversations.first(where: { !$0.isArchived }) {
+            conversation = existing
+        } else {
+            let created = ConversationEntity()
+            created.character = character
+            modelContext.insert(created)
+            try journal(created)
+            conversation = created
+        }
+        let nextIndex = (conversation.messages.map(\.orderIndex).max() ?? -1) + 1
+        let message = MessageEntity(
+            messageID: messageID,
+            roleRaw: MessageRole.assistant.rawValue,
+            text: text,
+            orderIndex: nextIndex,
+            tokenEstimate: TokenEstimator.estimate(text)
+        )
+        message.conversation = conversation
+        modelContext.insert(message)
+        conversation.lastMessageAt = message.createdAt
+        conversation.turnCount += 1
+        conversation.turnsSinceQuiz += 1
+        try journal(message)
+        try journal(conversation)
+        try modelContext.save()
+        return dto(from: message)
+    }
+
     /// 追加一条消息，返回落库后的 DTO（orderIndex 自动递增）。
     @discardableResult
     public func appendMessage(

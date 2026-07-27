@@ -3,6 +3,7 @@ import SwiftUI
 
 @main
 struct LingoTripApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var environment = AppEnvironment()
 
     init() {

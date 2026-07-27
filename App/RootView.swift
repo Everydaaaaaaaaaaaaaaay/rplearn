@@ -14,6 +14,7 @@ import SettingsFeature
 import SpeechKit
 import StoryFeature
 import SwiftUI
+import UserNotifications
 
 enum AppTab: Hashable {
     case home
@@ -88,28 +89,51 @@ struct RootView: View {
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
             }
-            .onChange(of: scenePhase) { _, phase in
-                guard phase == .active,
-                      case .signedIn(let identity) = environment.authSession.phase
-                else { return }
-                guard identity.userID == activeUserID else {
-                    Task { await handleAuthenticationPhase() }
-                    return
+            .task {
+                if ProactiveMessageRoute.consumeNotificationTap() {
+                    selectedTab = .messages
                 }
+            }
+            .onChange(of: scenePhase) { _, phase in
+                guard phase == .active else { return }
                 Task {
-                    do {
-                        try await environment.userState.synchronize()
-                        try await environment.contentSync.synchronize()
-                        await environment.voiceMedia.synchronize()
-                        await environment.billing.synchronize()
-                        stateRevision += 1
-                    } catch {
-                        if environment.authSession.handleAuthenticationFailure(error) {
+                    if case .signedIn(let identity) = environment.authSession.phase {
+                        guard identity.userID == activeUserID else {
+                            await handleAuthenticationPhase()
                             return
                         }
-                        Log.app.warning("后台同步暂未完成，继续使用本地状态：\(error)")
+                        do {
+                            try await environment.userState.synchronize()
+                            try await environment.contentSync.synchronize()
+                            await environment.voiceMedia.synchronize()
+                            await environment.billing.synchronize()
+                        } catch {
+                            if environment.authSession.handleAuthenticationFailure(error) {
+                                return
+                            }
+                            Log.app.warning("后台同步暂未完成，继续使用本地状态：\(error)")
+                        }
                     }
+                    await environment.refreshProactiveMessages(requestAuthorization: false)
+                    stateRevision += 1
                 }
+            }
+            .onChange(of: selectedTab) { _, tab in
+                guard tab == .messages else { return }
+                Task {
+                    await environment.refreshProactiveMessages(requestAuthorization: false)
+                    stateRevision += 1
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
+                stateRevision += 1
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .didOpenProactiveMessage)) { _ in
+                _ = ProactiveMessageRoute.consumeNotificationTap()
+                selectedTab = .messages
+            }
+            .onChange(of: unreadCount) { _, count in
+                Task { try? await UNUserNotificationCenter.current().setBadgeCount(count) }
             }
     }
 
@@ -311,6 +335,9 @@ struct RootView: View {
                 billing: environment.billing,
                 isSignedIn: usesCloudState,
                 onSignIn: { showSignIn = true },
+                onProactiveMessagesChanged: { enabled in
+                    Task { await environment.proactiveMessages.setEnabled(enabled) }
+                },
                 favoritesBuilder: { AnyView(FavoritesView(deps: favoritesDeps)) }
             )
         }

@@ -22,6 +22,7 @@ public struct MyPageView: View {
     private let billing: BillingController
     private let isSignedIn: Bool
     private let onSignIn: @MainActor () -> Void
+    private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
     private let favoritesBuilder: @MainActor () -> AnyView
 
     @State private var profile: UserProfileDTO?
@@ -44,6 +45,7 @@ public struct MyPageView: View {
         billing: BillingController,
         isSignedIn: Bool,
         onSignIn: @escaping @MainActor () -> Void,
+        onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
         favoritesBuilder: @escaping @MainActor () -> AnyView
     ) {
         self.router = router
@@ -58,6 +60,7 @@ public struct MyPageView: View {
         self.billing = billing
         self.isSignedIn = isSignedIn
         self.onSignIn = onSignIn
+        self.onProactiveMessagesChanged = onProactiveMessagesChanged
         self.favoritesBuilder = favoritesBuilder
     }
 
@@ -324,7 +327,8 @@ public struct MyPageView: View {
                     memoryStore: memoryStore,
                     rosterStore: rosterStore,
                     chatStore: chatStore,
-                    speech: speech
+                    speech: speech,
+                    onProactiveMessagesChanged: onProactiveMessagesChanged
                 )
             } label: {
                 entryRow("设置", subtitle: "AI、语音与学习偏好", icon: "gearshape.fill", tint: .dsSky)

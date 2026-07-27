@@ -111,6 +111,7 @@ let featureTargets: [Target] = [
     feature("SettingsFeature", dependencies: [
         module("BackendKit"),
         module("BillingKit"),
+        module("CoreKit"),
         module("DomainKit"),
         module("LLMKit"),
         module("PersistenceKit"),

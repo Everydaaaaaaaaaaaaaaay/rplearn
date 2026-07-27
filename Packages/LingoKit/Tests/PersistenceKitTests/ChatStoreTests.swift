@@ -61,6 +61,30 @@ struct ChatStoreTests {
         #expect(!(try await chat.needsInitialMessage(characterID: characterID)))
     }
 
+    @Test("到期主动消息按事件编号幂等写入")
+    func proactiveMessageIsIdempotent() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let eventID = UUID()
+
+        let first = try await chat.appendProactiveMessageIfNeeded(
+            messageID: eventID,
+            characterID: characterID,
+            text: "What made you smile today?"
+        )
+        let duplicate = try await chat.appendProactiveMessageIfNeeded(
+            messageID: eventID,
+            characterID: characterID,
+            text: "Duplicate"
+        )
+
+        let summary = try #require(try await chat.conversationSummaries().first)
+        let messages = try await chat.messages(conversationID: summary.conversationID)
+        #expect(first?.id == eventID)
+        #expect(duplicate == nil)
+        #expect(messages.map(\.text) == ["What made you smile today?"])
+    }
+
     @Test("消息 orderIndex 单调递增，读取按序返回")
     func messageOrdering() async throws {
         let (chat, roster) = try makeStores()

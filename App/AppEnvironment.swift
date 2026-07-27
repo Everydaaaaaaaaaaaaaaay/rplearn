@@ -47,6 +47,8 @@ final class AppEnvironment {
     let userState: BackendUserStateCoordinator
     let contentSync: BackendContentSyncCoordinator
     let voiceMedia: VoiceMediaCoordinator
+    let proactiveMessages: ProactiveMessageCoordinator
+    private var proactiveMessageScope = "guest"
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -132,6 +134,11 @@ final class AppEnvironment {
             chatStore: chatStore,
             queueStore: voiceMediaQueueStore
         )
+        self.proactiveMessages = ProactiveMessageCoordinator(
+            rosterStore: rosterStore,
+            chatStore: chatStore,
+            llm: llmRouter
+        )
         self.billing = BillingController(
             backend: backendClient,
             economyStore: economyStore
@@ -178,7 +185,11 @@ final class AppEnvironment {
         try await contentSync.activate(userID: identity.userID)
         try await reconcileMainCharacters(profile: profile)
         await voiceMedia.activate(userID: identity.userID)
+        proactiveMessageScope = "account-\(identity.userID.uuidString.lowercased())"
         needsOnboarding = !profile.hasCompletedOnboarding
+        if profile.hasCompletedOnboarding {
+            Task { await refreshProactiveMessages(requestAuthorization: true) }
+        }
         return activation
     }
 
@@ -201,7 +212,11 @@ final class AppEnvironment {
         let cards = try SeedData.mainCharacterCards(url: seedsURL)
         try await rosterStore.importMainCharactersIfNeeded(cards: cards)
         try await reconcileMainCharacters(profile: profile)
+        proactiveMessageScope = "guest"
         needsOnboarding = !profile.hasCompletedOnboarding
+        if profile.hasCompletedOnboarding {
+            Task { await refreshProactiveMessages(requestAuthorization: true) }
+        }
     }
 
     /// 首启引导完成：原子写入路线与起始城市，只解锁用户选择的第一位伙伴。
@@ -215,9 +230,18 @@ final class AppEnvironment {
             )
             try await reconcileMainCharacters(profile: profile)
             needsOnboarding = false
+            Task { await refreshProactiveMessages(requestAuthorization: true) }
         } catch {
             Log.app.error("完成首启引导失败：\(error)")
         }
+    }
+
+    func refreshProactiveMessages(requestAuthorization: Bool) async {
+        guard needsOnboarding == false else { return }
+        await proactiveMessages.activate(
+            scope: proactiveMessageScope,
+            requestAuthorization: requestAuthorization
+        )
     }
 
     private func reconcileMainCharacters(profile: UserProfileDTO) async throws {

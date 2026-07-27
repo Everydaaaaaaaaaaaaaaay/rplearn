@@ -1,3 +1,4 @@
+import CoreKit
 import DesignSystem
 import DomainKit
 import LLMKit
@@ -22,10 +23,12 @@ public struct SettingsView: View {
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
     private let speech: any SpeechService
+    private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
     @State private var voiceQuality: VoiceReport.Quality = .standard
+    @AppStorage(ProactiveMessagePreferences.enabledKey) private var proactiveMessagesEnabled = true
     @Environment(\.openURL) private var openURL
 
     public init(
@@ -35,7 +38,8 @@ public struct SettingsView: View {
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
         chatStore: ChatStore,
-        speech: any SpeechService
+        speech: any SpeechService,
+        onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in }
     ) {
         self.router = router
         self.economyStore = economyStore
@@ -44,11 +48,13 @@ public struct SettingsView: View {
         self.rosterStore = rosterStore
         self.chatStore = chatStore
         self.speech = speech
+        self.onProactiveMessagesChanged = onProactiveMessagesChanged
     }
 
     public var body: some View {
         Form {
             learningSection
+            proactiveMessagesSection
             voiceSection
             Section {
                 LabeledContent("连接方式", value: "安全后端中转")
@@ -94,6 +100,26 @@ public struct SettingsView: View {
             // 从系统设置下载语音回来后，刷新音源并让新音质立即生效。
             reloadVoiceInfo()
             Task { await speech.refreshVoices() }
+        }
+        .onChange(of: proactiveMessagesEnabled) { _, enabled in
+            onProactiveMessagesChanged(enabled)
+        }
+    }
+
+    private var proactiveMessagesSection: some View {
+        Section {
+            Toggle("角色主动联系", isOn: $proactiveMessagesEnabled)
+            Button {
+                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                    openURL(url)
+                }
+            } label: {
+                Label("系统通知设置", systemImage: "bell.badge")
+            }
+        } header: {
+            Text("消息提醒")
+        } footer: {
+            Text("好友会偶尔主动聊起适合练习英语的话题。通常间隔数天，只在白天提醒；关闭后会取消尚未发送的消息。")
         }
     }
 
