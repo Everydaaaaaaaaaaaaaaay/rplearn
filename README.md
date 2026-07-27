@@ -25,7 +25,9 @@ Scripts/test.sh
 
 Release 固定使用 `com.ut7ad253x8.lingotrip` 与项目分发团队。首次上传前，需要在同一
 App Store Connect 团队创建一次使用该 Bundle ID 的 App 记录；之后所有版本沿用，不再
-更换标识。
+更换标识。日常归档运行 `Scripts/archive.sh`，脚本会用 Git 提交数生成递增的 Build
+Number；需要覆盖版本时可设置 `LINGOTRIP_MARKETING_VERSION` 或
+`LINGOTRIP_BUILD_NUMBER`。
 
 后端需要 Node.js 24、pnpm 10、PostgreSQL 17 和 Redis，启动方式见
 [`Backend/README.md`](Backend/README.md)。
