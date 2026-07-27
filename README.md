@@ -23,10 +23,9 @@ Scripts/test.sh
 `Config/Signing.local.xcconfig`，填写自己的 Team ID；若共享 App ID 不属于该 Team，再
 覆盖 `LINGOTRIP_BUNDLE_ID`。该文件只影响 Debug，不会改变 Release 归档。
 
-Release 固定使用 `com.ut7ad253x8.lingotrip` 与项目分发团队。首次上传前，需要在同一
-App Store Connect 团队创建一次使用该 Bundle ID 的 App 记录；之后所有版本沿用，不再
-更换标识。日常归档运行 `Scripts/archive.sh`，脚本会用 Git 提交数生成递增的 Build
-Number；需要覆盖版本时可设置 `LINGOTRIP_MARKETING_VERSION` 或
+Release 固定使用现有 App Store Connect 记录的 `com.tiantian.lingotrip` 与项目分发
+团队，后续版本不再更换标识。日常归档运行 `Scripts/archive.sh`，脚本会用 Git 提交数
+生成递增的 Build Number；需要覆盖版本时可设置 `LINGOTRIP_MARKETING_VERSION` 或
 `LINGOTRIP_BUILD_NUMBER`。
 
 后端需要 Node.js 24、pnpm 10、PostgreSQL 17 和 Redis，启动方式见
