@@ -19,6 +19,9 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "18.0"
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
     sources:
       - App
     dependencies:
@@ -64,8 +67,7 @@ targets:
         product: SettingsFeature
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.tiantian.lingotrip
-        DEVELOPMENT_TEAM: Z3M5BAW698
+        PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID)
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: App/LingoTrip.entitlements
         SWIFT_VERSION: "6.0"
@@ -93,6 +95,9 @@ targets:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "18.0"
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
     sources:
       - Packages/LingoKit/Tests
     dependencies:
@@ -125,8 +130,7 @@ targets:
         product: StoryEngine
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.tiantian.lingotrip.tests
-        DEVELOPMENT_TEAM: Z3M5BAW698
+        PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).tests
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "6.0"
         GENERATE_INFOPLIST_FILE: YES

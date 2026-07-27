@@ -19,6 +19,10 @@ Scripts/test.sh
 脚本会从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。不要提交生成的工程或 `build/`，
 也不要在 `Packages/LingoKit` 中直接运行 `swift build`。
 
+真机调试前复制 `Config/Signing.local.xcconfig.example` 为
+`Config/Signing.local.xcconfig`，填写自己的 Team ID；若共享 App ID 不属于该 Team，再
+覆盖 `LINGOTRIP_BUNDLE_ID`。本地签名文件不会进入 Git。
+
 后端需要 Node.js 24、pnpm 10、PostgreSQL 17 和 Redis，启动方式见
 [`Backend/README.md`](Backend/README.md)。
 
