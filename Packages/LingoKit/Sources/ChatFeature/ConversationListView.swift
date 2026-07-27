@@ -37,10 +37,6 @@ public struct ConversationListView: View {
         }
     }
 
-    private var unreadCount: Int {
-        rows.filter { isUnread($0) }.count
-    }
-
     public var body: some View {
         Group {
             if rows.isEmpty && !isLoading {
@@ -52,18 +48,6 @@ public struct ConversationListView: View {
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                     } else {
-                        conversationSectionHeader
-                            .listRowInsets(
-                                EdgeInsets(
-                                    top: DSSpacing.sm,
-                                    leading: DSSpacing.md,
-                                    bottom: DSSpacing.xs,
-                                    trailing: DSSpacing.md
-                                )
-                            )
-                            .listRowBackground(Color.dsBackground)
-                            .listRowSeparator(.hidden)
-
                         ForEach(visibleRows) { row in
                             NavigationLink {
                                 ChatView(character: row.character, deps: deps)
@@ -138,7 +122,7 @@ public struct ConversationListView: View {
                 .background(Color.dsBackground)
             }
         }
-        .navigationTitle("消息")
+        .navigationTitle("最近联络")
         .searchable(text: $searchText, prompt: "搜索角色")
         .task { await reload() }
         .refreshable { await reload() }
@@ -147,37 +131,6 @@ public struct ConversationListView: View {
             updateUnreadCount()
         }
         .onChange(of: stateRevision) { updateUnreadCount() }
-    }
-
-    private var conversationSectionHeader: some View {
-        HStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 3) {
-                Text("TRAVEL COMMS")
-                    .font(.caption2.weight(.black))
-                    .tracking(1.15)
-                    .foregroundStyle(Color.dsSkyDeep)
-                Text("最近联络")
-                    .font(.system(.title3, design: .rounded, weight: .bold))
-                    .foregroundStyle(.primary)
-                Text(unreadCount == 0 ? "消息已读完，和旅伴聊聊近况" : "\(unreadCount) 条消息还未读")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .textCase(nil)
-            }
-            Spacer()
-            VStack(alignment: .trailing, spacing: 0) {
-                Text("\(visibleRows.count)")
-                    .font(.title3.monospacedDigit().weight(.bold))
-                    .foregroundStyle(.primary)
-                Text("位旅伴")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .padding(.top, DSSpacing.sm)
-        .padding(.bottom, DSSpacing.xs)
-        .padding(.horizontal, 2)
-        .textCase(nil)
     }
 
     private func rowLabel(_ row: ConversationListRow) -> some View {
