@@ -41,97 +41,94 @@ public struct ConversationListView: View {
         rows.filter { isUnread($0) }.count
     }
 
-    private var activeConversationCount: Int {
-        rows.filter { $0.summary != nil }.count
-    }
-
     public var body: some View {
         Group {
             if rows.isEmpty && !isLoading {
                 emptyState
             } else {
                 List {
-                    if searchText.isEmpty {
-                        messageOverview
-                            .listRowInsets(
-                                EdgeInsets(
-                                    top: DSSpacing.sm,
-                                    leading: DSSpacing.md,
-                                    bottom: DSSpacing.sm,
-                                    trailing: DSSpacing.md
-                                )
-                            )
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                    }
-
                     if visibleRows.isEmpty {
                         ContentUnavailableView.search(text: searchText)
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                     } else {
-                        Section {
-                            ForEach(visibleRows) { row in
-                                NavigationLink {
-                                    ChatView(character: row.character, deps: deps)
-                                        .onAppear {
-                                            if let summary = row.summary {
-                                                ConversationReadState.markRead(
-                                                    conversationID: summary.conversationID,
-                                                    at: summary.lastMessageAt
-                                                )
-                                            }
-                                        }
-                                        .onDisappear {
-                                            Task { await reload() }
-                                        }
-                                } label: {
-                                    rowLabel(row)
-                                }
-                                .listRowInsets(
-                                    EdgeInsets(
-                                        top: 5,
-                                        leading: DSSpacing.md,
-                                        bottom: 5,
-                                        trailing: DSSpacing.md
-                                    )
+                        conversationSectionHeader
+                            .listRowInsets(
+                                EdgeInsets(
+                                    top: DSSpacing.sm,
+                                    leading: DSSpacing.md,
+                                    bottom: DSSpacing.xs,
+                                    trailing: DSSpacing.md
                                 )
-                                .listRowBackground(Color.clear)
-                                .listRowSeparator(.hidden)
-                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                    if let conversationID = row.summary?.conversationID {
-                                        Button {
-                                            ConversationReadState.togglePinned(conversationID)
-                                            stateRevision += 1
-                                        } label: {
-                                            Label(
-                                                ConversationReadState.isPinned(conversationID)
-                                                    ? "取消置顶"
-                                                    : "置顶",
-                                                systemImage: "pin.fill"
-                                            )
-                                        }
-                                        .tint(.dsSky)
-                                    }
-                                }
-                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                    if let summary = row.summary {
-                                        Button {
+                            )
+                            .listRowBackground(Color.dsBackground)
+                            .listRowSeparator(.hidden)
+
+                        ForEach(visibleRows) { row in
+                            NavigationLink {
+                                ChatView(character: row.character, deps: deps)
+                                    .onAppear {
+                                        if let summary = row.summary {
                                             ConversationReadState.markRead(
                                                 conversationID: summary.conversationID,
                                                 at: summary.lastMessageAt
                                             )
-                                            stateRevision += 1
-                                            updateUnreadCount()
-                                        } label: {
-                                            Label("标记已读", systemImage: "envelope.open.fill")
                                         }
-                                        .tint(.dsCyan)
                                     }
+                                    .onDisappear {
+                                        Task { await reload() }
+                                    }
+                            } label: {
+                                rowLabel(row)
+                            }
+                            .listRowInsets(
+                                EdgeInsets(
+                                    top: 5,
+                                    leading: DSSpacing.md,
+                                    bottom: 5,
+                                    trailing: DSSpacing.md
+                                )
+                            )
+                            .listRowBackground(
+                                row.summary.map {
+                                    ConversationReadState.isPinned($0.conversationID)
+                                } == true
+                                    ? Color.dsSky.opacity(0.055)
+                                    : Color.dsBackground
+                            )
+                            .listRowSeparator(.visible)
+                            .listRowSeparatorTint(Color.dsBorder)
+                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                if let conversationID = row.summary?.conversationID {
+                                    Button {
+                                        ConversationReadState.togglePinned(conversationID)
+                                        stateRevision += 1
+                                    } label: {
+                                        Label(
+                                            ConversationReadState.isPinned(conversationID)
+                                                ? "取消置顶"
+                                                : "置顶",
+                                            systemImage: "pin.fill"
+                                        )
+                                    }
+                                    .tint(.dsSky)
                                 }
                             }
-                        } header: {
-                            conversationSectionHeader
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                if let summary = row.summary {
+                                    Button {
+                                        ConversationReadState.markRead(
+                                            conversationID: summary.conversationID,
+                                            at: summary.lastMessageAt
+                                        )
+                                        stateRevision += 1
+                                        updateUnreadCount()
+                                    } label: {
+                                        Label("标记已读", systemImage: "envelope.open.fill")
+                                    }
+                                    .tint(.dsCyan)
+                                }
+                            }
                         }
                     }
                 }
@@ -152,107 +149,33 @@ public struct ConversationListView: View {
         .onChange(of: stateRevision) { updateUnreadCount() }
     }
 
-    private var messageOverview: some View {
-        ZStack(alignment: .bottomTrailing) {
-            LinearGradient(
-                colors: [.dsSkyDeep, .dsSky, .dsCyan.opacity(0.88)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-
-            Circle()
-                .fill(.white.opacity(0.1))
-                .frame(width: 128, height: 128)
-                .offset(x: 34, y: 47)
-
-            Image(systemName: "bubble.left.and.bubble.right.fill")
-                .font(.system(size: 76, weight: .black))
-                .foregroundStyle(.white.opacity(0.1))
-                .offset(x: 9, y: 12)
-
-            VStack(alignment: .leading, spacing: DSSpacing.md) {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("TRAVEL COMMS")
-                        .font(.caption2.weight(.black))
-                        .tracking(1.4)
-                        .foregroundStyle(.white.opacity(0.72))
-                    Text(overviewTitle)
-                        .font(.system(.title2, design: .rounded, weight: .black))
-                        .foregroundStyle(.white)
-                    Text(overviewDetail)
-                        .font(.footnote)
-                        .foregroundStyle(.white.opacity(0.84))
-                }
-
-                HStack(spacing: DSSpacing.xs) {
-                    overviewStat(
-                        value: "\(rows.count)",
-                        label: "同行伙伴",
-                        icon: "person.2.fill"
-                    )
-                    overviewStat(
-                        value: "\(activeConversationCount)",
-                        label: "进行中",
-                        icon: "message.fill"
-                    )
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(DSSpacing.lg)
-        }
-        .frame(minHeight: 178)
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-                .stroke(.white.opacity(0.24), lineWidth: 1)
-        }
-        .shadow(color: Color.dsSkyDeep.opacity(0.18), radius: 16, y: 8)
-        .accessibilityElement(children: .combine)
-    }
-
-    private var overviewTitle: String {
-        unreadCount == 0 ? "旅途消息已读完" : "\(unreadCount) 条新消息等你"
-    }
-
-    private var overviewDetail: String {
-        unreadCount == 0 ? "和旅伴聊聊近况，继续今天的语言旅程" : "有伙伴从旅途中发来了新消息"
-    }
-
-    private func overviewStat(value: String, label: String, icon: String) -> some View {
-        HStack(spacing: 6) {
-            Image(systemName: icon)
-                .font(.caption.weight(.bold))
-            Text(value)
-                .font(.subheadline.monospacedDigit().weight(.black))
-            Text(label)
-                .font(.caption)
-        }
-        .foregroundStyle(.white)
-        .padding(.horizontal, 10)
-        .padding(.vertical, 7)
-        .background(.black.opacity(0.14), in: Capsule())
-    }
-
     private var conversationSectionHeader: some View {
-        HStack(alignment: .firstTextBaseline) {
-            VStack(alignment: .leading, spacing: 2) {
+        HStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text("TRAVEL COMMS")
+                    .font(.caption2.weight(.black))
+                    .tracking(1.15)
+                    .foregroundStyle(Color.dsSkyDeep)
                 Text("最近联络")
-                    .font(.headline)
+                    .font(.system(.title3, design: .rounded, weight: .bold))
                     .foregroundStyle(.primary)
-                Text("置顶、未读和旅伴近况")
+                Text(unreadCount == 0 ? "消息已读完，和旅伴聊聊近况" : "\(unreadCount) 条消息还未读")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .textCase(nil)
             }
             Spacer()
-            Text("\(visibleRows.count)")
-                .font(.caption.monospacedDigit().weight(.bold))
-                .foregroundStyle(Color.dsSkyDeep)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.dsSky.opacity(0.11), in: Capsule())
+            VStack(alignment: .trailing, spacing: 0) {
+                Text("\(visibleRows.count)")
+                    .font(.title3.monospacedDigit().weight(.bold))
+                    .foregroundStyle(.primary)
+                Text("位旅伴")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
         }
-        .padding(.top, DSSpacing.xs)
+        .padding(.top, DSSpacing.sm)
+        .padding(.bottom, DSSpacing.xs)
         .padding(.horizontal, 2)
         .textCase(nil)
     }
@@ -309,21 +232,7 @@ public struct ConversationListView: View {
                     .lineLimit(1)
             }
         }
-        .padding(DSSpacing.sm)
-        .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
-        .overlay(alignment: .leading) {
-            if unread {
-                Capsule()
-                    .fill(Color.dsSky)
-                    .frame(width: 3, height: 34)
-                    .padding(.leading, 1)
-            }
-        }
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(unread ? Color.dsSky.opacity(0.2) : Color.dsBorder, lineWidth: 1)
-        }
-        .shadow(color: .black.opacity(0.035), radius: 7, y: 3)
+        .padding(.vertical, DSSpacing.xs)
     }
 
     private var emptyState: some View {

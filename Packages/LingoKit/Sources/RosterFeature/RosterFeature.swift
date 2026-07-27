@@ -37,7 +37,7 @@ public struct RosterView: View {
     public var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: DSSpacing.xl) {
-                relationshipHero
+                relationshipOverview
                 partnerSection
                 encounterSection
             }
@@ -60,62 +60,53 @@ public struct RosterView: View {
         }
     }
 
-    private var relationshipHero: some View {
-        ZStack(alignment: .topTrailing) {
-            LinearGradient(
-                colors: [.dsSkyDeep, .dsQuiz],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-
-            relationshipConstellation
-                .padding(.top, 4)
-                .padding(.trailing, 2)
-
-            VStack(alignment: .leading, spacing: DSSpacing.lg) {
+    private var relationshipOverview: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.md) {
+            HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("JOURNEY BONDS")
                         .font(.caption2.weight(.black))
-                        .tracking(1.4)
-                        .foregroundStyle(.white.opacity(0.7))
+                        .tracking(1.15)
+                        .foregroundStyle(Color.dsSkyDeep)
                     Text("旅途关系")
-                        .font(.system(.title, design: .rounded, weight: .black))
-                        .foregroundStyle(.white)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
                     Text(heroDetail)
-                        .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.84))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                ProgressView(
-                    value: Double(occupiedSlots),
-                    total: Double(slotLimit)
-                )
-                .tint(.white)
-                .background(.white.opacity(0.18), in: Capsule())
+                Spacer(minLength: DSSpacing.md)
 
-                HStack(spacing: DSSpacing.xs) {
-                    heroStat(
-                        value: "\(partners.count)",
-                        title: "剧情旅伴",
-                        icon: "star.fill"
-                    )
-                    heroStat(
-                        value: "\(occupiedSlots)/\(slotLimit)",
-                        title: "好友位",
-                        icon: "person.2.fill"
-                    )
+                VStack(alignment: .trailing, spacing: 0) {
+                    Text("\(friends.count)")
+                        .font(.system(.title, design: .rounded, weight: .bold))
+                        .foregroundStyle(.primary)
+                        .monospacedDigit()
+                    Text("同行者")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(DSSpacing.lg)
+
+            ProgressView(
+                value: Double(occupiedSlots),
+                total: Double(slotLimit)
+            )
+            .tint(.dsSky)
+
+            HStack {
+                Label("\(partners.count) 位剧情旅伴", systemImage: "star.fill")
+                Spacer()
+                Text("\(occupiedSlots) / \(slotLimit) 好友位")
+                    .monospacedDigit()
+            }
+            .font(.caption.weight(.medium))
+            .foregroundStyle(.secondary)
+
+            Divider()
         }
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-                .stroke(.white.opacity(0.22), lineWidth: 1)
-        }
-        .shadow(color: Color.dsQuiz.opacity(0.16), radius: 18, y: 9)
+        .padding(.horizontal, 2)
         .accessibilityElement(children: .combine)
     }
 
@@ -124,37 +115,6 @@ public struct RosterView: View {
             return "好友位已满，剧情旅伴仍然可以继续加入"
         }
         return "还可结识 \(remainingSlots) 位城市朋友，剧情旅伴不占好友位"
-    }
-
-    private var relationshipConstellation: some View {
-        ZStack {
-            Circle()
-                .fill(.white.opacity(0.08))
-                .frame(width: 160, height: 160)
-                .offset(x: 45, y: -48)
-            Image(systemName: "person.3.sequence.fill")
-                .font(.system(size: 82, weight: .black))
-                .foregroundStyle(.white.opacity(0.085))
-                .offset(x: 18, y: 10)
-        }
-    }
-
-    private func heroStat(value: String, title: String, icon: String) -> some View {
-        HStack(spacing: 7) {
-            Image(systemName: icon)
-                .font(.caption.weight(.black))
-            VStack(alignment: .leading, spacing: -1) {
-                Text(value)
-                    .font(.subheadline.monospacedDigit().weight(.black))
-                Text(title)
-                    .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.72))
-            }
-        }
-        .foregroundStyle(.white)
-        .padding(.horizontal, 11)
-        .padding(.vertical, 8)
-        .background(.black.opacity(0.14), in: Capsule())
     }
 
     private var partnerSection: some View {
@@ -240,11 +200,6 @@ public struct RosterView: View {
                 endPoint: .trailing
             )
 
-            Circle()
-                .fill(tint.opacity(0.07))
-                .frame(width: 116, height: 116)
-                .offset(x: 36, y: 34)
-
             HStack(spacing: DSSpacing.md) {
                 ZStack {
                     Circle()
@@ -294,7 +249,6 @@ public struct RosterView: View {
             RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
                 .stroke(tint.opacity(0.2), lineWidth: 1)
         }
-        .shadow(color: tint.opacity(0.08), radius: 10, y: 5)
     }
 
     private func encounterRow(_ character: CharacterDTO) -> some View {
