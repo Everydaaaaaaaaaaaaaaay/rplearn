@@ -236,12 +236,19 @@ public struct AVGStoryView: View {
                     .background(Color.dsSky, in: Capsule())
                     .foregroundStyle(.white)
 
+                let tokens = TokenCache.tokens(
+                    for: line.text,
+                    cacheKey: "avg-\(storyID)-\(line.id)"
+                )
                 Group {
                     if typewriter.isTyping {
-                        Text(typewriter.visibleText)
+                        StableTypewriterText(
+                            tokens: tokens,
+                            visibleCharacterCount: typewriter.visibleText.count
+                        )
                     } else {
                         TappableText(
-                            tokens: TokenCache.tokens(for: line.text, cacheKey: "avg-\(storyID)-\(line.id)"),
+                            tokens: tokens,
                             contextID: "avg-\(line.id)",
                             selection: wordSelection,
                             onSelect: { wordSelection = $0 }
@@ -385,6 +392,52 @@ public struct AVGStoryView: View {
 }
 
 // MARK: - 打字机
+
+/// 让完整 token 从第一帧就参与排版，仅隐藏尚未播放的字符。
+///
+/// 如果直接渲染持续增长的字符串，行尾单词会先留在上一行，字符增加后再整体跳到下一行。
+/// 这里与定稿后的 `TappableText` 共用 token 级流式布局，使换行和对话框高度保持稳定。
+private struct StableTypewriterText: View {
+    let tokens: [TextToken]
+    let visibleCharacterCount: Int
+
+    var body: some View {
+        FlowLayout {
+            ForEach(revealedTokens) { token in
+                (
+                    Text(token.visible)
+                        + Text(token.pending).foregroundColor(.clear)
+                )
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(visibleText)
+    }
+
+    private var revealedTokens: [RevealedToken] {
+        var remaining = max(0, visibleCharacterCount)
+        return tokens.map { token in
+            let visibleCount = min(remaining, token.display.count)
+            remaining -= visibleCount
+            return RevealedToken(
+                id: token.id,
+                visible: String(token.display.prefix(visibleCount)),
+                pending: String(token.display.dropFirst(visibleCount))
+            )
+        }
+    }
+
+    private var visibleText: String {
+        let fullText = tokens.map(\.display).joined()
+        return String(fullText.prefix(max(0, visibleCharacterCount)))
+    }
+
+    private struct RevealedToken: Identifiable {
+        let id: Int
+        let visible: String
+        let pending: String
+    }
+}
 
 /// 打字机台词状态：点击先跳完打字、再推进。
 @MainActor
