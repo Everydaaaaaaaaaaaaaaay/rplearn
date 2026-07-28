@@ -31,6 +31,7 @@ struct VoiceMediaCoordinatorTests {
         private var records: [UUID: Record] = [:]
         private(set) var completed: [UUID] = []
         private(set) var deleted: [UUID] = []
+        private(set) var downloadRequests = 0
 
         func reserveVoiceMedia(
             assetID: UUID,
@@ -60,7 +61,8 @@ struct VoiceMediaCoordinatorTests {
         }
 
         func voiceMediaDownload(assetID: UUID) async throws -> BackendMediaDownload {
-            BackendMediaDownload(
+            downloadRequests += 1
+            return BackendMediaDownload(
                 asset: asset(id: assetID, status: "ready"),
                 download: BackendMediaDownloadTransfer(
                     expiresAt: "2030-01-01T00:00:00.000Z",
@@ -91,15 +93,30 @@ struct VoiceMediaCoordinatorTests {
     }
 
     private actor FakeBinaryTransport: VoiceMediaBinaryTransport {
+        private enum DownloadOutcome {
+            case data(Data)
+            case failure
+        }
+
         private(set) var uploads: [Data] = []
-        private var downloadData = Data()
+        private var downloadOutcomes: [DownloadOutcome] = []
 
         func setDownloadData(_ data: Data) {
-            downloadData = data
+            downloadOutcomes = [.data(data)]
+        }
+
+        func setTransientDownloadFailure(then data: Data) {
+            downloadOutcomes = [.failure, .data(data)]
         }
 
         func download(from url: URL) async throws -> Data {
-            downloadData
+            guard !downloadOutcomes.isEmpty else { return Data() }
+            switch downloadOutcomes.removeFirst() {
+            case .data(let data):
+                return data
+            case .failure:
+                throw URLError(.networkConnectionLost)
+            }
         }
 
         func upload(
@@ -110,6 +127,62 @@ struct VoiceMediaCoordinatorTests {
         ) async throws {
             uploads.append(data)
         }
+    }
+
+    @Test("游客发送的语音优先使用未分区的本地录音")
+    func guestUsesLocalRecordingWithoutAccount() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let fileName = VoiceMessageStorage.newFileName()
+        let data = Data("guest-local-voice".utf8)
+        try data.write(to: VoiceMessageStorage.url(for: fileName))
+        defer { VoiceMessageStorage.delete(fileName: fileName) }
+
+        let coordinator = VoiceMediaCoordinator(
+            backend: FakeBackend(),
+            chatStore: ChatStore(modelContainer: container),
+            queueStore: VoiceMediaQueueStore(modelContainer: container),
+            binaryTransport: FakeBinaryTransport(),
+            ownerStore: MemoryOwnerStore()
+        )
+
+        let resolved = try await coordinator.localFile(
+            messageID: UUID(),
+            assetID: nil,
+            existingFileName: fileName
+        )
+        #expect(resolved == fileName)
+        #expect(try Data(contentsOf: VoiceMessageStorage.url(for: resolved)) == data)
+    }
+
+    @Test("消息缺少文件名时仍优先复用规范路径下的本地缓存")
+    func reusesCanonicalLocalCache() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let userID = UUID()
+        let assetID = UUID()
+        defer { VoiceMessageStorage.removeAccountDirectory(userID: userID) }
+        let cached = try VoiceMessageStorage.store(
+            Data("cached-voice".utf8),
+            userID: userID,
+            assetID: assetID
+        )
+        let backend = FakeBackend()
+        let coordinator = VoiceMediaCoordinator(
+            backend: backend,
+            chatStore: ChatStore(modelContainer: container),
+            queueStore: VoiceMediaQueueStore(modelContainer: container),
+            binaryTransport: FakeBinaryTransport(),
+            ownerStore: MemoryOwnerStore()
+        )
+        await coordinator.activate(userID: userID)
+
+        let resolved = try await coordinator.localFile(
+            messageID: UUID(),
+            assetID: assetID,
+            existingFileName: nil
+        )
+        #expect(resolved == cached)
+        #expect(await backend.downloadRequests == 0)
+        await coordinator.deactivate()
     }
 
     @Test("上传完成后才发布引用，并校验按需下载内容")
@@ -173,13 +246,14 @@ struct VoiceMediaCoordinatorTests {
         }
         #expect(!VoiceMessageStorage.exists(fileName: scopedFile))
 
-        await binary.setDownloadData(voiceData)
+        await binary.setTransientDownloadFailure(then: voiceData)
         let downloaded = try await coordinator.localFile(
             messageID: message.id,
             assetID: assetID,
             existingFileName: nil
         )
         #expect(downloaded == scopedFile)
+        #expect(await backend.downloadRequests == 4)
         #expect(VoiceMessageStorage.exists(fileName: downloaded))
         #expect(try Data(contentsOf: VoiceMessageStorage.url(for: downloaded)) == voiceData)
         await coordinator.deactivate()

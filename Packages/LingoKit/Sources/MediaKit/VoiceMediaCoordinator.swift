@@ -170,9 +170,7 @@ public actor VoiceMediaCoordinator {
         assetID: UUID?,
         existingFileName: String?
     ) async throws -> String {
-        guard let userID = currentUserID else {
-            throw BackendClientError.signedOut
-        }
+        // 游客语音不会上传云端，但录音文件仍在本机；本地命中不能依赖登录态。
         if let existingFileName,
            VoiceMessageStorage.exists(fileName: existingFileName) {
             return existingFileName
@@ -180,29 +178,75 @@ public actor VoiceMediaCoordinator {
         guard let assetID else {
             throw VoiceMediaError.remoteAssetUnavailable
         }
-        let download = try await backend.voiceMediaDownload(assetID: assetID)
-        guard download.asset.id == assetID,
-              download.asset.status == "ready"
-        else {
-            throw VoiceMediaError.invalidServerAsset
+        guard let userID = currentUserID else {
+            throw BackendClientError.signedOut
         }
-        let data = try await binaryTransport.download(from: download.download.url)
-        guard data.count == download.asset.byteSize,
-              Self.checksum(data) == download.asset.checksumSha256
-        else {
-            throw VoiceMediaError.integrityMismatch
-        }
-        let fileName = try VoiceMessageStorage.store(
-            data,
+
+        // 同步记录可能暂时丢失 localFileName；按规范路径再次检查，避免重复下载。
+        if let cached = VoiceMessageStorage.existingFileName(
             userID: userID,
             assetID: assetID
-        )
-        try await chatStore.setDownloadedVoiceFileName(
+        ) {
+            try await chatStore.setDownloadedVoiceFileName(
+                messageID: messageID,
+                assetID: assetID,
+                fileName: cached
+            )
+            return cached
+        }
+
+        return try await downloadAndCache(
             messageID: messageID,
             assetID: assetID,
-            fileName: fileName
+            userID: userID
         )
-        return fileName
+    }
+
+    private func downloadAndCache(
+        messageID: UUID,
+        assetID: UUID,
+        userID: UUID
+    ) async throws -> String {
+        for attempt in 0..<2 {
+            do {
+                guard currentUserID == userID else {
+                    throw VoiceMediaError.accountChanged
+                }
+                // 每次重试都重新申请签名 URL，避免复用过期或失效的下载地址。
+                let download = try await backend.voiceMediaDownload(assetID: assetID)
+                guard download.asset.id == assetID,
+                      download.asset.status == "ready",
+                      download.asset.purpose == "voice_message"
+                else {
+                    throw VoiceMediaError.invalidServerAsset
+                }
+                let data = try await binaryTransport.download(from: download.download.url)
+                guard data.count == download.asset.byteSize,
+                      Self.checksum(data) == download.asset.checksumSha256
+                else {
+                    throw VoiceMediaError.integrityMismatch
+                }
+                guard currentUserID == userID else {
+                    throw VoiceMediaError.accountChanged
+                }
+                let fileName = try VoiceMessageStorage.store(
+                    data,
+                    userID: userID,
+                    assetID: assetID
+                )
+                try await chatStore.setDownloadedVoiceFileName(
+                    messageID: messageID,
+                    assetID: assetID,
+                    fileName: fileName
+                )
+                return fileName
+            } catch {
+                guard attempt == 0, Self.shouldRetryDownload(error) else {
+                    throw error
+                }
+            }
+        }
+        throw VoiceMediaError.remoteAssetUnavailable
     }
 
     private func process(_ upload: PendingVoiceMediaUpload) async throws {
@@ -279,6 +323,32 @@ public actor VoiceMediaCoordinator {
             }
         }
         return String(describing: type(of: error))
+    }
+
+    private static func shouldRetryDownload(_ error: Error) -> Bool {
+        if let voiceMedia = error as? VoiceMediaError {
+            return voiceMedia == .integrityMismatch
+        }
+        if let backend = error as? BackendClientError {
+            return switch backend {
+            case .transport, .invalidResponse:
+                true
+            case .api(_, _, _, let status):
+                status == 408 || status == 429 || status >= 500
+            case .signedOut:
+                false
+            }
+        }
+        if let transport = error as? VoiceMediaTransportError {
+            return switch transport {
+            case .invalidResponse:
+                true
+            case .httpStatus(let status):
+                status == 401 || status == 403 || status == 408
+                    || status == 429 || status >= 500
+            }
+        }
+        return error is URLError
     }
 }
 

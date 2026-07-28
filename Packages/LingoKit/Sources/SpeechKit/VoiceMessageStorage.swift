@@ -105,6 +105,12 @@ public enum VoiceMessageStorage {
         return FileManager.default.fileExists(atPath: url.path)
     }
 
+    /// 返回账号与远端资产对应的本地缓存文件；文件不存在时返回 nil。
+    public static func existingFileName(userID: UUID, assetID: UUID) -> String? {
+        let fileName = scopedFileName(userID: userID, assetID: assetID)
+        return exists(fileName: fileName) ? fileName : nil
+    }
+
     public static func removeAccountDirectory(userID: UUID) {
         guard let root = try? directory() else { return }
         let account = root.appendingPathComponent(

@@ -143,6 +143,7 @@ public final class ChatViewModel {
             await reloadMessages()
             return fileName
         } catch {
+            Log.app.warning("语音文件获取失败：\(String(describing: type(of: error)))")
             errorMessage = "语音下载失败，请稍后重试。"
             return nil
         }
