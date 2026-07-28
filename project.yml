@@ -88,7 +88,9 @@ targets:
         NSSpeechRecognitionUsageDescription: "用于将你的语音转换为文字发送给 AI 角色"
         NSAppTransportSecurity:
           NSAllowsLocalNetworking: true
-        UILaunchScreen: {}
+        UILaunchScreen:
+          UIColorName: BrandLaunchBackground
+          UIImageName: BrandMascotGreeting
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
         UISupportedInterfaceOrientations~ipad:

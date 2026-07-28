@@ -8,7 +8,7 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
 
         var title: String {
             switch self {
-            case .coach: "改进建议"
+            case .coach: "咕咕建议"
             case .speech: "口语点评"
             case .quiz: "小测验"
             }
@@ -16,7 +16,7 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
 
         var icon: String {
             switch self {
-            case .coach: "sparkles"
+            case .coach: "bird.fill"
             case .speech: "waveform.badge.mic"
             case .quiz: "checkmark.bubble.fill"
             }

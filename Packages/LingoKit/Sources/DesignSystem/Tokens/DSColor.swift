@@ -25,6 +25,21 @@ public extension Color {
         light: UIColor(red: 1, green: 0.588, blue: 0, alpha: 1),
         dark: UIColor(red: 1, green: 0.702, blue: 0.251, alpha: 1)
     )
+    /// 咕游记品牌围巾色：用于吉祥物相关引导与少量强调。
+    static let dsBrandCoral = Color(
+        light: UIColor(red: 1, green: 0.365, blue: 0.278, alpha: 1),
+        dark: UIColor(red: 1, green: 0.482, blue: 0.408, alpha: 1)
+    )
+    /// 咕咕腹部与纸张的暖色基底。
+    static let dsBrandCream = Color(
+        light: UIColor(red: 1, green: 0.973, blue: 0.894, alpha: 1),
+        dark: UIColor(red: 0.176, green: 0.157, blue: 0.125, alpha: 1)
+    )
+    /// 吉祥物描边对应的品牌深色。
+    static let dsBrandInk = Color(
+        light: UIColor(red: 0.027, green: 0.145, blue: 0.278, alpha: 1),
+        dark: UIColor(red: 0.733, green: 0.894, blue: 1, alpha: 1)
+    )
     static let dsSuccess = Color(
         light: UIColor(red: 0.184, green: 0.749, blue: 0.388, alpha: 1),
         dark: UIColor(red: 0.290, green: 0.871, blue: 0.502, alpha: 1)
