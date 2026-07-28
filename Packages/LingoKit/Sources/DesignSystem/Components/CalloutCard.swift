@@ -9,8 +9,8 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
         var title: String {
             switch self {
             case .coach: "咕咕建议"
-            case .speech: "口语点评"
-            case .quiz: "小测验"
+            case .speech: "咕咕口语点评"
+            case .quiz: "咕咕小测验"
             }
         }
 

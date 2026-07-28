@@ -23,6 +23,7 @@ public struct ChatView: View {
     @State private var quizCelebrationTrigger = 0
     @State private var shakingMessageID: UUID?
     @State private var shakePhase = false
+    @State private var isMascotPromptDismissed = false
     @FocusState private var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
@@ -110,11 +111,10 @@ public struct ChatView: View {
     }
 
     private var chatStatus: String {
-        let regions = ["london": "伦敦", "melbourne": "墨尔本", "newyork": "纽约"]
         if viewModel.conversation?.isEncounterSession == true {
             return "偶遇中 · \(viewModel.character.difficultyLevel.displayName)"
         }
-        return "⌖ \(regions[viewModel.character.card.regionID] ?? viewModel.character.card.regionID) · \(viewModel.character.difficultyLevel.displayName)"
+        return "⌖ \(chatCityDisplayName) · \(viewModel.character.difficultyLevel.displayName)"
     }
 
     private var messageList: some View {
@@ -281,18 +281,13 @@ public struct ChatView: View {
                 }
             }
         } label: {
-            Text("纠")
-                .font(.system(size: 13, weight: .black, design: .rounded))
-                .foregroundStyle(isExpanded ? Color.white : Color.dsCoach)
-                .frame(width: 30, height: 30)
+            BrandMascotView(pose: .coach, size: 36, showsShadow: false)
+                .scaleEffect(isExpanded ? 1.08 : 1)
+                .frame(width: 38, height: 38)
                 .background {
                     Circle()
-                        .fill(isExpanded ? Color.dsCoach : Color.dsSurface)
+                        .fill(isExpanded ? Color.dsBrandCream : Color.dsSurface)
                         .shadow(color: Color.dsCoach.opacity(0.18), radius: 4, y: 2)
-                }
-                .overlay {
-                    Circle()
-                        .fill(isExpanded ? Color.clear : Color.dsCoach.opacity(0.1))
                 }
                 .overlay {
                     Circle()
@@ -572,71 +567,160 @@ public struct ChatView: View {
     }
 
     private var inputBar: some View {
-        HStack(spacing: 8) {
+        VStack(spacing: 0) {
+            if shouldShowMascotPrompt {
+                mascotConversationPrompt
+                    .transition(
+                        reduceMotion
+                            ? .opacity
+                            : .move(edge: .bottom).combined(with: .opacity)
+                    )
+            }
+
+            HStack(spacing: 8) {
+                Button {
+                    withAnimation(.snappy) {
+                        isTextInputFocused = false
+                        isVoiceMode.toggle()
+                        recorder.resetFailure()
+                    }
+                } label: {
+                    Image(systemName: isVoiceMode ? "keyboard" : "mic")
+                        .font(.system(size: 22))
+                        .frame(width: 32, height: 32)
+                }
+                .accessibilityLabel(isVoiceMode ? "切换到键盘" : "切换到语音")
+
+                if isVoiceMode {
+                    VoiceInputBar(recorder: recorder) { capture in
+                        Task { await viewModel.sendVoice(capture: capture) }
+                    }
+                    .disabled(viewModel.isStreaming)
+                    #if targetEnvironment(simulator)
+                    // 模拟器兜底：麦克风/识别不可用时注入文本验证全流程
+                    Button {
+                        showSimulatorInjection = true
+                    } label: {
+                        Image(systemName: "hammer")
+                    }
+                    .alert("模拟语音注入", isPresented: $showSimulatorInjection) {
+                        TextField("转写文本", text: $simulatorInjectionText)
+                        Button("发送") {
+                            let text = simulatorInjectionText
+                            simulatorInjectionText = ""
+                            guard !text.isEmpty else { return }
+                            Task {
+                                await viewModel.sendVoice(
+                                    capture: .init(fileName: nil, duration: 3, transcript: text)
+                                )
+                            }
+                        }
+                        Button("取消", role: .cancel) {}
+                    }
+                    #endif
+                } else {
+                    TextField("用英语说点什么…", text: $viewModel.draft, axis: .vertical)
+                        .lineLimit(1...4)
+                        .focused($isTextInputFocused)
+                        .textFieldStyle(.plain)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(
+                            Color.dsBubbleIncoming,
+                            in: RoundedRectangle(
+                                cornerRadius: DSRadius.bubble,
+                                style: .continuous
+                            )
+                        )
+                        .onSubmit {
+                            Task { await viewModel.sendDraft() }
+                        }
+
+                    Button {
+                        Task { await viewModel.sendDraft() }
+                    } label: {
+                        Image(systemName: "arrow.up.circle.fill")
+                            .font(.system(size: 30))
+                            .foregroundStyle(Color.dsSky)
+                    }
+                    .disabled(
+                        viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                            || viewModel.isStreaming
+                    )
+                }
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+        }
+        .dsMaterial(.ultraThinMaterial, in: Rectangle())
+    }
+
+    private var shouldShowMascotPrompt: Bool {
+        !isVoiceMode
+            && !isMascotPromptDismissed
+            && viewModel.draft.isEmpty
+            && !viewModel.isStreaming
+            && viewModel.messages.count <= 3
+    }
+
+    private var mascotConversationPrompt: some View {
+        HStack(spacing: DSSpacing.xs) {
+            BrandMascotView(pose: .coach, size: 50, showsShadow: false)
+
             Button {
-                withAnimation(.snappy) {
-                    isTextInputFocused = false
-                    isVoiceMode.toggle()
-                    recorder.resetFailure()
+                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                    viewModel.draft = conversationStarter
+                    isMascotPromptDismissed = true
+                    isTextInputFocused = true
                 }
             } label: {
-                Image(systemName: isVoiceMode ? "keyboard" : "mic")
-                    .font(.system(size: 22))
-                    .frame(width: 32, height: 32)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("咕咕建议 · 不知道怎么开口？")
+                        .font(.system(.caption2, design: .rounded, weight: .black))
+                        .foregroundStyle(Color.dsBrandCoral)
+                    Text("试试 “\(conversationStarter)”")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+                        .lineLimit(2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
-            .accessibilityLabel(isVoiceMode ? "切换到键盘" : "切换到语音")
+            .buttonStyle(.plain)
 
-            if isVoiceMode {
-                VoiceInputBar(recorder: recorder) { capture in
-                    Task { await viewModel.sendVoice(capture: capture) }
+            Button {
+                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                    isMascotPromptDismissed = true
                 }
-                .disabled(viewModel.isStreaming)
-                #if targetEnvironment(simulator)
-                // 模拟器兜底：麦克风/识别不可用时注入文本验证全流程
-                Button {
-                    showSimulatorInjection = true
-                } label: {
-                    Image(systemName: "hammer")
-                }
-                .alert("模拟语音注入", isPresented: $showSimulatorInjection) {
-                    TextField("转写文本", text: $simulatorInjectionText)
-                    Button("发送") {
-                        let text = simulatorInjectionText
-                        simulatorInjectionText = ""
-                        guard !text.isEmpty else { return }
-                        Task {
-                            await viewModel.sendVoice(
-                                capture: .init(fileName: nil, duration: 3, transcript: text)
-                            )
-                        }
-                    }
-                    Button("取消", role: .cancel) {}
-                }
-                #endif
-            } else {
-                TextField("用英语说点什么…", text: $viewModel.draft, axis: .vertical)
-                    .lineLimit(1...4)
-                    .focused($isTextInputFocused)
-                    .textFieldStyle(.plain)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(Color.dsBubbleIncoming, in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
-                    .onSubmit {
-                        Task { await viewModel.sendDraft() }
-                    }
-
-                Button {
-                    Task { await viewModel.sendDraft() }
-                } label: {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.system(size: 30))
-                        .foregroundStyle(Color.dsSky)
-                }
-                .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isStreaming)
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.caption.bold())
+                    .frame(width: 30, height: 30)
             }
+            .buttonStyle(.plain)
+            .accessibilityLabel("关闭咕咕建议")
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .dsMaterial(.ultraThinMaterial, in: Rectangle())
+        .padding(.horizontal, DSSpacing.sm)
+        .padding(.vertical, DSSpacing.xs)
+        .background(Color.dsBrandCream.opacity(0.9))
+        .overlay(alignment: .top) { Divider() }
+    }
+
+    private var conversationStarter: String {
+        "What do you love most about \(chatCityEnglishName)?"
+    }
+
+    private var chatCityDisplayName: String {
+        let regions = ["london": "伦敦", "melbourne": "墨尔本", "newyork": "纽约"]
+        return regions[viewModel.character.card.regionID] ?? viewModel.character.card.regionID
+    }
+
+    private var chatCityEnglishName: String {
+        let regions = [
+            "london": "London",
+            "melbourne": "Melbourne",
+            "newyork": "New York",
+        ]
+        return regions[viewModel.character.card.regionID]
+            ?? viewModel.character.card.regionID.replacingOccurrences(of: "_", with: " ").capitalized
     }
 }

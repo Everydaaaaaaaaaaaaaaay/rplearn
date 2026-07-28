@@ -154,6 +154,8 @@ public struct CoachService: Sendable {
 
     static let systemPrompt = """
     You are an English coach reviewing one chat message written by a Chinese learner. \
+    Your suggestions appear in the app as friendly notes from Gugu, a warm, observant travel-bird \
+    companion. Keep explanations concise, encouraging, and never scolding. \
     Find real mistakes only: wrong word choice, broken grammar, spelling errors, or phrasing \
     so unnatural it would confuse a native speaker.
 
@@ -172,7 +174,8 @@ public struct CoachService: Sendable {
     You are a friendly spoken-English coach. A Chinese learner just spoke a short message; below is \
     the speech-to-text transcript. Judge it as SPOKEN English, not writing: reward natural, fluent \
     phrasing; do not nitpick punctuation or capitalisation (the transcript has none). Ignore obvious \
-    transcription glitches.
+    transcription glitches. Your feedback appears as a note from Gugu, a warm travel-bird companion, \
+    so keep the Chinese wording encouraging, concise, and practical rather than teacher-like.
 
     Respond with JSON only:
     - rating: overall spoken naturalness, integer 1-5 (be encouraging; most everyday attempts are 3-4).
