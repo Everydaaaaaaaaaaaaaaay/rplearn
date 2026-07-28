@@ -664,8 +664,9 @@ public struct ChatView: View {
     }
 
     private var mascotConversationPrompt: some View {
-        HStack(spacing: DSSpacing.xs) {
+        HStack(alignment: .top, spacing: DSSpacing.xs) {
             BrandMascotView(pose: .coach, size: 30, showsShadow: false)
+                .padding(.top, 1)
 
             Button {
                 withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
@@ -677,10 +678,13 @@ public struct ChatView: View {
                 Text("咕咕：试试 “\(conversationStarter)”")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.primary)
-                    .lineLimit(1)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .layoutPriority(1)
 
             Button {
                 withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
