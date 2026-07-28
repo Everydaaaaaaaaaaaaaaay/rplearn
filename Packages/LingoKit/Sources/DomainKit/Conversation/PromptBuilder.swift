@@ -105,6 +105,14 @@ public enum PromptBuilder {
             sections.append(guidance)
         }
         sections.append(contentsOf: memorySections)
+        sections.append(
+            """
+            ## Final reply contract
+            \(replyContract(for: learner.difficulty))
+            Check this contract immediately before sending. These line and word limits apply to the chat messages \
+            before any optional quiz block.
+            """
+        )
         if quizRequested {
             sections.append(QuizService.promptInstruction)
         }
@@ -217,6 +225,30 @@ public enum PromptBuilder {
         case .postgraduate, .advanced:
             "Discuss nuance, humor, disagreement and cultural assumptions naturally. Do not over-scaffold; respond " +
                 "as an articulate peer and let the friend shape the direction."
+        }
+    }
+
+    static func replyContract(for level: DifficultyLevel) -> String {
+        switch level {
+        case .primary1, .primary2, .primary3:
+            "MANDATORY FOR EVERY REPLY: Write exactly 1 or 2 chat lines. Each line must have at most 8 English " +
+                "words. Share only one idea or action, never a list of steps. The final line must be exactly one " +
+                "easy yes/no or A-or-B question."
+        case .primary4, .primary5, .primary6:
+            "Write 1 or 2 chat lines, at most 12 English words per line. Focus on one idea. End with one short, " +
+                "concrete question the friend can answer in a few words."
+        case .junior1, .junior2, .junior3:
+            "Write at most 2 chat lines and at most 18 English words per line. Ask no more than one focused " +
+                "question, and avoid multi-step explanations."
+        case .senior1, .senior2, .senior3:
+            "Write 1-3 chat lines, at most 28 English words per line and 2 sentences per line. Develop one useful " +
+                "idea at a time instead of giving a mini-lesson."
+        case .undergraduate:
+            "Write 1-3 chat lines, at most 34 English words per line and 2 sentences per line. Stay responsive and " +
+                "leave a natural opening for the friend to continue."
+        case .postgraduate, .advanced:
+            "Write 1-3 chat lines, at most 42 English words per line and 2 sentences per line. Keep the rhythm like " +
+                "messaging, not an essay or lecture."
         }
     }
 
