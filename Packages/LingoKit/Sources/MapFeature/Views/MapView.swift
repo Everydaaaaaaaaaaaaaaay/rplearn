@@ -6,6 +6,7 @@ import SwiftUI
 
 public struct MapView: View {
     private let deps: MapDependencies
+    private let reloadToken: Int
     private let onOpenMainline: @MainActor () -> Void
 
     @State private var profile: UserProfileDTO?
@@ -22,9 +23,11 @@ public struct MapView: View {
 
     public init(
         deps: MapDependencies,
+        reloadToken: Int = 0,
         onOpenMainline: @escaping @MainActor () -> Void = {}
     ) {
         self.deps = deps
+        self.reloadToken = reloadToken
         self.onOpenMainline = onOpenMainline
     }
 
@@ -180,7 +183,7 @@ public struct MapView: View {
             configuration: feedbackDialog,
             onPrimary: {}
         )
-        .task {
+        .task(id: reloadToken) {
             await reload()
             #if DEBUG
             let environment = ProcessInfo.processInfo.environment

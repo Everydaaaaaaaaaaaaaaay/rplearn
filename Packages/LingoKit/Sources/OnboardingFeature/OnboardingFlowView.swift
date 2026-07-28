@@ -206,6 +206,8 @@ struct ChatStoryView: View {
 
 /// 主角色资料浏览与选择。
 struct CharacterSelectView: View {
+    private static let confirmationDelay = Duration.milliseconds(180)
+
     let characters: [CharacterDTO]
     let onSelect: (CharacterDTO) -> Void
 
@@ -368,7 +370,9 @@ struct CharacterSelectView: View {
         isConfirming = true
         celebrationTrigger += 1
         Task {
-            try? await Task.sleep(for: .milliseconds(reduceMotion ? 150 : 600))
+            if !reduceMotion {
+                try? await Task.sleep(for: Self.confirmationDelay)
+            }
             onSelect(character)
         }
     }

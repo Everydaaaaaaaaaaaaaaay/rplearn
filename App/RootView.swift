@@ -24,6 +24,8 @@ enum AppTab: Hashable {
 }
 
 struct RootView: View {
+    private static let proactiveRefreshDelay = Duration.milliseconds(900)
+
     let environment: AppEnvironment
 
     @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
@@ -90,6 +92,9 @@ struct RootView: View {
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
                 await reloadUnreadCount()
+                await refreshProactiveMessagesAfterInterfaceSettles(
+                    requestAuthorization: true
+                )
             }
             .task {
                 if ProactiveMessageRoute.consumeNotificationTap() {
@@ -200,7 +205,6 @@ struct RootView: View {
 
     private var appContent: some View {
         tabs
-            .id(stateRevision)
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
                     deps: OnboardingDependencies(
@@ -209,9 +213,13 @@ struct RootView: View {
                     )
                 ) { character in
                     Task {
-                        await environment.completeOnboarding(
+                        guard await environment.completeOnboarding(
                             selected: character,
                             onboardingCommands: onboardingCommands
+                        ) else { return }
+                        stateRevision += 1
+                        await refreshProactiveMessagesAfterInterfaceSettles(
+                            requestAuthorization: true
                         )
                     }
                 }
@@ -266,6 +274,7 @@ struct RootView: View {
         NavigationStack(path: $homePath) {
             HomeView(
                 deps: homeDeps,
+                reloadToken: stateRevision,
                 chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
                 onOpenMessages: {
                     selectedTab = .messages
@@ -301,7 +310,7 @@ struct RootView: View {
 
     private var mapStack: some View {
         NavigationStack {
-            MapView(deps: mapDeps) {
+            MapView(deps: mapDeps, reloadToken: stateRevision) {
                 selectedTab = .home
                 homePath.append(HomeDestination.mainline)
             }
@@ -310,7 +319,7 @@ struct RootView: View {
 
     private var messagesStack: some View {
         NavigationStack {
-            ConversationListView(deps: chatDeps)
+            ConversationListView(deps: chatDeps, reloadToken: stateRevision)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         NavigationLink {
@@ -345,6 +354,7 @@ struct RootView: View {
                 speech: environment.speech,
                 authSession: environment.authSession,
                 billing: environment.billing,
+                reloadToken: stateRevision,
                 isSignedIn: usesCloudState,
                 onSignIn: { showSignIn = true },
                 onProactiveMessagesChanged: { enabled in
@@ -484,6 +494,22 @@ struct RootView: View {
         unreadCount = ConversationReadState.totalUnreadCount(
             friends: friends,
             summaries: summaries
+        )
+    }
+
+    /// 让首屏和转场先完成，再启动需要多次网络往返的主动消息生成。
+    private func refreshProactiveMessagesAfterInterfaceSettles(
+        requestAuthorization: Bool
+    ) async {
+        guard environment.needsOnboarding == false else { return }
+        do {
+            try await Task.sleep(for: Self.proactiveRefreshDelay)
+        } catch {
+            return
+        }
+        guard !Task.isCancelled, environment.needsOnboarding == false else { return }
+        await environment.refreshProactiveMessages(
+            requestAuthorization: requestAuthorization
         )
     }
 }

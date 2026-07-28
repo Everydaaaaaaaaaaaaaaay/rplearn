@@ -187,9 +187,6 @@ final class AppEnvironment {
         await voiceMedia.activate(userID: identity.userID)
         proactiveMessageScope = "account-\(identity.userID.uuidString.lowercased())"
         needsOnboarding = !profile.hasCompletedOnboarding
-        if profile.hasCompletedOnboarding {
-            Task { await refreshProactiveMessages(requestAuthorization: true) }
-        }
         return activation
     }
 
@@ -214,25 +211,24 @@ final class AppEnvironment {
         try await reconcileMainCharacters(profile: profile)
         proactiveMessageScope = "guest"
         needsOnboarding = !profile.hasCompletedOnboarding
-        if profile.hasCompletedOnboarding {
-            Task { await refreshProactiveMessages(requestAuthorization: true) }
-        }
     }
 
     /// 首启引导完成：原子写入路线与起始城市，只解锁用户选择的第一位伙伴。
+    @discardableResult
     func completeOnboarding(
         selected character: CharacterDTO,
         onboardingCommands: any OnboardingCommandGateway
-    ) async {
+    ) async -> Bool {
         do {
             let profile = try await onboardingCommands.completeOnboarding(
                 starterRegionID: character.card.regionID
             )
             try await reconcileMainCharacters(profile: profile)
             needsOnboarding = false
-            Task { await refreshProactiveMessages(requestAuthorization: true) }
+            return true
         } catch {
             Log.app.error("完成首启引导失败：\(error)")
+            return false
         }
     }
 

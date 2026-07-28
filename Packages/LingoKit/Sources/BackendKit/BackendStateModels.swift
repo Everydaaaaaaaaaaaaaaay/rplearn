@@ -66,6 +66,11 @@ public struct BackendUserSnapshot: Codable, Sendable, Equatable {
 public struct BackendSyncSnapshot: Codable, Sendable, Equatable {
     public let cursor: String
     public let state: BackendUserSnapshot
+
+    public init(cursor: String, state: BackendUserSnapshot) {
+        self.cursor = cursor
+        self.state = state
+    }
 }
 
 public struct BackendSyncChange: Decodable, Sendable, Equatable {

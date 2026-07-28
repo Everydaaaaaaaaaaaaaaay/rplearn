@@ -239,18 +239,26 @@ public actor BackendUserStateCoordinator:
         let intent = "progression:onboarding:\(starterRegionID)"
         let commandID = pendingCommandID(for: intent)
         do {
-            let _: BackendUserProfile = try await backend.send(
+            let updated: BackendUserProfile = try await backend.send(
                 path: "/v1/progression/onboarding",
                 method: "POST",
                 body: OnboardingCommand(starterRegionId: starterRegionID),
                 idempotencyKey: commandID
             )
-            try await refreshCurrentSnapshot()
-            completeCommand(for: intent)
-            guard let profile = snapshot?.state.profile else {
-                throw BackendClientError.invalidResponse
+            let profile = await mapPreservingEntitlement(updated)
+            try await economyCache.replaceAuthoritativeProfile(profile)
+            if let current = snapshot {
+                snapshot = BackendSyncSnapshot(
+                    cursor: current.cursor,
+                    state: BackendUserSnapshot(
+                        firstArrivals: current.state.firstArrivals,
+                        profile: updated,
+                        tickets: current.state.tickets
+                    )
+                )
             }
-            return await mapPreservingEntitlement(profile)
+            completeCommand(for: intent)
+            return profile
         } catch let error as BackendClientError {
             abandonCommand(for: intent, ifDeterministic: error)
             throw error

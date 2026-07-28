@@ -5,6 +5,7 @@ import SwiftUI
 /// 旅途通讯列表：保留原生搜索、导航与侧滑操作，突出伙伴关系和会话状态。
 public struct ConversationListView: View {
     private let deps: ChatDependencies
+    private let reloadToken: Int
 
     @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
@@ -12,8 +13,9 @@ public struct ConversationListView: View {
     @State private var stateRevision = 0
     @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
 
-    public init(deps: ChatDependencies) {
+    public init(deps: ChatDependencies, reloadToken: Int = 0) {
         self.deps = deps
+        self.reloadToken = reloadToken
     }
 
     private var visibleRows: [ConversationListRow] {
@@ -124,7 +126,7 @@ public struct ConversationListView: View {
         }
         .navigationTitle("最近联络")
         .searchable(text: $searchText, prompt: "搜索角色")
-        .task { await reload() }
+        .task(id: reloadToken) { await reload() }
         .refreshable { await reload() }
         .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
             stateRevision += 1

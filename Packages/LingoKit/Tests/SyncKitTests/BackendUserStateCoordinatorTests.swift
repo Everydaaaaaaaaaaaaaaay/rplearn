@@ -24,15 +24,21 @@ struct BackendUserStateCoordinatorTests {
     }
 
     private actor StateTransport: BackendTransport {
+        private struct OnboardingBody: Decodable {
+            let starterRegionId: String
+        }
+
         private var coins = 500
         private var currentRegion = "london"
         private var difficulty = "junior1"
         private var hasCompletedOnboarding = false
+        private var starterRegion: String?
         private var firstArrivalTravelID: UUID?
         private var tickets: [UUID] = []
         private var ticketSource = "purchase"
         private var version = 1
         private(set) var mutationHeaders: [String?] = []
+        private(set) var snapshotRequestCount = 0
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             switch (request.httpMethod, request.url?.path) {
@@ -51,6 +57,7 @@ struct BackendUserStateCoordinatorTests {
                     """
                 )
             case ("GET", "/v1/sync/snapshot"):
+                snapshotRequestCount += 1
                 return json(snapshotJSON())
             case ("PATCH", "/v1/me"):
                 mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
@@ -93,6 +100,17 @@ struct BackendUserStateCoordinatorTests {
                 tickets = [ticket]
                 ticketSource = "quest"
                 return json(ticketJSON(ticket, source: "quest"))
+            case ("POST", "/v1/progression/onboarding"):
+                mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                let body = try JSONDecoder().decode(
+                    OnboardingBody.self,
+                    from: request.httpBody ?? Data()
+                )
+                currentRegion = body.starterRegionId
+                starterRegion = body.starterRegionId
+                hasCompletedOnboarding = true
+                version += 1
+                return json(profileJSON())
             case ("POST", "/v1/progression/stories/mainline_london/complete"):
                 mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
                 coins += 100
@@ -126,7 +144,9 @@ struct BackendUserStateCoordinatorTests {
         }
 
         private func profileJSON() -> String {
-            """
+            let starterRegionValue = starterRegion.map { "\"\($0)\"" } ?? "null"
+            let additionalRegion = currentRegion == "london" ? "" : ",\"\(currentRegion)\""
+            return """
             {
               "coins":\(coins),
               "currentRegionId":"\(currentRegion)",
@@ -137,7 +157,8 @@ struct BackendUserStateCoordinatorTests {
               "gameLevel":1,
               "hasCompletedOnboarding":\(hasCompletedOnboarding),
               "quizGloballyEnabled":true,
-              "unlockedRegionIds":["london"\(currentRegion == "newyork" ? ",\"newyork\"" : "")],
+              "starterRegionId":\(starterRegionValue),
+              "unlockedRegionIds":["london"\(additionalRegion)],
               "updatedAt":"2026-07-26T00:00:00.000Z",
               "version":\(version)
             }
@@ -195,10 +216,19 @@ struct BackendUserStateCoordinatorTests {
 
         #expect(try await coordinator.activate(userID: userID) == .synchronized)
         #expect(try await economy.profile().coins == 500)
+        #expect(await transport.snapshotRequestCount == 1)
         try await economy.applyAuthoritativeEntitlement(
             tier: .pro,
             friendSlotLimit: 30
         )
+
+        let onboardingProfile = try await coordinator.completeOnboarding(
+            starterRegionID: "melbourne"
+        )
+        #expect(onboardingProfile.hasCompletedOnboarding)
+        #expect(onboardingProfile.currentRegionID == "melbourne")
+        #expect(try await economy.profile().currentRegionID == "melbourne")
+        #expect(await transport.snapshotRequestCount == 1)
 
         let ticket = try await coordinator.purchaseTicket(
             type: .ticketUniversal,

@@ -21,6 +21,7 @@ public struct MyPageView: View {
     private let speech: any SpeechService
     private let authSession: AuthSession
     private let billing: BillingController
+    private let reloadToken: Int
     private let isSignedIn: Bool
     private let onSignIn: @MainActor () -> Void
     private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
@@ -44,6 +45,7 @@ public struct MyPageView: View {
         speech: any SpeechService,
         authSession: AuthSession,
         billing: BillingController,
+        reloadToken: Int = 0,
         isSignedIn: Bool,
         onSignIn: @escaping @MainActor () -> Void,
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
@@ -59,6 +61,7 @@ public struct MyPageView: View {
         self.speech = speech
         self.authSession = authSession
         self.billing = billing
+        self.reloadToken = reloadToken
         self.isSignedIn = isSignedIn
         self.onSignIn = onSignIn
         self.onProactiveMessagesChanged = onProactiveMessagesChanged
@@ -88,7 +91,7 @@ public struct MyPageView: View {
         }
         .background(Color.dsBackground)
         .toolbar(.hidden, for: .navigationBar)
-        .task { await reload() }
+        .task(id: reloadToken) { await reload() }
         .refreshable { await reload() }
         .manageSubscriptionsSheet(isPresented: $showsManageSubscriptions)
     }

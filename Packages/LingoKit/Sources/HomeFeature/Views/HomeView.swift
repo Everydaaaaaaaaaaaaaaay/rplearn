@@ -6,6 +6,7 @@ import SwiftUI
 /// 首页聚合 Hub：城市氛围、最近会话与两个核心探索入口。
 public struct HomeView: View {
     private let deps: HomeDependencies
+    private let reloadToken: Int
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
     private let onOpenMessages: @MainActor () -> Void
 
@@ -19,10 +20,12 @@ public struct HomeView: View {
 
     public init(
         deps: HomeDependencies,
+        reloadToken: Int = 0,
         chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
         onOpenMessages: @escaping @MainActor () -> Void
     ) {
         self.deps = deps
+        self.reloadToken = reloadToken
         self.chatBuilder = chatBuilder
         self.onOpenMessages = onOpenMessages
     }
@@ -72,7 +75,7 @@ public struct HomeView: View {
             .refreshable { await reload() }
         }
         .toolbar(.hidden, for: .navigationBar)
-        .task { await reload() }
+        .task(id: reloadToken) { await reload() }
     }
 
     @ViewBuilder
