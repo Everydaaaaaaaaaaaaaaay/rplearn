@@ -141,20 +141,17 @@ struct RootView: View {
                     }
                     await environment.refreshProactiveMessages(requestAuthorization: false)
                     await reloadUnreadCount()
-                    stateRevision += 1
                 }
             }
             .onChange(of: selectedTab) { _, tab in
                 guard tab == .messages else { return }
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
-                    stateRevision += 1
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
                 Task {
                     await reloadUnreadCount()
-                    stateRevision += 1
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .didOpenProactiveMessage)) { _ in

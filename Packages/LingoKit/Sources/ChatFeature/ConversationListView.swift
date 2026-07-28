@@ -126,6 +126,8 @@ public struct ConversationListView: View {
         }
         .navigationTitle("最近联络")
         .searchable(text: $searchText, prompt: "搜索角色")
+        // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
+        // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
         .task(id: reloadToken) { await reload() }
         .refreshable { await reload() }
         .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
