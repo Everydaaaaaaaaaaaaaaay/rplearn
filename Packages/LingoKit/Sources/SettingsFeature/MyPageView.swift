@@ -1,5 +1,6 @@
 import BackendKit
 import BillingKit
+import CoreKit
 import DesignSystem
 import DomainKit
 import LLMKit
@@ -288,7 +289,7 @@ public struct MyPageView: View {
             VStack(alignment: .leading, spacing: DSSpacing.xs) {
                 Image(systemName: "sparkles.rectangle.stack.fill")
                     .font(.title)
-                Text("LingoTrip \(billing.tier.displayName)")
+                Text("\(AppBrand.englishName) \(billing.tier.displayName)")
                     .font(.headline.bold())
                 Text("更长的角色记忆，让每段友谊都有延续")
                     .font(.body)
@@ -297,7 +298,7 @@ public struct MyPageView: View {
         } else {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("LingoTrip \(billing.tier.displayName)")
+                    Text("\(AppBrand.englishName) \(billing.tier.displayName)")
                         .font(.title3.bold())
                     Text("更长的角色记忆，让每段友谊都有延续")
                         .font(.footnote)
