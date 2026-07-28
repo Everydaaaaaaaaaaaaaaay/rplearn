@@ -216,6 +216,8 @@ struct RootView: View {
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
                     deps: OnboardingDependencies(
+                        economyStore: environment.economyStore,
+                        profileCommands: profileCommands,
                         rosterStore: environment.rosterStore,
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!
                     )

@@ -85,6 +85,7 @@ let featureTargets: [Target] = [
     ]),
     feature("OnboardingFeature", dependencies: [
         module("CoreKit"),
+        module("DomainKit"),
         module("StoryEngine"),
         module("PersistenceKit"),
     ]),

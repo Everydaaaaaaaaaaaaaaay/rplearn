@@ -1,23 +1,35 @@
 import CoreKit
 import DesignSystem
+import DomainKit
 import PersistenceKit
 import StoryEngine
 import SwiftUI
 
 /// 首启引导依赖。
 public struct OnboardingDependencies: Sendable {
+    public let economyStore: EconomyStore
+    public let profileCommands: any ProfileCommandGateway
     public let rosterStore: RosterStore
     public let scriptURL: URL
 
-    public init(rosterStore: RosterStore, scriptURL: URL) {
+    public init(
+        economyStore: EconomyStore,
+        profileCommands: any ProfileCommandGateway,
+        rosterStore: RosterStore,
+        scriptURL: URL
+    ) {
+        self.economyStore = economyStore
+        self.profileCommands = profileCommands
         self.rosterStore = rosterStore
         self.scriptURL = scriptURL
     }
 }
 
-/// 首启流程：咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
+/// 首启流程：建立学习档案 → 咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
 public struct OnboardingFlowView: View {
     private enum Phase {
+        case loading
+        case profile
         case story
         case selection
     }
@@ -25,7 +37,8 @@ public struct OnboardingFlowView: View {
     private let deps: OnboardingDependencies
     private let onComplete: (CharacterDTO) -> Void
 
-    @State private var phase: Phase = .story
+    @State private var phase: Phase = .loading
+    @State private var profile: UserProfileDTO?
     @State private var player: StoryPlayer?
     @State private var characters: [CharacterDTO] = []
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -38,6 +51,22 @@ public struct OnboardingFlowView: View {
     public var body: some View {
         Group {
             switch phase {
+            case .loading:
+                onboardingLoading
+            case .profile:
+                if let profile {
+                    LearnerProfileSetupView(
+                        initialProfile: profile,
+                        profileCommands: deps.profileCommands
+                    ) { updated in
+                        self.profile = updated
+                        withAnimation(reduceMotion ? nil : .snappy) {
+                            phase = .story
+                        }
+                    }
+                } else {
+                    onboardingLoading
+                }
             case .story:
                 if let player {
                     ChatStoryView(player: player, characters: characters) {
@@ -54,12 +83,18 @@ public struct OnboardingFlowView: View {
             }
         }
         .task {
+            if profile == nil {
+                profile = try? await deps.economyStore.profile()
+            }
             if player == nil, let script = try? StoryScript.load(from: deps.scriptURL) {
                 let player = StoryPlayer(script: script)
                 player.advance() // 显示第一条
                 self.player = player
             }
             characters = (try? await deps.rosterStore.allCharacters().filter(\.isMainCharacter)) ?? []
+            if phase == .loading, let profile {
+                phase = profile.hasCompletedProfileSetup ? .story : .profile
+            }
             #if DEBUG
             await autoplayIfRequested()
             #endif
@@ -191,6 +226,9 @@ struct ChatStoryView: View {
                     .foregroundStyle(.secondary)
             }
             Spacer()
+            Text("开始旅程 2 / 3")
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(.secondary)
         }
         .padding(.horizontal, DSSpacing.md)
         .padding(.vertical, DSSpacing.xs)
@@ -283,12 +321,12 @@ struct CharacterSelectView: View {
                     ForEach(1...3, id: \.self) { step in
                         Text("\(step)")
                             .font(.caption.bold())
-                            .foregroundStyle(step == 2 ? .white : Color.dsSky)
+                            .foregroundStyle(step == 3 ? .white : Color.dsSky)
                             .frame(width: 26, height: 26)
-                            .background(step == 2 ? Color.dsSky : Color.dsSurface, in: Circle())
+                            .background(step == 3 ? Color.dsSky : Color.dsSurface, in: Circle())
                         if step < 3 {
                             Capsule()
-                                .fill(step < 2 ? Color.dsSky : Color.dsBorder)
+                                .fill(Color.dsSky)
                                 .frame(width: 22, height: 3)
                         }
                     }
