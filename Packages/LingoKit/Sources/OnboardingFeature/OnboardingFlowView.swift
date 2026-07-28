@@ -1,3 +1,4 @@
+import CoreKit
 import DesignSystem
 import PersistenceKit
 import StoryEngine
@@ -14,7 +15,7 @@ public struct OnboardingDependencies: Sendable {
     }
 }
 
-/// 首启流程：聊天皮肤剧情（中奖通知 + 三主角色介绍）→ 主角色资料浏览 → 选定出发。
+/// 首启流程：咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
 public struct OnboardingFlowView: View {
     private enum Phase {
         case story
@@ -45,7 +46,7 @@ public struct OnboardingFlowView: View {
                         }
                     }
                 } else {
-                    ProgressView()
+                    onboardingLoading
                 }
             case .selection:
                 CharacterSelectView(characters: characters, onSelect: onComplete)
@@ -62,6 +63,26 @@ public struct OnboardingFlowView: View {
             #if DEBUG
             await autoplayIfRequested()
             #endif
+        }
+    }
+
+    private var onboardingLoading: some View {
+        ZStack {
+            LinearGradient(
+                colors: [Color.dsBrandCream, Color.dsSky.opacity(0.16), Color.dsBackground],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
+            VStack(spacing: DSSpacing.md) {
+                BrandMascotView(pose: .greeting, size: 148)
+                ProgressView()
+                    .tint(.dsSky)
+                Text("\(AppBrand.mascotName)正在飞来…")
+                    .font(.system(.subheadline, design: .rounded, weight: .bold))
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 
@@ -97,42 +118,74 @@ struct ChatStoryView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            ScrollViewReader { proxy in
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 10) {
-                        ForEach(Array(player.history.enumerated()), id: \.element.id) { index, line in
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(line.speaker)
-                                    .font(.caption2)
-                                    .foregroundStyle(.secondary)
-                                    .padding(.leading, 6)
-                                MessageBubble(side: .incoming) {
-                                    Text(line.text)
+        ZStack {
+            LinearGradient(
+                colors: [
+                    Color.dsBrandCream,
+                    Color.dsSky.opacity(0.08),
+                    Color.dsBackground,
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
+            VStack(spacing: 0) {
+                header
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 10) {
+                            welcomeCard
+
+                            ForEach(Array(player.history.enumerated()), id: \.element.id) { index, line in
+                                HStack(alignment: .top, spacing: DSSpacing.xs) {
+                                    BrandMascotView(
+                                        pose: mascotPose(for: line),
+                                        size: 34,
+                                        showsShadow: false
+                                    )
+                                    .padding(.top, 14)
+
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(line.speaker)
+                                            .font(.caption2.weight(.semibold))
+                                            .foregroundStyle(Color.dsSkyDeep)
+                                            .padding(.leading, 6)
+                                        MessageBubble(side: .incoming) {
+                                            Text(line.text)
+                                        }
+                                        if shouldShowCard(at: index, line: line),
+                                           let character = character(for: line.sprite) {
+                                            CharacterIntroCard(character: character)
+                                                .padding(.leading, 6)
+                                                .transition(
+                                                    reduceMotion
+                                                        ? .opacity
+                                                        : .scale(scale: 0.94).combined(with: .opacity)
+                                                )
+                                        }
+                                    }
                                 }
-                                if shouldShowCard(at: index, line: line),
-                                   let character = character(for: line.sprite) {
-                                    CharacterIntroCard(character: character)
-                                        .padding(.leading, 6)
-                                        .transition(reduceMotion ? .opacity : .scale(scale: 0.94).combined(with: .opacity))
-                                }
+                                .id(line.id)
+                                .transition(
+                                    reduceMotion
+                                        ? .opacity
+                                        : .opacity.combined(with: .move(edge: .bottom))
+                                )
                             }
-                            .id(line.id)
-                            .transition(reduceMotion ? .opacity : .opacity.combined(with: .move(edge: .bottom)))
                         }
+                        .padding(12)
                     }
-                    .padding(12)
-                }
-                .onChange(of: player.history.count) {
-                    if let last = player.history.last {
-                        withAnimation(reduceMotion ? nil : .snappy) {
-                            proxy.scrollTo(last.id, anchor: .bottom)
+                    .onChange(of: player.history.count) {
+                        if let last = player.history.last {
+                            withAnimation(reduceMotion ? nil : .snappy) {
+                                proxy.scrollTo(last.id, anchor: .bottom)
+                            }
                         }
                     }
                 }
+                footer
             }
-            footer
         }
         .contentShape(Rectangle())
         .onTapGesture {
@@ -144,21 +197,65 @@ struct ChatStoryView: View {
     }
 
     private var header: some View {
-        HStack {
-            AvatarBadge(name: "小雨", tint: .pink, size: 36)
-            Text("小雨")
-                .font(.headline)
+        HStack(spacing: DSSpacing.xs) {
+            BrandMascotView(pose: .greeting, size: 48, showsShadow: false)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(AppBrand.mascotName)
+                    .font(.system(.headline, design: .rounded, weight: .black))
+                Text(AppBrand.mascotRole)
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(.secondary)
+            }
             Spacer()
+            Text(AppBrand.displayName)
+                .font(.system(.caption, design: .rounded, weight: .black))
+                .foregroundStyle(Color.dsSkyDeep)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Color.dsSky.opacity(0.1), in: Capsule())
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 10)
-        .background(.bar)
+        .padding(.horizontal, DSSpacing.md)
+        .padding(.vertical, DSSpacing.xs)
+        .background(.ultraThinMaterial)
+        .overlay(alignment: .bottom) { Divider() }
+    }
+
+    private var welcomeCard: some View {
+        HStack(spacing: DSSpacing.md) {
+            BrandMascotView(pose: .greeting, size: 104)
+            VStack(alignment: .leading, spacing: 5) {
+                Text("一封会飞的邀请")
+                    .font(.system(.title3, design: .rounded, weight: .black))
+                    .foregroundStyle(Color.dsBrandInk)
+                Text("从一句 Hello 开始，认识真实的朋友，也认识更敢开口的自己。")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(DSSpacing.md)
+        .background(
+            LinearGradient(
+                colors: [Color.dsSurface, Color.dsBrandCream.opacity(0.92)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+                .stroke(Color.dsSky.opacity(0.16), lineWidth: 1)
+        }
+        .shadow(color: Color.dsBrandInk.opacity(0.08), radius: 12, y: 5)
     }
 
     @ViewBuilder
     private var footer: some View {
         if let choices = player.currentChoices {
             VStack(spacing: 8) {
+                Text("你想怎么回答\(AppBrand.mascotName)？")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
                 ForEach(Array(choices.enumerated()), id: \.offset) { index, option in
                     Button {
                         withAnimation(reduceMotion ? nil : .snappy) {
@@ -173,13 +270,21 @@ struct ChatStoryView: View {
                 }
             }
             .padding(12)
-            .background(.bar)
+            .background(.ultraThinMaterial)
+            .overlay(alignment: .top) { Divider() }
         } else {
-            Text(player.isFinished ? "点击查看伙伴资料 →" : "点击继续")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .padding(.vertical, 10)
+            Label(
+                player.isFinished ? "查看伙伴资料" : "轻点继续",
+                systemImage: player.isFinished ? "person.2.crop.square.stack.fill" : "hand.tap.fill"
+            )
+            .font(.footnote.weight(.semibold))
+            .foregroundStyle(player.isFinished ? Color.dsSkyDeep : .secondary)
+            .padding(.vertical, 10)
         }
+    }
+
+    private func mascotPose(for line: StoryPlayer.Line) -> BrandMascotPose {
+        line.sprite?.hasPrefix("card:") == true ? .guide : .greeting
     }
 
     private func advanceOrFinish() {
@@ -206,7 +311,7 @@ struct ChatStoryView: View {
 
 /// 主角色资料浏览与选择。
 struct CharacterSelectView: View {
-    private static let confirmationDelay = Duration.milliseconds(180)
+    private static let confirmationDelay = Duration.milliseconds(520)
 
     let characters: [CharacterDTO]
     let onSelect: (CharacterDTO) -> Void
@@ -245,11 +350,18 @@ struct CharacterSelectView: View {
                 }
                 .padding(.top, DSSpacing.sm)
 
-                Text("选择你的旅伴")
-                    .font(.largeTitle.bold())
-                Text("左右滑动，认识来自不同城市的朋友")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                HStack(spacing: DSSpacing.xs) {
+                    BrandMascotView(pose: .guide, size: 66)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("选择你的第一位旅伴")
+                            .font(.system(.title2, design: .rounded, weight: .black))
+                        Text("\(AppBrand.mascotName)会陪你一起出发")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, DSSpacing.lg)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: DSSpacing.md) {
@@ -295,9 +407,35 @@ struct CharacterSelectView: View {
                 .padding(.horizontal, DSSpacing.xl)
                 .padding(.bottom, DSSpacing.md)
             }
+
+            if isConfirming {
+                confirmationOverlay
+                    .transition(reduceMotion ? .opacity : .scale(scale: 0.92).combined(with: .opacity))
+                    .zIndex(2)
+            }
         }
         .onAppear { selectedID = selectedID ?? characters.first?.id }
         .sensoryFeedback(.impact(flexibility: .soft), trigger: selectedID)
+    }
+
+    private var confirmationOverlay: some View {
+        VStack(spacing: DSSpacing.sm) {
+            BrandMascotView(pose: .celebrate, size: 170)
+            Text("好耶，准备出发！")
+                .font(.system(.title2, design: .rounded, weight: .black))
+                .foregroundStyle(Color.dsBrandInk)
+            Text("落地后，先和新伙伴说声 Hello 吧")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding(DSSpacing.xl)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                .stroke(Color.dsSky.opacity(0.22), lineWidth: 1)
+        }
+        .shadow(color: Color.dsBrandInk.opacity(0.18), radius: 24, y: 12)
+        .padding(DSSpacing.xl)
     }
 
     private var selectedCharacter: CharacterDTO? {

@@ -84,6 +84,7 @@ let featureTargets: [Target] = [
         module("MediaKit"),
     ]),
     feature("OnboardingFeature", dependencies: [
+        module("CoreKit"),
         module("StoryEngine"),
         module("PersistenceKit"),
     ]),
