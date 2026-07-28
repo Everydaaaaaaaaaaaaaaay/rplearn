@@ -62,7 +62,6 @@ public struct HomeView: View {
 
             ScrollView {
                 VStack(spacing: DSSpacing.md) {
-                    brandHeader
                     cityStatusBar
                     cityVista
                     recentChats
@@ -94,27 +93,6 @@ public struct HomeView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .task(id: reloadToken) { await reload() }
-    }
-
-    private var brandHeader: some View {
-        HStack {
-            BrandLockup(compact: true)
-            Spacer(minLength: DSSpacing.xs)
-            Label("继续旅行", systemImage: "location.north.fill")
-                .font(.system(.caption2, design: .rounded, weight: .bold))
-                .foregroundStyle(Color.dsBrandCoral)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 6)
-                .background(Color.dsBrandCream.opacity(0.9), in: Capsule())
-        }
-        .padding(.horizontal, DSSpacing.sm)
-        .padding(.vertical, DSSpacing.xs)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card)
-                .stroke(.white.opacity(0.42), lineWidth: 1)
-        }
-        .shadow(color: Color.dsBrandInk.opacity(0.08), radius: 8, y: 3)
     }
 
     @ViewBuilder
@@ -150,16 +128,14 @@ public struct HomeView: View {
 
             if recentRows.isEmpty {
                 VStack(spacing: DSSpacing.xs) {
-                    BrandMascotView(pose: .greeting, size: 82)
-                    Text("\(AppBrand.mascotName)正在帮你召集旅伴")
+                    Image(systemName: "bubble.left.and.sparkles")
+                        .font(.title2)
+                        .foregroundStyle(Color.dsSky)
+                    Text("认识新朋友后，聊天会出现在这里")
                         .font(.subheadline.weight(.semibold))
-                    Text("认识新朋友后，最近的聊天会出现在这里")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, DSSpacing.lg)
+                .padding(.vertical, DSSpacing.md)
             } else {
                 ForEach(Array(recentRows.prefix(3).enumerated()), id: \.element.id) { index, row in
                     NavigationLink {
@@ -250,69 +226,59 @@ public struct HomeView: View {
     }
 
     private var firstStoryGuide: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.xs) {
-            HStack(alignment: .top, spacing: DSSpacing.xs) {
-                BrandMascotView(pose: .guide, size: 104)
-                    .offset(y: -10)
+        HStack(spacing: DSSpacing.xs) {
+            BrandMascotView(pose: .guide, size: 38, showsShadow: false)
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("\(AppBrand.mascotName)来指路啦")
-                        .font(.system(.caption, design: .rounded, weight: .black))
-                        .foregroundStyle(Color.dsBrandCoral)
-                    Text("第一站，从剧情出发")
-                        .font(.system(.headline, design: .rounded, weight: .black))
-                        .foregroundStyle(Color.dsBrandInk)
-                    Text(nextMainlineChapter?.subtitle ?? "和你的旅伴见面，开启第一段城市故事。")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(3)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .padding(.top, DSSpacing.xs)
-
-                Spacer(minLength: 0)
-
-                Button {
-                    dismissFirstStoryGuide()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.caption.bold())
-                        .frame(width: 30, height: 30)
-                        .background(Color.dsSurfaceMuted, in: Circle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("稍后再看")
+            VStack(alignment: .leading, spacing: 1) {
+                Text("\(AppBrand.mascotName)的小提示")
+                    .font(.system(.caption2, design: .rounded, weight: .bold))
+                    .foregroundStyle(Color.dsBrandCoral)
+                Text("第一站，从剧情出发")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(Color.dsBrandInk)
+                    .lineLimit(1)
             }
+
+            Spacer(minLength: 2)
 
             if let chapter = nextMainlineChapter {
                 NavigationLink(value: chapter) {
-                    Label("跟咕咕去看 \(chapter.title)", systemImage: "book.pages.fill")
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.78)
+                    Image(systemName: "arrow.right")
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.white)
+                        .frame(width: 34, height: 34)
+                        .background(Color.dsSky, in: Circle())
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(.plain)
+                .accessibilityLabel("去看\(chapter.title)")
                 .simultaneousGesture(
                     TapGesture().onEnded {
                         dismissFirstStoryGuide()
                     }
                 )
             }
+
+            Button {
+                dismissFirstStoryGuide()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.caption2.bold())
+                    .foregroundStyle(.secondary)
+                    .frame(width: 26, height: 26)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("稍后再看")
         }
-        .padding(DSSpacing.sm)
-        .frame(maxWidth: 360)
-        .background(
-            LinearGradient(
-                colors: [Color.dsSurface, Color.dsBrandCream],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            ),
-            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-        )
+        .padding(.leading, DSSpacing.xs)
+        .padding(.trailing, 6)
+        .padding(.vertical, 6)
+        .frame(maxWidth: 300)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card))
         .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-                .stroke(Color.dsSky.opacity(0.2), lineWidth: 1)
+            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
+                .stroke(Color.dsSky.opacity(0.14), lineWidth: 1)
         }
-        .shadow(color: Color.dsBrandInk.opacity(0.2), radius: 20, y: 10)
+        .shadow(color: Color.dsBrandInk.opacity(0.12), radius: 12, y: 6)
         .accessibilityElement(children: .contain)
     }
 

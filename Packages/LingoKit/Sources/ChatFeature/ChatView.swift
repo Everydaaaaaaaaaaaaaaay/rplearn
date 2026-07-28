@@ -281,9 +281,9 @@ public struct ChatView: View {
                 }
             }
         } label: {
-            BrandMascotView(pose: .coach, size: 36, showsShadow: false)
-                .scaleEffect(isExpanded ? 1.08 : 1)
-                .frame(width: 38, height: 38)
+            BrandMascotView(pose: .coach, size: 28, showsShadow: false)
+                .scaleEffect(isExpanded ? 1.06 : 1)
+                .frame(width: 32, height: 32)
                 .background {
                     Circle()
                         .fill(isExpanded ? Color.dsBrandCream : Color.dsSurface)
@@ -665,7 +665,7 @@ public struct ChatView: View {
 
     private var mascotConversationPrompt: some View {
         HStack(spacing: DSSpacing.xs) {
-            BrandMascotView(pose: .coach, size: 50, showsShadow: false)
+            BrandMascotView(pose: .coach, size: 30, showsShadow: false)
 
             Button {
                 withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
@@ -674,16 +674,11 @@ public struct ChatView: View {
                     isTextInputFocused = true
                 }
             } label: {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("咕咕建议 · 不知道怎么开口？")
-                        .font(.system(.caption2, design: .rounded, weight: .black))
-                        .foregroundStyle(Color.dsBrandCoral)
-                    Text("试试 “\(conversationStarter)”")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.primary)
-                        .lineLimit(2)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                Text("咕咕：试试 “\(conversationStarter)”")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .buttonStyle(.plain)
 
@@ -700,8 +695,8 @@ public struct ChatView: View {
             .accessibilityLabel("关闭咕咕建议")
         }
         .padding(.horizontal, DSSpacing.sm)
-        .padding(.vertical, DSSpacing.xs)
-        .background(Color.dsBrandCream.opacity(0.9))
+        .padding(.vertical, 5)
+        .background(.ultraThinMaterial)
         .overlay(alignment: .top) { Divider() }
     }
 
