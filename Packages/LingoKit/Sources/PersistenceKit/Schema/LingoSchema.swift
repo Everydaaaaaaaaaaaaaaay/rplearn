@@ -40,6 +40,12 @@ extension LingoSchema {
         public var unlockedRegionIDs: [String]
         public var difficultyLevelRaw: String
         public var hasCompletedOnboarding: Bool
+        public var learningGoalRaw: String
+        public var studyStageRaw: String?
+        public var proficiencySourceRaw: String
+        public var placementScore: Int?
+        public var placementCompletedAt: Date?
+        public var hasCompletedProfileSetup: Bool
         public var createdAt: Date
 
         public init(
@@ -52,6 +58,12 @@ extension LingoSchema {
             unlockedRegionIDs: [String] = [],
             difficultyLevelRaw: String = DifficultyLevel.junior3.rawValue,
             hasCompletedOnboarding: Bool = false,
+            learningGoalRaw: String = LearningGoal.dailyConversation.rawValue,
+            studyStageRaw: String? = nil,
+            proficiencySourceRaw: String = ProficiencySource.selfReported.rawValue,
+            placementScore: Int? = nil,
+            placementCompletedAt: Date? = nil,
+            hasCompletedProfileSetup: Bool = false,
             createdAt: Date = .now
         ) {
             self.displayName = displayName
@@ -63,6 +75,12 @@ extension LingoSchema {
             self.unlockedRegionIDs = unlockedRegionIDs
             self.difficultyLevelRaw = difficultyLevelRaw
             self.hasCompletedOnboarding = hasCompletedOnboarding
+            self.learningGoalRaw = learningGoalRaw
+            self.studyStageRaw = studyStageRaw
+            self.proficiencySourceRaw = proficiencySourceRaw
+            self.placementScore = placementScore
+            self.placementCompletedAt = placementCompletedAt
+            self.hasCompletedProfileSetup = hasCompletedProfileSetup
             self.createdAt = createdAt
         }
     }

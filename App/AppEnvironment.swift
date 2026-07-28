@@ -176,7 +176,14 @@ final class AppEnvironment {
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
     func activateUser(_ identity: AuthIdentity) async throws -> UserStateActivation {
         needsOnboarding = nil
+        let guestProfile =
+            await userState.shouldCaptureGuestProfileForImport()
+            ? try? await economyStore.profile()
+            : nil
         let activation = try await userState.activate(userID: identity.userID)
+        if let guestProfile {
+            _ = try await userState.importGuestLearnerProfileIfNeeded(guestProfile)
+        }
         await billing.activate(identity: identity)
         let profile = try await economyStore.profile()
         let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!

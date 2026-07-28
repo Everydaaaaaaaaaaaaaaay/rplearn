@@ -31,6 +31,31 @@ export const difficultyLevel = applicationSchema.enum("difficulty_level", [
   "advanced",
 ]);
 
+export const learningGoal = applicationSchema.enum("learning_goal", [
+  "dailyConversation",
+  "travel",
+  "school",
+  "exam",
+  "studyAbroad",
+  "work",
+  "culture",
+]);
+
+export const studyStage = applicationSchema.enum("study_stage", [
+  "primary",
+  "juniorHigh",
+  "seniorHigh",
+  "university",
+  "postgraduate",
+  "working",
+  "other",
+]);
+
+export const proficiencySource = applicationSchema.enum("proficiency_source", [
+  "selfReported",
+  "placement",
+]);
+
 export const ticketType = applicationSchema.enum("ticket_type", [
   "universal",
   "country",
@@ -81,8 +106,21 @@ export const userProfiles = applicationSchema.table(
     hasCompletedOnboarding: boolean("has_completed_onboarding")
       .default(false)
       .notNull(),
+    hasCompletedProfileSetup: boolean("has_completed_profile_setup")
+      .default(false)
+      .notNull(),
+    learningGoal: learningGoal("learning_goal").default("dailyConversation").notNull(),
+    placementCompletedAt: timestamp("placement_completed_at", {
+      mode: "date",
+      withTimezone: true,
+    }),
+    placementScore: integer("placement_score"),
+    proficiencySource: proficiencySource("proficiency_source")
+      .default("selfReported")
+      .notNull(),
     quizGloballyEnabled: boolean("quiz_globally_enabled").default(true).notNull(),
     starterRegionId: text("starter_region_id").references(() => regions.id),
+    studyStage: studyStage("study_stage"),
     updatedAt: timestamp("updated_at", {
       mode: "date",
       withTimezone: true,
@@ -98,6 +136,10 @@ export const userProfiles = applicationSchema.table(
     check("user_profiles_coins_nonnegative", sql`${table.coins} >= 0`),
     check("user_profiles_experience_nonnegative", sql`${table.experiencePoints} >= 0`),
     check("user_profiles_level_positive", sql`${table.gameLevel} >= 1`),
+    check(
+      "user_profiles_placement_score_range",
+      sql`${table.placementScore} is null or ${table.placementScore} between 0 and 100`,
+    ),
     check("user_profiles_version_positive", sql`${table.version} >= 1`),
   ],
 );

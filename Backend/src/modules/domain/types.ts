@@ -15,6 +15,26 @@ export type DifficultyLevel =
   | "postgraduate"
   | "advanced";
 
+export type LearningGoal =
+  | "dailyConversation"
+  | "travel"
+  | "school"
+  | "exam"
+  | "studyAbroad"
+  | "work"
+  | "culture";
+
+export type StudyStage =
+  | "primary"
+  | "juniorHigh"
+  | "seniorHigh"
+  | "university"
+  | "postgraduate"
+  | "working"
+  | "other";
+
+export type ProficiencySource = "selfReported" | "placement";
+
 export type TicketType = "universal" | "country";
 export type TicketSource =
   "story" | "quest" | "purchase" | "subscription" | "support" | "debug";
@@ -43,8 +63,14 @@ export type UserProfile = Readonly<{
   friendSlotLimit: number;
   gameLevel: number;
   hasCompletedOnboarding: boolean;
+  hasCompletedProfileSetup: boolean;
+  learningGoal: LearningGoal;
+  placementCompletedAt: string | null;
+  placementScore: number | null;
+  proficiencySource: ProficiencySource;
   quizGloballyEnabled: boolean;
   starterRegionId: string | null;
+  studyStage: StudyStage | null;
   unlockedRegionIds: readonly string[];
   updatedAt: string;
   version: number;
@@ -67,7 +93,13 @@ export type ProfilePatch = Readonly<{
   displayName?: string;
   expectedVersion: number;
   hasCompletedOnboarding?: boolean;
+  hasCompletedProfileSetup?: boolean;
+  learningGoal?: LearningGoal;
+  placementCompletedAt?: string;
+  placementScore?: number;
+  proficiencySource?: ProficiencySource;
   quizGloballyEnabled?: boolean;
+  studyStage?: StudyStage | null;
 }>;
 
 export type OnboardingSelection = Readonly<{

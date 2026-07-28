@@ -7,7 +7,10 @@ import type {
   CommandIdentity,
   DifficultyLevel,
   FirstArrival,
+  LearningGoal,
   ProfilePatch,
+  ProficiencySource,
+  StudyStage,
   Ticket,
   TicketSource,
   TicketType,
@@ -25,8 +28,14 @@ type ProfileRow = Readonly<{
   friend_slot_limit: number;
   game_level: number;
   has_completed_onboarding: boolean;
+  has_completed_profile_setup: boolean;
+  learning_goal: LearningGoal;
+  placement_completed_at: string | null;
+  placement_score: number | null;
+  proficiency_source: ProficiencySource;
   quiz_globally_enabled: boolean;
   starter_region_id: string | null;
+  study_stage: StudyStage | null;
   updated_at: string;
   version: number;
 }>;
@@ -44,8 +53,17 @@ function mapProfile(
     friendSlotLimit: row.friend_slot_limit,
     gameLevel: row.game_level,
     hasCompletedOnboarding: row.has_completed_onboarding,
+    hasCompletedProfileSetup: row.has_completed_profile_setup,
+    learningGoal: row.learning_goal,
+    placementCompletedAt:
+      row.placement_completed_at === null
+        ? null
+        : new Date(row.placement_completed_at).toISOString(),
+    placementScore: row.placement_score,
+    proficiencySource: row.proficiency_source,
     quizGloballyEnabled: row.quiz_globally_enabled,
     starterRegionId: row.starter_region_id,
+    studyStage: row.study_stage,
     unlockedRegionIds,
     updatedAt: new Date(row.updated_at).toISOString(),
     version: row.version,
@@ -105,8 +123,14 @@ export class DomainRepository {
         friend_slot_limit,
         game_level,
         has_completed_onboarding,
+        has_completed_profile_setup,
+        learning_goal,
+        placement_completed_at,
+        placement_score,
+        proficiency_source,
         quiz_globally_enabled,
         starter_region_id,
+        study_stage,
         updated_at,
         version
       from app.user_profiles
@@ -225,8 +249,14 @@ export class DomainRepository {
           friend_slot_limit,
           game_level,
           has_completed_onboarding,
+          has_completed_profile_setup,
+          learning_goal,
+          placement_completed_at,
+          placement_score,
+          proficiency_source,
           quiz_globally_enabled,
           starter_region_id,
+          study_stage,
           updated_at,
           version
       `;
@@ -488,6 +518,30 @@ export class DomainRepository {
                 ${patch.hasCompletedOnboarding ?? null},
                 has_completed_onboarding
               ),
+              has_completed_profile_setup = coalesce(
+                ${patch.hasCompletedProfileSetup ?? null},
+                has_completed_profile_setup
+              ),
+              learning_goal = coalesce(
+                ${patch.learningGoal ?? null},
+                learning_goal
+              )::app.learning_goal,
+              placement_completed_at = coalesce(
+                ${patch.placementCompletedAt ?? null}::timestamptz,
+                placement_completed_at
+              ),
+              placement_score = coalesce(
+                ${patch.placementScore ?? null},
+                placement_score
+              ),
+              proficiency_source = coalesce(
+                ${patch.proficiencySource ?? null},
+                proficiency_source
+              )::app.proficiency_source,
+              study_stage = case
+                when ${patch.studyStage === undefined} then study_stage
+                else ${patch.studyStage ?? null}::app.study_stage
+              end,
               version = version + 1,
               updated_at = now()
           where user_id = ${userId}
@@ -501,8 +555,14 @@ export class DomainRepository {
             friend_slot_limit,
             game_level,
             has_completed_onboarding,
+            has_completed_profile_setup,
+            learning_goal,
+            placement_completed_at,
+            placement_score,
+            proficiency_source,
             quiz_globally_enabled,
             starter_region_id,
+            study_stage,
             updated_at,
             version
         `;

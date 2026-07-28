@@ -41,6 +41,58 @@ public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
     }
 }
 
+/// 用户最希望优先提升的英语使用场景。
+public enum LearningGoal: String, Sendable, Codable, CaseIterable {
+    case dailyConversation
+    case travel
+    case school
+    case exam
+    case studyAbroad
+    case work
+    case culture
+
+    public var displayName: String {
+        switch self {
+        case .dailyConversation: "日常交流"
+        case .travel: "旅行沟通"
+        case .school: "跟上学校课程"
+        case .exam: "备考提分"
+        case .studyAbroad: "留学准备"
+        case .work: "职场英语"
+        case .culture: "认识朋友与文化"
+        }
+    }
+}
+
+/// 当前所处学段。它只帮助解释学习语境，不直接等同于英语水平。
+public enum StudyStage: String, Sendable, Codable, CaseIterable {
+    case primary
+    case juniorHigh
+    case seniorHigh
+    case university
+    case postgraduate
+    case working
+    case other
+
+    public var displayName: String {
+        switch self {
+        case .primary: "小学"
+        case .juniorHigh: "初中"
+        case .seniorHigh: "高中"
+        case .university: "大学"
+        case .postgraduate: "研究生"
+        case .working: "已工作"
+        case .other: "其他"
+        }
+    }
+}
+
+/// 当前英语等级的最近一次来源。
+public enum ProficiencySource: String, Sendable, Codable {
+    case selfReported
+    case placement
+}
+
 /// 服务端统一权益系统返回的订阅等级；本地字段仅作为离线显示缓存。
 public enum SubscriptionTier: String, Sendable, Codable, CaseIterable {
     case free

@@ -23,20 +23,55 @@ const difficultySchema = z.enum([
   "advanced",
 ]);
 
+const learningGoalSchema = z.enum([
+  "dailyConversation",
+  "travel",
+  "school",
+  "exam",
+  "studyAbroad",
+  "work",
+  "culture",
+]);
+
+const studyStageSchema = z.enum([
+  "primary",
+  "juniorHigh",
+  "seniorHigh",
+  "university",
+  "postgraduate",
+  "working",
+  "other",
+]);
+
+const proficiencySourceSchema = z.enum(["selfReported", "placement"]);
+const isoDateSchema = z.iso.datetime({ offset: true });
+
 const profilePatchSchema = z
   .object({
     difficulty: difficultySchema.optional(),
     displayName: z.string().trim().min(1).max(80).optional(),
     expectedVersion: z.number().int().positive(),
     hasCompletedOnboarding: z.boolean().optional(),
+    hasCompletedProfileSetup: z.boolean().optional(),
+    learningGoal: learningGoalSchema.optional(),
+    placementCompletedAt: isoDateSchema.optional(),
+    placementScore: z.number().int().min(0).max(100).optional(),
+    proficiencySource: proficiencySourceSchema.optional(),
     quizGloballyEnabled: z.boolean().optional(),
+    studyStage: studyStageSchema.nullable().optional(),
   })
   .refine(
     (value) =>
       value.difficulty !== undefined ||
       value.displayName !== undefined ||
       value.hasCompletedOnboarding !== undefined ||
-      value.quizGloballyEnabled !== undefined,
+      value.hasCompletedProfileSetup !== undefined ||
+      value.learningGoal !== undefined ||
+      value.placementCompletedAt !== undefined ||
+      value.placementScore !== undefined ||
+      value.proficiencySource !== undefined ||
+      value.quizGloballyEnabled !== undefined ||
+      value.studyStage !== undefined,
     "At least one profile field must be updated",
   );
 
@@ -142,9 +177,25 @@ export function registerDomainRoutes(
           : {
               hasCompletedOnboarding: patch.hasCompletedOnboarding,
             }),
+        ...(patch.hasCompletedProfileSetup === undefined
+          ? {}
+          : { hasCompletedProfileSetup: patch.hasCompletedProfileSetup }),
+        ...(patch.learningGoal === undefined
+          ? {}
+          : { learningGoal: patch.learningGoal }),
+        ...(patch.placementCompletedAt === undefined
+          ? {}
+          : { placementCompletedAt: patch.placementCompletedAt }),
+        ...(patch.placementScore === undefined
+          ? {}
+          : { placementScore: patch.placementScore }),
+        ...(patch.proficiencySource === undefined
+          ? {}
+          : { proficiencySource: patch.proficiencySource }),
         ...(patch.quizGloballyEnabled === undefined
           ? {}
           : { quizGloballyEnabled: patch.quizGloballyEnabled }),
+        ...(patch.studyStage === undefined ? {} : { studyStage: patch.studyStage }),
       });
     },
   );

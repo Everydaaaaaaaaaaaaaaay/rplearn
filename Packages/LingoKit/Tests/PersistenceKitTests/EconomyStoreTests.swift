@@ -31,14 +31,22 @@ struct EconomyStoreTests {
         #expect(try await store.profile().coins == 70)
     }
 
-    @Test("档案更新与地区解锁")
+    @Test("档案更新会完整保存学习者资料与地区")
     func profileUpdate() async throws {
         let store = try makeStore()
+        let placementDate = Date(timeIntervalSince1970: 1_774_972_800)
         _ = try await store.updateProfile { profile in
             profile.displayName = "旅人"
             profile.currentRegionID = "london"
             profile.starterRegionID = "london"
             profile.hasCompletedOnboarding = true
+            profile.difficultyLevel = .senior2
+            profile.learningGoal = .studyAbroad
+            profile.studyStage = .seniorHigh
+            profile.proficiencySource = .placement
+            profile.placementScore = 72
+            profile.placementCompletedAt = placementDate
+            profile.hasCompletedProfileSetup = true
         }
         try await store.unlockRegion("london")
         try await store.unlockRegion("london") // 幂等
@@ -48,5 +56,12 @@ struct EconomyStoreTests {
         #expect(profile.starterRegionID == "london")
         #expect(profile.unlockedRegionIDs == ["london"])
         #expect(profile.hasCompletedOnboarding)
+        #expect(profile.difficultyLevel == .senior2)
+        #expect(profile.learningGoal == .studyAbroad)
+        #expect(profile.studyStage == .seniorHigh)
+        #expect(profile.proficiencySource == .placement)
+        #expect(profile.placementScore == 72)
+        #expect(profile.placementCompletedAt == placementDate)
+        #expect(profile.hasCompletedProfileSetup)
     }
 }

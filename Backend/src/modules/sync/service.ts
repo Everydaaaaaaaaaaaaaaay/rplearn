@@ -1,7 +1,13 @@
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import type { DomainService } from "../domain/service.js";
-import type { DifficultyLevel, TicketType } from "../domain/types.js";
+import type {
+  DifficultyLevel,
+  LearningGoal,
+  ProficiencySource,
+  StudyStage,
+  TicketType,
+} from "../domain/types.js";
 import type { SyncCursorCodec } from "./cursor.js";
 import { SyncRepository } from "./repository.js";
 import type { SyncPage, SyncSnapshot } from "./types.js";
@@ -22,7 +28,13 @@ export type SyncCommand =
         displayName?: string;
         expectedVersion: number;
         hasCompletedOnboarding?: boolean;
+        hasCompletedProfileSetup?: boolean;
+        learningGoal?: LearningGoal;
+        placementCompletedAt?: string;
+        placementScore?: number;
+        proficiencySource?: ProficiencySource;
         quizGloballyEnabled?: boolean;
+        studyStage?: StudyStage | null;
       }>;
       type: "profile.update";
     }>

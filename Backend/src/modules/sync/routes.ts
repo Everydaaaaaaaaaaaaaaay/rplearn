@@ -23,6 +23,26 @@ const difficultySchema = z.enum([
   "advanced",
 ]);
 
+const learningGoalSchema = z.enum([
+  "dailyConversation",
+  "travel",
+  "school",
+  "exam",
+  "studyAbroad",
+  "work",
+  "culture",
+]);
+const studyStageSchema = z.enum([
+  "primary",
+  "juniorHigh",
+  "seniorHigh",
+  "university",
+  "postgraduate",
+  "working",
+  "other",
+]);
+const proficiencySourceSchema = z.enum(["selfReported", "placement"]);
+
 const purchaseCommandSchema = z.object({
   commandId: z.uuid(),
   payload: z
@@ -48,14 +68,26 @@ const profileCommandSchema = z.object({
       displayName: z.string().trim().min(1).max(80).optional(),
       expectedVersion: z.number().int().positive(),
       hasCompletedOnboarding: z.boolean().optional(),
+      hasCompletedProfileSetup: z.boolean().optional(),
+      learningGoal: learningGoalSchema.optional(),
+      placementCompletedAt: z.iso.datetime({ offset: true }).optional(),
+      placementScore: z.number().int().min(0).max(100).optional(),
+      proficiencySource: proficiencySourceSchema.optional(),
       quizGloballyEnabled: z.boolean().optional(),
+      studyStage: studyStageSchema.nullable().optional(),
     })
     .refine(
       (value) =>
         value.difficulty !== undefined ||
         value.displayName !== undefined ||
         value.hasCompletedOnboarding !== undefined ||
-        value.quizGloballyEnabled !== undefined,
+        value.hasCompletedProfileSetup !== undefined ||
+        value.learningGoal !== undefined ||
+        value.placementCompletedAt !== undefined ||
+        value.placementScore !== undefined ||
+        value.proficiencySource !== undefined ||
+        value.quizGloballyEnabled !== undefined ||
+        value.studyStage !== undefined,
       "At least one profile field must be updated",
     ),
   type: z.literal("profile.update"),

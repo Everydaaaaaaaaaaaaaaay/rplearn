@@ -152,16 +152,30 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       headers: authenticated({ idempotencyKey: profileCommand }),
       method: "PATCH",
       payload: {
+        difficulty: "senior2",
         displayName: "跨平台旅行者",
         expectedVersion: onboardedProfile.version,
+        hasCompletedProfileSetup: true,
+        learningGoal: "studyAbroad",
+        placementCompletedAt: "2026-04-01T00:00:00.000Z",
+        placementScore: 72,
+        proficiencySource: "placement",
+        studyStage: "seniorHigh",
       },
       url: "/v1/me",
     });
     expect(profileUpdate.statusCode).toBe(200);
     expect(
-      profileUpdate.json<{ displayName: string; version: number }>(),
+      profileUpdate.json<UserSnapshot["profile"]>(),
     ).toMatchObject({
+      difficulty: "senior2",
       displayName: "跨平台旅行者",
+      hasCompletedProfileSetup: true,
+      learningGoal: "studyAbroad",
+      placementCompletedAt: "2026-04-01T00:00:00.000Z",
+      placementScore: 72,
+      proficiencySource: "placement",
+      studyStage: "seniorHigh",
       version: onboardedProfile.version + 1,
     });
 

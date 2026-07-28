@@ -26,7 +26,13 @@ public actor BackendUserStateCoordinator:
         let displayName: String?
         let expectedVersion: Int
         let hasCompletedOnboarding: Bool?
+        let hasCompletedProfileSetup: Bool?
+        let learningGoal: String?
+        let placementCompletedAt: String?
+        let placementScore: Int?
+        let proficiencySource: String?
         let quizGloballyEnabled: Bool?
+        let studyStage: String?
     }
 
     private struct TicketPurchase: Encodable, Sendable {
@@ -100,6 +106,35 @@ public actor BackendUserStateCoordinator:
         }
     }
 
+    /// 只有从未绑定过账号的游客空间才可以把本地学习者资料导入首次登录账号。
+    public func shouldCaptureGuestProfileForImport() -> Bool {
+        currentUserID == nil && defaults.string(forKey: cachedOwnerKey) == nil
+    }
+
+    /// 账号已完成建档时以云端为准；否则一次性导入游客在登录前填写的资料。
+    public func importGuestLearnerProfileIfNeeded(
+        _ guestProfile: UserProfileDTO
+    ) async throws -> UserProfileDTO {
+        guard guestProfile.hasCompletedProfileSetup,
+              snapshot?.state.profile.hasCompletedProfileSetup != true
+        else {
+            guard let current = snapshot?.state.profile else {
+                throw BackendClientError.invalidResponse
+            }
+            return await mapPreservingEntitlement(current)
+        }
+        return try await updateProfile { profile in
+            profile.displayName = guestProfile.displayName
+            profile.difficultyLevel = guestProfile.difficultyLevel
+            profile.learningGoal = guestProfile.learningGoal
+            profile.studyStage = guestProfile.studyStage
+            profile.proficiencySource = guestProfile.proficiencySource
+            profile.placementScore = guestProfile.placementScore
+            profile.placementCompletedAt = guestProfile.placementCompletedAt
+            profile.hasCompletedProfileSetup = true
+        }
+    }
+
     /// 切换到游客空间。只有设备上曾激活过账号时才清理缓存，避免误删既有游客进度。
     public func activateGuest() async throws {
         currentUserID = nil
@@ -139,13 +174,34 @@ public actor BackendUserStateCoordinator:
             expectedVersion: current.version,
             hasCompletedOnboarding: desired.hasCompletedOnboarding
                 == current.hasCompletedOnboarding ? nil : desired.hasCompletedOnboarding,
+            hasCompletedProfileSetup: desired.hasCompletedProfileSetup
+                == (current.hasCompletedProfileSetup ?? false) ? nil : desired.hasCompletedProfileSetup,
+            learningGoal: desired.learningGoal.rawValue
+                == (current.learningGoal ?? LearningGoal.dailyConversation.rawValue)
+                ? nil : desired.learningGoal.rawValue,
+            placementCompletedAt: desired.placementCompletedAt.flatMap { date in
+                current.placementCompletedAt == Self.isoString(date) ? nil : Self.isoString(date)
+            },
+            placementScore: desired.placementScore == current.placementScore
+                ? nil : desired.placementScore,
+            proficiencySource: desired.proficiencySource.rawValue
+                == (current.proficiencySource ?? ProficiencySource.selfReported.rawValue)
+                ? nil : desired.proficiencySource.rawValue,
             quizGloballyEnabled: desired.quizGloballyEnabled
-                == current.quizGloballyEnabled ? nil : desired.quizGloballyEnabled
+                == current.quizGloballyEnabled ? nil : desired.quizGloballyEnabled,
+            studyStage: desired.studyStage?.rawValue == current.studyStage
+                ? nil : desired.studyStage?.rawValue
         )
         guard patch.difficulty != nil
             || patch.displayName != nil
             || patch.hasCompletedOnboarding != nil
+            || patch.hasCompletedProfileSetup != nil
+            || patch.learningGoal != nil
+            || patch.placementCompletedAt != nil
+            || patch.placementScore != nil
+            || patch.proficiencySource != nil
             || patch.quizGloballyEnabled != nil
+            || patch.studyStage != nil
         else {
             return desired
         }
@@ -157,7 +213,13 @@ public actor BackendUserStateCoordinator:
             patch.difficulty ?? "-",
             patch.displayName ?? "-",
             onboardingValue,
+            patch.hasCompletedProfileSetup.map { String($0) } ?? "-",
+            patch.learningGoal ?? "-",
+            patch.placementCompletedAt ?? "-",
+            patch.placementScore.map { String($0) } ?? "-",
+            patch.proficiencySource ?? "-",
             quizValue,
+            patch.studyStage ?? "-",
         ]
         let intent = intentParts.joined(separator: ":")
         let commandID = pendingCommandID(for: intent)
@@ -448,7 +510,17 @@ public actor BackendUserStateCoordinator:
             quizGloballyEnabled: profile.quizGloballyEnabled,
             unlockedRegionIDs: profile.unlockedRegionIds,
             difficultyLevel: DifficultyLevel(rawValue: profile.difficulty) ?? .junior1,
-            hasCompletedOnboarding: profile.hasCompletedOnboarding
+            hasCompletedOnboarding: profile.hasCompletedOnboarding,
+            learningGoal: profile.learningGoal.flatMap(LearningGoal.init(rawValue:))
+                ?? .dailyConversation,
+            studyStage: profile.studyStage.flatMap(StudyStage.init(rawValue:)),
+            proficiencySource: profile.proficiencySource.flatMap(ProficiencySource.init(rawValue:))
+                ?? .selfReported,
+            placementScore: profile.placementScore,
+            placementCompletedAt: profile.placementCompletedAt.flatMap {
+                try? parseDate($0)
+            },
+            hasCompletedProfileSetup: profile.hasCompletedProfileSetup ?? false
         )
     }
 
@@ -498,5 +570,11 @@ public actor BackendUserStateCoordinator:
             throw BackendClientError.invalidResponse
         }
         return date
+    }
+
+    private nonisolated static func isoString(_ date: Date) -> String {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter.string(from: date)
     }
 }

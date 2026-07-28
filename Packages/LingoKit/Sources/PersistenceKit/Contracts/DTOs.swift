@@ -195,6 +195,12 @@ public struct UserProfileDTO: Sendable, Equatable {
     public var unlockedRegionIDs: [String]
     public var difficultyLevel: DifficultyLevel
     public var hasCompletedOnboarding: Bool
+    public var learningGoal: LearningGoal
+    public var studyStage: StudyStage?
+    public var proficiencySource: ProficiencySource
+    public var placementScore: Int?
+    public var placementCompletedAt: Date?
+    public var hasCompletedProfileSetup: Bool
 
     public init(
         displayName: String,
@@ -206,7 +212,13 @@ public struct UserProfileDTO: Sendable, Equatable {
         quizGloballyEnabled: Bool,
         unlockedRegionIDs: [String],
         difficultyLevel: DifficultyLevel,
-        hasCompletedOnboarding: Bool
+        hasCompletedOnboarding: Bool,
+        learningGoal: LearningGoal = .dailyConversation,
+        studyStage: StudyStage? = nil,
+        proficiencySource: ProficiencySource = .selfReported,
+        placementScore: Int? = nil,
+        placementCompletedAt: Date? = nil,
+        hasCompletedProfileSetup: Bool = false
     ) {
         self.displayName = displayName
         self.currentRegionID = currentRegionID
@@ -218,5 +230,11 @@ public struct UserProfileDTO: Sendable, Equatable {
         self.unlockedRegionIDs = unlockedRegionIDs
         self.difficultyLevel = difficultyLevel
         self.hasCompletedOnboarding = hasCompletedOnboarding
+        self.learningGoal = learningGoal
+        self.studyStage = studyStage
+        self.proficiencySource = proficiencySource
+        self.placementScore = placementScore
+        self.placementCompletedAt = placementCompletedAt
+        self.hasCompletedProfileSetup = hasCompletedProfileSetup
     }
 }

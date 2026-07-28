@@ -9,8 +9,14 @@ public struct BackendUserProfile: Codable, Sendable, Equatable {
     public let friendSlotLimit: Int
     public let gameLevel: Int
     public let hasCompletedOnboarding: Bool
+    public let hasCompletedProfileSetup: Bool?
+    public let learningGoal: String?
+    public let placementCompletedAt: String?
+    public let placementScore: Int?
+    public let proficiencySource: String?
     public let quizGloballyEnabled: Bool
     public let starterRegionId: String?
+    public let studyStage: String?
     public let unlockedRegionIds: [String]
     public let updatedAt: String
     public let version: Int

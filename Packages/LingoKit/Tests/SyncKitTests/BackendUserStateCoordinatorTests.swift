@@ -28,10 +28,28 @@ struct BackendUserStateCoordinatorTests {
             let starterRegionId: String
         }
 
+        private struct ProfileBody: Decodable {
+            let difficulty: String?
+            let displayName: String?
+            let hasCompletedProfileSetup: Bool?
+            let learningGoal: String?
+            let placementCompletedAt: String?
+            let placementScore: Int?
+            let proficiencySource: String?
+            let studyStage: String?
+        }
+
         private var coins = 500
         private var currentRegion = "london"
         private var difficulty = "junior1"
+        private var displayName = "旅行者"
         private var hasCompletedOnboarding = false
+        private var hasCompletedProfileSetup = false
+        private var learningGoal = "dailyConversation"
+        private var placementCompletedAt: String?
+        private var placementScore: Int?
+        private var proficiencySource = "selfReported"
+        private var studyStage: String?
         private var starterRegion: String?
         private var firstArrivalTravelID: UUID?
         private var tickets: [UUID] = []
@@ -61,7 +79,19 @@ struct BackendUserStateCoordinatorTests {
                 return json(snapshotJSON())
             case ("PATCH", "/v1/me"):
                 mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
-                hasCompletedOnboarding = true
+                let body = try JSONDecoder().decode(
+                    ProfileBody.self,
+                    from: request.httpBody ?? Data()
+                )
+                difficulty = body.difficulty ?? difficulty
+                displayName = body.displayName ?? displayName
+                hasCompletedProfileSetup = body.hasCompletedProfileSetup
+                    ?? hasCompletedProfileSetup
+                learningGoal = body.learningGoal ?? learningGoal
+                placementCompletedAt = body.placementCompletedAt ?? placementCompletedAt
+                placementScore = body.placementScore ?? placementScore
+                proficiencySource = body.proficiencySource ?? proficiencySource
+                studyStage = body.studyStage ?? studyStage
                 version += 1
                 return json(profileJSON())
             case ("POST", "/v1/economy/tickets/purchase"):
@@ -145,19 +175,28 @@ struct BackendUserStateCoordinatorTests {
 
         private func profileJSON() -> String {
             let starterRegionValue = starterRegion.map { "\"\($0)\"" } ?? "null"
+            let placementCompletedAtValue = placementCompletedAt.map { "\"\($0)\"" } ?? "null"
+            let placementScoreValue = placementScore.map(String.init) ?? "null"
+            let studyStageValue = studyStage.map { "\"\($0)\"" } ?? "null"
             let additionalRegion = currentRegion == "london" ? "" : ",\"\(currentRegion)\""
             return """
             {
               "coins":\(coins),
               "currentRegionId":"\(currentRegion)",
               "difficulty":"\(difficulty)",
-              "displayName":"旅行者",
+              "displayName":"\(displayName)",
               "experiencePoints":0,
               "friendSlotLimit":3,
               "gameLevel":1,
               "hasCompletedOnboarding":\(hasCompletedOnboarding),
+              "hasCompletedProfileSetup":\(hasCompletedProfileSetup),
+              "learningGoal":"\(learningGoal)",
+              "placementCompletedAt":\(placementCompletedAtValue),
+              "placementScore":\(placementScoreValue),
+              "proficiencySource":"\(proficiencySource)",
               "quizGloballyEnabled":true,
               "starterRegionId":\(starterRegionValue),
+              "studyStage":\(studyStageValue),
               "unlockedRegionIds":["london"\(additionalRegion)],
               "updatedAt":"2026-07-26T00:00:00.000Z",
               "version":\(version)
@@ -318,5 +357,64 @@ struct BackendUserStateCoordinatorTests {
 
         #expect(try await coordinator.activate(userID: userID) == .synchronized)
         #expect(try await storyProgress.progress(storyID: "guest_story")?.isCompleted == true)
+    }
+
+    @Test("首次登录会导入游客学习者资料，且云端已有资料时不会覆盖")
+    func firstLoginImportsGuestLearnerProfileOnce() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = StateTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: transport
+        )
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let economy = EconomyStore(modelContainer: container)
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: economy,
+            itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
+            defaults: try #require(UserDefaults(suiteName: suite))
+        )
+        let placementDate = Date(timeIntervalSince1970: 1_774_972_800)
+        let guestProfile = UserProfileDTO(
+            displayName: "小咕",
+            currentRegionID: "london",
+            coins: 0,
+            subscriptionTier: .free,
+            friendSlotLimit: 10,
+            quizGloballyEnabled: true,
+            unlockedRegionIDs: [],
+            difficultyLevel: .senior2,
+            hasCompletedOnboarding: false,
+            learningGoal: .studyAbroad,
+            studyStage: .seniorHigh,
+            proficiencySource: .placement,
+            placementScore: 72,
+            placementCompletedAt: placementDate,
+            hasCompletedProfileSetup: true
+        )
+
+        #expect(await coordinator.shouldCaptureGuestProfileForImport())
+        #expect(try await coordinator.activate(userID: userID) == .synchronized)
+        let imported = try await coordinator.importGuestLearnerProfileIfNeeded(guestProfile)
+
+        #expect(imported.displayName == "小咕")
+        #expect(imported.difficultyLevel == .senior2)
+        #expect(imported.learningGoal == .studyAbroad)
+        #expect(imported.studyStage == .seniorHigh)
+        #expect(imported.proficiencySource == .placement)
+        #expect(imported.placementScore == 72)
+        #expect(imported.placementCompletedAt == placementDate)
+        #expect(imported.hasCompletedProfileSetup)
+        #expect(!(await coordinator.shouldCaptureGuestProfileForImport()))
+
+        var conflictingGuest = guestProfile
+        conflictingGuest.displayName = "不应覆盖"
+        let preserved = try await coordinator.importGuestLearnerProfileIfNeeded(conflictingGuest)
+        #expect(preserved.displayName == "小咕")
     }
 }

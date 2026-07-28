@@ -26,6 +26,12 @@ public actor EconomyStore {
         entity.unlockedRegionIDs = profile.unlockedRegionIDs
         entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
         entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
+        entity.learningGoalRaw = profile.learningGoal.rawValue
+        entity.studyStageRaw = profile.studyStage?.rawValue
+        entity.proficiencySourceRaw = profile.proficiencySource.rawValue
+        entity.placementScore = profile.placementScore
+        entity.placementCompletedAt = profile.placementCompletedAt
+        entity.hasCompletedProfileSetup = profile.hasCompletedProfileSetup
         try fetchOrCreateJourneyState().starterRegionID = profile.starterRegionID
         // 金币不经此通道改动，走 addCoins/spendCoins 保证不为负。
         try modelContext.save()
@@ -69,6 +75,12 @@ public actor EconomyStore {
         entity.unlockedRegionIDs = profile.unlockedRegionIDs
         entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
         entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
+        entity.learningGoalRaw = profile.learningGoal.rawValue
+        entity.studyStageRaw = profile.studyStage?.rawValue
+        entity.proficiencySourceRaw = profile.proficiencySource.rawValue
+        entity.placementScore = profile.placementScore
+        entity.placementCompletedAt = profile.placementCompletedAt
+        entity.hasCompletedProfileSetup = profile.hasCompletedProfileSetup
         try fetchOrCreateJourneyState().starterRegionID = profile.starterRegionID
         try modelContext.save()
     }
@@ -125,7 +137,13 @@ public actor EconomyStore {
             quizGloballyEnabled: entity.quizGloballyEnabled,
             unlockedRegionIDs: entity.unlockedRegionIDs,
             difficultyLevel: DifficultyLevel(rawValue: entity.difficultyLevelRaw) ?? .junior3,
-            hasCompletedOnboarding: entity.hasCompletedOnboarding
+            hasCompletedOnboarding: entity.hasCompletedOnboarding,
+            learningGoal: LearningGoal(rawValue: entity.learningGoalRaw) ?? .dailyConversation,
+            studyStage: entity.studyStageRaw.flatMap(StudyStage.init(rawValue:)),
+            proficiencySource: ProficiencySource(rawValue: entity.proficiencySourceRaw) ?? .selfReported,
+            placementScore: entity.placementScore,
+            placementCompletedAt: entity.placementCompletedAt,
+            hasCompletedProfileSetup: entity.hasCompletedProfileSetup
         )
     }
 }
