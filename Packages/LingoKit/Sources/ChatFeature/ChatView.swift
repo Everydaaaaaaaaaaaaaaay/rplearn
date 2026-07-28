@@ -112,9 +112,9 @@ public struct ChatView: View {
 
     private var chatStatus: String {
         if viewModel.conversation?.isEncounterSession == true {
-            return "偶遇中 · \(viewModel.character.difficultyLevel.displayName)"
+            return "偶遇中 · \(viewModel.learnerDifficulty.displayName)"
         }
-        return "⌖ \(chatCityDisplayName) · \(viewModel.character.difficultyLevel.displayName)"
+        return "⌖ \(chatCityDisplayName) · \(viewModel.learnerDifficulty.displayName)"
     }
 
     private var messageList: some View {

@@ -36,10 +36,14 @@ struct RosterStoreTests {
         #expect(all.count == 3)
         #expect(all.allSatisfy { $0.isMainCharacter && !$0.isFriend })
 
-        try await store.configureMainCharacters(unlockedRegionIDs: ["melbourne"])
+        try await store.configureMainCharacters(
+            unlockedRegionIDs: ["melbourne"],
+            difficulty: .senior2
+        )
         all = try await store.allCharacters()
         #expect(all.first { $0.card.regionID == "melbourne" }?.isFriend == true)
         #expect(all.filter(\.isFriend).count == 1)
+        #expect(all.allSatisfy { $0.difficultyLevel == .senior2 })
 
         try await store.unlockMainCharacter(regionID: "newyork")
         #expect(try await store.friends().count == 2)

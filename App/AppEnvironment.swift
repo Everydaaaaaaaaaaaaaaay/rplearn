@@ -137,6 +137,7 @@ final class AppEnvironment {
         self.proactiveMessages = ProactiveMessageCoordinator(
             rosterStore: rosterStore,
             chatStore: chatStore,
+            economyStore: economyStore,
             llm: llmRouter
         )
         self.billing = BillingController(
@@ -263,6 +264,9 @@ final class AppEnvironment {
             starterRegionID: starterRegionID,
             completedStoryIDs: completed
         )
-        try await rosterStore.configureMainCharacters(unlockedRegionIDs: unlocked)
+        try await rosterStore.configureMainCharacters(
+            unlockedRegionIDs: unlocked,
+            difficulty: profile.difficultyLevel
+        )
     }
 }

@@ -12,7 +12,11 @@ struct ProactiveMessageServiceTests {
         }
         let service = ProactiveMessageService(llm: llm)
 
-        let message = await service.generate(for: character(), occasion: .introduction)
+        let message = await service.generate(
+            for: character(),
+            learner: learner(),
+            occasion: .introduction
+        )
 
         #expect(message == "I found an old photo at the shop today. What kind of photos do you like taking?")
     }
@@ -24,7 +28,11 @@ struct ProactiveMessageServiceTests {
         }
         let service = ProactiveMessageService(llm: llm)
 
-        let message = await service.generate(for: character(), occasion: .introduction)
+        let message = await service.generate(
+            for: character(),
+            learner: learner(),
+            occasion: .introduction
+        )
 
         #expect(message.contains("street photographer"))
         #expect(message.hasSuffix("?"))
@@ -42,6 +50,7 @@ struct ProactiveMessageServiceTests {
 
         let prompt = ProactiveMessageService.prompt(
             character: character(),
+            learner: learner(),
             occasion: .checkIn,
             recentMessages: [recent]
         )
@@ -49,7 +58,33 @@ struct ProactiveMessageServiceTests {
         #expect(prompt.contains("street photographer"))
         #expect(prompt.contains("I went hiking yesterday."))
         #expect(prompt.contains("Chinese English learner"))
+        #expect(prompt.contains("study abroad"))
+        #expect(prompt.contains("university learner"))
         #expect(prompt.contains("Do not guilt"))
+    }
+
+    @Test("初学者的离线兜底同样保持短句与选择式问题")
+    func beginnerFallbackIsScaffolded() async {
+        let llm = MockLLMProvider { _ in
+            throw NSError(domain: "test", code: 1)
+        }
+        let service = ProactiveMessageService(llm: llm)
+        let message = await service.generate(
+            for: character(),
+            learner: LearnerContext(difficulty: .primary2, goal: .travel),
+            occasion: .introduction
+        )
+
+        #expect(message == "Hi! Let’s take a trip. Train or plane?")
+    }
+
+    private func learner() -> LearnerContext {
+        LearnerContext(
+            nickname: "小雨",
+            difficulty: .senior2,
+            goal: .studyAbroad,
+            studyStage: .university
+        )
     }
 
     private func character() -> CharacterDTO {

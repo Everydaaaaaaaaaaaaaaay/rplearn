@@ -105,16 +105,26 @@ public actor RosterStore {
         try fetchEntity(id: id).map(Self.dto(from:))
     }
 
-    /// 以主线权威进度重建三位主角的可见状态，兼容旧版本曾默认全部解锁的数据。
-    public func configureMainCharacters(unlockedRegionIDs: Set<String>) throws {
+    /// 以主线权威进度重建三位主角的可见状态，并让对话等级跟随当前学习者档案。
+    public func configureMainCharacters(
+        unlockedRegionIDs: Set<String>,
+        difficulty: DifficultyLevel
+    ) throws {
         let entities = try modelContext.fetch(
             FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isMainCharacter })
         )
         var changed = false
         for entity in entities {
             let shouldBeFriend = unlockedRegionIDs.contains(entity.regionID)
-            guard entity.isFriend != shouldBeFriend else { continue }
-            entity.isFriend = shouldBeFriend
+            let needsFriendUpdate = entity.isFriend != shouldBeFriend
+            let needsDifficultyUpdate = entity.difficultyLevelRaw != difficulty.rawValue
+            guard needsFriendUpdate || needsDifficultyUpdate else { continue }
+            if needsFriendUpdate {
+                entity.isFriend = shouldBeFriend
+            }
+            if needsDifficultyUpdate {
+                entity.difficultyLevelRaw = difficulty.rawValue
+            }
             try journal(entity)
             changed = true
         }

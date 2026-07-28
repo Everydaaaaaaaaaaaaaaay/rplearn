@@ -49,6 +49,7 @@ final class ProactiveMessageCoordinator {
 
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
+    private let economyStore: EconomyStore
     private let messageService: ProactiveMessageService
     private let notificationCenter: UNUserNotificationCenter
     private let defaults: UserDefaults
@@ -58,12 +59,14 @@ final class ProactiveMessageCoordinator {
     init(
         rosterStore: RosterStore,
         chatStore: ChatStore,
+        economyStore: EconomyStore,
         llm: any LLMClient,
         notificationCenter: UNUserNotificationCenter = .current(),
         defaults: UserDefaults = .standard
     ) {
         self.rosterStore = rosterStore
         self.chatStore = chatStore
+        self.economyStore = economyStore
         self.messageService = ProactiveMessageService(llm: llm)
         self.notificationCenter = notificationCenter
         self.defaults = defaults
@@ -89,9 +92,10 @@ final class ProactiveMessageCoordinator {
         }
 
         var pending = loadPending()
+        let learner = await currentLearnerContext()
         let materialized = await materializeDueMessages(in: &pending)
-        let opened = await ensureInitialMessages()
-        pending = await fillSchedule(pending)
+        let opened = await ensureInitialMessages(learner: learner)
+        pending = await fillSchedule(pending, learner: learner)
         savePending(pending)
 
         let settings = await notificationCenter.notificationSettings()
@@ -115,14 +119,18 @@ final class ProactiveMessageCoordinator {
         }
     }
 
-    private func ensureInitialMessages() async -> Bool {
+    private func ensureInitialMessages(learner: LearnerContext) async -> Bool {
         guard let friends = try? await rosterStore.friends() else { return false }
         var insertedAny = false
         for character in friends {
             guard (try? await chatStore.needsInitialMessage(characterID: character.id)) == true else {
                 continue
             }
-            let text = await messageService.generate(for: character, occasion: .introduction)
+            let text = await messageService.generate(
+                for: character,
+                learner: learner,
+                occasion: .introduction
+            )
             if (try? await chatStore.appendInitialMessageIfNeeded(
                 characterID: character.id,
                 text: text
@@ -171,7 +179,10 @@ final class ProactiveMessageCoordinator {
         return insertedAny
     }
 
-    private func fillSchedule(_ existing: [PendingMessage]) async -> [PendingMessage] {
+    private func fillSchedule(
+        _ existing: [PendingMessage],
+        learner: LearnerContext
+    ) async -> [PendingMessage] {
         guard var friends = try? await rosterStore.friends(), !friends.isEmpty else { return [] }
         var pending = existing
             .sorted { $0.dueAt < $1.dueAt }
@@ -192,6 +203,7 @@ final class ProactiveMessageCoordinator {
             let recentMessages = await recentMessages(for: character.id)
             let text = await messageService.generate(
                 for: character,
+                learner: learner,
                 occasion: .checkIn,
                 recentMessages: recentMessages
             )
@@ -206,6 +218,13 @@ final class ProactiveMessageCoordinator {
             )
         }
         return pending
+    }
+
+    private func currentLearnerContext() async -> LearnerContext {
+        guard let profile = try? await economyStore.profile() else {
+            return .fallback(difficulty: .junior3)
+        }
+        return LearnerContext(profile: profile)
     }
 
     private func recentMessages(for characterID: UUID) async -> [MessageDTO] {

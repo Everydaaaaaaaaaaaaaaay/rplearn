@@ -13,6 +13,7 @@ import SpeechKit
 @Observable
 public final class ChatViewModel {
     public let character: CharacterDTO
+    public private(set) var learnerDifficulty: DifficultyLevel
     private let deps: ChatDependencies
 
     public private(set) var conversation: ConversationDTO?
@@ -31,6 +32,7 @@ public final class ChatViewModel {
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
         self.character = character
+        self.learnerDifficulty = character.difficultyLevel
         self.deps = deps
     }
 
@@ -39,6 +41,9 @@ public final class ChatViewModel {
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
             self.messages = try await deps.chatStore.messages(conversationID: conversation.id)
+            if let profile = try? await deps.economyStore.profile() {
+                learnerDifficulty = profile.difficultyLevel
+            }
         } catch {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
@@ -236,9 +241,16 @@ public final class ChatViewModel {
         let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
         let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
+        let learner: LearnerContext
+        if let profile = try? await deps.economyStore.profile() {
+            learner = LearnerContext(profile: profile)
+        } else {
+            learner = .fallback(difficulty: character.difficultyLevel)
+        }
+        learnerDifficulty = learner.difficulty
         let request = PromptBuilder.roleplayRequest(
             card: character.card,
-            difficulty: character.difficultyLevel,
+            learner: learner,
             history: messages,
             memorySections: memorySections,
             guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
@@ -424,7 +436,7 @@ public final class ChatViewModel {
     /// 角色回复完成后本地词频标注关键词（划线可点）。
     private func annotateKeywords(message: MessageDTO, text: String) async {
         let annotator = KeywordAnnotator(dictionary: deps.dictionary)
-        let threshold = character.difficultyLevel.keywordFrequencyThreshold
+        let threshold = learnerDifficulty.keywordFrequencyThreshold
         let words = await annotator.keywords(in: text, frequencyThreshold: threshold)
         guard let json = KeywordAnnotator.encode(words: words) else { return }
         try? await deps.chatStore.setKeywordRanges(messageID: message.id, json: json)
