@@ -30,21 +30,33 @@ public struct OnboardingFlowView: View {
     private enum Phase {
         case loading
         case profile
+        case calibration
         case story
         case selection
     }
 
     private let deps: OnboardingDependencies
+    private let placementCompletionRevision: Int
+    private let onRequestPlacement: () -> Void
     private let onComplete: (CharacterDTO) -> Void
 
     @State private var phase: Phase = .loading
     @State private var profile: UserProfileDTO?
     @State private var player: StoryPlayer?
     @State private var characters: [CharacterDTO] = []
+    @AppStorage("onboarding.placement-offer.dismissed.v1")
+    private var placementOfferDismissed = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(deps: OnboardingDependencies, onComplete: @escaping (CharacterDTO) -> Void) {
+    public init(
+        deps: OnboardingDependencies,
+        placementCompletionRevision: Int = 0,
+        onRequestPlacement: @escaping () -> Void = {},
+        onComplete: @escaping (CharacterDTO) -> Void
+    ) {
         self.deps = deps
+        self.placementCompletionRevision = placementCompletionRevision
+        self.onRequestPlacement = onRequestPlacement
         self.onComplete = onComplete
     }
 
@@ -61,12 +73,17 @@ public struct OnboardingFlowView: View {
                     ) { updated in
                         self.profile = updated
                         withAnimation(reduceMotion ? nil : .snappy) {
-                            phase = .story
+                            phase = .calibration
                         }
                     }
                 } else {
                     onboardingLoading
                 }
+            case .calibration:
+                PlacementCalibrationChoiceView(
+                    onStart: onRequestPlacement,
+                    onSkip: continueWithSelfAssessment
+                )
             case .story:
                 if let player {
                     ChatStoryView(player: player, characters: characters) {
@@ -93,11 +110,27 @@ public struct OnboardingFlowView: View {
             }
             characters = (try? await deps.rosterStore.allCharacters().filter(\.isMainCharacter)) ?? []
             if phase == .loading, let profile {
-                phase = profile.hasCompletedProfileSetup ? .story : .profile
+                if !profile.hasCompletedProfileSetup {
+                    phase = .profile
+                } else if profile.proficiencySource == .placement || placementOfferDismissed {
+                    phase = .story
+                } else {
+                    phase = .calibration
+                }
             }
             #if DEBUG
             await autoplayIfRequested()
             #endif
+        }
+        .onChange(of: placementCompletionRevision) { oldValue, newValue in
+            guard oldValue != newValue else { return }
+            placementOfferDismissed = true
+            Task {
+                profile = try? await deps.economyStore.profile()
+                withAnimation(reduceMotion ? nil : .snappy) {
+                    phase = .story
+                }
+            }
         }
     }
 
@@ -117,11 +150,21 @@ public struct OnboardingFlowView: View {
         }
     }
 
+    private func continueWithSelfAssessment() {
+        placementOfferDismissed = true
+        withAnimation(reduceMotion ? nil : .snappy) {
+            phase = .story
+        }
+    }
+
     #if DEBUG
     /// 冒烟验收用：SIMCTL_CHILD_ONBOARDING_AUTOPLAY=1 自动播完剧情停在选择页；=full 再自动选第一位。
     private func autoplayIfRequested() async {
         let mode = ProcessInfo.processInfo.environment["ONBOARDING_AUTOPLAY"]
-        guard mode == "1" || mode == "full", let player else { return }
+        guard mode == "1" || mode == "full",
+              phase == .story,
+              let player
+        else { return }
         while !player.isFinished {
             try? await Task.sleep(for: .milliseconds(120))
             if player.currentChoices != nil {
@@ -139,6 +182,97 @@ public struct OnboardingFlowView: View {
         }
     }
     #endif
+}
+
+/// 建档与剧情之间只出现一次的可选校准，不把测评包装成强制门槛。
+private struct PlacementCalibrationChoiceView: View {
+    let onStart: () -> Void
+    let onSkip: () -> Void
+
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                colors: [Color.dsSky.opacity(0.1), Color.dsBackground],
+                startPoint: .top,
+                endPoint: .center
+            )
+            .ignoresSafeArea()
+
+            ScrollView {
+                VStack(spacing: DSSpacing.xl) {
+                    HStack(alignment: .top, spacing: DSSpacing.md) {
+                        BrandMascotView(pose: .guide, size: 52, showsShadow: false)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("要不要再校准一下？")
+                                .font(.system(.title2, design: .rounded, weight: .bold))
+                            Text("这是可选项，自评结果已经可以直接开始。")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer(minLength: 0)
+                    }
+
+                    VStack(spacing: 0) {
+                        calibrationRow(
+                            icon: "slider.horizontal.3",
+                            title: "题目会动态调整",
+                            detail: "答对会变难，答错会回到更合适的位置"
+                        )
+                        Divider().padding(.leading, 52)
+                        calibrationRow(
+                            icon: "clock",
+                            title: "约 3–5 分钟",
+                            detail: "通常 8–12 题，可随时退出"
+                        )
+                        Divider().padding(.leading, 52)
+                        calibrationRow(
+                            icon: "person.2",
+                            title: "马上影响角色对话",
+                            detail: "问题长度、词汇和引导方式会随结果调整"
+                        )
+                    }
+                    .dsSurface(.grouped, padding: 0)
+
+                    VStack(spacing: DSSpacing.sm) {
+                        Button("答几题，更准确") {
+                            onStart()
+                        }
+                        .buttonStyle(.dsActionPrimary)
+
+                        Button("先按自评结果开始") {
+                            onSkip()
+                        }
+                        .buttonStyle(.dsAction(.secondary))
+                    }
+                }
+                .frame(maxWidth: 560)
+                .padding(DSSpacing.lg)
+                .frame(maxWidth: .infinity)
+            }
+        }
+    }
+
+    private func calibrationRow(
+        icon: String,
+        title: String,
+        detail: String
+    ) -> some View {
+        HStack(spacing: DSSpacing.sm) {
+            Image(systemName: icon)
+                .foregroundStyle(Color.dsSkyDeep)
+                .frame(width: 36, height: 36)
+                .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.subheadline.weight(.semibold))
+                Text(detail)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+        }
+        .padding(DSSpacing.sm)
+    }
 }
 
 /// 聊天皮肤的剧情播放：复用剧情引擎，气泡逐条点击推进。

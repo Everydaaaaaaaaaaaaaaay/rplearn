@@ -24,6 +24,7 @@ public struct MyPageView: View {
     private let reloadToken: Int
     private let isSignedIn: Bool
     private let onSignIn: @MainActor () -> Void
+    private let onCalibrateLevel: @MainActor () -> Void
     private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
     private let favoritesBuilder: @MainActor () -> AnyView
 
@@ -48,6 +49,7 @@ public struct MyPageView: View {
         reloadToken: Int = 0,
         isSignedIn: Bool,
         onSignIn: @escaping @MainActor () -> Void,
+        onCalibrateLevel: @escaping @MainActor () -> Void,
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
         favoritesBuilder: @escaping @MainActor () -> AnyView
     ) {
@@ -64,6 +66,7 @@ public struct MyPageView: View {
         self.reloadToken = reloadToken
         self.isSignedIn = isSignedIn
         self.onSignIn = onSignIn
+        self.onCalibrateLevel = onCalibrateLevel
         self.onProactiveMessagesChanged = onProactiveMessagesChanged
         self.favoritesBuilder = favoritesBuilder
     }
@@ -81,6 +84,7 @@ public struct MyPageView: View {
         ScrollView {
             VStack(spacing: DSSpacing.md) {
                 profileCard
+                learningProfileCard
                 subscriptionCard
                 entryList
                 #if DEBUG
@@ -257,6 +261,73 @@ public struct MyPageView: View {
             in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
         )
         .shadow(color: Color.dsSky.opacity(0.24), radius: 12, y: 5)
+    }
+
+    private var learningProfileCard: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.md) {
+            HStack(alignment: .firstTextBaseline) {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("英语学习档案")
+                        .font(.headline)
+                    Text(
+                        profile?.proficiencySource == .placement
+                            ? "已通过答题校准"
+                            : "当前使用自评水平"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button("校准水平", action: onCalibrateLevel)
+                    .buttonStyle(.dsAction(.secondary, fullWidth: false, compact: true))
+            }
+
+            HStack(spacing: DSSpacing.sm) {
+                learningMetric(
+                    title: "当前水平",
+                    value: profile?.difficultyLevel.displayName ?? "载入中",
+                    icon: "gauge.with.dots.needle.33percent"
+                )
+                learningMetric(
+                    title: "学习目标",
+                    value: profile?.learningGoal.displayName ?? "载入中",
+                    icon: "scope"
+                )
+            }
+
+            if let score = profile?.placementScore {
+                HStack {
+                    Label("最近校准 \(score) / 100", systemImage: "checkmark.seal.fill")
+                        .foregroundStyle(Color.dsSkyDeep)
+                    Spacer()
+                    if let date = profile?.placementCompletedAt {
+                        Text(date.formatted(date: .abbreviated, time: .omitted))
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .font(.caption.weight(.semibold))
+            }
+        }
+        .dsSurface(.grouped)
+    }
+
+    private func learningMetric(
+        title: String,
+        value: String,
+        icon: String
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Label(title, systemImage: icon)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Text(value)
+                .font(.subheadline.weight(.semibold))
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(DSSpacing.sm)
+        .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
+        .background(Color.dsSurfaceMuted, in: RoundedRectangle(cornerRadius: DSRadius.inline))
     }
 
     private var guestAccountPrompt: some View {

@@ -89,6 +89,11 @@ let featureTargets: [Target] = [
         module("StoryEngine"),
         module("PersistenceKit"),
     ]),
+    feature("PlacementFeature", dependencies: [
+        module("CoreKit"),
+        module("DomainKit"),
+        module("PersistenceKit"),
+    ]),
     feature("StoryFeature", dependencies: [
         module("CoreKit"),
         module("DomainKit"),

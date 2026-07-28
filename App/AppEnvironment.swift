@@ -248,6 +248,26 @@ final class AppEnvironment {
         )
     }
 
+    /// 自评或答题校准完成后，让角色显示、后续提示词与尚未发送的主动消息立即使用新等级。
+    func applyLearnerProfile(_ profile: UserProfileDTO) async {
+        do {
+            if profile.hasCompletedOnboarding {
+                try await reconcileMainCharacters(profile: profile)
+            } else {
+                try await rosterStore.configureMainCharacters(
+                    unlockedRegionIDs: [],
+                    difficulty: profile.difficultyLevel
+                )
+            }
+            await proactiveMessages.learnerProfileDidChange()
+            if needsOnboarding == false {
+                await refreshProactiveMessages(requestAuthorization: false)
+            }
+        } catch {
+            Log.app.warning("学习者等级已保存，角色难度刷新将在下次启动重试：\(error)")
+        }
+    }
+
     private func reconcileMainCharacters(profile: UserProfileDTO) async throws {
         guard profile.hasCompletedOnboarding else { return }
         let starterRegionID =

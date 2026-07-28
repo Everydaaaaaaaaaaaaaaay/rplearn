@@ -119,6 +119,12 @@ final class ProactiveMessageCoordinator {
         }
     }
 
+    /// 学习档案变化后丢弃尚未到期的旧难度文案；已经进入聊天记录的消息不回写。
+    func learnerProfileDidChange() async {
+        savePending([])
+        await removeScheduledNotifications()
+    }
+
     private func ensureInitialMessages(learner: LearnerContext) async -> Bool {
         guard let friends = try? await rosterStore.friends() else { return false }
         var insertedAny = false

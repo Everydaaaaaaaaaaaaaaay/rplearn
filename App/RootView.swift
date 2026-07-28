@@ -9,6 +9,7 @@ import FavoritesFeature
 import HomeFeature
 import MapFeature
 import OnboardingFeature
+import PlacementFeature
 import RosterFeature
 import SettingsFeature
 import SpeechKit
@@ -35,6 +36,9 @@ struct RootView: View {
     @State private var homePath = NavigationPath()
     @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
+    @State private var showPlacementTest = false
+    @State private var showOnboardingPlacement = false
+    @State private var placementCompletionRevision = 0
     @State private var activeUserID: UUID?
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
@@ -65,11 +69,16 @@ struct RootView: View {
             _homePath = State(initialValue: path)
         }
         #endif
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT"] == "1" {
+            _showPlacementTest = State(initialValue: true)
+        }
+        #endif
     }
 
     private var showsOnboarding: Binding<Bool> {
         Binding(
-            get: { environment.needsOnboarding == true },
+            get: { environment.needsOnboarding == true && !showPlacementTest },
             set: { newValue in
                 if !newValue { environment.needsOnboarding = false }
             }
@@ -213,6 +222,9 @@ struct RootView: View {
 
     private var appContent: some View {
         tabs
+            .fullScreenCover(isPresented: $showPlacementTest) {
+                placementTestView(isOnboarding: false)
+            }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
                     deps: OnboardingDependencies(
@@ -220,7 +232,9 @@ struct RootView: View {
                         profileCommands: profileCommands,
                         rosterStore: environment.rosterStore,
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!
-                    )
+                    ),
+                    placementCompletionRevision: placementCompletionRevision,
+                    onRequestPlacement: { showOnboardingPlacement = true }
                 ) { character in
                     Task {
                         guard await environment.completeOnboarding(
@@ -234,6 +248,9 @@ struct RootView: View {
                     }
                 }
                 .interactiveDismissDisabled()
+                .fullScreenCover(isPresented: $showOnboardingPlacement) {
+                    placementTestView(isOnboarding: true)
+                }
             }
             .sheet(isPresented: $showVoiceUpgrade) {
                 VoiceUpgradeSheet(
@@ -367,12 +384,45 @@ struct RootView: View {
                 reloadToken: stateRevision,
                 isSignedIn: usesCloudState,
                 onSignIn: { showSignIn = true },
+                onCalibrateLevel: { showPlacementTest = true },
                 onProactiveMessagesChanged: { enabled in
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
                 },
                 favoritesBuilder: { AnyView(FavoritesView(deps: favoritesDeps)) }
             )
         }
+    }
+
+    private func placementTestView(isOnboarding: Bool) -> some View {
+        PlacementTestView(
+            deps: PlacementDependencies(
+                questionBankURL: Bundle.main.url(
+                    forResource: "placement_questions",
+                    withExtension: "json"
+                )!,
+                economyStore: environment.economyStore,
+                profileCommands: profileCommands
+            ),
+            onComplete: { updated in
+                Task {
+                    await environment.applyLearnerProfile(updated)
+                    stateRevision += 1
+                    if isOnboarding {
+                        showOnboardingPlacement = false
+                        placementCompletionRevision += 1
+                    } else {
+                        showPlacementTest = false
+                    }
+                }
+            },
+            onCancel: {
+                if isOnboarding {
+                    showOnboardingPlacement = false
+                } else {
+                    showPlacementTest = false
+                }
+            }
+        )
     }
 
     private func storyView(storyID: String) -> some View {
