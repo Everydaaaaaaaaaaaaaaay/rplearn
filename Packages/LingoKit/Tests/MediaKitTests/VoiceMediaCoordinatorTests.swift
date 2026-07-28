@@ -144,6 +144,7 @@ struct VoiceMediaCoordinatorTests {
             binaryTransport: FakeBinaryTransport(),
             ownerStore: MemoryOwnerStore()
         )
+        #expect(!(await coordinator.isCloudBackupAvailable))
 
         let resolved = try await coordinator.localFile(
             messageID: UUID(),
@@ -174,6 +175,7 @@ struct VoiceMediaCoordinatorTests {
             ownerStore: MemoryOwnerStore()
         )
         await coordinator.activate(userID: userID)
+        #expect(await coordinator.isCloudBackupAvailable)
 
         let resolved = try await coordinator.localFile(
             messageID: UUID(),
@@ -183,6 +185,7 @@ struct VoiceMediaCoordinatorTests {
         #expect(resolved == cached)
         #expect(await backend.downloadRequests == 0)
         await coordinator.deactivate()
+        #expect(!(await coordinator.isCloudBackupAvailable))
     }
 
     @Test("上传完成后才发布引用，并校验按需下载内容")

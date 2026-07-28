@@ -91,6 +91,11 @@ public actor VoiceMediaCoordinator {
         currentUserID = nil
     }
 
+    /// 云端语音备份属于账号增强能力；本地录制、发送与播放不依赖它。
+    public var isCloudBackupAvailable: Bool {
+        currentUserID != nil
+    }
+
     @discardableResult
     public func enqueue(
         messageID: UUID,

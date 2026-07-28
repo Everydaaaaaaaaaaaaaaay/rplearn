@@ -113,14 +113,17 @@ public final class ChatViewModel {
                 tokenEstimate: TokenEstimator.estimate(capture.transcript)
             )
             if let sourceFileName = capture.fileName {
-                do {
-                    _ = try await deps.voiceMedia.enqueue(
-                        messageID: messageID,
-                        sourceFileName: sourceFileName
-                    )
-                } catch {
-                    errorMessage = "语音已保存在本机，云端备份暂未完成。"
-                    Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                // 语音发送是常用本地能力；仅在账号云空间已激活时追加备份。
+                if await deps.voiceMedia.isCloudBackupAvailable {
+                    do {
+                        _ = try await deps.voiceMedia.enqueue(
+                            messageID: messageID,
+                            sourceFileName: sourceFileName
+                        )
+                    } catch {
+                        errorMessage = "语音已保存在本机，云端备份暂未完成。"
+                        Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                    }
                 }
             }
             await reloadMessages()

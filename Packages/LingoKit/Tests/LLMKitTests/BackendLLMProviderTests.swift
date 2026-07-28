@@ -115,6 +115,24 @@ struct BackendLLMProviderTests {
         }
     }
 
+    private actor QuotaTransport: BackendTransport {
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            BackendTransportResponse(
+                data: Data(
+                    """
+                    {
+                      "code":"AI_DAILY_QUOTA_EXCEEDED",
+                      "message":"The daily AI request quota has been reached.",
+                      "requestId":"request"
+                    }
+                    """.utf8
+                ),
+                headers: ["content-type": "application/json"],
+                statusCode: 429
+            )
+        }
+    }
+
     @Test("signed-out clients use device-scoped guest AI access")
     func guestAccess() async throws {
         let transport = Transport()
@@ -139,6 +157,34 @@ struct BackendLLMProviderTests {
         #expect(output == "你好")
         #expect(await transport.authorizationHeaders.last == "")
         #expect(await transport.guestIDs.last == "guest-device-12345678")
+    }
+
+    @Test("guest AI quota is controlled independently from login")
+    func guestQuota() async {
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: GuestCredentials(),
+            transport: QuotaTransport()
+        )
+        let provider = BackendLLMProvider(
+            backend: client,
+            guestID: "guest-device-12345678"
+        )
+
+        await #expect(
+            throws: LLMError.http(
+                status: 429,
+                message: "今日 AI 使用额度已用完，请明天再试。"
+            )
+        ) {
+            try await provider.complete(
+                LLMRequest(
+                    task: .conversation,
+                    tier: .balanced,
+                    messages: [.user("hello")]
+                )
+            )
+        }
     }
 
     /// Test-only unchecked box around JSONSerialization values; inspected only inside the suite.

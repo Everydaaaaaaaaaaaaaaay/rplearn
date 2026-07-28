@@ -177,8 +177,11 @@ public struct BackendLLMProvider: LLMProvider {
     private static func map(_ error: Error) -> Error {
         guard let backendError = error as? BackendClientError else { return error }
         switch backendError {
-        case .api(_, let message, _, let status):
-            return LLMError.http(status: status, message: message)
+        case .api(_, _, _, let status):
+            return LLMError.http(
+                status: status,
+                message: backendError.errorDescription ?? "云端 AI 暂时不可用"
+            )
         case .invalidResponse:
             return LLMError.invalidResponse("后端 AI 响应无法解析")
         case .signedOut:
