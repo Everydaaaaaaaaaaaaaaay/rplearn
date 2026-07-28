@@ -1,3 +1,4 @@
+import CoreKit
 import DesignSystem
 import DomainKit
 import PersistenceKit
@@ -17,6 +18,9 @@ public struct HomeView: View {
     @State private var completedStories: Set<String> = []
     @State private var recentRows: [RecentChatRow] = []
     @State private var scrollOffset: CGFloat = 0
+    @State private var showsFirstStoryGuide = false
+    @AppStorage("coovingo.guide.first-story.v1") private var hasHandledFirstStoryGuide = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         deps: HomeDependencies,
@@ -58,6 +62,7 @@ public struct HomeView: View {
 
             ScrollView {
                 VStack(spacing: DSSpacing.md) {
+                    brandHeader
                     cityStatusBar
                     cityVista
                     recentChats
@@ -73,9 +78,43 @@ public struct HomeView: View {
                 scrollOffset = newValue
             }
             .refreshable { await reload() }
+
+            if showsFirstStoryGuide {
+                firstStoryGuide
+                    .padding(.horizontal, DSSpacing.md)
+                    .padding(.bottom, DSSpacing.md)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .transition(
+                        reduceMotion
+                            ? .opacity
+                            : .move(edge: .trailing).combined(with: .opacity)
+                    )
+                    .zIndex(2)
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
         .task(id: reloadToken) { await reload() }
+    }
+
+    private var brandHeader: some View {
+        HStack {
+            BrandLockup(compact: true)
+            Spacer(minLength: DSSpacing.xs)
+            Label("继续旅行", systemImage: "location.north.fill")
+                .font(.system(.caption2, design: .rounded, weight: .bold))
+                .foregroundStyle(Color.dsBrandCoral)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Color.dsBrandCream.opacity(0.9), in: Capsule())
+        }
+        .padding(.horizontal, DSSpacing.sm)
+        .padding(.vertical, DSSpacing.xs)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card))
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.card)
+                .stroke(.white.opacity(0.42), lineWidth: 1)
+        }
+        .shadow(color: Color.dsBrandInk.opacity(0.08), radius: 8, y: 3)
     }
 
     @ViewBuilder
@@ -111,12 +150,10 @@ public struct HomeView: View {
 
             if recentRows.isEmpty {
                 VStack(spacing: DSSpacing.xs) {
-                    Image(systemName: "bubble.left.and.sparkles")
-                        .font(.title2)
-                        .foregroundStyle(Color.dsSky)
-                    Text("伙伴正在等你打招呼")
+                    BrandMascotView(pose: .greeting, size: 82)
+                    Text("\(AppBrand.mascotName)正在帮你召集旅伴")
                         .font(.subheadline.weight(.semibold))
-                    Text("完成开场剧情后，最近的聊天会出现在这里")
+                    Text("认识新朋友后，最近的聊天会出现在这里")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
@@ -212,8 +249,81 @@ public struct HomeView: View {
         }
     }
 
+    private var firstStoryGuide: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.xs) {
+            HStack(alignment: .top, spacing: DSSpacing.xs) {
+                BrandMascotView(pose: .guide, size: 104)
+                    .offset(y: -10)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("\(AppBrand.mascotName)来指路啦")
+                        .font(.system(.caption, design: .rounded, weight: .black))
+                        .foregroundStyle(Color.dsBrandCoral)
+                    Text("第一站，从剧情出发")
+                        .font(.system(.headline, design: .rounded, weight: .black))
+                        .foregroundStyle(Color.dsBrandInk)
+                    Text(nextMainlineChapter?.subtitle ?? "和你的旅伴见面，开启第一段城市故事。")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(3)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(.top, DSSpacing.xs)
+
+                Spacer(minLength: 0)
+
+                Button {
+                    dismissFirstStoryGuide()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.caption.bold())
+                        .frame(width: 30, height: 30)
+                        .background(Color.dsSurfaceMuted, in: Circle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("稍后再看")
+            }
+
+            if let chapter = nextMainlineChapter {
+                NavigationLink(value: chapter) {
+                    Label("跟咕咕去看 \(chapter.title)", systemImage: "book.pages.fill")
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.78)
+                }
+                .buttonStyle(.dsActionPrimary)
+                .simultaneousGesture(
+                    TapGesture().onEnded {
+                        dismissFirstStoryGuide()
+                    }
+                )
+            }
+        }
+        .padding(DSSpacing.sm)
+        .frame(maxWidth: 360)
+        .background(
+            LinearGradient(
+                colors: [Color.dsSurface, Color.dsBrandCream],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+                .stroke(Color.dsSky.opacity(0.2), lineWidth: 1)
+        }
+        .shadow(color: Color.dsBrandInk.opacity(0.2), radius: 20, y: 10)
+        .accessibilityElement(children: .contain)
+    }
+
     private var mainlineJourney: MainlineJourney {
         MainlineCatalog.journey(starterRegionID: profile?.starterRegionID)
+    }
+
+    private var nextMainlineChapter: MainlineChapter? {
+        mainlineJourney.stops.first {
+            !completedStories.contains($0.chapter.storyID)
+        }?.chapter
     }
 
     private var completedMainlineStops: Int {
@@ -253,6 +363,21 @@ public struct HomeView: View {
         let friendsByID = Dictionary(uniqueKeysWithValues: friends.map { ($0.id, $0) })
         recentRows = summaries.compactMap { summary in
             friendsByID[summary.characterID].map { RecentChatRow(character: $0, summary: summary) }
+        }
+
+        let shouldShowGuide =
+            profile?.hasCompletedOnboarding == true
+            && completedMainlineStops == 0
+            && !hasHandledFirstStoryGuide
+        withAnimation(reduceMotion ? nil : DSAnimation.celebration) {
+            showsFirstStoryGuide = shouldShowGuide
+        }
+    }
+
+    private func dismissFirstStoryGuide() {
+        hasHandledFirstStoryGuide = true
+        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+            showsFirstStoryGuide = false
         }
     }
 
