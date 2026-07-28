@@ -1,0 +1,27 @@
+{
+  "id": "city_toronto",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "多伦多下起了细雪。你刚走进 PATH 地下步道，就看见一位拖着行李箱的女孩在三张方向牌之间来回确认。", "bg": "toronto_path", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Maya", "text": "Sorry — I'm trying to get to Union Station, but every sign seems to point somewhere different.", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「Which entrance are you trying to reach?」", "next": "n03a", "setFlags": { "clarified_destination": true } },
+      { "text": "「It's probably this way. Follow me.」", "next": "n03b" }
+    ] },
+    { "id": "n03a", "type": "line", "speaker": "Maya", "text": "The train hall, not the subway. Good question — I didn't realise there were two different entrances.", "next": "n04" },
+    { "id": "n03b", "type": "line", "speaker": "Maya", "text": "Maybe, but I need the train hall rather than the subway. We should check before we walk any farther.", "next": "n04" },
+    { "id": "n04", "type": "line", "speaker": "旁白", "text": "你们找到一位正在换灯箱的工作人员。地下步道很吵，长句很容易被人声吞掉。", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「Are we heading the right way for the Union Station train hall?」", "next": "n05a", "setFlags": { "confirmed_route": true } },
+      { "text": "「Union Station?」", "next": "n05b" }
+    ] },
+    { "id": "n05a", "type": "line", "speaker": "工作人员", "text": "Yes. Keep straight, take the second escalator up, then turn left at the bakery.", "next": "n06" },
+    { "id": "n05b", "type": "line", "speaker": "工作人员", "text": "Train hall or subway? Ah, the train hall — straight ahead, second escalator, then left at the bakery.", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "Maya", "text": "Straight, second escalator, left at the bakery. Let me repeat it so we don't lose a step.", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "旁白", "text": "几分钟后，车站大厅的天花板出现在扶梯上方。Maya 赶上了火车，也把一枚红色枫叶行李牌送给你。", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "Maya", "text": "You didn't need perfect directions. You asked one precise question, checked the answer, and got us here.", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】回到街面时雪已经停了。你发现问路的关键不是记住整张地图，而是把下一步说清楚。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

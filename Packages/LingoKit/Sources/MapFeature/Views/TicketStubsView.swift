@@ -108,9 +108,11 @@ struct TicketStubCard: View {
         "vancouver": "YVR",
         "auckland": "AKL",
         "nairobi": "NBO",
-        "reykjavik": "KEF",
-        "lisbon": "LIS",
-        "tokyo": "TYO",
+        "toronto": "YYZ",
+        "sydney": "SYD",
+        "neworleans": "MSY",
+        "manchester": "MAN",
+        "kingston": "KIN",
     ]
 
     private var palette: [Color] {

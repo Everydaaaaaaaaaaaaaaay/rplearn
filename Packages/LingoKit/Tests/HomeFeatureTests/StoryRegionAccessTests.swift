@@ -21,7 +21,7 @@ struct StoryRegionAccessTests {
 
         let current = StoryRegionAccess(regionID: "london", profile: profile)
         let unlockedAway = StoryRegionAccess(regionID: "melbourne", profile: profile)
-        let locked = StoryRegionAccess(regionID: "tokyo", profile: profile)
+        let locked = StoryRegionAccess(regionID: "toronto", profile: profile)
 
         #expect(current == .current)
         #expect(current.canOpen)

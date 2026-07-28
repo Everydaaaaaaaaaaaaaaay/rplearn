@@ -29,17 +29,26 @@ struct SeedDataTests {
         }
     }
 
-    @Test("regions.json：5 个主线城市、8 个支线城市且不含中国城市")
+    @Test("regions.json：15 座城市均服务于英语学习")
     func regions() throws {
         let regionsURL = try #require(Bundle.main.url(forResource: "regions", withExtension: "json"))
         let catalog = try RegionCatalog(url: regionsURL)
-        #expect(catalog.regions.count == 13)
+        #expect(catalog.regions.count == 15)
         #expect(catalog.mainlineRegions.count == 5)
-        #expect(catalog.sideRegions.count == 8)
+        #expect(catalog.sideRegions.count == 10)
         #expect(Set(catalog.mainlineRegions.map(\.id)) == [
             "london", "melbourne", "newyork", "capetown", "singapore",
         ])
-        #expect(!catalog.regions.contains { $0.countryCode == "CN" })
+        #expect(Set(catalog.regions.map(\.id)) == [
+            "london", "melbourne", "newyork", "capetown", "singapore",
+            "dublin", "edinburgh", "vancouver", "auckland", "nairobi",
+            "toronto", "sydney", "neworleans", "manchester", "kingston",
+        ])
+        #expect(
+            catalog.regions.allSatisfy {
+                $0.learningLanguageCode == RegionCatalog.supportedLearningLanguageCode
+            }
+        )
         for region in catalog.regions {
             #expect(region.activities.count == 5, "\(region.nameZh) 应配置 5 条活动路线")
             #expect(Set(region.activities.map(\.id)).count == region.activities.count)
@@ -54,6 +63,39 @@ struct SeedDataTests {
             Set(catalog.regions.flatMap(\.activities).map(\.category))
                 == Set(Region.ActivityCategory.allCases)
         )
+    }
+
+    @Test("目录层隐藏非当前学习语言城市")
+    func unsupportedLearningLanguageIsHidden() {
+        let englishRegion = Region(
+            id: "london",
+            nameEn: "London",
+            nameZh: "伦敦",
+            countryCode: "GB",
+            countryNameEn: "United Kingdom",
+            countryNameZh: "英国",
+            learningLanguageCode: "en",
+            taglineZh: "-",
+            landmarks: [],
+            activities: []
+        )
+        let japaneseRegion = Region(
+            id: "tokyo",
+            nameEn: "Tokyo",
+            nameZh: "东京",
+            countryCode: "JP",
+            countryNameEn: "Japan",
+            countryNameZh: "日本",
+            learningLanguageCode: "ja",
+            taglineZh: "-",
+            landmarks: [],
+            activities: []
+        )
+
+        let catalog = RegionCatalog(regions: [englishRegion, japaneseRegion])
+
+        #expect(catalog.regions.map(\.id) == ["london"])
+        #expect(catalog.region(id: "tokyo") == nil)
     }
 
     @Test("城市：每座城市都有背景、主线与活动美术")

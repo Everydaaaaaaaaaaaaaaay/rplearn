@@ -489,9 +489,11 @@ enum BackgroundPalette {
         case "vancouver_seawall": "📷"
         case "auckland_harbour": "⛵️"
         case "nairobi_karura": "🌧️"
-        case "reykjavik_pool": "♨️"
-        case "lisbon_tram": "🚋"
-        case "tokyo_shimokitazawa": "🎵"
+        case "toronto_path": "🧭"
+        case "sydney_harbour": "⛴️"
+        case "neworleans_jazz": "🎺"
+        case "manchester_record": "💿"
+        case "kingston_studio": "🎙️"
         default: nil
         }
     }

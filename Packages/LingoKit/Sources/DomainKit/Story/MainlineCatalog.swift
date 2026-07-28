@@ -115,21 +115,21 @@ public enum MainlineCatalog {
             starterRegionID: "london",
             title: "旧书中的声音地图",
             characterOrder: [london, newYork, melbourne],
-            postStoryRegionIDs: ["dublin", "edinburgh", "lisbon", "reykjavik"]
+            postStoryRegionIDs: ["dublin", "edinburgh", "manchester", "toronto"]
         ),
         journey(
             id: "echoes-ruby",
             starterRegionID: "melbourne",
             title: "潮汐送来的声音地图",
             characterOrder: [melbourne, london, newYork],
-            postStoryRegionIDs: ["auckland", "tokyo", "vancouver", "nairobi"]
+            postStoryRegionIDs: ["auckland", "sydney", "vancouver", "nairobi"]
         ),
         journey(
             id: "echoes-marcus",
             starterRegionID: "newyork",
             title: "胶片里的声音地图",
             characterOrder: [newYork, melbourne, london],
-            postStoryRegionIDs: ["vancouver", "dublin", "tokyo", "lisbon"]
+            postStoryRegionIDs: ["neworleans", "kingston", "toronto", "manchester"]
         ),
     ]
 

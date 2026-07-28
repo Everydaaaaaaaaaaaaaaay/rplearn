@@ -79,22 +79,34 @@ public enum CityStoryCatalog {
             subtitle: "一场骤雨打乱路线，也让陌生人组成了小队"
         ),
         CityStoryChapter(
-            storyID: "city_reykjavik",
-            regionID: "reykjavik",
-            title: "热气里的天气预报",
-            subtitle: "在地热泳池里，听懂比天空变化更快的本地预报"
+            storyID: "city_toronto",
+            regionID: "toronto",
+            title: "地下城的方向暗号",
+            subtitle: "在 PATH 的岔路间，用清楚的问题带陌生人找到出口"
         ),
         CityStoryChapter(
-            storyID: "city_lisbon",
-            regionID: "lisbon",
-            title: "28 路电车的最后一站",
-            subtitle: "替一位老乘客完成没来得及说出口的告别"
+            storyID: "city_sydney",
+            regionID: "sydney",
+            title: "海风里的失物广播",
+            subtitle: "赶在渡轮离港前，用准确描述送回一本旅行笔记"
         ),
         CityStoryChapter(
-            storyID: "city_tokyo",
-            regionID: "tokyo",
-            title: "下北泽的 B 面",
-            subtitle: "在唱片店打烊前，找到一首没有名字的歌"
+            storyID: "city_neworleans",
+            regionID: "neworleans",
+            title: "爵士街角的下一小节",
+            subtitle: "先听懂乐手的邀请，再为临时演出接上新的节拍"
+        ),
+        CityStoryChapter(
+            storyID: "city_manchester",
+            regionID: "manchester",
+            title: "雨夜唱片的 A 面",
+            subtitle: "在北区唱片店打烊前，替一首无名录音找到线索"
+        ),
+        CityStoryChapter(
+            storyID: "city_kingston",
+            regionID: "kingston",
+            title: "录音棚里缺失的开场",
+            subtitle: "听懂金斯敦自己的语言节奏，为社区节目补上第一句话"
         ),
     ]
 

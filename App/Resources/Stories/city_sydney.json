@@ -1,0 +1,27 @@
+{
+  "id": "city_sydney",
+  "start": "n01",
+  "nodes": [
+    { "id": "n01", "type": "line", "speaker": "旁白", "text": "环形码头的海风把广播吹得断断续续。一艘开往曼利的渡轮即将离港，你在长椅下发现一本蓝色旅行笔记。", "bg": "sydney_harbour", "next": "n02" },
+    { "id": "n02", "type": "line", "speaker": "Tahlia", "text": "Someone must be looking for it. We have four minutes before the ferry leaves — what can we describe clearly?", "next": "c01" },
+    { "id": "c01", "type": "choice", "options": [
+      { "text": "「It's a small blue notebook with a ferry ticket inside.」", "next": "n03a", "setFlags": { "described_object": true } },
+      { "text": "「Someone lost a book.」", "next": "n03b" }
+    ] },
+    { "id": "n03a", "type": "line", "speaker": "Tahlia", "text": "Perfect. Colour, size, and one unique detail — that's enough for the announcement.", "next": "n04" },
+    { "id": "n03b", "type": "line", "speaker": "Tahlia", "text": "That could match a hundred things. Add the colour, size, and the ferry ticket inside.", "next": "n04" },
+    { "id": "n04", "type": "line", "speaker": "码头工作人员", "text": "We'll make one announcement. Do you know where and when you found it?", "next": "c02" },
+    { "id": "c02", "type": "choice", "options": [
+      { "text": "「Under the bench by Wharf 3, about two minutes ago.」", "next": "n05a", "setFlags": { "gave_context": true } },
+      { "text": "「Over there, just now.」", "next": "n05b" }
+    ] },
+    { "id": "n05a", "type": "line", "speaker": "码头工作人员", "text": "Clear and useful. I'll include the wharf number so the owner knows where to return.", "next": "n06" },
+    { "id": "n05b", "type": "line", "speaker": "码头工作人员", "text": "Let's make 'over there' more exact: under the bench by Wharf 3, two minutes ago.", "next": "n06" },
+    { "id": "n06", "type": "line", "speaker": "旁白", "text": "广播刚结束，一位背着相机的老人从登船队伍里跑回来。他准确说出了笔记本第一页画着一只白帆。", "next": "n07" },
+    { "id": "n07", "type": "line", "speaker": "老人", "text": "That's mine. It holds twenty years of harbour sketches. Thank you for describing it well enough to find me.", "next": "n08" },
+    { "id": "n08", "type": "line", "speaker": "Tahlia", "text": "Useful English is often simple: what it is, where it was, and the detail that makes it unmistakable.", "next": "r01" },
+    { "id": "r01", "type": "reward", "coins": 120, "next": "n09" },
+    { "id": "n09", "type": "line", "speaker": "旁白", "text": "【获得 120 金币】渡轮驶离码头，老人隔着船窗举起失而复得的笔记本。海港大桥在他身后缓缓缩小。", "next": "end" },
+    { "id": "end", "type": "end", "unlocks": [] }
+  ]
+}

@@ -64,7 +64,7 @@ struct StoryScriptTests {
     func bundledStoryScripts() throws {
         let storyIDs = MainlineCatalog.chapters.map(\.storyID)
             + CityStoryCatalog.chapters.map(\.storyID)
-        #expect(storyIDs.count == 18)
+        #expect(storyIDs.count == 20)
 
         for storyID in storyIDs {
             let url = try #require(Bundle.main.url(forResource: storyID, withExtension: "json"))

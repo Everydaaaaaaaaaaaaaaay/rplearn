@@ -58,7 +58,7 @@ struct MainlineCatalogTests {
             currentRegionID: "london",
             completedStoryIDs: ["mainline_london"],
             unlockedRegionIDs: ["london"],
-            availableSideRegionIDs: ["dublin", "tokyo"]
+            availableSideRegionIDs: ["dublin", "toronto"]
         )
         guard case .travel(_, _, _, let regionIDs) = guidance else {
             Issue.record("应引导前往下一座主线城市")
@@ -76,7 +76,9 @@ struct MainlineCatalogTests {
             currentRegionID: "dublin",
             completedStoryIDs: completed,
             unlockedRegionIDs: ["dublin", "edinburgh"],
-            availableSideRegionIDs: ["dublin", "edinburgh", "lisbon", "reykjavik", "tokyo"]
+            availableSideRegionIDs: [
+                "dublin", "edinburgh", "manchester", "toronto", "sydney",
+            ]
         )
         guard case .travel(_, _, _, let regionIDs) = guidance else {
             Issue.record("应推荐未解锁支线城市")
@@ -106,21 +108,21 @@ struct MainlineCatalogTests {
 
 @Suite("CityStoryCatalog")
 struct CityStoryCatalogTests {
-    @Test("十三座城市各有且仅有一篇城市剧情")
+    @Test("十五座城市各有且仅有一篇城市剧情")
     func everyCityHasOneStory() {
         let chapters = CityStoryCatalog.chapters
-        #expect(chapters.count == 13)
-        #expect(Set(chapters.map(\.storyID)).count == 13)
+        #expect(chapters.count == 15)
+        #expect(Set(chapters.map(\.storyID)).count == 15)
         #expect(Set(chapters.map(\.regionID)) == [
             "london", "melbourne", "newyork", "capetown", "singapore",
             "dublin", "edinburgh", "vancouver", "auckland", "nairobi",
-            "reykjavik", "lisbon", "tokyo",
+            "toronto", "sydney", "neworleans", "manchester", "kingston",
         ])
     }
 
     @Test("可按城市查找对应剧情")
     func lookupByRegion() {
-        #expect(CityStoryCatalog.chapter(forRegion: "tokyo")?.title == "下北泽的 B 面")
+        #expect(CityStoryCatalog.chapter(forRegion: "kingston")?.title == "录音棚里缺失的开场")
         #expect(CityStoryCatalog.chapter(forRegion: "unknown") == nil)
     }
 }

@@ -88,6 +88,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
     public var countryCode: String
     public var countryNameEn: String
     public var countryNameZh: String
+    public var learningLanguageCode: String
     public var role: RegionRole
     public var taglineZh: String
     public var landmarks: [String]
@@ -102,6 +103,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         countryCode: String,
         countryNameEn: String,
         countryNameZh: String,
+        learningLanguageCode: String = "en",
         role: RegionRole = .side,
         taglineZh: String,
         landmarks: [String],
@@ -115,6 +117,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         self.countryCode = countryCode
         self.countryNameEn = countryNameEn
         self.countryNameZh = countryNameZh
+        self.learningLanguageCode = learningLanguageCode
         self.role = role
         self.taglineZh = taglineZh
         self.landmarks = landmarks
@@ -130,6 +133,7 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         case countryCode
         case countryNameEn
         case countryNameZh
+        case learningLanguageCode
         case role
         case taglineZh
         case landmarks
@@ -146,6 +150,10 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
         countryCode = try container.decode(String.self, forKey: .countryCode)
         countryNameEn = try container.decode(String.self, forKey: .countryNameEn)
         countryNameZh = try container.decode(String.self, forKey: .countryNameZh)
+        learningLanguageCode = try container.decode(
+            String.self,
+            forKey: .learningLanguageCode
+        )
         role = try container.decodeIfPresent(RegionRole.self, forKey: .role) ?? .side
         taglineZh = try container.decode(String.self, forKey: .taglineZh)
         landmarks = try container.decode([String].self, forKey: .landmarks)
@@ -156,6 +164,8 @@ public struct Region: Sendable, Codable, Equatable, Identifiable {
 }
 
 public struct RegionCatalog: Sendable {
+    public static let supportedLearningLanguageCode = "en"
+
     public let regions: [Region]
     private let regionsByID: [String: Region]
 
@@ -170,8 +180,13 @@ public struct RegionCatalog: Sendable {
     }
 
     public init(regions: [Region]) {
-        self.regions = regions
-        self.regionsByID = Dictionary(uniqueKeysWithValues: regions.map { ($0.id, $0) })
+        let supportedRegions = regions.filter {
+            $0.learningLanguageCode == Self.supportedLearningLanguageCode
+        }
+        self.regions = supportedRegions
+        self.regionsByID = Dictionary(
+            uniqueKeysWithValues: supportedRegions.map { ($0.id, $0) }
+        )
     }
 
     public func region(id: String) -> Region? {
