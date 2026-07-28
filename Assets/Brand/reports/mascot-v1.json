@@ -1,0 +1,64 @@
+{
+  "batch": "coovingo-mascot-v1",
+  "assets": [
+    {
+      "id": "gugu_greeting",
+      "source_path": "/Users/haruhi/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_WpqvF4XX2weSXRQ31S5nIX90.png",
+      "raw_path": "Assets/Brand/raw/gugu_greeting.key.png",
+      "target_path": "App/Assets.xcassets/BrandMascotGreeting.imageset/brand_mascot_greeting.png",
+      "commands": [
+        "python /Users/haruhi/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_greeting.key.png --out Assets/Brand/raw/gugu_greeting.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+        "node scripts/artasset.mjs process Assets/Brand/raw/gugu_greeting.alpha.png App/Assets.xcassets/BrandMascotGreeting.imageset/brand_mascot_greeting.png --size 512x512 --fit contain --trim-alpha"
+      ],
+      "status": "accepted",
+      "notes": "透明边缘干净，身份锚点通过。"
+    },
+    {
+      "id": "gugu_guide",
+      "source_path": "/Users/haruhi/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_fKOnWhvnweCFnq8PHw2v76D5.png",
+      "raw_path": "Assets/Brand/raw/gugu_guide.key.png",
+      "target_path": "App/Assets.xcassets/BrandMascotGuide.imageset/brand_mascot_guide.png",
+      "commands": [
+        "python /Users/haruhi/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_guide.key.png --out Assets/Brand/raw/gugu_guide.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+        "node scripts/artasset.mjs process Assets/Brand/raw/gugu_guide.alpha.png App/Assets.xcassets/BrandMascotGuide.imageset/brand_mascot_guide.png --size 512x512 --fit contain --trim-alpha"
+      ],
+      "status": "accepted",
+      "notes": "指路姿态清晰，折叠地图无文字。"
+    },
+    {
+      "id": "gugu_coach",
+      "source_path": "/Users/haruhi/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_RGBVHWmTrQ6puL6z9SsCAj0h.png",
+      "raw_path": "Assets/Brand/raw/gugu_coach.key.png",
+      "target_path": "App/Assets.xcassets/BrandMascotCoach.imageset/brand_mascot_coach.png",
+      "commands": [
+        "python /Users/haruhi/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_coach.key.png --out Assets/Brand/raw/gugu_coach.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+        "node scripts/artasset.mjs process Assets/Brand/raw/gugu_coach.alpha.png App/Assets.xcassets/BrandMascotCoach.imageset/brand_mascot_coach.png --size 512x512 --fit contain --trim-alpha"
+      ],
+      "status": "accepted",
+      "notes": "笔记本空白，可在聊天建议卡重复使用。"
+    },
+    {
+      "id": "gugu_celebrate",
+      "source_path": "/Users/haruhi/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_LLRedCLpt1p4l8VKQJMAaPbn.png",
+      "raw_path": "Assets/Brand/raw/gugu_celebrate.key.png",
+      "target_path": "App/Assets.xcassets/BrandMascotCelebrate.imageset/brand_mascot_celebrate.png",
+      "commands": [
+        "python /Users/haruhi/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_celebrate.key.png --out Assets/Brand/raw/gugu_celebrate.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+        "node scripts/artasset.mjs process Assets/Brand/raw/gugu_celebrate.alpha.png App/Assets.xcassets/BrandMascotCelebrate.imageset/brand_mascot_celebrate.png --size 512x512 --fit contain --trim-alpha"
+      ],
+      "status": "accepted",
+      "notes": "未烘焙彩屑，动效由客户端负责。"
+    },
+    {
+      "id": "coovingo_app_icon",
+      "source_path": "/Users/haruhi/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_761WpV59XHC8yc82xl5tyBZU.png",
+      "raw_path": "Assets/Brand/raw/coovingo_app_icon.png",
+      "target_path": "App/Assets.xcassets/AppIcon.appiconset/icon_1024.png",
+      "commands": [
+        "node scripts/artasset.mjs process Assets/Brand/raw/coovingo_app_icon.png App/Assets.xcassets/AppIcon.appiconset/icon_1024.png --size 1024x1024 --fit cover"
+      ],
+      "status": "accepted",
+      "notes": "不含透明通道、圆角蒙版、文字或翻译符号。"
+    }
+  ]
+}
