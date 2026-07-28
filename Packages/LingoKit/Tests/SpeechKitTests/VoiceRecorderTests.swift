@@ -79,4 +79,45 @@ struct VoiceRecorderTests {
 
         #expect(abs(recorder.level - 0.42) < 0.001)
     }
+
+    @Test("录音启动失败后可在当前模式直接重试")
+    func retriesDirectlyAfterFailure() async {
+        enum TestError: Error {
+            case firstAttempt
+        }
+        final class Probe: @unchecked Sendable {
+            var startCaptureCount = 0
+        }
+
+        let probe = Probe()
+        let recorder = VoiceRecorder(
+            audioSession: AudioSessionCoordinator(),
+            permissionRequester: { _ in true },
+            captureStarter: { _ in
+                probe.startCaptureCount += 1
+                if probe.startCaptureCount == 1 {
+                    throw TestError.firstAttempt
+                }
+                return VoiceRecorder.StartedCapture(
+                    engine: nil,
+                    audioFile: nil,
+                    recognitionRequest: nil,
+                    recognitionTask: nil,
+                    fileName: nil
+                )
+            }
+        )
+
+        await recorder.startRecording()
+        guard case .failed = recorder.state else {
+            Issue.record("首次启动应进入失败态")
+            return
+        }
+
+        await recorder.startRecording()
+
+        #expect(probe.startCaptureCount == 2)
+        #expect(recorder.state == .recording(inCancelZone: false))
+        await recorder.cancelRecording()
+    }
 }

@@ -198,7 +198,15 @@ public final class VoiceRecorder {
     // MARK: - 录制
 
     public func startRecording() async {
-        guard state == .idle || state == .denied else { return }
+        switch state {
+        case .idle, .denied:
+            break
+        case .failed:
+            // 失败态本身就是一次新的录音入口，不要求用户切换输入模式来复位。
+            state = .idle
+        case .recording, .transcribing:
+            return
+        }
         guard await permissionRequester(self) else { return }
         guard !Task.isCancelled else {
             state = .idle

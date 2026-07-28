@@ -43,6 +43,31 @@ struct ConversationListProjectionTests {
         #expect(rows.first?.summary == summary)
     }
 
+    @Test("创建会话前后列表行 ID 保持稳定")
+    func rowIdentityStaysStableWhenConversationIsCreated() {
+        let friend = character(id: UUID(), name: "Oliver")
+        let placeholder = ConversationListProjection.rows(
+            friends: [friend],
+            summaries: []
+        ).first
+        let summary = ConversationSummaryDTO(
+            conversationID: UUID(),
+            characterID: friend.id,
+            characterName: friend.card.name,
+            avatarAssetName: friend.card.avatarAssetName,
+            lastMessageText: "",
+            lastMessageAt: .now
+        )
+        let conversation = ConversationListProjection.rows(
+            friends: [friend],
+            summaries: [summary]
+        ).first
+
+        #expect(placeholder?.id == friend.id)
+        #expect(conversation?.id == friend.id)
+        #expect(placeholder?.id == conversation?.id)
+    }
+
     private func character(id: UUID, name: String) -> CharacterDTO {
         CharacterDTO(
             id: id,

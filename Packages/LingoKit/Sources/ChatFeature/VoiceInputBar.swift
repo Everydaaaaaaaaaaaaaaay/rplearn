@@ -23,7 +23,32 @@ struct VoiceInputBar: View {
     }
 
     var body: some View {
-        Text(labelText)
+        if case .failed(let message) = recorder.state {
+            Button {
+                Haptics.selection()
+                recorder.resetFailure()
+            } label: {
+                barLabel(message)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(message)
+            .accessibilityHint("双击后可重新按住录音")
+        } else {
+            barLabel(labelText)
+                .gesture(pressGesture)
+                .accessibilityLabel("语音输入")
+                .accessibilityValue(labelText)
+                .accessibilityHint(isRecording ? "双击发送录音" : "双击开始录音")
+                .accessibilityAddTraits(.isButton)
+                .accessibilityAction { toggleAccessibleRecording() }
+                .accessibilityAction(named: "取消录音") {
+                    Task { await recorder.cancelRecording() }
+                }
+        }
+    }
+
+    private func barLabel(_ text: String) -> some View {
+        Text(text)
             .font(.body.weight(.medium))
             .frame(maxWidth: .infinity)
             .padding(.vertical, 10)
@@ -34,7 +59,7 @@ struct VoiceInputBar: View {
                 in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
             )
             .foregroundStyle(isRecording ? .white : .primary)
-            .gesture(pressGesture)
+            .contentShape(RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
             .overlay(alignment: .top) {
                 if isRecording {
                     recordingHUD
@@ -44,14 +69,6 @@ struct VoiceInputBar: View {
             .scaleEffect(isRecording ? 0.985 : 1)
             .animation(DSAnimation.feedback, value: isRecording)
             .animation(DSAnimation.feedback, value: inCancelZone)
-            .accessibilityLabel("语音输入")
-            .accessibilityValue(labelText)
-            .accessibilityHint(isRecording ? "双击发送录音" : "双击开始录音")
-            .accessibilityAddTraits(.isButton)
-            .accessibilityAction { toggleAccessibleRecording() }
-            .accessibilityAction(named: "取消录音") {
-                Task { await recorder.cancelRecording() }
-            }
     }
 
     private var labelText: String {

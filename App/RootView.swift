@@ -37,6 +37,7 @@ struct RootView: View {
     @State private var showVoiceUpgrade = false
     @State private var activeUserID: UUID?
     @State private var stateRevision = 0
+    @State private var shouldRefreshAfterBackground = false
     @Environment(\.scenePhase) private var scenePhase
 
     init(environment: AppEnvironment) {
@@ -103,7 +104,14 @@ struct RootView: View {
                 try? await UNUserNotificationCenter.current().setBadgeCount(unreadCount)
             }
             .onChange(of: scenePhase) { _, phase in
-                guard phase == .active else { return }
+                if phase == .background {
+                    shouldRefreshAfterBackground = true
+                    return
+                }
+                // 权限弹窗只会让应用短暂 inactive。此时刷新根列表既没有必要，
+                // 还可能重建当前 NavigationLink；只在真正进入后台后恢复时同步。
+                guard phase == .active, shouldRefreshAfterBackground else { return }
+                shouldRefreshAfterBackground = false
                 Task {
                     if case .signedIn(let identity) = environment.authSession.phase {
                         guard identity.userID == activeUserID else {

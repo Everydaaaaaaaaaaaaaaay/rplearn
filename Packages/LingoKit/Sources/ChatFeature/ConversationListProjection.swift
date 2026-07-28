@@ -6,9 +6,9 @@ struct ConversationListRow: Identifiable {
     let friendOrder: Int
     let summary: ConversationSummaryDTO?
 
-    var id: UUID {
-        summary?.conversationID ?? character.id
-    }
+    /// 导航入口必须跨“尚未开聊 → 创建会话”保持稳定，否则后台列表刷新会让
+    /// NavigationLink 的来源行换 ID，并可能把正在展示的聊天页弹回列表。
+    var id: UUID { character.id }
 }
 
 enum ConversationListProjection {
