@@ -2,11 +2,19 @@ import CoreKit
 import DesignSystem
 import DictKit
 import DomainKit
+import Foundation
 import LLMKit
 import PersistenceKit
 import SpeechKit
 import SwiftUI
 import Translation
+
+public extension Notification.Name {
+    /// 用户在本次聊天中实际播放过 TTS，并已退出聊天页。
+    static let chatDidExitAfterSpeechPlayback = Notification.Name(
+        "LingoTripChatDidExitAfterSpeechPlayback"
+    )
+}
 
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
@@ -24,6 +32,7 @@ public struct ChatView: View {
     @State private var shakingMessageID: UUID?
     @State private var shakePhase = false
     @State private var isMascotPromptDismissed = false
+    @State private var didBeginSpeechPlayback = false
     @FocusState private var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
@@ -96,8 +105,14 @@ public struct ChatView: View {
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in
+            didBeginSpeechPlayback = true
+        }
         .onDisappear {
             markVisibleConversationRead()
+            guard didBeginSpeechPlayback else { return }
+            didBeginSpeechPlayback = false
+            NotificationCenter.default.post(name: .chatDidExitAfterSpeechPlayback, object: nil)
         }
         .dsTabBarHidden()
     }

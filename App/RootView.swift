@@ -42,6 +42,7 @@ struct RootView: View {
     @State private var activeUserID: UUID?
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
+    @State private var isInitialContentReady = false
     @Environment(\.scenePhase) private var scenePhase
 
     init(environment: AppEnvironment) {
@@ -87,6 +88,13 @@ struct RootView: View {
 
     var body: some View {
         appContent
+            .overlay {
+                if !isInitialContentReady {
+                    Color("BrandLaunchBackground")
+                        .ignoresSafeArea()
+                        .accessibilityHidden(true)
+                }
+            }
             .sheet(isPresented: $showSignIn) {
                 NavigationStack {
                     SignInView(session: environment.authSession)
@@ -102,6 +110,9 @@ struct RootView: View {
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
                 await reloadUnreadCount()
+                if environment.needsOnboarding != nil, selectedTab != .home {
+                    isInitialContentReady = true
+                }
                 await refreshProactiveMessagesAfterInterfaceSettles(
                     requestAuthorization: true
                 )
@@ -190,6 +201,7 @@ struct RootView: View {
                 stateRevision += 1
             } catch {
                 Log.app.error("本地旅程载入失败：\(error)")
+                isInitialContentReady = true
             }
         case .signedIn(let identity):
             showSignIn = false
@@ -212,6 +224,7 @@ struct RootView: View {
                     stateRevision += 1
                 } catch {
                     Log.app.error("游客空间回退失败：\(error)")
+                    isInitialContentReady = true
                 }
             }
         }
@@ -262,7 +275,7 @@ struct RootView: View {
                     onNeverRemind: { suppressVoicePrompt = true }
                 )
             }
-            .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in
+            .onReceive(NotificationCenter.default.publisher(for: .chatDidExitAfterSpeechPlayback)) { _ in
                 maybePromptVoiceUpgrade()
             }
     }
@@ -302,6 +315,10 @@ struct RootView: View {
                 chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
                 onOpenMessages: {
                     selectedTab = .messages
+                },
+                onInitialLoad: {
+                    guard environment.needsOnboarding == false else { return }
+                    isInitialContentReady = true
                 }
             )
             .navigationDestination(for: MainlineChapter.self) { chapter in

@@ -10,6 +10,7 @@ public struct HomeView: View {
     private let reloadToken: Int
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
     private let onOpenMessages: @MainActor () -> Void
+    private let onInitialLoad: @MainActor () -> Void
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.verticalSizeClass) private var verticalSizeClass
@@ -26,12 +27,14 @@ public struct HomeView: View {
         deps: HomeDependencies,
         reloadToken: Int = 0,
         chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
-        onOpenMessages: @escaping @MainActor () -> Void
+        onOpenMessages: @escaping @MainActor () -> Void,
+        onInitialLoad: @escaping @MainActor () -> Void = {}
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
         self.chatBuilder = chatBuilder
         self.onOpenMessages = onOpenMessages
+        self.onInitialLoad = onInitialLoad
     }
 
     private var currentRegion: Region? {
@@ -110,8 +113,9 @@ public struct HomeView: View {
         if let region = currentRegion {
             HomeStatusBar(region: region, profile: profile)
         } else {
-            ProgressView()
+            Color.clear
                 .frame(maxWidth: .infinity, minHeight: 52)
+                .accessibilityHidden(true)
         }
     }
 
@@ -338,6 +342,7 @@ public struct HomeView: View {
         withAnimation(reduceMotion ? nil : DSAnimation.celebration) {
             showsFirstStoryGuide = shouldShowGuide
         }
+        onInitialLoad()
     }
 
     private func dismissFirstStoryGuide() {

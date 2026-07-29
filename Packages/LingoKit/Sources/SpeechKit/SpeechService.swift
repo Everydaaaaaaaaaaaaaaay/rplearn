@@ -3,8 +3,19 @@ import CoreKit
 import Foundation
 
 public extension Notification.Name {
-    /// 用户实际开始一次语音播放；用于在首次使用时展示音质升级引导。
+    /// AVSpeechSynthesizer 实际开始一次语音播放。
     static let speechPlaybackDidBegin = Notification.Name("LingoTripSpeechPlaybackDidBegin")
+}
+
+private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
+    func speechSynthesizer(
+        _ synthesizer: AVSpeechSynthesizer,
+        didStart utterance: AVSpeechUtterance
+    ) {
+        Task { @MainActor in
+            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+        }
+    }
 }
 
 /// 语音朗读服务。隐藏在协议后，未来可换云端 TTS。
@@ -26,11 +37,17 @@ extension SpeechService {
 
 /// Apple 本地 TTS：AVSpeechSynthesizer，按口音选择最高质量 voice。
 public actor AppleTTSService: SpeechService {
-    private let synthesizer = AVSpeechSynthesizer()
+    private let synthesizer: AVSpeechSynthesizer
+    private let delegateBox: SpeechPlaybackDelegateBox
     private let audioSession: AudioSessionCoordinator
     private var voiceCache: [String: AVSpeechSynthesisVoice] = [:]
 
     public init(audioSession: AudioSessionCoordinator) {
+        let synthesizer = AVSpeechSynthesizer()
+        let delegateBox = SpeechPlaybackDelegateBox()
+        synthesizer.delegate = delegateBox
+        self.synthesizer = synthesizer
+        self.delegateBox = delegateBox
         self.audioSession = audioSession
     }
 
@@ -45,9 +62,6 @@ public actor AppleTTSService: SpeechService {
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
         utterance.postUtteranceDelay = 0.1
         synthesizer.speak(utterance)
-        await MainActor.run {
-            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
-        }
     }
 
     public func stopSpeaking() async {
@@ -175,12 +189,12 @@ public enum VoiceUpgradePromptPolicy {
         isSuppressed: Bool,
         hasPresented: Bool,
         isOnboarding: Bool,
-        quality: VoiceReport.Quality
+        quality: @autoclosure () -> VoiceReport.Quality
     ) -> Bool {
         !isSuppressed
             && !hasPresented
             && !isOnboarding
-            && !quality.isNatural
+            && !quality().isNatural
     }
 }
 
