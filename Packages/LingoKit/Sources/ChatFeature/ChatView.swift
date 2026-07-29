@@ -49,6 +49,8 @@ public struct ChatView: View {
             messageList
             inputBar
         }
+        .contentShape(Rectangle())
+        .simultaneousGesture(keyboardDismissGesture)
         .background(Color.dsBackground)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -164,7 +166,8 @@ public struct ChatView: View {
                 .padding(.vertical, 10)
             }
             .defaultScrollAnchor(.bottom)
-            .scrollDismissesKeyboard(.interactively)
+            .scrollBounceBehavior(.always)
+            .scrollDismissesKeyboard(.immediately)
             .background(Color.dsBackground)
             .onChange(of: viewModel.streamingText) {
                 proxy.scrollTo("streaming", anchor: .bottom)
@@ -175,6 +178,14 @@ public struct ChatView: View {
                 }
             }
         }
+    }
+
+    private var keyboardDismissGesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                guard isTextInputFocused, value.translation.height > 0 else { return }
+                isTextInputFocused = false
+            }
     }
 
     private func messageTopSpacing(at index: Int) -> CGFloat {
