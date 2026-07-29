@@ -45,12 +45,12 @@ public struct ChatView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 0) {
-            messageList
+        messageList
+        // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
+        // 而不是覆盖输入栏或当前可见消息。
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             inputBar
         }
-        .contentShape(Rectangle())
-        .simultaneousGesture(keyboardDismissGesture)
         .background(Color.dsBackground)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -166,8 +166,12 @@ public struct ChatView: View {
                 .padding(.vertical, 10)
             }
             .defaultScrollAnchor(.bottom)
+            .defaultScrollAnchor(.bottom, for: .sizeChanges)
             .scrollBounceBehavior(.always)
-            .scrollDismissesKeyboard(.immediately)
+            .scrollDismissesKeyboard(.interactively)
+            // 短会话没有足够滚动范围时，系统的交互式收起不会开始；
+            // 兜底手势仅挂在消息区，避免与输入框争抢首触。
+            .simultaneousGesture(messageListKeyboardDismissGesture)
             .background(Color.dsBackground)
             .onChange(of: viewModel.streamingText) {
                 proxy.scrollTo("streaming", anchor: .bottom)
@@ -180,7 +184,7 @@ public struct ChatView: View {
         }
     }
 
-    private var keyboardDismissGesture: some Gesture {
+    private var messageListKeyboardDismissGesture: some Gesture {
         DragGesture()
             .onChanged { value in
                 guard isTextInputFocused, value.translation.height > 0 else { return }
