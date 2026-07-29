@@ -132,7 +132,7 @@ public struct HomeView: View {
 
             if recentRows.isEmpty {
                 VStack(spacing: DSSpacing.xs) {
-                    Image(systemName: "bubble.left.and.sparkles")
+                    Image(systemName: "bubble.left.and.bubble.right")
                         .font(.title2)
                         .foregroundStyle(Color.dsSky)
                     Text("认识新朋友后，聊天会出现在这里")
