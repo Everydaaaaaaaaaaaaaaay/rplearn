@@ -17,7 +17,7 @@ struct FlightPresentation: Identifiable {
 struct FlightTransitionOverlay: View {
     let presentation: FlightPresentation
     let regionCatalog: RegionCatalog
-    let onComplete: () -> Void
+    let onComplete: @MainActor () -> Void
 
     var body: some View {
         DSFlightTransitionView(
@@ -27,7 +27,7 @@ struct FlightTransitionOverlay: View {
                 ? "正在签发首次抵达纪念票根"
                 : "自由往返 · 不产生新票根",
             statusIcon: presentation.isFirstArrival ? "rosette" : "arrow.left.arrow.right",
-            autoCompletionDelay: presentation.isFirstArrival ? nil : .milliseconds(850),
+            autoCompletionDelay: presentation.isFirstArrival ? nil : .milliseconds(1_100),
             holdsOnArrival: holdsArrivalForUITest,
             celebratesOnArrival: presentation.isFirstArrival,
             onComplete: onComplete
@@ -41,6 +41,8 @@ struct FlightTransitionOverlay: View {
         if let stub = presentation.ticketStub {
             VStack(spacing: DSSpacing.md) {
                 Spacer()
+
+                BrandMascotView(pose: .celebrate, size: 76)
 
                 VStack(spacing: 3) {
                     Text("城市收藏 +1")
@@ -81,9 +83,7 @@ struct FlightTransitionOverlay: View {
         } else {
             VStack(spacing: DSSpacing.md) {
                 Spacer()
-                Image(systemName: "checkmark.seal.fill")
-                    .font(.system(size: 58))
-                    .foregroundStyle(.white)
+                BrandMascotView(pose: .celebrate, size: 92)
                 Text("欢迎回到 \(presentation.toName)")
                     .font(.system(.largeTitle, design: .rounded, weight: .black))
                     .multilineTextAlignment(.center)
