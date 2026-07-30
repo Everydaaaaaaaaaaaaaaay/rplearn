@@ -415,7 +415,8 @@ struct RootView: View {
                     withExtension: "json"
                 )!,
                 economyStore: environment.economyStore,
-                profileCommands: profileCommands
+                profileCommands: profileCommands,
+                speech: environment.speech
             ),
             onComplete: { updated in
                 Task {

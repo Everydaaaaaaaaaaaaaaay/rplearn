@@ -2,6 +2,7 @@
   {
     "id": "v01",
     "skill": "vocabulary",
+    "format": "wordMeaning",
     "prompt": "Which word is a color?",
     "context": null,
     "options": ["blue", "table", "run", "milk"],
@@ -13,6 +14,7 @@
   {
     "id": "v02",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "I am very ____ after the long walk.",
     "context": null,
     "options": ["tired", "early", "clean", "cheap"],
@@ -24,6 +26,7 @@
   {
     "id": "v03",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "Can I ____ your pen for a minute?",
     "context": null,
     "options": ["borrow", "lend", "own", "bring"],
@@ -35,6 +38,7 @@
   {
     "id": "v04",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "The train was so ____ that we had to stand.",
     "context": null,
     "options": ["crowded", "private", "silent", "ancient"],
@@ -46,6 +50,7 @@
   {
     "id": "v05",
     "skill": "vocabulary",
+    "format": "wordMeaning",
     "prompt": "We need a ____ person who always does what they promise.",
     "context": null,
     "options": ["reliable", "nervous", "ordinary", "curious"],
@@ -57,6 +62,7 @@
   {
     "id": "v06",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "Nina was ____ to speak first, so she waited for someone else.",
     "context": null,
     "options": ["reluctant", "eager", "certain", "prepared"],
@@ -68,6 +74,7 @@
   {
     "id": "v07",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "The charity needs regular support to ____ its work.",
     "context": null,
     "options": ["sustain", "scatter", "interrupt", "predict"],
@@ -79,6 +86,7 @@
   {
     "id": "v08",
     "skill": "vocabulary",
+    "format": "wordMeaning",
     "prompt": "The two designs look similar, but there are ____ differences.",
     "context": null,
     "options": ["subtle", "urgent", "steady", "random"],
@@ -90,6 +98,7 @@
   {
     "id": "v09",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "Her evidence was so ____ that the committee changed its decision.",
     "context": null,
     "options": ["compelling", "flexible", "temporary", "familiar"],
@@ -101,6 +110,7 @@
   {
     "id": "v10",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "Planting trees can help ____ the effects of extreme heat.",
     "context": null,
     "options": ["mitigate", "imitate", "justify", "trigger"],
@@ -112,6 +122,7 @@
   {
     "id": "v11",
     "skill": "vocabulary",
+    "format": "wordMeaning",
     "prompt": "Smartphones have become ____ in modern city life.",
     "context": null,
     "options": ["ubiquitous", "obsolete", "scarce", "optional"],
@@ -123,6 +134,7 @@
   {
     "id": "v12",
     "skill": "vocabulary",
+    "format": "wordInContext",
     "prompt": "The minister's ____ reply could be interpreted in two different ways.",
     "context": null,
     "options": ["equivocal", "explicit", "coherent", "spontaneous"],
@@ -134,6 +146,7 @@
   {
     "id": "g01",
     "skill": "grammar",
+    "format": "grammarForm",
     "prompt": "My brother ____ ten years old.",
     "context": null,
     "options": ["is", "are", "am", "be"],
@@ -145,6 +158,7 @@
   {
     "id": "g02",
     "skill": "grammar",
+    "format": "grammarInContext",
     "prompt": "We ____ a film last night.",
     "context": null,
     "options": ["watched", "watch", "are watching", "have watch"],
@@ -156,6 +170,7 @@
   {
     "id": "g03",
     "skill": "grammar",
+    "format": "grammarForm",
     "prompt": "I have lived here ____ 2022.",
     "context": null,
     "options": ["since", "for", "during", "until"],
@@ -167,6 +182,7 @@
   {
     "id": "g04",
     "skill": "grammar",
+    "format": "grammarInContext",
     "prompt": "If it rains tomorrow, we ____ at home.",
     "context": null,
     "options": ["will stay", "stayed", "would stay", "have stayed"],
@@ -178,6 +194,7 @@
   {
     "id": "g05",
     "skill": "grammar",
+    "format": "grammarForm",
     "prompt": "The woman ____ helped me works at the station.",
     "context": null,
     "options": ["who", "which", "where", "whose"],
@@ -189,6 +206,7 @@
   {
     "id": "g06",
     "skill": "grammar",
+    "format": "grammarInContext",
     "prompt": "I don't mind ____ a little longer.",
     "context": null,
     "options": ["waiting", "to wait", "wait", "waited"],
@@ -200,6 +218,7 @@
   {
     "id": "g07",
     "skill": "grammar",
+    "format": "grammarForm",
     "prompt": "By the time we arrived, the concert ____.",
     "context": null,
     "options": ["had started", "has started", "starts", "would start"],
@@ -211,6 +230,7 @@
   {
     "id": "g08",
     "skill": "grammar",
+    "format": "grammarInContext",
     "prompt": "If I had taken that course, I ____ more confident now.",
     "context": null,
     "options": ["would feel", "will feel", "would have felt", "felt"],
@@ -222,6 +242,7 @@
   {
     "id": "g09",
     "skill": "grammar",
+    "format": "grammarForm",
     "prompt": "Not only ____ late, but he also forgot the tickets.",
     "context": null,
     "options": ["did he arrive", "he arrived", "he did arrive", "arrived he"],
@@ -233,6 +254,7 @@
   {
     "id": "g10",
     "skill": "grammar",
+    "format": "grammarInContext",
     "prompt": "The committee recommended that the proposal ____ revised.",
     "context": null,
     "options": ["be", "is", "was", "being"],
@@ -244,6 +266,7 @@
   {
     "id": "g11",
     "skill": "grammar",
+    "format": "grammarForm",
     "prompt": "____ by the sudden change, the team asked for more time.",
     "context": null,
     "options": ["Caught off guard", "Catching off guard", "To catch off guard", "Having catch off guard"],
@@ -255,6 +278,7 @@
   {
     "id": "g12",
     "skill": "grammar",
+    "format": "grammarInContext",
     "prompt": "You ____ all that food; only three guests came.",
     "context": null,
     "options": ["needn't have prepared", "mustn't prepare", "didn't need prepare", "couldn't have prepared"],
@@ -266,6 +290,7 @@
   {
     "id": "r01",
     "skill": "reading",
+    "format": "noticeReading",
     "prompt": "What should visitors do?",
     "context": "Museum sign: Please leave wet umbrellas by the door.",
     "options": ["Put umbrellas near the entrance", "Carry umbrellas inside", "Buy a new umbrella", "Wait outside until closing"],
@@ -277,6 +302,7 @@
   {
     "id": "r02",
     "skill": "reading",
+    "format": "readingDetail",
     "prompt": "Why is Ben writing?",
     "context": "Hi Sara, the bus is slow today. I'll meet you at the café at 3:15, not 3:00. — Ben",
     "options": ["He will arrive later", "He changed the café", "He missed Sara's message", "He wants Sara to take the bus"],
@@ -288,6 +314,7 @@
   {
     "id": "r03",
     "skill": "reading",
+    "format": "readingDetail",
     "prompt": "When can Maya collect the book?",
     "context": "The book you ordered will be ready after lunch on Tuesday. The shop closes at six.",
     "options": ["Tuesday afternoon", "Tuesday morning", "Monday evening", "Wednesday after six"],
@@ -299,6 +326,7 @@
   {
     "id": "r04",
     "skill": "reading",
+    "format": "readingDetail",
     "prompt": "What does Amir want Julia to do?",
     "context": "Julia, I can't join the project call, but my notes are in the shared folder. Could you mention the budget concern for me?",
     "options": ["Raise an issue during the call", "Move the notes to another folder", "Cancel the project call", "Prepare a new budget alone"],
@@ -310,6 +338,7 @@
   {
     "id": "r05",
     "skill": "reading",
+    "format": "readingMainIdea",
     "prompt": "Why did the café change its menu?",
     "context": "After several customers asked for lighter lunches, the café added soups and smaller sandwiches. Sales rose within a month.",
     "options": ["To respond to customer requests", "To reduce its opening hours", "To copy a nearby restaurant", "To use fewer local ingredients"],
@@ -321,6 +350,7 @@
   {
     "id": "r06",
     "skill": "reading",
+    "format": "readingMainIdea",
     "prompt": "What is the main point of the text?",
     "context": "Working from home saves Maya two hours of travel each day. However, she misses quick conversations with colleagues, so she now works in the office every Thursday.",
     "options": ["Maya balances convenience with social contact", "Maya plans to leave her job soon", "Maya finds office travel enjoyable", "Maya works at home only on Thursdays"],
@@ -332,6 +362,7 @@
   {
     "id": "r07",
     "skill": "reading",
+    "format": "readingInference",
     "prompt": "How does the reviewer feel about the film?",
     "context": "The story takes a while to find its direction, but once it does, the quiet performances make the final scenes surprisingly moving.",
     "options": ["Positive despite a slow beginning", "Disappointed by the acting", "Confused by the ending", "Completely uninterested"],
@@ -343,6 +374,7 @@
   {
     "id": "r08",
     "skill": "reading",
+    "format": "readingInference",
     "prompt": "What can be inferred about the manager?",
     "context": "When the first plan failed, Elena did not look for someone to blame. She asked the team what they had learned and gave them two days to design a new approach.",
     "options": ["She treats failure as a chance to improve", "She avoids making difficult decisions", "She prefers to work without a team", "She believes the original plan was successful"],
@@ -354,6 +386,7 @@
   {
     "id": "r09",
     "skill": "reading",
+    "format": "readingMainIdea",
     "prompt": "Which claim best summarizes the writer's argument?",
     "context": "City parks are often judged by how tidy they look. Yet leaving a few areas of long grass creates shelter for insects and birds. A park can appear less controlled while becoming more ecologically valuable.",
     "options": ["A less tidy park may support more wildlife", "All city parks should remove their paths", "People dislike seeing birds in urban areas", "Long grass always costs less to maintain"],
@@ -365,6 +398,7 @@
   {
     "id": "r10",
     "skill": "reading",
+    "format": "readingInference",
     "prompt": "What assumption is the proposal based on?",
     "context": "The library proposes staying open two hours later during exams. It expects the change to reduce crowding in the afternoon without adding more desks.",
     "options": ["Some students will choose to study later", "Students no longer need printed books", "The library is empty during exams", "New desks are cheaper than longer hours"],
@@ -376,6 +410,7 @@
   {
     "id": "r11",
     "skill": "reading",
+    "format": "readingInference",
     "prompt": "What does the writer imply about efficiency?",
     "context": "A faster process is not automatically a better one. When staff stopped checking unusual applications by hand, decisions arrived sooner, but the number of successful appeals doubled.",
     "options": ["Speed can hide a decline in decision quality", "Manual checks always eliminate mistakes", "Appeals make applications faster", "Unusual applications should be rejected"],
@@ -387,6 +422,7 @@
   {
     "id": "r12",
     "skill": "reading",
+    "format": "readingMainIdea",
     "prompt": "Which description best captures the writer's position?",
     "context": "Calls to 'trust the data' sound sensible, but data do not select or explain themselves. The categories chosen, the cases excluded, and the questions never asked all shape what a dataset can appear to prove.",
     "options": ["Data require critical interpretation", "Numerical evidence should be ignored", "Large datasets are always misleading", "Categories have no effect on conclusions"],
@@ -394,5 +430,161 @@
     "difficulty": 2.45,
     "discrimination": 1.4,
     "explanationZh": "作者并非否定数据，而是强调数据的选择与解释需要批判性审视。"
+  },
+  {
+    "id": "l01",
+    "skill": "listening",
+    "format": "listeningDetail",
+    "prompt": "What time does the train leave?",
+    "audioText": "The train to Oxford leaves at half past nine.",
+    "audioLanguage": "en-GB",
+    "options": ["9:30", "8:30", "9:15", "10:30"],
+    "correctIndex": 0,
+    "difficulty": -2.6,
+    "discrimination": 1.05,
+    "explanationZh": "half past nine 表示九点半。"
+  },
+  {
+    "id": "l02",
+    "skill": "listening",
+    "format": "listeningDetail",
+    "prompt": "What is the speaker buying?",
+    "audioText": "Could I have two tickets to Brighton, please?",
+    "audioLanguage": "en-GB",
+    "options": ["Train tickets", "Cinema tickets", "Two drinks", "A travel guide"],
+    "correctIndex": 0,
+    "difficulty": -2.15,
+    "discrimination": 1.15,
+    "explanationZh": "说话者要买两张去 Brighton 的票。"
+  },
+  {
+    "id": "l03",
+    "skill": "listening",
+    "format": "listeningDetail",
+    "prompt": "Why will the speaker be late?",
+    "audioText": "Hi Mia, traffic is moving very slowly, so I will be about fifteen minutes late.",
+    "audioLanguage": "en-US",
+    "options": ["The traffic is slow", "The meeting changed rooms", "The bus was cancelled", "The speaker forgot the time"],
+    "correctIndex": 0,
+    "difficulty": -1.7,
+    "discrimination": 1.25,
+    "explanationZh": "说话者明确说明交通缓慢导致迟到。"
+  },
+  {
+    "id": "l04",
+    "skill": "listening",
+    "format": "listeningMainIdea",
+    "prompt": "What is the speaker mainly doing?",
+    "audioText": "It may rain this afternoon, so take a jacket and we can move the picnic inside if we need to.",
+    "audioLanguage": "en-AU",
+    "options": ["Suggesting a backup plan", "Cancelling the picnic now", "Asking someone to buy food", "Describing yesterday's weather"],
+    "correctIndex": 0,
+    "difficulty": -1.25,
+    "discrimination": 1.3,
+    "explanationZh": "说话者建议带外套，并准备在下雨时转移到室内。"
+  },
+  {
+    "id": "l05",
+    "skill": "listening",
+    "format": "listeningInference",
+    "prompt": "What does the speaker want Alex to do?",
+    "audioText": "Alex, the kitchen light is still on. Are you going downstairs before bed?",
+    "audioLanguage": "en-US",
+    "options": ["Turn off the light", "Make some food", "Stay downstairs", "Go to bed later"],
+    "correctIndex": 0,
+    "difficulty": -0.8,
+    "discrimination": 1.35,
+    "explanationZh": "说话者用间接方式提醒 Alex 下楼关灯。"
+  },
+  {
+    "id": "l06",
+    "skill": "listening",
+    "format": "listeningMainIdea",
+    "prompt": "What is the main point of the message?",
+    "audioText": "The workshop is full, but leave your email with us. We often get a few cancellations during the week.",
+    "audioLanguage": "en-GB",
+    "options": ["A place may become available", "The workshop has been cancelled", "Email is required during the workshop", "A second workshop starts this week"],
+    "correctIndex": 0,
+    "difficulty": -0.35,
+    "discrimination": 1.4,
+    "explanationZh": "虽然已满，但有人可能取消，因此仍有候补机会。"
+  },
+  {
+    "id": "l07",
+    "skill": "listening",
+    "format": "listeningInference",
+    "prompt": "How does the speaker feel about the restaurant?",
+    "audioText": "The food was excellent, although next time I would book an earlier table because the service became slow after eight.",
+    "audioLanguage": "en-AU",
+    "options": ["Positive overall with one reservation", "Completely disappointed", "Surprised by the low prices", "Unhappy with the food"],
+    "correctIndex": 0,
+    "difficulty": 0.1,
+    "discrimination": 1.45,
+    "explanationZh": "说话者肯定食物，只对晚间服务速度有所保留。"
+  },
+  {
+    "id": "l08",
+    "skill": "listening",
+    "format": "listeningDetail",
+    "prompt": "What changed about the project?",
+    "audioText": "We still need the first draft on Friday, but the client has agreed that the design samples can wait until Monday.",
+    "audioLanguage": "en-US",
+    "options": ["The design samples are due later", "The first draft is due Monday", "The client cancelled the samples", "Everything is now due Friday"],
+    "correctIndex": 0,
+    "difficulty": 0.55,
+    "discrimination": 1.5,
+    "explanationZh": "初稿期限不变，设计样稿被允许推迟到周一。"
+  },
+  {
+    "id": "l09",
+    "skill": "listening",
+    "format": "listeningMainIdea",
+    "prompt": "Which statement best summarizes the speaker's view?",
+    "audioText": "Remote meetings save travel time, but difficult decisions are often easier when everyone is in the same room. We should choose the format to suit the task.",
+    "audioLanguage": "en-GB",
+    "options": ["Meeting formats should depend on their purpose", "Remote meetings are always more efficient", "Travel time is not important", "All difficult decisions should be delayed"],
+    "correctIndex": 0,
+    "difficulty": 1.0,
+    "discrimination": 1.5,
+    "explanationZh": "说话者没有绝对支持某种形式，而是主张按任务选择。"
+  },
+  {
+    "id": "l10",
+    "skill": "listening",
+    "format": "listeningInference",
+    "prompt": "What is the speaker implying?",
+    "audioText": "Jordan's proposal is certainly ambitious. I only wish it explained who would do the extra work without increasing the budget.",
+    "audioLanguage": "en-US",
+    "options": ["The proposal may not be practical", "The budget has already increased", "Jordan should make the proposal more ambitious", "The extra work is unnecessary"],
+    "correctIndex": 0,
+    "difficulty": 1.45,
+    "discrimination": 1.5,
+    "explanationZh": "说话者以委婉方式质疑方案在人力和预算上的可行性。"
+  },
+  {
+    "id": "l11",
+    "skill": "listening",
+    "format": "listeningInference",
+    "prompt": "Why does the speaker mention the empty desks?",
+    "audioText": "Management says the new office encourages collaboration. Yet most afternoons, the shared tables are empty while people search for somewhere quiet to concentrate.",
+    "audioLanguage": "en-AU",
+    "options": ["To challenge management's claim", "To praise the office design", "To request more shared tables", "To show that staff leave work early"],
+    "correctIndex": 0,
+    "difficulty": 1.9,
+    "discrimination": 1.45,
+    "explanationZh": "空桌与员工寻找安静空间的事实，被用来反驳管理层的协作主张。"
+  },
+  {
+    "id": "l12",
+    "skill": "listening",
+    "format": "listeningMainIdea",
+    "prompt": "Which description best captures the speaker's position?",
+    "audioText": "Calling the policy simple does not make its effects simple. A rule that treats every case identically may look fair while placing very different burdens on different people.",
+    "audioLanguage": "en-GB",
+    "options": ["Uniform rules can have unequal effects", "Simple policies are always fair", "Individual cases should never affect policy", "Complex rules create identical burdens"],
+    "correctIndex": 0,
+    "difficulty": 2.4,
+    "discrimination": 1.4,
+    "explanationZh": "说话者强调形式上一致的规则可能造成实质上不平等的影响。"
   }
 ]

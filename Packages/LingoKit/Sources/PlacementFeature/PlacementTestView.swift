@@ -2,25 +2,30 @@ import CoreKit
 import DesignSystem
 import DomainKit
 import PersistenceKit
+import SpeechKit
 import SwiftUI
 
 public struct PlacementDependencies: Sendable {
     public let questionBankURL: URL
     public let economyStore: EconomyStore
     public let profileCommands: any ProfileCommandGateway
+    public let speech: any SpeechService
 
     public init(
         questionBankURL: URL,
         economyStore: EconomyStore,
-        profileCommands: any ProfileCommandGateway
+        profileCommands: any ProfileCommandGateway,
+        speech: any SpeechService
     ) {
         self.questionBankURL = questionBankURL
         self.economyStore = economyStore
         self.profileCommands = profileCommands
+        self.speech = speech
     }
 }
 
-/// 8–12 题自适应校准。测评过程中不显示对错、不允许回退，避免后续答案被提示影响。
+/// 通常 8–10 题、最多 12 题的自适应校准。
+/// 测评过程中不显示对错、不允许回退，避免后续答案被提示影响。
 public struct PlacementTestView: View {
     private enum Phase {
         case loading
@@ -40,6 +45,7 @@ public struct PlacementTestView: View {
     @State private var currentQuestion: PlacementQuestion?
     @State private var optionOrder: [Int] = []
     @State private var selectedOriginalIndex: Int?
+    @State private var listeningPlayCount = 0
     @State private var result: PlacementResult?
     @State private var isApplying = false
     @State private var errorMessage: String?
@@ -84,6 +90,9 @@ public struct PlacementTestView: View {
             }
         }
         .task { await prepareIfNeeded() }
+        .onDisappear {
+            Task { await deps.speech.stopSpeaking() }
+        }
         .interactiveDismissDisabled(phase == .question || isApplying)
     }
 
@@ -148,13 +157,13 @@ public struct PlacementTestView: View {
                     informationRow(
                         icon: "slider.horizontal.3",
                         title: "自适应题量",
-                        detail: "通常 8–12 题，约 3–5 分钟"
+                        detail: "通常 8–10 题，最多 12 题，约 3 分钟"
                     )
                     Divider().padding(.leading, 50)
                     informationRow(
-                        icon: "text.book.closed",
-                        title: "三类能力",
-                        detail: "词汇、语法与用法、短篇阅读"
+                        icon: "headphones",
+                        title: "四类能力，多种题型",
+                        detail: "词汇、语法与用法、阅读、听力"
                     )
                     Divider().padding(.leading, 50)
                     informationRow(
@@ -192,12 +201,14 @@ public struct PlacementTestView: View {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 6) {
                     ProgressView(
-                        value: Double(engine.responses.count + 1),
-                        total: Double(AdaptivePlacementEngine.maximumQuestionCount)
+                        value: engine.measurementProgress
                     )
                     .tint(.dsSky)
                     HStack {
-                        Label(question.skill.displayName, systemImage: skillIcon(question.skill))
+                        Label(
+                            "\(question.skill.displayName) · \(question.format.displayName)",
+                            systemImage: skillIcon(question.skill)
+                        )
                         Spacer()
                         Text("第 \(engine.responses.count + 1) 题")
                             .monospacedDigit()
@@ -214,7 +225,9 @@ public struct PlacementTestView: View {
                             .font(.system(.title3, design: .rounded, weight: .bold))
                             .fixedSize(horizontal: false, vertical: true)
 
-                        if let context = question.context {
+                        if question.skill == .listening {
+                            listeningCard(question)
+                        } else if let context = question.context {
                             Text(context)
                                 .font(.body)
                                 .lineSpacing(5)
@@ -248,6 +261,44 @@ public struct PlacementTestView: View {
         }
     }
 
+    private func listeningCard(_ question: PlacementQuestion) -> some View {
+        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            Button {
+                playListeningQuestion(question)
+            } label: {
+                HStack(spacing: DSSpacing.sm) {
+                    Image(
+                        systemName: listeningPlayCount == 0
+                            ? "play.circle.fill"
+                            : "speaker.wave.2.circle.fill"
+                    )
+                    .font(.title2)
+                    Text(listeningPlayCount == 0 ? "播放音频" : "再听一次")
+                        .font(.headline)
+                    Spacer()
+                    if listeningPlayCount > 0 {
+                        Text("已播放 \(listeningPlayCount) 次")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .foregroundStyle(Color.dsSkyDeep)
+                .frame(maxWidth: .infinity, minHeight: 48)
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("播放后即可选择答案")
+
+            Text(
+                listeningPlayCount == 0
+                    ? "先听音频，再根据内容作答。"
+                    : "需要时可以重听；音频文本不会显示。"
+            )
+            .font(.caption)
+            .foregroundStyle(.secondary)
+        }
+        .dsSurface(.grouped, padding: DSSpacing.md)
+    }
+
     @ViewBuilder
     private var resultView: some View {
         if let result {
@@ -277,12 +328,35 @@ public struct PlacementTestView: View {
                             }
                             Spacer()
                             VStack(alignment: .trailing, spacing: 3) {
-                                Text("合理区间")
+                                Text("90% 估计区间")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                 Text("\(result.scoreRange.lowerBound)–\(result.scoreRange.upperBound)")
                                     .font(.headline.monospacedDigit())
                             }
+                        }
+
+                        Divider()
+
+                        HStack {
+                            Label("判断稳定度", systemImage: "checkmark.seal")
+                                .font(.subheadline.weight(.semibold))
+                            Spacer()
+                            Text(
+                                "\(result.confidenceLabel) · "
+                                    + "\(Int((result.levelConfidence * 100).rounded()))%"
+                            )
+                            .font(.subheadline.monospacedDigit())
+                            .foregroundStyle(Color.dsSkyDeep)
+                        }
+
+                        HStack {
+                            Label("CEFR 参考", systemImage: "globe.europe.africa")
+                                .font(.subheadline.weight(.semibold))
+                            Spacer()
+                            Text("\(result.referenceLevel.rawValue) · 非认证")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
                         }
 
                         Divider()
@@ -293,7 +367,10 @@ public struct PlacementTestView: View {
                     }
                     .dsSurface(.grouped, padding: DSSpacing.lg)
 
-                    Text("短测只能估计当前适合的学习难度。随着对话和练习积累，你可以随时重新校准。")
+                    Text(
+                        "这是用于调整学习内容的短测，不是官方证书考试。"
+                            + "区间较宽或稳定度有限时，应用会保守设置难度，你也可以稍后重新校准。"
+                    )
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -398,7 +475,10 @@ public struct PlacementTestView: View {
             }
         }
         .buttonStyle(.plain)
-        .disabled(selectedOriginalIndex != nil)
+        .disabled(
+            selectedOriginalIndex != nil
+                || (currentQuestion?.skill == .listening && listeningPlayCount == 0)
+        )
     }
 
     private func skillResultRow(_ result: PlacementSkillResult) -> some View {
@@ -449,6 +529,7 @@ public struct PlacementTestView: View {
         currentQuestion = question
         optionOrder = Array(question.options.indices).shuffled()
         selectedOriginalIndex = nil
+        listeningPlayCount = 0
         withAnimation(reduceMotion ? nil : .snappy) {
             phase = .question
         }
@@ -461,6 +542,7 @@ public struct PlacementTestView: View {
         else { return }
         selectedOriginalIndex = originalIndex
         Haptics.impact(.light)
+        Task { await deps.speech.stopSpeaking() }
 
         Task {
             if !reduceMotion {
@@ -472,6 +554,7 @@ public struct PlacementTestView: View {
                 || updatedEngine.nextQuestion(in: questions) == nil
             {
                 result = updatedEngine.result()
+                await deps.speech.stopSpeaking()
                 withAnimation(reduceMotion ? nil : .snappy) {
                     phase = .result
                 }
@@ -482,7 +565,19 @@ public struct PlacementTestView: View {
                 currentQuestion = next
                 optionOrder = Array(next.options.indices).shuffled()
                 selectedOriginalIndex = nil
+                listeningPlayCount = 0
             }
+        }
+    }
+
+    private func playListeningQuestion(_ question: PlacementQuestion) {
+        guard let audioText = question.audioText,
+              let audioLanguage = question.audioLanguage
+        else { return }
+        listeningPlayCount += 1
+        Haptics.impact(.light)
+        Task {
+            await deps.speech.speak(audioText, language: audioLanguage)
         }
     }
 
@@ -512,6 +607,7 @@ public struct PlacementTestView: View {
         case .vocabulary: "textformat.abc"
         case .grammar: "character.cursor.ibeam"
         case .reading: "doc.text"
+        case .listening: "headphones"
         }
     }
 
