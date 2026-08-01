@@ -6,7 +6,6 @@ public struct TokenSelection: Hashable, Sendable {
     public let contextID: String
     public let tokenID: Int
     public let word: String
-    public let grammarPointID: String?
     public let contextText: String?
     public let phraseCandidates: [String]
 
@@ -14,14 +13,12 @@ public struct TokenSelection: Hashable, Sendable {
         contextID: String,
         tokenID: Int,
         word: String,
-        grammarPointID: String? = nil,
         contextText: String? = nil,
         phraseCandidates: [String] = []
     ) {
         self.contextID = contextID
         self.tokenID = tokenID
         self.word = word
-        self.grammarPointID = grammarPointID
         self.contextText = contextText
         self.phraseCandidates = phraseCandidates
     }
@@ -42,7 +39,6 @@ public struct TappableText: View {
     private let tokens: [TextToken]
     private let contextID: String
     private let keywords: Set<String>
-    private let grammarPointIDs: [Int: String]
     private let textColor: Color?
     private let selection: TokenSelection?
     private let onSelect: (TokenSelection) -> Void
@@ -51,7 +47,6 @@ public struct TappableText: View {
         tokens: [TextToken],
         contextID: String,
         keywords: Set<String> = [],
-        grammarPointIDs: [Int: String] = [:],
         textColor: Color? = nil,
         selection: TokenSelection? = nil,
         onSelect: @escaping (TokenSelection) -> Void
@@ -59,7 +54,6 @@ public struct TappableText: View {
         self.tokens = tokens
         self.contextID = contextID
         self.keywords = keywords
-        self.grammarPointIDs = grammarPointIDs
         self.textColor = textColor
         self.selection = selection
         self.onSelect = onSelect
@@ -79,48 +73,19 @@ public struct TappableText: View {
         let isKeyword = token.word.map { keywords.contains($0) } ?? false
 
         if token.word != nil {
-            if let grammarPointID = grammarPointIDs[token.id] {
-                Menu {
-                    Button {
-                        onSelect(makeSelection(for: token, grammarPointID: nil))
-                    } label: {
-                        Label("单词释义", systemImage: "character.book.closed")
-                    }
-                    Button {
-                        onSelect(makeSelection(for: token, grammarPointID: grammarPointID))
-                    } label: {
-                        Label("语法释义", systemImage: "text.book.closed")
-                    }
-                } label: {
-                    tokenLabel(
-                        token,
-                        isKeyword: false,
-                        isGrammar: true,
-                        isSelected: isSelected
-                    )
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel(token.display)
-                .accessibilityHint("选择查看单词释义或语法释义")
-                .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
-                    isSelected ? anchor : nil
-                }
-            } else {
-                Button {
-                    onSelect(makeSelection(for: token, grammarPointID: nil))
-                } label: {
-                    tokenLabel(
-                        token,
-                        isKeyword: isKeyword,
-                        isGrammar: false,
-                        isSelected: isSelected
-                    )
-                }
-                .buttonStyle(.plain)
-                .accessibilityHint("查看单词释义")
-                .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
-                    isSelected ? anchor : nil
-                }
+            Button {
+                onSelect(makeSelection(for: token))
+            } label: {
+                tokenLabel(
+                    token,
+                    isKeyword: isKeyword,
+                    isSelected: isSelected
+                )
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("查看单词释义")
+            .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
+                isSelected ? anchor : nil
             }
         } else {
             Text(token.display)
@@ -128,15 +93,11 @@ public struct TappableText: View {
         }
     }
 
-    private func makeSelection(
-        for token: TextToken,
-        grammarPointID: String?
-    ) -> TokenSelection {
+    private func makeSelection(for token: TextToken) -> TokenSelection {
         TokenSelection(
             contextID: contextID,
             tokenID: token.id,
             word: token.word ?? token.display,
-            grammarPointID: grammarPointID,
             contextText: tokens.map(\.display).joined(),
             phraseCandidates: phraseCandidates(around: token.id)
         )
@@ -175,15 +136,14 @@ public struct TappableText: View {
     private func tokenLabel(
         _ token: TextToken,
         isKeyword: Bool,
-        isGrammar: Bool,
         isSelected: Bool
     ) -> some View {
         Text(token.display)
             .underline(isKeyword, pattern: .dot)
-            .foregroundStyle(isGrammar ? Color.dsSkyDeep : (textColor ?? .primary))
+            .foregroundStyle(textColor ?? .primary)
             .background(
                 isSelected
-                    ? (isGrammar ? Color.dsSky.opacity(0.18) : Color.yellow.opacity(0.35))
+                    ? Color.yellow.opacity(0.35)
                     : .clear,
                 in: RoundedRectangle(cornerRadius: 4)
             )

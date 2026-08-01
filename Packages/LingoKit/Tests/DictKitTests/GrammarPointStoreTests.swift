@@ -10,10 +10,11 @@ struct GrammarPointStoreTests {
         return try GrammarPointStore(url: url)
     }
 
-    @Test("内置语法点库可解码且数量达标（首批 30+）")
+    @Test("内置语法点库可解码且扩充到 100 条")
     func decodeBundledFile() throws {
         let store = try openStore()
-        #expect(store.allPoints.count >= 30)
+        #expect(store.allPoints.count >= 100)
+        #expect(Set(store.allPoints.map(\.id)).count == store.allPoints.count)
     }
 
     @Test("trigger 命中：单击 as 能看到 as...as 用法")
@@ -31,6 +32,16 @@ struct GrammarPointStoreTests {
         for point in store.allPoints {
             for relatedID in point.related {
                 #expect(store.point(id: relatedID) != nil, "悬空 related: \(point.id) → \(relatedID)")
+            }
+        }
+    }
+
+    @Test("supersedes 引用全部可解析")
+    func supersedesIntegrity() throws {
+        let store = try openStore()
+        for point in store.allPoints {
+            for supersededID in point.supersedes ?? [] {
+                #expect(store.point(id: supersededID) != nil, "悬空 supersedes: \(point.id) → \(supersededID)")
             }
         }
     }
@@ -114,6 +125,39 @@ struct GrammarPointStoreTests {
                 pointID == "so-that-purpose" ? tokens[tokenID].word : nil
             }.sorted() == ["so", "that"]
         )
+    }
+
+    @Test("同一句可返回多个互不相同的语法结构")
+    func detectsMultipleGrammarPoints() throws {
+        let store = try openStore()
+        let tokens = WordTokenizer.tokenize(
+            "I asked her to wait because I decided to buy the tickets."
+        )
+        let pointIDs = Set(store.matches(in: tokens).map(\.pointID))
+
+        #expect(pointIDs.contains("ask-sb-to"))
+        #expect(pointIDs.contains("because-so"))
+        #expect(pointIDs.contains("decide-to"))
+    }
+
+    @Test("更具体的将来计划不会重复报为现在进行时")
+    func goingToSupersedesProgressive() throws {
+        let store = try openStore()
+        let tokens = WordTokenizer.tokenize("I'm going to visit Toronto next week.")
+        let pointIDs = Set(store.matches(in: tokens).map(\.pointID))
+
+        #expect(pointIDs.contains("be-going-to"))
+        #expect(!pointIDs.contains("present-continuous"))
+    }
+
+    @Test("比较级 than 需要前文确有比较级")
+    func comparativeRequiresComparativeForm() throws {
+        let store = try openStore()
+        let valid = WordTokenizer.tokenize("This route is much faster than the other one.")
+        let invalid = WordTokenizer.tokenize("Rather than drive, let's walk.")
+
+        #expect(store.matches(in: valid).contains { $0.pointID == "comparative-than" })
+        #expect(!store.matches(in: invalid).contains { $0.pointID == "comparative-than" })
     }
 
     private func words(for match: GrammarMatch, in tokens: [TextToken]) -> [String] {

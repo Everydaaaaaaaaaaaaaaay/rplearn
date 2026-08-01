@@ -18,7 +18,7 @@
       "id": "comparative-than",
       "triggers": ["than"],
       "patterns": [
-        { "steps": ["than"], "maximum_gaps": [] }
+        { "steps": ["<comparative>", "than"], "maximum_gaps": [2], "highlighted_steps": [1] }
       ],
       "title": "比较级 + than",
       "explanation_zh": "两者比较用比较级加 than。比较级前可用 much / a little / even 修饰程度。",
@@ -270,7 +270,8 @@
       "id": "there-be",
       "triggers": ["there"],
       "patterns": [
-        { "steps": ["there", "am|is|are|was|were|be|been"], "maximum_gaps": [1] }
+        { "steps": ["there", "am|is|are|was|were|be|been"], "maximum_gaps": [1] },
+        { "steps": ["there's|there're"], "maximum_gaps": [] }
       ],
       "title": "there be 存在句",
       "explanation_zh": "表示「某地有某物」；be 与靠近的名词保持一致（就近原则）。注意与 have（拥有）区分。",
@@ -554,6 +555,801 @@
         { "en": "He got up early in order to catch the first bus.", "zh": "为了赶上头班车，他起得很早。" }
       ],
       "related": ["so-that-purpose"]
+    },
+    {
+      "id": "be-going-to",
+      "triggers": ["going"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "going", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["present-continuous"],
+      "title": "be going to do 计划或即将发生",
+      "explanation_zh": "be going to + 动词原形表示已经有计划的将来，或根据眼前迹象判断即将发生的事。",
+      "examples": [
+        { "en": "I'm going to visit London next month.", "zh": "我下个月打算去伦敦。" }
+      ],
+      "related": ["be-about-to", "modal-verb"]
+    },
+    {
+      "id": "present-continuous",
+      "triggers": ["am", "is", "are"],
+      "patterns": [
+        { "steps": ["am|is|are", "<gerund>"], "maximum_gaps": [1] }
+      ],
+      "title": "现在进行时 be doing",
+      "explanation_zh": "am / is / are + doing 表示此刻正在进行，或当前阶段暂时持续的动作。",
+      "examples": [
+        { "en": "I'm waiting for the train right now.", "zh": "我现在正在等火车。" }
+      ],
+      "related": ["present-perfect-continuous", "be-going-to"]
+    },
+    {
+      "id": "present-perfect",
+      "triggers": ["have", "has"],
+      "patterns": [
+        { "steps": ["have|has", "<past-participle>"], "maximum_gaps": [1] }
+      ],
+      "title": "现在完成时 have / has done",
+      "explanation_zh": "have / has + 过去分词连接过去与现在，可表示经历、已经完成的结果或持续到现在的状态。",
+      "examples": [
+        { "en": "I have already booked the tickets.", "zh": "我已经订好票了。" }
+      ],
+      "related": ["present-perfect-continuous", "past-perfect", "have-been-to"]
+    },
+    {
+      "id": "present-perfect-continuous",
+      "triggers": ["been"],
+      "patterns": [
+        { "steps": ["have|has", "been", "<gerund>"], "maximum_gaps": [0, 1] }
+      ],
+      "supersedes": ["present-perfect", "present-continuous"],
+      "title": "现在完成进行时 have / has been doing",
+      "explanation_zh": "表示动作从过去开始，一直持续到现在，常强调持续时间或仍在进行。",
+      "examples": [
+        { "en": "She has been studying English for two years.", "zh": "她已经学英语两年了。" }
+      ],
+      "related": ["present-perfect", "present-continuous"]
+    },
+    {
+      "id": "past-perfect",
+      "triggers": ["had"],
+      "patterns": [
+        { "steps": ["had", "<past-participle>"], "maximum_gaps": [1] }
+      ],
+      "title": "过去完成时 had done",
+      "explanation_zh": "had + 过去分词表示在另一个过去时间或动作之前已经完成，常被称为“过去的过去”。",
+      "examples": [
+        { "en": "The train had left before we arrived.", "zh": "我们到达前，火车已经开走了。" }
+      ],
+      "related": ["present-perfect"]
+    },
+    {
+      "id": "passive-voice",
+      "triggers": ["am", "is", "are", "was", "were", "been"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were|be|been|being", "<past-participle>"], "maximum_gaps": [1] }
+      ],
+      "title": "被动语态 be done",
+      "explanation_zh": "be + 过去分词强调动作的承受者；时态由 be 的形式承担，动作执行者可用 by 引出。",
+      "examples": [
+        { "en": "The museum was built in 1890.", "zh": "这座博物馆建于 1890 年。" }
+      ],
+      "related": ["present-perfect", "be-supposed-to"]
+    },
+    {
+      "id": "modal-verb",
+      "triggers": ["can", "could", "may", "might", "must", "should", "would"],
+      "patterns": [
+        { "steps": ["can|could|may|might|must|should|will|would|shall", "<word>"], "maximum_gaps": [1], "highlighted_steps": [0] }
+      ],
+      "title": "情态动词 + 动词原形",
+      "explanation_zh": "can、could、may、might、must、should、will、would 后接动词原形，可表达能力、可能、义务、建议或意愿。",
+      "examples": [
+        { "en": "You should bring a light jacket.", "zh": "你应该带一件薄外套。" }
+      ],
+      "related": ["modal-perfect", "have-to", "be-able-to"]
+    },
+    {
+      "id": "modal-perfect",
+      "triggers": ["have"],
+      "patterns": [
+        { "steps": ["could|should|would|might|must", "have", "<past-participle>"], "maximum_gaps": [0, 1] }
+      ],
+      "supersedes": ["modal-verb", "present-perfect"],
+      "title": "情态动词 + have done",
+      "explanation_zh": "情态动词 + have + 过去分词用于推测、评价或想象过去；should have done 常表示“本应该做却没有做”。",
+      "examples": [
+        { "en": "We should have left earlier.", "zh": "我们本应该早点出发。" }
+      ],
+      "related": ["modal-verb", "wish-subjunctive"]
+    },
+    {
+      "id": "have-to",
+      "triggers": ["have", "has", "had"],
+      "patterns": [
+        { "steps": ["have|has|had", "to"], "maximum_gaps": [0] }
+      ],
+      "title": "have to do 必须",
+      "explanation_zh": "have to + 动词原形通常表示由规则或现实情况造成的客观必要；否定 don't have to 表示“不必”。",
+      "examples": [
+        { "en": "I have to catch the last train.", "zh": "我必须赶上末班车。" }
+      ],
+      "related": ["modal-verb", "be-supposed-to"]
+    },
+    {
+      "id": "be-able-to",
+      "triggers": ["able"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were|be|been", "able", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "be able to do 能够",
+      "explanation_zh": "be able to + 动词原形表示能力，可用于 can 没有对应形式的时态或结构中。",
+      "examples": [
+        { "en": "You'll be able to see the whole city from there.", "zh": "从那里你能看到整座城市。" }
+      ],
+      "related": ["modal-verb"]
+    },
+    {
+      "id": "be-supposed-to",
+      "triggers": ["supposed"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "supposed", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["passive-voice"],
+      "title": "be supposed to do 应该／按理要",
+      "explanation_zh": "be supposed to 表示按规定、计划或普遍期待应该做某事，语气通常比 must 柔和。",
+      "examples": [
+        { "en": "We're supposed to meet at the station at nine.", "zh": "我们按计划九点在车站见面。" }
+      ],
+      "related": ["have-to", "modal-verb"]
+    },
+    {
+      "id": "be-about-to",
+      "triggers": ["about"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "about", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "be about to do 马上要",
+      "explanation_zh": "be about to + 动词原形表示动作马上就要发生，一般不再搭配遥远的将来时间。",
+      "examples": [
+        { "en": "The show is about to start.", "zh": "演出马上就要开始了。" }
+      ],
+      "related": ["be-going-to"]
+    },
+    {
+      "id": "be-likely-to",
+      "triggers": ["likely"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "likely", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "be likely to do 很可能",
+      "explanation_zh": "be likely to + 动词原形表示某人或某事很可能发生，可用 more / less likely 调整可能程度。",
+      "examples": [
+        { "en": "It's likely to rain this afternoon.", "zh": "今天下午很可能下雨。" }
+      ],
+      "related": ["modal-verb"]
+    },
+    {
+      "id": "would-like-to",
+      "triggers": ["like"],
+      "patterns": [
+        { "steps": ["would|i'd|you'd|he'd|she'd|we'd|they'd", "like", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["modal-verb"],
+      "title": "would like to do 想要（礼貌）",
+      "explanation_zh": "would like to 比 want to 更礼貌，常用于点餐、请求服务或表达愿望。",
+      "examples": [
+        { "en": "I'd like to try the local dessert.", "zh": "我想尝尝当地甜点。" }
+      ],
+      "related": ["want-sb-to", "would-rather"]
+    },
+    {
+      "id": "would-you-mind",
+      "triggers": ["mind"],
+      "patterns": [
+        { "steps": ["would", "you", "mind"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["modal-verb"],
+      "title": "Would you mind ...? 介意……吗",
+      "explanation_zh": "Would you mind 后接 doing，用于非常礼貌地请求；同意时通常回答 No, not at all。",
+      "examples": [
+        { "en": "Would you mind taking a photo for us?", "zh": "你介意帮我们拍张照片吗？" }
+      ],
+      "related": ["do-you-mind", "what-about"]
+    },
+    {
+      "id": "do-you-mind",
+      "triggers": ["mind"],
+      "patterns": [
+        { "steps": ["do|would", "you", "mind", "if"], "maximum_gaps": [0, 0, 1] }
+      ],
+      "title": "Do you mind if ...? 介意我……吗",
+      "explanation_zh": "Do you mind if I ...? 用于礼貌征求许可；mind 后的 if 从句说明希望做的事情。",
+      "examples": [
+        { "en": "Do you mind if I sit here?", "zh": "你介意我坐这里吗？" }
+      ],
+      "related": ["would-you-mind"]
+    },
+    {
+      "id": "be-used-to-doing",
+      "triggers": ["used"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were|be|been", "used", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["used-to", "passive-voice"],
+      "title": "be used to doing 习惯于",
+      "explanation_zh": "be used to 中的 to 是介词，后接名词、代词或 doing，表示已经习惯某事；不要与 used to do 混淆。",
+      "examples": [
+        { "en": "I'm used to walking long distances.", "zh": "我习惯走很长的路。" }
+      ],
+      "related": ["used-to", "get-used-to"]
+    },
+    {
+      "id": "get-used-to",
+      "triggers": ["used"],
+      "patterns": [
+        { "steps": ["get|gets|got|getting", "used", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["used-to"],
+      "title": "get used to 逐渐习惯",
+      "explanation_zh": "get used to 强调从不习惯到习惯的变化过程，to 后接名词、代词或 doing。",
+      "examples": [
+        { "en": "You'll soon get used to the weather.", "zh": "你很快就会适应这里的天气。" }
+      ],
+      "related": ["be-used-to-doing", "used-to"]
+    },
+    {
+      "id": "be-used-for",
+      "triggers": ["used"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were|be|been", "used", "for"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["passive-voice"],
+      "title": "be used for doing 被用于",
+      "explanation_zh": "be used for + 名词或 doing 表示某物的用途；be used to do 也可表达“被用来做”。",
+      "examples": [
+        { "en": "This card is used for entering the metro.", "zh": "这张卡用于进地铁站。" }
+      ],
+      "related": ["be-used-to-doing"]
+    },
+    {
+      "id": "keep-doing",
+      "triggers": ["keep", "keeps", "kept"],
+      "patterns": [
+        { "steps": ["keep|keeps|kept", "<gerund>"], "maximum_gaps": [1] }
+      ],
+      "title": "keep doing 持续做",
+      "explanation_zh": "keep doing 表示持续或反复做同一件事；keep on doing 更强调反复不停。",
+      "examples": [
+        { "en": "Keep practicing and you'll improve.", "zh": "坚持练习，你会进步的。" }
+      ],
+      "related": ["stop-doing"]
+    },
+    {
+      "id": "avoid-doing",
+      "triggers": ["avoid", "avoids", "avoided"],
+      "patterns": [
+        { "steps": ["avoid|avoids|avoided", "<gerund>"], "maximum_gaps": [0] }
+      ],
+      "title": "avoid doing 避免做",
+      "explanation_zh": "avoid 后接名词或动名词 doing，不接 to do。",
+      "examples": [
+        { "en": "Try to avoid traveling during rush hour.", "zh": "尽量避免在高峰期出行。" }
+      ],
+      "related": ["prevent-from"]
+    },
+    {
+      "id": "enjoy-doing",
+      "triggers": ["enjoy", "enjoys", "enjoyed"],
+      "patterns": [
+        { "steps": ["enjoy|enjoys|enjoyed", "<gerund>"], "maximum_gaps": [0] }
+      ],
+      "title": "enjoy doing 喜欢做",
+      "explanation_zh": "enjoy 后接名词或动名词 doing，表示从活动中获得乐趣，不接 to do。",
+      "examples": [
+        { "en": "I enjoy exploring small neighborhoods.", "zh": "我喜欢探索小街区。" }
+      ],
+      "related": ["feel-like-doing"]
+    },
+    {
+      "id": "finish-doing",
+      "triggers": ["finish", "finishes", "finished"],
+      "patterns": [
+        { "steps": ["finish|finishes|finished", "<gerund>"], "maximum_gaps": [0] }
+      ],
+      "title": "finish doing 做完",
+      "explanation_zh": "finish 后接名词或动名词 doing，表示完成某项活动，不接 to do。",
+      "examples": [
+        { "en": "Let's leave after we finish eating.", "zh": "我们吃完再走吧。" }
+      ],
+      "related": ["stop-doing"]
+    },
+    {
+      "id": "consider-doing",
+      "triggers": ["consider", "considers", "considered"],
+      "patterns": [
+        { "steps": ["consider|considers|considered", "<gerund>"], "maximum_gaps": [0] }
+      ],
+      "title": "consider doing 考虑做",
+      "explanation_zh": "consider 表示“考虑”时后接名词或 doing；consider sb. to be 则表示“认为某人是”。",
+      "examples": [
+        { "en": "We're considering staying another night.", "zh": "我们在考虑再住一晚。" }
+      ],
+      "related": ["decide-to"]
+    },
+    {
+      "id": "feel-like-doing",
+      "triggers": ["like"],
+      "patterns": [
+        { "steps": ["feel|feels|felt", "like", "<gerund>"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "feel like doing 想要做",
+      "explanation_zh": "feel like 后接名词或 doing，表示当下想做某事，语气自然口语化。",
+      "examples": [
+        { "en": "Do you feel like getting some coffee?", "zh": "你想去喝点咖啡吗？" }
+      ],
+      "related": ["would-like-to", "what-about"]
+    },
+    {
+      "id": "decide-to",
+      "triggers": ["decide", "decided", "plan", "hope"],
+      "patterns": [
+        { "steps": ["decide|decides|decided|plan|plans|planned|hope|hopes|hoped", "to"], "maximum_gaps": [0] }
+      ],
+      "title": "decide / plan / hope to do",
+      "explanation_zh": "decide、plan、hope 后常接 to + 动词原形，分别表达决定、计划和希望去做某事。",
+      "examples": [
+        { "en": "We decided to take the scenic route.", "zh": "我们决定走风景更好的路线。" }
+      ],
+      "related": ["manage-to", "be-going-to"]
+    },
+    {
+      "id": "manage-to",
+      "triggers": ["manage", "managed"],
+      "patterns": [
+        { "steps": ["manage|manages|managed", "to"], "maximum_gaps": [0] }
+      ],
+      "title": "manage to do 设法做到",
+      "explanation_zh": "manage to do 表示经过努力最终成功完成，含有“并不容易”的意味。",
+      "examples": [
+        { "en": "We managed to catch the last bus.", "zh": "我们设法赶上了末班车。" }
+      ],
+      "related": ["be-able-to", "decide-to"]
+    },
+    {
+      "id": "want-sb-to",
+      "triggers": ["want", "wants", "wanted"],
+      "patterns": [
+        { "steps": ["want|wants|wanted", "<word>", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "want sb. to do 希望某人做",
+      "explanation_zh": "want + 人 + to do 表示希望某人采取某个动作；没有“人”时直接用 want to do。",
+      "examples": [
+        { "en": "I want you to see this view.", "zh": "我想让你看看这里的景色。" }
+      ],
+      "related": ["would-like-to", "ask-sb-to"]
+    },
+    {
+      "id": "ask-sb-to",
+      "triggers": ["ask", "asks", "asked"],
+      "patterns": [
+        { "steps": ["ask|asks|asked", "<word>", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "ask sb. to do 请某人做",
+      "explanation_zh": "ask + 人 + to do 表示请求某人做某事；ask for 后则接所请求的东西。",
+      "examples": [
+        { "en": "I asked the driver to stop here.", "zh": "我请司机在这里停车。" }
+      ],
+      "related": ["tell-sb-to", "want-sb-to"]
+    },
+    {
+      "id": "tell-sb-to",
+      "triggers": ["tell", "tells", "told"],
+      "patterns": [
+        { "steps": ["tell|tells|told", "<word>", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "tell sb. to do 告诉某人做",
+      "explanation_zh": "tell + 人 + to do 表示告诉或吩咐某人做某事；否定式用 tell sb. not to do。",
+      "examples": [
+        { "en": "She told me to keep the ticket.", "zh": "她告诉我要留好票。" }
+      ],
+      "related": ["ask-sb-to"]
+    },
+    {
+      "id": "allow-sb-to",
+      "triggers": ["allow", "allows", "allowed"],
+      "patterns": [
+        { "steps": ["allow|allows|allowed", "<word>", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "allow sb. to do 允许某人做",
+      "explanation_zh": "allow + 人 + to do 表示允许某人做某事；allow doing 可泛指允许某种行为。",
+      "examples": [
+        { "en": "The pass allows you to enter all three museums.", "zh": "这张通票允许你进入三家博物馆。" }
+      ],
+      "related": ["prevent-from"]
+    },
+    {
+      "id": "prevent-from",
+      "triggers": ["prevent", "prevents", "prevented", "stop"],
+      "patterns": [
+        { "steps": ["prevent|prevents|prevented|stop|stops|stopped", "<word>", "from"], "maximum_gaps": [1, 0] }
+      ],
+      "title": "prevent / stop sb. from doing 阻止",
+      "explanation_zh": "prevent / stop + 人或事物 + from doing 表示阻止某动作发生；prevent 中的 from 通常不能省略。",
+      "examples": [
+        { "en": "The rain didn't stop us from exploring.", "zh": "下雨没有阻止我们继续探索。" }
+      ],
+      "related": ["avoid-doing"]
+    },
+    {
+      "id": "have-trouble-doing",
+      "triggers": ["trouble", "difficulty"],
+      "patterns": [
+        { "steps": ["have|has|had", "trouble|difficulty", "<gerund>"], "maximum_gaps": [2, 0] }
+      ],
+      "title": "have trouble doing 做某事有困难",
+      "explanation_zh": "have trouble / difficulty (in) doing 表示做某事有困难，in 经常省略。",
+      "examples": [
+        { "en": "I had trouble finding the entrance.", "zh": "我费了些劲才找到入口。" }
+      ],
+      "related": ["be-able-to"]
+    },
+    {
+      "id": "be-interested-in",
+      "triggers": ["interested"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "interested", "in"], "maximum_gaps": [1, 0] }
+      ],
+      "title": "be interested in 对……感兴趣",
+      "explanation_zh": "be interested in 后接名词、代词或 doing，描述人的兴趣；interesting 则描述事物“有趣”。",
+      "examples": [
+        { "en": "I'm interested in learning about local history.", "zh": "我对了解当地历史很感兴趣。" }
+      ],
+      "related": ["be-good-at"]
+    },
+    {
+      "id": "be-good-at",
+      "triggers": ["good"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "good", "at"], "maximum_gaps": [1, 0] }
+      ],
+      "title": "be good at 擅长",
+      "explanation_zh": "be good at 后接名词或 doing，表示擅长某事；be good for 则表示“对……有益”。",
+      "examples": [
+        { "en": "She's good at finding hidden cafés.", "zh": "她很擅长发现隐蔽的小咖啡馆。" }
+      ],
+      "related": ["be-interested-in"]
+    },
+    {
+      "id": "be-afraid-of",
+      "triggers": ["afraid"],
+      "patterns": [
+        { "steps": ["am|is|are|was|were", "afraid", "of"], "maximum_gaps": [1, 0] }
+      ],
+      "title": "be afraid of 害怕",
+      "explanation_zh": "be afraid of 后接名词或 doing，表示害怕某事；be afraid to do 常表示因为害怕而不敢做。",
+      "examples": [
+        { "en": "Don't be afraid of making mistakes.", "zh": "不要害怕犯错。" }
+      ],
+      "related": ["too-to"]
+    },
+    {
+      "id": "look-like",
+      "triggers": ["look", "looks", "looked"],
+      "patterns": [
+        { "steps": ["look|looks|looked", "like"], "maximum_gaps": [0] }
+      ],
+      "title": "look like 看起来像",
+      "explanation_zh": "look like 后接名词或从句，表示外观或迹象相似；look + 形容词则直接描述状态。",
+      "examples": [
+        { "en": "It looks like it's going to rain.", "zh": "看起来要下雨了。" }
+      ],
+      "related": ["sound-like", "be-going-to"]
+    },
+    {
+      "id": "sound-like",
+      "triggers": ["sound", "sounds", "sounded"],
+      "patterns": [
+        { "steps": ["sound|sounds|sounded", "like"], "maximum_gaps": [0] }
+      ],
+      "title": "sound like 听起来像",
+      "explanation_zh": "sound like 后接名词或从句，表示听到的信息给人的判断；sound + 形容词表示“听起来……”。",
+      "examples": [
+        { "en": "That sounds like a great plan.", "zh": "那听起来是个很棒的计划。" }
+      ],
+      "related": ["look-like"]
+    },
+    {
+      "id": "because-of",
+      "triggers": ["because"],
+      "patterns": [
+        { "steps": ["because", "of"], "maximum_gaps": [0] }
+      ],
+      "supersedes": ["because-so"],
+      "title": "because of 因为",
+      "explanation_zh": "because of 是介词短语，后接名词、代词或 doing；because 是连词，后接完整句子。",
+      "examples": [
+        { "en": "The flight was delayed because of the fog.", "zh": "航班因为大雾延误了。" }
+      ],
+      "related": ["because-so", "due-to"]
+    },
+    {
+      "id": "due-to",
+      "triggers": ["due"],
+      "patterns": [
+        { "steps": ["due", "to"], "maximum_gaps": [0] }
+      ],
+      "title": "due to 由于",
+      "explanation_zh": "due to 后接名词性成分说明原因，语气通常比 because of 更正式。",
+      "examples": [
+        { "en": "The museum is closed due to maintenance.", "zh": "博物馆因维护暂停开放。" }
+      ],
+      "related": ["because-of", "thanks-to"]
+    },
+    {
+      "id": "thanks-to",
+      "triggers": ["thanks"],
+      "patterns": [
+        { "steps": ["thanks", "to"], "maximum_gaps": [0] }
+      ],
+      "title": "thanks to 多亏／由于",
+      "explanation_zh": "thanks to 后接名词性成分，通常表示带来好结果的原因，有时也可带讽刺语气。",
+      "examples": [
+        { "en": "Thanks to your directions, we found it easily.", "zh": "多亏你的指路，我们很容易就找到了。" }
+      ],
+      "related": ["because-of", "due-to"]
+    },
+    {
+      "id": "in-spite-of",
+      "triggers": ["spite"],
+      "patterns": [
+        { "steps": ["in", "spite", "of"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "in spite of 尽管",
+      "explanation_zh": "in spite of 后接名词、代词或 doing，表示让步；although / though 后接完整句子。",
+      "examples": [
+        { "en": "We went out in spite of the rain.", "zh": "尽管下雨，我们还是出门了。" }
+      ],
+      "related": ["although-but", "even-though"]
+    },
+    {
+      "id": "even-if",
+      "triggers": ["even"],
+      "patterns": [
+        { "steps": ["even", "if"], "maximum_gaps": [0] }
+      ],
+      "supersedes": ["if-conditional"],
+      "title": "even if 即使",
+      "explanation_zh": "even if 引出假设性的让步条件，表示即使条件成立，主句结果也不会改变。",
+      "examples": [
+        { "en": "I'll go even if it rains.", "zh": "即使下雨我也会去。" }
+      ],
+      "related": ["if-conditional", "even-though"]
+    },
+    {
+      "id": "even-though",
+      "triggers": ["even"],
+      "patterns": [
+        { "steps": ["even", "though"], "maximum_gaps": [0] }
+      ],
+      "supersedes": ["although-but"],
+      "title": "even though 尽管（事实）",
+      "explanation_zh": "even though 引出已知事实并表示强烈让步；even if 更偏向假设情况。",
+      "examples": [
+        { "en": "I enjoyed the walk even though it was cold.", "zh": "虽然天气很冷，我还是很享受这次散步。" }
+      ],
+      "related": ["although-but", "even-if"]
+    },
+    {
+      "id": "as-long-as",
+      "triggers": ["long"],
+      "patterns": [
+        { "steps": ["as", "long", "as"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "as long as 只要",
+      "explanation_zh": "as long as 引导条件从句，表示满足某个条件就可以；也可按字面表示“和……一样长”。",
+      "examples": [
+        { "en": "You can stay as long as you keep quiet.", "zh": "只要你保持安静，就可以留下。" }
+      ],
+      "related": ["if-conditional", "unless"]
+    },
+    {
+      "id": "whether-or-not",
+      "triggers": ["whether"],
+      "patterns": [
+        { "steps": ["whether", "or", "not"], "maximum_gaps": [8, 0] }
+      ],
+      "title": "whether ... or not 是否／不管是否",
+      "explanation_zh": "whether ... or not 表示两种可能都被考虑，可引导宾语从句或让步状语从句。",
+      "examples": [
+        { "en": "We need to decide whether to go or not.", "zh": "我们需要决定去不去。" }
+      ],
+      "related": ["either-or"]
+    },
+    {
+      "id": "rather-than",
+      "triggers": ["rather"],
+      "patterns": [
+        { "steps": ["rather", "than"], "maximum_gaps": [0] }
+      ],
+      "title": "rather than 而不是",
+      "explanation_zh": "rather than 连接两个平行成分，表示选择前者而不是后者；两边形式应尽量保持一致。",
+      "examples": [
+        { "en": "Let's walk rather than take a taxi.", "zh": "我们走路吧，别坐出租车了。" }
+      ],
+      "related": ["would-rather", "instead-of"]
+    },
+    {
+      "id": "instead-of",
+      "triggers": ["instead"],
+      "patterns": [
+        { "steps": ["instead", "of"], "maximum_gaps": [0] }
+      ],
+      "title": "instead of 代替／而不是",
+      "explanation_zh": "instead of 后接名词、代词或 doing，表示用一种选择替代另一种。",
+      "examples": [
+        { "en": "We took the metro instead of driving.", "zh": "我们坐了地铁，而不是开车。" }
+      ],
+      "related": ["rather-than"]
+    },
+    {
+      "id": "as-well-as",
+      "triggers": ["well"],
+      "patterns": [
+        { "steps": ["as", "well", "as"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "as well as 也／以及",
+      "explanation_zh": "as well as 连接并列成分并侧重前者；连接主语时，谓语通常与前面的主语保持一致。",
+      "examples": [
+        { "en": "The ticket includes lunch as well as transport.", "zh": "票价包含交通，也包含午餐。" }
+      ],
+      "related": ["both-and", "not-only-but-also"]
+    },
+    {
+      "id": "not-until",
+      "triggers": ["until"],
+      "patterns": [
+        { "steps": ["not|didn't|doesn't|don't|won't|wasn't|weren't", "until"], "maximum_gaps": [8] }
+      ],
+      "title": "not ... until ... 直到……才",
+      "explanation_zh": "not ... until 表示某动作在 until 指定的时间之前没有发生，中文常译为“直到……才……”。",
+      "examples": [
+        { "en": "We didn't arrive until midnight.", "zh": "我们直到午夜才到。" }
+      ],
+      "related": ["by-the-time"]
+    },
+    {
+      "id": "by-the-time",
+      "triggers": ["time"],
+      "patterns": [
+        { "steps": ["by", "the", "time"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "by the time 到……的时候",
+      "explanation_zh": "by the time 引导时间从句，主句常用完成时，强调到某个时间点之前已经发生或完成。",
+      "examples": [
+        { "en": "By the time we arrived, the shop had closed.", "zh": "我们到的时候，商店已经关门了。" }
+      ],
+      "related": ["past-perfect", "not-until"]
+    },
+    {
+      "id": "no-matter-wh",
+      "triggers": ["matter"],
+      "patterns": [
+        { "steps": ["no", "matter", "what|who|where|when|how|which"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "no matter + 疑问词 无论",
+      "explanation_zh": "no matter what / who / where / how 等引导让步状语从句，表示条件怎样都不影响主句结果。",
+      "examples": [
+        { "en": "Call me no matter what happens.", "zh": "无论发生什么都给我打电话。" }
+      ],
+      "related": ["even-if"]
+    },
+    {
+      "id": "in-case",
+      "triggers": ["case"],
+      "patterns": [
+        { "steps": ["in", "case"], "maximum_gaps": [0] }
+      ],
+      "title": "in case 以防",
+      "explanation_zh": "in case 引导预防性的从句，表示提前为某种可能做准备；不要与 if 的条件含义混用。",
+      "examples": [
+        { "en": "Take an umbrella in case it rains.", "zh": "带把伞，以防下雨。" }
+      ],
+      "related": ["if-conditional"]
+    },
+    {
+      "id": "so-as-to",
+      "triggers": ["so"],
+      "patterns": [
+        { "steps": ["so", "as", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "so as to do 为了",
+      "explanation_zh": "so as to + 动词原形表示目的，语气较正式；否定式是 so as not to do。",
+      "examples": [
+        { "en": "We left early so as to avoid the crowds.", "zh": "我们早早离开，以避开人群。" }
+      ],
+      "related": ["in-order-to", "so-that-purpose"]
+    },
+    {
+      "id": "according-to",
+      "triggers": ["according"],
+      "patterns": [
+        { "steps": ["according", "to"], "maximum_gaps": [0] }
+      ],
+      "title": "according to 根据",
+      "explanation_zh": "according to 后接信息来源或依据，一般不用于表达“按照我自己的看法”。",
+      "examples": [
+        { "en": "According to the map, the station is nearby.", "zh": "根据地图，车站就在附近。" }
+      ],
+      "related": ["due-to"]
+    },
+    {
+      "id": "in-addition-to",
+      "triggers": ["addition"],
+      "patterns": [
+        { "steps": ["in", "addition", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "in addition to 除……之外还",
+      "explanation_zh": "in addition to 后接名词、代词或 doing，用于补充额外信息；in addition 可单独作句子连接语。",
+      "examples": [
+        { "en": "In addition to English, she speaks Spanish.", "zh": "除了英语，她还会说西班牙语。" }
+      ],
+      "related": ["as-well-as"]
+    },
+    {
+      "id": "there-no-point",
+      "triggers": ["point"],
+      "patterns": [
+        { "steps": ["there", "is|was", "no", "point"], "maximum_gaps": [0, 0, 0] },
+        { "steps": ["there's", "no", "point"], "maximum_gaps": [0, 0] }
+      ],
+      "supersedes": ["there-be"],
+      "title": "There is no point (in) doing 做……没有意义",
+      "explanation_zh": "There is no point (in) doing 表示做某事没有意义或不会产生效果，in 可以省略。",
+      "examples": [
+        { "en": "There's no point worrying about it now.", "zh": "现在担心这件事也没有意义。" }
+      ],
+      "related": ["there-be"]
+    },
+    {
+      "id": "it-is-time-to",
+      "triggers": ["time"],
+      "patterns": [
+        { "steps": ["it", "is|was", "time", "to"], "maximum_gaps": [0, 0, 0] },
+        { "steps": ["it's", "time", "to"], "maximum_gaps": [0, 0] }
+      ],
+      "title": "It is time to do 该做……了",
+      "explanation_zh": "It is time to do 表示到了做某事的时候；It is time + 主语 + 过去式语气更强，表示早该做了。",
+      "examples": [
+        { "en": "It's time to head back to the hotel.", "zh": "该回酒店了。" }
+      ],
+      "related": ["had-better"]
+    },
+    {
+      "id": "how-long",
+      "triggers": ["long"],
+      "patterns": [
+        { "steps": ["how", "long"], "maximum_gaps": [0] }
+      ],
+      "title": "How long ...? 多久／多长",
+      "explanation_zh": "How long 可询问持续时间或物体长度；回答持续时间常用 for + 时间段。",
+      "examples": [
+        { "en": "How long have you been in London?", "zh": "你来伦敦多久了？" }
+      ],
+      "related": ["present-perfect", "how-often"]
+    },
+    {
+      "id": "how-often",
+      "triggers": ["often"],
+      "patterns": [
+        { "steps": ["how", "often"], "maximum_gaps": [0] }
+      ],
+      "title": "How often ...? 多久一次",
+      "explanation_zh": "How often 询问动作发生的频率，可用 once a week、sometimes、every day 等回答。",
+      "examples": [
+        { "en": "How often do the buses run?", "zh": "公交车多久一班？" }
+      ],
+      "related": ["how-long"]
     }
   ]
 }

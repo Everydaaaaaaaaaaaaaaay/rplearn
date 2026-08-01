@@ -20,6 +20,8 @@ public extension Notification.Name {
 public struct ChatView: View {
     @State private var viewModel: ChatViewModel
     @State private var wordSelection: TokenSelection?
+    @State private var grammarAnalysis: GrammarAnalysisRequest?
+    @State private var grammarAICache: [UUID: AIGrammarAnalysis] = [:]
     @State private var expandedCoachMessageIDs: Set<UUID> = []
     @State private var transcriptVisibleMessageIDs: Set<UUID> = []
     @State private var isVoiceMode = false
@@ -88,6 +90,18 @@ public struct ChatView: View {
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback
         )
+        .sheet(item: $grammarAnalysis) { request in
+            GrammarAnalysisSheet(
+                request: request,
+                service: GrammarAnalysisService(llm: deps.llm),
+                initialAIAnalysis: grammarAICache[request.id],
+                onAIAnalysis: { analysis in
+                    grammarAICache[request.id] = analysis
+                }
+            )
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+        }
         .translationTask(appleTranslator.configuration) { @Sendable session in
             // session 非 Sendable，只能在本闭包内内联使用；仅与协调器交换纯数据。
             try? await session.prepareTranslation()
@@ -220,6 +234,9 @@ public struct ChatView: View {
                     tappableText(message, textColor: nil)
                 }
                 .contextMenu { bubbleMenu(message) }
+                .accessibilityAction(named: "语法解析") {
+                    presentGrammarAnalysis(for: message)
+                }
                 translationFootnote(message, alignment: .leading)
                 if message.isInterrupted {
                     Button {
@@ -247,6 +264,13 @@ public struct ChatView: View {
     /// 长按菜单仅保留消息级操作；单词收藏统一收敛到释义弹窗。
     @ViewBuilder
     private func bubbleMenu(_ message: MessageDTO) -> some View {
+        if message.role == .assistant, !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            Button {
+                presentGrammarAnalysis(for: message)
+            } label: {
+                Label("语法解析", systemImage: "text.book.closed")
+            }
+        }
         Button {
             UIPasteboard.general.string = message.text
         } label: {
@@ -553,9 +577,6 @@ public struct ChatView: View {
                 keywords: message.role == .assistant
                     ? KeywordAnnotator.decodeWords(fromJSON: message.keywordRangesJSON)
                     : [],
-                grammarPointIDs: message.role == .assistant
-                    ? deps.grammarPoints.annotations(in: tokens)
-                    : [:],
                 textColor: textColor,
                 selection: wordSelection,
                 onSelect: selectWord
@@ -566,6 +587,36 @@ public struct ChatView: View {
     private func selectWord(_ selection: TokenSelection) {
         isTextInputFocused = false
         wordSelection = selection
+    }
+
+    private func presentGrammarAnalysis(for message: MessageDTO) {
+        let sentence = RoleplayReplyFormatter.streamingPreview(from: message.text)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !sentence.isEmpty else { return }
+        let tokens = TokenCache.tokens(
+            for: sentence,
+            cacheKey: "grammar-\(message.id.uuidString)"
+        )
+        let localItems: [LocalGrammarAnalysisItem] = deps.grammarPoints.matches(in: tokens).compactMap { match -> LocalGrammarAnalysisItem? in
+            guard let point = deps.grammarPoints.point(id: match.pointID) else { return nil }
+            let matchedText = match.spanTokenIDs
+                .compactMap { tokens.indices.contains($0) ? tokens[$0].display : nil }
+                .joined()
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            return LocalGrammarAnalysisItem(
+                id: "\(point.id)-\(match.spanTokenIDs.map { String($0) }.joined(separator: "-"))",
+                point: point,
+                matchedText: matchedText
+            )
+        }
+        isTextInputFocused = false
+        Haptics.selection()
+        grammarAnalysis = GrammarAnalysisRequest(
+            id: message.id,
+            sentence: sentence,
+            learnerLevel: viewModel.learnerDifficulty.displayName,
+            localItems: localItems
+        )
     }
 
     /// 词典未收录时的 AI 简释兜底（fast 档）。

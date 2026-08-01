@@ -44,7 +44,6 @@ public struct DictCardView: View {
     @State private var path: [DictTarget]
     @State private var entry: DictEntry?
     @State private var contextualPhrases: [DictEntry] = []
-    @State private var grammarPoints: [GrammarPoint] = []
     @State private var isLoading = true
     @State private var aiExplanation: String?
     @State private var isLoadingAI = false
@@ -248,13 +247,6 @@ public struct DictCardView: View {
             }
             if !entry.wordForms.isEmpty {
                 wordFormsSection(entry)
-            }
-            let points = grammarPointsToShow(for: entry.word)
-            if !points.isEmpty {
-                Divider()
-                ForEach(points) { point in
-                    grammarSummary(point)
-                }
             }
             Text("本地词典 · ECDICT / WordNet")
                 .font(.caption2)
@@ -460,10 +452,6 @@ public struct DictCardView: View {
             .foregroundStyle(.secondary)
     }
 
-    private func grammarPointsToShow(for word: String) -> [GrammarPoint] {
-        grammar.points(forTrigger: word)
-    }
-
     @ViewBuilder
     private func tagChips(_ entry: DictEntry) -> some View {
         let titles = DictTagDisplayPolicy.orderedTitles(for: entry)
@@ -484,23 +472,6 @@ public struct DictCardView: View {
 
     private func chip(_ text: String) -> some View {
         DSChip(text, tint: .dsSky)
-    }
-
-    @ViewBuilder
-    private func grammarSummary(_ point: GrammarPoint) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(point.title)
-                .font(.subheadline.weight(.semibold))
-            Text(point.explanationZh)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(3)
-            Button("查看详情") {
-                path.append(.grammarPoint(point.id))
-            }
-            .font(.footnote)
-            .buttonStyle(.borderless)
-        }
     }
 
     @ViewBuilder
@@ -565,7 +536,6 @@ public struct DictCardView: View {
             )
         }
         entry = loadedEntry
-        grammarPoints = grammar.points(forTrigger: word)
         let resolvedWord = loadedEntry?.word ?? word
         isFavorite = await favoriteActions?.contains(resolvedWord) ?? false
         isLoading = false

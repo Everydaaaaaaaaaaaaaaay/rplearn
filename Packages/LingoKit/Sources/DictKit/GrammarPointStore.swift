@@ -4,7 +4,7 @@ import Foundation
 /// 一条可在自然对话中识别的有序语法模式。
 ///
 /// `steps` 中每个字符串代表一个词位，使用 `|` 表示可选词形；
-/// `<word>` 与 `<gerund>` 分别匹配任意单词和动名词。
+/// `<word>`、`<gerund>`、`<past-participle>` 与 `<comparative>` 提供有限的词形匹配。
 /// `maximumGaps` 表示相邻词位之间最多允许跳过的单词数。
 public struct GrammarPattern: Sendable, Codable, Equatable {
     public var steps: [String]
@@ -29,12 +29,17 @@ public struct GrammarPoint: Sendable, Codable, Equatable, Identifiable {
     public var related: [String]
     /// 需要完整命中后才会在角色消息中高亮的语法结构。
     public var patterns: [GrammarPattern]?
+    /// 更具体的结构命中时可压制的泛化语法点，避免同一用法重复解释。
+    public var supersedes: [String]?
 }
 
 /// 一次完整语法结构命中；只暴露应该着色和交互的 token。
 public struct GrammarMatch: Sendable, Equatable {
     public var pointID: String
+    /// 应在句子中强调、可交互的结构词。
     public var tokenIDs: [Int]
+    /// 从首个匹配词到末个匹配词的完整 token 范围，供整句解析展示原文片段。
+    public var spanTokenIDs: [Int]
 }
 
 public struct GrammarPointStore: Sendable {
@@ -105,6 +110,10 @@ public struct GrammarPointStore: Sendable {
                         Candidate(
                             pointID: point.id,
                             tokenIDs: tokenIDs,
+                            spanTokenIDs: Array(
+                                words[positions[0]].tokenID...words[positions[positions.count - 1]].tokenID
+                            ),
+                            supersedes: Set(point.supersedes ?? []),
                             stepCount: pattern.steps.count,
                             span: positions.last.map { $0 - positions[0] } ?? 0,
                             pointOrder: pointOrder
@@ -127,16 +136,24 @@ public struct GrammarPointStore: Sendable {
             return ($0.tokenIDs.first ?? 0) < ($1.tokenIDs.first ?? 0)
         }
 
-        var occupiedTokenIDs: Set<Int> = []
-        var accepted: [GrammarMatch] = []
+        var acceptedSignatures: Set<[Int]> = []
+        var accepted: [(match: GrammarMatch, supersedes: Set<String>)] = []
         for candidate in candidates {
-            guard occupiedTokenIDs.isDisjoint(with: candidate.tokenIDs) else { continue }
-            occupiedTokenIDs.formUnion(candidate.tokenIDs)
-            accepted.append(
-                GrammarMatch(pointID: candidate.pointID, tokenIDs: candidate.tokenIDs)
-            )
+            // 完全相同的结构词由更具体的模式优先；部分重叠仍保留，
+            // 例如一句话可同时包含现在完成时和 have been to 结构。
+            guard acceptedSignatures.insert(candidate.tokenIDs).inserted,
+                  !accepted.contains(where: { $0.supersedes.contains(candidate.pointID) })
+            else { continue }
+            accepted.append((
+                match: GrammarMatch(
+                    pointID: candidate.pointID,
+                    tokenIDs: candidate.tokenIDs,
+                    spanTokenIDs: candidate.spanTokenIDs
+                ),
+                supersedes: candidate.supersedes
+            ))
         }
-        return accepted.sorted {
+        return accepted.map(\.match).sorted {
             ($0.tokenIDs.first ?? 0) < ($1.tokenIDs.first ?? 0)
         }
     }
@@ -160,6 +177,8 @@ public struct GrammarPointStore: Sendable {
     private struct Candidate {
         let pointID: String
         let tokenIDs: [Int]
+        let spanTokenIDs: [Int]
+        let supersedes: Set<String>
         let stepCount: Int
         let span: Int
         let pointOrder: Int
@@ -213,7 +232,9 @@ public struct GrammarPointStore: Sendable {
     }
 
     private static func matches(_ word: String, expression: String) -> Bool {
-        expression
+        let normalizedWord = word.replacingOccurrences(of: "’", with: "'")
+        let grammaticalForms = grammaticalForms(for: normalizedWord)
+        return expression
             .lowercased()
             .split(separator: "|")
             .contains { option in
@@ -221,12 +242,75 @@ public struct GrammarPointStore: Sendable {
                 case "<word>":
                     return true
                 case "<gerund>":
-                    return word.count > 4 && word.hasSuffix("ing")
+                    return normalizedWord.count > 4 && normalizedWord.hasSuffix("ing")
+                case "<past-participle>":
+                    return isLikelyPastParticiple(normalizedWord)
+                case "<comparative>":
+                    return isLikelyComparative(normalizedWord)
                 default:
-                    return word == option
+                    return grammaticalForms.contains(String(option))
                 }
             }
     }
+
+    /// 一个聊天 token 可能同时包含主语和缩写助动词；保留原词并补充可能的助动词形式，
+    /// 后续结构词会自然消除 `'s`（is / has）、`'d`（had / would）等歧义。
+    private static func grammaticalForms(for word: String) -> Set<String> {
+        var forms: Set<String> = [word]
+        if word.hasSuffix("'m") { forms.insert("am") }
+        if word.hasSuffix("'re") { forms.insert("are") }
+        if word.hasSuffix("'ve") { forms.insert("have") }
+        if word.hasSuffix("'ll") { forms.insert("will") }
+        if word.hasSuffix("'d") {
+            forms.formUnion(["had", "would"])
+        }
+        if word.hasSuffix("'s") {
+            forms.formUnion(["is", "has"])
+        }
+        let negativeAuxiliaries: [String: String] = [
+            "aren't": "are", "can't": "can", "couldn't": "could", "didn't": "did",
+            "doesn't": "does", "don't": "do", "hadn't": "had", "hasn't": "has",
+            "haven't": "have", "isn't": "is", "mightn't": "might", "mustn't": "must",
+            "shouldn't": "should", "wasn't": "was", "weren't": "were", "won't": "will",
+            "wouldn't": "would",
+        ]
+        if let auxiliary = negativeAuxiliaries[word] {
+            forms.insert(auxiliary)
+        }
+        return forms
+    }
+
+    private static func isLikelyPastParticiple(_ word: String) -> Bool {
+        if word.count > 3, word.hasSuffix("ed") || word.hasSuffix("en") {
+            return true
+        }
+        return irregularPastParticiples.contains(word)
+    }
+
+    private static func isLikelyComparative(_ word: String) -> Bool {
+        commonComparatives.contains(word) || (word.count > 4 && word.hasSuffix("ier"))
+    }
+
+    private static let irregularPastParticiples: Set<String> = [
+        "been", "become", "begun", "bent", "bet", "bitten", "blown", "broken", "brought",
+        "built", "bought", "caught", "chosen", "come", "cost", "cut", "dealt", "done",
+        "drawn", "driven", "drunk", "eaten", "fallen", "fed", "felt", "fought", "found",
+        "flown", "forgotten", "forgiven", "frozen", "given", "gone", "got", "gotten",
+        "grown", "had", "heard", "held", "hidden", "hit", "kept", "known", "laid", "led",
+        "left", "lent", "lost", "made", "meant", "met", "paid", "put", "read", "ridden",
+        "risen", "run", "said", "seen", "sold", "sent", "set", "shown", "shut", "sung",
+        "sat", "slept", "spoken", "spent", "stood", "stolen", "swum", "taken", "taught",
+        "thought", "thrown", "told", "understood", "woken", "worn", "won", "written",
+    ]
+
+    private static let commonComparatives: Set<String> = [
+        "better", "bigger", "cheaper", "cleaner", "closer", "colder", "cooler", "darker",
+        "earlier", "easier", "farther", "faster", "fewer", "further", "greater", "harder",
+        "healthier", "higher", "hotter", "larger", "later", "less", "lighter", "longer",
+        "louder", "lower", "more", "nearer", "newer", "nicer", "older", "quicker", "safer",
+        "shorter", "simpler", "slower", "smaller", "sooner", "stronger", "taller", "warmer",
+        "weaker", "wider", "worse", "younger",
+    ]
 
     private static func crossesSentenceBoundary(
         fromTokenID: Int,
