@@ -165,9 +165,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       url: "/v1/me",
     });
     expect(profileUpdate.statusCode).toBe(200);
-    expect(
-      profileUpdate.json<UserSnapshot["profile"]>(),
-    ).toMatchObject({
+    expect(profileUpdate.json<UserSnapshot["profile"]>()).toMatchObject({
       difficulty: "senior2",
       displayName: "跨平台旅行者",
       hasCompletedProfileSetup: true,
