@@ -35,6 +35,7 @@ public struct ChatView: View {
     @State private var shakePhase = false
     @State private var isMascotPromptDismissed = false
     @State private var didBeginSpeechPlayback = false
+    @State private var showsRealtimeConversation = false
     @FocusState private var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
@@ -67,6 +68,19 @@ public struct ChatView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    Task {
+                        isTextInputFocused = false
+                        voicePlayer.stop()
+                        await deps.speech.stopSpeaking()
+                        showsRealtimeConversation = true
+                    }
+                } label: {
+                    Image(systemName: "phone.fill")
+                }
+                .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
             }
             #if DEBUG && targetEnvironment(simulator)
             ToolbarItem(placement: .topBarTrailing) {
@@ -101,6 +115,15 @@ public struct ChatView: View {
             )
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
+        }
+        .fullScreenCover(isPresented: $showsRealtimeConversation, onDismiss: {
+            Task { await viewModel.refreshMessages() }
+        }) {
+            RealtimeConversationView(
+                character: viewModel.character,
+                deps: deps,
+                onSpeechPlayback: { didBeginSpeechPlayback = true }
+            )
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
             // session 非 Sendable，只能在本闭包内内联使用；仅与协调器交换纯数据。

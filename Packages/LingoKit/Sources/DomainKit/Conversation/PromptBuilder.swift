@@ -22,7 +22,8 @@ public enum PromptBuilder {
         learner: LearnerContext,
         memorySections: [String] = [],
         guidance: String? = nil,
-        quizRequested: Bool = false
+        quizRequested: Bool = false,
+        voiceMode: Bool = false
     ) -> String {
         var sections: [String] = []
 
@@ -113,6 +114,18 @@ public enum PromptBuilder {
             before any optional quiz block.
             """
         )
+        if voiceMode {
+            sections.append(
+                """
+                ## Live voice mode
+                This reply will be spoken aloud immediately while it is generated.
+                - Use plain spoken English with one or two short sentences and one idea at a time.
+                - Do not use emoji, markdown, bullets, labels, stage directions, or text that only makes sense on screen.
+                - Avoid long preambles. Respond to the friend's meaning immediately and leave a natural pause for them.
+                - A newline is a speaking pause, not a separate notification. Never include a quiz block in voice mode.
+                """
+            )
+        }
         if quizRequested {
             sections.append(QuizService.promptInstruction)
         }
@@ -159,6 +172,7 @@ public enum PromptBuilder {
         memorySections: [String] = [],
         guidance: String? = nil,
         quizRequested: Bool = false,
+        voiceMode: Bool = false,
         rawWindow: Int = 24
     ) -> LLMRequest {
         LLMRequest(
@@ -169,7 +183,8 @@ public enum PromptBuilder {
                 learner: learner,
                 memorySections: memorySections,
                 guidance: guidance,
-                quizRequested: quizRequested
+                quizRequested: quizRequested,
+                voiceMode: voiceMode
             ),
             messages: chatMessages(history: history, rawWindow: rawWindow),
             // 出题时给足输出空间，避免 quiz JSON 被截断。

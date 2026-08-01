@@ -141,6 +141,85 @@ public final class ChatViewModel {
         await streamAssistantReply()
     }
 
+    /// 实时语音回合：先保存用户最终转写，再把角色回复映射成纯文本增量。
+    /// 音频、分句和插话均由 RealtimeVoiceKit 在客户端处理。
+    public func realtimeReplyStream(
+        userText: String
+    ) async throws -> AsyncThrowingStream<String, Error> {
+        guard let conversation else {
+            throw AppError.storage("聊天尚未加载")
+        }
+        let text = userText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty else {
+            throw AppError.storage("语音转写为空")
+        }
+
+        let userMessage = try await deps.chatStore.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: text,
+            tokenEstimate: TokenEstimator.estimate(text)
+        )
+        await reloadMessages()
+        runCoachReview(for: userMessage)
+
+        let request = await makeRoleplayRequest(
+            quizRequested: false,
+            voiceMode: true
+        )
+        let upstream = await deps.llm.stream(request)
+        return AsyncThrowingStream { continuation in
+            let task = Task {
+                do {
+                    for try await event in upstream {
+                        try Task.checkCancellation()
+                        if case .textDelta(let delta) = event, !delta.isEmpty {
+                            continuation.yield(delta)
+                        }
+                    }
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
+            continuation.onTermination = { _ in
+                task.cancel()
+            }
+        }
+    }
+
+    /// 只保存用户实际听到的角色文本；用户主动插话不是技术中断，不展示“重试”错误态。
+    public func saveRealtimeAssistant(spokenText: String) async {
+        guard let conversation else { return }
+        let spokenText = spokenText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !spokenText.isEmpty else { return }
+        do {
+            _ = try await persistAssistantReply(
+                conversationID: conversation.id,
+                text: spokenText,
+                interrupted: false
+            )
+            await grantMainlineTicketIfEligible(conversationID: conversation.id)
+            await reloadMessages()
+
+            let memoryService = self.memoryService
+            let conversationID = conversation.id
+            let characterName = character.card.name
+            Task(priority: .utility) {
+                await memoryService.compressIfNeeded(
+                    conversationID: conversationID,
+                    characterName: characterName
+                )
+            }
+        } catch {
+            Log.app.warning("实时语音回复保存失败：\(error.localizedDescription)")
+        }
+    }
+
+    public func refreshMessages() async {
+        await reloadMessages()
+    }
+
     public func localVoiceFile(for message: MessageDTO) async -> String? {
         do {
             let fileName = try await deps.voiceMedia.localFile(
@@ -234,28 +313,11 @@ public final class ChatViewModel {
             streamingText = nil
         }
 
-        // 注入分级记忆（long + short/mid）；原文窗口与记忆按订阅配额；主线机票未发放前附加引导
         let memoryService = self.memoryService
-        let memorySections = await memoryService.memorySections(characterID: character.id)
-        let rawWindow = await memoryService.quota().rawWindow
-        let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
-        let mainlineActive = character.isMainCharacter && !hasStoryTicket
         let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
-        let learner: LearnerContext
-        if let profile = try? await deps.economyStore.profile() {
-            learner = LearnerContext(profile: profile)
-        } else {
-            learner = .fallback(difficulty: character.difficultyLevel)
-        }
-        learnerDifficulty = learner.difficulty
-        let request = PromptBuilder.roleplayRequest(
-            card: character.card,
-            learner: learner,
-            history: messages,
-            memorySections: memorySections,
-            guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
+        let request = await makeRoleplayRequest(
             quizRequested: quizRequested,
-            rawWindow: rawWindow
+            voiceMode: false
         )
 
         var accumulated = ""
@@ -307,6 +369,35 @@ public final class ChatViewModel {
             }
         }
         await reloadMessages()
+    }
+
+    /// 注入分级记忆、学习者档案与主线引导；文本聊天和实时语音共享同一角色事实来源。
+    private func makeRoleplayRequest(
+        quizRequested: Bool,
+        voiceMode: Bool
+    ) async -> LLMRequest {
+        let memoryService = self.memoryService
+        let memorySections = await memoryService.memorySections(characterID: character.id)
+        let rawWindow = await memoryService.quota().rawWindow
+        let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
+        let mainlineActive = character.isMainCharacter && !hasStoryTicket
+        let learner: LearnerContext
+        if let profile = try? await deps.economyStore.profile() {
+            learner = LearnerContext(profile: profile)
+        } else {
+            learner = .fallback(difficulty: character.difficultyLevel)
+        }
+        learnerDifficulty = learner.difficulty
+        return PromptBuilder.roleplayRequest(
+            card: character.card,
+            learner: learner,
+            history: messages,
+            memorySections: memorySections,
+            guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
+            quizRequested: quizRequested,
+            voiceMode: voiceMode,
+            rawWindow: rawWindow
+        )
     }
 
     @discardableResult

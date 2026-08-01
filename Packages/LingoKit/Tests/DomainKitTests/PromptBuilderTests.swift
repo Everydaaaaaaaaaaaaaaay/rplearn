@@ -146,6 +146,19 @@ struct PromptBuilderTests {
         #expect(request.responseFormat == .text)
     }
 
+    @Test("实时语音提示要求短句、纯口语且不输出视觉符号")
+    func voiceModePromptContract() {
+        let prompt = PromptBuilder.roleplaySystemPrompt(
+            card: card,
+            learner: learner(difficulty: .junior2),
+            voiceMode: true
+        )
+
+        #expect(prompt.contains("## Live voice mode"))
+        #expect(prompt.contains("Do not use emoji"))
+        #expect(prompt.contains("spoken aloud immediately"))
+    }
+
     @Test("出题回合：附加出题指令并放宽 maxTokens")
     func quizRequestedAppendsInstruction() {
         let plain = PromptBuilder.roleplaySystemPrompt(

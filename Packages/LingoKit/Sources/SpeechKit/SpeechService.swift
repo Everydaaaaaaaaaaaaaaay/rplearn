@@ -112,7 +112,10 @@ public actor AppleTTSService: SpeechService {
     /// ② 否则在全部英语语音里按「质量 > 口音匹配 > 优先命名」挑最自然的（宁可换口音也不用机械音）；
     /// ③ 都没有 → 回退系统按语言给的默认音。
     /// 效果：用户只要下载任意一款英语增强/高级语音，全 App 立即摆脱机械音。
-    static func selectBestVoice(from voices: [AVSpeechSynthesisVoice], language: String) -> AVSpeechSynthesisVoice? {
+    public nonisolated static func selectBestVoice(
+        from voices: [AVSpeechSynthesisVoice],
+        language: String
+    ) -> AVSpeechSynthesisVoice? {
         guard let index = rankBestIndex(
             candidates: voices.map { ($0.language, qualityRank($0.quality), $0.name) },
             target: language

@@ -25,6 +25,13 @@ let serviceTargets: [Target] = [
     .target(name: "LLMKit", dependencies: [module("BackendKit"), module("CoreKit")]),
     .target(name: "SpeechKit", dependencies: [module("CoreKit")]),
     .target(
+        name: "RealtimeVoiceKit",
+        dependencies: [
+            module("CoreKit"),
+            module("SpeechKit"),
+        ]
+    ),
+    .target(
         name: "MediaKit",
         dependencies: [
             module("BackendKit"),
@@ -81,6 +88,7 @@ let featureTargets: [Target] = [
         module("PersistenceKit"),
         module("DictKit"),
         module("SpeechKit"),
+        module("RealtimeVoiceKit"),
         module("MediaKit"),
     ]),
     feature("OnboardingFeature", dependencies: [

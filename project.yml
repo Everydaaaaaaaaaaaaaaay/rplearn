@@ -48,6 +48,8 @@ targets:
       - package: LingoKit
         product: SpeechKit
       - package: LingoKit
+        product: RealtimeVoiceKit
+      - package: LingoKit
         product: MediaKit
       - package: LingoKit
         product: HomeFeature
@@ -86,8 +88,8 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         ITSAppUsesNonExemptEncryption: false
-        NSMicrophoneUsageDescription: "用于录制语音消息，练习英语口语"
-        NSSpeechRecognitionUsageDescription: "用于将你的语音转换为文字发送给 AI 角色"
+        NSMicrophoneUsageDescription: "用于录制语音消息和进行实时英语对话"
+        NSSpeechRecognitionUsageDescription: "用于将实时英语对话转换为文字发送给 AI 角色"
         NSAppTransportSecurity:
           NSAllowsLocalNetworking: true
         UILaunchScreen:
@@ -131,6 +133,8 @@ targets:
         product: DomainKit
       - package: LingoKit
         product: SpeechKit
+      - package: LingoKit
+        product: RealtimeVoiceKit
       - package: LingoKit
         product: MediaKit
       - package: LingoKit
