@@ -7,17 +7,23 @@ public struct TokenSelection: Hashable, Sendable {
     public let tokenID: Int
     public let word: String
     public let grammarPointID: String?
+    public let contextText: String?
+    public let phraseCandidates: [String]
 
     public init(
         contextID: String,
         tokenID: Int,
         word: String,
-        grammarPointID: String? = nil
+        grammarPointID: String? = nil,
+        contextText: String? = nil,
+        phraseCandidates: [String] = []
     ) {
         self.contextID = contextID
         self.tokenID = tokenID
         self.word = word
         self.grammarPointID = grammarPointID
+        self.contextText = contextText
+        self.phraseCandidates = phraseCandidates
     }
 }
 
@@ -72,29 +78,16 @@ public struct TappableText: View {
         let isSelected = selection?.contextID == contextID && selection?.tokenID == token.id
         let isKeyword = token.word.map { keywords.contains($0) } ?? false
 
-        if let word = token.word {
+        if token.word != nil {
             if let grammarPointID = grammarPointIDs[token.id] {
                 Menu {
                     Button {
-                        onSelect(
-                            TokenSelection(
-                                contextID: contextID,
-                                tokenID: token.id,
-                                word: word
-                            )
-                        )
+                        onSelect(makeSelection(for: token, grammarPointID: nil))
                     } label: {
                         Label("单词释义", systemImage: "character.book.closed")
                     }
                     Button {
-                        onSelect(
-                            TokenSelection(
-                                contextID: contextID,
-                                tokenID: token.id,
-                                word: word,
-                                grammarPointID: grammarPointID
-                            )
-                        )
+                        onSelect(makeSelection(for: token, grammarPointID: grammarPointID))
                     } label: {
                         Label("语法释义", systemImage: "text.book.closed")
                     }
@@ -114,7 +107,7 @@ public struct TappableText: View {
                 }
             } else {
                 Button {
-                    onSelect(TokenSelection(contextID: contextID, tokenID: token.id, word: word))
+                    onSelect(makeSelection(for: token, grammarPointID: nil))
                 } label: {
                     tokenLabel(
                         token,
@@ -133,6 +126,50 @@ public struct TappableText: View {
             Text(token.display)
                 .foregroundStyle(textColor ?? .primary)
         }
+    }
+
+    private func makeSelection(
+        for token: TextToken,
+        grammarPointID: String?
+    ) -> TokenSelection {
+        TokenSelection(
+            contextID: contextID,
+            tokenID: token.id,
+            word: token.word ?? token.display,
+            grammarPointID: grammarPointID,
+            contextText: tokens.map(\.display).joined(),
+            phraseCandidates: phraseCandidates(around: token.id)
+        )
+    }
+
+    /// 生成包含被点词的 2–4 词窗口，长短语优先交给本地词典精确匹配。
+    private func phraseCandidates(around tokenID: Int) -> [String] {
+        let words = tokens.compactMap { token -> (id: Int, word: String)? in
+            token.word.map { (token.id, $0) }
+        }
+        guard let selectedIndex = words.firstIndex(where: { $0.id == tokenID }) else {
+            return []
+        }
+        var results: [String] = []
+        var seen = Set<String>()
+        for length in stride(from: min(4, words.count), through: 2, by: -1) {
+            let firstStart = max(0, selectedIndex - length + 1)
+            let lastStart = min(selectedIndex, words.count - length)
+            guard firstStart <= lastStart else { continue }
+            let starts = (firstStart...lastStart).sorted {
+                abs(($0 + length / 2) - selectedIndex)
+                    < abs(($1 + length / 2) - selectedIndex)
+            }
+            for start in starts {
+                let phrase = words[start..<(start + length)]
+                    .map(\.word)
+                    .joined(separator: " ")
+                if seen.insert(phrase).inserted {
+                    results.append(phrase)
+                }
+            }
+        }
+        return results
     }
 
     private func tokenLabel(

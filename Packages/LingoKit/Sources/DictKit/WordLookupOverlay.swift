@@ -32,6 +32,8 @@ public struct WordLookupOverlayModifier: ViewModifier {
                             DictCardView(
                                 target: selection.grammarPointID.map(DictTarget.grammarPoint)
                                     ?? .word(selection.word),
+                                contextSentence: selection.contextText,
+                                phraseCandidates: selection.phraseCandidates,
                                 dictionary: dictionary,
                                 grammar: grammar,
                                 onSpeak: onSpeak,

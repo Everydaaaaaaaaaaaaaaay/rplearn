@@ -86,7 +86,7 @@ final class AppEnvironment {
         )
 
         // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。
-        let dictURL = Bundle.main.url(forResource: "ecdict_lite", withExtension: "sqlite")!
+        let dictURL = Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite")!
         self.dictionary = try! DictDatabase(databaseURL: dictURL)
         let grammarURL = Bundle.main.url(forResource: "grammar_points", withExtension: "json")!
         self.grammarPoints = try! GrammarPointStore(url: grammarURL)

@@ -6,7 +6,7 @@ import Testing
 @Suite("KeywordAnnotator")
 struct KeywordAnnotatorTests {
     private func makeAnnotator() throws -> KeywordAnnotator {
-        let url = try #require(Bundle.main.url(forResource: "ecdict_lite", withExtension: "sqlite"))
+        let url = try #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))
         return KeywordAnnotator(dictionary: try DictDatabase(databaseURL: url))
     }
 

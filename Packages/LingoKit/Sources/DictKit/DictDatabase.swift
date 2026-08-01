@@ -2,8 +2,8 @@ import CoreKit
 import Foundation
 import SQLite3
 
-/// ECDICT 只读查询（原生 sqlite3，预编译语句复用）。
-/// 查询流水线：lowercase → word 精确 → lemma 反查 → 规则回退 → 未收录。
+/// 全量 ECDICT + WordNet 只读查询（原生 sqlite3，预编译语句复用）。
+/// 查询流水线：word 精确 → lemma 反查 → 规则回退 → 未收录；上下文短语单独作为建议返回。
 public actor DictDatabase {
     public enum DictError: Error {
         case cannotOpen(String)
@@ -17,6 +17,7 @@ public actor DictDatabase {
         let exactStatement: OpaquePointer
         let lemmaStatement: OpaquePointer
         let prefixStatement: OpaquePointer
+        let senseStatement: OpaquePointer
 
         init(databaseURL: URL) throws {
             var handle: OpaquePointer?
@@ -41,12 +42,16 @@ public actor DictDatabase {
             )
             lemmaStatement = try prepare("SELECT lemma FROM lemma WHERE form = ?")
             prefixStatement = try prepare("SELECT word FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?")
+            senseStatement = try prepare(
+                "SELECT rank, pos, definition, examples, synonyms FROM sense WHERE wl = ? ORDER BY rank, pos LIMIT 12"
+            )
         }
 
         deinit {
             sqlite3_finalize(exactStatement)
             sqlite3_finalize(lemmaStatement)
             sqlite3_finalize(prefixStatement)
+            sqlite3_finalize(senseStatement)
             sqlite3_close(db)
         }
     }
@@ -65,6 +70,13 @@ public actor DictDatabase {
         guard !word.isEmpty else { return nil }
 
         if let entry = exactEntry(word) {
+            if isPureInflection(entry) {
+                for lemma in lemmas(of: word) {
+                    if let lemmaEntry = exactEntry(lemma) {
+                        return lemmaEntry
+                    }
+                }
+            }
             return entry
         }
         for lemma in lemmas(of: word) {
@@ -78,6 +90,29 @@ public actor DictDatabase {
             }
         }
         return nil
+    }
+
+    /// 返回原句中确实收录的短语，由 UI 作为建议展示，不擅自替换被点单词的主释义。
+    public func matchingPhrases(
+        _ rawCandidates: [String],
+        excluding rawWord: String,
+        limit: Int = 4
+    ) -> [DictEntry] {
+        let excluded = rawWord.lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        var results: [DictEntry] = []
+        var seen = Set<String>()
+        for candidate in rawCandidates {
+            let normalized = candidate.lowercased()
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            guard normalized != excluded,
+                  seen.insert(normalized).inserted,
+                  let entry = exactEntry(normalized)
+            else { continue }
+            results.append(entry)
+            if results.count == limit { break }
+        }
+        return results
     }
 
     /// 精确命中（入参需已 lowercase）。
@@ -97,8 +132,31 @@ public actor DictDatabase {
             tag: columnText(statement, 7),
             bnc: Int(sqlite3_column_int(statement, 8)),
             frq: Int(sqlite3_column_int(statement, 9)),
-            exchange: columnText(statement, 10)
+            exchange: columnText(statement, 10),
+            senses: senses(for: wl)
         )
+    }
+
+    private func senses(for word: String) -> [DictSense] {
+        let statement = connection.senseStatement
+        defer { sqlite3_reset(statement) }
+        bindText(word, statement: statement, index: 1)
+        var results: [DictSense] = []
+        while sqlite3_step(statement) == SQLITE_ROW {
+            guard let partOfSpeech = columnText(statement, 1),
+                  let definition = columnText(statement, 2)
+            else { continue }
+            results.append(
+                DictSense(
+                    rank: Int(sqlite3_column_int(statement, 0)),
+                    partOfSpeech: partOfSpeech,
+                    definition: definition,
+                    examples: decodeStringArray(columnText(statement, 3)),
+                    synonyms: decodeStringArray(columnText(statement, 4))
+                )
+            )
+        }
+        return results
     }
 
     /// lemma 反查（looked → [look]）。
@@ -143,5 +201,23 @@ public actor DictDatabase {
     private func bindText(_ value: String, statement: OpaquePointer, index: Int32) {
         let transient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         sqlite3_bind_text(statement, index, value, -1, transient)
+    }
+
+    private func decodeStringArray(_ value: String?) -> [String] {
+        guard let value,
+              let data = value.data(using: .utf8),
+              let decoded = try? JSONDecoder().decode([String].self, from: data)
+        else { return [] }
+        return decoded
+    }
+
+    /// 全量 ECDICT 会把 went/looked 等词形也作为独立词条收录。
+    /// 只有当释义仅是一行词形说明时才回到原形；left/saw 等兼有独立词义的词不受影响。
+    private func isPureInflection(_ entry: DictEntry) -> Bool {
+        guard entry.translationLines.count == 1,
+              let translation = entry.translationLines.first
+        else { return false }
+        return ["过去式", "过去分词", "现在分词", "复数形式", "第三人称单数"]
+            .contains { translation.contains($0) }
     }
 }

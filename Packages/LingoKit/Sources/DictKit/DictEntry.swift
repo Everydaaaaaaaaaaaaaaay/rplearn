@@ -1,11 +1,45 @@
 import Foundation
 
-/// ECDICT 词条（ecdict_lite.sqlite word 表的一行）。
+public struct DictSense: Sendable, Equatable, Identifiable {
+    public let rank: Int
+    public let partOfSpeech: String
+    public let definition: String
+    public let examples: [String]
+    public let synonyms: [String]
+
+    public var id: String { "\(partOfSpeech)-\(rank)-\(definition)" }
+
+    public var partOfSpeechLabel: String {
+        switch partOfSpeech {
+        case "n": "名词"
+        case "v": "动词"
+        case "a": "形容词"
+        case "r": "副词"
+        default: partOfSpeech
+        }
+    }
+}
+
+public struct DictMeaningGroup: Sendable, Equatable, Identifiable {
+    public let partOfSpeech: String?
+    public let meaning: String
+
+    public var id: String { "\(partOfSpeech ?? "其它")-\(meaning)" }
+}
+
+public struct DictWordForm: Sendable, Equatable, Identifiable {
+    public let label: String
+    public let word: String
+
+    public var id: String { "\(label)-\(word)" }
+}
+
+/// 本地学习词典的一条词目：ECDICT 提供英汉信息，WordNet 提供结构化英文义项与例句。
 public struct DictEntry: Sendable, Equatable {
     /// 原始拼写（保留大小写，如 "OK"）。
     public var word: String
     public var phonetic: String?
-    /// 英文释义（可能为空，体积超限时会被预处理脚本裁掉）。
+    /// ECDICT 的平铺英文释义；已有 WordNet 结构化义项时不重复存储。
     public var definition: String?
     /// 中文释义，行间以字面量 "\n" 分隔。
     public var translation: String?
@@ -17,6 +51,7 @@ public struct DictEntry: Sendable, Equatable {
     public var bnc: Int
     public var frq: Int
     public var exchange: String?
+    public var senses: [DictSense]
 
     public init(
         word: String,
@@ -29,7 +64,8 @@ public struct DictEntry: Sendable, Equatable {
         tag: String? = nil,
         bnc: Int = 0,
         frq: Int = 0,
-        exchange: String? = nil
+        exchange: String? = nil,
+        senses: [DictSense] = []
     ) {
         self.word = word
         self.phonetic = phonetic
@@ -42,6 +78,7 @@ public struct DictEntry: Sendable, Equatable {
         self.bnc = bnc
         self.frq = frq
         self.exchange = exchange
+        self.senses = senses
     }
 
     /// 释义按行拆开（数据里换行是字面量 "\n" 两个字符）。
@@ -53,7 +90,84 @@ public struct DictEntry: Sendable, Equatable {
             .map(String.init)
     }
 
+    public var meaningGroups: [DictMeaningGroup] {
+        translationLines.map { line in
+            let value = line.trimmingCharacters(in: .whitespacesAndNewlines)
+            for (prefix, label) in Self.partOfSpeechPrefixes {
+                guard value.lowercased().hasPrefix(prefix) else { continue }
+                let meaning = value.dropFirst(prefix.count)
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                if !meaning.isEmpty {
+                    return DictMeaningGroup(partOfSpeech: label, meaning: meaning)
+                }
+            }
+            if value.hasPrefix("["), let end = value.firstIndex(of: "]") {
+                let label = String(value[value.index(after: value.startIndex)..<end])
+                let meaning = value[value.index(after: end)...]
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                if !meaning.isEmpty {
+                    return DictMeaningGroup(partOfSpeech: label, meaning: meaning)
+                }
+            }
+            return DictMeaningGroup(partOfSpeech: nil, meaning: value)
+        }
+        .filter { !$0.meaning.isEmpty }
+    }
+
+    public var fallbackEnglishDefinitions: [String] {
+        guard senses.isEmpty, let definition else { return [] }
+        return definition
+            .replacingOccurrences(of: "\\n", with: "\n")
+            .split(separator: "\n")
+            .map(String.init)
+            .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+    }
+
+    public var wordForms: [DictWordForm] {
+        guard let exchange else { return [] }
+        var seen = Set<String>()
+        return exchange.split(separator: "/").compactMap { item in
+            let pair = item.split(separator: ":", maxSplits: 1).map(String.init)
+            guard pair.count == 2,
+                  let label = Self.wordFormLabels[pair[0]],
+                  !pair[1].isEmpty
+            else { return nil }
+            let identity = "\(label)-\(pair[1])"
+            guard seen.insert(identity).inserted else { return nil }
+            return DictWordForm(label: label, word: pair[1])
+        }
+    }
+
     public var tags: [String] {
         tag?.split(separator: " ").map(String.init) ?? []
     }
+
+    private static let partOfSpeechPrefixes: [(String, String)] = [
+        ("prep.", "介词"),
+        ("pron.", "代词"),
+        ("conj.", "连词"),
+        ("interj.", "感叹词"),
+        ("aux.", "助动词"),
+        ("adv.", "副词"),
+        ("adj.", "形容词"),
+        ("num.", "数词"),
+        ("art.", "冠词"),
+        ("vt.", "及物动词"),
+        ("vi.", "不及物动词"),
+        ("a.", "形容词"),
+        ("ad.", "副词"),
+        ("n.", "名词"),
+        ("v.", "动词"),
+    ]
+
+    private static let wordFormLabels: [String: String] = [
+        "0": "原形",
+        "p": "过去式",
+        "d": "过去分词",
+        "i": "现在分词",
+        "3": "第三人称单数",
+        "s": "复数",
+        "r": "比较级",
+        "t": "最高级",
+    ]
 }
