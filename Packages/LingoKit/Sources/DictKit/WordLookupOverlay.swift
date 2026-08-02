@@ -19,7 +19,9 @@ public struct WordLookupOverlayModifier: ViewModifier {
                 if let selection, let anchor {
                     GeometryReader { proxy in
                         let wordRect = proxy[anchor]
-                        let cardHeight: CGFloat = 380
+                        let cardHeight = DictCardLayout.maximumHeight
+                        let halfWidth = DictCardLayout.width / 2
+                        let halfHeight = cardHeight / 2
                         let showBelow = wordRect.maxY + cardHeight + 12 < proxy.size.height
                         ZStack {
                             // 遮罩：点击关闭
@@ -31,7 +33,6 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 .accessibilityHidden(true)
                             DictCardView(
                                 target: .word(selection.word),
-                                contextSentence: selection.contextText,
                                 phraseCandidates: selection.phraseCandidates,
                                 dictionary: dictionary,
                                 grammar: grammar,
@@ -42,8 +43,13 @@ public struct WordLookupOverlayModifier: ViewModifier {
                             )
                             .id(selection)
                             .position(
-                                x: min(max(170, wordRect.midX), proxy.size.width - 170),
-                                y: showBelow ? wordRect.maxY + 8 + 190 : max(198, wordRect.minY - 8 - 190)
+                                x: min(
+                                    max(halfWidth + 10, wordRect.midX),
+                                    proxy.size.width - halfWidth - 10
+                                ),
+                                y: showBelow
+                                    ? wordRect.maxY + 8 + halfHeight
+                                    : max(halfHeight + 8, wordRect.minY - 8 - halfHeight)
                             )
                         }
                         .transition(

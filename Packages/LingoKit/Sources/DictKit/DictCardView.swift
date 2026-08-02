@@ -30,9 +30,15 @@ public struct WordFavoriteActions: Sendable {
     }
 }
 
+enum DictCardLayout {
+    static let width: CGFloat = 320
+    static let maximumHeight: CGFloat = 340
+    static let contentPadding: CGFloat = 10
+    static let contentSpacing: CGFloat = 8
+}
+
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
 public struct DictCardView: View {
-    private let contextSentence: String?
     private let phraseCandidates: [String]
     private let dictionary: DictDatabase
     private let grammar: GrammarPointStore
@@ -54,7 +60,6 @@ public struct DictCardView: View {
 
     public init(
         target: DictTarget,
-        contextSentence: String? = nil,
         phraseCandidates: [String] = [],
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
@@ -64,7 +69,6 @@ public struct DictCardView: View {
         onDismiss: (@MainActor () -> Void)? = nil
     ) {
         _path = State(initialValue: [target])
-        self.contextSentence = contextSentence
         self.phraseCandidates = phraseCandidates
         self.dictionary = dictionary
         self.grammar = grammar
@@ -81,15 +85,16 @@ public struct DictCardView: View {
             header
             Divider()
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: DictCardLayout.contentSpacing) {
                     content
                 }
-                .padding(12)
+                .padding(DictCardLayout.contentPadding)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .scrollIndicators(.hidden)
         }
-        .frame(width: 320)
-        .frame(maxHeight: 380)
+        .frame(width: DictCardLayout.width)
+        .frame(maxHeight: DictCardLayout.maximumHeight)
         .fixedSize(horizontal: false, vertical: true)
         .background(
             reduceTransparency
@@ -228,19 +233,13 @@ public struct DictCardView: View {
             if !entry.tags.isEmpty || entry.oxford || entry.collins > 0 {
                 tagChips(entry)
             }
-            if path.count == 1,
-               let contextSentence,
-               contextSentence.localizedCaseInsensitiveCompare(word) != .orderedSame
-            {
-                contextSection(contextSentence)
-            }
-            if path.count == 1, !contextualPhrases.isEmpty {
-                contextualPhraseSection(contextualPhrases)
-            }
             if entry.meaningGroups.isEmpty {
                 missingChineseMeaning(entry.word)
             } else {
                 chineseMeaningSection(entry)
+            }
+            if path.count == 1, !contextualPhrases.isEmpty {
+                contextualPhraseSection(contextualPhrases)
             }
             if !entry.senses.isEmpty || !entry.fallbackEnglishDefinitions.isEmpty {
                 englishSenseSection(entry)
@@ -248,9 +247,6 @@ public struct DictCardView: View {
             if !entry.wordForms.isEmpty {
                 wordFormsSection(entry)
             }
-            Text("本地词典 · ECDICT / WordNet")
-                .font(.caption2)
-                .foregroundStyle(.tertiary)
         } else {
             VStack(alignment: .leading, spacing: 10) {
                 Label("词典未收录该词", systemImage: "book.closed")
@@ -279,29 +275,16 @@ public struct DictCardView: View {
         }
     }
 
-    private func contextSection(_ sentence: String) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            sectionTitle("原句语境", systemImage: "text.quote")
-            Text(sentence)
-                .font(.footnote)
-                .lineSpacing(3)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding(10)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.dsBubbleIncoming, in: RoundedRectangle(cornerRadius: DSRadius.inline))
-    }
-
     private func contextualPhraseSection(_ phrases: [DictEntry]) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            sectionTitle("原句中的相关短语", systemImage: "link")
+        VStack(alignment: .leading, spacing: 4) {
+            compactSectionTitle("短语")
             ForEach(phrases, id: \.word) { phrase in
                 Button {
                     path.append(.word(phrase.word))
                 } label: {
-                    HStack(alignment: .firstTextBaseline, spacing: 6) {
+                    HStack(alignment: .firstTextBaseline, spacing: 5) {
                         Text(phrase.word)
-                            .font(.footnote.weight(.semibold))
+                            .font(.caption.weight(.semibold))
                             .foregroundStyle(Color.dsSkyDeep)
                         if let meaning = phrase.meaningGroups.first?.meaning {
                             Text(meaning)
@@ -310,9 +293,6 @@ public struct DictCardView: View {
                                 .lineLimit(1)
                         }
                         Spacer(minLength: 0)
-                        Image(systemName: "chevron.forward")
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -322,20 +302,17 @@ public struct DictCardView: View {
     }
 
     private func chineseMeaningSection(_ entry: DictEntry) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            sectionTitle("中文释义", systemImage: "character.book.closed")
+        VStack(alignment: .leading, spacing: 5) {
             ForEach(entry.meaningGroups) { group in
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                HStack(alignment: .firstTextBaseline, spacing: 6) {
                     if let partOfSpeech = group.partOfSpeech {
                         Text(partOfSpeech)
-                            .font(.caption2.weight(.semibold))
+                            .font(.caption.weight(.semibold))
                             .foregroundStyle(Color.dsSkyDeep)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 3)
-                            .background(Color.dsSky.opacity(0.12), in: Capsule())
                     }
                     Text(group.meaning)
                         .font(.subheadline)
+                        .lineSpacing(1)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -343,46 +320,48 @@ public struct DictCardView: View {
     }
 
     private func englishSenseSection(_ entry: DictEntry) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Divider()
-            sectionTitle("英文分义与例句", systemImage: "book.pages")
+            compactSectionTitle("英文释义")
             if !entry.senses.isEmpty {
                 let visibleSenses = showsAllSenses
                     ? entry.senses
-                    : Array(entry.senses.prefix(4))
+                    : Array(entry.senses.prefix(3))
                 ForEach(visibleSenses) { sense in
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(alignment: .firstTextBaseline, spacing: 6) {
-                            Text(sense.partOfSpeechLabel)
-                                .font(.caption2.weight(.semibold))
-                                .foregroundStyle(.secondary)
+                    HStack(alignment: .top, spacing: 6) {
+                        Text(sense.partOfSpeechLabel)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Color.dsSkyDeep)
+                            .frame(width: 34, alignment: .leading)
+                        VStack(alignment: .leading, spacing: 2) {
                             Text(sense.definition)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
-                        }
-                        if let example = sense.examples.first {
-                            Text("例：\(example)")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        if !sense.synonyms.isEmpty {
-                            Text("近义：\(sense.synonyms.prefix(4).joined(separator: " · "))")
-                                .font(.caption2)
-                                .foregroundStyle(.tertiary)
-                                .lineLimit(2)
+                            if let example = sense.examples.first {
+                                Text(example)
+                                    .font(.caption)
+                                    .italic()
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(2)
+                            }
+                            if !sense.synonyms.isEmpty {
+                                Text("≈ \(sense.synonyms.prefix(3).joined(separator: " · "))")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                                    .lineLimit(1)
+                            }
                         }
                     }
                 }
-                if entry.senses.count > 4 {
-                    Button(showsAllSenses ? "收起其它义项" : "查看其它 \(entry.senses.count - 4) 个义项") {
+                if entry.senses.count > 3 {
+                    Button(showsAllSenses ? "收起" : "其余 \(entry.senses.count - 3) 个义项") {
                         showsAllSenses.toggle()
                     }
                     .font(.caption.weight(.semibold))
                     .buttonStyle(.borderless)
                 }
             } else {
-                ForEach(entry.fallbackEnglishDefinitions.prefix(4), id: \.self) { definition in
+                ForEach(entry.fallbackEnglishDefinitions.prefix(3), id: \.self) { definition in
                     Text(definition)
                         .font(.footnote)
                         .fixedSize(horizontal: false, vertical: true)
@@ -392,24 +371,24 @@ public struct DictCardView: View {
     }
 
     private func wordFormsSection(_ entry: DictEntry) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 5) {
             Divider()
-            sectionTitle("词形变化", systemImage: "arrow.triangle.branch")
+            compactSectionTitle("词形")
             FlowLayout(spacing: 6) {
-                ForEach(Array(entry.wordForms.prefix(10))) { form in
+                ForEach(Array(entry.wordForms.prefix(8))) { form in
                     Button {
                         path.append(.word(form.word))
                     } label: {
                         VStack(alignment: .leading, spacing: 1) {
                             Text(form.label)
-                                .font(.system(size: 9, weight: .medium))
+                                .font(.system(size: 8, weight: .medium))
                                 .foregroundStyle(.secondary)
                             Text(form.word)
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(Color.dsSkyDeep)
                         }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 5)
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 4)
                         .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 7))
                     }
                     .buttonStyle(.plain)
@@ -446,10 +425,10 @@ public struct DictCardView: View {
         }
     }
 
-    private func sectionTitle(_ title: String, systemImage: String) -> some View {
-        Label(title, systemImage: systemImage)
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(.secondary)
+    private func compactSectionTitle(_ title: String) -> some View {
+        Text(title)
+            .font(.caption2.weight(.semibold))
+            .foregroundStyle(.tertiary)
     }
 
     @ViewBuilder
@@ -532,7 +511,8 @@ public struct DictCardView: View {
         if path.count == 1 {
             contextualPhrases = await dictionary.matchingPhrases(
                 phraseCandidates,
-                excluding: word
+                excluding: word,
+                limit: 2
             )
         }
         entry = loadedEntry
