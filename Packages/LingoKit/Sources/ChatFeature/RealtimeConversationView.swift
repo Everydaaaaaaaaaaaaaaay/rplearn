@@ -55,19 +55,19 @@ private final class RealtimeConversationCoordinator {
             + character.card.hobbies
     }
 
-    private static func turnPolicy(for level: DifficultyLevel) -> VoiceTurnDetectionPolicy {
-        let silence: TimeInterval
+    private static func turnPolicy(for level: DifficultyLevel) -> VoiceTurnPolicy {
+        let delay: Duration
         switch level {
         case .primary1, .primary2, .primary3, .primary4, .primary5, .primary6:
-            silence = 1.05
+            delay = .milliseconds(1_050)
         case .junior1, .junior2, .junior3:
-            silence = 0.9
+            delay = .milliseconds(900)
         case .senior1, .senior2, .senior3:
-            silence = 0.8
+            delay = .milliseconds(800)
         case .undergraduate, .postgraduate, .advanced:
-            silence = 0.7
+            delay = .milliseconds(700)
         }
-        return VoiceTurnDetectionPolicy(endOfTurnSilence: silence)
+        return VoiceTurnPolicy(endOfTurnDelay: delay)
     }
 }
 

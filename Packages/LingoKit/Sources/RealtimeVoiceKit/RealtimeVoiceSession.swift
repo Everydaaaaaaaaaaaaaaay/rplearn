@@ -22,7 +22,7 @@ public final class RealtimeVoiceSession {
     private let voiceLanguage: String
     private let contextualStrings: [String]
     private let recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
-    private var turnDetector: ClientVoiceTurnDetector
+    private let turnPolicy: VoiceTurnPolicy
 
     private var lifecycleGeneration = UUID()
     private var activeResponseID: UUID?
@@ -32,9 +32,6 @@ public final class RealtimeVoiceSession {
     private var recognitionRecoveryTask: Task<Void, Never>?
     private var inputShutdownTask: Task<Void, Never>?
     private var consecutiveRecognitionFailures = 0
-    private var userSpeechActive = false
-    private var preSpeechTranscript = ""
-    private var transcriptBaseline = ""
 
     public convenience init(
         audioSession: AudioSessionCoordinator,
@@ -42,7 +39,7 @@ public final class RealtimeVoiceSession {
         localeIdentifier: String = "en-US",
         voiceLanguage: String = "en-US",
         contextualStrings: [String] = [],
-        turnPolicy: VoiceTurnDetectionPolicy = .init()
+        turnPolicy: VoiceTurnPolicy = .init()
     ) {
         self.init(
             input: AppleRealtimeSpeechRecognizer(audioSession: audioSession),
@@ -63,7 +60,7 @@ public final class RealtimeVoiceSession {
         localeIdentifier: String = "en-US",
         voiceLanguage: String = "en-US",
         contextualStrings: [String] = [],
-        turnPolicy: VoiceTurnDetectionPolicy = .init(),
+        turnPolicy: VoiceTurnPolicy = .init(),
         recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
     ) {
         self.init(
@@ -85,7 +82,7 @@ public final class RealtimeVoiceSession {
         localeIdentifier: String,
         voiceLanguage: String,
         contextualStrings: [String],
-        turnPolicy: VoiceTurnDetectionPolicy,
+        turnPolicy: VoiceTurnPolicy,
         recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy = .init()
     ) {
         self.input = input
@@ -95,13 +92,13 @@ public final class RealtimeVoiceSession {
         self.voiceLanguage = voiceLanguage
         self.contextualStrings = contextualStrings
         self.recognitionRecoveryPolicy = recognitionRecoveryPolicy
-        self.turnDetector = ClientVoiceTurnDetector(policy: turnPolicy)
+        self.turnPolicy = turnPolicy
 
-        input.onLevel = { [weak self] level, timestamp in
-            self?.receiveLevel(level, at: timestamp)
+        input.onLevel = { [weak self] level in
+            self?.receiveLevel(level)
         }
-        input.onTranscript = { [weak self] transcript in
-            self?.receiveTranscript(transcript)
+        input.onTranscription = { [weak self] transcription in
+            self?.receiveTranscription(transcription)
         }
         input.onFailure = { [weak self] failure in
             self?.scheduleRecognitionRecovery(after: failure)
@@ -187,8 +184,8 @@ public final class RealtimeVoiceSession {
         recognitionRecoveryTask?.cancel()
         recognitionRecoveryTask = nil
         consecutiveRecognitionFailures = 0
-        turnDetector.reset()
-        userSpeechActive = false
+        pendingTurnTask?.cancel()
+        pendingTurnTask = nil
         liveTranscript = ""
         inputLevel = 0
         input.setMuted(isMuted)
@@ -209,41 +206,30 @@ public final class RealtimeVoiceSession {
         activeResponseID != nil || responseTask != nil || phase == .thinking || phase == .speaking
     }
 
-    private func receiveLevel(_ level: Double, at timestamp: TimeInterval) {
+    private func receiveLevel(_ level: Double) {
         guard phase != .idle, phase != .connecting, phase != .failed, !isMuted else { return }
         inputLevel = level
-        let events = turnDetector.ingest(
-            level: level,
-            at: timestamp,
-            agentIsBusy: agentIsBusy
-        )
-        for event in events {
-            switch event {
-            case .speechStarted:
-                pendingTurnTask?.cancel()
-                pendingTurnTask = nil
-                userSpeechActive = true
-                transcriptBaseline = preSpeechTranscript
-                errorMessage = nil
-            case .interruption:
-                interruptActiveResponse(nextPhase: .listening)
-            case .speechEnded:
-                userSpeechActive = false
-                scheduleTurnFinalization()
-            }
-        }
     }
 
-    private func receiveTranscript(_ transcript: String) {
-        if !transcript.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            recognitionRecoveryTask?.cancel()
-            recognitionRecoveryTask = nil
-            consecutiveRecognitionFailures = 0
+    private func receiveTranscription(_ transcription: RealtimeTranscription) {
+        guard phase != .idle, phase != .connecting, phase != .paused, phase != .failed,
+              !isMuted else { return }
+        let text = transcription.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty else { return }
+
+        recognitionRecoveryTask?.cancel()
+        recognitionRecoveryTask = nil
+        consecutiveRecognitionFailures = 0
+        errorMessage = nil
+        if agentIsBusy {
+            interruptActiveResponse(nextPhase: .listening)
         }
-        if userSpeechActive {
-            liveTranscript = Self.transcript(transcript, after: transcriptBaseline)
+        liveTranscript = text
+
+        if transcription.isFinal {
+            finalizeUserTurn(text)
         } else {
-            preSpeechTranscript = transcript
+            scheduleTurnFinalization(for: text)
         }
     }
 
@@ -285,28 +271,25 @@ public final class RealtimeVoiceSession {
         }
     }
 
-    private func scheduleTurnFinalization() {
+    private func scheduleTurnFinalization(for transcript: String) {
         pendingTurnTask?.cancel()
         pendingTurnTask = Task { [weak self] in
-            try? await Task.sleep(for: .milliseconds(160))
-            guard !Task.isCancelled, let self else { return }
-            self.finalizeUserTurn()
+            guard let self else { return }
+            do {
+                try await Task.sleep(for: self.turnPolicy.endOfTurnDelay)
+            } catch {
+                return
+            }
+            guard !Task.isCancelled, self.liveTranscript == transcript else { return }
+            self.finalizeUserTurn(transcript)
         }
     }
 
-    private func finalizeUserTurn() {
-        let text = Self.transcript(input.latestTranscript, after: transcriptBaseline)
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+    private func finalizeUserTurn(_ text: String) {
+        pendingTurnTask?.cancel()
+        pendingTurnTask = nil
         input.restartRecognition()
-        resetInputTurn()
-        guard !text.isEmpty else {
-            errorMessage = "没听清这句话，请再说一次。"
-            if phase != .speaking, phase != .thinking {
-                phase = .listening
-            }
-            return
-        }
-
+        liveTranscript = ""
         userTranscript = text
         beginResponse(to: text)
     }
@@ -422,21 +405,8 @@ public final class RealtimeVoiceSession {
     }
 
     private func resetInputTurn() {
-        turnDetector.reset()
-        userSpeechActive = false
-        preSpeechTranscript = ""
-        transcriptBaseline = ""
+        pendingTurnTask?.cancel()
+        pendingTurnTask = nil
         liveTranscript = ""
-    }
-
-    static func transcript(_ current: String, after baseline: String) -> String {
-        let current = current.trimmingCharacters(in: .whitespacesAndNewlines)
-        let baseline = baseline.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !baseline.isEmpty,
-              current.lowercased().hasPrefix(baseline.lowercased()) else {
-            return current
-        }
-        return String(current.dropFirst(baseline.count))
-            .trimmingCharacters(in: .whitespacesAndNewlines.union(.punctuationCharacters))
     }
 }

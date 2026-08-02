@@ -155,8 +155,33 @@ struct PromptBuilderTests {
         )
 
         #expect(prompt.contains("## Live voice mode"))
+        #expect(!prompt.contains("## Texting style"))
         #expect(prompt.contains("Do not use emoji"))
         #expect(prompt.contains("spoken aloud immediately"))
+    }
+
+    @Test("实时语音收窄历史与输出预算")
+    func voiceModeRequestBudget() {
+        let history = (0..<30).map { index in
+            MessageDTO(
+                id: UUID(),
+                role: index.isMultiple(of: 2) ? .user : .assistant,
+                kind: .text,
+                text: "m\(index)",
+                orderIndex: index
+            )
+        }
+        let request = PromptBuilder.roleplayRequest(
+            card: card,
+            learner: learner(difficulty: .junior2),
+            history: history,
+            voiceMode: true,
+            rawWindow: 24
+        )
+
+        #expect(request.messages.count == 12)
+        #expect(request.messages.first?.content == "m18")
+        #expect(request.maxTokens == 160)
     }
 
     @Test("出题回合：附加出题指令并放宽 maxTokens")

@@ -77,15 +77,25 @@ public struct SpeechRecognitionRecoveryPolicy: Sendable, Equatable {
 
 @MainActor
 public protocol RealtimeSpeechInput: AnyObject {
-    var latestTranscript: String { get }
-    var onLevel: (@MainActor @Sendable (Double, TimeInterval) -> Void)? { get set }
-    var onTranscript: (@MainActor @Sendable (String) -> Void)? { get set }
+    var onLevel: (@MainActor @Sendable (Double) -> Void)? { get set }
+    var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)? { get set }
     var onFailure: (@MainActor @Sendable (String) -> Void)? { get set }
 
     func start(localeIdentifier: String, contextualStrings: [String]) async throws
     func restartRecognition()
     func setMuted(_ muted: Bool)
     func stop() async
+}
+
+/// 系统语音识别产生的累计文本。最终结果可立即提交，其余结果由会话层做短防抖。
+public struct RealtimeTranscription: Sendable, Equatable {
+    public let text: String
+    public let isFinal: Bool
+
+    public init(text: String, isFinal: Bool) {
+        self.text = text
+        self.isFinal = isFinal
+    }
 }
 
 @MainActor
@@ -98,92 +108,12 @@ public protocol RealtimeSpeechOutput: AnyObject {
     @discardableResult func stop() -> String
 }
 
-public enum VoiceActivityEvent: Sendable, Equatable {
-    case speechStarted
-    case interruption
-    case speechEnded
-}
+/// 一轮语音在最后一次有效转写后等待多久再提交。其余时序交给系统识别结果，不重复实现 VAD。
+public struct VoiceTurnPolicy: Sendable, Equatable {
+    public var endOfTurnDelay: Duration
 
-public struct VoiceTurnDetectionPolicy: Sendable, Equatable {
-    public var activationLevel: Double
-    public var releaseLevel: Double
-    public var minimumSpeechDuration: TimeInterval
-    public var interruptionDuration: TimeInterval
-    public var endOfTurnSilence: TimeInterval
-
-    public init(
-        activationLevel: Double = 0.12,
-        releaseLevel: Double = 0.07,
-        minimumSpeechDuration: TimeInterval = 0.18,
-        interruptionDuration: TimeInterval = 0.24,
-        endOfTurnSilence: TimeInterval = 0.85
-    ) {
-        self.activationLevel = activationLevel
-        self.releaseLevel = releaseLevel
-        self.minimumSpeechDuration = minimumSpeechDuration
-        self.interruptionDuration = interruptionDuration
-        self.endOfTurnSilence = endOfTurnSilence
-    }
-}
-
-/// 基于端上音量的轻量轮次检测器。语音识别只负责文字，不参与时序判断。
-public struct ClientVoiceTurnDetector: Sendable {
-    private let policy: VoiceTurnDetectionPolicy
-    private var speechStartedAt: TimeInterval?
-    private var silenceStartedAt: TimeInterval?
-    private var interruptionSent = false
-
-    public init(policy: VoiceTurnDetectionPolicy = .init()) {
-        self.policy = policy
-    }
-
-    public mutating func ingest(
-        level: Double,
-        at timestamp: TimeInterval,
-        agentIsBusy: Bool
-    ) -> [VoiceActivityEvent] {
-        var events: [VoiceActivityEvent] = []
-
-        if level >= policy.activationLevel {
-            if speechStartedAt == nil {
-                speechStartedAt = timestamp
-                events.append(.speechStarted)
-            }
-            silenceStartedAt = nil
-
-            if agentIsBusy,
-               !interruptionSent,
-               let speechStartedAt,
-               timestamp - speechStartedAt >= policy.interruptionDuration {
-                interruptionSent = true
-                events.append(.interruption)
-            }
-            return events
-        }
-
-        guard let speechStartedAt else { return events }
-        guard level <= policy.releaseLevel else { return events }
-
-        if silenceStartedAt == nil {
-            silenceStartedAt = timestamp
-        }
-        guard let silenceStartedAt,
-              timestamp - silenceStartedAt >= policy.endOfTurnSilence else {
-            return events
-        }
-
-        // 最短发言只计算实际有声区间，不能把等待结束的静音也算进去。
-        if silenceStartedAt - speechStartedAt >= policy.minimumSpeechDuration {
-            events.append(.speechEnded)
-        }
-        reset()
-        return events
-    }
-
-    public mutating func reset() {
-        speechStartedAt = nil
-        silenceStartedAt = nil
-        interruptionSent = false
+    public init(endOfTurnDelay: Duration = .milliseconds(850)) {
+        self.endOfTurnDelay = endOfTurnDelay
     }
 }
 

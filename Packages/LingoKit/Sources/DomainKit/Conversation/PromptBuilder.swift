@@ -42,7 +42,7 @@ public enum PromptBuilder {
         sections.append(
             """
             ## Roleplay rules
-            - You are chatting with a Chinese friend who is learning English, in a mobile messaging app (like WhatsApp).
+            - You are \(voiceMode ? "talking live with" : "chatting in a mobile messaging app with") a Chinese friend who is learning English.
             - Stay in character at all times. Never mention that you are an AI, a language model, or an assistant.
             - You have your own life, moods and opinions. Refer to your daily life naturally.
             - Never use the user's language for whole replies: always reply in English. If the user writes in Chinese, \
@@ -63,25 +63,27 @@ public enum PromptBuilder {
             """
         )
 
-        sections.append(
-            """
-            ## Texting style
-            - Write like a real person texting: casual, warm, spontaneous. Contractions are normal (I'm, gonna, wanna).
-            - Reply with 1-3 separate chat messages. Put each message on its own single line, with no blank lines.
-            - Keep each message to 1-2 short sentences. Do not put a long paragraph into one message, and do not \
-            label or bullet the messages.
-            - Vary the rhythm naturally: sometimes send just one quick line; use two or three messages only when \
-            you genuinely have more to say. Ask questions back sometimes, like a curious friend.
-            - React to what the friend actually said before changing topics. Do not paraphrase their message, \
-            lecture, or force a question into every reply; a quick reaction or answer is often enough.
-            - Do not use markdown, roleplay actions in asterisks, formal sign-offs, or repeatedly address the \
-            friend by name. Use regional slang as part of your character, not as a stereotype or in every line.
-            - You can skip the final punctuation of a message sometimes, use lowercase starts occasionally, \
-            and drop a very occasional typo like a human would. Do not do this in every message.
-            - Emoji are fine in moderation, matching your personality.
-            - Avoid bookish or robotic phrasing ("As an assistant...", "Certainly!", "I understand that you...").
-            """
-        )
+        if !voiceMode {
+            sections.append(
+                """
+                ## Texting style
+                - Write like a real person texting: casual, warm, spontaneous. Contractions are normal (I'm, gonna, wanna).
+                - Reply with 1-3 separate chat messages. Put each message on its own single line, with no blank lines.
+                - Keep each message to 1-2 short sentences. Do not put a long paragraph into one message, and do not \
+                label or bullet the messages.
+                - Vary the rhythm naturally: sometimes send just one quick line; use two or three messages only when \
+                you genuinely have more to say. Ask questions back sometimes, like a curious friend.
+                - React to what the friend actually said before changing topics. Do not paraphrase their message, \
+                lecture, or force a question into every reply; a quick reaction or answer is often enough.
+                - Do not use markdown, roleplay actions in asterisks, formal sign-offs, or repeatedly address the \
+                friend by name. Use regional slang as part of your character, not as a stereotype or in every line.
+                - You can skip the final punctuation of a message sometimes, use lowercase starts occasionally, \
+                and drop a very occasional typo like a human would. Do not do this in every message.
+                - Emoji are fine in moderation, matching your personality.
+                - Avoid bookish or robotic phrasing ("As an assistant...", "Certainly!", "I understand that you...").
+                """
+            )
+        }
 
         sections.append(
             """
@@ -106,23 +108,24 @@ public enum PromptBuilder {
             sections.append(guidance)
         }
         sections.append(contentsOf: memorySections)
-        sections.append(
-            """
-            ## Final reply contract
-            \(replyContract(for: learner.difficulty))
-            Check this contract immediately before sending. These line and word limits apply to the chat messages \
-            before any optional quiz block.
-            """
-        )
         if voiceMode {
             sections.append(
                 """
                 ## Live voice mode
                 This reply will be spoken aloud immediately while it is generated.
-                - Use plain spoken English with one or two short sentences and one idea at a time.
+                - Reply with plain spoken English in one or two short sentences, no more than 45 words total.
+                - Lead with the direct response; keep one idea at a time and leave room for the friend to speak.
                 - Do not use emoji, markdown, bullets, labels, stage directions, or text that only makes sense on screen.
-                - Avoid long preambles. Respond to the friend's meaning immediately and leave a natural pause for them.
                 - A newline is a speaking pause, not a separate notification. Never include a quiz block in voice mode.
+                """
+            )
+        } else {
+            sections.append(
+                """
+                ## Final reply contract
+                \(replyContract(for: learner.difficulty))
+                Check this contract immediately before sending. These line and word limits apply to the chat messages \
+                before any optional quiz block.
                 """
             )
         }
@@ -164,7 +167,7 @@ public enum PromptBuilder {
         return result
     }
 
-    /// 角色扮演请求参数：balanced、流式、temperature 0.9、最多 512 tokens。
+    /// 角色扮演请求参数：语音模式收窄上下文与输出，减少模型首包和整轮生成时间。
     public static func roleplayRequest(
         card: CharacterCard,
         learner: LearnerContext,
@@ -175,7 +178,8 @@ public enum PromptBuilder {
         voiceMode: Bool = false,
         rawWindow: Int = 24
     ) -> LLMRequest {
-        LLMRequest(
+        let historyWindow = voiceMode ? min(rawWindow, 12) : rawWindow
+        return LLMRequest(
             task: .conversation,
             tier: .balanced,
             system: roleplaySystemPrompt(
@@ -186,9 +190,9 @@ public enum PromptBuilder {
                 quizRequested: quizRequested,
                 voiceMode: voiceMode
             ),
-            messages: chatMessages(history: history, rawWindow: rawWindow),
+            messages: chatMessages(history: history, rawWindow: historyWindow),
             // 出题时给足输出空间，避免 quiz JSON 被截断。
-            maxTokens: quizRequested ? 900 : 512,
+            maxTokens: quizRequested ? 900 : (voiceMode ? 160 : 512),
             temperature: 0.9
         )
     }

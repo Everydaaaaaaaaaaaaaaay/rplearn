@@ -160,8 +160,9 @@ public final class ChatViewModel {
             text: text,
             tokenEstimate: TokenEstimator.estimate(text)
         )
-        await reloadMessages()
-        runCoachReview(for: userMessage)
+        // 已拿到完整 DTO，无需在 LLM 请求前再次读取整段会话。
+        messages.append(userMessage)
+        messages.sort { $0.orderIndex < $1.orderIndex }
 
         let request = await makeRoleplayRequest(
             quizRequested: false,
@@ -169,7 +170,9 @@ public final class ChatViewModel {
         )
         let upstream = await deps.llm.stream(request)
         return AsyncThrowingStream { continuation in
-            let task = Task {
+            let task = Task { [weak self] in
+                // 点评也是一次 LLM 请求；等主回复流结束后再启动，避免争用用户可感知的首包路径。
+                defer { self?.runCoachReview(for: userMessage) }
                 do {
                     for try await event in upstream {
                         try Task.checkCancellation()
@@ -377,12 +380,22 @@ public final class ChatViewModel {
         voiceMode: Bool
     ) async -> LLMRequest {
         let memoryService = self.memoryService
-        let memorySections = await memoryService.memorySections(characterID: character.id)
-        let rawWindow = await memoryService.quota().rawWindow
-        let hasStoryTicket = (try? await deps.itemStore.hasTicket(source: .story)) ?? false
+        let characterID = character.id
+        let itemStore = deps.itemStore
+        let economyStore = deps.economyStore
+        async let memorySectionsTask = memoryService.memorySections(characterID: characterID)
+        async let hasStoryTicketTask = (try? await itemStore.hasTicket(source: .story)) ?? false
+        async let profileTask = try? await economyStore.profile()
+        let (memorySections, hasStoryTicket, profile) = await (
+            memorySectionsTask,
+            hasStoryTicketTask,
+            profileTask
+        )
+        let subscriptionTier = profile?.subscriptionTier ?? .free
+        let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
         let learner: LearnerContext
-        if let profile = try? await deps.economyStore.profile() {
+        if let profile {
             learner = LearnerContext(profile: profile)
         } else {
             learner = .fallback(difficulty: character.difficultyLevel)

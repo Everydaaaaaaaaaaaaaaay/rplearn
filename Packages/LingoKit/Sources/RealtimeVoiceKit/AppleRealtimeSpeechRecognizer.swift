@@ -8,9 +8,9 @@ private final class RealtimeAudioInputRuntime: @unchecked Sendable {
     private let lock = NSLock()
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var lastLevelReport: TimeInterval = 0
-    private let reportLevel: @Sendable (Double, TimeInterval) -> Void
+    private let reportLevel: @Sendable (Double) -> Void
 
-    init(reportLevel: @escaping @Sendable (Double, TimeInterval) -> Void) {
+    init(reportLevel: @escaping @Sendable (Double) -> Void) {
         self.reportLevel = reportLevel
     }
 
@@ -26,20 +26,19 @@ private final class RealtimeAudioInputRuntime: @unchecked Sendable {
         lock.unlock()
 
         let now = ProcessInfo.processInfo.systemUptime
-        guard now - lastLevelReport >= 0.05,
+        guard now - lastLevelReport >= 0.1,
               let channel = buffer.floatChannelData?.pointee else { return }
         lastLevelReport = now
         let samples = UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength))
-        reportLevel(AudioLevelMeter.level(samples: samples), now)
+        reportLevel(AudioLevelMeter.level(samples: samples))
     }
 }
 
 /// Apple Speech 的持续输入实现。音频始终留在端上，只向外发布文本和音量。
 @MainActor
 public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
-    public private(set) var latestTranscript = ""
-    public var onLevel: (@MainActor @Sendable (Double, TimeInterval) -> Void)?
-    public var onTranscript: (@MainActor @Sendable (String) -> Void)?
+    public var onLevel: (@MainActor @Sendable (Double) -> Void)?
+    public var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)?
     public var onFailure: (@MainActor @Sendable (String) -> Void)?
 
     private let audioSession: AudioSessionCoordinator
@@ -94,9 +93,9 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
                 throw RealtimeVoiceError.audioInputUnavailable
             }
 
-            let runtime = RealtimeAudioInputRuntime { [weak self] level, timestamp in
+            let runtime = RealtimeAudioInputRuntime { [weak self] level in
                 Task { @MainActor [weak self] in
-                    self?.onLevel?(level, timestamp)
+                    self?.onLevel?(level)
                 }
             }
             inputNode.installTap(
@@ -137,8 +136,6 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         isMuted = muted
         if muted {
             stopRecognitionTask()
-            latestTranscript = ""
-            onTranscript?("")
         } else if isRunning {
             startRecognitionTask()
         }
@@ -152,8 +149,6 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         stopRecognitionTask()
         guard let recognizer else { return }
 
-        latestTranscript = ""
-        onTranscript?("")
         recognitionGeneration = UUID()
         let generation = recognitionGeneration
         let request = SFSpeechAudioBufferRecognitionRequest()
@@ -191,9 +186,8 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         generation: UUID
     ) {
         guard generation == recognitionGeneration, isRunning, !isMuted else { return }
-        if let transcript {
-            latestTranscript = transcript
-            onTranscript?(transcript)
+        if let transcript, !transcript.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            onTranscription?(RealtimeTranscription(text: transcript, isFinal: isFinal))
         }
         if let failure, !isFinal {
             if activeRequestUsesOnDeviceRecognition {
@@ -227,8 +221,6 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         engine = nil
         runtime = nil
         recognizer = nil
-        latestTranscript = ""
-        onTranscript?("")
         await audioSession.deactivate()
     }
 

@@ -4,41 +4,6 @@ import Testing
 
 @Suite("RealtimeVoiceCore")
 struct RealtimeVoiceCoreTests {
-    @Test("持续说话可触发插话，并在静音后结束回合")
-    func detectsInterruptionAndTurnEnd() {
-        var detector = ClientVoiceTurnDetector(
-            policy: VoiceTurnDetectionPolicy(
-                activationLevel: 0.1,
-                releaseLevel: 0.05,
-                minimumSpeechDuration: 0.15,
-                interruptionDuration: 0.2,
-                endOfTurnSilence: 0.5
-            )
-        )
-
-        #expect(detector.ingest(level: 0.2, at: 1.0, agentIsBusy: true) == [.speechStarted])
-        #expect(detector.ingest(level: 0.2, at: 1.25, agentIsBusy: true) == [.interruption])
-        #expect(detector.ingest(level: 0.01, at: 1.4, agentIsBusy: false).isEmpty)
-        #expect(detector.ingest(level: 0.01, at: 1.95, agentIsBusy: false) == [.speechEnded])
-    }
-
-    @Test("短噪声不会提交为用户回合")
-    func rejectsBriefNoise() {
-        var detector = ClientVoiceTurnDetector(
-            policy: VoiceTurnDetectionPolicy(
-                activationLevel: 0.1,
-                releaseLevel: 0.05,
-                minimumSpeechDuration: 0.3,
-                interruptionDuration: 0.2,
-                endOfTurnSilence: 0.2
-            )
-        )
-
-        #expect(detector.ingest(level: 0.2, at: 1.0, agentIsBusy: false) == [.speechStarted])
-        _ = detector.ingest(level: 0.01, at: 1.05, agentIsBusy: false)
-        #expect(detector.ingest(level: 0.01, at: 1.3, agentIsBusy: false).isEmpty)
-    }
-
     @Test("模型文本按标点增量切句")
     func segmentsStreamingTextAtPunctuation() {
         var segmenter = StreamingSpeechSegmenter()
@@ -90,26 +55,62 @@ struct RealtimeVoiceSessionTests {
             localeIdentifier: "en-US",
             voiceLanguage: "en-GB",
             contextualStrings: [],
-            turnPolicy: VoiceTurnDetectionPolicy(
-                activationLevel: 0.1,
-                releaseLevel: 0.05,
-                minimumSpeechDuration: 0.1,
-                interruptionDuration: 0.2,
-                endOfTurnSilence: 0.2
-            )
+            turnPolicy: VoiceTurnPolicy(endOfTurnDelay: .milliseconds(80))
         )
 
         await session.start()
-        input.emitLevel(0.2, at: 1.0)
-        input.emitTranscript("Hello there")
-        input.emitLevel(0.01, at: 1.3)
-        input.emitLevel(0.01, at: 1.55)
-        try await Task.sleep(for: .milliseconds(300))
+        input.emitTranscription("Hello there", isFinal: true)
+        let completed = await eventually {
+            probe.assistantTexts == ["Nice to meet you!"]
+        }
 
+        #expect(completed)
         #expect(probe.userTexts == ["Hello there"])
         #expect(probe.assistantTexts == ["Nice to meet you!"])
         #expect(session.phase == .listening)
         #expect(session.assistantTranscript == "Nice to meet you!")
+        await session.stop()
+    }
+
+    @Test("部分转写在无新增后提交，并以最新文本延长等待")
+    func debouncesPartialTranscriptions() async throws {
+        let input = MockSpeechInput()
+        let probe = ConversationProbe()
+        let session = makeSession(
+            input: input,
+            probe: probe,
+            turnPolicy: VoiceTurnPolicy(endOfTurnDelay: .milliseconds(80))
+        )
+
+        await session.start()
+        input.emitTranscription("How are", isFinal: false)
+        try await Task.sleep(for: .milliseconds(50))
+        input.emitTranscription("How are you", isFinal: false)
+        try await Task.sleep(for: .milliseconds(50))
+        #expect(probe.userTexts.isEmpty)
+
+        let completed = await eventually { probe.userTexts == ["How are you"] }
+        #expect(completed)
+        #expect(input.restartCount == 1)
+        await session.stop()
+    }
+
+    @Test("系统最终转写无需等待静音防抖")
+    func commitsFinalTranscriptionImmediately() async {
+        let input = MockSpeechInput()
+        let probe = ConversationProbe()
+        let session = makeSession(
+            input: input,
+            probe: probe,
+            turnPolicy: VoiceTurnPolicy(endOfTurnDelay: .seconds(5))
+        )
+
+        await session.start()
+        input.emitTranscription("Ready to go", isFinal: true)
+        let completed = await eventually { probe.userTexts == ["Ready to go"] }
+
+        #expect(completed)
+        #expect(input.restartCount == 1)
         await session.stop()
     }
 
@@ -129,17 +130,16 @@ struct RealtimeVoiceSessionTests {
         }
         #expect(input.restartCount == 0)
 
-        try await Task.sleep(for: .milliseconds(30))
-        #expect(input.restartCount == 1)
+        let firstRecovery = await eventually { input.restartCount == 1 }
+        #expect(firstRecovery)
 
         input.emitFailure("识别服务仍不可用")
-        try await Task.sleep(for: .milliseconds(40))
-        #expect(input.restartCount == 2)
+        let secondRecovery = await eventually { input.restartCount == 2 }
+        #expect(secondRecovery)
 
         input.emitFailure("识别服务仍不可用")
-        try await Task.sleep(for: .milliseconds(20))
-        #expect(session.phase == .failed)
-        #expect(input.stopCount == 1)
+        let stopped = await eventually { session.phase == .failed && input.stopCount == 1 }
+        #expect(stopped)
         await session.stop()
     }
 
@@ -153,33 +153,47 @@ struct RealtimeVoiceSessionTests {
 
         await session.start()
         input.emitFailure("第一次失败")
-        try await Task.sleep(for: .milliseconds(20))
-        input.emitTranscript("Hello")
+        let firstRecovery = await eventually { input.restartCount == 1 }
+        #expect(firstRecovery)
+        input.emitTranscription("Hello", isFinal: false)
         input.emitFailure("第二次失败")
-        try await Task.sleep(for: .milliseconds(20))
+        let secondRecovery = await eventually { input.restartCount == 2 }
 
-        #expect(input.restartCount == 2)
+        #expect(secondRecovery)
         #expect(session.phase == .listening)
         await session.stop()
     }
 
     private func makeSession(
         input: MockSpeechInput,
-        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
+        probe: ConversationProbe = ConversationProbe(),
+        turnPolicy: VoiceTurnPolicy = .init(),
+        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy = .init()
     ) -> RealtimeVoiceSession {
         RealtimeVoiceSession(
             input: input,
             output: MockSpeechOutput(),
             conversation: RealtimeVoiceConversationClient(
-                replyStream: { _ in AsyncThrowingStream { $0.finish() } },
+                replyStream: { text in
+                    probe.userTexts.append(text)
+                    return AsyncThrowingStream { $0.finish() }
+                },
                 saveAssistant: { _ in }
             ),
             localeIdentifier: "en-US",
             voiceLanguage: "en-US",
             contextualStrings: [],
-            turnPolicy: .init(),
+            turnPolicy: turnPolicy,
             recognitionRecoveryPolicy: recognitionRecoveryPolicy
         )
+    }
+
+    private func eventually(_ condition: @MainActor () -> Bool) async -> Bool {
+        for _ in 0..<100 {
+            if condition() { return true }
+            try? await Task.sleep(for: .milliseconds(10))
+        }
+        return condition()
     }
 }
 
@@ -191,9 +205,8 @@ private final class ConversationProbe {
 
 @MainActor
 private final class MockSpeechInput: RealtimeSpeechInput {
-    var latestTranscript = ""
-    var onLevel: (@MainActor @Sendable (Double, TimeInterval) -> Void)?
-    var onTranscript: (@MainActor @Sendable (String) -> Void)?
+    var onLevel: (@MainActor @Sendable (Double) -> Void)?
+    var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)?
     var onFailure: (@MainActor @Sendable (String) -> Void)?
     var restartCount = 0
     var stopCount = 0
@@ -201,20 +214,18 @@ private final class MockSpeechInput: RealtimeSpeechInput {
     func start(localeIdentifier: String, contextualStrings: [String]) async throws {}
     func restartRecognition() {
         restartCount += 1
-        latestTranscript = ""
     }
     func setMuted(_ muted: Bool) {}
     func stop() async {
         stopCount += 1
     }
 
-    func emitLevel(_ level: Double, at timestamp: TimeInterval) {
-        onLevel?(level, timestamp)
+    func emitLevel(_ level: Double) {
+        onLevel?(level)
     }
 
-    func emitTranscript(_ text: String) {
-        latestTranscript = text
-        onTranscript?(text)
+    func emitTranscription(_ text: String, isFinal: Bool) {
+        onTranscription?(RealtimeTranscription(text: text, isFinal: isFinal))
     }
 
     func emitFailure(_ message: String) {
