@@ -112,6 +112,75 @@ struct RealtimeVoiceSessionTests {
         #expect(session.assistantTranscript == "Nice to meet you!")
         await session.stop()
     }
+
+    @Test("连续识别失败会退避恢复，不会同步重启卡死主线程")
+    func backsOffRecognitionFailures() async throws {
+        let input = MockSpeechInput()
+        let session = makeSession(
+            input: input,
+            recognitionRecoveryPolicy: .init(
+                retryDelays: [.milliseconds(10), .milliseconds(20)]
+            )
+        )
+
+        await session.start()
+        for _ in 0..<20 {
+            input.emitFailure("识别服务暂时不可用")
+        }
+        #expect(input.restartCount == 0)
+
+        try await Task.sleep(for: .milliseconds(30))
+        #expect(input.restartCount == 1)
+
+        input.emitFailure("识别服务仍不可用")
+        try await Task.sleep(for: .milliseconds(40))
+        #expect(input.restartCount == 2)
+
+        input.emitFailure("识别服务仍不可用")
+        try await Task.sleep(for: .milliseconds(20))
+        #expect(session.phase == .failed)
+        #expect(input.stopCount == 1)
+        await session.stop()
+    }
+
+    @Test("得到有效转写后会重置识别恢复次数")
+    func resetsRecognitionRecoveryAfterTranscript() async throws {
+        let input = MockSpeechInput()
+        let session = makeSession(
+            input: input,
+            recognitionRecoveryPolicy: .init(retryDelays: [.milliseconds(10)])
+        )
+
+        await session.start()
+        input.emitFailure("第一次失败")
+        try await Task.sleep(for: .milliseconds(20))
+        input.emitTranscript("Hello")
+        input.emitFailure("第二次失败")
+        try await Task.sleep(for: .milliseconds(20))
+
+        #expect(input.restartCount == 2)
+        #expect(session.phase == .listening)
+        await session.stop()
+    }
+
+    private func makeSession(
+        input: MockSpeechInput,
+        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
+    ) -> RealtimeVoiceSession {
+        RealtimeVoiceSession(
+            input: input,
+            output: MockSpeechOutput(),
+            conversation: RealtimeVoiceConversationClient(
+                replyStream: { _ in AsyncThrowingStream { $0.finish() } },
+                saveAssistant: { _ in }
+            ),
+            localeIdentifier: "en-US",
+            voiceLanguage: "en-US",
+            contextualStrings: [],
+            turnPolicy: .init(),
+            recognitionRecoveryPolicy: recognitionRecoveryPolicy
+        )
+    }
 }
 
 @MainActor
@@ -126,13 +195,18 @@ private final class MockSpeechInput: RealtimeSpeechInput {
     var onLevel: (@MainActor @Sendable (Double, TimeInterval) -> Void)?
     var onTranscript: (@MainActor @Sendable (String) -> Void)?
     var onFailure: (@MainActor @Sendable (String) -> Void)?
+    var restartCount = 0
+    var stopCount = 0
 
     func start(localeIdentifier: String, contextualStrings: [String]) async throws {}
     func restartRecognition() {
+        restartCount += 1
         latestTranscript = ""
     }
     func setMuted(_ muted: Bool) {}
-    func stop() async {}
+    func stop() async {
+        stopCount += 1
+    }
 
     func emitLevel(_ level: Double, at timestamp: TimeInterval) {
         onLevel?(level, timestamp)
@@ -141,6 +215,10 @@ private final class MockSpeechInput: RealtimeSpeechInput {
     func emitTranscript(_ text: String) {
         latestTranscript = text
         onTranscript?(text)
+    }
+
+    func emitFailure(_ message: String) {
+        onFailure?(message)
     }
 }
 

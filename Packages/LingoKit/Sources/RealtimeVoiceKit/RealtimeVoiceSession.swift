@@ -21,6 +21,7 @@ public final class RealtimeVoiceSession {
     private let localeIdentifier: String
     private let voiceLanguage: String
     private let contextualStrings: [String]
+    private let recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
     private var turnDetector: ClientVoiceTurnDetector
 
     private var lifecycleGeneration = UUID()
@@ -28,6 +29,9 @@ public final class RealtimeVoiceSession {
     private var responseTask: Task<Void, Never>?
     private var pendingTurnTask: Task<Void, Never>?
     private var pendingAssistantSave: Task<Void, Never>?
+    private var recognitionRecoveryTask: Task<Void, Never>?
+    private var inputShutdownTask: Task<Void, Never>?
+    private var consecutiveRecognitionFailures = 0
     private var userSpeechActive = false
     private var preSpeechTranscript = ""
     private var transcriptBaseline = ""
@@ -47,7 +51,30 @@ public final class RealtimeVoiceSession {
             localeIdentifier: localeIdentifier,
             voiceLanguage: voiceLanguage,
             contextualStrings: contextualStrings,
-            turnPolicy: turnPolicy
+            turnPolicy: turnPolicy,
+            recognitionRecoveryPolicy: .init()
+        )
+    }
+
+    /// 需要调整重试节奏的场景使用此重载；保留上方稳定入口，避免调用方承担策略细节。
+    public convenience init(
+        audioSession: AudioSessionCoordinator,
+        conversation: RealtimeVoiceConversationClient,
+        localeIdentifier: String = "en-US",
+        voiceLanguage: String = "en-US",
+        contextualStrings: [String] = [],
+        turnPolicy: VoiceTurnDetectionPolicy = .init(),
+        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
+    ) {
+        self.init(
+            input: AppleRealtimeSpeechRecognizer(audioSession: audioSession),
+            output: AppleRealtimeSpeechSynthesizer(),
+            conversation: conversation,
+            localeIdentifier: localeIdentifier,
+            voiceLanguage: voiceLanguage,
+            contextualStrings: contextualStrings,
+            turnPolicy: turnPolicy,
+            recognitionRecoveryPolicy: recognitionRecoveryPolicy
         )
     }
 
@@ -58,7 +85,8 @@ public final class RealtimeVoiceSession {
         localeIdentifier: String,
         voiceLanguage: String,
         contextualStrings: [String],
-        turnPolicy: VoiceTurnDetectionPolicy
+        turnPolicy: VoiceTurnDetectionPolicy,
+        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy = .init()
     ) {
         self.input = input
         self.output = output
@@ -66,6 +94,7 @@ public final class RealtimeVoiceSession {
         self.localeIdentifier = localeIdentifier
         self.voiceLanguage = voiceLanguage
         self.contextualStrings = contextualStrings
+        self.recognitionRecoveryPolicy = recognitionRecoveryPolicy
         self.turnDetector = ClientVoiceTurnDetector(policy: turnPolicy)
 
         input.onLevel = { [weak self] level, timestamp in
@@ -74,15 +103,19 @@ public final class RealtimeVoiceSession {
         input.onTranscript = { [weak self] transcript in
             self?.receiveTranscript(transcript)
         }
-        input.onFailure = { [weak self] _ in
-            guard let self, self.phase != .idle, self.phase != .paused else { return }
-            self.errorMessage = "刚才没有听清，我已经重新开始聆听。"
-            self.input.restartRecognition()
+        input.onFailure = { [weak self] failure in
+            self?.scheduleRecognitionRecovery(after: failure)
         }
     }
 
     public func start() async {
         guard phase == .idle || phase == .paused || phase == .failed else { return }
+        recognitionRecoveryTask?.cancel()
+        recognitionRecoveryTask = nil
+        let pendingShutdown = inputShutdownTask
+        inputShutdownTask = nil
+        await pendingShutdown?.value
+        consecutiveRecognitionFailures = 0
         let generation = UUID()
         lifecycleGeneration = generation
         phase = .connecting
@@ -112,10 +145,16 @@ public final class RealtimeVoiceSession {
 
     public func stop() async {
         lifecycleGeneration = UUID()
+        recognitionRecoveryTask?.cancel()
+        recognitionRecoveryTask = nil
+        consecutiveRecognitionFailures = 0
+        let pendingShutdown = inputShutdownTask
+        inputShutdownTask = nil
         pendingTurnTask?.cancel()
         pendingTurnTask = nil
         interruptActiveResponse(nextPhase: .idle)
         await pendingAssistantSave?.value
+        await pendingShutdown?.value
         await input.stop()
         resetInputTurn()
         isMuted = false
@@ -126,6 +165,9 @@ public final class RealtimeVoiceSession {
     public func suspend() async {
         guard phase != .idle, phase != .paused, phase != .failed else { return }
         lifecycleGeneration = UUID()
+        recognitionRecoveryTask?.cancel()
+        recognitionRecoveryTask = nil
+        consecutiveRecognitionFailures = 0
         pendingTurnTask?.cancel()
         pendingTurnTask = nil
         interruptActiveResponse(nextPhase: .paused)
@@ -142,6 +184,9 @@ public final class RealtimeVoiceSession {
 
     public func toggleMuted() {
         isMuted.toggle()
+        recognitionRecoveryTask?.cancel()
+        recognitionRecoveryTask = nil
+        consecutiveRecognitionFailures = 0
         turnDetector.reset()
         userSpeechActive = false
         liveTranscript = ""
@@ -190,10 +235,53 @@ public final class RealtimeVoiceSession {
     }
 
     private func receiveTranscript(_ transcript: String) {
+        if !transcript.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            recognitionRecoveryTask?.cancel()
+            recognitionRecoveryTask = nil
+            consecutiveRecognitionFailures = 0
+        }
         if userSpeechActive {
             liveTranscript = Self.transcript(transcript, after: transcriptBaseline)
         } else {
             preSpeechTranscript = transcript
+        }
+    }
+
+    /// Speech 可能在启动瞬间连续失败。这里做去重、退避和次数上限，避免错误回调在主线程形成重启风暴。
+    private func scheduleRecognitionRecovery(after failure: String) {
+        guard phase != .idle, phase != .paused, phase != .failed, !isMuted else { return }
+        guard recognitionRecoveryTask == nil else { return }
+
+        let retryDelays = recognitionRecoveryPolicy.retryDelays
+        guard consecutiveRecognitionFailures < retryDelays.count else {
+            lifecycleGeneration = UUID()
+            phase = .failed
+            inputLevel = 0
+            errorMessage = "语音识别连续中断，请点按重试。"
+            Log.speech.error("实时语音识别连续失败，已停止自动重试：\(failure)")
+            let input = input
+            inputShutdownTask = Task {
+                await input.stop()
+            }
+            return
+        }
+
+        let delay = retryDelays[consecutiveRecognitionFailures]
+        consecutiveRecognitionFailures += 1
+        errorMessage = "语音识别刚刚中断，正在重新连接…"
+        recognitionRecoveryTask = Task { [weak self] in
+            do {
+                try await Task.sleep(for: delay)
+            } catch {
+                return
+            }
+            guard !Task.isCancelled, let self,
+                  self.phase != .idle,
+                  self.phase != .paused,
+                  self.phase != .failed,
+                  !self.isMuted else { return }
+            self.recognitionRecoveryTask = nil
+            self.input.restartRecognition()
         }
     }
 

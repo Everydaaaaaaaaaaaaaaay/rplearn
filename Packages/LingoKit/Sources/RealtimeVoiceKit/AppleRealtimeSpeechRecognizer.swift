@@ -52,6 +52,8 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     private var isRunning = false
     private var isMuted = false
     private var contextualStrings: [String] = []
+    private var prefersOnDeviceRecognition = true
+    private var activeRequestUsesOnDeviceRecognition = false
 
     public init(audioSession: AudioSessionCoordinator) {
         self.audioSession = audioSession
@@ -109,6 +111,7 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             self.engine = engine
             self.runtime = runtime
             self.contextualStrings = Array(contextualStrings.prefix(100))
+            self.prefersOnDeviceRecognition = true
             self.isRunning = true
             self.isMuted = false
             startRecognitionTask()
@@ -158,7 +161,9 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         request.addsPunctuation = true
         request.taskHint = .dictation
         request.contextualStrings = contextualStrings
-        if recognizer.supportsOnDeviceRecognition {
+        activeRequestUsesOnDeviceRecognition = prefersOnDeviceRecognition
+            && recognizer.supportsOnDeviceRecognition
+        if activeRequestUsesOnDeviceRecognition {
             request.requiresOnDeviceRecognition = true
         }
         recognitionRequest = request
@@ -191,6 +196,11 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             onTranscript?(transcript)
         }
         if let failure, !isFinal {
+            if activeRequestUsesOnDeviceRecognition {
+                // 某些真机虽然声明支持端上识别，但对应语言模型尚未下载；下一次恢复允许系统服务兜底。
+                prefersOnDeviceRecognition = false
+                Log.speech.info("端上语音识别不可用，下一次尝试切换系统识别服务")
+            }
             Log.speech.warning("实时语音识别中断：\(failure)")
             onFailure?(failure)
         }
@@ -202,6 +212,7 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         recognitionTask?.cancel()
         recognitionTask = nil
         recognitionRequest = nil
+        activeRequestUsesOnDeviceRecognition = false
         recognitionGeneration = UUID()
     }
 

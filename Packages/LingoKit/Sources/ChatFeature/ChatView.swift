@@ -71,12 +71,10 @@ public struct ChatView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    Task {
-                        isTextInputFocused = false
-                        voicePlayer.stop()
-                        await deps.speech.stopSpeaking()
-                        showsRealtimeConversation = true
-                    }
+                    isTextInputFocused = false
+                    voicePlayer.stop()
+                    // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
+                    showsRealtimeConversation = true
                 } label: {
                     Image(systemName: "phone.fill")
                 }
@@ -120,7 +118,7 @@ public struct ChatView: View {
             Task { await viewModel.refreshMessages() }
         }) {
             RealtimeConversationView(
-                character: viewModel.character,
+                chat: viewModel,
                 deps: deps,
                 onSpeechPlayback: { didBeginSpeechPlayback = true }
             )

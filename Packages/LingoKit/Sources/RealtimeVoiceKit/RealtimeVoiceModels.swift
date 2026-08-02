@@ -60,6 +60,21 @@ public struct RealtimeVoiceConversationClient: Sendable {
     }
 }
 
+/// 识别服务瞬时失败时的恢复节奏。调用方可按产品场景覆盖，默认仅做三次渐进式重试。
+public struct SpeechRecognitionRecoveryPolicy: Sendable, Equatable {
+    public var retryDelays: [Duration]
+
+    public init(
+        retryDelays: [Duration] = [
+            .milliseconds(350),
+            .milliseconds(900),
+            .milliseconds(1_800),
+        ]
+    ) {
+        self.retryDelays = retryDelays
+    }
+}
+
 @MainActor
 public protocol RealtimeSpeechInput: AnyObject {
     var latestTranscript: String { get }

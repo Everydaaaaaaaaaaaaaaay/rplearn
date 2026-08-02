@@ -14,9 +14,10 @@ import UIKit
 private final class RealtimeConversationCoordinator {
     let chat: ChatViewModel
     let session: RealtimeVoiceSession
+    private let speech: any SpeechService
 
-    init(character: CharacterDTO, deps: ChatDependencies) {
-        let chat = ChatViewModel(character: character, deps: deps)
+    init(chat: ChatViewModel, deps: ChatDependencies) {
+        let character = chat.character
         let client = RealtimeVoiceConversationClient(
             replyStream: { [weak chat] text in
                 guard let chat else {
@@ -38,10 +39,14 @@ private final class RealtimeConversationCoordinator {
             contextualStrings: Self.contextualStrings(for: character),
             turnPolicy: Self.turnPolicy(for: character.difficultyLevel)
         )
+        self.speech = deps.speech
     }
 
     func start() async {
-        await chat.load()
+        await speech.stopSpeaking()
+        if chat.conversation == nil {
+            await chat.load()
+        }
         await session.start()
     }
 
@@ -77,13 +82,13 @@ struct RealtimeConversationView: View {
     private let onSpeechPlayback: () -> Void
 
     init(
-        character: CharacterDTO,
+        chat: ChatViewModel,
         deps: ChatDependencies,
         onSpeechPlayback: @escaping () -> Void
     ) {
         _coordinator = State(
             initialValue: RealtimeConversationCoordinator(
-                character: character,
+                chat: chat,
                 deps: deps
             )
         )
@@ -386,7 +391,7 @@ struct RealtimeConversationView: View {
         case .thinking: "你可以继续说来打断这次回复"
         case .speaking: "直接开口就能自然插话"
         case .paused: "回到应用后会在这里恢复"
-        case .failed: "检查权限后可在当前页面重试"
+        case .failed: "可在当前页面重试，仍失败时请检查网络与系统权限"
         }
     }
 }
