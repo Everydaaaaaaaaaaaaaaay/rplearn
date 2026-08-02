@@ -1,0 +1,501 @@
+{
+  "schema": "gugu_reference_part_inventory_draft.v1",
+  "status": "draft_manual_analysis",
+  "scope": "reference_only_no_blender_mutation",
+  "coordinate_contract": {
+    "image_size": [540, 887],
+    "origin": "top_left",
+    "x_direction": "right",
+    "y_direction": "down",
+    "bbox_format": ["x", "y", "width", "height"],
+    "front_anatomical_mapping": "正面图 image-left 是角色右侧（.R），image-right 是角色左侧（.L）",
+    "back_anatomical_mapping": "背面图 image-left 是角色左侧（.L），image-right 是角色右侧（.R）",
+    "side_policy": "侧视图在正交配准完成前仅称 profile_near，不据此单独裁决 .L/.R"
+  },
+  "inputs": [
+    {
+      "view": "front",
+      "path": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
+      "role": "canonical_design_and_front_silhouette",
+      "usable_character_bbox": [52, 151, 435, 569]
+    },
+    {
+      "view": "side",
+      "path": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-side.png",
+      "role": "depth_and_profile_constraint",
+      "usable_character_bbox": [90, 150, 343, 573],
+      "warning": "左右画幅边缘含相邻转面角色残片，不能纳入主体 mask"
+    },
+    {
+      "view": "back",
+      "path": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-back.png",
+      "role": "rear_structure_and_accessory_routing",
+      "usable_character_bbox": [32, 155, 450, 564],
+      "warning": "右侧画幅边缘含相邻角色翅膀残片，不能纳入主体 mask"
+    }
+  ],
+  "source_quality": {
+    "source_type": "AI-assisted soft 3D turnaround sheet crops",
+    "confidence": "medium",
+    "canonical_policy": "正面决定角色设计与颜色；侧面决定纵深；背面决定包带、围巾结和尾部拓扑。多视图冲突不得平均化，须显式记录。",
+    "segmentation_modality": "优先 HSV 色带 + named seeds；白色背景用 non_background；相接部件用 polygon，不建议无种子的全图 watershed",
+    "hard_gate_note": "现有自动最大连通域只适合总轮廓初筛，不能代表结构部件清单。"
+  },
+  "part_inventory": [
+    {
+      "id": "head_shell",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "visible"},
+      "notes": "蓝色头壳；围巾遮住下缘，不能依据可见边直接判断真实颈口。",
+      "blender_name": "CHR_GUGU_Head"
+    },
+    {
+      "id": "torso_shell",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "partially_occluded", "side": "partially_occluded", "back": "partially_occluded"},
+      "notes": "蓝色梨形躯干；被胸腹贴色、围巾、翅膀、包带和挎包遮挡。",
+      "blender_name": "CHR_GUGU_Torso"
+    },
+    {
+      "id": "crest_primary",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "visible"},
+      "blender_name": "CHR_GUGU_Crest_A"
+    },
+    {
+      "id": "crest_secondary",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "visible"},
+      "blender_name": "CHR_GUGU_Crest_B"
+    },
+    {
+      "id": "crest_tertiary",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "partially_occluded"},
+      "blender_name": "CHR_GUGU_Crest_C"
+    },
+    {
+      "id": "eye_R_assembly",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible_image_left", "side": "visible_or_near_eye", "back": "hidden"},
+      "notes": "包括眼白/奶油外圈、深色虹膜、瞳孔和高光；各层应保留独立材质或子对象。",
+      "blender_name": "CHR_GUGU_Eye.R"
+    },
+    {
+      "id": "eye_L_assembly",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "far_eye_hidden", "back": "hidden"},
+      "blender_name": "CHR_GUGU_Eye.L"
+    },
+    {
+      "id": "brow_R",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible_image_left", "side": "visible_or_near_brow", "back": "hidden"},
+      "blender_name": "CHR_GUGU_Brow.R"
+    },
+    {
+      "id": "brow_L",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "far_brow_hidden", "back": "hidden"},
+      "blender_name": "CHR_GUGU_Brow.L"
+    },
+    {
+      "id": "cheek_pad_R",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible_image_left", "side": "partially_visible", "back": "hidden"},
+      "notes": "奶油色双叶脸盘的角色右半；与左半、喙根相接，需 seeded polygon。",
+      "blender_name": "CHR_GUGU_CheekPad.R"
+    },
+    {
+      "id": "cheek_pad_L",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "far_side_hidden", "back": "hidden"},
+      "blender_name": "CHR_GUGU_CheekPad.L"
+    },
+    {
+      "id": "beak_upper",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "hidden"},
+      "blender_name": "CHR_GUGU_Beak_Upper"
+    },
+    {
+      "id": "beak_lower",
+      "class": "face_feature",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "hidden"},
+      "blender_name": "CHR_GUGU_Beak_Lower"
+    },
+    {
+      "id": "wing_R",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_left", "side": "far_or_edge_occluded", "back": "visible_image_right"},
+      "notes": "正面 image-left 与背面 image-right 是同一个角色右翅。",
+      "blender_name": "CHR_GUGU_Wing.R"
+    },
+    {
+      "id": "wing_L",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "near_wing_visible", "back": "visible_image_left"},
+      "blender_name": "CHR_GUGU_Wing.L"
+    },
+    {
+      "id": "wing_feather_grooves",
+      "class": "decorative",
+      "expected_count": 2,
+      "views": {"front": "visible", "side": "near_side_visible", "back": "visible"},
+      "notes": "羽片分缝属于表面/浅浮雕，不应拆成六个独立主结构。",
+      "blender_name": "CHR_GUGU_WingFeatherDetail.LR"
+    },
+    {
+      "id": "tail_cluster",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "lower_edge_partially_visible", "side": "visible_rear", "back": "visible_center_rear"},
+      "notes": "侧面呈三片后伸尾羽；背面呈臀部中央三叶突起，形态跨视图不完全一致。",
+      "blender_name": "CHR_GUGU_Tail"
+    },
+    {
+      "id": "leg_R",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_left", "side": "overlapped", "back": "visible_image_right"},
+      "blender_name": "CHR_GUGU_Leg.R"
+    },
+    {
+      "id": "leg_L",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "overlapped", "back": "visible_image_left"},
+      "blender_name": "CHR_GUGU_Leg.L"
+    },
+    {
+      "id": "foot_R",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_left", "side": "overlapped", "back": "visible_image_right"},
+      "notes": "三枚前趾可作为一个连续足网格内的趾形，不计为三个主部件。",
+      "blender_name": "CHR_GUGU_Foot.R"
+    },
+    {
+      "id": "foot_L",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "overlapped", "back": "visible_image_left"},
+      "blender_name": "CHR_GUGU_Foot.L"
+    },
+    {
+      "id": "scarf_wrap",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "visible"},
+      "notes": "围巾绕颈主体；正面两层、背面三条明暗带是褶皱而非多个围巾对象。",
+      "blender_name": "ACC_GUGU_Scarf_Wrap"
+    },
+    {
+      "id": "scarf_knot",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "partially_visible_image_right", "side": "partially_visible_rear", "back": "visible_image_left"},
+      "notes": "位于角色左后侧；跨视图位置一致。",
+      "blender_name": "ACC_GUGU_Scarf_Knot"
+    },
+    {
+      "id": "scarf_tail_upper",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "visible_rear", "back": "visible_image_left"},
+      "blender_name": "ACC_GUGU_Scarf_Tail_A"
+    },
+    {
+      "id": "scarf_tail_lower",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "visible_rear", "back": "visible_image_left"},
+      "blender_name": "ACC_GUGU_Scarf_Tail_B"
+    },
+    {
+      "id": "belly_patch",
+      "class": "decorative",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "partially_visible", "back": "hidden"},
+      "notes": "奶油色胸腹区域建议材质区或贴体薄壳；不计入外轮廓主结构。",
+      "blender_name": "DEC_GUGU_BellyPatch"
+    },
+    {
+      "id": "satchel_strap",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_diagonal_down_right", "side": "mostly_occluded_or_edge_on", "back": "visible_diagonal_down_left"},
+      "notes": "正面从角色右肩通向角色左胯；背面方向反转是视角一致，不是冲突。",
+      "blender_name": "ACC_GUGU_Satchel_Strap"
+    },
+    {
+      "id": "satchel_ring",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "partially_visible", "back": "visible_upper_attachment"},
+      "blender_name": "ACC_GUGU_Satchel_Ring"
+    },
+    {
+      "id": "satchel_body",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible_image_right", "side": "visible_near_side", "back": "visible_image_left"},
+      "blender_name": "ACC_GUGU_Satchel_Body"
+    },
+    {
+      "id": "satchel_flap",
+      "class": "structural",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "mostly_hidden_by_orientation"},
+      "blender_name": "ACC_GUGU_Satchel_Flap"
+    },
+    {
+      "id": "satchel_button",
+      "class": "decorative",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "small_or_occluded"},
+      "blender_name": "ACC_GUGU_Satchel_Button"
+    },
+    {
+      "id": "beak_nostrils",
+      "class": "decorative",
+      "expected_count": 2,
+      "views": {"front": "visible", "side": "only_near_one_visible", "back": "hidden"},
+      "blender_name": "DEC_GUGU_BeakNostril.LR"
+    },
+    {
+      "id": "ground_shadow",
+      "class": "aura_context",
+      "expected_count": 1,
+      "views": {"front": "visible", "side": "visible", "back": "visible"},
+      "notes": "只用于落地高度和脚底接触验证，不进入角色 mask。",
+      "blender_name": "VAL_GUGU_GroundShadow"
+    },
+    {
+      "id": "neighbor_turnaround_fragments",
+      "class": "validation_only",
+      "expected_count": 0,
+      "views": {"front": "absent", "side": "present_at_both_edges", "back": "present_at_right_edge"},
+      "notes": "转面表裁切残片；必须从侧/背 mask 排除。",
+      "blender_name": "VAL_Ignore_NeighborFragments"
+    }
+  ],
+  "front_seed_manifest": {
+    "schema": "source_part_seed_manifest.v1",
+    "image": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
+    "image_size": [540, 887],
+    "draft_precision": "manual_bbox_polygon_seed_draft_requiring_mask_review",
+    "parts": [
+      {"name": "head_shell", "class": "structural", "bbox": [143, 194, 286, 249], "seed_point": [286, 238], "mode": "hsv_range", "hsv_hint": "blue"},
+      {"name": "torso_shell", "class": "structural", "polygon": [[126, 430], [180, 421], [360, 422], [424, 458], [421, 610], [369, 663], [276, 674], [184, 657], [126, 586]], "seed_point": [292, 510], "mode": "polygon"},
+      {"name": "crest_primary", "class": "structural", "bbox": [257, 146, 63, 75], "seed_point": [286, 174], "mode": "hsv_range", "hsv_hint": "blue"},
+      {"name": "crest_secondary", "class": "structural", "bbox": [286, 171, 64, 56], "seed_point": [319, 191], "mode": "hsv_range", "hsv_hint": "blue"},
+      {"name": "crest_tertiary", "class": "structural", "bbox": [306, 187, 54, 43], "seed_point": [331, 205], "mode": "hsv_range", "hsv_hint": "blue"},
+      {"name": "eye_R_assembly", "class": "face_feature", "bbox": [184, 296, 65, 82], "seed_point": [217, 337], "mode": "non_background"},
+      {"name": "eye_R_iris_pupil", "class": "face_feature", "bbox": [198, 307, 45, 66], "seed_point": [219, 344], "mode": "dark_lines"},
+      {"name": "eye_R_primary_highlight", "class": "decorative", "bbox": [207, 315, 17, 22], "seed_point": [215, 324], "mode": "bright_on_dark"},
+      {"name": "eye_L_assembly", "class": "face_feature", "bbox": [325, 296, 66, 82], "seed_point": [358, 337], "mode": "non_background"},
+      {"name": "eye_L_iris_pupil", "class": "face_feature", "bbox": [332, 307, 48, 66], "seed_point": [356, 344], "mode": "dark_lines"},
+      {"name": "eye_L_primary_highlight", "class": "decorative", "bbox": [342, 315, 17, 22], "seed_point": [350, 324], "mode": "bright_on_dark"},
+      {"name": "brow_R", "class": "face_feature", "bbox": [197, 260, 41, 25], "seed_point": [218, 273], "mode": "dark_lines"},
+      {"name": "brow_L", "class": "face_feature", "bbox": [338, 260, 43, 25], "seed_point": [359, 273], "mode": "dark_lines"},
+      {"name": "cheek_pad_R", "class": "face_feature", "polygon": [[162, 383], [174, 367], [211, 363], [252, 375], [280, 397], [267, 426], [226, 439], [182, 428]], "seed_point": [211, 401], "mode": "polygon"},
+      {"name": "cheek_pad_L", "class": "face_feature", "polygon": [[278, 397], [304, 374], [350, 363], [393, 369], [409, 388], [399, 425], [356, 439], [312, 428]], "seed_point": [355, 402], "mode": "polygon"},
+      {"name": "beak_upper", "class": "face_feature", "polygon": [[250, 373], [259, 355], [281, 346], [307, 355], [321, 374], [285, 388]], "seed_point": [285, 369], "mode": "polygon"},
+      {"name": "beak_lower", "class": "face_feature", "polygon": [[256, 378], [285, 388], [314, 378], [306, 397], [285, 405], [264, 398]], "seed_point": [285, 393], "mode": "polygon"},
+      {"name": "beak_nostril_R", "class": "decorative", "bbox": [265, 362, 9, 8], "seed_point": [269, 366], "mode": "dark_lines"},
+      {"name": "beak_nostril_L", "class": "decorative", "bbox": [298, 362, 9, 8], "seed_point": [302, 366], "mode": "dark_lines"},
+      {"name": "scarf_wrap", "class": "structural", "polygon": [[159, 408], [193, 415], [245, 420], [336, 416], [389, 410], [414, 427], [409, 469], [384, 489], [197, 490], [162, 463]], "seed_point": [280, 454], "mode": "polygon"},
+      {"name": "scarf_knot", "class": "structural", "bbox": [390, 405, 38, 53], "seed_point": [407, 430], "mode": "hsv_range", "hsv_hint": "red"},
+      {"name": "scarf_tail_upper", "class": "structural", "polygon": [[410, 405], [442, 390], [464, 396], [462, 425], [438, 444], [410, 438]], "seed_point": [439, 416], "mode": "polygon"},
+      {"name": "scarf_tail_lower", "class": "structural", "polygon": [[409, 438], [440, 435], [462, 453], [457, 477], [429, 486], [407, 464]], "seed_point": [437, 459], "mode": "polygon"},
+      {"name": "wing_R", "class": "structural", "polygon": [[126, 445], [159, 440], [181, 468], [184, 520], [163, 569], [129, 598], [80, 616], [52, 607], [65, 577], [91, 520]], "seed_point": [126, 525], "mode": "polygon"},
+      {"name": "wing_L", "class": "structural", "polygon": [[389, 442], [421, 451], [452, 500], [487, 539], [487, 614], [459, 617], [417, 594], [391, 558], [376, 500]], "seed_point": [423, 522], "mode": "polygon"},
+      {"name": "wing_R_feather_grooves", "class": "decorative", "bbox": [65, 518, 110, 96], "seed_point": [123, 569], "mode": "dark_lines"},
+      {"name": "wing_L_feather_grooves", "class": "decorative", "bbox": [392, 515, 95, 98], "seed_point": [438, 568], "mode": "dark_lines"},
+      {"name": "belly_patch", "class": "decorative", "polygon": [[181, 444], [230, 437], [333, 442], [365, 486], [378, 557], [356, 630], [320, 659], [227, 661], [180, 634], [160, 571], [163, 496]], "seed_point": [263, 557], "mode": "polygon"},
+      {"name": "satchel_strap", "class": "structural", "polygon": [[173, 449], [191, 440], [376, 570], [367, 595], [347, 585], [164, 463]], "seed_point": [272, 517], "mode": "polygon"},
+      {"name": "satchel_ring", "class": "structural", "bbox": [336, 551, 40, 43], "seed_point": [356, 572], "mode": "hsv_range", "hsv_hint": "gold"},
+      {"name": "satchel_body", "class": "structural", "polygon": [[348, 544], [398, 546], [421, 571], [420, 629], [400, 657], [360, 662], [335, 641], [330, 581]], "seed_point": [380, 620], "mode": "polygon"},
+      {"name": "satchel_flap", "class": "structural", "polygon": [[344, 543], [401, 544], [418, 565], [407, 598], [371, 605], [339, 587]], "seed_point": [376, 571], "mode": "polygon"},
+      {"name": "satchel_button", "class": "decorative", "bbox": [397, 566, 25, 29], "seed_point": [409, 580], "mode": "hsv_range", "hsv_hint": "gold"},
+      {"name": "tail_cluster_front_visible", "class": "structural", "bbox": [213, 645, 121, 29], "seed_point": [276, 662], "mode": "hsv_range", "hsv_hint": "blue"},
+      {"name": "leg_R", "class": "structural", "bbox": [199, 648, 31, 60], "seed_point": [214, 684], "mode": "hsv_range", "hsv_hint": "orange"},
+      {"name": "foot_R", "class": "structural", "polygon": [[199, 692], [221, 693], [243, 700], [250, 711], [243, 720], [186, 719], [182, 710]], "seed_point": [215, 709], "mode": "polygon"},
+      {"name": "leg_L", "class": "structural", "bbox": [326, 648, 31, 61], "seed_point": [341, 684], "mode": "hsv_range", "hsv_hint": "orange"},
+      {"name": "foot_L", "class": "structural", "polygon": [[321, 692], [348, 692], [371, 700], [380, 712], [373, 721], [309, 719], [305, 710]], "seed_point": [340, 709], "mode": "polygon"},
+      {"name": "ground_shadow", "class": "aura_context", "bbox": [140, 704, 255, 25], "seed_point": [270, 716], "mode": "non_background"}
+    ]
+  },
+  "multiview_conflicts_and_ambiguities": [
+    {
+      "id": "side_neighbor_fragments",
+      "severity": "hard_mask_exclusion",
+      "views": ["side"],
+      "regions": [[25, 398, 68, 218], [447, 412, 69, 204]],
+      "description": "侧视图左右边缘串入上一/下一转面的围巾和翅膀残片。自动连通域会错误增加 4 个部件。"
+    },
+    {
+      "id": "back_neighbor_fragment",
+      "severity": "hard_mask_exclusion",
+      "views": ["back"],
+      "regions": [[496, 546, 20, 61]],
+      "description": "背面右缘有相邻角色翅膀残片；不属于当前角色。"
+    },
+    {
+      "id": "front_back_silhouette_width",
+      "severity": "measurement_policy",
+      "views": ["front", "back"],
+      "description": "自动总轮廓宽度 front=435 px、back≈450 px（现有报告写入 483 px 的输入值得复核）。背面双翅展开方式与正面不同，不能把总 bbox 宽度当作刚性躯干宽度。应分别比较 head_shell、torso_shell 与 wings。"
+    },
+    {
+      "id": "side_depth_contamination",
+      "severity": "measurement_policy",
+      "views": ["side"],
+      "description": "现有 side_depth=490 px 很可能来自含边缘残片的全图跨度；主体 bbox 宽约343 px。深度配准只能使用主体净 mask。"
+    },
+    {
+      "id": "head_torso_neck_hidden",
+      "severity": "occlusion_ambiguity",
+      "views": ["front", "side", "back"],
+      "description": "三视图均被围巾完全遮挡颈部，无法从参考确认头壳和躯干是一个连续网格还是两个相交体。建模应采用连续主表面或隐藏搭接，但不得用可见刀切接缝推断结构。"
+    },
+    {
+      "id": "tail_shape_inconsistency",
+      "severity": "cross_view_conflict",
+      "views": ["front", "side", "back"],
+      "description": "侧面尾部是向后伸出的三片尾羽；背面中央像三叶短尾/臀羽；正面仅见腹底蓝色小片。需要以侧面长度、背面宽度组合成一个 3D 尾簇，而不是逐图照抄三个不同对象。"
+    },
+    {
+      "id": "leg_count_side_occlusion",
+      "severity": "occlusion_ambiguity",
+      "views": ["side"],
+      "description": "侧面只形成一个清晰足部轮廓，双腿/双脚重叠；结构数量仍由正面和背面锁定为 2+2。"
+    },
+    {
+      "id": "far_eye_and_far_wing_side_occlusion",
+      "severity": "occlusion_ambiguity",
+      "views": ["side"],
+      "description": "侧面只可靠显示近侧眼、眉和翅膀；不得用对称推断生成 mask，但建模部件总数由正面/背面确定。"
+    },
+    {
+      "id": "scarf_tail_topology",
+      "severity": "overlap_ambiguity",
+      "views": ["front", "side", "back"],
+      "description": "正面看似两片尾端，背面结点和两尾的层叠顺序更清楚；应拆 knot、tail_A、tail_B，不能合成一个扁平蝴蝶结 mask。"
+    },
+    {
+      "id": "belly_patch_geometry",
+      "severity": "representation_ambiguity",
+      "views": ["front", "side"],
+      "description": "奶油胸腹有软阴影，可能是贴体薄壳或仅材质区；它不改变主轮廓。建议先作为 decorative 材质区，只有近景验证需要时才升格为薄壳。"
+    },
+    {
+      "id": "strap_bag_wing_occlusion_order",
+      "severity": "overlap_ambiguity",
+      "views": ["front", "side", "back"],
+      "description": "包带位于躯干之上、近侧翅膀之下/旁；挎包再遮挡胸腹。遮挡顺序需在语义对象层固定，否则自动分割会把金色区域误并为一个对象。"
+    },
+    {
+      "id": "soft_shadow_not_structure",
+      "severity": "validation_only",
+      "views": ["front", "side", "back"],
+      "description": "AO、接触阴影、高光和背景暖灰不是结构边界。IoU 需用轮廓 matte，不用 beauty render 的明暗阈值。"
+    }
+  ],
+  "blender_semantic_naming": {
+    "root": "CHR_GUGU_ROOT",
+    "collections": [
+      "CHR_GUGU_GEO",
+      "CHR_GUGU_FACE",
+      "CHR_GUGU_ACCESSORIES",
+      "CHR_GUGU_DECALS",
+      "CHR_GUGU_RIG",
+      "CHR_GUGU_VALIDATION"
+    ],
+    "objects": [
+      "CHR_GUGU_Head",
+      "CHR_GUGU_Torso",
+      "CHR_GUGU_Crest_A",
+      "CHR_GUGU_Crest_B",
+      "CHR_GUGU_Crest_C",
+      "CHR_GUGU_Eye.L",
+      "CHR_GUGU_Eye.R",
+      "CHR_GUGU_Brow.L",
+      "CHR_GUGU_Brow.R",
+      "CHR_GUGU_CheekPad.L",
+      "CHR_GUGU_CheekPad.R",
+      "CHR_GUGU_Beak_Upper",
+      "CHR_GUGU_Beak_Lower",
+      "CHR_GUGU_Wing.L",
+      "CHR_GUGU_Wing.R",
+      "CHR_GUGU_Tail",
+      "CHR_GUGU_Leg.L",
+      "CHR_GUGU_Leg.R",
+      "CHR_GUGU_Foot.L",
+      "CHR_GUGU_Foot.R",
+      "ACC_GUGU_Scarf_Wrap",
+      "ACC_GUGU_Scarf_Knot",
+      "ACC_GUGU_Scarf_Tail_A",
+      "ACC_GUGU_Scarf_Tail_B",
+      "ACC_GUGU_Satchel_Strap",
+      "ACC_GUGU_Satchel_Ring",
+      "ACC_GUGU_Satchel_Body",
+      "ACC_GUGU_Satchel_Flap",
+      "ACC_GUGU_Satchel_Button",
+      "DEC_GUGU_BellyPatch",
+      "DEC_GUGU_WingFeatherDetail.L",
+      "DEC_GUGU_WingFeatherDetail.R"
+    ],
+    "material_examples": [
+      "MAT_GUGU_BlueBody",
+      "MAT_GUGU_Cream",
+      "MAT_GUGU_BeakOrange",
+      "MAT_GUGU_ScarfRed",
+      "MAT_GUGU_SatchelGold",
+      "MAT_GUGU_EyeDark"
+    ],
+    "side_suffix_rule": "使用角色自身左右 .L/.R，不使用图像左右；front image-right=.L，front image-left=.R。"
+  },
+  "validation_recommendations": {
+    "required_masks": [
+      "front_character_clean_silhouette",
+      "front_head_shell",
+      "front_torso_shell",
+      "front_wing_L",
+      "front_wing_R",
+      "front_scarf",
+      "front_satchel",
+      "side_character_clean_silhouette_without_neighbor_fragments",
+      "back_character_clean_silhouette_without_neighbor_fragment"
+    ],
+    "first_pass_gates": {
+      "front_clean_silhouette_iou_min": 0.82,
+      "part_count_exact": true,
+      "bbox_center_drift_px_at_1024": 12,
+      "bbox_size_drift_ratio": 0.03,
+      "face_landmark_drift_ratio": 0.02
+    },
+    "do_not_compare": [
+      "beauty_render_shadow_threshold_vs_flat_reference_mask",
+      "full_side_canvas_bbox_with_neighbor_fragments",
+      "full_back_canvas_bbox_with_neighbor_fragment",
+      "front_total_wing_span_vs_back_total_wing_span_as_rigid_body_width"
+    ]
+  }
+}

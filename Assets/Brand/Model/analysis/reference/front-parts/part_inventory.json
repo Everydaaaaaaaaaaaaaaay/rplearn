@@ -1,0 +1,513 @@
+{
+  "schema": "source_part_inventory.v1",
+  "image": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
+  "parts": [
+    {
+      "name": "head_shell",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 59789,
+      "bbox_px": [
+        145,
+        194,
+        282,
+        255
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/head_shell_mask.png"
+    },
+    {
+      "name": "torso_shell",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 67592,
+      "bbox_px": [
+        126,
+        421,
+        299,
+        254
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/torso_shell_mask.png"
+    },
+    {
+      "name": "crest_primary",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 3630,
+      "bbox_px": [
+        257,
+        149,
+        63,
+        72
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/crest_primary_mask.png"
+    },
+    {
+      "name": "crest_secondary",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 3143,
+      "bbox_px": [
+        286,
+        171,
+        64,
+        56
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/crest_secondary_mask.png"
+    },
+    {
+      "name": "crest_tertiary",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 1849,
+      "bbox_px": [
+        306,
+        187,
+        54,
+        43
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/crest_tertiary_mask.png"
+    },
+    {
+      "name": "eye_R_assembly",
+      "class": "face_feature",
+      "mode": "non_background",
+      "area_px": 4275,
+      "bbox_px": [
+        184,
+        296,
+        65,
+        82
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/eye_R_assembly_mask.png"
+    },
+    {
+      "name": "eye_R_iris_pupil",
+      "class": "face_feature",
+      "mode": "dark_lines",
+      "area_px": 710,
+      "bbox_px": [
+        198,
+        307,
+        45,
+        62
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/eye_R_iris_pupil_mask.png"
+    },
+    {
+      "name": "eye_R_primary_highlight",
+      "class": "decorative",
+      "mode": "bright_on_dark",
+      "area_px": 123,
+      "bbox_px": [
+        207,
+        315,
+        16,
+        18
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/eye_R_primary_highlight_mask.png"
+    },
+    {
+      "name": "eye_L_assembly",
+      "class": "face_feature",
+      "mode": "non_background",
+      "area_px": 5038,
+      "bbox_px": [
+        325,
+        296,
+        66,
+        82
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/eye_L_assembly_mask.png"
+    },
+    {
+      "name": "eye_L_iris_pupil",
+      "class": "face_feature",
+      "mode": "dark_lines",
+      "area_px": 825,
+      "bbox_px": [
+        332,
+        307,
+        48,
+        63
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/eye_L_iris_pupil_mask.png"
+    },
+    {
+      "name": "eye_L_primary_highlight",
+      "class": "decorative",
+      "mode": "bright_on_dark",
+      "area_px": 97,
+      "bbox_px": [
+        342,
+        315,
+        12,
+        19
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/eye_L_primary_highlight_mask.png"
+    },
+    {
+      "name": "brow_R",
+      "class": "face_feature",
+      "mode": "dark_lines",
+      "area_px": 172,
+      "bbox_px": [
+        199,
+        264,
+        36,
+        17
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/brow_R_mask.png"
+    },
+    {
+      "name": "brow_L",
+      "class": "face_feature",
+      "mode": "dark_lines",
+      "area_px": 151,
+      "bbox_px": [
+        340,
+        264,
+        35,
+        18
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/brow_L_mask.png"
+    },
+    {
+      "name": "cheek_pad_R",
+      "class": "face_feature",
+      "mode": "polygon",
+      "area_px": 6463,
+      "bbox_px": [
+        162,
+        363,
+        119,
+        77
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/cheek_pad_R_mask.png"
+    },
+    {
+      "name": "cheek_pad_L",
+      "class": "face_feature",
+      "mode": "polygon",
+      "area_px": 7112,
+      "bbox_px": [
+        278,
+        363,
+        132,
+        77
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/cheek_pad_L_mask.png"
+    },
+    {
+      "name": "beak_upper",
+      "class": "face_feature",
+      "mode": "polygon",
+      "area_px": 1915,
+      "bbox_px": [
+        250,
+        346,
+        72,
+        43
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/beak_upper_mask.png"
+    },
+    {
+      "name": "beak_lower",
+      "class": "face_feature",
+      "mode": "polygon",
+      "area_px": 913,
+      "bbox_px": [
+        256,
+        378,
+        59,
+        28
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/beak_lower_mask.png"
+    },
+    {
+      "name": "beak_nostril_R",
+      "class": "decorative",
+      "mode": "dark_lines",
+      "area_px": 3,
+      "bbox_px": [
+        269,
+        362,
+        2,
+        2
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/beak_nostril_R_mask.png"
+    },
+    {
+      "name": "beak_nostril_L",
+      "class": "decorative",
+      "mode": "dark_lines",
+      "area_px": 7,
+      "bbox_px": [
+        299,
+        362,
+        3,
+        3
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/beak_nostril_L_mask.png"
+    },
+    {
+      "name": "scarf_wrap",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 17946,
+      "bbox_px": [
+        159,
+        408,
+        256,
+        83
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/scarf_wrap_mask.png"
+    },
+    {
+      "name": "scarf_knot",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 1570,
+      "bbox_px": [
+        390,
+        405,
+        38,
+        53
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/scarf_knot_mask.png"
+    },
+    {
+      "name": "scarf_tail_upper",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 2315,
+      "bbox_px": [
+        410,
+        390,
+        55,
+        55
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/scarf_tail_upper_mask.png"
+    },
+    {
+      "name": "scarf_tail_lower",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 2133,
+      "bbox_px": [
+        407,
+        435,
+        56,
+        52
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/scarf_tail_lower_mask.png"
+    },
+    {
+      "name": "wing_R",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 13439,
+      "bbox_px": [
+        52,
+        440,
+        133,
+        177
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/wing_R_mask.png"
+    },
+    {
+      "name": "wing_L",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 12454,
+      "bbox_px": [
+        376,
+        442,
+        112,
+        176
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/wing_L_mask.png"
+    },
+    {
+      "name": "wing_R_feather_grooves",
+      "class": "decorative",
+      "mode": "dark_lines",
+      "area_px": 48,
+      "bbox_px": [
+        84,
+        556,
+        68,
+        45
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/wing_R_feather_grooves_mask.png"
+    },
+    {
+      "name": "wing_L_feather_grooves",
+      "class": "decorative",
+      "mode": "dark_lines",
+      "area_px": 163,
+      "bbox_px": [
+        393,
+        523,
+        93,
+        80
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/wing_L_feather_grooves_mask.png"
+    },
+    {
+      "name": "belly_patch",
+      "class": "decorative",
+      "mode": "polygon",
+      "area_px": 41936,
+      "bbox_px": [
+        160,
+        437,
+        219,
+        225
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/belly_patch_mask.png"
+    },
+    {
+      "name": "satchel_strap",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 7619,
+      "bbox_px": [
+        164,
+        440,
+        213,
+        156
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/satchel_strap_mask.png"
+    },
+    {
+      "name": "satchel_ring",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 1717,
+      "bbox_px": [
+        336,
+        551,
+        40,
+        43
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/satchel_ring_mask.png"
+    },
+    {
+      "name": "satchel_body",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 9129,
+      "bbox_px": [
+        330,
+        544,
+        92,
+        119
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/satchel_body_mask.png"
+    },
+    {
+      "name": "satchel_flap",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 4004,
+      "bbox_px": [
+        339,
+        543,
+        80,
+        63
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/satchel_flap_mask.png"
+    },
+    {
+      "name": "satchel_button",
+      "class": "decorative",
+      "mode": "hsv_range",
+      "area_px": 725,
+      "bbox_px": [
+        397,
+        566,
+        25,
+        29
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/satchel_button_mask.png"
+    },
+    {
+      "name": "tail_cluster_front_visible",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 1435,
+      "bbox_px": [
+        213,
+        645,
+        121,
+        23
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/tail_cluster_front_visible_mask.png"
+    },
+    {
+      "name": "leg_R",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 514,
+      "bbox_px": [
+        199,
+        664,
+        31,
+        44
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/leg_R_mask.png"
+    },
+    {
+      "name": "foot_R",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 1541,
+      "bbox_px": [
+        182,
+        692,
+        69,
+        29
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/foot_R_mask.png"
+    },
+    {
+      "name": "leg_L",
+      "class": "structural",
+      "mode": "hsv_range",
+      "area_px": 970,
+      "bbox_px": [
+        326,
+        665,
+        31,
+        44
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/leg_L_mask.png"
+    },
+    {
+      "name": "foot_L",
+      "class": "structural",
+      "mode": "polygon",
+      "area_px": 1771,
+      "bbox_px": [
+        305,
+        692,
+        76,
+        30
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/foot_L_mask.png"
+    },
+    {
+      "name": "ground_shadow",
+      "class": "aura_context",
+      "mode": "non_background",
+      "area_px": 2206,
+      "bbox_px": [
+        185,
+        704,
+        202,
+        17
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/front-parts/ground_shadow_mask.png"
+    }
+  ]
+}

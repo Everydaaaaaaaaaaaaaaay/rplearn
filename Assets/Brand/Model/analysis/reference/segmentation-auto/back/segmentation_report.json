@@ -1,0 +1,32 @@
+{
+  "schema": "source_part_segmentation.v1",
+  "image": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-back.png",
+  "mode": "bright_on_dark",
+  "watershed": false,
+  "components": [
+    {
+      "id": 0,
+      "label": 1,
+      "area": 138500,
+      "bbox_px": [
+        32,
+        154,
+        450,
+        564
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/segmentation-auto/back/part_000_mask.png"
+    },
+    {
+      "id": 1,
+      "label": 3,
+      "area": 481,
+      "bbox_px": [
+        496,
+        567,
+        19,
+        39
+      ],
+      "mask": "/Volumes/data/rplearn/Assets/Brand/Model/analysis/reference/segmentation-auto/back/part_001_mask.png"
+    }
+  ]
+}
