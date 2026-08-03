@@ -552,14 +552,20 @@ struct RootView: View {
     }
 
     private func maybePromptVoiceUpgrade() {
-        guard VoiceUpgradePromptPolicy.shouldPresent(
-            isSuppressed: suppressVoicePrompt,
-            hasPresented: hasPresentedVoicePrompt,
-            isOnboarding: environment.needsOnboarding == true,
-            quality: AppleTTSService.bestAvailableEnglishQuality()
-        ) else { return }
-        hasPresentedVoicePrompt = true
-        showVoiceUpgrade = true
+        Task {
+            // Pocket 已经可用时不再提示用户额外下载 Apple 增强语音。
+            let offlineStatus = await environment.speech.offlineModelStatus()
+            guard !offlineStatus.isActive,
+                  VoiceUpgradePromptPolicy.shouldPresent(
+                    isSuppressed: suppressVoicePrompt,
+                    hasPresented: hasPresentedVoicePrompt,
+                    isOnboarding: environment.needsOnboarding == true,
+                    quality: AppleTTSService.bestAvailableEnglishQuality()
+                  )
+            else { return }
+            hasPresentedVoicePrompt = true
+            showVoiceUpgrade = true
+        }
     }
 
     private func reloadUnreadCount() async {

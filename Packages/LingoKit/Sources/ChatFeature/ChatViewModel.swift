@@ -90,7 +90,18 @@ public final class ChatViewModel {
     /// 播放消息音频（按角色国籍口音）。
     public func speak(message: MessageDTO) async {
         let language = AccentMapper.language(forNationality: character.card.nationality)
-        await deps.speech.speak(message.text, language: language)
+        await deps.speech.speak(
+            SpeechRequest(
+                text: message.text,
+                language: language,
+                purpose: .characterDialogue,
+                voiceHint: SpeechVoiceHint(
+                    stableID: character.id.uuidString.lowercased(),
+                    gender: character.card.gender.rawValue,
+                    nationality: character.card.nationality
+                )
+            )
+        )
     }
 
     public func sendDraft() async {

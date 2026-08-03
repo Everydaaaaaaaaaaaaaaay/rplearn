@@ -110,4 +110,89 @@ struct SpeechServiceTests {
         #expect(!shouldPresent)
         #expect(!didReadQuality)
     }
+
+    @Test("Pocket 音色按角色稳定选择并区分英美男女声")
+    func pocketVoiceSelection() {
+        let britishMale = SpeechVoiceHint(
+            stableID: "oliver",
+            gender: "male",
+            nationality: "British"
+        )
+        let americanFemale = SpeechVoiceHint(
+            stableID: "casey",
+            gender: "female",
+            nationality: "American"
+        )
+
+        let first = PocketTTSVoiceCatalog.voiceID(language: "en-GB", hint: britishMale)
+        let second = PocketTTSVoiceCatalog.voiceID(language: "en-GB", hint: britishMale)
+        #expect(first == second)
+        #expect(["peter_yearsley", "stuart_bell"].contains(first))
+        #expect(PocketTTSVoiceCatalog.voiceID(language: "en-US", hint: americanFemale) == "mary")
+        #expect(PocketTTSAssetSelection.voiceIDs.contains(first))
+    }
+
+    @Test("Pocket 下载过滤掉未使用的大模型和音色")
+    func pocketAssetSelection() {
+        #expect(
+            PocketTTSAssetSelection.shouldSkip(
+                remotePath: "v2.1/english/flowlm_step.mlmodelc/weights/weight.bin"
+            )
+        )
+        #expect(
+            PocketTTSAssetSelection.shouldSkip(
+                remotePath: "v2.1/english/pocket_state.mlmodelc/weights/weight.bin"
+            )
+        )
+        #expect(
+            PocketTTSAssetSelection.shouldSkip(
+                remotePath: "v2.1/english/constants_bin/cosette.safetensors"
+            )
+        )
+        #expect(
+            !PocketTTSAssetSelection.shouldSkip(
+                remotePath: "v2.1/english/flowlm_stepv2.mlmodelc/weights/weight.bin"
+            )
+        )
+        #expect(
+            !PocketTTSAssetSelection.shouldSkip(
+                remotePath: "v2.1/english/constants_bin/mary.safetensors"
+            )
+        )
+        #expect(
+            !PocketTTSAssetSelection.shouldSkip(
+                remotePath: "v2.1/english/constants_bin/text_embed_table.bin"
+            )
+        )
+    }
+
+    @Test("离线模型只有启用且预热完成才算激活")
+    func offlineModelStatusSemantics() {
+        let loading = OfflineSpeechModelStatus(
+            phase: .loading,
+            installedBytes: 300,
+            expectedDownloadBytes: 400,
+            isEnabled: true,
+            isInstalled: true
+        )
+        let ready = OfflineSpeechModelStatus(
+            phase: .ready,
+            installedBytes: 300,
+            expectedDownloadBytes: 400,
+            isEnabled: true,
+            isInstalled: true
+        )
+        let disabled = OfflineSpeechModelStatus(
+            phase: .installed,
+            installedBytes: 300,
+            expectedDownloadBytes: 400,
+            isEnabled: false,
+            isInstalled: true
+        )
+
+        #expect(loading.isBusy)
+        #expect(!loading.isActive)
+        #expect(ready.isActive)
+        #expect(!disabled.isActive)
+    }
 }

@@ -54,7 +54,7 @@ final class AppEnvironment {
     var needsOnboarding: Bool?
 
     let audioSession: AudioSessionCoordinator
-    let speech: AppleTTSService
+    let speech: AdaptiveSpeechService
     let translator: TranslationService
     let economyService: EconomyService
 
@@ -158,7 +158,8 @@ final class AppEnvironment {
 
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
-        self.speech = AppleTTSService(audioSession: audioSession)
+        let speech = AdaptiveSpeechService(audioSession: audioSession)
+        self.speech = speech
         self.translator = TranslationService(llm: llmRouter)
         self.economyService = EconomyService(
             economyStore: economyStore,
@@ -172,6 +173,8 @@ final class AppEnvironment {
 
         Log.app.info("AppEnvironment initialized")
         Task { await authSession.bootstrap() }
+        // 已下载并启用时尽早预热；预热期间点击播放仍立即走 Apple，不让 UI 等模型。
+        Task { await speech.prepareForLaunch() }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。

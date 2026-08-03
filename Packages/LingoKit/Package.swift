@@ -23,7 +23,13 @@ let serviceTargets: [Target] = [
         ]
     ),
     .target(name: "LLMKit", dependencies: [module("BackendKit"), module("CoreKit")]),
-    .target(name: "SpeechKit", dependencies: [module("CoreKit")]),
+    .target(
+        name: "SpeechKit",
+        dependencies: [
+            module("CoreKit"),
+            .product(name: "FluidAudio", package: "FluidAudio"),
+        ]
+    ),
     .target(
         name: "RealtimeVoiceKit",
         dependencies: [
@@ -145,5 +151,13 @@ let package = Package(
     name: "LingoKit",
     platforms: [.iOS(.v18)],
     products: allTargets.map { .library(name: $0.name, targets: [$0.name]) },
+    dependencies: [
+        // 精确锁定：Pocket TTS 的模型目录与流式 API 会随 FluidAudio 版本演进，
+        // 升级必须经过包体、音质和真机延迟回归，不能自动漂移。
+        .package(
+            url: "https://github.com/FluidInference/FluidAudio.git",
+            exact: "0.15.5"
+        ),
+    ],
     targets: allTargets
 )

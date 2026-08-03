@@ -18,10 +18,49 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
     }
 }
 
-/// 语音朗读服务。隐藏在协议后，未来可换云端 TTS。
+/// 朗读用途。精确发音练习始终保留给可控的系统语音；角色台词可使用自然度更高的模型。
+public enum SpeechPurpose: Sendable, Equatable {
+    case general
+    case characterDialogue
+    case pronunciation
+}
+
+/// 可选角色提示。SpeechKit 不依赖角色领域模型，只接收稳定、最小的选声信息。
+public struct SpeechVoiceHint: Sendable, Equatable {
+    public let stableID: String
+    public let gender: String?
+    public let nationality: String?
+
+    public init(stableID: String, gender: String? = nil, nationality: String? = nil) {
+        self.stableID = stableID
+        self.gender = gender
+        self.nationality = nationality
+    }
+}
+
+/// 一次朗读请求。新增引擎或选声策略时，业务层无需了解具体 TTS 实现。
+public struct SpeechRequest: Sendable, Equatable {
+    public let text: String
+    public let language: String
+    public let purpose: SpeechPurpose
+    public let voiceHint: SpeechVoiceHint?
+
+    public init(
+        text: String,
+        language: String = "en-US",
+        purpose: SpeechPurpose = .general,
+        voiceHint: SpeechVoiceHint? = nil
+    ) {
+        self.text = text
+        self.language = language
+        self.purpose = purpose
+        self.voiceHint = voiceHint
+    }
+}
+
+/// 语音朗读服务。具体引擎、模型下载和回退策略都隐藏在协议后。
 public protocol SpeechService: Sendable {
-    /// 朗读一段英文。language 为 BCP-47 口音（en-GB/en-AU/en-US）。
-    func speak(_ text: String, language: String) async
+    func speak(_ request: SpeechRequest) async
     func stopSpeaking() async
     /// 用户在系统设置里增删语音后刷新音源缓存（默认空实现）。
     func refreshVoices() async
@@ -29,7 +68,12 @@ public protocol SpeechService: Sendable {
 
 extension SpeechService {
     public func speak(_ text: String) async {
-        await speak(text, language: "en-US")
+        await speak(SpeechRequest(text: text))
+    }
+
+    /// 兼容现有调用点的轻量入口。language 为 BCP-47 口音（en-GB/en-AU/en-US）。
+    public func speak(_ text: String, language: String) async {
+        await speak(SpeechRequest(text: text, language: language))
     }
 
     public func refreshVoices() async {}
@@ -51,14 +95,14 @@ public actor AppleTTSService: SpeechService {
         self.audioSession = audioSession
     }
 
-    public func speak(_ text: String, language: String) async {
-        guard !text.isEmpty else { return }
+    public func speak(_ request: SpeechRequest) async {
+        guard !request.text.isEmpty else { return }
         try? await audioSession.activate(.playback)
         if synthesizer.isSpeaking {
             synthesizer.stopSpeaking(at: .immediate)
         }
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = bestVoice(for: language)
+        let utterance = AVSpeechUtterance(string: request.text)
+        utterance.voice = bestVoice(for: request.language)
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
         utterance.postUtteranceDelay = 0.1
         synthesizer.speak(utterance)

@@ -97,7 +97,11 @@ public struct ChatView: View {
             grammar: deps.grammarPoints,
             onSpeak: { word in
                 let speech = deps.speech
-                Task { await speech.speak(word, language: "en-US") }
+                Task {
+                    await speech.speak(
+                        SpeechRequest(text: word, language: "en-US", purpose: .pronunciation)
+                    )
+                }
             },
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback
