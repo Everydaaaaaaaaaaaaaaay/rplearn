@@ -323,7 +323,9 @@ public struct SceneKitMascotLoader {
 
         let cameraObject = SCNCamera()
         cameraObject.usesOrthographicProjection = true
-        cameraObject.orthographicScale = Double(max(width, height) * camera.framingPadding)
+        cameraObject.orthographicScale = Double(
+            max(width, height) * camera.framingPadding * 0.5
+        )
         cameraObject.zNear = 0.01
         cameraObject.zFar = Double(largestDimension * 10)
         cameraObject.wantsHDR = false

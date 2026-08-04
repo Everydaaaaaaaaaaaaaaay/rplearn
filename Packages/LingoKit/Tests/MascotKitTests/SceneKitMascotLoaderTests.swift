@@ -22,6 +22,15 @@ struct SceneKitMascotLoaderTests {
         #expect(toon.defaultAnimation == .idle)
         #expect(toon.animationCatalog.animations.count == 3)
         #expect(toon.cameraNode.camera?.usesOrthographicProjection == true)
+        let bounds = toon.modelRootNode.boundingBox
+        let largestVisibleDimension = max(
+            bounds.max.x - bounds.min.x,
+            bounds.max.y - bounds.min.y
+        )
+        #expect(
+            toon.cameraNode.camera?.orthographicScale ?? .infinity
+                < Double(largestVisibleDimension)
+        )
         #expect(toon.animationPlayer(for: .idle)?.animation.repeatCount.isInfinite == true)
         #expect(toon.animationPlayer(for: .celebrate)?.animation.repeatCount == 0)
         #expect(toon.animationPlayer(for: .celebrate)?.animation.duration == 3)
