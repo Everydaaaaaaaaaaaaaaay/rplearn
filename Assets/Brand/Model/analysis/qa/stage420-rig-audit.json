@@ -1,0 +1,632 @@
+{
+  "schema": "gugu_rig_audit.v1",
+  "blend": "/Volumes/data/rplearn/Assets/Brand/Model/source/gugu-v3-stage-420-animation-refined.blend",
+  "rig_name": "RIG_GUGU",
+  "rig_schema": "gugu_lightweight_rig.v2",
+  "bone_count": 21,
+  "mesh_count": 49,
+  "fps": 24,
+  "missing_actions": [],
+  "unexpected_actions": [],
+  "actions": {
+    "GUGU_IDLE_LOOP": {
+      "frame_start": 1,
+      "frame_end": 97,
+      "sample_count": 97,
+      "fcurve_count": 39,
+      "keyframe_count": 255,
+      "finite_keyframes": true,
+      "cyclic": true
+    },
+    "GUGU_CELEBRATE": {
+      "frame_start": 1,
+      "frame_end": 73,
+      "sample_count": 73,
+      "fcurve_count": 48,
+      "keyframe_count": 312,
+      "finite_keyframes": true,
+      "cyclic": false
+    },
+    "GUGU_TALK_LOOP": {
+      "frame_start": 1,
+      "frame_end": 49,
+      "sample_count": 49,
+      "fcurve_count": 27,
+      "keyframe_count": 156,
+      "finite_keyframes": true,
+      "cyclic": true
+    }
+  },
+  "meshes": [
+    {
+      "name": "ACC_GUGU_Satchel_Body",
+      "vertices": 16,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "satchel"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Satchel_Button",
+      "vertices": 64,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "satchel"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Satchel_Flap",
+      "vertices": 14,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "satchel"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Satchel_Ring",
+      "vertices": 576,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "satchel"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Satchel_Strap",
+      "vertices": 24,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "body"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Scarf_Knot",
+      "vertices": 686,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "body"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Scarf_Tail_A",
+      "vertices": 42,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "scarf.tail.A"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Scarf_Tail_B",
+      "vertices": 42,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "scarf.tail.B"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "ACC_GUGU_Scarf_Wrap",
+      "vertices": 768,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "body"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Beak_Lower",
+      "vertices": 24,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "beak.lower"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Beak_Upper",
+      "vertices": 24,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "beak.upper"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Brow.L",
+      "vertices": 940,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "brow.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Brow.R",
+      "vertices": 940,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "brow.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_CheekPad.L",
+      "vertices": 74,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "head"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_CheekPad.R",
+      "vertices": 74,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "head"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Crest_A",
+      "vertices": 16,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "head"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Crest_B",
+      "vertices": 12,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "head"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Crest_C",
+      "vertices": 12,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "head"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Eye.L",
+      "vertices": 4040,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "eye.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Eye.R",
+      "vertices": 4040,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "eye.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Foot.L",
+      "vertices": 90,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "foot.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Foot.R",
+      "vertices": 90,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "foot.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Head",
+      "vertices": 530,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "head"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Leg.L",
+      "vertices": 62,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "leg.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Leg.R",
+      "vertices": 62,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "leg.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Tail",
+      "vertices": 36,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "tail"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Torso",
+      "vertices": 482,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "body"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Wing.L",
+      "vertices": 487,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "CHR_GUGU_Wing.R",
+      "vertices": 503,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_BeakNostril.LR",
+      "vertices": 764,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "beak.upper"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_BellyPatch",
+      "vertices": 274,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "body"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_ClosedEye.L",
+      "vertices": 350,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "eyelid.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_ClosedEye.R",
+      "vertices": 350,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "eyelid.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_Satchel_Seam",
+      "vertices": 180,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "satchel"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_TailCover",
+      "vertices": 178,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "tail"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_ToeGroove.L.1",
+      "vertices": 60,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "foot.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_ToeGroove.L.2",
+      "vertices": 60,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "foot.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_ToeGroove.R.1",
+      "vertices": 60,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "foot.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_ToeGroove.R.2",
+      "vertices": 60,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "foot.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingFeatherDetail.L",
+      "vertices": 984,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingFeatherDetail.R",
+      "vertices": 984,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingLayer.L.1",
+      "vertices": 250,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingLayer.L.2",
+      "vertices": 242,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingLayer.R.1",
+      "vertices": 250,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingLayer.R.2",
+      "vertices": 242,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingSideLayer.L.1",
+      "vertices": 14,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingSideLayer.L.2",
+      "vertices": 12,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.L"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingSideLayer.R.1",
+      "vertices": 14,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    },
+    {
+      "name": "DEC_GUGU_WingSideLayer.R.2",
+      "vertices": 12,
+      "parent_is_rig": true,
+      "armature_modifier_valid": true,
+      "vertex_groups": [
+        "wing.R"
+      ],
+      "orphan_vertex_groups": [],
+      "invalid_rigid_weight_vertices": 0,
+      "max_vertex_influences": 1
+    }
+  ],
+  "blockers": [],
+  "verdict": "PASS"
+}

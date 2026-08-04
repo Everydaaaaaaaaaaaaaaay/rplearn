@@ -56,7 +56,12 @@ def setup_silhouette_render(scene: bpy.types.Scene) -> None:
     world = scene.world or bpy.data.worlds.new("Codex_轮廓世界")
     scene.world = world
     world.use_nodes = True
-    background = world.node_tree.nodes.get("Background")
+    world_nodes = world.node_tree.nodes
+    world_links = world.node_tree.links
+    world_nodes.clear()
+    background = world_nodes.new("ShaderNodeBackground")
+    output = world_nodes.new("ShaderNodeOutputWorld")
+    world_links.new(background.outputs["Background"], output.inputs["Surface"])
     background.inputs["Color"].default_value = (0.0, 0.0, 0.0, 1.0)
     background.inputs["Strength"].default_value = 0.0
 
@@ -142,7 +147,13 @@ def main() -> None:
     args = parse_args()
     registration_data = json.loads(Path(args.registration).read_text(encoding="utf-8"))
     registrations = {item["role"]: item for item in registration_data["views"]}
-    meshes = [obj for obj in bpy.context.scene.objects if obj.type == "MESH" and not obj.hide_render]
+    # 只测角色资产，排除地面、软投影、参考平面等舞台辅助网格。
+    meshes = [
+        obj for obj in bpy.context.scene.objects
+        if obj.type == "MESH"
+        and not obj.hide_render
+        and obj.name.startswith(("CHR_", "ACC_", "DEC_"))
+    ]
     if not meshes:
         raise RuntimeError("场景中没有可渲染网格")
 

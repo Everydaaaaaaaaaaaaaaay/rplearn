@@ -1,0 +1,43 @@
+{
+  "schema": "gugu_animation_map.v1",
+  "asset": "gugu-v3-animated.glb",
+  "fps": 24,
+  "root_motion": false,
+  "default_clip": "GUGU_IDLE_LOOP",
+  "clips": {
+    "GUGU_IDLE_LOOP": {
+      "semantic": "idle",
+      "source_frames": [1, 97],
+      "runtime_frames": [0, 96],
+      "duration_seconds": 4.0,
+      "loop": true,
+      "crossfade_in_seconds": 0.18,
+      "crossfade_out_seconds": 0.18
+    },
+    "GUGU_CELEBRATE": {
+      "semantic": "success",
+      "source_frames": [1, 73],
+      "runtime_frames": [0, 72],
+      "duration_seconds": 3.0,
+      "loop": false,
+      "return_to": "GUGU_IDLE_LOOP",
+      "crossfade_in_seconds": 0.08,
+      "crossfade_out_seconds": 0.18
+    },
+    "GUGU_TALK_LOOP": {
+      "semantic": "speaking",
+      "source_frames": [1, 49],
+      "runtime_frames": [0, 48],
+      "duration_seconds": 2.0,
+      "loop": true,
+      "crossfade_in_seconds": 0.1,
+      "crossfade_out_seconds": 0.12
+    }
+  },
+  "suggested_events": {
+    "lesson_idle": "GUGU_IDLE_LOOP",
+    "answer_correct": "GUGU_CELEBRATE",
+    "tts_started": "GUGU_TALK_LOOP",
+    "tts_finished": "GUGU_IDLE_LOOP"
+  }
+}

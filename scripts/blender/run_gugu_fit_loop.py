@@ -12,6 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_BLEND = PROJECT_ROOT / "Assets/Brand/Model/source/gugu-sculpt-v2-stage-04-transition-refine.blend"
 DEFAULT_REGISTRATION = PROJECT_ROOT / "Assets/Brand/Model/analysis/reference/gugu-orthographic-registration.auto.json"
 REFERENCE_DIR = PROJECT_ROOT / "Assets/Brand/Model/reference"
+CLEAN_REFERENCE_DIR = PROJECT_ROOT / "Assets/Brand/Model/analysis/reference/clean-character-masks"
 VENV_PYTHON = PROJECT_ROOT / ".venv-blender-fit/bin/python"
 BLENDER = Path("/opt/homebrew/bin/blender")
 RENDER_SCRIPT = Path(__file__).with_name("render_gugu_silhouettes.py")
@@ -70,7 +71,7 @@ def main() -> None:
 
     reports = {}
     for role in ("front", "side", "back"):
-        reference = REFERENCE_DIR / f"gugu-turnaround-v1-{role}.png"
+        reference = CLEAN_REFERENCE_DIR / f"gugu-{role}-clean-silhouette.png"
         render = render_dir / f"{args.prefix}-{role}.png"
         metric = metrics_dir / f"{role}.json"
         overlay = overlay_dir / f"{role}.png"
@@ -83,7 +84,7 @@ def main() -> None:
                 "--render",
                 str(render),
                 "--reference-mode",
-                "dark_on_bright",
+                "bright_on_dark",
                 "--render-mode",
                 "bright_on_dark",
                 "--out",

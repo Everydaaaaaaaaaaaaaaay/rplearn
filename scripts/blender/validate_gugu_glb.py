@@ -39,6 +39,11 @@ def main() -> None:
     glb = Path(args.glb).resolve()
     out = Path(args.out).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path = glb.with_suffix(".manifest.json")
+    if not manifest_path.exists():
+        raise FileNotFoundError(f"缺少 GLB 导出清单：{manifest_path}")
+    export_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    expected_names = set(export_manifest["mesh_objects"])
 
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
@@ -47,13 +52,22 @@ def main() -> None:
     meshes = sorted([obj for obj in bpy.context.scene.objects if obj.type == "MESH"], key=lambda obj: obj.name)
     names = {obj.name for obj in meshes}
     missing = sorted(EXPECTED_STRUCTURAL - names)
+    missing_exported = sorted(expected_names - names)
+    unexpected_exported = sorted(names - expected_names)
     empty_materials = sorted(obj.name for obj in meshes if not obj.material_slots or any(slot.material is None for slot in obj.material_slots))
     zero_dimensions = sorted(obj.name for obj in meshes if min(float(value) for value in obj.dimensions) <= 1e-5)
     blockers = []
     if missing:
         blockers.append(f"GLB 缺少结构部件：{missing}")
-    if len(meshes) != 38:
-        blockers.append(f"GLB 网格对象数量不是 38：{len(meshes)}")
+    if missing_exported:
+        blockers.append(f"GLB 缺少导出清单部件：{missing_exported}")
+    if unexpected_exported:
+        blockers.append(f"GLB 含有清单外部件：{unexpected_exported}")
+    if len(meshes) != int(export_manifest["mesh_object_count"]):
+        blockers.append(
+            "GLB 网格对象数量与导出清单不一致："
+            f"{len(meshes)} != {export_manifest['mesh_object_count']}"
+        )
     if empty_materials:
         blockers.append(f"GLB 存在空材质：{empty_materials}")
     if zero_dimensions:
@@ -62,10 +76,13 @@ def main() -> None:
     report = {
         "schema": "gugu_glb_validation.v1",
         "glb": str(glb),
+        "export_manifest": str(manifest_path),
         "file_size_bytes": glb.stat().st_size,
         "mesh_object_count": len(meshes),
         "material_count": len(bpy.data.materials),
         "missing_structural_parts": missing,
+        "missing_exported_parts": missing_exported,
+        "unexpected_exported_parts": unexpected_exported,
         "empty_material_objects": empty_materials,
         "zero_dimension_objects": zero_dimensions,
         "blockers": blockers,

@@ -47,10 +47,26 @@ def main() -> None:
         export_tangents=False,
         check_existing=False,
     )
+    manifest = output.with_suffix(".manifest.json")
+    export_record = {
+        "schema": "gugu_glb_export_manifest.v1",
+        "glb": str(output),
+        "mesh_object_count": len(selected),
+        "mesh_objects": sorted(selected),
+    }
+    manifest.write_text(
+        json.dumps(export_record, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
     print(
         "CODEX_GUGU_EXPORT="
         + json.dumps(
-            {"glb": str(output), "mesh_objects": len(selected), "selected": sorted(selected)},
+            {
+                "glb": str(output),
+                "manifest": str(manifest),
+                "mesh_objects": len(selected),
+                "selected": sorted(selected),
+            },
             ensure_ascii=False,
         )
     )
