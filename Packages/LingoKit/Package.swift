@@ -17,7 +17,10 @@ let infraTargets: [Target] = [
         ],
         resources: [.process("Resources")]
     ),
-    .target(name: "DesignSystem", dependencies: [module("CoreKit")]),
+    .target(
+        name: "DesignSystem",
+        dependencies: [module("CoreKit"), module("MascotKit")]
+    ),
 ]
 
 let serviceTargets: [Target] = [
