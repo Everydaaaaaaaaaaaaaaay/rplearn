@@ -10,6 +10,10 @@ func module(_ name: String) -> Target.Dependency {
 
 let infraTargets: [Target] = [
     .target(name: "CoreKit"),
+    .target(
+        name: "MascotKit",
+        resources: [.process("Resources")]
+    ),
     .target(name: "DesignSystem", dependencies: [module("CoreKit")]),
 ]
 
