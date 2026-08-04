@@ -381,15 +381,18 @@ public struct SceneKitMascotLoader {
     float mascotTransitionSoftness;
     float mascotShadowBrightness;
     #pragma body
-    float baseLuma = max(dot(_surface.diffuse.rgb, vec3(0.2126, 0.7152, 0.0722)), 0.02);
-    float litLuma = dot(_output.color.rgb, vec3(0.2126, 0.7152, 0.0722));
+    float3 baseColor = float3(_surface.diffuse.rgb);
+    float3 litColor = float3(_output.color.rgb);
+    float3 lumaWeights = float3(0.2126, 0.7152, 0.0722);
+    float baseLuma = max(dot(baseColor, lumaWeights), 0.02);
+    float litLuma = dot(litColor, lumaWeights);
     float relativeLight = clamp(litLuma / baseLuma, 0.0, 1.0);
     float lightBand = smoothstep(
         mascotShadowThreshold - mascotTransitionSoftness,
         mascotShadowThreshold + mascotTransitionSoftness,
         relativeLight
     );
-    vec3 shadowColor = _surface.diffuse.rgb * mascotShadowBrightness;
-    _output.color.rgb = mix(shadowColor, _surface.diffuse.rgb, lightBand);
+    float3 shadowColor = baseColor * mascotShadowBrightness;
+    _output.color.rgb = mix(shadowColor, baseColor, lightBand);
     """
 }
