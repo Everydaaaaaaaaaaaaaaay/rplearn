@@ -2,9 +2,9 @@
 #include "Signing.xcconfig"
 #include? "Signing.local.xcconfig"
 
-// 模拟器不需要签名。显式清空签名身份与团队，避免 Xcode 查询登录钥匙串。
-CODE_SIGNING_ALLOWED[sdk=iphonesimulator*] = NO
-CODE_SIGNING_REQUIRED[sdk=iphonesimulator*] = NO
-CODE_SIGN_IDENTITY[sdk=iphonesimulator*] =
+// 模拟器使用临时签名。“-”不读取开发证书私钥，同时保留系统 Keychain 测试能力。
+CODE_SIGNING_ALLOWED[sdk=iphonesimulator*] = YES
+CODE_SIGNING_REQUIRED[sdk=iphonesimulator*] = YES
+CODE_SIGN_IDENTITY[sdk=iphonesimulator*] = -
 DEVELOPMENT_TEAM[sdk=iphonesimulator*] =
 PROVISIONING_PROFILE_SPECIFIER[sdk=iphonesimulator*] =

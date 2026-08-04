@@ -22,9 +22,9 @@ xcodebuild -project LingoTrip.xcodeproj \
   -scheme LingoTrip \
   -destination "platform=iOS Simulator,id=${UDID}" \
   -derivedDataPath build/DerivedData \
-  CODE_SIGNING_ALLOWED=NO \
-  CODE_SIGNING_REQUIRED=NO \
-  CODE_SIGN_IDENTITY="" \
+  CODE_SIGNING_ALLOWED=YES \
+  CODE_SIGNING_REQUIRED=YES \
+  CODE_SIGN_IDENTITY="-" \
   DEVELOPMENT_TEAM="" \
   PROVISIONING_PROFILE_SPECIFIER="" \
   -quiet build
