@@ -89,6 +89,7 @@ public struct GrammarPointStore: Sendable {
             return WordToken(tokenID: token.id, word: word)
         }
         guard !words.isEmpty else { return [] }
+        let sentenceBoundaryPrefix = Self.sentenceBoundaryPrefix(in: tokens)
 
         var candidates: [Candidate] = []
         for (pointOrder, point) in allPoints.enumerated() {
@@ -96,7 +97,7 @@ public struct GrammarPointStore: Sendable {
                 for positions in Self.matchPositions(
                     pattern: pattern,
                     words: words,
-                    tokens: tokens
+                    sentenceBoundaryPrefix: sentenceBoundaryPrefix
                 ) {
                     let highlightedSteps = pattern.highlightedSteps
                         ?? Array(pattern.steps.indices)
@@ -137,23 +138,24 @@ public struct GrammarPointStore: Sendable {
         }
 
         var acceptedSignatures: Set<[Int]> = []
-        var accepted: [(match: GrammarMatch, supersedes: Set<String>)] = []
+        var supersededPointIDs: Set<String> = []
+        var accepted: [GrammarMatch] = []
         for candidate in candidates {
             // 完全相同的结构词由更具体的模式优先；部分重叠仍保留，
             // 例如一句话可同时包含现在完成时和 have been to 结构。
             guard acceptedSignatures.insert(candidate.tokenIDs).inserted,
-                  !accepted.contains(where: { $0.supersedes.contains(candidate.pointID) })
+                  !supersededPointIDs.contains(candidate.pointID)
             else { continue }
-            accepted.append((
-                match: GrammarMatch(
+            accepted.append(
+                GrammarMatch(
                     pointID: candidate.pointID,
                     tokenIDs: candidate.tokenIDs,
                     spanTokenIDs: candidate.spanTokenIDs
-                ),
-                supersedes: candidate.supersedes
-            ))
+                )
+            )
+            supersededPointIDs.formUnion(candidate.supersedes)
         }
-        return accepted.map(\.match).sorted {
+        return accepted.sorted {
             ($0.tokenIDs.first ?? 0) < ($1.tokenIDs.first ?? 0)
         }
     }
@@ -171,7 +173,27 @@ public struct GrammarPointStore: Sendable {
 
     private struct WordToken {
         let tokenID: Int
-        let word: String
+        let grammaticalForms: Set<String>
+        let isGerund: Bool
+        let isPastParticiple: Bool
+        let isComparative: Bool
+
+        init(tokenID: Int, word: String) {
+            let normalizedWord = word.replacingOccurrences(of: "’", with: "'")
+            self.tokenID = tokenID
+            grammaticalForms = GrammarPointStore.grammaticalForms(for: normalizedWord)
+            isGerund = normalizedWord.count > 4 && normalizedWord.hasSuffix("ing")
+            isPastParticiple = GrammarPointStore.isLikelyPastParticiple(normalizedWord)
+            isComparative = GrammarPointStore.isLikelyComparative(normalizedWord)
+        }
+    }
+
+    private enum PatternOption {
+        case anyWord
+        case gerund
+        case pastParticiple
+        case comparative
+        case literal(String)
     }
 
     private struct Candidate {
@@ -187,11 +209,14 @@ public struct GrammarPointStore: Sendable {
     private static func matchPositions(
         pattern: GrammarPattern,
         words: [WordToken],
-        tokens: [TextToken]
+        sentenceBoundaryPrefix: [Int]
     ) -> [[Int]] {
         var results: [[Int]] = []
+        var positions: [Int] = []
+        positions.reserveCapacity(pattern.steps.count)
+        let expressions = pattern.steps.map(parseExpression)
 
-        func search(stepIndex: Int, positions: [Int]) {
+        func search(stepIndex: Int) {
             guard stepIndex < pattern.steps.count else {
                 results.append(positions)
                 return
@@ -216,41 +241,58 @@ public struct GrammarPointStore: Sendable {
                    crossesSentenceBoundary(
                        fromTokenID: words[previous].tokenID,
                        toTokenID: words[position].tokenID,
-                       tokens: tokens
+                       sentenceBoundaryPrefix: sentenceBoundaryPrefix
                    ) {
                     break
                 }
-                guard matches(words[position].word, expression: pattern.steps[stepIndex]) else {
+                guard matches(words[position], options: expressions[stepIndex]) else {
                     continue
                 }
-                search(stepIndex: stepIndex + 1, positions: positions + [position])
+                positions.append(position)
+                search(stepIndex: stepIndex + 1)
+                positions.removeLast()
             }
         }
 
-        search(stepIndex: 0, positions: [])
+        search(stepIndex: 0)
         return results
     }
 
-    private static func matches(_ word: String, expression: String) -> Bool {
-        let normalizedWord = word.replacingOccurrences(of: "’", with: "'")
-        let grammaticalForms = grammaticalForms(for: normalizedWord)
-        return expression
+    private static func parseExpression(_ expression: String) -> [PatternOption] {
+        expression
             .lowercased()
             .split(separator: "|")
-            .contains { option in
+            .map { option in
                 switch option {
                 case "<word>":
-                    return true
+                    return .anyWord
                 case "<gerund>":
-                    return normalizedWord.count > 4 && normalizedWord.hasSuffix("ing")
+                    return .gerund
                 case "<past-participle>":
-                    return isLikelyPastParticiple(normalizedWord)
+                    return .pastParticiple
                 case "<comparative>":
-                    return isLikelyComparative(normalizedWord)
+                    return .comparative
                 default:
-                    return grammaticalForms.contains(String(option))
+                    return .literal(String(option))
                 }
             }
+    }
+
+    private static func matches(_ word: WordToken, options: [PatternOption]) -> Bool {
+        options.contains { option in
+            switch option {
+            case .anyWord:
+                true
+            case .gerund:
+                word.isGerund
+            case .pastParticiple:
+                word.isPastParticiple
+            case .comparative:
+                word.isComparative
+            case let .literal(value):
+                word.grammaticalForms.contains(value)
+            }
+        }
     }
 
     /// 一个聊天 token 可能同时包含主语和缩写助动词；保留原词并补充可能的助动词形式，
@@ -315,12 +357,22 @@ public struct GrammarPointStore: Sendable {
     private static func crossesSentenceBoundary(
         fromTokenID: Int,
         toTokenID: Int,
-        tokens: [TextToken]
+        sentenceBoundaryPrefix: [Int]
     ) -> Bool {
         guard fromTokenID < toTokenID else { return false }
+        guard sentenceBoundaryPrefix.indices.contains(fromTokenID),
+              sentenceBoundaryPrefix.indices.contains(toTokenID)
+        else { return true }
+        return sentenceBoundaryPrefix[toTokenID] > sentenceBoundaryPrefix[fromTokenID]
+    }
+
+    private static func sentenceBoundaryPrefix(in tokens: [TextToken]) -> [Int] {
         let boundaryCharacters = CharacterSet(charactersIn: ".!?;\n")
-        return tokens[fromTokenID..<toTokenID].contains { token in
-            token.display.rangeOfCharacter(from: boundaryCharacters) != nil
+        var prefix = [Int](repeating: 0, count: tokens.count + 1)
+        for (index, token) in tokens.enumerated() {
+            prefix[index + 1] = prefix[index]
+                + (token.display.rangeOfCharacter(from: boundaryCharacters) == nil ? 0 : 1)
         }
+        return prefix
     }
 }
