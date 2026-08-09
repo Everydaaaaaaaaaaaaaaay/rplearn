@@ -99,11 +99,8 @@ public struct ProactiveMessageService: Sendable {
 
     static func normalized(_ raw: String) -> String? {
         var value = raw
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: "\n", with: " ")
-        while value.contains("  ") {
-            value = value.replacingOccurrences(of: "  ", with: " ")
-        }
+            .split(whereSeparator: \Character.isWhitespace)
+            .joined(separator: " ")
         if value.hasPrefix("\""), value.hasSuffix("\""), value.count >= 2 {
             value.removeFirst()
             value.removeLast()

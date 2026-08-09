@@ -21,6 +21,15 @@ struct ProactiveMessageServiceTests {
         #expect(message == "I found an old photo at the shop today. What kind of photos do you like taking?")
     }
 
+    @Test("消息空白通过一次扫描统一归一化")
+    func normalizesMixedWhitespace() {
+        #expect(
+            ProactiveMessageService.normalized(
+                "  \"Hello,\tthere!\n\nWhat   made you smile today?\"  "
+            ) == "Hello, there! What made you smile today?"
+        )
+    }
+
     @Test("模型失败时仍返回符合身份字段的英文话题")
     func fallsBackWithoutCharacterHardcoding() async {
         let llm = MockLLMProvider { _ in
