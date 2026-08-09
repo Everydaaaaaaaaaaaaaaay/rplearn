@@ -7,6 +7,7 @@
 
 - [`../README.md`](../README.md)：启动方式、仓库地图和最少开发约定。
 - [`architecture.md`](architecture.md)：客户端与后端的边界、数据流和改动入口。
+- [`algorithm-complexity-audit.md`](algorithm-complexity-audit.md)：App 与各模块的算法复杂度、热点和优化门槛。
 
 涉及具体领域时再读：
 
