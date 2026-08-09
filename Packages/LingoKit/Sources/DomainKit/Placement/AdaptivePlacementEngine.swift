@@ -137,21 +137,30 @@ public struct AdaptivePlacementEngine: Sendable {
             }
         }
 
-        return candidates.max { lhs, rhs in
-                selectionScore(
-                    lhs,
-                    skillCounts: skillCounts,
-                    minimumSkillCount: minimumSkillCount,
-                    previousSkill: previousSkill,
-                    previousFormat: previousFormat
-                ) < selectionScore(
-                    rhs,
-                    skillCounts: skillCounts,
-                    minimumSkillCount: minimumSkillCount,
-                    previousSkill: previousSkill,
-                    previousFormat: previousFormat
-                )
+        let posteriorProbabilities = normalizedPosterior
+        let currentAbility = zip(Self.thetaGrid, posteriorProbabilities)
+            .reduce(0) { $0 + $1.0 * $1.1 }
+        let targetAbility = responses.isEmpty ? currentAbility - 0.3 : currentAbility
+        var best: (question: PlacementQuestion, score: Double)?
+        for candidate in candidates {
+            let score = selectionScore(
+                candidate,
+                skillCounts: skillCounts,
+                minimumSkillCount: minimumSkillCount,
+                previousSkill: previousSkill,
+                previousFormat: previousFormat,
+                targetAbility: targetAbility,
+                posteriorProbabilities: posteriorProbabilities
+            )
+            if let currentBest = best {
+                if score > currentBest.score {
+                    best = (candidate, score)
+                }
+            } else {
+                best = (candidate, score)
             }
+        }
+        return best?.question
     }
 
     public mutating func record(
@@ -265,9 +274,11 @@ public struct AdaptivePlacementEngine: Sendable {
         skillCounts: [PlacementSkill: Int],
         minimumSkillCount: Int,
         previousSkill: PlacementSkill?,
-        previousFormat: PlacementQuestionFormat?
+        previousFormat: PlacementQuestionFormat?,
+        targetAbility: Double,
+        posteriorProbabilities: [Double]
     ) -> Double {
-        let information = zip(Self.thetaGrid, normalizedPosterior)
+        let information = zip(Self.thetaGrid, posteriorProbabilities)
             .reduce(0) { partial, pair in
                 partial + pair.1 * Self.information(theta: pair.0, question: question)
             }
@@ -275,8 +286,7 @@ public struct AdaptivePlacementEngine: Sendable {
         let coverageBoost = needsSkillCoverage ? 1.12 : 1
         let skillRepetitionPenalty = previousSkill == question.skill ? 0.9 : 1
         let formatRepetitionPenalty = previousFormat == question.format ? 0.88 : 1
-        let initialTarget = responses.isEmpty ? ability - 0.3 : ability
-        let distancePenalty = exp(-0.22 * abs(question.difficulty - initialTarget))
+        let distancePenalty = exp(-0.22 * abs(question.difficulty - targetAbility))
         return information
             * coverageBoost
             * skillRepetitionPenalty
@@ -364,6 +374,8 @@ public struct AdaptivePlacementEngine: Sendable {
 
     private mutating func normalizeLogPosterior() {
         guard let maximum = logPosterior.max() else { return }
-        logPosterior = logPosterior.map { $0 - maximum }
+        for index in logPosterior.indices {
+            logPosterior[index] -= maximum
+        }
     }
 }
