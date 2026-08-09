@@ -22,6 +22,29 @@ struct RealtimeVoiceCoreTests {
         #expect(segmenter.finish() == ["five six"])
     }
 
+    @Test("逐字符输入只扫描增量并保持切句结果")
+    func segmentsCharacterStreamIncrementally() {
+        var segmenter = StreamingSpeechSegmenter(maximumWordsWithoutPunctuation: 4)
+        var segments: [String] = []
+
+        for character in "one two three four five six seven eight " {
+            segments.append(contentsOf: segmenter.append(String(character)))
+        }
+
+        #expect(segments == ["one two three four", "five six seven eight"])
+        #expect(segmenter.finish().isEmpty)
+    }
+
+    @Test("同一增量内标点优先形成自然句子")
+    func punctuationTakesPriorityWithinDelta() {
+        var segmenter = StreamingSpeechSegmenter(maximumWordsWithoutPunctuation: 4)
+
+        #expect(segmenter.append("one two three four five! six") == [
+            "one two three four five!",
+        ])
+        #expect(segmenter.finish() == ["six"])
+    }
+
     @Test("播报文本移除表情和 Markdown 符号")
     func sanitizesSpokenText() {
         #expect(SpokenTextSanitizer.sanitize("**Hi** 😊  there!") == "Hi there!")

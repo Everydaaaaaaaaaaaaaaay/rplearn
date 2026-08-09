@@ -119,70 +119,102 @@ public struct VoiceTurnPolicy: Sendable, Equatable {
 
 /// 把模型 token 流切成自然、可立即排入 TTS 的短句。
 public struct StreamingSpeechSegmenter: Sendable {
-    private var buffer = ""
+    private var buffer: [Character] = []
+    private var scannedCharacterCount = 0
+    private var isInsideWord = false
+    private var completedWordCount = 0
     private let maximumWordsWithoutPunctuation: Int
+
+    private static let sentencePunctuation: Set<Character> = [
+        ".", "?", "!", ";", "\n", "。", "？", "！", "；",
+    ]
 
     public init(maximumWordsWithoutPunctuation: Int = 12) {
         self.maximumWordsWithoutPunctuation = max(4, maximumWordsWithoutPunctuation)
     }
 
     public mutating func append(_ delta: String) -> [String] {
-        buffer += delta
-        return drainCompleteSegments()
+        let previousCount = buffer.count
+        buffer.append(contentsOf: delta)
+
+        var result: [String] = []
+        let punctuationIndices = buffer.indices.dropFirst(previousCount).filter {
+            Self.sentencePunctuation.contains(buffer[$0])
+        }
+        if let lastPunctuationIndex = punctuationIndices.last {
+            var segmentStart = buffer.startIndex
+            for punctuationIndex in punctuationIndices {
+                appendSanitized(
+                    buffer[segmentStart...punctuationIndex],
+                    to: &result
+                )
+                segmentStart = buffer.index(after: punctuationIndex)
+            }
+            buffer.removeFirst(buffer.distance(
+                from: buffer.startIndex,
+                to: buffer.index(after: lastPunctuationIndex)
+            ))
+            resetWordScan()
+        }
+
+        drainWordLimitedSegments(into: &result)
+        return result
     }
 
     public mutating func finish() -> [String] {
-        var segments = drainCompleteSegments()
-        let remainder = SpokenTextSanitizer.sanitize(buffer)
-        buffer = ""
+        var segments: [String] = []
+        let remainder = SpokenTextSanitizer.sanitize(String(buffer))
+        buffer.removeAll(keepingCapacity: true)
+        resetWordScan()
         if !remainder.isEmpty {
             segments.append(remainder)
         }
         return segments
     }
 
-    private mutating func drainCompleteSegments() -> [String] {
-        var result: [String] = []
-        while let boundary = firstSentenceBoundary() ?? wordLimitBoundary() {
-            let candidate = String(buffer[..<boundary])
-            buffer.removeSubrange(..<boundary)
-            let spoken = SpokenTextSanitizer.sanitize(candidate)
-            if !spoken.isEmpty {
-                result.append(spoken)
-            }
-        }
-        return result
-    }
-
-    private func firstSentenceBoundary() -> String.Index? {
-        let punctuation: Set<Character> = [".", "?", "!", ";", "\n", "。", "？", "！", "；"]
-        guard let index = buffer.firstIndex(where: { punctuation.contains($0) }) else {
-            return nil
-        }
-        return buffer.index(after: index)
-    }
-
     /// 只在单词后的空白处切分，避免模型 token 恰好落在单词中间时读出残词。
-    private func wordLimitBoundary() -> String.Index? {
-        var inWord = false
-        var completedWords = 0
-        var index = buffer.startIndex
+    private mutating func drainWordLimitedSegments(into result: inout [String]) {
+        var segmentStart = buffer.startIndex
+        var index = buffer.index(buffer.startIndex, offsetBy: scannedCharacterCount)
         while index < buffer.endIndex {
             let character = buffer[index]
             if character.isWhitespace {
-                if inWord {
-                    completedWords += 1
-                    inWord = false
-                    if completedWords >= maximumWordsWithoutPunctuation {
-                        return buffer.index(after: index)
+                if isInsideWord {
+                    completedWordCount += 1
+                    isInsideWord = false
+                    if completedWordCount >= maximumWordsWithoutPunctuation {
+                        let boundary = buffer.index(after: index)
+                        appendSanitized(buffer[segmentStart..<boundary], to: &result)
+                        segmentStart = boundary
+                        completedWordCount = 0
                     }
                 }
             } else {
-                inWord = true
+                isInsideWord = true
             }
             index = buffer.index(after: index)
         }
-        return nil
+
+        if segmentStart > buffer.startIndex {
+            buffer.removeFirst(buffer.distance(from: buffer.startIndex, to: segmentStart))
+        }
+        scannedCharacterCount = buffer.count
+    }
+
+    private mutating func resetWordScan() {
+        scannedCharacterCount = 0
+        isInsideWord = false
+        completedWordCount = 0
+    }
+
+    private func appendSanitized<S: Sequence>(
+        _ characters: S,
+        to result: inout [String]
+    ) where S.Element == Character {
+        let spoken = SpokenTextSanitizer.sanitize(String(characters))
+        if !spoken.isEmpty {
+            result.append(spoken)
+        }
     }
 }
 
