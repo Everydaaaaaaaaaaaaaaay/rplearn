@@ -87,6 +87,39 @@ struct ConversationReadStateTests {
         )
     }
 
+    @Test("摘要统一排序消息时间并排除恰好已读的消息")
+    func summarySortsDatesForBinaryUnreadLookup() throws {
+        let (defaults, suiteName) = try isolatedDefaults()
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        let conversationID = UUID()
+        let dates = [300.0, 100.0, 200.0].map(Date.init(timeIntervalSince1970:))
+        let value = ConversationSummaryDTO(
+            conversationID: conversationID,
+            characterID: UUID(),
+            characterName: "Friend",
+            avatarAssetName: nil,
+            lastMessageText: "Hello",
+            lastMessageAt: dates[0],
+            lastMessageRole: .assistant,
+            assistantMessageDates: dates
+        )
+        ConversationReadState.markRead(
+            conversationID: conversationID,
+            at: Date(timeIntervalSince1970: 200),
+            defaults: defaults
+        )
+
+        #expect(value.assistantMessageDates == dates.sorted())
+        #expect(
+            ConversationReadState.unreadCount(
+                conversationID: conversationID,
+                assistantMessageDates: value.assistantMessageDates,
+                defaults: defaults
+            ) == 1
+        )
+    }
+
     @Test("总数只统计好友会话")
     func totalOnlyIncludesFriends() {
         let friend = character()

@@ -48,7 +48,17 @@ public enum ConversationReadState {
         defaults: UserDefaults
     ) -> Int {
         let lastRead = lastReadAt(conversationID: conversationID, defaults: defaults)
-        return assistantMessageDates.count { $0 > lastRead }
+        var lowerBound = assistantMessageDates.startIndex
+        var upperBound = assistantMessageDates.endIndex
+        while lowerBound < upperBound {
+            let middle = lowerBound + (upperBound - lowerBound) / 2
+            if assistantMessageDates[middle] <= lastRead {
+                lowerBound = middle + 1
+            } else {
+                upperBound = middle
+            }
+        }
+        return assistantMessageDates.count - lowerBound
     }
 
     public static func totalUnreadCount(
@@ -56,14 +66,13 @@ public enum ConversationReadState {
         summaries: [ConversationSummaryDTO]
     ) -> Int {
         let friendIDs = Set(friends.map(\.id))
-        return summaries
-            .filter { friendIDs.contains($0.characterID) }
-            .reduce(into: 0) { total, summary in
-                total += unreadCount(
-                    conversationID: summary.conversationID,
-                    assistantMessageDates: summary.assistantMessageDates
-                )
-            }
+        return summaries.reduce(into: 0) { total, summary in
+            guard friendIDs.contains(summary.characterID) else { return }
+            total += unreadCount(
+                conversationID: summary.conversationID,
+                assistantMessageDates: summary.assistantMessageDates
+            )
+        }
     }
 
     public static func markRead(conversationID: UUID, at date: Date = .now) {

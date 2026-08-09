@@ -454,11 +454,18 @@ public actor ChatStore {
         )
         return conversations.compactMap { conversation -> ConversationSummaryDTO? in
             guard let character = conversation.character else { return nil }
-            let lastMessage = conversation.messages.max { $0.orderIndex < $1.orderIndex }
-            let assistantMessageDates = conversation.messages
-                .filter { $0.roleRaw == MessageRole.assistant.rawValue }
-                .map(\.createdAt)
-                .sorted()
+            var lastMessage: MessageEntity?
+            var assistantMessageDates: [Date] = []
+            assistantMessageDates.reserveCapacity(conversation.messages.count)
+            for message in conversation.messages {
+                if lastMessage == nil
+                    || message.orderIndex > (lastMessage?.orderIndex ?? -1) {
+                    lastMessage = message
+                }
+                if message.roleRaw == MessageRole.assistant.rawValue {
+                    assistantMessageDates.append(message.createdAt)
+                }
+            }
             return ConversationSummaryDTO(
                 conversationID: conversation.conversationID,
                 characterID: character.characterID,
@@ -623,8 +630,8 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
     public var lastMessageAt: Date
     public var lastMessageRole: MessageRole?
     public var lastMessageKind: MessageKind?
-    /// 用于端内计算该会话的实际未读消息数，不参与持久化。
-    public var assistantMessageDates: [Date]
+    /// 用于端内计算该会话的实际未读消息数，不参与持久化；始终按时间升序。
+    public private(set) var assistantMessageDates: [Date]
 
     public var id: UUID { conversationID }
 
@@ -647,6 +654,6 @@ public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
         self.lastMessageAt = lastMessageAt
         self.lastMessageRole = lastMessageRole
         self.lastMessageKind = lastMessageKind
-        self.assistantMessageDates = assistantMessageDates
+        self.assistantMessageDates = assistantMessageDates.sorted()
     }
 }
