@@ -38,6 +38,29 @@ enum DictCardLayout {
     static let partOfSpeechColumnWidth: CGFloat = 66
 }
 
+struct DictSenseDisplayRow: Identifiable, Equatable {
+    let sense: DictSense
+    let ordinal: Int?
+
+    var id: String { sense.id }
+}
+
+enum DictSenseDisplayPolicy {
+    static func rows(for senses: [DictSense]) -> [DictSenseDisplayRow] {
+        let countsByPartOfSpeech = Dictionary(grouping: senses, by: \.partOfSpeech)
+            .mapValues(\.count)
+        var positionsByPartOfSpeech: [String: Int] = [:]
+
+        return senses.map { sense in
+            positionsByPartOfSpeech[sense.partOfSpeech, default: 0] += 1
+            let ordinal = countsByPartOfSpeech[sense.partOfSpeech, default: 0] > 1
+                ? positionsByPartOfSpeech[sense.partOfSpeech]
+                : nil
+            return DictSenseDisplayRow(sense: sense, ordinal: ordinal)
+        }
+    }
+}
+
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
 public struct DictCardView: View {
     private let phraseCandidates: [String]
@@ -321,25 +344,34 @@ public struct DictCardView: View {
             Divider()
             compactSectionTitle("英文释义")
             if !entry.senses.isEmpty {
-                let visibleSenses = showsAllSenses
-                    ? entry.senses
-                    : Array(entry.senses.prefix(3))
-                ForEach(visibleSenses) { sense in
+                let senseRows = DictSenseDisplayPolicy.rows(for: entry.senses)
+                let visibleRows = showsAllSenses
+                    ? senseRows
+                    : Array(senseRows.prefix(3))
+                ForEach(visibleRows) { row in
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
-                        partOfSpeechText(sense.partOfSpeechLabel)
+                        partOfSpeechText(row.sense.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(sense.definition)
-                                .font(.footnote)
-                                .fixedSize(horizontal: false, vertical: true)
-                            if let example = sense.examples.first {
+                            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                                if let ordinal = row.ordinal {
+                                    Text("\(ordinal).")
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(.secondary)
+                                        .monospacedDigit()
+                                }
+                                Text(row.sense.definition)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            .font(.footnote)
+                            if let example = row.sense.examples.first {
                                 Text(example)
                                     .font(.caption)
                                     .italic()
                                     .foregroundStyle(.secondary)
                                     .lineLimit(2)
                             }
-                            if !sense.synonyms.isEmpty {
-                                Text("≈ \(sense.synonyms.prefix(3).joined(separator: " · "))")
+                            if !row.sense.synonyms.isEmpty {
+                                Text("≈ \(row.sense.synonyms.prefix(3).joined(separator: " · "))")
                                     .font(.caption2)
                                     .foregroundStyle(.tertiary)
                                     .lineLimit(1)
@@ -384,8 +416,8 @@ public struct DictCardView: View {
                     } label: {
                         HStack(alignment: .firstTextBaseline, spacing: 4) {
                             Text(form.label)
-                                .font(.caption2.weight(.medium))
-                                .foregroundStyle(.secondary)
+                                .font(.caption2.weight(.semibold))
+                                .foregroundStyle(Color.primary.opacity(0.72))
                             Text(form.word)
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(Color.dsSkyDeep)

@@ -38,6 +38,20 @@ struct DictDatabaseTests {
         #expect(entry.senses.allSatisfy { !$0.definition.isEmpty })
     }
 
+    @Test("同一词性的多个义项按组内顺序编号")
+    func repeatedPartsOfSpeechAreNumbered() {
+        let senses = [
+            DictSense(rank: 1, partOfSpeech: "n", definition: "noun", examples: [], synonyms: []),
+            DictSense(rank: 1, partOfSpeech: "v", definition: "first verb", examples: [], synonyms: []),
+            DictSense(rank: 2, partOfSpeech: "v", definition: "second verb", examples: [], synonyms: []),
+            DictSense(rank: 1, partOfSpeech: "a", definition: "adjective", examples: [], synonyms: []),
+        ]
+
+        let rows = DictSenseDisplayPolicy.rows(for: senses)
+
+        #expect(rows.map(\.ordinal) == [nil, 1, 2, nil])
+    }
+
     @Test("原句候选返回固定搭配但不覆盖单词主释义")
     func phraseCandidatesAreSuggestions() async throws {
         let db = try openDatabase()
