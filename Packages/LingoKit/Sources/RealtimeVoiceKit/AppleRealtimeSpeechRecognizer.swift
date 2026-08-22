@@ -179,12 +179,24 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         recognitionRequest = request
         runtime?.replaceRequest(request)
 
-        recognitionTask = recognizer.recognitionTask(with: request) { [weak self] result, error in
+        recognitionTask = recognizer.recognitionTask(
+            with: request,
+            resultHandler: Self.makeRecognitionHandler(owner: self, generation: generation)
+        )
+    }
+
+    /// Speech framework 的 result handler 同样不承诺在主线程回调。先在非隔离
+    /// 闭包中提取值，再显式切回 MainActor 更新会话状态。
+    private nonisolated static func makeRecognitionHandler(
+        owner: AppleRealtimeSpeechRecognizer,
+        generation: UUID
+    ) -> (SFSpeechRecognitionResult?, Error?) -> Void {
+        { [weak owner] result, error in
             let transcript = result?.bestTranscription.formattedString
             let isFinal = result?.isFinal == true
             let failure = error?.localizedDescription
-            Task { @MainActor [weak self] in
-                self?.handleRecognitionCallback(
+            Task { @MainActor [weak owner] in
+                owner?.handleRecognitionCallback(
                     transcript: transcript,
                     isFinal: isFinal,
                     failure: failure,
