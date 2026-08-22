@@ -8,6 +8,19 @@ import Testing
 struct SpeechServiceTests {
     typealias Candidate = (language: String, qualityRank: Int, name: String)
 
+    @Test("高速播放请求只允许最后一次继续")
+    func rapidRequestsKeepLatest() {
+        var gate = SpeechPlaybackRequestGate()
+        let first = gate.issue()
+        let second = gate.issue()
+
+        #expect(!gate.accepts(first))
+        #expect(gate.accepts(second))
+
+        gate.invalidate()
+        #expect(!gate.accepts(second))
+    }
+
     @Test("没有英语语音时返回 nil")
     func noEnglishVoices() {
         let candidates: [Candidate] = [("zh-CN", 3, "Tingting"), ("fr-FR", 2, "Amelie")]

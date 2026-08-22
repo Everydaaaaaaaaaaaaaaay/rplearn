@@ -107,20 +107,37 @@ extension SpeechService {
     }
 }
 
+/// 为可重入的 actor 播放流程签发令牌，确保 await 恢复后只有最新请求能继续。
+struct SpeechPlaybackRequestGate: Sendable {
+    private var generation: UInt64 = 0
+
+    mutating func issue() -> UInt64 {
+        generation &+= 1
+        return generation
+    }
+
+    mutating func invalidate() {
+        _ = issue()
+    }
+
+    func accepts(_ candidate: UInt64) -> Bool {
+        candidate == generation
+    }
+}
+
 /// Apple 本地 TTS：AVSpeechSynthesizer，按口音选择最高质量 voice。
 public actor AppleTTSService: SpeechService {
-    private let synthesizer: AVSpeechSynthesizer
+    private var synthesizer: AVSpeechSynthesizer
     private let delegateBox: SpeechPlaybackDelegateBox
     private let audioSession: AudioSessionCoordinator
     private var voiceCache: [String: AVSpeechSynthesisVoice] = [:]
     private var completionWaiters: [CheckedContinuation<Void, Never>] = []
+    private var requestGate = SpeechPlaybackRequestGate()
 
     public init(audioSession: AudioSessionCoordinator) {
-        let synthesizer = AVSpeechSynthesizer()
         let delegateBox = SpeechPlaybackDelegateBox()
-        synthesizer.delegate = delegateBox
-        self.synthesizer = synthesizer
         self.delegateBox = delegateBox
+        self.synthesizer = Self.makeSynthesizer(delegate: delegateBox)
         self.audioSession = audioSession
         delegateBox.onCompletion = { [weak self] in
             Task { await self?.playbackDidComplete() }
@@ -129,13 +146,17 @@ public actor AppleTTSService: SpeechService {
 
     public func speak(_ request: SpeechRequest) async {
         guard !request.text.isEmpty else { return }
+        let generation = requestGate.issue()
         let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
             ? .conversation
             : .playback
         try? await audioSession.activate(mode)
-        if synthesizer.isSpeaking {
-            synthesizer.stopSpeaking(at: .immediate)
-            resumeCompletionWaiters()
+        guard requestGate.accepts(generation) else { return }
+
+        // AVSpeechSynthesizer 的 immediate stop 会异步收尾。高速重复点击时如果立刻
+        // 复用同一个实例，下一条 utterance 可能在取消过渡态中被静默丢弃。
+        if synthesizer.isSpeaking || synthesizer.isPaused {
+            replaceSynthesizer()
         }
         let utterance = AVSpeechUtterance(string: request.text)
         utterance.voice = bestVoice(for: request.language)
@@ -153,7 +174,26 @@ public actor AppleTTSService: SpeechService {
     }
 
     public func stopSpeaking() async {
-        synthesizer.stopSpeaking(at: .immediate)
+        requestGate.invalidate()
+        replaceSynthesizer()
+    }
+
+    private nonisolated static func makeSynthesizer(
+        delegate: SpeechPlaybackDelegateBox
+    ) -> AVSpeechSynthesizer {
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = delegate
+        return synthesizer
+    }
+
+    /// 丢弃处于 stopping/cancelling 状态的实例，让下一次点击始终从干净状态开始。
+    private func replaceSynthesizer() {
+        let previous = synthesizer
+        previous.delegate = nil
+        if previous.isSpeaking || previous.isPaused {
+            previous.stopSpeaking(at: .immediate)
+        }
+        synthesizer = Self.makeSynthesizer(delegate: delegateBox)
         resumeCompletionWaiters()
     }
 

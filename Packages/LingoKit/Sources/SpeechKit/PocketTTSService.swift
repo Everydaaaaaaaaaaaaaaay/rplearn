@@ -160,6 +160,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
 
     private var manager: PocketTtsManager?
     private var playbackTask: Task<Void, Never>?
+    private var playbackRequestGate = SpeechPlaybackRequestGate()
     private var isManagingModel = false
     private var didInspectStorage = false
     private var status: SpeechSynthesisEngineStatus
@@ -200,8 +201,12 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         let trimmed = request.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
+        let generation = playbackRequestGate.issue()
         await cancelCurrentPlayback()
+        // actor 会在上面的 await 处重入；只允许最后一次点击继续创建播放任务。
+        guard playbackRequestGate.accepts(generation) else { return }
         await preparePocketIfNeeded(for: request)
+        guard playbackRequestGate.accepts(generation) else { return }
 
         guard shouldUsePocket(for: request), let manager else {
             await apple.speak(request)
@@ -213,6 +218,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
             hint: request.voiceHint
         )
         let player = await streamingPlayer()
+        guard playbackRequestGate.accepts(generation) else { return }
         let oldTask = playbackTask
         let task = Task { [apple, audioSession, player] in
             if let oldTask { await oldTask.value }
@@ -342,7 +348,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
     }
 
     public func stopSpeaking() async {
-        await cancelCurrentPlayback()
+        await invalidateCurrentPlayback()
     }
 
     public func refreshVoices() async {
@@ -385,7 +391,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
                 )
             }
         } else {
-            await cancelCurrentPlayback()
+            await invalidateCurrentPlayback()
             manager = nil
             let bundledModelIsAvailable = status.isBundledModelAvailable
             updateStatus(
@@ -406,6 +412,11 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         }
         await apple.stopSpeaking()
         if let task { await task.value }
+    }
+
+    private func invalidateCurrentPlayback() async {
+        playbackRequestGate.invalidate()
+        await cancelCurrentPlayback()
     }
 
     private func inspectStorageIfNeeded() async {
