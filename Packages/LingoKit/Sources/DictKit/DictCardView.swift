@@ -35,6 +35,7 @@ enum DictCardLayout {
     static let maximumHeight: CGFloat = 340
     static let contentPadding: CGFloat = 10
     static let contentSpacing: CGFloat = 8
+    static let partOfSpeechColumnWidth: CGFloat = 66
 }
 
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
@@ -130,7 +131,7 @@ public struct DictCardView: View {
             switch currentTarget {
             case .word(let word):
                 Text(entry?.word ?? word)
-                    .font(.headline)
+                    .font(.title3.weight(.bold))
                     .lineLimit(1)
                     .layoutPriority(1)
                 if let phonetic = entry?.phonetic {
@@ -302,14 +303,10 @@ public struct DictCardView: View {
     }
 
     private func chineseMeaningSection(_ entry: DictEntry) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 3) {
             ForEach(entry.meaningGroups) { group in
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    if let partOfSpeech = group.partOfSpeech {
-                        Text(partOfSpeech)
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(Color.dsSkyDeep)
-                    }
+                    partOfSpeechText(group.partOfSpeech ?? "")
                     Text(group.meaning)
                         .font(.subheadline)
                         .lineSpacing(1)
@@ -320,7 +317,7 @@ public struct DictCardView: View {
     }
 
     private func englishSenseSection(_ entry: DictEntry) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             Divider()
             compactSectionTitle("英文释义")
             if !entry.senses.isEmpty {
@@ -328,11 +325,8 @@ public struct DictCardView: View {
                     ? entry.senses
                     : Array(entry.senses.prefix(3))
                 ForEach(visibleSenses) { sense in
-                    HStack(alignment: .top, spacing: 6) {
-                        Text(sense.partOfSpeechLabel)
-                            .font(.caption2.weight(.semibold))
-                            .foregroundStyle(Color.dsSkyDeep)
-                            .frame(width: 34, alignment: .leading)
+                    HStack(alignment: .firstTextBaseline, spacing: 6) {
+                        partOfSpeechText(sense.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(sense.definition)
                                 .font(.footnote)
@@ -370,6 +364,15 @@ public struct DictCardView: View {
         }
     }
 
+    private func partOfSpeechText(_ text: String) -> some View {
+        Text(text)
+            .font(.footnote.weight(.semibold))
+            .foregroundStyle(Color.dsSkyDeep)
+            .lineLimit(1)
+            .minimumScaleFactor(0.85)
+            .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
+    }
+
     private func wordFormsSection(_ entry: DictEntry) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Divider()
@@ -379,16 +382,16 @@ public struct DictCardView: View {
                     Button {
                         path.append(.word(form.word))
                     } label: {
-                        VStack(alignment: .leading, spacing: 1) {
+                        HStack(alignment: .firstTextBaseline, spacing: 4) {
                             Text(form.label)
-                                .font(.system(size: 8, weight: .medium))
+                                .font(.caption2.weight(.medium))
                                 .foregroundStyle(.secondary)
                             Text(form.word)
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(Color.dsSkyDeep)
                         }
                         .padding(.horizontal, 7)
-                        .padding(.vertical, 4)
+                        .padding(.vertical, 3)
                         .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 7))
                     }
                     .buttonStyle(.plain)
