@@ -166,6 +166,33 @@ struct SpeechServiceTests {
         )
     }
 
+    @Test("Pocket 流播只等待短缓冲并在收尾时立即开播")
+    func pocketPlaybackBufferPolicy() {
+        let sampleRate = 100.0
+
+        #expect(
+            !PocketTTSPlaybackBufferPolicy.shouldStart(
+                bufferedSampleCount: 23,
+                sampleRate: sampleRate,
+                producerDidFinish: false
+            )
+        )
+        #expect(
+            PocketTTSPlaybackBufferPolicy.shouldStart(
+                bufferedSampleCount: 24,
+                sampleRate: sampleRate,
+                producerDidFinish: false
+            )
+        )
+        #expect(
+            PocketTTSPlaybackBufferPolicy.shouldStart(
+                bufferedSampleCount: 1,
+                sampleRate: sampleRate,
+                producerDidFinish: true
+            )
+        )
+    }
+
     @Test("离线模型只有启用且预热完成才算激活")
     func offlineModelStatusSemantics() {
         let loading = OfflineSpeechModelStatus(

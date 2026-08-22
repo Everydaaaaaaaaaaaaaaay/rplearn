@@ -242,6 +242,14 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         let task = Task { [apple, audioSession, player] in
             if let oldTask { await oldTask.value }
             var didBeginPlayback = false
+            var didReceiveFrame = false
+            let synthesisStartedAt = Date()
+            var firstFrameAt: Date?
+            var previousFrameAt: Date?
+            var firstFrameSampleCount = 0
+            var generatedSampleCount = 0
+            var slowFrameCount = 0
+            var maximumFrameGap: TimeInterval = 0
             do {
                 let stream = try await manager.synthesizeStreaming(
                     text: trimmed,
@@ -254,6 +262,28 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
 
                 for try await frame in stream {
                     try Task.checkCancellation()
+                    let frameArrivedAt = Date()
+                    if !didReceiveFrame {
+                        didReceiveFrame = true
+                        firstFrameAt = frameArrivedAt
+                        firstFrameSampleCount = frame.samples.count
+                        let latency = String(
+                            format: "%.3f",
+                            frameArrivedAt.timeIntervalSince(synthesisStartedAt)
+                        )
+                        Log.speech.notice(
+                            "Pocket TTS 首帧推理耗时 \(latency, privacy: .public)s"
+                        )
+                    }
+                    if let previousFrameAt {
+                        let gap = frameArrivedAt.timeIntervalSince(previousFrameAt)
+                        maximumFrameGap = max(maximumFrameGap, gap)
+                        if gap > 0.08 {
+                            slowFrameCount += 1
+                        }
+                    }
+                    previousFrameAt = frameArrivedAt
+                    generatedSampleCount += frame.samples.count
                     if try await player.enqueue(frame.samples) {
                         didBeginPlayback = true
                     }
@@ -261,6 +291,23 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
                 if await player.finishScheduling() {
                     didBeginPlayback = true
                 }
+
+                let finishedAt = Date()
+                let steadyWallTime = firstFrameAt.map {
+                    finishedAt.timeIntervalSince($0)
+                } ?? 0
+                let steadyAudioDuration = Double(
+                    max(0, generatedSampleCount - firstFrameSampleCount)
+                ) / Double(PocketTtsConstants.audioSampleRate)
+                let steadySpeed = steadyWallTime > 0
+                    ? steadyAudioDuration / steadyWallTime
+                    : 0
+                let speedText = String(format: "%.2f", steadySpeed)
+                let gapText = String(format: "%.3f", maximumFrameGap)
+                let underruns = await player.currentUnderrunCount()
+                Log.speech.notice(
+                    "Pocket TTS 持续速度 \(speedText, privacy: .public)x，最大帧间隔 \(gapText, privacy: .public)s，超 80ms 帧 \(slowFrameCount, privacy: .public)，播放欠载 \(underruns, privacy: .public) 次"
+                )
 
                 if !didBeginPlayback, !Task.isCancelled {
                     await apple.speak(request)
@@ -465,6 +512,8 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
             isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
             modelIsInstalled: true
         )
+        let loadStartedAt = Date()
+        Log.speech.notice("Pocket TTS 开始加载 Core ML 模型")
         do {
             let newManager = PocketTtsManager(
                 defaultVoice: "alba",
@@ -474,15 +523,19 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
                 placement: .gpu
             )
             try await newManager.initialize()
+            await warmUpModel(newManager)
             manager = newManager
             updateStatus(
                 phase: .ready,
                 progress: 1,
-                installedBytes: directorySize(modelDirectory),
+                installedBytes: bytes,
                 isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
                 modelIsInstalled: true
             )
-            Log.speech.notice("Pocket TTS 已加载并可流式播放")
+            let elapsed = String(format: "%.2f", Date().timeIntervalSince(loadStartedAt))
+            Log.speech.notice(
+                "Pocket TTS 初始化完成并可流式播放，总耗时 \(elapsed, privacy: .public)s"
+            )
         } catch {
             manager = nil
             updateStatus(
@@ -494,6 +547,37 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
             )
             Log.speech.error("Pocket TTS 加载失败：\(error.localizedDescription, privacy: .public)")
         }
+    }
+
+    /// Core ML 的首次 prediction 通常还有惰性编译/管线建立成本。模型加载后在
+    /// 后台完整生成一个极短短句，同时把默认音色读入 FluidAudio 的缓存，避免
+    /// 用户第一次点击时承担这两部分延迟。预热失败不影响模型进入 ready，真实
+    /// 播放仍会沿用原有的 Apple TTS 回退路径。
+    private func warmUpModel(_ manager: PocketTtsManager) async {
+        #if targetEnvironment(simulator)
+        return
+        #else
+        let startedAt = Date()
+        do {
+            let stream = try await manager.synthesizeStreaming(
+                text: "Ready.",
+                voice: "alba",
+                temperature: 0.65
+            )
+            for try await _ in stream {
+                try Task.checkCancellation()
+            }
+            let elapsed = String(format: "%.2f", Date().timeIntervalSince(startedAt))
+            Log.speech.notice(
+                "Pocket TTS 无声首轮推理完成，耗时 \(elapsed, privacy: .public)s"
+            )
+        } catch {
+            guard !Task.isCancelled else { return }
+            Log.speech.warning(
+                "Pocket TTS 首轮预热失败，将在首次播放时重试：\(error.localizedDescription, privacy: .public)"
+            )
+        }
+        #endif
     }
 
     private func reportDownloadProgress(_ progress: Double) {
@@ -508,7 +592,7 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
 
     private func streamingPlayer() async -> PocketTTSStreamingPlayer {
         if let player { return player }
-        let newPlayer = await MainActor.run { try! PocketTTSStreamingPlayer() }
+        let newPlayer = try! PocketTTSStreamingPlayer()
         player = newPlayer
         return newPlayer
     }

@@ -15,20 +15,38 @@ enum PocketTTSPlaybackError: LocalizedError {
     }
 }
 
-/// 主线程隔离的流式 PCM 播放器。模型每产出一帧就立刻排入播放器，
-/// 不等待整句合成完成，因此首帧延迟不会被句子长度放大。
-@MainActor
-final class PocketTTSStreamingPlayer {
-    private static let prebufferFrameCount = 2
+/// 只做很短的抗抖缓冲，不等待整句或估算整句生成速度。
+enum PocketTTSPlaybackBufferPolicy {
+    // Pocket 每帧 80ms；3 帧约 240ms，在快速开播和真机抖动之间取平衡。
+    static let minimumBufferedDuration: TimeInterval = 0.24
 
+    static func shouldStart(
+        bufferedSampleCount: Int,
+        sampleRate: Double,
+        producerDidFinish: Bool
+    ) -> Bool {
+        guard bufferedSampleCount > 0, sampleRate > 0 else { return false }
+        if producerDidFinish { return true }
+
+        return Double(bufferedSampleCount) / sampleRate >= minimumBufferedDuration
+    }
+}
+
+/// 独立 actor 隔离的流式 PCM 播放器。音频帧调度不经过 MainActor，避免界面
+/// 动画或布局工作阻塞实时推理的消费端；所有已生成帧都会按顺序排入播放器。
+actor PocketTTSStreamingPlayer {
     private let engine = AVAudioEngine()
     private let playerNode = AVAudioPlayerNode()
     private let format: AVAudioFormat
+    private let sampleRate: Double
 
     private var generation: UInt64 = 0
     private var scheduledBufferCount = 0
+    private var scheduledSampleCount = 0
     private var producerDidFinish = false
-    private var didStartPlayback = false
+    private var isPlaybackRunning = false
+    private var hasBegunPlayback = false
+    private var underrunCount = 0
 
     init(sampleRate: Double = 24_000) throws {
         guard let format = AVAudioFormat(
@@ -40,6 +58,7 @@ final class PocketTTSStreamingPlayer {
             throw PocketTTSPlaybackError.audioFormatUnavailable
         }
         self.format = format
+        self.sampleRate = sampleRate
         engine.attach(playerNode)
         engine.connect(playerNode, to: engine.mainMixerNode, format: format)
     }
@@ -70,27 +89,39 @@ final class PocketTTSStreamingPlayer {
 
         let currentGeneration = generation
         scheduledBufferCount += 1
+        scheduledSampleCount += samples.count
+        let scheduledSamples = samples.count
         playerNode.scheduleBuffer(buffer, completionCallbackType: .dataPlayedBack) { [weak self] _ in
-            Task { @MainActor [weak self] in
-                self?.bufferDidFinish(generation: currentGeneration)
+            Task { [weak self] in
+                await self?.bufferDidFinish(
+                    generation: currentGeneration,
+                    sampleCount: scheduledSamples
+                )
             }
         }
 
-        guard !didStartPlayback,
-              scheduledBufferCount >= Self.prebufferFrameCount
+        guard !isPlaybackRunning,
+              PocketTTSPlaybackBufferPolicy.shouldStart(
+                bufferedSampleCount: scheduledSampleCount,
+                sampleRate: sampleRate,
+                producerDidFinish: false
+              )
         else { return false }
-        startPlayback()
-        return true
+        return startPlayback()
     }
 
-    /// 返回值表示不足两帧的极短语音是否在收尾时才触发开播。
+    /// 返回值表示短语音或慢设备是否在合成收尾时才首次开播。
     @discardableResult
     func finishScheduling() -> Bool {
         producerDidFinish = true
         var startedNow = false
-        if !didStartPlayback, scheduledBufferCount > 0 {
-            startPlayback()
-            startedNow = true
+        if !isPlaybackRunning,
+           PocketTTSPlaybackBufferPolicy.shouldStart(
+               bufferedSampleCount: scheduledSampleCount,
+               sampleRate: sampleRate,
+               producerDidFinish: true
+           ) {
+            startedNow = startPlayback()
         }
         finishIfDrained()
         return startedNow
@@ -102,26 +133,46 @@ final class PocketTTSStreamingPlayer {
         engine.stop()
         engine.reset()
         scheduledBufferCount = 0
+        scheduledSampleCount = 0
         producerDidFinish = false
-        didStartPlayback = false
+        isPlaybackRunning = false
+        hasBegunPlayback = false
+        underrunCount = 0
     }
 
-    private func bufferDidFinish(generation completedGeneration: UInt64) {
+    private func bufferDidFinish(generation completedGeneration: UInt64, sampleCount: Int) {
         guard completedGeneration == generation else { return }
         scheduledBufferCount = max(0, scheduledBufferCount - 1)
+        scheduledSampleCount = max(0, scheduledSampleCount - sampleCount)
+
+        // 生产者未结束时不暂停或重置节点。AVAudioPlayerNode 会在队列暂空时
+        // 渲染静音，并在下一帧排入后继续，确保长语音的帧不会被吞掉。
+        if !producerDidFinish, isPlaybackRunning, scheduledBufferCount == 0 {
+            underrunCount += 1
+        }
         finishIfDrained()
+    }
+
+    func currentUnderrunCount() -> Int {
+        underrunCount
     }
 
     private func finishIfDrained() {
         guard producerDidFinish, scheduledBufferCount == 0 else { return }
         playerNode.stop()
         engine.stop()
-        didStartPlayback = false
+        isPlaybackRunning = false
     }
 
-    private func startPlayback() {
-        didStartPlayback = true
+    @discardableResult
+    private func startPlayback() -> Bool {
+        isPlaybackRunning = true
         playerNode.play()
-        NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+        guard !hasBegunPlayback else { return false }
+        hasBegunPlayback = true
+        Task { @MainActor in
+            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+        }
+        return true
     }
 }

@@ -59,6 +59,16 @@ final class AppEnvironment {
     let economyService: EconomyService
 
     init() {
+        // Pocket TTS 的 Core ML 模型较大。先创建并启动独立预热任务，让模型加载
+        // 与组合根里其余数据库/服务初始化并行，而不是等整个 AppEnvironment 完成。
+        let audioSession = AudioSessionCoordinator()
+        self.audioSession = audioSession
+        let speech = AdaptiveSpeechService(audioSession: audioSession)
+        self.speech = speech
+        Task.detached(priority: .userInitiated) {
+            await speech.prepareForLaunch()
+        }
+
         let keychain = KeychainStore()
         self.keychain = keychain
         LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain)
@@ -156,10 +166,6 @@ final class AppEnvironment {
             stubStore: ticketStubStore
         )
 
-        let audioSession = AudioSessionCoordinator()
-        self.audioSession = audioSession
-        let speech = AdaptiveSpeechService(audioSession: audioSession)
-        self.speech = speech
         self.translator = TranslationService(llm: llmRouter)
         self.economyService = EconomyService(
             economyStore: economyStore,
@@ -173,8 +179,6 @@ final class AppEnvironment {
 
         Log.app.info("AppEnvironment initialized")
         Task { await authSession.bootstrap() }
-        // 已下载并启用时尽早预热；预热期间点击播放仍立即走 Apple，不让 UI 等模型。
-        Task { await speech.prepareForLaunch() }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
