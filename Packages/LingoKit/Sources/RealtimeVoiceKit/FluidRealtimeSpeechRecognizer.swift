@@ -44,31 +44,61 @@ private struct RecognitionUpdate: Sendable {
 /// - Parakeet EOU 120M / 320ms 负责低延迟 partial 与语义端点；
 /// - SenseVoice Small INT8 只在完整话轮上跑一次，负责更精确的最终文本。
 private actor FluidRealtimeRecognitionEngine {
+    static let shared = FluidRealtimeRecognitionEngine()
+
+    typealias PreparationObserver = @Sendable (RealtimeModelPreparation) -> Void
+
     private let converter = AudioConverter(sampleRate: 16_000)
     private var streaming: StreamingEouAsrManager?
     private var refiner: SenseVoiceManager?
     private var isPrepared = false
+    private var preparationTask: Task<Void, Error>?
+    private var preparation = RealtimeModelPreparation(
+        stage: .streamingRecognition,
+        progress: 0.05
+    )
+    private var preparationObservers: [UUID: PreparationObserver] = [:]
     private var turnSamples: [Float] = []
     private var preRollSamples: [Float] = []
     private var isCollectingTurn = false
     private var lastPartial = ""
 
     func prepare(
-        progress: @escaping @Sendable (RealtimeModelPreparation) -> Void
+        progress: @escaping PreparationObserver
     ) async throws {
-        guard !isPrepared else {
-            progress(.init(stage: .ready, progress: 1))
-            return
+        let observerID = UUID()
+        preparationObservers[observerID] = progress
+        progress(preparation)
+        defer { preparationObservers[observerID] = nil }
+
+        if isPrepared { return }
+
+        let task: Task<Void, Error>
+        if let preparationTask {
+            task = preparationTask
+        } else {
+            let newTask = Task { try await self.loadModels() }
+            preparationTask = newTask
+            task = newTask
         }
 
+        do {
+            try await task.value
+        } catch {
+            if !isPrepared { preparationTask = nil }
+            throw error
+        }
+    }
+
+    private func loadModels() async throws {
         let resources = try RealtimeASRModelResources.bundled()
-        progress(.init(stage: .streamingRecognition, progress: 0))
+        publishPreparation(stage: .streamingRecognition, progress: 0.05)
         let streaming = StreamingEouAsrManager(
             chunkSize: .ms320,
             eouDebounceMs: 640
         )
         try await streaming.loadModels(from: resources.parakeetEOU320)
-        progress(.init(stage: .transcriptRefinement, progress: 0.48))
+        publishPreparation(stage: .transcriptRefinement, progress: 0.52)
 
         let senseVoiceModels = try SenseVoiceModels.load(
             from: resources.senseVoiceSmallINT8,
@@ -79,7 +109,17 @@ private actor FluidRealtimeRecognitionEngine {
         self.streaming = streaming
         self.refiner = refiner
         isPrepared = true
-        progress(.init(stage: .ready, progress: 1))
+        publishPreparation(stage: .ready, progress: 1)
+    }
+
+    private func publishPreparation(
+        stage: RealtimeModelPreparation.Stage,
+        progress: Double
+    ) {
+        preparation = .init(stage: stage, progress: progress)
+        for observer in preparationObservers.values {
+            observer(preparation)
+        }
     }
 
     func process(_ chunk: RealtimeAudioChunk) async throws -> RecognitionUpdate {
@@ -185,6 +225,19 @@ private actor FluidRealtimeRecognitionEngine {
     }
 }
 
+/// App 启动后按当前设置预热端侧 ASR。通话入口与这里共享同一个加载任务和模型实例，
+/// 因而即使用户在预热尚未结束时立刻拨打，也只会等待余下部分而不会重复加载。
+public enum RealtimeVoiceModelPrewarmer {
+    public static func prepareForLaunch() async {
+        guard VoiceEnginePreferences.recognitionEngine() == .enhancedOnDevice else { return }
+        do {
+            try await FluidRealtimeRecognitionEngine.shared.prepare { _ in }
+        } catch {
+            Log.speech.error("端侧实时语音模型预热失败：\(error.localizedDescription)")
+        }
+    }
+}
+
 /// 麦克风始终只把 PCM 送入端侧 Core ML；Feature 层只能观察音量和文本。
 /// VoiceProcessingIO 提供系统回声消除，使播放 Pocket TTS 时仍能监听用户插话。
 @MainActor
@@ -196,7 +249,7 @@ public final class FluidRealtimeSpeechRecognizer: RealtimeSpeechInput {
     public var onFailure: (@MainActor @Sendable (String) -> Void)?
 
     private let audioSession: AudioSessionCoordinator
-    private let recognitionEngine = FluidRealtimeRecognitionEngine()
+    private let recognitionEngine = FluidRealtimeRecognitionEngine.shared
     private var audioEngine: AVAudioEngine?
     private var commandContinuation: AsyncStream<RealtimeInputCommand>.Continuation?
     private var processingTask: Task<Void, Never>?
