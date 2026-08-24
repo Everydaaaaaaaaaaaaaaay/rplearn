@@ -59,8 +59,8 @@ final class AppEnvironment {
     let economyService: EconomyService
 
     init() {
-        // Pocket TTS 的 Core ML 模型较大。先创建并启动独立预热任务，让模型加载
-        // 与组合根里其余数据库/服务初始化并行，而不是等整个 AppEnvironment 完成。
+        // 仅当用户选择 Pocket TTS 时后台预热随包 Core ML 模型；系统语音模式不会加载它。
+        // 预热与组合根里其余数据库/服务初始化并行，避免首个播放请求承担完整冷启动成本。
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
         let speech = AdaptiveSpeechService(audioSession: audioSession)

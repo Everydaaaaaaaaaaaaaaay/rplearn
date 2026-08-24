@@ -1,176 +1,153 @@
 import CoreKit
 import Foundation
 import Observation
+import SpeechKit
 
-/// 客户端实时语音总状态机：端上识别 → 文本流 → 端上播报，并支持自然插话。
+/// 低成本实时语音编排器：端侧 ASR → 现有流式 LLM → 端侧流式 TTS。
+/// 状态机、插话、回合端点和持久化只在这里协调，模型实现均位于协议后方。
 @MainActor
 @Observable
 public final class RealtimeVoiceSession {
     public private(set) var phase: RealtimeVoicePhase = .idle
-    public private(set) var inputLevel: Double = 0
     public private(set) var liveTranscript = ""
     public private(set) var userTranscript = ""
     public private(set) var assistantTranscript = ""
-    public private(set) var isMuted = false
+    public private(set) var activityLevel = 0.0
+    public private(set) var elapsedSeconds = 0
+    public private(set) var preparation: RealtimeModelPreparation?
     public private(set) var errorMessage: String?
     public private(set) var requiresSettings = false
+    public private(set) var isMuted = false
 
     private let input: any RealtimeSpeechInput
     private let output: any RealtimeSpeechOutput
     private let conversation: RealtimeVoiceConversationClient
-    private let localeIdentifier: String
     private let voiceLanguage: String
-    private let contextualStrings: [String]
-    private let recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
+    private let voiceHint: SpeechVoiceHint?
     private let turnPolicy: VoiceTurnPolicy
 
-    private var lifecycleGeneration = UUID()
+    private var generation = UUID()
+    private var startedAt: Date?
+    private var rawInputLevel = 0.0
     private var activeResponseID: UUID?
     private var responseTask: Task<Void, Never>?
-    private var pendingTurnTask: Task<Void, Never>?
-    private var pendingAssistantSave: Task<Void, Never>?
-    private var recognitionRecoveryTask: Task<Void, Never>?
-    private var inputShutdownTask: Task<Void, Never>?
-    private var consecutiveRecognitionFailures = 0
+    private var endpointFallbackTask: Task<Void, Never>?
+    private var visualTask: Task<Void, Never>?
+    private var persistenceTail: Task<Void, Never>?
+    private var finalizationInProgress = false
 
-    public convenience init(
+    public init(
         audioSession: AudioSessionCoordinator,
+        speech: any SpeechService,
         conversation: RealtimeVoiceConversationClient,
-        localeIdentifier: String = "en-US",
         voiceLanguage: String = "en-US",
-        contextualStrings: [String] = [],
+        voiceHint: SpeechVoiceHint? = nil,
         turnPolicy: VoiceTurnPolicy = .init()
     ) {
-        self.init(
-            input: AppleRealtimeSpeechRecognizer(audioSession: audioSession),
-            output: AppleRealtimeSpeechSynthesizer(),
-            conversation: conversation,
-            localeIdentifier: localeIdentifier,
-            voiceLanguage: voiceLanguage,
-            contextualStrings: contextualStrings,
-            turnPolicy: turnPolicy,
-            recognitionRecoveryPolicy: .init()
-        )
+        switch VoiceEnginePreferences.recognitionEngine() {
+        case .system:
+            self.input = AppleRealtimeSpeechRecognizer(
+                audioSession: audioSession,
+                localeIdentifier: voiceLanguage
+            )
+        case .enhancedOnDevice:
+            self.input = FluidRealtimeSpeechRecognizer(audioSession: audioSession)
+        }
+        self.output = AdaptiveRealtimeSpeechOutput(speech: speech)
+        self.conversation = conversation
+        self.voiceLanguage = voiceLanguage
+        self.voiceHint = voiceHint
+        self.turnPolicy = turnPolicy
+        bindInput()
     }
 
-    /// 需要调整重试节奏的场景使用此重载；保留上方稳定入口，避免调用方承担策略细节。
-    public convenience init(
-        audioSession: AudioSessionCoordinator,
-        conversation: RealtimeVoiceConversationClient,
-        localeIdentifier: String = "en-US",
-        voiceLanguage: String = "en-US",
-        contextualStrings: [String] = [],
-        turnPolicy: VoiceTurnPolicy = .init(),
-        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy
-    ) {
-        self.init(
-            input: AppleRealtimeSpeechRecognizer(audioSession: audioSession),
-            output: AppleRealtimeSpeechSynthesizer(),
-            conversation: conversation,
-            localeIdentifier: localeIdentifier,
-            voiceLanguage: voiceLanguage,
-            contextualStrings: contextualStrings,
-            turnPolicy: turnPolicy,
-            recognitionRecoveryPolicy: recognitionRecoveryPolicy
-        )
-    }
-
-    init(
+    /// 测试或替代端侧引擎时使用的依赖注入入口。
+    public init(
         input: any RealtimeSpeechInput,
         output: any RealtimeSpeechOutput,
         conversation: RealtimeVoiceConversationClient,
-        localeIdentifier: String,
-        voiceLanguage: String,
-        contextualStrings: [String],
-        turnPolicy: VoiceTurnPolicy,
-        recognitionRecoveryPolicy: SpeechRecognitionRecoveryPolicy = .init()
+        voiceLanguage: String = "en-US",
+        voiceHint: SpeechVoiceHint? = nil,
+        turnPolicy: VoiceTurnPolicy = .init()
     ) {
         self.input = input
         self.output = output
         self.conversation = conversation
-        self.localeIdentifier = localeIdentifier
         self.voiceLanguage = voiceLanguage
-        self.contextualStrings = contextualStrings
-        self.recognitionRecoveryPolicy = recognitionRecoveryPolicy
+        self.voiceHint = voiceHint
         self.turnPolicy = turnPolicy
-
-        input.onLevel = { [weak self] level in
-            self?.receiveLevel(level)
-        }
-        input.onTranscription = { [weak self] transcription in
-            self?.receiveTranscription(transcription)
-        }
-        input.onFailure = { [weak self] failure in
-            self?.scheduleRecognitionRecovery(after: failure)
-        }
+        bindInput()
     }
 
     public func start() async {
         guard phase == .idle || phase == .paused || phase == .failed else { return }
-        recognitionRecoveryTask?.cancel()
-        recognitionRecoveryTask = nil
-        let pendingShutdown = inputShutdownTask
-        inputShutdownTask = nil
-        await pendingShutdown?.value
-        consecutiveRecognitionFailures = 0
-        let generation = UUID()
-        lifecycleGeneration = generation
+        generation = UUID()
+        let currentGeneration = generation
         phase = .connecting
         errorMessage = nil
         requiresSettings = false
+        finalizationInProgress = false
+        preparation = nil
 
         do {
-            try await input.start(
-                localeIdentifier: localeIdentifier,
-                contextualStrings: contextualStrings
-            )
-            guard lifecycleGeneration == generation else {
+            try await input.start()
+            guard generation == currentGeneration else {
                 await input.stop()
                 return
             }
-            resetInputTurn()
-            input.setMuted(isMuted)
+            isMuted = false
+            input.setMuted(false)
+            startedAt = startedAt ?? .now
             phase = .listening
+            startVisualClock(generation: currentGeneration)
         } catch {
-            guard lifecycleGeneration == generation else { return }
-            let voiceError = error as? RealtimeVoiceError
-            errorMessage = voiceError?.localizedDescription ?? error.localizedDescription
-            requiresSettings = voiceError?.requiresSettings == true
-            phase = .failed
+            guard generation == currentGeneration else { return }
+            await fail(error)
         }
     }
 
     public func stop() async {
-        lifecycleGeneration = UUID()
-        recognitionRecoveryTask?.cancel()
-        recognitionRecoveryTask = nil
-        consecutiveRecognitionFailures = 0
-        let pendingShutdown = inputShutdownTask
-        inputShutdownTask = nil
-        pendingTurnTask?.cancel()
-        pendingTurnTask = nil
-        interruptActiveResponse(nextPhase: .idle)
-        await pendingAssistantSave?.value
-        await pendingShutdown?.value
+        generation = UUID()
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
+        visualTask?.cancel()
+        visualTask = nil
+        let hadActiveResponse = activeResponseID != nil || responseTask != nil
+        responseTask?.cancel()
+        responseTask = nil
+        activeResponseID = nil
+
+        let heard = SpokenTextSanitizer.sanitize(await output.stop())
+        if hadActiveResponse, !heard.isEmpty {
+            queueAssistantSave(heard, interrupted: true)
+        }
         await input.stop()
-        resetInputTurn()
+        await persistenceTail?.value
+        resetTransientState()
+        startedAt = nil
+        elapsedSeconds = 0
         isMuted = false
         phase = .idle
     }
 
-    /// 进入后台时保留页面，只暂停正在占用的麦克风和回复；回前台可原地恢复。
     public func suspend() async {
         guard phase != .idle, phase != .paused, phase != .failed else { return }
-        lifecycleGeneration = UUID()
-        recognitionRecoveryTask?.cancel()
-        recognitionRecoveryTask = nil
-        consecutiveRecognitionFailures = 0
-        pendingTurnTask?.cancel()
-        pendingTurnTask = nil
-        interruptActiveResponse(nextPhase: .paused)
-        await pendingAssistantSave?.value
+        generation = UUID()
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
+        visualTask?.cancel()
+        visualTask = nil
+        let hadActiveResponse = activeResponseID != nil || responseTask != nil
+        responseTask?.cancel()
+        responseTask = nil
+        activeResponseID = nil
+        let heard = SpokenTextSanitizer.sanitize(await output.stop())
+        if hadActiveResponse, !heard.isEmpty {
+            queueAssistantSave(heard, interrupted: true)
+        }
         await input.stop()
-        inputLevel = 0
+        rawInputLevel = 0
+        activityLevel = 0
         phase = .paused
     }
 
@@ -181,34 +158,66 @@ public final class RealtimeVoiceSession {
 
     public func toggleMuted() {
         isMuted.toggle()
-        recognitionRecoveryTask?.cancel()
-        recognitionRecoveryTask = nil
-        consecutiveRecognitionFailures = 0
-        pendingTurnTask?.cancel()
-        pendingTurnTask = nil
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
         liveTranscript = ""
-        inputLevel = 0
+        rawInputLevel = 0
+        activityLevel = 0
         input.setMuted(isMuted)
+        if !isMuted, phase != .speaking, phase != .thinking {
+            phase = .listening
+        }
     }
 
     #if DEBUG
-    /// 模拟器没有稳定麦克风输入时，用于验证 AI → 分句 → TTS → 落库全链路。
     public func submitDebugTurn(_ text: String) {
         let text = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
-        userTranscript = text
-        liveTranscript = ""
-        beginResponse(to: text)
+        Task { await submitFinalTranscript(text) }
     }
     #endif
+
+    private func bindInput() {
+        input.onLevel = { [weak self] level in self?.receiveLevel(level) }
+        input.onSpeechStarted = { [weak self] in self?.receiveSpeechStarted() }
+        input.onTranscription = { [weak self] transcription in
+            self?.receiveTranscription(transcription)
+        }
+        input.onPreparation = { [weak self] preparation in
+            self?.preparation = preparation
+        }
+        input.onFailure = { [weak self] failure in
+            guard let self, self.phase != .idle, self.phase != .paused else { return }
+            self.errorMessage = "语音识别刚刚中断，正在恢复：\(failure)"
+        }
+    }
 
     private var agentIsBusy: Bool {
         activeResponseID != nil || responseTask != nil || phase == .thinking || phase == .speaking
     }
 
     private func receiveLevel(_ level: Double) {
-        guard phase != .idle, phase != .connecting, phase != .failed, !isMuted else { return }
-        inputLevel = level
+        guard phase != .idle, phase != .connecting, phase != .paused, phase != .failed,
+              !isMuted else { return }
+        rawInputLevel = level
+        if phase == .listening || phase == .userSpeaking {
+            activityLevel = level
+        }
+    }
+
+    private func receiveSpeechStarted() {
+        guard phase != .idle, phase != .connecting, phase != .paused, phase != .failed,
+              !isMuted else { return }
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
+        liveTranscript = ""
+        phase = .userSpeaking
+
+        if agentIsBusy {
+            Task { [weak self] in
+                await self?.interruptActiveResponse(nextPhase: .userSpeaking)
+            }
+        }
     }
 
     private func receiveTranscription(_ transcription: RealtimeTranscription) {
@@ -216,98 +225,56 @@ public final class RealtimeVoiceSession {
               !isMuted else { return }
         let text = transcription.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
-
-        recognitionRecoveryTask?.cancel()
-        recognitionRecoveryTask = nil
-        consecutiveRecognitionFailures = 0
         errorMessage = nil
-        if agentIsBusy {
-            interruptActiveResponse(nextPhase: .listening)
-        }
-        liveTranscript = text
 
         if transcription.isFinal {
-            finalizeUserTurn(text)
+            endpointFallbackTask?.cancel()
+            endpointFallbackTask = nil
+            Task { [weak self] in await self?.submitFinalTranscript(text) }
         } else {
-            scheduleTurnFinalization(for: text)
+            liveTranscript = text
+            phase = .userSpeaking
+            scheduleEndpointFallback(for: text)
         }
     }
 
-    /// Speech 可能在启动瞬间连续失败。这里做去重、退避和次数上限，避免错误回调在主线程形成重启风暴。
-    private func scheduleRecognitionRecovery(after failure: String) {
-        guard phase != .idle, phase != .paused, phase != .failed, !isMuted else { return }
-        guard recognitionRecoveryTask == nil else { return }
-
-        let retryDelays = recognitionRecoveryPolicy.retryDelays
-        guard consecutiveRecognitionFailures < retryDelays.count else {
-            lifecycleGeneration = UUID()
-            phase = .failed
-            inputLevel = 0
-            errorMessage = "语音识别连续中断，请点按重试。"
-            Log.speech.error("实时语音识别连续失败，已停止自动重试：\(failure)")
-            let input = input
-            inputShutdownTask = Task {
-                await input.stop()
-            }
-            return
-        }
-
-        let delay = retryDelays[consecutiveRecognitionFailures]
-        consecutiveRecognitionFailures += 1
-        errorMessage = "语音识别刚刚中断，正在重新连接…"
-        recognitionRecoveryTask = Task { [weak self] in
-            do {
-                try await Task.sleep(for: delay)
-            } catch {
-                return
-            }
-            guard !Task.isCancelled, let self,
-                  self.phase != .idle,
-                  self.phase != .paused,
-                  self.phase != .failed,
-                  !self.isMuted else { return }
-            self.recognitionRecoveryTask = nil
-            self.input.restartRecognition()
-        }
-    }
-
-    private func scheduleTurnFinalization(for transcript: String) {
-        pendingTurnTask?.cancel()
-        pendingTurnTask = Task { [weak self] in
+    private func scheduleEndpointFallback(for transcript: String) {
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = Task { [weak self] in
             guard let self else { return }
             do {
-                try await Task.sleep(for: self.turnPolicy.endOfTurnDelay)
+                try await Task.sleep(for: self.turnPolicy.fallbackEndOfTurnDelay)
             } catch {
                 return
             }
             guard !Task.isCancelled, self.liveTranscript == transcript else { return }
-            self.finalizeUserTurn(transcript)
+            self.phase = .thinking
+            await self.input.finishCurrentTurn()
         }
     }
 
-    private func finalizeUserTurn(_ text: String) {
-        pendingTurnTask?.cancel()
-        pendingTurnTask = nil
-        input.restartRecognition()
+    private func submitFinalTranscript(_ text: String) async {
+        guard !finalizationInProgress else { return }
+        finalizationInProgress = true
+        defer { finalizationInProgress = false }
+
+        if agentIsBusy {
+            await interruptActiveResponse(nextPhase: .thinking)
+        }
         liveTranscript = ""
         userTranscript = text
-        beginResponse(to: text)
+        await beginResponse(to: text)
     }
 
-    private func beginResponse(to userText: String) {
-        guard !userText.isEmpty else { return }
-        if agentIsBusy {
-            interruptActiveResponse(nextPhase: .listening)
-        }
-
+    private func beginResponse(to userText: String) async {
         let responseID = UUID()
         activeResponseID = responseID
-        phase = .thinking
         assistantTranscript = ""
         errorMessage = nil
-        // 在请求发出前就清空上一轮播报进度；否则“思考中”被打断时会误存上一轮文本。
-        output.beginResponse(language: voiceLanguage)
-        let pendingSave = pendingAssistantSave
+        phase = .thinking
+        await output.beginResponse(language: voiceLanguage, voiceHint: voiceHint)
+
+        let pendingSave = persistenceTail
         responseTask = Task { [weak self] in
             await pendingSave?.value
             guard !Task.isCancelled, let self, self.activeResponseID == responseID else { return }
@@ -317,7 +284,7 @@ public final class RealtimeVoiceSession {
 
     private func runResponse(id: UUID, userText: String) async {
         var generated = ""
-        var segmenter = StreamingSpeechSegmenter()
+        var segmenter = StreamingSpeechSegmenter(maximumWordsWithoutPunctuation: 7)
 
         do {
             let stream = try await conversation.replyStream(userText)
@@ -375,10 +342,10 @@ public final class RealtimeVoiceSession {
         responseTask = nil
         assistantTranscript = spokenText
         phase = .listening
-        queueAssistantSave(spokenText)
+        if !spokenText.isEmpty { queueAssistantSave(spokenText, interrupted: false) }
     }
 
-    private func interruptActiveResponse(nextPhase: RealtimeVoicePhase) {
+    private func interruptActiveResponse(nextPhase: RealtimeVoicePhase) async {
         guard activeResponseID != nil || responseTask != nil else {
             phase = nextPhase
             return
@@ -386,27 +353,72 @@ public final class RealtimeVoiceSession {
         activeResponseID = nil
         responseTask?.cancel()
         responseTask = nil
-        let heard = SpokenTextSanitizer.sanitize(output.stop())
+        let heard = SpokenTextSanitizer.sanitize(await output.stop())
         assistantTranscript = heard
-        if !heard.isEmpty {
-            queueAssistantSave(heard)
-        }
+        if !heard.isEmpty { queueAssistantSave(heard, interrupted: true) }
         phase = nextPhase
     }
 
-    private func queueAssistantSave(_ text: String) {
+    private func queueAssistantSave(_ text: String, interrupted: Bool) {
+        let text = SpokenTextSanitizer.sanitize(text)
         guard !text.isEmpty else { return }
-        let previous = pendingAssistantSave
+        let previous = persistenceTail
         let conversation = conversation
-        pendingAssistantSave = Task {
+        persistenceTail = Task {
             await previous?.value
-            await conversation.saveAssistant(text)
+            await conversation.saveAssistant(text, interrupted)
         }
     }
 
-    private func resetInputTurn() {
-        pendingTurnTask?.cancel()
-        pendingTurnTask = nil
+    private func startVisualClock(generation: UUID) {
+        visualTask?.cancel()
+        visualTask = Task { [weak self] in
+            var tick = 0.0
+            while !Task.isCancelled {
+                guard let self, self.generation == generation else { return }
+                if let startedAt = self.startedAt {
+                    self.elapsedSeconds = Int(Date.now.timeIntervalSince(startedAt))
+                }
+                tick += 0.42
+                if self.phase == .speaking {
+                    self.activityLevel = 0.62 + sin(tick) * 0.16
+                } else if self.phase == .thinking {
+                    self.activityLevel = 0.22 + sin(tick) * 0.06
+                } else if self.phase == .listening {
+                    self.activityLevel = max(self.rawInputLevel, 0.08)
+                }
+                try? await Task.sleep(for: .milliseconds(80))
+            }
+        }
+    }
+
+    private func fail(_ error: Error) async {
+        generation = UUID()
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
+        visualTask?.cancel()
+        visualTask = nil
+        responseTask?.cancel()
+        responseTask = nil
+        activeResponseID = nil
+        _ = await output.stop()
+        await input.stop()
+        activityLevel = 0
+        let realtimeError = error as? RealtimeVoiceError
+        errorMessage = realtimeError?.localizedDescription ?? error.localizedDescription
+        requiresSettings = realtimeError?.requiresSettings == true
+        phase = .failed
+    }
+
+    private func resetTransientState() {
         liveTranscript = ""
+        userTranscript = ""
+        assistantTranscript = ""
+        activityLevel = 0
+        rawInputLevel = 0
+        preparation = nil
+        errorMessage = nil
+        requiresSettings = false
+        finalizationInProgress = false
     }
 }

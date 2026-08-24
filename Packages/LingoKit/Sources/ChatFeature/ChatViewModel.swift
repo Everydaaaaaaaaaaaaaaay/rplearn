@@ -6,6 +6,7 @@ import LLMKit
 import MediaKit
 import Observation
 import PersistenceKit
+import RealtimeVoiceKit
 import SpeechKit
 
 /// 单个聊天页的状态与编排：发送 → 落库 → 流式回复 → 定稿。
@@ -152,8 +153,8 @@ public final class ChatViewModel {
         await streamAssistantReply()
     }
 
-    /// 实时语音回合：先保存用户最终转写，再把角色回复映射成纯文本增量。
-    /// 音频、分句和插话均由 RealtimeVoiceKit 在客户端处理。
+    /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
+    /// 该方法先持久化用户话轮，再返回纯文本增量；音频不会离开设备。
     public func realtimeReplyStream(
         userText: String
     ) async throws -> AsyncThrowingStream<String, Error> {
@@ -171,18 +172,13 @@ public final class ChatViewModel {
             text: text,
             tokenEstimate: TokenEstimator.estimate(text)
         )
-        // 已拿到完整 DTO，无需在 LLM 请求前再次读取整段会话。
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
 
-        let request = await makeRoleplayRequest(
-            quizRequested: false,
-            voiceMode: true
-        )
+        let request = await makeRoleplayRequest(quizRequested: false, voiceMode: true)
         let upstream = await deps.llm.stream(request)
         return AsyncThrowingStream { continuation in
             let task = Task { [weak self] in
-                // 点评也是一次 LLM 请求；等主回复流结束后再启动，避免争用用户可感知的首包路径。
                 defer { self?.runCoachReview(for: userMessage) }
                 do {
                     for try await event in upstream {
@@ -196,14 +192,12 @@ public final class ChatViewModel {
                     continuation.finish(throwing: error)
                 }
             }
-            continuation.onTermination = { _ in
-                task.cancel()
-            }
+            continuation.onTermination = { _ in task.cancel() }
         }
     }
 
-    /// 只保存用户实际听到的角色文本；用户主动插话不是技术中断，不展示“重试”错误态。
-    public func saveRealtimeAssistant(spokenText: String) async {
+    /// 保存模型实际生成的语音字幕；被用户插话截断时保留中断标记。
+    public func saveRealtimeAssistant(spokenText: String, interrupted: Bool) async {
         guard let conversation else { return }
         let spokenText = spokenText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !spokenText.isEmpty else { return }
@@ -211,7 +205,7 @@ public final class ChatViewModel {
             _ = try await persistAssistantReply(
                 conversationID: conversation.id,
                 text: spokenText,
-                interrupted: false
+                interrupted: interrupted
             )
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             await reloadMessages()

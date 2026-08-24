@@ -2,82 +2,61 @@ import CoreKit
 import FluidAudio
 import Foundation
 
-public enum OfflineSpeechModelPhase: Sendable, Equatable {
-    case notInstalled
-    case downloading
+public enum BundledSpeechModelPhase: Sendable, Equatable {
+    case resourceMissing
+    case available
     case loading
-    case installed
     case ready
     case failed
 }
 
-/// 设置页只依赖这个稳定状态，不接触 FluidAudio 或具体模型文件。
-public struct OfflineSpeechModelStatus: Sendable, Equatable {
-    public let phase: OfflineSpeechModelPhase
-    public let progress: Double?
-    public let installedBytes: Int64
-    public let expectedDownloadBytes: Int64
-    public let isEnabled: Bool
-    public let isInstalled: Bool
+/// 设置页只依赖这个稳定状态，不接触 FluidAudio、Bundle 路径或具体模型文件。
+public struct SpeechSynthesisEngineStatus: Sendable, Equatable {
+    public let phase: BundledSpeechModelPhase
+    public let bundledModelBytes: Int64
+    public let selectedEngine: SpeechSynthesisEngine
+    public let isBundledModelAvailable: Bool
     public let errorMessage: String?
 
     public init(
-        phase: OfflineSpeechModelPhase,
-        progress: Double? = nil,
-        installedBytes: Int64 = 0,
-        expectedDownloadBytes: Int64,
-        isEnabled: Bool,
-        isInstalled: Bool = false,
+        phase: BundledSpeechModelPhase,
+        bundledModelBytes: Int64 = 0,
+        selectedEngine: SpeechSynthesisEngine,
+        isBundledModelAvailable: Bool = false,
         errorMessage: String? = nil
     ) {
         self.phase = phase
-        self.progress = progress
-        self.installedBytes = installedBytes
-        self.expectedDownloadBytes = expectedDownloadBytes
-        self.isEnabled = isEnabled
-        self.isInstalled = isInstalled
+        self.bundledModelBytes = bundledModelBytes
+        self.selectedEngine = selectedEngine
+        self.isBundledModelAvailable = isBundledModelAvailable
         self.errorMessage = errorMessage
     }
 
-    public var isBusy: Bool {
-        phase == .downloading || phase == .loading
-    }
+    public var isBusy: Bool { phase == .loading }
 
-    public var isActive: Bool {
-        phase == .ready && isEnabled
+    public var isBundledEngineActive: Bool {
+        phase == .ready && selectedEngine == .pocketTTS
     }
 }
 
-/// 高品质离线模型的生命周期能力，与日常播放协议分离。
-public protocol OfflineSpeechModelManaging: Sendable {
-    func offlineModelStatus() async -> OfflineSpeechModelStatus
-    func offlineModelStatusUpdates() async -> AsyncStream<OfflineSpeechModelStatus>
-    func installOfflineModel() async
-    func removeOfflineModel() async
-    func setOfflineModelEnabled(_ enabled: Bool) async
+/// 合成引擎选择与随包模型状态独立于日常播放协议，设置页不依赖具体推理实现。
+public protocol SpeechSynthesisEngineManaging: Sendable {
+    func synthesisEngineStatus() async -> SpeechSynthesisEngineStatus
+    func synthesisEngineStatusUpdates() async -> AsyncStream<SpeechSynthesisEngineStatus>
+    func selectSynthesisEngine(_ engine: SpeechSynthesisEngine) async
 }
 
-private enum PocketTTSIntegrationError: LocalizedError {
-    case insufficientStorage(available: Int64, required: Int64)
-    case incompleteDownload
-
-    var errorDescription: String? {
-        switch self {
-        case .insufficientStorage(let available, let required):
-            let formatter = ByteCountFormatter()
-            formatter.countStyle = .file
-            return "可用空间不足。至少需要 \(formatter.string(fromByteCount: required))，当前约 \(formatter.string(fromByteCount: available))。"
-        case .incompleteDownload:
-            return "Pocket TTS 模型下载不完整，请检查网络后重试。"
-        }
-    }
-}
-
-/// 固定模型版本对应的资源选择策略。只保留产品实际使用的 INT8 管线和 7 套音色，
-/// 避免 FluidAudio 默认英语仓库把未使用的 FP16/ANE 管线与全部音色一并下载。
+/// 随包固定模型版本只保留产品实际使用的 INT8 管线和 7 套音色。
 enum PocketTTSAssetSelection {
-    static let expectedDownloadBytes: Int64 = 332_000_000
-    static let minimumFreeSpaceBytes: Int64 = 700_000_000
+    static let expectedBundledBytes: Int64 = 331_440_634
+    static let expectedFileCount = 30
+    static let requiredFileSizes: [String: Int64] = [
+        "cond_prefill.mlmodelc/weights/weight.bin": 133_237_248,
+        "flow_decoder_fused.mlmodelc/weights/weight.bin": 19_012_608,
+        "flowlm_stepv2.mlmodelc/weights/weight.bin": 76_809_280,
+        "mimi_decoder.mlmodelc/weights/weight.bin": 41_768_256,
+        "constants_bin/text_embed_table.bin": 16_388_096,
+    ]
     static let voiceIDs: Set<String> = [
         "alba",
         "anna",
@@ -88,36 +67,6 @@ enum PocketTTSAssetSelection {
         "stuart_bell",
     ]
 
-    static func shouldSkip(remotePath path: String) -> Bool {
-        let components = path.split(separator: "/").map(String.init)
-        let name = components.last ?? path
-
-        if name == ".DS_Store" || name == "verify.wav" {
-            return true
-        }
-        if components.contains(where: { $0.hasSuffix(".mlpackage") }) {
-            return true
-        }
-        if components.contains("constants") {
-            return true
-        }
-
-        let excludedModelDirectories: Set<String> = [
-            "flowlm_step.mlmodelc",        // FP16，已选用 INT8 flowlm_stepv2
-            "flowlm_step_ane.mlmodelc",    // 额外的 FP16 ANE 变体
-            "cond_prefill_ane.mlmodelc",   // 额外的 FP16 ANE 变体
-            "pocket_state.mlmodelc",       // 尚未启用的实验性 MLState 管线
-        ]
-        if !excludedModelDirectories.isDisjoint(with: components) {
-            return true
-        }
-
-        if name.hasSuffix(".safetensors") {
-            let voiceID = String(name.dropLast(".safetensors".count))
-            return !voiceIDs.contains(voiceID)
-        }
-        return false
-    }
 }
 
 /// 角色 → Pocket 预设音色。口音先分英/美，再按角色稳定 ID 在同类音色中取值，
@@ -161,13 +110,11 @@ enum PocketTTSVoiceCatalog {
     }
 }
 
-/// Pocket TTS + Apple TTS 的自适应门面：
-/// - 角色台词优先使用已预热的 Pocket 流式模型；
-/// - 单词/发音练习、非英语、未安装、未预热和故障均立即使用 Apple；
-/// - 下载、模型文件和 FluidAudio API 不泄漏到 Feature 层。
-public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
-    public static let enabledPreferenceKey = "lingotrip.pocketTTS.enabled"
-
+/// Pocket TTS + Apple TTS 的可切换门面：
+/// - 模型随 App 安装，用户选择 Pocket 时后台预热；
+/// - 非英语、未预热和故障均立即使用 Apple；
+/// - Bundle 路径、模型文件和 FluidAudio API 不泄漏到 Feature 层。
+public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging {
     private let apple: AppleTTSService
     private let audioSession: AudioSessionCoordinator
     private var player: PocketTTSStreamingPlayer?
@@ -179,8 +126,8 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
     private var playbackTask: Task<Void, Never>?
     private var isManagingModel = false
     private var didInspectStorage = false
-    private var status: OfflineSpeechModelStatus
-    private var statusContinuations: [UUID: AsyncStream<OfflineSpeechModelStatus>.Continuation] = [:]
+    private var status: SpeechSynthesisEngineStatus
+    private var statusContinuations: [UUID: AsyncStream<SpeechSynthesisEngineStatus>.Continuation] = [:]
 
     public init(
         audioSession: AudioSessionCoordinator,
@@ -194,20 +141,23 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         self.defaults = defaults
         self.fileManager = fileManager
         self.modelDirectory = modelDirectory ?? Self.defaultModelDirectory(fileManager: fileManager)
-        self.status = OfflineSpeechModelStatus(
-            phase: .notInstalled,
-            expectedDownloadBytes: PocketTTSAssetSelection.expectedDownloadBytes,
-            isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey)
+        self.status = SpeechSynthesisEngineStatus(
+            phase: .resourceMissing,
+            selectedEngine: VoiceEnginePreferences.synthesisEngine(defaults: defaults)
         )
     }
 
-    /// App 启动后在后台调用。加载未完成时播放绝不等待，仍会直接走 Apple。
+    /// App 启动后在后台调用。系统语音模式不加载 Pocket，减少启动内存占用。
     public func prepareForLaunch() async {
         await inspectStorageIfNeeded()
-        guard status.isInstalled, status.isEnabled, manager == nil, !isManagingModel else { return }
+        guard status.isBundledModelAvailable,
+              status.selectedEngine == .pocketTTS,
+              manager == nil,
+              !isManagingModel
+        else { return }
         isManagingModel = true
         defer { isManagingModel = false }
-        await loadInstalledModel()
+        await loadBundledModel()
     }
 
     public func speak(_ request: SpeechRequest) async {
@@ -215,21 +165,10 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         guard !trimmed.isEmpty else { return }
 
         await cancelCurrentPlayback()
+        await preparePocketIfNeeded(for: request)
 
-        guard request.purpose != .pronunciation,
-              request.language.lowercased().hasPrefix("en"),
-              status.isEnabled,
-              status.phase == .ready,
-              let manager
-        else {
+        guard shouldUsePocket(for: request), let manager else {
             await apple.speak(request)
-            // 模型已经落盘但尚未预热时，后台补做初始化；本次点击不等待。
-            if status.isEnabled,
-               status.phase == .installed,
-               manager == nil,
-               !isManagingModel {
-                Task { [weak self] in await self?.prepareForLaunch() }
-            }
             return
         }
 
@@ -257,7 +196,10 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
                     temperature: 0.65
                 )
                 try Task.checkCancellation()
-                try await audioSession.activate(.playback)
+                let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
+                    ? .conversation
+                    : .playback
+                try await audioSession.activate(mode)
                 try await player.prepare()
 
                 for try await frame in stream {
@@ -291,6 +233,7 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
                 if await player.finishScheduling() {
                     didBeginPlayback = true
                 }
+                await player.waitUntilFinished()
 
                 let finishedAt = Date()
                 let steadyWallTime = firstFrameAt.map {
@@ -310,18 +253,56 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
                 )
 
                 if !didBeginPlayback, !Task.isCancelled {
-                    await apple.speak(request)
+                    await apple.speakAndWait(request)
                 }
             } catch {
                 await player.stop()
                 guard !Task.isCancelled else { return }
                 Log.speech.error("Pocket TTS 播放失败，回退系统语音：\(error.localizedDescription, privacy: .public)")
                 if !didBeginPlayback {
-                    await apple.speak(request)
+                    await apple.speakAndWait(request)
                 }
             }
         }
         playbackTask = task
+    }
+
+    public func speakAndWait(_ request: SpeechRequest) async {
+        let trimmed = request.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        await preparePocketIfNeeded(for: request)
+        guard shouldUsePocket(for: request) else {
+            await cancelCurrentPlayback()
+            await apple.speakAndWait(request)
+            return
+        }
+        await speak(request)
+        if let playbackTask {
+            await playbackTask.value
+        }
+    }
+
+    private func shouldUsePocket(for request: SpeechRequest) -> Bool {
+        let selectedEngine = request.engine
+            ?? VoiceEnginePreferences.synthesisEngine(defaults: defaults)
+        return request.language.lowercased().hasPrefix("en")
+            && selectedEngine == .pocketTTS
+            && status.phase == .ready
+            && manager != nil
+    }
+
+    private func preparePocketIfNeeded(for request: SpeechRequest) async {
+        let selectedEngine = request.engine
+            ?? VoiceEnginePreferences.synthesisEngine(defaults: defaults)
+        guard selectedEngine == .pocketTTS,
+              manager == nil,
+              !isManagingModel,
+              isModelComplete
+        else { return }
+
+        isManagingModel = true
+        defer { isManagingModel = false }
+        await loadBundledModel()
     }
 
     public func stopSpeaking() async {
@@ -332,15 +313,15 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         await apple.refreshVoices()
     }
 
-    public func offlineModelStatus() async -> OfflineSpeechModelStatus {
+    public func synthesisEngineStatus() async -> SpeechSynthesisEngineStatus {
         await inspectStorageIfNeeded()
         return status
     }
 
-    public func offlineModelStatusUpdates() async -> AsyncStream<OfflineSpeechModelStatus> {
+    public func synthesisEngineStatusUpdates() async -> AsyncStream<SpeechSynthesisEngineStatus> {
         await inspectStorageIfNeeded()
         let id = UUID()
-        let pair = AsyncStream.makeStream(of: OfflineSpeechModelStatus.self)
+        let pair = AsyncStream.makeStream(of: SpeechSynthesisEngineStatus.self)
         statusContinuations[id] = pair.continuation
         pair.continuation.yield(status)
         pair.continuation.onTermination = { [weak self] _ in
@@ -349,115 +330,33 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         return pair.stream
     }
 
-    public func installOfflineModel() async {
-        guard !isManagingModel else { return }
-        isManagingModel = true
-        defer { isManagingModel = false }
-
-        await cancelCurrentPlayback()
-        let currentBytes = directorySize(modelDirectory)
-        updateStatus(
-            phase: .downloading,
-            progress: 0,
-            installedBytes: currentBytes,
-            isEnabled: status.isEnabled,
-            errorMessage: nil
-        )
-
-        do {
-            try ensureEnoughFreeSpace()
-            try prepareModelDirectory()
-            let repoDirectory = modelDirectory
-                .appendingPathComponent(PocketTtsConstants.defaultModelsSubdirectory, isDirectory: true)
-                .appendingPathComponent(Repo.pocketTts.folderName, isDirectory: true)
-            try fileManager.createDirectory(at: repoDirectory, withIntermediateDirectories: true)
-
-            try await ModelHub.download(
-                .pocketTts,
-                subdirectory: PocketTtsLanguage.english.repoSubdirectory,
-                to: repoDirectory,
-                progressHandler: { [weak self] progress in
-                    Task { await self?.reportDownloadProgress(progress.fractionCompleted) }
-                },
-                shouldSkip: PocketTTSAssetSelection.shouldSkip(remotePath:)
-            )
-
-            guard isModelComplete else {
-                throw PocketTTSIntegrationError.incompleteDownload
-            }
-            defaults.set(true, forKey: Self.enabledPreferenceKey)
-            try excludeModelDirectoryFromBackup()
-            await loadInstalledModel()
-        } catch {
-            manager = nil
-            let bytes = directorySize(modelDirectory)
-            updateStatus(
-                phase: .failed,
-                installedBytes: bytes,
-                isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
-                modelIsInstalled: isModelComplete,
-                errorMessage: userFacingMessage(for: error)
-            )
-            Log.speech.error("Pocket TTS 安装失败：\(error.localizedDescription, privacy: .public)")
-        }
-    }
-
-    public func removeOfflineModel() async {
-        guard !isManagingModel else { return }
-        isManagingModel = true
-        defer { isManagingModel = false }
-
-        await cancelCurrentPlayback()
-        manager = nil
-        do {
-            if fileManager.fileExists(atPath: modelDirectory.path) {
-                try fileManager.removeItem(at: modelDirectory)
-            }
-            defaults.set(false, forKey: Self.enabledPreferenceKey)
-            didInspectStorage = true
-            updateStatus(
-                phase: .notInstalled,
-                installedBytes: 0,
-                isEnabled: false,
-                modelIsInstalled: false
-            )
-        } catch {
-            updateStatus(
-                phase: .failed,
-                installedBytes: directorySize(modelDirectory),
-                isEnabled: false,
-                modelIsInstalled: isModelComplete,
-                errorMessage: "删除模型失败，请稍后重试。"
-            )
-            Log.speech.error("Pocket TTS 删除失败：\(error.localizedDescription, privacy: .public)")
-        }
-    }
-
-    public func setOfflineModelEnabled(_ enabled: Bool) async {
+    public func selectSynthesisEngine(_ engine: SpeechSynthesisEngine) async {
         await inspectStorageIfNeeded()
-        guard status.isInstalled else { return }
-        defaults.set(enabled, forKey: Self.enabledPreferenceKey)
+        guard engine == .system || status.isBundledModelAvailable else { return }
+        VoiceEnginePreferences.setSynthesisEngine(engine, defaults: defaults)
 
-        if enabled {
+        if engine == .pocketTTS {
             if manager == nil, !isManagingModel {
                 isManagingModel = true
                 defer { isManagingModel = false }
-                await loadInstalledModel()
+                await loadBundledModel()
             } else {
                 updateStatus(
-                    phase: manager == nil ? .installed : .ready,
-                    installedBytes: status.installedBytes,
-                    isEnabled: true
+                    phase: manager == nil ? .available : .ready,
+                    bundledModelBytes: status.bundledModelBytes,
+                    selectedEngine: .pocketTTS,
+                    modelIsAvailable: true
                 )
             }
         } else {
             await cancelCurrentPlayback()
             manager = nil
+            let bundledModelIsAvailable = status.isBundledModelAvailable
             updateStatus(
-                phase: .installed,
-                installedBytes: directorySize(modelDirectory),
-                isEnabled: false,
-                modelIsInstalled: true
+                phase: bundledModelIsAvailable ? .available : .resourceMissing,
+                bundledModelBytes: status.bundledModelBytes,
+                selectedEngine: .system,
+                modelIsAvailable: bundledModelIsAvailable
             )
         }
     }
@@ -479,28 +378,32 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         let bytes = directorySize(modelDirectory)
         if isModelComplete {
             updateStatus(
-                phase: .installed,
-                installedBytes: bytes,
-                isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
-                modelIsInstalled: true
+                phase: .available,
+                bundledModelBytes: bytes,
+                selectedEngine: selectedEngine,
+                modelIsAvailable: true
             )
         } else {
+            VoiceEnginePreferences.setSynthesisEngine(.system, defaults: defaults)
             updateStatus(
-                phase: .notInstalled,
-                installedBytes: bytes,
-                isEnabled: false,
-                modelIsInstalled: false
+                phase: .failed,
+                bundledModelBytes: bytes,
+                selectedEngine: .system,
+                modelIsAvailable: false,
+                errorMessage: "随包 Pocket TTS 模型缺失或损坏。"
             )
         }
     }
 
-    private func loadInstalledModel() async {
+    private func loadBundledModel() async {
         guard isModelComplete else {
+            VoiceEnginePreferences.setSynthesisEngine(.system, defaults: defaults)
             updateStatus(
-                phase: .notInstalled,
-                installedBytes: directorySize(modelDirectory),
-                isEnabled: false,
-                modelIsInstalled: false
+                phase: .failed,
+                bundledModelBytes: directorySize(modelDirectory),
+                selectedEngine: .system,
+                modelIsAvailable: false,
+                errorMessage: "随包 Pocket TTS 模型缺失或损坏。"
             )
             return
         }
@@ -508,9 +411,9 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         let bytes = directorySize(modelDirectory)
         updateStatus(
             phase: .loading,
-            installedBytes: bytes,
-            isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
-            modelIsInstalled: true
+            bundledModelBytes: bytes,
+            selectedEngine: selectedEngine,
+            modelIsAvailable: true
         )
         let loadStartedAt = Date()
         Log.speech.notice("Pocket TTS 开始加载 Core ML 模型")
@@ -527,10 +430,9 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
             manager = newManager
             updateStatus(
                 phase: .ready,
-                progress: 1,
-                installedBytes: bytes,
-                isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
-                modelIsInstalled: true
+                bundledModelBytes: bytes,
+                selectedEngine: selectedEngine,
+                modelIsAvailable: true
             )
             let elapsed = String(format: "%.2f", Date().timeIntervalSince(loadStartedAt))
             Log.speech.notice(
@@ -540,9 +442,9 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
             manager = nil
             updateStatus(
                 phase: .failed,
-                installedBytes: directorySize(modelDirectory),
-                isEnabled: defaults.bool(forKey: Self.enabledPreferenceKey),
-                modelIsInstalled: true,
+                bundledModelBytes: directorySize(modelDirectory),
+                selectedEngine: selectedEngine,
+                modelIsAvailable: true,
                 errorMessage: "模型加载失败，播放将继续使用系统语音。"
             )
             Log.speech.error("Pocket TTS 加载失败：\(error.localizedDescription, privacy: .public)")
@@ -580,16 +482,6 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
         #endif
     }
 
-    private func reportDownloadProgress(_ progress: Double) {
-        guard status.phase == .downloading else { return }
-        updateStatus(
-            phase: .downloading,
-            progress: min(max(progress, 0), 1),
-            installedBytes: status.installedBytes,
-            isEnabled: status.isEnabled
-        )
-    }
-
     private func streamingPlayer() async -> PocketTTSStreamingPlayer {
         if let player { return player }
         let newPlayer = try! PocketTTSStreamingPlayer()
@@ -619,84 +511,76 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
             fileManager.fileExists(atPath: constants.appendingPathComponent($0).path)
         }) else { return false }
 
-        return PocketTTSAssetSelection.voiceIDs.allSatisfy {
+        guard PocketTTSAssetSelection.voiceIDs.allSatisfy({
             fileManager.fileExists(
                 atPath: constants.appendingPathComponent("\($0).safetensors").path
             )
-        }
+        }) else { return false }
+
+        guard PocketTTSAssetSelection.requiredFileSizes.allSatisfy({ relativePath, expectedSize in
+            regularFileSize(languageRoot.appendingPathComponent(relativePath)) == expectedSize
+        }) else { return false }
+
+        return regularFileCount(languageRoot) == PocketTTSAssetSelection.expectedFileCount
+            && directorySize(languageRoot) == PocketTTSAssetSelection.expectedBundledBytes
     }
 
-    private func ensureEnoughFreeSpace() throws {
-        let probe = fileManager.urls(
-            for: .applicationSupportDirectory,
-            in: .userDomainMask
-        ).first ?? modelDirectory.deletingLastPathComponent()
-        let values = try probe.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
-        let available = values.volumeAvailableCapacityForImportantUsage ?? 0
-        let existing = directorySize(modelDirectory)
-        let additionallyRequired = max(0, PocketTTSAssetSelection.minimumFreeSpaceBytes - existing)
-        guard available >= additionallyRequired else {
-            throw PocketTTSIntegrationError.insufficientStorage(
-                available: available,
-                required: additionallyRequired
-            )
-        }
-    }
-
-    private func prepareModelDirectory() throws {
-        try fileManager.createDirectory(at: modelDirectory, withIntermediateDirectories: true)
-        try excludeModelDirectoryFromBackup()
-    }
-
-    private func excludeModelDirectoryFromBackup() throws {
-        var values = URLResourceValues()
-        values.isExcludedFromBackup = true
-        var directory = modelDirectory
-        try directory.setResourceValues(values)
+    private var selectedEngine: SpeechSynthesisEngine {
+        VoiceEnginePreferences.synthesisEngine(defaults: defaults)
     }
 
     private func directorySize(_ directory: URL) -> Int64 {
         guard let enumerator = fileManager.enumerator(
             at: directory,
-            includingPropertiesForKeys: [.isRegularFileKey, .fileAllocatedSizeKey, .fileSizeKey],
+            includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey],
             options: [.skipsHiddenFiles]
         ) else { return 0 }
 
         var total: Int64 = 0
         for case let fileURL as URL in enumerator {
             guard let values = try? fileURL.resourceValues(
-                forKeys: [.isRegularFileKey, .fileAllocatedSizeKey, .fileSizeKey]
+                forKeys: [.isRegularFileKey, .fileSizeKey]
             ), values.isRegularFile == true else { continue }
-            total += Int64(values.fileAllocatedSize ?? values.fileSize ?? 0)
+            total += Int64(values.fileSize ?? 0)
         }
         return total
     }
 
-    private func userFacingMessage(for error: Error) -> String {
-        if let localized = error as? PocketTTSIntegrationError {
-            return localized.localizedDescription
+    private func regularFileCount(_ directory: URL) -> Int {
+        guard let enumerator = fileManager.enumerator(
+            at: directory,
+            includingPropertiesForKeys: [.isRegularFileKey],
+            options: [.skipsHiddenFiles]
+        ) else { return 0 }
+
+        var count = 0
+        for case let fileURL as URL in enumerator {
+            if (try? fileURL.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true {
+                count += 1
+            }
         }
-        if error is CancellationError {
-            return "模型下载已取消，可稍后继续。"
-        }
-        return "模型下载失败，请检查网络和可用空间后重试。"
+        return count
+    }
+
+    private func regularFileSize(_ fileURL: URL) -> Int64? {
+        guard let values = try? fileURL.resourceValues(
+            forKeys: [.isRegularFileKey, .fileSizeKey]
+        ), values.isRegularFile == true, let size = values.fileSize else { return nil }
+        return Int64(size)
     }
 
     private func updateStatus(
-        phase: OfflineSpeechModelPhase,
-        progress: Double? = nil,
-        installedBytes: Int64,
-        isEnabled: Bool,
-        modelIsInstalled: Bool? = nil,
+        phase: BundledSpeechModelPhase,
+        bundledModelBytes: Int64,
+        selectedEngine: SpeechSynthesisEngine,
+        modelIsAvailable: Bool? = nil,
         errorMessage: String? = nil
     ) {
-        status = OfflineSpeechModelStatus(
+        status = SpeechSynthesisEngineStatus(
             phase: phase,
-            progress: progress,
-            installedBytes: installedBytes,
-            expectedDownloadBytes: PocketTTSAssetSelection.expectedDownloadBytes,
-            isEnabled: isEnabled,
-            isInstalled: modelIsInstalled ?? status.isInstalled,
+            bundledModelBytes: bundledModelBytes,
+            selectedEngine: selectedEngine,
+            isBundledModelAvailable: modelIsAvailable ?? status.isBundledModelAvailable,
             errorMessage: errorMessage
         )
         for continuation in statusContinuations.values {
@@ -709,10 +593,14 @@ public actor AdaptiveSpeechService: SpeechService, OfflineSpeechModelManaging {
     }
 
     private nonisolated static func defaultModelDirectory(fileManager: FileManager) -> URL {
-        let base = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-        return base
-            .appendingPathComponent("LingoTrip", isDirectory: true)
-            .appendingPathComponent("Speech", isDirectory: true)
-            .appendingPathComponent("PocketTTS", isDirectory: true)
+        guard let directory = Bundle.module.url(
+            forResource: "PocketTTS",
+            withExtension: nil
+        ) else {
+            // 状态检查会把缺失资源转成 failed；这里不把 Bundle 细节泄漏到调用方。
+            return fileManager.temporaryDirectory
+                .appendingPathComponent("MissingPocketTTSBundle", isDirectory: true)
+        }
+        return directory
     }
 }

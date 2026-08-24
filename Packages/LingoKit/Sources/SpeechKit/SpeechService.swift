@@ -8,6 +8,8 @@ public extension Notification.Name {
 }
 
 private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
+    var onCompletion: (@Sendable () -> Void)?
+
     func speechSynthesizer(
         _ synthesizer: AVSpeechSynthesizer,
         didStart utterance: AVSpeechUtterance
@@ -16,6 +18,20 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
             NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
         }
     }
+
+    func speechSynthesizer(
+        _ synthesizer: AVSpeechSynthesizer,
+        didFinish utterance: AVSpeechUtterance
+    ) {
+        onCompletion?()
+    }
+
+    func speechSynthesizer(
+        _ synthesizer: AVSpeechSynthesizer,
+        didCancel utterance: AVSpeechUtterance
+    ) {
+        onCompletion?()
+    }
 }
 
 /// 朗读用途。精确发音练习始终保留给可控的系统语音；角色台词可使用自然度更高的模型。
@@ -23,6 +39,8 @@ public enum SpeechPurpose: Sendable, Equatable {
     case general
     case characterDialogue
     case pronunciation
+    /// 持续双工模式：TTS 播放时保留麦克风与系统回声消除。
+    case realtimeConversation
 }
 
 /// 可选角色提示。SpeechKit 不依赖角色领域模型，只接收稳定、最小的选声信息。
@@ -44,23 +62,29 @@ public struct SpeechRequest: Sendable, Equatable {
     public let language: String
     public let purpose: SpeechPurpose
     public let voiceHint: SpeechVoiceHint?
+    /// nil 表示跟随全局设置；设置页试听可临时指定而不改变用户偏好。
+    public let engine: SpeechSynthesisEngine?
 
     public init(
         text: String,
         language: String = "en-US",
         purpose: SpeechPurpose = .general,
-        voiceHint: SpeechVoiceHint? = nil
+        voiceHint: SpeechVoiceHint? = nil,
+        engine: SpeechSynthesisEngine? = nil
     ) {
         self.text = text
         self.language = language
         self.purpose = purpose
         self.voiceHint = voiceHint
+        self.engine = engine
     }
 }
 
-/// 语音朗读服务。具体引擎、模型下载和回退策略都隐藏在协议后。
+/// 语音朗读服务。具体引擎、随包模型资源和回退策略都隐藏在协议后。
 public protocol SpeechService: Sendable {
     func speak(_ request: SpeechRequest) async
+    /// 播放并等待真实结束。实时语音按短分句串行调用，普通朗读无需使用。
+    func speakAndWait(_ request: SpeechRequest) async
     func stopSpeaking() async
     /// 用户在系统设置里增删语音后刷新音源缓存（默认空实现）。
     func refreshVoices() async
@@ -77,6 +101,10 @@ extension SpeechService {
     }
 
     public func refreshVoices() async {}
+
+    public func speakAndWait(_ request: SpeechRequest) async {
+        await speak(request)
+    }
 }
 
 /// Apple 本地 TTS：AVSpeechSynthesizer，按口音选择最高质量 voice。
@@ -85,6 +113,7 @@ public actor AppleTTSService: SpeechService {
     private let delegateBox: SpeechPlaybackDelegateBox
     private let audioSession: AudioSessionCoordinator
     private var voiceCache: [String: AVSpeechSynthesisVoice] = [:]
+    private var completionWaiters: [CheckedContinuation<Void, Never>] = []
 
     public init(audioSession: AudioSessionCoordinator) {
         let synthesizer = AVSpeechSynthesizer()
@@ -93,13 +122,20 @@ public actor AppleTTSService: SpeechService {
         self.synthesizer = synthesizer
         self.delegateBox = delegateBox
         self.audioSession = audioSession
+        delegateBox.onCompletion = { [weak self] in
+            Task { await self?.playbackDidComplete() }
+        }
     }
 
     public func speak(_ request: SpeechRequest) async {
         guard !request.text.isEmpty else { return }
-        try? await audioSession.activate(.playback)
+        let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
+            ? .conversation
+            : .playback
+        try? await audioSession.activate(mode)
         if synthesizer.isSpeaking {
             synthesizer.stopSpeaking(at: .immediate)
+            resumeCompletionWaiters()
         }
         let utterance = AVSpeechUtterance(string: request.text)
         utterance.voice = bestVoice(for: request.language)
@@ -108,8 +144,17 @@ public actor AppleTTSService: SpeechService {
         synthesizer.speak(utterance)
     }
 
+    public func speakAndWait(_ request: SpeechRequest) async {
+        await speak(request)
+        guard synthesizer.isSpeaking else { return }
+        await withCheckedContinuation { continuation in
+            completionWaiters.append(continuation)
+        }
+    }
+
     public func stopSpeaking() async {
         synthesizer.stopSpeaking(at: .immediate)
+        resumeCompletionWaiters()
     }
 
     /// 是否已有增强/高级音质（供设置页引导用户到系统设置下载增强语音）。
@@ -132,6 +177,16 @@ public actor AppleTTSService: SpeechService {
     /// 刷新语音缓存：用户在系统设置里下载/删除语音后调用，使新音源立即生效。
     public func refreshVoices() {
         voiceCache.removeAll()
+    }
+
+    private func playbackDidComplete() {
+        resumeCompletionWaiters()
+    }
+
+    private func resumeCompletionWaiters() {
+        let waiters = completionWaiters
+        completionWaiters.removeAll()
+        waiters.forEach { $0.resume() }
     }
 
     /// AVSpeechSynthesisVoiceQuality → 数值档：premium 3 > enhanced 2 > default(含其它) 1。

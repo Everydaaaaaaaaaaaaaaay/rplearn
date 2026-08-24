@@ -28,12 +28,12 @@ public struct SettingsView: View {
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
     @State private var voiceQuality: VoiceReport.Quality = .standard
-    @State private var offlineVoiceStatus = OfflineSpeechModelStatus(
-        phase: .notInstalled,
-        expectedDownloadBytes: 0,
-        isEnabled: false
+    @State private var synthesisEngineStatus = SpeechSynthesisEngineStatus(
+        phase: .resourceMissing,
+        selectedEngine: .pocketTTS
     )
-    @State private var showsOfflineModelRemovalConfirmation = false
+    @AppStorage(VoiceEnginePreferences.recognitionEngineKey)
+    private var recognitionEngineRaw = SpeechRecognitionEngine.enhancedOnDevice.rawValue
     @AppStorage(ProactiveMessagePreferences.enabledKey) private var proactiveMessagesEnabled = true
     @Environment(\.openURL) private var openURL
 
@@ -133,123 +133,109 @@ public struct SettingsView: View {
         }
     }
 
-    // MARK: - 语音音质
+    // MARK: - 语音引擎
 
     @ViewBuilder
     private var offlineVoiceSection: some View {
-        if let manager = speech as? any OfflineSpeechModelManaging {
+        if let manager = speech as? any SpeechSynthesisEngineManaging {
             Section {
-                LabeledContent("高品质角色语音") {
-                    Text(offlineVoicePhaseLabel)
-                        .foregroundStyle(offlineVoicePhaseTint)
-                        .fontWeight(.medium)
+                Picker("语音识别（ASR）", selection: recognitionEngineBinding) {
+                    ForEach(SpeechRecognitionEngine.allCases) { engine in
+                        Text(engine.label).tag(engine)
+                    }
                 }
 
-                if offlineVoiceStatus.phase == .downloading {
-                    VStack(alignment: .leading, spacing: 8) {
-                        ProgressView(value: offlineVoiceStatus.progress ?? 0)
-                        Text("正在下载并校验模型 \(offlineVoiceProgressLabel)")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                Picker(
+                    "语音合成（TTS）",
+                    selection: Binding(
+                        get: {
+                            synthesisEngineStatus.selectedEngine
+                        },
+                        set: { engine in
+                            Task {
+                                await manager.selectSynthesisEngine(engine)
+                            }
+                        }
+                    )
+                ) {
+                    ForEach(SpeechSynthesisEngine.allCases) { engine in
+                        Text(engine.label).tag(engine)
                     }
-                } else if offlineVoiceStatus.phase == .loading {
+                }
+                .disabled(
+                    synthesisEngineStatus.isBusy
+                        || !synthesisEngineStatus.isBundledModelAvailable
+                )
+
+                LabeledContent("内置 ASR", value: "Parakeet + SenseVoice · 464 MB")
+                LabeledContent("内置 TTS") {
+                    HStack(spacing: 6) {
+                        Text("Pocket TTS · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
+                            .foregroundStyle(.secondary)
+                        Text(offlineVoicePhaseLabel)
+                            .foregroundStyle(offlineVoicePhaseTint)
+                            .font(.caption)
+                    }
+                }
+
+                if synthesisEngineStatus.phase == .loading {
                     HStack {
                         ProgressView()
-                        Text("正在预热 Core ML 模型…")
+                        Text("正在预热 Pocket TTS Core ML 模型…")
                             .foregroundStyle(.secondary)
                     }
                 }
 
-                if offlineVoiceStatus.installedBytes > 0 {
-                    LabeledContent(
-                        offlineVoiceStatus.isInstalled ? "模型占用" : "已下载部分",
-                        value: formattedBytes(offlineVoiceStatus.installedBytes)
-                    )
-                } else {
-                    LabeledContent(
-                        "预计下载",
-                        value: formattedBytes(offlineVoiceStatus.expectedDownloadBytes)
-                    )
-                }
-
-                if offlineVoiceStatus.isInstalled {
-                    Toggle(
-                        "优先使用 Pocket TTS",
-                        isOn: Binding(
-                            get: { offlineVoiceStatus.isEnabled },
-                            set: { enabled in
-                                Task { await manager.setOfflineModelEnabled(enabled) }
-                            }
-                        )
-                    )
-                    .disabled(offlineVoiceStatus.isBusy)
-                }
-
-                if let message = offlineVoiceStatus.errorMessage {
+                if let message = synthesisEngineStatus.errorMessage {
                     Label(message, systemImage: "exclamationmark.triangle.fill")
                         .font(.footnote)
                         .foregroundStyle(.orange)
                 }
 
-                if !offlineVoiceStatus.isInstalled || offlineVoiceStatus.phase == .failed {
-                    Button {
-                        Task { await manager.installOfflineModel() }
-                    } label: {
-                        Label(
-                            offlineVoiceStatus.installedBytes > 0 ? "继续下载或修复模型" : "下载高品质语音",
-                            systemImage: "arrow.down.circle.fill"
+                Button {
+                    Task {
+                        await speech.speak(
+                            SpeechRequest(
+                                text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
+                                language: "en-GB",
+                                purpose: .characterDialogue,
+                                voiceHint: previewVoiceHint,
+                                engine: .system
+                            )
                         )
                     }
-                    .disabled(offlineVoiceStatus.isBusy)
+                } label: {
+                    Label("试听 Apple 系统语音", systemImage: "play.circle")
                 }
 
-                if offlineVoiceStatus.isActive {
-                    Button {
-                        Task {
-                            await speech.speak(
-                                SpeechRequest(
-                                    text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
-                                    language: "en-GB",
-                                    purpose: .characterDialogue,
-                                    voiceHint: SpeechVoiceHint(
-                                        stableID: "settings-pocket-preview",
-                                        gender: "female",
-                                        nationality: "British"
-                                    )
-                                )
+                Button {
+                    Task {
+                        await speech.speak(
+                            SpeechRequest(
+                                text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
+                                language: "en-GB",
+                                purpose: .characterDialogue,
+                                voiceHint: previewVoiceHint,
+                                engine: .pocketTTS
                             )
-                        }
-                    } label: {
-                        Label("试听 Pocket TTS", systemImage: "waveform.circle")
+                        )
                     }
+                } label: {
+                    Label("试听 Pocket TTS", systemImage: "waveform.circle")
                 }
-
-                if offlineVoiceStatus.installedBytes > 0, !offlineVoiceStatus.isBusy {
-                    Button("删除离线模型", role: .destructive) {
-                        showsOfflineModelRemovalConfirmation = true
-                    }
-                }
+                .disabled(
+                    !synthesisEngineStatus.isBundledModelAvailable
+                        || synthesisEngineStatus.isBusy
+                )
 
                 Link(
                     "Pocket TTS 与开源许可",
                     destination: URL(string: "https://github.com/kyutai-labs/pocket-tts")!
                 )
             } header: {
-                Text("离线高品质语音")
+                Text("语音引擎对比")
             } footer: {
-                Text("约 330 MB，按需下载且不计入 App 安装包。角色台词使用 7 套英美音色并流式播放；单词与发音训练继续使用系统语音，确保点击即播和口音可控。模型不可用时会自动回退，不影响正常使用。")
-            }
-            .confirmationDialog(
-                "删除 Pocket TTS 离线模型？",
-                isPresented: $showsOfflineModelRemovalConfirmation,
-                titleVisibility: .visible
-            ) {
-                Button("删除模型", role: .destructive) {
-                    Task { await manager.removeOfflineModel() }
-                }
-                Button("取消", role: .cancel) {}
-            } message: {
-                Text("删除后角色台词将立即改用系统语音，需要时可重新下载。")
+                Text("两套外置模型均已随 App 安装，不会再下载。ASR 选择从下一次实时语音会话生效；TTS 选择立即生效，也可用上方按钮在不改设置的情况下试听。内置模型完全离线；Apple 系统识别会优先端侧处理，但在当前语言模型不可用时可能使用网络。")
             }
         }
     }
@@ -280,7 +266,15 @@ public struct SettingsView: View {
                 }
             }
             Button {
-                Task { await speech.speak("Hello! This is how I sound. Nice to meet you.", language: "en-US") }
+                Task {
+                    await speech.speak(
+                        SpeechRequest(
+                            text: "Hello! This is how I sound. Nice to meet you.",
+                            language: "en-US",
+                            engine: .system
+                        )
+                    )
+                }
             } label: {
                 Label("试听当前语音", systemImage: "play.circle")
             }
@@ -297,7 +291,7 @@ public struct SettingsView: View {
                 }
             }
         } header: {
-            Text("系统备用语音")
+            Text("Apple 系统语音详情")
         } footer: {
             if voiceQuality.isNatural {
                 Text("已启用增强/高级音质，听感更自然。想为更多口音提升音质，可在「设置 › 辅助功能 › 朗读内容 › 声音 › 英语」继续下载。")
@@ -313,41 +307,55 @@ public struct SettingsView: View {
     }
 
     private func observeOfflineVoiceStatus() async {
-        guard let manager = speech as? any OfflineSpeechModelManaging else { return }
-        offlineVoiceStatus = await manager.offlineModelStatus()
-        let updates = await manager.offlineModelStatusUpdates()
+        guard let manager = speech as? any SpeechSynthesisEngineManaging else { return }
+        synthesisEngineStatus = await manager.synthesisEngineStatus()
+        let updates = await manager.synthesisEngineStatusUpdates()
         for await update in updates {
             if Task.isCancelled { return }
-            offlineVoiceStatus = update
+            synthesisEngineStatus = update
         }
     }
 
+    private var recognitionEngineBinding: Binding<SpeechRecognitionEngine> {
+        Binding(
+            get: {
+                SpeechRecognitionEngine(rawValue: recognitionEngineRaw) ?? .enhancedOnDevice
+            },
+            set: { engine in
+                recognitionEngineRaw = engine.rawValue
+            }
+        )
+    }
+
+    private var previewVoiceHint: SpeechVoiceHint {
+        SpeechVoiceHint(
+            stableID: "settings-voice-preview",
+            gender: "female",
+            nationality: "British"
+        )
+    }
+
     private var offlineVoicePhaseLabel: String {
-        switch offlineVoiceStatus.phase {
-        case .notInstalled: "未安装"
-        case .downloading: "下载中"
+        switch synthesisEngineStatus.phase {
+        case .resourceMissing: "资源缺失"
+        case .available:
+            synthesisEngineStatus.selectedEngine == .pocketTTS ? "待预热" : "已打包"
         case .loading: "预热中"
-        case .installed: offlineVoiceStatus.isEnabled ? "待预热" : "已停用"
-        case .ready: offlineVoiceStatus.isEnabled ? "Pocket TTS" : "已停用"
-        case .failed: "需要处理"
+        case .ready: "可用"
+        case .failed: "加载失败"
         }
     }
 
     private var offlineVoicePhaseTint: Color {
-        switch offlineVoiceStatus.phase {
-        case .ready where offlineVoiceStatus.isEnabled: .green
+        switch synthesisEngineStatus.phase {
+        case .ready: .green
         case .failed: .orange
         default: .secondary
         }
     }
 
-    private var offlineVoiceProgressLabel: String {
-        guard let progress = offlineVoiceStatus.progress else { return "" }
-        return "\(Int((progress * 100).rounded()))%"
-    }
-
     private func formattedBytes(_ count: Int64) -> String {
-        guard count > 0 else { return "约 330 MB" }
+        guard count > 0 else { return "331 MB" }
         let formatter = ByteCountFormatter()
         formatter.countStyle = .file
         return formatter.string(fromByteCount: count)

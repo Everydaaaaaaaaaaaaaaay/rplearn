@@ -554,8 +554,8 @@ struct RootView: View {
     private func maybePromptVoiceUpgrade() {
         Task {
             // Pocket 已经可用时不再提示用户额外下载 Apple 增强语音。
-            let offlineStatus = await environment.speech.offlineModelStatus()
-            guard !offlineStatus.isActive,
+            let synthesisStatus = await environment.speech.synthesisEngineStatus()
+            guard !synthesisStatus.isBundledEngineActive,
                   VoiceUpgradePromptPolicy.shouldPresent(
                     isSuppressed: suppressVoicePrompt,
                     hasPresented: hasPresentedVoicePrompt,

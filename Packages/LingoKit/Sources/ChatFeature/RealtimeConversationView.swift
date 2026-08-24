@@ -18,25 +18,31 @@ private final class RealtimeConversationCoordinator {
 
     init(chat: ChatViewModel, deps: ChatDependencies) {
         let character = chat.character
-        let client = RealtimeVoiceConversationClient(
+        let conversation = RealtimeVoiceConversationClient(
             replyStream: { [weak chat] text in
-                guard let chat else {
-                    throw AppError.storage("实时语音会话已结束")
-                }
+                guard let chat else { throw AppError.storage("实时语音会话已结束") }
                 return try await chat.realtimeReplyStream(userText: text)
             },
-            saveAssistant: { [weak chat] text in
-                await chat?.saveRealtimeAssistant(spokenText: text)
+            saveAssistant: { [weak chat] text, interrupted in
+                await chat?.saveRealtimeAssistant(
+                    spokenText: text,
+                    interrupted: interrupted
+                )
             }
         )
         let language = AccentMapper.language(forNationality: character.card.nationality)
+        let voiceHint = SpeechVoiceHint(
+            stableID: character.id.uuidString.lowercased(),
+            gender: character.card.gender.rawValue,
+            nationality: character.card.nationality
+        )
         self.chat = chat
         self.session = RealtimeVoiceSession(
             audioSession: deps.audioSession,
-            conversation: client,
-            localeIdentifier: "en-US",
+            speech: deps.speech,
+            conversation: conversation,
             voiceLanguage: language,
-            contextualStrings: Self.contextualStrings(for: character),
+            voiceHint: voiceHint,
             turnPolicy: Self.turnPolicy(for: character.difficultyLevel)
         )
         self.speech = deps.speech
@@ -50,32 +56,25 @@ private final class RealtimeConversationCoordinator {
         await session.start()
     }
 
-    private static func contextualStrings(for character: CharacterDTO) -> [String] {
-        [character.card.name, character.card.regionID, character.card.occupation]
-            + character.card.hobbies
-    }
-
     private static func turnPolicy(for level: DifficultyLevel) -> VoiceTurnPolicy {
-        let delay: Duration
-        switch level {
+        let fallbackDelay: Duration = switch level {
         case .primary1, .primary2, .primary3, .primary4, .primary5, .primary6:
-            delay = .milliseconds(1_050)
+            .milliseconds(1_350)
         case .junior1, .junior2, .junior3:
-            delay = .milliseconds(900)
+            .milliseconds(1_200)
         case .senior1, .senior2, .senior3:
-            delay = .milliseconds(800)
+            .milliseconds(1_100)
         case .undergraduate, .postgraduate, .advanced:
-            delay = .milliseconds(700)
+            .milliseconds(1_000)
         }
-        return VoiceTurnPolicy(endOfTurnDelay: delay)
+        return VoiceTurnPolicy(fallbackEndOfTurnDelay: fallbackDelay)
     }
 }
 
-/// 单角色实时语音页。保持轻量品牌露出，不把聊天页改造成传统电话界面。
+/// 沉浸式实时语音页：持续双工、可插话、流式字幕和单次自动重连均由统一会话状态驱动。
 struct RealtimeConversationView: View {
     @State private var coordinator: RealtimeConversationCoordinator
-    @State private var debugText = "What do you like about this city?"
-    @State private var showsDebugInput = false
+    @State private var captionsVisible = true
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -87,10 +86,7 @@ struct RealtimeConversationView: View {
         onSpeechPlayback: @escaping () -> Void
     ) {
         _coordinator = State(
-            initialValue: RealtimeConversationCoordinator(
-                chat: chat,
-                deps: deps
-            )
+            initialValue: RealtimeConversationCoordinator(chat: chat, deps: deps)
         )
         self.onSpeechPlayback = onSpeechPlayback
     }
@@ -100,36 +96,26 @@ struct RealtimeConversationView: View {
 
     var body: some View {
         ZStack {
-            Color.dsBackground.ignoresSafeArea()
-            LinearGradient(
-                colors: [Color.dsSky.opacity(0.12), .clear, Color.dsBrandCream.opacity(0.22)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-
+            background
             VStack(spacing: 0) {
                 topBar
-                ScrollView {
-                    VStack(spacing: 22) {
-                        presence
-                        transcriptPanel
-                        privacyNote
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 18)
-                    .padding(.bottom, DSSpacing.sm)
-                }
-                .scrollIndicators(.hidden)
-                .scrollBounceBehavior(.basedOnSize)
+                Spacer(minLength: 12)
+                livePresence
+                Spacer(minLength: 18)
+                subtitleArea
+                Spacer(minLength: 18)
                 controls
             }
-            .padding(.horizontal, DSSpacing.lg)
-            .padding(.bottom, DSSpacing.lg)
+            .padding(.horizontal, 22)
+            .padding(.top, 10)
+            .padding(.bottom, 18)
+
+            if session.phase == .failed {
+                failureCard
+            }
         }
-        .task {
-            await coordinator.start()
-        }
+        .preferredColorScheme(.dark)
+        .task { await coordinator.start() }
         .onChange(of: scenePhase) { _, newValue in
             Task {
                 switch newValue {
@@ -142,256 +128,417 @@ struct RealtimeConversationView: View {
                 }
             }
         }
-        .onChange(of: session.phase) { _, newValue in
-            if newValue == .speaking {
+        .onChange(of: session.phase) { oldValue, newValue in
+            if newValue == .speaking, oldValue != .speaking {
                 onSpeechPlayback()
             }
         }
         .onReceive(
             NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)
-        ) { notification in
-            handleAudioInterruption(notification)
+        ) { handleAudioInterruption($0) }
+        .onDisappear { Task { await session.stop() } }
+    }
+
+    private var background: some View {
+        ZStack {
+            Color(red: 0.025, green: 0.035, blue: 0.065)
+            RadialGradient(
+                colors: [phaseTint.opacity(0.24), .clear],
+                center: .init(x: 0.5, y: 0.34),
+                startRadius: 8,
+                endRadius: 390
+            )
+            Circle()
+                .fill(Color.dsQuiz.opacity(0.11))
+                .frame(width: 330, height: 330)
+                .blur(radius: 90)
+                .offset(x: 170, y: 350)
+            Circle()
+                .fill(Color.dsCyan.opacity(0.09))
+                .frame(width: 260, height: 260)
+                .blur(radius: 80)
+                .offset(x: -180, y: -360)
         }
-        .onDisappear {
-            Task { await session.stop() }
-        }
-        #if targetEnvironment(simulator)
-        .alert("模拟实时语音", isPresented: $showsDebugInput) {
-            TextField("英文转写", text: $debugText)
-            Button("发送") {
-                session.submitDebugTurn(debugText)
-            }
-            Button("取消", role: .cancel) {}
-        } message: {
-            Text("模拟器麦克风不稳定时，可直接验证流式回复和本地播报。")
-        }
-        #endif
+        .ignoresSafeArea()
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.45), value: session.phase)
     }
 
     private var topBar: some View {
-        HStack {
+        HStack(spacing: 12) {
             Button {
-                Task {
-                    await session.stop()
-                    dismiss()
-                }
+                endConversation()
             } label: {
-                Image(systemName: "xmark")
+                Image(systemName: "chevron.down")
                     .font(.body.weight(.semibold))
                     .frame(width: 44, height: 44)
-                    .background(.thinMaterial, in: Circle())
+                    .background(.white.opacity(0.09), in: Circle())
             }
-            .buttonStyle(.pressableCard)
-            .accessibilityLabel("结束语音对话")
+            .buttonStyle(.plain)
+            .accessibilityLabel("结束实时语音")
 
             Spacer()
 
-            VStack(spacing: 2) {
+            VStack(spacing: 3) {
                 Text(character.card.name)
                     .font(.headline)
-                Text("实时英语对话")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.white)
+                HStack(spacing: 5) {
+                    Circle()
+                        .fill(connectionTint)
+                        .frame(width: 6, height: 6)
+                    Text(connectionLabel)
+                    if session.elapsedSeconds > 0 {
+                        Text("·")
+                        Text(durationText)
+                            .monospacedDigit()
+                    }
+                }
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.62))
             }
 
             Spacer()
-
-            #if targetEnvironment(simulator)
-            Button {
-                showsDebugInput = true
-            } label: {
-                Image(systemName: "hammer")
-                    .frame(width: 44, height: 44)
-            }
-            .buttonStyle(.pressableCard)
-            .accessibilityLabel("模拟一句语音")
-            #else
             Color.clear.frame(width: 44, height: 44)
-            #endif
         }
     }
 
-    private func handleAudioInterruption(_ notification: Notification) {
-        guard let rawType = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
-              let type = AVAudioSession.InterruptionType(rawValue: rawType) else { return }
-        switch type {
-        case .began:
-            Task {
-                await session.suspend()
-            }
-        case .ended:
-            let rawOptions = notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? UInt ?? 0
-            let shouldResume = AVAudioSession.InterruptionOptions(rawValue: rawOptions)
-                .contains(.shouldResume)
-            Task {
-                if shouldResume, session.phase == .paused {
-                    await session.resume()
+    private var livePresence: some View {
+        VStack(spacing: 26) {
+            ZStack {
+                ForEach(0..<3, id: \.self) { index in
+                    Circle()
+                        .stroke(
+                            phaseTint.opacity(0.3 - Double(index) * 0.07),
+                            lineWidth: 1.5
+                        )
+                        .frame(
+                            width: 188 + CGFloat(index * 34),
+                            height: 188 + CGFloat(index * 34)
+                        )
+                        .scaleEffect(
+                            reduceMotion
+                                ? 1
+                                : 1 + session.activityLevel * (0.025 + Double(index) * 0.012)
+                        )
+                        .opacity(session.isMuted ? 0.25 : 1)
                 }
-            }
-        @unknown default:
-            break
-        }
-    }
 
-    private var presence: some View {
-        VStack(spacing: DSSpacing.md) {
-            ZStack(alignment: .bottomTrailing) {
                 Circle()
-                    .fill(Color.dsSky.opacity(0.1 + session.inputLevel * 0.12))
-                    .frame(width: 142, height: 142)
-                    .scaleEffect(1 + session.inputLevel * 0.12)
-                    .animation(reduceMotion ? nil : DSAnimation.feedback, value: session.inputLevel)
-                AvatarBadge(name: character.card.name, size: 104)
-                BrandMascotView(pose: .coach, size: 38, showsShadow: false)
-                    .padding(2)
-                    .background(Color.dsSurface, in: Circle())
-                    .accessibilityHidden(true)
-            }
+                    .fill(
+                        RadialGradient(
+                            colors: [
+                                .white.opacity(0.18),
+                                phaseTint.opacity(0.42),
+                                phaseTint.opacity(0.1),
+                            ],
+                            center: .topLeading,
+                            startRadius: 4,
+                            endRadius: 112
+                        )
+                    )
+                    .frame(width: 168, height: 168)
+                    .overlay {
+                        Circle().stroke(.white.opacity(0.2), lineWidth: 1)
+                    }
+                    .shadow(color: phaseTint.opacity(0.42), radius: 34)
+                    .scaleEffect(reduceMotion ? 1 : 1 + session.activityLevel * 0.055)
 
-            VStack(spacing: 4) {
+                AvatarBadge(name: character.card.name, tint: .white, size: 104)
+                    .shadow(color: .black.opacity(0.2), radius: 16, y: 8)
+            }
+            .animation(
+                reduceMotion ? nil : .easeOut(duration: 0.09),
+                value: session.activityLevel
+            )
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(character.card.name)，\(statusTitle)")
+
+            VStack(spacing: 7) {
                 Text(statusTitle)
-                    .font(.title3.weight(.semibold))
+                    .font(.system(.title2, design: .rounded, weight: .semibold))
+                    .foregroundStyle(.white)
                     .contentTransition(.opacity)
                 Text(statusDetail)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.white.opacity(0.58))
                     .multilineTextAlignment(.center)
             }
             .animation(reduceMotion ? nil : DSAnimation.snappy, value: session.phase)
         }
     }
 
-    private var transcriptPanel: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.md) {
-            transcriptRow(
-                label: "你",
-                text: session.liveTranscript.isEmpty
-                    ? session.userTranscript
-                    : session.liveTranscript,
-                tint: .dsSky
-            )
-            Divider()
-            transcriptRow(
-                label: character.card.name,
-                text: session.assistantTranscript,
-                tint: .dsBrandCoral
-            )
-
-            if let error = session.errorMessage {
-                Label(error, systemImage: "exclamationmark.circle")
-                    .font(.footnote)
-                    .foregroundStyle(session.phase == .failed ? Color.dsDanger : .secondary)
-
-                if session.phase == .failed {
-                    HStack(spacing: DSSpacing.sm) {
-                        Button("再试一次") {
-                            Task { await session.start() }
-                        }
-                        .buttonStyle(.borderedProminent)
-
-                        if session.requiresSettings {
-                            Button("打开设置") {
-                                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-                                UIApplication.shared.open(url)
-                            }
-                            .buttonStyle(.bordered)
-                        }
-                    }
-                    .font(.subheadline.weight(.semibold))
+    @ViewBuilder
+    private var subtitleArea: some View {
+        if captionsVisible {
+            VStack(spacing: 12) {
+                if !displayedUserText.isEmpty {
+                    subtitle(
+                        speaker: "你",
+                        text: displayedUserText,
+                        alignment: .trailing,
+                        tint: .dsCyan
+                    )
+                }
+                if !session.assistantTranscript.isEmpty {
+                    subtitle(
+                        speaker: character.card.name,
+                        text: session.assistantTranscript,
+                        alignment: .leading,
+                        tint: phaseTint
+                    )
+                }
+                if displayedUserText.isEmpty && session.assistantTranscript.isEmpty {
+                    Text("字幕会在这里实时出现")
+                        .font(.subheadline)
+                        .foregroundStyle(.white.opacity(0.34))
+                        .frame(maxWidth: .infinity, minHeight: 74)
                 }
             }
-        }
-        .padding(DSSpacing.md)
-        .frame(maxWidth: .infinity, minHeight: 176, alignment: .topLeading)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-                .stroke(Color.dsBorder.opacity(0.7), lineWidth: 1)
+            .frame(maxWidth: 560)
+            .transition(.opacity.combined(with: .move(edge: .bottom)))
+        } else {
+            Text("字幕已隐藏")
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.35))
+                .frame(height: 74)
         }
     }
 
-    private func transcriptRow(label: String, text: String, tint: Color) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(label)
+    private func subtitle(
+        speaker: String,
+        text: String,
+        alignment: Alignment,
+        tint: Color
+    ) -> some View {
+        VStack(alignment: alignment == .leading ? .leading : .trailing, spacing: 4) {
+            Text(speaker)
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(tint)
-            Text(text.isEmpty ? "…" : text)
-                .font(.body)
-                .foregroundStyle(text.isEmpty ? AnyShapeStyle(.tertiary) : AnyShapeStyle(.primary))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .lineLimit(4)
-                .contentTransition(.opacity)
+            Text(text)
+                .font(.system(.body, design: .rounded))
+                .foregroundStyle(.white.opacity(0.92))
+                .lineLimit(3)
+                .multilineTextAlignment(alignment == .leading ? .leading : .trailing)
         }
+        .frame(maxWidth: .infinity, alignment: alignment)
+        .contentTransition(.opacity)
         .accessibilityElement(children: .combine)
     }
 
-    private var privacyNote: some View {
-        Label("AI 角色只会收到转写文字，不会收到原始录音", systemImage: "lock.shield")
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .padding(.bottom, DSSpacing.md)
+    private var controls: some View {
+        VStack(spacing: 18) {
+            Text("原始音频仅在本机识别；只有终稿文本会发送给 AI")
+                .font(.caption2)
+                .foregroundStyle(.white.opacity(0.38))
+                .multilineTextAlignment(.center)
+
+            HStack(spacing: 30) {
+                controlButton(
+                    icon: captionsVisible ? "captions.bubble.fill" : "captions.bubble",
+                    label: captionsVisible ? "字幕" : "显示字幕",
+                    selected: captionsVisible
+                ) {
+                    Haptics.selection()
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        captionsVisible.toggle()
+                    }
+                }
+
+                Button {
+                    endConversation()
+                } label: {
+                    Image(systemName: "phone.down.fill")
+                        .font(.title2.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 70, height: 70)
+                        .background(Color.dsBrandCoral, in: Circle())
+                        .shadow(color: Color.dsBrandCoral.opacity(0.36), radius: 18, y: 7)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("结束实时语音")
+
+                controlButton(
+                    icon: session.isMuted ? "mic.slash.fill" : "mic.fill",
+                    label: session.isMuted ? "打开麦克风" : "静音",
+                    selected: session.isMuted
+                ) {
+                    Haptics.selection()
+                    session.toggleMuted()
+                }
+                .disabled(session.phase == .connecting || session.phase == .failed)
+            }
+        }
     }
 
-    private var controls: some View {
-        HStack(spacing: 32) {
-            Button {
-                Haptics.selection()
-                session.toggleMuted()
-            } label: {
-                VStack(spacing: 6) {
-                    Image(systemName: session.isMuted ? "mic.slash.fill" : "mic.fill")
-                        .font(.title3)
-                        .frame(width: 54, height: 54)
-                        .background(.thinMaterial, in: Circle())
-                    Text(session.isMuted ? "打开麦克风" : "静音")
-                        .font(.caption)
-                }
+    private func controlButton(
+        icon: String,
+        label: String,
+        selected: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            VStack(spacing: 7) {
+                Image(systemName: icon)
+                    .font(.title3.weight(.medium))
+                    .frame(width: 54, height: 54)
+                    .background(
+                        selected ? AnyShapeStyle(.white.opacity(0.2)) : AnyShapeStyle(.ultraThinMaterial),
+                        in: Circle()
+                    )
+                Text(label)
+                    .font(.caption)
             }
-            .buttonStyle(.pressableCard)
-            .disabled(session.phase == .connecting || session.phase == .failed)
+            .foregroundStyle(.white.opacity(0.9))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+    }
 
-            Button {
-                Haptics.impact(.medium)
-                Task {
-                    await session.stop()
-                    dismiss()
-                }
-            } label: {
-                Image(systemName: "phone.down.fill")
-                    .font(.title2)
-                    .foregroundStyle(.white)
-                    .frame(width: 66, height: 66)
-                    .background(Color.dsBrandCoral, in: Circle())
-                    .shadow(color: Color.dsBrandCoral.opacity(0.24), radius: 12, y: 5)
+    private var failureCard: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "waveform.badge.exclamationmark")
+                .font(.system(size: 30))
+                .foregroundStyle(Color.dsBrandCoral)
+            VStack(spacing: 6) {
+                Text("实时语音暂时不可用")
+                    .font(.headline)
+                Text(session.errorMessage ?? "请检查麦克风或音频设备后重试。")
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.62))
+                    .multilineTextAlignment(.center)
             }
-            .buttonStyle(.pressableCard)
-            .accessibilityLabel("结束语音对话")
+            HStack(spacing: 12) {
+                Button("结束") { endConversation() }
+                    .buttonStyle(.bordered)
+                if session.requiresSettings {
+                    Button("打开设置") {
+                        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                        UIApplication.shared.open(url)
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("重试") { Task { await session.start() } }
+                        .buttonStyle(.borderedProminent)
+                }
+            }
+        }
+        .padding(24)
+        .frame(maxWidth: 330)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .stroke(.white.opacity(0.12), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.34), radius: 28, y: 12)
+        .transition(.scale(scale: 0.96).combined(with: .opacity))
+    }
+
+    private var displayedUserText: String {
+        session.liveTranscript.isEmpty ? session.userTranscript : session.liveTranscript
+    }
+
+    private var phaseTint: Color {
+        switch session.phase {
+        case .userSpeaking: .dsCyan
+        case .thinking, .connecting, .reconnecting: .dsQuiz
+        case .speaking: .dsSky
+        case .failed: .dsBrandCoral
+        case .idle, .listening, .paused: .dsSkyDeep
+        }
+    }
+
+    private var connectionTint: Color {
+        switch session.phase {
+        case .failed: .dsDanger
+        case .connecting, .reconnecting: .dsWarning
+        case .idle, .paused: .white.opacity(0.35)
+        default: .dsSuccess
+        }
+    }
+
+    private var connectionLabel: String {
+        switch session.phase {
+        case .connecting: "准备端侧模型"
+        case .reconnecting: "正在恢复"
+        case .failed: "已断开"
+        case .paused: "已暂停"
+        case .idle: "已结束"
+        default: "端侧实时"
         }
     }
 
     private var statusTitle: String {
         if session.isMuted { return "麦克风已关闭" }
         return switch session.phase {
-        case .idle: "已结束"
-        case .connecting: "正在连接…"
+        case .idle: "对话已结束"
+        case .connecting: "正在准备端侧语音"
         case .listening: "我在听"
-        case .thinking: "\(character.card.name) 正在想"
+        case .userSpeaking: "正在听你说"
+        case .thinking: "\(character.card.name) 正在回应"
         case .speaking: "\(character.card.name) 正在说"
+        case .reconnecting: "正在恢复对话"
         case .paused: "对话已暂停"
-        case .failed: "暂时无法开始"
+        case .failed: "实时语音已中断"
         }
     }
 
     private var statusDetail: String {
-        if session.isMuted { return "点按下方按钮即可继续" }
+        if session.isMuted { return "点按麦克风即可继续" }
         return switch session.phase {
-        case .idle: "这次对话已经保存到聊天记录"
-        case .connecting: "正在准备本地麦克风与语音识别"
-        case .listening: "自然说英语即可，不需要按住按钮"
-        case .thinking: "你可以继续说来打断这次回复"
-        case .speaking: "直接开口就能自然插话"
-        case .paused: "回到应用后会在这里恢复"
-        case .failed: "可在当前页面重试，仍失败时请检查网络与系统权限"
+        case .idle: "字幕已保存到聊天记录"
+        case .connecting: preparationDetail
+        case .listening: "自然说英语，不需要按住按钮"
+        case .userSpeaking: "说完后会自动接话"
+        case .thinking: "你随时可以继续开口"
+        case .speaking: "直接说话就能自然插话"
+        case .reconnecting: "正在保留当前字幕与上下文"
+        case .paused: "回到应用后会自动恢复"
+        case .failed: "可立即重试"
+        }
+    }
+
+    private var preparationDetail: String {
+        guard let preparation = session.preparation else {
+            return "正在加载随应用安装的端侧识别模型"
+        }
+        let percent = Int((preparation.progress * 100).rounded())
+        return switch preparation.stage {
+        case .streamingRecognition: "正在准备实时识别 · \(percent)%"
+        case .transcriptRefinement: "正在准备精确校对 · \(percent)%"
+        case .ready: "端侧识别已就绪"
+        }
+    }
+
+    private var durationText: String {
+        let minutes = session.elapsedSeconds / 60
+        let seconds = session.elapsedSeconds % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+
+    private func endConversation() {
+        Haptics.impact(.medium)
+        Task {
+            await session.stop()
+            dismiss()
+        }
+    }
+
+    private func handleAudioInterruption(_ notification: Notification) {
+        guard let rawType = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: rawType)
+        else { return }
+        switch type {
+        case .began:
+            Task { await session.suspend() }
+        case .ended:
+            let rawOptions = notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? UInt ?? 0
+            let shouldResume = AVAudioSession.InterruptionOptions(rawValue: rawOptions)
+                .contains(.shouldResume)
+            if shouldResume {
+                Task { await session.resume() }
+            }
+        @unknown default:
+            break
         }
     }
 }

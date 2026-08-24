@@ -47,6 +47,7 @@ actor PocketTTSStreamingPlayer {
     private var isPlaybackRunning = false
     private var hasBegunPlayback = false
     private var underrunCount = 0
+    private var finishWaiters: [CheckedContinuation<Void, Never>] = []
 
     init(sampleRate: Double = 24_000) throws {
         guard let format = AVAudioFormat(
@@ -127,6 +128,13 @@ actor PocketTTSStreamingPlayer {
         return startedNow
     }
 
+    func waitUntilFinished() async {
+        guard !(producerDidFinish && scheduledBufferCount == 0) else { return }
+        await withCheckedContinuation { continuation in
+            finishWaiters.append(continuation)
+        }
+    }
+
     func stop() {
         generation &+= 1
         playerNode.stop()
@@ -138,6 +146,7 @@ actor PocketTTSStreamingPlayer {
         isPlaybackRunning = false
         hasBegunPlayback = false
         underrunCount = 0
+        resumeFinishWaiters()
     }
 
     private func bufferDidFinish(generation completedGeneration: UInt64, sampleCount: Int) {
@@ -162,6 +171,13 @@ actor PocketTTSStreamingPlayer {
         playerNode.stop()
         engine.stop()
         isPlaybackRunning = false
+        resumeFinishWaiters()
+    }
+
+    private func resumeFinishWaiters() {
+        let waiters = finishWaiters
+        finishWaiters.removeAll()
+        waiters.forEach { $0.resume() }
     }
 
     @discardableResult

@@ -1,4 +1,5 @@
 import AVFoundation
+import Foundation
 import Testing
 @testable import SpeechKit
 
@@ -132,38 +133,50 @@ struct SpeechServiceTests {
         #expect(PocketTTSAssetSelection.voiceIDs.contains(first))
     }
 
-    @Test("Pocket 下载过滤掉未使用的大模型和音色")
-    func pocketAssetSelection() {
-        #expect(
-            PocketTTSAssetSelection.shouldSkip(
-                remotePath: "v2.1/english/flowlm_step.mlmodelc/weights/weight.bin"
+    @Test("语音引擎默认值、持久化和旧设置迁移保持稳定")
+    func voiceEnginePreferences() {
+        let suiteName = "SpeechServiceTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .pocketTTS)
+        #expect(VoiceEnginePreferences.recognitionEngine(defaults: defaults) == .enhancedOnDevice)
+
+        VoiceEnginePreferences.setSynthesisEngine(.system, defaults: defaults)
+        VoiceEnginePreferences.setRecognitionEngine(.system, defaults: defaults)
+        #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .system)
+        #expect(VoiceEnginePreferences.recognitionEngine(defaults: defaults) == .system)
+
+        defaults.removeObject(forKey: VoiceEnginePreferences.synthesisEngineKey)
+        defaults.set(true, forKey: "lingotrip.pocketTTS.enabled")
+        #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .pocketTTS)
+    }
+
+    @Test("试听请求可以临时覆盖全局 TTS 引擎")
+    func speechRequestEngineOverride() {
+        let request = SpeechRequest(text: "Hello", engine: .system)
+        #expect(request.engine == .system)
+    }
+
+    @Test("安装资源包含完整 Pocket TTS 关键权重")
+    func bundledPocketModelsAreComplete() throws {
+        let root = Bundle.main.bundleURL
+            .appendingPathComponent("LingoKit_SpeechKit.bundle", isDirectory: true)
+            .appendingPathComponent("PocketTTS/Models/pocket-tts-coreml/v2.1/english", isDirectory: true)
+        let weights: [String: Int] = [
+            "cond_prefill.mlmodelc/weights/weight.bin": 133_237_248,
+            "flow_decoder_fused.mlmodelc/weights/weight.bin": 19_012_608,
+            "flowlm_stepv2.mlmodelc/weights/weight.bin": 76_809_280,
+            "mimi_decoder.mlmodelc/weights/weight.bin": 41_768_256,
+            "constants_bin/text_embed_table.bin": 16_388_096,
+        ]
+
+        for (relativePath, expectedSize) in weights {
+            let attributes = try FileManager.default.attributesOfItem(
+                atPath: root.appendingPathComponent(relativePath).path
             )
-        )
-        #expect(
-            PocketTTSAssetSelection.shouldSkip(
-                remotePath: "v2.1/english/pocket_state.mlmodelc/weights/weight.bin"
-            )
-        )
-        #expect(
-            PocketTTSAssetSelection.shouldSkip(
-                remotePath: "v2.1/english/constants_bin/cosette.safetensors"
-            )
-        )
-        #expect(
-            !PocketTTSAssetSelection.shouldSkip(
-                remotePath: "v2.1/english/flowlm_stepv2.mlmodelc/weights/weight.bin"
-            )
-        )
-        #expect(
-            !PocketTTSAssetSelection.shouldSkip(
-                remotePath: "v2.1/english/constants_bin/mary.safetensors"
-            )
-        )
-        #expect(
-            !PocketTTSAssetSelection.shouldSkip(
-                remotePath: "v2.1/english/constants_bin/text_embed_table.bin"
-            )
-        )
+            #expect(attributes[.size] as? Int == expectedSize)
+        }
     }
 
     @Test("Pocket 流播只等待短缓冲并在收尾时立即开播")
@@ -193,33 +206,30 @@ struct SpeechServiceTests {
         )
     }
 
-    @Test("离线模型只有启用且预热完成才算激活")
-    func offlineModelStatusSemantics() {
-        let loading = OfflineSpeechModelStatus(
+    @Test("随包模型只有被选中且预热完成才算激活")
+    func bundledModelStatusSemantics() {
+        let loading = SpeechSynthesisEngineStatus(
             phase: .loading,
-            installedBytes: 300,
-            expectedDownloadBytes: 400,
-            isEnabled: true,
-            isInstalled: true
+            bundledModelBytes: 300,
+            selectedEngine: .pocketTTS,
+            isBundledModelAvailable: true
         )
-        let ready = OfflineSpeechModelStatus(
+        let ready = SpeechSynthesisEngineStatus(
             phase: .ready,
-            installedBytes: 300,
-            expectedDownloadBytes: 400,
-            isEnabled: true,
-            isInstalled: true
+            bundledModelBytes: 300,
+            selectedEngine: .pocketTTS,
+            isBundledModelAvailable: true
         )
-        let disabled = OfflineSpeechModelStatus(
-            phase: .installed,
-            installedBytes: 300,
-            expectedDownloadBytes: 400,
-            isEnabled: false,
-            isInstalled: true
+        let system = SpeechSynthesisEngineStatus(
+            phase: .available,
+            bundledModelBytes: 300,
+            selectedEngine: .system,
+            isBundledModelAvailable: true
         )
 
         #expect(loading.isBusy)
-        #expect(!loading.isActive)
-        #expect(ready.isActive)
-        #expect(!disabled.isActive)
+        #expect(!loading.isBundledEngineActive)
+        #expect(ready.isBundledEngineActive)
+        #expect(!system.isBundledEngineActive)
     }
 }

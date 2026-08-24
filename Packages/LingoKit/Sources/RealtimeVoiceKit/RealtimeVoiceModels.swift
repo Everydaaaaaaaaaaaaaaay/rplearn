@@ -1,12 +1,15 @@
 import Foundation
+import SpeechKit
 
-/// 实时语音页对外暴露的稳定状态；音频和网络细节不泄漏给 UI。
+/// 实时语音页的稳定状态。具体 ASR、LLM 和 TTS 实现不会泄漏给界面层。
 public enum RealtimeVoicePhase: Sendable, Equatable {
     case idle
     case connecting
     case listening
+    case userSpeaking
     case thinking
     case speaking
+    case reconnecting
     case paused
     case failed
 }
@@ -17,20 +20,23 @@ public enum RealtimeVoiceError: LocalizedError, Sendable, Equatable {
     case speechRecognizerUnavailable
     case audioInputUnavailable
     case audioSessionFailed
+    case modelPreparationFailed
     case emptyAIResponse
 
     public var errorDescription: String? {
         switch self {
         case .microphonePermissionDenied:
-            "需要麦克风权限才能开始语音对话。"
+            "需要麦克风权限才能开始实时语音。"
         case .speechRecognitionPermissionDenied:
-            "需要语音识别权限才能理解你说的话。"
+            "需要语音识别权限才能使用 Apple 系统识别。"
         case .speechRecognizerUnavailable:
-            "语音识别暂时不可用，请稍后再试。"
+            "Apple 系统识别当前不可用，请稍后重试或切换到内置识别模型。"
         case .audioInputUnavailable:
             "没有检测到可用的麦克风。"
         case .audioSessionFailed:
             "音频设备启动失败，请重新连接耳机或稍后再试。"
+        case .modelPreparationFailed:
+            "内置语音模型加载失败，请重新启动应用后再试。"
         case .emptyAIResponse:
             "角色这次没有生成可播放的回复。"
         }
@@ -41,12 +47,16 @@ public enum RealtimeVoiceError: LocalizedError, Sendable, Equatable {
     }
 }
 
-/// ChatFeature 提供的最小会话接口。实时语音核心只消费文本流，不感知聊天存储和模型供应商。
+/// ChatFeature 注入的最小会话接口。RealtimeVoiceKit 只消费文本流，
+/// 不感知 SwiftData、角色领域模型，也不绑定某个云端 LLM 供应商。
 public struct RealtimeVoiceConversationClient: Sendable {
     public typealias ReplyStream = @MainActor @Sendable (
         _ userText: String
     ) async throws -> AsyncThrowingStream<String, Error>
-    public typealias SaveAssistant = @MainActor @Sendable (_ spokenText: String) async -> Void
+    public typealias SaveAssistant = @MainActor @Sendable (
+        _ spokenText: String,
+        _ interrupted: Bool
+    ) async -> Void
 
     public let replyStream: ReplyStream
     public let saveAssistant: SaveAssistant
@@ -60,34 +70,38 @@ public struct RealtimeVoiceConversationClient: Sendable {
     }
 }
 
-/// 识别服务瞬时失败时的恢复节奏。调用方可按产品场景覆盖，默认仅做三次渐进式重试。
-public struct SpeechRecognitionRecoveryPolicy: Sendable, Equatable {
-    public var retryDelays: [Duration]
+/// 端侧识别模型的准备状态。模型随 App 安装，仅记录本地 Core ML 加载进度。
+public struct RealtimeModelPreparation: Sendable, Equatable {
+    public enum Stage: Sendable, Equatable {
+        case streamingRecognition
+        case transcriptRefinement
+        case ready
+    }
 
-    public init(
-        retryDelays: [Duration] = [
-            .milliseconds(350),
-            .milliseconds(900),
-            .milliseconds(1_800),
-        ]
-    ) {
-        self.retryDelays = retryDelays
+    public let stage: Stage
+    public let progress: Double
+
+    public init(stage: Stage, progress: Double) {
+        self.stage = stage
+        self.progress = min(max(progress, 0), 1)
     }
 }
 
 @MainActor
 public protocol RealtimeSpeechInput: AnyObject {
     var onLevel: (@MainActor @Sendable (Double) -> Void)? { get set }
+    var onSpeechStarted: (@MainActor @Sendable () -> Void)? { get set }
     var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)? { get set }
+    var onPreparation: (@MainActor @Sendable (RealtimeModelPreparation) -> Void)? { get set }
     var onFailure: (@MainActor @Sendable (String) -> Void)? { get set }
 
-    func start(localeIdentifier: String, contextualStrings: [String]) async throws
-    func restartRecognition()
+    func start() async throws
+    func finishCurrentTurn() async
     func setMuted(_ muted: Bool)
     func stop() async
 }
 
-/// 系统语音识别产生的累计文本。最终结果可立即提交，其余结果由会话层做短防抖。
+/// 流式识别的累计文本。Parakeet EOU 发布 partial，SenseVoice 发布校正后的 final。
 public struct RealtimeTranscription: Sendable, Equatable {
     public let text: String
     public let isFinal: Bool
@@ -102,22 +116,23 @@ public struct RealtimeTranscription: Sendable, Equatable {
 public protocol RealtimeSpeechOutput: AnyObject {
     var heardText: String { get }
 
-    func beginResponse(language: String)
+    func beginResponse(language: String, voiceHint: SpeechVoiceHint?) async
     func enqueue(_ text: String)
     func waitUntilFinished() async
-    @discardableResult func stop() -> String
+    @discardableResult func stop() async -> String
 }
 
-/// 一轮语音在最后一次有效转写后等待多久再提交。其余时序交给系统识别结果，不重复实现 VAD。
+/// partial 长时间不再变化时的兜底端点。优先采用 Parakeet EOU 的语义端点，
+/// 这里只避免极端噪声或模型漏报让一轮对话永远悬挂。
 public struct VoiceTurnPolicy: Sendable, Equatable {
-    public var endOfTurnDelay: Duration
+    public var fallbackEndOfTurnDelay: Duration
 
-    public init(endOfTurnDelay: Duration = .milliseconds(850)) {
-        self.endOfTurnDelay = endOfTurnDelay
+    public init(fallbackEndOfTurnDelay: Duration = .milliseconds(1_150)) {
+        self.fallbackEndOfTurnDelay = fallbackEndOfTurnDelay
     }
 }
 
-/// 把模型 token 流切成自然、可立即排入 TTS 的短句。
+/// 把 LLM token 流切成可以尽快送入 TTS、同时仍保持自然韵律的短句。
 public struct StreamingSpeechSegmenter: Sendable {
     private var buffer: [Character] = []
     private var scannedCharacterCount = 0
@@ -126,10 +141,10 @@ public struct StreamingSpeechSegmenter: Sendable {
     private let maximumWordsWithoutPunctuation: Int
 
     private static let sentencePunctuation: Set<Character> = [
-        ".", "?", "!", ";", "\n", "。", "？", "！", "；",
+        ".", "?", "!", ";", ":", "\n", "。", "？", "！", "；", "：",
     ]
 
-    public init(maximumWordsWithoutPunctuation: Int = 12) {
+    public init(maximumWordsWithoutPunctuation: Int = 7) {
         self.maximumWordsWithoutPunctuation = max(4, maximumWordsWithoutPunctuation)
     }
 
@@ -144,10 +159,7 @@ public struct StreamingSpeechSegmenter: Sendable {
         if let lastPunctuationIndex = punctuationIndices.last {
             var segmentStart = buffer.startIndex
             for punctuationIndex in punctuationIndices {
-                appendSanitized(
-                    buffer[segmentStart...punctuationIndex],
-                    to: &result
-                )
+                appendSanitized(buffer[segmentStart...punctuationIndex], to: &result)
                 segmentStart = buffer.index(after: punctuationIndex)
             }
             buffer.removeFirst(buffer.distance(
@@ -162,17 +174,12 @@ public struct StreamingSpeechSegmenter: Sendable {
     }
 
     public mutating func finish() -> [String] {
-        var segments: [String] = []
         let remainder = SpokenTextSanitizer.sanitize(String(buffer))
         buffer.removeAll(keepingCapacity: true)
         resetWordScan()
-        if !remainder.isEmpty {
-            segments.append(remainder)
-        }
-        return segments
+        return remainder.isEmpty ? [] : [remainder]
     }
 
-    /// 只在单词后的空白处切分，避免模型 token 恰好落在单词中间时读出残词。
     private mutating func drainWordLimitedSegments(into result: inout [String]) {
         var segmentStart = buffer.startIndex
         var index = buffer.index(buffer.startIndex, offsetBy: scannedCharacterCount)
@@ -212,9 +219,7 @@ public struct StreamingSpeechSegmenter: Sendable {
         to result: inout [String]
     ) where S.Element == Character {
         let spoken = SpokenTextSanitizer.sanitize(String(characters))
-        if !spoken.isEmpty {
-            result.append(spoken)
-        }
+        if !spoken.isEmpty { result.append(spoken) }
     }
 }
 

@@ -1,17 +1,18 @@
-import AVFoundation
+@preconcurrency import AVFoundation
 import CoreKit
 import Foundation
 import Speech
 import SpeechKit
 
-private final class RealtimeAudioInputRuntime: @unchecked Sendable {
+/// 音频 Tap 与 Speech request 由不同线程访问，用锁把非 Sendable 的 Apple 类型
+/// 封装在模块内部，Feature 层只接触主线程回调。
+private final class AppleSpeechInputRuntime: @unchecked Sendable {
     private let lock = NSLock()
     private var request: SFSpeechAudioBufferRecognitionRequest?
-    private var lastLevelReport: TimeInterval = 0
-    private let reportLevel: @Sendable (Double) -> Void
+    private let receiveLevel: @Sendable (Double) -> Void
 
-    init(reportLevel: @escaping @Sendable (Double) -> Void) {
-        self.reportLevel = reportLevel
+    init(receiveLevel: @escaping @Sendable (Double) -> Void) {
+        self.receiveLevel = receiveLevel
     }
 
     func replaceRequest(_ request: SFSpeechAudioBufferRecognitionRequest?) {
@@ -25,40 +26,52 @@ private final class RealtimeAudioInputRuntime: @unchecked Sendable {
         request?.append(buffer)
         lock.unlock()
 
-        let now = ProcessInfo.processInfo.systemUptime
-        guard now - lastLevelReport >= 0.1,
-              let channel = buffer.floatChannelData?.pointee else { return }
-        lastLevelReport = now
+        guard let channel = buffer.floatChannelData?[0] else { return }
         let samples = UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength))
-        reportLevel(AudioLevelMeter.level(samples: samples))
+        receiveLevel(AudioLevelMeter.level(samples: samples))
     }
 }
 
-/// Apple Speech 的持续输入实现。音频始终留在端上，只向外发布文本和音量。
+/// Apple Speech 的实时输入实现。优先使用设备上的 Apple 识别模型；当前语言未安装
+/// 端侧模型时允许 Apple 服务兜底，便于与完全离线的增强模型做真实 A/B 对比。
 @MainActor
 public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     public var onLevel: (@MainActor @Sendable (Double) -> Void)?
+    public var onSpeechStarted: (@MainActor @Sendable () -> Void)?
     public var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)?
+    public var onPreparation: (@MainActor @Sendable (RealtimeModelPreparation) -> Void)?
     public var onFailure: (@MainActor @Sendable (String) -> Void)?
 
     private let audioSession: AudioSessionCoordinator
+    private let localeIdentifier: String
+    private let contextualStrings: [String]
+
     private var recognizer: SFSpeechRecognizer?
-    private var engine: AVAudioEngine?
-    private var runtime: RealtimeAudioInputRuntime?
+    private var audioEngine: AVAudioEngine?
+    private var runtime: AppleSpeechInputRuntime?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private var recognitionGeneration = UUID()
+    private var restartTask: Task<Void, Never>?
     private var isRunning = false
     private var isMuted = false
-    private var contextualStrings: [String] = []
     private var prefersOnDeviceRecognition = true
     private var activeRequestUsesOnDeviceRecognition = false
+    private var speechGateOpen = false
+    private var consecutiveVoiceChunks = 0
+    private var latestTranscript = ""
 
-    public init(audioSession: AudioSessionCoordinator) {
+    public init(
+        audioSession: AudioSessionCoordinator,
+        localeIdentifier: String = "en-US",
+        contextualStrings: [String] = []
+    ) {
         self.audioSession = audioSession
+        self.localeIdentifier = localeIdentifier
+        self.contextualStrings = Array(contextualStrings.prefix(100))
     }
 
-    public func start(localeIdentifier: String, contextualStrings: [String]) async throws {
+    public func start() async throws {
         guard !isRunning else { return }
         guard await Self.requestMicrophonePermission() else {
             throw RealtimeVoiceError.microphonePermissionDenied
@@ -67,10 +80,9 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             throw RealtimeVoiceError.speechRecognitionPermissionDenied
         }
 
-        let recognizer = SFSpeechRecognizer(locale: Locale(identifier: localeIdentifier))
-        guard let recognizer, recognizer.isAvailable else {
-            throw RealtimeVoiceError.speechRecognizerUnavailable
-        }
+        guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: localeIdentifier)),
+              recognizer.isAvailable
+        else { throw RealtimeVoiceError.speechRecognizerUnavailable }
 
         do {
             try await audioSession.activate(.conversation)
@@ -81,61 +93,56 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             do {
                 try inputNode.setVoiceProcessingEnabled(true)
             } catch {
-                // 模拟器并不总提供 VoiceProcessingIO；真机仍要求启用。
                 Log.speech.warning("模拟器无法启用实时语音处理：\(error.localizedDescription)")
             }
             #else
             try inputNode.setVoiceProcessingEnabled(true)
             #endif
 
-            let inputFormat = inputNode.outputFormat(forBus: 0)
-            guard VoiceRecorder.isRecordableInputFormat(inputFormat) else {
+            let format = inputNode.outputFormat(forBus: 0)
+            guard VoiceRecorder.isRecordableInputFormat(format) else {
                 throw RealtimeVoiceError.audioInputUnavailable
             }
 
-            let runtime = RealtimeAudioInputRuntime { [weak self] level in
-                Task { @MainActor [weak self] in
-                    self?.onLevel?(level)
-                }
+            let runtime = AppleSpeechInputRuntime { [weak self] level in
+                Task { @MainActor [weak self] in self?.receiveAudioLevel(level) }
             }
-            inputNode.installTap(
-                onBus: 0,
-                bufferSize: 1_024,
-                format: inputFormat
-            ) { buffer, _ in
+            inputNode.installTap(onBus: 0, bufferSize: 1_024, format: format) { buffer, _ in
                 runtime.receive(buffer)
             }
 
             self.recognizer = recognizer
-            self.engine = engine
+            self.audioEngine = engine
             self.runtime = runtime
-            self.contextualStrings = Array(contextualStrings.prefix(100))
-            self.prefersOnDeviceRecognition = true
-            self.isRunning = true
-            self.isMuted = false
+            isRunning = true
+            isMuted = false
             startRecognitionTask()
             engine.prepare()
             try engine.start()
+            onPreparation?(.init(stage: .ready, progress: 1))
         } catch let error as RealtimeVoiceError {
             await teardown()
             throw error
         } catch {
-            Log.speech.error("实时语音输入启动失败：\(error.localizedDescription)")
+            Log.speech.error("Apple 实时语音输入启动失败：\(error.localizedDescription)")
             await teardown()
             throw RealtimeVoiceError.audioSessionFailed
         }
     }
 
-    public func restartRecognition() {
-        guard isRunning, !isMuted else { return }
-        startRecognitionTask()
+    public func finishCurrentTurn() async {
+        guard isRunning, !isMuted, let recognitionRequest else { return }
+        runtime?.replaceRequest(nil)
+        recognitionRequest.endAudio()
     }
 
     public func setMuted(_ muted: Bool) {
         guard isMuted != muted else { return }
         isMuted = muted
+        resetSpeechGate()
         if muted {
             stopRecognitionTask()
+            onLevel?(0)
         } else if isRunning {
             startRecognitionTask()
         }
@@ -147,10 +154,11 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
 
     private func startRecognitionTask() {
         stopRecognitionTask()
-        guard let recognizer else { return }
+        guard isRunning, !isMuted, let recognizer else { return }
 
         recognitionGeneration = UUID()
         let generation = recognitionGeneration
+        latestTranscript = ""
         let request = SFSpeechAudioBufferRecognitionRequest()
         request.shouldReportPartialResults = true
         request.addsPunctuation = true
@@ -158,9 +166,7 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         request.contextualStrings = contextualStrings
         activeRequestUsesOnDeviceRecognition = prefersOnDeviceRecognition
             && recognizer.supportsOnDeviceRecognition
-        if activeRequestUsesOnDeviceRecognition {
-            request.requiresOnDeviceRecognition = true
-        }
+        request.requiresOnDeviceRecognition = activeRequestUsesOnDeviceRecognition
         recognitionRequest = request
         runtime?.replaceRequest(request)
 
@@ -186,21 +192,46 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         generation: UUID
     ) {
         guard generation == recognitionGeneration, isRunning, !isMuted else { return }
-        if let transcript, !transcript.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            onTranscription?(RealtimeTranscription(text: transcript, isFinal: isFinal))
+        let normalized = transcript?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if !normalized.isEmpty {
+            latestTranscript = normalized
+            onTranscription?(.init(text: normalized, isFinal: isFinal))
         }
-        if let failure, !isFinal {
-            if activeRequestUsesOnDeviceRecognition {
-                // 某些真机虽然声明支持端上识别，但对应语言模型尚未下载；下一次恢复允许系统服务兜底。
-                prefersOnDeviceRecognition = false
-                Log.speech.info("端上语音识别不可用，下一次尝试切换系统识别服务")
-            }
-            Log.speech.warning("实时语音识别中断：\(failure)")
-            onFailure?(failure)
+
+        if isFinal {
+            resetSpeechGate()
+            scheduleRecognitionRestart()
+            return
+        }
+
+        guard let failure else { return }
+        if activeRequestUsesOnDeviceRecognition {
+            // 有些设备声明支持端侧识别，但当前语言模型尚未安装。
+            prefersOnDeviceRecognition = false
+            Log.speech.info("Apple 端侧识别不可用，下一轮改用系统识别服务")
+        }
+        if !latestTranscript.isEmpty {
+            onTranscription?(.init(text: latestTranscript, isFinal: true))
+            resetSpeechGate()
+        }
+        Log.speech.warning("Apple 实时语音识别中断并自动恢复：\(failure)")
+        onFailure?(failure)
+        scheduleRecognitionRestart()
+    }
+
+    private func scheduleRecognitionRestart() {
+        restartTask?.cancel()
+        restartTask = Task { [weak self] in
+            try? await Task.sleep(for: .milliseconds(120))
+            guard !Task.isCancelled else { return }
+            self?.startRecognitionTask()
         }
     }
 
     private func stopRecognitionTask() {
+        restartTask?.cancel()
+        restartTask = nil
         runtime?.replaceRequest(nil)
         recognitionRequest?.endAudio()
         recognitionTask?.cancel()
@@ -208,34 +239,64 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         recognitionRequest = nil
         activeRequestUsesOnDeviceRecognition = false
         recognitionGeneration = UUID()
+        latestTranscript = ""
+    }
+
+    private func receiveAudioLevel(_ level: Double) {
+        guard isRunning, !isMuted else { return }
+        onLevel?(level)
+        if level >= 0.07 {
+            consecutiveVoiceChunks += 1
+        } else if level < 0.035 {
+            consecutiveVoiceChunks = 0
+        }
+        guard !speechGateOpen, consecutiveVoiceChunks >= 2 else { return }
+        speechGateOpen = true
+        onSpeechStarted?()
+    }
+
+    private func resetSpeechGate() {
+        speechGateOpen = false
+        consecutiveVoiceChunks = 0
     }
 
     private func teardown() async {
         isRunning = false
         stopRecognitionTask()
-        if let engine {
-            engine.inputNode.removeTap(onBus: 0)
-            engine.stop()
-            try? engine.inputNode.setVoiceProcessingEnabled(false)
+        if let audioEngine {
+            audioEngine.inputNode.removeTap(onBus: 0)
+            audioEngine.stop()
+            try? audioEngine.inputNode.setVoiceProcessingEnabled(false)
         }
-        engine = nil
+        audioEngine = nil
         runtime = nil
         recognizer = nil
+        resetSpeechGate()
         await audioSession.deactivate()
     }
 
     private nonisolated static func requestMicrophonePermission() async -> Bool {
-        await withCheckedContinuation { continuation in
-            AVAudioApplication.requestRecordPermission { granted in
-                continuation.resume(returning: granted)
+        switch AVAudioApplication.shared.recordPermission {
+        case .granted:
+            return true
+        case .denied:
+            return false
+        case .undetermined:
+            return await withCheckedContinuation { continuation in
+                AVAudioApplication.requestRecordPermission { continuation.resume(returning: $0) }
             }
+        @unknown default:
+            return false
         }
     }
 
     private nonisolated static func requestSpeechAuthorization() async -> Bool {
-        await withCheckedContinuation { continuation in
-            SFSpeechRecognizer.requestAuthorization { status in
-                continuation.resume(returning: status == .authorized)
+        let status = SFSpeechRecognizer.authorizationStatus()
+        if status == .authorized { return true }
+        if status != .notDetermined { return false }
+        return await withCheckedContinuation { continuation in
+            SFSpeechRecognizer.requestAuthorization {
+                continuation.resume(returning: $0 == .authorized)
             }
         }
     }
