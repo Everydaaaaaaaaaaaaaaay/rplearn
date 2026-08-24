@@ -43,15 +43,37 @@ private struct RecognitionUpdate: Sendable {
 /// FluidAudio 的双层端侧识别管线：
 /// - Parakeet EOU 120M / 320ms 负责低延迟 partial 与语义端点；
 /// - SenseVoice Small INT8 只在完整话轮上跑一次，负责更精确的最终文本。
+private actor FluidTranscriptRefinementEngine {
+    private var manager: SenseVoiceManager?
+
+    /// SenseVoice 的同步 Core ML 初始化可能持续很久，因此让它占用独立 actor。
+    /// 实时 Parakeet actor 只会在这里完全就绪后调用 transcribe。
+    func prepare() throws {
+        guard manager == nil else { return }
+        let resources = try RealtimeASRModelResources.bundled()
+        let models = try SenseVoiceModels.load(
+            from: resources.senseVoiceSmallINT8,
+            precision: .int8
+        )
+        manager = SenseVoiceManager(models: models)
+    }
+
+    func transcribe(audio: [Float]) async throws -> String? {
+        guard let manager else { return nil }
+        return try await manager.transcribe(audio: audio)
+    }
+}
+
 private actor FluidRealtimeRecognitionEngine {
     static let shared = FluidRealtimeRecognitionEngine()
 
     typealias PreparationObserver = @Sendable (RealtimeModelPreparation) -> Void
 
     private let converter = AudioConverter(sampleRate: 16_000)
+    private let transcriptRefiner = FluidTranscriptRefinementEngine()
     private var streaming: StreamingEouAsrManager?
-    private var refiner: SenseVoiceManager?
     private var isPrepared = false
+    private var isTranscriptRefinerPrepared = false
     private var preparationTask: Task<Void, Error>?
     private var preparation = RealtimeModelPreparation(
         stage: .streamingRecognition,
@@ -77,7 +99,7 @@ private actor FluidRealtimeRecognitionEngine {
         if let preparationTask {
             task = preparationTask
         } else {
-            let newTask = Task { try await self.loadModels() }
+            let newTask = Task { try await self.loadStreamingModels() }
             preparationTask = newTask
             task = newTask
         }
@@ -90,7 +112,7 @@ private actor FluidRealtimeRecognitionEngine {
         }
     }
 
-    private func loadModels() async throws {
+    private func loadStreamingModels() async throws {
         let resources = try RealtimeASRModelResources.bundled()
         publishPreparation(stage: .streamingRecognition, progress: 0.05)
         let streaming = StreamingEouAsrManager(
@@ -98,18 +120,16 @@ private actor FluidRealtimeRecognitionEngine {
             eouDebounceMs: 640
         )
         try await streaming.loadModels(from: resources.parakeetEOU320)
-        publishPreparation(stage: .transcriptRefinement, progress: 0.52)
-
-        let senseVoiceModels = try SenseVoiceModels.load(
-            from: resources.senseVoiceSmallINT8,
-            precision: .int8
-        )
-        let refiner = SenseVoiceManager(models: senseVoiceModels)
 
         self.streaming = streaming
-        self.refiner = refiner
         isPrepared = true
         publishPreparation(stage: .ready, progress: 1)
+    }
+
+    func prepareTranscriptRefinement() async throws {
+        guard !isTranscriptRefinerPrepared else { return }
+        try await transcriptRefiner.prepare()
+        isTranscriptRefinerPrepared = true
     }
 
     private func publishPreparation(
@@ -166,9 +186,9 @@ private actor FluidRealtimeRecognitionEngine {
     private func refine(fallback: String) async throws -> String? {
         let fallback = normalize(fallback)
         guard !turnSamples.isEmpty else { return fallback.isEmpty ? nil : fallback }
-        guard let refiner else { return fallback.isEmpty ? nil : fallback }
+        guard isTranscriptRefinerPrepared else { return fallback.isEmpty ? nil : fallback }
 
-        let refined = normalize(try await refiner.transcribe(audio: turnSamples))
+        let refined = normalize(try await transcriptRefiner.transcribe(audio: turnSamples) ?? "")
         if !refined.isEmpty { return refined }
         return fallback.isEmpty ? nil : fallback
     }
@@ -228,12 +248,24 @@ private actor FluidRealtimeRecognitionEngine {
 /// App 启动后按当前设置预热端侧 ASR。通话入口与这里共享同一个加载任务和模型实例，
 /// 因而即使用户在预热尚未结束时立刻拨打，也只会等待余下部分而不会重复加载。
 public enum RealtimeVoiceModelPrewarmer {
+    /// 首要准备只加载低延迟流式模型，通话不再等待耗时很长的精修模型。
     public static func prepareForLaunch() async {
         guard VoiceEnginePreferences.recognitionEngine() == .enhancedOnDevice else { return }
         do {
             try await FluidRealtimeRecognitionEngine.shared.prepare { _ in }
         } catch {
             Log.speech.error("端侧实时语音模型预热失败：\(error.localizedDescription)")
+        }
+    }
+
+    /// 在关键的 ASR/TTS 都已可用后再加载精修模型。其独立 actor 不会阻塞
+    /// Parakeet 的实时音频处理；就绪前完整话轮直接使用 Parakeet 最终稿。
+    public static func prepareTranscriptRefinementForLaunch() async {
+        guard VoiceEnginePreferences.recognitionEngine() == .enhancedOnDevice else { return }
+        do {
+            try await FluidRealtimeRecognitionEngine.shared.prepareTranscriptRefinement()
+        } catch {
+            Log.speech.error("SenseVoice 精修模型预热失败：\(error.localizedDescription)")
         }
     }
 }

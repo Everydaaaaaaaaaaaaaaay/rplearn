@@ -69,6 +69,7 @@ final class AppEnvironment {
         Task.detached(priority: .userInitiated) {
             await RealtimeVoiceModelPrewarmer.prepareForLaunch()
             await speech.prepareForLaunch()
+            await RealtimeVoiceModelPrewarmer.prepareTranscriptRefinementForLaunch()
         }
 
         let keychain = KeychainStore()
