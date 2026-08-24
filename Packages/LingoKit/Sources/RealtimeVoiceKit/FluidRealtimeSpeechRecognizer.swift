@@ -16,6 +16,25 @@ private enum RealtimeInputCommand: Sendable {
     case reset
 }
 
+/// AVAudioEngine 会在自己的实时音频队列调用 tap。把闭包在主线程隔离类型之外创建，
+/// 避免 Swift 6 将它错误地标记为 MainActor 闭包并在首帧音频到达时触发断言。
+private func makeRealtimeAudioTap(
+    continuation: AsyncStream<RealtimeInputCommand>.Continuation,
+    sampleRate: Double
+) -> AVAudioNodeTapBlock {
+    { buffer, _ in
+        guard let channel = buffer.floatChannelData?[0] else { return }
+        let values = UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength))
+        let samples = Array(values)
+        let level = AudioLevelMeter.level(samples: values)
+        continuation.yield(.audio(.init(
+            samples: samples,
+            sampleRate: sampleRate,
+            level: level
+        )))
+    }
+}
+
 private struct RecognitionUpdate: Sendable {
     let partial: String?
     let final: String?
@@ -274,17 +293,16 @@ public final class FluidRealtimeSpeechRecognizer: RealtimeSpeechInput {
             }
         }
 
-        inputNode.installTap(onBus: 0, bufferSize: 2_048, format: format) { buffer, _ in
-            guard let channel = buffer.floatChannelData?[0] else { return }
-            let values = UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength))
-            let samples = Array(values)
-            let level = AudioLevelMeter.level(samples: values)
-            continuation.yield(.audio(.init(
-                samples: samples,
-                sampleRate: format.sampleRate,
-                level: level
-            )))
-        }
+        let audioTap = makeRealtimeAudioTap(
+            continuation: continuation,
+            sampleRate: format.sampleRate
+        )
+        inputNode.installTap(
+            onBus: 0,
+            bufferSize: 2_048,
+            format: format,
+            block: audioTap
+        )
 
         audioEngine = engine
         engine.prepare()
