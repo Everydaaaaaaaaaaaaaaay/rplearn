@@ -1,4 +1,5 @@
 import AVFoundation
+import CoreKit
 import Foundation
 import Testing
 @testable import SpeechKit
@@ -177,6 +178,63 @@ struct SpeechServiceTests {
             )
             #expect(attributes[.size] as? Int == expectedSize)
         }
+    }
+
+    @Test("运行时模型校验允许安装器加入非关键文件")
+    func runtimeModelValidationAllowsInstallerMetadata() async throws {
+        let fileManager = FileManager.default
+        let modelDirectory = fileManager.temporaryDirectory
+            .appendingPathComponent("PocketTTSValidation-\(UUID().uuidString)", isDirectory: true)
+        defer { try? fileManager.removeItem(at: modelDirectory) }
+        let root = modelDirectory.appendingPathComponent(
+            "Models/pocket-tts-coreml/v2.1/english",
+            isDirectory: true
+        )
+
+        let requiredFiles: [String: Int64] = [
+            "cond_prefill.mlmodelc/weights/weight.bin": 133_237_248,
+            "flow_decoder_fused.mlmodelc/weights/weight.bin": 19_012_608,
+            "flowlm_stepv2.mlmodelc/weights/weight.bin": 76_809_280,
+            "mimi_decoder.mlmodelc/weights/weight.bin": 41_768_256,
+            "constants_bin/text_embed_table.bin": 16_388_096,
+        ]
+        for (relativePath, byteCount) in requiredFiles {
+            let url = root.appendingPathComponent(relativePath)
+            try fileManager.createDirectory(
+                at: url.deletingLastPathComponent(),
+                withIntermediateDirectories: true
+            )
+            #expect(fileManager.createFile(atPath: url.path, contents: Data()))
+            let handle = try FileHandle(forWritingTo: url)
+            try handle.truncate(atOffset: UInt64(byteCount))
+            try handle.close()
+        }
+
+        let constants = root.appendingPathComponent("constants_bin", isDirectory: true)
+        let voiceIDs = [
+            "alba", "anna", "bill_boerst", "mary", "michael", "peter_yearsley",
+            "stuart_bell",
+        ]
+        for name in ["tokenizer.model", "bos_emb.bin"]
+            + voiceIDs.map({ "\($0).safetensors" }) {
+            let url = constants.appendingPathComponent(name)
+            try fileManager.createDirectory(
+                at: url.deletingLastPathComponent(),
+                withIntermediateDirectories: true
+            )
+            #expect(fileManager.createFile(atPath: url.path, contents: Data([0])))
+        }
+
+        let installerMetadata = root.appendingPathComponent("installer-metadata.plist")
+        #expect(fileManager.createFile(atPath: installerMetadata.path, contents: Data([0])))
+
+        let service = AdaptiveSpeechService(
+            audioSession: AudioSessionCoordinator(),
+            modelDirectory: modelDirectory
+        )
+        let status = await service.synthesisEngineStatus()
+        #expect(status.phase == BundledSpeechModelPhase.available)
+        #expect(status.isBundledModelAvailable)
     }
 
     @Test("Pocket 流播只等待短缓冲并在收尾时立即开播")

@@ -48,8 +48,6 @@ public protocol SpeechSynthesisEngineManaging: Sendable {
 
 /// 随包固定模型版本只保留产品实际使用的 INT8 管线和 7 套音色。
 enum PocketTTSAssetSelection {
-    static let expectedBundledBytes: Int64 = 331_440_634
-    static let expectedFileCount = 30
     static let requiredFileSizes: [String: Int64] = [
         "cond_prefill.mlmodelc/weights/weight.bin": 133_237_248,
         "flow_decoder_fused.mlmodelc/weights/weight.bin": 19_012_608,
@@ -66,7 +64,45 @@ enum PocketTTSAssetSelection {
         "peter_yearsley",
         "stuart_bell",
     ]
+}
 
+enum PocketTTSRuntimeAssetValidator {
+    /// 安装后的 App Bundle 可能被签名、瘦身或补充元数据，因此运行时不能再用
+    /// “目录文件数/总字节必须完全相等”判定模型损坏。这里仅核对推理真正需要
+    /// 的模型目录、常量、音色和大权重；发布前的精确哈希仍由构建脚本负责。
+    static func isRuntimeUsable(
+        at languageRoot: URL,
+        fileManager: FileManager = .default
+    ) -> Bool {
+        let requiredModels = ModelNames.PocketTTS.requiredModels(
+            precision: .int8,
+            placement: .gpu
+        )
+        guard requiredModels.allSatisfy({
+            fileManager.fileExists(atPath: languageRoot.appendingPathComponent($0).path)
+        }) else { return false }
+
+        let constants = languageRoot.appendingPathComponent("constants_bin", isDirectory: true)
+        let requiredConstants = ["text_embed_table.bin", "tokenizer.model", "bos_emb.bin"]
+        guard requiredConstants.allSatisfy({
+            fileManager.fileExists(atPath: constants.appendingPathComponent($0).path)
+        }) else { return false }
+
+        guard PocketTTSAssetSelection.voiceIDs.allSatisfy({
+            fileManager.fileExists(
+                atPath: constants.appendingPathComponent("\($0).safetensors").path
+            )
+        }) else { return false }
+
+        return PocketTTSAssetSelection.requiredFileSizes.allSatisfy {
+            relativePath, expectedSize in
+            guard let attributes = try? fileManager.attributesOfItem(
+                atPath: languageRoot.appendingPathComponent(relativePath).path
+            ), let size = attributes[.size] as? NSNumber
+            else { return false }
+            return size.int64Value == expectedSize
+        }
+    }
 }
 
 /// 角色 → Pocket 预设音色。口音先分英/美，再按角色稳定 ID 在同类音色中取值，
@@ -497,32 +533,10 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
     }
 
     private var isModelComplete: Bool {
-        let requiredModels = ModelNames.PocketTTS.requiredModels(
-            precision: .int8,
-            placement: .gpu
+        PocketTTSRuntimeAssetValidator.isRuntimeUsable(
+            at: languageRoot,
+            fileManager: fileManager
         )
-        guard requiredModels.allSatisfy({
-            fileManager.fileExists(atPath: languageRoot.appendingPathComponent($0).path)
-        }) else { return false }
-
-        let constants = languageRoot.appendingPathComponent("constants_bin", isDirectory: true)
-        let requiredConstants = ["text_embed_table.bin", "tokenizer.model", "bos_emb.bin"]
-        guard requiredConstants.allSatisfy({
-            fileManager.fileExists(atPath: constants.appendingPathComponent($0).path)
-        }) else { return false }
-
-        guard PocketTTSAssetSelection.voiceIDs.allSatisfy({
-            fileManager.fileExists(
-                atPath: constants.appendingPathComponent("\($0).safetensors").path
-            )
-        }) else { return false }
-
-        guard PocketTTSAssetSelection.requiredFileSizes.allSatisfy({ relativePath, expectedSize in
-            regularFileSize(languageRoot.appendingPathComponent(relativePath)) == expectedSize
-        }) else { return false }
-
-        return regularFileCount(languageRoot) == PocketTTSAssetSelection.expectedFileCount
-            && directorySize(languageRoot) == PocketTTSAssetSelection.expectedBundledBytes
     }
 
     private var selectedEngine: SpeechSynthesisEngine {
@@ -544,29 +558,6 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
             total += Int64(values.fileSize ?? 0)
         }
         return total
-    }
-
-    private func regularFileCount(_ directory: URL) -> Int {
-        guard let enumerator = fileManager.enumerator(
-            at: directory,
-            includingPropertiesForKeys: [.isRegularFileKey],
-            options: [.skipsHiddenFiles]
-        ) else { return 0 }
-
-        var count = 0
-        for case let fileURL as URL in enumerator {
-            if (try? fileURL.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true {
-                count += 1
-            }
-        }
-        return count
-    }
-
-    private func regularFileSize(_ fileURL: URL) -> Int64? {
-        guard let values = try? fileURL.resourceValues(
-            forKeys: [.isRegularFileKey, .fileSizeKey]
-        ), values.isRegularFile == true, let size = values.fileSize else { return nil }
-        return Int64(size)
     }
 
     private func updateStatus(
