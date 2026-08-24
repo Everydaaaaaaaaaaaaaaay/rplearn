@@ -38,14 +38,19 @@ let serviceTargets: [Target] = [
         dependencies: [
             module("CoreKit"),
             .product(name: "FluidAudio", package: "FluidAudio"),
-        ]
+        ],
+        // Pocket TTS 随 App 安装，保持 FluidAudio 约定的 Models/repo/version 目录结构。
+        resources: [.copy("Resources/PocketTTS")]
     ),
     .target(
         name: "RealtimeVoiceKit",
         dependencies: [
             module("CoreKit"),
             module("SpeechKit"),
-        ]
+            .product(name: "FluidAudio", package: "FluidAudio"),
+        ],
+        // 保留已编译 Core ML 目录结构，安装后直接从 Bundle 加载，不触发网络下载。
+        resources: [.copy("Resources/RealtimeASRModels")]
     ),
     .target(
         name: "MediaKit",

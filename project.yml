@@ -19,6 +19,10 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "18.0"
+    preBuildScripts:
+      - name: Verify Bundled Voice Models
+        script: '"$SRCROOT/Scripts/verify-bundled-voice-models.sh"'
+        basedOnDependencyAnalysis: false
     configFiles:
       Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
