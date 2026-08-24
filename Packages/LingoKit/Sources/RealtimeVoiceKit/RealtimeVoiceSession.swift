@@ -3,7 +3,7 @@ import Foundation
 import Observation
 import SpeechKit
 
-/// 低成本实时语音编排器：端侧 ASR → 现有流式 LLM → 端侧流式 TTS。
+/// 低成本实时语音编排器：Apple ASR → 现有流式 LLM → 端侧流式 TTS。
 /// 状态机、插话、回合端点和持久化只在这里协调，模型实现均位于协议后方。
 @MainActor
 @Observable
@@ -14,7 +14,6 @@ public final class RealtimeVoiceSession {
     public private(set) var assistantTranscript = ""
     public private(set) var activityLevel = 0.0
     public private(set) var elapsedSeconds = 0
-    public private(set) var preparation: RealtimeModelPreparation?
     public private(set) var errorMessage: String?
     public private(set) var requiresSettings = false
     public private(set) var isMuted = false
@@ -44,15 +43,10 @@ public final class RealtimeVoiceSession {
         voiceHint: SpeechVoiceHint? = nil,
         turnPolicy: VoiceTurnPolicy = .init()
     ) {
-        switch VoiceEnginePreferences.recognitionEngine() {
-        case .system:
-            self.input = AppleRealtimeSpeechRecognizer(
-                audioSession: audioSession,
-                localeIdentifier: voiceLanguage
-            )
-        case .enhancedOnDevice:
-            self.input = FluidRealtimeSpeechRecognizer(audioSession: audioSession)
-        }
+        self.input = AppleRealtimeSpeechRecognizer(
+            audioSession: audioSession,
+            localeIdentifier: voiceLanguage
+        )
         self.output = AdaptiveRealtimeSpeechOutput(speech: speech)
         self.conversation = conversation
         self.voiceLanguage = voiceLanguage
@@ -87,7 +81,6 @@ public final class RealtimeVoiceSession {
         errorMessage = nil
         requiresSettings = false
         finalizationInProgress = false
-        preparation = nil
 
         do {
             try await input.start()
@@ -182,9 +175,6 @@ public final class RealtimeVoiceSession {
         input.onSpeechStarted = { [weak self] in self?.receiveSpeechStarted() }
         input.onTranscription = { [weak self] transcription in
             self?.receiveTranscription(transcription)
-        }
-        input.onPreparation = { [weak self] preparation in
-            self?.preparation = preparation
         }
         input.onFailure = { [weak self] failure in
             guard let self, self.phase != .idle, self.phase != .paused else { return }
@@ -416,7 +406,6 @@ public final class RealtimeVoiceSession {
         assistantTranscript = ""
         activityLevel = 0
         rawInputLevel = 0
-        preparation = nil
         errorMessage = nil
         requiresSettings = false
         finalizationInProgress = false

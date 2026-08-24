@@ -7,7 +7,6 @@ import Foundation
 import LLMKit
 import MediaKit
 import PersistenceKit
-import RealtimeVoiceKit
 import SpeechKit
 import SwiftData
 import SyncKit
@@ -60,16 +59,13 @@ final class AppEnvironment {
     let economyService: EconomyService
 
     init() {
-        // 只预热用户当前选中的端侧引擎。ASR 与 TTS 顺序加载，避免两套 Core ML
-        // 模型同时编译造成内存尖峰；通话入口会复用这里的 ASR 任务和模型实例。
+        // 仅当用户选择 Pocket TTS 时后台预热；实时识别统一使用 Apple 系统能力。
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
         let speech = AdaptiveSpeechService(audioSession: audioSession)
         self.speech = speech
         Task.detached(priority: .userInitiated) {
-            await RealtimeVoiceModelPrewarmer.prepareForLaunch()
             await speech.prepareForLaunch()
-            await RealtimeVoiceModelPrewarmer.prepareTranscriptRefinementForLaunch()
         }
 
         let keychain = KeychainStore()

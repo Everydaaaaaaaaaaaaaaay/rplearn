@@ -486,7 +486,7 @@ struct RealtimeConversationView: View {
         if session.isMuted { return "点按麦克风即可继续" }
         return switch session.phase {
         case .idle: "字幕已保存到聊天记录"
-        case .connecting: preparationDetail
+        case .connecting: "正在启动 Apple 系统识别"
         case .listening: "自然说英语，不需要按住按钮"
         case .userSpeaking: "说完后会自动接话"
         case .thinking: "你随时可以继续开口"
@@ -494,18 +494,6 @@ struct RealtimeConversationView: View {
         case .reconnecting: "正在保留当前字幕与上下文"
         case .paused: "回到应用后会自动恢复"
         case .failed: "可立即重试"
-        }
-    }
-
-    private var preparationDetail: String {
-        guard let preparation = session.preparation else {
-            return "正在加载随应用安装的端侧识别模型"
-        }
-        let percent = Int((preparation.progress * 100).rounded())
-        return switch preparation.stage {
-        case .streamingRecognition: "正在准备实时识别 · \(percent)%"
-        case .transcriptRefinement: "正在准备精确校对 · \(percent)%"
-        case .ready: "端侧识别已就绪"
         }
     }
 

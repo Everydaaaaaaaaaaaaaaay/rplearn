@@ -3,30 +3,6 @@ import SpeechKit
 import Testing
 @testable import RealtimeVoiceKit
 
-@Suite("内置实时语音模型")
-struct RealtimeASRModelResourceTests {
-    @Test("安装资源包含两套完整模型")
-    func bundledModelsAreComplete() throws {
-        let fileManager = FileManager.default
-        let bundleURL = Bundle.main.bundleURL
-            .appendingPathComponent("LingoKit_RealtimeVoiceKit.bundle", isDirectory: true)
-        let root = bundleURL.appendingPathComponent("RealtimeASRModels", isDirectory: true)
-
-        #expect(fileManager.fileExists(
-            atPath: root
-                .appendingPathComponent("ParakeetEOU320", isDirectory: true)
-                .appendingPathComponent("streaming_encoder.mlmodelc/weights/weight.bin")
-                .path
-        ))
-        #expect(fileManager.fileExists(
-            atPath: root
-                .appendingPathComponent("SenseVoiceSmallINT8", isDirectory: true)
-                .appendingPathComponent("SenseVoiceSmall_int8.mlmodelc/weights/weight.bin")
-                .path
-        ))
-    }
-}
-
 @Suite("实时语音分句")
 struct StreamingSpeechSegmenterTests {
     @Test("标点到达时立即交付完整短句")
@@ -171,7 +147,6 @@ private final class MockSpeechInput: RealtimeSpeechInput {
     var onLevel: (@MainActor @Sendable (Double) -> Void)?
     var onSpeechStarted: (@MainActor @Sendable () -> Void)?
     var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)?
-    var onPreparation: (@MainActor @Sendable (RealtimeModelPreparation) -> Void)?
     var onFailure: (@MainActor @Sendable (String) -> Void)?
 
     var startCount = 0
@@ -181,7 +156,6 @@ private final class MockSpeechInput: RealtimeSpeechInput {
 
     func start() async throws {
         startCount += 1
-        onPreparation?(.init(stage: .ready, progress: 1))
     }
 
     func finishCurrentTurn() async { finishTurnCount += 1 }

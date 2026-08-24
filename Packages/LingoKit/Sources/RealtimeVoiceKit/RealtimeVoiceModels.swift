@@ -20,7 +20,6 @@ public enum RealtimeVoiceError: LocalizedError, Sendable, Equatable {
     case speechRecognizerUnavailable
     case audioInputUnavailable
     case audioSessionFailed
-    case modelPreparationFailed
     case emptyAIResponse
 
     public var errorDescription: String? {
@@ -35,8 +34,6 @@ public enum RealtimeVoiceError: LocalizedError, Sendable, Equatable {
             "没有检测到可用的麦克风。"
         case .audioSessionFailed:
             "音频设备启动失败，请重新连接耳机或稍后再试。"
-        case .modelPreparationFailed:
-            "内置语音模型加载失败，请重新启动应用后再试。"
         case .emptyAIResponse:
             "角色这次没有生成可播放的回复。"
         }
@@ -70,29 +67,11 @@ public struct RealtimeVoiceConversationClient: Sendable {
     }
 }
 
-/// 端侧识别模型的准备状态。模型随 App 安装，仅记录本地 Core ML 加载进度。
-public struct RealtimeModelPreparation: Sendable, Equatable {
-    public enum Stage: Sendable, Equatable {
-        case streamingRecognition
-        case transcriptRefinement
-        case ready
-    }
-
-    public let stage: Stage
-    public let progress: Double
-
-    public init(stage: Stage, progress: Double) {
-        self.stage = stage
-        self.progress = min(max(progress, 0), 1)
-    }
-}
-
 @MainActor
 public protocol RealtimeSpeechInput: AnyObject {
     var onLevel: (@MainActor @Sendable (Double) -> Void)? { get set }
     var onSpeechStarted: (@MainActor @Sendable () -> Void)? { get set }
     var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)? { get set }
-    var onPreparation: (@MainActor @Sendable (RealtimeModelPreparation) -> Void)? { get set }
     var onFailure: (@MainActor @Sendable (String) -> Void)? { get set }
 
     func start() async throws
@@ -101,7 +80,7 @@ public protocol RealtimeSpeechInput: AnyObject {
     func stop() async
 }
 
-/// 流式识别的累计文本。Parakeet EOU 发布 partial，SenseVoice 发布校正后的 final。
+/// Apple Speech 流式识别的累计文本。
 public struct RealtimeTranscription: Sendable, Equatable {
     public let text: String
     public let isFinal: Bool
@@ -122,8 +101,7 @@ public protocol RealtimeSpeechOutput: AnyObject {
     @discardableResult func stop() async -> String
 }
 
-/// partial 长时间不再变化时的兜底端点。优先采用 Parakeet EOU 的语义端点，
-/// 这里只避免极端噪声或模型漏报让一轮对话永远悬挂。
+/// partial 长时间不再变化时的兜底端点，避免系统识别漏报 final 让一轮对话永远悬挂。
 public struct VoiceTurnPolicy: Sendable, Equatable {
     public var fallbackEndOfTurnDelay: Duration
 

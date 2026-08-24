@@ -134,19 +134,16 @@ struct SpeechServiceTests {
         #expect(PocketTTSAssetSelection.voiceIDs.contains(first))
     }
 
-    @Test("语音引擎默认值、持久化和旧设置迁移保持稳定")
+    @Test("TTS 引擎默认值、持久化和旧设置迁移保持稳定")
     func voiceEnginePreferences() {
         let suiteName = "SpeechServiceTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: suiteName)!
         defer { defaults.removePersistentDomain(forName: suiteName) }
 
         #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .pocketTTS)
-        #expect(VoiceEnginePreferences.recognitionEngine(defaults: defaults) == .enhancedOnDevice)
 
         VoiceEnginePreferences.setSynthesisEngine(.system, defaults: defaults)
-        VoiceEnginePreferences.setRecognitionEngine(.system, defaults: defaults)
         #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .system)
-        #expect(VoiceEnginePreferences.recognitionEngine(defaults: defaults) == .system)
 
         defaults.removeObject(forKey: VoiceEnginePreferences.synthesisEngineKey)
         defaults.set(true, forKey: "lingotrip.pocketTTS.enabled")

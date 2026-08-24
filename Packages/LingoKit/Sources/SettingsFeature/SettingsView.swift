@@ -32,8 +32,6 @@ public struct SettingsView: View {
         phase: .resourceMissing,
         selectedEngine: .pocketTTS
     )
-    @AppStorage(VoiceEnginePreferences.recognitionEngineKey)
-    private var recognitionEngineRaw = SpeechRecognitionEngine.enhancedOnDevice.rawValue
     @AppStorage(ProactiveMessagePreferences.enabledKey) private var proactiveMessagesEnabled = true
     @Environment(\.openURL) private var openURL
 
@@ -139,11 +137,7 @@ public struct SettingsView: View {
     private var offlineVoiceSection: some View {
         if let manager = speech as? any SpeechSynthesisEngineManaging {
             Section {
-                Picker("语音识别（ASR）", selection: recognitionEngineBinding) {
-                    ForEach(SpeechRecognitionEngine.allCases) { engine in
-                        Text(engine.label).tag(engine)
-                    }
-                }
+                LabeledContent("语音识别（ASR）", value: "Apple 系统识别")
 
                 Picker(
                     "语音合成（TTS）",
@@ -167,7 +161,6 @@ public struct SettingsView: View {
                         || !synthesisEngineStatus.isBundledModelAvailable
                 )
 
-                LabeledContent("内置 ASR", value: "Parakeet + SenseVoice · 464 MB")
                 LabeledContent("内置 TTS") {
                     HStack(spacing: 6) {
                         Text("Pocket TTS · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
@@ -235,7 +228,7 @@ public struct SettingsView: View {
             } header: {
                 Text("语音引擎对比")
             } footer: {
-                Text("两套外置模型均已随 App 安装，不会再下载。ASR 选择从下一次实时语音会话生效；TTS 选择立即生效，也可用上方按钮在不改设置的情况下试听。内置模型完全离线；Apple 系统识别会优先端侧处理，但在当前语言模型不可用时可能使用网络。")
+                Text("实时语音统一使用 Apple 系统识别，不再加载外置 ASR 模型。TTS 选择立即生效，也可用上方按钮在不改设置的情况下试听；Pocket TTS 完全离线。Apple 系统识别会优先端侧处理，但在当前语言模型不可用时可能使用网络。")
             }
         }
     }
@@ -314,17 +307,6 @@ public struct SettingsView: View {
             if Task.isCancelled { return }
             synthesisEngineStatus = update
         }
-    }
-
-    private var recognitionEngineBinding: Binding<SpeechRecognitionEngine> {
-        Binding(
-            get: {
-                SpeechRecognitionEngine(rawValue: recognitionEngineRaw) ?? .enhancedOnDevice
-            },
-            set: { engine in
-                recognitionEngineRaw = engine.rawValue
-            }
-        )
     }
 
     private var previewVoiceHint: SpeechVoiceHint {

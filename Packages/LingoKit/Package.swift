@@ -47,10 +47,7 @@ let serviceTargets: [Target] = [
         dependencies: [
             module("CoreKit"),
             module("SpeechKit"),
-            .product(name: "FluidAudio", package: "FluidAudio"),
-        ],
-        // 保留已编译 Core ML 目录结构，安装后直接从 Bundle 加载，不触发网络下载。
-        resources: [.copy("Resources/RealtimeASRModels")]
+        ]
     ),
     .target(
         name: "MediaKit",

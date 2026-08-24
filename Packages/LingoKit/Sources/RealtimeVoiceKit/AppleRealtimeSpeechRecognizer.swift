@@ -32,14 +32,21 @@ private final class AppleSpeechInputRuntime: @unchecked Sendable {
     }
 }
 
+/// AVAudioEngine 在实时音频队列调用 tap；从 MainActor 类型之外创建闭包，避免
+/// Swift 6 把回调错误标记为主线程隔离并在首帧音频到达时触发运行时断言。
+private func makeAppleSpeechAudioTap(
+    runtime: AppleSpeechInputRuntime
+) -> AVAudioNodeTapBlock {
+    { buffer, _ in runtime.receive(buffer) }
+}
+
 /// Apple Speech 的实时输入实现。优先使用设备上的 Apple 识别模型；当前语言未安装
-/// 端侧模型时允许 Apple 服务兜底，便于与完全离线的增强模型做真实 A/B 对比。
+/// 端侧模型时允许 Apple 系统服务兜底。
 @MainActor
 public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     public var onLevel: (@MainActor @Sendable (Double) -> Void)?
     public var onSpeechStarted: (@MainActor @Sendable () -> Void)?
     public var onTranscription: (@MainActor @Sendable (RealtimeTranscription) -> Void)?
-    public var onPreparation: (@MainActor @Sendable (RealtimeModelPreparation) -> Void)?
     public var onFailure: (@MainActor @Sendable (String) -> Void)?
 
     private let audioSession: AudioSessionCoordinator
@@ -107,9 +114,12 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             let runtime = AppleSpeechInputRuntime { [weak self] level in
                 Task { @MainActor [weak self] in self?.receiveAudioLevel(level) }
             }
-            inputNode.installTap(onBus: 0, bufferSize: 1_024, format: format) { buffer, _ in
-                runtime.receive(buffer)
-            }
+            inputNode.installTap(
+                onBus: 0,
+                bufferSize: 1_024,
+                format: format,
+                block: makeAppleSpeechAudioTap(runtime: runtime)
+            )
 
             self.recognizer = recognizer
             self.audioEngine = engine
@@ -119,7 +129,6 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             startRecognitionTask()
             engine.prepare()
             try engine.start()
-            onPreparation?(.init(stage: .ready, progress: 1))
         } catch let error as RealtimeVoiceError {
             await teardown()
             throw error
