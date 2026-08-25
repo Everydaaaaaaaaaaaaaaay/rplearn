@@ -66,7 +66,7 @@ struct RealtimeVoiceSessionTests {
         #expect(await eventually {
             session.phase == .userSpeaking
                 && output.stopCount >= 1
-                && probe.assistants == [.init(text: "This is the first phrase", interrupted: true)]
+                && probe.assistants == [.init(text: "This is the first phrase.", interrupted: true)]
         })
         await session.stop()
     }
