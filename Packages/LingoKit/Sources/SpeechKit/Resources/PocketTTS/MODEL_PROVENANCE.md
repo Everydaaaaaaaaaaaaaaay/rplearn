@@ -3,7 +3,7 @@
 - Core ML 仓库：`FluidInference/pocket-tts-coreml`
 - 固定提交：`f62fb9ef89b16fa206c5a57d958212c6c96f16ed`
 - 上游项目：`kyutai-labs/pocket-tts`
-- 本地模型目录：`Models/pocket-tts-coreml/v2.1/english`
+- 本地模型目录：`Models/pocket-tts/v2.1/english`
 - 精度与设备布局：INT8 / GPU
 - 权重许可证：Creative Commons Attribution 4.0 International
 

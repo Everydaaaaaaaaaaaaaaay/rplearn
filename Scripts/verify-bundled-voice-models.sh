@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-pocket_root="Packages/LingoKit/Sources/SpeechKit/Resources/PocketTTS/Models/pocket-tts-coreml/v2.1/english"
+pocket_root="Packages/LingoKit/Sources/SpeechKit/Resources/PocketTTS/Models/pocket-tts/v2.1/english"
 
 fail() {
   echo "错误：随包语音模型不完整或校验不匹配。请先执行 git lfs pull。" >&2

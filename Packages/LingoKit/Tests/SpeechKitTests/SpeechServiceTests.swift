@@ -173,7 +173,7 @@ struct SpeechServiceTests {
     func bundledPocketModelsAreComplete() throws {
         let root = Bundle.main.bundleURL
             .appendingPathComponent("LingoKit_SpeechKit.bundle", isDirectory: true)
-            .appendingPathComponent("PocketTTS/Models/pocket-tts-coreml/v2.1/english", isDirectory: true)
+            .appendingPathComponent("PocketTTS/Models/pocket-tts/v2.1/english", isDirectory: true)
         let weights: [String: Int] = [
             "cond_prefill.mlmodelc/weights/weight.bin": 133_237_248,
             "flow_decoder_fused.mlmodelc/weights/weight.bin": 19_012_608,
@@ -197,7 +197,7 @@ struct SpeechServiceTests {
             .appendingPathComponent("PocketTTSValidation-\(UUID().uuidString)", isDirectory: true)
         defer { try? fileManager.removeItem(at: modelDirectory) }
         let root = modelDirectory.appendingPathComponent(
-            "Models/pocket-tts-coreml/v2.1/english",
+            "Models/pocket-tts/v2.1/english",
             isDirectory: true
         )
 
