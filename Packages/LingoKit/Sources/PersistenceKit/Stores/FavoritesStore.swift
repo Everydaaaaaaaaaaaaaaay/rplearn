@@ -1,15 +1,18 @@
 import Foundation
 import SwiftData
 
-public enum FavoriteKind: String, Sendable, Equatable {
+public enum FavoriteKind: String, Sendable, Hashable {
     case word
+    case grammarPoint
     case sentence
 }
 
-/// 收藏快照。保留旧版句子收藏，新版入口只新增单词收藏。
+/// 收藏快照。保留旧版句子收藏，同时支持单词与语法点收藏。
 public struct FavoriteDTO: Sendable, Equatable, Identifiable {
     public var id: UUID
     public var kind: FavoriteKind
+    /// 语法点收藏对应的稳定语法点 ID；其它类型为 nil。
+    public var referenceID: String?
     public var sentence: String
     public var sourceMessageID: UUID?
     public var characterName: String
@@ -19,6 +22,7 @@ public struct FavoriteDTO: Sendable, Equatable, Identifiable {
     public init(
         id: UUID,
         kind: FavoriteKind = .sentence,
+        referenceID: String? = nil,
         sentence: String,
         sourceMessageID: UUID?,
         characterName: String,
@@ -27,6 +31,7 @@ public struct FavoriteDTO: Sendable, Equatable, Identifiable {
     ) {
         self.id = id
         self.kind = kind
+        self.referenceID = referenceID
         self.sentence = sentence
         self.sourceMessageID = sourceMessageID
         self.characterName = characterName
@@ -39,6 +44,7 @@ public struct FavoriteDTO: Sendable, Equatable, Identifiable {
 @ModelActor
 public actor FavoritesStore {
     private static let wordCollectionMarker = "__word__"
+    private static let grammarCollectionPrefix = "__grammar__:"
 
     /// 收藏一个单词；同一单词忽略大小写并保持幂等。
     @discardableResult
@@ -82,6 +88,59 @@ public actor FavoritesStore {
         let word = Self.normalizedWord(rawWord)
         guard !word.isEmpty else { return false }
         return try fetchWord(word) != nil
+    }
+
+    /// 收藏语法点快照；稳定 ID 负责幂等，标题与讲解用于离线展示。
+    @discardableResult
+    public func addGrammarPoint(
+        id rawID: String,
+        title: String,
+        explanationZh: String? = nil
+    ) throws -> FavoriteDTO? {
+        let id = Self.normalizedGrammarPointID(rawID)
+        let normalizedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !id.isEmpty, !normalizedTitle.isEmpty else { return nil }
+        if let existing = try fetchGrammarPoint(id: id) {
+            return Self.dto(from: existing)
+        }
+        let entity = FavoriteEntity(
+            sentence: normalizedTitle,
+            sourceMessageID: nil,
+            characterName: Self.grammarMarker(for: id),
+            translationZh: explanationZh
+        )
+        modelContext.insert(entity)
+        try journal(entity)
+        try modelContext.save()
+        return Self.dto(from: entity)
+    }
+
+    /// 切换语法点收藏，返回切换后的收藏状态。
+    public func toggleGrammarPoint(
+        id rawID: String,
+        title: String,
+        explanationZh: String? = nil
+    ) throws -> Bool {
+        let id = Self.normalizedGrammarPointID(rawID)
+        guard !id.isEmpty else { return false }
+        if let existing = try fetchGrammarPoint(id: id) {
+            try ContentMutationJournal.delete(
+                in: modelContext,
+                resourceType: .favorite,
+                resourceID: existing.favoriteID.uuidString.lowercased()
+            )
+            modelContext.delete(existing)
+            try modelContext.save()
+            return false
+        }
+        _ = try addGrammarPoint(id: id, title: title, explanationZh: explanationZh)
+        return true
+    }
+
+    public func isGrammarPointFavorited(id rawID: String) throws -> Bool {
+        let id = Self.normalizedGrammarPointID(rawID)
+        guard !id.isEmpty else { return false }
+        return try fetchGrammarPoint(id: id) != nil
     }
 
     /// 旧版句子收藏写入接口，仅用于兼容已有调用和数据测试。
@@ -160,8 +219,34 @@ public actor FavoritesStore {
         ).first
     }
 
+    private func fetchGrammarPoint(id: String) throws -> FavoriteEntity? {
+        let marker = Self.grammarMarker(for: id)
+        return try modelContext.fetch(
+            FetchDescriptor<FavoriteEntity>(
+                predicate: #Predicate {
+                    $0.sourceMessageID == nil
+                        && $0.characterName == marker
+                }
+            )
+        ).first
+    }
+
     private static func normalizedWord(_ word: String) -> String {
         word.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    }
+
+    private static func normalizedGrammarPointID(_ id: String) -> String {
+        id.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private static func grammarMarker(for id: String) -> String {
+        grammarCollectionPrefix + id
+    }
+
+    private static func grammarPointID(from marker: String) -> String? {
+        guard marker.hasPrefix(grammarCollectionPrefix) else { return nil }
+        let id = String(marker.dropFirst(grammarCollectionPrefix.count))
+        return id.isEmpty ? nil : id
     }
 
     private func journal(_ entity: FavoriteEntity) throws {
@@ -183,9 +268,18 @@ public actor FavoritesStore {
     }
 
     static func dto(from entity: FavoriteEntity) -> FavoriteDTO {
-        FavoriteDTO(
+        let grammarPointID = grammarPointID(from: entity.characterName)
+        let kind: FavoriteKind = if entity.characterName == wordCollectionMarker {
+            .word
+        } else if grammarPointID != nil {
+            .grammarPoint
+        } else {
+            .sentence
+        }
+        return FavoriteDTO(
             id: entity.favoriteID,
-            kind: entity.characterName == wordCollectionMarker ? .word : .sentence,
+            kind: kind,
+            referenceID: grammarPointID,
             sentence: entity.sentence,
             sourceMessageID: entity.sourceMessageID,
             characterName: entity.characterName,

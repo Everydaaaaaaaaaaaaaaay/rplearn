@@ -113,6 +113,7 @@ public struct ChatView: View {
                 initialAIAnalysis: grammarAICache[request.id],
                 dictionary: deps.dictionary,
                 grammar: deps.grammarPoints,
+                favorites: deps.favorites,
                 onSpeak: { word in
                     let speech = deps.speech
                     Task {

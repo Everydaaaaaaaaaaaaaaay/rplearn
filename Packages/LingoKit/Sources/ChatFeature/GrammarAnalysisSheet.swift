@@ -2,6 +2,7 @@ import CoreKit
 import DesignSystem
 import DictKit
 import DomainKit
+import PersistenceKit
 import SwiftUI
 
 struct LocalGrammarAnalysisItem: Sendable, Identifiable {
@@ -19,6 +20,12 @@ struct GrammarAnalysisRequest: Sendable, Identifiable {
     var requiresAIFallback: Bool { localItems.isEmpty }
 }
 
+private struct GrammarFavoriteDescriptor: Sendable {
+    let id: String
+    let title: String
+    let explanationZh: String
+}
+
 /// 整句语法解析：本地规则有命中时直接展示全部结果，零命中时才请求 AI。
 struct GrammarAnalysisSheet: View {
     let request: GrammarAnalysisRequest
@@ -26,6 +33,7 @@ struct GrammarAnalysisSheet: View {
     let initialAIAnalysis: AIGrammarAnalysis?
     let dictionary: DictDatabase
     let grammar: GrammarPointStore
+    let favorites: FavoritesStore
     let onSpeak: (@MainActor (String) -> Void)?
     let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
@@ -35,6 +43,8 @@ struct GrammarAnalysisSheet: View {
     @State private var isLoadingAI = false
     @State private var errorMessage: String?
     @State private var wordSelection: TokenSelection?
+    @State private var favoriteGrammarPointIDs: Set<String> = []
+    @State private var updatingGrammarPointIDs: Set<String> = []
     @Environment(\.dismiss) private var dismiss
 
     init(
@@ -43,6 +53,7 @@ struct GrammarAnalysisSheet: View {
         initialAIAnalysis: AIGrammarAnalysis? = nil,
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
+        favorites: FavoritesStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
         favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil,
@@ -53,6 +64,7 @@ struct GrammarAnalysisSheet: View {
         self.initialAIAnalysis = initialAIAnalysis
         self.dictionary = dictionary
         self.grammar = grammar
+        self.favorites = favorites
         self.onSpeak = onSpeak
         self.favoriteActions = favoriteActions
         self.aiFallback = aiFallback
@@ -94,6 +106,9 @@ struct GrammarAnalysisSheet: View {
         .task(id: request.id) {
             guard request.requiresAIFallback, aiAnalysis == nil else { return }
             await loadAIAnalysis()
+        }
+        .task(id: request.id) {
+            await reloadGrammarFavorites()
         }
     }
 
@@ -192,7 +207,15 @@ struct GrammarAnalysisSheet: View {
     }
 
     private func localPointCard(_ item: LocalGrammarAnalysisItem, number: Int) -> some View {
-        grammarCard(number: number, title: item.point.title) {
+        grammarCard(
+            number: number,
+            title: item.point.title,
+            favorite: GrammarFavoriteDescriptor(
+                id: item.point.id,
+                title: item.point.title,
+                explanationZh: item.point.explanationZh
+            )
+        ) {
             quote(
                 item.matchedText,
                 contextID: "grammar-\(request.id.uuidString)-local-\(item.id)-quote"
@@ -214,7 +237,15 @@ struct GrammarAnalysisSheet: View {
     }
 
     private func aiPointCard(_ point: AIGrammarAnalysis.Point, number: Int) -> some View {
-        grammarCard(number: number, title: point.title) {
+        grammarCard(
+            number: number,
+            title: point.title,
+            favorite: GrammarFavoriteDescriptor(
+                id: aiGrammarPointID(point),
+                title: point.title,
+                explanationZh: point.explanationZh
+            )
+        ) {
             quote(
                 point.quote,
                 contextID: "grammar-\(request.id.uuidString)-ai-\(number)-quote"
@@ -236,10 +267,11 @@ struct GrammarAnalysisSheet: View {
     private func grammarCard<Content: View>(
         number: Int,
         title: String,
+        favorite: GrammarFavoriteDescriptor,
         @ViewBuilder content: () -> Content
     ) -> some View {
         VStack(alignment: .leading, spacing: 9) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
+            HStack(alignment: .center, spacing: 8) {
                 Text("\(number)")
                     .font(.caption2.weight(.bold))
                     .foregroundStyle(.white)
@@ -247,6 +279,8 @@ struct GrammarAnalysisSheet: View {
                     .background(Color.dsSky, in: Circle())
                 Text(title)
                     .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                grammarFavoriteButton(favorite)
             }
             content()
         }
@@ -257,6 +291,24 @@ struct GrammarAnalysisSheet: View {
             RoundedRectangle(cornerRadius: DSRadius.inline)
                 .stroke(Color.dsSky.opacity(0.18), lineWidth: 1)
         }
+    }
+
+    private func grammarFavoriteButton(_ favorite: GrammarFavoriteDescriptor) -> some View {
+        let isFavorite = favoriteGrammarPointIDs.contains(favorite.id)
+        let isUpdating = updatingGrammarPointIDs.contains(favorite.id)
+        return Button {
+            toggleGrammarFavorite(favorite)
+        } label: {
+            Image(systemName: isFavorite ? "star.fill" : "star")
+                .contentTransition(.symbolEffect(.replace))
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(isFavorite ? Color.dsSunset : Color.secondary)
+        .disabled(isUpdating)
+        .accessibilityLabel(isFavorite ? "取消收藏语法点" : "收藏语法点")
+        .accessibilityAddTraits(isFavorite ? .isSelected : [])
     }
 
     private func quote(_ text: String, contextID: String) -> some View {
@@ -275,6 +327,45 @@ struct GrammarAnalysisSheet: View {
             selection: wordSelection,
             onSelect: { wordSelection = $0 }
         )
+    }
+
+    private func toggleGrammarFavorite(_ favorite: GrammarFavoriteDescriptor) {
+        guard !updatingGrammarPointIDs.contains(favorite.id) else { return }
+        updatingGrammarPointIDs.insert(favorite.id)
+        Haptics.selection()
+        Task {
+            if let isFavorite = try? await favorites.toggleGrammarPoint(
+                id: favorite.id,
+                title: favorite.title,
+                explanationZh: favorite.explanationZh
+            ) {
+                if isFavorite {
+                    favoriteGrammarPointIDs.insert(favorite.id)
+                } else {
+                    favoriteGrammarPointIDs.remove(favorite.id)
+                }
+            }
+            updatingGrammarPointIDs.remove(favorite.id)
+        }
+    }
+
+    private func reloadGrammarFavorites() async {
+        let loaded = (try? await favorites.all()) ?? []
+        favoriteGrammarPointIDs = Set(
+            loaded.compactMap { favorite in
+                favorite.kind == .grammarPoint ? favorite.referenceID : nil
+            }
+        )
+    }
+
+    /// AI 语法点没有本地 ID，以内容的稳定 FNV-1a 摘要作为收藏键。
+    private func aiGrammarPointID(_ point: AIGrammarAnalysis.Point) -> String {
+        var hash: UInt64 = 14_695_981_039_346_656_037
+        for byte in "\(point.title)|\(point.pattern)".utf8 {
+            hash ^= UInt64(byte)
+            hash &*= 1_099_511_628_211
+        }
+        return "ai-\(String(hash, radix: 16))"
     }
 
     @MainActor
