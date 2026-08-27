@@ -42,25 +42,46 @@ enum DictCardLayout {
     }
 }
 
-struct DictSenseDisplayRow: Identifiable, Equatable {
-    let sense: DictSense
-    let ordinal: Int?
+struct DictSenseDisplayGroup: Identifiable, Equatable {
+    let partOfSpeech: String
+    let senses: [DictSense]
 
-    var id: String { sense.id }
+    var id: String { partOfSpeech }
+    var partOfSpeechLabel: String { senses.first?.partOfSpeechLabel ?? partOfSpeech }
+    var definitionText: String {
+        senses.map(\.definition).joined(separator: " # ")
+    }
+    var exampleText: String? {
+        let examples = senses.compactMap(\.examples.first)
+        return examples.isEmpty ? nil : examples.joined(separator: " # ")
+    }
+    var synonymText: String? {
+        var seen = Set<String>()
+        let synonyms = senses
+            .flatMap(\.synonyms)
+            .filter { seen.insert($0.lowercased()).inserted }
+            .prefix(6)
+        return synonyms.isEmpty ? nil : "≈ \(synonyms.joined(separator: " · "))"
+    }
 }
 
 enum DictSenseDisplayPolicy {
-    static func rows(for senses: [DictSense]) -> [DictSenseDisplayRow] {
-        let countsByPartOfSpeech = Dictionary(grouping: senses, by: \.partOfSpeech)
-            .mapValues(\.count)
-        var positionsByPartOfSpeech: [String: Int] = [:]
+    static func groups(for senses: [DictSense]) -> [DictSenseDisplayGroup] {
+        var orderedPartsOfSpeech: [String] = []
+        var sensesByPartOfSpeech: [String: [DictSense]] = [:]
 
-        return senses.map { sense in
-            positionsByPartOfSpeech[sense.partOfSpeech, default: 0] += 1
-            let ordinal = countsByPartOfSpeech[sense.partOfSpeech, default: 0] > 1
-                ? positionsByPartOfSpeech[sense.partOfSpeech]
-                : nil
-            return DictSenseDisplayRow(sense: sense, ordinal: ordinal)
+        for sense in senses {
+            if sensesByPartOfSpeech[sense.partOfSpeech] == nil {
+                orderedPartsOfSpeech.append(sense.partOfSpeech)
+            }
+            sensesByPartOfSpeech[sense.partOfSpeech, default: []].append(sense)
+        }
+
+        return orderedPartsOfSpeech.map { partOfSpeech in
+            DictSenseDisplayGroup(
+                partOfSpeech: partOfSpeech,
+                senses: sensesByPartOfSpeech[partOfSpeech] ?? []
+            )
         }
     }
 }
@@ -347,51 +368,45 @@ public struct DictCardView: View {
             Divider()
             compactSectionTitle("英文释义")
             if !entry.senses.isEmpty {
-                let senseRows = DictSenseDisplayPolicy.rows(for: entry.senses)
-                ForEach(senseRows) { row in
-                    HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
-                        sensePartOfSpeechText(row)
-                        VStack(alignment: .leading, spacing: 2) {
+                let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
+                ForEach(senseGroups) { group in
+                    HStack(alignment: .top, spacing: DictCardLayout.definitionColumnSpacing) {
+                        sensePartOfSpeechText(group)
+                        VStack(alignment: .leading, spacing: 3) {
                             tappableDictionaryText(
-                                row.sense.definition,
-                                contextID: "dict-\(entry.word)-sense-\(row.id)"
+                                group.definitionText,
+                                contextID: "dict-\(entry.word)-sense-\(group.id)"
                             )
-                                .font(.subheadline)
                                 .lineSpacing(1)
                                 .fixedSize(horizontal: false, vertical: true)
-                            if let example = row.sense.examples.first {
+                            if let example = group.exampleText {
                                 tappableDictionaryText(
                                     example,
-                                    contextID: "dict-\(entry.word)-example-\(row.id)"
+                                    contextID: "dict-\(entry.word)-example-\(group.id)"
                                 )
-                                    .font(.caption)
                                     .italic()
                                     .foregroundStyle(.secondary)
-                                    .lineLimit(2)
                             }
-                            if !row.sense.synonyms.isEmpty {
+                            if let synonyms = group.synonymText {
                                 tappableDictionaryText(
-                                    "≈ \(row.sense.synonyms.prefix(3).joined(separator: " · "))",
-                                    contextID: "dict-\(entry.word)-synonyms-\(row.id)"
+                                    synonyms,
+                                    contextID: "dict-\(entry.word)-synonyms-\(group.id)"
                                 )
-                                    .font(.caption2)
                                     .foregroundStyle(.tertiary)
-                                    .lineLimit(1)
                             }
                         }
+                        .font(.subheadline)
                     }
                 }
             } else {
-                ForEach(Array(entry.fallbackEnglishDefinitions.enumerated()), id: \.offset) { index, definition in
-                    tappableDictionaryText(
-                        definition,
-                        contextID: "dict-\(entry.word)-fallback-\(index)"
-                    )
-                        .font(.subheadline)
-                        .lineSpacing(1)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.leading, DictCardLayout.definitionColumnLeading)
-                }
+                tappableDictionaryText(
+                    entry.fallbackEnglishDefinitions.joined(separator: " # "),
+                    contextID: "dict-\(entry.word)-fallback"
+                )
+                    .font(.subheadline)
+                    .lineSpacing(1)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.leading, DictCardLayout.definitionColumnLeading)
             }
         }
     }
@@ -412,22 +427,14 @@ public struct DictCardView: View {
         path.append(.word(selection.word))
     }
 
-    private func sensePartOfSpeechText(_ row: DictSenseDisplayRow) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: 3) {
-            Text(row.sense.partOfSpeechLabel)
-                .fontWeight(.semibold)
-                .foregroundStyle(Color.dsSkyDeep)
-            if let ordinal = row.ordinal {
-                Text("\(ordinal).")
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.secondary)
-                    .monospacedDigit()
-            }
-        }
-        .font(.footnote)
-        .lineLimit(1)
-        .minimumScaleFactor(0.8)
-        .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
+    private func sensePartOfSpeechText(_ group: DictSenseDisplayGroup) -> some View {
+        Text(group.partOfSpeechLabel)
+            .font(.footnote.weight(.semibold))
+            .foregroundStyle(Color.dsSkyDeep)
+            .lineLimit(1)
+            .minimumScaleFactor(0.8)
+            .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
+            .padding(.top, 1)
     }
 
     private func partOfSpeechText(_ text: String) -> some View {

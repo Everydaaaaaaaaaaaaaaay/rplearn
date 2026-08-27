@@ -38,18 +38,33 @@ struct DictDatabaseTests {
         #expect(entry.senses.allSatisfy { !$0.definition.isEmpty })
     }
 
-    @Test("同一词性的多个义项按组内顺序编号")
-    func repeatedPartsOfSpeechAreNumbered() {
+    @Test("同一词性的多个英文义项合并并用井号分隔")
+    func repeatedPartsOfSpeechAreGrouped() {
         let senses = [
             DictSense(rank: 1, partOfSpeech: "n", definition: "noun", examples: [], synonyms: []),
-            DictSense(rank: 1, partOfSpeech: "v", definition: "first verb", examples: [], synonyms: []),
-            DictSense(rank: 2, partOfSpeech: "v", definition: "second verb", examples: [], synonyms: []),
+            DictSense(
+                rank: 1,
+                partOfSpeech: "v",
+                definition: "first verb",
+                examples: ["first example"],
+                synonyms: ["make"]
+            ),
+            DictSense(
+                rank: 2,
+                partOfSpeech: "v",
+                definition: "second verb",
+                examples: ["second example"],
+                synonyms: ["make", "prepare"]
+            ),
             DictSense(rank: 1, partOfSpeech: "a", definition: "adjective", examples: [], synonyms: []),
         ]
 
-        let rows = DictSenseDisplayPolicy.rows(for: senses)
+        let groups = DictSenseDisplayPolicy.groups(for: senses)
 
-        #expect(rows.map(\.ordinal) == [nil, 1, 2, nil])
+        #expect(groups.map(\.partOfSpeech) == ["n", "v", "a"])
+        #expect(groups[1].definitionText == "first verb # second verb")
+        #expect(groups[1].exampleText == "first example # second example")
+        #expect(groups[1].synonymText == "≈ make · prepare")
     }
 
     @Test("原句候选返回固定搭配但不覆盖单词主释义")
