@@ -58,7 +58,7 @@ private final class RealtimeConversationCoordinator {
 
     private static func turnPolicy(for level: DifficultyLevel) -> VoiceTurnPolicy {
         let fallbackDelay: Duration = switch level {
-        case .primary1, .primary2, .primary3, .primary4, .primary5, .primary6:
+        case .kindergarten, .primary1, .primary2, .primary3, .primary4, .primary5, .primary6:
             .milliseconds(1_350)
         case .junior1, .junior2, .junior3:
             .milliseconds(1_200)

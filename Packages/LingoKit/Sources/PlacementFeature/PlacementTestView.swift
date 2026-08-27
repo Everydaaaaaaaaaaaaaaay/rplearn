@@ -24,7 +24,7 @@ public struct PlacementDependencies: Sendable {
     }
 }
 
-/// 通常 8–10 题、最多 12 题的自适应校准。
+/// 依据答案动态控制在 14–20 题的自适应校准。
 /// 测评过程中不显示对错、不允许回退，避免后续答案被提示影响。
 public struct PlacementTestView: View {
     private enum Phase {
@@ -157,13 +157,13 @@ public struct PlacementTestView: View {
                     informationRow(
                         icon: "slider.horizontal.3",
                         title: "自适应题量",
-                        detail: "通常 8–10 题，最多 12 题，约 3 分钟"
+                        detail: "答满 14 题后判断稳定度，最多 20 题，约 4–6 分钟"
                     )
                     Divider().padding(.leading, 50)
                     informationRow(
                         icon: "headphones",
                         title: "四类能力，多种题型",
-                        detail: "词汇、语法与用法、阅读、听力"
+                        detail: "从 96 道题中动态抽取词汇、语法、阅读与听力题"
                     )
                     Divider().padding(.leading, 50)
                     informationRow(
@@ -312,7 +312,7 @@ public struct PlacementTestView: View {
                             .foregroundStyle(Color.dsSkyDeep)
                         Text(result.difficultyLevel.displayName)
                             .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                        Text("建议的角色对话难度")
+                        Text("完成 \(result.answeredCount) 道 · 建议的角色对话难度")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -351,7 +351,16 @@ public struct PlacementTestView: View {
                         }
 
                         HStack {
-                            Label("CEFR 参考", systemImage: "globe.europe.africa")
+                            Label("CSE 参考", systemImage: "flag")
+                                .font(.subheadline.weight(.semibold))
+                            Spacer()
+                            Text("\(result.difficultyLevel.cseReference) · 非认证")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        HStack {
+                            Label("CEFR 辅助参考", systemImage: "globe.europe.africa")
                                 .font(.subheadline.weight(.semibold))
                             Spacer()
                             Text("\(result.referenceLevel.rawValue) · 非认证")
@@ -368,7 +377,8 @@ public struct PlacementTestView: View {
                     .dsSurface(.grouped, padding: DSSpacing.lg)
 
                     Text(
-                        "这是用于调整学习内容的短测，不是官方证书考试。"
+                        "年级结果表示人教版一年级起点教材的学习进度估计；四六级结果表示相近学习难度。"
+                            + "这是用于调整学习内容的短测，不代表通过任何官方考试。"
                             + "区间较宽或稳定度有限时，应用会保守设置难度，你也可以稍后重新校准。"
                     )
                         .font(.footnote)

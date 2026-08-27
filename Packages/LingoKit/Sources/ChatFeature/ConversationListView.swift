@@ -10,6 +10,7 @@ public struct ConversationListView: View {
     @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
     @State private var searchText = ""
+    @State private var isSearchPresented = false
     @State private var stateRevision = 0
     @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
 
@@ -40,13 +41,17 @@ public struct ConversationListView: View {
     }
 
     public var body: some View {
-        Group {
+        ZStack {
+            DSSceneBackdrop(imageName: "messages_london_glass", tone: .cool)
+
             if rows.isEmpty && !isLoading {
                 emptyState
             } else {
                 List {
                     if visibleRows.isEmpty {
                         ContentUnavailableView.search(text: searchText)
+                            .padding(DSSpacing.xl)
+                            .dsSceneGlass(tint: Color.white.opacity(0.12))
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                     } else {
@@ -66,24 +71,26 @@ public struct ConversationListView: View {
                                     }
                             } label: {
                                 rowLabel(row)
+                                    .padding(DSSpacing.md)
+                                    .dsSceneGlass(
+                                        tint: row.summary.map {
+                                            ConversationReadState.isPinned($0.conversationID)
+                                        } == true
+                                            ? Color.dsSky.opacity(0.18)
+                                            : Color.white.opacity(0.1),
+                                        interactive: true
+                                    )
                             }
                             .listRowInsets(
                                 EdgeInsets(
-                                    top: 5,
+                                    top: DSSpacing.xs / 2,
                                     leading: DSSpacing.md,
-                                    bottom: 5,
+                                    bottom: DSSpacing.xs / 2,
                                     trailing: DSSpacing.md
                                 )
                             )
-                            .listRowBackground(
-                                row.summary.map {
-                                    ConversationReadState.isPinned($0.conversationID)
-                                } == true
-                                    ? Color.dsSky.opacity(0.055)
-                                    : Color.dsBackground
-                            )
-                            .listRowSeparator(.visible)
-                            .listRowSeparatorTint(Color.dsBorder)
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                 if let conversationID = row.summary?.conversationID {
                                     Button {
@@ -121,15 +128,20 @@ public struct ConversationListView: View {
                 .listStyle(.plain)
                 .listSectionSpacing(DSSpacing.xs)
                 .scrollContentBackground(.hidden)
-                .background(Color.dsBackground)
+                .background(Color.clear)
             }
         }
         .navigationTitle("信息")
+        .navigationBarTitleDisplayMode(.inline)
         .searchable(
             text: $searchText,
-            placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "搜索联系人"
+            isPresented: $isSearchPresented,
+            placement: .toolbar,
+            prompt: "搜索信息"
         )
+        .dsCompactSearchToolbar()
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
         // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
         .task(id: reloadToken) { await reload() }
@@ -139,6 +151,13 @@ public struct ConversationListView: View {
             updateUnreadCount()
         }
         .onChange(of: stateRevision) { updateUnreadCount() }
+        .overlay {
+            if isLoading {
+                ProgressView()
+                    .padding(DSSpacing.lg)
+                    .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.12))
+            }
+        }
     }
 
     private func rowLabel(_ row: ConversationListRow) -> some View {
@@ -224,8 +243,10 @@ public struct ConversationListView: View {
             }
         }
         .padding(DSSpacing.xl)
+        .frame(maxWidth: 340)
+        .dsSceneGlass(tint: Color.white.opacity(0.12))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.dsBackground)
+        .padding(DSSpacing.xl)
     }
 
     private func unreadCount(_ row: ConversationListRow) -> Int {

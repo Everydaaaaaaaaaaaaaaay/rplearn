@@ -2,6 +2,7 @@
 
 /// 难度/熟练度等级，按中国学制细分。
 public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
+    case kindergarten
     case primary1, primary2, primary3, primary4, primary5, primary6
     case junior1, junior2, junior3
     case senior1, senior2, senior3
@@ -11,6 +12,7 @@ public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
 
     public var displayName: String {
         switch self {
+        case .kindergarten: "幼儿启蒙"
         case .primary1: "小学一年级"
         case .primary2: "小学二年级"
         case .primary3: "小学三年级"
@@ -23,15 +25,38 @@ public enum DifficultyLevel: String, Sendable, Codable, CaseIterable {
         case .senior1: "高中一年级"
         case .senior2: "高中二年级"
         case .senior3: "高中三年级"
-        case .undergraduate: "大学本科"
-        case .postgraduate: "研究生"
-        case .advanced: "更高"
+        case .undergraduate: "大学英语四级"
+        case .postgraduate: "大学英语六级"
+        case .advanced: "高级英语（专业与学术）"
         }
+    }
+
+    /// 对外展示的中国英语能力等级量表参考区间。
+    ///
+    /// 年级、人教版教材进度、CET 与 CSE 并不存在逐级官方等值关系，
+    /// 因此这里只用于解释测评结果，不表示获得任何考试认证。
+    public var cseReference: String {
+        switch self {
+        case .kindergarten: "CSE 一级以下"
+        case .primary1, .primary2, .primary3: "CSE 一级起步"
+        case .primary4, .primary5, .primary6: "CSE 一至二级"
+        case .junior1, .junior2, .junior3: "CSE 二至三级"
+        case .senior1, .senior2, .senior3: "CSE 三至四级"
+        case .undergraduate: "CSE 四至五级参考"
+        case .postgraduate: "CSE 五至六级参考"
+        case .advanced: "CSE 七级及以上参考"
+        }
+    }
+
+    /// 测评等级在由低至高序列中的位置，用于计算相邻等级稳定度。
+    public var placementOrdinal: Int {
+        Self.allCases.firstIndex(of: self) ?? 0
     }
 
     /// 词频阈值：角色回复中排名超过该值的词视为「关键词」划线。
     public var keywordFrequencyThreshold: Int {
         switch self {
+        case .kindergarten: 1000
         case .primary1, .primary2, .primary3, .primary4, .primary5, .primary6: 3000
         case .junior1, .junior2, .junior3: 6000
         case .senior1, .senior2, .senior3: 10000

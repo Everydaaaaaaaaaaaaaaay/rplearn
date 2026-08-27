@@ -49,7 +49,7 @@ public enum SelfAssessedEnglishLevel: String, CaseIterable, Identifiable, Sendab
 
     public static func closest(to difficulty: DifficultyLevel) -> Self {
         switch difficulty {
-        case .primary1, .primary2, .primary3:
+        case .kindergarten, .primary1, .primary2, .primary3:
             .starting
         case .primary4, .primary5, .primary6:
             .foundation
