@@ -27,6 +27,8 @@ public struct FavoritesDependencies: Sendable {
 
 /// 收藏夹：按单词、语法点和旧版句子分组展示。
 public struct FavoritesView: View {
+    private static let partOfSpeechColumnWidth: CGFloat = 92
+
     private let deps: FavoritesDependencies
     @State private var favorites: [FavoriteDTO] = []
     @State private var wordEntries: [UUID: DictEntry] = [:]
@@ -153,10 +155,7 @@ public struct FavoritesView: View {
                     } else {
                         ForEach(groups) { group in
                             HStack(alignment: .firstTextBaseline, spacing: 8) {
-                                Text(group.partOfSpeech ?? "释义")
-                                    .font(.footnote.weight(.semibold))
-                                    .foregroundStyle(Color.dsSkyDeep)
-                                    .frame(width: 66, alignment: .leading)
+                                partOfSpeechLabel(group)
                                 Text(group.meaning)
                                     .font(.subheadline)
                                     .foregroundStyle(.primary)
@@ -173,6 +172,24 @@ public struct FavoritesView: View {
             speechButton(text: favorite.sentence, label: "播放单词读音")
         }
         .padding(.vertical, 7)
+    }
+
+    private func partOfSpeechLabel(_ group: DictMeaningGroup) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 3) {
+            Text(group.partOfSpeech ?? "释义")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Color.dsSkyDeep)
+
+            if let abbreviation = group.partOfSpeechAbbreviation {
+                Text(abbreviation)
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .lineLimit(1)
+        .minimumScaleFactor(0.8)
+        .frame(width: Self.partOfSpeechColumnWidth, alignment: .leading)
+        .accessibilityElement(children: .combine)
     }
 
     private func grammarRow(_ favorite: FavoriteDTO) -> some View {

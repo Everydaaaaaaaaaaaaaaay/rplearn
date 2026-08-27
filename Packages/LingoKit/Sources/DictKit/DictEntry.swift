@@ -25,6 +25,28 @@ public struct DictMeaningGroup: Sendable, Equatable, Identifiable {
     public let meaning: String
 
     public var id: String { "\(partOfSpeech ?? "其它")-\(meaning)" }
+
+    /// 中文词性对应的常用英文缩写；未知或缺失词性不臆测。
+    public var partOfSpeechAbbreviation: String? {
+        guard let partOfSpeech else { return nil }
+        return Self.partOfSpeechAbbreviations[partOfSpeech]
+    }
+
+    private static let partOfSpeechAbbreviations: [String: String] = [
+        "名词": "n.",
+        "动词": "v.",
+        "形容词": "adj.",
+        "副词": "adv.",
+        "介词": "prep.",
+        "代词": "pron.",
+        "连词": "conj.",
+        "感叹词": "interj.",
+        "助动词": "aux.",
+        "数词": "num.",
+        "冠词": "art.",
+        "及物动词": "vt.",
+        "不及物动词": "vi.",
+    ]
 }
 
 public struct DictWordForm: Sendable, Equatable, Identifiable {
