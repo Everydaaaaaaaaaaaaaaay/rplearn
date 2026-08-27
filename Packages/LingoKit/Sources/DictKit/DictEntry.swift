@@ -10,13 +10,59 @@ public struct DictSense: Sendable, Equatable, Identifiable {
     public var id: String { "\(partOfSpeech)-\(rank)-\(definition)" }
 
     public var partOfSpeechLabel: String {
-        switch partOfSpeech {
-        case "n": "名词"
-        case "v": "动词"
-        case "a": "形容词"
-        case "r": "副词"
-        default: partOfSpeech
+        DictPartOfSpeechDisplay.label(for: partOfSpeech)
+    }
+}
+
+enum DictPartOfSpeechDisplay {
+    static let prefixedLabels: [(prefix: String, label: String)] = [
+        ("prep.", "介词"),
+        ("pron.", "代词"),
+        ("conj.", "连词"),
+        ("interj.", "感叹词"),
+        ("aux.", "助动词"),
+        ("adv.", "副词"),
+        ("adj.", "形容词"),
+        ("num.", "数词"),
+        ("art.", "冠词"),
+        ("vt.", "及物动词"),
+        ("vi.", "不及物动词"),
+        ("a.", "形容词"),
+        ("ad.", "副词"),
+        ("n.", "名词"),
+        ("v.", "动词"),
+    ]
+
+    static func label(for code: String) -> String {
+        switch code.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) {
+        case "n", "n.": "名词"
+        case "v", "v.": "动词"
+        case "a", "a.", "s", "adj.": "形容词"
+        case "r", "ad.", "adv.": "副词"
+        case "prep.": "介词"
+        case "pron.": "代词"
+        case "conj.": "连词"
+        case "interj.": "感叹词"
+        case "aux.": "助动词"
+        case "num.": "数词"
+        case "art.": "冠词"
+        case "vt.": "及物动词"
+        case "vi.": "不及物动词"
+        default: code
         }
+    }
+
+    static func splitPrefixedDefinition(
+        _ line: String
+    ) -> (label: String, definition: String)? {
+        let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lowered = trimmed.lowercased()
+        for item in prefixedLabels where lowered.hasPrefix(item.prefix) {
+            let definition = trimmed.dropFirst(item.prefix.count)
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            return (item.label, definition)
+        }
+        return nil
     }
 }
 
@@ -115,7 +161,7 @@ public struct DictEntry: Sendable, Equatable {
     public var meaningGroups: [DictMeaningGroup] {
         translationLines.map { line in
             let value = line.trimmingCharacters(in: .whitespacesAndNewlines)
-            for (prefix, label) in Self.partOfSpeechPrefixes {
+            for (prefix, label) in DictPartOfSpeechDisplay.prefixedLabels {
                 guard value.lowercased().hasPrefix(prefix) else { continue }
                 let meaning = value.dropFirst(prefix.count)
                     .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -163,24 +209,6 @@ public struct DictEntry: Sendable, Equatable {
     public var tags: [String] {
         tag?.split(separator: " ").map(String.init) ?? []
     }
-
-    private static let partOfSpeechPrefixes: [(String, String)] = [
-        ("prep.", "介词"),
-        ("pron.", "代词"),
-        ("conj.", "连词"),
-        ("interj.", "感叹词"),
-        ("aux.", "助动词"),
-        ("adv.", "副词"),
-        ("adj.", "形容词"),
-        ("num.", "数词"),
-        ("art.", "冠词"),
-        ("vt.", "及物动词"),
-        ("vi.", "不及物动词"),
-        ("a.", "形容词"),
-        ("ad.", "副词"),
-        ("n.", "名词"),
-        ("v.", "动词"),
-    ]
 
     private static let wordFormLabels: [String: String] = [
         "0": "原形",

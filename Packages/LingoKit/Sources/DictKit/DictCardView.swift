@@ -49,11 +49,7 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
     var id: String { partOfSpeech }
     var partOfSpeechLabel: String { senses.first?.partOfSpeechLabel ?? partOfSpeech }
     var definitionText: String {
-        senses.map(\.definition).joined(separator: " # ")
-    }
-    var exampleText: String? {
-        let examples = senses.compactMap(\.examples.first)
-        return examples.isEmpty ? nil : examples.joined(separator: " # ")
+        senses.map(\.definition).joined(separator: "; ")
     }
     var synonymText: String? {
         var seen = Set<String>()
@@ -63,6 +59,21 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
             .prefix(6)
         return synonyms.isEmpty ? nil : "≈ \(synonyms.joined(separator: " · "))"
     }
+}
+
+struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
+    let partOfSpeechLabel: String
+    let definitions: [String]
+
+    var id: String { "\(partOfSpeechLabel)-\(definitions.joined())" }
+    var definitionText: String { definitions.joined(separator: "; ") }
+}
+
+struct DictUsageExample: Identifiable, Equatable {
+    let label: String
+    let text: String
+
+    var id: String { "\(label)-\(text)" }
 }
 
 enum DictSenseDisplayPolicy {
@@ -84,6 +95,128 @@ enum DictSenseDisplayPolicy {
             )
         }
     }
+
+    /// ECDICT 的英文释义会把一个义项折成多条缩进续行；这里先恢复完整句子，
+    /// 再按中文词性分组，避免把 pron./conj. 和换行符暴露给用户。
+    static func fallbackGroups(
+        for definitions: [String]
+    ) -> [DictFallbackDefinitionDisplayGroup] {
+        var results: [DictFallbackDefinitionDisplayGroup] = []
+        var currentLabel = "释义"
+        var currentDefinitions: [String] = []
+
+        func flush() {
+            guard !currentDefinitions.isEmpty else { return }
+            results.append(
+                DictFallbackDefinitionDisplayGroup(
+                    partOfSpeechLabel: currentLabel,
+                    definitions: currentDefinitions
+                )
+            )
+            currentDefinitions = []
+        }
+
+        for rawLine in definitions {
+            let trimmed = rawLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else { continue }
+
+            if let prefixed = DictPartOfSpeechDisplay.splitPrefixedDefinition(trimmed) {
+                flush()
+                currentLabel = prefixed.label
+                if !prefixed.definition.isEmpty {
+                    currentDefinitions = [prefixed.definition]
+                }
+                continue
+            }
+
+            let isContinuation = rawLine.first?.isWhitespace == true
+            if isContinuation, let lastIndex = currentDefinitions.indices.last {
+                currentDefinitions[lastIndex] += " \(trimmed)"
+            } else {
+                currentDefinitions.append(trimmed)
+            }
+        }
+        flush()
+        return results
+    }
+}
+
+enum DictUsageExamplePolicy {
+    static func examples(
+        for entry: DictEntry,
+        requestedWord: String,
+        contextText: String?,
+        limit: Int = 6
+    ) -> [DictUsageExample] {
+        guard limit > 0 else { return [] }
+        var results: [DictUsageExample] = []
+        var seen = Set<String>()
+
+        func append(_ text: String, label: String) {
+            guard results.count < limit else { return }
+            let normalized = text
+                .split(whereSeparator: { $0.isWhitespace })
+                .joined(separator: " ")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !normalized.isEmpty,
+                  seen.insert(normalized.lowercased()).inserted
+            else { return }
+            results.append(DictUsageExample(label: label, text: normalized))
+        }
+
+        if let contextual = contextualSentence(
+            in: contextText,
+            matching: [requestedWord, entry.word]
+        ) {
+            append(contextual, label: "当前语境")
+        }
+
+        let groups = DictSenseDisplayPolicy.groups(for: entry.senses)
+        // 先覆盖不同词性，再补充同一词性的不同义项。
+        for group in groups {
+            if let example = group.senses.lazy.flatMap({ $0.examples }).first {
+                append(example, label: group.partOfSpeechLabel)
+            }
+        }
+        for sense in entry.senses {
+            for example in sense.examples {
+                append(example, label: sense.partOfSpeechLabel)
+            }
+        }
+        return results
+    }
+
+    private static func contextualSentence(
+        in contextText: String?,
+        matching words: [String]
+    ) -> String? {
+        guard let contextText else { return nil }
+        let candidates = words
+            .map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+        guard !candidates.isEmpty else { return nil }
+
+        var sentences: [String] = []
+        contextText.enumerateSubstrings(
+            in: contextText.startIndex..<contextText.endIndex,
+            options: .bySentences
+        ) { substring, _, _, _ in
+            if let substring {
+                sentences.append(substring.trimmingCharacters(in: .whitespacesAndNewlines))
+            }
+        }
+        if sentences.isEmpty {
+            sentences = [contextText.trimmingCharacters(in: .whitespacesAndNewlines)]
+        }
+
+        return sentences.first { sentence in
+            let sentenceWords = WordTokenizer.tokenize(sentence).compactMap(\.word)
+            guard sentenceWords.count >= 3 else { return false }
+            return sentenceWords.contains { token in
+                candidates.contains(token.lowercased())
+            }
+        }
+    }
 }
 
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
@@ -91,6 +224,7 @@ public struct DictCardView: View {
     private let phraseCandidates: [String]
     private let dictionary: DictDatabase
     private let grammar: GrammarPointStore
+    private let contextText: String?
     private let onSpeak: (@MainActor (String) -> Void)?
     private let favoriteActions: WordFavoriteActions?
     private let aiFallback: (@Sendable (String) async -> String?)?
@@ -104,11 +238,14 @@ public struct DictCardView: View {
     @State private var isLoadingAI = false
     @State private var isFavorite = false
     @State private var isUpdatingFavorite = false
+    @State private var isEnglishExpanded = false
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         target: DictTarget,
         phraseCandidates: [String] = [],
+        contextText: String? = nil,
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
@@ -118,6 +255,7 @@ public struct DictCardView: View {
     ) {
         _path = State(initialValue: [target])
         self.phraseCandidates = phraseCandidates
+        self.contextText = contextText
         self.dictionary = dictionary
         self.grammar = grammar
         self.onSpeak = onSpeak
@@ -286,12 +424,13 @@ public struct DictCardView: View {
             } else {
                 chineseMeaningSection(entry)
             }
+            if !entry.senses.isEmpty || !entry.fallbackEnglishDefinitions.isEmpty {
+                englishDisclosureSection(entry)
+            }
             if path.count == 1, !contextualPhrases.isEmpty {
                 contextualPhraseSection(contextualPhrases)
             }
-            if !entry.senses.isEmpty || !entry.fallbackEnglishDefinitions.isEmpty {
-                englishSenseSection(entry)
-            }
+            usageExampleSection(entry, requestedWord: word)
             if !entry.wordForms.isEmpty {
                 wordFormsSection(entry)
             }
@@ -363,15 +502,47 @@ public struct DictCardView: View {
         }
     }
 
-    private func englishSenseSection(_ entry: DictEntry) -> some View {
+    private func englishDisclosureSection(_ entry: DictEntry) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Divider()
-            compactSectionTitle("英文释义")
+            Button {
+                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) {
+                    isEnglishExpanded.toggle()
+                }
+            } label: {
+                HStack(spacing: 6) {
+                    Label(
+                        isEnglishExpanded ? "收起英文释义" : "查看英文释义",
+                        systemImage: "character.book.closed"
+                    )
+                    .font(.subheadline.weight(.semibold))
+                    Spacer(minLength: 8)
+                    Image(systemName: "chevron.down")
+                        .font(.caption.weight(.semibold))
+                        .rotationEffect(.degrees(isEnglishExpanded ? 180 : 0))
+                }
+                .frame(minHeight: 34)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(Color.dsSkyDeep)
+            .accessibilityValue(isEnglishExpanded ? "已展开" : "已折叠")
+
+            if isEnglishExpanded {
+                englishSenseContent(entry)
+                    .transition(.opacity)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func englishSenseContent(_ entry: DictEntry) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
             if !entry.senses.isEmpty {
                 let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
                 ForEach(senseGroups) { group in
                     HStack(alignment: .top, spacing: DictCardLayout.definitionColumnSpacing) {
-                        sensePartOfSpeechText(group)
+                        englishPartOfSpeechText(group.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 3) {
                             tappableDictionaryText(
                                 group.definitionText,
@@ -379,14 +550,6 @@ public struct DictCardView: View {
                             )
                                 .lineSpacing(1)
                                 .fixedSize(horizontal: false, vertical: true)
-                            if let example = group.exampleText {
-                                tappableDictionaryText(
-                                    example,
-                                    contextID: "dict-\(entry.word)-example-\(group.id)"
-                                )
-                                    .italic()
-                                    .foregroundStyle(.secondary)
-                            }
                             if let synonyms = group.synonymText {
                                 tappableDictionaryText(
                                     synonyms,
@@ -399,14 +562,21 @@ public struct DictCardView: View {
                     }
                 }
             } else {
-                tappableDictionaryText(
-                    entry.fallbackEnglishDefinitions.joined(separator: " # "),
-                    contextID: "dict-\(entry.word)-fallback"
+                let fallbackGroups = DictSenseDisplayPolicy.fallbackGroups(
+                    for: entry.fallbackEnglishDefinitions
                 )
-                    .font(.subheadline)
-                    .lineSpacing(1)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.leading, DictCardLayout.definitionColumnLeading)
+                ForEach(fallbackGroups) { group in
+                    HStack(alignment: .top, spacing: DictCardLayout.definitionColumnSpacing) {
+                        englishPartOfSpeechText(group.partOfSpeechLabel)
+                        tappableDictionaryText(
+                            group.definitionText,
+                            contextID: "dict-\(entry.word)-fallback-\(group.id)"
+                        )
+                        .font(.subheadline)
+                        .lineSpacing(1)
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
             }
         }
     }
@@ -427,14 +597,52 @@ public struct DictCardView: View {
         path.append(.word(selection.word))
     }
 
-    private func sensePartOfSpeechText(_ group: DictSenseDisplayGroup) -> some View {
-        Text(group.partOfSpeechLabel)
+    private func englishPartOfSpeechText(_ label: String) -> some View {
+        Text(label)
             .font(.footnote.weight(.semibold))
-            .foregroundStyle(Color.dsSkyDeep)
+            .foregroundStyle(Color.dsSunset)
             .lineLimit(1)
             .minimumScaleFactor(0.8)
             .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
             .padding(.top, 1)
+    }
+
+    @ViewBuilder
+    private func usageExampleSection(_ entry: DictEntry, requestedWord: String) -> some View {
+        let examples = DictUsageExamplePolicy.examples(
+            for: entry,
+            requestedWord: requestedWord,
+            contextText: contextText
+        )
+        if !examples.isEmpty {
+            VStack(alignment: .leading, spacing: 5) {
+                Divider()
+                compactSectionTitle("例句")
+                ForEach(Array(examples.enumerated()), id: \.element.id) { index, example in
+                    HStack(alignment: .top, spacing: 5) {
+                        Text("\(index + 1).")
+                            .font(.caption2.monospacedDigit())
+                            .foregroundStyle(.tertiary)
+                            .frame(width: 16, alignment: .trailing)
+                        VStack(alignment: .leading, spacing: 1) {
+                            tappableDictionaryText(
+                                example.text,
+                                contextID: "dict-\(entry.word)-usage-\(index)"
+                            )
+                            .font(.footnote)
+                            .lineSpacing(1)
+                            Text(example.label)
+                                .font(.caption2.weight(.medium))
+                                .foregroundStyle(
+                                    example.label == "当前语境"
+                                        ? Color.dsSkyDeep
+                                        : Color.dsSunset
+                                )
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private func partOfSpeechText(_ text: String) -> some View {
@@ -580,6 +788,7 @@ public struct DictCardView: View {
         isLoading = true
         isFavorite = false
         isUpdatingFavorite = false
+        isEnglishExpanded = false
         aiExplanation = nil
         contextualPhrases = []
         let loadedEntry = await dictionary.lookup(word)

@@ -38,7 +38,7 @@ struct DictDatabaseTests {
         #expect(entry.senses.allSatisfy { !$0.definition.isEmpty })
     }
 
-    @Test("同一词性的多个英文义项合并并用井号分隔")
+    @Test("同一词性的多个英文义项合并并用分号分隔")
     func repeatedPartsOfSpeechAreGrouped() {
         let senses = [
             DictSense(rank: 1, partOfSpeech: "n", definition: "noun", examples: [], synonyms: []),
@@ -62,9 +62,59 @@ struct DictDatabaseTests {
         let groups = DictSenseDisplayPolicy.groups(for: senses)
 
         #expect(groups.map(\.partOfSpeech) == ["n", "v", "a"])
-        #expect(groups[1].definitionText == "first verb # second verb")
-        #expect(groups[1].exampleText == "first example # second example")
+        #expect(groups[1].definitionText == "first verb; second verb")
         #expect(groups[1].synonymText == "≈ make · prepare")
+    }
+
+    @Test("英文回退释义恢复续行并把词性显示为中文")
+    func fallbackEnglishDefinitionsAreStructured() {
+        let groups = DictSenseDisplayPolicy.fallbackGroups(
+            for: [
+                "pron. Which (of two); which one (of two); -- used",
+                "   interrogatively and relatively.",
+                "conj. In case; if; -- used to introduce alternatives",
+                "   connected by or or whether.",
+            ]
+        )
+
+        #expect(groups.map(\.partOfSpeechLabel) == ["代词", "连词"])
+        #expect(
+            groups[0].definitionText
+                == "Which (of two); which one (of two); -- used interrogatively and relatively."
+        )
+        #expect(!groups.map(\.definitionText).joined().contains("#"))
+    }
+
+    @Test("例句优先保留当前语境并覆盖不同词性")
+    func usageExamplesCoverContextAndPartsOfSpeech() {
+        let entry = DictEntry(
+            word: "test",
+            senses: [
+                DictSense(
+                    rank: 1,
+                    partOfSpeech: "n",
+                    definition: "an examination",
+                    examples: ["The test starts at nine."],
+                    synonyms: []
+                ),
+                DictSense(
+                    rank: 1,
+                    partOfSpeech: "v",
+                    definition: "to examine",
+                    examples: ["They test the alarm every week."],
+                    synonyms: []
+                ),
+            ]
+        )
+
+        let examples = DictUsageExamplePolicy.examples(
+            for: entry,
+            requestedWord: "test",
+            contextText: "We can test it after lunch. This sentence is unrelated."
+        )
+
+        #expect(examples.map(\.label) == ["当前语境", "名词", "动词"])
+        #expect(examples.first?.text == "We can test it after lunch.")
     }
 
     @Test("原句候选返回固定搭配但不覆盖单词主释义")
