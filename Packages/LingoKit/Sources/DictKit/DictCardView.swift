@@ -352,19 +352,28 @@ public struct DictCardView: View {
                     HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         sensePartOfSpeechText(row)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(row.sense.definition)
+                            tappableDictionaryText(
+                                row.sense.definition,
+                                contextID: "dict-\(entry.word)-sense-\(row.id)"
+                            )
                                 .font(.subheadline)
                                 .lineSpacing(1)
                                 .fixedSize(horizontal: false, vertical: true)
                             if let example = row.sense.examples.first {
-                                Text(example)
+                                tappableDictionaryText(
+                                    example,
+                                    contextID: "dict-\(entry.word)-example-\(row.id)"
+                                )
                                     .font(.caption)
                                     .italic()
                                     .foregroundStyle(.secondary)
                                     .lineLimit(2)
                             }
                             if !row.sense.synonyms.isEmpty {
-                                Text("≈ \(row.sense.synonyms.prefix(3).joined(separator: " · "))")
+                                tappableDictionaryText(
+                                    "≈ \(row.sense.synonyms.prefix(3).joined(separator: " · "))",
+                                    contextID: "dict-\(entry.word)-synonyms-\(row.id)"
+                                )
                                     .font(.caption2)
                                     .foregroundStyle(.tertiary)
                                     .lineLimit(1)
@@ -373,8 +382,11 @@ public struct DictCardView: View {
                     }
                 }
             } else {
-                ForEach(entry.fallbackEnglishDefinitions, id: \.self) { definition in
-                    Text(definition)
+                ForEach(Array(entry.fallbackEnglishDefinitions.enumerated()), id: \.offset) { index, definition in
+                    tappableDictionaryText(
+                        definition,
+                        contextID: "dict-\(entry.word)-fallback-\(index)"
+                    )
                         .font(.subheadline)
                         .lineSpacing(1)
                         .fixedSize(horizontal: false, vertical: true)
@@ -382,6 +394,22 @@ public struct DictCardView: View {
                 }
             }
         }
+    }
+
+    private func tappableDictionaryText(_ text: String, contextID: String) -> some View {
+        TappableText(
+            tokens: TokenCache.tokens(for: text, cacheKey: contextID),
+            contextID: contextID,
+            onSelect: navigateToSelectedWord
+        )
+    }
+
+    private func navigateToSelectedWord(_ selection: TokenSelection) {
+        if case .word(let currentWord) = currentTarget,
+           currentWord.caseInsensitiveCompare(selection.word) == .orderedSame {
+            return
+        }
+        path.append(.word(selection.word))
     }
 
     private func sensePartOfSpeechText(_ row: DictSenseDisplayRow) -> some View {

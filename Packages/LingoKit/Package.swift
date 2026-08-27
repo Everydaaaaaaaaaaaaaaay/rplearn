@@ -95,9 +95,11 @@ let featureTargets: [Target] = [
     ]),
     feature("HomeFeature", dependencies: [
         module("CoreKit"),
+        module("DictKit"),
         module("DomainKit"),
         module("LLMKit"),
         module("PersistenceKit"),
+        module("SpeechKit"),
     ]),
     feature("ChatFeature", dependencies: [
         module("CoreKit"),

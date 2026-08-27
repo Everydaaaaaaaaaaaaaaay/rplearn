@@ -1,3 +1,4 @@
+import CoreKit
 import DesignSystem
 import DictKit
 import DomainKit
@@ -23,22 +24,38 @@ struct GrammarAnalysisSheet: View {
     let request: GrammarAnalysisRequest
     let service: GrammarAnalysisService
     let initialAIAnalysis: AIGrammarAnalysis?
+    let dictionary: DictDatabase
+    let grammar: GrammarPointStore
+    let onSpeak: (@MainActor (String) -> Void)?
+    let favoriteActions: WordFavoriteActions?
+    let aiFallback: (@Sendable (String) async -> String?)?
     let onAIAnalysis: @MainActor (AIGrammarAnalysis) -> Void
 
     @State private var aiAnalysis: AIGrammarAnalysis?
     @State private var isLoadingAI = false
     @State private var errorMessage: String?
+    @State private var wordSelection: TokenSelection?
     @Environment(\.dismiss) private var dismiss
 
     init(
         request: GrammarAnalysisRequest,
         service: GrammarAnalysisService,
         initialAIAnalysis: AIGrammarAnalysis? = nil,
+        dictionary: DictDatabase,
+        grammar: GrammarPointStore,
+        onSpeak: (@MainActor (String) -> Void)? = nil,
+        favoriteActions: WordFavoriteActions? = nil,
+        aiFallback: (@Sendable (String) async -> String?)? = nil,
         onAIAnalysis: @escaping @MainActor (AIGrammarAnalysis) -> Void = { _ in }
     ) {
         self.request = request
         self.service = service
         self.initialAIAnalysis = initialAIAnalysis
+        self.dictionary = dictionary
+        self.grammar = grammar
+        self.onSpeak = onSpeak
+        self.favoriteActions = favoriteActions
+        self.aiFallback = aiFallback
         self.onAIAnalysis = onAIAnalysis
         _aiAnalysis = State(initialValue: initialAIAnalysis)
     }
@@ -66,6 +83,14 @@ struct GrammarAnalysisSheet: View {
                 }
             }
         }
+        .wordLookupOverlay(
+            selection: $wordSelection,
+            dictionary: dictionary,
+            grammar: grammar,
+            onSpeak: onSpeak,
+            favoriteActions: favoriteActions,
+            aiFallback: aiFallback
+        )
         .task(id: request.id) {
             guard request.requiresAIFallback, aiAnalysis == nil else { return }
             await loadAIAnalysis()
@@ -77,10 +102,12 @@ struct GrammarAnalysisSheet: View {
             Label("原句", systemImage: "text.quote")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(.secondary)
-            Text(request.sentence)
+            lookupText(
+                request.sentence,
+                contextID: "grammar-\(request.id.uuidString)-sentence"
+            )
                 .font(.body)
                 .lineSpacing(4)
-                .textSelection(.enabled)
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -166,12 +193,18 @@ struct GrammarAnalysisSheet: View {
 
     private func localPointCard(_ item: LocalGrammarAnalysisItem, number: Int) -> some View {
         grammarCard(number: number, title: item.point.title) {
-            quote(item.matchedText)
+            quote(
+                item.matchedText,
+                contextID: "grammar-\(request.id.uuidString)-local-\(item.id)-quote"
+            )
             Text(item.point.explanationZh)
                 .font(.subheadline)
             if let example = item.point.examples.first {
                 Divider()
-                Text(example.en)
+                lookupText(
+                    example.en,
+                    contextID: "grammar-\(request.id.uuidString)-local-\(item.id)-example"
+                )
                     .font(.footnote.weight(.medium))
                 Text(example.zh)
                     .font(.caption)
@@ -182,8 +215,14 @@ struct GrammarAnalysisSheet: View {
 
     private func aiPointCard(_ point: AIGrammarAnalysis.Point, number: Int) -> some View {
         grammarCard(number: number, title: point.title) {
-            quote(point.quote)
-            Text(point.pattern)
+            quote(
+                point.quote,
+                contextID: "grammar-\(request.id.uuidString)-ai-\(number)-quote"
+            )
+            lookupText(
+                point.pattern,
+                contextID: "grammar-\(request.id.uuidString)-ai-\(number)-pattern"
+            )
                 .font(.footnote.monospaced())
                 .foregroundStyle(Color.dsSkyDeep)
             Text(point.explanationZh)
@@ -220,14 +259,22 @@ struct GrammarAnalysisSheet: View {
         }
     }
 
-    private func quote(_ text: String) -> some View {
-        Text(text)
+    private func quote(_ text: String, contextID: String) -> some View {
+        lookupText(text, contextID: contextID)
             .font(.footnote.weight(.medium))
             .foregroundStyle(Color.dsSkyDeep)
             .padding(.horizontal, 9)
             .padding(.vertical, 6)
             .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
-            .textSelection(.enabled)
+    }
+
+    private func lookupText(_ text: String, contextID: String) -> some View {
+        TappableText(
+            tokens: TokenCache.tokens(for: text, cacheKey: contextID),
+            contextID: contextID,
+            selection: wordSelection,
+            onSelect: { wordSelection = $0 }
+        )
     }
 
     @MainActor

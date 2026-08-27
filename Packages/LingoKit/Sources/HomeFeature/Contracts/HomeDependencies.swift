@@ -1,6 +1,8 @@
+import DictKit
 import DomainKit
 import LLMKit
 import PersistenceKit
+import SpeechKit
 
 public struct HomeDependencies: Sendable {
     public let economyStore: EconomyStore
@@ -9,6 +11,10 @@ public struct HomeDependencies: Sendable {
     public let regionCatalog: RegionCatalog
     public let rosterStore: RosterStore
     public let chatStore: ChatStore
+    public let favorites: FavoritesStore
+    public let dictionary: DictDatabase
+    public let grammarPoints: GrammarPointStore
+    public let speech: any SpeechService
     public let llm: any LLMClient
 
     public init(
@@ -18,6 +24,10 @@ public struct HomeDependencies: Sendable {
         regionCatalog: RegionCatalog,
         rosterStore: RosterStore,
         chatStore: ChatStore,
+        favorites: FavoritesStore,
+        dictionary: DictDatabase,
+        grammarPoints: GrammarPointStore,
+        speech: any SpeechService,
         llm: any LLMClient
     ) {
         self.economyStore = economyStore
@@ -26,6 +36,10 @@ public struct HomeDependencies: Sendable {
         self.regionCatalog = regionCatalog
         self.rosterStore = rosterStore
         self.chatStore = chatStore
+        self.favorites = favorites
+        self.dictionary = dictionary
+        self.grammarPoints = grammarPoints
+        self.speech = speech
         self.llm = llm
     }
 }

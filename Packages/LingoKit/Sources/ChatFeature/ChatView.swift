@@ -111,6 +111,18 @@ public struct ChatView: View {
                 request: request,
                 service: GrammarAnalysisService(llm: deps.llm),
                 initialAIAnalysis: grammarAICache[request.id],
+                dictionary: deps.dictionary,
+                grammar: deps.grammarPoints,
+                onSpeak: { word in
+                    let speech = deps.speech
+                    Task {
+                        await speech.speak(
+                            SpeechRequest(text: word, language: "en-US", purpose: .pronunciation)
+                        )
+                    }
+                },
+                favoriteActions: wordFavoriteActions,
+                aiFallback: aiWordFallback,
                 onAIAnalysis: { analysis in
                     grammarAICache[request.id] = analysis
                 }

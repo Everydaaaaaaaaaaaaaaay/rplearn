@@ -456,6 +456,10 @@ struct RootView: View {
             regionCatalog: environment.regionCatalog,
             rosterStore: environment.rosterStore,
             chatStore: environment.chatStore,
+            favorites: environment.favoritesStore,
+            dictionary: environment.dictionary,
+            grammarPoints: environment.grammarPoints,
+            speech: environment.speech,
             llm: environment.llmRouter
         )
     }
