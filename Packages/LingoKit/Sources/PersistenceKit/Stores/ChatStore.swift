@@ -219,6 +219,40 @@ public actor ChatStore {
         return inserted.map(dto(from:))
     }
 
+    /// 逐条保存同一次角色回复，供聊天页模拟真人连续输入的送达节奏。
+    ///
+    /// 第一条使用 `startsNewReply = true` 递增会话轮次；后续气泡传 false，
+    /// 从而使逐条出现的多条消息在剧情和测验统计上仍只算一次回复。
+    @discardableResult
+    public func appendAssistantReplyPart(
+        conversationID: UUID,
+        text: String,
+        startsNewReply: Bool
+    ) throws -> MessageDTO {
+        guard let conversation = try fetchConversation(id: conversationID) else {
+            throw ChatError.conversationNotFound
+        }
+        let cleanedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let nextIndex = (conversation.messages.map(\.orderIndex).max() ?? -1) + 1
+        let message = MessageEntity(
+            roleRaw: MessageRole.assistant.rawValue,
+            text: cleanedText,
+            orderIndex: nextIndex,
+            tokenEstimate: TokenEstimator.estimate(cleanedText)
+        )
+        message.conversation = conversation
+        modelContext.insert(message)
+        conversation.lastMessageAt = message.createdAt
+        if startsNewReply {
+            conversation.turnCount += 1
+            conversation.turnsSinceQuiz += 1
+        }
+        try journal(message)
+        try journal(conversation)
+        try modelContext.save()
+        return dto(from: message)
+    }
+
     /// 更新消息文本（流式增量写入 / 结束时定稿）。
     public func updateMessageText(messageID: UUID, text: String, isInterrupted: Bool = false, tokenEstimate: Int? = nil) throws {
         guard let message = try fetchMessage(id: messageID) else { return }

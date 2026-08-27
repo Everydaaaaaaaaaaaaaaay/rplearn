@@ -133,6 +133,31 @@ struct ChatStoreTests {
         #expect(updated?.turnsSinceQuiz == 1)
     }
 
+    @Test("逐条送达的角色气泡仍只计一个回合")
+    func pacedAssistantReplyCountsAsOneTurn() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+
+        let first = try await chat.appendAssistantReplyPart(
+            conversationID: conversation.id,
+            text: "give me a sec",
+            startsNewReply: true
+        )
+        let second = try await chat.appendAssistantReplyPart(
+            conversationID: conversation.id,
+            text: "yeah that works",
+            startsNewReply: false
+        )
+
+        let updated = try await chat.conversation(id: conversation.id)
+        #expect([first.text, second.text] == ["give me a sec", "yeah that works"])
+        #expect(first.orderIndex == 0)
+        #expect(second.orderIndex == 1)
+        #expect(updated?.turnCount == 1)
+        #expect(updated?.turnsSinceQuiz == 1)
+    }
+
     @Test("流式定稿：更新文本与中断标记")
     func updateText() async throws {
         let (chat, roster) = try makeStores()
