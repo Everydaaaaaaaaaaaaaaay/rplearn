@@ -1,5 +1,6 @@
 import CoreKit
 import DesignSystem
+import NaturalLanguage
 import SwiftUI
 
 /// 词典卡内容目标：单词或语法点，卡内栈式跳转（原信息替换显示）。
@@ -49,7 +50,9 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
     var id: String { partOfSpeech }
     var partOfSpeechLabel: String { senses.first?.partOfSpeechLabel ?? partOfSpeech }
     var definitionText: String {
-        senses.map(\.definition).joined(separator: "; ")
+        senses
+            .map { DictDisplayText.normalizedWhitespace($0.definition) }
+            .joined(separator: "; ")
     }
     var synonymText: String? {
         var seen = Set<String>()
@@ -66,14 +69,38 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
     let definitions: [String]
 
     var id: String { "\(partOfSpeechLabel)-\(definitions.joined())" }
-    var definitionText: String { definitions.joined(separator: "; ") }
+    var definitionText: String {
+        definitions
+            .map(DictDisplayText.normalizedWhitespace)
+            .joined(separator: "; ")
+    }
 }
 
 struct DictUsageExample: Identifiable, Equatable {
-    let label: String
+    let partOfSpeechLabel: String
+    let partOfSpeechAbbreviation: String
+    let meaning: String
     let text: String
 
-    var id: String { "\(label)-\(text)" }
+    var id: String { "\(partOfSpeechAbbreviation)-\(text)" }
+    var annotation: String { "（\(partOfSpeechAbbreviation) \(meaning)）" }
+}
+
+struct DictUsageExampleGroup: Identifiable, Equatable {
+    let partOfSpeechLabel: String
+    let partOfSpeechAbbreviation: String
+    let examples: [DictUsageExample]
+
+    var id: String { partOfSpeechAbbreviation }
+}
+
+enum DictDisplayText {
+    static func normalizedWhitespace(_ text: String) -> String {
+        text
+            .split(whereSeparator: { $0.isWhitespace })
+            .joined(separator: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 
 enum DictSenseDisplayPolicy {
@@ -142,48 +169,179 @@ enum DictSenseDisplayPolicy {
 }
 
 enum DictUsageExamplePolicy {
-    static func examples(
+    private struct PartOfSpeechDescriptor {
+        let id: String
+        let label: String
+        let abbreviation: String
+        let meaning: String
+    }
+
+    static func groups(
         for entry: DictEntry,
         requestedWord: String,
         contextText: String?,
-        limit: Int = 6
-    ) -> [DictUsageExample] {
-        guard limit > 0 else { return [] }
+        limit: Int = 4,
+        perPartOfSpeechLimit: Int = 2
+    ) -> [DictUsageExampleGroup] {
+        guard limit > 0, perPartOfSpeechLimit > 0 else { return [] }
         var results: [DictUsageExample] = []
         var seen = Set<String>()
+        var countsByPartOfSpeech: [String: Int] = [:]
 
-        func append(_ text: String, label: String) {
-            guard results.count < limit else { return }
-            let normalized = text
-                .split(whereSeparator: { $0.isWhitespace })
-                .joined(separator: " ")
-                .trimmingCharacters(in: .whitespacesAndNewlines)
+        func append(_ text: String, descriptor: PartOfSpeechDescriptor) {
+            guard results.count < limit,
+                  countsByPartOfSpeech[descriptor.id, default: 0] < perPartOfSpeechLimit
+            else { return }
+            let normalized = DictDisplayText.normalizedWhitespace(text)
             guard !normalized.isEmpty,
                   seen.insert(normalized.lowercased()).inserted
             else { return }
-            results.append(DictUsageExample(label: label, text: normalized))
+            results.append(
+                DictUsageExample(
+                    partOfSpeechLabel: descriptor.label,
+                    partOfSpeechAbbreviation: descriptor.abbreviation,
+                    meaning: descriptor.meaning,
+                    text: normalized
+                )
+            )
+            countsByPartOfSpeech[descriptor.id, default: 0] += 1
         }
 
+        let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
+        let descriptors = senseGroups.map { descriptor(for: $0, entry: entry) }
+        let primaryDescriptor = descriptors.first ?? descriptor(for: entry.meaningGroups.first)
+
+        let matchingWords = [requestedWord, entry.word]
         if let contextual = contextualSentence(
             in: contextText,
-            matching: [requestedWord, entry.word]
+            matching: matchingWords
         ) {
-            append(contextual, label: "当前语境")
+            var contextualDescriptor = primaryDescriptor
+            if let inferredLabel = contextualPartOfSpeechLabel(
+                in: contextual,
+                matching: matchingWords
+            ) {
+                contextualDescriptor = descriptors.first { $0.label == inferredLabel }
+                    ?? descriptor(
+                        for: entry.meaningGroups.first { $0.partOfSpeech == inferredLabel }
+                    )
+                    ?? primaryDescriptor
+            }
+            if let contextualDescriptor {
+                append(contextual, descriptor: contextualDescriptor)
+            }
         }
 
-        let groups = DictSenseDisplayPolicy.groups(for: entry.senses)
-        // 先覆盖不同词性，再补充同一词性的不同义项。
-        for group in groups {
+        // 先让尚未出现的词性各获得一句，再为每个词性补到最多两句。
+        for (group, descriptor) in zip(senseGroups, descriptors)
+        where countsByPartOfSpeech[descriptor.id, default: 0] == 0 {
             if let example = group.senses.lazy.flatMap({ $0.examples }).first {
-                append(example, label: group.partOfSpeechLabel)
+                append(example, descriptor: descriptor)
             }
         }
-        for sense in entry.senses {
-            for example in sense.examples {
-                append(example, label: sense.partOfSpeechLabel)
+        for (group, descriptor) in zip(senseGroups, descriptors) {
+            for example in group.senses.flatMap(\.examples) {
+                append(example, descriptor: descriptor)
             }
         }
-        return results
+
+        var orderedIDs: [String] = []
+        var examplesByID: [String: [DictUsageExample]] = [:]
+        for example in results {
+            let id = example.partOfSpeechAbbreviation
+            if examplesByID[id] == nil {
+                orderedIDs.append(id)
+            }
+            examplesByID[id, default: []].append(example)
+        }
+        return orderedIDs.compactMap { id in
+            guard let examples = examplesByID[id], let first = examples.first else { return nil }
+            return DictUsageExampleGroup(
+                partOfSpeechLabel: first.partOfSpeechLabel,
+                partOfSpeechAbbreviation: first.partOfSpeechAbbreviation,
+                examples: examples
+            )
+        }
+    }
+
+    private static func descriptor(
+        for group: DictSenseDisplayGroup,
+        entry: DictEntry
+    ) -> PartOfSpeechDescriptor {
+        let label = group.partOfSpeechLabel
+        let abbreviation = DictPartOfSpeechDisplay.abbreviation(forCode: group.partOfSpeech)
+            ?? DictPartOfSpeechDisplay.abbreviation(forLabel: label)
+            ?? group.partOfSpeech
+        let matchingMeaning = entry.meaningGroups.first { $0.partOfSpeech == label }
+            ?? entry.meaningGroups.first
+        return PartOfSpeechDescriptor(
+            id: abbreviation,
+            label: label,
+            abbreviation: abbreviation,
+            meaning: conciseMeaning(matchingMeaning?.meaning)
+        )
+    }
+
+    private static func descriptor(
+        for meaningGroup: DictMeaningGroup?
+    ) -> PartOfSpeechDescriptor? {
+        guard let meaningGroup,
+              let label = meaningGroup.partOfSpeech,
+              let abbreviation = meaningGroup.partOfSpeechAbbreviation
+        else { return nil }
+        return PartOfSpeechDescriptor(
+            id: abbreviation,
+            label: label,
+            abbreviation: abbreviation,
+            meaning: conciseMeaning(meaningGroup.meaning)
+        )
+    }
+
+    private static func conciseMeaning(_ meaning: String?) -> String {
+        guard let meaning else { return "常见用法" }
+        let components = meaning.components(separatedBy: CharacterSet(charactersIn: ",，;；"))
+        return components
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .first(where: { !$0.isEmpty })
+            ?? meaning.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private static func contextualPartOfSpeechLabel(
+        in sentence: String,
+        matching words: [String]
+    ) -> String? {
+        let candidates = Set(
+            words
+                .map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty }
+        )
+        guard !candidates.isEmpty else { return nil }
+
+        let tagger = NLTagger(tagSchemes: [.lexicalClass])
+        tagger.string = sentence
+        var inferredLabel: String?
+        tagger.enumerateTags(
+            in: sentence.startIndex..<sentence.endIndex,
+            unit: .word,
+            scheme: .lexicalClass,
+            options: [.omitWhitespace, .omitPunctuation, .joinNames]
+        ) { tag, tokenRange in
+            let token = sentence[tokenRange].lowercased()
+            guard candidates.contains(token) else { return true }
+            switch tag {
+            case .noun: inferredLabel = "名词"
+            case .verb: inferredLabel = "动词"
+            case .adjective: inferredLabel = "形容词"
+            case .adverb: inferredLabel = "副词"
+            case .pronoun: inferredLabel = "代词"
+            case .conjunction: inferredLabel = "连词"
+            case .preposition: inferredLabel = "介词"
+            case .interjection: inferredLabel = "感叹词"
+            default: break
+            }
+            return false
+        }
+        return inferredLabel
     }
 
     private static func contextualSentence(
@@ -541,7 +699,7 @@ public struct DictCardView: View {
             if !entry.senses.isEmpty {
                 let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
                 ForEach(senseGroups) { group in
-                    HStack(alignment: .top, spacing: DictCardLayout.definitionColumnSpacing) {
+                    HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 3) {
                             tappableDictionaryText(
@@ -566,7 +724,7 @@ public struct DictCardView: View {
                     for: entry.fallbackEnglishDefinitions
                 )
                 ForEach(fallbackGroups) { group in
-                    HStack(alignment: .top, spacing: DictCardLayout.definitionColumnSpacing) {
+                    HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
                         tappableDictionaryText(
                             group.definitionText,
@@ -589,6 +747,25 @@ public struct DictCardView: View {
         )
     }
 
+    private func tappableExampleText(
+        _ example: DictUsageExample,
+        contextID: String
+    ) -> some View {
+        var tokens = TokenCache.tokens(for: example.text, cacheKey: contextID)
+        tokens.append(
+            TextToken(
+                id: tokens.count,
+                display: example.annotation,
+                word: nil
+            )
+        )
+        return TappableText(
+            tokens: tokens,
+            contextID: contextID,
+            onSelect: navigateToSelectedWord
+        )
+    }
+
     private func navigateToSelectedWord(_ selection: TokenSelection) {
         if case .word(let currentWord) = currentTarget,
            currentWord.caseInsensitiveCompare(selection.word) == .orderedSame {
@@ -604,40 +781,34 @@ public struct DictCardView: View {
             .lineLimit(1)
             .minimumScaleFactor(0.8)
             .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
-            .padding(.top, 1)
     }
 
     @ViewBuilder
     private func usageExampleSection(_ entry: DictEntry, requestedWord: String) -> some View {
-        let examples = DictUsageExamplePolicy.examples(
+        let groups = DictUsageExamplePolicy.groups(
             for: entry,
             requestedWord: requestedWord,
             contextText: contextText
         )
-        if !examples.isEmpty {
+        if !groups.isEmpty {
             VStack(alignment: .leading, spacing: 5) {
                 Divider()
                 compactSectionTitle("例句")
-                ForEach(Array(examples.enumerated()), id: \.element.id) { index, example in
-                    HStack(alignment: .top, spacing: 5) {
-                        Text("\(index + 1).")
-                            .font(.caption2.monospacedDigit())
-                            .foregroundStyle(.tertiary)
-                            .frame(width: 16, alignment: .trailing)
-                        VStack(alignment: .leading, spacing: 1) {
-                            tappableDictionaryText(
-                                example.text,
-                                contextID: "dict-\(entry.word)-usage-\(index)"
-                            )
-                            .font(.footnote)
-                            .lineSpacing(1)
-                            Text(example.label)
-                                .font(.caption2.weight(.medium))
-                                .foregroundStyle(
-                                    example.label == "当前语境"
-                                        ? Color.dsSkyDeep
-                                        : Color.dsSunset
+                ForEach(groups) { group in
+                    HStack(
+                        alignment: .firstTextBaseline,
+                        spacing: DictCardLayout.definitionColumnSpacing
+                    ) {
+                        englishPartOfSpeechText(group.partOfSpeechLabel)
+                        VStack(alignment: .leading, spacing: 6) {
+                            ForEach(Array(group.examples.enumerated()), id: \.element.id) { index, example in
+                                tappableExampleText(
+                                    example,
+                                    contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
                                 )
+                                .font(.subheadline)
+                                .lineSpacing(1)
+                            }
                         }
                     }
                 }
