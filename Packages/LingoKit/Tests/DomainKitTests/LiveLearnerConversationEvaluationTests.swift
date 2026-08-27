@@ -153,12 +153,16 @@ struct LiveLearnerConversationEvaluationTests {
         #expect(!lowercase.contains("as an ai"))
         #expect(!lowercase.contains("language model"))
         #expect(flattened.count <= 500, "\(scenario.id) 第 \(turn) 轮过长")
+        #expect(
+            messages.allSatisfy { wordCount($0) <= RoleplayReplyFormatter.maximumWordsPerMessage },
+            "\(scenario.id) 第 \(turn) 轮存在过长气泡：\(messages)"
+        )
 
         if [.primary1, .primary2, .primary3].contains(scenario.learner.difficulty) {
             let longestMessage = messages
                 .map { wordCount($0) }
                 .max() ?? 0
-            #expect(longestMessage <= 24, "初学者单条消息过长：\(longestMessage) 词")
+            #expect(longestMessage <= 8, "初学者单条消息过长：\(longestMessage) 词")
             #expect(flattened.contains("?"), "初学者回复缺少容易接续的问题")
         }
     }

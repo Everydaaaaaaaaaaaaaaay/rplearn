@@ -8,7 +8,7 @@ struct ProactiveMessageServiceTests {
     @Test("模型输出会整理为一条自然消息")
     func normalizesGeneratedMessage() async {
         let llm = MockLLMProvider { _ in
-            "  \"I found an old photo at the shop today. What kind of photos do you like taking?\"  \n"
+            "  \"Found an old photo today. What photos do you like?\"  \n"
         }
         let service = ProactiveMessageService(llm: llm)
 
@@ -18,7 +18,7 @@ struct ProactiveMessageServiceTests {
             occasion: .introduction
         )
 
-        #expect(message == "I found an old photo at the shop today. What kind of photos do you like taking?")
+        #expect(message == "Found an old photo today. What photos do you like?")
     }
 
     @Test("消息空白通过一次扫描统一归一化")
@@ -36,7 +36,7 @@ struct ProactiveMessageServiceTests {
             "Afternoon, Xiaoyu. I spent an hour shelving books and arguing with a customer about whether Orwell is overrated. Reckon that is a debate you would have an opinion on?"
         ) == nil)
         #expect(ProactiveMessageService.normalized(
-            "I saw something funny at work today and thought of you. What made you laugh today?"
+            "Saw something funny today. What made you laugh?"
         ) != nil)
     }
 
@@ -81,7 +81,7 @@ struct ProactiveMessageServiceTests {
         #expect(prompt.contains("university learner"))
         #expect(prompt.contains("Do not guilt"))
         #expect(prompt.contains("comprehension ceiling"))
-        #expect(prompt.contains("8-20 words total"))
+        #expect(prompt.contains("6-14 words total"))
     }
 
     @Test("初学者的离线兜底同样保持短句与选择式问题")

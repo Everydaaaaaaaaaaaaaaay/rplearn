@@ -132,6 +132,11 @@ public enum PromptBuilder {
                 """
                 ## Final reply contract
                 \(replyContract(for: learner.difficulty))
+                Treat each chat line as one separately sent bubble. Except where the level limit is lower, aim for \
+                about 5-10 words per bubble and never exceed 12. A bubble does not need to be a complete sentence. \
+                When a thought has two clauses, often break at a comma, semicolon, colon, or dash and continue in \
+                the next bubble, sometimes beginning with and, but, so, because, or while. Mix complete short \
+                bubbles with these continuation fragments; do not split at every comma or repeat one fixed pattern.
                 Check this contract immediately before sending. These line and word limits apply to the chat messages \
                 before any optional quiz block.
                 """
@@ -200,7 +205,7 @@ public enum PromptBuilder {
             ),
             messages: chatMessages(history: history, rawWindow: historyWindow),
             // 出题时给足输出空间，避免 quiz JSON 被截断。
-            maxTokens: quizRequested ? 900 : 160,
+            maxTokens: quizRequested ? 900 : 120,
             temperature: 0.8
         )
     }
@@ -271,20 +276,20 @@ public enum PromptBuilder {
                 "words and one sentence. Use at most 16 words total. Share only one idea or action, never a list of steps. The final line must be exactly one " +
                 "easy yes/no or A-or-B question."
         case .primary4, .primary5, .primary6:
-            "Write 1 or 2 chat lines, normally one sentence per line, at most 12 English words per line and 22 words total. Focus on one idea. End with one short, " +
+            "Write 1-3 short chat lines, at most 10 English words per line and 20 words total. Focus on one idea. End with one short, " +
                 "concrete question the friend can answer in a few words."
         case .junior1, .junior2, .junior3:
-            "Write at most 2 chat lines, normally one sentence per line, at most 16 English words per line and 28 words total. Ask no more than one focused " +
+            "Write 1-3 short chat lines, at most 12 English words per line and 24 words total. Ask no more than one focused " +
                 "question, and avoid multi-step explanations."
         case .senior1, .senior2, .senior3:
-            "Write 1 or 2 chat lines most of the time; a third is rare. Use at most 16 English words per line, 30 words and 3 short sentences total. " +
-                "Normally put one sentence on each line and develop only one conversational idea."
+            "Write 1-3 short chat lines. Use at most 12 English words per line, 26 words and 3 short sentences total. " +
+                "Develop only one conversational idea and let some lines be spoken-style fragments."
         case .undergraduate:
-            "Write 1 or 2 chat lines most of the time; a third is rare. Use at most 16 English words per line, 32 words and 3 short sentences total. " +
-                "Normally put one sentence on each line, stay responsive and leave a natural opening."
+            "Write 1-3 short chat lines. Use at most 12 English words per line, 26 words and 3 short sentences total. " +
+                "Stay responsive, allow spoken-style fragments, and leave a natural opening."
         case .postgraduate, .advanced:
-            "Write 1 or 2 chat lines most of the time; a third is rare. Use at most 16 English words per line, 34 words and 3 short sentences total. " +
-                "Normally put one sentence on each line. Keep the rhythm like relaxed messaging, not an essay or vocabulary showcase."
+            "Write 1-3 short chat lines. Use at most 12 English words per line, 28 words and 3 short sentences total. " +
+                "Allow spoken-style fragments and keep the rhythm like relaxed messaging, not an essay or vocabulary showcase."
         }
     }
 

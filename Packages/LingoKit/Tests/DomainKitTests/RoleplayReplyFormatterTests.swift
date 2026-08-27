@@ -17,11 +17,12 @@ struct RoleplayReplyFormatterTests {
                 "Mate, nobody says \"sir\" in London unless they're taking the mick 😁",
                 "Just \"hey\" works fine with me!",
                 "You watching British period dramas or something?",
+                "That's where people talk like that",
             ]
         )
     }
 
-    @Test("一整段长回复按每条最多两句拆开")
+    @Test("一整段回复会把极短句组合成紧凑发送序列")
     func splitsLongParagraphBySentences() {
         let raw = "One. Two! Three? Four. Five"
 
@@ -34,7 +35,7 @@ struct RoleplayReplyFormatterTests {
         )
     }
 
-    @Test("超量回复最多保留三条且优先保留接续问题")
+    @Test("超量回复最多保留四条且优先保留接续问题")
     func limitsOverflowAndKeepsFollowUpQuestion() {
         let raw = "One. Two. Three. Four. Five. Six. Seven. Eight."
 
@@ -43,6 +44,7 @@ struct RoleplayReplyFormatterTests {
                 "One. Two.",
                 "Three. Four.",
                 "Five. Six.",
+                "Seven. Eight.",
             ]
         )
 
@@ -51,6 +53,7 @@ struct RoleplayReplyFormatterTests {
             RoleplayReplyFormatter.messages(from: withQuestion) == [
                 "One fairly long reaction goes right here.",
                 "Another useful detail follows after that point.",
+                "Extra detail probably should not survive here.",
                 "What do you honestly think about all this?",
             ]
         )
@@ -59,15 +62,14 @@ struct RoleplayReplyFormatterTests {
         #expect(RoleplayReplyFormatter.messages(from: punctuationlessQuestion).last == "You settling in alright")
     }
 
-    @Test("两句只有都很短时才放进同一气泡")
+    @Test("两句只有合计不超过九词时才放进同一气泡")
     func packsOnlyBriefSentencePairs() {
-        let raw = "Just got in from the shop, mate. Rain is coming down hard outside. You settling in alright? London feels wild at first, but you get used to it."
+        let raw = "Home now. Rain is pouring. You alright? London feels wild at first."
 
         #expect(
             RoleplayReplyFormatter.messages(from: raw) == [
-                "Just got in from the shop, mate.",
-                "Rain is coming down hard outside. You settling in alright?",
-                "London feels wild at first, but you get used to it.",
+                "Home now. Rain is pouring.",
+                "You alright? London feels wild at first.",
             ]
         )
     }
@@ -79,10 +81,29 @@ struct RoleplayReplyFormatterTests {
         let messages = RoleplayReplyFormatter.messages(from: raw)
         #expect(messages == [
             "Rain is absolutely pouring outside,",
-            "so I am making tea and pretending my book will somehow finish writing itself",
+            "so I am making tea",
+            "and pretending my book will somehow finish writing itself",
             "while I stare at the wall.",
         ])
-        #expect(messages.allSatisfy { $0.split(whereSeparator: \.isWhitespace).count <= 16 })
+        #expect(messages.allSatisfy {
+            $0.split(whereSeparator: \.isWhitespace).count
+                <= RoleplayReplyFormatter.maximumWordsPerMessage
+        })
+    }
+
+    @Test("用户截图中的长回复会缩短约一半并在逗号处续发")
+    func splitsReportedLongReplyLikeNaturalTyping() {
+        let raw = "Just got in from the shop, mate. Rain’s absolutely chucking it down outside, so I’m making a cuppa and pretending my novel’s going to write itself while I stare at the wall. You settling in alright?"
+
+        let messages = RoleplayReplyFormatter.messages(from: raw)
+
+        #expect(messages.count == RoleplayReplyFormatter.maximumMessagesPerReply)
+        #expect(messages.allSatisfy {
+            $0.split(whereSeparator: \.isWhitespace).count
+                <= RoleplayReplyFormatter.maximumWordsPerMessage
+        })
+        #expect(messages.contains { $0.hasSuffix(",") })
+        #expect(messages.last == "You settling in alright?")
     }
 
     @Test("Unicode 空行也会被彻底移除")

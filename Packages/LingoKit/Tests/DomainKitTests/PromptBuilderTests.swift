@@ -144,9 +144,22 @@ struct PromptBuilderTests {
             history: []
         )
         #expect(request.tier == .balanced)
-        #expect(request.maxTokens == 160)
+        #expect(request.maxTokens == 120)
         #expect(request.temperature == 0.8)
         #expect(request.responseFormat == .text)
+    }
+
+    @Test("文本聊天允许在逗号处续发且限制每个气泡长度")
+    func textModeUsesNaturalShortBubbleContract() {
+        let prompt = PromptBuilder.roleplaySystemPrompt(
+            card: card,
+            learner: learner(difficulty: .advanced)
+        )
+
+        #expect(prompt.contains("about 5-10 words per bubble"))
+        #expect(prompt.contains("does not need to be a complete sentence"))
+        #expect(prompt.contains("often break at a comma"))
+        #expect(prompt.contains("do not split at every comma"))
     }
 
     @Test("实时语音提示要求短句、纯口语且不输出视觉符号")
@@ -184,7 +197,7 @@ struct PromptBuilderTests {
 
         #expect(request.messages.count == 12)
         #expect(request.messages.first?.content == "m18")
-        #expect(request.maxTokens == 160)
+        #expect(request.maxTokens == 120)
     }
 
     @Test("出题回合：附加出题指令并放宽 maxTokens")

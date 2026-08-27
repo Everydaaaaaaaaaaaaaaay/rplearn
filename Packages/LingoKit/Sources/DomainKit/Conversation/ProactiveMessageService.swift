@@ -4,6 +4,8 @@ import PersistenceKit
 
 /// 生成角色主动发起的话题。这里只负责文案，发送时机由应用层统一编排。
 public struct ProactiveMessageService: Sendable {
+    private static let maximumWordsPerMessage = 14
+
     public enum Occasion: Sendable, Equatable {
         /// 刚成为好友时的第一条消息。
         case introduction
@@ -34,7 +36,7 @@ public struct ProactiveMessageService: Sendable {
                 recentMessages: recentMessages
             ),
             messages: [.user("Write the message now.")],
-            maxTokens: 80,
+            maxTokens: 60,
             temperature: 0.8
         )
 
@@ -91,7 +93,7 @@ public struct ProactiveMessageService: Sendable {
         \(PromptBuilder.interactionGuidance(for: learner.difficulty))
         Treat that level as a comprehension ceiling, not a reason to use difficult vocabulary. Even for an advanced \
         learner, default to ordinary high-frequency spoken words and do not deliberately show off idioms or rare words.
-        Write exactly one natural English chat message of 1-2 short sentences and 8-20 words total. Keep one small \
+        Write exactly one natural English chat message of 1-2 short sentences and 6-14 words total. Keep one small \
         conversational beat. Sentence-ending punctuation is optional when omitting it feels like natural texting.
         Stay in character, open a topic that supports the primary goal, and end with an approachable question. \
         Sound like a real friend, not a teacher. Do not explain vocabulary, \
@@ -122,7 +124,7 @@ public struct ProactiveMessageService: Sendable {
         guard !value.isEmpty,
               value.count <= 220,
               (1...2).contains(sentenceCount),
-              wordCount <= 20,
+              wordCount <= maximumWordsPerMessage,
               value.unicodeScalars.contains(where: {
                   (65...90).contains($0.value) || (97...122).contains($0.value)
               })
@@ -135,7 +137,7 @@ public struct ProactiveMessageService: Sendable {
         learner: LearnerContext,
         occasion: Occasion
     ) -> String {
-        if [.primary1, .primary2, .primary3].contains(learner.difficulty) {
+        if [.kindergarten, .primary1, .primary2, .primary3].contains(learner.difficulty) {
             return switch learner.goal {
             case .travel:
                 "Hi! Let’s take a trip. Train or plane?"
@@ -156,13 +158,17 @@ public struct ProactiveMessageService: Sendable {
         let englishOccupation = occupation.unicodeScalars.allSatisfy { $0.value < 128 }
             ? occupation.trimmingCharacters(in: .whitespacesAndNewlines)
             : ""
+        let shortOccupation = englishOccupation
+            .split(whereSeparator: \.isWhitespace)
+            .prefix(3)
+            .joined(separator: " ")
 
-        if !englishOccupation.isEmpty {
+        if !shortOccupation.isEmpty {
             return switch occasion {
             case .introduction:
-                "Hey! My work as \(englishOccupation) gets interesting. What job would you try for a day?"
+                "Being a \(shortOccupation) got interesting today. What job would you try?"
             case .checkIn:
-                "Work made me curious today: what small thing instantly makes your day better?"
+                "Work got interesting today. What small thing made your day better?"
             }
         }
 
@@ -170,7 +176,7 @@ public struct ProactiveMessageService: Sendable {
         case .introduction:
             "Hey, random question: what small part of your day do you really enjoy?"
         case .checkIn:
-            "Hey, I’m taking a little break and thought of you. What’s something you’ve been enjoying lately?"
+            "Hey, quick break here. What have you been enjoying lately?"
         }
     }
 }
