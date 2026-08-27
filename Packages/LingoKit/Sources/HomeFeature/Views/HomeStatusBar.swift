@@ -118,6 +118,7 @@ struct HomeStatusBar: View {
 private extension DifficultyLevel {
     var hudShortName: String {
         switch self {
+        case .kindergarten: "启蒙"
         case .primary1: "小一"
         case .primary2: "小二"
         case .primary3: "小三"
@@ -130,9 +131,9 @@ private extension DifficultyLevel {
         case .senior1: "高一"
         case .senior2: "高二"
         case .senior3: "高三"
-        case .undergraduate: "本科"
-        case .postgraduate: "研究生"
-        case .advanced: "进阶"
+        case .undergraduate: "四级"
+        case .postgraduate: "六级"
+        case .advanced: "高阶"
         }
     }
 }

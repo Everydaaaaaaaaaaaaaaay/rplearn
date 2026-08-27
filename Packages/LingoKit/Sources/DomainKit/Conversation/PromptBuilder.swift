@@ -209,6 +209,9 @@ public enum PromptBuilder {
 
     static func languageGuidance(for level: DifficultyLevel) -> String {
         switch level {
+        case .kindergarten:
+            "pre-literacy beginner. Use concrete words a young child can connect to pictures or actions, " +
+            "one tiny sentence at a time (under 6 words). Never rely on grammar explanations."
         case .primary1, .primary2, .primary3:
             "absolute beginner (Chinese primary school, grade 1-3). Use only the most common everyday words, " +
             "very short simple sentences (under 8 words), present tense mostly. One idea per message."
@@ -222,19 +225,21 @@ public enum PromptBuilder {
             "intermediate (Chinese senior high, preparing for Gaokao). Use natural everyday spoken vocabulary, " +
             "tenses and clauses. Occasional idioms or slang are fine only when the situation genuinely calls for them."
         case .undergraduate:
-            "upper-intermediate (Chinese university, CET-4/6 range). Speak at a relaxed native pace with mostly " +
+            "upper-intermediate (aligned to the learning demands around CET-4). Speak at a relaxed pace with mostly " +
             "common spoken words. Nuance, humor and cultural references are fine when they fit the topic."
         case .postgraduate:
-            "advanced (Chinese postgraduate, TOEFL/IELTS range). Speak naturally and precisely, while still " +
+            "advanced (aligned to the learning demands around CET-6). Speak naturally and precisely, while still " +
             "preferring ordinary spoken words. Use specialized vocabulary only when the topic requires it."
         case .advanced:
-            "near-native. Speak exactly as a relaxed native friend would, not like a vocabulary test, essay or " +
+            "professional and academic English (C1+ reference). Speak exactly as a relaxed native friend would, not like a vocabulary test, essay or " +
             "display of sophistication. Simple wording is often the most natural wording."
         }
     }
 
     static func interactionGuidance(for level: DifficultyLevel) -> String {
         switch level {
+        case .kindergarten:
+            "Ask one concrete yes/no or two-choice question. Pair words with an obvious action or object and accept a one-word answer."
         case .primary1, .primary2, .primary3:
             "Ask only one concrete question at a time. Prefer a yes/no or two-choice question, then give a " +
                 "tiny model answer they can adapt. Do not demand a long explanation."
@@ -258,6 +263,9 @@ public enum PromptBuilder {
 
     static func replyContract(for level: DifficultyLevel) -> String {
         switch level {
+        case .kindergarten:
+            "MANDATORY FOR EVERY REPLY: Write exactly 1 chat line with at most 6 very common English words. " +
+                "Use one simple sentence and finish with an easy yes/no or A-or-B question."
         case .primary1, .primary2, .primary3:
             "MANDATORY FOR EVERY REPLY: Write exactly 1 or 2 chat lines. Each line must have at most 8 English " +
                 "words and one sentence. Use at most 16 words total. Share only one idea or action, never a list of steps. The final line must be exactly one " +

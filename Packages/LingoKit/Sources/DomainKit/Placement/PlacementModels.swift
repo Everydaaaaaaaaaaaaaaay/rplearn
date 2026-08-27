@@ -126,7 +126,7 @@ public enum PlacementQuestionBank {
     }
 
     public static func validate(_ questions: [PlacementQuestion]) throws {
-        guard questions.count >= 40 else {
+        guard questions.count >= 80 else {
             throw BankError.insufficientQuestions(questions.count)
         }
         var ids = Set<String>()
@@ -170,7 +170,7 @@ public enum PlacementQuestionBank {
             let matching = questions
                 .filter { $0.skill == skill }
                 .sorted { $0.difficulty < $1.difficulty }
-            guard matching.count >= 8 else {
+            guard matching.count >= 20 else {
                 throw BankError.missingSkill(skill)
             }
             guard Set(matching.map(\.format)).count >= 2 else {
@@ -178,15 +178,15 @@ public enum PlacementQuestionBank {
             }
             guard let easiest = matching.first?.difficulty,
                   let hardest = matching.last?.difficulty,
-                  easiest <= -2.3,
-                  hardest >= 2.2
+                  easiest <= -2.75,
+                  hardest >= 2.5
             else {
                 throw BankError.insufficientDifficultyCoverage(skill)
             }
             let largestGap = zip(matching, matching.dropFirst())
                 .map { $1.difficulty - $0.difficulty }
                 .max() ?? 0
-            guard largestGap <= 0.75 else {
+            guard largestGap <= 0.55 else {
                 throw BankError.excessiveDifficultyGap(skill)
             }
         }

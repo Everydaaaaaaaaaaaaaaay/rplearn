@@ -18,7 +18,7 @@ struct SelfAssessedEnglishLevelTests {
     func restoresExistingDifficulty(_ difficulty: DifficultyLevel) {
         let selfAssessment = SelfAssessedEnglishLevel.closest(to: difficulty)
         switch difficulty {
-        case .primary1, .primary2, .primary3:
+        case .kindergarten, .primary1, .primary2, .primary3:
             #expect(selfAssessment == .starting)
         case .primary4, .primary5, .primary6:
             #expect(selfAssessment == .foundation)

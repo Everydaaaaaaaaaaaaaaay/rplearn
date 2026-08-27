@@ -5,33 +5,39 @@ import PersistenceKit
 ///
 /// 使用固定题库、带猜测修正的 3PL IRT 和网格化贝叶斯后验估计：
 /// - 自评等级只作为宽松先验，不直接决定结果；
-/// - 每项能力至少取样两次，并优先切换任务形态；
-/// - 以整个后验分布的期望信息量选题，且限制相邻题难度跳幅；
+/// - 每项能力至少取样三次，并优先切换任务形态；
+/// - 从信息量相近的优质候选中随机抽题，且限制相邻题难度跳幅；
 /// - 只有精度、等级稳定度和答案一致性同时足够时才提前停止；
-/// - 最多 12 题，避免把学习校准做成长考试。
+/// - 第 14 题后动态判断，最多 20 题，避免把学习校准做成长考试。
 public struct AdaptivePlacementEngine: Sendable {
-    public static let minimumQuestionCount = 8
-    public static let maximumQuestionCount = 12
-    public static let minimumQuestionsPerSkill = 2
+    public static let minimumQuestionCount = 14
+    public static let maximumQuestionCount = 20
+    public static let minimumQuestionsPerSkill = 3
     public static let maximumDifficultyStep = 0.85
-    public static let stoppingStandardError = 0.64
-    public static let stoppingLevelConfidence = 0.34
+    public static let stoppingStandardError = 0.54
+    public static let stoppingLevelConfidence = 0.58
 
-    private static let earlyStoppingStandardError = 0.5
-    private static let earlyStoppingLevelConfidence = 0.52
+    private static let earlyStoppingStandardError = 0.44
+    private static let earlyStoppingLevelConfidence = 0.72
+    private static let relaxedStoppingQuestionCount = 17
 
     private static let thetaGrid: [Double] = stride(
-        from: -3.0,
-        through: 3.0,
+        from: -3.25,
+        through: 3.25,
         by: 0.05
     ).map { $0 }
 
+    private let selectionSeed: UInt64
     private var logPosterior: [Double]
     public private(set) var responses: [PlacementResponse] = []
 
-    public init(priorLevel: DifficultyLevel) {
+    public init(
+        priorLevel: DifficultyLevel,
+        selectionSeed: UInt64 = UInt64.random(in: 0...UInt64.max)
+    ) {
+        self.selectionSeed = selectionSeed
         let priorMean = Self.priorMean(for: priorLevel)
-        let priorStandardDeviation = 1.15
+        let priorStandardDeviation = 1.35
         logPosterior = Self.thetaGrid.map { theta in
             -0.5 * pow((theta - priorMean) / priorStandardDeviation, 2)
         }
@@ -46,11 +52,17 @@ public struct AdaptivePlacementEngine: Sendable {
         posteriorMoments.standardDeviation
     }
 
-    /// 当前推荐等级在后验分布中所占的概率质量。
+    /// 后验落在当前推荐等级或相邻一级的概率质量。
+    ///
+    /// 14–20 道短测不足以把十六个窄等级当成正式考试分数精确切开，
+    /// 因而以“相邻一级内稳定”控制停测，并同时给出 90% 可信区间。
     public var levelConfidence: Double {
         let selectedLevel = Self.difficultyLevel(for: ability)
+        let selectedOrdinal = selectedLevel.placementOrdinal
         return zip(Self.thetaGrid, normalizedPosterior)
-            .filter { Self.difficultyLevel(for: $0.0) == selectedLevel }
+            .filter {
+                abs(Self.difficultyLevel(for: $0.0).placementOrdinal - selectedOrdinal) <= 1
+            }
             .reduce(0) { $0 + $1.1 }
     }
 
@@ -77,12 +89,12 @@ public struct AdaptivePlacementEngine: Sendable {
         }
         guard responses.count >= Self.minimumQuestionCount,
               hasRequiredSkillCoverage,
-              inversionCount <= 1
+              inversionCount <= 2
         else {
             return false
         }
 
-        if responses.count < 10 {
+        if responses.count < Self.relaxedStoppingQuestionCount {
             return standardError <= Self.earlyStoppingStandardError
                 && levelConfidence >= Self.earlyStoppingLevelConfidence
         }
@@ -104,7 +116,7 @@ public struct AdaptivePlacementEngine: Sendable {
 
         var candidates = questions.filter { !answeredIDs.contains($0.id) }
 
-        // 前八题严格轮转到当前取样最少的能力，保证每项至少有两次证据。
+        // 前十二题严格轮转到当前取样最少的能力，保证每项至少有三次证据。
         if minimumSkillCount < Self.minimumQuestionsPerSkill {
             let leastSampledSkills = Set(
                 PlacementSkill.allCases.filter {
@@ -117,17 +129,7 @@ public struct AdaptivePlacementEngine: Sendable {
             }
         }
 
-        // 同一能力优先换一种任务形态，避免两次证据都依赖同一种答题方式。
-        let usedFormatsBySkill = Dictionary(grouping: responses, by: \.skill)
-            .mapValues { Set($0.map(\.format)) }
-        let formatDiverse = candidates.filter {
-            !(usedFormatsBySkill[$0.skill] ?? []).contains($0.format)
-        }
-        if !formatDiverse.isEmpty {
-            candidates = formatDiverse
-        }
-
-        // 再从兼顾能力覆盖与题型变化的候选中限制难度跳幅。
+        // 能力覆盖之后优先限制难度跳幅，避免为了切换题型突然跨越多个等级。
         if let previousDifficulty {
             let smooth = candidates.filter {
                 abs($0.difficulty - previousDifficulty) <= Self.maximumDifficultyStep
@@ -137,30 +139,47 @@ public struct AdaptivePlacementEngine: Sendable {
             }
         }
 
+        // 在难度平滑的候选中优先换任务形态，避免证据依赖单一答题方式。
+        let usedFormatsBySkill = Dictionary(grouping: responses, by: \.skill)
+            .mapValues { Set($0.map(\.format)) }
+        let formatDiverse = candidates.filter {
+            !(usedFormatsBySkill[$0.skill] ?? []).contains($0.format)
+        }
+        if !formatDiverse.isEmpty {
+            candidates = formatDiverse
+        }
+
         let posteriorProbabilities = normalizedPosterior
         let currentAbility = zip(Self.thetaGrid, posteriorProbabilities)
             .reduce(0) { $0 + $1.0 * $1.1 }
         let targetAbility = responses.isEmpty ? currentAbility - 0.3 : currentAbility
-        var best: (question: PlacementQuestion, score: Double)?
-        for candidate in candidates {
-            let score = selectionScore(
-                candidate,
-                skillCounts: skillCounts,
-                minimumSkillCount: minimumSkillCount,
-                previousSkill: previousSkill,
-                previousFormat: previousFormat,
-                targetAbility: targetAbility,
-                posteriorProbabilities: posteriorProbabilities
+        let ranked = candidates.map { candidate in
+            (
+                question: candidate,
+                score: selectionScore(
+                    candidate,
+                    skillCounts: skillCounts,
+                    minimumSkillCount: minimumSkillCount,
+                    previousSkill: previousSkill,
+                    previousFormat: previousFormat,
+                    targetAbility: targetAbility,
+                    posteriorProbabilities: posteriorProbabilities
+                )
             )
-            if let currentBest = best {
-                if score > currentBest.score {
-                    best = (candidate, score)
-                }
-            } else {
-                best = (candidate, score)
+        }.sorted {
+            if abs($0.score - $1.score) < 1e-12 {
+                return $0.question.id < $1.question.id
             }
+            return $0.score > $1.score
         }
-        return best?.question
+        guard let bestScore = ranked.first?.score else { return nil }
+
+        // 在信息量接近最佳的候选中抽取，既保持测量效率，也避免每次见到同一套题。
+        let competitive = Array(
+            ranked.prefix(6).filter { $0.score >= bestScore * 0.9 }
+        )
+        let pool = competitive.isEmpty ? Array(ranked.prefix(1)) : competitive
+        return pool[stableChoiceIndex(upperBound: pool.count)].question
     }
 
     public mutating func record(
@@ -220,12 +239,21 @@ public struct AdaptivePlacementEngine: Sendable {
 
     public static func difficultyLevel(for ability: Double) -> DifficultyLevel {
         switch ability {
-        case ..<(-1.75): .primary3
-        case ..<(-1.0): .primary6
-        case ..<(-0.25): .junior3
-        case ..<0.55: .senior2
-        case ..<1.25: .undergraduate
-        case ..<1.9: .postgraduate
+        case ..<(-2.75): .kindergarten
+        case ..<(-2.45): .primary1
+        case ..<(-2.15): .primary2
+        case ..<(-1.85): .primary3
+        case ..<(-1.55): .primary4
+        case ..<(-1.25): .primary5
+        case ..<(-0.95): .primary6
+        case ..<(-0.6): .junior1
+        case ..<(-0.25): .junior2
+        case ..<0.1: .junior3
+        case ..<0.45: .senior1
+        case ..<0.8: .senior2
+        case ..<1.15: .senior3
+        case ..<1.55: .undergraduate
+        case ..<2.05: .postgraduate
         default: .advanced
         }
     }
@@ -243,7 +271,7 @@ public struct AdaptivePlacementEngine: Sendable {
     }
 
     public static func score(for ability: Double) -> Int {
-        Int(round(((min(max(ability, -3), 3) + 3) / 6) * 100))
+        Int(round(((min(max(ability, -3.25), 3.25) + 3.25) / 6.5) * 100))
     }
 
     private var posteriorMoments: (mean: Double, standardDeviation: Double) {
@@ -320,14 +348,34 @@ public struct AdaptivePlacementEngine: Sendable {
 
     private static func priorMean(for level: DifficultyLevel) -> Double {
         switch level {
-        case .primary1, .primary2, .primary3: -2.15
-        case .primary4, .primary5, .primary6: -1.35
-        case .junior1, .junior2, .junior3: -0.55
-        case .senior1, .senior2, .senior3: 0.3
-        case .undergraduate: 0.95
-        case .postgraduate: 1.65
-        case .advanced: 2.25
+        case .kindergarten: -2.9
+        case .primary1: -2.6
+        case .primary2: -2.3
+        case .primary3: -2
+        case .primary4: -1.7
+        case .primary5: -1.4
+        case .primary6: -1.1
+        case .junior1: -0.78
+        case .junior2: -0.43
+        case .junior3: -0.08
+        case .senior1: 0.28
+        case .senior2: 0.63
+        case .senior3: 0.98
+        case .undergraduate: 1.35
+        case .postgraduate: 1.8
+        case .advanced: 2.35
         }
+    }
+
+    private func stableChoiceIndex(upperBound: Int) -> Int {
+        guard upperBound > 1 else { return 0 }
+        var value = selectionSeed &+ UInt64(responses.count) &* 0x9E3779B97F4A7C15
+        value ^= value >> 30
+        value &*= 0xBF58476D1CE4E5B9
+        value ^= value >> 27
+        value &*= 0x94D049BB133111EB
+        value ^= value >> 31
+        return Int(value % UInt64(upperBound))
     }
 
     private var hasRequiredSkillCoverage: Bool {
