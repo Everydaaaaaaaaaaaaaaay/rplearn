@@ -34,8 +34,8 @@ public struct ProactiveMessageService: Sendable {
                 recentMessages: recentMessages
             ),
             messages: [.user("Write the message now.")],
-            maxTokens: 120,
-            temperature: 0.9
+            maxTokens: 80,
+            temperature: 0.8
         )
 
         if let output = try? await llm.complete(request),
@@ -89,7 +89,10 @@ public struct ProactiveMessageService: Sendable {
         Their primary goal is: \(PromptBuilder.goalDescription(learner.goal)).
         Their current context is: \(PromptBuilder.stageDescription(learner.studyStage)).
         \(PromptBuilder.interactionGuidance(for: learner.difficulty))
-        Write exactly one natural English chat message of 1-2 short sentences and at most 45 words.
+        Treat that level as a comprehension ceiling, not a reason to use difficult vocabulary. Even for an advanced \
+        learner, default to ordinary high-frequency spoken words and do not deliberately show off idioms or rare words.
+        Write exactly one natural English chat message of 1-2 short sentences and 8-20 words total. Keep one small \
+        conversational beat. Sentence-ending punctuation is optional when omitting it feels like natural texting.
         Stay in character, open a topic that supports the primary goal, and end with an approachable question. \
         Sound like a real friend, not a teacher. Do not explain vocabulary, \
         correct grammar, use markdown, add a speaker label, or say you are an AI.
@@ -105,8 +108,21 @@ public struct ProactiveMessageService: Sendable {
             value.removeFirst()
             value.removeLast()
         }
+        var sentenceCount = 0
+        value.enumerateSubstrings(
+            in: value.startIndex..<value.endIndex,
+            options: .bySentences
+        ) { substring, _, _, _ in
+            if let substring,
+               !substring.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                sentenceCount += 1
+            }
+        }
+        let wordCount = value.split(whereSeparator: \Character.isWhitespace).count
         guard !value.isEmpty,
-              value.count <= 320,
+              value.count <= 220,
+              (1...2).contains(sentenceCount),
+              wordCount <= 20,
               value.unicodeScalars.contains(where: {
                   (65...90).contains($0.value) || (97...122).contains($0.value)
               })
@@ -144,15 +160,15 @@ public struct ProactiveMessageService: Sendable {
         if !englishOccupation.isEmpty {
             return switch occasion {
             case .introduction:
-                "Hey! My work as \(englishOccupation) gives me plenty of stories. What kind of job would you love to try for one day?"
+                "Hey! My work as \(englishOccupation) gets interesting. What job would you try for a day?"
             case .checkIn:
-                "Something at work made me curious today: what’s one small thing that can instantly make your day better?"
+                "Work made me curious today: what small thing instantly makes your day better?"
             }
         }
 
         return switch occasion {
         case .introduction:
-            "Hey! I’ve got a question we could have fun comparing: what’s a small part of your day that you really enjoy?"
+            "Hey, random question: what small part of your day do you really enjoy?"
         case .checkIn:
             "Hey, I’m taking a little break and thought of you. What’s something you’ve been enjoying lately?"
         }

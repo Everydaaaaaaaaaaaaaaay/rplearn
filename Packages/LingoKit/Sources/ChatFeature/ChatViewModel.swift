@@ -19,7 +19,7 @@ public final class ChatViewModel {
 
     public private(set) var conversation: ConversationDTO?
     public private(set) var messages: [MessageDTO] = []
-    /// 流式中的助手消息文本（尚未定稿）；nil 表示无进行中的回复。
+    /// 助手正在生成或输入；空字符串显示输入指示，nil 表示当前没有回复。
     public private(set) var streamingText: String?
     public private(set) var isStreaming = false
     public var errorMessage: String?
@@ -316,6 +316,7 @@ public final class ChatViewModel {
         isStreaming = true
         streamingText = ""
         errorMessage = nil
+        let typingBeganAt = ProcessInfo.processInfo.systemUptime
         defer {
             isStreaming = false
             streamingText = nil
@@ -333,16 +334,33 @@ public final class ChatViewModel {
             for try await event in await deps.llm.stream(request) {
                 if case .textDelta(let delta) = event {
                     accumulated += delta
-                    streamingText = RoleplayReplyFormatter.streamingPreview(from: accumulated)
                 }
             }
-            // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
-            let (replyText, quiz) = quizRequested
-                ? QuizService.extract(from: accumulated)
-                : (accumulated, nil)
-            streamingText = RoleplayReplyFormatter.streamingPreview(from: replyText)
-            let assistantMessages = try await persistAssistantReply(
-                conversationID: conversation.id, text: replyText, interrupted: false
+        } catch {
+            Log.llm.error("流式回复失败：\(error)")
+            if accumulated.isEmpty {
+                errorMessage = error.localizedDescription
+            } else {
+                // 已收增量落库并标记中断，气泡上提供重试。
+                _ = try? await persistAssistantReply(
+                    conversationID: conversation.id,
+                    text: accumulated,
+                    interrupted: true
+                )
+            }
+            await reloadMessages()
+            return
+        }
+
+        // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
+        let (replyText, quiz) = quizRequested
+            ? QuizService.extract(from: accumulated)
+            : (accumulated, nil)
+        do {
+            let assistantMessages = try await deliverAssistantReply(
+                conversationID: conversation.id,
+                text: replyText,
+                elapsedSinceTypingBegan: ProcessInfo.processInfo.systemUptime - typingBeganAt
             )
             if let assistantMessage = assistantMessages.last,
                let quiz,
@@ -364,19 +382,51 @@ public final class ChatViewModel {
                 await memoryService.compressIfNeeded(conversationID: conversationID, characterName: characterName)
             }
         } catch {
-            Log.llm.error("流式回复失败：\(error)")
-            if accumulated.isEmpty {
-                errorMessage = error.localizedDescription
-            } else {
-                // 已收增量落库并标记中断，气泡上提供重试。
-                _ = try? await persistAssistantReply(
-                    conversationID: conversation.id,
-                    text: accumulated,
-                    interrupted: true
-                )
-            }
+            Log.app.error("角色回复逐条保存失败：\(error)")
+            errorMessage = "回复保存失败：\(error.localizedDescription)"
         }
         await reloadMessages()
+    }
+
+    /// 生成完成后仍保持输入指示，并依据每条文本长度逐条显示气泡。
+    private func deliverAssistantReply(
+        conversationID: UUID,
+        text: String,
+        elapsedSinceTypingBegan: TimeInterval
+    ) async throws -> [MessageDTO] {
+        let texts = RoleplayReplyFormatter.messages(from: text)
+        var delivered: [MessageDTO] = []
+        delivered.reserveCapacity(texts.count)
+
+        for (index, text) in texts.enumerated() {
+            let delay = RoleplayTypingPace.standard.delay(
+                for: text,
+                messageIndex: index,
+                elapsedSinceTypingBegan: elapsedSinceTypingBegan,
+                variation: Double.random(in: 0...1)
+            )
+            let milliseconds = Int((delay * 1_000).rounded())
+            if milliseconds > 0 {
+                // 取消时立即结束等待，随后仍保存已经生成的回复，避免长语音/文本被吞掉。
+                try? await Task.sleep(for: .milliseconds(milliseconds))
+            }
+
+            let message = try await deps.chatStore.appendAssistantReplyPart(
+                conversationID: conversationID,
+                text: text,
+                startsNewReply: index == 0
+            )
+            delivered.append(message)
+            messages.append(message)
+            messages.sort { $0.orderIndex < $1.orderIndex }
+
+            // 关键词标注不阻塞下一条气泡的计时和显示。
+            Task(priority: .utility) { [weak self] in
+                await self?.annotateKeywords(message: message, text: text)
+                await self?.reloadMessages()
+            }
+        }
+        return delivered
     }
 
     /// 注入分级记忆、学习者档案与主线引导；文本聊天和实时语音共享同一角色事实来源。

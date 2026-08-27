@@ -12,12 +12,21 @@ LingoTrip 是一款原生 SwiftUI 英语学习 App。用户以世界旅行为线
 [XcodeGen](https://github.com/yonaskolb/XcodeGen)：
 
 ```bash
+Scripts/bootstrap-worktree.sh
 Scripts/build.sh
 Scripts/test.sh
+Scripts/run.sh
 ```
 
 脚本会从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。不要提交生成的工程或 `build/`，
-也不要在 `Packages/LingoKit` 中直接运行 `swift build`。
+也不要在 `Packages/LingoKit` 中直接运行 `swift build`。多工作树可以并行写代码，但所有
+Xcode 构建、测试、归档和模拟器安装会通过仓库级锁自动排队，避免争抢 CPU、内存、磁盘
+和同一台模拟器。每个工作树使用自己的 DerivedData，Swift Package 下载缓存则安全共享。
+
+对话提示词、回复分条等纯逻辑改动优先运行 `Scripts/test-conversation.sh`；它不构建宿主 App
+和 SpeechKit，通常远快于完整测试。提交前再按改动风险运行 `Scripts/test.sh`，完成后用
+`Scripts/run.sh` 一次性构建、安装并启动模拟器。需要固定模拟器时设置
+`LINGOTRIP_SIMULATOR_UDID`。
 
 真机调试前复制 `Config/Signing.local.xcconfig.example` 为
 `Config/Signing.local.xcconfig`，填写自己的 Team ID；若共享 App ID 不属于该 Team，再

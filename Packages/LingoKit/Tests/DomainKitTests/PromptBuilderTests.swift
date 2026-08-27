@@ -40,7 +40,9 @@ struct PromptBuilderTests {
         #expect(prompt.contains("## Texting style"))
         #expect(prompt.contains("Most replies should be 1 or 2 separate chat messages"))
         #expect(prompt.contains("each message on its own single line"))
-        #expect(prompt.contains("each message to 1-2 short sentences"))
+        #expect(prompt.contains("1-3 short sentences total"))
+        #expect(prompt.contains("comprehension ceiling"))
+        #expect(prompt.contains("Most replies should contain no deliberately challenging word"))
         #expect(prompt.contains("not after every reply"))
         #expect(prompt.contains("skip the final punctuation"))
         #expect(prompt.contains("## Language level"))
@@ -142,8 +144,8 @@ struct PromptBuilderTests {
             history: []
         )
         #expect(request.tier == .balanced)
-        #expect(request.maxTokens == 256)
-        #expect(request.temperature == 0.9)
+        #expect(request.maxTokens == 160)
+        #expect(request.temperature == 0.8)
         #expect(request.responseFormat == .text)
     }
 

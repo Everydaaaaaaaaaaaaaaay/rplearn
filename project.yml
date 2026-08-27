@@ -14,6 +14,15 @@ schemes:
       gatherCoverageData: false
       targets:
         - LingoTripTests
+  LingoTripConversationTests:
+    build:
+      targets:
+        LingoTripConversationTests: [test]
+    test:
+      config: Debug
+      gatherCoverageData: false
+      targets:
+        - LingoTripConversationTests
 targets:
   LingoTrip:
     type: application
@@ -21,7 +30,7 @@ targets:
     deploymentTarget: "18.0"
     preBuildScripts:
       - name: Verify Bundled Voice Models
-        script: '"$SRCROOT/Scripts/verify-bundled-voice-models.sh"'
+        script: '"$SRCROOT/Scripts/verify-bundled-voice-models.sh" "$DERIVED_FILE_DIR/bundled-voice-models.verified"'
         basedOnDependencyAnalysis: false
     configFiles:
       Debug: Config/Signing.Debug.xcconfig
@@ -164,6 +173,33 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).tests
+        CODE_SIGN_STYLE: Automatic
+        "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual
+        "CODE_SIGN_IDENTITY[sdk=iphonesimulator*]": "-"
+        "DEVELOPMENT_TEAM[sdk=iphonesimulator*]": ""
+        "PROVISIONING_PROFILE_SPECIFIER[sdk=iphonesimulator*]": ""
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+  # 不依赖宿主 App 与 SpeechKit，供高频对话逻辑改动快速回归。
+  LingoTripConversationTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: Packages/LingoKit/Tests
+        includes:
+          - DomainKitTests/PromptBuilderTests.swift
+          - DomainKitTests/RoleplayReplyFormatterTests.swift
+          - DomainKitTests/ProactiveMessageSchedulePolicyTests.swift
+    dependencies:
+      - package: LingoKit
+        product: DomainKit
+      - package: LingoKit
+        product: PersistenceKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).conversationtests
         CODE_SIGN_STYLE: Automatic
         "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual
         "CODE_SIGN_IDENTITY[sdk=iphonesimulator*]": "-"
