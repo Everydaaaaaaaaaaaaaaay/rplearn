@@ -117,9 +117,12 @@ public struct TappableText: View {
             let firstStart = max(0, selectedIndex - length + 1)
             let lastStart = min(selectedIndex, words.count - length)
             guard firstStart <= lastStart else { continue }
-            let starts = (firstStart...lastStart).sorted {
-                abs(($0 + length / 2) - selectedIndex)
-                    < abs(($1 + length / 2) - selectedIndex)
+            let midpointOffset = length / 2
+            let candidateStarts = Array(firstStart...lastStart)
+            let starts = candidateStarts.sorted { lhs, rhs in
+                let lhsDistance = abs(lhs + midpointOffset - selectedIndex)
+                let rhsDistance = abs(rhs + midpointOffset - selectedIndex)
+                return lhsDistance < rhsDistance
             }
             for start in starts {
                 let phrase = words[start..<(start + length)]
