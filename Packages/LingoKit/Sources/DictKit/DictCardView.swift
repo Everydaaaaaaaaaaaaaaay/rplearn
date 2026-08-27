@@ -36,6 +36,10 @@ enum DictCardLayout {
     static let contentPadding: CGFloat = 10
     static let contentSpacing: CGFloat = 8
     static let partOfSpeechColumnWidth: CGFloat = 66
+    static let definitionColumnSpacing: CGFloat = 6
+    static var definitionColumnLeading: CGFloat {
+        partOfSpeechColumnWidth + definitionColumnSpacing
+    }
 }
 
 struct DictSenseDisplayRow: Identifiable, Equatable {
@@ -79,7 +83,6 @@ public struct DictCardView: View {
     @State private var isLoadingAI = false
     @State private var isFavorite = false
     @State private var isUpdatingFavorite = false
-    @State private var showsAllSenses = false
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     public init(
@@ -328,7 +331,7 @@ public struct DictCardView: View {
     private func chineseMeaningSection(_ entry: DictEntry) -> some View {
         VStack(alignment: .leading, spacing: 3) {
             ForEach(entry.meaningGroups) { group in
-                HStack(alignment: .firstTextBaseline, spacing: 6) {
+                HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                     partOfSpeechText(group.partOfSpeech ?? "")
                     Text(group.meaning)
                         .font(.subheadline)
@@ -345,24 +348,14 @@ public struct DictCardView: View {
             compactSectionTitle("英文释义")
             if !entry.senses.isEmpty {
                 let senseRows = DictSenseDisplayPolicy.rows(for: entry.senses)
-                let visibleRows = showsAllSenses
-                    ? senseRows
-                    : Array(senseRows.prefix(3))
-                ForEach(visibleRows) { row in
-                    HStack(alignment: .firstTextBaseline, spacing: 6) {
-                        partOfSpeechText(row.sense.partOfSpeechLabel)
+                ForEach(senseRows) { row in
+                    HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
+                        sensePartOfSpeechText(row)
                         VStack(alignment: .leading, spacing: 2) {
-                            HStack(alignment: .firstTextBaseline, spacing: 4) {
-                                if let ordinal = row.ordinal {
-                                    Text("\(ordinal).")
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(.secondary)
-                                        .monospacedDigit()
-                                }
-                                Text(row.sense.definition)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                            .font(.footnote)
+                            Text(row.sense.definition)
+                                .font(.subheadline)
+                                .lineSpacing(1)
+                                .fixedSize(horizontal: false, vertical: true)
                             if let example = row.sense.examples.first {
                                 Text(example)
                                     .font(.caption)
@@ -379,21 +372,34 @@ public struct DictCardView: View {
                         }
                     }
                 }
-                if entry.senses.count > 3 {
-                    Button(showsAllSenses ? "收起" : "其余 \(entry.senses.count - 3) 个义项") {
-                        showsAllSenses.toggle()
-                    }
-                    .font(.caption.weight(.semibold))
-                    .buttonStyle(.borderless)
-                }
             } else {
-                ForEach(entry.fallbackEnglishDefinitions.prefix(3), id: \.self) { definition in
+                ForEach(entry.fallbackEnglishDefinitions, id: \.self) { definition in
                     Text(definition)
-                        .font(.footnote)
+                        .font(.subheadline)
+                        .lineSpacing(1)
                         .fixedSize(horizontal: false, vertical: true)
+                        .padding(.leading, DictCardLayout.definitionColumnLeading)
                 }
             }
         }
+    }
+
+    private func sensePartOfSpeechText(_ row: DictSenseDisplayRow) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 3) {
+            Text(row.sense.partOfSpeechLabel)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.dsSkyDeep)
+            if let ordinal = row.ordinal {
+                Text("\(ordinal).")
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                    .monospacedDigit()
+            }
+        }
+        .font(.footnote)
+        .lineLimit(1)
+        .minimumScaleFactor(0.8)
+        .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
     }
 
     private func partOfSpeechText(_ text: String) -> some View {
@@ -540,7 +546,6 @@ public struct DictCardView: View {
         isFavorite = false
         isUpdatingFavorite = false
         aiExplanation = nil
-        showsAllSenses = false
         contextualPhrases = []
         let loadedEntry = await dictionary.lookup(word)
         if path.count == 1 {
