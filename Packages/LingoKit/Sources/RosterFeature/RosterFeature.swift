@@ -66,12 +66,11 @@ public struct RosterView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(Color.dsBackground)
-        .navigationTitle("好友")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("联系人")
         .searchable(
             text: $searchText,
             placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "搜索好友"
+            prompt: "搜索联系人"
         )
         .task { await reload() }
         .refreshable { await reload() }

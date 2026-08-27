@@ -124,8 +124,12 @@ public struct ConversationListView: View {
                 .background(Color.dsBackground)
             }
         }
-        .navigationTitle("最近联络")
-        .searchable(text: $searchText, prompt: "搜索角色")
+        .navigationTitle("信息")
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "搜索联系人"
+        )
         // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
         // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
         .task(id: reloadToken) { await reload() }
@@ -160,23 +164,23 @@ public struct ConversationListView: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text(row.character.isMainCharacter ? "核心旅伴" : row.character.card.nationality)
+                    Text(row.character.card.name)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
+
+                    if row.character.isMainCharacter {
+                        Image(systemName: "star.fill")
                             .font(.caption2.weight(.bold))
-                            .foregroundStyle(unread ? Color.dsSkyDeep : .secondary)
-                            .lineLimit(1)
-                        Text(row.character.card.name)
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                            .lineLimit(1)
+                            .foregroundStyle(Color.dsSunset)
+                            .accessibilityLabel("特别关心")
                     }
 
                     if pinned {
                         Image(systemName: "pin.fill")
-                            .font(.system(size: 9, weight: .bold))
+                            .font(.caption2.weight(.bold))
                             .foregroundStyle(Color.dsSkyDeep)
-                            .padding(5)
-                            .background(Color.dsSky.opacity(0.12), in: Circle())
+                            .accessibilityLabel("已置顶")
                     }
 
                     Spacer()

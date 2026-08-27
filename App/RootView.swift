@@ -18,8 +18,9 @@ import SwiftUI
 import UserNotifications
 
 enum AppTab: Hashable {
-    case home
     case messages
+    case contacts
+    case home
     case me
 }
 
@@ -31,7 +32,7 @@ struct RootView: View {
     @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
     @AppStorage("hasPresentedVoiceUpgradePrompt") private var hasPresentedVoicePrompt = false
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
-    @State private var selectedTab: AppTab = .home
+    @State private var selectedTab: AppTab = .messages
     @State private var homePath = NavigationPath()
     @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
@@ -50,8 +51,13 @@ struct RootView: View {
         let requested = ProcessInfo.processInfo.environment["UI_TEST_TAB"]
         let initial: AppTab = switch requested {
         case "messages": .messages
+        case "contacts": .contacts
+        case "home", "map": .home
         case "me": .me
-        default: .home
+        default:
+            ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
+                ? .messages
+                : .home
         }
         _selectedTab = State(initialValue: initial)
         if requested == "map" {
@@ -285,17 +291,22 @@ struct RootView: View {
 
     private var tabs: some View {
         TabView(selection: $selectedTab) {
+            messagesStack
+                .tag(AppTab.messages)
+                .tabItem {
+                    Label("信息", systemImage: "bubble.left.and.bubble.right")
+                }
+                .badge(unreadCount)
+            contactsStack
+                .tag(AppTab.contacts)
+                .tabItem {
+                    Label("联系人", systemImage: "person.2")
+                }
             homeStack
                 .tag(AppTab.home)
                 .tabItem {
                     Label("首页", systemImage: "house")
                 }
-            messagesStack
-                .tag(AppTab.messages)
-                .tabItem {
-                    Label("消息", systemImage: "bubble.left.and.bubble.right")
-                }
-                .badge(unreadCount)
             meStack
                 .tag(AppTab.me)
                 .tabItem {
@@ -366,24 +377,20 @@ struct RootView: View {
     private var messagesStack: some View {
         NavigationStack {
             ConversationListView(deps: chatDeps, reloadToken: stateRevision)
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink {
-                            RosterView(
-                                deps: RosterDependencies(
-                                    rosterStore: environment.rosterStore,
-                                    economyStore: environment.economyStore
-                                ),
-                                chatBuilder: { character in
-                                    AnyView(ChatView(character: character, deps: chatDeps))
-                                }
-                            )
-                        } label: {
-                            Image(systemName: "person.2.fill")
-                        }
-                        .accessibilityLabel("好友")
-                    }
+        }
+    }
+
+    private var contactsStack: some View {
+        NavigationStack {
+            RosterView(
+                deps: RosterDependencies(
+                    rosterStore: environment.rosterStore,
+                    economyStore: environment.economyStore
+                ),
+                chatBuilder: { character in
+                    AnyView(ChatView(character: character, deps: chatDeps))
                 }
+            )
         }
     }
 
