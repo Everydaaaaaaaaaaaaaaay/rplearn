@@ -38,9 +38,10 @@ struct PromptBuilderTests {
         #expect(prompt.contains("## Roleplay rules"))
         #expect(prompt.contains("Never mention that you are an AI"))
         #expect(prompt.contains("## Texting style"))
-        #expect(prompt.contains("1-3 separate chat messages"))
+        #expect(prompt.contains("Most replies should be 1 or 2 separate chat messages"))
         #expect(prompt.contains("each message on its own single line"))
         #expect(prompt.contains("each message to 1-2 short sentences"))
+        #expect(prompt.contains("not after every reply"))
         #expect(prompt.contains("skip the final punctuation"))
         #expect(prompt.contains("## Language level"))
         #expect(prompt.contains("## Learner profile"))
@@ -141,7 +142,7 @@ struct PromptBuilderTests {
             history: []
         )
         #expect(request.tier == .balanced)
-        #expect(request.maxTokens == 512)
+        #expect(request.maxTokens == 256)
         #expect(request.temperature == 0.9)
         #expect(request.responseFormat == .text)
     }

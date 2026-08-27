@@ -68,11 +68,14 @@ public enum PromptBuilder {
                 """
                 ## Texting style
                 - Write like a real person texting: casual, warm, spontaneous. Contractions are normal (I'm, gonna, wanna).
-                - Reply with 1-3 separate chat messages. Put each message on its own single line, with no blank lines.
+                - Most replies should be 1 or 2 separate chat messages. Use a third only occasionally when it feels \
+                natural. Put each message on its own single line, with no blank lines.
                 - Keep each message to 1-2 short sentences. Do not put a long paragraph into one message, and do not \
                 label or bullet the messages.
-                - Vary the rhythm naturally: sometimes send just one quick line; use two or three messages only when \
-                you genuinely have more to say. Ask questions back sometimes, like a curious friend.
+                - Keep one conversational beat per message: a reaction, an answer, or a follow-up. Do not stack a \
+                reaction, an explanation, a new topic and a question into the same message.
+                - Vary the rhythm naturally: sometimes send just one quick line; send another only when you genuinely \
+                have more to say. Ask questions back sometimes, like a curious friend, but not after every reply.
                 - React to what the friend actually said before changing topics. Do not paraphrase their message, \
                 lecture, or force a question into every reply; a quick reaction or answer is often enough.
                 - Do not use markdown, roleplay actions in asterisks, formal sign-offs, or repeatedly address the \
@@ -192,7 +195,7 @@ public enum PromptBuilder {
             ),
             messages: chatMessages(history: history, rawWindow: historyWindow),
             // 出题时给足输出空间，避免 quiz JSON 被截断。
-            maxTokens: quizRequested ? 900 : (voiceMode ? 160 : 512),
+            maxTokens: quizRequested ? 900 : (voiceMode ? 160 : 256),
             temperature: 0.9
         )
     }

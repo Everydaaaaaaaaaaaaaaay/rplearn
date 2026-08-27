@@ -5,7 +5,6 @@ import Foundation
 /// 提示词负责让模型主动分条；这里仍保留确定性兜底，避免模型偶尔输出空段落
 /// 或把很多句子塞进同一个气泡。
 public enum RoleplayReplyFormatter {
-    public static let maximumMessageCount = 3
     public static let maximumSentencesPerMessage = 2
 
     public static func messages(from rawText: String) -> [String] {
@@ -14,15 +13,9 @@ public enum RoleplayReplyFormatter {
             .map(normalizeInlineWhitespace)
             .filter { !$0.isEmpty }
 
-        var messages = lines.flatMap(sentenceChunks)
-        guard messages.count > maximumMessageCount else { return messages }
-
-        let overflow = messages
-            .dropFirst(maximumMessageCount - 1)
-            .joined(separator: " ")
-        messages = Array(messages.prefix(maximumMessageCount - 1))
-        messages.append(overflow)
-        return messages
+        // 不在这里强行把超出的消息重新并回最后一个气泡。模型偶尔多写几句时，
+        // 多几个短气泡仍比一个重新膨胀的长段落更像真实聊天，也不会再次引入空行。
+        return lines.flatMap(sentenceChunks)
     }
 
     /// 流式阶段仍使用一个临时气泡，但折叠模型输出的空行，并隐藏测验标记。

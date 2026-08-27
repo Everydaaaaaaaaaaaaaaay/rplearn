@@ -33,6 +33,32 @@ struct RoleplayReplyFormatterTests {
         )
     }
 
+    @Test("超出三条时仍保持每条最多两句")
+    func neverMergesOverflowBackIntoALongBubble() {
+        let raw = "One. Two. Three. Four. Five. Six. Seven. Eight."
+
+        #expect(
+            RoleplayReplyFormatter.messages(from: raw) == [
+                "One. Two.",
+                "Three. Four.",
+                "Five. Six.",
+                "Seven. Eight.",
+            ]
+        )
+    }
+
+    @Test("Unicode 空行也会被彻底移除")
+    func removesUnicodeBlankLines() {
+        let raw = "first message\u{2028}\u{2028}\u{2029}second message"
+
+        #expect(
+            RoleplayReplyFormatter.messages(from: raw) == [
+                "first message",
+                "second message",
+            ]
+        )
+    }
+
     @Test("保留真人式省略句号")
     func preservesMissingFinalPunctuation() {
         #expect(
