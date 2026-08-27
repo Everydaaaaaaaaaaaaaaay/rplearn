@@ -30,6 +30,16 @@ struct ProactiveMessageServiceTests {
         )
     }
 
+    @Test("过长或超过两句的模型输出会交给短消息兜底")
+    func rejectsVerboseGeneratedMessage() {
+        #expect(ProactiveMessageService.normalized(
+            "Afternoon, Xiaoyu. I spent an hour shelving books and arguing with a customer about whether Orwell is overrated. Reckon that is a debate you would have an opinion on?"
+        ) == nil)
+        #expect(ProactiveMessageService.normalized(
+            "I saw something funny at work today and thought of you. What made you laugh today?"
+        ) != nil)
+    }
+
     @Test("模型失败时仍返回符合身份字段的英文话题")
     func fallsBackWithoutCharacterHardcoding() async {
         let llm = MockLLMProvider { _ in
@@ -70,6 +80,8 @@ struct ProactiveMessageServiceTests {
         #expect(prompt.contains("study abroad"))
         #expect(prompt.contains("university learner"))
         #expect(prompt.contains("Do not guilt"))
+        #expect(prompt.contains("comprehension ceiling"))
+        #expect(prompt.contains("8-20 words total"))
     }
 
     @Test("初学者的离线兜底同样保持短句与选择式问题")

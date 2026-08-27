@@ -70,8 +70,9 @@ public enum PromptBuilder {
                 - Write like a real person texting: casual, warm, spontaneous. Contractions are normal (I'm, gonna, wanna).
                 - Most replies should be 1 or 2 separate chat messages. Use a third only occasionally when it feels \
                 natural. Put each message on its own single line, with no blank lines.
-                - Keep each message to 1-2 short sentences. Do not put a long paragraph into one message, and do not \
-                label or bullet the messages.
+                - Across the whole reply, write only 1-3 short sentences total. Most messages should contain one short \
+                sentence; put two in one message only when both are very brief. Never put a paragraph into one message.
+                - Prefer a quick 8-16 word message. A higher learner level does not justify longer messages.
                 - Keep one conversational beat per message: a reaction, an answer, or a follow-up. Do not stack a \
                 reaction, an explanation, a new topic and a question into the same message.
                 - Vary the rhythm naturally: sometimes send just one quick line; send another only when you genuinely \
@@ -93,8 +94,12 @@ public enum PromptBuilder {
             ## Language level
             The friend's English level: \(languageGuidance(for: learner.difficulty))
             \(interactionGuidance(for: learner.difficulty))
-            Keep the input mostly understandable. Introduce at most one useful stretch expression in a reply, \
-            and make its meaning guessable from context. Give the friend room to produce English themselves.
+            Treat the level as a comprehension ceiling, never as a vocabulary quota or a target to show off.
+            At every level, default to ordinary high-frequency spoken English that a real friend would naturally use. \
+            Advanced learners can handle nuance, but that does not mean you should frequently use rare, literary, \
+            academic or test-prep words. Most replies should contain no deliberately challenging word at all. If one \
+            stretch expression arises naturally, use at most one and make it guessable from context.
+            Give the friend room to produce English themselves.
             """
         )
 
@@ -195,8 +200,8 @@ public enum PromptBuilder {
             ),
             messages: chatMessages(history: history, rawWindow: historyWindow),
             // 出题时给足输出空间，避免 quiz JSON 被截断。
-            maxTokens: quizRequested ? 900 : (voiceMode ? 160 : 256),
-            temperature: 0.9
+            maxTokens: quizRequested ? 900 : 160,
+            temperature: 0.8
         )
     }
 
@@ -214,16 +219,17 @@ public enum PromptBuilder {
             "elementary to lower-intermediate (Chinese junior high). Everyday vocabulary (~1500-2000 words), " +
             "compound sentences are fine, introduce common phrasal verbs, keep slang rare and self-explaining."
         case .senior1, .senior2, .senior3:
-            "intermediate (Chinese senior high, preparing for Gaokao). Richer vocabulary (~3500 words), " +
-            "natural tenses and clauses, some idioms and slang are welcome if context makes them guessable."
+            "intermediate (Chinese senior high, preparing for Gaokao). Use natural everyday spoken vocabulary, " +
+            "tenses and clauses. Occasional idioms or slang are fine only when the situation genuinely calls for them."
         case .undergraduate:
-            "upper-intermediate (Chinese university, CET-4/6 range). Speak naturally with normal native pacing, " +
-            "idioms, humor and cultural references are fine; briefly gloss only the rare ones."
+            "upper-intermediate (Chinese university, CET-4/6 range). Speak at a relaxed native pace with mostly " +
+            "common spoken words. Nuance, humor and cultural references are fine when they fit the topic."
         case .postgraduate:
-            "advanced (Chinese postgraduate, TOEFL/IELTS range). Speak fully naturally, " +
-            "including nuance, wordplay and cultural references."
+            "advanced (Chinese postgraduate, TOEFL/IELTS range). Speak naturally and precisely, while still " +
+            "preferring ordinary spoken words. Use specialized vocabulary only when the topic requires it."
         case .advanced:
-            "near-native. No simplification needed at all - speak exactly as you would to a native friend."
+            "near-native. Speak exactly as a relaxed native friend would, not like a vocabulary test, essay or " +
+            "display of sophistication. Simple wording is often the most natural wording."
         }
     }
 
@@ -245,8 +251,8 @@ public enum PromptBuilder {
             "Explore opinions and real-life choices with natural follow-ups. Vary register and occasionally invite " +
                 "the friend to clarify or defend a view."
         case .postgraduate, .advanced:
-            "Discuss nuance, humor, disagreement and cultural assumptions naturally. Do not over-scaffold; respond " +
-                "as an articulate peer and let the friend shape the direction."
+            "Let nuance, humor and disagreement emerge only when the topic supports them. Respond as a relaxed peer, " +
+                "not someone trying to prove sophistication through vocabulary, and let the friend shape the direction."
         }
     }
 
@@ -254,23 +260,23 @@ public enum PromptBuilder {
         switch level {
         case .primary1, .primary2, .primary3:
             "MANDATORY FOR EVERY REPLY: Write exactly 1 or 2 chat lines. Each line must have at most 8 English " +
-                "words. Share only one idea or action, never a list of steps. The final line must be exactly one " +
+                "words and one sentence. Use at most 16 words total. Share only one idea or action, never a list of steps. The final line must be exactly one " +
                 "easy yes/no or A-or-B question."
         case .primary4, .primary5, .primary6:
-            "Write 1 or 2 chat lines, at most 12 English words per line. Focus on one idea. End with one short, " +
+            "Write 1 or 2 chat lines, normally one sentence per line, at most 12 English words per line and 22 words total. Focus on one idea. End with one short, " +
                 "concrete question the friend can answer in a few words."
         case .junior1, .junior2, .junior3:
-            "Write at most 2 chat lines and at most 18 English words per line. Ask no more than one focused " +
+            "Write at most 2 chat lines, normally one sentence per line, at most 16 English words per line and 28 words total. Ask no more than one focused " +
                 "question, and avoid multi-step explanations."
         case .senior1, .senior2, .senior3:
-            "Write 1-3 chat lines, at most 28 English words per line and 2 sentences per line. Develop one useful " +
-                "idea at a time instead of giving a mini-lesson."
+            "Write 1 or 2 chat lines most of the time; a third is rare. Use at most 16 English words per line, 30 words and 3 short sentences total. " +
+                "Normally put one sentence on each line and develop only one conversational idea."
         case .undergraduate:
-            "Write 1-3 chat lines, at most 34 English words per line and 2 sentences per line. Stay responsive and " +
-                "leave a natural opening for the friend to continue."
+            "Write 1 or 2 chat lines most of the time; a third is rare. Use at most 16 English words per line, 32 words and 3 short sentences total. " +
+                "Normally put one sentence on each line, stay responsive and leave a natural opening."
         case .postgraduate, .advanced:
-            "Write 1-3 chat lines, at most 42 English words per line and 2 sentences per line. Keep the rhythm like " +
-                "messaging, not an essay or lecture."
+            "Write 1 or 2 chat lines most of the time; a third is rare. Use at most 16 English words per line, 34 words and 3 short sentences total. " +
+                "Normally put one sentence on each line. Keep the rhythm like relaxed messaging, not an essay or vocabulary showcase."
         }
     }
 
