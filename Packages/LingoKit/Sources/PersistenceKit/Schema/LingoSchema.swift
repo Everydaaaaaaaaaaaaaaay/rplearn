@@ -284,7 +284,7 @@ extension LingoSchema {
         }
     }
 
-    /// 收藏快照：兼容旧版句子收藏，新版单词收藏以 characterName 内部标记区分。
+    /// 收藏快照：兼容旧版句子收藏，单词与语法点以 characterName 内部标记区分。
     @Model
     public final class FavoriteEntity {
         @Attribute(.unique) public var favoriteID: UUID

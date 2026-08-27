@@ -87,4 +87,53 @@ struct FavoritesStoreTests {
         #expect(!(try await store.toggleWord("seeking")))
         #expect(try await store.all().map(\.kind) == [.sentence])
     }
+
+    @Test("语法点收藏按稳定 ID 幂等并保留展示快照")
+    func grammarPointFavoriteIsIdempotent() async throws {
+        let store = try makeStore()
+        let first = try #require(
+            try await store.addGrammarPoint(
+                id: "present-perfect",
+                title: "现在完成时",
+                explanationZh: "表示过去发生且与现在有关的动作。"
+            )
+        )
+        let second = try #require(
+            try await store.addGrammarPoint(
+                id: "present-perfect",
+                title: "不会覆盖",
+                explanationZh: "不会覆盖"
+            )
+        )
+
+        #expect(first.id == second.id)
+        #expect(first.kind == .grammarPoint)
+        #expect(first.referenceID == "present-perfect")
+        #expect(first.sentence == "现在完成时")
+        #expect(first.translationZh == "表示过去发生且与现在有关的动作。")
+        #expect(try await store.isGrammarPointFavorited(id: "present-perfect"))
+        #expect(try await store.all().count == 1)
+    }
+
+    @Test("语法点收藏可切换且不影响单词收藏")
+    func togglesGrammarPointWithoutRemovingWord() async throws {
+        let store = try makeStore()
+        _ = try await store.addWord("ready", translationZh: "准备好的")
+
+        #expect(
+            try await store.toggleGrammarPoint(
+                id: "be-ready-to",
+                title: "be ready to do",
+                explanationZh: "准备做某事"
+            )
+        )
+        #expect(Set(try await store.all().map(\.kind)) == [.word, .grammarPoint])
+        #expect(
+            !(try await store.toggleGrammarPoint(
+                id: "be-ready-to",
+                title: "be ready to do"
+            ))
+        )
+        #expect(try await store.all().map(\.kind) == [.word])
+    }
 }

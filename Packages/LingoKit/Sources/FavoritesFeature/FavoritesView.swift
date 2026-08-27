@@ -25,10 +25,11 @@ public struct FavoritesDependencies: Sendable {
     }
 }
 
-/// 收藏夹：以单词为新版收藏单位，同时兼容展示旧版句子收藏。
+/// 收藏夹：按单词、语法点和旧版句子分组展示。
 public struct FavoritesView: View {
     private let deps: FavoritesDependencies
     @State private var favorites: [FavoriteDTO] = []
+    @State private var wordEntries: [UUID: DictEntry] = [:]
     @State private var wordSelection: TokenSelection?
     @State private var isLoading = true
 
@@ -42,24 +43,49 @@ public struct FavoritesView: View {
                 ContentUnavailableView(
                     "收藏夹是空的",
                     systemImage: "star",
-                    description: Text("点击聊天或剧情中的单词，在释义弹窗右上角点亮星标")
+                    description: Text("可在单词释义窗或语法分析页点亮星标")
                 )
             } else {
                 List {
-                    ForEach(favorites) { favorite in
-                        row(favorite)
+                    if !wordFavorites.isEmpty {
+                        Section("单词") {
+                            ForEach(wordFavorites) { favorite in
+                                wordRow(favorite)
+                            }
+                            .onDelete { indexSet in
+                                Task { await remove(at: indexSet, from: wordFavorites) }
+                            }
+                        }
                     }
-                    .onDelete { indexSet in
-                        Task { await remove(at: indexSet) }
+
+                    if !grammarFavorites.isEmpty {
+                        Section("语法点") {
+                            ForEach(grammarFavorites) { favorite in
+                                grammarRow(favorite)
+                            }
+                            .onDelete { indexSet in
+                                Task { await remove(at: indexSet, from: grammarFavorites) }
+                            }
+                        }
+                    }
+
+                    if !sentenceFavorites.isEmpty {
+                        Section("句子") {
+                            ForEach(sentenceFavorites) { favorite in
+                                sentenceRow(favorite)
+                            }
+                            .onDelete { indexSet in
+                                Task { await remove(at: indexSet, from: sentenceFavorites) }
+                            }
+                        }
                     }
                 }
-                .listStyle(.plain)
-                .scrollContentBackground(.hidden)
-                .background(Color.dsBackground)
+                .listStyle(.insetGrouped)
             }
         }
         .navigationTitle("收藏夹")
-        .background(Color.dsBackground)
+        .navigationBarTitleDisplayMode(.inline)
+        .background(Color(.systemGroupedBackground))
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -84,38 +110,171 @@ public struct FavoritesView: View {
         }
     }
 
-    private func row(_ favorite: FavoriteDTO) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            TappableText(
-                tokens: TokenCache.tokens(for: favorite.sentence, cacheKey: "fav-\(favorite.id.uuidString)"),
-                contextID: "fav-\(favorite.id.uuidString)",
-                selection: wordSelection,
-                onSelect: { wordSelection = $0 }
-            )
-            .font(favorite.kind == .word ? .title3.weight(.semibold) : .body)
-            if let translation = favorite.translationZh {
-                Text(translation)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
-            HStack {
-                Text(favorite.kind == .word ? "单词" : favorite.characterName)
-                Spacer()
-                Text(favorite.createdAt, style: .date)
-                Button {
-                    let speech = deps.speech
-                    let sentence = favorite.sentence
-                    Task { await speech.speak(sentence, language: "en-US") }
-                } label: {
-                    Image(systemName: "speaker.wave.2")
-                        .foregroundStyle(Color.dsSky)
+    private var wordFavorites: [FavoriteDTO] {
+        favorites.filter { $0.kind == .word }
+    }
+
+    private var grammarFavorites: [FavoriteDTO] {
+        favorites.filter { $0.kind == .grammarPoint }
+    }
+
+    private var sentenceFavorites: [FavoriteDTO] {
+        favorites.filter { $0.kind == .sentence }
+    }
+
+    private func wordRow(_ favorite: FavoriteDTO) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: 9) {
+                HStack(alignment: .firstTextBaseline, spacing: 7) {
+                    TappableText(
+                        tokens: TokenCache.tokens(
+                            for: favorite.sentence,
+                            cacheKey: "fav-word-\(favorite.id.uuidString)"
+                        ),
+                        contextID: "fav-word-\(favorite.id.uuidString)",
+                        selection: wordSelection,
+                        onSelect: { wordSelection = $0 }
+                    )
+                    .font(.title3.weight(.semibold))
+
+                    if let phonetic = wordEntries[favorite.id]?.phonetic {
+                        Text("/\(phonetic)/")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                .buttonStyle(.borderless)
+
+                VStack(alignment: .leading, spacing: 5) {
+                    let groups = meaningGroups(for: favorite)
+                    if groups.isEmpty {
+                        Text("暂无中文释义")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(groups) { group in
+                            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                                Text(group.partOfSpeech ?? "释义")
+                                    .font(.footnote.weight(.semibold))
+                                    .foregroundStyle(Color.dsSkyDeep)
+                                    .frame(width: 66, alignment: .leading)
+                                Text(group.meaning)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.primary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
+                    }
+                }
+
+                favoriteDate(favorite.createdAt)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            speechButton(text: favorite.sentence, label: "播放单词读音")
+        }
+        .padding(.vertical, 7)
+    }
+
+    private func grammarRow(_ favorite: FavoriteDTO) -> some View {
+        let point = favorite.referenceID.flatMap(deps.grammarPoints.point(id:))
+        return VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Image(systemName: "text.book.closed.fill")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.dsSkyDeep)
+                Text(point?.title ?? favorite.sentence)
+                    .font(.headline)
+                Spacer(minLength: 8)
+                favoriteDate(favorite.createdAt)
+            }
+
+            if let explanation = point?.explanationZh ?? favorite.translationZh,
+               !explanation.isEmpty {
+                Text(explanation)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if let example = point?.examples.first {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(example.en)
+                        .font(.footnote.weight(.medium))
+                    Text(example.zh)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.leading, 25)
+            }
+        }
+        .padding(.vertical, 7)
+    }
+
+    private func sentenceRow(_ favorite: FavoriteDTO) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: 7) {
+                TappableText(
+                    tokens: TokenCache.tokens(
+                        for: favorite.sentence,
+                        cacheKey: "fav-sentence-\(favorite.id.uuidString)"
+                    ),
+                    contextID: "fav-sentence-\(favorite.id.uuidString)",
+                    selection: wordSelection,
+                    onSelect: { wordSelection = $0 }
+                )
+                .font(.body)
+
+                if let translation = favorite.translationZh {
+                    Text(translation)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                HStack(spacing: 5) {
+                    Text(favorite.characterName)
+                    Text("·")
+                    favoriteDate(favorite.createdAt)
+                }
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            speechButton(text: favorite.sentence, label: "播放收藏句子")
+        }
+        .padding(.vertical, 7)
+    }
+
+    private func meaningGroups(for favorite: FavoriteDTO) -> [DictMeaningGroup] {
+        if let groups = wordEntries[favorite.id]?.meaningGroups, !groups.isEmpty {
+            return groups
+        }
+        return DictEntry(
+            word: favorite.sentence,
+            translation: favorite.translationZh
+        ).meaningGroups
+    }
+
+    private func favoriteDate(_ date: Date) -> some View {
+        Text(date, style: .date)
             .font(.caption)
             .foregroundStyle(.tertiary)
+    }
+
+    private func speechButton(text: String, label: String) -> some View {
+        Button {
+            let speech = deps.speech
+            Task { await speech.speak(text, language: "en-US") }
+        } label: {
+            Image(systemName: "speaker.wave.2.fill")
+                .font(.body.weight(.semibold))
+                .foregroundStyle(Color.dsSky)
+                .frame(width: 44, height: 44)
+                .background(Color.dsSky.opacity(0.12), in: Circle())
+                .contentShape(Circle())
         }
-        .padding(.vertical, 4)
+        .buttonStyle(.borderless)
+        .accessibilityLabel(label)
     }
 
     private var wordFavoriteActions: WordFavoriteActions {
@@ -132,13 +291,21 @@ public struct FavoritesView: View {
 
     private func reload() async {
         defer { isLoading = false }
-        favorites = (try? await deps.favorites.all()) ?? []
+        let loadedFavorites = (try? await deps.favorites.all()) ?? []
+        var loadedEntries: [UUID: DictEntry] = [:]
+        for favorite in loadedFavorites where favorite.kind == .word {
+            if let entry = await deps.dictionary.lookup(favorite.sentence) {
+                loadedEntries[favorite.id] = entry
+            }
+        }
+        favorites = loadedFavorites
+        wordEntries = loadedEntries
     }
 
-    private func remove(at indexSet: IndexSet) async {
+    private func remove(at indexSet: IndexSet, from source: [FavoriteDTO]) async {
         for index in indexSet {
-            guard favorites.indices.contains(index) else { continue }
-            try? await deps.favorites.remove(id: favorites[index].id)
+            guard source.indices.contains(index) else { continue }
+            try? await deps.favorites.remove(id: source[index].id)
         }
         await reload()
     }
