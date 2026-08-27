@@ -45,6 +45,7 @@ public struct HomeDependencies: Sendable {
 }
 
 public enum HomeDestination: Hashable, Sendable {
+    case map
     case stories
     case mainline
     case cityStories

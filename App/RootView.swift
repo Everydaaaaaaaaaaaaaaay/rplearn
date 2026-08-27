@@ -19,7 +19,6 @@ import UserNotifications
 
 enum AppTab: Hashable {
     case home
-    case map
     case messages
     case me
 }
@@ -50,13 +49,16 @@ struct RootView: View {
         #if DEBUG
         let requested = ProcessInfo.processInfo.environment["UI_TEST_TAB"]
         let initial: AppTab = switch requested {
-        case "map": .map
         case "messages": .messages
         case "me": .me
         default: .home
         }
         _selectedTab = State(initialValue: initial)
-        if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+        if requested == "map" {
+            var path = NavigationPath()
+            path.append(HomeDestination.map)
+            _homePath = State(initialValue: path)
+        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             var path = NavigationPath()
             path.append(HomeDestination.activities)
             _homePath = State(initialValue: path)
@@ -110,7 +112,8 @@ struct RootView: View {
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
                 await reloadUnreadCount()
-                if environment.needsOnboarding != nil, selectedTab != .home {
+                if environment.needsOnboarding != nil,
+                   selectedTab != .home || !homePath.isEmpty {
                     isInitialContentReady = true
                 }
                 await refreshProactiveMessagesAfterInterfaceSettles(
@@ -287,11 +290,6 @@ struct RootView: View {
                 .tabItem {
                     Label("首页", systemImage: "house")
                 }
-            mapStack
-                .tag(AppTab.map)
-                .tabItem {
-                    Label("地图", systemImage: "map")
-                }
             messagesStack
                 .tag(AppTab.messages)
                 .tabItem {
@@ -344,16 +342,23 @@ struct RootView: View {
                         deps: homeDeps,
                         chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) }
                     )
+                case .map:
+                    MapView(
+                        deps: mapDeps,
+                        reloadToken: stateRevision,
+                        onBack: {
+                            if !homePath.isEmpty {
+                                homePath.removeLast()
+                            }
+                        },
+                        onOpenMainline: {
+                            if !homePath.isEmpty {
+                                homePath.removeLast()
+                            }
+                            homePath.append(HomeDestination.mainline)
+                        }
+                    )
                 }
-            }
-        }
-    }
-
-    private var mapStack: some View {
-        NavigationStack {
-            MapView(deps: mapDeps, reloadToken: stateRevision) {
-                selectedTab = .home
-                homePath.append(HomeDestination.mainline)
             }
         }
     }

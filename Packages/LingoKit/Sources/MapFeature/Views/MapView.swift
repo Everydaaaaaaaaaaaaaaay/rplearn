@@ -7,6 +7,7 @@ import SwiftUI
 public struct MapView: View {
     private let deps: MapDependencies
     private let reloadToken: Int
+    private let onBack: (@MainActor () -> Void)?
     private let onOpenMainline: @MainActor () -> Void
 
     @State private var profile: UserProfileDTO?
@@ -24,10 +25,12 @@ public struct MapView: View {
     public init(
         deps: MapDependencies,
         reloadToken: Int = 0,
+        onBack: (@MainActor () -> Void)? = nil,
         onOpenMainline: @escaping @MainActor () -> Void = {}
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
+        self.onBack = onBack
         self.onOpenMainline = onOpenMainline
     }
 
@@ -210,6 +213,25 @@ public struct MapView: View {
             )
             .padding(.horizontal, DSSpacing.md)
             .padding(.top, DSSpacing.xs)
+
+            if let onBack {
+                Button(action: onBack) {
+                    Image(systemName: "chevron.left")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.primary)
+                        .frame(width: 38, height: 38)
+                        .background(.regularMaterial, in: Circle())
+                        .overlay {
+                            Circle().stroke(.white.opacity(0.72), lineWidth: 1)
+                        }
+                        .shadow(color: .black.opacity(0.11), radius: 6, y: 2)
+                }
+                .buttonStyle(.pressableCard)
+                .accessibilityLabel("返回首页")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, DSSpacing.md)
+                .padding(.top, 58)
+            }
 
             HStack(spacing: 8) {
                 Button {

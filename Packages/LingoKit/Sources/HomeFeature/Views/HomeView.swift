@@ -100,11 +100,47 @@ public struct HomeView: View {
 
     @ViewBuilder
     private var cityVista: some View {
-        if currentRegion != nil {
-            Color.clear
-                .frame(height: cityVistaHeight)
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
+        if let currentRegion {
+            ZStack(alignment: .bottom) {
+                Color.clear
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+
+                NavigationLink(value: HomeDestination.map) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "map.fill")
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                            .frame(width: 36, height: 36)
+                            .background(Color.dsSky, in: Circle())
+
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text("世界地图")
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(.primary)
+                            Text("从\(currentRegion.nameZh)出发")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        Spacer(minLength: DSSpacing.xs)
+
+                        Image(systemName: "chevron.right")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 8)
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: DSRadius.inline))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
+                            .stroke(.white.opacity(0.62), lineWidth: 1)
+                    }
+                }
+                .buttonStyle(.pressableCard)
+                .accessibilityLabel("打开世界地图，当前从\(currentRegion.nameZh)出发")
+            }
+            .frame(height: cityVistaHeight)
         }
     }
 
