@@ -21,8 +21,7 @@ public struct RosterView: View {
     @State private var occupiedSlots = 0
     @State private var isLoading = true
     @State private var searchText = ""
-    @State private var arePartnersExpanded = true
-    @State private var areEncountersExpanded = true
+    @State private var isSearchPresented = false
 
     public init(
         deps: RosterDependencies,
@@ -52,63 +51,55 @@ public struct RosterView: View {
     }
 
     public var body: some View {
-        List {
-            if isSearching {
-                searchSection
-            } else if friends.isEmpty && !isLoading {
-                emptyState
-            } else {
-                partnerSection
-                encounterSection
-                capacityNote
+        ZStack {
+            DSSceneBackdrop(imageName: "contacts_london_glass", tone: .warm)
+
+            ScrollView {
+                LazyVStack(spacing: DSSpacing.md) {
+                    if isSearching {
+                        searchSection
+                    } else if friends.isEmpty && !isLoading {
+                        emptyState
+                    } else {
+                        contactSection(
+                            title: "特别关心",
+                            icon: "star.fill",
+                            tint: .dsSunset,
+                            people: partners,
+                            emptyDescription: "剧情旅伴会显示在这里"
+                        )
+                        contactSection(
+                            title: "朋友",
+                            icon: "person.2.fill",
+                            tint: .dsSkyDeep,
+                            people: encounters,
+                            emptyDescription: "旅行中认识的新朋友会显示在这里"
+                        )
+                        capacityNote
+                    }
+                }
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.vertical, DSSpacing.sm)
             }
+            .refreshable { await reload() }
         }
-        .listStyle(.plain)
-        .scrollContentBackground(.hidden)
-        .background(Color.dsBackground)
         .navigationTitle("联系人")
+        .navigationBarTitleDisplayMode(.inline)
         .searchable(
             text: $searchText,
-            placement: .navigationBarDrawer(displayMode: .always),
+            isPresented: $isSearchPresented,
+            placement: .toolbar,
             prompt: "搜索联系人"
         )
+        .dsCompactSearchToolbar()
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         .task { await reload() }
-        .refreshable { await reload() }
         .overlay {
             if isLoading {
                 ProgressView()
-            }
-        }
-    }
-
-    private var partnerSection: some View {
-        Section {
-            groupHeader(
-                title: "特别关心",
-                count: partners.count,
-                isExpanded: $arePartnersExpanded
-            )
-
-            if arePartnersExpanded {
-                ForEach(partners) { character in
-                    friendLink(character)
-                }
-            }
-        }
-    }
-
-    private var encounterSection: some View {
-        Section {
-            groupHeader(
-                title: "我的好友",
-                count: encounters.count,
-                isExpanded: $areEncountersExpanded
-            )
-
-            if areEncountersExpanded {
-                ForEach(encounters) { character in
-                    friendLink(character)
-                }
+                    .padding(DSSpacing.lg)
+                    .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.12))
             }
         }
     }
@@ -117,54 +108,65 @@ public struct RosterView: View {
     private var searchSection: some View {
         if searchResults.isEmpty {
             ContentUnavailableView.search(text: searchText)
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
+                .padding(DSSpacing.xl)
+                .dsSceneGlass(tint: Color.white.opacity(0.12))
         } else {
-            Section {
-                ForEach(searchResults) { character in
-                    friendLink(character)
-                }
-            } header: {
-                Text("搜索结果")
-                    .textCase(nil)
-            }
+            contactSection(
+                title: "搜索结果",
+                icon: "magnifyingglass",
+                tint: .dsSkyDeep,
+                people: searchResults,
+                emptyDescription: ""
+            )
         }
     }
 
-    private func groupHeader(
+    private func contactSection(
         title: String,
-        count: Int,
-        isExpanded: Binding<Bool>
+        icon: String,
+        tint: Color,
+        people: [CharacterDTO],
+        emptyDescription: String
     ) -> some View {
-        Button {
-            isExpanded.wrappedValue.toggle()
-        } label: {
-            HStack(spacing: DSSpacing.sm) {
-                Image(systemName: "chevron.right")
-                    .font(.caption2.weight(.bold))
-                    .foregroundStyle(.secondary)
-                    .rotationEffect(.degrees(isExpanded.wrappedValue ? 90 : 0))
-                    .frame(width: 12)
+        VStack(spacing: 0) {
+            HStack(spacing: DSSpacing.xs) {
+                Image(systemName: icon)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(tint)
                 Text(title)
-                    .font(.subheadline.weight(.medium))
+                    .font(.headline)
                     .foregroundStyle(.primary)
                 Spacer()
-                Text("\(count)")
-                    .font(.caption.monospacedDigit())
-                    .foregroundStyle(.tertiary)
+                Text("\(people.count)")
+                    .font(.caption.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(tint.opacity(0.12), in: Capsule())
             }
-            .frame(minHeight: 42)
-            .contentShape(Rectangle())
+            .padding(.horizontal, DSSpacing.md)
+            .frame(minHeight: 48)
+
+            Divider()
+                .padding(.leading, DSSpacing.md)
+
+            if people.isEmpty {
+                Text(emptyDescription)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(DSSpacing.md)
+            } else {
+                ForEach(Array(people.enumerated()), id: \.element.id) { index, character in
+                    friendLink(character)
+                    if index < people.count - 1 {
+                        Divider()
+                            .padding(.leading, DSSpacing.md + 46 + DSSpacing.sm)
+                    }
+                }
+            }
         }
-        .buttonStyle(.plain)
-        .listRowInsets(
-            EdgeInsets(top: 0, leading: DSSpacing.md, bottom: 0, trailing: DSSpacing.md)
-        )
-        .listRowBackground(Color.dsSurface)
-        .listRowSeparator(.hidden)
-        .accessibilityLabel("\(title)，\(count) 位好友")
-        .accessibilityValue(isExpanded.wrappedValue ? "已展开" : "已收起")
-        .accessibilityHint(isExpanded.wrappedValue ? "轻点收起分组" : "轻点展开分组")
+        .dsSceneGlass(tint: tint.opacity(0.08))
     }
 
     private func friendLink(_ character: CharacterDTO) -> some View {
@@ -184,17 +186,18 @@ public struct RosterView: View {
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
+
+                Spacer(minLength: DSSpacing.xs)
+
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
             }
+            .padding(.horizontal, DSSpacing.md)
+            .padding(.vertical, DSSpacing.sm)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .listRowInsets(
-            EdgeInsets(top: 5, leading: DSSpacing.md, bottom: 5, trailing: DSSpacing.md)
-        )
-        .listRowBackground(Color.dsSurface)
-        .listRowSeparatorTint(Color.dsBorder.opacity(0.72))
-        .alignmentGuide(.listRowSeparatorLeading) { _ in
-            DSSpacing.md + 46 + DSSpacing.sm
-        }
     }
 
     private func friendStatus(_ character: CharacterDTO) -> String {
@@ -215,16 +218,8 @@ public struct RosterView: View {
         .font(.caption)
         .foregroundStyle(.secondary)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .listRowInsets(
-            EdgeInsets(
-                top: DSSpacing.sm,
-                leading: DSSpacing.md,
-                bottom: DSSpacing.lg,
-                trailing: DSSpacing.md
-            )
-        )
-        .listRowBackground(Color.dsBackground)
-        .listRowSeparator(.hidden)
+        .padding(DSSpacing.md)
+        .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.1))
     }
 
     private var emptyState: some View {
@@ -233,8 +228,8 @@ public struct RosterView: View {
             systemImage: "person.2",
             description: Text("继续旅行，认识的伙伴会出现在这里")
         )
-        .listRowBackground(Color.clear)
-        .listRowSeparator(.hidden)
+        .padding(DSSpacing.xl)
+        .dsSceneGlass(tint: Color.white.opacity(0.12))
     }
 
     private func reload() async {
