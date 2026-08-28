@@ -30,6 +30,7 @@ public struct PlacementTestView: View {
     private enum Phase: Equatable {
         case loading
         case introduction
+        case levelSelection
         case question
         case result
         case failure
@@ -49,7 +50,7 @@ public struct PlacementTestView: View {
     @State private var result: PlacementResult?
     @State private var currentLevel: DifficultyLevel = .junior3
     @State private var selectedLevel: DifficultyLevel = .junior3
-    @State private var showsLevelPicker = false
+    @State private var levelSelectionReturnPhase: Phase = .introduction
     @State private var questionBankError: String?
     @State private var isApplying = false
     @State private var errorMessage: String?
@@ -82,6 +83,15 @@ public struct PlacementTestView: View {
                         loadingView
                     case .introduction:
                         introductionView
+                    case .levelSelection:
+                        DifficultyLevelSelectionPage(
+                            selection: $selectedLevel,
+                            currentLevel: currentLevel,
+                            recommendedLevel: levelSelectionReturnPhase == .result
+                                ? result?.difficultyLevel
+                                : nil,
+                            onDone: closeLevelSelection
+                        )
                     case .question:
                         questionView
                     case .result:
@@ -97,31 +107,32 @@ public struct PlacementTestView: View {
         .onDisappear {
             Task { await deps.speech.stopSpeaking() }
         }
-        .sheet(isPresented: $showsLevelPicker) {
-            DifficultyLevelPicker(
-                selection: $selectedLevel,
-                currentLevel: currentLevel,
-                recommendedLevel: phase == .result ? result?.difficultyLevel : nil
-            )
-        }
-        .interactiveDismissDisabled(phase == .question || isApplying)
+        .interactiveDismissDisabled(
+            phase == .question || phase == .levelSelection || isApplying
+        )
     }
 
     private var header: some View {
         HStack {
-            Button(action: onCancel) {
-                Image(systemName: "xmark")
+            Button {
+                if phase == .levelSelection {
+                    closeLevelSelection()
+                } else {
+                    onCancel()
+                }
+            } label: {
+                Image(systemName: phase == .levelSelection ? "chevron.left" : "xmark")
                     .font(.body.weight(.semibold))
                     .frame(width: 36, height: 36)
                     .background(Color.dsSurfaceMuted, in: Circle())
             }
             .buttonStyle(.plain)
             .disabled(isApplying)
-            .accessibilityLabel("退出水平校准")
+            .accessibilityLabel(phase == .levelSelection ? "返回水平校准" : "退出水平校准")
 
             Spacer()
             VStack(spacing: 1) {
-                Text("英语水平校准")
+                Text(phase == .levelSelection ? "选择英语水平" : "英语水平校准")
                     .font(.subheadline.weight(.semibold))
                 if phase == .question, let engine {
                     Text("已答 \(engine.responses.count) 题")
@@ -530,7 +541,7 @@ public struct PlacementTestView: View {
         recommendedLevel: DifficultyLevel?
     ) -> some View {
         Button {
-            showsLevelPicker = true
+            openLevelSelection()
         } label: {
             HStack(spacing: DSSpacing.md) {
                 Image(systemName: "gauge.with.dots.needle.33percent")
@@ -575,6 +586,19 @@ public struct PlacementTestView: View {
         .buttonStyle(.plain)
         .accessibilityLabel("\(title)，当前选择 \(selectedLevel.displayName)")
         .accessibilityHint("打开全部英语水平列表")
+    }
+
+    private func openLevelSelection() {
+        levelSelectionReturnPhase = phase == .result ? .result : .introduction
+        withAnimation(reduceMotion ? nil : .snappy) {
+            phase = .levelSelection
+        }
+    }
+
+    private func closeLevelSelection() {
+        withAnimation(reduceMotion ? nil : .snappy) {
+            phase = levelSelectionReturnPhase
+        }
     }
 
     private func optionButton(
@@ -767,11 +791,11 @@ public struct PlacementTestView: View {
     }
 }
 
-private struct DifficultyLevelPicker: View {
+private struct DifficultyLevelSelectionPage: View {
     @Binding var selection: DifficultyLevel
     let currentLevel: DifficultyLevel
     let recommendedLevel: DifficultyLevel?
-    @Environment(\.dismiss) private var dismiss
+    let onDone: () -> Void
 
     private let groups: [(String, [DifficultyLevel])] = [
         ("启蒙", [.kindergarten]),
@@ -782,63 +806,102 @@ private struct DifficultyLevelPicker: View {
     ]
 
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    Text("请选择最适合当前学习内容的难度。测试建议仅供参考，之后仍可修改。")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
+        VStack(spacing: 0) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: DSSpacing.lg) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("选择适合你的对话难度")
+                            .font(.system(.title2, design: .rounded, weight: .bold))
+                        Text("这是应用内的学习设置，不会请求通知或其他系统权限。测试建议仅供参考，之后仍可修改。")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
 
-                ForEach(groups, id: \.0) { title, levels in
-                    Section(title) {
-                        ForEach(levels, id: \.rawValue) { level in
-                            Button {
-                                selection = level
-                                Haptics.impact(.light)
-                            } label: {
-                                HStack(spacing: DSSpacing.sm) {
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(level.displayName)
-                                            .foregroundStyle(.primary)
-                                        Text(level.cseReference)
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    Spacer()
-                                    if level == currentLevel {
-                                        Text("当前")
-                                            .font(.caption2.weight(.semibold))
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    if level == recommendedLevel {
-                                        Text("建议")
-                                            .font(.caption2.weight(.semibold))
-                                            .foregroundStyle(Color.dsSkyDeep)
-                                    }
-                                    if level == selection {
-                                        Image(systemName: "checkmark")
-                                            .font(.body.weight(.semibold))
-                                            .foregroundStyle(Color.dsSky)
-                                    }
-                                }
-                                .contentShape(Rectangle())
-                            }
-                            .buttonStyle(.plain)
-                            .accessibilityAddTraits(level == selection ? .isSelected : [])
-                        }
+                    ForEach(groups, id: \.0) { title, levels in
+                        levelGroup(title: title, levels: levels)
+                    }
+                }
+                .frame(maxWidth: 560)
+                .padding(DSSpacing.lg)
+                .frame(maxWidth: .infinity)
+            }
+
+            VStack(spacing: 4) {
+                Text("已选择：\(selection.displayName)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Button("完成") { onDone() }
+                    .buttonStyle(.dsActionPrimary)
+            }
+            .padding(.horizontal, DSSpacing.lg)
+            .padding(.vertical, DSSpacing.sm)
+            .background(.ultraThinMaterial)
+            .overlay(alignment: .top) { Divider() }
+        }
+    }
+
+    private func levelGroup(title: String, levels: [DifficultyLevel]) -> some View {
+        VStack(alignment: .leading, spacing: DSSpacing.xs) {
+            Text(title)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .padding(.leading, DSSpacing.xs)
+
+            VStack(spacing: 0) {
+                ForEach(Array(levels.enumerated()), id: \.element.rawValue) { index, level in
+                    levelRow(level)
+                    if index < levels.count - 1 {
+                        Divider().padding(.leading, DSSpacing.md)
                     }
                 }
             }
-            .navigationTitle("选择英语水平")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("完成") { dismiss() }
-                }
-            }
+            .dsSurface(.grouped, padding: 0)
         }
-        .presentationDetents([.large])
-        .presentationDragIndicator(.visible)
+    }
+
+    private func levelRow(_ level: DifficultyLevel) -> some View {
+        let isSelected = level == selection
+        return Button {
+            selection = level
+            Haptics.impact(.light)
+        } label: {
+            HStack(spacing: DSSpacing.sm) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(level.displayName)
+                        .font(.body.weight(isSelected ? .semibold : .regular))
+                        .foregroundStyle(.primary)
+                    Text(level.cseReference)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer(minLength: DSSpacing.xs)
+                if level == currentLevel {
+                    levelBadge("当前", color: .secondary)
+                }
+                if level == recommendedLevel {
+                    levelBadge("建议", color: .dsSkyDeep)
+                }
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.title3)
+                    .foregroundStyle(isSelected ? Color.dsSky : Color.dsBorder)
+            }
+            .padding(.horizontal, DSSpacing.md)
+            .padding(.vertical, DSSpacing.sm)
+            .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
+            .background(isSelected ? Color.dsSky.opacity(0.08) : Color.clear)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    private func levelBadge(_ text: String, color: Color) -> some View {
+        Text(text)
+            .font(.caption2.weight(.semibold))
+            .foregroundStyle(color)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(color.opacity(0.1), in: Capsule())
     }
 }
