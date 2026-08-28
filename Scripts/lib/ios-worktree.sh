@@ -9,7 +9,8 @@ LINGOTRIP_MAIN_REPO_ROOT="$(dirname "$LINGOTRIP_GIT_COMMON_DIR")"
 LINGOTRIP_SHARED_BUILD_ROOT="${LINGOTRIP_SHARED_BUILD_ROOT:-$LINGOTRIP_MAIN_REPO_ROOT/build/WorktreeShared}"
 LINGOTRIP_DERIVED_DATA_PATH="${LINGOTRIP_DERIVED_DATA_PATH:-$LINGOTRIP_REPO_ROOT/build/DerivedData}"
 LINGOTRIP_SOURCE_PACKAGES_PATH="${LINGOTRIP_SOURCE_PACKAGES_PATH:-$LINGOTRIP_SHARED_BUILD_ROOT/SourcePackages}"
-LINGOTRIP_PIPELINE_LOCK_DIR="$LINGOTRIP_SHARED_BUILD_ROOT/locks/ios-pipeline.lock"
+LINGOTRIP_WORKTREE_LOCK_KEY="$(printf '%s' "$LINGOTRIP_REPO_ROOT" | cksum | awk '{ print $1 }')"
+LINGOTRIP_PIPELINE_LOCK_DIR="$LINGOTRIP_SHARED_BUILD_ROOT/locks/ios-pipeline-$LINGOTRIP_WORKTREE_LOCK_KEY.lock"
 LINGOTRIP_PIPELINE_LOCK_HELD=0
 
 lingotrip_require_command() {
@@ -124,12 +125,17 @@ lingotrip_simulator_udid() {
   local devices
   devices="$(xcrun simctl list devices available)"
 
-  if [[ -n "${LINGOTRIP_SIMULATOR_UDID:-}" ]]; then
-    if ! awk -v udid="$LINGOTRIP_SIMULATOR_UDID" 'index($0, udid) { found = 1 } END { exit !found }' <<< "$devices"; then
-      echo "错误：指定的模拟器不可用：$LINGOTRIP_SIMULATOR_UDID" >&2
+  local configured_udid="${LINGOTRIP_SIMULATOR_UDID:-}"
+  if [[ -z "$configured_udid" ]]; then
+    configured_udid="$(git -C "$LINGOTRIP_REPO_ROOT" config --worktree --get lingotrip.simulatorUDID 2>/dev/null || true)"
+  fi
+
+  if [[ -n "$configured_udid" ]]; then
+    if ! awk -v udid="$configured_udid" 'index($0, udid) { found = 1 } END { exit !found }' <<< "$devices"; then
+      echo "错误：当前工作树绑定的模拟器不可用：$configured_udid" >&2
       return 1
     fi
-    printf '%s\n' "$LINGOTRIP_SIMULATOR_UDID"
+    printf '%s\n' "$configured_udid"
     return
   fi
 
