@@ -16,6 +16,7 @@ public struct StoryDependencies: Sendable {
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
+    public let exampleTranslationActions: DictExampleTranslationActions
 
     public init(
         storyProgress: StoryProgressStore,
@@ -24,7 +25,8 @@ public struct StoryDependencies: Sendable {
         favorites: FavoritesStore,
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
-        speech: any SpeechService
+        speech: any SpeechService,
+        exampleTranslationActions: DictExampleTranslationActions
     ) {
         self.storyProgress = storyProgress
         self.progression = progression
@@ -33,6 +35,7 @@ public struct StoryDependencies: Sendable {
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
+        self.exampleTranslationActions = exampleTranslationActions
     }
 }
 
@@ -93,7 +96,8 @@ public struct AVGStoryView: View {
                     )
                 }
             },
-            favoriteActions: wordFavoriteActions
+            favoriteActions: wordFavoriteActions,
+            exampleTranslationActions: deps.exampleTranslationActions
         )
         .task {
             await loadPlayerIfNeeded()

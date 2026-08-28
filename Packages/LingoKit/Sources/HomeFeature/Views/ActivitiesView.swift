@@ -690,7 +690,8 @@ private struct EncounterCardSheet: View {
                 }
             },
             favoriteActions: wordFavoriteActions,
-            aiFallback: aiWordFallback
+            aiFallback: aiWordFallback,
+            exampleTranslationActions: deps.exampleTranslationActions
         )
         .onAppear {
             withAnimation(reduceMotion ? DSAnimation.feedback : DSAnimation.scene) {

@@ -31,6 +31,56 @@ public struct WordFavoriteActions: Sendable {
     }
 }
 
+/// 词典例句翻译能力由组合根注入，DictKit 不直接依赖具体 LLM 服务。
+public struct DictExampleTranslationActions: Sendable {
+    private let translateAction: @Sendable (String) async -> String?
+
+    public init(translate: @escaping @Sendable (String) async -> String?) {
+        self.translateAction = translate
+    }
+
+    func translate(_ sentence: String) async -> String? {
+        let source = sentence.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !source.isEmpty,
+              let translated = await translateAction(source)?.trimmingCharacters(
+                  in: .whitespacesAndNewlines
+              ),
+              !translated.isEmpty
+        else { return nil }
+        return translated
+    }
+}
+
+actor DictExampleTranslationCache {
+    static let shared = DictExampleTranslationCache()
+
+    private var translations: [String: String] = [:]
+    private var inFlight: [String: Task<String?, Never>] = [:]
+
+    func translation(
+        for sentence: String,
+        using actions: DictExampleTranslationActions
+    ) async -> String? {
+        let key = DictDisplayText.normalizedWhitespace(sentence).lowercased()
+        guard !key.isEmpty else { return nil }
+        if let cached = translations[key] {
+            return cached
+        }
+        if let pending = inFlight[key] {
+            return await pending.value
+        }
+
+        let task = Task { await actions.translate(sentence) }
+        inFlight[key] = task
+        let translated = await task.value
+        inFlight[key] = nil
+        if let translated {
+            translations[key] = translated
+        }
+        return translated
+    }
+}
+
 enum DictCardLayout {
     static let width: CGFloat = 320
     static let maximumHeight: CGFloat = 340
@@ -442,6 +492,7 @@ public struct DictCardView: View {
     private let onSpeak: (@MainActor (String) -> Void)?
     private let favoriteActions: WordFavoriteActions?
     private let aiFallback: (@Sendable (String) async -> String?)?
+    private let exampleTranslationActions: DictExampleTranslationActions
     private let onDismiss: (@MainActor () -> Void)?
 
     @State private var path: [DictTarget]
@@ -453,6 +504,8 @@ public struct DictCardView: View {
     @State private var isFavorite = false
     @State private var isUpdatingFavorite = false
     @State private var isEnglishExpanded = false
+    @State private var exampleTranslations: [String: String] = [:]
+    @State private var translatingExampleIDs: Set<String> = []
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -465,6 +518,7 @@ public struct DictCardView: View {
         onSpeak: (@MainActor (String) -> Void)? = nil,
         favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil,
+        exampleTranslationActions: DictExampleTranslationActions,
         onDismiss: (@MainActor () -> Void)? = nil
     ) {
         _path = State(initialValue: [target])
@@ -475,6 +529,7 @@ public struct DictCardView: View {
         self.onSpeak = onSpeak
         self.favoriteActions = favoriteActions
         self.aiFallback = aiFallback
+        self.exampleTranslationActions = exampleTranslationActions
         self.onDismiss = onDismiss
     }
 
@@ -858,17 +913,47 @@ public struct DictCardView: View {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 6) {
                             ForEach(Array(group.examples.enumerated()), id: \.element.id) { index, example in
-                                tappableExampleText(
-                                    example,
-                                    contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
-                                )
-                                .font(.subheadline)
-                                .lineSpacing(1)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    tappableExampleText(
+                                        example,
+                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
+                                    )
+                                    .font(.subheadline)
+                                    .lineSpacing(1)
+                                    exampleTranslationText(example)
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private func exampleTranslationText(_ example: DictUsageExample) -> some View {
+        if let translation = exampleTranslations[example.id] {
+            Text(translation)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityLabel("中文翻译：\(translation)")
+        } else if translatingExampleIDs.contains(example.id) {
+            HStack(spacing: 5) {
+                ProgressView()
+                    .controlSize(.mini)
+                Text("正在翻译…")
+            }
+            .font(.caption2)
+            .foregroundStyle(.tertiary)
+            .accessibilityElement(children: .combine)
+        } else {
+            Button("翻译暂不可用，点击重试") {
+                translateExample(example)
+            }
+            .font(.caption2)
+            .buttonStyle(.plain)
+            .foregroundStyle(.secondary)
         }
     }
 
@@ -1018,6 +1103,8 @@ public struct DictCardView: View {
         isEnglishExpanded = false
         aiExplanation = nil
         contextualPhrases = []
+        exampleTranslations = [:]
+        translatingExampleIDs = []
         let loadedEntry = await dictionary.lookup(word)
         if path.count == 1 {
             contextualPhrases = await dictionary.matchingPhrases(
@@ -1030,6 +1117,60 @@ public struct DictCardView: View {
         let resolvedWord = loadedEntry?.word ?? word
         isFavorite = await favoriteActions?.contains(resolvedWord) ?? false
         isLoading = false
+        if let loadedEntry {
+            await translateUsageExamples(for: loadedEntry, requestedWord: word)
+        }
+    }
+
+    private func translateUsageExamples(
+        for entry: DictEntry,
+        requestedWord: String
+    ) async {
+        let examples = DictUsageExamplePolicy.groups(
+            for: entry,
+            requestedWord: requestedWord,
+            contextText: contextText
+        )
+        .flatMap(\.examples)
+        guard !examples.isEmpty else { return }
+
+        translatingExampleIDs = Set(examples.map(\.id))
+        await withTaskGroup(of: (String, String?).self) { group in
+            for example in examples {
+                group.addTask {
+                    let translated = await DictExampleTranslationCache.shared.translation(
+                        for: example.text,
+                        using: exampleTranslationActions
+                    )
+                    return (example.id, translated)
+                }
+            }
+            for await (id, translation) in group {
+                guard !Task.isCancelled else {
+                    group.cancelAll()
+                    return
+                }
+                translatingExampleIDs.remove(id)
+                if let translation {
+                    exampleTranslations[id] = translation
+                }
+            }
+        }
+    }
+
+    private func translateExample(_ example: DictUsageExample) {
+        guard !translatingExampleIDs.contains(example.id) else { return }
+        translatingExampleIDs.insert(example.id)
+        Task {
+            let translated = await DictExampleTranslationCache.shared.translation(
+                for: example.text,
+                using: exampleTranslationActions
+            )
+            translatingExampleIDs.remove(example.id)
+            if let translated {
+                exampleTranslations[example.id] = translated
+            }
+        }
     }
 
     private func toggleFavorite(_ word: String) {

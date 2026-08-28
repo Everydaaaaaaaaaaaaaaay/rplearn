@@ -2,6 +2,18 @@ import Foundation
 import Testing
 @testable import DictKit
 
+private actor TranslationInvocationCounter {
+    private var value = 0
+
+    func increment() {
+        value += 1
+    }
+
+    func count() -> Int {
+        value
+    }
+}
+
 /// 对打进 App bundle 的全量本地学习词典做集成查询（测试由 LingoTrip 托管）。
 @Suite("DictDatabase 查询流水线")
 struct DictDatabaseTests {
@@ -83,6 +95,40 @@ struct DictDatabaseTests {
                 == "Which (of two); which one (of two); -- used interrogatively and relatively."
         )
         #expect(!groups.map(\.definitionText).joined().contains("#"))
+    }
+
+    @Test("例句翻译忽略空输入并清理译文首尾空白")
+    func exampleTranslationActionsNormalizeOutput() async {
+        let actions = DictExampleTranslationActions { sentence in
+            "  \(sentence)的自然中文翻译  "
+        }
+
+        #expect(
+            await actions.translate("  Fancy a pint later?  ")
+                == "Fancy a pint later?的自然中文翻译"
+        )
+        #expect(await actions.translate("   \n ") == nil)
+    }
+
+    @Test("相同例句的并发翻译合并为一次请求并复用缓存")
+    func exampleTranslationCacheDeduplicatesRequests() async {
+        let cache = DictExampleTranslationCache()
+        let counter = TranslationInvocationCounter()
+        let actions = DictExampleTranslationActions { sentence in
+            await counter.increment()
+            try? await Task.sleep(for: .milliseconds(20))
+            return "译：\(sentence)"
+        }
+
+        async let first = cache.translation(for: "How are you?", using: actions)
+        async let second = cache.translation(for: "How are you?", using: actions)
+        let results = await (first, second)
+        let cached = await cache.translation(for: "How are you?", using: actions)
+
+        #expect(results.0 == "译：How are you?")
+        #expect(results.1 == "译：How are you?")
+        #expect(cached == "译：How are you?")
+        #expect(await counter.count() == 1)
     }
 
     @Test("例句优先保留当前语境并按词性适量分组")

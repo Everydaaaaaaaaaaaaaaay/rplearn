@@ -4,6 +4,7 @@ import BillingKit
 import ChatFeature
 import CoreKit
 import DesignSystem
+import DictKit
 import DomainKit
 import FavoritesFeature
 import HomeFeature
@@ -472,7 +473,8 @@ struct RootView: View {
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
-            llm: environment.llmRouter
+            llm: environment.llmRouter,
+            exampleTranslationActions: exampleTranslationActions
         )
     }
 
@@ -498,6 +500,7 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
             translator: environment.translator,
+            exampleTranslationActions: exampleTranslationActions,
             audioSession: environment.audioSession,
             memoryStore: environment.memoryStore,
             itemStore: environment.itemStore,
@@ -515,7 +518,8 @@ struct RootView: View {
             favorites: environment.favoritesStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
-            speech: environment.speech
+            speech: environment.speech,
+            exampleTranslationActions: exampleTranslationActions
         )
     }
 
@@ -524,8 +528,16 @@ struct RootView: View {
             favorites: environment.favoritesStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
-            speech: environment.speech
+            speech: environment.speech,
+            exampleTranslationActions: exampleTranslationActions
         )
+    }
+
+    private var exampleTranslationActions: DictExampleTranslationActions {
+        let translator = environment.translator
+        return DictExampleTranslationActions { sentence in
+            try? await translator.translateToChinese(sentence)
+        }
     }
 
     private var usesCloudState: Bool {

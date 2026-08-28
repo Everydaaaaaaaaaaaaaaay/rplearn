@@ -1,5 +1,6 @@
 import DesignSystem
 import SwiftUI
+import Translation
 
 /// 点词查词浮窗：挂在聊天根视图上。
 /// 被点词经 anchorPreference 上报 bounds，在词上/下方渲染 DictCardView（空间不足自动翻转），
@@ -11,6 +12,8 @@ public struct WordLookupOverlayModifier: ViewModifier {
     let onSpeak: (@MainActor (String) -> Void)?
     let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
+    let exampleTranslationActions: DictExampleTranslationActions
+    @State private var appleTranslator = DictExampleAppleTranslator()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public func body(content: Content) -> some View {
@@ -40,6 +43,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 onSpeak: onSpeak,
                                 favoriteActions: favoriteActions,
                                 aiFallback: aiFallback,
+                                exampleTranslationActions: resolvedExampleTranslationActions,
                                 onDismiss: { self.selection = nil }
                             )
                             .id(selection)
@@ -63,6 +67,24 @@ public struct WordLookupOverlayModifier: ViewModifier {
                 }
             }
             .animation(reduceMotion ? .easeOut(duration: 0.15) : DSAnimation.snappy, value: selection)
+            .translationTask(appleTranslator.configuration) { @Sendable session in
+                try? await session.prepareTranslation()
+                for item in await appleTranslator.takeBatch() {
+                    let zh = try? await session.translate(item.text).targetText
+                    await appleTranslator.complete(item.id, with: zh)
+                }
+            }
+    }
+
+    private var resolvedExampleTranslationActions: DictExampleTranslationActions {
+        let remote = exampleTranslationActions
+        let local = appleTranslator
+        return DictExampleTranslationActions { text in
+            if let translated = await remote.translate(text) {
+                return translated
+            }
+            return await local.translate(text)
+        }
     }
 }
 
@@ -74,7 +96,8 @@ extension View {
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
         favoriteActions: WordFavoriteActions? = nil,
-        aiFallback: (@Sendable (String) async -> String?)? = nil
+        aiFallback: (@Sendable (String) async -> String?)? = nil,
+        exampleTranslationActions: DictExampleTranslationActions
     ) -> some View {
         modifier(
             WordLookupOverlayModifier(
@@ -83,7 +106,8 @@ extension View {
                 grammar: grammar,
                 onSpeak: onSpeak,
                 favoriteActions: favoriteActions,
-                aiFallback: aiFallback
+                aiFallback: aiFallback,
+                exampleTranslationActions: exampleTranslationActions
             )
         )
     }

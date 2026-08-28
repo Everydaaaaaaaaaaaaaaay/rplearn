@@ -104,7 +104,8 @@ public struct ChatView: View {
                 }
             },
             favoriteActions: wordFavoriteActions,
-            aiFallback: aiWordFallback
+            aiFallback: aiWordFallback,
+            exampleTranslationActions: deps.exampleTranslationActions
         )
         .sheet(item: $grammarAnalysis) { request in
             GrammarAnalysisSheet(
@@ -124,6 +125,7 @@ public struct ChatView: View {
                 },
                 favoriteActions: wordFavoriteActions,
                 aiFallback: aiWordFallback,
+                exampleTranslationActions: deps.exampleTranslationActions,
                 onAIAnalysis: { analysis in
                     grammarAICache[request.id] = analysis
                 }

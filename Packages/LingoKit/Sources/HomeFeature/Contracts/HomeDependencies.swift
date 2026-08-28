@@ -16,6 +16,7 @@ public struct HomeDependencies: Sendable {
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
     public let llm: any LLMClient
+    public let exampleTranslationActions: DictExampleTranslationActions
 
     public init(
         economyStore: EconomyStore,
@@ -28,7 +29,8 @@ public struct HomeDependencies: Sendable {
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
-        llm: any LLMClient
+        llm: any LLMClient,
+        exampleTranslationActions: DictExampleTranslationActions
     ) {
         self.economyStore = economyStore
         self.storyProgress = storyProgress
@@ -41,6 +43,7 @@ public struct HomeDependencies: Sendable {
         self.grammarPoints = grammarPoints
         self.speech = speech
         self.llm = llm
+        self.exampleTranslationActions = exampleTranslationActions
     }
 }
 
