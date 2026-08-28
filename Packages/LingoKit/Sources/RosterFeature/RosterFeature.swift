@@ -56,6 +56,10 @@ enum RosterPresentationPolicy {
         return sorted(contacts.filter(\.isFavorite))
     }
 
+    static func friendGroupContacts(in contacts: [CharacterDTO]) -> [CharacterDTO] {
+        sorted(contacts.filter { !$0.isFavorite })
+    }
+
     static func isCapacityNearLimit(occupied: Int, limit: Int) -> Bool {
         guard limit > 0 else { return true }
         return Double(occupied) / Double(limit) >= 0.8
@@ -76,7 +80,12 @@ public struct RosterView: View {
     @State private var searchText = ""
     @State private var isSearchPresented = false
     @State private var favoriteSaveFailure: FavoriteSaveFailure?
+    @AppStorage("lingotrip.roster.favorite-group-expanded")
+    private var isFavoriteGroupExpanded = true
+    @AppStorage("lingotrip.roster.friend-group-expanded")
+    private var isFriendGroupExpanded = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(
@@ -110,21 +119,21 @@ public struct RosterView: View {
     private var favoriteContacts: [CharacterDTO] {
         RosterPresentationPolicy.favoriteContacts(in: friends, isSearching: isSearchActive)
     }
+    private var friendContacts: [CharacterDTO] {
+        RosterPresentationPolicy.friendGroupContacts(in: friends)
+    }
     private var isCapacityNearLimit: Bool {
         RosterPresentationPolicy.isCapacityNearLimit(occupied: occupiedSlots, limit: slotLimit)
     }
     private var contactAvatarSize: CGFloat {
         dynamicTypeSize.isAccessibilitySize ? 58 : 48
     }
-    private var favoriteAvatarSize: CGFloat {
-        dynamicTypeSize.isAccessibilitySize ? 52 : 42
-    }
-
     public var body: some View {
         ZStack {
             DSSceneBackdrop(imageName: "contacts_london_glass", tone: .warm)
             navigationReadabilityWash
-            contactList
+            sceneReadabilityWash
+            directoryList
         }
         .navigationTitle("联系人")
         .navigationBarTitleDisplayMode(.inline)
@@ -147,24 +156,14 @@ public struct RosterView: View {
         .animation(reduceMotion ? nil : DSAnimation.snappy, value: favoriteSaveFailure?.id)
     }
 
-    private var contactList: some View {
-        VStack(spacing: 0) {
-            if !favoriteContacts.isEmpty {
-                favoriteQuickShelf
-            }
-
-            directoryList
-        }
-    }
-
     private var directoryList: some View {
         List {
             directoryContent
         }
         .listStyle(.plain)
-        .listSectionSpacing(0)
+        .listSectionSpacing(DSSpacing.xs)
         .scrollContentBackground(.hidden)
-        .background { RosterDirectoryPlane() }
+        .background(Color.clear)
         .environment(\.colorScheme, .dark)
         .refreshable { await reload() }
     }
@@ -183,7 +182,10 @@ public struct RosterView: View {
             if let loadErrorMessage {
                 compactLoadErrorRow(loadErrorMessage)
             }
-            allContactsSection
+            if !favoriteContacts.isEmpty {
+                favoriteContactsSection
+            }
+            friendsSection
         }
     }
 
@@ -202,6 +204,31 @@ public struct RosterView: View {
         .accessibilityHidden(true)
     }
 
+    private var sceneReadabilityWash: some View {
+        LinearGradient(
+            stops: [
+                .init(color: .clear, location: 0),
+                .init(
+                    color: .black.opacity(contrast == .increased ? 0.16 : 0.06),
+                    location: 0.24
+                ),
+                .init(
+                    color: .black.opacity(contrast == .increased ? 0.34 : 0.16),
+                    location: 0.58
+                ),
+                .init(
+                    color: .black.opacity(contrast == .increased ? 0.48 : 0.24),
+                    location: 1
+                ),
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+    }
+
     private var loadingRow: some View {
         HStack(spacing: DSSpacing.sm) {
             ProgressView()
@@ -210,7 +237,7 @@ public struct RosterView: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, minHeight: 280)
-        .listRowBackground(Color.clear)
+        .listRowBackground(contactRowBackground)
         .listRowSeparator(.hidden)
         .accessibilityElement(children: .combine)
     }
@@ -227,7 +254,7 @@ public struct RosterView: View {
             .buttonStyle(.borderedProminent)
         }
         .frame(maxWidth: .infinity, minHeight: 360)
-        .listRowBackground(Color.clear)
+        .listRowBackground(contactRowBackground)
         .listRowSeparator(.hidden)
     }
 
@@ -252,7 +279,7 @@ public struct RosterView: View {
         if visibleContacts.isEmpty {
             ContentUnavailableView.search(text: normalizedSearchText)
                 .frame(maxWidth: .infinity, minHeight: 360)
-                .listRowBackground(Color.clear)
+                .listRowBackground(contactRowBackground)
                 .listRowSeparator(.hidden)
         } else {
             ForEach(visibleContacts) { character in
@@ -261,124 +288,116 @@ public struct RosterView: View {
         }
     }
 
-    private var favoriteQuickShelf: some View {
-        Group {
-            if dynamicTypeSize.isAccessibilitySize {
-                VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                    favoriteShelfTitle
-                    favoriteScroller
-                        .frame(height: 62)
-                }
-            } else {
-                HStack(spacing: DSSpacing.sm) {
-                    favoriteShelfTitle
-
-                    Divider()
-                        .frame(height: 34)
-                        .accessibilityHidden(true)
-
-                    favoriteScroller
-                        .frame(height: 52)
-                }
-            }
-        }
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.vertical, DSSpacing.sm)
-        .dsSceneGlass(
-            radius: DSRadius.card,
-            tint: Color.dsSky.opacity(0.08),
-            interactive: false
-        )
-        .environment(\.colorScheme, .dark)
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.top, DSSpacing.xs)
-        .padding(.bottom, DSSpacing.md)
-    }
-
-    private var favoriteShelfTitle: some View {
-        Label("特别关心", systemImage: "star.fill")
-            .font(.subheadline.weight(.semibold))
-            .foregroundStyle(.primary)
-            .symbolRenderingMode(.monochrome)
-            .labelStyle(RosterFavoriteTitleLabelStyle())
-            .fixedSize(horizontal: true, vertical: false)
-    }
-
-    private var favoriteScroller: some View {
-        ScrollView(.horizontal) {
-            LazyHStack(spacing: DSSpacing.md) {
+    private var favoriteContactsSection: some View {
+        Section {
+            if isFavoriteGroupExpanded {
                 ForEach(favoriteContacts) { character in
-                    favoriteLink(character)
+                    contactLink(character)
                 }
             }
+        } header: {
+            contactGroupHeader(
+                title: "特别关心",
+                count: favoriteContacts.count,
+                systemImage: "star.fill",
+                tint: .dsSunset,
+                isExpanded: isFavoriteGroupExpanded,
+                toggle: toggleFavoriteGroup
+            )
         }
-        .scrollIndicators(.hidden)
     }
 
-    private func favoriteLink(_ character: CharacterDTO) -> some View {
-        NavigationLink {
-            friendDestination(character)
-        } label: {
-            HStack(spacing: DSSpacing.xs) {
-                ZStack(alignment: .bottomTrailing) {
-                    AvatarBadge(name: character.card.name, size: favoriteAvatarSize)
-                    Image(systemName: "star.fill")
-                        .font(.system(size: 8, weight: .bold))
-                        .foregroundStyle(.white)
-                        .frame(width: 17, height: 17)
-                        .background(Color.dsSunset, in: Circle())
-                        .overlay { Circle().stroke(.white.opacity(0.9), lineWidth: 1.5) }
-                        .accessibilityHidden(true)
+    private var friendsSection: some View {
+        Section {
+            if isFriendGroupExpanded {
+                ForEach(friendContacts) { character in
+                    contactLink(character)
                 }
-                Text(character.card.name)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.primary)
-                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
-                    .fixedSize(horizontal: true, vertical: false)
             }
-            .frame(minHeight: 48)
+        } header: {
+            contactGroupHeader(
+                title: "好友",
+                count: friendContacts.count,
+                systemImage: "person.2.fill",
+                tint: .dsSky,
+                isExpanded: isFriendGroupExpanded,
+                toggle: toggleFriendGroup
+            )
+        } footer: {
+            if isFriendGroupExpanded {
+                capacityFooter
+            }
+        }
+    }
+
+    private func contactGroupHeader(
+        title: String,
+        count: Int,
+        systemImage: String,
+        tint: Color,
+        isExpanded: Bool,
+        toggle: @escaping () -> Void
+    ) -> some View {
+        Button(action: toggle) {
+            HStack(spacing: 10) {
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.bold))
+                    .rotationEffect(.degrees(isExpanded ? 90 : 0))
+                    .foregroundStyle(.white.opacity(0.72))
+                    .frame(width: 14)
+
+                Image(systemName: systemImage)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(tint)
+                    .frame(width: 22)
+
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(.white)
+
+                Spacer(minLength: DSSpacing.sm)
+
+                Text("\(count)")
+                    .font(.subheadline.monospacedDigit())
+                    .foregroundStyle(.white.opacity(0.62))
+            }
+            .frame(maxWidth: .infinity, minHeight: 44)
+            .padding(.horizontal, DSSpacing.md)
             .contentShape(Rectangle())
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(character.card.name)，特别关心")
-            .accessibilityHint("打开联系人详情")
         }
         .buttonStyle(.plain)
-        .contextMenu {
-            favoriteMenuButton(for: character)
+        .textCase(nil)
+        .background(groupHeaderBackground)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(title)，\(count) 位联系人，\(isExpanded ? "已展开" : "已折叠")")
+        .accessibilityHint(isExpanded ? "双击折叠分组" : "双击展开分组")
+    }
+
+    private func toggleFavoriteGroup() {
+        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+            isFavoriteGroupExpanded.toggle()
         }
     }
 
-    private var allContactsSection: some View {
-        Section {
-            if !favoriteContacts.isEmpty {
-                HStack(spacing: DSSpacing.xs) {
-                    Image(systemName: "person.2.fill")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color.dsSky)
-                        .accessibilityHidden(true)
-                    Text("全部联系人")
-                        .font(.headline)
-                        .foregroundStyle(.primary)
-                }
-                    .accessibilityAddTraits(.isHeader)
-                    .listRowInsets(
-                        EdgeInsets(
-                            top: DSSpacing.md,
-                            leading: DSSpacing.md,
-                            bottom: DSSpacing.xs,
-                            trailing: DSSpacing.md
-                        )
-                    )
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-            }
-
-            ForEach(allContacts) { character in
-                contactLink(character)
-            }
-        } footer: {
-            capacityFooter
+    private func toggleFriendGroup() {
+        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+            isFriendGroupExpanded.toggle()
         }
+    }
+
+    private var groupHeaderBackground: some View {
+        LinearGradient(
+            colors: [
+                Color.black.opacity(contrast == .increased ? 0.42 : 0.2),
+                Color.black.opacity(contrast == .increased ? 0.32 : 0.12),
+            ],
+            startPoint: .leading,
+            endPoint: .trailing
+        )
+    }
+
+    private var contactRowBackground: Color {
+        Color.black.opacity(contrast == .increased ? 0.34 : 0.13)
     }
 
     private func contactLink(_ character: CharacterDTO) -> some View {
@@ -395,7 +414,7 @@ public struct RosterView: View {
                     HStack(alignment: .firstTextBaseline, spacing: 5) {
                         Text(character.card.name)
                             .font(.body.weight(.semibold))
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(.white)
                             .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
 
                         if character.isFavorite {
@@ -408,9 +427,10 @@ public struct RosterView: View {
 
                     Text(friendStatus(character))
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.white.opacity(0.7))
                         .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                 }
+                .shadow(color: .black.opacity(0.4), radius: 1, y: 0.5)
             }
             .frame(minHeight: 52)
             .contentShape(Rectangle())
@@ -426,7 +446,7 @@ public struct RosterView: View {
                 trailing: DSSpacing.md
             )
         )
-        .listRowBackground(Color.clear)
+        .listRowBackground(contactRowBackground)
         .alignmentGuide(.listRowSeparatorLeading) { dimensions in
             dimensions[.leading] + avatarSize + DSSpacing.sm
         }
@@ -494,11 +514,16 @@ public struct RosterView: View {
         }
         .font(.footnote)
         .fontWeight(isCapacityNearLimit ? .semibold : .regular)
-        .foregroundStyle(isCapacityNearLimit ? AnyShapeStyle(Color.dsWarning) : AnyShapeStyle(.secondary))
+        .foregroundStyle(
+            isCapacityNearLimit
+                ? AnyShapeStyle(Color.dsWarning)
+                : AnyShapeStyle(Color.white.opacity(0.68))
+        )
+        .shadow(color: .black.opacity(0.5), radius: 1, y: 0.5)
         .accessibilityLabel(
             "好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个。剧情旅伴不占好友位"
         )
-        .listRowBackground(Color.clear)
+        .listRowBackground(Color.black.opacity(contrast == .increased ? 0.3 : 0.09))
     }
 
     private var emptyState: some View {
@@ -508,7 +533,7 @@ public struct RosterView: View {
             description: Text("继续旅行，认识的新朋友会出现在这里")
         )
         .frame(maxWidth: .infinity, minHeight: 360)
-        .listRowBackground(Color.clear)
+        .listRowBackground(contactRowBackground)
         .listRowSeparator(.hidden)
     }
 
@@ -789,56 +814,6 @@ private struct FavoriteSaveFailure: Identifiable {
     let id = UUID()
     let characterID: UUID
     let targetValue: Bool
-}
-
-private struct RosterDirectoryPlane: View {
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
-    @Environment(\.colorScheme) private var colorScheme
-
-    var body: some View {
-        ZStack {
-            if reduceTransparency || contrast == .increased {
-                Color.dsBackground.opacity(reduceTransparency ? 1 : 0.97)
-            } else {
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-
-                LinearGradient(
-                    colors: [
-                        Color.dsSky.opacity(colorScheme == .dark ? 0.035 : 0.025),
-                        Color.dsSurface.opacity(colorScheme == .dark ? 0.08 : 0.16),
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            }
-        }
-        .mask {
-            LinearGradient(
-                stops: [
-                    .init(color: .clear, location: 0),
-                    .init(color: .white.opacity(0.9), location: 0.065),
-                    .init(color: .white, location: 0.1),
-                    .init(color: .white, location: 1),
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        }
-        .ignoresSafeArea(edges: .bottom)
-        .accessibilityHidden(true)
-    }
-}
-
-private struct RosterFavoriteTitleLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack(spacing: 6) {
-            configuration.icon
-                .foregroundStyle(Color.dsSunset)
-            configuration.title
-        }
-    }
 }
 
 private struct SaveErrorBanner: View {
