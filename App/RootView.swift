@@ -551,7 +551,9 @@ struct RootView: View {
     private var exampleTranslationActions: DictExampleTranslationActions {
         let translator = environment.translator
         return DictExampleTranslationActions { request in
-            try? await translator.translateDictionaryExample(request)
+            guard let sentenceZh = try? await translator.translateToChinese(request.sentence)
+            else { return nil }
+            return DictExampleTranslation(sentenceZh: sentenceZh)
         }
     }
 

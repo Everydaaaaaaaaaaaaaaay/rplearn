@@ -115,6 +115,28 @@ public actor DictDatabase {
         return results
     }
 
+    /// 返回以当前词开头的本地词典短语，供词卡的“相关短语”区域展示。
+    public func relatedPhrases(for rawWord: String, limit: Int = 24) -> [DictEntry] {
+        let word = rawWord.lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !word.isEmpty, limit > 0 else { return [] }
+
+        let prefix = word + " "
+        let statement = connection.prefixStatement
+        defer { sqlite3_reset(statement) }
+        bindText(prefix, statement: statement, index: 1)
+        bindText(prefix + "\u{FFFF}", statement: statement, index: 2)
+        sqlite3_bind_int(statement, 3, Int32(min(limit, Int(Int32.max))))
+
+        var words: [String] = []
+        while sqlite3_step(statement) == SQLITE_ROW {
+            if let phrase = columnText(statement, 0) {
+                words.append(phrase)
+            }
+        }
+        return words.compactMap(exactEntry)
+    }
+
     /// 精确命中（入参需已 lowercase）。
     public func exactEntry(_ wl: String) -> DictEntry? {
         let statement = connection.exactStatement

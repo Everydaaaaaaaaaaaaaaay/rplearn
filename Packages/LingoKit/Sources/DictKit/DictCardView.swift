@@ -31,49 +31,25 @@ public struct WordFavoriteActions: Sendable {
     }
 }
 
-/// 一条例句的翻译请求。除整句外还携带精确词性与英文义项，供翻译服务判断句中词义。
+/// 一条例句的翻译请求。模型只负责翻译整句，目标词词义始终取自本地中文词典。
 public struct DictExampleTranslationRequest: Sendable, Hashable {
     public let sentence: String
-    public let word: String
-    public let partOfSpeechAbbreviation: String
-    public let definitionEn: String?
-    public let fallbackMeaningZh: String?
 
-    public init(
-        sentence: String,
-        word: String,
-        partOfSpeechAbbreviation: String,
-        definitionEn: String? = nil,
-        fallbackMeaningZh: String? = nil
-    ) {
+    public init(sentence: String) {
         self.sentence = sentence
-        self.word = word
-        self.partOfSpeechAbbreviation = partOfSpeechAbbreviation
-        self.definitionEn = definitionEn
-        self.fallbackMeaningZh = fallbackMeaningZh
     }
 
     fileprivate var normalized: Self {
-        Self(
-            sentence: DictDisplayText.normalizedWhitespace(sentence),
-            word: word.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
-            partOfSpeechAbbreviation: partOfSpeechAbbreviation.trimmingCharacters(
-                in: .whitespacesAndNewlines
-            ),
-            definitionEn: definitionEn.map(DictDisplayText.normalizedWhitespace),
-            fallbackMeaningZh: fallbackMeaningZh.map(DictDisplayText.normalizedWhitespace)
-        )
+        Self(sentence: DictDisplayText.normalizedWhitespace(sentence))
     }
 }
 
-/// 例句的自然中文翻译，以及目标词在该句中的简短中文词义。
+/// 例句的自然中文翻译。
 public struct DictExampleTranslation: Sendable, Equatable {
     public let sentenceZh: String
-    public let meaningZh: String?
 
-    public init(sentenceZh: String, meaningZh: String?) {
+    public init(sentenceZh: String) {
         self.sentenceZh = sentenceZh
-        self.meaningZh = meaningZh
     }
 }
 
@@ -99,23 +75,7 @@ public struct DictExampleTranslationActions: Sendable {
 
         let sentenceZh = DictDisplayText.normalizedWhitespace(translated.sentenceZh)
         guard !sentenceZh.isEmpty else { return nil }
-        let generatedMeaning = translated.meaningZh.flatMap(Self.validChineseMeaning)
-        let fallbackMeaning = request.fallbackMeaningZh.flatMap(Self.validChineseMeaning)
-        return DictExampleTranslation(
-            sentenceZh: sentenceZh,
-            meaningZh: generatedMeaning ?? fallbackMeaning
-        )
-    }
-
-    private static func validChineseMeaning(_ text: String) -> String? {
-        let normalized = DictDisplayText.normalizedWhitespace(text)
-        guard !normalized.isEmpty,
-              normalized.unicodeScalars.contains(where: {
-                  (0x3400...0x4DBF).contains($0.value)
-                      || (0x4E00...0x9FFF).contains($0.value)
-              })
-        else { return nil }
-        return normalized
+        return DictExampleTranslation(sentenceZh: sentenceZh)
     }
 }
 
@@ -169,10 +129,11 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
 
     var id: String { partOfSpeech }
     var partOfSpeechLabel: String { senses.first?.partOfSpeechLabel ?? partOfSpeech }
+    var definitionLines: [String] {
+        senses.map { DictDisplayText.normalizedWhitespace($0.definition) }
+    }
     var definitionText: String {
-        senses
-            .map { DictDisplayText.normalizedWhitespace($0.definition) }
-            .joined(separator: "; ")
+        definitionLines.joined(separator: ";\n")
     }
     var synonymText: String? {
         var seen = Set<String>()
@@ -189,10 +150,11 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
     let definitions: [String]
 
     var id: String { "\(partOfSpeechLabel)-\(definitions.joined())" }
+    var definitionLines: [String] {
+        definitions.map(DictDisplayText.normalizedWhitespace)
+    }
     var definitionText: String {
-        definitions
-            .map(DictDisplayText.normalizedWhitespace)
-            .joined(separator: "; ")
+        definitionLines.joined(separator: ";\n")
     }
 }
 
@@ -200,28 +162,18 @@ struct DictUsageExample: Identifiable, Equatable {
     let partOfSpeechLabel: String
     let partOfSpeechAbbreviation: String
     let meaningZh: String?
-    let definitionEn: String?
     let text: String
 
     var id: String { "\(partOfSpeechAbbreviation)-\(text)" }
-    var annotation: String { annotation(meaningZh: nil) }
-
-    func annotation(meaningZh translatedMeaning: String? = nil) -> String {
-        let meaning = translatedMeaning ?? meaningZh
-        guard let meaning, !meaning.isEmpty else {
+    var annotation: String {
+        guard let meaningZh, !meaningZh.isEmpty else {
             return "（\(partOfSpeechAbbreviation)）"
         }
-        return "（\(partOfSpeechAbbreviation) \(meaning)）"
+        return "（\(partOfSpeechAbbreviation) \(meaningZh)）"
     }
 
-    func translationRequest(for word: String) -> DictExampleTranslationRequest {
-        DictExampleTranslationRequest(
-            sentence: text,
-            word: word,
-            partOfSpeechAbbreviation: partOfSpeechAbbreviation,
-            definitionEn: definitionEn,
-            fallbackMeaningZh: meaningZh
-        )
+    var translationRequest: DictExampleTranslationRequest {
+        DictExampleTranslationRequest(sentence: text)
     }
 }
 
@@ -313,7 +265,6 @@ enum DictUsageExamplePolicy {
         let label: String
         let abbreviation: String
         let meaningZh: String?
-        let definitionEn: String?
     }
 
     static func groups(
@@ -341,7 +292,6 @@ enum DictUsageExamplePolicy {
                     partOfSpeechLabel: descriptor.label,
                     partOfSpeechAbbreviation: descriptor.abbreviation,
                     meaningZh: descriptor.meaningZh,
-                    definitionEn: descriptor.definitionEn,
                     text: normalized
                 )
             )
@@ -443,10 +393,9 @@ enum DictUsageExamplePolicy {
             id: abbreviation,
             label: label,
             abbreviation: abbreviation,
-            meaningZh: conciseMeaning(matchingMeaning?.meaning),
-            definitionEn: group.senses.count == 1
-                ? group.senses.first.map { DictDisplayText.normalizedWhitespace($0.definition) }
-                : nil
+            meaningZh: matchingMeaning.map {
+                DictDisplayText.normalizedWhitespace($0.meaning)
+            }
         )
     }
 
@@ -461,8 +410,7 @@ enum DictUsageExamplePolicy {
             id: abbreviation,
             label: label,
             abbreviation: abbreviation,
-            meaningZh: conciseMeaning(meaningGroup.meaning),
-            definitionEn: nil
+            meaningZh: DictDisplayText.normalizedWhitespace(meaningGroup.meaning)
         )
     }
 
@@ -476,8 +424,7 @@ enum DictUsageExamplePolicy {
             id: fallback.id,
             label: fallback.label,
             abbreviation: fallback.abbreviation,
-            meaningZh: fallback.meaningZh,
-            definitionEn: DictDisplayText.normalizedWhitespace(sense.definition)
+            meaningZh: fallback.meaningZh
         )
     }
 
@@ -490,18 +437,8 @@ enum DictUsageExamplePolicy {
             id: descriptor.id,
             label: descriptor.label,
             abbreviation: descriptor.abbreviation,
-            meaningZh: descriptor.meaningZh,
-            definitionEn: nil
+            meaningZh: descriptor.meaningZh
         )
-    }
-
-    private static func conciseMeaning(_ meaning: String?) -> String? {
-        guard let meaning else { return nil }
-        let components = meaning.components(separatedBy: CharacterSet(charactersIn: ",，;；"))
-        return components
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .first(where: { !$0.isEmpty })
-            ?? meaning.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     private static func contextualPartOfSpeechLabel(
@@ -590,6 +527,7 @@ public struct DictCardView: View {
     @State private var path: [DictTarget]
     @State private var entry: DictEntry?
     @State private var contextualPhrases: [DictEntry] = []
+    @State private var relatedPhrases: [DictEntry] = []
     @State private var isLoading = true
     @State private var aiExplanation: String?
     @State private var isLoadingAI = false
@@ -793,8 +731,11 @@ public struct DictCardView: View {
             if !entry.senses.isEmpty || !entry.fallbackEnglishDefinitions.isEmpty {
                 englishDisclosureSection(entry)
             }
-            if path.count == 1, !contextualPhrases.isEmpty {
-                contextualPhraseSection(contextualPhrases)
+            if !contextualPhrases.isEmpty || !relatedPhrases.isEmpty {
+                phraseSection(
+                    contextual: path.count == 1 ? contextualPhrases : [],
+                    related: relatedPhrases
+                )
             }
             usageExampleSection(entry, requestedWord: word)
             if !entry.wordForms.isEmpty {
@@ -828,30 +769,56 @@ public struct DictCardView: View {
         }
     }
 
-    private func contextualPhraseSection(_ phrases: [DictEntry]) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            compactSectionTitle("短语")
-            ForEach(phrases, id: \.word) { phrase in
-                Button {
-                    path.append(.word(phrase.word))
-                } label: {
-                    HStack(alignment: .firstTextBaseline, spacing: 5) {
-                        Text(phrase.word)
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(Color.dsSkyDeep)
-                        if let meaning = phrase.meaningGroups.first?.meaning {
-                            Text(meaning)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .lineLimit(1)
-                        }
-                        Spacer(minLength: 0)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .buttonStyle(.plain)
+    private func phraseSection(
+        contextual: [DictEntry],
+        related: [DictEntry]
+    ) -> some View {
+        let contextualWords = Set(contextual.map { $0.word.lowercased() })
+        let remainingRelated = related.filter {
+            !contextualWords.contains($0.word.lowercased())
+        }
+        return VStack(alignment: .leading, spacing: 5) {
+            if !contextual.isEmpty {
+                phraseRow(title: "句内短语：", phrases: contextual)
+            }
+            if !remainingRelated.isEmpty {
+                phraseRow(title: "相关短语：", phrases: remainingRelated)
             }
         }
+    }
+
+    private func phraseRow(title: String, phrases: [DictEntry]) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
+            Text(title)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(phrases, id: \.word) { phrase in
+                    Button {
+                        path.append(.word(phrase.word))
+                    } label: {
+                        HStack(alignment: .firstTextBaseline, spacing: 5) {
+                            Text(phrase.word)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(Color.dsSkyDeep)
+                            if let meaning = phrase.meaningGroups.first?.meaning {
+                                Text(meaning)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(1)
+                            }
+                            Spacer(minLength: 0)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func chineseMeaningSection(_ entry: DictEntry) -> some View {
@@ -910,12 +877,10 @@ public struct DictCardView: View {
                     HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 3) {
-                            tappableDictionaryText(
-                                group.definitionText,
+                            definitionLines(
+                                group.definitionLines,
                                 contextID: "dict-\(entry.word)-sense-\(group.id)"
                             )
-                                .lineSpacing(1)
-                                .fixedSize(horizontal: false, vertical: true)
                             if let synonyms = group.synonymText {
                                 tappableDictionaryText(
                                     synonyms,
@@ -934,17 +899,28 @@ public struct DictCardView: View {
                 ForEach(fallbackGroups) { group in
                     HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
-                        tappableDictionaryText(
-                            group.definitionText,
+                        definitionLines(
+                            group.definitionLines,
                             contextID: "dict-\(entry.word)-fallback-\(group.id)"
                         )
-                        .font(.subheadline)
-                        .lineSpacing(1)
-                        .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
         }
+    }
+
+    private func definitionLines(_ lines: [String], contextID: String) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            ForEach(Array(lines.enumerated()), id: \.offset) { index, line in
+                tappableDictionaryText(
+                    line + (index < lines.count - 1 ? ";" : ""),
+                    contextID: "\(contextID)-\(index)"
+                )
+                .lineSpacing(1)
+                .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .font(.subheadline)
     }
 
     private func tappableDictionaryText(_ text: String, contextID: String) -> some View {
@@ -957,14 +933,13 @@ public struct DictCardView: View {
 
     private func tappableExampleText(
         _ example: DictUsageExample,
-        contextID: String,
-        meaningZh: String?
+        contextID: String
     ) -> some View {
         var tokens = TokenCache.tokens(for: example.text, cacheKey: contextID)
         tokens.append(
             TextToken(
                 id: tokens.count,
-                display: example.annotation(meaningZh: meaningZh),
+                display: example.annotation,
                 word: nil
             )
         )
@@ -1002,20 +977,18 @@ public struct DictCardView: View {
         if !groups.isEmpty {
             VStack(alignment: .leading, spacing: 5) {
                 Divider()
-                compactSectionTitle("例句")
                 ForEach(groups) { group in
                     HStack(
                         alignment: .firstTextBaseline,
                         spacing: DictCardLayout.definitionColumnSpacing
                     ) {
-                        englishPartOfSpeechText(group.partOfSpeechLabel)
+                        englishPartOfSpeechText("例句")
                         VStack(alignment: .leading, spacing: 6) {
                             ForEach(Array(group.examples.enumerated()), id: \.element.id) { index, example in
                                 VStack(alignment: .leading, spacing: 2) {
                                     tappableExampleText(
                                         example,
-                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)",
-                                        meaningZh: exampleTranslations[example.id]?.meaningZh
+                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
                                     )
                                     .font(.subheadline)
                                     .lineSpacing(1)
@@ -1200,6 +1173,7 @@ public struct DictCardView: View {
         isEnglishExpanded = false
         aiExplanation = nil
         contextualPhrases = []
+        relatedPhrases = []
         exampleTranslations = [:]
         translatingExampleIDs = []
         let loadedEntry = await dictionary.lookup(word)
@@ -1210,6 +1184,10 @@ public struct DictCardView: View {
                 limit: 2
             )
         }
+        relatedPhrases = await dictionary.relatedPhrases(
+            for: loadedEntry?.word ?? word,
+            limit: 24
+        )
         entry = loadedEntry
         let resolvedWord = loadedEntry?.word ?? word
         isFavorite = await favoriteActions?.contains(resolvedWord) ?? false
@@ -1236,7 +1214,7 @@ public struct DictCardView: View {
             for example in examples {
                 group.addTask {
                     let translated = await DictExampleTranslationCache.shared.translation(
-                        for: example.translationRequest(for: entry.word),
+                        for: example.translationRequest,
                         using: exampleTranslationActions
                     )
                     return (example.id, translated)
@@ -1260,7 +1238,7 @@ public struct DictCardView: View {
         translatingExampleIDs.insert(example.id)
         Task {
             let translated = await DictExampleTranslationCache.shared.translation(
-                for: example.translationRequest(for: entry?.word ?? ""),
+                for: example.translationRequest,
                 using: exampleTranslationActions
             )
             translatingExampleIDs.remove(example.id)

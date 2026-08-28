@@ -88,10 +88,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
                 return translated
             }
             guard let sentenceZh = await local.translate(request.sentence) else { return nil }
-            return DictExampleTranslation(
-                sentenceZh: sentenceZh,
-                meaningZh: request.fallbackMeaningZh
-            )
+            return DictExampleTranslation(sentenceZh: sentenceZh)
         }
 #endif
     }
