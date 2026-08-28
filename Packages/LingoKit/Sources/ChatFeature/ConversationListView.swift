@@ -41,6 +41,54 @@ public struct ConversationListView: View {
     }
 
     public var body: some View {
+        lifecycleContent
+    }
+
+    private var lifecycleContent: some View {
+        chromeContent
+            // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
+            // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
+            .task(id: reloadToken) { await reload() }
+            .refreshable { await reload() }
+            .onReceive(
+                NotificationCenter.default.publisher(for: ConversationReadState.didChange)
+            ) { _ in
+                stateRevision += 1
+                updateUnreadCount()
+            }
+            .onReceive(
+                NotificationCenter.default.publisher(for: .rosterFavoriteDidChange)
+            ) { notification in
+                guard let characterID = notification.object as? UUID,
+                      let isFavorite = notification.userInfo?["isFavorite"] as? Bool else { return }
+                applyFavoriteChange(characterID: characterID, isFavorite: isFavorite)
+            }
+            .onChange(of: stateRevision) { updateUnreadCount() }
+            .overlay {
+                if isLoading {
+                    ProgressView()
+                        .padding(DSSpacing.lg)
+                        .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.12))
+                }
+            }
+    }
+
+    private var chromeContent: some View {
+        conversationContent
+            .navigationTitle("信息")
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(
+                text: $searchText,
+                isPresented: $isSearchPresented,
+                placement: .toolbar,
+                prompt: "搜索信息"
+            )
+            .dsCompactSearchToolbar()
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+    }
+
+    private var conversationContent: some View {
         ZStack {
             DSSceneBackdrop(imageName: "messages_london_glass", tone: .cool)
 
@@ -131,33 +179,20 @@ public struct ConversationListView: View {
                 .background(Color.clear)
             }
         }
-        .navigationTitle("信息")
-        .navigationBarTitleDisplayMode(.inline)
-        .searchable(
-            text: $searchText,
-            isPresented: $isSearchPresented,
-            placement: .toolbar,
-            prompt: "搜索信息"
+    }
+
+    private func applyFavoriteChange(characterID: UUID, isFavorite: Bool) {
+        guard let index = rows.firstIndex(where: { $0.character.id == characterID }) else {
+            return
+        }
+        let currentRow = rows[index]
+        var character = currentRow.character
+        character.isFavorite = isFavorite
+        rows[index] = ConversationListRow(
+            character: character,
+            friendOrder: currentRow.friendOrder,
+            summary: currentRow.summary
         )
-        .dsCompactSearchToolbar()
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
-        // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
-        .task(id: reloadToken) { await reload() }
-        .refreshable { await reload() }
-        .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
-            stateRevision += 1
-            updateUnreadCount()
-        }
-        .onChange(of: stateRevision) { updateUnreadCount() }
-        .overlay {
-            if isLoading {
-                ProgressView()
-                    .padding(DSSpacing.lg)
-                    .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.12))
-            }
-        }
     }
 
     private func rowLabel(_ row: ConversationListRow) -> some View {
@@ -188,7 +223,7 @@ public struct ConversationListView: View {
                         .foregroundStyle(.primary)
                         .lineLimit(1)
 
-                    if row.character.isMainCharacter {
+                    if row.character.isFavorite {
                         Image(systemName: "star.fill")
                             .font(.caption2.weight(.bold))
                             .foregroundStyle(Color.dsSunset)

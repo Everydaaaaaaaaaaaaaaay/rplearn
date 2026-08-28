@@ -2,6 +2,11 @@ import CoreKit
 import Foundation
 import SwiftData
 
+public extension Notification.Name {
+    /// 特别关心状态完成持久化后发送；object 为角色 UUID，userInfo 包含 isFavorite。
+    static let rosterFavoriteDidChange = Notification.Name("LingoTripRosterFavoriteDidChange")
+}
+
 /// 角色名册仓库：主角色导入、角色查询、好友管理。所有写操作经此 actor。
 @ModelActor
 public actor RosterStore {
@@ -176,6 +181,24 @@ public actor RosterStore {
         try modelContext.save()
     }
 
+    /// 设置联系人是否为“特别关心”。重复设置同一状态时保持幂等。
+    public func setFavorite(characterID: UUID, isFavorite: Bool) throws {
+        guard let entity = try fetchEntity(id: characterID) else {
+            throw RosterError.characterNotFound
+        }
+        guard entity.isFriend, entity.isFavorite != isFavorite else { return }
+        entity.isFavorite = isFavorite
+        try journal(entity)
+        try modelContext.save()
+        Task { @MainActor in
+            NotificationCenter.default.post(
+                name: .rosterFavoriteDidChange,
+                object: characterID,
+                userInfo: ["isFavorite": isFavorite]
+            )
+        }
+    }
+
     // MARK: - 私有
 
     private func fetchEntity(id: UUID) throws -> CharacterEntity? {
@@ -203,6 +226,7 @@ public actor RosterStore {
             ),
             difficulty: entity.difficultyLevelRaw,
             isFriend: entity.isFriend,
+            isFavorite: entity.isFavorite,
             isMainCharacter: entity.isMainCharacter,
             metAt: entity.metAt
         )
@@ -234,7 +258,8 @@ public actor RosterStore {
             difficultyLevel: DifficultyLevel(rawValue: entity.difficultyLevelRaw) ?? .junior3,
             isMainCharacter: entity.isMainCharacter,
             isFriend: entity.isFriend,
-            metAt: entity.metAt
+            metAt: entity.metAt,
+            isFavorite: entity.isFavorite
         )
     }
 }

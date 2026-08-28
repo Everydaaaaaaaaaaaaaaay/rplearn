@@ -4,13 +4,9 @@
 # 调用方应先启用 `set -euo pipefail`，再 source 本文件。
 
 LINGOTRIP_REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-LINGOTRIP_GIT_COMMON_DIR="$(git -C "$LINGOTRIP_REPO_ROOT" rev-parse --path-format=absolute --git-common-dir)"
-LINGOTRIP_MAIN_REPO_ROOT="$(dirname "$LINGOTRIP_GIT_COMMON_DIR")"
-LINGOTRIP_SHARED_BUILD_ROOT="${LINGOTRIP_SHARED_BUILD_ROOT:-$LINGOTRIP_MAIN_REPO_ROOT/build/WorktreeShared}"
 LINGOTRIP_DERIVED_DATA_PATH="${LINGOTRIP_DERIVED_DATA_PATH:-$LINGOTRIP_REPO_ROOT/build/DerivedData}"
-LINGOTRIP_SOURCE_PACKAGES_PATH="${LINGOTRIP_SOURCE_PACKAGES_PATH:-$LINGOTRIP_SHARED_BUILD_ROOT/SourcePackages}"
-LINGOTRIP_WORKTREE_LOCK_KEY="$(printf '%s' "$LINGOTRIP_REPO_ROOT" | cksum | awk '{ print $1 }')"
-LINGOTRIP_PIPELINE_LOCK_DIR="$LINGOTRIP_SHARED_BUILD_ROOT/locks/ios-pipeline-$LINGOTRIP_WORKTREE_LOCK_KEY.lock"
+LINGOTRIP_SOURCE_PACKAGES_PATH="${LINGOTRIP_SOURCE_PACKAGES_PATH:-$LINGOTRIP_REPO_ROOT/build/SourcePackages}"
+LINGOTRIP_PIPELINE_LOCK_DIR="$LINGOTRIP_REPO_ROOT/build/locks/ios-pipeline.lock"
 LINGOTRIP_PIPELINE_LOCK_HELD=0
 
 lingotrip_require_command() {
@@ -50,7 +46,7 @@ lingotrip_release_pipeline_lock() {
 }
 
 lingotrip_acquire_pipeline_lock() {
-  mkdir -p "$LINGOTRIP_SHARED_BUILD_ROOT/locks" "$LINGOTRIP_SOURCE_PACKAGES_PATH"
+  mkdir -p "$(dirname "$LINGOTRIP_PIPELINE_LOCK_DIR")" "$LINGOTRIP_SOURCE_PACKAGES_PATH"
 
   local waited_seconds=0
   while ! mkdir "$LINGOTRIP_PIPELINE_LOCK_DIR" 2>/dev/null; do
@@ -82,7 +78,7 @@ lingotrip_acquire_pipeline_lock() {
     fi
 
     if (( waited_seconds % 16 == 0 )); then
-      echo "另一工作树正在构建或操作模拟器，当前任务排队中：$owner_worktree"
+      echo "当前工作树已有构建或模拟器操作，正在排队：$owner_worktree"
     fi
     sleep 2
     waited_seconds=$((waited_seconds + 2))
@@ -93,6 +89,12 @@ lingotrip_acquire_pipeline_lock() {
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$LINGOTRIP_PIPELINE_LOCK_DIR/started_at"
   LINGOTRIP_PIPELINE_LOCK_HELD=1
   trap lingotrip_release_pipeline_lock EXIT
+}
+
+lingotrip_package_cache_ready() {
+  [[ -f "$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/FluidAudio/Package.swift" ]] &&
+    [[ -f "$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/GLTFKit2/Package.swift" ]] &&
+    [[ -d "$LINGOTRIP_SOURCE_PACKAGES_PATH/artifacts/gltfkit2/GLTFKit2/GLTFKit2.xcframework" ]]
 }
 
 lingotrip_prepare_workspace() {
@@ -166,6 +168,17 @@ lingotrip_xcodebuild() {
   local udid="$2"
   shift 2
 
+  local package_resolution_arguments=()
+  if lingotrip_package_cache_ready; then
+    # 完整缓存只读取 Package.resolved，避免每次构建访问远端或与其他工作树争用。
+    package_resolution_arguments=(
+      -disableAutomaticPackageResolution
+      -onlyUsePackageVersionsFromResolvedFile
+    )
+  else
+    echo "当前工作树首次准备 Swift Package 依赖；完成后后续构建将使用本地锁定缓存"
+  fi
+
   xcodebuild \
     -project "$LINGOTRIP_REPO_ROOT/LingoTrip.xcodeproj" \
     -scheme "$scheme" \
@@ -179,7 +192,6 @@ lingotrip_xcodebuild() {
     PROVISIONING_PROFILE_SPECIFIER="" \
     COMPILER_INDEX_STORE_ENABLE="${LINGOTRIP_INDEX_STORE_ENABLE:-NO}" \
     -quiet \
-    -disableAutomaticPackageResolution \
-    -onlyUsePackageVersionsFromResolvedFile \
+    "${package_resolution_arguments[@]}" \
     "$@"
 }

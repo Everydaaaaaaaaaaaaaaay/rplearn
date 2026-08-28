@@ -382,14 +382,29 @@ struct RootView: View {
     }
 
     private var contactsStack: some View {
-        NavigationStack {
+        let regionCatalog = environment.regionCatalog
+        return NavigationStack {
             RosterView(
                 deps: RosterDependencies(
                     rosterStore: environment.rosterStore,
-                    economyStore: environment.economyStore
+                    economyStore: environment.economyStore,
+                    regionName: { regionID in
+                        regionCatalog.region(id: regionID)?.nameZh
+                            ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
+                    }
                 ),
+                reloadToken: stateRevision,
                 chatBuilder: { character in
                     AnyView(ChatView(character: character, deps: chatDeps))
+                },
+                callBuilder: { character in
+                    AnyView(
+                        ChatView(
+                            character: character,
+                            deps: chatDeps,
+                            startsInRealtimeConversation: true
+                        )
+                    )
                 }
             )
         }

@@ -76,4 +76,31 @@ struct RosterStoreTests {
         #expect(fetched?.card == card)
         #expect(fetched?.difficultyLevel == .senior1)
     }
+
+    @Test("特别关心状态可持久化、可取消且重复设置幂等")
+    func favoriteContact() async throws {
+        let store = try makeStore()
+        let id = try await store.addCharacter(
+            card: sampleCard(name: "Favorite"),
+            difficulty: .junior3,
+            isFriend: true
+        )
+
+        #expect(try await store.character(id: id)?.isFavorite == false)
+        try await store.setFavorite(characterID: id, isFavorite: true)
+        try await store.setFavorite(characterID: id, isFavorite: true)
+        #expect(try await store.character(id: id)?.isFavorite == true)
+
+        try await store.setFavorite(characterID: id, isFavorite: false)
+        #expect(try await store.character(id: id)?.isFavorite == false)
+    }
+
+    @Test("特别关心保存失败时返回明确错误")
+    func favoriteSaveFailure() async throws {
+        let store = try makeStore()
+
+        await #expect(throws: RosterStore.RosterError.characterNotFound) {
+            try await store.setFavorite(characterID: UUID(), isFavorite: true)
+        }
+    }
 }

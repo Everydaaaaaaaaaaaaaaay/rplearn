@@ -280,6 +280,7 @@ public actor ContentSyncStore {
                 difficultyLevelRaw: payload.difficulty,
                 isMainCharacter: payload.isMainCharacter,
                 isFriend: payload.isFriend,
+                isFavorite: payload.isFavorite ?? false,
                 cardJSON: card.encodedJSON(),
                 metAt: payload.metAt
             )
@@ -299,6 +300,7 @@ public actor ContentSyncStore {
         entity.difficultyLevelRaw = payload.difficulty
         entity.isMainCharacter = payload.isMainCharacter
         entity.isFriend = payload.isFriend
+        entity.isFavorite = payload.isFavorite ?? false
         entity.cardJSON = card.encodedJSON()
         entity.metAt = payload.metAt
         try upsertMetadata(record, localKey: record.resourceID)
@@ -596,6 +598,7 @@ public actor ContentSyncStore {
                 ),
                 difficulty: entity.difficultyLevelRaw,
                 isFriend: entity.isFriend,
+                isFavorite: entity.isFavorite,
                 isMainCharacter: entity.isMainCharacter,
                 metAt: entity.metAt
             )

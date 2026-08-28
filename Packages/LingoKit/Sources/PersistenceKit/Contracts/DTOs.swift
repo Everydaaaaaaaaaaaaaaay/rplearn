@@ -67,6 +67,7 @@ public struct CharacterDTO: Sendable, Equatable, Identifiable {
     public var isMainCharacter: Bool
     public var isFriend: Bool
     public var metAt: Date
+    public var isFavorite: Bool
 
     public init(
         id: UUID,
@@ -74,7 +75,8 @@ public struct CharacterDTO: Sendable, Equatable, Identifiable {
         difficultyLevel: DifficultyLevel,
         isMainCharacter: Bool,
         isFriend: Bool,
-        metAt: Date
+        metAt: Date,
+        isFavorite: Bool = false
     ) {
         self.id = id
         self.card = card
@@ -82,6 +84,7 @@ public struct CharacterDTO: Sendable, Equatable, Identifiable {
         self.isMainCharacter = isMainCharacter
         self.isFriend = isFriend
         self.metAt = metAt
+        self.isFavorite = isFavorite
     }
 }
 

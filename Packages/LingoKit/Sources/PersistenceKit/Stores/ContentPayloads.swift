@@ -19,6 +19,7 @@ struct ContentCharacterPayload: Codable {
     let card: Card
     let difficulty: String
     let isFriend: Bool
+    var isFavorite: Bool? = nil
     let isMainCharacter: Bool
     let metAt: Date
     var schemaVersion = 1

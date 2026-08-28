@@ -102,6 +102,7 @@ extension LingoSchema {
         public var difficultyLevelRaw: String
         public var isMainCharacter: Bool
         public var isFriend: Bool
+        public var isFavorite: Bool = false
         public var cardJSON: String
         public var metAt: Date
 
@@ -126,6 +127,7 @@ extension LingoSchema {
             difficultyLevelRaw: String,
             isMainCharacter: Bool = false,
             isFriend: Bool = false,
+            isFavorite: Bool = false,
             cardJSON: String = "",
             metAt: Date = .now
         ) {
@@ -143,6 +145,7 @@ extension LingoSchema {
             self.difficultyLevelRaw = difficultyLevelRaw
             self.isMainCharacter = isMainCharacter
             self.isFriend = isFriend
+            self.isFavorite = isFavorite
             self.cardJSON = cardJSON
             self.metAt = metAt
             self.conversations = []

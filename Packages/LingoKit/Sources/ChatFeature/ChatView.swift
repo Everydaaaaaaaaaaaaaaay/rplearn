@@ -40,10 +40,15 @@ public struct ChatView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
 
-    public init(character: CharacterDTO, deps: ChatDependencies) {
+    public init(
+        character: CharacterDTO,
+        deps: ChatDependencies,
+        startsInRealtimeConversation: Bool = false
+    ) {
         _viewModel = State(initialValue: ChatViewModel(character: character, deps: deps))
         _recorder = State(initialValue: VoiceRecorder(audioSession: deps.audioSession))
         _voicePlayer = State(initialValue: VoiceMessagePlayer(audioSession: deps.audioSession))
+        _showsRealtimeConversation = State(initialValue: startsInRealtimeConversation)
         self.deps = deps
     }
 
