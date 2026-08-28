@@ -77,6 +77,7 @@ public struct RosterView: View {
     @State private var isSearchPresented = false
     @State private var favoriteSaveFailure: FavoriteSaveFailure?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(
         deps: RosterDependencies,
@@ -112,6 +113,42 @@ public struct RosterView: View {
         RosterPresentationPolicy.isCapacityNearLimit(occupied: occupiedSlots, limit: slotLimit)
     }
 
+    private var preferredDirectoryHeight: CGFloat {
+        if isLoading && friends.isEmpty { return 320 }
+        if loadErrorMessage != nil && friends.isEmpty { return 390 }
+        if friends.isEmpty { return 390 }
+        if isSearching && visibleContacts.isEmpty { return 360 }
+
+        let usesAccessibilityLayout = dynamicTypeSize.isAccessibilitySize
+        let contactRowHeight: CGFloat = usesAccessibilityLayout ? 118 : 66
+        // List 会为 Section 的首尾保留系统间距；把它纳入面板高度，
+        // 避免联系人很少时 footer 被迫滚动后才出现。
+        let contentMargin: CGFloat = usesAccessibilityLayout ? 80 : 64
+
+        if isSearching {
+            return max(
+                contactRowHeight + contentMargin,
+                CGFloat(visibleContacts.count) * contactRowHeight + contentMargin
+            )
+        }
+
+        let favoritesHeight: CGFloat = favoriteContacts.isEmpty
+            ? 0
+            : (usesAccessibilityLayout ? 190 : 132)
+        let allContactsHeaderHeight: CGFloat = favoriteContacts.isEmpty
+            ? 0
+            : (usesAccessibilityLayout ? 52 : 38)
+        let footerHeight: CGFloat = usesAccessibilityLayout ? 96 : 54
+        let refreshErrorHeight: CGFloat = loadErrorMessage == nil ? 0 : 48
+
+        return favoritesHeight
+            + allContactsHeaderHeight
+            + CGFloat(allContacts.count) * contactRowHeight
+            + footerHeight
+            + refreshErrorHeight
+            + contentMargin
+    }
+
     public var body: some View {
         ZStack {
             DSSceneBackdrop(imageName: "contacts_london_glass", tone: .warm)
@@ -140,30 +177,53 @@ public struct RosterView: View {
     }
 
     private var contactList: some View {
+        GeometryReader { proxy in
+            directoryList
+                .frame(
+                    height: min(
+                        preferredDirectoryHeight,
+                        max(proxy.size.height - DSSpacing.md, 160)
+                    )
+                )
+                .padding(.horizontal, DSSpacing.sm)
+                .padding(.top, DSSpacing.xs)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        }
+    }
+
+    private var directoryList: some View {
         List {
-            if isLoading && friends.isEmpty {
-                loadingRow
-            } else if let loadErrorMessage, friends.isEmpty {
-                loadErrorRow(loadErrorMessage)
-            } else if isSearching {
-                searchContent
-            } else if friends.isEmpty {
-                emptyState
-            } else {
-                if let loadErrorMessage {
-                    compactLoadErrorRow(loadErrorMessage)
-                }
-                if !favoriteContacts.isEmpty {
-                    favoriteSection
-                }
-                allContactsSection
-            }
+            directoryContent
         }
         .listStyle(.plain)
-        .listSectionSpacing(DSSpacing.md)
+        .listSectionSpacing(DSSpacing.xs)
         .scrollContentBackground(.hidden)
-        .background { RosterContentMaterial() }
+        .background { RosterDirectorySurface() }
+        .clipShape(
+            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+        )
         .refreshable { await reload() }
+    }
+
+    @ViewBuilder
+    private var directoryContent: some View {
+        if isLoading && friends.isEmpty {
+            loadingRow
+        } else if let loadErrorMessage, friends.isEmpty {
+            loadErrorRow(loadErrorMessage)
+        } else if isSearching {
+            searchContent
+        } else if friends.isEmpty {
+            emptyState
+        } else {
+            if let loadErrorMessage {
+                compactLoadErrorRow(loadErrorMessage)
+            }
+            if !favoriteContacts.isEmpty {
+                favoriteSection
+            }
+            allContactsSection
+        }
     }
 
     private var navigationReadabilityWash: some View {
@@ -254,6 +314,7 @@ public struct RosterView: View {
                         }
                     }
                 }
+                .frame(height: dynamicTypeSize.isAccessibilitySize ? 132 : 88)
                 .scrollIndicators(.hidden)
             }
             .padding(.vertical, DSSpacing.xs)
@@ -298,12 +359,18 @@ public struct RosterView: View {
 
     private var allContactsSection: some View {
         Section {
-            ForEach(allContacts) { character in
-                contactLink(character)
-            }
-        } header: {
             if !favoriteContacts.isEmpty {
                 Text("全部联系人")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .textCase(nil)
+                    .accessibilityAddTraits(.isHeader)
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+            }
+
+            ForEach(allContacts) { character in
+                contactLink(character)
             }
         } footer: {
             capacityFooter
@@ -710,25 +777,40 @@ private struct FavoriteSaveFailure: Identifiable {
     let targetValue: Bool
 }
 
-private struct RosterContentMaterial: View {
+private struct RosterDirectorySurface: View {
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         Group {
             if reduceTransparency || contrast == .increased {
-                Color.dsBackground.opacity(0.985)
+                Color.dsBackground.opacity(reduceTransparency ? 1 : 0.985)
             } else {
-                Rectangle().fill(.regularMaterial)
+                Color.dsSurface.opacity(colorScheme == .dark ? 0.9 : 0.84)
             }
         }
         .overlay {
             LinearGradient(
-                colors: [Color.dsSurface.opacity(0.24), Color.dsSurface.opacity(0.08)],
-                startPoint: .top,
-                endPoint: .bottom
+                colors: [Color.dsSky.opacity(0.025), Color.dsSunset.opacity(0.018)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
             )
         }
+        .overlay {
+            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+                .stroke(
+                    colorScheme == .dark
+                        ? Color.white.opacity(0.12)
+                        : Color.white.opacity(0.62),
+                    lineWidth: 0.8
+                )
+        }
+        .shadow(
+            color: .black.opacity(colorScheme == .dark ? 0.2 : 0.1),
+            radius: 16,
+            y: 6
+        )
         .accessibilityHidden(true)
     }
 }
