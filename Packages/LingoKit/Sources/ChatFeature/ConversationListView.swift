@@ -188,7 +188,7 @@ public struct ConversationListView: View {
                         .foregroundStyle(.primary)
                         .lineLimit(1)
 
-                    if row.character.isMainCharacter {
+                    if row.character.isFavorite {
                         Image(systemName: "star.fill")
                             .font(.caption2.weight(.bold))
                             .foregroundStyle(Color.dsSunset)
