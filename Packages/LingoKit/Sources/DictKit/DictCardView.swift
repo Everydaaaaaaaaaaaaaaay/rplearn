@@ -31,38 +31,108 @@ public struct WordFavoriteActions: Sendable {
     }
 }
 
+/// 一条例句的翻译请求。除整句外还携带精确词性与英文义项，供翻译服务判断句中词义。
+public struct DictExampleTranslationRequest: Sendable, Hashable {
+    public let sentence: String
+    public let word: String
+    public let partOfSpeechAbbreviation: String
+    public let definitionEn: String?
+    public let fallbackMeaningZh: String?
+
+    public init(
+        sentence: String,
+        word: String,
+        partOfSpeechAbbreviation: String,
+        definitionEn: String? = nil,
+        fallbackMeaningZh: String? = nil
+    ) {
+        self.sentence = sentence
+        self.word = word
+        self.partOfSpeechAbbreviation = partOfSpeechAbbreviation
+        self.definitionEn = definitionEn
+        self.fallbackMeaningZh = fallbackMeaningZh
+    }
+
+    fileprivate var normalized: Self {
+        Self(
+            sentence: DictDisplayText.normalizedWhitespace(sentence),
+            word: word.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
+            partOfSpeechAbbreviation: partOfSpeechAbbreviation.trimmingCharacters(
+                in: .whitespacesAndNewlines
+            ),
+            definitionEn: definitionEn.map(DictDisplayText.normalizedWhitespace),
+            fallbackMeaningZh: fallbackMeaningZh.map(DictDisplayText.normalizedWhitespace)
+        )
+    }
+}
+
+/// 例句的自然中文翻译，以及目标词在该句中的简短中文词义。
+public struct DictExampleTranslation: Sendable, Equatable {
+    public let sentenceZh: String
+    public let meaningZh: String?
+
+    public init(sentenceZh: String, meaningZh: String?) {
+        self.sentenceZh = sentenceZh
+        self.meaningZh = meaningZh
+    }
+}
+
 /// 词典例句翻译能力由组合根注入，DictKit 不直接依赖具体 LLM 服务。
 public struct DictExampleTranslationActions: Sendable {
-    private let translateAction: @Sendable (String) async -> String?
+    private let translateAction: @Sendable (
+        DictExampleTranslationRequest
+    ) async -> DictExampleTranslation?
 
-    public init(translate: @escaping @Sendable (String) async -> String?) {
+    public init(
+        translate: @escaping @Sendable (
+            DictExampleTranslationRequest
+        ) async -> DictExampleTranslation?
+    ) {
         self.translateAction = translate
     }
 
-    func translate(_ sentence: String) async -> String? {
-        let source = sentence.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !source.isEmpty,
-              let translated = await translateAction(source)?.trimmingCharacters(
-                  in: .whitespacesAndNewlines
-              ),
-              !translated.isEmpty
+    func translate(_ request: DictExampleTranslationRequest) async -> DictExampleTranslation? {
+        let request = request.normalized
+        guard !request.sentence.isEmpty,
+              let translated = await translateAction(request)
         else { return nil }
-        return translated
+
+        let sentenceZh = DictDisplayText.normalizedWhitespace(translated.sentenceZh)
+        guard !sentenceZh.isEmpty else { return nil }
+        let generatedMeaning = translated.meaningZh.flatMap(Self.validChineseMeaning)
+        let fallbackMeaning = request.fallbackMeaningZh.flatMap(Self.validChineseMeaning)
+        return DictExampleTranslation(
+            sentenceZh: sentenceZh,
+            meaningZh: generatedMeaning ?? fallbackMeaning
+        )
+    }
+
+    private static func validChineseMeaning(_ text: String) -> String? {
+        let normalized = DictDisplayText.normalizedWhitespace(text)
+        guard !normalized.isEmpty,
+              normalized.unicodeScalars.contains(where: {
+                  (0x3400...0x4DBF).contains($0.value)
+                      || (0x4E00...0x9FFF).contains($0.value)
+              })
+        else { return nil }
+        return normalized
     }
 }
 
 actor DictExampleTranslationCache {
     static let shared = DictExampleTranslationCache()
 
-    private var translations: [String: String] = [:]
-    private var inFlight: [String: Task<String?, Never>] = [:]
+    private var translations: [DictExampleTranslationRequest: DictExampleTranslation] = [:]
+    private var inFlight: [
+        DictExampleTranslationRequest: Task<DictExampleTranslation?, Never>
+    ] = [:]
 
     func translation(
-        for sentence: String,
+        for request: DictExampleTranslationRequest,
         using actions: DictExampleTranslationActions
-    ) async -> String? {
-        let key = DictDisplayText.normalizedWhitespace(sentence).lowercased()
-        guard !key.isEmpty else { return nil }
+    ) async -> DictExampleTranslation? {
+        let key = request.normalized
+        guard !key.sentence.isEmpty else { return nil }
         if let cached = translations[key] {
             return cached
         }
@@ -70,7 +140,7 @@ actor DictExampleTranslationCache {
             return await pending.value
         }
 
-        let task = Task { await actions.translate(sentence) }
+        let task = Task { await actions.translate(key) }
         inFlight[key] = task
         let translated = await task.value
         inFlight[key] = nil
@@ -129,15 +199,29 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
 struct DictUsageExample: Identifiable, Equatable {
     let partOfSpeechLabel: String
     let partOfSpeechAbbreviation: String
-    let meaning: String?
+    let meaningZh: String?
+    let definitionEn: String?
     let text: String
 
     var id: String { "\(partOfSpeechAbbreviation)-\(text)" }
-    var annotation: String {
+    var annotation: String { annotation(meaningZh: nil) }
+
+    func annotation(meaningZh translatedMeaning: String? = nil) -> String {
+        let meaning = translatedMeaning ?? meaningZh
         guard let meaning, !meaning.isEmpty else {
             return "（\(partOfSpeechAbbreviation)）"
         }
         return "（\(partOfSpeechAbbreviation) \(meaning)）"
+    }
+
+    func translationRequest(for word: String) -> DictExampleTranslationRequest {
+        DictExampleTranslationRequest(
+            sentence: text,
+            word: word,
+            partOfSpeechAbbreviation: partOfSpeechAbbreviation,
+            definitionEn: definitionEn,
+            fallbackMeaningZh: meaningZh
+        )
     }
 }
 
@@ -228,7 +312,8 @@ enum DictUsageExamplePolicy {
         let id: String
         let label: String
         let abbreviation: String
-        let meaning: String?
+        let meaningZh: String?
+        let definitionEn: String?
     }
 
     static func groups(
@@ -255,7 +340,8 @@ enum DictUsageExamplePolicy {
                 DictUsageExample(
                     partOfSpeechLabel: descriptor.label,
                     partOfSpeechAbbreviation: descriptor.abbreviation,
-                    meaning: descriptor.meaning,
+                    meaningZh: descriptor.meaningZh,
+                    definitionEn: descriptor.definitionEn,
                     text: normalized
                 )
             )
@@ -357,7 +443,10 @@ enum DictUsageExamplePolicy {
             id: abbreviation,
             label: label,
             abbreviation: abbreviation,
-            meaning: conciseMeaning(matchingMeaning?.meaning)
+            meaningZh: conciseMeaning(matchingMeaning?.meaning),
+            definitionEn: group.senses.count == 1
+                ? group.senses.first.map { DictDisplayText.normalizedWhitespace($0.definition) }
+                : nil
         )
     }
 
@@ -372,7 +461,8 @@ enum DictUsageExamplePolicy {
             id: abbreviation,
             label: label,
             abbreviation: abbreviation,
-            meaning: conciseMeaning(meaningGroup.meaning)
+            meaningZh: conciseMeaning(meaningGroup.meaning),
+            definitionEn: nil
         )
     }
 
@@ -386,7 +476,8 @@ enum DictUsageExamplePolicy {
             id: fallback.id,
             label: fallback.label,
             abbreviation: fallback.abbreviation,
-            meaning: DictDisplayText.normalizedWhitespace(sense.definition)
+            meaningZh: fallback.meaningZh,
+            definitionEn: DictDisplayText.normalizedWhitespace(sense.definition)
         )
     }
 
@@ -399,7 +490,8 @@ enum DictUsageExamplePolicy {
             id: descriptor.id,
             label: descriptor.label,
             abbreviation: descriptor.abbreviation,
-            meaning: nil
+            meaningZh: descriptor.meaningZh,
+            definitionEn: nil
         )
     }
 
@@ -504,7 +596,7 @@ public struct DictCardView: View {
     @State private var isFavorite = false
     @State private var isUpdatingFavorite = false
     @State private var isEnglishExpanded = false
-    @State private var exampleTranslations: [String: String] = [:]
+    @State private var exampleTranslations: [String: DictExampleTranslation] = [:]
     @State private var translatingExampleIDs: Set<String> = []
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -544,8 +636,12 @@ public struct DictCardView: View {
                     content
                 }
                 .padding(DictCardLayout.contentPadding)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(
+                    width: DictCardLayout.width,
+                    alignment: .leading
+                )
             }
+            .frame(width: DictCardLayout.width)
             .scrollIndicators(.hidden)
         }
         .frame(width: DictCardLayout.width)
@@ -609,6 +705,7 @@ public struct DictCardView: View {
         .padding(.leading, 12)
         .padding(.trailing, 4)
         .padding(.vertical, 2)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     @ViewBuilder
@@ -860,13 +957,14 @@ public struct DictCardView: View {
 
     private func tappableExampleText(
         _ example: DictUsageExample,
-        contextID: String
+        contextID: String,
+        meaningZh: String?
     ) -> some View {
         var tokens = TokenCache.tokens(for: example.text, cacheKey: contextID)
         tokens.append(
             TextToken(
                 id: tokens.count,
-                display: example.annotation,
+                display: example.annotation(meaningZh: meaningZh),
                 word: nil
             )
         )
@@ -916,7 +1014,8 @@ public struct DictCardView: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     tappableExampleText(
                                         example,
-                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
+                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)",
+                                        meaningZh: exampleTranslations[example.id]?.meaningZh
                                     )
                                     .font(.subheadline)
                                     .lineSpacing(1)
@@ -935,12 +1034,12 @@ public struct DictCardView: View {
     @ViewBuilder
     private func exampleTranslationText(_ example: DictUsageExample) -> some View {
         if let translation = exampleTranslations[example.id] {
-            Text(translation)
+            Text(translation.sentenceZh)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
-                .accessibilityLabel("中文翻译：\(translation)")
+                .accessibilityLabel("中文翻译：\(translation.sentenceZh)")
         } else if translatingExampleIDs.contains(example.id) {
             HStack(spacing: 5) {
                 ProgressView()
@@ -1034,14 +1133,9 @@ public struct DictCardView: View {
     private func tagChips(_ entry: DictEntry) -> some View {
         let titles = DictTagDisplayPolicy.orderedTitles(for: entry)
         if !titles.isEmpty {
-            ViewThatFits(in: .horizontal) {
-                ForEach(Array(stride(from: titles.count, through: 1, by: -1)), id: \.self) { count in
-                    HStack(spacing: 6) {
-                        ForEach(titles.prefix(count), id: \.self) { title in
-                            chip(title)
-                        }
-                    }
-                    .fixedSize(horizontal: true, vertical: false)
+            FlowLayout(spacing: 6, lineSpacing: 5) {
+                ForEach(titles, id: \.self) { title in
+                    chip(title)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -1138,11 +1232,11 @@ public struct DictCardView: View {
         guard !examples.isEmpty else { return }
 
         translatingExampleIDs = Set(examples.map(\.id))
-        await withTaskGroup(of: (String, String?).self) { group in
+        await withTaskGroup(of: (String, DictExampleTranslation?).self) { group in
             for example in examples {
                 group.addTask {
                     let translated = await DictExampleTranslationCache.shared.translation(
-                        for: example.text,
+                        for: example.translationRequest(for: entry.word),
                         using: exampleTranslationActions
                     )
                     return (example.id, translated)
@@ -1166,7 +1260,7 @@ public struct DictCardView: View {
         translatingExampleIDs.insert(example.id)
         Task {
             let translated = await DictExampleTranslationCache.shared.translation(
-                for: example.text,
+                for: example.translationRequest(for: entry?.word ?? ""),
                 using: exampleTranslationActions
             )
             translatingExampleIDs.remove(example.id)

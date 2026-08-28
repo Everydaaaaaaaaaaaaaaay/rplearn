@@ -99,35 +99,81 @@ struct DictDatabaseTests {
 
     @Test("例句翻译忽略空输入并清理译文首尾空白")
     func exampleTranslationActionsNormalizeOutput() async {
-        let actions = DictExampleTranslationActions { sentence in
-            "  \(sentence)的自然中文翻译  "
+        let actions = DictExampleTranslationActions { request in
+            DictExampleTranslation(
+                sentenceZh: "  \(request.sentence)的自然中文翻译  ",
+                meaningZh: "  合适的  "
+            )
         }
-
-        #expect(
-            await actions.translate("  Fancy a pint later?  ")
-                == "Fancy a pint later?的自然中文翻译"
+        let request = DictExampleTranslationRequest(
+            sentence: "  Fancy a pint later?  ",
+            word: "fancy",
+            partOfSpeechAbbreviation: "v.",
+            fallbackMeaningZh: "想要"
         )
-        #expect(await actions.translate("   \n ") == nil)
+
+        let translated = await actions.translate(request)
+        #expect(translated?.sentenceZh == "Fancy a pint later?的自然中文翻译")
+        #expect(translated?.meaningZh == "合适的")
+        #expect(
+            await actions.translate(
+                DictExampleTranslationRequest(
+                    sentence: "   \n ",
+                    word: "fancy",
+                    partOfSpeechAbbreviation: "v."
+                )
+            ) == nil
+        )
+    }
+
+    @Test("例句括号内拒绝英文词义并回退到本地中文词义")
+    func exampleTranslationMeaningMustRemainChinese() async {
+        let actions = DictExampleTranslationActions { _ in
+            DictExampleTranslation(
+                sentenceZh: "本周找个时间喝一杯正经的啤酒怎么样？",
+                meaningZh: "marked by suitability"
+            )
+        }
+        let request = DictExampleTranslationRequest(
+            sentence: "Fancy a proper pint sometime this week?",
+            word: "proper",
+            partOfSpeechAbbreviation: "adj.",
+            definitionEn: "marked by suitability",
+            fallbackMeaningZh: "合适的"
+        )
+
+        let translated = await actions.translate(request)
+
+        #expect(translated?.meaningZh == "合适的")
     }
 
     @Test("相同例句的并发翻译合并为一次请求并复用缓存")
     func exampleTranslationCacheDeduplicatesRequests() async {
         let cache = DictExampleTranslationCache()
         let counter = TranslationInvocationCounter()
-        let actions = DictExampleTranslationActions { sentence in
+        let actions = DictExampleTranslationActions { request in
             await counter.increment()
             try? await Task.sleep(for: .milliseconds(20))
-            return "译：\(sentence)"
+            return DictExampleTranslation(
+                sentenceZh: "译：\(request.sentence)",
+                meaningZh: "问候"
+            )
         }
+        let request = DictExampleTranslationRequest(
+            sentence: "How are you?",
+            word: "how",
+            partOfSpeechAbbreviation: "adv.",
+            fallbackMeaningZh: "怎样"
+        )
 
-        async let first = cache.translation(for: "How are you?", using: actions)
-        async let second = cache.translation(for: "How are you?", using: actions)
+        async let first = cache.translation(for: request, using: actions)
+        async let second = cache.translation(for: request, using: actions)
         let results = await (first, second)
-        let cached = await cache.translation(for: "How are you?", using: actions)
+        let cached = await cache.translation(for: request, using: actions)
 
-        #expect(results.0 == "译：How are you?")
-        #expect(results.1 == "译：How are you?")
-        #expect(cached == "译：How are you?")
+        #expect(results.0?.sentenceZh == "译：How are you?")
+        #expect(results.1?.sentenceZh == "译：How are you?")
+        #expect(cached?.sentenceZh == "译：How are you?")
         #expect(await counter.count() == 1)
     }
 
@@ -207,8 +253,8 @@ struct DictDatabaseTests {
         #expect(!DictPartOfSpeechDisplay.labelsAreCompatible("动词", "名词"))
     }
 
-    @Test("同一词性存在多个义项时例句使用各自准确义项而不复用首条中文")
-    func examplesUseTheirOwningSenseDefinition() async throws {
+    @Test("同一词性存在多个义项时只以英文义项作为翻译上下文，不直接显示英文")
+    func examplesKeepSenseDefinitionAsTranslationContext() async throws {
         let db = try openDatabase()
         let entry = try #require(await db.lookup("tube"))
 
@@ -221,12 +267,13 @@ struct DictDatabaseTests {
             groups.first { $0.partOfSpeechLabel == "动词" }?.examples
         )
 
-        #expect(verbExamples.map(\.annotation).contains("（v. convey in a tube）"))
+        #expect(verbExamples.allSatisfy { $0.annotation == "（v. 把...装管）" })
+        #expect(verbExamples.map(\.definitionEn).contains("convey in a tube"))
         #expect(
-            verbExamples.map(\.annotation)
-                .contains("（v. ride or float on an inflated tube）")
+            verbExamples.map(\.definitionEn)
+                .contains("ride or float on an inflated tube")
         )
-        #expect(!verbExamples.map(\.annotation).contains("（v. 管）"))
+        #expect(!verbExamples.map(\.annotation).joined().contains("convey in a tube"))
     }
 
     @Test("单一词性无论义项多少最多显示两条例句")
@@ -272,8 +319,8 @@ struct DictDatabaseTests {
             "An overwhelming need for solitude.",
         ])
         #expect(groups[0].examples.map(\.annotation) == [
-            "（adj.）",
-            "（adj. very intense）",
+            "（adj. 压倒性的）",
+            "（adj. 压倒性的）",
         ])
     }
 

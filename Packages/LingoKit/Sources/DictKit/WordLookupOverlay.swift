@@ -78,13 +78,22 @@ public struct WordLookupOverlayModifier: ViewModifier {
 
     private var resolvedExampleTranslationActions: DictExampleTranslationActions {
         let remote = exampleTranslationActions
+#if targetEnvironment(simulator)
+        // Translation.framework 不支持模拟器；调用会反复弹出系统错误面板，影响界面验收。
+        return remote
+#else
         let local = appleTranslator
-        return DictExampleTranslationActions { text in
-            if let translated = await remote.translate(text) {
+        return DictExampleTranslationActions { request in
+            if let translated = await remote.translate(request) {
                 return translated
             }
-            return await local.translate(text)
+            guard let sentenceZh = await local.translate(request.sentence) else { return nil }
+            return DictExampleTranslation(
+                sentenceZh: sentenceZh,
+                meaningZh: request.fallbackMeaningZh
+            )
         }
+#endif
     }
 }
 
