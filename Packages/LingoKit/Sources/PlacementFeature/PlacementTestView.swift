@@ -68,12 +68,7 @@ public struct PlacementTestView: View {
 
     public var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [Color.dsSky.opacity(0.07), Color.dsBackground, Color.dsBackground],
-                startPoint: .top,
-                endPoint: .center
-            )
-            .ignoresSafeArea()
+            PlacementCanvasBackground()
 
             VStack(spacing: 0) {
                 header
@@ -124,7 +119,10 @@ public struct PlacementTestView: View {
                 Image(systemName: phase == .levelSelection ? "chevron.left" : "xmark")
                     .font(.body.weight(.semibold))
                     .frame(width: 36, height: 36)
-                    .background(Color.dsSurfaceMuted, in: Circle())
+                    .dsMaterial(.thinMaterial, in: Circle())
+                    .overlay {
+                        Circle().stroke(Color.white.opacity(0.55), lineWidth: 0.7)
+                    }
             }
             .buttonStyle(.plain)
             .disabled(isApplying)
@@ -145,9 +143,8 @@ public struct PlacementTestView: View {
             Color.clear.frame(width: 36, height: 36)
         }
         .padding(.horizontal, DSSpacing.md)
-        .padding(.vertical, DSSpacing.xs)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .bottom) { Divider() }
+        .padding(.top, DSSpacing.xs)
+        .padding(.bottom, DSSpacing.sm)
     }
 
     private var loadingView: some View {
@@ -200,35 +197,28 @@ public struct PlacementTestView: View {
                 .buttonStyle(.dsActionPrimary)
                 .disabled(isApplying)
 
-                HStack(spacing: DSSpacing.sm) {
-                    Divider()
-                    Text("或者通过测试获取建议")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .fixedSize()
-                    Divider()
-                }
+                Label("想更准确？通过短测获取建议", systemImage: "sparkles")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.dsSkyDeep)
 
-                VStack(spacing: 0) {
+                VStack(spacing: 3) {
                     informationRow(
                         icon: "slider.horizontal.3",
                         title: "自适应题量",
                         detail: "答满 14 题后判断稳定度，最多 20 题，约 4–6 分钟"
                     )
-                    Divider().padding(.leading, 50)
                     informationRow(
                         icon: "headphones",
                         title: "四类能力，多种题型",
                         detail: "从 96 道题中动态抽取词汇、语法、阅读与听力题"
                     )
-                    Divider().padding(.leading, 50)
                     informationRow(
                         icon: "lock.shield",
                         title: "没有公开排名",
                         detail: "结果只用于调整角色对话难度"
                     )
                 }
-                .dsSurface(.grouped, padding: 0)
+                .placementGlassPanel(padding: 0)
 
                 if let questionBankError {
                     Label(questionBankError, systemImage: "exclamationmark.triangle")
@@ -250,7 +240,7 @@ public struct PlacementTestView: View {
                 Button("开始水平测试") {
                     start()
                 }
-                .buttonStyle(.dsAction(.secondary))
+                .buttonStyle(.dsAction(.tinted(.dsSkyDeep)))
                 .disabled(engine == nil || isApplying)
             }
             .frame(maxWidth: 560)
@@ -297,7 +287,7 @@ public struct PlacementTestView: View {
                                 .lineSpacing(5)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .dsSurface(.grouped, padding: DSSpacing.md)
+                                .placementGlassPanel()
                         }
 
                         VStack(spacing: DSSpacing.sm) {
@@ -371,7 +361,7 @@ public struct PlacementTestView: View {
             .font(.caption)
             .foregroundStyle(.secondary)
         }
-        .dsSurface(.grouped, padding: DSSpacing.md)
+        .placementGlassPanel()
     }
 
     @ViewBuilder
@@ -449,7 +439,7 @@ public struct PlacementTestView: View {
                             skillResultRow(skillResult)
                         }
                     }
-                    .dsSurface(.grouped, padding: DSSpacing.lg)
+                    .placementGlassPanel(padding: DSSpacing.lg)
 
                     levelSelectionButton(
                         title: "最终应用水平",
@@ -577,11 +567,7 @@ public struct PlacementTestView: View {
             }
             .padding(DSSpacing.md)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: DSRadius.card))
-            .overlay {
-                RoundedRectangle(cornerRadius: DSRadius.card)
-                    .stroke(Color.dsBorder, lineWidth: 1)
-            }
+            .placementGlassPanel(padding: 0, interactive: true)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("\(title)，当前选择 \(selectedLevel.displayName)")
@@ -624,14 +610,8 @@ public struct PlacementTestView: View {
             }
             .padding(DSSpacing.md)
             .frame(maxWidth: .infinity, minHeight: 58, alignment: .leading)
-            .background(
-                isSelected ? Color.dsSky.opacity(0.09) : Color.dsSurface,
-                in: RoundedRectangle(cornerRadius: DSRadius.card)
-            )
-            .overlay {
-                RoundedRectangle(cornerRadius: DSRadius.card)
-                    .stroke(isSelected ? Color.dsSky : Color.dsBorder, lineWidth: isSelected ? 1.5 : 1)
-            }
+            .background(isSelected ? Color.dsSky.opacity(0.14) : Color.clear)
+            .placementGlassPanel(padding: 0, interactive: true)
         }
         .buttonStyle(.plain)
         .disabled(
@@ -836,8 +816,6 @@ private struct DifficultyLevelSelectionPage: View {
             }
             .padding(.horizontal, DSSpacing.lg)
             .padding(.vertical, DSSpacing.sm)
-            .background(.ultraThinMaterial)
-            .overlay(alignment: .top) { Divider() }
         }
     }
 
@@ -848,15 +826,12 @@ private struct DifficultyLevelSelectionPage: View {
                 .foregroundStyle(.secondary)
                 .padding(.leading, DSSpacing.xs)
 
-            VStack(spacing: 0) {
-                ForEach(Array(levels.enumerated()), id: \.element.rawValue) { index, level in
+            VStack(spacing: 4) {
+                ForEach(levels, id: \.rawValue) { level in
                     levelRow(level)
-                    if index < levels.count - 1 {
-                        Divider().padding(.leading, DSSpacing.md)
-                    }
                 }
             }
-            .dsSurface(.grouped, padding: 0)
+            .placementGlassPanel(padding: 4)
         }
     }
 
@@ -889,7 +864,10 @@ private struct DifficultyLevelSelectionPage: View {
             .padding(.horizontal, DSSpacing.md)
             .padding(.vertical, DSSpacing.sm)
             .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
-            .background(isSelected ? Color.dsSky.opacity(0.08) : Color.clear)
+            .background(
+                isSelected ? Color.dsSky.opacity(0.14) : Color.clear,
+                in: RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
+            )
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -903,5 +881,51 @@ private struct DifficultyLevelSelectionPage: View {
             .padding(.horizontal, 7)
             .padding(.vertical, 3)
             .background(color.opacity(0.1), in: Capsule())
+    }
+}
+
+private struct PlacementCanvasBackground: View {
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        ZStack {
+            (colorScheme == .dark
+                ? Color(red: 0.035, green: 0.09, blue: 0.14)
+                : Color(red: 0.925, green: 0.978, blue: 1.0))
+
+            LinearGradient(
+                stops: [
+                    .init(color: Color.dsSky.opacity(colorScheme == .dark ? 0.22 : 0.18), location: 0),
+                    .init(color: Color.dsCyan.opacity(colorScheme == .dark ? 0.11 : 0.08), location: 0.5),
+                    .init(color: Color.dsBrandCream.opacity(colorScheme == .dark ? 0.08 : 0.5), location: 1),
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            RadialGradient(
+                colors: [Color.dsBrandCoral.opacity(0.08), .clear],
+                center: .bottomTrailing,
+                startRadius: 10,
+                endRadius: 430
+            )
+        }
+        .ignoresSafeArea()
+        .accessibilityHidden(true)
+    }
+}
+
+private extension View {
+    func placementGlassPanel(
+        padding: CGFloat = DSSpacing.md,
+        interactive: Bool = false
+    ) -> some View {
+        self
+            .padding(padding)
+            .dsSceneGlass(
+                radius: DSRadius.card,
+                tint: Color.dsSky.opacity(0.055),
+                interactive: interactive
+            )
     }
 }
