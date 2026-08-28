@@ -924,7 +924,9 @@ public struct DictCardView: View {
                                 }
                             }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }
@@ -936,6 +938,7 @@ public struct DictCardView: View {
             Text(translation)
                 .font(.caption)
                 .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityLabel("中文翻译：\(translation)")
         } else if translatingExampleIDs.contains(example.id) {
