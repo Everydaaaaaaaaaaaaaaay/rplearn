@@ -1,10 +1,11 @@
+import CoreKit
 import Foundation
 import LLMKit
 import PersistenceKit
 
 /// 生成角色主动发起的话题。这里只负责文案，发送时机由应用层统一编排。
 public struct ProactiveMessageService: Sendable {
-    private static let maximumWordsPerMessage = 14
+    private static let maximumWordsPerMessage = 18
 
     public enum Occasion: Sendable, Equatable {
         /// 刚成为好友时的第一条消息。
@@ -14,44 +15,79 @@ public struct ProactiveMessageService: Sendable {
     }
 
     private let llm: any LLMClient
+    private let variationIndex: @Sendable () -> Int
 
-    public init(llm: any LLMClient) {
+    public init(
+        llm: any LLMClient,
+        variationIndex: @escaping @Sendable () -> Int = { Int.random(in: 0..<10_000) }
+    ) {
         self.llm = llm
+        self.variationIndex = variationIndex
     }
 
-    /// 始终返回可发送的英文消息；网络或模型失败时使用不依赖具体角色硬编码的本地兜底。
+    /// 仅返回通过校验且不重复的模型消息；生成失败时留给编排层稍后重试。
     public func generate(
         for character: CharacterDTO,
         learner: LearnerContext,
         occasion: Occasion,
         recentMessages: [MessageDTO] = []
-    ) async -> String {
-        let request = LLMRequest(
-            task: .conversation,
-            tier: .fast,
-            system: Self.prompt(
-                character: character,
-                learner: learner,
-                occasion: occasion,
-                recentMessages: recentMessages
-            ),
-            messages: [.user("Write the message now.")],
-            maxTokens: 60,
-            temperature: 0.8
-        )
+    ) async -> String? {
+        let variation = variationIndex()
+        let recentAssistantTexts = recentMessages
+            .filter { $0.role == .assistant }
+            .suffix(8)
+            .map(\.text)
 
-        if let output = try? await llm.complete(request),
-           let message = Self.normalized(output) {
+        for attempt in 0..<2 {
+            let repairInstruction = attempt == 0
+                ? ""
+                : "\nThe previous draft was invalid or repetitive. Rewrite it more briefly and with a different opening."
+            let request = LLMRequest(
+                task: .conversation,
+                tier: .fast,
+                system: Self.prompt(
+                    character: character,
+                    learner: learner,
+                    occasion: occasion,
+                    recentMessages: recentMessages,
+                    variationIndex: variation + attempt
+                ) + repairInstruction,
+                messages: [.user("Write the message now.")],
+                maxTokens: 72,
+                temperature: 0.8
+            )
+
+            let output: String
+            do {
+                output = try await llm.complete(request)
+            } catch {
+                // LLMRouter 已经对网络和限流错误重试；此处不再重复轰炸服务端。
+                Log.llm.warning("主动消息生成失败，本轮不写入并保留稍后重试机会：\(error)")
+                return nil
+            }
+            guard let message = Self.normalized(output) else {
+                Log.llm.warning("主动开场第 \(attempt + 1) 次输出未通过短消息格式校验")
+                continue
+            }
+            guard !RoleplayReplyDiversityPolicy.isTooSimilar(
+                message,
+                to: recentAssistantTexts
+            ) else {
+                Log.llm.warning("主动开场第 \(attempt + 1) 次输出与近期消息重复")
+                continue
+            }
             return message
         }
-        return Self.fallback(for: character, learner: learner, occasion: occasion)
+        Log.llm.warning("主动消息连续两次未通过校验，本轮不写入并保留稍后重试机会")
+        return nil
     }
 
     static func prompt(
         character: CharacterDTO,
         learner: LearnerContext,
         occasion: Occasion,
-        recentMessages: [MessageDTO]
+        recentMessages: [MessageDTO],
+        variationIndex: Int = 0
     ) -> String {
         let card = character.card
         let situation = switch occasion {
@@ -98,6 +134,7 @@ public struct ProactiveMessageService: Sendable {
         Stay in character, open a topic that supports the primary goal, and end with an approachable question. \
         Sound like a real friend, not a teacher. Do not explain vocabulary, \
         correct grammar, use markdown, add a speaker label, or say you are an AI.
+        \(RoleplayReplyDiversityPolicy.turnVariationDirective(variation: variationIndex))
         \(recent.isEmpty ? "" : "\nAvoid repeating these recent topics:\n\(recent)")
         """
     }
@@ -132,51 +169,4 @@ public struct ProactiveMessageService: Sendable {
         return value
     }
 
-    static func fallback(
-        for character: CharacterDTO,
-        learner: LearnerContext,
-        occasion: Occasion
-    ) -> String {
-        if [.kindergarten, .primary1, .primary2, .primary3].contains(learner.difficulty) {
-            return switch learner.goal {
-            case .travel:
-                "Hi! Let’s take a trip. Train or plane?"
-            case .school, .exam:
-                "Hi! What English word do you like?"
-            case .studyAbroad:
-                "Hi! Would you like a big school or a small school?"
-            case .work:
-                "Hi! What job do you like?"
-            case .culture:
-                "Hi! What food is special in your city?"
-            case .dailyConversation:
-                "Hi! How is your day: good or busy?"
-            }
-        }
-
-        let occupation = character.card.occupation
-        let englishOccupation = occupation.unicodeScalars.allSatisfy { $0.value < 128 }
-            ? occupation.trimmingCharacters(in: .whitespacesAndNewlines)
-            : ""
-        let shortOccupation = englishOccupation
-            .split(whereSeparator: \.isWhitespace)
-            .prefix(3)
-            .joined(separator: " ")
-
-        if !shortOccupation.isEmpty {
-            return switch occasion {
-            case .introduction:
-                "Being a \(shortOccupation) got interesting today. What job would you try?"
-            case .checkIn:
-                "Work got interesting today. What small thing made your day better?"
-            }
-        }
-
-        return switch occasion {
-        case .introduction:
-            "Hey, random question: what small part of your day do you really enjoy?"
-        case .checkIn:
-            "Hey, quick break here. What have you been enjoying lately?"
-        }
-    }
 }

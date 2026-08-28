@@ -30,7 +30,7 @@ struct ProactiveMessageServiceTests {
         )
     }
 
-    @Test("过长或超过两句的模型输出会交给短消息兜底")
+    @Test("明显过长或超过两句的模型输出会触发重写")
     func rejectsVerboseGeneratedMessage() {
         #expect(ProactiveMessageService.normalized(
             "Afternoon, Xiaoyu. I spent an hour shelving books and arguing with a customer about whether Orwell is overrated. Reckon that is a debate you would have an opinion on?"
@@ -40,12 +40,16 @@ struct ProactiveMessageServiceTests {
         ) != nil)
     }
 
-    @Test("模型失败时仍返回符合身份字段的英文话题")
-    func fallsBackWithoutCharacterHardcoding() async {
+    @Test("首次格式不合格时会让模型重写而不是立即使用兜底")
+    func retriesInvalidModelOutput() async {
+        let responses = ProactiveResponseSequence([
+            "This is far too long. It keeps going. It adds a third sentence.",
+            "Found a quiet cafe today. What's your ideal study spot?",
+        ])
         let llm = MockLLMProvider { _ in
-            throw NSError(domain: "test", code: 1)
+            await responses.next()
         }
-        let service = ProactiveMessageService(llm: llm)
+        let service = ProactiveMessageService(llm: llm, variationIndex: { 2 })
 
         let message = await service.generate(
             for: character(),
@@ -53,8 +57,25 @@ struct ProactiveMessageServiceTests {
             occasion: .introduction
         )
 
-        #expect(message.contains("street photographer"))
-        #expect(message.hasSuffix("?"))
+        #expect(message == "Found a quiet cafe today. What's your ideal study spot?")
+        let callCount = await responses.callCount
+        #expect(callCount == 2)
+    }
+
+    @Test("模型失败时不写入固定兜底并保留稍后重试机会")
+    func skipsMessageWhenModelFails() async {
+        let llm = MockLLMProvider { _ in
+            throw NSError(domain: "test", code: 1)
+        }
+        let service = ProactiveMessageService(llm: llm, variationIndex: { 0 })
+
+        let message = await service.generate(
+            for: character(),
+            learner: learner(),
+            occasion: .introduction
+        )
+
+        #expect(message == nil)
     }
 
     @Test("主动问候提示词包含角色身份、英语水平与去重上下文")
@@ -82,21 +103,6 @@ struct ProactiveMessageServiceTests {
         #expect(prompt.contains("Do not guilt"))
         #expect(prompt.contains("comprehension ceiling"))
         #expect(prompt.contains("6-14 words total"))
-    }
-
-    @Test("初学者的离线兜底同样保持短句与选择式问题")
-    func beginnerFallbackIsScaffolded() async {
-        let llm = MockLLMProvider { _ in
-            throw NSError(domain: "test", code: 1)
-        }
-        let service = ProactiveMessageService(llm: llm)
-        let message = await service.generate(
-            for: character(),
-            learner: LearnerContext(difficulty: .primary2, goal: .travel),
-            occasion: .introduction
-        )
-
-        #expect(message == "Hi! Let’s take a trip. Train or plane?")
     }
 
     private func learner() -> LearnerContext {
@@ -127,5 +133,20 @@ struct ProactiveMessageServiceTests {
             isFriend: true,
             metAt: .now
         )
+    }
+}
+
+private actor ProactiveResponseSequence {
+    private var responses: [String]
+    private(set) var callCount = 0
+
+    init(_ responses: [String]) {
+        self.responses = responses
+    }
+
+    func next() -> String {
+        callCount += 1
+        guard !responses.isEmpty else { return "" }
+        return responses.removeFirst()
     }
 }

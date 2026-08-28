@@ -159,7 +159,7 @@ struct RoleplayTypingPaceTests {
         #expect(long <= pace.maximumDelay)
     }
 
-    @Test("首条消息扣除模型已经显示输入指示的时间")
+    @Test("首条消息只部分扣除生成时间并保留可感知输入时长")
     func creditsGenerationTimeToFirstMessage() {
         let target = pace.delay(
             for: "you alright",
@@ -181,7 +181,7 @@ struct RoleplayTypingPaceTests {
         )
 
         #expect(partlyElapsed < target)
-        #expect(fullyElapsed == 0)
+        #expect(fullyElapsed == pace.minimumFirstMessageDelay)
     }
 
     @Test("后续气泡保留独立输入时间并限制随机范围")
@@ -202,5 +202,77 @@ struct RoleplayTypingPaceTests {
         #expect(fastVariation >= pace.minimumDelay)
         #expect(slowVariation <= pace.maximumDelay)
         #expect(slowVariation > fastVariation)
+    }
+}
+
+@Suite("角色文本回合交接")
+struct RoleplayTurnTakingPolicyTests {
+    private let policy = RoleplayTurnTakingPolicy.standard
+
+    @Test("未收尾和连续短消息会获得更长等待窗口")
+    func extendsLikelyOpenTurnsAndMessageBursts() {
+        let complete = policy.quietWindow(
+            after: "I'm home.",
+            consecutiveUserMessageCount: 1,
+            variation: 0.5
+        )
+        let openBurst = policy.quietWindow(
+            after: "and then",
+            consecutiveUserMessageCount: 3,
+            variation: 0.5
+        )
+
+        #expect(openBurst > complete)
+    }
+
+    @Test("随机量与极长消息不会突破策略上下限")
+    func clampsTimingInputs() {
+        let minimum = policy.quietWindow(
+            after: "Done.",
+            consecutiveUserMessageCount: 1,
+            variation: -20
+        )
+        let maximum = policy.quietWindow(
+            after: String(repeating: "still talking ", count: 100),
+            consecutiveUserMessageCount: 20,
+            variation: 20
+        )
+
+        #expect(minimum >= policy.minimumQuietWindow)
+        #expect(maximum <= policy.maximumQuietWindow)
+    }
+}
+
+@Suite("角色回复防复读")
+struct RoleplayReplyDiversityPolicyTests {
+    @Test("可识别跨多个气泡的逐字重复")
+    func detectsExactMultiBubbleReply() {
+        let recent = [
+            "Ha, sleep is a solid answer, mate.",
+            "Can't argue with that.",
+        ]
+
+        #expect(RoleplayReplyDiversityPolicy.isTooSimilar(
+            "Ha, sleep is a solid answer, mate. Can't argue with that.",
+            to: recent
+        ))
+    }
+
+    @Test("不同含义和措辞的自然回复不会被误判")
+    func allowsDistinctReply() {
+        let recent = ["Ha, sleep is a solid answer, mate."]
+
+        #expect(!RoleplayReplyDiversityPolicy.isTooSimilar(
+            "Honestly, mine is the first quiet coffee before work.",
+            to: recent
+        ))
+    }
+
+    @Test("每轮变化提示会随索引改变")
+    func variesTurnDirection() {
+        #expect(
+            RoleplayReplyDiversityPolicy.turnVariationDirective(variation: 0)
+                != RoleplayReplyDiversityPolicy.turnVariationDirective(variation: 1)
+        )
     }
 }

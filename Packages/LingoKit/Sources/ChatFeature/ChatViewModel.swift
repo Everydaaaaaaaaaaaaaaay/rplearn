@@ -22,8 +22,14 @@ public final class ChatViewModel {
     /// 助手正在生成或输入；空字符串显示输入指示，nil 表示当前没有回复。
     public private(set) var streamingText: String?
     public private(set) var isStreaming = false
+    /// 已收到用户消息，正在等用户把连续短消息说完；此阶段不显示“正在输入”。
+    public private(set) var isWaitingForUserBurst = false
     public var errorMessage: String?
     public var draft = ""
+
+    private var replyTask: Task<Void, Never>?
+    private var replyCycleID = UUID()
+    private var replyDeferralDeadline: TimeInterval?
 
     /// 本会话下一次出题的阈值（N=6±2，每次出题后重掷）。
     private var quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
@@ -107,15 +113,26 @@ public final class ChatViewModel {
 
     public func sendDraft() async {
         let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !text.isEmpty, !isStreaming else { return }
+        guard !text.isEmpty else { return }
         Haptics.impact(.light)
         draft = ""
         await send(userText: text)
     }
 
+    /// 输入框仍在编辑时，续期尚未开始的回复，让连续短消息有机会归入同一话轮。
+    public func noteDraftActivity() {
+        let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty, isWaitingForUserBurst else { return }
+        guard let deadline = replyDeferralDeadline else { return }
+
+        let remaining = deadline - ProcessInfo.processInfo.systemUptime
+        guard remaining > 0 else { return }
+        restartPendingReply(after: min(RoleplayTurnTakingPolicy.standard.draftActivityExtension, remaining))
+    }
+
     /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核。
     public func sendVoice(capture: VoiceRecorder.Capture) async {
-        guard let conversation, !isStreaming else { return }
+        guard let conversation else { return }
         let userMessage: MessageDTO
         let messageID = UUID()
         do {
@@ -150,7 +167,7 @@ public final class ChatViewModel {
         }
         runCoachReview(for: userMessage)
         runSpeechReview(for: userMessage)
-        await streamAssistantReply()
+        scheduleAssistantReply(after: capture.transcript)
     }
 
     /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
@@ -260,11 +277,11 @@ public final class ChatViewModel {
 
     /// 重试：删除中断的助手消息并按当前历史重新请求。
     public func retryInterrupted(messageID: UUID) async {
-        guard !isStreaming else { return }
+        guard !isStreaming, !isWaitingForUserBurst else { return }
         do {
             try await deps.chatStore.deleteMessage(messageID: messageID)
             await reloadMessages()
-            await streamAssistantReply()
+            scheduleAssistantReply(after: "", preferredDelay: 0.45)
         } catch {
             errorMessage = "重试失败：\(error.localizedDescription)"
         }
@@ -287,7 +304,7 @@ public final class ChatViewModel {
         }
         // 教练审核与主链路并行，互不阻塞。
         runCoachReview(for: userMessage)
-        await streamAssistantReply()
+        scheduleAssistantReply(after: userText)
     }
 
     /// 后台教练审核：结果写 coachReviewJSON；超时/失败静默放弃。
@@ -311,32 +328,87 @@ public final class ChatViewModel {
         )
     }
 
-    private func streamAssistantReply() async {
-        guard let conversation else { return }
+    private func scheduleAssistantReply(
+        after latestUserText: String,
+        preferredDelay: TimeInterval? = nil
+    ) {
+        replyTask?.cancel()
+        let now = ProcessInfo.processInfo.systemUptime
+        replyDeferralDeadline = now + RoleplayTurnTakingPolicy.standard.maximumDeferralAfterLatestMessage
+
+        let consecutiveUserMessages = messages.reversed().prefix { $0.role == .user }.count
+        let delay = preferredDelay ?? RoleplayTurnTakingPolicy.standard.quietWindow(
+            after: latestUserText,
+            consecutiveUserMessageCount: consecutiveUserMessages,
+            variation: Double.random(in: 0...1)
+        )
+        restartPendingReply(after: delay)
+    }
+
+    private func restartPendingReply(after delay: TimeInterval) {
+        replyTask?.cancel()
+        replyCycleID = UUID()
+        let cycleID = replyCycleID
+        isWaitingForUserBurst = true
+        isStreaming = false
+        streamingText = nil
+        errorMessage = nil
+
+        replyTask = Task { [weak self] in
+            do {
+                try await Task.sleep(for: .milliseconds(Int((max(0, delay) * 1_000).rounded())))
+                try Task.checkCancellation()
+            } catch {
+                return
+            }
+            await self?.streamAssistantReply(cycleID: cycleID)
+        }
+    }
+
+    private func streamAssistantReply(cycleID: UUID) async {
+        guard let conversation, cycleID == replyCycleID, !Task.isCancelled else { return }
+        isWaitingForUserBurst = false
         isStreaming = true
         streamingText = ""
         errorMessage = nil
         let typingBeganAt = ProcessInfo.processInfo.systemUptime
         defer {
-            isStreaming = false
-            streamingText = nil
+            if cycleID == replyCycleID {
+                isWaitingForUserBurst = false
+                isStreaming = false
+                streamingText = nil
+                replyDeferralDeadline = nil
+                replyTask = nil
+            }
         }
 
         let memoryService = self.memoryService
         let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
-        let request = await makeRoleplayRequest(
+        var request = await makeRoleplayRequest(
             quizRequested: quizRequested,
             voiceMode: false
         )
+        request.system = Self.appendingSystemInstruction(
+            RoleplayReplyDiversityPolicy.turnVariationDirective(
+                variation: Int.random(in: 0..<10_000)
+            ),
+            to: request.system
+        )
+        guard cycleID == replyCycleID, !Task.isCancelled else { return }
 
         var accumulated = ""
         do {
             for try await event in await deps.llm.stream(request) {
+                try Task.checkCancellation()
+                guard cycleID == replyCycleID else { throw CancellationError() }
                 if case .textDelta(let delta) = event {
                     accumulated += delta
                 }
             }
+        } catch is CancellationError {
+            return
         } catch {
+            guard cycleID == replyCycleID else { return }
             Log.llm.error("流式回复失败：\(error)")
             if accumulated.isEmpty {
                 errorMessage = error.localizedDescription
@@ -352,15 +424,55 @@ public final class ChatViewModel {
             return
         }
 
+        let recentAssistantReplies = messages
+            .filter { $0.role == .assistant }
+            .suffix(12)
+            .map(\.text)
+        let firstReplyText = quizRequested
+            ? QuizService.extract(from: accumulated).0
+            : accumulated
+        if RoleplayReplyDiversityPolicy.isTooSimilar(
+            firstReplyText,
+            to: recentAssistantReplies
+        ) {
+            var retryRequest = request
+            retryRequest.system = Self.appendingSystemInstruction(
+                RoleplayReplyDiversityPolicy.regenerationDirective(
+                    avoiding: recentAssistantReplies
+                ),
+                to: retryRequest.system
+            )
+            var regenerated = ""
+            do {
+                for try await event in await deps.llm.stream(retryRequest) {
+                    try Task.checkCancellation()
+                    guard cycleID == replyCycleID else { throw CancellationError() }
+                    if case .textDelta(let delta) = event {
+                        regenerated += delta
+                    }
+                }
+                if !regenerated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    accumulated = regenerated
+                }
+            } catch is CancellationError {
+                return
+            } catch {
+                // 首个候选仍然是完整模型输出；去重重试失败时保留它，避免吞掉回复。
+                Log.llm.warning("角色回复去重重试失败，保留首个候选：\(error)")
+            }
+        }
+
         // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
         let (replyText, quiz) = quizRequested
             ? QuizService.extract(from: accumulated)
             : (accumulated, nil)
+        guard cycleID == replyCycleID, !Task.isCancelled else { return }
         do {
             let assistantMessages = try await deliverAssistantReply(
                 conversationID: conversation.id,
                 text: replyText,
-                elapsedSinceTypingBegan: ProcessInfo.processInfo.systemUptime - typingBeganAt
+                elapsedSinceTypingBegan: ProcessInfo.processInfo.systemUptime - typingBeganAt,
+                cycleID: cycleID
             )
             if let assistantMessage = assistantMessages.last,
                let quiz,
@@ -381,24 +493,40 @@ public final class ChatViewModel {
             Task(priority: .utility) {
                 await memoryService.compressIfNeeded(conversationID: conversationID, characterName: characterName)
             }
+        } catch is CancellationError {
+            return
         } catch {
+            guard cycleID == replyCycleID else { return }
             Log.app.error("角色回复逐条保存失败：\(error)")
             errorMessage = "回复保存失败：\(error.localizedDescription)"
         }
         await reloadMessages()
     }
 
+    private static func appendingSystemInstruction(
+        _ instruction: String,
+        to system: String?
+    ) -> String {
+        [system, instruction]
+            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+            .joined(separator: "\n\n")
+    }
+
     /// 生成完成后仍保持输入指示，并依据每条文本长度逐条显示气泡。
     private func deliverAssistantReply(
         conversationID: UUID,
         text: String,
-        elapsedSinceTypingBegan: TimeInterval
+        elapsedSinceTypingBegan: TimeInterval,
+        cycleID: UUID
     ) async throws -> [MessageDTO] {
         let texts = RoleplayReplyFormatter.messages(from: text)
         var delivered: [MessageDTO] = []
         delivered.reserveCapacity(texts.count)
 
         for (index, text) in texts.enumerated() {
+            try Task.checkCancellation()
+            guard cycleID == replyCycleID else { throw CancellationError() }
             let delay = RoleplayTypingPace.standard.delay(
                 for: text,
                 messageIndex: index,
@@ -407,9 +535,10 @@ public final class ChatViewModel {
             )
             let milliseconds = Int((delay * 1_000).rounded())
             if milliseconds > 0 {
-                // 取消时立即结束等待，随后仍保存已经生成的回复，避免长语音/文本被吞掉。
-                try? await Task.sleep(for: .milliseconds(milliseconds))
+                try await Task.sleep(for: .milliseconds(milliseconds))
             }
+            try Task.checkCancellation()
+            guard cycleID == replyCycleID else { throw CancellationError() }
 
             let message = try await deps.chatStore.appendAssistantReplyPart(
                 conversationID: conversationID,

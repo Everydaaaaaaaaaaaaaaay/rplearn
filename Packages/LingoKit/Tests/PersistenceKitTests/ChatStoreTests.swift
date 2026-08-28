@@ -61,6 +61,21 @@ struct ChatStoreTests {
         #expect(!(try await chat.needsInitialMessage(characterID: characterID)))
     }
 
+    @Test("重新开场仍可读取归档会话中的近期话题")
+    func recentMessagesIncludeArchivedConversation() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        _ = try await chat.appendInitialMessageIfNeeded(
+            characterID: characterID,
+            text: "What kind of music do you enjoy?"
+        )
+        try await chat.archiveConversations(characterID: characterID)
+
+        #expect(try await chat.needsInitialMessage(characterID: characterID))
+        let recent = try await chat.recentMessages(characterID: characterID)
+        #expect(recent.map(\.text) == ["What kind of music do you enjoy?"])
+    }
+
     @Test("到期主动消息按事件编号幂等写入")
     func proactiveMessageIsIdempotent() async throws {
         let (chat, roster) = try makeStores()

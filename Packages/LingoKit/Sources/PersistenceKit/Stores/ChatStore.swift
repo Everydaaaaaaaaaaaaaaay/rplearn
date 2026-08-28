@@ -45,6 +45,25 @@ public actor ChatStore {
             .map(dto(from:))
     }
 
+    /// 读取角色跨当前与归档会话的近期消息，供重新开场时避免重复旧话题。
+    public func recentMessages(characterID: UUID, limit: Int = 16) throws -> [MessageDTO] {
+        guard let character = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
+        ).first else {
+            throw ChatError.characterNotFound
+        }
+        return character.conversations
+            .flatMap(\.messages)
+            .sorted {
+                if $0.createdAt == $1.createdAt {
+                    return $0.orderIndex < $1.orderIndex
+                }
+                return $0.createdAt < $1.createdAt
+            }
+            .suffix(max(0, limit))
+            .map(dto(from:))
+    }
+
     /// 角色是否还没有任何聊天内容。供“结识后主动开场”在生成文案前快速判断。
     public func needsInitialMessage(characterID: UUID) throws -> Bool {
         guard let character = try modelContext.fetch(
