@@ -94,4 +94,13 @@ struct RosterStoreTests {
         try await store.setFavorite(characterID: id, isFavorite: false)
         #expect(try await store.character(id: id)?.isFavorite == false)
     }
+
+    @Test("特别关心保存失败时返回明确错误")
+    func favoriteSaveFailure() async throws {
+        let store = try makeStore()
+
+        await #expect(throws: RosterStore.RosterError.characterNotFound) {
+            try await store.setFavorite(characterID: UUID(), isFavorite: true)
+        }
+    }
 }

@@ -626,6 +626,8 @@ private struct EncounterCardSheet: View {
     @State private var isFriend = false
     @State private var hasRevealed = false
     @State private var wordSelection: TokenSelection?
+    @State private var friendSlotsOccupied: Int?
+    @State private var friendSlotLimit: Int?
 
     private var card: CharacterCard { presentation.character.card }
     private var tint: Color { presentation.activity.category.tint }
@@ -656,12 +658,22 @@ private struct EncounterCardSheet: View {
                     )
                 }
 
+                if let friendCapacityText {
+                    Label(friendCapacityText, systemImage: "person.2")
+                        .font(.footnote)
+                        .fontWeight(isFriendSlotNearLimit ? .semibold : .regular)
+                        .foregroundStyle(isFriendSlotFull ? Color.dsDanger : Color.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .monospacedDigit()
+                        .accessibilityLabel(friendCapacityAccessibilityLabel)
+                }
+
                 HStack(spacing: DSSpacing.sm) {
                     Button("开始聊天") { showChat = true }
                         .buttonStyle(.dsAction(.tinted(tint)))
-                    Button(isFriend ? "已加好友" : "加为好友") { addFriend() }
+                    Button(friendButtonTitle) { addFriend() }
                         .buttonStyle(.dsAction(.secondary))
-                        .disabled(isFriend)
+                        .disabled(isFriend || isFriendSlotFull)
                 }
 
                 Button("先告别", role: .cancel) { leave() }
@@ -697,6 +709,7 @@ private struct EncounterCardSheet: View {
                 hasRevealed = true
             }
         }
+        .task { await loadFriendCapacity() }
         .fullScreenCover(isPresented: $showChat) {
             NavigationStack {
                 chatBuilder(presentation.character)
@@ -816,6 +829,48 @@ private struct EncounterCardSheet: View {
         }
     }
 
+    private var isFriendSlotFull: Bool {
+        guard let friendSlotsOccupied, let friendSlotLimit else { return false }
+        return friendSlotsOccupied >= friendSlotLimit
+    }
+
+    private var isFriendSlotNearLimit: Bool {
+        guard let friendSlotsOccupied, let friendSlotLimit, friendSlotLimit > 0 else {
+            return false
+        }
+        return Double(friendSlotsOccupied) / Double(friendSlotLimit) >= 0.8
+    }
+
+    private var friendButtonTitle: String {
+        if isFriend { return "已加好友" }
+        return isFriendSlotFull ? "好友位已满" : "加为好友"
+    }
+
+    private var friendCapacityText: String? {
+        guard let friendSlotsOccupied, let friendSlotLimit else { return nil }
+        if isFriend {
+            return "好友位 \(friendSlotsOccupied)/\(friendSlotLimit)"
+        }
+        let remainingAfterAdding = max(friendSlotLimit - friendSlotsOccupied - 1, 0)
+        return isFriendSlotFull
+            ? "好友位 \(friendSlotsOccupied)/\(friendSlotLimit) · 已满"
+            : "好友位 \(friendSlotsOccupied)/\(friendSlotLimit) · 添加后剩余 \(remainingAfterAdding) 个"
+    }
+
+    private var friendCapacityAccessibilityLabel: String {
+        guard let friendSlotsOccupied, let friendSlotLimit else { return "" }
+        let remaining = max(friendSlotLimit - friendSlotsOccupied, 0)
+        return "好友位已使用 \(friendSlotsOccupied) 个，共 \(friendSlotLimit) 个，还可添加 \(remaining) 位好友"
+    }
+
+    private func loadFriendCapacity() async {
+        async let loadedProfile = try? deps.economyStore.profile()
+        async let loadedSlots = try? deps.rosterStore.occupiedFriendSlots()
+        let profile = await loadedProfile
+        friendSlotLimit = profile?.friendSlotLimit
+        friendSlotsOccupied = await loadedSlots
+    }
+
     private func addFriend() {
         Task {
             do {
@@ -825,9 +880,17 @@ private struct EncounterCardSheet: View {
                     slotLimit: profile.friendSlotLimit
                 )
                 isFriend = true
+                friendSlotLimit = profile.friendSlotLimit
+                friendSlotsOccupied = min(
+                    (friendSlotsOccupied ?? 0) + 1,
+                    profile.friendSlotLimit
+                )
                 Haptics.notify(.success)
                 friendMessage = "已加入好友，以后随时可以在消息里找到 TA"
             } catch RosterStore.RosterError.friendSlotsFull {
+                if let friendSlotLimit {
+                    friendSlotsOccupied = friendSlotLimit
+                }
                 Haptics.notify(.warning)
                 friendMessage = "好友位已满"
             } catch {

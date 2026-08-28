@@ -2,6 +2,11 @@ import CoreKit
 import Foundation
 import SwiftData
 
+public extension Notification.Name {
+    /// 特别关心状态完成持久化后发送；object 为角色 UUID，userInfo 包含 isFavorite。
+    static let rosterFavoriteDidChange = Notification.Name("LingoTripRosterFavoriteDidChange")
+}
+
 /// 角色名册仓库：主角色导入、角色查询、好友管理。所有写操作经此 actor。
 @ModelActor
 public actor RosterStore {
@@ -185,6 +190,13 @@ public actor RosterStore {
         entity.isFavorite = isFavorite
         try journal(entity)
         try modelContext.save()
+        Task { @MainActor in
+            NotificationCenter.default.post(
+                name: .rosterFavoriteDidChange,
+                object: characterID,
+                userInfo: ["isFavorite": isFavorite]
+            )
+        }
     }
 
     // MARK: - 私有
