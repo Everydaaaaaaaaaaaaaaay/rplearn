@@ -179,5 +179,7 @@ lingotrip_xcodebuild() {
     PROVISIONING_PROFILE_SPECIFIER="" \
     COMPILER_INDEX_STORE_ENABLE="${LINGOTRIP_INDEX_STORE_ENABLE:-NO}" \
     -quiet \
+    -disableAutomaticPackageResolution \
+    -onlyUsePackageVersionsFromResolvedFile \
     "$@"
 }
