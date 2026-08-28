@@ -27,7 +27,7 @@ public struct PlacementDependencies: Sendable {
 /// 依据答案动态控制在 14–20 题的自适应校准。
 /// 测评过程中不显示对错、不允许回退，避免后续答案被提示影响。
 public struct PlacementTestView: View {
-    private enum Phase {
+    private enum Phase: Equatable {
         case loading
         case introduction
         case question
@@ -47,6 +47,10 @@ public struct PlacementTestView: View {
     @State private var selectedOriginalIndex: Int?
     @State private var listeningPlayCount = 0
     @State private var result: PlacementResult?
+    @State private var currentLevel: DifficultyLevel = .junior3
+    @State private var selectedLevel: DifficultyLevel = .junior3
+    @State private var showsLevelPicker = false
+    @State private var questionBankError: String?
     @State private var isApplying = false
     @State private var errorMessage: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -92,6 +96,13 @@ public struct PlacementTestView: View {
         .task { await prepareIfNeeded() }
         .onDisappear {
             Task { await deps.speech.stopSpeaking() }
+        }
+        .sheet(isPresented: $showsLevelPicker) {
+            DifficultyLevelPicker(
+                selection: $selectedLevel,
+                currentLevel: currentLevel,
+                recommendedLevel: phase == .result ? result?.difficultyLevel : nil
+            )
         }
         .interactiveDismissDisabled(phase == .question || isApplying)
     }
@@ -144,13 +155,47 @@ public struct PlacementTestView: View {
                 HStack(alignment: .top, spacing: DSSpacing.md) {
                     BrandMascotView(pose: .guide, size: 54, showsShadow: false)
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("答几道题，聊得更合拍")
+                        Text("选择或测一测，聊得更合拍")
                             .font(.system(.title2, design: .rounded, weight: .bold))
-                        Text("题目会根据你的答案自动变难或变简单。")
+                        Text("直接选择当前水平，或通过短测获得建议。")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
                     Spacer(minLength: 0)
+                }
+
+                levelSelectionButton(
+                    title: "直接选择英语水平",
+                    detail: "无需答题，也可以随时重新修改。",
+                    recommendedLevel: nil
+                )
+
+                if let errorMessage {
+                    Text(errorMessage)
+                        .font(.caption)
+                        .foregroundStyle(Color.dsDanger)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                Button {
+                    applySelectedLevel(testResult: nil)
+                } label: {
+                    if isApplying {
+                        ProgressView().tint(.white)
+                    } else {
+                        Text("应用 \(selectedLevel.displayName)")
+                    }
+                }
+                .buttonStyle(.dsActionPrimary)
+                .disabled(isApplying)
+
+                HStack(spacing: DSSpacing.sm) {
+                    Divider()
+                    Text("或者通过测试获取建议")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize()
+                    Divider()
                 }
 
                 VStack(spacing: 0) {
@@ -174,6 +219,13 @@ public struct PlacementTestView: View {
                 }
                 .dsSurface(.grouped, padding: 0)
 
+                if let questionBankError {
+                    Label(questionBankError, systemImage: "exclamationmark.triangle")
+                        .font(.caption)
+                        .foregroundStyle(Color.dsSunset)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
                 VStack(alignment: .leading, spacing: DSSpacing.xs) {
                     Label("凭第一感觉作答即可", systemImage: "lightbulb")
                         .font(.subheadline.weight(.semibold))
@@ -184,10 +236,11 @@ public struct PlacementTestView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                Button("开始校准") {
+                Button("开始水平测试") {
                     start()
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(.dsAction(.secondary))
+                .disabled(engine == nil || isApplying)
             }
             .frame(maxWidth: 560)
             .padding(DSSpacing.lg)
@@ -262,36 +315,47 @@ public struct PlacementTestView: View {
     }
 
     private func listeningCard(_ question: PlacementQuestion) -> some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+        let canPlay = PlacementListeningPolicy.canPlay(currentCount: listeningPlayCount)
+        let remaining = PlacementListeningPolicy.remainingPlayCount(after: listeningPlayCount)
+        return VStack(alignment: .leading, spacing: DSSpacing.sm) {
             Button {
                 playListeningQuestion(question)
             } label: {
                 HStack(spacing: DSSpacing.sm) {
                     Image(
-                        systemName: listeningPlayCount == 0
-                            ? "play.circle.fill"
-                            : "speaker.wave.2.circle.fill"
+                        systemName: !canPlay
+                            ? "speaker.slash.circle.fill"
+                            : listeningPlayCount == 0
+                                ? "play.circle.fill"
+                                : "speaker.wave.2.circle.fill"
                     )
                     .font(.title2)
-                    Text(listeningPlayCount == 0 ? "播放音频" : "再听一次")
+                    Text(
+                        !canPlay
+                            ? "已达到播放上限"
+                            : listeningPlayCount == 0 ? "播放音频" : "再听一次"
+                    )
                         .font(.headline)
                     Spacer()
-                    if listeningPlayCount > 0 {
-                        Text("已播放 \(listeningPlayCount) 次")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text("\(listeningPlayCount) / \(PlacementListeningPolicy.maximumPlayCount)")
+                        .font(.caption.monospacedDigit())
+                        .foregroundStyle(.secondary)
                 }
                 .foregroundStyle(Color.dsSkyDeep)
                 .frame(maxWidth: .infinity, minHeight: 48)
             }
             .buttonStyle(.plain)
-            .accessibilityHint("播放后即可选择答案")
+            .disabled(!canPlay)
+            .accessibilityLabel(canPlay ? "播放听力音频" : "听力音频播放次数已用完")
+            .accessibilityValue("已播放 \(listeningPlayCount) 次，最多 3 次")
+            .accessibilityHint(canPlay ? "播放后即可选择答案，还可播放 \(remaining) 次" : "请根据已听内容作答")
 
             Text(
                 listeningPlayCount == 0
-                    ? "先听音频，再根据内容作答。"
-                    : "需要时可以重听；音频文本不会显示。"
+                    ? "先听音频，再根据内容作答；每题最多播放 3 次。"
+                    : canPlay
+                        ? "还可播放 \(remaining) 次；音频文本不会显示。"
+                        : "本题播放次数已用完，请根据已听内容作答。"
             )
             .font(.caption)
             .foregroundStyle(.secondary)
@@ -312,7 +376,7 @@ public struct PlacementTestView: View {
                             .foregroundStyle(Color.dsSkyDeep)
                         Text(result.difficultyLevel.displayName)
                             .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                        Text("完成 \(result.answeredCount) 道 · 建议的角色对话难度")
+                        Text("完成 \(result.answeredCount) 道 · 测试建议水平")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -376,10 +440,18 @@ public struct PlacementTestView: View {
                     }
                     .dsSurface(.grouped, padding: DSSpacing.lg)
 
+                    levelSelectionButton(
+                        title: "最终应用水平",
+                        detail: selectedLevel == result.difficultyLevel
+                            ? "当前采用测试建议；你也可以自由选择其他水平。"
+                            : "你选择了不同于测试建议的水平。",
+                        recommendedLevel: result.difficultyLevel
+                    )
+
                     Text(
                         "年级结果表示人教版一年级起点教材的学习进度估计；四六级结果表示相近学习难度。"
                             + "这是用于调整学习内容的短测，不代表通过任何官方考试。"
-                            + "区间较宽或稳定度有限时，应用会保守设置难度，你也可以稍后重新校准。"
+                            + "测试结果只是建议，最终应用哪个水平由你决定，也可以稍后再次修改。"
                     )
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -392,12 +464,12 @@ public struct PlacementTestView: View {
                     }
 
                     Button {
-                        applyResult(result)
+                        applySelectedLevel(testResult: result)
                     } label: {
                         if isApplying {
                             ProgressView().tint(.white)
                         } else {
-                            Text("应用这个水平")
+                            Text("应用 \(selectedLevel.displayName)")
                         }
                     }
                     .buttonStyle(.dsActionPrimary)
@@ -417,7 +489,7 @@ public struct PlacementTestView: View {
             Image(systemName: "exclamationmark.triangle")
                 .font(.largeTitle)
                 .foregroundStyle(Color.dsSunset)
-            Text("题目暂时无法载入")
+            Text("校准页暂时无法载入")
                 .font(.title3.bold())
             Text(errorMessage ?? "请稍后再试。")
                 .font(.subheadline)
@@ -450,6 +522,59 @@ public struct PlacementTestView: View {
             Spacer()
         }
         .padding(DSSpacing.sm)
+    }
+
+    private func levelSelectionButton(
+        title: String,
+        detail: String,
+        recommendedLevel: DifficultyLevel?
+    ) -> some View {
+        Button {
+            showsLevelPicker = true
+        } label: {
+            HStack(spacing: DSSpacing.md) {
+                Image(systemName: "gauge.with.dots.needle.33percent")
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(Color.dsSkyDeep)
+                    .frame(width: 42, height: 42)
+                    .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 11))
+
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(selectedLevel.displayName)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                    Text(detail)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: DSSpacing.xs)
+                VStack(alignment: .trailing, spacing: 5) {
+                    if recommendedLevel == selectedLevel {
+                        Text("测试建议")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Color.dsSkyDeep)
+                    }
+                    Image(systemName: "chevron.right")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+            }
+            .padding(DSSpacing.md)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: DSRadius.card))
+            .overlay {
+                RoundedRectangle(cornerRadius: DSRadius.card)
+                    .stroke(Color.dsBorder, lineWidth: 1)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(title)，当前选择 \(selectedLevel.displayName)")
+        .accessibilityHint("打开全部英语水平列表")
     }
 
     private func optionButton(
@@ -514,20 +639,28 @@ public struct PlacementTestView: View {
         if force {
             questions = []
             engine = nil
+            questionBankError = nil
             phase = .loading
         }
         do {
-            async let loadedProfile = deps.economyStore.profile()
-            let loadedQuestions = try PlacementQuestionBank.load(from: deps.questionBankURL)
-            let profile = try await loadedProfile
-            questions = loadedQuestions
-            engine = AdaptivePlacementEngine(priorLevel: profile.difficultyLevel)
+            let profile = try await deps.economyStore.profile()
+            currentLevel = profile.difficultyLevel
+            selectedLevel = profile.difficultyLevel
+            do {
+                questions = try PlacementQuestionBank.load(from: deps.questionBankURL)
+                engine = AdaptivePlacementEngine(priorLevel: profile.difficultyLevel)
+                questionBankError = nil
+            } catch {
+                questions = []
+                engine = nil
+                questionBankError = "测试题库暂时无法载入，你仍可直接选择并应用水平。"
+            }
             errorMessage = nil
             withAnimation(reduceMotion ? nil : .snappy) {
                 phase = .introduction
             }
         } catch {
-            errorMessage = "随包题库校验失败，请重新安装或更新 App。"
+            errorMessage = "学习档案暂时无法载入，请稍后再试。"
             phase = .failure
         }
     }
@@ -564,6 +697,7 @@ public struct PlacementTestView: View {
                 || updatedEngine.nextQuestion(in: questions) == nil
             {
                 result = updatedEngine.result()
+                selectedLevel = result?.difficultyLevel ?? currentLevel
                 await deps.speech.stopSpeaking()
                 withAnimation(reduceMotion ? nil : .snappy) {
                     phase = .result
@@ -581,7 +715,8 @@ public struct PlacementTestView: View {
     }
 
     private func playListeningQuestion(_ question: PlacementQuestion) {
-        guard let audioText = question.audioText,
+        guard PlacementListeningPolicy.canPlay(currentCount: listeningPlayCount),
+              let audioText = question.audioText,
               let audioLanguage = question.audioLanguage
         else { return }
         listeningPlayCount += 1
@@ -591,23 +726,28 @@ public struct PlacementTestView: View {
         }
     }
 
-    private func applyResult(_ result: PlacementResult) {
+    private func applySelectedLevel(testResult: PlacementResult?) {
+        let level = selectedLevel
         isApplying = true
         errorMessage = nil
         Task {
             do {
                 let updated = try await deps.profileCommands.updateProfile { profile in
-                    profile.difficultyLevel = result.difficultyLevel
-                    profile.proficiencySource = .placement
-                    profile.placementScore = result.score
-                    profile.placementCompletedAt = .now
+                    profile.difficultyLevel = level
+                    profile.proficiencySource = testResult?.difficultyLevel == level
+                        ? .placement
+                        : .selfReported
+                    if let testResult {
+                        profile.placementScore = testResult.score
+                        profile.placementCompletedAt = .now
+                    }
                 }
                 isApplying = false
                 Haptics.notify(.success)
                 onComplete(updated)
             } catch {
                 isApplying = false
-                errorMessage = "校准结果暂时保存失败，请再试一次。"
+                errorMessage = "所选英语水平暂时保存失败，请再试一次。"
             }
         }
     }
@@ -624,5 +764,81 @@ public struct PlacementTestView: View {
     private func optionLetter(for originalIndex: Int) -> String {
         guard let presentedIndex = optionOrder.firstIndex(of: originalIndex) else { return "" }
         return String(UnicodeScalar(65 + presentedIndex)!)
+    }
+}
+
+private struct DifficultyLevelPicker: View {
+    @Binding var selection: DifficultyLevel
+    let currentLevel: DifficultyLevel
+    let recommendedLevel: DifficultyLevel?
+    @Environment(\.dismiss) private var dismiss
+
+    private let groups: [(String, [DifficultyLevel])] = [
+        ("启蒙", [.kindergarten]),
+        ("小学", [.primary1, .primary2, .primary3, .primary4, .primary5, .primary6]),
+        ("初中", [.junior1, .junior2, .junior3]),
+        ("高中", [.senior1, .senior2, .senior3]),
+        ("大学与进阶", [.undergraduate, .postgraduate, .advanced]),
+    ]
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    Text("请选择最适合当前学习内容的难度。测试建议仅供参考，之后仍可修改。")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                ForEach(groups, id: \.0) { title, levels in
+                    Section(title) {
+                        ForEach(levels, id: \.rawValue) { level in
+                            Button {
+                                selection = level
+                                Haptics.impact(.light)
+                            } label: {
+                                HStack(spacing: DSSpacing.sm) {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(level.displayName)
+                                            .foregroundStyle(.primary)
+                                        Text(level.cseReference)
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                    if level == currentLevel {
+                                        Text("当前")
+                                            .font(.caption2.weight(.semibold))
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    if level == recommendedLevel {
+                                        Text("建议")
+                                            .font(.caption2.weight(.semibold))
+                                            .foregroundStyle(Color.dsSkyDeep)
+                                    }
+                                    if level == selection {
+                                        Image(systemName: "checkmark")
+                                            .font(.body.weight(.semibold))
+                                            .foregroundStyle(Color.dsSky)
+                                    }
+                                }
+                                .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(level == selection ? .isSelected : [])
+                        }
+                    }
+                }
+            }
+            .navigationTitle("选择英语水平")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("完成") { dismiss() }
+                }
+            }
+        }
+        .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
     }
 }

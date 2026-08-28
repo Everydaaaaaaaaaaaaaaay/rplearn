@@ -272,7 +272,7 @@ public struct MyPageView: View {
                     Text(
                         profile?.proficiencySource == .placement
                             ? "已通过答题校准"
-                            : "当前使用自评水平"
+                            : "当前使用自选水平"
                     )
                     .font(.caption)
                     .foregroundStyle(.secondary)
