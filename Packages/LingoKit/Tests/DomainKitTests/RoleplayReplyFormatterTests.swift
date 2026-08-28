@@ -242,3 +242,37 @@ struct RoleplayTurnTakingPolicyTests {
         #expect(maximum <= policy.maximumQuietWindow)
     }
 }
+
+@Suite("角色回复防复读")
+struct RoleplayReplyDiversityPolicyTests {
+    @Test("可识别跨多个气泡的逐字重复")
+    func detectsExactMultiBubbleReply() {
+        let recent = [
+            "Ha, sleep is a solid answer, mate.",
+            "Can't argue with that.",
+        ]
+
+        #expect(RoleplayReplyDiversityPolicy.isTooSimilar(
+            "Ha, sleep is a solid answer, mate. Can't argue with that.",
+            to: recent
+        ))
+    }
+
+    @Test("不同含义和措辞的自然回复不会被误判")
+    func allowsDistinctReply() {
+        let recent = ["Ha, sleep is a solid answer, mate."]
+
+        #expect(!RoleplayReplyDiversityPolicy.isTooSimilar(
+            "Honestly, mine is the first quiet coffee before work.",
+            to: recent
+        ))
+    }
+
+    @Test("每轮变化提示会随索引改变")
+    func variesTurnDirection() {
+        #expect(
+            RoleplayReplyDiversityPolicy.turnVariationDirective(variation: 0)
+                != RoleplayReplyDiversityPolicy.turnVariationDirective(variation: 1)
+        )
+    }
+}

@@ -384,9 +384,15 @@ public final class ChatViewModel {
 
         let memoryService = self.memoryService
         let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
-        let request = await makeRoleplayRequest(
+        var request = await makeRoleplayRequest(
             quizRequested: quizRequested,
             voiceMode: false
+        )
+        request.system = Self.appendingSystemInstruction(
+            RoleplayReplyDiversityPolicy.turnVariationDirective(
+                variation: Int.random(in: 0..<10_000)
+            ),
+            to: request.system
         )
         guard cycleID == replyCycleID, !Task.isCancelled else { return }
 
@@ -416,6 +422,44 @@ public final class ChatViewModel {
             }
             await reloadMessages()
             return
+        }
+
+        let recentAssistantReplies = messages
+            .filter { $0.role == .assistant }
+            .suffix(12)
+            .map(\.text)
+        let firstReplyText = quizRequested
+            ? QuizService.extract(from: accumulated).0
+            : accumulated
+        if RoleplayReplyDiversityPolicy.isTooSimilar(
+            firstReplyText,
+            to: recentAssistantReplies
+        ) {
+            var retryRequest = request
+            retryRequest.system = Self.appendingSystemInstruction(
+                RoleplayReplyDiversityPolicy.regenerationDirective(
+                    avoiding: recentAssistantReplies
+                ),
+                to: retryRequest.system
+            )
+            var regenerated = ""
+            do {
+                for try await event in await deps.llm.stream(retryRequest) {
+                    try Task.checkCancellation()
+                    guard cycleID == replyCycleID else { throw CancellationError() }
+                    if case .textDelta(let delta) = event {
+                        regenerated += delta
+                    }
+                }
+                if !regenerated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    accumulated = regenerated
+                }
+            } catch is CancellationError {
+                return
+            } catch {
+                // 首个候选仍然是完整模型输出；去重重试失败时保留它，避免吞掉回复。
+                Log.llm.warning("角色回复去重重试失败，保留首个候选：\(error)")
+            }
         }
 
         // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
@@ -457,6 +501,16 @@ public final class ChatViewModel {
             errorMessage = "回复保存失败：\(error.localizedDescription)"
         }
         await reloadMessages()
+    }
+
+    private static func appendingSystemInstruction(
+        _ instruction: String,
+        to system: String?
+    ) -> String {
+        [system, instruction]
+            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+            .joined(separator: "\n\n")
     }
 
     /// 生成完成后仍保持输入指示，并依据每条文本长度逐条显示气泡。

@@ -132,11 +132,15 @@ final class ProactiveMessageCoordinator {
             guard (try? await chatStore.needsInitialMessage(characterID: character.id)) == true else {
                 continue
             }
-            let text = await messageService.generate(
+            let recentMessages = (try? await chatStore.recentMessages(
+                characterID: character.id
+            )) ?? []
+            guard let text = await messageService.generate(
                 for: character,
                 learner: learner,
-                occasion: .introduction
-            )
+                occasion: .introduction,
+                recentMessages: recentMessages
+            ) else { continue }
             if (try? await chatStore.appendInitialMessageIfNeeded(
                 characterID: character.id,
                 text: text
@@ -207,12 +211,12 @@ final class ProactiveMessageCoordinator {
             let candidates = friends.filter { $0.id != previousCharacterID }
             guard let character = (candidates.isEmpty ? friends : candidates).randomElement() else { break }
             let recentMessages = await recentMessages(for: character.id)
-            let text = await messageService.generate(
+            guard let text = await messageService.generate(
                 for: character,
                 learner: learner,
                 occasion: .checkIn,
                 recentMessages: recentMessages
-            )
+            ) else { break }
             pending.append(
                 PendingMessage(
                     id: UUID(),
