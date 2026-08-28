@@ -1,6 +1,13 @@
 import SwiftUI
 import UIKit
 
+public enum MessageBubbleGroupPosition: Sendable, Equatable {
+    case single
+    case first
+    case middle
+    case last
+}
+
 /// 聊天气泡（纯 UI）。内容由外部提供，供聊天页与剧情聊天皮肤复用。
 public struct MessageBubble<Content: View>: View {
     public enum Side {
@@ -9,11 +16,17 @@ public struct MessageBubble<Content: View>: View {
     }
 
     private let side: Side
+    private let groupPosition: MessageBubbleGroupPosition
     private let leadingAccessory: AnyView?
     private let content: Content
 
-    public init(side: Side, @ViewBuilder content: () -> Content) {
+    public init(
+        side: Side,
+        groupPosition: MessageBubbleGroupPosition = .single,
+        @ViewBuilder content: () -> Content
+    ) {
         self.side = side
+        self.groupPosition = groupPosition
         self.leadingAccessory = nil
         self.content = content()
     }
@@ -23,16 +36,22 @@ public struct MessageBubble<Content: View>: View {
     /// 附件使用类型擦除，避免让所有现有调用方承担第二个泛型参数。
     public init<Accessory: View>(
         side: Side,
+        groupPosition: MessageBubbleGroupPosition = .single,
         @ViewBuilder leadingAccessory: () -> Accessory,
         @ViewBuilder content: () -> Content
     ) {
         self.side = side
+        self.groupPosition = groupPosition
         self.leadingAccessory = AnyView(leadingAccessory())
         self.content = content()
     }
 
     public var body: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
+            if side == .incoming, let leadingAccessory {
+                leadingAccessory
+                    .padding(.trailing, 6)
+            }
             if side == .outgoing {
                 Spacer(minLength: leadingAccessory == nil ? 48 : 4)
                 if let leadingAccessory {
@@ -43,10 +62,74 @@ public struct MessageBubble<Content: View>: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .background(background)
-                .clipShape(RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
+                .clipShape(bubbleShape)
             if side == .incoming {
                 Spacer(minLength: 48)
             }
+        }
+    }
+
+    private var bubbleShape: UnevenRoundedRectangle {
+        let full = DSRadius.bubble
+        let joined: CGFloat = 7
+
+        return switch (side, groupPosition) {
+        case (_, .single):
+            UnevenRoundedRectangle(
+                topLeadingRadius: full,
+                bottomLeadingRadius: full,
+                bottomTrailingRadius: full,
+                topTrailingRadius: full,
+                style: .continuous
+            )
+        case (.incoming, .first):
+            UnevenRoundedRectangle(
+                topLeadingRadius: full,
+                bottomLeadingRadius: joined,
+                bottomTrailingRadius: full,
+                topTrailingRadius: full,
+                style: .continuous
+            )
+        case (.incoming, .middle):
+            UnevenRoundedRectangle(
+                topLeadingRadius: joined,
+                bottomLeadingRadius: joined,
+                bottomTrailingRadius: full,
+                topTrailingRadius: full,
+                style: .continuous
+            )
+        case (.incoming, .last):
+            UnevenRoundedRectangle(
+                topLeadingRadius: joined,
+                bottomLeadingRadius: full,
+                bottomTrailingRadius: full,
+                topTrailingRadius: full,
+                style: .continuous
+            )
+        case (.outgoing, .first):
+            UnevenRoundedRectangle(
+                topLeadingRadius: full,
+                bottomLeadingRadius: full,
+                bottomTrailingRadius: joined,
+                topTrailingRadius: full,
+                style: .continuous
+            )
+        case (.outgoing, .middle):
+            UnevenRoundedRectangle(
+                topLeadingRadius: full,
+                bottomLeadingRadius: full,
+                bottomTrailingRadius: joined,
+                topTrailingRadius: joined,
+                style: .continuous
+            )
+        case (.outgoing, .last):
+            UnevenRoundedRectangle(
+                topLeadingRadius: full,
+                bottomLeadingRadius: full,
+                bottomTrailingRadius: full,
+                topTrailingRadius: joined,
+                style: .continuous
+            )
         }
     }
 

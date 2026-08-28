@@ -36,6 +36,9 @@ public struct ChatView: View {
     @State private var isMascotPromptDismissed = false
     @State private var didBeginSpeechPlayback = false
     @State private var showsRealtimeConversation = false
+    @State private var isNearConversationBottom = true
+    @State private var unseenIncomingMessageCount = 0
+    @State private var knownLatestMessageID: UUID?
     @FocusState private var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let deps: ChatDependencies
@@ -59,7 +62,14 @@ public struct ChatView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack(spacing: 8) {
-                    AvatarBadge(name: viewModel.character.card.name, size: 32)
+                    ZStack(alignment: .bottomTrailing) {
+                        AvatarBadge(name: viewModel.character.card.name, size: 32)
+                        Circle()
+                            .fill(viewModel.isStreaming ? Color.dsSunset : Color.dsSuccess)
+                            .frame(width: 9, height: 9)
+                            .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
+                            .accessibilityHidden(true)
+                    }
                     VStack(alignment: .leading, spacing: 0) {
                         Text(viewModel.character.card.name)
                             .font(.subheadline.bold())
@@ -154,6 +164,7 @@ public struct ChatView: View {
                 await appleTranslator.translate(text)
             }
             await viewModel.load()
+            knownLatestMessageID = viewModel.messages.last?.id
             markVisibleConversationRead()
         }
         .onChange(of: viewModel.messages.last?.id) {
@@ -180,57 +191,138 @@ public struct ChatView: View {
     }
 
     private var chatStatus: String {
-        if viewModel.conversation?.isEncounterSession == true {
-            return "偶遇中 · \(viewModel.learnerDifficulty.displayName)"
+        if viewModel.isStreaming {
+            return "正在输入…"
         }
-        return "⌖ \(chatCityDisplayName) · \(viewModel.learnerDifficulty.displayName)"
+        if viewModel.conversation?.isEncounterSession == true {
+            return "在线 · 偶遇中 · \(viewModel.learnerDifficulty.displayName)"
+        }
+        return "在线 · \(chatCityDisplayName) · \(viewModel.learnerDifficulty.displayName)"
     }
 
     private var messageList: some View {
         ScrollViewReader { proxy in
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ForEach(Array(viewModel.messages.enumerated()), id: \.element.id) { index, message in
-                        messageRow(message)
-                            .id(message.id)
-                            .padding(.top, messageTopSpacing(at: index))
-                    }
-                    if let streaming = viewModel.streamingText {
-                        MessageBubble(side: .incoming) {
-                            if streaming.isEmpty {
-                                TypingIndicator()
-                            } else {
-                                // 流式期间用普通 Text，定稿后换 TappableText
-                                Text(streaming)
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        ForEach(Array(viewModel.messages.enumerated()), id: \.element.id) { index, message in
+                            if ChatTimelinePolicy.shouldShowTimeMarker(
+                                in: viewModel.messages,
+                                at: index
+                            ) {
+                                timeMarker(for: message.createdAt)
+                                    .padding(.top, index == 0 ? 2 : 12)
+                                    .padding(.bottom, 6)
                             }
+                            messageRow(message, at: index)
+                                .id(message.id)
+                                .padding(.top, messageTopSpacing(at: index))
                         }
-                        .id("streaming")
-                        .padding(.top, streamingTopSpacing)
+                        if viewModel.streamingText != nil {
+                            MessageBubble(
+                                side: .incoming,
+                                groupPosition: streamingGroupPosition,
+                                leadingAccessory: {
+                                    incomingAvatar(isVisible: true)
+                                }
+                            ) {
+                                TypingIndicator()
+                            }
+                            .id("streaming")
+                            .padding(.top, streamingTopSpacing)
+                            .transition(.opacity)
+                        }
+                        if let error = viewModel.errorMessage {
+                            Label(error, systemImage: "exclamationmark.triangle.fill")
+                                .font(.footnote)
+                                .foregroundStyle(Color.dsDanger)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                .background(.regularMaterial, in: Capsule())
+                                .padding(.top, 8)
+                        }
+                        Color.clear
+                            .frame(height: 1)
+                            .id("conversation-bottom")
                     }
-                    if let error = viewModel.errorMessage {
-                        Label(error, systemImage: "exclamationmark.triangle")
-                            .font(.footnote)
-                            .foregroundStyle(.red)
-                            .padding(.top, 4)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
+                }
+                .defaultScrollAnchor(.bottom)
+                .defaultScrollAnchor(.bottom, for: .sizeChanges)
+                .scrollBounceBehavior(.always)
+                .scrollDismissesKeyboard(.interactively)
+                // 短会话没有足够滚动范围时，系统的交互式收起不会开始；
+                // 兜底手势仅挂在消息区，避免与输入框争抢首触。
+                .simultaneousGesture(messageListKeyboardDismissGesture)
+                .background(Color.dsBackground)
+                .onScrollGeometryChange(for: Bool.self) { geometry in
+                    geometry.contentSize.height - geometry.visibleRect.maxY < 96
+                } action: { _, isNearBottom in
+                    isNearConversationBottom = isNearBottom
+                    if isNearBottom {
+                        unseenIncomingMessageCount = 0
                     }
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 10)
-            }
-            .defaultScrollAnchor(.bottom)
-            .defaultScrollAnchor(.bottom, for: .sizeChanges)
-            .scrollBounceBehavior(.always)
-            .scrollDismissesKeyboard(.interactively)
-            // 短会话没有足够滚动范围时，系统的交互式收起不会开始；
-            // 兜底手势仅挂在消息区，避免与输入框争抢首触。
-            .simultaneousGesture(messageListKeyboardDismissGesture)
-            .background(Color.dsBackground)
-            .onChange(of: viewModel.streamingText) {
-                proxy.scrollTo("streaming", anchor: .bottom)
-            }
-            .onChange(of: viewModel.messages.count) {
-                if let last = viewModel.messages.last {
-                    proxy.scrollTo(last.id, anchor: .bottom)
+                .onChange(of: viewModel.streamingText) {
+                    guard isNearConversationBottom else { return }
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                    }
+                }
+                .onChange(of: viewModel.messages.last?.id) {
+                    guard let last = viewModel.messages.last else {
+                        knownLatestMessageID = nil
+                        return
+                    }
+                    guard knownLatestMessageID != last.id else { return }
+                    let isInitialHistory = knownLatestMessageID == nil
+                    knownLatestMessageID = last.id
+                    if isInitialHistory {
+                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                        return
+                    }
+                    if isNearConversationBottom || last.role == .user {
+                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                            proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                        }
+                    } else if last.role == .assistant {
+                        unseenIncomingMessageCount += 1
+                    }
+                }
+                .onChange(of: isTextInputFocused) {
+                    guard isTextInputFocused else { return }
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                    }
+                }
+
+                if !isNearConversationBottom {
+                    Button {
+                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                            proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                        }
+                        isNearConversationBottom = true
+                        unseenIncomingMessageCount = 0
+                    } label: {
+                        Label(
+                            unseenIncomingMessageCount > 0
+                                ? "\(unseenIncomingMessageCount) 条新消息"
+                                : "回到底部",
+                            systemImage: "arrow.down"
+                        )
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Color.dsSkyDeep)
+                        .padding(.horizontal, 12)
+                        .frame(minHeight: 36)
+                        .background(.regularMaterial, in: Capsule())
+                        .overlay { Capsule().stroke(Color.dsBorder, lineWidth: 0.5) }
+                        .shadow(color: .black.opacity(0.1), radius: 8, y: 3)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.trailing, 12)
+                    .padding(.bottom, 12)
+                    .accessibilityHint("跳转到会话中的最新消息")
                 }
             }
         }
@@ -246,29 +338,54 @@ public struct ChatView: View {
 
     private func messageTopSpacing(at index: Int) -> CGFloat {
         guard index > 0 else { return 0 }
+        if ChatTimelinePolicy.shouldShowTimeMarker(in: viewModel.messages, at: index) {
+            return 0
+        }
         let previous = viewModel.messages[index - 1]
         let current = viewModel.messages[index]
         guard previous.role != .coach, current.role != .coach else { return 10 }
-        return previous.role == current.role ? 4 : 10
+        return ChatTimelinePolicy.canGroup(previous, current) ? 3 : 12
     }
 
     private var streamingTopSpacing: CGFloat {
-        viewModel.messages.last?.role == .assistant ? 4 : 10
+        viewModel.messages.last?.role == .assistant ? 3 : 12
     }
 
     @ViewBuilder
-    private func messageRow(_ message: MessageDTO) -> some View {
+    private func messageRow(_ message: MessageDTO, at index: Int) -> some View {
+        let groupPosition = displayedGroupPosition(at: index)
         switch message.role {
         case .user:
             VStack(alignment: .trailing, spacing: 4) {
-                userMessageBubble(message)
+                HStack(alignment: .bottom, spacing: 6) {
+                    userMessageBubble(message, groupPosition: groupPosition)
+                    outgoingAvatar(
+                        isVisible: ChatTimelinePolicy.showsOutgoingAvatar(
+                            in: viewModel.messages,
+                            at: index
+                        )
+                    )
+                }
                 translationFootnote(message, alignment: .trailing)
+                deliveryReceipt(at: index)
                 coachCard(message)
                 speechReviewCard(message)
             }
         case .assistant:
             VStack(alignment: .leading, spacing: 4) {
-                MessageBubble(side: .incoming) {
+                MessageBubble(
+                    side: .incoming,
+                    groupPosition: groupPosition,
+                    leadingAccessory: {
+                        incomingAvatar(
+                            isVisible: ChatTimelinePolicy.showsIncomingAvatar(
+                                in: viewModel.messages,
+                                at: index,
+                                hasTypingContinuation: viewModel.isStreaming
+                            )
+                        )
+                    }
+                ) {
                     tappableText(message, textColor: nil)
                 }
                 .contextMenu { bubbleMenu(message) }
@@ -290,12 +407,86 @@ public struct ChatView: View {
         case .coach:
             // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位
             if message.kind == .storyLine {
-                Text(message.text)
+                Label(message.text, systemImage: "sparkles")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 7)
+                    .background(.thinMaterial, in: Capsule())
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 6)
+                    .padding(.vertical, 4)
+                    .accessibilityHint("系统消息，\(ChatTimelinePolicy.exactTimeText(for: message.createdAt))")
             }
+        }
+    }
+
+    private func displayedGroupPosition(at index: Int) -> MessageBubbleGroupPosition {
+        let position = ChatTimelinePolicy.groupPosition(in: viewModel.messages, at: index)
+        guard viewModel.isStreaming,
+              index == viewModel.messages.indices.last,
+              viewModel.messages[index].role == .assistant
+        else { return position }
+
+        return switch position {
+        case .single: .first
+        case .last: .middle
+        case .first, .middle: position
+        }
+    }
+
+    private var streamingGroupPosition: MessageBubbleGroupPosition {
+        guard viewModel.messages.last?.role == .assistant else { return .single }
+        return .last
+    }
+
+    private func timeMarker(for date: Date) -> some View {
+        Text(ChatTimelinePolicy.timeMarkerText(for: date))
+            .font(.caption2.weight(.semibold))
+            .foregroundStyle(.secondary)
+            .monospacedDigit()
+            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
+            .background(Color.secondary.opacity(0.08), in: Capsule())
+            .frame(maxWidth: .infinity)
+            .accessibilityLabel("会话时间，\(ChatTimelinePolicy.exactTimeText(for: date))")
+    }
+
+    @ViewBuilder
+    private func incomingAvatar(isVisible: Bool) -> some View {
+        if isVisible {
+            AvatarBadge(name: viewModel.character.card.name, size: 30)
+        } else {
+            Color.clear
+                .frame(width: 30, height: 30)
+                .accessibilityHidden(true)
+        }
+    }
+
+    @ViewBuilder
+    private func outgoingAvatar(isVisible: Bool) -> some View {
+        if isVisible {
+            AvatarBadge(name: "我", tint: Color.dsSkyDeep, size: 30)
+        } else {
+            Color.clear
+                .frame(width: 30, height: 30)
+                .accessibilityHidden(true)
+        }
+    }
+
+    @ViewBuilder
+    private func deliveryReceipt(at index: Int) -> some View {
+        if let receipt = ChatTimelinePolicy.deliveryReceipt(
+            in: viewModel.messages,
+            at: index,
+            isReplying: viewModel.isStreaming
+        ) {
+            Label(receipt.label, systemImage: receipt.systemImage)
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(receipt == .read ? Color.dsSkyDeep : Color.secondary)
+                .padding(.trailing, 4)
+                .transition(.opacity)
+                .accessibilityLabel("消息\(receipt.label)")
         }
     }
 
@@ -338,22 +529,34 @@ public struct ChatView: View {
                 )
             }
         }
+        Divider()
+        Button {} label: {
+            Label(
+                ChatTimelinePolicy.exactTimeText(for: message.createdAt),
+                systemImage: "clock"
+            )
+        }
+        .disabled(true)
     }
 
     // MARK: - 教练纠错
 
     @ViewBuilder
-    private func userMessageBubble(_ message: MessageDTO) -> some View {
+    private func userMessageBubble(
+        _ message: MessageDTO,
+        groupPosition: MessageBubbleGroupPosition
+    ) -> some View {
         if CoachService.decode(fromJSON: message.coachReviewJSON)?.hasIssues == true {
             MessageBubble(
                 side: .outgoing,
+                groupPosition: groupPosition,
                 leadingAccessory: { coachButton(message) }
             ) {
                 tappableText(message, textColor: .white)
             }
             .contextMenu { bubbleMenu(message) }
         } else {
-            MessageBubble(side: .outgoing) {
+            MessageBubble(side: .outgoing, groupPosition: groupPosition) {
                 tappableText(message, textColor: .white)
             }
             .contextMenu { bubbleMenu(message) }
@@ -738,9 +941,16 @@ public struct ChatView: View {
                     }
                     #endif
                 } else {
-                    TextField("用英语说点什么…", text: $viewModel.draft, axis: .vertical)
+                    TextField(
+                        viewModel.isStreaming
+                            ? "\(viewModel.character.card.name)正在输入，你可以先写…"
+                            : "用英语说点什么…",
+                        text: $viewModel.draft,
+                        axis: .vertical
+                    )
                         .lineLimit(1...4)
                         .focused($isTextInputFocused)
+                        .submitLabel(.send)
                         .textFieldStyle(.plain)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
@@ -765,6 +975,12 @@ public struct ChatView: View {
                     .disabled(
                         viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                             || viewModel.isStreaming
+                    )
+                    .accessibilityLabel("发送消息")
+                    .accessibilityHint(
+                        viewModel.isStreaming
+                            ? "请等待对方完成当前回复"
+                            : "发送输入框中的英文消息"
                     )
                 }
             }
