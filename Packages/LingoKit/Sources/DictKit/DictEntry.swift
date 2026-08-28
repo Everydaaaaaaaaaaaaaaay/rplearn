@@ -76,6 +76,19 @@ enum DictPartOfSpeechDisplay {
         abbreviationsByLabel[label]
     }
 
+    /// WordNet 只区分一般动词，而 ECDICT 还会细分及物/不及物动词。
+    /// 展示例句释义时允许同一词性族互相匹配，但绝不跨词性回退。
+    static func labelsAreCompatible(_ lhs: String, _ rhs: String) -> Bool {
+        lexicalFamily(for: lhs) == lexicalFamily(for: rhs)
+    }
+
+    private static func lexicalFamily(for labelOrCode: String) -> String {
+        switch label(for: labelOrCode) {
+        case "及物动词", "不及物动词": "动词"
+        default: label(for: labelOrCode)
+        }
+    }
+
     static func splitPrefixedDefinition(
         _ line: String
     ) -> (label: String, definition: String)? {

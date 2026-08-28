@@ -124,6 +124,65 @@ struct DictDatabaseTests {
         #expect(groups[1].examples.first?.annotation == "（n. 测试）")
     }
 
+    @Test("WordNet 动词例句匹配 ECDICT 及物动词释义且不回退到名词")
+    func verbExamplesUseCompatibleVerbMeaning() {
+        let entry = DictEntry(
+            word: "tube",
+            translation: "n. 管, 软管, 隧道\\nvt. 把...装管, 使通过管子",
+            senses: [
+                DictSense(
+                    rank: 1,
+                    partOfSpeech: "n",
+                    definition: "a hollow cylindrical object",
+                    examples: ["The tube is made of glass."],
+                    synonyms: []
+                ),
+                DictSense(
+                    rank: 2,
+                    partOfSpeech: "v",
+                    definition: "convey in a tube",
+                    examples: ["Inside Paris, they used to tube mail."],
+                    synonyms: []
+                ),
+            ]
+        )
+
+        let groups = DictUsageExamplePolicy.groups(
+            for: entry,
+            requestedWord: "tube",
+            contextText: nil
+        )
+        let verbGroup = groups.first { $0.partOfSpeechLabel == "动词" }
+
+        #expect(verbGroup?.examples.first?.annotation == "（v. 把...装管）")
+        #expect(verbGroup?.examples.contains { $0.annotation == "（v. 管）" } == false)
+        #expect(DictPartOfSpeechDisplay.labelsAreCompatible("动词", "及物动词"))
+        #expect(DictPartOfSpeechDisplay.labelsAreCompatible("动词", "不及物动词"))
+        #expect(!DictPartOfSpeechDisplay.labelsAreCompatible("动词", "名词"))
+    }
+
+    @Test("同一词性存在多个义项时例句使用各自准确义项而不复用首条中文")
+    func examplesUseTheirOwningSenseDefinition() async throws {
+        let db = try openDatabase()
+        let entry = try #require(await db.lookup("tube"))
+
+        let groups = DictUsageExamplePolicy.groups(
+            for: entry,
+            requestedWord: "tube",
+            contextText: nil
+        )
+        let verbExamples = try #require(
+            groups.first { $0.partOfSpeechLabel == "动词" }?.examples
+        )
+
+        #expect(verbExamples.map(\.annotation).contains("（v. convey in a tube）"))
+        #expect(
+            verbExamples.map(\.annotation)
+                .contains("（v. ride or float on an inflated tube）")
+        )
+        #expect(!verbExamples.map(\.annotation).contains("（v. 管）"))
+    }
+
     @Test("单一词性无论义项多少最多显示两条例句")
     func usageExamplesAreLimitedPerPartOfSpeech() {
         let entry = DictEntry(
@@ -166,7 +225,10 @@ struct DictDatabaseTests {
             "London can be overwhelming on day one.",
             "An overwhelming need for solitude.",
         ])
-        #expect(groups[0].examples.allSatisfy { $0.annotation == "（adj. 压倒性的）" })
+        #expect(groups[0].examples.map(\.annotation) == [
+            "（adj.）",
+            "（adj. very intense）",
+        ])
     }
 
     @Test("原句候选返回固定搭配但不覆盖单词主释义")

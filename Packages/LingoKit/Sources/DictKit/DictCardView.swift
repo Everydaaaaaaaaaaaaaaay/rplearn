@@ -79,11 +79,16 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
 struct DictUsageExample: Identifiable, Equatable {
     let partOfSpeechLabel: String
     let partOfSpeechAbbreviation: String
-    let meaning: String
+    let meaning: String?
     let text: String
 
     var id: String { "\(partOfSpeechAbbreviation)-\(text)" }
-    var annotation: String { "（\(partOfSpeechAbbreviation) \(meaning)）" }
+    var annotation: String {
+        guard let meaning, !meaning.isEmpty else {
+            return "（\(partOfSpeechAbbreviation)）"
+        }
+        return "（\(partOfSpeechAbbreviation) \(meaning)）"
+    }
 }
 
 struct DictUsageExampleGroup: Identifiable, Equatable {
@@ -173,7 +178,7 @@ enum DictUsageExamplePolicy {
         let id: String
         let label: String
         let abbreviation: String
-        let meaning: String
+        let meaning: String?
     }
 
     static func groups(
@@ -209,23 +214,33 @@ enum DictUsageExamplePolicy {
 
         let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
         let descriptors = senseGroups.map { descriptor(for: $0, entry: entry) }
-        let primaryDescriptor = descriptors.first ?? descriptor(for: entry.meaningGroups.first)
-
         let matchingWords = [requestedWord, entry.word]
         if let contextual = contextualSentence(
             in: contextText,
             matching: matchingWords
         ) {
-            var contextualDescriptor = primaryDescriptor
+            var contextualDescriptor: PartOfSpeechDescriptor?
             if let inferredLabel = contextualPartOfSpeechLabel(
                 in: contextual,
                 matching: matchingWords
             ) {
-                contextualDescriptor = descriptors.first { $0.label == inferredLabel }
-                    ?? descriptor(
+                if let index = descriptors.firstIndex(where: { $0.label == inferredLabel }) {
+                    contextualDescriptor = descriptorForContext(
+                        descriptors[index],
+                        senseGroup: senseGroups[index]
+                    )
+                } else {
+                    contextualDescriptor = descriptor(
                         for: entry.meaningGroups.first { $0.partOfSpeech == inferredLabel }
                     )
-                    ?? primaryDescriptor
+                }
+            } else if descriptors.count == 1 {
+                contextualDescriptor = descriptorForContext(
+                    descriptors[0],
+                    senseGroup: senseGroups[0]
+                )
+            } else if entry.meaningGroups.count == 1 {
+                contextualDescriptor = descriptor(for: entry.meaningGroups.first)
             }
             if let contextualDescriptor {
                 append(contextual, descriptor: contextualDescriptor)
@@ -233,15 +248,26 @@ enum DictUsageExamplePolicy {
         }
 
         // 先让尚未出现的词性各获得一句，再为每个词性补到最多两句。
-        for (group, descriptor) in zip(senseGroups, descriptors)
-        where countsByPartOfSpeech[descriptor.id, default: 0] == 0 {
-            if let example = group.senses.lazy.flatMap({ $0.examples }).first {
-                append(example, descriptor: descriptor)
+        for (group, baseDescriptor) in zip(senseGroups, descriptors)
+        where countsByPartOfSpeech[baseDescriptor.id, default: 0] == 0 {
+            if let sense = group.senses.first(where: { !$0.examples.isEmpty }),
+               let example = sense.examples.first {
+                append(
+                    example,
+                    descriptor: descriptor(for: sense, in: group, fallback: baseDescriptor)
+                )
             }
         }
-        for (group, descriptor) in zip(senseGroups, descriptors) {
-            for example in group.senses.flatMap(\.examples) {
-                append(example, descriptor: descriptor)
+        for (group, baseDescriptor) in zip(senseGroups, descriptors) {
+            for sense in group.senses {
+                let exampleDescriptor = descriptor(
+                    for: sense,
+                    in: group,
+                    fallback: baseDescriptor
+                )
+                for example in sense.examples {
+                    append(example, descriptor: exampleDescriptor)
+                }
             }
         }
 
@@ -273,7 +299,10 @@ enum DictUsageExamplePolicy {
             ?? DictPartOfSpeechDisplay.abbreviation(forLabel: label)
             ?? group.partOfSpeech
         let matchingMeaning = entry.meaningGroups.first { $0.partOfSpeech == label }
-            ?? entry.meaningGroups.first
+            ?? entry.meaningGroups.first { meaningGroup in
+                guard let meaningLabel = meaningGroup.partOfSpeech else { return false }
+                return DictPartOfSpeechDisplay.labelsAreCompatible(label, meaningLabel)
+            }
         return PartOfSpeechDescriptor(
             id: abbreviation,
             label: label,
@@ -297,8 +326,35 @@ enum DictUsageExamplePolicy {
         )
     }
 
-    private static func conciseMeaning(_ meaning: String?) -> String {
-        guard let meaning else { return "常见用法" }
+    private static func descriptor(
+        for sense: DictSense,
+        in group: DictSenseDisplayGroup,
+        fallback: PartOfSpeechDescriptor
+    ) -> PartOfSpeechDescriptor {
+        guard group.senses.count > 1 else { return fallback }
+        return PartOfSpeechDescriptor(
+            id: fallback.id,
+            label: fallback.label,
+            abbreviation: fallback.abbreviation,
+            meaning: DictDisplayText.normalizedWhitespace(sense.definition)
+        )
+    }
+
+    private static func descriptorForContext(
+        _ descriptor: PartOfSpeechDescriptor,
+        senseGroup: DictSenseDisplayGroup
+    ) -> PartOfSpeechDescriptor {
+        guard senseGroup.senses.count > 1 else { return descriptor }
+        return PartOfSpeechDescriptor(
+            id: descriptor.id,
+            label: descriptor.label,
+            abbreviation: descriptor.abbreviation,
+            meaning: nil
+        )
+    }
+
+    private static func conciseMeaning(_ meaning: String?) -> String? {
+        guard let meaning else { return nil }
         let components = meaning.components(separatedBy: CharacterSet(charactersIn: ",，;；"))
         return components
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
