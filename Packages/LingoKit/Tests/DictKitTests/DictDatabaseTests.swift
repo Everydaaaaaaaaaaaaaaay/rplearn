@@ -45,7 +45,7 @@ struct DictDatabaseTests {
             DictSense(
                 rank: 1,
                 partOfSpeech: "v",
-                definition: "first verb",
+                definition: "  first   verb ",
                 examples: ["first example"],
                 synonyms: ["make"]
             ),
@@ -85,10 +85,11 @@ struct DictDatabaseTests {
         #expect(!groups.map(\.definitionText).joined().contains("#"))
     }
 
-    @Test("例句优先保留当前语境并覆盖不同词性")
+    @Test("例句优先保留当前语境并按词性适量分组")
     func usageExamplesCoverContextAndPartsOfSpeech() {
         let entry = DictEntry(
             word: "test",
+            translation: "n. 测试\\nv. 检验",
             senses: [
                 DictSense(
                     rank: 1,
@@ -107,14 +108,65 @@ struct DictDatabaseTests {
             ]
         )
 
-        let examples = DictUsageExamplePolicy.examples(
+        let groups = DictUsageExamplePolicy.groups(
             for: entry,
             requestedWord: "test",
             contextText: "We can test it after lunch. This sentence is unrelated."
         )
 
-        #expect(examples.map(\.label) == ["当前语境", "名词", "动词"])
-        #expect(examples.first?.text == "We can test it after lunch.")
+        #expect(groups.map(\.partOfSpeechLabel) == ["动词", "名词"])
+        #expect(groups[0].examples.map(\.text) == [
+            "We can test it after lunch.",
+            "They test the alarm every week.",
+        ])
+        #expect(groups[0].examples.allSatisfy { $0.annotation == "（v. 检验）" })
+        #expect(groups[1].examples.map(\.text) == ["The test starts at nine."])
+        #expect(groups[1].examples.first?.annotation == "（n. 测试）")
+    }
+
+    @Test("单一词性无论义项多少最多显示两条例句")
+    func usageExamplesAreLimitedPerPartOfSpeech() {
+        let entry = DictEntry(
+            word: "overwhelming",
+            translation: "adj. 压倒性的, 无法抵抗的",
+            senses: [
+                DictSense(
+                    rank: 1,
+                    partOfSpeech: "a",
+                    definition: "very intense",
+                    examples: ["An overwhelming need for solitude."],
+                    synonyms: []
+                ),
+                DictSense(
+                    rank: 2,
+                    partOfSpeech: "a",
+                    definition: "very large",
+                    examples: ["They won an overwhelming majority."],
+                    synonyms: []
+                ),
+                DictSense(
+                    rank: 3,
+                    partOfSpeech: "a",
+                    definition: "hard to resist",
+                    examples: ["She felt overwhelming joy."],
+                    synonyms: []
+                ),
+            ]
+        )
+
+        let groups = DictUsageExamplePolicy.groups(
+            for: entry,
+            requestedWord: "overwhelming",
+            contextText: "London can be overwhelming on day one."
+        )
+
+        #expect(groups.count == 1)
+        #expect(groups[0].examples.count == 2)
+        #expect(groups[0].examples.map(\.text) == [
+            "London can be overwhelming on day one.",
+            "An overwhelming need for solitude.",
+        ])
+        #expect(groups[0].examples.allSatisfy { $0.annotation == "（adj. 压倒性的）" })
     }
 
     @Test("原句候选返回固定搭配但不覆盖单词主释义")
