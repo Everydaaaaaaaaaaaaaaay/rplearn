@@ -1,21 +1,94 @@
 import Foundation
 
+/// 文本聊天的回合交接策略。
+///
+/// 用户消息立即送达，但角色会等待一段安静时间再开始回复。短时间内连续发送的
+/// 多条消息会自然合并成一个话轮；输入框仍有编辑活动时，等待会被续期。
+public struct RoleplayTurnTakingPolicy: Sendable {
+    public static let standard = RoleplayTurnTakingPolicy()
+
+    public let minimumQuietWindow: TimeInterval
+    public let maximumQuietWindow: TimeInterval
+    public let draftActivityExtension: TimeInterval
+    public let maximumDeferralAfterLatestMessage: TimeInterval
+
+    public init(
+        minimumQuietWindow: TimeInterval = 2.2,
+        maximumQuietWindow: TimeInterval = 4.8,
+        draftActivityExtension: TimeInterval = 1.8,
+        maximumDeferralAfterLatestMessage: TimeInterval = 9
+    ) {
+        self.minimumQuietWindow = minimumQuietWindow
+        self.maximumQuietWindow = maximumQuietWindow
+        self.draftActivityExtension = draftActivityExtension
+        self.maximumDeferralAfterLatestMessage = maximumDeferralAfterLatestMessage
+    }
+
+    /// 根据最后一条消息是否像说完、长度及连续消息数量，计算开始回复前的静默窗口。
+    /// `variation` 用于注入 0...1 的稳定可测随机量。
+    public func quietWindow(
+        after text: String,
+        consecutiveUserMessageCount: Int,
+        variation: Double
+    ) -> TimeInterval {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let words = trimmed.split(whereSeparator: \.isWhitespace).count
+        let burstCount = max(1, consecutiveUserMessageCount)
+        let clampedVariation = min(max(variation, 0), 1)
+
+        let readingTime = min(Double(words) * 0.045, 0.75)
+        let burstGrace = min(Double(burstCount - 1) * 0.32, 0.96)
+        let unfinishedGrace = looksLikeOpenThought(trimmed) ? 0.7 : 0
+        let jitter = (clampedVariation - 0.5) * 0.5
+        let target = 2.35 + readingTime + burstGrace + unfinishedGrace + jitter
+        return min(max(target, minimumQuietWindow), maximumQuietWindow)
+    }
+
+    private func looksLikeOpenThought(_ text: String) -> Bool {
+        guard !text.isEmpty else { return false }
+
+        let closingCharacters = CharacterSet(charactersIn: "\"'”’)]}")
+        let visibleEnd = text.trimmingCharacters(in: closingCharacters)
+        guard let last = visibleEnd.last else { return false }
+
+        if ",;:—-…".contains(last) {
+            return true
+        }
+        if ".?!。？！".contains(last) {
+            return false
+        }
+
+        let lastWord = visibleEnd
+            .lowercased()
+            .split { !$0.isLetter }
+            .last
+            .map(String.init)
+        let connectingWords: Set<String> = [
+            "and", "but", "because", "if", "or", "so", "then", "though", "when", "while"
+        ]
+        return lastWord.map(connectingWords.contains) ?? true
+    }
+}
+
 /// 将已经生成好的角色回复按接近真人打字的节奏逐条送达。
 ///
-/// 首条消息会扣除模型已经用于思考和生成的时间，避免在网络等待后再次制造
-/// 一段完整延迟；后续消息则保留短暂的输入时间，让连续气泡不会同时出现。
+/// 首条消息只会部分扣除模型已经用于思考和生成的时间，并保留最低可感知输入时间；
+/// 后续消息各自保留输入时间和换气停顿，让连续气泡不会机械地同时出现。
 public struct RoleplayTypingPace: Sendable {
     public static let standard = RoleplayTypingPace()
 
     public let minimumDelay: TimeInterval
     public let maximumDelay: TimeInterval
+    public let minimumFirstMessageDelay: TimeInterval
 
     public init(
-        minimumDelay: TimeInterval = 0.65,
-        maximumDelay: TimeInterval = 4.2
+        minimumDelay: TimeInterval = 1.05,
+        maximumDelay: TimeInterval = 7.5,
+        minimumFirstMessageDelay: TimeInterval = 0.9
     ) {
         self.minimumDelay = minimumDelay
         self.maximumDelay = maximumDelay
+        self.minimumFirstMessageDelay = minimumFirstMessageDelay
     }
 
     /// - Parameters:
@@ -33,18 +106,20 @@ public struct RoleplayTypingPace: Sendable {
         let visibleCharacters = text.filter { !$0.isWhitespace }.count
         let punctuationPauses = text.filter { ",;:?!\u{2026}\u{2014}".contains($0) }.count
         let clampedVariation = min(max(variation, 0), 1)
-        let jitter = (clampedVariation - 0.5) * 0.7
-        let continuationPause = messageIndex > 0 ? 0.3 : 0
+        let jitter = (clampedVariation - 0.5) * 0.8
+        let continuationPause = messageIndex > 0 ? 0.55 : 0
 
-        let simulatedTyping = 0.5
+        let simulatedTyping = 0.65
             + continuationPause
-            + Double(words) * 0.16
-            + Double(visibleCharacters) * 0.015
-            + Double(punctuationPauses) * 0.08
+            + Double(words) * 0.24
+            + Double(visibleCharacters) * 0.012
+            + Double(punctuationPauses) * 0.12
             + jitter
         let target = min(max(simulatedTyping, minimumDelay), maximumDelay)
 
         guard messageIndex == 0 else { return target }
-        return max(0, target - max(0, elapsedSinceTypingBegan))
+        let maximumCredit = max(0, target - minimumFirstMessageDelay)
+        let generationCredit = min(max(0, elapsedSinceTypingBegan) * 0.45, maximumCredit)
+        return max(minimumFirstMessageDelay, target - generationCredit)
     }
 }

@@ -170,6 +170,9 @@ public struct ChatView: View {
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
+        .onChange(of: viewModel.draft) {
+            viewModel.noteDraftActivity()
+        }
         .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in
             didBeginSpeechPlayback = true
         }
@@ -917,7 +920,6 @@ public struct ChatView: View {
                     VoiceInputBar(recorder: recorder) { capture in
                         Task { await viewModel.sendVoice(capture: capture) }
                     }
-                    .disabled(viewModel.isStreaming)
                     #if targetEnvironment(simulator)
                     // 模拟器兜底：麦克风/识别不可用时注入文本验证全流程
                     Button {
@@ -943,7 +945,7 @@ public struct ChatView: View {
                 } else {
                     TextField(
                         viewModel.isStreaming
-                            ? "\(viewModel.character.card.name)正在输入，你可以先写…"
+                            ? "\(viewModel.character.card.name)正在输入，你也可以继续说…"
                             : "用英语说点什么…",
                         text: $viewModel.draft,
                         axis: .vertical
@@ -974,14 +976,9 @@ public struct ChatView: View {
                     }
                     .disabled(
                         viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                            || viewModel.isStreaming
                     )
                     .accessibilityLabel("发送消息")
-                    .accessibilityHint(
-                        viewModel.isStreaming
-                            ? "请等待对方完成当前回复"
-                            : "发送输入框中的英文消息"
-                    )
+                    .accessibilityHint("发送输入框中的英文消息；对方正在输入时也可以继续发送")
                 }
             }
             .padding(.horizontal, 12)
