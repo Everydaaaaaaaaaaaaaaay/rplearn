@@ -1,7 +1,6 @@
 import DesignSystem
 import DomainKit
 import SwiftUI
-import UIKit
 
 struct CityPinAnnotationView: View {
     static let mapAnchor = UnitPoint.bottom
@@ -9,6 +8,7 @@ struct CityPinAnnotationView: View {
     let region: Region
     let state: CityPinView.PinState
     let isSelected: Bool
+    let onSelect: () -> Void
 
     var body: some View {
         CityPinView(
@@ -20,74 +20,37 @@ struct CityPinAnnotationView: View {
         .accessibilityLabel("\(region.nameZh)，\(state.accessibilityText)")
         .accessibilityHint("轻点选择城市，拖动可继续移动地图")
         .accessibilityAddTraits(.isButton)
+        .accessibilityAction(.default, onSelect)
     }
 }
 
-struct SelectedCityActionBar: View {
+struct SelectedCityActionButton: View {
     let region: Region
     let state: CityPinView.PinState
     let hasUsableTicket: Bool
     let onAction: () -> Void
-    let onDismiss: () -> Void
 
     var body: some View {
-        HStack(spacing: 10) {
-            Text(region.flagEmoji)
-                .font(.system(size: 24))
-                .frame(width: 42, height: 42)
-                .background(Color.dsSurface.opacity(0.7), in: Circle())
-
-            VStack(alignment: .leading, spacing: 1) {
-                Text(region.nameZh)
-                    .font(.system(.headline, design: .rounded, weight: .heavy))
-                    .lineLimit(1)
-                Text(state.accessibilityText)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-            }
-
-            Spacer(minLength: 2)
-
-            if state != .current {
-                Button(action: onAction) {
-                    Label(actionTitle, systemImage: actionIcon)
-                        .font(.system(.subheadline, design: .rounded, weight: .heavy))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 14)
-                        .frame(minHeight: 44)
-                        .background(actionBackground.gradient, in: Capsule())
-                        .overlay {
-                            Capsule().stroke(.white.opacity(0.72), lineWidth: 1)
-                        }
+        Button {
+            guard state != .current else { return }
+            onAction()
+        } label: {
+            Label(actionTitle, systemImage: actionIcon)
+                .font(.system(size: 10, weight: .black, design: .rounded))
+                .foregroundStyle(actionForeground)
+                .padding(.horizontal, 10)
+                .frame(height: 30)
+                .background(actionBackground, in: Capsule())
+                .overlay {
+                    Capsule()
+                        .stroke(.white.opacity(state == .current ? 0.58 : 0.8), lineWidth: 1)
                 }
-                .buttonStyle(.pressableCard)
-                .accessibilityLabel("\(actionTitle)：\(region.nameZh)")
-                .accessibilityHint(actionAccessibilityHint)
-            } else {
-                Label("当前", systemImage: "location.fill")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(Color.dsSuccess)
-                    .padding(.horizontal, 11)
-                    .frame(height: 36)
-                    .background(Color.dsSuccess.opacity(0.1), in: Capsule())
-            }
-
-            Button(action: onDismiss) {
-                Image(systemName: "xmark")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.secondary)
-                    .frame(width: 32, height: 44)
-                    .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel("取消选择")
+                .shadow(color: .black.opacity(0.14), radius: 6, y: 2)
         }
-        .padding(.leading, 10)
-        .padding(.trailing, 6)
-        .padding(.vertical, 8)
-        .dsSceneGlass(radius: 22, interactive: true, legibility: .enhanced)
-        .accessibilityElement(children: .contain)
+        .buttonStyle(.pressableCard)
+        .disabled(state == .current)
+        .accessibilityLabel("\(actionTitle)：\(region.nameZh)")
+        .accessibilityHint(actionAccessibilityHint)
     }
 
     private var actionTitle: String {
@@ -110,6 +73,10 @@ struct SelectedCityActionBar: View {
         case .locked:
             "ticket.fill"
         }
+    }
+
+    private var actionForeground: Color {
+        state == .current ? .secondary : .white
     }
 
     private var actionBackground: Color {
@@ -202,28 +169,18 @@ struct CityPinView: View {
         .contentShape(Rectangle())
     }
 
-    @ViewBuilder
     private var cityThumbnail: some View {
-        if UIImage(named: "city_backdrop_\(region.id)") != nil {
-            Image("city_backdrop_\(region.id)")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 48, height: 48)
-                .clipShape(Circle())
-                .saturation(state == .locked ? 0.3 : 1)
-                .brightness(state == .locked ? -0.08 : 0)
-                .overlay {
-                    Circle()
-                        .fill(.black.opacity(state == .locked ? 0.14 : 0))
-                }
-        } else {
-            ZStack {
-                DSScenePalette.city(region.id).accent.opacity(0.2)
-                Text(region.flagEmoji)
-                    .font(.system(size: 22))
-            }
+        Image("city_pin_\(region.id)")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 48, height: 48)
             .clipShape(Circle())
-        }
+            .saturation(state == .locked ? 0.3 : 1)
+            .brightness(state == .locked ? -0.08 : 0)
+            .overlay {
+                Circle()
+                    .fill(.black.opacity(state == .locked ? 0.14 : 0))
+            }
     }
 
     private var stateBadge: some View {

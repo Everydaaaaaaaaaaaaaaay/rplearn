@@ -20,6 +20,8 @@ public struct MapView: View {
     @State private var flight: FlightPresentation?
     @State private var feedback: String?
     @State private var showsTicketStubsPreview = false
+    @State private var isMapMoving = false
+    @State private var cameraRevision = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -88,76 +90,13 @@ public struct MapView: View {
     public var body: some View {
         ZStack {
             Color.dsBackground.ignoresSafeArea()
-
-            Map(
-                position: $position,
-                interactionModes: [.pan, .zoom],
-                selection: $selectedRegionID
-            ) {
-                ForEach(deps.regionCatalog.regions) { region in
-                    Annotation(
-                        "",
-                        coordinate: coordinate(region),
-                        anchor: CityPinAnnotationView.mapAnchor
-                    ) {
-                        CityPinAnnotationView(
-                            region: region,
-                            state: pinState(region),
-                            isSelected: selectedRegionID == region.id
-                        )
-                    }
-                    .tag(region.id)
-                }
-            }
-            .mapStyle(
-                .standard(
-                    elevation: .flat,
-                    emphasis: .muted,
-                    pointsOfInterest: .excludingAll,
-                    showsTraffic: false
-                )
-            )
-            .safeAreaPadding(.top, 76)
-            .safeAreaPadding(.bottom, mapBottomPadding)
-
-            VStack(spacing: 0) {
-                mapHUD
-                Spacer()
-                VStack(spacing: 10) {
-                    if let selectedRegion {
-                        SelectedCityActionBar(
-                            region: selectedRegion,
-                            state: pinState(selectedRegion),
-                            hasUsableTicket: !usableTickets(for: selectedRegion).isEmpty,
-                            onAction: { travelTarget = selectedRegion },
-                            onDismiss: { selectedRegionID = nil }
-                        )
-                        .transition(
-                            .opacity.combined(
-                                with: reduceMotion
-                                    ? .identity
-                                    : .move(edge: .bottom)
-                            )
-                        )
-                    }
-
-                    if let guidance {
-                        JourneyGuideView(
-                            guidance: guidance,
-                            regionCatalog: deps.regionCatalog,
-                            state: pinState,
-                            ticketCount: { usableTickets(for: $0).count },
-                            onTravel: { travelTarget = $0 },
-                            onOpenMainline: onOpenMainline
-                        )
-                        .id(guidance)
-                        .transition(.opacity.combined(with: .scale(scale: 0.98, anchor: .bottom)))
-                    }
-                }
-                .dynamicTypeSize(...DynamicTypeSize.large)
-                .padding(.horizontal, DSSpacing.md)
-                .padding(.bottom, DSSpacing.md)
-            }
+            interactiveMap
+        }
+        .overlay(alignment: .top) {
+            mapHUD
+        }
+        .overlay(alignment: .bottom) {
+            journeyOverlay
         }
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(for: MapDestination.self) { destination in
@@ -221,12 +160,101 @@ public struct MapView: View {
             #endif
             presentDebugFlightIfRequested()
         }
-        .onChange(of: selectedRegionID) { previous, current in
-            guard previous != current, current != nil else { return }
-            Haptics.selection()
-        }
         .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedRegionID)
         .dsTabBarHidden(flight != nil)
+    }
+
+    private var interactiveMap: some View {
+        GeometryReader { geometry in
+            MapReader { proxy in
+                ZStack {
+                    Map(position: $position, interactionModes: [.pan, .zoom]) {
+                        ForEach(deps.regionCatalog.regions) { region in
+                            Annotation(
+                                "",
+                                coordinate: coordinate(region),
+                                anchor: CityPinAnnotationView.mapAnchor
+                            ) {
+                                CityPinAnnotationView(
+                                    region: region,
+                                    state: pinState(region),
+                                    isSelected: selectedRegionID == region.id,
+                                    onSelect: { select(region) }
+                                )
+                                .allowsHitTesting(false)
+                            }
+                        }
+                    }
+                    .mapStyle(
+                        .standard(
+                            elevation: .flat,
+                            emphasis: .muted,
+                            pointsOfInterest: .excludingAll,
+                            showsTraffic: false
+                        )
+                    )
+                    .simultaneousGesture(
+                        SpatialTapGesture(coordinateSpace: .local)
+                            .onEnded { value in
+                                selectRegion(at: value.location, using: proxy)
+                            }
+                    )
+                    .onMapCameraChange(frequency: .continuous) {
+                        guard selectedRegionID != nil, !isMapMoving else { return }
+                        isMapMoving = true
+                    }
+                    .onMapCameraChange(frequency: .onEnd) {
+                        guard selectedRegionID != nil else { return }
+                        isMapMoving = false
+                        cameraRevision &+= 1
+                    }
+
+                    if !isMapMoving,
+                       let selectedRegion,
+                       let point = actionPoint(
+                           for: selectedRegion,
+                           using: proxy,
+                           in: geometry.size,
+                           revision: cameraRevision
+                       )
+                    {
+                        SelectedCityActionButton(
+                            region: selectedRegion,
+                            state: pinState(selectedRegion),
+                            hasUsableTicket: !usableTickets(for: selectedRegion).isEmpty,
+                            onAction: { travelTarget = selectedRegion }
+                        )
+                        .position(point)
+                        .transition(
+                            .opacity.combined(
+                                with: reduceMotion
+                                    ? .identity
+                                    : .scale(scale: 0.96, anchor: .top)
+                            )
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var journeyOverlay: some View {
+        if let guidance {
+            JourneyGuideView(
+                guidance: guidance,
+                regionCatalog: deps.regionCatalog,
+                state: pinState,
+                ticketCount: { usableTickets(for: $0).count },
+                onTravel: { travelTarget = $0 },
+                onOpenMainline: onOpenMainline
+            )
+            .dynamicTypeSize(...DynamicTypeSize.large)
+            .id(guidance)
+            .transition(.opacity.combined(with: .scale(scale: 0.98, anchor: .bottom)))
+            .padding(.horizontal, DSSpacing.md)
+            .padding(.bottom, DSSpacing.md)
+        }
     }
 
     private var mapHUD: some View {
@@ -311,9 +339,56 @@ public struct MapView: View {
     }
 
     private var mapBottomPadding: CGFloat {
-        let selectionPadding: CGFloat = selectedRegion == nil ? 0 : 78
         let guidancePadding: CGFloat = guidance == nil ? 0 : 172
-        return DSSpacing.md + selectionPadding + guidancePadding
+        return DSSpacing.md + guidancePadding
+    }
+
+    private func select(_ region: Region) {
+        guard selectedRegionID != region.id else { return }
+        selectedRegionID = region.id
+        Haptics.selection()
+    }
+
+    private func selectRegion(at location: CGPoint, using proxy: MapProxy) {
+        let nearest = deps.regionCatalog.regions.compactMap { region -> (Region, CGFloat)? in
+            guard let anchor = proxy.convert(coordinate(region), to: .local) else { return nil }
+
+            let hitRect = CGRect(
+                x: anchor.x - 46,
+                y: anchor.y - 82,
+                width: 92,
+                height: 92
+            )
+            guard hitRect.contains(location) else { return nil }
+
+            let visualCenter = CGPoint(x: anchor.x, y: anchor.y - 36)
+            let dx = location.x - visualCenter.x
+            let dy = location.y - visualCenter.y
+            return (region, dx * dx + dy * dy)
+        }
+        .min { $0.1 < $1.1 }
+
+        if let region = nearest?.0 {
+            select(region)
+        } else {
+            selectedRegionID = nil
+        }
+    }
+
+    private func actionPoint(
+        for region: Region,
+        using proxy: MapProxy,
+        in size: CGSize,
+        revision _: Int
+    ) -> CGPoint? {
+        guard let anchor = proxy.convert(coordinate(region), to: .local) else { return nil }
+        let point = CGPoint(
+            x: min(max(anchor.x, 72), size.width - 72),
+            y: anchor.y + 20
+        )
+        let maximumY = size.height - mapBottomPadding - 20
+        guard point.y >= 122, point.y <= maximumY else { return nil }
+        return point
     }
 
     private func resetOverview() {
