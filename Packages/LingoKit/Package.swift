@@ -84,8 +84,16 @@ let domainTargets: [Target] = [
     ),
 ]
 
-func feature(_ name: String, dependencies: [Target.Dependency]) -> Target {
-    .target(name: name, dependencies: [module("DesignSystem")] + dependencies)
+func feature(
+    _ name: String,
+    dependencies: [Target.Dependency],
+    resources: [Resource]? = nil
+) -> Target {
+    .target(
+        name: name,
+        dependencies: [module("DesignSystem")] + dependencies,
+        resources: resources
+    )
 }
 
 let featureTargets: [Target] = [
@@ -133,7 +141,7 @@ let featureTargets: [Target] = [
     ]),
     feature("RosterFeature", dependencies: [
         module("PersistenceKit"),
-    ]),
+    ], resources: [.process("Shaders")]),
     feature("MapFeature", dependencies: [
         module("DomainKit"),
         module("PersistenceKit"),

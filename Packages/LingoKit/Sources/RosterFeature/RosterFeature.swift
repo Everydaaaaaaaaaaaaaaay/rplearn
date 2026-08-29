@@ -2,6 +2,7 @@ import DesignSystem
 import Foundation
 import PersistenceKit
 import SwiftUI
+import UIKit
 
 public struct RosterDependencies: Sendable {
     public let rosterStore: RosterStore
@@ -85,7 +86,6 @@ public struct RosterView: View {
     @AppStorage("lingotrip.roster.friend-group-expanded")
     private var isFriendGroupExpanded = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -609,18 +609,15 @@ public struct RosterView: View {
                     protectsAgainstBackdrop: !isCapacityNearLimit
                 )
         } icon: {
-            Image(systemName: isCapacityNearLimit ? "person.crop.circle.badge.exclamationmark" : "person.2")
-                .foregroundStyle(
-                    isCapacityNearLimit
-                        ? AnyShapeStyle(Color.dsWarning)
-                        : AnyShapeStyle(reduceTransparency ? Color.primary : Color.white.opacity(0.82))
-                )
-                .shadow(
-                    color: .black.opacity(reduceTransparency ? 0 : 0.58),
-                    radius: 0.8,
-                    y: 0.4
-                )
-                .accessibilityHidden(true)
+            if isCapacityNearLimit {
+                Image(systemName: "person.crop.circle.badge.exclamationmark")
+                    .foregroundStyle(Color.dsWarning)
+                    .accessibilityHidden(true)
+            } else {
+                Image(systemName: "person.2")
+                    .rosterGlassSymbol(opacity: 0.82)
+                    .accessibilityHidden(true)
+            }
         }
         .font(.footnote)
         .fontWeight(isCapacityNearLimit ? .semibold : .regular)
@@ -841,23 +838,20 @@ private struct RosterGlassSymbolModifier: ViewModifier {
 
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
+    @ViewBuilder
     func body(content: Content) -> some View {
-        content
-            .foregroundStyle(
-                reduceTransparency
-                    ? AnyShapeStyle(Color.primary)
-                    : AnyShapeStyle(Color.white.opacity(opacity))
-            )
-            .shadow(
-                color: .white.opacity(reduceTransparency ? 0 : 0.34),
-                radius: 0.35,
-                y: -0.25
-            )
-            .shadow(
-                color: .black.opacity(reduceTransparency ? 0 : 0.72),
-                radius: 0.9,
-                y: 0.45
-            )
+        if reduceTransparency {
+            content.foregroundStyle(Color.primary)
+        } else {
+            ZStack {
+                content
+                    .foregroundStyle(Color.white.opacity(opacity))
+                    .blendMode(.difference)
+                content
+                    .foregroundStyle(Color.white.opacity(opacity * 0.12))
+            }
+            .shadow(color: .black.opacity(0.72), radius: 0.9, y: 0.45)
+        }
     }
 }
 
@@ -867,36 +861,62 @@ private struct RosterGlassInkModifier: ViewModifier {
     let ink: Color
     let protectsAgainstBackdrop: Bool
 
+    @State private var globalFrame = CGRect.zero
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
 
+    @ViewBuilder
     func body(content: Content) -> some View {
         let usesBackdropProtection = protectsAgainstBackdrop && !reduceTransparency
         let effectiveEdgeStrength = contrast == .increased
             ? max(edgeStrength, 0.84)
             : edgeStrength
 
-        content
-            .foregroundStyle(
-                usesBackdropProtection
-                    ? AnyShapeStyle(ink)
-                    : AnyShapeStyle(protectsAgainstBackdrop ? Color.primary : ink)
-            )
-            .textRenderer(
-                RosterGlyphLegibilityRenderer(
-                    opacity: opacity,
-                    edgeStrength: usesBackdropProtection ? effectiveEdgeStrength : 0
+        if usesBackdropProtection {
+            content
+                .foregroundStyle(ink)
+                .textRenderer(
+                    RosterGlyphLegibilityRenderer(
+                        faceOpacity: opacity,
+                        edgeStrength: effectiveEdgeStrength,
+                        globalFrame: globalFrame,
+                        screenSize: UIScreen.main.bounds.size,
+                        usesSceneAdaptation: true
+                    )
                 )
-            )
+                .background {
+                    Color.clear
+                        .onGeometryChange(for: CGRect.self) { proxy in
+                            proxy.frame(in: .global)
+                        } action: { frame in
+                            globalFrame = frame
+                        }
+                }
+        } else {
+            content
+                .foregroundStyle(protectsAgainstBackdrop ? Color.primary : ink)
+                .textRenderer(
+                    RosterGlyphLegibilityRenderer(
+                        faceOpacity: opacity,
+                        edgeStrength: 0,
+                        globalFrame: .zero,
+                        screenSize: .zero,
+                        usesSceneAdaptation: false
+                    )
+                )
+        }
     }
 }
 
-/// Protects the exact alpha contour of every glyph without tinting the surrounding photo.
-/// The bright face separates from dark detail while the two sub-point dark passes separate
-/// it from bright and mid-luminance detail; no label-wide luminance decision is required.
+/// Maps the scene through the exact alpha contour of every glyph, then protects that contour
+/// from glass-refraction error with two sub-point edge passes. The global frame is refreshed
+/// continuously while scrolling, so no label-wide luminance decision or delayed animation is needed.
 private struct RosterGlyphLegibilityRenderer: TextRenderer {
-    let opacity: Double
+    let faceOpacity: Double
     let edgeStrength: Double
+    let globalFrame: CGRect
+    let screenSize: CGSize
+    let usesSceneAdaptation: Bool
 
     var displayPadding: EdgeInsets {
         EdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
@@ -931,9 +951,68 @@ private struct RosterGlyphLegibilityRenderer: TextRenderer {
             draw(layout, in: &contactEdge)
         }
 
-        var inkContext = context
-        inkContext.opacity = opacity
-        draw(layout, in: &inkContext)
+        if usesSceneAdaptation, !globalFrame.isEmpty {
+            drawSceneAdaptiveInk(layout, in: &context)
+        } else {
+            var readabilityFace = context
+            readabilityFace.opacity = faceOpacity
+            draw(layout, in: &readabilityFace)
+        }
+    }
+
+    private func drawSceneAdaptiveInk(
+        _ layout: Text.Layout,
+        in context: inout GraphicsContext
+    ) {
+        var sceneInk = context
+        sceneInk.opacity = faceOpacity
+        sceneInk.clipToLayer { maskContext in
+            draw(layout, in: &maskContext)
+        }
+        sceneInk.addFilter(
+            .blur(radius: 8, options: .dithersResult),
+            options: .linearColor
+        )
+        sceneInk.addFilter(
+            .colorShader(
+                ShaderLibrary.bundle(.module).rosterAdaptiveInk(
+                    .float(globalFrame.minY),
+                    .float(screenSize.height)
+                )
+            )
+        )
+
+        let resolvedScene = sceneInk.resolve(Image("contacts_london_glass"))
+        let sourceSize = resolvedScene.size
+        guard
+            sourceSize.width > 0,
+            sourceSize.height > 0,
+            screenSize.width > 0,
+            screenSize.height > 0
+        else {
+            draw(layout, in: &sceneInk)
+            return
+        }
+
+        let scale = max(
+            screenSize.width / sourceSize.width,
+            screenSize.height / sourceSize.height
+        )
+        let renderedSize = CGSize(
+            width: sourceSize.width * scale,
+            height: sourceSize.height * scale
+        )
+        let crop = CGSize(
+            width: max(renderedSize.width - screenSize.width, 0) / 2,
+            height: max(renderedSize.height - screenSize.height, 0) / 2
+        )
+        let sceneRect = CGRect(
+            x: -crop.width - globalFrame.minX,
+            y: -crop.height - globalFrame.minY,
+            width: renderedSize.width,
+            height: renderedSize.height
+        )
+        sceneInk.draw(resolvedScene, in: sceneRect)
     }
 
     private func draw(_ layout: Text.Layout, in context: inout GraphicsContext) {
