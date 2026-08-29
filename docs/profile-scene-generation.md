@@ -25,10 +25,31 @@
 
 ## 当前 UI 方向
 
-- 图标和文字使用克制的暖白/象牙白全息投影，最多只允许一种低饱和辅助色。
+- 背景图片只包含桌面、地图和真实旅行物件，禁止烘焙任何功能图标、标题或用户数据。
+- 记忆、收藏、设置、登录等固定入口也与动态入口共用 SwiftUI 组件，避免图片文字与代码文字风格不一致。
+- 图标和文字使用克制的暖白/象牙白全息投影，金币可使用一种低饱和琥珀辅助色。
 - 不使用石墨、金属或其他现实固体材质。
 - 全息层与承载物保持相同透视，但悬浮约 20–25 mm。
 - 通过清晰全息层与承载物表面失焦光迹的视差表现高度。
 - 不生成按钮底板、发光矩形、边框、光柱或强烈霓虹效果。
 - 每组图标与文字占承载物可用面积的约 60%–80%，保证手机尺寸下醒目可辨。
 - 画布顶部至少 170 px 保持安静，状态栏与灵动岛范围内不得放置文字、图标或关键物件。
+- 运行时统一使用 SwiftUI 3D 旋转、逐字 `TextRenderer` 光晕、失焦投影足迹和可中断弹簧按压反馈；减少动态效果开启时取消环境悬浮。
+
+## 运行时渲染架构
+
+- `TextRenderer` 分别绘制字形主体、暗色轮廓与低强度光晕，避免把动态文本预先栅格化进图片。
+- SwiftUI 3D 旋转负责匹配各个物件的局部透视；第二份低透明度、失焦且带视差的内容作为物体表面的投影足迹。
+- `phaseAnimator` 只驱动小幅位移和亮度，按钮按压使用可中断弹簧；所有入口都保留原生 Button/NavigationLink 语义和 VoiceOver 标签。
+- 当前固定俯视场景不使用 RealityKit：完整 3D 场景会引入模型、灯光、相机和纹理资产管线，却不会显著改善这种二维构图。
+- 当前不使用 Core Image 透视滤镜：它更适合处理已经栅格化的图片，会削弱实时文本、动态类型和辅助功能能力。
+- Metal Shader 预留为后续可选增强，仅在需要扫描线、折射或逐像素噪声时引入；基础光晕无需为此增加 GPU 管线复杂度。
+
+参考：
+
+- <https://developer.apple.com/documentation/swiftui/creating-visual-effects-with-swiftui>
+- <https://developer.apple.com/documentation/swiftui/textrenderer>
+- <https://developer.apple.com/documentation/swiftui/view/projectioneffect(_:)>
+- <https://developer.apple.com/documentation/swiftui/shader>
+- <https://developer.apple.com/documentation/coreimage/cifilter-swift.class/perspectivetransform()>
+- <https://developer.apple.com/documentation/realitykit/presentation-views-and-attachments>
