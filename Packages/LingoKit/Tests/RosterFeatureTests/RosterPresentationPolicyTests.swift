@@ -19,6 +19,10 @@ struct RosterPresentationPolicyTests {
                 .map(\.card.name) == ["Ben", "Zoe"]
         )
         #expect(
+            RosterPresentationPolicy.friendGroupContacts(in: contacts)
+                .map(\.card.name) == ["Amy"]
+        )
+        #expect(
             RosterPresentationPolicy.favoriteContacts(in: contacts, isSearching: true).isEmpty
         )
         #expect(
