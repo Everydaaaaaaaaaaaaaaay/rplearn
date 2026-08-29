@@ -49,10 +49,11 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
 
     var id: String { partOfSpeech }
     var partOfSpeechLabel: String { senses.first?.partOfSpeechLabel ?? partOfSpeech }
+    var definitionLines: [String] {
+        senses.map { DictDisplayText.semicolonTerminated($0.definition) }
+    }
     var definitionText: String {
-        senses
-            .map { DictDisplayText.normalizedWhitespace($0.definition) }
-            .joined(separator: "; ")
+        definitionLines.joined(separator: "\n")
     }
     var synonymText: String? {
         var seen = Set<String>()
@@ -60,7 +61,9 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
             .flatMap(\.synonyms)
             .filter { seen.insert($0.lowercased()).inserted }
             .prefix(6)
-        return synonyms.isEmpty ? nil : "≈ \(synonyms.joined(separator: " · "))"
+        return synonyms.isEmpty
+            ? nil
+            : DictDisplayText.semicolonTerminated("≈ \(synonyms.joined(separator: " · "))")
     }
 }
 
@@ -69,10 +72,11 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
     let definitions: [String]
 
     var id: String { "\(partOfSpeechLabel)-\(definitions.joined())" }
+    var definitionLines: [String] {
+        definitions.map(DictDisplayText.semicolonTerminated)
+    }
     var definitionText: String {
-        definitions
-            .map(DictDisplayText.normalizedWhitespace)
-            .joined(separator: "; ")
+        definitionLines.joined(separator: "\n")
     }
 }
 
@@ -100,6 +104,15 @@ enum DictDisplayText {
             .split(whereSeparator: { $0.isWhitespace })
             .joined(separator: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    static func semicolonTerminated(_ text: String) -> String {
+        let normalized = normalizedWhitespace(text)
+        let stem = normalized.trimmingCharacters(
+            in: CharacterSet(charactersIn: " \t\n\r,.;，。；")
+        )
+        guard !stem.isEmpty else { return normalized }
+        return "\(stem);"
     }
 }
 
@@ -702,12 +715,14 @@ public struct DictCardView: View {
                     HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
                         VStack(alignment: .leading, spacing: 3) {
-                            tappableDictionaryText(
-                                group.definitionText,
-                                contextID: "dict-\(entry.word)-sense-\(group.id)"
-                            )
+                            ForEach(Array(group.definitionLines.enumerated()), id: \.offset) { index, definition in
+                                tappableDictionaryText(
+                                    definition,
+                                    contextID: "dict-\(entry.word)-sense-\(group.id)-\(index)"
+                                )
                                 .lineSpacing(1)
                                 .fixedSize(horizontal: false, vertical: true)
+                            }
                             if let synonyms = group.synonymText {
                                 tappableDictionaryText(
                                     synonyms,
@@ -726,13 +741,17 @@ public struct DictCardView: View {
                 ForEach(fallbackGroups) { group in
                     HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
                         englishPartOfSpeechText(group.partOfSpeechLabel)
-                        tappableDictionaryText(
-                            group.definitionText,
-                            contextID: "dict-\(entry.word)-fallback-\(group.id)"
-                        )
+                        VStack(alignment: .leading, spacing: 3) {
+                            ForEach(Array(group.definitionLines.enumerated()), id: \.offset) { index, definition in
+                                tappableDictionaryText(
+                                    definition,
+                                    contextID: "dict-\(entry.word)-fallback-\(group.id)-\(index)"
+                                )
+                                .lineSpacing(1)
+                                .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
                         .font(.subheadline)
-                        .lineSpacing(1)
-                        .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
@@ -755,7 +774,7 @@ public struct DictCardView: View {
         tokens.append(
             TextToken(
                 id: tokens.count,
-                display: example.annotation,
+                display: " \(example.annotation)",
                 word: nil
             )
         )
@@ -795,22 +814,17 @@ public struct DictCardView: View {
                 Divider()
                 compactSectionTitle("例句")
                 ForEach(groups) { group in
-                    HStack(
-                        alignment: .firstTextBaseline,
-                        spacing: DictCardLayout.definitionColumnSpacing
-                    ) {
-                        englishPartOfSpeechText(group.partOfSpeechLabel)
-                        VStack(alignment: .leading, spacing: 6) {
-                            ForEach(Array(group.examples.enumerated()), id: \.element.id) { index, example in
-                                tappableExampleText(
-                                    example,
-                                    contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
-                                )
-                                .font(.subheadline)
-                                .lineSpacing(1)
-                            }
+                    VStack(alignment: .leading, spacing: 6) {
+                        ForEach(Array(group.examples.enumerated()), id: \.element.id) { index, example in
+                            tappableExampleText(
+                                example,
+                                contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
+                            )
+                            .font(.subheadline)
+                            .lineSpacing(1)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }

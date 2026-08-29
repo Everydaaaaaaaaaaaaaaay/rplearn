@@ -36,6 +36,8 @@ struct DictMeaningGroupTests {
         let unknown = DictEntry(word: "test", translation: "[短语]释义").meaningGroups.first
         let missing = DictEntry(word: "test", translation: "普通释义").meaningGroups.first
 
+        #expect(unknown?.partOfSpeech == "释义")
+        #expect(unknown?.meaning == "【短语】释义")
         #expect(unknown?.partOfSpeechAbbreviation == nil)
         #expect(missing?.partOfSpeechAbbreviation == nil)
     }

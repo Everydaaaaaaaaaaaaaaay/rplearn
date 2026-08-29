@@ -62,8 +62,8 @@ struct DictDatabaseTests {
         let groups = DictSenseDisplayPolicy.groups(for: senses)
 
         #expect(groups.map(\.partOfSpeech) == ["n", "v", "a"])
-        #expect(groups[1].definitionText == "first verb; second verb")
-        #expect(groups[1].synonymText == "≈ make · prepare")
+        #expect(groups[1].definitionText == "first verb;\nsecond verb;")
+        #expect(groups[1].synonymText == "≈ make · prepare;")
     }
 
     @Test("英文回退释义恢复续行并把词性显示为中文")
@@ -80,7 +80,7 @@ struct DictDatabaseTests {
         #expect(groups.map(\.partOfSpeechLabel) == ["代词", "连词"])
         #expect(
             groups[0].definitionText
-                == "Which (of two); which one (of two); -- used interrogatively and relatively."
+                == "Which (of two); which one (of two); -- used interrogatively and relatively;"
         )
         #expect(!groups.map(\.definitionText).joined().contains("#"))
     }
@@ -190,6 +190,17 @@ struct DictDatabaseTests {
         #expect(fine.meaningGroups.contains { $0.partOfSpeech == "名词" })
         #expect(fine.meaningGroups.contains { $0.partOfSpeech == "形容词" })
         #expect(go.wordForms.contains { $0.label == "过去式" && $0.word == "went" })
+    }
+
+    @Test("领域标签不再被误当词性")
+    func domainLabelIsSeparatedFromPartOfSpeech() async throws {
+        let db = try openDatabase()
+        let raining = try #require(await db.lookup("raining"))
+        let meaning = try #require(raining.meaningGroups.first)
+
+        #expect(meaning.partOfSpeech == "现在分词")
+        #expect(meaning.meaning == "【化学】淋降现象")
+        #expect(meaning.partOfSpeechAbbreviation == "v.")
     }
 
     @Test("大小写不敏感")

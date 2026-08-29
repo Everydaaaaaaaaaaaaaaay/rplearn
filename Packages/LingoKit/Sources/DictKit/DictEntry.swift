@@ -29,6 +29,13 @@ enum DictPartOfSpeechDisplay {
         "冠词": "art.",
         "及物动词": "vt.",
         "不及物动词": "vi.",
+        "现在分词": "v.",
+        "过去式": "v.",
+        "过去分词": "v.",
+        "第三人称单数": "v.",
+        "复数": "n.",
+        "比较级": "adj.",
+        "最高级": "adj.",
     ]
 
     static let prefixedLabels: [(prefix: String, label: String)] = [
@@ -74,6 +81,32 @@ enum DictPartOfSpeechDisplay {
 
     static func abbreviation(forLabel label: String) -> String? {
         abbreviationsByLabel[label]
+    }
+
+    static func explicitLabel(forBracketLabel label: String) -> String? {
+        let trimmed = label.trimmingCharacters(in: .whitespacesAndNewlines)
+        if abbreviationsByLabel[trimmed] != nil {
+            return trimmed
+        }
+        let normalized = trimmed.lowercased()
+        if let match = prefixedLabels.first(where: {
+            normalized == $0.prefix.trimmingCharacters(in: CharacterSet(charactersIn: "."))
+                || normalized == $0.prefix
+        }) {
+            return match.label
+        }
+        return ["pl", "pl."].contains(normalized) ? "名词" : nil
+    }
+
+    static func expandedDomainLabel(_ label: String) -> String {
+        switch label.trimmingCharacters(in: .whitespacesAndNewlines) {
+        case "化": "化学"
+        case "医": "医学"
+        case "计": "计算机"
+        case "经": "经济"
+        case "法": "法律"
+        default: label
+        }
     }
 
     static func splitPrefixedDefinition(
@@ -167,7 +200,8 @@ public struct DictEntry: Sendable, Equatable {
     }
 
     public var meaningGroups: [DictMeaningGroup] {
-        translationLines.map { line in
+        let fallbackPartOfSpeech = inferredMeaningPartOfSpeechLabel
+        return translationLines.map { line in
             let value = line.trimmingCharacters(in: .whitespacesAndNewlines)
             for (prefix, label) in DictPartOfSpeechDisplay.prefixedLabels {
                 guard value.lowercased().hasPrefix(prefix) else { continue }
@@ -178,16 +212,41 @@ public struct DictEntry: Sendable, Equatable {
                 }
             }
             if value.hasPrefix("["), let end = value.firstIndex(of: "]") {
-                let label = String(value[value.index(after: value.startIndex)..<end])
+                let sourceLabel = String(value[value.index(after: value.startIndex)..<end])
                 let meaning = value[value.index(after: end)...]
                     .trimmingCharacters(in: .whitespacesAndNewlines)
                 if !meaning.isEmpty {
-                    return DictMeaningGroup(partOfSpeech: label, meaning: meaning)
+                    if let label = DictPartOfSpeechDisplay.explicitLabel(
+                        forBracketLabel: sourceLabel
+                    ) {
+                        return DictMeaningGroup(partOfSpeech: label, meaning: meaning)
+                    }
+                    let domain = DictPartOfSpeechDisplay.expandedDomainLabel(sourceLabel)
+                    return DictMeaningGroup(
+                        partOfSpeech: fallbackPartOfSpeech,
+                        meaning: "【\(domain)】\(meaning)"
+                    )
                 }
             }
             return DictMeaningGroup(partOfSpeech: nil, meaning: value)
         }
         .filter { !$0.meaning.isEmpty }
+    }
+
+    private var inferredMeaningPartOfSpeechLabel: String {
+        if wordForms.contains(where: {
+            $0.label == "原形" && $0.word.caseInsensitiveCompare(word) != .orderedSame
+        }), let form = wordForms.first(where: {
+            $0.label != "原形" && $0.word.caseInsensitiveCompare(word) == .orderedSame
+        }) {
+            return form.label
+        }
+
+        let senseLabels = Set(senses.map(\.partOfSpeechLabel))
+        if senseLabels.count == 1, let label = senseLabels.first {
+            return label
+        }
+        return "释义"
     }
 
     public var fallbackEnglishDefinitions: [String] {
