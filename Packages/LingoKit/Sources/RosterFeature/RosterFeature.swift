@@ -1051,7 +1051,7 @@ public struct CharacterProfileView: View {
     private let callBuilder: (@MainActor (CharacterDTO) -> AnyView)?
 
     @State private var isFavorite: Bool
-    @State private var relationship: RelationshipSnapshot
+    @State private var relationship: PersistenceKit.RelationshipSnapshot
     @State private var isUpdatingFavorite = false
     @State private var failedFavoriteTarget: Bool?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
