@@ -2,7 +2,6 @@ import DesignSystem
 import Foundation
 import PersistenceKit
 import SwiftUI
-import UIKit
 
 public struct RosterDependencies: Sendable {
     public let rosterStore: RosterStore
@@ -86,6 +85,7 @@ public struct RosterView: View {
     @AppStorage("lingotrip.roster.friend-group-expanded")
     private var isFriendGroupExpanded = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -440,11 +440,11 @@ public struct RosterView: View {
 
                 Text(title)
                     .font(.headline.weight(.semibold))
-                    .rosterAdaptiveGlassForeground()
+                    .rosterGlassInk()
 
                 Text("\(count)")
                     .font(.caption.weight(.semibold).monospacedDigit())
-                    .rosterAdaptiveGlassForeground(opacity: 0.84, edgeStrength: 0.5)
+                    .rosterGlassInk(opacity: 0.84, edgeStrength: 0.5)
 
                 Spacer(minLength: DSSpacing.xs)
 
@@ -452,7 +452,7 @@ public struct RosterView: View {
                     .font(.caption.weight(.bold))
                     .rotationEffect(.degrees(isExpanded ? 0 : -90))
                     .frame(width: 28, height: 28)
-                    .rosterAdaptiveGlassForeground(opacity: 0.92, edgeStrength: 0.55)
+                    .rosterGlassSymbol(opacity: 0.92)
             }
             .frame(maxWidth: .infinity, minHeight: 44)
             .padding(.horizontal, DSSpacing.md)
@@ -531,7 +531,7 @@ public struct RosterView: View {
                     .font(.body.weight(.bold))
                     .lineLimit(accessibilityLayout ? 2 : 1)
                     .fixedSize(horizontal: false, vertical: true)
-                    .rosterAdaptiveGlassForeground()
+                    .rosterGlassInk()
 
                 if character.isFavorite {
                     Image(systemName: "star.fill")
@@ -545,7 +545,7 @@ public struct RosterView: View {
                 .font(.subheadline.weight(.medium))
                 .lineLimit(accessibilityLayout ? 3 : 1)
                 .fixedSize(horizontal: false, vertical: true)
-                .rosterAdaptiveGlassForeground(opacity: 0.88, edgeStrength: 0.52)
+                .rosterGlassInk(opacity: 0.88, edgeStrength: 0.58)
         }
     }
 
@@ -602,18 +602,28 @@ public struct RosterView: View {
         Label {
             Text("好友位 \(occupiedSlots)/\(slotLimit) · 剧情旅伴不占好友位")
                 .monospacedDigit()
+                .rosterGlassInk(
+                    opacity: isCapacityNearLimit ? 1 : 0.82,
+                    edgeStrength: isCapacityNearLimit ? 0.72 : 0.56,
+                    ink: isCapacityNearLimit ? .dsWarning : .white,
+                    protectsAgainstBackdrop: !isCapacityNearLimit
+                )
         } icon: {
             Image(systemName: isCapacityNearLimit ? "person.crop.circle.badge.exclamationmark" : "person.2")
+                .foregroundStyle(
+                    isCapacityNearLimit
+                        ? AnyShapeStyle(Color.dsWarning)
+                        : AnyShapeStyle(reduceTransparency ? Color.primary : Color.white.opacity(0.82))
+                )
+                .shadow(
+                    color: .black.opacity(reduceTransparency ? 0 : 0.58),
+                    radius: 0.8,
+                    y: 0.4
+                )
                 .accessibilityHidden(true)
         }
         .font(.footnote)
         .fontWeight(isCapacityNearLimit ? .semibold : .regular)
-        .foregroundStyle(
-            isCapacityNearLimit
-                ? AnyShapeStyle(Color.dsWarning)
-                : AnyShapeStyle(Color.white.opacity(0.82))
-        )
-        .shadow(color: .black.opacity(0.72), radius: 2, y: 1)
         .accessibilityLabel(
             "好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个。剧情旅伴不占好友位"
         )
@@ -805,244 +815,131 @@ private struct RosterGlassIslandModifier: ViewModifier {
 }
 
 private extension View {
-    func rosterAdaptiveGlassForeground(
+    func rosterGlassInk(
         opacity: Double = 1,
-        edgeStrength: Double = 0.64
+        edgeStrength: Double = 0.64,
+        ink: Color = .white,
+        protectsAgainstBackdrop: Bool = true
     ) -> some View {
         modifier(
-            RosterAdaptiveGlassForegroundModifier(
+            RosterGlassInkModifier(
                 opacity: opacity,
-                edgeStrength: edgeStrength
+                edgeStrength: edgeStrength,
+                ink: ink,
+                protectsAgainstBackdrop: protectsAgainstBackdrop
             )
         )
     }
+
+    func rosterGlassSymbol(opacity: Double = 1) -> some View {
+        modifier(RosterGlassSymbolModifier(opacity: opacity))
+    }
 }
 
-private struct RosterAdaptiveGlassForegroundModifier: ViewModifier {
+private struct RosterGlassSymbolModifier: ViewModifier {
+    let opacity: Double
+
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(
+                reduceTransparency
+                    ? AnyShapeStyle(Color.primary)
+                    : AnyShapeStyle(Color.white.opacity(opacity))
+            )
+            .shadow(
+                color: .white.opacity(reduceTransparency ? 0 : 0.34),
+                radius: 0.35,
+                y: -0.25
+            )
+            .shadow(
+                color: .black.opacity(reduceTransparency ? 0 : 0.72),
+                radius: 0.9,
+                y: 0.45
+            )
+    }
+}
+
+private struct RosterGlassInkModifier: ViewModifier {
     let opacity: Double
     let edgeStrength: Double
+    let ink: Color
+    let protectsAgainstBackdrop: Bool
 
-    @State private var usesDarkInk = false
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
 
     func body(content: Content) -> some View {
+        let usesBackdropProtection = protectsAgainstBackdrop && !reduceTransparency
+        let effectiveEdgeStrength = contrast == .increased
+            ? max(edgeStrength, 0.84)
+            : edgeStrength
+
         content
-            .foregroundStyle(inkColor)
-            .shadow(color: edgeColor, radius: 1.6, y: 0.8)
-            .background {
-                Color.clear
-                    .onGeometryChange(for: CGRect.self) { proxy in
-                        proxy.frame(in: .global)
-                    } action: { frame in
-                        updateInk(for: frame)
-                    }
-            }
-    }
-
-    private var inkColor: Color {
-        (effectivelyUsesDarkInk ? Color.black : Color.white).opacity(opacity)
-    }
-
-    private var edgeColor: Color {
-        (effectivelyUsesDarkInk ? Color.white : Color.black)
-            .opacity(effectivelyUsesDarkInk ? edgeStrength * 0.42 : edgeStrength)
-    }
-
-    private var effectivelyUsesDarkInk: Bool {
-        usesDarkInk && !reduceTransparency && contrast != .increased
-    }
-
-    private func updateInk(for frame: CGRect) {
-        let nextValue = RosterBackdropLuminanceSampler.shouldUseDarkInk(
-            behind: frame,
-            screenSize: UIScreen.main.bounds.size,
-            currentlyUsingDarkInk: usesDarkInk
-        )
-        guard nextValue != usesDarkInk else { return }
-
-        withAnimation(reduceMotion ? nil : .easeOut(duration: 0.16)) {
-            usesDarkInk = nextValue
-        }
+            .foregroundStyle(
+                usesBackdropProtection
+                    ? AnyShapeStyle(ink)
+                    : AnyShapeStyle(protectsAgainstBackdrop ? Color.primary : ink)
+            )
+            .textRenderer(
+                RosterGlyphLegibilityRenderer(
+                    opacity: opacity,
+                    edgeStrength: usesBackdropProtection ? effectiveEdgeStrength : 0
+                )
+            )
     }
 }
 
-@MainActor
-private enum RosterBackdropLuminanceSampler {
-    private struct LuminanceMap {
-        let values: [UInt8]
-        let width: Int
-        let height: Int
-        let imageSize: CGSize
+/// Protects the exact alpha contour of every glyph without tinting the surrounding photo.
+/// The bright face separates from dark detail while the two sub-point dark passes separate
+/// it from bright and mid-luminance detail; no label-wide luminance decision is required.
+private struct RosterGlyphLegibilityRenderer: TextRenderer {
+    let opacity: Double
+    let edgeStrength: Double
 
-        func value(x: Int, y: Int) -> Double {
-            let clampedX = min(max(x, 0), width - 1)
-            let clampedY = min(max(y, 0), height - 1)
-            return Double(values[clampedY * width + clampedX]) / 255
-        }
+    var displayPadding: EdgeInsets {
+        EdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
     }
 
-    private static let luminanceMap = makeLuminanceMap()
+    func draw(layout: Text.Layout, in context: inout GraphicsContext) {
+        if edgeStrength > 0 {
+            var ambientEdge = context
+            ambientEdge.opacity = edgeStrength * 0.64
+            ambientEdge.addFilter(
+                .shadow(
+                    color: .black.opacity(0.82),
+                    radius: 1.3,
+                    y: 0.55,
+                    options: .shadowOnly
+                ),
+                options: .linearColor
+            )
+            draw(layout, in: &ambientEdge)
 
-    static func shouldUseDarkInk(
-        behind frame: CGRect,
-        screenSize: CGSize,
-        currentlyUsingDarkInk: Bool
-    ) -> Bool {
-        guard
-            let luminanceMap,
-            screenSize.width > 0,
-            screenSize.height > 0,
-            !frame.isEmpty
-        else {
-            return currentlyUsingDarkInk
+            var contactEdge = context
+            contactEdge.opacity = edgeStrength
+            contactEdge.addFilter(
+                .shadow(
+                    color: .black.opacity(0.9),
+                    radius: 0.42,
+                    y: 0.12,
+                    options: .shadowOnly
+                ),
+                options: .linearColor
+            )
+            draw(layout, in: &contactEdge)
         }
 
-        let backgroundLuminance = averageLuminance(
-            behind: frame,
-            screenSize: screenSize,
-            map: luminanceMap
-        )
-        let threshold = currentlyUsingDarkInk ? 0.54 : 0.63
-        return backgroundLuminance >= threshold
+        var inkContext = context
+        inkContext.opacity = opacity
+        draw(layout, in: &inkContext)
     }
 
-    private static func averageLuminance(
-        behind frame: CGRect,
-        screenSize: CGSize,
-        map: LuminanceMap
-    ) -> Double {
-        let horizontalSamples: [CGFloat] = [0.16, 0.38, 0.62, 0.84]
-        let verticalSamples: [CGFloat] = [0.25, 0.5, 0.75]
-        var total = 0.0
-        var count = 0
-
-        for verticalPosition in verticalSamples {
-            for horizontalPosition in horizontalSamples {
-                let screenPoint = CGPoint(
-                    x: frame.minX + frame.width * horizontalPosition,
-                    y: frame.minY + frame.height * verticalPosition
-                )
-                total += sampledLuminance(
-                    at: screenPoint,
-                    screenSize: screenSize,
-                    map: map
-                )
-                count += 1
-            }
+    private func draw(_ layout: Text.Layout, in context: inout GraphicsContext) {
+        for line in layout {
+            context.draw(line)
         }
-
-        let rawAverage = count == 0 ? 0.5 : total / Double(count)
-        return applySceneWashes(
-            to: rawAverage,
-            normalizedY: min(max(frame.midY / screenSize.height, 0), 1)
-        )
-    }
-
-    private static func sampledLuminance(
-        at screenPoint: CGPoint,
-        screenSize: CGSize,
-        map: LuminanceMap
-    ) -> Double {
-        let scale = max(
-            screenSize.width / map.imageSize.width,
-            screenSize.height / map.imageSize.height
-        )
-        let renderedSize = CGSize(
-            width: map.imageSize.width * scale,
-            height: map.imageSize.height * scale
-        )
-        let crop = CGSize(
-            width: max(renderedSize.width - screenSize.width, 0) / 2,
-            height: max(renderedSize.height - screenSize.height, 0) / 2
-        )
-        let imagePoint = CGPoint(
-            x: (screenPoint.x + crop.width) / scale,
-            y: (screenPoint.y + crop.height) / scale
-        )
-        let mapX = Int(imagePoint.x / map.imageSize.width * CGFloat(map.width))
-        let mapY = Int(imagePoint.y / map.imageSize.height * CGFloat(map.height))
-        return map.value(x: mapX, y: mapY)
-    }
-
-    private static func applySceneWashes(
-        to luminance: Double,
-        normalizedY: CGFloat
-    ) -> Double {
-        var adjusted = luminance
-
-        if normalizedY <= 0.42 {
-            let progress = normalizedY / 0.42
-            let whiteWash = 0.17 + (0.06 - 0.17) * Double(progress)
-            adjusted += (1 - adjusted) * whiteWash
-        } else {
-            let progress = (normalizedY - 0.42) / 0.58
-            adjusted *= 1 - 0.12 * Double(progress)
-        }
-
-        let sceneDarkening: Double
-        switch normalizedY {
-        case ..<0.24:
-            sceneDarkening = 0.06 * Double(normalizedY / 0.24)
-        case ..<0.58:
-            sceneDarkening = 0.06 + 0.10 * Double((normalizedY - 0.24) / 0.34)
-        default:
-            sceneDarkening = 0.16 + 0.08 * Double((normalizedY - 0.58) / 0.42)
-        }
-
-        adjusted *= 1 - sceneDarkening
-        adjusted *= 0.89
-        return min(max(adjusted, 0), 1)
-    }
-
-    private static func makeLuminanceMap() -> LuminanceMap? {
-        guard let sourceImage = UIImage(named: "contacts_london_glass")?.cgImage else {
-            return nil
-        }
-
-        let width = 96
-        let height = 120
-        let bytesPerPixel = 4
-        let bytesPerRow = width * bytesPerPixel
-        var pixels = [UInt8](repeating: 0, count: bytesPerRow * height)
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo.byteOrder32Big.rawValue
-            | CGImageAlphaInfo.noneSkipLast.rawValue
-
-        guard let context = CGContext(
-            data: &pixels,
-            width: width,
-            height: height,
-            bitsPerComponent: 8,
-            bytesPerRow: bytesPerRow,
-            space: colorSpace,
-            bitmapInfo: bitmapInfo
-        ) else {
-            return nil
-        }
-
-        context.interpolationQuality = .medium
-        context.draw(sourceImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-
-        var luminanceValues = [UInt8](repeating: 0, count: width * height)
-        for y in 0..<height {
-            for x in 0..<width {
-                let pixelIndex = y * bytesPerRow + x * bytesPerPixel
-                let red = Double(pixels[pixelIndex])
-                let green = Double(pixels[pixelIndex + 1])
-                let blue = Double(pixels[pixelIndex + 2])
-                let luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
-                luminanceValues[y * width + x] = UInt8(min(max(luminance.rounded(), 0), 255))
-            }
-        }
-
-        return LuminanceMap(
-            values: luminanceValues,
-            width: width,
-            height: height,
-            imageSize: CGSize(width: sourceImage.width, height: sourceImage.height)
-        )
     }
 }
 
