@@ -363,12 +363,6 @@ struct RootView: View {
                             if !homePath.isEmpty {
                                 homePath.removeLast()
                             }
-                        },
-                        onOpenMainline: {
-                            if !homePath.isEmpty {
-                                homePath.removeLast()
-                            }
-                            homePath.append(HomeDestination.mainline)
                         }
                     )
                 }

@@ -33,6 +33,16 @@ struct MainlineCatalogTests {
         #expect(marcus.stops.map(\.regionID) == [
             "newyork", "capetown", "melbourne", "london", "singapore",
         ])
+
+        for journey in MainlineCatalog.journeys {
+            #expect(journey.stops.map(\.displayTitle).count == 5)
+            #expect(Set(journey.stops.map(\.displayTitle)).count == 5)
+            #expect(journey.stops[0].displayTitle.hasPrefix("第一章 ·"))
+            #expect(journey.stops[1].displayTitle.hasPrefix("第二章 ·"))
+            #expect(journey.stops[2].displayTitle.hasPrefix("第三章 ·"))
+            #expect(journey.stops[3].displayTitle.hasPrefix("第四章 ·"))
+            #expect(journey.stops[4].displayTitle.hasPrefix("终章 ·"))
+        }
     }
 
     @Test("地图引导不会把当前城市当成下一站")

@@ -227,7 +227,7 @@ final class AppEnvironment {
         needsOnboarding = !profile.hasCompletedOnboarding
     }
 
-    /// 首启引导完成：原子写入路线与起始城市，只解锁用户选择的第一位伙伴。
+    /// 首启引导完成：原子写入路线与起始城市，并开放五座主线城市。
     @discardableResult
     func completeOnboarding(
         selected character: CharacterDTO,

@@ -40,6 +40,14 @@ type ProfileRow = Readonly<{
   version: number;
 }>;
 
+const MAINLINE_REGION_IDS = new Set([
+  "london",
+  "capetown",
+  "newyork",
+  "melbourne",
+  "singapore",
+]);
+
 function mapProfile(
   row: ProfileRow,
   unlockedRegionIds: readonly string[],
@@ -265,7 +273,12 @@ export class DomainRepository {
       }
       await sql`
         insert into app.region_unlocks (user_id, region_id, source)
-        values (${userId}, ${starterRegionId}, 'onboarding')
+        values
+          (${userId}, 'london', 'mainline'),
+          (${userId}, 'capetown', 'mainline'),
+          (${userId}, 'newyork', 'mainline'),
+          (${userId}, 'melbourne', 'mainline'),
+          (${userId}, 'singapore', 'mainline')
         on conflict (user_id, region_id) do nothing
       `;
       const unlocks = await sql<{ region_id: string }[]>`
@@ -833,8 +846,18 @@ export class DomainRepository {
             and region_id = ${targetRegionId}
         ) as present
       `;
-      const unlockedNow = !(existingUnlock?.present ?? false);
+      const hasStoredUnlock = existingUnlock?.present ?? false;
+      const isMainlineRegion = MAINLINE_REGION_IDS.has(targetRegionId);
+      const unlockedNow = !hasStoredUnlock && !isMainlineRegion;
       let consumedTicketId: string | null = null;
+
+      if (!hasStoredUnlock && isMainlineRegion) {
+        await sql`
+          insert into app.region_unlocks (user_id, region_id, source)
+          values (${userId}, ${targetRegionId}, 'mainline')
+          on conflict (user_id, region_id) do nothing
+        `;
+      }
 
       if (unlockedNow) {
         if (ticketId === undefined) {

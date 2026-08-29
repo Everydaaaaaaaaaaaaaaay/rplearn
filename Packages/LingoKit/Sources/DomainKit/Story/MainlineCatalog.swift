@@ -15,17 +15,40 @@ public struct MainlineChapter: Sendable, Equatable, Hashable, Identifiable {
     }
 }
 
-/// 一条主线中的必经城市。完成前一站后才会开放下一站。
+/// 一条主线中的城市章节。五站默认开放，序号由所选路线中的位置决定。
 public struct MainlineStop: Sendable, Equatable, Hashable, Identifiable {
     public let chapter: MainlineChapter
     public let objective: String
+    public let sequenceNumber: Int
+    public let isFinale: Bool
 
     public var id: String { chapter.id }
     public var regionID: String { chapter.regionID }
+    public var displayTitle: String {
+        let heading = isFinale ? "终章" : "第\(Self.chineseNumber(sequenceNumber))章"
+        return "\(heading) · \(chapter.title)"
+    }
 
-    public init(chapter: MainlineChapter, objective: String) {
+    public init(
+        chapter: MainlineChapter,
+        objective: String,
+        sequenceNumber: Int,
+        isFinale: Bool
+    ) {
         self.chapter = chapter
         self.objective = objective
+        self.sequenceNumber = sequenceNumber
+        self.isFinale = isFinale
+    }
+
+    private static func chineseNumber(_ value: Int) -> String {
+        switch value {
+        case 1: "一"
+        case 2: "二"
+        case 3: "三"
+        case 4: "四"
+        default: String(value)
+        }
     }
 }
 
@@ -73,31 +96,31 @@ public enum MainlineCatalog {
     public static let london = MainlineChapter(
         storyID: "mainline_london",
         regionID: "london",
-        title: "第一章 · 雨中的书店",
+        title: "雨中的书店",
         subtitle: "一本旧旅行札记，留下跨越五座城市的第一条回声"
     )
     public static let melbourne = MainlineChapter(
         storyID: "mainline_melbourne",
         regionID: "melbourne",
-        title: "第一章 · 清晨的海",
+        title: "清晨的海",
         subtitle: "Ruby 在潮汐里发现了来自另一片海岸的录音"
     )
     public static let newYork = MainlineChapter(
         storyID: "mainline_newyork",
         regionID: "newyork",
-        title: "第一章 · 快门与地铁",
+        title: "快门与地铁",
         subtitle: "Marcus 的旧胶片拍下了同一个神秘的罗盘符号"
     )
     public static let capeTown = MainlineChapter(
         storyID: "mainline_capetown",
         regionID: "capetown",
-        title: "第二章 · 信号山的回声",
+        title: "信号山的回声",
         subtitle: "把三条线索带到桌山脚下，听见跨越海洋的广播"
     )
     public static let singapore = MainlineChapter(
         storyID: "mainline_singapore",
         regionID: "singapore",
-        title: "终章 · 雨林里的频率",
+        title: "雨林里的频率",
         subtitle: "在新加坡拼合声音地图，决定它下一次被谁听见"
     )
 
@@ -108,6 +131,9 @@ public enum MainlineCatalog {
         capeTown,
         singapore,
     ]
+
+    /// 主线五城属于基础剧情内容，不需要机票即可前往。
+    public static let defaultUnlockedRegionIDs = Set(chapters.map(\.regionID))
 
     public static let journeys: [MainlineJourney] = [
         journey(
@@ -155,7 +181,7 @@ public enum MainlineCatalog {
             }
             return .travel(
                 eyebrow: "主线下一站",
-                title: stop.chapter.title,
+                title: stop.displayTitle,
                 detail: stop.objective,
                 regionIDs: [stop.regionID]
             )
@@ -225,11 +251,19 @@ public enum MainlineCatalog {
             characterOrder[2],
             singapore,
         ]
+        let stops = chapters.enumerated().map { index, chapter in
+            MainlineStop(
+                chapter: chapter,
+                objective: objectives[index],
+                sequenceNumber: index + 1,
+                isFinale: index == chapters.count - 1
+            )
+        }
         return MainlineJourney(
             id: id,
             starterRegionID: starterRegionID,
             title: title,
-            stops: zip(chapters, objectives).map(MainlineStop.init),
+            stops: stops,
             postStoryRegionIDs: postStoryRegionIDs
         )
     }

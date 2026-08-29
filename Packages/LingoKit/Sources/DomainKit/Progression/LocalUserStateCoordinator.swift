@@ -36,8 +36,9 @@ public actor LocalUserStateCoordinator:
         try await economyStore.updateProfile { profile in
             profile.currentRegionID = starterRegionID
             profile.starterRegionID = starterRegionID
-            if !profile.unlockedRegionIDs.contains(starterRegionID) {
-                profile.unlockedRegionIDs.append(starterRegionID)
+            for regionID in MainlineCatalog.journey(starterRegionID: starterRegionID).stops.map(\.regionID)
+            where !profile.unlockedRegionIDs.contains(regionID) {
+                profile.unlockedRegionIDs.append(regionID)
             }
             profile.hasCompletedOnboarding = true
         }

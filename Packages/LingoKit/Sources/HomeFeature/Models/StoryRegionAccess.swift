@@ -9,7 +9,9 @@ enum StoryRegionAccess: Equatable {
     init(regionID: String, profile: UserProfileDTO) {
         if profile.currentRegionID == regionID {
             self = .current
-        } else if profile.unlockedRegionIDs.contains(regionID) {
+        } else if MainlineCatalog.defaultUnlockedRegionIDs.contains(regionID)
+            || profile.unlockedRegionIDs.contains(regionID)
+        {
             self = .unlockedAway
         } else {
             self = .locked

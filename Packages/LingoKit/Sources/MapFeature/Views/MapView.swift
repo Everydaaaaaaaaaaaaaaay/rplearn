@@ -8,11 +8,9 @@ public struct MapView: View {
     private let deps: MapDependencies
     private let reloadToken: Int
     private let onBack: (@MainActor () -> Void)?
-    private let onOpenMainline: @MainActor () -> Void
 
     @State private var profile: UserProfileDTO?
     @State private var tickets: [ItemDTO] = []
-    @State private var completedStories: Set<String> = []
     @State private var selectedRegionID: String?
     @State private var travelTarget: Region?
     @State private var pendingTravelOutcome: TravelOutcome?
@@ -26,13 +24,11 @@ public struct MapView: View {
     public init(
         deps: MapDependencies,
         reloadToken: Int = 0,
-        onBack: (@MainActor () -> Void)? = nil,
-        onOpenMainline: @escaping @MainActor () -> Void = {}
+        onBack: (@MainActor () -> Void)? = nil
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
         self.onBack = onBack
-        self.onOpenMainline = onOpenMainline
     }
 
     private var selectedRegion: Region? {
@@ -43,49 +39,6 @@ public struct MapView: View {
         profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
     }
 
-    private var guidance: JourneyMapGuidance? {
-        #if DEBUG
-        switch ProcessInfo.processInfo.environment["UI_TEST_MAP_GUIDE"] {
-        case "single":
-            return .travel(
-                eyebrow: "主线下一站",
-                title: MainlineCatalog.capeTown.title,
-                detail: "前往信号山追踪跨洋广播，确认这不是一场巧合。",
-                regionIDs: ["capetown"]
-            )
-        case "two":
-            return .travel(
-                eyebrow: "分支目标",
-                title: "选择下一段城市回声",
-                detail: "两个目的地都会推进当前阶段。",
-                regionIDs: ["capetown", "singapore"]
-            )
-        case "multiple":
-            return .travel(
-                eyebrow: "主线之外",
-                title: "把旅程写成自己的故事",
-                detail: "选择一座尚未到访的城市继续探索。",
-                regionIDs: ["dublin", "edinburgh", "vancouver", "auckland"]
-            )
-        case "complete":
-            return .complete(
-                title: "世界地图已经点亮",
-                detail: "返回主线重温旅途，或等待下一段城市故事。"
-            )
-        default:
-            break
-        }
-        #endif
-        guard let profile else { return nil }
-        return MainlineCatalog.mapGuidance(
-            starterRegionID: profile.starterRegionID,
-            currentRegionID: profile.currentRegionID,
-            completedStoryIDs: completedStories,
-            unlockedRegionIDs: Set(profile.unlockedRegionIDs),
-            availableSideRegionIDs: deps.regionCatalog.sideRegions.map(\.id)
-        )
-    }
-
     public var body: some View {
         ZStack {
             Color.dsBackground.ignoresSafeArea()
@@ -93,9 +46,6 @@ public struct MapView: View {
         }
         .overlay(alignment: .top) {
             mapHUD
-        }
-        .overlay(alignment: .bottom) {
-            journeyOverlay
         }
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(for: MapDestination.self) { destination in
@@ -169,9 +119,9 @@ public struct MapView: View {
             selectedRegionID: selectedRegionID,
             viewportRequest: viewportRequest,
             viewportInsets: UIEdgeInsets(
-                top: 122,
+                top: 128,
                 left: 30,
-                bottom: guidance == nil ? 104 : 238,
+                bottom: 104,
                 right: 30
             ),
             onSelect: selectRegion,
@@ -180,101 +130,64 @@ public struct MapView: View {
         .ignoresSafeArea()
     }
 
-    @ViewBuilder
-    private var journeyOverlay: some View {
-        if let guidance {
-            JourneyGuideView(
-                guidance: guidance,
-                regionCatalog: deps.regionCatalog,
-                state: pinState,
-                ticketCount: { usableTickets(for: $0).count },
-                onTravel: { travelTarget = $0 },
-                onOpenMainline: onOpenMainline
-            )
-            .dynamicTypeSize(...DynamicTypeSize.large)
-            .id(guidance)
-            .transition(.opacity.combined(with: .scale(scale: 0.98, anchor: .bottom)))
-            .padding(.horizontal, DSSpacing.md)
-            .padding(.bottom, DSSpacing.md)
-        }
-    }
-
     private var mapHUD: some View {
-        ZStack(alignment: .topTrailing) {
-            MapStatusHUD(
-                currentRegion: currentRegion,
-                ticketCount: tickets.count,
-                coins: profile?.coins
-            )
+        ZStack(alignment: .topLeading) {
+            HStack(alignment: .top, spacing: 8) {
+                if let onBack {
+                    Button(action: onBack) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(Color.dsBrandInk)
+                            .frame(width: 40, height: 44, alignment: .top)
+                            .contentShape(Rectangle())
+                            .shadow(color: .white.opacity(0.78), radius: 2)
+                    }
+                    .buttonStyle(.pressableCard)
+                    .accessibilityLabel("返回首页")
+                }
+
+                MapStatusHUD(
+                    currentRegion: currentRegion
+                )
+                    .layoutPriority(1)
+
+                Spacer(minLength: 0)
+
+                MapResourceHUD(
+                    ticketCount: tickets.count,
+                    coins: profile?.coins
+                )
+            }
             .padding(.horizontal, DSSpacing.md)
             .padding(.top, DSSpacing.xs)
 
-            if let onBack {
-                Button(action: onBack) {
-                    Image(systemName: "chevron.left")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(.primary)
-                        .frame(width: 38, height: 38)
-                        .background(Color.dsSurface.opacity(0.9), in: Circle())
-                        .overlay {
-                            Circle().stroke(.white.opacity(0.72), lineWidth: 1)
-                        }
-                        .shadow(color: .black.opacity(0.11), radius: 6, y: 2)
-                }
-                .buttonStyle(.pressableCard)
-                .accessibilityLabel("返回首页")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, DSSpacing.md)
-                .padding(.top, 58)
+            NavigationLink(value: MapDestination.ticketStubs) {
+                Image(systemName: "ticket.fill")
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundStyle(.black)
+                    .frame(width: 42, height: 42)
+                    .background(.white, in: Circle())
+                    .contentShape(Circle())
+                    .shadow(color: .black.opacity(0.16), radius: 4, x: 0, y: 2)
             }
-
-            HStack(spacing: 8) {
-                Button {
-                    resetOverview()
-                } label: {
-                    Image(systemName: "arrow.up.left.and.arrow.down.right")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(.primary)
-                        .frame(width: 38, height: 38)
-                        .background(Color.dsSurface.opacity(0.9), in: Circle())
-                        .overlay {
-                            Circle().stroke(.white.opacity(0.72), lineWidth: 1)
-                        }
-                        .shadow(color: .black.opacity(0.11), radius: 6, y: 2)
-                }
-                .buttonStyle(.pressableCard)
-                .accessibilityLabel("显示全部目的地")
-
-                NavigationLink(value: MapDestination.ticketStubs) {
-                    Image(systemName: "ticket.fill")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(Color.dsSunset)
-                        .frame(width: 38, height: 38)
-                        .background(Color.dsSurface.opacity(0.9), in: Circle())
-                        .overlay {
-                            Circle().stroke(.white.opacity(0.72), lineWidth: 1)
-                        }
-                        .shadow(color: .black.opacity(0.11), radius: 6, y: 2)
-                }
-                .buttonStyle(.pressableCard)
-                .accessibilityLabel("票根夹")
-            }
-            .padding(.trailing, DSSpacing.md)
+            .buttonStyle(.pressableCard)
+            .accessibilityLabel("票根夹")
+            .padding(.leading, DSSpacing.md)
             .padding(.top, 58)
         }
         .dynamicTypeSize(...DynamicTypeSize.large)
-        .frame(height: 104)
+        .frame(height: 112, alignment: .top)
         .background(alignment: .top) {
             LinearGradient(
                 colors: [
-                    Color.dsBackground.opacity(0.68),
-                    Color.dsBackground.opacity(0.24),
+                    Color.dsBackground.opacity(0.7),
+                    Color.dsBackground.opacity(0.18),
                     .clear,
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
-            .frame(height: 116)
+            .frame(height: 126)
             .ignoresSafeArea(edges: .top)
             .allowsHitTesting(false)
         }
@@ -301,13 +214,7 @@ public struct MapView: View {
     }
 
     private func resetOverview() {
-        let guidedRegions = guidance?.destinationRegionIDs.compactMap(
-            deps.regionCatalog.region(id:)
-        ) ?? []
-        let regions = ([currentRegion].compactMap { $0 } + guidedRegions)
-        if regions.count > 1 {
-            show(regions)
-        } else if let region = regions.first ?? selectedRegion ?? deps.regionCatalog.regions.first {
+        if let region = currentRegion ?? selectedRegion ?? deps.regionCatalog.regions.first {
             show(region)
         }
     }
@@ -320,25 +227,6 @@ public struct MapView: View {
                 center: coordinate(region),
                 distance: 5_800_000
             ),
-            animated: animated && !reduceMotion
-        )
-    }
-
-    private func show(_ regions: [Region], animated: Bool = true) {
-        guard !regions.isEmpty else { return }
-        let points = regions.map { MKMapPoint(coordinate($0)) }
-        var rect = points.reduce(MKMapRect.null) { partial, point in
-            partial.union(MKMapRect(x: point.x, y: point.y, width: 1, height: 1))
-        }
-        let minimumPadding = 1_800_000.0
-        rect = rect.insetBy(
-            dx: -max(rect.width * 0.28, minimumPadding),
-            dy: -max(rect.height * 0.28, minimumPadding)
-        )
-        viewportRevision &+= 1
-        viewportRequest = MapViewportRequest(
-            revision: viewportRevision,
-            target: .rect(rect),
             animated: animated && !reduceMotion
         )
     }
@@ -386,10 +274,8 @@ public struct MapView: View {
     private func reload() async {
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedTickets = try? deps.itemStore.unconsumedTickets()
-        async let loadedStories = try? deps.storyProgress.completedStoryIDs()
         profile = await loadedProfile
         tickets = await loadedTickets ?? []
-        completedStories = await loadedStories ?? []
         if selectedRegionID == nil {
             #if DEBUG
             if let regionID = ProcessInfo.processInfo.environment["UI_TEST_MAP_SELECTED"],

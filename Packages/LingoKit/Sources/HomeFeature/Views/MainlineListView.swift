@@ -37,7 +37,7 @@ public struct MainlineListView: View {
                             regionID: stop.regionID,
                             profile: profile
                         )
-                        if canOpen(status: status, access: access) {
+                        if access.canOpen {
                             Button {
                                 open(stop, access: access)
                             } label: {
@@ -96,7 +96,7 @@ public struct MainlineListView: View {
                     .font(.subheadline.monospacedDigit().weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-            Text("依次前往五座城市推进故事。完成当前章节后，下一站才会开放。")
+            Text("五站剧情已全部开放，可自由选择章节；每站进度独立保存。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -108,8 +108,8 @@ public struct MainlineListView: View {
 
     private enum StopStatus: Equatable {
         case completed
-        case active
-        case future
+        case next
+        case available
     }
 
     private func stopStatus(index: Int, journey: MainlineJourney) -> StopStatus {
@@ -120,11 +120,7 @@ public struct MainlineListView: View {
         let activeIndex = journey.stops.firstIndex {
             !completed.contains($0.chapter.storyID)
         } ?? journey.stops.count
-        return index == activeIndex ? .active : .future
-    }
-
-    private func canOpen(status: StopStatus, access: StoryRegionAccess) -> Bool {
-        status != .future && access.canOpen
+        return index == activeIndex ? .next : .available
     }
 
     private func stopCard(
@@ -135,8 +131,7 @@ public struct MainlineListView: View {
     ) -> some View {
         let chapter = stop.chapter
         let isCompleted = status == .completed
-        let isActive = status == .active
-        let isFuture = status == .future
+        let isNext = status == .next
         let access = StoryRegionAccess(regionID: stop.regionID, profile: profile)
         let isHere = access == .current
         let region = deps.regionCatalog.region(id: stop.regionID)
@@ -149,15 +144,15 @@ public struct MainlineListView: View {
             artworkBadge: index + 1 < 10 ? "0\(index + 1)" : "\(index + 1)",
             eyebrow: "第 \(index + 1) 站 · \(region?.nameZh ?? stop.regionID)",
             badge: isHere ? "当前城市" : nil,
-            title: chapter.title,
+            title: stop.displayTitle,
             subtitle: chapter.subtitle,
             statusText: isLoading
                 ? "正在同步位置…"
                 : actionText(status: status, access: access, regionName: region?.nameZh),
             statusIcon: statusIcon(status: status, access: access),
             accent: accent,
-            isHighlighted: isActive || (isCompleted && isHere),
-            isDimmed: isFuture,
+            isHighlighted: isNext || (isCompleted && isHere),
+            isDimmed: false,
             isLoading: isLoading
         )
     }
@@ -177,7 +172,7 @@ public struct MainlineListView: View {
             case .locked:
                 "请先在地图解锁\(regionName ?? "剧情城市")"
             }
-        case .active:
+        case .next, .available:
             switch access {
             case .current:
                 "开展剧情"
@@ -186,8 +181,6 @@ public struct MainlineListView: View {
             case .locked:
                 "请先在地图解锁\(regionName ?? "目标城市")"
             }
-        case .future:
-            "完成上一站后解锁"
         }
     }
 
@@ -195,7 +188,7 @@ public struct MainlineListView: View {
         switch status {
         case .completed:
             access == .unlockedAway ? "airplane" : "checkmark.circle.fill"
-        case .active:
+        case .next, .available:
             switch access {
             case .current:
                 "play.circle.fill"
@@ -204,8 +197,6 @@ public struct MainlineListView: View {
             case .locked:
                 "ticket.fill"
             }
-        case .future:
-            "lock.fill"
         }
     }
 
@@ -215,13 +206,14 @@ public struct MainlineListView: View {
             Haptics.impact(.light)
             onOpenChapter(stop.chapter)
         case .unlockedAway:
-            beginTravel(to: stop.chapter)
+            beginTravel(to: stop)
         case .locked:
             break
         }
     }
 
-    private func beginTravel(to chapter: MainlineChapter) {
+    private func beginTravel(to stop: MainlineStop) {
+        let chapter = stop.chapter
         guard travelingStoryID == nil,
               let profile,
               let destination = deps.regionCatalog.region(id: chapter.regionID)
@@ -239,7 +231,7 @@ public struct MainlineListView: View {
                 flight = StoryTravelPresentation(
                     fromName: originName,
                     toName: destination.nameZh,
-                    storyTitle: chapter.title
+                    storyTitle: stop.displayTitle
                 )
             } catch TravelService.TravelError.alreadyThere {
                 travelingStoryID = nil

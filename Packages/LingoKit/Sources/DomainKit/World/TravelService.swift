@@ -58,7 +58,8 @@ public struct TravelService: Sendable {
 
     /// 只有从未到访、尚未解锁的地区需要机票。
     public static func requiresTicket(to region: Region, profile: UserProfileDTO) -> Bool {
-        profile.currentRegionID != region.id
+        guard region.role != .mainline else { return false }
+        return profile.currentRegionID != region.id
             && !profile.unlockedRegionIDs.contains(region.id)
     }
 

@@ -263,12 +263,12 @@ private final class RegionAnnotationView: MKAnnotationView {
         flagLabel.frame = CGRect(x: 34, y: 32, width: 18, height: 18)
         badgeView.frame = CGRect(x: 80, y: 32, width: 18, height: 18)
 
-        let titleWidth = min(124, max(52, titleLabel.intrinsicContentSize.width + 16))
+        let titleWidth = min(124, max(48, titleLabel.intrinsicContentSize.width + 10))
         titleLabel.frame = CGRect(
             x: (bounds.width - titleWidth) / 2,
             y: 52,
             width: titleWidth,
-            height: 24
+            height: 22
         )
         markerAccessibilityView.frame = CGRect(x: 28, y: 0, width: 76, height: 76)
 
@@ -353,12 +353,12 @@ private final class RegionAnnotationView: MKAnnotationView {
         badgeView.layer.borderColor = UIColor.systemBackground.cgColor
         addSubview(badgeView)
 
-        titleLabel.font = .systemFont(ofSize: 11, weight: .bold)
+        titleLabel.font = .systemFont(ofSize: 11, weight: .heavy)
         titleLabel.textAlignment = .center
         titleLabel.textColor = .label
         titleLabel.isAccessibilityElement = false
-        titleLabel.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.96)
-        titleLabel.layer.cornerRadius = 12
+        titleLabel.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.86)
+        titleLabel.layer.cornerRadius = 5
         titleLabel.clipsToBounds = true
         addSubview(titleLabel)
 
@@ -367,7 +367,8 @@ private final class RegionAnnotationView: MKAnnotationView {
         addSubview(markerAccessibilityView)
 
         actionButton.configuration = .filled()
-        actionButton.configuration?.cornerStyle = .capsule
+        actionButton.configuration?.cornerStyle = .fixed
+        actionButton.configuration?.background.cornerRadius = 6
         actionButton.configuration?.imagePadding = 5
         actionButton.configuration?.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
@@ -471,8 +472,8 @@ private final class RegionAnnotationView: MKAnnotationView {
         photoView.layer.borderWidth = selected ? 3 : (presentation.state == .current ? 2 : 1)
         photoShadowView.layer.shadowOpacity = selected ? 0.2 : 0.08
         photoShadowView.layer.shadowRadius = selected ? 6 : 3
-        titleLabel.layer.borderColor = ringColor.withAlphaComponent(selected ? 0.7 : 0.28).cgColor
-        titleLabel.layer.borderWidth = 1
+        titleLabel.layer.borderColor = UIColor.clear.cgColor
+        titleLabel.layer.borderWidth = 0
         setNeedsLayout()
     }
 
