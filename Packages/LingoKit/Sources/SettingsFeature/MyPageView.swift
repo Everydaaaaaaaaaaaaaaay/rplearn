@@ -126,16 +126,16 @@ public struct MyPageView: View {
                     travelDeskBackground(width: width, height: sceneHeight)
 
                     profileHotspot
-                        .frame(width: min(width * 0.45, 180), height: 104)
-                        .position(x: width * 0.22, y: sceneHeight * 0.135)
+                        .frame(width: min(width * 0.45, 180), height: 190)
+                        .position(x: width * 0.22, y: sceneHeight * 0.145)
 
                     coinHotspot
                         .frame(width: 112, height: 76)
-                        .position(x: width * 0.82, y: sceneHeight * 0.145)
+                        .position(x: width * 0.81, y: sceneHeight * 0.17)
 
                     learningHotspot
-                        .frame(width: min(width * 0.35, 140), height: 112)
-                        .position(x: width * 0.515, y: sceneHeight * 0.452)
+                        .frame(width: min(width * 0.35, 140), height: 156)
+                        .position(x: width * 0.515, y: sceneHeight * 0.48)
 
                     favoritesHotspot
                         .frame(width: 106, height: 76)
@@ -147,12 +147,12 @@ public struct MyPageView: View {
 
                     accountHotspot
                         .frame(width: 112, height: 78)
-                        .position(x: width * 0.50, y: sceneHeight * 0.695)
+                        .position(x: width * 0.50, y: sceneHeight * 0.74)
 
                     #if DEBUG
                     memoryDebugHotspot
                         .frame(width: 80, height: 68)
-                        .position(x: width * 0.515, y: sceneHeight * 0.085)
+                        .position(x: width * 0.53, y: sceneHeight * 0.115)
                     #endif
                 }
                 .frame(width: width, height: sceneHeight)
@@ -196,19 +196,17 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            SceneLayeredControl(
-                panelSize: CGSize(width: 154, height: 70),
-                rotation: -6.5,
-                tilt: 3.2,
-                floatDelay: 0.05
-            ) {
-                HStack(spacing: 10) {
-                    MinimalSceneGlyph(kind: .profile)
-                        .frame(width: 30, height: 30)
-
+            ZStack {
+                SceneEmbeddedControl(
+                    style: .darkInk,
+                    rotation: -10.5,
+                    tiltX: 1.6,
+                    tiltY: -1.8,
+                    floatDelay: 0.05
+                ) {
                     VStack(alignment: .leading, spacing: 1) {
                         Text(displayName)
-                            .font(.system(size: 14, weight: .bold))
+                            .font(.system(size: 13, weight: .bold))
                             .lineLimit(1)
                             .minimumScaleFactor(0.78)
                         Text("\(accountIdentifier) · \(accountBadgeTitle)")
@@ -219,10 +217,21 @@ public struct MyPageView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.72)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(width: 126, alignment: .leading)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .position(x: 78, y: 43)
+
+                ScenePhotoAvatar(name: displayName)
+                    .frame(width: 47, height: 47)
+                    .rotationEffect(.degrees(-8.5))
+                    .rotation3DEffect(
+                        .degrees(2.2),
+                        axis: (x: 1, y: -0.12, z: 0),
+                        perspective: 0.30
+                    )
+                    .position(x: 86, y: 134)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityLabel("个人资料，\(displayName)，\(accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
@@ -248,10 +257,11 @@ public struct MyPageView: View {
     }
 
     private var coinLabel: some View {
-        SceneLayeredControl(
-            panelSize: CGSize(width: 94, height: 50),
+        SceneEmbeddedControl(
+            style: .lightInk,
             rotation: 8,
-            tilt: 3,
+            tiltX: 2.4,
+            tiltY: 1.2,
             floatDelay: 0.18
         ) {
             HStack(spacing: 7) {
@@ -275,13 +285,14 @@ public struct MyPageView: View {
 
     private var learningHotspot: some View {
         Button(action: onCalibrateLevel) {
-            SceneLayeredControl(
-                panelSize: CGSize(width: 126, height: 78),
+            SceneEmbeddedControl(
+                style: .darkInk,
                 rotation: 1.4,
-                tilt: 2.8,
+                tiltX: 2.0,
+                tiltY: -0.6,
                 floatDelay: 0.32
             ) {
-                VStack(spacing: 5) {
+                VStack(spacing: 56) {
                     HStack(spacing: 6) {
                         MinimalSceneGlyph(kind: .journey)
                             .frame(width: 25, height: 25)
@@ -311,6 +322,7 @@ public struct MyPageView: View {
                         )
                     }
                 }
+                .frame(width: 100, height: 142)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
@@ -335,10 +347,13 @@ public struct MyPageView: View {
         NavigationLink {
             favoritesBuilder()
         } label: {
-            sceneLayeredMark(
+            sceneObjectMark(
                 title: "收藏",
                 glyph: .favorites,
+                style: .lightInk,
                 rotation: -10.5,
+                tiltX: 2.6,
+                tiltY: -1.8,
                 floatDelay: 0.46
             )
         }
@@ -360,10 +375,13 @@ public struct MyPageView: View {
                 onProactiveMessagesChanged: onProactiveMessagesChanged
             )
         } label: {
-            sceneLayeredMark(
+            sceneObjectMark(
                 title: "设置",
                 glyph: .settings,
+                style: .darkInk,
                 rotation: 4.5,
+                tiltX: 2.3,
+                tiltY: 1.0,
                 compact: true,
                 floatDelay: 0.60
             )
@@ -381,10 +399,13 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            sceneLayeredMark(
+            sceneObjectMark(
                 title: isSignedIn ? "账号" : "登录",
                 glyph: .account,
+                style: .lightInk,
                 rotation: 1.8,
+                tiltX: 2.2,
+                tiltY: -0.5,
                 floatDelay: 0.74
             )
         }
@@ -403,13 +424,32 @@ public struct MyPageView: View {
                 memoryService: memoryService
             )
         } label: {
-            sceneLayeredMark(
-                title: "记忆",
-                glyph: .memory,
-                rotation: 0.8,
-                compact: true,
-                floatDelay: 0.88
-            )
+            ZStack {
+                SceneEmbeddedControl(
+                    style: .darkInk,
+                    rotation: 4.0,
+                    tiltX: 1.8,
+                    tiltY: 1.2,
+                    floatDelay: 0.88
+                ) {
+                    MinimalSceneGlyph(kind: .memory)
+                        .frame(width: 21, height: 21)
+                }
+                .position(x: 24, y: 24)
+
+                SceneEmbeddedControl(
+                    style: .lightInk,
+                    rotation: 3.0,
+                    tiltX: 1.5,
+                    tiltY: 1.0,
+                    floatDelay: 0.94
+                ) {
+                    Text("记忆")
+                        .font(.system(size: 9, weight: .semibold))
+                }
+                .position(x: 57, y: 44)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityLabel("记忆调试面板")
@@ -417,20 +457,21 @@ public struct MyPageView: View {
     }
     #endif
 
-    private func sceneLayeredMark(
+    private func sceneObjectMark(
         title: String,
         glyph: MinimalSceneGlyph.Kind,
+        style: SceneEmbeddedStyle,
         rotation: Double,
+        tiltX: Double,
+        tiltY: Double,
         compact: Bool = false,
         floatDelay: Double
     ) -> some View {
-        SceneLayeredControl(
-            panelSize: CGSize(
-                width: compact ? 78 : 88,
-                height: compact ? 44 : 52
-            ),
+        SceneEmbeddedControl(
+            style: style,
             rotation: rotation,
-            tilt: compact ? 2.2 : 2.8,
+            tiltX: tiltX,
+            tiltY: tiltY,
             floatDelay: floatDelay
         ) {
             HStack(spacing: compact ? 5 : 7) {
@@ -907,161 +948,178 @@ public struct MyPageView: View {
     }
 }
 
-private struct SceneLayeredControl<Content: View>: View {
-    let panelSize: CGSize
+private enum SceneEmbeddedStyle {
+    case darkInk
+    case lightInk
+
+    var ink: Color {
+        switch self {
+        case .darkInk:
+            Color(red: 0.105, green: 0.125, blue: 0.13)
+        case .lightInk:
+            Color(red: 0.945, green: 0.945, blue: 0.905)
+        }
+    }
+
+    var relief: Color {
+        switch self {
+        case .darkInk:
+            Color.black.opacity(0.64)
+        case .lightInk:
+            Color(red: 0.055, green: 0.08, blue: 0.10).opacity(0.86)
+        }
+    }
+
+    var highlight: Color {
+        switch self {
+        case .darkInk:
+            Color.white.opacity(0.34)
+        case .lightInk:
+            Color.white.opacity(0.46)
+        }
+    }
+
+    var castShadow: Color {
+        switch self {
+        case .darkInk:
+            Color.black.opacity(0.31)
+        case .lightInk:
+            Color.black.opacity(0.44)
+        }
+    }
+}
+
+private struct SceneEmbeddedControl<Content: View>: View {
+    let style: SceneEmbeddedStyle
     let rotation: Double
-    let tilt: Double
+    let tiltX: Double
+    let tiltY: Double
     let floatDelay: Double
     @ViewBuilder let content: () -> Content
 
-    @State private var isContentLifted = false
+    @State private var isLifted = false
     @Environment(\.sceneControlIsPressed) private var isPressed
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
 
     var body: some View {
         ZStack {
-            underPlate
-                .offset(x: 5.5, y: 7)
-
-            facePlate
+            renderedContent(color: style.castShadow)
+                .blur(radius: contrast == .increased ? 0.45 : 0.72)
                 .offset(
-                    x: isPressed && !reduceMotion ? 2.8 : 0,
-                    y: isPressed && !reduceMotion ? 3.8 : -1.5
+                    x: isPressed && !reduceMotion ? 0.55 : 1.35,
+                    y: isPressed && !reduceMotion ? 0.70 : 1.70
                 )
+
+            renderedContent(color: style.relief)
+                .offset(
+                    x: isPressed && !reduceMotion ? 0.22 : 0.55,
+                    y: isPressed && !reduceMotion ? 0.28 : 0.70
+                )
+
+            renderedContent(color: style.highlight)
+                .offset(x: -0.28, y: -0.34)
+
+            renderedContent(color: style.ink)
         }
-        .frame(
-            width: max(panelSize.width + 14, 64),
-            height: panelSize.height + 16
+        .compositingGroup()
+        .offset(
+            y: isPressed && !reduceMotion
+                ? 0.55
+                : (isLifted && !reduceMotion ? -0.60 : 0)
         )
         .rotationEffect(.degrees(rotation))
         .rotation3DEffect(
-            .degrees(tilt),
-            axis: (x: 1, y: 0.08, z: 0),
+            .degrees(tiltX),
+            axis: (x: 1, y: 0, z: 0),
             anchor: .center,
-            perspective: 0.42
+            perspective: 0.34
+        )
+        .rotation3DEffect(
+            .degrees(tiltY),
+            axis: (x: 0, y: 1, z: 0),
+            anchor: .center,
+            perspective: 0.34
         )
         .animation(
-            reduceMotion ? .easeOut(duration: 0.10) : .spring(response: 0.24, dampingFraction: 0.90),
+            reduceMotion ? .easeOut(duration: 0.10) : .spring(response: 0.22, dampingFraction: 0.88),
             value: isPressed
         )
         .onAppear {
             guard !reduceMotion else { return }
             withAnimation(
-                .easeInOut(duration: 2.8)
+                .easeInOut(duration: 2.6)
                     .repeatForever(autoreverses: true)
                     .delay(floatDelay)
             ) {
-                isContentLifted = true
+                isLifted = true
             }
         }
     }
 
-    private var underPlate: some View {
-        let shape = ScenePanelShape(chamfer: min(panelSize.height * 0.15, 8))
+    private func renderedContent(color: Color) -> some View {
+        content()
+            .foregroundStyle(color)
+            .environment(\.sceneGlyphInk, color)
+    }
+}
 
-        return shape
-            .fill(
-                LinearGradient(
-                    colors: [
-                        SceneControlPalette.graphite.opacity(reduceTransparency ? 0.98 : 0.88),
-                        SceneControlPalette.graphiteDeep.opacity(reduceTransparency ? 1 : 0.90),
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-            .frame(width: panelSize.width, height: panelSize.height)
-            .overlay {
-                shape.stroke(.black.opacity(0.34), lineWidth: 0.8)
-            }
-            .shadow(color: .black.opacity(0.30), radius: 5, x: 1, y: 5)
-            .accessibilityHidden(true)
+private struct ScenePhotoAvatar: View {
+    let name: String
+
+    private var initial: String {
+        String(name.trimmingCharacters(in: .whitespacesAndNewlines).prefix(1)).uppercased()
     }
 
-    private var facePlate: some View {
-        let shape = ScenePanelShape(chamfer: min(panelSize.height * 0.15, 8))
-        let faceOpacity = reduceTransparency ? 1.0 : (contrast == .increased ? 0.98 : 0.92)
-
-        return ZStack(alignment: .topLeading) {
-            shape
+    var body: some View {
+        ZStack {
+            Circle()
                 .fill(
                     LinearGradient(
                         colors: [
-                            SceneControlPalette.faceTop.opacity(faceOpacity),
-                            SceneControlPalette.faceBottom.opacity(faceOpacity),
+                            Color.dsSky.opacity(0.24),
+                            Color(red: 0.74, green: 0.82, blue: 0.82).opacity(0.13),
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                 )
 
-            Capsule()
-                .fill(SceneControlPalette.accent.opacity(contrast == .increased ? 0.90 : 0.66))
-                .frame(width: 17, height: 1.5)
-                .padding(.leading, 9)
-                .padding(.top, 7)
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [.clear, .black.opacity(0.07)],
+                        center: .center,
+                        startRadius: 14,
+                        endRadius: 25
+                    )
+                )
 
-            content()
-                .foregroundStyle(SceneControlPalette.ink)
-                .padding(.horizontal, 9)
-                .padding(.vertical, 7)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .offset(y: isContentLifted && !isPressed && !reduceMotion ? -1.2 : 0)
-                .shadow(color: .white.opacity(0.38), radius: 0.5, y: -0.4)
+            Text(initial)
+                .font(.system(size: 19, weight: .black, design: .rounded))
+                .foregroundStyle(Color.dsSkyDeep.opacity(0.82))
+                .shadow(color: .white.opacity(0.35), radius: 0.4, x: -0.3, y: -0.4)
         }
-        .frame(width: panelSize.width, height: panelSize.height)
+        .clipShape(Circle())
         .overlay {
-            shape.stroke(
-                LinearGradient(
-                    colors: [
-                        .white.opacity(0.90),
-                        SceneControlPalette.edge.opacity(0.64),
-                        SceneControlPalette.graphite.opacity(0.20),
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                ),
-                lineWidth: contrast == .increased ? 1.2 : 0.75
-            )
+            Circle().stroke(.white.opacity(0.28), lineWidth: 0.7)
         }
-        .shadow(color: SceneControlPalette.accent.opacity(reduceTransparency ? 0 : 0.10), radius: 4)
-        .shadow(color: .white.opacity(0.20), radius: 1.5, x: -0.5, y: -1)
-        .shadow(color: .black.opacity(0.16), radius: 2.5, x: 0.5, y: 2)
-        .compositingGroup()
+        .saturation(0.72)
+        .contrast(0.94)
+        .accessibilityLabel(name)
     }
 }
 
-private enum SceneControlPalette {
-    static let ink = Color(red: 0.105, green: 0.125, blue: 0.135)
-    static let graphite = Color(red: 0.20, green: 0.23, blue: 0.24)
-    static let graphiteDeep = Color(red: 0.105, green: 0.125, blue: 0.13)
-    static let faceTop = Color(red: 0.965, green: 0.963, blue: 0.935)
-    static let faceBottom = Color(red: 0.845, green: 0.855, blue: 0.825)
-    static let accent = Color(red: 0.43, green: 0.52, blue: 0.50)
-    static let edge = Color(red: 0.57, green: 0.62, blue: 0.59)
+private struct SceneGlyphInkKey: EnvironmentKey {
+    static let defaultValue = Color(red: 0.105, green: 0.125, blue: 0.13)
 }
 
-private struct ScenePanelShape: Shape {
-    let chamfer: CGFloat
-
-    func path(in rect: CGRect) -> Path {
-        let cut = min(chamfer, min(rect.width, rect.height) * 0.22)
-        var path = Path()
-        path.move(to: CGPoint(x: rect.minX + cut, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX - cut, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY + cut))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - cut * 0.55))
-        path.addLine(to: CGPoint(x: rect.maxX - cut * 0.55, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX + cut, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY - cut))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + cut * 0.55))
-        path.closeSubpath()
-        return path
+private extension EnvironmentValues {
+    var sceneGlyphInk: Color {
+        get { self[SceneGlyphInkKey.self] }
+        set { self[SceneGlyphInkKey.self] = newValue }
     }
 }
-
 private struct SceneControlPressedKey: EnvironmentKey {
     static let defaultValue = false
 }
@@ -1085,9 +1143,12 @@ private struct MinimalSceneGlyph: View {
     }
 
     let kind: Kind
+    @Environment(\.sceneGlyphInk) private var sceneGlyphInk
 
     var body: some View {
-        Canvas { context, size in
+        let ink = sceneGlyphInk
+
+        return Canvas { context, size in
             let side = min(size.width, size.height)
             let origin = CGPoint(x: (size.width - side) / 2, y: (size.height - side) / 2)
             let stroke = StrokeStyle(
@@ -1110,11 +1171,11 @@ private struct MinimalSceneGlyph: View {
             }
 
             func drawStroke(_ path: Path) {
-                context.stroke(path, with: .color(SceneControlPalette.ink), style: stroke)
+                context.stroke(path, with: .color(ink), style: stroke)
             }
 
             func drawFill(_ path: Path) {
-                context.fill(path, with: .color(SceneControlPalette.ink))
+                context.fill(path, with: .color(ink))
             }
 
             switch kind {
