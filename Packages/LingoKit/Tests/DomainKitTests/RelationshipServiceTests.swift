@@ -227,8 +227,8 @@ struct RelationshipServiceTests {
         #expect(unchanged == snapshot)
     }
 
-    @Test("新会话序号从零开始时仍可结算，旧会话迟到结果不会覆盖")
-    func messageTimeOrdersAcrossConversations() {
+    @Test("新会话序号从零开始时仍可结算，同一消息不会重复")
+    func messageTimeOrdersAcrossConversations() throws {
         let previousMessageAt = now.addingTimeInterval(-60)
         let snapshot = RelationshipSnapshot(
             lastInteractionAt: previousMessageAt,
@@ -249,16 +249,17 @@ struct RelationshipServiceTests {
         #expect(newConversationResult.revision == 5)
         #expect(newConversationResult.lastEvaluatedOrderIndex == 0)
 
-        let stale = RelationshipEngine.apply(
+        let settledMessageID = try #require(newConversationResult.lastEvaluatedMessageID)
+        let duplicate = RelationshipEngine.apply(
             signal(warmth: 1, significance: 1, reason: "旧会话迟到结果"),
             to: newConversationResult,
             source: .textChat,
-            messageID: UUID(),
-            messageCreatedAt: previousMessageAt.addingTimeInterval(-10),
-            messageOrderIndex: 43,
+            messageID: settledMessageID,
+            messageCreatedAt: now,
+            messageOrderIndex: 0,
             at: now.addingTimeInterval(3)
         )
-        #expect(stale == newConversationResult)
+        #expect(duplicate == newConversationResult)
     }
 
     @Test("模型不可用时只记录联系，不擅自增减好感度")

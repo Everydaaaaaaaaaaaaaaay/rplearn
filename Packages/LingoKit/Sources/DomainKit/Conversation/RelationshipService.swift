@@ -67,18 +67,16 @@ public enum RelationshipEngine {
         calendar: Calendar = .current
     ) -> RelationshipSnapshot {
         let evaluatedMessageAt = messageCreatedAt ?? date
-        guard shouldEvaluate(
-            messageID: messageID,
-            messageCreatedAt: evaluatedMessageAt,
-            snapshot: snapshot
-        ) else { return snapshot }
+        guard !hasEvaluated(messageID: messageID, in: snapshot) else { return snapshot }
 
         var next = snapshot
-        let currentAffinity = snapshot.projectedAffinity(at: date)
+        let settlementDate = max(date, snapshot.lastInteractionAt ?? date)
+        let currentAffinity = snapshot.projectedAffinity(at: settlementDate)
         let confidence = clamp(signal.confidence, 0...1)
         let significance = clamp(signal.significance, 0...1)
         let boundaryHarm = clamp(signal.boundaryHarm, 0...1)
-        let repair = clamp(signal.repair, 0...1)
+        // 同一信号同时声称“严重越界”和“完成修复”时，以伤害为准，抵御模型内部矛盾。
+        let repair = clamp(signal.repair, 0...1) * pow(1 - boundaryHarm, 2)
 
         let positive =
             0.16 * positivePart(signal.warmth)
@@ -98,18 +96,19 @@ public enum RelationshipEngine {
         let socialQuality = clamp(positive - negative, -1...1)
 
         let isSameActivityDay = snapshot.activityDayStart.map {
-            calendar.isDate($0, inSameDayAs: date)
+            calendar.isDate($0, inSameDayAs: settlementDate)
         } ?? false
         let sameDayCount = isSameActivityDay ? snapshot.activityCountToday : 0
         let positiveGainToday = isSameActivityDay ? snapshot.positiveGainToday : 0
+        let repairGainToday = isSameActivityDay ? snapshot.repairGainToday ?? 0 : 0
         let repetitionDamping = max(0.35, 1 / sqrt(1 + 0.55 * Double(sameDayCount)))
         let headroom = 0.25 + 0.75 * sqrt(max(150 - currentAffinity, 0) / 150)
         let strainGate = 1 - 0.45 * clamp(snapshot.unresolvedStrain, 0...1)
 
-        var delta: Double
+        var ordinaryDelta: Double
         if socialQuality >= 0 {
             let usefulQuality = max(socialQuality - 0.18, 0)
-            delta = usefulQuality
+            ordinaryDelta = usefulQuality
                 * (2 + 3 * significance)
                 * max(confidence, 0.25)
                 * headroom
@@ -117,65 +116,82 @@ public enum RelationshipEngine {
                 * strainGate
         } else {
             let harmfulQuality = min(socialQuality + 0.06, 0)
-            let ordinaryDamage = harmfulQuality
+            ordinaryDelta = harmfulQuality
                 * (4 + 6 * significance)
                 * max(confidence, 0.35)
                 * (0.75 + 0.25 * repetitionDamping)
-            let boundaryDamage = -8 * pow(boundaryHarm, 1.35) * max(confidence, 0.35)
-            delta = ordinaryDamage + boundaryDamage
+        }
+        // 明确越界无论其它字段多正向都会产生伤害，不能被模型矛盾输出抵消为加分。
+        ordinaryDelta -= 8 * pow(boundaryHarm, 1.35) * max(confidence, 0.35)
+        ordinaryDelta = clamp(ordinaryDelta, -18...5)
+        if ordinaryDelta > 0 {
+            ordinaryDelta = min(ordinaryDelta, max(4 - positiveGainToday, 0))
         }
 
+        var repairDelta = 0.0
         if repair > 0, snapshot.unresolvedStrain > 0 {
             let repairGain = min(
-                3,
+                2,
                 repair * (0.6 + 2.4 * snapshot.unresolvedStrain) * max(confidence, 0.35)
             )
-            delta += repairGain * headroom * repetitionDamping
+            repairDelta = repairGain * headroom * repetitionDamping
+            repairDelta = min(repairDelta, max(2 - repairGainToday, 0))
         }
-        delta = clamp(delta, -18...5)
-        if delta > 0 {
-            delta = min(delta, max(4 - positiveGainToday, 0))
-        }
+        let delta = clamp(ordinaryDelta + repairDelta, -18...5)
 
         next.affinity = clamp(currentAffinity + delta, 0...150)
         next.interactionCount += 1
         if significance >= 0.55 || abs(delta) >= 1.5 {
             next.meaningfulInteractionCount += 1
         }
-        next.lastInteractionAt = date
-        next.activityDayStart = calendar.startOfDay(for: date)
+        next.lastInteractionAt = settlementDate
+        next.activityDayStart = calendar.startOfDay(for: settlementDate)
         next.activityCountToday = sameDayCount + 1
-        next.positiveGainToday = positiveGainToday + max(delta, 0)
-        next.lastEvaluatedMessageID = messageID
-        next.lastEvaluatedMessageAt = evaluatedMessageAt
-        next.lastEvaluatedOrderIndex = messageOrderIndex
+        next.positiveGainToday = positiveGainToday + max(ordinaryDelta, 0)
+        next.repairGainToday = repairGainToday + repairDelta
+        recordEvaluation(
+            messageID: messageID,
+            evaluatedAt: evaluatedMessageAt,
+            orderIndex: messageOrderIndex,
+            in: &next
+        )
         next.revision += 1
 
-        let familiarityGain = (0.006 + 0.022 * significance)
-            * max(confidence, 0.25)
+        let mutualInformation = clamp(
+            0.40 * clamp(signal.disclosure, 0...1)
+                + 0.35 * clamp(signal.responsiveness, 0...1)
+                + 0.25 * clamp(signal.engagement, 0...1),
+            0...1
+        )
+        let familiaritySafetyGate = clamp(1 - boundaryHarm - 0.7 * negative, 0...1)
+        let familiarityGain = 0.03
+            * mutualInformation
+            * (0.2 + 0.8 * significance)
+            * confidence
             * repetitionDamping
+            * familiaritySafetyGate
         next.familiarity = saturatingIncrease(snapshot.familiarity, by: familiarityGain)
 
-        let trustTarget = clamp(
+        let trustTarget = min(1 - boundaryHarm, clamp(
             0.38 * normalizedSigned(signal.respect)
                 + 0.24 * clamp(signal.responsiveness, 0...1)
                 + 0.20 * clamp(signal.empathy, 0...1)
                 + 0.18 * normalizedSigned(signal.reciprocity),
             0...1
-        )
-        let rapportTarget = clamp(
+        ))
+        let rapportTarget = min(1 - 0.75 * boundaryHarm, clamp(
             0.42 * normalizedSigned(signal.warmth)
                 + 0.32 * normalizedSigned(signal.resonance)
                 + 0.26 * clamp(signal.engagement, 0...1),
             0...1
-        )
-        let careTarget = clamp(
+        ))
+        let careTarget = min(1 - 0.8 * boundaryHarm, clamp(
             0.40 * clamp(signal.empathy, 0...1)
                 + 0.34 * normalizedSigned(signal.reciprocity)
                 + 0.26 * clamp(signal.responsiveness, 0...1),
             0...1
-        )
-        let respectTarget = normalizedSigned(signal.respect)
+        ))
+        let respectTarget = min(normalizedSigned(signal.respect), 1 - boundaryHarm)
         let positiveAlpha = (0.035 + 0.045 * significance) * max(confidence, 0.25)
         let negativeAlpha = (0.09 + 0.13 * negative + 0.18 * boundaryHarm) * max(confidence, 0.35)
         next.trust = adaptiveAverage(snapshot.trust, target: trustTarget, positiveAlpha: positiveAlpha, negativeAlpha: negativeAlpha)
@@ -195,7 +211,14 @@ public enum RelationshipEngine {
             let maximumFloor = min(max(next.affinity - 1, 0), 112)
             next.bondFloor = min(maximumFloor, snapshot.bondFloor + consolidated)
         } else if delta < 0 {
-            let floorDamage = delta * (0.08 + 0.35 * boundaryHarm)
+            // 长期纽带只被明确越界或极端、重要的敌意改变；普通摩擦只影响活跃亲近度与张力。
+            let durableHarm = max(
+                boundaryHarm,
+                max(negative - 0.6, 0) * significance
+            )
+            let floorDamage = durableHarm >= 0.1
+                ? delta * (0.05 + 0.35 * durableHarm)
+                : 0
             next.bondFloor = max(0, min(next.affinity, snapshot.bondFloor + floorDamage))
         }
 
@@ -206,7 +229,7 @@ public enum RelationshipEngine {
                     source: source,
                     delta: delta,
                     reasonZh: reason,
-                    createdAt: date
+                    createdAt: evaluatedMessageAt
                 )
             )
             next.recentEvents = Array(next.recentEvents.suffix(24))
@@ -224,24 +247,25 @@ public enum RelationshipEngine {
         calendar: Calendar = .current
     ) -> RelationshipSnapshot {
         let evaluatedMessageAt = messageCreatedAt ?? date
-        guard shouldEvaluate(
-            messageID: messageID,
-            messageCreatedAt: evaluatedMessageAt,
-            snapshot: snapshot
-        ) else { return snapshot }
+        guard !hasEvaluated(messageID: messageID, in: snapshot) else { return snapshot }
         var next = snapshot
+        let settlementDate = max(date, snapshot.lastInteractionAt ?? date)
         let isSameDay = snapshot.activityDayStart.map {
-            calendar.isDate($0, inSameDayAs: date)
+            calendar.isDate($0, inSameDayAs: settlementDate)
         } ?? false
-        next.affinity = snapshot.projectedAffinity(at: date)
+        next.affinity = snapshot.projectedAffinity(at: settlementDate)
         next.interactionCount += 1
-        next.activityDayStart = calendar.startOfDay(for: date)
+        next.activityDayStart = calendar.startOfDay(for: settlementDate)
         next.activityCountToday = isSameDay ? snapshot.activityCountToday + 1 : 1
         next.positiveGainToday = isSameDay ? snapshot.positiveGainToday : 0
-        next.lastInteractionAt = date
-        next.lastEvaluatedMessageID = messageID
-        next.lastEvaluatedMessageAt = evaluatedMessageAt
-        next.lastEvaluatedOrderIndex = messageOrderIndex
+        next.repairGainToday = isSameDay ? snapshot.repairGainToday ?? 0 : 0
+        next.lastInteractionAt = settlementDate
+        recordEvaluation(
+            messageID: messageID,
+            evaluatedAt: evaluatedMessageAt,
+            orderIndex: messageOrderIndex,
+            in: &next
+        )
         next.revision += 1
         return normalized(next)
     }
@@ -279,21 +303,35 @@ public enum RelationshipEngine {
         value.unresolvedStrain = clamp(value.unresolvedStrain, 0...1)
         value.activityCountToday = max(0, value.activityCountToday)
         value.positiveGainToday = clamp(value.positiveGainToday, 0...4)
+        value.repairGainToday = clamp(value.repairGainToday ?? 0, 0...2)
         value.recentEvents = Array(value.recentEvents.suffix(24))
+        value.recentEvaluatedMessageIDs = Array((value.recentEvaluatedMessageIDs ?? []).suffix(64))
         return value
     }
 
-    private static func shouldEvaluate(
+    public static func hasEvaluated(
         messageID: UUID,
-        messageCreatedAt: Date,
-        snapshot: RelationshipSnapshot
+        in snapshot: RelationshipSnapshot
     ) -> Bool {
-        guard snapshot.lastEvaluatedMessageID != messageID else { return false }
-        // 旧快照没有独立消息时间时，以最后互动时间作为兼容游标。
-        guard let lastEvaluatedAt = snapshot.lastEvaluatedMessageAt ?? snapshot.lastInteractionAt else {
-            return true
+        snapshot.lastEvaluatedMessageID == messageID
+            || (snapshot.recentEvaluatedMessageIDs ?? []).contains(messageID)
+    }
+
+    /// 乱序完成的不同消息都可以结算，但“最新消息”游标只能向前移动。
+    private static func recordEvaluation(
+        messageID: UUID,
+        evaluatedAt date: Date,
+        orderIndex: Int,
+        in snapshot: inout RelationshipSnapshot
+    ) {
+        if snapshot.lastEvaluatedMessageAt.map({ date >= $0 }) ?? true {
+            snapshot.lastEvaluatedMessageID = messageID
+            snapshot.lastEvaluatedMessageAt = date
+            snapshot.lastEvaluatedOrderIndex = orderIndex
         }
-        return messageCreatedAt > lastEvaluatedAt
+        var evaluatedIDs = snapshot.recentEvaluatedMessageIDs ?? []
+        evaluatedIDs.append(messageID)
+        snapshot.recentEvaluatedMessageIDs = Array(evaluatedIDs.suffix(64))
     }
 
     private static func adaptiveAverage(
@@ -366,7 +404,7 @@ public struct RelationshipService: Sendable {
             guard let latest = try await rosterStore.character(id: character.id) else {
                 throw RosterStore.RosterError.characterNotFound
             }
-            if userMessage.orderIndex <= latest.relationship.lastEvaluatedOrderIndex {
+            if RelationshipEngine.hasEvaluated(messageID: userMessage.id, in: latest.relationship) {
                 return review.coachReview
             }
             let updated = RelationshipEngine.apply(
@@ -398,7 +436,7 @@ public struct RelationshipService: Sendable {
             guard let latest = try await rosterStore.character(id: characterID) else {
                 throw RosterStore.RosterError.characterNotFound
             }
-            if message.orderIndex <= latest.relationship.lastEvaluatedOrderIndex { return }
+            if RelationshipEngine.hasEvaluated(messageID: message.id, in: latest.relationship) { return }
             let updated = RelationshipEngine.recordContact(
                 in: latest.relationship,
                 messageID: message.id,

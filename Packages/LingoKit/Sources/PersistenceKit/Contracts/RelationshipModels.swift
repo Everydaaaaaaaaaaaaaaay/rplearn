@@ -23,12 +23,17 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
     /// 抗刷取所需的当日互动聚合，只保留计数与正向总收益，不保存消息内容。
     public var activityDayStart: Date?
     public var activityCountToday: Int
+    /// 普通正向互动的当日累计；修复使用独立额度，避免已达普通上限后无法道歉。
     public var positiveGainToday: Double
+    /// 当日关系修复恢复量。可选以兼容首版快照。
+    public var repairGainToday: Double?
     public var lastInteractionAt: Date?
     public var lastEvaluatedMessageID: UUID?
     /// 跨会话的结算游标。消息在新会话中会从 0 重新编号，因此不能只依赖 orderIndex。
     public var lastEvaluatedMessageAt: Date?
     public var lastEvaluatedOrderIndex: Int
+    /// 近期已经结算的消息 ID。允许不同消息乱序完成，同时阻止任何一条重复结算。
+    public var recentEvaluatedMessageIDs: [UUID]?
     /// 乐观并发版本，避免多个后台点评互相覆盖。
     public var revision: Int
     /// 仅保留少量最近变化，用于解释分数而不是制造永久评判档案。
@@ -49,10 +54,12 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         activityDayStart: Date? = nil,
         activityCountToday: Int = 0,
         positiveGainToday: Double = 0,
+        repairGainToday: Double? = 0,
         lastInteractionAt: Date? = nil,
         lastEvaluatedMessageID: UUID? = nil,
         lastEvaluatedMessageAt: Date? = nil,
         lastEvaluatedOrderIndex: Int = -1,
+        recentEvaluatedMessageIDs: [UUID]? = [],
         revision: Int = 0,
         recentEvents: [RelationshipEventRecord] = []
     ) {
@@ -70,10 +77,12 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         self.activityDayStart = activityDayStart
         self.activityCountToday = activityCountToday
         self.positiveGainToday = positiveGainToday
+        self.repairGainToday = repairGainToday
         self.lastInteractionAt = lastInteractionAt
         self.lastEvaluatedMessageID = lastEvaluatedMessageID
         self.lastEvaluatedMessageAt = lastEvaluatedMessageAt
         self.lastEvaluatedOrderIndex = lastEvaluatedOrderIndex
+        self.recentEvaluatedMessageIDs = recentEvaluatedMessageIDs
         self.revision = revision
         self.recentEvents = recentEvents
     }

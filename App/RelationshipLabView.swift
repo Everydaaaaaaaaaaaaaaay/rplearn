@@ -195,7 +195,10 @@ struct RelationshipLabView: View {
             HStack {
                 Label("\(sandbox.interactionCount) 次互动", systemImage: "bubble.left.and.bubble.right")
                 Spacer()
-                Label("今日 +\(sandbox.positiveGainToday, specifier: "%.2f")", systemImage: "calendar")
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("今日普通 +\(sandbox.positiveGainToday, specifier: "%.2f") / 4")
+                    Text("今日修复 +\(sandbox.repairGainToday ?? 0, specifier: "%.2f") / 2")
+                }
             }
             .font(.caption)
             .foregroundStyle(.secondary)
@@ -458,7 +461,9 @@ struct RelationshipLabView: View {
             .init(title: "五个维度在 0…1", passed: dimensions.allSatisfy { (0...1).contains($0) }, detail: "\(dimensions.count)/5"),
             .init(title: "张力在 0…1", passed: (0...1).contains(sandbox.unresolvedStrain), detail: percent(sandbox.unresolvedStrain)),
             .init(title: "每日正向收益 ≤ 4", passed: sandbox.positiveGainToday <= 4.000_001, detail: number(sandbox.positiveGainToday)),
+            .init(title: "每日修复收益 ≤ 2", passed: (sandbox.repairGainToday ?? 0) <= 2.000_001, detail: number(sandbox.repairGainToday ?? 0)),
             .init(title: "变化记录最多 24 条", passed: sandbox.recentEvents.count <= 24, detail: "\(sandbox.recentEvents.count)/24"),
+            .init(title: "结算去重账本最多 64 条", passed: (sandbox.recentEvaluatedMessageIDs ?? []).count <= 64, detail: "\((sandbox.recentEvaluatedMessageIDs ?? []).count)/64"),
         ]
     }
 
@@ -797,7 +802,16 @@ private enum RelationshipLabFixtures {
         let repaired = apply(repair, to: harmed, index: 2, at: now.addingTimeInterval(60))
         let afterYear = healthy.projectedAffinity(at: now.addingTimeInterval(365 * 86_400))
 
-        let oldResult = RelationshipEngine.apply(
+        let duplicateResult = RelationshipEngine.apply(
+            highQuality,
+            to: positive,
+            source: .textChat,
+            messageID: positive.lastEvaluatedMessageID ?? UUID(),
+            messageCreatedAt: now.addingTimeInterval(-1),
+            messageOrderIndex: 99,
+            at: now.addingTimeInterval(120)
+        )
+        let outOfOrderResult = RelationshipEngine.apply(
             highQuality,
             to: positive,
             source: .textChat,
@@ -806,6 +820,37 @@ private enum RelationshipLabFixtures {
             messageOrderIndex: 99,
             at: now.addingTimeInterval(120)
         )
+        let ordinaryTension = apply(
+            signal(
+                warmth: -0.45, responsiveness: 0.15, respect: -0.35, empathy: 0.1,
+                reciprocity: -0.3, disclosure: 0, resonance: -0.35, engagement: 0.25,
+                significance: 0.35, reason: "不愉快但没有越界"
+            ),
+            to: healthy,
+            index: 3,
+            at: now.addingTimeInterval(120)
+        )
+        let contradictoryHarm = apply(
+            signal(
+                warmth: 1, responsiveness: 1, respect: 1, empathy: 1,
+                reciprocity: 1, disclosure: 1, resonance: 1, engagement: 1,
+                boundaryHarm: 1, repair: 1, significance: 1,
+                reason: "内部矛盾的极端信号"
+            ),
+            to: healthy,
+            index: 4,
+            at: now.addingTimeInterval(180)
+        )
+        let noInformation = apply(
+            signal(
+                warmth: 0, responsiveness: 0, respect: 0, empathy: 0,
+                reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0,
+                significance: 0, reason: "无信息量重复"
+            ),
+            to: .initial,
+            index: 0,
+            at: now
+        )
 
         return [
             .init(title: "优质互动产生正向变化", passed: positive.affinity > 10, detail: "+\((positive.affinity - 10).formatted(.number.precision(.fractionLength(2))))"),
@@ -813,7 +858,11 @@ private enum RelationshipLabFixtures {
             .init(title: "严重越界明显降低关系", passed: harmed.affinity < healthy.affinity - 5 && harmed.unresolvedStrain > 0.2, detail: (harmed.affinity - healthy.affinity).formatted(.number.precision(.fractionLength(2)))),
             .init(title: "修复有效但不会一次复原", passed: repaired.affinity > harmed.affinity && repaired.affinity < healthy.affinity, detail: repaired.affinity.formatted(.number.precision(.fractionLength(2)))),
             .init(title: "一年失联不跌破长期下限", passed: afterYear >= healthy.bondFloor && afterYear < healthy.affinity, detail: afterYear.formatted(.number.precision(.fractionLength(2)))),
-            .init(title: "迟到结果不会覆盖新状态", passed: oldResult == positive, detail: oldResult == positive ? "已忽略" : "失败"),
+            .init(title: "同一消息不会重复结算", passed: duplicateResult == positive, detail: duplicateResult == positive ? "已忽略" : "失败"),
+            .init(title: "乱序的不同消息仍会结算", passed: outOfOrderResult.interactionCount == positive.interactionCount + 1, detail: "\(outOfOrderResult.interactionCount) 次"),
+            .init(title: "普通摩擦不侵蚀长期纽带", passed: ordinaryTension.bondFloor == healthy.bondFloor, detail: ordinaryTension.bondFloor.formatted(.number.precision(.fractionLength(2)))),
+            .init(title: "越界压过矛盾的正向字段", passed: contradictoryHarm.affinity < healthy.affinity && contradictoryHarm.trust < healthy.trust, detail: (contradictoryHarm.affinity - healthy.affinity).formatted(.number.precision(.fractionLength(2)))),
+            .init(title: "无信息量互动不增加熟悉度", passed: noInformation.familiarity == RelationshipSnapshot.initial.familiarity, detail: noInformation.familiarity.formatted(.number.precision(.fractionLength(3)))),
         ]
     }
 
