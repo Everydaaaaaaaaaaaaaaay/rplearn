@@ -89,7 +89,11 @@ public struct MapView: View {
         ZStack {
             Color.dsBackground.ignoresSafeArea()
 
-            Map(position: $position, interactionModes: [.pan, .zoom]) {
+            Map(
+                position: $position,
+                interactionModes: [.pan, .zoom],
+                selection: $selectedRegionID
+            ) {
                 ForEach(deps.regionCatalog.regions) { region in
                     Annotation(
                         "",
@@ -99,12 +103,10 @@ public struct MapView: View {
                         CityPinAnnotationView(
                             region: region,
                             state: pinState(region),
-                            isSelected: selectedRegionID == region.id,
-                            hasUsableTicket: !usableTickets(for: region).isEmpty,
-                            onSelect: { select(region) },
-                            onAction: { travelTarget = region }
+                            isSelected: selectedRegionID == region.id
                         )
                     }
+                    .tag(region.id)
                 }
             }
             .mapStyle(
@@ -116,26 +118,45 @@ public struct MapView: View {
                 )
             )
             .safeAreaPadding(.top, 76)
-            .safeAreaPadding(.bottom, guidance == nil ? DSSpacing.md : 172)
+            .safeAreaPadding(.bottom, mapBottomPadding)
 
             VStack(spacing: 0) {
                 mapHUD
                 Spacer()
-                if let guidance {
-                    JourneyGuideView(
-                        guidance: guidance,
-                        regionCatalog: deps.regionCatalog,
-                        state: pinState,
-                        ticketCount: { usableTickets(for: $0).count },
-                        onTravel: { travelTarget = $0 },
-                        onOpenMainline: onOpenMainline
-                    )
-                    .dynamicTypeSize(...DynamicTypeSize.large)
-                    .id(guidance)
-                    .transition(.opacity.combined(with: .scale(scale: 0.98, anchor: .bottom)))
-                    .padding(.horizontal, DSSpacing.md)
-                    .padding(.bottom, DSSpacing.md)
+                VStack(spacing: 10) {
+                    if let selectedRegion {
+                        SelectedCityActionBar(
+                            region: selectedRegion,
+                            state: pinState(selectedRegion),
+                            hasUsableTicket: !usableTickets(for: selectedRegion).isEmpty,
+                            onAction: { travelTarget = selectedRegion },
+                            onDismiss: { selectedRegionID = nil }
+                        )
+                        .transition(
+                            .opacity.combined(
+                                with: reduceMotion
+                                    ? .identity
+                                    : .move(edge: .bottom)
+                            )
+                        )
+                    }
+
+                    if let guidance {
+                        JourneyGuideView(
+                            guidance: guidance,
+                            regionCatalog: deps.regionCatalog,
+                            state: pinState,
+                            ticketCount: { usableTickets(for: $0).count },
+                            onTravel: { travelTarget = $0 },
+                            onOpenMainline: onOpenMainline
+                        )
+                        .id(guidance)
+                        .transition(.opacity.combined(with: .scale(scale: 0.98, anchor: .bottom)))
+                    }
                 }
+                .dynamicTypeSize(...DynamicTypeSize.large)
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.bottom, DSSpacing.md)
             }
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -199,6 +220,10 @@ public struct MapView: View {
             }
             #endif
             presentDebugFlightIfRequested()
+        }
+        .onChange(of: selectedRegionID) { previous, current in
+            guard previous != current, current != nil else { return }
+            Haptics.selection()
         }
         .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedRegionID)
         .dsTabBarHidden(flight != nil)
@@ -285,10 +310,10 @@ public struct MapView: View {
         }
     }
 
-    private func select(_ region: Region) {
-        selectedRegionID = region.id
-        show(region)
-        Haptics.selection()
+    private var mapBottomPadding: CGFloat {
+        let selectionPadding: CGFloat = selectedRegion == nil ? 0 : 78
+        let guidancePadding: CGFloat = guidance == nil ? 0 : 172
+        return DSSpacing.md + selectionPadding + guidancePadding
     }
 
     private func resetOverview() {
