@@ -247,6 +247,7 @@ public struct PlacementTestView: View {
             .padding(DSSpacing.lg)
             .frame(maxWidth: .infinity)
         }
+        .placementScrollEdgeBlend()
     }
 
     @ViewBuilder
@@ -309,6 +310,7 @@ public struct PlacementTestView: View {
                     .padding(.bottom, DSSpacing.xl)
                     .frame(maxWidth: .infinity)
                 }
+                .placementScrollEdgeBlend()
             }
         } else {
             loadingView
@@ -480,6 +482,7 @@ public struct PlacementTestView: View {
                 .padding(DSSpacing.lg)
                 .frame(maxWidth: .infinity)
             }
+            .placementScrollEdgeBlend()
         } else {
             loadingView
         }
@@ -806,6 +809,7 @@ private struct DifficultyLevelSelectionPage: View {
                 .padding(DSSpacing.lg)
                 .frame(maxWidth: .infinity)
             }
+            .placementScrollEdgeBlend()
 
             VStack(spacing: 4) {
                 Text("已选择：\(selection.displayName)")
@@ -916,6 +920,15 @@ private struct PlacementCanvasBackground: View {
 }
 
 private extension View {
+    @ViewBuilder
+    func placementScrollEdgeBlend() -> some View {
+        if #available(iOS 26.0, *) {
+            scrollEdgeEffectStyle(.soft, for: [.top, .bottom])
+        } else {
+            self
+        }
+    }
+
     func placementGlassPanel(
         padding: CGFloat = DSSpacing.md,
         interactive: Bool = false
