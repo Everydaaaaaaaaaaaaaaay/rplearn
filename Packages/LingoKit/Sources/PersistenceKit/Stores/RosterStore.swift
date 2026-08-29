@@ -5,6 +5,8 @@ import SwiftData
 public extension Notification.Name {
     /// 特别关心状态完成持久化后发送；object 为角色 UUID，userInfo 包含 isFavorite。
     static let rosterFavoriteDidChange = Notification.Name("LingoTripRosterFavoriteDidChange")
+    /// 一次关系状态完成持久化后发送；object 为角色 UUID。
+    static let rosterRelationshipDidChange = Notification.Name("LingoTripRosterRelationshipDidChange")
 }
 
 /// 角色名册仓库：主角色导入、角色查询、好友管理。所有写操作经此 actor。
@@ -199,6 +201,30 @@ public actor RosterStore {
         }
     }
 
+    /// 以乐观并发方式保存一次关系结算。后台点评乱序返回时不会覆盖更新的状态。
+    @discardableResult
+    public func updateRelationship(
+        characterID: UUID,
+        snapshot: RelationshipSnapshot,
+        expectedRevision: Int
+    ) throws -> Bool {
+        guard let entity = try fetchEntity(id: characterID) else {
+            throw RosterError.characterNotFound
+        }
+        let current = Self.relationship(from: entity)
+        guard current.revision == expectedRevision else { return false }
+        entity.relationshipJSON = snapshot.encodedJSON()
+        try journal(entity)
+        try modelContext.save()
+        Task { @MainActor in
+            NotificationCenter.default.post(
+                name: .rosterRelationshipDidChange,
+                object: characterID
+            )
+        }
+        return true
+    }
+
     // MARK: - 私有
 
     private func fetchEntity(id: UUID) throws -> CharacterEntity? {
@@ -228,7 +254,8 @@ public actor RosterStore {
             isFriend: entity.isFriend,
             isFavorite: entity.isFavorite,
             isMainCharacter: entity.isMainCharacter,
-            metAt: entity.metAt
+            metAt: entity.metAt,
+            relationship: Self.relationship(from: entity)
         )
         try ContentMutationJournal.upsert(
             in: modelContext,
@@ -259,7 +286,12 @@ public actor RosterStore {
             isMainCharacter: entity.isMainCharacter,
             isFriend: entity.isFriend,
             metAt: entity.metAt,
-            isFavorite: entity.isFavorite
+            isFavorite: entity.isFavorite,
+            relationship: relationship(from: entity)
         )
+    }
+
+    private static func relationship(from entity: CharacterEntity) -> RelationshipSnapshot {
+        RelationshipSnapshot.decode(fromJSON: entity.relationshipJSON) ?? .initial
     }
 }

@@ -14,6 +14,7 @@
 - [`journey-design.md`](journey-design.md)：主线路线、城市解锁和内容配置入口。
 - [`design-system.md`](design-system.md)：视觉方向与 DesignSystem 边界。
 - [`realtime-voice.md`](realtime-voice.md)：端侧实时语音、低成本模型、生命周期与真机验收门槛。
+- [`relationship-system.md`](relationship-system.md)：多维角色关系、好感度计算、时间衰减与校准边界。
 - [`../Backend/README.md`](../Backend/README.md)：后端本地开发。
 
 ## 按需部署

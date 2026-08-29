@@ -106,6 +106,30 @@ struct PromptBuilderTests {
         #expect(prompt.hasSuffix("before any optional quiz block."))
     }
 
+    @Test("多维关系状态会作为私有连续信号注入且禁止公开分数")
+    func relationshipContext() {
+        let context = RelationshipEngine.promptContext(
+            RelationshipSnapshot(
+                affinity: 63,
+                bondFloor: 28,
+                familiarity: 0.5,
+                trust: 0.4,
+                rapport: 0.6,
+                care: 0.45,
+                respect: 0.8
+            )
+        )
+        let prompt = PromptBuilder.roleplaySystemPrompt(
+            card: card,
+            learner: learner(difficulty: .junior3),
+            relationshipContext: context
+        )
+
+        #expect(prompt.contains("overall affinity: 63/150"))
+        #expect(prompt.contains("Do not reveal or mention any score"))
+        #expect(prompt.contains("English mistakes never reduce the relationship"))
+    }
+
     @Test("历史映射：过滤 coach、按序、窗口截断")
     func chatMessagesMapping() {
         var history: [MessageDTO] = []

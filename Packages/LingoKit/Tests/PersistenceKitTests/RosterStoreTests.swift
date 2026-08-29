@@ -103,4 +103,39 @@ struct RosterStoreTests {
             try await store.setFavorite(characterID: UUID(), isFavorite: true)
         }
     }
+
+    @Test("关系状态持久化并使用版本避免后台结果互相覆盖")
+    func relationshipStateUsesOptimisticRevision() async throws {
+        let store = try makeStore()
+        let id = try await store.addCharacter(
+            card: sampleCard(name: "Bond"),
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let initial = try #require(try await store.character(id: id)?.relationship)
+        #expect(initial.affinity == 10)
+
+        var updated = initial
+        updated.affinity = 24
+        updated.revision = initial.revision + 1
+        #expect(
+            try await store.updateRelationship(
+                characterID: id,
+                snapshot: updated,
+                expectedRevision: initial.revision
+            )
+        )
+        #expect(try await store.character(id: id)?.relationship.affinity == 24)
+
+        var stale = initial
+        stale.affinity = 99
+        #expect(
+            try await !store.updateRelationship(
+                characterID: id,
+                snapshot: stale,
+                expectedRevision: initial.revision
+            )
+        )
+        #expect(try await store.character(id: id)?.relationship.affinity == 24)
+    }
 }
