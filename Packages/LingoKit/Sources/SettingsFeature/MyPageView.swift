@@ -34,7 +34,6 @@ public struct MyPageView: View {
     @State private var showsManageSubscriptions = false
     @State private var showsAccountPanel = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -116,7 +115,7 @@ public struct MyPageView: View {
         .refreshable { await reload() }
     }
 
-    /// 现代旅行者工作台：插画只提供空间语境，所有数据和交互仍由原生控件承载。
+    /// 现代旅行者工作台：动态内容像印刷物与实物标记一样落在场景锚点上。
     private var modernTravelDesk: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
@@ -124,50 +123,67 @@ public struct MyPageView: View {
 
             ScrollView(.vertical) {
                 ZStack(alignment: .topLeading) {
-                    Image("profile_modern_travel_desk", bundle: .main)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: width, height: sceneHeight)
-                        .clipped()
-                        .overlay {
-                            Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
-                        }
-                        .accessibilityHidden(true)
+                    travelDeskBackground(width: width, height: sceneHeight)
 
                     profileHotspot
-                        .frame(width: min(width * 0.60, 236))
-                        .position(x: width * 0.31, y: sceneHeight * 0.145)
+                        .frame(width: min(width * 0.40, 164), height: 184)
+                        .position(x: width * 0.18, y: sceneHeight * 0.14)
 
                     coinHotspot
-                        .position(x: width * 0.81, y: sceneHeight * 0.215)
+                        .position(x: width * 0.82, y: sceneHeight * 0.17)
 
                     learningHotspot
-                        .frame(width: min(width * 0.64, 270))
-                        .position(x: width * 0.51, y: sceneHeight * 0.445)
+                        .frame(width: min(width * 0.31, 124), height: 164)
+                        .position(x: width * 0.515, y: sceneHeight * 0.478)
 
                     favoritesHotspot
-                        .frame(width: min(width * 0.42, 172))
-                        .position(x: width * 0.22, y: sceneHeight * 0.635)
+                        .frame(width: 94, height: 82)
+                        .position(x: width * 0.17, y: sceneHeight * 0.525)
 
                     settingsHotspot
-                        .frame(width: min(width * 0.42, 172))
-                        .position(x: width * 0.78, y: sceneHeight * 0.635)
+                        .frame(width: 92, height: 82)
+                        .position(x: width * 0.73, y: sceneHeight * 0.645)
 
                     accountHotspot
-                        .frame(width: min(width * 0.56, 226))
-                        .position(x: width * 0.52, y: sceneHeight * 0.735)
+                        .frame(width: 108, height: 108)
+                        .position(x: width * 0.50, y: sceneHeight * 0.705)
 
                     #if DEBUG
                     memoryDebugHotspot
-                        .position(x: width * 0.53, y: sceneHeight * 0.075)
+                        .position(x: width * 0.515, y: sceneHeight * 0.102)
                     #endif
                 }
                 .frame(width: width, height: sceneHeight)
+                .dynamicTypeSize(...DynamicTypeSize.xLarge)
             }
+            .coordinateSpace(name: "travelDeskScroll")
             .scrollIndicators(.hidden)
             .refreshable { await reload() }
         }
         .ignoresSafeArea(edges: .top)
+    }
+
+    private func travelDeskBackground(width: CGFloat, height: CGFloat) -> some View {
+        GeometryReader { sceneProxy in
+            let pullDistance = max(
+                sceneProxy.frame(in: .named("travelDeskScroll")).minY,
+                0
+            )
+
+            ZStack {
+                Image("profile_modern_travel_desk", bundle: .main)
+                    .resizable()
+                    .frame(width: width, height: height + pullDistance)
+
+                Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
+            }
+            .frame(width: width, height: height + pullDistance)
+            .offset(y: -pullDistance)
+        }
+        .frame(width: width, height: height)
+        .clipped()
+        .accessibilityHidden(true)
+        .allowsHitTesting(false)
     }
 
     private var profileHotspot: some View {
@@ -178,35 +194,33 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            deskPanel {
-                HStack(spacing: 10) {
-                    AvatarBadge(name: displayName, tint: .dsSky, size: 46)
-                    VStack(alignment: .leading, spacing: 3) {
-                        HStack(spacing: 6) {
-                            Text(displayName)
-                                .font(.headline)
-                                .lineLimit(1)
-                            Text(accountBadgeTitle)
-                                .font(.caption2.weight(.bold))
-                                .foregroundStyle(accountBadgeTint)
-                                .padding(.horizontal, 7)
-                                .padding(.vertical, 3)
-                                .background(accountBadgeTint.opacity(0.12), in: Capsule())
-                        }
-                        Text(accountIdentifier)
-                            .font(.caption2.monospaced())
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                        Label("已认识 \(occupiedFriendSlots) 位旅途朋友", systemImage: "person.2.fill")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                    }
-                    Spacer(minLength: 0)
+            ZStack {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(displayName)
+                        .font(.subheadline.weight(.bold))
+                        .lineLimit(1)
+                    Text(accountIdentifier)
+                        .font(.caption2.monospaced())
+                        .lineLimit(1)
+                    Text("\(accountBadgeTitle) · \(occupiedFriendSlots) 位朋友")
+                        .font(.caption2.weight(.medium))
+                        .lineLimit(1)
                 }
+                .foregroundStyle(Color(red: 0.13, green: 0.20, blue: 0.19))
+                .shadow(color: .white.opacity(0.25), radius: 0.4, y: 0.3)
+                .frame(width: 112, alignment: .leading)
+                .rotationEffect(.degrees(-8.5))
+                .offset(x: 6, y: -53)
+
+                AvatarBadge(name: displayName, tint: .dsSky, size: 50)
+                    .rotationEffect(.degrees(-13.5))
+                    .shadow(color: .black.opacity(0.16), radius: 2, x: -1, y: 2)
+                    .offset(x: -1, y: 38)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityLabel("个人资料，\(displayName)，\(accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
         .accessibilityHint(isSignedIn ? "打开账号与订阅" : "登录或创建账号")
     }
@@ -222,7 +236,7 @@ public struct MyPageView: View {
         } label: {
             coinLabel(showsDebugAction: true)
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityHint("调试构建中轻点增加 500 金币")
         #else
         coinLabel(showsDebugAction: false)
@@ -230,92 +244,85 @@ public struct MyPageView: View {
     }
 
     private func coinLabel(showsDebugAction: Bool) -> some View {
-        HStack(spacing: 6) {
-            Image(systemName: "circle.grid.2x1.fill")
-                .foregroundStyle(Color.dsSunset)
-            Text("\(profile?.coins ?? 0)")
-                .font(.subheadline.bold().monospacedDigit())
-            if showsDebugAction {
-                Image(systemName: "plus.circle.fill")
-                    .font(.caption)
-                    .foregroundStyle(Color.dsSuccess)
+        VStack(spacing: 1) {
+            HStack(spacing: 5) {
+                Image(systemName: "circle.grid.2x1.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(Color(red: 1, green: 0.78, blue: 0.30))
+                Text("\(profile?.coins ?? 0)")
+                    .font(.headline.bold().monospacedDigit())
+                if showsDebugAction {
+                    Image(systemName: "plus")
+                        .font(.caption2.bold())
+                }
             }
+            Text("金币")
+                .font(.caption2.weight(.semibold))
         }
-        .padding(.horizontal, 11)
-        .padding(.vertical, 8)
-        .background(deskMaterial, in: Capsule())
-        .overlay(Capsule().strokeBorder(Color.white.opacity(0.55), lineWidth: 0.7))
-        .shadow(color: .black.opacity(0.10), radius: 8, y: 3)
+        .foregroundStyle(Color.white.opacity(0.93))
+        .shadow(color: .black.opacity(0.42), radius: 1.1, y: 1)
+        .rotationEffect(.degrees(8))
+        .frame(width: 86, height: 62)
+        .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(profile?.coins ?? 0) 金币")
     }
 
     private var learningHotspot: some View {
         Button(action: onCalibrateLevel) {
-            deskPanel {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Label("英语旅程", systemImage: "map.fill")
-                            .font(.headline)
-                            .foregroundStyle(Color.dsSkyDeep)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.caption.bold())
-                            .foregroundStyle(.tertiary)
-                    }
-                    HStack(spacing: 14) {
-                        deskMetric(
-                            title: "当前水平",
-                            value: profile?.difficultyLevel.displayName ?? "载入中"
-                        )
-                        deskMetric(
-                            title: "学习目标",
-                            value: profile?.learningGoal.displayName ?? "载入中"
-                        )
-                    }
-                    HStack {
-                        if let score = profile?.placementScore {
-                            Label("最近校准 \(score) / 100", systemImage: "checkmark.seal.fill")
-                        } else {
-                            Label("校准英语水平", systemImage: "scope")
-                        }
-                        Spacer()
-                        Text("重新校准")
-                    }
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSkyDeep)
+            ZStack {
+                Text("英语旅程")
+                    .font(.caption2.weight(.bold))
+                    .tracking(0.25)
+                    .offset(y: -60)
+
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(profile?.difficultyLevel.displayName ?? "载入中")
+                        .font(.system(size: 12, weight: .bold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.76)
+                    Text("目标 · \(profile?.learningGoal.displayName ?? "载入中")")
+                        .font(.system(size: 9, weight: .medium))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
                 }
+                .frame(width: 84, alignment: .leading)
+                .offset(x: 12, y: -2)
+
+                Group {
+                    if let score = profile?.placementScore {
+                        Text("校准 \(score) / 100")
+                    } else {
+                        Text("轻点校准")
+                    }
+                }
+                .font(.caption2.weight(.semibold).monospacedDigit())
+                .offset(y: 61)
             }
+            .foregroundStyle(Color(red: 0.16, green: 0.34, blue: 0.48))
+            .shadow(color: .white.opacity(0.42), radius: 0.5, y: 0.3)
+            .rotationEffect(.degrees(1.4))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")
-    }
-
-    private func deskMetric(title: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(title)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.subheadline.weight(.semibold))
-                .lineLimit(1)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var favoritesHotspot: some View {
         NavigationLink {
             favoritesBuilder()
         } label: {
-            deskEntryLabel(
-                "收藏夹",
-                subtitle: "单词与语法点",
+            sceneObjectMark(
+                title: "收藏",
                 icon: "star.fill",
-                tint: .dsSunset
+                foreground: Color(red: 1, green: 0.78, blue: 0.29),
+                rotation: -10.5
             )
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
+        .accessibilityLabel("收藏夹，单词与语法点")
         .accessibilityHint("查看收藏的单词与语法点")
     }
 
@@ -332,14 +339,16 @@ public struct MyPageView: View {
                 onProactiveMessagesChanged: onProactiveMessagesChanged
             )
         } label: {
-            deskEntryLabel(
-                "设置",
-                subtitle: "AI、语音与偏好",
+            sceneObjectMark(
+                title: "设置",
                 icon: "gearshape.fill",
-                tint: .dsSky
+                foreground: Color(red: 0.18, green: 0.32, blue: 0.40),
+                rotation: 4.5,
+                compact: true
             )
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
+        .accessibilityLabel("设置，AI、语音与偏好")
         .accessibilityHint("打开设置")
     }
 
@@ -351,14 +360,16 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            deskEntryLabel(
-                isSignedIn ? "账号与订阅" : "登录或创建账号",
-                subtitle: isSignedIn ? "同步旅程与管理方案" : "跨设备同步与订阅恢复",
-                icon: isSignedIn ? "icloud.fill" : "person.crop.circle.badge.plus",
-                tint: .dsSkyDeep
+            sceneObjectMark(
+                title: isSignedIn ? "账号" : "登录",
+                icon: isSignedIn ? "person.crop.circle.fill" : "person.crop.circle.badge.plus",
+                foreground: Color(red: 0.88, green: 0.93, blue: 0.95),
+                rotation: 1.8
             )
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
+        .accessibilityLabel(isSignedIn ? "账号与订阅" : "登录或创建账号")
+        .accessibilityHint(isSignedIn ? "同步旅程与管理方案" : "跨设备同步与订阅恢复")
     }
 
     #if DEBUG
@@ -372,68 +383,39 @@ public struct MyPageView: View {
             )
         } label: {
             Image(systemName: "brain.head.profile.fill")
-                .font(.headline)
-                .foregroundStyle(Color.dsQuiz)
-                .frame(width: 46, height: 46)
-                .background(deskMaterial, in: Circle())
-                .overlay(Circle().strokeBorder(Color.white.opacity(0.55), lineWidth: 0.7))
-                .shadow(color: .black.opacity(0.10), radius: 8, y: 3)
+                .font(.system(size: 18, weight: .bold))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(Color(red: 0.25, green: 0.38, blue: 0.50))
+                .shadow(color: .white.opacity(0.46), radius: 0.8, y: 0.5)
+                .frame(width: 52, height: 52)
+                .contentShape(Rectangle())
         }
-        .buttonStyle(DeskHotspotButtonStyle())
+        .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityLabel("记忆调试面板")
         .accessibilityHint("查看角色长期与近期记忆")
     }
     #endif
 
-    private func deskEntryLabel(
-        _ title: String,
-        subtitle: String,
+    private func sceneObjectMark(
+        title: String,
         icon: String,
-        tint: Color
+        foreground: Color,
+        rotation: Double,
+        compact: Bool = false
     ) -> some View {
-        deskPanel {
-            HStack(spacing: 9) {
-                Image(systemName: icon)
-                    .font(.headline)
-                    .foregroundStyle(tint)
-                    .frame(width: 34, height: 34)
-                    .background(tint.opacity(0.13), in: RoundedRectangle(cornerRadius: 10))
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.primary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.82)
-                    Text(subtitle)
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.78)
-                }
-                Spacer(minLength: 0)
-            }
+        VStack(spacing: 4) {
+            Image(systemName: icon)
+                .font(.system(size: compact ? 18 : 23, weight: .bold))
+                .symbolRenderingMode(.hierarchical)
+            Text(title)
+                .font(compact ? .system(size: 9, weight: .bold) : .caption.weight(.bold))
+                .tracking(0.25)
         }
-    }
-
-    private func deskPanel<Content: View>(
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        content()
-            .padding(11)
-            .background(deskMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(Color.white.opacity(0.58), lineWidth: 0.7)
-            }
-            .shadow(color: .black.opacity(0.11), radius: 10, y: 4)
-    }
-
-    private var deskMaterial: AnyShapeStyle {
-        if reduceTransparency {
-            AnyShapeStyle(Color.dsSurface.opacity(0.96))
-        } else {
-            AnyShapeStyle(.ultraThinMaterial)
-        }
+        .foregroundStyle(foreground)
+        .shadow(color: .black.opacity(0.34), radius: 1.2, y: 1)
+        .rotationEffect(.degrees(rotation))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private var accountPanel: some View {
@@ -889,15 +871,15 @@ public struct MyPageView: View {
     }
 }
 
-private struct DeskHotspotButtonStyle: ButtonStyle {
+private struct SceneHotspotButtonStyle: ButtonStyle {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.975 : 1)
-            .brightness(configuration.isPressed ? -0.025 : 0)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .brightness(configuration.isPressed ? -0.045 : 0)
             .animation(
-                reduceMotion ? nil : .snappy(duration: 0.22, extraBounce: 0),
+                reduceMotion ? nil : .snappy(duration: 0.18, extraBounce: 0),
                 value: configuration.isPressed
             )
             .contentShape(Rectangle())
