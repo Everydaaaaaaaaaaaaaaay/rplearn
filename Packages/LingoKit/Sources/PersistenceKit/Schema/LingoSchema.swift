@@ -103,6 +103,8 @@ extension LingoSchema {
         public var isMainCharacter: Bool
         public var isFriend: Bool
         public var isFavorite: Bool = false
+        /// 多维关系状态的版本化 JSON；旧角色缺失时回退到初识状态。
+        public var relationshipJSON: String = RelationshipSnapshot.initial.encodedJSON()
         public var cardJSON: String
         public var metAt: Date
 
@@ -128,6 +130,7 @@ extension LingoSchema {
             isMainCharacter: Bool = false,
             isFriend: Bool = false,
             isFavorite: Bool = false,
+            relationshipJSON: String = RelationshipSnapshot.initial.encodedJSON(),
             cardJSON: String = "",
             metAt: Date = .now
         ) {
@@ -146,6 +149,7 @@ extension LingoSchema {
             self.isMainCharacter = isMainCharacter
             self.isFriend = isFriend
             self.isFavorite = isFavorite
+            self.relationshipJSON = relationshipJSON
             self.cardJSON = cardJSON
             self.metAt = metAt
             self.conversations = []

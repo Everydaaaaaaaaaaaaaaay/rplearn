@@ -21,6 +21,7 @@ public enum PromptBuilder {
         card: CharacterCard,
         learner: LearnerContext,
         memorySections: [String] = [],
+        relationshipContext: String? = nil,
         guidance: String? = nil,
         quizRequested: Bool = false,
         voiceMode: Bool = false
@@ -115,6 +116,9 @@ public enum PromptBuilder {
         if let guidance {
             sections.append(guidance)
         }
+        if let relationshipContext, !relationshipContext.isEmpty {
+            sections.append(relationshipContext)
+        }
         sections.append(contentsOf: memorySections)
         if voiceMode {
             sections.append(
@@ -186,6 +190,7 @@ public enum PromptBuilder {
         learner: LearnerContext,
         history: [MessageDTO],
         memorySections: [String] = [],
+        relationshipContext: String? = nil,
         guidance: String? = nil,
         quizRequested: Bool = false,
         voiceMode: Bool = false,
@@ -199,6 +204,7 @@ public enum PromptBuilder {
                 card: card,
                 learner: learner,
                 memorySections: memorySections,
+                relationshipContext: relationshipContext,
                 guidance: guidance,
                 quizRequested: quizRequested,
                 voiceMode: voiceMode

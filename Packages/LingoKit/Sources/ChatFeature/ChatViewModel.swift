@@ -165,7 +165,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
-        runCoachReview(for: userMessage)
+        runInteractionReview(for: userMessage, source: .voiceChat)
         runSpeechReview(for: userMessage)
         scheduleAssistantReply(after: capture.transcript)
     }
@@ -196,7 +196,7 @@ public final class ChatViewModel {
         let upstream = await deps.llm.stream(request)
         return AsyncThrowingStream { continuation in
             let task = Task { [weak self] in
-                defer { self?.runCoachReview(for: userMessage) }
+                defer { self?.runInteractionReview(for: userMessage, source: .voiceChat) }
                 do {
                     for try await event in upstream {
                         try Task.checkCancellation()
@@ -303,16 +303,35 @@ public final class ChatViewModel {
             return
         }
         // 教练审核与主链路并行，互不阻塞。
-        runCoachReview(for: userMessage)
+        runInteractionReview(for: userMessage, source: .textChat)
         scheduleAssistantReply(after: userText)
     }
 
-    /// 后台教练审核：结果写 coachReviewJSON；超时/失败静默放弃。
-    private func runCoachReview(for message: MessageDTO) {
-        let coach = CoachService(llm: deps.llm)
+    /// 一次后台调用同时完成语言点评与关系信号分析，避免每条消息额外消耗一轮模型请求。
+    private func runInteractionReview(
+        for message: MessageDTO,
+        source: RelationshipEventRecord.Source
+    ) {
+        let relationship = RelationshipService(llm: deps.llm, rosterStore: deps.rosterStore)
         let chatStore = deps.chatStore
+        let character = character
+        let history = messages
+        let fallbackCoach = CoachService(llm: deps.llm)
         Task(priority: .utility) { [weak self] in
-            guard let review = try? await coach.review(userText: message.text) else { return }
+            let review: CoachReview
+            do {
+                review = try await relationship.reviewAndApply(
+                    character: character,
+                    history: history,
+                    userMessage: message,
+                    source: source
+                )
+            } catch {
+                Log.app.warning("关系互动审阅失败，回退语言点评：\(error.localizedDescription)")
+                try? await relationship.recordContact(characterID: character.id, message: message)
+                guard let fallback = try? await fallbackCoach.review(userText: message.text) else { return }
+                review = fallback
+            }
             guard review.hasIssues, let json = CoachService.encode(review) else { return }
             try? await chatStore.setCoachReview(messageID: message.id, json: json)
             await self?.reloadMessages()
@@ -570,10 +589,12 @@ public final class ChatViewModel {
         async let memorySectionsTask = memoryService.memorySections(characterID: characterID)
         async let hasStoryTicketTask = (try? await itemStore.hasTicket(source: .story)) ?? false
         async let profileTask = try? await economyStore.profile()
-        let (memorySections, hasStoryTicket, profile) = await (
+        async let currentCharacterTask = try? await deps.rosterStore.character(id: characterID)
+        let (memorySections, hasStoryTicket, profile, currentCharacter) = await (
             memorySectionsTask,
             hasStoryTicketTask,
-            profileTask
+            profileTask,
+            currentCharacterTask
         )
         let subscriptionTier = profile?.subscriptionTier ?? .free
         let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
@@ -590,6 +611,9 @@ public final class ChatViewModel {
             learner: learner,
             history: messages,
             memorySections: memorySections,
+            relationshipContext: RelationshipEngine.promptContext(
+                currentCharacter?.relationship ?? character.relationship
+            ),
             guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
             quizRequested: quizRequested,
             voiceMode: voiceMode,

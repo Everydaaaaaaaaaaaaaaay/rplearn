@@ -22,6 +22,7 @@ struct ContentCharacterPayload: Codable {
     var isFavorite: Bool? = nil
     let isMainCharacter: Bool
     let metAt: Date
+    var relationship: RelationshipSnapshot? = nil
     var schemaVersion = 1
 }
 

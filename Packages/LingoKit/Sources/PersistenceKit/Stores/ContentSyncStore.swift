@@ -281,6 +281,7 @@ public actor ContentSyncStore {
                 isMainCharacter: payload.isMainCharacter,
                 isFriend: payload.isFriend,
                 isFavorite: payload.isFavorite ?? false,
+                relationshipJSON: (payload.relationship ?? .initial).encodedJSON(),
                 cardJSON: card.encodedJSON(),
                 metAt: payload.metAt
             )
@@ -301,6 +302,9 @@ public actor ContentSyncStore {
         entity.isMainCharacter = payload.isMainCharacter
         entity.isFriend = payload.isFriend
         entity.isFavorite = payload.isFavorite ?? false
+        if let relationship = payload.relationship {
+            entity.relationshipJSON = relationship.encodedJSON()
+        }
         entity.cardJSON = card.encodedJSON()
         entity.metAt = payload.metAt
         try upsertMetadata(record, localKey: record.resourceID)
@@ -600,7 +604,8 @@ public actor ContentSyncStore {
                 isFriend: entity.isFriend,
                 isFavorite: entity.isFavorite,
                 isMainCharacter: entity.isMainCharacter,
-                metAt: entity.metAt
+                metAt: entity.metAt,
+                relationship: RelationshipSnapshot.decode(fromJSON: entity.relationshipJSON) ?? .initial
             )
             records.append(
                 LocalContentRecord(
