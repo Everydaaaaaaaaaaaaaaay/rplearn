@@ -776,11 +776,9 @@ public struct DictCardView: View {
         contextual: [DictEntry],
         related: [DictEntry]
     ) -> some View {
-        let contextualWords = Set(contextual.map { $0.word.lowercased() })
-        let remainingRelated = related.filter {
-            !contextualWords.contains($0.word.lowercased())
-        }
-        let phrases = Array((contextual + remainingRelated).prefix(4))
+        let phrases = Array(
+            DictPhraseDisplayPolicy.deduplicated(contextual + related).prefix(4)
+        )
         return HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
             Text("短语")
                 .font(.footnote.weight(.semibold))

@@ -299,13 +299,14 @@ struct DictDatabaseTests {
     @Test("原句候选返回固定搭配但不覆盖单词主释义")
     func phraseCandidatesAreSuggestions() async throws {
         let db = try openDatabase()
-        let word = await db.lookup("break")
+        let word = await db.lookup("good")
         let phrases = await db.matchingPhrases(
-            ["use a break from", "a break from", "break from"],
-            excluding: "break"
+            ["be good at", "good at"],
+            excluding: "good"
         )
-        #expect(word?.word.lowercased() == "break")
-        #expect(phrases.map { $0.word.lowercased() }.contains("break from"))
+        #expect(word?.word.lowercased() == "good")
+        #expect(phrases.count == 1)
+        #expect(phrases[0].word.lowercased() == "be good at")
     }
 
     @Test("相关短语只保留教材型固定搭配并限制数量")
@@ -313,10 +314,46 @@ struct DictDatabaseTests {
         let db = try openDatabase()
         let phrases = await db.relatedPhrases(for: "argue", limit: 24)
 
-        #expect(phrases.map(\.word).contains("argue with"))
-        #expect(phrases.map(\.word).contains("argue about"))
+        #expect(phrases.map(\.word).contains("argue sb into doing sth"))
+        #expect(!phrases.map(\.word).contains("argue with"))
+        #expect(!phrases.map(\.word).contains("argue with sb"))
+        #expect(!phrases.map(\.word).contains("argue about"))
+        #expect(!phrases.map(\.word).contains("argue for"))
         #expect(phrases.allSatisfy { $0.word.lowercased().hasPrefix("argue ") })
         #expect(phrases.count <= 4)
+    }
+
+    @Test("介词和指示词不能反向吸附相邻词或整句")
+    func functionWordsDoNotOwnPhrases() async throws {
+        let db = try openDatabase()
+
+        #expect(await db.relatedPhrases(for: "with").isEmpty)
+        #expect(await db.relatedPhrases(for: "that").isEmpty)
+        #expect(
+            await db.matchingPhrases(
+                ["argue with", "with that"],
+                excluding: "with"
+            ).isEmpty
+        )
+        #expect(
+            await db.matchingPhrases(
+                ["with that", "that is to say"],
+                excluding: "that"
+            ).isEmpty
+        )
+    }
+
+    @Test("带 sb 或 somebody 的同骨架短语只保留更完整的一条")
+    func equivalentPhrasePatternsAreDeduplicated() {
+        let entries = [
+            DictEntry(word: "argue with", translation: "和…辩论"),
+            DictEntry(word: "argue with sb", translation: "跟某人辩论"),
+            DictEntry(word: "argue with somebody", translation: "跟某人辩论"),
+        ]
+
+        let phrases = DictPhraseDisplayPolicy.deduplicated(entries)
+        #expect(phrases.count == 1)
+        #expect(phrases[0].word == "argue with sb")
     }
 
     @Test("普通复合名词不冒充固定短语")

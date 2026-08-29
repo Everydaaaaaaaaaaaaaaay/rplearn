@@ -6,69 +6,110 @@ import SQLite3
 enum DictPhraseDisplayPolicy {
     struct Rank: Comparable {
         let tier: Int
-        let linkPriority: Int
+        let patternPriority: Int
+        let specificityPenalty: Int
         let wordCount: Int
         let word: String
 
         static func < (lhs: Self, rhs: Self) -> Bool {
             if lhs.tier != rhs.tier { return lhs.tier < rhs.tier }
-            if lhs.linkPriority != rhs.linkPriority {
-                return lhs.linkPriority < rhs.linkPriority
+            if lhs.patternPriority != rhs.patternPriority {
+                return lhs.patternPriority < rhs.patternPriority
+            }
+            if lhs.specificityPenalty != rhs.specificityPenalty {
+                return lhs.specificityPenalty < rhs.specificityPenalty
             }
             if lhs.wordCount != rhs.wordCount { return lhs.wordCount < rhs.wordCount }
             return lhs.word < rhs.word
         }
     }
 
-    private static let linkWords: Set<String> = [
-        "about", "above", "across", "after", "against", "along", "around", "as", "at",
-        "away", "back", "before", "behind", "between", "by", "down", "for", "forth",
-        "forward", "from", "in", "into", "of", "off", "on", "onto", "out", "over",
-        "through", "to", "together", "under", "up", "upon", "with", "without",
+    private static let functionWords: Set<String> = [
+        "a", "an", "and", "any", "are", "as", "at", "be", "been", "being", "but",
+        "by", "can", "could", "for", "from",
+        "he", "her", "hers", "him", "his", "i", "if", "in", "into", "is", "it", "its",
+        "may", "me", "might", "must", "my", "nor", "not", "of", "on", "or", "our",
+        "ours", "shall", "she", "should", "some", "than", "that", "the", "their", "theirs",
+        "them", "these", "they", "this", "those", "through", "to", "us", "was", "we",
+        "were", "what", "when", "where", "which", "while", "who", "whom", "whose", "will",
+        "with", "would", "you", "your", "yours",
+    ]
+
+    private static let complementWords: Set<String> = [
+        "about", "after", "against", "as", "at", "by", "for", "from", "in", "into", "of",
+        "on", "onto", "over", "through", "to", "upon", "with", "without",
+    ]
+
+    private static let phrasalParticles: Set<String> = [
+        "apart", "around", "away", "back", "down", "forth", "forward", "off", "out", "over",
+        "together", "up",
     ]
 
     private static let placeholderWords: Set<String> = [
         "doing", "oneself", "sb", "somebody", "someone", "something", "sth",
     ]
 
-    private static let preferredLinkOrder: [String: Int] = [
-        "with": 0, "at": 1, "about": 2, "for": 3, "to": 4, "from": 5,
-        "of": 6, "on": 7, "in": 8, "into": 9, "out": 10, "up": 11,
-        "down": 12, "off": 13, "over": 14, "against": 15, "away": 16,
+    private static let beForms: Set<String> = ["be", "been", "being", "is", "are", "was", "were"]
+
+    private static let preferredPatternOrder: [String: Int] = [
+        "out": 0, "up": 1, "off": 2, "away": 3, "back": 4, "down": 5,
+        "over": 6, "around": 7, "apart": 8, "together": 9,
     ]
+
+    static func allowsPhraseDiscovery(for selectedWord: String) -> Bool {
+        let selectedTokens = tokens(in: selectedWord)
+        return selectedTokens.count == 1 && !functionWords.contains(selectedTokens[0])
+    }
 
     static func rank(
         phrase: String,
         selectedWord: String,
-        isOxford: Bool
+        isOxford: Bool,
+        selectedEntry: DictEntry?
     ) -> Rank? {
         let phraseTokens = tokens(in: phrase)
         let selectedTokens = tokens(in: selectedWord)
-        guard phraseTokens.count >= 2,
-              !selectedTokens.isEmpty,
-              selectedTokens.allSatisfy(phraseTokens.contains)
+        guard allowsPhraseDiscovery(for: selectedWord),
+              phraseTokens.count >= 2,
+              selectedTokens.count == 1,
+              let selectedIndex = phraseTokens.firstIndex(of: selectedTokens[0])
         else { return nil }
 
-        let selectedIndex = selectedTokens.count == 1
-            ? phraseTokens.firstIndex(of: selectedTokens[0])
-            : nil
-        let adjacentLink = selectedIndex.flatMap { index -> String? in
-            let next = index + 1
-            guard phraseTokens.indices.contains(next), linkWords.contains(phraseTokens[next])
-            else { return nil }
-            return phraseTokens[next]
-        }
-        let firstLink = adjacentLink ?? phraseTokens.first(where: linkWords.contains)
-        let hasPlaceholder = phraseTokens.contains(where: placeholderWords.contains)
+        let labels = Set(selectedEntry?.meaningGroups.compactMap(\.partOfSpeech) ?? [])
+        let isVerb = !labels.isDisjoint(with: ["动词", "及物动词", "不及物动词"])
+            || selectedEntry?.senses.contains(where: { $0.partOfSpeech == "v" }) == true
+        let isAdjective = labels.contains("形容词")
+            || selectedEntry?.senses.contains(where: { ["a", "s"].contains($0.partOfSpeech) }) == true
+        guard isVerb || isAdjective else { return nil }
+
+        let auxiliaryLed = selectedIndex == 1
+            && beForms.contains(phraseTokens[0])
+            && isAdjective
+        guard selectedIndex == 0 || auxiliaryLed else { return nil }
+
+        let nextIndex = selectedIndex + 1
+        let nextWord = phraseTokens.indices.contains(nextIndex) ? phraseTokens[nextIndex] : nil
+        let placeholderCount = phraseTokens.filter(placeholderWords.contains).count
+        let isOxfordPattern = isOxford && phraseTokens.count <= 4
+        let isAuxiliaryAdjectivePattern = auxiliaryLed
+            && nextWord.map(complementWords.contains) == true
+            && phraseTokens.count <= 5
+        let isComplexVerbFrame = isVerb
+            && nextWord.map(placeholderWords.contains) == true
+            && phraseTokens.dropFirst(nextIndex + 1).contains(where: complementWords.contains)
+            && phraseTokens.count <= 6
+        let isPhrasalVerb = isVerb
+            && nextWord.map(phrasalParticles.contains) == true
+            && phraseTokens.count <= 4
 
         let tier: Int
-        if isOxford {
+        if isOxfordPattern {
             tier = 0
-        } else if adjacentLink != nil {
+        } else if isAuxiliaryAdjectivePattern {
             tier = 1
-        } else if hasPlaceholder {
+        } else if isComplexVerbFrame {
             tier = 2
-        } else if firstLink != nil {
+        } else if isPhrasalVerb {
             tier = 3
         } else {
             return nil
@@ -76,10 +117,49 @@ enum DictPhraseDisplayPolicy {
 
         return Rank(
             tier: tier,
-            linkPriority: firstLink.flatMap { preferredLinkOrder[$0] } ?? 100,
+            patternPriority: nextWord.flatMap { preferredPatternOrder[$0] } ?? 100,
+            specificityPenalty: -placeholderCount,
             wordCount: phraseTokens.count,
             word: phrase.lowercased()
         )
+    }
+
+    static func deduplicated(_ entries: [DictEntry]) -> [DictEntry] {
+        var order: [String] = []
+        var bestByKey: [String: DictEntry] = [:]
+        for entry in entries {
+            let key = deduplicationKey(for: entry.word)
+            if bestByKey[key] == nil {
+                order.append(key)
+                bestByKey[key] = entry
+            } else if specificity(of: entry.word) > specificity(of: bestByKey[key]?.word ?? "") {
+                bestByKey[key] = entry
+            }
+        }
+        return order.compactMap { bestByKey[$0] }
+    }
+
+    private static func deduplicationKey(for phrase: String) -> String {
+        var values = tokens(in: phrase).map { token -> String in
+            switch token {
+            case "sb", "somebody", "someone": "<person>"
+            case "sth", "something": "<thing>"
+            default: token
+            }
+        }
+        if values.first == "be", values.count > 2 {
+            values.removeFirst()
+        }
+        while let last = values.last,
+              ["<person>", "<thing>", "oneself"].contains(last) {
+            values.removeLast()
+        }
+        return values.joined(separator: " ")
+    }
+
+    private static func specificity(of phrase: String) -> Int {
+        let values = tokens(in: phrase)
+        return values.filter(placeholderWords.contains).count * 100 + values.count
     }
 
     private static func tokens(in text: String) -> [String] {
@@ -198,7 +278,10 @@ public actor DictDatabase {
         let excluded = rawWord.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
         let displayLimit = min(max(limit, 0), 4)
-        guard displayLimit > 0 else { return [] }
+        guard displayLimit > 0,
+              DictPhraseDisplayPolicy.allowsPhraseDiscovery(for: excluded)
+        else { return [] }
+        let selectedEntry = lookup(excluded)
         var results: [DictEntry] = []
         var seen = Set<String>()
         for candidate in rawCandidates {
@@ -210,13 +293,16 @@ public actor DictDatabase {
                   DictPhraseDisplayPolicy.rank(
                       phrase: entry.word,
                       selectedWord: excluded,
-                      isOxford: entry.oxford
+                      isOxford: entry.oxford,
+                      selectedEntry: selectedEntry
                   ) != nil
             else { continue }
             results.append(entry)
             if results.count == displayLimit { break }
         }
-        return results
+        return Array(
+            DictPhraseDisplayPolicy.deduplicated(results).prefix(displayLimit)
+        )
     }
 
     /// 返回以当前词开头、具备教学价值的固定搭配；普通复合名词不会进入词卡。
@@ -224,7 +310,11 @@ public actor DictDatabase {
         let word = rawWord.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
         let displayLimit = min(max(limit, 0), 4)
-        guard !word.isEmpty, displayLimit > 0 else { return [] }
+        guard !word.isEmpty,
+              displayLimit > 0,
+              DictPhraseDisplayPolicy.allowsPhraseDiscovery(for: word)
+        else { return [] }
+        let selectedEntry = lookup(word)
 
         let prefix = word + " "
         let statement = connection.relatedPhraseStatement
@@ -240,15 +330,19 @@ public actor DictDatabase {
                   let rank = DictPhraseDisplayPolicy.rank(
                       phrase: phrase,
                       selectedWord: word,
-                      isOxford: sqlite3_column_int(statement, 1) == 1
+                      isOxford: sqlite3_column_int(statement, 1) == 1,
+                      selectedEntry: selectedEntry
                   )
             else { continue }
             rankedWords.append((rank, phrase))
         }
-        return rankedWords
+        let candidates = rankedWords
             .sorted { $0.rank < $1.rank }
-            .prefix(displayLimit)
+            .prefix(displayLimit * 4)
             .compactMap { exactEntry($0.word.lowercased()) }
+        return Array(
+            DictPhraseDisplayPolicy.deduplicated(candidates).prefix(displayLimit)
+        )
     }
 
     /// 精确命中（入参需已 lowercase）。
