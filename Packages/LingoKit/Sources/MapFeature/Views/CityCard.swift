@@ -1,12 +1,11 @@
 import DesignSystem
 import DomainKit
 import SwiftUI
-import UIKit
 
 struct JourneyGuideView: View {
     let guidance: JourneyMapGuidance
     let regionCatalog: RegionCatalog
-    let state: (Region) -> CityPinView.PinState
+    let state: (Region) -> CityPinState
     let ticketCount: (Region) -> Int
     let onTravel: (Region) -> Void
     let onOpenMainline: @MainActor () -> Void
@@ -22,7 +21,7 @@ struct JourneyGuideView: View {
             }
             .padding(10)
             .background(
-                .regularMaterial,
+                Color.dsSurface.opacity(0.94),
                 in: RoundedRectangle(cornerRadius: 23, style: .continuous)
             )
             .overlay {
@@ -118,7 +117,7 @@ private struct JourneyCityCard: View {
 
     let region: Region
     let mode: Mode
-    let state: CityPinView.PinState
+    let state: CityPinState
     let ticketCount: Int
     let onTravel: () -> Void
 
@@ -135,13 +134,11 @@ private struct JourneyCityCard: View {
             GeometryReader { geometry in
                 ZStack(alignment: .bottomLeading) {
                     DSScenePalette.city(region.id).skyTop
-                    if UIImage(named: "city_backdrop_\(region.id)") != nil {
-                        Image("city_backdrop_\(region.id)")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: geometry.size.width, height: geometry.size.height)
-                            .clipped()
-                    }
+                    Image("city_map_card_\(region.id)")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .clipped()
                     LinearGradient(
                         colors: [.clear, .black.opacity(0.74)],
                         startPoint: .top,
@@ -215,7 +212,10 @@ private struct ContinueStoryGuide: View {
             .buttonStyle(.dsAction(.primary, fullWidth: false, compact: true))
         }
         .padding(12)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .background(
+            Color.dsSurface.opacity(0.94),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
         .overlay {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .stroke(.white.opacity(0.7), lineWidth: 1)
@@ -243,6 +243,9 @@ private struct EmptyJourneyGuide: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(12)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .background(
+            Color.dsSurface.opacity(0.94),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
     }
 }

@@ -13,15 +13,14 @@ public struct MapView: View {
     @State private var profile: UserProfileDTO?
     @State private var tickets: [ItemDTO] = []
     @State private var completedStories: Set<String> = []
-    @State private var position: MapCameraPosition = .automatic
     @State private var selectedRegionID: String?
     @State private var travelTarget: Region?
     @State private var pendingTravelOutcome: TravelOutcome?
     @State private var flight: FlightPresentation?
     @State private var feedback: String?
     @State private var showsTicketStubsPreview = false
-    @State private var isMapMoving = false
-    @State private var cameraRevision = 0
+    @State private var viewportRevision = 0
+    @State private var viewportRequest: MapViewportRequest?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -160,82 +159,25 @@ public struct MapView: View {
             #endif
             presentDebugFlightIfRequested()
         }
-        .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedRegionID)
         .dsTabBarHidden(flight != nil)
     }
 
     private var interactiveMap: some View {
-        GeometryReader { geometry in
-            MapReader { proxy in
-                ZStack {
-                    Map(position: $position, interactionModes: [.pan, .zoom]) {
-                        ForEach(deps.regionCatalog.regions) { region in
-                            Annotation(
-                                "",
-                                coordinate: coordinate(region),
-                                anchor: CityPinAnnotationView.mapAnchor
-                            ) {
-                                CityPinAnnotationView(
-                                    region: region,
-                                    state: pinState(region),
-                                    isSelected: selectedRegionID == region.id,
-                                    onSelect: { select(region) }
-                                )
-                                .allowsHitTesting(false)
-                            }
-                        }
-                    }
-                    .mapStyle(
-                        .standard(
-                            elevation: .flat,
-                            emphasis: .muted,
-                            pointsOfInterest: .excludingAll,
-                            showsTraffic: false
-                        )
-                    )
-                    .simultaneousGesture(
-                        SpatialTapGesture(coordinateSpace: .local)
-                            .onEnded { value in
-                                selectRegion(at: value.location, using: proxy)
-                            }
-                    )
-                    .onMapCameraChange(frequency: .continuous) {
-                        guard selectedRegionID != nil, !isMapMoving else { return }
-                        isMapMoving = true
-                    }
-                    .onMapCameraChange(frequency: .onEnd) {
-                        guard selectedRegionID != nil else { return }
-                        isMapMoving = false
-                        cameraRevision &+= 1
-                    }
-
-                    if !isMapMoving,
-                       let selectedRegion,
-                       let point = actionPoint(
-                           for: selectedRegion,
-                           using: proxy,
-                           in: geometry.size,
-                           revision: cameraRevision
-                       )
-                    {
-                        SelectedCityActionButton(
-                            region: selectedRegion,
-                            state: pinState(selectedRegion),
-                            hasUsableTicket: !usableTickets(for: selectedRegion).isEmpty,
-                            onAction: { travelTarget = selectedRegion }
-                        )
-                        .position(point)
-                        .transition(
-                            .opacity.combined(
-                                with: reduceMotion
-                                    ? .identity
-                                    : .scale(scale: 0.96, anchor: .top)
-                            )
-                        )
-                    }
-                }
-            }
-        }
+        WorldMapCanvas(
+            regions: deps.regionCatalog.regions,
+            presentations: mapRegionPresentations,
+            selectedRegionID: selectedRegionID,
+            viewportRequest: viewportRequest,
+            viewportInsets: UIEdgeInsets(
+                top: 122,
+                left: 30,
+                bottom: guidance == nil ? 104 : 238,
+                right: 30
+            ),
+            onSelect: selectRegion,
+            onTravel: { travelTarget = $0 }
+        )
+        .ignoresSafeArea()
     }
 
     @ViewBuilder
@@ -273,7 +215,7 @@ public struct MapView: View {
                         .font(.caption.weight(.bold))
                         .foregroundStyle(.primary)
                         .frame(width: 38, height: 38)
-                        .background(.regularMaterial, in: Circle())
+                        .background(Color.dsSurface.opacity(0.9), in: Circle())
                         .overlay {
                             Circle().stroke(.white.opacity(0.72), lineWidth: 1)
                         }
@@ -294,7 +236,7 @@ public struct MapView: View {
                         .font(.caption.weight(.bold))
                         .foregroundStyle(.primary)
                         .frame(width: 38, height: 38)
-                        .background(.regularMaterial, in: Circle())
+                        .background(Color.dsSurface.opacity(0.9), in: Circle())
                         .overlay {
                             Circle().stroke(.white.opacity(0.72), lineWidth: 1)
                         }
@@ -308,7 +250,7 @@ public struct MapView: View {
                         .font(.caption.weight(.bold))
                         .foregroundStyle(Color.dsSunset)
                         .frame(width: 38, height: 38)
-                        .background(.regularMaterial, in: Circle())
+                        .background(Color.dsSurface.opacity(0.9), in: Circle())
                         .overlay {
                             Circle().stroke(.white.opacity(0.72), lineWidth: 1)
                         }
@@ -338,57 +280,24 @@ public struct MapView: View {
         }
     }
 
-    private var mapBottomPadding: CGFloat {
-        let guidancePadding: CGFloat = guidance == nil ? 0 : 172
-        return DSSpacing.md + guidancePadding
-    }
-
-    private func select(_ region: Region) {
-        guard selectedRegionID != region.id else { return }
-        selectedRegionID = region.id
-        Haptics.selection()
-    }
-
-    private func selectRegion(at location: CGPoint, using proxy: MapProxy) {
-        let nearest = deps.regionCatalog.regions.compactMap { region -> (Region, CGFloat)? in
-            guard let anchor = proxy.convert(coordinate(region), to: .local) else { return nil }
-
-            let hitRect = CGRect(
-                x: anchor.x - 46,
-                y: anchor.y - 82,
-                width: 92,
-                height: 92
+    private var mapRegionPresentations: [String: MapRegionPresentation] {
+        Dictionary(uniqueKeysWithValues: deps.regionCatalog.regions.map { region in
+            (
+                region.id,
+                MapRegionPresentation(
+                    state: pinState(region),
+                    hasUsableTicket: !usableTickets(for: region).isEmpty
+                )
             )
-            guard hitRect.contains(location) else { return nil }
-
-            let visualCenter = CGPoint(x: anchor.x, y: anchor.y - 36)
-            let dx = location.x - visualCenter.x
-            let dy = location.y - visualCenter.y
-            return (region, dx * dx + dy * dy)
-        }
-        .min { $0.1 < $1.1 }
-
-        if let region = nearest?.0 {
-            select(region)
-        } else {
-            selectedRegionID = nil
-        }
+        })
     }
 
-    private func actionPoint(
-        for region: Region,
-        using proxy: MapProxy,
-        in size: CGSize,
-        revision _: Int
-    ) -> CGPoint? {
-        guard let anchor = proxy.convert(coordinate(region), to: .local) else { return nil }
-        let point = CGPoint(
-            x: min(max(anchor.x, 72), size.width - 72),
-            y: anchor.y + 20
-        )
-        let maximumY = size.height - mapBottomPadding - 20
-        guard point.y >= 122, point.y <= maximumY else { return nil }
-        return point
+    private func selectRegion(_ regionID: String?) {
+        guard selectedRegionID != regionID else { return }
+        selectedRegionID = regionID
+        if regionID != nil {
+            Haptics.selection()
+        }
     }
 
     private func resetOverview() {
@@ -404,9 +313,15 @@ public struct MapView: View {
     }
 
     private func show(_ region: Region, animated: Bool = true) {
-        withAnimation(animated && !reduceMotion ? .easeInOut(duration: 0.35) : nil) {
-            position = Self.overviewPosition(for: region)
-        }
+        viewportRevision &+= 1
+        viewportRequest = MapViewportRequest(
+            revision: viewportRevision,
+            target: .camera(
+                center: coordinate(region),
+                distance: 5_800_000
+            ),
+            animated: animated && !reduceMotion
+        )
     }
 
     private func show(_ regions: [Region], animated: Bool = true) {
@@ -420,22 +335,11 @@ public struct MapView: View {
             dx: -max(rect.width * 0.28, minimumPadding),
             dy: -max(rect.height * 0.28, minimumPadding)
         )
-        withAnimation(animated && !reduceMotion ? .easeInOut(duration: 0.35) : nil) {
-            position = .rect(rect)
-        }
-    }
-
-    private static func overviewPosition(for region: Region) -> MapCameraPosition {
-        .camera(
-            MapCamera(
-                centerCoordinate: CLLocationCoordinate2D(
-                    latitude: region.latitude,
-                    longitude: region.longitude
-                ),
-                distance: 5_800_000,
-                heading: 0,
-                pitch: 0
-            )
+        viewportRevision &+= 1
+        viewportRequest = MapViewportRequest(
+            revision: viewportRevision,
+            target: .rect(rect),
+            animated: animated && !reduceMotion
         )
     }
 
@@ -499,7 +403,7 @@ public struct MapView: View {
         }
     }
 
-    private func pinState(_ region: Region) -> CityPinView.PinState {
+    private func pinState(_ region: Region) -> CityPinState {
         if profile?.currentRegionID == region.id { return .current }
         if !requiresTicket(for: region) { return .unlocked }
         return .locked
