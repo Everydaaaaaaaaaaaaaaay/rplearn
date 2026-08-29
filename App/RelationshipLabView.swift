@@ -209,12 +209,15 @@ struct RelationshipLabView: View {
                 Spacer()
                 VStack(alignment: .trailing, spacing: 2) {
                     Text("今日普通 +\(sandbox.positiveGainToday, specifier: "%.2f") / 4")
-                    Text("今日修复 +\(sandbox.repairGainToday ?? 0, specifier: "%.2f") / 2")
+                    Text("今日恢复信用 \(sandbox.repairGainToday ?? 0, specifier: "%.2f") / 2")
                 }
             }
             .font(.caption)
             .foregroundStyle(.secondary)
             Label(substantiveContactSummary, systemImage: "clock.badge.checkmark")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Label(contactCadenceSummary, systemImage: "calendar.badge.clock")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -477,8 +480,18 @@ struct RelationshipLabView: View {
             .init(title: "张力在 0…1", passed: (0...1).contains(sandbox.unresolvedStrain), detail: percent(sandbox.unresolvedStrain)),
             .init(title: "互动质量预期在 −1…1", passed: sandbox.expectedSocialQuality.map { (-1...1).contains($0) } ?? true, detail: sandbox.expectedSocialQuality.map(number) ?? "未建立"),
             .init(title: "互动稳定性在 0…1", passed: sandbox.interactionStability.map { (0...1).contains($0) } ?? true, detail: sandbox.interactionStability.map(percent) ?? "未建立"),
+            .init(
+                title: "联系节律在 0.5…120 天",
+                passed: sandbox.typicalContactIntervalDays.map { (0.5...120).contains($0) } ?? true,
+                detail: sandbox.typicalContactIntervalDays.map { "\(number($0)) 天" } ?? "未建立"
+            ),
+            .init(
+                title: "节律样本在 0…10000",
+                passed: (0...10_000).contains(sandbox.substantiveIntervalSampleCount ?? 0),
+                detail: "\(sandbox.substantiveIntervalSampleCount ?? 0)"
+            ),
             .init(title: "每日正向收益 ≤ 4", passed: sandbox.positiveGainToday <= 4.000_001, detail: number(sandbox.positiveGainToday)),
-            .init(title: "每日修复收益 ≤ 2", passed: (sandbox.repairGainToday ?? 0) <= 2.000_001, detail: number(sandbox.repairGainToday ?? 0)),
+            .init(title: "每日恢复信用 ≤ 2", passed: (sandbox.repairGainToday ?? 0) <= 2.000_001, detail: number(sandbox.repairGainToday ?? 0)),
             .init(title: "变化记录最多 24 条", passed: sandbox.recentEvents.count <= 24, detail: "\(sandbox.recentEvents.count)/24"),
             .init(title: "结算去重账本最多 64 条", passed: (sandbox.recentEvaluatedMessageIDs ?? []).count <= 64, detail: "\((sandbox.recentEvaluatedMessageIDs ?? []).count)/64"),
         ]
@@ -735,6 +748,14 @@ struct RelationshipLabView: View {
         return "最近有效联系：\(date.formatted(date: .abbreviated, time: .shortened))"
     }
 
+    private var contactCadenceSummary: String {
+        let sampleCount = sandbox.substantiveIntervalSampleCount ?? 0
+        guard sampleCount >= 2, let days = sandbox.typicalContactIntervalDays else {
+            return "联系节律证据：\(min(sampleCount, 2))/2 个跨会话间隔"
+        }
+        return "已学习联系节律：约每 \(days.formatted(.number.precision(.fractionLength(1)))) 天"
+    }
+
     private func percent(_ value: Double) -> String {
         (value * 100).formatted(.number.precision(.fractionLength(0))) + "%"
     }
@@ -812,6 +833,11 @@ private enum RelationshipLabFixtures {
         reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0,
         significance: 0, confidence: 0, reason: "没有可判断的社会信息"
     )
+    static let disclosureWithoutResponse = signal(
+        warmth: 0.3, responsiveness: 0, respect: 0.4, empathy: 0,
+        reciprocity: 0, disclosure: 0.9, resonance: 0, engagement: 0.4,
+        significance: 0.55, reason: "分享了很多但没有承接对方"
+    )
 
     @MainActor
     static var scenarios: [RelationshipLabScenario] {
@@ -821,6 +847,7 @@ private enum RelationshipLabFixtures {
             .init(id: "disagree", title: "尊重地分歧", subtitle: "不同观点不应被惩罚", icon: "arrow.left.arrow.right", color: .dsCyan, signal: respectfulDisagreement),
             .init(id: "english", title: "英语不流利", subtitle: "语言错误不影响关系", icon: "text.badge.xmark", color: .dsQuiz, signal: englishMistakes),
             .init(id: "capitalization", title: "承接好消息", subtitle: "验证主动建设性回应", icon: "party.popper.fill", color: .dsSunset, signal: positiveNewsResponse),
+            .init(id: "bare-disclosure", title: "单方面倾诉", subtitle: "只增加了解，不自动增加亲近", icon: "text.bubble", color: .dsQuiz, signal: disclosureWithoutResponse),
             .init(id: "empty", title: "空洞刷联系", subtitle: "不能刷新有效联系时钟", icon: "ellipsis.bubble", color: .secondary, signal: noEvidence),
             .init(id: "dismissive", title: "敷衍轻视", subtitle: "低质量且不够尊重", icon: "hand.thumbsdown", color: .dsWarning, signal: dismissive),
             .init(id: "harm", title: "严重越界", subtitle: "高伤害、信任和下限受损", icon: "exclamationmark.octagon.fill", color: .dsDanger, signal: boundaryViolation),
@@ -898,6 +925,40 @@ private enum RelationshipLabFixtures {
         }
         let hollowRepairResult = apply(hollowApology, to: harmed, index: 3, at: now.addingTimeInterval(86_400))
         let accountableRepairResult = apply(repair, to: harmed, index: 3, at: now.addingTimeInterval(86_400))
+        let disclosureControl = apply(
+            signal(
+                warmth: 0.3, responsiveness: 0, respect: 0.4, empathy: 0,
+                reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0.4,
+                significance: 0.55, reason: "没有披露也没有承接"
+            ),
+            to: .initial,
+            index: 0,
+            at: now
+        )
+        let disclosureOnly = apply(disclosureWithoutResponse, to: .initial, index: 0, at: now)
+        var repeatedRepair = RelationshipSnapshot(
+            affinity: 44, bondFloor: 24, familiarity: 0.62, trust: 0.35,
+            rapport: 0.4, care: 0.42, respect: 0.45, unresolvedStrain: 0.9,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        for index in 0..<20 {
+            repeatedRepair = apply(
+                repair,
+                to: repeatedRepair,
+                index: index,
+                at: now.addingTimeInterval(Double(index * 60))
+            )
+        }
+        let repairedForFollowThrough = apply(repair, to: harmed, index: 5, at: now.addingTimeInterval(86_400))
+        var followedThrough = repairedForFollowThrough
+        for day in 2...6 {
+            followedThrough = apply(
+                highQuality,
+                to: followedThrough,
+                index: day + 5,
+                at: now.addingTimeInterval(Double(day) * 86_400)
+            )
+        }
 
         return [
             .init(title: "优质互动产生正向变化", passed: positive.affinity > 10, detail: "+\((positive.affinity - 10).formatted(.number.precision(.fractionLength(2))))"),
@@ -913,6 +974,9 @@ private enum RelationshipLabFixtures {
             .init(title: "空洞互动不建立有效联系锚点", passed: noInformation.lastSubstantiveInteractionAt == nil, detail: noInformation.lastSubstantiveInteractionAt == nil ? "未刷新" : "失败"),
             .init(title: "持续互动逐渐建立稳定性", passed: (consistent.interactionStability ?? 0) > 0.7, detail: (consistent.interactionStability ?? 0).formatted(.percent.precision(.fractionLength(0)))),
             .init(title: "承担影响比空洞道歉更有效", passed: accountableRepairResult.unresolvedStrain < hollowRepairResult.unresolvedStrain, detail: "\(hollowRepairResult.unresolvedStrain.formatted(.number.precision(.fractionLength(2)))) → \(accountableRepairResult.unresolvedStrain.formatted(.number.precision(.fractionLength(2))))"),
+            .init(title: "裸披露不自动增加亲近度", passed: abs(disclosureOnly.affinity - disclosureControl.affinity) < 0.05 && disclosureOnly.familiarity > disclosureControl.familiarity, detail: "亲近差 \((disclosureOnly.affinity - disclosureControl.affinity).formatted(.number.precision(.fractionLength(3))))"),
+            .init(title: "同日重复道歉不能清空裂痕", passed: repeatedRepair.unresolvedStrain > 0.55 && (repeatedRepair.repairGainToday ?? 0) <= 2.000_001, detail: repeatedRepair.unresolvedStrain.formatted(.percent.precision(.fractionLength(0)))),
+            .init(title: "跨日可靠行动继续修复", passed: followedThrough.unresolvedStrain < repairedForFollowThrough.unresolvedStrain, detail: "\(repairedForFollowThrough.unresolvedStrain.formatted(.number.precision(.fractionLength(2)))) → \(followedThrough.unresolvedStrain.formatted(.number.precision(.fractionLength(2))))"),
         ]
     }
 

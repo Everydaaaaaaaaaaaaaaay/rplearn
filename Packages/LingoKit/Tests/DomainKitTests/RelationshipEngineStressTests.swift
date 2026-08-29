@@ -156,6 +156,8 @@ struct RelationshipEngineStressTests {
             #expect(snapshot.unresolvedStrain.isFinite && (0...1).contains(snapshot.unresolvedStrain))
             #expect(snapshot.expectedSocialQuality.map { $0.isFinite && (-1...1).contains($0) } ?? true)
             #expect(snapshot.interactionStability.map { $0.isFinite && (0...1).contains($0) } ?? true)
+            #expect(snapshot.typicalContactIntervalDays.map { $0.isFinite && (0.5...120).contains($0) } ?? true)
+            #expect((0...10_000).contains(snapshot.substantiveIntervalSampleCount ?? 0))
             #expect(snapshot.positiveGainToday.isFinite && (0...4).contains(snapshot.positiveGainToday))
             #expect(snapshot.recentEvents.count <= 24)
         }
@@ -192,7 +194,7 @@ struct RelationshipEngineStressTests {
         }
     }
 
-    @Test("重复修复不能突破独立的每日恢复上限")
+    @Test("重复修复不能突破每日恢复上限或清空裂痕")
     func repeatedRepairIsCapped() {
         var snapshot = RelationshipSnapshot(
             affinity: 42,
@@ -225,7 +227,8 @@ struct RelationshipEngineStressTests {
         #expect((snapshot.repairGainToday ?? 0) <= 2.000_001)
         #expect(snapshot.positiveGainToday <= 4.000_001)
         #expect(snapshot.affinity <= 48.000_001)
-        #expect(snapshot.unresolvedStrain < 0.1)
+        #expect(snapshot.unresolvedStrain < 0.95)
+        #expect(snapshot.unresolvedStrain > 0.65)
     }
 
     @Test("尊重分歧和礼貌拒绝不会被当成伤害")
@@ -330,6 +333,8 @@ struct RelationshipEngineStressTests {
         object.removeValue(forKey: "lastSubstantiveInteractionAt")
         object.removeValue(forKey: "expectedSocialQuality")
         object.removeValue(forKey: "interactionStability")
+        object.removeValue(forKey: "typicalContactIntervalDays")
+        object.removeValue(forKey: "substantiveIntervalSampleCount")
         let legacyData = try JSONSerialization.data(withJSONObject: object)
         let legacyJSON = String(decoding: legacyData, as: UTF8.self)
         let decoded = try #require(RelationshipSnapshot.decode(fromJSON: legacyJSON))
@@ -339,12 +344,15 @@ struct RelationshipEngineStressTests {
         #expect(decoded.lastSubstantiveInteractionAt == nil)
         #expect(decoded.expectedSocialQuality == nil)
         #expect(decoded.interactionStability == nil)
+        #expect(decoded.typicalContactIntervalDays == nil)
+        #expect(decoded.substantiveIntervalSampleCount == nil)
         let updated = apply(friendlySignal, to: decoded, index: 1, at: now)
         #expect(updated.repairGainToday == 0)
         #expect(updated.recentEvaluatedMessageIDs?.count == 1)
         #expect(updated.lastSubstantiveInteractionAt == now)
         #expect(updated.expectedSocialQuality != nil)
         #expect(updated.interactionStability != nil)
+        #expect(updated.schemaVersion == RelationshipSnapshot.currentSchemaVersion)
     }
 
     @Test("无信息量的重复消息不会伪造相互了解")

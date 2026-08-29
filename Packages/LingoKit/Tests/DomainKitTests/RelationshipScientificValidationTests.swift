@@ -5,7 +5,7 @@ import SwiftData
 import Testing
 @testable import DomainKit
 
-@Suite("RelationshipEngine 第三代科学性验证")
+@Suite("RelationshipEngine 第四代科学性验证")
 struct RelationshipScientificValidationTests {
     private let now = Date(timeIntervalSince1970: 2_140_000_000)
 
@@ -30,6 +30,23 @@ struct RelationshipScientificValidationTests {
             > alone.bondFloor - RelationshipSnapshot.initial.bondFloor)
         #expect(together.trust > alone.trust)
         #expect(together.familiarity > alone.familiarity)
+    }
+
+    @Test("披露本身只增加了解，不会在缺少承接时自动增加亲近度")
+    func disclosureAloneDoesNotManufactureAffinity() {
+        let sharedContext = signal(
+            warmth: 0.3, responsiveness: 0, respect: 0.4, empathy: 0,
+            reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0.4,
+            significance: 0.55, reason: "有基本礼貌但没有回应披露"
+        )
+        var disclosureOnly = sharedContext
+        disclosureOnly.disclosure = 0.9
+
+        let control = apply(sharedContext, to: .initial, index: 0, at: now)
+        let disclosed = apply(disclosureOnly, to: .initial, index: 0, at: now)
+
+        #expect(abs(disclosed.affinity - control.affinity) < 0.05)
+        #expect(disclosed.familiarity > control.familiarity)
     }
 
     @Test("积极消息的主动建设性回应优于被动敷衍")
@@ -195,6 +212,161 @@ struct RelationshipScientificValidationTests {
         #expect(accountableResult.unresolvedStrain < hollowResult.unresolvedStrain)
     }
 
+    @Test("同一天重复道歉不能清空裂痕")
+    func repeatedSameDayApologyCannotEraseStrain() {
+        var snapshot = RelationshipSnapshot(
+            affinity: 44, bondFloor: 24, familiarity: 0.62, trust: 0.35,
+            rapport: 0.4, care: 0.42, respect: 0.45, unresolvedStrain: 0.9,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        let accountable = signal(
+            warmth: 0.75, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.3, resonance: 0.2, engagement: 0.9,
+            repair: 1, significance: 0.9, reason: "承认影响并提出实际改变"
+        )
+
+        for index in 0..<20 {
+            snapshot = apply(
+                accountable,
+                to: snapshot,
+                index: index,
+                at: now.addingTimeInterval(Double(index * 60))
+            )
+        }
+
+        #expect(snapshot.unresolvedStrain > 0.55)
+        #expect((snapshot.repairGainToday ?? 0) <= 2.000_001)
+    }
+
+    @Test("可信道歉后的跨日安全行动会继续修复关系")
+    func safeFollowThroughContinuesRepairAcrossDays() {
+        let strained = RelationshipSnapshot(
+            affinity: 48, bondFloor: 26, familiarity: 0.65, trust: 0.4,
+            rapport: 0.44, care: 0.48, respect: 0.5, unresolvedStrain: 0.82,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        let accountable = signal(
+            warmth: 0.7, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.25, resonance: 0.2, engagement: 0.9,
+            repair: 1, significance: 0.9, reason: "承认影响并提出实际改变"
+        )
+        let repaired = apply(accountable, to: strained, index: 0, at: now)
+        var followedThrough = repaired
+        for day in 1...5 {
+            followedThrough = apply(
+                Self.supportive,
+                to: followedThrough,
+                index: day,
+                at: now.addingTimeInterval(Double(day) * 86_400)
+            )
+        }
+
+        #expect(followedThrough.unresolvedStrain < repaired.unresolvedStrain * 0.85)
+        #expect(followedThrough.affinity > repaired.affinity)
+    }
+
+    @Test("稳定关系按自身联系节律获得有限宽限")
+    func establishedContactCadenceAdjustsDecayWithoutRemovingIt() {
+        func learnedHistory(intervalDays: Int) -> RelationshipSnapshot {
+            let interval = Double(intervalDays) * 86_400
+            var snapshot = RelationshipSnapshot(
+                affinity: 66, bondFloor: 30, familiarity: 0.55,
+                lastSubstantiveInteractionAt: now.addingTimeInterval(-4 * interval),
+                lastInteractionAt: now.addingTimeInterval(-4 * interval)
+            )
+            for index in 0..<4 {
+                let date = now.addingTimeInterval(-Double(3 - index) * interval)
+                snapshot = apply(Self.supportive, to: snapshot, index: index, at: date)
+            }
+            snapshot.affinity = 90
+            snapshot.bondFloor = 38
+            snapshot.familiarity = 0.55
+            snapshot.lastSubstantiveInteractionAt = now
+            snapshot.lastInteractionAt = now
+            return snapshot
+        }
+
+        let daily = learnedHistory(intervalDays: 1)
+        let fortnightly = learnedHistory(intervalDays: 14)
+        let projectedDate = now.addingTimeInterval(18 * 86_400)
+
+        #expect(fortnightly.projectedAffinity(at: projectedDate) > daily.projectedAffinity(at: projectedDate) + 0.5)
+        #expect(fortnightly.projectedAffinity(at: now.addingTimeInterval(365 * 86_400)) < fortnightly.affinity)
+    }
+
+    @Test("单次长间隔和同一会话消息都不能伪造稳定联系节律")
+    func cadenceRequiresRepeatedCrossSessionEvidence() throws {
+        let oldContact = now.addingTimeInterval(-180 * 86_400)
+        var oneLongGap = RelationshipSnapshot(
+            affinity: 70, bondFloor: 32, familiarity: 0.55,
+            lastSubstantiveInteractionAt: oldContact,
+            lastInteractionAt: oldContact
+        )
+        oneLongGap = apply(Self.supportive, to: oneLongGap, index: 0, at: now)
+        #expect(oneLongGap.substantiveIntervalSampleCount == 1)
+
+        var withoutCadence = oneLongGap
+        withoutCadence.typicalContactIntervalDays = nil
+        withoutCadence.substantiveIntervalSampleCount = nil
+        #expect(oneLongGap.projectedAffinity(at: now.addingTimeInterval(30 * 86_400))
+            == withoutCadence.projectedAffinity(at: now.addingTimeInterval(30 * 86_400)))
+
+        let nextMinute = apply(Self.supportive, to: oneLongGap, index: 1, at: now.addingTimeInterval(60))
+        #expect(nextMinute.substantiveIntervalSampleCount == 1)
+
+        let decoded = try #require(RelationshipSnapshot.decode(fromJSON: nextMinute.encodedJSON()))
+        #expect(decoded.typicalContactIntervalDays == nextMinute.typicalContactIntervalDays)
+        #expect(decoded.substantiveIntervalSampleCount == nextMinute.substantiveIntervalSampleCount)
+    }
+
+    @Test("v2 无有效联系的快照不会在升级时把技术接触误作关系维护")
+    func versionTwoSnapshotPreservesMissingSubstantiveAnchor() throws {
+        let oldContact = now.addingTimeInterval(-45 * 86_400)
+        let encoded = RelationshipSnapshot(
+            schemaVersion: 2,
+            affinity: 68,
+            bondFloor: 30,
+            lastInteractionAt: oldContact
+        ).encodedJSON()
+        let data = try #require(encoded.data(using: .utf8))
+        var object = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        object.removeValue(forKey: "lastSubstantiveInteractionAt")
+        object.removeValue(forKey: "typicalContactIntervalDays")
+        object.removeValue(forKey: "substantiveIntervalSampleCount")
+        let migrated = try #require(RelationshipSnapshot.decode(fromJSON: String(
+            decoding: JSONSerialization.data(withJSONObject: object),
+            as: UTF8.self
+        )))
+
+        let updated = RelationshipEngine.recordContact(
+            in: migrated,
+            messageID: UUID(),
+            messageCreatedAt: now,
+            messageOrderIndex: 0,
+            at: now
+        )
+
+        #expect(updated.lastSubstantiveInteractionAt == nil)
+        #expect(updated.schemaVersion == RelationshipSnapshot.currentSchemaVersion)
+    }
+
+    @Test("礼貌但缺少回应的后续接触不会自动消除张力")
+    func genericPleasantContactDoesNotCountAsFollowThrough() {
+        let strained = RelationshipSnapshot(
+            affinity: 54, bondFloor: 28, familiarity: 0.6,
+            unresolvedStrain: 0.7, lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        let pleasantButUnresponsive = signal(
+            warmth: 0.65, responsiveness: 0.2, respect: 0.8, empathy: 0.1,
+            reciprocity: 0.15, disclosure: 0, resonance: 0.2, engagement: 0.3,
+            significance: 0.5, reason: "语气友好但没有回应先前问题"
+        )
+
+        let result = apply(pleasantButUnresponsive, to: strained, index: 0, at: now)
+
+        #expect(result.unresolvedStrain == strained.unresolvedStrain)
+    }
+
     @Test("未解决张力使后续同类伤害更严重但仍受单次上限约束")
     func unresolvedStrainAmplifiesRepeatedHarmWithinBounds() {
         let calm = RelationshipSnapshot(
@@ -282,6 +454,7 @@ struct RelationshipScientificValidationTests {
             #expect(prompt.contains("Disclosure alone is not intimacy"))
             #expect(prompt.contains("active, constructive response to positive news"))
             #expect(prompt.contains("the word “sorry” alone is insufficient"))
+            #expect(prompt.contains("Do not demand immediate or exact reciprocity"))
             return Self.neutralReviewJSON
         })
 
@@ -292,6 +465,14 @@ struct RelationshipScientificValidationTests {
                 id: UUID(), role: .user, kind: .text, text: "嗯，知道了，谢谢", orderIndex: 0, createdAt: now
             )
         )
+    }
+
+    @Test("关系分数只能调节语气不能伪造共同记忆")
+    func relationshipPromptForbidsInventedSharedHistory() {
+        let prompt = RelationshipEngine.promptContext(.initial, at: now)
+
+        #expect(prompt.contains("Do not invent shared experiences"))
+        #expect(prompt.contains("specific personal facts require supplied conversation or memory evidence"))
     }
 
     @Test("三十次空洞接触不如三次高质量回应且不会伪造稳定性")

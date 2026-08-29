@@ -4,7 +4,7 @@ import Foundation
 ///
 /// 关系状态跟随角色一起同步。所有数值都使用稳定范围，便于未来升级算法时迁移。
 public struct RelationshipSnapshot: Sendable, Codable, Equatable {
-    public static let currentSchemaVersion = 2
+    public static let currentSchemaVersion = 3
 
     public var schemaVersion: Int
     /// 最近一次结算后的关系温度，范围 0...150。
@@ -33,6 +33,10 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
     public var expectedSocialQuality: Double?
     /// 近期互动是否稳定、可预测，范围 0...1。单次互动不足以形成高稳定性。
     public var interactionStability: Double?
+    /// 这段关系自身的有效联系间隔（天）的稳健指数平均。只学习跨会话间隔，不记录消息内容。
+    public var typicalContactIntervalDays: Double?
+    /// 已吸收的跨会话间隔样本数。至少两个样本后，联系节律才参与时间投影。
+    public var substantiveIntervalSampleCount: Int?
     public var lastInteractionAt: Date?
     public var lastEvaluatedMessageID: UUID?
     /// 跨会话的结算游标。消息在新会话中会从 0 重新编号，因此不能只依赖 orderIndex。
@@ -64,6 +68,8 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         lastSubstantiveInteractionAt: Date? = nil,
         expectedSocialQuality: Double? = nil,
         interactionStability: Double? = nil,
+        typicalContactIntervalDays: Double? = nil,
+        substantiveIntervalSampleCount: Int? = nil,
         lastInteractionAt: Date? = nil,
         lastEvaluatedMessageID: UUID? = nil,
         lastEvaluatedMessageAt: Date? = nil,
@@ -91,6 +97,8 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         self.lastSubstantiveInteractionAt = lastSubstantiveInteractionAt ?? lastInteractionAt
         self.expectedSocialQuality = expectedSocialQuality
         self.interactionStability = interactionStability
+        self.typicalContactIntervalDays = typicalContactIntervalDays
+        self.substantiveIntervalSampleCount = substantiveIntervalSampleCount
         self.lastInteractionAt = lastInteractionAt
         self.lastEvaluatedMessageID = lastEvaluatedMessageID
         self.lastEvaluatedMessageAt = lastEvaluatedMessageAt
@@ -112,7 +120,18 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
             return Self.clamp(affinity, to: 0...150)
         }
         let inactiveDays = date.timeIntervalSince(decayAnchor) / 86_400
-        let graceDays = 4 + (14 * Self.clamp(familiarity, to: 0...1))
+        // 联系节律只能在至少两个跨会话间隔后生效，且有严格上限。它让低频但稳定的关系获得合理宽限，
+        // 不能让一次超长失联永久改变衰减，也不能消除时间效应。
+        let cadenceSampleCount = max(substantiveIntervalSampleCount ?? 0, 0)
+        let reliableCadence: Double
+        if cadenceSampleCount >= 2, let typicalContactIntervalDays {
+            reliableCadence = Self.clamp(typicalContactIntervalDays, to: 1...45)
+        } else {
+            reliableCadence = 0
+        }
+        let graceDays = 4
+            + (14 * Self.clamp(familiarity, to: 0...1))
+            + (0.75 * reliableCadence)
         guard inactiveDays > graceDays else {
             return Self.clamp(affinity, to: 0...150)
         }
@@ -121,6 +140,7 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         let halfLifeDays = 24
             + (150 * pow(Self.clamp(floor / 120, to: 0...1), 0.85))
             + (50 * Self.clamp(familiarity, to: 0...1))
+            + min(45, 1.5 * reliableCadence)
         let activePart = max(affinity - floor, 0)
         let multiplier = pow(0.5, (inactiveDays - graceDays) / halfLifeDays)
         return Self.clamp(floor + activePart * multiplier, to: 0...150)

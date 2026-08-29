@@ -442,6 +442,8 @@ struct RelationshipMaturityTests {
         #expect(checkpointed.unresolvedStrain == uninterrupted.unresolvedStrain)
         #expect(checkpointed.expectedSocialQuality == uninterrupted.expectedSocialQuality)
         #expect(checkpointed.interactionStability == uninterrupted.interactionStability)
+        #expect(checkpointed.typicalContactIntervalDays == uninterrupted.typicalContactIntervalDays)
+        #expect(checkpointed.substantiveIntervalSampleCount == uninterrupted.substantiveIntervalSampleCount)
         #expect(checkpointed.lastSubstantiveInteractionAt == uninterrupted.lastSubstantiveInteractionAt)
         #expect(checkpointed.interactionCount == 500)
         #expect(checkpointed.revision == 500)

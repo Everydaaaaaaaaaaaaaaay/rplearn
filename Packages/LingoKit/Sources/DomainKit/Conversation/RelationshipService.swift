@@ -102,7 +102,7 @@ public enum RelationshipEngine {
             + 0.16 * positiveRespect
             + 0.13 * empathy
             + 0.12 * positivePart(signal.reciprocity)
-            + 0.10 * disclosure
+            + 0.10 * disclosureResponseCoupling
             + 0.09 * positivePart(signal.resonance)
             + 0.08 * engagement
             + 0.06 * constructivePositiveResponse
@@ -167,13 +167,33 @@ public enum RelationshipEngine {
         }
 
         var repairDelta = 0.0
+        var recoveryCredit = 0.0
         if repair > 0, snapshot.unresolvedStrain > 0 {
-            let repairGain = min(
+            let requestedRecovery = min(
                 2,
                 repair * (0.6 + 2.4 * snapshot.unresolvedStrain) * max(confidence, 0.35)
-            )
-            repairDelta = repairGain * headroom * repetitionDamping
-            repairDelta = min(repairDelta, max(2 - repairGainToday, 0))
+            ) * repetitionDamping
+            recoveryCredit = min(requestedRecovery, max(2 - repairGainToday, 0))
+            repairDelta = recoveryCredit * headroom
+        }
+        // 道歉后的可靠行动可以逐日重建安全感，但只在回应充分、没有新伤害且互动确实重要时成立。
+        // 它与直接道歉共用每日恢复预算，避免把普通友好聊天或高频消息变成“自动洗白”。
+        let isSafeFollowThrough = snapshot.unresolvedStrain > 0
+            && repair < 0.15
+            && boundaryHarm < 0.05
+            && negative < 0.08
+            && responsiveReception >= 0.60
+            && socialQuality >= 0.28
+            && significance >= 0.35
+            && substantiveEvidence
+        if isSafeFollowThrough {
+            let requestedFollowThrough = max(socialQuality - 0.25, 0)
+                * (0.35 + 0.65 * significance)
+                * max(confidence, 0.25)
+                * 0.65
+                * repetitionDamping
+            let availableRecovery = max(2 - repairGainToday - recoveryCredit, 0)
+            recoveryCredit += min(requestedFollowThrough, availableRecovery)
         }
         let delta = clamp(ordinaryDelta + repairDelta, -18...5)
 
@@ -183,8 +203,28 @@ public enum RelationshipEngine {
             next.meaningfulInteractionCount += 1
         }
         let legacySubstantiveAnchor = snapshot.lastSubstantiveInteractionAt
-            ?? (snapshot.schemaVersion < RelationshipSnapshot.currentSchemaVersion ? snapshot.lastInteractionAt : nil)
+            ?? (snapshot.schemaVersion < 2 ? snapshot.lastInteractionAt : nil)
         if substantiveEvidence {
+            if let previousAnchor = legacySubstantiveAnchor,
+               evaluatedMessageAt > previousAnchor {
+                let intervalDays = evaluatedMessageAt.timeIntervalSince(previousAnchor) / 86_400
+                // 同一次聊天内的消息不代表联系节律；超长样本会被边界限制，并用对数空间平滑，
+                // 避免一次异常失联把一段日常关系瞬间改写成“低频关系”。
+                if intervalDays >= 0.5 {
+                    let observation = clamp(intervalDays, 0.5...120)
+                    let sampleCount = max(snapshot.substantiveIntervalSampleCount ?? 0, 0)
+                    if let previousCadence = snapshot.typicalContactIntervalDays,
+                       previousCadence > 0 {
+                        let alpha = sampleCount < 4 ? 1 / Double(sampleCount + 1) : 0.20
+                        let logCadence = log(previousCadence)
+                            + (log(observation) - log(previousCadence)) * alpha
+                        next.typicalContactIntervalDays = exp(logCadence)
+                    } else {
+                        next.typicalContactIntervalDays = observation
+                    }
+                    next.substantiveIntervalSampleCount = min(sampleCount + 1, 10_000)
+                }
+            }
             next.lastSubstantiveInteractionAt = max(evaluatedMessageAt, legacySubstantiveAnchor ?? evaluatedMessageAt)
         } else {
             next.lastSubstantiveInteractionAt = legacySubstantiveAnchor
@@ -193,7 +233,7 @@ public enum RelationshipEngine {
         next.activityDayStart = calendar.startOfDay(for: settlementDate)
         next.activityCountToday = sameDayCount + 1
         next.positiveGainToday = positiveGainToday + max(ordinaryDelta, 0)
-        next.repairGainToday = repairGainToday + repairDelta
+        next.repairGainToday = repairGainToday + recoveryCredit
         recordEvaluation(
             messageID: messageID,
             evaluatedAt: evaluatedMessageAt,
@@ -274,7 +314,9 @@ public enum RelationshipEngine {
 
         let strainAdded = (0.16 * negative + 0.34 * boundaryHarm) * max(confidence, 0.35)
         next.unresolvedStrain = saturatingIncrease(snapshot.unresolvedStrain, by: strainAdded)
-        next.unresolvedStrain *= 1 - (repair * (0.22 + 0.38 * max(snapshot.trust, 0.2)))
+        // 同一天的直接修复和后续行动最多使用 2 个恢复信用，因而不能靠重复道歉清空裂痕。
+        // 完整恢复需要跨日、可观察的一致行动。
+        next.unresolvedStrain *= 1 - min(0.24, 0.12 * recoveryCredit)
         next.unresolvedStrain = clamp(next.unresolvedStrain, 0...1)
 
         if delta > 0 {
@@ -340,7 +382,7 @@ public enum RelationshipEngine {
         next.repairGainToday = isSameDay ? snapshot.repairGainToday ?? 0 : 0
         // 模型不可用只说明“发生过一次尝试”，不能凭空证明这是一段有效关系维护。
         next.lastSubstantiveInteractionAt = snapshot.lastSubstantiveInteractionAt
-            ?? (snapshot.schemaVersion < RelationshipSnapshot.currentSchemaVersion ? snapshot.lastInteractionAt : nil)
+            ?? (snapshot.schemaVersion < 2 ? snapshot.lastInteractionAt : nil)
         next.lastInteractionAt = settlementDate
         recordEvaluation(
             messageID: messageID,
@@ -375,7 +417,8 @@ public enum RelationshipEngine {
         \(daysSinceSubstantiveContact.map { "- days since the last substantive interaction: \($0)" } ?? "- no substantive interaction has been established")
         Let these values influence warmth, openness, initiative and boundaries gradually. Do not reveal or mention any \
         score, label, algorithm or hidden evaluation. Never guilt the user for an absence, demand exclusivity, or make \
-        affection conditional on lesson performance. English mistakes never reduce the relationship.
+        affection conditional on lesson performance. English mistakes never reduce the relationship. Do not invent shared \
+        experiences or personal facts to justify closeness; specific personal facts require supplied conversation or memory evidence.
         """
     }
 
@@ -392,6 +435,8 @@ public enum RelationshipEngine {
         value.unresolvedStrain = clamp(value.unresolvedStrain, 0...1)
         value.expectedSocialQuality = value.expectedSocialQuality.map { clamp($0, -1...1) }
         value.interactionStability = value.interactionStability.map { clamp($0, 0...1) }
+        value.typicalContactIntervalDays = value.typicalContactIntervalDays.map { clamp($0, 0.5...120) }
+        value.substantiveIntervalSampleCount = min(max(value.substantiveIntervalSampleCount ?? 0, 0), 10_000)
         value.activityCountToday = max(0, value.activityCountToday)
         value.positiveGainToday = clamp(value.positiveGainToday, 0...4)
         value.repairGainToday = clamp(value.repairGainToday ?? 0, 0...2)
@@ -605,7 +650,9 @@ public struct RelationshipService: Sendable {
         caring about what the other person actually said. Use resonance and engagement to recognise an active, \
         constructive response to positive news, and keep them low for passive or dismissive replies. Set repair high \
         only when the message acknowledges impact and makes a credible attempt to respond, take responsibility or \
-        change behaviour; the word “sorry” alone is insufficient.
+        change behaviour; the word “sorry” alone is insufficient. Do not demand immediate or exact reciprocity: ordinary \
+        need, availability and temporary asymmetry are not relational failures. Use negative reciprocity only when the \
+        context clearly shows one-sided exploitation or disregard.
 
         Scales: warmth/respect/reciprocity/resonance are -1...1; all other relationship fields are 0...1. significance \
         means how consequential this single exchange is, not message length. reason_zh is a neutral, non-moralising \
