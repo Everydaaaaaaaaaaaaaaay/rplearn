@@ -5,7 +5,7 @@ import SwiftData
 import Testing
 @testable import DomainKit
 
-@Suite("RelationshipEngine 第四代科学性验证")
+@Suite("RelationshipEngine 第五代科学性验证")
 struct RelationshipScientificValidationTests {
     private let now = Date(timeIntervalSince1970: 2_140_000_000)
 
@@ -212,6 +212,152 @@ struct RelationshipScientificValidationTests {
         #expect(accountableResult.unresolvedStrain < hollowResult.unresolvedStrain)
     }
 
+    @Test("置信度为零的正向误报不能凭空制造亲近或关系事件")
+    func zeroConfidencePositiveInferenceCannotManufactureCloseness() {
+        var uncertain = Self.supportive
+        uncertain.confidence = 0
+        uncertain.significance = 1
+        uncertain.reasonZh = "模型无法确认的正向推断"
+
+        let result = apply(uncertain, to: .initial, index: 0, at: now)
+
+        #expect(result.affinity == RelationshipSnapshot.initial.affinity)
+        #expect(result.bondFloor == RelationshipSnapshot.initial.bondFloor)
+        #expect(dimensions(of: result) == dimensions(of: .initial))
+        #expect(result.meaningfulInteractionCount == 0)
+        #expect(result.lastSubstantiveInteractionAt == nil)
+        #expect(result.recentEvents.isEmpty)
+    }
+
+    @Test("置信度为零的道歉误报不能恢复好感或张力")
+    func zeroConfidenceRepairCannotRestoreRelationship() {
+        let strained = RelationshipSnapshot(
+            affinity: 46, bondFloor: 24, familiarity: 0.62, trust: 0.38,
+            rapport: 0.4, care: 0.42, respect: 0.45, unresolvedStrain: 0.82,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        var uncertainRepair = signal(
+            warmth: 0.72, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.2, resonance: 0.2, engagement: 0.9,
+            repair: 1, significance: 0.9, confidence: 0,
+            reason: "模型无法确认的修复推断"
+        )
+        uncertainRepair.boundaryHarm = 0
+
+        let result = apply(uncertainRepair, to: strained, index: 0, at: now)
+
+        #expect(result.affinity == strained.affinity)
+        #expect(result.unresolvedStrain == strained.unresolvedStrain)
+        #expect(result.repairGainToday == 0)
+        #expect(result.recentEvents.isEmpty)
+    }
+
+    @Test("修复效果受既往可信度约束而不是只看道歉文本")
+    func repairEffectDependsOnPostViolationTrust() {
+        let lowTrust = RelationshipSnapshot(
+            affinity: 48, bondFloor: 25, familiarity: 0.62, trust: 0.18,
+            rapport: 0.45, care: 0.48, respect: 0.62, unresolvedStrain: 0.65,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        var highTrust = lowTrust
+        highTrust.trust = 0.86
+        let accountable = signal(
+            warmth: 0.72, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.25, resonance: 0.2, engagement: 0.9,
+            repair: 1, significance: 0.9, reason: "承认影响并提出实际改变"
+        )
+
+        let lowResult = apply(accountable, to: lowTrust, index: 0, at: now)
+        let highResult = apply(accountable, to: highTrust, index: 0, at: now)
+
+        #expect((highResult.repairGainToday ?? 0) > (lowResult.repairGainToday ?? 0))
+        #expect(highResult.unresolvedStrain < lowResult.unresolvedStrain)
+    }
+
+    @Test("严重未修复伤害下单次道歉的即时效果更克制")
+    func severeStrainReducesImmediateApologyEffect() {
+        let mild = RelationshipSnapshot(
+            affinity: 48, bondFloor: 25, familiarity: 0.62, trust: 0.62,
+            rapport: 0.45, care: 0.48, respect: 0.66, unresolvedStrain: 0.25,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        var severe = mild
+        severe.unresolvedStrain = 0.9
+        let accountable = signal(
+            warmth: 0.72, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.25, resonance: 0.2, engagement: 0.9,
+            repair: 1, significance: 0.9, reason: "承认影响并提出实际改变"
+        )
+
+        let mildResult = apply(accountable, to: mild, index: 0, at: now)
+        let severeResult = apply(accountable, to: severe, index: 0, at: now)
+
+        #expect((mildResult.repairGainToday ?? 0) > (severeResult.repairGainToday ?? 0))
+        #expect(severeResult.unresolvedStrain > mildResult.unresolvedStrain)
+    }
+
+    @Test("跨日重复伤害会使后续同样的道歉逐渐失去可信度")
+    func repeatedViolationMakesLaterApologyLessEffective() throws {
+        let violation = signal(
+            warmth: -0.65, responsiveness: 0.05, respect: -0.8, empathy: 0,
+            reciprocity: -0.5, disclosure: 0, resonance: -0.55, engagement: 0.6,
+            boundaryHarm: 0.7, significance: 0.8, reason: "重复发生了明确越界"
+        )
+        let accountable = signal(
+            warmth: 0.72, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.25, resonance: 0.2, engagement: 0.9,
+            repair: 1, significance: 0.9, reason: "再次承认影响并道歉"
+        )
+        var snapshot = RelationshipSnapshot(
+            affinity: 84, bondFloor: 40, familiarity: 0.7, trust: 0.72,
+            rapport: 0.68, care: 0.66, respect: 0.76,
+            lastInteractionAt: now.addingTimeInterval(-86_400)
+        )
+        var repairCredits: [Double] = []
+
+        for cycle in 0..<5 {
+            snapshot = apply(
+                violation,
+                to: snapshot,
+                index: cycle * 2,
+                at: now.addingTimeInterval(Double(cycle * 2) * 86_400)
+            )
+            snapshot = apply(
+                accountable,
+                to: snapshot,
+                index: cycle * 2 + 1,
+                at: now.addingTimeInterval(Double(cycle * 2 + 1) * 86_400)
+            )
+            repairCredits.append(snapshot.repairGainToday ?? 0)
+        }
+
+        let first = try #require(repairCredits.first)
+        let last = try #require(repairCredits.last)
+        #expect(last < first * 0.85)
+        #expect(snapshot.affinity < 84)
+        #expect(snapshot.unresolvedStrain > 0.5)
+    }
+
+    @Test("温暖包装不能抵消清晰轻视")
+    func charmCannotNeutralizeClearContempt() {
+        let baseline = RelationshipSnapshot(
+            affinity: 58, bondFloor: 28, familiarity: 0.55, trust: 0.48,
+            rapport: 0.5, care: 0.5, respect: 0.62,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        let charmingContempt = signal(
+            warmth: 1, responsiveness: 0.95, respect: -0.9, empathy: 0.9,
+            reciprocity: 0.75, disclosure: 0, resonance: 0.8, engagement: 1,
+            significance: 0.8, reason: "热情包装下仍有清晰轻视"
+        )
+
+        let result = apply(charmingContempt, to: baseline, index: 0, at: now)
+
+        #expect(result.affinity < baseline.affinity)
+        #expect(result.trust < baseline.trust)
+        #expect(result.respect < baseline.respect)
+    }
+
     @Test("同一天重复道歉不能清空裂痕")
     func repeatedSameDayApologyCannotEraseStrain() {
         var snapshot = RelationshipSnapshot(
@@ -317,6 +463,46 @@ struct RelationshipScientificValidationTests {
         let decoded = try #require(RelationshipSnapshot.decode(fromJSON: nextMinute.encodedJSON()))
         #expect(decoded.typicalContactIntervalDays == nextMinute.typicalContactIntervalDays)
         #expect(decoded.substantiveIntervalSampleCount == nextMinute.substantiveIntervalSampleCount)
+    }
+
+    @Test("成熟联系节律对单次异常长间隔缓慢响应并保持硬上限")
+    func cadenceResistsSingleOutlierAndAdaptsGradually() throws {
+        var snapshot = RelationshipSnapshot(
+            affinity: 76, bondFloor: 36, familiarity: 0.64,
+            lastSubstantiveInteractionAt: now.addingTimeInterval(-10 * 86_400),
+            lastInteractionAt: now.addingTimeInterval(-10 * 86_400)
+        )
+        for day in -9...0 {
+            snapshot = apply(
+                Self.supportive,
+                to: snapshot,
+                index: day + 9,
+                at: now.addingTimeInterval(Double(day) * 86_400)
+            )
+        }
+        let dailyCadence = try #require(snapshot.typicalContactIntervalDays)
+        let afterOutlier = apply(
+            Self.supportive,
+            to: snapshot,
+            index: 10,
+            at: now.addingTimeInterval(60 * 86_400)
+        )
+        let outlierCadence = try #require(afterOutlier.typicalContactIntervalDays)
+        var adapted = afterOutlier
+        for step in 1...6 {
+            adapted = apply(
+                Self.supportive,
+                to: adapted,
+                index: 10 + step,
+                at: now.addingTimeInterval(Double(60 + 30 * step) * 86_400)
+            )
+        }
+        let adaptedCadence = try #require(adapted.typicalContactIntervalDays)
+
+        #expect(dailyCadence < 1.1)
+        #expect(outlierCadence < 3)
+        #expect(adaptedCadence > outlierCadence)
+        #expect(adaptedCadence <= 45)
     }
 
     @Test("v2 无有效联系的快照不会在升级时把技术接触误作关系维护")
@@ -455,6 +641,9 @@ struct RelationshipScientificValidationTests {
             #expect(prompt.contains("active, constructive response to positive news"))
             #expect(prompt.contains("the word “sorry” alone is insufficient"))
             #expect(prompt.contains("Do not demand immediate or exact reciprocity"))
+            #expect(prompt.contains("match the support actually requested or expressed"))
+            #expect(prompt.contains("Unsolicited fixing, pressure, minimising, or taking over"))
+            #expect(prompt.contains("respecting a refusal or asking what support is wanted"))
             return Self.neutralReviewJSON
         })
 
@@ -508,6 +697,10 @@ struct RelationshipScientificValidationTests {
             messageOrderIndex: index,
             at: date
         )
+    }
+
+    private func dimensions(of snapshot: RelationshipSnapshot) -> [Double] {
+        [snapshot.familiarity, snapshot.trust, snapshot.rapport, snapshot.care, snapshot.respect, snapshot.unresolvedStrain]
     }
 
     private func signal(

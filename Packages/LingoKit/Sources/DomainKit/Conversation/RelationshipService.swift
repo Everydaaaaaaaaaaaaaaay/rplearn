@@ -80,6 +80,7 @@ public enum RelationshipEngine {
         let disclosure = clamp(signal.disclosure, 0...1)
         let engagement = clamp(signal.engagement, 0...1)
         let positiveRespect = positivePart(signal.respect)
+        let explicitDisrespect = negativePart(signal.respect)
         let responsiveReception = clamp(
             0.45 * responsiveness + 0.35 * empathy + 0.20 * positiveRespect,
             0...1
@@ -144,7 +145,7 @@ public enum RelationshipEngine {
             let usefulQuality = max(socialQuality - 0.18, 0)
             ordinaryDelta = usefulQuality
                 * (2 + 3 * significance)
-                * max(confidence, 0.25)
+                * confidence
                 * headroom
                 * repetitionDamping
                 * strainGate
@@ -161,6 +162,10 @@ public enum RelationshipEngine {
             * pow(boundaryHarm, 1.35)
             * max(confidence, 0.35)
             * (1 + 0.20 * clamp(snapshot.unresolvedStrain, 0...1))
+        // 清晰轻视是关系安全信号，不能靠同一条消息里的热情、幽默或高投入包装成净正向。
+        ordinaryDelta -= 2.5
+            * pow(explicitDisrespect, 1.45)
+            * max(confidence, 0.35)
         ordinaryDelta = clamp(ordinaryDelta, -18...5)
         if ordinaryDelta > 0 {
             ordinaryDelta = min(ordinaryDelta, max(4 - positiveGainToday, 0))
@@ -169,9 +174,23 @@ public enum RelationshipEngine {
         var repairDelta = 0.0
         var recoveryCredit = 0.0
         if repair > 0, snapshot.unresolvedStrain > 0 {
+            let currentStrain = clamp(snapshot.unresolvedStrain, 0...1)
+            // 道歉通过“仍被认为可信”而起效；严重伤害下即时道歉的作用更克制，后续可靠行动
+            // 才能逐日重建安全感。这里采用有下限的历史门，避免低信任关系被一句话完全重置。
+            let historicalReliability = clamp(
+                0.60 * snapshot.trust + 0.40 * snapshot.respect,
+                0...1
+            )
+            let repairCredibility = 0.35 + 0.65 * historicalReliability
+            let distressGate = 1 - 0.60 * currentStrain
+            let repairOpportunity = 0.80 + 0.70 * currentStrain
             let requestedRecovery = min(
                 2,
-                repair * (0.6 + 2.4 * snapshot.unresolvedStrain) * max(confidence, 0.35)
+                repair
+                    * repairOpportunity
+                    * repairCredibility
+                    * distressGate
+                    * confidence
             ) * repetitionDamping
             recoveryCredit = min(requestedRecovery, max(2 - repairGainToday, 0))
             repairDelta = recoveryCredit * headroom
@@ -189,7 +208,7 @@ public enum RelationshipEngine {
         if isSafeFollowThrough {
             let requestedFollowThrough = max(socialQuality - 0.25, 0)
                 * (0.35 + 0.65 * significance)
-                * max(confidence, 0.25)
+                * confidence
                 * 0.65
                 * repetitionDamping
             let availableRecovery = max(2 - repairGainToday - recoveryCredit, 0)
@@ -199,7 +218,7 @@ public enum RelationshipEngine {
 
         next.affinity = clamp(currentAffinity + delta, 0...150)
         next.interactionCount += 1
-        if significance >= 0.55 || abs(delta) >= 1.5 {
+        if (substantiveEvidence && significance >= 0.55) || abs(delta) >= 1.5 {
             next.meaningfulInteractionCount += 1
         }
         let legacySubstantiveAnchor = snapshot.lastSubstantiveInteractionAt
@@ -257,13 +276,17 @@ public enum RelationshipEngine {
             * familiaritySafetyGate
         next.familiarity = saturatingIncrease(snapshot.familiarity, by: familiarityGain)
 
-        let trustTarget = min(1 - boundaryHarm, clamp(
-            0.38 * normalizedSigned(signal.respect)
-                + 0.24 * clamp(signal.responsiveness, 0...1)
-                + 0.20 * clamp(signal.empathy, 0...1)
-                + 0.18 * normalizedSigned(signal.reciprocity),
-            0...1
-        ))
+        let trustSafetyCeiling = min(1 - boundaryHarm, 1 - explicitDisrespect)
+        let trustTarget = min(
+            trustSafetyCeiling,
+            clamp(
+                0.38 * normalizedSigned(signal.respect)
+                    + 0.24 * clamp(signal.responsiveness, 0...1)
+                    + 0.20 * clamp(signal.empathy, 0...1)
+                    + 0.18 * normalizedSigned(signal.reciprocity),
+                0...1
+            )
+        )
         let rapportTarget = min(1 - 0.75 * boundaryHarm, clamp(
             0.42 * normalizedSigned(signal.warmth)
                 + 0.32 * normalizedSigned(signal.resonance)
@@ -280,7 +303,7 @@ public enum RelationshipEngine {
         // 维度只能在观察到真实社会证据时移动。全零或无法判断的审阅只记录接触，不能凭默认目标
         // 把信任、默契和关心缓慢推高。
         let positiveAlpha = (0.035 + 0.045 * significance)
-            * max(confidence, 0.25)
+            * confidence
             * evidenceStrength
         let negativeAlpha = (0.09 + 0.13 * negative + 0.18 * boundaryHarm)
             * max(confidence, 0.35)
@@ -301,7 +324,7 @@ public enum RelationshipEngine {
                 let surprise = clamp(abs(socialQuality - expected) / 2, 0...1)
                 let stabilityObservation = 1 - surprise
                 let historyAlpha = clamp(
-                    (0.04 + 0.08 * significance) * evidenceStrength * max(confidence, 0.2),
+                    (0.04 + 0.08 * significance) * evidenceStrength * confidence,
                     0...0.14
                 )
                 next.expectedSocialQuality = expected + (socialQuality - expected) * historyAlpha
@@ -343,7 +366,9 @@ public enum RelationshipEngine {
             next.bondFloor = max(0, min(next.affinity, snapshot.bondFloor + floorDamage))
         }
 
-        if abs(delta) >= 0.1 || significance >= 0.40 || boundaryHarm >= 0.20 || repair >= 0.25 {
+        let hasConfidentNarrativeEvidence = confidence >= 0.12
+            && (significance >= 0.40 || repair >= 0.25)
+        if abs(delta) >= 0.1 || boundaryHarm >= 0.20 || hasConfidentNarrativeEvidence {
             let reason = normalizedReason(signal.reasonZh, delta: delta)
             next.recentEvents.append(
                 RelationshipEventRecord(
@@ -652,7 +677,10 @@ public struct RelationshipService: Sendable {
         only when the message acknowledges impact and makes a credible attempt to respond, take responsibility or \
         change behaviour; the word “sorry” alone is insufficient. Do not demand immediate or exact reciprocity: ordinary \
         need, availability and temporary asymmetry are not relational failures. Use negative reciprocity only when the \
-        context clearly shows one-sided exploitation or disregard.
+        context clearly shows one-sided exploitation or disregard. Responsive support should match the support actually \
+        requested or expressed, not merely provide more advice. Unsolicited fixing, pressure, minimising, or taking over \
+        can undermine autonomy and should not receive high responsiveness or empathy. Listening, respecting a refusal or \
+        asking what support is wanted can be positive even when no solution is offered.
 
         Scales: warmth/respect/reciprocity/resonance are -1...1; all other relationship fields are 0...1. significance \
         means how consequential this single exchange is, not message length. reason_zh is a neutral, non-moralising \

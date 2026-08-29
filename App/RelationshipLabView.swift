@@ -838,6 +838,16 @@ private enum RelationshipLabFixtures {
         reciprocity: 0, disclosure: 0.9, resonance: 0, engagement: 0.4,
         significance: 0.55, reason: "分享了很多但没有承接对方"
     )
+    static let uncertainPraise = signal(
+        warmth: 0.95, responsiveness: 0.95, respect: 0.95, empathy: 0.9,
+        reciprocity: 0.85, disclosure: 0.4, resonance: 0.9, engagement: 0.95,
+        significance: 1, confidence: 0, reason: "模型无法确认的正向推断"
+    )
+    static let charmingContempt = signal(
+        warmth: 1, responsiveness: 0.95, respect: -0.9, empathy: 0.9,
+        reciprocity: 0.75, disclosure: 0, resonance: 0.8, engagement: 1,
+        significance: 0.8, reason: "热情包装下仍有清晰轻视"
+    )
 
     @MainActor
     static var scenarios: [RelationshipLabScenario] {
@@ -849,6 +859,8 @@ private enum RelationshipLabFixtures {
             .init(id: "capitalization", title: "承接好消息", subtitle: "验证主动建设性回应", icon: "party.popper.fill", color: .dsSunset, signal: positiveNewsResponse),
             .init(id: "bare-disclosure", title: "单方面倾诉", subtitle: "只增加了解，不自动增加亲近", icon: "text.bubble", color: .dsQuiz, signal: disclosureWithoutResponse),
             .init(id: "empty", title: "空洞刷联系", subtitle: "不能刷新有效联系时钟", icon: "ellipsis.bubble", color: .secondary, signal: noEvidence),
+            .init(id: "uncertain", title: "零置信度误报", subtitle: "不确定正向判断不能制造亲近", icon: "questionmark.diamond", color: .secondary, signal: uncertainPraise),
+            .init(id: "mixed-contempt", title: "温暖包装轻视", subtitle: "热情不能抵消清晰不尊重", icon: "theatermasks", color: .dsWarning, signal: charmingContempt),
             .init(id: "dismissive", title: "敷衍轻视", subtitle: "低质量且不够尊重", icon: "hand.thumbsdown", color: .dsWarning, signal: dismissive),
             .init(id: "harm", title: "严重越界", subtitle: "高伤害、信任和下限受损", icon: "exclamationmark.octagon.fill", color: .dsDanger, signal: boundaryViolation),
             .init(id: "hollow-repair", title: "空洞道歉", subtitle: "没有承担时修复很有限", icon: "quote.bubble", color: .dsWarning, signal: hollowApology),
@@ -959,6 +971,22 @@ private enum RelationshipLabFixtures {
                 at: now.addingTimeInterval(Double(day) * 86_400)
             )
         }
+        let uncertainPositive = apply(uncertainPraise, to: .initial, index: 0, at: now)
+        let mixedBaseline = RelationshipSnapshot(
+            affinity: 58, bondFloor: 28, familiarity: 0.55, trust: 0.48,
+            rapport: 0.5, care: 0.5, respect: 0.62,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        let mixedResult = apply(charmingContempt, to: mixedBaseline, index: 0, at: now)
+        let lowTrust = RelationshipSnapshot(
+            affinity: 48, bondFloor: 25, familiarity: 0.62, trust: 0.18,
+            rapport: 0.45, care: 0.48, respect: 0.62, unresolvedStrain: 0.65,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        var highTrust = lowTrust
+        highTrust.trust = 0.86
+        let lowTrustRepair = apply(repair, to: lowTrust, index: 0, at: now)
+        let highTrustRepair = apply(repair, to: highTrust, index: 0, at: now)
 
         return [
             .init(title: "优质互动产生正向变化", passed: positive.affinity > 10, detail: "+\((positive.affinity - 10).formatted(.number.precision(.fractionLength(2))))"),
@@ -977,6 +1005,9 @@ private enum RelationshipLabFixtures {
             .init(title: "裸披露不自动增加亲近度", passed: abs(disclosureOnly.affinity - disclosureControl.affinity) < 0.05 && disclosureOnly.familiarity > disclosureControl.familiarity, detail: "亲近差 \((disclosureOnly.affinity - disclosureControl.affinity).formatted(.number.precision(.fractionLength(3))))"),
             .init(title: "同日重复道歉不能清空裂痕", passed: repeatedRepair.unresolvedStrain > 0.55 && (repeatedRepair.repairGainToday ?? 0) <= 2.000_001, detail: repeatedRepair.unresolvedStrain.formatted(.percent.precision(.fractionLength(0)))),
             .init(title: "跨日可靠行动继续修复", passed: followedThrough.unresolvedStrain < repairedForFollowThrough.unresolvedStrain, detail: "\(repairedForFollowThrough.unresolvedStrain.formatted(.number.precision(.fractionLength(2)))) → \(followedThrough.unresolvedStrain.formatted(.number.precision(.fractionLength(2))))"),
+            .init(title: "零置信度不制造亲近", passed: uncertainPositive.affinity == RelationshipSnapshot.initial.affinity && dimensions(of: uncertainPositive) == dimensions(of: .initial) && uncertainPositive.recentEvents.isEmpty, detail: uncertainPositive.affinity.formatted(.number.precision(.fractionLength(2)))),
+            .init(title: "轻视不能被热情包装", passed: mixedResult.affinity < mixedBaseline.affinity && mixedResult.trust < mixedBaseline.trust, detail: (mixedResult.affinity - mixedBaseline.affinity).formatted(.number.precision(.fractionLength(2)))),
+            .init(title: "既往可信度约束修复", passed: (highTrustRepair.repairGainToday ?? 0) > (lowTrustRepair.repairGainToday ?? 0), detail: "\((lowTrustRepair.repairGainToday ?? 0).formatted(.number.precision(.fractionLength(2)))) → \((highTrustRepair.repairGainToday ?? 0).formatted(.number.precision(.fractionLength(2))))"),
         ]
     }
 
