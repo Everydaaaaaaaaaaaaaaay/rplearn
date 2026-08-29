@@ -83,7 +83,7 @@ private struct DSSceneGlassModifier: ViewModifier {
                 shape: shape
             )
         } else if #available(iOS 26.0, *) {
-            let glass: Glass = legibility == .enhanced ? .clear : .regular
+            let glass: Glass = legibility == .ambient ? .regular : .clear
             decorated(
                 legibilityBackground(content, in: shape)
                     .glassEffect(
@@ -150,7 +150,7 @@ private struct DSSceneGlassModifier: ViewModifier {
     private var legibilitySurfaceOpacity: Double {
         if colorSchemeContrast == .increased { return 0.88 }
         if legibility == .shielded {
-            return colorScheme == .dark ? 0.6 : 0.52
+            return colorScheme == .dark ? 0.54 : 0.44
         }
         return colorScheme == .dark ? 0.5 : 0.38
     }

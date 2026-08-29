@@ -48,7 +48,7 @@ public struct RosterView: View {
     private var scenePrimaryText: Color { .dsSceneTextPrimary }
     private var sceneSecondaryText: Color { .dsSceneTextSecondary }
     private var sceneTertiaryText: Color { .dsSceneTextTertiary }
-    private var sceneGlassTint: Color { Color.dsBrandInk.opacity(0.1) }
+    private var sceneGlassTint: Color { Color.dsBrandInk.opacity(0.04) }
 
     private var searchResults: [CharacterDTO] {
         guard isSearching else { return [] }
