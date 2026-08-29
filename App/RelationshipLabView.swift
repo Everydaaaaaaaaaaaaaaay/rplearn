@@ -191,6 +191,18 @@ struct RelationshipLabView: View {
             dimension("默契", sandbox.rapport)
             dimension("关心互惠", sandbox.care)
             dimension("尊重", sandbox.respect)
+            if let stability = sandbox.interactionStability {
+                dimension("互动稳定性", stability)
+            } else {
+                HStack {
+                    Text("互动稳定性")
+                        .font(.subheadline)
+                    Spacer()
+                    Text("证据不足")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
 
             HStack {
                 Label("\(sandbox.interactionCount) 次互动", systemImage: "bubble.left.and.bubble.right")
@@ -202,6 +214,9 @@ struct RelationshipLabView: View {
             }
             .font(.caption)
             .foregroundStyle(.secondary)
+            Label(substantiveContactSummary, systemImage: "clock.badge.checkmark")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
         .animation(reduceMotion ? nil : DSAnimation.snappy, value: sandbox.revision)
         .dsSurface(.elevated)
@@ -460,6 +475,8 @@ struct RelationshipLabView: View {
             .init(title: "长期下限不高于当前值", passed: sandbox.bondFloor <= sandbox.affinity && sandbox.bondFloor >= 0, detail: number(sandbox.bondFloor)),
             .init(title: "五个维度在 0…1", passed: dimensions.allSatisfy { (0...1).contains($0) }, detail: "\(dimensions.count)/5"),
             .init(title: "张力在 0…1", passed: (0...1).contains(sandbox.unresolvedStrain), detail: percent(sandbox.unresolvedStrain)),
+            .init(title: "互动质量预期在 −1…1", passed: sandbox.expectedSocialQuality.map { (-1...1).contains($0) } ?? true, detail: sandbox.expectedSocialQuality.map(number) ?? "未建立"),
+            .init(title: "互动稳定性在 0…1", passed: sandbox.interactionStability.map { (0...1).contains($0) } ?? true, detail: sandbox.interactionStability.map(percent) ?? "未建立"),
             .init(title: "每日正向收益 ≤ 4", passed: sandbox.positiveGainToday <= 4.000_001, detail: number(sandbox.positiveGainToday)),
             .init(title: "每日修复收益 ≤ 2", passed: (sandbox.repairGainToday ?? 0) <= 2.000_001, detail: number(sandbox.repairGainToday ?? 0)),
             .init(title: "变化记录最多 24 条", passed: sandbox.recentEvents.count <= 24, detail: "\(sandbox.recentEvents.count)/24"),
@@ -708,6 +725,16 @@ struct RelationshipLabView: View {
         value.formatted(.number.precision(.fractionLength(2)))
     }
 
+    private var substantiveContactSummary: String {
+        let legacyAnchor = sandbox.schemaVersion < RelationshipSnapshot.currentSchemaVersion
+            ? sandbox.lastInteractionAt
+            : nil
+        guard let date = sandbox.lastSubstantiveInteractionAt ?? legacyAnchor else {
+            return "尚未建立有效联系锚点"
+        }
+        return "最近有效联系：\(date.formatted(date: .abbreviated, time: .shortened))"
+    }
+
     private func percent(_ value: Double) -> String {
         (value * 100).formatted(.number.precision(.fractionLength(0))) + "%"
     }
@@ -770,6 +797,21 @@ private enum RelationshipLabFixtures {
         reciprocity: 0.75, disclosure: 0.5, resonance: 0.2, engagement: 0.9,
         repair: 0.95, significance: 0.9, reason: "真诚道歉并承担影响"
     )
+    static let positiveNewsResponse = signal(
+        warmth: 0.75, responsiveness: 0.92, respect: 0.9, empathy: 0.62,
+        reciprocity: 0.72, disclosure: 0.05, resonance: 0.92, engagement: 0.95,
+        significance: 0.55, reason: "主动建设性地回应了好消息"
+    )
+    static let hollowApology = signal(
+        warmth: 0.05, responsiveness: 0, respect: -0.1, empathy: 0,
+        reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0.2,
+        repair: 1, significance: 0.8, reason: "只说抱歉但没有承接影响"
+    )
+    static let noEvidence = signal(
+        warmth: 0, responsiveness: 0, respect: 0, empathy: 0,
+        reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0,
+        significance: 0, confidence: 0, reason: "没有可判断的社会信息"
+    )
 
     @MainActor
     static var scenarios: [RelationshipLabScenario] {
@@ -778,8 +820,11 @@ private enum RelationshipLabFixtures {
             .init(id: "casual", title: "普通寒暄", subtitle: "检查中性基线和抗刷取", icon: "bubble.left", color: .dsSky, signal: casual),
             .init(id: "disagree", title: "尊重地分歧", subtitle: "不同观点不应被惩罚", icon: "arrow.left.arrow.right", color: .dsCyan, signal: respectfulDisagreement),
             .init(id: "english", title: "英语不流利", subtitle: "语言错误不影响关系", icon: "text.badge.xmark", color: .dsQuiz, signal: englishMistakes),
+            .init(id: "capitalization", title: "承接好消息", subtitle: "验证主动建设性回应", icon: "party.popper.fill", color: .dsSunset, signal: positiveNewsResponse),
+            .init(id: "empty", title: "空洞刷联系", subtitle: "不能刷新有效联系时钟", icon: "ellipsis.bubble", color: .secondary, signal: noEvidence),
             .init(id: "dismissive", title: "敷衍轻视", subtitle: "低质量且不够尊重", icon: "hand.thumbsdown", color: .dsWarning, signal: dismissive),
             .init(id: "harm", title: "严重越界", subtitle: "高伤害、信任和下限受损", icon: "exclamationmark.octagon.fill", color: .dsDanger, signal: boundaryViolation),
+            .init(id: "hollow-repair", title: "空洞道歉", subtitle: "没有承担时修复很有限", icon: "quote.bubble", color: .dsWarning, signal: hollowApology),
             .init(id: "repair", title: "真诚修复", subtitle: "部分恢复但不抹去伤害", icon: "bandage.fill", color: .dsSuccess, signal: repair),
         ]
     }
@@ -842,15 +887,17 @@ private enum RelationshipLabFixtures {
             at: now.addingTimeInterval(180)
         )
         let noInformation = apply(
-            signal(
-                warmth: 0, responsiveness: 0, respect: 0, empathy: 0,
-                reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0,
-                significance: 0, reason: "无信息量重复"
-            ),
+            noEvidence,
             to: .initial,
             index: 0,
             at: now
         )
+        var consistent = RelationshipSnapshot.initial
+        for day in 0..<18 {
+            consistent = apply(highQuality, to: consistent, index: day, at: now.addingTimeInterval(Double(day) * 86_400))
+        }
+        let hollowRepairResult = apply(hollowApology, to: harmed, index: 3, at: now.addingTimeInterval(86_400))
+        let accountableRepairResult = apply(repair, to: harmed, index: 3, at: now.addingTimeInterval(86_400))
 
         return [
             .init(title: "优质互动产生正向变化", passed: positive.affinity > 10, detail: "+\((positive.affinity - 10).formatted(.number.precision(.fractionLength(2))))"),
@@ -863,6 +910,9 @@ private enum RelationshipLabFixtures {
             .init(title: "普通摩擦不侵蚀长期纽带", passed: ordinaryTension.bondFloor == healthy.bondFloor, detail: ordinaryTension.bondFloor.formatted(.number.precision(.fractionLength(2)))),
             .init(title: "越界压过矛盾的正向字段", passed: contradictoryHarm.affinity < healthy.affinity && contradictoryHarm.trust < healthy.trust, detail: (contradictoryHarm.affinity - healthy.affinity).formatted(.number.precision(.fractionLength(2)))),
             .init(title: "无信息量互动不改变关系维度", passed: dimensions(of: noInformation) == dimensions(of: .initial), detail: noInformation.familiarity.formatted(.number.precision(.fractionLength(3)))),
+            .init(title: "空洞互动不建立有效联系锚点", passed: noInformation.lastSubstantiveInteractionAt == nil, detail: noInformation.lastSubstantiveInteractionAt == nil ? "未刷新" : "失败"),
+            .init(title: "持续互动逐渐建立稳定性", passed: (consistent.interactionStability ?? 0) > 0.7, detail: (consistent.interactionStability ?? 0).formatted(.percent.precision(.fractionLength(0)))),
+            .init(title: "承担影响比空洞道歉更有效", passed: accountableRepairResult.unresolvedStrain < hollowRepairResult.unresolvedStrain, detail: "\(hollowRepairResult.unresolvedStrain.formatted(.number.precision(.fractionLength(2)))) → \(accountableRepairResult.unresolvedStrain.formatted(.number.precision(.fractionLength(2))))"),
         ]
     }
 
@@ -899,6 +949,7 @@ private enum RelationshipLabFixtures {
         boundaryHarm: Double = 0,
         repair: Double = 0,
         significance: Double,
+        confidence: Double = 0.95,
         reason: String
     ) -> RelationshipSignal {
         RelationshipSignal(
@@ -913,7 +964,7 @@ private enum RelationshipLabFixtures {
             boundaryHarm: boundaryHarm,
             repair: repair,
             significance: significance,
-            confidence: 0.95,
+            confidence: confidence,
             reasonZh: reason
         )
     }

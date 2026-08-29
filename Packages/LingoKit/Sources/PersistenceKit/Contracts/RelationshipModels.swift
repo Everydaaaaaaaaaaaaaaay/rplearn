@@ -4,7 +4,7 @@ import Foundation
 ///
 /// 关系状态跟随角色一起同步。所有数值都使用稳定范围，便于未来升级算法时迁移。
 public struct RelationshipSnapshot: Sendable, Codable, Equatable {
-    public static let currentSchemaVersion = 1
+    public static let currentSchemaVersion = 2
 
     public var schemaVersion: Int
     /// 最近一次结算后的关系温度，范围 0...150。
@@ -27,6 +27,12 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
     public var positiveGainToday: Double
     /// 当日关系修复恢复量。可选以兼容首版快照。
     public var repairGainToday: Double?
+    /// 最近一次确实包含可判断社会信息的互动。空白、重复心跳或模型失败不能刷新关系衰减时钟。
+    public var lastSubstantiveInteractionAt: Date?
+    /// 对近期互动质量的指数平滑预期，范围 -1...1；只用于估计关系的一致性，不对用户作人格判断。
+    public var expectedSocialQuality: Double?
+    /// 近期互动是否稳定、可预测，范围 0...1。单次互动不足以形成高稳定性。
+    public var interactionStability: Double?
     public var lastInteractionAt: Date?
     public var lastEvaluatedMessageID: UUID?
     /// 跨会话的结算游标。消息在新会话中会从 0 重新编号，因此不能只依赖 orderIndex。
@@ -55,6 +61,9 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         activityCountToday: Int = 0,
         positiveGainToday: Double = 0,
         repairGainToday: Double? = 0,
+        lastSubstantiveInteractionAt: Date? = nil,
+        expectedSocialQuality: Double? = nil,
+        interactionStability: Double? = nil,
         lastInteractionAt: Date? = nil,
         lastEvaluatedMessageID: UUID? = nil,
         lastEvaluatedMessageAt: Date? = nil,
@@ -78,6 +87,10 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         self.activityCountToday = activityCountToday
         self.positiveGainToday = positiveGainToday
         self.repairGainToday = repairGainToday
+        // 直接构造带最后联系时间的当前快照时，默认该时间来自一次有效互动；引擎的空洞兜底路径会显式保留 nil。
+        self.lastSubstantiveInteractionAt = lastSubstantiveInteractionAt ?? lastInteractionAt
+        self.expectedSocialQuality = expectedSocialQuality
+        self.interactionStability = interactionStability
         self.lastInteractionAt = lastInteractionAt
         self.lastEvaluatedMessageID = lastEvaluatedMessageID
         self.lastEvaluatedMessageAt = lastEvaluatedMessageAt
@@ -91,10 +104,14 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
 
     /// 不写库的时间投影。指数衰减只作用于高于长期纽带下限的部分。
     public func projectedAffinity(at date: Date = .now) -> Double {
-        guard let lastInteractionAt, date > lastInteractionAt else {
+        // 旧快照没有有效联系字段时回退到旧的最后联系时间；下一次结算会自然补齐迁移锚点。
+        let legacyAnchor = schemaVersion < 2 ? lastInteractionAt : nil
+        guard let decayAnchor = lastSubstantiveInteractionAt ?? legacyAnchor,
+              date > decayAnchor
+        else {
             return Self.clamp(affinity, to: 0...150)
         }
-        let inactiveDays = date.timeIntervalSince(lastInteractionAt) / 86_400
+        let inactiveDays = date.timeIntervalSince(decayAnchor) / 86_400
         let graceDays = 4 + (14 * Self.clamp(familiarity, to: 0...1))
         guard inactiveDays > graceDays else {
             return Self.clamp(affinity, to: 0...150)

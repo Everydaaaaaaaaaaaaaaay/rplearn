@@ -103,6 +103,9 @@ struct RelationshipMaturityTests {
             #expect(result.care == first.care)
             #expect(result.respect == first.respect)
             #expect(result.unresolvedStrain == first.unresolvedStrain)
+            #expect(result.expectedSocialQuality == first.expectedSocialQuality)
+            #expect(result.interactionStability == first.interactionStability)
+            #expect(result.lastSubstantiveInteractionAt == first.lastSubstantiveInteractionAt)
         }
         #expect(Set(results.compactMap { $0.latestEvent?.source }).count == 4)
     }
@@ -437,6 +440,9 @@ struct RelationshipMaturityTests {
         #expect(checkpointed.care == uninterrupted.care)
         #expect(checkpointed.respect == uninterrupted.respect)
         #expect(checkpointed.unresolvedStrain == uninterrupted.unresolvedStrain)
+        #expect(checkpointed.expectedSocialQuality == uninterrupted.expectedSocialQuality)
+        #expect(checkpointed.interactionStability == uninterrupted.interactionStability)
+        #expect(checkpointed.lastSubstantiveInteractionAt == uninterrupted.lastSubstantiveInteractionAt)
         #expect(checkpointed.interactionCount == 500)
         #expect(checkpointed.revision == 500)
         #expect(checkpointed.recentEvaluatedMessageIDs == uninterrupted.recentEvaluatedMessageIDs)

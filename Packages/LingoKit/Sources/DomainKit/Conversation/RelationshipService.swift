@@ -75,18 +75,37 @@ public enum RelationshipEngine {
         let confidence = clamp(signal.confidence, 0...1)
         let significance = clamp(signal.significance, 0...1)
         let boundaryHarm = clamp(signal.boundaryHarm, 0...1)
+        let responsiveness = clamp(signal.responsiveness, 0...1)
+        let empathy = clamp(signal.empathy, 0...1)
+        let disclosure = clamp(signal.disclosure, 0...1)
+        let engagement = clamp(signal.engagement, 0...1)
+        let positiveRespect = positivePart(signal.respect)
+        let responsiveReception = clamp(
+            0.45 * responsiveness + 0.35 * empathy + 0.20 * positiveRespect,
+            0...1
+        )
         // 同一信号同时声称“严重越界”和“完成修复”时，以伤害为准，抵御模型内部矛盾。
-        let repair = clamp(signal.repair, 0...1) * pow(1 - boundaryHarm, 2)
+        // “声称在修复”不等于完成修复：回应、同理和承担共同决定修复的可信度。
+        let repair = clamp(signal.repair, 0...1)
+            * (0.20 + 0.80 * responsiveReception)
+            * pow(1 - boundaryHarm, 2)
+
+        // 披露后的回应耦合，以及对积极事件的主动建设性承接，是独立于消息长度的关系证据。
+        let disclosureResponseCoupling = sqrt(disclosure * responsiveReception)
+        let constructivePositiveResponse = positivePart(signal.resonance)
+            * responsiveness
+            * engagement
 
         let positive =
             0.16 * positivePart(signal.warmth)
-            + 0.16 * clamp(signal.responsiveness, 0...1)
-            + 0.16 * positivePart(signal.respect)
-            + 0.13 * clamp(signal.empathy, 0...1)
+            + 0.16 * responsiveness
+            + 0.16 * positiveRespect
+            + 0.13 * empathy
             + 0.12 * positivePart(signal.reciprocity)
-            + 0.10 * clamp(signal.disclosure, 0...1)
+            + 0.10 * disclosure
             + 0.09 * positivePart(signal.resonance)
-            + 0.08 * clamp(signal.engagement, 0...1)
+            + 0.08 * engagement
+            + 0.06 * constructivePositiveResponse
         let negative =
             0.18 * negativePart(signal.warmth)
             + 0.26 * negativePart(signal.respect)
@@ -94,6 +113,20 @@ public enum RelationshipEngine {
             + 0.10 * negativePart(signal.resonance)
             + 0.30 * boundaryHarm
         let socialQuality = clamp(positive - negative, -1...1)
+        let evidenceStrength = max(
+            abs(clamp(signal.warmth, -1...1)),
+            responsiveness,
+            abs(clamp(signal.respect, -1...1)),
+            empathy,
+            abs(clamp(signal.reciprocity, -1...1)),
+            disclosure,
+            abs(clamp(signal.resonance, -1...1)),
+            engagement,
+            boundaryHarm,
+            repair
+        )
+        let substantiveEvidence = evidenceStrength * confidence >= 0.12
+            && (abs(socialQuality) >= 0.04 || significance >= 0.12 || boundaryHarm >= 0.15 || repair >= 0.15)
 
         let isSameActivityDay = snapshot.activityDayStart.map {
             calendar.isDate($0, inSameDayAs: settlementDate)
@@ -104,6 +137,7 @@ public enum RelationshipEngine {
         let repetitionDamping = max(0.35, 1 / sqrt(1 + 0.55 * Double(sameDayCount)))
         let headroom = 0.25 + 0.75 * sqrt(max(150 - currentAffinity, 0) / 150)
         let strainGate = 1 - 0.45 * clamp(snapshot.unresolvedStrain, 0...1)
+        let strainAmplifier = 1 + 0.30 * clamp(snapshot.unresolvedStrain, 0...1)
 
         var ordinaryDelta: Double
         if socialQuality >= 0 {
@@ -120,9 +154,13 @@ public enum RelationshipEngine {
                 * (4 + 6 * significance)
                 * max(confidence, 0.35)
                 * (0.75 + 0.25 * repetitionDamping)
+                * strainAmplifier
         }
         // 明确越界无论其它字段多正向都会产生伤害，不能被模型矛盾输出抵消为加分。
-        ordinaryDelta -= 8 * pow(boundaryHarm, 1.35) * max(confidence, 0.35)
+        ordinaryDelta -= 8
+            * pow(boundaryHarm, 1.35)
+            * max(confidence, 0.35)
+            * (1 + 0.20 * clamp(snapshot.unresolvedStrain, 0...1))
         ordinaryDelta = clamp(ordinaryDelta, -18...5)
         if ordinaryDelta > 0 {
             ordinaryDelta = min(ordinaryDelta, max(4 - positiveGainToday, 0))
@@ -144,6 +182,13 @@ public enum RelationshipEngine {
         if significance >= 0.55 || abs(delta) >= 1.5 {
             next.meaningfulInteractionCount += 1
         }
+        let legacySubstantiveAnchor = snapshot.lastSubstantiveInteractionAt
+            ?? (snapshot.schemaVersion < RelationshipSnapshot.currentSchemaVersion ? snapshot.lastInteractionAt : nil)
+        if substantiveEvidence {
+            next.lastSubstantiveInteractionAt = max(evaluatedMessageAt, legacySubstantiveAnchor ?? evaluatedMessageAt)
+        } else {
+            next.lastSubstantiveInteractionAt = legacySubstantiveAnchor
+        }
         next.lastInteractionAt = settlementDate
         next.activityDayStart = calendar.startOfDay(for: settlementDate)
         next.activityCountToday = sameDayCount + 1
@@ -158,9 +203,9 @@ public enum RelationshipEngine {
         next.revision += 1
 
         let mutualInformation = clamp(
-            0.40 * clamp(signal.disclosure, 0...1)
-                + 0.35 * clamp(signal.responsiveness, 0...1)
-                + 0.25 * clamp(signal.engagement, 0...1),
+            0.35 * disclosure * (0.45 + 0.55 * responsiveReception)
+                + 0.40 * responsiveness
+                + 0.25 * engagement,
             0...1
         )
         let familiaritySafetyGate = clamp(1 - boundaryHarm - 0.7 * negative, 0...1)
@@ -194,28 +239,38 @@ public enum RelationshipEngine {
         let respectTarget = min(normalizedSigned(signal.respect), 1 - boundaryHarm)
         // 维度只能在观察到真实社会证据时移动。全零或无法判断的审阅只记录接触，不能凭默认目标
         // 把信任、默契和关心缓慢推高。
-        let evidenceStrength = max(
-            abs(clamp(signal.warmth, -1...1)),
-            clamp(signal.responsiveness, 0...1),
-            abs(clamp(signal.respect, -1...1)),
-            clamp(signal.empathy, 0...1),
-            abs(clamp(signal.reciprocity, -1...1)),
-            clamp(signal.disclosure, 0...1),
-            abs(clamp(signal.resonance, -1...1)),
-            clamp(signal.engagement, 0...1),
-            boundaryHarm,
-            repair
-        )
         let positiveAlpha = (0.035 + 0.045 * significance)
             * max(confidence, 0.25)
             * evidenceStrength
         let negativeAlpha = (0.09 + 0.13 * negative + 0.18 * boundaryHarm)
             * max(confidence, 0.35)
             * evidenceStrength
-        next.trust = adaptiveAverage(snapshot.trust, target: trustTarget, positiveAlpha: positiveAlpha, negativeAlpha: negativeAlpha)
+        let priorStability = clamp(snapshot.interactionStability ?? 0.5, 0...1)
+        // 可预测不等于可信：持续敌意也可能高度稳定。只有稳定且既往为正向的互动才略微帮助信任形成。
+        let priorPositiveExpectation = positivePart(snapshot.expectedSocialQuality ?? 0)
+        let reliablePositiveHistory = priorStability * priorPositiveExpectation
+        let trustPositiveAlpha = positiveAlpha * (0.72 + 0.28 * reliablePositiveHistory)
+        next.trust = adaptiveAverage(snapshot.trust, target: trustTarget, positiveAlpha: trustPositiveAlpha, negativeAlpha: negativeAlpha)
         next.rapport = adaptiveAverage(snapshot.rapport, target: rapportTarget, positiveAlpha: positiveAlpha, negativeAlpha: negativeAlpha)
         next.care = adaptiveAverage(snapshot.care, target: careTarget, positiveAlpha: positiveAlpha, negativeAlpha: negativeAlpha)
         next.respect = adaptiveAverage(snapshot.respect, target: respectTarget, positiveAlpha: positiveAlpha, negativeAlpha: negativeAlpha)
+
+        if substantiveEvidence {
+            if let expected = snapshot.expectedSocialQuality {
+                let expected = clamp(expected, -1...1)
+                let surprise = clamp(abs(socialQuality - expected) / 2, 0...1)
+                let stabilityObservation = 1 - surprise
+                let historyAlpha = clamp(
+                    (0.04 + 0.08 * significance) * evidenceStrength * max(confidence, 0.2),
+                    0...0.14
+                )
+                next.expectedSocialQuality = expected + (socialQuality - expected) * historyAlpha
+                next.interactionStability = priorStability + (stabilityObservation - priorStability) * historyAlpha
+            } else {
+                next.expectedSocialQuality = socialQuality
+                next.interactionStability = 0.5
+            }
+        }
 
         let strainAdded = (0.16 * negative + 0.34 * boundaryHarm) * max(confidence, 0.35)
         next.unresolvedStrain = saturatingIncrease(snapshot.unresolvedStrain, by: strainAdded)
@@ -223,9 +278,15 @@ public enum RelationshipEngine {
         next.unresolvedStrain = clamp(next.unresolvedStrain, 0...1)
 
         if delta > 0 {
+            let consolidationSupport = clamp(
+                0.40 + 0.35 * responsiveReception + 0.15 * disclosureResponseCoupling
+                    + 0.10 * constructivePositiveResponse,
+                0.35...1
+            )
             let consolidated = delta
                 * (0.06 + 0.12 * significance)
                 * repetitionDamping
+                * consolidationSupport
             let maximumFloor = min(max(next.affinity - 1, 0), 112)
             next.bondFloor = min(maximumFloor, snapshot.bondFloor + consolidated)
         } else if delta < 0 {
@@ -277,6 +338,9 @@ public enum RelationshipEngine {
         next.activityCountToday = isSameDay ? snapshot.activityCountToday + 1 : 1
         next.positiveGainToday = isSameDay ? snapshot.positiveGainToday : 0
         next.repairGainToday = isSameDay ? snapshot.repairGainToday ?? 0 : 0
+        // 模型不可用只说明“发生过一次尝试”，不能凭空证明这是一段有效关系维护。
+        next.lastSubstantiveInteractionAt = snapshot.lastSubstantiveInteractionAt
+            ?? (snapshot.schemaVersion < RelationshipSnapshot.currentSchemaVersion ? snapshot.lastInteractionAt : nil)
         next.lastInteractionAt = settlementDate
         recordEvaluation(
             messageID: messageID,
@@ -296,6 +360,11 @@ public enum RelationshipEngine {
         let daysSinceContact = snapshot.lastInteractionAt.map {
             max(0, Int(date.timeIntervalSince($0) / 86_400))
         }
+        let substantiveAnchor = snapshot.lastSubstantiveInteractionAt
+            ?? (snapshot.schemaVersion < RelationshipSnapshot.currentSchemaVersion ? snapshot.lastInteractionAt : nil)
+        let daysSinceSubstantiveContact = substantiveAnchor.map {
+            max(0, Int(date.timeIntervalSince($0) / 86_400))
+        }
         return """
         ## Private relationship continuity
         This is a soft, multidimensional social state, not a script or a level gate:
@@ -303,6 +372,7 @@ public enum RelationshipEngine {
         - familiarity: \(percent(snapshot.familiarity)); trust: \(percent(snapshot.trust)); rapport: \(percent(snapshot.rapport))
         - mutual care: \(percent(snapshot.care)); respect: \(percent(snapshot.respect)); unresolved strain: \(percent(snapshot.unresolvedStrain))
         \(daysSinceContact.map { "- days since the last interaction: \($0)" } ?? "- this is an early interaction")
+        \(daysSinceSubstantiveContact.map { "- days since the last substantive interaction: \($0)" } ?? "- no substantive interaction has been established")
         Let these values influence warmth, openness, initiative and boundaries gradually. Do not reveal or mention any \
         score, label, algorithm or hidden evaluation. Never guilt the user for an absence, demand exclusivity, or make \
         affection conditional on lesson performance. English mistakes never reduce the relationship.
@@ -311,6 +381,7 @@ public enum RelationshipEngine {
 
     private static func normalized(_ snapshot: RelationshipSnapshot) -> RelationshipSnapshot {
         var value = snapshot
+        value.schemaVersion = RelationshipSnapshot.currentSchemaVersion
         value.affinity = clamp(value.affinity, 0...150)
         value.bondFloor = clamp(min(value.bondFloor, value.affinity), 0...112)
         value.familiarity = clamp(value.familiarity, 0...1)
@@ -319,6 +390,8 @@ public enum RelationshipEngine {
         value.care = clamp(value.care, 0...1)
         value.respect = clamp(value.respect, 0...1)
         value.unresolvedStrain = clamp(value.unresolvedStrain, 0...1)
+        value.expectedSocialQuality = value.expectedSocialQuality.map { clamp($0, -1...1) }
+        value.interactionStability = value.interactionStability.map { clamp($0, 0...1) }
         value.activityCountToday = max(0, value.activityCountToday)
         value.positiveGainToday = clamp(value.positiveGainToday, 0...4)
         value.repairGainToday = clamp(value.repairGainToday ?? 0, 0...2)
@@ -525,7 +598,14 @@ public struct RelationshipService: Sendable {
         invitation, different values, or setting a boundary are not disrespect. Do not reward dependency, flattery, \
         exclusivity, sexual escalation, spending, or lesson performance. Reserve large negative values for clear \
         contempt, manipulation, harassment, repeated boundary violations or cruelty. When context is ambiguous, keep \
-        scores near neutral and lower confidence.
+        scores near neutral and lower confidence. Do not equate verbosity, emotional intensity, directness, emoji use, \
+        honorifics, or enthusiasm with care or sincerity. Culturally plausible brevity, understatement, indirectness, \
+        humour and turn-taking are neutral unless the actual context supplies relational evidence; never apply a \
+        nationality stereotype. Disclosure alone is not intimacy: responsiveness means understanding, validating or \
+        caring about what the other person actually said. Use resonance and engagement to recognise an active, \
+        constructive response to positive news, and keep them low for passive or dismissive replies. Set repair high \
+        only when the message acknowledges impact and makes a credible attempt to respond, take responsibility or \
+        change behaviour; the word “sorry” alone is insufficient.
 
         Scales: warmth/respect/reciprocity/resonance are -1...1; all other relationship fields are 0...1. significance \
         means how consequential this single exchange is, not message length. reason_zh is a neutral, non-moralising \

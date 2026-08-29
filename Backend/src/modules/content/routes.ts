@@ -41,9 +41,12 @@ const relationshipPayload = z
     lastEvaluatedMessageAt: isoDate.nullable().optional(),
     lastEvaluatedOrderIndex: z.number().int().min(-1),
     lastInteractionAt: isoDate.nullable().optional(),
+    lastSubstantiveInteractionAt: isoDate.nullable().optional(),
     meaningfulInteractionCount: z.number().int().min(0),
     positiveGainToday: z.number().min(0).max(4),
     repairGainToday: z.number().min(0).max(2).optional(),
+    expectedSocialQuality: z.number().min(-1).max(1).optional(),
+    interactionStability: z.number().min(0).max(1).optional(),
     rapport: z.number().min(0).max(1),
     recentEvents: z
       .array(
@@ -61,7 +64,7 @@ const relationshipPayload = z
     respect: z.number().min(0).max(1),
     revision: z.number().int().min(0),
     recentEvaluatedMessageIDs: z.array(uuid).max(64).optional(),
-    schemaVersion: z.literal(1),
+    schemaVersion: z.union([z.literal(1), z.literal(2)]),
     trust: z.number().min(0).max(1),
     unresolvedStrain: z.number().min(0).max(1),
   })

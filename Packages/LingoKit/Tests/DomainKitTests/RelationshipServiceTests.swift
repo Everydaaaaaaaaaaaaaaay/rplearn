@@ -285,6 +285,7 @@ struct RelationshipServiceTests {
         #expect(after.rapport == before.rapport)
         #expect(after.interactionCount == before.interactionCount + 1)
         #expect(after.lastInteractionAt == now)
+        #expect(after.lastSubstantiveInteractionAt == before.lastInteractionAt)
     }
 
     @Test("联合审阅不评价英语水平，并原子写入关系状态")

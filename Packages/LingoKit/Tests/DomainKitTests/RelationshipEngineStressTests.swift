@@ -154,6 +154,8 @@ struct RelationshipEngineStressTests {
             #expect([snapshot.familiarity, snapshot.trust, snapshot.rapport, snapshot.care, snapshot.respect]
                 .allSatisfy { $0.isFinite && (0...1).contains($0) })
             #expect(snapshot.unresolvedStrain.isFinite && (0...1).contains(snapshot.unresolvedStrain))
+            #expect(snapshot.expectedSocialQuality.map { $0.isFinite && (-1...1).contains($0) } ?? true)
+            #expect(snapshot.interactionStability.map { $0.isFinite && (0...1).contains($0) } ?? true)
             #expect(snapshot.positiveGainToday.isFinite && (0...4).contains(snapshot.positiveGainToday))
             #expect(snapshot.recentEvents.count <= 24)
         }
@@ -322,17 +324,27 @@ struct RelationshipEngineStressTests {
         let encoded = RelationshipSnapshot.initial.encodedJSON()
         let data = try #require(encoded.data(using: .utf8))
         var object = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        object["schemaVersion"] = 1
         object.removeValue(forKey: "repairGainToday")
         object.removeValue(forKey: "recentEvaluatedMessageIDs")
+        object.removeValue(forKey: "lastSubstantiveInteractionAt")
+        object.removeValue(forKey: "expectedSocialQuality")
+        object.removeValue(forKey: "interactionStability")
         let legacyData = try JSONSerialization.data(withJSONObject: object)
         let legacyJSON = String(decoding: legacyData, as: UTF8.self)
         let decoded = try #require(RelationshipSnapshot.decode(fromJSON: legacyJSON))
 
         #expect(decoded.repairGainToday == nil)
         #expect(decoded.recentEvaluatedMessageIDs == nil)
+        #expect(decoded.lastSubstantiveInteractionAt == nil)
+        #expect(decoded.expectedSocialQuality == nil)
+        #expect(decoded.interactionStability == nil)
         let updated = apply(friendlySignal, to: decoded, index: 1, at: now)
         #expect(updated.repairGainToday == 0)
         #expect(updated.recentEvaluatedMessageIDs?.count == 1)
+        #expect(updated.lastSubstantiveInteractionAt == now)
+        #expect(updated.expectedSocialQuality != nil)
+        #expect(updated.interactionStability != nil)
     }
 
     @Test("无信息量的重复消息不会伪造相互了解")
