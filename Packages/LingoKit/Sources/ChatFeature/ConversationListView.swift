@@ -12,6 +12,7 @@ public struct ConversationListView: View {
     @State private var searchText = ""
     @State private var isSearchPresented = false
     @State private var stateRevision = 0
+    @State private var selectedConversationID: UUID?
     @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
 
     public init(deps: ChatDependencies, reloadToken: Int = 0) {
@@ -60,28 +61,25 @@ public struct ConversationListView: View {
                             .listRowSeparator(.hidden)
                     } else {
                         ForEach(visibleRows) { row in
-                            NavigationLink {
-                                ChatView(character: row.character, deps: deps)
-                                    .onAppear {
-                                        if let summary = row.summary {
-                                            ConversationReadState.markRead(
-                                                conversationID: summary.conversationID,
-                                                at: summary.lastMessageAt
-                                            )
-                                        }
-                                    }
-                                    .onDisappear {
-                                        Task { await reload() }
-                                    }
+                            Button {
+                                if let summary = row.summary {
+                                    ConversationReadState.markRead(
+                                        conversationID: summary.conversationID,
+                                        at: summary.lastMessageAt
+                                    )
+                                }
+                                selectedConversationID = row.id
                             } label: {
                                 rowLabel(row)
-                                    .padding(DSSpacing.md)
+                                    .padding(.horizontal, DSSpacing.md)
+                                    .padding(.vertical, DSSpacing.sm)
                                     .dsSceneGlass(
                                         tint: Color.white.opacity(0.06),
                                         interactive: true,
                                         legibility: .enhanced
                                     )
                             }
+                            .buttonStyle(.plain)
                             .listRowInsets(
                                 EdgeInsets(
                                     top: DSSpacing.xs / 2,
@@ -134,6 +132,9 @@ public struct ConversationListView: View {
         }
         .navigationTitle("信息")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(item: $selectedConversationID) { characterID in
+            conversationDestination(characterID: characterID)
+        }
         .searchable(
             text: $searchText,
             isPresented: $isSearchPresented,
@@ -189,10 +190,10 @@ public struct ConversationListView: View {
                 }
             }
 
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(row.character.card.name)
-                        .font(.footnote.weight(.bold))
+                        .font(.headline.weight(.bold))
                         .foregroundStyle(Color.dsSceneTextPrimary)
                         .lineLimit(1)
 
@@ -220,13 +221,24 @@ public struct ConversationListView: View {
                 }
 
                 Text(row.summary.map(summaryText) ?? "打个招呼吧 👋")
-                    .font(.body.weight(.regular))
+                    .font(.callout.weight(.regular))
                     .foregroundStyle(Color.dsSceneTextTertiary)
                     .lineLimit(1)
                     .truncationMode(.tail)
             }
         }
-        .padding(.vertical, DSSpacing.xs)
+    }
+
+    @ViewBuilder
+    private func conversationDestination(characterID: UUID) -> some View {
+        if let character = rows.first(where: { $0.id == characterID })?.character {
+            ChatView(character: character, deps: deps)
+                .onDisappear {
+                    Task { await reload() }
+                }
+        } else {
+            ContentUnavailableView("联系人不存在", systemImage: "person.crop.circle.badge.questionmark")
+        }
     }
 
     private var emptyState: some View {
