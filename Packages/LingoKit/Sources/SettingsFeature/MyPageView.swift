@@ -184,8 +184,8 @@ public struct MyPageView: View {
                 .position(x: width * 0.845, y: sceneHeight * 0.19)
 
             learningHotspot
-                .frame(width: 176, height: 210)
-                .position(x: width * 0.54, y: sceneHeight * 0.395)
+                .frame(width: 142, height: 178)
+                .position(x: width * 0.54, y: sceneHeight * 0.515)
 
             favoritesHotspot
                 .frame(width: 112, height: 120)
@@ -353,10 +353,10 @@ public struct MyPageView: View {
     private var profileSceneEntry: some View {
         ZStack(alignment: .topLeading) {
             SceneHologram(plane: .identityHolder) {
-                VStack(spacing: 5) {
-                    SceneHologramIcon(glyph: .system("person.crop.circle"), size: 46)
+                VStack(spacing: 7) {
+                    SceneHologramIcon(glyph: .system("person.crop.circle"), size: 40)
 
-                    VStack(alignment: .leading, spacing: 0) {
+                    VStack(alignment: .leading, spacing: 1.5) {
                         SceneHologramText(displayName, size: 16, weight: .bold)
                             .lineLimit(1)
                             .minimumScaleFactor(0.72)
@@ -368,7 +368,7 @@ public struct MyPageView: View {
                 }
             }
             .frame(width: 150, height: 138)
-            .position(x: 78, y: 58)
+            .position(x: 78, y: 88)
 
             AvatarBadge(name: displayName, tint: .dsSky, size: 43)
                 .overlay {
@@ -376,7 +376,7 @@ public struct MyPageView: View {
                         .stroke(Color.white.opacity(0.7), lineWidth: 1)
                 }
                 .shadow(color: .black.opacity(0.18), radius: 2.2, y: 1.4)
-                .rotationEffect(.degrees(-5))
+                .rotationEffect(.degrees(-13))
                 .position(x: 76, y: 168)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -410,17 +410,17 @@ public struct MyPageView: View {
 
     private var learningSceneEntry: some View {
         SceneHologram(plane: .tablet) {
-            VStack(spacing: 4) {
-                SceneHologramIcon(glyph: .journeyBook, size: 60)
-                SceneHologramText("英语旅程", size: 24, weight: .bold)
+            VStack(spacing: 11) {
+                SceneHologramIcon(glyph: .journeyBook, size: 52)
+                SceneHologramText("英语旅程", size: 22, weight: .bold)
                 SceneHologramText(
                     "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoal.displayName ?? "载入中")",
-                    size: 13,
+                    size: 12.5,
                     weight: .semibold
                 )
                 .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                SceneHologramText(placementSummary, size: 13, weight: .bold)
+                .minimumScaleFactor(0.65)
+                SceneHologramText(placementSummary, size: 12.5, weight: .bold)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -915,92 +915,76 @@ private struct SceneHologramPlane {
     let scaleY: CGFloat
     let footprintOffset: CGSize
     let extrusionOffset: CGSize
-    let footprintWidth: CGFloat
-    let pedestalOffset: CGSize?
 
     static let identityHolder = SceneHologramPlane(
-        rotationZ: -3,
+        rotationZ: -13,
         tiltX: 8,
         tiltY: -2,
         perspective: 0.2,
         scaleX: 1,
         scaleY: 0.985,
         footprintOffset: CGSize(width: 3, height: 13),
-        extrusionOffset: CGSize(width: 1, height: 2.6),
-        footprintWidth: 66,
-        pedestalOffset: CGSize(width: 4, height: 66)
+        extrusionOffset: CGSize(width: 1, height: 2.6)
     )
     static let camera = SceneHologramPlane(
-        rotationZ: 0,
+        rotationZ: 7,
         tiltX: 6,
         tiltY: 1,
         perspective: 0.18,
         scaleX: 1,
         scaleY: 0.99,
         footprintOffset: CGSize(width: 1, height: 13),
-        extrusionOffset: CGSize(width: 0.5, height: 2.6),
-        footprintWidth: 62,
-        pedestalOffset: nil
+        extrusionOffset: CGSize(width: 0.5, height: 2.6)
     )
     static let wallet = SceneHologramPlane(
-        rotationZ: 3,
+        rotationZ: 13,
         tiltX: 7,
         tiltY: -2,
         perspective: 0.2,
         scaleX: 1,
         scaleY: 0.98,
         footprintOffset: CGSize(width: -3, height: 13),
-        extrusionOffset: CGSize(width: -0.8, height: 2.6),
-        footprintWidth: 66,
-        pedestalOffset: CGSize(width: -2, height: 45)
+        extrusionOffset: CGSize(width: -0.8, height: 2.6)
     )
     static let tablet = SceneHologramPlane(
-        rotationZ: 1,
+        rotationZ: 4,
         tiltX: 6,
         tiltY: -1,
         perspective: 0.18,
         scaleX: 1,
         scaleY: 0.985,
         footprintOffset: CGSize(width: -1, height: 14),
-        extrusionOffset: CGSize(width: -0.4, height: 2.8),
-        footprintWidth: 78,
-        pedestalOffset: nil
+        extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phrasebook = SceneHologramPlane(
-        rotationZ: -3.5,
+        rotationZ: -12,
         tiltX: 7,
         tiltY: 1.5,
         perspective: 0.2,
         scaleX: 1,
         scaleY: 0.98,
         footprintOffset: CGSize(width: 3, height: 13),
-        extrusionOffset: CGSize(width: 0.8, height: 2.6),
-        footprintWidth: 60,
-        pedestalOffset: nil
+        extrusionOffset: CGSize(width: 0.8, height: 2.6)
     )
     static let watch = SceneHologramPlane(
-        rotationZ: 4.5,
+        rotationZ: 16,
         tiltX: 9,
         tiltY: -2.5,
         perspective: 0.22,
         scaleX: 1,
         scaleY: 0.97,
         footprintOffset: CGSize(width: -3, height: 14),
-        extrusionOffset: CGSize(width: -0.8, height: 2.9),
-        footprintWidth: 60,
-        pedestalOffset: nil
+        extrusionOffset: CGSize(width: -0.8, height: 2.9)
     )
     static let phone = SceneHologramPlane(
-        rotationZ: 0.5,
+        rotationZ: 3,
         tiltX: 6,
         tiltY: 0,
         perspective: 0.18,
         scaleX: 1,
         scaleY: 0.98,
         footprintOffset: CGSize(width: -2, height: 14),
-        extrusionOffset: CGSize(width: -0.6, height: 2.8),
-        footprintWidth: 64,
-        pedestalOffset: nil
+        extrusionOffset: CGSize(width: -0.6, height: 2.8)
     )
 }
 
@@ -1025,14 +1009,6 @@ private struct SceneHologram<Content: View>: View {
 
     private var layers: some View {
         ZStack {
-            if let pedestalOffset = plane.pedestalOffset {
-                SceneHologramPedestal(
-                    tint: tint,
-                    width: plane.footprintWidth
-                )
-                .offset(pedestalOffset)
-            }
-
             content
                 .blur(radius: 6)
                 .offset(
@@ -1073,69 +1049,6 @@ private struct SceneHologram<Content: View>: View {
             anchor: .center,
             perspective: plane.perspective
         )
-    }
-}
-
-private struct SceneHologramPedestal: View {
-    let tint: Color
-    let width: CGFloat
-
-    var body: some View {
-        ZStack {
-            Ellipse()
-                .fill(Color.sceneHologramGlowYellow.opacity(0.48))
-                .frame(width: width, height: 11)
-                .blur(radius: 8)
-
-            Ellipse()
-                .stroke(Color.sceneHologramGlowYellow.opacity(0.52), lineWidth: 1)
-                .frame(width: width * 0.88, height: 9)
-                .blur(radius: 1.2)
-
-            Ellipse()
-                .stroke(tint.opacity(0.9), lineWidth: 1.15)
-                .frame(width: width * 0.68, height: 6.5)
-                .blur(radius: 0.55)
-
-            HologramPedestalRays()
-                .stroke(
-                    Color.sceneHologramGlowYellow.opacity(0.44),
-                    style: StrokeStyle(lineWidth: 1, lineCap: .round)
-                )
-                .frame(width: width * 0.72, height: 28)
-                .blur(radius: 1.35)
-                .offset(y: -14)
-
-            HologramPedestalRays()
-                .stroke(
-                    tint.opacity(0.34),
-                    style: StrokeStyle(lineWidth: 0.7, lineCap: .round)
-                )
-                .frame(width: width * 0.62, height: 24)
-                .offset(y: -13)
-        }
-        .allowsHitTesting(false)
-        .accessibilityHidden(true)
-    }
-}
-
-private struct HologramPedestalRays: Shape {
-    func path(in rect: CGRect) -> Path {
-        let point: (CGFloat, CGFloat) -> CGPoint = { x, y in
-            CGPoint(x: rect.minX + rect.width * x, y: rect.minY + rect.height * y)
-        }
-        var path = Path()
-        for endpoints in [
-            (point(0.5, 0.88), point(0.5, 0.08)),
-            (point(0.4, 0.9), point(0.28, 0.28)),
-            (point(0.6, 0.9), point(0.72, 0.28)),
-            (point(0.3, 0.92), point(0.12, 0.5)),
-            (point(0.7, 0.92), point(0.88, 0.5))
-        ] {
-            path.move(to: endpoints.0)
-            path.addLine(to: endpoints.1)
-        }
-        return path
     }
 }
 
