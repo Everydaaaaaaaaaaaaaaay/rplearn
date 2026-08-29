@@ -92,6 +92,18 @@ public struct SettingsView: View {
             } footer: {
                 Text("供应商密钥、模型和配额只保存在服务端，不会下发到设备。")
             }
+
+            Section {
+                NavigationLink {
+                    CityScenePhotoCreditsView()
+                } label: {
+                    Label("城市背景照片与许可", systemImage: "photo.on.rectangle.angled")
+                }
+            } header: {
+                Text("关于素材")
+            } footer: {
+                Text("查看信息页与联系人页所用实景摄影的作者、来源和许可。")
+            }
         }
         .navigationTitle("设置")
         .animation(.default, value: testState)

@@ -49,6 +49,12 @@ public struct RosterView: View {
     private var sceneSecondaryText: Color { .dsSceneTextSecondary }
     private var sceneTertiaryText: Color { .dsSceneTextTertiary }
     private var sceneGlassTint: Color { Color.dsBrandInk.opacity(0.04) }
+    private var sceneImageName: String {
+        DSCitySceneAssets.imageName(
+            for: .contacts,
+            regionID: profile?.currentRegionID
+        )
+    }
 
     private var searchResults: [CharacterDTO] {
         guard isSearching else { return [] }
@@ -64,7 +70,7 @@ public struct RosterView: View {
 
     public var body: some View {
         ZStack {
-            DSSceneBackdrop(imageName: "contacts_london_glass", tone: .cool)
+            DSSceneBackdrop(imageName: sceneImageName, tone: .cool)
 
             ScrollView {
                 LazyVStack(spacing: DSSpacing.md) {

@@ -12,6 +12,7 @@ public struct ConversationListView: View {
     @State private var searchText = ""
     @State private var isSearchPresented = false
     @State private var stateRevision = 0
+    @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
     @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
 
@@ -43,7 +44,13 @@ public struct ConversationListView: View {
 
     public var body: some View {
         ZStack {
-            DSSceneBackdrop(imageName: "messages_london_glass", tone: .cool)
+            DSSceneBackdrop(
+                imageName: DSCitySceneAssets.imageName(
+                    for: .messages,
+                    regionID: currentRegionID
+                ),
+                tone: .cool
+            )
 
             if rows.isEmpty && !isLoading {
                 emptyState
@@ -296,6 +303,9 @@ public struct ConversationListView: View {
 
     private func reload() async {
         defer { isLoading = false }
+        if let loadedProfile = try? await deps.economyStore.profile() {
+            currentRegionID = loadedProfile.currentRegionID
+        }
         do {
             let friends = try await deps.rosterStore.friends()
             let summaries = try await deps.chatStore.conversationSummaries()
