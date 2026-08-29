@@ -153,7 +153,7 @@ public enum RelationshipEngine {
             let harmfulQuality = min(socialQuality + 0.06, 0)
             ordinaryDelta = harmfulQuality
                 * (4 + 6 * significance)
-                * max(confidence, 0.35)
+                * confidence
                 * (0.75 + 0.25 * repetitionDamping)
                 * strainAmplifier
         }
@@ -305,8 +305,12 @@ public enum RelationshipEngine {
         let positiveAlpha = (0.035 + 0.045 * significance)
             * confidence
             * evidenceStrength
+        // 认识不确定性不能被当成负面证据。有限的低置信度谨慎只留给审阅器明确标出的
+        // 越界或轻视，而不是冷淡、低共鸣等可能由语境、文化和表达习惯造成的普通负面判断。
+        let explicitSafetyConcern = max(boundaryHarm, explicitDisrespect)
+        let negativeConfidence = max(confidence, 0.35 * explicitSafetyConcern)
         let negativeAlpha = (0.09 + 0.13 * negative + 0.18 * boundaryHarm)
-            * max(confidence, 0.35)
+            * negativeConfidence
             * evidenceStrength
         let priorStability = clamp(snapshot.interactionStability ?? 0.5, 0...1)
         // 可预测不等于可信：持续敌意也可能高度稳定。只有稳定且既往为正向的互动才略微帮助信任形成。
@@ -335,7 +339,9 @@ public enum RelationshipEngine {
             }
         }
 
-        let strainAdded = (0.16 * negative + 0.34 * boundaryHarm) * max(confidence, 0.35)
+        let strainAdded = 0.16 * negative * confidence
+            + 0.34 * boundaryHarm * max(confidence, 0.35)
+            + 0.10 * explicitDisrespect * max(confidence, 0.35)
         next.unresolvedStrain = saturatingIncrease(snapshot.unresolvedStrain, by: strainAdded)
         // 同一天的直接修复和后续行动最多使用 2 个恢复信用，因而不能靠重复道歉清空裂痕。
         // 完整恢复需要跨日、可观察的一致行动。
@@ -352,6 +358,9 @@ public enum RelationshipEngine {
                 * (0.06 + 0.12 * significance)
                 * repetitionDamping
                 * consolidationSupport
+                // 道歉可以即时改善关系感受，但长期纽带应主要由之后可观察的一致行为沉淀。
+                // 这里保留少量关系价值信号，同时防止一句高质量道歉比实际跟进更快写入长期下限。
+                * (1 - 0.70 * repair)
             let maximumFloor = min(max(next.affinity - 1, 0), 112)
             next.bondFloor = min(maximumFloor, snapshot.bondFloor + consolidated)
         } else if delta < 0 {
@@ -366,7 +375,8 @@ public enum RelationshipEngine {
             next.bondFloor = max(0, min(next.affinity, snapshot.bondFloor + floorDamage))
         }
 
-        let hasConfidentNarrativeEvidence = confidence >= 0.12
+        let hasConfidentNarrativeEvidence = substantiveEvidence
+            && confidence >= 0.12
             && (significance >= 0.40 || repair >= 0.25)
         if abs(delta) >= 0.1 || boundaryHarm >= 0.20 || hasConfidentNarrativeEvidence {
             let reason = normalizedReason(signal.reasonZh, delta: delta)
@@ -681,6 +691,9 @@ public struct RelationshipService: Sendable {
         requested or expressed, not merely provide more advice. Unsolicited fixing, pressure, minimising, or taking over \
         can undermine autonomy and should not receive high responsiveness or empathy. Listening, respecting a refusal or \
         asking what support is wanted can be positive even when no solution is offered.
+        Directive guidance may be practically useful without automatically being relationally responsive. Give high \
+        responsiveness to collaborative help that preserves the other person's agency and choice. Disagreement or \
+        declining advice can still be autonomy-supportive when it remains respectful.
 
         Scales: warmth/respect/reciprocity/resonance are -1...1; all other relationship fields are 0...1. significance \
         means how consequential this single exchange is, not message length. reason_zh is a neutral, non-moralising \

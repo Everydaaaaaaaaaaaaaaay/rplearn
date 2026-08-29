@@ -5,7 +5,7 @@ import SwiftData
 import Testing
 @testable import DomainKit
 
-@Suite("RelationshipEngine 第五代科学性验证")
+@Suite("RelationshipEngine 第六代科学性验证")
 struct RelationshipScientificValidationTests {
     private let now = Date(timeIntervalSince1970: 2_140_000_000)
 
@@ -250,6 +250,96 @@ struct RelationshipScientificValidationTests {
         #expect(result.unresolvedStrain == strained.unresolvedStrain)
         #expect(result.repairGainToday == 0)
         #expect(result.recentEvents.isEmpty)
+    }
+
+    @Test("置信度为零的普通冷淡不能被安全下限误判为真实伤害")
+    func zeroConfidenceOrdinaryNegativityCannotDamageRelationship() {
+        let ambiguousColdness = signal(
+            warmth: -0.75, responsiveness: 0.05, respect: 0.15, empathy: 0,
+            reciprocity: -0.55, disclosure: 0, resonance: -0.7, engagement: 0.1,
+            significance: 0.75, confidence: 0,
+            reason: "语境不足，无法确认是否冷淡"
+        )
+
+        let result = apply(ambiguousColdness, to: .initial, index: 0, at: now)
+
+        #expect(result.affinity == RelationshipSnapshot.initial.affinity)
+        #expect(result.bondFloor == RelationshipSnapshot.initial.bondFloor)
+        #expect(dimensions(of: result) == dimensions(of: .initial))
+        #expect(result.meaningfulInteractionCount == 0)
+        #expect(result.lastSubstantiveInteractionAt == nil)
+        #expect(result.recentEvents.isEmpty)
+    }
+
+    @Test("没有社会证据时高重要性标签不能制造关系叙事")
+    func unsupportedSignificanceCannotManufactureNarrativeEvent() {
+        let unsupported = signal(
+            warmth: 0, responsiveness: 0, respect: 0, empathy: 0,
+            reciprocity: 0, disclosure: 0, resonance: 0, engagement: 0,
+            significance: 1, confidence: 1,
+            reason: "模型声称重要但没有任何社会证据"
+        )
+
+        let result = apply(unsupported, to: .initial, index: 0, at: now)
+
+        #expect(result.affinity == RelationshipSnapshot.initial.affinity)
+        #expect(dimensions(of: result) == dimensions(of: .initial))
+        #expect(result.lastSubstantiveInteractionAt == nil)
+        #expect(result.meaningfulInteractionCount == 0)
+        #expect(result.recentEvents.isEmpty)
+    }
+
+    @Test("一次道歉可以即时修复但长期纽带更依赖后续可靠行为")
+    func apologyDoesNotConsolidateMoreDurableBondThanBehaviour() {
+        let strained = RelationshipSnapshot(
+            affinity: 52, bondFloor: 27, familiarity: 0.62, trust: 0.62,
+            rapport: 0.5, care: 0.52, respect: 0.68, unresolvedStrain: 0.75,
+            lastInteractionAt: now.addingTimeInterval(-60)
+        )
+        let safeBehaviour = signal(
+            warmth: 0.7, responsiveness: 0.95, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.8, disclosure: 0.25, resonance: 0.2, engagement: 0.9,
+            repair: 0, significance: 0.9, reason: "以可靠行动回应先前问题"
+        )
+        var accountableApology = safeBehaviour
+        accountableApology.repair = 1
+        accountableApology.reasonZh = "承认影响并承诺改变"
+
+        let behaviourResult = apply(safeBehaviour, to: strained, index: 0, at: now)
+        let apologyResult = apply(accountableApology, to: strained, index: 0, at: now)
+
+        #expect(apologyResult.affinity > behaviourResult.affinity)
+        #expect(apologyResult.unresolvedStrain < behaviourResult.unresolvedStrain)
+        #expect(apologyResult.bondFloor - strained.bondFloor
+            <= behaviourResult.bondFloor - strained.bondFloor)
+    }
+
+    @Test("不同但合宜的支持方式不应像冷暖反复一样被判为不稳定")
+    func adaptiveSupportVariationIsNotHostileVolatility() throws {
+        let listening = signal(
+            warmth: 0.78, responsiveness: 0.92, respect: 0.98, empathy: 0.95,
+            reciprocity: 0.58, disclosure: 0.05, resonance: 0.45, engagement: 0.85,
+            significance: 0.65, reason: "倾听并尊重对方的处理方式"
+        )
+        let collaborativeHelp = signal(
+            warmth: 0.52, responsiveness: 0.88, respect: 0.96, empathy: 0.62,
+            reciprocity: 0.82, disclosure: 0.2, resonance: 0.72, engagement: 0.92,
+            significance: 0.65, reason: "在征得同意后共同解决问题"
+        )
+        var adaptive = RelationshipSnapshot.initial
+        var volatile = RelationshipSnapshot.initial
+
+        for day in 0..<16 {
+            let date = now.addingTimeInterval(Double(day) * 86_400)
+            adaptive = apply(day.isMultiple(of: 2) ? listening : collaborativeHelp, to: adaptive, index: day, at: date)
+            volatile = apply(day.isMultiple(of: 2) ? listening : Self.contempt, to: volatile, index: day, at: date)
+        }
+
+        let adaptiveStability = try #require(adaptive.interactionStability)
+        let volatileStability = try #require(volatile.interactionStability)
+        #expect(adaptiveStability > volatileStability)
+        #expect(adaptive.affinity > volatile.affinity)
+        #expect(adaptive.expectedSocialQuality ?? 0 > 0)
     }
 
     @Test("修复效果受既往可信度约束而不是只看道歉文本")
@@ -644,6 +734,9 @@ struct RelationshipScientificValidationTests {
             #expect(prompt.contains("match the support actually requested or expressed"))
             #expect(prompt.contains("Unsolicited fixing, pressure, minimising, or taking over"))
             #expect(prompt.contains("respecting a refusal or asking what support is wanted"))
+            #expect(prompt.contains("Directive guidance may be practically useful"))
+            #expect(prompt.contains("preserves the other person's agency and choice"))
+            #expect(prompt.contains("Disagreement or declining advice can still be autonomy-supportive"))
             return Self.neutralReviewJSON
         })
 

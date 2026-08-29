@@ -15,7 +15,7 @@ if ! [[ "$passes" =~ ^[1-9][0-9]*$ ]]; then
 fi
 
 echo "使用模拟器：$udid"
-echo "第五代关系科学性门禁轮数：$passes"
+echo "第六代关系科学性门禁轮数：$passes"
 
 print_latest_result() {
   local label="${1:-当前专项结果}"
