@@ -1,5 +1,44 @@
 import SwiftUI
 
+public enum DSCitySceneRole: String, Sendable {
+    case messages
+    case contacts
+}
+
+/// 将旅程地区映射到信息页、联系人页的城市摄影；未知地区安全回退到伦敦。
+public enum DSCitySceneAssets {
+    public static let supportedRegionIDs: Set<String> = [
+        "auckland",
+        "capetown",
+        "dublin",
+        "edinburgh",
+        "kingston",
+        "london",
+        "manchester",
+        "melbourne",
+        "nairobi",
+        "neworleans",
+        "newyork",
+        "singapore",
+        "sydney",
+        "toronto",
+        "vancouver",
+    ]
+
+    public static func imageName(
+        for role: DSCitySceneRole,
+        regionID: String?
+    ) -> String {
+        let normalizedRegionID = regionID?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+        let resolvedRegionID = normalizedRegionID.flatMap { regionID in
+            supportedRegionIDs.contains(regionID) ? regionID : nil
+        } ?? "london"
+        return "\(role.rawValue)_\(resolvedRegionID)_glass"
+    }
+}
+
 /// 让内容浮在城市摄影上，同时为导航栏和底部 Tab 保留稳定的可读性。
 public struct DSSceneBackdrop: View {
     public enum Tone: Sendable {

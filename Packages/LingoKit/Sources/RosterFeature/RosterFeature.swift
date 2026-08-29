@@ -129,9 +129,15 @@ public struct RosterView: View {
     private var contactAvatarSize: CGFloat {
         dynamicTypeSize.isAccessibilitySize ? 58 : 48
     }
+    private var sceneImageName: String {
+        DSCitySceneAssets.imageName(
+            for: .contacts,
+            regionID: profile?.currentRegionID
+        )
+    }
     public var body: some View {
         ZStack {
-            DSSceneBackdrop(imageName: "contacts_london_glass", tone: .warm)
+            DSSceneBackdrop(imageName: sceneImageName, tone: .cool)
             navigationReadabilityWash
             sceneReadabilityWash
             directoryList

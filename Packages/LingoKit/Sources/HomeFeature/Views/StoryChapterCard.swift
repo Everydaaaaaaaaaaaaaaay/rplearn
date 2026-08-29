@@ -60,7 +60,7 @@ struct StoryChapterCard: View {
                     Text(statusText)
                 }
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(isHighlighted ? accent : .secondary)
+                    .foregroundStyle(isDimmed ? Color.secondary : accent)
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
             }

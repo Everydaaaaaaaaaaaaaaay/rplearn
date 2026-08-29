@@ -1,5 +1,15 @@
 import SwiftUI
 
+/// Controls how much of a photographed scene is allowed to show through a glass surface.
+public enum DSSceneGlassLegibility: Sendable, Equatable {
+    /// Keeps the glass as transparent as possible. Best for chrome and short labels.
+    case ambient
+    /// Adds a translucent surface behind content so long-form text keeps one stable contrast.
+    case enhanced
+    /// Uses a thicker neutral glass for large cards placed over detailed photography.
+    case shielded
+}
+
 private struct DSAdaptiveMaterialModifier<Background: Shape>: ViewModifier {
     let material: Material
     let shape: Background
@@ -29,13 +39,15 @@ public extension View {
     func dsSceneGlass(
         radius: CGFloat = DSRadius.hero,
         tint: Color? = nil,
-        interactive: Bool = false
+        interactive: Bool = false,
+        legibility: DSSceneGlassLegibility = .ambient
     ) -> some View {
         modifier(
             DSSceneGlassModifier(
                 radius: radius,
                 tint: tint,
-                interactive: interactive
+                interactive: interactive,
+                legibility: legibility
             )
         )
     }
@@ -55,9 +67,11 @@ private struct DSSceneGlassModifier: ViewModifier {
     let radius: CGFloat
     let tint: Color?
     let interactive: Bool
+    let legibility: DSSceneGlassLegibility
 
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
 
     @ViewBuilder
     func body(content: Content) -> some View {
@@ -69,18 +83,36 @@ private struct DSSceneGlassModifier: ViewModifier {
                 shape: shape
             )
         } else if #available(iOS 26.0, *) {
+            let glass: Glass = legibility == .ambient ? .regular : .clear
             decorated(
-                content.glassEffect(
-                    .regular.tint(tint).interactive(interactive),
-                    in: shape
-                ),
+                legibilityBackground(content, in: shape)
+                    .glassEffect(
+                        glass.tint(tint).interactive(interactive),
+                        in: shape
+                    ),
                 shape: shape
             )
         } else {
             decorated(
-                content.background(.regularMaterial, in: shape),
+                legibilityBackground(content, in: shape)
+                    .background(.regularMaterial, in: shape),
                 shape: shape
             )
+        }
+    }
+
+    @ViewBuilder
+    private func legibilityBackground<ContentView: View, Background: Shape>(
+        _ content: ContentView,
+        in shape: Background
+    ) -> some View {
+        if legibility != .ambient {
+            content.background(
+                legibilitySurface.opacity(legibilitySurfaceOpacity),
+                in: shape
+            )
+        } else {
+            content
         }
     }
 
@@ -91,9 +123,7 @@ private struct DSSceneGlassModifier: ViewModifier {
         content
             .overlay {
                 shape.stroke(
-                    colorScheme == .dark
-                        ? Color.white.opacity(0.17)
-                        : Color.white.opacity(0.6),
+                    borderColor,
                     lineWidth: 0.8
                 )
             }
@@ -102,5 +132,26 @@ private struct DSSceneGlassModifier: ViewModifier {
                 radius: 18,
                 y: 8
             )
+    }
+
+    private var borderColor: Color {
+        if legibility != .ambient {
+            return Color.dsBrandInk.opacity(colorSchemeContrast == .increased ? 0.26 : 0.13)
+        }
+        return colorScheme == .dark
+            ? Color.white.opacity(0.17)
+            : Color.white.opacity(0.6)
+    }
+
+    private var legibilitySurface: Color {
+        legibility == .shielded ? .dsSurfaceMuted : .dsSurface
+    }
+
+    private var legibilitySurfaceOpacity: Double {
+        if colorSchemeContrast == .increased { return 0.88 }
+        if legibility == .shielded {
+            return colorScheme == .dark ? 0.54 : 0.44
+        }
+        return colorScheme == .dark ? 0.5 : 0.38
     }
 }

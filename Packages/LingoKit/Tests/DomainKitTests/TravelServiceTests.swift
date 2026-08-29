@@ -20,6 +20,11 @@ struct TravelServiceTests {
         id: "melbourne", nameEn: "Melbourne", nameZh: "墨尔本", countryCode: "AU",
         countryNameEn: "Australia", countryNameZh: "澳大利亚", taglineZh: "-", landmarks: [], activities: []
     )
+    private let capeTownMainline = Region(
+        id: "capetown", nameEn: "Cape Town", nameZh: "开普敦", countryCode: "ZA",
+        countryNameEn: "South Africa", countryNameZh: "南非", role: .mainline,
+        taglineZh: "-", landmarks: [], activities: []
+    )
 
     private func makeFixture() async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
@@ -58,6 +63,19 @@ struct TravelServiceTests {
         var lockedProfile = profile
         lockedProfile.unlockedRegionIDs.removeAll { $0 == "melbourne" }
         #expect(TravelService.requiresTicket(to: melbourne, profile: lockedProfile))
+        #expect(!TravelService.requiresTicket(to: capeTownMainline, profile: lockedProfile))
+    }
+
+    @Test("默认开放的主线城市无需机票即可首次前往")
+    func mainlineTravelIsFree() async throws {
+        let fixture = try await makeFixture()
+
+        let result = try await fixture.service.travel(to: capeTownMainline)
+
+        #expect(!result.unlockedNow)
+        #expect(result.ticketStub == nil)
+        #expect(try await fixture.economyStore.profile().currentRegionID == "capetown")
+        #expect(try await fixture.economyStore.profile().unlockedRegionIDs.contains("capetown"))
     }
 
     @Test("机票可用性：通用票全通、国家票匹配国家、已用票不可用")
