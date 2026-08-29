@@ -90,6 +90,10 @@ displayScore = F + (S - F) × 0.5^(t / H)
 门槛见 [`relationship-calibration-log.md`](relationship-calibration-log.md)。不得只为了提高留存而放大
 失联惩罚、主动消息压力或亲密奖励。
 
+日常关系改动先运行 `Scripts/test-relationship.sh`。它默认连续执行两轮关系服务、压力和成熟度测试；可用
+`RELATIONSHIP_TEST_PASSES` 增加轮数。专项通过后仍必须运行 `Scripts/test.sh`，因为关系状态同时进入持久化、
+同步、聊天提示词和 Debug UI，专项测试不能替代全量回归。
+
 ## Debug 好感度实验室
 
 Debug 构建临时增加第五个“测试”Tab，用于在不污染真实数据的情况下检查完整关系模型：

@@ -862,8 +862,12 @@ private enum RelationshipLabFixtures {
             .init(title: "乱序的不同消息仍会结算", passed: outOfOrderResult.interactionCount == positive.interactionCount + 1, detail: "\(outOfOrderResult.interactionCount) 次"),
             .init(title: "普通摩擦不侵蚀长期纽带", passed: ordinaryTension.bondFloor == healthy.bondFloor, detail: ordinaryTension.bondFloor.formatted(.number.precision(.fractionLength(2)))),
             .init(title: "越界压过矛盾的正向字段", passed: contradictoryHarm.affinity < healthy.affinity && contradictoryHarm.trust < healthy.trust, detail: (contradictoryHarm.affinity - healthy.affinity).formatted(.number.precision(.fractionLength(2)))),
-            .init(title: "无信息量互动不增加熟悉度", passed: noInformation.familiarity == RelationshipSnapshot.initial.familiarity, detail: noInformation.familiarity.formatted(.number.precision(.fractionLength(3)))),
+            .init(title: "无信息量互动不改变关系维度", passed: dimensions(of: noInformation) == dimensions(of: .initial), detail: noInformation.familiarity.formatted(.number.precision(.fractionLength(3)))),
         ]
+    }
+
+    private static func dimensions(of snapshot: RelationshipSnapshot) -> [Double] {
+        [snapshot.familiarity, snapshot.trust, snapshot.rapport, snapshot.care, snapshot.respect, snapshot.unresolvedStrain]
     }
 
     private static func apply(

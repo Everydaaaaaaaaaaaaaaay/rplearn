@@ -225,6 +225,31 @@ public actor RosterStore {
         return true
     }
 
+    /// 在名册 actor 内原子读取、变换并保存关系，避免多个后台结算在客户端重试窗口内互相挤掉。
+    @discardableResult
+    public func mutateRelationship(
+        characterID: UUID,
+        mutation: @Sendable (RelationshipSnapshot) -> RelationshipSnapshot
+    ) throws -> RelationshipSnapshot {
+        guard let entity = try fetchEntity(id: characterID) else {
+            throw RosterError.characterNotFound
+        }
+        let current = Self.relationship(from: entity)
+        let updated = mutation(current)
+        guard updated != current else { return current }
+
+        entity.relationshipJSON = updated.encodedJSON()
+        try journal(entity)
+        try modelContext.save()
+        Task { @MainActor in
+            NotificationCenter.default.post(
+                name: .rosterRelationshipDidChange,
+                object: characterID
+            )
+        }
+        return updated
+    }
+
     // MARK: - 私有
 
     private func fetchEntity(id: UUID) throws -> CharacterEntity? {
