@@ -141,7 +141,7 @@ let featureTargets: [Target] = [
     ]),
     feature("RosterFeature", dependencies: [
         module("PersistenceKit"),
-    ], resources: [.process("Shaders")]),
+    ]),
     feature("MapFeature", dependencies: [
         module("DomainKit"),
         module("PersistenceKit"),
