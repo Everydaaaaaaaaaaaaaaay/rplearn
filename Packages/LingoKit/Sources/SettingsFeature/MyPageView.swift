@@ -119,7 +119,7 @@ public struct MyPageView: View {
     private var modernTravelDesk: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
-            let sceneHeight = max(proxy.size.height, width * 1906 / 825)
+            let sceneHeight = max(proxy.size.height, width * 1905 / 825)
 
             ScrollView(.vertical) {
                 ZStack(alignment: .topLeading) {
@@ -173,7 +173,7 @@ public struct MyPageView: View {
             )
 
             ZStack {
-                Image("profile_modern_travel_desk_integrated", bundle: .main)
+                Image("profile_modern_travel_desk_floating_ui", bundle: .main)
                     .resizable()
                     .frame(width: width, height: height + pullDistance)
 
