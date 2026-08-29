@@ -6,6 +6,8 @@ public enum DSSceneGlassLegibility: Sendable, Equatable {
     case ambient
     /// Adds a translucent surface behind content so long-form text keeps one stable contrast.
     case enhanced
+    /// Uses a thicker neutral glass for large cards placed over detailed photography.
+    case shielded
 }
 
 private struct DSAdaptiveMaterialModifier<Background: Shape>: ViewModifier {
@@ -104,9 +106,9 @@ private struct DSSceneGlassModifier: ViewModifier {
         _ content: ContentView,
         in shape: Background
     ) -> some View {
-        if legibility == .enhanced {
+        if legibility != .ambient {
             content.background(
-                Color.dsSurface.opacity(enhancedSurfaceOpacity),
+                legibilitySurface.opacity(legibilitySurfaceOpacity),
                 in: shape
             )
         } else {
@@ -133,7 +135,7 @@ private struct DSSceneGlassModifier: ViewModifier {
     }
 
     private var borderColor: Color {
-        if legibility == .enhanced {
+        if legibility != .ambient {
             return Color.dsBrandInk.opacity(colorSchemeContrast == .increased ? 0.26 : 0.13)
         }
         return colorScheme == .dark
@@ -141,8 +143,15 @@ private struct DSSceneGlassModifier: ViewModifier {
             : Color.white.opacity(0.6)
     }
 
-    private var enhancedSurfaceOpacity: Double {
+    private var legibilitySurface: Color {
+        legibility == .shielded ? .dsSurfaceMuted : .dsSurface
+    }
+
+    private var legibilitySurfaceOpacity: Double {
         if colorSchemeContrast == .increased { return 0.88 }
+        if legibility == .shielded {
+            return colorScheme == .dark ? 0.6 : 0.52
+        }
         return colorScheme == .dark ? 0.5 : 0.38
     }
 }

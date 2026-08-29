@@ -48,6 +48,7 @@ public struct RosterView: View {
     private var scenePrimaryText: Color { .dsSceneTextPrimary }
     private var sceneSecondaryText: Color { .dsSceneTextSecondary }
     private var sceneTertiaryText: Color { .dsSceneTextTertiary }
+    private var sceneGlassTint: Color { Color.dsBrandInk.opacity(0.1) }
 
     private var searchResults: [CharacterDTO] {
         guard isSearching else { return [] }
@@ -63,7 +64,7 @@ public struct RosterView: View {
 
     public var body: some View {
         ZStack {
-            DSSceneBackdrop(imageName: "contacts_london_glass", tone: .warm)
+            DSSceneBackdrop(imageName: "contacts_london_glass", tone: .cool)
 
             ScrollView {
                 LazyVStack(spacing: DSSpacing.md) {
@@ -99,8 +100,8 @@ public struct RosterView: View {
                     .padding(DSSpacing.lg)
                     .dsSceneGlass(
                         radius: DSRadius.card,
-                        tint: Color.white.opacity(0.12),
-                        legibility: .enhanced
+                        tint: sceneGlassTint,
+                        legibility: .shielded
                     )
             }
         }
@@ -113,8 +114,8 @@ public struct RosterView: View {
                 .padding(DSSpacing.xl)
                 .foregroundStyle(scenePrimaryText)
                 .dsSceneGlass(
-                    tint: Color.white.opacity(0.12),
-                    legibility: .enhanced
+                    tint: sceneGlassTint,
+                    legibility: .shielded
                 )
         } else {
             contactSection(
@@ -125,8 +126,8 @@ public struct RosterView: View {
                 people: searchResults
             )
             .dsSceneGlass(
-                tint: Color.white.opacity(0.06),
-                legibility: .enhanced
+                tint: sceneGlassTint,
+                legibility: .shielded
             )
         }
     }
@@ -154,8 +155,8 @@ public struct RosterView: View {
             )
         }
         .dsSceneGlass(
-            tint: Color.white.opacity(0.06),
-            legibility: .enhanced
+            tint: sceneGlassTint,
+            legibility: .shielded
         )
     }
 
@@ -368,8 +369,8 @@ public struct RosterView: View {
         .padding(DSSpacing.xl)
         .foregroundStyle(scenePrimaryText)
         .dsSceneGlass(
-            tint: Color.white.opacity(0.12),
-            legibility: .enhanced
+            tint: sceneGlassTint,
+            legibility: .shielded
         )
     }
 
