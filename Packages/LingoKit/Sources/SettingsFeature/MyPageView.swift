@@ -115,7 +115,7 @@ public struct MyPageView: View {
         .refreshable { await reload() }
     }
 
-    /// 现代旅行者工作台：动态内容像印刷物与实物标记一样落在场景锚点上。
+    /// 现代旅行者工作台：双层功能牌以统一透视贴合场景中的真实物件。
     private var modernTravelDesk: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
@@ -126,33 +126,33 @@ public struct MyPageView: View {
                     travelDeskBackground(width: width, height: sceneHeight)
 
                     profileHotspot
-                        .frame(width: min(width * 0.45, 180), height: 150)
-                        .position(x: width * 0.22, y: sceneHeight * 0.16)
+                        .frame(width: min(width * 0.45, 180), height: 104)
+                        .position(x: width * 0.22, y: sceneHeight * 0.135)
 
                     coinHotspot
-                        .frame(width: 112, height: 90)
-                        .position(x: width * 0.82, y: sceneHeight * 0.17)
+                        .frame(width: 112, height: 76)
+                        .position(x: width * 0.82, y: sceneHeight * 0.145)
 
                     learningHotspot
-                        .frame(width: min(width * 0.35, 140), height: 164)
-                        .position(x: width * 0.515, y: sceneHeight * 0.478)
+                        .frame(width: min(width * 0.35, 140), height: 112)
+                        .position(x: width * 0.515, y: sceneHeight * 0.452)
 
                     favoritesHotspot
-                        .frame(width: 110, height: 100)
-                        .position(x: width * 0.17, y: sceneHeight * 0.535)
+                        .frame(width: 106, height: 76)
+                        .position(x: width * 0.17, y: sceneHeight * 0.51)
 
                     settingsHotspot
-                        .frame(width: 108, height: 100)
-                        .position(x: width * 0.73, y: sceneHeight * 0.65)
+                        .frame(width: 104, height: 74)
+                        .position(x: width * 0.73, y: sceneHeight * 0.625)
 
                     accountHotspot
-                        .frame(width: 124, height: 118)
-                        .position(x: width * 0.50, y: sceneHeight * 0.72)
+                        .frame(width: 112, height: 78)
+                        .position(x: width * 0.50, y: sceneHeight * 0.695)
 
                     #if DEBUG
                     memoryDebugHotspot
-                        .frame(width: 76, height: 82)
-                        .position(x: width * 0.515, y: sceneHeight * 0.11)
+                        .frame(width: 80, height: 68)
+                        .position(x: width * 0.515, y: sceneHeight * 0.085)
                     #endif
                 }
                 .frame(width: width, height: sceneHeight)
@@ -196,33 +196,28 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            SceneHologramProjection(
-                accent: .dsCyan,
-                panelSize: CGSize(width: 150, height: 70),
+            SceneLayeredControl(
+                panelSize: CGSize(width: 154, height: 70),
                 rotation: -6.5,
-                tilt: 4.5,
-                emitterOffset: -17,
-                activationDelay: 0.02
+                tilt: 3.2,
+                floatDelay: 0.05
             ) {
-                HStack(spacing: 8) {
-                    HologramAvatarBadge(name: displayName, accent: .dsCyan)
-                        .offset(y: -3)
+                HStack(spacing: 10) {
+                    MinimalSceneGlyph(kind: .profile)
+                        .frame(width: 30, height: 30)
 
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: 1) {
                         Text(displayName)
-                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                            .font(.system(size: 14, weight: .bold))
                             .lineLimit(1)
                             .minimumScaleFactor(0.78)
-                            .hologramInk(.dsCyan)
-                        Text(accountIdentifier)
-                            .font(.system(size: 8, weight: .medium, design: .monospaced))
+                        Text("\(accountIdentifier) · \(accountBadgeTitle)")
+                            .font(.system(size: 8, weight: .medium))
                             .lineLimit(1)
-                            .hologramInk(.dsCyan)
-                        Text("\(accountBadgeTitle) · \(occupiedFriendSlots) 位朋友")
-                            .font(.system(size: 8, weight: .semibold, design: .rounded))
+                        Text("\(occupiedFriendSlots) 位旅途朋友")
+                            .font(.system(size: 8, weight: .semibold))
                             .lineLimit(1)
                             .minimumScaleFactor(0.72)
-                            .hologramInk(.dsCyan)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -243,45 +238,33 @@ public struct MyPageView: View {
                 await reload()
             }
         } label: {
-            coinLabel(showsDebugAction: true)
+            coinLabel
         }
         .buttonStyle(SceneHotspotButtonStyle())
         .accessibilityHint("调试构建中轻点增加 500 金币")
         #else
-        coinLabel(showsDebugAction: false)
+        coinLabel
         #endif
     }
 
-    private func coinLabel(showsDebugAction: Bool) -> some View {
-        let accent = Color(red: 1, green: 0.66, blue: 0.20)
-
-        return SceneHologramProjection(
-            accent: accent,
-            panelSize: CGSize(width: 96, height: 52),
+    private var coinLabel: some View {
+        SceneLayeredControl(
+            panelSize: CGSize(width: 94, height: 50),
             rotation: 8,
-            tilt: 4,
-            emitterOffset: 0,
-            activationDelay: 0.06
+            tilt: 3,
+            floatDelay: 0.18
         ) {
-            HStack(spacing: 5) {
-                HologramSymbolBadge(systemName: "circle.grid.2x1.fill", accent: accent, size: 11)
-                    .offset(y: -2)
+            HStack(spacing: 7) {
+                MinimalSceneGlyph(kind: .coins)
+                    .frame(width: 24, height: 24)
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack(spacing: 3) {
-                        Text("\(profile?.coins ?? 0)")
-                            .font(.system(size: 15, weight: .bold, design: .rounded).monospacedDigit())
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.58)
-                            .layoutPriority(1)
-                        if showsDebugAction {
-                            Image(systemName: "plus")
-                                .font(.system(size: 8, weight: .bold))
-                        }
-                    }
-                    .hologramInk(accent)
+                    Text("\(profile?.coins ?? 0)")
+                        .font(.system(size: 14, weight: .bold).monospacedDigit())
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.58)
+                        .layoutPriority(1)
                     Text("金币")
-                        .font(.system(size: 8, weight: .semibold, design: .rounded))
-                        .hologramInk(accent)
+                        .font(.system(size: 8, weight: .medium))
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -292,41 +275,37 @@ public struct MyPageView: View {
 
     private var learningHotspot: some View {
         Button(action: onCalibrateLevel) {
-            SceneHologramProjection(
-                accent: .dsSky,
-                panelSize: CGSize(width: 118, height: 84),
+            SceneLayeredControl(
+                panelSize: CGSize(width: 126, height: 78),
                 rotation: 1.4,
-                tilt: 3.5,
-                emitterOffset: 0,
-                activationDelay: 0.10
+                tilt: 2.8,
+                floatDelay: 0.32
             ) {
                 VStack(spacing: 5) {
                     HStack(spacing: 6) {
-                        HologramSymbolBadge(systemName: "map.fill", accent: .dsSky, size: 11)
-                            .offset(y: -2)
+                        MinimalSceneGlyph(kind: .journey)
+                            .frame(width: 25, height: 25)
                         VStack(alignment: .leading, spacing: 0) {
                             Text("英语旅程")
-                                .font(.system(size: 11, weight: .semibold, design: .rounded))
+                                .font(.system(size: 11, weight: .bold))
                             if let score = profile?.placementScore {
                                 Text("校准 \(score) / 100")
-                                    .font(.system(size: 7, weight: .medium, design: .monospaced))
+                                    .font(.system(size: 7, weight: .medium).monospacedDigit())
                             } else {
                                 Text("轻点重新校准")
-                                    .font(.system(size: 7, weight: .medium, design: .rounded))
+                                    .font(.system(size: 7, weight: .medium))
                             }
                         }
-                        .hologramInk(.dsSky)
                     }
 
                     HStack(alignment: .center, spacing: 4) {
-                        hologramMetric(
+                        sceneMetric(
                             title: "当前",
                             value: profile?.difficultyLevel.displayName ?? "载入中"
                         )
                         Image(systemName: "arrow.right")
                             .font(.system(size: 7, weight: .bold))
-                            .hologramInk(.dsSky)
-                        hologramMetric(
+                        sceneMetric(
                             title: "目标",
                             value: profile?.learningGoal.displayName ?? "载入中"
                         )
@@ -340,29 +319,27 @@ public struct MyPageView: View {
         .accessibilityHint("重新校准英语水平")
     }
 
-    private func hologramMetric(title: String, value: String) -> some View {
+    private func sceneMetric(title: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
-                .font(.system(size: 7, weight: .medium, design: .rounded))
+                .font(.system(size: 7, weight: .medium))
             Text(value)
-                .font(.system(size: 9, weight: .semibold, design: .rounded))
+                .font(.system(size: 9, weight: .semibold))
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .hologramInk(.dsSky)
     }
 
     private var favoritesHotspot: some View {
         NavigationLink {
             favoritesBuilder()
         } label: {
-            sceneHologramMark(
+            sceneLayeredMark(
                 title: "收藏",
-                icon: "star.fill",
-                accent: Color(red: 1, green: 0.70, blue: 0.22),
+                glyph: .favorites,
                 rotation: -10.5,
-                activationDelay: 0.14
+                floatDelay: 0.46
             )
         }
         .buttonStyle(SceneHotspotButtonStyle())
@@ -383,13 +360,12 @@ public struct MyPageView: View {
                 onProactiveMessagesChanged: onProactiveMessagesChanged
             )
         } label: {
-            sceneHologramMark(
+            sceneLayeredMark(
                 title: "设置",
-                icon: "gearshape.fill",
-                accent: .dsCyan,
+                glyph: .settings,
                 rotation: 4.5,
                 compact: true,
-                activationDelay: 0.18
+                floatDelay: 0.60
             )
         }
         .buttonStyle(SceneHotspotButtonStyle())
@@ -405,12 +381,11 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            sceneHologramMark(
+            sceneLayeredMark(
                 title: isSignedIn ? "账号" : "登录",
-                icon: isSignedIn ? "person.crop.circle.fill" : "person.crop.circle.badge.plus",
-                accent: Color(red: 0.34, green: 0.78, blue: 1),
+                glyph: .account,
                 rotation: 1.8,
-                activationDelay: 0.22
+                floatDelay: 0.74
             )
         }
         .buttonStyle(SceneHotspotButtonStyle())
@@ -428,13 +403,12 @@ public struct MyPageView: View {
                 memoryService: memoryService
             )
         } label: {
-            sceneHologramMark(
+            sceneLayeredMark(
                 title: "记忆",
-                icon: "brain.head.profile.fill",
-                accent: .dsQuiz,
+                glyph: .memory,
                 rotation: 0.8,
                 compact: true,
-                activationDelay: 0.26
+                floatDelay: 0.88
             )
         }
         .buttonStyle(SceneHotspotButtonStyle())
@@ -443,43 +417,38 @@ public struct MyPageView: View {
     }
     #endif
 
-    private func sceneHologramMark(
+    private func sceneLayeredMark(
         title: String,
-        icon: String,
-        accent: Color,
+        glyph: MinimalSceneGlyph.Kind,
         rotation: Double,
         compact: Bool = false,
-        activationDelay: Double
+        floatDelay: Double
     ) -> some View {
-        SceneHologramProjection(
-            accent: accent,
+        SceneLayeredControl(
             panelSize: CGSize(
-                width: compact ? 74 : 84,
-                height: compact ? 44 : 50
+                width: compact ? 78 : 88,
+                height: compact ? 44 : 52
             ),
             rotation: rotation,
-            tilt: compact ? 3 : 4,
-            emitterOffset: 0,
-            activationDelay: activationDelay
+            tilt: compact ? 2.2 : 2.8,
+            floatDelay: floatDelay
         ) {
             HStack(spacing: compact ? 5 : 7) {
-                HologramSymbolBadge(
-                    systemName: icon,
-                    accent: accent,
-                    size: compact ? 11 : 14
-                )
-                .offset(y: -2)
+                MinimalSceneGlyph(kind: glyph)
+                    .frame(
+                        width: compact ? 21 : 25,
+                        height: compact ? 21 : 25
+                    )
 
                 Text(title)
                     .font(
                         .system(
                             size: compact ? 9 : 11,
                             weight: .semibold,
-                            design: .rounded
+                            design: .default
                         )
                     )
                     .lineLimit(1)
-                    .hologramInk(accent)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -938,310 +907,365 @@ public struct MyPageView: View {
     }
 }
 
-private struct SceneHologramProjection<Content: View>: View {
-    let accent: Color
+private struct SceneLayeredControl<Content: View>: View {
     let panelSize: CGSize
     let rotation: Double
     let tilt: Double
-    let emitterOffset: CGFloat
-    let activationDelay: Double
+    let floatDelay: Double
     @ViewBuilder let content: () -> Content
 
-    @State private var isMaterialized = false
+    @State private var isContentLifted = false
+    @Environment(\.sceneControlIsPressed) private var isPressed
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            HologramBeamShape()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            accent.opacity(0.03),
-                            accent.opacity(reduceTransparency ? 0.08 : 0.20),
-                            .white.opacity(reduceTransparency ? 0.04 : 0.13),
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
+        ZStack {
+            underPlate
+                .offset(x: 5.5, y: 7)
+
+            facePlate
+                .offset(
+                    x: isPressed && !reduceMotion ? 2.8 : 0,
+                    y: isPressed && !reduceMotion ? 3.8 : -1.5
                 )
-                .frame(width: panelSize.width * 0.72, height: 30)
-                .blur(radius: reduceTransparency ? 0 : 1.8)
-                .offset(x: emitterOffset, y: -8)
-                .accessibilityHidden(true)
-
-            hologramEmitter
-                .offset(x: emitterOffset)
-
-            hologramPanel
-                .offset(y: -25)
         }
         .frame(
-            width: max(panelSize.width + 18, 64),
-            height: panelSize.height + 44,
-            alignment: .bottom
+            width: max(panelSize.width + 14, 64),
+            height: panelSize.height + 16
         )
         .rotationEffect(.degrees(rotation))
         .rotation3DEffect(
             .degrees(tilt),
-            axis: (x: 1, y: 0.12, z: 0),
-            anchor: .bottom,
-            perspective: 0.52
+            axis: (x: 1, y: 0.08, z: 0),
+            anchor: .center,
+            perspective: 0.42
         )
-        .opacity(isMaterialized ? 1 : 0.22)
-        .scaleEffect(
-            isMaterialized || reduceMotion ? 1 : 0.96,
-            anchor: .bottom
-        )
-        .offset(y: isMaterialized || reduceMotion ? 0 : 4)
         .animation(
-            reduceMotion
-                ? .easeOut(duration: 0.16)
-                : .spring(response: 0.38, dampingFraction: 1, blendDuration: 0.08)
-                    .delay(activationDelay),
-            value: isMaterialized
+            reduceMotion ? .easeOut(duration: 0.10) : .spring(response: 0.24, dampingFraction: 0.90),
+            value: isPressed
         )
-        .onAppear { isMaterialized = true }
+        .onAppear {
+            guard !reduceMotion else { return }
+            withAnimation(
+                .easeInOut(duration: 2.8)
+                    .repeatForever(autoreverses: true)
+                    .delay(floatDelay)
+            ) {
+                isContentLifted = true
+            }
+        }
     }
 
-    private var hologramPanel: some View {
-        let shape = RoundedRectangle(cornerRadius: 11, style: .continuous)
-        let panelOpacity = reduceTransparency ? 0.88 : (contrast == .increased ? 0.72 : 0.48)
+    private var underPlate: some View {
+        let shape = ScenePanelShape(chamfer: min(panelSize.height * 0.15, 8))
 
-        return ZStack {
-            shape
-                .fill(Color.black.opacity(reduceTransparency ? 0.24 : 0.18))
-                .offset(x: 2.4, y: 3.4)
+        return shape
+            .fill(
+                LinearGradient(
+                    colors: [
+                        SceneControlPalette.graphite.opacity(reduceTransparency ? 0.98 : 0.88),
+                        SceneControlPalette.graphiteDeep.opacity(reduceTransparency ? 1 : 0.90),
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .frame(width: panelSize.width, height: panelSize.height)
+            .overlay {
+                shape.stroke(.black.opacity(0.34), lineWidth: 0.8)
+            }
+            .shadow(color: .black.opacity(0.30), radius: 5, x: 1, y: 5)
+            .accessibilityHidden(true)
+    }
 
-            shape
-                .stroke(accent.opacity(reduceTransparency ? 0.18 : 0.34), lineWidth: 0.7)
-                .offset(x: 2.4, y: 3.4)
+    private var facePlate: some View {
+        let shape = ScenePanelShape(chamfer: min(panelSize.height * 0.15, 8))
+        let faceOpacity = reduceTransparency ? 1.0 : (contrast == .increased ? 0.98 : 0.92)
 
+        return ZStack(alignment: .topLeading) {
             shape
                 .fill(
                     LinearGradient(
                         colors: [
-                            Color(red: 0.025, green: 0.08, blue: 0.14).opacity(panelOpacity),
-                            accent.opacity(reduceTransparency ? 0.22 : 0.13),
-                            Color(red: 0.05, green: 0.025, blue: 0.13).opacity(panelOpacity * 0.88),
+                            SceneControlPalette.faceTop.opacity(faceOpacity),
+                            SceneControlPalette.faceBottom.opacity(faceOpacity),
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                 )
 
-            HologramGridShape()
-                .stroke(accent.opacity(reduceTransparency ? 0.05 : 0.12), lineWidth: 0.45)
-                .clipShape(shape)
-
-            Rectangle()
-                .fill(
-                    LinearGradient(
-                        colors: [.clear, .white.opacity(0.68), accent.opacity(0.32), .clear],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .frame(height: 0.8)
-                .offset(y: -panelSize.height * 0.22)
-                .blur(radius: reduceTransparency ? 0 : 0.35)
+            Capsule()
+                .fill(SceneControlPalette.accent.opacity(contrast == .increased ? 0.90 : 0.66))
+                .frame(width: 17, height: 1.5)
+                .padding(.leading, 9)
+                .padding(.top, 7)
 
             content()
+                .foregroundStyle(SceneControlPalette.ink)
                 .padding(.horizontal, 9)
                 .padding(.vertical, 7)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .offset(y: isContentLifted && !isPressed && !reduceMotion ? -1.2 : 0)
+                .shadow(color: .white.opacity(0.38), radius: 0.5, y: -0.4)
         }
         .frame(width: panelSize.width, height: panelSize.height)
         .overlay {
             shape.stroke(
                 LinearGradient(
                     colors: [
-                        .white.opacity(0.88),
-                        accent.opacity(0.92),
-                        Color(red: 0.62, green: 0.42, blue: 1).opacity(0.74),
-                        accent.opacity(0.42),
+                        .white.opacity(0.90),
+                        SceneControlPalette.edge.opacity(0.64),
+                        SceneControlPalette.graphite.opacity(0.20),
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ),
-                lineWidth: contrast == .increased ? 1.25 : 0.85
+                lineWidth: contrast == .increased ? 1.2 : 0.75
             )
         }
-        .overlay {
-            HologramCornerShape()
-                .stroke(.white.opacity(0.72), style: StrokeStyle(lineWidth: 1.15, lineCap: .round))
-                .padding(3)
-        }
-        .background {
-            shape
-                .fill(accent.opacity(reduceTransparency ? 0.06 : 0.22))
-                .blur(radius: reduceTransparency ? 0 : 8)
-        }
-        .shadow(color: accent.opacity(reduceTransparency ? 0.12 : 0.58), radius: 9)
-        .shadow(color: Color(red: 0.49, green: 0.35, blue: 1).opacity(0.24), radius: 14)
-        .shadow(color: .black.opacity(0.38), radius: 5, x: 1.5, y: 7)
+        .shadow(color: SceneControlPalette.accent.opacity(reduceTransparency ? 0 : 0.10), radius: 4)
+        .shadow(color: .white.opacity(0.20), radius: 1.5, x: -0.5, y: -1)
+        .shadow(color: .black.opacity(0.16), radius: 2.5, x: 0.5, y: 2)
         .compositingGroup()
-    }
-
-    private var hologramEmitter: some View {
-        ZStack {
-            Ellipse()
-                .fill(.black.opacity(0.34))
-                .frame(width: panelSize.width * 0.48, height: 10)
-                .blur(radius: 3)
-                .offset(y: 2)
-
-            Ellipse()
-                .fill(accent.opacity(reduceTransparency ? 0.16 : 0.30))
-                .frame(width: panelSize.width * 0.44, height: 9)
-                .blur(radius: reduceTransparency ? 0 : 4)
-
-            Ellipse()
-                .stroke(accent.opacity(0.95), lineWidth: 1.1)
-                .frame(width: panelSize.width * 0.44, height: 9)
-                .shadow(color: accent.opacity(0.72), radius: 4)
-
-            Ellipse()
-                .stroke(.white.opacity(0.74), lineWidth: 0.6)
-                .frame(width: panelSize.width * 0.31, height: 5.5)
-        }
-        .frame(height: 15)
-        .accessibilityHidden(true)
     }
 }
 
-private struct HologramBeamShape: Shape {
+private enum SceneControlPalette {
+    static let ink = Color(red: 0.105, green: 0.125, blue: 0.135)
+    static let graphite = Color(red: 0.20, green: 0.23, blue: 0.24)
+    static let graphiteDeep = Color(red: 0.105, green: 0.125, blue: 0.13)
+    static let faceTop = Color(red: 0.965, green: 0.963, blue: 0.935)
+    static let faceBottom = Color(red: 0.845, green: 0.855, blue: 0.825)
+    static let accent = Color(red: 0.43, green: 0.52, blue: 0.50)
+    static let edge = Color(red: 0.57, green: 0.62, blue: 0.59)
+}
+
+private struct ScenePanelShape: Shape {
+    let chamfer: CGFloat
+
     func path(in rect: CGRect) -> Path {
+        let cut = min(chamfer, min(rect.width, rect.height) * 0.22)
         var path = Path()
-        path.move(to: CGPoint(x: rect.width * 0.08, y: 0))
-        path.addLine(to: CGPoint(x: rect.width * 0.92, y: 0))
-        path.addLine(to: CGPoint(x: rect.width * 0.59, y: rect.height))
-        path.addLine(to: CGPoint(x: rect.width * 0.41, y: rect.height))
+        path.move(to: CGPoint(x: rect.minX + cut, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - cut, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY + cut))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - cut * 0.55))
+        path.addLine(to: CGPoint(x: rect.maxX - cut * 0.55, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX + cut, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY - cut))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + cut * 0.55))
         path.closeSubpath()
         return path
     }
 }
 
-private struct HologramGridShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let horizontalFractions: [CGFloat] = [0.25, 0.5, 0.75]
-        for fraction in horizontalFractions {
-            path.move(to: CGPoint(x: 0, y: rect.height * fraction))
-            path.addLine(to: CGPoint(x: rect.width, y: rect.height * fraction))
-        }
-        let verticalFractions: [CGFloat] = [0.33, 0.66]
-        for fraction in verticalFractions {
-            path.move(to: CGPoint(x: rect.width * fraction, y: 0))
-            path.addLine(to: CGPoint(x: rect.width * fraction, y: rect.height))
-        }
-        return path
+private struct SceneControlPressedKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+private extension EnvironmentValues {
+    var sceneControlIsPressed: Bool {
+        get { self[SceneControlPressedKey.self] }
+        set { self[SceneControlPressedKey.self] = newValue }
     }
 }
 
-private struct HologramCornerShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        let length = min(rect.width, rect.height) * 0.16
-        var path = Path()
-
-        path.move(to: CGPoint(x: 0, y: length))
-        path.addLine(to: .zero)
-        path.addLine(to: CGPoint(x: length, y: 0))
-
-        path.move(to: CGPoint(x: rect.maxX - length, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: length))
-
-        path.move(to: CGPoint(x: rect.maxX, y: rect.maxY - length))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.maxX - length, y: rect.maxY))
-
-        path.move(to: CGPoint(x: length, y: rect.maxY))
-        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
-        path.addLine(to: CGPoint(x: 0, y: rect.maxY - length))
-        return path
+private struct MinimalSceneGlyph: View {
+    enum Kind {
+        case profile
+        case coins
+        case journey
+        case favorites
+        case settings
+        case account
+        case memory
     }
-}
 
-private extension View {
-    func hologramInk(_ accent: Color) -> some View {
-        modifier(HologramInkModifier(accent: accent))
-    }
-}
-
-private struct HologramInkModifier: ViewModifier {
-    let accent: Color
-
-    func body(content: Content) -> some View {
-        ZStack {
-            content
-                .foregroundStyle(accent.opacity(0.94))
-                .blur(radius: 4.5)
-            content
-                .foregroundStyle(Color(red: 0.66, green: 0.45, blue: 1).opacity(0.72))
-                .offset(x: 0.8, y: 0.5)
-                .blur(radius: 0.45)
-            content
-                .foregroundStyle(.white.opacity(0.97))
-        }
-        .compositingGroup()
-    }
-}
-
-private struct HologramSymbolBadge: View {
-    let systemName: String
-    let accent: Color
-    var size: CGFloat = 17
+    let kind: Kind
 
     var body: some View {
-        ZStack {
-            Circle()
-                .fill(Color.black.opacity(0.34))
-            Circle()
-                .stroke(
-                    AngularGradient(
-                        colors: [.white, accent, Color(red: 0.64, green: 0.42, blue: 1), accent],
-                        center: .center
-                    ),
-                    lineWidth: 0.8
+        Canvas { context, size in
+            let side = min(size.width, size.height)
+            let origin = CGPoint(x: (size.width - side) / 2, y: (size.height - side) / 2)
+            let stroke = StrokeStyle(
+                lineWidth: max(side * 0.065, 1.15),
+                lineCap: .square,
+                lineJoin: .miter
+            )
+
+            func point(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+                CGPoint(x: origin.x + side * x, y: origin.y + side * y)
+            }
+
+            func rect(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+                CGRect(
+                    x: origin.x + side * x,
+                    y: origin.y + side * y,
+                    width: side * width,
+                    height: side * height
                 )
-            Circle()
-                .stroke(accent.opacity(0.48), lineWidth: 3)
-                .blur(radius: 4)
-            Image(systemName: systemName)
-                .font(.system(size: size, weight: .semibold))
-                .symbolRenderingMode(.monochrome)
-                .hologramInk(accent)
+            }
+
+            func drawStroke(_ path: Path) {
+                context.stroke(path, with: .color(SceneControlPalette.ink), style: stroke)
+            }
+
+            func drawFill(_ path: Path) {
+                context.fill(path, with: .color(SceneControlPalette.ink))
+            }
+
+            switch kind {
+            case .profile:
+                var head = Path()
+                head.addEllipse(in: rect(0.38, 0.16, 0.24, 0.24))
+                drawFill(head)
+
+                var shoulders = Path()
+                shoulders.move(to: point(0.20, 0.79))
+                shoulders.addCurve(
+                    to: point(0.80, 0.79),
+                    control1: point(0.25, 0.50),
+                    control2: point(0.75, 0.50)
+                )
+                shoulders.addLine(to: point(0.80, 0.86))
+                shoulders.addLine(to: point(0.20, 0.86))
+                shoulders.closeSubpath()
+                drawFill(shoulders)
+
+            case .coins:
+                var top = Path()
+                top.addEllipse(in: rect(0.17, 0.18, 0.66, 0.26))
+                drawStroke(top)
+
+                var body = Path()
+                body.move(to: point(0.17, 0.31))
+                body.addLine(to: point(0.17, 0.66))
+                body.addCurve(
+                    to: point(0.83, 0.66),
+                    control1: point(0.23, 0.86),
+                    control2: point(0.77, 0.86)
+                )
+                body.addLine(to: point(0.83, 0.31))
+                body.move(to: point(0.17, 0.48))
+                body.addCurve(
+                    to: point(0.83, 0.48),
+                    control1: point(0.27, 0.66),
+                    control2: point(0.73, 0.66)
+                )
+                drawStroke(body)
+
+            case .journey:
+                var map = Path()
+                map.move(to: point(0.12, 0.24))
+                map.addLine(to: point(0.38, 0.14))
+                map.addLine(to: point(0.62, 0.24))
+                map.addLine(to: point(0.88, 0.14))
+                map.addLine(to: point(0.88, 0.76))
+                map.addLine(to: point(0.62, 0.86))
+                map.addLine(to: point(0.38, 0.76))
+                map.addLine(to: point(0.12, 0.86))
+                map.closeSubpath()
+                map.move(to: point(0.38, 0.14))
+                map.addLine(to: point(0.38, 0.76))
+                map.move(to: point(0.62, 0.24))
+                map.addLine(to: point(0.62, 0.86))
+                drawStroke(map)
+
+                var route = Path()
+                route.move(to: point(0.21, 0.62))
+                route.addCurve(
+                    to: point(0.77, 0.43),
+                    control1: point(0.40, 0.38),
+                    control2: point(0.56, 0.70)
+                )
+                drawStroke(route)
+
+            case .favorites:
+                var star = Path()
+                star.move(to: point(0.50, 0.10))
+                star.addLine(to: point(0.60, 0.40))
+                star.addLine(to: point(0.90, 0.50))
+                star.addLine(to: point(0.60, 0.60))
+                star.addLine(to: point(0.50, 0.90))
+                star.addLine(to: point(0.40, 0.60))
+                star.addLine(to: point(0.10, 0.50))
+                star.addLine(to: point(0.40, 0.40))
+                star.closeSubpath()
+                drawFill(star)
+
+            case .settings:
+                let rows: [(CGFloat, CGFloat)] = [(0.28, 0.64), (0.50, 0.36), (0.72, 0.70)]
+                for (y, knobX) in rows {
+                    var line = Path()
+                    line.move(to: point(0.14, y))
+                    line.addLine(to: point(0.86, y))
+                    drawStroke(line)
+
+                    var knob = Path()
+                    knob.addRect(rect(knobX - 0.07, y - 0.07, 0.14, 0.14))
+                    drawFill(knob)
+                }
+
+            case .account:
+                var card = Path()
+                card.addRoundedRect(
+                    in: rect(0.10, 0.20, 0.80, 0.60),
+                    cornerSize: CGSize(width: side * 0.05, height: side * 0.05)
+                )
+                drawStroke(card)
+
+                var head = Path()
+                head.addEllipse(in: rect(0.22, 0.33, 0.18, 0.18))
+                drawFill(head)
+
+                var bust = Path()
+                bust.move(to: point(0.17, 0.68))
+                bust.addCurve(
+                    to: point(0.45, 0.68),
+                    control1: point(0.21, 0.50),
+                    control2: point(0.41, 0.50)
+                )
+                bust.closeSubpath()
+                drawFill(bust)
+
+                var details = Path()
+                details.move(to: point(0.54, 0.39))
+                details.addLine(to: point(0.78, 0.39))
+                details.move(to: point(0.54, 0.57))
+                details.addLine(to: point(0.72, 0.57))
+                drawStroke(details)
+
+            case .memory:
+                let nodes = [
+                    point(0.23, 0.28), point(0.70, 0.20),
+                    point(0.80, 0.67), point(0.34, 0.77), point(0.50, 0.48),
+                ]
+                var links = Path()
+                for node in nodes.dropLast() {
+                    links.move(to: node)
+                    links.addLine(to: nodes[4])
+                }
+                drawStroke(links)
+
+                for (index, node) in nodes.enumerated() {
+                    let radius = side * (index == 4 ? 0.095 : 0.075)
+                    var square = Path()
+                    square.addRect(
+                        CGRect(
+                            x: node.x - radius,
+                            y: node.y - radius,
+                            width: radius * 2,
+                            height: radius * 2
+                        )
+                    )
+                    drawFill(square)
+                }
+            }
         }
-        .frame(width: size + 17, height: size + 17)
-        .shadow(color: accent.opacity(0.58), radius: 6, y: 1)
-    }
-}
-
-private struct HologramAvatarBadge: View {
-    let name: String
-    let accent: Color
-
-    private var initial: String {
-        String(name.trimmingCharacters(in: .whitespacesAndNewlines).prefix(1)).uppercased()
-    }
-
-    var body: some View {
-        ZStack {
-            Circle()
-                .fill(Color.black.opacity(0.30))
-            Circle()
-                .stroke(accent.opacity(0.96), lineWidth: 1)
-            Circle()
-                .stroke(.white.opacity(0.62), style: StrokeStyle(lineWidth: 0.55, dash: [2, 2]))
-                .padding(4)
-            Text(initial)
-                .font(.system(size: 19, weight: .bold, design: .rounded))
-                .hologramInk(accent)
-        }
-        .frame(width: 39, height: 39)
-        .background(Circle().fill(accent.opacity(0.22)).blur(radius: 7))
-        .shadow(color: accent.opacity(0.66), radius: 7)
+        .accessibilityHidden(true)
     }
 }
 
@@ -1250,14 +1274,14 @@ private struct SceneHotspotButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.965 : 1, anchor: .bottom)
-            .offset(y: configuration.isPressed && !reduceMotion ? 3 : 0)
-            .opacity(configuration.isPressed ? 0.78 : 1)
-            .brightness(configuration.isPressed ? -0.055 : 0)
+            .environment(\.sceneControlIsPressed, configuration.isPressed)
+            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.985 : 1)
+            .opacity(configuration.isPressed ? 0.90 : 1)
+            .brightness(configuration.isPressed ? -0.025 : 0)
             .animation(
                 reduceMotion
                     ? .easeOut(duration: 0.08)
-                    : .snappy(duration: 0.16, extraBounce: 0),
+                    : .spring(response: 0.24, dampingFraction: 0.90),
                 value: configuration.isPressed
             )
             .contentShape(Rectangle())
