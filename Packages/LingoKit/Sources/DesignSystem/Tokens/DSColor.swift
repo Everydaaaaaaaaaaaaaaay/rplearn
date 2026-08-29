@@ -84,6 +84,19 @@ public extension Color {
         light: UIColor(red: 0.855, green: 0.882, blue: 0.902, alpha: 1),
         dark: UIColor.white.withAlphaComponent(0.1)
     )
+    /// 摄影场景玻璃上的固定文字色。保持不透明，避免原生 vibrancy 按字符改变明暗。
+    static let dsSceneTextPrimary = Color(
+        light: UIColor(red: 0.035, green: 0.102, blue: 0.165, alpha: 1),
+        dark: UIColor(red: 0.925, green: 0.961, blue: 0.988, alpha: 1)
+    )
+    static let dsSceneTextSecondary = Color(
+        light: UIColor(red: 0.122, green: 0.188, blue: 0.259, alpha: 1),
+        dark: UIColor(red: 0.757, green: 0.824, blue: 0.882, alpha: 1)
+    )
+    static let dsSceneTextTertiary = Color(
+        light: UIColor(red: 0.216, green: 0.286, blue: 0.357, alpha: 1),
+        dark: UIColor(red: 0.631, green: 0.714, blue: 0.788, alpha: 1)
+    )
 }
 
 public enum DSUIColor {

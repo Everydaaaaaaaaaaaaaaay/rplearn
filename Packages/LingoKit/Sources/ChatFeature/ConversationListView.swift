@@ -51,7 +51,11 @@ public struct ConversationListView: View {
                     if visibleRows.isEmpty {
                         ContentUnavailableView.search(text: searchText)
                             .padding(DSSpacing.xl)
-                            .dsSceneGlass(tint: Color.white.opacity(0.12))
+                            .foregroundStyle(Color.dsSceneTextPrimary)
+                            .dsSceneGlass(
+                                tint: Color.white.opacity(0.06),
+                                legibility: .enhanced
+                            )
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                     } else {
@@ -73,12 +77,9 @@ public struct ConversationListView: View {
                                 rowLabel(row)
                                     .padding(DSSpacing.md)
                                     .dsSceneGlass(
-                                        tint: row.summary.map {
-                                            ConversationReadState.isPinned($0.conversationID)
-                                        } == true
-                                            ? Color.dsSky.opacity(0.18)
-                                            : Color.white.opacity(0.1),
-                                        interactive: true
+                                        tint: Color.white.opacity(0.06),
+                                        interactive: true,
+                                        legibility: .enhanced
                                     )
                             }
                             .listRowInsets(
@@ -154,8 +155,13 @@ public struct ConversationListView: View {
         .overlay {
             if isLoading {
                 ProgressView()
+                    .tint(Color.dsSceneTextPrimary)
                     .padding(DSSpacing.lg)
-                    .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.12))
+                    .dsSceneGlass(
+                        radius: DSRadius.card,
+                        tint: Color.white.opacity(0.06),
+                        legibility: .enhanced
+                    )
             }
         }
     }
@@ -168,6 +174,7 @@ public struct ConversationListView: View {
         return HStack(spacing: DSSpacing.sm) {
             ZStack(alignment: .topTrailing) {
                 AvatarBadge(name: row.character.card.name, size: 54)
+                    .accessibilityHidden(true)
                 if unread {
                     Text(unreadCount > 99 ? "99+" : "\(unreadCount)")
                         .font(.caption2.weight(.black))
@@ -178,14 +185,15 @@ public struct ConversationListView: View {
                         .background(Color.dsDanger, in: Capsule())
                         .overlay { Capsule().stroke(Color.dsSurface, lineWidth: 2) }
                         .offset(x: 5, y: -4)
+                        .accessibilityLabel("\(unreadCount) 条未读")
                 }
             }
 
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 6) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(row.character.card.name)
-                        .font(.headline)
-                        .foregroundStyle(.primary)
+                        .font(.footnote.weight(.bold))
+                        .foregroundStyle(Color.dsSceneTextPrimary)
                         .lineLimit(1)
 
                     if row.character.isMainCharacter {
@@ -206,16 +214,16 @@ public struct ConversationListView: View {
 
                     if let summary = row.summary {
                         Text(smartTime(summary.lastMessageAt))
-                            .font(.caption2.monospacedDigit())
-                            .foregroundStyle(.secondary)
+                            .font(.caption.monospacedDigit())
+                            .foregroundStyle(Color.dsSceneTextTertiary)
                     }
                 }
 
                 Text(row.summary.map(summaryText) ?? "打个招呼吧 👋")
-                    .font(.subheadline)
-                    .foregroundStyle(unread ? .primary : .secondary)
-                    .fontWeight(unread ? .semibold : .regular)
+                    .font(.body.weight(.regular))
+                    .foregroundStyle(Color.dsSceneTextTertiary)
                     .lineLimit(1)
+                    .truncationMode(.tail)
             }
         }
         .padding(.vertical, DSSpacing.xs)
@@ -236,15 +244,19 @@ public struct ConversationListView: View {
             VStack(spacing: DSSpacing.xs) {
                 Text("通讯录还在等第一位旅伴")
                     .font(.system(.title3, design: .rounded, weight: .bold))
+                    .foregroundStyle(Color.dsSceneTextPrimary)
                 Text("完成开场剧情后，你认识的伙伴和消息会出现在这里")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
                     .multilineTextAlignment(.center)
             }
         }
         .padding(DSSpacing.xl)
         .frame(maxWidth: 340)
-        .dsSceneGlass(tint: Color.white.opacity(0.12))
+        .dsSceneGlass(
+            tint: Color.white.opacity(0.06),
+            legibility: .enhanced
+        )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(DSSpacing.xl)
     }
@@ -267,15 +279,7 @@ public struct ConversationListView: View {
     }
 
     private func smartTime(_ date: Date) -> String {
-        let calendar = Calendar.current
-        if calendar.isDateInToday(date) {
-            return date.formatted(date: .omitted, time: .shortened)
-        }
-        if calendar.isDateInYesterday(date) { return "昨天" }
-        if let days = calendar.dateComponents([.day], from: date, to: .now).day, days < 7 {
-            return date.formatted(.dateTime.weekday(.wide))
-        }
-        return date.formatted(.dateTime.month().day())
+        ConversationTimestampFormatter.string(for: date)
     }
 
     private func reload() async {
@@ -298,5 +302,28 @@ public struct ConversationListView: View {
                 assistantMessageDates: summary.assistantMessageDates
             )
         }
+    }
+}
+
+enum ConversationTimestampFormatter {
+    static func string(
+        for date: Date,
+        relativeTo now: Date = .now,
+        calendar: Calendar = .current
+    ) -> String {
+        if abs(now.timeIntervalSince(date)) <= 60 {
+            return "刚刚"
+        }
+
+        if calendar.isDate(date, inSameDayAs: now) {
+            return date.formatted(date: .omitted, time: .shortened)
+        }
+
+        if let yesterday = calendar.date(byAdding: .day, value: -1, to: now),
+           calendar.isDate(date, inSameDayAs: yesterday) {
+            return "昨天"
+        }
+
+        return date.formatted(.dateTime.month().day())
     }
 }

@@ -13,6 +13,12 @@ public struct RosterDependencies: Sendable {
 }
 
 public struct RosterView: View {
+    private enum ContactSection: Hashable, CaseIterable {
+        case partners
+        case friends
+        case search
+    }
+
     private let deps: RosterDependencies
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
 
@@ -22,6 +28,8 @@ public struct RosterView: View {
     @State private var isLoading = true
     @State private var searchText = ""
     @State private var isSearchPresented = false
+    @State private var expandedSections = Set(ContactSection.allCases)
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         deps: RosterDependencies,
@@ -37,6 +45,9 @@ public struct RosterView: View {
     private var isSearching: Bool {
         !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
+    private var scenePrimaryText: Color { .dsSceneTextPrimary }
+    private var sceneSecondaryText: Color { .dsSceneTextSecondary }
+    private var sceneTertiaryText: Color { .dsSceneTextTertiary }
 
     private var searchResults: [CharacterDTO] {
         guard isSearching else { return [] }
@@ -61,21 +72,7 @@ public struct RosterView: View {
                     } else if friends.isEmpty && !isLoading {
                         emptyState
                     } else {
-                        contactSection(
-                            title: "特别关心",
-                            icon: "star.fill",
-                            tint: .dsSunset,
-                            people: partners,
-                            emptyDescription: "剧情旅伴会显示在这里"
-                        )
-                        contactSection(
-                            title: "朋友",
-                            icon: "person.2.fill",
-                            tint: .dsSkyDeep,
-                            people: encounters,
-                            emptyDescription: "旅行中认识的新朋友会显示在这里"
-                        )
-                        capacityNote
+                        contactGroupsCard
                     }
                 }
                 .padding(.horizontal, DSSpacing.md)
@@ -98,8 +95,13 @@ public struct RosterView: View {
         .overlay {
             if isLoading {
                 ProgressView()
+                    .tint(scenePrimaryText)
                     .padding(DSSpacing.lg)
-                    .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.12))
+                    .dsSceneGlass(
+                        radius: DSRadius.card,
+                        tint: Color.white.opacity(0.12),
+                        legibility: .enhanced
+                    )
             }
         }
     }
@@ -109,64 +111,213 @@ public struct RosterView: View {
         if searchResults.isEmpty {
             ContentUnavailableView.search(text: searchText)
                 .padding(DSSpacing.xl)
-                .dsSceneGlass(tint: Color.white.opacity(0.12))
+                .foregroundStyle(scenePrimaryText)
+                .dsSceneGlass(
+                    tint: Color.white.opacity(0.12),
+                    legibility: .enhanced
+                )
         } else {
             contactSection(
+                section: .search,
                 title: "搜索结果",
                 icon: "magnifyingglass",
                 tint: .dsSkyDeep,
-                people: searchResults,
-                emptyDescription: ""
+                people: searchResults
+            )
+            .dsSceneGlass(
+                tint: Color.white.opacity(0.06),
+                legibility: .enhanced
             )
         }
     }
 
+    private var contactGroupsCard: some View {
+        VStack(spacing: 0) {
+            contactSection(
+                section: .partners,
+                title: "特别关心",
+                icon: "star.fill",
+                tint: .dsSunset,
+                people: partners
+            )
+
+            Divider()
+                .overlay(scenePrimaryText.opacity(0.14))
+                .padding(.horizontal, DSSpacing.md)
+
+            contactSection(
+                section: .friends,
+                title: "朋友",
+                icon: "person.2.fill",
+                tint: .dsSkyDeep,
+                people: encounters
+            )
+        }
+        .dsSceneGlass(
+            tint: Color.white.opacity(0.06),
+            legibility: .enhanced
+        )
+    }
+
     private func contactSection(
+        section: ContactSection,
         title: String,
         icon: String,
         tint: Color,
-        people: [CharacterDTO],
-        emptyDescription: String
+        people: [CharacterDTO]
     ) -> some View {
-        VStack(spacing: 0) {
-            HStack(spacing: DSSpacing.xs) {
-                Image(systemName: icon)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(tint)
-                Text(title)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                Spacer()
-                Text("\(people.count)")
-                    .font(.caption.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(tint.opacity(0.12), in: Capsule())
-            }
-            .padding(.horizontal, DSSpacing.md)
-            .frame(minHeight: 48)
+        let isExpanded = expandedSections.contains(section)
 
-            Divider()
-                .padding(.leading, DSSpacing.md)
+        return VStack(spacing: 0) {
+            sectionHeader(
+                section: section,
+                title: title,
+                icon: icon,
+                tint: tint,
+                peopleCount: people.count,
+                isExpanded: isExpanded
+            )
 
-            if people.isEmpty {
-                Text(emptyDescription)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(DSSpacing.md)
-            } else {
-                ForEach(Array(people.enumerated()), id: \.element.id) { index, character in
-                    friendLink(character)
-                    if index < people.count - 1 {
-                        Divider()
-                            .padding(.leading, DSSpacing.md + 46 + DSSpacing.sm)
+            if isExpanded, !people.isEmpty {
+                VStack(spacing: 0) {
+                    Divider()
+                        .overlay(scenePrimaryText.opacity(0.1))
+                        .padding(.leading, DSSpacing.md)
+
+                    ForEach(Array(people.enumerated()), id: \.element.id) { index, character in
+                        friendLink(character)
+                        if index < people.count - 1 {
+                            Divider()
+                                .overlay(scenePrimaryText.opacity(0.08))
+                                .padding(.leading, DSSpacing.md + 56 + DSSpacing.sm)
+                        }
                     }
                 }
+                .transition(sectionTransition)
             }
         }
-        .dsSceneGlass(tint: tint.opacity(0.08))
+    }
+
+    @ViewBuilder
+    private func sectionHeader(
+        section: ContactSection,
+        title: String,
+        icon: String,
+        tint: Color,
+        peopleCount: Int,
+        isExpanded: Bool
+    ) -> some View {
+        if peopleCount > 0 {
+            Button {
+                toggle(section)
+            } label: {
+                sectionHeaderLabel(
+                    section: section,
+                    title: title,
+                    icon: icon,
+                    tint: tint,
+                    peopleCount: peopleCount,
+                    isExpanded: isExpanded,
+                    showsDisclosure: true
+                )
+            }
+            .buttonStyle(RosterSectionHeaderButtonStyle())
+            .accessibilityLabel(
+                sectionAccessibilityLabel(section, title: title, peopleCount: peopleCount)
+            )
+            .accessibilityValue(isExpanded ? "已展开" : "已折叠")
+            .accessibilityHint(isExpanded ? "双击折叠分组" : "双击展开分组")
+        } else {
+            sectionHeaderLabel(
+                section: section,
+                title: title,
+                icon: icon,
+                tint: tint,
+                peopleCount: peopleCount,
+                isExpanded: false,
+                showsDisclosure: false
+            )
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(
+                sectionAccessibilityLabel(section, title: title, peopleCount: peopleCount)
+            )
+        }
+    }
+
+    private func sectionHeaderLabel(
+        section: ContactSection,
+        title: String,
+        icon: String,
+        tint: Color,
+        peopleCount: Int,
+        isExpanded: Bool,
+        showsDisclosure: Bool
+    ) -> some View {
+        HStack(spacing: DSSpacing.sm) {
+            Image(systemName: icon)
+                .font(.title3.weight(.bold))
+                .foregroundStyle(tint)
+                .frame(width: 28)
+
+            Text(title)
+                .font(.title3.weight(.bold))
+                .foregroundStyle(scenePrimaryText)
+                .lineLimit(1)
+
+            if section == .friends {
+                Text("好友位 \(occupiedSlots)/\(slotLimit)")
+                    .font(.subheadline.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(sceneSecondaryText)
+                    .lineLimit(1)
+                    .accessibilityHidden(true)
+            } else {
+                Text("\(peopleCount)")
+                    .font(.subheadline.weight(.bold).monospacedDigit())
+                    .foregroundStyle(sceneSecondaryText)
+            }
+
+            Spacer(minLength: DSSpacing.xs)
+
+            if showsDisclosure {
+                Image(systemName: "chevron.down")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(sceneTertiaryText)
+                    .rotationEffect(.degrees(isExpanded ? 0 : -90))
+            }
+        }
+        .padding(.horizontal, DSSpacing.md)
+        .frame(minHeight: 62)
+        .contentShape(Rectangle())
+    }
+
+    private func sectionAccessibilityLabel(
+        _ section: ContactSection,
+        title: String,
+        peopleCount: Int
+    ) -> String {
+        guard section == .friends else {
+            return "\(title)，\(peopleCount) 位联系人"
+        }
+        return "朋友，\(peopleCount) 位联系人。好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个。剧情旅伴不占好友位"
+    }
+
+    private func toggle(_ section: ContactSection) {
+        let animation: Animation? = reduceMotion
+            ? nil
+            : .spring(response: 0.34, dampingFraction: 1)
+        withAnimation(animation) {
+            if expandedSections.contains(section) {
+                expandedSections.remove(section)
+            } else {
+                expandedSections.insert(section)
+            }
+        }
+    }
+
+    private var sectionTransition: AnyTransition {
+        reduceMotion
+            ? .opacity
+            : .opacity.combined(with: .move(edge: .top))
     }
 
     private func friendLink(_ character: CharacterDTO) -> some View {
@@ -174,30 +325,31 @@ public struct RosterView: View {
             CharacterProfileView(character: character, chatBuilder: chatBuilder)
         } label: {
             HStack(spacing: DSSpacing.sm) {
-                AvatarBadge(name: character.card.name, size: 46)
+                AvatarBadge(name: character.card.name, size: 56)
+                    .accessibilityHidden(true)
 
-                VStack(alignment: .leading, spacing: 3) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(character.card.name)
-                        .font(.body.weight(.medium))
-                        .foregroundStyle(.primary)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(scenePrimaryText)
                         .lineLimit(1)
+                        .layoutPriority(1)
                     Text(friendStatus(character))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(.footnote.weight(.medium))
+                        .foregroundStyle(sceneSecondaryText)
                         .lineLimit(1)
+                        .truncationMode(.tail)
                 }
 
-                Spacer(minLength: DSSpacing.xs)
-
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
+                Spacer(minLength: 0)
             }
             .padding(.horizontal, DSSpacing.md)
             .padding(.vertical, DSSpacing.sm)
             .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(RosterContactRowButtonStyle())
+        .accessibilityLabel("\(character.card.name)，\(friendStatus(character))")
+        .accessibilityHint("打开联系人详情")
     }
 
     private func friendStatus(_ character: CharacterDTO) -> String {
@@ -207,21 +359,6 @@ public struct RosterView: View {
         return "\(character.card.nationality) · \(character.card.occupation)"
     }
 
-    private var capacityNote: some View {
-        HStack(spacing: DSSpacing.xs) {
-            Image(systemName: "person.2")
-            Text("好友位 \(occupiedSlots)/\(slotLimit)")
-                .monospacedDigit()
-            Text("·")
-            Text("剧情旅伴不占好友位")
-        }
-        .font(.caption)
-        .foregroundStyle(.secondary)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(DSSpacing.md)
-        .dsSceneGlass(radius: DSRadius.card, tint: Color.white.opacity(0.1))
-    }
-
     private var emptyState: some View {
         ContentUnavailableView(
             "还没有好友",
@@ -229,7 +366,11 @@ public struct RosterView: View {
             description: Text("继续旅行，认识的伙伴会出现在这里")
         )
         .padding(DSSpacing.xl)
-        .dsSceneGlass(tint: Color.white.opacity(0.12))
+        .foregroundStyle(scenePrimaryText)
+        .dsSceneGlass(
+            tint: Color.white.opacity(0.12),
+            legibility: .enhanced
+        )
     }
 
     private func reload() async {
@@ -240,6 +381,25 @@ public struct RosterView: View {
         profile = await loadedProfile
         occupiedSlots = await loadedSlots ?? 0
         isLoading = false
+    }
+}
+
+private struct RosterSectionHeaderButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.68 : 1)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+    }
+}
+
+private struct RosterContactRowButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(
+                Color.dsSceneTextPrimary.opacity(configuration.isPressed ? 0.06 : 0)
+            )
+            .opacity(configuration.isPressed ? 0.82 : 1)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
     }
 }
 
