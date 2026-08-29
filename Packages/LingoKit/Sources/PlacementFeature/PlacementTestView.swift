@@ -70,34 +70,32 @@ public struct PlacementTestView: View {
         ZStack {
             PlacementCanvasBackground()
 
-            VStack(spacing: 0) {
-                header
-                Group {
-                    switch phase {
-                    case .loading:
-                        loadingView
-                    case .introduction:
-                        introductionView
-                    case .levelSelection:
-                        DifficultyLevelSelectionPage(
-                            selection: $selectedLevel,
-                            currentLevel: currentLevel,
-                            recommendedLevel: levelSelectionReturnPhase == .result
-                                ? result?.difficultyLevel
-                                : nil,
-                            onDone: closeLevelSelection
-                        )
-                    case .question:
-                        questionView
-                    case .result:
-                        resultView
-                    case .failure:
-                        failureView
-                    }
+            Group {
+                switch phase {
+                case .loading:
+                    loadingView
+                case .introduction:
+                    introductionView
+                case .levelSelection:
+                    DifficultyLevelSelectionPage(
+                        selection: $selectedLevel,
+                        currentLevel: currentLevel,
+                        recommendedLevel: levelSelectionReturnPhase == .result
+                            ? result?.difficultyLevel
+                            : nil,
+                        onDone: closeLevelSelection
+                    )
+                case .question:
+                    questionView
+                case .result:
+                    resultView
+                case .failure:
+                    failureView
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .placementTopBar { header }
         .task { await prepareIfNeeded() }
         .onDisappear {
             Task { await deps.speech.stopSpeaking() }
@@ -663,8 +661,16 @@ public struct PlacementTestView: View {
                 questionBankError = "测试题库暂时无法载入，你仍可直接选择并应用水平。"
             }
             errorMessage = nil
+            #if DEBUG
+            let initialPhase: Phase =
+                ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_LEVEL_SELECTION"] == "1"
+                    ? .levelSelection
+                    : .introduction
+            #else
+            let initialPhase: Phase = .introduction
+            #endif
             withAnimation(reduceMotion ? nil : .snappy) {
-                phase = .introduction
+                phase = initialPhase
             }
         } catch {
             errorMessage = "学习档案暂时无法载入，请稍后再试。"
@@ -789,28 +795,27 @@ private struct DifficultyLevelSelectionPage: View {
     ]
 
     var body: some View {
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: DSSpacing.lg) {
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("选择适合你的对话难度")
-                            .font(.system(.title2, design: .rounded, weight: .bold))
-                        Text("这是应用内的学习设置，不会请求通知或其他系统权限。测试建议仅供参考，之后仍可修改。")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-
-                    ForEach(groups, id: \.0) { title, levels in
-                        levelGroup(title: title, levels: levels)
-                    }
+        ScrollView {
+            VStack(alignment: .leading, spacing: DSSpacing.lg) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("选择适合你的对话难度")
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                    Text("这是应用内的学习设置，不会请求通知或其他系统权限。测试建议仅供参考，之后仍可修改。")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                .frame(maxWidth: 560)
-                .padding(DSSpacing.lg)
-                .frame(maxWidth: .infinity)
-            }
-            .placementScrollEdgeBlend()
 
+                ForEach(groups, id: \.0) { title, levels in
+                    levelGroup(title: title, levels: levels)
+                }
+            }
+            .frame(maxWidth: 560)
+            .padding(DSSpacing.lg)
+            .frame(maxWidth: .infinity)
+        }
+        .placementScrollEdgeBlend()
+        .placementBottomBar {
             VStack(spacing: 4) {
                 Text("已选择：\(selection.displayName)")
                     .font(.caption)
@@ -820,6 +825,7 @@ private struct DifficultyLevelSelectionPage: View {
             }
             .padding(.horizontal, DSSpacing.lg)
             .padding(.vertical, DSSpacing.sm)
+            .frame(maxWidth: .infinity)
         }
     }
 
@@ -920,6 +926,34 @@ private struct PlacementCanvasBackground: View {
 }
 
 private extension View {
+    @ViewBuilder
+    func placementTopBar<Bar: View>(
+        @ViewBuilder content: () -> Bar
+    ) -> some View {
+        if #available(iOS 26.0, *) {
+            safeAreaBar(edge: .top, spacing: 0, content: content)
+        } else {
+            VStack(spacing: 0) {
+                content()
+                self
+            }
+        }
+    }
+
+    @ViewBuilder
+    func placementBottomBar<Bar: View>(
+        @ViewBuilder content: () -> Bar
+    ) -> some View {
+        if #available(iOS 26.0, *) {
+            safeAreaBar(edge: .bottom, spacing: 0, content: content)
+        } else {
+            VStack(spacing: 0) {
+                self
+                content()
+            }
+        }
+    }
+
     @ViewBuilder
     func placementScrollEdgeBlend() -> some View {
         if #available(iOS 26.0, *) {

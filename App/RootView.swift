@@ -79,7 +79,9 @@ struct RootView: View {
         }
         #endif
         #if DEBUG
-        if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT"] == "1" {
+        if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT"] == "1"
+            || ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_LEVEL_SELECTION"] == "1"
+        {
             _showPlacementTest = State(initialValue: true)
         }
         #endif
