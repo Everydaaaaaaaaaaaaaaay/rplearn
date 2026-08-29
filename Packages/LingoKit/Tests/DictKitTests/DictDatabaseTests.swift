@@ -308,14 +308,37 @@ struct DictDatabaseTests {
         #expect(phrases.map { $0.word.lowercased() }.contains("break from"))
     }
 
-    @Test("相关短语返回以目标词开头的本地词条")
-    func relatedPhrasesUseWordPrefix() async throws {
+    @Test("相关短语只保留教材型固定搭配并限制数量")
+    func relatedPhrasesPreferPedagogicalPatterns() async throws {
         let db = try openDatabase()
-        let phrases = await db.relatedPhrases(for: "argue")
+        let phrases = await db.relatedPhrases(for: "argue", limit: 24)
 
         #expect(phrases.map(\.word).contains("argue with"))
         #expect(phrases.map(\.word).contains("argue about"))
         #expect(phrases.allSatisfy { $0.word.lowercased().hasPrefix("argue ") })
+        #expect(phrases.count <= 4)
+    }
+
+    @Test("普通复合名词不冒充固定短语")
+    func plainCompoundNounsAreNotPhrases() async throws {
+        let db = try openDatabase()
+
+        #expect(await db.relatedPhrases(for: "coffee").isEmpty)
+        #expect(
+            await db.matchingPhrases(
+                ["coffee shop", "coffee bean", "coffee break"],
+                excluding: "coffee"
+            ).isEmpty
+        )
+    }
+
+    @Test("学校常教的介词搭配仍会展示")
+    func schoolTaughtPatternsRemainVisible() async throws {
+        let db = try openDatabase()
+        let phrases = await db.relatedPhrases(for: "good")
+
+        #expect(phrases.map(\.word).contains("good at"))
+        #expect(phrases.map(\.word).contains("good for"))
     }
 
     @Test("中文释义按词性拆分且词形可继续查询")

@@ -780,35 +780,25 @@ public struct DictCardView: View {
         let remainingRelated = related.filter {
             !contextualWords.contains($0.word.lowercased())
         }
-        return VStack(alignment: .leading, spacing: 5) {
-            if !contextual.isEmpty {
-                phraseRow(title: "句内短语：", phrases: contextual)
-            }
-            if !remainingRelated.isEmpty {
-                phraseRow(title: "相关短语：", phrases: remainingRelated)
-            }
-        }
-    }
-
-    private func phraseRow(title: String, phrases: [DictEntry]) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
-            Text(title)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
+        let phrases = Array((contextual + remainingRelated).prefix(4))
+        return HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
+            Text("短语")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Color.dsQuiz)
                 .lineLimit(1)
                 .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 6) {
                 ForEach(phrases, id: \.word) { phrase in
                     Button {
                         path.append(.word(phrase.word))
                     } label: {
                         HStack(alignment: .firstTextBaseline, spacing: 5) {
                             Text(phrase.word)
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(Color.dsSkyDeep)
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(.primary)
                             if let meaning = phrase.meaningGroups.first?.meaning {
                                 Text(meaning)
-                                    .font(.caption)
+                                    .font(.subheadline)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(1)
                             }
@@ -1189,7 +1179,7 @@ public struct DictCardView: View {
         }
         relatedPhrases = await dictionary.relatedPhrases(
             for: loadedEntry?.word ?? word,
-            limit: 24
+            limit: 4
         )
         entry = loadedEntry
         let resolvedWord = loadedEntry?.word ?? word

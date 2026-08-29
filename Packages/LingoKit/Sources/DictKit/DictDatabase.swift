@@ -2,6 +2,98 @@ import CoreKit
 import Foundation
 import SQLite3
 
+/// 词卡只展示有教学价值的固定搭配，不把普通复合名词误当成短语。
+enum DictPhraseDisplayPolicy {
+    struct Rank: Comparable {
+        let tier: Int
+        let linkPriority: Int
+        let wordCount: Int
+        let word: String
+
+        static func < (lhs: Self, rhs: Self) -> Bool {
+            if lhs.tier != rhs.tier { return lhs.tier < rhs.tier }
+            if lhs.linkPriority != rhs.linkPriority {
+                return lhs.linkPriority < rhs.linkPriority
+            }
+            if lhs.wordCount != rhs.wordCount { return lhs.wordCount < rhs.wordCount }
+            return lhs.word < rhs.word
+        }
+    }
+
+    private static let linkWords: Set<String> = [
+        "about", "above", "across", "after", "against", "along", "around", "as", "at",
+        "away", "back", "before", "behind", "between", "by", "down", "for", "forth",
+        "forward", "from", "in", "into", "of", "off", "on", "onto", "out", "over",
+        "through", "to", "together", "under", "up", "upon", "with", "without",
+    ]
+
+    private static let placeholderWords: Set<String> = [
+        "doing", "oneself", "sb", "somebody", "someone", "something", "sth",
+    ]
+
+    private static let preferredLinkOrder: [String: Int] = [
+        "with": 0, "at": 1, "about": 2, "for": 3, "to": 4, "from": 5,
+        "of": 6, "on": 7, "in": 8, "into": 9, "out": 10, "up": 11,
+        "down": 12, "off": 13, "over": 14, "against": 15, "away": 16,
+    ]
+
+    static func rank(
+        phrase: String,
+        selectedWord: String,
+        isOxford: Bool
+    ) -> Rank? {
+        let phraseTokens = tokens(in: phrase)
+        let selectedTokens = tokens(in: selectedWord)
+        guard phraseTokens.count >= 2,
+              !selectedTokens.isEmpty,
+              selectedTokens.allSatisfy(phraseTokens.contains)
+        else { return nil }
+
+        let selectedIndex = selectedTokens.count == 1
+            ? phraseTokens.firstIndex(of: selectedTokens[0])
+            : nil
+        let adjacentLink = selectedIndex.flatMap { index -> String? in
+            let next = index + 1
+            guard phraseTokens.indices.contains(next), linkWords.contains(phraseTokens[next])
+            else { return nil }
+            return phraseTokens[next]
+        }
+        let firstLink = adjacentLink ?? phraseTokens.first(where: linkWords.contains)
+        let hasPlaceholder = phraseTokens.contains(where: placeholderWords.contains)
+
+        let tier: Int
+        if isOxford {
+            tier = 0
+        } else if adjacentLink != nil {
+            tier = 1
+        } else if hasPlaceholder {
+            tier = 2
+        } else if firstLink != nil {
+            tier = 3
+        } else {
+            return nil
+        }
+
+        return Rank(
+            tier: tier,
+            linkPriority: firstLink.flatMap { preferredLinkOrder[$0] } ?? 100,
+            wordCount: phraseTokens.count,
+            word: phrase.lowercased()
+        )
+    }
+
+    private static func tokens(in text: String) -> [String] {
+        text.lowercased()
+            .split(whereSeparator: { $0.isWhitespace })
+            .map {
+                String($0).trimmingCharacters(
+                    in: .punctuationCharacters.union(.symbols)
+                )
+            }
+            .filter { !$0.isEmpty }
+    }
+}
+
 /// 全量 ECDICT + WordNet 只读查询（原生 sqlite3，预编译语句复用）。
 /// 查询流水线：word 精确 → lemma 反查 → 规则回退 → 未收录；上下文短语单独作为建议返回。
 public actor DictDatabase {
@@ -17,6 +109,7 @@ public actor DictDatabase {
         let exactStatement: OpaquePointer
         let lemmaStatement: OpaquePointer
         let prefixStatement: OpaquePointer
+        let relatedPhraseStatement: OpaquePointer
         let senseStatement: OpaquePointer
 
         init(databaseURL: URL) throws {
@@ -42,6 +135,9 @@ public actor DictDatabase {
             )
             lemmaStatement = try prepare("SELECT lemma FROM lemma WHERE form = ?")
             prefixStatement = try prepare("SELECT word FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?")
+            relatedPhraseStatement = try prepare(
+                "SELECT word, oxford FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?"
+            )
             senseStatement = try prepare(
                 "SELECT rank, pos, definition, examples, synonyms FROM sense WHERE wl = ? ORDER BY rank, pos LIMIT 12"
             )
@@ -51,6 +147,7 @@ public actor DictDatabase {
             sqlite3_finalize(exactStatement)
             sqlite3_finalize(lemmaStatement)
             sqlite3_finalize(prefixStatement)
+            sqlite3_finalize(relatedPhraseStatement)
             sqlite3_finalize(senseStatement)
             sqlite3_close(db)
         }
@@ -100,6 +197,8 @@ public actor DictDatabase {
     ) -> [DictEntry] {
         let excluded = rawWord.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
+        let displayLimit = min(max(limit, 0), 4)
+        guard displayLimit > 0 else { return [] }
         var results: [DictEntry] = []
         var seen = Set<String>()
         for candidate in rawCandidates {
@@ -107,34 +206,49 @@ public actor DictDatabase {
                 .trimmingCharacters(in: .whitespacesAndNewlines)
             guard normalized != excluded,
                   seen.insert(normalized).inserted,
-                  let entry = exactEntry(normalized)
+                  let entry = exactEntry(normalized),
+                  DictPhraseDisplayPolicy.rank(
+                      phrase: entry.word,
+                      selectedWord: excluded,
+                      isOxford: entry.oxford
+                  ) != nil
             else { continue }
             results.append(entry)
-            if results.count == limit { break }
+            if results.count == displayLimit { break }
         }
         return results
     }
 
-    /// 返回以当前词开头的本地词典短语，供词卡的“相关短语”区域展示。
-    public func relatedPhrases(for rawWord: String, limit: Int = 24) -> [DictEntry] {
+    /// 返回以当前词开头、具备教学价值的固定搭配；普通复合名词不会进入词卡。
+    public func relatedPhrases(for rawWord: String, limit: Int = 4) -> [DictEntry] {
         let word = rawWord.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !word.isEmpty, limit > 0 else { return [] }
+        let displayLimit = min(max(limit, 0), 4)
+        guard !word.isEmpty, displayLimit > 0 else { return [] }
 
         let prefix = word + " "
-        let statement = connection.prefixStatement
+        let statement = connection.relatedPhraseStatement
         defer { sqlite3_reset(statement) }
         bindText(prefix, statement: statement, index: 1)
         bindText(prefix + "\u{FFFF}", statement: statement, index: 2)
-        sqlite3_bind_int(statement, 3, Int32(min(limit, Int(Int32.max))))
+        let scanLimit = min(max(displayLimit * 256, 256), 1024)
+        sqlite3_bind_int(statement, 3, Int32(scanLimit))
 
-        var words: [String] = []
+        var rankedWords: [(rank: DictPhraseDisplayPolicy.Rank, word: String)] = []
         while sqlite3_step(statement) == SQLITE_ROW {
-            if let phrase = columnText(statement, 0) {
-                words.append(phrase)
-            }
+            guard let phrase = columnText(statement, 0),
+                  let rank = DictPhraseDisplayPolicy.rank(
+                      phrase: phrase,
+                      selectedWord: word,
+                      isOxford: sqlite3_column_int(statement, 1) == 1
+                  )
+            else { continue }
+            rankedWords.append((rank, phrase))
         }
-        return words.compactMap(exactEntry)
+        return rankedWords
+            .sorted { $0.rank < $1.rank }
+            .prefix(displayLimit)
+            .compactMap { exactEntry($0.word.lowercased()) }
     }
 
     /// 精确命中（入参需已 lowercase）。
