@@ -185,7 +185,7 @@ public struct MyPageView: View {
 
             learningHotspot
                 .frame(width: 176, height: 210)
-                .position(x: width * 0.54, y: sceneHeight * 0.41)
+                .position(x: width * 0.54, y: sceneHeight * 0.395)
 
             favoritesHotspot
                 .frame(width: 112, height: 120)
@@ -357,12 +357,12 @@ public struct MyPageView: View {
                     SceneHologramIcon(glyph: .system("person.crop.circle"), size: 46)
 
                     VStack(alignment: .leading, spacing: 0) {
-                        SceneHologramText(displayName, size: 17, weight: .bold)
+                        SceneHologramText(displayName, size: 16, weight: .bold)
                             .lineLimit(1)
                             .minimumScaleFactor(0.72)
-                        SceneHologramText(accountBadgeTitle, size: 14, weight: .semibold)
+                        SceneHologramText(accountBadgeTitle, size: 13, weight: .semibold)
                             .lineLimit(1)
-                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 12, weight: .medium)
+                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 11.5, weight: .medium)
                             .lineLimit(1)
                     }
                 }
@@ -386,19 +386,19 @@ public struct MyPageView: View {
     private var coinSceneEntry: some View {
         SceneHologram(
             plane: .wallet,
-            tint: .sceneHologramIvory
+            tint: .sceneHologramYellow
         ) {
             VStack(spacing: 2) {
                 SceneHologramIcon(
                     glyph: .coinStacks,
-                    size: 48,
-                    tint: .sceneHologramIvory
+                    size: 56,
+                    tint: .sceneHologramYellow
                 )
                 SceneHologramText(
                     "\(profile?.coins ?? 0) 金币",
                     size: 21,
                     weight: .bold,
-                    tint: .sceneHologramIvory
+                    tint: .sceneHologramYellow
                 )
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -411,16 +411,16 @@ public struct MyPageView: View {
     private var learningSceneEntry: some View {
         SceneHologram(plane: .tablet) {
             VStack(spacing: 4) {
-                SceneHologramIcon(glyph: .journeyBook, size: 54)
-                SceneHologramText("英语旅程", size: 25, weight: .bold)
+                SceneHologramIcon(glyph: .journeyBook, size: 60)
+                SceneHologramText("英语旅程", size: 24, weight: .bold)
                 SceneHologramText(
                     "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoal.displayName ?? "载入中")",
-                    size: 14,
+                    size: 13,
                     weight: .semibold
                 )
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
-                SceneHologramText(placementSummary, size: 14, weight: .bold)
+                SceneHologramText(placementSummary, size: 13, weight: .bold)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -434,8 +434,8 @@ public struct MyPageView: View {
     ) -> some View {
         SceneHologram(plane: plane) {
             VStack(spacing: 2) {
-                SceneHologramIcon(glyph: glyph, size: 46)
-                SceneHologramText(title, size: 28, weight: .bold)
+                SceneHologramIcon(glyph: glyph, size: 52)
+                SceneHologramText(title, size: 26, weight: .bold)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -1011,7 +1011,7 @@ private struct SceneHologram<Content: View>: View {
 
     init(
         plane: SceneHologramPlane,
-        tint: Color = .sceneHologramIvory,
+        tint: Color = .sceneHologramYellow,
         @ViewBuilder content: () -> Content
     ) {
         self.plane = plane
@@ -1039,12 +1039,12 @@ private struct SceneHologram<Content: View>: View {
                     x: plane.footprintOffset.width,
                     y: plane.footprintOffset.height
                 )
-                .opacity(0.09)
+                .opacity(0.12)
                 .accessibilityHidden(true)
 
             content
-                .blur(radius: 2.8)
-                .opacity(0.16)
+                .blur(radius: 3.1)
+                .opacity(0.26)
                 .accessibilityHidden(true)
 
             ForEach(1 ... 3, id: \.self) { slice in
@@ -1053,7 +1053,7 @@ private struct SceneHologram<Content: View>: View {
                         x: plane.extrusionOffset.width * CGFloat(slice) / 3,
                         y: plane.extrusionOffset.height * CGFloat(slice) / 3
                     )
-                    .opacity(0.045)
+                    .opacity(0.06)
                     .accessibilityHidden(true)
             }
 
@@ -1083,29 +1083,59 @@ private struct SceneHologramPedestal: View {
     var body: some View {
         ZStack {
             Ellipse()
-                .fill(tint.opacity(0.34))
-                .frame(width: width, height: 10)
-                .blur(radius: 7)
+                .fill(Color.sceneHologramGlowYellow.opacity(0.48))
+                .frame(width: width, height: 11)
+                .blur(radius: 8)
 
             Ellipse()
-                .stroke(tint.opacity(0.82), lineWidth: 1.2)
-                .frame(width: width * 0.72, height: 7)
-                .blur(radius: 0.7)
+                .stroke(Color.sceneHologramGlowYellow.opacity(0.52), lineWidth: 1)
+                .frame(width: width * 0.88, height: 9)
+                .blur(radius: 1.2)
 
-            HStack(spacing: 6) {
-                Capsule()
-                    .frame(width: 1.2, height: 13)
-                Capsule()
-                    .frame(width: 1.2, height: 18)
-                Capsule()
-                    .frame(width: 1.2, height: 13)
-            }
-            .foregroundStyle(tint.opacity(0.3))
-            .blur(radius: 1.8)
-            .offset(y: -8)
+            Ellipse()
+                .stroke(tint.opacity(0.9), lineWidth: 1.15)
+                .frame(width: width * 0.68, height: 6.5)
+                .blur(radius: 0.55)
+
+            HologramPedestalRays()
+                .stroke(
+                    Color.sceneHologramGlowYellow.opacity(0.44),
+                    style: StrokeStyle(lineWidth: 1, lineCap: .round)
+                )
+                .frame(width: width * 0.72, height: 28)
+                .blur(radius: 1.35)
+                .offset(y: -14)
+
+            HologramPedestalRays()
+                .stroke(
+                    tint.opacity(0.34),
+                    style: StrokeStyle(lineWidth: 0.7, lineCap: .round)
+                )
+                .frame(width: width * 0.62, height: 24)
+                .offset(y: -13)
         }
         .allowsHitTesting(false)
         .accessibilityHidden(true)
+    }
+}
+
+private struct HologramPedestalRays: Shape {
+    func path(in rect: CGRect) -> Path {
+        let point: (CGFloat, CGFloat) -> CGPoint = { x, y in
+            CGPoint(x: rect.minX + rect.width * x, y: rect.minY + rect.height * y)
+        }
+        var path = Path()
+        for endpoints in [
+            (point(0.5, 0.88), point(0.5, 0.08)),
+            (point(0.4, 0.9), point(0.28, 0.28)),
+            (point(0.6, 0.9), point(0.72, 0.28)),
+            (point(0.3, 0.92), point(0.12, 0.5)),
+            (point(0.7, 0.92), point(0.88, 0.5))
+        ] {
+            path.move(to: endpoints.0)
+            path.addLine(to: endpoints.1)
+        }
+        return path
     }
 }
 
@@ -1119,7 +1149,7 @@ private struct SceneHologramText: View {
         _ value: String,
         size: CGFloat,
         weight: Font.Weight,
-        tint: Color = .sceneHologramIvory
+        tint: Color = .sceneHologramYellow
     ) {
         self.value = value
         self.size = size
@@ -1131,7 +1161,7 @@ private struct SceneHologramText: View {
         Text(value)
             .font(.system(size: size, weight: weight, design: .rounded))
             .tracking(size >= 20 ? -0.45 : 0.08)
-            .foregroundStyle(tint.opacity(0.94))
+            .foregroundStyle(tint.opacity(0.99))
             .textRenderer(SceneHologramTextRenderer(tint: tint))
     }
 }
@@ -1152,7 +1182,7 @@ private struct SceneHologramIcon: View {
     init(
         glyph: SceneHologramGlyph,
         size: CGFloat,
-        tint: Color = .sceneHologramIvory
+        tint: Color = .sceneHologramYellow
     ) {
         self.glyph = glyph
         self.size = size
@@ -1162,10 +1192,11 @@ private struct SceneHologramIcon: View {
     var body: some View {
         glyphBody
             .frame(width: size, height: size)
-            .foregroundStyle(tint.opacity(0.94))
-            .shadow(color: tint.opacity(0.18), radius: 6)
-            .shadow(color: tint.opacity(0.38), radius: 2)
-            .shadow(color: .black.opacity(0.3), radius: 0.7, y: 0.8)
+            .foregroundStyle(tint.opacity(0.99))
+            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.38), radius: 6.2)
+            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.64), radius: 2.2)
+            .shadow(color: .white.opacity(0.24), radius: 0.6)
+            .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
     }
 
     @ViewBuilder
@@ -1178,14 +1209,14 @@ private struct SceneHologramIcon: View {
         case .coinStacks:
             CoinStacksGlyph()
                 .stroke(
-                    tint.opacity(0.94),
+                    tint.opacity(0.99),
                     style: glyphStrokeStyle
                 )
                 .padding(size * 0.04)
         case .journeyBook:
             JourneyBookGlyph()
                 .stroke(
-                    tint.opacity(0.94),
+                    tint.opacity(0.99),
                     style: glyphStrokeStyle
                 )
                 .padding(size * 0.035)
@@ -1193,11 +1224,11 @@ private struct SceneHologramIcon: View {
             ZStack {
                 BookmarkGlyph()
                     .stroke(
-                        tint.opacity(0.94),
+                        tint.opacity(0.99),
                         style: glyphStrokeStyle
                     )
                 StarGlyph()
-                    .fill(tint.opacity(0.94))
+                    .fill(tint.opacity(0.99))
                     .frame(width: size * 0.34, height: size * 0.34)
                     .offset(y: -size * 0.15)
             }
@@ -1206,11 +1237,11 @@ private struct SceneHologramIcon: View {
             ZStack {
                 AccountCloudGlyph()
                     .stroke(
-                        tint.opacity(0.94),
+                        tint.opacity(0.99),
                         style: glyphStrokeStyle
                     )
                 AccountPersonGlyph()
-                    .fill(tint.opacity(0.94))
+                    .fill(tint.opacity(0.99))
             }
             .padding(size * 0.035)
         }
@@ -1353,14 +1384,14 @@ private struct JourneyBookGlyph: Shape {
 private struct BookmarkGlyph: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: rect.minX + rect.width * 0.2, y: rect.minY + rect.height * 0.08))
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.12, y: rect.minY + rect.height * 0.04))
         path.addQuadCurve(
-            to: CGPoint(x: rect.minX + rect.width * 0.8, y: rect.minY + rect.height * 0.08),
-            control: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.035)
+            to: CGPoint(x: rect.minX + rect.width * 0.88, y: rect.minY + rect.height * 0.04),
+            control: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.005)
         )
-        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.8, y: rect.minY + rect.height * 0.9))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.69))
-        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.2, y: rect.minY + rect.height * 0.9))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.88, y: rect.minY + rect.height * 0.94))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.7))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.12, y: rect.minY + rect.height * 0.94))
         path.closeSubpath()
         return path
     }
@@ -1463,11 +1494,11 @@ private struct SceneHologramTextRenderer: TextRenderer {
         draw(layout, in: &depthEdge)
 
         var outerGlow = context
-        outerGlow.opacity = 0.16
+        outerGlow.opacity = 0.32
         outerGlow.addFilter(
             .shadow(
-                color: tint.opacity(0.34),
-                radius: 5.5,
+                color: Color.sceneHologramGlowYellow.opacity(0.52),
+                radius: 6.2,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1475,11 +1506,11 @@ private struct SceneHologramTextRenderer: TextRenderer {
         draw(layout, in: &outerGlow)
 
         var innerGlow = context
-        innerGlow.opacity = 0.38
+        innerGlow.opacity = 0.6
         innerGlow.addFilter(
             .shadow(
-                color: tint.opacity(0.58),
-                radius: 1.8,
+                color: Color.sceneHologramGlowYellow.opacity(0.72),
+                radius: 2.3,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1487,12 +1518,12 @@ private struct SceneHologramTextRenderer: TextRenderer {
         draw(layout, in: &innerGlow)
 
         var edgeLight = context
-        edgeLight.opacity = 0.24
+        edgeLight.opacity = 0.38
         edgeLight.translateBy(x: 0.55, y: 0.8)
         edgeLight.addFilter(
             .shadow(
-                color: .white.opacity(0.52),
-                radius: 0.8,
+                color: .white.opacity(0.7),
+                radius: 0.9,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1524,5 +1555,9 @@ private struct SceneHologramButtonStyle: ButtonStyle {
 }
 
 private extension Color {
-    static let sceneHologramIvory = Color(red: 1, green: 0.99, blue: 0.95)
+    /// 从参考图发光文字和图标的实体核心反推，约 RGB(254, 249, 236)。
+    static let sceneHologramYellow = Color(red: 0.996, green: 0.976, blue: 0.925)
+
+    /// 参考图主体外侧黄色衰减层的代表色，约 RGB(249, 232, 182)。
+    static let sceneHologramGlowYellow = Color(red: 0.976, green: 0.91, blue: 0.714)
 }
