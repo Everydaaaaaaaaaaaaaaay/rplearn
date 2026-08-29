@@ -118,72 +118,104 @@ public struct MyPageView: View {
     /// 现代旅行者工作台：背景只承载实物，全部入口由统一的实时全息组件绘制。
     private var modernTravelDesk: some View {
         GeometryReader { proxy in
-            let width = proxy.size.width
-            let sceneHeight = max(proxy.size.height, width * 1906 / 825)
+            let widthScale = proxy.size.width / TravelDeskLayout.canvasWidth
+            let heightScale = proxy.size.height / TravelDeskLayout.interactiveContentBottom
+            let sceneScale = min(widthScale, heightScale)
+            let horizontalInset = max(
+                0,
+                (proxy.size.width - TravelDeskLayout.canvasWidth * sceneScale) / 2
+            )
 
-            ScrollView(.vertical) {
-                ZStack(alignment: .topLeading) {
-                    travelDeskBackground(width: width, height: sceneHeight)
-
-                    profileHotspot
-                        .frame(width: min(width * 0.48, 190), height: 190)
-                        .position(x: width * 0.20, y: sceneHeight * 0.195)
-
-                    coinHotspot
-                        .frame(width: 118, height: 110)
-                        .position(x: width * 0.81, y: sceneHeight * 0.19)
-
-                    learningHotspot
-                        .frame(width: min(width * 0.44, 176), height: 210)
-                        .position(x: width * 0.515, y: sceneHeight * 0.46)
-
-                    favoritesHotspot
-                        .frame(width: 112, height: 120)
-                        .position(x: width * 0.16, y: sceneHeight * 0.59)
-
-                    settingsHotspot
-                        .frame(width: 112, height: 124)
-                        .position(x: width * 0.775, y: sceneHeight * 0.63)
-
-                    accountHotspot
-                        .frame(width: 118, height: 126)
-                        .position(x: width * 0.49, y: sceneHeight * 0.65)
-
-                    #if DEBUG
-                    memoryDebugHotspot
-                        .frame(width: 114, height: 126)
-                        .position(x: width * 0.515, y: sceneHeight * 0.12)
-                    #endif
+            ZStack(alignment: .topLeading) {
+                if sceneScale < widthScale {
+                    compactHeightBackdrop(size: proxy.size)
                 }
-                .frame(width: width, height: sceneHeight)
-                .dynamicTypeSize(...DynamicTypeSize.xLarge)
+
+                travelDeskCanvas
+                    .frame(
+                        width: TravelDeskLayout.canvasWidth,
+                        height: TravelDeskLayout.canvasHeight,
+                        alignment: .topLeading
+                    )
+                    .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                    .scaleEffect(sceneScale, anchor: .topLeading)
+                    .offset(x: horizontalInset)
             }
-            .coordinateSpace(name: "travelDeskScroll")
-            .scrollIndicators(.hidden)
-            .refreshable { await reload() }
+            .frame(
+                width: proxy.size.width,
+                height: proxy.size.height,
+                alignment: .topLeading
+            )
+            .clipped()
         }
         .ignoresSafeArea(edges: .top)
     }
 
+    /// 极短屏幕缩小参考画布后只会留下很窄的侧边余量；使用同源场景作柔化衬底，
+    /// 避免硬色带，同时不参与任何入口的定位与点击。
+    private func compactHeightBackdrop(size: CGSize) -> some View {
+        Image("profile_modern_travel_desk_interactive_scene", bundle: .main)
+            .resizable()
+            .scaledToFill()
+            .frame(width: size.width, height: size.height, alignment: .top)
+            .clipped()
+            .blur(radius: 5)
+            .overlay(Color.black.opacity(colorScheme == .dark ? 0.3 : 0.035))
+            .accessibilityHidden(true)
+            .allowsHitTesting(false)
+    }
+
+    /// 所有背景像素、入口、微光和点击区域都在同一参考画布中布局。
+    /// 运行时只整体等比缩放画布，避免不同 iPhone 宽度下出现独立取整与锚点漂移。
+    private var travelDeskCanvas: some View {
+        let width = TravelDeskLayout.canvasWidth
+        let sceneHeight = TravelDeskLayout.canvasHeight
+
+        return ZStack(alignment: .topLeading) {
+            travelDeskBackground(width: width, height: sceneHeight)
+
+            profileHotspot
+                .frame(width: 190, height: 190)
+                .position(x: width * 0.20, y: sceneHeight * 0.195)
+
+            coinHotspot
+                .frame(width: 118, height: 110)
+                .position(x: width * 0.845, y: sceneHeight * 0.19)
+
+            learningHotspot
+                .frame(width: 176, height: 210)
+                .position(x: width * 0.54, y: sceneHeight * 0.41)
+
+            favoritesHotspot
+                .frame(width: 112, height: 120)
+                .position(x: width * 0.135, y: sceneHeight * 0.59)
+
+            settingsHotspot
+                .frame(width: 112, height: 124)
+                .position(x: width * 0.82, y: sceneHeight * 0.605)
+
+            accountHotspot
+                .frame(width: 118, height: 126)
+                .position(x: width * 0.52, y: sceneHeight * 0.66)
+
+            #if DEBUG
+            memoryDebugHotspot
+                .frame(width: 114, height: 126)
+                .position(x: width * 0.535, y: sceneHeight * 0.12)
+            #endif
+        }
+        .frame(width: width, height: sceneHeight, alignment: .topLeading)
+    }
+
     private func travelDeskBackground(width: CGFloat, height: CGFloat) -> some View {
-        GeometryReader { sceneProxy in
-            let pullDistance = max(
-                sceneProxy.frame(in: .named("travelDeskScroll")).minY,
-                0
-            )
+        ZStack {
+            Image("profile_modern_travel_desk_interactive_scene", bundle: .main)
+                .resizable()
+                .frame(width: width, height: height)
 
-            ZStack {
-                Image("profile_modern_travel_desk_interactive_scene", bundle: .main)
-                    .resizable()
-                    .frame(width: width, height: height + pullDistance)
-
-                Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
-            }
-            .frame(width: width, height: height + pullDistance)
-            .offset(y: -pullDistance)
+            Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
         }
         .frame(width: width, height: height)
-        .clipped()
         .accessibilityHidden(true)
         .allowsHitTesting(false)
     }
@@ -215,6 +247,7 @@ public struct MyPageView: View {
             coinSceneEntry
         }
         .buttonStyle(SceneHologramButtonStyle())
+        .accessibilityLabel("\(profile?.coins ?? 0) 金币")
         .accessibilityHint("调试构建中轻点增加 500 金币")
         #else
         coinLabel
@@ -319,18 +352,22 @@ public struct MyPageView: View {
     private var profileSceneEntry: some View {
         ZStack(alignment: .topLeading) {
             SceneHologram(plane: .identityHolder) {
-                VStack(alignment: .leading, spacing: 1) {
-                    SceneHologramText(displayName, size: 20, weight: .bold)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.68)
-                    SceneHologramText(accountBadgeTitle, size: 13, weight: .semibold)
-                        .lineLimit(1)
-                    SceneHologramText("旅途朋友 \(occupiedFriendSlots)", size: 12, weight: .medium)
-                        .lineLimit(1)
+                VStack(spacing: 5) {
+                    SceneHologramIcon(name: "person.crop.circle", size: 46)
+
+                    VStack(alignment: .leading, spacing: 0) {
+                        SceneHologramText(displayName, size: 17, weight: .bold)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.72)
+                        SceneHologramText(accountBadgeTitle, size: 14, weight: .semibold)
+                            .lineLimit(1)
+                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 12, weight: .medium)
+                            .lineLimit(1)
+                    }
                 }
             }
-            .frame(width: 140, height: 102)
-            .position(x: 70, y: 68)
+            .frame(width: 150, height: 138)
+            .position(x: 78, y: 58)
 
             AvatarBadge(name: displayName, tint: .dsSky, size: 43)
                 .overlay {
@@ -339,7 +376,7 @@ public struct MyPageView: View {
                 }
                 .shadow(color: .black.opacity(0.18), radius: 2.2, y: 1.4)
                 .rotationEffect(.degrees(-5))
-                .position(x: 88, y: 168)
+                .position(x: 76, y: 168)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .contentShape(Rectangle())
@@ -855,6 +892,17 @@ public struct MyPageView: View {
     }
 }
 
+/// 视觉稿以 iPhone 17 Pro 的 402 pt 宽度为参考；高度严格保持 825 × 1906 母版比例。
+/// 任何机型适配都只能缩放这个画布，不能分别重算图片与入口的位置。
+private enum TravelDeskLayout {
+    static let canvasWidth: CGFloat = 402
+    static let canvasHeight: CGFloat = canvasWidth * 1906 / 825
+
+    /// 参考画布中最低入口（登录）的视觉与点击范围底边，含少量微光余量。
+    /// 短屏按此高度整体缩放，保证入口停在系统 Tab 栏上方。
+    static let interactiveContentBottom: CGFloat = 682
+}
+
 /// 每个入口都使用承载物自身的局部平面，而不是套用同一组“伪透视”。
 /// 参数按 825 × 1906 的母版逐物件校准；足迹方向同时表达悬浮高度与环境光方向。
 private struct SceneHologramPlane {
@@ -879,7 +927,7 @@ private struct SceneHologramPlane {
         footprintOffset: CGSize(width: 3, height: 13),
         extrusionOffset: CGSize(width: 1, height: 2.6),
         footprintWidth: 66,
-        pedestalOffset: CGSize(width: 4, height: 43)
+        pedestalOffset: CGSize(width: 4, height: 66)
     )
     static let camera = SceneHologramPlane(
         rotationZ: 0,
@@ -942,10 +990,10 @@ private struct SceneHologramPlane {
         pedestalOffset: nil
     )
     static let phone = SceneHologramPlane(
-        rotationZ: 2.5,
-        tiltX: 7,
-        tiltY: -1.5,
-        perspective: 0.2,
+        rotationZ: 0.5,
+        tiltX: 6,
+        tiltY: 0,
+        perspective: 0.18,
         scaleX: 1,
         scaleY: 0.98,
         footprintOffset: CGSize(width: -2, height: 14),
@@ -991,10 +1039,12 @@ private struct SceneHologram<Content: View>: View {
                     y: plane.footprintOffset.height
                 )
                 .opacity(0.13)
+                .accessibilityHidden(true)
 
             content
                 .blur(radius: 3.6)
                 .opacity(0.36)
+                .accessibilityHidden(true)
 
             ForEach(1 ... 3, id: \.self) { slice in
                 content
@@ -1003,6 +1053,7 @@ private struct SceneHologram<Content: View>: View {
                         y: plane.extrusionOffset.height * CGFloat(slice) / 3
                     )
                     .opacity(0.11)
+                    .accessibilityHidden(true)
             }
 
             content
