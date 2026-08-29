@@ -115,7 +115,7 @@ public struct MyPageView: View {
         .refreshable { await reload() }
     }
 
-    /// 现代旅行者工作台：双层功能牌以统一透视贴合场景中的真实物件。
+    /// 现代旅行者工作台：入口已绘入背景实物，运行时只保留透明交互热区。
     private var modernTravelDesk: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
@@ -173,7 +173,7 @@ public struct MyPageView: View {
             )
 
             ZStack {
-                Image("profile_modern_travel_desk", bundle: .main)
+                Image("profile_modern_travel_desk_integrated", bundle: .main)
                     .resizable()
                     .frame(width: width, height: height + pullDistance)
 
@@ -188,6 +188,11 @@ public struct MyPageView: View {
         .allowsHitTesting(false)
     }
 
+    private var transparentSceneHotspot: some View {
+        Color.clear
+            .contentShape(Rectangle())
+    }
+
     private var profileHotspot: some View {
         Button {
             if isSignedIn {
@@ -196,44 +201,9 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            ZStack {
-                SceneEmbeddedControl(
-                    style: .darkInk,
-                    rotation: -10.5,
-                    tiltX: 1.6,
-                    tiltY: -1.8,
-                    floatDelay: 0.05
-                ) {
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text(displayName)
-                            .font(.system(size: 13, weight: .bold))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.78)
-                        Text("\(accountIdentifier) · \(accountBadgeTitle)")
-                            .font(.system(size: 8, weight: .medium))
-                            .lineLimit(1)
-                        Text("\(occupiedFriendSlots) 位旅途朋友")
-                            .font(.system(size: 8, weight: .semibold))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.72)
-                    }
-                    .frame(width: 126, alignment: .leading)
-                }
-                .position(x: 78, y: 43)
-
-                ScenePhotoAvatar(name: displayName)
-                    .frame(width: 47, height: 47)
-                    .rotationEffect(.degrees(-8.5))
-                    .rotation3DEffect(
-                        .degrees(2.2),
-                        axis: (x: 1, y: -0.12, z: 0),
-                        perspective: 0.30
-                    )
-                    .position(x: 86, y: 134)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            transparentSceneHotspot
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityLabel("个人资料，\(displayName)，\(accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
         .accessibilityHint(isSignedIn ? "打开账号与订阅" : "登录或创建账号")
     }
@@ -249,7 +219,7 @@ public struct MyPageView: View {
         } label: {
             coinLabel
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityHint("调试构建中轻点增加 500 金币")
         #else
         coinLabel
@@ -257,107 +227,27 @@ public struct MyPageView: View {
     }
 
     private var coinLabel: some View {
-        SceneEmbeddedControl(
-            style: .lightInk,
-            rotation: 8,
-            tiltX: 2.4,
-            tiltY: 1.2,
-            floatDelay: 0.18
-        ) {
-            HStack(spacing: 7) {
-                MinimalSceneGlyph(kind: .coins)
-                    .frame(width: 24, height: 24)
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("\(profile?.coins ?? 0)")
-                        .font(.system(size: 14, weight: .bold).monospacedDigit())
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.58)
-                        .layoutPriority(1)
-                    Text("金币")
-                        .font(.system(size: 8, weight: .medium))
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
+        transparentSceneHotspot
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(profile?.coins ?? 0) 金币")
     }
 
     private var learningHotspot: some View {
         Button(action: onCalibrateLevel) {
-            SceneEmbeddedControl(
-                style: .darkInk,
-                rotation: 1.4,
-                tiltX: 2.0,
-                tiltY: -0.6,
-                floatDelay: 0.32
-            ) {
-                VStack(spacing: 56) {
-                    HStack(spacing: 6) {
-                        MinimalSceneGlyph(kind: .journey)
-                            .frame(width: 25, height: 25)
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("英语旅程")
-                                .font(.system(size: 11, weight: .bold))
-                            if let score = profile?.placementScore {
-                                Text("校准 \(score) / 100")
-                                    .font(.system(size: 7, weight: .medium).monospacedDigit())
-                            } else {
-                                Text("轻点重新校准")
-                                    .font(.system(size: 7, weight: .medium))
-                            }
-                        }
-                    }
-
-                    HStack(alignment: .center, spacing: 4) {
-                        sceneMetric(
-                            title: "当前",
-                            value: profile?.difficultyLevel.displayName ?? "载入中"
-                        )
-                        Image(systemName: "arrow.right")
-                            .font(.system(size: 7, weight: .bold))
-                        sceneMetric(
-                            title: "目标",
-                            value: profile?.learningGoal.displayName ?? "载入中"
-                        )
-                    }
-                }
-                .frame(width: 100, height: 142)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
+            transparentSceneHotspot
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")
-    }
-
-    private func sceneMetric(title: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(title)
-                .font(.system(size: 7, weight: .medium))
-            Text(value)
-                .font(.system(size: 9, weight: .semibold))
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var favoritesHotspot: some View {
         NavigationLink {
             favoritesBuilder()
         } label: {
-            sceneObjectMark(
-                title: "收藏",
-                glyph: .favorites,
-                style: .lightInk,
-                rotation: -10.5,
-                tiltX: 2.6,
-                tiltY: -1.8,
-                floatDelay: 0.46
-            )
+            transparentSceneHotspot
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityLabel("收藏夹，单词与语法点")
         .accessibilityHint("查看收藏的单词与语法点")
     }
@@ -375,18 +265,9 @@ public struct MyPageView: View {
                 onProactiveMessagesChanged: onProactiveMessagesChanged
             )
         } label: {
-            sceneObjectMark(
-                title: "设置",
-                glyph: .settings,
-                style: .darkInk,
-                rotation: 4.5,
-                tiltX: 2.3,
-                tiltY: 1.0,
-                compact: true,
-                floatDelay: 0.60
-            )
+            transparentSceneHotspot
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityLabel("设置，AI、语音与偏好")
         .accessibilityHint("打开设置")
     }
@@ -399,17 +280,9 @@ public struct MyPageView: View {
                 onSignIn()
             }
         } label: {
-            sceneObjectMark(
-                title: isSignedIn ? "账号" : "登录",
-                glyph: .account,
-                style: .lightInk,
-                rotation: 1.8,
-                tiltX: 2.2,
-                tiltY: -0.5,
-                floatDelay: 0.74
-            )
+            transparentSceneHotspot
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityLabel(isSignedIn ? "账号与订阅" : "登录或创建账号")
         .accessibilityHint(isSignedIn ? "同步旅程与管理方案" : "跨设备同步与订阅恢复")
     }
@@ -424,76 +297,13 @@ public struct MyPageView: View {
                 memoryService: memoryService
             )
         } label: {
-            ZStack {
-                SceneEmbeddedControl(
-                    style: .darkInk,
-                    rotation: 4.0,
-                    tiltX: 1.8,
-                    tiltY: 1.2,
-                    floatDelay: 0.88
-                ) {
-                    MinimalSceneGlyph(kind: .memory)
-                        .frame(width: 21, height: 21)
-                }
-                .position(x: 24, y: 24)
-
-                SceneEmbeddedControl(
-                    style: .lightInk,
-                    rotation: 3.0,
-                    tiltX: 1.5,
-                    tiltY: 1.0,
-                    floatDelay: 0.94
-                ) {
-                    Text("记忆")
-                        .font(.system(size: 9, weight: .semibold))
-                }
-                .position(x: 57, y: 44)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            transparentSceneHotspot
         }
-        .buttonStyle(SceneHotspotButtonStyle())
+        .buttonStyle(.plain)
         .accessibilityLabel("记忆调试面板")
         .accessibilityHint("查看角色长期与近期记忆")
     }
     #endif
-
-    private func sceneObjectMark(
-        title: String,
-        glyph: MinimalSceneGlyph.Kind,
-        style: SceneEmbeddedStyle,
-        rotation: Double,
-        tiltX: Double,
-        tiltY: Double,
-        compact: Bool = false,
-        floatDelay: Double
-    ) -> some View {
-        SceneEmbeddedControl(
-            style: style,
-            rotation: rotation,
-            tiltX: tiltX,
-            tiltY: tiltY,
-            floatDelay: floatDelay
-        ) {
-            HStack(spacing: compact ? 5 : 7) {
-                MinimalSceneGlyph(kind: glyph)
-                    .frame(
-                        width: compact ? 21 : 25,
-                        height: compact ? 21 : 25
-                    )
-
-                Text(title)
-                    .font(
-                        .system(
-                            size: compact ? 9 : 11,
-                            weight: .semibold,
-                            design: .default
-                        )
-                    )
-                    .lineLimit(1)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-    }
 
     private var accountPanel: some View {
         NavigationStack {
@@ -933,418 +743,10 @@ public struct MyPageView: View {
         return billing.tier == .free ? .secondary : .dsSky
     }
 
-    private var accountIdentifier: String {
-        guard case .signedIn(let identity) = authSession.phase else {
-            return "本地旅客"
-        }
-        return "ID \(identity.userID.uuidString.prefix(8).uppercased())"
-    }
-
     private func reload() async {
         async let loadedProfile = try? economyStore.profile()
         async let loadedSlots = try? rosterStore.occupiedFriendSlots()
         profile = await loadedProfile
         occupiedFriendSlots = await loadedSlots ?? 0
-    }
-}
-
-private enum SceneEmbeddedStyle {
-    case darkInk
-    case lightInk
-
-    var ink: Color {
-        switch self {
-        case .darkInk:
-            Color(red: 0.105, green: 0.125, blue: 0.13)
-        case .lightInk:
-            Color(red: 0.945, green: 0.945, blue: 0.905)
-        }
-    }
-
-    var relief: Color {
-        switch self {
-        case .darkInk:
-            Color.black.opacity(0.64)
-        case .lightInk:
-            Color(red: 0.055, green: 0.08, blue: 0.10).opacity(0.86)
-        }
-    }
-
-    var highlight: Color {
-        switch self {
-        case .darkInk:
-            Color.white.opacity(0.34)
-        case .lightInk:
-            Color.white.opacity(0.46)
-        }
-    }
-
-    var castShadow: Color {
-        switch self {
-        case .darkInk:
-            Color.black.opacity(0.31)
-        case .lightInk:
-            Color.black.opacity(0.44)
-        }
-    }
-}
-
-private struct SceneEmbeddedControl<Content: View>: View {
-    let style: SceneEmbeddedStyle
-    let rotation: Double
-    let tiltX: Double
-    let tiltY: Double
-    let floatDelay: Double
-    @ViewBuilder let content: () -> Content
-
-    @State private var isLifted = false
-    @Environment(\.sceneControlIsPressed) private var isPressed
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.colorSchemeContrast) private var contrast
-
-    var body: some View {
-        ZStack {
-            renderedContent(color: style.castShadow)
-                .blur(radius: contrast == .increased ? 0.45 : 0.72)
-                .offset(
-                    x: isPressed && !reduceMotion ? 0.55 : 1.35,
-                    y: isPressed && !reduceMotion ? 0.70 : 1.70
-                )
-
-            renderedContent(color: style.relief)
-                .offset(
-                    x: isPressed && !reduceMotion ? 0.22 : 0.55,
-                    y: isPressed && !reduceMotion ? 0.28 : 0.70
-                )
-
-            renderedContent(color: style.highlight)
-                .offset(x: -0.28, y: -0.34)
-
-            renderedContent(color: style.ink)
-        }
-        .compositingGroup()
-        .offset(
-            y: isPressed && !reduceMotion
-                ? 0.55
-                : (isLifted && !reduceMotion ? -0.60 : 0)
-        )
-        .rotationEffect(.degrees(rotation))
-        .rotation3DEffect(
-            .degrees(tiltX),
-            axis: (x: 1, y: 0, z: 0),
-            anchor: .center,
-            perspective: 0.34
-        )
-        .rotation3DEffect(
-            .degrees(tiltY),
-            axis: (x: 0, y: 1, z: 0),
-            anchor: .center,
-            perspective: 0.34
-        )
-        .animation(
-            reduceMotion ? .easeOut(duration: 0.10) : .spring(response: 0.22, dampingFraction: 0.88),
-            value: isPressed
-        )
-        .onAppear {
-            guard !reduceMotion else { return }
-            withAnimation(
-                .easeInOut(duration: 2.6)
-                    .repeatForever(autoreverses: true)
-                    .delay(floatDelay)
-            ) {
-                isLifted = true
-            }
-        }
-    }
-
-    private func renderedContent(color: Color) -> some View {
-        content()
-            .foregroundStyle(color)
-            .environment(\.sceneGlyphInk, color)
-    }
-}
-
-private struct ScenePhotoAvatar: View {
-    let name: String
-
-    private var initial: String {
-        String(name.trimmingCharacters(in: .whitespacesAndNewlines).prefix(1)).uppercased()
-    }
-
-    var body: some View {
-        ZStack {
-            Circle()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color.dsSky.opacity(0.24),
-                            Color(red: 0.74, green: 0.82, blue: 0.82).opacity(0.13),
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-
-            Circle()
-                .fill(
-                    RadialGradient(
-                        colors: [.clear, .black.opacity(0.07)],
-                        center: .center,
-                        startRadius: 14,
-                        endRadius: 25
-                    )
-                )
-
-            Text(initial)
-                .font(.system(size: 19, weight: .black, design: .rounded))
-                .foregroundStyle(Color.dsSkyDeep.opacity(0.82))
-                .shadow(color: .white.opacity(0.35), radius: 0.4, x: -0.3, y: -0.4)
-        }
-        .clipShape(Circle())
-        .overlay {
-            Circle().stroke(.white.opacity(0.28), lineWidth: 0.7)
-        }
-        .saturation(0.72)
-        .contrast(0.94)
-        .accessibilityLabel(name)
-    }
-}
-
-private struct SceneGlyphInkKey: EnvironmentKey {
-    static let defaultValue = Color(red: 0.105, green: 0.125, blue: 0.13)
-}
-
-private extension EnvironmentValues {
-    var sceneGlyphInk: Color {
-        get { self[SceneGlyphInkKey.self] }
-        set { self[SceneGlyphInkKey.self] = newValue }
-    }
-}
-private struct SceneControlPressedKey: EnvironmentKey {
-    static let defaultValue = false
-}
-
-private extension EnvironmentValues {
-    var sceneControlIsPressed: Bool {
-        get { self[SceneControlPressedKey.self] }
-        set { self[SceneControlPressedKey.self] = newValue }
-    }
-}
-
-private struct MinimalSceneGlyph: View {
-    enum Kind {
-        case profile
-        case coins
-        case journey
-        case favorites
-        case settings
-        case account
-        case memory
-    }
-
-    let kind: Kind
-    @Environment(\.sceneGlyphInk) private var sceneGlyphInk
-
-    var body: some View {
-        let ink = sceneGlyphInk
-
-        return Canvas { context, size in
-            let side = min(size.width, size.height)
-            let origin = CGPoint(x: (size.width - side) / 2, y: (size.height - side) / 2)
-            let stroke = StrokeStyle(
-                lineWidth: max(side * 0.065, 1.15),
-                lineCap: .square,
-                lineJoin: .miter
-            )
-
-            func point(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
-                CGPoint(x: origin.x + side * x, y: origin.y + side * y)
-            }
-
-            func rect(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-                CGRect(
-                    x: origin.x + side * x,
-                    y: origin.y + side * y,
-                    width: side * width,
-                    height: side * height
-                )
-            }
-
-            func drawStroke(_ path: Path) {
-                context.stroke(path, with: .color(ink), style: stroke)
-            }
-
-            func drawFill(_ path: Path) {
-                context.fill(path, with: .color(ink))
-            }
-
-            switch kind {
-            case .profile:
-                var head = Path()
-                head.addEllipse(in: rect(0.38, 0.16, 0.24, 0.24))
-                drawFill(head)
-
-                var shoulders = Path()
-                shoulders.move(to: point(0.20, 0.79))
-                shoulders.addCurve(
-                    to: point(0.80, 0.79),
-                    control1: point(0.25, 0.50),
-                    control2: point(0.75, 0.50)
-                )
-                shoulders.addLine(to: point(0.80, 0.86))
-                shoulders.addLine(to: point(0.20, 0.86))
-                shoulders.closeSubpath()
-                drawFill(shoulders)
-
-            case .coins:
-                var top = Path()
-                top.addEllipse(in: rect(0.17, 0.18, 0.66, 0.26))
-                drawStroke(top)
-
-                var body = Path()
-                body.move(to: point(0.17, 0.31))
-                body.addLine(to: point(0.17, 0.66))
-                body.addCurve(
-                    to: point(0.83, 0.66),
-                    control1: point(0.23, 0.86),
-                    control2: point(0.77, 0.86)
-                )
-                body.addLine(to: point(0.83, 0.31))
-                body.move(to: point(0.17, 0.48))
-                body.addCurve(
-                    to: point(0.83, 0.48),
-                    control1: point(0.27, 0.66),
-                    control2: point(0.73, 0.66)
-                )
-                drawStroke(body)
-
-            case .journey:
-                var map = Path()
-                map.move(to: point(0.12, 0.24))
-                map.addLine(to: point(0.38, 0.14))
-                map.addLine(to: point(0.62, 0.24))
-                map.addLine(to: point(0.88, 0.14))
-                map.addLine(to: point(0.88, 0.76))
-                map.addLine(to: point(0.62, 0.86))
-                map.addLine(to: point(0.38, 0.76))
-                map.addLine(to: point(0.12, 0.86))
-                map.closeSubpath()
-                map.move(to: point(0.38, 0.14))
-                map.addLine(to: point(0.38, 0.76))
-                map.move(to: point(0.62, 0.24))
-                map.addLine(to: point(0.62, 0.86))
-                drawStroke(map)
-
-                var route = Path()
-                route.move(to: point(0.21, 0.62))
-                route.addCurve(
-                    to: point(0.77, 0.43),
-                    control1: point(0.40, 0.38),
-                    control2: point(0.56, 0.70)
-                )
-                drawStroke(route)
-
-            case .favorites:
-                var star = Path()
-                star.move(to: point(0.50, 0.10))
-                star.addLine(to: point(0.60, 0.40))
-                star.addLine(to: point(0.90, 0.50))
-                star.addLine(to: point(0.60, 0.60))
-                star.addLine(to: point(0.50, 0.90))
-                star.addLine(to: point(0.40, 0.60))
-                star.addLine(to: point(0.10, 0.50))
-                star.addLine(to: point(0.40, 0.40))
-                star.closeSubpath()
-                drawFill(star)
-
-            case .settings:
-                let rows: [(CGFloat, CGFloat)] = [(0.28, 0.64), (0.50, 0.36), (0.72, 0.70)]
-                for (y, knobX) in rows {
-                    var line = Path()
-                    line.move(to: point(0.14, y))
-                    line.addLine(to: point(0.86, y))
-                    drawStroke(line)
-
-                    var knob = Path()
-                    knob.addRect(rect(knobX - 0.07, y - 0.07, 0.14, 0.14))
-                    drawFill(knob)
-                }
-
-            case .account:
-                var card = Path()
-                card.addRoundedRect(
-                    in: rect(0.10, 0.20, 0.80, 0.60),
-                    cornerSize: CGSize(width: side * 0.05, height: side * 0.05)
-                )
-                drawStroke(card)
-
-                var head = Path()
-                head.addEllipse(in: rect(0.22, 0.33, 0.18, 0.18))
-                drawFill(head)
-
-                var bust = Path()
-                bust.move(to: point(0.17, 0.68))
-                bust.addCurve(
-                    to: point(0.45, 0.68),
-                    control1: point(0.21, 0.50),
-                    control2: point(0.41, 0.50)
-                )
-                bust.closeSubpath()
-                drawFill(bust)
-
-                var details = Path()
-                details.move(to: point(0.54, 0.39))
-                details.addLine(to: point(0.78, 0.39))
-                details.move(to: point(0.54, 0.57))
-                details.addLine(to: point(0.72, 0.57))
-                drawStroke(details)
-
-            case .memory:
-                let nodes = [
-                    point(0.23, 0.28), point(0.70, 0.20),
-                    point(0.80, 0.67), point(0.34, 0.77), point(0.50, 0.48),
-                ]
-                var links = Path()
-                for node in nodes.dropLast() {
-                    links.move(to: node)
-                    links.addLine(to: nodes[4])
-                }
-                drawStroke(links)
-
-                for (index, node) in nodes.enumerated() {
-                    let radius = side * (index == 4 ? 0.095 : 0.075)
-                    var square = Path()
-                    square.addRect(
-                        CGRect(
-                            x: node.x - radius,
-                            y: node.y - radius,
-                            width: radius * 2,
-                            height: radius * 2
-                        )
-                    )
-                    drawFill(square)
-                }
-            }
-        }
-        .accessibilityHidden(true)
-    }
-}
-
-private struct SceneHotspotButtonStyle: ButtonStyle {
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .environment(\.sceneControlIsPressed, configuration.isPressed)
-            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.985 : 1)
-            .opacity(configuration.isPressed ? 0.90 : 1)
-            .brightness(configuration.isPressed ? -0.025 : 0)
-            .animation(
-                reduceMotion
-                    ? .easeOut(duration: 0.08)
-                    : .spring(response: 0.24, dampingFraction: 0.90),
-                value: configuration.isPressed
-            )
-            .contentShape(Rectangle())
     }
 }
