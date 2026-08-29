@@ -135,24 +135,24 @@ public struct MyPageView: View {
 
                     learningHotspot
                         .frame(width: min(width * 0.44, 176), height: 210)
-                        .position(x: width * 0.515, y: sceneHeight * 0.48)
+                        .position(x: width * 0.515, y: sceneHeight * 0.435)
 
                     favoritesHotspot
                         .frame(width: 112, height: 120)
                         .position(x: width * 0.16, y: sceneHeight * 0.59)
 
                     settingsHotspot
-                        .frame(width: 106, height: 118)
-                        .position(x: width * 0.75, y: sceneHeight * 0.625)
+                        .frame(width: 112, height: 124)
+                        .position(x: width * 0.755, y: sceneHeight * 0.605)
 
                     accountHotspot
-                        .frame(width: 112, height: 120)
-                        .position(x: width * 0.49, y: sceneHeight * 0.66)
+                        .frame(width: 118, height: 126)
+                        .position(x: width * 0.49, y: sceneHeight * 0.645)
 
                     #if DEBUG
                     memoryDebugHotspot
-                        .frame(width: 108, height: 120)
-                        .position(x: width * 0.52, y: sceneHeight * 0.18)
+                        .frame(width: 114, height: 126)
+                        .position(x: width * 0.515, y: sceneHeight * 0.155)
                     #endif
                 }
                 .frame(width: width, height: sceneHeight)
@@ -243,8 +243,7 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 icon: "bookmark.fill",
                 title: "收藏",
-                rotation: -7,
-                tilt: 4,
+                plane: .phrasebook,
                 phase: 0.35
             )
         }
@@ -269,8 +268,7 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 icon: "slider.horizontal.3",
                 title: "设置",
-                rotation: 5,
-                tilt: 5,
+                plane: .watch,
                 phase: 0.8
             )
         }
@@ -290,8 +288,7 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 icon: "person.crop.circle.badge.plus",
                 title: "登录",
-                rotation: 1,
-                tilt: 3,
+                plane: .phone,
                 phase: 1.15
             )
         }
@@ -313,8 +310,7 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 icon: "photo.on.rectangle.angled",
                 title: "记忆",
-                rotation: 1.5,
-                tilt: 4,
+                plane: .camera,
                 phase: 0.1
             )
         }
@@ -326,11 +322,11 @@ public struct MyPageView: View {
 
     private var profileSceneEntry: some View {
         ZStack(alignment: .topLeading) {
-            SceneHologram(rotation: -6, tilt: 4, phase: 0) {
+            SceneHologram(plane: .identityHolder, phase: 0) {
                 HStack(spacing: 7) {
-                    SceneHologramIcon(name: "person.crop.circle.fill", size: 32)
+                    SceneHologramIcon(name: "person.crop.circle.fill", size: 35)
                     VStack(alignment: .leading, spacing: 1) {
-                        SceneHologramText(displayName, size: 20, weight: .bold)
+                        SceneHologramText(displayName, size: 21, weight: .bold)
                             .lineLimit(1)
                             .minimumScaleFactor(0.62)
                         SceneHologramText(accountBadgeTitle, size: 13, weight: .semibold)
@@ -356,7 +352,11 @@ public struct MyPageView: View {
     }
 
     private var coinSceneEntry: some View {
-        SceneHologram(rotation: 7, tilt: 4, phase: 0.55) {
+        SceneHologram(
+            plane: .wallet,
+            phase: 0.55,
+            tint: .sceneHologramAmber
+        ) {
             VStack(spacing: 2) {
                 SceneHologramIcon(
                     name: "circle.grid.2x1.fill",
@@ -378,10 +378,10 @@ public struct MyPageView: View {
     }
 
     private var learningSceneEntry: some View {
-        SceneHologram(rotation: 1, tilt: 3, phase: 0.25) {
+        SceneHologram(plane: .tablet, phase: 0.25) {
             VStack(spacing: 4) {
-                SceneHologramIcon(name: "book.pages.fill", size: 39)
-                SceneHologramText("英语旅程", size: 23, weight: .bold)
+                SceneHologramIcon(name: "book.pages.fill", size: 43)
+                SceneHologramText("英语旅程", size: 25, weight: .bold)
                 SceneHologramText(
                     "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoal.displayName ?? "载入中")",
                     size: 14,
@@ -399,14 +399,13 @@ public struct MyPageView: View {
     private func fixedSceneEntry(
         icon: String,
         title: String,
-        rotation: Double,
-        tilt: Double,
+        plane: SceneHologramPlane,
         phase: Double
     ) -> some View {
-        SceneHologram(rotation: rotation, tilt: tilt, phase: phase) {
+        SceneHologram(plane: plane, phase: phase) {
             VStack(spacing: 2) {
-                SceneHologramIcon(name: icon, size: 39)
-                SceneHologramText(title, size: 26, weight: .bold)
+                SceneHologramIcon(name: icon, size: 43)
+                SceneHologramText(title, size: 28, weight: .bold)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -864,23 +863,115 @@ public struct MyPageView: View {
     }
 }
 
+/// 每个入口都使用承载物自身的局部平面，而不是套用同一组“伪透视”。
+/// 参数按 825 × 1906 的母版逐物件校准；足迹方向同时表达悬浮高度与环境光方向。
+private struct SceneHologramPlane {
+    let rotationZ: Double
+    let tiltX: Double
+    let tiltY: Double
+    let perspective: CGFloat
+    let scaleX: CGFloat
+    let scaleY: CGFloat
+    let footprintOffset: CGSize
+    let extrusionOffset: CGSize
+    let footprintWidth: CGFloat
+
+    static let identityHolder = SceneHologramPlane(
+        rotationZ: -11,
+        tiltX: 16,
+        tiltY: -5,
+        perspective: 0.38,
+        scaleX: 1,
+        scaleY: 0.94,
+        footprintOffset: CGSize(width: 5, height: 14),
+        extrusionOffset: CGSize(width: 1.8, height: 3.2),
+        footprintWidth: 70
+    )
+    static let camera = SceneHologramPlane(
+        rotationZ: 1,
+        tiltX: 14,
+        tiltY: 2,
+        perspective: 0.34,
+        scaleX: 1,
+        scaleY: 0.95,
+        footprintOffset: CGSize(width: 1, height: 15),
+        extrusionOffset: CGSize(width: 0.8, height: 3.4),
+        footprintWidth: 64
+    )
+    static let wallet = SceneHologramPlane(
+        rotationZ: 10,
+        tiltX: 17,
+        tiltY: -5,
+        perspective: 0.38,
+        scaleX: 1,
+        scaleY: 0.93,
+        footprintOffset: CGSize(width: -5, height: 14),
+        extrusionOffset: CGSize(width: -1.3, height: 3.1),
+        footprintWidth: 66
+    )
+    static let tablet = SceneHologramPlane(
+        rotationZ: 5.5,
+        tiltX: 19,
+        tiltY: -3,
+        perspective: 0.42,
+        scaleX: 1,
+        scaleY: 0.91,
+        footprintOffset: CGSize(width: -3, height: 16),
+        extrusionOffset: CGSize(width: -0.8, height: 3.6),
+        footprintWidth: 82
+    )
+    static let phrasebook = SceneHologramPlane(
+        rotationZ: -9.5,
+        tiltX: 17,
+        tiltY: 4,
+        perspective: 0.38,
+        scaleX: 1,
+        scaleY: 0.93,
+        footprintOffset: CGSize(width: 5, height: 15),
+        extrusionOffset: CGSize(width: 1.2, height: 3.2),
+        footprintWidth: 62
+    )
+    static let watch = SceneHologramPlane(
+        rotationZ: 14,
+        tiltX: 25,
+        tiltY: -8,
+        perspective: 0.48,
+        scaleX: 1,
+        scaleY: 0.86,
+        footprintOffset: CGSize(width: -7, height: 16),
+        extrusionOffset: CGSize(width: -1.8, height: 3.8),
+        footprintWidth: 62
+    )
+    static let phone = SceneHologramPlane(
+        rotationZ: 9,
+        tiltX: 20,
+        tiltY: -4,
+        perspective: 0.43,
+        scaleX: 1,
+        scaleY: 0.9,
+        footprintOffset: CGSize(width: -4, height: 17),
+        extrusionOffset: CGSize(width: -1.1, height: 3.8),
+        footprintWidth: 66
+    )
+}
+
 private struct SceneHologram<Content: View>: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    let rotation: Double
-    let tilt: Double
+    let plane: SceneHologramPlane
     let phase: Double
+    let tint: Color
     let content: Content
 
     init(
-        rotation: Double,
-        tilt: Double,
+        plane: SceneHologramPlane,
         phase: Double,
+        tint: Color = .sceneHologramIvory,
         @ViewBuilder content: () -> Content
     ) {
-        self.rotation = rotation
-        self.tilt = tilt
+        self.plane = plane
         self.phase = phase
+        self.tint = tint
         self.content = content()
     }
 
@@ -891,10 +982,13 @@ private struct SceneHologram<Content: View>: View {
             layers
                 .phaseAnimator([false, true]) { view, raised in
                     view
-                        .offset(y: raised ? -1.8 : 1.2)
-                        .brightness(raised ? 0.025 : 0)
+                        .offset(
+                            x: raised ? -plane.extrusionOffset.width * 0.45 : 0,
+                            y: raised ? -2.4 : 1.1
+                        )
+                        .brightness(raised ? 0.04 : 0)
                 } animation: { _ in
-                    .easeInOut(duration: 2.55 + phase * 0.22)
+                    .easeInOut(duration: 2.7 + phase * 0.2)
                         .delay(phase * 0.18)
                 }
         }
@@ -902,20 +996,51 @@ private struct SceneHologram<Content: View>: View {
 
     private var layers: some View {
         ZStack {
+            Ellipse()
+                .fill(tint.opacity(0.34))
+                .frame(width: plane.footprintWidth, height: 5)
+                .blur(radius: 6.5)
+                .offset(
+                    x: plane.footprintOffset.width,
+                    y: plane.footprintOffset.height + 22
+                )
+
             content
-                .blur(radius: 3.4)
-                .scaleEffect(x: 0.98, y: 0.93, anchor: .center)
-                .offset(x: 1.4, y: 7.2)
-                .opacity(0.11)
+                .blur(radius: 7.5)
+                .offset(
+                    x: plane.footprintOffset.width,
+                    y: plane.footprintOffset.height
+                )
+                .opacity(0.13)
+
+            content
+                .blur(radius: 3.2)
+                .opacity(0.3)
+
+            ForEach(1 ... 3, id: \.self) { slice in
+                content
+                    .offset(
+                        x: plane.extrusionOffset.width * CGFloat(slice) / 3,
+                        y: plane.extrusionOffset.height * CGFloat(slice) / 3
+                    )
+                    .opacity(0.11)
+            }
 
             content
         }
-        .rotationEffect(.degrees(rotation))
+        .scaleEffect(x: plane.scaleX, y: plane.scaleY)
+        .rotationEffect(.degrees(plane.rotationZ))
         .rotation3DEffect(
-            .degrees(tilt),
-            axis: (x: 1, y: 0.12, z: 0),
+            .degrees(plane.tiltX),
+            axis: (x: 1, y: 0, z: 0),
             anchor: .center,
-            perspective: 0.16
+            perspective: plane.perspective
+        )
+        .rotation3DEffect(
+            .degrees(plane.tiltY),
+            axis: (x: 0, y: 1, z: 0),
+            anchor: .center,
+            perspective: plane.perspective
         )
     }
 }
@@ -966,9 +1091,10 @@ private struct SceneHologramIcon: View {
         Image(systemName: name)
             .font(.system(size: size, weight: .semibold))
             .symbolRenderingMode(.monochrome)
-            .foregroundStyle(tint.opacity(0.9))
-            .shadow(color: tint.opacity(0.38), radius: 3.1)
-            .shadow(color: .black.opacity(0.28), radius: 0.8, y: 0.8)
+            .foregroundStyle(tint.opacity(0.96))
+            .shadow(color: tint.opacity(0.22), radius: 8)
+            .shadow(color: tint.opacity(0.62), radius: 2.8)
+            .shadow(color: .black.opacity(0.36), radius: 0.8, y: 1)
     }
 }
 
@@ -992,17 +1118,42 @@ private struct SceneHologramTextRenderer: TextRenderer {
         )
         draw(layout, in: &depthEdge)
 
-        var glow = context
-        glow.opacity = 0.38
-        glow.addFilter(
+        var outerGlow = context
+        outerGlow.opacity = 0.24
+        outerGlow.addFilter(
             .shadow(
-                color: tint.opacity(0.48),
-                radius: 3.2,
+                color: tint.opacity(0.34),
+                radius: 7.2,
                 options: .shadowOnly
             ),
             options: .linearColor
         )
-        draw(layout, in: &glow)
+        draw(layout, in: &outerGlow)
+
+        var innerGlow = context
+        innerGlow.opacity = 0.52
+        innerGlow.addFilter(
+            .shadow(
+                color: tint.opacity(0.66),
+                radius: 2.5,
+                options: .shadowOnly
+            ),
+            options: .linearColor
+        )
+        draw(layout, in: &innerGlow)
+
+        var edgeLight = context
+        edgeLight.opacity = 0.3
+        edgeLight.translateBy(x: 0.7, y: 1.1)
+        edgeLight.addFilter(
+            .shadow(
+                color: tint.opacity(0.45),
+                radius: 1.1,
+                options: .shadowOnly
+            ),
+            options: .linearColor
+        )
+        draw(layout, in: &edgeLight)
 
         draw(layout, in: &context)
     }
