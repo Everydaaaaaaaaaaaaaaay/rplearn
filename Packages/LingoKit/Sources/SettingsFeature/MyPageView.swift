@@ -148,7 +148,8 @@ public struct MyPageView: View {
             )
             .clipped()
         }
-        .ignoresSafeArea(edges: .top)
+        .ignoresSafeArea(edges: [.top, .bottom])
+        .toolbarBackground(.hidden, for: .tabBar)
     }
 
     /// 极短屏幕缩小参考画布后只会留下很窄的侧边余量；使用同源场景作柔化衬底，
@@ -274,7 +275,7 @@ public struct MyPageView: View {
             favoritesBuilder()
         } label: {
             fixedSceneEntry(
-                icon: "bookmark.fill",
+                glyph: .bookmarkStar,
                 title: "收藏",
                 plane: .phrasebook
             )
@@ -298,7 +299,7 @@ public struct MyPageView: View {
             )
         } label: {
             fixedSceneEntry(
-                icon: "slider.horizontal.3",
+                glyph: .system("slider.horizontal.3"),
                 title: "设置",
                 plane: .watch
             )
@@ -317,7 +318,7 @@ public struct MyPageView: View {
             }
         } label: {
             fixedSceneEntry(
-                icon: "person.crop.circle.badge.plus",
+                glyph: .account,
                 title: "登录",
                 plane: .phone
             )
@@ -338,7 +339,7 @@ public struct MyPageView: View {
             )
         } label: {
             fixedSceneEntry(
-                icon: "photo.on.rectangle.angled",
+                glyph: .system("photo"),
                 title: "记忆",
                 plane: .camera
             )
@@ -353,7 +354,7 @@ public struct MyPageView: View {
         ZStack(alignment: .topLeading) {
             SceneHologram(plane: .identityHolder) {
                 VStack(spacing: 5) {
-                    SceneHologramIcon(name: "person.crop.circle", size: 46)
+                    SceneHologramIcon(glyph: .system("person.crop.circle"), size: 46)
 
                     VStack(alignment: .leading, spacing: 0) {
                         SceneHologramText(displayName, size: 17, weight: .bold)
@@ -385,19 +386,19 @@ public struct MyPageView: View {
     private var coinSceneEntry: some View {
         SceneHologram(
             plane: .wallet,
-            tint: .sceneHologramAmber
+            tint: .sceneHologramIvory
         ) {
             VStack(spacing: 2) {
                 SceneHologramIcon(
-                    name: "circle.grid.2x1.fill",
-                    size: 38,
-                    tint: .sceneHologramAmber
+                    glyph: .coinStacks,
+                    size: 48,
+                    tint: .sceneHologramIvory
                 )
                 SceneHologramText(
                     "\(profile?.coins ?? 0) 金币",
                     size: 21,
                     weight: .bold,
-                    tint: .sceneHologramAmber
+                    tint: .sceneHologramIvory
                 )
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -410,7 +411,7 @@ public struct MyPageView: View {
     private var learningSceneEntry: some View {
         SceneHologram(plane: .tablet) {
             VStack(spacing: 4) {
-                SceneHologramIcon(name: "book.pages.fill", size: 43)
+                SceneHologramIcon(glyph: .journeyBook, size: 54)
                 SceneHologramText("英语旅程", size: 25, weight: .bold)
                 SceneHologramText(
                     "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoal.displayName ?? "载入中")",
@@ -427,13 +428,13 @@ public struct MyPageView: View {
     }
 
     private func fixedSceneEntry(
-        icon: String,
+        glyph: SceneHologramGlyph,
         title: String,
         plane: SceneHologramPlane
     ) -> some View {
         SceneHologram(plane: plane) {
             VStack(spacing: 2) {
-                SceneHologramIcon(name: icon, size: 43)
+                SceneHologramIcon(glyph: glyph, size: 46)
                 SceneHologramText(title, size: 28, weight: .bold)
             }
         }
@@ -1033,17 +1034,17 @@ private struct SceneHologram<Content: View>: View {
             }
 
             content
-                .blur(radius: 7.5)
+                .blur(radius: 6)
                 .offset(
                     x: plane.footprintOffset.width,
                     y: plane.footprintOffset.height
                 )
-                .opacity(0.13)
+                .opacity(0.09)
                 .accessibilityHidden(true)
 
             content
-                .blur(radius: 3.6)
-                .opacity(0.36)
+                .blur(radius: 2.8)
+                .opacity(0.16)
                 .accessibilityHidden(true)
 
             ForEach(1 ... 3, id: \.self) { slice in
@@ -1052,7 +1053,7 @@ private struct SceneHologram<Content: View>: View {
                         x: plane.extrusionOffset.width * CGFloat(slice) / 3,
                         y: plane.extrusionOffset.height * CGFloat(slice) / 3
                     )
-                    .opacity(0.11)
+                    .opacity(0.045)
                     .accessibilityHidden(true)
             }
 
@@ -1130,35 +1131,314 @@ private struct SceneHologramText: View {
         Text(value)
             .font(.system(size: size, weight: weight, design: .rounded))
             .tracking(size >= 20 ? -0.45 : 0.08)
-            .foregroundStyle(tint.opacity(0.98))
+            .foregroundStyle(tint.opacity(0.94))
             .textRenderer(SceneHologramTextRenderer(tint: tint))
     }
 }
 
+private enum SceneHologramGlyph {
+    case system(String)
+    case coinStacks
+    case journeyBook
+    case bookmarkStar
+    case account
+}
+
 private struct SceneHologramIcon: View {
-    let name: String
+    let glyph: SceneHologramGlyph
     let size: CGFloat
     let tint: Color
 
     init(
-        name: String,
+        glyph: SceneHologramGlyph,
         size: CGFloat,
         tint: Color = .sceneHologramIvory
     ) {
-        self.name = name
+        self.glyph = glyph
         self.size = size
         self.tint = tint
     }
 
     var body: some View {
-        Image(systemName: name)
-            .font(.system(size: size, weight: .semibold))
-            .symbolRenderingMode(.monochrome)
-            .foregroundStyle(tint)
-            .shadow(color: tint.opacity(0.42), radius: 10)
-            .shadow(color: tint.opacity(0.82), radius: 3.4)
-            .shadow(color: .white.opacity(0.48), radius: 1)
-            .shadow(color: .black.opacity(0.36), radius: 0.8, y: 1)
+        glyphBody
+            .frame(width: size, height: size)
+            .foregroundStyle(tint.opacity(0.94))
+            .shadow(color: tint.opacity(0.18), radius: 6)
+            .shadow(color: tint.opacity(0.38), radius: 2)
+            .shadow(color: .black.opacity(0.3), radius: 0.7, y: 0.8)
+    }
+
+    @ViewBuilder
+    private var glyphBody: some View {
+        switch glyph {
+        case .system(let name):
+            Image(systemName: name)
+                .font(.system(size: size, weight: .medium))
+                .symbolRenderingMode(.monochrome)
+        case .coinStacks:
+            CoinStacksGlyph()
+                .stroke(
+                    tint.opacity(0.94),
+                    style: glyphStrokeStyle
+                )
+                .padding(size * 0.04)
+        case .journeyBook:
+            JourneyBookGlyph()
+                .stroke(
+                    tint.opacity(0.94),
+                    style: glyphStrokeStyle
+                )
+                .padding(size * 0.035)
+        case .bookmarkStar:
+            ZStack {
+                BookmarkGlyph()
+                    .stroke(
+                        tint.opacity(0.94),
+                        style: glyphStrokeStyle
+                    )
+                StarGlyph()
+                    .fill(tint.opacity(0.94))
+                    .frame(width: size * 0.34, height: size * 0.34)
+                    .offset(y: -size * 0.15)
+            }
+            .padding(size * 0.04)
+        case .account:
+            ZStack {
+                AccountCloudGlyph()
+                    .stroke(
+                        tint.opacity(0.94),
+                        style: glyphStrokeStyle
+                    )
+                AccountPersonGlyph()
+                    .fill(tint.opacity(0.94))
+            }
+            .padding(size * 0.035)
+        }
+    }
+
+    private var glyphStrokeStyle: StrokeStyle {
+        StrokeStyle(
+            lineWidth: max(1.7, size * 0.052),
+            lineCap: .round,
+            lineJoin: .round
+        )
+    }
+}
+
+/// 参考稿中的三组硬币：用统一线宽绘制真实叠放关系，替代含义不明确的双圆点符号。
+private struct CoinStacksGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        appendStack(
+            to: &path,
+            in: rect,
+            centerX: 0.2,
+            top: 0.43,
+            bottom: 0.83,
+            width: 0.32,
+            tiers: 3
+        )
+        appendStack(
+            to: &path,
+            in: rect,
+            centerX: 0.8,
+            top: 0.38,
+            bottom: 0.83,
+            width: 0.32,
+            tiers: 3
+        )
+        appendStack(
+            to: &path,
+            in: rect,
+            centerX: 0.5,
+            top: 0.14,
+            bottom: 0.83,
+            width: 0.36,
+            tiers: 5
+        )
+        return path
+    }
+
+    private func appendStack(
+        to path: inout Path,
+        in rect: CGRect,
+        centerX: CGFloat,
+        top: CGFloat,
+        bottom: CGFloat,
+        width: CGFloat,
+        tiers: Int
+    ) {
+        let stackWidth = rect.width * width
+        let ellipseHeight = rect.height * 0.12
+        let center = rect.minX + rect.width * centerX
+        let left = center - stackWidth / 2
+        let right = center + stackWidth / 2
+        let topY = rect.minY + rect.height * top
+        let bottomY = rect.minY + rect.height * bottom
+
+        path.addEllipse(
+            in: CGRect(
+                x: left,
+                y: topY,
+                width: stackWidth,
+                height: ellipseHeight
+            )
+        )
+        path.move(to: CGPoint(x: left, y: topY + ellipseHeight / 2))
+        path.addLine(to: CGPoint(x: left, y: bottomY))
+        path.addCurve(
+            to: CGPoint(x: right, y: bottomY),
+            control1: CGPoint(x: left, y: bottomY + ellipseHeight * 0.58),
+            control2: CGPoint(x: right, y: bottomY + ellipseHeight * 0.58)
+        )
+        path.addLine(to: CGPoint(x: right, y: topY + ellipseHeight / 2))
+
+        for tier in 1 ..< tiers {
+            let fraction = CGFloat(tier) / CGFloat(tiers)
+            let y = topY + ellipseHeight / 2 + (bottomY - topY) * fraction
+            path.move(to: CGPoint(x: left, y: y))
+            path.addCurve(
+                to: CGPoint(x: right, y: y),
+                control1: CGPoint(x: left, y: y + ellipseHeight * 0.5),
+                control2: CGPoint(x: right, y: y + ellipseHeight * 0.5)
+            )
+        }
+    }
+}
+
+/// 展开的旅行手册与右页上升路线，保持参考稿的开放、成长语义。
+private struct JourneyBookGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        let point: (CGFloat, CGFloat) -> CGPoint = { x, y in
+            CGPoint(x: rect.minX + rect.width * x, y: rect.minY + rect.height * y)
+        }
+        var path = Path()
+
+        path.move(to: point(0.5, 0.84))
+        path.addCurve(
+            to: point(0.08, 0.7),
+            control1: point(0.36, 0.72),
+            control2: point(0.2, 0.68)
+        )
+        path.addLine(to: point(0.08, 0.18))
+        path.addCurve(
+            to: point(0.5, 0.31),
+            control1: point(0.23, 0.14),
+            control2: point(0.39, 0.19)
+        )
+        path.addLine(to: point(0.5, 0.84))
+        path.addCurve(
+            to: point(0.92, 0.7),
+            control1: point(0.64, 0.72),
+            control2: point(0.8, 0.68)
+        )
+        path.addLine(to: point(0.92, 0.18))
+        path.addCurve(
+            to: point(0.5, 0.31),
+            control1: point(0.77, 0.14),
+            control2: point(0.61, 0.19)
+        )
+
+        path.move(to: point(0.59, 0.59))
+        path.addLine(to: point(0.69, 0.48))
+        path.addLine(to: point(0.76, 0.54))
+        path.addLine(to: point(0.87, 0.39))
+        path.move(to: point(0.78, 0.39))
+        path.addLine(to: point(0.87, 0.39))
+        path.addLine(to: point(0.87, 0.48))
+        return path
+    }
+}
+
+private struct BookmarkGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.2, y: rect.minY + rect.height * 0.08))
+        path.addQuadCurve(
+            to: CGPoint(x: rect.minX + rect.width * 0.8, y: rect.minY + rect.height * 0.08),
+            control: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.035)
+        )
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.8, y: rect.minY + rect.height * 0.9))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.69))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.2, y: rect.minY + rect.height * 0.9))
+        path.closeSubpath()
+        return path
+    }
+}
+
+private struct StarGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let outerRadius = min(rect.width, rect.height) / 2
+        let innerRadius = outerRadius * 0.46
+        var path = Path()
+        for index in 0 ..< 10 {
+            let radius = index.isMultiple(of: 2) ? outerRadius : innerRadius
+            let angle = -CGFloat.pi / 2 + CGFloat(index) * CGFloat.pi / 5
+            let point = CGPoint(
+                x: center.x + CGFloat(cos(Double(angle))) * radius,
+                y: center.y + CGFloat(sin(Double(angle))) * radius
+            )
+            if index == 0 {
+                path.move(to: point)
+            } else {
+                path.addLine(to: point)
+            }
+        }
+        path.closeSubpath()
+        return path
+    }
+}
+
+/// 参考稿中的账户入口：开放底边的云形轮廓承托人物剪影。
+private struct AccountCloudGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        let point: (CGFloat, CGFloat) -> CGPoint = { x, y in
+            CGPoint(x: rect.minX + rect.width * x, y: rect.minY + rect.height * y)
+        }
+        var path = Path()
+
+        path.move(to: point(0.32, 0.42))
+        path.addCurve(
+            to: point(0.68, 0.42),
+            control1: point(0.33, 0.14),
+            control2: point(0.67, 0.14)
+        )
+        path.addCurve(
+            to: point(0.73, 0.84),
+            control1: point(0.91, 0.38),
+            control2: point(1, 0.72)
+        )
+        path.move(to: point(0.27, 0.84))
+        path.addCurve(
+            to: point(0.32, 0.42),
+            control1: point(0, 0.78),
+            control2: point(0.09, 0.38)
+        )
+        return path
+    }
+}
+
+private struct AccountPersonGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        path.addEllipse(
+            in: CGRect(
+                x: rect.minX + rect.width * 0.39,
+                y: rect.minY + rect.height * 0.38,
+                width: rect.width * 0.22,
+                height: rect.height * 0.22
+            )
+        )
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.28, y: rect.minY + rect.height * 0.84))
+        path.addCurve(
+            to: CGPoint(x: rect.minX + rect.width * 0.72, y: rect.minY + rect.height * 0.84),
+            control1: CGPoint(x: rect.minX + rect.width * 0.3, y: rect.minY + rect.height * 0.61),
+            control2: CGPoint(x: rect.minX + rect.width * 0.7, y: rect.minY + rect.height * 0.61)
+        )
+        path.closeSubpath()
+        return path
     }
 }
 
@@ -1173,9 +1453,9 @@ private struct SceneHologramTextRenderer: TextRenderer {
         var depthEdge = context
         depthEdge.addFilter(
             .shadow(
-                color: .black.opacity(0.32),
-                radius: 1.05,
-                y: 0.85,
+                color: .black.opacity(0.28),
+                radius: 0.8,
+                y: 0.65,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1183,11 +1463,11 @@ private struct SceneHologramTextRenderer: TextRenderer {
         draw(layout, in: &depthEdge)
 
         var outerGlow = context
-        outerGlow.opacity = 0.36
+        outerGlow.opacity = 0.16
         outerGlow.addFilter(
             .shadow(
-                color: tint.opacity(0.55),
-                radius: 9,
+                color: tint.opacity(0.34),
+                radius: 5.5,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1195,11 +1475,11 @@ private struct SceneHologramTextRenderer: TextRenderer {
         draw(layout, in: &outerGlow)
 
         var innerGlow = context
-        innerGlow.opacity = 0.75
+        innerGlow.opacity = 0.38
         innerGlow.addFilter(
             .shadow(
-                color: tint.opacity(0.85),
-                radius: 3,
+                color: tint.opacity(0.58),
+                radius: 1.8,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1207,12 +1487,12 @@ private struct SceneHologramTextRenderer: TextRenderer {
         draw(layout, in: &innerGlow)
 
         var edgeLight = context
-        edgeLight.opacity = 0.42
-        edgeLight.translateBy(x: 0.7, y: 1.1)
+        edgeLight.opacity = 0.24
+        edgeLight.translateBy(x: 0.55, y: 0.8)
         edgeLight.addFilter(
             .shadow(
-                color: .white.opacity(0.75),
-                radius: 1.2,
+                color: .white.opacity(0.52),
+                radius: 0.8,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -1245,5 +1525,4 @@ private struct SceneHologramButtonStyle: ButtonStyle {
 
 private extension Color {
     static let sceneHologramIvory = Color(red: 1, green: 0.99, blue: 0.95)
-    static let sceneHologramAmber = Color(red: 0.96, green: 0.72, blue: 0.34)
 }
