@@ -329,6 +329,17 @@ struct DictDatabaseTests {
         #expect(go.wordForms.contains { $0.label == "过去式" && $0.word == "went" })
     }
 
+    @Test("领域标签不再被误当词性")
+    func domainLabelIsSeparatedFromPartOfSpeech() async throws {
+        let db = try openDatabase()
+        let raining = try #require(await db.lookup("raining"))
+        let meaning = try #require(raining.meaningGroups.first)
+
+        #expect(meaning.partOfSpeech == "现在分词")
+        #expect(meaning.meaning == "【化学】淋降现象")
+        #expect(meaning.partOfSpeechAbbreviation == "v.")
+    }
+
     @Test("大小写不敏感")
     func caseInsensitive() async throws {
         let db = try openDatabase()

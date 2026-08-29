@@ -141,7 +141,9 @@ struct DictSenseDisplayGroup: Identifiable, Equatable {
             .flatMap(\.synonyms)
             .filter { seen.insert($0.lowercased()).inserted }
             .prefix(6)
-        return synonyms.isEmpty ? nil : "≈ \(synonyms.joined(separator: " · "))"
+        return synonyms.isEmpty
+            ? nil
+            : "≈ \(synonyms.joined(separator: " · "))"
     }
 }
 
@@ -192,6 +194,7 @@ enum DictDisplayText {
             .joined(separator: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
     }
+
 }
 
 enum DictSenseDisplayPolicy {
@@ -939,7 +942,7 @@ public struct DictCardView: View {
         tokens.append(
             TextToken(
                 id: tokens.count,
-                display: example.annotation,
+                display: " \(example.annotation)",
                 word: nil
             )
         )
