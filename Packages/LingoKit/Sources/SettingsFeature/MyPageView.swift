@@ -139,7 +139,7 @@ public struct MyPageView: View {
 
                     favoritesHotspot
                         .frame(width: 106, height: 76)
-                        .position(x: width * 0.17, y: sceneHeight * 0.51)
+                        .position(x: width * 0.17, y: sceneHeight * 0.59)
 
                     settingsHotspot
                         .frame(width: 104, height: 74)
@@ -147,12 +147,12 @@ public struct MyPageView: View {
 
                     accountHotspot
                         .frame(width: 112, height: 78)
-                        .position(x: width * 0.50, y: sceneHeight * 0.74)
+                        .position(x: width * 0.50, y: sceneHeight * 0.65)
 
                     #if DEBUG
                     memoryDebugHotspot
                         .frame(width: 80, height: 68)
-                        .position(x: width * 0.53, y: sceneHeight * 0.115)
+                        .position(x: width * 0.53, y: sceneHeight * 0.16)
                     #endif
                 }
                 .frame(width: width, height: sceneHeight)
@@ -173,7 +173,7 @@ public struct MyPageView: View {
             )
 
             ZStack {
-                Image("profile_modern_travel_desk_holographic_from_original", bundle: .main)
+                Image("profile_modern_travel_desk_modern_kit_holographic", bundle: .main)
                     .resizable()
                     .frame(width: width, height: height + pullDistance)
 
