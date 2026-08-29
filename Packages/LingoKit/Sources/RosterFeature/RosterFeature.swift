@@ -298,7 +298,7 @@ public struct RosterView: View {
             showsCapacity: false,
             toggle: toggleFavoriteGroup
         )
-        .listRowInsets(favoriteGroupInsets)
+        .listRowInsets(contactGroupInsets(bottom: 6))
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
     }
@@ -314,26 +314,17 @@ public struct RosterView: View {
             showsCapacity: true,
             toggle: toggleFriendGroup
         )
-        .listRowInsets(friendGroupInsets)
+        .listRowInsets(contactGroupInsets(bottom: DSSpacing.lg))
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
     }
 
-    private var favoriteGroupInsets: EdgeInsets {
+    private func contactGroupInsets(bottom: CGFloat) -> EdgeInsets {
         EdgeInsets(
             top: DSSpacing.sm,
-            leading: dynamicTypeSize.isAccessibilitySize ? 12 : 18,
-            bottom: 6,
-            trailing: dynamicTypeSize.isAccessibilitySize ? 12 : 58
-        )
-    }
-
-    private var friendGroupInsets: EdgeInsets {
-        EdgeInsets(
-            top: 8,
-            leading: dynamicTypeSize.isAccessibilitySize ? 12 : 42,
-            bottom: DSSpacing.lg,
-            trailing: dynamicTypeSize.isAccessibilitySize ? 12 : 14
+            leading: dynamicTypeSize.isAccessibilitySize ? 12 : DSSpacing.md,
+            bottom: bottom,
+            trailing: dynamicTypeSize.isAccessibilitySize ? 12 : DSSpacing.md
         )
     }
 
@@ -447,20 +438,23 @@ public struct RosterView: View {
                     .background(tint.opacity(0.13), in: Circle())
 
                 Text(title)
-                    .font(.headline)
+                    .font(.headline.weight(.semibold))
                     .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.72), radius: 2, y: 1)
 
                 Text("\(count)")
-                    .font(.caption.weight(.medium).monospacedDigit())
-                    .foregroundStyle(.white.opacity(0.58))
+                    .font(.caption.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(.white.opacity(0.8))
+                    .shadow(color: .black.opacity(0.65), radius: 1.5, y: 1)
 
                 Spacer(minLength: DSSpacing.xs)
 
                 Image(systemName: "chevron.down")
                     .font(.caption.weight(.bold))
                     .rotationEffect(.degrees(isExpanded ? 0 : -90))
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(.white.opacity(0.88))
                     .frame(width: 28, height: 28)
+                    .shadow(color: .black.opacity(0.62), radius: 1.5, y: 1)
             }
             .frame(maxWidth: .infinity, minHeight: 44)
             .padding(.horizontal, DSSpacing.md)
@@ -536,7 +530,7 @@ public struct RosterView: View {
         VStack(alignment: .leading, spacing: accessibilityLayout ? 6 : 3) {
             HStack(alignment: .firstTextBaseline, spacing: 5) {
                 Text(character.card.name)
-                    .font(.body.weight(.semibold))
+                    .font(.body.weight(.bold))
                     .foregroundStyle(.white)
                     .lineLimit(accessibilityLayout ? 2 : 1)
                     .fixedSize(horizontal: false, vertical: true)
@@ -550,12 +544,12 @@ public struct RosterView: View {
             }
 
             Text(friendStatus(character))
-                .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.7))
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.white.opacity(0.84))
                 .lineLimit(accessibilityLayout ? 3 : 1)
                 .fixedSize(horizontal: false, vertical: true)
         }
-        .shadow(color: .black.opacity(0.4), radius: 1, y: 0.5)
+        .shadow(color: .black.opacity(0.76), radius: 2, y: 1)
     }
 
     private func friendDestination(_ character: CharacterDTO) -> some View {
@@ -620,9 +614,9 @@ public struct RosterView: View {
         .foregroundStyle(
             isCapacityNearLimit
                 ? AnyShapeStyle(Color.dsWarning)
-                : AnyShapeStyle(Color.white.opacity(0.68))
+                : AnyShapeStyle(Color.white.opacity(0.82))
         )
-        .shadow(color: .black.opacity(0.5), radius: 1, y: 0.5)
+        .shadow(color: .black.opacity(0.72), radius: 2, y: 1)
         .accessibilityLabel(
             "好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个。剧情旅伴不占好友位"
         )
@@ -744,9 +738,9 @@ private enum RosterGlassIslandStyle {
 
     var tint: Color {
         switch self {
-        case .favorite: Color.dsSunset.opacity(0.035)
-        case .friends: Color.dsSky.opacity(0.028)
-        case .search: Color.white.opacity(0.018)
+        case .favorite: Color.black.opacity(0.075)
+        case .friends: Color.black.opacity(0.09)
+        case .search: Color.black.opacity(0.085)
         }
     }
 }
@@ -771,7 +765,7 @@ private struct RosterGlassIslandModifier: ViewModifier {
                 .background { readabilityVeil(shape) }
                 .glassEffect(.clear.tint(style.tint).interactive(), in: shape)
                 .overlay { islandEdge(shape) }
-                .shadow(color: .black.opacity(0.18), radius: 22, y: 10)
+                .shadow(color: .black.opacity(0.2), radius: 22, y: 10)
         } else {
             content
                 .background(.ultraThinMaterial, in: shape)
@@ -785,8 +779,8 @@ private struct RosterGlassIslandModifier: ViewModifier {
         shape.fill(
             LinearGradient(
                 colors: [
-                    Color.black.opacity(contrast == .increased ? 0.3 : 0.075),
-                    Color.black.opacity(contrast == .increased ? 0.2 : 0.025),
+                    Color.black.opacity(contrast == .increased ? 0.42 : 0.14),
+                    Color.black.opacity(contrast == .increased ? 0.32 : 0.08),
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
