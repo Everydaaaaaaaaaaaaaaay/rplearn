@@ -224,8 +224,8 @@ public struct FavoritesView: View {
                 .buttonStyle(.plain)
             }
             .frame(width: min(218, proxy.size.width * 0.60))
-            .rotationEffect(.degrees(-13))
-            .position(x: proxy.size.width * 0.68, y: proxy.size.height * 0.41)
+            .rotationEffect(.degrees(-8.5))
+            .position(x: proxy.size.width * 0.61, y: proxy.size.height * 0.41)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -262,8 +262,8 @@ public struct FavoritesView: View {
                     .foregroundStyle(Color.dsPaperInkSecondary)
             }
             .foregroundStyle(Color.dsPaperInk)
-            .rotationEffect(.degrees(-13))
-            .position(x: proxy.size.width * 0.68, y: proxy.size.height * 0.41)
+            .rotationEffect(.degrees(-8.5))
+            .position(x: proxy.size.width * 0.61, y: proxy.size.height * 0.41)
         }
     }
 
