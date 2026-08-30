@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// 旅行工作台功能场景。功能页使用语义化摄影底图，调试档案保留“我的”原场景。
+/// 旅行工作台功能场景。每个功能页使用与任务语义对应的独立摄影底图。
 public enum DSWorkbenchSceneFocus: Sendable, Equatable {
     case learning
     case favorites
@@ -14,21 +14,19 @@ public enum DSWorkbenchSceneFocus: Sendable, Equatable {
         case .favorites: "detail_favorites_journal"
         case .settings: "detail_settings_studio"
         case .account: "detail_account_sync_desk"
-        case .archive: "profile_modern_travel_desk_interactive_scene"
+        case .archive: "detail_memory_archive_desk"
         }
     }
 
     fileprivate var scale: CGFloat {
         switch self {
-        case .learning, .favorites, .settings, .account: 1
-        case .archive: 1.12
+        case .learning, .favorites, .settings, .account, .archive: 1
         }
     }
 
     fileprivate var anchor: UnitPoint {
         switch self {
-        case .learning, .favorites, .settings, .account: .center
-        case .archive: UnitPoint(x: 0.54, y: 0.12)
+        case .learning, .favorites, .settings, .account, .archive: .center
         }
     }
 }
@@ -61,37 +59,9 @@ public struct DSWorkbenchBackdrop: View {
 
     @ViewBuilder
     private var backdropWash: some View {
-        if focus == .archive {
-            atmosphericWash
-        } else if colorScheme == .dark {
+        if colorScheme == .dark {
             Color.black.opacity(reduceTransparency ? 0.34 : 0.24)
         }
-    }
-
-    private var atmosphericWash: some View {
-        ZStack {
-            Color.black.opacity(colorScheme == .dark ? 0.30 : 0.025)
-
-            LinearGradient(
-                stops: [
-                    .init(color: Color.dsBrandCream.opacity(topCreamOpacity), location: 0),
-                    .init(color: Color.clear, location: 0.38),
-                    .init(color: Color.dsTravelNavy.opacity(bottomNavyOpacity), location: 1),
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        }
-    }
-
-    private var topCreamOpacity: Double {
-        if reduceTransparency { return colorScheme == .dark ? 0.20 : 0.34 }
-        return colorScheme == .dark ? 0.08 : 0.16
-    }
-
-    private var bottomNavyOpacity: Double {
-        if reduceTransparency { return colorScheme == .dark ? 0.30 : 0.16 }
-        return colorScheme == .dark ? 0.18 : 0.07
     }
 }
 
@@ -253,6 +223,7 @@ public struct DSWorkbenchPaperSheet<Content: View>: View {
 }
 
 /// 皮革包边的黑曜石圆章与浮金线条图标。
+/// 静态渐变、刻纹与多层位移共同建立 2.5D 深度，不引入逐帧特效。
 public struct DSObsidianMedallion: View {
     private let systemImage: String
     private let size: CGFloat
@@ -265,28 +236,152 @@ public struct DSObsidianMedallion: View {
     public var body: some View {
         ZStack {
             Circle()
+                .fill(Color.black.opacity(0.50))
+                .offset(y: size * 0.055)
+
+            Circle()
                 .fill(
                     RadialGradient(
                         colors: [
-                            Color(red: 0.075, green: 0.160, blue: 0.235),
-                            Color(red: 0.016, green: 0.052, blue: 0.086),
+                            Color(red: 0.16, green: 0.24, blue: 0.30),
+                            Color(red: 0.055, green: 0.105, blue: 0.145),
+                            Color(red: 0.012, green: 0.030, blue: 0.046),
                         ],
-                        center: .topLeading,
-                        startRadius: 2,
-                        endRadius: size * 0.78
+                        center: UnitPoint(x: 0.32, y: 0.24),
+                        startRadius: 1,
+                        endRadius: size * 0.82
                     )
                 )
                 .overlay {
-                    Circle().stroke(Color.dsFoilGold.opacity(0.32), lineWidth: 0.8)
+                    Circle()
+                        .fill(
+                            AngularGradient(
+                                colors: [
+                                    .white.opacity(0.13),
+                                    .clear,
+                                    .black.opacity(0.22),
+                                    .clear,
+                                    .white.opacity(0.08),
+                                ],
+                                center: .center
+                            )
+                        )
+                        .blendMode(.screen)
+                }
+                .overlay { ObsidianMicrotexture().padding(size * 0.055) }
+                .overlay {
+                    Circle()
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [
+                                    Color.dsFoilGold.opacity(0.66),
+                                    Color.white.opacity(0.32),
+                                    Color.black.opacity(0.68),
+                                    Color.dsFoilGold.opacity(0.30),
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: max(1, size * 0.022)
+                        )
+                }
+                .overlay {
+                    Circle()
+                        .inset(by: size * 0.09)
+                        .stroke(Color.white.opacity(0.11), lineWidth: 0.75)
+                }
+                .overlay {
+                    Circle()
+                        .trim(from: 0.58, to: 0.89)
+                        .stroke(
+                            Color.dsFoilGold.opacity(0.32),
+                            style: StrokeStyle(lineWidth: 1.1, lineCap: .round)
+                        )
+                        .rotationEffect(.degrees(7))
+                        .padding(size * 0.055)
                 }
 
             Image(systemName: systemImage)
-                .font(.system(size: size * 0.40, weight: .light))
+                .font(.system(size: size * 0.39, weight: .semibold))
                 .symbolRenderingMode(.monochrome)
-                .foregroundStyle(Color.dsFoilGold)
+                .foregroundStyle(Color.black.opacity(0.72))
+                .offset(x: size * 0.013, y: size * 0.043)
+
+            Image(systemName: systemImage)
+                .font(.system(size: size * 0.39, weight: .medium))
+                .symbolRenderingMode(.monochrome)
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 1.0, green: 0.94, blue: 0.67),
+                            Color.dsFoilGold,
+                            Color(red: 0.65, green: 0.39, blue: 0.11),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .shadow(color: Color.dsFoilGold.opacity(0.60), radius: 2.2)
+                .shadow(color: Color.dsFoilGold.opacity(0.24), radius: 7)
+                .overlay {
+                    Image(systemName: systemImage)
+                        .font(.system(size: size * 0.39, weight: .thin))
+                        .foregroundStyle(Color.white.opacity(0.46))
+                        .offset(x: -0.35, y: -0.55)
+                }
         }
         .frame(width: size, height: size)
-        .shadow(color: Color.black.opacity(0.22), radius: 8, y: 4)
+        .drawingGroup(opaque: false, colorMode: .linear)
+        .shadow(color: Color.dsFoilGold.opacity(0.16), radius: 7)
+        .shadow(color: Color.black.opacity(0.30), radius: 9, y: 6)
+        .accessibilityHidden(true)
+    }
+}
+
+private struct ObsidianMicrotexture: View {
+    var body: some View {
+        Canvas { context, canvasSize in
+            let center = CGPoint(x: canvasSize.width / 2, y: canvasSize.height / 2)
+            let minimum = min(canvasSize.width, canvasSize.height)
+
+            for index in 0 ..< 15 {
+                let radius = minimum * (0.20 + CGFloat(index) * 0.0205)
+                let start = Angle.degrees(Double(index * 23 + 196))
+                let end = Angle.degrees(Double(index * 23 + 232))
+                var arc = Path()
+                arc.addArc(
+                    center: center,
+                    radius: radius,
+                    startAngle: start,
+                    endAngle: end,
+                    clockwise: false
+                )
+                context.stroke(
+                    arc,
+                    with: .color(.white.opacity(index.isMultiple(of: 3) ? 0.075 : 0.035)),
+                    lineWidth: 0.55
+                )
+            }
+
+            for index in 0 ..< 11 {
+                let y = minimum * (0.16 + CGFloat(index) * 0.063)
+                var grain = Path()
+                grain.move(to: CGPoint(x: minimum * 0.17, y: y))
+                grain.addCurve(
+                    to: CGPoint(x: minimum * 0.83, y: y + CGFloat(index % 3 - 1) * 1.2),
+                    control1: CGPoint(x: minimum * 0.36, y: y - 1.1),
+                    control2: CGPoint(x: minimum * 0.62, y: y + 1.4)
+                )
+                context.stroke(
+                    grain,
+                    with: .color(.black.opacity(0.075)),
+                    lineWidth: 0.45
+                )
+            }
+        }
+        .clipShape(Circle())
+        .blendMode(.softLight)
+        .allowsHitTesting(false)
         .accessibilityHidden(true)
     }
 }

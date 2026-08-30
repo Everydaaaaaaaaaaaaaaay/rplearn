@@ -49,6 +49,9 @@ public struct FavoritesView: View {
     @State private var isLoading = true
     @State private var filter: Filter = .all
     @State private var searchText = ""
+    @State private var isSearchExpanded = false
+    @FocusState private var isSearchFieldFocused: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         deps: FavoritesDependencies,
@@ -63,9 +66,9 @@ public struct FavoritesView: View {
             DSWorkbenchBackdrop(focus: .favorites)
 
             VStack(spacing: 0) {
-                filterPanel
+                compactControls
                     .padding(.horizontal, DSSpacing.lg)
-                    .padding(.top, DSSpacing.sm)
+                    .padding(.top, 6)
                     .padding(.bottom, DSSpacing.xs)
 
                 if isLoading {
@@ -128,6 +131,7 @@ public struct FavoritesView: View {
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .animation(reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.86), value: isSearchExpanded)
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -153,59 +157,149 @@ public struct FavoritesView: View {
         }
     }
 
-    private var filterPanel: some View {
-        DSWorkbenchPaperSheet(radius: 20, padding: DSSpacing.md) {
-            VStack(spacing: DSSpacing.sm) {
-                HStack(spacing: DSSpacing.sm) {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(Color.dsPaperInkSecondary)
-                    TextField(
-                        "",
-                        text: $searchText,
-                        prompt: Text("搜索收藏")
-                            .foregroundStyle(Color.dsPaperInkSecondary)
-                    )
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .foregroundStyle(Color.dsPaperInk)
-                    if !searchText.isEmpty {
-                        Button {
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundStyle(Color.dsPaperInkSecondary)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("清除搜索")
-                    }
-                }
-                .frame(minHeight: 40)
+    @ViewBuilder
+    private var compactControls: some View {
+        if isSearchExpanded {
+            HStack(spacing: 10) {
+                Image(systemName: "magnifyingglass")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(Color.dsTravelNavy.opacity(0.78))
 
-                Picker("收藏类型", selection: $filter) {
-                    ForEach(Filter.allCases) { option in
-                        Text(option.rawValue).tag(option)
-                    }
+                TextField(
+                    "",
+                    text: $searchText,
+                    prompt: Text("搜索收藏").foregroundStyle(Color.dsPaperInkSecondary)
+                )
+                .focused($isSearchFieldFocused)
+                .submitLabel(.search)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .foregroundStyle(Color.dsPaperInk)
+
+                Button(action: collapseSearch) {
+                    Image(systemName: "xmark")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(Color.dsTravelNavy)
+                        .frame(width: 32, height: 32)
+                        .contentShape(Circle())
                 }
-                .pickerStyle(.segmented)
+                .buttonStyle(.plain)
+                .accessibilityLabel("取消搜索")
             }
+            .padding(.horizontal, 14)
+            .frame(height: 48)
+            .dsSceneGlass(
+                radius: 24,
+                tint: Color.dsBrandCream.opacity(0.08),
+                interactive: true,
+                legibility: .ambient
+            )
+            .transition(
+                reduceMotion
+                    ? .opacity
+                    : .scale(scale: 0.86, anchor: .trailing).combined(with: .opacity)
+            )
+        } else {
+            HStack(spacing: 9) {
+                filterCapsule
+
+                Button(action: expandSearch) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(Color.dsTravelNavy)
+                        .frame(width: 48, height: 48)
+                        .contentShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .dsSceneGlass(
+                    radius: 24,
+                    tint: Color.dsBrandCream.opacity(0.08),
+                    interactive: true,
+                    legibility: .ambient
+                )
+                .accessibilityLabel("搜索收藏")
+            }
+            .transition(
+                reduceMotion
+                    ? .opacity
+                    : .scale(scale: 0.96, anchor: .leading).combined(with: .opacity)
+            )
+        }
+    }
+
+    private var filterCapsule: some View {
+        HStack(spacing: 2) {
+            ForEach(Filter.allCases) { option in
+                Button {
+                    filter = option
+                } label: {
+                    Text(option.rawValue)
+                        .font(.footnote.weight(filter == option ? .bold : .medium))
+                        .foregroundStyle(Color.dsPaperInk)
+                        .frame(maxWidth: .infinity, minHeight: 38)
+                        .background {
+                            if filter == option {
+                                Capsule()
+                                    .fill(Color.dsBrandCream.opacity(0.92))
+                                    .overlay {
+                                        Capsule().stroke(Color.white.opacity(0.78), lineWidth: 0.8)
+                                    }
+                                    .shadow(color: Color.dsTravelNavy.opacity(0.14), radius: 5, y: 2)
+                            }
+                        }
+                }
+                .buttonStyle(.plain)
+                .accessibilityAddTraits(filter == option ? .isSelected : [])
+            }
+        }
+        .padding(4)
+        .frame(maxWidth: .infinity, minHeight: 48)
+        .dsSceneGlass(
+            radius: 24,
+            tint: Color.dsBrandCream.opacity(0.06),
+            interactive: true,
+            legibility: .ambient
+        )
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("收藏类型")
+    }
+
+    private func expandSearch() {
+        withAnimation(reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.86)) {
+            isSearchExpanded = true
+        }
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(reduceMotion ? 0 : 120))
+            isSearchFieldFocused = true
+        }
+    }
+
+    private func collapseSearch() {
+        isSearchFieldFocused = false
+        searchText = ""
+        withAnimation(reduceMotion ? nil : .spring(response: 0.38, dampingFraction: 0.88)) {
+            isSearchExpanded = false
         }
     }
 
     private var emptyNotebook: some View {
         GeometryReader { proxy in
             VStack(spacing: 14) {
-                journalIllustration
+                JournalPencilBookmark()
+                    .frame(width: 76, height: 78)
 
                 VStack(spacing: 6) {
                     Text("还没有收藏")
                         .font(.system(.title2, design: .rounded, weight: .heavy))
                         .foregroundStyle(Color.dsPaperInk)
+                        .journalRelief(strength: 1)
 
                     Text("在对话中收藏单词、语法或句子，\n它们会整理在这里。")
                         .font(.subheadline)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(3)
+                        .journalRelief(strength: 0.55)
                 }
 
                 Button(action: onBrowseConversations) {
@@ -217,36 +311,27 @@ public struct FavoritesView: View {
                     .foregroundStyle(Color.dsTravelNavy)
                     .padding(.horizontal, 20)
                     .frame(minHeight: 42)
+                    .journalRelief(strength: 0.5)
                     .overlay {
-                        Capsule().stroke(Color.dsTravelNavy, lineWidth: 1.2)
+                        Capsule()
+                            .stroke(Color.dsTravelNavy.opacity(0.88), lineWidth: 1.3)
+                            .overlay {
+                                Capsule()
+                                    .stroke(
+                                        Color.dsSkyDeep.opacity(0.36),
+                                        style: StrokeStyle(lineWidth: 0.75, dash: [1.2, 2.4])
+                                    )
+                                    .offset(x: -0.45, y: 0.35)
+                            }
                     }
                 }
                 .buttonStyle(.plain)
             }
             .frame(width: min(218, proxy.size.width * 0.60))
             .rotationEffect(.degrees(-8.5))
-            .position(x: proxy.size.width * 0.61, y: proxy.size.height * 0.41)
+            .position(x: proxy.size.width * 0.61, y: proxy.size.height * 0.43)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-
-    private var journalIllustration: some View {
-        ZStack {
-            Image(systemName: "bookmark.fill")
-                .font(.system(size: 58, weight: .ultraLight))
-                .foregroundStyle(Color.dsSkyDeep.opacity(0.08))
-
-            Image(systemName: "bookmark")
-                .font(.system(size: 58, weight: .light))
-                .foregroundStyle(Color.dsSkyDeep)
-
-            Image(systemName: "sparkle")
-                .font(.system(size: 14, weight: .medium))
-                .foregroundStyle(Color.dsFoilGold)
-                .offset(y: -7)
-        }
-        .frame(width: 82, height: 76)
-        .accessibilityHidden(true)
     }
 
     private var noResultsPanel: some View {
@@ -255,11 +340,14 @@ public struct FavoritesView: View {
                 Image(systemName: "text.magnifyingglass")
                     .font(.largeTitle)
                     .foregroundStyle(Color.dsSkyDeep)
+                    .journalRelief(strength: 0.8)
                 Text("没有找到相关收藏")
                     .font(.headline)
+                    .journalRelief(strength: 0.8)
                 Text("试试其他关键词或收藏类型")
                     .font(.subheadline)
                     .foregroundStyle(Color.dsPaperInkSecondary)
+                    .journalRelief(strength: 0.5)
             }
             .foregroundStyle(Color.dsPaperInk)
             .rotationEffect(.degrees(-8.5))
@@ -523,5 +611,100 @@ public struct FavoritesView: View {
             try? await deps.favorites.remove(id: source[index].id)
         }
         await reload()
+    }
+}
+
+private struct JournalPencilBookmark: View {
+    var body: some View {
+        ZStack {
+            JournalBookmarkShape()
+                .stroke(
+                    Color.dsTravelNavy.opacity(0.24),
+                    style: StrokeStyle(lineWidth: 3.2, lineCap: .round, lineJoin: .round)
+                )
+                .offset(x: 1.4, y: 2.2)
+
+            JournalBookmarkShape()
+                .stroke(
+                    Color.dsSkyDeep,
+                    style: StrokeStyle(lineWidth: 2.35, lineCap: .round, lineJoin: .round)
+                )
+
+            JournalBookmarkShape()
+                .stroke(
+                    Color(red: 0.08, green: 0.33, blue: 0.52).opacity(0.52),
+                    style: StrokeStyle(
+                        lineWidth: 0.9,
+                        lineCap: .round,
+                        lineJoin: .round,
+                        dash: [1.1, 2.2]
+                    )
+                )
+                .offset(x: -0.65, y: 0.3)
+
+            PencilSparkleShape()
+                .fill(Color.dsFoilGold)
+                .frame(width: 18, height: 18)
+                .offset(y: -8)
+                .shadow(color: Color.dsFoilGold.opacity(0.42), radius: 4)
+                .shadow(color: Color.white.opacity(0.72), radius: 0.5, x: -0.4, y: -0.4)
+        }
+        .padding(8)
+        .shadow(color: Color.dsSkyDeep.opacity(0.16), radius: 6, y: 2)
+        .accessibilityHidden(true)
+    }
+}
+
+private struct JournalBookmarkShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.28, y: rect.minY + rect.height * 0.08))
+        path.addQuadCurve(
+            to: CGPoint(x: rect.minX + rect.width * 0.72, y: rect.minY + rect.height * 0.08),
+            control: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.035)
+        )
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.76, y: rect.minY + rect.height * 0.88))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.67))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.24, y: rect.minY + rect.height * 0.88))
+        path.closeSubpath()
+        return path
+    }
+}
+
+private struct PencilSparkleShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addCurve(
+            to: CGPoint(x: rect.maxX, y: rect.midY),
+            control1: CGPoint(x: rect.midX + rect.width * 0.04, y: rect.midY - rect.height * 0.12),
+            control2: CGPoint(x: rect.midX + rect.width * 0.12, y: rect.midY - rect.height * 0.04)
+        )
+        path.addCurve(
+            to: CGPoint(x: rect.midX, y: rect.maxY),
+            control1: CGPoint(x: rect.midX + rect.width * 0.12, y: rect.midY + rect.height * 0.04),
+            control2: CGPoint(x: rect.midX + rect.width * 0.04, y: rect.midY + rect.height * 0.12)
+        )
+        path.addCurve(
+            to: CGPoint(x: rect.minX, y: rect.midY),
+            control1: CGPoint(x: rect.midX - rect.width * 0.04, y: rect.midY + rect.height * 0.12),
+            control2: CGPoint(x: rect.midX - rect.width * 0.12, y: rect.midY + rect.height * 0.04)
+        )
+        path.addCurve(
+            to: CGPoint(x: rect.midX, y: rect.minY),
+            control1: CGPoint(x: rect.midX - rect.width * 0.12, y: rect.midY - rect.height * 0.04),
+            control2: CGPoint(x: rect.midX - rect.width * 0.04, y: rect.midY - rect.height * 0.12)
+        )
+        path.closeSubpath()
+        return path
+    }
+}
+
+private extension View {
+    func journalRelief(strength: Double) -> some View {
+        self
+            .shadow(color: Color.white.opacity(0.76 * strength), radius: 0.55, x: -0.6, y: -0.6)
+            .shadow(color: Color.dsTravelNavy.opacity(0.24 * strength), radius: 0.75, x: 0.75, y: 1.15)
+            .shadow(color: Color.dsFoilGold.opacity(0.12 * strength), radius: 4.5)
     }
 }

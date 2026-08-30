@@ -96,11 +96,10 @@ public struct PlacementTestView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .placementTopBar {
-            DSWorkbenchPaperSheet(radius: 20, padding: 0) {
-                header
-            }
-            .padding(.horizontal, DSSpacing.sm)
-            .padding(.bottom, 3)
+            header
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.top, 2)
+                .padding(.bottom, 5)
         }
         .task { await prepareIfNeeded() }
         .onDisappear {
@@ -122,34 +121,39 @@ public struct PlacementTestView: View {
             } label: {
                 Image(systemName: phase == .levelSelection ? "chevron.left" : "xmark")
                     .font(.body.weight(.semibold))
-                    .frame(width: 36, height: 36)
-                    .dsMaterial(.thinMaterial, in: Circle())
-                    .overlay {
-                        Circle().stroke(Color.white.opacity(0.55), lineWidth: 0.7)
-                    }
+                    .foregroundStyle(Color.dsTravelNavy)
+                    .frame(width: 44, height: 44)
+                    .contentShape(Circle())
             }
             .buttonStyle(.plain)
+            .dsSceneGlass(
+                radius: 22,
+                tint: Color.dsBrandCream.opacity(0.08),
+                interactive: true,
+                legibility: .ambient
+            )
             .disabled(isApplying)
             .accessibilityLabel(phase == .levelSelection ? "返回水平校准" : "退出水平校准")
 
             Spacer()
             VStack(spacing: 1) {
                 Text(phase == .levelSelection ? "选择英语水平" : "英语水平校准")
-                    .font(.subheadline.weight(.semibold))
+                    .font(.subheadline.weight(.bold))
                     .foregroundStyle(Color.dsPaperInk)
+                    .shadow(color: Color.dsBrandCream.opacity(0.94), radius: 3)
+                    .shadow(color: Color.white.opacity(0.72), radius: 0.6, x: -0.4, y: -0.4)
+                    .shadow(color: Color.dsTravelNavy.opacity(0.16), radius: 0.7, x: 0.5, y: 0.9)
                 if phase == .question, let engine {
                     Text("已答 \(engine.responses.count) 题")
                         .font(.caption2)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .monospacedDigit()
+                        .shadow(color: Color.dsBrandCream.opacity(0.90), radius: 2.5)
                 }
             }
             Spacer()
-            Color.clear.frame(width: 36, height: 36)
+            Color.clear.frame(width: 44, height: 44)
         }
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.top, DSSpacing.xs)
-        .padding(.bottom, DSSpacing.sm)
     }
 
     private var loadingView: some View {

@@ -37,32 +37,38 @@ public struct MemoryDebugView: View {
             DSWorkbenchBackdrop(focus: .archive)
 
             ScrollView {
-                VStack(spacing: DSSpacing.lg) {
-                    archiveSummary
-                    characterPanel
+                DSWorkbenchPaperSheet(radius: 28, padding: 0) {
+                    VStack(spacing: 0) {
+                        archiveSummary
+                        paperSectionDivider
+                        characterPanel
 
-                    if selectedID != nil {
-                        tierPanel(
-                            title: "长期了解",
-                            code: "long",
-                            icon: "archivebox.fill",
-                            items: longs,
-                            cap: quota?.long
-                        )
-                        tierPanel(
-                            title: "阶段合并",
-                            code: "mid",
-                            icon: "square.stack.3d.up.fill",
-                            items: mids,
-                            cap: quota?.shortMid
-                        )
-                        tierPanel(
-                            title: "近期事件",
-                            code: "short",
-                            icon: "clock.arrow.circlepath",
-                            items: shorts,
-                            cap: quota?.shortMid
-                        )
+                        if selectedID != nil {
+                            paperSectionDivider
+                            tierPanel(
+                                title: "长期了解",
+                                code: "long",
+                                icon: "archivebox.fill",
+                                items: longs,
+                                cap: quota?.long
+                            )
+                            paperSectionDivider
+                            tierPanel(
+                                title: "阶段合并",
+                                code: "mid",
+                                icon: "square.stack.3d.up.fill",
+                                items: mids,
+                                cap: quota?.shortMid
+                            )
+                            paperSectionDivider
+                            tierPanel(
+                                title: "近期事件",
+                                code: "short",
+                                icon: "clock.arrow.circlepath",
+                                items: shorts,
+                                cap: quota?.shortMid
+                            )
+                        }
                     }
                 }
                 .frame(maxWidth: 620)
@@ -73,7 +79,7 @@ public struct MemoryDebugView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .navigationTitle("记忆调试面板")
+        .navigationTitle("记忆档案")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
@@ -93,35 +99,30 @@ public struct MemoryDebugView: View {
     // MARK: - 配额
 
     private var archiveSummary: some View {
-        DSWorkbenchPanel(weight: .reading) {
-            VStack(alignment: .leading, spacing: DSSpacing.md) {
-                HStack(spacing: DSSpacing.md) {
-                    Image(systemName: "externaldrive.fill.badge.checkmark")
-                        .font(.system(size: 24, weight: .semibold))
-                        .foregroundStyle(Color.dsBrandCream)
-                        .frame(width: 50, height: 50)
-                        .background(Color.dsTravelNavy, in: Circle())
+        VStack(alignment: .leading, spacing: DSSpacing.md) {
+            HStack(spacing: DSSpacing.md) {
+                DSObsidianMedallion(systemImage: "archivebox", size: 64)
 
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("记忆档案库")
-                            .font(.system(.title2, design: .rounded, weight: .bold))
-                            .foregroundStyle(Color.dsSceneTextPrimary)
-                        Text("\(subscription.displayName) 订阅 · 三层角色记忆")
-                            .font(.subheadline)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
-                    }
-                    Spacer(minLength: 0)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("记忆档案库")
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(Color.dsPaperInk)
+                    Text("\(subscription.displayName) 订阅 · 三层角色记忆")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
+                Spacer(minLength: 0)
+            }
 
-                if let quota {
-                    HStack(spacing: DSSpacing.sm) {
-                        quotaMetric("原文", value: quota.rawWindow, systemImage: "doc.text")
-                        quotaMetric("短期", value: quota.shortMid, systemImage: "clock")
-                        quotaMetric("长期", value: quota.long, systemImage: "archivebox")
-                    }
+            if let quota {
+                HStack(spacing: DSSpacing.sm) {
+                    quotaMetric("原文", value: quota.rawWindow, systemImage: "doc.text")
+                    quotaMetric("短期", value: quota.shortMid, systemImage: "clock")
+                    quotaMetric("长期", value: quota.long, systemImage: "archivebox")
                 }
             }
         }
+        .padding(DSSpacing.lg)
     }
 
     private func quotaMetric(_ title: String, value: Int, systemImage: String) -> some View {
@@ -131,43 +132,43 @@ public struct MemoryDebugView: View {
                 .foregroundStyle(Color.dsSkyDeep)
             Text("\(value)")
                 .font(.headline.monospacedDigit())
-                .foregroundStyle(Color.dsSceneTextPrimary)
+                .foregroundStyle(Color.dsPaperInk)
             Text(title)
                 .font(.caption2.weight(.medium))
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, DSSpacing.sm)
         .background(
-            Color.dsSceneTextPrimary.opacity(0.045),
+            Color.dsTravelNavy.opacity(0.055),
             in: RoundedRectangle(cornerRadius: DSRadius.inline)
         )
     }
 
     private var characterPanel: some View {
-        DSWorkbenchPanel(weight: .content) {
-            HStack(spacing: DSSpacing.md) {
-                Label("角色档案", systemImage: "person.text.rectangle")
-                    .font(.headline)
-                    .foregroundStyle(Color.dsSceneTextPrimary)
-                Spacer()
+        HStack(spacing: DSSpacing.md) {
+            Label("角色档案", systemImage: "person.text.rectangle")
+                .font(.headline)
+                .foregroundStyle(Color.dsPaperInk)
+            Spacer()
 
-                if characters.isEmpty {
-                    Text("暂无角色")
-                        .foregroundStyle(Color.dsSceneTextSecondary)
-                } else {
-                    Picker("选择角色", selection: $selectedID) {
-                        ForEach(characters) { character in
-                            Text(character.card.name).tag(Optional(character.id))
-                        }
+            if characters.isEmpty {
+                Text("暂无角色")
+                    .foregroundStyle(Color.dsPaperInkSecondary)
+            } else {
+                Picker("选择角色", selection: $selectedID) {
+                    ForEach(characters) { character in
+                        Text(character.card.name).tag(Optional(character.id))
                     }
-                    .pickerStyle(.menu)
-                    .tint(Color.dsSkyDeep)
-                    .onChange(of: selectedID) { _, _ in Task { await reloadMemories() } }
                 }
+                .pickerStyle(.menu)
+                .tint(Color.dsSkyDeep)
+                .onChange(of: selectedID) { _, _ in Task { await reloadMemories() } }
             }
-            .frame(minHeight: 48)
         }
+        .frame(minHeight: 48)
+        .padding(.horizontal, DSSpacing.lg)
+        .padding(.vertical, DSSpacing.md)
     }
 
     // MARK: - 分层
@@ -179,47 +180,46 @@ public struct MemoryDebugView: View {
         items: [MemoryDTO],
         cap: Int?
     ) -> some View {
-        DSWorkbenchPanel(weight: .reading) {
-            VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                HStack(spacing: DSSpacing.sm) {
-                    Image(systemName: icon)
-                        .foregroundStyle(Color.dsSkyDeep)
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text(title)
-                            .font(.headline)
-                            .foregroundStyle(Color.dsSceneTextPrimary)
-                        Text(code)
-                            .font(.caption2.monospaced())
-                            .foregroundStyle(Color.dsSceneTextTertiary)
-                    }
-                    Spacer()
-                    Text(cap.map { "\(items.count) / \($0)" } ?? "\(items.count)")
-                        .font(.subheadline.weight(.semibold).monospacedDigit())
-                        .foregroundStyle(overCap(items.count, cap) ? Color.dsDanger : Color.dsSceneTextSecondary)
+        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            HStack(spacing: DSSpacing.sm) {
+                Image(systemName: icon)
+                    .foregroundStyle(Color.dsSkyDeep)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(title)
+                        .font(.headline)
+                        .foregroundStyle(Color.dsPaperInk)
+                    Text(code)
+                        .font(.caption2.monospaced())
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
+                Spacer()
+                Text(cap.map { "\(items.count) / \($0)" } ?? "\(items.count)")
+                    .font(.subheadline.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(overCap(items.count, cap) ? Color.dsDanger : Color.dsPaperInkSecondary)
+            }
 
-                if let cap, cap > 0 {
-                    ProgressView(value: min(Double(items.count) / Double(cap), 1))
-                        .tint(overCap(items.count, cap) ? Color.dsDanger : Color.dsSkyDeep)
-                }
+            if let cap, cap > 0 {
+                ProgressView(value: min(Double(items.count) / Double(cap), 1))
+                    .tint(overCap(items.count, cap) ? Color.dsDanger : Color.dsSkyDeep)
+            }
 
-                Divider().overlay(Color.dsSceneTextPrimary.opacity(0.12))
+            Divider().overlay(Color.dsPaperInk.opacity(0.12))
 
-                if items.isEmpty {
-                    Text("暂无记录")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.dsSceneTextTertiary)
-                        .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
-                } else {
-                    ForEach(Array(items.enumerated()), id: \.element.id) { index, memory in
-                        memoryRow(memory)
-                        if index < items.count - 1 {
-                            Divider().overlay(Color.dsSceneTextPrimary.opacity(0.08))
-                        }
+            if items.isEmpty {
+                Text("暂无记录")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
+                    .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+            } else {
+                ForEach(Array(items.enumerated()), id: \.element.id) { index, memory in
+                    memoryRow(memory)
+                    if index < items.count - 1 {
+                        Divider().overlay(Color.dsPaperInk.opacity(0.08))
                     }
                 }
             }
         }
+        .padding(DSSpacing.lg)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("\(title) \(code)")
     }
@@ -229,7 +229,7 @@ public struct MemoryDebugView: View {
             VStack(alignment: .leading, spacing: 5) {
                 Text(memory.content)
                     .font(.subheadline)
-                    .foregroundStyle(Color.dsSceneTextPrimary)
+                    .foregroundStyle(Color.dsPaperInk)
                     .fixedSize(horizontal: false, vertical: true)
                 Text(String(repeating: "★", count: memory.importance)
                     + String(repeating: "☆", count: max(0, 5 - memory.importance)))
@@ -258,6 +258,12 @@ public struct MemoryDebugView: View {
     private func overCap(_ count: Int, _ cap: Int?) -> Bool {
         guard let cap else { return false }
         return count > cap
+    }
+
+    private var paperSectionDivider: some View {
+        Divider()
+            .overlay(Color.dsPaperInk.opacity(0.12))
+            .padding(.horizontal, DSSpacing.lg)
     }
 
     // MARK: - 数据
