@@ -292,6 +292,7 @@ public struct FavoritesView: View {
                             glowColor: journalHologramGlow
                         )
                     }
+                    .offset(x: 8)
 
                     journalElement {
                         DSHologramText(
@@ -342,6 +343,7 @@ public struct FavoritesView: View {
                 }
                 .buttonStyle(.plain)
                 .rotationEffect(.degrees(journalRotation))
+                .offset(x: 8)
             }
             .frame(width: min(280, proxy.size.width * 0.72))
             .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.365)
@@ -358,6 +360,7 @@ public struct FavoritesView: View {
                         .foregroundStyle(journalHologramTint)
                         .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
                 }
+                .offset(x: 8)
                 journalElement {
                     DSHologramText(
                         "没有找到相关收藏",
