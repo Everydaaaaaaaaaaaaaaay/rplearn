@@ -286,14 +286,11 @@ public struct FavoritesView: View {
             journalPlane {
                 VStack(spacing: 26) {
                     VStack(spacing: 10) {
-                        journalElement {
-                            DSHologramBookmarkIcon(
-                                size: 68,
-                                tint: journalHologramTint,
-                                glowColor: journalHologramGlow,
-                                outlineColor: journalHologramOutline
-                            )
-                        }
+                        DSHologramBookmarkIcon(
+                            size: 68,
+                            tint: journalHologramTint,
+                            glowColor: journalHologramGlow
+                        )
 
                         journalElement {
                             DSHologramText(
@@ -302,7 +299,6 @@ public struct FavoritesView: View {
                                 weight: .heavy,
                                 tint: journalHologramTint,
                                 glowColor: journalHologramGlow,
-                                outlineColor: journalHologramOutline,
                                 alignment: .center
                             )
                         }
@@ -315,7 +311,6 @@ public struct FavoritesView: View {
                                 weight: .medium,
                                 tint: journalHologramTint,
                                 glowColor: journalHologramGlow,
-                                outlineColor: journalHologramOutline,
                                 alignment: .center,
                                 lineSpacing: 3
                             )
@@ -366,7 +361,6 @@ public struct FavoritesView: View {
                         Image(systemName: "text.magnifyingglass")
                             .font(.system(size: 35, weight: .medium))
                             .foregroundStyle(journalHologramTint)
-                            .shadow(color: journalHologramOutline.opacity(0.92), radius: 0.8)
                             .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
                     }
                     journalElement {
@@ -376,7 +370,6 @@ public struct FavoritesView: View {
                             weight: .bold,
                             tint: journalHologramTint,
                             glowColor: journalHologramGlow,
-                            outlineColor: journalHologramOutline,
                             alignment: .center
                         )
                     }
@@ -388,7 +381,6 @@ public struct FavoritesView: View {
                             weight: .medium,
                             tint: journalHologramTint,
                             glowColor: journalHologramGlow,
-                            outlineColor: journalHologramOutline,
                             alignment: .center
                         )
                     }
@@ -414,15 +406,11 @@ public struct FavoritesView: View {
     private var journalBodyOpticalOffsetX: CGFloat { -7 }
 
     private var journalHologramTint: Color {
-        Color(red: 1.00, green: 0.96, blue: 0.88)
+        Color.dsTravelNavy
     }
 
     private var journalHologramGlow: Color {
-        Color(red: 1.00, green: 0.96, blue: 0.88)
-    }
-
-    private var journalHologramOutline: Color {
-        Color(red: 0.72, green: 0.65, blue: 0.54)
+        Color.dsTravelNavy
     }
 
     private var journalPageProjection: ProjectionTransform {
