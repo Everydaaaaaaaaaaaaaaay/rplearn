@@ -45,6 +45,11 @@ public extension Color {
         light: UIColor(red: 0.035, green: 0.118, blue: 0.204, alpha: 1),
         dark: UIColor(red: 0.075, green: 0.180, blue: 0.286, alpha: 1)
     )
+    /// 纸面界面的固定墨色；不参与材质 vibrancy，避免逐字深浅漂移。
+    static let dsPaperInk = Color(red: 0.035, green: 0.094, blue: 0.145)
+    static let dsPaperInkSecondary = Color(red: 0.255, green: 0.271, blue: 0.275)
+    /// 黑曜石徽章上的克制浮金，不作为大面积强调色。
+    static let dsFoilGold = Color(red: 0.835, green: 0.666, blue: 0.408)
     static let dsSuccess = Color(
         light: UIColor(red: 0.184, green: 0.749, blue: 0.388, alpha: 1),
         dark: UIColor(red: 0.290, green: 0.871, blue: 0.502, alpha: 1)

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// “我的”页旅行工作台的功能区域。所有二级页复用同一张原图，避免物件外观漂移。
+/// 旅行工作台功能场景。功能页使用语义化摄影底图，调试档案保留“我的”原场景。
 public enum DSWorkbenchSceneFocus: Sendable, Equatable {
     case learning
     case favorites
@@ -8,22 +8,26 @@ public enum DSWorkbenchSceneFocus: Sendable, Equatable {
     case account
     case archive
 
+    fileprivate var assetName: String {
+        switch self {
+        case .learning: "detail_placement_learning_desk"
+        case .favorites: "detail_favorites_journal"
+        case .settings: "detail_settings_studio"
+        case .account: "detail_account_sync_desk"
+        case .archive: "profile_modern_travel_desk_interactive_scene"
+        }
+    }
+
     fileprivate var scale: CGFloat {
         switch self {
-        case .learning: 1.06
-        case .favorites: 1.12
-        case .settings: 1.10
-        case .account: 1.08
+        case .learning, .favorites, .settings, .account: 1
         case .archive: 1.12
         }
     }
 
     fileprivate var anchor: UnitPoint {
         switch self {
-        case .learning: UnitPoint(x: 0.54, y: 0.52)
-        case .favorites: UnitPoint(x: 0.14, y: 0.59)
-        case .settings: UnitPoint(x: 0.82, y: 0.61)
-        case .account: UnitPoint(x: 0.52, y: 0.66)
+        case .learning, .favorites, .settings, .account: .center
         case .archive: UnitPoint(x: 0.54, y: 0.12)
         }
     }
@@ -42,17 +46,26 @@ public struct DSWorkbenchBackdrop: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            Image("profile_modern_travel_desk_interactive_scene", bundle: .main)
+            Image(focus.assetName, bundle: .main)
                 .resizable()
                 .scaledToFill()
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .scaleEffect(focus.scale, anchor: focus.anchor)
                 .clipped()
-                .overlay { atmosphericWash }
+                .overlay { backdropWash }
         }
         .ignoresSafeArea()
         .accessibilityHidden(true)
         .allowsHitTesting(false)
+    }
+
+    @ViewBuilder
+    private var backdropWash: some View {
+        if focus == .archive {
+            atmosphericWash
+        } else if colorScheme == .dark {
+            Color.black.opacity(reduceTransparency ? 0.34 : 0.24)
+        }
     }
 
     private var atmosphericWash: some View {
@@ -185,6 +198,96 @@ public struct DSWorkbenchPanel<Content: View>: View {
         case .content: colorScheme == .dark ? 0.27 : 0.12
         case .reading: colorScheme == .dark ? 0.32 : 0.15
         }
+    }
+}
+
+/// 高保真稿中的连续纸张界面：不使用 Liquid Glass，也不叠加系统材质。
+public struct DSWorkbenchPaperSheet<Content: View>: View {
+    private let radius: CGFloat
+    private let padding: CGFloat
+    private let content: Content
+
+    public init(
+        radius: CGFloat = 26,
+        padding: CGFloat = DSSpacing.lg,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.radius = radius
+        self.padding = padding
+        self.content = content()
+    }
+
+    public var body: some View {
+        let shape = RoundedRectangle(cornerRadius: radius, style: .continuous)
+
+        content
+            .padding(padding)
+            .background {
+                shape
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 0.985, green: 0.970, blue: 0.925),
+                                Color(red: 0.958, green: 0.935, blue: 0.878),
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .overlay {
+                        shape.fill(
+                            RadialGradient(
+                                colors: [Color.white.opacity(0.30), .clear],
+                                center: .topLeading,
+                                startRadius: 10,
+                                endRadius: 360
+                            )
+                        )
+                    }
+            }
+            .overlay {
+                shape.stroke(Color.white.opacity(0.78), lineWidth: 1)
+            }
+            .shadow(color: Color.black.opacity(0.13), radius: 18, y: 9)
+    }
+}
+
+/// 皮革包边的黑曜石圆章与浮金线条图标。
+public struct DSObsidianMedallion: View {
+    private let systemImage: String
+    private let size: CGFloat
+
+    public init(systemImage: String, size: CGFloat = 64) {
+        self.systemImage = systemImage
+        self.size = size
+    }
+
+    public var body: some View {
+        ZStack {
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color(red: 0.075, green: 0.160, blue: 0.235),
+                            Color(red: 0.016, green: 0.052, blue: 0.086),
+                        ],
+                        center: .topLeading,
+                        startRadius: 2,
+                        endRadius: size * 0.78
+                    )
+                )
+                .overlay {
+                    Circle().stroke(Color.dsFoilGold.opacity(0.32), lineWidth: 0.8)
+                }
+
+            Image(systemName: systemImage)
+                .font(.system(size: size * 0.40, weight: .light))
+                .symbolRenderingMode(.monochrome)
+                .foregroundStyle(Color.dsFoilGold)
+        }
+        .frame(width: size, height: size)
+        .shadow(color: Color.black.opacity(0.22), radius: 8, y: 4)
+        .accessibilityHidden(true)
     }
 }
 

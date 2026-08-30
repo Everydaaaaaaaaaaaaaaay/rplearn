@@ -60,13 +60,20 @@ public struct SettingsView: View {
             DSWorkbenchBackdrop(focus: .settings)
 
             ScrollView {
-                VStack(spacing: DSSpacing.lg) {
-                    journeySummary
-                    learningAndReminderPanel
-                    offlineVoicePanel
-                    systemVoicePanel
-                    servicePanel
-                    creditsPanel
+                DSWorkbenchPaperSheet(radius: 28, padding: 0) {
+                    VStack(spacing: 0) {
+                        journeySummary
+                        paperSectionDivider
+                        learningAndReminderPanel
+                        paperSectionDivider
+                        offlineVoicePanel
+                        paperSectionDivider
+                        systemVoicePanel
+                        paperSectionDivider
+                        servicePanel
+                        paperSectionDivider
+                        creditsPanel
+                    }
                 }
                 .frame(maxWidth: 620)
                 .padding(.horizontal, DSSpacing.lg)
@@ -100,27 +107,23 @@ public struct SettingsView: View {
     }
 
     private var journeySummary: some View {
-        DSWorkbenchPanel(weight: .content) {
-            HStack(spacing: DSSpacing.md) {
-                Image(systemName: "watch.analog")
-                    .font(.system(size: 26, weight: .semibold))
-                    .foregroundStyle(Color.dsBrandCream)
-                    .frame(width: 54, height: 54)
-                    .background(Color.dsTravelNavy, in: Circle())
+        HStack(spacing: DSSpacing.lg) {
+            DSObsidianMedallion(systemImage: "bell", size: 72)
 
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("旅程设置")
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                        .foregroundStyle(Color.dsSceneTextPrimary)
-                    Label(reminderSummary, systemImage: reminderSummaryIcon)
-                    Label("Pocket TTS · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
-                }
-                .font(.subheadline.weight(.medium))
-                .foregroundStyle(Color.dsSceneTextSecondary)
-
-                Spacer(minLength: 0)
+            VStack(alignment: .leading, spacing: 7) {
+                Text("旅程设置")
+                    .font(.system(.title2, design: .rounded, weight: .bold))
+                    .foregroundStyle(Color.dsPaperInk)
+                Label(reminderSummary, systemImage: reminderSummaryIcon)
+                Label("Pocket TTS · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
             }
+            .font(.subheadline.weight(.medium))
+            .foregroundStyle(Color.dsPaperInkSecondary)
+
+            Spacer(minLength: 0)
         }
+        .padding(.horizontal, DSSpacing.lg)
+        .padding(.vertical, 26)
     }
 
     private var reminderSummary: String {
@@ -138,37 +141,36 @@ public struct SettingsView: View {
     }
 
     private var learningAndReminderPanel: some View {
-        DSWorkbenchPanel(weight: .reading) {
-            VStack(alignment: .leading, spacing: 0) {
-                panelTitle("学习与提醒", systemImage: "bell.and.waves.left.and.right")
+        VStack(alignment: .leading, spacing: 0) {
+            panelTitle("学习与提醒", systemImage: "bell.and.waves.left.and.right")
 
-                if profile != nil {
-                    settingsToggle(
-                        "聊天中随机出题",
-                        detail: "在对话中偶尔加入一道轻量练习",
-                        isOn: quizEnabledBinding
-                    )
-                    panelDivider
-                }
-
+            if profile != nil {
                 settingsToggle(
-                    "角色主动联系",
-                    detail: "好友只会在白天偶尔发起适合练习的话题",
-                    isOn: $proactiveMessagesEnabled
+                    "聊天中随机出题",
+                    detail: "在对话中偶尔加入一道轻量练习",
+                    isOn: quizEnabledBinding
                 )
-
                 panelDivider
-
-                Button {
-                    if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
-                        openURL(url)
-                    }
-                } label: {
-                    settingsLinkLabel("系统通知设置", systemImage: "bell.badge")
-                }
-                .buttonStyle(.plain)
             }
+
+            settingsToggle(
+                "角色主动联系",
+                detail: "好友只会在白天偶尔发起适合练习的话题",
+                isOn: $proactiveMessagesEnabled
+            )
+
+            panelDivider
+
+            Button {
+                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                    openURL(url)
+                }
+            } label: {
+                settingsLinkLabel("系统通知设置", systemImage: "bell.badge")
+            }
+            .buttonStyle(.plain)
         }
+        .padding(DSSpacing.lg)
     }
 
     // MARK: - 语音引擎
@@ -176,8 +178,7 @@ public struct SettingsView: View {
     @ViewBuilder
     private var offlineVoicePanel: some View {
         if let manager = speech as? any SpeechSynthesisEngineManaging {
-            DSWorkbenchPanel(weight: .reading) {
-                VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                     panelTitle("语音工作室", systemImage: "waveform")
 
                     settingsValueRow("语音识别", value: "Apple 系统识别")
@@ -213,7 +214,7 @@ public struct SettingsView: View {
                         VStack(alignment: .trailing, spacing: 2) {
                             Text("Pocket TTS · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
                                 .font(.subheadline)
-                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .foregroundStyle(Color.dsPaperInkSecondary)
                             Text(offlineVoicePhaseLabel)
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(offlineVoicePhaseTint)
@@ -224,7 +225,7 @@ public struct SettingsView: View {
                     if synthesisEngineStatus.phase == .loading {
                         Label("正在预热离线语音模型…", systemImage: "hourglass")
                             .font(.footnote)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                             .padding(.bottom, DSSpacing.sm)
                     }
 
@@ -237,8 +238,8 @@ public struct SettingsView: View {
 
                     panelDivider
 
-                    HStack(spacing: DSSpacing.sm) {
-                        voicePreviewButton("系统语音", systemImage: "play.circle") {
+                    VStack(spacing: 0) {
+                        voicePreviewButton("试听系统语音", systemImage: "waveform") {
                             Task {
                                 await speech.speak(
                                     SpeechRequest(
@@ -252,7 +253,9 @@ public struct SettingsView: View {
                             }
                         }
 
-                        voicePreviewButton("Pocket TTS", systemImage: "waveform.circle") {
+                        panelDivider
+
+                        voicePreviewButton("试听 Pocket TTS", systemImage: "waveform") {
                             Task {
                                 await speech.speak(
                                     SpeechRequest(
@@ -270,7 +273,6 @@ public struct SettingsView: View {
                                 || synthesisEngineStatus.isBusy
                         )
                     }
-                    .padding(.vertical, DSSpacing.sm)
 
                     panelDivider
 
@@ -278,7 +280,7 @@ public struct SettingsView: View {
                         VStack(alignment: .leading, spacing: DSSpacing.sm) {
                             Text("实时语音使用 Apple 系统识别。Pocket TTS 完全离线；系统识别会优先端侧处理，当前语言模型不可用时可能使用网络。")
                                 .font(.footnote)
-                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .foregroundStyle(Color.dsPaperInkSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
                             Link(
                                 "Pocket TTS 与开源许可",
@@ -292,15 +294,14 @@ public struct SettingsView: View {
                             .font(.body.weight(.medium))
                     }
                     .tint(Color.dsSkyDeep)
-                }
-                .foregroundStyle(Color.dsSceneTextPrimary)
             }
+            .foregroundStyle(Color.dsPaperInk)
+            .padding(DSSpacing.lg)
         }
     }
 
     private var systemVoicePanel: some View {
-        DSWorkbenchPanel(weight: .content) {
-            DisclosureGroup {
+        DisclosureGroup {
                 VStack(alignment: .leading, spacing: 0) {
                     settingsValueRow("当前英语语音", value: voiceQuality.label)
                     panelDivider
@@ -347,7 +348,7 @@ public struct SettingsView: View {
                             : "可在系统设置的辅助功能中下载增强或高级英语语音。"
                     )
                     .font(.footnote)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
                     .padding(.top, DSSpacing.sm)
                 }
                 .padding(.top, DSSpacing.sm)
@@ -355,13 +356,12 @@ public struct SettingsView: View {
                 panelTitle("Apple 系统语音详情", systemImage: "slider.horizontal.3")
             }
             .tint(Color.dsSkyDeep)
-            .foregroundStyle(Color.dsSceneTextPrimary)
-        }
+            .foregroundStyle(Color.dsPaperInk)
+            .padding(DSSpacing.lg)
     }
 
     private var servicePanel: some View {
-        DSWorkbenchPanel(weight: .content) {
-            VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
                 panelTitle("AI 服务", systemImage: "network")
                 settingsValueRow("连接方式", value: "安全后端中转")
                 panelDivider
@@ -397,33 +397,39 @@ public struct SettingsView: View {
 
                 Text("供应商密钥、模型和配额只保存在服务端，不会下发到设备。")
                     .font(.footnote)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
                     .padding(.top, DSSpacing.sm)
-            }
-            .foregroundStyle(Color.dsSceneTextPrimary)
         }
+        .foregroundStyle(Color.dsPaperInk)
+        .padding(DSSpacing.lg)
     }
 
     private var creditsPanel: some View {
-        DSWorkbenchPanel(weight: .chrome, padding: DSSpacing.md) {
-            NavigationLink {
-                CityScenePhotoCreditsView()
-            } label: {
-                settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
-            }
-            .buttonStyle(.plain)
+        NavigationLink {
+            CityScenePhotoCreditsView()
+        } label: {
+            settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
         }
+        .buttonStyle(.plain)
+        .padding(.horizontal, DSSpacing.lg)
+        .padding(.vertical, DSSpacing.sm)
     }
 
     private func panelTitle(_ title: String, systemImage: String) -> some View {
         Label(title, systemImage: systemImage)
             .font(.system(.headline, design: .rounded, weight: .bold))
-            .foregroundStyle(Color.dsSceneTextPrimary)
+            .foregroundStyle(Color.dsPaperInk)
             .padding(.bottom, DSSpacing.sm)
     }
 
     private var panelDivider: some View {
-        Divider().overlay(Color.dsSceneTextPrimary.opacity(0.12))
+        Divider().overlay(Color.dsPaperInk.opacity(0.12))
+    }
+
+    private var paperSectionDivider: some View {
+        Divider()
+            .overlay(Color.dsPaperInk.opacity(0.16))
+            .padding(.horizontal, DSSpacing.lg)
     }
 
     private func settingsToggle(
@@ -435,10 +441,10 @@ public struct SettingsView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
                     .font(.body.weight(.medium))
-                    .foregroundStyle(Color.dsSceneTextPrimary)
+                    .foregroundStyle(Color.dsPaperInk)
                 Text(detail)
                     .font(.caption)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
             }
         }
         .tint(Color.dsSkyDeep)
@@ -449,11 +455,11 @@ public struct SettingsView: View {
         HStack(alignment: .firstTextBaseline, spacing: DSSpacing.sm) {
             Text(title)
                 .font(.body.weight(.medium))
-                .foregroundStyle(Color.dsSceneTextPrimary)
+                .foregroundStyle(Color.dsPaperInk)
             Spacer()
             Text(value)
                 .font(.subheadline)
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
                 .multilineTextAlignment(.trailing)
         }
         .frame(minHeight: 52)
@@ -478,11 +484,16 @@ public struct SettingsView: View {
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
-            Label(title, systemImage: systemImage)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(Color.dsSkyDeep)
-                .frame(maxWidth: .infinity, minHeight: 44)
-                .background(Color.dsSky.opacity(0.10), in: RoundedRectangle(cornerRadius: DSRadius.inline))
+            HStack(spacing: DSSpacing.sm) {
+                Label(title, systemImage: systemImage)
+                Spacer()
+                Image(systemName: "play.circle")
+                    .font(.title3)
+            }
+            .font(.subheadline.weight(.semibold))
+            .foregroundStyle(Color.dsTravelNavy)
+            .frame(maxWidth: .infinity, minHeight: 50)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
