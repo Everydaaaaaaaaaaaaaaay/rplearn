@@ -249,6 +249,7 @@ public struct FavoritesView: View {
                         }
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("\(option.rawValue)筛选")
                 .accessibilityAddTraits(filter == option ? .isSelected : [])
             }
         }
@@ -260,8 +261,6 @@ public struct FavoritesView: View {
             interactive: true,
             legibility: .ambient
         )
-        .accessibilityElement(children: .contain)
-        .accessibilityLabel("收藏类型")
     }
 
     private func expandSearch() {

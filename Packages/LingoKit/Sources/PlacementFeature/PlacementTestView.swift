@@ -876,10 +876,15 @@ private struct DifficultyLevelSelectionPage: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("选择适合你的对话难度")
                         .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(Color.dsPaperInk)
+                        .shadow(color: Color.dsBrandCream.opacity(0.98), radius: 5)
+                        .shadow(color: Color.white.opacity(0.72), radius: 1)
                     Text("这是应用内的学习设置，不会请求通知或其他系统权限。测试建议仅供参考，之后仍可修改。")
                         .font(.subheadline)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
+                        .shadow(color: Color.dsBrandCream.opacity(0.98), radius: 5)
+                        .shadow(color: Color.dsBrandCream.opacity(0.88), radius: 2)
                 }
 
                 ForEach(groups, id: \.0) { title, levels in

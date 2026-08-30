@@ -79,10 +79,18 @@ public struct MemoryDebugView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .navigationTitle("记忆档案")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("记忆档案")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(Color.dsBrandCream)
+                    .shadow(color: Color.dsFoilGold.opacity(0.38), radius: 4)
+                    .shadow(color: Color.black.opacity(0.72), radius: 1.2, y: 1)
+                    .accessibilityAddTraits(.isHeader)
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Button("注入示例 short 记忆") { Task { await seedSamples() } }
