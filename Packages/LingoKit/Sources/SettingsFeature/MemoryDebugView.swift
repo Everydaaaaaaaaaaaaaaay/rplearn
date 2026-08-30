@@ -1,3 +1,4 @@
+import DesignSystem
 import DomainKit
 import PersistenceKit
 import SwiftUI
@@ -32,17 +33,49 @@ public struct MemoryDebugView: View {
     }
 
     public var body: some View {
-        List {
-            quotaSection
-            characterSection
-            if selectedID != nil {
-                tierSection(title: "长期了解 · long", tier: .long, items: longs, cap: quota?.long)
-                tierSection(title: "阶段合并 · mid", tier: .mid, items: mids, cap: quota?.shortMid)
-                tierSection(title: "近期事件 · short", tier: .short, items: shorts, cap: quota?.shortMid)
+        ZStack {
+            DSWorkbenchBackdrop(focus: .archive)
+
+            ScrollView {
+                VStack(spacing: DSSpacing.lg) {
+                    archiveSummary
+                    characterPanel
+
+                    if selectedID != nil {
+                        tierPanel(
+                            title: "长期了解",
+                            code: "long",
+                            icon: "archivebox.fill",
+                            items: longs,
+                            cap: quota?.long
+                        )
+                        tierPanel(
+                            title: "阶段合并",
+                            code: "mid",
+                            icon: "square.stack.3d.up.fill",
+                            items: mids,
+                            cap: quota?.shortMid
+                        )
+                        tierPanel(
+                            title: "近期事件",
+                            code: "short",
+                            icon: "clock.arrow.circlepath",
+                            items: shorts,
+                            cap: quota?.shortMid
+                        )
+                    }
+                }
+                .frame(maxWidth: 620)
+                .padding(.horizontal, DSSpacing.lg)
+                .padding(.top, DSSpacing.sm)
+                .padding(.bottom, 48)
+                .frame(maxWidth: .infinity)
             }
+            .scrollIndicators(.hidden)
         }
         .navigationTitle("记忆调试面板")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
@@ -59,61 +92,167 @@ public struct MemoryDebugView: View {
 
     // MARK: - 配额
 
-    private var quotaSection: some View {
-        Section("订阅配额") {
-            LabeledContent("当前订阅", value: subscription.displayName)
-            if let quota {
-                LabeledContent("原文窗口 rawWindow", value: "\(quota.rawWindow)")
-                LabeledContent("short+mid 上限", value: "\(quota.shortMid)")
-                LabeledContent("long 上限", value: "\(quota.long)")
+    private var archiveSummary: some View {
+        DSWorkbenchPanel(weight: .reading) {
+            VStack(alignment: .leading, spacing: DSSpacing.md) {
+                HStack(spacing: DSSpacing.md) {
+                    Image(systemName: "externaldrive.fill.badge.checkmark")
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundStyle(Color.dsBrandCream)
+                        .frame(width: 50, height: 50)
+                        .background(Color.dsTravelNavy, in: Circle())
+
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("记忆档案库")
+                            .font(.system(.title2, design: .rounded, weight: .bold))
+                            .foregroundStyle(Color.dsSceneTextPrimary)
+                        Text("\(subscription.displayName) 订阅 · 三层角色记忆")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                    }
+                    Spacer(minLength: 0)
+                }
+
+                if let quota {
+                    HStack(spacing: DSSpacing.sm) {
+                        quotaMetric("原文", value: quota.rawWindow, systemImage: "doc.text")
+                        quotaMetric("短期", value: quota.shortMid, systemImage: "clock")
+                        quotaMetric("长期", value: quota.long, systemImage: "archivebox")
+                    }
+                }
             }
         }
     }
 
-    private var characterSection: some View {
-        Section("角色") {
-            if characters.isEmpty {
-                Text("暂无角色").foregroundStyle(.secondary)
-            } else {
-                Picker("选择角色", selection: $selectedID) {
-                    ForEach(characters) { character in
-                        Text(character.card.name).tag(Optional(character.id))
+    private func quotaMetric(_ title: String, value: Int, systemImage: String) -> some View {
+        VStack(spacing: 5) {
+            Image(systemName: systemImage)
+                .font(.caption.weight(.bold))
+                .foregroundStyle(Color.dsSkyDeep)
+            Text("\(value)")
+                .font(.headline.monospacedDigit())
+                .foregroundStyle(Color.dsSceneTextPrimary)
+            Text(title)
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(Color.dsSceneTextSecondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, DSSpacing.sm)
+        .background(
+            Color.dsSceneTextPrimary.opacity(0.045),
+            in: RoundedRectangle(cornerRadius: DSRadius.inline)
+        )
+    }
+
+    private var characterPanel: some View {
+        DSWorkbenchPanel(weight: .content) {
+            HStack(spacing: DSSpacing.md) {
+                Label("角色档案", systemImage: "person.text.rectangle")
+                    .font(.headline)
+                    .foregroundStyle(Color.dsSceneTextPrimary)
+                Spacer()
+
+                if characters.isEmpty {
+                    Text("暂无角色")
+                        .foregroundStyle(Color.dsSceneTextSecondary)
+                } else {
+                    Picker("选择角色", selection: $selectedID) {
+                        ForEach(characters) { character in
+                            Text(character.card.name).tag(Optional(character.id))
+                        }
                     }
+                    .pickerStyle(.menu)
+                    .tint(Color.dsSkyDeep)
+                    .onChange(of: selectedID) { _, _ in Task { await reloadMemories() } }
                 }
-                .onChange(of: selectedID) { _, _ in Task { await reloadMemories() } }
             }
+            .frame(minHeight: 48)
         }
     }
 
     // MARK: - 分层
 
-    private func tierSection(title: String, tier: MemoryTier, items: [MemoryDTO], cap: Int?) -> some View {
-        Section {
-            if items.isEmpty {
-                Text("（空）").foregroundStyle(.tertiary).font(.footnote)
-            } else {
-                ForEach(items) { memory in
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(memory.content).font(.subheadline)
-                        Text(String(repeating: "★", count: memory.importance)
-                            + String(repeating: "☆", count: max(0, 5 - memory.importance)))
-                            .font(.caption2)
-                            .foregroundStyle(.orange)
+    private func tierPanel(
+        title: String,
+        code: String,
+        icon: String,
+        items: [MemoryDTO],
+        cap: Int?
+    ) -> some View {
+        DSWorkbenchPanel(weight: .reading) {
+            VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                HStack(spacing: DSSpacing.sm) {
+                    Image(systemName: icon)
+                        .foregroundStyle(Color.dsSkyDeep)
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(title)
+                            .font(.headline)
+                            .foregroundStyle(Color.dsSceneTextPrimary)
+                        Text(code)
+                            .font(.caption2.monospaced())
+                            .foregroundStyle(Color.dsSceneTextTertiary)
+                    }
+                    Spacer()
+                    Text(cap.map { "\(items.count) / \($0)" } ?? "\(items.count)")
+                        .font(.subheadline.weight(.semibold).monospacedDigit())
+                        .foregroundStyle(overCap(items.count, cap) ? Color.dsDanger : Color.dsSceneTextSecondary)
+                }
+
+                if let cap, cap > 0 {
+                    ProgressView(value: min(Double(items.count) / Double(cap), 1))
+                        .tint(overCap(items.count, cap) ? Color.dsDanger : Color.dsSkyDeep)
+                }
+
+                Divider().overlay(Color.dsSceneTextPrimary.opacity(0.12))
+
+                if items.isEmpty {
+                    Text("暂无记录")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.dsSceneTextTertiary)
+                        .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                } else {
+                    ForEach(Array(items.enumerated()), id: \.element.id) { index, memory in
+                        memoryRow(memory)
+                        if index < items.count - 1 {
+                            Divider().overlay(Color.dsSceneTextPrimary.opacity(0.08))
+                        }
                     }
                 }
-                .onDelete { offsets in
-                    Task { await delete(items: offsets.map { items[$0] }) }
-                }
-            }
-        } header: {
-            HStack {
-                Text(title)
-                Spacer()
-                Text(cap.map { "\(items.count) / \($0)" } ?? "\(items.count)")
-                    .foregroundStyle(overCap(items.count, cap) ? .red : .secondary)
-                    .monospacedDigit()
             }
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("\(title) \(code)")
+    }
+
+    private func memoryRow(_ memory: MemoryDTO) -> some View {
+        HStack(alignment: .top, spacing: DSSpacing.sm) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(memory.content)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.dsSceneTextPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(String(repeating: "★", count: memory.importance)
+                    + String(repeating: "☆", count: max(0, 5 - memory.importance)))
+                    .font(.caption2)
+                    .foregroundStyle(Color.dsSunset)
+                    .accessibilityLabel("重要度 \(memory.importance) 星")
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            Button {
+                Task { await delete(items: [memory]) }
+            } label: {
+                Image(systemName: "trash")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.dsDanger)
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .disabled(isBusy)
+            .accessibilityLabel("删除这条记忆")
+        }
+        .padding(.vertical, DSSpacing.xs)
     }
 
     private func overCap(_ count: Int, _ cap: Int?) -> Bool {

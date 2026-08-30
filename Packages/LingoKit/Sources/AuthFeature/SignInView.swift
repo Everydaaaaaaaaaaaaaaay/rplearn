@@ -17,117 +17,100 @@ public struct SignInView: View {
     @State private var mode: Mode = .login
     @State private var password = ""
     @State private var registrationAccepted = false
+    @State private var showsEmailForm = false
 
     public init(session: AuthSession) {
         self.session = session
     }
 
     public var body: some View {
-        ScrollView {
-            VStack(spacing: 28) {
-                header
-                if registrationAccepted {
-                    verificationNotice
-                } else {
-                    credentials
-                    primaryAction
-                    divider
-                    appleAction
+        ZStack {
+            DSWorkbenchBackdrop(focus: .account)
+
+            ScrollView {
+                VStack(spacing: DSSpacing.lg) {
+                    header
+
+                    if registrationAccepted {
+                        verificationNotice
+                    } else {
+                        signInPanel
+                    }
                 }
+                .frame(maxWidth: 460)
+                .padding(.horizontal, DSSpacing.lg)
+                .padding(.top, 68)
+                .padding(.bottom, 48)
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: 460)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 48)
-            .frame(maxWidth: .infinity)
-        }
-        .background {
-            LinearGradient(
-                colors: [
-                    Color.dsSky.opacity(0.18),
-                    Color.dsBackground,
-                    Color.dsBackground,
-                ],
-                startPoint: .top,
-                endPoint: .center
-            )
-            .ignoresSafeArea()
+            .scrollIndicators(.hidden)
         }
         .task { await reloadAppleChallenge() }
     }
 
     private var header: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "airplane.circle.fill")
-                .font(.system(size: 68))
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(Color.white, Color.dsSky)
-                .shadow(color: Color.dsSky.opacity(0.2), radius: 14, y: 7)
-            Text("继续你的语言之旅")
-                .font(.largeTitle.bold())
-                .multilineTextAlignment(.center)
-            Text("登录后，城市、机票、学习进度与订阅会安全同步到你的所有设备。")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-    }
-
-    private var credentials: some View {
-        VStack(spacing: 14) {
-            Picker("账号操作", selection: $mode) {
-                Text("登录").tag(Mode.login)
-                Text("注册").tag(Mode.register)
-            }
-            .pickerStyle(.segmented)
-
-            TextField("邮箱", text: $email)
-                .keyboardType(.emailAddress)
-                .textContentType(.emailAddress)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-                .padding(14)
-                .background(.background, in: RoundedRectangle(cornerRadius: 14))
-
-            SecureField(mode == .login ? "密码" : "密码（至少 12 位）", text: $password)
-                .textContentType(mode == .login ? .password : .newPassword)
-                .padding(14)
-                .background(.background, in: RoundedRectangle(cornerRadius: 14))
-
-            if let errorMessage {
-                Label(errorMessage, systemImage: "exclamationmark.circle.fill")
-                    .font(.footnote)
-                    .foregroundStyle(.red)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-        }
-        .padding(18)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 22))
-    }
-
-    private var primaryAction: some View {
-        Button {
-            submitCredentials()
-        } label: {
-            HStack {
-                if isBusy {
-                    ProgressView()
-                        .tint(.white)
+        VStack(spacing: DSSpacing.sm) {
+            Image(systemName: "wallet.pass.fill")
+                .font(.system(size: 34, weight: .semibold))
+                .foregroundStyle(Color.dsBrandCream)
+                .frame(width: 68, height: 68)
+                .background(Color.dsTravelNavy, in: Circle())
+                .overlay {
+                    Circle().stroke(Color.white.opacity(0.18), lineWidth: 0.8)
                 }
-                Text(mode == .login ? "登录" : "创建账号")
-                    .frame(maxWidth: .infinity)
+                .shadow(color: Color.dsTravelNavy.opacity(0.24), radius: 14, y: 7)
+
+            Text("继续你的语言之旅")
+                .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                .foregroundStyle(Color.dsSceneTextPrimary)
+                .multilineTextAlignment(.center)
+
+            Text("城市、学习进度与订阅会安全同步到你的所有设备。")
+                .font(.subheadline)
+                .foregroundStyle(Color.dsSceneTextSecondary)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var signInPanel: some View {
+        DSWorkbenchPanel(weight: .reading, radius: 28) {
+            VStack(spacing: DSSpacing.md) {
+                appleAction
+
+                HStack(spacing: DSSpacing.sm) {
+                    syncItem("map.fill", text: "城市")
+                    syncItem("chart.line.uptrend.xyaxis", text: "进度")
+                    syncItem("checkmark.shield.fill", text: "订阅")
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("同步城市、学习进度与订阅")
+
+                divider
+
+                DisclosureGroup(isExpanded: $showsEmailForm) {
+                    VStack(spacing: DSSpacing.md) {
+                        credentials
+                        primaryAction
+                    }
+                    .padding(.top, DSSpacing.md)
+                } label: {
+                    Label("使用邮箱登录或注册", systemImage: "envelope")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(Color.dsSceneTextPrimary)
+                }
+                .tint(Color.dsSkyDeep)
             }
         }
-        .buttonStyle(.dsActionPrimary)
-        .disabled(isBusy || !isFormValid)
     }
 
     private var divider: some View {
         HStack {
-            Rectangle().frame(height: 1).foregroundStyle(.quaternary)
+            Rectangle().frame(height: 1).foregroundStyle(Color.dsSceneTextPrimary.opacity(0.12))
             Text("或")
                 .font(.caption)
-                .foregroundStyle(.secondary)
-            Rectangle().frame(height: 1).foregroundStyle(.quaternary)
+                .foregroundStyle(Color.dsSceneTextSecondary)
+            Rectangle().frame(height: 1).foregroundStyle(Color.dsSceneTextPrimary.opacity(0.12))
         }
     }
 
@@ -141,49 +124,116 @@ public struct SignInView: View {
             }
             .signInWithAppleButtonStyle(.black)
             .frame(height: 52)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .clipShape(RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous))
             .allowsHitTesting(appleChallenge != nil && !isBusy)
             .opacity(appleChallenge == nil ? 0.55 : 1)
 
             if appleChallenge == nil {
                 Text("正在准备安全登录…")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
             }
         }
     }
 
-    private var verificationNotice: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "envelope.badge.fill")
-                .font(.system(size: 48))
-                .foregroundStyle(Color.dsSky)
-            Text("验证邮件已发送")
-                .font(.title2.bold())
-            Text("请打开发送到 \(email) 的链接完成验证，然后返回这里登录。")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-            Button("我已验证，去登录") {
-                registrationAccepted = false
-                mode = .login
-                password = ""
+    private var credentials: some View {
+        VStack(spacing: DSSpacing.sm) {
+            Picker("账号操作", selection: $mode) {
+                Text("登录").tag(Mode.login)
+                Text("注册").tag(Mode.register)
             }
-            .buttonStyle(.dsActionPrimary)
-            Button("重新发送验证邮件") {
-                Task {
-                    do {
-                        try await session.resendVerification(email: normalizedEmail)
-                        errorMessage = nil
-                    } catch {
-                        errorMessage = error.localizedDescription
+            .pickerStyle(.segmented)
+
+            TextField("邮箱", text: $email)
+                .keyboardType(.emailAddress)
+                .textContentType(.emailAddress)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .padding(14)
+                .foregroundStyle(Color.dsSceneTextPrimary)
+                .background(
+                    Color.dsSurface.opacity(0.78),
+                    in: RoundedRectangle(cornerRadius: DSRadius.inline)
+                )
+
+            SecureField(mode == .login ? "密码" : "密码（至少 12 位）", text: $password)
+                .textContentType(mode == .login ? .password : .newPassword)
+                .padding(14)
+                .foregroundStyle(Color.dsSceneTextPrimary)
+                .background(
+                    Color.dsSurface.opacity(0.78),
+                    in: RoundedRectangle(cornerRadius: DSRadius.inline)
+                )
+
+            if let errorMessage {
+                Label(errorMessage, systemImage: "exclamationmark.circle.fill")
+                    .font(.footnote)
+                    .foregroundStyle(Color.dsDanger)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+
+    private var primaryAction: some View {
+        Button {
+            submitCredentials()
+        } label: {
+            HStack {
+                if isBusy { ProgressView().tint(.white) }
+                Text(mode == .login ? "登录" : "创建账号")
+                    .frame(maxWidth: .infinity)
+            }
+        }
+        .buttonStyle(.dsWorkbenchAction)
+        .disabled(isBusy || !isFormValid)
+    }
+
+    private func syncItem(_ systemImage: String, text: String) -> some View {
+        VStack(spacing: 5) {
+            Image(systemName: systemImage)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.dsSkyDeep)
+            Text(text)
+                .font(.caption.weight(.medium))
+                .foregroundStyle(Color.dsSceneTextSecondary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private var verificationNotice: some View {
+        DSWorkbenchPanel(weight: .reading, radius: 28) {
+            VStack(spacing: DSSpacing.md) {
+                Image(systemName: "envelope.badge.fill")
+                    .font(.system(size: 48))
+                    .foregroundStyle(Color.dsSkyDeep)
+                Text("验证邮件已发送")
+                    .font(.title2.bold())
+                    .foregroundStyle(Color.dsSceneTextPrimary)
+                Text("请打开发送到 \(email) 的链接完成验证，然后返回这里登录。")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .multilineTextAlignment(.center)
+                Button("我已验证，去登录") {
+                    registrationAccepted = false
+                    mode = .login
+                    password = ""
+                    showsEmailForm = true
+                }
+                .buttonStyle(.dsWorkbenchAction)
+                Button("重新发送验证邮件") {
+                    Task {
+                        do {
+                            try await session.resendVerification(email: normalizedEmail)
+                            errorMessage = nil
+                        } catch {
+                            errorMessage = error.localizedDescription
+                        }
                     }
                 }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.dsSkyDeep)
             }
-            .font(.subheadline)
         }
-        .padding(24)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 22))
     }
 
     private var normalizedEmail: String {
