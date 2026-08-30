@@ -166,7 +166,7 @@ public struct PlacementTestView: View {
 
     private var introductionView: some View {
         ScrollView {
-            VStack(spacing: DSSpacing.lg) {
+            VStack(spacing: DSSpacing.md) {
                 DSWorkbenchPanel(weight: .content, radius: 22, padding: DSSpacing.md) {
                     HStack(alignment: .center, spacing: DSSpacing.md) {
                         BrandMascotView(
@@ -253,8 +253,16 @@ public struct PlacementTestView: View {
                             Button("开始水平测试") { start() }
                                 .buttonStyle(.dsWorkbenchAction)
                                 .disabled(engine == nil || isApplying)
+
+                            Label(
+                                "凭第一感觉作答即可。测评中不会立即显示对错，也不能返回上一题。",
+                                systemImage: "lightbulb"
+                            )
+                            .font(.caption)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
                         }
-                        .padding(DSSpacing.lg)
+                        .padding(DSSpacing.md)
                     }
                 }
 
@@ -264,14 +272,9 @@ public struct PlacementTestView: View {
                         .foregroundStyle(Color.dsDanger)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
-                Text("凭第一感觉作答即可。测评中不会立即显示对错，也不能返回上一题。")
-                    .font(.footnote)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: 560)
-            .padding(DSSpacing.lg)
+            .padding(DSSpacing.md)
             .frame(maxWidth: .infinity)
         }
         .placementScrollEdgeBlend()
