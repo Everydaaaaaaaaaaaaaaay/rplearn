@@ -10,6 +10,7 @@ public struct MemoryDebugView: View {
     private let rosterStore: RosterStore
     private let economyStore: EconomyStore
     private let memoryService: MemoryService
+    private let onBack: (@MainActor () -> Void)?
 
     @State private var characters: [CharacterDTO] = []
     @State private var selectedID: UUID?
@@ -24,12 +25,14 @@ public struct MemoryDebugView: View {
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
         economyStore: EconomyStore,
-        memoryService: MemoryService
+        memoryService: MemoryService,
+        onBack: (@MainActor () -> Void)? = nil
     ) {
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.economyStore = economyStore
         self.memoryService = memoryService
+        self.onBack = onBack
     }
 
     public var body: some View {
@@ -83,6 +86,14 @@ public struct MemoryDebugView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
+            if let onBack {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: onBack) {
+                        Image(systemName: "chevron.left")
+                    }
+                    .accessibilityLabel("返回我的")
+                }
+            }
             ToolbarItem(placement: .principal) {
                 Text("记忆档案")
                     .font(.headline.weight(.heavy))

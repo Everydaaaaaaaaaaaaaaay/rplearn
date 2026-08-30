@@ -449,16 +449,26 @@ struct RootView: View {
                 .toolbar(meDestination == nil ? .hidden : .visible, for: .navigationBar)
                 .toolbar {
                     if meDestination != nil {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button {
-                                transitionMe(to: nil)
-                            } label: {
-                                Image(systemName: "chevron.left")
-                            }
-                            .accessibilityLabel("返回我的")
+                        #if DEBUG
+                        if meDestination != .memory {
+                            meBackToolbarItem
                         }
+                        #else
+                        meBackToolbarItem
+                        #endif
                     }
                 }
+        }
+    }
+
+    private var meBackToolbarItem: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button {
+                transitionMe(to: nil)
+            } label: {
+                Image(systemName: "chevron.left")
+            }
+            .accessibilityLabel("返回我的")
         }
     }
 
@@ -521,7 +531,8 @@ struct RootView: View {
                     chatStore: environment.chatStore,
                     memoryStore: environment.memoryStore,
                     economyStore: environment.economyStore
-                )
+                ),
+                onBack: { transitionMe(to: nil) }
             )
         #endif
         }
