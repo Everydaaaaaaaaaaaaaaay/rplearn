@@ -40,6 +40,11 @@ public extension Color {
         light: UIColor(red: 0.027, green: 0.145, blue: 0.278, alpha: 1),
         dark: UIColor(red: 0.733, green: 0.894, blue: 1, alpha: 1)
     )
+    /// 旅行工作台的实体深蓝：用于皮革、主操作和强调边缘，不随文字语义反转。
+    static let dsTravelNavy = Color(
+        light: UIColor(red: 0.035, green: 0.118, blue: 0.204, alpha: 1),
+        dark: UIColor(red: 0.075, green: 0.180, blue: 0.286, alpha: 1)
+    )
     static let dsSuccess = Color(
         light: UIColor(red: 0.184, green: 0.749, blue: 0.388, alpha: 1),
         dark: UIColor(red: 0.290, green: 0.871, blue: 0.502, alpha: 1)
