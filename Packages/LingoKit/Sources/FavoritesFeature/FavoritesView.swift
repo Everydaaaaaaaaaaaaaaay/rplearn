@@ -30,6 +30,15 @@ public struct FavoritesDependencies: Sendable {
 
 /// 收藏夹：按单词、语法点和旧版句子分组展示。
 public struct FavoritesView: View {
+    private enum Filter: String, CaseIterable, Identifiable {
+        case all = "全部"
+        case word = "单词"
+        case grammar = "语法"
+        case sentence = "句子"
+
+        var id: Self { self }
+    }
+
     private static let partOfSpeechColumnWidth: CGFloat = 92
 
     private let deps: FavoritesDependencies
@@ -37,60 +46,83 @@ public struct FavoritesView: View {
     @State private var wordEntries: [UUID: DictEntry] = [:]
     @State private var wordSelection: TokenSelection?
     @State private var isLoading = true
+    @State private var filter: Filter = .all
+    @State private var searchText = ""
 
     public init(deps: FavoritesDependencies) {
         self.deps = deps
     }
 
     public var body: some View {
-        Group {
-            if favorites.isEmpty && !isLoading {
-                ContentUnavailableView(
-                    "收藏夹是空的",
-                    systemImage: "star",
-                    description: Text("可在单词释义窗或语法分析页点亮星标")
-                )
-            } else {
-                List {
-                    if !wordFavorites.isEmpty {
-                        Section("单词") {
-                            ForEach(wordFavorites) { favorite in
-                                wordRow(favorite)
-                            }
-                            .onDelete { indexSet in
-                                Task { await remove(at: indexSet, from: wordFavorites) }
-                            }
-                        }
-                    }
+        ZStack {
+            DSWorkbenchBackdrop(focus: .favorites)
 
-                    if !grammarFavorites.isEmpty {
-                        Section("语法点") {
-                            ForEach(grammarFavorites) { favorite in
-                                grammarRow(favorite)
-                            }
-                            .onDelete { indexSet in
-                                Task { await remove(at: indexSet, from: grammarFavorites) }
-                            }
-                        }
-                    }
+            VStack(spacing: 0) {
+                filterPanel
+                    .padding(.horizontal, DSSpacing.lg)
+                    .padding(.top, DSSpacing.sm)
+                    .padding(.bottom, DSSpacing.xs)
 
-                    if !sentenceFavorites.isEmpty {
-                        Section("句子") {
-                            ForEach(sentenceFavorites) { favorite in
-                                sentenceRow(favorite)
+                if isLoading {
+                    Spacer()
+                    ProgressView()
+                        .tint(Color.dsTravelNavy)
+                    Spacer()
+                } else if favorites.isEmpty {
+                    emptyNotebook
+                } else if filteredFavorites.isEmpty {
+                    noResultsPanel
+                } else {
+                    List {
+                        if !wordFavorites.isEmpty {
+                            Section {
+                                ForEach(wordFavorites) { favorite in
+                                    favoritePanel { wordRow(favorite) }
+                                }
+                                .onDelete { indexSet in
+                                    Task { await remove(at: indexSet, from: wordFavorites) }
+                                }
+                            } header: {
+                                sectionHeader("单词", count: wordFavorites.count)
                             }
-                            .onDelete { indexSet in
-                                Task { await remove(at: indexSet, from: sentenceFavorites) }
+                        }
+
+                        if !grammarFavorites.isEmpty {
+                            Section {
+                                ForEach(grammarFavorites) { favorite in
+                                    favoritePanel { grammarRow(favorite) }
+                                }
+                                .onDelete { indexSet in
+                                    Task { await remove(at: indexSet, from: grammarFavorites) }
+                                }
+                            } header: {
+                                sectionHeader("语法", count: grammarFavorites.count)
+                            }
+                        }
+
+                        if !sentenceFavorites.isEmpty {
+                            Section {
+                                ForEach(sentenceFavorites) { favorite in
+                                    favoritePanel { sentenceRow(favorite) }
+                                }
+                                .onDelete { indexSet in
+                                    Task { await remove(at: indexSet, from: sentenceFavorites) }
+                                }
+                            } header: {
+                                sectionHeader("句子", count: sentenceFavorites.count)
                             }
                         }
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
+                    .listSectionSpacing(DSSpacing.sm)
+                    .scrollIndicators(.hidden)
                 }
-                .listStyle(.insetGrouped)
             }
         }
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color(.systemGroupedBackground))
+        .toolbarBackground(.hidden, for: .navigationBar)
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -116,16 +148,144 @@ public struct FavoritesView: View {
         }
     }
 
+    private var filterPanel: some View {
+        DSWorkbenchPanel(weight: .chrome, radius: DSRadius.hero, padding: DSSpacing.md) {
+            VStack(spacing: DSSpacing.sm) {
+                HStack(spacing: DSSpacing.sm) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(Color.dsSceneTextSecondary)
+                    TextField("搜索收藏", text: $searchText)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .foregroundStyle(Color.dsSceneTextPrimary)
+                    if !searchText.isEmpty {
+                        Button {
+                            searchText = ""
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundStyle(Color.dsSceneTextTertiary)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("清除搜索")
+                    }
+                }
+                .frame(minHeight: 40)
+
+                Picker("收藏类型", selection: $filter) {
+                    ForEach(Filter.allCases) { option in
+                        Text(option.rawValue).tag(option)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+        }
+    }
+
+    private var emptyNotebook: some View {
+        VStack {
+            Spacer(minLength: 42)
+            DSWorkbenchPanel(weight: .reading, radius: 28, padding: 30) {
+                VStack(spacing: DSSpacing.md) {
+                    Image(systemName: "bookmark")
+                        .font(.system(size: 46, weight: .light))
+                        .foregroundStyle(Color.dsSkyDeep)
+
+                    Text("还没有收藏")
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(Color.dsSceneTextPrimary)
+
+                    Text("在对话中收藏单词、语法或句子，\n它们会整理在这里。")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(3)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 28)
+            }
+            .rotationEffect(.degrees(-1.5))
+            .frame(maxWidth: 350)
+            .padding(.horizontal, 34)
+            Spacer(minLength: 90)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var noResultsPanel: some View {
+        VStack {
+            Spacer()
+            DSWorkbenchPanel(weight: .reading) {
+                VStack(spacing: DSSpacing.sm) {
+                    Image(systemName: "text.magnifyingglass")
+                        .font(.largeTitle)
+                        .foregroundStyle(Color.dsSkyDeep)
+                    Text("没有找到相关收藏")
+                        .font(.headline)
+                    Text("试试其他关键词或收藏类型")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.dsSceneTextSecondary)
+                }
+                .foregroundStyle(Color.dsSceneTextPrimary)
+            }
+            .frame(maxWidth: 340)
+            .padding(.horizontal, DSSpacing.xl)
+            Spacer()
+        }
+    }
+
+    private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        DSWorkbenchPanel(weight: .reading, radius: DSRadius.card, padding: DSSpacing.md) {
+            content()
+        }
+        .listRowInsets(
+            EdgeInsets(top: 5, leading: DSSpacing.lg, bottom: 5, trailing: DSSpacing.lg)
+        )
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
+    }
+
+    private func sectionHeader(_ title: String, count: Int) -> some View {
+        HStack {
+            Text(title)
+            Spacer()
+            Text("\(count)")
+                .monospacedDigit()
+        }
+        .font(.subheadline.weight(.bold))
+        .foregroundStyle(Color.dsSceneTextPrimary)
+        .textCase(nil)
+        .padding(.horizontal, 4)
+    }
+
+    private var filteredFavorites: [FavoriteDTO] {
+        let kindFiltered = favorites.filter { favorite in
+            switch filter {
+            case .all: true
+            case .word: favorite.kind == .word
+            case .grammar: favorite.kind == .grammarPoint
+            case .sentence: favorite.kind == .sentence
+            }
+        }
+
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return kindFiltered }
+        return kindFiltered.filter { favorite in
+            favorite.sentence.localizedCaseInsensitiveContains(query)
+                || favorite.translationZh?.localizedCaseInsensitiveContains(query) == true
+                || favorite.characterName.localizedCaseInsensitiveContains(query)
+        }
+    }
+
     private var wordFavorites: [FavoriteDTO] {
-        favorites.filter { $0.kind == .word }
+        filteredFavorites.filter { $0.kind == .word }
     }
 
     private var grammarFavorites: [FavoriteDTO] {
-        favorites.filter { $0.kind == .grammarPoint }
+        filteredFavorites.filter { $0.kind == .grammarPoint }
     }
 
     private var sentenceFavorites: [FavoriteDTO] {
-        favorites.filter { $0.kind == .sentence }
+        filteredFavorites.filter { $0.kind == .sentence }
     }
 
     private func wordRow(_ favorite: FavoriteDTO) -> some View {
@@ -146,7 +306,7 @@ public struct FavoritesView: View {
                     if let phonetic = wordEntries[favorite.id]?.phonetic {
                         Text("/\(phonetic)/")
                             .font(.footnote)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
                     }
                 }
 
@@ -155,14 +315,14 @@ public struct FavoritesView: View {
                     if groups.isEmpty {
                         Text("暂无中文释义")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
                     } else {
                         ForEach(groups) { group in
                             HStack(alignment: .firstTextBaseline, spacing: 8) {
                                 partOfSpeechLabel(group)
                                 Text(group.meaning)
                                     .font(.subheadline)
-                                    .foregroundStyle(.primary)
+                                    .foregroundStyle(Color.dsSceneTextPrimary)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
@@ -187,7 +347,7 @@ public struct FavoritesView: View {
             if let abbreviation = group.partOfSpeechAbbreviation {
                 Text(abbreviation)
                     .font(.caption2.weight(.medium))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
             }
         }
         .lineLimit(1)
@@ -213,7 +373,7 @@ public struct FavoritesView: View {
                !explanation.isEmpty {
                 Text(explanation)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
@@ -223,7 +383,7 @@ public struct FavoritesView: View {
                         .font(.footnote.weight(.medium))
                     Text(example.zh)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.dsSceneTextSecondary)
                 }
                 .padding(.leading, 25)
             }
@@ -248,7 +408,7 @@ public struct FavoritesView: View {
                 if let translation = favorite.translationZh {
                     Text(translation)
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.dsSceneTextSecondary)
                 }
 
                 HStack(spacing: 5) {
@@ -257,7 +417,7 @@ public struct FavoritesView: View {
                     favoriteDate(favorite.createdAt)
                 }
                 .font(.caption)
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(Color.dsSceneTextTertiary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -279,7 +439,7 @@ public struct FavoritesView: View {
     private func favoriteDate(_ date: Date) -> some View {
         Text(date, style: .date)
             .font(.caption)
-            .foregroundStyle(.tertiary)
+            .foregroundStyle(Color.dsSceneTextTertiary)
     }
 
     private func speechButton(text: String, label: String) -> some View {

@@ -56,57 +56,30 @@ public struct SettingsView: View {
     }
 
     public var body: some View {
-        Form {
-            learningSection
-            proactiveMessagesSection
-            offlineVoiceSection
-            voiceSection
-            Section {
-                LabeledContent("连接方式", value: "安全后端中转")
-                LabeledContent("模型策略", value: "服务端按任务配置")
-                Button {
-                    runConnectionTest()
-                } label: {
-                    HStack {
-                        Text("测试 AI 服务")
-                        Spacer()
-                        if testState == .testing {
-                            ProgressView()
-                        }
-                    }
-                }
-                .disabled(testState == .testing)
+        ZStack {
+            DSWorkbenchBackdrop(focus: .settings)
 
-                switch testState {
-                case .idle, .testing:
-                    EmptyView()
-                case .success(let reply):
-                    Label("服务可用：\(reply)", systemImage: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
-                case .failure(let message):
-                    Label(message, systemImage: "xmark.octagon.fill")
-                        .foregroundStyle(.red)
+            ScrollView {
+                VStack(spacing: DSSpacing.lg) {
+                    journeySummary
+                    learningAndReminderPanel
+                    offlineVoicePanel
+                    systemVoicePanel
+                    servicePanel
+                    creditsPanel
                 }
-            } header: {
-                Text("AI 服务")
-            } footer: {
-                Text("供应商密钥、模型和配额只保存在服务端，不会下发到设备。")
+                .frame(maxWidth: 620)
+                .padding(.horizontal, DSSpacing.lg)
+                .padding(.top, DSSpacing.sm)
+                .padding(.bottom, 48)
+                .frame(maxWidth: .infinity)
             }
-
-            Section {
-                NavigationLink {
-                    CityScenePhotoCreditsView()
-                } label: {
-                    Label("城市背景照片与许可", systemImage: "photo.on.rectangle.angled")
-                }
-            } header: {
-                Text("关于素材")
-            } footer: {
-                Text("查看信息页与联系人页所用实景摄影的作者、来源和许可。")
-            }
+            .scrollIndicators(.hidden)
         }
         .navigationTitle("设置")
-        .animation(.default, value: testState)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .animation(DSAnimation.snappy, value: testState)
         .task {
             await reloadProfile()
         }
@@ -126,184 +99,378 @@ public struct SettingsView: View {
         }
     }
 
-    private var proactiveMessagesSection: some View {
-        Section {
-            Toggle("角色主动联系", isOn: $proactiveMessagesEnabled)
-            Button {
-                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
-                    openURL(url)
+    private var journeySummary: some View {
+        DSWorkbenchPanel(weight: .content) {
+            HStack(spacing: DSSpacing.md) {
+                Image(systemName: "watch.analog")
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundStyle(Color.dsBrandCream)
+                    .frame(width: 54, height: 54)
+                    .background(Color.dsTravelNavy, in: Circle())
+
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("旅程设置")
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(Color.dsSceneTextPrimary)
+                    Label("学习提醒已开启", systemImage: "checkmark.circle.fill")
+                    Label("Pocket TTS · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
                 }
-            } label: {
-                Label("系统通知设置", systemImage: "bell.badge")
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Color.dsSceneTextSecondary)
+
+                Spacer(minLength: 0)
             }
-        } header: {
-            Text("消息提醒")
-        } footer: {
-            Text("好友会偶尔主动聊起适合练习英语的话题。通常间隔数天，只在白天提醒；关闭后会取消尚未发送的消息。")
+        }
+    }
+
+    private var learningAndReminderPanel: some View {
+        DSWorkbenchPanel(weight: .reading) {
+            VStack(alignment: .leading, spacing: 0) {
+                panelTitle("学习与提醒", systemImage: "bell.and.waves.left.and.right")
+
+                if profile != nil {
+                    settingsToggle(
+                        "聊天中随机出题",
+                        detail: "在对话中偶尔加入一道轻量练习",
+                        isOn: quizEnabledBinding
+                    )
+                    panelDivider
+                }
+
+                settingsToggle(
+                    "角色主动联系",
+                    detail: "好友只会在白天偶尔发起适合练习的话题",
+                    isOn: $proactiveMessagesEnabled
+                )
+
+                panelDivider
+
+                Button {
+                    if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                        openURL(url)
+                    }
+                } label: {
+                    settingsLinkLabel("系统通知设置", systemImage: "bell.badge")
+                }
+                .buttonStyle(.plain)
+            }
         }
     }
 
     // MARK: - 语音引擎
 
     @ViewBuilder
-    private var offlineVoiceSection: some View {
+    private var offlineVoicePanel: some View {
         if let manager = speech as? any SpeechSynthesisEngineManaging {
-            Section {
-                LabeledContent("语音识别（ASR）", value: "Apple 系统识别")
+            DSWorkbenchPanel(weight: .reading) {
+                VStack(alignment: .leading, spacing: 0) {
+                    panelTitle("语音工作室", systemImage: "waveform")
 
-                Picker(
-                    "语音合成（TTS）",
-                    selection: Binding(
-                        get: {
-                            synthesisEngineStatus.selectedEngine
-                        },
-                        set: { engine in
+                    settingsValueRow("语音识别", value: "Apple 系统识别")
+                    panelDivider
+
+                    Picker(
+                        "语音合成",
+                        selection: Binding(
+                            get: { synthesisEngineStatus.selectedEngine },
+                            set: { engine in
+                                Task { await manager.selectSynthesisEngine(engine) }
+                            }
+                        )
+                    ) {
+                        ForEach(SpeechSynthesisEngine.allCases) { engine in
+                            Text(engine.label).tag(engine)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .tint(Color.dsSkyDeep)
+                    .frame(minHeight: 52)
+                    .disabled(
+                        synthesisEngineStatus.isBusy
+                            || !synthesisEngineStatus.isBundledModelAvailable
+                    )
+
+                    panelDivider
+
+                    HStack(alignment: .firstTextBaseline, spacing: DSSpacing.sm) {
+                        Text("内置 TTS")
+                            .font(.body.weight(.medium))
+                        Spacer()
+                        VStack(alignment: .trailing, spacing: 2) {
+                            Text("Pocket TTS · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.dsSceneTextSecondary)
+                            Text(offlineVoicePhaseLabel)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(offlineVoicePhaseTint)
+                        }
+                    }
+                    .frame(minHeight: 52)
+
+                    if synthesisEngineStatus.phase == .loading {
+                        Label("正在预热离线语音模型…", systemImage: "hourglass")
+                            .font(.footnote)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .padding(.bottom, DSSpacing.sm)
+                    }
+
+                    if let message = synthesisEngineStatus.errorMessage {
+                        Label(message, systemImage: "exclamationmark.triangle.fill")
+                            .font(.footnote)
+                            .foregroundStyle(Color.dsWarning)
+                            .padding(.bottom, DSSpacing.sm)
+                    }
+
+                    panelDivider
+
+                    HStack(spacing: DSSpacing.sm) {
+                        voicePreviewButton("系统语音", systemImage: "play.circle") {
                             Task {
-                                await manager.selectSynthesisEngine(engine)
+                                await speech.speak(
+                                    SpeechRequest(
+                                        text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
+                                        language: "en-GB",
+                                        purpose: .characterDialogue,
+                                        voiceHint: previewVoiceHint,
+                                        engine: .system
+                                    )
+                                )
                             }
                         }
-                    )
-                ) {
-                    ForEach(SpeechSynthesisEngine.allCases) { engine in
-                        Text(engine.label).tag(engine)
-                    }
-                }
-                .disabled(
-                    synthesisEngineStatus.isBusy
-                        || !synthesisEngineStatus.isBundledModelAvailable
-                )
 
-                LabeledContent("内置 TTS") {
-                    HStack(spacing: 6) {
-                        Text("Pocket TTS · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
-                            .foregroundStyle(.secondary)
-                        Text(offlineVoicePhaseLabel)
-                            .foregroundStyle(offlineVoicePhaseTint)
-                            .font(.caption)
-                    }
-                }
-
-                if synthesisEngineStatus.phase == .loading {
-                    HStack {
-                        ProgressView()
-                        Text("正在预热 Pocket TTS Core ML 模型…")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-
-                if let message = synthesisEngineStatus.errorMessage {
-                    Label(message, systemImage: "exclamationmark.triangle.fill")
-                        .font(.footnote)
-                        .foregroundStyle(.orange)
-                }
-
-                Button {
-                    Task {
-                        await speech.speak(
-                            SpeechRequest(
-                                text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
-                                language: "en-GB",
-                                purpose: .characterDialogue,
-                                voiceHint: previewVoiceHint,
-                                engine: .system
-                            )
+                        voicePreviewButton("Pocket TTS", systemImage: "waveform.circle") {
+                            Task {
+                                await speech.speak(
+                                    SpeechRequest(
+                                        text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
+                                        language: "en-GB",
+                                        purpose: .characterDialogue,
+                                        voiceHint: previewVoiceHint,
+                                        engine: .pocketTTS
+                                    )
+                                )
+                            }
+                        }
+                        .disabled(
+                            !synthesisEngineStatus.isBundledModelAvailable
+                                || synthesisEngineStatus.isBusy
                         )
                     }
-                } label: {
-                    Label("试听 Apple 系统语音", systemImage: "play.circle")
-                }
+                    .padding(.vertical, DSSpacing.sm)
 
-                Button {
-                    Task {
-                        await speech.speak(
-                            SpeechRequest(
-                                text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
-                                language: "en-GB",
-                                purpose: .characterDialogue,
-                                voiceHint: previewVoiceHint,
-                                engine: .pocketTTS
+                    panelDivider
+
+                    DisclosureGroup {
+                        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                            Text("实时语音使用 Apple 系统识别。Pocket TTS 完全离线；系统识别会优先端侧处理，当前语言模型不可用时可能使用网络。")
+                                .font(.footnote)
+                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Link(
+                                "Pocket TTS 与开源许可",
+                                destination: URL(string: "https://github.com/kyutai-labs/pocket-tts")!
                             )
-                        )
+                            .font(.subheadline.weight(.semibold))
+                        }
+                        .padding(.top, DSSpacing.sm)
+                    } label: {
+                        Text("语音隐私与许可")
+                            .font(.body.weight(.medium))
                     }
-                } label: {
-                    Label("试听 Pocket TTS", systemImage: "waveform.circle")
+                    .tint(Color.dsSkyDeep)
                 }
-                .disabled(
-                    !synthesisEngineStatus.isBundledModelAvailable
-                        || synthesisEngineStatus.isBusy
-                )
-
-                Link(
-                    "Pocket TTS 与开源许可",
-                    destination: URL(string: "https://github.com/kyutai-labs/pocket-tts")!
-                )
-            } header: {
-                Text("语音引擎对比")
-            } footer: {
-                Text("实时语音统一使用 Apple 系统识别，不再加载外置 ASR 模型。TTS 选择立即生效，也可用上方按钮在不改设置的情况下试听；Pocket TTS 完全离线。Apple 系统识别会优先端侧处理，但在当前语言模型不可用时可能使用网络。")
+                .foregroundStyle(Color.dsSceneTextPrimary)
             }
         }
     }
 
-    private var voiceSection: some View {
-        Section {
-            LabeledContent("当前英语语音") {
-                Text(voiceQuality.label)
-                    .foregroundStyle(voiceQuality.isNatural ? .green : .orange)
-                    .fontWeight(.medium)
-            }
-            ForEach(voiceReports) { report in
-                LabeledContent(report.accentLabel) {
-                    HStack(spacing: 6) {
-                        if let name = report.voiceName {
-                            Text(name).foregroundStyle(.secondary)
-                        }
-                        Text(report.quality.label)
-                            .font(.caption)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(
-                                (report.quality.isNatural ? Color.green : Color.orange).opacity(0.15),
-                                in: Capsule()
-                            )
-                            .foregroundStyle(report.quality.isNatural ? .green : .orange)
-                    }
-                }
-            }
-            Button {
-                Task {
-                    await speech.speak(
-                        SpeechRequest(
-                            text: "Hello! This is how I sound. Nice to meet you.",
-                            language: "en-US",
-                            engine: .system
+    private var systemVoicePanel: some View {
+        DSWorkbenchPanel(weight: .content) {
+            DisclosureGroup {
+                VStack(alignment: .leading, spacing: 0) {
+                    settingsValueRow("当前英语语音", value: voiceQuality.label)
+                    panelDivider
+
+                    ForEach(voiceReports) { report in
+                        settingsValueRow(
+                            report.accentLabel,
+                            value: [report.voiceName, report.quality.label]
+                                .compactMap { $0 }
+                                .joined(separator: " · ")
                         )
-                    )
-                }
-            } label: {
-                Label("试听当前语音", systemImage: "play.circle")
-            }
-            if !voiceQuality.isNatural {
-                Button {
-                    if let url = VoiceSettingsNavigation.prepareToOpenSettings() {
-                        openURL(url)
                     }
-                } label: {
-                    Label(
-                        "复制“\(VoiceSettingsNavigation.searchTerm)”并打开设置",
-                        systemImage: "arrow.down.circle"
+
+                    Button {
+                        Task {
+                            await speech.speak(
+                                SpeechRequest(
+                                    text: "Hello! This is how I sound. Nice to meet you.",
+                                    language: "en-US",
+                                    engine: .system
+                                )
+                            )
+                        }
+                    } label: {
+                        settingsLinkLabel("试听当前语音", systemImage: "play.circle")
+                    }
+                    .buttonStyle(.plain)
+
+                    if !voiceQuality.isNatural {
+                        panelDivider
+                        Button {
+                            if let url = VoiceSettingsNavigation.prepareToOpenSettings() {
+                                openURL(url)
+                            }
+                        } label: {
+                            settingsLinkLabel("下载更自然的系统语音", systemImage: "arrow.down.circle")
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    Text(
+                        voiceQuality.isNatural
+                            ? "已启用增强或高级音质。"
+                            : "可在系统设置的辅助功能中下载增强或高级英语语音。"
                     )
+                    .font(.footnote)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .padding(.top, DSSpacing.sm)
                 }
+                .padding(.top, DSSpacing.sm)
+            } label: {
+                panelTitle("Apple 系统语音详情", systemImage: "slider.horizontal.3")
             }
-        } header: {
-            Text("Apple 系统语音详情")
-        } footer: {
-            if voiceQuality.isNatural {
-                Text("已启用增强/高级音质，听感更自然。想为更多口音提升音质，可在「设置 › 辅助功能 › 朗读内容 › 声音 › 英语」继续下载。")
-            } else {
-                Text("系统自带的标准语音偏机械。前往「设置 › 辅助功能 › 朗读内容 › 声音 › 英语」，下载带「增强」或「高级」标记的语音（如 Ava、Zoe、Serena），下载后回到 App 即自动生效、明显更像真人。")
+            .tint(Color.dsSkyDeep)
+            .foregroundStyle(Color.dsSceneTextPrimary)
+        }
+    }
+
+    private var servicePanel: some View {
+        DSWorkbenchPanel(weight: .content) {
+            VStack(alignment: .leading, spacing: 0) {
+                panelTitle("AI 服务", systemImage: "network")
+                settingsValueRow("连接方式", value: "安全后端中转")
+                panelDivider
+                settingsValueRow("模型策略", value: "服务端按任务配置")
+                panelDivider
+
+                Button {
+                    runConnectionTest()
+                } label: {
+                    HStack {
+                        Label("测试 AI 服务", systemImage: "bolt.horizontal.circle")
+                        Spacer()
+                        if testState == .testing { ProgressView() }
+                    }
+                    .frame(minHeight: 48)
+                    .foregroundStyle(Color.dsSkyDeep)
+                }
+                .buttonStyle(.plain)
+                .disabled(testState == .testing)
+
+                switch testState {
+                case .idle, .testing:
+                    EmptyView()
+                case .success(let reply):
+                    Label("服务可用：\(reply)", systemImage: "checkmark.circle.fill")
+                        .font(.footnote)
+                        .foregroundStyle(Color.dsSuccess)
+                case .failure(let message):
+                    Label(message, systemImage: "xmark.octagon.fill")
+                        .font(.footnote)
+                        .foregroundStyle(Color.dsDanger)
+                }
+
+                Text("供应商密钥、模型和配额只保存在服务端，不会下发到设备。")
+                    .font(.footnote)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .padding(.top, DSSpacing.sm)
+            }
+            .foregroundStyle(Color.dsSceneTextPrimary)
+        }
+    }
+
+    private var creditsPanel: some View {
+        DSWorkbenchPanel(weight: .chrome, padding: DSSpacing.md) {
+            NavigationLink {
+                CityScenePhotoCreditsView()
+            } label: {
+                settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private func panelTitle(_ title: String, systemImage: String) -> some View {
+        Label(title, systemImage: systemImage)
+            .font(.system(.headline, design: .rounded, weight: .bold))
+            .foregroundStyle(Color.dsSceneTextPrimary)
+            .padding(.bottom, DSSpacing.sm)
+    }
+
+    private var panelDivider: some View {
+        Divider().overlay(Color.dsSceneTextPrimary.opacity(0.12))
+    }
+
+    private func settingsToggle(
+        _ title: String,
+        detail: String,
+        isOn: Binding<Bool>
+    ) -> some View {
+        Toggle(isOn: isOn) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                    .font(.body.weight(.medium))
+                    .foregroundStyle(Color.dsSceneTextPrimary)
+                Text(detail)
+                    .font(.caption)
+                    .foregroundStyle(Color.dsSceneTextSecondary)
             }
         }
+        .tint(Color.dsSkyDeep)
+        .frame(minHeight: 64)
+    }
+
+    private func settingsValueRow(_ title: String, value: String) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: DSSpacing.sm) {
+            Text(title)
+                .font(.body.weight(.medium))
+                .foregroundStyle(Color.dsSceneTextPrimary)
+            Spacer()
+            Text(value)
+                .font(.subheadline)
+                .foregroundStyle(Color.dsSceneTextSecondary)
+                .multilineTextAlignment(.trailing)
+        }
+        .frame(minHeight: 52)
+    }
+
+    private func settingsLinkLabel(_ title: String, systemImage: String) -> some View {
+        HStack(spacing: DSSpacing.sm) {
+            Label(title, systemImage: systemImage)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.caption.weight(.bold))
+        }
+        .font(.body.weight(.medium))
+        .foregroundStyle(Color.dsSkyDeep)
+        .frame(minHeight: 48)
+        .contentShape(Rectangle())
+    }
+
+    private func voicePreviewButton(
+        _ title: String,
+        systemImage: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            Label(title, systemImage: systemImage)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.dsSkyDeep)
+                .frame(maxWidth: .infinity, minHeight: 44)
+                .background(Color.dsSky.opacity(0.10), in: RoundedRectangle(cornerRadius: DSRadius.inline))
+        }
+        .buttonStyle(.plain)
     }
 
     private func reloadVoiceInfo() {
@@ -353,21 +520,6 @@ public struct SettingsView: View {
         let formatter = ByteCountFormatter()
         formatter.countStyle = .file
         return formatter.string(fromByteCount: count)
-    }
-
-    // MARK: - 学习
-
-    @ViewBuilder
-    private var learningSection: some View {
-        Section {
-            if profile != nil {
-                Toggle("聊天中随机出题", isOn: quizEnabledBinding)
-            }
-        } header: {
-            Text("学习")
-        } footer: {
-            Text("开启后，与朋友聊到一定轮次会随手出一道小测；每个对话里也能单独关闭。")
-        }
     }
 
     private var quizEnabledBinding: Binding<Bool> {
