@@ -2,6 +2,7 @@ import CoreKit
 import DesignSystem
 import DictKit
 import DomainKit
+import LLMKit
 import PersistenceKit
 import SwiftUI
 
@@ -385,8 +386,33 @@ struct GrammarAnalysisSheet: View {
             aiAnalysis = analysis
             onAIAnalysis(analysis)
         } catch {
-            errorMessage = "AI 解析失败，请检查网络后重试"
+            Log.llm.error("语法解析失败：\(error.localizedDescription)")
+            errorMessage = GrammarAnalysisErrorPresentation.message(for: error)
         }
         isLoadingAI = false
+    }
+}
+
+enum GrammarAnalysisErrorPresentation {
+    static func message(for error: Error) -> String {
+        if error is CoachService.TimeoutError {
+            return "AI 解析超时，请重新解析"
+        }
+        if error is URLError {
+            return "网络连接异常，请检查网络后重试"
+        }
+        if let llmError = error as? LLMError {
+            switch llmError {
+            case .invalidResponse, .emptyResponse:
+                return "AI 返回的解析内容不完整，请重新解析"
+            case .http(let status, _):
+                if status == 401 { return "AI 服务登录状态已失效，请重新登录后重试" }
+                if status == 429 { return "AI 请求较多，请稍后再试" }
+                return "AI 解析服务暂时不可用，请稍后重试"
+            default:
+                break
+            }
+        }
+        return "AI 解析暂时失败，请稍后重试"
     }
 }

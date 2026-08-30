@@ -1,3 +1,4 @@
+import CoreKit
 import Foundation
 
 public actor BackendClient {
@@ -184,7 +185,7 @@ public actor BackendClient {
         body: Request,
         guestID: String
     ) async throws -> Response {
-        if try hasStoredSession() {
+        if try hasUsableStoredSessionForGuestAccess() {
             do {
                 return try await send(path: path, method: method, body: body)
             } catch {
@@ -239,7 +240,7 @@ public actor BackendClient {
         guestID: String
     ) async throws -> AsyncThrowingStream<BackendServerSentEvent, Error> {
         let encodedBody = try encoder.encode(body)
-        if try hasStoredSession() {
+        if try hasUsableStoredSessionForGuestAccess() {
             do {
                 return try await openEventStream(
                     path: path,
@@ -451,6 +452,17 @@ public actor BackendClient {
             return false
         }
         return true
+    }
+
+    /// 访客可用端点不应因调试/测试安装缺少钥匙串 entitlement 而完全失效。
+    /// 这里只降级钥匙串访问错误；凭据解码等其他异常仍向上传递，避免掩盖数据损坏。
+    private func hasUsableStoredSessionForGuestAccess() throws -> Bool {
+        do {
+            return try hasStoredSession()
+        } catch let appError as AppError {
+            guard case .keychain = appError else { throw appError }
+            return false
+        }
     }
 
     private static func isAuthenticationFailure(_ error: Error) -> Bool {
