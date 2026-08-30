@@ -292,7 +292,7 @@ public struct FavoritesView: View {
                             glowColor: journalHologramGlow
                         )
                     }
-                    .offset(x: 8)
+                    .offset(x: journalIconOffsetX)
 
                     journalElement {
                         DSHologramText(
@@ -304,6 +304,7 @@ public struct FavoritesView: View {
                             alignment: .center
                         )
                     }
+                    .offset(x: journalTitleOffsetX)
 
                     journalElement {
                         DSHologramText(
@@ -317,6 +318,7 @@ public struct FavoritesView: View {
                         )
                         .fixedSize(horizontal: true, vertical: false)
                     }
+                    .offset(x: journalBodyOffsetX)
                 }
 
                 Button(action: onBrowseConversations) {
@@ -343,7 +345,7 @@ public struct FavoritesView: View {
                 }
                 .buttonStyle(.plain)
                 .rotationEffect(.degrees(journalRotation))
-                .offset(x: 8)
+                .offset(x: journalButtonOffsetX)
             }
             .frame(width: min(280, proxy.size.width * 0.72))
             .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.365)
@@ -360,7 +362,7 @@ public struct FavoritesView: View {
                         .foregroundStyle(journalHologramTint)
                         .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
                 }
-                .offset(x: 8)
+                .offset(x: journalIconOffsetX)
                 journalElement {
                     DSHologramText(
                         "没有找到相关收藏",
@@ -371,6 +373,7 @@ public struct FavoritesView: View {
                         alignment: .center
                     )
                 }
+                .offset(x: journalTitleOffsetX)
                 journalElement {
                     DSHologramText(
                         "试试其他关键词或收藏类型",
@@ -381,6 +384,7 @@ public struct FavoritesView: View {
                         alignment: .center
                     )
                 }
+                .offset(x: journalBodyOffsetX)
             }
             .frame(width: min(280, proxy.size.width * 0.72))
             .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.35)
@@ -388,6 +392,13 @@ public struct FavoritesView: View {
     }
 
     private var journalRotation: Double { -9.25 }
+
+    // Keep the action button as the visual anchor, then follow the notebook's
+    // counter-clockwise page axis progressively farther left toward the top.
+    private var journalIconOffsetX: CGFloat { -8 }
+    private var journalTitleOffsetX: CGFloat { -13 }
+    private var journalBodyOffsetX: CGFloat { -10 }
+    private var journalButtonOffsetX: CGFloat { 8 }
 
     private var journalHologramTint: Color {
         Color(red: 0.16, green: 0.27, blue: 0.30)
