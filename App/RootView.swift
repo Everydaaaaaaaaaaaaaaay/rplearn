@@ -47,8 +47,6 @@ struct RootView: View {
     @State private var selectedTab: AppTab = .messages
     @State private var homePath = NavigationPath()
     @State private var meDestination: MeDestination?
-    @State private var meTransitionProgress: CGFloat = 0
-    @State private var meTransitionTask: Task<Void, Never>?
     @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
     @State private var showPlacementTest = false
@@ -60,7 +58,6 @@ struct RootView: View {
     @State private var isInitialContentReady = false
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     init(environment: AppEnvironment) {
         self.environment = environment
@@ -311,9 +308,7 @@ struct RootView: View {
     }
 
     private var tabs: some View {
-        let transitionProgress = selectedTab == .me ? meTransitionProgress : 0
-
-        return TabView(selection: $selectedTab) {
+        TabView(selection: $selectedTab) {
             messagesStack
                 .tag(AppTab.messages)
                 .tabItem {
@@ -344,15 +339,6 @@ struct RootView: View {
             #endif
         }
         .tint(.dsSky)
-        .saturation(1 - transitionProgress * 0.18)
-        .blur(radius: reduceMotion ? 0 : transitionProgress * 10)
-        .opacity(1 - transitionProgress * 0.88)
-        .overlay {
-            MeRouteTransitionVeil(
-                progress: transitionProgress,
-                reduceTransparency: reduceTransparency
-            )
-        }
     }
 
     private var homeStack: some View {
@@ -444,7 +430,18 @@ struct RootView: View {
 
     private var meStack: some View {
         NavigationStack {
-            meStackContent
+            ZStack {
+                if reduceMotion {
+                    meStackContent
+                        .id(meDestination)
+                        .transition(.opacity)
+                } else {
+                    meStackContent
+                        .id(meDestination)
+                        .transition(.blurReplace)
+                }
+            }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationBarBackButtonHidden(meDestination != nil)
                 .toolbar(meDestination == nil ? .hidden : .visible, for: .navigationBar)
                 .toolbar {
@@ -499,9 +496,7 @@ struct RootView: View {
             FavoritesView(
                 deps: favoritesDeps,
                 onBrowseConversations: {
-                    meTransitionTask?.cancel()
                     meDestination = nil
-                    meTransitionProgress = 0
                     selectedTab = .messages
                 }
             )
@@ -540,57 +535,10 @@ struct RootView: View {
 
     @MainActor
     private func transitionMe(to destination: MeDestination?) {
-        guard destination != meDestination || meTransitionProgress > 0 else { return }
+        guard destination != meDestination else { return }
 
-        meTransitionTask?.cancel()
-        let fadeOutMilliseconds = reduceMotion ? 120 : 220
-        let fadeInMilliseconds = reduceMotion ? 160 : 300
-
-        meTransitionTask = Task { @MainActor in
-            withAnimation(
-                .timingCurve(
-                    0.32,
-                    0,
-                    0.20,
-                    1,
-                    duration: Double(fadeOutMilliseconds) / 1_000
-                )
-            ) {
-                meTransitionProgress = 1
-            }
-
-            do {
-                try await Task.sleep(for: .milliseconds(fadeOutMilliseconds))
-            } catch {
-                return
-            }
-
-            var routeTransaction = Transaction()
-            routeTransaction.disablesAnimations = true
-            withTransaction(routeTransaction) {
-                meDestination = destination
-            }
-
-            await Task.yield()
-
-            withAnimation(
-                .timingCurve(
-                    0.20,
-                    0.80,
-                    0.20,
-                    1,
-                    duration: Double(fadeInMilliseconds) / 1_000
-                )
-            ) {
-                meTransitionProgress = 0
-            }
-
-            do {
-                try await Task.sleep(for: .milliseconds(fadeInMilliseconds))
-            } catch {
-                return
-            }
-            meTransitionTask = nil
+        withAnimation(reduceMotion ? .easeInOut(duration: 0.20) : .smooth(duration: 0.42)) {
+            meDestination = destination
         }
     }
 
@@ -807,42 +755,6 @@ struct RootView: View {
         await environment.refreshProactiveMessages(
             requestAuthorization: requestAuthorization
         )
-    }
-}
-
-/// 覆盖整个 TabView 的短暂羽化层。系统材质负责实时背景模糊，
-/// 径向渐变让边缘先融入纸张底色，避免硬切或纯色闪屏。
-private struct MeRouteTransitionVeil: View {
-    let progress: CGFloat
-    let reduceTransparency: Bool
-
-    var body: some View {
-        if progress > 0.001 {
-            ZStack {
-                if reduceTransparency {
-                    Color.dsBackground
-                } else {
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                }
-
-                Color.dsBackground.opacity(reduceTransparency ? 0.96 : 0.70)
-
-                RadialGradient(
-                    colors: [
-                        Color.dsBackground.opacity(0.16),
-                        Color.dsBackground.opacity(0.62),
-                    ],
-                    center: .center,
-                    startRadius: 52,
-                    endRadius: 560
-                )
-            }
-            .opacity(progress)
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
-            .accessibilityHidden(true)
-        }
     }
 }
 
