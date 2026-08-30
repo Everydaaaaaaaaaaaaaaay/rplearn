@@ -1008,47 +1008,20 @@ private struct SceneHologram<Content: View>: View {
     }
 
     private var layers: some View {
-        ZStack {
-            content
-                .blur(radius: 6)
-                .offset(
-                    x: plane.footprintOffset.width,
-                    y: plane.footprintOffset.height
-                )
-                .opacity(0.12)
-                .accessibilityHidden(true)
-
-            content
-                .blur(radius: 3.1)
-                .opacity(0.26)
-                .accessibilityHidden(true)
-
-            ForEach(1 ... 3, id: \.self) { slice in
-                content
-                    .offset(
-                        x: plane.extrusionOffset.width * CGFloat(slice) / 3,
-                        y: plane.extrusionOffset.height * CGFloat(slice) / 3
-                    )
-                    .opacity(0.06)
-                    .accessibilityHidden(true)
-            }
-
+        DSHologramSurface(
+            transform: DSHologramTransform(
+                rotationZ: plane.rotationZ,
+                tiltX: plane.tiltX,
+                tiltY: plane.tiltY,
+                perspective: plane.perspective,
+                scaleX: plane.scaleX,
+                scaleY: plane.scaleY,
+                footprintOffset: plane.footprintOffset,
+                extrusionOffset: plane.extrusionOffset
+            )
+        ) {
             content
         }
-        .scaleEffect(x: plane.scaleX, y: plane.scaleY)
-        .rotationEffect(.degrees(plane.rotationZ))
-        .rotation3DEffect(
-            .degrees(plane.tiltX),
-            axis: (x: 1, y: 0, z: 0),
-            anchor: .center,
-            perspective: plane.perspective
-        )
-        .rotation3DEffect(
-            .degrees(plane.tiltY),
-            axis: (x: 0, y: 1, z: 0),
-            anchor: .center,
-            perspective: plane.perspective
-        )
     }
 }
 
@@ -1071,11 +1044,13 @@ private struct SceneHologramText: View {
     }
 
     var body: some View {
-        Text(value)
-            .font(.system(size: size, weight: weight, design: .rounded))
-            .tracking(size >= 20 ? -0.45 : 0.08)
-            .foregroundStyle(tint.opacity(0.99))
-            .textRenderer(SceneHologramTextRenderer(tint: tint))
+        DSHologramText(
+            value,
+            size: size,
+            weight: weight,
+            tint: tint,
+            glowColor: .sceneHologramGlowYellow
+        )
     }
 }
 
@@ -1102,7 +1077,21 @@ private struct SceneHologramIcon: View {
         self.tint = tint
     }
 
+    @ViewBuilder
     var body: some View {
+        switch glyph {
+        case .bookmarkStar:
+            DSHologramBookmarkIcon(
+                size: size,
+                tint: tint,
+                glowColor: .sceneHologramGlowYellow
+            )
+        default:
+            decoratedGlyph
+        }
+    }
+
+    private var decoratedGlyph: some View {
         glyphBody
             .frame(width: size, height: size)
             .foregroundStyle(tint.opacity(0.99))

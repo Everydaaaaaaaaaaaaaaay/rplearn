@@ -20,13 +20,17 @@ public enum DSWorkbenchSceneFocus: Sendable, Equatable {
 
     fileprivate var scale: CGFloat {
         switch self {
-        case .learning, .favorites, .settings, .account, .archive: 1
+        case .favorites: 1.08
+        case .learning, .settings, .account, .archive: 1
         }
     }
 
     fileprivate var anchor: UnitPoint {
         switch self {
-        case .learning, .favorites, .settings, .account, .archive: .center
+        // 在不重绘、不插值原始摄影资产的前提下，以笔记本上沿为支点放大取景。
+        // 纸页因此只向下延伸，窗框、纸杯与木纹仍保持原图像素和材质。
+        case .favorites: UnitPoint(x: 0.50, y: 0.20)
+        case .learning, .settings, .account, .archive: .center
         }
     }
 }
@@ -234,78 +238,119 @@ public struct DSObsidianMedallion: View {
     }
 
     public var body: some View {
+        let faceSize = size * 0.88
+
         ZStack {
+            // 后层略向下露出，形成完整而未被裁切的石章厚度。
             Circle()
-                .fill(Color.black.opacity(0.50))
-                .offset(y: size * 0.055)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.13, green: 0.17, blue: 0.19),
+                            Color(red: 0.015, green: 0.022, blue: 0.026),
+                            .black,
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .frame(width: faceSize, height: faceSize)
+                .overlay {
+                    Circle()
+                        .stroke(Color.black.opacity(0.78), lineWidth: max(1.4, size * 0.026))
+                }
+                .offset(y: size * 0.052)
 
             Circle()
                 .fill(
                     RadialGradient(
                         colors: [
-                            Color(red: 0.16, green: 0.24, blue: 0.30),
-                            Color(red: 0.055, green: 0.105, blue: 0.145),
-                            Color(red: 0.012, green: 0.030, blue: 0.046),
+                            Color(red: 0.23, green: 0.29, blue: 0.31),
+                            Color(red: 0.075, green: 0.11, blue: 0.125),
+                            Color(red: 0.014, green: 0.026, blue: 0.033),
+                            Color.black,
                         ],
-                        center: UnitPoint(x: 0.32, y: 0.24),
+                        center: UnitPoint(x: 0.29, y: 0.21),
                         startRadius: 1,
-                        endRadius: size * 0.82
+                        endRadius: faceSize * 0.76
                     )
                 )
+                .frame(width: faceSize, height: faceSize)
                 .overlay {
                     Circle()
                         .fill(
                             AngularGradient(
                                 colors: [
-                                    .white.opacity(0.13),
+                                    .white.opacity(0.17),
                                     .clear,
-                                    .black.opacity(0.22),
+                                    .black.opacity(0.30),
                                     .clear,
-                                    .white.opacity(0.08),
+                                    Color(red: 0.42, green: 0.56, blue: 0.60).opacity(0.12),
+                                    .clear,
                                 ],
                                 center: .center
                             )
                         )
-                        .blendMode(.screen)
+                        .padding(max(1, faceSize * 0.025))
+                        .blendMode(.softLight)
                 }
-                .overlay { ObsidianMicrotexture().padding(size * 0.055) }
+                .overlay {
+                    ObsidianFlowTexture()
+                        .padding(faceSize * 0.065)
+                }
                 .overlay {
                     Circle()
                         .strokeBorder(
                             LinearGradient(
                                 colors: [
-                                    Color.dsFoilGold.opacity(0.66),
-                                    Color.white.opacity(0.32),
-                                    Color.black.opacity(0.68),
-                                    Color.dsFoilGold.opacity(0.30),
+                                    Color.dsFoilGold.opacity(0.56),
+                                    Color.white.opacity(0.46),
+                                    Color(red: 0.10, green: 0.15, blue: 0.17),
+                                    Color.black.opacity(0.88),
+                                    Color.dsFoilGold.opacity(0.28),
                                 ],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
-                            lineWidth: max(1, size * 0.022)
+                            lineWidth: max(1.5, size * 0.026)
                         )
                 }
                 .overlay {
                     Circle()
-                        .inset(by: size * 0.09)
-                        .stroke(Color.white.opacity(0.11), lineWidth: 0.75)
-                }
-                .overlay {
-                    Circle()
-                        .trim(from: 0.58, to: 0.89)
+                        .inset(by: faceSize * 0.085)
                         .stroke(
-                            Color.dsFoilGold.opacity(0.32),
-                            style: StrokeStyle(lineWidth: 1.1, lineCap: .round)
+                            LinearGradient(
+                                colors: [
+                                    Color.white.opacity(0.24),
+                                    Color.white.opacity(0.04),
+                                    Color.black.opacity(0.56),
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: max(0.8, size * 0.012)
                         )
-                        .rotationEffect(.degrees(7))
-                        .padding(size * 0.055)
                 }
+                .overlay {
+                    Circle()
+                        .trim(from: 0.54, to: 0.88)
+                        .stroke(
+                            Color.dsFoilGold.opacity(0.38),
+                            style: StrokeStyle(
+                                lineWidth: max(0.9, size * 0.015),
+                                lineCap: .round
+                            )
+                        )
+                        .rotationEffect(.degrees(9))
+                        .padding(faceSize * 0.045)
+                }
+                .offset(y: -size * 0.012)
 
             Image(systemName: systemImage)
                 .font(.system(size: size * 0.39, weight: .semibold))
                 .symbolRenderingMode(.monochrome)
-                .foregroundStyle(Color.black.opacity(0.72))
-                .offset(x: size * 0.013, y: size * 0.043)
+                .foregroundStyle(Color.black.opacity(0.80))
+                .offset(x: size * 0.014, y: size * 0.050)
 
             Image(systemName: systemImage)
                 .font(.system(size: size * 0.39, weight: .medium))
@@ -331,56 +376,60 @@ public struct DSObsidianMedallion: View {
                 }
         }
         .frame(width: size, height: size)
-        .drawingGroup(opaque: false, colorMode: .linear)
         .shadow(color: Color.dsFoilGold.opacity(0.16), radius: 7)
-        .shadow(color: Color.black.opacity(0.30), radius: 9, y: 6)
+        .shadow(color: Color.black.opacity(0.34), radius: 9, y: 5)
         .accessibilityHidden(true)
     }
 }
 
-private struct ObsidianMicrotexture: View {
+private struct ObsidianFlowTexture: View {
     var body: some View {
         Canvas { context, canvasSize in
-            let center = CGPoint(x: canvasSize.width / 2, y: canvasSize.height / 2)
-            let minimum = min(canvasSize.width, canvasSize.height)
+            let width = canvasSize.width
+            let height = canvasSize.height
 
-            for index in 0 ..< 15 {
-                let radius = minimum * (0.20 + CGFloat(index) * 0.0205)
-                let start = Angle.degrees(Double(index * 23 + 196))
-                let end = Angle.degrees(Double(index * 23 + 232))
-                var arc = Path()
-                arc.addArc(
-                    center: center,
-                    radius: radius,
-                    startAngle: start,
-                    endAngle: end,
-                    clockwise: false
+            // 黑曜石冷却形成的平行流纹：数量少、方向统一，避免噪点式假材质。
+            for index in 0 ..< 9 {
+                let row = CGFloat(index)
+                let y = height * (0.14 + row * 0.087)
+                let bend = CGFloat(index % 3 - 1) * height * 0.022
+                var vein = Path()
+                vein.move(to: CGPoint(x: width * 0.05, y: y + bend))
+                vein.addCurve(
+                    to: CGPoint(x: width * 0.95, y: y - bend * 0.4),
+                    control1: CGPoint(x: width * 0.30, y: y - height * 0.065 - bend),
+                    control2: CGPoint(x: width * 0.68, y: y + height * 0.060 + bend)
                 )
                 context.stroke(
-                    arc,
-                    with: .color(.white.opacity(index.isMultiple(of: 3) ? 0.075 : 0.035)),
-                    lineWidth: 0.55
+                    vein,
+                    with: .color(
+                        Color(red: 0.63, green: 0.73, blue: 0.76)
+                            .opacity(index.isMultiple(of: 3) ? 0.22 : 0.115)
+                    ),
+                    lineWidth: index.isMultiple(of: 3) ? 0.95 : 0.58
                 )
             }
 
-            for index in 0 ..< 11 {
-                let y = minimum * (0.16 + CGFloat(index) * 0.063)
-                var grain = Path()
-                grain.move(to: CGPoint(x: minimum * 0.17, y: y))
-                grain.addCurve(
-                    to: CGPoint(x: minimum * 0.83, y: y + CGFloat(index % 3 - 1) * 1.2),
-                    control1: CGPoint(x: minimum * 0.36, y: y - 1.1),
-                    control2: CGPoint(x: minimum * 0.62, y: y + 1.4)
+            for index in 0 ..< 5 {
+                let column = CGFloat(index)
+                var mineralLine = Path()
+                mineralLine.move(
+                    to: CGPoint(x: width * (0.19 + column * 0.14), y: height * 0.06)
+                )
+                mineralLine.addCurve(
+                    to: CGPoint(x: width * (0.13 + column * 0.17), y: height * 0.94),
+                    control1: CGPoint(x: width * (0.33 + column * 0.10), y: height * 0.32),
+                    control2: CGPoint(x: width * (0.03 + column * 0.18), y: height * 0.66)
                 )
                 context.stroke(
-                    grain,
-                    with: .color(.black.opacity(0.075)),
-                    lineWidth: 0.45
+                    mineralLine,
+                    with: .color(.black.opacity(0.22)),
+                    lineWidth: 0.7
                 )
             }
         }
         .clipShape(Circle())
-        .blendMode(.softLight)
+        .blendMode(.screen)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
     }

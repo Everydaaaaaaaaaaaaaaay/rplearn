@@ -170,7 +170,9 @@ public struct SettingsView: View {
             }
             .buttonStyle(.plain)
         }
-        .padding(DSSpacing.lg)
+        .padding(.horizontal, DSSpacing.lg)
+        .padding(.top, DSSpacing.lg)
+        .padding(.bottom, DSSpacing.sm)
     }
 
     // MARK: - 语音引擎
@@ -290,13 +292,17 @@ public struct SettingsView: View {
                         }
                         .padding(.top, DSSpacing.sm)
                     } label: {
-                        Text("语音隐私与许可")
-                            .font(.body.weight(.medium))
+                        settingsDisclosureLabel(
+                            "语音隐私与许可",
+                            systemImage: "lock.shield"
+                        )
                     }
                     .tint(Color.dsSkyDeep)
             }
             .foregroundStyle(Color.dsPaperInk)
-            .padding(DSSpacing.lg)
+            .padding(.horizontal, DSSpacing.lg)
+            .padding(.top, DSSpacing.lg)
+            .padding(.bottom, DSSpacing.sm)
         }
     }
 
@@ -353,11 +359,16 @@ public struct SettingsView: View {
                 }
                 .padding(.top, DSSpacing.sm)
             } label: {
-                panelTitle("Apple 系统语音详情", systemImage: "slider.horizontal.3")
+                settingsDisclosureLabel(
+                    "Apple 系统语音详情",
+                    systemImage: "slider.horizontal.3",
+                    emphasized: true
+                )
             }
             .tint(Color.dsSkyDeep)
             .foregroundStyle(Color.dsPaperInk)
-            .padding(DSSpacing.lg)
+            .padding(.horizontal, DSSpacing.lg)
+            .padding(.vertical, DSSpacing.sm)
     }
 
     private var servicePanel: some View {
@@ -376,7 +387,7 @@ public struct SettingsView: View {
                         Spacer()
                         if testState == .testing { ProgressView() }
                     }
-                    .frame(minHeight: 48)
+                    .frame(minHeight: 52)
                     .foregroundStyle(Color.dsSkyDeep)
                 }
                 .buttonStyle(.plain)
@@ -474,8 +485,24 @@ public struct SettingsView: View {
         }
         .font(.body.weight(.medium))
         .foregroundStyle(Color.dsSkyDeep)
-        .frame(minHeight: 48)
+        .frame(minHeight: 52)
         .contentShape(Rectangle())
+    }
+
+    private func settingsDisclosureLabel(
+        _ title: String,
+        systemImage: String,
+        emphasized: Bool = false
+    ) -> some View {
+        let font: Font = emphasized
+            ? .system(.headline, design: .rounded, weight: .bold)
+            : .body.weight(.medium)
+
+        return Label(title, systemImage: systemImage)
+            .font(font)
+            .foregroundStyle(emphasized ? Color.dsPaperInk : Color.dsSkyDeep)
+            .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+            .contentShape(Rectangle())
     }
 
     private func voicePreviewButton(
@@ -492,7 +519,7 @@ public struct SettingsView: View {
             }
             .font(.subheadline.weight(.semibold))
             .foregroundStyle(Color.dsTravelNavy)
-            .frame(maxWidth: .infinity, minHeight: 50)
+            .frame(maxWidth: .infinity, minHeight: 52)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)

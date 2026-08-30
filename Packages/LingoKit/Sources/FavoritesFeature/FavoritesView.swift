@@ -284,21 +284,33 @@ public struct FavoritesView: View {
     private var emptyNotebook: some View {
         GeometryReader { proxy in
             VStack(spacing: 14) {
-                JournalPencilBookmark()
-                    .frame(width: 76, height: 78)
+                DSHologramSurface(transform: journalSurfaceTransform) {
+                    VStack(spacing: 10) {
+                        DSHologramBookmarkIcon(
+                            size: 68,
+                            tint: journalHologramTint,
+                            glowColor: journalHologramGlow
+                        )
 
-                VStack(spacing: 6) {
-                    Text("还没有收藏")
-                        .font(.system(.title2, design: .rounded, weight: .heavy))
-                        .foregroundStyle(Color.dsPaperInk)
-                        .journalRelief(strength: 1)
+                        DSHologramText(
+                            "还没有收藏",
+                            size: 22,
+                            weight: .heavy,
+                            tint: journalHologramTint,
+                            glowColor: journalHologramGlow,
+                            alignment: .center
+                        )
 
-                    Text("在对话中收藏单词、语法或句子，\n它们会整理在这里。")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(3)
-                        .journalRelief(strength: 0.55)
+                        DSHologramText(
+                            "在对话中收藏单词、语法或句子，\n它们会整理在这里。",
+                            size: 15,
+                            weight: .medium,
+                            tint: journalHologramTint,
+                            glowColor: journalHologramGlow,
+                            alignment: .center,
+                            lineSpacing: 3
+                        )
+                    }
                 }
 
                 Button(action: onBrowseConversations) {
@@ -310,7 +322,6 @@ public struct FavoritesView: View {
                     .foregroundStyle(Color.dsTravelNavy)
                     .padding(.horizontal, 20)
                     .frame(minHeight: 42)
-                    .journalRelief(strength: 0.5)
                     .overlay {
                         Capsule()
                             .stroke(Color.dsTravelNavy.opacity(0.88), lineWidth: 1.3)
@@ -326,32 +337,62 @@ public struct FavoritesView: View {
                 }
                 .buttonStyle(.plain)
             }
-            .frame(width: min(218, proxy.size.width * 0.60))
-            .rotationEffect(.degrees(-8.5))
-            .position(x: proxy.size.width * 0.61, y: proxy.size.height * 0.43)
+            .frame(width: min(232, proxy.size.width * 0.64))
+            .rotationEffect(.degrees(-9.25))
+            .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.365)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var noResultsPanel: some View {
         GeometryReader { proxy in
-            VStack(spacing: DSSpacing.sm) {
-                Image(systemName: "text.magnifyingglass")
-                    .font(.largeTitle)
-                    .foregroundStyle(Color.dsSkyDeep)
-                    .journalRelief(strength: 0.8)
-                Text("没有找到相关收藏")
-                    .font(.headline)
-                    .journalRelief(strength: 0.8)
-                Text("试试其他关键词或收藏类型")
-                    .font(.subheadline)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
-                    .journalRelief(strength: 0.5)
+            DSHologramSurface(transform: journalSurfaceTransform) {
+                VStack(spacing: DSSpacing.sm) {
+                    Image(systemName: "text.magnifyingglass")
+                        .font(.system(size: 35, weight: .medium))
+                    DSHologramText(
+                        "没有找到相关收藏",
+                        size: 19,
+                        weight: .bold,
+                        tint: journalHologramTint,
+                        glowColor: journalHologramGlow,
+                        alignment: .center
+                    )
+                    DSHologramText(
+                        "试试其他关键词或收藏类型",
+                        size: 14,
+                        weight: .medium,
+                        tint: journalHologramTint,
+                        glowColor: journalHologramGlow,
+                        alignment: .center
+                    )
+                }
+                .foregroundStyle(journalHologramTint)
+                .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
             }
-            .foregroundStyle(Color.dsPaperInk)
-            .rotationEffect(.degrees(-8.5))
-            .position(x: proxy.size.width * 0.61, y: proxy.size.height * 0.41)
+            .frame(width: min(232, proxy.size.width * 0.64))
+            .rotationEffect(.degrees(-9.25))
+            .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.35)
         }
+    }
+
+    private var journalHologramTint: Color {
+        Color(red: 0.16, green: 0.27, blue: 0.30)
+    }
+
+    private var journalHologramGlow: Color {
+        Color(red: 0.48, green: 0.78, blue: 0.80)
+    }
+
+    private var journalSurfaceTransform: DSHologramTransform {
+        DSHologramTransform(
+            tiltX: 3.5,
+            tiltY: -0.8,
+            perspective: 0.16,
+            scaleY: 0.99,
+            footprintOffset: CGSize(width: -1.2, height: 10),
+            extrusionOffset: CGSize(width: -0.2, height: 2.7)
+        )
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
@@ -610,100 +651,5 @@ public struct FavoritesView: View {
             try? await deps.favorites.remove(id: source[index].id)
         }
         await reload()
-    }
-}
-
-private struct JournalPencilBookmark: View {
-    var body: some View {
-        ZStack {
-            JournalBookmarkShape()
-                .stroke(
-                    Color.dsTravelNavy.opacity(0.24),
-                    style: StrokeStyle(lineWidth: 3.2, lineCap: .round, lineJoin: .round)
-                )
-                .offset(x: 1.4, y: 2.2)
-
-            JournalBookmarkShape()
-                .stroke(
-                    Color.dsSkyDeep,
-                    style: StrokeStyle(lineWidth: 2.35, lineCap: .round, lineJoin: .round)
-                )
-
-            JournalBookmarkShape()
-                .stroke(
-                    Color(red: 0.08, green: 0.33, blue: 0.52).opacity(0.52),
-                    style: StrokeStyle(
-                        lineWidth: 0.9,
-                        lineCap: .round,
-                        lineJoin: .round,
-                        dash: [1.1, 2.2]
-                    )
-                )
-                .offset(x: -0.65, y: 0.3)
-
-            PencilSparkleShape()
-                .fill(Color.dsFoilGold)
-                .frame(width: 18, height: 18)
-                .offset(y: -8)
-                .shadow(color: Color.dsFoilGold.opacity(0.42), radius: 4)
-                .shadow(color: Color.white.opacity(0.72), radius: 0.5, x: -0.4, y: -0.4)
-        }
-        .padding(8)
-        .shadow(color: Color.dsSkyDeep.opacity(0.16), radius: 6, y: 2)
-        .accessibilityHidden(true)
-    }
-}
-
-private struct JournalBookmarkShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.minX + rect.width * 0.28, y: rect.minY + rect.height * 0.08))
-        path.addQuadCurve(
-            to: CGPoint(x: rect.minX + rect.width * 0.72, y: rect.minY + rect.height * 0.08),
-            control: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.035)
-        )
-        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.76, y: rect.minY + rect.height * 0.88))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.67))
-        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.24, y: rect.minY + rect.height * 0.88))
-        path.closeSubpath()
-        return path
-    }
-}
-
-private struct PencilSparkleShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addCurve(
-            to: CGPoint(x: rect.maxX, y: rect.midY),
-            control1: CGPoint(x: rect.midX + rect.width * 0.04, y: rect.midY - rect.height * 0.12),
-            control2: CGPoint(x: rect.midX + rect.width * 0.12, y: rect.midY - rect.height * 0.04)
-        )
-        path.addCurve(
-            to: CGPoint(x: rect.midX, y: rect.maxY),
-            control1: CGPoint(x: rect.midX + rect.width * 0.12, y: rect.midY + rect.height * 0.04),
-            control2: CGPoint(x: rect.midX + rect.width * 0.04, y: rect.midY + rect.height * 0.12)
-        )
-        path.addCurve(
-            to: CGPoint(x: rect.minX, y: rect.midY),
-            control1: CGPoint(x: rect.midX - rect.width * 0.04, y: rect.midY + rect.height * 0.12),
-            control2: CGPoint(x: rect.midX - rect.width * 0.12, y: rect.midY + rect.height * 0.04)
-        )
-        path.addCurve(
-            to: CGPoint(x: rect.midX, y: rect.minY),
-            control1: CGPoint(x: rect.midX - rect.width * 0.12, y: rect.midY - rect.height * 0.04),
-            control2: CGPoint(x: rect.midX - rect.width * 0.04, y: rect.midY - rect.height * 0.12)
-        )
-        path.closeSubpath()
-        return path
-    }
-}
-
-private extension View {
-    func journalRelief(strength: Double) -> some View {
-        self
-            .shadow(color: Color.white.opacity(0.76 * strength), radius: 0.55, x: -0.6, y: -0.6)
-            .shadow(color: Color.dsTravelNavy.opacity(0.24 * strength), radius: 0.75, x: 0.75, y: 1.15)
-            .shadow(color: Color.dsFoilGold.opacity(0.12 * strength), radius: 4.5)
     }
 }
