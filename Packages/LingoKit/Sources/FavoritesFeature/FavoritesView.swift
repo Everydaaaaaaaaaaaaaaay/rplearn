@@ -304,6 +304,7 @@ public struct FavoritesView: View {
                                 alignment: .center
                             )
                         }
+                        .offset(x: journalTitleOpticalOffsetX)
 
                         journalElement {
                             DSHologramText(
@@ -317,6 +318,7 @@ public struct FavoritesView: View {
                             )
                             .fixedSize(horizontal: true, vertical: false)
                         }
+                        .offset(x: journalBodyOpticalOffsetX)
                     }
 
                     Button(action: onBrowseConversations) {
@@ -373,6 +375,7 @@ public struct FavoritesView: View {
                             alignment: .center
                         )
                     }
+                    .offset(x: journalTitleOpticalOffsetX)
                     journalElement {
                         DSHologramText(
                             "试试其他关键词或收藏类型",
@@ -383,6 +386,7 @@ public struct FavoritesView: View {
                             alignment: .center
                         )
                     }
+                    .offset(x: journalBodyOpticalOffsetX)
                 }
                 .frame(width: min(280, proxy.size.width * 0.72))
             }
@@ -395,8 +399,13 @@ public struct FavoritesView: View {
     // The photographed page has non-orthogonal projected axes. This anchor
     // keeps the approved action position fixed after applying that projection.
     private var journalPlaneAnchorOffset: CGSize {
-        CGSize(width: -15.5, height: 1)
+        CGSize(width: -44.5, height: 24)
     }
+
+    // TextRenderer display padding is geometrically centered but optically
+    // right-heavy after projection; compensate in page-local coordinates.
+    private var journalTitleOpticalOffsetX: CGFloat { -10 }
+    private var journalBodyOpticalOffsetX: CGFloat { -7 }
 
     private var journalHologramTint: Color {
         Color(red: 0.16, green: 0.27, blue: 0.30)
