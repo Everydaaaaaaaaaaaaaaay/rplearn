@@ -123,6 +123,8 @@ public struct DSHologramText: View {
     private let weight: Font.Weight
     private let tint: Color
     private let glowColor: Color
+    private let outlineColor: Color?
+    private let outlineWidth: CGFloat
     private let alignment: TextAlignment
     private let lineSpacing: CGFloat
 
@@ -132,6 +134,8 @@ public struct DSHologramText: View {
         weight: Font.Weight,
         tint: Color,
         glowColor: Color,
+        outlineColor: Color? = nil,
+        outlineWidth: CGFloat = 0.75,
         alignment: TextAlignment = .leading,
         lineSpacing: CGFloat = 0
     ) {
@@ -140,6 +144,8 @@ public struct DSHologramText: View {
         self.weight = weight
         self.tint = tint
         self.glowColor = glowColor
+        self.outlineColor = outlineColor
+        self.outlineWidth = outlineWidth
         self.alignment = alignment
         self.lineSpacing = lineSpacing
     }
@@ -151,7 +157,14 @@ public struct DSHologramText: View {
             .multilineTextAlignment(alignment)
             .lineSpacing(lineSpacing)
             .foregroundStyle(tint.opacity(0.99))
-            .textRenderer(DSHologramTextRenderer(tint: tint, glowColor: glowColor))
+            .textRenderer(
+                DSHologramTextRenderer(
+                    tint: tint,
+                    glowColor: glowColor,
+                    outlineColor: outlineColor,
+                    outlineWidth: outlineWidth
+                )
+            )
     }
 }
 
@@ -160,19 +173,39 @@ public struct DSHologramBookmarkIcon: View {
     private let size: CGFloat
     private let tint: Color
     private let glowColor: Color
+    private let outlineColor: Color?
+    private let outlineWidth: CGFloat
 
-    public init(size: CGFloat, tint: Color, glowColor: Color) {
+    public init(
+        size: CGFloat,
+        tint: Color,
+        glowColor: Color,
+        outlineColor: Color? = nil,
+        outlineWidth: CGFloat = 0.8
+    ) {
         self.size = size
         self.tint = tint
         self.glowColor = glowColor
+        self.outlineColor = outlineColor
+        self.outlineWidth = outlineWidth
     }
 
     public var body: some View {
         ZStack {
+            if let outlineColor {
+                DSHologramBookmarkShape()
+                    .stroke(outlineColor.opacity(0.94), style: glyphOutlineStrokeStyle)
+            }
             DSHologramBookmarkShape()
                 .stroke(tint.opacity(0.99), style: glyphStrokeStyle)
             DSHologramStarShape()
                 .fill(tint.opacity(0.99))
+                .overlay {
+                    if let outlineColor {
+                        DSHologramStarShape()
+                            .stroke(outlineColor.opacity(0.94), lineWidth: outlineWidth)
+                    }
+                }
                 .frame(width: size * 0.34, height: size * 0.34)
                 .offset(y: -size * 0.15)
         }
@@ -189,6 +222,14 @@ public struct DSHologramBookmarkIcon: View {
     private var glyphStrokeStyle: StrokeStyle {
         StrokeStyle(
             lineWidth: max(1.7, size * 0.052),
+            lineCap: .round,
+            lineJoin: .round
+        )
+    }
+
+    private var glyphOutlineStrokeStyle: StrokeStyle {
+        StrokeStyle(
+            lineWidth: glyphStrokeStyle.lineWidth + outlineWidth * 2,
             lineCap: .round,
             lineJoin: .round
         )
@@ -238,6 +279,8 @@ private struct DSHologramStarShape: Shape {
 private struct DSHologramTextRenderer: TextRenderer {
     let tint: Color
     let glowColor: Color
+    let outlineColor: Color?
+    let outlineWidth: CGFloat
 
     var displayPadding: EdgeInsets {
         EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
@@ -279,6 +322,19 @@ private struct DSHologramTextRenderer: TextRenderer {
             options: .linearColor
         )
         draw(layout, in: &innerGlow)
+
+        if let outlineColor {
+            var outline = context
+            outline.addFilter(
+                .shadow(
+                    color: outlineColor.opacity(0.96),
+                    radius: outlineWidth,
+                    options: .shadowOnly
+                ),
+                options: .linearColor
+            )
+            draw(layout, in: &outline)
+        }
 
         var edgeLight = context
         edgeLight.opacity = 0.38

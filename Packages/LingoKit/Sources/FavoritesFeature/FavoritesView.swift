@@ -290,7 +290,8 @@ public struct FavoritesView: View {
                             DSHologramBookmarkIcon(
                                 size: 68,
                                 tint: journalHologramTint,
-                                glowColor: journalHologramGlow
+                                glowColor: journalHologramGlow,
+                                outlineColor: journalHologramOutline
                             )
                         }
 
@@ -301,6 +302,7 @@ public struct FavoritesView: View {
                                 weight: .heavy,
                                 tint: journalHologramTint,
                                 glowColor: journalHologramGlow,
+                                outlineColor: journalHologramOutline,
                                 alignment: .center
                             )
                         }
@@ -313,6 +315,7 @@ public struct FavoritesView: View {
                                 weight: .medium,
                                 tint: journalHologramTint,
                                 glowColor: journalHologramGlow,
+                                outlineColor: journalHologramOutline,
                                 alignment: .center,
                                 lineSpacing: 3
                             )
@@ -363,6 +366,7 @@ public struct FavoritesView: View {
                         Image(systemName: "text.magnifyingglass")
                             .font(.system(size: 35, weight: .medium))
                             .foregroundStyle(journalHologramTint)
+                            .shadow(color: journalHologramOutline.opacity(0.92), radius: 0.8)
                             .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
                     }
                     journalElement {
@@ -372,6 +376,7 @@ public struct FavoritesView: View {
                             weight: .bold,
                             tint: journalHologramTint,
                             glowColor: journalHologramGlow,
+                            outlineColor: journalHologramOutline,
                             alignment: .center
                         )
                     }
@@ -383,6 +388,7 @@ public struct FavoritesView: View {
                             weight: .medium,
                             tint: journalHologramTint,
                             glowColor: journalHologramGlow,
+                            outlineColor: journalHologramOutline,
                             alignment: .center
                         )
                     }
@@ -399,7 +405,7 @@ public struct FavoritesView: View {
     // The photographed page has non-orthogonal projected axes. This anchor
     // keeps the approved action position fixed after applying that projection.
     private var journalPlaneAnchorOffset: CGSize {
-        CGSize(width: -41, height: 24)
+        CGSize(width: -39.5, height: 24)
     }
 
     // TextRenderer display padding is geometrically centered but optically
@@ -408,16 +414,20 @@ public struct FavoritesView: View {
     private var journalBodyOpticalOffsetX: CGFloat { -7 }
 
     private var journalHologramTint: Color {
-        Color(red: 0.16, green: 0.27, blue: 0.30)
+        Color(red: 1.00, green: 0.96, blue: 0.88)
     }
 
     private var journalHologramGlow: Color {
         Color(red: 1.00, green: 0.96, blue: 0.88)
     }
 
+    private var journalHologramOutline: Color {
+        Color(red: 0.72, green: 0.65, blue: 0.54)
+    }
+
     private var journalPageProjection: ProjectionTransform {
         let horizontalSlope = CGFloat(tan(journalRotation * .pi / 180))
-        let verticalSlope = CGFloat(tan(12.75 * .pi / 180))
+        let verticalSlope = CGFloat(tan(11.75 * .pi / 180))
         return ProjectionTransform(
             CGAffineTransform(
                 a: 1,
