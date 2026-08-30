@@ -399,7 +399,7 @@ public struct FavoritesView: View {
     // The photographed page has non-orthogonal projected axes. This anchor
     // keeps the approved action position fixed after applying that projection.
     private var journalPlaneAnchorOffset: CGSize {
-        CGSize(width: -44.5, height: 24)
+        CGSize(width: -41, height: 24)
     }
 
     // TextRenderer display padding is geometrically centered but optically
@@ -412,12 +412,12 @@ public struct FavoritesView: View {
     }
 
     private var journalHologramGlow: Color {
-        Color(red: 0.48, green: 0.78, blue: 0.80)
+        Color(red: 1.00, green: 0.96, blue: 0.88)
     }
 
     private var journalPageProjection: ProjectionTransform {
         let horizontalSlope = CGFloat(tan(journalRotation * .pi / 180))
-        let verticalSlope = CGFloat(tan(14.75 * .pi / 180))
+        let verticalSlope = CGFloat(tan(12.75 * .pi / 180))
         return ProjectionTransform(
             CGAffineTransform(
                 a: 1,
