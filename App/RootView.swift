@@ -446,6 +446,7 @@ struct RootView: View {
         NavigationStack {
             meStackContent
                 .navigationBarBackButtonHidden(meDestination != nil)
+                .toolbar(meDestination == nil ? .hidden : .visible, for: .navigationBar)
                 .toolbar {
                     if meDestination != nil {
                         ToolbarItem(placement: .topBarLeading) {
