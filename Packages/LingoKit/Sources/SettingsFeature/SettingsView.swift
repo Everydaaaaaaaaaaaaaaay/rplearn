@@ -108,7 +108,7 @@ public struct SettingsView: View {
 
     private var journeySummary: some View {
         HStack(spacing: DSSpacing.lg) {
-            DSObsidianMedallion(systemImage: "bell", size: 72)
+            DSObsidianMedallion(systemImage: "bell", size: 72, isRaised: false)
 
             VStack(alignment: .leading, spacing: 7) {
                 Text("旅程设置")
@@ -172,7 +172,6 @@ public struct SettingsView: View {
         }
         .padding(.horizontal, DSSpacing.lg)
         .padding(.top, DSSpacing.lg)
-        .padding(.bottom, DSSpacing.sm)
     }
 
     // MARK: - 语音引擎
@@ -302,7 +301,6 @@ public struct SettingsView: View {
             .foregroundStyle(Color.dsPaperInk)
             .padding(.horizontal, DSSpacing.lg)
             .padding(.top, DSSpacing.lg)
-            .padding(.bottom, DSSpacing.sm)
         }
     }
 
@@ -368,7 +366,6 @@ public struct SettingsView: View {
             .tint(Color.dsSkyDeep)
             .foregroundStyle(Color.dsPaperInk)
             .padding(.horizontal, DSSpacing.lg)
-            .padding(.vertical, DSSpacing.sm)
     }
 
     private var servicePanel: some View {
@@ -423,7 +420,6 @@ public struct SettingsView: View {
         }
         .buttonStyle(.plain)
         .padding(.horizontal, DSSpacing.lg)
-        .padding(.vertical, DSSpacing.sm)
     }
 
     private func panelTitle(_ title: String, systemImage: String) -> some View {

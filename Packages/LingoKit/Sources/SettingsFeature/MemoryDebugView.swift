@@ -109,7 +109,7 @@ public struct MemoryDebugView: View {
     private var archiveSummary: some View {
         VStack(alignment: .leading, spacing: DSSpacing.md) {
             HStack(spacing: DSSpacing.md) {
-                DSObsidianMedallion(systemImage: "archivebox", size: 64)
+                DSObsidianMedallion(systemImage: "archivebox", size: 64, isRaised: false)
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text("记忆档案库")

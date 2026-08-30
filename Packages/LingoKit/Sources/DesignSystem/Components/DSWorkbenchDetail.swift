@@ -224,39 +224,43 @@ public struct DSWorkbenchPaperSheet<Content: View>: View {
 }
 
 /// 皮革包边的黑曜石圆章与浮金线条图标。
-/// 静态渐变、刻纹与多层位移共同建立 2.5D 深度，不引入逐帧特效。
+/// 可选择立体或平面呈现；平面样式保留黑曜石流纹，但不叠加错位底座。
 public struct DSObsidianMedallion: View {
     private let systemImage: String
     private let size: CGFloat
+    private let isRaised: Bool
 
-    public init(systemImage: String, size: CGFloat = 64) {
+    public init(systemImage: String, size: CGFloat = 64, isRaised: Bool = true) {
         self.systemImage = systemImage
         self.size = size
+        self.isRaised = isRaised
     }
 
     public var body: some View {
         let faceSize = size * 0.88
 
         ZStack {
-            // 后层略向下露出，形成完整而未被裁切的石章厚度。
-            Circle()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color(red: 0.13, green: 0.17, blue: 0.19),
-                            Color(red: 0.015, green: 0.022, blue: 0.026),
-                            .black,
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
+            if isRaised {
+                // 仅立体样式保留向下露出的石章厚度。
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 0.13, green: 0.17, blue: 0.19),
+                                Color(red: 0.015, green: 0.022, blue: 0.026),
+                                .black,
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
-                )
-                .frame(width: faceSize, height: faceSize)
-                .overlay {
-                    Circle()
-                        .stroke(Color.black.opacity(0.78), lineWidth: max(1.4, size * 0.026))
-                }
-                .offset(y: size * 0.052)
+                    .frame(width: faceSize, height: faceSize)
+                    .overlay {
+                        Circle()
+                            .stroke(Color.black.opacity(0.78), lineWidth: max(1.4, size * 0.026))
+                    }
+                    .offset(y: size * 0.052)
+            }
 
             Circle()
                 .fill(
@@ -341,13 +345,15 @@ public struct DSObsidianMedallion: View {
                         .rotationEffect(.degrees(9))
                         .padding(faceSize * 0.045)
                 }
-                .offset(y: -size * 0.012)
+                .offset(y: isRaised ? -size * 0.012 : 0)
 
-            Image(systemName: systemImage)
-                .font(.system(size: size * 0.39, weight: .semibold))
-                .symbolRenderingMode(.monochrome)
-                .foregroundStyle(Color.black.opacity(0.80))
-                .offset(x: size * 0.014, y: size * 0.050)
+            if isRaised {
+                Image(systemName: systemImage)
+                    .font(.system(size: size * 0.39, weight: .semibold))
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundStyle(Color.black.opacity(0.80))
+                    .offset(x: size * 0.014, y: size * 0.050)
+            }
 
             Image(systemName: systemImage)
                 .font(.system(size: size * 0.39, weight: .medium))
@@ -374,7 +380,11 @@ public struct DSObsidianMedallion: View {
         }
         .frame(width: size, height: size)
         .shadow(color: Color.dsFoilGold.opacity(0.16), radius: 7)
-        .shadow(color: Color.black.opacity(0.34), radius: 9, y: 5)
+        .shadow(
+            color: Color.black.opacity(isRaised ? 0.34 : 0.18),
+            radius: isRaised ? 9 : 4,
+            y: isRaised ? 5 : 0
+        )
         .accessibilityHidden(true)
     }
 }
