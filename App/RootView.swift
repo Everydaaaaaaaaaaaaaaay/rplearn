@@ -31,7 +31,7 @@ enum AppTab: Hashable {
 struct RootView: View {
     private static let proactiveRefreshDelay = Duration.milliseconds(900)
 
-    private enum MeDestination: Equatable {
+    private enum MeDestination: Hashable {
         case favorites
         case settings
         #if DEBUG
@@ -46,7 +46,7 @@ struct RootView: View {
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
     @State private var homePath = NavigationPath()
-    @State private var meDestination: MeDestination?
+    @State private var mePath: [MeDestination] = []
     @State private var showSignIn = false
     @State private var showVoiceUpgrade = false
     @State private var showPlacementTest = false
@@ -57,7 +57,6 @@ struct RootView: View {
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     init(environment: AppEnvironment) {
         self.environment = environment
@@ -429,50 +428,7 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        NavigationStack {
-            ZStack {
-                if reduceMotion {
-                    meStackContent
-                        .id(meDestination)
-                        .transition(.opacity)
-                } else {
-                    meStackContent
-                        .id(meDestination)
-                        .transition(.blurReplace)
-                }
-            }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarBackButtonHidden(meDestination != nil)
-                .toolbar(meDestination == nil ? .hidden : .visible, for: .navigationBar)
-                .toolbar {
-                    if meDestination != nil {
-                        #if DEBUG
-                        if meDestination != .memory {
-                            meBackToolbarItem
-                        }
-                        #else
-                        meBackToolbarItem
-                        #endif
-                    }
-                }
-        }
-    }
-
-    private var meBackToolbarItem: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
-            Button {
-                transitionMe(to: nil)
-            } label: {
-                Image(systemName: "chevron.left")
-            }
-            .accessibilityLabel("返回我的")
-        }
-    }
-
-    @ViewBuilder
-    private var meStackContent: some View {
-        switch meDestination {
-        case nil:
+        NavigationStack(path: $mePath) {
             MyPageView(
                 economyStore: environment.economyStore,
                 economyService: economyService,
@@ -483,21 +439,29 @@ struct RootView: View {
                 isSignedIn: usesCloudState,
                 onSignIn: { showSignIn = true },
                 onCalibrateLevel: { showPlacementTest = true },
-                onOpenFavorites: { transitionMe(to: .favorites) },
-                onOpenSettings: { transitionMe(to: .settings) },
+                onOpenFavorites: { mePath.append(.favorites) },
+                onOpenSettings: { mePath.append(.settings) },
                 onOpenMemory: {
                     #if DEBUG
-                    transitionMe(to: .memory)
+                    mePath.append(.memory)
                     #endif
                 }
             )
+            .navigationDestination(for: MeDestination.self) { destination in
+                meDestinationView(destination)
+            }
+        }
+    }
 
+    @ViewBuilder
+    private func meDestinationView(_ destination: MeDestination) -> some View {
+        switch destination {
         case .favorites:
             FavoritesView(
                 deps: favoritesDeps,
                 onBrowseConversations: {
-                    meDestination = nil
                     selectedTab = .messages
+                    mePath.removeAll()
                 }
             )
 
@@ -526,19 +490,9 @@ struct RootView: View {
                     chatStore: environment.chatStore,
                     memoryStore: environment.memoryStore,
                     economyStore: environment.economyStore
-                ),
-                onBack: { transitionMe(to: nil) }
+                )
             )
         #endif
-        }
-    }
-
-    @MainActor
-    private func transitionMe(to destination: MeDestination?) {
-        guard destination != meDestination else { return }
-
-        withAnimation(reduceMotion ? .easeInOut(duration: 0.20) : .smooth(duration: 0.42)) {
-            meDestination = destination
         }
     }
 
