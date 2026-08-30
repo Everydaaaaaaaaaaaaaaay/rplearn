@@ -96,7 +96,7 @@ public struct PlacementTestView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .placementTopBar {
-            DSWorkbenchPanel(weight: .chrome, radius: 22, padding: 0) {
+            DSWorkbenchPaperSheet(radius: 20, padding: 0) {
                 header
             }
             .padding(.horizontal, DSSpacing.sm)
@@ -136,11 +136,11 @@ public struct PlacementTestView: View {
             VStack(spacing: 1) {
                 Text(phase == .levelSelection ? "选择英语水平" : "英语水平校准")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color.dsSceneTextPrimary)
+                    .foregroundStyle(Color.dsPaperInk)
                 if phase == .question, let engine {
                     Text("已答 \(engine.responses.count) 题")
                         .font(.caption2)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                         .monospacedDigit()
                 }
             }
@@ -158,39 +158,44 @@ public struct PlacementTestView: View {
                 .tint(.dsSky)
             Text("正在准备合适的题目…")
                 .font(.subheadline)
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
         }
         .padding(DSSpacing.lg)
-        .placementGlassPanel()
+        .placementPaperPanel()
     }
 
     private var introductionView: some View {
         ScrollView {
             VStack(spacing: DSSpacing.md) {
-                DSWorkbenchPanel(weight: .content, radius: 22, padding: DSSpacing.md) {
-                    HStack(alignment: .center, spacing: DSSpacing.md) {
-                        BrandMascotView(
-                            pose: .guide,
-                            size: 76,
-                            showsShadow: true,
-                            renderingMode: .animatedModel
-                        )
+                VStack(spacing: 6) {
+                    BrandMascotView(
+                        pose: .guide,
+                        size: 92,
+                        showsShadow: true,
+                        renderingMode: .animatedModel
+                    )
 
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("选择或测一测，聊得更合拍")
-                                .font(.system(.title2, design: .rounded, weight: .bold))
-                                .foregroundStyle(Color.dsSceneTextPrimary)
-                            Text("直接使用当前水平，或用 4–6 分钟短测获得建议。")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.dsSceneTextSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-
-                        Spacer(minLength: 0)
-                    }
+                    Text("选择或测一测，聊得更合拍")
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(Color.dsPaperInk)
+                        .multilineTextAlignment(.center)
+                    Text("直接使用当前水平，或用 4–6 分钟短测获得建议。")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
+                .padding(.vertical, DSSpacing.xs)
+                .shadow(
+                    color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.98),
+                    radius: 10
+                )
+                .shadow(
+                    color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.82),
+                    radius: 4
+                )
 
-                DSWorkbenchPanel(weight: .reading, padding: 0) {
+                DSWorkbenchPaperSheet(padding: 0) {
                     VStack(spacing: 0) {
                         levelSelectionButton(
                             title: "当前英语水平",
@@ -199,7 +204,7 @@ public struct PlacementTestView: View {
                         )
 
                         Divider()
-                            .overlay(Color.dsSceneTextPrimary.opacity(0.12))
+                            .overlay(Color.dsPaperInk.opacity(0.12))
                             .padding(.horizontal, DSSpacing.md)
 
                         Button {
@@ -220,12 +225,20 @@ public struct PlacementTestView: View {
                         .disabled(isApplying)
 
                         Divider()
-                            .overlay(Color.dsSceneTextPrimary.opacity(0.12))
+                            .overlay(Color.dsPaperInk.opacity(0.12))
 
                         VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                            Label("自适应水平测试", systemImage: "safari")
-                                .font(.system(.title3, design: .rounded, weight: .bold))
-                                .foregroundStyle(Color.dsSceneTextPrimary)
+                            HStack(spacing: DSSpacing.md) {
+                                DSObsidianMedallion(systemImage: "safari", size: 58)
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("自适应水平测试")
+                                        .font(.system(.title3, design: .rounded, weight: .bold))
+                                        .foregroundStyle(Color.dsPaperInk)
+                                    Text("完成后给出适合你的对话难度建议")
+                                        .font(.caption)
+                                        .foregroundStyle(Color.dsPaperInkSecondary)
+                                }
+                            }
 
                             informationRow(
                                 icon: "slider.horizontal.3",
@@ -259,7 +272,7 @@ public struct PlacementTestView: View {
                                 systemImage: "lightbulb"
                             )
                             .font(.caption)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                             .fixedSize(horizontal: false, vertical: true)
                         }
                         .padding(DSSpacing.md)
@@ -299,18 +312,18 @@ public struct PlacementTestView: View {
                             .monospacedDigit()
                     }
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
                 }
                 .padding(.horizontal, DSSpacing.lg)
                 .padding(.vertical, DSSpacing.sm)
-                .placementGlassPanel(padding: 0, weight: .chrome)
+                .placementPaperPanel(padding: 0, weight: .chrome)
                 .padding(.horizontal, DSSpacing.lg)
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: DSSpacing.lg) {
                         Text(question.prompt)
                             .font(.system(.title3, design: .rounded, weight: .bold))
-                            .foregroundStyle(Color.dsSceneTextPrimary)
+                            .foregroundStyle(Color.dsPaperInk)
                             .fixedSize(horizontal: false, vertical: true)
 
                         if question.skill == .listening {
@@ -319,12 +332,12 @@ public struct PlacementTestView: View {
                             Text(context)
                                 .font(.body)
                                 .lineSpacing(5)
-                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .foregroundStyle(Color.dsPaperInkSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(DSSpacing.md)
                                 .background(
-                                    Color.dsSceneTextPrimary.opacity(0.045),
+                                    Color.dsPaperInk.opacity(0.045),
                                     in: RoundedRectangle(cornerRadius: DSRadius.inline)
                                 )
                         }
@@ -340,12 +353,12 @@ public struct PlacementTestView: View {
 
                         Text("选择后会自动进入下一题，不显示即时对错。")
                             .font(.caption)
-                            .foregroundStyle(Color.dsSceneTextTertiary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                     .frame(maxWidth: 560)
                     .padding(DSSpacing.lg)
-                    .placementGlassPanel(padding: 0)
+                    .placementPaperPanel(padding: 0)
                     .padding(.horizontal, DSSpacing.lg)
                     .padding(.bottom, DSSpacing.xl)
                     .frame(maxWidth: .infinity)
@@ -382,7 +395,7 @@ public struct PlacementTestView: View {
                     Spacer()
                     Text("\(listeningPlayCount) / \(PlacementListeningPolicy.maximumPlayCount)")
                         .font(.caption.monospacedDigit())
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
                 .foregroundStyle(Color.dsSkyDeep)
                 .frame(maxWidth: .infinity, minHeight: 48)
@@ -401,7 +414,7 @@ public struct PlacementTestView: View {
                         : "本题播放次数已用完，请根据已听内容作答。"
             )
             .font(.caption)
-            .foregroundStyle(Color.dsSceneTextSecondary)
+            .foregroundStyle(Color.dsPaperInkSecondary)
         }
     }
 
@@ -425,7 +438,7 @@ public struct PlacementTestView: View {
                             .font(.system(.largeTitle, design: .rounded, weight: .bold))
                         Text("完成 \(result.answeredCount) 道 · 测试建议水平")
                             .font(.caption)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                     }
 
                     VStack(spacing: DSSpacing.md) {
@@ -433,7 +446,7 @@ public struct PlacementTestView: View {
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("综合校准")
                                     .font(.caption)
-                                    .foregroundStyle(Color.dsSceneTextSecondary)
+                                    .foregroundStyle(Color.dsPaperInkSecondary)
                                 Text("\(result.score) / 100")
                                     .font(.title2.bold().monospacedDigit())
                             }
@@ -441,7 +454,7 @@ public struct PlacementTestView: View {
                             VStack(alignment: .trailing, spacing: 3) {
                                 Text("90% 估计区间")
                                     .font(.caption)
-                                    .foregroundStyle(Color.dsSceneTextSecondary)
+                                    .foregroundStyle(Color.dsPaperInkSecondary)
                                 Text("\(result.scoreRange.lowerBound)–\(result.scoreRange.upperBound)")
                                     .font(.headline.monospacedDigit())
                             }
@@ -467,7 +480,7 @@ public struct PlacementTestView: View {
                             Spacer()
                             Text("\(result.difficultyLevel.cseReference) · 非认证")
                                 .font(.subheadline)
-                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .foregroundStyle(Color.dsPaperInkSecondary)
                         }
 
                         HStack {
@@ -476,7 +489,7 @@ public struct PlacementTestView: View {
                             Spacer()
                             Text("\(result.referenceLevel.rawValue) · 非认证")
                                 .font(.subheadline)
-                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .foregroundStyle(Color.dsPaperInkSecondary)
                         }
 
                         Divider()
@@ -485,9 +498,9 @@ public struct PlacementTestView: View {
                             skillResultRow(skillResult)
                         }
                     }
-                    .placementGlassPanel(padding: DSSpacing.lg)
+                    .placementPaperPanel(padding: DSSpacing.lg)
 
-                    DSWorkbenchPanel(weight: .content, padding: 0) {
+                    DSWorkbenchPaperSheet(padding: 0) {
                         levelSelectionButton(
                             title: "最终应用水平",
                             detail: selectedLevel == result.difficultyLevel
@@ -503,7 +516,7 @@ public struct PlacementTestView: View {
                             + "测试结果只是建议，最终应用哪个水平由你决定，也可以稍后再次修改。"
                     )
                         .font(.footnote)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
 
                     if let errorMessage {
@@ -543,14 +556,14 @@ public struct PlacementTestView: View {
                 .font(.title3.bold())
             Text(errorMessage ?? "请稍后再试。")
                 .font(.subheadline)
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
             Button("重新载入") {
                 Task { await prepare(force: true) }
             }
             .buttonStyle(.dsAction(.secondary, fullWidth: false))
         }
         .padding(DSSpacing.lg)
-        .placementGlassPanel(padding: 0)
+        .placementPaperPanel(padding: 0)
         .padding(DSSpacing.lg)
     }
 
@@ -569,7 +582,7 @@ public struct PlacementTestView: View {
                     .font(.subheadline.weight(.semibold))
                 Text(detail)
                     .font(.caption)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
             }
             Spacer()
         }
@@ -594,13 +607,13 @@ public struct PlacementTestView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(title)
                         .font(.caption)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                     Text(selectedLevel.displayName)
                         .font(.headline)
-                        .foregroundStyle(Color.dsSceneTextPrimary)
+                        .foregroundStyle(Color.dsPaperInk)
                     Text(detail)
                         .font(.caption)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                         .multilineTextAlignment(.leading)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -613,7 +626,7 @@ public struct PlacementTestView: View {
                     }
                     Image(systemName: "chevron.right")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color.dsSceneTextTertiary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
             }
             .padding(DSSpacing.md)
@@ -654,7 +667,7 @@ public struct PlacementTestView: View {
                     .background(isSelected ? Color.dsSky : Color.dsSky.opacity(0.1), in: Circle())
                 Text(text)
                     .font(.body)
-                    .foregroundStyle(Color.dsSceneTextPrimary)
+                    .foregroundStyle(Color.dsPaperInk)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
@@ -662,13 +675,13 @@ public struct PlacementTestView: View {
             .padding(DSSpacing.md)
             .frame(maxWidth: .infinity, minHeight: 58, alignment: .leading)
             .background(
-                isSelected ? Color.dsSky.opacity(0.14) : Color.dsSceneTextPrimary.opacity(0.045),
+                isSelected ? Color.dsSky.opacity(0.14) : Color.dsPaperInk.opacity(0.045),
                 in: RoundedRectangle(cornerRadius: DSRadius.inline)
             )
             .overlay {
                 RoundedRectangle(cornerRadius: DSRadius.inline)
                     .stroke(
-                        isSelected ? Color.dsSky.opacity(0.45) : Color.dsSceneTextPrimary.opacity(0.08),
+                        isSelected ? Color.dsSky.opacity(0.45) : Color.dsPaperInk.opacity(0.08),
                         lineWidth: 0.8
                     )
             }
@@ -689,7 +702,7 @@ public struct PlacementTestView: View {
                 .tint(.dsSky)
             Text("\(result.correct)/\(result.total)")
                 .font(.caption.monospacedDigit())
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
                 .frame(width: 34, alignment: .trailing)
         }
     }
@@ -861,7 +874,7 @@ private struct DifficultyLevelSelectionPage: View {
                         .font(.system(.title2, design: .rounded, weight: .bold))
                     Text("这是应用内的学习设置，不会请求通知或其他系统权限。测试建议仅供参考，之后仍可修改。")
                         .font(.subheadline)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
@@ -875,11 +888,11 @@ private struct DifficultyLevelSelectionPage: View {
         }
         .placementScrollEdgeBlend()
         .placementBottomBar {
-            DSWorkbenchPanel(weight: .chrome, radius: 22, padding: DSSpacing.sm) {
+            DSWorkbenchPaperSheet(radius: 22, padding: DSSpacing.sm) {
                 VStack(spacing: 4) {
                     Text("已选择：\(selection.displayName)")
                         .font(.caption)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                     Button("完成") { onDone() }
                         .buttonStyle(.dsWorkbenchAction)
                 }
@@ -893,7 +906,7 @@ private struct DifficultyLevelSelectionPage: View {
         VStack(alignment: .leading, spacing: DSSpacing.xs) {
             Text(title)
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
                 .padding(.leading, DSSpacing.xs)
 
             VStack(spacing: 4) {
@@ -901,7 +914,7 @@ private struct DifficultyLevelSelectionPage: View {
                     levelRow(level)
                 }
             }
-            .placementGlassPanel(padding: 4)
+            .placementPaperPanel(padding: 4)
         }
     }
 
@@ -915,14 +928,14 @@ private struct DifficultyLevelSelectionPage: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(level.displayName)
                         .font(.body.weight(isSelected ? .semibold : .regular))
-                        .foregroundStyle(Color.dsSceneTextPrimary)
+                        .foregroundStyle(Color.dsPaperInk)
                     Text(level.cseReference)
                         .font(.caption)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
                 Spacer(minLength: DSSpacing.xs)
                 if level == currentLevel {
-                    levelBadge("当前", color: .dsSceneTextSecondary)
+                    levelBadge("当前", color: .dsPaperInkSecondary)
                 }
                 if level == recommendedLevel {
                     levelBadge("建议", color: .dsSkyDeep)
@@ -992,12 +1005,11 @@ private extension View {
         }
     }
 
-    func placementGlassPanel(
+    func placementPaperPanel(
         padding: CGFloat = DSSpacing.md,
-        weight: DSWorkbenchPanelWeight = .reading
+        weight _: DSWorkbenchPanelWeight = .reading
     ) -> some View {
-        DSWorkbenchPanel(
-            weight: weight,
+        DSWorkbenchPaperSheet(
             radius: DSRadius.card,
             padding: padding
         ) {
