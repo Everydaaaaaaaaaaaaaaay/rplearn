@@ -160,14 +160,39 @@ public struct DSHologramBookmarkIcon: View {
     private let size: CGFloat
     private let tint: Color
     private let glowColor: Color
+    private let isElevated: Bool
+    private let strokeWidth: CGFloat?
 
-    public init(size: CGFloat, tint: Color, glowColor: Color) {
+    public init(
+        size: CGFloat,
+        tint: Color,
+        glowColor: Color,
+        isElevated: Bool = true,
+        strokeWidth: CGFloat? = nil
+    ) {
         self.size = size
         self.tint = tint
         self.glowColor = glowColor
+        self.isElevated = isElevated
+        self.strokeWidth = strokeWidth
     }
 
+    @ViewBuilder
     public var body: some View {
+        if isElevated {
+            glyph
+                .shadow(color: glowColor.opacity(0.42), radius: 6.2)
+                .shadow(color: glowColor.opacity(0.70), radius: 2.2)
+                .shadow(color: .white.opacity(0.24), radius: 0.6)
+                .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
+                .accessibilityHidden(true)
+        } else {
+            glyph
+                .accessibilityHidden(true)
+        }
+    }
+
+    private var glyph: some View {
         ZStack {
             DSHologramBookmarkShape()
                 .stroke(tint.opacity(0.99), style: glyphStrokeStyle)
@@ -179,16 +204,11 @@ public struct DSHologramBookmarkIcon: View {
         .padding(size * 0.04)
         .frame(width: size, height: size)
         .foregroundStyle(tint.opacity(0.99))
-        .shadow(color: glowColor.opacity(0.42), radius: 6.2)
-        .shadow(color: glowColor.opacity(0.70), radius: 2.2)
-        .shadow(color: .white.opacity(0.24), radius: 0.6)
-        .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
-        .accessibilityHidden(true)
     }
 
     private var glyphStrokeStyle: StrokeStyle {
         StrokeStyle(
-            lineWidth: max(1.7, size * 0.052),
+            lineWidth: strokeWidth ?? max(1.7, size * 0.052),
             lineCap: .round,
             lineJoin: .round
         )

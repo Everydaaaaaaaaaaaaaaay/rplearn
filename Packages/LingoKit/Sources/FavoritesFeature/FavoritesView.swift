@@ -288,35 +288,22 @@ public struct FavoritesView: View {
                     VStack(spacing: 10) {
                         DSHologramBookmarkIcon(
                             size: 68,
-                            tint: journalHologramTint,
-                            glowColor: journalHologramGlow
+                            tint: journalInk,
+                            glowColor: .clear,
+                            isElevated: false,
+                            strokeWidth: 1.3
                         )
 
-                        journalElement {
-                            DSHologramText(
-                                "还没有收藏",
-                                size: 22,
-                                weight: .heavy,
-                                tint: journalHologramTint,
-                                glowColor: journalHologramGlow,
-                                alignment: .center
-                            )
-                        }
-                        .offset(x: journalTitleOpticalOffsetX)
+                        Text("还没有收藏")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(journalInk)
 
-                        journalElement {
-                            DSHologramText(
-                                "在对话中收藏单词、语法或句子\n它们会整理在这里。",
-                                size: 14,
-                                weight: .medium,
-                                tint: journalHologramTint,
-                                glowColor: journalHologramGlow,
-                                alignment: .center,
-                                lineSpacing: 3
-                            )
+                        Text("在对话中收藏单词、语法或句子\n它们会整理在这里。")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(journalInk)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(3)
                             .fixedSize(horizontal: true, vertical: false)
-                        }
-                        .offset(x: journalBodyOpticalOffsetX)
                     }
 
                     Button(action: onBrowseConversations) {
@@ -357,34 +344,15 @@ public struct FavoritesView: View {
         GeometryReader { proxy in
             journalPlane {
                 VStack(spacing: DSSpacing.sm) {
-                    journalElement {
-                        Image(systemName: "text.magnifyingglass")
-                            .font(.system(size: 35, weight: .medium))
-                            .foregroundStyle(journalHologramTint)
-                            .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
-                    }
-                    journalElement {
-                        DSHologramText(
-                            "没有找到相关收藏",
-                            size: 19,
-                            weight: .bold,
-                            tint: journalHologramTint,
-                            glowColor: journalHologramGlow,
-                            alignment: .center
-                        )
-                    }
-                    .offset(x: journalTitleOpticalOffsetX)
-                    journalElement {
-                        DSHologramText(
-                            "试试其他关键词或收藏类型",
-                            size: 14,
-                            weight: .medium,
-                            tint: journalHologramTint,
-                            glowColor: journalHologramGlow,
-                            alignment: .center
-                        )
-                    }
-                    .offset(x: journalBodyOpticalOffsetX)
+                    Image(systemName: "text.magnifyingglass")
+                        .font(.system(size: 35, weight: .regular))
+                        .foregroundStyle(journalInk)
+                    Text("没有找到相关收藏")
+                        .font(.system(size: 19, weight: .semibold))
+                        .foregroundStyle(journalInk)
+                    Text("试试其他关键词或收藏类型")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundStyle(journalInk)
                 }
                 .frame(width: min(280, proxy.size.width * 0.72))
             }
@@ -400,16 +368,7 @@ public struct FavoritesView: View {
         CGSize(width: -39.5, height: 24)
     }
 
-    // TextRenderer display padding is geometrically centered but optically
-    // right-heavy after projection; compensate in page-local coordinates.
-    private var journalTitleOpticalOffsetX: CGFloat { -10 }
-    private var journalBodyOpticalOffsetX: CGFloat { -7 }
-
-    private var journalHologramTint: Color {
-        Color.dsTravelNavy
-    }
-
-    private var journalHologramGlow: Color {
+    private var journalInk: Color {
         Color.dsTravelNavy
     }
 
@@ -426,25 +385,6 @@ public struct FavoritesView: View {
                 ty: 0
             )
         )
-    }
-
-    private var journalFootprintOffset: CGSize {
-        CGSize(width: -1.2, height: 10)
-    }
-
-    private var journalExtrusionOffset: CGSize {
-        CGSize(width: -0.2, height: 2.7)
-    }
-
-    private func journalElement<Content: View>(
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        DSHologramLift(
-            footprintOffset: journalFootprintOffset,
-            extrusionOffset: journalExtrusionOffset
-        ) {
-            content()
-        }
     }
 
     private func journalPlane<Content: View>(
