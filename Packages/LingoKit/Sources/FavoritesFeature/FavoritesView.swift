@@ -42,6 +42,7 @@ public struct FavoritesView: View {
     private static let partOfSpeechColumnWidth: CGFloat = 92
 
     private let deps: FavoritesDependencies
+    private let onBrowseConversations: @MainActor () -> Void
     @State private var favorites: [FavoriteDTO] = []
     @State private var wordEntries: [UUID: DictEntry] = [:]
     @State private var wordSelection: TokenSelection?
@@ -49,8 +50,12 @@ public struct FavoritesView: View {
     @State private var filter: Filter = .all
     @State private var searchText = ""
 
-    public init(deps: FavoritesDependencies) {
+    public init(
+        deps: FavoritesDependencies,
+        onBrowseConversations: @escaping @MainActor () -> Void = {}
+    ) {
         self.deps = deps
+        self.onBrowseConversations = onBrowseConversations
     }
 
     public var body: some View {
@@ -149,26 +154,26 @@ public struct FavoritesView: View {
     }
 
     private var filterPanel: some View {
-        DSWorkbenchPanel(weight: .chrome, radius: DSRadius.hero, padding: DSSpacing.md) {
+        DSWorkbenchPaperSheet(radius: 20, padding: DSSpacing.md) {
             VStack(spacing: DSSpacing.sm) {
                 HStack(spacing: DSSpacing.sm) {
                     Image(systemName: "magnifyingglass")
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                     TextField(
                         "",
                         text: $searchText,
                         prompt: Text("搜索收藏")
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                     )
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
-                        .foregroundStyle(Color.dsSceneTextPrimary)
+                        .foregroundStyle(Color.dsPaperInk)
                     if !searchText.isEmpty {
                         Button {
                             searchText = ""
                         } label: {
                             Image(systemName: "xmark.circle.fill")
-                                .foregroundStyle(Color.dsSceneTextTertiary)
+                                .foregroundStyle(Color.dsPaperInkSecondary)
                         }
                         .buttonStyle(.plain)
                         .accessibilityLabel("清除搜索")
@@ -187,59 +192,80 @@ public struct FavoritesView: View {
     }
 
     private var emptyNotebook: some View {
-        VStack {
-            Spacer(minLength: 42)
-            DSWorkbenchPanel(weight: .reading, radius: 28, padding: 30) {
-                VStack(spacing: DSSpacing.md) {
-                    Image(systemName: "bookmark")
-                        .font(.system(size: 46, weight: .light))
-                        .foregroundStyle(Color.dsSkyDeep)
+        GeometryReader { proxy in
+            VStack(spacing: 14) {
+                journalIllustration
 
+                VStack(spacing: 6) {
                     Text("还没有收藏")
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                        .foregroundStyle(Color.dsSceneTextPrimary)
+                        .font(.system(.title2, design: .rounded, weight: .heavy))
+                        .foregroundStyle(Color.dsPaperInk)
 
                     Text("在对话中收藏单词、语法或句子，\n它们会整理在这里。")
                         .font(.subheadline)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(3)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 28)
+
+                Button(action: onBrowseConversations) {
+                    HStack(spacing: 6) {
+                        Text("去对话看看")
+                        Image(systemName: "chevron.right")
+                    }
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.dsTravelNavy)
+                    .padding(.horizontal, 20)
+                    .frame(minHeight: 42)
+                    .overlay {
+                        Capsule().stroke(Color.dsTravelNavy, lineWidth: 1.2)
+                    }
+                }
+                .buttonStyle(.plain)
             }
-            .rotationEffect(.degrees(-1.5))
-            .frame(maxWidth: 350)
-            .padding(.horizontal, 34)
-            Spacer(minLength: 90)
+            .frame(width: min(218, proxy.size.width * 0.60))
+            .rotationEffect(.degrees(-8.5))
+            .position(x: proxy.size.width * 0.67, y: proxy.size.height * 0.47)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    private var journalIllustration: some View {
+        ZStack {
+            Image(systemName: "globe.americas")
+                .font(.system(size: 45, weight: .ultraLight))
+            Image(systemName: "book.closed")
+                .font(.system(size: 20, weight: .light))
+                .offset(x: 35, y: 22)
+            Image(systemName: "star.bubble")
+                .font(.system(size: 19, weight: .light))
+                .offset(x: -36, y: 18)
+        }
+        .foregroundStyle(Color.dsSkyDeep.opacity(0.66))
+        .frame(height: 72)
+        .accessibilityHidden(true)
+    }
+
     private var noResultsPanel: some View {
-        VStack {
-            Spacer()
-            DSWorkbenchPanel(weight: .reading) {
-                VStack(spacing: DSSpacing.sm) {
-                    Image(systemName: "text.magnifyingglass")
-                        .font(.largeTitle)
-                        .foregroundStyle(Color.dsSkyDeep)
-                    Text("没有找到相关收藏")
-                        .font(.headline)
-                    Text("试试其他关键词或收藏类型")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
-                }
-                .foregroundStyle(Color.dsSceneTextPrimary)
+        GeometryReader { proxy in
+            VStack(spacing: DSSpacing.sm) {
+                Image(systemName: "text.magnifyingglass")
+                    .font(.largeTitle)
+                    .foregroundStyle(Color.dsSkyDeep)
+                Text("没有找到相关收藏")
+                    .font(.headline)
+                Text("试试其他关键词或收藏类型")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
             }
-            .frame(maxWidth: 340)
-            .padding(.horizontal, DSSpacing.xl)
-            Spacer()
+            .foregroundStyle(Color.dsPaperInk)
+            .rotationEffect(.degrees(-8.5))
+            .position(x: proxy.size.width * 0.67, y: proxy.size.height * 0.46)
         }
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        DSWorkbenchPanel(weight: .reading, radius: DSRadius.card, padding: DSSpacing.md) {
+        DSWorkbenchPaperSheet(radius: DSRadius.card, padding: DSSpacing.md) {
             content()
         }
         .listRowInsets(
@@ -257,7 +283,7 @@ public struct FavoritesView: View {
                 .monospacedDigit()
         }
         .font(.subheadline.weight(.bold))
-        .foregroundStyle(Color.dsSceneTextPrimary)
+        .foregroundStyle(Color.dsPaperInk)
         .textCase(nil)
         .padding(.horizontal, 4)
     }
@@ -311,7 +337,7 @@ public struct FavoritesView: View {
                     if let phonetic = wordEntries[favorite.id]?.phonetic {
                         Text("/\(phonetic)/")
                             .font(.footnote)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                     }
                 }
 
@@ -320,14 +346,14 @@ public struct FavoritesView: View {
                     if groups.isEmpty {
                         Text("暂无中文释义")
                             .font(.subheadline)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsPaperInkSecondary)
                     } else {
                         ForEach(groups) { group in
                             HStack(alignment: .firstTextBaseline, spacing: 8) {
                                 partOfSpeechLabel(group)
                                 Text(group.meaning)
                                     .font(.subheadline)
-                                    .foregroundStyle(Color.dsSceneTextPrimary)
+                                    .foregroundStyle(Color.dsPaperInk)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
@@ -352,7 +378,7 @@ public struct FavoritesView: View {
             if let abbreviation = group.partOfSpeechAbbreviation {
                 Text(abbreviation)
                     .font(.caption2.weight(.medium))
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
             }
         }
         .lineLimit(1)
@@ -378,7 +404,7 @@ public struct FavoritesView: View {
                !explanation.isEmpty {
                 Text(explanation)
                     .font(.subheadline)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
@@ -388,7 +414,7 @@ public struct FavoritesView: View {
                         .font(.footnote.weight(.medium))
                     Text(example.zh)
                         .font(.caption)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
                 .padding(.leading, 25)
             }
@@ -413,7 +439,7 @@ public struct FavoritesView: View {
                 if let translation = favorite.translationZh {
                     Text(translation)
                         .font(.footnote)
-                        .foregroundStyle(Color.dsSceneTextSecondary)
+                        .foregroundStyle(Color.dsPaperInkSecondary)
                 }
 
                 HStack(spacing: 5) {
@@ -422,7 +448,7 @@ public struct FavoritesView: View {
                     favoriteDate(favorite.createdAt)
                 }
                 .font(.caption)
-                .foregroundStyle(Color.dsSceneTextTertiary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -444,7 +470,7 @@ public struct FavoritesView: View {
     private func favoriteDate(_ date: Date) -> some View {
         Text(date, style: .date)
             .font(.caption)
-            .foregroundStyle(Color.dsSceneTextTertiary)
+            .foregroundStyle(Color.dsPaperInkSecondary)
     }
 
     private func speechButton(text: String, label: String) -> some View {

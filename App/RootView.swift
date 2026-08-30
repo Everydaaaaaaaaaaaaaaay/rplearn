@@ -437,7 +437,14 @@ struct RootView: View {
                 onProactiveMessagesChanged: { enabled in
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
                 },
-                favoritesBuilder: { AnyView(FavoritesView(deps: favoritesDeps)) }
+                favoritesBuilder: {
+                    AnyView(
+                        FavoritesView(
+                            deps: favoritesDeps,
+                            onBrowseConversations: { selectedTab = .messages }
+                        )
+                    )
+                }
             )
         }
     }
