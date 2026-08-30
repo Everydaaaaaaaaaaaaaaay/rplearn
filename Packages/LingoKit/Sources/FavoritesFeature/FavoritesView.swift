@@ -224,25 +224,28 @@ public struct FavoritesView: View {
                 .buttonStyle(.plain)
             }
             .frame(width: min(218, proxy.size.width * 0.60))
-            .rotationEffect(.degrees(-8.5))
-            .position(x: proxy.size.width * 0.67, y: proxy.size.height * 0.47)
+            .rotationEffect(.degrees(-13))
+            .position(x: proxy.size.width * 0.68, y: proxy.size.height * 0.41)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var journalIllustration: some View {
         ZStack {
-            Image(systemName: "globe.americas")
-                .font(.system(size: 45, weight: .ultraLight))
-            Image(systemName: "book.closed")
-                .font(.system(size: 20, weight: .light))
-                .offset(x: 35, y: 22)
-            Image(systemName: "star.bubble")
-                .font(.system(size: 19, weight: .light))
-                .offset(x: -36, y: 18)
+            Image(systemName: "bookmark.fill")
+                .font(.system(size: 58, weight: .ultraLight))
+                .foregroundStyle(Color.dsSkyDeep.opacity(0.08))
+
+            Image(systemName: "bookmark")
+                .font(.system(size: 58, weight: .light))
+                .foregroundStyle(Color.dsSkyDeep)
+
+            Image(systemName: "sparkle")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundStyle(Color.dsFoilGold)
+                .offset(y: -7)
         }
-        .foregroundStyle(Color.dsSkyDeep.opacity(0.66))
-        .frame(height: 72)
+        .frame(width: 82, height: 76)
         .accessibilityHidden(true)
     }
 
@@ -259,8 +262,8 @@ public struct FavoritesView: View {
                     .foregroundStyle(Color.dsPaperInkSecondary)
             }
             .foregroundStyle(Color.dsPaperInk)
-            .rotationEffect(.degrees(-8.5))
-            .position(x: proxy.size.width * 0.67, y: proxy.size.height * 0.46)
+            .rotationEffect(.degrees(-13))
+            .position(x: proxy.size.width * 0.68, y: proxy.size.height * 0.41)
         }
     }
 
