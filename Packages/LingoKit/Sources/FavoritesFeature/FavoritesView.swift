@@ -123,6 +123,7 @@ public struct FavoritesView: View {
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .dsTabBarHidden()
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -154,7 +155,12 @@ public struct FavoritesView: View {
                 HStack(spacing: DSSpacing.sm) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(Color.dsSceneTextSecondary)
-                    TextField("搜索收藏", text: $searchText)
+                    TextField(
+                        "",
+                        text: $searchText,
+                        prompt: Text("搜索收藏")
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                    )
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                         .foregroundStyle(Color.dsSceneTextPrimary)

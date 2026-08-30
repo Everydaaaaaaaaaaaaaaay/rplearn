@@ -79,6 +79,7 @@ public struct SettingsView: View {
         .navigationTitle("设置")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .dsTabBarHidden()
         .animation(DSAnimation.snappy, value: testState)
         .task {
             await reloadProfile()
@@ -112,7 +113,7 @@ public struct SettingsView: View {
                     Text("旅程设置")
                         .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(Color.dsSceneTextPrimary)
-                    Label("学习提醒已开启", systemImage: "checkmark.circle.fill")
+                    Label(reminderSummary, systemImage: reminderSummaryIcon)
                     Label("Pocket TTS · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
                 }
                 .font(.subheadline.weight(.medium))
@@ -121,6 +122,20 @@ public struct SettingsView: View {
                 Spacer(minLength: 0)
             }
         }
+    }
+
+    private var reminderSummary: String {
+        let quizEnabled = profile?.quizGloballyEnabled == true
+        let activeCount = (quizEnabled ? 1 : 0) + (proactiveMessagesEnabled ? 1 : 0)
+        return switch activeCount {
+        case 0: "学习提醒已暂停"
+        case 1: "1 项学习提醒已开启"
+        default: "2 项学习提醒已开启"
+        }
+    }
+
+    private var reminderSummaryIcon: String {
+        reminderSummary == "学习提醒已暂停" ? "pause.circle.fill" : "checkmark.circle.fill"
     }
 
     private var learningAndReminderPanel: some View {

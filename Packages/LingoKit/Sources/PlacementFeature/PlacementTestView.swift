@@ -167,25 +167,27 @@ public struct PlacementTestView: View {
     private var introductionView: some View {
         ScrollView {
             VStack(spacing: DSSpacing.lg) {
-                HStack(alignment: .center, spacing: DSSpacing.md) {
-                    BrandMascotView(
-                        pose: .guide,
-                        size: 76,
-                        showsShadow: true,
-                        renderingMode: .animatedModel
-                    )
+                DSWorkbenchPanel(weight: .content, radius: 22, padding: DSSpacing.md) {
+                    HStack(alignment: .center, spacing: DSSpacing.md) {
+                        BrandMascotView(
+                            pose: .guide,
+                            size: 76,
+                            showsShadow: true,
+                            renderingMode: .animatedModel
+                        )
 
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("选择或测一测，聊得更合拍")
-                            .font(.system(.title2, design: .rounded, weight: .bold))
-                            .foregroundStyle(Color.dsSceneTextPrimary)
-                        Text("直接使用当前水平，或用 4–6 分钟短测获得建议。")
-                            .font(.subheadline)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("选择或测一测，聊得更合拍")
+                                .font(.system(.title2, design: .rounded, weight: .bold))
+                                .foregroundStyle(Color.dsSceneTextPrimary)
+                            Text("直接使用当前水平，或用 4–6 分钟短测获得建议。")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.dsSceneTextSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+
+                        Spacer(minLength: 0)
                     }
-
-                    Spacer(minLength: 0)
                 }
 
                 DSWorkbenchPanel(weight: .reading, padding: 0) {

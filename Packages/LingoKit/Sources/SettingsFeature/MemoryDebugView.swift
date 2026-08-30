@@ -76,6 +76,7 @@ public struct MemoryDebugView: View {
         .navigationTitle("记忆调试面板")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .dsTabBarHidden()
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
