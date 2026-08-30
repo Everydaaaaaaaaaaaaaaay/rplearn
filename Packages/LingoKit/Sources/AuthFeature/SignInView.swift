@@ -50,31 +50,27 @@ public struct SignInView: View {
 
     private var header: some View {
         VStack(spacing: DSSpacing.sm) {
-            Image(systemName: "wallet.pass.fill")
-                .font(.system(size: 34, weight: .semibold))
-                .foregroundStyle(Color.dsBrandCream)
-                .frame(width: 68, height: 68)
-                .background(Color.dsTravelNavy, in: Circle())
-                .overlay {
-                    Circle().stroke(Color.white.opacity(0.18), lineWidth: 0.8)
-                }
-                .shadow(color: Color.dsTravelNavy.opacity(0.24), radius: 14, y: 7)
+            DSObsidianMedallion(systemImage: "wallet.pass", size: 72)
 
             Text("继续你的语言之旅")
                 .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                .foregroundStyle(Color.dsSceneTextPrimary)
+                .foregroundStyle(Color.dsPaperInk)
                 .multilineTextAlignment(.center)
 
             Text("城市、学习进度与订阅会安全同步到你的所有设备。")
                 .font(.subheadline)
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
         }
+        .shadow(
+            color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.94),
+            radius: 8
+        )
     }
 
     private var signInPanel: some View {
-        DSWorkbenchPanel(weight: .reading, radius: 28) {
+        DSWorkbenchPaperSheet(radius: 28) {
             VStack(spacing: DSSpacing.md) {
                 appleAction
 
@@ -97,7 +93,7 @@ public struct SignInView: View {
                 } label: {
                     Label("使用邮箱登录或注册", systemImage: "envelope")
                         .font(.body.weight(.semibold))
-                        .foregroundStyle(Color.dsSceneTextPrimary)
+                        .foregroundStyle(Color.dsPaperInk)
                 }
                 .tint(Color.dsSkyDeep)
             }
@@ -106,11 +102,11 @@ public struct SignInView: View {
 
     private var divider: some View {
         HStack {
-            Rectangle().frame(height: 1).foregroundStyle(Color.dsSceneTextPrimary.opacity(0.12))
+            Rectangle().frame(height: 1).foregroundStyle(Color.dsPaperInk.opacity(0.12))
             Text("或")
                 .font(.caption)
-                .foregroundStyle(Color.dsSceneTextSecondary)
-            Rectangle().frame(height: 1).foregroundStyle(Color.dsSceneTextPrimary.opacity(0.12))
+                .foregroundStyle(Color.dsPaperInkSecondary)
+            Rectangle().frame(height: 1).foregroundStyle(Color.dsPaperInk.opacity(0.12))
         }
     }
 
@@ -131,7 +127,7 @@ public struct SignInView: View {
             if appleChallenge == nil {
                 Text("正在准备安全登录…")
                     .font(.caption)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
             }
         }
     }
@@ -150,20 +146,28 @@ public struct SignInView: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .padding(14)
-                .foregroundStyle(Color.dsSceneTextPrimary)
+                .foregroundStyle(Color.dsPaperInk)
                 .background(
-                    Color.dsSurface.opacity(0.78),
+                    Color.white.opacity(0.56),
                     in: RoundedRectangle(cornerRadius: DSRadius.inline)
                 )
+                .overlay {
+                    RoundedRectangle(cornerRadius: DSRadius.inline)
+                        .stroke(Color.dsPaperInk.opacity(0.10), lineWidth: 0.8)
+                }
 
             SecureField(mode == .login ? "密码" : "密码（至少 12 位）", text: $password)
                 .textContentType(mode == .login ? .password : .newPassword)
                 .padding(14)
-                .foregroundStyle(Color.dsSceneTextPrimary)
+                .foregroundStyle(Color.dsPaperInk)
                 .background(
-                    Color.dsSurface.opacity(0.78),
+                    Color.white.opacity(0.56),
                     in: RoundedRectangle(cornerRadius: DSRadius.inline)
                 )
+                .overlay {
+                    RoundedRectangle(cornerRadius: DSRadius.inline)
+                        .stroke(Color.dsPaperInk.opacity(0.10), lineWidth: 0.8)
+                }
 
             if let errorMessage {
                 Label(errorMessage, systemImage: "exclamationmark.circle.fill")
@@ -195,23 +199,23 @@ public struct SignInView: View {
                 .foregroundStyle(Color.dsSkyDeep)
             Text(text)
                 .font(.caption.weight(.medium))
-                .foregroundStyle(Color.dsSceneTextSecondary)
+                .foregroundStyle(Color.dsPaperInkSecondary)
         }
         .frame(maxWidth: .infinity)
     }
 
     private var verificationNotice: some View {
-        DSWorkbenchPanel(weight: .reading, radius: 28) {
+        DSWorkbenchPaperSheet(radius: 28) {
             VStack(spacing: DSSpacing.md) {
                 Image(systemName: "envelope.badge.fill")
                     .font(.system(size: 48))
                     .foregroundStyle(Color.dsSkyDeep)
                 Text("验证邮件已发送")
                     .font(.title2.bold())
-                    .foregroundStyle(Color.dsSceneTextPrimary)
+                    .foregroundStyle(Color.dsPaperInk)
                 Text("请打开发送到 \(email) 的链接完成验证，然后返回这里登录。")
                     .font(.subheadline)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
                     .multilineTextAlignment(.center)
                 Button("我已验证，去登录") {
                     registrationAccepted = false
