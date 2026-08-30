@@ -392,10 +392,10 @@ public struct FavoritesView: View {
 
     private var journalRotation: Double { -9.25 }
 
-    // Rotating the complete plane moves its lower action to the right and up.
-    // This anchor preserves the action's approved screen position.
+    // The photographed page has non-orthogonal projected axes. This anchor
+    // keeps the approved action position fixed after applying that projection.
     private var journalPlaneAnchorOffset: CGSize {
-        CGSize(width: -6.5, height: 2)
+        CGSize(width: -15.5, height: 1)
     }
 
     private var journalHologramTint: Color {
@@ -406,24 +406,35 @@ public struct FavoritesView: View {
         Color(red: 0.48, green: 0.78, blue: 0.80)
     }
 
-    private var journalSurfaceTransform: DSHologramTransform {
-        DSHologramTransform(
-            rotationZ: journalRotation,
-            tiltX: 3.5,
-            tiltY: -0.8,
-            perspective: 0.16,
-            scaleY: 0.99,
-            footprintOffset: CGSize(width: -1.2, height: 10),
-            extrusionOffset: CGSize(width: -0.2, height: 2.7)
+    private var journalPageProjection: ProjectionTransform {
+        let horizontalSlope = CGFloat(tan(journalRotation * .pi / 180))
+        let verticalSlope = CGFloat(tan(14.75 * .pi / 180))
+        return ProjectionTransform(
+            CGAffineTransform(
+                a: 1,
+                b: horizontalSlope,
+                c: verticalSlope,
+                d: 0.99,
+                tx: 0,
+                ty: 0
+            )
         )
+    }
+
+    private var journalFootprintOffset: CGSize {
+        CGSize(width: -1.2, height: 10)
+    }
+
+    private var journalExtrusionOffset: CGSize {
+        CGSize(width: -0.2, height: 2.7)
     }
 
     private func journalElement<Content: View>(
         @ViewBuilder content: () -> Content
     ) -> some View {
         DSHologramLift(
-            footprintOffset: journalSurfaceTransform.footprintOffset,
-            extrusionOffset: journalSurfaceTransform.extrusionOffset
+            footprintOffset: journalFootprintOffset,
+            extrusionOffset: journalExtrusionOffset
         ) {
             content()
         }
@@ -433,20 +444,7 @@ public struct FavoritesView: View {
         @ViewBuilder content: () -> Content
     ) -> some View {
         content()
-            .scaleEffect(x: journalSurfaceTransform.scaleX, y: journalSurfaceTransform.scaleY)
-            .rotationEffect(.degrees(journalSurfaceTransform.rotationZ))
-            .rotation3DEffect(
-                .degrees(journalSurfaceTransform.tiltX),
-                axis: (x: 1, y: 0, z: 0),
-                anchor: .center,
-                perspective: journalSurfaceTransform.perspective
-            )
-            .rotation3DEffect(
-                .degrees(journalSurfaceTransform.tiltY),
-                axis: (x: 0, y: 1, z: 0),
-                anchor: .center,
-                perspective: journalSurfaceTransform.perspective
-            )
+            .projectionEffect(journalPageProjection)
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
