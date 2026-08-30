@@ -410,21 +410,21 @@ private struct ObsidianFlowTexture: View {
                 )
             }
 
-            for index in 0 ..< 5 {
-                let column = CGFloat(index)
-                var mineralLine = Path()
-                mineralLine.move(
-                    to: CGPoint(x: width * (0.19 + column * 0.14), y: height * 0.06)
-                )
-                mineralLine.addCurve(
-                    to: CGPoint(x: width * (0.13 + column * 0.17), y: height * 0.94),
-                    control1: CGPoint(x: width * (0.33 + column * 0.10), y: height * 0.32),
-                    control2: CGPoint(x: width * (0.03 + column * 0.18), y: height * 0.66)
+            // 深色带与亮纹保持同一流向，形成天然玻璃质熔流，不制造规则交叉网格。
+            for index in 0 ..< 4 {
+                let row = CGFloat(index)
+                let y = height * (0.22 + row * 0.18)
+                var mineralBand = Path()
+                mineralBand.move(to: CGPoint(x: width * 0.08, y: y))
+                mineralBand.addCurve(
+                    to: CGPoint(x: width * 0.92, y: y + height * 0.025),
+                    control1: CGPoint(x: width * 0.31, y: y + height * 0.072),
+                    control2: CGPoint(x: width * 0.67, y: y - height * 0.062)
                 )
                 context.stroke(
-                    mineralLine,
-                    with: .color(.black.opacity(0.22)),
-                    lineWidth: 0.7
+                    mineralBand,
+                    with: .color(.black.opacity(0.24)),
+                    lineWidth: index.isMultiple(of: 2) ? 1.05 : 0.72
                 )
             }
         }

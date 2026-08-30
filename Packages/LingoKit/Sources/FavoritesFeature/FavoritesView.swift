@@ -283,7 +283,7 @@ public struct FavoritesView: View {
 
     private var emptyNotebook: some View {
         GeometryReader { proxy in
-            VStack(spacing: 14) {
+            VStack(spacing: 26) {
                 DSHologramSurface(transform: journalSurfaceTransform) {
                     VStack(spacing: 10) {
                         DSHologramBookmarkIcon(
