@@ -283,122 +283,120 @@ public struct FavoritesView: View {
 
     private var emptyNotebook: some View {
         GeometryReader { proxy in
-            VStack(spacing: 26) {
-                VStack(spacing: 10) {
-                    journalElement {
-                        DSHologramBookmarkIcon(
-                            size: 68,
-                            tint: journalHologramTint,
-                            glowColor: journalHologramGlow
-                        )
-                    }
-                    .offset(x: journalIconOffsetX)
+            journalPlane {
+                VStack(spacing: 26) {
+                    VStack(spacing: 10) {
+                        journalElement {
+                            DSHologramBookmarkIcon(
+                                size: 68,
+                                tint: journalHologramTint,
+                                glowColor: journalHologramGlow
+                            )
+                        }
 
-                    journalElement {
-                        DSHologramText(
-                            "还没有收藏",
-                            size: 22,
-                            weight: .heavy,
-                            tint: journalHologramTint,
-                            glowColor: journalHologramGlow,
-                            alignment: .center
-                        )
-                    }
-                    .offset(x: journalTitleOffsetX)
+                        journalElement {
+                            DSHologramText(
+                                "还没有收藏",
+                                size: 22,
+                                weight: .heavy,
+                                tint: journalHologramTint,
+                                glowColor: journalHologramGlow,
+                                alignment: .center
+                            )
+                        }
 
-                    journalElement {
-                        DSHologramText(
-                            "在对话中收藏单词、语法或句子\n它们会整理在这里。",
-                            size: 14,
-                            weight: .medium,
-                            tint: journalHologramTint,
-                            glowColor: journalHologramGlow,
-                            alignment: .center,
-                            lineSpacing: 3
-                        )
-                        .fixedSize(horizontal: true, vertical: false)
+                        journalElement {
+                            DSHologramText(
+                                "在对话中收藏单词、语法或句子\n它们会整理在这里。",
+                                size: 14,
+                                weight: .medium,
+                                tint: journalHologramTint,
+                                glowColor: journalHologramGlow,
+                                alignment: .center,
+                                lineSpacing: 3
+                            )
+                            .fixedSize(horizontal: true, vertical: false)
+                        }
                     }
-                    .offset(x: journalBodyOffsetX)
+
+                    Button(action: onBrowseConversations) {
+                        HStack(spacing: 6) {
+                            Text("去对话看看")
+                            Image(systemName: "chevron.right")
+                        }
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.dsTravelNavy)
+                        .padding(.horizontal, 20)
+                        .frame(minHeight: 42)
+                        .overlay {
+                            Capsule()
+                                .stroke(Color.dsTravelNavy.opacity(0.88), lineWidth: 1.3)
+                                .overlay {
+                                    Capsule()
+                                        .stroke(
+                                            Color.dsSkyDeep.opacity(0.36),
+                                            style: StrokeStyle(lineWidth: 0.75, dash: [1.2, 2.4])
+                                        )
+                                        .offset(x: -0.45, y: 0.35)
+                                }
+                        }
+                    }
+                    .buttonStyle(.plain)
                 }
-
-                Button(action: onBrowseConversations) {
-                    HStack(spacing: 6) {
-                        Text("去对话看看")
-                        Image(systemName: "chevron.right")
-                    }
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color.dsTravelNavy)
-                    .padding(.horizontal, 20)
-                    .frame(minHeight: 42)
-                    .overlay {
-                        Capsule()
-                            .stroke(Color.dsTravelNavy.opacity(0.88), lineWidth: 1.3)
-                            .overlay {
-                                Capsule()
-                                    .stroke(
-                                        Color.dsSkyDeep.opacity(0.36),
-                                        style: StrokeStyle(lineWidth: 0.75, dash: [1.2, 2.4])
-                                    )
-                                    .offset(x: -0.45, y: 0.35)
-                            }
-                    }
-                }
-                .buttonStyle(.plain)
-                .rotationEffect(.degrees(journalRotation))
-                .offset(x: journalButtonOffsetX)
+                .frame(width: min(280, proxy.size.width * 0.72))
             }
-            .frame(width: min(280, proxy.size.width * 0.72))
-            .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.365)
+            .position(
+                x: proxy.size.width * 0.545 + journalPlaneAnchorOffset.width,
+                y: proxy.size.height * 0.365 + journalPlaneAnchorOffset.height
+            )
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var noResultsPanel: some View {
         GeometryReader { proxy in
-            VStack(spacing: DSSpacing.sm) {
-                journalElement {
-                    Image(systemName: "text.magnifyingglass")
-                        .font(.system(size: 35, weight: .medium))
-                        .foregroundStyle(journalHologramTint)
-                        .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
+            journalPlane {
+                VStack(spacing: DSSpacing.sm) {
+                    journalElement {
+                        Image(systemName: "text.magnifyingglass")
+                            .font(.system(size: 35, weight: .medium))
+                            .foregroundStyle(journalHologramTint)
+                            .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
+                    }
+                    journalElement {
+                        DSHologramText(
+                            "没有找到相关收藏",
+                            size: 19,
+                            weight: .bold,
+                            tint: journalHologramTint,
+                            glowColor: journalHologramGlow,
+                            alignment: .center
+                        )
+                    }
+                    journalElement {
+                        DSHologramText(
+                            "试试其他关键词或收藏类型",
+                            size: 14,
+                            weight: .medium,
+                            tint: journalHologramTint,
+                            glowColor: journalHologramGlow,
+                            alignment: .center
+                        )
+                    }
                 }
-                .offset(x: journalIconOffsetX)
-                journalElement {
-                    DSHologramText(
-                        "没有找到相关收藏",
-                        size: 19,
-                        weight: .bold,
-                        tint: journalHologramTint,
-                        glowColor: journalHologramGlow,
-                        alignment: .center
-                    )
-                }
-                .offset(x: journalTitleOffsetX)
-                journalElement {
-                    DSHologramText(
-                        "试试其他关键词或收藏类型",
-                        size: 14,
-                        weight: .medium,
-                        tint: journalHologramTint,
-                        glowColor: journalHologramGlow,
-                        alignment: .center
-                    )
-                }
-                .offset(x: journalBodyOffsetX)
+                .frame(width: min(280, proxy.size.width * 0.72))
             }
-            .frame(width: min(280, proxy.size.width * 0.72))
             .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.35)
         }
     }
 
     private var journalRotation: Double { -9.25 }
 
-    // Keep the action button as the visual anchor, then follow the notebook's
-    // counter-clockwise page axis progressively farther left toward the top.
-    private var journalIconOffsetX: CGFloat { -8 }
-    private var journalTitleOffsetX: CGFloat { -13 }
-    private var journalBodyOffsetX: CGFloat { -10 }
-    private var journalButtonOffsetX: CGFloat { 8 }
+    // Rotating the complete plane moves its lower action to the right and up.
+    // This anchor preserves the action's approved screen position.
+    private var journalPlaneAnchorOffset: CGSize {
+        CGSize(width: -6.5, height: 2)
+    }
 
     private var journalHologramTint: Color {
         Color(red: 0.16, green: 0.27, blue: 0.30)
@@ -423,9 +421,32 @@ public struct FavoritesView: View {
     private func journalElement<Content: View>(
         @ViewBuilder content: () -> Content
     ) -> some View {
-        DSHologramSurface(transform: journalSurfaceTransform) {
+        DSHologramLift(
+            footprintOffset: journalSurfaceTransform.footprintOffset,
+            extrusionOffset: journalSurfaceTransform.extrusionOffset
+        ) {
             content()
         }
+    }
+
+    private func journalPlane<Content: View>(
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        content()
+            .scaleEffect(x: journalSurfaceTransform.scaleX, y: journalSurfaceTransform.scaleY)
+            .rotationEffect(.degrees(journalSurfaceTransform.rotationZ))
+            .rotation3DEffect(
+                .degrees(journalSurfaceTransform.tiltX),
+                axis: (x: 1, y: 0, z: 0),
+                anchor: .center,
+                perspective: journalSurfaceTransform.perspective
+            )
+            .rotation3DEffect(
+                .degrees(journalSurfaceTransform.tiltY),
+                axis: (x: 0, y: 1, z: 0),
+                anchor: .center,
+                perspective: journalSurfaceTransform.perspective
+            )
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
