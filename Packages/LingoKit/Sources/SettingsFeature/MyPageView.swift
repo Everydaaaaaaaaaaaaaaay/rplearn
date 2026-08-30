@@ -3,30 +3,24 @@ import BillingKit
 import CoreKit
 import DesignSystem
 import DomainKit
-import LLMKit
 import PersistenceKit
-import SpeechKit
 import StoreKit
 import SwiftUI
 
 /// “我的”聚合页：资料、订阅、金币与二级入口。
 public struct MyPageView: View {
-    private let router: LLMRouter
     private let economyStore: EconomyStore
     private let economyService: EconomyService
-    private let profileCommands: any ProfileCommandGateway
-    private let memoryStore: MemoryStore
     private let rosterStore: RosterStore
-    private let chatStore: ChatStore
-    private let speech: any SpeechService
     private let authSession: AuthSession
     private let billing: BillingController
     private let reloadToken: Int
     private let isSignedIn: Bool
     private let onSignIn: @MainActor () -> Void
     private let onCalibrateLevel: @MainActor () -> Void
-    private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
-    private let favoritesBuilder: @MainActor () -> AnyView
+    private let onOpenFavorites: @MainActor () -> Void
+    private let onOpenSettings: @MainActor () -> Void
+    private let onOpenMemory: @MainActor () -> Void
 
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
@@ -38,48 +32,31 @@ public struct MyPageView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(
-        router: LLMRouter,
         economyStore: EconomyStore,
         economyService: EconomyService,
-        profileCommands: any ProfileCommandGateway,
-        memoryStore: MemoryStore,
         rosterStore: RosterStore,
-        chatStore: ChatStore,
-        speech: any SpeechService,
         authSession: AuthSession,
         billing: BillingController,
         reloadToken: Int = 0,
         isSignedIn: Bool,
         onSignIn: @escaping @MainActor () -> Void,
         onCalibrateLevel: @escaping @MainActor () -> Void,
-        onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
-        favoritesBuilder: @escaping @MainActor () -> AnyView
+        onOpenFavorites: @escaping @MainActor () -> Void,
+        onOpenSettings: @escaping @MainActor () -> Void,
+        onOpenMemory: @escaping @MainActor () -> Void = {}
     ) {
-        self.router = router
         self.economyStore = economyStore
         self.economyService = economyService
-        self.profileCommands = profileCommands
-        self.memoryStore = memoryStore
         self.rosterStore = rosterStore
-        self.chatStore = chatStore
-        self.speech = speech
         self.authSession = authSession
         self.billing = billing
         self.reloadToken = reloadToken
         self.isSignedIn = isSignedIn
         self.onSignIn = onSignIn
         self.onCalibrateLevel = onCalibrateLevel
-        self.onProactiveMessagesChanged = onProactiveMessagesChanged
-        self.favoritesBuilder = favoritesBuilder
-    }
-
-    private var memoryService: MemoryService {
-        MemoryService(
-            llm: router,
-            chatStore: chatStore,
-            memoryStore: memoryStore,
-            economyStore: economyStore
-        )
+        self.onOpenFavorites = onOpenFavorites
+        self.onOpenSettings = onOpenSettings
+        self.onOpenMemory = onOpenMemory
     }
 
     public var body: some View {
@@ -271,9 +248,7 @@ public struct MyPageView: View {
     }
 
     private var favoritesHotspot: some View {
-        NavigationLink {
-            favoritesBuilder()
-        } label: {
+        Button(action: onOpenFavorites) {
             fixedSceneEntry(
                 glyph: .bookmarkStar,
                 title: "收藏",
@@ -286,18 +261,7 @@ public struct MyPageView: View {
     }
 
     private var settingsHotspot: some View {
-        NavigationLink {
-            SettingsView(
-                router: router,
-                economyStore: economyStore,
-                profileCommands: profileCommands,
-                memoryStore: memoryStore,
-                rosterStore: rosterStore,
-                chatStore: chatStore,
-                speech: speech,
-                onProactiveMessagesChanged: onProactiveMessagesChanged
-            )
-        } label: {
+        Button(action: onOpenSettings) {
             fixedSceneEntry(
                 glyph: .system("slider.horizontal.3"),
                 title: "设置",
@@ -330,14 +294,7 @@ public struct MyPageView: View {
 
     #if DEBUG
     private var memoryDebugHotspot: some View {
-        NavigationLink {
-            MemoryDebugView(
-                memoryStore: memoryStore,
-                rosterStore: rosterStore,
-                economyStore: economyStore,
-                memoryService: memoryService
-            )
-        } label: {
+        Button(action: onOpenMemory) {
             fixedSceneEntry(
                 glyph: .system("photo"),
                 title: "记忆",
@@ -763,25 +720,12 @@ public struct MyPageView: View {
 
     private var entryList: some View {
         VStack(spacing: 0) {
-            NavigationLink {
-                favoritesBuilder()
-            } label: {
+            Button(action: onOpenFavorites) {
                 entryRow("收藏夹", subtitle: "收集旅途中遇到的单词与语法点", icon: "star.fill", tint: .dsSunset)
             }
             .buttonStyle(.plain)
             Divider().padding(.leading, 56)
-            NavigationLink {
-                SettingsView(
-                    router: router,
-                    economyStore: economyStore,
-                    profileCommands: profileCommands,
-                    memoryStore: memoryStore,
-                    rosterStore: rosterStore,
-                    chatStore: chatStore,
-                    speech: speech,
-                    onProactiveMessagesChanged: onProactiveMessagesChanged
-                )
-            } label: {
+            Button(action: onOpenSettings) {
                 entryRow("设置", subtitle: "AI、语音与学习偏好", icon: "gearshape.fill", tint: .dsSky)
             }
             .buttonStyle(.plain)
@@ -826,14 +770,7 @@ public struct MyPageView: View {
             }
             .buttonStyle(.plain)
             Divider().padding(.leading, 56)
-            NavigationLink {
-                MemoryDebugView(
-                    memoryStore: memoryStore,
-                    rosterStore: rosterStore,
-                    economyStore: economyStore,
-                    memoryService: memoryService
-                )
-            } label: {
+            Button(action: onOpenMemory) {
                 entryRow("记忆调试面板", subtitle: "查看角色长期与近期记忆", icon: "brain.head.profile", tint: .dsQuiz)
             }
             .buttonStyle(.plain)
