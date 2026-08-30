@@ -123,7 +123,6 @@ public struct FavoritesView: View {
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
-        .dsTabBarHidden()
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,

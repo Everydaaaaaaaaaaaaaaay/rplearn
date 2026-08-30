@@ -79,7 +79,6 @@ public struct SettingsView: View {
         .navigationTitle("设置")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
-        .dsTabBarHidden()
         .animation(DSAnimation.snappy, value: testState)
         .task {
             await reloadProfile()
