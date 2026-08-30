@@ -20,17 +20,13 @@ public enum DSWorkbenchSceneFocus: Sendable, Equatable {
 
     fileprivate var scale: CGFloat {
         switch self {
-        case .favorites: 1.08
-        case .learning, .settings, .account, .archive: 1
+        case .learning, .favorites, .settings, .account, .archive: 1
         }
     }
 
     fileprivate var anchor: UnitPoint {
         switch self {
-        // 在不重绘、不插值原始摄影资产的前提下，以笔记本上沿为支点放大取景。
-        // 纸页因此只向下延伸，窗框、纸杯与木纹仍保持原图像素和材质。
-        case .favorites: UnitPoint(x: 0.50, y: 0.20)
-        case .learning, .settings, .account, .archive: .center
+        case .learning, .favorites, .settings, .account, .archive: .center
         }
     }
 }
@@ -50,6 +46,7 @@ public struct DSWorkbenchBackdrop: View {
         GeometryReader { proxy in
             Image(focus.assetName, bundle: .main)
                 .resizable()
+                .interpolation(.high)
                 .scaledToFill()
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .scaleEffect(focus.scale, anchor: focus.anchor)

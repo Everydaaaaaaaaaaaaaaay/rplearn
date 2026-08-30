@@ -284,14 +284,16 @@ public struct FavoritesView: View {
     private var emptyNotebook: some View {
         GeometryReader { proxy in
             VStack(spacing: 26) {
-                DSHologramSurface(transform: journalSurfaceTransform) {
-                    VStack(spacing: 10) {
+                VStack(spacing: 10) {
+                    journalElement {
                         DSHologramBookmarkIcon(
                             size: 68,
                             tint: journalHologramTint,
                             glowColor: journalHologramGlow
                         )
+                    }
 
+                    journalElement {
                         DSHologramText(
                             "还没有收藏",
                             size: 22,
@@ -300,16 +302,19 @@ public struct FavoritesView: View {
                             glowColor: journalHologramGlow,
                             alignment: .center
                         )
+                    }
 
+                    journalElement {
                         DSHologramText(
-                            "在对话中收藏单词、语法或句子，\n它们会整理在这里。",
-                            size: 15,
+                            "在对话中收藏单词、语法或句子\n它们会整理在这里。",
+                            size: 14,
                             weight: .medium,
                             tint: journalHologramTint,
                             glowColor: journalHologramGlow,
                             alignment: .center,
                             lineSpacing: 3
                         )
+                        .fixedSize(horizontal: true, vertical: false)
                     }
                 }
 
@@ -336,9 +341,9 @@ public struct FavoritesView: View {
                     }
                 }
                 .buttonStyle(.plain)
+                .rotationEffect(.degrees(journalRotation))
             }
-            .frame(width: min(232, proxy.size.width * 0.64))
-            .rotationEffect(.degrees(-9.25))
+            .frame(width: min(280, proxy.size.width * 0.72))
             .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.365)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -346,10 +351,14 @@ public struct FavoritesView: View {
 
     private var noResultsPanel: some View {
         GeometryReader { proxy in
-            DSHologramSurface(transform: journalSurfaceTransform) {
-                VStack(spacing: DSSpacing.sm) {
+            VStack(spacing: DSSpacing.sm) {
+                journalElement {
                     Image(systemName: "text.magnifyingglass")
                         .font(.system(size: 35, weight: .medium))
+                        .foregroundStyle(journalHologramTint)
+                        .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
+                }
+                journalElement {
                     DSHologramText(
                         "没有找到相关收藏",
                         size: 19,
@@ -358,6 +367,8 @@ public struct FavoritesView: View {
                         glowColor: journalHologramGlow,
                         alignment: .center
                     )
+                }
+                journalElement {
                     DSHologramText(
                         "试试其他关键词或收藏类型",
                         size: 14,
@@ -367,14 +378,13 @@ public struct FavoritesView: View {
                         alignment: .center
                     )
                 }
-                .foregroundStyle(journalHologramTint)
-                .shadow(color: journalHologramGlow.opacity(0.52), radius: 3)
             }
-            .frame(width: min(232, proxy.size.width * 0.64))
-            .rotationEffect(.degrees(-9.25))
+            .frame(width: min(280, proxy.size.width * 0.72))
             .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.35)
         }
     }
+
+    private var journalRotation: Double { -9.25 }
 
     private var journalHologramTint: Color {
         Color(red: 0.16, green: 0.27, blue: 0.30)
@@ -386,6 +396,7 @@ public struct FavoritesView: View {
 
     private var journalSurfaceTransform: DSHologramTransform {
         DSHologramTransform(
+            rotationZ: journalRotation,
             tiltX: 3.5,
             tiltY: -0.8,
             perspective: 0.16,
@@ -393,6 +404,14 @@ public struct FavoritesView: View {
             footprintOffset: CGSize(width: -1.2, height: 10),
             extrusionOffset: CGSize(width: -0.2, height: 2.7)
         )
+    }
+
+    private func journalElement<Content: View>(
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        DSHologramSurface(transform: journalSurfaceTransform) {
+            content()
+        }
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
