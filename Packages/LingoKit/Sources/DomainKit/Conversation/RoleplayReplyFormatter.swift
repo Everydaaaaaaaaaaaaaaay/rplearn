@@ -153,7 +153,8 @@ public enum RoleplayReplyFormatter {
         return word.unicodeScalars.contains { $0.properties.isEmojiPresentation }
     }
 
-    private static func wordCount(_ text: String) -> Int {
+    /// 与分条器相同的“词”定义：按可见空白分隔；连字符词仍视为一个口语词组。
+    public static func wordCount(_ text: String) -> Int {
         text.split(whereSeparator: \.isWhitespace).count
     }
 

@@ -360,7 +360,12 @@ public struct AVGStoryView: View {
             loadFailed = true
             return
         }
+        let storySpeakerNames = Set(script.nodes.values.compactMap { node -> String? in
+            guard case .line(let speaker, _, _, _, _) = node.payload else { return nil }
+            return speaker
+        })
         let progress = try? await deps.storyProgress.progress(storyID: storyID)
+        let shouldSettleRelationship = progress?.isCompleted != true
         let resumeNode = (progress?.isCompleted == true) ? nil : progress?.currentNodeID
         let player = StoryPlayer(script: script, resumeFrom: resumeNode, flags: progress?.flags ?? [:])
 
@@ -386,6 +391,35 @@ public struct AVGStoryView: View {
                         guard unlock.hasPrefix("character:") else { continue }
                         let regionID = String(unlock.dropFirst("character:".count))
                         try await rosterStore.unlockMainCharacter(regionID: regionID)
+                    }
+                    if shouldSettleRelationship {
+                        let characters = try await rosterStore.allCharacters()
+                        let participants = RelationshipContextEvent.storyParticipants(
+                            in: characters,
+                            speakerNames: storySpeakerNames
+                        )
+                        let relationshipEvents = RelationshipContextEventService(
+                            rosterStore: rosterStore
+                        )
+                        for participant in participants {
+                            do {
+                                _ = try await relationshipEvents.apply(
+                                    characterID: participant.id,
+                                    signal: RelationshipContextEvent.completedStory(
+                                        characterName: participant.card.name
+                                    ),
+                                    source: .story,
+                                    eventID: RelationshipContextEvent.storyCompletionID(
+                                        storyID: storyID,
+                                        characterID: participant.id
+                                    )
+                                )
+                            } catch {
+                                Log.app.warning(
+                                    "剧情关系结算失败（\(participant.card.name)）：\(error.localizedDescription)"
+                                )
+                            }
+                        }
                     }
                     try await progressStore.markCompleted(storyID: storyID)
                 } catch {

@@ -14,6 +14,7 @@ public struct ActivitiesView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     @State private var profile: UserProfileDTO?
+    @State private var localCompanion: CharacterDTO?
     @State private var selectedCategory: Region.ActivityCategory?
     @State private var isRollingID: String?
     @State private var activityMoment: ActivityMomentPresentation?
@@ -64,8 +65,8 @@ public struct ActivitiesView: View {
         .background(Color.dsBackground)
         .navigationTitle("城市活动")
         .navigationBarTitleDisplayMode(.inline)
-        .task { profile = try? await deps.economyStore.profile() }
-        .onAppear { Task { profile = try? await deps.economyStore.profile() } }
+        .task { await loadContext() }
+        .onAppear { Task { await loadContext() } }
         .sheet(item: $activityMoment) { result in
             ActivityMomentSheet(presentation: result) {
                 activityMoment = nil
@@ -167,7 +168,9 @@ public struct ActivitiesView: View {
                 sectionTitle(
                     eyebrow: "今日推荐",
                     title: "从这里开始",
-                    detail: "每天轮换一条在地路线"
+                    detail: localCompanion.map {
+                        "与 \(firstName($0.card.name)) 同行"
+                    } ?? "每天轮换一条在地路线"
                 )
 
                 Button {
@@ -178,7 +181,7 @@ public struct ActivitiesView: View {
                 .buttonStyle(.pressableCard)
                 .disabled(isRollingID != nil)
                 .accessibilityLabel(
-                    "今日推荐，\(activity.titleZh)，约 \(activity.durationMinutes) 分钟，出发"
+                    activityAccessibilityLabel(activity, prefix: "今日推荐，")
                 )
             }
         }
@@ -275,7 +278,7 @@ public struct ActivitiesView: View {
                 .buttonStyle(.pressableCard)
                 .disabled(isRollingID != nil)
                 .accessibilityLabel(
-                    "\(activity.titleZh)，\(activity.category.titleZh)，约 \(activity.durationMinutes) 分钟，邂逅率 \(Int((activity.encounterProbability * 100).rounded()))%"
+                    activityAccessibilityLabel(activity)
                 )
             }
         }
@@ -428,6 +431,8 @@ public struct ActivitiesView: View {
 
         Task {
             defer { isRollingID = nil }
+            let companion = localCompanion
+            await recordSharedActivity(activity, companion: companion)
             guard EncounterService.shouldEncounter(
                 roll: .random(in: 0..<1),
                 probability: activity.encounterProbability
@@ -435,7 +440,8 @@ public struct ActivitiesView: View {
                 Haptics.notify(.success)
                 activityMoment = ActivityMomentPresentation(
                     activity: activity,
-                    region: region
+                    region: region,
+                    companionName: companion?.card.name
                 )
                 return
             }
@@ -456,7 +462,8 @@ public struct ActivitiesView: View {
             ) else {
                 activityMoment = ActivityMomentPresentation(
                     activity: activity,
-                    region: region
+                    region: region,
+                    companionName: companion?.card.name
                 )
                 return
             }
@@ -478,10 +485,57 @@ public struct ActivitiesView: View {
                     openingLine: encounter.openingLine,
                     origin: encounter.origin,
                     activity: activity,
-                    region: region
+                    region: region,
+                    companionName: companion?.card.name
                 )
             }
         }
+    }
+
+    private func loadContext() async {
+        async let loadedProfile = try? deps.economyStore.profile()
+        async let loadedCharacters = try? deps.rosterStore.allCharacters()
+        let profile = await loadedProfile
+        let characters = await loadedCharacters ?? []
+        self.profile = profile
+        self.localCompanion = profile.flatMap {
+            RelationshipContextEvent.preferredCompanion(
+                in: $0.currentRegionID,
+                characters: characters
+            )
+        }
+    }
+
+    private func recordSharedActivity(
+        _ activity: Region.Activity,
+        companion: CharacterDTO?
+    ) async {
+        guard let companion else { return }
+        do {
+            _ = try await RelationshipContextEventService(rosterStore: deps.rosterStore).apply(
+                characterID: companion.id,
+                signal: RelationshipContextEvent.sharedActivity(
+                    title: activity.titleZh,
+                    companionName: companion.card.name
+                ),
+                source: .sharedActivity,
+                eventID: UUID()
+            )
+        } catch {
+            Log.app.warning("共同活动关系结算失败：\(error.localizedDescription)")
+        }
+    }
+
+    private func activityAccessibilityLabel(
+        _ activity: Region.Activity,
+        prefix: String = ""
+    ) -> String {
+        let companion = localCompanion.map { "，与 \(firstName($0.card.name)) 同行" } ?? ""
+        return "\(prefix)\(activity.titleZh)，\(activity.category.titleZh)，约 \(activity.durationMinutes) 分钟，邂逅率 \(Int((activity.encounterProbability * 100).rounded()))%\(companion)"
+    }
+
+    private func firstName(_ value: String) -> String {
+        value.split(whereSeparator: \.isWhitespace).first.map(String.init) ?? value
     }
 
     private func featuredActivity(in region: Region) -> Region.Activity? {
@@ -520,6 +574,7 @@ private struct ActivityMomentPresentation: Identifiable {
     let id = UUID()
     let activity: Region.Activity
     let region: Region
+    let companionName: String?
 }
 
 private struct EncounterPresentation: Identifiable {
@@ -529,6 +584,7 @@ private struct EncounterPresentation: Identifiable {
     let origin: EncounterService.Origin
     let activity: Region.Activity
     let region: Region
+    let companionName: String?
 }
 
 private struct ActivityMomentSheet: View {
@@ -591,11 +647,20 @@ private struct ActivityMomentSheet: View {
                     }
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
+
+                    if let companionName = presentation.companionName {
+                        Label(
+                            "与 \(firstName(companionName)) 一起完成",
+                            systemImage: "person.2.fill"
+                        )
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(activity.category.tint)
+                    }
                 }
                 .dsSurface(.elevated)
 
                 Label(
-                    "这次没有遇见新角色，但城市依然留下了一段只属于你的片刻。",
+                    momentSummary,
                     systemImage: "sparkles"
                 )
                 .font(.footnote)
@@ -611,6 +676,17 @@ private struct ActivityMomentSheet: View {
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.hidden)
+    }
+
+    private var momentSummary: String {
+        if let companionName = presentation.companionName {
+            return "这次没有遇见新角色，但你和 \(firstName(companionName)) 一起留下了一段共同见闻。"
+        }
+        return "这次没有遇见新角色，但城市依然留下了一段只属于你的片刻。"
+    }
+
+    private func firstName(_ value: String) -> String {
+        value.split(whereSeparator: \.isWhitespace).first.map(String.init) ?? value
     }
 }
 
@@ -742,10 +818,19 @@ private struct EncounterCardSheet: View {
                 .padding(.vertical, 6)
                 .background(tint.opacity(0.12), in: Capsule())
 
-            Text("在「\(presentation.activity.titleZh)」途中")
+            Text(encounterContext)
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    private var encounterContext: String {
+        if let companionName = presentation.companionName {
+            let name = companionName.split(whereSeparator: \.isWhitespace).first.map(String.init)
+                ?? companionName
+            return "与 \(name) 在「\(presentation.activity.titleZh)」途中"
+        }
+        return "在「\(presentation.activity.titleZh)」途中"
     }
 
     private var characterCard: some View {

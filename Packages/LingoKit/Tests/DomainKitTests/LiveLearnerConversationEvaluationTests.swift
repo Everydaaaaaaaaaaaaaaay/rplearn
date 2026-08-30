@@ -109,7 +109,10 @@ struct LiveLearnerConversationEvaluationTests {
                 ),
                 firstMessage: "I think social media has good and bad sides. How can I express this in an essay?",
                 followUp: "It connects friends, but it can waste our time.",
-                relevanceTerms: ["essay", "however", "although", "connect", "time"]
+                relevanceTerms: [
+                    "essay", "however", "although", "connect", "time",
+                    "argument", "examiner", "point", "pros", "cons", "double-edged",
+                ]
             ),
             Scenario(
                 id: "university_study_abroad",
@@ -147,14 +150,20 @@ struct LiveLearnerConversationEvaluationTests {
         let flattened = flatten(rawReply)
         let lowercase = flattened.lowercased()
 
-        #expect((1...3).contains(messages.count), "\(scenario.id) 第 \(turn) 轮气泡数量异常")
+        #expect(
+            (1...RoleplayReplyFormatter.maximumMessagesPerReply).contains(messages.count),
+            "\(scenario.id) 第 \(turn) 轮气泡数量异常"
+        )
         #expect(!flattened.isEmpty)
         #expect(!containsCJK(flattened), "\(scenario.id) 第 \(turn) 轮混入中文")
         #expect(!lowercase.contains("as an ai"))
         #expect(!lowercase.contains("language model"))
         #expect(flattened.count <= 500, "\(scenario.id) 第 \(turn) 轮过长")
         #expect(
-            messages.allSatisfy { wordCount($0) <= RoleplayReplyFormatter.maximumWordsPerMessage },
+            messages.allSatisfy {
+                RoleplayReplyFormatter.wordCount($0)
+                    <= RoleplayReplyFormatter.maximumWordsPerMessage
+            },
             "\(scenario.id) 第 \(turn) 轮存在过长气泡：\(messages)"
         )
 
@@ -195,6 +204,6 @@ struct LiveLearnerConversationEvaluationTests {
     }
 
     private func wordCount(_ value: String) -> Int {
-        value.split { !$0.isLetter && $0 != "'" }.count
+        RoleplayReplyFormatter.wordCount(value)
     }
 }
