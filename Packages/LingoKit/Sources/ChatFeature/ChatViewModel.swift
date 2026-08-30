@@ -430,7 +430,7 @@ public final class ChatViewModel {
             guard cycleID == replyCycleID else { return }
             Log.llm.error("流式回复失败：\(error)")
             if accumulated.isEmpty {
-                errorMessage = error.localizedDescription
+                errorMessage = ChatErrorPresentation.assistantReply(error)
             } else {
                 // 已收增量落库并标记中断，气泡上提供重试。
                 _ = try? await persistAssistantReply(
@@ -776,5 +776,15 @@ public final class ChatViewModel {
     private func reloadMessages() async {
         guard let conversation else { return }
         messages = (try? await deps.chatStore.messages(conversationID: conversation.id)) ?? messages
+    }
+}
+
+enum ChatErrorPresentation {
+    static func assistantReply(_ error: Error) -> String {
+        if let appError = error as? AppError,
+           case .keychain = appError {
+            return "AI 服务暂时无法读取安全凭据，请重新启动应用后重试。"
+        }
+        return error.localizedDescription
     }
 }

@@ -326,6 +326,114 @@ struct RelationshipServiceTests {
         #expect(try await roster.character(id: characterID)?.relationship.lastEvaluatedMessageID == message.id)
     }
 
+    @Test("活动与剧情事件原子写入，稳定事件 ID 阻止剧情重玩刷分")
+    func contextEventsArePersistentAndIdempotent() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let roster = RosterStore(modelContainer: container)
+        let characterID = try await roster.addCharacter(
+            card: card,
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let service = RelationshipContextEventService(rosterStore: roster)
+
+        let activity = try await service.apply(
+            characterID: characterID,
+            signal: RelationshipContextEvent.sharedActivity(
+                title: "旧书店雨天寻宝",
+                companionName: card.name
+            ),
+            source: .sharedActivity,
+            eventID: UUID(),
+            at: now
+        )
+        #expect(activity.affinity > RelationshipSnapshot.initial.affinity)
+        #expect(activity.latestEvent?.source == .sharedActivity)
+        #expect(activity.latestEvent?.reasonZh.contains("Oliver") == true)
+
+        let storyID = RelationshipContextEvent.storyCompletionID(
+            storyID: "mainline_london",
+            characterID: characterID
+        )
+        let completed = try await service.apply(
+            characterID: characterID,
+            signal: RelationshipContextEvent.completedStory(characterName: card.name),
+            source: .story,
+            eventID: storyID,
+            at: now.addingTimeInterval(60)
+        )
+        let replayed = try await service.apply(
+            characterID: characterID,
+            signal: RelationshipContextEvent.completedStory(characterName: card.name),
+            source: .story,
+            eventID: storyID,
+            at: now.addingTimeInterval(120)
+        )
+
+        #expect(replayed == completed)
+        #expect(completed.latestEvent?.source == .story)
+        #expect(completed.interactionCount == 2)
+        #expect(try await roster.character(id: characterID)?.relationship == completed)
+        #expect(
+            RelationshipContextEvent.storyCompletionID(
+                storyID: "mainline_london",
+                characterID: characterID
+            ) == storyID
+        )
+    }
+
+    @Test("活动只选择同城好友，剧情只匹配真实出场的主角色")
+    func contextParticipantSelectionIsScoped() throws {
+        let oliver = character(
+            name: "Oliver Bennett",
+            regionID: "london",
+            isMain: true,
+            isFriend: true,
+            metAt: now.addingTimeInterval(-200)
+        )
+        let favoriteLocal = character(
+            name: "Avery Stone",
+            regionID: "london",
+            isMain: false,
+            isFriend: true,
+            isFavorite: true,
+            metAt: now.addingTimeInterval(-100)
+        )
+        let ruby = character(
+            name: "Ruby Walker",
+            regionID: "melbourne",
+            isMain: true,
+            isFriend: true,
+            metAt: now
+        )
+        let sameNameSideCharacter = character(
+            name: "Ruby Lane",
+            regionID: "melbourne",
+            isMain: false,
+            isFriend: true,
+            metAt: now
+        )
+
+        #expect(
+            RelationshipContextEvent.preferredCompanion(
+                in: "london",
+                characters: [oliver, favoriteLocal, ruby]
+            )?.id == favoriteLocal.id
+        )
+        #expect(
+            RelationshipContextEvent.preferredCompanion(
+                in: "toronto",
+                characters: [oliver, favoriteLocal, ruby]
+            ) == nil
+        )
+
+        let participants = RelationshipContextEvent.storyParticipants(
+            in: [oliver, favoriteLocal, ruby, sameNameSideCharacter],
+            speakerNames: ["旁白", "Ruby", "Oliver"]
+        )
+        #expect(Set(participants.map(\.id)) == Set([oliver.id, ruby.id]))
+    }
+
     private var card: CharacterCard {
         CharacterCard(
             name: "Oliver Bennett",
@@ -337,6 +445,35 @@ struct RelationshipServiceTests {
             hobbies: ["books", "football"],
             appearance: "brown hair",
             personality: "warm, witty and independent"
+        )
+    }
+
+    private func character(
+        name: String,
+        regionID: String,
+        isMain: Bool,
+        isFriend: Bool,
+        isFavorite: Bool = false,
+        metAt: Date
+    ) -> CharacterDTO {
+        CharacterDTO(
+            id: UUID(),
+            card: CharacterCard(
+                name: name,
+                age: 24,
+                gender: .other,
+                nationality: "Test",
+                regionID: regionID,
+                occupation: "tester",
+                hobbies: [],
+                appearance: "",
+                personality: ""
+            ),
+            difficultyLevel: .junior3,
+            isMainCharacter: isMain,
+            isFriend: isFriend,
+            metAt: metAt,
+            isFavorite: isFavorite
         )
     }
 

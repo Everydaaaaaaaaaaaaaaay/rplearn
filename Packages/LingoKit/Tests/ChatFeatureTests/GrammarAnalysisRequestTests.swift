@@ -1,5 +1,6 @@
 import DictKit
 import Foundation
+import LLMKit
 import Testing
 @testable import ChatFeature
 
@@ -31,5 +32,22 @@ struct GrammarAnalysisRequestTests {
 
         #expect(!localRequest.requiresAIFallback)
         #expect(fallbackRequest.requiresAIFallback)
+    }
+
+    @Test("语法解析错误提示区分网络、服务与返回格式")
+    func errorPresentation() {
+        #expect(
+            GrammarAnalysisErrorPresentation.message(for: URLError(.notConnectedToInternet))
+                == "网络连接异常，请检查网络后重试"
+        )
+        #expect(
+            GrammarAnalysisErrorPresentation.message(for: LLMError.invalidResponse("bad json"))
+                == "AI 返回的解析内容不完整，请重新解析"
+        )
+        #expect(
+            GrammarAnalysisErrorPresentation.message(
+                for: LLMError.http(status: 503, message: "busy")
+            ) == "AI 解析服务暂时不可用，请稍后重试"
+        )
     }
 }

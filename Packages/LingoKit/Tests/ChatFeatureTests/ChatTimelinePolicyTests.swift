@@ -1,8 +1,29 @@
+import CoreKit
 import DesignSystem
 import Foundation
 import PersistenceKit
 import Testing
 @testable import ChatFeature
+
+@Suite("Chat error presentation")
+struct ChatErrorPresentationTests {
+    @Test("钥匙串底层错误不会直接暴露给聊天用户")
+    func keychainFailureIsActionable() {
+        let message = ChatErrorPresentation.assistantReply(AppError.keychain(-34_018))
+
+        #expect(message == "AI 服务暂时无法读取安全凭据，请重新启动应用后重试。")
+        #expect(!message.contains("-34018"))
+        #expect(!message.contains("钥匙串操作失败"))
+    }
+
+    @Test("其他已有本地化错误保持原有信息")
+    func otherLocalizedErrorsArePreserved() {
+        #expect(
+            ChatErrorPresentation.assistantReply(AppError.network("离线"))
+                == "网络错误：离线"
+        )
+    }
+}
 
 @Suite("Chat timeline policy")
 struct ChatTimelinePolicyTests {

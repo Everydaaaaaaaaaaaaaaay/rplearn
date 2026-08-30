@@ -1,4 +1,5 @@
 import BackendKit
+import CoreKit
 import Foundation
 import Testing
 @testable import LLMKit
@@ -21,6 +22,12 @@ struct BackendLLMProviderTests {
 
     private final class GuestCredentials: AuthCredentialStore, @unchecked Sendable {
         func load() throws -> StoredAuthCredential? { nil }
+        func remove() throws {}
+        func save(_ credential: StoredAuthCredential) throws {}
+    }
+
+    private final class UnavailableKeychainCredentials: AuthCredentialStore, @unchecked Sendable {
+        func load() throws -> StoredAuthCredential? { throw AppError.keychain(-34_018) }
         func remove() throws {}
         func save(_ credential: StoredAuthCredential) throws {}
     }
@@ -157,6 +164,41 @@ struct BackendLLMProviderTests {
         #expect(output == "你好")
         #expect(await transport.authorizationHeaders.last == "")
         #expect(await transport.guestIDs.last == "guest-device-12345678")
+    }
+
+    @Test("钥匙串不可用时访客 AI 的完成与流式请求仍可使用")
+    func unavailableKeychainUsesGuestAccess() async throws {
+        let transport = Transport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: UnavailableKeychainCredentials(),
+            transport: transport
+        )
+        let provider = BackendLLMProvider(
+            backend: client,
+            guestID: "guest-device-keychain-fallback"
+        )
+
+        #expect(
+            try await provider.complete(
+                LLMRequest(task: .grammarExplain, tier: .fast, messages: [.user("hello")])
+            ) == "你好"
+        )
+        var streamed = ""
+        for try await event in await provider.stream(
+            LLMRequest(task: .conversation, tier: .balanced, messages: [.user("hello")])
+        ) {
+            if case .textDelta(let value) = event { streamed += value }
+        }
+
+        #expect(streamed == "Hi!")
+        #expect(await transport.authorizationHeaders == ["", ""])
+        #expect(
+            await transport.guestIDs == [
+                "guest-device-keychain-fallback",
+                "guest-device-keychain-fallback",
+            ]
+        )
     }
 
     @Test("guest AI quota is controlled independently from login")

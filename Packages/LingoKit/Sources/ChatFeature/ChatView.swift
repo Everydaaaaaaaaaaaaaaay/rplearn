@@ -959,6 +959,8 @@ public struct ChatView: View {
                     )
                         .lineLimit(1...4)
                         .focused($isTextInputFocused)
+                        // 保留学习者实际输入，避免系统把语法/拼写错误改成另一个词后再送去点评。
+                        .autocorrectionDisabled(true)
                         .submitLabel(.send)
                         .textFieldStyle(.plain)
                         .padding(.horizontal, 12)

@@ -45,22 +45,55 @@ public struct GrammarAnalysisService: Sendable {
     }
 
     public func analyze(sentence: String, learnerLevel: String) async throws -> AIGrammarAnalysis {
-        let request = LLMRequest(
+        let primaryRequest = Self.makeRequest(
             task: .grammarExplain,
+            sentence: sentence,
+            learnerLevel: learnerLevel
+        )
+        let llm = self.llm
+        let output = try await CoachService.withTimeout(timeout) {
+            do {
+                return try await llm.complete(primaryRequest)
+            } catch {
+                // 老版本生产环境可能尚未部署 grammar_explain 路由。只在路由明确不存在时
+                // 借用同样支持 JSON 的 coach_review 路由；网络、鉴权与限流错误仍原样抛出。
+                guard Self.isUnavailableTask(error) else { throw error }
+                return try await llm.complete(
+                    Self.makeRequest(
+                        task: .coachReview,
+                        sentence: sentence,
+                        learnerLevel: learnerLevel
+                    )
+                )
+            }
+        }
+        return try Self.decode(fromModelOutput: output)
+    }
+
+    private static func makeRequest(
+        task: LLMTask,
+        sentence: String,
+        learnerLevel: String
+    ) -> LLMRequest {
+        LLMRequest(
+            task: task,
             tier: .fast,
-            system: Self.systemPrompt,
+            system: systemPrompt,
             messages: [
                 .user("学习者水平：\(learnerLevel)\n待解析句子：\(sentence)")
             ],
             maxTokens: 1_200,
             temperature: 0.2,
-            responseFormat: .jsonSchema(name: "grammar_analysis", schema: Self.schema)
+            responseFormat: .jsonSchema(name: "grammar_analysis", schema: schema)
         )
-        let llm = self.llm
-        let output = try await CoachService.withTimeout(timeout) {
-            try await llm.complete(request)
+    }
+
+    private static func isUnavailableTask(_ error: Error) -> Bool {
+        guard let llmError = error as? LLMError,
+              case .http(let status, _) = llmError else {
+            return false
         }
-        return try Self.decode(fromModelOutput: output)
+        return status == 404
     }
 
     static func decode(fromModelOutput output: String) throws -> AIGrammarAnalysis {
