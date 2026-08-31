@@ -34,9 +34,25 @@ struct RootView: View {
     private enum MeDestination: Hashable {
         case favorites
         case settings
+        case photoCredits
         #if DEBUG
         case memory
         #endif
+
+        var navigationTitle: String {
+            switch self {
+            case .favorites:
+                "收藏夹"
+            case .settings:
+                "设置"
+            case .photoCredits:
+                "城市背景照片"
+            #if DEBUG
+            case .memory:
+                ""
+            #endif
+            }
+        }
     }
 
     let environment: AppEnvironment
@@ -428,7 +444,7 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        NavigationStack(path: $mePath) {
+        DSCrossfadeNavigationStack(path: $mePath, title: \.navigationTitle) {
             MyPageView(
                 economyStore: environment.economyStore,
                 economyService: economyService,
@@ -439,18 +455,21 @@ struct RootView: View {
                 isSignedIn: usesCloudState,
                 onSignIn: { showSignIn = true },
                 onCalibrateLevel: { showPlacementTest = true },
-                onOpenFavorites: { mePath.append(.favorites) },
-                onOpenSettings: { mePath.append(.settings) },
+                onOpenFavorites: { openMe(.favorites) },
+                onOpenSettings: { openMe(.settings) },
                 onOpenMemory: {
                     #if DEBUG
-                    mePath.append(.memory)
+                    openMe(.memory)
                     #endif
                 }
             )
-            .navigationDestination(for: MeDestination.self) { destination in
-                meDestinationView(destination)
-            }
+        } destination: { destination in
+            meDestinationView(destination)
         }
+    }
+
+    private func openMe(_ destination: MeDestination) {
+        mePath.append(destination)
     }
 
     @ViewBuilder
@@ -476,8 +495,12 @@ struct RootView: View {
                 speech: environment.speech,
                 onProactiveMessagesChanged: { enabled in
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
-                }
+                },
+                onOpenPhotoCredits: { openMe(.photoCredits) }
             )
+
+        case .photoCredits:
+            CityScenePhotoCreditsView()
 
         #if DEBUG
         case .memory:

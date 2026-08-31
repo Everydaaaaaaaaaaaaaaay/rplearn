@@ -128,7 +128,7 @@ public struct FavoritesView: View {
                 }
             }
         }
-        .navigationTitle("收藏夹")
+        .dsNavigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .animation(reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.86), value: isSearchExpanded)
