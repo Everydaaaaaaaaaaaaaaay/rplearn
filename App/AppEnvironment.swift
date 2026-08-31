@@ -200,7 +200,15 @@ final class AppEnvironment {
         try await reconcileMainCharacters(profile: profile)
         await voiceMedia.activate(userID: identity.userID)
         proactiveMessageScope = "account-\(identity.userID.uuidString.lowercased())"
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] == "1" {
+            needsOnboarding = false
+        } else {
+            needsOnboarding = !profile.hasCompletedOnboarding
+        }
+        #else
         needsOnboarding = !profile.hasCompletedOnboarding
+        #endif
         return activation
     }
 
@@ -224,7 +232,15 @@ final class AppEnvironment {
         try await rosterStore.importMainCharactersIfNeeded(cards: cards)
         try await reconcileMainCharacters(profile: profile)
         proactiveMessageScope = "guest"
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] == "1" {
+            needsOnboarding = false
+        } else {
+            needsOnboarding = !profile.hasCompletedOnboarding
+        }
+        #else
         needsOnboarding = !profile.hasCompletedOnboarding
+        #endif
     }
 
     /// 首启引导完成：原子写入路线与起始城市，并开放五座主线城市。

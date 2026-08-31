@@ -1,6 +1,7 @@
+import DesignSystem
 import SwiftUI
 
-struct CityScenePhotoCreditsView: View {
+public struct CityScenePhotoCreditsView: View {
     private struct Credit: Identifiable {
         let city: String
         let placement: String
@@ -47,12 +48,14 @@ struct CityScenePhotoCreditsView: View {
         credit("金斯敦", "联系人页", "Avda", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Bob_Marley_-_Statue_-_Kingston_-_Jamaica.jpg"),
     ]
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         List {
             citySections
             licenseSection
         }
-        .navigationTitle("城市背景照片")
+        .dsNavigationTitle("城市背景照片")
         .navigationBarTitleDisplayMode(.inline)
     }
 

@@ -24,6 +24,7 @@ public struct SettingsView: View {
     private let chatStore: ChatStore
     private let speech: any SpeechService
     private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
+    private let onOpenPhotoCredits: (@MainActor () -> Void)?
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
@@ -43,7 +44,8 @@ public struct SettingsView: View {
         rosterStore: RosterStore,
         chatStore: ChatStore,
         speech: any SpeechService,
-        onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in }
+        onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
+        onOpenPhotoCredits: (@MainActor () -> Void)? = nil
     ) {
         self.router = router
         self.economyStore = economyStore
@@ -53,6 +55,7 @@ public struct SettingsView: View {
         self.chatStore = chatStore
         self.speech = speech
         self.onProactiveMessagesChanged = onProactiveMessagesChanged
+        self.onOpenPhotoCredits = onOpenPhotoCredits
     }
 
     public var body: some View {
@@ -83,7 +86,7 @@ public struct SettingsView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .navigationTitle("设置")
+        .dsNavigationTitle("设置")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .animation(DSAnimation.snappy, value: testState)
@@ -91,15 +94,17 @@ public struct SettingsView: View {
             await reloadProfile()
         }
         .task {
-            reloadVoiceInfo()
+            await reloadVoiceInfo()
         }
         .task {
             await observeOfflineVoiceStatus()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             // 从系统设置下载语音回来后，刷新音源并让新音质立即生效。
-            reloadVoiceInfo()
-            Task { await speech.refreshVoices() }
+            Task {
+                await reloadVoiceInfo()
+                await speech.refreshVoices()
+            }
         }
         .onChange(of: proactiveMessagesEnabled) { _, enabled in
             onProactiveMessagesChanged(enabled)
@@ -412,14 +417,23 @@ public struct SettingsView: View {
         .padding(DSSpacing.lg)
     }
 
+    @ViewBuilder
     private var creditsPanel: some View {
-        NavigationLink {
-            CityScenePhotoCreditsView()
-        } label: {
-            settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
+        if let onOpenPhotoCredits {
+            Button(action: onOpenPhotoCredits) {
+                settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, DSSpacing.lg)
+        } else {
+            NavigationLink {
+                CityScenePhotoCreditsView()
+            } label: {
+                settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, DSSpacing.lg)
         }
-        .buttonStyle(.plain)
-        .padding(.horizontal, DSSpacing.lg)
     }
 
     private func panelTitle(_ title: String, systemImage: String) -> some View {
@@ -521,9 +535,13 @@ public struct SettingsView: View {
         .buttonStyle(.plain)
     }
 
-    private func reloadVoiceInfo() {
-        voiceReports = AppleTTSService.voiceReports()
-        voiceQuality = AppleTTSService.bestAvailableEnglishQuality()
+    private func reloadVoiceInfo() async {
+        let snapshot = await Task.detached(priority: .userInitiated) {
+            AppleTTSService.voiceCatalogSnapshot()
+        }.value
+        guard !Task.isCancelled else { return }
+        voiceReports = snapshot.reports
+        voiceQuality = snapshot.bestQuality
     }
 
     private func observeOfflineVoiceStatus() async {
