@@ -31,6 +31,14 @@ enum AppTab: Hashable {
 struct RootView: View {
     private static let proactiveRefreshDelay = Duration.milliseconds(900)
 
+    private static var disablesBackgroundRefreshForUITesting: Bool {
+        #if DEBUG
+        ProcessInfo.processInfo.environment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] == "1"
+        #else
+        false
+        #endif
+    }
+
     private enum MeDestination: Hashable {
         case favorites
         case settings
@@ -197,7 +205,9 @@ struct RootView: View {
                 }
             }
             .onChange(of: selectedTab) { _, tab in
-                guard tab == .messages else { return }
+                guard tab == .messages,
+                      !Self.disablesBackgroundRefreshForUITesting
+                else { return }
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
                 }
@@ -444,7 +454,11 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        DSCrossfadeNavigationStack(path: $mePath, title: \.navigationTitle) {
+        DSCrossfadeNavigationStack(
+            path: $mePath,
+            title: \.navigationTitle,
+            background: .dsBrandCream
+        ) {
             MyPageView(
                 economyStore: environment.economyStore,
                 economyService: economyService,
@@ -722,7 +736,9 @@ struct RootView: View {
     private func refreshProactiveMessagesAfterInterfaceSettles(
         requestAuthorization: Bool
     ) async {
-        guard environment.needsOnboarding == false else { return }
+        guard !Self.disablesBackgroundRefreshForUITesting,
+              environment.needsOnboarding == false
+        else { return }
         do {
             try await Task.sleep(for: Self.proactiveRefreshDelay)
         } catch {

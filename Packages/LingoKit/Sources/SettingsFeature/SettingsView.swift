@@ -94,15 +94,17 @@ public struct SettingsView: View {
             await reloadProfile()
         }
         .task {
-            reloadVoiceInfo()
+            await reloadVoiceInfo()
         }
         .task {
             await observeOfflineVoiceStatus()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             // 从系统设置下载语音回来后，刷新音源并让新音质立即生效。
-            reloadVoiceInfo()
-            Task { await speech.refreshVoices() }
+            Task {
+                await reloadVoiceInfo()
+                await speech.refreshVoices()
+            }
         }
         .onChange(of: proactiveMessagesEnabled) { _, enabled in
             onProactiveMessagesChanged(enabled)
@@ -533,9 +535,13 @@ public struct SettingsView: View {
         .buttonStyle(.plain)
     }
 
-    private func reloadVoiceInfo() {
-        voiceReports = AppleTTSService.voiceReports()
-        voiceQuality = AppleTTSService.bestAvailableEnglishQuality()
+    private func reloadVoiceInfo() async {
+        let snapshot = await Task.detached(priority: .userInitiated) {
+            AppleTTSService.voiceCatalogSnapshot()
+        }.value
+        guard !Task.isCancelled else { return }
+        voiceReports = snapshot.reports
+        voiceQuality = snapshot.bestQuality
     }
 
     private func observeOfflineVoiceStatus() async {

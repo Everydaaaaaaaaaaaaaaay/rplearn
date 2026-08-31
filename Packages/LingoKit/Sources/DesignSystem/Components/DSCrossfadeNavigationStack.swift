@@ -7,6 +7,7 @@ import SwiftUI
 public struct DSCrossfadeNavigationStack<Route: Hashable, Root: View, Destination: View>: View {
     @Binding private var path: [Route]
     private let title: (Route) -> String
+    private let background: Color
     private let root: () -> Root
     private let destination: (Route) -> Destination
 
@@ -15,11 +16,13 @@ public struct DSCrossfadeNavigationStack<Route: Hashable, Root: View, Destinatio
     public init(
         path: Binding<[Route]>,
         title: @escaping (Route) -> String,
+        background: Color = .dsBackground,
         @ViewBuilder root: @escaping () -> Root,
         @ViewBuilder destination: @escaping (Route) -> Destination
     ) {
         _path = path
         self.title = title
+        self.background = background
         self.root = root
         self.destination = destination
     }
@@ -27,6 +30,10 @@ public struct DSCrossfadeNavigationStack<Route: Hashable, Root: View, Destinatio
     public var body: some View {
         NavigationStack {
             ZStack {
+                background
+                    .ignoresSafeArea()
+                    .accessibilityHidden(true)
+
                 root()
                     .opacity(path.isEmpty ? 1 : 0)
                     .allowsHitTesting(path.isEmpty)
@@ -68,6 +75,9 @@ public struct DSCrossfadeNavigationStack<Route: Hashable, Root: View, Destinatio
                 }
             }
         }
+        .background {
+            background.ignoresSafeArea()
+        }
     }
 
     private var crossfadeAnimation: Animation {
@@ -86,9 +96,7 @@ public struct DSCrossfadeNavigationStack<Route: Hashable, Root: View, Destinatio
 
     private func pop() {
         guard !path.isEmpty else { return }
-        withAnimation(crossfadeAnimation) {
-            _ = path.removeLast()
-        }
+        _ = path.removeLast()
     }
 }
 

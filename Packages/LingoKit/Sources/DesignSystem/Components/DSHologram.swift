@@ -32,7 +32,9 @@ public struct DSHologramTransform: Sendable {
     }
 }
 
-/// 与“我的”页完全相同的三层悬浮、挤出和落影路径。
+/// 与“我的”页相同的悬浮、挤出和落影路径。
+///
+/// 阴影由同一份内容表面合成，避免为每个入口复制整棵 View 树。
 public struct DSHologramLift<Content: View>: View {
     private let footprintOffset: CGSize
     private let extrusionOffset: CGSize
@@ -49,33 +51,19 @@ public struct DSHologramLift<Content: View>: View {
     }
 
     public var body: some View {
-        ZStack {
-            content
-                .blur(radius: 6)
-                .offset(x: footprintOffset.width, y: footprintOffset.height)
-                .opacity(0.12)
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
-
-            content
-                .blur(radius: 3.1)
-                .opacity(0.26)
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
-
-            ForEach(1 ... 3, id: \.self) { slice in
-                content
-                    .offset(
-                        x: extrusionOffset.width * CGFloat(slice) / 3,
-                        y: extrusionOffset.height * CGFloat(slice) / 3
-                    )
-                    .opacity(0.06)
-                    .allowsHitTesting(false)
-                    .accessibilityHidden(true)
-            }
-
-            content
-        }
+        content
+            .shadow(
+                color: .black.opacity(0.13),
+                radius: 5.8,
+                x: footprintOffset.width,
+                y: footprintOffset.height
+            )
+            .shadow(
+                color: .black.opacity(0.16),
+                radius: 0.7,
+                x: extrusionOffset.width,
+                y: extrusionOffset.height
+            )
     }
 }
 
@@ -181,10 +169,8 @@ public struct DSHologramBookmarkIcon: View {
     public var body: some View {
         if isElevated {
             glyph
-                .shadow(color: glowColor.opacity(0.42), radius: 6.2)
-                .shadow(color: glowColor.opacity(0.70), radius: 2.2)
-                .shadow(color: .white.opacity(0.24), radius: 0.6)
-                .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
+                .shadow(color: glowColor.opacity(0.58), radius: 3.2)
+                .shadow(color: .black.opacity(0.24), radius: 0.7, y: 0.8)
                 .accessibilityHidden(true)
         } else {
             glyph
@@ -276,42 +262,17 @@ private struct DSHologramTextRenderer: TextRenderer {
         )
         draw(layout, in: &depthEdge)
 
-        var outerGlow = context
-        outerGlow.opacity = 0.32
-        outerGlow.addFilter(
+        var glow = context
+        glow.opacity = 0.52
+        glow.addFilter(
             .shadow(
-                color: glowColor.opacity(0.52),
-                radius: 6.2,
+                color: glowColor.opacity(0.68),
+                radius: 3.1,
                 options: .shadowOnly
             ),
             options: .linearColor
         )
-        draw(layout, in: &outerGlow)
-
-        var innerGlow = context
-        innerGlow.opacity = 0.60
-        innerGlow.addFilter(
-            .shadow(
-                color: glowColor.opacity(0.72),
-                radius: 2.3,
-                options: .shadowOnly
-            ),
-            options: .linearColor
-        )
-        draw(layout, in: &innerGlow)
-
-        var edgeLight = context
-        edgeLight.opacity = 0.38
-        edgeLight.translateBy(x: 0.55, y: 0.8)
-        edgeLight.addFilter(
-            .shadow(
-                color: .white.opacity(0.70),
-                radius: 0.9,
-                options: .shadowOnly
-            ),
-            options: .linearColor
-        )
-        draw(layout, in: &edgeLight)
+        draw(layout, in: &glow)
 
         draw(layout, in: &context)
     }

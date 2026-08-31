@@ -23,6 +23,16 @@ schemes:
       gatherCoverageData: false
       targets:
         - LingoTripConversationTests
+  LingoTripPerformanceTests:
+    build:
+      targets:
+        LingoTrip: all
+        LingoTripUITests: [test]
+    test:
+      config: Debug
+      gatherCoverageData: false
+      targets:
+        - LingoTripUITests
 targets:
   LingoTrip:
     type: application
@@ -175,6 +185,28 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).tests
+        CODE_SIGN_STYLE: Automatic
+        "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual
+        "CODE_SIGN_IDENTITY[sdk=iphonesimulator*]": "-"
+        "DEVELOPMENT_TEAM[sdk=iphonesimulator*]": ""
+        "PROVISIONING_PROFILE_SPECIFIER[sdk=iphonesimulator*]": ""
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+
+  # 独立 UI 性能回归目标：固定复现 Tab 进出“我的”及二级入口转场，
+  # 与单元测试分开运行，避免常规逻辑回归被真机/模拟器时序影响。
+  LingoTripUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Tests/LingoTripUITests
+    dependencies:
+      - target: LingoTrip
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).uitests
+        TEST_TARGET_NAME: LingoTrip
         CODE_SIGN_STYLE: Automatic
         "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual
         "CODE_SIGN_IDENTITY[sdk=iphonesimulator*]": "-"

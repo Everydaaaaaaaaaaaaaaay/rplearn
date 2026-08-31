@@ -297,21 +297,17 @@ public actor AppleTTSService: SpeechService {
 
     // MARK: - 语音音质报告（设置页引导下载）
 
-    /// 全部英语语音里能达到的最高自然度（跨口音），驱动「是否建议下载」的总提示。
-    public nonisolated static func bestAvailableEnglishQuality() -> VoiceReport.Quality {
-        let english = AVSpeechSynthesisVoice.speechVoices().filter { $0.language.hasPrefix("en") }
-        guard let best = english.max(by: { qualityRank($0.quality) < qualityRank($1.quality) }) else {
-            return .unavailable
-        }
-        return VoiceReport.Quality(quality: best.quality)
-    }
-
-    /// 逐口音（本口音内）最佳音质，用于设置页分口音展示与下载引导。
-    public nonisolated static func voiceReports(
+    /// 一次扫描产生设置页所需的完整音质快照。
+    public nonisolated static func voiceCatalogSnapshot(
         for languages: [String] = ["en-US", "en-GB", "en-AU"]
-    ) -> [VoiceReport] {
+    ) -> VoiceCatalogSnapshot {
         let voices = AVSpeechSynthesisVoice.speechVoices()
-        return languages.map { language in
+        let english = voices.filter { $0.language.hasPrefix("en") }
+        let bestQuality = english
+            .max(by: { qualityRank($0.quality) < qualityRank($1.quality) })
+            .map { VoiceReport.Quality(quality: $0.quality) }
+            ?? .unavailable
+        let reports = languages.map { language in
             let best = voices
                 .filter { $0.language.caseInsensitiveCompare(language) == .orderedSame }
                 .max(by: { qualityRank($0.quality) < qualityRank($1.quality) })
@@ -322,6 +318,29 @@ public actor AppleTTSService: SpeechService {
                 quality: best.map { VoiceReport.Quality(quality: $0.quality) } ?? .unavailable
             )
         }
+        return VoiceCatalogSnapshot(reports: reports, bestQuality: bestQuality)
+    }
+
+    /// 全部英语语音里能达到的最高自然度（跨口音），驱动「是否建议下载」的总提示。
+    public nonisolated static func bestAvailableEnglishQuality() -> VoiceReport.Quality {
+        voiceCatalogSnapshot().bestQuality
+    }
+
+    /// 逐口音（本口音内）最佳音质，用于设置页分口音展示与下载引导。
+    public nonisolated static func voiceReports(
+        for languages: [String] = ["en-US", "en-GB", "en-AU"]
+    ) -> [VoiceReport] {
+        voiceCatalogSnapshot(for: languages).reports
+    }
+}
+
+public struct VoiceCatalogSnapshot: Sendable, Equatable {
+    public let reports: [VoiceReport]
+    public let bestQuality: VoiceReport.Quality
+
+    public init(reports: [VoiceReport], bestQuality: VoiceReport.Quality) {
+        self.reports = reports
+        self.bestQuality = bestQuality
     }
 }
 
