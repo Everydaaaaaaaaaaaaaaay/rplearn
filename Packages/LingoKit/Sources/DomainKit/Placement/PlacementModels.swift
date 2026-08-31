@@ -83,6 +83,8 @@ public struct PlacementQuestion: Codable, Identifiable, Sendable, Equatable {
     public let context: String?
     public let audioText: String?
     public let audioLanguage: String?
+    /// 随安装包分发的固定听力音频名；运行时禁止用 TTS 临时合成听力题。
+    public let audioAssetName: String?
     public let options: [String]
     public let correctIndex: Int
     public let difficulty: Double
@@ -97,6 +99,7 @@ public struct PlacementQuestion: Codable, Identifiable, Sendable, Equatable {
         context: String? = nil,
         audioText: String? = nil,
         audioLanguage: String? = nil,
+        audioAssetName: String? = nil,
         options: [String],
         correctIndex: Int,
         difficulty: Double,
@@ -110,6 +113,7 @@ public struct PlacementQuestion: Codable, Identifiable, Sendable, Equatable {
         self.context = context
         self.audioText = audioText
         self.audioLanguage = audioLanguage
+        self.audioAssetName = audioAssetName
         self.options = options
         self.correctIndex = correctIndex
         self.difficulty = difficulty
@@ -162,11 +166,15 @@ public enum PlacementQuestionBank {
                 guard let audioText = question.audioText,
                       !audioText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                       question.audioLanguage?.hasPrefix("en-") == true,
+                      let audioAssetName = question.audioAssetName,
+                      !audioAssetName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                       question.context == nil
                 else {
                     throw BankError.invalidQuestion(question.id)
                 }
-            } else if question.audioText != nil || question.audioLanguage != nil {
+            } else if question.audioText != nil
+                        || question.audioLanguage != nil
+                        || question.audioAssetName != nil {
                 throw BankError.invalidQuestion(question.id)
             }
 

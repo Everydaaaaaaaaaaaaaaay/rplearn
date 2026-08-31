@@ -222,6 +222,9 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         let oldTask = playbackTask
         let task = Task { [apple, audioSession, player] in
             if let oldTask { await oldTask.value }
+            let buffersEntireUtterance = PocketTTSUtteranceBufferPolicy
+                .buffersEntireUtterance(for: request.purpose)
+            var bufferedSamples: [Float] = []
             var didBeginPlayback = false
             var didReceiveFrame = false
             let synthesisStartedAt = Date()
@@ -241,8 +244,10 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
                 let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
                     ? .conversation
                     : .playback
-                try await audioSession.activate(mode)
-                try await player.prepare()
+                if !buffersEntireUtterance {
+                    try await audioSession.activate(mode)
+                    try await player.prepare()
+                }
 
                 for try await frame in stream {
                     try Task.checkCancellation()
@@ -268,7 +273,17 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
                     }
                     previousFrameAt = frameArrivedAt
                     generatedSampleCount += frame.samples.count
-                    if try await player.enqueue(frame.samples) {
+                    if buffersEntireUtterance {
+                        bufferedSamples.append(contentsOf: frame.samples)
+                    } else if try await player.enqueue(frame.samples) {
+                        didBeginPlayback = true
+                    }
+                }
+                if buffersEntireUtterance, !bufferedSamples.isEmpty {
+                    try Task.checkCancellation()
+                    try await audioSession.activate(mode)
+                    try await player.prepare()
+                    if try await player.enqueue(bufferedSamples) {
                         didBeginPlayback = true
                     }
                 }

@@ -130,7 +130,7 @@ let featureTargets: [Target] = [
         module("DomainKit"),
         module("PersistenceKit"),
         module("SpeechKit"),
-    ]),
+    ], resources: [.copy("Resources/Listening")]),
     feature("StoryFeature", dependencies: [
         module("CoreKit"),
         module("DomainKit"),

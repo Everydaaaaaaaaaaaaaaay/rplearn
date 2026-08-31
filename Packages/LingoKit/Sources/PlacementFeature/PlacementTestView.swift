@@ -10,17 +10,20 @@ public struct PlacementDependencies: Sendable {
     public let economyStore: EconomyStore
     public let profileCommands: any ProfileCommandGateway
     public let speech: any SpeechService
+    public let audioSession: AudioSessionCoordinator
 
     public init(
         questionBankURL: URL,
         economyStore: EconomyStore,
         profileCommands: any ProfileCommandGateway,
-        speech: any SpeechService
+        speech: any SpeechService,
+        audioSession: AudioSessionCoordinator
     ) {
         self.questionBankURL = questionBankURL
         self.economyStore = economyStore
         self.profileCommands = profileCommands
         self.speech = speech
+        self.audioSession = audioSession
     }
 }
 
@@ -39,6 +42,7 @@ public struct PlacementTestView: View {
     private let deps: PlacementDependencies
     private let onComplete: (UserProfileDTO) -> Void
     private let onCancel: () -> Void
+    @State private var listeningPlayer: PlacementListeningAudioPlayer
 
     @State private var phase: Phase = .loading
     @State private var questions: [PlacementQuestion] = []
@@ -47,6 +51,7 @@ public struct PlacementTestView: View {
     @State private var optionOrder: [Int] = []
     @State private var selectedOriginalIndex: Int?
     @State private var listeningPlayCount = 0
+    @State private var isListeningAudioLoading = false
     @State private var result: PlacementResult?
     @State private var currentLevel: DifficultyLevel = .junior3
     @State private var selectedLevel: DifficultyLevel = .junior3
@@ -64,6 +69,9 @@ public struct PlacementTestView: View {
         self.deps = deps
         self.onComplete = onComplete
         self.onCancel = onCancel
+        _listeningPlayer = State(
+            initialValue: PlacementListeningAudioPlayer(audioSession: deps.audioSession)
+        )
     }
 
     public var body: some View {
@@ -103,6 +111,7 @@ public struct PlacementTestView: View {
         }
         .task { await prepareIfNeeded() }
         .onDisappear {
+            listeningPlayer.stop()
             Task { await deps.speech.stopSpeaking() }
         }
         .interactiveDismissDisabled(
@@ -376,6 +385,7 @@ public struct PlacementTestView: View {
 
     private func listeningCard(_ question: PlacementQuestion) -> some View {
         let canPlay = PlacementListeningPolicy.canPlay(currentCount: listeningPlayCount)
+            && !isListeningAudioLoading
         let remaining = PlacementListeningPolicy.remainingPlayCount(after: listeningPlayCount)
         return VStack(alignment: .leading, spacing: DSSpacing.sm) {
             Button {
@@ -383,15 +393,23 @@ public struct PlacementTestView: View {
             } label: {
                 HStack(spacing: DSSpacing.sm) {
                     Image(
-                        systemName: !canPlay
+                        systemName: isListeningAudioLoading
+                            ? "speaker.wave.2.circle.fill"
+                            : !canPlay
                             ? "speaker.slash.circle.fill"
                             : listeningPlayCount == 0
                                 ? "play.circle.fill"
                                 : "speaker.wave.2.circle.fill"
                     )
                     .font(.title2)
+                    if isListeningAudioLoading {
+                        ProgressView()
+                            .tint(Color.dsSkyDeep)
+                    }
                     Text(
-                        !canPlay
+                        isListeningAudioLoading
+                            ? "正在准备音频"
+                            : !canPlay
                             ? "已达到播放上限"
                             : listeningPlayCount == 0 ? "播放音频" : "再听一次"
                     )
@@ -773,6 +791,7 @@ public struct PlacementTestView: View {
               var updatedEngine = engine
         else { return }
         selectedOriginalIndex = originalIndex
+        listeningPlayer.stop()
         Haptics.impact(.light)
         Task { await deps.speech.stopSpeaking() }
 
@@ -805,13 +824,24 @@ public struct PlacementTestView: View {
 
     private func playListeningQuestion(_ question: PlacementQuestion) {
         guard PlacementListeningPolicy.canPlay(currentCount: listeningPlayCount),
-              let audioText = question.audioText,
-              let audioLanguage = question.audioLanguage
+              !isListeningAudioLoading,
+              let audioAssetName = question.audioAssetName
         else { return }
-        listeningPlayCount += 1
-        Haptics.impact(.light)
+        isListeningAudioLoading = true
         Task {
-            await deps.speech.speak(audioText, language: audioLanguage)
+            await deps.speech.stopSpeaking()
+            let didStart = await listeningPlayer.play(assetName: audioAssetName)
+            guard currentQuestion?.id == question.id else {
+                isListeningAudioLoading = false
+                return
+            }
+            if didStart {
+                listeningPlayCount += 1
+                Haptics.impact(.light)
+            } else {
+                errorMessage = "听力音频暂时无法播放，请重试。"
+            }
+            isListeningAudioLoading = false
         }
     }
 

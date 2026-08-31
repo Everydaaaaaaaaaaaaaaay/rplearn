@@ -23,6 +23,13 @@ struct AdaptivePlacementEngineTests {
             Bundle.main.url(forResource: "placement_questions", withExtension: "json")
         )
         let questions = try PlacementQuestionBank.load(from: url)
+        let listeningQuestions = questions.filter { $0.skill == .listening }
+        #expect(listeningQuestions.count == 24)
+        #expect(
+            listeningQuestions.allSatisfy {
+                $0.audioAssetName == $0.id
+            }
+        )
 
         #expect(questions.count == 96)
         #expect(Set(questions.map(\.id)).count == questions.count)

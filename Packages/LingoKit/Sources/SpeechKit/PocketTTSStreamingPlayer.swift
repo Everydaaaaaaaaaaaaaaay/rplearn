@@ -32,6 +32,13 @@ enum PocketTTSPlaybackBufferPolicy {
     }
 }
 
+/// 普通朗读优先完整、连续；只有实时对话为降低往返延迟保留短缓冲流播。
+enum PocketTTSUtteranceBufferPolicy {
+    static func buffersEntireUtterance(for purpose: SpeechPurpose) -> Bool {
+        purpose != .realtimeConversation
+    }
+}
+
 /// 独立 actor 隔离的流式 PCM 播放器。音频帧调度不经过 MainActor，避免界面
 /// 动画或布局工作阻塞实时推理的消费端；所有已生成帧都会按顺序排入播放器。
 actor PocketTTSStreamingPlayer {

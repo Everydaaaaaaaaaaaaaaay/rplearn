@@ -221,6 +221,16 @@ struct SpeechServiceTests {
         )
     }
 
+    @Test("普通 Pocket 朗读完整缓冲，实时对话保留低延迟流播")
+    func pocketUtteranceBufferPolicy() {
+        #expect(PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .general))
+        #expect(PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .characterDialogue))
+        #expect(PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .pronunciation))
+        #expect(
+            !PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .realtimeConversation)
+        )
+    }
+
     @Test("随包模型只有被选中且预热完成才算激活")
     func bundledModelStatusSemantics() {
         let loading = SpeechSynthesisEngineStatus(
