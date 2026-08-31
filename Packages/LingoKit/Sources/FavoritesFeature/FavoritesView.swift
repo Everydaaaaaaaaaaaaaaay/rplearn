@@ -128,9 +128,7 @@ public struct FavoritesView: View {
                 }
             }
         }
-        // 搜索键盘只覆盖笔记本底部，不参与页面的透视布局计算；否则
-        // GeometryReader 会随键盘安全区缩短，纸面内容会整体向上漂移。
-        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .modifier(IOS18FavoritesKeyboardStabilityModifier())
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
@@ -653,5 +651,18 @@ public struct FavoritesView: View {
             try? await deps.favorites.remove(id: source[index].id)
         }
         await reload()
+    }
+}
+
+/// iOS 18 会让键盘安全区参与 GeometryReader 高度计算，导致笔记本上的
+/// 透视内容整体上移；iOS 26 保持系统默认键盘布局，避免改变已验收效果。
+private struct IOS18FavoritesKeyboardStabilityModifier: ViewModifier {
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if DSPlatformVisualPolicy.requiresIOS18RenderingCompensation {
+            content.ignoresSafeArea(.keyboard, edges: .bottom)
+        } else {
+            content
+        }
     }
 }

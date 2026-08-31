@@ -24,6 +24,17 @@ public enum DSPlatformVisualPolicy {
         }
         return false
     }
+
+    /// 当前已由 iPhone 13 / iOS 18 实机确认需要的渲染与安全区补偿。
+    /// 不把它等同于“非液态玻璃”，避免未经复现就改动 iOS 19–25 的布局。
+    public static var requiresIOS18RenderingCompensation: Bool {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_FORCE_IOS18_COMPAT"] == "1" {
+            return true
+        }
+        #endif
+        return ProcessInfo.processInfo.operatingSystemVersion.majorVersion == 18
+    }
 }
 
 private struct DSAdaptiveMaterialModifier<Background: Shape>: ViewModifier {

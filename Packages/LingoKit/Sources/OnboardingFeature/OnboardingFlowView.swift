@@ -119,6 +119,17 @@ public struct OnboardingFlowView: View {
                 }
             }
             #if DEBUG
+            if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1",
+               let player {
+                phase = .story
+                while player.history.count < 5, !player.isFinished {
+                    if player.currentChoices != nil {
+                        player.choose(0)
+                    }
+                    player.advance()
+                }
+                return
+            }
             await autoplayIfRequested()
             #endif
         }

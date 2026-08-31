@@ -94,6 +94,7 @@ struct RootView: View {
         if ProcessInfo.processInfo.arguments.contains("-ui-test-placement")
             || ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT"] == "1"
             || ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_LEVEL_SELECTION"] == "1"
+            || ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1"
         {
             _showPlacementTest = State(initialValue: true)
         }
@@ -102,11 +103,22 @@ struct RootView: View {
 
     private var showsOnboarding: Binding<Bool> {
         Binding(
-            get: { environment.needsOnboarding == true && !showPlacementTest },
+            get: {
+                (environment.needsOnboarding == true || forcesOnboardingStoryForUITest)
+                    && !showPlacementTest
+            },
             set: { newValue in
                 if !newValue { environment.needsOnboarding = false }
             }
         )
+    }
+
+    private var forcesOnboardingStoryForUITest: Bool {
+        #if DEBUG
+        ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1"
+        #else
+        false
+        #endif
     }
 
     var body: some View {

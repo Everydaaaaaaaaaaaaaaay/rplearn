@@ -309,7 +309,11 @@ public struct PlacementTestView: View {
     @ViewBuilder
     private var questionView: some View {
         if let question = currentQuestion, let engine {
-            VStack(spacing: DSSpacing.sm) {
+            VStack(
+                spacing: DSPlatformVisualPolicy.requiresIOS18RenderingCompensation
+                    ? DSSpacing.sm
+                    : 0
+            ) {
                 VStack(alignment: .leading, spacing: 6) {
                     ProgressView(
                         value: engine.measurementProgress
@@ -756,6 +760,10 @@ public struct PlacementTestView: View {
             }
             errorMessage = nil
             #if DEBUG
+            if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1" {
+                start()
+                return
+            }
             let initialPhase: Phase =
                 ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_LEVEL_SELECTION"] == "1"
                     ? .levelSelection

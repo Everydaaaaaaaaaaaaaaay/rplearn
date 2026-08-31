@@ -64,7 +64,12 @@ public struct MessageBubble<Content: View>: View {
                 .background(background)
                 .clipShape(bubbleShape)
                 .overlay {
-                    bubbleShape.stroke(borderColor, lineWidth: 0.9)
+                    // iOS 26 原生渲染下气泡边缘已经清楚，维持已验收效果；
+                    // iOS 18 只为浅色收到气泡补一条克制的可读性边界。
+                    if DSPlatformVisualPolicy.requiresIOS18RenderingCompensation,
+                       case .incoming = side {
+                        bubbleShape.stroke(Color.dsBrandInk.opacity(0.18), lineWidth: 0.9)
+                    }
                 }
             if side == .incoming {
                 Spacer(minLength: 48)
@@ -146,14 +151,6 @@ public struct MessageBubble<Content: View>: View {
         }
     }
 
-    private var borderColor: Color {
-        switch side {
-        case .incoming:
-            Color.dsBrandInk.opacity(0.15)
-        case .outgoing:
-            Color.white.opacity(0.22)
-        }
-    }
 }
 
 /// 「正在输入」三点动画。
