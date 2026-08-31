@@ -1,7 +1,7 @@
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
-import { appendSyncChange } from "../sync/change-writer.js";
+import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
 import type {
   ContentCommand,
   ContentDeleteCommand,

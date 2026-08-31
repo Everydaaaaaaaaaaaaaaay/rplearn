@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { char, index, timestamp, uniqueIndex, uuid } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
-import { users } from "../auth/schema.js";
+import { users } from "../../db/user-schema.js";
 
 export const accountDeletionStatus = applicationSchema.enum("account_deletion_status", [
   "scheduled",

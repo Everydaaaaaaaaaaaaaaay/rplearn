@@ -11,7 +11,7 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
-import { users } from "../auth/schema.js";
+import { users } from "../../db/user-schema.js";
 
 export const billingProvider = applicationSchema.enum("billing_provider", [
   "apple",

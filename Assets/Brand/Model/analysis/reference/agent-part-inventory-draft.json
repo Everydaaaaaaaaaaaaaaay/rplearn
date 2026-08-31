@@ -15,20 +15,20 @@
   "inputs": [
     {
       "view": "front",
-      "path": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
+      "path": "Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
       "role": "canonical_design_and_front_silhouette",
       "usable_character_bbox": [52, 151, 435, 569]
     },
     {
       "view": "side",
-      "path": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-side.png",
+      "path": "Assets/Brand/Model/reference/gugu-turnaround-v1-side.png",
       "role": "depth_and_profile_constraint",
       "usable_character_bbox": [90, 150, 343, 573],
       "warning": "左右画幅边缘含相邻转面角色残片，不能纳入主体 mask"
     },
     {
       "view": "back",
-      "path": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-back.png",
+      "path": "Assets/Brand/Model/reference/gugu-turnaround-v1-back.png",
       "role": "rear_structure_and_accessory_routing",
       "usable_character_bbox": [32, 155, 450, 564],
       "warning": "右侧画幅边缘含相邻角色翅膀残片，不能纳入主体 mask"
@@ -297,7 +297,7 @@
   ],
   "front_seed_manifest": {
     "schema": "source_part_seed_manifest.v1",
-    "image": "/Volumes/data/rplearn/Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
+    "image": "Assets/Brand/Model/reference/gugu-turnaround-v1-front.png",
     "image_size": [540, 887],
     "draft_precision": "manual_bbox_polygon_seed_draft_requiring_mask_review",
     "parts": [

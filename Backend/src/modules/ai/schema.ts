@@ -15,7 +15,7 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
-import { users } from "../auth/schema.js";
+import { users } from "../../db/user-schema.js";
 
 export const aiProvider = applicationSchema.enum("ai_provider", [
   "deepseek",

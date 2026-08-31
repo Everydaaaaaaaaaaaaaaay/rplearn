@@ -1,6 +1,9 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { resolveTelemetrySettings, TelemetryConfigurationError } from "./telemetry.js";
+import type { DatabaseConnectionConfig, RuntimeConfig } from "./env-types.js";
+
+export type { DatabaseConnectionConfig, RuntimeConfig } from "./env-types.js";
 
 const booleanFromString = z
   .enum(["true", "false"])
@@ -183,120 +186,6 @@ const rawEnvironmentSchema = z.object({
   SMTP_USER: optionalSecret,
   TRUST_PROXY: booleanFromString.default(false),
 });
-
-export type DatabaseConnectionConfig = Readonly<{
-  databaseConnectTimeoutMs: number;
-  databaseIdleTimeoutMs: number;
-  databaseMaxConnections: number;
-  databaseUrl: string;
-  shutdownGraceMs: number;
-}>;
-
-export type RuntimeConfig = Readonly<{
-  adminApiEnabled: boolean;
-  adminApiKeys: readonly Readonly<{ keyId: string; token: string }>[];
-  accountDeletionGraceDays: number;
-  accountDeletionReceiptRetentionDays: number;
-  aiRetryMaxAttempts: number;
-  aiDeepSeekAllowedModels: readonly string[];
-  aiGuestAccessEnabled: boolean;
-  aiUsageRetentionDays: number;
-  aiUserMinuteLimit: number;
-  auditRetentionDays: number;
-  appleAuthEnabled: boolean;
-  appleBillingAppAppleId?: number;
-  appleBillingBundleId: string;
-  appleBillingEnabled: boolean;
-  appleBillingEnableOnlineChecks: boolean;
-  appleBillingIssuerId?: string;
-  appleBillingKeyId?: string;
-  appleBillingPrivateKeyBase64?: string;
-  appleBillingReconcileActiveHours: number;
-  appleBillingReconcileBatchSize: number;
-  appleBillingReconcileInactiveHours: number;
-  appleBillingReconcileRetryMinutes: number;
-  appleBillingRootCaCertificates: readonly Buffer[];
-  appleChallengeTtlSeconds: number;
-  appleClientIds: readonly string[];
-  appleCredentialEncryptionKeyBase64?: string;
-  appleCredentialKeyVersion?: string;
-  appleJwksUrl: string;
-  appleKeyId?: string;
-  applePrivateKeyBase64?: string;
-  appleRedirectUri?: string;
-  appleRevocationEndpoint: string;
-  appleTeamId?: string;
-  appleTokenEndpoint: string;
-  authAccessTokenTtlSeconds: number;
-  authActionTokenTtlSeconds: number;
-  authEmailAccountHourLimit: number;
-  authEmailIpHourLimit: number;
-  authActionUrlBase: string;
-  authAudience: string;
-  authEmailFrom: string;
-  authIssuer: string;
-  authLoginAccount15MinuteLimit: number;
-  authLoginIp15MinuteLimit: number;
-  authJwtKeyId?: string;
-  authJwtPrivateKeyBase64?: string;
-  authJwtPublicKeyBase64?: string;
-  authJwtPreviousPublicKeys: readonly Readonly<{
-    keyId: string;
-    publicKeyBase64: string;
-  }>[];
-  authRefreshTokenTtlDays: number;
-  authTokenHashPepper: string;
-  corsAllowedOrigins: readonly string[];
-  databaseConnectTimeoutMs: number;
-  databaseIdleTimeoutMs: number;
-  databaseMaxConnections: number;
-  databaseUrl: string;
-  deepSeekApiKey?: string;
-  deepSeekBaseUrl: string;
-  host: string;
-  httpGlobalIpMinuteLimit: number;
-  jobLeaseSeconds: number;
-  jobPayloadEncryptionKeyBase64: string;
-  jobPayloadKeyVersion: string;
-  jobPayloadPreviousKeys: readonly Readonly<{
-    keyBase64: string;
-    keyVersion: string;
-  }>[];
-  jobPollIntervalMs: number;
-  jobRetentionDays: number;
-  jobRetryBaseSeconds: number;
-  logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "trace" | "silent";
-  metricsBearerToken?: string;
-  metricsEnabled: boolean;
-  mediaDownloadUrlTtlSeconds: number;
-  mediaMaxVoiceBytes: number;
-  mediaPendingTtlHours: number;
-  mediaRecordRetentionDays: number;
-  mediaS3AccessKeyId?: string;
-  mediaS3Bucket: string;
-  mediaS3Endpoint?: string;
-  mediaS3ForcePathStyle: boolean;
-  mediaS3Region: string;
-  mediaS3SecretAccessKey?: string;
-  mediaStorageEnabled: boolean;
-  mediaUploadUrlTtlSeconds: number;
-  mediaUserAssetLimit: number;
-  mediaUserStorageBytes: number;
-  nodeEnv: "development" | "test" | "production";
-  port: number;
-  readinessTimeoutMs: number;
-  redisConnectTimeoutMs: number;
-  redisUrl: string;
-  requestBodyLimitBytes: number;
-  requestTimeoutMs: number;
-  shutdownGraceMs: number;
-  smtpHost: string;
-  smtpPassword?: string;
-  smtpPort: number;
-  smtpSecure: boolean;
-  smtpUser?: string;
-  trustProxy: boolean;
-}>;
 
 const DEVELOPMENT_DATABASE_URL = "postgres://127.0.0.1:5432/lingotrip";
 const DEVELOPMENT_REDIS_URL = "redis://127.0.0.1:6379";

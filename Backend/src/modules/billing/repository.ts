@@ -2,7 +2,18 @@ import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import { newEntityId } from "../../shared/id.js";
-import { appendSyncChange } from "../sync/change-writer.js";
+import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
+import {
+  effectiveUntil,
+  parseFeatureFlags,
+  type AppliedState,
+  type GrantRow,
+  type PlanRow,
+} from "./repository-helpers.js";
+import {
+  activeBillingUserExists,
+  findUserForOriginalTransaction,
+} from "./repository-queries.js";
 import type {
   BillingProduct,
   EntitlementSnapshot,
@@ -15,45 +26,6 @@ import type {
   VerifiedStoreNotification,
   VerifiedStoreTransaction,
 } from "./types.js";
-
-type PlanRow = Readonly<{
-  feature_flags_text: string;
-  id: string;
-  rank: number;
-  tier: SubscriptionTier;
-}>;
-
-type GrantRow = Readonly<{
-  entitlement_key: string;
-  provider: "apple" | "google_play" | "stripe" | "manual";
-  status: EntitlementStatus;
-  valid_until: string | null;
-}>;
-
-type AppliedState = Readonly<{
-  changed: boolean;
-  planId: string;
-  status: EntitlementStatus;
-  tier: SubscriptionTier;
-  validUntil: Date | null;
-}>;
-
-function parseFeatureFlags(
-  value: string,
-): Readonly<Record<string, boolean | number | string>> {
-  return JSON.parse(value) as Readonly<Record<string, boolean | number | string>>;
-}
-
-function effectiveUntil(
-  transaction: VerifiedStoreTransaction,
-  renewal: VerifiedRenewalInfo | undefined,
-  status: EntitlementStatus,
-): Date | null {
-  if (status === "grace" && renewal?.gracePeriodExpiresAt !== undefined) {
-    return renewal.gracePeriodExpiresAt;
-  }
-  return transaction.expiresAt ?? null;
-}
 
 export class BillingRepository {
   constructor(private readonly database: DatabaseResource) {}
@@ -140,26 +112,15 @@ export class BillingRepository {
     environment: StoreEnvironment,
     originalTransactionId: string,
   ): Promise<string | undefined> {
-    const [row] = await this.database.sql<{ user_id: string | null }[]>`
-      select user_id::text
-      from app.subscriptions
-      where provider = 'apple'
-        and environment = ${environment}::app.billing_environment
-        and original_transaction_id = ${originalTransactionId}
-    `;
-    return row?.user_id ?? undefined;
+    return findUserForOriginalTransaction(
+      this.database,
+      environment,
+      originalTransactionId,
+    );
   }
 
   async userExists(userId: string): Promise<boolean> {
-    const [row] = await this.database.sql<{ present: boolean }[]>`
-      select exists (
-        select 1
-        from app.users
-        where id = ${userId}
-          and status = 'active'
-      ) as present
-    `;
-    return row?.present ?? false;
+    return activeBillingUserExists(this.database, userId);
   }
 
   private async applyVerifiedState(

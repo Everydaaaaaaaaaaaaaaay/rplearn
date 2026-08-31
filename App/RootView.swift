@@ -19,16 +19,6 @@ import SwiftUI
 import UIKit
 import UserNotifications
 
-enum AppTab: Hashable {
-    case messages
-    case contacts
-    case home
-    case me
-    #if DEBUG
-    case relationshipLab
-    #endif
-}
-
 struct RootView: View {
     private static let proactiveRefreshDelay = Duration.milliseconds(900)
 
@@ -38,30 +28,6 @@ struct RootView: View {
         #else
         false
         #endif
-    }
-
-    private enum MeDestination: Hashable {
-        case favorites
-        case settings
-        case photoCredits
-        #if DEBUG
-        case memory
-        #endif
-
-        var navigationTitle: String {
-            switch self {
-            case .favorites:
-                "收藏夹"
-            case .settings:
-                "设置"
-            case .photoCredits:
-                "城市背景照片"
-            #if DEBUG
-            case .memory:
-                ""
-            #endif
-            }
-        }
     }
 
     let environment: AppEnvironment
@@ -737,88 +703,3 @@ struct RootView: View {
 /// iOS 18 的系统 Tab Bar 没有 Liquid Glass 胶囊，并且摄影页面会让默认
 /// 半透明背景失去边界。保留原生 UITabBar 的点击、徽标与无障碍语义，只在
 /// 它的最底层安装稳定的圆角材质，不重写导航行为。
-private struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> InstallerViewController {
-        InstallerViewController()
-    }
-
-    func updateUIViewController(_ controller: InstallerViewController, context: Context) {
-        controller.installIfNeeded()
-    }
-
-    final class InstallerViewController: UIViewController {
-        private static let capsuleTag = 0x4C_54_42
-
-        override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            installIfNeeded()
-        }
-
-        override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            installIfNeeded()
-        }
-
-        func installIfNeeded() {
-            guard let tabBar = tabBarController?.tabBar else { return }
-
-            let appearance = UITabBarAppearance()
-            appearance.configureWithTransparentBackground()
-            appearance.backgroundColor = .clear
-            appearance.backgroundEffect = nil
-            appearance.shadowColor = .clear
-            tabBar.standardAppearance = appearance
-            tabBar.scrollEdgeAppearance = appearance
-            tabBar.isTranslucent = true
-            tabBar.clipsToBounds = false
-
-            guard tabBar.viewWithTag(Self.capsuleTag) == nil else { return }
-
-            let capsule = UIView()
-            capsule.tag = Self.capsuleTag
-            capsule.translatesAutoresizingMaskIntoConstraints = false
-            capsule.isUserInteractionEnabled = false
-            capsule.layer.cornerRadius = 32
-            capsule.layer.cornerCurve = .continuous
-            capsule.layer.shadowColor = UIColor.black.cgColor
-            capsule.layer.shadowOpacity = 0.14
-            capsule.layer.shadowRadius = 16
-            capsule.layer.shadowOffset = CGSize(width: 0, height: 7)
-
-            let material = UIVisualEffectView(
-                effect: UIBlurEffect(style: .systemUltraThinMaterialLight)
-            )
-            material.translatesAutoresizingMaskIntoConstraints = false
-            material.isUserInteractionEnabled = false
-            material.layer.cornerRadius = 32
-            material.layer.cornerCurve = .continuous
-            material.clipsToBounds = true
-            material.contentView.backgroundColor = UIColor(
-                red: 0.985,
-                green: 0.968,
-                blue: 0.925,
-                alpha: 0.50
-            )
-            material.layer.borderColor = UIColor.white.withAlphaComponent(0.72).cgColor
-            material.layer.borderWidth = 0.8
-
-            capsule.addSubview(material)
-            tabBar.insertSubview(capsule, at: 0)
-
-            NSLayoutConstraint.activate([
-                capsule.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 12),
-                capsule.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: -12),
-                capsule.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: 4),
-                capsule.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor, constant: -4),
-                material.leadingAnchor.constraint(equalTo: capsule.leadingAnchor),
-                material.trailingAnchor.constraint(equalTo: capsule.trailingAnchor),
-                material.topAnchor.constraint(equalTo: capsule.topAnchor),
-                material.bottomAnchor.constraint(equalTo: capsule.bottomAnchor),
-            ])
-        }
-    }
-}
-
-#Preview {
-    RootView(environment: AppEnvironment())
-}

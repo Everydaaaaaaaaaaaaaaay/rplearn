@@ -40,3 +40,10 @@ export type SessionSummary = Readonly<{
   lastSeenAt: Date;
   platform: SessionPlatform;
 }>;
+
+export type SealedProviderCredential = Readonly<{
+  ciphertext: Buffer;
+  keyVersion: string;
+  nonce: Buffer;
+  tag: Buffer;
+}>;

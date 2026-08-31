@@ -10,7 +10,7 @@ export default defineConfig({
   },
   dialect: "postgresql",
   out: "./migrations",
-  schema: ["./src/db/schema.ts", "./src/modules/**/schema.ts"],
+  schema: ["./src/db/*schema.ts", "./src/modules/**/schema.ts"],
   strict: true,
   verbose: true,
 });

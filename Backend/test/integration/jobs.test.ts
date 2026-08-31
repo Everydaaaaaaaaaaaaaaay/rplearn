@@ -7,7 +7,8 @@ import {
 } from "../../src/infrastructure/runtime-dependencies.js";
 import type { AuthNotifier } from "../../src/modules/auth/notifier.js";
 import { createJobPayloadCipher } from "../../src/modules/jobs/crypto.js";
-import { insertPreparedJob, JobRepository } from "../../src/modules/jobs/repository.js";
+import { JobRepository } from "../../src/modules/jobs/repository.js";
+import { insertPreparedJob } from "../../src/modules/jobs/transactional-enqueue.js";
 import { AUTH_EMAIL_VERIFICATION_JOB } from "../../src/modules/jobs/types.js";
 import { JobWorker } from "../../src/modules/jobs/worker.js";
 import { newEntityId } from "../../src/shared/id.js";

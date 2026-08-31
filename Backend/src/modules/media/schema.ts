@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { bigint, check, index, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
-import { users } from "../auth/schema.js";
+import { users } from "../../db/user-schema.js";
 
 export const mediaStatus = applicationSchema.enum("media_status", [
   "pending",

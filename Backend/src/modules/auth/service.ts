@@ -9,11 +9,8 @@ import {
   type AuthEmailJobType,
 } from "../jobs/types.js";
 import { createPasswordHasher, type PasswordHasher } from "./password.js";
-import {
-  AuthRepository,
-  type EmailAccount,
-  type RotationResult,
-} from "./repository.js";
+import { AuthRepository } from "./repository.js";
+import type { EmailAccount, RotationResult } from "./repository-types.js";
 import { createAuthTokenService, type AuthTokenService } from "./token-service.js";
 import type {
   AccessIdentity,

@@ -8,17 +8,21 @@ LingoTrip 是一款原生 SwiftUI 英语学习 App。用户以世界旅行为线
 
 ## 开始开发
 
-客户端需要 macOS、Xcode 26+ 和
-[XcodeGen](https://github.com/yonaskolb/XcodeGen)：
+客户端需要 macOS、Xcode 26+、[XcodeGen](https://github.com/yonaskolb/XcodeGen) 和
+[Git LFS](https://git-lfs.com/)；SQLite 词典、模型权重和 3D/视频资源通过 LFS 获取：
 
 ```bash
 Scripts/bootstrap-worktree.sh
+Scripts/code-map.sh
+Scripts/check-architecture.sh
 Scripts/build.sh
 Scripts/test.sh
 Scripts/run.sh
 ```
 
-脚本会从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。不要提交生成的工程或 `build/`，
+`code-map.sh` 可按 Swift Target 或 `backend:<module>` 输出紧凑代码地图；架构检查会验证文件
+规模、命名和后端依赖边界。构建脚本从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。
+不要提交生成的工程或 `build/`，
 也不要在 `Packages/LingoKit` 中直接运行 `swift build`。多工作树可以并行写代码，但所有
 Xcode 构建、测试、归档和模拟器安装会通过仓库级锁自动排队，避免争抢 CPU、内存、磁盘
 和同一台模拟器。每个工作树使用自己的 DerivedData，Swift Package 下载缓存则安全共享。
@@ -46,8 +50,8 @@ Release 固定使用现有 App Store Connect 记录的 `com.tiantian.lingotrip` 
 App/                    iOS App 入口、组合根和随包资源
 Packages/LingoKit/      客户端模块、领域实现和测试
 Backend/                TypeScript API、Worker、迁移和部署文件
-Scripts/                客户端构建与测试入口
-tools/                  离线数据处理工具
+Scripts/                本地开发、构建、测试与架构检查入口
+Tools/                  美术流水线与离线数据处理工具
 docs/                   架构、产品与按需运维说明
 project.yml             Xcode 工程配置的唯一事实源
 ```
@@ -57,12 +61,12 @@ project.yml             Xcode 工程配置的唯一事实源
 
 ```text
 App 组合根
-├── Feature：Auth / Home / Chat / Onboarding / Story / Roster / Map /
-│            Favorites / Settings
+├── Feature：Auth / Home / Chat / Onboarding / Placement / Story / Roster /
+│            Map / Favorites / Settings
 ├── 领域与集成：DomainKit / StoryEngine / SyncKit
 ├── 服务：BackendKit / BillingKit / LLMKit / MediaKit / SpeechKit /
-│        DictKit / PersistenceKit
-└── 基础：CoreKit / DesignSystem
+│        RealtimeVoiceKit / DictKit / PersistenceKit
+└── 基础：CoreKit / MascotKit / DesignSystem
 ```
 
 Feature 之间不直接依赖。跨页面导航和服务选择在 `App/RootView.swift` 与
@@ -80,6 +84,7 @@ Feature 之间不直接依赖。跨页面导航和服务选择在 `App/RootView.
 
 - 一个逻辑工作一个提交，不把无关修改混入同一提交。
 - 新增 Swift 文件或模块依赖后运行 `Scripts/test.sh`。
+- 生产源码单文件超过 800 行时优先按职责拆分，并运行 `Scripts/check-architecture.sh`。
 - 正式发布前 SwiftData 可直接更新基线并重置测试数据；有真实用户后再引入版本迁移。
 - 跨 actor 传递 `Sendable` DTO，不把 SwiftData 实体带出仓库 actor。
 - 文档只记录稳定边界、设计意图和操作入口；完成的计划与阶段快照不长期保留。

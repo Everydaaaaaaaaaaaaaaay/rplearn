@@ -9,7 +9,7 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
-import { users } from "../auth/schema.js";
+import { users } from "../../db/user-schema.js";
 
 export const syncHeads = applicationSchema.table("sync_heads", {
   lastSequence: bigint("last_sequence", { mode: "bigint" }).notNull(),

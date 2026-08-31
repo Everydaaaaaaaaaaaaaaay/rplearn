@@ -1,85 +1,22 @@
 import type { DatabaseResource } from "../../db/client.js";
 import { newEntityId } from "../../shared/id.js";
-import { insertPreparedJob } from "../jobs/repository.js";
+import { insertPreparedJob } from "../jobs/transactional-enqueue.js";
 import type { PreparedJob } from "../jobs/types.js";
 import type {
   AuthActionType,
-  DeviceDescriptor,
-  RequestMetadata,
+  SealedProviderCredential,
   SessionPlatform,
   SessionSummary,
 } from "./types.js";
-
-export type EmailAccount = Readonly<{
-  email: string;
-  emailVerifiedAt: Date | null;
-  passwordHash: string;
-  status: "active" | "locked" | "pending_deletion";
-  tokenVersion: number;
-  userId: string;
-}>;
-
-export type FederatedAccount = Readonly<{
-  identityId: string;
-  status: EmailAccount["status"];
-  tokenVersion: number;
-  userId: string;
-}>;
-
-export type SealedProviderCredential = Readonly<{
-  ciphertext: Buffer;
-  keyVersion: string;
-  nonce: Buffer;
-  tag: Buffer;
-}>;
-
-type ActionTokenParameters = Readonly<{
-  expiresAt: Date;
-  id: string;
-  tokenHash: string;
-}>;
-
-type CreateEmailAccountParameters = Readonly<{
-  actionToken: ActionTokenParameters;
-  email: string;
-  identityId: string;
-  notificationJob: PreparedJob;
-  passwordHash: string;
-  userId: string;
-}>;
-
-type CreateSessionParameters = Readonly<{
-  device: DeviceDescriptor;
-  familyId: string;
-  metadata: RequestMetadata;
-  refreshToken: Readonly<{
-    expiresAt: Date;
-    hash: string;
-    id: string;
-  }>;
-  sessionId: string;
-  userId: string;
-}>;
-
-type RotateParameters = Readonly<{
-  currentTokenHash: string;
-  nextToken: Readonly<{
-    expiresAt: Date;
-    hash: string;
-    id: string;
-  }>;
-  now: Date;
-}>;
-
-export type RotationResult =
-  | Readonly<{ status: "invalid" }>
-  | Readonly<{ status: "reuse_detected" }>
-  | Readonly<{
-      sessionId: string;
-      status: "rotated";
-      tokenVersion: number;
-      userId: string;
-    }>;
+import type {
+  ActionTokenParameters,
+  CreateEmailAccountParameters,
+  CreateSessionParameters,
+  EmailAccount,
+  FederatedAccount,
+  RotateParameters,
+  RotationResult,
+} from "./repository-types.js";
 
 function hasPostgresCode(error: unknown, code: string): boolean {
   return (

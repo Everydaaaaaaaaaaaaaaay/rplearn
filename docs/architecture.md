@@ -23,20 +23,22 @@ Fastify API ── PostgreSQL
 
 ## 客户端
 
-App 壳只有三个核心文件：
+App 壳的主入口与支持文件是：
 
 - `LingoTripApp.swift`：SwiftUI 生命周期。
 - `AppEnvironment.swift`：创建并持有服务、Store 与同步协调器。
-- `RootView.swift`：认证状态、四个 Tab、导航和依赖注入。
+- `RootView.swift`：认证状态、四个 Tab 和依赖注入。
+- `AppNavigationState.swift`：跨 Feature 导航状态。
+- `LegacyTabBarCapsuleInstaller.swift`：旧系统 Tab Bar 的隔离适配。
 
-其余代码位于单一本地 Swift Package 中。21 个 Target 按职责分为：
+其余代码位于单一本地 Swift Package 中。24 个 Target 按职责分为：
 
 | 层 | 模块 |
 |---|---|
-| Feature | Auth、Home、Chat、Onboarding、Story、Roster、Map、Favorites、Settings |
+| Feature | Auth、Home、Chat、Onboarding、Placement、Story、Roster、Map、Favorites、Settings |
 | 领域与集成 | DomainKit、StoryEngine、SyncKit |
-| 服务 | BackendKit、BillingKit、LLMKit、MediaKit、SpeechKit、DictKit、PersistenceKit |
-| 基础 | CoreKit、DesignSystem |
+| 服务 | BackendKit、BillingKit、LLMKit、MediaKit、SpeechKit、RealtimeVoiceKit、DictKit、PersistenceKit |
+| 基础 | CoreKit、MascotKit、DesignSystem |
 
 Feature 只依赖下层模块，Feature 间跳转由组合根注入。模块直接依赖以
 `Packages/LingoKit/Package.swift` 为准，不从目录嵌套推断。
@@ -104,6 +106,10 @@ SwiftData 实体留在 PersistenceKit 的 actor 内；UI 和领域服务使用 `
 - `media`：私有语音资产生命周期。
 - `jobs`：持久任务、租约、重试和死信。
 - `observability / abuse`：日志、指标、审计和限流。
+
+模块通过 `types.ts` 和 service 契约协作，不导入其他模块的 `repository.ts` 或 `schema.ts`。
+共享用户表位于 `src/db/user-schema.ts`，事务内的同步变更写入位于
+`src/infrastructure/sync-change-writer.ts`。本地 `pnpm architecture` 检查模块循环和实现泄漏。
 
 PostgreSQL 是唯一业务事实源；Redis 中的数据必须可丢失或重建。第三方 SDK 不应泄漏到
 领域接口。

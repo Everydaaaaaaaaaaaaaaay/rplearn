@@ -1,6 +1,6 @@
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
-import { insertPreparedJob } from "../jobs/repository.js";
+import { insertPreparedJob } from "../jobs/transactional-enqueue.js";
 import type { PreparedJob } from "../jobs/types.js";
 import type { AccountExport, AppleDeletionCredential, DeletionWork } from "./types.js";
 

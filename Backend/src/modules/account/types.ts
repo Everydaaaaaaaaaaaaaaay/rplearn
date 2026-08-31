@@ -1,4 +1,4 @@
-import type { SealedProviderCredential } from "../auth/repository.js";
+import type { SealedProviderCredential } from "../auth/types.js";
 
 export type AccountDeletionMode = "grace_period" | "immediate";
 

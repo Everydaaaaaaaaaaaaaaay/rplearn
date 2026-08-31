@@ -11,6 +11,11 @@ export type AuthEmailJobPayload = Readonly<{
   token: string;
 }>;
 
+export type JobEmailNotifier = Readonly<{
+  sendEmailVerification: (email: string, token: string) => Promise<void>;
+  sendPasswordReset: (email: string, token: string) => Promise<void>;
+}>;
+
 export type AccountPurgeJobPayload = Readonly<{
   requestId: string;
   userId: string;

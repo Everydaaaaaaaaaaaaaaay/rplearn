@@ -32,8 +32,9 @@ src/server.ts          API 组合入口
 src/worker.ts          后台任务入口
 src/app/               Fastify、健康检查、错误与日志
 src/config/            环境配置
-src/db/                Drizzle Schema 和数据库连接
+src/db/                共享 Schema、数据库连接与迁移入口
 src/modules/           业务模块
+dependency-cruiser.cjs 本地模块边界规则
 migrations/            当前开发期数据库基线
 test/                  单元、集成与端到端测试
 ops/native-server/     当前 systemd 部署脚本
@@ -41,11 +42,14 @@ ops/native-server/     当前 systemd 部署脚本
 
 HTTP Handler 只调用模块服务；数据库写入、幂等回执和同步事件应在同一事务中完成。
 客户端提交领域操作，不提交金币、权益或解锁状态等最终值。
+模块通过 `types.ts`/service 暴露能力，不读取其他模块的 `repository.ts` 或 `schema.ts`；
+`pnpm architecture` 会检查跨模块实现泄漏、基础设施反向依赖和循环依赖。
 
 ## 常用命令
 
 ```bash
 pnpm check
+pnpm architecture
 pnpm build
 pnpm test:integration  # 需要本机 PostgreSQL、Redis；媒体用例还需要 MinIO
 pnpm test:e2e

@@ -2,15 +2,12 @@ import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import { newEntityId } from "../../shared/id.js";
-import { appendSyncChange } from "../sync/change-writer.js";
+import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
+import { mapProfile, mapTicket, type ProfileRow } from "./repository-mappers.js";
+import { loadDomainSnapshot } from "./snapshot-repository.js";
 import type {
   CommandIdentity,
-  DifficultyLevel,
-  FirstArrival,
-  LearningGoal,
   ProfilePatch,
-  ProficiencySource,
-  StudyStage,
   Ticket,
   TicketSource,
   TicketType,
@@ -19,27 +16,6 @@ import type {
   UserSnapshot,
 } from "./types.js";
 
-type ProfileRow = Readonly<{
-  coins: number;
-  current_region_id: string;
-  difficulty: DifficultyLevel;
-  display_name: string;
-  experience_points: number;
-  friend_slot_limit: number;
-  game_level: number;
-  has_completed_onboarding: boolean;
-  has_completed_profile_setup: boolean;
-  learning_goal: LearningGoal;
-  placement_completed_at: string | null;
-  placement_score: number | null;
-  proficiency_source: ProficiencySource;
-  quiz_globally_enabled: boolean;
-  starter_region_id: string | null;
-  study_stage: StudyStage | null;
-  updated_at: string;
-  version: number;
-}>;
-
 const MAINLINE_REGION_IDS = new Set([
   "london",
   "capetown",
@@ -47,66 +23,6 @@ const MAINLINE_REGION_IDS = new Set([
   "melbourne",
   "singapore",
 ]);
-
-function mapProfile(
-  row: ProfileRow,
-  unlockedRegionIds: readonly string[],
-): UserProfile {
-  return {
-    coins: row.coins,
-    currentRegionId: row.current_region_id,
-    difficulty: row.difficulty,
-    displayName: row.display_name,
-    experiencePoints: row.experience_points,
-    friendSlotLimit: row.friend_slot_limit,
-    gameLevel: row.game_level,
-    hasCompletedOnboarding: row.has_completed_onboarding,
-    hasCompletedProfileSetup: row.has_completed_profile_setup,
-    learningGoal: row.learning_goal,
-    placementCompletedAt:
-      row.placement_completed_at === null
-        ? null
-        : new Date(row.placement_completed_at).toISOString(),
-    placementScore: row.placement_score,
-    proficiencySource: row.proficiency_source,
-    quizGloballyEnabled: row.quiz_globally_enabled,
-    starterRegionId: row.starter_region_id,
-    studyStage: row.study_stage,
-    unlockedRegionIds,
-    updatedAt: new Date(row.updated_at).toISOString(),
-    version: row.version,
-  };
-}
-
-function mapTicket(row: {
-  country_code: string | null;
-  created_at: string;
-  id: string;
-  source: TicketSource;
-  type: TicketType;
-}): Ticket {
-  return {
-    countryCode: row.country_code,
-    createdAt: new Date(row.created_at).toISOString(),
-    id: row.id,
-    source: row.source,
-    type: row.type,
-  };
-}
-
-function mapFirstArrival(row: {
-  arrived_at: string;
-  from_region_id: string;
-  id: string;
-  to_region_id: string;
-}): FirstArrival {
-  return {
-    arrivedAt: new Date(row.arrived_at).toISOString(),
-    fromRegionId: row.from_region_id,
-    id: row.id,
-    toRegionId: row.to_region_id,
-  };
-}
 
 export class DomainRepository {
   constructor(private readonly resource: DatabaseResource) {}
@@ -121,99 +37,7 @@ export class DomainRepository {
 
   async snapshot(userId: string): Promise<UserSnapshot> {
     await this.ensureProfile(userId);
-    const [profile] = await this.resource.sql<ProfileRow[]>`
-      select
-        coins,
-        current_region_id,
-        difficulty,
-        display_name,
-        experience_points,
-        friend_slot_limit,
-        game_level,
-        has_completed_onboarding,
-        has_completed_profile_setup,
-        learning_goal,
-        placement_completed_at,
-        placement_score,
-        proficiency_source,
-        quiz_globally_enabled,
-        starter_region_id,
-        study_stage,
-        updated_at,
-        version
-      from app.user_profiles
-      where user_id = ${userId}
-    `;
-    if (profile === undefined) {
-      throw new AppError({
-        code: "PROFILE_NOT_FOUND",
-        expose: false,
-        message: "The user profile does not exist.",
-        statusCode: 500,
-      });
-    }
-
-    const unlockRows = await this.resource.sql<{ region_id: string }[]>`
-      select region_id
-      from app.region_unlocks
-      where user_id = ${userId}
-      order by unlocked_at, region_id
-    `;
-    const ticketRows = await this.resource.sql<
-      {
-        country_code: string | null;
-        created_at: string;
-        id: string;
-        source: TicketSource;
-        type: TicketType;
-      }[]
-    >`
-      select
-        id::text,
-        type,
-        country_code,
-        source,
-        created_at
-      from app.inventory_items
-      where user_id = ${userId}
-        and status = 'available'
-      order by created_at, id
-    `;
-    const firstArrivalRows = await this.resource.sql<
-      {
-        arrived_at: string;
-        from_region_id: string;
-        id: string;
-        to_region_id: string;
-      }[]
-    >`
-      select
-        id,
-        from_region_id,
-        to_region_id,
-        arrived_at
-      from (
-        select distinct on (to_region_id)
-          id::text,
-          from_region_id,
-          to_region_id,
-          traveled_at as arrived_at
-        from app.travel_records
-        where user_id = ${userId}
-          and ticket_item_id is not null
-        order by to_region_id, traveled_at, id
-      ) as first_arrivals
-      order by arrived_at, id
-    `;
-
-    return {
-      firstArrivals: firstArrivalRows.map(mapFirstArrival),
-      profile: mapProfile(
-        profile,
-        unlockRows.map((row) => row.region_id),
-      ),
-      tickets: ticketRows.map(mapTicket),
-    };
+    return loadDomainSnapshot(this.resource, userId);
   }
 
   async completeOnboarding(

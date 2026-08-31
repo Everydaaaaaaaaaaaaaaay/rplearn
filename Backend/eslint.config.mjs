@@ -6,6 +6,7 @@ export default tseslint.config(
   {
     ignores: [
       "coverage/**",
+      "dependency-cruiser.cjs",
       "dist/**",
       "node_modules/**",
       "eslint.config.mjs",

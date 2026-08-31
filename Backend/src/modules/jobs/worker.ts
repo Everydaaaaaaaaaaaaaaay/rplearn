@@ -1,7 +1,6 @@
 import { SpanStatusCode, trace } from "@opentelemetry/api";
 import { z } from "zod";
 import type { RuntimeConfig } from "../../config/env.js";
-import type { AuthNotifier } from "../auth/notifier.js";
 import type { JobPayloadCipher } from "./crypto.js";
 import type { JobFailureResult, JobRepository } from "./repository.js";
 import {
@@ -10,6 +9,7 @@ import {
   AUTH_PASSWORD_RESET_JOB,
   MEDIA_DELETE_JOB,
   type ClaimedJob,
+  type JobEmailNotifier,
 } from "./types.js";
 
 const authEmailPayloadSchema = z.object({
@@ -46,7 +46,7 @@ type JobWorkerDependencies = Readonly<{
   cipher: JobPayloadCipher;
   config: RuntimeConfig;
   logger: WorkerLogger;
-  notifier: AuthNotifier;
+  notifier: JobEmailNotifier;
   processAccountPurge?: (
     payload: z.infer<typeof accountPurgePayloadSchema>,
   ) => Promise<void>;

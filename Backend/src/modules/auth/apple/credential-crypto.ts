@@ -1,6 +1,6 @@
 import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
 import type { RuntimeConfig } from "../../../config/env.js";
-import type { SealedProviderCredential } from "../repository.js";
+import type { SealedProviderCredential } from "../types.js";
 
 export type CredentialSealer = Readonly<{
   open: (credential: SealedProviderCredential) => string;
