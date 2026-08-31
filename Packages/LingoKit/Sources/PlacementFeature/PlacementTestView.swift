@@ -300,7 +300,7 @@ public struct PlacementTestView: View {
     @ViewBuilder
     private var questionView: some View {
         if let question = currentQuestion, let engine {
-            VStack(spacing: 0) {
+            VStack(spacing: DSSpacing.sm) {
                 VStack(alignment: .leading, spacing: 6) {
                     ProgressView(
                         value: engine.measurementProgress

@@ -63,6 +63,9 @@ public struct MessageBubble<Content: View>: View {
                 .padding(.vertical, 10)
                 .background(background)
                 .clipShape(bubbleShape)
+                .overlay {
+                    bubbleShape.stroke(borderColor, lineWidth: 0.9)
+                }
             if side == .incoming {
                 Spacer(minLength: 48)
             }
@@ -140,6 +143,15 @@ public struct MessageBubble<Content: View>: View {
             Color.dsBubbleIncoming
         case .outgoing:
             Color.dsSky
+        }
+    }
+
+    private var borderColor: Color {
+        switch side {
+        case .incoming:
+            Color.dsBrandInk.opacity(0.15)
+        case .outgoing:
+            Color.white.opacity(0.22)
         }
     }
 }

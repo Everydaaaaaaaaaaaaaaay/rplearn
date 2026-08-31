@@ -41,14 +41,11 @@ struct RootView: View {
 
     let environment: AppEnvironment
 
-    @AppStorage("suppressVoiceUpgradePrompt") private var suppressVoicePrompt = false
-    @AppStorage("hasPresentedVoiceUpgradePrompt") private var hasPresentedVoicePrompt = false
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
     @State private var homePath = NavigationPath()
     @State private var mePath: [MeDestination] = []
     @State private var showSignIn = false
-    @State private var showVoiceUpgrade = false
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
@@ -287,22 +284,6 @@ struct RootView: View {
                 .fullScreenCover(isPresented: $showOnboardingPlacement) {
                     placementTestView(isOnboarding: true)
                 }
-            }
-            .sheet(isPresented: $showVoiceUpgrade) {
-                VoiceUpgradeSheet(
-                    onPreview: {
-                        Task {
-                            await environment.speech.speak(
-                                "Hello! This is how I sound. Nice to meet you.",
-                                language: "en-US"
-                            )
-                        }
-                    },
-                    onNeverRemind: { suppressVoicePrompt = true }
-                )
-            }
-            .onReceive(NotificationCenter.default.publisher(for: .chatDidExitAfterSpeechPlayback)) { _ in
-                maybePromptVoiceUpgrade()
             }
     }
 
@@ -666,23 +647,6 @@ struct RootView: View {
 
     private var economyService: EconomyService {
         usesCloudState ? environment.economyService : environment.localEconomyService
-    }
-
-    private func maybePromptVoiceUpgrade() {
-        Task {
-            // Pocket 已经可用时不再提示用户额外下载 Apple 增强语音。
-            let synthesisStatus = await environment.speech.synthesisEngineStatus()
-            guard !synthesisStatus.isBundledEngineActive,
-                  VoiceUpgradePromptPolicy.shouldPresent(
-                    isSuppressed: suppressVoicePrompt,
-                    hasPresented: hasPresentedVoicePrompt,
-                    isOnboarding: environment.needsOnboarding == true,
-                    quality: AppleTTSService.bestAvailableEnglishQuality()
-                  )
-            else { return }
-            hasPresentedVoicePrompt = true
-            showVoiceUpgrade = true
-        }
     }
 
     private func reloadUnreadCount() async {

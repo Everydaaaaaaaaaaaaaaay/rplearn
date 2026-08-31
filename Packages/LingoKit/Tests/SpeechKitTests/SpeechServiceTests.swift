@@ -73,59 +73,6 @@ struct SpeechServiceTests {
         #expect(VoiceReport.Quality.standard > .unavailable)
     }
 
-    @Test("退出首次播放所在的聊天后，仍只对标准音提示一次")
-    func upgradePromptPolicy() {
-        #expect(
-            VoiceUpgradePromptPolicy.shouldPresent(
-                isSuppressed: false,
-                hasPresented: false,
-                isOnboarding: false,
-                quality: .standard
-            )
-        )
-        #expect(
-            !VoiceUpgradePromptPolicy.shouldPresent(
-                isSuppressed: false,
-                hasPresented: true,
-                isOnboarding: false,
-                quality: .standard
-            )
-        )
-        #expect(
-            !VoiceUpgradePromptPolicy.shouldPresent(
-                isSuppressed: true,
-                hasPresented: false,
-                isOnboarding: false,
-                quality: .standard
-            )
-        )
-        #expect(
-            !VoiceUpgradePromptPolicy.shouldPresent(
-                isSuppressed: false,
-                hasPresented: false,
-                isOnboarding: false,
-                quality: .enhanced
-            )
-        )
-    }
-
-    @Test("已关闭提醒时不读取系统语音库")
-    func suppressedPromptSkipsQualityLookup() {
-        var didReadQuality = false
-
-        let shouldPresent = VoiceUpgradePromptPolicy.shouldPresent(
-            isSuppressed: true,
-            hasPresented: false,
-            isOnboarding: false,
-            quality: {
-                didReadQuality = true
-                return .standard
-            }()
-        )
-        #expect(!shouldPresent)
-        #expect(!didReadQuality)
-    }
-
     @Test("Pocket 音色按角色稳定选择并区分英美男女声")
     func pocketVoiceSelection() {
         let britishMale = SpeechVoiceHint(

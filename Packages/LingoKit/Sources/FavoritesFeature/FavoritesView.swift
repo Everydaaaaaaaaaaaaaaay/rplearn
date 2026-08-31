@@ -128,6 +128,9 @@ public struct FavoritesView: View {
                 }
             }
         }
+        // 搜索键盘只覆盖笔记本底部，不参与页面的透视布局计算；否则
+        // GeometryReader 会随键盘安全区缩短，纸面内容会整体向上漂移。
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)

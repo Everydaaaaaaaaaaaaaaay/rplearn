@@ -9,13 +9,6 @@ import SpeechKit
 import SwiftUI
 import Translation
 
-public extension Notification.Name {
-    /// 用户在本次聊天中实际播放过 TTS，并已退出聊天页。
-    static let chatDidExitAfterSpeechPlayback = Notification.Name(
-        "LingoTripChatDidExitAfterSpeechPlayback"
-    )
-}
-
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
     @State private var viewModel: ChatViewModel
@@ -34,7 +27,6 @@ public struct ChatView: View {
     @State private var shakingMessageID: UUID?
     @State private var shakePhase = false
     @State private var isMascotPromptDismissed = false
-    @State private var didBeginSpeechPlayback = false
     @State private var showsRealtimeConversation = false
     @State private var isNearConversationBottom = true
     @State private var unseenIncomingMessageCount = 0
@@ -154,7 +146,7 @@ public struct ChatView: View {
             RealtimeConversationView(
                 chat: viewModel,
                 deps: deps,
-                onSpeechPlayback: { didBeginSpeechPlayback = true }
+                onSpeechPlayback: {}
             )
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
@@ -180,14 +172,8 @@ public struct ChatView: View {
         .onChange(of: viewModel.draft) {
             viewModel.noteDraftActivity()
         }
-        .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in
-            didBeginSpeechPlayback = true
-        }
         .onDisappear {
             markVisibleConversationRead()
-            guard didBeginSpeechPlayback else { return }
-            didBeginSpeechPlayback = false
-            NotificationCenter.default.post(name: .chatDidExitAfterSpeechPlayback, object: nil)
         }
         .dsTabBarHidden()
     }

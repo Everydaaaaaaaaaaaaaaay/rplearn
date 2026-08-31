@@ -325,21 +325,6 @@ public actor AppleTTSService: SpeechService {
     }
 }
 
-/// 首次播放时的高级语音提示规则，独立为纯逻辑以避免页面生命周期误触发。
-public enum VoiceUpgradePromptPolicy {
-    public static func shouldPresent(
-        isSuppressed: Bool,
-        hasPresented: Bool,
-        isOnboarding: Bool,
-        quality: @autoclosure () -> VoiceReport.Quality
-    ) -> Bool {
-        !isSuppressed
-            && !hasPresented
-            && !isOnboarding
-            && !quality().isNatural
-    }
-}
-
 /// 语音音质报告：单个口音当前可用的最佳音源与自然度档位。
 public struct VoiceReport: Sendable, Equatable, Identifiable {
     public enum Quality: Int, Sendable, Comparable {
