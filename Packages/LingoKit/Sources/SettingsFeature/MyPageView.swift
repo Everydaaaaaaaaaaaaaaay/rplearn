@@ -126,7 +126,7 @@ public struct MyPageView: View {
             .clipped()
         }
         .ignoresSafeArea(edges: [.top, .bottom])
-        .toolbarBackground(.hidden, for: .tabBar)
+        .dsSceneTabBarBackground()
     }
 
     /// 极短屏幕缩小参考画布后只会留下很窄的侧边余量；使用同源场景作柔化衬底，

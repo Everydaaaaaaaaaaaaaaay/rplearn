@@ -10,6 +10,22 @@ public enum DSSceneGlassLegibility: Sendable, Equatable {
     case shielded
 }
 
+/// 将系统版本判断收敛到一处。调试构建可强制走旧系统分支，便于在只有
+/// 新版 Simulator Runtime 的开发机上持续回归 iOS 18 材质与布局。
+public enum DSPlatformVisualPolicy {
+    public static var usesLiquidGlass: Bool {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_FORCE_LEGACY_CHROME"] == "1" {
+            return false
+        }
+        #endif
+        if #available(iOS 26.0, *) {
+            return true
+        }
+        return false
+    }
+}
+
 private struct DSAdaptiveMaterialModifier<Background: Shape>: ViewModifier {
     let material: Material
     let shape: Background
@@ -55,8 +71,19 @@ public extension View {
     /// iOS 26 将搜索保持为紧凑工具栏按钮；旧系统沿用系统默认搜索表现。
     @ViewBuilder
     func dsCompactSearchToolbar() -> some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
             searchToolbarBehavior(.minimize)
+        } else {
+            self
+        }
+    }
+
+    /// 摄影场景在 iOS 26 交给 Liquid Glass；旧系统由根视图安装明确的
+    /// 胶囊材质，不能再让某个子页面把整个 UITabBar 背景清空。
+    @ViewBuilder
+    func dsSceneTabBarBackground() -> some View {
+        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
+            toolbarBackground(.hidden, for: .tabBar)
         } else {
             self
         }
@@ -82,7 +109,7 @@ private struct DSSceneGlassModifier: ViewModifier {
                 content.background(Color.dsSurface.opacity(0.97), in: shape),
                 shape: shape
             )
-        } else if #available(iOS 26.0, *) {
+        } else if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
             let glass: Glass = legibility == .ambient ? .regular : .clear
             decorated(
                 legibilityBackground(content, in: shape)

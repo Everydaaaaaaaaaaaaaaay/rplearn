@@ -43,6 +43,67 @@ public struct ConversationListView: View {
     }
 
     public var body: some View {
+        searchAdaptedContent
+            .navigationTitle("信息")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(item: $selectedConversationID) { characterID in
+                conversationDestination(characterID: characterID)
+            }
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
+            // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
+            .task(id: reloadToken) { await reload() }
+            .refreshable { await reload() }
+            .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
+                stateRevision += 1
+                updateUnreadCount()
+            }
+            .onReceive(
+                NotificationCenter.default.publisher(for: .rosterFavoriteDidChange)
+            ) { notification in
+                guard let characterID = notification.object as? UUID,
+                      let isFavorite = notification.userInfo?["isFavorite"] as? Bool else { return }
+                applyFavoriteChange(characterID: characterID, isFavorite: isFavorite)
+            }
+            .onChange(of: stateRevision) { updateUnreadCount() }
+            .overlay {
+                if isLoading {
+                    ProgressView()
+                        .tint(Color.dsSceneTextPrimary)
+                        .padding(DSSpacing.lg)
+                        .dsSceneGlass(
+                            radius: DSRadius.card,
+                            tint: Color.white.opacity(0.06),
+                            legibility: .enhanced
+                        )
+                }
+            }
+    }
+
+    @ViewBuilder
+    private var searchAdaptedContent: some View {
+        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
+            sceneContent
+                .searchable(
+                    text: $searchText,
+                    isPresented: $isSearchPresented,
+                    placement: .toolbar,
+                    prompt: "搜索信息"
+                )
+                .dsCompactSearchToolbar()
+        } else {
+            sceneContent
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    DSLegacySceneSearchField(text: $searchText, prompt: "搜索信息")
+                        .padding(.horizontal, DSSpacing.md)
+                        .padding(.top, 4)
+                        .padding(.bottom, DSSpacing.sm)
+                }
+        }
+    }
+
+    private var sceneContent: some View {
         ZStack {
             DSSceneBackdrop(
                 imageName: DSCitySceneAssets.imageName(
@@ -135,48 +196,6 @@ public struct ConversationListView: View {
                 .listSectionSpacing(DSSpacing.xs)
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
-            }
-        }
-        .navigationTitle("信息")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(item: $selectedConversationID) { characterID in
-            conversationDestination(characterID: characterID)
-        }
-        .searchable(
-            text: $searchText,
-            isPresented: $isSearchPresented,
-            placement: .toolbar,
-            prompt: "搜索信息"
-        )
-        .dsCompactSearchToolbar()
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
-        // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
-        .task(id: reloadToken) { await reload() }
-        .refreshable { await reload() }
-        .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
-            stateRevision += 1
-            updateUnreadCount()
-        }
-        .onReceive(
-            NotificationCenter.default.publisher(for: .rosterFavoriteDidChange)
-        ) { notification in
-            guard let characterID = notification.object as? UUID,
-                  let isFavorite = notification.userInfo?["isFavorite"] as? Bool else { return }
-            applyFavoriteChange(characterID: characterID, isFavorite: isFavorite)
-        }
-        .onChange(of: stateRevision) { updateUnreadCount() }
-        .overlay {
-            if isLoading {
-                ProgressView()
-                    .tint(Color.dsSceneTextPrimary)
-                    .padding(DSSpacing.lg)
-                    .dsSceneGlass(
-                        radius: DSRadius.card,
-                        tint: Color.white.opacity(0.06),
-                        legibility: .enhanced
-                    )
             }
         }
     }

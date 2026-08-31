@@ -77,6 +77,49 @@ public struct RosterView: View {
     }
 
     public var body: some View {
+        searchAdaptedContent
+            .navigationTitle("联系人")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .task(id: reloadToken) { await reload() }
+            .overlay {
+                if isLoading {
+                    ProgressView()
+                        .tint(scenePrimaryText)
+                        .padding(DSSpacing.lg)
+                        .dsSceneGlass(
+                            radius: DSRadius.card,
+                            tint: sceneGlassTint,
+                            legibility: .shielded
+                        )
+                }
+            }
+    }
+
+    @ViewBuilder
+    private var searchAdaptedContent: some View {
+        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
+            sceneContent
+                .searchable(
+                    text: $searchText,
+                    isPresented: $isSearchPresented,
+                    placement: .toolbar,
+                    prompt: "搜索联系人"
+                )
+                .dsCompactSearchToolbar()
+        } else {
+            sceneContent
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    DSLegacySceneSearchField(text: $searchText, prompt: "搜索联系人")
+                        .padding(.horizontal, DSSpacing.md)
+                        .padding(.top, 4)
+                        .padding(.bottom, DSSpacing.sm)
+                }
+        }
+    }
+
+    private var sceneContent: some View {
         ZStack {
             DSSceneBackdrop(imageName: sceneImageName, tone: .cool)
 
@@ -94,30 +137,6 @@ public struct RosterView: View {
                 .padding(.vertical, DSSpacing.sm)
             }
             .refreshable { await reload() }
-        }
-        .navigationTitle("联系人")
-        .navigationBarTitleDisplayMode(.inline)
-        .searchable(
-            text: $searchText,
-            isPresented: $isSearchPresented,
-            placement: .toolbar,
-            prompt: "搜索联系人"
-        )
-        .dsCompactSearchToolbar()
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .task(id: reloadToken) { await reload() }
-        .overlay {
-            if isLoading {
-                ProgressView()
-                    .tint(scenePrimaryText)
-                    .padding(DSSpacing.lg)
-                    .dsSceneGlass(
-                        radius: DSRadius.card,
-                        tint: sceneGlassTint,
-                        legibility: .shielded
-                    )
-            }
         }
     }
 
