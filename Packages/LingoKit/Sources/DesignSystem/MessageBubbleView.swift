@@ -18,6 +18,7 @@ public struct MessageBubble<Content: View>: View {
     private let side: Side
     private let groupPosition: MessageBubbleGroupPosition
     private let leadingAccessory: AnyView?
+    private let contextMenuContent: AnyView?
     private let content: Content
 
     public init(
@@ -28,6 +29,21 @@ public struct MessageBubble<Content: View>: View {
         self.side = side
         self.groupPosition = groupPosition
         self.leadingAccessory = nil
+        self.contextMenuContent = nil
+        self.content = content()
+    }
+
+    /// 将上下文菜单直接锚定到气泡表面，而不是包含头像和对齐留白的整行。
+    public init<Menu: View>(
+        side: Side,
+        groupPosition: MessageBubbleGroupPosition = .single,
+        @ViewBuilder contextMenu: () -> Menu,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.side = side
+        self.groupPosition = groupPosition
+        self.leadingAccessory = nil
+        self.contextMenuContent = AnyView(contextMenu())
         self.content = content()
     }
 
@@ -43,6 +59,22 @@ public struct MessageBubble<Content: View>: View {
         self.side = side
         self.groupPosition = groupPosition
         self.leadingAccessory = AnyView(leadingAccessory())
+        self.contextMenuContent = nil
+        self.content = content()
+    }
+
+    /// 带头像或纠错入口时，菜单仍只作用于真正的消息气泡。
+    public init<Accessory: View, Menu: View>(
+        side: Side,
+        groupPosition: MessageBubbleGroupPosition = .single,
+        @ViewBuilder leadingAccessory: () -> Accessory,
+        @ViewBuilder contextMenu: () -> Menu,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.side = side
+        self.groupPosition = groupPosition
+        self.leadingAccessory = AnyView(leadingAccessory())
+        self.contextMenuContent = AnyView(contextMenu())
         self.content = content()
     }
 
@@ -58,23 +90,39 @@ public struct MessageBubble<Content: View>: View {
                     leadingAccessory
                 }
             }
-            content
-                .padding(.horizontal, 14)
-                .padding(.vertical, 10)
-                .background(background)
-                .clipShape(bubbleShape)
-                .overlay {
-                    // iOS 26 原生渲染下气泡边缘已经清楚，维持已验收效果；
-                    // iOS 18 只为浅色收到气泡补一条克制的可读性边界。
-                    if DSPlatformVisualPolicy.requiresIOS18RenderingCompensation,
-                       case .incoming = side {
-                        bubbleShape.stroke(Color.dsBrandInk.opacity(0.18), lineWidth: 0.9)
-                    }
-                }
+            interactiveBubble
             if side == .incoming {
                 Spacer(minLength: 48)
             }
         }
+    }
+
+    @ViewBuilder
+    private var interactiveBubble: some View {
+        if let contextMenuContent {
+            bubbleSurface
+                .contextMenu { contextMenuContent }
+        } else {
+            bubbleSurface
+        }
+    }
+
+    private var bubbleSurface: some View {
+        content
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(background)
+            .clipShape(bubbleShape)
+            .overlay {
+                // iOS 26 原生渲染下气泡边缘已经清楚，维持已验收效果；
+                // iOS 18 只为浅色收到气泡补一条克制的可读性边界。
+                if DSPlatformVisualPolicy.requiresIOS18RenderingCompensation,
+                   case .incoming = side {
+                    bubbleShape.stroke(Color.dsBrandInk.opacity(0.18), lineWidth: 0.9)
+                }
+            }
+            .contentShape(.interaction, bubbleShape)
+            .contentShape(.contextMenuPreview, bubbleShape)
     }
 
     private var bubbleShape: UnevenRoundedRectangle {

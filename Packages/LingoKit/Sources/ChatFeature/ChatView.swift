@@ -380,11 +380,13 @@ public struct ChatView: View {
                                 hasTypingContinuation: viewModel.isStreaming
                             )
                         )
+                    },
+                    contextMenu: {
+                        bubbleMenu(message)
                     }
                 ) {
                     tappableText(message, textColor: nil)
                 }
-                .contextMenu { bubbleMenu(message) }
                 .accessibilityAction(named: "语法解析") {
                     presentGrammarAnalysis(for: message)
                 }
@@ -525,13 +527,5 @@ public struct ChatView: View {
                 )
             }
         }
-        Divider()
-        Button {} label: {
-            Label(
-                ChatTimelinePolicy.exactTimeText(for: message.createdAt),
-                systemImage: "clock"
-            )
-        }
-        .disabled(true)
     }
 }

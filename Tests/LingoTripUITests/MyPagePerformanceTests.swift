@@ -88,7 +88,19 @@ final class MyPagePerformanceTests: XCTestCase {
 
         let capsule = app.descendants(matching: .any)["LegacyTabBarCapsule"]
         XCTAssertTrue(capsule.waitForExistence(timeout: 5))
-        XCTAssertTrue(app.tabBars.buttons["我的"].exists)
+        let tabBar = app.tabBars.firstMatch
+        let meTab = tabBar.buttons["我的"]
+        XCTAssertTrue(meTab.exists)
+
+        let capsuleFrame = capsule.frame
+        XCTAssertGreaterThanOrEqual(capsuleFrame.height, 44)
+        XCTAssertLessThanOrEqual(capsuleFrame.height, 64)
+        XCTAssertLessThan(capsuleFrame.maxY, app.frame.maxY - 12)
+        XCTAssertTrue(
+            capsuleFrame.contains(
+                CGPoint(x: meTab.frame.midX, y: meTab.frame.midY)
+            )
+        )
     }
 
     @MainActor

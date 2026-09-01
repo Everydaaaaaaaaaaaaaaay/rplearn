@@ -17,8 +17,13 @@ struct GrammarAnalysisRequest: Sendable, Identifiable {
     let sentence: String
     let learnerLevel: String
     let localItems: [LocalGrammarAnalysisItem]
+}
 
-    var requiresAIFallback: Bool { localItems.isEmpty }
+enum GrammarAnalysisSource: String, Sendable, CaseIterable, Identifiable {
+    case local = "本地解析"
+    case ai = "AI 解析"
+
+    var id: Self { self }
 }
 
 private struct GrammarFavoriteDescriptor: Sendable {
@@ -27,7 +32,7 @@ private struct GrammarFavoriteDescriptor: Sendable {
     let explanationZh: String
 }
 
-/// 整句语法解析：本地规则有命中时直接展示全部结果，零命中时才请求 AI。
+/// 整句语法解析：本地知识库与 AI 是两种独立来源，由用户明确选择。
 struct GrammarAnalysisSheet: View {
     let request: GrammarAnalysisRequest
     let service: GrammarAnalysisService
@@ -44,6 +49,7 @@ struct GrammarAnalysisSheet: View {
     @State private var aiAnalysis: AIGrammarAnalysis?
     @State private var isLoadingAI = false
     @State private var errorMessage: String?
+    @State private var selectedSource: GrammarAnalysisSource = .local
     @State private var wordSelection: TokenSelection?
     @State private var favoriteGrammarPointIDs: Set<String> = []
     @State private var updatingGrammarPointIDs: Set<String> = []
@@ -81,7 +87,8 @@ struct GrammarAnalysisSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     sentenceCard
-                    if request.localItems.isEmpty {
+                    sourcePicker
+                    if selectedSource == .ai {
                         aiContent
                     } else {
                         localContent
@@ -108,13 +115,23 @@ struct GrammarAnalysisSheet: View {
             aiFallback: aiFallback,
             exampleTranslationActions: exampleTranslationActions
         )
-        .task(id: request.id) {
-            guard request.requiresAIFallback, aiAnalysis == nil else { return }
-            await loadAIAnalysis()
+        .onChange(of: selectedSource) { _, source in
+            guard source == .ai, aiAnalysis == nil else { return }
+            Task { await loadAIAnalysis() }
         }
         .task(id: request.id) {
             await reloadGrammarFavorites()
         }
+    }
+
+    private var sourcePicker: some View {
+        Picker("解析来源", selection: $selectedSource) {
+            ForEach(GrammarAnalysisSource.allCases) { source in
+                Text(source.rawValue).tag(source)
+            }
+        }
+        .pickerStyle(.segmented)
+        .accessibilityIdentifier("GrammarAnalysisSourcePicker")
     }
 
     private var sentenceCard: some View {
@@ -140,15 +157,35 @@ struct GrammarAnalysisSheet: View {
 
     private var localContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sourceHeader(
-                title: "本地识别到 \(request.localItems.count) 个语法结构",
-                detail: "离线解析",
-                systemImage: "checkmark.seal.fill",
-                tint: .dsSuccess
-            )
-            ForEach(Array(request.localItems.enumerated()), id: \.element.id) { index, item in
-                localPointCard(item, number: index + 1)
+            if request.localItems.isEmpty {
+                sourceHeader(
+                    title: "本地知识库未命中",
+                    detail: "离线解析 · 未调用网络",
+                    systemImage: "books.vertical",
+                    tint: .secondary
+                )
+                Text("这句话暂未匹配到已收录的语法知识点。你可以直接选择 AI 解析，获得针对整句的补充说明。")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            } else {
+                sourceHeader(
+                    title: "本地识别到 \(request.localItems.count) 个语法结构",
+                    detail: "离线解析",
+                    systemImage: "checkmark.seal.fill",
+                    tint: .dsSuccess
+                )
+                ForEach(Array(request.localItems.enumerated()), id: \.element.id) { index, item in
+                    localPointCard(item, number: index + 1)
+                }
             }
+
+            Button {
+                selectAIAnalysis()
+            } label: {
+                Label("直接使用 AI 解析", systemImage: "sparkles")
+            }
+            .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+            .accessibilityIdentifier("DirectAIGrammarAnalysisButton")
         }
     }
 
@@ -157,8 +194,8 @@ struct GrammarAnalysisSheet: View {
         if let aiAnalysis {
             VStack(alignment: .leading, spacing: 12) {
                 sourceHeader(
-                    title: "AI 补充解析",
-                    detail: "本地库未命中 · 仅供学习参考",
+                    title: "AI 独立解析",
+                    detail: "需要联网 · 仅供学习参考",
                     systemImage: "sparkles",
                     tint: .dsSky
                 )
@@ -174,15 +211,15 @@ struct GrammarAnalysisSheet: View {
                 BrandMascotView(pose: .coach, size: 54, showsShadow: false)
                 ProgressView("咕咕正在分析句子…")
                     .font(.subheadline)
-                Text("本地规则未命中，正在调用 AI 补充解析")
+                Text("正在调用 AI 对整句进行独立解析")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 24)
-        } else {
+        } else if let errorMessage {
             VStack(alignment: .leading, spacing: 12) {
-                Label(errorMessage ?? "暂时无法完成解析", systemImage: "exclamationmark.triangle")
+                Label(errorMessage, systemImage: "exclamationmark.triangle")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Button("重新解析") {
@@ -191,7 +228,32 @@ struct GrammarAnalysisSheet: View {
                 .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            VStack(alignment: .leading, spacing: 12) {
+                sourceHeader(
+                    title: "AI 独立解析",
+                    detail: "需要联网 · 仅供学习参考",
+                    systemImage: "sparkles",
+                    tint: .dsSky
+                )
+                Text("AI 会直接分析这句话，不受本地知识库命中结果影响。")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                Button("开始 AI 解析") {
+                    Task { await loadAIAnalysis() }
+                }
+                .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    private func selectAIAnalysis() {
+        withAnimation(DSAnimation.snappy) {
+            selectedSource = .ai
+        }
+        guard aiAnalysis == nil else { return }
+        Task { await loadAIAnalysis() }
     }
 
     private func sourceHeader(

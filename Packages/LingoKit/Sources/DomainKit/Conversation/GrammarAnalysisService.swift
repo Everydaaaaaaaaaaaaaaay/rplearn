@@ -34,7 +34,7 @@ public struct AIGrammarAnalysis: Sendable, Codable, Equatable {
     }
 }
 
-/// 仅用于本地规则零命中时的 AI 语法解析；调用方负责优先执行本地匹配。
+/// 独立的 AI 语法解析。调用方决定展示本地结果还是由用户直接请求 AI。
 public struct GrammarAnalysisService: Sendable {
     private let llm: any LLMClient
     private let timeout: Duration

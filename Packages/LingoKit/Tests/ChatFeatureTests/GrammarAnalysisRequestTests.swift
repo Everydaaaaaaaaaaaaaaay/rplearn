@@ -6,8 +6,8 @@ import Testing
 
 @Suite("GrammarAnalysisRequest")
 struct GrammarAnalysisRequestTests {
-    @Test("只有本地零命中才需要 AI 兜底")
-    func fallbackPolicy() throws {
+    @Test("无论本地是否命中都保留本地与 AI 两种解析来源")
+    func analysisSourcesRemainIndependent() throws {
         let resourceURL = try #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json"))
         let store = try GrammarPointStore(url: resourceURL)
         let point = try #require(store.point(id: "modal-verb"))
@@ -30,8 +30,9 @@ struct GrammarAnalysisRequestTests {
             localItems: []
         )
 
-        #expect(!localRequest.requiresAIFallback)
-        #expect(fallbackRequest.requiresAIFallback)
+        #expect(localRequest.localItems.count == 1)
+        #expect(fallbackRequest.localItems.isEmpty)
+        #expect(GrammarAnalysisSource.allCases == [.local, .ai])
     }
 
     @Test("语法解析错误提示区分网络、服务与返回格式")

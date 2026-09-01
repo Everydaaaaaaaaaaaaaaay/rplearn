@@ -18,6 +18,8 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
 
     final class InstallerViewController: UIViewController {
         private static let capsuleTag = 0x4C_54_42
+        private static let materialTag = 0x4C_54_4D
+        private static let heightConstraintIdentifier = "LegacyTabBarCapsuleHeight"
 
         override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
@@ -43,6 +45,7 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
             tabBar.clipsToBounds = false
 
             if let existingCapsule = tabBar.viewWithTag(Self.capsuleTag) {
+                updateCapsuleGeometry(existingCapsule, in: tabBar)
                 tabBar.sendSubviewToBack(existingCapsule)
                 return
             }
@@ -51,7 +54,6 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
             capsule.tag = Self.capsuleTag
             capsule.translatesAutoresizingMaskIntoConstraints = false
             capsule.isUserInteractionEnabled = false
-            capsule.layer.cornerRadius = 32
             capsule.layer.cornerCurve = .continuous
             capsule.layer.shadowColor = UIColor.black.cgColor
             capsule.layer.shadowOpacity = 0.14
@@ -70,9 +72,9 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
                     ? nil
                     : UIBlurEffect(style: .systemUltraThinMaterialLight)
             )
+            material.tag = Self.materialTag
             material.translatesAutoresizingMaskIntoConstraints = false
             material.isUserInteractionEnabled = false
-            material.layer.cornerRadius = 32
             material.layer.cornerCurve = .continuous
             material.clipsToBounds = true
             let surfaceAlpha: CGFloat = UIAccessibility.isReduceTransparencyEnabled ? 0.96 : 0.50
@@ -88,18 +90,50 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
             capsule.addSubview(material)
             tabBar.insertSubview(capsule, at: 0)
 
+            let heightConstraint = capsule.heightAnchor.constraint(
+                equalToConstant: Self.capsuleHeight(
+                    tabBarHeight: tabBar.bounds.height,
+                    safeAreaBottom: tabBar.safeAreaInsets.bottom
+                )
+            )
+            heightConstraint.identifier = Self.heightConstraintIdentifier
+
             NSLayoutConstraint.activate([
                 capsule.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 12),
                 capsule.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: -12),
-                capsule.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: 4),
-                capsule.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor, constant: -4),
+                capsule.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: 2),
+                heightConstraint,
                 material.leadingAnchor.constraint(equalTo: capsule.leadingAnchor),
                 material.trailingAnchor.constraint(equalTo: capsule.trailingAnchor),
                 material.topAnchor.constraint(equalTo: capsule.topAnchor),
                 material.bottomAnchor.constraint(equalTo: capsule.bottomAnchor),
             ])
 
+            updateCapsuleGeometry(capsule, in: tabBar)
             tabBar.sendSubviewToBack(capsule)
+        }
+
+        /// 胶囊覆盖 Tab 项内容并略微进入底部安全区，但不会包住 Home Indicator。
+        /// 计算只依赖实际容器与安全区，因此适用于所有不支持 Liquid Glass 的版本。
+        private func updateCapsuleGeometry(_ capsule: UIView, in tabBar: UITabBar) {
+            let height = Self.capsuleHeight(
+                tabBarHeight: tabBar.bounds.height,
+                safeAreaBottom: tabBar.safeAreaInsets.bottom
+            )
+            capsule.constraints.first {
+                $0.identifier == Self.heightConstraintIdentifier
+            }?.constant = height
+            capsule.layer.cornerRadius = height / 2
+            capsule.viewWithTag(Self.materialTag)?.layer.cornerRadius = height / 2
+        }
+
+        static func capsuleHeight(tabBarHeight: CGFloat, safeAreaBottom: CGFloat) -> CGFloat {
+            guard tabBarHeight > 0 else { return 60 }
+            let itemAreaHeight = max(0, tabBarHeight - safeAreaBottom)
+            let desiredHeight = itemAreaHeight + 11
+            let availableHeight = max(0, tabBarHeight - 4)
+            let minimumHeight = min(44, availableHeight)
+            return min(64, max(minimumHeight, min(desiredHeight, availableHeight)))
         }
 
         /// SwiftUI 的 TabView 在不同系统版本中使用的容器层级不同。iOS 18

@@ -21,16 +21,19 @@ extension ChatView {
             MessageBubble(
                 side: .outgoing,
                 groupPosition: groupPosition,
-                leadingAccessory: { coachButton(message) }
+                leadingAccessory: { coachButton(message) },
+                contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)
             }
-            .contextMenu { bubbleMenu(message) }
         } else {
-            MessageBubble(side: .outgoing, groupPosition: groupPosition) {
+            MessageBubble(
+                side: .outgoing,
+                groupPosition: groupPosition,
+                contextMenu: { bubbleMenu(message) }
+            ) {
                 tappableText(message, textColor: .white)
             }
-            .contextMenu { bubbleMenu(message) }
         }
     }
 
