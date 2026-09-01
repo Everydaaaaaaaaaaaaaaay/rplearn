@@ -162,32 +162,32 @@ public struct MyPageView: View {
 
             profileHotspot
                 .frame(width: 190, height: 190)
-                .position(x: width * 0.19, y: sceneHeight * 0.20)
+                .position(x: width * 0.15, y: sceneHeight * 0.21)
 
             coinHotspot
                 .frame(width: 118, height: 110)
-                .position(x: width * 0.84, y: sceneHeight * 0.22)
+                .position(x: width * 0.82, y: sceneHeight * 0.205)
 
             learningHotspot
                 .frame(width: 142, height: 178)
-                .position(x: width * 0.50, y: sceneHeight * 0.50)
+                .position(x: width * 0.49, y: sceneHeight * 0.49)
 
             favoritesHotspot
                 .frame(width: 112, height: 120)
-                .position(x: width * 0.18, y: sceneHeight * 0.73)
+                .position(x: width * 0.175, y: sceneHeight * 0.72)
 
             settingsHotspot
                 .frame(width: 112, height: 124)
-                .position(x: width * 0.77, y: sceneHeight * 0.74)
+                .position(x: width * 0.775, y: sceneHeight * 0.735)
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.51, y: sceneHeight * 0.74)
+                .position(x: width * 0.49, y: sceneHeight * 0.72)
 
             #if DEBUG
             memoryDebugHotspot
                 .frame(width: 114, height: 126)
-                .position(x: width * 0.59, y: sceneHeight * 0.20)
+                .position(x: width * 0.59, y: sceneHeight * 0.18)
             #endif
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
@@ -292,7 +292,8 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 glyph: .account,
                 title: "登录",
-                plane: .phone
+                plane: .phone,
+                visualOffset: CGSize(width: 0, height: -24)
             )
         }
         .buttonStyle(SceneHologramButtonStyle())
@@ -385,6 +386,7 @@ public struct MyPageView: View {
                 )
                 .lineLimit(1)
                 .minimumScaleFactor(0.65)
+                .padding(.horizontal, 8)
                 SceneHologramText(presentation.placementSummary, size: 12.5, weight: .bold)
             }
         }
@@ -395,7 +397,8 @@ public struct MyPageView: View {
     private func fixedSceneEntry(
         glyph: SceneHologramGlyph,
         title: String,
-        plane: SceneHologramPlane
+        plane: SceneHologramPlane,
+        visualOffset: CGSize = .zero
     ) -> some View {
         SceneHologram(plane: plane) {
             VStack(spacing: 2) {
@@ -403,6 +406,7 @@ public struct MyPageView: View {
                 SceneHologramText(title, size: 26, weight: .bold)
             }
         }
+        .offset(x: visualOffset.width, y: visualOffset.height)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
     }
