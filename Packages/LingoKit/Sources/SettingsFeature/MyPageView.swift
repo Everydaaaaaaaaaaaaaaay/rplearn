@@ -166,7 +166,7 @@ public struct MyPageView: View {
 
             coinHotspot
                 .frame(width: 118, height: 110)
-                .position(x: width * 0.82, y: sceneHeight * 0.205)
+                .position(x: width * 0.90, y: sceneHeight * 0.252)
 
             learningHotspot
                 .frame(width: 142, height: 178)
@@ -174,20 +174,20 @@ public struct MyPageView: View {
 
             favoritesHotspot
                 .frame(width: 112, height: 120)
-                .position(x: width * 0.175, y: sceneHeight * 0.72)
+                .position(x: width * 0.184, y: sceneHeight * 0.662)
 
             settingsHotspot
                 .frame(width: 112, height: 124)
-                .position(x: width * 0.775, y: sceneHeight * 0.735)
+                .position(x: width * 0.833, y: sceneHeight * 0.665)
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.49, y: sceneHeight * 0.72)
+                .position(x: width * 0.546, y: sceneHeight * 0.666)
 
             #if DEBUG
             memoryDebugHotspot
                 .frame(width: 114, height: 126)
-                .position(x: width * 0.59, y: sceneHeight * 0.18)
+                .position(x: width * 0.616, y: sceneHeight * 0.191)
             #endif
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
@@ -260,7 +260,8 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 glyph: .bookmarkStar,
                 title: "收藏",
-                plane: .phrasebook
+                plane: .phrasebook,
+                scale: 0.90
             )
         }
         .buttonStyle(SceneHologramButtonStyle())
@@ -273,7 +274,8 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 glyph: .system("slider.horizontal.3"),
                 title: "设置",
-                plane: .watch
+                plane: .watch,
+                scale: 0.80
             )
         }
         .buttonStyle(SceneHologramButtonStyle())
@@ -293,7 +295,7 @@ public struct MyPageView: View {
                 glyph: .account,
                 title: "登录",
                 plane: .phone,
-                visualOffset: CGSize(width: 0, height: -24)
+                scale: 0.72
             )
         }
         .buttonStyle(SceneHologramButtonStyle())
@@ -307,7 +309,8 @@ public struct MyPageView: View {
             fixedSceneEntry(
                 glyph: .system("photo"),
                 title: "记忆",
-                plane: .camera
+                plane: .camera,
+                scale: 0.90
             )
         }
         .buttonStyle(SceneHologramButtonStyle())
@@ -319,24 +322,24 @@ public struct MyPageView: View {
     private var profileSceneEntry: some View {
         ZStack(alignment: .topLeading) {
             SceneHologram(plane: .identityHolder) {
-                VStack(spacing: 7) {
-                    SceneHologramIcon(glyph: .system("person.crop.circle"), size: 40)
+                VStack(spacing: 6) {
+                    SceneHologramIcon(glyph: .system("person.crop.circle"), size: 36)
 
-                    VStack(alignment: .leading, spacing: 1.5) {
-                        SceneHologramText(presentation.displayName, size: 16, weight: .bold)
+                    VStack(alignment: .leading, spacing: 1) {
+                        SceneHologramText(presentation.displayName, size: 14, weight: .bold)
                             .lineLimit(1)
                             .minimumScaleFactor(0.72)
-                        SceneHologramText(presentation.accountBadgeTitle, size: 13, weight: .semibold)
+                        SceneHologramText(presentation.accountBadgeTitle, size: 11.5, weight: .semibold)
                             .lineLimit(1)
-                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 11.5, weight: .medium)
+                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 10.5, weight: .medium)
                             .lineLimit(1)
                     }
                 }
             }
-            .frame(width: 150, height: 138)
-            .position(x: 92, y: 88)
+            .frame(width: 150, height: 122)
+            .position(x: 96, y: 70)
 
-            AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 43)
+            AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 38)
                 .overlay {
                     Circle()
                         .stroke(Color.white.opacity(0.7), lineWidth: 1)
@@ -350,44 +353,29 @@ public struct MyPageView: View {
     }
 
     private var coinSceneEntry: some View {
-        SceneHologram(
+        fixedSceneEntry(
+            glyph: .coinStacks,
+            title: "\(profile?.coins ?? 0) 金币",
             plane: .wallet,
-            tint: .sceneHologramYellow
-        ) {
-            VStack(spacing: 2) {
-                SceneHologramIcon(
-                    glyph: .coinStacks,
-                    size: 56,
-                    tint: .sceneHologramYellow
-                )
-                SceneHologramText(
-                    "\(profile?.coins ?? 0) 金币",
-                    size: 21,
-                    weight: .bold,
-                    tint: .sceneHologramYellow
-                )
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .contentShape(Rectangle())
+            tint: .sceneHologramYellow,
+            scale: 0.78
+        )
     }
 
     private var learningSceneEntry: some View {
         SceneHologram(plane: .tablet) {
-            VStack(spacing: 11) {
-                SceneHologramIcon(glyph: .journeyBook, size: 52)
-                SceneHologramText("英语旅程", size: 22, weight: .bold)
+            VStack(spacing: 7) {
+                SceneHologramIcon(glyph: .journeyBook, size: 44)
+                SceneHologramText("英语旅程", size: 20, weight: .bold)
                 SceneHologramText(
                     "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoal.displayName ?? "载入中")",
-                    size: 12.5,
+                    size: 11.25,
                     weight: .semibold
                 )
                 .lineLimit(1)
                 .minimumScaleFactor(0.65)
                 .padding(.horizontal, 8)
-                SceneHologramText(presentation.placementSummary, size: 12.5, weight: .bold)
+                SceneHologramText(presentation.placementSummary, size: 11.5, weight: .bold)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -398,15 +386,17 @@ public struct MyPageView: View {
         glyph: SceneHologramGlyph,
         title: String,
         plane: SceneHologramPlane,
-        visualOffset: CGSize = .zero
+        tint: Color = .sceneHologramYellow,
+        scale: CGFloat
     ) -> some View {
-        SceneHologram(plane: plane) {
-            VStack(spacing: 2) {
-                SceneHologramIcon(glyph: glyph, size: 52)
-                SceneHologramText(title, size: 26, weight: .bold)
+        SceneHologram(plane: plane, tint: tint) {
+            VStack(spacing: 6 * scale) {
+                SceneHologramIcon(glyph: glyph, size: 48 * scale, tint: tint)
+                SceneHologramText(title, size: 24 * scale, weight: .bold, tint: tint)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.72)
             }
         }
-        .offset(x: visualOffset.width, y: visualOffset.height)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
     }
