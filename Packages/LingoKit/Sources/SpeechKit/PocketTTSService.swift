@@ -157,6 +157,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
     private let modelDirectory: URL
     private let defaults: UserDefaults
     private let fileManager: FileManager
+    private let audioCache: PocketTTSAudioCache
 
     private var manager: PocketTtsManager?
     private var playbackTask: Task<Void, Never>?
@@ -169,6 +170,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
     public init(
         audioSession: AudioSessionCoordinator,
         modelDirectory: URL? = nil,
+        audioCacheDirectory: URL? = nil,
         defaults: UserDefaults = .standard,
         fileManager: FileManager = .default
     ) {
@@ -178,6 +180,10 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         self.defaults = defaults
         self.fileManager = fileManager
         self.modelDirectory = modelDirectory ?? Self.defaultModelDirectory(fileManager: fileManager)
+        self.audioCache = PocketTTSAudioCache(
+            directory: audioCacheDirectory
+                ?? Self.defaultAudioCacheDirectory(fileManager: fileManager)
+        )
         self.status = SpeechSynthesisEngineStatus(
             phase: .resourceMissing,
             selectedEngine: VoiceEnginePreferences.synthesisEngine(defaults: defaults)
@@ -217,14 +223,29 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
             language: request.language,
             hint: request.voiceHint
         )
+        let cacheKey: PocketTTSAudioCacheKey? = PocketTTSAudioCachePolicy.shouldCache(
+            text: trimmed,
+            purpose: request.purpose
+        ) ? PocketTTSAudioCacheKey(
+            text: trimmed,
+            language: request.language,
+            voiceID: voiceID
+        ) : nil
+        let cachedSamples: [Float]?
+        if let cacheKey {
+            cachedSamples = await audioCache.samples(for: cacheKey)
+        } else {
+            cachedSamples = nil
+        }
         let player = await streamingPlayer()
         guard playbackRequestGate.accepts(generation) else { return }
         let oldTask = playbackTask
-        let task = Task { [apple, audioSession, player] in
+        let task = Task { [apple, audioSession, audioCache, player] in
             if let oldTask { await oldTask.value }
             let buffersEntireUtterance = PocketTTSUtteranceBufferPolicy
                 .buffersEntireUtterance(for: request.purpose)
             var bufferedSamples: [Float] = []
+            var cacheableSamples: [Float] = []
             var didBeginPlayback = false
             var didReceiveFrame = false
             let synthesisStartedAt = Date()
@@ -235,15 +256,32 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
             var slowFrameCount = 0
             var maximumFrameGap: TimeInterval = 0
             do {
+                let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
+                    ? .conversation
+                    : .playback
+                if let cachedSamples {
+                    try Task.checkCancellation()
+                    try await audioSession.activate(mode)
+                    try await player.prepare()
+                    if try await player.enqueue(cachedSamples) {
+                        didBeginPlayback = true
+                    }
+                    if await player.finishScheduling() {
+                        didBeginPlayback = true
+                    }
+                    await player.waitUntilFinished()
+                    Log.speech.notice(
+                        "Pocket TTS 发音缓存命中，跳过模型推理"
+                    )
+                    return
+                }
+
                 let stream = try await manager.synthesizeStreaming(
                     text: trimmed,
                     voice: voiceID,
                     temperature: 0.65
                 )
                 try Task.checkCancellation()
-                let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
-                    ? .conversation
-                    : .playback
                 if !buffersEntireUtterance {
                     try await audioSession.activate(mode)
                     try await player.prepare()
@@ -273,6 +311,9 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
                     }
                     previousFrameAt = frameArrivedAt
                     generatedSampleCount += frame.samples.count
+                    if cacheKey != nil {
+                        cacheableSamples.append(contentsOf: frame.samples)
+                    }
                     if buffersEntireUtterance {
                         bufferedSamples.append(contentsOf: frame.samples)
                     } else if try await player.enqueue(frame.samples) {
@@ -286,6 +327,9 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
                     if try await player.enqueue(bufferedSamples) {
                         didBeginPlayback = true
                     }
+                }
+                if let cacheKey, !cacheableSamples.isEmpty {
+                    await audioCache.insert(cacheableSamples, for: cacheKey)
                 }
                 if await player.finishScheduling() {
                     didBeginPlayback = true
@@ -513,19 +557,19 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         }
     }
 
-    /// Core ML 的首次 prediction 通常还有惰性编译/管线建立成本。模型加载后在
-    /// 后台完整生成一个极短短句，同时把默认音色读入 FluidAudio 的缓存，避免
-    /// 用户第一次点击时承担这两部分延迟。预热失败不影响模型进入 ready，真实
-    /// 播放仍会沿用原有的 Apple TTS 回退路径。
+    /// Core ML 的首次 prediction 通常还有惰性编译/管线建立成本。模型加载后用
+    /// 单词卡默认美式音色完整生成极短短句，同时建立推理管线并读入实际会用到的
+    /// 音色，避免第一次点单词时承担这两部分延迟。
     private func warmUpModel(_ manager: PocketTtsManager) async {
         #if targetEnvironment(simulator)
         return
         #else
         let startedAt = Date()
         do {
+            let voiceID = PocketTTSVoiceCatalog.voiceID(language: "en-US", hint: nil)
             let stream = try await manager.synthesizeStreaming(
                 text: "Ready.",
-                voice: "alba",
+                voice: voiceID,
                 temperature: 0.65
             )
             for try await _ in stream {
@@ -619,5 +663,15 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
                 .appendingPathComponent("MissingPocketTTSBundle", isDirectory: true)
         }
         return directory
+    }
+
+    private nonisolated static func defaultAudioCacheDirectory(
+        fileManager: FileManager
+    ) -> URL {
+        let base = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first
+            ?? fileManager.temporaryDirectory
+        return base
+            .appendingPathComponent("LingoTrip", isDirectory: true)
+            .appendingPathComponent("PocketTTSAudio", isDirectory: true)
     }
 }

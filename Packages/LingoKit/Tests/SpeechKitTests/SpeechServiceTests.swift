@@ -221,13 +221,46 @@ struct SpeechServiceTests {
         )
     }
 
-    @Test("普通 Pocket 朗读完整缓冲，实时对话保留低延迟流播")
+    @Test("普通 Pocket 朗读完整缓冲，单词与实时对话低延迟流播")
     func pocketUtteranceBufferPolicy() {
         #expect(PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .general))
         #expect(PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .characterDialogue))
-        #expect(PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .pronunciation))
+        #expect(!PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .pronunciation))
         #expect(
             !PocketTTSUtteranceBufferPolicy.buffersEntireUtterance(for: .realtimeConversation)
+        )
+    }
+
+    @Test("Pocket 单词发音缓存跨实例复用 PCM")
+    func pocketPronunciationCachePersists() async throws {
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("PocketTTSAudioCache-\(UUID().uuidString)")
+        defer { try? FileManager.default.removeItem(at: directory) }
+
+        let key = PocketTTSAudioCacheKey(
+            text: "hello",
+            language: "en-US",
+            voiceID: "mary"
+        )
+        let expected: [Float] = [0, 0.25, -0.5, 1]
+        let firstCache = PocketTTSAudioCache(directory: directory)
+        #expect(await firstCache.samples(for: key) == nil)
+        await firstCache.insert(expected, for: key)
+        #expect(await firstCache.samples(for: key) == expected)
+
+        let relaunchedCache = PocketTTSAudioCache(directory: directory)
+        #expect(await relaunchedCache.samples(for: key) == expected)
+    }
+
+    @Test("Pocket 缓存只接收长度受限的单词发音")
+    func pocketPronunciationCachePolicy() {
+        #expect(PocketTTSAudioCachePolicy.shouldCache(text: "hello", purpose: .pronunciation))
+        #expect(!PocketTTSAudioCachePolicy.shouldCache(text: "hello", purpose: .general))
+        #expect(
+            !PocketTTSAudioCachePolicy.shouldCache(
+                text: String(repeating: "a", count: 129),
+                purpose: .pronunciation
+            )
         )
     }
 

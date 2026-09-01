@@ -32,10 +32,15 @@ enum PocketTTSPlaybackBufferPolicy {
     }
 }
 
-/// 普通朗读优先完整、连续；只有实时对话为降低往返延迟保留短缓冲流播。
+/// 普通长文本优先完整、连续；实时对话和单词发音都需要尽快给出声音反馈。
 enum PocketTTSUtteranceBufferPolicy {
     static func buffersEntireUtterance(for purpose: SpeechPurpose) -> Bool {
-        purpose != .realtimeConversation
+        switch purpose {
+        case .general, .characterDialogue:
+            true
+        case .pronunciation, .realtimeConversation:
+            false
+        }
     }
 }
 

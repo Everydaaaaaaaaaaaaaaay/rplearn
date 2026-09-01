@@ -101,6 +101,31 @@ final class MyPagePerformanceTests: XCTestCase {
                 CGPoint(x: meTab.frame.midX, y: meTab.frame.midY)
             )
         )
+        XCTAssertLessThanOrEqual(
+            abs(capsuleFrame.midY - meTab.frame.midY),
+            3,
+            "capsule=\(capsuleFrame), tabBar=\(tabBar.frame), item=\(meTab.frame)"
+        )
+
+        let labels = ["信息", "联系人", "首页", "我的", "测试"]
+        var geometryFailures: [String] = []
+        for (index, label) in labels.enumerated() {
+            let item = tabBar.buttons[label]
+            XCTAssertTrue(item.exists)
+            let expectedX = capsuleFrame.minX
+                + capsuleFrame.width * (CGFloat(index) + 0.5) / CGFloat(labels.count)
+            let delta = item.frame.midX - expectedX
+            if abs(delta) > 3 {
+                geometryFailures.append(
+                    "\(label) frame=\(item.frame), expectedX=\(expectedX), delta=\(delta)"
+                )
+            }
+        }
+        XCTAssertTrue(
+            geometryFailures.isEmpty,
+            "capsule=\(capsuleFrame), tabBar=\(tabBar.frame)\n"
+                + geometryFailures.joined(separator: "\n")
+        )
     }
 
     @MainActor
