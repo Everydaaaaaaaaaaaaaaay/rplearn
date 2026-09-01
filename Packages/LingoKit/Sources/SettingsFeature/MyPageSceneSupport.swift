@@ -9,7 +9,7 @@ enum TravelDeskLayout {
 
     /// 参考画布中最低入口（登录）的视觉与点击范围底边，含少量微光余量。
     /// 短屏按此高度整体缩放，保证入口停在系统 Tab 栏上方。
-    static let interactiveContentBottom: CGFloat = 682
+    static let interactiveContentBottom: CGFloat = 780
 }
 
 /// 每个入口都使用承载物自身的局部平面，而不是套用同一组“伪透视”。
@@ -25,7 +25,7 @@ struct SceneHologramPlane {
     let extrusionOffset: CGSize
 
     static let identityHolder = SceneHologramPlane(
-        rotationZ: -13,
+        rotationZ: -8,
         tiltX: 8,
         tiltY: -2,
         perspective: 0.2,
@@ -35,7 +35,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 1, height: 2.6)
     )
     static let camera = SceneHologramPlane(
-        rotationZ: 7,
+        rotationZ: 0,
         tiltX: 6,
         tiltY: 1,
         perspective: 0.18,
@@ -45,7 +45,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 0.5, height: 2.6)
     )
     static let wallet = SceneHologramPlane(
-        rotationZ: 13,
+        rotationZ: 2,
         tiltX: 7,
         tiltY: -2,
         perspective: 0.2,
@@ -55,7 +55,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.8, height: 2.6)
     )
     static let tablet = SceneHologramPlane(
-        rotationZ: 4,
+        rotationZ: 0,
         tiltX: 6,
         tiltY: -1,
         perspective: 0.18,
@@ -65,7 +65,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phrasebook = SceneHologramPlane(
-        rotationZ: -12,
+        rotationZ: -5,
         tiltX: 7,
         tiltY: 1.5,
         perspective: 0.2,
@@ -75,7 +75,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 0.8, height: 2.6)
     )
     static let watch = SceneHologramPlane(
-        rotationZ: 2,
+        rotationZ: 0,
         tiltX: 7,
         tiltY: 1,
         perspective: 0.18,
@@ -85,7 +85,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phone = SceneHologramPlane(
-        rotationZ: 3,
+        rotationZ: 0,
         tiltX: 6,
         tiltY: 0,
         perspective: 0.18,

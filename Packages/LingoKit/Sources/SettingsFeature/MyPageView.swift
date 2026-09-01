@@ -162,32 +162,32 @@ public struct MyPageView: View {
 
             profileHotspot
                 .frame(width: 190, height: 190)
-                .position(x: width * 0.20, y: sceneHeight * 0.195)
+                .position(x: width * 0.20, y: sceneHeight * 0.20)
 
             coinHotspot
                 .frame(width: 118, height: 110)
-                .position(x: width * 0.845, y: sceneHeight * 0.19)
+                .position(x: width * 0.845, y: sceneHeight * 0.20)
 
             learningHotspot
                 .frame(width: 142, height: 178)
-                .position(x: width * 0.54, y: sceneHeight * 0.515)
+                .position(x: width * 0.48, y: sceneHeight * 0.49)
 
             favoritesHotspot
                 .frame(width: 112, height: 120)
-                .position(x: width * 0.135, y: sceneHeight * 0.59)
+                .position(x: width * 0.18, y: sceneHeight * 0.745)
 
             settingsHotspot
                 .frame(width: 112, height: 124)
-                .position(x: width * 0.835, y: sceneHeight * 0.59)
+                .position(x: width * 0.85, y: sceneHeight * 0.57)
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.52, y: sceneHeight * 0.66)
+                .position(x: width * 0.54, y: sceneHeight * 0.76)
 
             #if DEBUG
             memoryDebugHotspot
                 .frame(width: 114, height: 126)
-                .position(x: width * 0.535, y: sceneHeight * 0.12)
+                .position(x: width * 0.535, y: sceneHeight * 0.19)
             #endif
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
