@@ -116,6 +116,37 @@ public actor ChatStore {
         return dto(from: message)
     }
 
+    /// 仅修复尚未发生真实往来的单条旧开场白。只要用户或角色已经继续发过消息，
+    /// 就绝不回写聊天历史。
+    @discardableResult
+    public func replaceSoleInitialMessageIfNeeded(
+        characterID: UUID,
+        matching invalidText: String,
+        with replacementText: String
+    ) throws -> MessageDTO? {
+        guard let character = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
+        ).first,
+              let conversation = character.conversations.first(where: { !$0.isArchived }),
+              conversation.messages.count == 1,
+              let message = conversation.messages.first,
+              message.roleRaw == MessageRole.assistant.rawValue,
+              message.orderIndex == 0,
+              message.text == invalidText
+        else { return nil }
+
+        let cleanedReplacement = replacementText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !cleanedReplacement.isEmpty else { return nil }
+
+        message.text = cleanedReplacement
+        message.tokenEstimate = TokenEstimator.estimate(cleanedReplacement)
+        conversation.lastMessageAt = message.createdAt
+        try journal(message)
+        try journal(conversation)
+        try modelContext.save()
+        return dto(from: message)
+    }
+
     /// 幂等保存一条已经到期的主动消息。事件 UUID 同时作为消息 UUID，避免重复唤醒造成重复气泡。
     @discardableResult
     public func appendProactiveMessageIfNeeded(

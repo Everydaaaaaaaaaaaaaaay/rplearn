@@ -1,5 +1,6 @@
 import XCTest
 
+@MainActor
 final class MyPagePerformanceTests: XCTestCase {
     private var app: XCUIApplication!
 
@@ -15,6 +16,7 @@ final class MyPagePerformanceTests: XCTestCase {
         app = nil
     }
 
+    @MainActor
     func testMyPageTabRoundTripPerformance() throws {
         launch(on: "messages")
 
@@ -37,6 +39,7 @@ final class MyPagePerformanceTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testFavoritesRoundTripPerformance() throws {
         launch(on: "me")
 
@@ -50,13 +53,14 @@ final class MyPagePerformanceTests: XCTestCase {
             options: options
         ) {
             favoritesEntry.tap()
-            let back = app.buttons["返回"]
+            let back = app.navigationBars.buttons.firstMatch
             XCTAssertTrue(back.waitForExistence(timeout: 3))
             back.tap()
             XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 3))
         }
     }
 
+    @MainActor
     func testSettingsRoundTripPerformance() throws {
         launch(on: "me")
 
@@ -70,13 +74,24 @@ final class MyPagePerformanceTests: XCTestCase {
             options: options
         ) {
             settingsEntry.tap()
-            let back = app.buttons["返回"]
+            let back = app.navigationBars.buttons.firstMatch
             XCTAssertTrue(back.waitForExistence(timeout: 3))
             back.tap()
             XCTAssertTrue(settingsEntry.waitForExistence(timeout: 3))
         }
     }
 
+    @MainActor
+    func testLegacyTabBarCapsuleIsInstalled() throws {
+        app.launchEnvironment["UI_TEST_FORCE_LEGACY_CHROME"] = "1"
+        launch(on: "me")
+
+        let capsule = app.descendants(matching: .any)["LegacyTabBarCapsule"]
+        XCTAssertTrue(capsule.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.tabBars.buttons["我的"].exists)
+    }
+
+    @MainActor
     private func launch(on tab: String) {
         app.launchEnvironment["UI_TEST_TAB"] = tab
         app.launch()

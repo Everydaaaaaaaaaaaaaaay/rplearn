@@ -3,11 +3,17 @@ import UIKit
 
 struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> InstallerViewController {
-        InstallerViewController()
+        let controller = InstallerViewController()
+        controller.view.backgroundColor = .clear
+        controller.view.isUserInteractionEnabled = false
+        return controller
     }
 
     func updateUIViewController(_ controller: InstallerViewController, context: Context) {
         controller.installIfNeeded()
+        Task { @MainActor [weak controller] in
+            controller?.installIfNeeded()
+        }
     }
 
     final class InstallerViewController: UIViewController {
@@ -24,7 +30,7 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
         }
 
         func installIfNeeded() {
-            guard let tabBar = tabBarController?.tabBar else { return }
+            guard let tabBar = resolvedTabBar() else { return }
 
             let appearance = UITabBarAppearance()
             appearance.configureWithTransparentBackground()
@@ -36,7 +42,10 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
             tabBar.isTranslucent = true
             tabBar.clipsToBounds = false
 
-            guard tabBar.viewWithTag(Self.capsuleTag) == nil else { return }
+            if let existingCapsule = tabBar.viewWithTag(Self.capsuleTag) {
+                tabBar.sendSubviewToBack(existingCapsule)
+                return
+            }
 
             let capsule = UIView()
             capsule.tag = Self.capsuleTag
@@ -48,20 +57,30 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
             capsule.layer.shadowOpacity = 0.14
             capsule.layer.shadowRadius = 16
             capsule.layer.shadowOffset = CGSize(width: 0, height: 7)
+            #if DEBUG
+            if ProcessInfo.processInfo.environment["UI_TEST_FORCE_LEGACY_CHROME"] == "1" {
+                capsule.isAccessibilityElement = true
+                capsule.accessibilityIdentifier = "LegacyTabBarCapsule"
+                capsule.accessibilityLabel = "旧系统底栏胶囊"
+            }
+            #endif
 
             let material = UIVisualEffectView(
-                effect: UIBlurEffect(style: .systemUltraThinMaterialLight)
+                effect: UIAccessibility.isReduceTransparencyEnabled
+                    ? nil
+                    : UIBlurEffect(style: .systemUltraThinMaterialLight)
             )
             material.translatesAutoresizingMaskIntoConstraints = false
             material.isUserInteractionEnabled = false
             material.layer.cornerRadius = 32
             material.layer.cornerCurve = .continuous
             material.clipsToBounds = true
+            let surfaceAlpha: CGFloat = UIAccessibility.isReduceTransparencyEnabled ? 0.96 : 0.50
             material.contentView.backgroundColor = UIColor(
                 red: 0.985,
                 green: 0.968,
                 blue: 0.925,
-                alpha: 0.50
+                alpha: surfaceAlpha
             )
             material.layer.borderColor = UIColor.white.withAlphaComponent(0.72).cgColor
             material.layer.borderWidth = 0.8
@@ -79,6 +98,35 @@ struct LegacyTabBarCapsuleInstaller: UIViewControllerRepresentable {
                 material.topAnchor.constraint(equalTo: capsule.topAnchor),
                 material.bottomAnchor.constraint(equalTo: capsule.bottomAnchor),
             ])
+
+            tabBar.sendSubviewToBack(capsule)
+        }
+
+        /// SwiftUI 的 TabView 在不同系统版本中使用的容器层级不同。iOS 18
+        /// 不保证这个探针控制器直接挂在 UITabBarController 下，因此先沿父链查找，
+        /// 再从当前窗口根控制器递归定位，避免材质安装逻辑静默失效。
+        private func resolvedTabBar() -> UITabBar? {
+            if let tabBar = tabBarController?.tabBar {
+                return tabBar
+            }
+            guard let root = viewIfLoaded?.window?.rootViewController else { return nil }
+            return findTabBarController(from: root)?.tabBar
+        }
+
+        private func findTabBarController(from controller: UIViewController) -> UITabBarController? {
+            if let tabController = controller as? UITabBarController {
+                return tabController
+            }
+            if let presented = controller.presentedViewController,
+               let match = findTabBarController(from: presented) {
+                return match
+            }
+            for child in controller.children {
+                if let match = findTabBarController(from: child) {
+                    return match
+                }
+            }
+            return nil
         }
     }
 }

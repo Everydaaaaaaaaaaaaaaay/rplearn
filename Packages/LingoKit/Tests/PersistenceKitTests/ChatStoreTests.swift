@@ -76,6 +76,37 @@ struct ChatStoreTests {
         #expect(recent.map(\.text) == ["What kind of music do you enjoy?"])
     }
 
+    @Test("只允许替换尚未继续交流的矛盾开场白")
+    func repairsOnlySoleInitialMessage() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let invalid = "You actually texted me. Am I dreaming?"
+        _ = try await chat.appendInitialMessageIfNeeded(
+            characterID: characterID,
+            text: invalid
+        )
+
+        let repaired = try await chat.replaceSoleInitialMessageIfNeeded(
+            characterID: characterID,
+            matching: invalid,
+            with: "Welcome to town. How was your trip?"
+        )
+        let conversation = try #require(try await chat.conversationSummaries().first)
+        #expect(repaired?.text == "Welcome to town. How was your trip?")
+
+        try await chat.appendMessage(
+            conversationID: conversation.conversationID,
+            role: .user,
+            text: "It was great."
+        )
+        let refused = try await chat.replaceSoleInitialMessageIfNeeded(
+            characterID: characterID,
+            matching: "Welcome to town. How was your trip?",
+            with: "This must not rewrite history."
+        )
+        #expect(refused == nil)
+    }
+
     @Test("到期主动消息按事件编号幂等写入")
     func proactiveMessageIsIdempotent() async throws {
         let (chat, roster) = try makeStores()

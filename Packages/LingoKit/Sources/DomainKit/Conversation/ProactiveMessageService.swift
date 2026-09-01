@@ -65,8 +65,10 @@ public struct ProactiveMessageService: Sendable {
                 Log.llm.warning("主动消息生成失败，本轮不写入并保留稍后重试机会：\(error)")
                 return nil
             }
-            guard let message = Self.normalized(output) else {
-                Log.llm.warning("主动开场第 \(attempt + 1) 次输出未通过短消息格式校验")
+            guard let message = Self.normalized(output),
+                  Self.isContextuallyValid(message, for: occasion)
+            else {
+                Log.llm.warning("主动开场第 \(attempt + 1) 次输出未通过格式或情境校验")
                 continue
             }
             guard !RoleplayReplyDiversityPolicy.isTooSimilar(
@@ -93,8 +95,11 @@ public struct ProactiveMessageService: Sendable {
         let situation = switch occasion {
         case .introduction:
             """
-            You have just become friends. Send the first message yourself and open a topic that is \
-            easy and interesting for this person to answer.
+            The two of you have already been introduced and agreed to be travel friends. You knew this \
+            person was coming to your city and expected the two of you to be in touch. Send the first \
+            message yourself as a planned, friendly welcome, then open a topic that is easy and interesting \
+            for this person to answer. Never act shocked that they contacted you, question whether the \
+            contact is real, or imply that your phone must be broken.
             """
         case .checkIn:
             """
@@ -167,6 +172,34 @@ public struct ProactiveMessageService: Sendable {
               })
         else { return nil }
         return value
+    }
+
+    /// 首次联系已经由旅行伙伴安排建立，不能生成“你居然联系我”一类与剧情前提
+    /// 冲突的惊讶反应。该校验同时用于升级后修复尚未开始对话的旧开场白。
+    public static func isContextuallyValid(
+        _ message: String,
+        for occasion: Occasion
+    ) -> Bool {
+        guard occasion == .introduction else { return true }
+
+        let value = message.lowercased()
+        if value.contains("am i dreaming")
+            || value.contains("phone broken")
+            || value.contains("phone is broken")
+            || value.contains("phone's broken") {
+            return false
+        }
+
+        let mentionsContact = value.contains("text")
+            || value.contains("messag")
+            || value.contains("contact")
+        let treatsContactAsUnexpected = value.contains("actually")
+            || value.contains("can't believe")
+            || value.contains("cannot believe")
+            || value.contains("didn't expect")
+            || value.contains("did not expect")
+
+        return !(mentionsContact && treatsContactAsUnexpected)
     }
 
 }

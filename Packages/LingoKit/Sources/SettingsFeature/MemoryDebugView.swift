@@ -79,7 +79,7 @@ public struct MemoryDebugView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .dsNavigationTitle("")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {

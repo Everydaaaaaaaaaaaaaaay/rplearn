@@ -129,12 +129,34 @@ final class ProactiveMessageCoordinator {
         guard let friends = try? await rosterStore.friends() else { return false }
         var insertedAny = false
         for character in friends {
-            guard (try? await chatStore.needsInitialMessage(characterID: character.id)) == true else {
-                continue
-            }
             let recentMessages = (try? await chatStore.recentMessages(
                 characterID: character.id
             )) ?? []
+
+            if recentMessages.count == 1,
+               let existing = recentMessages.first,
+               existing.role == .assistant,
+               !ProactiveMessageService.isContextuallyValid(
+                   existing.text,
+                   for: .introduction
+               ),
+               let replacement = await messageService.generate(
+                   for: character,
+                   learner: learner,
+                   occasion: .introduction
+               ),
+               (try? await chatStore.replaceSoleInitialMessageIfNeeded(
+                   characterID: character.id,
+                   matching: existing.text,
+                   with: replacement
+               )) != nil {
+                insertedAny = true
+                continue
+            }
+
+            guard (try? await chatStore.needsInitialMessage(characterID: character.id)) == true else {
+                continue
+            }
             guard let text = await messageService.generate(
                 for: character,
                 learner: learner,

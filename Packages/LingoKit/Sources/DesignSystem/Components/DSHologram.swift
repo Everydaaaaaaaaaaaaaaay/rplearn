@@ -169,8 +169,10 @@ public struct DSHologramBookmarkIcon: View {
     public var body: some View {
         if isElevated {
             glyph
-                .shadow(color: glowColor.opacity(0.58), radius: 3.2)
-                .shadow(color: .black.opacity(0.24), radius: 0.7, y: 0.8)
+                .shadow(color: glowColor.opacity(0.42), radius: 6.2)
+                .shadow(color: glowColor.opacity(0.70), radius: 2.2)
+                .shadow(color: .white.opacity(0.24), radius: 0.6)
+                .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
                 .accessibilityHidden(true)
         } else {
             glyph
@@ -262,17 +264,42 @@ private struct DSHologramTextRenderer: TextRenderer {
         )
         draw(layout, in: &depthEdge)
 
-        var glow = context
-        glow.opacity = 0.52
-        glow.addFilter(
+        var outerGlow = context
+        outerGlow.opacity = 0.32
+        outerGlow.addFilter(
             .shadow(
-                color: glowColor.opacity(0.68),
-                radius: 3.1,
+                color: glowColor.opacity(0.52),
+                radius: 6.2,
                 options: .shadowOnly
             ),
             options: .linearColor
         )
-        draw(layout, in: &glow)
+        draw(layout, in: &outerGlow)
+
+        var innerGlow = context
+        innerGlow.opacity = 0.60
+        innerGlow.addFilter(
+            .shadow(
+                color: glowColor.opacity(0.72),
+                radius: 2.3,
+                options: .shadowOnly
+            ),
+            options: .linearColor
+        )
+        draw(layout, in: &innerGlow)
+
+        var edgeLight = context
+        edgeLight.opacity = 0.38
+        edgeLight.translateBy(x: 0.55, y: 0.8)
+        edgeLight.addFilter(
+            .shadow(
+                color: .white.opacity(0.70),
+                radius: 0.9,
+                options: .shadowOnly
+            ),
+            options: .linearColor
+        )
+        draw(layout, in: &edgeLight)
 
         draw(layout, in: &context)
     }

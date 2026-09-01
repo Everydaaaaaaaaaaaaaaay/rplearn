@@ -55,7 +55,7 @@ public struct CityScenePhotoCreditsView: View {
             citySections
             licenseSection
         }
-        .dsNavigationTitle("城市背景照片")
+        .navigationTitle("城市背景照片")
         .navigationBarTitleDisplayMode(.inline)
     }
 

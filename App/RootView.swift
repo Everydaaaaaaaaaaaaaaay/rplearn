@@ -16,7 +16,6 @@ import SettingsFeature
 import SpeechKit
 import StoryFeature
 import SwiftUI
-import UIKit
 import UserNotifications
 
 struct RootView: View {
@@ -419,11 +418,7 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        DSCrossfadeNavigationStack(
-            path: $mePath,
-            title: \.navigationTitle,
-            background: .dsBrandCream
-        ) {
+        NavigationStack(path: $mePath) {
             MyPageView(
                 economyStore: environment.economyStore,
                 economyService: economyService,
@@ -442,8 +437,9 @@ struct RootView: View {
                     #endif
                 }
             )
-        } destination: { destination in
-            meDestinationView(destination)
+            .navigationDestination(for: MeDestination.self) { destination in
+                meDestinationView(destination)
+            }
         }
     }
 
@@ -699,7 +695,3 @@ struct RootView: View {
         )
     }
 }
-
-/// iOS 18 的系统 Tab Bar 没有 Liquid Glass 胶囊，并且摄影页面会让默认
-/// 半透明背景失去边界。保留原生 UITabBar 的点击、徽标与无障碍语义，只在
-/// 它的最底层安装稳定的圆角材质，不重写导航行为。

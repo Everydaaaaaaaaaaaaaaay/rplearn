@@ -17,19 +17,4 @@ enum MeDestination: Hashable {
     #if DEBUG
     case memory
     #endif
-
-    var navigationTitle: String {
-        switch self {
-        case .favorites:
-            "收藏夹"
-        case .settings:
-            "设置"
-        case .photoCredits:
-            "城市背景照片"
-        #if DEBUG
-        case .memory:
-            ""
-        #endif
-        }
-    }
 }

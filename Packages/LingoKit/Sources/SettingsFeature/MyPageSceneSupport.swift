@@ -203,8 +203,10 @@ struct SceneHologramIcon: View {
         glyphBody
             .frame(width: size, height: size)
             .foregroundStyle(tint.opacity(0.99))
-            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.56), radius: 3.2)
-            .shadow(color: .black.opacity(0.24), radius: 0.7, y: 0.8)
+            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.38), radius: 6.2)
+            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.64), radius: 2.2)
+            .shadow(color: .white.opacity(0.24), radius: 0.6)
+            .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
     }
 
     @ViewBuilder

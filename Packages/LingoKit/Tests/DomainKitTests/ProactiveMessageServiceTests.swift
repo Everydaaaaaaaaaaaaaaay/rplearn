@@ -105,6 +105,41 @@ struct ProactiveMessageServiceTests {
         #expect(prompt.contains("6-14 words total"))
     }
 
+    @Test("首次联系明确延续已约好的旅行伙伴关系")
+    func introductionPromptPreservesStoryPremise() {
+        let prompt = ProactiveMessageService.prompt(
+            character: character(),
+            learner: learner(),
+            occasion: .introduction,
+            recentMessages: []
+        )
+
+        #expect(prompt.contains("already been introduced"))
+        #expect(prompt.contains("expected the two of you to be in touch"))
+        #expect(prompt.contains("Never act shocked"))
+    }
+
+    @Test("与既定关系矛盾的惊讶开场会被重写")
+    func rejectsContradictoryIntroduction() async {
+        let responses = ProactiveResponseSequence([
+            "You actually texted me. Am I dreaming or is my phone broken, mate?",
+            "Welcome to town, mate. How was your trip?",
+        ])
+        let service = ProactiveMessageService(
+            llm: MockLLMProvider { _ in await responses.next() },
+            variationIndex: { 3 }
+        )
+
+        let message = await service.generate(
+            for: character(),
+            learner: learner(),
+            occasion: .introduction
+        )
+
+        #expect(message == "Welcome to town, mate. How was your trip?")
+        #expect(await responses.callCount == 2)
+    }
+
     private func learner() -> LearnerContext {
         LearnerContext(
             nickname: "小雨",

@@ -86,7 +86,7 @@ public struct SettingsView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .dsNavigationTitle("设置")
+        .navigationTitle("设置")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .animation(DSAnimation.snappy, value: testState)
