@@ -75,14 +75,14 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 0.8, height: 2.6)
     )
     static let watch = SceneHologramPlane(
-        rotationZ: 16,
-        tiltX: 9,
-        tiltY: -2.5,
-        perspective: 0.22,
+        rotationZ: 2,
+        tiltX: 7,
+        tiltY: 1,
+        perspective: 0.18,
         scaleX: 1,
-        scaleY: 0.97,
-        footprintOffset: CGSize(width: -3, height: 14),
-        extrusionOffset: CGSize(width: -0.8, height: 2.9)
+        scaleY: 0.98,
+        footprintOffset: CGSize(width: -1, height: 14),
+        extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phone = SceneHologramPlane(
         rotationZ: 3,
