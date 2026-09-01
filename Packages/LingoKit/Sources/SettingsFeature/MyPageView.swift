@@ -162,32 +162,32 @@ public struct MyPageView: View {
 
             profileHotspot
                 .frame(width: 190, height: 190)
-                .position(x: width * 0.20, y: sceneHeight * 0.20)
+                .position(x: width * 0.19, y: sceneHeight * 0.20)
 
             coinHotspot
                 .frame(width: 118, height: 110)
-                .position(x: width * 0.845, y: sceneHeight * 0.20)
+                .position(x: width * 0.84, y: sceneHeight * 0.22)
 
             learningHotspot
                 .frame(width: 142, height: 178)
-                .position(x: width * 0.48, y: sceneHeight * 0.49)
+                .position(x: width * 0.50, y: sceneHeight * 0.50)
 
             favoritesHotspot
                 .frame(width: 112, height: 120)
-                .position(x: width * 0.18, y: sceneHeight * 0.745)
+                .position(x: width * 0.18, y: sceneHeight * 0.73)
 
             settingsHotspot
                 .frame(width: 112, height: 124)
-                .position(x: width * 0.85, y: sceneHeight * 0.57)
+                .position(x: width * 0.77, y: sceneHeight * 0.74)
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.54, y: sceneHeight * 0.76)
+                .position(x: width * 0.51, y: sceneHeight * 0.74)
 
             #if DEBUG
             memoryDebugHotspot
                 .frame(width: 114, height: 126)
-                .position(x: width * 0.535, y: sceneHeight * 0.19)
+                .position(x: width * 0.59, y: sceneHeight * 0.20)
             #endif
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
@@ -333,7 +333,7 @@ public struct MyPageView: View {
                 }
             }
             .frame(width: 150, height: 138)
-            .position(x: 78, y: 88)
+            .position(x: 92, y: 88)
 
             AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 43)
                 .overlay {
@@ -341,8 +341,8 @@ public struct MyPageView: View {
                         .stroke(Color.white.opacity(0.7), lineWidth: 1)
                 }
                 .shadow(color: .black.opacity(0.18), radius: 2.2, y: 1.4)
-                .rotationEffect(.degrees(-13))
-                .position(x: 76, y: 168)
+                .rotationEffect(.degrees(-6))
+                .position(x: 92, y: 168)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .contentShape(Rectangle())

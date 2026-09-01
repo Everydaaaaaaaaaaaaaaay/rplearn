@@ -25,7 +25,7 @@ struct SceneHologramPlane {
     let extrusionOffset: CGSize
 
     static let identityHolder = SceneHologramPlane(
-        rotationZ: -8,
+        rotationZ: -6,
         tiltX: 8,
         tiltY: -2,
         perspective: 0.2,
@@ -35,7 +35,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 1, height: 2.6)
     )
     static let camera = SceneHologramPlane(
-        rotationZ: 0,
+        rotationZ: 3,
         tiltX: 6,
         tiltY: 1,
         perspective: 0.18,
@@ -45,7 +45,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 0.5, height: 2.6)
     )
     static let wallet = SceneHologramPlane(
-        rotationZ: 2,
+        rotationZ: -5,
         tiltX: 7,
         tiltY: -2,
         perspective: 0.2,
@@ -55,7 +55,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.8, height: 2.6)
     )
     static let tablet = SceneHologramPlane(
-        rotationZ: 0,
+        rotationZ: 2,
         tiltX: 6,
         tiltY: -1,
         perspective: 0.18,
@@ -65,7 +65,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phrasebook = SceneHologramPlane(
-        rotationZ: -5,
+        rotationZ: -7,
         tiltX: 7,
         tiltY: 1.5,
         perspective: 0.2,
@@ -75,7 +75,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 0.8, height: 2.6)
     )
     static let watch = SceneHologramPlane(
-        rotationZ: 0,
+        rotationZ: 14,
         tiltX: 7,
         tiltY: 1,
         perspective: 0.18,
@@ -85,7 +85,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phone = SceneHologramPlane(
-        rotationZ: 0,
+        rotationZ: 3,
         tiltX: 6,
         tiltY: 0,
         perspective: 0.18,
