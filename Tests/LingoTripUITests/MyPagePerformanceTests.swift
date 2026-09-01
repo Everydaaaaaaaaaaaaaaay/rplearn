@@ -82,50 +82,25 @@ final class MyPagePerformanceTests: XCTestCase {
     }
 
     @MainActor
-    func testLegacyTabBarCapsuleIsInstalled() throws {
+    func testLegacyTabBarUsesNativeFullWidthAppearance() throws {
         app.launchEnvironment["UI_TEST_FORCE_LEGACY_CHROME"] = "1"
         launch(on: "me")
 
         let capsule = app.descendants(matching: .any)["LegacyTabBarCapsule"]
-        XCTAssertTrue(capsule.waitForExistence(timeout: 5))
         let tabBar = app.tabBars.firstMatch
-        let meTab = tabBar.buttons["我的"]
-        XCTAssertTrue(meTab.exists)
-
-        let capsuleFrame = capsule.frame
-        XCTAssertGreaterThanOrEqual(capsuleFrame.height, 44)
-        XCTAssertLessThanOrEqual(capsuleFrame.height, 64)
-        XCTAssertLessThan(capsuleFrame.maxY, app.frame.maxY - 12)
-        XCTAssertTrue(
-            capsuleFrame.contains(
-                CGPoint(x: meTab.frame.midX, y: meTab.frame.midY)
-            )
-        )
-        XCTAssertLessThanOrEqual(
-            abs(capsuleFrame.midY - meTab.frame.midY),
-            3,
-            "capsule=\(capsuleFrame), tabBar=\(tabBar.frame), item=\(meTab.frame)"
-        )
+        XCTAssertTrue(tabBar.waitForExistence(timeout: 5))
+        XCTAssertFalse(capsule.exists)
+        XCTAssertEqual(tabBar.frame.minX, app.frame.minX, accuracy: 1)
+        XCTAssertEqual(tabBar.frame.maxX, app.frame.maxX, accuracy: 1)
+        XCTAssertEqual(tabBar.frame.maxY, app.frame.maxY, accuracy: 1)
+        XCTAssertGreaterThanOrEqual(tabBar.frame.height, 49)
 
         let labels = ["信息", "联系人", "首页", "我的", "测试"]
-        var geometryFailures: [String] = []
-        for (index, label) in labels.enumerated() {
+        for label in labels {
             let item = tabBar.buttons[label]
             XCTAssertTrue(item.exists)
-            let expectedX = capsuleFrame.minX
-                + capsuleFrame.width * (CGFloat(index) + 0.5) / CGFloat(labels.count)
-            let delta = item.frame.midX - expectedX
-            if abs(delta) > 3 {
-                geometryFailures.append(
-                    "\(label) frame=\(item.frame), expectedX=\(expectedX), delta=\(delta)"
-                )
-            }
+            XCTAssertTrue(tabBar.frame.contains(CGPoint(x: item.frame.midX, y: item.frame.midY)))
         }
-        XCTAssertTrue(
-            geometryFailures.isEmpty,
-            "capsule=\(capsuleFrame), tabBar=\(tabBar.frame)\n"
-                + geometryFailures.joined(separator: "\n")
-        )
     }
 
     @MainActor

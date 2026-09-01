@@ -325,7 +325,7 @@ struct RootView: View {
         .tint(.dsSky)
         .background {
             if !DSPlatformVisualPolicy.usesLiquidGlass {
-                LegacyTabBarCapsuleInstaller()
+                LegacyTabBarAppearanceInstaller()
             }
         }
     }
