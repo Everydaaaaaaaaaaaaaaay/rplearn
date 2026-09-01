@@ -178,7 +178,7 @@ public struct MyPageView: View {
 
             settingsHotspot
                 .frame(width: 112, height: 124)
-                .position(x: width * 0.80, y: sceneHeight * 0.73)
+                .position(x: width * 0.835, y: sceneHeight * 0.59)
 
             accountHotspot
                 .frame(width: 118, height: 126)
