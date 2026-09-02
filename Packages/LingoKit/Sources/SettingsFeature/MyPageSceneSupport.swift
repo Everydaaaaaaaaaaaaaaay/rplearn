@@ -33,7 +33,8 @@ struct TravelDeskSceneLayout {
     static let production = TravelDeskSceneLayout(
         assetName: "profile_travel_desk_final",
         profile: .init(
-            center: UnitPoint(x: 0.285, y: 0.178),
+            // 沿护照自身约 -9° 的纵轴向上移动，而非只沿画布 y 轴平移。
+            center: UnitPoint(x: 0.279, y: 0.160),
             size: CGSize(width: 104, height: 142),
             plane: .surface(rotationZ: -9, horizontalShadow: 3),
             contentScale: 0.95
@@ -41,7 +42,7 @@ struct TravelDeskSceneLayout {
         coin: .init(
             center: UnitPoint(x: 0.84, y: 0.20),
             size: CGSize(width: 112, height: 112),
-            plane: .surface(rotationZ: 9, horizontalShadow: -3),
+            plane: .surface(rotationZ: 13.5, horizontalShadow: -3),
             contentScale: 0.88
         ),
         learning: .init(
@@ -53,7 +54,7 @@ struct TravelDeskSceneLayout {
         favorites: .init(
             center: UnitPoint(x: 0.20, y: 0.72),
             size: CGSize(width: 120, height: 126),
-            plane: .surface(rotationZ: -8, horizontalShadow: 3),
+            plane: .surface(rotationZ: -11.5, horizontalShadow: 3),
             contentScale: 1.02
         ),
         settings: .init(
