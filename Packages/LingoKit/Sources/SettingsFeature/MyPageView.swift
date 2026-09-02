@@ -182,7 +182,7 @@ public struct MyPageView: View {
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.525, y: sceneHeight * 0.620)
+                .position(x: width * 0.533, y: sceneHeight * 0.642)
 
             #if DEBUG
             memoryDebugHotspot
@@ -338,6 +338,7 @@ public struct MyPageView: View {
                         SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 12, weight: .medium)
                             .lineLimit(1)
                     }
+                    .offset(x: 36, y: 28)
                 }
             }
             .frame(width: 158, height: 136)

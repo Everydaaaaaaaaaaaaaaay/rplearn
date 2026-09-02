@@ -25,7 +25,7 @@ struct SceneHologramPlane {
     let extrusionOffset: CGSize
 
     static let identityHolder = SceneHologramPlane(
-        rotationZ: -6,
+        rotationZ: -14,
         tiltX: 8,
         tiltY: -2,
         perspective: 0.2,
@@ -85,7 +85,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phone = SceneHologramPlane(
-        rotationZ: 5,
+        rotationZ: 4,
         tiltX: 6,
         tiltY: 0,
         perspective: 0.18,
