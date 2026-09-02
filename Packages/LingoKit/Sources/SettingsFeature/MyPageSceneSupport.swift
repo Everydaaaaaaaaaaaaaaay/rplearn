@@ -25,10 +25,10 @@ struct SceneHologramPlane {
     let extrusionOffset: CGSize
 
     static let identityHolder = SceneHologramPlane(
-        rotationZ: -14,
-        tiltX: 8,
-        tiltY: -2,
-        perspective: 0.2,
+        rotationZ: -1.5,
+        tiltX: 5,
+        tiltY: -1,
+        perspective: 0.16,
         scaleX: 1,
         scaleY: 0.985,
         footprintOffset: CGSize(width: 3, height: 13),
@@ -45,7 +45,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: 0.5, height: 2.6)
     )
     static let wallet = SceneHologramPlane(
-        rotationZ: 11,
+        rotationZ: 8,
         tiltX: 7,
         tiltY: -2,
         perspective: 0.2,
@@ -65,7 +65,7 @@ struct SceneHologramPlane {
         extrusionOffset: CGSize(width: -0.4, height: 2.8)
     )
     static let phrasebook = SceneHologramPlane(
-        rotationZ: -9,
+        rotationZ: -2,
         tiltX: 7,
         tiltY: 1.5,
         perspective: 0.2,

@@ -140,7 +140,7 @@ public struct MyPageView: View {
     /// 极短屏幕缩小参考画布后只会留下很窄的侧边余量；使用同源场景作柔化衬底，
     /// 避免硬色带，同时不参与任何入口的定位与点击。
     private func compactHeightBackdrop(size: CGSize) -> some View {
-        Image("profile_modern_travel_desk_interactive_scene", bundle: .main)
+        Image("profile_modern_travel_desk_interactive_scene_v2", bundle: .main)
             .resizable()
             .scaledToFill()
             .frame(width: size.width, height: size.height, alignment: .top)
@@ -161,12 +161,12 @@ public struct MyPageView: View {
             travelDeskBackground(width: width, height: sceneHeight)
 
             profileHotspot
-                .frame(width: 190, height: 190)
-                .position(x: width * 0.15, y: sceneHeight * 0.21)
+                .frame(width: 132, height: 150)
+                .position(x: width * 0.315, y: sceneHeight * 0.262)
 
             coinHotspot
                 .frame(width: 118, height: 110)
-                .position(x: width * 0.90, y: sceneHeight * 0.252)
+                .position(x: width * 0.86, y: sceneHeight * 0.248)
 
             learningHotspot
                 .frame(width: 142, height: 178)
@@ -178,16 +178,16 @@ public struct MyPageView: View {
 
             settingsHotspot
                 .frame(width: 112, height: 124)
-                .position(x: width * 0.833, y: sceneHeight * 0.665)
+                .position(x: width * 0.80, y: sceneHeight * 0.665)
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.533, y: sceneHeight * 0.642)
+                .position(x: width * 0.50, y: sceneHeight * 0.662)
 
             #if DEBUG
             memoryDebugHotspot
                 .frame(width: 114, height: 126)
-                .position(x: width * 0.616, y: sceneHeight * 0.191)
+                .position(x: width * 0.59, y: sceneHeight * 0.191)
             #endif
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
@@ -195,7 +195,7 @@ public struct MyPageView: View {
 
     private func travelDeskBackground(width: CGFloat, height: CGFloat) -> some View {
         ZStack {
-            Image("profile_modern_travel_desk_interactive_scene", bundle: .main)
+            Image("profile_modern_travel_desk_interactive_scene_v2", bundle: .main)
                 .resizable()
                 .frame(width: width, height: height)
 
@@ -320,31 +320,26 @@ public struct MyPageView: View {
     #endif
 
     private var profileSceneEntry: some View {
-        ZStack(alignment: .topLeading) {
-            SceneHologram(plane: .identityHolder) {
-                VStack(spacing: 5) {
-                    AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 40)
-                        .overlay {
-                            Circle()
-                                .stroke(Color.white.opacity(0.7), lineWidth: 1)
-                        }
-
-                    VStack(alignment: .leading, spacing: 1.5) {
-                        SceneHologramText(presentation.displayName, size: 16, weight: .bold)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.72)
-                        SceneHologramText(presentation.accountBadgeTitle, size: 13, weight: .semibold)
-                            .lineLimit(1)
-                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 12, weight: .medium)
-                            .lineLimit(1)
+        SceneHologram(plane: .identityHolder) {
+            VStack(spacing: 4) {
+                AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 38)
+                    .overlay {
+                        Circle()
+                            .stroke(Color.white.opacity(0.7), lineWidth: 1)
                     }
-                    .offset(x: 36, y: 28)
+
+                VStack(spacing: 1.5) {
+                    SceneHologramText(presentation.displayName, size: 16, weight: .bold)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
+                    SceneHologramText(presentation.accountBadgeTitle, size: 13, weight: .semibold)
+                        .lineLimit(1)
+                    SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 12, weight: .medium)
+                        .lineLimit(1)
                 }
             }
-            .frame(width: 158, height: 136)
-            .position(x: 96, y: 75)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
     }
 
