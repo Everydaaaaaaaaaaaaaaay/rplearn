@@ -295,7 +295,7 @@ public struct MyPageView: View {
                 glyph: .account,
                 title: "登录",
                 plane: .phone,
-                scale: 0.72
+                scale: 0.84
             )
         }
         .buttonStyle(SceneHologramButtonStyle())
