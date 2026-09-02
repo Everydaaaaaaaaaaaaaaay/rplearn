@@ -168,10 +168,23 @@ lingotrip_xcodebuild() {
   local udid="$2"
   shift 2
 
-  local package_resolution_arguments=()
+  local xcodebuild_arguments=(
+    -project "$LINGOTRIP_REPO_ROOT/LingoTrip.xcodeproj"
+    -scheme "$scheme"
+    -destination "platform=iOS Simulator,id=$udid"
+    -derivedDataPath "$LINGOTRIP_DERIVED_DATA_PATH"
+    -clonedSourcePackagesDirPath "$LINGOTRIP_SOURCE_PACKAGES_PATH"
+    CODE_SIGNING_ALLOWED=YES
+    CODE_SIGNING_REQUIRED=YES
+    CODE_SIGN_IDENTITY="-"
+    DEVELOPMENT_TEAM=""
+    PROVISIONING_PROFILE_SPECIFIER=""
+    COMPILER_INDEX_STORE_ENABLE="${LINGOTRIP_INDEX_STORE_ENABLE:-NO}"
+    -quiet
+  )
   if lingotrip_package_cache_ready; then
     # 完整缓存只读取 Package.resolved，避免每次构建访问远端或与其他工作树争用。
-    package_resolution_arguments=(
+    xcodebuild_arguments+=(
       -disableAutomaticPackageResolution
       -onlyUsePackageVersionsFromResolvedFile
     )
@@ -179,19 +192,5 @@ lingotrip_xcodebuild() {
     echo "当前工作树首次准备 Swift Package 依赖；完成后后续构建将使用本地锁定缓存"
   fi
 
-  xcodebuild \
-    -project "$LINGOTRIP_REPO_ROOT/LingoTrip.xcodeproj" \
-    -scheme "$scheme" \
-    -destination "platform=iOS Simulator,id=$udid" \
-    -derivedDataPath "$LINGOTRIP_DERIVED_DATA_PATH" \
-    -clonedSourcePackagesDirPath "$LINGOTRIP_SOURCE_PACKAGES_PATH" \
-    CODE_SIGNING_ALLOWED=YES \
-    CODE_SIGNING_REQUIRED=YES \
-    CODE_SIGN_IDENTITY="-" \
-    DEVELOPMENT_TEAM="" \
-    PROVISIONING_PROFILE_SPECIFIER="" \
-    COMPILER_INDEX_STORE_ENABLE="${LINGOTRIP_INDEX_STORE_ENABLE:-NO}" \
-    -quiet \
-    "${package_resolution_arguments[@]}" \
-    "$@"
+  xcodebuild "${xcodebuild_arguments[@]}" "$@"
 }
