@@ -236,7 +236,7 @@ def build_database(args: argparse.Namespace) -> tuple[int, int, int, int]:
         ) WITHOUT ROWID;
         CREATE TABLE word (
             wl TEXT NOT NULL PRIMARY KEY,
-            word TEXT NOT NULL,
+            word TEXT,
             phonetic TEXT,
             definition TEXT,
             translation TEXT,
@@ -269,7 +269,7 @@ def build_database(args: argparse.Namespace) -> tuple[int, int, int, int]:
         (
             (
                 key,
-                row["word"].strip(),
+                None if row["word"].strip() == key else row["word"].strip(),
                 row.get("phonetic") or None,
                 row.get("definition") or None,
                 row.get("translation") or None,
@@ -310,7 +310,7 @@ def build_database(args: argparse.Namespace) -> tuple[int, int, int, int]:
     database.executemany(
         "INSERT INTO metadata VALUES (?,?)",
         [
-            ("schema_version", "2"),
+            ("schema_version", "3"),
             ("mode", args.mode),
             ("ecdict_entries", str(len(best))),
             ("lemma_pairs", str(len(lemma_pairs))),

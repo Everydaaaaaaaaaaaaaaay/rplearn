@@ -31,7 +31,7 @@ public struct SettingsView: View {
     @State private var voiceQuality: VoiceReport.Quality = .standard
     @State private var synthesisEngineStatus = SpeechSynthesisEngineStatus(
         phase: .resourceMissing,
-        selectedEngine: .pocketTTS
+        selectedEngine: .supertonic3
     )
     @AppStorage(ProactiveMessagePreferences.enabledKey) private var proactiveMessagesEnabled = true
     @Environment(\.openURL) private var openURL
@@ -120,7 +120,7 @@ public struct SettingsView: View {
                     .font(.system(.title2, design: .rounded, weight: .bold))
                     .foregroundStyle(Color.dsPaperInk)
                 Label(reminderSummary, systemImage: reminderSummaryIcon)
-                Label("Pocket TTS · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
+                Label("Supertonic-3 · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
             }
             .font(.subheadline.weight(.medium))
             .foregroundStyle(Color.dsPaperInkSecondary)
@@ -218,7 +218,7 @@ public struct SettingsView: View {
                             .font(.body.weight(.medium))
                         Spacer()
                         VStack(alignment: .trailing, spacing: 2) {
-                            Text("Pocket TTS · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
+                            Text("Supertonic-3 · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
                                 .font(.subheadline)
                                 .foregroundStyle(Color.dsPaperInkSecondary)
                             Text(offlineVoicePhaseLabel)
@@ -261,15 +261,34 @@ public struct SettingsView: View {
 
                         panelDivider
 
-                        voicePreviewButton("试听 Pocket TTS", systemImage: "waveform") {
+                        voicePreviewButton("试听 Supertonic-3 整句", systemImage: "waveform") {
                             Task {
                                 await speech.speak(
                                     SpeechRequest(
                                         text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
-                                        language: "en-GB",
+                                        language: "en-US",
                                         purpose: .characterDialogue,
                                         voiceHint: previewVoiceHint,
-                                        engine: .pocketTTS
+                                        engine: .supertonic3
+                                    )
+                                )
+                            }
+                        }
+                        .disabled(
+                            !synthesisEngineStatus.isBundledModelAvailable
+                                || synthesisEngineStatus.isBusy
+                        )
+
+                        panelDivider
+
+                        voicePreviewButton("试听 Supertonic-3 单词", systemImage: "textformat.abc") {
+                            Task {
+                                await speech.speak(
+                                    SpeechRequest(
+                                        text: "extraordinary",
+                                        language: "en-US",
+                                        purpose: .pronunciation,
+                                        engine: .supertonic3
                                     )
                                 )
                             }
@@ -284,13 +303,13 @@ public struct SettingsView: View {
 
                     DisclosureGroup {
                         VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                            Text("实时语音使用 Apple 系统识别。Pocket TTS 完全离线；系统识别会优先端侧处理，当前语言模型不可用时可能使用网络。")
+                            Text("Supertonic-3 完全离线，生成内容属于机器合成语音；实时识别仍使用 Apple 系统能力，当前语言模型不可用时可能使用网络。")
                                 .font(.footnote)
                                 .foregroundStyle(Color.dsPaperInkSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
                             Link(
-                                "Pocket TTS 与开源许可",
-                                destination: URL(string: "https://github.com/kyutai-labs/pocket-tts")!
+                                "Supertonic-3 模型与 OpenRAIL-M 许可",
+                                destination: URL(string: "https://huggingface.co/Supertone/supertonic-3")!
                             )
                             .font(.subheadline.weight(.semibold))
                         }
@@ -566,7 +585,7 @@ public struct SettingsView: View {
         switch synthesisEngineStatus.phase {
         case .resourceMissing: "资源缺失"
         case .available:
-            synthesisEngineStatus.selectedEngine == .pocketTTS ? "待预热" : "已打包"
+            synthesisEngineStatus.selectedEngine == .system ? "已打包" : "待预热"
         case .loading: "预热中"
         case .ready: "可用"
         case .failed: "加载失败"
@@ -582,7 +601,7 @@ public struct SettingsView: View {
     }
 
     private func formattedBytes(_ count: Int64) -> String {
-        guard count > 0 else { return "331 MB" }
+        guard count > 0 else { return "约 172 MB" }
         let formatter = ByteCountFormatter()
         formatter.countStyle = .file
         return formatter.string(fromByteCount: count)

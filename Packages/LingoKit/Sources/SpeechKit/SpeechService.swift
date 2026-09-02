@@ -34,7 +34,7 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
     }
 }
 
-/// 朗读用途。精确发音练习始终保留给可控的系统语音；角色台词可使用自然度更高的模型。
+/// 朗读用途。用于选择音色、播放会话模式与缓存策略，不把具体引擎泄漏给业务层。
 public enum SpeechPurpose: Sendable, Equatable {
     case general
     case characterDialogue

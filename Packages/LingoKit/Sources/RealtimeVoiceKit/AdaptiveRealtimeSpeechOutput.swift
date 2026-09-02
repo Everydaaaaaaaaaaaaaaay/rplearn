@@ -2,7 +2,7 @@ import Foundation
 import SpeechKit
 
 /// 把任意 SpeechService 适配成可增量排队、可立即打断的实时输出。
-/// AdaptiveSpeechService 会优先走已安装的 Pocket TTS，未准备好时无等待地回退 Apple TTS。
+/// AdaptiveSpeechService 会优先走随包 Supertonic-3，资源不可用时回退 Apple TTS。
 @MainActor
 public final class AdaptiveRealtimeSpeechOutput: RealtimeSpeechOutput {
     public var heardText: String {

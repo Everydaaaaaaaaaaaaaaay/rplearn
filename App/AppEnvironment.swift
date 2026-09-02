@@ -59,7 +59,7 @@ final class AppEnvironment {
     let economyService: EconomyService
 
     init() {
-        // 仅当用户选择 Pocket TTS 时后台预热；实时识别统一使用 Apple 系统能力。
+        // 离线模式后台预热 Supertonic-3；实时识别统一使用 Apple 系统能力。
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
         let speech = AdaptiveSpeechService(audioSession: audioSession)

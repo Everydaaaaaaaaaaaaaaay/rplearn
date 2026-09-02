@@ -2,9 +2,9 @@
 
 ## 唯一母版
 
-所有后续图片优化必须始终使用以下无 UI 原图作为唯一编辑目标：
+所有后续图片优化必须始终使用以下当前运行时场景作为唯一编辑目标：
 
-`App/Assets.xcassets/profile_modern_travel_desk.imageset/profile_modern_travel_desk.png`
+`App/Assets.xcassets/profile_modern_travel_desk_interactive_scene.imageset/profile_modern_travel_desk_interactive_scene.png`
 
 禁止以上一轮生成图作为下一轮输入。每次修改都应回到母版，并把已经确认的设计要求重新写入完整提示词，避免桌面纹理、地图、物品轮廓和光照发生代际漂移。
 

@@ -114,7 +114,7 @@ lingotrip_prepare_workspace() {
         exit 1
       fi
       echo "正在从共享 Git LFS 对象补全当前工作树的语音模型"
-      git lfs checkout "Packages/LingoKit/Sources/SpeechKit/Resources/PocketTTS"
+      git lfs checkout "Packages/LingoKit/Sources/SpeechKit/Resources/Supertonic3"
       Scripts/verify-bundled-voice-models.sh "$voice_model_stamp"
     fi
   fi

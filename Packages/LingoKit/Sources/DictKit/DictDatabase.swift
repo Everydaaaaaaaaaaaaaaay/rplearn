@@ -211,12 +211,14 @@ public actor DictDatabase {
 
             db = handle
             exactStatement = try prepare(
-                "SELECT word, phonetic, definition, translation, pos, collins, oxford, tag, bnc, frq, exchange FROM word WHERE wl = ?"
+                "SELECT COALESCE(word, wl), phonetic, definition, translation, pos, collins, oxford, tag, bnc, frq, exchange FROM word WHERE wl = ?"
             )
             lemmaStatement = try prepare("SELECT lemma FROM lemma WHERE form = ?")
-            prefixStatement = try prepare("SELECT word FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?")
+            prefixStatement = try prepare(
+                "SELECT COALESCE(word, wl) FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?"
+            )
             relatedPhraseStatement = try prepare(
-                "SELECT word, oxford FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?"
+                "SELECT COALESCE(word, wl), oxford FROM word WHERE wl >= ? AND wl < ? ORDER BY wl LIMIT ?"
             )
             senseStatement = try prepare(
                 "SELECT rank, pos, definition, examples, synonyms FROM sense WHERE wl = ? ORDER BY rank, pos LIMIT 12"

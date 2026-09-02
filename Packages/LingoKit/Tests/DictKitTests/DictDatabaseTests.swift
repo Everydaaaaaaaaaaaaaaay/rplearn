@@ -31,6 +31,15 @@ struct DictDatabaseTests {
         #expect(entry?.phonetic?.isEmpty == false)
     }
 
+    @Test("压缩词头仍保留普通词与原始大小写")
+    func compactWordStoragePreservesDisplaySpelling() async throws {
+        let db = try openDatabase()
+
+        #expect(await db.lookup("look")?.word == "look")
+        #expect(await db.lookup("7-eleven")?.word == "7-Eleven")
+        #expect(await db.suggestions(prefix: "look", limit: 3).first == "look")
+    }
+
     @Test("全量库覆盖旧精简规则遗漏的新常用词")
     func expandedCoverage() async throws {
         let db = try openDatabase()

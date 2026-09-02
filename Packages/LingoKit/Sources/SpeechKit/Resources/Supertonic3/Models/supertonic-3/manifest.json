@@ -1,0 +1,1007 @@
+{
+ "name": "supertonic-3-coreml",
+ "version": "1.7.3",
+ "upstream": "https://huggingface.co/Supertone/supertonic-3",
+ "conversion_repo": "https://github.com/FluidInference/mobius/tree/main/models/tts/supertonic-3/coreml",
+ "integration": "https://github.com/FluidInference/FluidAudio/tree/main/Sources/FluidAudio/TTS/Supertonic3",
+ "precision": "float16",
+ "core_ml_target": "iOS18",
+ "sample_rate": 44100,
+ "languages": [
+  "en",
+  "ko",
+  "ja",
+  "ar",
+  "bg",
+  "cs",
+  "da",
+  "de",
+  "el",
+  "es",
+  "et",
+  "fi",
+  "fr",
+  "hi",
+  "hr",
+  "hu",
+  "id",
+  "it",
+  "lt",
+  "lv",
+  "nl",
+  "pl",
+  "pt",
+  "ro",
+  "ru",
+  "sk",
+  "sl",
+  "sv",
+  "tr",
+  "uk",
+  "vi"
+ ],
+ "modules": [
+  {
+   "name": "TextEncoder",
+   "precision": "fp16",
+   "package": "TextEncoder.mlpackage",
+   "compiled": "TextEncoder.mlmodelc",
+   "shape_policy": "fixed T=128",
+   "package_size_bytes": 18166801,
+   "compiled_size_bytes": 18179790,
+   "package_files": [
+    {
+     "path": "TextEncoder.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "9674a311dd5145e27554c1d021f25531f90ed772a3758ab349b605967faec667",
+     "size_bytes": 144168
+    },
+    {
+     "path": "TextEncoder.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "7c7afa5d02426a8a363c9cef0e27ce64a5c57a67d1a59f60aac0ac58ffb9877f",
+     "size_bytes": 18022016
+    },
+    {
+     "path": "TextEncoder.mlpackage/Manifest.json",
+     "sha256": "3d1496b0ff38b32feb32f36468e5920909176c6dc4dbe3bf70db97b03beb9e85",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "TextEncoder.mlmodelc/.DS_Store",
+     "sha256": "cf4645f055711856ff0569b29315fb462026365385312c81e7db25c789e76e2b",
+     "size_bytes": 6148
+    },
+    {
+     "path": "TextEncoder.mlmodelc/analytics/coremldata.bin",
+     "sha256": "b39c208b46f180dcbf4cfcd3b4437eeb93371fb77d6d636b99ca3ddff5327253",
+     "size_bytes": 243
+    },
+    {
+     "path": "TextEncoder.mlmodelc/coremldata.bin",
+     "sha256": "4349aa84bb4a4731e3be09eb235e1816a3d0c88500b151479e08fe15662a446c",
+     "size_bytes": 431
+    },
+    {
+     "path": "TextEncoder.mlmodelc/model.mil",
+     "sha256": "6ef23a27a343f540bee78f5b2e85bbd83443c960c151d0e3bd57ffe5c6082ed1",
+     "size_bytes": 150952
+    },
+    {
+     "path": "TextEncoder.mlmodelc/weights/weight.bin",
+     "sha256": "7c7afa5d02426a8a363c9cef0e27ce64a5c57a67d1a59f60aac0ac58ffb9877f",
+     "size_bytes": 18022016
+    }
+   ]
+  },
+  {
+   "name": "DurationPredictor",
+   "precision": "fp16",
+   "package": "DurationPredictor.mlpackage",
+   "compiled": "DurationPredictor.mlmodelc",
+   "shape_policy": "fixed T=128",
+   "package_size_bytes": 1892063,
+   "compiled_size_bytes": 1902563,
+   "package_files": [
+    {
+     "path": "DurationPredictor.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "ccb56ff515b7d41cf79d21d6be2f2d23a31a295810950dd86e39620f9629cad4",
+     "size_bytes": 93494
+    },
+    {
+     "path": "DurationPredictor.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "7f709c544087966d6b2538ac50b7a4014d6e1049e21d713cf3bc71c4c5b9307c",
+     "size_bytes": 1797952
+    },
+    {
+     "path": "DurationPredictor.mlpackage/Manifest.json",
+     "sha256": "36d830eb7bfbe233cdfca3ac155eb0a8894a2a52fa96ca81b38d00d5c1267f8a",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "DurationPredictor.mlmodelc/.DS_Store",
+     "sha256": "75c79ac936a1add17210b7cbec4962505cc557bc2f940e276b1236d35ff12dfa",
+     "size_bytes": 6148
+    },
+    {
+     "path": "DurationPredictor.mlmodelc/analytics/coremldata.bin",
+     "sha256": "b836b72b388c2bc009a13bcc495cd08278a1742b1a866cdaf7faab7d80786bcb",
+     "size_bytes": 243
+    },
+    {
+     "path": "DurationPredictor.mlmodelc/coremldata.bin",
+     "sha256": "3ee71b864377bd54479f6b07d141ed37c9fc49718aba6dba21c56cc5cb975be0",
+     "size_bytes": 425
+    },
+    {
+     "path": "DurationPredictor.mlmodelc/model.mil",
+     "sha256": "e87f25d43a28b967628e6c0089535390687203e54520e7e3223c771b26fbc0bd",
+     "size_bytes": 97795
+    },
+    {
+     "path": "DurationPredictor.mlmodelc/weights/weight.bin",
+     "sha256": "7f709c544087966d6b2538ac50b7a4014d6e1049e21d713cf3bc71c4c5b9307c",
+     "size_bytes": 1797952
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator",
+   "precision": "fp16",
+   "package": "VectorEstimator.mlpackage",
+   "compiled": "VectorEstimator.mlmodelc",
+   "shape_policy": "RangeDim L,T 17..512",
+   "package_size_bytes": 127977306,
+   "compiled_size_bytes": 128000054,
+   "package_files": [
+    {
+     "path": "VectorEstimator.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "c93445cd09b7e6190fd26873cafb4a209fbb24d836b665428f7114ed6b0b41df",
+     "size_bytes": 328305
+    },
+    {
+     "path": "VectorEstimator.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "101cebe7759b5f5e8f188ed3c2bf5f624bbf048aa657fe5bed9c3110c5ce0c26",
+     "size_bytes": 127648384
+    },
+    {
+     "path": "VectorEstimator.mlpackage/Manifest.json",
+     "sha256": "825048428f8073ddcc4f22dfeb1d6a649f5799ef8e37fdb7d47ecaac8ec48590",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimator.mlmodelc/.DS_Store",
+     "sha256": "d61692ef37d205b073915a28b0fcca8eb5360563286dc61d44acbd2af6b4a184",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimator.mlmodelc/analytics/coremldata.bin",
+     "sha256": "1f43626d16b133a8b302f4f7a0e6d0f789422b22df135b7af11df25c385bebe0",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimator.mlmodelc/coremldata.bin",
+     "sha256": "e4ae2bd30a9130ac2d09996ad4f63ea2c5703f735d11d9cf7e494d14397fd495",
+     "size_bytes": 633
+    },
+    {
+     "path": "VectorEstimator.mlmodelc/model.mil",
+     "sha256": "56c549b708a496f94e2b7c3ff7671414fb4d8a676df0b026ebab71c334a76ccf",
+     "size_bytes": 344646
+    },
+    {
+     "path": "VectorEstimator.mlmodelc/weights/weight.bin",
+     "sha256": "101cebe7759b5f5e8f188ed3c2bf5f624bbf048aa657fe5bed9c3110c5ce0c26",
+     "size_bytes": 127648384
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_int8",
+   "precision": "int8 (linear per-channel symmetric, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_int8.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_int8.mlmodelc",
+   "shape_policy": "RangeDim(17..512) latent.L & text.T (dynamic; CPU/GPU only)",
+   "package_size_bytes": 64530962,
+   "compiled_size_bytes": 64557858,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "8dd69339b4adc2116a983bc85527623dcb102b1e9fce70182adf595ef36f770b",
+     "size_bytes": 345737
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "0e637c3a1725b5e1b3df09cc162d1822e8fe80fa92ba01c180dde2ca29c12523",
+     "size_bytes": 64184608
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlpackage/Manifest.json",
+     "sha256": "f4c7faad2e4583c830a695179e459b0b0f5a60441fd6c62fb9862cea5e9ae4bc",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlmodelc/.DS_Store",
+     "sha256": "b26797fead092454e6250e8bbaffbf5cda59a89a6e48320b8ef1dcacb0b16a3c",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlmodelc/analytics/coremldata.bin",
+     "sha256": "72c0b3e94ce862b7d47d9dd708688837795b8180a344dde5d061863519da7493",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlmodelc/coremldata.bin",
+     "sha256": "58fca0ccdab642909d03a9414578c4ec6e0890d98d3828beaa88a3a257fcbf3f",
+     "size_bytes": 634
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlmodelc/model.mil",
+     "sha256": "4286e9f3ea253bdbca50e246d5568e9f89e130e05b7c8243c54d70f3611e5440",
+     "size_bytes": 366225
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int8.mlmodelc/weights/weight.bin",
+     "sha256": "0e637c3a1725b5e1b3df09cc162d1822e8fe80fa92ba01c180dde2ca29c12523",
+     "size_bytes": 64184608
+    }
+   ]
+  },
+  {
+   "name": "Vocoder",
+   "precision": "fp16",
+   "package": "Vocoder.mlpackage",
+   "compiled": "Vocoder.mlmodelc",
+   "shape_policy": "RangeDim L_ttl 4..512",
+   "package_size_bytes": 50743824,
+   "compiled_size_bytes": 50754917,
+   "package_files": [
+    {
+     "path": "Vocoder.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "e0aefc35639793ac4dfcb74cddfca17744e7bb302f7af34a330d83d4b59e2831",
+     "size_bytes": 70695
+    },
+    {
+     "path": "Vocoder.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "b45e4c17a45cc4de30dcedae9f662548aa35f8f9763632c342b8bbef3089fcee",
+     "size_bytes": 50672512
+    },
+    {
+     "path": "Vocoder.mlpackage/Manifest.json",
+     "sha256": "5f675492dc6d4d345386d7c974c246ce3228c457acaed27f7aff00754a7bce45",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "Vocoder.mlmodelc/.DS_Store",
+     "sha256": "aad4800457fdb1567500acd0f9eb203b27c71d29189891095b9d371f8c9c58b5",
+     "size_bytes": 6148
+    },
+    {
+     "path": "Vocoder.mlmodelc/analytics/coremldata.bin",
+     "sha256": "4fe1b825137629a96dc58a1339bc4ece32041b755f99d638f21a153f2e7faed6",
+     "size_bytes": 243
+    },
+    {
+     "path": "Vocoder.mlmodelc/coremldata.bin",
+     "sha256": "dbf54fc98879ee1c9a213452e16d09367f3c34ad489b175bcae7ef5f74f8d121",
+     "size_bytes": 388
+    },
+    {
+     "path": "Vocoder.mlmodelc/model.mil",
+     "sha256": "5f57d6b16a4ee7237e046a423c265aa2c487857eb0003bba1c89fa66e577353f",
+     "size_bytes": 75626
+    },
+    {
+     "path": "Vocoder.mlmodelc/weights/weight.bin",
+     "sha256": "b45e4c17a45cc4de30dcedae9f662548aa35f8f9763632c342b8bbef3089fcee",
+     "size_bytes": 50672512
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_int6",
+   "precision": "int6 (6-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_int6.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_int6.mlmodelc",
+   "shape_policy": "RangeDim(17..512) latent.L & text.T (dynamic; CPU/GPU only)",
+   "package_size_bytes": 48425913,
+   "compiled_size_bytes": 48452166,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "a1d517a0b2aa314a4d0e518c7d07bfeb713294765d2f0737522ca6e9ed96fa19",
+     "size_bytes": 346512
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "56e3cf3be8968408f80d86b85ab592a8fac9ed65fd3cd83ef5e818854a57be9e",
+     "size_bytes": 48078784
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlpackage/Manifest.json",
+     "sha256": "cf4a43df85a9b45ea1b3a9f7f9e93398406b9fbf860e68b0e8a500dce1c81ba1",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlmodelc/.DS_Store",
+     "sha256": "73da844993fbfbeaa978599d24415f7e9d6f1857f72e7e67c863803a5fbb2076",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlmodelc/analytics/coremldata.bin",
+     "sha256": "8828e93af8649c6cac949f4c43b7cb79a34de238ee4ffc4be7636c3d6076cc22",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlmodelc/coremldata.bin",
+     "sha256": "d3aec2dac3e711ce9ec7e06b1f0879459d9760311bf103f3cedbe9751d42eb64",
+     "size_bytes": 634
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlmodelc/model.mil",
+     "sha256": "6f6ca1a1d8059eb040d56b2e67e72a8c2cb2506bd4aa49d24ef17457e142e473",
+     "size_bytes": 366357
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int6.mlmodelc/weights/weight.bin",
+     "sha256": "56e3cf3be8968408f80d86b85ab592a8fac9ed65fd3cd83ef5e818854a57be9e",
+     "size_bytes": 48078784
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_int4",
+   "precision": "int4 (4-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_int4.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_int4.mlmodelc",
+   "shape_policy": "RangeDim(17..512) latent.L & text.T (dynamic; CPU/GPU only)",
+   "package_size_bytes": 32499155,
+   "compiled_size_bytes": 32525365,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "ed5cc53c2867ea7a1920bc4ecce5aa648fa47fa52619d85d0d41121830e1e0d7",
+     "size_bytes": 346506
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "5aa43359149137490df9eed6bb7082572da684395e2be758e70cf0f949bdc0ea",
+     "size_bytes": 32152032
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlpackage/Manifest.json",
+     "sha256": "47c1a49a6582771bf7b0b55d084b16cc66acb216eb5d9772d0444d345b0a0518",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlmodelc/.DS_Store",
+     "sha256": "d12e7bfe9666215d951a8587b8d19fc6ae82e7c6f702ae959aa54a2130e1d202",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlmodelc/analytics/coremldata.bin",
+     "sha256": "943640f5effc7cf327fc3d33a37322608256d90e74ce098d21a133ff55ad4085",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlmodelc/coremldata.bin",
+     "sha256": "721d25e3fe37df4db409c6c041380d575071624f8863a9c042f685f1863c831e",
+     "size_bytes": 634
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlmodelc/model.mil",
+     "sha256": "234668ba61da12a904bc0800957d18125e62112789b19176dc9204be11114c5d",
+     "size_bytes": 366308
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_int4.mlmodelc/weights/weight.bin",
+     "sha256": "5aa43359149137490df9eed6bb7082572da684395e2be758e70cf0f949bdc0ea",
+     "size_bytes": 32152032
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L128_int8",
+   "precision": "int8 (linear per-channel symmetric, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlmodelc",
+   "shape_policy": "fixed L=128, T=128 (ANE)",
+   "package_size_bytes": 64539184,
+   "compiled_size_bytes": 64565133,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "33f57a031fe6b374d93d92509b20713d444e4541ff0d75dd8cabd1363246da9e",
+     "size_bytes": 323623
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "fedb6be05958c6319d614d908ef5cb429444667a7158763c9944173c0966a943",
+     "size_bytes": 64214944
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlpackage/Manifest.json",
+     "sha256": "38f3dcc96e620ac943377b975e2d1ad2781144d21ff68ce568f8803029f9ec6f",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlmodelc/.DS_Store",
+     "sha256": "998f7afba721a8e83584d7160aabd021505e52cc829b7acbf2c62f0d4f5f85bc",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlmodelc/analytics/coremldata.bin",
+     "sha256": "e52f658a0d34b0db5bf4f4ac83f3a2e5a52d68c53d2592975b26545df086c97e",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlmodelc/coremldata.bin",
+     "sha256": "5da45c263cb8a04fcd2e9194173f3eedfb8a1c1e9ad399b7d7b217edbda59cbe",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlmodelc/model.mil",
+     "sha256": "ddd9add4cbbe7e9a6b3d7729016c93c2c45038a8a4828bce4ae78ae60fc45984",
+     "size_bytes": 343245
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int8.mlmodelc/weights/weight.bin",
+     "sha256": "fedb6be05958c6319d614d908ef5cb429444667a7158763c9944173c0966a943",
+     "size_bytes": 64214944
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L128_int6",
+   "precision": "int6 (6-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlmodelc",
+   "shape_policy": "fixed L=128, T=128 (ANE)",
+   "package_size_bytes": 48426171,
+   "compiled_size_bytes": 48451515,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "5e20c25038e172b8e9226afa7d853a80973246ee9b46b9dcfc19ef5a93b3b245",
+     "size_bytes": 324434
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "e7c30501c574e00e0d723afe61211d2b5ab08cc55b54bcf8a5797accd1ccdf79",
+     "size_bytes": 48101120
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlpackage/Manifest.json",
+     "sha256": "eacd428bc50c2ef35e73d588669b301647b478d4e6ac9d30a96f7dd9672d2227",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlmodelc/.DS_Store",
+     "sha256": "40f9fc3684ec617f2140a583ae6c0fc0f72535ecb44c653adc2cf05097e6dda7",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlmodelc/analytics/coremldata.bin",
+     "sha256": "62886717e4197ee267c1a1e1816dcd79becd74ce49dff31e491b04afe97663aa",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlmodelc/coremldata.bin",
+     "sha256": "2ef81927f104499438e8e495903bab8ef12cc3e58ddd1f5d4643918ace68d3cd",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlmodelc/model.mil",
+     "sha256": "0ed49738d989d062542defec3fd605451965ec43b135c01576bb665d46da5188",
+     "size_bytes": 343451
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int6.mlmodelc/weights/weight.bin",
+     "sha256": "e7c30501c574e00e0d723afe61211d2b5ab08cc55b54bcf8a5797accd1ccdf79",
+     "size_bytes": 48101120
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L128_int4",
+   "precision": "int4 (4-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlmodelc",
+   "shape_policy": "fixed L=128, T=128 (ANE)",
+   "package_size_bytes": 32491160,
+   "compiled_size_bytes": 32516454,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "7ed992ccab17c950d900f5964a656ef9efd0c84222bf96ae0a3445623142f081",
+     "size_bytes": 324431
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "1ef6a7d8fefe4b785cbb96532ce2c1bf479471bbeabcec04c2e893550ea8e2a3",
+     "size_bytes": 32166112
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlpackage/Manifest.json",
+     "sha256": "f5ae6633334774137d1833eb150e6bd697238129c669823ec2a4b69d681efe6b",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlmodelc/.DS_Store",
+     "sha256": "6d7989a4b617ebcf225fea5e219e23780d2504aa3e42a725eb31aa3a2fbc7e00",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlmodelc/analytics/coremldata.bin",
+     "sha256": "7bc35092cc1cf49dd0d636872b834a8af7163cff04f2d4971d694da59cdf1e0c",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlmodelc/coremldata.bin",
+     "sha256": "f2ef040d1fa25f7a4bffcb7e1932fed6c3a216c28809fb6f60c24174aa5176d0",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlmodelc/model.mil",
+     "sha256": "a78dffeaa0f087d574789f4b42c10a35862d6cc59cb09fce187108a11c612d7a",
+     "size_bytes": 343398
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L128_int4.mlmodelc/weights/weight.bin",
+     "sha256": "1ef6a7d8fefe4b785cbb96532ce2c1bf479471bbeabcec04c2e893550ea8e2a3",
+     "size_bytes": 32166112
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L256_int8",
+   "precision": "int8 (linear per-channel symmetric, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlmodelc",
+   "shape_policy": "fixed L=256, T=128 (ANE)",
+   "package_size_bytes": 64540444,
+   "compiled_size_bytes": 64566441,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "a389f44bd2129400bc8ae233a4d17fc765770653963ec1d1a56356190ca325a8",
+     "size_bytes": 323795
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "fc2b363c0260c90154c36dce2e307e14b8a97acbe2f7bc99a6aa3106f0bfa0d3",
+     "size_bytes": 64216032
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlpackage/Manifest.json",
+     "sha256": "3ddcc21f1a8cd9fc2066e541d6a9398b5efe12ccc6969cb5950e79ec06a9781b",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlmodelc/.DS_Store",
+     "sha256": "9c5270aae79de24a37984c77cb3ecfdb9333f9c721ebceea2aacb9c839a8af81",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlmodelc/analytics/coremldata.bin",
+     "sha256": "6b6d6e841403cc595e53526d880b5f8b4a880ae8f572ae60fde6a2cb6bb7d569",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlmodelc/coremldata.bin",
+     "sha256": "0924682809182fbf3d3c94d3822d8dd18d09e6016ff6ff7e438c560d86e83d20",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlmodelc/model.mil",
+     "sha256": "246ef1174928a67023cfbf00fb96b3c21cf526fd39a4944fb1a64d9b78276be6",
+     "size_bytes": 343465
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int8.mlmodelc/weights/weight.bin",
+     "sha256": "fc2b363c0260c90154c36dce2e307e14b8a97acbe2f7bc99a6aa3106f0bfa0d3",
+     "size_bytes": 64216032
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L256_int6",
+   "precision": "int6 (6-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlmodelc",
+   "shape_policy": "fixed L=256, T=128 (ANE)",
+   "package_size_bytes": 48427431,
+   "compiled_size_bytes": 48452822,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "5b366fa5073b9178cc544271130be393dc9a221a2f93b27570b52c6dfcb6f9d8",
+     "size_bytes": 324606
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "441e48628f5fc4acc7d6a427341f44c13fb10190e2e00d69f4df7fa905bbad07",
+     "size_bytes": 48102208
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlpackage/Manifest.json",
+     "sha256": "85dd3dd6c189aaa685a106e797d46be0c30d207d8b2bcee16861a38057877d4c",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlmodelc/.DS_Store",
+     "sha256": "aa980af1c9f2e03d49428b566bdb930adbb1d9f995789341f99dabad73cc27e2",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlmodelc/analytics/coremldata.bin",
+     "sha256": "06149b22072aa0d160b6a2c392ada87a60ca92a6dc2e87c86317dc86e08fce48",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlmodelc/coremldata.bin",
+     "sha256": "58f16c4fbd854f6c007a5cda430379d1909d643da1d3a3eef94398d4e96d0091",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlmodelc/model.mil",
+     "sha256": "25af28abff90c603790f2562092fab283ebe09455cbeb1cca298186b4c92e667",
+     "size_bytes": 343670
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int6.mlmodelc/weights/weight.bin",
+     "sha256": "441e48628f5fc4acc7d6a427341f44c13fb10190e2e00d69f4df7fa905bbad07",
+     "size_bytes": 48102208
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L256_int4",
+   "precision": "int4 (4-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlmodelc",
+   "shape_policy": "fixed L=256, T=128 (ANE)",
+   "package_size_bytes": 32492420,
+   "compiled_size_bytes": 32517761,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "f9480000d4e67cb14f2272adca93326bd46638bccb7243b9fb621840246581b7",
+     "size_bytes": 324603
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "71ca80054430e290efa804aa88a3c862d6edb901367af8dd7db5a70f49ae623c",
+     "size_bytes": 32167200
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlpackage/Manifest.json",
+     "sha256": "8a44ec7f884adf945f20956195f1568b948cf986e49e96d52ac396298a924d56",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlmodelc/.DS_Store",
+     "sha256": "763080c72193506a1bb3abcdb794862196a08463092ae5f517c0b6ee24f8adcc",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlmodelc/analytics/coremldata.bin",
+     "sha256": "5e154dc53fb21bc33d0ac10a9a5ce9ca2d45172d87c258dd6772a2cc8bfd7536",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlmodelc/coremldata.bin",
+     "sha256": "f9629c8cc85e15853f2edde4ec36e7abc4eae5b6707dd95eedbeb19fb2c9382a",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlmodelc/model.mil",
+     "sha256": "35ddb3cd2ba5de724cd30e7465bc4eae9b7bf2bbbc030b312203c7e76a88142f",
+     "size_bytes": 343617
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L256_int4.mlmodelc/weights/weight.bin",
+     "sha256": "71ca80054430e290efa804aa88a3c862d6edb901367af8dd7db5a70f49ae623c",
+     "size_bytes": 32167200
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L512_int8",
+   "precision": "int8 (linear per-channel symmetric, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlmodelc",
+   "shape_policy": "fixed L=512, T=128 (ANE)",
+   "package_size_bytes": 64541468,
+   "compiled_size_bytes": 64567465,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "e278ed2fa72289a65ff3bba51bbcdb415c0d45eeaf5bd8a0bd58fead049342c4",
+     "size_bytes": 323795
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "ee48991c50aa1e7169c2a5ed02f46c5abb136449ff1f9470d27164daee93a9d6",
+     "size_bytes": 64217056
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlpackage/Manifest.json",
+     "sha256": "fb8b32148b27cb295ed869edac5278122e3e4b98f2f133a4dc4807701b25543e",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlmodelc/.DS_Store",
+     "sha256": "d314f2fd0cb045a87636b25a36fc77ea343a685fd30c3a9821e5ff2fad453f7d",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlmodelc/analytics/coremldata.bin",
+     "sha256": "e220c58e6865c027f8d748de4e8d6e5ca79ba78e7e9bbffb40ed547bb58bdb88",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlmodelc/coremldata.bin",
+     "sha256": "7847393e6acc9b909327c10a2522ec39dc3cbea20d4482a7813f8c2d8926ba66",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlmodelc/model.mil",
+     "sha256": "4ee4255e0f91a95c7a81434dd8f29cdcbf9773ef5cdcf5c243e40316ad56b159",
+     "size_bytes": 343465
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int8.mlmodelc/weights/weight.bin",
+     "sha256": "ee48991c50aa1e7169c2a5ed02f46c5abb136449ff1f9470d27164daee93a9d6",
+     "size_bytes": 64217056
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L512_int6",
+   "precision": "int6 (6-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlmodelc",
+   "shape_policy": "fixed L=512, T=128 (ANE)",
+   "package_size_bytes": 48428455,
+   "compiled_size_bytes": 48453846,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "fec36984cf6e6165d69a324dcad6c592a0eafc24371a273abcc1e03791aa13e6",
+     "size_bytes": 324606
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "b7817449a6abbd4374178b647c61fbc4c6e94ce6da6c8ee0af68d7715f56b367",
+     "size_bytes": 48103232
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlpackage/Manifest.json",
+     "sha256": "7f24d5944d7749d6efcf4aa8f9859e45debe9d43d6ac884d92498aa514772db5",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlmodelc/.DS_Store",
+     "sha256": "30038f50daa33bd43852ba1e31a12efc24441bc7a99b9524c28bedd68fceccb3",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlmodelc/analytics/coremldata.bin",
+     "sha256": "b5ca9399b615a5b11908ae52d1181da023b5e6b39e68664e1752469c29065a65",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlmodelc/coremldata.bin",
+     "sha256": "995bf84d1ab2329e99794009d2115256d45b466caab7925538670bbe4e43db08",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlmodelc/model.mil",
+     "sha256": "89e6d0753f11addfce73343cc7d3ac708470600952ef3eab2e9995e5da41b8e2",
+     "size_bytes": 343670
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int6.mlmodelc/weights/weight.bin",
+     "sha256": "b7817449a6abbd4374178b647c61fbc4c6e94ce6da6c8ee0af68d7715f56b367",
+     "size_bytes": 48103232
+    }
+   ]
+  },
+  {
+   "name": "VectorEstimator_L512_int4",
+   "precision": "int4 (4-bit k-means palettization, weight-only)",
+   "package": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlpackage",
+   "compiled": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlmodelc",
+   "shape_policy": "fixed L=512, T=128 (ANE)",
+   "package_size_bytes": 32493444,
+   "compiled_size_bytes": 32518785,
+   "package_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+     "sha256": "552e5b3f9066ff3435ce0ba861a82f6f143d748143f1c0b5bfd38231029db4cb",
+     "size_bytes": 324603
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+     "sha256": "fd60d308e99c5be4796981f54bff2e0fe6983706bd31b48f331ddcd3239524a9",
+     "size_bytes": 32168224
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlpackage/Manifest.json",
+     "sha256": "8ae42dc01c9c295566edb8cdfcc8790ab276d6665538edfcb6e3df3270b3aa09",
+     "size_bytes": 617
+    }
+   ],
+   "compiled_files": [
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlmodelc/.DS_Store",
+     "sha256": "49895bc4a6acdcdb518bd9c769dc9c979e6f935788fb76f2914bbafb8077933c",
+     "size_bytes": 6148
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlmodelc/analytics/coremldata.bin",
+     "sha256": "981debe92ec0b3a942dc275155da876272a9137ada8e78dcc60d8c25f3248776",
+     "size_bytes": 243
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlmodelc/coremldata.bin",
+     "sha256": "6abedfe4ae4d4cffb5ad29f20bb1fd5516113ce275e3556c9a711fdc4215ef84",
+     "size_bytes": 553
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlmodelc/model.mil",
+     "sha256": "f3813c0220c72bb7b039decdcaaa89dac8cab188a2d3e5847b8fb17f09dca2df",
+     "size_bytes": 343617
+    },
+    {
+     "path": "VectorEstimatorVariants/VectorEstimator_L512_int4.mlmodelc/weights/weight.bin",
+     "sha256": "fd60d308e99c5be4796981f54bff2e0fe6983706bd31b48f331ddcd3239524a9",
+     "size_bytes": 32168224
+    }
+   ]
+  }
+ ],
+ "assets": [
+  {
+   "path": "tts.json",
+   "sha256": "42078d3aef1cd43ab43021f3c54f47d2d75ceb4e75f627f118890128b06a0d09",
+   "size_bytes": 8253
+  },
+  {
+   "path": "unicode_indexer.json",
+   "sha256": "9bf7346e43883a81f8645c81224f786d43c5b57f3641f6e7671a7d6c493cb24f",
+   "size_bytes": 277676
+  },
+  {
+   "path": "voice_styles/F1.json",
+   "sha256": "bbdec6ee00231c2c742ad05483df5334cab3b52fda3ba38e6a07059c4563dbc2",
+   "size_bytes": 292046
+  },
+  {
+   "path": "voice_styles/F2.json",
+   "sha256": "7c722c6a72707b1a77f035d67f0d1351ba187738e06f7683e8c72b1df3477fc6",
+   "size_bytes": 292423
+  },
+  {
+   "path": "voice_styles/F3.json",
+   "sha256": "12f6ef2573baa2defa1128069cb59f203e3ab67c92af77b42df8a0e3a2f7c6ab",
+   "size_bytes": 290794
+  },
+  {
+   "path": "voice_styles/F4.json",
+   "sha256": "c2fa764c1225a76dfc3e2c73e8aa4f70d9ee48793860eb34c295fff01c2e032b",
+   "size_bytes": 291808
+  },
+  {
+   "path": "voice_styles/F5.json",
+   "sha256": "45966e73316415626cf41a7d1c6f3b4c70dbc1ba2bee5c1978ef0ce33244fc8d",
+   "size_bytes": 291479
+  },
+  {
+   "path": "voice_styles/M1.json",
+   "sha256": "e35604687f5d23694b8e91593a93eec0e4eca6c0b02bb8ed69139ab2ea6b0a5b",
+   "size_bytes": 291748
+  },
+  {
+   "path": "voice_styles/M2.json",
+   "sha256": "b76cbf62bac707c710cf0ae5aba5e31eea1a6339a9734bfae33ab98499534a50",
+   "size_bytes": 292055
+  },
+  {
+   "path": "voice_styles/M3.json",
+   "sha256": "ea1ac35ccb91b0d7ecad533a2fbd0eec10c91513d8951e3b25fbba99954e159b",
+   "size_bytes": 290198
+  },
+  {
+   "path": "voice_styles/M4.json",
+   "sha256": "ca8eefad4fcd989c9379032ff3e50738adc547eeb5e221b82593a6d7b3bac303",
+   "size_bytes": 291522
+  },
+  {
+   "path": "voice_styles/M5.json",
+   "sha256": "dd22b92740314321f8ae11c5e87f8dd60d060f15dd3a632b5adf77f471f77af2",
+   "size_bytes": 291469
+  }
+ ],
+ "voices": [
+  {
+   "name": "F1",
+   "gender": "female",
+   "file": "voice_styles/F1.json"
+  },
+  {
+   "name": "F2",
+   "gender": "female",
+   "file": "voice_styles/F2.json"
+  },
+  {
+   "name": "F3",
+   "gender": "female",
+   "file": "voice_styles/F3.json"
+  },
+  {
+   "name": "F4",
+   "gender": "female",
+   "file": "voice_styles/F4.json"
+  },
+  {
+   "name": "F5",
+   "gender": "female",
+   "file": "voice_styles/F5.json"
+  },
+  {
+   "name": "M1",
+   "gender": "male",
+   "file": "voice_styles/M1.json"
+  },
+  {
+   "name": "M2",
+   "gender": "male",
+   "file": "voice_styles/M2.json"
+  },
+  {
+   "name": "M3",
+   "gender": "male",
+   "file": "voice_styles/M3.json"
+  },
+  {
+   "name": "M4",
+   "gender": "male",
+   "file": "voice_styles/M4.json"
+  },
+  {
+   "name": "M5",
+   "gender": "male",
+   "file": "voice_styles/M5.json"
+  }
+ ]
+}

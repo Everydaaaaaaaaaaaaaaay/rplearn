@@ -39,8 +39,8 @@ let serviceTargets: [Target] = [
             module("CoreKit"),
             .product(name: "FluidAudio", package: "FluidAudio"),
         ],
-        // Pocket TTS 随 App 安装，保持 FluidAudio 约定的 Models/repo/version 目录结构。
-        resources: [.copy("Resources/PocketTTS")]
+        // Supertonic-3 随 App 安装，保持 FluidAudio 约定的 Models/repo 目录结构。
+        resources: [.copy("Resources/Supertonic3")]
     ),
     .target(
         name: "RealtimeVoiceKit",
@@ -178,7 +178,7 @@ let package = Package(
             url: "https://github.com/warrenm/GLTFKit2.git",
             exact: "0.5.15"
         ),
-        // 精确锁定：Pocket TTS 的模型目录与流式 API 会随 FluidAudio 版本演进，
+        // 精确锁定：Supertonic-3 的模型目录与 Core ML API 会随 FluidAudio 演进，
         // 升级必须经过包体、音质和真机延迟回归，不能自动漂移。
         .package(
             url: "https://github.com/FluidInference/FluidAudio.git",
