@@ -182,7 +182,7 @@ public struct MyPageView: View {
 
             accountHotspot
                 .frame(width: 118, height: 126)
-                .position(x: width * 0.546, y: sceneHeight * 0.666)
+                .position(x: width * 0.525, y: sceneHeight * 0.620)
 
             #if DEBUG
             memoryDebugHotspot
@@ -322,31 +322,26 @@ public struct MyPageView: View {
     private var profileSceneEntry: some View {
         ZStack(alignment: .topLeading) {
             SceneHologram(plane: .identityHolder) {
-                VStack(spacing: 6) {
-                    SceneHologramIcon(glyph: .system("person.crop.circle"), size: 36)
+                VStack(spacing: 5) {
+                    AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 40)
+                        .overlay {
+                            Circle()
+                                .stroke(Color.white.opacity(0.7), lineWidth: 1)
+                        }
 
-                    VStack(alignment: .leading, spacing: 1) {
-                        SceneHologramText(presentation.displayName, size: 14, weight: .bold)
+                    VStack(alignment: .leading, spacing: 1.5) {
+                        SceneHologramText(presentation.displayName, size: 16, weight: .bold)
                             .lineLimit(1)
                             .minimumScaleFactor(0.72)
-                        SceneHologramText(presentation.accountBadgeTitle, size: 11.5, weight: .semibold)
+                        SceneHologramText(presentation.accountBadgeTitle, size: 13, weight: .semibold)
                             .lineLimit(1)
-                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 10.5, weight: .medium)
+                        SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 12, weight: .medium)
                             .lineLimit(1)
                     }
                 }
             }
-            .frame(width: 150, height: 122)
-            .position(x: 96, y: 70)
-
-            AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 38)
-                .overlay {
-                    Circle()
-                        .stroke(Color.white.opacity(0.7), lineWidth: 1)
-                }
-                .shadow(color: .black.opacity(0.18), radius: 2.2, y: 1.4)
-                .rotationEffect(.degrees(-6))
-                .position(x: 92, y: 168)
+            .frame(width: 158, height: 136)
+            .position(x: 96, y: 75)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .contentShape(Rectangle())
