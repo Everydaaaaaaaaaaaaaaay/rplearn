@@ -99,7 +99,6 @@ func feature(
 let featureTargets: [Target] = [
     feature("AuthFeature", dependencies: [
         module("BackendKit"),
-        module("CoreKit"),
     ]),
     feature("HomeFeature", dependencies: [
         module("CoreKit"),
