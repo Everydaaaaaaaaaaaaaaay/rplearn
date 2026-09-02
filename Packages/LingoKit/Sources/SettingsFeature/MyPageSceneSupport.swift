@@ -12,6 +12,71 @@ enum TravelDeskLayout {
     static let interactiveContentBottom: CGFloat = 780
 }
 
+struct TravelDeskHotspotLayout {
+    let center: UnitPoint
+    let size: CGSize
+    let plane: SceneHologramPlane
+    let contentScale: CGFloat
+}
+
+struct TravelDeskSceneLayout {
+    let assetName: String
+    let profile: TravelDeskHotspotLayout
+    let coin: TravelDeskHotspotLayout
+    let learning: TravelDeskHotspotLayout
+    let favorites: TravelDeskHotspotLayout
+    let settings: TravelDeskHotspotLayout
+    let account: TravelDeskHotspotLayout
+    let memory: TravelDeskHotspotLayout
+
+    /// 所有坐标均从 825 × 1906 最终母版逐物件测量，入口与实物轴线成套锁定。
+    static let production = TravelDeskSceneLayout(
+        assetName: "profile_travel_desk_final",
+        profile: .init(
+            center: UnitPoint(x: 0.285, y: 0.178),
+            size: CGSize(width: 104, height: 142),
+            plane: .surface(rotationZ: -9, horizontalShadow: 3),
+            contentScale: 0.95
+        ),
+        coin: .init(
+            center: UnitPoint(x: 0.84, y: 0.20),
+            size: CGSize(width: 112, height: 112),
+            plane: .surface(rotationZ: 9, horizontalShadow: -3),
+            contentScale: 0.88
+        ),
+        learning: .init(
+            center: UnitPoint(x: 0.50, y: 0.495),
+            size: CGSize(width: 154, height: 192),
+            plane: .surface(rotationZ: -1.5, horizontalShadow: -1),
+            contentScale: 1.06
+        ),
+        favorites: .init(
+            center: UnitPoint(x: 0.20, y: 0.72),
+            size: CGSize(width: 120, height: 126),
+            plane: .surface(rotationZ: -8, horizontalShadow: 3),
+            contentScale: 1.02
+        ),
+        settings: .init(
+            center: UnitPoint(x: 0.77, y: 0.72),
+            size: CGSize(width: 120, height: 128),
+            plane: .surface(rotationZ: 12, horizontalShadow: -2),
+            contentScale: 0.96
+        ),
+        account: .init(
+            center: UnitPoint(x: 0.505, y: 0.785),
+            size: CGSize(width: 126, height: 136),
+            plane: .surface(rotationZ: 0, horizontalShadow: -1),
+            contentScale: 1.08
+        ),
+        memory: .init(
+            center: UnitPoint(x: 0.54, y: 0.135),
+            size: CGSize(width: 116, height: 122),
+            plane: .surface(rotationZ: 0, horizontalShadow: 0),
+            contentScale: 0.96
+        )
+    )
+}
+
 /// 每个入口都使用承载物自身的局部平面，而不是套用同一组“伪透视”。
 /// 参数按 825 × 1906 的母版逐物件校准；足迹方向同时表达悬浮高度与环境光方向。
 struct SceneHologramPlane {
@@ -23,6 +88,22 @@ struct SceneHologramPlane {
     let scaleY: CGFloat
     let footprintOffset: CGSize
     let extrusionOffset: CGSize
+
+    static func surface(
+        rotationZ: Double,
+        horizontalShadow: CGFloat
+    ) -> SceneHologramPlane {
+        SceneHologramPlane(
+            rotationZ: rotationZ,
+            tiltX: 6.5,
+            tiltY: rotationZ == 0 ? 0 : (rotationZ > 0 ? -1.4 : 1.4),
+            perspective: 0.19,
+            scaleX: 1,
+            scaleY: 0.982,
+            footprintOffset: CGSize(width: horizontalShadow, height: 13.5),
+            extrusionOffset: CGSize(width: horizontalShadow * 0.25, height: 2.7)
+        )
+    }
 
     static let identityHolder = SceneHologramPlane(
         rotationZ: -1.5,
