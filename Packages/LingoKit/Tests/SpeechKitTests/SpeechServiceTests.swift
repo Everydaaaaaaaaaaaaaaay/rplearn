@@ -120,6 +120,10 @@ struct SpeechServiceTests {
         defer { defaults.removePersistentDomain(forName: suiteName) }
 
         #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .supertonic3)
+        #expect(
+            defaults.string(forKey: VoiceEnginePreferences.synthesisEngineKey)
+                == SpeechSynthesisEngine.supertonic3.rawValue
+        )
 
         VoiceEnginePreferences.setSynthesisEngine(.system, defaults: defaults)
         #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .system)
@@ -133,6 +137,33 @@ struct SpeechServiceTests {
         defaults.removeObject(forKey: VoiceEnginePreferences.synthesisEngineKey)
         defaults.set(true, forKey: "lingotrip.pocketTTS.enabled")
         #expect(VoiceEnginePreferences.synthesisEngine(defaults: defaults) == .supertonic3)
+
+        let upgradeSuiteName = "SpeechServiceTests.Upgrade.\(UUID().uuidString)"
+        let upgradeDefaults = UserDefaults(suiteName: upgradeSuiteName)!
+        defer { upgradeDefaults.removePersistentDomain(forName: upgradeSuiteName) }
+        upgradeDefaults.set(
+            SpeechSynthesisEngine.system.rawValue,
+            forKey: VoiceEnginePreferences.synthesisEngineKey
+        )
+        upgradeDefaults.set(false, forKey: "lingotrip.pocketTTS.enabled")
+
+        // 此版本首次启动时，旧安装保存的 Apple 选择会迁移为随包 Supertonic。
+        #expect(
+            VoiceEnginePreferences.synthesisEngine(defaults: upgradeDefaults)
+                == .supertonic3
+        )
+        #expect(
+            upgradeDefaults.string(forKey: VoiceEnginePreferences.synthesisEngineKey)
+                == SpeechSynthesisEngine.supertonic3.rawValue
+        )
+        #expect(upgradeDefaults.object(forKey: "lingotrip.pocketTTS.enabled") == nil)
+
+        // 一次性迁移后，用户再次主动选择 Apple 时不会被强制改回。
+        VoiceEnginePreferences.setSynthesisEngine(.system, defaults: upgradeDefaults)
+        #expect(
+            VoiceEnginePreferences.synthesisEngine(defaults: upgradeDefaults)
+                == .system
+        )
     }
 
     @Test("试听请求可以临时覆盖全局 TTS 引擎")

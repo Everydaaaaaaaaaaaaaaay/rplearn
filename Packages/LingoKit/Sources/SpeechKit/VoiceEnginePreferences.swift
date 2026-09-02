@@ -19,18 +19,28 @@ public enum SpeechSynthesisEngine: String, CaseIterable, Identifiable, Sendable 
 public enum VoiceEnginePreferences {
     public static let synthesisEngineKey = "lingotrip.voice.synthesisEngine"
     private static let legacyPocketEnabledKey = "lingotrip.pocketTTS.enabled"
+    private static let supertonicDefaultMigrationKey =
+        "lingotrip.voice.supertonicDefaultMigration.v1"
 
     public static func synthesisEngine(
         defaults: UserDefaults = .standard
     ) -> SpeechSynthesisEngine {
+        // 旧安装可能把 Apple 或已移除的 Pocket 选择持久化下来。升级后的首次读取
+        // 统一切到随包 Supertonic；之后用户主动选择 Apple 时仍尊重该选择。
+        guard defaults.bool(forKey: supertonicDefaultMigrationKey) else {
+            setSynthesisEngine(.supertonic3, defaults: defaults)
+            return .supertonic3
+        }
+
         if let raw = defaults.string(forKey: synthesisEngineKey) {
-            // 已安装旧版本的用户无感迁移：Pocket 被 Supertonic-3 完整替代。
-            if raw == "pocketTTS" { return .supertonic3 }
+            if raw == "pocketTTS" {
+                setSynthesisEngine(.supertonic3, defaults: defaults)
+                return .supertonic3
+            }
             if let engine = SpeechSynthesisEngine(rawValue: raw) { return engine }
         }
-        if defaults.object(forKey: legacyPocketEnabledKey) != nil {
-            return defaults.bool(forKey: legacyPocketEnabledKey) ? .supertonic3 : .system
-        }
+
+        setSynthesisEngine(.supertonic3, defaults: defaults)
         return .supertonic3
     }
 
@@ -39,7 +49,8 @@ public enum VoiceEnginePreferences {
         defaults: UserDefaults = .standard
     ) {
         defaults.set(engine.rawValue, forKey: synthesisEngineKey)
-        defaults.set(engine != .system, forKey: legacyPocketEnabledKey)
+        defaults.set(true, forKey: supertonicDefaultMigrationKey)
+        defaults.removeObject(forKey: legacyPocketEnabledKey)
     }
 
 }

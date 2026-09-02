@@ -53,7 +53,9 @@ SHA-256 不匹配时直接终止构建。
 - LLM token 遇到标点立即送播；长时间无标点时最多累计 7 个单词，降低首段 TTS 等待。
 - TTS 队列等待音频真正播放结束，不把“合成完成”误当成“播放完成”。插话时只落库已经开播的
   短句，并保留 `isInterrupted`。
-- Supertonic-3 未预热或运行失败时沿用 Apple TTS 回退；模型在 App 启动后按当前选择后台预热。
+- Supertonic-3 是英语合成的默认引擎；新安装直接启用，旧安装在升级后的首次启动中
+  自动从 Apple/Pocket 旧偏好迁移，并在 App 启动后后台预热。用户随后主动选择 Apple
+  时仍保留该选择；Supertonic-3 未预热或运行失败时继续使用 Apple TTS 回退。
 - ASR 固定为 Apple Speech；TTS 选择立即生效。业务 Feature 只依赖稳定协议，不接触 Speech、
   FluidAudio、Core ML 路径或模型状态细节。
 
