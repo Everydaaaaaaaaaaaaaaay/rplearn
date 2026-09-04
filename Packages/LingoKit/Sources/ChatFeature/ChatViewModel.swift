@@ -410,7 +410,7 @@ public final class ChatViewModel {
         let memoryService = self.memoryService
         let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
         var request = await makeRoleplayRequest(
-            quizRequested: quizRequested,
+            quizRequested: false,
             voiceMode: false
         )
         request.system = Self.appendingSystemInstruction(
@@ -511,10 +511,7 @@ public final class ChatViewModel {
             }
         }
 
-        // 出题回合：从回复末尾截出 <quiz>，失败则静默按纯文本处理。
-        let (replyText, quiz) = quizRequested
-            ? QuizService.extract(from: accumulated)
-            : (accumulated, nil)
+        let replyText = accumulated
         guard cycleID == replyCycleID, !Task.isCancelled else { return }
         do {
             let assistantMessages = try await deliverAssistantReply(
@@ -523,6 +520,13 @@ public final class ChatViewModel {
                 elapsedSinceTypingBegan: ProcessInfo.processInfo.systemUptime - typingBeganAt,
                 cycleID: cycleID
             )
+            let quiz = quizRequested
+                ? try? await QuizService.generate(
+                    history: messages,
+                    learnerDifficulty: learnerDifficulty,
+                    using: deps.llm
+                )
+                : nil
             if let assistantMessage = assistantMessages.last,
                let quiz,
                let json = QuizService.encode(quiz) {
