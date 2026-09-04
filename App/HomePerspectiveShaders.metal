@@ -81,10 +81,11 @@ fragment float4 homePerspectiveFragment(
 
     float alpha;
     if (pass < 1.5) {
-        // 外缘为主、笔画内部只留很薄的一层暖光。
-        alpha = max(blurredAlpha - center.a * 0.62, 0.0) + center.a * 0.055;
+        // 暖光只包住轮廓；不能在正文下方形成第二套完整字形。
+        alpha = max(blurredAlpha - center.a * 0.82, 0.0) + center.a * 0.022;
     } else {
-        alpha = blurredAlpha;
+        // 阴影同样以外缘环境遮蔽为主，笔画内部只保留极薄的接触阴影。
+        alpha = max(blurredAlpha - center.a * 0.94, 0.0) + center.a * 0.018;
     }
     alpha *= uniforms.tint.a * opacity;
     return float4(uniforms.tint.rgb * alpha, alpha);

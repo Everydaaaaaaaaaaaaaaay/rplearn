@@ -61,16 +61,22 @@ public struct HomeView: View {
                 0,
                 (proxy.size.width - HomeDepartureCanvas.width * sceneScale) / 2
             )
+            // 生产底图的原始比例比部分全面屏机型略矮。只在宽度成为缩放约束时
+            // 延伸参考画布，背景与 Metal 层同步拉伸，避免底部安全区露出宿主底色。
+            let canvasHeight = max(
+                HomeDepartureCanvas.height,
+                proxy.size.height / max(sceneScale, 0.0001)
+            )
 
             ZStack(alignment: .topLeading) {
                 if sceneScale < widthScale {
                     compactHeightBackdrop(size: proxy.size)
                 }
 
-                departureCanvas
+                departureCanvas(height: canvasHeight)
                     .frame(
                         width: HomeDepartureCanvas.width,
-                        height: HomeDepartureCanvas.height,
+                        height: canvasHeight,
                         alignment: .topLeading
                     )
                     .dynamicTypeSize(...DynamicTypeSize.xLarge)
@@ -101,9 +107,8 @@ public struct HomeView: View {
     }
 
     /// 背景、入口、光效和命中范围都在这张 402pt 参考画布中；运行时只整体缩放。
-    private var departureCanvas: some View {
+    private func departureCanvas(height: CGFloat) -> some View {
         let width = HomeDepartureCanvas.width
-        let height = HomeDepartureCanvas.height
         let layout = sceneLayout
 
         return ZStack(alignment: .topLeading) {

@@ -227,6 +227,8 @@ private final class HomePerspectiveMetalRenderer {
         samplerDescriptor.mipFilter = .linear
         samplerDescriptor.sAddressMode = .clampToZero
         samplerDescriptor.tAddressMode = .clampToZero
+        // 地面入口处于明显斜视角；各向异性过滤能保住笔画横纵方向的同等锐度。
+        samplerDescriptor.maxAnisotropy = 8
         guard let sampler = device.makeSamplerState(descriptor: samplerDescriptor) else {
             return nil
         }
@@ -257,9 +259,9 @@ private final class HomePerspectiveMetalRenderer {
                 entry: nil,
                 region: layout.location.projectedRegion(),
                 texture: texture,
-                shadowOffset: CGSize(width: 1.4, height: 3.0),
-                shadowOpacity: 0.30,
-                glowOpacity: 0.62
+                shadowOffset: CGSize(width: 0.30, height: 0.75),
+                shadowOpacity: 0.12,
+                glowOpacity: 0.44
             ))
         }
 
@@ -274,9 +276,9 @@ private final class HomePerspectiveMetalRenderer {
                 titleSize: 20
             ),
             layout: layout.map,
-            shadowOffset: CGSize(width: -2.4, height: 4.8),
-            shadowOpacity: 0.37,
-            glowOpacity: 0.76,
+            shadowOffset: CGSize(width: -0.40, height: 0.95),
+            shadowOpacity: 0.15,
+            glowOpacity: 0.50,
             to: &nextItems
         )
         append(
@@ -290,9 +292,9 @@ private final class HomePerspectiveMetalRenderer {
                 titleSize: 21
             ),
             layout: layout.story,
-            shadowOffset: CGSize(width: -2.0, height: 5.6),
-            shadowOpacity: 0.39,
-            glowOpacity: 0.84,
+            shadowOffset: CGSize(width: -0.35, height: 1.05),
+            shadowOpacity: 0.16,
+            glowOpacity: 0.54,
             to: &nextItems
         )
         append(
@@ -306,9 +308,9 @@ private final class HomePerspectiveMetalRenderer {
                 titleSize: 20
             ),
             layout: layout.activities,
-            shadowOffset: CGSize(width: 3.2, height: 5.8),
-            shadowOpacity: 0.41,
-            glowOpacity: 0.90,
+            shadowOffset: CGSize(width: 0.50, height: 1.10),
+            shadowOpacity: 0.17,
+            glowOpacity: 0.57,
             to: &nextItems
         )
         items = nextItems
@@ -328,7 +330,7 @@ private final class HomePerspectiveMetalRenderer {
 
         for item in items {
             let press = item.entry.flatMap { pressAmounts[$0] } ?? 0
-            draw(item: item, press: press, encoder: encoder)
+            draw(item: item, press: press, canvasSize: view.bounds.size, encoder: encoder)
         }
 
         encoder.endEncoding()
@@ -368,7 +370,12 @@ private final class HomePerspectiveMetalRenderer {
         )
     }
 
-    private func draw(item: Item, press: CGFloat, encoder: MTLRenderCommandEncoder) {
+    private func draw(
+        item: Item,
+        press: CGFloat,
+        canvasSize: CGSize,
+        encoder: MTLRenderCommandEncoder
+    ) {
         let homography = item.region.surface.homography
         let pressedScale = Float(1 - press * 0.032)
         let shadowCompression = 1 - press * 0.72
@@ -391,12 +398,12 @@ private final class HomePerspectiveMetalRenderer {
         encoder.setVertexBytes(&vertex, length: MemoryLayout<VertexUniforms>.stride, index: 0)
         encoder.setFragmentTexture(item.texture, index: 0)
 
-        vertex.transform.y = Float(offset.width / HomeDepartureCanvas.width)
-        vertex.transform.z = Float(offset.height / HomeDepartureCanvas.height)
+        vertex.transform.y = Float(offset.width / max(canvasSize.width, 1))
+        vertex.transform.z = Float(offset.height / max(canvasSize.height, 1))
         encoder.setVertexBytes(&vertex, length: MemoryLayout<VertexUniforms>.stride, index: 0)
         var shadow = FragmentUniforms(
             tint: SIMD4(0.14, 0.085, 0.035, item.shadowOpacity),
-            parameters: SIMD4(2, Float(1 - press * 0.24), 1.4, 0)
+            parameters: SIMD4(2, Float(1 - press * 0.24), 5.2, 0)
         )
         encoder.setFragmentBytes(&shadow, length: MemoryLayout<FragmentUniforms>.stride, index: 0)
         encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
@@ -406,7 +413,7 @@ private final class HomePerspectiveMetalRenderer {
         encoder.setVertexBytes(&vertex, length: MemoryLayout<VertexUniforms>.stride, index: 0)
         var glow = FragmentUniforms(
             tint: SIMD4(1.0, 0.74, 0.30, item.glowOpacity),
-            parameters: SIMD4(1, Float(1 - press * 0.18), 3.2, 0)
+            parameters: SIMD4(1, Float(1 - press * 0.18), 4.2, 0)
         )
         encoder.setFragmentBytes(&glow, length: MemoryLayout<FragmentUniforms>.stride, index: 0)
         encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
