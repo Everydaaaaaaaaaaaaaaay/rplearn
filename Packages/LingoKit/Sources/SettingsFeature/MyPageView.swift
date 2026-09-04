@@ -27,6 +27,7 @@ public struct MyPageView: View {
     @State private var showsTierPicker = false
     @State private var showsManageSubscriptions = false
     @State private var showsAccountPanel = false
+    @StateObject private var sceneActions = MyPageSceneActionCoordinator()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -79,9 +80,9 @@ public struct MyPageView: View {
                 modernTravelDesk
             }
         }
-        .background(Color.dsBackground)
-        .toolbar(.hidden, for: .navigationBar)
+        .background(Color.dsBackground.ignoresSafeArea())
         .task(id: reloadToken) { await reload() }
+        .onDisappear(perform: sceneActions.cancel)
         .sheet(isPresented: $showsAccountPanel) {
             accountPanel
         }
@@ -144,13 +145,12 @@ public struct MyPageView: View {
     /// 极短屏幕缩小参考画布后只会留下很窄的侧边余量；使用同源场景作柔化衬底，
     /// 避免硬色带，同时不参与任何入口的定位与点击。
     private func compactHeightBackdrop(size: CGSize) -> some View {
-        Image(sceneLayout.assetName, bundle: .main)
-            .resizable()
-            .scaledToFill()
-            .frame(width: size.width, height: size.height, alignment: .top)
-            .clipped()
-            .blur(radius: 5)
-            .overlay(Color.black.opacity(colorScheme == .dark ? 0.3 : 0.035))
+        MyPageCompactTravelDeskBackdrop(
+            assetName: sceneLayout.assetName,
+            size: size,
+            overlayOpacity: colorScheme == .dark ? 0.3 : 0.035
+        )
+            .equatable()
             .accessibilityHidden(true)
             .allowsHitTesting(false)
     }
@@ -199,29 +199,29 @@ public struct MyPageView: View {
     }
 
     private func travelDeskBackground(width: CGFloat, height: CGFloat) -> some View {
-        ZStack {
-            Image(sceneLayout.assetName, bundle: .main)
-                .resizable()
-                .frame(width: width, height: height)
-
-            Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
-        }
-        .frame(width: width, height: height)
-        .accessibilityHidden(true)
-        .allowsHitTesting(false)
+        MyPageTravelDeskBackground(
+            assetName: sceneLayout.assetName,
+            size: CGSize(width: width, height: height),
+            overlayOpacity: colorScheme == .dark ? 0.28 : 0.02
+        )
+            .equatable()
+            .accessibilityHidden(true)
+            .allowsHitTesting(false)
     }
 
     private var profileHotspot: some View {
         Button {
-            if isSignedIn {
-                showsAccountPanel = true
-            } else {
-                onSignIn()
+            sceneActions.perform(for: .profile, reduceMotion: reduceMotion) {
+                if isSignedIn {
+                    showsAccountPanel = true
+                } else {
+                    onSignIn()
+                }
             }
         } label: {
             profileSceneEntry
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .profile))
         .accessibilityLabel("个人资料，\(presentation.displayName)，\(presentation.accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
         .accessibilityHint(isSignedIn ? "打开账号与订阅" : "登录或创建账号")
     }
@@ -230,14 +230,16 @@ public struct MyPageView: View {
     private var coinHotspot: some View {
         #if DEBUG
         Button {
-            Task {
-                await economyService.grantDebugCoins()
-                await reload()
+            sceneActions.perform(for: .coin, reduceMotion: reduceMotion) {
+                Task {
+                    await economyService.grantDebugCoins()
+                    await reload()
+                }
             }
         } label: {
             coinSceneEntry
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .coin))
         .accessibilityLabel("\(profile?.coins ?? 0) 金币")
         .accessibilityHint("调试构建中轻点增加 500 金币")
         #else
@@ -252,16 +254,20 @@ public struct MyPageView: View {
     }
 
     private var learningHotspot: some View {
-        Button(action: onCalibrateLevel) {
+        Button {
+            sceneActions.perform(for: .learning, reduceMotion: reduceMotion, action: onCalibrateLevel)
+        } label: {
             learningSceneEntry
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .learning))
         .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")
     }
 
     private var favoritesHotspot: some View {
-        Button(action: onOpenFavorites) {
+        Button {
+            sceneActions.perform(for: .favorites, reduceMotion: reduceMotion, action: onOpenFavorites)
+        } label: {
             fixedSceneEntry(
                 glyph: .bookmarkStar,
                 title: "收藏",
@@ -269,13 +275,15 @@ public struct MyPageView: View {
                 scale: sceneLayout.favorites.contentScale
             )
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .favorites))
         .accessibilityLabel("收藏夹，单词与语法点")
         .accessibilityHint("查看收藏的单词与语法点")
     }
 
     private var settingsHotspot: some View {
-        Button(action: onOpenSettings) {
+        Button {
+            sceneActions.perform(for: .settings, reduceMotion: reduceMotion, action: onOpenSettings)
+        } label: {
             fixedSceneEntry(
                 glyph: .system("slider.horizontal.3"),
                 title: "设置",
@@ -283,17 +291,19 @@ public struct MyPageView: View {
                 scale: sceneLayout.settings.contentScale
             )
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .settings))
         .accessibilityLabel("设置，AI、语音与偏好")
         .accessibilityHint("打开设置")
     }
 
     private var accountHotspot: some View {
         Button {
-            if isSignedIn {
-                showsAccountPanel = true
-            } else {
-                onSignIn()
+            sceneActions.perform(for: .account, reduceMotion: reduceMotion) {
+                if isSignedIn {
+                    showsAccountPanel = true
+                } else {
+                    onSignIn()
+                }
             }
         } label: {
             fixedSceneEntry(
@@ -303,14 +313,16 @@ public struct MyPageView: View {
                 scale: sceneLayout.account.contentScale
             )
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .account))
         .accessibilityLabel(isSignedIn ? "账号与订阅" : "登录或创建账号")
         .accessibilityHint(isSignedIn ? "同步旅程与管理方案" : "跨设备同步与订阅恢复")
     }
 
     #if DEBUG
     private var memoryDebugHotspot: some View {
-        Button(action: onOpenMemory) {
+        Button {
+            sceneActions.perform(for: .memory, reduceMotion: reduceMotion, action: onOpenMemory)
+        } label: {
             fixedSceneEntry(
                 glyph: .system("photo"),
                 title: "记忆",
@@ -318,7 +330,7 @@ public struct MyPageView: View {
                 scale: sceneLayout.memory.contentScale
             )
         }
-        .buttonStyle(SceneHologramButtonStyle())
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .memory))
         .accessibilityLabel("记忆调试面板")
         .accessibilityHint("查看角色长期与近期记忆")
     }
@@ -327,30 +339,13 @@ public struct MyPageView: View {
     private var profileSceneEntry: some View {
         let scale = sceneLayout.profile.contentScale
 
-        return SceneHologram(plane: sceneLayout.profile.plane) {
-            VStack(spacing: 4 * scale) {
-                AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 40 * scale)
-                    .overlay {
-                        Circle()
-                            .stroke(Color.white.opacity(0.7), lineWidth: 1)
-                    }
-
-                VStack(spacing: 1.5 * scale) {
-                    SceneHologramText(presentation.displayName, size: 17 * scale, weight: .bold)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.72)
-                    SceneHologramText(presentation.accountBadgeTitle, size: 14 * scale, weight: .semibold)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.68)
-                    SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 13 * scale, weight: .medium)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.68)
-                }
-                .frame(width: 94 * scale)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .contentShape(Rectangle())
+        return MyPageProfileSceneEntry(
+            plane: sceneLayout.profile.plane,
+            scale: scale,
+            displayName: presentation.displayName,
+            accountBadgeTitle: presentation.accountBadgeTitle,
+            occupiedFriendSlots: occupiedFriendSlots
+        )
     }
 
     private var coinSceneEntry: some View {

@@ -52,11 +52,13 @@ final class MyPagePerformanceTests: XCTestCase {
             metrics: [XCTClockMetric(), XCTCPUMetric(), XCTMemoryMetric()],
             options: options
         ) {
-            favoritesEntry.tap()
+            let currentFavoritesEntry = app.buttons["收藏夹，单词与语法点"]
+            XCTAssertTrue(currentFavoritesEntry.waitForExistence(timeout: 3))
+            currentFavoritesEntry.tap()
             let back = app.navigationBars.buttons.firstMatch
             XCTAssertTrue(back.waitForExistence(timeout: 3))
             back.tap()
-            XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 3))
+            XCTAssertTrue(app.buttons["收藏夹，单词与语法点"].waitForExistence(timeout: 3))
         }
     }
 
@@ -73,12 +75,66 @@ final class MyPagePerformanceTests: XCTestCase {
             metrics: [XCTClockMetric(), XCTCPUMetric(), XCTMemoryMetric()],
             options: options
         ) {
-            settingsEntry.tap()
+            let currentSettingsEntry = app.buttons["设置，AI、语音与偏好"]
+            XCTAssertTrue(currentSettingsEntry.waitForExistence(timeout: 3))
+            currentSettingsEntry.tap()
             let back = app.navigationBars.buttons.firstMatch
             XCTAssertTrue(back.waitForExistence(timeout: 3))
             back.tap()
-            XCTAssertTrue(settingsEntry.waitForExistence(timeout: 3))
+            XCTAssertTrue(app.buttons["设置，AI、语音与偏好"].waitForExistence(timeout: 3))
         }
+    }
+
+    @MainActor
+    func testQuickTapKeepsSceneFeedbackVisibleBeforeNavigation() throws {
+        launch(on: "me")
+
+        let favoritesEntry = app.buttons["收藏夹，单词与语法点"]
+        XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 5))
+
+        let start = ContinuousClock.now
+        favoritesEntry.tap()
+        let favoritesNavigationBar = app.navigationBars["收藏夹"]
+        XCTAssertTrue(favoritesNavigationBar.waitForExistence(timeout: 2))
+        let elapsed = ContinuousClock.now - start
+
+        XCTAssertGreaterThanOrEqual(elapsed, .milliseconds(100))
+        // XCUITest 轮询导航栏出现会引入额外的观测延迟；产品内部时序为 0.02 + 0.08 + 0.02 秒。
+        XCTAssertLessThan(elapsed, .seconds(1.8))
+    }
+
+    @MainActor
+    func testFavoritesSupportsLeadingEdgeSwipeBack() throws {
+        launch(on: "me")
+
+        let favoritesEntry = app.buttons["收藏夹，单词与语法点"]
+        XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 5))
+        favoritesEntry.tap()
+        XCTAssertTrue(app.navigationBars["收藏夹"].waitForExistence(timeout: 2))
+
+        let start = app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5))
+        let end = app.coordinate(withNormalizedOffset: CGVector(dx: 0.72, dy: 0.5))
+        start.press(forDuration: 0.05, thenDragTo: end)
+
+        XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 2))
+        XCTAssertFalse(app.navigationBars["收藏夹"].exists)
+    }
+
+    @MainActor
+    func testSettingsSupportsLeadingEdgeSwipeBack() throws {
+        launch(on: "me")
+
+        let settingsEntry = app.buttons["设置，AI、语音与偏好"]
+        XCTAssertTrue(settingsEntry.waitForExistence(timeout: 5))
+        settingsEntry.tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 2))
+
+        let start = app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5))
+        let end = app.coordinate(withNormalizedOffset: CGVector(dx: 0.72, dy: 0.5))
+        start.press(forDuration: 0.05, thenDragTo: end)
+
+        XCTAssertTrue(settingsEntry.waitForExistence(timeout: 2))
+        XCTAssertFalse(app.navigationBars["设置"].exists)
     }
 
     @MainActor

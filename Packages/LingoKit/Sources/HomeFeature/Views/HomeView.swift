@@ -1,39 +1,31 @@
-import CoreKit
 import DesignSystem
 import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 首页聚合 Hub：城市氛围、最近会话与两个核心探索入口。
+/// 首页聚合 Hub：用真实门厅物件承载世界地图、剧情和城市活动三个入口。
 public struct HomeView: View {
     private let deps: HomeDependencies
     private let reloadToken: Int
-    private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
-    private let onOpenMessages: @MainActor () -> Void
     private let onInitialLoad: @MainActor () -> Void
-
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
 
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
-    @State private var recentRows: [RecentChatRow] = []
-    @State private var scrollOffset: CGFloat = 0
-    @State private var showsFirstStoryGuide = false
-    @AppStorage("coovingo.guide.first-story.v1") private var hasHandledFirstStoryGuide = false
+    @State private var pressedSceneEntry: HomeSceneEntryID?
+
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private let sceneLayout = HomeDepartureSceneLayout.production
 
     public init(
         deps: HomeDependencies,
         reloadToken: Int = 0,
-        chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
-        onOpenMessages: @escaping @MainActor () -> Void,
         onInitialLoad: @escaping @MainActor () -> Void = {}
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
-        self.chatBuilder = chatBuilder
-        self.onOpenMessages = onOpenMessages
         self.onInitialLoad = onInitialLoad
     }
 
@@ -48,344 +40,269 @@ public struct HomeView: View {
         return profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
     }
 
-    private var cityVistaHeight: CGFloat {
-        if dynamicTypeSize.isAccessibilitySize {
-            return 72
-        }
-        return verticalSizeClass == .compact ? 80 : 196
-    }
-
     public var body: some View {
-        ZStack {
-            if let currentRegion {
-                CityBackdropView(region: currentRegion, parallax: scrollOffset)
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                accessibleContent
             } else {
-                Color.dsBackground.ignoresSafeArea()
-            }
-
-            ScrollView {
-                VStack(spacing: DSSpacing.md) {
-                    cityStatusBar
-                    cityVista
-                    recentChats
-                    exploreSection
-                }
-                .padding(.horizontal, DSSpacing.md)
-                .padding(.top, DSSpacing.xs)
-                .padding(.bottom, DSSpacing.md)
-            }
-            .onScrollGeometryChange(for: CGFloat.self) { geometry in
-                geometry.contentOffset.y
-            } action: { _, newValue in
-                scrollOffset = newValue
-            }
-            .refreshable { await reload() }
-
-            if showsFirstStoryGuide {
-                firstStoryGuide
-                    .padding(.horizontal, DSSpacing.md)
-                    .padding(.bottom, DSSpacing.md)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    .transition(
-                        reduceMotion
-                            ? .opacity
-                            : .move(edge: .trailing).combined(with: .opacity)
-                    )
-                    .zIndex(2)
+                departureScene
             }
         }
         .toolbar(.hidden, for: .navigationBar)
         .task(id: reloadToken) { await reload() }
     }
 
-    @ViewBuilder
-    private var cityVista: some View {
-        if let currentRegion {
-            ZStack(alignment: .bottom) {
-                Color.clear
-                    .allowsHitTesting(false)
-                    .accessibilityHidden(true)
+    private var departureScene: some View {
+        GeometryReader { proxy in
+            let widthScale = proxy.size.width / HomeDepartureCanvas.width
+            let heightScale = proxy.size.height / HomeDepartureCanvas.interactiveContentBottom
+            let sceneScale = min(widthScale, heightScale)
+            let horizontalInset = max(
+                0,
+                (proxy.size.width - HomeDepartureCanvas.width * sceneScale) / 2
+            )
 
-                NavigationLink(value: HomeDestination.map) {
-                    HStack(spacing: 10) {
-                        Image(systemName: "map.fill")
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                            .frame(width: 36, height: 36)
-                            .background(Color.dsSky, in: Circle())
-
-                        VStack(alignment: .leading, spacing: 1) {
-                            Text("世界地图")
-                                .font(.subheadline.weight(.bold))
-                                .foregroundStyle(.primary)
-                            Text("从\(currentRegion.nameZh)出发")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-
-                        Spacer(minLength: DSSpacing.xs)
-
-                        Image(systemName: "chevron.right")
-                            .font(.caption.weight(.bold))
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 8)
-                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: DSRadius.inline))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
-                            .stroke(.white.opacity(0.62), lineWidth: 1)
-                    }
+            ZStack(alignment: .topLeading) {
+                if sceneScale < widthScale {
+                    compactHeightBackdrop(size: proxy.size)
                 }
-                .buttonStyle(.pressableCard)
-                .accessibilityLabel("打开世界地图，当前从\(currentRegion.nameZh)出发")
-            }
-            .frame(height: cityVistaHeight)
-        }
-    }
 
-    @ViewBuilder
-    private var cityStatusBar: some View {
-        if let region = currentRegion {
-            HomeStatusBar(region: region, profile: profile)
-        } else {
-            Color.clear
-                .frame(maxWidth: .infinity, minHeight: 52)
-                .accessibilityHidden(true)
-        }
-    }
-
-    private var recentChats: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack {
-                Text("最近会话")
-                    .font(.system(.title3, design: .rounded, weight: .bold))
-                Spacer()
-                Button("查看全部 ›") { onOpenMessages() }
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color.dsSky)
-            }
-
-            if recentRows.isEmpty {
-                VStack(spacing: DSSpacing.xs) {
-                    Image(systemName: "bubble.left.and.bubble.right")
-                        .font(.title2)
-                        .foregroundStyle(Color.dsSky)
-                    Text("认识新朋友后，聊天会出现在这里")
-                        .font(.subheadline.weight(.semibold))
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, DSSpacing.md)
-            } else {
-                ForEach(Array(recentRows.prefix(3).enumerated()), id: \.element.id) { index, row in
-                    NavigationLink {
-                        chatBuilder(row.character)
-                    } label: {
-                        HStack(alignment: .top, spacing: DSSpacing.sm) {
-                            ZStack(alignment: .topTrailing) {
-                                AvatarBadge(name: row.character.card.name, size: 48)
-                                if index == 0 {
-                                    Circle()
-                                        .fill(Color.dsDanger)
-                                        .frame(width: 10, height: 10)
-                                        .overlay {
-                                            Circle().stroke(Color.dsSurface, lineWidth: 2)
-                                        }
-                                }
-                            }
-                            VStack(alignment: .leading, spacing: 3) {
-                                HStack(alignment: .firstTextBaseline, spacing: DSSpacing.xs) {
-                                    Text(row.character.card.name)
-                                        .font(.body.weight(.bold))
-                                        .foregroundStyle(.primary)
-                                        .lineLimit(1)
-                                    Spacer(minLength: DSSpacing.xs)
-                                    Text(row.summary.lastMessageAt, format: .relative(presentation: .named))
-                                        .font(.caption)
-                                        .foregroundStyle(.tertiary)
-                                        .lineLimit(1)
-                                        .fixedSize(horizontal: true, vertical: false)
-                                }
-                                Text(row.summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : row.summary.lastMessageText)
-                                    .font(.callout)
-                                    .foregroundStyle(.secondary)
-                                    .lineLimit(1)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-
-                    if index < min(recentRows.count, 3) - 1 {
-                        Divider().padding(.leading, 60)
-                    }
-                }
-            }
-        }
-        .dsSurface(.elevated)
-    }
-
-    @ViewBuilder
-    private var exploreSection: some View {
-        if let region = currentRegion {
-            VStack(alignment: .leading, spacing: DSSpacing.xs) {
-                Text("探索\(region.nameZh)")
-                    .font(.system(.title3, design: .rounded, weight: .bold))
-                    .foregroundStyle(.primary)
-
-                NavigationLink(value: HomeDestination.stories) {
-                    ExploreCard(
-                        title: "剧情",
-                        subtitle: "主线 \(completedMainlineStops)/\(mainlineStopCount) · 城市 \(completedCityStories)/\(cityStoryCount)",
-                        artworkName: "home_mainline_\(region.id)",
-                        fallbackIcon: "book.pages.fill",
-                        tint: Color.dsSky,
-                        progress: totalStoryCount == 0
-                            ? 0
-                            : Double(completedMainlineStops + completedCityStories) / Double(totalStoryCount)
+                departureCanvas
+                    .frame(
+                        width: HomeDepartureCanvas.width,
+                        height: HomeDepartureCanvas.height,
+                        alignment: .topLeading
                     )
-                }
-                .buttonStyle(.pressableCard)
-
-                NavigationLink(value: HomeDestination.activities) {
-                    ExploreCard(
-                        title: "城市活动",
-                        subtitle: "参与活动，认识新朋友",
-                        artworkName: "home_activity_\(region.id)",
-                        fallbackIcon: "figure.walk.motion",
-                        tint: Color.dsSunset,
-                        progress: nil
-                    )
-                }
-                .buttonStyle(.pressableCard)
+                    .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                    .scaleEffect(sceneScale, anchor: .topLeading)
+                    .offset(x: horizontalInset)
             }
+            .frame(
+                width: proxy.size.width,
+                height: proxy.size.height,
+                alignment: .topLeading
+            )
+            .clipped()
         }
+        .ignoresSafeArea(edges: [.top, .bottom])
+        .dsSceneTabBarBackground()
     }
 
-    private var firstStoryGuide: some View {
-        HStack(spacing: DSSpacing.xs) {
-            BrandMascotView(pose: .guide, size: 38, showsShadow: false)
+    private func compactHeightBackdrop(size: CGSize) -> some View {
+        Image(sceneLayout.assetName, bundle: .main)
+            .resizable()
+            .scaledToFill()
+            .frame(width: size.width, height: size.height, alignment: .top)
+            .clipped()
+            .blur(radius: 5)
+            .overlay(Color.black.opacity(colorScheme == .dark ? 0.26 : 0.04))
+            .accessibilityHidden(true)
+            .allowsHitTesting(false)
+    }
 
-            VStack(alignment: .leading, spacing: 1) {
-                Text("\(AppBrand.mascotName)的小提示")
-                    .font(.system(.caption2, design: .rounded, weight: .bold))
-                    .foregroundStyle(Color.dsBrandCoral)
-                Text("第一站，从剧情出发")
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(Color.dsBrandInk)
-                    .lineLimit(1)
+    /// 背景、入口、光效和命中范围都在这张 402pt 参考画布中；运行时只整体缩放。
+    private var departureCanvas: some View {
+        let width = HomeDepartureCanvas.width
+        let height = HomeDepartureCanvas.height
+        let layout = sceneLayout
+
+        return ZStack(alignment: .topLeading) {
+            sceneBackground(width: width, height: height)
+
+            HomeDepartureSceneKitView(
+                layout: layout,
+                flag: currentRegion.map { flag($0.countryCode) },
+                cityName: currentRegion?.nameZh,
+                storySubtitle: storySubtitle,
+                pressedEntry: pressedSceneEntry,
+                reduceMotion: reduceMotion
+            )
+            .frame(width: width, height: height)
+            .accessibilityHidden(true)
+            .allowsHitTesting(false)
+
+            if let currentRegion {
+                HomeSceneHitTarget()
+                .frame(width: layout.location.hitSize.width, height: layout.location.hitSize.height)
+                .position(
+                    x: width * layout.location.center.x,
+                    y: height * layout.location.center.y
+                )
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
             }
 
-            Spacer(minLength: 2)
+            NavigationLink(value: HomeDestination.map) {
+                HomeSceneHitTarget()
+            }
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $pressedSceneEntry))
+            .frame(width: layout.map.hitSize.width, height: layout.map.hitSize.height)
+            .position(
+                x: width * layout.map.center.x,
+                y: height * layout.map.center.y
+            )
+            .accessibilityLabel("世界地图")
+            .accessibilityHint("查看城市并开始旅行")
 
-            if let chapter = nextMainlineChapter {
-                NavigationLink(value: chapter) {
-                    Image(systemName: "arrow.right")
-                        .font(.subheadline.bold())
-                        .foregroundStyle(.white)
-                        .frame(width: 34, height: 34)
-                        .background(Color.dsSky, in: Circle())
+            NavigationLink(value: HomeDestination.stories) {
+                HomeSceneHitTarget()
+            }
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $pressedSceneEntry))
+            .frame(width: layout.story.hitSize.width, height: layout.story.hitSize.height)
+            .position(
+                x: width * layout.story.center.x,
+                y: height * layout.story.center.y
+            )
+            .accessibilityLabel("剧情，\(storySubtitle)")
+            .accessibilityHint("查看主线与当前城市剧情")
+
+            NavigationLink(value: HomeDestination.activities) {
+                HomeSceneHitTarget()
+            }
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $pressedSceneEntry))
+            .frame(width: layout.activities.hitSize.width, height: layout.activities.hitSize.height)
+            .position(
+                x: width * layout.activities.center.x,
+                y: height * layout.activities.center.y
+            )
+            .accessibilityLabel("城市活动")
+            .accessibilityHint("参加当地活动并认识旅途朋友")
+        }
+        .frame(width: width, height: height, alignment: .topLeading)
+    }
+
+    private func sceneBackground(width: CGFloat, height: CGFloat) -> some View {
+        ZStack {
+            Image(sceneLayout.assetName, bundle: .main)
+                .resizable()
+                .frame(width: width, height: height)
+
+            Color.black.opacity(colorScheme == .dark ? 0.22 : 0.015)
+        }
+        .frame(width: width, height: height)
+        .accessibilityHidden(true)
+        .allowsHitTesting(false)
+    }
+
+    private var accessibleContent: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: DSSpacing.md) {
+                if let currentRegion {
+                    Label(
+                        "当前驻地：\(currentRegion.nameZh)",
+                        systemImage: "location.fill"
+                    )
+                    .font(.title2.bold())
+                    .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel("去看\(chapter.title)")
-                .simultaneousGesture(
-                    TapGesture().onEnded {
-                        dismissFirstStoryGuide()
-                    }
+
+                accessibleLink(
+                    destination: .map,
+                    title: "世界地图",
+                    subtitle: "查看城市并开始旅行",
+                    systemImage: "map"
+                )
+                accessibleLink(
+                    destination: .stories,
+                    title: "剧情",
+                    subtitle: storySubtitle,
+                    systemImage: "waveform.path.ecg.rectangle"
+                )
+                accessibleLink(
+                    destination: .activities,
+                    title: "城市活动",
+                    subtitle: "参加当地活动并认识旅途朋友",
+                    systemImage: "figure.walk.motion"
                 )
             }
+            .padding(DSSpacing.md)
+        }
+        .refreshable { await reload() }
+        .background(Color.dsBackground)
+    }
 
-            Button {
-                dismissFirstStoryGuide()
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.caption2.bold())
+    private func accessibleLink(
+        destination: HomeDestination,
+        title: String,
+        subtitle: String,
+        systemImage: String
+    ) -> some View {
+        NavigationLink(value: destination) {
+            HStack(spacing: DSSpacing.sm) {
+                Image(systemName: systemImage)
+                    .font(.title2)
+                    .frame(width: 42)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.headline)
+                    Text(subtitle)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
                     .foregroundStyle(.secondary)
-                    .frame(width: 26, height: 26)
             }
-            .buttonStyle(.plain)
-            .accessibilityLabel("稍后再看")
+            .frame(maxWidth: .infinity, minHeight: 56)
+            .contentShape(Rectangle())
         }
-        .padding(.leading, DSSpacing.xs)
-        .padding(.trailing, 6)
-        .padding(.vertical, 6)
-        .frame(maxWidth: 300)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: DSRadius.card))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(Color.dsSky.opacity(0.14), lineWidth: 1)
-        }
-        .shadow(color: Color.dsBrandInk.opacity(0.12), radius: 12, y: 6)
-        .accessibilityElement(children: .contain)
+        .buttonStyle(.plain)
+        .dsSurface(.elevated)
     }
 
     private var mainlineJourney: MainlineJourney {
         MainlineCatalog.journey(starterRegionID: profile?.starterRegionID)
     }
 
-    private var nextMainlineChapter: MainlineChapter? {
-        mainlineJourney.stops.first {
+    private var storySubtitle: String {
+        guard let nextStop = mainlineJourney.stops.first(where: {
             !completedStories.contains($0.chapter.storyID)
-        }?.chapter
-    }
-
-    private var completedMainlineStops: Int {
-        mainlineJourney.stops.filter {
-            completedStories.contains($0.chapter.storyID)
-        }.count
-    }
-
-    private var mainlineStopCount: Int {
-        mainlineJourney.stops.count
-    }
-
-    private var completedCityStories: Int {
-        CityStoryCatalog.chapters.filter {
-            completedStories.contains($0.storyID)
-        }.count
-    }
-
-    private var cityStoryCount: Int {
-        CityStoryCatalog.chapters.count
-    }
-
-    private var totalStoryCount: Int {
-        mainlineStopCount + cityStoryCount
+        }) else {
+            return "五城回声 · 已完成"
+        }
+        let cityName = deps.regionCatalog.region(id: nextStop.regionID)?.nameZh ?? nextStop.chapter.title
+        return "下一站 · \(cityName)"
     }
 
     private func reload() async {
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
-        async let loadedFriends = try? deps.rosterStore.friends()
-        async let loadedSummaries = try? deps.chatStore.conversationSummaries()
 
         profile = await loadedProfile
         completedStories = await loadedCompleted ?? []
-        let friends = await loadedFriends ?? []
-        let summaries = await loadedSummaries ?? []
-        let friendsByID = Dictionary(uniqueKeysWithValues: friends.map { ($0.id, $0) })
-        recentRows = summaries.compactMap { summary in
-            friendsByID[summary.characterID].map { RecentChatRow(character: $0, summary: summary) }
-        }
-
-        let shouldShowGuide =
-            profile?.hasCompletedOnboarding == true
-            && completedMainlineStops == 0
-            && !hasHandledFirstStoryGuide
-        withAnimation(reduceMotion ? nil : DSAnimation.celebration) {
-            showsFirstStoryGuide = shouldShowGuide
-        }
         onInitialLoad()
     }
 
-    private func dismissFirstStoryGuide() {
-        hasHandledFirstStoryGuide = true
-        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-            showsFirstStoryGuide = false
+    private func flag(_ countryCode: String) -> String {
+        countryCode.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
+            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
+                result.unicodeScalars.append(value)
+            }
         }
     }
+}
 
+/// SceneKit 只画视觉，透明 SwiftUI 入口继续提供原生导航、命中语义与即时按压状态。
+private struct HomeSceneHitTarget: View {
+    var body: some View {
+        Rectangle()
+            .fill(Color.white.opacity(0.001))
+            .contentShape(Rectangle())
+    }
+}
+
+private struct HomeScenePressReportingButtonStyle: ButtonStyle {
+    let entry: HomeSceneEntryID
+    @Binding var pressedEntry: HomeSceneEntryID?
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .onChange(of: configuration.isPressed) { _, isPressed in
+                if isPressed {
+                    pressedEntry = entry
+                } else if pressedEntry == entry {
+                    pressedEntry = nil
+                }
+            }
+    }
 }

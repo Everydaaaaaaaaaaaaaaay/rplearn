@@ -4,13 +4,20 @@ import DesignSystem
 import SwiftUI
 
 public struct SignInView: View {
+    private enum AppleSignInState {
+        case preparing
+        case ready(AppleAuthChallenge)
+        case signingIn
+        case unavailable
+    }
+
     private enum Mode: Hashable {
         case login
         case register
     }
 
     @Bindable private var session: AuthSession
-    @State private var appleChallenge: AppleAuthChallenge?
+    @State private var appleSignInState: AppleSignInState = .preparing
     @State private var email = ""
     @State private var errorMessage: String?
     @State private var isBusy = false
@@ -121,15 +128,48 @@ public struct SignInView: View {
             .signInWithAppleButtonStyle(.black)
             .frame(height: 52)
             .clipShape(RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous))
-            .allowsHitTesting(appleChallenge != nil && !isBusy)
-            .opacity(appleChallenge == nil ? 0.55 : 1)
+            .allowsHitTesting(isAppleSignInReady && !isBusy)
+            .opacity(isAppleSignInReady ? 1 : 0.55)
 
-            if appleChallenge == nil {
+            switch appleSignInState {
+            case .preparing:
                 Text("正在准备安全登录…")
                     .font(.caption)
                     .foregroundStyle(Color.dsPaperInkSecondary)
+            case .signingIn:
+                HStack(spacing: 6) {
+                    ProgressView()
+                        .controlSize(.small)
+                    Text("正在完成安全登录…")
+                }
+                .font(.caption)
+                .foregroundStyle(Color.dsPaperInkSecondary)
+            case .unavailable:
+                HStack(spacing: 8) {
+                    Label("Apple 登录暂不可用", systemImage: "exclamationmark.circle")
+                    Button("重试") {
+                        Task { await reloadAppleChallenge() }
+                    }
+                    .buttonStyle(.plain)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.dsSkyDeep)
+                    .disabled(isBusy)
+                }
+                .font(.caption)
+                .foregroundStyle(Color.dsPaperInkSecondary)
+            case .ready:
+                EmptyView()
             }
         }
+    }
+
+    private var appleChallenge: AppleAuthChallenge? {
+        guard case .ready(let challenge) = appleSignInState else { return nil }
+        return challenge
+    }
+
+    private var isAppleSignInReady: Bool {
+        appleChallenge != nil
     }
 
     private var credentials: some View {
@@ -269,10 +309,14 @@ public struct SignInView: View {
     }
 
     private func reloadAppleChallenge() async {
+        appleSignInState = .preparing
         do {
-            appleChallenge = try await session.prepareAppleChallenge()
+            let challenge = try await session.prepareAppleChallenge()
+            guard !Task.isCancelled else { return }
+            appleSignInState = .ready(challenge)
         } catch {
-            appleChallenge = nil
+            guard !Task.isCancelled else { return }
+            appleSignInState = .unavailable
         }
     }
 
@@ -299,7 +343,7 @@ public struct SignInView: View {
 
         isBusy = true
         errorMessage = nil
-        appleChallenge = nil
+        appleSignInState = .signingIn
         Task {
             defer { isBusy = false }
             do {

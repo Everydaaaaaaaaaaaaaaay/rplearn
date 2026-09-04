@@ -44,6 +44,7 @@ struct RootView: View {
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     init(environment: AppEnvironment) {
         self.environment = environment
@@ -335,10 +336,6 @@ struct RootView: View {
             HomeView(
                 deps: homeDeps,
                 reloadToken: stateRevision,
-                chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
-                onOpenMessages: {
-                    selectedTab = .messages
-                },
                 onInitialLoad: {
                     guard environment.needsOnboarding == false else { return }
                     isInitialContentReady = true
@@ -418,33 +415,139 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        NavigationStack(path: $mePath) {
-            MyPageView(
-                economyStore: environment.economyStore,
-                economyService: economyService,
-                rosterStore: environment.rosterStore,
-                authSession: environment.authSession,
-                billing: environment.billing,
-                reloadToken: stateRevision,
-                isSignedIn: usesCloudState,
-                onSignIn: { showSignIn = true },
-                onCalibrateLevel: { showPlacementTest = true },
-                onOpenFavorites: { openMe(.favorites) },
-                onOpenSettings: { openMe(.settings) },
-                onOpenMemory: {
-                    #if DEBUG
-                    openMe(.memory)
-                    #endif
+        ZStack {
+            // The photographic scene lives outside NavigationStack so iOS 18 cannot feed
+            // navigation- or tab-bar safe-area changes back into its GeometryReader. It owns
+            // the full screen and the tab bar simply overlays its lower pixels.
+            meRootView
+                .opacity(mePath.isEmpty ? 1 : 0)
+                .allowsHitTesting(mePath.isEmpty)
+                .accessibilityHidden(!mePath.isEmpty)
+                .ignoresSafeArea(.container, edges: [.top, .bottom])
+                .zIndex(0)
+
+            if !mePath.isEmpty {
+                meDestinationStack
+                    .transition(.opacity)
+                    .zIndex(1)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.dsBackground.ignoresSafeArea())
+        .animation(meContentAnimation, value: mePath)
+    }
+
+    private var meDestinationStack: some View {
+        NavigationStack {
+            ZStack(alignment: .leading) {
+                if let destination = mePath.last {
+                    meDestinationView(destination)
+                        .id(destination)
+                        .transition(.opacity)
                 }
-            )
-            .navigationDestination(for: MeDestination.self) { destination in
-                meDestinationView(destination)
+
+                // A dedicated edge surface sits above List/ScrollView. Attaching the gesture
+                // to destination content is unreliable on iOS 18 because scrolling wins the
+                // recognizer contest before SwiftUI delivers the simultaneous gesture.
+                Color.clear
+                    .frame(width: 28)
+                    .frame(maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                    .gesture(meBackSwipeGesture)
+                    .accessibilityHidden(true)
+                    .zIndex(2)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.dsBackground.ignoresSafeArea())
+            .navigationTitle(meNavigationTitle)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        closeMeDestination()
+                    } label: {
+                        Label("返回", systemImage: "chevron.left")
+                    }
+                }
             }
         }
     }
 
+    private var meRootView: some View {
+        MyPageView(
+            economyStore: environment.economyStore,
+            economyService: economyService,
+            rosterStore: environment.rosterStore,
+            authSession: environment.authSession,
+            billing: environment.billing,
+            reloadToken: stateRevision,
+            isSignedIn: usesCloudState,
+            onSignIn: { showSignIn = true },
+            onCalibrateLevel: { showPlacementTest = true },
+            onOpenFavorites: { openMe(.favorites) },
+            onOpenSettings: { openMe(.settings) },
+            onOpenMemory: {
+                #if DEBUG
+                openMe(.memory)
+                #endif
+            }
+        )
+        .id("me-root")
+    }
+
+    private var meNavigationTitle: String {
+        guard let destination = mePath.last else { return "" }
+        return switch destination {
+        case .favorites: "收藏夹"
+        case .settings: "设置"
+        case .photoCredits: "城市背景照片"
+        #if DEBUG
+        case .memory: ""
+        #endif
+        }
+    }
+
     private func openMe(_ destination: MeDestination) {
-        mePath.append(destination)
+        withAnimation(meContentAnimation) {
+            mePath.append(destination)
+        }
+    }
+
+    private func closeMeDestination() {
+        guard !mePath.isEmpty else { return }
+        withAnimation(meContentAnimation) {
+            _ = mePath.removeLast()
+        }
+    }
+
+    /// 保留交叉淡化的页面过渡，同时恢复 iOS 用户熟悉的左边缘右滑返回。
+    /// 只在边缘起手且水平意图明确时提交，不会抢占 List/ScrollView 的普通滚动。
+    private var meBackSwipeGesture: some Gesture {
+        DragGesture(minimumDistance: 12, coordinateSpace: .global)
+            .onEnded { value in
+                let horizontalDistance = value.translation.width
+                let projectedDistance = value.predictedEndTranslation.width
+                let verticalDistance = abs(value.translation.height)
+                let startsAtLeadingEdge = value.startLocation.x <= 32
+                let isClearlyHorizontal = horizontalDistance > verticalDistance * 1.25
+                let passesDistanceThreshold = horizontalDistance >= 56 || projectedDistance >= 104
+
+                guard startsAtLeadingEdge,
+                      horizontalDistance > 0,
+                      isClearlyHorizontal,
+                      passesDistanceThreshold
+                else { return }
+
+                closeMeDestination()
+            }
+    }
+
+    /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。
+    private var meContentAnimation: Animation {
+        reduceMotion
+            ? .easeOut(duration: 0.10)
+            : .easeInOut(duration: 0.18)
     }
 
     @ViewBuilder

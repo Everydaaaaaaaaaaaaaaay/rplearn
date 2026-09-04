@@ -357,7 +357,10 @@ public struct FavoritesView: View {
                 }
                 .frame(width: min(280, proxy.size.width * 0.72))
             }
-            .position(x: proxy.size.width * 0.545, y: proxy.size.height * 0.35)
+            .position(
+                x: proxy.size.width * 0.545 + journalPlaneAnchorOffset.width,
+                y: proxy.size.height * 0.35
+            )
         }
     }
 
