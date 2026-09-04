@@ -301,7 +301,8 @@ struct HomeDepartureSceneLayout: Sendable {
             surface: .doorLintel
         ),
         map: .init(
-            center: UnitPoint(x: 0.68, y: 0.19),
+            // 纸质地图透视四边形的中心；入口视觉、形变与点击热区共用该锚点。
+            center: UnitPoint(x: 0.702, y: 0.264),
             hitSize: CGSize(width: 132, height: 126),
             renderSize: CGSize(width: 140, height: 132),
             surface: .wall
