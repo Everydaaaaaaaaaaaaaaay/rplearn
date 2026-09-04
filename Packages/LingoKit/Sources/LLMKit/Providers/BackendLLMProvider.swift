@@ -1,6 +1,46 @@
 import BackendKit
 import Foundation
 
+public struct BackendLLMUsage: Sendable, Codable, Equatable {
+    public let inputTokens: Int
+    public let outputTokens: Int
+    public let totalTokens: Int
+
+    public init(inputTokens: Int, outputTokens: Int, totalTokens: Int) {
+        self.inputTokens = inputTokens
+        self.outputTokens = outputTokens
+        self.totalTokens = totalTokens
+    }
+}
+
+public struct BackendLLMCompletionMetrics: Sendable, Equatable {
+    public let task: LLMTask
+    public let model: String
+    public let requestID: String
+    public let usage: BackendLLMUsage
+    public let latencyMilliseconds: Int
+    public let firstTokenLatencyMilliseconds: Int?
+    public let streamed: Bool
+
+    public init(
+        task: LLMTask,
+        model: String,
+        requestID: String,
+        usage: BackendLLMUsage,
+        latencyMilliseconds: Int,
+        firstTokenLatencyMilliseconds: Int? = nil,
+        streamed: Bool = false
+    ) {
+        self.task = task
+        self.model = model
+        self.requestID = requestID
+        self.usage = usage
+        self.latencyMilliseconds = latencyMilliseconds
+        self.firstTokenLatencyMilliseconds = firstTokenLatencyMilliseconds
+        self.streamed = streamed
+    }
+}
+
 public struct BackendLLMProvider: LLMProvider {
     private struct Message: Codable, Sendable {
         let content: String
@@ -16,10 +56,18 @@ public struct BackendLLMProvider: LLMProvider {
 
     private struct Completion: Decodable, Sendable {
         let content: String
+        let model: String?
+        let requestId: String?
+        let usage: BackendLLMUsage?
     }
 
     private struct Delta: Decodable {
         let text: String
+    }
+
+    private struct StreamMetadata: Decodable {
+        let model: String
+        let providerRequestId: String?
     }
 
     private struct StreamFailure: Decodable {
@@ -29,10 +77,25 @@ public struct BackendLLMProvider: LLMProvider {
 
     private let backend: BackendClient
     private let guestID: String?
+    private let metricsObserver: (@Sendable (BackendLLMCompletionMetrics) async -> Void)?
 
-    public init(backend: BackendClient, guestID: String? = nil) {
+    public init(
+        backend: BackendClient,
+        guestID: String? = nil
+    ) {
         self.backend = backend
         self.guestID = guestID
+        self.metricsObserver = nil
+    }
+
+    public init(
+        backend: BackendClient,
+        guestID: String?,
+        metricsObserver: @escaping @Sendable (BackendLLMCompletionMetrics) async -> Void
+    ) {
+        self.backend = backend
+        self.guestID = guestID
+        self.metricsObserver = metricsObserver
     }
 
     public func modelID(for tier: LLMTier) -> String {
@@ -40,6 +103,7 @@ public struct BackendLLMProvider: LLMProvider {
     }
 
     public func complete(_ request: LLMRequest) async throws -> String {
+        let startedAt = Date()
         do {
             let body = try makeBody(request)
             let completion: Completion
@@ -60,6 +124,24 @@ public struct BackendLLMProvider: LLMProvider {
             guard !completion.content.isEmpty else {
                 throw LLMError.emptyResponse
             }
+            if let model = completion.model,
+               let requestID = completion.requestId,
+               let usage = completion.usage,
+               let metricsObserver {
+                await metricsObserver(
+                    BackendLLMCompletionMetrics(
+                        task: request.task,
+                        model: model,
+                        requestID: requestID,
+                        usage: usage,
+                        latencyMilliseconds: max(
+                            0,
+                            Int(Date().timeIntervalSince(startedAt) * 1_000)
+                        ),
+                        streamed: false
+                    )
+                )
+            }
             return completion.content
         } catch {
             throw Self.map(error)
@@ -69,6 +151,7 @@ public struct BackendLLMProvider: LLMProvider {
     public func stream(
         _ request: LLMRequest
     ) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
+        let startedAt = Date()
         do {
             let body = try makeBody(request)
             let events: AsyncThrowingStream<BackendServerSentEvent, Error>
@@ -87,6 +170,9 @@ public struct BackendLLMProvider: LLMProvider {
             return AsyncThrowingStream { continuation in
                 let task = Task {
                     var receivedDone = false
+                    var firstTokenAt: Date?
+                    var metadata: StreamMetadata?
+                    var usage: BackendLLMUsage?
                     do {
                         for try await event in events {
                             try Task.checkCancellation()
@@ -97,6 +183,9 @@ public struct BackendLLMProvider: LLMProvider {
                                     from: Data(event.data.utf8)
                                 )
                                 if !delta.text.isEmpty {
+                                    if firstTokenAt == nil {
+                                        firstTokenAt = .now
+                                    }
                                     continuation.yield(.textDelta(delta.text))
                                 }
                             case "done":
@@ -111,14 +200,43 @@ public struct BackendLLMProvider: LLMProvider {
                                     status: failure.retryable ? 503 : 400,
                                     message: failure.code
                                 )
-                            case "metadata", "usage":
-                                continue
+                            case "metadata":
+                                metadata = try JSONDecoder().decode(
+                                    StreamMetadata.self,
+                                    from: Data(event.data.utf8)
+                                )
+                            case "usage":
+                                usage = try JSONDecoder().decode(
+                                    BackendLLMUsage.self,
+                                    from: Data(event.data.utf8)
+                                )
                             default:
                                 continue
                             }
                         }
                         guard receivedDone else {
                             throw LLMError.invalidResponse("AI 流在完成事件前中断")
+                        }
+                        if let metadata,
+                           let usage,
+                           let metricsObserver {
+                            let finishedAt = Date()
+                            await metricsObserver(
+                                BackendLLMCompletionMetrics(
+                                    task: request.task,
+                                    model: metadata.model,
+                                    requestID: metadata.providerRequestId ?? "server-stream",
+                                    usage: usage,
+                                    latencyMilliseconds: max(
+                                        0,
+                                        Int(finishedAt.timeIntervalSince(startedAt) * 1_000)
+                                    ),
+                                    firstTokenLatencyMilliseconds: firstTokenAt.map {
+                                        max(0, Int($0.timeIntervalSince(startedAt) * 1_000))
+                                    },
+                                    streamed: true
+                                )
+                            )
                         }
                         continuation.finish()
                     } catch {

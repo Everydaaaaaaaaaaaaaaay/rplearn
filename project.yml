@@ -133,6 +133,11 @@ targets:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "18.0"
+    info:
+      path: build/Generated-Tests-Info.plist
+      properties:
+        LingoTripRoleplayE2EEnabled: $(RUN_ROLEPLAY_E2E)
+        LingoTripRoleplayE2ECycle: $(ROLEPLAY_E2E_CYCLE)
     configFiles:
       Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
@@ -180,6 +185,8 @@ targets:
         product: StoryEngine
     settings:
       base:
+        RUN_ROLEPLAY_E2E: "0"
+        ROLEPLAY_E2E_CYCLE: "0"
         PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).tests
         CODE_SIGN_STYLE: Automatic
         "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual
@@ -187,7 +194,7 @@ targets:
         "DEVELOPMENT_TEAM[sdk=iphonesimulator*]": ""
         "PROVISIONING_PROFILE_SPECIFIER[sdk=iphonesimulator*]": ""
         SWIFT_VERSION: "6.0"
-        GENERATE_INFOPLIST_FILE: YES
+        GENERATE_INFOPLIST_FILE: NO
 
   # 独立 UI 性能回归目标：固定复现 Tab 进出“我的”及二级入口转场，
   # 与单元测试分开运行，避免常规逻辑回归被真机/模拟器时序影响。
