@@ -9,6 +9,7 @@ struct HomePerspectiveCalibrationTests {
     @Test("单应矩阵精确经过四个摄影标定角")
     func homographyMapsEveryCalibrationCorner() {
         for surface in [
+            HomePerspectiveCalibration.production.doorLintel,
             HomePerspectiveCalibration.production.wall,
             HomePerspectiveCalibration.production.floor,
         ] {
@@ -27,7 +28,7 @@ struct HomePerspectiveCalibrationTests {
     @Test("照片坐标和平面坐标可稳定往返")
     func inverseRoundTripsEntryCenters() throws {
         let layout = HomeDepartureSceneLayout.production
-        for entry in [layout.map, layout.story, layout.activities] {
+        for entry in [layout.location, layout.map, layout.story, layout.activities] {
             let surface = HomePerspectiveCalibration.production.surface(entry.surface)
             let inverse = try #require(surface.homography.inverted)
             let photoPoint = CGPoint(x: entry.center.x, y: entry.center.y)
@@ -36,15 +37,15 @@ struct HomePerspectiveCalibrationTests {
         }
     }
 
-    @Test("同墙入口共享墙面投影，地面入口只使用地面投影")
+    @Test("各入口使用对应的摄影承载面")
     func entriesUseTheirPhysicalSurface() {
         let layout = HomeDepartureSceneLayout.production
         #expect(layout.map.surface == .wall)
         #expect(layout.story.surface == .wall)
         #expect(layout.activities.surface == .floor)
-        #expect(layout.location.surface == .screen)
+        #expect(layout.location.surface == .doorLintel)
 
-        for entry in [layout.map, layout.story, layout.activities] {
+        for entry in [layout.location, layout.map, layout.story, layout.activities] {
             let points = entry.projectedRegion().photoQuad.points
             #expect(points.allSatisfy { $0.x.isFinite && $0.y.isFinite })
         }

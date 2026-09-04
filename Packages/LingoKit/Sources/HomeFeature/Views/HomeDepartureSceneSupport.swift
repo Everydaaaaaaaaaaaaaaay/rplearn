@@ -20,6 +20,7 @@ enum HomeSceneEntryID: String, CaseIterable, Sendable {
 /// 不在运行时重新分析或改写背景图片。
 enum HomePhotoSurfaceID: String, Sendable {
     case screen
+    case doorLintel
     case wall
     case floor
 }
@@ -161,19 +162,22 @@ struct HomePhotoSurface: Sendable {
 
 struct HomePerspectiveCalibration: Sendable {
     let screen: HomePhotoSurface
+    let doorLintel: HomePhotoSurface
     let wall: HomePhotoSurface
     let floor: HomePhotoSurface
 
     func surface(_ id: HomePhotoSurfaceID) -> HomePhotoSurface {
         switch id {
         case .screen: screen
+        case .doorLintel: doorLintel
         case .wall: wall
         case .floor: floor
         }
     }
 
     /// 四角均在 853 × 1844 的一次性生产底图上测量。
-    /// 墙面以纸质地图为矩形基准，地面以门口地垫为矩形基准。
+    /// 上门框以白色横梁四边为基准，墙面以纸质地图为矩形基准，
+    /// 地面以门口地垫为矩形基准。
     static let production = HomePerspectiveCalibration(
         screen: HomePhotoSurface(
             id: .screen,
@@ -184,6 +188,16 @@ struct HomePerspectiveCalibration: Sendable {
                 bottomLeft: CGPoint(x: 0, y: 1)
             ),
             pose: HomeSurfacePose(name: "屏幕平面", pitch: 0, yaw: 0, roll: 0)
+        ),
+        doorLintel: HomePhotoSurface(
+            id: .doorLintel,
+            quad: HomePerspectiveQuad(
+                topLeft: CGPoint(x: 0.0 / 853.0, y: 153.0 / 1844.0),
+                topRight: CGPoint(x: 370.0 / 853.0, y: 234.0 / 1844.0),
+                bottomRight: CGPoint(x: 340.0 / 853.0, y: 265.0 / 1844.0),
+                bottomLeft: CGPoint(x: 0.0 / 853.0, y: 198.0 / 1844.0)
+            ),
+            pose: HomeSurfacePose(name: "上门框", pitch: -5, yaw: 14, roll: 12)
         ),
         wall: HomePhotoSurface(
             id: .wall,
@@ -284,7 +298,7 @@ struct HomeDepartureSceneLayout: Sendable {
             center: UnitPoint(x: 0.215, y: 0.12),
             hitSize: CGSize(width: 142, height: 82),
             renderSize: CGSize(width: 142, height: 82),
-            surface: .screen
+            surface: .doorLintel
         ),
         map: .init(
             center: UnitPoint(x: 0.68, y: 0.19),

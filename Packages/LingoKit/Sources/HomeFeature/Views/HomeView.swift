@@ -343,8 +343,10 @@ private struct HomePerspectiveDebugOverlay: View {
 
     var body: some View {
         Canvas { context, size in
+            drawSurface(calibration.doorLintel, color: .yellow, context: &context, size: size)
             drawSurface(calibration.wall, color: .cyan, context: &context, size: size)
             drawSurface(calibration.floor, color: .orange, context: &context, size: size)
+            drawRegion(layout.location.projectedRegion(), color: .yellow, context: &context, size: size)
             drawRegion(layout.map.projectedRegion(), color: .cyan, context: &context, size: size)
             drawRegion(layout.story.projectedRegion(), color: .cyan, context: &context, size: size)
             drawRegion(layout.activities.projectedRegion(), color: .orange, context: &context, size: size)

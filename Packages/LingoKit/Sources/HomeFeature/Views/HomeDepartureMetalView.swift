@@ -168,7 +168,8 @@ struct HomeDepartureMetalView: UIViewRepresentable {
 private final class HomePerspectiveMetalRenderer {
     /// 首页锚点所在的浅墙面/反光地板比“我的”页深色实物更容易显得过曝。
     /// 保持共用材质的半径、颜色与内外光比例，仅做统一的场景曝光补偿。
-    private static let sceneGlowExposure: Float = 0.34
+    private static let sceneGlowExposure: Float = 0.10
+    private static let sceneEdgeLightExposure: Float = 0.50
 
     private struct VertexUniforms {
         var homographyColumn0: SIMD4<Float>
@@ -525,7 +526,7 @@ private final class HomePerspectiveMetalRenderer {
             offset: item.material.edgeLightOffset,
             canvasSize: canvasSize,
             color: SIMD3(1, 1, 1),
-            opacity: Float(item.material.edgeLightOpacity),
+            opacity: Float(item.material.edgeLightOpacity) * Self.sceneEdgeLightExposure,
             radius: item.material.edgeLightRadius,
             textures: item.textures,
             press: press,
