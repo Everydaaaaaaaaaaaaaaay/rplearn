@@ -126,7 +126,7 @@ struct HomeDepartureMetalView: UIViewRepresentable {
         private func startAnimationIfNeeded() {
             guard displayLink == nil else { return }
             let link = CADisplayLink(target: self, selector: #selector(stepAnimation(_:)))
-            link.preferredFrameRateRange = CAFrameRateRange(minimum: 30, maximum: 60, preferred: 60)
+            link.preferredFrameRateRange = CAFrameRateRange(minimum: 30, maximum: 120, preferred: 120)
             link.add(to: .main, forMode: .common)
             displayLink = link
         }
@@ -138,16 +138,32 @@ struct HomeDepartureMetalView: UIViewRepresentable {
             previousTimestamp = link.timestamp
             var isSettled = true
 
-            // 临界阻尼弹簧：按下立即响应，松手后没有多余回摆；整个过程可随时被反向打断。
-            let angularFrequency: CGFloat = 24
             for entry in HomeSceneEntryID.allCases {
                 let target: CGFloat = entry == pressedEntry ? 1 : 0
                 var value = pressAmounts[entry, default: 0]
                 var velocity = pressVelocities[entry, default: 0]
-                let acceleration = angularFrequency * angularFrequency * (target - value)
-                    - 2 * angularFrequency * velocity
-                velocity += acceleration * CGFloat(delta)
-                value += velocity * CGFloat(delta)
+
+                // 与“我的”页读取相同的按下与回弹参数。较短回弹在 60 Hz 设备上
+                // 通过子步积分保持稳定，同时仍能从当前速度无缝反向。
+                let response = CGFloat(
+                    target > 0
+                        ? DSSceneEntranceMotion.pressResponse
+                        : DSSceneEntranceMotion.releaseDuration
+                )
+                let damping = CGFloat(
+                    target > 0
+                        ? DSSceneEntranceMotion.pressDampingFraction
+                        : 1 - DSSceneEntranceMotion.releaseBounce
+                )
+                let angularFrequency = 2 * CGFloat.pi / response
+                let stepCount = max(1, Int(ceil(delta / (1.0 / 240.0))))
+                let stepDuration = CGFloat(delta) / CGFloat(stepCount)
+                for _ in 0..<stepCount {
+                    let acceleration = angularFrequency * angularFrequency * (target - value)
+                        - 2 * damping * angularFrequency * velocity
+                    velocity += acceleration * stepDuration
+                    value += velocity * stepDuration
+                }
                 value = min(max(value, 0), 1)
                 pressAmounts[entry] = value
                 pressVelocities[entry] = velocity
@@ -440,7 +456,8 @@ private final class HomePerspectiveMetalRenderer {
         encoder: MTLRenderCommandEncoder
     ) {
         let homography = item.region.surface.homography
-        let pressedScale = Float(1 - press * 0.032)
+        let pressedScale = Float(1 - press * (1 - DSSceneEntranceMotion.pressedScale))
+        let pressedOffset = press * DSSceneEntranceMotion.pressedOffset
         let shadowCompression = 1 - press * 0.72
         var vertex = VertexUniforms(
             homographyColumn0: SIMD4(Float(homography.a), Float(homography.d), Float(homography.g), 0),
@@ -452,7 +469,12 @@ private final class HomePerspectiveMetalRenderer {
                 Float(item.region.planeSize.width),
                 Float(item.region.planeSize.height)
             ),
-            transform: SIMD4(pressedScale, 0, 0, 0)
+            transform: SIMD4(
+                pressedScale,
+                0,
+                Float(pressedOffset / max(canvasSize.height, 1)),
+                0
+            )
         )
         // DSHologramSurface 的大半径落影。低透明度只负责说明标牌离开了承载面，
         // 不再用一份偏移的完整字形模拟深度。
@@ -534,12 +556,18 @@ private final class HomePerspectiveMetalRenderer {
         )
 
         vertex.transform.y = 0
-        vertex.transform.z = 0
+        vertex.transform.z = Float(pressedOffset / max(canvasSize.height, 1))
         encoder.setVertexBytes(&vertex, length: MemoryLayout<VertexUniforms>.stride, index: 0)
         encoder.setFragmentTexture(item.textures.face, index: 0)
         var face = FragmentUniforms(
             tint: SIMD4(1, 1, 1, 1),
-            parameters: SIMD4(0, Float(DSHologramMaterial.coreOpacity), 0, -0.28)
+            parameters: SIMD4(
+                0,
+                Float(DSHologramMaterial.coreOpacity)
+                    * Float(1 - press * (1 - DSSceneEntranceMotion.pressedOpacity)),
+                0,
+                -0.28
+            )
         )
         encoder.setFragmentBytes(&face, length: MemoryLayout<FragmentUniforms>.stride, index: 0)
         encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
@@ -557,7 +585,10 @@ private final class HomePerspectiveMetalRenderer {
         encoder: MTLRenderCommandEncoder
     ) {
         vertex.transform.y = Float(offset.width / max(canvasSize.width, 1))
-        vertex.transform.z = Float(offset.height / max(canvasSize.height, 1))
+        vertex.transform.z = Float(
+            (offset.height + press * DSSceneEntranceMotion.pressedOffset)
+                / max(canvasSize.height, 1)
+        )
         encoder.setVertexBytes(&vertex, length: MemoryLayout<VertexUniforms>.stride, index: 0)
         encoder.setFragmentTexture(textures.blurred(radius: radius), index: 0)
         var effect = FragmentUniforms(

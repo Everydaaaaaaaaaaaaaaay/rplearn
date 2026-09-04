@@ -34,6 +34,7 @@ struct RootView: View {
     @AppStorage("lingotrip.unread.count") private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
     @State private var homePath = NavigationPath()
+    @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
     @State private var showSignIn = false
     @State private var showPlacementTest = false
@@ -63,21 +64,19 @@ struct RootView: View {
         }
         _selectedTab = State(initialValue: initial)
         if requested == "map" {
-            var path = NavigationPath()
-            path.append(HomeDestination.map)
-            _homePath = State(initialValue: path)
+            _activeHomeDestination = State(initialValue: .map)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
-            var path = NavigationPath()
-            path.append(HomeDestination.activities)
-            _homePath = State(initialValue: path)
+            _activeHomeDestination = State(initialValue: .activities)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
             var path = NavigationPath()
             path.append(HomeDestination.mainline)
             _homePath = State(initialValue: path)
+            _activeHomeDestination = State(initialValue: .stories)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "cityStories" {
             var path = NavigationPath()
             path.append(HomeDestination.cityStories)
             _homePath = State(initialValue: path)
+            _activeHomeDestination = State(initialValue: .stories)
         }
         #endif
         #if DEBUG
@@ -90,7 +89,6 @@ struct RootView: View {
         }
         #endif
     }
-
     private var showsOnboarding: Binding<Bool> {
         Binding(
             get: {
@@ -102,7 +100,6 @@ struct RootView: View {
             }
         )
     }
-
     private var forcesOnboardingStoryForUITest: Bool {
         #if DEBUG
         ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1"
@@ -136,7 +133,7 @@ struct RootView: View {
                 await handleAuthenticationPhase()
                 await reloadUnreadCount()
                 if environment.needsOnboarding != nil,
-                   selectedTab != .home || !homePath.isEmpty {
+                   selectedTab != .home || activeHomeDestination != nil || !homePath.isEmpty {
                     isInitialContentReady = true
                 }
                 await refreshProactiveMessagesAfterInterfaceSettles(
@@ -339,15 +336,29 @@ struct RootView: View {
     }
 
     private var homeStack: some View {
-        NavigationStack(path: $homePath) {
+        SceneNavigationContainer(
+            isPresentingDestination: activeHomeDestination != nil,
+            navigationTitle: activeHomeDestination?.navigationTitle ?? "",
+            onBack: closeHomeDestination,
+            navigationPath: $homePath
+        ) {
             HomeView(
                 deps: homeDeps,
                 reloadToken: stateRevision,
                 onInitialLoad: {
                     guard environment.needsOnboarding == false else { return }
                     isInitialContentReady = true
-                }
+                },
+                onOpenDestination: openHomeDestination
             )
+            .id("home-root")
+        } destination: {
+            Group {
+                if let destination = activeHomeDestination {
+                    homeDestinationView(destination)
+                        .id(destination)
+                }
+            }
             .navigationDestination(for: MainlineChapter.self) { chapter in
                 storyView(storyID: chapter.storyID)
             }
@@ -356,8 +367,6 @@ struct RootView: View {
             }
             .navigationDestination(for: HomeDestination.self) { destination in
                 switch destination {
-                case .stories:
-                    StoryHubView(deps: homeDeps)
                 case .mainline:
                     MainlineListView(deps: homeDeps) { chapter in
                         homePath.append(chapter)
@@ -366,26 +375,54 @@ struct RootView: View {
                     CityStoryListView(deps: homeDeps) { chapter in
                         homePath.append(chapter)
                     }
-                case .activities:
-                    ActivitiesView(
-                        deps: homeDeps,
-                        chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) }
-                    )
-                case .map:
-                    MapView(
-                        deps: mapDeps,
-                        reloadToken: stateRevision,
-                        onBack: {
-                            if !homePath.isEmpty {
-                                homePath.removeLast()
-                            }
-                        }
-                    )
+                case .map, .stories, .activities:
+                    EmptyView()
                 }
             }
         }
     }
 
+    @ViewBuilder
+    private func homeDestinationView(_ destination: HomeDestination) -> some View {
+        switch destination {
+        case .stories:
+            StoryHubView(deps: homeDeps)
+        case .mainline:
+            MainlineListView(deps: homeDeps) { chapter in
+                homePath.append(chapter)
+            }
+        case .cityStories:
+            CityStoryListView(deps: homeDeps) { chapter in
+                homePath.append(chapter)
+            }
+        case .activities:
+            ActivitiesView(
+                deps: homeDeps,
+                chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) }
+            )
+        case .map:
+            MapView(
+                deps: mapDeps,
+                reloadToken: stateRevision,
+                onBack: closeHomeDestination
+            )
+        }
+    }
+
+    private func openHomeDestination(_ destination: HomeDestination) {
+        guard activeHomeDestination == nil else { return }
+        homePath = NavigationPath()
+        withAnimation(sceneContentAnimation) {
+            activeHomeDestination = destination
+        }
+    }
+    private func closeHomeDestination() {
+        guard activeHomeDestination != nil else { return }
+        withAnimation(sceneContentAnimation) {
+            activeHomeDestination = nil
+            homePath = NavigationPath()
+        }
+    }
     private var messagesStack: some View {
         NavigationStack {
             ConversationListView(deps: chatDeps, reloadToken: stateRevision)
@@ -423,7 +460,7 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        MeNavigationContainer(
+        SceneNavigationContainer(
             isPresentingDestination: !mePath.isEmpty,
             navigationTitle: meNavigationTitle,
             onBack: closeMeDestination
@@ -474,20 +511,20 @@ struct RootView: View {
     }
 
     private func openMe(_ destination: MeDestination) {
-        withAnimation(meContentAnimation) {
+        withAnimation(sceneContentAnimation) {
             mePath.append(destination)
         }
     }
 
     private func closeMeDestination() {
         guard !mePath.isEmpty else { return }
-        withAnimation(meContentAnimation) {
+        withAnimation(sceneContentAnimation) {
             _ = mePath.removeLast()
         }
     }
 
     /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。
-    private var meContentAnimation: Animation {
+    private var sceneContentAnimation: Animation {
         reduceMotion
             ? .easeOut(duration: 0.10)
             : .easeInOut(duration: 0.18)

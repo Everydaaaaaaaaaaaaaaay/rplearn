@@ -632,76 +632,35 @@ struct MyPageSceneEntranceButtonStyle: ButtonStyle {
         let isVisuallyPressed = configuration.isPressed || keepsPressedAppearance
 
         configuration.label
-            .scaleEffect(reduceMotion || !isVisuallyPressed ? 1 : 0.90)
-            .offset(y: reduceMotion || !isVisuallyPressed ? 0 : 2.5)
-            .brightness(isVisuallyPressed ? 0.11 : 0)
-            .opacity(isVisuallyPressed ? 0.93 : 1)
+            .scaleEffect(reduceMotion || !isVisuallyPressed ? 1 : DSSceneEntranceMotion.pressedScale)
+            .offset(y: reduceMotion || !isVisuallyPressed ? 0 : DSSceneEntranceMotion.pressedOffset)
+            .brightness(isVisuallyPressed ? DSSceneEntranceMotion.pressedBrightness : 0)
+            .opacity(isVisuallyPressed ? DSSceneEntranceMotion.pressedOpacity : 1)
             .animation(
                 reduceMotion
                     ? .easeOut(duration: 0.08)
                     : isVisuallyPressed
-                        ? .spring(response: 0.18, dampingFraction: 0.82)
-                        : .spring(duration: 0.08, bounce: 0.16),
+                        ? .spring(
+                            response: DSSceneEntranceMotion.pressResponse,
+                            dampingFraction: DSSceneEntranceMotion.pressDampingFraction
+                        )
+                        : .spring(
+                            duration: DSSceneEntranceMotion.releaseDuration,
+                            bounce: DSSceneEntranceMotion.releaseBounce
+                        ),
                 value: isVisuallyPressed
             )
     }
 }
 
-/// 将“按下—保持—回弹—提交”的时序从页面布局中抽离，确保所有入口共享同一手感。
-@MainActor
-final class MyPageSceneActionCoordinator: ObservableObject {
-    static let pressedHoldDuration = Duration.milliseconds(20)
-    static let reboundDuration = Duration.milliseconds(80)
-    static let postReboundDelay = Duration.milliseconds(20)
-
-    enum Hotspot: Hashable {
-        case profile
-        case coin
-        case learning
-        case favorites
-        case settings
-        case account
-        case memory
-    }
-
-    @Published private(set) var pressedHotspot: Hotspot?
-    private var pendingAction: Task<Void, Never>?
-
-    func perform(
-        for hotspot: Hotspot,
-        reduceMotion: Bool,
-        action: @escaping @MainActor () -> Void
-    ) {
-        guard pendingAction == nil else { return }
-
-        pressedHotspot = hotspot
-        pendingAction = Task { @MainActor in
-            do {
-                try await Task.sleep(
-                    for: Self.pressedHoldDuration
-                )
-                pressedHotspot = nil
-                try await Task.sleep(
-                    for: Self.reboundDuration
-                )
-                try await Task.sleep(
-                    for: Self.postReboundDelay
-                )
-                guard !Task.isCancelled else { return }
-                pendingAction = nil
-                action()
-            } catch {
-                pressedHotspot = nil
-                pendingAction = nil
-            }
-        }
-    }
-
-    func cancel() {
-        pendingAction?.cancel()
-        pendingAction = nil
-        pressedHotspot = nil
-    }
+enum MyPageSceneHotspot: Hashable {
+    case profile
+    case coin
+    case learning
+    case favorites
+    case settings
+    case account
+    case memory
 }
 
 /// 护照夹上的身份投影作为一个整体旋转和定位，避免头像与文字分别漂移。

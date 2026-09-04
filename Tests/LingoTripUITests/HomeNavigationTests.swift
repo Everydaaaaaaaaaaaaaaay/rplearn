@@ -1,0 +1,47 @@
+import XCTest
+
+@MainActor
+final class HomeNavigationTests: XCTestCase {
+    private var app: XCUIApplication!
+
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["UI_TEST_TAB"] = "home"
+    }
+
+    override func tearDownWithError() throws {
+        app.terminate()
+        app = nil
+    }
+
+    func testMapQuickTapCompletesFeedbackBeforeTransition() {
+        app.launch()
+        let mapEntry = app.buttons["世界地图"]
+        XCTAssertTrue(mapEntry.waitForExistence(timeout: 5))
+
+        let start = ContinuousClock.now
+        mapEntry.tap()
+        XCTAssertTrue(app.buttons["返回首页"].waitForExistence(timeout: 2))
+        let elapsed = ContinuousClock.now - start
+
+        XCTAssertGreaterThanOrEqual(elapsed, .milliseconds(100))
+    }
+
+    func testMapSupportsLeadingEdgeSwipeBack() {
+        app.launch()
+        let mapEntry = app.buttons["世界地图"]
+        XCTAssertTrue(mapEntry.waitForExistence(timeout: 5))
+        mapEntry.tap()
+        XCTAssertTrue(app.buttons["返回首页"].waitForExistence(timeout: 2))
+
+        let start = app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5))
+        let end = app.coordinate(withNormalizedOffset: CGVector(dx: 0.72, dy: 0.5))
+        start.press(forDuration: 0.05, thenDragTo: end)
+
+        XCTAssertTrue(mapEntry.waitForExistence(timeout: 2))
+        XCTAssertFalse(app.buttons["返回首页"].exists)
+    }
+}

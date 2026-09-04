@@ -8,10 +8,12 @@ public struct HomeView: View {
     private let deps: HomeDependencies
     private let reloadToken: Int
     private let onInitialLoad: @MainActor () -> Void
+    private let onOpenDestination: @MainActor (HomeDestination) -> Void
 
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
-    @State private var pressedSceneEntry: HomeSceneEntryID?
+    @State private var touchedSceneEntry: HomeSceneEntryID?
+    @StateObject private var sceneActions = DSSceneActionCoordinator<HomeSceneEntryID>()
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -22,11 +24,13 @@ public struct HomeView: View {
     public init(
         deps: HomeDependencies,
         reloadToken: Int = 0,
-        onInitialLoad: @escaping @MainActor () -> Void = {}
+        onInitialLoad: @escaping @MainActor () -> Void = {},
+        onOpenDestination: @escaping @MainActor (HomeDestination) -> Void = { _ in }
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
         self.onInitialLoad = onInitialLoad
+        self.onOpenDestination = onOpenDestination
     }
 
     private var currentRegion: Region? {
@@ -50,6 +54,7 @@ public struct HomeView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .task(id: reloadToken) { await reload() }
+        .onDisappear(perform: sceneActions.cancel)
     }
 
     private var departureScene: some View {
@@ -119,7 +124,7 @@ public struct HomeView: View {
                 flag: currentRegion.map { flag($0.countryCode) },
                 cityName: currentRegion?.nameZh,
                 storySubtitle: storySubtitle,
-                pressedEntry: pressedSceneEntry,
+                pressedEntry: touchedSceneEntry ?? sceneActions.pressedHotspot,
                 reduceMotion: reduceMotion
             )
             .frame(width: width, height: height)
@@ -146,32 +151,38 @@ public struct HomeView: View {
                 .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
             }
 
-            NavigationLink(value: HomeDestination.map) {
+            Button {
+                openSceneEntry(.map, destination: .map)
+            } label: {
                 HomePerspectiveHitTarget(
                     quad: layout.map.projectedRegion(size: layout.map.hitSize).photoQuad
                 )
             }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $pressedSceneEntry))
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $touchedSceneEntry))
             .frame(width: width, height: height)
             .accessibilityLabel("世界地图")
             .accessibilityHint("查看城市并开始旅行")
 
-            NavigationLink(value: HomeDestination.stories) {
+            Button {
+                openSceneEntry(.story, destination: .stories)
+            } label: {
                 HomePerspectiveHitTarget(
                     quad: layout.story.projectedRegion(size: layout.story.hitSize).photoQuad
                 )
             }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $pressedSceneEntry))
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $touchedSceneEntry))
             .frame(width: width, height: height)
             .accessibilityLabel("剧情，\(storySubtitle)")
             .accessibilityHint("查看主线与当前城市剧情")
 
-            NavigationLink(value: HomeDestination.activities) {
+            Button {
+                openSceneEntry(.activities, destination: .activities)
+            } label: {
                 HomePerspectiveHitTarget(
                     quad: layout.activities.projectedRegion(size: layout.activities.hitSize).photoQuad
                 )
             }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $pressedSceneEntry))
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $touchedSceneEntry))
             .frame(width: width, height: height)
             .accessibilityLabel("城市活动")
             .accessibilityHint("参加当地活动并认识旅途朋友")
@@ -205,18 +216,21 @@ public struct HomeView: View {
                 }
 
                 accessibleLink(
+                    entry: .map,
                     destination: .map,
                     title: "世界地图",
                     subtitle: "查看城市并开始旅行",
                     systemImage: "map"
                 )
                 accessibleLink(
+                    entry: .story,
                     destination: .stories,
                     title: "剧情",
                     subtitle: storySubtitle,
                     systemImage: "waveform.path.ecg.rectangle"
                 )
                 accessibleLink(
+                    entry: .activities,
                     destination: .activities,
                     title: "城市活动",
                     subtitle: "参加当地活动并认识旅途朋友",
@@ -230,12 +244,15 @@ public struct HomeView: View {
     }
 
     private func accessibleLink(
+        entry: HomeSceneEntryID,
         destination: HomeDestination,
         title: String,
         subtitle: String,
         systemImage: String
     ) -> some View {
-        NavigationLink(value: destination) {
+        Button {
+            openSceneEntry(entry, destination: destination)
+        } label: {
             HStack(spacing: DSSpacing.sm) {
                 Image(systemName: systemImage)
                     .font(.title2)
@@ -256,6 +273,15 @@ public struct HomeView: View {
         }
         .buttonStyle(.plain)
         .dsSurface(.elevated)
+    }
+
+    private func openSceneEntry(
+        _ entry: HomeSceneEntryID,
+        destination: HomeDestination
+    ) {
+        sceneActions.perform(for: entry) {
+            onOpenDestination(destination)
+        }
     }
 
     private var mainlineJourney: MainlineJourney {
