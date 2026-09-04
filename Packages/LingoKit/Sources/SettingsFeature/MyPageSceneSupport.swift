@@ -318,13 +318,31 @@ struct SceneHologramIcon: View {
     }
 
     private var decoratedGlyph: some View {
-        glyphBody
+        let metrics = DSHologramMaterial.sceneIcon
+
+        return glyphBody
             .frame(width: size, height: size)
-            .foregroundStyle(tint.opacity(0.99))
-            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.38), radius: 6.2)
-            .shadow(color: Color.sceneHologramGlowYellow.opacity(0.64), radius: 2.2)
-            .shadow(color: .white.opacity(0.24), radius: 0.6)
-            .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
+            .foregroundStyle(tint.opacity(DSHologramMaterial.coreOpacity))
+            .shadow(
+                color: Color.sceneHologramGlowYellow.opacity(metrics.outerGlowOpacity),
+                radius: metrics.outerGlowRadius
+            )
+            .shadow(
+                color: Color.sceneHologramGlowYellow.opacity(metrics.innerGlowOpacity),
+                radius: metrics.innerGlowRadius
+            )
+            .shadow(
+                color: .white.opacity(metrics.edgeLightOpacity),
+                radius: metrics.edgeLightRadius,
+                x: metrics.edgeLightOffset.width,
+                y: metrics.edgeLightOffset.height
+            )
+            .shadow(
+                color: .black.opacity(metrics.depthEdgeOpacity),
+                radius: metrics.depthEdgeRadius,
+                x: metrics.depthEdgeOffset.width,
+                y: metrics.depthEdgeOffset.height
+            )
     }
 
     @ViewBuilder
@@ -337,14 +355,14 @@ struct SceneHologramIcon: View {
         case .coinStacks:
             CoinStacksGlyph()
                 .stroke(
-                    tint.opacity(0.99),
+                    tint.opacity(DSHologramMaterial.coreOpacity),
                     style: glyphStrokeStyle
                 )
                 .padding(size * 0.04)
         case .journeyBook:
             JourneyBookGlyph()
                 .stroke(
-                    tint.opacity(0.99),
+                    tint.opacity(DSHologramMaterial.coreOpacity),
                     style: glyphStrokeStyle
                 )
                 .padding(size * 0.035)
@@ -352,11 +370,11 @@ struct SceneHologramIcon: View {
             ZStack {
                 BookmarkGlyph()
                     .stroke(
-                        tint.opacity(0.99),
+                        tint.opacity(DSHologramMaterial.coreOpacity),
                         style: glyphStrokeStyle
                     )
                 StarGlyph()
-                    .fill(tint.opacity(0.99))
+                    .fill(tint.opacity(DSHologramMaterial.coreOpacity))
                     .frame(width: size * 0.34, height: size * 0.34)
                     .offset(y: -size * 0.15)
             }
@@ -365,11 +383,11 @@ struct SceneHologramIcon: View {
             ZStack {
                 AccountCloudGlyph()
                     .stroke(
-                        tint.opacity(0.99),
+                        tint.opacity(DSHologramMaterial.coreOpacity),
                         style: glyphStrokeStyle
                     )
                 AccountPersonGlyph()
-                    .fill(tint.opacity(0.99))
+                    .fill(tint.opacity(DSHologramMaterial.coreOpacity))
             }
             .padding(size * 0.035)
         }

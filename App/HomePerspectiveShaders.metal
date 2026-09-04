@@ -13,7 +13,7 @@ struct HomePerspectiveVertexUniforms {
 
 struct HomePerspectiveFragmentUniforms {
     float4 tint;
-    // x = pass（0 face / 1 glow / 2 shadow），y = opacity，z = 采样半径
+    // x = pass（0 实体核心 / 1 预模糊光影层），y = opacity，w = 核心 LOD 偏移
     float4 parameters;
 };
 
@@ -58,35 +58,23 @@ fragment float4 homePerspectiveFragment(
     sampler textureSampler [[sampler(0)]],
     constant HomePerspectiveFragmentUniforms &uniforms [[buffer(0)]]
 ) {
-    float4 center = texture.sample(textureSampler, input.textureCoordinate);
     float pass = uniforms.parameters.x;
     float opacity = uniforms.parameters.y;
 
     if (pass < 0.5) {
+        // 轻微偏向更高分辨率 mip，让倾斜地面上的正面笔画保持实体锐度；
+        // 各向异性过滤仍负责抑制远端闪烁和锯齿。
+        float4 center = texture.sample(
+            textureSampler,
+            input.textureCoordinate,
+            bias(uniforms.parameters.w)
+        );
         // UIKit 纹理是预乘 alpha；这里保持预乘混合，避免文字边缘出现暗边。
         return float4(center.rgb, center.a) * opacity;
     }
 
-    float radius = uniforms.parameters.z;
-    float2 texel = float2(1.0 / texture.get_width(), 1.0 / texture.get_height()) * radius;
-    float blurredAlpha = center.a * 0.20;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate + float2(texel.x, 0.0)).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate - float2(texel.x, 0.0)).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate + float2(0.0, texel.y)).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate - float2(0.0, texel.y)).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate + texel).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate - texel).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate + float2(texel.x, -texel.y)).a * 0.10;
-    blurredAlpha += texture.sample(textureSampler, input.textureCoordinate + float2(-texel.x, texel.y)).a * 0.10;
-
-    float alpha;
-    if (pass < 1.5) {
-        // 暖光只包住轮廓；不能在正文下方形成第二套完整字形。
-        alpha = max(blurredAlpha - center.a * 0.82, 0.0) + center.a * 0.022;
-    } else {
-        // 阴影同样以外缘环境遮蔽为主，笔画内部只保留极薄的接触阴影。
-        alpha = max(blurredAlpha - center.a * 0.94, 0.0) + center.a * 0.018;
-    }
-    alpha *= uniforms.tint.a * opacity;
+    float4 center = texture.sample(textureSampler, input.textureCoordinate);
+    // 光影纹理由 MPS 使用与 SwiftUI 对应的连续高斯核预先生成；这里每层只采样一次。
+    float alpha = center.a * uniforms.tint.a * opacity;
     return float4(uniforms.tint.rgb * alpha, alpha);
 }

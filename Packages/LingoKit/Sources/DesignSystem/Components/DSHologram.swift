@@ -1,11 +1,116 @@
 import SwiftUI
 
+/// 摄影场景入口共用的材质参数。SwiftUI 与 Metal 渲染路径都读取这里，避免首页和
+/// “我的”页分别手调后产生色温、溢光范围与实体边缘上的漂移。
+public struct DSHologramEffectMetrics: Sendable {
+    public let outerGlowRadius: CGFloat
+    public let outerGlowOpacity: Double
+    public let innerGlowRadius: CGFloat
+    public let innerGlowOpacity: Double
+    public let edgeLightRadius: CGFloat
+    public let edgeLightOpacity: Double
+    public let edgeLightOffset: CGSize
+    public let depthEdgeRadius: CGFloat
+    public let depthEdgeOpacity: Double
+    public let depthEdgeOffset: CGSize
+
+    public init(
+        outerGlowRadius: CGFloat,
+        outerGlowOpacity: Double,
+        innerGlowRadius: CGFloat,
+        innerGlowOpacity: Double,
+        edgeLightRadius: CGFloat,
+        edgeLightOpacity: Double,
+        edgeLightOffset: CGSize,
+        depthEdgeRadius: CGFloat,
+        depthEdgeOpacity: Double,
+        depthEdgeOffset: CGSize
+    ) {
+        self.outerGlowRadius = outerGlowRadius
+        self.outerGlowOpacity = outerGlowOpacity
+        self.innerGlowRadius = innerGlowRadius
+        self.innerGlowOpacity = innerGlowOpacity
+        self.edgeLightRadius = edgeLightRadius
+        self.edgeLightOpacity = edgeLightOpacity
+        self.edgeLightOffset = edgeLightOffset
+        self.depthEdgeRadius = depthEdgeRadius
+        self.depthEdgeOpacity = depthEdgeOpacity
+        self.depthEdgeOffset = depthEdgeOffset
+    }
+}
+
+public enum DSHologramMaterial {
+    public static let coreRed = 1.0
+    public static let coreGreen = 0.978
+    public static let coreBlue = 0.91
+    public static let coreOpacity = 0.99
+
+    public static let glowRed = 1.0
+    public static let glowGreen = 0.90
+    public static let glowBlue = 0.64
+
+    public static let footprintRadius: CGFloat = 5.8
+    public static let footprintOpacity = 0.13
+    public static let extrusionRadius: CGFloat = 0.7
+    public static let extrusionOpacity = 0.16
+
+    /// “我的”页文字：宽而淡的环境光、窄而克制的内光，以及两个不足 1pt 的实体边。
+    public static let text = DSHologramEffectMetrics(
+        outerGlowRadius: 6.2,
+        outerGlowOpacity: 0.32 * 0.52,
+        innerGlowRadius: 2.3,
+        innerGlowOpacity: 0.60 * 0.72,
+        edgeLightRadius: 0.9,
+        edgeLightOpacity: 0.38 * 0.70,
+        edgeLightOffset: CGSize(width: 0.55, height: 0.8),
+        depthEdgeRadius: 0.8,
+        depthEdgeOpacity: 0.28,
+        depthEdgeOffset: CGSize(width: 0, height: 0.65)
+    )
+
+    /// “我的”页绝大多数入口图标所用参数；比文字略亮，但核心仍由不透明象牙白承载。
+    public static let sceneIcon = DSHologramEffectMetrics(
+        outerGlowRadius: 6.2,
+        outerGlowOpacity: 0.38,
+        innerGlowRadius: 2.2,
+        innerGlowOpacity: 0.64,
+        edgeLightRadius: 0.6,
+        edgeLightOpacity: 0.24,
+        edgeLightOffset: .zero,
+        depthEdgeRadius: 0.7,
+        depthEdgeOpacity: 0.26,
+        depthEdgeOffset: CGSize(width: 0, height: 0.8)
+    )
+
+    /// DesignSystem 对外通用的 SF Symbol 参数。
+    public static let symbol = DSHologramEffectMetrics(
+        outerGlowRadius: 6.2,
+        outerGlowOpacity: 0.42,
+        innerGlowRadius: 2.2,
+        innerGlowOpacity: 0.70,
+        edgeLightRadius: 0.6,
+        edgeLightOpacity: 0.28,
+        edgeLightOffset: .zero,
+        depthEdgeRadius: 0.7,
+        depthEdgeOpacity: 0.28,
+        depthEdgeOffset: CGSize(width: 0, height: 0.8)
+    )
+}
+
 public enum DSHologramPalette {
     /// 场景入口的实体核心：接近白色，只保留足以区别系统纯白的暖黄色。
-    public static let ivory = Color(red: 1.0, green: 0.978, blue: 0.91)
+    public static let ivory = Color(
+        red: DSHologramMaterial.coreRed,
+        green: DSHologramMaterial.coreGreen,
+        blue: DSHologramMaterial.coreBlue
+    )
 
     /// 场景入口的发光层：比核心更暖，叠加后形成淡金而非霓虹黄。
-    public static let glow = Color(red: 1.0, green: 0.90, blue: 0.64)
+    public static let glow = Color(
+        red: DSHologramMaterial.glowRed,
+        green: DSHologramMaterial.glowGreen,
+        blue: DSHologramMaterial.glowBlue
+    )
 }
 
 public extension Color {
@@ -66,14 +171,14 @@ public struct DSHologramLift<Content: View>: View {
     public var body: some View {
         content
             .shadow(
-                color: .black.opacity(0.13),
-                radius: 5.8,
+                color: .black.opacity(DSHologramMaterial.footprintOpacity),
+                radius: DSHologramMaterial.footprintRadius,
                 x: footprintOffset.width,
                 y: footprintOffset.height
             )
             .shadow(
-                color: .black.opacity(0.16),
-                radius: 0.7,
+                color: .black.opacity(DSHologramMaterial.extrusionOpacity),
+                radius: DSHologramMaterial.extrusionRadius,
                 x: extrusionOffset.width,
                 y: extrusionOffset.height
             )
@@ -151,7 +256,7 @@ public struct DSHologramText: View {
             .tracking(size >= 20 ? -0.45 : 0.08)
             .multilineTextAlignment(alignment)
             .lineSpacing(lineSpacing)
-            .foregroundStyle(tint.opacity(0.99))
+            .foregroundStyle(tint.opacity(DSHologramMaterial.coreOpacity))
             .textRenderer(DSHologramTextRenderer(tint: tint, glowColor: glowColor))
     }
 }
@@ -179,14 +284,21 @@ public struct DSHologramSymbol: View {
     }
 
     public var body: some View {
+        let metrics = DSHologramMaterial.symbol
+
         Image(systemName: systemName)
             .font(.system(size: size, weight: weight))
             .symbolRenderingMode(.monochrome)
-            .foregroundStyle(tint.opacity(0.99))
-            .shadow(color: glowColor.opacity(0.42), radius: 6.2)
-            .shadow(color: glowColor.opacity(0.70), radius: 2.2)
-            .shadow(color: .white.opacity(0.28), radius: 0.6)
-            .shadow(color: .black.opacity(0.28), radius: 0.7, y: 0.8)
+            .foregroundStyle(tint.opacity(DSHologramMaterial.coreOpacity))
+            .shadow(color: glowColor.opacity(metrics.outerGlowOpacity), radius: metrics.outerGlowRadius)
+            .shadow(color: glowColor.opacity(metrics.innerGlowOpacity), radius: metrics.innerGlowRadius)
+            .shadow(color: .white.opacity(metrics.edgeLightOpacity), radius: metrics.edgeLightRadius)
+            .shadow(
+                color: .black.opacity(metrics.depthEdgeOpacity),
+                radius: metrics.depthEdgeRadius,
+                x: metrics.depthEdgeOffset.width,
+                y: metrics.depthEdgeOffset.height
+            )
             .accessibilityHidden(true)
     }
 }
@@ -241,12 +353,14 @@ public struct DSHologramBookmarkIcon: View {
 
     @ViewBuilder
     public var body: some View {
+        let metrics = DSHologramMaterial.symbol
+
         if isElevated {
             glyph
-                .shadow(color: glowColor.opacity(0.42), radius: 6.2)
-                .shadow(color: glowColor.opacity(0.70), radius: 2.2)
-                .shadow(color: .white.opacity(0.24), radius: 0.6)
-                .shadow(color: .black.opacity(0.26), radius: 0.7, y: 0.8)
+                .shadow(color: glowColor.opacity(metrics.outerGlowOpacity), radius: metrics.outerGlowRadius)
+                .shadow(color: glowColor.opacity(metrics.innerGlowOpacity), radius: metrics.innerGlowRadius)
+                .shadow(color: .white.opacity(0.24), radius: metrics.edgeLightRadius)
+                .shadow(color: .black.opacity(0.26), radius: metrics.depthEdgeRadius, y: 0.8)
                 .accessibilityHidden(true)
         } else {
             glyph
@@ -257,15 +371,15 @@ public struct DSHologramBookmarkIcon: View {
     private var glyph: some View {
         ZStack {
             DSHologramBookmarkShape()
-                .stroke(tint.opacity(0.99), style: glyphStrokeStyle)
+                .stroke(tint.opacity(DSHologramMaterial.coreOpacity), style: glyphStrokeStyle)
             DSHologramStarShape()
-                .fill(tint.opacity(0.99))
+                .fill(tint.opacity(DSHologramMaterial.coreOpacity))
                 .frame(width: size * 0.34, height: size * 0.34)
                 .offset(y: -size * 0.15)
         }
         .padding(size * 0.04)
         .frame(width: size, height: size)
-        .foregroundStyle(tint.opacity(0.99))
+        .foregroundStyle(tint.opacity(DSHologramMaterial.coreOpacity))
     }
 
     private var glyphStrokeStyle: StrokeStyle {
@@ -326,12 +440,15 @@ private struct DSHologramTextRenderer: TextRenderer {
     }
 
     func draw(layout: Text.Layout, in context: inout GraphicsContext) {
+        let metrics = DSHologramMaterial.text
+
         var depthEdge = context
         depthEdge.addFilter(
             .shadow(
-                color: .black.opacity(0.28),
-                radius: 0.8,
-                y: 0.65,
+                color: .black.opacity(metrics.depthEdgeOpacity),
+                radius: metrics.depthEdgeRadius,
+                x: metrics.depthEdgeOffset.width,
+                y: metrics.depthEdgeOffset.height,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -339,11 +456,11 @@ private struct DSHologramTextRenderer: TextRenderer {
         draw(layout, in: &depthEdge)
 
         var outerGlow = context
-        outerGlow.opacity = 0.32
+        outerGlow.opacity = metrics.outerGlowOpacity
         outerGlow.addFilter(
             .shadow(
-                color: glowColor.opacity(0.52),
-                radius: 6.2,
+                color: glowColor,
+                radius: metrics.outerGlowRadius,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -351,11 +468,11 @@ private struct DSHologramTextRenderer: TextRenderer {
         draw(layout, in: &outerGlow)
 
         var innerGlow = context
-        innerGlow.opacity = 0.60
+        innerGlow.opacity = metrics.innerGlowOpacity
         innerGlow.addFilter(
             .shadow(
-                color: glowColor.opacity(0.72),
-                radius: 2.3,
+                color: glowColor,
+                radius: metrics.innerGlowRadius,
                 options: .shadowOnly
             ),
             options: .linearColor
@@ -363,12 +480,12 @@ private struct DSHologramTextRenderer: TextRenderer {
         draw(layout, in: &innerGlow)
 
         var edgeLight = context
-        edgeLight.opacity = 0.38
-        edgeLight.translateBy(x: 0.55, y: 0.8)
+        edgeLight.opacity = metrics.edgeLightOpacity
+        edgeLight.translateBy(x: metrics.edgeLightOffset.width, y: metrics.edgeLightOffset.height)
         edgeLight.addFilter(
             .shadow(
-                color: .white.opacity(0.70),
-                radius: 0.9,
+                color: .white,
+                radius: metrics.edgeLightRadius,
                 options: .shadowOnly
             ),
             options: .linearColor
