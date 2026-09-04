@@ -134,11 +134,13 @@ struct ChatStoreTests {
         let (chat, roster) = try makeStores()
         let characterID = try await addCharacter(roster)
         let eventID = UUID()
+        let deliveredAt = Date(timeIntervalSince1970: 1_788_000_000)
 
         let first = try await chat.appendProactiveMessageIfNeeded(
             messageID: eventID,
             characterID: characterID,
-            text: "What made you smile today?"
+            text: "What made you smile today?",
+            createdAt: deliveredAt
         )
         let duplicate = try await chat.appendProactiveMessageIfNeeded(
             messageID: eventID,
@@ -149,6 +151,7 @@ struct ChatStoreTests {
         let summary = try #require(try await chat.conversationSummaries().first)
         let messages = try await chat.messages(conversationID: summary.conversationID)
         #expect(first?.id == eventID)
+        #expect(first?.createdAt == deliveredAt)
         #expect(duplicate == nil)
         #expect(messages.map(\.text) == ["What made you smile today?"])
     }

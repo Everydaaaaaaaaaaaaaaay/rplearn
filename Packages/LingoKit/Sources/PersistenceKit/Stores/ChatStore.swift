@@ -216,7 +216,8 @@ public actor ChatStore {
     public func appendProactiveMessageIfNeeded(
         messageID: UUID,
         characterID: UUID,
-        text: String
+        text: String,
+        createdAt: Date = .now
     ) throws -> MessageDTO? {
         if try fetchMessage(id: messageID) != nil { return nil }
         guard let character = try modelContext.fetch(
@@ -228,7 +229,10 @@ public actor ChatStore {
         if let existing = character.conversations.first(where: { !$0.isArchived }) {
             conversation = existing
         } else {
-            let created = ConversationEntity()
+            let created = ConversationEntity(
+                createdAt: createdAt,
+                lastMessageAt: createdAt
+            )
             created.character = character
             modelContext.insert(created)
             try journal(created)
@@ -240,11 +244,12 @@ public actor ChatStore {
             roleRaw: MessageRole.assistant.rawValue,
             text: text,
             orderIndex: nextIndex,
-            tokenEstimate: TokenEstimator.estimate(text)
+            tokenEstimate: TokenEstimator.estimate(text),
+            createdAt: createdAt
         )
         message.conversation = conversation
         modelContext.insert(message)
-        conversation.lastMessageAt = message.createdAt
+        conversation.lastMessageAt = max(conversation.lastMessageAt, message.createdAt)
         conversation.turnCount += 1
         conversation.turnsSinceQuiz += 1
         try journal(message)
@@ -263,7 +268,8 @@ public actor ChatStore {
         text: String,
         audioFileName: String? = nil,
         audioDuration: Double? = nil,
-        tokenEstimate: Int = 0
+        tokenEstimate: Int = 0,
+        createdAt: Date = .now
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -277,11 +283,12 @@ public actor ChatStore {
             audioFileName: audioFileName,
             audioDuration: audioDuration,
             orderIndex: nextIndex,
-            tokenEstimate: tokenEstimate
+            tokenEstimate: tokenEstimate,
+            createdAt: createdAt
         )
         message.conversation = conversation
         modelContext.insert(message)
-        conversation.lastMessageAt = .now
+        conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
         if role == .assistant {
             conversation.turnCount += 1
             conversation.turnsSinceQuiz += 1
@@ -298,7 +305,8 @@ public actor ChatStore {
     /// 用户与角色的往返计算。
     public func appendAssistantReply(
         conversationID: UUID,
-        texts: [String]
+        texts: [String],
+        createdAt: Date = .now
     ) throws -> [MessageDTO] {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -317,7 +325,8 @@ public actor ChatStore {
                 roleRaw: MessageRole.assistant.rawValue,
                 text: text,
                 orderIndex: firstIndex + offset,
-                tokenEstimate: TokenEstimator.estimate(text)
+                tokenEstimate: TokenEstimator.estimate(text),
+                createdAt: createdAt
             )
             message.conversation = conversation
             modelContext.insert(message)
@@ -325,7 +334,7 @@ public actor ChatStore {
             inserted.append(message)
         }
 
-        conversation.lastMessageAt = .now
+        conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
         conversation.turnCount += 1
         conversation.turnsSinceQuiz += 1
         try journal(conversation)

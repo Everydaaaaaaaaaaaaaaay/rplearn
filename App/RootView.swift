@@ -193,6 +193,12 @@ struct RootView: View {
                     await reloadUnreadCount()
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
+                Task {
+                    await environment.refreshProactiveMessages(requestAuthorization: false)
+                    await reloadUnreadCount()
+                }
+            }
             .onReceive(NotificationCenter.default.publisher(for: .didOpenProactiveMessage)) { _ in
                 _ = ProactiveMessageRoute.consumeNotificationTap()
                 selectedTab = .messages

@@ -105,6 +105,42 @@ struct ProactiveMessageServiceTests {
         #expect(prompt.contains("6-14 words total"))
     }
 
+    @Test("主动消息按投递时刻写作且不叠加未回答的问题")
+    func promptUsesDeliveryTimeAndProtectsUnansweredTurn() throws {
+        var utc = Calendar(identifier: .gregorian)
+        utc.timeZone = TimeZone(secondsFromGMT: 0)!
+        let delivery = try #require(
+            utc.date(from: DateComponents(
+                year: 2026,
+                month: 9,
+                day: 6,
+                hour: 14
+            ))
+        )
+        let previous = MessageDTO(
+            id: UUID(),
+            role: .assistant,
+            kind: .text,
+            text: "Did your presentation go well?",
+            orderIndex: 0,
+            createdAt: delivery.addingTimeInterval(-48 * 60 * 60)
+        )
+
+        let prompt = ProactiveMessageService.prompt(
+            character: character(),
+            learner: learner(),
+            occasion: .checkIn,
+            recentMessages: [previous],
+            deliveryDate: delivery
+        )
+
+        #expect(prompt.contains("## Trusted present-time context"))
+        #expect(prompt.contains("2026-09-06"))
+        #expect(prompt.contains("last message is still unanswered"))
+        #expect(prompt.contains("Do not repeat it or stack another question"))
+        #expect(prompt.contains("preserve its facts, plan status, emotional continuity"))
+    }
+
     @Test("首次联系明确延续已约好的旅行伙伴关系")
     func introductionPromptPreservesStoryPremise() {
         let prompt = ProactiveMessageService.prompt(

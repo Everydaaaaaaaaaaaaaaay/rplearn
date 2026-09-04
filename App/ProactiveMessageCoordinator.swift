@@ -37,6 +37,7 @@ final class ProactiveMessageCoordinator {
         let characterName: String
         let text: String
         let dueAt: Date
+        let lastObservedMessageID: UUID?
 
         var notificationIdentifier: String {
             "\(ProactiveMessageCoordinator.notificationPrefix)\(id.uuidString.lowercased())"
@@ -55,6 +56,8 @@ final class ProactiveMessageCoordinator {
     private let defaults: UserDefaults
     private var scope = "guest"
     private var isRefreshing = false
+    private var refreshQueued = false
+    private var queuedAuthorizationRequest = false
 
     init(
         rosterStore: RosterStore,
@@ -81,9 +84,23 @@ final class ProactiveMessageCoordinator {
     }
 
     func refresh(requestAuthorization: Bool) async {
-        guard !isRefreshing else { return }
+        guard !isRefreshing else {
+            refreshQueued = true
+            queuedAuthorizationRequest = queuedAuthorizationRequest || requestAuthorization
+            return
+        }
         isRefreshing = true
-        defer { isRefreshing = false }
+        defer {
+            isRefreshing = false
+            if refreshQueued {
+                let shouldRequestAuthorization = queuedAuthorizationRequest
+                refreshQueued = false
+                queuedAuthorizationRequest = false
+                Task { [weak self] in
+                    await self?.refresh(requestAuthorization: shouldRequestAuthorization)
+                }
+            }
+        }
 
         guard ProactiveMessagePreferences.isEnabled else {
             savePending([])
@@ -93,6 +110,7 @@ final class ProactiveMessageCoordinator {
 
         var pending = loadPending()
         let learner = await currentLearnerContext()
+        pending = await pendingStillMatchingConversation(pending)
         let materialized = await materializeDueMessages(in: &pending)
         let opened = await ensureInitialMessages(learner: learner)
         pending = await fillSchedule(pending, learner: learner)
@@ -191,11 +209,24 @@ final class ProactiveMessageCoordinator {
                 materializedIDs.append(message.notificationIdentifier)
                 continue
             }
+            guard let recentMessages = await storedMessages(for: message.characterID) else {
+                remaining.append(message)
+                continue
+            }
+            guard ProactiveMessageSchedulePolicy.shouldDeliverCheckIn(
+                recentMessages: recentMessages,
+                scheduledAfterMessageID: message.lastObservedMessageID,
+                at: now
+            ) else {
+                materializedIDs.append(message.notificationIdentifier)
+                continue
+            }
             do {
                 let inserted = try await chatStore.appendProactiveMessageIfNeeded(
                     messageID: message.id,
                     characterID: message.characterID,
-                    text: message.text
+                    text: message.text,
+                    createdAt: message.dueAt
                 )
                 insertedAny = insertedAny || inserted != nil
                 materializedIDs.append(message.notificationIdentifier)
@@ -210,6 +241,27 @@ final class ProactiveMessageCoordinator {
             notificationCenter.removeDeliveredNotifications(withIdentifiers: materializedIDs)
         }
         return insertedAny
+    }
+
+    /// 只保留仍建立在同一条聊天时间线上的未来事件。用户一旦继续聊天，旧草稿立即失效。
+    private func pendingStillMatchingConversation(
+        _ pending: [PendingMessage]
+    ) async -> [PendingMessage] {
+        var valid: [PendingMessage] = []
+        valid.reserveCapacity(pending.count)
+        for message in pending {
+            guard let recentMessages = await storedMessages(for: message.characterID) else {
+                valid.append(message)
+                continue
+            }
+            let latestID = recentMessages
+                .last(where: { $0.role != .coach && !$0.text.isEmpty })?
+                .id
+            if latestID == message.lastObservedMessageID, latestID != nil {
+                valid.append(message)
+            }
+        }
+        return valid
     }
 
     private func fillSchedule(
@@ -232,15 +284,35 @@ final class ProactiveMessageCoordinator {
                 minimumHours: isFirst ? 36 : 48,
                 maximumHours: isFirst ? 72 : 96
             )
+            let pendingCharacterIDs = Set(pending.map(\.characterID))
             let previousCharacterID = pending.last?.characterID
-            let candidates = friends.filter { $0.id != previousCharacterID }
-            guard let character = (candidates.isEmpty ? friends : candidates).randomElement() else { break }
-            let recentMessages = await recentMessages(for: character.id)
+            var candidates = friends.filter {
+                $0.id != previousCharacterID && !pendingCharacterIDs.contains($0.id)
+            }
+            if candidates.isEmpty {
+                candidates = friends.filter { !pendingCharacterIDs.contains($0.id) }
+            }
+            candidates.shuffle()
+
+            var selection: (character: CharacterDTO, messages: [MessageDTO])?
+            for candidate in candidates {
+                let recent = await recentMessages(for: candidate.id)
+                guard ProactiveMessageSchedulePolicy.shouldScheduleCheckIn(
+                    recentMessages: recent,
+                    hasPendingCheckIn: pendingCharacterIDs.contains(candidate.id)
+                ) else { continue }
+                selection = (candidate, recent)
+                break
+            }
+            guard let selection else { break }
+            let character = selection.character
+            let recentMessages = selection.messages
             guard let text = await messageService.generate(
                 for: character,
                 learner: learner,
                 occasion: .checkIn,
-                recentMessages: recentMessages
+                recentMessages: recentMessages,
+                scheduledFor: dueAt
             ) else { break }
             pending.append(
                 PendingMessage(
@@ -248,7 +320,10 @@ final class ProactiveMessageCoordinator {
                     characterID: character.id,
                     characterName: character.card.name,
                     text: text,
-                    dueAt: dueAt
+                    dueAt: dueAt,
+                    lastObservedMessageID: recentMessages
+                        .last(where: { $0.role != .coach && !$0.text.isEmpty })?
+                        .id
                 )
             )
         }
@@ -263,10 +338,13 @@ final class ProactiveMessageCoordinator {
     }
 
     private func recentMessages(for characterID: UUID) async -> [MessageDTO] {
-        guard let summary = try? await chatStore.conversationSummaries()
-            .first(where: { $0.characterID == characterID })
-        else { return [] }
-        return (try? await chatStore.messages(conversationID: summary.conversationID)) ?? []
+        await storedMessages(for: characterID) ?? []
+    }
+
+    private func storedMessages(for characterID: UUID) async -> [MessageDTO]? {
+        guard let summaries = try? await chatStore.conversationSummaries() else { return nil }
+        guard let summary = summaries.first(where: { $0.characterID == characterID }) else { return [] }
+        return try? await chatStore.messages(conversationID: summary.conversationID)
     }
 
     private func scheduleNotifications(for pending: [PendingMessage]) async {

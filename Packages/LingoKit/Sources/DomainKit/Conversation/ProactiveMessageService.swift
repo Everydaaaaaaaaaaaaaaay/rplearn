@@ -30,7 +30,8 @@ public struct ProactiveMessageService: Sendable {
         for character: CharacterDTO,
         learner: LearnerContext,
         occasion: Occasion,
-        recentMessages: [MessageDTO] = []
+        recentMessages: [MessageDTO] = [],
+        scheduledFor deliveryDate: Date = .now
     ) async -> String? {
         let variation = variationIndex()
         let recentAssistantTexts = recentMessages
@@ -50,7 +51,8 @@ public struct ProactiveMessageService: Sendable {
                     learner: learner,
                     occasion: occasion,
                     recentMessages: recentMessages,
-                    variationIndex: variation + attempt
+                    variationIndex: variation + attempt,
+                    deliveryDate: deliveryDate
                 ) + repairInstruction,
                 messages: [.user("Write the message now.")],
                 maxTokens: 72,
@@ -89,9 +91,13 @@ public struct ProactiveMessageService: Sendable {
         learner: LearnerContext,
         occasion: Occasion,
         recentMessages: [MessageDTO],
-        variationIndex: Int = 0
+        variationIndex: Int = 0,
+        deliveryDate: Date = .now
     ) -> String {
         let card = character.card
+        let hasUnansweredCharacterMessage = recentMessages
+            .last(where: { $0.role != .coach && !$0.text.isEmpty })?
+            .role == .assistant
         let situation = switch occasion {
         case .introduction:
             """
@@ -103,18 +109,26 @@ public struct ProactiveMessageService: Sendable {
             """
         case .checkIn:
             """
-            You are checking in after some quiet time. Mention a small, believable detail from your \
-            own day, then open a fresh topic. Do not guilt the friend for being away or mention how \
-            long they have been silent.
+            You are sending one low-pressure check-in after quiet time. Mention a small, believable detail that fits \
+            your life and the scheduled delivery time. Do not claim live weather, news or another external fact. Do \
+            not guilt the friend, mention how long they have been silent, demand a reply, or act as if you have been \
+            waiting motionless. Preserve unresolved plans and feelings instead of contradicting or silently completing them.
             """
         }
         let recent = recentMessages
             .suffix(8)
             .map { message in
                 let speaker = message.role == .user ? "Friend" : card.name
-                return "\(speaker): \(message.text)"
+                let timestamp = RoleplayTemporalContext.transcriptTimestamp(
+                    message.createdAt,
+                    regionID: card.regionID
+                )
+                return "[\(timestamp)] \(speaker): \(message.text)"
             }
             .joined(separator: "\n")
+        let endingInstruction = hasUnansweredCharacterMessage && occasion == .checkIn
+            ? "Your last message is still unanswered. Do not repeat it or stack another question; share one easy, self-contained thought that does not require a reply."
+            : "End with one approachable question."
 
         return """
         You are \(card.name), a \(card.age)-year-old \(card.nationality) person living in \(card.regionID).
@@ -126,6 +140,8 @@ public struct ProactiveMessageService: Sendable {
         \(card.personaVoice.map { voice in
             "Values: \(voice.values.joined(separator: ", "))\nConversational habits: \(voice.conversationalHabits.joined(separator: ", "))\nVoice examples (do not copy): \(voice.anchorLines.prefix(4).joined(separator: " | "))"
         } ?? "")
+
+        \(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: deliveryDate))
 
         \(situation)
 
@@ -139,12 +155,12 @@ public struct ProactiveMessageService: Sendable {
         learner, default to ordinary high-frequency spoken words and do not deliberately show off idioms or rare words.
         Write exactly one natural English chat message of 1-2 short sentences and 6-14 words total. Keep one small \
         conversational beat. Sentence-ending punctuation is optional when omitting it feels like natural texting.
-        Stay in character, open a topic that supports the primary goal, and end with an approachable question. \
+        Stay in character and open a topic that supports the primary goal. \(endingInstruction) \
         Sound like a real friend, not a teacher. Do not explain vocabulary, \
         correct grammar, use markdown, or add a speaker label. The UI already identifies the fictional AI role; \
         do not mention it unless directly asked, and never deny it when asked.
         \(RoleplayReplyDiversityPolicy.turnVariationDirective(variation: variationIndex))
-        \(recent.isEmpty ? "" : "\nAvoid repeating these recent topics:\n\(recent)")
+        \(recent.isEmpty ? "" : "\nRecent conversation evidence: preserve its facts, plan status, emotional continuity and unanswered turns. Do not mechanically restart a settled topic.\n\(recent)")
         """
     }
 
