@@ -1,5 +1,18 @@
 import SwiftUI
 
+public enum DSHologramPalette {
+    /// 场景入口的实体核心：接近白色，只保留足以区别系统纯白的暖黄色。
+    public static let ivory = Color(red: 1.0, green: 0.978, blue: 0.91)
+
+    /// 场景入口的发光层：比核心更暖，叠加后形成淡金而非霓虹黄。
+    public static let glow = Color(red: 1.0, green: 0.90, blue: 0.64)
+}
+
+public extension Color {
+    static let dsHologramIvory = DSHologramPalette.ivory
+    static let dsHologramGlow = DSHologramPalette.glow
+}
+
 /// “我的”场景中悬浮标记所使用的空间参数。
 public struct DSHologramTransform: Sendable {
     public let rotationZ: Double
@@ -140,6 +153,67 @@ public struct DSHologramText: View {
             .lineSpacing(lineSpacing)
             .foregroundStyle(tint.opacity(0.99))
             .textRenderer(DSHologramTextRenderer(tint: tint, glowColor: glowColor))
+    }
+}
+
+/// 与全息文字共用核心、双层泛光和接触边的 SF Symbol。
+public struct DSHologramSymbol: View {
+    private let systemName: String
+    private let size: CGFloat
+    private let weight: Font.Weight
+    private let tint: Color
+    private let glowColor: Color
+
+    public init(
+        systemName: String,
+        size: CGFloat,
+        weight: Font.Weight = .medium,
+        tint: Color = .dsHologramIvory,
+        glowColor: Color = .dsHologramGlow
+    ) {
+        self.systemName = systemName
+        self.size = size
+        self.weight = weight
+        self.tint = tint
+        self.glowColor = glowColor
+    }
+
+    public var body: some View {
+        Image(systemName: systemName)
+            .font(.system(size: size, weight: weight))
+            .symbolRenderingMode(.monochrome)
+            .foregroundStyle(tint.opacity(0.99))
+            .shadow(color: glowColor.opacity(0.42), radius: 6.2)
+            .shadow(color: glowColor.opacity(0.70), radius: 2.2)
+            .shadow(color: .white.opacity(0.28), radius: 0.6)
+            .shadow(color: .black.opacity(0.28), radius: 0.7, y: 0.8)
+            .accessibilityHidden(true)
+    }
+}
+
+/// 场景入口统一的即时按压反馈；视觉向承载物表面压近，不绘制按钮底板。
+public struct DSHologramButtonStyle: ButtonStyle {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    public init() {}
+
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(reduceMotion || !configuration.isPressed ? 1 : 0.955)
+            .brightness(configuration.isPressed ? 0.075 : 0)
+            .opacity(configuration.isPressed ? 0.96 : 1)
+            .animation(
+                reduceMotion
+                    ? .easeOut(duration: 0.14)
+                    : .spring(response: 0.28, dampingFraction: 0.82),
+                value: configuration.isPressed
+            )
+    }
+}
+
+public extension ButtonStyle where Self == DSHologramButtonStyle {
+    static var dsHologram: DSHologramButtonStyle {
+        DSHologramButtonStyle()
     }
 }
 

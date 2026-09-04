@@ -1,3 +1,4 @@
+import Combine
 import DesignSystem
 import SwiftUI
 
@@ -33,8 +34,8 @@ struct TravelDeskSceneLayout {
     static let production = TravelDeskSceneLayout(
         assetName: "profile_travel_desk_final",
         profile: .init(
-            // 沿护照自身约 -9° 的纵轴向上移动，而非只沿画布 y 轴平移。
-            center: UnitPoint(x: 0.279, y: 0.160),
+            // 以整个展开的护照夹为定位基准，而非只对齐右侧内页。
+            center: UnitPoint(x: 0.205, y: 0.178),
             size: CGSize(width: 104, height: 142),
             plane: .surface(rotationZ: -9, horizontalShadow: 3),
             contentScale: 0.95
@@ -76,6 +77,41 @@ struct TravelDeskSceneLayout {
             contentScale: 0.96
         )
     )
+}
+
+/// 摄影背景的像素管线与原实现完全一致；`Equatable` 仅阻止入口状态变化时重复求值。
+struct MyPageTravelDeskBackground: View, Equatable {
+    let assetName: String
+    let size: CGSize
+    let overlayOpacity: Double
+
+    var body: some View {
+        ZStack {
+            Image(assetName, bundle: .main)
+                .resizable()
+                .frame(width: size.width, height: size.height)
+
+            Color.black.opacity(overlayOpacity)
+        }
+        .frame(width: size.width, height: size.height)
+    }
+}
+
+/// 短屏衬底保留同一张原图、缩放、模糊和遮罩参数，不用降采样换性能。
+struct MyPageCompactTravelDeskBackdrop: View, Equatable {
+    let assetName: String
+    let size: CGSize
+    let overlayOpacity: Double
+
+    var body: some View {
+        Image(assetName, bundle: .main)
+            .resizable()
+            .scaledToFill()
+            .frame(width: size.width, height: size.height, alignment: .top)
+            .clipped()
+            .blur(radius: 5)
+            .overlay(Color.black.opacity(overlayOpacity))
+    }
 }
 
 /// 每个入口都使用承载物自身的局部平面，而不是套用同一组“伪透视”。
@@ -565,22 +601,139 @@ struct AccountPersonGlyph: Shape {
     }
 }
 
-struct SceneHologramButtonStyle: ButtonStyle {
+/// “我的”页场景入口使用更明确的按下反馈。
+///
+/// 入口本身悬浮在摄影物件上，按下时应像被手指压回承载面：缩小、下沉并稍微收敛亮度；
+/// 松手后由短促弹簧回到原位。静止状态不改变现有图标、文字或透视。
+struct MyPageSceneEntranceButtonStyle: ButtonStyle {
+    let keepsPressedAppearance: Bool
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     func makeBody(configuration: Configuration) -> some View {
+        let isVisuallyPressed = configuration.isPressed || keepsPressedAppearance
+
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.955 : 1)
-            .brightness(configuration.isPressed ? 0.075 : 0)
+            .scaleEffect(reduceMotion || !isVisuallyPressed ? 1 : 0.90)
+            .offset(y: reduceMotion || !isVisuallyPressed ? 0 : 2.5)
+            .brightness(isVisuallyPressed ? 0.11 : 0)
+            .opacity(isVisuallyPressed ? 0.93 : 1)
             .animation(
-                .spring(response: 0.28, dampingFraction: 0.82),
-                value: configuration.isPressed
+                reduceMotion
+                    ? .easeOut(duration: 0.08)
+                    : isVisuallyPressed
+                        ? .spring(response: 0.18, dampingFraction: 0.82)
+                        : .spring(duration: 0.08, bounce: 0.16),
+                value: isVisuallyPressed
             )
     }
 }
 
-extension Color {
-    /// 从参考图发光文字和图标的实体核心反推，约 RGB(254, 249, 236)。
-    static let sceneHologramYellow = Color(red: 0.996, green: 0.976, blue: 0.925)
+/// 将“按下—保持—回弹—提交”的时序从页面布局中抽离，确保所有入口共享同一手感。
+@MainActor
+final class MyPageSceneActionCoordinator: ObservableObject {
+    static let pressedHoldDuration = Duration.milliseconds(20)
+    static let reboundDuration = Duration.milliseconds(80)
+    static let postReboundDelay = Duration.milliseconds(20)
 
-    /// 参考图主体外侧黄色衰减层的代表色，约 RGB(249, 232, 182)。
-    static let sceneHologramGlowYellow = Color(red: 0.976, green: 0.91, blue: 0.714)
+    enum Hotspot: Hashable {
+        case profile
+        case coin
+        case learning
+        case favorites
+        case settings
+        case account
+        case memory
+    }
+
+    @Published private(set) var pressedHotspot: Hotspot?
+    private var pendingAction: Task<Void, Never>?
+
+    func perform(
+        for hotspot: Hotspot,
+        reduceMotion: Bool,
+        action: @escaping @MainActor () -> Void
+    ) {
+        guard pendingAction == nil else { return }
+
+        pressedHotspot = hotspot
+        pendingAction = Task { @MainActor in
+            do {
+                try await Task.sleep(
+                    for: Self.pressedHoldDuration
+                )
+                pressedHotspot = nil
+                try await Task.sleep(
+                    for: Self.reboundDuration
+                )
+                try await Task.sleep(
+                    for: Self.postReboundDelay
+                )
+                guard !Task.isCancelled else { return }
+                pendingAction = nil
+                action()
+            } catch {
+                pressedHotspot = nil
+                pendingAction = nil
+            }
+        }
+    }
+
+    func cancel() {
+        pendingAction?.cancel()
+        pendingAction = nil
+        pressedHotspot = nil
+    }
+}
+
+/// 护照夹上的身份投影作为一个整体旋转和定位，避免头像与文字分别漂移。
+struct MyPageProfileSceneEntry: View {
+    let plane: SceneHologramPlane
+    let scale: CGFloat
+    let displayName: String
+    let accountBadgeTitle: String
+    let occupiedFriendSlots: Int
+
+    var body: some View {
+        SceneHologram(plane: plane) {
+            VStack(spacing: 4 * scale) {
+                SceneHologramIcon(
+                    glyph: .system("person.crop.circle"),
+                    size: 44 * scale,
+                    tint: .sceneHologramYellow
+                )
+
+                VStack(spacing: 1.5 * scale) {
+                    SceneHologramText(displayName, size: 17 * scale, weight: .bold)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
+                    SceneHologramText(accountBadgeTitle, size: 14 * scale, weight: .semibold)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.68)
+                    SceneHologramText("\(occupiedFriendSlots) 位旅途朋友", size: 13 * scale, weight: .medium)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.68)
+                }
+                .frame(width: 94 * scale)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .contentShape(Rectangle())
+    }
+}
+
+extension ButtonStyle where Self == MyPageSceneEntranceButtonStyle {
+    static func myPageSceneEntrance(
+        keepsPressedAppearance: Bool = false
+    ) -> MyPageSceneEntranceButtonStyle {
+        MyPageSceneEntranceButtonStyle(keepsPressedAppearance: keepsPressedAppearance)
+    }
+}
+
+extension Color {
+    /// “我的”页与首页共享同一暖象牙白核心，避免入口之间出现色温漂移。
+    static let sceneHologramYellow = DSHologramPalette.ivory
+
+    /// 更暖的淡金衰减层只存在于核心外侧，主体仍然保持接近白色。
+    static let sceneHologramGlowYellow = DSHologramPalette.glow
 }

@@ -44,6 +44,7 @@ struct RootView: View {
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     init(environment: AppEnvironment) {
         self.environment = environment
@@ -342,10 +343,6 @@ struct RootView: View {
             HomeView(
                 deps: homeDeps,
                 reloadToken: stateRevision,
-                chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
-                onOpenMessages: {
-                    selectedTab = .messages
-                },
                 onInitialLoad: {
                     guard environment.needsOnboarding == false else { return }
                     isInitialContentReady = true
@@ -426,33 +423,74 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        NavigationStack(path: $mePath) {
-            MyPageView(
-                economyStore: environment.economyStore,
-                economyService: economyService,
-                rosterStore: environment.rosterStore,
-                authSession: environment.authSession,
-                billing: environment.billing,
-                reloadToken: stateRevision,
-                isSignedIn: usesCloudState,
-                onSignIn: { showSignIn = true },
-                onCalibrateLevel: { showPlacementTest = true },
-                onOpenFavorites: { openMe(.favorites) },
-                onOpenSettings: { openMe(.settings) },
-                onOpenMemory: {
-                    #if DEBUG
-                    openMe(.memory)
-                    #endif
+        MeNavigationContainer(
+            isPresentingDestination: !mePath.isEmpty,
+            navigationTitle: meNavigationTitle,
+            onBack: closeMeDestination
+        ) {
+            meRootView
+        } destination: {
+            Group {
+                if let destination = mePath.last {
+                    meDestinationView(destination)
+                        .id(destination)
                 }
-            )
-            .navigationDestination(for: MeDestination.self) { destination in
-                meDestinationView(destination)
             }
         }
     }
 
+    private var meRootView: some View {
+        MyPageView(
+            economyStore: environment.economyStore,
+            economyService: economyService,
+            rosterStore: environment.rosterStore,
+            authSession: environment.authSession,
+            billing: environment.billing,
+            reloadToken: stateRevision,
+            isSignedIn: usesCloudState,
+            onSignIn: { showSignIn = true },
+            onCalibrateLevel: { showPlacementTest = true },
+            onOpenFavorites: { openMe(.favorites) },
+            onOpenSettings: { openMe(.settings) },
+            onOpenMemory: {
+                #if DEBUG
+                openMe(.memory)
+                #endif
+            }
+        )
+        .id("me-root")
+    }
+
+    private var meNavigationTitle: String {
+        guard let destination = mePath.last else { return "" }
+        return switch destination {
+        case .favorites: "收藏夹"
+        case .settings: "设置"
+        case .photoCredits: "城市背景照片"
+        #if DEBUG
+        case .memory: ""
+        #endif
+        }
+    }
+
     private func openMe(_ destination: MeDestination) {
-        mePath.append(destination)
+        withAnimation(meContentAnimation) {
+            mePath.append(destination)
+        }
+    }
+
+    private func closeMeDestination() {
+        guard !mePath.isEmpty else { return }
+        withAnimation(meContentAnimation) {
+            _ = mePath.removeLast()
+        }
+    }
+
+    /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。
+    private var meContentAnimation: Animation {
+        reduceMotion
+            ? .easeOut(duration: 0.10)
+            : .easeInOut(duration: 0.18)
     }
 
     @ViewBuilder
