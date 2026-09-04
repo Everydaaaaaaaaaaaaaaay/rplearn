@@ -133,6 +133,89 @@ struct MemoryServiceTests {
         #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .short) == 2)
     }
 
+    @Test("记忆压缩携带可信时间并明确计划状态")
+    func summaryCarriesTemporalAndPlanSemantics() async throws {
+        let fixture = try await makeFixture()
+        try await fill(fixture, messageCount: 2)
+        let recorder = MemoryRequestRecorder(response: factsJSON)
+        let service = MemoryService(
+            llm: MockLLMProvider { request in try await recorder.complete(request) },
+            chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore,
+            config: .init(compressionThresholdMessages: 2, compressionBatch: 2)
+        )
+        let extractionDate = Date(timeIntervalSince1970: 1_788_000_000)
+
+        await service.compressIfNeeded(
+            conversationID: fixture.conversationID,
+            characterName: "Memo",
+            characterRegionID: "london",
+            at: extractionDate
+        )
+
+        let request = try #require(await recorder.lastRequest)
+        #expect(request.messages.first?.content.contains("] Friend: message 0") == true)
+        #expect(request.system?.contains("timestamps are authoritative metadata") == true)
+        #expect(request.system?.contains("proposed, confirmed, rescheduled, cancelled or completed") == true)
+        #expect(request.system?.contains("never infer that a proposed or confirmed off-screen event was completed") == true)
+    }
+
+    @Test("记忆压缩携带既有记忆并要求跨批次去重")
+    func summaryUsesExistingMemoriesForDeduplication() async throws {
+        let fixture = try await makeFixture()
+        try await fixture.memoryStore.addMemories(
+            characterID: fixture.characterID,
+            tier: .short,
+            facts: [.init(content: "Friend prefers quiet cafés", importance: 3)],
+            sourceUpToIndex: 0
+        )
+        try await fill(fixture, messageCount: 2)
+        let recorder = MemoryRequestRecorder(response: factsJSON)
+        let service = MemoryService(
+            llm: MockLLMProvider { request in try await recorder.complete(request) },
+            chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore,
+            config: .init(compressionThresholdMessages: 2, compressionBatch: 2)
+        )
+
+        await service.compressIfNeeded(
+            conversationID: fixture.conversationID,
+            characterName: "Memo"
+        )
+
+        let request = try #require(await recorder.lastRequest)
+        #expect(request.system?.contains("Use them only for de-duplication") == true)
+        #expect(request.system?.contains("family or relationships") == true)
+        #expect(request.system?.contains("never omit them merely to keep the list shorter") == true)
+        #expect(request.messages.first?.content.contains("Friend prefers quiet cafés") == true)
+        #expect(request.messages.first?.content.contains("New timestamped chat excerpt") == true)
+    }
+
+    @Test("仍含相对日期的模型记忆不会进入长期上下文")
+    func rejectsAmbiguousRelativeDates() async throws {
+        let fixture = try await makeFixture()
+        try await fill(fixture, messageCount: 2)
+        let response = #"{"memories":[{"content":"Friend will meet Memo tomorrow","importance":3},{"content":"Friend likes quiet bookshops","importance":2}]}"#
+        let service = MemoryService(
+            llm: MockLLMProvider { _ in response },
+            chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore,
+            config: .init(compressionThresholdMessages: 2, compressionBatch: 2)
+        )
+
+        await service.compressIfNeeded(
+            conversationID: fixture.conversationID,
+            characterName: "Memo",
+            characterRegionID: "london"
+        )
+
+        let memories = try await fixture.memoryStore.memories(
+            characterID: fixture.characterID,
+            tier: .short
+        )
+        #expect(memories.map(\.content) == ["Friend likes quiet bookshops"])
+    }
+
     @Test("记忆段落注入格式")
     func injectionFormat() async throws {
         let fixture = try await makeFixture()
@@ -146,7 +229,8 @@ struct MemoryServiceTests {
         let service = MemoryService(llm: mock, chatStore: fixture.chatStore, memoryStore: fixture.memoryStore)
         let sections = await service.memorySections(characterID: fixture.characterID)
         #expect(sections.count == 1)
-        #expect(sections.first?.contains("- Friend likes cats") == true)
+        #expect(sections.first?.contains("Friend likes cats") == true)
+        #expect(sections.first?.contains("[note recorded") == true)
         #expect(sections.first?.hasPrefix("[Recent things") == true)
 
         // 无记忆时为空
@@ -172,6 +256,65 @@ struct MemoryServiceTests {
         #expect(sections[0].contains("Friend is from Chengdu"))
         #expect(sections[1].hasPrefix("[Recent things"))
         #expect(sections[1].contains("Friend went to a concert"))
+    }
+
+    @Test("上下文胶囊在固定条数内优先召回与当前问题相关的旧事实")
+    func contextCapsuleRetrievesRelevantOlderFact() async throws {
+        let fixture = try await makeFixture()
+        try await fixture.memoryStore.addMemories(
+            characterID: fixture.characterID,
+            tier: .short,
+            facts: [
+                .init(content: "Friend's dad lives in Chengdu", importance: 3),
+                .init(content: "Friend bought a notebook", importance: 2),
+                .init(content: "Friend read a mystery", importance: 2),
+                .init(content: "Friend drank tea", importance: 2),
+            ],
+            sourceUpToIndex: 8
+        )
+        let service = MemoryService(
+            llm: MockLLMProvider(),
+            chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore,
+            config: .init(injectedShortLimit: 2, injectedTokenBudget: 180)
+        )
+
+        let sections = await service.memorySections(
+            characterID: fixture.characterID,
+            query: "Where does my dad live?"
+        )
+
+        #expect(sections.joined().contains("dad lives in Chengdu"))
+        #expect(sections.joined().components(separatedBy: "\n- ").count <= 3)
+    }
+
+    @Test("升级前遗留的歧义相对日期不会再注入角色上下文")
+    func omitsLegacyAmbiguousTemporalMemory() async throws {
+        let fixture = try await makeFixture()
+        try await fixture.memoryStore.addMemories(
+            characterID: fixture.characterID,
+            tier: .short,
+            facts: [
+                .init(content: "Friend wants to meet tomorrow", importance: 3),
+                .init(content: "Friend prefers tea to coffee", importance: 2),
+            ],
+            sourceUpToIndex: 4
+        )
+
+        let service = MemoryService(
+            llm: MockLLMProvider(),
+            chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore
+        )
+        let sections = await service.memorySections(
+            characterID: fixture.characterID,
+            characterRegionID: "london"
+        )
+
+        #expect(sections.count == 1)
+        #expect(sections[0].contains("prefers tea to coffee"))
+        #expect(!sections[0].contains("meet tomorrow"))
+        #expect(sections[0].contains("newer cancellation, correction or reschedule supersedes"))
     }
 
     @Test("quota 随订阅变化")
@@ -242,5 +385,19 @@ struct MemoryServiceTests {
         #expect(!longs.contains { $0.content == "long 1" })
         #expect(!longs.contains { $0.content == "long 2" })
         #expect(longs.contains { $0.content == "long 7" })
+    }
+}
+
+private actor MemoryRequestRecorder {
+    private(set) var lastRequest: LLMRequest?
+    private let response: String
+
+    init(response: String) {
+        self.response = response
+    }
+
+    func complete(_ request: LLMRequest) throws -> String {
+        lastRequest = request
+        return response
     }
 }
