@@ -51,11 +51,20 @@ extension ContentSyncStore {
             personality: payload.card.personality,
             speechStyle: payload.card.speechStyle,
             background: payload.card.background,
-            avatarAssetName: payload.card.avatarAssetName
+            avatarAssetName: payload.card.avatarAssetName,
+            avatarID: payload.card.avatarId,
+            avatarRemoteURL: payload.card.avatarRemoteUrl,
+            signature: payload.card.signature,
+            birthday: payload.card.birthday,
+            hometown: payload.card.hometown,
+            languages: payload.card.languages,
+            personaVoice: payload.card.personaVoice
         )
         let entity = try character(id: id) ?? {
             let created = CharacterEntity(
                 characterID: id,
+                travelerID: payload.travelerId,
+                publicIdentityRegistered: payload.publicIdentityRegistered ?? false,
                 name: card.name,
                 age: card.age,
                 genderRaw: card.gender.rawValue,
@@ -69,8 +78,14 @@ extension ContentSyncStore {
                 difficultyLevelRaw: payload.difficulty,
                 isMainCharacter: payload.isMainCharacter,
                 isFriend: payload.isFriend,
+                contactStatusRaw: payload.contactStatus,
                 isFavorite: payload.isFavorite ?? false,
+                remarkName: payload.remarkName,
+                privateNote: payload.privateNote,
+                proactiveMessagesEnabled: payload.proactiveMessagesEnabled ?? true,
+                mutedUntil: payload.mutedUntil,
                 relationshipJSON: (payload.relationship ?? .initial).encodedJSON(),
+                growthJSON: (payload.growth ?? .initial).encodedJSON(),
                 cardJSON: card.encodedJSON(),
                 metAt: payload.metAt
             )
@@ -90,9 +105,19 @@ extension ContentSyncStore {
         entity.difficultyLevelRaw = payload.difficulty
         entity.isMainCharacter = payload.isMainCharacter
         entity.isFriend = payload.isFriend
+        entity.contactStatusRaw = payload.contactStatus
+            ?? (payload.isFriend ? ContactStatus.friend.rawValue : ContactStatus.candidate.rawValue)
         entity.isFavorite = payload.isFavorite ?? false
+        entity.remarkName = payload.remarkName
+        entity.privateNote = payload.privateNote
+        entity.proactiveMessagesEnabled = payload.proactiveMessagesEnabled ?? true
+        entity.mutedUntil = payload.mutedUntil
+        entity.publicIdentityRegistered = payload.publicIdentityRegistered ?? false
         if let relationship = payload.relationship {
             entity.relationshipJSON = relationship.encodedJSON()
+        }
+        if let growth = payload.growth {
+            entity.growthJSON = growth.encodedJSON()
         }
         entity.cardJSON = card.encodedJSON()
         entity.metAt = payload.metAt
@@ -117,7 +142,9 @@ extension ContentSyncStore {
                 quizOptOut: payload.quizOptOut,
                 lastSummarizedMessageIndex: payload.lastSummarizedMessageIndex,
                 isEncounterSession: payload.isEncounterSession,
-                isArchived: payload.isArchived
+                isArchived: payload.isArchived,
+                isPinned: payload.isPinned ?? false,
+                lastReadAt: payload.lastReadAt
             )
             modelContext.insert(created)
             return created
@@ -131,6 +158,8 @@ extension ContentSyncStore {
         entity.lastSummarizedMessageIndex = payload.lastSummarizedMessageIndex
         entity.isEncounterSession = payload.isEncounterSession
         entity.isArchived = payload.isArchived
+        entity.isPinned = payload.isPinned ?? false
+        entity.lastReadAt = payload.lastReadAt
         try upsertMetadata(record, localKey: record.resourceID)
     }
 
@@ -244,6 +273,7 @@ extension ContentSyncStore {
         let entity = existing ?? {
             let created = MemoryEntity(
                 tierRaw: payload.tier,
+                sourceRaw: payload.source ?? MemorySource.chat.rawValue,
                 content: payload.content,
                 importance: payload.importance,
                 sourceUpToIndex: payload.sourceUpToIndex,
@@ -254,6 +284,7 @@ extension ContentSyncStore {
         }()
         entity.character = character
         entity.tierRaw = payload.tier
+        entity.sourceRaw = payload.source ?? MemorySource.chat.rawValue
         entity.content = payload.content
         entity.importance = payload.importance
         entity.sourceUpToIndex = payload.sourceUpToIndex

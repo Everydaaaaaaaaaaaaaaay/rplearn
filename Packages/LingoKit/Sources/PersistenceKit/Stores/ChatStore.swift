@@ -35,6 +35,28 @@ public actor ChatStore {
         return Self.dto(from: entity, characterID: entity.character?.characterID ?? UUID())
     }
 
+    /// 置顶是用户私有会话偏好，写入 SwiftData 并进入内容同步 Outbox。
+    public func setPinned(conversationID: UUID, isPinned: Bool) throws {
+        guard let conversation = try fetchConversation(id: conversationID) else {
+            throw ChatError.conversationNotFound
+        }
+        guard conversation.isPinned != isPinned else { return }
+        conversation.isPinned = isPinned
+        try journal(conversation)
+        try modelContext.save()
+    }
+
+    /// 已读时间只前进不后退，避免多设备或异步刷新覆盖较新的阅读进度。
+    public func markRead(conversationID: UUID, at date: Date = .now) throws {
+        guard let conversation = try fetchConversation(id: conversationID) else {
+            throw ChatError.conversationNotFound
+        }
+        guard (conversation.lastReadAt ?? .distantPast) < date else { return }
+        conversation.lastReadAt = date
+        try journal(conversation)
+        try modelContext.save()
+    }
+
     /// 按 orderIndex 升序取全部消息。
     public func messages(conversationID: UUID) throws -> [MessageDTO] {
         guard let conversation = try fetchConversation(id: conversationID) else {
@@ -43,6 +65,48 @@ public actor ChatStore {
         return conversation.messages
             .sorted { $0.orderIndex < $1.orderIndex }
             .map(dto(from:))
+    }
+
+    /// 清空该角色的聊天记录但保留角色、好友关系和关系成长。返回本地语音文件名供媒体层清理。
+    @discardableResult
+    public func clearConversationHistory(characterID: UUID) throws -> [String] {
+        guard let character = try modelContext.fetch(
+            FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
+        ).first else {
+            throw ChatError.characterNotFound
+        }
+        var localVoiceFiles: [String] = []
+        for conversation in character.conversations {
+            for message in conversation.messages {
+                if let fileName = message.audioFileName { localVoiceFiles.append(fileName) }
+                try ContentMutationJournal.delete(
+                    in: modelContext,
+                    resourceType: .message,
+                    resourceID: message.messageID.uuidString.lowercased()
+                )
+                let messageID = message.messageID
+                if let upload = try modelContext.fetch(
+                    FetchDescriptor<VoiceMediaUploadEntity>(
+                        predicate: #Predicate { $0.messageID == messageID }
+                    )
+                ).first {
+                    modelContext.delete(upload)
+                }
+                if let link = try voiceMediaLink(messageID: messageID) {
+                    if let fileName = link.localFileName { localVoiceFiles.append(fileName) }
+                    try enqueueRemoteVoiceDeletionIfNeeded(link: link, messageID: messageID)
+                    modelContext.delete(link)
+                }
+                modelContext.delete(message)
+            }
+            conversation.turnCount = 0
+            conversation.turnsSinceQuiz = 0
+            conversation.lastSummarizedMessageIndex = 0
+            conversation.lastMessageAt = conversation.createdAt
+            try journal(conversation)
+        }
+        try modelContext.save()
+        return Array(Set(localVoiceFiles))
     }
 
     /// 读取角色跨当前与归档会话的近期消息，供重新开场时避免重复旧话题。
@@ -525,44 +589,11 @@ public actor ChatStore {
             modelContext.delete(upload)
         }
         if let link = try voiceMediaLink(messageID: messageID) {
+            try enqueueRemoteVoiceDeletionIfNeeded(link: link, messageID: messageID)
             modelContext.delete(link)
         }
         modelContext.delete(message)
         try modelContext.save()
-    }
-
-    /// 会话列表（消息 tab）：每个未归档会话一行。
-    public func conversationSummaries() throws -> [ConversationSummaryDTO] {
-        let conversations = try modelContext.fetch(
-            FetchDescriptor<ConversationEntity>(predicate: #Predicate { !$0.isArchived })
-        )
-        return conversations.compactMap { conversation -> ConversationSummaryDTO? in
-            guard let character = conversation.character else { return nil }
-            var lastMessage: MessageEntity?
-            var assistantMessageDates: [Date] = []
-            assistantMessageDates.reserveCapacity(conversation.messages.count)
-            for message in conversation.messages {
-                if lastMessage == nil
-                    || message.orderIndex > (lastMessage?.orderIndex ?? -1) {
-                    lastMessage = message
-                }
-                if message.roleRaw == MessageRole.assistant.rawValue {
-                    assistantMessageDates.append(message.createdAt)
-                }
-            }
-            return ConversationSummaryDTO(
-                conversationID: conversation.conversationID,
-                characterID: character.characterID,
-                characterName: character.name,
-                avatarAssetName: character.avatarAssetName,
-                lastMessageText: lastMessage?.text ?? "",
-                lastMessageAt: conversation.lastMessageAt,
-                lastMessageRole: lastMessage.flatMap { MessageRole(rawValue: $0.roleRaw) },
-                lastMessageKind: lastMessage.flatMap { MessageKind(rawValue: $0.kindRaw) },
-                assistantMessageDates: assistantMessageDates
-            )
-        }
-        .sorted { $0.lastMessageAt > $1.lastMessageAt }
     }
 
     // MARK: - 私有
@@ -587,6 +618,31 @@ public actor ChatStore {
         ).first
     }
 
+    private func enqueueRemoteVoiceDeletionIfNeeded(
+        link: VoiceMediaLinkEntity,
+        messageID: UUID
+    ) throws {
+        guard link.isRemoteReady, let assetID = link.assetID else { return }
+        guard let owner = try modelContext.fetch(
+            FetchDescriptor<ContentSyncOwnerEntity>(
+                predicate: #Predicate { $0.singletonKey == "active" }
+            )
+        ).first else { return }
+        let existing = try modelContext.fetch(
+            FetchDescriptor<VoiceMediaDeletionEntity>(
+                predicate: #Predicate { $0.assetID == assetID }
+            )
+        ).first
+        guard existing == nil else { return }
+        modelContext.insert(
+            VoiceMediaDeletionEntity(
+                assetID: assetID,
+                ownerUserID: owner.userID,
+                messageID: messageID
+            )
+        )
+    }
+
     private func journal(_ conversation: ConversationEntity) throws {
         guard let characterID = conversation.character?.characterID else { return }
         try ContentMutationJournal.upsert(
@@ -599,7 +655,9 @@ public actor ChatStore {
                     createdAt: conversation.createdAt,
                     isArchived: conversation.isArchived,
                     isEncounterSession: conversation.isEncounterSession,
+                    isPinned: conversation.isPinned,
                     lastMessageAt: conversation.lastMessageAt,
+                    lastReadAt: conversation.lastReadAt,
                     lastSummarizedMessageIndex: conversation.lastSummarizedMessageIndex,
                     quizOptOut: conversation.quizOptOut,
                     turnCount: conversation.turnCount,
@@ -676,11 +734,13 @@ public actor ChatStore {
             quizOptOut: entity.quizOptOut,
             lastSummarizedMessageIndex: entity.lastSummarizedMessageIndex,
             isEncounterSession: entity.isEncounterSession,
-            isArchived: entity.isArchived
+            isArchived: entity.isArchived,
+            isPinned: entity.isPinned,
+            lastReadAt: entity.lastReadAt
         )
     }
 
-    private func dto(from entity: MessageEntity) -> MessageDTO {
+    func dto(from entity: MessageEntity) -> MessageDTO {
         let media = try? voiceMediaLink(messageID: entity.messageID)
         return MessageDTO(
             id: entity.messageID,
@@ -701,43 +761,5 @@ public actor ChatStore {
             isInterrupted: entity.isInterrupted,
             createdAt: entity.createdAt
         )
-    }
-}
-
-/// 会话列表行摘要。
-public struct ConversationSummaryDTO: Sendable, Equatable, Identifiable {
-    public var conversationID: UUID
-    public var characterID: UUID
-    public var characterName: String
-    public var avatarAssetName: String?
-    public var lastMessageText: String
-    public var lastMessageAt: Date
-    public var lastMessageRole: MessageRole?
-    public var lastMessageKind: MessageKind?
-    /// 用于端内计算该会话的实际未读消息数，不参与持久化；始终按时间升序。
-    public private(set) var assistantMessageDates: [Date]
-
-    public var id: UUID { conversationID }
-
-    public init(
-        conversationID: UUID,
-        characterID: UUID,
-        characterName: String,
-        avatarAssetName: String?,
-        lastMessageText: String,
-        lastMessageAt: Date,
-        lastMessageRole: MessageRole? = nil,
-        lastMessageKind: MessageKind? = nil,
-        assistantMessageDates: [Date] = []
-    ) {
-        self.conversationID = conversationID
-        self.characterID = characterID
-        self.characterName = characterName
-        self.avatarAssetName = avatarAssetName
-        self.lastMessageText = lastMessageText
-        self.lastMessageAt = lastMessageAt
-        self.lastMessageRole = lastMessageRole
-        self.lastMessageKind = lastMessageKind
-        self.assistantMessageDates = assistantMessageDates.sorted()
     }
 }

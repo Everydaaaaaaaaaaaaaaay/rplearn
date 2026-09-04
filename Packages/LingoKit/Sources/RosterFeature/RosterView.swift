@@ -1,4 +1,7 @@
+import BackendKit
 import DesignSystem
+import DomainKit
+import Foundation
 import PersistenceKit
 import SwiftUI
 
@@ -10,6 +13,7 @@ public struct RosterView: View {
     private enum ContactSection: Hashable, CaseIterable {
         case favorites
         case friends
+        case former
         case search
     }
 
@@ -19,11 +23,14 @@ public struct RosterView: View {
     private let callBuilder: (@MainActor (CharacterDTO) -> AnyView)?
 
     @State private var friends: [CharacterDTO] = []
+    @State private var formerContacts: [CharacterDTO] = []
     @State private var profile: UserProfileDTO?
     @State private var occupiedSlots = 0
     @State private var isLoading = true
     @State private var searchText = ""
     @State private var isSearchPresented = false
+    @State private var travelerMatch: CharacterDTO?
+    @State private var didFinishTravelerLookup = false
     @State private var expandedSections = Set(ContactSection.allCases)
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -69,11 +76,15 @@ public struct RosterView: View {
 
     private var searchResults: [CharacterDTO] {
         guard isSearching else { return [] }
-        return RosterPresentationPolicy.filtered(
-            friends,
+        var results = RosterPresentationPolicy.filtered(
+            friends + formerContacts,
             query: normalizedSearchText,
             regionName: deps.regionName
         )
+        if let travelerMatch, !results.contains(where: { $0.id == travelerMatch.id }) {
+            results.insert(travelerMatch, at: 0)
+        }
+        return results
     }
 
     public var body: some View {
@@ -83,6 +94,7 @@ public struct RosterView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .task(id: reloadToken) { await reload() }
+            .task(id: normalizedSearchText) { await lookupTravelerIDIfNeeded() }
             .overlay {
                 if isLoading {
                     ProgressView()
@@ -127,7 +139,7 @@ public struct RosterView: View {
                 LazyVStack(spacing: DSSpacing.md) {
                     if isSearching {
                         searchSection
-                    } else if friends.isEmpty && !isLoading {
+                    } else if friends.isEmpty && formerContacts.isEmpty && !isLoading {
                         emptyState
                     } else {
                         contactGroupsCard
@@ -143,7 +155,15 @@ public struct RosterView: View {
     @ViewBuilder
     private var searchSection: some View {
         if searchResults.isEmpty {
-            ContentUnavailableView.search(text: normalizedSearchText)
+            ContentUnavailableView(
+                isTravelerIDQuery && didFinishTravelerLookup ? "没有找到这个旅伴" : "没有找到联系人",
+                systemImage: isTravelerIDQuery ? "number.circle" : "magnifyingglass",
+                description: Text(
+                    isTravelerIDQuery && didFinishTravelerLookup
+                        ? "请检查旅伴号是否正确，或稍后在网络恢复后重试。"
+                        : "试试姓名、备注、职业或旅伴号"
+                )
+            )
                 .padding(DSSpacing.xl)
                 .foregroundStyle(scenePrimaryText)
                 .dsSceneGlass(
@@ -186,6 +206,20 @@ public struct RosterView: View {
                 tint: .dsSkyDeep,
                 people: otherContacts
             )
+
+            if !formerContacts.isEmpty {
+                Divider()
+                    .overlay(scenePrimaryText.opacity(0.14))
+                    .padding(.horizontal, DSSpacing.md)
+
+                contactSection(
+                    section: .former,
+                    title: "过往联系人",
+                    icon: "clock.arrow.circlepath",
+                    tint: .dsSceneTextSecondary,
+                    people: RosterPresentationPolicy.sorted(formerContacts)
+                )
+            }
         }
         .dsSceneGlass(
             tint: sceneGlassTint,
@@ -363,16 +397,25 @@ public struct RosterView: View {
                 onFavoriteChanged: { isFavorite in
                     applyFavoriteState(characterID: character.id, isFavorite: isFavorite)
                 },
+                slotLimit: slotLimit,
+                onContactRestored: { restored in
+                    applyRestoredContact(restored)
+                },
                 chatBuilder: chatBuilder,
                 callBuilder: callBuilder
             )
         } label: {
             HStack(spacing: DSSpacing.sm) {
-                AvatarBadge(name: character.card.name, size: 56)
+                AvatarBadge(
+                    name: character.displayName,
+                    size: 56,
+                    imageName: character.card.avatarAssetName,
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                )
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(character.card.name)
+                    Text(character.displayName)
                         .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(scenePrimaryText)
                         .lineLimit(1)
@@ -396,6 +439,9 @@ public struct RosterView: View {
     }
 
     private func friendStatus(_ character: CharacterDTO) -> String {
+        if character.contactStatus == .removed {
+            return "过往联系人 · 可重新添加"
+        }
         if character.isMainCharacter {
             return "剧情旅伴 · \(character.card.occupation)"
         }
@@ -419,17 +465,118 @@ public struct RosterView: View {
     private func reload() async {
         if friends.isEmpty { isLoading = true }
         async let loadedFriends = try? deps.rosterStore.friends()
+        async let loadedFormerContacts = try? deps.rosterStore.formerContacts()
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedSlots = try? deps.rosterStore.occupiedFriendSlots()
         friends = await loadedFriends ?? friends
+        formerContacts = await loadedFormerContacts ?? formerContacts
         profile = await loadedProfile ?? profile
         occupiedSlots = await loadedSlots ?? occupiedSlots
         isLoading = false
+        await registerPendingPublicNPCs()
+    }
+
+    private func registerPendingPublicNPCs() async {
+        guard let registry = deps.npcRegistry,
+              let characters = try? await deps.rosterStore.allCharacters()
+        else { return }
+        var changed = false
+        for character in characters where !character.isMainCharacter
+            && !character.publicIdentityRegistered {
+            guard !Task.isCancelled else { return }
+            do {
+                let registered = try await registry.registerPublicNPC(
+                    id: character.id,
+                    card: PublicNPCAdapter.backendCard(from: character.card)
+                )
+                try await deps.rosterStore.applyPublicIdentity(
+                    characterID: character.id,
+                    travelerID: registered.travelerId,
+                    card: PublicNPCAdapter.characterCard(from: registered)
+                )
+                let relationshipStatus: BackendNPCRelationshipStatus = switch character.contactStatus {
+                case .candidate: .candidate
+                case .friend: .friend
+                case .removed: .removed
+                }
+                try? await registry.linkPublicNPC(
+                    npcID: registered.id,
+                    localCharacterID: character.id,
+                    status: relationshipStatus
+                )
+                changed = true
+            } catch {
+                // 离线或游客状态保留端侧稳定身份；下次进入联系人页继续补登记。
+                return
+            }
+        }
+        guard changed else { return }
+        friends = (try? await deps.rosterStore.friends()) ?? friends
+        formerContacts = (try? await deps.rosterStore.formerContacts()) ?? formerContacts
     }
 
     private func applyFavoriteState(characterID: UUID, isFavorite: Bool) {
         guard let index = friends.firstIndex(where: { $0.id == characterID }) else { return }
         friends[index].isFavorite = isFavorite
+    }
+
+    private var isTravelerIDQuery: Bool {
+        let digits = normalizedSearchText.filter(\.isNumber)
+        return digits.count == 11 && normalizedSearchText.allSatisfy { $0.isNumber || $0.isWhitespace }
+    }
+
+    @MainActor
+    private func lookupTravelerIDIfNeeded() async {
+        travelerMatch = nil
+        didFinishTravelerLookup = false
+        guard isTravelerIDQuery else { return }
+        try? await Task.sleep(for: .milliseconds(180))
+        guard !Task.isCancelled else { return }
+        let travelerID = normalizedSearchText.filter(\.isNumber)
+        if let match = try? await deps.rosterStore.character(travelerID: travelerID) {
+            // 尚未在剧情中相遇的主角不能被搜索提前剧透；已偶遇的随机 NPC 可以按号码找回。
+            travelerMatch = match.isMainCharacter && match.contactStatus == .candidate ? nil : match
+            didFinishTravelerLookup = true
+            return
+        }
+        if let registry = deps.npcRegistry,
+           let publicNPC = try? await registry.findPublicNPC(
+               travelerID: travelerID
+           ) {
+            let level = profile?.difficultyLevel ?? .junior3
+            if let localID = try? await deps.rosterStore.addCharacter(
+                characterID: publicNPC.id,
+                travelerID: publicNPC.travelerId,
+                card: PublicNPCAdapter.characterCard(from: publicNPC),
+                difficulty: level,
+                isFriend: false
+            ) {
+                travelerMatch = try? await deps.rosterStore.character(id: localID)
+                try? await registry.linkPublicNPC(
+                    npcID: publicNPC.id,
+                    localCharacterID: localID,
+                    status: .candidate
+                )
+            }
+        }
+        didFinishTravelerLookup = true
+    }
+
+    private func applyRestoredContact(_ restored: CharacterDTO) {
+        formerContacts.removeAll { $0.id == restored.id }
+        if let index = friends.firstIndex(where: { $0.id == restored.id }) {
+            friends[index] = restored
+        } else {
+            friends.append(restored)
+        }
+        if !restored.isMainCharacter { occupiedSlots += 1 }
+        Task {
+            try? await deps.npcRegistry?.linkPublicNPC(
+                npcID: restored.id,
+                localCharacterID: restored.id,
+                status: .friend
+            )
+        }
     }
 }
 

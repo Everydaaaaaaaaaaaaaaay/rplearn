@@ -1,9 +1,9 @@
 import Foundation
 import SwiftData
 
-/// 当前开发期 SwiftData 基线。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
+/// 当前 SwiftData Schema。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
 public enum LingoSchema: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(1, 0, 0) }
+    public static var versionIdentifier: Schema.Version { Schema.Version(1, 1, 0) }
 
     public static var models: [any PersistentModel.Type] {
         [
@@ -22,6 +22,7 @@ public enum LingoSchema: VersionedSchema {
             ContentOutboxEntity.self,
             VoiceMediaLinkEntity.self,
             VoiceMediaUploadEntity.self,
+            VoiceMediaDeletionEntity.self,
             JourneyStateEntity.self,
         ]
     }
@@ -89,6 +90,9 @@ extension LingoSchema {
     @Model
     public final class CharacterEntity {
         @Attribute(.unique) public var characterID: UUID
+        /// 内部 UUID 的可读映射；公共社区上线后由服务端登记并保持全局唯一。
+        @Attribute(.unique) public var travelerID: String?
+        public var publicIdentityRegistered: Bool = false
         public var name: String
         public var age: Int
         public var genderRaw: String
@@ -102,9 +106,16 @@ extension LingoSchema {
         public var difficultyLevelRaw: String
         public var isMainCharacter: Bool
         public var isFriend: Bool
+        public var contactStatusRaw: String?
         public var isFavorite: Bool = false
+        public var remarkName: String?
+        public var privateNote: String?
+        public var proactiveMessagesEnabled: Bool = true
+        public var mutedUntil: Date?
         /// 多维关系状态的版本化 JSON；旧角色缺失时回退到初识状态。
         public var relationshipJSON: String = RelationshipSnapshot.initial.encodedJSON()
+        /// 当前用户与该公共 NPC 之间的私有人格成长分支。
+        public var growthJSON: String = CharacterGrowthSnapshot.initial.encodedJSON()
         public var cardJSON: String
         public var metAt: Date
 
@@ -116,6 +127,8 @@ extension LingoSchema {
 
         public init(
             characterID: UUID = UUID(),
+            travelerID: String? = nil,
+            publicIdentityRegistered: Bool = false,
             name: String,
             age: Int,
             genderRaw: String,
@@ -129,12 +142,20 @@ extension LingoSchema {
             difficultyLevelRaw: String,
             isMainCharacter: Bool = false,
             isFriend: Bool = false,
+            contactStatusRaw: String? = nil,
             isFavorite: Bool = false,
+            remarkName: String? = nil,
+            privateNote: String? = nil,
+            proactiveMessagesEnabled: Bool = true,
+            mutedUntil: Date? = nil,
             relationshipJSON: String = RelationshipSnapshot.initial.encodedJSON(),
+            growthJSON: String = CharacterGrowthSnapshot.initial.encodedJSON(),
             cardJSON: String = "",
             metAt: Date = .now
         ) {
             self.characterID = characterID
+            self.travelerID = travelerID ?? TravelerIDGenerator.make(from: characterID)
+            self.publicIdentityRegistered = publicIdentityRegistered
             self.name = name
             self.age = age
             self.genderRaw = genderRaw
@@ -148,8 +169,15 @@ extension LingoSchema {
             self.difficultyLevelRaw = difficultyLevelRaw
             self.isMainCharacter = isMainCharacter
             self.isFriend = isFriend
+            self.contactStatusRaw = contactStatusRaw
+                ?? (isFriend ? ContactStatus.friend.rawValue : ContactStatus.candidate.rawValue)
             self.isFavorite = isFavorite
+            self.remarkName = remarkName
+            self.privateNote = privateNote
+            self.proactiveMessagesEnabled = proactiveMessagesEnabled
+            self.mutedUntil = mutedUntil
             self.relationshipJSON = relationshipJSON
+            self.growthJSON = growthJSON
             self.cardJSON = cardJSON
             self.metAt = metAt
             self.conversations = []
@@ -170,6 +198,10 @@ extension LingoSchema {
         public var isEncounterSession: Bool
         /// 偶遇未加好友离开后归档只读。
         public var isArchived: Bool
+        /// 当前用户的会话列表偏好；随用户内容同步，而不是设备级 UserDefaults。
+        public var isPinned: Bool = false
+        /// 已读游标使用时间而非本地消息下标，兼容多设备消息合并。
+        public var lastReadAt: Date?
 
         public var character: CharacterEntity?
 
@@ -185,7 +217,9 @@ extension LingoSchema {
             quizOptOut: Bool = false,
             lastSummarizedMessageIndex: Int = 0,
             isEncounterSession: Bool = false,
-            isArchived: Bool = false
+            isArchived: Bool = false,
+            isPinned: Bool = false,
+            lastReadAt: Date? = nil
         ) {
             self.conversationID = conversationID
             self.createdAt = createdAt
@@ -196,6 +230,8 @@ extension LingoSchema {
             self.lastSummarizedMessageIndex = lastSummarizedMessageIndex
             self.isEncounterSession = isEncounterSession
             self.isArchived = isArchived
+            self.isPinned = isPinned
+            self.lastReadAt = lastReadAt
             self.messages = []
         }
     }
@@ -267,6 +303,7 @@ extension LingoSchema {
     @Model
     public final class MemoryEntity {
         public var tierRaw: String
+        public var sourceRaw: String = MemorySource.chat.rawValue
         public var content: String
         /// 1-5，越大越重要。
         public var importance: Int
@@ -278,12 +315,14 @@ extension LingoSchema {
 
         public init(
             tierRaw: String,
+            sourceRaw: String = MemorySource.chat.rawValue,
             content: String,
             importance: Int = 3,
             sourceUpToIndex: Int = 0,
             createdAt: Date = .now
         ) {
             self.tierRaw = tierRaw
+            self.sourceRaw = sourceRaw
             self.content = content
             self.importance = importance
             self.sourceUpToIndex = sourceUpToIndex

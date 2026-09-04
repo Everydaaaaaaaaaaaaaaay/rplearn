@@ -31,8 +31,11 @@ public struct ChatView: View {
     @State var isNearConversationBottom = true
     @State var unseenIncomingMessageCount = 0
     @State var knownLatestMessageID: UUID?
+    @State var showsContactDetails = false
+    @State var highlightedMessageID: UUID?
     @FocusState var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) var reduceMotion
+    @Environment(\.dismiss) var dismiss
     let deps: ChatDependencies
 
     public init(
@@ -60,7 +63,12 @@ public struct ChatView: View {
             ToolbarItem(placement: .principal) {
                 HStack(spacing: 8) {
                     ZStack(alignment: .bottomTrailing) {
-                        AvatarBadge(name: viewModel.character.card.name, size: 32)
+                        AvatarBadge(
+                            name: viewModel.character.displayName,
+                            size: 32,
+                            imageName: viewModel.character.card.avatarAssetName,
+                            remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                        )
                         Circle()
                             .fill(viewModel.isStreaming ? Color.dsSunset : Color.dsSuccess)
                             .frame(width: 9, height: 9)
@@ -68,7 +76,7 @@ public struct ChatView: View {
                             .accessibilityHidden(true)
                     }
                     VStack(alignment: .leading, spacing: 0) {
-                        Text(viewModel.character.card.name)
+                        Text(viewModel.character.displayName)
                             .font(.subheadline.bold())
                         Text(chatStatus)
                             .font(.caption2)
@@ -87,16 +95,21 @@ public struct ChatView: View {
                 }
                 .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
             }
-            #if DEBUG && targetEnvironment(simulator)
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    Task { await viewModel.debugInjectQuiz() }
+                    isTextInputFocused = false
+                    voicePlayer.stop()
+                    showsContactDetails = true
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemName: "ellipsis.circle")
                 }
-                .accessibilityLabel("调试：注入小测")
+                .accessibilityLabel("聊天设置")
             }
-            #endif
+        }
+        .accessibilityAction(named: "聊天设置") {
+            isTextInputFocused = false
+            voicePlayer.stop()
+            showsContactDetails = true
         }
         .wordLookupOverlay(
             selection: $wordSelection,
@@ -149,6 +162,24 @@ public struct ChatView: View {
                 onSpeechPlayback: {}
             )
         }
+        .sheet(isPresented: $showsContactDetails) {
+            NavigationStack {
+                ChatContactDetailsView(
+                    viewModel: viewModel,
+                    onSelectMessage: { messageID in
+                        highlightedMessageID = messageID
+                        showsContactDetails = false
+                    },
+                    onRemoved: {
+                        showsContactDetails = false
+                        Task { @MainActor in
+                            try? await Task.sleep(for: .milliseconds(180))
+                            dismiss()
+                        }
+                    }
+                )
+            }
+        }
         .translationTask(appleTranslator.configuration) { @Sendable session in
             // session 非 Sendable，只能在本闭包内内联使用；仅与协调器交换纯数据。
             try? await session.prepareTranslation()
@@ -179,21 +210,19 @@ public struct ChatView: View {
     }
 
     private func markVisibleConversationRead() {
-        guard let conversation = viewModel.conversation else { return }
-        ConversationReadState.markRead(
-            conversationID: conversation.id,
-            at: viewModel.messages.last?.createdAt ?? .now
-        )
+        Task {
+            await viewModel.markConversationRead(at: viewModel.messages.last?.createdAt ?? .now)
+        }
     }
 
     private var chatStatus: String {
         if viewModel.isStreaming {
-            return "正在输入…"
+            return "AI 旅伴 · 正在生成回复"
         }
         if viewModel.conversation?.isEncounterSession == true {
-            return "在线 · 偶遇中 · \(viewModel.learnerDifficulty.displayName)"
+            return "AI 旅伴 · 偶遇中"
         }
-        return "在线 · \(chatCityDisplayName) · \(viewModel.learnerDifficulty.displayName)"
+        return "AI 旅伴 · 可对话"
     }
 
     private var messageList: some View {
@@ -213,6 +242,16 @@ public struct ChatView: View {
                             messageRow(message, at: index)
                                 .id(message.id)
                                 .padding(.top, messageTopSpacing(at: index))
+                                .background(
+                                    highlightedMessageID == message.id
+                                        ? Color.dsSky.opacity(0.14)
+                                        : Color.clear,
+                                    in: RoundedRectangle(cornerRadius: DSRadius.card)
+                                )
+                                .animation(
+                                    reduceMotion ? nil : .easeInOut(duration: 0.2),
+                                    value: highlightedMessageID
+                                )
                         }
                         if viewModel.streamingText != nil {
                             MessageBubble(
@@ -290,6 +329,17 @@ public struct ChatView: View {
                     guard isTextInputFocused else { return }
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                    }
+                }
+                .onChange(of: highlightedMessageID) { _, messageID in
+                    guard let messageID else { return }
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        proxy.scrollTo(messageID, anchor: .center)
+                    }
+                    Task { @MainActor in
+                        try? await Task.sleep(for: .seconds(2))
+                        guard highlightedMessageID == messageID else { return }
+                        highlightedMessageID = nil
                     }
                 }
 
@@ -453,7 +503,12 @@ public struct ChatView: View {
     @ViewBuilder
     private func incomingAvatar(isVisible: Bool) -> some View {
         if isVisible {
-            AvatarBadge(name: viewModel.character.card.name, size: 30)
+            AvatarBadge(
+                name: viewModel.character.displayName,
+                size: 30,
+                imageName: viewModel.character.card.avatarAssetName,
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+            )
         } else {
             Color.clear
                 .frame(width: 30, height: 30)

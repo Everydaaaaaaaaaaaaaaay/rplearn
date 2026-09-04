@@ -46,6 +46,9 @@ export type AiService = Readonly<{
     }>
   >;
   resolveGuestUser: (deviceId: string) => Promise<string>;
+  routeIdentity: (
+    task: string,
+  ) => Promise<Readonly<{ configVersion: number; model: string }>>;
 }>;
 
 function errorIdentity(error: unknown): Readonly<{
@@ -298,6 +301,16 @@ export function createAiService(
     resolveGuestUser: async (deviceId) => {
       const reference = guestReference(deviceId);
       return repository.ensureGuestPrincipal(guestUserId(reference), reference);
+    },
+    routeIdentity: async (task) => {
+      const route = validateRuntimeRoute(
+        await repository.route(task),
+        config.aiDeepSeekAllowedModels,
+      );
+      return {
+        configVersion: route.configVersion,
+        model: route.model,
+      };
     },
   };
 }

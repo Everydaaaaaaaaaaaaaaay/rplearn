@@ -36,7 +36,8 @@ struct PromptBuilderTests {
 
         // 固定指令段落
         #expect(prompt.contains("## Roleplay rules"))
-        #expect(prompt.contains("Never mention that you are an AI"))
+        #expect(prompt.contains("interface already identifies you as a fictional AI travel companion"))
+        #expect(prompt.contains("if the friend directly asks, answer honestly"))
         #expect(prompt.contains("## Texting style"))
         #expect(prompt.contains("Most replies should be 1 or 2 separate chat messages"))
         #expect(prompt.contains("each message on its own single line"))

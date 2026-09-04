@@ -13,22 +13,37 @@ extension ContentSyncStore {
                     age: entity.age,
                     appearance: entity.appearance,
                     avatarAssetName: entity.avatarAssetName,
+                    avatarId: card?.avatarID,
+                    avatarRemoteUrl: card?.avatarRemoteURL,
                     background: card?.background,
+                    birthday: card?.birthday,
                     gender: entity.genderRaw,
                     hobbies: entity.hobbies,
+                    hometown: card?.hometown,
+                    languages: card?.languages,
                     name: entity.name,
                     nationality: entity.nationality,
                     occupation: entity.occupation,
                     personality: entity.personality,
                     regionId: entity.regionID,
-                    speechStyle: card?.speechStyle
+                    speechStyle: card?.speechStyle,
+                    signature: card?.signature,
+                    personaVoice: card?.personaVoice
                 ),
                 difficulty: entity.difficultyLevelRaw,
                 isFriend: entity.isFriend,
                 isFavorite: entity.isFavorite,
                 isMainCharacter: entity.isMainCharacter,
                 metAt: entity.metAt,
-                relationship: RelationshipSnapshot.decode(fromJSON: entity.relationshipJSON) ?? .initial
+                relationship: RelationshipSnapshot.decode(fromJSON: entity.relationshipJSON) ?? .initial,
+                travelerId: entity.travelerID,
+                publicIdentityRegistered: entity.publicIdentityRegistered,
+                contactStatus: entity.contactStatusRaw,
+                remarkName: entity.remarkName,
+                privateNote: entity.privateNote,
+                proactiveMessagesEnabled: entity.proactiveMessagesEnabled,
+                mutedUntil: entity.mutedUntil,
+                growth: CharacterGrowthSnapshot.decode(fromJSON: entity.growthJSON) ?? .initial
             )
             records.append(
                 LocalContentRecord(
@@ -51,7 +66,9 @@ extension ContentSyncStore {
                             createdAt: entity.createdAt,
                             isArchived: entity.isArchived,
                             isEncounterSession: entity.isEncounterSession,
+                            isPinned: entity.isPinned,
                             lastMessageAt: entity.lastMessageAt,
+                            lastReadAt: entity.lastReadAt,
                             lastSummarizedMessageIndex: entity.lastSummarizedMessageIndex,
                             quizOptOut: entity.quizOptOut,
                             turnCount: entity.turnCount,
@@ -124,9 +141,10 @@ extension ContentSyncStore {
                     parentID: parent.uuidString.lowercased(),
                     payloadJSON: try ContentMutationJournal.encode(
                         ContentMemoryPayload(
-                            content: entity.content,
-                            createdAt: entity.createdAt,
-                            importance: entity.importance,
+                        content: entity.content,
+                        createdAt: entity.createdAt,
+                        importance: entity.importance,
+                        source: entity.sourceRaw,
                             sourceUpToIndex: entity.sourceUpToIndex,
                             tier: entity.tierRaw
                         )

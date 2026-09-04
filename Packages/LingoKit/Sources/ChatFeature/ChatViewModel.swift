@@ -13,12 +13,12 @@ import SpeechKit
 @MainActor
 @Observable
 public final class ChatViewModel {
-    public let character: CharacterDTO
+    public internal(set) var character: CharacterDTO
     public private(set) var learnerDifficulty: DifficultyLevel
-    private let deps: ChatDependencies
+    let deps: ChatDependencies
 
-    public private(set) var conversation: ConversationDTO?
-    public private(set) var messages: [MessageDTO] = []
+    public internal(set) var conversation: ConversationDTO?
+    public internal(set) var messages: [MessageDTO] = []
     /// 助手正在生成或输入；空字符串显示输入指示，nil 表示当前没有回复。
     public private(set) var streamingText: String?
     public private(set) var isStreaming = false
@@ -44,6 +44,7 @@ public final class ChatViewModel {
     }
 
     public func load() async {
+        await refreshCharacter()
         do {
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
@@ -243,6 +244,16 @@ public final class ChatViewModel {
 
     public func refreshMessages() async {
         await reloadMessages()
+    }
+
+    public func cancelPendingReply() {
+        replyTask?.cancel()
+        replyTask = nil
+        replyCycleID = UUID()
+        replyDeferralDeadline = nil
+        isWaitingForUserBurst = false
+        isStreaming = false
+        streamingText = nil
     }
 
     public func localVoiceFile(for message: MessageDTO) async -> String? {
@@ -614,6 +625,9 @@ public final class ChatViewModel {
             relationshipContext: RelationshipEngine.promptContext(
                 currentCharacter?.relationship ?? character.relationship
             ),
+            growthContext: CharacterGrowthEngine.promptContext(
+                currentCharacter?.growth ?? character.growth
+            ),
             guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
             quizRequested: quizRequested,
             voiceMode: voiceMode,
@@ -776,15 +790,5 @@ public final class ChatViewModel {
     private func reloadMessages() async {
         guard let conversation else { return }
         messages = (try? await deps.chatStore.messages(conversationID: conversation.id)) ?? messages
-    }
-}
-
-enum ChatErrorPresentation {
-    static func assistantReply(_ error: Error) -> String {
-        if let appError = error as? AppError,
-           case .keychain = appError {
-            return "AI 服务暂时无法读取安全凭据，请重新启动应用后重试。"
-        }
-        return error.localizedDescription
     }
 }

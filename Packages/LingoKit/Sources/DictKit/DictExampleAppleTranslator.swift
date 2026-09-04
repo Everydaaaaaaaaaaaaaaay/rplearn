@@ -2,9 +2,8 @@ import Observation
 import SwiftUI
 import Translation
 
-/// 词典例句云端翻译失败时的 Apple 端上翻译兜底。
-/// `TranslationSession` 只能由 SwiftUI 的 `.translationTask` 提供，
-/// 因此用请求队列把它桥接为按句调用的 async 接口。
+/// Server translation remains authoritative. This coordinator only supplies a
+/// sentence-level, on-device fallback when the server cannot return a result.
 @MainActor
 @Observable
 final class DictExampleAppleTranslator {

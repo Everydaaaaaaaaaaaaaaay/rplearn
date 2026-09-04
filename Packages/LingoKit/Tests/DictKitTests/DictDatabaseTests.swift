@@ -88,6 +88,53 @@ struct DictDatabaseTests {
         #expect(groups[1].synonymText == "≈ make · prepare")
     }
 
+    @Test("中文释义只按顶层中英文逗号和分号拆分")
+    func topLevelMeaningSplitPreservesNestedParentheses() {
+        #expect(
+            DictDisplayText.splitTopLevelMeanings("配偶, 对手，助手；（象棋，将死）")
+                == ["配偶", "对手", "助手", "（象棋，将死）"]
+        )
+        #expect(
+            DictDisplayText.splitTopLevelMeanings("A（内，含）；B (x, y), C")
+                == ["A（内，含）", "B (x, y)", "C"]
+        )
+    }
+
+    @Test("mate 例句在多义名词翻译完成前只显示词性")
+    func mateExamplesDoNotDisplayAllNounMeanings() {
+        let entry = DictEntry(
+            word: "mate",
+            translation: "n. 配偶, 对手, 助手, （象棋，将死）",
+            senses: [
+                DictSense(
+                    rank: 1,
+                    partOfSpeech: "n",
+                    definition: "a fellow member of a team",
+                    examples: ["He was my first mate."],
+                    synonyms: []
+                ),
+                DictSense(
+                    rank: 2,
+                    partOfSpeech: "n",
+                    definition: "a spouse",
+                    examples: ["She introduced her mate."],
+                    synonyms: []
+                ),
+            ]
+        )
+
+        let examples = DictUsageExamplePolicy.groups(
+            for: entry,
+            requestedWord: "mate",
+            contextText: nil
+        ).flatMap(\.examples)
+
+        #expect(examples.count == 2)
+        #expect(examples.allSatisfy { $0.annotation == "（n.）" })
+        #expect(examples.allSatisfy { $0.candidateMeaningsZhHans == ["配偶", "对手", "助手", "（象棋，将死）"] })
+        #expect(examples.allSatisfy { $0.senseID != nil && $0.lemma == "mate" && $0.partOfSpeech == "n" })
+    }
+
     @Test("英文回退释义恢复续行并把词性显示为中文")
     func fallbackEnglishDefinitionsAreStructured() {
         let groups = DictSenseDisplayPolicy.fallbackGroups(
@@ -121,6 +168,30 @@ struct DictDatabaseTests {
                 DictExampleTranslationRequest(sentence: "   \n ")
             ) == nil
         )
+
+        let contextual = await DictExampleTranslationActions { _ in
+            DictExampleTranslation(
+                sentenceZhHans: "  这是译文。 ",
+                contextualMeaningZhHans: "  配偶  "
+            )
+        }.translate(DictExampleTranslationRequest(sentence: "Mate."))
+        #expect(contextual?.sentenceZhHans == "这是译文。")
+        #expect(contextual?.contextualMeaningZhHans == "配偶")
+    }
+
+    @Test("服务端例句翻译失败时只用系统翻译补齐整句")
+    func exampleTranslationActionsFallBackToSystemSentenceTranslation() async {
+        let fallback = DictExampleTranslationActions { _ in nil }
+            .fallingBackToSentenceTranslation { sentence in
+                sentence == "Fancy a coffee?" ? "想喝杯咖啡吗？" : nil
+            }
+
+        let translated = await fallback.translate(
+            DictExampleTranslationRequest(sentence: "Fancy a coffee?")
+        )
+
+        #expect(translated?.sentenceZhHans == "想喝杯咖啡吗？")
+        #expect(translated?.contextualMeaningZhHans == nil)
     }
 
     @Test("例句括号内词义只取本地中文释义")
@@ -154,6 +225,40 @@ struct DictDatabaseTests {
         #expect(results.1?.sentenceZh == "译：How are you?")
         #expect(cached?.sentenceZh == "译：How are you?")
         #expect(await counter.count() == 1)
+    }
+
+    @Test("不同 WordNet sense 不共享例句翻译缓存")
+    func exampleTranslationCacheSeparatesSenses() async {
+        let cache = DictExampleTranslationCache()
+        let counter = TranslationInvocationCounter()
+        let actions = DictExampleTranslationActions { request in
+            await counter.increment()
+            return DictExampleTranslation(
+                sentenceZhHans: "译：\(request.sentence)",
+                contextualMeaningZhHans: request.stableSenseId
+            )
+        }
+        let first = DictExampleTranslationRequest(
+            sentence: "They mate in spring.",
+            lemma: "mate",
+            partOfSpeech: "n",
+            candidateMeaningsZhHans: ["配偶", "对手"],
+            stableSenseId: "mate-n-1"
+        )
+        let second = DictExampleTranslationRequest(
+            sentence: first.sentence,
+            lemma: first.lemma,
+            partOfSpeech: first.partOfSpeech,
+            candidateMeaningsZhHans: first.candidateMeaningsZhHans,
+            stableSenseId: "mate-n-2"
+        )
+
+        async let firstResult = cache.translation(for: first, using: actions)
+        async let secondResult = cache.translation(for: second, using: actions)
+        let results = await (firstResult, secondResult)
+        #expect(results.0?.contextualMeaningZhHans == "mate-n-1")
+        #expect(results.1?.contextualMeaningZhHans == "mate-n-2")
+        #expect(await counter.count() == 2)
     }
 
     @Test("例句优先保留当前语境并按词性适量分组")
@@ -225,7 +330,8 @@ struct DictDatabaseTests {
         )
         let verbGroup = groups.first { $0.partOfSpeechLabel == "动词" }
 
-        #expect(verbGroup?.examples.first?.annotation == "（v. 把...装管, 使通过管子）")
+        #expect(verbGroup?.examples.first?.annotation == "（v.）")
+        #expect(verbGroup?.examples.first?.candidateMeaningsZhHans == ["把...装管", "使通过管子"])
         #expect(verbGroup?.examples.contains { $0.annotation == "（v. 管）" } == false)
         #expect(DictPartOfSpeechDisplay.labelsAreCompatible("动词", "及物动词"))
         #expect(DictPartOfSpeechDisplay.labelsAreCompatible("动词", "不及物动词"))
@@ -245,16 +351,11 @@ struct DictDatabaseTests {
         let verbExamples = try #require(
             groups.first { $0.partOfSpeechLabel == "动词" }?.examples
         )
-        let localMeaning = try #require(
-            entry.meaningGroups.first {
-                $0.partOfSpeech.map {
-                    DictPartOfSpeechDisplay.labelsAreCompatible("动词", $0)
-                } ?? false
-            }?.meaning
-        )
-
-        #expect(verbExamples.allSatisfy { $0.annotation == "（v. \(localMeaning)）" })
-        #expect(!verbExamples.map(\.annotation).joined().contains("convey in a tube"))
+        #expect(verbExamples.allSatisfy { $0.annotation == "（v.）" })
+        #expect(verbExamples.allSatisfy { $0.senseID != nil })
+        #expect(verbExamples.allSatisfy { !$0.definitionEn!.isEmpty })
+        #expect(verbExamples.first?.translationRequest.stableSenseId == verbExamples.first?.senseID)
+        #expect(verbExamples.first?.translationRequest.candidateMeaningsZhHans.isEmpty == false)
     }
 
     @Test("单一词性无论义项多少最多显示两条例句")
@@ -299,10 +400,7 @@ struct DictDatabaseTests {
             "London can be overwhelming on day one.",
             "An overwhelming need for solitude.",
         ])
-        #expect(groups[0].examples.map(\.annotation) == [
-            "（adj. 压倒性的, 无法抵抗的）",
-            "（adj. 压倒性的, 无法抵抗的）",
-        ])
+        #expect(groups[0].examples.map(\.annotation) == ["（adj.）", "（adj.）"])
     }
 
     @Test("原句候选返回固定搭配但不覆盖单词主释义")

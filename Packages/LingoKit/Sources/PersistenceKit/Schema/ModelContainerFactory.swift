@@ -2,30 +2,34 @@ import Foundation
 import SwiftData
 
 public enum ModelContainerFactory {
-    /// 当前开发期只有一个数据基线；若基线变化导致旧测试库无法打开，则重置本 App 的本地库。
-    ///
-    /// 首次正式发布前应移除这条回退路径，改为显式迁移计划。
+    /// 使用显式版本计划打开本地库。迁移失败时保留原始数据库并向上抛错，绝不静默删库。
     public static func makeContainer(inMemory: Bool = false) throws -> ModelContainer {
         let schema = Schema(versionedSchema: LingoSchema.self)
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
         do {
-            return try ModelContainer(for: schema, configurations: [configuration])
+            return try ModelContainer(
+                for: schema,
+                migrationPlan: LingoMigrationPlan.self,
+                configurations: [configuration]
+            )
         } catch {
-            guard !inMemory else { throw error }
-            try resetDevelopmentStore(at: configuration.url)
+            // Some development builds wrote the current lightweight schema before a formal
+            // migration plan existed, so those stores have no version checksum known to the
+            // staged migrator. SwiftData can still open/migrate them automatically. This
+            // fallback never removes or rewrites the source files on failure.
             return try ModelContainer(for: schema, configurations: [configuration])
         }
     }
+}
 
-    private static func resetDevelopmentStore(at storeURL: URL) throws {
-        let fileManager = FileManager.default
-        let storePaths = [
-            storeURL.path,
-            storeURL.path + "-shm",
-            storeURL.path + "-wal",
+public enum LingoMigrationPlan: SchemaMigrationPlan {
+    public static var schemas: [any VersionedSchema.Type] {
+        [LingoSchemaV1.self, LingoSchema.self]
+    }
+
+    public static var stages: [MigrationStage] {
+        [
+            .lightweight(fromVersion: LingoSchemaV1.self, toVersion: LingoSchema.self),
         ]
-        for path in storePaths where fileManager.fileExists(atPath: path) {
-            try fileManager.removeItem(atPath: path)
-        }
     }
 }

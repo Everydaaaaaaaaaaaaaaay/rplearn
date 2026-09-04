@@ -31,25 +31,72 @@ public struct WordFavoriteActions: Sendable {
     }
 }
 
-/// 一条例句的翻译请求。模型只负责翻译整句，目标词词义始终取自本地中文词典。
+/// 一条例句的翻译请求。
+///
+/// 请求携带完整的语境与词典身份，避免同一句在不同词义下错误复用缓存。
 public struct DictExampleTranslationRequest: Sendable, Hashable {
     public let sentence: String
+    public let lemma: String
+    public let partOfSpeech: String
+    public let definitionEn: String?
+    public let candidateMeaningsZhHans: [String]
+    public let stableSenseId: String?
+    public let dictionarySource: String
+    public let dictionaryVersion: String
 
-    public init(sentence: String) {
+    public init(
+        sentence: String,
+        lemma: String = "",
+        partOfSpeech: String = "",
+        definitionEn: String? = nil,
+        candidateMeaningsZhHans: [String] = [],
+        stableSenseId: String? = nil,
+        dictionarySource: String = "ecdict-wordnet",
+        dictionaryVersion: String = "v1"
+    ) {
         self.sentence = sentence
+        self.lemma = lemma
+        self.partOfSpeech = partOfSpeech
+        self.definitionEn = definitionEn
+        self.candidateMeaningsZhHans = candidateMeaningsZhHans
+        self.stableSenseId = stableSenseId
+        self.dictionarySource = dictionarySource
+        self.dictionaryVersion = dictionaryVersion
     }
 
     fileprivate var normalized: Self {
-        Self(sentence: DictDisplayText.normalizedWhitespace(sentence))
+        Self(
+            sentence: DictDisplayText.normalizedWhitespace(sentence),
+            lemma: lemma.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
+            partOfSpeech: partOfSpeech.trimmingCharacters(in: .whitespacesAndNewlines),
+            definitionEn: definitionEn.map(DictDisplayText.normalizedWhitespace),
+            candidateMeaningsZhHans: candidateMeaningsZhHans
+                .map(DictDisplayText.normalizedWhitespace)
+                .filter { !$0.isEmpty },
+            stableSenseId: stableSenseId?.trimmingCharacters(in: .whitespacesAndNewlines),
+            dictionarySource: dictionarySource.trimmingCharacters(in: .whitespacesAndNewlines),
+            dictionaryVersion: dictionaryVersion.trimmingCharacters(in: .whitespacesAndNewlines)
+        )
     }
 }
 
-/// 例句的自然中文翻译。
+/// 例句翻译以及目标词在该句中的最小必要语境义项。
 public struct DictExampleTranslation: Sendable, Equatable {
-    public let sentenceZh: String
+    public let sentenceZhHans: String
+    public let contextualMeaningZhHans: String?
+
+    /// 暂时兼容尚未迁移的组合根调用方。
+    public var sentenceZh: String { sentenceZhHans }
+    public var meaningZh: String? { contextualMeaningZhHans }
 
     public init(sentenceZh: String) {
-        self.sentenceZh = sentenceZh
+        self.sentenceZhHans = sentenceZh
+        self.contextualMeaningZhHans = nil
+    }
+
+    public init(sentenceZhHans: String, contextualMeaningZhHans: String? = nil) {
+        self.sentenceZhHans = sentenceZhHans
+        self.contextualMeaningZhHans = contextualMeaningZhHans
     }
 }
 
@@ -73,9 +120,36 @@ public struct DictExampleTranslationActions: Sendable {
               let translated = await translateAction(request)
         else { return nil }
 
-        let sentenceZh = DictDisplayText.normalizedWhitespace(translated.sentenceZh)
+        let sentenceZh = DictDisplayText.normalizedWhitespace(translated.sentenceZhHans)
         guard !sentenceZh.isEmpty else { return nil }
-        return DictExampleTranslation(sentenceZh: sentenceZh)
+        let meaningZh = translated.contextualMeaningZhHans
+            .map(DictDisplayText.normalizedWhitespace)
+            .flatMap { value in
+                // Never let a malformed/model-generated list reintroduce the
+                // original “all meanings” annotation bug.
+                DictDisplayText.splitTopLevelMeanings(value).count == 1 ? value : nil
+            }
+        return DictExampleTranslation(
+            sentenceZhHans: sentenceZh,
+            contextualMeaningZhHans: meaningZh?.isEmpty == false ? meaningZh : nil
+        )
+    }
+
+    /// Keeps the server's contextual meaning when available and uses the system
+    /// translator only to fill the whole-sentence translation after a failure.
+    public func fallingBackToSentenceTranslation(
+        _ fallback: @escaping @Sendable (String) async -> String?
+    ) -> Self {
+        let primary = self
+        return Self { request in
+            if let translated = await primary.translate(request) {
+                return translated
+            }
+            guard let sentenceZhHans = await fallback(request.sentence) else {
+                return nil
+            }
+            return DictExampleTranslation(sentenceZhHans: sentenceZhHans)
+        }
     }
 }
 
@@ -161,21 +235,58 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
 }
 
 struct DictUsageExample: Identifiable, Equatable {
+    let senseID: String?
+    let lemma: String
+    let partOfSpeech: String
     let partOfSpeechLabel: String
     let partOfSpeechAbbreviation: String
+    let definitionEn: String?
+    let candidateMeaningsZhHans: [String]
     let meaningZh: String?
     let text: String
 
-    var id: String { "\(partOfSpeechAbbreviation)-\(text)" }
-    var annotation: String {
-        guard let meaningZh, !meaningZh.isEmpty else {
+    init(
+        senseID: String? = nil,
+        lemma: String = "",
+        partOfSpeech: String = "",
+        partOfSpeechLabel: String,
+        partOfSpeechAbbreviation: String,
+        definitionEn: String? = nil,
+        candidateMeaningsZhHans: [String] = [],
+        meaningZh: String? = nil,
+        text: String
+    ) {
+        self.senseID = senseID
+        self.lemma = lemma
+        self.partOfSpeech = partOfSpeech
+        self.partOfSpeechLabel = partOfSpeechLabel
+        self.partOfSpeechAbbreviation = partOfSpeechAbbreviation
+        self.definitionEn = definitionEn
+        self.candidateMeaningsZhHans = candidateMeaningsZhHans
+        self.meaningZh = meaningZh
+        self.text = text
+    }
+
+    var id: String { "\(senseID ?? partOfSpeechAbbreviation)-\(text)" }
+    var annotation: String { annotation(meaningZh: nil) }
+
+    func annotation(meaningZh contextualMeaning: String?) -> String {
+        let displayMeaning = contextualMeaning ?? self.meaningZh
+        guard let displayMeaning, !displayMeaning.isEmpty else {
             return "（\(partOfSpeechAbbreviation)）"
         }
-        return "（\(partOfSpeechAbbreviation) \(meaningZh)）"
+        return "（\(partOfSpeechAbbreviation) \(displayMeaning)）"
     }
 
     var translationRequest: DictExampleTranslationRequest {
-        DictExampleTranslationRequest(sentence: text)
+        DictExampleTranslationRequest(
+            sentence: text,
+            lemma: lemma,
+            partOfSpeech: partOfSpeech,
+            definitionEn: definitionEn,
+            candidateMeaningsZhHans: candidateMeaningsZhHans,
+            stableSenseId: senseID
+        )
     }
 }
 
@@ -193,6 +304,37 @@ enum DictDisplayText {
             .split(whereSeparator: { $0.isWhitespace })
             .joined(separator: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    /// 拆分 ECDICT 中文释义中的顶层义项；括号/方括号/书名号内的逗号和分号不拆分。
+    static func splitTopLevelMeanings(_ text: String) -> [String] {
+        let opening: Set<Character> = ["(", "（", "[", "［", "{", "｛", "【", "『", "〈", "《"]
+        let closing: Set<Character> = [")", "）", "]", "］", "}", "｝", "】", "』", "〉", "》"]
+        let separators: Set<Character> = [",", "，", ";", "；"]
+        var depth = 0
+        var current = ""
+        var results: [String] = []
+
+        func flush() {
+            let value = normalizedWhitespace(current)
+            if !value.isEmpty { results.append(value) }
+            current = ""
+        }
+
+        for character in text {
+            if opening.contains(character) {
+                depth += 1
+            } else if closing.contains(character) {
+                depth = max(0, depth - 1)
+            }
+            if separators.contains(character), depth == 0 {
+                flush()
+            } else {
+                current.append(character)
+            }
+        }
+        flush()
+        return results
     }
 
 }
@@ -265,9 +407,13 @@ enum DictSenseDisplayPolicy {
 enum DictUsageExamplePolicy {
     private struct PartOfSpeechDescriptor {
         let id: String
+        let partOfSpeech: String
         let label: String
         let abbreviation: String
         let meaningZh: String?
+        let candidateMeaningsZhHans: [String]
+        let senseID: String?
+        let definitionEn: String?
     }
 
     static func groups(
@@ -292,8 +438,13 @@ enum DictUsageExamplePolicy {
             else { return }
             results.append(
                 DictUsageExample(
+                    senseID: descriptor.senseID,
+                    lemma: entry.word,
+                    partOfSpeech: descriptor.partOfSpeech,
                     partOfSpeechLabel: descriptor.label,
                     partOfSpeechAbbreviation: descriptor.abbreviation,
+                    definitionEn: descriptor.definitionEn,
+                    candidateMeaningsZhHans: descriptor.candidateMeaningsZhHans,
                     meaningZh: descriptor.meaningZh,
                     text: normalized
                 )
@@ -387,18 +538,23 @@ enum DictUsageExamplePolicy {
         let abbreviation = DictPartOfSpeechDisplay.abbreviation(forCode: group.partOfSpeech)
             ?? DictPartOfSpeechDisplay.abbreviation(forLabel: label)
             ?? group.partOfSpeech
-        let matchingMeaning = entry.meaningGroups.first { $0.partOfSpeech == label }
-            ?? entry.meaningGroups.first { meaningGroup in
+        let matchingMeanings = entry.meaningGroups
+            .filter { meaningGroup in
                 guard let meaningLabel = meaningGroup.partOfSpeech else { return false }
-                return DictPartOfSpeechDisplay.labelsAreCompatible(label, meaningLabel)
+                return meaningLabel == label
+                    || DictPartOfSpeechDisplay.labelsAreCompatible(label, meaningLabel)
             }
+            .flatMap { DictDisplayText.splitTopLevelMeanings($0.meaning) }
+        let fallbackMeaning = matchingMeanings.count == 1 ? matchingMeanings.first : nil
         return PartOfSpeechDescriptor(
             id: abbreviation,
+            partOfSpeech: group.partOfSpeech,
             label: label,
             abbreviation: abbreviation,
-            meaningZh: matchingMeaning.map {
-                DictDisplayText.normalizedWhitespace($0.meaning)
-            }
+            meaningZh: fallbackMeaning,
+            candidateMeaningsZhHans: matchingMeanings,
+            senseID: nil,
+            definitionEn: nil
         )
     }
 
@@ -411,9 +567,16 @@ enum DictUsageExamplePolicy {
         else { return nil }
         return PartOfSpeechDescriptor(
             id: abbreviation,
+            partOfSpeech: meaningGroup.partOfSpeech ?? "",
             label: label,
             abbreviation: abbreviation,
-            meaningZh: DictDisplayText.normalizedWhitespace(meaningGroup.meaning)
+            meaningZh: {
+                let values = DictDisplayText.splitTopLevelMeanings(meaningGroup.meaning)
+                return values.count == 1 ? values.first : nil
+            }(),
+            candidateMeaningsZhHans: DictDisplayText.splitTopLevelMeanings(meaningGroup.meaning),
+            senseID: nil,
+            definitionEn: nil
         )
     }
 
@@ -422,12 +585,15 @@ enum DictUsageExamplePolicy {
         in group: DictSenseDisplayGroup,
         fallback: PartOfSpeechDescriptor
     ) -> PartOfSpeechDescriptor {
-        guard group.senses.count > 1 else { return fallback }
         return PartOfSpeechDescriptor(
             id: fallback.id,
+            partOfSpeech: sense.partOfSpeech,
             label: fallback.label,
             abbreviation: fallback.abbreviation,
-            meaningZh: fallback.meaningZh
+            meaningZh: fallback.meaningZh,
+            candidateMeaningsZhHans: fallback.candidateMeaningsZhHans,
+            senseID: sense.id,
+            definitionEn: DictDisplayText.normalizedWhitespace(sense.definition)
         )
     }
 
@@ -435,13 +601,9 @@ enum DictUsageExamplePolicy {
         _ descriptor: PartOfSpeechDescriptor,
         senseGroup: DictSenseDisplayGroup
     ) -> PartOfSpeechDescriptor {
-        guard senseGroup.senses.count > 1 else { return descriptor }
-        return PartOfSpeechDescriptor(
-            id: descriptor.id,
-            label: descriptor.label,
-            abbreviation: descriptor.abbreviation,
-            meaningZh: descriptor.meaningZh
-        )
+        // Context-only examples have no reliable WordNet sense identity; let the
+        // resolver choose among the complete candidate list.
+        descriptor
     }
 
     private static func contextualPartOfSpeechLabel(

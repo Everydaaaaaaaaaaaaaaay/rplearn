@@ -6,6 +6,7 @@ if [[ "${EUID}" -ne 0 ]]; then
   exit 1
 fi
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 archive="${1:?Usage: deploy.sh RELEASE_ARCHIVE [VERSION]}"
 version="${2:-$(tar -xOf "${archive}" ./RELEASE | tr -d '\r\n')}"
 release_root="${RELEASE_ROOT:-/opt/lingotrip/releases}"
@@ -91,7 +92,7 @@ set +a
   "${runtime_node}" dist/cli/migrate.js
 )
 DATABASE_ADMIN_MODE=local-peer \
-  /opt/lingotrip/backend/ops/native-server/apply-database-permissions.sh
+  "${script_dir}/apply-database-permissions.sh"
 
 previous="$(readlink -f /opt/lingotrip/current 2>/dev/null || true)"
 previous_version="$(sed -n 's/^APP_VERSION=//p' "${release_environment}" | tail -n 1)"

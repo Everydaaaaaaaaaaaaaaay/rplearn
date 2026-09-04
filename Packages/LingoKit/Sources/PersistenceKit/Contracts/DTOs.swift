@@ -18,6 +18,15 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     /// 背景故事补充。
     public var background: String?
     public var avatarAssetName: String?
+    /// 服务端头像库中的稳定标识与下载地址。已分配后不随同步重新匹配。
+    public var avatarID: String?
+    public var avatarRemoteURL: String?
+    public var signature: String?
+    /// 角色设定中的月日或完整 ISO 日期；虚构资料不与用户隐私混用。
+    public var birthday: String?
+    public var hometown: String?
+    public var languages: [String]?
+    public var personaVoice: PersonaVoiceProfile?
 
     public init(
         name: String,
@@ -31,7 +40,14 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         personality: String,
         speechStyle: String? = nil,
         background: String? = nil,
-        avatarAssetName: String? = nil
+        avatarAssetName: String? = nil,
+        avatarID: String? = nil,
+        avatarRemoteURL: String? = nil,
+        signature: String? = nil,
+        birthday: String? = nil,
+        hometown: String? = nil,
+        languages: [String]? = nil,
+        personaVoice: PersonaVoiceProfile? = nil
     ) {
         self.name = name
         self.age = age
@@ -45,6 +61,13 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         self.speechStyle = speechStyle
         self.background = background
         self.avatarAssetName = avatarAssetName
+        self.avatarID = avatarID
+        self.avatarRemoteURL = avatarRemoteURL
+        self.signature = signature
+        self.birthday = birthday
+        self.hometown = hometown
+        self.languages = languages
+        self.personaVoice = personaVoice
     }
 
     public func encodedJSON() -> String {
@@ -69,6 +92,11 @@ public struct CharacterDTO: Sendable, Equatable, Identifiable {
     public var metAt: Date
     public var isFavorite: Bool
     public var relationship: RelationshipSnapshot
+    public var travelerID: String
+    public var publicIdentityRegistered: Bool
+    public var contactStatus: ContactStatus
+    public var contactPreferences: ContactPreferences
+    public var growth: CharacterGrowthSnapshot
 
     public init(
         id: UUID,
@@ -78,7 +106,12 @@ public struct CharacterDTO: Sendable, Equatable, Identifiable {
         isFriend: Bool,
         metAt: Date,
         isFavorite: Bool = false,
-        relationship: RelationshipSnapshot = .initial
+        relationship: RelationshipSnapshot = .initial,
+        travelerID: String? = nil,
+        publicIdentityRegistered: Bool = false,
+        contactStatus: ContactStatus? = nil,
+        contactPreferences: ContactPreferences = ContactPreferences(),
+        growth: CharacterGrowthSnapshot = .initial
     ) {
         self.id = id
         self.card = card
@@ -88,6 +121,16 @@ public struct CharacterDTO: Sendable, Equatable, Identifiable {
         self.metAt = metAt
         self.isFavorite = isFavorite
         self.relationship = relationship
+        self.travelerID = travelerID ?? TravelerIDGenerator.make(from: id)
+        self.publicIdentityRegistered = publicIdentityRegistered
+        self.contactStatus = contactStatus ?? (isFriend ? .friend : .candidate)
+        self.contactPreferences = contactPreferences
+        self.growth = growth
+    }
+
+    public var displayName: String {
+        let remark = contactPreferences.remarkName?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return remark?.isEmpty == false ? remark! : card.name
     }
 }
 
@@ -162,6 +205,8 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
     public var lastSummarizedMessageIndex: Int
     public var isEncounterSession: Bool
     public var isArchived: Bool
+    public var isPinned: Bool
+    public var lastReadAt: Date?
 
     public init(
         id: UUID,
@@ -173,7 +218,9 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
         quizOptOut: Bool,
         lastSummarizedMessageIndex: Int,
         isEncounterSession: Bool,
-        isArchived: Bool
+        isArchived: Bool,
+        isPinned: Bool = false,
+        lastReadAt: Date? = nil
     ) {
         self.id = id
         self.characterID = characterID
@@ -185,6 +232,8 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
         self.lastSummarizedMessageIndex = lastSummarizedMessageIndex
         self.isEncounterSession = isEncounterSession
         self.isArchived = isArchived
+        self.isPinned = isPinned
+        self.lastReadAt = lastReadAt
     }
 }
 

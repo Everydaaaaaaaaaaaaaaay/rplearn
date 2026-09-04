@@ -2,6 +2,7 @@ import CoreKit
 import DesignSystem
 import DictKit
 import DomainKit
+import Foundation
 import LLMKit
 import PersistenceKit
 import SpeechKit
@@ -125,7 +126,12 @@ struct EncounterCardSheet: View {
                 Circle()
                     .stroke(tint.opacity(0.25), lineWidth: 1)
                     .frame(width: 94, height: 94)
-                AvatarBadge(name: card.name, size: 82)
+                AvatarBadge(
+                    name: card.name,
+                    size: 82,
+                    imageName: card.avatarAssetName,
+                    remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:))
+                )
             }
 
             Label(rarityLabel, systemImage: rarityIcon)
@@ -290,6 +296,29 @@ struct EncounterCardSheet: View {
                 )
                 Haptics.notify(.success)
                 friendMessage = "已加入好友，以后随时可以在消息里找到 TA"
+                if let registry = deps.npcRegistry {
+                    if presentation.character.publicIdentityRegistered {
+                        try? await registry.linkPublicNPC(
+                            npcID: presentation.character.id,
+                            localCharacterID: presentation.character.id,
+                            status: .friend
+                        )
+                    } else if let registered = try? await registry.registerPublicNPC(
+                        id: presentation.character.id,
+                        card: PublicNPCAdapter.backendCard(from: presentation.character.card)
+                    ) {
+                        try? await deps.rosterStore.applyPublicIdentity(
+                            characterID: presentation.character.id,
+                            travelerID: registered.travelerId,
+                            card: PublicNPCAdapter.characterCard(from: registered)
+                        )
+                        try? await registry.linkPublicNPC(
+                            npcID: registered.id,
+                            localCharacterID: presentation.character.id,
+                            status: .friend
+                        )
+                    }
+                }
             } catch RosterStore.RosterError.friendSlotsFull {
                 if let friendSlotLimit {
                     friendSlotsOccupied = friendSlotLimit

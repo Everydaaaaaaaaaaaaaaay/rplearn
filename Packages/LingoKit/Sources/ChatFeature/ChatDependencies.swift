@@ -1,3 +1,4 @@
+import BackendKit
 import CoreKit
 import DictKit
 import DomainKit
@@ -23,6 +24,7 @@ public struct ChatDependencies: Sendable {
     public let economyStore: EconomyStore
     public let progression: any ProgressionRewardGateway
     public let voiceMedia: VoiceMediaCoordinator
+    public let npcRegistry: (any PublicNPCRegistry)?
 
     public init(
         chatStore: ChatStore,
@@ -39,7 +41,8 @@ public struct ChatDependencies: Sendable {
         itemStore: ItemStore,
         economyStore: EconomyStore,
         progression: any ProgressionRewardGateway,
-        voiceMedia: VoiceMediaCoordinator
+        voiceMedia: VoiceMediaCoordinator,
+        npcRegistry: (any PublicNPCRegistry)? = nil
     ) {
         self.chatStore = chatStore
         self.rosterStore = rosterStore
@@ -56,5 +59,6 @@ public struct ChatDependencies: Sendable {
         self.economyStore = economyStore
         self.progression = progression
         self.voiceMedia = voiceMedia
+        self.npcRegistry = npcRegistry
     }
 }

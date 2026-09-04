@@ -55,14 +55,16 @@ public struct EncounterService: Sendable {
         origin: Origin,
         region: Region,
         userLevel: DifficultyLevel,
-        existingNames: Set<String>
+        existingNames: Set<String>,
+        activityContext: String? = nil
     ) async -> Encounter {
         for _ in 0..<2 {
             if let generated = try? await generateOnce(
                 origin: origin,
                 region: region,
                 userLevel: userLevel,
-                existingNames: existingNames
+                existingNames: existingNames,
+                activityContext: activityContext
             ) {
                 return generated
             }
@@ -82,18 +84,34 @@ public struct EncounterService: Sendable {
         var speechStyle: String
         var background: String
         var openingLine: String
+        var signature: String?
+        var birthday: String?
+        var hometown: String?
+        var languages: [String]?
+        var values: [String]?
+        var flaws: [String]?
+        var conversationalHabits: [String]?
+        var boundaries: [String]?
+        var anchorLines: [String]?
     }
 
     private func generateOnce(
         origin: Origin,
         region: Region,
         userLevel: DifficultyLevel,
-        existingNames: Set<String>
+        existingNames: Set<String>,
+        activityContext: String?
     ) async throws -> Encounter {
         let request = LLMRequest(
             task: .characterGeneration,
             tier: .balanced,
-            system: Self.generationPrompt(origin: origin, region: region, userLevel: userLevel, existingNames: existingNames),
+            system: Self.generationPrompt(
+                origin: origin,
+                region: region,
+                userLevel: userLevel,
+                existingNames: existingNames,
+                activityContext: activityContext
+            ),
             messages: [.user("Generate one character now.")],
             maxTokens: 900,
             temperature: 1.0,
@@ -128,7 +146,18 @@ public struct EncounterService: Sendable {
             appearance: generated.appearance,
             personality: generated.personality,
             speechStyle: generated.speechStyle,
-            background: generated.background
+            background: generated.background,
+            signature: generated.signature,
+            birthday: generated.birthday,
+            hometown: generated.hometown,
+            languages: generated.languages,
+            personaVoice: PersonaVoiceProfile(
+                values: generated.values ?? [],
+                flaws: generated.flaws ?? [],
+                conversationalHabits: generated.conversationalHabits ?? [],
+                boundaries: generated.boundaries ?? [],
+                anchorLines: generated.anchorLines ?? []
+            )
         )
         return Encounter(card: card, openingLine: generated.openingLine, origin: origin, isFallback: false)
     }
@@ -143,7 +172,8 @@ public struct EncounterService: Sendable {
         origin: Origin,
         region: Region,
         userLevel: DifficultyLevel,
-        existingNames: Set<String>
+        existingNames: Set<String>,
+        activityContext: String? = nil
     ) -> String {
         let originRule = switch origin {
         case .local:
@@ -156,9 +186,14 @@ public struct EncounterService: Sendable {
         let namesRule = existingNames.isEmpty
             ? ""
             : "Do NOT use these names: \(existingNames.sorted().joined(separator: ", "))."
+        let meetingRule = activityContext.map {
+            "The meeting happens during this activity: \($0). The occupation, routine or interests should make the presence plausible, and opening_line must fit this exact moment."
+        } ?? "The meeting happens during an ordinary local activity."
         return """
         You create a believable stranger the user bumps into in \(region.nameEn) \
         (\(region.countryNameEn)). \(originRule)
+
+        \(meetingRule)
 
         Requirements:
         - Diverse and specific: a real-feeling occupation, 3-4 concrete hobbies, distinctive \
@@ -170,6 +205,10 @@ public struct EncounterService: Sendable {
         - The user is a Chinese English learner at level: \(PromptBuilder.languageGuidance(for: userLevel))
         - opening_line: the character's first casual words to the user in English \
         (they just met during an activity), matching that level. 1-2 sentences, friendly, natural.
+        - Add a short personal signature, birthday (MM-DD), hometown and spoken languages.
+        - Define a stable voice bible: 2-4 values, 1-2 human flaws, 3-5 observable conversational habits, \
+        1-3 boundaries, and 4 short anchor lines covering ordinary talk, awkwardness, disagreement and care. \
+        These must all express the same personality and speech style. Write these fields in English.
         - gender is one of: male / female / other.
         Respond with JSON only.
         """
@@ -189,6 +228,15 @@ public struct EncounterService: Sendable {
             "speech_style": ["type": "string"],
             "background": ["type": "string"],
             "opening_line": ["type": "string"],
+            "signature": ["type": "string"],
+            "birthday": ["type": "string"],
+            "hometown": ["type": "string"],
+            "languages": ["type": "array", "items": ["type": "string"]],
+            "values": ["type": "array", "items": ["type": "string"]],
+            "flaws": ["type": "array", "items": ["type": "string"]],
+            "conversational_habits": ["type": "array", "items": ["type": "string"]],
+            "boundaries": ["type": "array", "items": ["type": "string"]],
+            "anchor_lines": ["type": "array", "items": ["type": "string"]],
         ],
         "required": [
             "name", "age", "gender", "nationality", "occupation", "hobbies",
@@ -218,7 +266,22 @@ public struct EncounterService: Sendable {
             appearance: "friendly face, casual clothes",
             personality: "easygoing, chatty, curious about people",
             speechStyle: "casual and simple",
-            background: "Has lived around \(region.nameEn) for a few years and knows the area well."
+            background: "Has lived around \(region.nameEn) for a few years and knows the area well.",
+            signature: "Good stories usually start with taking the long way home.",
+            hometown: region.nameEn,
+            languages: ["English"],
+            personaVoice: PersonaVoiceProfile(
+                values: ["curiosity", "fairness"],
+                flaws: ["sometimes acts before thinking"],
+                conversationalHabits: ["uses short casual sentences", "asks one concrete question", "gently jokes about small mishaps"],
+                boundaries: ["does not pressure friends to disclose"],
+                anchorLines: [
+                    "Okay, that was definitely not my smoothest idea.",
+                    "Wait, really? Tell me the short version.",
+                    "I don't quite agree, but I get where you're coming from.",
+                    "Hey, you don't have to solve everything tonight.",
+                ]
+            )
         )
         return Encounter(
             card: card,

@@ -22,6 +22,7 @@ public enum PromptBuilder {
         learner: LearnerContext,
         memorySections: [String] = [],
         relationshipContext: String? = nil,
+        growthContext: String? = nil,
         guidance: String? = nil,
         quizRequested: Bool = false,
         voiceMode: Bool = false
@@ -40,11 +41,28 @@ public enum PromptBuilder {
             """
         )
 
+        if let voice = card.personaVoice {
+            let anchors = voice.anchorLines.prefix(5).map { "- \($0)" }.joined(separator: "\n")
+            sections.append(
+                """
+                ## Stable character voice
+                Values: \(voice.values.prefix(6).joined(separator: ", "))
+                Imperfections: \(voice.flaws.prefix(4).joined(separator: ", "))
+                Conversational habits: \(voice.conversationalHabits.prefix(6).joined(separator: ", "))
+                Boundaries: \(voice.boundaries.prefix(5).joined(separator: ", "))
+                Example lines that demonstrate rhythm and attitude (do not copy them verbatim):
+                \(anchors)
+                Keep this recognizable voice across ordinary, awkward, supportive and disagreeing situations.
+                """
+            )
+        }
+
         sections.append(
             """
             ## Roleplay rules
             - You are \(voiceMode ? "talking live with" : "chatting in a mobile messaging app with") a Chinese friend who is learning English.
-            - Stay in character at all times. Never mention that you are an AI, a language model, or an assistant.
+            - Stay in character at all times. The interface already identifies you as a fictional AI travel companion. \
+            Do not bring this up unprompted, but if the friend directly asks, answer honestly without dropping your personality.
             - You have your own life, moods and opinions. Refer to your daily life naturally.
             - Never use the user's language for whole replies: always reply in English. If the user writes in Chinese, \
             react naturally (you may know a few words), answer in simple English, and keep the conversation going.
@@ -119,6 +137,9 @@ public enum PromptBuilder {
         if let relationshipContext, !relationshipContext.isEmpty {
             sections.append(relationshipContext)
         }
+        if let growthContext, !growthContext.isEmpty {
+            sections.append(growthContext)
+        }
         sections.append(contentsOf: memorySections)
         if voiceMode {
             sections.append(
@@ -191,6 +212,7 @@ public enum PromptBuilder {
         history: [MessageDTO],
         memorySections: [String] = [],
         relationshipContext: String? = nil,
+        growthContext: String? = nil,
         guidance: String? = nil,
         quizRequested: Bool = false,
         voiceMode: Bool = false,
@@ -205,6 +227,7 @@ public enum PromptBuilder {
                 learner: learner,
                 memorySections: memorySections,
                 relationshipContext: relationshipContext,
+                growthContext: growthContext,
                 guidance: guidance,
                 quizRequested: quizRequested,
                 voiceMode: voiceMode

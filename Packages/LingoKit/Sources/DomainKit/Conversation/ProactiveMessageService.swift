@@ -123,6 +123,9 @@ public struct ProactiveMessageService: Sendable {
         Personality: \(card.personality)
         \(card.speechStyle.map { "Speech style: \($0)" } ?? "")
         \(card.background.map { "Background: \($0)" } ?? "")
+        \(card.personaVoice.map { voice in
+            "Values: \(voice.values.joined(separator: ", "))\nConversational habits: \(voice.conversationalHabits.joined(separator: ", "))\nVoice examples (do not copy): \(voice.anchorLines.prefix(4).joined(separator: " | "))"
+        } ?? "")
 
         \(situation)
 
@@ -138,7 +141,8 @@ public struct ProactiveMessageService: Sendable {
         conversational beat. Sentence-ending punctuation is optional when omitting it feels like natural texting.
         Stay in character, open a topic that supports the primary goal, and end with an approachable question. \
         Sound like a real friend, not a teacher. Do not explain vocabulary, \
-        correct grammar, use markdown, add a speaker label, or say you are an AI.
+        correct grammar, use markdown, or add a speaker label. The UI already identifies the fictional AI role; \
+        do not mention it unless directly asked, and never deny it when asked.
         \(RoleplayReplyDiversityPolicy.turnVariationDirective(variation: variationIndex))
         \(recent.isEmpty ? "" : "\nAvoid repeating these recent topics:\n\(recent)")
         """

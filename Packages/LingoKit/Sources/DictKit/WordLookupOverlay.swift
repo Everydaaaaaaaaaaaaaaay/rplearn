@@ -1,6 +1,5 @@
 import DesignSystem
 import SwiftUI
-import Translation
 
 /// 点词查词浮窗：挂在聊天根视图上。
 /// 被点词经 anchorPreference 上报 bounds，在词上/下方渲染 DictCardView（空间不足自动翻转），
@@ -13,7 +12,6 @@ public struct WordLookupOverlayModifier: ViewModifier {
     let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
     let exampleTranslationActions: DictExampleTranslationActions
-    @State private var appleTranslator = DictExampleAppleTranslator()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public func body(content: Content) -> some View {
@@ -43,7 +41,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 onSpeak: onSpeak,
                                 favoriteActions: favoriteActions,
                                 aiFallback: aiFallback,
-                                exampleTranslationActions: resolvedExampleTranslationActions,
+                                exampleTranslationActions: exampleTranslationActions,
                                 onDismiss: { self.selection = nil }
                             )
                             .id(selection)
@@ -67,30 +65,6 @@ public struct WordLookupOverlayModifier: ViewModifier {
                 }
             }
             .animation(reduceMotion ? .easeOut(duration: 0.15) : DSAnimation.snappy, value: selection)
-            .translationTask(appleTranslator.configuration) { @Sendable session in
-                try? await session.prepareTranslation()
-                for item in await appleTranslator.takeBatch() {
-                    let zh = try? await session.translate(item.text).targetText
-                    await appleTranslator.complete(item.id, with: zh)
-                }
-            }
-    }
-
-    private var resolvedExampleTranslationActions: DictExampleTranslationActions {
-        let remote = exampleTranslationActions
-#if targetEnvironment(simulator)
-        // Translation.framework 不支持模拟器；调用会反复弹出系统错误面板，影响界面验收。
-        return remote
-#else
-        let local = appleTranslator
-        return DictExampleTranslationActions { request in
-            if let translated = await remote.translate(request) {
-                return translated
-            }
-            guard let sentenceZh = await local.translate(request.sentence) else { return nil }
-            return DictExampleTranslation(sentenceZh: sentenceZh)
-        }
-#endif
     }
 }
 

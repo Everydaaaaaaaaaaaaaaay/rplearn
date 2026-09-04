@@ -24,6 +24,7 @@ final class AppEnvironment {
     let authSession: AuthSession
     let billing: BillingController
     let llmRouter: LLMRouter
+    let dictionaryExampleTranslations: BackendDictionaryExampleTranslationResolver
     let dictionary: DictDatabase
     let grammarPoints: GrammarPointStore
     let regionCatalog: RegionCatalog
@@ -92,6 +93,10 @@ final class AppEnvironment {
         )
         self.llmRouter = LLMRouter(
             client: BackendLLMProvider(backend: backendClient, guestID: deviceID)
+        )
+        self.dictionaryExampleTranslations = BackendDictionaryExampleTranslationResolver(
+            backend: backendClient,
+            guestID: deviceID
         )
 
         // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。

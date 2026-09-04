@@ -168,6 +168,36 @@ public final class VoiceMediaUploadEntity {
     }
 }
 
+/// 消息墓碑成功同步后才能执行的远端语音删除任务，避免其他设备先看到悬空引用。
+@Model
+public final class VoiceMediaDeletionEntity {
+    @Attribute(.unique) public var assetID: UUID
+    public var ownerUserID: UUID
+    public var messageID: UUID
+    public var attemptCount: Int
+    public var nextAttemptAt: Date
+    public var lastErrorCode: String?
+    public var createdAt: Date
+
+    public init(
+        assetID: UUID,
+        ownerUserID: UUID,
+        messageID: UUID,
+        attemptCount: Int = 0,
+        nextAttemptAt: Date = .now,
+        lastErrorCode: String? = nil,
+        createdAt: Date = .now
+    ) {
+        self.assetID = assetID
+        self.ownerUserID = ownerUserID
+        self.messageID = messageID
+        self.attemptCount = attemptCount
+        self.nextAttemptAt = nextAttemptAt
+        self.lastErrorCode = lastErrorCode
+        self.createdAt = createdAt
+    }
+}
+
 /// 当前旅程的路线选择。
 @Model
 public final class JourneyStateEntity {

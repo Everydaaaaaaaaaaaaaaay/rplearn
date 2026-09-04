@@ -5,15 +5,22 @@ struct ContentCharacterPayload: Codable {
         let age: Int
         let appearance: String
         let avatarAssetName: String?
+        var avatarId: String? = nil
+        var avatarRemoteUrl: String? = nil
         let background: String?
+        var birthday: String? = nil
         let gender: String
         let hobbies: [String]
+        var hometown: String? = nil
+        var languages: [String]? = nil
         let name: String
         let nationality: String
         let occupation: String
         let personality: String
         let regionId: String
         let speechStyle: String?
+        var signature: String? = nil
+        var personaVoice: PersonaVoiceProfile? = nil
     }
 
     let card: Card
@@ -23,17 +30,27 @@ struct ContentCharacterPayload: Codable {
     let isMainCharacter: Bool
     let metAt: Date
     var relationship: RelationshipSnapshot? = nil
-    var schemaVersion = 1
+    var travelerId: String? = nil
+    var publicIdentityRegistered: Bool? = nil
+    var contactStatus: String? = nil
+    var remarkName: String? = nil
+    var privateNote: String? = nil
+    var proactiveMessagesEnabled: Bool? = nil
+    var mutedUntil: Date? = nil
+    var growth: CharacterGrowthSnapshot? = nil
+    var schemaVersion = 2
 }
 
 struct ContentConversationPayload: Codable {
     let createdAt: Date
     let isArchived: Bool
     let isEncounterSession: Bool
+    var isPinned: Bool? = nil
     let lastMessageAt: Date
+    var lastReadAt: Date? = nil
     let lastSummarizedMessageIndex: Int
     let quizOptOut: Bool
-    var schemaVersion = 1
+    var schemaVersion = 2
     let turnCount: Int
     let turnsSinceQuiz: Int
 }
@@ -70,7 +87,8 @@ struct ContentMemoryPayload: Codable {
     let content: String
     let createdAt: Date
     let importance: Int
-    var schemaVersion = 1
+    var source: String? = nil
+    var schemaVersion = 2
     let sourceUpToIndex: Int
     let tier: String
 }

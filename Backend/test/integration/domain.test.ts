@@ -145,7 +145,13 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const onboardedProfile = onboarding.json<UserSnapshot["profile"]>();
     expect(onboardedProfile.currentRegionId).toBe("melbourne");
     expect(onboardedProfile.starterRegionId).toBe("melbourne");
-    expect(onboardedProfile.unlockedRegionIds).toEqual(["melbourne"]);
+    expect(onboardedProfile.unlockedRegionIds).toEqual([
+      "capetown",
+      "london",
+      "melbourne",
+      "newyork",
+      "singapore",
+    ]);
 
     const profileCommand = newEntityId();
     const profileUpdate = await app.inject({
@@ -194,7 +200,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const noTicket = await app.inject({
       headers: authenticated({ idempotencyKey: newEntityId() }),
       method: "POST",
-      payload: { targetRegionId: "newyork" },
+      payload: { targetRegionId: "toronto" },
       url: "/v1/travel",
     });
     expect(noTicket.statusCode).toBe(409);
@@ -271,7 +277,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       headers: authenticated({ idempotencyKey: travelCommand }),
       method: "POST",
       payload: {
-        targetRegionId: "london",
+        targetRegionId: "toronto",
         ticketId: purchased.ticket.id,
       },
       url: "/v1/travel",
@@ -285,7 +291,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       headers: authenticated({ idempotencyKey: travelCommand }),
       method: "POST",
       payload: {
-        targetRegionId: "london",
+        targetRegionId: "toronto",
         ticketId: purchased.ticket.id,
       },
       url: "/v1/travel",
@@ -320,7 +326,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
           headers: authenticated({ idempotencyKey: newEntityId() }),
           method: "POST",
           payload: {
-            targetRegionId: "newyork",
+            targetRegionId: "sydney",
             ticketId: ticket.id,
           },
           url: "/v1/travel",
@@ -337,20 +343,24 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       url: "/v1/me",
     });
     const finalSnapshot = finalSnapshotResponse.json<UserSnapshot>();
-    expect(finalSnapshot.profile.currentRegionId).toBe("newyork");
+    expect(finalSnapshot.profile.currentRegionId).toBe("sydney");
     expect(finalSnapshot.profile.unlockedRegionIds).toEqual([
-      "melbourne",
+      "capetown",
       "london",
+      "melbourne",
       "newyork",
+      "singapore",
+      "toronto",
+      "sydney",
     ]);
     expect(finalSnapshot.firstArrivals.map((arrival) => arrival.toRegionId)).toEqual([
-      "london",
-      "newyork",
+      "toronto",
+      "sydney",
     ]);
     expect(finalSnapshot.firstArrivals[0]).toMatchObject({
       fromRegionId: "melbourne",
       id: firstTravelResult.travelId,
-      toRegionId: "london",
+      toRegionId: "toronto",
     });
     expect(finalSnapshot.tickets).toHaveLength(2);
 

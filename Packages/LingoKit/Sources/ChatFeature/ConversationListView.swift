@@ -1,4 +1,5 @@
 import DesignSystem
+import Foundation
 import PersistenceKit
 import SwiftUI
 
@@ -11,7 +12,6 @@ public struct ConversationListView: View {
     @State private var isLoading = true
     @State private var searchText = ""
     @State private var isSearchPresented = false
-    @State private var stateRevision = 0
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
     @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
@@ -26,8 +26,8 @@ public struct ConversationListView: View {
             ? rows
             : rows.filter { $0.character.card.name.localizedCaseInsensitiveContains(searchText) }
         return searched.sorted {
-            let lhsPinned = $0.summary.map { ConversationReadState.isPinned($0.conversationID) } ?? false
-            let rhsPinned = $1.summary.map { ConversationReadState.isPinned($0.conversationID) } ?? false
+            let lhsPinned = $0.summary?.isPinned ?? false
+            let rhsPinned = $1.summary?.isPinned ?? false
             if lhsPinned != rhsPinned { return lhsPinned }
             switch ($0.summary, $1.summary) {
             case (.some(let lhs), .some(let rhs)):
@@ -56,8 +56,7 @@ public struct ConversationListView: View {
             .task(id: reloadToken) { await reload() }
             .refreshable { await reload() }
             .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
-                stateRevision += 1
-                updateUnreadCount()
+                Task { await reload() }
             }
             .onReceive(
                 NotificationCenter.default.publisher(for: .rosterFavoriteDidChange)
@@ -66,7 +65,6 @@ public struct ConversationListView: View {
                       let isFavorite = notification.userInfo?["isFavorite"] as? Bool else { return }
                 applyFavoriteChange(characterID: characterID, isFavorite: isFavorite)
             }
-            .onChange(of: stateRevision) { updateUnreadCount() }
             .overlay {
                 if isLoading {
                     ProgressView()
@@ -131,10 +129,7 @@ public struct ConversationListView: View {
                         ForEach(visibleRows) { row in
                             Button {
                                 if let summary = row.summary {
-                                    ConversationReadState.markRead(
-                                        conversationID: summary.conversationID,
-                                        at: summary.lastMessageAt
-                                    )
+                                    markRead(summary)
                                 }
                                 selectedConversationID = row.id
                             } label: {
@@ -161,11 +156,10 @@ public struct ConversationListView: View {
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                 if let conversationID = row.summary?.conversationID {
                                     Button {
-                                        ConversationReadState.togglePinned(conversationID)
-                                        stateRevision += 1
+                                        togglePinned(conversationID)
                                     } label: {
                                         Label(
-                                            ConversationReadState.isPinned(conversationID)
+                                            row.summary?.isPinned == true
                                                 ? "取消置顶"
                                                 : "置顶",
                                             systemImage: "pin.fill"
@@ -177,12 +171,7 @@ public struct ConversationListView: View {
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 if let summary = row.summary {
                                     Button {
-                                        ConversationReadState.markRead(
-                                            conversationID: summary.conversationID,
-                                            at: summary.lastMessageAt
-                                        )
-                                        stateRevision += 1
-                                        updateUnreadCount()
+                                        markRead(summary)
                                     } label: {
                                         Label("标记已读", systemImage: "envelope.open.fill")
                                     }
@@ -203,11 +192,16 @@ public struct ConversationListView: View {
     private func rowLabel(_ row: ConversationListRow) -> some View {
         let unreadCount = unreadCount(row)
         let unread = unreadCount > 0
-        let pinned = row.summary.map { ConversationReadState.isPinned($0.conversationID) } ?? false
+        let pinned = row.summary?.isPinned ?? false
 
         return HStack(spacing: DSSpacing.sm) {
             ZStack(alignment: .topTrailing) {
-                AvatarBadge(name: row.character.card.name, size: 54)
+                AvatarBadge(
+                    name: row.character.displayName,
+                    size: 54,
+                    imageName: row.character.card.avatarAssetName,
+                    remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                )
                     .accessibilityHidden(true)
                 if unread {
                     Text(unreadCount > 99 ? "99+" : "\(unreadCount)")
@@ -225,7 +219,7 @@ public struct ConversationListView: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    Text(row.character.card.name)
+                    Text(row.character.displayName)
                         .font(.headline.weight(.bold))
                         .foregroundStyle(Color.dsSceneTextPrimary)
                         .lineLimit(1)
@@ -307,12 +301,7 @@ public struct ConversationListView: View {
     }
 
     private func unreadCount(_ row: ConversationListRow) -> Int {
-        row.summary.map {
-            ConversationReadState.unreadCount(
-                conversationID: $0.conversationID,
-                assistantMessageDates: $0.assistantMessageDates
-            )
-        } ?? 0
+        row.summary?.unreadCount ?? 0
     }
 
     private func summaryText(_ summary: ConversationSummaryDTO) -> String {
@@ -359,11 +348,50 @@ public struct ConversationListView: View {
     private func updateUnreadCount() {
         persistedUnreadCount = rows.reduce(into: 0) { total, row in
             guard let summary = row.summary else { return }
-            total += ConversationReadState.unreadCount(
-                conversationID: summary.conversationID,
-                assistantMessageDates: summary.assistantMessageDates
-            )
+            total += summary.unreadCount
         }
+    }
+
+    private func markRead(_ summary: ConversationSummaryDTO) {
+        updateSummary(summary.conversationID) { value in
+            value.lastReadAt = max(value.lastReadAt ?? .distantPast, value.lastMessageAt)
+        }
+        updateUnreadCount()
+        Task {
+            try? await deps.chatStore.markRead(
+                conversationID: summary.conversationID,
+                at: summary.lastMessageAt
+            )
+            ConversationReadState.notifyChange()
+        }
+    }
+
+    private func togglePinned(_ conversationID: UUID) {
+        guard let current = rows.compactMap(\.summary).first(where: {
+            $0.conversationID == conversationID
+        }) else { return }
+        let next = !current.isPinned
+        updateSummary(conversationID) { $0.isPinned = next }
+        Task {
+            try? await deps.chatStore.setPinned(conversationID: conversationID, isPinned: next)
+            ConversationReadState.notifyChange()
+        }
+    }
+
+    private func updateSummary(
+        _ conversationID: UUID,
+        mutate: (inout ConversationSummaryDTO) -> Void
+    ) {
+        guard let index = rows.firstIndex(where: {
+            $0.summary?.conversationID == conversationID
+        }), var summary = rows[index].summary else { return }
+        mutate(&summary)
+        let row = rows[index]
+        rows[index] = ConversationListRow(
+            character: row.character,
+            friendOrder: row.friendOrder,
+            summary: summary
+        )
     }
 }
 

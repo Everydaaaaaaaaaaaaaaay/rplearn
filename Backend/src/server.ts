@@ -33,6 +33,11 @@ import { registerHttpAbuseProtection } from "./modules/abuse/http-limiter.js";
 import { createMediaObjectStore } from "./modules/media/object-store.js";
 import { registerMediaRoutes } from "./modules/media/routes.js";
 import { createMediaService } from "./modules/media/service.js";
+import { registerNpcRoutes } from "./modules/npc/routes.js";
+import { createNpcService } from "./modules/npc/service.js";
+import { registerDictionaryTranslationRoutes } from "./modules/dictionary-translation/routes.js";
+import { registerDictionaryTranslationAdminRoutes } from "./modules/dictionary-translation/admin-routes.js";
+import { createDictionaryTranslationService } from "./modules/dictionary-translation/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -110,11 +115,34 @@ async function main(): Promise<void> {
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: config.aiGuestAccessEnabled,
   });
+  const dictionaryTranslationService = createDictionaryTranslationService(
+    config,
+    dependencies.database,
+    dependencies.redis,
+    {
+      resolveRuntimeModelVersion: async () => {
+        const route = await aiService.routeIdentity("dictionary_example_translation");
+        return `${route.model}@config-${String(route.configVersion)}`;
+      },
+    },
+  );
+  registerDictionaryTranslationRoutes(
+    app,
+    authService,
+    dictionaryTranslationService,
+    config.aiGuestAccessEnabled ? { resolveGuestUser: aiService.resolveGuestUser } : {},
+  );
   if (config.adminApiEnabled) {
+    const authenticateAdmin = createAdminAuthenticator(config.adminApiKeys);
     registerAiAdminRoutes(
       app,
-      createAdminAuthenticator(config.adminApiKeys),
+      authenticateAdmin,
       createAiConfigService(config, dependencies.database),
+    );
+    registerDictionaryTranslationAdminRoutes(
+      app,
+      authenticateAdmin,
+      dictionaryTranslationService,
     );
   }
   const domainService = createDomainService(dependencies.database);
@@ -128,6 +156,7 @@ async function main(): Promise<void> {
     syncCursor,
   );
   registerContentRoutes(app, authService, contentService);
+  registerNpcRoutes(app, authService, createNpcService(dependencies.database));
   if (mediaObjectStore !== undefined) {
     registerMediaRoutes(
       app,

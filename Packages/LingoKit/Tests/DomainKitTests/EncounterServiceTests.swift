@@ -1,3 +1,4 @@
+import BackendKit
 import Foundation
 import LLMKit
 import Testing
@@ -16,6 +17,12 @@ struct EncounterServiceTests {
     "occupation":"florist","hobbies":["园艺","骑行"],"appearance":"red coat",
     "personality":"warm, a bit forgetful","speech_style":"soft and quick",
     "background":"Runs a flower stall near the market. Loves rainy days.",
+    "signature":"Flowers remember the weather.","birthday":"04-19",
+    "hometown":"Brighton","languages":["English","French"],
+    "values":["kindness","craft"],"flaws":["sometimes forgetful"],
+    "conversational_habits":["notices small details","uses gentle humour"],
+    "boundaries":["does not mock sincere questions"],
+    "anchor_lines":["Give me a second, love.","I see your point, honestly."],
     "opening_line":"Oh! Sorry, mind the buckets - are you lost, love?"}
     """
 
@@ -49,6 +56,8 @@ struct EncounterServiceTests {
         #expect(encounter.card.name == "Poppy Hale")
         #expect(encounter.card.regionID == "london")
         #expect(encounter.card.hobbies == ["园艺", "骑行"])
+        #expect(encounter.card.signature == "Flowers remember the weather.")
+        #expect(encounter.card.personaVoice?.values == ["kindness", "craft"])
         #expect(encounter.openingLine.contains("Sorry"))
     }
 
@@ -101,10 +110,62 @@ struct EncounterServiceTests {
     @Test("生成提示词包含来源约束与姓名去重")
     func promptContent() {
         let prompt = EncounterService.generationPrompt(
-            origin: .domestic, region: region, userLevel: .junior3, existingNames: ["A", "B"]
+            origin: .domestic,
+            region: region,
+            userLevel: .junior3,
+            existingNames: ["A", "B"],
+            activityContext: "Browsing a weekend food market"
         )
         #expect(prompt.contains("ANOTHER city"))
         #expect(prompt.contains("Do NOT use these names: A, B"))
         #expect(prompt.contains("Simplified Chinese UI tag"))
+        #expect(prompt.contains("weekend food market"))
+        #expect(prompt.contains("stable voice bible"))
+    }
+
+    @Test("公共身份转换只搬运稳定人物卡并保留永久头像")
+    func publicIdentityRoundTrip() throws {
+        let local = CharacterCard(
+            name: "Nora Hale",
+            age: 29,
+            gender: .female,
+            nationality: "British",
+            regionID: "london",
+            occupation: "radio producer",
+            hobbies: ["逛周末市场"],
+            appearance: "green jacket",
+            personality: "curious and candid",
+            speechStyle: "short concrete questions",
+            background: "Collects neighborhood stories.",
+            signature: "Every street has a story.",
+            birthday: "04-18",
+            hometown: "Bristol",
+            languages: ["English"],
+            personaVoice: PersonaVoiceProfile(
+                values: ["curiosity"],
+                flaws: ["impatient"],
+                conversationalHabits: ["asks follow-up questions"],
+                boundaries: ["does not pressure people"],
+                anchorLines: ["Give me the short version."]
+            )
+        )
+        let id = UUID()
+        let backendCard = PublicNPCAdapter.backendCard(from: local)
+        let remote = BackendPublicNPC(
+            avatar: BackendPublicNPC.Avatar(
+                id: UUID(),
+                url: try #require(URL(string: "https://cdn.example.com/nora.webp"))
+            ),
+            card: backendCard,
+            createdAt: "2026-09-02T00:00:00.000Z",
+            id: id,
+            travelerId: "12345678903"
+        )
+        let restored = PublicNPCAdapter.characterCard(from: remote)
+
+        #expect(restored.name == local.name)
+        #expect(restored.personaVoice == local.personaVoice)
+        #expect(restored.avatarID == remote.avatar?.id.uuidString.lowercased())
+        #expect(restored.avatarRemoteURL == "https://cdn.example.com/nora.webp")
     }
 }

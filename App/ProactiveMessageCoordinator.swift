@@ -128,7 +128,7 @@ final class ProactiveMessageCoordinator {
     private func ensureInitialMessages(learner: LearnerContext) async -> Bool {
         guard let friends = try? await rosterStore.friends() else { return false }
         var insertedAny = false
-        for character in friends {
+        for character in friends where character.contactPreferences.proactiveMessagesEnabled {
             let recentMessages = (try? await chatStore.recentMessages(
                 characterID: character.id
             )) ?? []
@@ -185,7 +185,8 @@ final class ProactiveMessageCoordinator {
                 continue
             }
             guard let character = try? await rosterStore.character(id: message.characterID),
-                  character.isFriend
+                  character.isFriend,
+                  character.contactPreferences.proactiveMessagesEnabled
             else {
                 materializedIDs.append(message.notificationIdentifier)
                 continue
@@ -216,6 +217,8 @@ final class ProactiveMessageCoordinator {
         learner: LearnerContext
     ) async -> [PendingMessage] {
         guard var friends = try? await rosterStore.friends(), !friends.isEmpty else { return [] }
+        friends = friends.filter(\CharacterDTO.contactPreferences.proactiveMessagesEnabled)
+        guard !friends.isEmpty else { return [] }
         var pending = existing
             .sorted { $0.dueAt < $1.dueAt }
         friends.shuffle()
@@ -277,6 +280,11 @@ final class ProactiveMessageCoordinator {
         let baseBadge = await currentUnreadCount()
         defaults.set(baseBadge, forKey: Self.unreadCountKey)
         for (index, message) in pending.sorted(by: { $0.dueAt < $1.dueAt }).enumerated() {
+            guard let character = try? await rosterStore.character(id: message.characterID),
+                  character.isFriend,
+                  character.contactPreferences.proactiveMessagesEnabled,
+                  !character.contactPreferences.isMuted(at: message.dueAt)
+            else { continue }
             let content = UNMutableNotificationContent()
             content.title = message.characterName
             content.body = message.text

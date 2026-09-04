@@ -146,21 +146,47 @@ public actor VoiceMediaCoordinator {
 
         while !Task.isCancelled {
             guard currentUserID == userID else { return }
-            let upload: PendingVoiceMediaUpload
+            let upload: PendingVoiceMediaUpload?
             do {
-                guard let next = try await queueStore.next(ownerUserID: userID) else {
-                    return
-                }
-                upload = next
+                upload = try await queueStore.next(ownerUserID: userID)
             } catch {
                 return
             }
+            guard let upload else { break }
             do {
                 try await process(upload)
             } catch {
                 let delay = min(300, 5 * (1 << min(upload.attemptCount, 6)))
                 try? await queueStore.fail(
                     assetID: upload.assetID,
+                    errorCode: Self.safeErrorCode(error),
+                    retryAt: .now.addingTimeInterval(TimeInterval(delay))
+                )
+                scheduleRetry(after: delay)
+                return
+            }
+        }
+
+        while !Task.isCancelled {
+            guard currentUserID == userID else { return }
+            let deletion: PendingVoiceMediaDeletion?
+            do {
+                deletion = try await queueStore.nextDeletion(ownerUserID: userID)
+            } catch {
+                return
+            }
+            guard let deletion else { return }
+            do {
+                try await backend.deleteVoiceMedia(assetID: deletion.assetID)
+                try await queueStore.completeDeletion(assetID: deletion.assetID)
+            } catch {
+                if Self.isAlreadyDeleted(error) {
+                    try? await queueStore.completeDeletion(assetID: deletion.assetID)
+                    continue
+                }
+                let delay = min(300, 5 * (1 << min(deletion.attemptCount, 6)))
+                try? await queueStore.failDeletion(
+                    assetID: deletion.assetID,
                     errorCode: Self.safeErrorCode(error),
                     retryAt: .now.addingTimeInterval(TimeInterval(delay))
                 )
@@ -354,6 +380,14 @@ public actor VoiceMediaCoordinator {
             }
         }
         return error is URLError
+    }
+
+    private static func isAlreadyDeleted(_ error: Error) -> Bool {
+        guard let backend = error as? BackendClientError else { return false }
+        if case .api(_, _, _, let status) = backend {
+            return status == 404 || status == 410
+        }
+        return false
     }
 }
 

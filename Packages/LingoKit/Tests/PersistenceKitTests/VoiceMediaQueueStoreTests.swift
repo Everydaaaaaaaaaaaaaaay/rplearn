@@ -106,6 +106,63 @@ struct VoiceMediaQueueStoreTests {
         #expect(try await queue.pendingCount(ownerUserID: secondOwner) == 1)
     }
 
+    @Test("远端删除严格等待消息墓碑同步完成")
+    func deletionWaitsForMessageTombstone() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let chat = ChatStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        let sync = ContentSyncStore(modelContainer: container)
+        let queue = VoiceMediaQueueStore(modelContainer: container)
+        let userID = UUID()
+        try await sync.activateOwner(userID: userID)
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let message = try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            kind: .voice,
+            text: "Delete me",
+            audioFileName: "delete.caf",
+            audioDuration: 1
+        )
+        let assetID = UUID()
+        try await chat.stageVoiceMediaUpload(
+            pending(assetID: assetID, messageID: message.id, ownerUserID: userID)
+        )
+        #expect(try await chat.markVoiceMediaReady(messageID: message.id, assetID: assetID))
+
+        try await acknowledgeAll(sync)
+        _ = try await chat.clearConversationHistory(characterID: characterID)
+
+        #expect(try await queue.pendingDeletionCount(ownerUserID: userID) == 1)
+        #expect(try await queue.nextDeletion(ownerUserID: userID) == nil)
+
+        try await acknowledgeAll(sync)
+        let deletion = try #require(try await queue.nextDeletion(ownerUserID: userID))
+        #expect(deletion.assetID == assetID)
+        #expect(deletion.messageID == message.id)
+        try await queue.completeDeletion(assetID: assetID)
+        #expect(try await queue.pendingDeletionCount(ownerUserID: userID) == 0)
+    }
+
+    private func acknowledgeAll(_ sync: ContentSyncStore) async throws {
+        for mutation in try await sync.takePending(limit: 100) {
+            try await sync.complete(
+                commandID: mutation.commandID,
+                record: RemoteContentRecord(
+                    createdAt: .now,
+                    deletedAt: mutation.operation == .delete ? .now : nil,
+                    parentID: mutation.parentID,
+                    payloadJSON: mutation.payloadJSON ?? "{}",
+                    resourceID: mutation.resourceID,
+                    resourceType: mutation.resourceType,
+                    updatedAt: .now,
+                    version: mutation.expectedVersion + 1
+                )
+            )
+        }
+    }
+
     private func pending(
         assetID: UUID,
         messageID: UUID,

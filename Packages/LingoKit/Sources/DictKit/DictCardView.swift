@@ -1,6 +1,7 @@
 import CoreKit
 import DesignSystem
 import SwiftUI
+import Translation
 
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
 public struct DictCardView: View {
@@ -26,6 +27,7 @@ public struct DictCardView: View {
     @State private var isEnglishExpanded = false
     @State private var exampleTranslations: [String: DictExampleTranslation] = [:]
     @State private var translatingExampleIDs: Set<String> = []
+    @State private var appleTranslator = DictExampleAppleTranslator()
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -70,7 +72,7 @@ public struct DictCardView: View {
                 )
             }
             .frame(width: DictCardLayout.width)
-            .scrollIndicators(.hidden)
+            .scrollIndicators(.visible)
         }
         .frame(width: DictCardLayout.width)
         .frame(maxHeight: DictCardLayout.maximumHeight)
@@ -88,6 +90,13 @@ public struct DictCardView: View {
         .shadow(color: .black.opacity(0.14), radius: 14, y: 6)
         .task(id: path) {
             await loadCurrentTarget()
+        }
+        .translationTask(appleTranslator.configuration) { @Sendable session in
+            try? await session.prepareTranslation()
+            for item in await appleTranslator.takeBatch() {
+                let sentenceZhHans = try? await session.translate(item.text).targetText
+                await appleTranslator.complete(item.id, with: sentenceZhHans)
+            }
         }
         .accessibilityAction(named: "关闭释义") {
             onDismiss?()
@@ -221,13 +230,21 @@ public struct DictCardView: View {
             if !entry.senses.isEmpty || !entry.fallbackEnglishDefinitions.isEmpty {
                 englishDisclosureSection(entry)
             }
+            // In chat, the sentence the learner just tapped is more useful than
+            // related phrases. Keep its contextual meaning and translation above
+            // the fold instead of hiding them in the scrollable tail of the card.
+            if contextText != nil {
+                usageExampleSection(entry, requestedWord: word)
+            }
             if !contextualPhrases.isEmpty || !relatedPhrases.isEmpty {
                 phraseSection(
                     contextual: path.count == 1 ? contextualPhrases : [],
                     related: relatedPhrases
                 )
             }
-            usageExampleSection(entry, requestedWord: word)
+            if contextText == nil {
+                usageExampleSection(entry, requestedWord: word)
+            }
             if !entry.wordForms.isEmpty {
                 wordFormsSection(entry)
             }
@@ -411,13 +428,14 @@ public struct DictCardView: View {
 
     private func tappableExampleText(
         _ example: DictUsageExample,
-        contextID: String
+        contextID: String,
+        contextualMeaningZhHans: String? = nil
     ) -> some View {
         var tokens = TokenCache.tokens(for: example.text, cacheKey: contextID)
         tokens.append(
             TextToken(
                 id: tokens.count,
-                display: " \(example.annotation)",
+                display: " \(example.annotation(meaningZh: contextualMeaningZhHans))",
                 word: nil
             )
         )
@@ -466,7 +484,9 @@ public struct DictCardView: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     tappableExampleText(
                                         example,
-                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)"
+                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)",
+                                        contextualMeaningZhHans: exampleTranslations[example.id]?
+                                            .contextualMeaningZhHans
                                     )
                                     .font(.subheadline)
                                     .lineSpacing(1)
@@ -485,20 +505,20 @@ public struct DictCardView: View {
     @ViewBuilder
     private func exampleTranslationText(_ example: DictUsageExample) -> some View {
         if let translation = exampleTranslations[example.id] {
-            Text(translation.sentenceZh)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            Text(translation.sentenceZhHans)
+                .font(.caption.weight(.medium))
+                .foregroundStyle(Color.primary.opacity(0.62))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
-                .accessibilityLabel("中文翻译：\(translation.sentenceZh)")
+                .accessibilityLabel("中文翻译：\(translation.sentenceZhHans)")
         } else if translatingExampleIDs.contains(example.id) {
             HStack(spacing: 5) {
                 ProgressView()
                     .controlSize(.mini)
-                Text("正在翻译…")
+                Text("中文翻译：加载中…")
             }
-            .font(.caption2)
-            .foregroundStyle(.tertiary)
+            .font(.caption)
+            .foregroundStyle(Color.primary.opacity(0.62))
             .accessibilityElement(children: .combine)
         } else {
             Button("翻译暂不可用，点击重试") {
@@ -506,7 +526,7 @@ public struct DictCardView: View {
             }
             .font(.caption2)
             .buttonStyle(.plain)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.primary.opacity(0.62))
         }
     }
 
@@ -687,13 +707,17 @@ public struct DictCardView: View {
         .flatMap(\.examples)
         guard !examples.isEmpty else { return }
 
+        let translationActions = exampleTranslationActions
+            .fallingBackToSentenceTranslation { [appleTranslator] sentence in
+                await appleTranslator.translate(sentence)
+            }
         translatingExampleIDs = Set(examples.map(\.id))
         await withTaskGroup(of: (String, DictExampleTranslation?).self) { group in
             for example in examples {
                 group.addTask {
                     let translated = await DictExampleTranslationCache.shared.translation(
                         for: example.translationRequest,
-                        using: exampleTranslationActions
+                        using: translationActions
                     )
                     return (example.id, translated)
                 }
@@ -713,11 +737,15 @@ public struct DictCardView: View {
 
     private func translateExample(_ example: DictUsageExample) {
         guard !translatingExampleIDs.contains(example.id) else { return }
+        let translationActions = exampleTranslationActions
+            .fallingBackToSentenceTranslation { [appleTranslator] sentence in
+                await appleTranslator.translate(sentence)
+            }
         translatingExampleIDs.insert(example.id)
         Task {
             let translated = await DictExampleTranslationCache.shared.translation(
                 for: example.translationRequest,
-                using: exampleTranslationActions
+                using: translationActions
             )
             translatingExampleIDs.remove(example.id)
             if let translated {

@@ -35,6 +35,14 @@ public struct PendingVoiceMediaUpload: Sendable, Equatable {
     }
 }
 
+public struct PendingVoiceMediaDeletion: Sendable, Equatable {
+    public let assetID: UUID
+    public let attemptCount: Int
+    public let messageID: UUID
+    public let nextAttemptAt: Date
+    public let ownerUserID: UUID
+}
+
 @ModelActor
 public actor VoiceMediaQueueStore {
     public func enqueue(_ upload: PendingVoiceMediaUpload) throws {
@@ -101,9 +109,76 @@ public actor VoiceMediaQueueStore {
         )
     }
 
+    /// 仅当消息的内容同步 Outbox 已清空时返回删除任务，确保墓碑先于二进制删除。
+    public func nextDeletion(
+        ownerUserID: UUID,
+        now: Date = .now
+    ) throws -> PendingVoiceMediaDeletion? {
+        let candidates = try modelContext.fetch(
+            FetchDescriptor<VoiceMediaDeletionEntity>(
+                predicate: #Predicate {
+                    $0.ownerUserID == ownerUserID && $0.nextAttemptAt <= now
+                },
+                sortBy: [SortDescriptor(\.nextAttemptAt), SortDescriptor(\.createdAt)]
+            )
+        )
+        for candidate in candidates {
+            let resourceID = candidate.messageID.uuidString.lowercased()
+            let pending = try modelContext.fetchCount(
+                FetchDescriptor<ContentOutboxEntity>(
+                    predicate: #Predicate {
+                        $0.ownerUserID == ownerUserID
+                            && $0.resourceTypeRaw == "message"
+                            && $0.resourceID == resourceID
+                    }
+                )
+            )
+            if pending == 0 {
+                return PendingVoiceMediaDeletion(
+                    assetID: candidate.assetID,
+                    attemptCount: candidate.attemptCount,
+                    messageID: candidate.messageID,
+                    nextAttemptAt: candidate.nextAttemptAt,
+                    ownerUserID: candidate.ownerUserID
+                )
+            }
+        }
+        return nil
+    }
+
+    public func completeDeletion(assetID: UUID) throws {
+        guard let entity = try deletion(assetID: assetID) else { return }
+        modelContext.delete(entity)
+        try modelContext.save()
+    }
+
+    public func failDeletion(assetID: UUID, errorCode: String, retryAt: Date) throws {
+        guard let entity = try deletion(assetID: assetID) else { return }
+        entity.attemptCount += 1
+        entity.lastErrorCode = String(errorCode.prefix(100))
+        entity.nextAttemptAt = retryAt
+        try modelContext.save()
+    }
+
+    public func pendingDeletionCount(ownerUserID: UUID) throws -> Int {
+        try modelContext.fetchCount(
+            FetchDescriptor<VoiceMediaDeletionEntity>(
+                predicate: #Predicate { $0.ownerUserID == ownerUserID }
+            )
+        )
+    }
+
     private func entity(assetID: UUID) throws -> VoiceMediaUploadEntity? {
         try modelContext.fetch(
             FetchDescriptor<VoiceMediaUploadEntity>(
+                predicate: #Predicate { $0.assetID == assetID }
+            )
+        ).first
+    }
+
+    private func deletion(assetID: UUID) throws -> VoiceMediaDeletionEntity? {
+        try modelContext.fetch(
+            FetchDescriptor<VoiceMediaDeletionEntity>(
                 predicate: #Predicate { $0.assetID == assetID }
             )
         ).first

@@ -138,4 +138,91 @@ struct RosterStoreTests {
         )
         #expect(try await store.character(id: id)?.relationship.affinity == 24)
     }
+
+    @Test("旅伴号稳定、带校验位并支持精确查找")
+    func travelerIDIsStableAndSearchable() async throws {
+        let store = try makeStore()
+        let id = try await store.addCharacter(
+            card: sampleCard(name: "Traveler ID"),
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let character = try #require(try await store.character(id: id))
+
+        #expect(character.travelerID == TravelerIDGenerator.make(from: id))
+        #expect(TravelerIDGenerator.isValid(character.travelerID))
+        #expect(try await store.character(travelerID: character.travelerID)?.id == id)
+        #expect(try await store.character(travelerID: "00000000000") == nil)
+    }
+
+    @Test("移除好友保留资料，主线重建不会静默加回，用户可主动恢复")
+    func removedMainCharacterRequiresExplicitRestore() async throws {
+        let store = try makeStore()
+        var card = sampleCard(name: "Oliver")
+        card.avatarAssetName = "avatar_oliver"
+        try await store.importMainCharactersIfNeeded(cards: [card])
+        try await store.configureMainCharacters(unlockedRegionIDs: ["london"], difficulty: .junior3)
+        let id = try #require(try await store.friends().first?.id)
+
+        try await store.removeFriend(characterID: id)
+        #expect(try await store.friends().isEmpty)
+        #expect(try await store.formerContacts().map(\.id) == [id])
+
+        try await store.configureMainCharacters(unlockedRegionIDs: ["london"], difficulty: .advanced)
+        let stillRemoved = try #require(try await store.character(id: id))
+        #expect(!stillRemoved.isFriend)
+        #expect(stillRemoved.contactStatus == .removed)
+        #expect(stillRemoved.difficultyLevel == .advanced)
+
+        try await store.makeFriend(characterID: id, slotLimit: 0)
+        let restored = try #require(try await store.character(id: id))
+        #expect(restored.isFriend)
+        #expect(restored.contactStatus == .friend)
+        #expect(try await store.formerContacts().isEmpty)
+    }
+
+    @Test("联系人私有偏好与人格成长独立持久化")
+    func privatePreferencesAndGrowthPersist() async throws {
+        let store = try makeStore()
+        let id = try await store.addCharacter(
+            card: sampleCard(name: "Private Branch"),
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let mutedUntil = Date.now.addingTimeInterval(3_600)
+        try await store.updateContactPreferences(
+            characterID: id,
+            preferences: ContactPreferences(
+                remarkName: "  小书商  ",
+                privateNote: "  喜欢旧书店  ",
+                proactiveMessagesEnabled: false,
+                mutedUntil: mutedUntil
+            )
+        )
+        let arc = CharacterGrowthArc(
+            trait: .patience,
+            direction: .increase,
+            progress: 0.2,
+            stage: .experimenting,
+            reasonZh: "开始先听完别人的想法"
+        )
+        _ = try await store.mutateGrowth(characterID: id) { current in
+            CharacterGrowthSnapshot(revision: current.revision + 1, arcs: [arc])
+        }
+
+        let character = try #require(try await store.character(id: id))
+        #expect(character.displayName == "小书商")
+        #expect(character.contactPreferences.privateNote == "喜欢旧书店")
+        #expect(!character.contactPreferences.proactiveMessagesEnabled)
+        #expect(character.contactPreferences.mutedUntil == mutedUntil)
+        let storedArc = try #require(character.growth.arcs.first)
+        #expect(character.growth.arcs.count == 1)
+        #expect(storedArc.id == arc.id)
+        #expect(storedArc.trait == arc.trait)
+        #expect(storedArc.direction == arc.direction)
+        #expect(storedArc.progress == arc.progress)
+        #expect(storedArc.stage == arc.stage)
+        #expect(storedArc.reasonZh == arc.reasonZh)
+        #expect(character.card.personality == "witty")
+    }
 }

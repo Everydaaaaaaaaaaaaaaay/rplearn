@@ -1,3 +1,4 @@
+import BackendKit
 import CoreKit
 import DesignSystem
 import DictKit
@@ -17,6 +18,7 @@ public struct ActivitiesView: View {
     @State private var localCompanion: CharacterDTO?
     @State private var selectedCategory: Region.ActivityCategory?
     @State private var isRollingID: String?
+    @State private var explorationProgress: ActivityExplorationPresentation?
     @State private var activityMoment: ActivityMomentPresentation?
     @State private var encounterResult: EncounterPresentation?
 
@@ -77,6 +79,14 @@ public struct ActivitiesView: View {
                 encounterResult = nil
             }
         }
+        .overlay {
+            if let explorationProgress {
+                ActivityExplorationOverlay(presentation: explorationProgress)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
+                    .zIndex(10)
+            }
+        }
+        .animation(DSAnimation.snappy, value: explorationProgress?.id)
     }
 
     private func cityHero(_ region: Region) -> some View {
@@ -428,15 +438,21 @@ public struct ActivitiesView: View {
         guard isRollingID == nil else { return }
         Haptics.impact(.light)
         isRollingID = activity.id
+        explorationProgress = ActivityExplorationPresentation(activity: activity, region: region)
 
         Task {
             defer { isRollingID = nil }
+            let minimumJourney = Task {
+                try? await Task.sleep(for: minimumExplorationDuration)
+            }
             let companion = localCompanion
             await recordSharedActivity(activity, companion: companion)
             guard EncounterService.shouldEncounter(
                 roll: .random(in: 0..<1),
                 probability: activity.encounterProbability
             ) else {
+                await minimumJourney.value
+                await hideExplorationProgress()
                 Haptics.notify(.success)
                 activityMoment = ActivityMomentPresentation(
                     activity: activity,
@@ -453,13 +469,34 @@ public struct ActivitiesView: View {
                 origin: origin,
                 region: region,
                 userLevel: currentProfile?.difficultyLevel ?? .junior3,
-                existingNames: names
+                existingNames: names,
+                activityContext: "\(activity.category.rawValue): \(activity.titleZh). \(activity.detailZh)"
             )
+            let generatedCharacterID = UUID()
+            var publicCard = encounter.card
+            var publicTravelerID: String?
+            if let registry = deps.npcRegistry {
+                do {
+                    let registered = try await registry.registerPublicNPC(
+                        id: generatedCharacterID,
+                        card: PublicNPCAdapter.backendCard(from: encounter.card)
+                    )
+                    publicCard = PublicNPCAdapter.characterCard(from: registered)
+                    publicTravelerID = registered.travelerId
+                } catch {
+                    // 游客或离线时继续使用同一 UUID 的端侧稳定旅伴号；登录联网后不阻断偶遇。
+                    Log.app.info("公共 NPC 登记暂不可用，使用端侧身份：\(String(describing: type(of: error)))")
+                }
+            }
             guard let characterID = try? await deps.rosterStore.addCharacter(
-                card: encounter.card,
+                characterID: generatedCharacterID,
+                travelerID: publicTravelerID,
+                card: publicCard,
                 difficulty: currentProfile?.difficultyLevel ?? .junior3,
                 isFriend: false
             ) else {
+                await minimumJourney.value
+                await hideExplorationProgress()
                 activityMoment = ActivityMomentPresentation(
                     activity: activity,
                     region: region,
@@ -478,18 +515,43 @@ public struct ActivitiesView: View {
                     tokenEstimate: TokenEstimator.estimate(encounter.openingLine)
                 )
             }
-            if let character = try? await deps.rosterStore.character(id: characterID) {
-                Haptics.notify(.success)
-                encounterResult = EncounterPresentation(
-                    character: character,
-                    openingLine: encounter.openingLine,
-                    origin: encounter.origin,
+            guard let character = try? await deps.rosterStore.character(id: characterID) else {
+                await minimumJourney.value
+                await hideExplorationProgress()
+                activityMoment = ActivityMomentPresentation(
                     activity: activity,
                     region: region,
                     companionName: companion?.card.name
                 )
+                return
             }
+            await minimumJourney.value
+            await hideExplorationProgress()
+            Haptics.notify(.success)
+            encounterResult = EncounterPresentation(
+                character: character,
+                openingLine: encounter.openingLine,
+                origin: encounter.origin,
+                activity: activity,
+                region: region,
+                companionName: companion?.card.name
+            )
         }
+    }
+
+    private var minimumExplorationDuration: Duration {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment.keys.contains(where: { $0.hasPrefix("UI_TEST_") }) {
+            return .milliseconds(300)
+        }
+        #endif
+        return .seconds(8)
+    }
+
+    @MainActor
+    private func hideExplorationProgress() async {
+        explorationProgress = nil
+        try? await Task.sleep(for: .milliseconds(180))
     }
 
     private func loadContext() async {
@@ -567,5 +629,90 @@ public struct ActivitiesView: View {
                 result.unicodeScalars.append(value)
             }
         }
+    }
+}
+
+private struct ActivityExplorationPresentation: Identifiable, Equatable {
+    let id = UUID()
+    let activity: Region.Activity
+    let region: Region
+    let startedAt = Date.now
+
+    static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
+}
+
+private struct ActivityExplorationOverlay: View {
+    let presentation: ActivityExplorationPresentation
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private let statusMessages = [
+        "沿着路线探索城市",
+        "留意身边发生的小事",
+        "这一程的结果还没有揭晓",
+    ]
+
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.34)
+                .ignoresSafeArea()
+
+            VStack(spacing: DSSpacing.lg) {
+                ZStack {
+                    Circle()
+                        .fill(presentation.activity.category.tint.opacity(0.14))
+                        .frame(width: 92, height: 92)
+                    Image(systemName: presentation.activity.category.icon)
+                        .font(.system(size: 38, weight: .semibold))
+                        .foregroundStyle(presentation.activity.category.tint)
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(presentation.activity.category.tint)
+                        .offset(y: 64)
+                }
+
+                VStack(spacing: DSSpacing.xs) {
+                    Text(presentation.activity.titleZh)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .multilineTextAlignment(.center)
+                    Text("\(presentation.region.nameZh) · 城市活动进行中")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                if reduceMotion {
+                    Text(statusMessages[0])
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                } else {
+                    TimelineView(.periodic(from: presentation.startedAt, by: 2)) { timeline in
+                        Text(statusMessage(at: timeline.date))
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                            .contentTransition(.opacity)
+                    }
+                }
+
+                Text("是否遇见新的旅伴，会在活动结束后一起揭晓")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(DSSpacing.xl)
+            .frame(maxWidth: 340)
+            .background(.thickMaterial, in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
+                    .stroke(Color.dsBorder, lineWidth: 1)
+            }
+            .shadow(color: .black.opacity(0.18), radius: 24, y: 12)
+            .padding(DSSpacing.lg)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(presentation.activity.titleZh)进行中，结果尚未揭晓")
+    }
+
+    private func statusMessage(at date: Date) -> String {
+        let elapsed = max(0, date.timeIntervalSince(presentation.startedAt))
+        return statusMessages[Int(elapsed / 2) % statusMessages.count]
     }
 }

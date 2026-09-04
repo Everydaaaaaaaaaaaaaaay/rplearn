@@ -20,6 +20,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "maintenance:cleanup": "tsx src/cli/cleanup-operational-data.ts",
+    "npc-avatars:import": "tsx src/cli/import-npc-avatars.ts",
     "architecture": "depcruise --config dependency-cruiser.cjs src",
     "production:check": "tsx src/cli/check-production-readiness.ts",
     "start": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/server.js",

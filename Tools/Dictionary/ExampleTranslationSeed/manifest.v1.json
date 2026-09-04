@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "dictionarySource": "ecdict-wordnet",
+  "dictionaryVersion": "v1",
+  "sourceDataset": "ECDICT + Princeton WordNet 3.1 / SQLite schema 3",
+  "sourceDatabase": "App/Resources/learner_dictionary.sqlite",
+  "sourceDatabaseSha256": "3e40691406eda8bb270fdcee1130f2643e9aa9d63a7cdbd62ed222acd7253694",
+  "selection": {
+    "targetWordCount": 5000,
+    "lastWord": "compact",
+    "lastFrequencyRank": 4495,
+    "wordsWithStructuredSenses": 4809,
+    "wordsWithExamples": 3809,
+    "sourceStructuredSenseCount": 26430,
+    "sourceSensesWithExamples": 17653,
+    "sourceExampleCount": 32897,
+    "displaySenseCount": 6838,
+    "displayExampleJobCount": 9288,
+    "maximumCandidateCount": 20,
+    "maximumCandidateLength": 15,
+    "maximumSentenceLength": 177,
+    "maximumStableSenseIdLength": 344,
+    "stableSenseIdsOver128Characters": 130,
+    "appSelectionPolicy": "ORDER BY rank,pos LIMIT 12; total=4; perPOS=2; POS-first; deduplicated"
+  },
+  "translation": {
+    "model": "gpt-5.6-luna",
+    "modelVersion": "gpt-5.6-luna@2026-09-03",
+    "promptVersion": "dictionary-example-zh-hans-v1",
+    "completedExampleJobs": 9288,
+    "remainingExampleJobs": 0,
+    "completionPercent": 100,
+    "reviewStatus": "llm-reviewed"
+  },
+  "completedBatches": [
+    {
+      "path": "batches/0000-mate-bank-display.jsonl",
+      "records": 8,
+      "lemmas": ["bank", "mate"]
+    },
+    {
+      "path": "batches/0001-display.jsonl",
+      "records": 600,
+      "firstLemma": "be",
+      "lastLemma": "form"
+    },
+    {
+      "path": "batches/0002-display.jsonl",
+      "records": 600,
+      "firstLemma": "study",
+      "lastLemma": "hard"
+    },
+    {
+      "path": "batches/0003-display.jsonl",
+      "records": 600,
+      "firstLemma": "special",
+      "lastLemma": "fire"
+    },
+    {
+      "path": "batches/0004-display.jsonl",
+      "records": 600,
+      "firstLemma": "fire",
+      "lastLemma": "admit"
+    },
+    {
+      "path": "batches/0005-display.jsonl",
+      "records": 600,
+      "firstLemma": "stone",
+      "lastLemma": "recall"
+    },
+    {
+      "path": "batches/0006-display.jsonl",
+      "records": 600,
+      "firstLemma": "recall",
+      "lastLemma": "ordinary"
+    },
+    {
+      "path": "batches/0007-display.jsonl",
+      "records": 600,
+      "firstLemma": "ordinary",
+      "lastLemma": "double"
+    },
+    {
+      "path": "batches/0008-display.jsonl",
+      "records": 600,
+      "firstLemma": "double",
+      "lastLemma": "severe"
+    },
+    {
+      "path": "batches/0009-display.jsonl",
+      "records": 600,
+      "firstLemma": "severe",
+      "lastLemma": "racial"
+    },
+    {
+      "path": "batches/0010-display.jsonl",
+      "records": 600,
+      "firstLemma": "abroad",
+      "lastLemma": "assure"
+    },
+    {
+      "path": "batches/0011-display.jsonl",
+      "records": 600,
+      "firstLemma": "mad",
+      "lastLemma": "excitement"
+    },
+    {
+      "path": "batches/0012-display.jsonl",
+      "records": 600,
+      "firstLemma": "cathedral",
+      "lastLemma": "attribute"
+    },
+    {
+      "path": "batches/0013-display.jsonl",
+      "records": 600,
+      "firstLemma": "artistic",
+      "lastLemma": "spare"
+    },
+    {
+      "path": "batches/0014-display.jsonl",
+      "records": 600,
+      "firstLemma": "spare",
+      "lastLemma": "exceptional"
+    },
+    {
+      "path": "batches/0015-display.jsonl",
+      "records": 600,
+      "firstLemma": "exceptional",
+      "lastLemma": "polish"
+    },
+    {
+      "path": "batches/0016-display.jsonl",
+      "records": 280,
+      "firstLemma": "polish",
+      "lastLemma": "compact"
+    }
+  ],
+  "updatedAt": "2026-09-03"
+}

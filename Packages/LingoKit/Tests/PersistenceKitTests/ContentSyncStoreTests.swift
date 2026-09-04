@@ -49,31 +49,67 @@ struct ContentSyncStoreTests {
         let conversationID = UUID()
         let messageID = UUID()
         let now = Date()
+        let mutedUntil = now.addingTimeInterval(3_600)
+        let growth = CharacterGrowthSnapshot(
+            revision: 1,
+            arcs: [
+                CharacterGrowthArc(
+                    trait: .openness,
+                    direction: .increase,
+                    progress: 0.2,
+                    stage: .experimenting,
+                    reasonZh: "愿意先听听陌生观点"
+                ),
+            ]
+        )
         let characterPayload = ContentCharacterPayload(
             card: .init(
                 age: 28,
                 appearance: "Brown hair",
                 avatarAssetName: nil,
+                avatarId: "portrait-0042",
+                avatarRemoteUrl: "https://example.invalid/portrait-0042.webp",
                 background: "Guide",
+                birthday: "08-24",
                 gender: "female",
                 hobbies: ["books"],
+                hometown: "Bath",
+                languages: ["English", "French"],
                 name: "Alice",
                 nationality: "British",
                 occupation: "Guide",
                 personality: "Warm",
                 regionId: "london",
-                speechStyle: "Friendly"
+                speechStyle: "Friendly",
+                signature: "Take the scenic route.",
+                personaVoice: PersonaVoiceProfile(
+                    values: ["curiosity"],
+                    flaws: ["overplans"],
+                    conversationalHabits: ["asks specific questions"]
+                )
             ),
             difficulty: DifficultyLevel.junior3.rawValue,
             isFriend: true,
+            isFavorite: true,
             isMainCharacter: false,
-            metAt: now
+            metAt: now,
+            relationship: .initial,
+            travelerId: TravelerIDGenerator.make(from: characterID),
+            publicIdentityRegistered: true,
+            contactStatus: ContactStatus.friend.rawValue,
+            remarkName: "小爱",
+            privateNote: "在旧车站认识",
+            proactiveMessagesEnabled: false,
+            mutedUntil: mutedUntil,
+            growth: growth
         )
         let conversationPayload = ContentConversationPayload(
             createdAt: now,
             isArchived: false,
             isEncounterSession: false,
+            isPinned: true,
             lastMessageAt: now,
+            lastReadAt: now,
             lastSummarizedMessageIndex: 0,
             quizOptOut: false,
             turnCount: 1,
@@ -120,8 +156,22 @@ struct ContentSyncStoreTests {
             syncCursor: "signed-cursor"
         )
 
-        #expect(try await roster.character(id: characterID)?.card.name == "Alice")
-        #expect(try await chat.conversation(id: conversationID)?.turnCount == 1)
+        let restoredCharacter = try #require(try await roster.character(id: characterID))
+        #expect(restoredCharacter.card.name == "Alice")
+        #expect(restoredCharacter.card.avatarID == "portrait-0042")
+        #expect(restoredCharacter.card.signature == "Take the scenic route.")
+        #expect(restoredCharacter.card.personaVoice?.values == ["curiosity"])
+        #expect(restoredCharacter.travelerID == TravelerIDGenerator.make(from: characterID))
+        #expect(restoredCharacter.publicIdentityRegistered)
+        #expect(restoredCharacter.displayName == "小爱")
+        #expect(restoredCharacter.contactPreferences.privateNote == "在旧车站认识")
+        #expect(!restoredCharacter.contactPreferences.proactiveMessagesEnabled)
+        #expect(restoredCharacter.growth.arcs.first?.trait == .openness)
+        let restoredConversation = try #require(try await chat.conversation(id: conversationID))
+        #expect(restoredConversation.turnCount == 1)
+        #expect(restoredConversation.isPinned)
+        // ISO-8601 content payloads intentionally round timestamps to whole seconds.
+        #expect(abs(restoredConversation.lastReadAt!.timeIntervalSince(now)) < 1)
         let messages = try await chat.messages(conversationID: conversationID)
         #expect(messages.map(\.text) == ["Welcome!"])
         #expect(messages.first?.translationZh == "欢迎！")
@@ -174,4 +224,3 @@ struct ContentSyncStoreTests {
         )
     }
 }
-

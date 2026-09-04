@@ -202,6 +202,13 @@ struct RootView: View {
             .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
                 Task { await reloadUnreadCount() }
             }
+            .onReceive(NotificationCenter.default.publisher(for: .rosterContactDidChange)) { _ in
+                stateRevision += 1
+                Task {
+                    await environment.refreshProactiveMessages(requestAuthorization: false)
+                    await reloadUnreadCount()
+                }
+            }
     }
 
     private var authenticationTaskID: String {
@@ -395,6 +402,7 @@ struct RootView: View {
                 deps: RosterDependencies(
                     rosterStore: environment.rosterStore,
                     economyStore: environment.economyStore,
+                    npcRegistry: environment.backendClient,
                     regionName: { regionID in
                         regionCatalog.region(id: regionID)?.nameZh
                             ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
@@ -560,7 +568,8 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
             llm: environment.llmRouter,
-            exampleTranslationActions: exampleTranslationActions
+            exampleTranslationActions: exampleTranslationActions,
+            npcRegistry: environment.backendClient
         )
     }
 
@@ -592,7 +601,8 @@ struct RootView: View {
             itemStore: environment.itemStore,
             economyStore: environment.economyStore,
             progression: progression,
-            voiceMedia: environment.voiceMedia
+            voiceMedia: environment.voiceMedia,
+            npcRegistry: environment.backendClient
         )
     }
 
@@ -620,11 +630,29 @@ struct RootView: View {
     }
 
     private var exampleTranslationActions: DictExampleTranslationActions {
-        let translator = environment.translator
+        let resolver = environment.dictionaryExampleTranslations
         return DictExampleTranslationActions { request in
-            guard let sentenceZh = try? await translator.translateToChinese(request.sentence)
+            guard !request.lemma.isEmpty,
+                  !request.partOfSpeech.isEmpty,
+                  let translated = try? await resolver.resolve(
+                    BackendDictionaryExampleTranslationRequest(
+                        candidateMeaningsZhHans: request.candidateMeaningsZhHans,
+                        dictionary: BackendDictionaryDescriptor(
+                            source: request.dictionarySource,
+                            version: request.dictionaryVersion
+                        ),
+                        lemma: request.lemma,
+                        partOfSpeech: request.partOfSpeech,
+                        senseDefinitionEn: request.definitionEn,
+                        sentence: request.sentence,
+                        stableSenseId: request.stableSenseId
+                    )
+                  )
             else { return nil }
-            return DictExampleTranslation(sentenceZh: sentenceZh)
+            return DictExampleTranslation(
+                sentenceZhHans: translated.sentenceZhHans,
+                contextualMeaningZhHans: translated.contextualMeaningZhHans
+            )
         }
     }
 

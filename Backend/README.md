@@ -35,7 +35,7 @@ src/config/            环境配置
 src/db/                共享 Schema、数据库连接与迁移入口
 src/modules/           业务模块
 dependency-cruiser.cjs 本地模块边界规则
-migrations/            当前开发期数据库基线
+migrations/            只追加的 PostgreSQL 版本迁移
 test/                  单元、集成与端到端测试
 ops/native-server/     当前 systemd 部署脚本
 ```
@@ -56,7 +56,12 @@ pnpm test:e2e
 pnpm db:generate
 pnpm db:migrate
 pnpm db:studio
+pnpm npc-avatars:import -- /absolute/path/npc-avatars.json
 ```
+
+数据库迁移只追加、不改写已经执行的历史文件；部署时先运行 `pnpm db:migrate`，迁移失败应停止发布，不能通过清空数据库绕过。`migrations/0004_npc_registry.sql` 建立公共 NPC、11 位旅伴号、头像池和用户私有关系映射。
+
+头像文件先放入 HTTPS 可访问的对象存储/CDN，再按 `npc-avatars.example.json` 的格式导入清单。导入可重复执行；已被 NPC 永久领取的头像不会被清单更新覆盖。匹配标签当前只使用 `gender:*` 和 `age:young|adult|mature`，明确不以国籍或地域推断外貌。
 
 开发 API 默认监听 `http://127.0.0.1:8080`，OpenAPI 位于 `/docs/openapi.json`。
 生产发布只需按需阅读[部署说明](../docs/backend/DEPLOYMENT.md)。

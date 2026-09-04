@@ -5,6 +5,7 @@ import SwiftData
 public struct MemoryDTO: Sendable, Equatable, Identifiable {
     public var id: PersistentIdentifier
     public var tier: MemoryTier
+    public var source: MemorySource
     public var content: String
     public var importance: Int
     public var sourceUpToIndex: Int
@@ -33,7 +34,8 @@ public actor MemoryStore {
         characterID: UUID,
         tier: MemoryTier,
         facts: [NewMemory],
-        sourceUpToIndex: Int
+        sourceUpToIndex: Int,
+        source: MemorySource = .chat
     ) throws {
         guard let character = try modelContext.fetch(
             FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.characterID == characterID })
@@ -44,6 +46,7 @@ public actor MemoryStore {
         for fact in facts {
             let entity = MemoryEntity(
                 tierRaw: tier.rawValue,
+                sourceRaw: source.rawValue,
                 content: fact.content,
                 importance: min(5, max(1, fact.importance)),
                 sourceUpToIndex: sourceUpToIndex
@@ -73,6 +76,7 @@ public actor MemoryStore {
             MemoryDTO(
                 id: entity.persistentModelID,
                 tier: MemoryTier(rawValue: entity.tierRaw) ?? .short,
+                source: MemorySource(rawValue: entity.sourceRaw) ?? .chat,
                 content: entity.content,
                 importance: entity.importance,
                 sourceUpToIndex: entity.sourceUpToIndex,
@@ -111,6 +115,17 @@ public actor MemoryStore {
         try modelContext.save()
     }
 
+    /// 清除聊天派生的私人记忆，保留剧情与共同活动形成的事实。
+    public func deleteChatDerivedMemories(characterID: UUID) throws {
+        let source = MemorySource.chat.rawValue
+        let entities = try modelContext.fetch(
+            FetchDescriptor<MemoryEntity>(predicate: #Predicate {
+                $0.character?.characterID == characterID && $0.sourceRaw == source
+            })
+        )
+        try deleteMemories(ids: entities.map(\.persistentModelID))
+    }
+
     private func journal(_ entity: MemoryEntity) throws {
         guard let characterID = entity.character?.characterID else { return }
         let localKey = ContentMutationJournal.persistentKey(entity.persistentModelID)
@@ -129,6 +144,7 @@ public actor MemoryStore {
                     content: entity.content,
                     createdAt: entity.createdAt,
                     importance: entity.importance,
+                    source: entity.sourceRaw,
                     sourceUpToIndex: entity.sourceUpToIndex,
                     tier: entity.tierRaw
                 )

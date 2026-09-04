@@ -72,6 +72,54 @@ const relationshipPayload = z
   })
   .strict();
 
+const personaVoicePayload = z
+  .object({
+    anchorLines: z.array(z.string().trim().min(1).max(240)).max(8),
+    boundaries: z.array(z.string().trim().min(1).max(240)).max(8),
+    conversationalHabits: z.array(z.string().trim().min(1).max(240)).max(10),
+    flaws: z.array(z.string().trim().min(1).max(160)).max(6),
+    values: z.array(z.string().trim().min(1).max(160)).max(8),
+  })
+  .strict();
+
+const growthPayload = z
+  .object({
+    arcs: z
+      .array(
+        z
+          .object({
+            createdAt: isoDate,
+            direction: z.enum(["increase", "decrease"]),
+            evidenceMessageIDs: z.array(uuid).max(64),
+            id: uuid,
+            progress: z.number().min(0).max(1),
+            reasonZh: z.string().trim().min(1).max(240),
+            stage: z.enum([
+              "considering",
+              "experimenting",
+              "integrating",
+              "established",
+            ]),
+            trait: z.enum([
+              "impulsivity",
+              "patience",
+              "assertiveness",
+              "openness",
+              "selfConfidence",
+              "emotionalExpression",
+              "flexibility",
+              "responsibility",
+            ]),
+            updatedAt: isoDate,
+          })
+          .strict(),
+      )
+      .max(16),
+    revision: z.number().int().min(0),
+    schemaVersion: z.literal(1),
+  })
+  .strict();
+
 const characterPayload = z
   .object({
     card: z
@@ -79,24 +127,43 @@ const characterPayload = z
         age: z.number().int().min(13).max(120),
         appearance: z.string().trim().min(1).max(2_000),
         avatarAssetName: nullableText(256),
+        avatarId: nullableText(128),
+        avatarRemoteUrl: z.url().max(2_048).nullable().optional(),
         background: nullableText(4_000),
+        birthday: nullableText(32),
         gender: z.enum(["male", "female", "other"]),
         hobbies: z.array(z.string().trim().min(1).max(80)).max(24),
+        hometown: nullableText(160),
+        languages: z.array(z.string().trim().min(1).max(80)).max(12).optional(),
         name: z.string().trim().min(1).max(80),
         nationality: z.string().trim().min(1).max(80),
         occupation: z.string().trim().min(1).max(120),
         personality: z.string().trim().min(1).max(2_000),
+        personaVoice: personaVoicePayload.optional(),
         regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
+        signature: nullableText(240),
         speechStyle: nullableText(2_000),
       })
       .strict(),
     difficulty,
+    contactStatus: z.enum(["candidate", "friend", "removed"]).optional(),
+    growth: growthPayload.optional(),
     isFriend: z.boolean(),
     isFavorite: z.boolean().optional(),
     isMainCharacter: z.boolean(),
     metAt: isoDate,
+    mutedUntil: isoDate.nullable().optional(),
+    privateNote: nullableText(2_000),
+    proactiveMessagesEnabled: z.boolean().optional(),
+    publicIdentityRegistered: z.boolean().optional(),
+    remarkName: nullableText(80),
     relationship: relationshipPayload.optional(),
-    schemaVersion,
+    schemaVersion: z.union([z.literal(1), z.literal(2)]),
+    travelerId: z
+      .string()
+      .regex(/^[0-9]{11}$/)
+      .nullable()
+      .optional(),
   })
   .strict();
 
@@ -105,10 +172,12 @@ const conversationPayload = z
     createdAt: isoDate,
     isArchived: z.boolean(),
     isEncounterSession: z.boolean(),
+    isPinned: z.boolean().optional(),
     lastMessageAt: isoDate,
+    lastReadAt: isoDate.nullable().optional(),
     lastSummarizedMessageIndex: z.number().int().min(0),
     quizOptOut: z.boolean(),
-    schemaVersion,
+    schemaVersion: z.union([z.literal(1), z.literal(2)]),
     turnCount: z.number().int().min(0),
     turnsSinceQuiz: z.number().int().min(0),
   })
@@ -169,7 +238,8 @@ const memoryPayload = z
     content: z.string().trim().min(1).max(4_000),
     createdAt: isoDate,
     importance: z.number().int().min(1).max(5),
-    schemaVersion,
+    schemaVersion: z.union([z.literal(1), z.literal(2)]),
+    source: z.enum(["chat", "story", "activity"]).optional(),
     sourceUpToIndex: z.number().int().min(0),
     tier: z.enum(["short", "mid", "long"]),
   })

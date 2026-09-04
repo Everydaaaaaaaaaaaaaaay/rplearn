@@ -1,3 +1,4 @@
+import BackendKit
 import DictKit
 import DomainKit
 import LLMKit
@@ -17,6 +18,7 @@ public struct HomeDependencies: Sendable {
     public let speech: any SpeechService
     public let llm: any LLMClient
     public let exampleTranslationActions: DictExampleTranslationActions
+    public let npcRegistry: (any PublicNPCRegistry)?
 
     public init(
         economyStore: EconomyStore,
@@ -30,7 +32,8 @@ public struct HomeDependencies: Sendable {
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
         llm: any LLMClient,
-        exampleTranslationActions: DictExampleTranslationActions
+        exampleTranslationActions: DictExampleTranslationActions,
+        npcRegistry: (any PublicNPCRegistry)? = nil
     ) {
         self.economyStore = economyStore
         self.storyProgress = storyProgress
@@ -44,6 +47,7 @@ public struct HomeDependencies: Sendable {
         self.speech = speech
         self.llm = llm
         self.exampleTranslationActions = exampleTranslationActions
+        self.npcRegistry = npcRegistry
     }
 }
 

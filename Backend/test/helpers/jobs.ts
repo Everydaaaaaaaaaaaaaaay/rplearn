@@ -23,6 +23,9 @@ export function createTestJobWorker(
     processMediaDelete?: (
       payload: Readonly<{ assetId: string; objectKey: string }>,
     ) => Promise<void>;
+    processDictionaryTranslation?: (
+      payload: Readonly<{ attempt: number; cacheKey: string; userId: string }>,
+    ) => Promise<void>;
   }> = {},
 ): JobWorker {
   return new JobWorker({
@@ -36,6 +39,11 @@ export function createTestJobWorker(
     ...(options.processMediaDelete === undefined
       ? {}
       : { processMediaDelete: options.processMediaDelete }),
+    ...(options.processDictionaryTranslation === undefined
+      ? {}
+      : {
+          processDictionaryTranslation: options.processDictionaryTranslation,
+        }),
     repository: new JobRepository(database),
     workerId: `test-worker-${newEntityId()}`,
   });

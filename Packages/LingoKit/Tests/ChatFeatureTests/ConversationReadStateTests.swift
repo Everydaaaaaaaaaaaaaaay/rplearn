@@ -5,119 +5,50 @@ import Testing
 
 @Suite("Conversation read state")
 struct ConversationReadStateTests {
-    @Test("退出会话时可见的助手消息保持已读")
-    func visibleAssistantMessageRemainsReadAfterExit() throws {
-        let (defaults, suiteName) = try isolatedDefaults()
-        defer { defaults.removePersistentDomain(forName: suiteName) }
-
-        let conversationID = UUID()
-        let replyDate = Date(timeIntervalSince1970: 100)
-
-        #expect(
-            ConversationReadState.isUnread(
-                conversationID: conversationID,
-                lastMessageAt: replyDate,
-                lastMessageRole: .assistant,
-                defaults: defaults
-            )
-        )
-
-        ConversationReadState.markRead(
-            conversationID: conversationID,
-            at: replyDate,
-            defaults: defaults
-        )
-
-        #expect(
-            !ConversationReadState.isUnread(
-                conversationID: conversationID,
-                lastMessageAt: replyDate,
-                lastMessageRole: .assistant,
-                defaults: defaults
-            )
-        )
-    }
-
-    @Test("较旧的标记不会让已读状态倒退")
-    func olderReadMarkerDoesNotRegressState() throws {
-        let (defaults, suiteName) = try isolatedDefaults()
-        defer { defaults.removePersistentDomain(forName: suiteName) }
-
-        let conversationID = UUID()
-        ConversationReadState.markRead(
-            conversationID: conversationID,
-            at: Date(timeIntervalSince1970: 200),
-            defaults: defaults
-        )
-        ConversationReadState.markRead(
-            conversationID: conversationID,
-            at: Date(timeIntervalSince1970: 100),
-            defaults: defaults
-        )
-
-        #expect(
-            !ConversationReadState.isUnread(
-                conversationID: conversationID,
-                lastMessageAt: Date(timeIntervalSince1970: 150),
-                lastMessageRole: .assistant,
-                defaults: defaults
-            )
-        )
-    }
-
-    @Test("按最后阅读时间统计实际未读助手消息数")
-    func countsUnreadAssistantMessages() throws {
-        let (defaults, suiteName) = try isolatedDefaults()
-        defer { defaults.removePersistentDomain(forName: suiteName) }
-
-        let conversationID = UUID()
+    @Test("已读时间排除已看过的助手消息")
+    func countsOnlyAssistantMessagesAfterReadCursor() {
         let dates = [100.0, 200.0, 300.0].map(Date.init(timeIntervalSince1970:))
-        ConversationReadState.markRead(
-            conversationID: conversationID,
-            at: Date(timeIntervalSince1970: 200),
-            defaults: defaults
-        )
-
         #expect(
             ConversationReadState.unreadCount(
-                conversationID: conversationID,
                 assistantMessageDates: dates,
-                defaults: defaults
+                lastReadAt: Date(timeIntervalSince1970: 200)
             ) == 1
+        )
+        #expect(
+            !ConversationReadState.isUnread(
+                lastMessageAt: dates[1],
+                lastMessageRole: .assistant,
+                lastReadAt: dates[1]
+            )
+        )
+        #expect(
+            !ConversationReadState.isUnread(
+                lastMessageAt: dates[2],
+                lastMessageRole: .user,
+                lastReadAt: nil
+            )
         )
     }
 
-    @Test("摘要统一排序消息时间并排除恰好已读的消息")
-    func summarySortsDatesForBinaryUnreadLookup() throws {
-        let (defaults, suiteName) = try isolatedDefaults()
-        defer { defaults.removePersistentDomain(forName: suiteName) }
-
-        let conversationID = UUID()
+    @Test("摘要统一排序消息时间并保存置顶和已读状态")
+    func summaryOwnsSyncedListState() {
         let dates = [300.0, 100.0, 200.0].map(Date.init(timeIntervalSince1970:))
         let value = ConversationSummaryDTO(
-            conversationID: conversationID,
+            conversationID: UUID(),
             characterID: UUID(),
             characterName: "Friend",
             avatarAssetName: nil,
             lastMessageText: "Hello",
             lastMessageAt: dates[0],
             lastMessageRole: .assistant,
+            isPinned: true,
+            lastReadAt: dates[2],
             assistantMessageDates: dates
-        )
-        ConversationReadState.markRead(
-            conversationID: conversationID,
-            at: Date(timeIntervalSince1970: 200),
-            defaults: defaults
         )
 
         #expect(value.assistantMessageDates == dates.sorted())
-        #expect(
-            ConversationReadState.unreadCount(
-                conversationID: conversationID,
-                assistantMessageDates: value.assistantMessageDates,
-                defaults: defaults
-            ) == 1
-        )
+        #expect(value.isPinned)
+        #expect(value.unreadCount == 1)
     }
 
     @Test("总数只统计好友会话")
@@ -135,13 +66,6 @@ struct ConversationReadStateTests {
                 summaries: summaries
             ) == 1
         )
-    }
-
-    private func isolatedDefaults() throws -> (UserDefaults, String) {
-        let suiteName = "ConversationReadStateTests.\(UUID().uuidString)"
-        let defaults = try #require(UserDefaults(suiteName: suiteName))
-        defaults.removePersistentDomain(forName: suiteName)
-        return (defaults, suiteName)
     }
 
     private func character() -> CharacterDTO {

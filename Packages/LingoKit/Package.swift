@@ -102,6 +102,7 @@ let featureTargets: [Target] = [
         module("CoreKit"),
     ]),
     feature("HomeFeature", dependencies: [
+        module("BackendKit"),
         module("CoreKit"),
         module("DictKit"),
         module("DomainKit"),
@@ -110,6 +111,7 @@ let featureTargets: [Target] = [
         module("SpeechKit"),
     ]),
     feature("ChatFeature", dependencies: [
+        module("BackendKit"),
         module("CoreKit"),
         module("DomainKit"),
         module("LLMKit"),
@@ -140,6 +142,8 @@ let featureTargets: [Target] = [
         module("SpeechKit"),
     ]),
     feature("RosterFeature", dependencies: [
+        module("BackendKit"),
+        module("DomainKit"),
         module("PersistenceKit"),
     ]),
     feature("MapFeature", dependencies: [

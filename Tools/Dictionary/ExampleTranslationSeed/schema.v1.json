@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lingotrip.invalid/schemas/dictionary-example-translation-seed-v1.json",
+  "title": "LingoTrip reviewed dictionary example translation seed",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "cacheKey",
+    "sourceFingerprint",
+    "stableSenseId",
+    "dictionarySource",
+    "dictionaryVersion",
+    "seedRank",
+    "frequencyRank",
+    "lemma",
+    "partOfSpeech",
+    "senseRank",
+    "senseDefinition",
+    "exampleIndex",
+    "sentence",
+    "candidateMeaningsZhHans",
+    "sentenceZhHans",
+    "contextualMeaningZhHans",
+    "meaningSelection",
+    "selectionNote",
+    "model",
+    "promptVersion",
+    "reviewStatus"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "cacheKey": { "type": "string", "pattern": "^dict-example:v1:[a-f0-9]{64}$" },
+    "sourceFingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "stableSenseId": { "type": "string", "minLength": 5, "maxLength": 512 },
+    "dictionarySource": { "const": "ecdict-wordnet" },
+    "dictionaryVersion": { "const": "v1" },
+    "seedRank": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "frequencyRank": { "type": "integer", "minimum": 1 },
+    "lemma": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "partOfSpeech": { "enum": ["n", "v", "a", "r"] },
+    "senseRank": { "type": "integer", "minimum": 1 },
+    "senseDefinition": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "exampleIndex": { "type": "integer", "minimum": 0 },
+    "sentence": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "candidateMeaningsZhHans": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 200 }
+    },
+    "sentenceZhHans": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "contextualMeaningZhHans": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "meaningSelection": { "enum": ["candidate", "refined"] },
+    "selectedMeaningIndex": { "type": "integer", "minimum": 0 },
+    "selectionNote": { "type": "string", "minLength": 1, "maxLength": 300 },
+    "model": { "const": "gpt-5.6-luna" },
+    "promptVersion": { "const": "dictionary-example-zh-hans-v1" },
+    "reviewStatus": { "const": "llm-reviewed" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "meaningSelection": { "const": "candidate" } } },
+      "then": { "required": ["selectedMeaningIndex"] },
+      "else": { "not": { "required": ["selectedMeaningIndex"] } }
+    }
+  ]
+}

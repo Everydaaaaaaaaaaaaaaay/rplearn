@@ -36,6 +36,28 @@ struct ChatStoreTests {
         #expect(first.id == second.id)
     }
 
+    @Test("置顶与已读游标持久化且已读时间只前进")
+    func persistsPinnedAndMonotonicReadCursor() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let firstRead = Date(timeIntervalSince1970: 200)
+
+        try await chat.setPinned(conversationID: conversation.id, isPinned: true)
+        try await chat.markRead(conversationID: conversation.id, at: firstRead)
+        try await chat.markRead(
+            conversationID: conversation.id,
+            at: Date(timeIntervalSince1970: 100)
+        )
+
+        let stored = try #require(try await chat.conversation(id: conversation.id))
+        #expect(stored.isPinned)
+        #expect(stored.lastReadAt == firstRead)
+        let summary = try #require(try await chat.conversationSummaries().first)
+        #expect(summary.isPinned)
+        #expect(summary.lastReadAt == firstRead)
+    }
+
     @Test("角色第一条主动消息只能写入一次")
     func initialMessageIsIdempotent() async throws {
         let (chat, roster) = try makeStores()
@@ -229,5 +251,62 @@ struct ChatStoreTests {
         #expect(summaries.first?.characterName == "Chat Partner")
         #expect(summaries.first?.lastMessageText == "g'day!")
         #expect(summaries.first?.assistantMessageDates.count == 1)
+    }
+
+    @Test("聊天全文检索忽略大小写并按时间倒序")
+    func searchesCharacterHistory() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        try await chat.appendMessage(conversationID: conversation.id, role: .user, text: "I found a small market.")
+        try await chat.appendMessage(conversationID: conversation.id, role: .assistant, text: "The MARKET closes at six.")
+        try await chat.appendMessage(conversationID: conversation.id, role: .user, text: "Thanks!")
+
+        let results = try await chat.searchMessages(characterID: characterID, query: "market")
+        #expect(results.map(\.text) == ["The MARKET closes at six.", "I found a small market."])
+        #expect(try await chat.searchMessages(characterID: characterID, query: "   ").isEmpty)
+
+        try await chat.archiveConversations(characterID: characterID)
+        let current = try await chat.openConversation(characterID: characterID)
+        try await chat.appendMessage(
+            conversationID: current.id,
+            role: .assistant,
+            text: "A newer market opened nearby."
+        )
+        let contextualResults = try await chat.searchMessageResults(
+            characterID: characterID,
+            query: "market"
+        )
+        #expect(contextualResults.first?.conversationID == current.id)
+        #expect(contextualResults.first?.isArchivedConversation == false)
+        #expect(
+            contextualResults.dropFirst().allSatisfy {
+                $0.isArchivedConversation
+            }
+        )
+    }
+
+    @Test("清空聊天会返回本地语音文件并重置会话计数")
+    func clearsHistoryAndReturnsVoiceFiles() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            kind: .voice,
+            text: "hello",
+            audioFileName: "voice-test.caf",
+            audioDuration: 1.2
+        )
+        try await chat.appendMessage(conversationID: conversation.id, role: .assistant, text: "Hi!")
+
+        let files = try await chat.clearConversationHistory(characterID: characterID)
+        #expect(files == ["voice-test.caf"])
+        #expect(try await chat.messages(conversationID: conversation.id).isEmpty)
+        let reset = try #require(try await chat.conversation(id: conversation.id))
+        #expect(reset.turnCount == 0)
+        #expect(reset.turnsSinceQuiz == 0)
+        #expect(reset.lastSummarizedMessageIndex == 0)
     }
 }

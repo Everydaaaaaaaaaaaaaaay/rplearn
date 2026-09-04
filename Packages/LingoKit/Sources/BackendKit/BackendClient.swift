@@ -155,6 +155,21 @@ public actor BackendClient {
         )
     }
 
+    /// Reads an endpoint that explicitly exposes public, non-account data.
+    public func publicGet<Response: Decodable & Sendable>(
+        _ path: String,
+        queryItems: [URLQueryItem] = []
+    ) async throws -> Response {
+        try await request(
+            path: path,
+            method: "GET",
+            body: nil,
+            queryItems: queryItems,
+            authenticated: false,
+            retryAfterUnauthorized: false
+        )
+    }
+
     public func send<Request: Encodable & Sendable, Response: Decodable & Sendable>(
         path: String,
         method: String,
