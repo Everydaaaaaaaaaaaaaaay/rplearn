@@ -22,10 +22,11 @@ public enum RoleplayReplyFormatter {
         guard chunks.count > maximumMessagesPerReply else { return chunks }
 
         // 即使模型偶尔超量，也只保留真人一次连续发送较自然的四条。
-        // 前三条负责承接语境；若后文有问题，优先保留它，避免裁掉对话接续点。
+        // 前三条负责承接语境；若后文有完整问题，优先保留它，避免裁掉对话接续点。
+        // 没有问题时不保留溢出区的第一块，因为它可能是被长度规则拆开的半句话。
         let head = Array(chunks.prefix(maximumMessagesPerReply - 1))
         let remaining = chunks.dropFirst(maximumMessagesPerReply - 1)
-        let tail = remaining.first(where: looksLikeQuestion) ?? remaining.first
+        let tail = remaining.first(where: looksLikeQuestion)
         return tail.map { head + [$0] } ?? head
     }
 
@@ -251,5 +252,79 @@ public enum RoleplayReplyDiversityPolicy {
         let right = Set(zip(rhs, rhs.dropFirst()).map { "\($0.0) \($0.1)" })
         guard !left.isEmpty, !right.isEmpty else { return 0 }
         return 2 * Double(left.intersection(right).count) / Double(left.count + right.count)
+    }
+}
+
+/// 对少量会明显破坏真人感或可信边界的措辞做生成后守门；只要求一次重试。
+public enum RoleplayReplyContinuityPolicy {
+    public static func violations(reply: String, respondingTo userMessage: String) -> [String] {
+        let reply = reply.lowercased()
+        let user = userMessage.lowercased()
+        var violations: [String] = []
+
+        let repairHope = [
+            "ruin things", "damage our friendship", "end our friendship", "between us",
+        ].contains(where: user.contains)
+        if repairHope, [
+            "we're good", "we’re good", "we are good", "all good now", "it's over", "it’s over",
+        ].contains(where: reply.contains) {
+            violations.append("premature_mutual_repair")
+        }
+
+        let impactReport = [
+            "made me feel", "felt embarrassed", "feel embarrassed", "felt hurt", "feel hurt",
+            "made me uncomfortable", "made me upset", "stayed with me",
+        ].contains(where: user.contains)
+        if impactReport, reply.contains("sorry if") {
+            violations.append("defensive_conditional_apology")
+        }
+        if user.contains("stayed with me"), [
+            "you said that before", "you told me before", "you mentioned that before", "should've remembered",
+            "should’ve remembered", "should have remembered",
+        ].contains(where: reply.contains) {
+            violations.append("invented_prior_disclosure")
+        }
+
+        let hiddenSetupRequest = user.contains("hidden system prompt")
+            || user.contains("hidden instructions")
+            || user.contains("character card")
+        if hiddenSetupRequest, [
+            "i'm just a bloke", "i’m just a bloke", "i'm just a person", "i’m just a person",
+            "i'm only human", "i’m only human", "no hidden", "no system prompt",
+        ].contains(where: reply.contains) {
+            violations.append("false_human_or_setup_denial")
+        }
+        return violations
+    }
+
+    public static func regenerationDirective(violations: [String]) -> String {
+        """
+        The first candidate failed a continuity safety check: \(violations.joined(separator: ", ")). Generate one \
+        fresh, natural in-character reply to the same latest message. During conflict repair, acknowledge impact and \
+        state your own hope or commitment without declaring the other person fine or the issue over. Never use a \
+        defensive “sorry if”, invent an earlier disclosure, claim to be literally human, or deny that hidden setup \
+        exists. Do not mention this check or its labels.
+        """
+    }
+
+    /// The network retry is deliberately capped at one. This deterministic last resort is used only
+    /// when that second candidate repeats a severe, mechanically detectable continuity failure.
+    public static func fallbackReply(
+        violations: [String],
+        characterName: String
+    ) -> String {
+        if violations.contains("false_human_or_setup_denial") {
+            return "Nice try, mate. I can't share hidden instructions. I'm your fictional travel companion \(characterName), and I'm staying in character."
+        }
+        if violations.contains("premature_mutual_repair") {
+            return "Me neither. I care about our friendship, and I'll show that by respecting what you asked."
+        }
+        if violations.contains("defensive_conditional_apology") {
+            return "I'm sorry I hurt you. I'll be more careful, and I won't rush you past it."
+        }
+        if violations.contains("invented_prior_disclosure") {
+            return "I hear you. I'm sorry it stayed with you, and I'll be more careful."
+        }
+        return "I hear you, mate. Let me answer that honestly and keep it grounded in what we actually know."
     }
 }

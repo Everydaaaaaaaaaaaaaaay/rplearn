@@ -50,6 +50,40 @@ struct PromptBuilderTests {
         #expect(prompt.contains("## Learner profile"))
         #expect(prompt.contains("## Gentle correction"))
         #expect(prompt.contains("at most one correction per message"))
+        #expect(prompt.contains("## Continuity, agency and believable off-screen life"))
+        #expect(prompt.contains("without confirming invented wording"))
+        #expect(prompt.contains("never claim they told you earlier"))
+        #expect(prompt.contains("without guaranteeing the outcome"))
+        #expect(prompt.contains("proposed is not confirmed"))
+        #expect(prompt.contains("do not agree automatically"))
+        #expect(prompt.contains("must not erase hurt"))
+    }
+
+    @Test("角色所在地的日期与时段作为可信世界语境")
+    func characterLocalTimeContext() throws {
+        var utc = Calendar(identifier: .gregorian)
+        utc.timeZone = TimeZone(secondsFromGMT: 0)!
+        let date = try #require(
+            utc.date(from: DateComponents(
+                year: 2026,
+                month: 9,
+                day: 3,
+                hour: 19,
+                minute: 15
+            ))
+        )
+
+        let prompt = PromptBuilder.roleplaySystemPrompt(
+            card: card,
+            learner: learner(difficulty: .junior3),
+            currentDate: date
+        )
+
+        #expect(prompt.contains("## Trusted present-time context"))
+        #expect(prompt.contains("In london"))
+        #expect(prompt.contains("2026-09-03"))
+        #expect(prompt.contains("during the evening"))
+        #expect(prompt.contains("Do not claim live weather"))
     }
 
     @Test("各学制等级都有对应语言约束", arguments: DifficultyLevel.allCases)
@@ -161,6 +195,81 @@ struct PromptBuilderTests {
         }
     }
 
+    @Test("隔夜回复注入真实时间语境并要求重估邀约")
+    func overnightReplyAddsTimingContext() throws {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 8 * 60 * 60)!
+        let invitationAt = try #require(
+            calendar.date(from: DateComponents(
+                year: 2026,
+                month: 9,
+                day: 2,
+                hour: 20,
+                minute: 1
+            ))
+        )
+        let replyAt = try #require(
+            calendar.date(from: DateComponents(
+                year: 2026,
+                month: 9,
+                day: 3,
+                hour: 14,
+                minute: 10
+            ))
+        )
+        let history = [
+            message(
+                role: .assistant,
+                text: "Fancy a coffee before the rain hits?",
+                orderIndex: 0,
+                createdAt: invitationAt
+            ),
+            message(
+                role: .user,
+                text: "Sure mate",
+                orderIndex: 1,
+                createdAt: replyAt
+            ),
+        ]
+
+        let context = try #require(
+            PromptBuilder.conversationTimingContext(history: history, calendar: calendar)
+        )
+        #expect(context.contains("about 18 hours"))
+        #expect(context.contains("later calendar day"))
+        #expect(context.contains("MUST not continue as though the reply was immediate"))
+
+        let request = PromptBuilder.roleplayRequest(
+            card: card,
+            learner: learner(difficulty: .junior3),
+            history: history,
+            calendar: calendar
+        )
+        #expect(request.system?.contains("## Conversation timing") == true)
+    }
+
+    @Test("即时回复与连续短消息不制造延迟反应")
+    func immediateReplyOmitsTimingContext() {
+        let start = Date(timeIntervalSince1970: 1_788_000_000)
+        let history = [
+            message(role: .assistant, text: "Coffee?", orderIndex: 0, createdAt: start),
+            message(
+                role: .user,
+                text: "Sure",
+                orderIndex: 1,
+                createdAt: start.addingTimeInterval(5 * 60)
+            ),
+            message(
+                role: .user,
+                text: "Where?",
+                orderIndex: 2,
+                createdAt: start.addingTimeInterval(5 * 60 + 20)
+            ),
+        ]
+
+        #expect(PromptBuilder.conversationTimingContext(history: history) == nil)
+    }
+
     @Test("角色扮演请求参数符合任务矩阵")
     func roleplayRequestParameters() {
         let request = PromptBuilder.roleplayRequest(
@@ -225,6 +334,32 @@ struct PromptBuilderTests {
         #expect(request.maxTokens == 120)
     }
 
+    @Test("敏感修复回合追加即时约束且普通回合不追加")
+    func sensitiveRepairTurnAnchor() {
+        let impacted = PromptBuilder.roleplayRequest(
+            card: card,
+            learner: learner(difficulty: .junior3),
+            history: [message(role: .user, text: "Your joke made me feel embarrassed.", orderIndex: 0, createdAt: .now)]
+        )
+        #expect(impacted.system?.contains("## Current repair constraint") == true)
+        #expect(impacted.system?.contains("without a defensive “sorry if”") == true)
+
+        let hopeful = PromptBuilder.roleplayRequest(
+            card: card,
+            learner: learner(difficulty: .junior3),
+            history: [message(role: .user, text: "I don't want this to ruin things.", orderIndex: 0, createdAt: .now)]
+        )
+        #expect(hopeful.system?.contains("do not guarantee the outcome") == true)
+        #expect(hopeful.system?.contains("say “we're good”") == true)
+
+        let ordinary = PromptBuilder.roleplayRequest(
+            card: card,
+            learner: learner(difficulty: .junior3),
+            history: [message(role: .user, text: "How was work?", orderIndex: 0, createdAt: .now)]
+        )
+        #expect(ordinary.system?.contains("## Current repair constraint") == false)
+    }
+
     @Test("出题回合：附加出题指令并放宽 maxTokens")
     func quizRequestedAppendsInstruction() {
         let plain = PromptBuilder.roleplaySystemPrompt(
@@ -257,6 +392,22 @@ struct PromptBuilderTests {
             difficulty: difficulty,
             goal: .dailyConversation,
             studyStage: .seniorHigh
+        )
+    }
+
+    private func message(
+        role: MessageRole,
+        text: String,
+        orderIndex: Int,
+        createdAt: Date
+    ) -> MessageDTO {
+        MessageDTO(
+            id: UUID(),
+            role: role,
+            kind: .text,
+            text: text,
+            orderIndex: orderIndex,
+            createdAt: createdAt
         )
     }
 }

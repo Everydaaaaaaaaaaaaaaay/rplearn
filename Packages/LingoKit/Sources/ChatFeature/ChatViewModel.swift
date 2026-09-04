@@ -14,7 +14,7 @@ import SpeechKit
 @Observable
 public final class ChatViewModel {
     public internal(set) var character: CharacterDTO
-    public private(set) var learnerDifficulty: DifficultyLevel
+    public internal(set) var learnerDifficulty: DifficultyLevel
     let deps: ChatDependencies
 
     public internal(set) var conversation: ConversationDTO?
@@ -162,6 +162,7 @@ public final class ChatViewModel {
                 }
             }
             await reloadMessages()
+            notifyConversationChanged()
         } catch {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
@@ -192,6 +193,7 @@ public final class ChatViewModel {
         )
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
+        notifyConversationChanged()
 
         let request = await makeRoleplayRequest(quizRequested: false, voiceMode: true)
         let upstream = await deps.llm.stream(request)
@@ -227,14 +229,17 @@ public final class ChatViewModel {
             )
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             await reloadMessages()
+            notifyConversationChanged()
 
             let memoryService = self.memoryService
             let conversationID = conversation.id
             let characterName = character.card.name
+            let characterRegionID = character.card.regionID
             Task(priority: .utility) {
                 await memoryService.compressIfNeeded(
                     conversationID: conversationID,
-                    characterName: characterName
+                    characterName: characterName,
+                    characterRegionID: characterRegionID
                 )
             }
         } catch {
@@ -242,9 +247,7 @@ public final class ChatViewModel {
         }
     }
 
-    public func refreshMessages() async {
-        await reloadMessages()
-    }
+    public func refreshMessages() async { await reloadMessages() }
 
     public func cancelPendingReply() {
         replyTask?.cancel()
@@ -309,6 +312,7 @@ public final class ChatViewModel {
                 tokenEstimate: TokenEstimator.estimate(userText)
             )
             await reloadMessages()
+            notifyConversationChanged()
         } catch {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
@@ -347,15 +351,6 @@ public final class ChatViewModel {
             try? await chatStore.setCoachReview(messageID: message.id, json: json)
             await self?.reloadMessages()
         }
-    }
-
-    private var memoryService: MemoryService {
-        MemoryService(
-            llm: deps.llm,
-            chatStore: deps.chatStore,
-            memoryStore: deps.memoryStore,
-            economyStore: deps.economyStore
-        )
     }
 
     private func scheduleAssistantReply(
@@ -451,6 +446,7 @@ public final class ChatViewModel {
                 )
             }
             await reloadMessages()
+            notifyConversationChanged()
             return
         }
 
@@ -458,18 +454,32 @@ public final class ChatViewModel {
             .filter { $0.role == .assistant }
             .suffix(12)
             .map(\.text)
-        let firstReplyText = quizRequested
-            ? QuizService.extract(from: accumulated).0
-            : accumulated
-        if RoleplayReplyDiversityPolicy.isTooSimilar(
+        let firstReplyText = accumulated
+        let tooSimilar = RoleplayReplyDiversityPolicy.isTooSimilar(
             firstReplyText,
             to: recentAssistantReplies
-        ) {
+        )
+        let latestUserText = messages.last(where: { $0.role == .user })?.text ?? ""
+        let continuityViolations = RoleplayReplyContinuityPolicy.violations(
+            reply: firstReplyText,
+            respondingTo: latestUserText
+        )
+        if tooSimilar || !continuityViolations.isEmpty {
             var retryRequest = request
+            let retryInstructions = [
+                tooSimilar
+                    ? RoleplayReplyDiversityPolicy.regenerationDirective(avoiding: recentAssistantReplies)
+                    : nil,
+                continuityViolations.isEmpty
+                    ? nil
+                    : RoleplayReplyContinuityPolicy.regenerationDirective(
+                        violations: continuityViolations
+                    ),
+            ]
+            .compactMap { $0 }
+            .joined(separator: "\n\n")
             retryRequest.system = Self.appendingSystemInstruction(
-                RoleplayReplyDiversityPolicy.regenerationDirective(
-                    avoiding: recentAssistantReplies
-                ),
+                retryInstructions,
                 to: retryRequest.system
             )
             var regenerated = ""
@@ -482,13 +492,22 @@ public final class ChatViewModel {
                     }
                 }
                 if !regenerated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    accumulated = regenerated
+                    let remainingViolations = RoleplayReplyContinuityPolicy.violations(
+                        reply: regenerated,
+                        respondingTo: latestUserText
+                    )
+                    accumulated = remainingViolations.isEmpty
+                        ? regenerated
+                        : RoleplayReplyContinuityPolicy.fallbackReply(
+                            violations: remainingViolations,
+                            characterName: character.card.name
+                        )
                 }
             } catch is CancellationError {
                 return
             } catch {
-                // 首个候选仍然是完整模型输出；去重重试失败时保留它，避免吞掉回复。
-                Log.llm.warning("角色回复去重重试失败，保留首个候选：\(error)")
+                // 首个候选仍然是完整模型输出；重试失败时保留它，避免吞掉回复。
+                Log.llm.warning("角色回复质量重试失败，保留首个候选：\(error)")
             }
         }
 
@@ -520,8 +539,13 @@ public final class ChatViewModel {
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
             let conversationID = conversation.id
             let characterName = character.card.name
+            let characterRegionID = character.card.regionID
             Task(priority: .utility) {
-                await memoryService.compressIfNeeded(conversationID: conversationID, characterName: characterName)
+                await memoryService.compressIfNeeded(
+                    conversationID: conversationID,
+                    characterName: characterName,
+                    characterRegionID: characterRegionID
+                )
             }
         } catch is CancellationError {
             return
@@ -531,6 +555,7 @@ public final class ChatViewModel {
             errorMessage = "回复保存失败：\(error.localizedDescription)"
         }
         await reloadMessages()
+        notifyConversationChanged()
     }
 
     private static func appendingSystemInstruction(
@@ -586,53 +611,6 @@ public final class ChatViewModel {
             }
         }
         return delivered
-    }
-
-    /// 注入分级记忆、学习者档案与主线引导；文本聊天和实时语音共享同一角色事实来源。
-    private func makeRoleplayRequest(
-        quizRequested: Bool,
-        voiceMode: Bool
-    ) async -> LLMRequest {
-        let memoryService = self.memoryService
-        let characterID = character.id
-        let itemStore = deps.itemStore
-        let economyStore = deps.economyStore
-        async let memorySectionsTask = memoryService.memorySections(characterID: characterID)
-        async let hasStoryTicketTask = (try? await itemStore.hasTicket(source: .story)) ?? false
-        async let profileTask = try? await economyStore.profile()
-        async let currentCharacterTask = try? await deps.rosterStore.character(id: characterID)
-        let (memorySections, hasStoryTicket, profile, currentCharacter) = await (
-            memorySectionsTask,
-            hasStoryTicketTask,
-            profileTask,
-            currentCharacterTask
-        )
-        let subscriptionTier = profile?.subscriptionTier ?? .free
-        let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
-        let mainlineActive = character.isMainCharacter && !hasStoryTicket
-        let learner: LearnerContext
-        if let profile {
-            learner = LearnerContext(profile: profile)
-        } else {
-            learner = .fallback(difficulty: character.difficultyLevel)
-        }
-        learnerDifficulty = learner.difficulty
-        return PromptBuilder.roleplayRequest(
-            card: character.card,
-            learner: learner,
-            history: messages,
-            memorySections: memorySections,
-            relationshipContext: RelationshipEngine.promptContext(
-                currentCharacter?.relationship ?? character.relationship
-            ),
-            growthContext: CharacterGrowthEngine.promptContext(
-                currentCharacter?.growth ?? character.growth
-            ),
-            guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
-            quizRequested: quizRequested,
-            voiceMode: voiceMode,
-            rawWindow: rawWindow
-        )
     }
 
     @discardableResult
@@ -791,4 +769,5 @@ public final class ChatViewModel {
         guard let conversation else { return }
         messages = (try? await deps.chatStore.messages(conversationID: conversation.id)) ?? messages
     }
+
 }
