@@ -5,6 +5,62 @@ import Testing
 
 @Suite("CharacterGrowthEngine")
 struct CharacterGrowthEngineTests {
+    @Test("模型漏判时只为明确且尊重自主性的弱点建议补成长种子")
+    func resolvesExplicitAutonomyRespectingSeed() throws {
+        let admission = MessageDTO(
+            id: UUID(),
+            role: .assistant,
+            kind: .text,
+            text: "I probably acted before thinking there.",
+            orderIndex: 4
+        )
+        let advice = MessageDTO(
+            id: UUID(),
+            role: .user,
+            kind: .text,
+            text: "Maybe pausing before a joke would help, but it's your choice.",
+            orderIndex: 5
+        )
+
+        let resolved = try #require(CharacterGrowthSeedPolicy.resolve(
+            modelSignal: nil,
+            history: [admission],
+            userMessage: advice
+        ))
+        #expect(resolved.trait == CharacterGrowthTrait.impulsivity.rawValue)
+        #expect(resolved.direction == CharacterGrowthDirection.decrease.rawValue)
+        let snapshot = CharacterGrowthEngine.apply(
+            resolved,
+            to: .initial,
+            relationship: relationshipSignal(),
+            evidenceMessageID: advice.id
+        )
+        #expect(snapshot.arcs.first?.stage == .considering)
+    }
+
+    @Test("命令或没有角色自我承认时不补成长种子")
+    func doesNotInferGrowthFromPressureOrUnsupportedAdvice() {
+        let pressure = MessageDTO(
+            id: UUID(), role: .user, kind: .text,
+            text: "Change yourself and think before you speak.", orderIndex: 2
+        )
+        #expect(CharacterGrowthSeedPolicy.resolve(
+            modelSignal: nil,
+            history: [],
+            userMessage: pressure
+        ) == nil)
+
+        let unsupported = MessageDTO(
+            id: UUID(), role: .user, kind: .text,
+            text: "Maybe you should pause before speaking, but it's your choice.", orderIndex: 3
+        )
+        #expect(CharacterGrowthSeedPolicy.resolve(
+            modelSignal: nil,
+            history: [],
+            userMessage: unsupported
+        ) == nil)
+    }
+
     @Test("v1 成长快照升级时默认继续允许成长")
     func decodesLegacySnapshotWithoutPausedFlag() throws {
         let legacyJSON = #"{"arcs":[],"revision":7,"schemaVersion":1}"#

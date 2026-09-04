@@ -27,6 +27,57 @@ public struct CharacterGrowthSignal: Sendable, Codable, Equatable {
     }
 }
 
+/// The joint model review can conservatively miss an explicit growth seed. This narrow resolver
+/// recovers only high-signal, autonomy-respecting advice that directly follows the character's own admission.
+public enum CharacterGrowthSeedPolicy {
+    public static func resolve(
+        modelSignal: CharacterGrowthSignal?,
+        history: [MessageDTO],
+        userMessage: MessageDTO
+    ) -> CharacterGrowthSignal? {
+        if let modelSignal,
+           modelSignal.trait != "none",
+           modelSignal.direction != "none",
+           modelSignal.confidence >= 0.80,
+           modelSignal.relevance >= 0.75,
+           modelSignal.agencyRespect >= 0.70 {
+            return modelSignal
+        }
+
+        let user = userMessage.text.lowercased()
+        let respectsAgency = [
+            "your choice", "up to you", "if you want", "you could", "maybe", "might help",
+        ].contains(where: user.contains)
+        let pauseAdvice = [
+            "pause before", "pausing before", "think before", "thinking before", "slow down",
+            "take a moment", "sleep on it",
+        ].contains(where: user.contains)
+        guard respectsAgency, pauseAdvice else { return modelSignal }
+
+        let recentCharacterText = history
+            .filter { $0.role == .assistant && $0.orderIndex < userMessage.orderIndex }
+            .sorted { $0.orderIndex < $1.orderIndex }
+            .suffix(4)
+            .map(\.text)
+            .joined(separator: " ")
+            .lowercased()
+        let admittedImpulsivity = [
+            "act before thinking", "acted before thinking", "without thinking", "before i think",
+            "before checking", "jumped ahead", "rush into", "impulsive",
+        ].contains(where: recentCharacterText.contains)
+        guard admittedImpulsivity else { return modelSignal }
+
+        return CharacterGrowthSignal(
+            trait: CharacterGrowthTrait.impulsivity.rawValue,
+            direction: CharacterGrowthDirection.decrease.rawValue,
+            relevance: 0.82,
+            agencyRespect: 0.95,
+            confidence: 0.84,
+            reasonZh: "朋友在尊重选择的前提下建议先停顿再行动"
+        )
+    }
+}
+
 public enum CharacterGrowthEngine {
     private static let maximumArcs = 6
     private static let maximumEvidencePerArc = 24

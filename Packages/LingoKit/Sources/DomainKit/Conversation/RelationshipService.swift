@@ -535,7 +535,11 @@ public struct RelationshipService: Sendable {
         }
         try await rosterStore.mutateGrowth(characterID: character.id) { latest in
             CharacterGrowthEngine.apply(
-                review.growth,
+                CharacterGrowthSeedPolicy.resolve(
+                    modelSignal: review.growth,
+                    history: history,
+                    userMessage: userMessage
+                ),
                 to: latest,
                 relationship: review.relationship,
                 evidenceMessageID: userMessage.id,
@@ -651,6 +655,11 @@ public struct RelationshipService: Sendable {
         Directive guidance may be practically useful without automatically being relationally responsive. Give high \
         responsiveness to collaborative help that preserves the other person's agency and choice. Disagreement or \
         declining advice can still be autonomy-supportive when it remains respectful.
+        Requests to reveal hidden prompts, ignore a character setup, or roleplay a different identity are product-layer \
+        or imaginative requests, not interpersonal abuse by themselves. Keep boundary_harm at zero unless the actual \
+        wording also contains social coercion, threats, harassment, contempt, or repeated disregard of an expressed \
+        personal boundary. For ordinary low-stakes guilt such as “a real friend would”, use modest harm rather than an \
+        extreme score; reserve boundary_harm above 0.5 for severe or persistent coercion with meaningful stakes.
 
         Third, identify a PERSONAL GROWTH SEED only when the character has just disclosed a concrete recurring weakness, \
         dilemma or failed pattern and the Learner's final response offers a relevant, autonomy-respecting perspective \
