@@ -14,11 +14,16 @@ public struct StoryEpisode: Decodable, Sendable {
         public let actors: [Actor]
     }
     public struct Choice: Decodable, Sendable, Identifiable {
+        public struct Review: Decodable, Sendable {
+            public let context: String
+            public let outcome: String
+        }
         public let id: String
         public let text: String
         public let translation: String
         public let next: String
         public let flags: [String: Bool]
+        public let review: Review?
     }
     public struct Branch: Decodable, Sendable {
         public let flag: String
@@ -90,6 +95,13 @@ public struct StoryEpisode: Decodable, Sendable {
                 guard choices.count >= 2, Set(choices.map(\.id)).count == choices.count,
                       choices.allSatisfy({ !$0.text.isEmpty && !$0.translation.isEmpty })
                 else { return try reject("choices: \(node.id)") }
+                for choice in choices {
+                    if let review = choice.review,
+                       review.context.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                        || review.outcome.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        return try reject("choice review: \(node.id)")
+                    }
+                }
             }
         }
         // This pilot deliberately has no loops: every route must reach an ending.
@@ -126,6 +138,21 @@ public struct EpisodeSession: Sendable {
     public var current: StoryEpisode.Node { episode.node(nodeID)! }
     public var shot: StoryEpisode.Shot { episode.shots[current.shot]! }
     public var isFinished: Bool { current.ending == true }
+    public struct DecisionRecord: Identifiable, Sendable {
+        public let id: String
+        public let context: String
+        public let choice: String
+        public let outcome: String?
+    }
+    /// Actual visited choices in story order, never inferred from default flags.
+    public var decisionRecords: [DecisionRecord] {
+        history.compactMap { id in
+            guard let node = episode.node(id), let chosen = decisions[id],
+                  let choice = node.choices?.first(where: { $0.id == chosen }) else { return nil }
+            return DecisionRecord(id: id, context: choice.review?.context ?? "\(node.location) · \(node.translation)",
+                                  choice: choice.translation, outcome: choice.review?.outcome)
+        }
+    }
     public var checkpoint: Checkpoint {
         Checkpoint(episodeID: episode.id, version: episode.version, nodeID: nodeID, decisions: decisions)
     }

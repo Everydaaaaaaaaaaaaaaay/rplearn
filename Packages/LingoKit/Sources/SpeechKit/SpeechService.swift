@@ -159,7 +159,7 @@ public actor AppleTTSService: SpeechService {
             replaceSynthesizer()
         }
         let utterance = AVSpeechUtterance(string: request.text)
-        utterance.voice = bestVoice(for: request.language)
+        utterance.voice = characterVoice(for: request) ?? bestVoice(for: request.language)
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
         utterance.postUtteranceDelay = 0.1
         synthesizer.speak(utterance)
@@ -211,6 +211,21 @@ public actor AppleTTSService: SpeechService {
         if let voice {
             voiceCache[language] = voice
         }
+        return voice
+    }
+
+    private func characterVoice(for request: SpeechRequest) -> AVSpeechSynthesisVoice? {
+        guard request.purpose == .characterDialogue, request.language.lowercased().hasPrefix("en"),
+              let hint = request.voiceHint, let genderName = hint.gender?.lowercased(),
+              ["male", "female"].contains(genderName) else { return nil }
+        let key = "\(request.language)-\(hint.stableID)-\(hint.gender ?? "")"
+        if let voice = voiceCache[key] { return voice }
+        let gender: AVSpeechSynthesisVoiceGender = genderName == "male" ? .male : .female
+        let candidates = AVSpeechSynthesisVoice.speechVoices().filter {
+            $0.language.hasPrefix("en") && $0.gender == gender
+        }
+        let voice = Self.selectBestVoice(from: candidates, language: request.language)
+        if let voice { voiceCache[key] = voice }
         return voice
     }
 

@@ -54,6 +54,12 @@ struct StoryEpisodeTests {
         #expect(session.history.contains(privateFirst ? "remember_private" : "remember_format"))
         let complete = EpisodeSession(episode: episode, saved: try JSONEncoder().encode(session.checkpoint))
         #expect(complete.isFinished)
+        #expect(complete.decisionRecords.map(\.id) == ["approach", "tonight"])
+        #expect(complete.decisionRecords.allSatisfy { !$0.context.isEmpty && $0.outcome != nil })
+        #expect(complete.decisionRecords[0].choice == episode.node("approach")?.choices?.first {
+            $0.id == (privateFirst ? "private" : "format")
+        }?.translation)
+        #expect(complete.decisionRecords[1].outcome?.contains(reads ? "读完一页" : "留在台下") == true)
         let advancedPastEnding = session.advance()
         #expect(!advancedPastEnding)
     }
@@ -63,6 +69,7 @@ struct StoryEpisodeTests {
         var session = EpisodeSession(episode: try StoryEpisode.load(data: bundledData()))
         while session.current.choices == nil { let advanced = session.advance(); #expect(advanced) }
         let snapshot = session.checkpoint
+        #expect(session.decisionRecords.isEmpty)
         let advancedPastChoice = session.advance()
         #expect(!advancedPastChoice)
         session.choose("missing")

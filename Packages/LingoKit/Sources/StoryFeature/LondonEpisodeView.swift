@@ -1,3 +1,4 @@
+import AVFoundation
 import CoreKit
 import DesignSystem
 import DictKit
@@ -20,6 +21,9 @@ public struct LondonEpisodeView: View {
     @State private var showHistoryRestart = false
     @State private var showRestart = false
     @State private var wordSelection: TokenSelection?
+    @State private var audio: NarrativeAudioPlayer
+    @State private var soundEnabled = true
+    @State private var spokenStarts = 0
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -33,7 +37,9 @@ public struct LondonEpisodeView: View {
 
     public init(deps: StoryDependencies, storageNamespace: String = "guest") {
         self.deps = deps
+        _audio = State(initialValue: NarrativeAudioPlayer(speech: deps.speech, audioSession: deps.audioSession))
         #if DEBUG
+        _soundEnabled = State(initialValue: ProcessInfo.processInfo.environment["UI_TEST_EPISODE_AUDIO"] != "0")
         if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
             storageKey = "story.preview.departures.london.v1.uitest"
             return
@@ -53,7 +59,7 @@ public struct LondonEpisodeView: View {
                             openingTitle
                                 .padding(.bottom, 20)
                         }
-                        readingPanel(session, maxHeight: geometry.size.height * (dynamicTypeSize.isAccessibilitySize ? 0.70 : session.isFinished ? 0.67 : 0.53))
+                        readingPanel(session, maxHeight: geometry.size.height * (dynamicTypeSize.isAccessibilitySize ? 0.78 : session.isFinished ? 0.76 : 0.53))
                     }
                     .padding(.top, 4)
                     .padding(.bottom, 12)
@@ -93,12 +99,34 @@ public struct LondonEpisodeView: View {
         .preferredColorScheme(.dark)
         .task { await load() }
         .task(id: autoplayIdentity) { await autoplay() }
+        .onChange(of: audioIdentity, initial: true) { _, _ in updateAudio() }
+        .onDisappear { audio.stop() }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
+            if let type = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+               type == AVAudioSession.InterruptionType.began.rawValue {
+                soundEnabled = false
+                automatic = false
+                audio.stop()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { notification in
+            if let reason = notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt,
+               reason == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue {
+                soundEnabled = false
+                automatic = false
+                audio.stop()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in
+            spokenStarts += 1
+        }
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
             onSpeak: { word in
-                Task { await deps.speech.speak(SpeechRequest(text: word, language: "en-US", purpose: .pronunciation)) }
+                audio.play(id: "lookup", request: SpeechRequest(text: word, language: "en-US", purpose: .pronunciation),
+                           rainVolume: 0, pageTurn: false)
             },
             favoriteActions: WordFavoriteActions(
                 contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
@@ -158,6 +186,13 @@ public struct LondonEpisodeView: View {
                     Text(session.episode.acts[session.current.act]).font(.subheadline.weight(.medium))
                 }
                 Spacer(minLength: 0)
+                Button { soundEnabled.toggle() } label: {
+                    Image(systemName: soundEnabled ? "speaker.wave.2" : "speaker.slash")
+                        .frame(width: 44, height: 44)
+                }
+                .accessibilityLabel(soundEnabled ? "关闭剧情声音" : "开启剧情声音")
+                .accessibilityIdentifier("episode.sound")
+                .accessibilityValue(audioAccessibilityValue)
                 Button { showHistory = true } label: {
                     Image(systemName: "text.book.closed").frame(width: 44, height: 44)
                 }.accessibilityLabel("回看对话").accessibilityIdentifier("episode.history")
@@ -203,16 +238,9 @@ public struct LondonEpisodeView: View {
             ZStack(alignment: .topLeading) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 14) {
-                        if session.isFinished {
-                            Text("“")
-                                .font(.custom("Baskerville-Italic", size: 42, relativeTo: .title))
-                                .fontDesign(nil)
-                                .foregroundStyle(gold)
-                                .frame(height: 26, alignment: .topLeading)
-                                .accessibilityHidden(true)
-                        }
                         TappableText(
-                            tokens: TokenCache.tokens(for: session.current.text, cacheKey: "episode-\(session.nodeID)"),
+                            tokens: TokenCache.tokens(for: session.isFinished ? "“\(session.current.text)”" : session.current.text,
+                                                      cacheKey: "episode-quoted-\(session.nodeID)"),
                             contextID: "episode-\(session.nodeID)", textColor: ink, selection: wordSelection,
                             onSelect: { selection in
                                 // An outgoing line may remain visible for a few frames.
@@ -221,15 +249,12 @@ public struct LondonEpisodeView: View {
                             }
                         )
                         .font(session.isFinished
-                              ? .custom("Baskerville-Italic", size: 29, relativeTo: .title2)
+                              ? .custom("Baskerville-Italic", size: 32, relativeTo: .title2)
                               : .system(.body, design: .serif))
                         // The app-wide rounded design otherwise replaces the custom face.
                         .fontDesign(session.isFinished ? nil : .rounded)
                         .italic(session.isFinished)
-                        // Give the short closing line a deliberate two-line measure,
-                        // avoiding a lone “long.” on the second line at normal sizes.
-                        .frame(maxWidth: session.isFinished && !dynamicTypeSize.isAccessibilitySize ? 238 : .infinity,
-                               alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .accessibilityIdentifier("episode.line")
                         if showTranslation {
                             Text(session.current.translation).font(.subheadline).lineSpacing(5)
@@ -259,7 +284,7 @@ public struct LondonEpisodeView: View {
                     .padding(.bottom, 4)
                 }
                 .scrollBounceBehavior(.basedOnSize)
-                .frame(maxHeight: maxHeight - 120)
+                .frame(maxHeight: maxHeight - (session.isFinished ? 178 : 120))
                 .fixedSize(horizontal: false, vertical: true)
                 .id(session.nodeID)
                 .transition(.opacity)
@@ -268,19 +293,32 @@ public struct LondonEpisodeView: View {
             // control alive. No delayed navigation, input lock or background flash.
             .animation(.easeInOut(duration: reduceMotion ? 0.08 : 0.12), value: session.nodeID)
 
+            if session.isFinished {
+                Button { dismiss() } label: {
+                    Label("结束旅程", systemImage: "arrow.right")
+                        .font(.subheadline.weight(.semibold)).foregroundStyle(paper)
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .background(ink, in: RoundedRectangle(cornerRadius: 10))
+                }
+                .buttonStyle(EpisodePressStyle())
+                .accessibilityIdentifier("episode.finish")
+                .padding(.top, 12)
+            }
+
             HStack {
                 Text(session.isFinished ? "本设备已保存 · 样章不发放奖励" : "轻点英文可查词")
                     .font(.system(size: 10)).foregroundStyle(ink.opacity(0.55))
                 Spacer(minLength: 4)
                 if session.current.choices == nil {
                     Button {
-                        if session.isFinished { dismiss() } else { advance() }
+                        if session.isFinished { showRestart = true } else { advance() }
                     } label: {
                         HStack(spacing: 8) {
-                            Text(session.isFinished ? "结束旅程" : "继续").font(.subheadline.weight(.medium))
-                            Image(systemName: "arrow.right").font(.caption)
+                            Text(session.isFinished ? "重走这一站" : "继续").font(.subheadline.weight(.medium))
+                            Image(systemName: session.isFinished ? "arrow.counterclockwise" : "arrow.right").font(.caption)
                         }.foregroundStyle(ink).frame(minWidth: 72, minHeight: 44)
-                    }.buttonStyle(EpisodePressStyle()).accessibilityIdentifier("episode.next")
+                    }.buttonStyle(EpisodePressStyle())
+                        .accessibilityIdentifier(session.isFinished ? "episode.restart" : "episode.next")
                 }
             }.padding(.top, 8)
         }
@@ -300,30 +338,23 @@ public struct LondonEpisodeView: View {
             Text("这一晚，你留下的选择")
                 .font(.headline.weight(.semibold))
                 .accessibilityAddTraits(.isHeader)
-            VStack(alignment: .leading, spacing: 12) {
-                choiceRecord("01", session.flags["askedPrivately"] == true ? "先询问他的意愿" : "先了解规则，不替他报名")
-                choiceRecord("02", session.flags["readTonight"] == true ? "陪伴他完成了第一次试读" : "尊重他今晚先听的决定")
+            VStack(alignment: .leading, spacing: 16) {
+                ForEach(session.decisionRecords) { record in
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(record.context).font(.caption.weight(.semibold))
+                            .foregroundStyle(ink.opacity(0.65))
+                        Text(record.choice).font(.subheadline.weight(.medium))
+                        if let outcome = record.outcome {
+                            Text("本章影响：\(outcome)").font(.caption).lineSpacing(3)
+                                .foregroundStyle(ink.opacity(0.77))
+                        }
+                    }
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityIdentifier("episode.review.\(record.id)")
+                }
             }
-            Button { showRestart = true } label: {
-                Label("重走这一站", systemImage: "arrow.counterclockwise")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(paper)
-                    .frame(maxWidth: .infinity, minHeight: 48)
-                    .background(ink, in: RoundedRectangle(cornerRadius: 10))
-            }
-                .buttonStyle(EpisodePressStyle())
-                .accessibilityIdentifier("episode.restart")
-                .accessibilityHint("确认后从头体验，不影响旧剧情进度")
         }.foregroundStyle(ink)
-    }
-
-    private func choiceRecord(_ number: String, _ text: String) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: 12) {
-            Text(number).font(.caption.monospacedDigit()).foregroundStyle(ink.opacity(0.55))
-                .accessibilityHidden(true)
-            Text(text).font(.subheadline).foregroundStyle(ink.opacity(0.8))
-                .fixedSize(horizontal: false, vertical: true)
-        }
     }
 
     private var historySheet: some View {
@@ -362,22 +393,57 @@ public struct LondonEpisodeView: View {
     private var canAutoAdvance: Bool {
         automatic && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
             && session?.current.choices == nil && session?.isFinished == false
+            && (!soundEnabled || audio.completedID == session?.nodeID)
     }
     private var autoplayIdentity: String { "\(session?.nodeID ?? "")-\(canAutoAdvance)" }
 
     private func autoplay() async {
         guard canAutoAdvance, let current = session?.current else { return }
-        let delay = max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
+        let delay = soundEnabled ? 0.6 : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
         do { try await Task.sleep(for: .seconds(delay)) } catch { return }
         guard !Task.isCancelled, canAutoAdvance, session?.nodeID == current.id else { return }
         advance()
+    }
+
+    private var audioAccessibilityValue: String {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
+            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none")"
+        }
+        #endif
+        return soundEnabled ? "角色配音与环境声已开启" : "剧情静音，查词仍可单独播放"
+    }
+
+    private var canPlayAudio: Bool {
+        soundEnabled && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
+    }
+    private var audioIdentity: String { "\(session?.nodeID ?? "")-\(canPlayAudio)" }
+
+    private func updateAudio() {
+        guard canPlayAudio, let session else { audio.stop(); return }
+        let speaker = session.current.speaker
+        // Fixed identity hints keep each character's local AI voice stable across
+        // launches. The player's voice is a narrative convention, not their profile.
+        let identity = speaker == "Oliver" ? "london.oliver" : speaker == "Nora" ? "london.nora"
+            : speaker == "你" ? "london.player" : "london.narrator"
+        let request = SpeechRequest(text: session.current.text, language: "en-GB", purpose: .characterDialogue,
+                                    voiceHint: SpeechVoiceHint(stableID: identity,
+                                                              gender: speaker == "Oliver" ? "male" : "female"))
+        // The rain has stopped at the ending; inside, only distant window rain.
+        let rain: Float = session.current.act == 5 ? 0 : session.shot.background == "london_exterior" ? 0.25 : 0.06
+        audio.play(id: session.nodeID, request: session.current.choices == nil ? request : nil,
+                   rainVolume: rain, pageTurn: session.nodeID != session.episode.start)
     }
 
     private func save() {
         guard let cp = session?.checkpoint, let data = try? JSONEncoder().encode(cp) else { return }
         UserDefaults.standard.set(data, forKey: storageKey)
     }
-    private func advance() { session?.advance(); save() }
+    private func advance() {
+        session?.advance()
+        if session?.isFinished == true { automatic = false }
+        save()
+    }
     private func choose(_ id: String) {
         session?.choose(id); save()
     }

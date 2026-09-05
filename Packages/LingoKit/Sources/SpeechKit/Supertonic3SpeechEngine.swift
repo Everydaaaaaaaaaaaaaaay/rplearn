@@ -224,6 +224,10 @@ actor Supertonic3SpeechEngine {
         let task = playbackTask
         playbackTask = nil
         task?.cancel()
+        // A failed synthesis can be awaiting Apple playback inside this task.
+        // Stop that fallback before joining it, otherwise a skipped story line
+        // continues speaking and blocks the next request until its natural end.
+        if task != nil { await apple.stopSpeaking() }
         if let player {
             await player.stop()
         }

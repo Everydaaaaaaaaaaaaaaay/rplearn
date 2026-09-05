@@ -12,6 +12,7 @@ final class LondonEpisodeTests: XCTestCase {
         app.launchEnvironment["UI_TEST_TAB"] = "home"
         app.launchEnvironment["UI_TEST_LONDON_EPISODE"] = "1"
         app.launchEnvironment["UI_TEST_EPISODE_FRESH"] = "1"
+        app.launchEnvironment["UI_TEST_EPISODE_AUDIO"] = "0"
     }
     override func tearDown() async throws { app.terminate() }
 
@@ -65,11 +66,14 @@ final class LondonEpisodeTests: XCTestCase {
         screenshot("london-04-reading")
         advanceUntil("episode.restart")
         screenshot("london-05-ending")
-        XCTAssertTrue(app.staticTexts["陪伴他完成了第一次试读"].exists)
+        XCTAssertTrue(app.staticTexts["书架之间 · 他有稿却没报名，你如何帮忙？"].exists)
+        XCTAssertTrue(app.staticTexts["本章影响：Oliver 自愿上场并读完一页，你在台下陪伴，随后给出了具体反馈。"].exists)
         XCTAssertTrue(app.staticTexts["这一晚，你留下的选择"].exists)
         let replay = app.buttons["episode.restart"]
-        XCTAssertGreaterThanOrEqual(replay.frame.height, 48)
-        XCTAssertGreaterThan(replay.frame.width, 250)
+        let finish = app.buttons["episode.finish"]
+        XCTAssertGreaterThanOrEqual(finish.frame.height, 48)
+        XCTAssertGreaterThan(finish.frame.width, 250)
+        XCTAssertLessThan(finish.frame.maxY, replay.frame.minY)
         replay.tap()
         XCTAssertTrue(app.buttons["从头开始"].waitForExistence(timeout: 3))
         if app.buttons["取消"].exists {
@@ -82,7 +86,7 @@ final class LondonEpisodeTests: XCTestCase {
         app.buttons["episode.history"].tap()
         XCTAssertTrue(app.buttons["继续阅读"].waitForExistence(timeout: 3))
         app.buttons["继续阅读"].tap()
-        app.buttons["episode.close"].tap()
+        app.buttons["episode.finish"].tap()
         XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 1))
     }
 
@@ -127,8 +131,8 @@ final class LondonEpisodeTests: XCTestCase {
         for _ in 0..<3 { app.buttons["episode.next"].tap() }
         screenshot("london-08-listening")
         advanceUntil("episode.restart")
-        XCTAssertTrue(app.staticTexts["尊重他今晚先听的决定"].exists)
-        XCTAssertTrue(app.staticTexts["先了解规则，不替他报名"].exists)
+        XCTAssertTrue(app.staticTexts["本章影响：你们留在台下；他私下分享了第一句，并决定下次带一页来。"].exists)
+        XCTAssertTrue(app.staticTexts["先问 Nora 活动形式，不提 Oliver 的名字。"].exists)
         app.buttons["episode.history"].tap()
         XCTAssertTrue(app.buttons["重玩"].waitForExistence(timeout: 3))
         app.buttons["重玩"].tap()
@@ -169,5 +173,32 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertFalse(app.buttons["episode.next"].exists)
         app.buttons["episode.choice.private"].tap()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 3))
+    }
+
+    func testNarrationStartsAndMuteStopsAutomaticAdvance() {
+        app.launchEnvironment["UI_TEST_EPISODE_AUDIO"] = "1"
+        app.launch()
+        let sound = app.buttons["episode.sound"]
+        XCTAssertTrue(sound.waitForExistence(timeout: 20))
+        let began = NSPredicate(format: "value CONTAINS %@", "starts:1;")
+        expectation(for: began, evaluatedWith: sound)
+        waitForExpectations(timeout: 45)
+        XCTAssertEqual(sound.label, "关闭剧情声音")
+        app.buttons["episode.auto"].tap()
+        XCTAssertTrue(app.staticTexts["空着的\n那把椅子"].exists)
+        app.buttons["episode.auto"].tap()
+        // A line is audible even with auto advance off. Muting stops it, while
+        // ordinary reading remains manual and lookup retains its own play action.
+        sound.tap()
+        XCTAssertEqual(sound.label, "开启剧情声音")
+        XCTAssertTrue((sound.value as? String)?.contains("completed:none") == true)
+        app.buttons["episode.next"].tap()
+        XCTAssertTrue(app.buttons["episode.next"].exists)
+        sound.tap()
+        let resumed = NSPredicate(format: "value CONTAINS %@", "starts:2;")
+        expectation(for: resumed, evaluatedWith: sound)
+        waitForExpectations(timeout: 45)
+        app.buttons["episode.close"].tap()
+        XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 2))
     }
 }
