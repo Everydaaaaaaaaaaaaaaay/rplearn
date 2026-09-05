@@ -21,6 +21,8 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     /// 服务端头像库中的稳定标识与下载地址。已分配后不随同步重新匹配。
     public var avatarID: String?
     public var avatarRemoteURL: String?
+    public var avatarAttribution: String?
+    public var avatarSourceURL: String?
     public var signature: String?
     /// 角色设定中的月日或完整 ISO 日期；虚构资料不与用户隐私混用。
     public var birthday: String?
@@ -43,6 +45,8 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         avatarAssetName: String? = nil,
         avatarID: String? = nil,
         avatarRemoteURL: String? = nil,
+        avatarAttribution: String? = nil,
+        avatarSourceURL: String? = nil,
         signature: String? = nil,
         birthday: String? = nil,
         hometown: String? = nil,
@@ -63,6 +67,8 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         self.avatarAssetName = avatarAssetName
         self.avatarID = avatarID
         self.avatarRemoteURL = avatarRemoteURL
+        self.avatarAttribution = avatarAttribution
+        self.avatarSourceURL = avatarSourceURL
         self.signature = signature
         self.birthday = birthday
         self.hometown = hometown

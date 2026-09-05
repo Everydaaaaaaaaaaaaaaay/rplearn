@@ -14,6 +14,7 @@ import { registerNpcRoutes } from "../../src/modules/npc/routes.js";
 import { createNpcService } from "../../src/modules/npc/service.js";
 import type { PublicNpc } from "../../src/modules/npc/types.js";
 import { newEntityId } from "../../src/shared/id.js";
+import { avatarMetadata } from "../helpers/npc-avatars.js";
 import { createTestJobWorker } from "../helpers/jobs.js";
 
 const runIntegrationTests = process.env.RUN_INTEGRATION_TESTS === "true";
@@ -39,7 +40,7 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     background: "A community radio producer who collects neighborhood stories.",
     birthday: "04-18",
     gender: "female",
-    hobbies: ["逛周末市场", "录制环境声音"],
+    hobbies: ["羽毛球", "录制环境声音"],
     hometown: "Bristol",
     languages: ["English"],
     name: "Nora Hale",
@@ -100,17 +101,20 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     accessToken = token.accessToken;
     userId = token.userId;
     await dependencies.database.sql`
-      insert into app.npc_avatars (id, image_url, tags)
+      insert into app.npc_avatars (id, family_id, image_url, metadata)
       values (
         ${avatarId},
+        ${avatarId},
         'https://cdn.example.com/npc/nora.webp',
-        '["gender:female", "age:adult"]'::jsonb
+        ${JSON.stringify(avatarMetadata)}::jsonb
       )
     `;
   });
 
   afterAll(async () => {
     await app.close();
+    await dependencies.database
+      .sql`delete from app.user_npc_avatars where user_id = ${userId}`;
     await dependencies.database.sql`
       delete from app.public_npcs where id in (${firstNpcId}, ${secondNpcId})
     `;
@@ -137,6 +141,8 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     expect(registered.avatar).toEqual({
       id: avatarId,
       url: "https://cdn.example.com/npc/nora.webp",
+      attribution: "Test artist",
+      sourceUrl: "https://example.com/test-art",
     });
 
     const replay = await app.inject({
@@ -153,11 +159,11 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
       payload: { card: { ...card, name: "Mara Hale" }, id: secondNpcId },
       url: "/v1/npcs",
     });
-    const other = second.json<PublicNpc>();
-    expect(other.travelerId).not.toBe(registered.travelerId);
-    expect(other.avatar).toBeNull();
+    expect(second.statusCode).toBe(503);
+    expect(second.json<{ code: string }>().code).toBe("NPC_AVATAR_UNAVAILABLE");
 
     const publicLookup = await app.inject({
+      headers: headers(),
       method: "GET",
       url: `/v1/npcs/by-traveler-id/${registered.travelerId}`,
     });

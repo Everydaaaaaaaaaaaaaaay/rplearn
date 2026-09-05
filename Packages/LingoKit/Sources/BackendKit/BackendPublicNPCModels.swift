@@ -81,10 +81,14 @@ public struct BackendPublicNPC: Codable, Sendable, Equatable {
     public struct Avatar: Codable, Sendable, Equatable {
         public let id: UUID
         public let url: URL
+        public let attribution: String?
+        public let sourceUrl: URL?
 
-        public init(id: UUID, url: URL) {
+        public init(id: UUID, url: URL, attribution: String? = nil, sourceUrl: URL? = nil) {
             self.id = id
             self.url = url
+            self.attribution = attribution
+            self.sourceUrl = sourceUrl
         }
     }
 
@@ -137,7 +141,7 @@ private struct LinkPublicNPCBody: Encodable, Sendable {
 
 extension BackendClient: PublicNPCRegistry {
     public func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC {
-        try await publicGet("/v1/npcs/by-traveler-id/\(travelerID)")
+        try await get("/v1/npcs/by-traveler-id/\(travelerID)")
     }
 
     public func registerPublicNPC(

@@ -441,6 +441,8 @@ public actor RosterStore {
                 avatarAssetName: entity.avatarAssetName,
                 avatarId: card?.avatarID,
                 avatarRemoteUrl: card?.avatarRemoteURL,
+                avatarAttribution: card?.avatarAttribution,
+                avatarSourceUrl: card?.avatarSourceURL,
                 background: card?.background,
                 birthday: card?.birthday,
                 gender: entity.genderRaw,

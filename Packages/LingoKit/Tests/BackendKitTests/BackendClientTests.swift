@@ -113,6 +113,25 @@ struct BackendClientTests {
         #expect(requests.last?.value(forHTTPHeaderField: "authorization") == "Bearer login-access")
     }
 
+    @Test("NPC lookup includes the user's token for their private avatar binding")
+    func npcLookupAuthenticates() async throws {
+        let transport = MockTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentialStore(),
+            transport: transport
+        )
+        _ = try await client.login(
+            email: "traveler@example.com", password: "test-password",
+            device: BackendDevice(appVersion: "1.0", deviceID: "test-device", deviceName: "Test")
+        )
+        // The transport intentionally returns 404; this assertion is about account scoping.
+        _ = try? await client.findPublicNPC(travelerID: "12345678901")
+        let requests = await transport.requests
+        #expect(requests.last?.url?.path == "/v1/npcs/by-traveler-id/12345678901")
+        #expect(requests.last?.value(forHTTPHeaderField: "authorization") == "Bearer login-access")
+    }
+
     @Test("concurrent requests share one refresh rotation")
     func singleFlightRefresh() async throws {
         let store = MemoryCredentialStore(

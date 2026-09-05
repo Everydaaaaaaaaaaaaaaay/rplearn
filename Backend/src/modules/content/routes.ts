@@ -129,6 +129,8 @@ const characterPayload = z
         avatarAssetName: nullableText(256),
         avatarId: nullableText(128),
         avatarRemoteUrl: z.url().max(2_048).nullable().optional(),
+        avatarAttribution: nullableText(2_000),
+        avatarSourceUrl: z.url().max(2_048).nullable().optional(),
         background: nullableText(4_000),
         birthday: nullableText(32),
         gender: z.enum(["male", "female", "other"]),

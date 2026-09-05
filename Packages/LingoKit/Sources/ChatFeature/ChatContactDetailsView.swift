@@ -52,6 +52,16 @@ struct ChatContactDetailsView: View {
                 }
             }
 
+            if let attribution = viewModel.character.card.avatarAttribution, !attribution.isEmpty {
+                Section("头像来源") {
+                    Text(attribution)
+                    if let source = viewModel.character.card.avatarSourceURL,
+                       let url = URL(string: source), url.scheme == "https" {
+                        Link("查看来源与授权", destination: url)
+                    }
+                }
+            }
+
             Section("聊天设置") {
                 Toggle("特别关心", systemImage: "star.fill", isOn: favoriteBinding)
                 Toggle("置顶聊天", systemImage: "pin.fill", isOn: pinnedBinding)
@@ -165,7 +175,9 @@ struct ChatContactDetailsView: View {
                 name: viewModel.character.displayName,
                 size: 58,
                 imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                attribution: viewModel.character.card.avatarAttribution,
+                sourceURL: viewModel.character.card.avatarSourceURL.flatMap(URL.init(string:))
             )
             VStack(alignment: .leading, spacing: 3) {
                 Text(viewModel.character.displayName)
@@ -523,7 +535,9 @@ private struct ChatCharacterProfileView: View {
                         name: character.displayName,
                         size: 96,
                         imageName: character.card.avatarAssetName,
-                        remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                        remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                        attribution: character.card.avatarAttribution,
+                        sourceURL: character.card.avatarSourceURL.flatMap(URL.init(string:))
                     )
                     Text(character.displayName)
                         .font(.title2.bold())

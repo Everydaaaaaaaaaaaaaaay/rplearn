@@ -67,7 +67,9 @@ public struct ChatView: View {
                             name: viewModel.character.displayName,
                             size: 32,
                             imageName: viewModel.character.card.avatarAssetName,
-                            remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                            remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                            attribution: viewModel.character.card.avatarAttribution,
+                            sourceURL: viewModel.character.card.avatarSourceURL.flatMap(URL.init(string:))
                         )
                         Circle()
                             .fill(viewModel.isStreaming ? Color.dsSunset : Color.dsSuccess)
@@ -507,7 +509,9 @@ public struct ChatView: View {
                 name: viewModel.character.displayName,
                 size: 30,
                 imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                attribution: viewModel.character.card.avatarAttribution,
+                sourceURL: viewModel.character.card.avatarSourceURL.flatMap(URL.init(string:))
             )
         } else {
             Color.clear

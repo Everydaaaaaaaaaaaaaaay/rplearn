@@ -130,7 +130,9 @@ struct EncounterCardSheet: View {
                     name: card.name,
                     size: 82,
                     imageName: card.avatarAssetName,
-                    remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:))
+                    remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    attribution: card.avatarAttribution,
+                    sourceURL: card.avatarSourceURL.flatMap(URL.init(string:))
                 )
             }
 

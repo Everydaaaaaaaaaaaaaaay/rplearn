@@ -410,7 +410,9 @@ public struct RosterView: View {
                     name: character.displayName,
                     size: 56,
                     imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    attribution: character.card.avatarAttribution,
+                    sourceURL: character.card.avatarSourceURL.flatMap(URL.init(string:))
                 )
                     .accessibilityHidden(true)
 

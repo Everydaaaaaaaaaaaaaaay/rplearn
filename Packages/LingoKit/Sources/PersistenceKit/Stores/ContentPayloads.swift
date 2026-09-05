@@ -7,6 +7,8 @@ struct ContentCharacterPayload: Codable {
         let avatarAssetName: String?
         var avatarId: String? = nil
         var avatarRemoteUrl: String? = nil
+        var avatarAttribution: String? = nil
+        var avatarSourceUrl: String? = nil
         let background: String?
         var birthday: String? = nil
         let gender: String

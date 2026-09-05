@@ -46,6 +46,8 @@ public enum PublicNPCAdapter {
             background: source.background,
             avatarID: npc.avatar?.id.uuidString.lowercased(),
             avatarRemoteURL: npc.avatar?.url.absoluteString,
+            avatarAttribution: npc.avatar?.attribution,
+            avatarSourceURL: npc.avatar?.sourceUrl?.absoluteString,
             signature: source.signature,
             birthday: source.birthday,
             hometown: source.hometown,

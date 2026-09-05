@@ -200,7 +200,9 @@ public struct ConversationListView: View {
                     name: row.character.displayName,
                     size: 54,
                     imageName: row.character.card.avatarAssetName,
-                    remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                    remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    attribution: row.character.card.avatarAttribution,
+                    sourceURL: row.character.card.avatarSourceURL.flatMap(URL.init(string:))
                 )
                     .accessibilityHidden(true)
                 if unread {

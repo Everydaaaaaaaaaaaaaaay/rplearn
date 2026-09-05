@@ -179,7 +179,9 @@ public struct CharacterProfileView: View {
                 name: character.displayName,
                 size: 96,
                 imageName: card.avatarAssetName,
-                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:))
+                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)),
+                attribution: card.avatarAttribution,
+                sourceURL: card.avatarSourceURL.flatMap(URL.init(string:))
             )
             Text(character.displayName)
                 .font(.title2.bold())
