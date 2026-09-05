@@ -40,21 +40,71 @@ NPC ID 做稳定随机选择。分配时保存偏好、命中项和算法版本�
 6. 使用内容寻址的对象存储路径上传最终 PNG/JPEG/WebP。不要覆盖已发布 URL 的字节。
 7. 写 version=2 清单，先 dry-run，再导入；最后运行覆盖审计，形成下一批素材任务。
 
-目前没有自动抓取、自动授权判断、自动感知去重、对象存储上传或批量生成任务。
-这些步骤由素材操作人员执行；similarityChecked 等字段是审核声明，不是自动检测结论。
+现已提供可恢复的采集、授权条件初筛、SHA-256 去重、dHash 相似图提示、本地审核页、审核导出与 S3 兼容存储上传。
+这些工具不会自动批准授权或文化标签；similarityChecked 等字段仍是审核声明。感知哈希只能提示部分近似图，
+无法完整识别同一作品的不同角度、裁切或跨网站版本。后续批次必须使用累计候选库和累计审核记录，
+与已发布图库一并核查 familyId，不能每批从零分家族。暂未实现批量生成任务。
 AI 素材必须保留 model/prompt，并同样执行权利、文化和质量审核。
+
+## 候选采集与来源
+
+`Backend/npc-avatar-discovery.json` 是 54 个主题的首批检索计划，每主题默认收集 4 张不同字节的候选图。
+这是检索配额，不是审核通过配额，也不代表全球文化覆盖。拒绝候选后应提高相应主题 target 或补充搜索，
+不要删除旧记录或绑定来腾位置。`language` 记录查询语言；查询词本身决定多语言检索，不会自动翻译。
+
+| 来源 | 补充方向 | 初筛条件与限制 |
+| --- | --- | --- |
+| Wikimedia Commons | 体育、音乐、生活、自然和跨地区文化 | 单图许可名称与标准 URL 必须一致；仅自动下载 CC0、CC BY 2.0/2.5/3.0/4.0 且未列限制的候选 |
+| Cleveland Museum of Art | 器物、织物、书法、古典艺术 | 单件 `share_license_status=CC0`；不能把博物馆元数据开放当作全部图片开放 |
+| Art Institute of Chicago | 版画、绘画、设计 | 单件 `is_public_domain=true`；当前环境图像端点返回 403，保留线索等待恢复 |
+| Openverse（本轮检索 Flickr） | 当代生活、民间兴趣、体育、乐器、食物 | 搜索索引只提供线索；只下载白名单图片域名。批准时必须额外记录原作者页面的 `originalSourceCheck` |
+| Metropolitan Museum of Art | 全球器物、棋具、服饰和版画 | 单件 `isPublicDomain=true` 且未附权利限制；审核时核对作品页的 CC0 标记 |
+
+CC BY-SA 等不在当前自动下载清单的许可进入待核查，不等于不可使用。人物、商标、作品内嵌版权、
+文化语境和小图效果均须另审；AI 也不能替代这些核查。Openverse 标签和博物馆搜索命中不能直接写入文化标签。
+检索也保留失败和无结果，这些缺口应驱动扩展来源、调整查询和原创生成。
+
+工作目录 `.avatar-workbench/` 已被 Git 忽略：`collection.json` 为可恢复检查点，`images/` 为原始下载字节，
+`report.json` 为采集统计，`review.html` 提供原图、圆形与 40px 预览。采集报告的 approved 始终为 0，
+正式审核数量和文化库存另见 `reviewed-report.json`。下载配额按尝试次数计，按主题轮换，失败重试让新候选先尝试。
+搜索错误不推进游标；再次成功会清除错误。报告保留尚未成功重试的历史错误，即使主题已被其他来源补足。
+
+同一目录禁止同时运行多个采集进程。异常退出留下 `.collection.lock` 时，先检查其中 PID 已退出，再删除过期锁。
+不要一边采集一边编辑审核数据或发布。0 页 / 0 下载可仅校验本地文件并重建完整报告。
 
 ## 操作命令
 
 在 Backend 目录使用 package.json 固定的 pnpm 10.11.0：
 
 ```bash
+# 采集候选；需要系统 HTTP(S) 代理时，在 Node 24 中启用 NODE_USE_ENV_PROXY=1
+NODE_USE_ENV_PROXY=1 pnpm npc-avatars:collect -- --pages 1 --downloads 120
+# 按主题补图，仍保留完整计划和统计
+NODE_USE_ENV_PROXY=1 pnpm npc-avatars:collect -- --topics weiqi,mahjong,books --pages 1 --downloads 24
+# 只核验已审核文件，生成 reviewed-report.json 和 reviewed.html，不需要 CDN
+pnpm npc-avatars:prepare -- --dir .avatar-workbench --review npc-avatar-pilot-review.json --review-only
+# 指定实际 CDN 后，生成 prepared-manifest.json；此步不上载
+pnpm npc-avatars:prepare -- --dir .avatar-workbench --review review.json --public-base https://YOUR-CDN/npc-avatars/
+# 指定专用公开头像桶，才上传并生成 published-manifest.json
+pnpm npc-avatars:prepare -- --dir .avatar-workbench --review review.json --public-base https://YOUR-CDN/npc-avatars/ --publish --bucket YOUR-AVATAR-BUCKET --prefix npc-avatars --region YOUR-REGION
 pnpm npc-avatars:import -- npc-avatars.example.json --dry-run
 pnpm npc-avatars:audit -- npc-avatars.example.json npc-avatar-personas.example.json
 pnpm npc-avatars:import -- /absolute/path/reviewed-avatars.json
 ```
 
-示例仅示范格式，没有真实图片或许可，enabled=false，不能作为库存导入。dry-run 只校验格式，
+`npc-avatars.example.json` 仅示范格式，没有真实图片或许可，enabled=false，不能作为库存导入。
+`npc-avatar-pilot-review.json` 是 8 张真实候选的 Codex 来源与视觉审核记录，另有 3 条不采用理由；
+它不是发布清单，依赖对应本地检查点和 SHA-256 文件。审核者需填写真实来源、许可通知、展示裁切说明和 familyId。
+Openverse 还需填写 `originalSourceCheck: {pageUrl, licenseUrl, evidence, checkedAt}`，核查原作者页后方可批准。
+同字节不允许拆家族；dHash 接近但确实不同的作品需要 `distinctFrom` 明确记录。
+
+采集退出码 2 表示有保留的搜索/下载错误，已成功成果和检查点仍可用；退出码 1 表示配置或运行错误。
+上传使用 AWS SDK 默认凭据链；非 AWS 存储可加 `--endpoint https://YOUR-S3-ENDPOINT`。不要把密钥写入命令或清单。
+工具不会改桶策略，也不会使用私有语音桶。CDN 基址必须与 bucket/prefix 的实际映射一致。
+上传使用内容寻址键和条件写入，重试发现已有对象时校验字节，禁止覆盖。
+部分上传失败不会输出新的发布清单；重跑可复用已验证对象，正式导入还会重新下载公开 URL 校验。
+
+dry-run 只校验格式，
 不证明图片合法。正式导入先下载最终 HTTPS 文件（不跟随跳转，15 秒超时，上限 5 MiB），
 检查文件签名和 SHA-256，再原子写入数据库。一个清单失败不会部分入库。
 同一 ID 的 URL、SHA-256 和 familyId 不可更改；审核元数据与启用状态可以更新。
@@ -79,5 +129,7 @@ pnpm npc-avatars:import -- /absolute/path/reviewed-avatars.json
 上线前需要完成首批许可审核素材、上传与正式导入，在独立环境演练迁移，并协调部署后端和
 使用认证查询的新版客户端。旧版匿名旅伴号查询会收到认证失败；不可只升级服务器而忽略此兼容变化。
 
-后续优先补充：有来源的文化知识地图、真实素材与感知去重、可恢复的收集/生成/上传任务、
+后续优先补充：有来源的文化知识地图、扩大真实素材审核与跨批次相似家族核查、按审核缺口自动补图与原创生成任务、
 向量检索与偏好理解评估、线上匹配缺口统计、撤图替换和客户端刷新。
+
+首批实际采集、审核和缺口见 [头像采集试运行报告](npc-avatar-pilot.md)。
