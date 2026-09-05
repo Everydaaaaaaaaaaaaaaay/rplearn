@@ -35,45 +35,48 @@ struct TravelDeskSceneLayout {
         assetName: "profile_travel_desk_final",
         profile: .init(
             // 以整个展开的护照夹为定位基准，而非只对齐右侧内页。
-            center: UnitPoint(x: 0.205, y: 0.178),
+            center: UnitPoint(x: 165.0 / 825, y: 330.0 / 1906),
             size: CGSize(width: 104, height: 142),
-            plane: .surface(rotationZ: -9, horizontalShadow: 3),
+            plane: .surface(rotationZ: -11, horizontalShadow: 3, tiltX: 3, tiltY: 0.5),
             contentScale: 0.95
         ),
         coin: .init(
-            center: UnitPoint(x: 0.84, y: 0.20),
+            center: UnitPoint(x: 691.0 / 825, y: 363.0 / 1906),
             size: CGSize(width: 112, height: 112),
-            plane: .surface(rotationZ: 13.5, horizontalShadow: -3),
+            plane: .surface(rotationZ: 18, horizontalShadow: -3, tiltX: 4, tiltY: -0.5),
             contentScale: 0.88
         ),
         learning: .init(
-            center: UnitPoint(x: 0.50, y: 0.495),
+            center: UnitPoint(x: 411.0 / 825, y: 930.0 / 1906),
             size: CGSize(width: 154, height: 192),
-            plane: .surface(rotationZ: -1.5, horizontalShadow: -1),
+            plane: .surface(rotationZ: 0.8, horizontalShadow: -1, tiltX: 2, tiltY: 0),
             contentScale: 1.06
         ),
         favorites: .init(
-            center: UnitPoint(x: 0.20, y: 0.72),
+            // 以弹力绑带左侧的可用封面为中心，排除右侧绑带、书脊与下方书签。
+            center: UnitPoint(x: 150.0 / 825, y: 1443.0 / 1906),
             size: CGSize(width: 120, height: 126),
-            plane: .surface(rotationZ: -11.5, horizontalShadow: 3),
+            plane: .surface(rotationZ: -11.8, horizontalShadow: 3, tiltX: 3, tiltY: 0.5),
             contentScale: 1.02
         ),
         settings: .init(
-            center: UnitPoint(x: 0.77, y: 0.72),
+            // 悬浮于上半段表带，中心沿表盘长轴向上延伸。
+            center: UnitPoint(x: 643.0 / 825, y: 1372.0 / 1906),
             size: CGSize(width: 120, height: 128),
-            plane: .surface(rotationZ: 12, horizontalShadow: -2),
+            plane: .surface(rotationZ: 14.5, horizontalShadow: -2, tiltX: 3, tiltY: -0.5),
             contentScale: 0.96
         ),
         account: .init(
-            center: UnitPoint(x: 0.505, y: 0.785),
+            center: UnitPoint(x: 421.0 / 825, y: 1508.0 / 1906),
             size: CGSize(width: 126, height: 136),
-            plane: .surface(rotationZ: 0, horizontalShadow: -1),
+            plane: .surface(rotationZ: 0.3, horizontalShadow: -1, tiltX: 2, tiltY: 0),
             contentScale: 1.08
         ),
         memory: .init(
-            center: UnitPoint(x: 0.54, y: 0.135),
+            // 位于相机上方，并沿相机轻微右倾的中轴线延伸。
+            center: UnitPoint(x: 463.0 / 825, y: 257.0 / 1906),
             size: CGSize(width: 116, height: 122),
-            plane: .surface(rotationZ: 0, horizontalShadow: 0),
+            plane: .surface(rotationZ: 6, horizontalShadow: 0, tiltX: 4, tiltY: 0.5),
             contentScale: 0.96
         )
     )
@@ -128,12 +131,14 @@ struct SceneHologramPlane {
 
     static func surface(
         rotationZ: Double,
-        horizontalShadow: CGFloat
+        horizontalShadow: CGFloat,
+        tiltX: Double = 6.5,
+        tiltY: Double? = nil
     ) -> SceneHologramPlane {
         SceneHologramPlane(
             rotationZ: rotationZ,
-            tiltX: 6.5,
-            tiltY: rotationZ == 0 ? 0 : (rotationZ > 0 ? -1.4 : 1.4),
+            tiltX: tiltX,
+            tiltY: tiltY ?? (rotationZ == 0 ? 0 : (rotationZ > 0 ? -1.4 : 1.4)),
             perspective: 0.19,
             scaleX: 1,
             scaleY: 0.982,
