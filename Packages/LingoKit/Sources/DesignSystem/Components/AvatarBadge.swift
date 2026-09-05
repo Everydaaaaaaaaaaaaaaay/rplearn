@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 public struct AvatarBadge: View {
     private let name: String
@@ -53,11 +54,20 @@ public struct AvatarBadge: View {
                 case .success(let image):
                     image.resizable().scaledToFill()
                 default:
-                    fallbackContent
+                    localAvatarContent
                 }
             }
-        } else if let imageName, !imageName.isEmpty {
-            Image(imageName)
+        } else {
+            localAvatarContent
+        }
+    }
+
+    @ViewBuilder
+    private var localAvatarContent: some View {
+        // Older character cards can reference assets that are not bundled with the app.
+        // SwiftUI's named Image renders nothing in that case, so resolve it first.
+        if let imageName, !imageName.isEmpty, let image = UIImage(named: imageName) {
+            Image(uiImage: image)
                 .resizable()
                 .scaledToFill()
         } else {
