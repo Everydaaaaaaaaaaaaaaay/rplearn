@@ -54,8 +54,6 @@ extension ContentSyncStore {
             avatarAssetName: payload.card.avatarAssetName,
             avatarID: payload.card.avatarId,
             avatarRemoteURL: payload.card.avatarRemoteUrl,
-            avatarAttribution: payload.card.avatarAttribution,
-            avatarSourceURL: payload.card.avatarSourceUrl,
             signature: payload.card.signature,
             birthday: payload.card.birthday,
             hometown: payload.card.hometown,

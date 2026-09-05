@@ -27,12 +27,7 @@ export type PublicNpcCard = Readonly<{
 }>;
 
 export type PublicNpc = Readonly<{
-  avatar: Readonly<{
-    id: string;
-    url: string;
-    attribution: string;
-    sourceUrl: string | null;
-  }> | null;
+  avatar: Readonly<{ id: string; url: string }> | null;
   card: PublicNpcCard;
   createdAt: string;
   id: string;

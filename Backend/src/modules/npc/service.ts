@@ -8,7 +8,7 @@ import type {
 } from "./types.js";
 
 export type NpcService = Readonly<{
-  find: (userId: string, travelerId: string) => Promise<PublicNpc>;
+  find: (travelerId: string) => Promise<PublicNpc>;
   link: (
     userId: string,
     npcId: string,
@@ -20,7 +20,7 @@ export type NpcService = Readonly<{
 export function createNpcService(database: DatabaseResource): NpcService {
   const repository = new NpcRepository(database);
   return {
-    find: (userId, travelerId) => repository.find(userId, travelerId),
+    find: (travelerId) => repository.find(travelerId),
     link: (userId, npcId, input) => repository.link(userId, npcId, input),
     register: (userId, input) => {
       const cardHash = createHash("sha256")

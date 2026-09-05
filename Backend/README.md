@@ -61,9 +61,7 @@ pnpm npc-avatars:import -- /absolute/path/npc-avatars.json
 
 数据库迁移只追加、不改写已经执行的历史文件；部署时先运行 `pnpm db:migrate`，迁移失败应停止发布，不能通过清空数据库绕过。`migrations/0004_npc_registry.sql` 建立公共 NPC、11 位旅伴号、头像池和用户私有关系映射。
 
-新增 `npc-avatars:collect` 从 Commons、Cleveland、Art Institute、Openverse/Flickr 和 Met 收集候选；`npc-avatars:prepare -- --review review.json --review-only` 校验审核记录与图片，指定 CDN 和 `--publish --bucket` 后才上传。候选与报告保存在 Git 忽略的 `.avatar-workbench/`。
-
-头像文件先放入 HTTPS 对象存储/CDN，使用 `npc-avatars.example.json` 的 version=2 格式记录文化标签、图片家族、SHA-256 与授权审核信息。`npc-avatars:import -- manifest.json --dry-run` 校验格式，正式导入验证实际图片字节；`npc-avatars:audit -- manifest.json npc-avatar-personas.example.json` 输出文化覆盖与连续偶遇耗尽报告。0006 迁移保留历史头像，新增按用户永久绑定；旅伴号查询改为认证接口。详见 [文化头像方案与上线门槛](../docs/npc-avatars.md)。
+头像文件先放入 HTTPS 可访问的对象存储/CDN，再按 `npc-avatars.example.json` 的格式导入清单。导入可重复执行；已被 NPC 永久领取的头像不会被清单更新覆盖。匹配标签当前只使用 `gender:*` 和 `age:young|adult|mature`，明确不以国籍或地域推断外貌。
 
 开发 API 默认监听 `http://127.0.0.1:8080`，OpenAPI 位于 `/docs/openapi.json`。
 生产发布只需按需阅读[部署说明](../docs/backend/DEPLOYMENT.md)。

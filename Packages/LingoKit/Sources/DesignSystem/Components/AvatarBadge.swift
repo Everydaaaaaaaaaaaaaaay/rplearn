@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 public struct AvatarBadge: View {
     private let name: String
@@ -7,8 +6,6 @@ public struct AvatarBadge: View {
     private let size: CGFloat
     private let imageName: String?
     private let remoteURL: URL?
-    private let attribution: String?
-    private let sourceURL: URL?
 
     private static let palette: [Color] = [
         .dsSky, .dsCyan, .dsSunset, .dsSuccess, .dsQuiz, .pink,
@@ -19,17 +16,13 @@ public struct AvatarBadge: View {
         tint: Color? = nil,
         size: CGFloat = 46,
         imageName: String? = nil,
-        remoteURL: URL? = nil,
-        attribution: String? = nil,
-        sourceURL: URL? = nil
+        remoteURL: URL? = nil
     ) {
         self.name = name
         self.tint = tint
         self.size = size
         self.imageName = imageName
         self.remoteURL = remoteURL
-        self.attribution = attribution
-        self.sourceURL = sourceURL
     }
 
     private var stableTint: Color {
@@ -50,14 +43,6 @@ public struct AvatarBadge: View {
         .clipShape(Circle())
         .shadow(color: stableTint.opacity(0.13), radius: size * 0.12, y: size * 0.045)
         .accessibilityLabel(name)
-        .contextMenu {
-            if let attribution, !attribution.isEmpty {
-                Text(attribution)
-            }
-            if let sourceURL, sourceURL.scheme == "https" {
-                Link("头像来源与授权", destination: sourceURL)
-            }
-        }
     }
 
     @ViewBuilder
@@ -68,20 +53,11 @@ public struct AvatarBadge: View {
                 case .success(let image):
                     image.resizable().scaledToFill()
                 default:
-                    localAvatarContent
+                    fallbackContent
                 }
             }
-        } else {
-            localAvatarContent
-        }
-    }
-
-    @ViewBuilder
-    private var localAvatarContent: some View {
-        // Older character cards can reference assets that are not bundled with the app.
-        // SwiftUI's named Image renders nothing in that case, so resolve it first.
-        if let imageName, !imageName.isEmpty, let image = UIImage(named: imageName) {
-            Image(uiImage: image)
+        } else if let imageName, !imageName.isEmpty {
+            Image(imageName)
                 .resizable()
                 .scaledToFill()
         } else {

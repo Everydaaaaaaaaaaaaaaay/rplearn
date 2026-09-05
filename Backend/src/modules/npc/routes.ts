@@ -100,9 +100,8 @@ export function registerNpcRoutes(
 
   app.get(
     "/v1/npcs/by-traveler-id/:travelerId",
-    { schema: { security: [{ bearerAuth: [] }], tags: ["npcs"] } },
+    { schema: { tags: ["npcs"] } },
     async (request, reply) => {
-      const identity = await authenticateRequest(request, authService);
       const { travelerId } = parse(travelerParameters, request.params);
       if (!isValidTravelerId(travelerId)) {
         throw new AppError({
@@ -111,8 +110,8 @@ export function registerNpcRoutes(
           statusCode: 404,
         });
       }
-      reply.header("cache-control", "no-store");
-      return npcService.find(identity.userId, travelerId);
+      reply.header("cache-control", "public, max-age=300");
+      return npcService.find(travelerId);
     },
   );
 

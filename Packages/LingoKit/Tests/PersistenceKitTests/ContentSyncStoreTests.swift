@@ -4,28 +4,6 @@ import Testing
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
-    @Test("头像身份和署名随角色卡导出")
-    func avatarCreditsSurviveExport() async throws {
-        var card = characterCard(name: "Alice")
-        card.avatarID = UUID().uuidString.lowercased()
-        card.avatarRemoteURL = "https://example.com/avatar.webp"
-        card.avatarAttribution = "Artist · CC BY 4.0 · cropped"
-        card.avatarSourceURL = "https://example.com/source"
-        let container = try ModelContainerFactory.makeContainer(inMemory: true)
-        let sync = ContentSyncStore(modelContainer: container)
-        let roster = RosterStore(modelContainer: container)
-        try await sync.activateOwner(userID: UUID())
-        _ = try await roster.addCharacter(card: card, difficulty: .junior3, isFriend: false)
-        let command = try #require(try await sync.takePending().first)
-        let encoded = try #require(command.payloadJSON)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        let payload = try decoder.decode(ContentCharacterPayload.self, from: Data(encoded.utf8))
-        #expect(payload.card.avatarAttribution == card.avatarAttribution)
-        #expect(payload.card.avatarSourceUrl == card.avatarSourceURL)
-        #expect(payload.card.avatarId == card.avatarID)
-    }
-
     @Test("发送中再次编辑会生成下一版本，确认后清空 outbox")
     func versionsInFlightEdits() async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
@@ -91,8 +69,6 @@ struct ContentSyncStoreTests {
                 avatarAssetName: nil,
                 avatarId: "portrait-0042",
                 avatarRemoteUrl: "https://example.invalid/portrait-0042.webp",
-                avatarAttribution: "Artist · CC BY 4.0 · cropped",
-                avatarSourceUrl: "https://example.com/source",
                 background: "Guide",
                 birthday: "08-24",
                 gender: "female",
@@ -183,8 +159,6 @@ struct ContentSyncStoreTests {
         let restoredCharacter = try #require(try await roster.character(id: characterID))
         #expect(restoredCharacter.card.name == "Alice")
         #expect(restoredCharacter.card.avatarID == "portrait-0042")
-        #expect(restoredCharacter.card.avatarAttribution == "Artist · CC BY 4.0 · cropped")
-        #expect(restoredCharacter.card.avatarSourceURL == "https://example.com/source")
         #expect(restoredCharacter.card.signature == "Take the scenic route.")
         #expect(restoredCharacter.card.personaVoice?.values == ["curiosity"])
         #expect(restoredCharacter.travelerID == TravelerIDGenerator.make(from: characterID))
