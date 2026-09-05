@@ -12,8 +12,9 @@
 涉及具体领域时再读：
 
 - [`journey-design.md`](journey-design.md)：主线路线、城市解锁和内容配置入口。
-- [`story-rebuild-plan.md`](story-rebuild-plan.md)：新剧情施工流程、AI 美术一致性、资产契约与验收门槛（规划中，非当前实现）。
-- [`story-direction-draft.md`](story-direction-draft.md)：新剧情创作方向与首个代表片段草案（待确认）。
+- [`story-rebuild-plan.md`](story-rebuild-plan.md)：新剧情施工流程、AI 美术一致性与全量发布门槛。
+- [`story-direction-draft.md`](story-direction-draft.md)：已确认的创作方向与首站范围。
+- [`story-london-production.md`](story-london-production.md)：伦敦日系可玩样章的脚本、资产、限制与验收记录。
 - [`design-system.md`](design-system.md)：视觉方向与 DesignSystem 边界。
 - [`realtime-voice.md`](realtime-voice.md)：端侧实时语音、低成本模型、生命周期与真机验收门槛。
 - [`relationship-system.md`](relationship-system.md)：多维角色关系、好感度计算、时间衰减与校准边界。

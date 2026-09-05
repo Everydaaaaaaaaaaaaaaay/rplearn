@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "episode": "departures_london_v1",
+  "style": "Japanese anime background painting, cel-shaded anime adults, clean delicate lines, warm amber/cool indigo. Photorealistic candidates rejected after user's direction change.",
+  "state": "integrated",
+  "notes": [
+    "Eight final deliverables, plus retained original sources. Runtime files only in App/Resources/StoryArt.",
+    "Generated fake checkerboard is not alpha. Original character RGB retained, local non-generative masks applied.",
+    "No chained image-to-image derivatives; every expression references original Oliver master.",
+    "No external paid API or stock purchase. Current imagegen skill used."
+  ],
+  "assets": [
+    {
+      "id": "london_interior",
+      "raw_path": "Assets/Stories/London/raw/london_interior.png",
+      "target_path": "App/Resources/StoryArt/london_interior.jpg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "has_alpha": false,
+      "bytes": 611912,
+      "sha256": "fbf25142656223a60cdddb8cf4bb0c2fe743363cfa5b87a7ec4654f04e2cc54e",
+      "raw_sha256": "8567aee3f65ab6e6e83657d7190caa32a669b03feb1e7e891da62cd666045344",
+      "prompt": "Use case illustration-story. NEW FINAL STYLE MASTER asset london_interior_anime. JAPANESE ANIME BACKGROUND ART for a high-quality travel visual novel, portrait1024x1536. Clearly hand-painted 2D animation background, elegant fine drawn architecture, gouache-like soft color blocks, gently simplified shapes, warm inviting saturated-but-tasteful anime palette. NOT photorealistic, NOT photographic textures, NOT 3D render. Small fictional London bookshop on rainy evening. Forest-green tall window on LEFT, walnut shelves of plainly colored books along RIGHT wall, arched walnut bookshelf at REAR with two small brass warm lamps, worn wood floor, window shows blue-violet rainy street. Soft peach-gold lamplight, desaturated teal shadows, paper-cream highlights, beautiful lyrical everyday atmosphere. Eye-level coherent perspective. Open center foreground for anime character sprites, no people. Main environment composed through central70%, lower25% floor reserved for native dialogue. Real ordinary rectangular book structures, no nonsensical shelves, no text, no signage, no UI, no logos. The style must visibly read as sophisticated Japanese animated-film environment artwork, not a photo.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [],
+      "processing": "Deterministic JPEG quality92 export from unchanged original, no crop or resizing."
+    },
+    {
+      "id": "london_exterior",
+      "raw_path": "Assets/Stories/London/raw/london_exterior.png",
+      "target_path": "App/Resources/StoryArt/london_exterior.jpg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "has_alpha": false,
+      "bytes": 577408,
+      "sha256": "e440c7fa3060f9d8c97a114b753759257e9785c9943c29ea61c495aae2d76dc7",
+      "raw_sha256": "a06d9e49ecaad0c7e2db5591a8dde02996f6ba680ca18fc746622298297983d9",
+      "prompt": "New asset london_exterior, portrait1024x1536. Reference1 style/materials only. Beautiful JAPANESE ANIME hand-painted background, not a photo. Outside of the same fictional small independent London bookshop at blue-violet rainy evening. Dark forest-green timber shopfront with glazed doorway left, warm book-filled display window right, ordinary brick facade, wet stone pavement. Architecturally plausible door panels and brass handle, no readable signage. Warm peach-gold lights within, muted teal shadows, delicate drawn lines and soft gouache textures matching reference. Eye-level main shopfront centered with room for lower25% dialogue overlay. Quiet inviting London street, NO people, NO UI, NO text, no river, no photographic textures.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "london_interior"
+      ],
+      "processing": "Deterministic JPEG quality92 export from unchanged original, no crop or resizing."
+    },
+    {
+      "id": "london_reading",
+      "raw_path": "Assets/Stories/London/raw/london_reading.png",
+      "target_path": "App/Resources/StoryArt/london_reading.jpg",
+      "dimensions": [
+        1023,
+        1537
+      ],
+      "has_alpha": false,
+      "bytes": 592924,
+      "sha256": "187221289cdce1bda273f15ee3ae3f919a5c3b26c34251f83bcff81805c9846b",
+      "raw_sha256": "5e392fb4104b0066847aae1c3cf61b2a4966129d028098410b2415a5f8fee1cf",
+      "prompt": "New asset london_reading, portrait1024x1536. Reference1 is FIXED room layout/style. Japanese anime hand-painted background of reading corner inside exactly this same bookshop, closer eye-level camera toward arched walnut bookcase, rainy dark green window LEFT, same amber wall lamps and cream pendant, oak floor. Add ONE well-constructed walnut bentwood chair left-center with curved loop back, round wood seat and four legs, small round wooden table on right with one closed cream paperback. Keep shelving/wall/window construction and colors continuous. Detailed 2D anime environment art with delicate lines, soft gouache colors, warm gold/cool indigo, NOT a photograph, no people, no words, no UI. Objects middle70%, lower25% dialogue safe.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "london_interior"
+      ],
+      "processing": "Deterministic JPEG quality92 export from unchanged original, no crop or resizing."
+    },
+    {
+      "id": "oliver_neutral",
+      "raw_path": "Assets/Stories/London/raw/oliver_neutral.png",
+      "target_path": "App/Resources/StoryArt/oliver_neutral.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "has_alpha": true,
+      "bytes": 1490215,
+      "sha256": "832c76072b0ffe99bce2e2f55baba0c982a9b62aca67011329afc106cafc9527",
+      "raw_sha256": "62067899e9cb3539e92bd83ca0a5b3cc034f8b8c9e052b74dfcc6d37d49fe947",
+      "prompt": "Use case illustration-story. NEW canonical Oliver Bennett ANIME character sprite. NOT a real person, NOT realistic portrait, absolutely NO photo texture or skin pores. Beautiful contemporary Japanese visual novel anime male character, age24 adult not child, appealing expressive green anime eyes, refined small nose and clean jaw, tousled chestnut short-medium hair in distinct drawn locks, clean delicate dark linework, elegant 2-3 tone cel shading and subtle soft shading. Warm reserved neutral expression, slight three-quarter toward viewer left, relaxed standing knee-up pose, hands lowered naturally visible with plausible fingers. Worn brown corduroy blazer indicated with restrained drawn fabric lines not real fabric photography, loose charcoal scarf, cream knitted sweater, dark trousers. Reference1 is background STYLE/PALETTE/LIGHT DIRECTION only, NOT identity. Match golden indoor fill and subtle cool left light. Portrait1024x1536, full head with8% top margin and knees at94%, shoulders not cropped, center x50%. Genuine transparent alpha background, no checkerboard, no background scenery, no floor or shadow. Crisp anime sprite silhouette suitable compositing. If alpha unsupported use a single uniform pale ivory background with no pattern, no gradient. No words, no UI, no watermark.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "london_interior"
+      ],
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+    },
+    {
+      "id": "oliver_concerned",
+      "raw_path": "Assets/Stories/London/raw/oliver_concerned.png",
+      "target_path": "App/Resources/StoryArt/oliver_concerned.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "has_alpha": true,
+      "bytes": 1420601,
+      "sha256": "a0b1ad41988e0e8300410ce68190ad6b90a08503425f2bb43c184abe0d6f83a4",
+      "raw_sha256": "29607af3d47e3552e5445a2aefa253a52ff782964b9dc36278d3f55e53dd7f56",
+      "prompt": "Expression variant anime oliver_concerned1024x1536. Reference1 immutable canonical anime Oliver. Keep exact pose, silhouette, head/eye positions, body proportions, coat/scarf/sweater, colors/light/crop. Only change expression: uncertain, slight inward raised eyebrow tension and quiet closed mouth, no sweat marks, no exaggerated expressions. Same green anime eyes, brown hair, clean Japanese visual novel linework/cel-shading, no photorealism. Genuine transparent alpha if supported, never fake checkerboard; otherwise plain pale ivory. No other changes.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "oliver_neutral"
+      ],
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+    },
+    {
+      "id": "oliver_smile",
+      "raw_path": "Assets/Stories/London/raw/oliver_smile.png",
+      "target_path": "App/Resources/StoryArt/oliver_smile.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "has_alpha": true,
+      "bytes": 1436715,
+      "sha256": "4405ed6fec0727bf48e472d397c40bfc639a3b55ff80181b21a998f4e82ac89c",
+      "raw_sha256": "a0dd9d0d8573d75f88cd57a630e7fdac813b3264b27d914a6374480c49864ac3",
+      "prompt": "Expression variant anime oliver_smile1024x1536. Reference1 is immutable canonical anime Oliver, keep exact head/eye position, pose, body proportions, coat, scarf, sweater, colors, materials, lighting and crop. Change ONLY expression to a subtle relieved small closed-mouth smile, eyes and eyebrows softened. Same Japanese anime clean linework, cel-shading, green eyes and brown hair. No photorealism, no new objects, no restyling. True transparent alpha if supported, never painted checkerboard; otherwise plain pale ivory. Preserve silhouette and all non-face details.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "oliver_neutral"
+      ],
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+    },
+    {
+      "id": "nora_neutral",
+      "raw_path": "Assets/Stories/London/raw/nora_neutral.png",
+      "target_path": "App/Resources/StoryArt/nora_neutral.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "has_alpha": true,
+      "bytes": 1230073,
+      "sha256": "e90606550105c6227d8fe0374764e3b811b2a0c2d42a15c64011e9208f2b2f87",
+      "raw_sha256": "47af16ceb0f77d269a0151bf334a7ae37e00d1f8c6f19a6d7897003ee0b62dda",
+      "prompt": "New asset nora_neutral canonical anime woman sprite1024x1536. Reference1 STYLE, cel shading, proportions and light only; different identity. Japanese visual novel anime adult woman about40, warm brown skin in simple cel tones not realistic pores, kind dark expressive anime eyes, dark brown curly hair in a low loose bun, brick-red cardigan over cream blouse, navy trousers. Relaxed knee-up standing, natural lowered hands, calm encouraging expression, slight three-quarter toward viewer left. Same delicate linework and warm golden/cool window palette as reference, no photo textures, no realistic portrait. Entire head and shoulders visible, eye height and body scale match reference. Genuinely transparent alpha background, NO fake checkerboard; if unsupported flat plain pale ivory. No scenery/floor/shadows/text.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "oliver_neutral"
+      ],
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+    },
+    {
+      "id": "london_reading_cg",
+      "raw_path": "Assets/Stories/London/raw/london_reading_cg.png",
+      "target_path": "App/Resources/StoryArt/london_reading_cg.jpg",
+      "dimensions": [
+        1023,
+        1537
+      ],
+      "has_alpha": false,
+      "bytes": 602524,
+      "sha256": "d71ff03f7b3f0f34f48049135999128debb0359c8635d8f26c21d6106ea77dad",
+      "raw_sha256": "6a5aa8f1fea90c9f13b8dae3fb78d093d3439d03d60195a843fa56bec6d280a0",
+      "prompt": "Asset london_reading_cg, portrait1024x1536. NEW JAPANESE ANIME story illustration. Reference1 canonical bookstore reading corner (preserve arched walnut rear shelves, dark green left window, amber lights, bentwood chair and round table). Reference2 canonical anime Oliver identity/clothing (same brown hair/green anime eyes/charcoal scarf/brown corduroy jacket/cream sweater). Draw Oliver standing center-right beside—not through—the chair, facing a small unseen audience toward camera, holding ONE plain cream sheet of paper naturally in both hands at chest level and beginning to read, quietly brave slight smile. Paper backside toward camera, no visible writing. Character must be convincingly inside space with coherent scale, anatomy, contact with floor, lighting warm amber/cool left window. Chair remains left, table remains right behind/beside him without intersection, do not create extra chairs or duplicates. Mid-shot to knees, face around30% image height, lower25% safe for native dialogue overlay. Match refined 2D Japanese visual novel cel-shaded characters with soft hand-painted anime background, not photorealism, not 3D, no skin pores, no UI, no logos, no text.",
+      "status": "integrated",
+      "generator": "built-in image_gen",
+      "references": [
+        "london_reading",
+        "oliver_neutral"
+      ],
+      "processing": "Deterministic JPEG quality92 export from unchanged original, no crop or resizing."
+    }
+  ],
+  "runtime_bytes": 7962372,
+  "real_structure_references": [
+    "https://dauntbooks.co.uk/shops/marylebone/",
+    "https://londoncheapo.com/place/book-comic-exchange/",
+    "https://www.thonet.de/en/all-products/detail/214-p",
+    "https://www.pinterest.com/pin/807973989377775433/"
+  ],
+  "visual_qa": {
+    "date": "2026-09-06",
+    "device": "LingoTrip-WT-c955 / iPhone 17 Pro / iOS 26.1 Simulator",
+    "result": "Reviewed in native player: exterior, both actors, expression switches, choices, reading CG, listening shot and lookup. Five UI cases passed in final targeted reruns. User art approval and physical-device acceptance pending.",
+    "limitations": "No physical-device frame-time or peak-memory measurement. No full voice, music, account-sync, rewards or other new stations."
+  }
+}

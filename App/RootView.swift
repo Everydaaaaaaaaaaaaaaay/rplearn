@@ -37,6 +37,7 @@ struct RootView: View {
     @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
     @State private var showSignIn = false
+    @State private var showLondonEpisode = false
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
@@ -51,6 +52,9 @@ struct RootView: View {
         self.environment = environment
         #if DEBUG
         let requested = ProcessInfo.processInfo.environment["UI_TEST_TAB"]
+        if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
+            _showLondonEpisode = State(initialValue: true)
+        }
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
@@ -110,6 +114,9 @@ struct RootView: View {
 
     var body: some View {
         appContent
+            .fullScreenCover(isPresented: $showLondonEpisode) {
+                LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest")
+            }
             .overlay {
                 if !isInitialContentReady {
                     Color("BrandLaunchBackground")
@@ -392,7 +399,7 @@ struct RootView: View {
     private func homeDestinationView(_ destination: HomeDestination) -> some View {
         switch destination {
         case .stories:
-            StoryHubView(deps: homeDeps)
+            StoryHubView(deps: homeDeps, onPreview: { showLondonEpisode = true })
         case .mainline:
             MainlineListView(deps: homeDeps) { chapter in
                 homePath.append(chapter)
