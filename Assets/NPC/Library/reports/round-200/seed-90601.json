@@ -1,0 +1,4459 @@
+{
+  "seed": 90601,
+  "createdAt": "2026-09-05T23:27:37.272Z",
+  "accepted": 200,
+  "complete": true,
+  "expectedCases": 240,
+  "catalogSha256": "0bfbaa9962aa7d70c5f2131fbe17945ddd172bacfa4beffa53c28b051dc4cb20",
+  "cases": [
+    {
+      "index": 0,
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 1,
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 2,
+      "request": {
+        "age": 27,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:joy"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 3,
+      "request": {
+        "age": 22,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "9bc1b531-e635-4f40-ac3b-1c1ce12f9c2b",
+      "fetchedSha256": "baae55664dc42b03d72d1b055492333717232ae120379df38a6d5f1c67291f02"
+    },
+    {
+      "index": 4,
+      "request": {
+        "age": 55,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "97847cca-7058-4e6b-abcb-f2124acecc47",
+      "fetchedSha256": "f56984cf9aabb8fb4a55238cffbbfb2a37e9252efc639c144668378e0f83da5e"
+    },
+    {
+      "index": 5,
+      "request": {
+        "age": 27,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "446cd563-c16c-489b-a5ba-e3d85c154e4f",
+      "fetchedSha256": "0b56a63a520750dad9ef79257ec68f7ece943ec611fd024e34fd1f753d340c79"
+    },
+    {
+      "index": 6,
+      "request": {
+        "age": 73,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 19,
+      "selectedAvatarId": "186950e9-ea71-4179-ace7-0bb0fc7b1b91",
+      "fetchedSha256": "5c08856f1a4f71405eb47c43b425e69bd989289dce8afaaff0203a71b6d06b73"
+    },
+    {
+      "index": 7,
+      "request": {
+        "age": 68,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 28,
+      "unseenCount": 28,
+      "selectedAvatarId": "92970e30-c231-4d91-ad34-fd68f9debfab",
+      "fetchedSha256": "e94fbd1d338155518142975ce678443579ef67a048bb1cb808d2aa6bde781f21"
+    },
+    {
+      "index": 8,
+      "request": {
+        "age": 35,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 21,
+      "unseenCount": 21,
+      "selectedAvatarId": "e4c73371-1ed9-4bc6-a9fd-ace451e339bb",
+      "fetchedSha256": "f9bb834b9733af28b9ddac543ab3b7f59f089036a168b11757e2bb0765b18442"
+    },
+    {
+      "index": 9,
+      "request": {
+        "age": 85,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 11,
+      "unseenCount": 11,
+      "selectedAvatarId": "77cfb922-1ec0-4c3f-a3d3-93b03a8455ec",
+      "fetchedSha256": "76ba16f941c07d00fe01b54c4429e9b8769a8f7dc5fb8e166148c266ad1a7458"
+    },
+    {
+      "index": 10,
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 11,
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 12,
+      "request": {
+        "age": 54,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "43a6abbf-97d8-4a63-a91e-33837d2c3e32",
+      "fetchedSha256": "6b112200b5f95333d41b379e3d5b20e7e20dc1b5d552dac49af5a7ee2ab087b6"
+    },
+    {
+      "index": 13,
+      "request": {
+        "age": 32,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 21,
+      "selectedAvatarId": "d6f7baa2-b9ea-44e4-a03c-e56489798659",
+      "fetchedSha256": "98ad433756ae744e5c4eec0dda4521fbc02f11fd4221b81c42a77c741b251218"
+    },
+    {
+      "index": 14,
+      "request": {
+        "age": 58,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 17,
+      "selectedAvatarId": "b081392f-ad3a-409b-a44a-0c96d74421d5",
+      "fetchedSha256": "cfec5c25e263cf3976712b70ff69a3cdba9bbfb5c5f11e9b3514c91a481a3859"
+    },
+    {
+      "index": 15,
+      "request": {
+        "age": 73,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "59960690-fac4-4117-ae0d-16b16cddd6e8",
+      "fetchedSha256": "26b28b465c1b92e16098769eee250e3a0e62fa9489febfd53e88ff63bce796e6"
+    },
+    {
+      "index": 16,
+      "request": {
+        "age": 50,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "19738e62-2e31-4eae-ac4b-34cbc4de0b5d",
+      "fetchedSha256": "7d923c0c5809e3029599c39a78cc9c3eaa46bb83593ee4ceb362c7f08a5a6610"
+    },
+    {
+      "index": 17,
+      "request": {
+        "age": 62,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "92164672-704c-4cd4-aed1-4f081b3d3566",
+      "fetchedSha256": "9cd41a6806aacac47c40db09bb1d884e65eb397f26dfb4d7e84aaca0e90bc904"
+    },
+    {
+      "index": 18,
+      "request": {
+        "age": 66,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "4423f6b5-b282-4f17-a092-480f08fc2c55",
+      "fetchedSha256": "b86d5dfaafd20a588f353e1ae0e5f7e0b8fb28d48527b39e37c4620d4048cf46"
+    },
+    {
+      "index": 19,
+      "request": {
+        "age": 18,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "5ab1e25a-8ffd-4fe5-afc4-146aeca7ca3c",
+      "fetchedSha256": "1f3c3f90bc3612ce1c15bae8c26937a28829500a1cf00fcd4da5e4a702a50de3"
+    },
+    {
+      "index": 20,
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:full"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 21,
+      "request": {
+        "age": 64,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "fc46487d-3e91-4278-ae8d-cd383fc77156",
+      "fetchedSha256": "81f8b2ab4a5ef003ff8fa757704e684e6efd9ba271f84b0a29067d88dbb6eacd"
+    },
+    {
+      "index": 22,
+      "request": {
+        "age": 45,
+        "gender": "other",
+        "requiredTags": [
+          "expression:joy"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "8b2ebc51-c6ed-4a92-a777-37dae36c7994",
+      "fetchedSha256": "dfb2b6efa0e5cab75f6ce0f83e8b505ababf2e0269e0bf8dd05c5374d18a2510"
+    },
+    {
+      "index": 23,
+      "request": {
+        "age": 18,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 17,
+      "selectedAvatarId": "2e14e820-d640-4f17-a8c9-64cb538aa41f",
+      "fetchedSha256": "1c50590f2c925d59761be1bde19b92ec491fa06173c8a16e572ade438f2c9008"
+    },
+    {
+      "index": 24,
+      "request": {
+        "age": 22,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 18,
+      "unseenCount": 18,
+      "selectedAvatarId": "23c3da77-7bb9-4b4d-a956-d85722549628",
+      "fetchedSha256": "04b606e327488b32b0eb2a655dbc54429152aeda1f9969f15a7bf7303443b869"
+    },
+    {
+      "index": 25,
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "f1f51625-09a9-407b-add0-0c18dcb2a4d3",
+      "fetchedSha256": "ba201257aeaee70e2726c3f8cc1a9187512c20b201d9cde71ceff195ea057676"
+    },
+    {
+      "index": 26,
+      "request": {
+        "age": 19,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "fc0e6501-66c2-4be6-ada8-f6ee518af075",
+      "fetchedSha256": "bec55516979893758308323273151d3b1932c1e6035f16a32ea6da8e3682cd7f"
+    },
+    {
+      "index": 27,
+      "request": {
+        "age": 77,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "92970e30-c231-4d91-ad34-fd68f9debfab",
+      "fetchedSha256": "e94fbd1d338155518142975ce678443579ef67a048bb1cb808d2aa6bde781f21"
+    },
+    {
+      "index": 28,
+      "request": {
+        "age": 34,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "29fad633-3982-49f5-ab06-aab41e361b82",
+      "fetchedSha256": "43288a837775654d8380f27289e79bb1e55d817e7b089802105c44263e33d4ce"
+    },
+    {
+      "index": 29,
+      "request": {
+        "age": 69,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "a9df26e7-8913-45fc-af01-b9e821ab13c5",
+      "fetchedSha256": "ea01760e1eb1af8ade7b07f6de351fb001eea51c1274809e323e5d6a7fb2fcba"
+    },
+    {
+      "index": 30,
+      "request": {
+        "age": 56,
+        "gender": "male",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "95194921-2171-4bb5-af0b-4c86cd894e7b",
+      "fetchedSha256": "1622dcc0e58ff2d0566c20da7a634c5d71ab3994984b0518d1eefcce5ab979d5"
+    },
+    {
+      "index": 31,
+      "request": {
+        "age": 81,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "25105e43-eec2-4605-ab7e-75253158b99a",
+      "fetchedSha256": "d3bf16dbd9ed066b8fe3b25acc133b4599df45c558af63d358c40b868fe1a5e6"
+    },
+    {
+      "index": 32,
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "aedd3d5c-9462-4680-adcc-528e79889445",
+      "fetchedSha256": "d16110a4bf2471e65d0722df322ea90775d700b1ebfa089377f2dc9d852b2f57"
+    },
+    {
+      "index": 33,
+      "request": {
+        "age": 30,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "b1b53709-9c3a-48b0-afa5-34fe520c7e9a",
+      "fetchedSha256": "38e9dfa102ddfc745f97ae7fe9a18368688a7776349b9ca15d4cde731b65cfa7"
+    },
+    {
+      "index": 34,
+      "request": {
+        "age": 68,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "bceff8f2-52c4-4bae-a87c-646389e76b03",
+      "fetchedSha256": "05034e5f97f2e46c3e9fb331d96878facfebdf55686fd99945f344c2703fb489"
+    },
+    {
+      "index": 35,
+      "request": {
+        "age": 26,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "9563345c-7f41-4ee7-aa40-c13d8c5768f9",
+      "fetchedSha256": "5c5cbaa2e5448bf636f63e66c20958bc0b727119dbe03e25509716ad9d49442f"
+    },
+    {
+      "index": 36,
+      "request": {
+        "age": 81,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 15,
+      "unseenCount": 15,
+      "selectedAvatarId": "eb37fce9-b2c6-4a2d-a460-4b37b223a96e",
+      "fetchedSha256": "6cc90737393cdb8ead5dcac01756123c578e7345249d032e4be617df40a619f5"
+    },
+    {
+      "index": 37,
+      "request": {
+        "age": 85,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "e8771450-06f4-417c-a764-a35e78428964",
+      "fetchedSha256": "77a7dac39d7a7664d2f4629eb42d5624da7ccf71068e2b6643b96277dbe1de68"
+    },
+    {
+      "index": 38,
+      "request": {
+        "age": 47,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "3d136f55-b180-4812-a2ee-3141dc9f1e47",
+      "fetchedSha256": "310c7afa21ae316ef4420aa3824d3fed4c04f66d61537612f7577ee34c650863"
+    },
+    {
+      "index": 39,
+      "request": {
+        "age": 18,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "7c86906c-fda2-45cd-ad80-060cbad8ad91",
+      "fetchedSha256": "525e738571d9a215df625dfd3ca974083d07fa632051d8cba4b304c75feda857"
+    },
+    {
+      "index": 40,
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 41,
+      "request": {
+        "age": 48,
+        "gender": "male",
+        "requiredTags": [
+          "facing:right"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 7,
+      "unseenCount": 7,
+      "selectedAvatarId": "68861da6-3531-4945-a5c1-9eac9313a94f",
+      "fetchedSha256": "fd1a86a12ef4ab46b9bd388dc84550b4c36afa89f3ff978cf7d3c470dbb22168"
+    },
+    {
+      "index": 42,
+      "request": {
+        "age": 71,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "expression:joy"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "f3af5c8a-f028-4fde-af0b-582d2453138c",
+      "fetchedSha256": "761134b49e09aa863f22102ae6c2e79fd930026c6028fb1ded5e9e9b84056d51"
+    },
+    {
+      "index": 43,
+      "request": {
+        "age": 69,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "8b2ebc51-c6ed-4a92-a777-37dae36c7994",
+      "fetchedSha256": "dfb2b6efa0e5cab75f6ce0f83e8b505ababf2e0269e0bf8dd05c5374d18a2510"
+    },
+    {
+      "index": 44,
+      "request": {
+        "age": 46,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 18,
+      "selectedAvatarId": "b1b53709-9c3a-48b0-afa5-34fe520c7e9a",
+      "fetchedSha256": "38e9dfa102ddfc745f97ae7fe9a18368688a7776349b9ca15d4cde731b65cfa7"
+    },
+    {
+      "index": 45,
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "b74417dc-3e16-4f55-ab29-36206e86ea15",
+      "fetchedSha256": "93e2b5528b16379edaeee8fa2c76f649a57a65de8066fcbc1d8ba18ce9cb1664"
+    },
+    {
+      "index": 46,
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 18,
+      "selectedAvatarId": "b488c16c-714c-4d14-ae2b-680134115ad2",
+      "fetchedSha256": "b7136478cf57a852ad77c8c0598516a5388609c0f6e7eea54953289d3233a58a"
+    },
+    {
+      "index": 47,
+      "request": {
+        "age": 58,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 15,
+      "unseenCount": 15,
+      "selectedAvatarId": "e9b2bd4b-0180-4107-a573-107ce952d768",
+      "fetchedSha256": "94a89ce289aecc12867d0d7b308ccfc8279cb1579d4dcdd286b76f990ae27db6"
+    },
+    {
+      "index": 48,
+      "request": {
+        "age": 83,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "25105e43-eec2-4605-ab7e-75253158b99a",
+      "fetchedSha256": "d3bf16dbd9ed066b8fe3b25acc133b4599df45c558af63d358c40b868fe1a5e6"
+    },
+    {
+      "index": 49,
+      "request": {
+        "age": 35,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "1da7d901-d68e-447c-a216-787694c092cd",
+      "fetchedSha256": "57f745c3caccbd06276e7e0201e954844c98da6f48e78321e929fe00b7a8de4d"
+    },
+    {
+      "index": 50,
+      "request": {
+        "age": 60,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 51,
+      "request": {
+        "age": 81,
+        "gender": "male",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "a9df26e7-8913-45fc-af01-b9e821ab13c5",
+      "fetchedSha256": "ea01760e1eb1af8ade7b07f6de351fb001eea51c1274809e323e5d6a7fb2fcba"
+    },
+    {
+      "index": 52,
+      "request": {
+        "age": 75,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 22,
+      "selectedAvatarId": "9b94b12e-5c46-4520-a366-7fe91dbc53c3",
+      "fetchedSha256": "5a3840578a2aae1329b216d869f6618e734d5a1dcc39d07ebc8a40976967c8da"
+    },
+    {
+      "index": 53,
+      "request": {
+        "age": 35,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "68861da6-3531-4945-a5c1-9eac9313a94f",
+      "fetchedSha256": "fd1a86a12ef4ab46b9bd388dc84550b4c36afa89f3ff978cf7d3c470dbb22168"
+    },
+    {
+      "index": 54,
+      "request": {
+        "age": 14,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "943f6fca-2ffe-42de-a379-37491b635944",
+      "fetchedSha256": "6fa1722838300d4c39847a62250f1204712bfec562c4b871111f34a4b64cd756"
+    },
+    {
+      "index": 55,
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 56,
+      "request": {
+        "age": 76,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "a9df26e7-8913-45fc-af01-b9e821ab13c5",
+      "fetchedSha256": "ea01760e1eb1af8ade7b07f6de351fb001eea51c1274809e323e5d6a7fb2fcba"
+    },
+    {
+      "index": 57,
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 18,
+      "unseenCount": 18,
+      "selectedAvatarId": "c4c2772e-275d-46c9-adf2-54935c8c025a",
+      "fetchedSha256": "23c9fa756b347f6366662171fed0c9953bdc893ae069e0c3b8770230a5e7e376"
+    },
+    {
+      "index": 58,
+      "request": {
+        "age": 60,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "9dd6f0b9-5571-487b-a7e8-b990205cc001",
+      "fetchedSha256": "523cb3b187d1b92c9b4c15e1dfb1f27a59c451ff979f8053c2dbf00326c0c75a"
+    },
+    {
+      "index": 59,
+      "request": {
+        "age": 61,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 19,
+      "selectedAvatarId": "59960690-fac4-4117-ae0d-16b16cddd6e8",
+      "fetchedSha256": "26b28b465c1b92e16098769eee250e3a0e62fa9489febfd53e88ff63bce796e6"
+    },
+    {
+      "index": 60,
+      "request": {
+        "age": 85,
+        "gender": "other",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 61,
+      "request": {
+        "age": 56,
+        "gender": "male",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 7,
+      "unseenCount": 7,
+      "selectedAvatarId": "a711b0ce-dfa1-4bea-a31b-455b852c9049",
+      "fetchedSha256": "6ca50a513f1a6623770fce3326cb50697d1b4120904c88972f3e7581bc036281"
+    },
+    {
+      "index": 62,
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "expression:surprise"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 63,
+      "request": {
+        "age": 64,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "68863032-eb71-41c7-a2b9-59aa5e622774",
+      "fetchedSha256": "34ed8cc8b4828f49e7799831c068570ba40df0ed0632c191ff65761c671862a7"
+    },
+    {
+      "index": 64,
+      "request": {
+        "age": 65,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 29,
+      "unseenCount": 28,
+      "selectedAvatarId": "92970e30-c231-4d91-ad34-fd68f9debfab",
+      "fetchedSha256": "e94fbd1d338155518142975ce678443579ef67a048bb1cb808d2aa6bde781f21"
+    },
+    {
+      "index": 65,
+      "request": {
+        "age": 50,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "8d668a46-0f6a-401c-a0d3-f26bcc760ed3",
+      "fetchedSha256": "9df7a26fd4181e98816ce314528a33881d8c12ab968d873b0b5c1d90890632b3"
+    },
+    {
+      "index": 66,
+      "request": {
+        "age": 25,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "f2cdf692-6519-4537-add2-d9f045d1540d",
+      "fetchedSha256": "aa46987ce38b736de458ef25a77a374fc1a878b42309d1a97596b0989bcb971c"
+    },
+    {
+      "index": 67,
+      "request": {
+        "age": 26,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 3,
+      "selectedAvatarId": "7c86906c-fda2-45cd-ad80-060cbad8ad91",
+      "fetchedSha256": "525e738571d9a215df625dfd3ca974083d07fa632051d8cba4b304c75feda857"
+    },
+    {
+      "index": 68,
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 17,
+      "selectedAvatarId": "7f74eb36-778e-42ef-a658-28e6077997ff",
+      "fetchedSha256": "11401c56f0b8d15f5a82f6f1366d18f78f0469bbdc8121c1cc457f99ac3cd2a4"
+    },
+    {
+      "index": 69,
+      "request": {
+        "age": 35,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "7d4f10ed-b0d2-4ad2-ab28-4196433b0232",
+      "fetchedSha256": "98a3a8106ed24c89d9a55fce603479be17469a0c8465554e10877fdeefca0ebf"
+    },
+    {
+      "index": 70,
+      "request": {
+        "age": 46,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 71,
+      "request": {
+        "age": 34,
+        "gender": "female",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 8,
+      "unseenCount": 8,
+      "selectedAvatarId": "6b262818-bd27-478b-ad65-394251e6c846",
+      "fetchedSha256": "535e4dedec35b27131d0ba57b15f5c73926d375e667ddc9b6187ac118effe80b"
+    },
+    {
+      "index": 72,
+      "request": {
+        "age": 67,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 25,
+      "unseenCount": 25,
+      "selectedAvatarId": "3f4b460c-aee3-4464-a1c7-a633ff471a5e",
+      "fetchedSha256": "775d9eaefe839ff4cfee43e9699f7d5c0eee67fac3b58767de673fcf3ccc65cf"
+    },
+    {
+      "index": 73,
+      "request": {
+        "age": 83,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 11,
+      "unseenCount": 10,
+      "selectedAvatarId": "59960690-fac4-4117-ae0d-16b16cddd6e8",
+      "fetchedSha256": "26b28b465c1b92e16098769eee250e3a0e62fa9489febfd53e88ff63bce796e6"
+    },
+    {
+      "index": 74,
+      "request": {
+        "age": 61,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "60d8d4b9-3e61-440d-a162-b154388b7262",
+      "fetchedSha256": "248a9b7cea780e077b0ae8b2f6ef5ded37b7ea9da7776b9fc731f8947fe1ef45"
+    },
+    {
+      "index": 75,
+      "request": {
+        "age": 53,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "938b8dcb-bfcb-464c-a786-49b6b4c8b7d1",
+      "fetchedSha256": "7b88ea3ce62197406d39170f404f036c63147c4e33d92b3b7f0795c4b8d5709e"
+    },
+    {
+      "index": 76,
+      "request": {
+        "age": 30,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "bf7bf034-2d77-4827-adb0-5f73595e56f3",
+      "fetchedSha256": "513b8bb15243b68c9f451322ecab2e760cba64bf0c918c34fc099c1d7a6fc1bd"
+    },
+    {
+      "index": 77,
+      "request": {
+        "age": 38,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 20,
+      "unseenCount": 19,
+      "selectedAvatarId": "07bac779-b085-4011-a098-deba632159d1",
+      "fetchedSha256": "5bb14b30b667615514544b37dfc27272347813c43cb1b646d412a5e34d59ea5d"
+    },
+    {
+      "index": 78,
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "d1f3fdd5-8e21-4bff-a6fa-3330c38c7a37",
+      "fetchedSha256": "7ab6328e29cc9d91eedd52b5e4364bb8d598203facb220c6be7743dad8eb90c8"
+    },
+    {
+      "index": 79,
+      "request": {
+        "age": 34,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "f8d98918-4713-48ec-ac43-af39341d792a",
+      "fetchedSha256": "024af84ea64b20d44442a2ea6c5c60a8d5e27ee371f149f6a8b72961f6d64b00"
+    },
+    {
+      "index": 80,
+      "request": {
+        "age": 49,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 81,
+      "request": {
+        "age": 67,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "25bad9f2-a4b0-494c-aec7-1d92fc36f3ff",
+      "fetchedSha256": "ec5584cac2e7f62fa9ff8b07e2068b27e6ff2925ea0be7c5416bcdd33c8cda95"
+    },
+    {
+      "index": 82,
+      "request": {
+        "age": 79,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "expression:calm"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 83,
+      "request": {
+        "age": 20,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 18,
+      "unseenCount": 18,
+      "selectedAvatarId": "f2cdf692-6519-4537-add2-d9f045d1540d",
+      "fetchedSha256": "aa46987ce38b736de458ef25a77a374fc1a878b42309d1a97596b0989bcb971c"
+    },
+    {
+      "index": 84,
+      "request": {
+        "age": 30,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 4,
+      "selectedAvatarId": "20062b88-c23d-4663-a529-7da714f11ba5",
+      "fetchedSha256": "b306a706f358c85dbe46576dfcb3dcdc8495e59be48075b9a0df70769a05908e"
+    },
+    {
+      "index": 85,
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "7bb0836a-d9f0-4596-a2ab-ced65d559fd4",
+      "fetchedSha256": "f0907c1635b171c40847900a5a373465df55bdeeb47c6db9b566c878d83bc75a"
+    },
+    {
+      "index": 86,
+      "request": {
+        "age": 35,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "5de39522-067d-4e2b-a27f-bc3c9ef802af",
+      "fetchedSha256": "48382e5f5f2148146d5794ae746a2ece7df243b872dbdf9763888fe9fc0ee8c4"
+    },
+    {
+      "index": 87,
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 20,
+      "unseenCount": 20,
+      "selectedAvatarId": "07bac779-b085-4011-a098-deba632159d1",
+      "fetchedSha256": "5bb14b30b667615514544b37dfc27272347813c43cb1b646d412a5e34d59ea5d"
+    },
+    {
+      "index": 88,
+      "request": {
+        "age": 21,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 18,
+      "unseenCount": 17,
+      "selectedAvatarId": "1249b566-4445-4b18-ab0a-caa24b65dc45",
+      "fetchedSha256": "f03118615852f48dbb85373239896a8e9e6837f0226e32e4371464db4b9a99f0"
+    },
+    {
+      "index": 89,
+      "request": {
+        "age": 53,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 1,
+      "selectedAvatarId": "45dd3f39-7dce-4ce1-a224-1aff922882b9",
+      "fetchedSha256": "cda0aa4ad1b09f8b97c375bf2778d815da0da7899da8b8df6315f1009b7d95b0"
+    },
+    {
+      "index": 90,
+      "request": {
+        "age": 81,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 91,
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 92,
+      "request": {
+        "age": 23,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 18,
+      "unseenCount": 18,
+      "selectedAvatarId": "a90d88ad-9d59-4f06-a33e-83727885b200",
+      "fetchedSha256": "85f4800c00aa829ba1c6865a2bbb9db478ae9528b7f9394e239e42aa3d045d48"
+    },
+    {
+      "index": 93,
+      "request": {
+        "age": 23,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "121c7b40-1784-4db8-afdc-1f75f677236e",
+      "fetchedSha256": "662f5f9f335d7dd14700af876d26e8977c8efacdecc777259da5926e358af181"
+    },
+    {
+      "index": 94,
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "6bf26459-94e0-4387-a251-8f92e540eb87",
+      "fetchedSha256": "1ee779f580fb8ad54c7a10bc1610f037aa58f56046b2cafe624c3807ac99b0cc"
+    },
+    {
+      "index": 95,
+      "request": {
+        "age": 37,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 4,
+      "selectedAvatarId": "ac09bb80-df43-403e-a993-0f67204a5062",
+      "fetchedSha256": "329f90ad3b227d5afbde19848e2b948f5ebbd938503b7b466408d6d88d43e9f2"
+    },
+    {
+      "index": 96,
+      "request": {
+        "age": 28,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 23,
+      "unseenCount": 22,
+      "selectedAvatarId": "f911cd64-fb50-483c-a7a1-cc3c9f1b495b",
+      "fetchedSha256": "0f1c9633703d96dfa819b4fc5296dbdcee77750365fa8afc30ad0dce3badf5ef"
+    },
+    {
+      "index": 97,
+      "request": {
+        "age": 57,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 15,
+      "unseenCount": 15,
+      "selectedAvatarId": "8b2ebc51-c6ed-4a92-a777-37dae36c7994",
+      "fetchedSha256": "dfb2b6efa0e5cab75f6ce0f83e8b505ababf2e0269e0bf8dd05c5374d18a2510"
+    },
+    {
+      "index": 98,
+      "request": {
+        "age": 31,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "7c86906c-fda2-45cd-ad80-060cbad8ad91",
+      "fetchedSha256": "525e738571d9a215df625dfd3ca974083d07fa632051d8cba4b304c75feda857"
+    },
+    {
+      "index": 99,
+      "request": {
+        "age": 35,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "ce22dedf-7339-4d91-a60f-ce9cde82c276",
+      "fetchedSha256": "3e5a374849fdf6dde6631c0d33cacd602b595581860b4cf691b02bf3de50d0f3"
+    },
+    {
+      "index": 100,
+      "request": {
+        "age": 77,
+        "gender": "male",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "c3e38a20-fcbb-4643-ac2c-a6ffa6d3cbfd",
+      "fetchedSha256": "8fc398267dfc7245ac017ae96fed3453fbec8dc19fae8b0630385022aa890a57"
+    },
+    {
+      "index": 101,
+      "request": {
+        "age": 52,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 102,
+      "request": {
+        "age": 18,
+        "gender": "male",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 103,
+      "request": {
+        "age": 37,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "a711b0ce-dfa1-4bea-a31b-455b852c9049",
+      "fetchedSha256": "6ca50a513f1a6623770fce3326cb50697d1b4120904c88972f3e7581bc036281"
+    },
+    {
+      "index": 104,
+      "request": {
+        "age": 45,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "e7efbf3e-3a6f-4d88-a4bd-bd548d64b2bb",
+      "fetchedSha256": "a61577c091b682f3a9235aca6ef382b256437edc92d0770bf8aacacc396a247c"
+    },
+    {
+      "index": 105,
+      "request": {
+        "age": 46,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 17,
+      "selectedAvatarId": "c48ce5f8-3be4-4c14-a17b-1a570f873f8c",
+      "fetchedSha256": "fdb6d9f4fde266760b30493196035d3a205d79504a4dd797856dfd30f8371f85"
+    },
+    {
+      "index": 106,
+      "request": {
+        "age": 14,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "81a6e17a-f363-410b-ab7e-7660811b36a8",
+      "fetchedSha256": "ffb507e8a1cc4d9e4cd0e425c25b395793b451437b810960cf9520402bdb4a23"
+    },
+    {
+      "index": 107,
+      "request": {
+        "age": 20,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "a90d88ad-9d59-4f06-a33e-83727885b200",
+      "fetchedSha256": "85f4800c00aa829ba1c6865a2bbb9db478ae9528b7f9394e239e42aa3d045d48"
+    },
+    {
+      "index": 108,
+      "request": {
+        "age": 22,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "2e14e820-d640-4f17-a8c9-64cb538aa41f",
+      "fetchedSha256": "1c50590f2c925d59761be1bde19b92ec491fa06173c8a16e572ade438f2c9008"
+    },
+    {
+      "index": 109,
+      "request": {
+        "age": 63,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "86e85ce1-3385-4fb4-a499-62bd0f3ead96",
+      "fetchedSha256": "f9ece539a78ae358319408f2c965326a49a73ff0008f47f4867453cfdf1d81dc"
+    },
+    {
+      "index": 110,
+      "request": {
+        "age": 50,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 111,
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "cf06dbdf-1ac3-4612-a295-c1a4628b896c",
+      "fetchedSha256": "5c3135f48411fafda4f0c001903a0cb3c6c53d17ebecf2d551c459694ee96d14"
+    },
+    {
+      "index": 112,
+      "request": {
+        "age": 76,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 20,
+      "selectedAvatarId": "01f4581d-70b0-4199-a50e-cb97ea5f0b4b",
+      "fetchedSha256": "13d5352e85ee2a925df16c2c89a625b700f916adcf936f2d314cc5c3b1645b62"
+    },
+    {
+      "index": 113,
+      "request": {
+        "age": 54,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "9fb6a6ef-c1b2-4e1f-a312-fe725c4ef1f5",
+      "fetchedSha256": "d0f7469f57c518b8ac1faff77cc3778f83a981fda2c370809088b192e19fba77"
+    },
+    {
+      "index": 114,
+      "request": {
+        "age": 69,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "b081392f-ad3a-409b-a44a-0c96d74421d5",
+      "fetchedSha256": "cfec5c25e263cf3976712b70ff69a3cdba9bbfb5c5f11e9b3514c91a481a3859"
+    },
+    {
+      "index": 115,
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "b74417dc-3e16-4f55-ab29-36206e86ea15",
+      "fetchedSha256": "93e2b5528b16379edaeee8fa2c76f649a57a65de8066fcbc1d8ba18ce9cb1664"
+    },
+    {
+      "index": 116,
+      "request": {
+        "age": 50,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "3d136f55-b180-4812-a2ee-3141dc9f1e47",
+      "fetchedSha256": "310c7afa21ae316ef4420aa3824d3fed4c04f66d61537612f7577ee34c650863"
+    },
+    {
+      "index": 117,
+      "request": {
+        "age": 29,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 26,
+      "unseenCount": 22,
+      "selectedAvatarId": "1ec08016-4003-482b-a6f6-b53c96ecdc88",
+      "fetchedSha256": "ae6dc4cf69108dd99adcf0f18a01f6e828add608fcb8660702f645c4f71dc3c0"
+    },
+    {
+      "index": 118,
+      "request": {
+        "age": 63,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 21,
+      "selectedAvatarId": "1dd475df-4534-431c-a757-74fc7f602d7e",
+      "fetchedSha256": "832c5507744f5c615e354b7ebdcefbd62359b28b3b71ad719c47b549fb179e7e"
+    },
+    {
+      "index": 119,
+      "request": {
+        "age": 26,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "c6a7b9f6-c6e6-40e9-a4f8-7001c9a4465d",
+      "fetchedSha256": "81b40b740464d3a8591c1f39f3d3c923d1f6a5c797b5036ad6b8d8df2fdf3e13"
+    },
+    {
+      "index": 120,
+      "request": {
+        "age": 28,
+        "gender": "female",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "2e14e820-d640-4f17-a8c9-64cb538aa41f",
+      "fetchedSha256": "1c50590f2c925d59761be1bde19b92ec491fa06173c8a16e572ade438f2c9008"
+    },
+    {
+      "index": 121,
+      "request": {
+        "age": 23,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:right"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "61e90fcd-678c-4981-ab91-b57f88ee0031",
+      "fetchedSha256": "459c68ca1e2a6f695c6dc8c0edd28000d38f68fe8570c2eb6c7c8f09afe0dd6d"
+    },
+    {
+      "index": 122,
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "8d668a46-0f6a-401c-a0d3-f26bcc760ed3",
+      "fetchedSha256": "9df7a26fd4181e98816ce314528a33881d8c12ab968d873b0b5c1d90890632b3"
+    },
+    {
+      "index": 123,
+      "request": {
+        "age": 56,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "c0c06a85-fd5f-4746-a57e-7f501b2071d1",
+      "fetchedSha256": "1f3e72f5fd7871f4211a57ebb269529d67c52ef7f8df6ca4fcb84c2bf620d105"
+    },
+    {
+      "index": 124,
+      "request": {
+        "age": 54,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "3d1e1074-b602-4faa-a2b3-1c9a53005e34",
+      "fetchedSha256": "d71b14a5a822c9876577fcf7e9f05e3ca1e83ce1a91e84d15a1d0d7701c0824e"
+    },
+    {
+      "index": 125,
+      "request": {
+        "age": 27,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "12ecb7b0-4908-4188-a2ec-feba81c7e858",
+      "fetchedSha256": "e826a53e95d5d4f3e833f94db168907440eed5adaf0cba19a7d5599ba351bf74"
+    },
+    {
+      "index": 126,
+      "request": {
+        "age": 56,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "1c1e6262-02bb-4566-ab40-eb7dc2b55868",
+      "fetchedSha256": "f5a27f9d73aea3056ab89ae9c42b71d233c3f2abbe2ff7cd75af029c3b9df115"
+    },
+    {
+      "index": 127,
+      "request": {
+        "age": 74,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 25,
+      "unseenCount": 23,
+      "selectedAvatarId": "c3e38a20-fcbb-4643-ac2c-a6ffa6d3cbfd",
+      "fetchedSha256": "8fc398267dfc7245ac017ae96fed3453fbec8dc19fae8b0630385022aa890a57"
+    },
+    {
+      "index": 128,
+      "request": {
+        "age": 36,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 3,
+      "selectedAvatarId": "5de39522-067d-4e2b-a27f-bc3c9ef802af",
+      "fetchedSha256": "48382e5f5f2148146d5794ae746a2ece7df243b872dbdf9763888fe9fc0ee8c4"
+    },
+    {
+      "index": 129,
+      "request": {
+        "age": 80,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "62d47467-06fd-4a84-ae09-2626374f99bb",
+      "fetchedSha256": "d5120ac6dd05d72e9d1eaef16ebaa964b1923a23e0ddd66ddb08673f181b3e6a"
+    },
+    {
+      "index": 130,
+      "request": {
+        "age": 35,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 131,
+      "request": {
+        "age": 57,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "95194921-2171-4bb5-af0b-4c86cd894e7b",
+      "fetchedSha256": "1622dcc0e58ff2d0566c20da7a634c5d71ab3994984b0518d1eefcce5ab979d5"
+    },
+    {
+      "index": 132,
+      "request": {
+        "age": 45,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 20,
+      "unseenCount": 17,
+      "selectedAvatarId": "5de39522-067d-4e2b-a27f-bc3c9ef802af",
+      "fetchedSha256": "48382e5f5f2148146d5794ae746a2ece7df243b872dbdf9763888fe9fc0ee8c4"
+    },
+    {
+      "index": 133,
+      "request": {
+        "age": 72,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "d4f241f0-96f2-4991-a688-4ad547ffda72",
+      "fetchedSha256": "aba923510cc4829d53f6c80a621df1225b33a4faa5e3758437d34dd571bd45e3"
+    },
+    {
+      "index": 134,
+      "request": {
+        "age": 35,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "7bb0836a-d9f0-4596-a2ab-ced65d559fd4",
+      "fetchedSha256": "f0907c1635b171c40847900a5a373465df55bdeeb47c6db9b566c878d83bc75a"
+    },
+    {
+      "index": 135,
+      "request": {
+        "age": 46,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 16,
+      "unseenCount": 14,
+      "selectedAvatarId": "8d668a46-0f6a-401c-a0d3-f26bcc760ed3",
+      "fetchedSha256": "9df7a26fd4181e98816ce314528a33881d8c12ab968d873b0b5c1d90890632b3"
+    },
+    {
+      "index": 136,
+      "request": {
+        "age": 25,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 25,
+      "unseenCount": 23,
+      "selectedAvatarId": "748b6f17-fbd8-46d5-aa7e-b5160edae09b",
+      "fetchedSha256": "bff94644cf5c7dee89f6081940d92c1747c6d14969f1dbe72f16b7c39807749b"
+    },
+    {
+      "index": 137,
+      "request": {
+        "age": 78,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 20,
+      "unseenCount": 19,
+      "selectedAvatarId": "c0c06a85-fd5f-4746-a57e-7f501b2071d1",
+      "fetchedSha256": "1f3e72f5fd7871f4211a57ebb269529d67c52ef7f8df6ca4fcb84c2bf620d105"
+    },
+    {
+      "index": 138,
+      "request": {
+        "age": 16,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "1824cd65-5fe4-4e1a-ad63-76521ad43dfc",
+      "fetchedSha256": "d5b994a652392841a0c393a5cc1e1b43a9db9b41209df9619f2924e55c3b8550"
+    },
+    {
+      "index": 139,
+      "request": {
+        "age": 44,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 17,
+      "selectedAvatarId": "ae07f63f-f7c3-4952-adff-6e43652cb277",
+      "fetchedSha256": "6a3f2f5a69ce31d2a4536faaf800f6e07625f3ca2c1304e4f32627ebd61641fc"
+    },
+    {
+      "index": 140,
+      "request": {
+        "age": 74,
+        "gender": "other",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "da564b04-ceb9-414c-a2e2-8e8184bd6478",
+      "fetchedSha256": "afd58f68de359252382eb03c00b38d9324ce5175275b7b05b2e0da964a844993"
+    },
+    {
+      "index": 141,
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 1,
+      "selectedAvatarId": "5beb8376-c4e9-42bf-a41b-2570883a6d43",
+      "fetchedSha256": "af026fdac2759e36cde6a16ee975ae0f41e81fec0f8f8cf846144f3564b4a056"
+    },
+    {
+      "index": 142,
+      "request": {
+        "age": 69,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 143,
+      "request": {
+        "age": 39,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "c5291078-4009-5a35-8be9-44a7593f70e6",
+      "fetchedSha256": "4879727f5d19d3525ba96b2aaa254385630ada778177e7b0c97ea5efac57025e"
+    },
+    {
+      "index": 144,
+      "request": {
+        "age": 51,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "9a0c367a-f8b8-48ce-a184-111ede39c35c",
+      "fetchedSha256": "e9ab99a9222a71721dc478e3f0834bc242db5e589262c0da0f56f5cc41180566"
+    },
+    {
+      "index": 145,
+      "request": {
+        "age": 38,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "bf7bf034-2d77-4827-adb0-5f73595e56f3",
+      "fetchedSha256": "513b8bb15243b68c9f451322ecab2e760cba64bf0c918c34fc099c1d7a6fc1bd"
+    },
+    {
+      "index": 146,
+      "request": {
+        "age": 72,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 21,
+      "selectedAvatarId": "59960690-fac4-4117-ae0d-16b16cddd6e8",
+      "fetchedSha256": "26b28b465c1b92e16098769eee250e3a0e62fa9489febfd53e88ff63bce796e6"
+    },
+    {
+      "index": 147,
+      "request": {
+        "age": 23,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 2,
+      "selectedAvatarId": "36d5254a-25b4-4ebf-adcf-4b258157e41b",
+      "fetchedSha256": "9e0faac69dad70cccc4ad66ace36fddfd40c454293dad67fe5c18f0fd310b2cc"
+    },
+    {
+      "index": 148,
+      "request": {
+        "age": 33,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "7c1e9a78-87e2-405c-a5ec-2103acab830b",
+      "fetchedSha256": "7c27cd86cebcfa0c591991f8c499a8e43843ae8ac70d2b533038f2fcdd29adee"
+    },
+    {
+      "index": 149,
+      "request": {
+        "age": 23,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "a90d88ad-9d59-4f06-a33e-83727885b200",
+      "fetchedSha256": "85f4800c00aa829ba1c6865a2bbb9db478ae9528b7f9394e239e42aa3d045d48"
+    },
+    {
+      "index": 150,
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 151,
+      "request": {
+        "age": 21,
+        "gender": "female",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 9,
+      "unseenCount": 9,
+      "selectedAvatarId": "bad02275-e2d4-47e9-aeff-597c9b1413fe",
+      "fetchedSha256": "8b4a9e8e8ccdd7870ac03c0919a980a9c4a175761ec3b92762be5d02f7f0211a"
+    },
+    {
+      "index": 152,
+      "request": {
+        "age": 48,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "1aa5730e-597a-4293-a854-c072b1b6747c",
+      "fetchedSha256": "867bbdf5a3c617121de7e6ae9e908fc87780ce5e249bf0ee1bb9f66a4fcd5832"
+    },
+    {
+      "index": 153,
+      "request": {
+        "age": 72,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 4,
+      "selectedAvatarId": "7f74eb36-778e-42ef-a658-28e6077997ff",
+      "fetchedSha256": "11401c56f0b8d15f5a82f6f1366d18f78f0469bbdc8121c1cc457f99ac3cd2a4"
+    },
+    {
+      "index": 154,
+      "request": {
+        "age": 28,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 26,
+      "unseenCount": 26,
+      "selectedAvatarId": "7bb0836a-d9f0-4596-a2ab-ced65d559fd4",
+      "fetchedSha256": "f0907c1635b171c40847900a5a373465df55bdeeb47c6db9b566c878d83bc75a"
+    },
+    {
+      "index": 155,
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "8d668a46-0f6a-401c-a0d3-f26bcc760ed3",
+      "fetchedSha256": "9df7a26fd4181e98816ce314528a33881d8c12ab968d873b0b5c1d90890632b3"
+    },
+    {
+      "index": 156,
+      "request": {
+        "age": 26,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "7bb0836a-d9f0-4596-a2ab-ced65d559fd4",
+      "fetchedSha256": "f0907c1635b171c40847900a5a373465df55bdeeb47c6db9b566c878d83bc75a"
+    },
+    {
+      "index": 157,
+      "request": {
+        "age": 73,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 21,
+      "unseenCount": 20,
+      "selectedAvatarId": "c0e1a174-a73c-45f8-aa37-83d5d8b9555a",
+      "fetchedSha256": "122743555ee000d87f55380c2f7f1c8b60ff1f6bc41ee998a580b50eee3c65ad"
+    },
+    {
+      "index": 158,
+      "request": {
+        "age": 75,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "59960690-fac4-4117-ae0d-16b16cddd6e8",
+      "fetchedSha256": "26b28b465c1b92e16098769eee250e3a0e62fa9489febfd53e88ff63bce796e6"
+    },
+    {
+      "index": 159,
+      "request": {
+        "age": 76,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 20,
+      "unseenCount": 19,
+      "selectedAvatarId": "c89f7a37-094a-4fd7-ae95-4ce6e509c118",
+      "fetchedSha256": "f61d5df8e442613d97e3f2fad8c24ce94b1f03bdae688c49da9af5d8ce81d47e"
+    },
+    {
+      "index": 160,
+      "request": {
+        "age": 26,
+        "gender": "male",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "0e664d90-2e45-44cc-ac53-9ab476391509",
+      "fetchedSha256": "215cb1de1bb1ba573721264cfaf4d0a03d11793e4e4fde154f2a01c209811947"
+    },
+    {
+      "index": 161,
+      "request": {
+        "age": 28,
+        "gender": "female",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 7,
+      "unseenCount": 7,
+      "selectedAvatarId": "f2cdf692-6519-4537-add2-d9f045d1540d",
+      "fetchedSha256": "aa46987ce38b736de458ef25a77a374fc1a878b42309d1a97596b0989bcb971c"
+    },
+    {
+      "index": 162,
+      "request": {
+        "age": 24,
+        "gender": "male",
+        "requiredTags": [
+          "expression:concern"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "61e90fcd-678c-4981-ab91-b57f88ee0031",
+      "fetchedSha256": "459c68ca1e2a6f695c6dc8c0edd28000d38f68fe8570c2eb6c7c8f09afe0dd6d"
+    },
+    {
+      "index": 163,
+      "request": {
+        "age": 51,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 16,
+      "selectedAvatarId": "6c9f8687-3143-4b5d-a53d-938bfa38987b",
+      "fetchedSha256": "32624030f09b42e7f6f39a3823fa6abf0d62d054d515cce8227020e05d5a7322"
+    },
+    {
+      "index": 164,
+      "request": {
+        "age": 43,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "ac09bb80-df43-403e-a993-0f67204a5062",
+      "fetchedSha256": "329f90ad3b227d5afbde19848e2b948f5ebbd938503b7b466408d6d88d43e9f2"
+    },
+    {
+      "index": 165,
+      "request": {
+        "age": 34,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "310a528b-0df5-482f-a3d9-fc141c96ad23",
+      "fetchedSha256": "b5c009c409b69c46d543ff376539d71781d25515d065751063ac558e2c1c11ef"
+    },
+    {
+      "index": 166,
+      "request": {
+        "age": 57,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "92970e30-c231-4d91-ad34-fd68f9debfab",
+      "fetchedSha256": "e94fbd1d338155518142975ce678443579ef67a048bb1cb808d2aa6bde781f21"
+    },
+    {
+      "index": 167,
+      "request": {
+        "age": 80,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "186950e9-ea71-4179-ace7-0bb0fc7b1b91",
+      "fetchedSha256": "5c08856f1a4f71405eb47c43b425e69bd989289dce8afaaff0203a71b6d06b73"
+    },
+    {
+      "index": 168,
+      "request": {
+        "age": 68,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "97847cca-7058-4e6b-abcb-f2124acecc47",
+      "fetchedSha256": "f56984cf9aabb8fb4a55238cffbbfb2a37e9252efc639c144668378e0f83da5e"
+    },
+    {
+      "index": 169,
+      "request": {
+        "age": 22,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 5,
+      "selectedAvatarId": "8023d8ba-57f7-4291-aa74-5e4d92a6aea6",
+      "fetchedSha256": "6d26963649074fdf94aec3c0fd8656da3330ba77304b2ed3cb1b464041db2137"
+    },
+    {
+      "index": 170,
+      "request": {
+        "age": 61,
+        "gender": "female",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 3,
+      "selectedAvatarId": "54edde38-540e-4115-aa0e-9ccaacef7e5e",
+      "fetchedSha256": "d3b8d387199298f26cbecb2e823d01e38a3fff5fe9c392391263323e592b72ba"
+    },
+    {
+      "index": 171,
+      "request": {
+        "age": 16,
+        "gender": "male",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "0faa239c-ca2b-42f4-afab-8ca8d0965d2a",
+      "fetchedSha256": "60b8edc00d35a94998d3bdfc1e6da2e2bf632fde117a8a898181ac154416ffdd"
+    },
+    {
+      "index": 172,
+      "request": {
+        "age": 59,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "f97e3d58-4cce-415c-a35a-01bf56a72316",
+      "fetchedSha256": "10113901a976d272b98131da2aab65d6637b33570a0f8c8e068dca07c26d01a1"
+    },
+    {
+      "index": 173,
+      "request": {
+        "age": 45,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "e7efbf3e-3a6f-4d88-a4bd-bd548d64b2bb",
+      "fetchedSha256": "a61577c091b682f3a9235aca6ef382b256437edc92d0770bf8aacacc396a247c"
+    },
+    {
+      "index": 174,
+      "request": {
+        "age": 23,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "20062b88-c23d-4663-a529-7da714f11ba5",
+      "fetchedSha256": "b306a706f358c85dbe46576dfcb3dcdc8495e59be48075b9a0df70769a05908e"
+    },
+    {
+      "index": 175,
+      "request": {
+        "age": 50,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "bfa64270-6f46-40a9-ad56-681d41ead4b4",
+      "fetchedSha256": "255b3cff6ec9eb35fed0e78895646bf3b6015c46536d81cea8f3139fe143bab2"
+    },
+    {
+      "index": 176,
+      "request": {
+        "age": 81,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "a7ad2d4e-5cab-4bc2-afea-9c32edd11554",
+      "fetchedSha256": "bdebc97f6edec8a93e3604a156ba8e6b7f5c50bd36534279407db46a84a80cd3"
+    },
+    {
+      "index": 177,
+      "request": {
+        "age": 47,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 4,
+      "selectedAvatarId": "a1ef4d8b-2f33-43a4-a73c-faa2e1738415",
+      "fetchedSha256": "7d78ef4a44122fa4803927d1fbe2b2dbfc092df3a07fb97f4efaab2a33492051"
+    },
+    {
+      "index": 178,
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 179,
+      "request": {
+        "age": 66,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 3,
+      "selectedAvatarId": "def1a96e-94cb-4e62-af7f-a4905d5e3e10",
+      "fetchedSha256": "4372c0dc71dad149f9a36928b3457480e19d082679a26abfed0bc10262a4a0da"
+    },
+    {
+      "index": 180,
+      "request": {
+        "age": 21,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:average"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 181,
+      "request": {
+        "age": 39,
+        "gender": "female",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 8,
+      "unseenCount": 8,
+      "selectedAvatarId": "6e721694-80c2-4d03-a2f0-a87bbd8fdaa4",
+      "fetchedSha256": "d59e7ad3d990bd7d6ccdfe532b8c0a2eb9914a8e6ce9f9d97eb83efff39d84ec"
+    },
+    {
+      "index": 182,
+      "request": {
+        "age": 67,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "expression:concern"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 183,
+      "request": {
+        "age": 39,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "6c9f8687-3143-4b5d-a53d-938bfa38987b",
+      "fetchedSha256": "32624030f09b42e7f6f39a3823fa6abf0d62d054d515cce8227020e05d5a7322"
+    },
+    {
+      "index": 184,
+      "request": {
+        "age": 34,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 1,
+      "selectedAvatarId": "9bb1b95d-b6ec-41b9-af8b-756970ef6dd4",
+      "fetchedSha256": "d22a42b27c335f09fa94761d252f0f7f2a6f971c96a17ae8715fa9281b84051d"
+    },
+    {
+      "index": 185,
+      "request": {
+        "age": 42,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "a711b0ce-dfa1-4bea-a31b-455b852c9049",
+      "fetchedSha256": "6ca50a513f1a6623770fce3326cb50697d1b4120904c88972f3e7581bc036281"
+    },
+    {
+      "index": 186,
+      "request": {
+        "age": 45,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 19,
+      "unseenCount": 18,
+      "selectedAvatarId": "951e1996-3031-43ae-a244-7f1739025f7b",
+      "fetchedSha256": "f900218382782817347ec3585dd28b561dc5b07b04f5ae57f7a13c3e78c522b6"
+    },
+    {
+      "index": 187,
+      "request": {
+        "age": 61,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "1c1e6262-02bb-4566-ab40-eb7dc2b55868",
+      "fetchedSha256": "f5a27f9d73aea3056ab89ae9c42b71d233c3f2abbe2ff7cd75af029c3b9df115"
+    },
+    {
+      "index": 188,
+      "request": {
+        "age": 27,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 24,
+      "unseenCount": 21,
+      "selectedAvatarId": "9c293688-8b26-42e3-a903-030898886756",
+      "fetchedSha256": "be96558c632717a8436f7793abfcff3271a252e302097bb625a23f8138c3f5f1"
+    },
+    {
+      "index": 189,
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 20,
+      "selectedAvatarId": "1dd475df-4534-431c-a757-74fc7f602d7e",
+      "fetchedSha256": "832c5507744f5c615e354b7ebdcefbd62359b28b3b71ad719c47b549fb179e7e"
+    },
+    {
+      "index": 190,
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "938b8dcb-bfcb-464c-a786-49b6b4c8b7d1",
+      "fetchedSha256": "7b88ea3ce62197406d39170f404f036c63147c4e33d92b3b7f0795c4b8d5709e"
+    },
+    {
+      "index": 191,
+      "request": {
+        "age": 25,
+        "gender": "other",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 10,
+      "unseenCount": 10,
+      "selectedAvatarId": "7bb0836a-d9f0-4596-a2ab-ced65d559fd4",
+      "fetchedSha256": "f0907c1635b171c40847900a5a373465df55bdeeb47c6db9b566c878d83bc75a"
+    },
+    {
+      "index": 192,
+      "request": {
+        "age": 63,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 16,
+      "selectedAvatarId": "fc46487d-3e91-4278-ae8d-cd383fc77156",
+      "fetchedSha256": "81f8b2ab4a5ef003ff8fa757704e684e6efd9ba271f84b0a29067d88dbb6eacd"
+    },
+    {
+      "index": 193,
+      "request": {
+        "age": 53,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 13,
+      "selectedAvatarId": "86aa651f-0959-44da-a06c-1fab87043524",
+      "fetchedSha256": "de97319462ba723eac0e70bcf4aed91fe7b5ea077ccd89c50035141f293ab2fe"
+    },
+    {
+      "index": 194,
+      "request": {
+        "age": 62,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "92164672-704c-4cd4-aed1-4f081b3d3566",
+      "fetchedSha256": "9cd41a6806aacac47c40db09bb1d884e65eb397f26dfb4d7e84aaca0e90bc904"
+    },
+    {
+      "index": 195,
+      "request": {
+        "age": 70,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 19,
+      "selectedAvatarId": "77cfb922-1ec0-4c3f-a3d3-93b03a8455ec",
+      "fetchedSha256": "76ba16f941c07d00fe01b54c4429e9b8769a8f7dc5fb8e166148c266ad1a7458"
+    },
+    {
+      "index": 196,
+      "request": {
+        "age": 36,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "81185828-1de1-44b0-a5ea-f60d66c645f9",
+      "fetchedSha256": "484dea1c428b72822137b1b0a792f7487728280b2e5a5a12e944cd7bb310ce6e"
+    },
+    {
+      "index": 197,
+      "request": {
+        "age": 27,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 22,
+      "selectedAvatarId": "5de39522-067d-4e2b-a27f-bc3c9ef802af",
+      "fetchedSha256": "48382e5f5f2148146d5794ae746a2ece7df243b872dbdf9763888fe9fc0ee8c4"
+    },
+    {
+      "index": 198,
+      "request": {
+        "age": 26,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "1da7d901-d68e-447c-a216-787694c092cd",
+      "fetchedSha256": "57f745c3caccbd06276e7e0201e954844c98da6f48e78321e929fe00b7a8de4d"
+    },
+    {
+      "index": 199,
+      "request": {
+        "age": 80,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "a7ad2d4e-5cab-4bc2-afea-9c32edd11554",
+      "fetchedSha256": "bdebc97f6edec8a93e3604a156ba8e6b7f5c50bd36534279407db46a84a80cd3"
+    },
+    {
+      "index": 200,
+      "request": {
+        "age": 25,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:average"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 201,
+      "request": {
+        "age": 46,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "status": 409,
+      "reason": "user_pool_exhausted",
+      "eligibleCount": 2,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 202,
+      "request": {
+        "age": 38,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 203,
+      "request": {
+        "age": 38,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 20,
+      "unseenCount": 18,
+      "selectedAvatarId": "81185828-1de1-44b0-a5ea-f60d66c645f9",
+      "fetchedSha256": "484dea1c428b72822137b1b0a792f7487728280b2e5a5a12e944cd7bb310ce6e"
+    },
+    {
+      "index": 204,
+      "request": {
+        "age": 55,
+        "gender": "female",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 14,
+      "selectedAvatarId": "938b8dcb-bfcb-464c-a786-49b6b4c8b7d1",
+      "fetchedSha256": "7b88ea3ce62197406d39170f404f036c63147c4e33d92b3b7f0795c4b8d5709e"
+    },
+    {
+      "index": 205,
+      "request": {
+        "age": 68,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "6968eebd-62d6-4908-ac3e-bc7087849a89",
+      "fetchedSha256": "cda79e47f9605e1df3118a6599027f83bd3580ae86ab9e8abd44df6c14d81c07"
+    },
+    {
+      "index": 206,
+      "request": {
+        "age": 82,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "63ca07b2-1734-4655-a9f6-e7d3fdfdf67b",
+      "fetchedSha256": "671597f230d67b3596d17a537697df1e739b8a26970a8ae9eec55b0201c2ed53"
+    },
+    {
+      "index": 207,
+      "request": {
+        "age": 57,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "d27a8ae2-5e72-4ef9-a002-6c6151434e7f",
+      "fetchedSha256": "9a4558e20dbcf76aa0061b4b5e4acdb0d81c6ba4ed863d8d441e691aa10ebeda"
+    },
+    {
+      "index": 208,
+      "request": {
+        "age": 36,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 4,
+      "selectedAvatarId": "69498e08-b6a8-42ca-a89f-600a0cdd4ba3",
+      "fetchedSha256": "f62c7355501523ad58d7d1304fc21b98b5e739ff0c45df60d504baa42a82f888"
+    },
+    {
+      "index": 209,
+      "request": {
+        "age": 29,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "b9276fde-8b8a-4525-aa4f-ad53b03496f1",
+      "fetchedSha256": "a6c6f56e92dc777549cc6de1448fc84bcdcd1e3aabdbd80532cba46afec52d1f"
+    },
+    {
+      "index": 210,
+      "request": {
+        "age": 72,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:stocky"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 211,
+      "request": {
+        "age": 14,
+        "gender": "female",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 1,
+      "selectedAvatarId": "30438139-e3d3-4bc8-af58-3ec6661a3cf6",
+      "fetchedSha256": "2c7632fd352e381af61e3ee218aee5eb57693f4b0ab06e88576f553ca064448d"
+    },
+    {
+      "index": 212,
+      "request": {
+        "age": 63,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 3,
+      "selectedAvatarId": "d4f241f0-96f2-4991-a688-4ad547ffda72",
+      "fetchedSha256": "aba923510cc4829d53f6c80a621df1225b33a4faa5e3758437d34dd571bd45e3"
+    },
+    {
+      "index": 213,
+      "request": {
+        "age": 27,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "94fd5087-5827-40a2-a1b1-47ed3838465f",
+      "fetchedSha256": "2f606fafed95478db51f50ee8f1028aa390dd64c07322fc1c78cf51ca506ff2c"
+    },
+    {
+      "index": 214,
+      "request": {
+        "age": 73,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 25,
+      "unseenCount": 23,
+      "selectedAvatarId": "04913f5e-da4a-41fe-aa9f-101fe3a8a5d0",
+      "fetchedSha256": "904a5c5fc3e28e44877b4f6857b73a35d9fd57e9b5e3d7b3ee88764b06c775db"
+    },
+    {
+      "index": 215,
+      "request": {
+        "age": 37,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 14,
+      "selectedAvatarId": "e7efbf3e-3a6f-4d88-a4bd-bd548d64b2bb",
+      "fetchedSha256": "a61577c091b682f3a9235aca6ef382b256437edc92d0770bf8aacacc396a247c"
+    },
+    {
+      "index": 216,
+      "request": {
+        "age": 24,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 3,
+      "selectedAvatarId": "d1f3fdd5-8e21-4bff-a6fa-3330c38c7a37",
+      "fetchedSha256": "7ab6328e29cc9d91eedd52b5e4364bb8d598203facb220c6be7743dad8eb90c8"
+    },
+    {
+      "index": 217,
+      "request": {
+        "age": 55,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "6e721694-80c2-4d03-a2f0-a87bbd8fdaa4",
+      "fetchedSha256": "d59e7ad3d990bd7d6ccdfe532b8c0a2eb9914a8e6ce9f9d97eb83efff39d84ec"
+    },
+    {
+      "index": 218,
+      "request": {
+        "age": 64,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 21,
+      "selectedAvatarId": "45dd3f39-7dce-4ce1-a224-1aff922882b9",
+      "fetchedSha256": "cda0aa4ad1b09f8b97c375bf2778d815da0da7899da8b8df6315f1009b7d95b0"
+    },
+    {
+      "index": 219,
+      "request": {
+        "age": 58,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "6e196bf3-be37-452d-a02f-dc6dadfc1afd",
+      "fetchedSha256": "cb29a2bd737fd53fcf4ee4b462fa709c2fe8a4e1b88f795ac42388eec4dee0cc"
+    },
+    {
+      "index": 220,
+      "request": {
+        "age": 74,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 221,
+      "request": {
+        "age": 38,
+        "gender": "male",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 10,
+      "unseenCount": 8,
+      "selectedAvatarId": "bf7bf034-2d77-4827-adb0-5f73595e56f3",
+      "fetchedSha256": "513b8bb15243b68c9f451322ecab2e760cba64bf0c918c34fc099c1d7a6fc1bd"
+    },
+    {
+      "index": 222,
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": [
+          "expression:surprise"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 2,
+      "unseenCount": 2,
+      "selectedAvatarId": "c3e38a20-fcbb-4643-ac2c-a6ffa6d3cbfd",
+      "fetchedSha256": "8fc398267dfc7245ac017ae96fed3453fbec8dc19fae8b0630385022aa890a57"
+    },
+    {
+      "index": 223,
+      "request": {
+        "age": 47,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 5,
+      "unseenCount": 5,
+      "selectedAvatarId": "ce22dedf-7339-4d91-a60f-ce9cde82c276",
+      "fetchedSha256": "3e5a374849fdf6dde6631c0d33cacd602b595581860b4cf691b02bf3de50d0f3"
+    },
+    {
+      "index": 224,
+      "request": {
+        "age": 60,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "ad78d012-76dc-4dbf-a6c0-24d00aca0113",
+      "fetchedSha256": "01cd0ccd45bb0945241a74a63eaf01df07857b780daafb877ed0dbcc29d0e816"
+    },
+    {
+      "index": 225,
+      "request": {
+        "age": 30,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "69498e08-b6a8-42ca-a89f-600a0cdd4ba3",
+      "fetchedSha256": "f62c7355501523ad58d7d1304fc21b98b5e739ff0c45df60d504baa42a82f888"
+    },
+    {
+      "index": 226,
+      "request": {
+        "age": 30,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "748b6f17-fbd8-46d5-aa7e-b5160edae09b",
+      "fetchedSha256": "bff94644cf5c7dee89f6081940d92c1747c6d14969f1dbe72f16b7c39807749b"
+    },
+    {
+      "index": 227,
+      "request": {
+        "age": 45,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 2,
+      "selectedAvatarId": "24911a37-ddc7-475c-aa79-9abc4df1c2ac",
+      "fetchedSha256": "5b252c84d75aaa5e5c5c6c989bb98fa79a79b9c1c1146a3ebf69ed2f25eae9bf"
+    },
+    {
+      "index": 228,
+      "request": {
+        "age": 51,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 4,
+      "unseenCount": 4,
+      "selectedAvatarId": "5beb8376-c4e9-42bf-a41b-2570883a6d43",
+      "fetchedSha256": "af026fdac2759e36cde6a16ee975ae0f41e81fec0f8f8cf846144f3564b4a056"
+    },
+    {
+      "index": 229,
+      "request": {
+        "age": 36,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "0e664d90-2e45-44cc-ac53-9ab476391509",
+      "fetchedSha256": "215cb1de1bb1ba573721264cfaf4d0a03d11793e4e4fde154f2a01c209811947"
+    },
+    {
+      "index": 230,
+      "request": {
+        "age": 47,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "status": 409,
+      "reason": "coverage_gap",
+      "eligibleCount": 0,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 231,
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 1,
+      "unseenCount": 1,
+      "selectedAvatarId": "62d47467-06fd-4a84-ae09-2626374f99bb",
+      "fetchedSha256": "d5120ac6dd05d72e9d1eaef16ebaa964b1923a23e0ddd66ddb08673f181b3e6a"
+    },
+    {
+      "index": 232,
+      "request": {
+        "age": 82,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 17,
+      "unseenCount": 15,
+      "selectedAvatarId": "dbe98f92-d5e2-45e4-a548-97c5139cd6ea",
+      "fetchedSha256": "7635e59696d60c993214d73c0d3a2d45c27c53d9e8ec5b142527afc45da0b25f"
+    },
+    {
+      "index": 233,
+      "request": {
+        "age": 69,
+        "gender": "male",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 28,
+      "unseenCount": 26,
+      "selectedAvatarId": "21f7aa81-069c-4d14-afc4-cfaebdd959cd",
+      "fetchedSha256": "82e1457b108f278eebe8d80504a8be3d1627daf63f253d14340012a821fbde00"
+    },
+    {
+      "index": 234,
+      "request": {
+        "age": 24,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "c3927964-3547-4996-abb0-f84b81328b96",
+      "fetchedSha256": "6edeea8996251c9185d3141e3f038bca694b250c752b665fa6c9bc5afcae5496"
+    },
+    {
+      "index": 235,
+      "request": {
+        "age": 66,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "186950e9-ea71-4179-ace7-0bb0fc7b1b91",
+      "fetchedSha256": "5c08856f1a4f71405eb47c43b425e69bd989289dce8afaaff0203a71b6d06b73"
+    },
+    {
+      "index": 236,
+      "request": {
+        "age": 56,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "status": 409,
+      "reason": "user_pool_exhausted",
+      "eligibleCount": 1,
+      "unseenCount": 0,
+      "selectedAvatarId": null,
+      "fetchedSha256": null
+    },
+    {
+      "index": 237,
+      "request": {
+        "age": 72,
+        "gender": "other",
+        "requiredTags": []
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 22,
+      "unseenCount": 19,
+      "selectedAvatarId": "c89f7a37-094a-4fd7-ae95-4ce6e509c118",
+      "fetchedSha256": "f61d5df8e442613d97e3f2fad8c24ce94b1f03bdae688c49da9af5d8ce81d47e"
+    },
+    {
+      "index": 238,
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 3,
+      "unseenCount": 3,
+      "selectedAvatarId": "81185828-1de1-44b0-a5ea-f60d66c645f9",
+      "fetchedSha256": "484dea1c428b72822137b1b0a792f7487728280b2e5a5a12e944cd7bb310ce6e"
+    },
+    {
+      "index": 239,
+      "request": {
+        "age": 25,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "status": 200,
+      "reason": "matched",
+      "eligibleCount": 6,
+      "unseenCount": 6,
+      "selectedAvatarId": "eebae3b5-e0ea-4725-a9d7-a5af783a226a",
+      "fetchedSha256": "b872a0031c9560220c683bec016323af40668e41d11d19d834f1e1f9a826b3d8"
+    }
+  ],
+  "matched": 208,
+  "gaps": [
+    {
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 27,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:joy"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:full"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 64,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 56,
+        "gender": "male",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 71,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "expression:joy"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 60,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "other",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "expression:surprise"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 49,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 79,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "expression:calm"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 53,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 52,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 18,
+        "gender": "male",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 50,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 28,
+        "gender": "female",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 23,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:right"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 35,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 69,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 24,
+        "gender": "male",
+        "requiredTags": [
+          "expression:concern"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:average"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "expression:concern"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 25,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:average"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 38,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 72,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:stocky"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "female",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": [
+          "expression:surprise"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 47,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 56,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    }
+  ],
+  "boundaries": "Synthetic narrative fixtures; real HTTP auth/registration/replay/lookup; real PostgreSQL+Redis; local HTTPS assets with verified certificate and SHA. Excludes live LLM, native UI and production CDN."
+}

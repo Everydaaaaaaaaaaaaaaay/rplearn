@@ -55,7 +55,22 @@ const publicCard = z
   })
   .strict();
 
-const registerBody = z.object({ card: publicCard, id: uuid }).strict();
+const registerBody = z
+  .object({
+    card: publicCard,
+    id: uuid,
+    requiredAvatarTags: z
+      .array(
+        z
+          .string()
+          .regex(
+            /^(body|outfit|theme|frame|glasses|hair|facing|perspective|pose|use|face|expression):[a-z0-9-]{1,40}$/,
+          ),
+      )
+      .max(12)
+      .optional(),
+  })
+  .strict();
 const relationshipBody = z
   .object({
     localCharacterId: uuid,

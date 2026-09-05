@@ -197,7 +197,7 @@ public struct EncounterService: Sendable {
 
         Requirements:
         - Diverse and specific: a real-feeling occupation, 3-4 concrete hobbies, distinctive \
-        personality with one small flaw, vivid appearance, one-sentence speech style, \
+        personality with one small flaw, provisional appearance, one-sentence speech style, \
         a two-sentence background. \(namesRule)
         - Write every item in hobbies as a concise, natural Simplified Chinese UI tag \
         (for example: "做手工意面", "收藏黑胶唱片", "打乒乓球"). Do not include English translations \
@@ -209,6 +209,12 @@ public struct EncounterService: Sendable {
         - Define a stable voice bible: 2-4 values, 1-2 human flaws, 3-5 observable conversational habits, \
         1-3 boundaries, and 4 short anchor lines covering ordinary talk, awkwardness, disagreement and care. \
         These must all express the same personality and speech style. Write these fields in English.
+        - Choose age (14-85) and gender freely for a believable person. Do not prefer a \
+        youthful, conventionally attractive character by default.
+        - Appearance will be finalized from a reviewed portrait after this narrative is generated. \
+        Keep appearance provisional; do not lock hair, eye color, facial features, body build, \
+        clothing or pose into background, personality, opening_line or other narrative fields. \
+        Nationality, occupation and personality must remain independent of the portrait style.
         - gender is one of: male / female / other.
         Respond with JSON only.
         """

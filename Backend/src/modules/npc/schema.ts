@@ -3,6 +3,7 @@ import {
   boolean,
   check,
   index,
+  integer,
   jsonb,
   primaryKey,
   text,
@@ -12,6 +13,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
 import { users } from "../../db/user-schema.js";
+import type { AvatarProfile, AvatarRequirements } from "./types.js";
 
 export const npcRelationshipStatus = applicationSchema.enum("npc_relationship_status", [
   "candidate",
@@ -30,6 +32,7 @@ export const npcAvatars = applicationSchema.table(
     id: uuid("id").primaryKey(),
     imageUrl: text("image_url").notNull(),
     tags: jsonb("tags").$type<readonly string[]>().default([]).notNull(),
+    profile: jsonb("profile").$type<AvatarProfile | null>(),
     updatedAt: timestamp("updated_at", { mode: "date", withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -68,14 +71,32 @@ export const publicNpcs = applicationSchema.table(
   },
   (table) => [
     uniqueIndex("public_npcs_traveler_id_unique").on(table.travelerId),
-    uniqueIndex("public_npcs_avatar_id_unique")
-      .on(table.avatarId)
-      .where(sql`${table.avatarId} is not null`),
+    index("public_npcs_avatar_id_index").on(table.avatarId),
     index("public_npcs_creator_index").on(table.createdByUserId, table.createdAt),
     check("public_npcs_traveler_id_format", sql`${table.travelerId} ~ '^[0-9]{11}$'`),
     check("public_npcs_card_hash_format", sql`${table.cardHash} ~ '^[0-9a-f]{64}$'`),
     check("public_npcs_card_size", sql`octet_length(${table.card}::text) <= 32768`),
   ],
+);
+
+/// Structured coverage evidence, without names, story text or nationality.
+export const npcAvatarMatchEvents = applicationSchema.table(
+  "npc_avatar_match_events",
+  {
+    npcId: uuid("npc_id").notNull(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    requirements: jsonb("requirements").$type<AvatarRequirements>().notNull(),
+    reason: text("reason").notNull(),
+    eligibleCount: integer("eligible_count").notNull(),
+    unseenCount: integer("unseen_count").notNull(),
+    selectedAvatarId: uuid("selected_avatar_id").references(() => npcAvatars.id),
+    updatedAt: timestamp("updated_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.userId, table.npcId] })],
 );
 
 /// Maps a shared NPC identity to one user's private local relationship branch.

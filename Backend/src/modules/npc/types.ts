@@ -37,6 +37,22 @@ export type PublicNpc = Readonly<{
 export type RegisterPublicNpcInput = Readonly<{
   card: PublicNpcCard;
   id: string;
+  requiredAvatarTags?: readonly string[] | undefined;
+}>;
+
+export type AvatarRequirements = Readonly<{
+  age: number;
+  gender: NpcGender;
+  requiredTags: readonly string[];
+}>;
+
+export type AvatarProfile = Readonly<{
+  ageMin: number;
+  ageMax: number;
+  gender: NpcGender;
+  appearance: string;
+  styleVersion: string;
+  sha256: string;
 }>;
 
 export type LinkNpcRelationshipInput = Readonly<{

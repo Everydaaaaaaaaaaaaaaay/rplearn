@@ -24,7 +24,16 @@ export function createNpcService(database: DatabaseResource): NpcService {
     link: (userId, npcId, input) => repository.link(userId, npcId, input),
     register: (userId, input) => {
       const cardHash = createHash("sha256")
-        .update(JSON.stringify(input.card))
+        .update(
+          JSON.stringify(
+            input.requiredAvatarTags?.length
+              ? {
+                  card: input.card,
+                  requiredAvatarTags: [...new Set(input.requiredAvatarTags)].sort(),
+                }
+              : input.card,
+          ),
+        )
         .digest("hex");
       return repository.register(userId, input, cardHash);
     },

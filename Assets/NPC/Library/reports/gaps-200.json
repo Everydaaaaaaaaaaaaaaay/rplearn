@@ -1,0 +1,3972 @@
+{
+  "version": 1,
+  "accepted": 200,
+  "catalogSha256": "0bfbaa9962aa7d70c5f2131fbe17945ddd172bacfa4beffa53c28b051dc4cb20",
+  "seeds": [
+    90601,
+    90602,
+    90603,
+    90800,
+    90801,
+    90802
+  ],
+  "createdAt": "2026-09-05T23:28:56.671Z",
+  "stats": {
+    "cases": 1440,
+    "matched": 1277,
+    "coverageGaps": 152,
+    "exhausted": 11,
+    "weakDepth": 206,
+    "distinctSelectedAvatars": 200
+  },
+  "gaps": [
+    {
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 14,
+      "count": 8,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "ageMin": 14,
+      "count": 6,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 14,
+      "count": 6,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 14,
+      "count": 5,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 56,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 55,
+      "count": 4,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 55,
+      "count": 4,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 40,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 35,
+      "count": 4,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 14,
+      "count": 3,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "ageMin": 45,
+      "count": 3,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 45,
+      "count": 3,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 32,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "ageMin": 25,
+      "count": 3,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "ageMin": 25,
+      "count": 3,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "other",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 35,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "ageMin": 35,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 69,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 72,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "other",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "ageMin": 45,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:slim"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 82,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 53,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 45,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 84,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 68,
+        "gender": "male",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 18,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "ageMin": 18,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 83,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 49,
+        "gender": "other",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "ageMin": 45,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:right"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 40,
+        "gender": "female",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 35,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 14,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 40,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 26,
+        "gender": "female",
+        "requiredTags": [
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 25,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 84,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "facing:left"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 69,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 65,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 82,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 75,
+      "count": 2,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 47,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "body:full"
+        ]
+      },
+      "ageMin": 45,
+      "count": 2,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 27,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:full"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 64,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 56,
+        "gender": "male",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 55,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 71,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 60,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 49,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 79,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 53,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 52,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 18,
+        "gender": "male",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 50,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "body:broad"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 28,
+        "gender": "female",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 23,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:right"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:broad"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 24,
+        "gender": "male",
+        "requiredTags": [
+          "expression:concern"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:average"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 25,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:average"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 38,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "female",
+        "requiredTags": [
+          "facing:left"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 78,
+        "gender": "male",
+        "requiredTags": [
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 47,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 56,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 68,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:full"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:broad"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 23,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:front"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 38,
+        "gender": "other",
+        "requiredTags": [
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 79,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "other",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 20,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "body:average"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 36,
+        "gender": "female",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 41,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "other",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 24,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 20,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:full"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 51,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:left"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 47,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:average"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 64,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "facing:front"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 37,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 26,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "body:average"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 83,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 34,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 78,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 37,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 41,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 44,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:left"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 41,
+        "gender": "male",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 19,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 69,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:right"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 43,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 24,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 29,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 79,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 82,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "facing:front"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:average"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 52,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "male",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 68,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "facing:left"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:average"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "other",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 77,
+        "gender": "other",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 64,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "body:broad"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:front"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "body:slim"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 68,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 22,
+        "gender": "other",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 77,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 71,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:average"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 77,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 69,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:average"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 43,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:right"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "other",
+        "requiredTags": [
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 34,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:slim"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 29,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:broad"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 59,
+        "gender": "female",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 46,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 82,
+        "gender": "female",
+        "requiredTags": [
+          "expression:concern"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 45,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "facing:front"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 55,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 19,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 39,
+        "gender": "other",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 41,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 35,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 31,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 59,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:left"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "other",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 61,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "female",
+        "requiredTags": [
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 60,
+        "gender": "other",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 19,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "body:average"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 79,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 49,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 78,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 20,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:full"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 44,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 19,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:full"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 62,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:average"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 48,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 68,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 65,
+        "gender": "male",
+        "requiredTags": [
+          "body:broad"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 72,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 38,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:slim"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 64,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:front"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "body:full"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 65,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 74,
+        "gender": "male",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 37,
+        "gender": "female",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 18,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 24,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:average"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 40,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:slim"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 41,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 16,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 59,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 22,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "female",
+        "requiredTags": [
+          "expression:joy"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 60,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 60,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 15,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:full"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 82,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "facing:front"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 37,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 34,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 24,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 26,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "facing:right"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 31,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 84,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 43,
+        "gender": "other",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "user_pool_exhausted",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "facing:front"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 50,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 27,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:slim"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 49,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 22,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "facing:left"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "other",
+        "requiredTags": [
+          "expression:joy"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:full"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 48,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 62,
+        "gender": "female",
+        "requiredTags": [
+          "expression:calm"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 59,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 25,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 59,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 56,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:stocky"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 19,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 36,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 22,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:broad"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 31,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "facing:left"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 83,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "male",
+        "requiredTags": [
+          "body:slim"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 19,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 77,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "body:full"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 42,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:full"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 58,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:broad"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 67,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:front"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 27,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "body:average"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 69,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:right"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 64,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:full"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 84,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "facing:left"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 59,
+        "gender": "other",
+        "requiredTags": [
+          "theme:red",
+          "expression:fatigue"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 68,
+        "gender": "male",
+        "requiredTags": [
+          "theme:red",
+          "body:broad"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:front"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 22,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 71,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "male",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 84,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 45,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 72,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "facing:left"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "other",
+        "requiredTags": [
+          "theme:violet",
+          "expression:concern"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "other",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 36,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 21,
+        "gender": "other",
+        "requiredTags": [
+          "body:stocky"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 44,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:left"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 25,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 44,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:slim"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 18,
+        "gender": "other",
+        "requiredTags": [
+          "expression:concern"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "body:slim"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 20,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "ageMin": 18,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 81,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 77,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:full"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 39,
+        "gender": "male",
+        "requiredTags": [
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 77,
+        "gender": "female",
+        "requiredTags": [
+          "body:average"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 36,
+        "gender": "male",
+        "requiredTags": [
+          "theme:yellow",
+          "body:broad"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 38,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "facing:front"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 57,
+        "gender": "female",
+        "requiredTags": [
+          "body:full"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 62,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:average"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 28,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "facing:right"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 2
+    },
+    {
+      "request": {
+        "age": 76,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "expression:calm"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "other",
+        "requiredTags": [
+          "theme:jade",
+          "body:slim"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 54,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:broad"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 33,
+        "gender": "female",
+        "requiredTags": [
+          "theme:yellow",
+          "body:full"
+        ]
+      },
+      "ageMin": 25,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 66,
+        "gender": "male",
+        "requiredTags": [
+          "theme:violet",
+          "facing:left"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 17,
+        "gender": "female",
+        "requiredTags": [
+          "theme:blue",
+          "body:full"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 61,
+        "gender": "female",
+        "requiredTags": [
+          "theme:jade",
+          "facing:left"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 71,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 65,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 14,
+        "gender": "male",
+        "requiredTags": [
+          "theme:jade",
+          "facing:right"
+        ]
+      },
+      "ageMin": 14,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 36,
+        "gender": "other",
+        "requiredTags": [
+          "theme:blue",
+          "body:full"
+        ]
+      },
+      "ageMin": 35,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 85,
+        "gender": "female",
+        "requiredTags": [
+          "theme:red",
+          "expression:surprise"
+        ]
+      },
+      "ageMin": 75,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 63,
+        "gender": "male",
+        "requiredTags": [
+          "theme:blue",
+          "body:full"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "weak_depth",
+      "minCandidates": 1
+    },
+    {
+      "request": {
+        "age": 49,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "expression:joy"
+        ]
+      },
+      "ageMin": 45,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    },
+    {
+      "request": {
+        "age": 61,
+        "gender": "female",
+        "requiredTags": [
+          "theme:violet",
+          "body:slim"
+        ]
+      },
+      "ageMin": 55,
+      "count": 1,
+      "reason": "coverage_gap",
+      "minCandidates": 0
+    }
+  ],
+  "boundaries": "Synthetic narrative fixtures; real HTTP auth/registration/replay/lookup; real PostgreSQL+Redis; local HTTPS assets with verified certificate and SHA. Excludes live LLM, native UI and production CDN."
+}
