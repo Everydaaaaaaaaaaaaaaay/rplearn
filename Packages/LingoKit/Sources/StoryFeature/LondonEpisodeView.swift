@@ -23,6 +23,8 @@ public struct LondonEpisodeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private let ink = Color(red: 0.13, green: 0.19, blue: 0.18)
@@ -51,7 +53,7 @@ public struct LondonEpisodeView: View {
                             openingTitle
                                 .padding(.bottom, 20)
                         }
-                        readingPanel(session, maxHeight: geometry.size.height * (dynamicTypeSize.isAccessibilitySize ? 0.70 : 0.53))
+                        readingPanel(session, maxHeight: geometry.size.height * (dynamicTypeSize.isAccessibilitySize ? 0.70 : session.isFinished ? 0.67 : 0.53))
                     }
                     .padding(.top, 4)
                     .padding(.bottom, 12)
@@ -198,46 +200,73 @@ public struct LondonEpisodeView: View {
             }
             .foregroundStyle(ink)
             Rectangle().fill(gold.opacity(0.6)).frame(height: 1).padding(.bottom, 14)
-            ScrollView {
-                VStack(alignment: .leading, spacing: 14) {
-                    TappableText(
-                        tokens: TokenCache.tokens(for: session.current.text, cacheKey: "episode-\(session.nodeID)"),
-                        contextID: "episode-\(session.nodeID)", selection: wordSelection,
-                        onSelect: { wordSelection = $0 }
-                    )
-                    .font(.system(.body, design: .serif)).foregroundStyle(ink)
-                    .accessibilityIdentifier("episode.line")
-                    if showTranslation {
-                        Text(session.current.translation).font(.subheadline).lineSpacing(5)
-                            .foregroundStyle(ink.opacity(0.77)).fixedSize(horizontal: false, vertical: true)
-                    }
-                    if let choices = session.current.choices {
-                        ForEach(choices) { choice in
-                            Button { choose(choice.id) } label: {
-                                HStack(alignment: .top, spacing: 12) {
-                                    Text("↗").foregroundStyle(gold)
-                                    VStack(alignment: .leading, spacing: 6) {
-                                        Text(choice.text).font(.subheadline.weight(.medium))
-                                        if showTranslation { Text(choice.translation).font(.caption).opacity(0.75) }
-                                    }
-                                    Spacer(minLength: 0)
-                                }
-                                .foregroundStyle(ink).padding(14).frame(maxWidth: .infinity, alignment: .leading)
-                                .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 6).stroke(gold.opacity(0.5), lineWidth: 1))
-                            }.buttonStyle(EpisodePressStyle())
-                                .accessibilityIdentifier("episode.choice.\(choice.id)")
+            ZStack(alignment: .topLeading) {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 14) {
+                        if session.isFinished {
+                            Text("“")
+                                .font(.custom("Baskerville-Italic", size: 42, relativeTo: .title))
+                                .fontDesign(nil)
+                                .foregroundStyle(gold)
+                                .frame(height: 26, alignment: .topLeading)
+                                .accessibilityHidden(true)
                         }
+                        TappableText(
+                            tokens: TokenCache.tokens(for: session.current.text, cacheKey: "episode-\(session.nodeID)"),
+                            contextID: "episode-\(session.nodeID)", textColor: ink, selection: wordSelection,
+                            onSelect: { selection in
+                                // An outgoing line may remain visible for a few frames.
+                                guard self.session?.nodeID == session.nodeID else { return }
+                                wordSelection = selection
+                            }
+                        )
+                        .font(session.isFinished
+                              ? .custom("Baskerville-Italic", size: 29, relativeTo: .title2)
+                              : .system(.body, design: .serif))
+                        // The app-wide rounded design otherwise replaces the custom face.
+                        .fontDesign(session.isFinished ? nil : .rounded)
+                        .italic(session.isFinished)
+                        // Give the short closing line a deliberate two-line measure,
+                        // avoiding a lone “long.” on the second line at normal sizes.
+                        .frame(maxWidth: session.isFinished && !dynamicTypeSize.isAccessibilitySize ? 238 : .infinity,
+                               alignment: .leading)
+                        .accessibilityIdentifier("episode.line")
+                        if showTranslation {
+                            Text(session.current.translation).font(.subheadline).lineSpacing(5)
+                                .foregroundStyle(ink.opacity(0.77)).fixedSize(horizontal: false, vertical: true)
+                        }
+                        if let choices = session.current.choices {
+                            ForEach(choices) { choice in
+                                Button { choose(choice.id) } label: {
+                                    HStack(alignment: .top, spacing: 12) {
+                                        Text("↗").foregroundStyle(gold)
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            Text(choice.text).font(.subheadline.weight(.medium))
+                                            if showTranslation { Text(choice.translation).font(.caption).opacity(0.75) }
+                                        }
+                                        Spacer(minLength: 0)
+                                    }
+                                    .foregroundStyle(ink).padding(14).frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 6))
+                                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(gold.opacity(0.5), lineWidth: 1))
+                                }.buttonStyle(EpisodePressStyle())
+                                    .accessibilityIdentifier("episode.choice.\(choice.id)")
+                            }
+                        }
+                        if session.isFinished { endingSummary(session) }
                     }
-                    if session.isFinished { endingSummary(session) }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 4)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 4)
+                .scrollBounceBehavior(.basedOnSize)
+                .frame(maxHeight: maxHeight - 120)
+                .fixedSize(horizontal: false, vertical: true)
+                .id(session.nodeID)
+                .transition(.opacity)
             }
-            .scrollBounceBehavior(.basedOnSize)
-            .frame(maxHeight: maxHeight - 120)
-            .fixedSize(horizontal: false, vertical: true)
-            .id(session.nodeID)
+            // Crossfade only the reading content, keeping the surface and Continue
+            // control alive. No delayed navigation, input lock or background flash.
+            .animation(.easeInOut(duration: reduceMotion ? 0.08 : 0.12), value: session.nodeID)
 
             HStack {
                 Text(session.isFinished ? "本设备已保存 · 样章不发放奖励" : "轻点英文可查词")
@@ -256,21 +285,45 @@ public struct LondonEpisodeView: View {
             }.padding(.top, 8)
         }
         .padding(.horizontal, 20).padding(.top, 6).padding(.bottom, 8)
-        .background(paper, in: RoundedRectangle(cornerRadius: 12))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(.white.opacity(0.55), lineWidth: 1))
+        .background(paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.88),
+                    in: RoundedRectangle(cornerRadius: 12))
+        .overlay(RoundedRectangle(cornerRadius: 12)
+            .stroke(contrast == .increased ? ink.opacity(0.35) : .white.opacity(0.55), lineWidth: 1))
         .shadow(color: .black.opacity(0.18), radius: 12, y: 5)
         .environment(\.colorScheme, .light)
     }
 
     private func endingSummary(_ session: EpisodeSession) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("这一晚，你留下的选择").font(.caption.weight(.semibold))
-            Text(session.flags["askedPrivately"] == true ? "先询问他的意愿" : "先了解规则，不替他报名")
-            Text(session.flags["readTonight"] == true ? "陪伴他完成了第一次试读" : "尊重他今晚先听的决定")
-            Button("重走这一站") { showRestart = true }
-                .buttonStyle(EpisodePressStyle()).frame(minHeight: 44)
+        VStack(alignment: .leading, spacing: 18) {
+            Rectangle().fill(ink.opacity(0.14)).frame(height: 1)
+                .padding(.top, 8).accessibilityHidden(true)
+            Text("这一晚，你留下的选择")
+                .font(.headline.weight(.semibold))
+                .accessibilityAddTraits(.isHeader)
+            VStack(alignment: .leading, spacing: 12) {
+                choiceRecord("01", session.flags["askedPrivately"] == true ? "先询问他的意愿" : "先了解规则，不替他报名")
+                choiceRecord("02", session.flags["readTonight"] == true ? "陪伴他完成了第一次试读" : "尊重他今晚先听的决定")
+            }
+            Button { showRestart = true } label: {
+                Label("重走这一站", systemImage: "arrow.counterclockwise")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(paper)
+                    .frame(maxWidth: .infinity, minHeight: 48)
+                    .background(ink, in: RoundedRectangle(cornerRadius: 10))
+            }
+                .buttonStyle(EpisodePressStyle())
                 .accessibilityIdentifier("episode.restart")
-        }.font(.subheadline).foregroundStyle(ink)
+                .accessibilityHint("确认后从头体验，不影响旧剧情进度")
+        }.foregroundStyle(ink)
+    }
+
+    private func choiceRecord(_ number: String, _ text: String) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 12) {
+            Text(number).font(.caption.monospacedDigit()).foregroundStyle(ink.opacity(0.55))
+                .accessibilityHidden(true)
+            Text(text).font(.subheadline).foregroundStyle(ink.opacity(0.8))
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 
     private var historySheet: some View {

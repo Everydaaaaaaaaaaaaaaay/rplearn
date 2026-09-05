@@ -66,6 +66,19 @@ final class LondonEpisodeTests: XCTestCase {
         advanceUntil("episode.restart")
         screenshot("london-05-ending")
         XCTAssertTrue(app.staticTexts["陪伴他完成了第一次试读"].exists)
+        XCTAssertTrue(app.staticTexts["这一晚，你留下的选择"].exists)
+        let replay = app.buttons["episode.restart"]
+        XCTAssertGreaterThanOrEqual(replay.frame.height, 48)
+        XCTAssertGreaterThan(replay.frame.width, 250)
+        replay.tap()
+        XCTAssertTrue(app.buttons["从头开始"].waitForExistence(timeout: 3))
+        if app.buttons["取消"].exists {
+            app.buttons["取消"].tap()
+        } else {
+            // iOS 26's popover confirmation uses an outside tap to cancel.
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.25)).tap()
+        }
+        XCTAssertFalse(app.buttons["从头开始"].exists)
         app.buttons["episode.history"].tap()
         XCTAssertTrue(app.buttons["继续阅读"].waitForExistence(timeout: 3))
         app.buttons["继续阅读"].tap()
@@ -145,5 +158,16 @@ final class LondonEpisodeTests: XCTestCase {
         screenshot("london-09-large-text")
         app.buttons["episode.next"].tap()
         XCTAssertTrue(app.buttons["episode.history"].isHittable)
+    }
+
+    func testRapidContinueKeepsChoiceBoundary() {
+        app.launch()
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
+        // No debounce/wait is imposed by the new content crossfade.
+        for _ in 0..<8 { app.buttons["episode.next"].doubleTap() }
+        XCTAssertTrue(app.buttons["episode.choice.private"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.buttons["episode.next"].exists)
+        app.buttons["episode.choice.private"].tap()
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 3))
     }
 }
