@@ -95,12 +95,19 @@ public struct DictCardView: View {
             await loadCurrentTarget()
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
-            try? await session.prepareTranslation()
-            for item in await appleTranslator.takeBatch() {
-                let sentenceZhHans = try? await session.translate(item.text).targetText
-                await appleTranslator.complete(item.id, with: sentenceZhHans)
+            let batch = await appleTranslator.takeBatch()
+            do {
+                try await session.prepareTranslation()
+                for item in batch {
+                    let sentenceZhHans = try? await session.translate(item.text).targetText
+                    await appleTranslator.complete(item.id, with: sentenceZhHans)
+                }
+            } catch {
+                for item in batch { await appleTranslator.complete(item.id, with: nil) }
             }
+            await appleTranslator.finishBatch()
         }
+        .onDisappear { appleTranslator.cancelAll() }
         .accessibilityAction(named: "关闭释义") {
             onDismiss?()
         }
@@ -736,15 +743,21 @@ public struct DictCardView: View {
     }
 
     private var effectiveTranslationActions: DictExampleTranslationActions {
+        translationActions(allowsDownload: false)
+    }
+
+    private func translationActions(allowsDownload: Bool) -> DictExampleTranslationActions {
         guard allowsSystemTranslationFallback else { return exampleTranslationActions }
         return exampleTranslationActions.fallingBackToSentenceTranslation { [appleTranslator] sentence in
-            await appleTranslator.translate(sentence)
+            await appleTranslator.translate(sentence, allowsDownload: allowsDownload)
         }
     }
 
     private func translateExample(_ example: DictUsageExample) {
         guard !translatingExampleIDs.contains(example.id) else { return }
-        let translationActions = effectiveTranslationActions
+        // This is an explicit Retry tap: language preparation/download may now ask
+        // for permission. Passive lookup and pronunciation never request downloads.
+        let translationActions = translationActions(allowsDownload: true)
         translatingExampleIDs.insert(example.id)
         Task {
             let translated = await DictExampleTranslationCache.shared.translation(

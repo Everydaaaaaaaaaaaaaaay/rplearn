@@ -24,6 +24,9 @@ public struct LondonEpisodeView: View {
     @State private var audio: NarrativeAudioPlayer
     @State private var soundEnabled = true
     @State private var spokenStarts = 0
+    @State private var narratedNodeID: String?
+    @State private var lastAudioPageID: String?
+    @State private var currentLineIsVoiced = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -133,9 +136,7 @@ public struct LondonEpisodeView: View {
                 toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }
             ),
             exampleTranslationActions: deps.exampleTranslationActions,
-            // A missing optional example translation must never interrupt the
-            // offline-authored episode with a system language-download sheet.
-            allowsSystemTranslationFallback: false
+            allowsSystemTranslationFallback: true
         )
         .sheet(isPresented: $showHistory) { historySheet }
         .confirmationDialog("从头开始这一站？当前样章进度将被替换。", isPresented: $showRestart, titleVisibility: .visible) {
@@ -186,7 +187,11 @@ public struct LondonEpisodeView: View {
                     Text(session.episode.acts[session.current.act]).font(.subheadline.weight(.medium))
                 }
                 Spacer(minLength: 0)
-                Button { soundEnabled.toggle() } label: {
+                Button {
+                    soundEnabled.toggle()
+                    // Explicitly enabling voice can replay; dismissing a lookup cannot.
+                    if soundEnabled { narratedNodeID = nil }
+                } label: {
                     Image(systemName: soundEnabled ? "speaker.wave.2" : "speaker.slash")
                         .frame(width: 44, height: 44)
                 }
@@ -399,7 +404,7 @@ public struct LondonEpisodeView: View {
 
     private func autoplay() async {
         guard canAutoAdvance, let current = session?.current else { return }
-        let delay = soundEnabled ? 0.6 : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
+        let delay = soundEnabled && currentLineIsVoiced ? 0.6 : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
         do { try await Task.sleep(for: .seconds(delay)) } catch { return }
         guard !Task.isCancelled, canAutoAdvance, session?.nodeID == current.id else { return }
         advance()
@@ -420,19 +425,24 @@ public struct LondonEpisodeView: View {
     private var audioIdentity: String { "\(session?.nodeID ?? "")-\(canPlayAudio)" }
 
     private func updateAudio() {
+        let newPage = lastAudioPageID != session?.nodeID
+        lastAudioPageID = session?.nodeID
         guard canPlayAudio, let session else { audio.stop(); return }
         let speaker = session.current.speaker
-        // Fixed identity hints keep each character's local AI voice stable across
-        // launches. The player's voice is a narrative convention, not their profile.
+        // The user has no assigned voice. London characters use an actual en-GB
+        // system voice, not Supertonic's language-only `en` parameter.
         let identity = speaker == "Oliver" ? "london.oliver" : speaker == "Nora" ? "london.nora"
-            : speaker == "你" ? "london.player" : "london.narrator"
+            : "london.narrator"
         let request = SpeechRequest(text: session.current.text, language: "en-GB", purpose: .characterDialogue,
                                     voiceHint: SpeechVoiceHint(stableID: identity,
-                                                              gender: speaker == "Oliver" ? "male" : "female"))
+                                                              gender: speaker == "Oliver" ? "male" : "female"),
+                                    engine: .system, requiresExactLocale: true)
+        currentLineIsVoiced = speaker != "你" && session.current.choices == nil && narratedNodeID != session.nodeID
+        if currentLineIsVoiced { narratedNodeID = session.nodeID }
         // The rain has stopped at the ending; inside, only distant window rain.
         let rain: Float = session.current.act == 5 ? 0 : session.shot.background == "london_exterior" ? 0.25 : 0.06
-        audio.play(id: session.nodeID, request: session.current.choices == nil ? request : nil,
-                   rainVolume: rain, pageTurn: session.nodeID != session.episode.start)
+        audio.play(id: session.nodeID, request: currentLineIsVoiced ? request : nil,
+                   rainVolume: rain, pageTurn: newPage && session.nodeID != session.episode.start)
     }
 
     private func save() {
@@ -450,6 +460,8 @@ public struct LondonEpisodeView: View {
     private func restart() {
         guard let episode = session?.episode else { return }
         automatic = false
+        narratedNodeID = nil
+        lastAudioPageID = nil
         session = EpisodeSession(episode: episode)
         save()
     }

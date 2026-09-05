@@ -43,7 +43,7 @@ public final class NarrativeAudioPlayer {
                     self.rain = try? AVAudioPlayer(data: data.0)
                     self.rain?.numberOfLoops = -1
                     self.page = try? AVAudioPlayer(data: data.1)
-                    self.page?.volume = 0.16
+                    self.page?.volume = 0.08
                 }
             }
             try? await self.audioSession.activate(.playback)
@@ -95,22 +95,30 @@ public final class NarrativeAudioPlayer {
 enum NarrativeSoundBank {
     static let sampleRate = 22_050
 
-    static func rain() -> Data { wave(seconds: 8, seed: 955, paper: false) }
-    static func page() -> Data { wave(seconds: 0.13, seed: 171, paper: true) }
+    static func rain() -> Data { wave(seconds: 24, seed: 955, paper: false) }
+    static func page() -> Data { wave(seconds: 0.09, seed: 171, paper: true) }
 
     private static func wave(seconds: Double, seed: UInt64, paper: Bool) -> Data {
         let count = Int(seconds * Double(sampleRate))
         var state = seed
+        var noise = [Double]()
+        noise.reserveCapacity(count)
+        for _ in 0..<count {
+            state = state &* 6_364_136_223_846_793_005 &+ 1
+            noise.append(Double(state >> 33) / Double(UInt32.max >> 1) * 2 - 1)
+        }
         var low = 0.0
+        let coefficient = paper ? 0.06 : 0.12
+        // Run one whole period first: the filter enters the delivered period in
+        // its circular steady state, not from silence. The wrap is an ordinary
+        // adjacent pair of filtered noise samples, with no fade-to-zero or gap.
+        if !paper { for value in noise { low += (value - low) * coefficient } }
         var samples = Data(capacity: count * 2)
         for i in 0..<count {
-            state = state &* 6_364_136_223_846_793_005 &+ 1
-            let noise = Double(state >> 33) / Double(UInt32.max >> 1) * 2 - 1
-            low += (noise - low) * (paper ? 0.42 : 0.12)
+            low += (noise[i] - low) * coefficient
             let t = Double(i) / Double(count)
-            let envelope = paper ? pow(sin(.pi * t), 1.5)
-                : min(1, min(t, 1 - t) * 160) * (0.85 + 0.15 * sin(4 * .pi * t))
-            var sample = Int16(max(-1, min(1, low * envelope * 0.48)) * 32767).littleEndian
+            let envelope = paper ? pow(sin(.pi * t), 2) : 0.90 + 0.10 * sin(2 * .pi * t)
+            var sample = Int16(max(-1, min(1, low * envelope * (paper ? 0.10 : 0.48))) * 32767).littleEndian
             withUnsafeBytes(of: &sample) { samples.append(contentsOf: $0) }
         }
         var result = Data("RIFF".utf8)

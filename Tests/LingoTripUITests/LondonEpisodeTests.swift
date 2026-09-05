@@ -201,4 +201,51 @@ final class LondonEpisodeTests: XCTestCase {
         app.buttons["episode.close"].tap()
         XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 2))
     }
+
+    func testDismissingLookupDoesNotRepeatNarration() {
+        app.launchEnvironment["UI_TEST_EPISODE_AUDIO"] = "1"
+        app.launch()
+        let sound = app.buttons["episode.sound"]
+        XCTAssertTrue(sound.waitForExistence(timeout: 20))
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "starts:1;"), evaluatedWith: sound)
+        waitForExpectations(timeout: 30)
+        let word = app.buttons.matching(NSPredicate(format: "label MATCHES %@", "rain\\s*")).firstMatch
+        for pronounce in [false, true] {
+            word.tap()
+            XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 5))
+            if pronounce {
+                app.buttons["播放读音"].tap()
+                expectation(for: NSPredicate(format: "value CONTAINS %@", "starts:2;"), evaluatedWith: sound)
+                waitForExpectations(timeout: 45)
+            }
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.24)).tap()
+            XCTAssertFalse(app.buttons["播放读音"].exists)
+            let pause = expectation(description: "No automatic re-reading after closing lookup")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { pause.fulfill() }
+            wait(for: [pause], timeout: 7)
+            XCTAssertTrue((sound.value as? String)?.contains(pronounce ? "starts:2;" : "starts:1;") == true)
+            XCTAssertTrue(word.exists)
+        }
+    }
+
+    func testPlayerHasNoAssignedVoiceAndKeepsReadingTime() {
+        app.launch()
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 20))
+        for _ in 0..<3 { app.buttons["episode.next"].tap() }
+        let sound = app.buttons["episode.sound"]
+        sound.tap()
+        let quiet = expectation(description: "The player's line remains unvoiced")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { quiet.fulfill() }
+        wait(for: [quiet], timeout: 7)
+        XCTAssertTrue((sound.value as? String)?.contains("starts:0;completed:listen") == true)
+        app.buttons["episode.auto"].tap()
+        let reading = expectation(description: "Silent line is not skipped after 0.6 seconds")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { reading.fulfill() }
+        wait(for: [reading], timeout: 3)
+        XCTAssertTrue((sound.value as? String)?.contains("completed:listen") == true)
+        app.buttons["episode.auto"].tap()
+        app.buttons["episode.next"].tap()
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "starts:1;"), evaluatedWith: sound)
+        waitForExpectations(timeout: 30)
+    }
 }

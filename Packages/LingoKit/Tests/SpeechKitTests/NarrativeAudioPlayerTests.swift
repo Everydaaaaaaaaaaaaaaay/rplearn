@@ -60,7 +60,7 @@ struct NarrativeAudioPlayerTests {
 
     @Test("原创雨声与翻页声可解码、有非零采样、无削波且生成可复现")
     func soundAssets() throws {
-        for (data, duration) in [(NarrativeSoundBank.rain(), 8.0), (NarrativeSoundBank.page(), 0.13)] {
+        for (data, duration) in [(NarrativeSoundBank.rain(), 24.0), (NarrativeSoundBank.page(), 0.09)] {
             let player = try AVAudioPlayer(data: data)
             #expect(abs(player.duration - duration) < 0.001)
             let bytes = Array(data.dropFirst(44))
@@ -70,14 +70,45 @@ struct NarrativeAudioPlayerTests {
             let peak = samples.map(abs).max() ?? 0
             let rms = sqrt(samples.reduce(0) { $0 + $1 * $1 } / Double(samples.count))
             #expect(peak < 0.5)
-            #expect(rms > 0.02)
-            #expect(abs(samples.first ?? 1) < 0.001)
-            #expect(abs(samples.last ?? 1) < 0.001)
+            if duration > 1 {
+                #expect(rms > 0.02)
+                // Measure the actual circular boundary, not silent endpoints: no
+                // low-energy dip in any 20ms window across multiple loop joins.
+                let edge = Array(samples.suffix(2205)) + Array(samples.prefix(2205))
+                for offset in stride(from: 0, through: edge.count - 441, by: 110) {
+                    let window = edge[offset..<(offset + 441)]
+                    let localRMS = sqrt(window.reduce(0) { $0 + $1 * $1 } / Double(window.count))
+                    #expect(localRMS > rms * 0.65)
+                    #expect(localRMS < rms * 1.4)
+                }
+                let ordinaryMaxStep = zip(samples, samples.dropFirst()).map { abs($0 - $1) }.max() ?? 0
+                #expect(abs(samples[0] - samples[samples.count - 1]) <= ordinaryMaxStep)
+            } else {
+                #expect(rms > 0.001 && rms < 0.015)
+                #expect(peak < 0.08)
+                #expect(abs(samples.first ?? 1) < 0.001)
+                #expect(abs(samples.last ?? 1) < 0.001)
+            }
         }
         #expect(NarrativeSoundBank.rain() == NarrativeSoundBank.rain())
     }
 
-    @Test("固定角色音色：Oliver 男声，Nora 和旁白不共用一个音色")
+    @Test("英音要求强制路由到系统引擎，不冒充 Supertonic 的 en 为 en-GB")
+    func exactAccentRouting() {
+        let request = SpeechRequest(text: "One page.", language: "en-GB", purpose: .characterDialogue,
+                                    requiresExactLocale: true)
+        #expect(SpeechEngineRouter.resolve(request: request, selectedEngine: .supertonic3,
+                                          supertonicIsAvailable: true) == .system)
+        let voices = AVSpeechSynthesisVoice.speechVoices()
+        for gender in ["male", "female"] {
+            let selected = AppleTTSService.exactLocaleVoice(from: voices, language: "en-GB", gender: gender)
+            // A missing installed locale is allowed; another accent is not.
+            #expect(selected == nil || selected?.language == "en-GB")
+            if voices.contains(where: { $0.language == "en-GB" }) { #expect(selected != nil) }
+        }
+    }
+
+    @Test("其他功能仍保留固定 Supertonic 音色")
     func castVoices() {
         func profile(_ id: String, _ gender: String) -> Supertonic3VoiceCatalog.Profile {
             Supertonic3VoiceCatalog.profile(for: SpeechRequest(text: "One page.", purpose: .characterDialogue,
