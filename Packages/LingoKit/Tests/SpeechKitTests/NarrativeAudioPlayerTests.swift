@@ -60,7 +60,7 @@ struct NarrativeAudioPlayerTests {
 
     @Test("原创雨声与翻页声可解码、有非零采样、无削波且生成可复现")
     func soundAssets() throws {
-        for (data, duration) in [(NarrativeSoundBank.rain(), 24.0), (NarrativeSoundBank.page(), 0.09)] {
+        for (data, duration) in [(NarrativeSoundBank.rain(), 48.0), (NarrativeSoundBank.page(), 0.09)] {
             let player = try AVAudioPlayer(data: data)
             #expect(abs(player.duration - duration) < 0.001)
             let bytes = Array(data.dropFirst(44))
@@ -91,6 +91,52 @@ struct NarrativeAudioPlayerTests {
             }
         }
         #expect(NarrativeSoundBank.rain() == NarrativeSoundBank.rain())
+    }
+
+    @Test("雨声循环没有周期性涨落，接缝前后响度与高低频能量保持平稳")
+    func rainHasStationaryLoudnessAndTimbre() {
+        let bytes = Array(NarrativeSoundBank.rain().dropFirst(44))
+        let samples = stride(from: 0, to: bytes.count, by: 2).map {
+            Double(Int16(bitPattern: UInt16(bytes[$0]) | UInt16(bytes[$0 + 1]) << 8)) / 32768
+        }
+        func level(_ values: ArraySlice<Double>) -> Double {
+            10 * log10(values.reduce(0) { $0 + $1 * $1 } / Double(values.count))
+        }
+        let rate = NarrativeSoundBank.sampleRate
+        // Long-window check catches a smooth but clearly audible volume cycle,
+        // which a sample-continuity or 20ms gap test cannot detect.
+        let levels = stride(from: 0, to: samples.count, by: rate * 2).map {
+            level(samples[$0..<min($0 + rate * 2, samples.count)])
+        }
+        #expect((levels.max() ?? 0) - (levels.min() ?? 0) < 0.75)
+
+        // Separate low/high bands with a circular one-pole crossover (~350Hz).
+        // Test the *rendered PCM*, including windows that straddle the join.
+        var low = 0.0
+        let coefficient = 1 - exp(-2 * Double.pi * 350 / Double(rate))
+        for sample in samples { low += coefficient * (sample - low) }
+        var bass = [Double](), treble = [Double]()
+        for sample in samples {
+            low += coefficient * (sample - low)
+            bass.append(low)
+            treble.append(sample - low)
+        }
+        for band in [samples, bass, treble] {
+            let reference = level(band[...])
+            let joined = Array(band.suffix(rate * 2)) + Array(band.prefix(rate * 2))
+            for offset in stride(from: 0, through: joined.count - rate, by: rate / 4) {
+                #expect(abs(level(joined[offset..<offset + rate]) - reference) < 0.5)
+            }
+            #expect(abs(level(band.prefix(rate)) - level(band.suffix(rate))) < 0.5)
+        }
+    }
+
+    @Test("样章显式选择 Supertonic，不受全局系统引擎偏好影响")
+    func pilotSupertonicRouting() {
+        let request = SpeechRequest(text: "One page.", language: "en", purpose: .characterDialogue,
+                                    engine: .supertonic3)
+        #expect(SpeechEngineRouter.resolve(request: request, selectedEngine: .system,
+                                          supertonicIsAvailable: true) == .supertonic3)
     }
 
     @Test("英音要求强制路由到系统引擎，不冒充 Supertonic 的 en 为 en-GB")

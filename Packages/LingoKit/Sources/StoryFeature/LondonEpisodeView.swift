@@ -429,14 +429,14 @@ public struct LondonEpisodeView: View {
         lastAudioPageID = session?.nodeID
         guard canPlayAudio, let session else { audio.stop(); return }
         let speaker = session.current.speaker
-        // The user has no assigned voice. London characters use an actual en-GB
-        // system voice, not Supertonic's language-only `en` parameter.
+        // Keep the pilot on the bundled engine regardless of the global setting.
+        // Supertonic exposes English, not a guaranteed British accent.
         let identity = speaker == "Oliver" ? "london.oliver" : speaker == "Nora" ? "london.nora"
             : "london.narrator"
-        let request = SpeechRequest(text: session.current.text, language: "en-GB", purpose: .characterDialogue,
+        let request = SpeechRequest(text: session.current.text, language: "en", purpose: .characterDialogue,
                                     voiceHint: SpeechVoiceHint(stableID: identity,
                                                               gender: speaker == "Oliver" ? "male" : "female"),
-                                    engine: .system, requiresExactLocale: true)
+                                    engine: .supertonic3)
         currentLineIsVoiced = speaker != "你" && session.current.choices == nil && narratedNodeID != session.nodeID
         if currentLineIsVoiced { narratedNodeID = session.nodeID }
         // The rain has stopped at the ending; inside, only distant window rain.

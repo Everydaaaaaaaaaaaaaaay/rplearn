@@ -95,7 +95,7 @@ public final class NarrativeAudioPlayer {
 enum NarrativeSoundBank {
     static let sampleRate = 22_050
 
-    static func rain() -> Data { wave(seconds: 24, seed: 955, paper: false) }
+    static func rain() -> Data { wave(seconds: 48, seed: 955, paper: false) }
     static func page() -> Data { wave(seconds: 0.09, seed: 171, paper: true) }
 
     private static func wave(seconds: Double, seed: UInt64, paper: Bool) -> Data {
@@ -117,7 +117,10 @@ enum NarrativeSoundBank {
         for i in 0..<count {
             low += (noise[i] - low) * coefficient
             let t = Double(i) / Double(count)
-            let envelope = paper ? pow(sin(.pi * t), 2) : 0.90 + 0.10 * sin(2 * .pi * t)
+            // Stationary rain: no audible periodic swell or reset in loudness.
+            // The same circular filter produces its timbre on both sides of the
+            // join; fading unrelated ends together would change noise energy.
+            let envelope = paper ? pow(sin(.pi * t), 2) : 0.90
             var sample = Int16(max(-1, min(1, low * envelope * (paper ? 0.10 : 0.48))) * 32767).littleEndian
             withUnsafeBytes(of: &sample) { samples.append(contentsOf: $0) }
         }
