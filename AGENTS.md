@@ -62,6 +62,15 @@ pnpm build
 
 Do not run `swift build` directly inside `Packages/LingoKit`; package tests are compiled through the Xcode-hosted test targets defined in `project.yml`.
 
+## Task-scoped clean commits
+
+- Finish every completed user task with one focused commit unless the user explicitly asks not to commit. A task may use more than one commit only when independently reviewable stages materially improve safety or clarity.
+- Before editing, inspect `git status`. Treat all pre-existing changes as user-owned unless their origin is known; do not fold unrelated work into the task commit, discard it, or rewrite it to obtain a clean tree.
+- Keep the commit limited to the current task. Stage explicit paths only—never use broad staging such as `git add .` or `git add -A`—and inspect the staged diff before committing.
+- Run the narrowest relevant verification before the commit. Do not commit generated build products, caches, credentials, local configuration, screenshots, or temporary analysis artifacts.
+- Use a concise commit message that states the outcome. Do not amend, squash, rebase, force-push, or rewrite existing commits unless the user explicitly requests it.
+- After committing, confirm that no changes from the completed task remain unstaged or untracked. A worktree containing unrelated pre-existing changes is acceptable, but report them clearly rather than claiming the entire tree is clean.
+
 ## Default reading exclusions
 
 Unless the task is specifically about these artifacts, do not inspect:

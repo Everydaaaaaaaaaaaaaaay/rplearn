@@ -27,7 +27,7 @@ public struct MyPageView: View {
     @State private var showsTierPicker = false
     @State private var showsManageSubscriptions = false
     @State private var showsAccountPanel = false
-    @StateObject private var sceneActions = MyPageSceneActionCoordinator()
+    @StateObject private var sceneActions = DSSceneActionCoordinator<MyPageSceneHotspot>()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -211,7 +211,7 @@ public struct MyPageView: View {
 
     private var profileHotspot: some View {
         Button {
-            sceneActions.perform(for: .profile, reduceMotion: reduceMotion) {
+            sceneActions.perform(for: .profile) {
                 if isSignedIn {
                     showsAccountPanel = true
                 } else {
@@ -230,7 +230,7 @@ public struct MyPageView: View {
     private var coinHotspot: some View {
         #if DEBUG
         Button {
-            sceneActions.perform(for: .coin, reduceMotion: reduceMotion) {
+            sceneActions.perform(for: .coin) {
                 Task {
                     await economyService.grantDebugCoins()
                     await reload()
@@ -255,7 +255,7 @@ public struct MyPageView: View {
 
     private var learningHotspot: some View {
         Button {
-            sceneActions.perform(for: .learning, reduceMotion: reduceMotion, action: onCalibrateLevel)
+            sceneActions.perform(for: .learning, action: onCalibrateLevel)
         } label: {
             learningSceneEntry
         }
@@ -266,7 +266,7 @@ public struct MyPageView: View {
 
     private var favoritesHotspot: some View {
         Button {
-            sceneActions.perform(for: .favorites, reduceMotion: reduceMotion, action: onOpenFavorites)
+            sceneActions.perform(for: .favorites, action: onOpenFavorites)
         } label: {
             fixedSceneEntry(
                 glyph: .bookmarkStar,
@@ -282,7 +282,7 @@ public struct MyPageView: View {
 
     private var settingsHotspot: some View {
         Button {
-            sceneActions.perform(for: .settings, reduceMotion: reduceMotion, action: onOpenSettings)
+            sceneActions.perform(for: .settings, action: onOpenSettings)
         } label: {
             fixedSceneEntry(
                 glyph: .system("slider.horizontal.3"),
@@ -298,7 +298,7 @@ public struct MyPageView: View {
 
     private var accountHotspot: some View {
         Button {
-            sceneActions.perform(for: .account, reduceMotion: reduceMotion) {
+            sceneActions.perform(for: .account) {
                 if isSignedIn {
                     showsAccountPanel = true
                 } else {
@@ -321,7 +321,7 @@ public struct MyPageView: View {
     #if DEBUG
     private var memoryDebugHotspot: some View {
         Button {
-            sceneActions.perform(for: .memory, reduceMotion: reduceMotion, action: onOpenMemory)
+            sceneActions.perform(for: .memory, action: onOpenMemory)
         } label: {
             fixedSceneEntry(
                 glyph: .system("photo"),

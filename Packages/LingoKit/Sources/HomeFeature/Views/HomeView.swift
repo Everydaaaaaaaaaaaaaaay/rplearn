@@ -8,10 +8,12 @@ public struct HomeView: View {
     private let deps: HomeDependencies
     private let reloadToken: Int
     private let onInitialLoad: @MainActor () -> Void
+    private let onOpenDestination: @MainActor (HomeDestination) -> Void
 
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
-    @State private var pressedSceneEntry: HomeSceneEntryID?
+    @State private var touchedSceneEntry: HomeSceneEntryID?
+    @StateObject private var sceneActions = DSSceneActionCoordinator<HomeSceneEntryID>()
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -22,11 +24,13 @@ public struct HomeView: View {
     public init(
         deps: HomeDependencies,
         reloadToken: Int = 0,
-        onInitialLoad: @escaping @MainActor () -> Void = {}
+        onInitialLoad: @escaping @MainActor () -> Void = {},
+        onOpenDestination: @escaping @MainActor (HomeDestination) -> Void = { _ in }
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
         self.onInitialLoad = onInitialLoad
+        self.onOpenDestination = onOpenDestination
     }
 
     private var currentRegion: Region? {
@@ -50,6 +54,7 @@ public struct HomeView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .task(id: reloadToken) { await reload() }
+        .onDisappear(perform: sceneActions.cancel)
     }
 
     private var departureScene: some View {
@@ -61,16 +66,22 @@ public struct HomeView: View {
                 0,
                 (proxy.size.width - HomeDepartureCanvas.width * sceneScale) / 2
             )
+            // 生产底图的原始比例比部分全面屏机型略矮。只在宽度成为缩放约束时
+            // 延伸参考画布，背景与 Metal 层同步拉伸，避免底部安全区露出宿主底色。
+            let canvasHeight = max(
+                HomeDepartureCanvas.height,
+                proxy.size.height / max(sceneScale, 0.0001)
+            )
 
             ZStack(alignment: .topLeading) {
                 if sceneScale < widthScale {
                     compactHeightBackdrop(size: proxy.size)
                 }
 
-                departureCanvas
+                departureCanvas(height: canvasHeight)
                     .frame(
                         width: HomeDepartureCanvas.width,
-                        height: HomeDepartureCanvas.height,
+                        height: canvasHeight,
                         alignment: .topLeading
                     )
                     .dynamicTypeSize(...DynamicTypeSize.xLarge)
@@ -101,25 +112,33 @@ public struct HomeView: View {
     }
 
     /// 背景、入口、光效和命中范围都在这张 402pt 参考画布中；运行时只整体缩放。
-    private var departureCanvas: some View {
+    private func departureCanvas(height: CGFloat) -> some View {
         let width = HomeDepartureCanvas.width
-        let height = HomeDepartureCanvas.height
         let layout = sceneLayout
 
         return ZStack(alignment: .topLeading) {
             sceneBackground(width: width, height: height)
 
-            HomeDepartureSceneKitView(
+            HomeDepartureMetalView(
                 layout: layout,
                 flag: currentRegion.map { flag($0.countryCode) },
                 cityName: currentRegion?.nameZh,
                 storySubtitle: storySubtitle,
-                pressedEntry: pressedSceneEntry,
+                pressedEntry: touchedSceneEntry ?? sceneActions.pressedHotspot,
                 reduceMotion: reduceMotion
             )
             .frame(width: width, height: height)
             .accessibilityHidden(true)
             .allowsHitTesting(false)
+
+            #if DEBUG
+            if perspectiveDebugEnabled {
+                HomePerspectiveDebugOverlay(layout: layout)
+                    .frame(width: width, height: height)
+                    .accessibilityHidden(true)
+                    .allowsHitTesting(false)
+            }
+            #endif
 
             if let currentRegion {
                 HomeSceneHitTarget()
@@ -132,39 +151,39 @@ public struct HomeView: View {
                 .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
             }
 
-            NavigationLink(value: HomeDestination.map) {
-                HomeSceneHitTarget()
+            Button {
+                openSceneEntry(.map, destination: .map)
+            } label: {
+                HomePerspectiveHitTarget(
+                    quad: layout.map.projectedRegion(size: layout.map.hitSize).photoQuad
+                )
             }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $pressedSceneEntry))
-            .frame(width: layout.map.hitSize.width, height: layout.map.hitSize.height)
-            .position(
-                x: width * layout.map.center.x,
-                y: height * layout.map.center.y
-            )
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $touchedSceneEntry))
+            .frame(width: width, height: height)
             .accessibilityLabel("世界地图")
             .accessibilityHint("查看城市并开始旅行")
 
-            NavigationLink(value: HomeDestination.stories) {
-                HomeSceneHitTarget()
+            Button {
+                openSceneEntry(.story, destination: .stories)
+            } label: {
+                HomePerspectiveHitTarget(
+                    quad: layout.story.projectedRegion(size: layout.story.hitSize).photoQuad
+                )
             }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $pressedSceneEntry))
-            .frame(width: layout.story.hitSize.width, height: layout.story.hitSize.height)
-            .position(
-                x: width * layout.story.center.x,
-                y: height * layout.story.center.y
-            )
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $touchedSceneEntry))
+            .frame(width: width, height: height)
             .accessibilityLabel("剧情，\(storySubtitle)")
             .accessibilityHint("查看主线与当前城市剧情")
 
-            NavigationLink(value: HomeDestination.activities) {
-                HomeSceneHitTarget()
+            Button {
+                openSceneEntry(.activities, destination: .activities)
+            } label: {
+                HomePerspectiveHitTarget(
+                    quad: layout.activities.projectedRegion(size: layout.activities.hitSize).photoQuad
+                )
             }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $pressedSceneEntry))
-            .frame(width: layout.activities.hitSize.width, height: layout.activities.hitSize.height)
-            .position(
-                x: width * layout.activities.center.x,
-                y: height * layout.activities.center.y
-            )
+            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $touchedSceneEntry))
+            .frame(width: width, height: height)
             .accessibilityLabel("城市活动")
             .accessibilityHint("参加当地活动并认识旅途朋友")
         }
@@ -197,18 +216,21 @@ public struct HomeView: View {
                 }
 
                 accessibleLink(
+                    entry: .map,
                     destination: .map,
                     title: "世界地图",
                     subtitle: "查看城市并开始旅行",
                     systemImage: "map"
                 )
                 accessibleLink(
+                    entry: .story,
                     destination: .stories,
                     title: "剧情",
                     subtitle: storySubtitle,
                     systemImage: "waveform.path.ecg.rectangle"
                 )
                 accessibleLink(
+                    entry: .activities,
                     destination: .activities,
                     title: "城市活动",
                     subtitle: "参加当地活动并认识旅途朋友",
@@ -222,12 +244,15 @@ public struct HomeView: View {
     }
 
     private func accessibleLink(
+        entry: HomeSceneEntryID,
         destination: HomeDestination,
         title: String,
         subtitle: String,
         systemImage: String
     ) -> some View {
-        NavigationLink(value: destination) {
+        Button {
+            openSceneEntry(entry, destination: destination)
+        } label: {
             HStack(spacing: DSSpacing.sm) {
                 Image(systemName: systemImage)
                     .font(.title2)
@@ -248,6 +273,15 @@ public struct HomeView: View {
         }
         .buttonStyle(.plain)
         .dsSurface(.elevated)
+    }
+
+    private func openSceneEntry(
+        _ entry: HomeSceneEntryID,
+        destination: HomeDestination
+    ) {
+        sceneActions.perform(for: entry) {
+            onOpenDestination(destination)
+        }
     }
 
     private var mainlineJourney: MainlineJourney {
@@ -280,9 +314,15 @@ public struct HomeView: View {
             }
         }
     }
+
+    #if DEBUG
+    private var perspectiveDebugEnabled: Bool {
+        ProcessInfo.processInfo.environment["HOME_PERSPECTIVE_DEBUG"] == "1"
+    }
+    #endif
 }
 
-/// SceneKit 只画视觉，透明 SwiftUI 入口继续提供原生导航、命中语义与即时按压状态。
+/// GPU 层只画视觉，透明 SwiftUI 入口继续提供原生导航、命中语义与即时按压状态。
 private struct HomeSceneHitTarget: View {
     var body: some View {
         Rectangle()
@@ -290,6 +330,105 @@ private struct HomeSceneHitTarget: View {
             .contentShape(Rectangle())
     }
 }
+
+private struct HomePerspectiveHitTarget: View {
+    let quad: HomePerspectiveQuad
+
+    var body: some View {
+        HomeNormalizedQuadShape(quad: quad)
+            .fill(Color.white.opacity(0.001))
+            .contentShape(HomeNormalizedQuadShape(quad: quad))
+    }
+}
+
+private struct HomeNormalizedQuadShape: Shape {
+    let quad: HomePerspectiveQuad
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: point(quad.topLeft, in: rect))
+        path.addLine(to: point(quad.topRight, in: rect))
+        path.addLine(to: point(quad.bottomRight, in: rect))
+        path.addLine(to: point(quad.bottomLeft, in: rect))
+        path.closeSubpath()
+        return path
+    }
+
+    private func point(_ normalized: CGPoint, in rect: CGRect) -> CGPoint {
+        CGPoint(
+            x: rect.minX + normalized.x * rect.width,
+            y: rect.minY + normalized.y * rect.height
+        )
+    }
+}
+
+#if DEBUG
+private struct HomePerspectiveDebugOverlay: View {
+    let layout: HomeDepartureSceneLayout
+    private let calibration = HomePerspectiveCalibration.production
+
+    var body: some View {
+        Canvas { context, size in
+            drawSurface(calibration.doorLintel, color: .yellow, context: &context, size: size)
+            drawSurface(calibration.wall, color: .cyan, context: &context, size: size)
+            drawSurface(calibration.floor, color: .orange, context: &context, size: size)
+            drawRegion(layout.location.projectedRegion(), color: .yellow, context: &context, size: size)
+            drawRegion(layout.map.projectedRegion(), color: .cyan, context: &context, size: size)
+            drawRegion(layout.story.projectedRegion(), color: .cyan, context: &context, size: size)
+            drawRegion(layout.activities.projectedRegion(), color: .orange, context: &context, size: size)
+        }
+    }
+
+    private func drawSurface(
+        _ surface: HomePhotoSurface,
+        color: Color,
+        context: inout GraphicsContext,
+        size: CGSize
+    ) {
+        let path = path(surface.quad, size: size)
+        context.stroke(path, with: .color(color.opacity(0.92)), lineWidth: 1.2)
+        let poseLabel = String(
+            format: "%@  P %.0f°  Y %.0f°  R %.0f°",
+            surface.pose.name,
+            surface.pose.pitch,
+            surface.pose.yaw,
+            surface.pose.roll
+        )
+        let text = Text(poseLabel)
+        .font(.system(size: 8, weight: .semibold, design: .rounded))
+        .foregroundStyle(color)
+        let label = context.resolve(text)
+        let anchor = CGPoint(
+            x: surface.quad.topLeft.x * size.width,
+            y: surface.quad.topLeft.y * size.height - 7
+        )
+        context.draw(label, at: anchor, anchor: .bottomLeading)
+    }
+
+    private func drawRegion(
+        _ region: HomeProjectedRegion,
+        color: Color,
+        context: inout GraphicsContext,
+        size: CGSize
+    ) {
+        context.stroke(
+            path(region.photoQuad, size: size),
+            with: .color(color.opacity(0.78)),
+            style: StrokeStyle(lineWidth: 0.8, dash: [3, 2])
+        )
+    }
+
+    private func path(_ quad: HomePerspectiveQuad, size: CGSize) -> Path {
+        var path = Path()
+        let points = quad.points.map { CGPoint(x: $0.x * size.width, y: $0.y * size.height) }
+        guard let first = points.first else { return path }
+        path.move(to: first)
+        points.dropFirst().forEach { path.addLine(to: $0) }
+        path.closeSubpath()
+        return path
+    }
+}
+#endif
 
 private struct HomeScenePressReportingButtonStyle: ButtonStyle {
     let entry: HomeSceneEntryID

@@ -1,12 +1,14 @@
 import DesignSystem
 import SwiftUI
 
-/// Keeps the photographic profile scene outside NavigationStack so navigation
-/// and tab-bar safe-area updates do not feed back into its layout on iOS 18.
-struct MeNavigationContainer<RootContent: View, DestinationContent: View>: View {
+/// Keeps photographic root scenes outside NavigationStack so navigation and
+/// tab-bar safe-area updates do not feed back into their layout on iOS 18.
+/// 首页与“我的”页复用同一交叉隐现和左缘返回手势。
+struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: View {
     let isPresentingDestination: Bool
     let navigationTitle: String
     let onBack: () -> Void
+    let navigationPath: Binding<NavigationPath>?
     let rootContent: RootContent
     let destinationContent: DestinationContent
 
@@ -16,12 +18,14 @@ struct MeNavigationContainer<RootContent: View, DestinationContent: View>: View 
         isPresentingDestination: Bool,
         navigationTitle: String,
         onBack: @escaping () -> Void,
+        navigationPath: Binding<NavigationPath>? = nil,
         @ViewBuilder root: () -> RootContent,
         @ViewBuilder destination: () -> DestinationContent
     ) {
         self.isPresentingDestination = isPresentingDestination
         self.navigationTitle = navigationTitle
         self.onBack = onBack
+        self.navigationPath = navigationPath
         self.rootContent = root()
         self.destinationContent = destination()
     }
@@ -46,30 +50,41 @@ struct MeNavigationContainer<RootContent: View, DestinationContent: View>: View 
         .animation(contentAnimation, value: isPresentingDestination)
     }
 
+    @ViewBuilder
     private var destinationStack: some View {
-        NavigationStack {
-            ZStack(alignment: .leading) {
-                destinationContent
-                    .transition(.opacity)
-
-                Color.clear
-                    .frame(width: 28)
-                    .frame(maxHeight: .infinity)
-                    .contentShape(Rectangle())
-                    .gesture(backSwipeGesture)
-                    .accessibilityHidden(true)
-                    .zIndex(2)
+        if let navigationPath {
+            NavigationStack(path: navigationPath) {
+                destinationSurface
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.dsBackground.ignoresSafeArea())
-            .navigationTitle(navigationTitle)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: onBack) {
-                        Label("返回", systemImage: "chevron.left")
-                    }
+        } else {
+            NavigationStack {
+                destinationSurface
+            }
+        }
+    }
+
+    private var destinationSurface: some View {
+        ZStack(alignment: .leading) {
+            destinationContent
+                .transition(.opacity)
+
+            Color.clear
+                .frame(width: 28)
+                .frame(maxHeight: .infinity)
+                .contentShape(Rectangle())
+                .gesture(backSwipeGesture)
+                .accessibilityHidden(true)
+                .zIndex(2)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.dsBackground.ignoresSafeArea())
+        .navigationTitle(navigationTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: onBack) {
+                    Label("返回", systemImage: "chevron.left")
                 }
             }
         }
