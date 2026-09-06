@@ -48,16 +48,20 @@ public struct SpeechVoiceHint: Sendable, Equatable {
     public let stableID: String
     public let gender: String?
     public let nationality: String?
+    /// Optional authored casting; nil keeps the stable automatic voice selection.
+    public let supertonicVoice: SupertonicVoice?
 
-    public init(stableID: String, gender: String? = nil, nationality: String? = nil) {
+    public init(stableID: String, gender: String? = nil, nationality: String? = nil,
+                supertonicVoice: SupertonicVoice? = nil) {
         self.stableID = stableID
         self.gender = gender
         self.nationality = nationality
+        self.supertonicVoice = supertonicVoice
     }
 }
 
-/// Exact bundled voice identifiers for the temporary audition tool.
-public enum SupertonicPreviewVoice: String, CaseIterable, Sendable {
+/// Exact bundled voice identifiers for authored character casting.
+public enum SupertonicVoice: String, CaseIterable, Sendable {
     case m1 = "M1", m2 = "M2", m3 = "M3", m4 = "M4", m5 = "M5"
     case f1 = "F1", f2 = "F2", f3 = "F3", f4 = "F4", f5 = "F5"
 }
@@ -72,8 +76,6 @@ public struct SpeechRequest: Sendable, Equatable {
     public let engine: SpeechSynthesisEngine?
     /// Authored locale-sensitive narration must not trade accent for voice quality.
     public let requiresExactLocale: Bool
-    /// Audition an exact bundled voice at 1× speed. Never substitute Apple TTS.
-    public let previewVoice: SupertonicPreviewVoice?
 
     public init(
         text: String,
@@ -81,8 +83,7 @@ public struct SpeechRequest: Sendable, Equatable {
         purpose: SpeechPurpose = .general,
         voiceHint: SpeechVoiceHint? = nil,
         engine: SpeechSynthesisEngine? = nil,
-        requiresExactLocale: Bool = false,
-        previewVoice: SupertonicPreviewVoice? = nil
+        requiresExactLocale: Bool = false
     ) {
         self.text = text
         self.language = language
@@ -90,7 +91,6 @@ public struct SpeechRequest: Sendable, Equatable {
         self.voiceHint = voiceHint
         self.engine = engine
         self.requiresExactLocale = requiresExactLocale
-        self.previewVoice = previewVoice
     }
 }
 

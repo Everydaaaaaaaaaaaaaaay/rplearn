@@ -9,10 +9,11 @@ struct StoryEpisodeTests {
         return try Data(contentsOf: url)
     }
 
-    @Test("70 个节点、8 份美术、6 幕完整演出且资源均随包")
+    @Test("113 个短句节点、8 份美术、6 幕完整演出且资源均随包")
     func resources() throws {
         let episode = try StoryEpisode.load(data: bundledData())
-        #expect(episode.nodes.count == 70)
+        #expect(episode.nodes.count == 113)
+        #expect(episode.maxDialogueCharacters == 65)
         #expect(episode.assetNames.count == 8)
         #expect(episode.acts.count == 6)
         for name in episode.assetNames {
@@ -24,9 +25,37 @@ struct StoryEpisodeTests {
     @Test("活动开始后人物仍在活动角，不因换说话人跳回书架对话区")
     func readingSceneContinuity() throws {
         let episode = try StoryEpisode.load(data: bundledData())
-        for node in episode.nodes where node.act == 3 && !["read_yes", "listen_yes"].contains(node.id) {
+        for node in episode.nodes where node.act == 3 && !node.id.hasPrefix("read_yes") && !node.id.hasPrefix("listen_yes") {
             let shot = try #require(episode.shots[node.shot])
             #expect(["london_reading", "london_reading_cg"].contains(shot.background))
+        }
+    }
+
+    @Test("长句拆框后保留旧节点存档和选择，不强制重玩")
+    func previousCheckpointsSurviveShortening() throws {
+        let episode = try StoryEpisode.load(data: bundledData())
+        for id in ["read_finish", "ending"] {
+            let data = Data("""
+                {"episodeID":"departures_london","version":1,"nodeID":"\(id)",
+                 "decisions":{"approach":"private","tonight":"read"}}
+                """.utf8)
+            let session = EpisodeSession(episode: episode, saved: data)
+            #expect(session.nodeID == id)
+            #expect(session.decisions == ["approach": "private", "tonight": "read"])
+        }
+    }
+
+    @Test("超出单框预算、规范化后超长及段落断点在载入时被拒绝")
+    func dialogueBudget() throws {
+        let original = try #require(JSONSerialization.jsonObject(with: bundledData()) as? [String: Any])
+        for text in [String(repeating: "a", count: 66), String(repeating: "é", count: 33), "One.\n\nTwo."] {
+            var file = original
+            var nodes = try #require(file["nodes"] as? [[String: Any]])
+            nodes[0]["text"] = text
+            file["nodes"] = nodes
+            #expect(throws: StoryEpisode.ValidationError.self) {
+                try StoryEpisode.load(data: JSONSerialization.data(withJSONObject: file))
+            }
         }
     }
 

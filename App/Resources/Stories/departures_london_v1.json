@@ -124,8 +124,18 @@
       "location": "伦敦 · 书店门口 · 18:40",
       "shot": "outside",
       "speaker": "旁白",
-      "text": "The rain has turned the pavement into a second sky. One small bookshop is still glowing.",
-      "translation": "雨把人行道变成了另一片天空。街角的小书店还亮着灯。",
+      "text": "The rain has turned the pavement into a second sky.",
+      "translation": "雨把人行道变成了另一片天空。",
+      "next": "arrival_part2"
+    },
+    {
+      "id": "arrival_part2",
+      "act": 0,
+      "location": "伦敦 · 书店门口 · 18:40",
+      "shot": "outside",
+      "speaker": "旁白",
+      "text": "One small bookshop is still glowing.",
+      "translation": "街角的小书店还亮着灯。",
       "next": "invite"
     },
     {
@@ -134,8 +144,18 @@
       "location": "伦敦 · 书店门口 · 18:40",
       "shot": "outside",
       "speaker": "旁白",
-      "text": "Oliver's message was simple: ‘A reading tonight. No homework, I promise.’",
-      "translation": "Oliver 的邀请很简单：「今晚有朗读。保证不布置作业。」",
+      "text": "Oliver's message was simple: 'A reading tonight.'",
+      "translation": "Oliver 的邀请很简单：「今晚有朗读。」",
+      "next": "invite_part2"
+    },
+    {
+      "id": "invite_part2",
+      "act": 0,
+      "location": "伦敦 · 书店门口 · 18:40",
+      "shot": "outside",
+      "speaker": "旁白",
+      "text": "'No homework, I promise.'",
+      "translation": "「保证不布置作业。」",
       "next": "hello"
     },
     {
@@ -144,8 +164,18 @@
       "location": "伦敦 · 书店门口 · 18:40",
       "shot": "outside_oliver",
       "speaker": "Oliver",
-      "text": "You found it. I was about to send you directions involving three pubs and a very unreliable pigeon.",
-      "translation": "你找到了。我差点要发一份路线，参照物是三家酒馆和一只非常不可靠的鸽子。",
+      "text": "You found it. I was about to send you directions.",
+      "translation": "你找到了。我差点就要给你发路线了。",
+      "next": "hello_part2"
+    },
+    {
+      "id": "hello_part2",
+      "act": 0,
+      "location": "伦敦 · 书店门口 · 18:40",
+      "shot": "outside_oliver",
+      "speaker": "Oliver",
+      "text": "Three pubs and a very unreliable pigeon were my landmarks.",
+      "translation": "参照物是三家酒馆和一只非常不可靠的鸽子。",
       "next": "listen"
     },
     {
@@ -164,7 +194,7 @@
       "location": "伦敦 · 书店门口 · 18:40",
       "shot": "outside_oliver",
       "speaker": "Oliver",
-      "text": "Just listen. That's a perfectly respectable thing to do in a bookshop.",
+      "text": "Just listen. That's perfectly respectable in a bookshop.",
       "translation": "听就好。在书店里，这完全是件值得尊重的事。",
       "next": "threshold"
     },
@@ -174,8 +204,18 @@
       "location": "伦敦 · 书店门口 · 18:40",
       "shot": "outside",
       "speaker": "旁白",
-      "text": "He holds the door. Inside, wet coats smell faintly of rain, and someone is moving a chair.",
-      "translation": "他替你扶住门。里面的外套带着雨气，有人正在挪动一把椅子。",
+      "text": "He holds the door. Inside, wet coats smell faintly of rain.",
+      "translation": "他替你扶住门。里面的外套带着雨气。",
+      "next": "threshold_part2"
+    },
+    {
+      "id": "threshold_part2",
+      "act": 0,
+      "location": "伦敦 · 书店门口 · 18:40",
+      "shot": "outside",
+      "speaker": "旁白",
+      "text": "Someone is moving a chair.",
+      "translation": "有人正在挪动一把椅子。",
       "next": "warmth"
     },
     {
@@ -184,8 +224,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "room",
       "speaker": "旁白",
-      "text": "The room is smaller than you expected. There is no stage, only a chair between two shelves.",
-      "translation": "房间比想象中小。没有舞台，只有两排书架之间的一把椅子。",
+      "text": "The room is smaller than you expected.",
+      "translation": "房间比想象中小。",
+      "next": "warmth_part2"
+    },
+    {
+      "id": "warmth_part2",
+      "act": 1,
+      "location": "伦敦 · 书架之间",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "There is no stage, only a chair between two shelves.",
+      "translation": "没有舞台，只有两排书架之间的一把椅子。",
       "next": "nora_intro"
     },
     {
@@ -204,8 +254,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "nora",
       "speaker": "旁白",
-      "text": "Nora runs the shop's reading evenings. She folds a list once, then checks the door.",
-      "translation": "Nora 负责书店的朗读活动。她把名单折了一下，又看了看门口。",
+      "text": "Nora runs the shop's reading evenings.",
+      "translation": "Nora 负责书店的朗读活动。",
+      "next": "nora_role_part2"
+    },
+    {
+      "id": "nora_role_part2",
+      "act": 1,
+      "location": "伦敦 · 书架之间",
+      "shot": "nora",
+      "speaker": "旁白",
+      "text": "She folds a list once, then checks the door.",
+      "translation": "她把名单折了一下，又看了看门口。",
       "next": "cancel"
     },
     {
@@ -214,8 +274,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "nora",
       "speaker": "Nora",
-      "text": "One of our readers can't make it. A family thing. We'll simply finish a little earlier.",
-      "translation": "有位朗读者来不了了，家里有事。我们稍微早一点结束就行。",
+      "text": "One of our readers can't make it. A family thing.",
+      "translation": "有位朗读者来不了了，家里有事。",
+      "next": "cancel_part2"
+    },
+    {
+      "id": "cancel_part2",
+      "act": 1,
+      "location": "伦敦 · 书架之间",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "We'll simply finish a little earlier.",
+      "translation": "我们稍微早一点结束就行。",
       "next": "no_emergency"
     },
     {
@@ -244,8 +314,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_worried",
       "speaker": "旁白",
-      "text": "Oliver looks at the chair, then at his coat pocket. The edge of a folded page is showing.",
-      "translation": "Oliver 看了眼椅子，又看了眼外套口袋。折好的纸露出一个角。",
+      "text": "Oliver looks at the chair, then at his coat pocket.",
+      "translation": "Oliver 看了眼椅子，又看了眼外套口袋。",
+      "next": "glance_part2"
+    },
+    {
+      "id": "glance_part2",
+      "act": 1,
+      "location": "伦敦 · 书架之间",
+      "shot": "oliver_worried",
+      "speaker": "旁白",
+      "text": "The edge of a folded page is showing.",
+      "translation": "折好的纸露出一个角。",
       "next": "page"
     },
     {
@@ -274,8 +354,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_worried",
       "speaker": "Oliver",
-      "text": "It's a page from the novel. I bring it here sometimes. Carrying it is easier than reading it.",
-      "translation": "是小说里的一页。有时我会带来。把它带在身上，比念出来容易。",
+      "text": "It's a page from the novel. I bring it here sometimes.",
+      "translation": "是小说里的一页。有时我会带来。",
+      "next": "admit_part2"
+    },
+    {
+      "id": "admit_part2",
+      "act": 1,
+      "location": "伦敦 · 书架之间",
+      "shot": "oliver_worried",
+      "speaker": "Oliver",
+      "text": "Carrying it is easier than reading it.",
+      "translation": "把它带在身上，比念出来容易。",
       "next": "approach"
     },
     {
@@ -321,7 +411,7 @@
       "location": "伦敦 · 窗边",
       "shot": "oliver_worried",
       "speaker": "你",
-      "text": "Would you actually like to read it? It's all right if the answer is no.",
+      "text": "Would you actually like to read it? It's fine to say no.",
       "translation": "你自己想念这一页吗？不想也完全可以。",
       "next": "private_2"
     },
@@ -331,8 +421,18 @@
       "location": "伦敦 · 窗边",
       "shot": "oliver_neutral",
       "speaker": "Oliver",
-      "text": "Thanks for asking me first. I want to know what it sounds like outside my own head.",
-      "translation": "谢谢你先问我。我想知道，它离开我的脑袋之后，会是什么声音。",
+      "text": "Thanks for asking me first.",
+      "translation": "谢谢你先问我。",
+      "next": "private_2_part2"
+    },
+    {
+      "id": "private_2_part2",
+      "act": 2,
+      "location": "伦敦 · 窗边",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "I want to hear what it sounds like outside my own head.",
+      "translation": "我想听听，它离开我的脑袋之后，会是什么声音。",
       "next": "private_3"
     },
     {
@@ -341,8 +441,8 @@
       "location": "伦敦 · 窗边",
       "shot": "oliver_neutral",
       "speaker": "Oliver",
-      "text": "I'm less keen on finding out that everyone wishes it had stayed there.",
-      "translation": "但我不太想发现，所有人都觉得它应该留在我脑袋里。",
+      "text": "I'm less keen to hear everyone wishing I'd kept it there.",
+      "translation": "但我不太想听到，所有人都希望我把它留在脑袋里。",
       "next": "one_page"
     },
     {
@@ -351,8 +451,8 @@
       "location": "伦敦 · 活动角",
       "shot": "nora",
       "speaker": "你",
-      "text": "Can a reader share just one page, or does it need to be a whole chapter?",
-      "translation": "朗读者能只分享一页吗，还是需要一整章？",
+      "text": "Can someone read just one page, rather than a whole chapter?",
+      "translation": "朗读者能只分享一页，而不是一整章吗？",
       "next": "format_2"
     },
     {
@@ -361,8 +461,18 @@
       "location": "伦敦 · 活动角",
       "shot": "nora",
       "speaker": "Nora",
-      "text": "One page is plenty. They can stop whenever they like. Is someone considering it?",
-      "translation": "一页足够了。随时可以停。有人在考虑吗？",
+      "text": "One page is plenty. They can stop whenever they like.",
+      "translation": "一页足够了。随时可以停。",
+      "next": "format_2_part2"
+    },
+    {
+      "id": "format_2_part2",
+      "act": 2,
+      "location": "伦敦 · 活动角",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "Is someone considering it?",
+      "translation": "有人在考虑吗？",
       "next": "format_3"
     },
     {
@@ -381,8 +491,18 @@
       "location": "伦敦 · 活动角",
       "shot": "oliver_neutral",
       "speaker": "Oliver",
-      "text": "Cheers for not volunteering me. ‘One page’ does sound less terrifying than ‘a reading’.",
-      "translation": "谢谢没替我报名。「一页」听起来确实比「一场朗读」没那么吓人。",
+      "text": "Cheers for not volunteering me.",
+      "translation": "谢谢没替我报名。",
+      "next": "format_4_part2"
+    },
+    {
+      "id": "format_4_part2",
+      "act": 2,
+      "location": "伦敦 · 活动角",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "'One page' sounds less terrifying than 'a reading'.",
+      "translation": "「一页」听起来比「一场朗读」没那么吓人。",
       "next": "one_page"
     },
     {
@@ -401,8 +521,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_worried",
       "speaker": "Oliver",
-      "text": "A small beginning. One page, no questions afterwards. And permission to be bad at it.",
-      "translation": "小一点的开头。一页，读完先别提问。还得允许我读得不怎么样。",
+      "text": "A small beginning. One page, no questions afterwards.",
+      "translation": "小一点的开头。一页，读完先别提问。",
+      "next": "small_part2"
+    },
+    {
+      "id": "small_part2",
+      "act": 2,
+      "location": "伦敦 · 书架之间",
+      "shot": "oliver_worried",
+      "speaker": "Oliver",
+      "text": "And permission to be bad at it.",
+      "translation": "还得允许我读得不怎么样。",
       "next": "clarify"
     },
     {
@@ -411,8 +541,8 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_neutral",
       "speaker": "你",
-      "text": "Would you like me to ask Nora for that, or would you rather ask her yourself?",
-      "translation": "你想让我替你向 Nora 确认这些，还是自己问她？",
+      "text": "Shall I ask Nora for that, or would you rather ask her?",
+      "translation": "想让我替你向 Nora 确认这些，还是你自己问她？",
       "next": "own_voice"
     },
     {
@@ -421,8 +551,8 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_neutral",
       "speaker": "Oliver",
-      "text": "I'll ask. If I'm going to read my own words, I can probably manage that sentence.",
-      "translation": "我自己问吧。如果要读自己的文字，这句话大概也能自己说。",
+      "text": "I'll ask. If I can read my own words, I can say that much.",
+      "translation": "我自己问吧。既然要读自己的文字，这句话也能自己说。",
       "next": "agreement"
     },
     {
@@ -431,8 +561,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "nora",
       "speaker": "Nora",
-      "text": "Of course. A page, no questions, and you can change your mind before we begin.",
-      "translation": "当然。一页，先不提问。开始前你也随时可以改主意。",
+      "text": "Of course. A page, no questions.",
+      "translation": "当然。一页，先不提问。",
+      "next": "agreement_part2"
+    },
+    {
+      "id": "agreement_part2",
+      "act": 2,
+      "location": "伦敦 · 书架之间",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "And you can change your mind before we begin.",
+      "translation": "开始前，你也随时可以改主意。",
       "next": "not_test"
     },
     {
@@ -451,8 +591,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_worried",
       "speaker": "旁白",
-      "text": "Oliver turns the folded page over. The conversation pauses long enough for him to breathe.",
-      "translation": "Oliver 把折好的纸翻了个面。大家没有催他，他终于有空呼吸。",
+      "text": "Oliver turns the folded page over.",
+      "translation": "Oliver 把折好的纸翻了个面。",
+      "next": "silence_part2"
+    },
+    {
+      "id": "silence_part2",
+      "act": 2,
+      "location": "伦敦 · 书架之间",
+      "shot": "oliver_worried",
+      "speaker": "旁白",
+      "text": "The conversation pauses long enough for him to breathe.",
+      "translation": "大家没有催他，他终于有空呼吸。",
       "next": "two_ways"
     },
     {
@@ -461,8 +611,18 @@
       "location": "伦敦 · 书架之间",
       "shot": "oliver_worried",
       "speaker": "Oliver",
-      "text": "I could try tonight. Or I could listen, and bring something next time. Both feel real now.",
-      "translation": "我可以今晚试试，也可以先听，下次再带一页。现在，这两个选择都像是真的了。",
+      "text": "I could try tonight. Or listen, and bring a page next time.",
+      "translation": "我可以今晚试试。也可以先听，下次再带一页。",
+      "next": "two_ways_part2"
+    },
+    {
+      "id": "two_ways_part2",
+      "act": 2,
+      "location": "伦敦 · 书架之间",
+      "shot": "oliver_worried",
+      "speaker": "Oliver",
+      "text": "Both feel real now.",
+      "translation": "现在，这两个选择都像是真的了。",
       "next": "tonight"
     },
     {
@@ -508,8 +668,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "oliver_smile",
       "speaker": "Oliver",
-      "text": "All right. One page. If I faint, please describe it as an experimental ending.",
-      "translation": "好吧。一页。如果我晕倒，请把它描述成一个实验性结尾。",
+      "text": "All right. One page.",
+      "translation": "好吧。一页。",
+      "next": "read_yes_part2"
+    },
+    {
+      "id": "read_yes_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "oliver_smile",
+      "speaker": "Oliver",
+      "text": "If I faint, please call it an experimental ending.",
+      "translation": "如果我晕倒，请说这是一个实验性结尾。",
       "next": "read_setup"
     },
     {
@@ -518,8 +688,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading",
       "speaker": "旁白",
-      "text": "You choose a seat where he can see you. Nora leaves the chair beside him empty.",
-      "translation": "你选了一个他能看见的位置。Nora 把他旁边的椅子留空。",
+      "text": "You choose a seat where he can see you.",
+      "translation": "你选了一个他能看见的位置。",
+      "next": "read_setup_part2"
+    },
+    {
+      "id": "read_setup_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "Nora leaves the chair beside him empty.",
+      "translation": "Nora 把他旁边的椅子留空。",
       "next": "read_intro"
     },
     {
@@ -528,8 +708,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_nora",
       "speaker": "Nora",
-      "text": "Oliver is sharing something new. We'll listen, and leave the questions for another day.",
-      "translation": "Oliver 要分享一段新文字。今晚我们先听，问题留到以后。",
+      "text": "Oliver is sharing something new.",
+      "translation": "Oliver 要分享一段新文字。",
+      "next": "read_intro_part2"
+    },
+    {
+      "id": "read_intro_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_nora",
+      "speaker": "Nora",
+      "text": "We'll listen, and leave the questions for another day.",
+      "translation": "今晚我们先听，问题留到以后。",
       "next": "read_breath"
     },
     {
@@ -538,8 +728,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_cg",
       "speaker": "旁白",
-      "text": "He unfolds the page. His first breath is audible. His first sentence is quieter than his jokes.",
-      "translation": "他把纸展开。你听见他吸气。第一句话，比他平时的玩笑轻得多。",
+      "text": "He unfolds the page. His first breath is audible.",
+      "translation": "他把纸展开。你听见他吸气。",
+      "next": "read_breath_part2"
+    },
+    {
+      "id": "read_breath_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_cg",
+      "speaker": "旁白",
+      "text": "His first sentence is quieter than his jokes.",
+      "translation": "第一句话，比他平时的玩笑轻得多。",
       "next": "excerpt_1"
     },
     {
@@ -548,8 +748,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_cg",
       "speaker": "Oliver",
-      "text": "‘Every morning, the man at number twelve opened his window before he checked the weather.’",
-      "translation": "「每天早上，十二号屋子的那个人总是先打开窗，再看天气。」",
+      "text": "Every morning, the man at number twelve opened his window",
+      "translation": "每天早上，十二号屋子的那个人总是先打开窗，",
+      "next": "excerpt_1_part2"
+    },
+    {
+      "id": "excerpt_1_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_cg",
+      "speaker": "Oliver",
+      "text": "before he checked the weather.",
+      "translation": "再看天气。",
       "next": "excerpt_2"
     },
     {
@@ -558,8 +768,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_cg",
       "speaker": "Oliver",
-      "text": "‘He said a forecast could tell you about rain, but not what the street had decided to become.’",
-      "translation": "「他说，预报能告诉你会不会下雨，却说不出这条街今天决定成为什么样子。」",
+      "text": "'He said a forecast could tell you about rain.'",
+      "translation": "「他说，预报能告诉你会不会下雨。」",
+      "next": "excerpt_2_part2"
+    },
+    {
+      "id": "excerpt_2_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_cg",
+      "speaker": "Oliver",
+      "text": "'But not what the street had decided to become.'",
+      "translation": "「却说不出这条街今天决定成为什么样子。」",
       "next": "excerpt_3"
     },
     {
@@ -568,8 +788,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_cg",
       "speaker": "旁白",
-      "text": "He loses his place once. Nobody rescues him. Nobody needs to. He finds the next line.",
-      "translation": "他有一次找不到读到哪儿了。没有人抢着替他解围。他自己找到了下一行。",
+      "text": "He loses his place once. Nobody rescues him.",
+      "translation": "他有一次找不到读到哪儿了。没有人抢着替他解围。",
+      "next": "excerpt_3_part2"
+    },
+    {
+      "id": "excerpt_3_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_cg",
+      "speaker": "旁白",
+      "text": "Nobody needs to. He finds the next line.",
+      "translation": "也不需要。他自己找到了下一行。",
       "next": "excerpt_4"
     },
     {
@@ -578,8 +808,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_cg",
       "speaker": "Oliver",
-      "text": "‘That Tuesday, there was a chair outside the bakery. He sat down before he found a reason.’",
-      "translation": "「那个星期二，面包店门外多了一把椅子。他还没想好理由，就坐下了。」",
+      "text": "'That Tuesday, there was a chair outside the bakery.'",
+      "translation": "「那个星期二，面包店门外多了一把椅子。」",
+      "next": "excerpt_4_part2"
+    },
+    {
+      "id": "excerpt_4_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_cg",
+      "speaker": "Oliver",
+      "text": "'He sat down before he found a reason.'",
+      "translation": "「他还没想好理由，就坐下了。」",
       "next": "read_finish"
     },
     {
@@ -588,8 +828,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading",
       "speaker": "旁白",
-      "text": "When he finishes, the room stays quiet for a heartbeat. Then comes a small, very ordinary round of applause.",
-      "translation": "读完后，房间安静了一个心跳那么久。然后响起一阵小小的、很普通的掌声。",
+      "text": "When he finishes, the room stays quiet for a heartbeat.",
+      "translation": "读完后，房间安静了一个心跳那么久。",
+      "next": "read_finish_part2"
+    },
+    {
+      "id": "read_finish_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "Then comes a small, very ordinary round of applause.",
+      "translation": "然后响起一阵小小的、很普通的掌声。",
       "next": "read_after"
     },
     {
@@ -598,8 +848,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver_smile",
       "speaker": "Oliver",
-      "text": "I thought silence meant it was going badly. Turns out people sometimes listen in it.",
-      "translation": "我一直以为安静代表搞砸了。原来，人有时是在安静地听。",
+      "text": "I thought silence meant it was going badly.",
+      "translation": "我一直以为安静代表搞砸了。",
+      "next": "read_after_part2"
+    },
+    {
+      "id": "read_after_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_oliver_smile",
+      "speaker": "Oliver",
+      "text": "Turns out people sometimes listen in it.",
+      "translation": "原来，人有时是在安静地听。",
       "next": "read_feedback"
     },
     {
@@ -618,8 +878,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver_smile",
       "speaker": "Oliver",
-      "text": "That's oddly specific. Much better than ‘brilliant’. I might actually believe you.",
-      "translation": "这评价具体得有点意外。比「太棒了」好多了。我可能真的会相信。",
+      "text": "That's oddly specific. Much better than 'brilliant'.",
+      "translation": "这评价具体得有点意外。比「太棒了」好多了。",
+      "next": "read_specific_part2"
+    },
+    {
+      "id": "read_specific_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_oliver_smile",
+      "speaker": "Oliver",
+      "text": "I might actually believe you.",
+      "translation": "我可能真的会相信。",
       "next": "after_event"
     },
     {
@@ -628,8 +898,28 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "oliver_smile",
       "speaker": "Oliver",
-      "text": "Then I'll listen. Not hide at the till and pretend to count receipts. Actually listen.",
-      "translation": "那我先听。不躲在收银台假装数小票。认真听。",
+      "text": "Then I'll listen.",
+      "translation": "那我先听。",
+      "next": "listen_yes_part2"
+    },
+    {
+      "id": "listen_yes_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "oliver_smile",
+      "speaker": "Oliver",
+      "text": "Not hide at the till and pretend to count receipts.",
+      "translation": "不躲在收银台假装数小票。",
+      "next": "listen_yes_part3"
+    },
+    {
+      "id": "listen_yes_part3",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "oliver_smile",
+      "speaker": "Oliver",
+      "text": "Actually listen.",
+      "translation": "认真听。",
       "next": "listen_setup"
     },
     {
@@ -638,8 +928,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading",
       "speaker": "旁白",
-      "text": "Nora nods and points you towards the listeners. The spare chair can stay empty. No explanation is owed.",
-      "translation": "Nora 点点头，示意你们坐到听众那边。那把椅子可以空着，谁都不必为此解释。",
+      "text": "Nora nods and points you towards the listeners.",
+      "translation": "Nora 点点头，示意你们坐到听众那边。",
+      "next": "listen_setup_part2"
+    },
+    {
+      "id": "listen_setup_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "The spare chair can stay empty. No explanation is owed.",
+      "translation": "那把椅子可以空着，谁都不必为此解释。",
       "next": "listen_intro"
     },
     {
@@ -658,8 +958,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading",
       "speaker": "旁白",
-      "text": "The next reader speaks about a kitchen. You see only the empty corner while the voice fills the room.",
-      "translation": "下一位朗读者念起一间厨房。你的目光停在空下来的角落，声音充满了房间。",
+      "text": "The next reader speaks about a kitchen.",
+      "translation": "下一位朗读者念起一间厨房。",
+      "next": "listen_room_part2"
+    },
+    {
+      "id": "listen_room_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "You watch the empty corner as the voice fills the room.",
+      "translation": "你的目光停在空下来的角落，声音充满了房间。",
       "next": "listen_notice"
     },
     {
@@ -667,9 +977,19 @@
       "act": 3,
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver",
+      "speaker": "旁白",
+      "text": "After the reading, Oliver leans towards you.",
+      "translation": "朗读结束后，Oliver 凑近你。",
+      "next": "listen_notice_part2"
+    },
+    {
+      "id": "listen_notice_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_oliver",
       "speaker": "Oliver",
-      "text": "After the reading, Oliver leans towards you. ‘She stopped halfway through a sentence and started it again. Nobody minded.’",
-      "translation": "朗读结束后，Oliver 凑近你：「她一句话念到一半，停下来重念。也没有人在意。」",
+      "text": "'She stopped mid-sentence and started again. Nobody minded.'",
+      "translation": "「她一句话念到一半，停下来重念。也没有人在意。」",
       "next": "listen_reply"
     },
     {
@@ -688,8 +1008,8 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver",
       "speaker": "Oliver",
-      "text": "I spend rather a lot of time imagining an audience that doesn't exist.",
-      "translation": "我花了不少时间，去想象一群根本不存在的观众。",
+      "text": "I spend ages imagining an audience that doesn't exist.",
+      "translation": "我花了好长时间，去想象一群根本不存在的观众。",
       "next": "listen_share"
     },
     {
@@ -708,8 +1028,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver",
       "speaker": "Oliver",
-      "text": "‘Every morning, the man at number twelve opened his window before he checked the weather.’",
-      "translation": "「每天早上，十二号屋子的那个人总是先打开窗，再看天气。」",
+      "text": "Every morning, the man at number twelve opened his window",
+      "translation": "每天早上，十二号屋子的那个人总是先打开窗，",
+      "next": "listen_excerpt_part2"
+    },
+    {
+      "id": "listen_excerpt_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_oliver",
+      "speaker": "Oliver",
+      "text": "before he checked the weather.",
+      "translation": "再看天气。",
       "next": "listen_question"
     },
     {
@@ -728,8 +1058,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver_smile",
       "speaker": "Oliver",
-      "text": "That's the question I wanted someone to ask. I haven't quite earned the answer yet.",
-      "translation": "这就是我希望有人问的问题。答案我还没写到足够好的程度。",
+      "text": "That's the question I wanted someone to ask.",
+      "translation": "这就是我希望有人问的问题。",
+      "next": "listen_answer_part2"
+    },
+    {
+      "id": "listen_answer_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_oliver_smile",
+      "speaker": "Oliver",
+      "text": "I haven't quite earned the answer yet.",
+      "translation": "答案我还没写到足够好的程度。",
       "next": "listen_commit"
     },
     {
@@ -738,8 +1078,18 @@
       "location": "伦敦 · 空着的椅子",
       "shot": "reading_oliver_smile",
       "speaker": "Oliver",
-      "text": "I'll bring a page next time. Whether I read it to the room can be next time's decision.",
-      "translation": "下次我会带一页来。要不要念给整个房间听，可以留给下次再决定。",
+      "text": "I'll bring a page next time.",
+      "translation": "下次我会带一页来。",
+      "next": "listen_commit_part2"
+    },
+    {
+      "id": "listen_commit_part2",
+      "act": 3,
+      "location": "伦敦 · 空着的椅子",
+      "shot": "reading_oliver_smile",
+      "speaker": "Oliver",
+      "text": "Whether I read it to the room can be next time's decision.",
+      "translation": "要不要念给整个房间听，可以留给下次再决定。",
       "next": "after_event"
     },
     {
@@ -748,8 +1098,18 @@
       "location": "伦敦 · 散场以后",
       "shot": "room",
       "speaker": "旁白",
-      "text": "Coats come off the hooks. Nora straightens the books on the little table. The shop becomes a shop again.",
-      "translation": "大家取下外套。Nora 整了整小桌上的书。书店又变回了一间书店。",
+      "text": "Coats come off the hooks. Nora tidies the books on the table.",
+      "translation": "大家取下外套。Nora 整了整桌上的书。",
+      "next": "after_event_part2"
+    },
+    {
+      "id": "after_event_part2",
+      "act": 4,
+      "location": "伦敦 · 散场以后",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "The shop becomes a shop again.",
+      "translation": "书店又变回了一间书店。",
       "next": "nora_close"
     },
     {
@@ -758,8 +1118,18 @@
       "location": "伦敦 · 散场以后",
       "shot": "nora",
       "speaker": "Nora",
-      "text": "Same time next month. Bring a page, bring a friend, or just bring yourself.",
-      "translation": "下个月同一时间。带一页文字，带个朋友，或者只带你自己。",
+      "text": "Same time next month.",
+      "translation": "下个月同一时间。",
+      "next": "nora_close_part2"
+    },
+    {
+      "id": "nora_close_part2",
+      "act": 4,
+      "location": "伦敦 · 散场以后",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "Bring a page, bring a friend, or just bring yourself.",
+      "translation": "带一页文字，带个朋友，或者只带你自己。",
       "next": "no_score"
     },
     {
@@ -778,8 +1148,18 @@
       "location": "伦敦 · 散场以后",
       "shot": "oliver_smile",
       "speaker": "Oliver",
-      "text": "Less dramatic. More useful. Annoying, really. I had prepared some excellent excuses.",
-      "translation": "没那么戏剧化，却更有用。真烦，我本来准备了好几个精彩的借口。",
+      "text": "Less dramatic. More useful. Annoying, really.",
+      "translation": "没那么戏剧化，却更有用。真烦。",
+      "next": "different_part2"
+    },
+    {
+      "id": "different_part2",
+      "act": 4,
+      "location": "伦敦 · 散场以后",
+      "shot": "oliver_smile",
+      "speaker": "Oliver",
+      "text": "I had prepared some excellent excuses.",
+      "translation": "我本来准备了好几个精彩的借口。",
       "next": "remember"
     },
     {
@@ -802,8 +1182,18 @@
       "location": "伦敦 · 散场以后",
       "shot": "oliver_smile",
       "speaker": "Oliver",
-      "text": "Thanks for asking what I wanted before trying to fix anything. People don't always do it in that order.",
-      "translation": "谢谢你先问我想要什么，再想着帮忙。不是所有人都会按这个顺序来。",
+      "text": "Thanks for asking what I wanted before trying to fix things.",
+      "translation": "谢谢你先问我想要什么，再想着帮忙。",
+      "next": "remember_private_part2"
+    },
+    {
+      "id": "remember_private_part2",
+      "act": 4,
+      "location": "伦敦 · 散场以后",
+      "shot": "oliver_smile",
+      "speaker": "Oliver",
+      "text": "People don't always do it in that order.",
+      "translation": "不是所有人都会按这个顺序来。",
       "next": "door"
     },
     {
@@ -812,8 +1202,18 @@
       "location": "伦敦 · 散场以后",
       "shot": "oliver_smile",
       "speaker": "Oliver",
-      "text": "You made the question smaller without making the decision for me. One page. I can work with that.",
-      "translation": "你把问题变小了，却没有替我做决定。一页。这件事我可以试着处理。",
+      "text": "You made the question smaller, but left the decision to me.",
+      "translation": "你把问题变小了，却把决定留给了我。",
+      "next": "remember_format_part2"
+    },
+    {
+      "id": "remember_format_part2",
+      "act": 4,
+      "location": "伦敦 · 散场以后",
+      "shot": "oliver_smile",
+      "speaker": "Oliver",
+      "text": "One page. I can work with that.",
+      "translation": "一页。这件事我可以试着处理。",
       "next": "door"
     },
     {
@@ -822,8 +1222,18 @@
       "location": "伦敦 · 书店门口 · 夜",
       "shot": "outside",
       "speaker": "旁白",
-      "text": "The rain is lighter now. Through the window, the chair is just a chair again.",
-      "translation": "雨小了些。隔着窗，那把椅子又只是把椅子了。",
+      "text": "The rain is lighter now.",
+      "translation": "雨小了些。",
+      "next": "door_part2"
+    },
+    {
+      "id": "door_part2",
+      "act": 5,
+      "location": "伦敦 · 书店门口 · 夜",
+      "shot": "outside",
+      "speaker": "旁白",
+      "text": "Through the window, the chair is just a chair again.",
+      "translation": "隔着窗，那把椅子又只是把椅子了。",
       "next": "next_day"
     },
     {
@@ -832,8 +1242,8 @@
       "location": "伦敦 · 书店门口 · 夜",
       "shot": "outside_oliver",
       "speaker": "Oliver",
-      "text": "Coffee tomorrow? I promise not to make you review the entire novel.",
-      "translation": "明天喝咖啡吗？保证不让你审阅整本小说。",
+      "text": "Coffee tomorrow? I won't make you review the whole novel.",
+      "translation": "明天喝咖啡吗？不会让你审阅整本小说的。",
       "next": "your_condition"
     },
     {
@@ -852,8 +1262,18 @@
       "location": "伦敦 · 书店门口 · 夜",
       "shot": "outside_oliver",
       "speaker": "Oliver",
-      "text": "One page at a time. And you can tell me about something you'd like to try.",
-      "translation": "一次一页。你也可以告诉我，有什么事是你想试试的。",
+      "text": "One page at a time.",
+      "translation": "一次一页。",
+      "next": "deal_part2"
+    },
+    {
+      "id": "deal_part2",
+      "act": 5,
+      "location": "伦敦 · 书店门口 · 夜",
+      "shot": "outside_oliver",
+      "speaker": "Oliver",
+      "text": "And you can tell me about something you'd like to try.",
+      "translation": "你也可以告诉我，有什么事是你想试试的。",
       "next": "last"
     },
     {
@@ -862,8 +1282,18 @@
       "location": "伦敦 · 书店门口 · 夜",
       "shot": "outside",
       "speaker": "旁白",
-      "text": "You arrived with an invitation. You leave with a small plan for tomorrow.",
-      "translation": "你带着一份邀请而来，离开时，多了一个关于明天的小计划。",
+      "text": "You arrived with an invitation.",
+      "translation": "你带着一份邀请而来。",
+      "next": "last_part2"
+    },
+    {
+      "id": "last_part2",
+      "act": 5,
+      "location": "伦敦 · 书店门口 · 夜",
+      "shot": "outside",
+      "speaker": "旁白",
+      "text": "You leave with a small plan for tomorrow.",
+      "translation": "离开时，多了一个关于明天的小计划。",
       "next": "ending"
     },
     {
@@ -876,5 +1306,6 @@
       "translation": "有些开始，只有一页那么长。",
       "ending": true
     }
-  ]
+  ],
+  "maxDialogueCharacters": 65
 }

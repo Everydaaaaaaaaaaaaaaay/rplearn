@@ -139,18 +139,34 @@ struct NarrativeAudioPlayerTests {
                                           supertonicIsAvailable: true) == .supertonic3)
     }
 
-    @Test("十种试听音色精确选取且统一语速，不受角色散列或全局引擎影响")
-    func previewVoiceProfiles() {
-        #expect(SupertonicPreviewVoice.allCases.count == 10)
-        for voice in SupertonicPreviewVoice.allCases {
+    @Test("正式选角精确选择音色，不受角色散列影响，查词仍用原音色")
+    func authoredVoiceProfiles() {
+        #expect(SupertonicVoice.allCases.count == 10)
+        for voice in SupertonicVoice.allCases {
+            let hint = SpeechVoiceHint(stableID: "london.nora", gender: "female", supertonicVoice: voice)
             let request = SpeechRequest(text: "After the rain.", language: "en",
-                                        voiceHint: SpeechVoiceHint(stableID: "london.nora", gender: "female"),
-                                        engine: .system, previewVoice: voice)
+                                        voiceHint: hint, engine: .supertonic3)
             let profile = Supertonic3VoiceCatalog.profile(for: request)
             #expect(profile.voiceID == voice.rawValue)
             #expect(profile.speed == 1)
             #expect(SpeechEngineRouter.resolve(request: request, selectedEngine: .system,
                                               supertonicIsAvailable: true) == .supertonic3)
+            let word = SpeechRequest(text: "rain", purpose: .pronunciation, voiceHint: hint)
+            #expect(Supertonic3VoiceCatalog.profile(for: word).voiceID == "F1")
+        }
+    }
+
+    @Test("样章每框预算低于当前 SDK 的真实分段阈值")
+    func scriptFitsSingleSpeechChunk() throws {
+        let url = try #require(Bundle.main.url(forResource: "departures_london_v1", withExtension: "json"))
+        let file = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+        let limit = try #require(file["maxDialogueCharacters"] as? Int)
+        #expect(limit < Supertonic3AssetSelection.maxSingleChunkCharacters)
+        let nodes = try #require(file["nodes"] as? [[String: Any]])
+        for node in nodes {
+            let text = try #require(node["text"] as? String)
+            #expect(text.count <= limit)
+            #expect(text.rangeOfCharacter(from: .newlines) == nil)
         }
     }
 

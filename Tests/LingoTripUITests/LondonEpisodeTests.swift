@@ -27,7 +27,7 @@ final class LondonEpisodeTests: XCTestCase {
         add(attachment)
     }
 
-    private func advanceUntil(_ id: String, limit: Int = 80) {
+    private func advanceUntil(_ id: String, limit: Int = 160) {
         for _ in 0..<limit {
             if app.buttons[id].exists { return }
             let next = app.buttons["episode.next"]
@@ -37,13 +37,22 @@ final class LondonEpisodeTests: XCTestCase {
         XCTFail("Did not reach \(id)")
     }
 
+    private func advanceToNode(_ id: String) {
+        for _ in 0..<160 {
+            let value = app.buttons["episode.sound"].value as? String ?? ""
+            if value.hasSuffix(";node:\(id)") { return }
+            guard app.buttons["episode.next"].exists else { break }
+            app.buttons["episode.next"].tap()
+        }
+        XCTFail("Did not reach node \(id)")
+    }
+
     func testReadingRouteAndResume() {
         app.launch()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
         XCTAssertGreaterThan(app.buttons["episode.history"].frame.minY, 50)
         screenshot("london-01-arrival")
-        app.buttons["episode.next"].tap()
-        app.buttons["episode.next"].tap()
+        advanceToNode("hello")
         screenshot("london-02-oliver")
 
         let translation = app.buttons["episode.translation"]
@@ -62,7 +71,7 @@ final class LondonEpisodeTests: XCTestCase {
 
         advanceUntil("episode.choice.read")
         app.buttons["episode.choice.read"].tap()
-        for _ in 0..<3 { app.buttons["episode.next"].tap() }
+        advanceToNode("read_breath")
         screenshot("london-04-reading")
         advanceUntil("episode.restart")
         screenshot("london-05-ending")
@@ -128,7 +137,7 @@ final class LondonEpisodeTests: XCTestCase {
         screenshot("london-07-nora")
         advanceUntil("episode.choice.listen")
         app.buttons["episode.choice.listen"].tap()
-        for _ in 0..<3 { app.buttons["episode.next"].tap() }
+        advanceToNode("listen_room")
         screenshot("london-08-listening")
         advanceUntil("episode.restart")
         XCTAssertTrue(app.staticTexts["本章影响：你们留在台下；他私下分享了第一句，并决定下次带一页来。"].exists)
@@ -168,7 +177,10 @@ final class LondonEpisodeTests: XCTestCase {
         app.launch()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
         // No debounce/wait is imposed by the new content crossfade.
-        for _ in 0..<8 { app.buttons["episode.next"].doubleTap() }
+        for _ in 0..<40 {
+            guard app.buttons["episode.next"].exists else { break }
+            app.buttons["episode.next"].doubleTap()
+        }
         XCTAssertTrue(app.buttons["episode.choice.private"].waitForExistence(timeout: 3))
         XCTAssertFalse(app.buttons["episode.next"].exists)
         app.buttons["episode.choice.private"].tap()
@@ -202,31 +214,17 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 2))
     }
 
-    func testTemporaryVoiceAudition() {
+    func testAuditionEntryRemovedAndShortPages() {
         app.launch()
-        let entry = app.buttons["episode.voices"]
-        XCTAssertTrue(entry.waitForExistence(timeout: 20))
-        entry.tap()
-        let first = app.buttons["voicePreview.M1"]
-        XCTAssertTrue(first.waitForExistence(timeout: 5))
-        first.tap()
-        let status = app.staticTexts["voicePreview.status"]
-        expectation(for: NSPredicate(format: "label CONTAINS %@", "正在播放 M1"), evaluatedWith: status)
-        waitForExpectations(timeout: 45)
-        app.buttons["voicePreview.M2"].tap()
-        XCTAssertTrue(status.label.contains("M2"))
-        app.buttons["voicePreview.stop"].tap()
-        XCTAssertEqual(status.label, "已停止")
-        app.swipeUp()
-        XCTAssertTrue(app.buttons["voicePreview.F5"].waitForExistence(timeout: 3))
-        app.buttons["voicePreview.F5"].tap()
-        expectation(for: NSPredicate(format: "label CONTAINS %@", "正在播放 F5"), evaluatedWith: status)
-        // Status can be scrolled off screen; return to it without stopping audio.
-        app.swipeDown()
-        waitForExpectations(timeout: 45)
-        app.buttons["voicePreview.close"].tap()
-        XCTAssertTrue(entry.waitForExistence(timeout: 5))
-        XCTAssertEqual(app.buttons["episode.sound"].label, "开启剧情声音")
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 20))
+        XCTAssertFalse(app.buttons["episode.voices"].exists)
+        app.buttons["episode.next"].tap()
+        XCTAssertTrue(app.staticTexts["街角的小书店还亮着灯。"].waitForExistence(timeout: 3))
+        screenshot("london-short-dialogue")
+        app.terminate()
+        app.launchEnvironment["UI_TEST_EPISODE_FRESH"] = "0"
+        app.launch()
+        XCTAssertTrue(app.staticTexts["街角的小书店还亮着灯。"].waitForExistence(timeout: 15))
     }
 
     func testDismissingLookupDoesNotRepeatNarration() {
@@ -258,7 +256,7 @@ final class LondonEpisodeTests: XCTestCase {
     func testPlayerHasNoAssignedVoiceAndKeepsReadingTime() {
         app.launch()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 20))
-        for _ in 0..<3 { app.buttons["episode.next"].tap() }
+        advanceToNode("listen")
         let sound = app.buttons["episode.sound"]
         sound.tap()
         let quiet = expectation(description: "The player's line remains unvoiced")

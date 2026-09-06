@@ -18,7 +18,6 @@ public struct LondonEpisodeView: View {
     @State private var showTranslation = true
     @State private var automatic = false
     @State private var showHistory = false
-    @State private var showVoicePreview = false
     @State private var showHistoryRestart = false
     @State private var showRestart = false
     @State private var wordSelection: TokenSelection?
@@ -140,11 +139,6 @@ public struct LondonEpisodeView: View {
             allowsSystemTranslationFallback: true
         )
         .sheet(isPresented: $showHistory) { historySheet }
-        #if DEBUG
-        .sheet(isPresented: $showVoicePreview, onDismiss: { updateAudio() }) {
-            SupertonicVoicePreviewSheet(audio: audio)
-        }
-        #endif
         .confirmationDialog("从头开始这一站？当前样章进度将被替换。", isPresented: $showRestart, titleVisibility: .visible) {
             Button("从头开始", role: .destructive) { restart() }
             Button("取消", role: .cancel) { }
@@ -216,17 +210,6 @@ public struct LondonEpisodeView: View {
                     Rectangle().fill(index <= session.current.act ? gold : paper.opacity(0.22)).frame(height: 2)
                 }
             }.padding(.horizontal, 9).accessibilityHidden(true)
-            #if DEBUG
-            Button {
-                automatic = false
-                audio.stop()
-                showVoicePreview = true
-            } label: {
-                Label("音色试听（临时）", systemImage: "headphones")
-                    .font(.caption).frame(minHeight: 32)
-            }
-            .accessibilityIdentifier("episode.voices")
-            #endif
         }
         .foregroundStyle(paper)
         .buttonStyle(EpisodePressStyle())
@@ -413,7 +396,7 @@ public struct LondonEpisodeView: View {
     }
 
     private var canAutoAdvance: Bool {
-        automatic && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart && !showVoicePreview
+        automatic && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
             && session?.current.choices == nil && session?.isFinished == false
             && (!soundEnabled || audio.completedID == session?.nodeID)
     }
@@ -430,14 +413,14 @@ public struct LondonEpisodeView: View {
     private var audioAccessibilityValue: String {
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
-            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none")"
+            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none");node:\(session?.nodeID ?? "none")"
         }
         #endif
         return soundEnabled ? "角色配音与环境声已开启" : "剧情静音，查词仍可单独播放"
     }
 
     private var canPlayAudio: Bool {
-        soundEnabled && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart && !showVoicePreview
+        soundEnabled && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
     }
     private var audioIdentity: String { "\(session?.nodeID ?? "")-\(canPlayAudio)" }
 
@@ -446,13 +429,14 @@ public struct LondonEpisodeView: View {
         lastAudioPageID = session?.nodeID
         guard canPlayAudio, let session else { audio.stop(); return }
         let speaker = session.current.speaker
-        // Keep the pilot on the bundled engine regardless of the global setting.
-        // Supertonic exposes English, not a guaranteed British accent.
+        // User-auditioned British cast: M5 for Oliver, F5 for Nora/narration.
+        // This is authored casting, not a general accent-switching capability.
         let identity = speaker == "Oliver" ? "london.oliver" : speaker == "Nora" ? "london.nora"
             : "london.narrator"
         let request = SpeechRequest(text: session.current.text, language: "en", purpose: .characterDialogue,
                                     voiceHint: SpeechVoiceHint(stableID: identity,
-                                                              gender: speaker == "Oliver" ? "male" : "female"),
+                                                              gender: speaker == "Oliver" ? "male" : "female",
+                                                              supertonicVoice: speaker == "Oliver" ? .m5 : .f5),
                                     engine: .supertonic3)
         currentLineIsVoiced = speaker != "你" && session.current.choices == nil && narratedNodeID != session.nodeID
         if currentLineIsVoiced { narratedNodeID = session.nodeID }

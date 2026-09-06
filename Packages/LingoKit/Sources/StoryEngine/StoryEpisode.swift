@@ -57,6 +57,9 @@ public struct StoryEpisode: Decodable, Sendable {
     public let acts: [String]
     public let shots: [String: Shot]
     public let nodes: [Node]
+    /// Authored per-panel budget. Optional for older episodes; no runtime slicing
+    /// of bilingual text, so translation and choice boundaries stay intentional.
+    public let maxDialogueCharacters: Int?
 
     public enum ValidationError: Error, Equatable {
         case invalid(String)
@@ -77,6 +80,7 @@ public struct StoryEpisode: Decodable, Sendable {
     public func validate() throws {
         func reject(_ message: String) throws { throw ValidationError.invalid(message) }
         guard version > 0, !id.isEmpty, !acts.isEmpty else { return try reject("metadata") }
+        if let limit = maxDialogueCharacters, limit <= 0 { return try reject("dialogue budget") }
         let ids = Set(nodes.map(\.id))
         guard ids.count == nodes.count, ids.contains(start) else { return try reject("node IDs/start") }
         for shot in shots.values {
@@ -86,6 +90,13 @@ public struct StoryEpisode: Decodable, Sendable {
             else { return try reject("shot") }
         }
         for node in nodes {
+            if let limit = maxDialogueCharacters {
+                let text = node.text.decomposedStringWithCompatibilityMapping
+                guard text.unicodeScalars.count <= limit, text.rangeOfCharacter(from: .newlines) == nil,
+                      (node.choices ?? []).allSatisfy({
+                          $0.text.decomposedStringWithCompatibilityMapping.unicodeScalars.count <= limit
+                      }) else { return try reject("dialogue budget: \(node.id)") }
+            }
             let exits = (node.next == nil ? 0 : 1) + (node.choices == nil ? 0 : 1)
                 + (node.branch == nil ? 0 : 1) + (node.ending == true ? 1 : 0)
             guard exits == 1, shots[node.shot] != nil, acts.indices.contains(node.act),

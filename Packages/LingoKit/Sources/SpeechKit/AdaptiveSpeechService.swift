@@ -105,13 +105,11 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
 
         switch await resolvedEngine(for: request) {
         case .system:
-            guard request.previewVoice == nil else { return }
             await apple.speak(request)
         case .supertonic3:
             await prepareSupertonicIfNeeded(updateStatus: selectedEngine == .supertonic3)
             guard playbackRequestGate.accepts(generation) else { return }
             guard await supertonic.isReady else {
-                guard request.previewVoice == nil else { return }
                 await apple.speak(request)
                 return
             }
@@ -134,7 +132,6 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         if engine == .supertonic3, await supertonic.isReady {
             await supertonic.speakAndWait(request)
         } else {
-            guard request.previewVoice == nil else { return }
             // Await the actual fallback voice too; otherwise narrated pages advance
             // while Apple is still speaking when model preparation fails.
             await apple.speakAndWait(request)
