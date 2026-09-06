@@ -9,6 +9,7 @@ final class MyPagePerformanceTests: XCTestCase {
         app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
         app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
     }
 
     override func tearDownWithError() throws {

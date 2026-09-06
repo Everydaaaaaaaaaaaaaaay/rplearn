@@ -12,6 +12,9 @@ schemes:
     test:
       config: Debug
       gatherCoverageData: false
+      environmentVariables:
+        LINGOTRIP_BACKEND_URL: "http://127.0.0.1:9"
+        UI_TEST_DISABLE_BACKGROUND_REFRESH: "1"
       targets:
         - LingoTripTests
   LingoTripConversationTests:
