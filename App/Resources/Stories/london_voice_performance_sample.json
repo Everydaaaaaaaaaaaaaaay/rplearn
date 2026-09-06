@@ -1,0 +1,147 @@
+{
+  "id": "london-voice-performance-v2",
+  "sourceEpisode": "departures_london_v1",
+  "sourceNodes": [
+    "small",
+    "small_part2",
+    "own_voice",
+    "agreement",
+    "agreement_part2",
+    "not_test",
+    "silence",
+    "silence_part2",
+    "two_ways",
+    "two_ways_part2"
+  ],
+  "segments": [
+    {
+      "id": "small_start",
+      "text": "A small beginning.",
+      "sourceNodes": [
+        "small"
+      ],
+      "speaker": "Oliver",
+      "rate": 0.98,
+      "gapAfter": 0.25,
+      "intention": "小心提出一个可承受的开头",
+      "breath": false
+    },
+    {
+      "id": "small_conditions",
+      "text": "One page, no questions afterwards. And permission to be bad at it.",
+      "sourceNodes": [
+        "small",
+        "small_part2"
+      ],
+      "speaker": "Oliver",
+      "rate": 0.96,
+      "gapAfter": 1.05,
+      "intention": "把具体条件和真正的担心连在一起；结束后给静音的玩家问句留一个交流节拍",
+      "breath": false
+    },
+    {
+      "id": "own_voice",
+      "text": "I'll ask. If I can read my own words, I can say that much.",
+      "sourceNodes": [
+        "own_voice"
+      ],
+      "speaker": "Oliver",
+      "rate": 1.02,
+      "gapAfter": 0.32,
+      "intention": "自己作决定，稍微恢复行动感",
+      "breath": false
+    },
+    {
+      "id": "agreement_start",
+      "text": "Of course.",
+      "sourceNodes": [
+        "agreement"
+      ],
+      "speaker": "Nora",
+      "rate": 1,
+      "gapAfter": 0.18,
+      "intention": "Nora 自然接话，短而明确",
+      "breath": false
+    },
+    {
+      "id": "agreement_space",
+      "text": "A page, no questions. And you can change your mind before we begin.",
+      "sourceNodes": [
+        "agreement",
+        "agreement_part2"
+      ],
+      "speaker": "Nora",
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "承诺条件并归还选择权，连贯地说给同一个人",
+      "breath": false
+    },
+    {
+      "id": "not_test",
+      "text": "This isn't an audition. Nobody here needs to earn their chair.",
+      "sourceNodes": [
+        "not_test"
+      ],
+      "speaker": "Nora",
+      "rate": 0.98,
+      "gapAfter": 0.48,
+      "intention": "平静消除被评判的压力",
+      "breath": false
+    },
+    {
+      "id": "silence",
+      "text": "Oliver turns the folded page over.",
+      "sourceNodes": [
+        "silence"
+      ],
+      "speaker": "旁白",
+      "rate": 0.99,
+      "gapAfter": 0.25,
+      "intention": "旁白描述纸张动作，不表演角色的情绪",
+      "breath": false
+    },
+    {
+      "id": "silence_space",
+      "text": "The conversation pauses long enough for him to breathe.",
+      "sourceNodes": [
+        "silence_part2"
+      ],
+      "speaker": "旁白",
+      "rate": 0.99,
+      "gapAfter": 0.8,
+      "intention": "说完之后真的给他留出空间",
+      "breath": false
+    },
+    {
+      "id": "two_ways_start",
+      "text": "I could try tonight.",
+      "sourceNodes": [
+        "two_ways"
+      ],
+      "speaker": "Oliver",
+      "rate": 1,
+      "gapAfter": 0.22,
+      "intention": "Oliver 调整呼吸后开口，尝试的意愿开始清晰",
+      "breath": true
+    },
+    {
+      "id": "two_ways_options",
+      "text": "Or listen, and bring a page next time. Both feel real now.",
+      "sourceNodes": [
+        "two_ways",
+        "two_ways_part2"
+      ],
+      "speaker": "Oliver",
+      "rate": 1,
+      "gapAfter": 0.45,
+      "intention": "把两个选择与释然收束连成一个意思，避免每个消息框重新起调",
+      "breath": false
+    }
+  ],
+  "candidatesPerSegment": 4,
+  "notes": [
+    "Dialogue-only audition; player clarify prompt remains silent, represented by a 1.05s beat, not full interactive reading time.",
+    "70-character synthesis cap retained, including optional expression tags.",
+    "All spoken lexical content preserved; source-panel boundaries do not dictate synthesis boundaries."
+  ]
+}

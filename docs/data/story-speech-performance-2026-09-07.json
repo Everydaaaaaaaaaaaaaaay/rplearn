@@ -1,0 +1,220 @@
+{
+  "date": "2026-09-07",
+  "scope": "Prepared audition only, not full App audio/pagination integration",
+  "sourceWords": 86,
+  "sourcePanels": 10,
+  "semanticSegments": 10,
+  "candidates": 40,
+  "recognitionCleanCandidates": 35,
+  "synthesisSecondsForAllCandidates": 50.805,
+  "tests": {
+    "xcodePassed": 5,
+    "waveformPassed": 5,
+    "failures": 0
+  },
+  "selected": [
+    {
+      "segment": "small_start",
+      "take": 3,
+      "steps": 12,
+      "speed": 1,
+      "expression": "none",
+      "waveSHA256": "7a69cd43c69ec680d27d520a056f927ad4270df72eae91b5e211e3e28d129b48"
+    },
+    {
+      "segment": "small_conditions",
+      "take": 0,
+      "steps": 12,
+      "speed": 0.9599999785423279,
+      "expression": "none",
+      "waveSHA256": "336cc4bab9a53661f14828e3452284eb6fc0a7bf3fb34c897c9596898c3bc447"
+    },
+    {
+      "segment": "own_voice",
+      "take": 1,
+      "steps": 12,
+      "speed": 1.0199999809265137,
+      "expression": "none",
+      "waveSHA256": "c092ceb351e521efc44677a38b9f3a9e845261dd47c4aab00670b385197e0847"
+    },
+    {
+      "segment": "agreement_start",
+      "take": 3,
+      "steps": 12,
+      "speed": 1.0199999809265137,
+      "expression": "none",
+      "waveSHA256": "2bf574f9c97146fec62a4ad2420fd574ba006e0456ce37b67a8d2b9b19cb92ba"
+    },
+    {
+      "segment": "agreement_space",
+      "take": 1,
+      "steps": 12,
+      "speed": 0.9900000095367432,
+      "expression": "none",
+      "waveSHA256": "8cbca56799f2acac3ab4fe9ba6b13196bc1a9fabe18f131bb0155fe831c6c51a"
+    },
+    {
+      "segment": "not_test",
+      "take": 2,
+      "steps": 8,
+      "speed": 0.9800000190734863,
+      "expression": "none",
+      "waveSHA256": "090a797086a2981c5ae31ce2e64a6e8b5e821d197e0075ae1136fe7195e9e772"
+    },
+    {
+      "segment": "silence",
+      "take": 2,
+      "steps": 8,
+      "speed": 0.9900000095367432,
+      "expression": "none",
+      "waveSHA256": "91c11d1bdd0e637bbd815e9494a2318a00aa16f4553c6c5fb24935758415989e"
+    },
+    {
+      "segment": "silence_space",
+      "take": 0,
+      "steps": 12,
+      "speed": 0.9900000095367432,
+      "expression": "none",
+      "waveSHA256": "ed0c90e2a81add5d2f834f06b2450e602edc892348c1f32477800605fefca52d"
+    },
+    {
+      "segment": "two_ways_start",
+      "take": 2,
+      "steps": 8,
+      "speed": 1,
+      "expression": "breath",
+      "waveSHA256": "862f7ebf7135f00fb941adae1846ffd603759f11a8c8b827b76ccb652cc42cf8"
+    },
+    {
+      "segment": "two_ways_options",
+      "take": 3,
+      "steps": 12,
+      "speed": 1.0199999809265137,
+      "expression": "none",
+      "waveSHA256": "8d2731124b83131ee58d7b09ed07b6e04c42aef96c536d5f3f5e279787259e9c"
+    }
+  ],
+  "speakerGainDB": {
+    "旁白": -0.16659173471823058,
+    "Nora": 0.908821686476416,
+    "Oliver": 0.0
+  },
+  "measuredGaps": [
+    {
+      "target": 0.25,
+      "retained": 0.22,
+      "inserted": 0.03,
+      "measured": 0.25
+    },
+    {
+      "target": 1.05,
+      "retained": 0.22,
+      "inserted": 0.83,
+      "measured": 1.05
+    },
+    {
+      "target": 0.32,
+      "retained": 0.21,
+      "inserted": 0.11,
+      "measured": 0.32
+    },
+    {
+      "target": 0.18,
+      "retained": 0.22,
+      "inserted": 0.0,
+      "measured": 0.22
+    },
+    {
+      "target": 0.28,
+      "retained": 0.22,
+      "inserted": 0.06,
+      "measured": 0.28
+    },
+    {
+      "target": 0.48,
+      "retained": 0.22,
+      "inserted": 0.26,
+      "measured": 0.48
+    },
+    {
+      "target": 0.25,
+      "retained": 0.22,
+      "inserted": 0.03,
+      "measured": 0.25
+    },
+    {
+      "target": 0.8,
+      "retained": 0.56,
+      "inserted": 0.24,
+      "measured": 0.8
+    },
+    {
+      "target": 0.22,
+      "retained": 0.22,
+      "inserted": 0.0,
+      "measured": 0.22
+    }
+  ],
+  "loudness": {
+    "prepared": {
+      "measuredLUFS": -25.26,
+      "gainDB": 3.2600000000000016,
+      "resultingLUFS": -22.0,
+      "predictedTruePeak": -5.089999999999998
+    },
+    "original": {
+      "measuredLUFS": -25.75,
+      "gainDB": 3.75,
+      "resultingLUFS": -22.0,
+      "predictedTruePeak": -5.539999999999999
+    }
+  },
+  "files": {
+    "performance-dry.wav": {
+      "seconds": 34.29,
+      "sha256": "a31c48912a970d9e222390ce7b378e94efc8f6ee14c4ff2627023aba2f0a974c"
+    },
+    "performance-room.wav": {
+      "seconds": 34.29,
+      "sha256": "63c1558de58047d85edfd4106e1b6327141c2055203b23e7553b1577e2a8af5c"
+    },
+    "original-matched.wav": {
+      "seconds": 40.0174149659864,
+      "sha256": "586c8d47fd3a374fb3a8c6225cd3848e1eb7e4a6c1dcd772589bd8eaa11e2a61"
+    }
+  },
+  "humanListeningScore": null,
+  "browserVerification": "Embedded audio seeks to selected line; bilingual caption matches; file navigation blocked by browser policy, not bypassed.",
+  "independentFullTrackRecognition": {
+    "recognizer": "small.en",
+    "results": {
+      "performance-dry": {
+        "recognized": "A small beginning. One page. No questions afterwards. And permission to be bad at it. I'll ask. If I can read my own words, I can say that much. Of course. A page, no questions. And you can change your mind before we begin. This isn't an audition. Nobody here needs to earn their chair. Oliver turns the folded page over. The conversation pauses long enough for him to breathe. I could try tonight, or listen, and bring a page next time. Both feel real now.",
+        "wordExact": true,
+        "recognizedWords": 86,
+        "expectedWords": 86,
+        "measuredLUFS": -21.94,
+        "truePeakDBFS": -5.09,
+        "loudnessRangeLU": 3.8
+      },
+      "performance-room": {
+        "recognized": "A small beginning. One page, no questions afterwards. And permission to be bad at it. I'll ask. If I can read my own words, I can say that much. Of course. A page, no questions. And you can change your mind before we begin. This isn't an audition. Nobody here needs to earn their chair. Oliver turns the folded page over. The conversation pauses long enough for him to breathe. I could try tonight or listen and bring a page next time both feel real now",
+        "wordExact": true,
+        "recognizedWords": 86,
+        "expectedWords": 86,
+        "measuredLUFS": -22.02,
+        "truePeakDBFS": -5.02,
+        "loudnessRangeLU": 3.8
+      },
+      "original-matched": {
+        "recognized": "A small beginning. One page, no questions afterwards. And permission to be bad at it. I'll ask. If I can read my own words, I can say that much. Of course. Page, no questions. And you can change your mind before we begin. This isn't an audition. Nobody here needs to earn their chair. Oliver turns the folded page over. The conversation pauses long enough for him to breathe. I could try tonight, or listen. Bring a page next time. Both feel real now.",
+        "wordExact": false,
+        "recognizedWords": 84,
+        "expectedWords": 86,
+        "measuredLUFS": -22.0,
+        "truePeakDBFS": -5.54,
+        "loudnessRangeLU": 3.8
+      }
+    }
+  }
+}

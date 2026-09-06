@@ -254,7 +254,8 @@ actor Supertonic3SpeechEngine {
 
     /// Shared by playback and the opt-in local audition; no cache or player is
     /// involved, so audition results exercise the actual production renderer.
-    func synthesizeSamples(_ request: SpeechRequest) async throws -> [Float] {
+    func synthesizeSamples(_ request: SpeechRequest, totalSteps: Int = 8) async throws -> [Float] {
+        try Task.checkCancellation()
         guard !request.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return [] }
         try await prepare()
         guard let manager else { throw Supertonic3SpeechEngineError.notReady }
@@ -268,6 +269,7 @@ actor Supertonic3SpeechEngine {
             try Task.checkCancellation()
             let result = try await manager.synthesize(
                 text: segment.text, language: "en", style: style,
+                totalSteps: min(12, max(5, totalSteps)),
                 speed: profile.speed * (cue?.speedMultiplier ?? 1),
                 silenceDuration: profile.silenceDuration
             )
