@@ -5,6 +5,9 @@ import { ConfigurationError, loadConfig } from "./config/env.js";
 import { createRuntimeDependencies } from "./infrastructure/runtime-dependencies.js";
 import { registerAuthRoutes } from "./modules/auth/routes.js";
 import { createAuthService } from "./modules/auth/service.js";
+import { createGuestService } from "./modules/auth/guest-service.js";
+import { registerGuestRoutes } from "./modules/auth/guest-routes.js";
+import { createGuestClaim } from "./infrastructure/guest-claim.js";
 import { createDeepSeekClient } from "./modules/ai/deepseek/client.js";
 import { registerAiRoutes } from "./modules/ai/routes.js";
 import { createAiService } from "./modules/ai/service.js";
@@ -71,6 +74,12 @@ async function main(): Promise<void> {
   registerAuditHooks(app, config, dependencies.database);
   const authService = await createAuthService(config, dependencies.database);
   registerAuthRoutes(app, authService);
+  registerGuestRoutes(
+    app,
+    authService,
+    createGuestService(config, dependencies.database, authService),
+    createGuestClaim(dependencies.database, config.authTokenHashPepper),
+  );
   registerAccountRoutes(
     app,
     authService,

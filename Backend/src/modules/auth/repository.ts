@@ -30,6 +30,13 @@ function hasPostgresCode(error: unknown, code: string): boolean {
 export class AuthRepository {
   constructor(private readonly resource: DatabaseResource) {}
 
+  async isGuest(userId: string): Promise<boolean> {
+    const [row] = await this.resource.sql<{ found: boolean }[]>`
+      select exists(select 1 from app.guest_installations where user_id = ${userId}) as found
+    `;
+    return row?.found === true;
+  }
+
   async findEmailAccount(email: string): Promise<EmailAccount | undefined> {
     const [row] = await this.resource.sql<
       {
@@ -486,6 +493,7 @@ export class AuthRepository {
           and u.token_version = ${tokenVersion}
           and ds.id = ${sessionId}
           and ds.status = 'active'
+          and not exists (select 1 from app.guest_installations g where g.user_id = u.id and g.claimed_at is not null)
       ) as valid
     `;
     return row?.valid ?? false;

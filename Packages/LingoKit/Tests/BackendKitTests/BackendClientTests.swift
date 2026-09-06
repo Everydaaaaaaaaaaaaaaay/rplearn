@@ -41,6 +41,8 @@ struct BackendClientTests {
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             requests.append(request)
             switch request.url?.path {
+            case "/v1/auth/guest":
+                return json(Self.tokenJSON(access: "guest-access", refresh: "guest-refresh"))
             case "/v1/auth/login":
                 return json(Self.tokenJSON(access: "login-access", refresh: "login-refresh"))
             case "/v1/auth/refresh":
@@ -83,6 +85,36 @@ struct BackendClientTests {
             }
             """
         }
+    }
+
+    @Test("并发游客请求只建立一个会话，匿名凭证不会变成已登录账号")
+    func concurrentGuestSessionRemainsSeparate() async throws {
+        let account = MemoryCredentialStore()
+        let guest = MemoryCredentialStore()
+        let transport = MockTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: account, transport: transport,
+            guestCredentialStore: guest, guestInstallationKey: String(repeating: "a", count: 64)
+        )
+        try await withThrowingTaskGroup(of: Bool.self) { group in
+            for _ in 0..<8 {
+                group.addTask {
+                    let result: Probe = try await client.sendWithGuestAccess(path: "/v1/probe", method: "POST", body: ["test": true], guestID: "legacy-device")
+                    return result.ok
+                }
+            }
+            for try await result in group { #expect(result) }
+        }
+        #expect(try account.load() == nil)
+        #expect(try guest.load()?.refreshToken == "guest-refresh")
+        #expect(try await client.cachedIdentity() == nil)
+        let requests = await transport.requests
+        #expect(requests.filter { $0.url?.path == "/v1/auth/guest" }.count == 1)
+        #expect(requests.filter { $0.url?.path == "/v1/probe" }.allSatisfy {
+            $0.value(forHTTPHeaderField: "Authorization") == "Bearer guest-access" &&
+            $0.value(forHTTPHeaderField: "x-lingotrip-guest-id") == nil
+        })
     }
 
     @Test("login stores only the refresh credential and authenticates later requests")

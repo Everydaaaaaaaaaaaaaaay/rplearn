@@ -101,7 +101,7 @@ export const userProfiles = applicationSchema.table(
     difficulty: difficultyLevel("difficulty").default("junior1").notNull(),
     displayName: text("display_name").default("旅行者").notNull(),
     experiencePoints: integer("experience_points").default(0).notNull(),
-    friendSlotLimit: integer("friend_slot_limit").default(3).notNull(),
+    friendSlotLimit: integer("friend_slot_limit").default(5).notNull(),
     gameLevel: integer("game_level").default(1).notNull(),
     hasCompletedOnboarding: boolean("has_completed_onboarding")
       .default(false)

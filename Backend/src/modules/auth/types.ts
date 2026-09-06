@@ -15,6 +15,7 @@ export type RequestMetadata = Readonly<{
 }>;
 
 export type AccessIdentity = Readonly<{
+  isGuest?: boolean;
   sessionId: string;
   tokenVersion: number;
   userId: string;

@@ -38,20 +38,63 @@ public actor BackendClient {
     private var accessToken: String?
     private var accessTokenExpiresAt: Date?
     private var refreshTask: Task<AuthTokenResponse, Error>?
+    private let guestCredentialStore: (any AuthCredentialStore)?
+    private let guestInstallationKey: String?
+    private var guestBackend: BackendClient?
+    private var guestBootstrapTask: Task<BackendClient, Error>?
 
     public init(
         configuration: BackendConfiguration,
         credentialStore: any AuthCredentialStore,
-        transport: any BackendTransport = URLSessionBackendTransport()
+        transport: any BackendTransport = URLSessionBackendTransport(),
+        guestCredentialStore: (any AuthCredentialStore)? = nil,
+        guestInstallationKey: String? = nil
     ) {
         self.configuration = configuration
         self.credentialStore = credentialStore
         self.transport = transport
+        self.guestCredentialStore = guestCredentialStore
+        self.guestInstallationKey = guestInstallationKey
+    }
+
+    /// Anonymous and registered credentials remain separate; this is only for opted-in APIs.
+    public func actorClient() async throws -> BackendClient {
+        if try hasUsableStoredSessionForGuestAccess() { return self }
+        if let guestBootstrapTask { return try await guestBootstrapTask.value }
+        guard let guestCredentialStore, let guestInstallationKey else { throw BackendClientError.signedOut }
+        let client = guestBackend ?? BackendClient(configuration: configuration, credentialStore: guestCredentialStore, transport: transport)
+        guestBackend = client
+        struct GuestBody: Encodable, Sendable {
+            struct Device: Encodable, Sendable { let deviceId: String; let platform = "ios" }
+            let installationKey: String
+            let device: Device
+        }
+        let task = Task<BackendClient, Error> {
+            if try await client.cachedIdentity() != nil { return client }
+            let token: AuthTokenResponse = try await client.send(
+                path: "/v1/auth/guest", method: "POST",
+                body: GuestBody(installationKey: guestInstallationKey, device: .init(deviceId: "anonymous-ios")),
+                authenticated: false
+            )
+            try await client.apply(token)
+            return client
+        }
+        guestBootstrapTask = task
+        defer { guestBootstrapTask = nil }
+        return try await task.value
     }
 
     public func cachedIdentity() throws -> AuthIdentity? {
         guard let stored = try credentialStore.load() else { return nil }
         return AuthIdentity(sessionID: stored.sessionID, userID: stored.userID)
+    }
+
+    /// The server deduplicates claims; a retry can never transfer this journey to a second account.
+    public func claimGuestJourney() async throws {
+        guard let guestInstallationKey else { return }
+        struct Claim: Encodable, Sendable { let installationKey: String }
+        struct Result: Decodable, Sendable { let claimed: Bool }
+        let _: Result = try await send(path: "/v1/auth/guest/claim", method: "POST", body: Claim(installationKey: guestInstallationKey))
     }
 
     public func restoreSession() async throws -> AuthIdentity? {
@@ -200,6 +243,9 @@ public actor BackendClient {
         body: Request,
         guestID: String
     ) async throws -> Response {
+        if guestCredentialStore != nil {
+            return try await actorClient().send(path: path, method: method, body: body)
+        }
         if try hasUsableStoredSessionForGuestAccess() {
             do {
                 return try await send(path: path, method: method, body: body)
@@ -254,6 +300,9 @@ public actor BackendClient {
         body: Request,
         guestID: String
     ) async throws -> AsyncThrowingStream<BackendServerSentEvent, Error> {
+        if guestCredentialStore != nil {
+            return try await actorClient().eventStream(path: path, body: body)
+        }
         let encodedBody = try encoder.encode(body)
         if try hasUsableStoredSessionForGuestAccess() {
             do {

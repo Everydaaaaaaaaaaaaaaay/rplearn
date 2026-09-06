@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
-import { authenticateRequest } from "../auth/http.js";
+import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { NpcService } from "./service.js";
 import { isValidTravelerId } from "./traveler-id.js";
@@ -69,6 +69,15 @@ const registerBody = z
       )
       .max(12)
       .optional(),
+    encounterContext: z
+      .object({
+        regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
+        activityId: z.string().regex(/^[a-zA-Z0-9_-]{1,128}$/),
+        category: z.enum(["culture", "food", "outdoors", "social", "night"]),
+        language: z.string().trim().min(1).max(80),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 const relationshipBody = z
@@ -102,11 +111,16 @@ export function registerNpcRoutes(
   authService: AuthService,
   npcService: NpcService,
 ): void {
+  app.post("/v1/npcs/encounters", { schema: { tags: ["npcs"] } }, async (request) => {
+    const identity = await authenticateActorRequest(request, authService);
+    const context = parse(registerBody.shape.encounterContext.unwrap(), request.body);
+    return npcService.selectEncounter(identity.userId, context);
+  });
   app.post(
     "/v1/npcs",
     { schema: { security: [{ bearerAuth: [] }], tags: ["npcs"] } },
     async (request, reply) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const input = parse(registerBody, request.body);
       reply.header("cache-control", "no-store");
       return npcService.register(identity.userId, input);
@@ -134,7 +148,7 @@ export function registerNpcRoutes(
     "/v1/npcs/:npcId/relationship",
     { schema: { security: [{ bearerAuth: [] }], tags: ["npcs"] } },
     async (request, reply) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const { npcId } = parse(npcParameters, request.params);
       const input = parse(relationshipBody, request.body);
       await npcService.link(identity.userId, npcId, input);

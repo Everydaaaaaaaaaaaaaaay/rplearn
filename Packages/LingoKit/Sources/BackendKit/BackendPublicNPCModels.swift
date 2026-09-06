@@ -116,6 +116,8 @@ public enum BackendNPCRelationshipStatus: String, Codable, Sendable {
 }
 
 public protocol PublicNPCRegistry: Sendable {
+    func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC?
+    func registerEncounterNPC(id: UUID, card: BackendPublicNPCCard, context: BackendNPCEncounterContext) async throws -> BackendPublicNPC
     func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC
     func linkPublicNPC(
         npcID: UUID,
@@ -125,9 +127,27 @@ public protocol PublicNPCRegistry: Sendable {
     func registerPublicNPC(id: UUID, card: BackendPublicNPCCard) async throws -> BackendPublicNPC
 }
 
+public struct BackendNPCEncounterContext: Codable, Sendable {
+    public let regionId: String
+    public let activityId: String
+    public let category: String
+    public let language: String
+    public init(regionID: String, activityID: String, category: String, language: String = "English") {
+        self.regionId = regionID; self.activityId = activityID; self.category = category; self.language = language
+    }
+}
+
+extension PublicNPCRegistry {
+    public func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC? { nil }
+    public func registerEncounterNPC(id: UUID, card: BackendPublicNPCCard, context: BackendNPCEncounterContext) async throws -> BackendPublicNPC {
+        try await registerPublicNPC(id: id, card: card)
+    }
+}
+
 private struct RegisterPublicNPCBody: Encodable, Sendable {
     let card: BackendPublicNPCCard
     let id: UUID
+    var encounterContext: BackendNPCEncounterContext? = nil
 }
 
 private struct LinkPublicNPCBody: Encodable, Sendable {
@@ -136,6 +156,15 @@ private struct LinkPublicNPCBody: Encodable, Sendable {
 }
 
 extension BackendClient: PublicNPCRegistry {
+    public func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC? {
+        struct Selection: Decodable, Sendable { let npc: BackendPublicNPC? }
+        let result: Selection = try await actorClient().send(path: "/v1/npcs/encounters", method: "POST", body: context)
+        return result.npc
+    }
+
+    public func registerEncounterNPC(id: UUID, card: BackendPublicNPCCard, context: BackendNPCEncounterContext) async throws -> BackendPublicNPC {
+        try await actorClient().send(path: "/v1/npcs", method: "POST", body: RegisterPublicNPCBody(card: card, id: id, encounterContext: context))
+    }
     public func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC {
         try await publicGet("/v1/npcs/by-traveler-id/\(travelerID)")
     }
@@ -144,7 +173,7 @@ extension BackendClient: PublicNPCRegistry {
         id: UUID,
         card: BackendPublicNPCCard
     ) async throws -> BackendPublicNPC {
-        try await send(
+        try await actorClient().send(
             path: "/v1/npcs",
             method: "POST",
             body: RegisterPublicNPCBody(card: card, id: id)
@@ -156,7 +185,7 @@ extension BackendClient: PublicNPCRegistry {
         localCharacterID: UUID,
         status: BackendNPCRelationshipStatus
     ) async throws {
-        try await sendWithoutResponse(
+        try await actorClient().sendWithoutResponse(
             path: "/v1/npcs/\(npcID.uuidString.lowercased())/relationship",
             method: "PUT",
             body: LinkPublicNPCBody(localCharacterId: localCharacterID, status: status)

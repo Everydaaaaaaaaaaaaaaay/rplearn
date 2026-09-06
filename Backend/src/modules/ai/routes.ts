@@ -2,7 +2,7 @@ import { once } from "node:events";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
-import { authenticateRequest } from "../auth/http.js";
+import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { AiService } from "./service.js";
 import type { AiProviderStreamEvent } from "./types.js";
@@ -85,12 +85,12 @@ export function registerAiRoutes(
     guestAccessEnabled: false,
   },
 ): void {
-  const userIdFor = async (request: Parameters<typeof authenticateRequest>[0]) => {
+  const userIdFor = async (request: Parameters<typeof authenticateActorRequest>[0]) => {
     if (request.headers.authorization !== undefined) {
-      return (await authenticateRequest(request, authService)).userId;
+      return (await authenticateActorRequest(request, authService)).userId;
     }
     if (!options.guestAccessEnabled) {
-      return (await authenticateRequest(request, authService)).userId;
+      return (await authenticateActorRequest(request, authService)).userId;
     }
     const guestDeviceId = parse(
       guestDeviceIdSchema,

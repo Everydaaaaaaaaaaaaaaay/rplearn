@@ -42,6 +42,7 @@ struct RootView: View {
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
     @State private var activeUserID: UUID?
+    @State private var isGuestReady = false
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
@@ -147,10 +148,13 @@ struct RootView: View {
                     requestAuthorization: true
                 )
             }
-            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")") {
-                guard scenePhase == .active,
-                      case .signedIn(let identity) = environment.authSession.phase,
-                      identity.userID == activeUserID else { return }
+            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")-\(isGuestReady)") {
+                guard scenePhase == .active else { return }
+                switch environment.authSession.phase {
+                case .signedIn(let identity): guard identity.userID == activeUserID else { return }
+                case .signedOut: guard isGuestReady else { return }
+                case .loading: return
+                }
                 while !Task.isCancelled {
                     await environment.npcAvatars.synchronize()
                     do { try await Task.sleep(for: .seconds(60)) }
@@ -251,14 +255,17 @@ struct RootView: View {
             return
         case .signedOut:
             activeUserID = nil
+            isGuestReady = false
             do {
                 try await environment.activateGuest()
+                isGuestReady = true
                 stateRevision += 1
             } catch {
                 Log.app.error("本地旅程载入失败：\(error)")
                 isInitialContentReady = true
             }
         case .signedIn(let identity):
+            isGuestReady = false
             showSignIn = false
             guard activeUserID != identity.userID else { return }
             do {

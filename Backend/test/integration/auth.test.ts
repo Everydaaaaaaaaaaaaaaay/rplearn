@@ -38,7 +38,7 @@ describe.runIf(runIntegrationTests)("email authentication", () => {
   let userId: string | undefined;
 
   beforeAll(async () => {
-    const config = loadConfig({ NODE_ENV: "test" });
+    const config = loadConfig({ ...process.env, NODE_ENV: "test" });
     dependencies = createRuntimeDependencies(config);
     await runMigrations(dependencies.database);
     await dependencies.start();

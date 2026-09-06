@@ -135,6 +135,57 @@ export const userNpcRelationships = applicationSchema.table(
   ],
 );
 
+export const npcSceneAffinities = applicationSchema.table(
+  "npc_scene_affinities",
+  {
+    npcId: uuid("npc_id")
+      .notNull()
+      .references(() => publicNpcs.id, { onDelete: "cascade" }),
+    regionId: text("region_id").notNull(),
+    activityId: text("activity_id").notNull(),
+    category: text("category").notNull(),
+    language: text("language").notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.npcId, t.regionId, t.activityId, t.language] }),
+    index("npc_scene_lookup").on(t.regionId, t.activityId, t.language),
+  ],
+);
+
+export const npcEncounterHistory = applicationSchema.table(
+  "npc_encounter_history",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    npcId: uuid("npc_id")
+      .notNull()
+      .references(() => publicNpcs.id, { onDelete: "cascade" }),
+    lastSeenAt: timestamp("last_seen_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    encounters: integer("encounters").default(1).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.npcId] })],
+);
+
+export const npcSceneSupply = applicationSchema.table(
+  "npc_scene_supply",
+  {
+    regionId: text("region_id").notNull(),
+    activityId: text("activity_id").notNull(),
+    language: text("language").notNull(),
+    selections: integer("selections").default(0).notNull(),
+    reuses: integer("reuses").default(0).notNull(),
+    gaps: integer("gaps").default(0).notNull(),
+    candidateCount: integer("candidate_count").default(0).notNull(),
+    updatedAt: timestamp("updated_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.regionId, t.activityId, t.language] })],
+);
+
 /// Durable unmatched registration, preserving the original narrative and hard requirements.
 export const npcPendingAvatars = applicationSchema.table(
   "npc_pending_avatars",

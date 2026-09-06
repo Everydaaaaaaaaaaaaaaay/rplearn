@@ -19,6 +19,23 @@ export function authenticateRequest(
   request: FastifyRequest,
   authService: AuthService,
 ): Promise<AccessIdentity> {
+  return authenticateActorRequest(request, authService).then((identity) => {
+    if (identity.isGuest === true) {
+      throw new AppError({
+        code: "LOGIN_REQUIRED",
+        message: "Sign in to use this feature.",
+        statusCode: 403,
+      });
+    }
+    return identity;
+  });
+}
+
+/** Only explicitly opted-in endpoints accept an anonymous authenticated actor. */
+export function authenticateActorRequest(
+  request: FastifyRequest,
+  authService: AuthService,
+): Promise<AccessIdentity> {
   return authService.authenticate(bearerToken(request)).then((identity) => {
     request.authUserId = identity.userId;
     return identity;

@@ -5,9 +5,15 @@ import type {
   LinkNpcRelationshipInput,
   PublicNpc,
   RegisterPublicNpcInput,
+  NpcEncounterContext,
+  NpcEncounterSelection,
 } from "./types.js";
 
 export type NpcService = Readonly<{
+  selectEncounter: (
+    userId: string,
+    context: NpcEncounterContext,
+  ) => Promise<NpcEncounterSelection>;
   retryPendingAvatars: () => Promise<{ attempted: number; matched: number }>;
   find: (travelerId: string) => Promise<PublicNpc>;
   link: (
@@ -18,9 +24,13 @@ export type NpcService = Readonly<{
   register: (userId: string, input: RegisterPublicNpcInput) => Promise<PublicNpc>;
 }>;
 
-export function createNpcService(database: DatabaseResource): NpcService {
-  const repository = new NpcRepository(database);
+export function createNpcService(
+  database: DatabaseResource,
+  draw?: (maximum: number) => number,
+): NpcService {
+  const repository = new NpcRepository(database, draw);
   return {
+    selectEncounter: (userId, context) => repository.selectEncounter(userId, context),
     retryPendingAvatars: () => repository.retryPendingAvatars(),
     find: (travelerId) => repository.find(travelerId),
     link: (userId, npcId, input) => repository.link(userId, npcId, input),

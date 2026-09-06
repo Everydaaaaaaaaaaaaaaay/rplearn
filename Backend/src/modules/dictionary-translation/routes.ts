@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
-import { authenticateRequest } from "../auth/http.js";
+import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { DictionaryTranslationService } from "./service.js";
 
@@ -87,7 +87,7 @@ export function registerDictionaryTranslationRoutes(
       const body = parse(resolveSchema, request.body);
       let userId: string | undefined;
       if (request.headers.authorization !== undefined) {
-        userId = (await authenticateRequest(request, authService)).userId;
+        userId = (await authenticateActorRequest(request, authService)).userId;
       } else if (
         body.generateOnMiss &&
         options.resolveGuestUser !== undefined &&

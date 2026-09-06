@@ -2,6 +2,7 @@ import { randomInt } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
+import { loadAccessPolicy } from "../../infrastructure/access-policy.js";
 import { AppError } from "../../shared/errors.js";
 import type {
   LinkNpcRelationshipInput,
@@ -9,6 +10,8 @@ import type {
   PublicNpc,
   PublicNpcCard,
   RegisterPublicNpcInput,
+  NpcEncounterContext,
+  NpcEncounterSelection,
 } from "./types.js";
 import { travelerIdCheckDigit } from "./traveler-id.js";
 import { chooseAvatar } from "./avatar-matcher.js";
@@ -57,13 +60,82 @@ function makeTravelerId(): string {
 }
 
 export class NpcRepository {
-  constructor(private readonly database: DatabaseResource) {}
+  constructor(
+    private readonly database: DatabaseResource,
+    private readonly draw: (maximum: number) => number = randomInt,
+  ) {}
+
+  async selectEncounter(
+    userId: string,
+    context: NpcEncounterContext,
+  ): Promise<NpcEncounterSelection> {
+    return this.database.sql.begin(async (sql) => {
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${userId}`}, 0))`;
+      const candidates = await sql<NpcRow[]>`
+        select n.id::text, n.traveler_id, n.card::text as card_text, n.created_at::text,
+          n.avatar_id::text, a.image_url as avatar_url
+        from app.public_npcs n join app.npc_scene_affinities scene on scene.npc_id = n.id
+        join app.npc_avatars a on a.id = n.avatar_id and a.enabled
+        left join app.npc_encounter_history h on h.npc_id = n.id and h.user_id = ${userId}
+        where scene.region_id = ${context.regionId} and scene.activity_id = ${context.activityId}
+          and scene.category = ${context.category} and lower(scene.language) = lower(${context.language})
+          and n.card->>'regionId' = ${context.regionId}
+          and exists(select 1 from jsonb_array_elements_text(n.card->'languages') lang where lower(lang) = lower(${context.language}))
+          and (h.last_seen_at is null or h.last_seen_at < now() - interval '24 hours')
+          and not exists (
+            select 1 from app.user_npc_relationships r join app.public_npcs seen on seen.id = r.npc_id
+            where r.user_id = ${userId} and seen.avatar_id = n.avatar_id and seen.id <> n.id
+          )
+          and not exists(select 1 from app.user_npc_relationships r where r.user_id = ${userId} and r.npc_id = n.id and r.status = 'removed')
+        order by coalesce(h.encounters, 0), h.last_seen_at nulls first, n.id
+        limit 200
+      `;
+      // Reuse rises as a scene gains supply. Randomization is only within the eligible pool.
+      const reuse =
+        candidates.length > 0 && this.draw(100) < (candidates.length >= 12 ? 95 : 75);
+      const selected = reuse
+        ? candidates[this.draw(Math.min(candidates.length, 20))]
+        : undefined;
+      const npc = selected ? mapNpc(selected) : null;
+      if (npc) {
+        await this.linkWithinTransaction(
+          sql,
+          userId,
+          npc.id,
+          { localCharacterId: npc.id, status: "candidate" },
+          true,
+        );
+        await sql`insert into app.npc_encounter_history (user_id, npc_id) values (${userId}, ${npc.id})
+          on conflict (user_id, npc_id) do update set last_seen_at = now(), encounters = app.npc_encounter_history.encounters + 1`;
+      }
+      await sql`insert into app.npc_scene_supply (region_id, activity_id, language, selections, reuses, gaps, candidate_count)
+        values (${context.regionId}, ${context.activityId}, ${context.language}, 1, ${npc ? 1 : 0}, ${candidates.length === 0 ? 1 : 0}, ${candidates.length})
+        on conflict (region_id, activity_id, language) do update set selections = app.npc_scene_supply.selections + 1,
+          reuses = app.npc_scene_supply.reuses + excluded.reuses, gaps = app.npc_scene_supply.gaps + excluded.gaps,
+          candidate_count = excluded.candidate_count, updated_at = now()`;
+      return {
+        npc,
+        candidateCount: candidates.length,
+        reason: npc ? "reuse" : candidates.length ? "diversity" : "coverage_gap",
+      };
+    });
+  }
 
   async register(
     userId: string,
     input: RegisterPublicNpcInput,
     cardHash: string,
   ): Promise<PublicNpc> {
+    if (
+      input.encounterContext &&
+      input.encounterContext.regionId !== input.card.regionId
+    ) {
+      throw new AppError({
+        code: "NPC_CONTEXT_CONFLICT",
+        message: "The character must belong to the encounter region.",
+        statusCode: 400,
+      });
+    }
     const result = await this.database.sql.begin(async (sql) => {
       // Serialize assignments per viewer and registration per identity, including first insert.
       await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${userId}`}, 0))`;
@@ -107,8 +179,10 @@ export class NpcRepository {
         return existing;
       }
 
-      const [pending] = await sql<{ user_id: string; card_hash: string }[]>`
-        select user_id::text, card_hash from app.npc_pending_avatars where npc_id = ${input.id}
+      const [pending] = await sql<
+        { user_id: string; card_hash: string; input: RegisterPublicNpcInput }[]
+      >`
+        select user_id::text, card_hash, input from app.npc_pending_avatars where npc_id = ${input.id}
       `;
       if (pending && (pending.user_id !== userId || pending.card_hash !== cardHash)) {
         throw new AppError({
@@ -215,6 +289,12 @@ export class NpcRepository {
       `;
       if (created === undefined) throw new Error("NPC registration returned no row");
       const result = mapNpc(created);
+      const context = pending?.input.encounterContext ?? input.encounterContext;
+      if (context) {
+        await sql`insert into app.npc_scene_affinities (npc_id, region_id, activity_id, category, language)
+          values (${result.id}, ${context.regionId}, ${context.activityId}, ${context.category}, ${context.language}) on conflict do nothing`;
+        await sql`insert into app.npc_encounter_history (user_id, npc_id) values (${userId}, ${result.id}) on conflict do nothing`;
+      }
       await this.linkWithinTransaction(sql, userId, result.id, {
         localCharacterId: input.id,
         status: "candidate",
@@ -341,6 +421,41 @@ export class NpcRepository {
     input: Readonly<{ localCharacterId: string; status: NpcRelationshipStatus }>,
     preserveStatus = false,
   ): Promise<void> {
+    const [relationship] = await sql<
+      { status: string }[]
+    >`select status from app.user_npc_relationships where user_id = ${userId} and npc_id = ${npcId}`;
+    if (!relationship) {
+      const [conflict] = await sql<{ found: boolean }[]>`
+        select exists(select 1 from app.user_npc_relationships r
+          join app.public_npcs seen on seen.id = r.npc_id
+          join app.public_npcs target on target.id = ${npcId} and target.avatar_id = seen.avatar_id
+          where r.user_id = ${userId} and r.npc_id <> ${npcId}) as found
+      `;
+      if (conflict?.found)
+        throw new AppError({
+          code: "NPC_AVATAR_ALREADY_SEEN",
+          message:
+            "This portrait is already bound to another character in your journey.",
+          statusCode: 409,
+        });
+    }
+    if (input.status === "friend" && !preserveStatus) {
+      if (relationship?.status !== "friend") {
+        const policy = await loadAccessPolicy(sql, userId);
+        const [count] = await sql<
+          { occupied: number }[]
+        >`select count(*)::integer as occupied from app.user_npc_relationships where user_id = ${userId} and status = 'friend'`;
+        if ((count?.occupied ?? 0) >= policy.friendSlotLimit)
+          throw new AppError({
+            code: "FRIEND_SLOTS_FULL",
+            message: policy.isGuest
+              ? "Sign in to unlock more friend slots."
+              : "All friend slots are occupied.",
+            statusCode: 409,
+            details: { limit: policy.friendSlotLimit, loginRequired: policy.isGuest },
+          });
+      }
+    }
     await sql`
       insert into app.user_npc_relationships (
         user_id,
@@ -350,7 +465,7 @@ export class NpcRepository {
       )
       values (${userId}, ${npcId}, ${input.localCharacterId}, ${input.status})
       on conflict (user_id, npc_id) do update
-      set local_character_id = excluded.local_character_id,
+      set local_character_id = case when ${preserveStatus} then app.user_npc_relationships.local_character_id else excluded.local_character_id end,
           status = case when ${preserveStatus} then app.user_npc_relationships.status else excluded.status end,
           updated_at = now()
     `;

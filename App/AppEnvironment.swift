@@ -72,7 +72,9 @@ final class AppEnvironment {
         LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain)
         let backendClient = BackendClient(
             configuration: .live,
-            credentialStore: KeychainAuthCredentialStore(keychain: keychain)
+            credentialStore: KeychainAuthCredentialStore(keychain: keychain),
+            guestCredentialStore: KeychainAuthCredentialStore(keychain: keychain, isGuest: true),
+            guestInstallationKey: try? GuestInstallationStore(keychain: keychain).loadOrCreate()
         )
         self.backendClient = backendClient
         let deviceID =
@@ -192,6 +194,12 @@ final class AppEnvironment {
             await userState.shouldCaptureGuestProfileForImport()
             ? try? await economyStore.profile()
             : nil
+        let hasGuestNPCs = guestProfile != nil ? (try await rosterStore.allCharacters()).contains(where: { !$0.isMainCharacter }) : false
+        if let guestProfile,
+           guestProfile.hasCompletedProfileSetup || guestProfile.hasCompletedOnboarding ||
+            hasGuestNPCs {
+            try await backendClient.claimGuestJourney()
+        }
         let activation = try await userState.activate(userID: identity.userID)
         if let guestProfile {
             _ = try await userState.importGuestLearnerProfileIfNeeded(guestProfile)

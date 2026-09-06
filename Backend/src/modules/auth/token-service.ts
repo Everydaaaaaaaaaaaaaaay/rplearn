@@ -97,7 +97,7 @@ export async function createAuthTokenService(
     createAccessToken: async (identity) => {
       const issuedAt = Math.floor(Date.now() / 1000);
       return new SignJWT({
-        scope: ["user"],
+        scope: [identity.isGuest === true ? "guest" : "user"],
         sid: identity.sessionId,
         tv: identity.tokenVersion,
       })

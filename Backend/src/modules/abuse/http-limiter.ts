@@ -15,7 +15,7 @@ const EMAIL_ACTIONS = new Set([
   "/v1/auth/password/forgot",
   "/v1/auth/register",
 ]);
-const LOGIN_ACTIONS = new Set(["/v1/auth/apple/login", "/v1/auth/login"]);
+const LOGIN_ACTIONS = new Set(["/v1/auth/apple/login", "/v1/auth/login", "/v1/auth/guest"]);
 const TOKEN_ACTIONS = new Set([
   "/v1/auth/email/verify",
   "/v1/auth/password/reset",

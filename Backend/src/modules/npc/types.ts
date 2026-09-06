@@ -38,6 +38,20 @@ export type RegisterPublicNpcInput = Readonly<{
   card: PublicNpcCard;
   id: string;
   requiredAvatarTags?: readonly string[] | undefined;
+  encounterContext?: NpcEncounterContext | undefined;
+}>;
+
+export type NpcEncounterContext = Readonly<{
+  regionId: string;
+  activityId: string;
+  category: "culture" | "food" | "outdoors" | "social" | "night";
+  language: string;
+}>;
+
+export type NpcEncounterSelection = Readonly<{
+  npc: PublicNpc | null;
+  candidateCount: number;
+  reason: "reuse" | "coverage_gap" | "diversity";
 }>;
 
 export type AvatarRequirements = Readonly<{

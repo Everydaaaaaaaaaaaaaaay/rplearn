@@ -464,28 +464,38 @@ public struct ActivitiesView: View {
 
             let origin = EncounterService.rollOrigin(roll: .random(in: 0..<1))
             let currentProfile = try? await deps.economyStore.profile()
-            let names = Set(((try? await deps.rosterStore.allCharacters()) ?? []).map(\.card.name))
-            let encounter = await EncounterService(llm: deps.llm).generateEncounter(
-                origin: origin,
-                region: region,
-                userLevel: currentProfile?.difficultyLevel ?? .junior3,
-                existingNames: names,
-                activityContext: "\(activity.category.rawValue): \(activity.titleZh). \(activity.detailZh)"
-            )
-            let generatedCharacterID = UUID()
-            var publicCard = encounter.card
+            let context = BackendNPCEncounterContext(regionID: region.id, activityID: activity.id, category: activity.category.rawValue)
+            let scene = "\(activity.category.rawValue): \(activity.titleZh). \(activity.detailZh)"
+            let service = EncounterService(llm: deps.llm)
+            let selected = try? await deps.npcRegistry?.selectEncounter(context: context)
+            let encounter: EncounterService.Encounter
+            let generatedCharacterID: UUID
+            var publicCard: CharacterCard
             var publicTravelerID: String?
-            if let registry = deps.npcRegistry {
-                do {
-                    let registered = try await registry.registerPublicNPC(
-                        id: generatedCharacterID,
-                        card: PublicNPCAdapter.backendCard(from: encounter.card)
-                    )
-                    publicCard = PublicNPCAdapter.characterCard(from: registered)
-                    publicTravelerID = registered.travelerId
-                } catch {
-                    // 游客或离线时继续使用同一 UUID 的端侧稳定旅伴号；登录联网后不阻断偶遇。
-                    Log.app.info("公共 NPC 登记暂不可用，使用端侧身份：\(String(describing: type(of: error)))")
+            if let selected {
+                generatedCharacterID = selected.id
+                let existing = try? await deps.rosterStore.character(id: selected.id)
+                publicCard = existing?.card ?? PublicNPCAdapter.characterCard(from: selected)
+                publicTravelerID = selected.travelerId
+                let opening = await service.openingForExisting(card: publicCard, activityContext: scene, alreadyKnown: existing != nil)
+                encounter = .init(card: publicCard, openingLine: opening,
+                    origin: publicCard.nationality.caseInsensitiveCompare(region.countryNameEn) == .orderedSame ? .local : .foreigner,
+                    isFallback: false)
+            } else {
+                let names = Set(((try? await deps.rosterStore.allCharacters()) ?? []).map(\.card.name))
+                encounter = await service.generateEncounter(origin: origin, region: region,
+                    userLevel: currentProfile?.difficultyLevel ?? .junior3, existingNames: names, activityContext: scene)
+                generatedCharacterID = UUID()
+                publicCard = encounter.card
+                if let registry = deps.npcRegistry {
+                    do {
+                        let registered = try await registry.registerEncounterNPC(id: generatedCharacterID,
+                            card: PublicNPCAdapter.backendCard(from: encounter.card), context: context)
+                        publicCard = PublicNPCAdapter.characterCard(from: registered)
+                        publicTravelerID = registered.travelerId
+                    } catch {
+                        Log.app.info("公共 NPC 登记暂不可用，保留本地身份等待回填：\(String(describing: type(of: error)))")
+                    }
                 }
             }
             guard let characterID = try? await deps.rosterStore.addCharacter(

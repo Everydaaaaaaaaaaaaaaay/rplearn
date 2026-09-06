@@ -24,6 +24,9 @@ public struct EncounterService: Sendable {
         public var origin: Origin
         /// 是否 LLM 生成失败后的本地模板卡。
         public var isFallback: Bool
+        public init(card: CharacterCard, openingLine: String, origin: Origin, isFallback: Bool) {
+            self.card = card; self.openingLine = openingLine; self.origin = origin; self.isFallback = isFallback
+        }
     }
 
     public static let encounterProbability = 0.35
@@ -49,6 +52,18 @@ public struct EncounterService: Sendable {
     }
 
     // MARK: - 生成
+
+    /// An existing public identity gets a new opening, never a rewritten identity or relationship.
+    public func openingForExisting(card: CharacterCard, activityContext: String, alreadyKnown: Bool) async -> String {
+        let fallback = alreadyKnown ? "Hey, good to see you again! How have you been?" : "Hi! What brought you here today?"
+        let request = LLMRequest(
+            task: .characterGeneration, tier: .balanced,
+            system: "Write one short natural English opening line for this activity. Return only the spoken line. Do not invent shared experiences, personal memories, a new job, or a change of identity. The scene is \(activityContext). Character: \(card.name), \(card.occupation), personality: \(card.personality), hobbies: \(card.hobbies.joined(separator: ", ")). The listener \(alreadyKnown ? "has met this person before; acknowledge a reunion without inventing past events" : "is meeting them for the first time").",
+            messages: [.user("Say the opening line.")], maxTokens: 120, temperature: 0.7
+        )
+        guard let line = try? await llm.complete(request), !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return fallback }
+        return line.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 
     /// 生成偶遇角色卡：LLM 失败或姓名重复时重试 1 次，再失败回退本地模板卡。
     public func generateEncounter(

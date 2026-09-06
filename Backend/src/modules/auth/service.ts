@@ -191,6 +191,7 @@ export async function createAuthService(
     const rawRefreshToken = tokenService.createOpaqueToken();
     const refreshTokenExpiresAt = addDays(now, config.authRefreshTokenTtlDays);
     const identity: AccessIdentity = {
+      isGuest: await repository.isGuest(userId),
       sessionId: newEntityId(),
       tokenVersion,
       userId,
@@ -237,7 +238,7 @@ export async function createAuthService(
           statusCode: 401,
         });
       }
-      return identity;
+      return { ...identity, isGuest: await repository.isGuest(identity.userId) };
     },
 
     createRequestMetadata: (ipAddress, userAgent) => ({
@@ -308,6 +309,7 @@ export async function createAuthService(
 
       return issueTokenPair(
         {
+          isGuest: await repository.isGuest(result.userId),
           sessionId: result.sessionId,
           tokenVersion: result.tokenVersion,
           userId: result.userId,

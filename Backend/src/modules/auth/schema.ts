@@ -16,6 +16,27 @@ const binary = customType<{ data: Buffer; driverData: Buffer }>({
   dataType: () => "bytea",
 });
 
+/** Installation credentials are hashed; claimed identities never receive a new trial. */
+export const guestInstallations = applicationSchema.table(
+  "guest_installations",
+  {
+    userId: uuid("user_id")
+      .primaryKey()
+      .references(() => users.id, { onDelete: "cascade" }),
+    installationHash: char("installation_hash", { length: 64 }).notNull(),
+    claimedByUserId: uuid("claimed_by_user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
+    claimedAt: timestamp("claimed_at", { mode: "date", withTimezone: true }),
+    createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("guest_installations_hash_unique").on(table.installationHash),
+  ],
+);
+
 export const identityProvider = applicationSchema.enum("identity_provider", [
   "email",
   "apple",

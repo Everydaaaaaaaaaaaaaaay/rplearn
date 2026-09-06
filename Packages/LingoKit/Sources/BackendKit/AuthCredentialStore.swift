@@ -27,11 +27,12 @@ public protocol AuthCredentialStore: Sendable {
 }
 
 public struct KeychainAuthCredentialStore: AuthCredentialStore {
-    private let key = "backend.auth.refresh-credential.v1"
+    private let key: String
     private let keychain: KeychainStore
 
-    public init(keychain: KeychainStore) {
+    public init(keychain: KeychainStore, isGuest: Bool = false) {
         self.keychain = keychain
+        self.key = isGuest ? "backend.guest.refresh-credential.v1" : "backend.auth.refresh-credential.v1"
     }
 
     public func load() throws -> StoredAuthCredential? {
@@ -45,6 +46,19 @@ public struct KeychainAuthCredentialStore: AuthCredentialStore {
 
     public func save(_ credential: StoredAuthCredential) throws {
         try keychain.setData(try JSONEncoder().encode(credential), for: key)
+    }
+}
+
+public struct GuestInstallationStore: Sendable {
+    private let keychain: KeychainStore
+    public init(keychain: KeychainStore) { self.keychain = keychain }
+
+    public func loadOrCreate() throws -> String {
+        let key = "backend.guest.installation-secret.v1"
+        if let existing = try keychain.string(for: key) { return existing }
+        let created = (UUID().uuidString + UUID().uuidString).replacingOccurrences(of: "-", with: "").lowercased()
+        try keychain.setString(created, for: key)
+        return created
     }
 }
 
