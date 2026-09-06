@@ -9,6 +9,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
     let navigationTitle: String
     let onBack: () -> Void
     let navigationPath: Binding<NavigationPath>?
+    let showsNavigationBar: Bool
     let rootContent: RootContent
     let destinationContent: DestinationContent
 
@@ -19,6 +20,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         navigationTitle: String,
         onBack: @escaping () -> Void,
         navigationPath: Binding<NavigationPath>? = nil,
+        showsNavigationBar: Bool = true,
         @ViewBuilder root: () -> RootContent,
         @ViewBuilder destination: () -> DestinationContent
     ) {
@@ -26,6 +28,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         self.navigationTitle = navigationTitle
         self.onBack = onBack
         self.navigationPath = navigationPath
+        self.showsNavigationBar = showsNavigationBar
         self.rootContent = root()
         self.destinationContent = destination()
     }
@@ -81,6 +84,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         .navigationTitle(navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbar(showsNavigationBar ? .automatic : .hidden, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: onBack) {
@@ -113,8 +117,6 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
     }
 
     private var contentAnimation: Animation {
-        reduceMotion
-            ? .easeOut(duration: 0.10)
-            : .easeInOut(duration: 0.18)
+        DSSceneTransition.animation(reduceMotion: reduceMotion)
     }
 }

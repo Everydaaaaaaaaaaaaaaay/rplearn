@@ -4,13 +4,20 @@ import DomainKit
 import SwiftUI
 import UIKit
 
-/// An isolated visual pilot. No changes to city progression or activity outcomes.
-public struct ActivitySceneView: View {
-    private static let poster = asset("activity-park-poster", "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
-    private static let table = asset("activity-table", "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
-    public let isVisible: Bool
-    public let onClose: () -> Void
-    public let onSelect: (Region.ActivityCategory) -> Void
+/// Immutable photo coordinates shared by foreground, video and object hotspots.
+struct ActivitySceneView: View {
+    private static let photos: [String: UIImage] = Dictionary(uniqueKeysWithValues:
+        ActivitySceneID.allCases.flatMap { [$0.poster, $0.table] }.compactMap { name in
+            asset(name, "jpg").flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
+        })
+    let isVisible: Bool
+    let showsInterface: Bool
+    @Binding var scene: ActivitySceneID
+    let cityName: String
+    let completedCount: Int
+    let onClose: () -> Void
+    let onJournal: () -> Void
+    let onSelect: (SceneActivity) -> Void
 
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -23,13 +30,6 @@ public struct ActivitySceneView: View {
     @State private var videoPlaying = false
     @State private var completedLoops = 0
     @State private var quietInterval = false
-
-    public init(isVisible: Bool, onClose: @escaping () -> Void,
-                onSelect: @escaping (Region.ActivityCategory) -> Void) {
-        self.isVisible = isVisible
-        self.onClose = onClose
-        self.onSelect = onSelect
-    }
 
     private var usesMotion: Bool {
         requestsMotion && !reduceMotion && !lowPower && thermal != .serious && thermal != .critical
@@ -47,83 +47,129 @@ public struct ActivitySceneView: View {
         return "动态 · \(status)"
     }
 
-    public var body: some View {
+    var body: some View {
         GeometryReader { proxy in
             // Both layers and hotspots share one immutable photographic coordinate system.
             let scale = max(proxy.size.width / 852, proxy.size.height / 1847)
             let width = 852 * scale
             let height = 1847 * scale
+            let renderingScene = scene
             ZStack(alignment: .topLeading) {
                 Color(red: 0.14, green: 0.13, blue: 0.09)
                 ZStack(alignment: .topLeading) {
-                    if let photo = Self.poster {
-                        Image(uiImage: photo).resizable().frame(width: width, height: 1108 * scale)
+                    if let photo = Self.photos[scene.poster] {
+                        Image(uiImage: photo).resizable().frame(width: width, height: scene.videoHeight * scale)
                     }
-                    ParkLoopLayer(playing: usesMotion && isVisible && scenePhase == .active,
-                                  onFailure: { playbackFailed = true },
-                                  onPlayback: { videoPlaying = $0 }, onLoop: { completedLoops = $0 },
-                                  onQuiet: { quietInterval = $0 })
-                        .frame(width: width, height: 1108 * scale)
+                    SceneMotionLayer(scene: scene, playing: usesMotion && isVisible && scenePhase == .active,
+                                  onFailure: { if scene == renderingScene { playbackFailed = true } },
+                                  onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
+                                  onLoop: { if scene == renderingScene { completedLoops = $0 } },
+                                  onQuiet: { if scene == renderingScene { quietInterval = $0 } })
+                        .id(scene)
+                        .frame(width: width, height: scene.videoHeight * scale)
                         .opacity(usesMotion ? 1 : 0)
                         .allowsHitTesting(false)
                         .accessibilityHidden(true)
-                    if let photo = Self.table {
+                    if let photo = Self.photos[scene.table] {
                         Image(uiImage: photo).resizable()
-                            .frame(width: width, height: 789 * scale)
-                            .offset(y: 1058 * scale)
+                            .frame(width: width, height: (1847 - scene.tableTop) * scale)
+                            .offset(y: scene.tableTop * scale)
                     }
-                    if !typeSize.isAccessibilitySize {
-                        entrance("walk", title: "城市漫步", symbol: "map", category: .outdoors,
-                                 anchor: .map, scale: scale)
-                        entrance("coffee", title: "街角小聚", symbol: "cup.and.saucer", category: .food,
-                                 anchor: .cup, scale: scale)
-                        entrance("culture", title: "文化发现", symbol: "book.closed", category: .culture,
-                                 anchor: .journal, scale: scale)
+                    if !typeSize.isAccessibilitySize && showsInterface {
+                        ForEach(scene.actions) { activity in entrance(activity, scale: scale) }
                     }
                 }
-                .frame(width: width, height: height)
+                .id(scene)
+                .transition(.opacity)
+                .frame(width: width, height: height, alignment: .topLeading)
                 .offset(x: (proxy.size.width - width) / 2, y: (proxy.size.height - height) / 2)
+                LinearGradient(colors: [.black.opacity(0.48), .black.opacity(0.24), .clear],
+                               startPoint: .top, endPoint: .bottom)
+                    .frame(height: max(proxy.safeAreaInsets.top, 54) + 220)
+                    .allowsHitTesting(false).accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 9) {
                     HStack {
                         Button(action: onClose) { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
-                            .accessibilityLabel("关闭场景样板")
+                            .accessibilityLabel("返回首页").accessibilityIdentifier("activities.back")
                         Spacer()
-                        Text("城市活动").font(.headline)
+                        Text(cityName.isEmpty ? "城市活动" : "\(cityName) · 城市活动").font(.subheadline.weight(.semibold))
                         Spacer()
+                        Button(action: onJournal) { Image(systemName: "book.closed").frame(width: 44, height: 44) }
+                            .accessibilityLabel("行动足迹，已完成 \(completedCount) 项")
+                            .accessibilityIdentifier("activities.journal")
+                    }
+                    ScrollViewReader { reader in
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 28) {
+                                ForEach(ActivitySceneID.allCases) { item in
+                                    Button {
+                                        switchScene(to: item)
+                                    } label: {
+                                        VStack(spacing: 8) {
+                                            Text(item.title).font(.title3.weight(scene == item ? .semibold : .regular))
+                                                .opacity(scene == item ? 1 : 0.72)
+                                            Rectangle().fill(Color.dsHologramIvory.opacity(scene == item ? 1 : 0))
+                                                .frame(height: 2)
+                                        }.padding(.vertical, 6)
+                                    }
+                                    .id(item).buttonStyle(.plain)
+                                    .accessibilityIdentifier("activities.tab.\(item.rawValue)")
+                                    .accessibilityAddTraits(scene == item ? .isSelected : [])
+                                }
+                            }.padding(.horizontal, 4)
+                        }
+                        .accessibilityIdentifier("activities.sceneStrip")
+                        .simultaneousGesture(DragGesture(minimumDistance: 24).onEnded { value in
+                            guard abs(value.translation.width) > abs(value.translation.height) * 1.5 else { return }
+                            let all = ActivitySceneID.allCases
+                            let index = all.firstIndex(of: scene)! + (value.translation.width < 0 ? 1 : -1)
+                            if all.indices.contains(index) { switchScene(to: all[index]) }
+                        })
+                        .onChange(of: scene) { _, item in
+                            withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) {
+                                reader.scrollTo(item, anchor: .center)
+                            }
+                        }
+                    }
+                    HStack(alignment: .top) {
+                        Text(scene.subtitle).font(.caption).padding(.top, 10)
+                        Spacer(minLength: 6)
                         Button {
                             requestsMotion.toggle()
                         } label: {
                             Label(usesMotion ? "动态" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
-                                .font(.subheadline).frame(minHeight: 44)
+                                .font(.caption).frame(minHeight: 44)
                         }
                         .accessibilityIdentifier("activities.motion")
                         .accessibilityValue(playbackDescription)
                     }
-                    Text("公园里的午后").font(.subheadline)
                     if reduceMotion || lowPower || thermal == .serious || thermal == .critical || playbackFailed {
                         Text(playbackFailed ? "视频暂不可用 · 静态场景" : "节能或减少动态效果 · 静态场景")
                             .font(.caption)
                     }
                 }
                 .foregroundStyle(Color.dsHologramIvory)
-                .shadow(color: .black.opacity(0.65), radius: 1.2, y: 1)
+                .shadow(color: .black.opacity(0.35), radius: 0.7, y: 0.5)
                 .padding(.horizontal, 24)
                 .padding(.top, max(proxy.safeAreaInsets.top, 54) + 8)
+                .opacity(showsInterface ? 1 : 0)
 
-                if typeSize.isAccessibilitySize {
+                if typeSize.isAccessibilitySize && showsInterface {
                     VStack(spacing: 18) {
-                        Button("城市漫步") { onSelect(.outdoors) }
-                        Button("街角小聚") { onSelect(.food) }
-                        Button("文化发现") { onSelect(.culture) }
+                        ForEach(scene.actions) { activity in
+                            Button(activity.title) { onSelect(activity) }
+                                .accessibilityIdentifier("activities.scene.\(activity.id)")
+                        }
                     }
                     .font(.title2.bold()).buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
 
-                Text("场景样板 · 非当前城市实景")
+                Text("情景美术 · 非城市实拍 / 实时画面")
                     .font(.caption2).foregroundStyle(Color.dsHologramIvory.opacity(0.8))
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 12)
+                    .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 78)
+                    .opacity(showsInterface ? 1 : 0)
             }
             .clipped()
             .overlay(alignment: .leading) {
@@ -146,11 +192,21 @@ public struct ActivitySceneView: View {
         }
     }
 
-    private func entrance(_ id: String, title: String, symbol: String, category: Region.ActivityCategory,
-                          anchor: ActivitySceneAnchor, scale: CGFloat) -> some View {
+    private func switchScene(to item: ActivitySceneID) {
+        guard scene != item else { return }
+        actions.cancel()
+        playbackFailed = false
+        videoPlaying = false
+        completedLoops = 0
+        quietInterval = false
+        withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) { scene = item }
+    }
+
+    private func entrance(_ activity: SceneActivity, scale: CGFloat) -> some View {
+        let id = activity.id, title = activity.title, symbol = activity.symbol, anchor = activity.anchor
         let bounds = anchor.bounds
         return Button {
-            actions.perform(for: id) { onSelect(category) }
+            actions.perform(for: id) { onSelect(activity) }
         } label: {
             DSHologramSurface(transform: DSHologramTransform(
                 footprintOffset: CGSize(width: 1.5, height: 3),
@@ -168,7 +224,7 @@ public struct ActivitySceneView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(DSSceneEntranceButtonStyle(keepsPressedAppearance: actions.pressedHotspot == id))
-        .accessibilityLabel(title).accessibilityHint("查看当前城市的相关活动")
+        .accessibilityLabel(title).accessibilityHint("开始这项情境行动")
         .accessibilityIdentifier("activities.scene.\(id)")
         .position(x: bounds.midX * scale, y: bounds.midY * scale)
     }
@@ -193,7 +249,8 @@ struct ActivitySceneLabel: View {
 }
 
 /// AVFoundation decodes one small silent video; no SwiftUI timer or per-frame state writes.
-private struct ParkLoopLayer: UIViewRepresentable {
+private struct SceneMotionLayer: UIViewRepresentable {
+    let scene: ActivitySceneID
     let playing: Bool
     let onFailure: () -> Void
     let onPlayback: (Bool) -> Void
@@ -206,7 +263,9 @@ private struct ParkLoopLayer: UIViewRepresentable {
     }
 
     @MainActor final class Coordinator {
-        let player = AVPlayer()
+        let player = AVQueuePlayer()
+        var looper: AVPlayerLooper?
+        var looperObservation: NSKeyValueObservation?
         var observation: NSKeyValueObservation?
         var playbackObservation: NSKeyValueObservation?
         var endObservation: NSObjectProtocol?
@@ -292,6 +351,9 @@ private struct ParkLoopLayer: UIViewRepresentable {
             endObservation = nil
             failureObservation = nil
             player.currentItem?.cancelPendingSeeks()
+            looper?.disableLooping()
+            looperObservation = nil
+            looper = nil
             player.replaceCurrentItem(with: nil)
         }
     }
@@ -313,13 +375,23 @@ private struct ParkLoopLayer: UIViewRepresentable {
             Task { @MainActor in onPlayback(running) }
         }
         view.playerLayer.player = coordinator.player
-        if let url = ActivitySceneView.asset("activity-park-loop", "mp4") {
+        if let url = ActivitySceneView.asset("activity-\(scene.rawValue)-loop", "mp4") {
             let item = AVPlayerItem(url: url)
-            coordinator.player.replaceCurrentItem(with: item)
-            coordinator.endObservation = NotificationCenter.default.addObserver(
-                forName: AVPlayerItem.didPlayToEndTimeNotification, object: item, queue: .main
-            ) { [weak coordinator] _ in
-                Task { @MainActor in coordinator?.finishedPass() }
+            if scene == .pond {
+                coordinator.player.actionAtItemEnd = .advance
+                // AVPlayerLooper queues the next decode before the boundary;
+                // unlike a notification + seek, it does not pause at the seam.
+                coordinator.looper = AVPlayerLooper(player: coordinator.player, templateItem: item)
+                coordinator.looperObservation = coordinator.looper?.observe(\.status, options: [.new]) { looper, _ in
+                    if looper.status == .failed { Task { @MainActor in onFailure() } }
+                }
+            } else {
+                coordinator.player.replaceCurrentItem(with: item)
+                coordinator.endObservation = NotificationCenter.default.addObserver(
+                    forName: AVPlayerItem.didPlayToEndTimeNotification, object: item, queue: .main
+                ) { [weak coordinator] _ in
+                    Task { @MainActor in coordinator?.finishedPass() }
+                }
             }
             coordinator.failureObservation = NotificationCenter.default.addObserver(
                 forName: AVPlayerItem.failedToPlayToEndTimeNotification, object: item, queue: .main

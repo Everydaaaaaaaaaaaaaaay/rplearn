@@ -7,13 +7,6 @@ import PersistenceKit
 import SpeechKit
 import SwiftUI
 
-struct ActivityMomentPresentation: Identifiable {
-    let id = UUID()
-    let activity: Region.Activity
-    let region: Region
-    let companionName: String?
-}
-
 struct EncounterPresentation: Identifiable {
     let id = UUID()
     let character: CharacterDTO

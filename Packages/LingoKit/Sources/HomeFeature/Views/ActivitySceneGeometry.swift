@@ -4,7 +4,7 @@ import SwiftUI
 /// Map folds are not one perfect plane; use the central readable patch. The cup
 /// uses its front-facing area, not the horizontal tabletop plane.
 enum ActivitySceneAnchor: CaseIterable {
-    case map, cup, journal
+    case map, cup, journal, binoculars, sketchbook, postcard
 
     var quad: HomePerspectiveQuad {
         switch self {
@@ -17,6 +17,15 @@ enum ActivitySceneAnchor: CaseIterable {
         case .journal:
             HomePerspectiveQuad(topLeft: CGPoint(x: 529, y: 1397), topRight: CGPoint(x: 772, y: 1451),
                                 bottomRight: CGPoint(x: 707, y: 1647), bottomLeft: CGPoint(x: 450, y: 1575))
+        case .binoculars:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 599, y: 906), topRight: CGPoint(x: 792, y: 953),
+                                bottomRight: CGPoint(x: 754, y: 1082), bottomLeft: CGPoint(x: 552, y: 1024))
+        case .sketchbook:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 97, y: 1118), topRight: CGPoint(x: 418, y: 1051),
+                                bottomRight: CGPoint(x: 477, y: 1252), bottomLeft: CGPoint(x: 124, y: 1338))
+        case .postcard:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 531, y: 1400), topRight: CGPoint(x: 762, y: 1380),
+                                bottomRight: CGPoint(x: 784, y: 1512), bottomLeft: CGPoint(x: 540, y: 1537))
         }
     }
 
