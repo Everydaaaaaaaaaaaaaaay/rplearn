@@ -55,8 +55,10 @@ public struct CityScenePhotoCreditsView: View {
             Section("城市活动 · 街角咖啡馆") {
                 Text("室内为 AI 情景美术，窗外为加工后的素材画面；并非当前城市实拍或实时影像。视频路人不代表可互动角色。")
                     .font(.footnote).foregroundStyle(.secondary)
-                Link("窗外街景 · Mixkit Stock Video Free License",
-                     destination: URL(string: "https://mixkit.co/free-stock-video/people-walking-in-front-of-a-building-4169/")!)
+                Link("窗外街景 · Davide Giordani / Pixabay（素材 27023）",
+                     destination: URL(string: "https://pixabay.com/videos/london-building-people-walking-27023/")!)
+                Link("Pixabay Content License",
+                     destination: URL(string: "https://pixabay.com/service/license-summary/")!)
             }
             citySections
             licenseSection

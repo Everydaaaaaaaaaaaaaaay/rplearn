@@ -2,7 +2,7 @@ import XCTest
 
 @MainActor
 final class ActivitySceneTests: XCTestCase {
-    private func launch(accelerated: Bool = false) -> XCUIApplication {
+    private func launch() -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -10,7 +10,6 @@ final class ActivitySceneTests: XCTestCase {
         app.launchEnvironment["UI_TEST_HOME_DESTINATION"] = "activities"
         app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
         app.launchEnvironment["UI_TEST_SOCIAL_FIXTURE"] = "1"
-        if accelerated { app.launchEnvironment["UI_TEST_ACTIVITY_CADENCE"] = "accelerated" }
         app.launch()
         XCTAssertTrue(app.buttons["activities.tab.cafe"].waitForExistence(timeout: 15))
         XCTAssertFalse(app.buttons["activities.tab.park"].exists)
@@ -83,21 +82,42 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertTrue(app.buttons["城市活动"].waitForExistence(timeout: 4))
     }
 
-    func testThreeRealAmbientEventsStaticFallbackAndLifecycle() {
-        let app = launch(accelerated: true)
+    func testContinuousAmbientMotionDuringConversationAndAcrossTwoRealLoops() {
+        let app = launch()
         defer { app.terminate() }
         let motion = app.buttons["activities.motion"]
-        let three = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            (motion.value as? String ?? "").contains("循环3")
-        }, object: nil)
-        XCTAssertEqual(XCTWaiter.wait(for: [three], timeout: 30), .completed)
-        attach("cafe-after-three-events", app: app)
+        let status = app.staticTexts["activities.playbackStatus"]
+        func waitFor(_ text: String, timeout: TimeInterval) {
+            let expectation = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                (status.value as? String ?? "").contains(text)
+            }, object: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, text)
+        }
+        waitFor("播放中", timeout: 10)
+        tap("activities.scene.cafe-seat", app: app)
+        waitFor("秒10", timeout: 15)
+        attach("cafe-action-background-keeps-moving", app: app)
+        tap("activities.action.start", app: app)
+        waitFor("秒20", timeout: 15)
+        edgeBack(app)
+        // Real media cadence, not shortened DEBUG timers. Cross two complete
+        // queue boundaries and verify a progressing playhead on the third pass.
+        waitFor("循环1", timeout: 35)
+        attach("cafe-first-continuous-seam", app: app)
+        waitFor("循环2", timeout: 55)
+        waitFor("秒5", timeout: 10)
+        attach("cafe-second-continuous-seam", app: app)
         motion.tap()
         XCTAssertEqual(motion.value as? String, "静态")
         attach("cafe-static", app: app)
         motion.tap()
+        waitFor("播放中", timeout: 5)
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        waitFor("播放中", timeout: 5)
         app.tabBars.buttons["我的"].tap()
         app.tabBars.buttons["首页"].tap()
         XCTAssertTrue(app.buttons["activities.scene.cafe-seat"].waitForExistence(timeout: 5))
+        waitFor("播放中", timeout: 5)
     }
 }

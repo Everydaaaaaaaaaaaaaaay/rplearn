@@ -5,20 +5,29 @@
 - 室内母版：`interior-source.png`，内置 imagegen 一次生成，852 × 1846。
   提示词/结构参考见 `foreground-prompt.md`；没有图生图清除 UI、人物重绘或材质重生成。
   SHA256 `ca723d9df267b16a69435b9795dfb4d35147664cc08151fa710cd25c63e5ccc1`。
-- 街景：Mixkit 4169，People walking in front of a building。
-  https://mixkit.co/free-stock-video/people-walking-in-front-of-a-building-4169/
-  实际源： https://assets.mixkit.co/videos/4169/4169-720.mp4
-  2026-09-06 页面明确列出 Mixkit Stock Video Free License，允许商业和个人项目。
-  许可：https://mixkit.co/license/#videoFree 。禁止单独作为图库转售，不暗示路人代言。
-  源 SHA256 `ead64addea5dacb5db2883a311a06eb26872feb22179742a12a2d3d80e9c7b65`。
+- 街景：Davide Giordani / Pixabay 27023，London, building, people（61.019 秒）。
+  https://pixabay.com/videos/london-building-people-walking-27023/
+  实际源：https://cdn.pixabay.com/video/2019/09/19/27023-361798579_large.mp4
+  页面明确列出 Pixabay Content License；许可：https://pixabay.com/service/license-summary/ 。
+  不单独转售素材，不暗示路人代言或把真实路人当作 AI 角色。
+  源 SHA256 `7bc6141956c1e72e2b39e7d96829cb6fb02855b75ee1eb4607d41885d47a501a`。
 - 原片只在素材处理缓存，不随 App 或独立图库分发。App 内是处理后的情景背景，
   并明确标注非当前城市实拍 / 实时画面。视频人物不作为 NPC 身份或头像。
 
 ## 确定性处理与平面标注
 
-运行 `bash Scripts/prepare-cafe-activity-scene.sh <4169.mp4>`。
-母版仅一次缩放为统一 852 × 1847 布局坐标和 JPEG 编码，不改变构图。
-原视频固定裁切 x=190,y=0,w=900,h=720，缩为 650 × 520，25fps H.264，无音轨。
+处理环境：Python + opencv-python-headless / numpy、ffmpeg。
+
+```sh
+python Scripts/stabilize-cafe-footage.py <27023.mp4> /tmp/cafe-stabilized.mp4
+bash Scripts/prepare-cafe-activity-scene.sh /tmp/cafe-stabilized.mp4
+```
+
+室内运行时 JPG 与母版均不重新编码、不改构图。原视频取 13.5–60.5 秒，以建筑
+特征匹配进行离线平面配准，排除路人、旗帜和天空；统一参考画面中裁切
+x=400,y=40,w=1300,h=1040，缩为 650 × 520，24fps H.264，无音轨。
+接缝只在无近景身体的区间，用 0.5 秒衔接远处运动/曝光；把衔接段移至末尾，
+得到 46.5 秒闭环。最后一帧之后接的是相邻时刻，不重复一段静止底板。
 
 窗口四角（同一照片坐标）：TL(95,295)、TR(748,295)、BR(722,817)、BL(108,813)。
 静态底板与视频一起投影，菜单遮挡再用母版同一块像素盖回，不存在穿透菜单的视频。
@@ -26,17 +35,16 @@
 
 ## 动态的实际能力与边界
 
-- 事件 0：2.40–5.00 秒，单人经过。
-- 事件 1：5.08–13.40 秒，多人交错经过；不是把同一个人复制多次。
-- 事件 2：14.00–17.80 秒，另一位路人反向经过。
-- 每袋三个事件都播放一次，洗牌跨袋不连续重复；事件之间停留 12–30 秒空场。
-  没有倒放、变速或镜像人。组内人物保持原先的相互位置，不独立随机生成碰撞。
-- 最初 5.60 秒的事件切点被逐帧验收淘汰：已有前景人物入场。改到 5.08 秒，
-  0.16 秒的衔接位于前景空场；最后 0.16 秒也只用于空场背景曝光衔接。
-- 三段源素材有限，不能承诺无限多人物。远处坐着/停留的人是背景细节；不为他们
-  编造可互动身份。后续若特写或长时间停留暴露背景静止感，应换更长素材，不能造人。
-- 一个 AVPlayer/AVPlayerLayer，无逐帧 SwiftUI 更新；只在事件开始/结束更新状态。
-  覆盖、后台、减少动态、低电量、高温时暂停/静态，保留剩余间隔。
+- 旧方案的三段短事件与 12–30 秒定格等待已经撤下；这不是自然空场，而是冻结世界。
+- 新版本保持多组不同路人、远处交通与背景运动的真实时序；即使近处无人，也持续
+  解码原片，不暂停、不倒放、不变速、不镜像或复制人物。
+- 一个 AVQueuePlayer / AVPlayerLayer，由 AVPlayerLooper 提前排入下一副本；不在
+  播完回调中重新加载/seek，不运行随机停顿计时器。生产无逐帧 SwiftUI 更新。
+- 可见对话不会暂停窗外；切离页面、后台、覆盖的足迹页暂停。手动静态、减少动态、
+  低电量、高温与失败保持原有降级，不抢语音的音频会话。
+- 明确边界：这仍是 **46.5 秒有限实拍循环**，不是无限新人物或随机世界模拟。
+  本次优先保证连续性和多位人物自然经过，不用任意跳片制造假随机或瞬移。
+  很长时间注视仍能识别重复；若需要更长的无重复观察窗口，需追加同机位长素材。
 - 减少透明度时对话面板实底；大字模式用可读替代入口。没有修改共享材质参数。
 
 ## 社交闭环

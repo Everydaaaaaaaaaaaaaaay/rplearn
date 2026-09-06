@@ -1,3 +1,4 @@
+import AVFoundation
 import XCTest
 import PersistenceKit
 @testable import HomeFeature
@@ -34,8 +35,7 @@ final class ActivityJourneyTests: XCTestCase {
             XCTAssertEqual(scene.actions.count, 3)
             XCTAssertEqual(Set(scene.actions.map(\.anchor)).count, 3)
             for (name, ext) in [(scene.poster, "jpg"), ("activity-cafe-window", "jpg"),
-                                ("activity-cafe-event-0", "mp4"), ("activity-cafe-event-1", "mp4"),
-                                ("activity-cafe-event-2", "mp4")] {
+                                ("activity-cafe-street-loop", "mp4")] {
                 XCTAssertNotNil(Bundle.main.url(forResource: name, withExtension: ext), name)
             }
             for activity in scene.actions {
@@ -103,26 +103,20 @@ final class ActivityJourneyTests: XCTestCase {
         XCTAssertNil(try journal.records().first?.characterID)
     }
 
-    func testCafeShuffleUsesEveryRealEventAndNeverRepeatsAcrossBagBoundary() {
-        struct Seeded: RandomNumberGenerator {
-            var state: UInt64 = 97
-            mutating func next() -> UInt64 {
-                state = state &* 6364136223846793005 &+ 1442695040888963407
-                return state
-            }
-        }
-        var random = Seeded(), schedule = CafeEventSchedule()
-        var previous: Int?
-        for _ in 0..<100 {
-            var bag = Set<Int>()
-            for _ in 0..<3 {
-                let event = schedule.next(using: &random)
-                XCTAssertNotEqual(previous, event)
-                previous = event
-                bag.insert(event)
-            }
-            XCTAssertEqual(bag, Set(0..<3))
-        }
+    func testCafeMediaIsALongSilentTakeMatchingTheWindow() async throws {
+        let url = try XCTUnwrap(Bundle.main.url(forResource: "activity-cafe-street-loop", withExtension: "mp4"))
+        let asset = AVURLAsset(url: url)
+        let duration = try await asset.load(.duration)
+        XCTAssertEqual(duration.seconds, 46.5, accuracy: 0.05)
+        let video = try await asset.loadTracks(withMediaType: .video)
+        let audio = try await asset.loadTracks(withMediaType: .audio)
+        XCTAssertEqual(video.count, 1)
+        XCTAssertTrue(audio.isEmpty)
+        let track = try XCTUnwrap(video.first)
+        let size = try await track.load(.naturalSize)
+        let fps = try await track.load(.nominalFrameRate)
+        XCTAssertEqual(size, CGSize(width: 650, height: 520))
+        XCTAssertEqual(fps, 24, accuracy: 0.01)
     }
 
     func testIncompleteOrCorruptDataNeverOverwritesHistory() throws {

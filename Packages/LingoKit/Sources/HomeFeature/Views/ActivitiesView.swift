@@ -36,7 +36,7 @@ public struct ActivitiesView: View {
 
     public var body: some View {
         ZStack {
-            ActivitySceneView(isVisible: isVisible && activity == nil && !showsJournal,
+            ActivitySceneView(isVisible: isVisible && !showsJournal,
                               showsInterface: activity == nil,
                               scene: $scene, cityName: cityName,
                               completedCount: records.count,
@@ -45,7 +45,7 @@ public struct ActivitiesView: View {
                 activity = selected
             }
             .allowsHitTesting(activity == nil && cityID != nil)
-            .accessibilityHidden(activity != nil || cityID == nil)
+            .accessibilityHidden(cityID == nil)
 
             if let activity, let cityID, let region = deps.regionCatalog.region(id: cityID) {
                 ActivityActionView(activity: activity, region: region, deps: deps, isVisible: isVisible,

@@ -29,7 +29,7 @@ struct ActivitySceneView: View {
     @State private var playbackFailed = false
     @State private var videoPlaying = false
     @State private var completedLoops = 0
-    @State private var quietInterval = false
+    @State private var playbackSeconds = 0
 
     private var usesMotion: Bool {
         requestsMotion && !reduceMotion && !lowPower && thermal != .serious && thermal != .critical
@@ -38,10 +38,10 @@ struct ActivitySceneView: View {
 
     private var playbackDescription: String {
         guard usesMotion else { return "静态" }
-        let status = quietInterval ? "自然空场" : videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
+        let status = videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
-            return "动态 · \(status) · 循环\(completedLoops)"
+            return "动态 · \(status) · 循环\(completedLoops) · 秒\(playbackSeconds)"
         }
         #endif
         return "动态 · \(status)"
@@ -59,7 +59,7 @@ struct ActivitySceneView: View {
                     if let photo = Self.photos[scene.poster] {
                         Image(uiImage: photo).resizable().frame(width: width, height: height)
                     }
-                    // One physical window. Both resting plate and events use the
+                    // One physical window. Both static fallback and video use the
                     // identical homography; the menu remains in front of the glass.
                     ZStack {
                         if let plate = Self.photos["activity-cafe-window"] {
@@ -68,8 +68,8 @@ struct ActivitySceneView: View {
                         CafeMotionLayer(playing: usesMotion && isVisible && scenePhase == .active,
                             onFailure: { playbackFailed = true },
                             onPlayback: { videoPlaying = $0 },
-                            onEvent: { completedLoops = $0 },
-                            onQuiet: { quietInterval = $0 })
+                            onLoop: { completedLoops = $0 },
+                            onProgress: { playbackSeconds = $0 })
                             .opacity(usesMotion ? 1 : 0)
                     }
                     .frame(width: 650 * scale, height: 520 * scale)
@@ -169,6 +169,7 @@ struct ActivitySceneView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, max(proxy.safeAreaInsets.top, 54) + 8)
                 .opacity(showsInterface ? 1 : 0)
+                .accessibilityHidden(!showsInterface)
 
                 if typeSize.isAccessibilitySize && showsInterface {
                     VStack(spacing: 18) {
@@ -186,6 +187,14 @@ struct ActivitySceneView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                     .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 78)
                     .opacity(showsInterface ? 1 : 0)
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+                    Text(playbackDescription).font(.system(size: 1)).foregroundStyle(.clear)
+                        .accessibilityIdentifier("activities.playbackStatus")
+                        .accessibilityValue(playbackDescription)
+                        .allowsHitTesting(false)
+                }
+                #endif
             }
             .clipped()
             .overlay(alignment: .leading) {
@@ -214,7 +223,7 @@ struct ActivitySceneView: View {
         playbackFailed = false
         videoPlaying = false
         completedLoops = 0
-        quietInterval = false
+        playbackSeconds = 0
         withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) { scene = item }
     }
 
