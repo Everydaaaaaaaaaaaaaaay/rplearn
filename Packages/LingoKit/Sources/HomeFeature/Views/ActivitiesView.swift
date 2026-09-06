@@ -11,6 +11,7 @@ import SwiftUI
 public struct ActivitiesView: View {
     private let deps: HomeDependencies
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
+    private let onPreviewScene: (@MainActor () -> Void)?
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -24,10 +25,14 @@ public struct ActivitiesView: View {
 
     public init(
         deps: HomeDependencies,
-        chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView
+        chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
+        initialCategory: Region.ActivityCategory? = nil,
+        onPreviewScene: (@MainActor () -> Void)? = nil
     ) {
         self.deps = deps
         self.chatBuilder = chatBuilder
+        self.onPreviewScene = onPreviewScene
+        _selectedCategory = State(initialValue: initialCategory)
     }
 
     private var region: Region? {
@@ -67,6 +72,14 @@ public struct ActivitiesView: View {
         .background(Color.dsBackground)
         .navigationTitle("城市活动")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if let onPreviewScene {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("场景样板", systemImage: "sparkles", action: onPreviewScene)
+                        .accessibilityIdentifier("activities.scenePreview")
+                }
+            }
+        }
         .task { await loadContext() }
         .onAppear { Task { await loadContext() } }
         .sheet(item: $activityMoment) { result in
