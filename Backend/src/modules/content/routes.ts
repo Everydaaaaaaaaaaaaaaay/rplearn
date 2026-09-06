@@ -116,7 +116,8 @@ const growthPayload = z
       )
       .max(16),
     revision: z.number().int().min(0),
-    schemaVersion: z.literal(1),
+    schemaVersion: z.union([z.literal(1), z.literal(2)]),
+    isPaused: z.boolean().optional(),
   })
   .strict();
 

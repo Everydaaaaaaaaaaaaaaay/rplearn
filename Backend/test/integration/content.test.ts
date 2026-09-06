@@ -42,7 +42,7 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
   });
 
   beforeAll(async () => {
-    const config = loadConfig({ NODE_ENV: "test" });
+    const config = loadConfig({ ...process.env, NODE_ENV: "test" });
     dependencies = createRuntimeDependencies(config);
     await runMigrations(dependencies.database);
     await dependencies.start();
@@ -137,6 +137,7 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
             speechStyle: "Friendly",
           },
           difficulty: "junior3",
+          growth: { schemaVersion: 2, revision: 1, isPaused: true, arcs: [] },
           isFriend: true,
           isMainCharacter: true,
           metAt: now,
@@ -319,6 +320,9 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     expect(firstPageResponse.statusCode).toBe(200);
     const firstPage = firstPageResponse.json<ContentPage>();
     expect(firstPage.records).toHaveLength(2);
+    expect(firstPage.records.find((record) => record.resourceId === characterId)?.payload).toMatchObject({
+      growth: { schemaVersion: 2, isPaused: true },
+    });
     expect(firstPage.hasMore).toBe(true);
     expect(firstPage.nextCursor).toBeTypeOf("string");
     expect(firstPage.syncCursor).toBeTypeOf("string");
