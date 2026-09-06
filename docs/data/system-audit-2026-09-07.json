@@ -1,0 +1,170 @@
+{
+  "date": "2026-09-07",
+  "sourceBase": "be98361",
+  "implementationCommits": [
+    "703669d",
+    "b5ef44a",
+    "9061cde",
+    "8609adb"
+  ],
+  "checks": [
+    {
+      "name": "ios-baseline",
+      "result": "Passed",
+      "passed": 508,
+      "failed": 0,
+      "skipped": 4,
+      "expandedPassed": 569,
+      "originalBundle": "build/DerivedData/Logs/Test/Test-LingoTrip-2026.09.07_03-10-17-+0800.xcresult",
+      "originalBundleAvailable": false,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/ios-baseline.json",
+      "summarySha256": "1bde328b8ea66987bcb18672144aaa937ffd8d4a037d68f66fa8bb5adee3a1e4"
+    },
+    {
+      "name": "chat-before",
+      "result": "Failed",
+      "passed": 3,
+      "failed": 5,
+      "skipped": 0,
+      "expandedPassed": 3,
+      "originalBundle": "build/DerivedData/Logs/Test/Test-LingoTrip-2026.09.07_03-17-32-+0800.xcresult",
+      "originalBundleAvailable": false,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/chat-before.json",
+      "summarySha256": "ea1f73aeb27ef342303d43a194d2f37fe9dd8cf86229a8e0f98e78f4410c7809"
+    },
+    {
+      "name": "chat-after",
+      "result": "Passed",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "expandedPassed": 8,
+      "originalBundle": "build/DerivedData/Logs/Test/Test-LingoTrip-2026.09.07_03-20-05-+0800.xcresult",
+      "originalBundleAvailable": false,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/chat-after.json",
+      "summarySha256": "d5c1c2f41f6e32a6fafe02d45f860f496fe29747ec4e348c94d22df7ee4f03ea"
+    },
+    {
+      "name": "sync-receipts-before",
+      "result": "Failed",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "expandedPassed": 1,
+      "originalBundle": "build/DerivedData/Logs/Test/Test-LingoTrip-2026.09.07_03-21-25-+0800.xcresult",
+      "originalBundleAvailable": false,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/sync-receipts-before.json",
+      "summarySha256": "288c9234a5885142aedf826aba96d4591e383944db4fc174de48875e083b631a"
+    },
+    {
+      "name": "ui-journeys",
+      "result": "Passed",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "expandedPassed": 7,
+      "originalBundle": "build/DerivedData/Logs/Test/Test-LingoTripPerformanceTests-2026.09.07_03-25-51-+0800.xcresult",
+      "originalBundleAvailable": false,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/ui-journeys.json",
+      "summarySha256": "1c7376fac699bc04b8829d5ab782da753ff62de63d4755a70fc43030eb1f6a51"
+    },
+    {
+      "name": "zero-test-selection-invalid",
+      "result": "unknown",
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "expandedPassed": 0,
+      "originalBundle": "build/DerivedData/Logs/Test/Test-LingoTrip-2026.09.07_03-32-13-+0800.xcresult",
+      "originalBundleAvailable": true,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/zero-test-selection-invalid.json",
+      "summarySha256": "82339ffa4976a8436c36e75f4720a315d73096c9554773a91e255884754a0451"
+    },
+    {
+      "name": "disk-restart-before",
+      "result": "Failed",
+      "passed": 3,
+      "failed": 1,
+      "skipped": 0,
+      "expandedPassed": 3,
+      "originalBundle": "build/DerivedData/VerificationResults/20260906T193525Z-31138.xcresult",
+      "originalBundleAvailable": true,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/disk-restart-before.json",
+      "summarySha256": "f3ef3452a69ba97947f49a631b5a4a45ccb387f5d91bb7577fab4ec230faa440"
+    },
+    {
+      "name": "incremental-host-crash-invalid",
+      "result": "Failed",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "expandedPassed": 0,
+      "originalBundle": "build/DerivedData/VerificationResults/20260906T193704Z-31678.xcresult",
+      "originalBundleAvailable": true,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/incremental-host-crash-invalid.json",
+      "summarySha256": "55658474f0144e5c3291f09c7b7b92487a397f3c8db4f8125fcd4721f1214b43"
+    },
+    {
+      "name": "sync-final-independent-build",
+      "result": "Passed",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "expandedPassed": 8,
+      "originalBundle": "build/DerivedData-system-audit/VerificationResults/20260906T194010Z-32458.xcresult",
+      "originalBundleAvailable": true,
+      "summaryArtifact": "build/verification/system-audit-20260907-summaries/sync-final-independent-build.json",
+      "summarySha256": "60013e45a2fcaa29a8d55b58b0b5feb2c85d4019f46d68609c9d7f29a9ce59b2"
+    },
+    {
+      "name": "backend-integration",
+      "result": "Passed",
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0,
+      "artifact": "build/verification/20260906T191316Z-18568c64/integration.json",
+      "sha256": "ae0a5fa854ca230c95c45e936b19372a90496fc3b0fe91009a3fc12c011bf021"
+    },
+    {
+      "name": "backend-process-e2e",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "artifact": "build/verification/20260906T191316Z-18568c64/process-e2e.json",
+      "sha256": "f6e0fb543bd412de56446574a9e83982e5798bc370c9b6d2c895910f63ee396b"
+    },
+    {
+      "name": "backend-runner-focused-recheck",
+      "result": "Passed",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "artifact": "build/verification/20260906T192532Z-119d5930/integration.json",
+      "sha256": "6f29bc157a7d6d410a809b356d4fbeded4bff46808ee778d43dae3aa75ff7fa6"
+    }
+  ],
+  "additionalChecks": {
+    "backendBaseline": {
+      "passed": 105,
+      "skipped": 44,
+      "command": "pnpm check"
+    },
+    "integrationTargetUnit": {
+      "passed": 2
+    },
+    "iosArchitecture": "passed",
+    "focusedBackendLintAndTypecheck": "passed",
+    "testResultGuardInjectedCases": 4
+  },
+  "limitations": [
+    "Results are a baseline plus focused verifications, not a single final full-suite rerun.",
+    "4 Swift live suites were skipped, not counted as passed.",
+    "External model responses, Apple transactions and email use fixtures in automated tests.",
+    "S3 media integration requires a dedicated object store and was excluded.",
+    "Native microphone, Bluetooth, StoreKit sandbox and concurrent physical devices were not verified.",
+    "Original untracked artwork and Artifacts were present and were not changed or committed.",
+    "An incremental-build host crash did not reproduce with independent DerivedData; its root cause is not conclusively established.",
+    "Xcode rotated earlier Logs/Test bundles. Captured summary JSON is archived separately; new scripts use explicit VerificationResults bundles."
+  ]
+}

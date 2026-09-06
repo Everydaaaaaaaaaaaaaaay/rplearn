@@ -42,6 +42,11 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
 一次 `Scripts/test.sh` 已构建宿主，不必为同一模拟器再调用 `Scripts/build.sh`。
 需要安装/启动时用相应运行流程；真机或 Release 属于不同构建目标。
 
+功能大检查与跨模块流程参考 [验证矩阵](system-verification.md)。
+`python3 Scripts/verify-backend-workflows.py` 为数据库/HTTP 流程创建独立本地服务并记录结果，
+`Scripts/test-ui.sh -only-testing:LingoTripUITests/<Suite>/<test>` 运行指定 UI 路径。
+二者均按需执行，不追加到每次修改的默认门禁。
+
 ## 重测和专项
 
 - 关系压力测试的 10,000 个输入使用固定种子。一轮通过即可；排查时序不稳定才显式设置
