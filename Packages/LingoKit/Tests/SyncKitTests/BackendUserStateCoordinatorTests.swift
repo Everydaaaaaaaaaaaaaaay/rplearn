@@ -329,9 +329,46 @@ struct BackendUserStateCoordinatorTests {
         try await coordinator.activateGuest()
 
         #expect(try await economy.profile().coins == 0)
+        #expect(try await economy.profile().subscriptionTier == .free)
+        #expect(try await economy.profile().friendSlotLimit == 3)
         await #expect(throws: BackendClientError.signedOut) {
             try await coordinator.synchronize()
         }
+    }
+
+    @Test("既有游客撤销开发期权益但保留资产与剧情，重复激活不重置进度")
+    func guestActivationRevokesDevelopmentEntitlementWithoutResettingProgress() async throws {
+        let transport = StateTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: UUID()),
+            transport: transport
+        )
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let economy = EconomyStore(modelContainer: container)
+        let storyProgress = StoryProgressStore(modelContainer: container)
+        try await economy.applyAuthoritativeEntitlement(tier: .pro, friendSlotLimit: 30)
+        _ = try await economy.addCoins(123)
+        try await storyProgress.markCompleted(storyID: "guest_story")
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: economy,
+            itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
+            defaults: try #require(UserDefaults(suiteName: suite))
+        )
+
+        for _ in 0..<2 {
+            try await coordinator.activateGuest()
+            let profile = try await economy.profile()
+            #expect(profile.subscriptionTier == .free)
+            #expect(profile.friendSlotLimit == 3)
+            #expect(profile.coins == 123)
+            #expect(try await storyProgress.progress(storyID: "guest_story")?.isCompleted == true)
+        }
+        #expect(await transport.snapshotRequestCount == 0)
     }
 
     @Test("首次登录保留游客内容以便后续上传")

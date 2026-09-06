@@ -13,7 +13,7 @@ struct MyPagePresentation {
     }
 
     var accountBadgeTitle: String {
-        isSignedIn ? tier.displayName : "完整游客"
+        isSignedIn ? tier.displayName : "游客"
     }
 
     var placementSummary: String {

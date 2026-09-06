@@ -273,7 +273,7 @@ struct RootView: View {
                     return
                 }
                 activeUserID = nil
-                Log.app.warning("账号空间暂未载入，继续使用完整游客模式：\(error)")
+                Log.app.warning("账号空间暂未载入，继续使用游客模式：\(error)")
                 do {
                     try await environment.activateGuest()
                     stateRevision += 1

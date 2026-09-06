@@ -139,10 +139,13 @@ public actor BackendUserStateCoordinator:
     public func activateGuest() async throws {
         currentUserID = nil
         snapshot = nil
-        guard defaults.string(forKey: cachedOwnerKey) != nil else { return }
-
-        try await accountCache.clearAll()
-        defaults.removeObject(forKey: cachedOwnerKey)
+        if defaults.string(forKey: cachedOwnerKey) != nil {
+            try await accountCache.clearAll()
+            defaults.removeObject(forKey: cachedOwnerKey)
+        }
+        // Also revoke cached development-only Pro access for existing guests.
+        // Only entitlements change; existing guest friends, assets and progress remain intact.
+        try await economyCache.applyAuthoritativeEntitlement(tier: .free, friendSlotLimit: 3)
     }
 
     public func synchronize() async throws {
