@@ -22,6 +22,7 @@ public struct ActivitySceneView: View {
     @State private var playbackFailed = false
     @State private var videoPlaying = false
     @State private var completedLoops = 0
+    @State private var quietInterval = false
 
     public init(isVisible: Bool, onClose: @escaping () -> Void,
                 onSelect: @escaping (Region.ActivityCategory) -> Void) {
@@ -37,7 +38,7 @@ public struct ActivitySceneView: View {
 
     private var playbackDescription: String {
         guard usesMotion else { return "静态" }
-        let status = videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
+        let status = quietInterval ? "自然空场" : videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             return "动态 · \(status) · 循环\(completedLoops)"
@@ -60,7 +61,8 @@ public struct ActivitySceneView: View {
                     }
                     ParkLoopLayer(playing: usesMotion && isVisible && scenePhase == .active,
                                   onFailure: { playbackFailed = true },
-                                  onPlayback: { videoPlaying = $0 }, onLoop: { completedLoops = $0 })
+                                  onPlayback: { videoPlaying = $0 }, onLoop: { completedLoops = $0 },
+                                  onQuiet: { quietInterval = $0 })
                         .frame(width: width, height: 1108 * scale)
                         .opacity(usesMotion ? 1 : 0)
                         .allowsHitTesting(false)
@@ -72,11 +74,11 @@ public struct ActivitySceneView: View {
                     }
                     if !typeSize.isAccessibilitySize {
                         entrance("walk", title: "城市漫步", symbol: "map", category: .outdoors,
-                                 x: 0.28, y: 0.711, rotation: -12, tilt: 18, width: width, height: height)
+                                 anchor: .map, scale: scale)
                         entrance("coffee", title: "街角小聚", symbol: "cup.and.saucer", category: .food,
-                                 x: 0.805, y: 0.632, rotation: 3, tilt: 9, width: width, height: height)
+                                 anchor: .cup, scale: scale)
                         entrance("culture", title: "文化发现", symbol: "book.closed", category: .culture,
-                                 x: 0.728, y: 0.829, rotation: 13, tilt: 15, width: width, height: height)
+                                 anchor: .journal, scale: scale)
                     }
                 }
                 .frame(width: width, height: height)
@@ -145,29 +147,48 @@ public struct ActivitySceneView: View {
     }
 
     private func entrance(_ id: String, title: String, symbol: String, category: Region.ActivityCategory,
-                          x: CGFloat, y: CGFloat, rotation: Double, tilt: Double,
-                          width: CGFloat, height: CGFloat) -> some View {
-        Button {
+                          anchor: ActivitySceneAnchor, scale: CGFloat) -> some View {
+        let bounds = anchor.bounds
+        return Button {
             actions.perform(for: id) { onSelect(category) }
         } label: {
-            DSHologramSurface(transform: DSHologramTransform(rotationZ: rotation, tiltX: tilt)) {
-                VStack(spacing: 8) {
+            DSHologramSurface(transform: DSHologramTransform(
+                footprintOffset: CGSize(width: 1.5, height: 3),
+                extrusionOffset: CGSize(width: 0.3, height: 0.7))) {
+                VStack(alignment: .center, spacing: 8) {
                     DSHologramSymbol(systemName: symbol, size: 34)
-                    DSHologramText(title, size: 22, weight: .bold, tint: .dsHologramIvory,
-                                   glowColor: .dsHologramGlow, alignment: .center)
+                        .frame(width: 128, height: 40, alignment: .center)
+                    ActivitySceneLabel(title: title)
+                        .fixedSize().frame(width: 128, alignment: .center)
                 }
+                .frame(width: 128, height: 100)
             }
-            .frame(width: 128, height: 100).contentShape(Rectangle())
+            .modifier(ActivityPlaneProjection(quad: anchor.localQuad(scale: scale)))
+            .frame(width: bounds.width * scale, height: bounds.height * scale, alignment: .topLeading)
+            .contentShape(Rectangle())
         }
         .buttonStyle(DSSceneEntranceButtonStyle(keepsPressedAppearance: actions.pressedHotspot == id))
         .accessibilityLabel(title).accessibilityHint("查看当前城市的相关活动")
         .accessibilityIdentifier("activities.scene.\(id)")
-        .position(x: x * width, y: y * height)
+        .position(x: bounds.midX * scale, y: bounds.midY * scale)
     }
 
     static func asset(_ name: String, _ ext: String) -> URL? {
         Bundle.main.url(forResource: name, withExtension: ext)
             ?? Bundle.main.url(forResource: name, withExtension: ext, subdirectory: "ActivityScene")
+    }
+}
+
+/// Compensate the shared text renderer's raster margin inside this calibrated
+/// plane, without moving any existing Home/My labels or changing their material.
+struct ActivitySceneLabel: View {
+    let title: String
+    var body: some View {
+        DSHologramText(title, size: 22, weight: .bold, tint: .dsHologramIvory,
+                       glowColor: .dsHologramGlow, alignment: .center)
+            // Matches DSHologramTextRenderer.displayPadding; pixel regression
+            // test below catches any future mismatch if that renderer changes.
+            .offset(x: -12)
     }
 }
 
@@ -177,6 +198,7 @@ private struct ParkLoopLayer: UIViewRepresentable {
     let onFailure: () -> Void
     let onPlayback: (Bool) -> Void
     let onLoop: (Int) -> Void
+    let onQuiet: (Bool) -> Void
 
     final class Surface: UIView {
         override class var layerClass: AnyClass { AVPlayerLayer.self }
@@ -184,19 +206,93 @@ private struct ParkLoopLayer: UIViewRepresentable {
     }
 
     @MainActor final class Coordinator {
-        let player = AVQueuePlayer()
-        var looper: AVPlayerLooper?
+        let player = AVPlayer()
         var observation: NSKeyValueObservation?
         var playbackObservation: NSKeyValueObservation?
-        var loopObservation: NSKeyValueObservation?
+        var endObservation: NSObjectProtocol?
+        var failureObservation: NSObjectProtocol?
+        var wakeTask: Task<Void, Never>?
+        var enabled = false
+        var waiting = false
+        var seeking = false
+        var remainingDelay: TimeInterval = 0
+        var waitStart: ContinuousClock.Instant?
+        var passes = 0
+        var cadence = ActivityAmbientCadence()
+        var random = SystemRandomNumberGenerator()
+        var onQuiet: (Bool) -> Void = { _ in }
+        var onLoop: (Int) -> Void = { _ in }
+
+        func setPlaying(_ value: Bool) {
+            guard enabled != value else { return }
+            enabled = value
+            if value {
+                if waiting { scheduleWake() } else if !seeking { player.play() }
+            } else {
+                player.pause()
+                if let waitStart {
+                    let elapsed = waitStart.duration(to: .now).components
+                    remainingDelay = max(0, remainingDelay - Double(elapsed.seconds) - Double(elapsed.attoseconds) / 1e18)
+                }
+                waitStart = nil
+                wakeTask?.cancel()
+                wakeTask = nil
+            }
+        }
+
+        func finishedPass() {
+            guard !waiting else { return }
+            passes += 1
+            onLoop(passes)
+            waiting = true
+            onQuiet(true)
+            remainingDelay = cadence.nextDelay(using: &random)
+            #if DEBUG
+            // Explicit UI-test acceleration; normal debug/phone launches use real cadence.
+            if ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_CADENCE"] == "accelerated" {
+                remainingDelay = 2
+            }
+            #endif
+            if enabled { scheduleWake() }
+        }
+
+        func scheduleWake() {
+            guard wakeTask == nil, waiting, enabled else { return }
+            waitStart = .now
+            let delay = remainingDelay
+            wakeTask = Task { [weak self] in
+                do { try await Task.sleep(for: .seconds(delay)) } catch { return }
+                guard let self, self.enabled, !Task.isCancelled else { return }
+                self.wakeTask = nil
+                self.waitStart = nil
+                self.remainingDelay = 0
+                self.waiting = false
+                self.seeking = true
+                // Hold the final empty frame until an exact seek has completed.
+                self.player.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] finished in
+                    Task { @MainActor in
+                        guard let self else { return }
+                        self.seeking = false
+                        guard finished else { return }
+                        self.onQuiet(false)
+                        if self.enabled { self.player.play() }
+                    }
+                }
+            }
+        }
+
         func stop() {
+            setPlaying(false)
+            wakeTask?.cancel()
             player.pause()
             observation = nil
             playbackObservation = nil
-            loopObservation = nil
-            looper?.disableLooping()
-            looper = nil
-            player.removeAllItems()
+            if let endObservation { NotificationCenter.default.removeObserver(endObservation) }
+            if let failureObservation { NotificationCenter.default.removeObserver(failureObservation) }
+            endObservation = nil
+            failureObservation = nil
+            player.currentItem?.cancelPendingSeeks()
+            player.replaceCurrentItem(with: nil)
         }
     }
 
@@ -207,7 +303,10 @@ private struct ParkLoopLayer: UIViewRepresentable {
         view.backgroundColor = .clear
         view.playerLayer.videoGravity = .resizeAspectFill
         let coordinator = context.coordinator
+        coordinator.onQuiet = onQuiet
+        coordinator.onLoop = onLoop
         coordinator.player.isMuted = true
+        coordinator.player.actionAtItemEnd = .pause
         coordinator.player.preventsDisplaySleepDuringVideoPlayback = false
         coordinator.playbackObservation = coordinator.player.observe(\.timeControlStatus, options: [.initial, .new]) { player, _ in
             let running = player.timeControlStatus == .playing
@@ -216,13 +315,17 @@ private struct ParkLoopLayer: UIViewRepresentable {
         view.playerLayer.player = coordinator.player
         if let url = ActivitySceneView.asset("activity-park-loop", "mp4") {
             let item = AVPlayerItem(url: url)
-            coordinator.looper = AVPlayerLooper(player: coordinator.player, templateItem: item)
-            coordinator.loopObservation = coordinator.looper?.observe(\.loopCount, options: [.new]) { looper, _ in
-                let count = looper.loopCount
-                Task { @MainActor in onLoop(count) }
+            coordinator.player.replaceCurrentItem(with: item)
+            coordinator.endObservation = NotificationCenter.default.addObserver(
+                forName: AVPlayerItem.didPlayToEndTimeNotification, object: item, queue: .main
+            ) { [weak coordinator] _ in
+                Task { @MainActor in coordinator?.finishedPass() }
             }
-            coordinator.observation = coordinator.looper?.observe(\.status, options: [.new]) { looper, _ in
-                if looper.status == .failed { Task { @MainActor in onFailure() } }
+            coordinator.failureObservation = NotificationCenter.default.addObserver(
+                forName: AVPlayerItem.failedToPlayToEndTimeNotification, object: item, queue: .main
+            ) { _ in Task { @MainActor in onFailure() } }
+            coordinator.observation = item.observe(\.status, options: [.initial, .new]) { item, _ in
+                if item.status == .failed { Task { @MainActor in onFailure() } }
             }
         } else {
             Task { @MainActor in onFailure() }
@@ -231,7 +334,7 @@ private struct ParkLoopLayer: UIViewRepresentable {
     }
 
     func updateUIView(_ view: Surface, context: Context) {
-        if playing { context.coordinator.player.play() } else { context.coordinator.player.pause() }
+        context.coordinator.setPlaying(playing)
     }
 
     static func dismantleUIView(_ view: Surface, coordinator: Coordinator) {

@@ -57,10 +57,10 @@ bash Scripts/prepare-activity-scene.sh /path/to/4831-720.mp4 Assets/Activities/P
   + 20 ms wait remain unchanged.
 - App composes destinations through the existing `SceneNavigationContainer`:
   opacity transition and leading-edge return are not a new feature-owned router.
-- One `AVQueuePlayer` + `AVPlayerLooper` + `AVPlayerLayer`; no per-frame SwiftUI
+- One `AVPlayer` + `AVPlayerLayer`; no per-frame SwiftUI
   timer, video-texture upload or full-page Metal rendering. Pause while covered,
   backgrounded, static, low-power or thermally constrained. Reduce Motion uses
-  the poster. Release observers, queue items and looper when the pilot closes.
+  the poster. Release observers, player item and pending wake task when the pilot closes.
 - Large accessibility text uses a readable alternate button layout.
 - Loop is silent and never reconfigures the app's audio session.
 
@@ -71,10 +71,61 @@ background flashes and camera drift. Check static/dynamic crop parity, three
 object anchors, actual category opening and left-edge return. Preserve the
 original activity UI until the user approves this direction.
 
-Verified 2026-09-06 on the owned `LingoTrip-WT-c955` iPhone 17 Pro simulator:
+Initial pilot verified 2026-09-06 on the owned `LingoTrip-WT-c955` iPhone 17 Pro simulator:
 `ActivitySceneTests` passed. It observes actual AVPlayer playback and two completed
 AVPlayerLooper cycles before testing static/dynamic switching, opening the walking
 category, leading-edge return, and closing the pilot. The shared navigation keeps
 its root mounted, so the test checks hit-test visibility rather than AX existence.
 Final app build passed. Phone energy/performance and user visual approval are still
 pending; no phone installation is implied by these simulator checks.
+
+## Object calibration and sparse ambience refinement
+
+- No photographs or video pixels regenerated. `ActivitySceneGeometry.swift`
+  records four-corner usable surfaces on the map, journal and cup. The cup is
+  curved and the map folded: these are local visual fits, not inferred physical
+  camera poses or a claim that either entire object is a perfect plane.
+- Reuse Home's `HomeHomography` with a Core Animation projection of the existing
+  SwiftUI hologram material. Each entrance has one centred 128 × 100 source layout,
+  with a fixed 34:22 icon/text ratio. Its whole surface scales to the calibrated
+  object footprint and the common photo-to-screen scale, not three unrelated
+  font sizes. Text, symbol and shadow are projected together. Map gets the largest
+  footprint, journal next, cup smallest; accessibility sizes retain plain controls.
+- Scene-local footprint offset is (1.5, 3), extrusion (0.3, 0.7), before projection.
+  Shared glow, colours and the profile/Home materials remain unchanged.
+- Pixel comparison with an identically typeset plain label exposed a 12-point
+  horizontal ink displacement from the shared text renderer's raster margin in
+  this layout. `ActivitySceneLabel` compensates x only, before projection; y is
+  unchanged. A 3× raster regression compares actual ink bounding-box centres,
+  rather than assuming equal SwiftUI frames guarantee optical alignment.
+- The 8-second file now plays as an event, **not an 8-second repeating schedule**.
+  At its empty final frame the player pauses for a random 24–62 seconds, with a
+  25% draw chance for a longer 65–95-second pause. A near-repeat delay is adjusted
+  16 seconds away from the previous delay (overall bounds 24–95 seconds). Thus
+  pass-to-pass intervals are at least 32 seconds, often longer. No reverse motion,
+  speed randomization, human dissolve, or new synthetic person.
+- Backgrounding, covering and switching to static cancel the wake task and retain
+  remaining quiet time. Re-enabling does not immediately restart the same person.
+  The next event seeks only between matching empty frames, waits for completion,
+  then plays. Native APIs: https://developer.apple.com/documentation/avfoundation/avplayeritem
+- UI test acceleration is opt-in via `UI_TEST_ACTIVITY_CADENCE=accelerated` in
+  DEBUG only. A separate UI test uses actual production cooldown and checks that
+  toggling does not cause a premature repeat. Policy tests cover 200 seeded draws.
+
+### Further diversity, deliberately not faked in this revision
+
+The remaining limitation is still one recognisable runner. Additional actors need
+compatible licensed footage (camera height, travel direction, scale, light and
+ground contact). Prefer multiple people from one locked-off take; composite only
+after inspecting extraction edges and shadows. Future scheduling should use a
+shuffle bag with per-actor cooldown, bounded occupancy and occasional long empty
+periods, not independent uncontrolled random spawns. Ambient foliage/water can be
+a separate subtle layer if matching footage exists; do not move the full camera
+or pulse exposure just to hide repetition. These additions are not shipped here.
+
+Refinement verification (2026-09-06, owned c955 simulator): all three
+`ActivitySceneGeometryTests` passed, including 3× ink-centre comparison;
+both `ActivitySceneTests` passed for sparse-event playback and navigation.
+After the final x-only text correction, the production cooldown UI test was
+rerun successfully and its full-screen attachment visually inspected. Existing
+dependency-scan warnings remain; no source/media outside this pilot was changed.
