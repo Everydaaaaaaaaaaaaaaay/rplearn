@@ -44,6 +44,8 @@ public struct PendingContentMutation: Sendable, Equatable {
 
 @ModelActor
 public actor ContentSyncStore {
+    private var recoveredOwnerID: UUID?
+
     public enum SyncStoreError: Error {
         case invalidPayload
         case missingParent
@@ -77,10 +79,19 @@ public actor ContentSyncStore {
             guard owner.userID == userID else {
                 throw SyncStoreError.invalidPayload
             }
-            return
+        } else {
+            modelContext.insert(ContentSyncOwnerEntity(userID: userID))
         }
-        modelContext.insert(ContentSyncOwnerEntity(userID: userID))
+        if recoveredOwnerID != userID {
+            // A new store instance cannot still own a request from the previous process.
+            // Reuse the original command IDs so an already accepted upload is replayed safely.
+            let pending = try modelContext.fetch(FetchDescriptor<ContentOutboxEntity>(
+                predicate: #Predicate { $0.ownerUserID == userID && $0.isInFlight }
+            ))
+            for mutation in pending { mutation.isInFlight = false }
+        }
         try modelContext.save()
+        recoveredOwnerID = userID
     }
 
     public func needsBootstrap(userID: UUID) throws -> Bool {

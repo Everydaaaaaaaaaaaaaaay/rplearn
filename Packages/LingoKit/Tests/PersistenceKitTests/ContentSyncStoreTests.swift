@@ -1,9 +1,40 @@
 import Foundation
+import SwiftData
 import Testing
 @testable import PersistenceKit
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
+    @Test("磁盘库重新打开后恢复未确认上传，保留原操作 ID")
+    func recoversInFlightAfterReopeningDiskStore() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("sync-restart-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let schema = Schema(versionedSchema: LingoSchema.self)
+        let configuration = ModelConfiguration(schema: schema, url: directory.appendingPathComponent("sync.store"))
+        let userID = UUID()
+        let pending: PendingContentMutation
+        do {
+            let container = try ModelContainer(for: schema, configurations: [configuration])
+            let store = ContentSyncStore(modelContainer: container)
+            try await store.activateOwner(userID: userID)
+            _ = try await RosterStore(modelContainer: container).addCharacter(card: characterCard(name: "Survives restart"), difficulty: .junior3, isFriend: false)
+            pending = try #require(try await store.takePending().first)
+            // Repeated activation of the live store must not release an active request.
+            try await store.activateOwner(userID: userID)
+            #expect(try await store.takePending().isEmpty)
+        }
+        let reopened = try ModelContainer(for: schema, configurations: [configuration])
+        let store = ContentSyncStore(modelContainer: reopened)
+        try await store.activateOwner(userID: userID)
+        let retry = try #require(try await store.takePending().first)
+        #expect(retry.commandID == pending.commandID)
+        #expect(retry.expectedVersion == pending.expectedVersion)
+        #expect(retry.payloadJSON == pending.payloadJSON)
+        try await store.complete(commandID: retry.commandID, record: remote(from: retry, version: 1))
+        #expect(try await store.takePending().isEmpty)
+    }
+
     @Test("游客首站完成与云端检查点合并，保留双方剧情标记")
     func mergesGuestStoryAchievements() throws {
         let local = LocalContentRecord(resourceType: .storyProgress, resourceID: "mainline_london", parentID: nil,

@@ -168,6 +168,17 @@ lingotrip_xcodebuild() {
   local udid="$2"
   shift 2
 
+  local is_test=0 result_bundle="" previous_argument="" argument
+  for argument in "$@"; do
+    if [[ "$argument" == "test" || "$argument" == "test-without-building" ]]; then
+      is_test=1
+    fi
+    if [[ "$previous_argument" == "-resultBundlePath" ]]; then
+      result_bundle="$argument"
+    fi
+    previous_argument="$argument"
+  done
+
   local xcodebuild_arguments=(
     -project "$LINGOTRIP_REPO_ROOT/LingoTrip.xcodeproj"
     -scheme "$scheme"
@@ -192,5 +203,27 @@ lingotrip_xcodebuild() {
     echo "当前工作树首次准备 Swift Package 依赖；完成后后续构建将使用本地锁定缓存"
   fi
 
+  if [[ "$is_test" == "1" && -z "$result_bundle" ]]; then
+    mkdir -p "$LINGOTRIP_DERIVED_DATA_PATH/VerificationResults"
+    result_bundle="$LINGOTRIP_DERIVED_DATA_PATH/VerificationResults/$(date -u '+%Y%m%dT%H%M%SZ')-$$.xcresult"
+    xcodebuild_arguments+=(-resultBundlePath "$result_bundle")
+  fi
+
   xcodebuild "${xcodebuild_arguments[@]}" "$@"
+  if [[ "$is_test" == "1" ]]; then
+    # Xcode can exit successfully when -only-testing matches nothing.
+    # A skipped live suite also cannot count as an executed verification.
+    xcrun xcresulttool get test-results summary --path "$result_bundle" |
+      python3 -c 'import json, sys
+summary = json.load(sys.stdin)
+passed = summary.get("passedTests", 0)
+failed = summary.get("failedTests", 0)
+skipped = summary.get("skippedTests", 0)
+print(f"测试结果：{passed} 通过，{failed} 失败，{skipped} 跳过")
+if passed + failed == 0:
+    sys.exit("错误：没有实际执行测试，请检查 -only-testing 筛选与 live 开关。")
+if failed:
+    sys.exit("错误：结果包仍包含失败测试。")'
+    echo "测试证据：$result_bundle"
+  fi
 }

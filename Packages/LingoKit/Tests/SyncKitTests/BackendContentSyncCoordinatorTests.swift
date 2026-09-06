@@ -25,6 +25,8 @@ struct BackendContentSyncCoordinatorTests {
 
     private actor ContentTransport: BackendTransport {
         private(set) var expectedVersions: [Int] = []
+        private var fault: String
+        init(fault: String = "none") { self.fault = fault }
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             switch (request.httpMethod, request.url?.path) {
@@ -75,6 +77,17 @@ struct BackendContentSyncCoordinatorTests {
                         "status": "applied",
                     ]
                 }
+                if fault != "none", var first = results.first {
+                    let mode = fault
+                    fault = "none"
+                    if mode == "malformed" { first["status"] = "unexpected" }
+                    if mode == "wrongCommand" { first["commandId"] = UUID().uuidString }
+                    if mode == "wrongResource", var record = first["record"] as? [String: Any] {
+                        record["resourceId"] = UUID().uuidString
+                        first["record"] = record
+                    }
+                    return json(["results": [first]])
+                }
                 return json(["results": results])
             case ("GET", "/v1/sync/changes"):
                 return json(
@@ -108,10 +121,10 @@ struct BackendContentSyncCoordinatorTests {
         }
     }
 
-    @Test("首次迁移本地内容，后续修改按服务器版本递增")
-    func migratesAndUpdates() async throws {
+    @Test("同步异常回执可重试，成功后按服务器版本递增", arguments: ["none", "malformed", "wrongCommand", "wrongResource"])
+    func migratesAndUpdates(fault: String) async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
-        let transport = ContentTransport()
+        let transport = ContentTransport(fault: fault)
         let backend = BackendClient(
             configuration: BackendConfiguration(
                 baseURL: URL(string: "https://api.example.com")!
@@ -142,12 +155,23 @@ struct BackendContentSyncCoordinatorTests {
             store: syncStore
         )
 
-        try await coordinator.activate(userID: userID)
-        #expect(await transport.expectedVersions == [0])
+        if fault == "none" {
+            try await coordinator.activate(userID: userID)
+        } else {
+            do {
+                try await coordinator.activate(userID: userID)
+                Issue.record("Malformed receipt must not acknowledge an upload")
+            } catch {
+                #expect(error is BackendClientError)
+            }
+            try await coordinator.synchronize()
+        }
+        let expected = fault == "none" ? [0] : [0, 0]
+        #expect(await transport.expectedVersions == expected)
 
         try await roster.setDifficulty(characterID: characterID, level: .advanced)
         try await coordinator.synchronize()
-        #expect(await transport.expectedVersions == [0, 1])
+        #expect(await transport.expectedVersions == expected + [1])
         #expect(try await syncStore.takePending().isEmpty)
         await coordinator.deactivate()
     }

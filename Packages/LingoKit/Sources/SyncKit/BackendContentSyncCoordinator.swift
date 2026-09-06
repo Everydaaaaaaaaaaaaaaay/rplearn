@@ -70,37 +70,44 @@ public actor BackendContentSyncCoordinator {
         while true {
             let pending = try await store.takePending(limit: 50)
             guard !pending.isEmpty else { return }
-            let commands = try pending.map(Self.command)
-            let results: [BackendContentCommandResult]
             do {
-                results = try await backend.submitContentCommands(commands)
-            } catch {
-                try? await store.resetInFlight(
-                    commandIDs: pending.map(\.commandID)
-                )
-                throw error
-            }
-            guard results.count == pending.count else {
-                try? await store.resetInFlight(
-                    commandIDs: pending.map(\.commandID)
-                )
-                throw BackendClientError.invalidResponse
-            }
-            for result in results {
-                if result.status == "applied", let record = result.record {
-                    try await store.complete(
-                        commandID: result.commandId,
-                        record: try Self.remote(record)
-                    )
-                } else if result.status == "rejected", let error = result.error {
-                    try await store.reject(
-                        commandID: result.commandId,
-                        code: error.code,
-                        current: try Self.currentRecord(from: error.details)
-                    )
-                } else {
-                    throw BackendClientError.invalidResponse
+                let results = try await backend.submitContentCommands(pending.map(Self.command))
+                let expected = Dictionary(uniqueKeysWithValues: pending.map { ($0.commandID, $0) })
+                // A matching count alone cannot prove these receipts acknowledge this batch.
+                guard results.count == pending.count,
+                      Set(results.map(\.commandId)) == Set(expected.keys)
+                else { throw BackendClientError.invalidResponse }
+                for result in results {
+                    guard let mutation = expected[result.commandId] else {
+                        throw BackendClientError.invalidResponse
+                    }
+                    if result.status == "applied", let record = result.record {
+                        guard record.resourceId == mutation.resourceID,
+                              record.resourceType == mutation.resourceType.rawValue
+                        else { throw BackendClientError.invalidResponse }
+                    } else if result.status != "rejected" || result.error == nil {
+                        throw BackendClientError.invalidResponse
+                    }
                 }
+                for result in results {
+                    if result.status == "applied", let record = result.record {
+                        try await store.complete(
+                            commandID: result.commandId,
+                            record: try Self.remote(record)
+                        )
+                    } else if let error = result.error {
+                        try await store.reject(
+                            commandID: result.commandId,
+                            code: error.code,
+                            current: try Self.currentRecord(from: error.details)
+                        )
+                    }
+                }
+            } catch {
+                // Transport, decoding and receipt/application failures all release pending work.
+                // Already acknowledged commands are absent and are not resurrected.
+                try? await store.resetInFlight(commandIDs: pending.map(\.commandID))
+                throw error
             }
         }
     }
