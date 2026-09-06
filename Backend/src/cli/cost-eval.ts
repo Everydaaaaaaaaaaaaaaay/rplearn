@@ -25,6 +25,32 @@ const scenariosSchema = z
           id: z.string().regex(/^[a-z0-9-]{1,64}$/),
           label: z.string().min(1),
           plan: z.enum(["guest", "free", "plus", "pro"]),
+          difficulty: z
+            .enum(["primary3", "junior3", "undergraduate", "advanced"])
+            .default("junior3"),
+          utterances: z.array(z.string().min(1).max(10000)).optional(),
+          characters: z
+            .array(
+              z.object({
+                name: z.string(),
+                age: z.number().int(),
+                gender: z.enum(["male", "female", "other"]),
+                nationality: z.string(),
+                regionID: z.string(),
+                occupation: z.string(),
+                hobbies: z.array(z.string()),
+                appearance: z.string(),
+                personality: z.string(),
+                speechStyle: z.string(),
+                background: z.string(),
+              }),
+            )
+            .min(1)
+            .max(3)
+            .optional(),
+          switchEvery: z.number().int().min(0).default(0),
+          reopenEvery: z.number().int().min(0).default(0),
+          quizEnabled: z.boolean().default(true),
           turnCount: z.number().int().positive().max(200),
           encounters: z.number().int().min(0).max(20),
           grammarEvery: z.number().int().min(0),
@@ -41,37 +67,33 @@ const scenariosSchema = z
   .superRefine((value, ctx) => {
     if (new Set(value.personas.map((p) => p.id)).size !== value.personas.length)
       ctx.addIssue({ code: "custom", message: "Persona IDs must be unique" });
-    if (value.personas.some((p) => p.turnCount > value.utterances.length))
+    if (
+      value.personas.some(
+        (p) => p.turnCount > (p.utterances ?? value.utterances).length,
+      )
+    )
       ctx.addIssue({
         code: "custom",
         message: "Every planned turn needs an actual scripted utterance",
       });
   });
-interface Persona {
-  id: string;
-  label: string;
-  plan: string;
-  turnCount: number;
-  encounters: number;
-  grammarEvery: number;
-  translateEvery: number;
-  voice: boolean;
-  reopenAt: number;
-  activeMinutesEstimate: number;
-  activeDaysPerMonthAssumption: number;
-}
+type Persona = z.infer<typeof scenariosSchema>["personas"][number] & {
+  scenarioId: string;
+  replicate: number;
+};
 interface Manifest {
   runId: string;
   baseURL: string;
   outputDirectory: string;
   scenarioHash: string;
-  cases: (Persona & {
-    userId: string;
-    refreshToken: string;
-    refreshTokenExpiresAt: string;
-    sessionId: string;
-    utterances: string[];
-  })[];
+  cases: (Omit<Persona, "scenarioId" | "replicate" | "difficulty"> &
+    Partial<Pick<Persona, "scenarioId" | "replicate" | "difficulty">> & {
+      userId: string;
+      refreshToken: string;
+      refreshTokenExpiresAt: string;
+      sessionId: string;
+      utterances: string[];
+    })[];
 }
 async function main() {
   const [command, directoryArg] = process.argv.slice(2);
@@ -97,8 +119,15 @@ async function main() {
         throw new Error(
           "Preparation requires a fresh isolated database; existing data will not be erased",
         );
+      if (process.env.COST_EVAL_FREE_CREDITS !== undefined) {
+        const credits = Number(process.env.COST_EVAL_FREE_CREDITS);
+        if (!Number.isSafeInteger(credits) || credits < 1 || credits > 400)
+          throw new Error("Experimental free allowance must be 1...400 credits");
+        await database.sql`update app.service_metadata set value=value || ${JSON.stringify({ version: `cost-eval-free-${String(credits)}`, free: String(BigInt(credits) * 1_000_000n) })}::jsonb where key='model-credits-v1'`;
+      }
       const scenarioSource = await readFile(
-        new URL("../../config/cost-scenarios.json", import.meta.url),
+        process.env.COST_EVAL_SCENARIOS ??
+          new URL("../../config/cost-scenarios.json", import.meta.url),
         "utf8",
       );
       const scenarios = scenariosSchema.parse(JSON.parse(scenarioSource));
@@ -112,6 +141,8 @@ async function main() {
       const personas = Array.from({ length: replicates }, (_, index) =>
         scenarios.personas.map((p) => ({
           ...p,
+          scenarioId: p.id,
+          replicate: index + 1,
           id: replicates === 1 ? p.id : `${p.id}-r${String(index + 1)}`,
         })),
       ).flat();
@@ -122,7 +153,7 @@ async function main() {
           await database.sql`insert into app.guest_installations(user_id,installation_hash) values(${id},${createHash("sha256").update(id).digest("hex")})`;
         if (["plus", "pro"].includes(persona.plan))
           await database.sql`insert into app.entitlement_grants(id,user_id,plan_id,entitlement_key,environment,source_provider,source_reference_id,status,provider_event_at,valid_until)
-       values(${randomUUID()},${id},${persona.plan},'subscription','test','manual',${randomUUID()},'active',now(),now()+interval '4 hours')`;
+       values(${randomUUID()},${id},${persona.plan},'subscription','test','manual',${randomUUID()},'active',now(),now()+interval '12 hours')`;
         budgetUnits += BigInt(
           Math.round((await creditService.snapshot(id)).limit * 1_000_000),
         );
@@ -138,7 +169,7 @@ async function main() {
           refreshToken: token.refreshToken,
           refreshTokenExpiresAt: token.refreshTokenExpiresAt.toISOString(),
           sessionId: token.sessionId,
-          utterances: scenarios.utterances
+          utterances: (persona.utterances ?? scenarios.utterances)
             .slice(0, persona.turnCount)
             .map((text) =>
               persona.encounters > 0 ? text.replace("Hi Oliver!", "Hi!") : text,
@@ -179,13 +210,24 @@ async function main() {
               }).trim().length > 0,
             scenarioInputs: cases.map((c) => ({
               id: c.id,
+              scenarioId: c.scenarioId,
+              replicate: c.replicate,
+              label: c.label,
               plan: c.plan,
+              difficulty: c.difficulty,
               utterances: c.utterances,
+              characters: c.characters,
+              turnCount: c.turnCount,
               encounters: c.encounters,
               grammarEvery: c.grammarEvery,
               translateEvery: c.translateEvery,
               voice: c.voice,
               reopenAt: c.reopenAt,
+              reopenEvery: c.reopenEvery,
+              switchEvery: c.switchEvery,
+              quizEnabled: c.quizEnabled,
+              activeMinutesEstimate: c.activeMinutesEstimate,
+              activeDaysPerMonthAssumption: c.activeDaysPerMonthAssumption,
             })),
             routes,
             policy,
@@ -199,10 +241,85 @@ async function main() {
       process.stdout.write(
         `Prepared ${String(cases.length)} isolated personas. Credential file is private-config.json; do not publish it.\n`,
       );
+    } else if (command === "select-unstarted" || command === "verify-unstarted") {
+      const manifest = JSON.parse(
+        await readFile(resolve(directory, "private-config.json"), "utf8"),
+      ) as Manifest;
+      const environment = JSON.parse(
+        await readFile(resolve(directory, "environment.json"), "utf8"),
+      ) as { createdAt: string };
+      if (environment.createdAt.slice(0, 10) !== new Date().toISOString().slice(0, 10))
+        throw new Error("Do not reuse an evaluation across credit issuance days");
+      const selected: Manifest["cases"] = [];
+      const excluded: { id: string; reason: string }[] = [];
+      for (const persona of manifest.cases) {
+        const [row] = await database.sql<
+          { count: number }[]
+        >`select count(*)::int as count from app.credit_operations where user_id=${persona.userId}`;
+        let hasEvidence = false;
+        try {
+          await readFile(resolve(directory, `${persona.id}.json`), "utf8");
+          hasEvidence = true;
+        } catch (error) {
+          if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+        }
+        if (hasEvidence || (row?.count ?? 0) > 0)
+          excluded.push({
+            id: persona.id,
+            reason: hasEvidence
+              ? "native_sample_already_started"
+              : "ledger_already_exists",
+          });
+        else selected.push(persona);
+      }
+      if (!selected.length)
+        throw new Error(
+          "No unstarted samples remain; existing paid evidence will not be overwritten",
+        );
+      if (command === "verify-unstarted") {
+        if (excluded.length)
+          throw new Error(
+            "Setup resume requires every sample to have zero ledger calls and no native evidence",
+          );
+        process.stdout.write(
+          "Verified all samples are unstarted in the database and evidence directory.\n",
+        );
+        return;
+      }
+      await writeFile(
+        resolve(directory, "private-next-config.json"),
+        JSON.stringify({ ...manifest, cases: selected }),
+        { mode: 0o600 },
+      );
+      await writeFile(
+        resolve(directory, `continuation-${String(Date.now())}.json`),
+        JSON.stringify(
+          {
+            at: new Date().toISOString(),
+            selected: selected.map((p) => p.id),
+            excluded,
+          },
+          null,
+          2,
+        ),
+      );
+      process.stdout.write(
+        `Selected ${String(selected.length)} never-started samples; ${String(excluded.length)} existing samples retained.\n`,
+      );
     } else if (command === "report") {
       const manifest = JSON.parse(
         await readFile(resolve(directory, "private-config.json"), "utf8"),
       ) as Manifest;
+      let annotations: { environmentInterruptedIds: string[]; reason?: string } = {
+        environmentInterruptedIds: [],
+      };
+      try {
+        annotations = JSON.parse(
+          await readFile(resolve(directory, "environment-interruptions.json"), "utf8"),
+        ) as typeof annotations;
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+      }
       const sessions: SessionEvidence[] = [];
       for (const persona of manifest.cases) {
         let native: {
@@ -210,6 +327,10 @@ async function main() {
           completedTurns: number;
           actions: SessionEvidence["actions"];
           calls?: SessionEvidence["nativeCalls"];
+          turns?: unknown[];
+          characterCards?: unknown[];
+          startingCredits?: number;
+          endingCredits?: number;
         } = { status: "missing_native_evidence", completedTurns: 0, actions: [] };
         try {
           native = JSON.parse(
@@ -221,17 +342,29 @@ async function main() {
         const ledger = await database.sql<
           LedgerCall[]
         >`select c.operation_id::text as "operationId",c.task,c.status,c.reserved_units::text as "reservedUnits",c.settled_units::text as "settledUnits",c.usage,c.price,c.created_at::text as "createdAt",
-          a.config_version as "routeConfigVersion",a.provider_attempts as "providerAttempts",a.latency_ms as "latencyMs",c.provider_request_id as "providerRequestId"
+          a.config_version as "routeConfigVersion",a.provider_attempts as "providerAttempts",a.latency_ms as "latencyMs",c.provider_request_id as "providerRequestId", c.dispatched_at::text as "dispatchedAt", c.completed_at::text as "completedAt", c.reason
           from app.credit_operations c left join app.ai_requests a on a.user_id=c.user_id and a.operation_id=c.operation_id where c.user_id=${persona.userId} order by c.created_at`;
         sessions.push({
           id: persona.id,
+          scenarioId: persona.scenarioId ?? persona.id.replace(/-r\d+$/, ""),
+          replicate: persona.replicate ?? 1,
+          difficulty: persona.difficulty ?? "junior3",
+          turns: native.turns ?? [],
+          characterCards: native.characterCards ?? [],
+          startingCredits: native.startingCredits ?? null,
+          endingCredits: native.endingCredits ?? null,
           persona: persona.label,
           plan: persona.plan,
           plannedTurns: persona.turnCount,
           completedTurns: native.completedTurns,
           activeMinutesEstimate: persona.activeMinutesEstimate,
           activeDaysPerMonthAssumption: persona.activeDaysPerMonthAssumption,
-          status: native.status,
+          nativeStatus: native.status,
+          status:
+            native.status === "running" &&
+            annotations.environmentInterruptedIds.includes(persona.id)
+              ? "environment_interrupted"
+              : native.status,
           actions: native.actions,
           nativeCalls: native.calls ?? [],
           ledger,
@@ -252,6 +385,7 @@ async function main() {
         unattributed,
         sessions: summaries,
         rawSessions: sessions,
+        annotations,
         sensitivity: summaries
           .filter((s) => s.projectedMonthlyCny !== null)
           .flatMap((s) =>

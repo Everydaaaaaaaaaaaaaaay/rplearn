@@ -10,7 +10,16 @@ export interface LedgerCall {
     cacheHitTokens?: number;
     cacheMissTokens?: number;
   } | null;
-  price: { model: string; version: string; input?: string; output?: string };
+  price: {
+    model: string;
+    version: string;
+    input?: string;
+    cachedInput?: string;
+    output?: string;
+  };
+  dispatchedAt?: string | null;
+  completedAt?: string | null;
+  reason?: string | null;
   createdAt: string;
   routeConfigVersion?: number | null;
   providerAttempts?: number | null;
@@ -18,6 +27,14 @@ export interface LedgerCall {
   providerRequestId?: string | null;
 }
 export interface SessionEvidence {
+  nativeStatus?: string;
+  scenarioId?: string;
+  replicate?: number;
+  difficulty?: string;
+  turns?: unknown[];
+  characterCards?: unknown[];
+  startingCredits?: number | null;
+  endingCredits?: number | null;
   id: string;
   persona: string;
   plan: string;
@@ -28,7 +45,12 @@ export interface SessionEvidence {
   status: string;
   ledger: LedgerCall[];
   actions: { kind: string; status: string; milliseconds: number }[];
-  nativeCalls?: { operationId: string; task: string; status: string }[];
+  nativeCalls?: {
+    operationId: string;
+    task: string;
+    status: string;
+    modelOutput?: string;
+  }[];
 }
 export function summarizeSession(session: SessionEvidence) {
   let cost = 0n,
@@ -79,6 +101,11 @@ export function summarizeSession(session: SessionEvidence) {
     .sort((a, b) => a - b);
   return {
     id: session.id,
+    scenarioId: session.scenarioId ?? session.id.replace(/-r\d+$/, ""),
+    replicate: session.replicate ?? 1,
+    difficulty: session.difficulty,
+    startingCredits: session.startingCredits,
+    endingCredits: session.endingCredits,
     persona: session.persona,
     plan: session.plan,
     status: effectiveStatus,

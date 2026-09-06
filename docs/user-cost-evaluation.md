@@ -6,7 +6,7 @@
 
 独立 iOS 模拟器 → 应用实际 ChatViewModel → LLMRouter/PromptBuilder → 真实 HTTP 后端 → 模型供应商 → PostgreSQL 金额账本。SwiftData 使用本次会话内存库，重新进入聊天时保留同一库。回复间隔、分气泡、自动关系/语言审阅、纠错回退、测验和记忆压缩按当前应用代码实际触发，测试不手工规定每句话应有几次辅助调用。
 
-`Backend/config/cost-scenarios.json` 是场景入口，包含六类用户、对话脚本、计划轮次、翻译/语法频率、角色生成数量、重入聊天与语音分支。游客、免费、Plus、Pro 分别使用隔离数据库的真实身份与权益记录；不会临时放开消费上限掩盖体验中断。探索样本主动进入两次生成是一个条件场景，不代表所有外出必然遇到新 NPC。
+`Backend/config/cost-scenarios.json` 是首批场景入口；第二轮使用 `cost-scenarios-study.json`、`cost-scenarios-stress.json`，协议见[分层实验设计](user-cost-study-design.md)。配置包含对话脚本、难度、角色卡、翻译/语法频率、重入聊天、切换 NPC 与语音分支。游客、免费、Plus、Pro 使用隔离数据库的真实身份与权益记录。额度对照必须另建批次并记录政策快照，不覆盖原始受限样本。当前活动 UI 已无 EncounterService 调用点，因此探索样本只属于能力基准，不参与当前应用的月度需求估计。
 
 覆盖矩阵：
 
@@ -24,7 +24,7 @@
 
 ## 运行
 
-需要 macOS、Xcode、xcodegen、Python 3、pnpm，以及已启动的隔离 PostgreSQL 和 Redis。创建新的空数据库，名称必须为 `lingotrip_cost_eval_*`，已有数据不会清除。使用独立模拟器，不会擦除用户设备。
+需要 macOS、Xcode、xcodegen、Python 3、pnpm，以及已启动的隔离 PostgreSQL 和 Redis。创建新的空数据库，名称必须为 `lingotrip_cost_eval_*`，已有数据不会清除。数据库的数据目录和评测输出应放在持久位置，不使用可清空的 `/tmp`；原始目录包含一次性账户凭据，不可整体分享。使用独立模拟器，不会擦除用户设备。
 
 ```bash
 createdb -h 127.0.0.1 -p 55449 lingotrip_cost_eval_batch01
@@ -32,13 +32,17 @@ export DATABASE_URL=postgres://tiantian@127.0.0.1:55449/lingotrip_cost_eval_batc
 export REDIS_URL=redis://127.0.0.1:56449/12
 # DEEPSEEK_API_KEY 从安全的现有凭据渠道注入当前进程环境，不能写进脚本、命令参数或报告。
 python3 Scripts/evaluate-user-cost.py --live \
-  --output /tmp/lingotrip-cost-batch01 \
+  --output /Users/tiantian/.codex/experiments/lingotrip-cost/NEW_BATCH \
   --simulator DEDICATED_SIMULATOR_UUID --max-model-cny 4
 ```
 
 普通测试不访问模型；`--live` 表示一次明确授权的付费测试。每轮六个身份的名义预算合计 ¥3.50，默认需预留最多 ¥4 的试验预算。它是各用户当前积分上限的总和，不是供应商账户级硬消费锁；价格变动、超预留和其他独立调用仍须对账。运行限定在同一个 UTC 发放日内，避免重置额度污染本批样本。
 
 `--resume` 只允许恢复尚未发生任何模型调用的启动失败，不发放新额度；已付费的中断样本保留为独立证据，不从头重跑并伪装成同一次会话。
+
+`--continue-unstarted` 可继续同一 UTC 日内中断批次中从未开始的身份：同时查询数据库和原生证据，跳过任何已调用或写入记录的身份，公开记录选择清单。`--resume` 同样校验数据库，不能仅凭陈旧的报告认定费用为零。保留原生状态，环境故障通过 `environment-interruptions.json` 附注解释；同脚本替代样本使用新批次。
+
+通过 `--scenarios Backend/config/cost-scenarios-study.json --replicates 3 --max-model-cny 12` 运行分层重复。`--derived-data` 可复用本轮生成的测试产品。至少保留 3 GiB 可用磁盘，同一模拟器串行运行（脚本持有模拟器锁和输出目录锁），不把环境故障算作模型失败。`--free-credit-override 200` 仅在新隔离数据库创建身份前修改实验政策，不改变生产。
 
 `--replicates 3 --max-model-cny 12` 用新身份重复三轮，观察模型、缓存和测验随机性的波动。不能仅把输出文本复制三份当成重复采样；缓存由供应商真实处理，缓存 token 明细保留在原始账本里。每批记录路由、预算和场景摘要；不同版本/峰谷时间的样本先分组，不能直接混合比较。
 
@@ -48,6 +52,7 @@ python3 Scripts/evaluate-user-cost.py --live \
 
 - `private-config.json`：一次性隔离账户凭据，权限 0600；不要提交、分享或并入报告。
 - `environment.json`：场景摘要、路由配置与预算。
+- `environment.json.executions`：每段执行的模拟器、身份与原生可执行文件摘要；不同构建可能具有不同摘要，不能宣称二进制完全相同。
 - `各场景.json`：动作、完成轮次、耗时、原生调用 operation ID 和失败；脚本内容均为合成数据。
 - `report.json`：原始金额账本、按任务费用、完整性状态，以及售价/免费用户比例/其他成本的敏感性分析。
 - `report.md`：适合阅读的会话比较。
@@ -67,6 +72,22 @@ python3 Scripts/evaluate-user-cost.py --live \
 
 增加的测试与报告只属于显式成本评测，不扩张普通提交门禁。
 
+## 跨批次分析
+
+先对每个批次使用其原隔离数据库运行 `pnpm exec tsx src/cli/cost-eval.ts report RUN_DIRECTORY`，再运行：
+
+```bash
+cd Backend
+pnpm exec tsx src/cli/cost-study.ts OUTPUT_DIRECTORY RUN_DIRECTORY...
+pnpm exec vitest run test/modules/cost-study.test.ts test/modules/cost-workflow-report.test.ts
+```
+
+分析会拒绝重复 Run ID，逐批次/场景保留分层；输出整数账本复算、并发预留余额要求、峰谷/无缓存敏感性、输出文字删减候选及全额预算的套餐经济测算。`cost-study-assumptions.json` 中的活跃天数、补贴比例和其他成本都是可替换假设。替代样本不自动合池，先核查脚本、政策、路由与源码可比性。
+
+账本准确不代表逐轮体验已经合格。回复非空、流程完成与没有教学内容损失是不同指标；删减检测只识别原文中的连续顺序词项被遗漏，不能代替语义质量评审。供应商总余额只有低精度且为共享账户时，只能提供总量核对线索，不能替代供应商明细账单。
+
 ## 首批实测
 
 见 [`user-cost-baseline-2026-09-06.md`](user-cost-baseline-2026-09-06.md)：六类原生会话的实际费用、降级问题和定价解释。
+
+第二轮见[分层实验结果](user-cost-study-results-2026-09-06.md)及[试运营定价建议](cost-pricing-proposal-2026-09-06.md)。原有单例基线继续保留，不与新版本数据静默合并。

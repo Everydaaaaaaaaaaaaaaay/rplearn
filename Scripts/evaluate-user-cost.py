@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Opt-in paid native E2E evaluation. Credentials remain outside tracked artifacts."""
 import argparse
+import hashlib
+import fcntl
+import shutil
+import math
 import datetime
 import json
 import os
@@ -18,10 +22,19 @@ p.add_argument('--live', action='store_true', help='Explicitly allow real paid m
 p.add_argument('--output', type=Path, required=True)
 p.add_argument('--simulator', required=True, help='Dedicated simulator UUID; never erased by this script')
 p.add_argument('--max-model-cny', type=float, default=4)
+p.add_argument('--free-credit-override', type=int, help='Isolated experiment only: override free allowance before fixture creation')
+p.add_argument('--scenarios', type=Path, help='Optional versioned scenario JSON')
+p.add_argument('--derived-data', type=Path, default=ROOT/'build/DerivedData-cost-eval')
 p.add_argument('--port', type=int, default=55452)
 p.add_argument('--replicates', type=int, default=1)
+p.add_argument('--continue-unstarted', action='store_true', help='Run only cases with no native evidence and no ledger calls, preserving every started sample')
 p.add_argument('--resume', action='store_true', help='Resume the same interrupted run without new identities or budget')
 a = p.parse_args()
+
+def interrupted(signum, frame):
+    raise KeyboardInterrupt('Evaluation interrupted; preserve partial evidence')
+
+signal.signal(signal.SIGTERM, interrupted)
 if not a.live:
     p.error('Use --live only for an explicitly authorized paid evaluation; ordinary tests stay offline')
 if not os.environ.get('DEEPSEEK_API_KEY'):
@@ -29,15 +42,31 @@ if not os.environ.get('DEEPSEEK_API_KEY'):
 u = urllib.parse.urlparse(os.environ.get('DATABASE_URL', ''))
 if u.hostname not in ('127.0.0.1', 'localhost') or not u.path.startswith('/lingotrip_cost_eval_'):
     p.error('DATABASE_URL must point to a dedicated loopback lingotrip_cost_eval_* database')
-if not (1 <= a.replicates <= 10) or a.max_model_cny < 3.5 * a.replicates:
-    p.error('Each replicate has ¥3.50 in total nominal per-user budgets; increase the explicit cap or reduce replicates')
+if not (1 <= a.replicates <= 10) or not math.isfinite(a.max_model_cny) or a.max_model_cny <= 0:
+    p.error('Replicates must be 1...10 and the explicit cost cap must be finite and positive; preparation checks actual account budgets')
+locks = ROOT/'build/locks'
+locks.mkdir(parents=True, exist_ok=True)
+simulator_lock = (locks/('cost-eval-'+hashlib.sha256(a.simulator.encode()).hexdigest()+'.lock')).open('a')
+try:
+    fcntl.flock(simulator_lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+except BlockingIOError:
+    p.error('Another cost evaluation is using this simulator; run native workloads serially')
 # A fresh user budget may reset at UTC midnight. Keep one evaluation within its issuance day.
 now = datetime.datetime.now(datetime.timezone.utc)
 if now.hour >= 22:
     p.error('Start at least two hours before UTC midnight to avoid resetting daily budgets during a run')
 a.output = a.output.resolve()
 a.output.mkdir(parents=True, exist_ok=True, mode=0o700)
-if (a.output / 'private-config.json').exists() and not a.resume:
+run_lock = (a.output/'workflow.lock').open('a')
+try:
+    fcntl.flock(run_lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+except BlockingIOError:
+    p.error('This output directory already has a running workflow')
+if a.resume and a.continue_unstarted:
+    p.error('Choose either setup resume or continuation of unstarted cases')
+if shutil.disk_usage(ROOT).free < 3 * 1024**3:
+    p.error('At least 3 GiB free disk space is required before starting the native workflow')
+if (a.output / 'private-config.json').exists() and not (a.resume or a.continue_unstarted):
     p.error('Output already contains a run; use a fresh directory. Existing evidence is never overwritten')
 if a.resume:
     prior_report = a.output / 'report.json'
@@ -48,12 +77,23 @@ env = dict(os.environ, NODE_ENV='test', HOST='127.0.0.1', PORT=str(a.port),
            COST_EVAL_BASE_URL=f'http://127.0.0.1:{a.port}', COST_EVAL_REPLICATES=str(a.replicates),
            COST_EVAL_MAX_CNY=str(a.max_model_cny))
 
+if a.free_credit_override is not None:
+    env['COST_EVAL_FREE_CREDITS'] = str(a.free_credit_override)
+if a.scenarios:
+    env['COST_EVAL_SCENARIOS'] = str(a.scenarios.resolve(strict=True))
+
 def run(args, log):
     with (a.output / log).open('ab') as out:
         subprocess.run(args, cwd=ROOT / 'Backend', env=env, stdout=out, stderr=subprocess.STDOUT, check=True)
 
-if not a.resume:
+if not (a.resume or a.continue_unstarted):
     run(['pnpm', 'exec', 'tsx', 'src/cli/cost-eval.ts', 'prepare', str(a.output)], 'prepare.log')
+if a.resume:
+    run(['pnpm', 'exec', 'tsx', 'src/cli/cost-eval.ts', 'verify-unstarted', str(a.output)], 'prepare.log')
+native_config = a.output/'private-config.json'
+if a.continue_unstarted:
+    run(['pnpm', 'exec', 'tsx', 'src/cli/cost-eval.ts', 'select-unstarted', str(a.output)], 'prepare.log')
+    native_config = a.output/'private-next-config.json'
 # Only the isolated backend process needs a provider credential; the simulator never receives it.
 child = None
 try:
@@ -72,14 +112,25 @@ try:
     else:
         raise RuntimeError('Isolated backend did not become ready')
     build_env = {k:v for k,v in env.items() if k not in ('DEEPSEEK_API_KEY','DATABASE_URL','REDIS_URL')}
-    derived = ROOT/'build/DerivedData-cost-eval'
+    derived = a.derived_data.resolve()
     with (a.output/'native.log').open('ab') as log:
         subprocess.run(['xcodegen','generate'],cwd=ROOT,env=build_env,stdout=log,stderr=subprocess.STDOUT,check=True)
         subprocess.run(['xcodebuild','-quiet','-project','LingoTrip.xcodeproj','-scheme','LingoTrip',
             '-configuration','Debug','-destination',f'id={a.simulator}','-derivedDataPath',str(derived),
-            f'COST_EVAL_CONFIG={a.output / "private-config.json"}','build-for-testing'],
+            f'COST_EVAL_CONFIG={native_config}','build-for-testing'],
             cwd=ROOT,env=build_env,stdout=log,stderr=subprocess.STDOUT,check=True)
-        paths = sorted((derived/'Build/Products').glob('*.xctestrun'), key=lambda x:x.stat().st_mtime)
+        metadata_path = a.output/'environment.json'
+        metadata = json.loads(metadata_path.read_text())
+        prior_executables = metadata.get('nativeExecutables')
+        metadata['nativeExecutables'] = {str(f.relative_to(derived)): hashlib.sha256(f.read_bytes()).hexdigest()
+            for f in (derived/'Build/Products').glob('**/LingoTripTests.xctest/LingoTripTests')}
+        executions = metadata.setdefault('executions', [])
+        if not executions and prior_executables:
+            executions.append({'nativeExecutables': prior_executables, 'note': 'Previously recorded binary; exact execution start is in native evidence'})
+        executions.append({'recordedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'simulator': a.simulator,
+            'caseIDs': [c['id'] for c in json.loads(native_config.read_text())['cases']], 'nativeExecutables': metadata['nativeExecutables']})
+        metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2))
+        paths = sorted((derived/'Build/Products').glob('*iphonesimulator*.xctestrun'), key=lambda x:x.stat().st_mtime)
         if not paths:
             raise RuntimeError('Missing compiled test run manifest')
         original = paths[-1]
@@ -109,6 +160,6 @@ finally:
             try: child.wait(timeout=15)
             except subprocess.TimeoutExpired: os.killpg(child.pid,signal.SIGKILL)
 report = json.loads((a.output/'report.json').read_text())
-if any(s['status'] in ('missing_native_evidence','failed') for s in report['sessions']):
+if any(s['status'] not in ('completed','completed_with_gaps','quota_interrupted') or not s['costIsComplete'] for s in report['sessions']):
     raise SystemExit(f'Workflow has failed or missing samples; inspect {a.output / "report.md"}')
 print(a.output/'report.md')

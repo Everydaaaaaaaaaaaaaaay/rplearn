@@ -1,0 +1,17 @@
+{
+  "version": "cost-study-planning-2026-09-06",
+  "scopeOverrides": {
+    "plus-encounter": "capability_benchmark",
+    "plus-explorer": "capability_benchmark"
+  },
+  "scopeReason": "After the activity-scene merge, generateEncounter/openingForExisting have no application call sites. Keep these samples as capability benchmarks; do not use them as current UI activity demand.",
+  "candidatePricesCny": [29, 39, 49, 59, 69],
+  "candidateMonthlyModelBudgetsCny": [6, 9, 12, 18, 20, 24],
+  "freeUsersPerPayerScenarios": [1, 3, 5, 10, 20],
+  "freeModelMonthlyCnyScenarios": [1, 3.1, 6.2],
+  "otherVariableCnyPerPayer": 5,
+  "grossRefundTaxBufferRate": 0.05,
+  "targetContributionRateOfNet": 0.35,
+  "dailyBalanceCandidatesCny": [0.1, 0.15, 0.2, 0.3, 0.4, 0.6, 1.2],
+  "monthlyActiveDaysScenarios": [10, 20, 30]
+}
