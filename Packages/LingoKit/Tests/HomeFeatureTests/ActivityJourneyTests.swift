@@ -1,9 +1,30 @@
 import AVFoundation
 import XCTest
+import UIKit
 import PersistenceKit
 @testable import HomeFeature
 
 final class ActivityJourneyTests: XCTestCase {
+    func testStreetStallForegroundsKeepRealAlphaAndTheirCalibratedCanvas() throws {
+        for scene in [ActivitySceneID.bookstall, .flowerstall] {
+            XCTAssertTrue(scene.media.alphaForeground)
+            let url = try XCTUnwrap(Bundle.main.url(forResource: scene.poster, withExtension: "png"))
+            let image = try XCTUnwrap(UIImage(contentsOfFile: url.path)?.cgImage)
+            XCTAssertEqual(image.width, 852)
+            XCTAssertEqual(image.height, 1847)
+            XCTAssertTrue([CGImageAlphaInfo.first, .last, .premultipliedFirst, .premultipliedLast].contains(image.alphaInfo))
+            // Rendering the top-left clear patch must not leave a white/black rectangle.
+            var pixel = [UInt8](repeating: 0, count: 4)
+            let patch = try XCTUnwrap(image.cropping(to: CGRect(x: 0, y: 0, width: 1, height: 1)))
+            pixel.withUnsafeMutableBytes { bytes in
+                let context = CGContext(data: bytes.baseAddress, width: 1, height: 1, bitsPerComponent: 8,
+                    bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+                context.draw(patch, in: CGRect(x: 0, y: 0, width: 1, height: 1))
+            }
+            XCTAssertEqual(pixel[3], 0)
+        }
+    }
     func testReunionEligibilityPreservesIdentityBoundariesWithoutDemographicFiltering() {
         let now = Date()
         var person = CharacterDTO(id: UUID(), card: CharacterCard(name: "Sam", age: 72,
@@ -29,16 +50,19 @@ final class ActivityJourneyTests: XCTestCase {
     }
 
     func testEverySceneHasDistinctCompleteActionsAndBundledMedia() throws {
-        XCTAssertEqual(ActivitySceneID.allCases.count, 1)
-        XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 3)
+        XCTAssertEqual(ActivitySceneID.allCases.count, 3)
+        XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 9)
+        XCTAssertEqual(Set(ActivitySceneID.allCases.map { $0.media.video }).count, 3)
+        XCTAssertEqual(Set(ActivitySceneID.allCases.map(\.poster)).count, 3)
         for scene in ActivitySceneID.allCases {
             XCTAssertEqual(scene.actions.count, 3)
             XCTAssertEqual(Set(scene.actions.map(\.anchor)).count, 3)
-            for (name, ext) in [(scene.poster, "jpg"), ("activity-cafe-window", "jpg"),
-                                ("activity-cafe-street-loop", "mp4")] {
+            for (name, ext) in [(scene.poster, scene == .cafe ? "jpg" : "png"), (scene.media.plate, "jpg"),
+                                (scene.media.video, "mp4")] {
                 XCTAssertNotNil(Bundle.main.url(forResource: name, withExtension: ext), name)
             }
             for activity in scene.actions {
+                XCTAssertEqual(activity.scene, scene)
                 XCTAssertFalse(activity.introduction.isEmpty)
                 XCTAssertFalse(activity.closing.isEmpty)
                 XCTAssertEqual(activity.steps.count, 2)
@@ -80,7 +104,7 @@ final class ActivityJourneyTests: XCTestCase {
                 }
             }
         }
-        XCTAssertEqual(try journal.records().count, 12)
+        XCTAssertEqual(try journal.records().count, 36)
         XCTAssertTrue(try ActivityJournal(namespace: "other", city: "london", defaults: defaults).records().isEmpty)
         XCTAssertTrue(try ActivityJournal(namespace: "guest", city: "auckland", defaults: defaults).records().isEmpty)
     }
@@ -117,6 +141,24 @@ final class ActivityJourneyTests: XCTestCase {
         let fps = try await track.load(.nominalFrameRate)
         XCTAssertEqual(size, CGSize(width: 650, height: 520))
         XCTAssertEqual(fps, 24, accuracy: 0.01)
+    }
+
+    func testNewScenesHaveIndependentSilentContinuousMediaMatchingTheirApertures() async throws {
+        for scene in [ActivitySceneID.bookstall, .flowerstall] {
+            let url = try XCTUnwrap(Bundle.main.url(forResource: scene.media.video, withExtension: "mp4"))
+            let asset = AVURLAsset(url: url)
+            let duration = try await asset.load(.duration)
+            XCTAssertEqual(duration.seconds, scene == .bookstall ? 45.0 : 61.5, accuracy: 0.05)
+            let video = try await asset.loadTracks(withMediaType: .video)
+            let audio = try await asset.loadTracks(withMediaType: .audio)
+            XCTAssertEqual(video.count, 1)
+            XCTAssertTrue(audio.isEmpty)
+            let track = try XCTUnwrap(video.first)
+            let size = try await track.load(.naturalSize)
+            let fps = try await track.load(.nominalFrameRate)
+            XCTAssertEqual(size, scene.media.size)
+            XCTAssertEqual(fps, 24, accuracy: 0.01)
+        }
     }
 
     func testIncompleteOrCorruptDataNeverOverwritesHistory() throws {

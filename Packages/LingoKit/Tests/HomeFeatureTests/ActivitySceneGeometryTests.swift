@@ -4,6 +4,24 @@ import UIKit
 @testable import HomeFeature
 
 final class ActivitySceneGeometryTests: XCTestCase {
+    func testStreetStallHotspotsClearTabBarOnCompactAndCurrentPhoneSizes() {
+        for scene in [ActivitySceneID.bookstall, .flowerstall] {
+            for size in [CGSize(width: 375, height: 667), CGSize(width: 402, height: 874)] {
+                let scale = max(size.width / 852, size.height / 1847)
+                let canvas = CGSize(width: 852 * scale, height: 1847 * scale)
+                let origin = ActivitySceneLayout.origin(viewport: size, canvas: canvas)
+                XCTAssertLessThanOrEqual(origin.y, 0)
+                XCTAssertGreaterThanOrEqual(origin.y + canvas.height, size.height)
+                for action in scene.actions {
+                    let bounds = action.anchor.bounds
+                    XCTAssertLessThan(bounds.maxY * scale + origin.y, size.height - 108,
+                                      "\(action.id) must clear the bottom navigation")
+                    XCTAssertGreaterThan(bounds.minY * scale + origin.y, 220)
+                }
+            }
+        }
+    }
+
     @MainActor
     func testGlowingLabelInkSharesPlainTextLayoutCentre() throws {
         let styled = ImageRenderer(content: ActivitySceneLabel(title: "城市漫步")

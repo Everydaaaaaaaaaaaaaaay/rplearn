@@ -413,7 +413,7 @@ struct RootView: View {
             onBack: closeHomeDestination,
             navigationPath: $homePath,
             showsNavigationBar: activeHomeDestination != .activities || activeActivityChat != nil,
-            backLabel: activeActivityChat == nil ? "返回" : "返回咖啡馆"
+            backLabel: activeActivityChat == nil ? "返回" : "返回城市活动"
         ) {
             HomeView(
                 deps: homeDeps,

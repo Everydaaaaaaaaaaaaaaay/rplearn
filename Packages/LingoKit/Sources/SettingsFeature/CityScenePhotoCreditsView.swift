@@ -60,6 +60,16 @@ public struct CityScenePhotoCreditsView: View {
                 Link("Pixabay Content License",
                      destination: URL(string: "https://pixabay.com/service/license-summary/")!)
             }
+            Section("城市活动 · 街边旧书摊 / 街角花摊") {
+                Text("摊位前景均为一次性 AI 情景美术，背景为经过稳定、裁切、柔焦和接缝处理的真实素材。不是当前城市的实拍或实时影像，真实路人不作为 NPC 身份。")
+                    .font(.footnote).foregroundStyle(.secondary)
+                Link("旧书摊街景 · BreakDownPictures / Pixabay（素材 67850，锡比乌）",
+                     destination: URL(string: "https://pixabay.com/videos/building-houses-square-street-67850/")!)
+                Link("花摊街景 · Liemedia / Pixabay（素材 18027，旧金山）",
+                     destination: URL(string: "https://pixabay.com/videos/san-francisco-crowd-usa-city-18027/")!)
+                Link("Pixabay Content License",
+                     destination: URL(string: "https://pixabay.com/service/license-summary/")!)
+            }
             citySections
             licenseSection
         }

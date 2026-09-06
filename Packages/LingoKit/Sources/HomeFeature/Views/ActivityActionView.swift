@@ -43,7 +43,7 @@ struct ActivityActionView: View {
                         }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
                         Text(activity.title).font(.headline)
                         Spacer()
-                        Text(model.summary ? "这一刻之后" : model.started ? "轻轻聊两句" : "街角咖啡馆")
+                        Text(model.summary ? "这一刻之后" : model.started ? "轻轻聊两句" : activity.scene.title)
                             .font(.subheadline)
                     }
                     .foregroundStyle(Color.dsHologramIvory)
@@ -205,7 +205,7 @@ struct ActivityActionView: View {
                 Text(message).font(.caption).accessibilityIdentifier("activities.encounter.contactStatus")
             }
             if let saveError { Text(saveError).font(.caption).foregroundStyle(.red) }
-            primary(saved ? "回到咖啡馆" : "记下这次相遇，回到场景", id: "activities.action.finish") {
+            primary(saved ? "回到场景" : "记下这次相遇，回到场景", id: "activities.action.finish") {
                 do {
                     if !saved {
                         try onComplete(model.selections, model.runID, model.character, model.responses)

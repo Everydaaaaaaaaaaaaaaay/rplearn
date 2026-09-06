@@ -1,12 +1,34 @@
 import Foundation
 
 public enum ActivitySceneID: String, CaseIterable, Identifiable, Sendable {
-    case cafe
+    case cafe, bookstall, flowerstall
     public var id: String { rawValue }
-    public var title: String { "街角咖啡馆" }
-    var subtitle: String { "借一个座位，让一句问候有机会发生。" }
-    var actions: [SceneActivity] { SceneActivity.catalog }
-    var poster: String { "activity-cafe-interior" }
+    public var title: String {
+        switch self {
+        case .cafe: "街角咖啡馆"
+        case .bookstall: "街边旧书摊"
+        case .flowerstall: "街角花摊"
+        }
+    }
+    var subtitle: String {
+        switch self {
+        case .cafe: "借一个座位，让一句问候有机会发生。"
+        case .bookstall: "翻到同一页，也可能遇见不同的生活。"
+        case .flowerstall: "停在一束花旁，交换一点日常。"
+        }
+    }
+    var actions: [SceneActivity] { SceneActivity.catalog.filter { $0.scene == self } }
+    var poster: String { "activity-\(rawValue)-\(self == .cafe ? "interior" : "foreground")" }
+    var encounterContext: String {
+        switch self {
+        case .cafe:
+            "An ordinary shared-table cafe. A pause between everyday errands; no assumption of occupation, coffee or book interests."
+        case .bookstall:
+            "An ordinary outdoor second-hand book stall on a pedestrian street. People may be buying a gift, waiting, browsing or passing. Do not assume literary interests or that they are staff."
+        case .flowerstall:
+            "An ordinary street flower stall. People may be running errands, buying flowers for themselves or others, accompanying someone or just stopping. Do not assume gardening knowledge, gender, a romantic occasion or that they are staff."
+        }
+    }
 }
 
 /// Authored social intentions, not a fixed personality or an anonymous quiz.
@@ -34,13 +56,20 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
         switch id {
         case "cafe-seat": .cafeCup
         case "cafe-neighbourhood": .cafeMenu
+        case "bookstall-cover": .bookstallBook
+        case "bookstall-recommend": .bookstallRecommendations
+        case "bookstall-travel": .bookstallOpenBook
+        case "flowerstall-colour": .flowerstallBucket
+        case "flowerstall-bouquet": .flowerstallBouquet
+        case "flowerstall-queue": .flowerstallTable
         default: .cafeBook
         }
     }
 
-    // Share one stable library pool, never run IDs or generated free text.
+    // Historical ID intentionally retained across ALL scenes to preserve the
+    // existing public pool. A place is an encounter context, not a demographic silo.
     static let encounterPoolID = "social-cafe-v1"
-    private static let farewell = Step(
+    static let farewell = Step(
         context: "短短的交流之后，你可以试着留下联系，也可以让这次问候停在这里。",
         question: "接下来，你想怎样回应？",
         choices: [
@@ -49,7 +78,8 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
             .init(english: "It was nice talking to you. Enjoy your day!", chinese: "很高兴和你聊了聊，祝你今天愉快！",
                   response: "nice talking to you 是自然的告别，不需要勉强继续话题。")])
 
-    static let catalog: [Self] = [
+    static let catalog: [Self] = cafeCatalog + bookstallCatalog + flowerstallCatalog
+    private static let cafeCatalog: [Self] = [
         .init(id: "cafe-seat", scene: .cafe, title: "共用一桌", symbol: "cup.and.saucer",
               introduction: "共用桌旁留着一把空椅子。先问一句，再看看对方是否有聊天的兴致。",
               steps: [

@@ -7,8 +7,9 @@ import UIKit
 /// Immutable photo coordinates shared by foreground, video and object hotspots.
 struct ActivitySceneView: View {
     private static let photos: [String: UIImage] = Dictionary(uniqueKeysWithValues:
-        ActivitySceneID.allCases.flatMap { [$0.poster, "activity-cafe-window"] }.compactMap { name in
-            asset(name, "jpg").flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
+        Set(ActivitySceneID.allCases.flatMap { [$0.poster, $0.media.plate] }).sorted().compactMap { name in
+            (asset(name, "png") ?? asset(name, "jpg"))
+                .flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
         })
     let isVisible: Bool
     let showsInterface: Bool
@@ -53,41 +54,48 @@ struct ActivitySceneView: View {
             let scale = max(proxy.size.width / 852, proxy.size.height / 1847)
             let width = 852 * scale
             let height = 1847 * scale
+            let origin = ActivitySceneLayout.origin(viewport: proxy.size, canvas: CGSize(width: width, height: height))
+            let media = scene.media
+            let renderingScene = scene
             ZStack(alignment: .topLeading) {
                 Color(red: 0.14, green: 0.13, blue: 0.09)
                 ZStack(alignment: .topLeading) {
-                    if let photo = Self.photos[scene.poster] {
+                    if !media.alphaForeground, let photo = Self.photos[scene.poster] {
                         Image(uiImage: photo).resizable().frame(width: width, height: height)
                     }
-                    // One physical window. Both static fallback and video use the
-                    // identical homography; the menu remains in front of the glass.
+                    // Static and moving plates share exactly the same projection.
+                    // Outdoor stalls use their generated alpha, not a fake window.
                     ZStack {
-                        if let plate = Self.photos["activity-cafe-window"] {
+                        if let plate = Self.photos[media.plate] {
                             Image(uiImage: plate).resizable()
                         }
-                        CafeMotionLayer(playing: usesMotion && isVisible && scenePhase == .active,
-                            onFailure: { playbackFailed = true },
-                            onPlayback: { videoPlaying = $0 },
-                            onLoop: { completedLoops = $0 },
-                            onProgress: { playbackSeconds = $0 })
+                        CafeMotionLayer(assetName: media.video,
+                            playing: usesMotion && isVisible && scenePhase == .active,
+                            onFailure: { if scene == renderingScene { playbackFailed = true } },
+                            onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
+                            onLoop: { if scene == renderingScene { completedLoops = $0 } },
+                            onProgress: { if scene == renderingScene { playbackSeconds = $0 } })
                             .opacity(usesMotion ? 1 : 0)
                     }
-                    .frame(width: 650 * scale, height: 520 * scale)
-                    .modifier(ActivityPlaneProjection(quad: HomePerspectiveQuad(
-                        topLeft: .zero, topRight: CGPoint(x: 653 * scale, y: 0),
-                        bottomRight: CGPoint(x: 627 * scale, y: 522 * scale),
-                        bottomLeft: CGPoint(x: 13 * scale, y: 518 * scale))))
-                    .offset(x: 95 * scale, y: 295 * scale)
+                    .frame(width: media.size.width * scale, height: media.size.height * scale)
+                    .modifier(ActivityPlaneProjection(quad: media.localWindow(scale: scale)))
+                    .offset(x: media.origin.x * scale, y: media.origin.y * scale)
                     .allowsHitTesting(false).accessibilityHidden(true)
                     if let photo = Self.photos[scene.poster] {
                         Image(uiImage: photo).resizable().frame(width: width, height: height)
                             .mask {
                                 Path { path in
-                                    path.move(to: CGPoint(x: 119 * scale, y: 795 * scale))
-                                    path.addLine(to: CGPoint(x: 355 * scale, y: 793 * scale))
-                                    path.addLine(to: CGPoint(x: 379 * scale, y: 1111 * scale))
-                                    path.addLine(to: CGPoint(x: 139 * scale, y: 1157 * scale))
-                                    path.closeSubpath()
+                                    if media.alphaForeground {
+                                        path.addRect(CGRect(x: 0, y: 0, width: width, height: height))
+                                    }
+                                    for polygon in media.occluders {
+                                        guard let first = polygon.first else { continue }
+                                        path.move(to: CGPoint(x: first.x * scale, y: first.y * scale))
+                                        for point in polygon.dropFirst() {
+                                            path.addLine(to: CGPoint(x: point.x * scale, y: point.y * scale))
+                                        }
+                                        path.closeSubpath()
+                                    }
                                 }
                             }.allowsHitTesting(false)
                     }
@@ -98,7 +106,7 @@ struct ActivitySceneView: View {
                 .id(scene)
                 .transition(.opacity)
                 .frame(width: width, height: height, alignment: .topLeading)
-                .offset(x: (proxy.size.width - width) / 2, y: (proxy.size.height - height) / 2)
+                .offset(x: origin.x, y: origin.y)
                 LinearGradient(colors: [.black.opacity(0.48), .black.opacity(0.24), .clear],
                                startPoint: .top, endPoint: .bottom)
                     .frame(height: max(proxy.safeAreaInsets.top, 54) + 220)

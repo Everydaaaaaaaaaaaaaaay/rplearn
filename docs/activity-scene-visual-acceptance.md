@@ -128,13 +128,15 @@
 - 第一轮书店：桌面与地面混淆、巨书比例错误、不明空白卡片、包裹似落地；拒收。
 - 第一轮市集：迁就高机位素材导致悬空档口、缺顾客站立区域，桌面小 A 字牌用途/比例失当；拒收。
 - 第二轮书店：窗台/街道/墙体关系让窗像异常高门槛的门；卡片及实心承托板用途不明；拒收。
-  当前源图 `Assets/Activities/Bookshop/interior-source.png`，SHA256：
+  当时源图 `Assets/Activities/Bookshop/interior-source.png`，SHA256：
   `deecb665710a4426d86f67c19ed8214d4066d71d2b04ecfc815b57dd08e1de3b`。
 - 第二轮面包房：侧门、后室和临街窗的空间无法清楚解释；玻璃柜取放及反射存疑；拒收。
-  当前源图 `Assets/Activities/Bakery/interior-source.png`，SHA256：
+  当时源图 `Assets/Activities/Bakery/interior-source.png`，SHA256：
   `3b8f598c91934d49a36f194628471d3b4b07359f8f53dc41aca95dee46539243`。
-- 当前书店 `foreground-prompt.md` 仍描述第一轮稿，与第二轮源图不对应，这是来源记录缺陷；
-  不得用它解释当前图。后续版本必须保存准确提示词及版本绑定。
-- 上述稿件及对应运行资源仍是未完成草案，不得作为第二、第三场景的完成成果提交或安装。
-  本规范不追认任何新母版通过；面包房替代市集也未获用户对成图的认可。
-- 下一次制作先完成 G0/G1 简化空间方案；本次仅加强工作流，不生成或安装新图。
+- 当时书店 `foreground-prompt.md` 描述第一轮稿，与第二轮源图不对应，这是来源记录缺陷；
+  不得用它解释第二轮图。后续版本必须保存准确提示词及版本绑定。
+- 上述稿件及运行资源已移出工作目录，拒收状态不变。本机可恢复副本位于
+  `/tmp/lingotrip-scenes.kiEyLS/rejected/v2/`，原始生成历史也仍保留；不是最终资源。
+- 用户允许改选场景后，转为普通街边旧书摊和花摊，避开房间/窗户/玻璃柜。
+  新版状态见 [独立验收记录](../Assets/Activities/StreetStalls/acceptance-v1.md)；
+  本规范不追认任何母版通过，也不能将自检写成用户已认可。

@@ -4,6 +4,7 @@ import SwiftUI
 /// A continuously decoded, seam-finished street take. Never hold a still frame
 /// to simulate a quiet street: even between passers, the distant world moves.
 struct CafeMotionLayer: UIViewRepresentable {
+    let assetName: String
     let playing: Bool
     let onFailure: () -> Void
     let onPlayback: (Bool) -> Void
@@ -27,7 +28,7 @@ struct CafeMotionLayer: UIViewRepresentable {
         init(_ owner: CafeMotionLayer) { self.owner = owner }
 
         func prepare() {
-            guard let url = ActivitySceneView.asset("activity-cafe-street-loop", "mp4") else {
+            guard let url = ActivitySceneView.asset(owner.assetName, "mp4") else {
                 fail(); return
             }
             player.isMuted = true

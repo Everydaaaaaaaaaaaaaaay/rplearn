@@ -14,6 +14,8 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertTrue(app.buttons["activities.tab.cafe"].waitForExistence(timeout: 15))
         XCTAssertFalse(app.buttons["activities.tab.park"].exists)
         XCTAssertFalse(app.buttons["activities.tab.pond"].exists)
+        XCTAssertTrue(app.buttons["activities.tab.bookstall"].exists)
+        XCTAssertTrue(app.buttons["activities.tab.flowerstall"].exists)
         return app
     }
     private func attach(_ name: String, app: XCUIApplication) {
@@ -48,10 +50,10 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.encounter.addFriend", app: app)
         XCTAssertTrue(app.staticTexts["activities.encounter.contactStatus"].waitForExistence(timeout: 5))
         tap("activities.encounter.chat", app: app)
-        XCTAssertTrue(app.buttons["返回咖啡馆"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["返回城市活动"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "加载会话失败")).firstMatch.exists)
         attach("cafe-existing-chat", app: app)
-        app.buttons["返回咖啡馆"].tap()
+        app.buttons["返回城市活动"].tap()
         tap("activities.action.finish", app: app)
         tap("activities.journal", app: app)
         XCTAssertTrue(app.navigationBars["相遇与足迹"].waitForExistence(timeout: 4))
@@ -80,6 +82,83 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.action.finish", app: app)
         edgeBack(app)
         XCTAssertTrue(app.buttons["城市活动"].waitForExistence(timeout: 4))
+    }
+
+    func testBookstallAndFlowerstallSocialActionsReturnToTheirOwnScene() {
+        let app = launch()
+        defer { app.terminate() }
+        for (scene, actions) in [
+            ("bookstall", ["bookstall-cover", "bookstall-recommend", "bookstall-travel"]),
+            ("flowerstall", ["flowerstall-colour", "flowerstall-bouquet", "flowerstall-queue"])
+        ] {
+            tap("activities.tab.\(scene)", app: app)
+            attach("\(scene)-scene", app: app)
+            for action in actions {
+                tap("activities.scene.\(action)", app: app)
+                attach("\(action)-introduction", app: app)
+                tap("activities.action.start", app: app)
+                tap("activities.choice.0", app: app)
+                tap("activities.action.next", app: app)
+                // Both consent and respectful goodbye stay available in every scene.
+                let invitesContact = action == actions[0]
+                tap("activities.choice.\(invitesContact ? 0 : 1)", app: app)
+                tap("activities.action.next", app: app)
+                if invitesContact {
+                    tap("activities.encounter.addFriend", app: app)
+                    tap("activities.encounter.chat", app: app)
+                    XCTAssertTrue(app.buttons["返回城市活动"].waitForExistence(timeout: 5))
+                    app.buttons["返回城市活动"].tap()
+                } else {
+                    XCTAssertFalse(app.buttons["activities.encounter.addFriend"].exists)
+                }
+                attach("\(action)-summary", app: app)
+                tap("activities.action.finish", app: app)
+                XCTAssertTrue(app.buttons["activities.scene.\(action)"].waitForExistence(timeout: 5))
+            }
+            tap("activities.journal", app: app)
+            XCTAssertTrue(app.navigationBars["相遇与足迹"].waitForExistence(timeout: 4))
+            app.buttons["完成"].tap()
+            XCTAssertTrue(app.buttons["activities.scene.\(actions[0])"].waitForExistence(timeout: 5))
+        }
+        // Strip swiping and left-edge navigation are separate gestures.
+        app.scrollViews["activities.sceneStrip"].swipeRight()
+        XCTAssertTrue(app.buttons["activities.scene.bookstall-cover"].waitForExistence(timeout: 5))
+        edgeBack(app)
+        XCTAssertTrue(app.buttons["城市活动"].waitForExistence(timeout: 4))
+    }
+
+    func testNewScenesContinueAcrossTwoRealLoopsAndStaticToggle() {
+        let app = launch()
+        defer { app.terminate() }
+        let status = app.staticTexts["activities.playbackStatus"]
+        func waitFor(_ text: String, timeout: TimeInterval) {
+            let expectation = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                (status.value as? String ?? "").contains(text)
+            }, object: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, text)
+        }
+        for (scene, action) in [("bookstall", "bookstall-cover"), ("flowerstall", "flowerstall-colour")] {
+            tap("activities.tab.\(scene)", app: app)
+            waitFor("播放中", timeout: 10)
+            tap("activities.scene.\(action)", app: app)
+            waitFor("循环1", timeout: 70)
+            attach("\(scene)-conversation-motion", app: app)
+            edgeBack(app)
+            waitFor("循环2", timeout: 70)
+            waitFor("秒3", timeout: 6)
+            attach("\(scene)-second-seam", app: app)
+            tap("activities.motion", app: app)
+            XCTAssertEqual(app.buttons["activities.motion"].value as? String, "静态")
+            attach("\(scene)-static-fallback", app: app)
+            tap("activities.motion", app: app)
+            waitFor("播放中", timeout: 5)
+            XCUIDevice.shared.press(.home)
+            app.activate()
+            waitFor("播放中", timeout: 5)
+        }
+        tap("activities.tab.cafe", app: app)
+        waitFor("播放中", timeout: 10)
+        XCTAssertTrue(app.buttons["activities.scene.cafe-seat"].exists)
     }
 
     func testContinuousAmbientMotionDuringConversationAndAcrossTwoRealLoops() {

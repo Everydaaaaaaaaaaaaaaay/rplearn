@@ -220,7 +220,7 @@ final class SocialEncounterModel: ObservableObject {
                 let generated = try await EncounterService(llm: deps.llm).generateEncounter(
                     origin: generationOrigin, region: region, userLevel: profile.difficultyLevel,
                     existingNames: Set(all.map { $0.card.name }),
-                    activityContext: "An ordinary shared-table cafe. A pause between everyday errands; no assumption of occupation, coffee or book interests.")
+                    activityContext: activity.scene.encounterContext)
                 try Task.checkCancellation()
                 // Local template fallback must not masquerade as a newly generated identity.
                 guard !generated.isFallback else { throw SocialDialogueService.DialogueError.invalidReply }
@@ -243,7 +243,7 @@ final class SocialEncounterModel: ObservableObject {
         .init(regionID: region.id, activityID: SceneActivity.encounterPoolID, category: "social")
     }
     private var sceneContext: String {
-        "城市：\(region.nameZh)。街角咖啡馆 · \(activity.title)。\(activity.steps[0].context)"
+        "城市：\(region.nameZh)。\(activity.scene.title) · \(activity.title)。\(activity.steps[0].context)"
     }
     private func performSelection() async throws {
         guard let selected, let character else { return }

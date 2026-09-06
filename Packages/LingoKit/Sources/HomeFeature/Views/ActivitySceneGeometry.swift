@@ -1,13 +1,45 @@
 import SwiftUI
 
+enum ActivitySceneLayout {
+    /// Crop the whole photograph, never move a hotspot independently of its object.
+    /// Short phones need the foreground higher to clear the overlaid tab bar.
+    static func origin(viewport: CGSize, canvas: CGSize) -> CGPoint {
+        let ratio = viewport.height / max(viewport.width, 1)
+        let compact = min(max((2.1 - ratio) / 0.25, 0), 1)
+        return CGPoint(x: (viewport.width - canvas.width) / 2,
+                       y: (viewport.height - canvas.height) * (0.5 + 0.5 * compact))
+    }
+}
+
 /// Usable object surfaces in the original 852 × 1847 photograph, not screen pixels.
 /// Map folds are not one perfect plane; use the central readable patch. The cup
 /// uses its front-facing area, not the horizontal tabletop plane.
 enum ActivitySceneAnchor: CaseIterable {
     case map, cup, journal, binoculars, sketchbook, postcard, cafeMenu, cafeCup, cafeBook
+    case bookstallBook, bookstallRecommendations, bookstallOpenBook, flowerstallBucket, flowerstallBouquet, flowerstallTable
 
     var quad: HomePerspectiveQuad {
         switch self {
+        case .bookstallBook:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 149, y: 1085), topRight: CGPoint(x: 312, y: 1126),
+                                bottomRight: CGPoint(x: 214, y: 1235), bottomLeft: CGPoint(x: 54, y: 1193))
+        case .bookstallRecommendations:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 635, y: 984), topRight: CGPoint(x: 787, y: 1035),
+                                bottomRight: CGPoint(x: 673, y: 1095), bottomLeft: CGPoint(x: 523, y: 1042))
+        case .bookstallOpenBook:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 232, y: 1425), topRight: CGPoint(x: 418, y: 1405),
+                                bottomRight: CGPoint(x: 413, y: 1575), bottomLeft: CGPoint(x: 199, y: 1573))
+        case .flowerstallBucket:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 65, y: 1170), topRight: CGPoint(x: 280, y: 1180),
+                                bottomRight: CGPoint(x: 269, y: 1325), bottomLeft: CGPoint(x: 79, y: 1315))
+        case .flowerstallBouquet:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 541, y: 1270), topRight: CGPoint(x: 723, y: 1350),
+                                bottomRight: CGPoint(x: 604, y: 1480), bottomLeft: CGPoint(x: 473, y: 1405))
+        case .flowerstallTable:
+            // Clear worktop between the bucket and wrapping station: never
+            // project one flat label across raised scissors and twine.
+            HomePerspectiveQuad(topLeft: CGPoint(x: 331, y: 1290), topRight: CGPoint(x: 491, y: 1290),
+                                bottomRight: CGPoint(x: 499, y: 1380), bottomLeft: CGPoint(x: 319, y: 1380))
         case .cafeMenu:
             HomePerspectiveQuad(topLeft: CGPoint(x: 155, y: 905), topRight: CGPoint(x: 341, y: 898),
                                 bottomRight: CGPoint(x: 351, y: 1040), bottomLeft: CGPoint(x: 162, y: 1051))
