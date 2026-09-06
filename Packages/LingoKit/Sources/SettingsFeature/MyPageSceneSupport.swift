@@ -628,35 +628,7 @@ struct AccountPersonGlyph: Shape {
 ///
 /// 入口本身悬浮在摄影物件上，按下时应像被手指压回承载面：缩小、下沉并稍微收敛亮度；
 /// 松手后由短促弹簧回到原位。静止状态不改变现有图标、文字或透视。
-struct MyPageSceneEntranceButtonStyle: ButtonStyle {
-    let keepsPressedAppearance: Bool
-
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
-    func makeBody(configuration: Configuration) -> some View {
-        let isVisuallyPressed = configuration.isPressed || keepsPressedAppearance
-
-        configuration.label
-            .scaleEffect(reduceMotion || !isVisuallyPressed ? 1 : DSSceneEntranceMotion.pressedScale)
-            .offset(y: reduceMotion || !isVisuallyPressed ? 0 : DSSceneEntranceMotion.pressedOffset)
-            .brightness(isVisuallyPressed ? DSSceneEntranceMotion.pressedBrightness : 0)
-            .opacity(isVisuallyPressed ? DSSceneEntranceMotion.pressedOpacity : 1)
-            .animation(
-                reduceMotion
-                    ? .easeOut(duration: 0.08)
-                    : isVisuallyPressed
-                        ? .spring(
-                            response: DSSceneEntranceMotion.pressResponse,
-                            dampingFraction: DSSceneEntranceMotion.pressDampingFraction
-                        )
-                        : .spring(
-                            duration: DSSceneEntranceMotion.releaseDuration,
-                            bounce: DSSceneEntranceMotion.releaseBounce
-                        ),
-                value: isVisuallyPressed
-            )
-    }
-}
+typealias MyPageSceneEntranceButtonStyle = DSSceneEntranceButtonStyle
 
 enum MyPageSceneHotspot: Hashable {
     case profile

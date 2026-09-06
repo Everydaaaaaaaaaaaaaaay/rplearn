@@ -42,6 +42,7 @@ struct RootView: View {
     @State private var showSignIn = false
     @State private var loginReason: String?
     @State private var showLondonEpisode = false
+    @State private var showActivityScene = false
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
@@ -119,6 +120,10 @@ struct RootView: View {
 
     var body: some View {
         appContent
+            .fullScreenCover(isPresented: $showActivityScene) {
+                ActivityScenePrototypeContainer(deps: homeDeps,
+                    chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) })
+            }
             .fullScreenCover(isPresented: $showLondonEpisode) {
                 LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest")
             }
@@ -455,7 +460,8 @@ struct RootView: View {
         case .activities:
             ActivitiesView(
                 deps: homeDeps,
-                chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) }
+                chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
+                onPreviewScene: { showActivityScene = true }
             )
         case .map:
             MapView(

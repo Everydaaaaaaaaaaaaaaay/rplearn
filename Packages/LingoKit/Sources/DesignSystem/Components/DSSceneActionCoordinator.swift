@@ -12,6 +12,33 @@ public enum DSSceneEntranceMotion {
     public static let releaseBounce = 0.16
 }
 
+/// The same touch-down and held-tap appearance used by the photographic profile page.
+public struct DSSceneEntranceButtonStyle: ButtonStyle {
+    public let keepsPressedAppearance: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    public init(keepsPressedAppearance: Bool = false) {
+        self.keepsPressedAppearance = keepsPressedAppearance
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
+        let pressed = configuration.isPressed || keepsPressedAppearance
+        configuration.label
+            .scaleEffect(reduceMotion || !pressed ? 1 : DSSceneEntranceMotion.pressedScale)
+            .offset(y: reduceMotion || !pressed ? 0 : DSSceneEntranceMotion.pressedOffset)
+            .brightness(pressed ? DSSceneEntranceMotion.pressedBrightness : 0)
+            .opacity(pressed ? DSSceneEntranceMotion.pressedOpacity : 1)
+            .animation(
+                reduceMotion ? .easeOut(duration: 0.08)
+                    : pressed ? .spring(response: DSSceneEntranceMotion.pressResponse,
+                                        dampingFraction: DSSceneEntranceMotion.pressDampingFraction)
+                    : .spring(duration: DSSceneEntranceMotion.releaseDuration,
+                              bounce: DSSceneEntranceMotion.releaseBounce),
+                value: pressed
+            )
+    }
+}
+
 /// 摄影场景入口共享的“按下—保持—回弹—提交”时序。
 ///
 /// 首页与“我的”页共同读取这一份状态机，避免轻点反馈、回弹完成时刻和页面提交时刻漂移。
