@@ -50,6 +50,10 @@ HTTP Handler 只调用模块服务；数据库写入、幂等回执和同步事�
 局部修改先用 `pnpm exec vitest run test/<相关文件>`；类型/契约变化加 `pnpm typecheck`。
 `pnpm check` 是 CI/较大改动的完整本地检查，不是每次编辑的前置条件，也无需与各子命令重复执行。
 集成与 E2E 只在对应功能需要时使用隔离测试服务；[开发速查](../docs/development.md)列出选择依据。
+可运行 `python3 ../Scripts/verify-backend-workflows.py` 自动创建、停止独立的本地 PostgreSQL/Redis，
+保留 JSON 结果和失败现场。该入口默认不运行需要独立 S3 的媒体用例和 NPC 素材库基准。
+直接使用下面的集成命令时，必须显式提供本地 `DATABASE_URL` 和 `REDIS_URL`，数据库名称以
+`lingotrip_test_` 开头；测试不再回退到日常开发数据库。媒体用例还需单独的本地 MinIO。
 
 ```bash
 pnpm check

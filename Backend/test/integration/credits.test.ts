@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { loadConfig } from "../../src/config/env.js";
+import { integrationConfig as loadConfig } from "../helpers/integration.js";
 import { runMigrations } from "../../src/db/migrate.js";
 import {
   createRuntimeDependencies,
