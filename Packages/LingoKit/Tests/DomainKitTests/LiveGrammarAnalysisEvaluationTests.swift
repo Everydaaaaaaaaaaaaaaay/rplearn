@@ -5,7 +5,7 @@ import LLMKit
 import Testing
 
 /// 显式设置 RUN_LIVE_GRAMMAR_EVAL=1 时才访问生产 AI 网关。
-@Suite("真实 AI 语法解析评测")
+@Suite("真实 AI 语法解析评测", .enabled(if: ProcessInfo.processInfo.environment["RUN_LIVE_GRAMMAR_EVAL"] == "1"))
 struct LiveGrammarAnalysisEvaluationTests {
     private final class EmptyCredentials: AuthCredentialStore, @unchecked Sendable {
         func load() throws -> StoredAuthCredential? { nil }
@@ -15,10 +15,6 @@ struct LiveGrammarAnalysisEvaluationTests {
 
     @Test("线上失败样句可以返回结构化语法点")
     func analyzesReportedSentence() async throws {
-        guard ProcessInfo.processInfo.environment["RUN_LIVE_GRAMMAR_EVAL"] == "1" else {
-            return
-        }
-
         let llm = BackendLLMProvider(
             backend: BackendClient(
                 configuration: .live,

@@ -5,11 +5,13 @@ on:
     paths:
       - ".github/workflows/backend.yml"
       - "Backend/**"
+      - "!Backend/**/*.md"
   push:
     branches: [main]
     paths:
       - ".github/workflows/backend.yml"
       - "Backend/**"
+      - "!Backend/**/*.md"
 
 permissions:
   contents: read

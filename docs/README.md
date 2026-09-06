@@ -6,6 +6,7 @@
 ## 日常开发
 
 - [`../README.md`](../README.md)：启动方式、仓库地图和最少开发约定。
+- [`development.md`](development.md)：按任务查找入口与选择最小验证；无需逐项执行。
 - [`architecture.md`](architecture.md)：客户端与后端的边界、数据流和改动入口。
 - [`algorithm-complexity-audit.md`](algorithm-complexity-audit.md)：App 与各模块的算法复杂度、热点和优化门槛。
 
@@ -18,7 +19,7 @@
 - [`design-system.md`](design-system.md)：视觉方向与 DesignSystem 边界。
 - [`realtime-voice.md`](realtime-voice.md)：端侧实时语音、低成本模型、生命周期与真机验收门槛。
 - [`relationship-system.md`](relationship-system.md)：多维角色关系、好感度计算、时间衰减与校准边界。
-- [`relationship-calibration-log.md`](relationship-calibration-log.md)：关系算法的测试—反思—优化记录与下一轮成熟度门槛。
+- [`relationship-calibration-log.md`](relationship-calibration-log.md)：关系算法的历史实验、失败案例与验证证据。
 - [`../Backend/README.md`](../Backend/README.md)：后端本地开发。
 
 ## 按需部署

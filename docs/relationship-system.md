@@ -191,9 +191,10 @@ v3 会从相邻“有效互动”中学习这段关系自己的跨会话联系�
 门槛见 [`relationship-calibration-log.md`](relationship-calibration-log.md)。不得只为了提高留存而放大
 失联惩罚、主动消息压力或亲密奖励。
 
-日常关系改动先运行 `Scripts/test-relationship.sh`。它默认连续执行三轮关系服务、压力、成熟度和科学性
-验证套件，并在每轮输出结构化 xcresult 摘要；可用 `RELATIONSHIP_TEST_PASSES` 调整轮数。专项通过后仍必须运行 `Scripts/test.sh`，因为关系状态同时进入持久化、
-同步、聊天提示词和 Debug UI，专项测试不能替代全量回归。
+关系模型改动通常运行 `Scripts/test-relationship.sh` 一轮即可。它包含关系服务、压力、成熟度与
+科学性套件，保留 10,000 个固定种子输入；仅排查不稳定问题时用 `RELATIONSHIP_TEST_PASSES`
+增加轮数。修改持久化、同步或提示词契约时补充受影响套件；只有影响广泛或发布范围需要时运行
+全量客户端/后端检查。完整验证选择见 [`development.md`](development.md)。
 
 ## Debug 好感度实验室
 

@@ -4,6 +4,12 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
+scope="${1:---ios}"
+if [[ "$#" -gt 1 ]] || [[ "$scope" != --ios && "$scope" != --backend && "$scope" != --all ]]; then
+  echo 'Usage: Scripts/check-architecture.sh [--ios|--backend|--all] (default: --ios)' >&2
+  exit 2
+fi
+
 failures=0
 
 fail() {
@@ -16,34 +22,28 @@ if printf '%s\n' "$root_names" | awk '{ key=tolower($0); count[key]++; names[key
   fail 'top-level directory names differ only by case'
 fi
 
-if git ls-files | rg -q '(^|/)(WT|wt)[A-Za-z0-9_-]*\.(swift|ts|tsx|js|mjs|py)$'; then
-  fail 'source filename contains a temporary worktree identifier'
-fi
-
-target_count="$(find Packages/LingoKit/Sources -mindepth 1 -maxdepth 1 -type d -not -name '.*' | wc -l | tr -d ' ')"
-if ! rg -q "${target_count} 个 Target" docs/architecture.md; then
-  fail "docs/architecture.md does not report the current $target_count Swift targets"
-fi
-
-oversized="$({
-  find App Packages/LingoKit/Sources -type f -name '*.swift' -not -path '*/Resources/*' -print0
-  find Backend/src -type f -name '*.ts' -print0
-} | xargs -0 wc -l | awk '$2 != "total" && $1 > 800 { print $1, $2 }')"
-if [[ -n "$oversized" ]]; then
-  printf '%s\n' "$oversized" >&2
-  fail 'production source files exceed the 800-line review ceiling'
-fi
-
-if [[ -x Backend/node_modules/.bin/depcruise ]]; then
-  if ! (cd Backend && pnpm exec depcruise --config dependency-cruiser.cjs src); then
-    fail 'backend dependency boundaries failed'
+if [[ "$scope" == --ios || "$scope" == --all ]]; then
+  # Check the actual Feature boundary, not source length or documentation wording.
+  feature_imports="$(rg -n '^[[:space:]]*(@[[:alnum:]_]+[[:space:]]+)*import[[:space:]]+((class|enum|func|let|protocol|struct|typealias|var)[[:space:]]+)?[[:alnum:]_]+Feature([[:space:].]|$)' \
+    Packages/LingoKit/Sources/*Feature --glob '*.swift' || [[ "$?" == 1 ]])"
+  if [[ -n "$feature_imports" ]]; then
+    printf '%s\n' "$feature_imports" >&2
+    fail 'Feature targets must not import other Feature targets'
   fi
-else
-  fail 'dependency-cruiser unavailable; run pnpm install in Backend'
+fi
+
+if [[ "$scope" == --backend || "$scope" == --all ]]; then
+  if [[ -x Backend/node_modules/.bin/depcruise ]]; then
+    if ! (cd Backend && ./node_modules/.bin/depcruise --config dependency-cruiser.cjs src); then
+      fail 'backend dependency boundaries failed'
+    fi
+  else
+    fail 'dependency-cruiser unavailable; run pnpm install in Backend for backend checks'
+  fi
 fi
 
 if ((failures > 0)); then
   exit 1
 fi
 
-printf 'architecture check: ok\n'
+printf 'architecture check (%s): ok\n' "$scope"

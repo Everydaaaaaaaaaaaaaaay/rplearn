@@ -47,6 +47,10 @@ HTTP Handler 只调用模块服务；数据库写入、幂等回执和同步事�
 
 ## 常用命令
 
+局部修改先用 `pnpm exec vitest run test/<相关文件>`；类型/契约变化加 `pnpm typecheck`。
+`pnpm check` 是 CI/较大改动的完整本地检查，不是每次编辑的前置条件，也无需与各子命令重复执行。
+集成与 E2E 只在对应功能需要时使用隔离测试服务；[开发速查](../docs/development.md)列出选择依据。
+
 ```bash
 pnpm check
 pnpm architecture

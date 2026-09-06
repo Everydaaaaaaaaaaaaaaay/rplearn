@@ -11,7 +11,10 @@ private final class RoleplayE2ETestBundleMarker: NSObject {}
 /// A deliberately opt-in production-gateway evaluation. It exercises the same prompt, persistence,
 /// relationship, growth, memory, quiz, formatting, diversity, and streaming paths used by chat.
 /// Large transcripts are written outside the repository and are never run by ordinary CI.
-@Suite("真实角色扮演端到端评测", .serialized)
+@Suite("真实角色扮演端到端评测", .serialized, .enabled(if:
+    ProcessInfo.processInfo.environment["RUN_ROLEPLAY_E2E"] == "1" ||
+    Bundle(for: RoleplayE2ETestBundleMarker.self).object(forInfoDictionaryKey: "LingoTripRoleplayE2EEnabled") as? String == "1"
+))
 struct LiveRoleplayEndToEndEvaluationTests {
     private static let guestID = "codex-roleplay-e2e-20260904-v1"
 
@@ -217,10 +220,6 @@ struct LiveRoleplayEndToEndEvaluationTests {
     func runsFiftyTurnProductionConversation() async throws {
         let environment = ProcessInfo.processInfo.environment
         let testBundle = Bundle(for: RoleplayE2ETestBundleMarker.self)
-        let configuredEnabled = testBundle.object(
-            forInfoDictionaryKey: "LingoTripRoleplayE2EEnabled"
-        ) as? String
-        guard environment["RUN_ROLEPLAY_E2E"] == "1" || configuredEnabled == "1" else { return }
         let configuredCycle = testBundle.object(
             forInfoDictionaryKey: "LingoTripRoleplayE2ECycle"
         ) as? String

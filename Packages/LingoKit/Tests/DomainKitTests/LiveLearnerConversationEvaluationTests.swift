@@ -6,7 +6,7 @@ import PersistenceKit
 import Testing
 
 /// 显式设置 RUN_LIVE_AI_EVAL=1 时才访问生产 AI 网关；默认测试不会产生请求或额度消耗。
-@Suite("真实 AI 分级对话评测")
+@Suite("真实 AI 分级对话评测", .enabled(if: ProcessInfo.processInfo.environment["RUN_LIVE_AI_EVAL"] == "1"))
 struct LiveLearnerConversationEvaluationTests {
     private final class EmptyCredentials: AuthCredentialStore, @unchecked Sendable {
         func load() throws -> StoredAuthCredential? { nil }
@@ -24,8 +24,6 @@ struct LiveLearnerConversationEvaluationTests {
 
     @Test("生产网关在四种水平与目标下保持角色、分级和话题有效性")
     func evaluatesProductionConversationProfiles() async throws {
-        guard ProcessInfo.processInfo.environment["RUN_LIVE_AI_EVAL"] == "1" else { return }
-
         let backend = BackendClient(
             configuration: .live,
             credentialStore: EmptyCredentials()

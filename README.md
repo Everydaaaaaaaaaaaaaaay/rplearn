@@ -13,23 +13,20 @@ LingoTrip 是一款原生 SwiftUI 英语学习 App。用户以世界旅行为线
 
 ```bash
 Scripts/bootstrap-worktree.sh
-Scripts/code-map.sh
-Scripts/check-architecture.sh
-Scripts/build.sh
-Scripts/test.sh
 Scripts/run.sh
 ```
 
-`code-map.sh` 可按 Swift Target 或 `backend:<module>` 输出紧凑代码地图；架构检查会验证文件
-规模、命名和后端依赖边界。构建脚本从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。
+`code-map.sh` 是按需符号查询工具。`Scripts/check-architecture.sh` 默认只检查 iOS 路径/Feature 边界；
+后端或两端检查分别传 `--backend`、`--all`。构建脚本从 `project.yml` 生成本地 `LingoTrip.xcodeproj`。
 不要提交生成的工程或 `build/`，
-也不要在 `Packages/LingoKit` 中直接运行 `swift build`。多工作树可以并行写代码，但所有
-Xcode 构建、测试、归档和模拟器安装会通过仓库级锁自动排队，避免争抢 CPU、内存、磁盘
-和同一台模拟器。每个工作树使用自己的 DerivedData，Swift Package 下载缓存则安全共享。
+也不要在 `Packages/LingoKit` 中直接运行 `swift build`。脚本用当前工作树的锁串行化其构建、
+测试和安装；该锁不协调其他工作树或 Xcode IDE。每个工作树使用自己的 DerivedData 和
+可配置的 Swift Package 缓存；同时测试时选择各自设备，避免争用同一模拟器。
 
 对话提示词、回复分条等纯逻辑改动优先运行 `Scripts/test-conversation.sh`；它不构建宿主 App
-和 SpeechKit，通常远快于完整测试。提交前再按改动风险运行 `Scripts/test.sh`，完成后用
-`Scripts/run.sh` 一次性构建、安装并启动模拟器。需要固定模拟器时设置
+和 SpeechKit，通常远快于完整测试。其他逻辑用 `Scripts/test.sh -only-testing:LingoTripTests/<Suite>`
+选相关套件；共享契约或发布范围需要时再扩大，专项后不强制全量。验证选择见 [开发速查](docs/development.md)。
+需要安装/启动模拟器时用 `Scripts/run.sh`。需要固定模拟器时设置
 `LINGOTRIP_SIMULATOR_UDID`。
 
 真机调试前复制 `Config/Signing.local.xcconfig.example` 为
