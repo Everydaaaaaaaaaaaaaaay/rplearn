@@ -10,6 +10,8 @@ import type {
 } from "../types.js";
 
 const usageSchema = z.object({
+  prompt_cache_hit_tokens: z.number().int().nonnegative().optional(),
+  prompt_cache_miss_tokens: z.number().int().nonnegative().optional(),
   completion_tokens: z.number().int().nonnegative(),
   prompt_tokens: z.number().int().nonnegative(),
   total_tokens: z.number().int().nonnegative(),
@@ -57,6 +59,12 @@ const modelListSchema = z.object({
 
 function mapUsage(usage: z.infer<typeof usageSchema>): AiUsage {
   return {
+    ...(usage.prompt_cache_hit_tokens === undefined
+      ? {}
+      : { cacheHitTokens: usage.prompt_cache_hit_tokens }),
+    ...(usage.prompt_cache_miss_tokens === undefined
+      ? {}
+      : { cacheMissTokens: usage.prompt_cache_miss_tokens }),
     inputTokens: usage.prompt_tokens,
     outputTokens: usage.completion_tokens,
     totalTokens: usage.total_tokens,
@@ -186,6 +194,7 @@ export function createDeepSeekClient(
   ): Promise<Response> => {
     let lastError: unknown;
     for (let attempt = 1; attempt <= config.aiRetryMaxAttempts; attempt += 1) {
+      await request.onAttempt?.();
       const timeoutSignal = AbortSignal.timeout(request.route.timeoutMs);
       const signal =
         request.signal === undefined

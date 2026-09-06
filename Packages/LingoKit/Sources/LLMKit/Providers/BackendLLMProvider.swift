@@ -48,6 +48,9 @@ public struct BackendLLMProvider: LLMProvider {
     }
 
     private struct RequestBody: Encodable, Sendable {
+        let parentOperationId: UUID?
+        let operationId: UUID
+        let voiceLeaseId: UUID?
         let maxOutputTokens: Int
         let messages: [Message]
         let responseFormat: String
@@ -285,6 +288,9 @@ public struct BackendLLMProvider: LLMProvider {
             }
         )
         return RequestBody(
+            parentOperationId: request.parentOperationID,
+            operationId: request.operationID,
+            voiceLeaseId: request.voiceLeaseID,
             maxOutputTokens: request.maxTokens,
             messages: messages,
             responseFormat: responseFormat,
@@ -294,6 +300,9 @@ public struct BackendLLMProvider: LLMProvider {
 
     private static func map(_ error: Error) -> Error {
         guard let backendError = error as? BackendClientError else { return error }
+        if ["USAGE_QUOTA_EXCEEDED", "VOICE_LEASE_EXPIRED", "LOGIN_REQUIRED", "GUEST_ALREADY_CLAIMED"].contains(backendError.code ?? "") {
+            return LLMError.accessRestricted(backendError.errorDescription ?? "当前额度已用完，请查看用量与权益。")
+        }
         switch backendError {
         case .api(_, _, _, let status):
             return LLMError.http(

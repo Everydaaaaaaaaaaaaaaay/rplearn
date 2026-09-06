@@ -12,7 +12,7 @@ install -d "${staging}/release"
 # A normal incremental build leaves emitted files for deleted sources behind in dist.
 # Compile into this release's empty directory so reverted modules cannot be shipped.
 pnpm exec tsc -p tsconfig.build.json --outDir "${staging}/release/dist"
-cp -R migrations "${staging}/release/"
+cp -R migrations config "${staging}/release/"
 install -m 0644 package.json pnpm-lock.yaml "${staging}/release/"
 printf '%s\n' "${version}" >"${staging}/release/RELEASE"
 

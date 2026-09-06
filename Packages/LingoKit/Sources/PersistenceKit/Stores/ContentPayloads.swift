@@ -110,7 +110,7 @@ struct ContentQuizRecordPayload: Codable {
     var schemaVersion = 1
 }
 
-struct LocalContentRecord: Sendable {
+struct LocalContentRecord: Codable, Sendable {
     let resourceType: ContentResourceKind
     let resourceID: String
     let parentID: String?

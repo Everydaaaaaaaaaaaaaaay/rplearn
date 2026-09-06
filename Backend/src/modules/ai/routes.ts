@@ -8,6 +8,9 @@ import type { AiService } from "./service.js";
 import type { AiProviderStreamEvent } from "./types.js";
 
 const aiRequestSchema = z.object({
+  operationId: z.uuid().optional(),
+  parentOperationId: z.uuid().optional(),
+  voiceLeaseId: z.uuid().optional(),
   maxOutputTokens: z.number().int().min(1).max(16_384).optional(),
   messages: z
     .array(
@@ -116,6 +119,11 @@ export function registerAiRoutes(
         ...(body.maxOutputTokens === undefined
           ? {}
           : { maxOutputTokens: body.maxOutputTokens }),
+        ...(body.operationId === undefined ? {} : { operationId: body.operationId }),
+        ...(body.voiceLeaseId === undefined ? {} : { voiceLeaseId: body.voiceLeaseId }),
+        ...(body.parentOperationId === undefined
+          ? {}
+          : { parentOperationId: body.parentOperationId }),
         messages: body.messages,
         responseFormat: body.responseFormat,
         task: body.task,
@@ -147,6 +155,11 @@ export function registerAiRoutes(
         ...(body.maxOutputTokens === undefined
           ? {}
           : { maxOutputTokens: body.maxOutputTokens }),
+        ...(body.operationId === undefined ? {} : { operationId: body.operationId }),
+        ...(body.voiceLeaseId === undefined ? {} : { voiceLeaseId: body.voiceLeaseId }),
+        ...(body.parentOperationId === undefined
+          ? {}
+          : { parentOperationId: body.parentOperationId }),
         messages: body.messages,
         responseFormat: body.responseFormat,
         signal: cancellation.signal,

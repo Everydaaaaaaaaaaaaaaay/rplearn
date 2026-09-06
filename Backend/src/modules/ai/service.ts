@@ -1,8 +1,9 @@
-import { createHmac } from "node:crypto";
+import { createHash, createHmac, randomUUID } from "node:crypto";
 import type { RuntimeConfig } from "../../config/env.js";
 import type { DatabaseResource } from "../../db/client.js";
 import type { RedisResource } from "../../infrastructure/redis/client.js";
 import { AppError } from "../../shared/errors.js";
+import { createAccessService } from "../access/service.js";
 import type { BillingService } from "../billing/service.js";
 import type { DeepSeekClient } from "./deepseek/client.js";
 import { validateRuntimeRoute } from "./config.js";
@@ -17,6 +18,9 @@ import type {
 } from "./types.js";
 
 export type AiRequestInput = Readonly<{
+  operationId?: string;
+  parentOperationId?: string;
+  voiceLeaseId?: string;
   maxOutputTokens?: number;
   messages: readonly AiMessage[];
   responseFormat: AiResponseFormat;
@@ -67,15 +71,6 @@ function errorIdentity(error: unknown): Readonly<{
   };
 }
 
-function dailyLimit(
-  features: Readonly<Record<string, boolean | number | string>>,
-): number {
-  const value = features.aiDailyRequests;
-  return typeof value === "number" && Number.isInteger(value)
-    ? Math.max(1, Math.min(10_000, value))
-    : 30;
-}
-
 function validateInput(
   input: AiRequestInput,
   route: Awaited<ReturnType<AiRepository["route"]>>,
@@ -120,10 +115,11 @@ export function createAiService(
   config: RuntimeConfig,
   database: DatabaseResource,
   redis: RedisResource,
-  billingService: BillingService,
+  _billingService: BillingService,
   deepSeek: DeepSeekClient,
 ): AiService {
   const repository = new AiRepository(database);
+  const access = createAccessService(database);
   const userReference = (userId: string): string =>
     createHmac("sha256", config.authTokenHashPepper)
       .update(`ai-user:${userId}`)
@@ -151,6 +147,8 @@ export function createAiService(
     input: AiRequestInput,
   ): Promise<
     Readonly<{
+      operationId: string;
+      replay: AiCompletion | null;
       providerRequest: AiProviderRequest;
       requestId: string;
       startedAt: number;
@@ -183,15 +181,78 @@ export function createAiService(
         statusCode: 429,
       });
     }
-    const entitlements = await billingService.getEntitlements(userId);
-    const reservation = await repository.reserve(
+    if (input.voiceLeaseId !== undefined) {
+      if (input.task !== "conversation")
+        throw new AppError({
+          code: "INVALID_VOICE_TASK",
+          message: "Voice leases only support conversation.",
+          statusCode: 400,
+        });
+      await access.assertVoiceLease(userId, input.voiceLeaseId);
+    }
+    const operationId = input.operationId ?? randomUUID();
+    if (input.parentOperationId !== undefined && input.task !== "conversation")
+      throw new AppError({
+        code: "REPAIR_NOT_ALLOWED",
+        message: "Only conversations support a linked repair.",
+        statusCode: 400,
+      });
+    const kind =
+      input.voiceLeaseId !== undefined || input.parentOperationId !== undefined
+        ? "auxiliary"
+        : ["conversation", "character_generation"].includes(input.task)
+          ? "chat"
+          : ["grammar_explain", "dictionary_explain", "speech_feedback"].includes(
+                input.task,
+              )
+            ? "advanced"
+            : "auxiliary";
+    const hash = createHash("sha256")
+      .update(
+        JSON.stringify({
+          task: input.task,
+          messages: input.messages,
+          responseFormat: input.responseFormat,
+          maxOutputTokens: input.maxOutputTokens ?? null,
+          voiceLeaseId: input.voiceLeaseId ?? null,
+          parentOperationId: input.parentOperationId ?? null,
+        }),
+      )
+      .digest("hex");
+    const quota = await access.reserve(
       userId,
-      route,
-      dailyLimit(entitlements.featureFlags),
-      limits.inputCharacters,
-    );
+      operationId,
+      hash,
+      kind,
+      1,
+      input.parentOperationId,
+      Math.ceil(route.timeoutMs * config.aiRetryMaxAttempts / 1000) + 30,    );
+    let reservation = { requestId: operationId, startedAt: Date.now() };
+    if (!quota.replay) {
+      try {
+        reservation = await repository.reserve(
+          userId,
+          route,
+          100_000,
+          limits.inputCharacters,
+          operationId,
+        );
+      } catch (error) {
+        await access.settle(userId, operationId, false);
+        throw error;
+      }
+    }
+    if (quota.replay && quota.result === null)
+      throw new AppError({
+        code: "OPERATION_RESULT_EXPIRED",
+        message: "This request already completed. Please start a new operation.",
+        statusCode: 409,
+      });
     return {
+      operationId,
+      replay: quota.replay ? (quota.result as AiCompletion) : null,
       providerRequest: {
+        onAttempt: () => repository.recordProviderAttempt(reservation.requestId),
         maxOutputTokens: limits.maxOutputTokens,
         messages: input.messages,
         responseFormat: input.responseFormat,
@@ -207,8 +268,10 @@ export function createAiService(
     userId: string,
     requestId: string,
     startedAt: number,
+    operationId: string,
     error: unknown,
   ): Promise<void> => {
+    await access.settle(userId, operationId, false);
     const identity = errorIdentity(error);
     await repository.fail(
       userId,
@@ -222,11 +285,18 @@ export function createAiService(
   return {
     complete: async (userId, input) => {
       const prepared = await prepare(userId, input);
+      if (prepared.replay) return { ...prepared.replay, requestId: prepared.requestId };
       let completion: AiCompletion;
       try {
         completion = await deepSeek.complete(prepared.providerRequest);
       } catch (error) {
-        await fail(userId, prepared.requestId, prepared.startedAt, error);
+        await fail(
+          userId,
+          prepared.requestId,
+          prepared.startedAt,
+          prepared.operationId,
+          error,
+        );
         throw error;
       }
       await repository.succeed(
@@ -236,6 +306,7 @@ export function createAiService(
         completion.usage,
         completion.providerRequestId,
       );
+      await access.settle(userId, prepared.operationId, true, completion);
       return {
         content: completion.content,
         model: completion.model,
@@ -245,17 +316,41 @@ export function createAiService(
     },
     stream: async (userId, input) => {
       const prepared = await prepare(userId, input);
+      if (prepared.replay) {
+        const replay = prepared.replay;
+        return {
+          requestId: prepared.requestId,
+          events: (async function* (): AsyncGenerator<AiProviderStreamEvent> {
+            await Promise.resolve();
+            yield {
+              type: "metadata",
+              model: replay.model,
+              providerRequestId: replay.providerRequestId,
+            };
+            yield { type: "delta", text: replay.content };
+            yield { type: "usage", usage: replay.usage };
+            yield { type: "done" };
+          })(),
+        };
+      }
       let providerEvents: AsyncIterable<AiProviderStreamEvent>;
       try {
         providerEvents = await deepSeek.stream(prepared.providerRequest);
       } catch (error) {
-        await fail(userId, prepared.requestId, prepared.startedAt, error);
+        await fail(
+          userId,
+          prepared.requestId,
+          prepared.startedAt,
+          prepared.operationId,
+          error,
+        );
         throw error;
       }
 
       return {
         events: (async function* (): AsyncGenerator<AiProviderStreamEvent> {
           let finalized = false;
+          let content = "";
           let providerRequestId: string | null = null;
           let usage: AiUsage = {
             inputTokens: 0,
@@ -264,6 +359,8 @@ export function createAiService(
           };
           try {
             for await (const event of providerEvents) {
+              if (event.type === "delta") content += event.text;
+              if (event.type === "done") continue;
               if (event.type === "metadata") {
                 providerRequestId = event.providerRequestId;
               } else if (event.type === "usage") {
@@ -278,13 +375,27 @@ export function createAiService(
               usage,
               providerRequestId,
             );
+            await access.settle(userId, prepared.operationId, true, {
+              content,
+              model: prepared.providerRequest.route.model,
+              providerRequestId,
+              usage,
+            });
             finalized = true;
+            yield { type: "done" };
           } catch (error) {
-            await fail(userId, prepared.requestId, prepared.startedAt, error);
+            await fail(
+              userId,
+              prepared.requestId,
+              prepared.startedAt,
+              prepared.operationId,
+              error,
+            );
             finalized = true;
             throw error;
           } finally {
             if (!finalized) {
+              await access.settle(userId, prepared.operationId, false);
               await repository.fail(
                 userId,
                 prepared.requestId,

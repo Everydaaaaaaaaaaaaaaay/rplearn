@@ -174,6 +174,8 @@ public final class ChatViewModel {
 
     /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
     /// 该方法先持久化用户话轮，再返回纯文本增量；音频不会离开设备。
+    var voiceLeaseID: UUID?
+
     public func realtimeReplyStream(
         userText: String
     ) async throws -> AsyncThrowingStream<String, Error> {
@@ -195,7 +197,8 @@ public final class ChatViewModel {
         messages.sort { $0.orderIndex < $1.orderIndex }
         notifyConversationChanged()
 
-        let request = await makeRoleplayRequest(quizRequested: false, voiceMode: true)
+        var request = await makeRoleplayRequest(quizRequested: false, voiceMode: true)
+        request.voiceLeaseID = voiceLeaseID
         let upstream = await deps.llm.stream(request)
         return AsyncThrowingStream { continuation in
             let task = Task { [weak self] in
@@ -466,6 +469,8 @@ public final class ChatViewModel {
         )
         if tooSimilar || !continuityViolations.isEmpty {
             var retryRequest = request
+            retryRequest.operationID = UUID()
+            retryRequest.parentOperationID = request.operationID
             let retryInstructions = [
                 tooSimilar
                     ? RoleplayReplyDiversityPolicy.regenerationDirective(avoiding: recentAssistantReplies)

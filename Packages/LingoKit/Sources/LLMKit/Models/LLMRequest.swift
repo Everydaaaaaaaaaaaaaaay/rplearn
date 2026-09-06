@@ -1,3 +1,5 @@
+import Foundation
+
 /// 一次 LLM 调用的全部参数，与具体供应商无关。
 public struct LLMRequest: Sendable {
     public enum ResponseFormat: Sendable, Equatable {
@@ -7,6 +9,9 @@ public struct LLMRequest: Sendable {
         case jsonSchema(name: String, schema: JSONValue)
     }
 
+    public var operationID: UUID
+    public var parentOperationID: UUID?
+    public var voiceLeaseID: UUID?
     public var task: LLMTask
     public var tier: LLMTier
     public var system: String?
@@ -17,6 +22,9 @@ public struct LLMRequest: Sendable {
     public var responseFormat: ResponseFormat
 
     public init(
+        operationID: UUID = UUID(),
+        voiceLeaseID: UUID? = nil,
+        parentOperationID: UUID? = nil,
         task: LLMTask,
         tier: LLMTier,
         system: String? = nil,
@@ -25,6 +33,9 @@ public struct LLMRequest: Sendable {
         temperature: Double? = nil,
         responseFormat: ResponseFormat = .text
     ) {
+        self.operationID = operationID
+        self.voiceLeaseID = voiceLeaseID
+        self.parentOperationID = parentOperationID
         self.task = task
         self.tier = tier
         self.system = system

@@ -23,11 +23,13 @@ public struct TravelResult: Sendable, Equatable {
 /// 地区旅行：首次前往用机票解锁并收藏唯一票根，已解锁地区可直接往返。
 public struct TravelService: Sendable {
     public enum TravelError: Error, Equatable {
+        case loginRequired
         case ticketRequired
         case ticketNotUsable
         case alreadyThere
     }
 
+    public let allowsTravel: Bool
     private let economyStore: EconomyStore
     private let itemStore: ItemStore
     private let stubStore: TicketStubStore
@@ -37,8 +39,10 @@ public struct TravelService: Sendable {
         economyStore: EconomyStore,
         itemStore: ItemStore,
         stubStore: TicketStubStore,
-        commandGateway: (any TravelCommandGateway)? = nil
+        commandGateway: (any TravelCommandGateway)? = nil,
+        allowsTravel: Bool = true
     ) {
+        self.allowsTravel = allowsTravel
         self.economyStore = economyStore
         self.itemStore = itemStore
         self.stubStore = stubStore
@@ -72,6 +76,7 @@ public struct TravelService: Sendable {
     /// 前往地区。首次解锁必须提供可用机票，已解锁地区无需机票。
     @discardableResult
     public func travel(to region: Region, using ticket: ItemDTO? = nil) async throws -> TravelResult {
+        guard allowsTravel else { throw TravelError.loginRequired }
         if let commandGateway {
             let result = try await commandGateway.travel(
                 targetRegionID: region.id,

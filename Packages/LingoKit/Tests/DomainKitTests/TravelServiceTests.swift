@@ -43,6 +43,30 @@ struct TravelServiceTests {
         )
     }
 
+    @Test("游客出发前拦截，不消耗机票或改写位置")
+    func guestTravelBlocked() async throws {
+        let fixture = try await makeFixture()
+        let ticket = try await fixture.itemStore.addTicket(type: .ticketUniversal, source: .quest)
+        let service = TravelService(economyStore: fixture.economyStore, itemStore: fixture.itemStore,
+            stubStore: fixture.stubStore, allowsTravel: false)
+        await #expect(throws: TravelService.TravelError.loginRequired) {
+            try await service.travel(to: melbourne, using: ticket)
+        }
+        #expect(try await fixture.economyStore.profile().currentRegionID == "london")
+        #expect(try await fixture.itemStore.unconsumedTickets().contains { $0.id == ticket.id })
+    }
+
+    @Test("游客的主线首站和城市剧情首站独立开放")
+    func guestStoryAccess() {
+        let access = JourneyAccess(isGuest: true)
+        for city in ["london", "newyork", "melbourne"] {
+            #expect(access.allowsStory("mainline_\(city)", starterRegionID: city))
+            #expect(access.allowsStory("mainline_\(city)_2", starterRegionID: city))
+            #expect(!access.allowsStory("mainline_capetown", starterRegionID: city))
+            #expect(!access.allowsStory("mainline_singapore", starterRegionID: city))
+        }
+    }
+
     @Test("只有未解锁地区需要机票")
     func ticketRequirement() {
         let profile = UserProfileDTO(

@@ -96,7 +96,7 @@ public struct MainlineListView: View {
                     .font(.subheadline.monospacedDigit().weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-            Text("五站剧情已全部开放，可自由选择章节；每站进度独立保存。")
+            Text(deps.access.isGuest ? "游客开放起始城市的第一站；登录后可继续五城旅程，进度会保留。" : "五站剧情已全部开放，可自由选择章节；每站进度独立保存。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -201,6 +201,11 @@ public struct MainlineListView: View {
     }
 
     private func open(_ stop: MainlineStop, access: StoryRegionAccess) {
+        guard let profile else { return }
+        guard deps.access.allowsStory(stop.chapter.storyID, starterRegionID: profile.starterRegionID) else {
+            deps.access.requestSignIn("游客可以体验起始城市的剧情首站，登录后即可继续后续旅程。")
+            return
+        }
         switch access {
         case .current:
             Haptics.impact(.light)

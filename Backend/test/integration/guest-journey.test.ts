@@ -14,6 +14,8 @@ import { registerGuestRoutes } from "../../src/modules/auth/guest-routes.js";
 import { authenticateRequest } from "../../src/modules/auth/http.js";
 import { registerNpcRoutes } from "../../src/modules/npc/routes.js";
 import { createNpcService } from "../../src/modules/npc/service.js";
+import { createDomainService } from "../../src/modules/domain/service.js";
+import { registerDomainRoutes } from "../../src/modules/domain/routes.js";
 import { newEntityId } from "../../src/shared/id.js";
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
@@ -43,6 +45,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         createGuestClaim(runtime.database, config.authTokenHashPepper),
       );
       registerNpcRoutes(app, auth, createNpcService(runtime.database));
+      registerDomainRoutes(app, auth, createDomainService(runtime.database), {
+        enableDebugRoutes: false,
+      });
       app.get("/test/account", async (request) => authenticateRequest(request, auth));
       await runtime.database
         .sql`insert into app.npc_avatars (id, image_url, tags) values (${avatarID}, ${`https://example.com/${avatarID}.png`}, '["gender:female","age:adult"]')`;
@@ -116,9 +121,44 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(first.statusCode).toBe(200);
       const repeated = await app.inject(request);
       expect(repeated.json()).toEqual(first.json());
+      const domain = createDomainService(runtime.database);
+      await domain.completeOnboarding(guest.userId, newEntityId(), {
+        starterRegionId: "london",
+      });
+      await domain.completeStory(guest.userId, newEntityId(), "mainline_london");
+      await domain.completeStory(guest.userId, newEntityId(), "mainline_london_2");
+      await domain.claimStarterTicket(guest.userId, newEntityId());
+      expect(
+        (
+          await app.inject({
+            method: "POST",
+            url: "/v1/travel",
+            headers: {
+              ...headers(guest.accessToken),
+              "idempotency-key": newEntityId(),
+            },
+            payload: { targetRegionId: "melbourne" },
+          })
+        ).statusCode,
+      ).toBe(403);
+      await expect(
+        domain.completeStory(guest.userId, newEntityId(), "mainline_capetown"),
+      ).rejects.toMatchObject({ code: "LOGIN_REQUIRED" });
+      await expect(
+        domain.updateProfile(guest.userId, newEntityId(), {
+          expectedVersion: 1,
+          hasCompletedOnboarding: false,
+        }),
+      ).rejects.toMatchObject({ code: "ONBOARDING_STATE_READ_ONLY" });
+      expect((await domain.getSnapshot(guest.userId)).profile.coins).toBe(220);
       const accountId = newEntityId();
       ids.push(accountId);
       await runtime.database.sql`insert into app.users (id) values (${accountId})`;
+      await domain.completeOnboarding(accountId, newEntityId(), {
+        starterRegionId: "melbourne",
+      });
+      await domain.completeStory(accountId, newEntityId(), "mainline_london");
+      await domain.claimStarterTicket(accountId, newEntityId());
       const account = await auth.loginFederated(accountId, 0, device, {});
       const claim = {
         method: "POST" as const,
@@ -128,8 +168,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       };
       expect((await app.inject(claim)).json()).toEqual({ claimed: true });
       expect((await app.inject(claim)).json()).toEqual({ claimed: true });
-      const relations = await runtime.database
-        .sql<{ npc_id: string }[]>`select npc_id from app.user_npc_relationships where user_id = ${accountId}`;
+      const inherited = await domain.getSnapshot(accountId);
+      expect(inherited.profile.coins).toBe(220);
+      expect(inherited.profile.starterRegionId).toBe("melbourne");
+      expect(inherited.tickets).toHaveLength(1);
+      const relations = await runtime.database.sql<
+        { npc_id: string }[]
+      >`select npc_id from app.user_npc_relationships where user_id = ${accountId}`;
       expect(relations.map((r) => r.npc_id)).toContain(npcID);
       expect((await app.inject(request)).statusCode).toBe(401);
       expect(

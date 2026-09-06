@@ -51,6 +51,7 @@ final class AppEnvironment {
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
+    var guestStateReady = false
 
     let audioSession: AudioSessionCoordinator
     let speech: AdaptiveSpeechService
@@ -169,7 +170,8 @@ final class AppEnvironment {
         self.localTravelService = TravelService(
             economyStore: economyStore,
             itemStore: itemStore,
-            stubStore: ticketStubStore
+            stubStore: ticketStubStore,
+            allowsTravel: false
         )
 
         self.translator = TranslationService(llm: llmRouter)
@@ -198,9 +200,22 @@ final class AppEnvironment {
         if let guestProfile,
            guestProfile.hasCompletedProfileSetup || guestProfile.hasCompletedOnboarding ||
             hasGuestNPCs {
+            try await contentSyncStore.archiveGuestJourneyIfNeeded(profile: guestProfile, beforeLogin: true)
+            if guestStateReady {
+                try await userState.synchronize()
+            } else {
+                do {
+                    try await userState.activateAnonymous(legacyProfile: guestProfile,
+                        completedStories: try await storyProgressStore.completedStoryIDs(),
+                        hadStarterTicket: try await itemStore.hasTicket(source: .quest))
+                } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
+                    // The claim endpoint verifies whether this is the same destination account.
+                }
+            }
             try await backendClient.claimGuestJourney()
         }
         let activation = try await userState.activate(userID: identity.userID)
+        guestStateReady = false
         if let guestProfile {
             _ = try await userState.importGuestLearnerProfileIfNeeded(guestProfile)
         }
@@ -232,6 +247,19 @@ final class AppEnvironment {
         await contentSync.deactivate()
         await voiceMedia.deactivate()
         try await userState.activateGuest()
+        guestStateReady = false
+        let legacyProfile = try await economyStore.profile()
+        let completedStories = try await storyProgressStore.completedStoryIDs()
+        let hadStarterTicket = try await itemStore.hasTicket(source: .quest)
+        // Archive once before replacing legacy offline assets with verified server state.
+        try await contentSyncStore.archiveGuestJourneyIfNeeded(profile: legacyProfile)
+        do {
+            try await userState.activateAnonymous(legacyProfile: legacyProfile,
+                completedStories: completedStories, hadStarterTicket: hadStarterTicket)
+            guestStateReady = true
+        } catch {
+            Log.app.info("游客在线状态暂不可用，保留本地旅程：\(String(describing: type(of: error)))")
+        }
         let profile = try await economyStore.profile()
         let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
         let cards = try SeedData.mainCharacterCards(url: seedsURL)

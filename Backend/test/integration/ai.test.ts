@@ -36,6 +36,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
 
   beforeAll(async () => {
     const config = loadConfig({
+      ...process.env,
       AI_USER_MINUTE_LIMIT: "20",
       AI_GUEST_ACCESS_ENABLED: "true",
       DEEPSEEK_API_KEY: "integration-test-key",
@@ -257,10 +258,8 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
 
   it("enforces the persistent entitlement quota", async () => {
     await dependencies.database.sql`
-      update app.ai_daily_usage
-      set request_count = 30
-      where user_id = ${userId}
-        and usage_date = (now() at time zone 'utc')::date
+      insert into app.usage_operations(user_id,operation_id,request_hash,kind,window_key,plan,policy_version,amount,settled_amount,status,expires_at)
+      values (${userId},${newEntityId()},'test-exhaustion','chat', 'day:' || to_char(now() at time zone 'utc','YYYY-MM-DD'),'free',1,30,30,'succeeded',now())
     `;
     const response = await app.inject({
       headers: { authorization: `Bearer ${accessToken}` },
@@ -272,7 +271,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
       url: "/v1/ai/completions",
     });
     expect(response.statusCode).toBe(429);
-    expect(response.json<{ code: string }>().code).toBe("AI_DAILY_QUOTA_EXCEEDED");
+    expect(response.json<{ code: string }>().code).toBe("USAGE_QUOTA_EXCEEDED");
   });
 
   it("seeds every initial task to DeepSeek v4 Flash", async () => {

@@ -71,6 +71,26 @@ export class NpcRepository {
   ): Promise<NpcEncounterSelection> {
     return this.database.sql.begin(async (sql) => {
       await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${userId}`}, 0))`;
+      const [claimed] =
+        await sql`select 1 from app.guest_installations where user_id=${userId} and claimed_at is not null`;
+      if (claimed)
+        throw new AppError({
+          code: "GUEST_ALREADY_CLAIMED",
+          message: "请登录已认领此旅程的账号。",
+          statusCode: 403,
+        });
+      const policy = await loadAccessPolicy(sql, userId);
+      if (policy.isGuest) {
+        const [journey] = await sql<
+          { starter_region_id: string | null }[]
+        >`select starter_region_id from app.user_profiles where user_id=${userId}`;
+        if (journey?.starter_region_id !== context.regionId)
+          throw new AppError({
+            code: "LOGIN_REQUIRED",
+            message: "游客只能在起始城市活动。",
+            statusCode: 403,
+          });
+      }
       const candidates = await sql<NpcRow[]>`
         select n.id::text, n.traveler_id, n.card::text as card_text, n.created_at::text,
           n.avatar_id::text, a.image_url as avatar_url
@@ -139,6 +159,14 @@ export class NpcRepository {
     const result = await this.database.sql.begin(async (sql) => {
       // Serialize assignments per viewer and registration per identity, including first insert.
       await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${userId}`}, 0))`;
+      const [claimed] =
+        await sql`select 1 from app.guest_installations where user_id=${userId} and claimed_at is not null`;
+      if (claimed)
+        throw new AppError({
+          code: "GUEST_ALREADY_CLAIMED",
+          message: "请登录已认领此旅程的账号。",
+          statusCode: 403,
+        });
       await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-identity:${input.id}`}, 0))`;
       const existing = await this.findById(sql, input.id, true);
       if (existing !== undefined) {
@@ -179,10 +207,18 @@ export class NpcRepository {
         return existing;
       }
 
+      const policy = await loadAccessPolicy(sql, userId);
+      const [supply] = await sql<
+        { count: number }[]
+      >`select count(*)::int as count from (
+        select npc_id from app.user_npc_relationships where user_id=${userId}
+          and (${policy.isGuest} or created_at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc')
+        union select npc_id from app.npc_pending_avatars where user_id=${userId} and npc_id<>${input.id}
+      ) seen`;
       const [pending] = await sql<
-        { user_id: string; card_hash: string; input: RegisterPublicNpcInput }[]
+        { user_id: string; card_hash: string; input: string }[]
       >`
-        select user_id::text, card_hash, input from app.npc_pending_avatars where npc_id = ${input.id}
+        select user_id::text, card_hash, input::text from app.npc_pending_avatars where npc_id = ${input.id}
       `;
       if (pending && (pending.user_id !== userId || pending.card_hash !== cardHash)) {
         throw new AppError({
@@ -193,6 +229,15 @@ export class NpcRepository {
         });
       }
 
+      if (
+        !pending &&
+        (supply?.count ?? 0) >= Math.max(30, Math.min(600, policy.chatLimit * 3))
+      )
+        throw new AppError({
+          code: "NPC_REGISTRATION_LIMIT",
+          message: "本周期的新角色登记已达上限，已有角色会保留。",
+          statusCode: 429,
+        });
       // The short critical section makes random allocation collision-free without exposing a
       // guessable sequence. Public lookup still requires the final checksum digit.
       await sql`select pg_advisory_xact_lock(hashtextextended('public-npc-traveler-id', 0))`;
@@ -289,7 +334,10 @@ export class NpcRepository {
       `;
       if (created === undefined) throw new Error("NPC registration returned no row");
       const result = mapNpc(created);
-      const context = pending?.input.encounterContext ?? input.encounterContext;
+      const context =
+        (pending
+          ? (JSON.parse(pending.input) as RegisterPublicNpcInput).encounterContext
+          : undefined) ?? input.encounterContext;
       if (context) {
         await sql`insert into app.npc_scene_affinities (npc_id, region_id, activity_id, category, language)
           values (${result.id}, ${context.regionId}, ${context.activityId}, ${context.category}, ${context.language}) on conflict do nothing`;
@@ -322,7 +370,7 @@ export class NpcRepository {
     const requests = await this.database.sql<
       {
         user_id: string;
-        input: RegisterPublicNpcInput;
+        input: string;
         card_hash: string;
       }[]
     >`
@@ -335,15 +383,22 @@ export class NpcRepository {
       )
       update app.npc_pending_avatars pending set next_attempt_at = now() + interval '5 minutes'
       from due where pending.npc_id = due.npc_id
-      returning pending.user_id::text, pending.input, pending.card_hash
+      returning pending.user_id::text, pending.input::text, pending.card_hash
     `;
     let matched = 0;
     for (const request of requests) {
       try {
-        await this.register(request.user_id, request.input, request.card_hash);
+        await this.register(
+          request.user_id,
+          JSON.parse(request.input) as RegisterPublicNpcInput,
+          request.card_hash,
+        );
         matched += 1;
       } catch (error) {
-        if (!(error instanceof AppError) || error.code !== "NPC_AVATAR_COVERAGE_GAP")
+        if (
+          !(error instanceof AppError) ||
+          !["NPC_AVATAR_COVERAGE_GAP", "GUEST_ALREADY_CLAIMED"].includes(error.code)
+        )
           throw error;
       }
     }
@@ -374,6 +429,14 @@ export class NpcRepository {
   ): Promise<void> {
     await this.database.sql.begin(async (sql) => {
       await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${userId}`}, 0))`;
+      const [claimed] =
+        await sql`select 1 from app.guest_installations where user_id=${userId} and claimed_at is not null`;
+      if (claimed)
+        throw new AppError({
+          code: "GUEST_ALREADY_CLAIMED",
+          message: "请登录已认领此旅程的账号。",
+          statusCode: 403,
+        });
       const npc = await this.findById(sql, npcId, false);
       if (npc === undefined) throw notFound();
       await this.linkWithinTransaction(sql, userId, npcId, input);

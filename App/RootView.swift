@@ -36,7 +36,11 @@ struct RootView: View {
     @State private var homePath = NavigationPath()
     @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
+    @State private var activationError: String?
+    @State private var showUsage = false
+    @State private var signInAfterUsage = false
     @State private var showSignIn = false
+    @State private var loginReason: String?
     @State private var showLondonEpisode = false
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
@@ -119,10 +123,37 @@ struct RootView: View {
                 LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest")
             }
             .overlay {
+                if let activationError {
+                    VStack(spacing: 16) {
+                        Text("旅程尚未载入").font(.headline)
+                        Text(activationError).font(.subheadline)
+                        Button("重试") { Task { await handleAuthenticationPhase() } }
+                        Button("退出此账号") { Task { await environment.authSession.logout() } }
+                    }.padding().frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.background)
+                }
+            }
+            .overlay {
                 if !isInitialContentReady {
                     Color("BrandLaunchBackground")
                         .ignoresSafeArea()
                         .accessibilityHidden(true)
+                }
+            }
+            .alert("登录后继续", isPresented: Binding(
+                get: { loginReason != nil }, set: { if !$0 { loginReason = nil } }
+            )) {
+                Button("登录") { loginReason = nil; showSignIn = true }
+                Button("稍后", role: .cancel) { loginReason = nil }
+            } message: {
+                Text(loginReason ?? "")
+            }
+            .sheet(isPresented: $showUsage, onDismiss: {
+                if signInAfterUsage { signInAfterUsage = false; showSignIn = true }
+            }) {
+                UsageAccessView(backend: environment.backendClient, billing: environment.billing) {
+                    showUsage = false
+                    signInAfterUsage = true
                 }
             }
             .sheet(isPresented: $showSignIn) {
@@ -249,6 +280,7 @@ struct RootView: View {
     }
 
     private func handleAuthenticationPhase() async {
+        activationError = nil
         switch environment.authSession.phase {
         case .loading:
             // 会话恢复在后台进行，本地界面无需等待。
@@ -280,14 +312,9 @@ struct RootView: View {
                     return
                 }
                 activeUserID = nil
-                Log.app.warning("账号空间暂未载入，继续使用游客模式：\(error)")
-                do {
-                    try await environment.activateGuest()
-                    stateRevision += 1
-                } catch {
-                    Log.app.error("游客空间回退失败：\(error)")
-                    isInitialContentReady = true
-                }
+                activationError = error.localizedDescription
+                isInitialContentReady = true
+                Log.app.warning("账号载入失败，保留当前旅程等待重试：\(error)")
             }
         }
     }
@@ -508,6 +535,7 @@ struct RootView: View {
 
     private var meRootView: some View {
         MyPageView(
+            accessClient: environment.backendClient,
             economyStore: environment.economyStore,
             economyService: economyService,
             rosterStore: environment.rosterStore,
@@ -662,6 +690,7 @@ struct RootView: View {
 
     private var homeDeps: HomeDependencies {
         HomeDependencies(
+            access: journeyAccess,
             economyStore: environment.economyStore,
             storyProgress: environment.storyProgressStore,
             travelService: travelService,
@@ -680,6 +709,7 @@ struct RootView: View {
 
     private var mapDeps: MapDependencies {
         MapDependencies(
+            access: journeyAccess,
             economyStore: environment.economyStore,
             itemStore: environment.itemStore,
             stubStore: environment.ticketStubStore,
@@ -692,6 +722,8 @@ struct RootView: View {
 
     private var chatDeps: ChatDependencies {
         ChatDependencies(
+            accessClient: environment.backendClient,
+            onShowAccess: { showUsage = true },
             chatStore: environment.chatStore,
             rosterStore: environment.rosterStore,
             favorites: environment.favoritesStore,
@@ -735,6 +767,10 @@ struct RootView: View {
         )
     }
 
+    private var journeyAccess: JourneyAccess {
+        JourneyAccess(isGuest: !usesCloudState) { reason in loginReason = reason }
+    }
+
     private var usesCloudState: Bool {
         guard let activeUserID,
               case .signedIn(let identity) = environment.authSession.phase
@@ -743,7 +779,7 @@ struct RootView: View {
     }
 
     private var profileCommands: any ProfileCommandGateway {
-        if usesCloudState {
+        if usesCloudState || environment.guestStateReady {
             environment.userState
         } else {
             environment.localUserState
@@ -751,7 +787,7 @@ struct RootView: View {
     }
 
     private var onboardingCommands: any OnboardingCommandGateway {
-        if usesCloudState {
+        if usesCloudState || environment.guestStateReady {
             environment.userState
         } else {
             environment.localUserState
@@ -759,7 +795,7 @@ struct RootView: View {
     }
 
     private var progression: any ProgressionRewardGateway {
-        if usesCloudState {
+        if usesCloudState || environment.guestStateReady {
             environment.userState
         } else {
             environment.localUserState

@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
-import { authenticateRequest } from "../auth/http.js";
+import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { SyncCommand, SyncService } from "./service.js";
 
@@ -151,7 +151,7 @@ export function registerSyncRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       return syncService.getSnapshot(identity.userId);
     },
   );
@@ -165,7 +165,7 @@ export function registerSyncRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const query = parse(changesQuerySchema, request.query);
       return syncService.getChanges(identity.userId, query.cursor, query.limit);
     },
@@ -180,7 +180,7 @@ export function registerSyncRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const body = parse(commandBatchSchema, request.body);
       return {
         results: await syncService.executeCommands(

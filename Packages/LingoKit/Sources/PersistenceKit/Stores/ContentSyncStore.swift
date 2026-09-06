@@ -50,6 +50,28 @@ public actor ContentSyncStore {
         case unknownResource
     }
 
+    public nonisolated static var guestArchiveURL: URL {
+        URL.applicationSupportDirectory.appending(path: "guest-journey-before-cloud-v1.json")
+    }
+
+    public func archiveGuestJourneyIfNeeded(profile: UserProfileDTO, beforeLogin: Bool = false) throws {
+        guard profile.hasCompletedOnboarding || profile.hasCompletedProfileSetup || profile.coins > 0 else { return }
+        let url = beforeLogin ? Self.guestArchiveURL.deletingLastPathComponent().appending(path: "guest-journey-before-login-v1.json") : Self.guestArchiveURL
+        guard !FileManager.default.fileExists(atPath: url.path) else { return }
+        struct Archive: Encodable {
+            let createdAt: Date
+            let profile: UserProfileDTO
+            let records: [LocalContentRecord]
+            let tickets: [ItemDTO]
+            let ticketStubs: [TicketStubDTO]
+        }
+        let archive = Archive(createdAt: .now, profile: profile, records: try exportLocalRecords(),
+            tickets: try modelContext.fetch(FetchDescriptor<ItemEntity>()).map(ItemStore.dto),
+            ticketStubs: try modelContext.fetch(FetchDescriptor<TicketStubEntity>()).map(TicketStubStore.dto))
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try JSONEncoder().encode(archive).write(to: url, options: [.atomic, .completeFileProtection])
+    }
+
     public func activateOwner(userID: UUID) throws {
         if let owner = try modelContext.fetch(FetchDescriptor<ContentSyncOwnerEntity>()).first {
             guard owner.userID == userID else {
@@ -73,9 +95,20 @@ public actor ContentSyncStore {
         guard let owner = try owner() else {
             throw SyncStoreError.invalidPayload
         }
+        let localBefore = try exportLocalRecords()
+        let locals = Dictionary(uniqueKeysWithValues: localBefore.map { (metadataKey($0.resourceType, $0.resourceID), $0) })
         let serverKeys = Set(records.map { metadataKey($0.resourceType, $0.resourceID) })
+        var merges: [RemoteContentRecord] = []
         for record in records {
-            try apply(record)
+            let key = metadataKey(record.resourceType, record.resourceID)
+            if let local = locals[key], let merged = try Self.mergeGuest(local: local, remote: record) {
+                try apply(merged)
+                merges.append(merged)
+            } else { try apply(record) }
+        }
+        for merged in merges {
+            try ContentMutationJournal.upsert(in: modelContext, resourceType: merged.resourceType,
+                resourceID: merged.resourceID, parentID: merged.parentID, payloadJSON: merged.payloadJSON)
         }
         for local in try exportLocalRecords()
         where !serverKeys.contains(metadataKey(local.resourceType, local.resourceID)) {

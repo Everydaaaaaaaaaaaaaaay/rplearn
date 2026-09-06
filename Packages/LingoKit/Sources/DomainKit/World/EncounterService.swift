@@ -54,15 +54,20 @@ public struct EncounterService: Sendable {
     // MARK: - 生成
 
     /// An existing public identity gets a new opening, never a rewritten identity or relationship.
-    public func openingForExisting(card: CharacterCard, activityContext: String, alreadyKnown: Bool) async -> String {
+    public func openingForExisting(card: CharacterCard, activityContext: String, alreadyKnown: Bool) async throws -> String {
         let fallback = alreadyKnown ? "Hey, good to see you again! How have you been?" : "Hi! What brought you here today?"
         let request = LLMRequest(
             task: .characterGeneration, tier: .balanced,
             system: "Write one short natural English opening line for this activity. Return only the spoken line. Do not invent shared experiences, personal memories, a new job, or a change of identity. The scene is \(activityContext). Character: \(card.name), \(card.occupation), personality: \(card.personality), hobbies: \(card.hobbies.joined(separator: ", ")). The listener \(alreadyKnown ? "has met this person before; acknowledge a reunion without inventing past events" : "is meeting them for the first time").",
             messages: [.user("Say the opening line.")], maxTokens: 120, temperature: 0.7
         )
-        guard let line = try? await llm.complete(request), !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return fallback }
-        return line.trimmingCharacters(in: .whitespacesAndNewlines)
+        do {
+            let line = try await llm.complete(request).trimmingCharacters(in: .whitespacesAndNewlines)
+            return line.isEmpty ? fallback : line
+        } catch let error as LLMError {
+            if case .accessRestricted = error { throw error }
+            return fallback
+        } catch { return fallback }
     }
 
     /// 生成偶遇角色卡：LLM 失败或姓名重复时重试 1 次，再失败回退本地模板卡。
@@ -72,17 +77,20 @@ public struct EncounterService: Sendable {
         userLevel: DifficultyLevel,
         existingNames: Set<String>,
         activityContext: String? = nil
-    ) async -> Encounter {
+    ) async throws -> Encounter {
         for _ in 0..<2 {
-            if let generated = try? await generateOnce(
+            do {
+                return try await generateOnce(
                 origin: origin,
                 region: region,
                 userLevel: userLevel,
                 existingNames: existingNames,
                 activityContext: activityContext
-            ) {
-                return generated
-            }
+                )
+            } catch let error as LLMError {
+                if case .accessRestricted = error { throw error }
+            } catch is CancellationError { throw CancellationError() }
+            catch { continue }
         }
         return Self.fallbackEncounter(origin: origin, region: region, existingNames: existingNames)
     }

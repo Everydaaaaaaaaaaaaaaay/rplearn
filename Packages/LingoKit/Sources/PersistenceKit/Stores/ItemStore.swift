@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 /// 道具快照（机票）。
-public struct ItemDTO: Sendable, Equatable, Identifiable {
+public struct ItemDTO: Codable, Sendable, Equatable, Identifiable {
     public var id: UUID
     public var type: ItemType
     public var countryCode: String?

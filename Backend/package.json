@@ -30,7 +30,8 @@
     "test:integration": "cross-env RUN_INTEGRATION_TESTS=true vitest run --maxWorkers=1 --no-file-parallelism test/integration",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "worker": "tsx src/worker.ts"
+    "worker": "tsx src/worker.ts",
+    "usage:report": "tsx src/cli/usage-report.ts"
   },
   "dependencies": {
     "@apple/app-store-server-library": "3.1.0",

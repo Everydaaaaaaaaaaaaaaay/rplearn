@@ -9,6 +9,7 @@ import SwiftUI
 
 /// “我的”聚合页：资料、订阅、金币与二级入口。
 public struct MyPageView: View {
+    private let accessClient: BackendClient?
     private let economyStore: EconomyStore
     private let economyService: EconomyService
     private let rosterStore: RosterStore
@@ -22,6 +23,8 @@ public struct MyPageView: View {
     private let onOpenSettings: @MainActor () -> Void
     private let onOpenMemory: @MainActor () -> Void
 
+    @State private var pendingUsage = false
+    @State private var showsUsage = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
     @State private var showsTierPicker = false
@@ -45,6 +48,7 @@ public struct MyPageView: View {
     }
 
     public init(
+        accessClient: BackendClient? = nil,
         economyStore: EconomyStore,
         economyService: EconomyService,
         rosterStore: RosterStore,
@@ -58,6 +62,7 @@ public struct MyPageView: View {
         onOpenSettings: @escaping @MainActor () -> Void,
         onOpenMemory: @escaping @MainActor () -> Void = {}
     ) {
+        self.accessClient = accessClient
         self.economyStore = economyStore
         self.economyService = economyService
         self.rosterStore = rosterStore
@@ -83,8 +88,13 @@ public struct MyPageView: View {
         .background(Color.dsBackground.ignoresSafeArea())
         .task(id: reloadToken) { await reload() }
         .onDisappear(perform: sceneActions.cancel)
-        .sheet(isPresented: $showsAccountPanel) {
+        .sheet(isPresented: $showsAccountPanel, onDismiss: {
+            if pendingUsage { pendingUsage = false; showsUsage = true }
+        }) {
             accountPanel
+        }
+        .sheet(isPresented: $showsUsage) {
+            if let accessClient { UsageAccessView(backend: accessClient, billing: billing, onSignIn: onSignIn) }
         }
         .manageSubscriptionsSheet(isPresented: $showsManageSubscriptions)
     }
@@ -95,6 +105,7 @@ public struct MyPageView: View {
                 profileCard
                 learningProfileCard
                 subscriptionCard
+                usageButton
                 entryList
                 #if DEBUG
                 debugCard
@@ -405,6 +416,7 @@ public struct MyPageView: View {
                 VStack(spacing: DSSpacing.md) {
                     profileCard
                     subscriptionCard
+                    usageButton
                     if isSignedIn {
                         Button(role: .destructive) {
                             Task {
@@ -485,6 +497,13 @@ public struct MyPageView: View {
         .dsSurface(.elevated)
     }
 
+    private var usageButton: some View {
+        Button {
+            if showsAccountPanel { pendingUsage = true; showsAccountPanel = false }
+            else { showsUsage = true }
+        } label: { Label("用量与权益", systemImage: "chart.bar.fill") }
+    }
+
     private var subscriptionCard: some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             if isSignedIn {
@@ -516,12 +535,12 @@ public struct MyPageView: View {
                             ProgressView()
                                 .tint(.white)
                                 .frame(maxWidth: .infinity)
-                        } else if billing.products.isEmpty {
+                        } else if billing.offeredProducts.isEmpty {
                             Text("当前 App Store 账户暂无可购买方案。")
                                 .font(.footnote)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } else {
-                            ForEach(billing.products) { product in
+                            ForEach(billing.offeredProducts) { product in
                                 Button {
                                     Task {
                                         await billing.purchase(product)
@@ -760,16 +779,6 @@ public struct MyPageView: View {
     #if DEBUG
     private var debugCard: some View {
         VStack(spacing: 0) {
-            Button {
-                Task {
-                    await economyService.grantDebugCoins()
-                    await reload()
-                }
-            } label: {
-                MyPageEntryRow("调试：+500 金币", subtitle: "仅 Debug 构建可见", icon: "plus.circle.fill", tint: .dsSuccess)
-            }
-            .buttonStyle(.plain)
-            Divider().padding(.leading, 56)
             Button(action: onOpenMemory) {
                 MyPageEntryRow("记忆调试面板", subtitle: "查看角色长期与近期记忆", icon: "brain.head.profile", tint: .dsQuiz)
             }

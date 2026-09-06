@@ -48,6 +48,8 @@ export type AiRouteRevision = Readonly<{
 }>;
 
 export type AiUsage = Readonly<{
+  cacheHitTokens?: number;
+  cacheMissTokens?: number;
   inputTokens: number;
   outputTokens: number;
   totalTokens: number;
@@ -61,6 +63,7 @@ export type AiCompletion = Readonly<{
 }>;
 
 export type AiProviderRequest = Readonly<{
+  onAttempt?: () => Promise<void>;
   maxOutputTokens: number;
   messages: readonly AiMessage[];
   responseFormat: AiResponseFormat;

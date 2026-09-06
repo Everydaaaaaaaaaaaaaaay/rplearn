@@ -1,3 +1,4 @@
+import { claimDomainJourney } from "./guest-domain-claim.js";
 import { createHmac } from "node:crypto";
 import type { DatabaseResource } from "../db/client.js";
 import { AppError } from "../shared/errors.js";
@@ -38,10 +39,33 @@ export function createGuestClaim(database: DatabaseResource, pepper: string) {
           message: "A registered account is required.",
           statusCode: 403,
         });
+      // Prevent in-flight domain operations racing ownership transfer.
+      for (const id of [guest.user_id, accountId].sort()) {
+        await sql`select pg_advisory_xact_lock(hashtextextended(${`domain:${id}`}, 0))`;
+      }
       // Same lock order as NPC assignment. No avatar may be allocated while ownership moves.
       for (const id of [guest.user_id, accountId].sort()) {
         await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${id}`}, 0))`;
       }
+      // Serialize the final claim marker with any last anonymous quota reservation.
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`usage:${guest.user_id}`}, 0))`;
+      const [collision] = await sql`select 1 from app.user_npc_relationships g
+        join app.public_npcs gn on gn.id=g.npc_id
+        join app.user_npc_relationships a on a.user_id=${accountId} and a.npc_id<>g.npc_id
+        join app.public_npcs an on an.id=a.npc_id and an.avatar_id=gn.avatar_id
+        where g.user_id=${guest.user_id} limit 1`;
+      if (collision)
+        throw new AppError({
+          code: "NPC_AVATAR_MERGE_CONFLICT",
+          message:
+            "两段旅程中有不同角色使用同一头像，尚未合并，原旅程已完整保留。请使用新账号认领。",
+          statusCode: 409,
+        });
+      await claimDomainJourney(sql, guest.user_id, accountId);
+      await sql`insert into app.npc_encounter_history(user_id,npc_id,last_seen_at,encounters)
+        select ${accountId},npc_id,last_seen_at,encounters from app.npc_encounter_history where user_id=${guest.user_id}
+        on conflict(user_id,npc_id) do update set last_seen_at=greatest(app.npc_encounter_history.last_seen_at,excluded.last_seen_at),
+          encounters=app.npc_encounter_history.encounters+excluded.encounters`;
       await sql`
         insert into app.user_npc_relationships (user_id, npc_id, local_character_id, status, created_at)
         select ${accountId}, npc_id, local_character_id, status, created_at

@@ -166,6 +166,10 @@ export const aiRouteRevisions = applicationSchema.table(
 export const aiRequests = applicationSchema.table(
   "ai_requests",
   {
+    operationId: uuid("operation_id"),
+    providerAttempts: integer("provider_attempts").default(0).notNull(),
+    cacheHitTokens: integer("cache_hit_tokens"),
+    cacheMissTokens: integer("cache_miss_tokens"),
     completedAt: timestamp("completed_at", {
       mode: "date",
       withTimezone: true,

@@ -87,7 +87,7 @@ public struct CityStoryListView: View {
                     .font(.subheadline.monospacedDigit().weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-            Text("城市剧情会在首次抵达后解锁。已解锁剧情可从任意城市搭乘剧情专机直接开展。")
+            Text(deps.access.isGuest ? "游客可体验起始城市的城市剧情；登录后可以探索更多城市。" : "城市剧情会在首次抵达后解锁。已解锁剧情可从任意城市搭乘剧情专机直接开展。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -182,6 +182,11 @@ public struct CityStoryListView: View {
     }
 
     private func open(_ chapter: CityStoryChapter, access: StoryRegionAccess) {
+        guard let profile else { return }
+        guard deps.access.allowsStory(chapter.storyID, starterRegionID: profile.starterRegionID) else {
+            deps.access.requestSignIn("游客可以体验起始城市的剧情首站，登录后即可继续后续旅程。")
+            return
+        }
         switch access {
         case .current:
             Haptics.impact(.light)

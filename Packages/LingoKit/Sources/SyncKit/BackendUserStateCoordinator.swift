@@ -52,6 +52,8 @@ public actor BackendUserStateCoordinator:
     private struct EmptyCommand: Encodable, Sendable {}
 
     private let backend: BackendClient
+    private var requestBackend: BackendClient
+    private let guestOwnerKey = "backend.state.guest-owner.v1"
     private let accountCache: AccountCacheStore
     private let economyCache: EconomyStore
     private let itemCache: ItemStore
@@ -62,6 +64,7 @@ public actor BackendUserStateCoordinator:
     private let pendingCommandsKey = "backend.commands.pending.v1"
     private var currentUserID: UUID?
     private var snapshot: BackendSyncSnapshot?
+    private var isImportingGuest = false
 
     public init(
         backend: BackendClient,
@@ -72,6 +75,7 @@ public actor BackendUserStateCoordinator:
         defaults: UserDefaults = .standard
     ) {
         self.backend = backend
+        self.requestBackend = backend
         self.accountCache = accountCache
         self.economyCache = economyCache
         self.itemCache = itemCache
@@ -82,11 +86,12 @@ public actor BackendUserStateCoordinator:
     public func activate(userID: UUID) async throws -> UserStateActivation {
         let owner = defaults.string(forKey: cachedOwnerKey).flatMap(UUID.init(uuidString:))
         let canUseOfflineCache = owner == userID
-        let isAccountSwitch = owner != nil && owner != userID
+        let isAccountSwitch = owner != nil && owner != userID && !defaults.bool(forKey: guestOwnerKey)
         if isAccountSwitch {
             try await accountCache.clearAll()
             snapshot = nil
         }
+        requestBackend = backend
         currentUserID = userID
         prunePendingCommands()
 
@@ -97,6 +102,7 @@ public actor BackendUserStateCoordinator:
                 try await refreshSnapshot(for: userID)
             }
             defaults.set(userID.uuidString.lowercased(), forKey: cachedOwnerKey)
+            defaults.set(false, forKey: guestOwnerKey)
             return .synchronized
         } catch let error as BackendClientError {
             if case .transport = error, canUseOfflineCache {
@@ -108,7 +114,7 @@ public actor BackendUserStateCoordinator:
 
     /// 只有从未绑定过账号的游客空间才可以把本地学习者资料导入首次登录账号。
     public func shouldCaptureGuestProfileForImport() -> Bool {
-        currentUserID == nil && defaults.string(forKey: cachedOwnerKey) == nil
+        defaults.bool(forKey: guestOwnerKey) || defaults.string(forKey: cachedOwnerKey) == nil
     }
 
     /// 账号已完成建档时以云端为准；否则一次性导入游客在登录前填写的资料。
@@ -139,12 +145,49 @@ public actor BackendUserStateCoordinator:
     public func activateGuest() async throws {
         currentUserID = nil
         snapshot = nil
-        if defaults.string(forKey: cachedOwnerKey) != nil {
+        if defaults.string(forKey: cachedOwnerKey) != nil && !defaults.bool(forKey: guestOwnerKey) {
             try await accountCache.clearAll()
             defaults.removeObject(forKey: cachedOwnerKey)
         }
         // Also revoke cached development-only Pro access for existing guests.
         // Only entitlements change; existing guest friends, assets and progress remain intact.
+        try await economyCache.applyAuthoritativeEntitlement(tier: .free, friendSlotLimit: 3)
+    }
+
+    /// Upgrade an existing offline guest without accepting client-supplied coins or tickets.
+    /// Local content remains in place; recognized achievements are replayed idempotently.
+    public func activateAnonymous(
+        legacyProfile: UserProfileDTO,
+        completedStories: Set<String>,
+        hadStarterTicket: Bool
+    ) async throws {
+        let client = try await backend.anonymousClient()
+        guard let identity = try await client.cachedIdentity() else { throw BackendClientError.signedOut }
+        requestBackend = client
+        currentUserID = identity.userID
+        isImportingGuest = true
+        defer { isImportingGuest = false }
+        // Load before applying, so a network error cannot erase offline onboarding details.
+        let loaded: BackendSyncSnapshot = try await client.get("/v1/sync/snapshot")
+        snapshot = loaded
+        if legacyProfile.hasCompletedOnboarding, !loaded.state.profile.hasCompletedOnboarding {
+            _ = try await completeOnboarding(starterRegionID: legacyProfile.starterRegionID ?? "london")
+        }
+        if legacyProfile.hasCompletedProfileSetup {
+            _ = try await importGuestLearnerProfileIfNeeded(legacyProfile)
+        }
+        let starter = snapshot?.state.profile.starterRegionId ?? legacyProfile.starterRegionID ?? "london"
+        for story in completedStories where JourneyAccess(isGuest: true).allowsStory(story, starterRegionID: starter) {
+            _ = try await completeStory(story)
+        }
+        if hadStarterTicket, snapshot?.state.profile.hasCompletedOnboarding == true {
+            _ = try await claimStarterTicket()
+        }
+        try await refreshSnapshot(for: identity.userID)
+        isImportingGuest = false
+        if let snapshot { try await apply(snapshot) }
+        defaults.set(identity.userID.uuidString.lowercased(), forKey: cachedOwnerKey)
+        defaults.set(true, forKey: guestOwnerKey)
         try await economyCache.applyAuthoritativeEntitlement(tier: .free, friendSlotLimit: 3)
     }
 
@@ -227,7 +270,7 @@ public actor BackendUserStateCoordinator:
         let intent = intentParts.joined(separator: ":")
         let commandID = pendingCommandID(for: intent)
         do {
-            let _: BackendUserProfile = try await backend.send(
+            let _: BackendUserProfile = try await requestBackend.send(
                 path: "/v1/me",
                 method: "PATCH",
                 body: patch,
@@ -258,7 +301,7 @@ public actor BackendUserStateCoordinator:
         let intent = "ticket:\(type.rawValue):\(normalizedCountry ?? "-")"
         let commandID = pendingCommandID(for: intent)
         do {
-            let result: BackendTicketPurchaseResult = try await backend.send(
+            let result: BackendTicketPurchaseResult = try await requestBackend.send(
                 path: "/v1/economy/tickets/purchase",
                 method: "POST",
                 body: TicketPurchase(
@@ -280,7 +323,7 @@ public actor BackendUserStateCoordinator:
         let intent = "progression:starter-ticket-v1"
         let commandID = pendingCommandID(for: intent)
         do {
-            let _: BackendTicket = try await backend.send(
+            let _: BackendTicket = try await requestBackend.send(
                 path: "/v1/progression/starter-ticket",
                 method: "POST",
                 body: EmptyCommand(),
@@ -304,14 +347,14 @@ public actor BackendUserStateCoordinator:
         let intent = "progression:onboarding:\(starterRegionID)"
         let commandID = pendingCommandID(for: intent)
         do {
-            let updated: BackendUserProfile = try await backend.send(
+            let updated: BackendUserProfile = try await requestBackend.send(
                 path: "/v1/progression/onboarding",
                 method: "POST",
                 body: OnboardingCommand(starterRegionId: starterRegionID),
                 idempotencyKey: commandID
             )
             let profile = await mapPreservingEntitlement(updated)
-            try await economyCache.replaceAuthoritativeProfile(profile)
+            if !isImportingGuest { try await economyCache.replaceAuthoritativeProfile(profile) }
             if let current = snapshot {
                 snapshot = BackendSyncSnapshot(
                     cursor: current.cursor,
@@ -334,7 +377,7 @@ public actor BackendUserStateCoordinator:
         let intent = "progression:story:\(storyID)"
         let commandID = pendingCommandID(for: intent)
         do {
-            let _: BackendStoryCompletion = try await backend.send(
+            let _: BackendStoryCompletion = try await requestBackend.send(
                 path: "/v1/progression/stories/\(storyID)/complete",
                 method: "POST",
                 body: EmptyCommand(),
@@ -361,7 +404,7 @@ public actor BackendUserStateCoordinator:
         let intent = "travel:\(targetRegionID):\(ticketID?.uuidString.lowercased() ?? "-")"
         let commandID = pendingCommandID(for: intent)
         do {
-            let result: BackendTravelResult = try await backend.send(
+            let result: BackendTravelResult = try await requestBackend.send(
                 path: "/v1/travel",
                 method: "POST",
                 body: TravelCommand(targetRegionId: targetRegionID, ticketId: ticketID),
@@ -390,7 +433,7 @@ public actor BackendUserStateCoordinator:
         var foundChanges = false
         do {
             repeat {
-                let page: BackendSyncPage = try await backend.get(
+                let page: BackendSyncPage = try await requestBackend.get(
                     "/v1/sync/changes",
                     queryItems: [
                         URLQueryItem(name: "cursor", value: nextCursor),
@@ -422,13 +465,14 @@ public actor BackendUserStateCoordinator:
     }
 
     private func refreshSnapshot(for userID: UUID) async throws {
-        let loaded: BackendSyncSnapshot = try await backend.get("/v1/sync/snapshot")
+        let loaded: BackendSyncSnapshot = try await requestBackend.get("/v1/sync/snapshot")
         try await apply(loaded)
         snapshot = loaded
         setCursor(loaded.cursor, for: userID)
     }
 
     private func apply(_ loaded: BackendSyncSnapshot) async throws {
+        guard !isImportingGuest else { return }
         let profile = await mapPreservingEntitlement(loaded.state.profile)
         let tickets = try loaded.state.tickets.map(map)
         try await economyCache.replaceAuthoritativeProfile(profile)

@@ -40,7 +40,14 @@ struct TravelSheet: View {
                 }
             }
 
-            if !requiresTicket {
+            if deps.access.isGuest {
+                Text("登录后即可飞往其他城市。现有机票和旅行成果会保留。")
+                    .font(.subheadline)
+                Button("登录并继续旅程") {
+                    deps.access.requestSignIn("登录后即可飞往其他城市。")
+                }
+                .buttonStyle(.dsActionPrimary)
+            } else if !requiresTicket {
                 Label("已经去过，可直接前往", systemImage: "checkmark.seal.fill")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.dsSuccess)
@@ -103,6 +110,10 @@ struct TravelSheet: View {
     }
 
     private func travel(with ticket: ItemDTO? = nil) {
+        guard !deps.access.isGuest, deps.travelService.allowsTravel else {
+            deps.access.requestSignIn("登录后即可飞往其他城市。")
+            return
+        }
         isWorking = true
         Task {
             do {
@@ -116,6 +127,10 @@ struct TravelSheet: View {
     }
 
     private func buyAndTravel() {
+        guard !deps.access.isGuest, deps.travelService.allowsTravel else {
+            deps.access.requestSignIn("登录后即可飞往其他城市。")
+            return
+        }
         isWorking = true
         Task {
             do {
@@ -133,6 +148,8 @@ struct TravelSheet: View {
         if case EconomyStore.EconomyError.insufficientCoins = error { return "金币不足" }
         if let travelError = error as? TravelService.TravelError {
             switch travelError {
+            case .loginRequired:
+                return "登录后即可飞往其他城市"
             case .ticketRequired:
                 return "首次前往需要一张可用机票"
             case .ticketNotUsable:

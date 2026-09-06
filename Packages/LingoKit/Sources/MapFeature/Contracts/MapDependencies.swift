@@ -2,6 +2,7 @@ import DomainKit
 import PersistenceKit
 
 public struct MapDependencies: Sendable {
+    public let access: JourneyAccess
     public let economyStore: EconomyStore
     public let itemStore: ItemStore
     public let stubStore: TicketStubStore
@@ -11,6 +12,7 @@ public struct MapDependencies: Sendable {
     public let storyProgress: StoryProgressStore
 
     public init(
+        access: JourneyAccess = JourneyAccess(),
         economyStore: EconomyStore,
         itemStore: ItemStore,
         stubStore: TicketStubStore,
@@ -19,6 +21,7 @@ public struct MapDependencies: Sendable {
         regionCatalog: RegionCatalog,
         storyProgress: StoryProgressStore
     ) {
+        self.access = access
         self.economyStore = economyStore
         self.itemStore = itemStore
         self.stubStore = stubStore

@@ -20,6 +20,7 @@ public struct ActivitiesView: View {
     @State private var isRollingID: String?
     @State private var explorationProgress: ActivityExplorationPresentation?
     @State private var activityMoment: ActivityMomentPresentation?
+    @State private var activityError: String?
     @State private var encounterResult: EncounterPresentation?
 
     public init(
@@ -74,6 +75,10 @@ public struct ActivitiesView: View {
                 activityMoment = nil
             }
         }
+        .alert("暂时无法邂逅", isPresented: Binding(get: { activityError != nil }, set: { if !$0 { activityError = nil } })) {
+            if deps.access.isGuest { Button("登录") { deps.access.requestSignIn("登录后可获得每日体验额度。") } }
+            Button("知道了", role: .cancel) {}
+        } message: { Text(activityError ?? "") }
         .sheet(item: $encounterResult) { result in
             EncounterCardSheet(presentation: result, deps: deps, chatBuilder: chatBuilder) {
                 encounterResult = nil
@@ -462,6 +467,7 @@ public struct ActivitiesView: View {
                 return
             }
 
+            do {
             let origin = EncounterService.rollOrigin(roll: .random(in: 0..<1))
             let currentProfile = try? await deps.economyStore.profile()
             let context = BackendNPCEncounterContext(regionID: region.id, activityID: activity.id, category: activity.category.rawValue)
@@ -477,13 +483,13 @@ public struct ActivitiesView: View {
                 let existing = try? await deps.rosterStore.character(id: selected.id)
                 publicCard = existing?.card ?? PublicNPCAdapter.characterCard(from: selected)
                 publicTravelerID = selected.travelerId
-                let opening = await service.openingForExisting(card: publicCard, activityContext: scene, alreadyKnown: existing != nil)
+                let opening = try await service.openingForExisting(card: publicCard, activityContext: scene, alreadyKnown: existing != nil)
                 encounter = .init(card: publicCard, openingLine: opening,
                     origin: publicCard.nationality.caseInsensitiveCompare(region.countryNameEn) == .orderedSame ? .local : .foreigner,
                     isFallback: false)
             } else {
                 let names = Set(((try? await deps.rosterStore.allCharacters()) ?? []).map(\.card.name))
-                encounter = await service.generateEncounter(origin: origin, region: region,
+                encounter = try await service.generateEncounter(origin: origin, region: region,
                     userLevel: currentProfile?.difficultyLevel ?? .junior3, existingNames: names, activityContext: scene)
                 generatedCharacterID = UUID()
                 publicCard = encounter.card
@@ -546,6 +552,11 @@ public struct ActivitiesView: View {
                 region: region,
                 companionName: companion?.card.name
             )
+            } catch {
+                await minimumJourney.value
+                await hideExplorationProgress()
+                activityError = error.localizedDescription
+            }
         }
     }
 

@@ -60,6 +60,11 @@ public actor BackendClient {
     /// Anonymous and registered credentials remain separate; this is only for opted-in APIs.
     public func actorClient() async throws -> BackendClient {
         if try hasUsableStoredSessionForGuestAccess() { return self }
+        return try await anonymousClient()
+    }
+
+    /// Used only to finish the old guest journey while a newly logged-in account is being activated.
+    public func anonymousClient() async throws -> BackendClient {
         if let guestBootstrapTask { return try await guestBootstrapTask.value }
         guard let guestCredentialStore, let guestInstallationKey else { throw BackendClientError.signedOut }
         let client = guestBackend ?? BackendClient(configuration: configuration, credentialStore: guestCredentialStore, transport: transport)
@@ -70,7 +75,16 @@ public actor BackendClient {
             let device: Device
         }
         let task = Task<BackendClient, Error> {
-            if try await client.cachedIdentity() != nil { return client }
+            if try await client.cachedIdentity() != nil {
+                do {
+                    _ = try await client.validAccessToken()
+                    return client
+                } catch BackendClientError.signedOut {
+                    // Reissue this installation's existing identity, without replenishing its quota.
+                } catch BackendClientError.api(_, _, _, let status) where status == 401 {
+                    // A claimed installation is rejected by the guest endpoint below.
+                }
+            }
             let token: AuthTokenResponse = try await client.send(
                 path: "/v1/auth/guest", method: "POST",
                 body: GuestBody(installationKey: guestInstallationKey, device: .init(deviceId: "anonymous-ios")),

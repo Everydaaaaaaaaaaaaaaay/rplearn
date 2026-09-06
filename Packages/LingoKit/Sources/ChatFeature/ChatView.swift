@@ -28,6 +28,7 @@ public struct ChatView: View {
     @State var shakePhase = false
     @State var isMascotPromptDismissed = false
     @State var showsRealtimeConversation = false
+    @State private var accessAfterVoice = false
     @State var isNearConversationBottom = true
     @State var unseenIncomingMessageCount = 0
     @State var knownLatestMessageID: UUID?
@@ -160,11 +161,13 @@ public struct ChatView: View {
         }
         .fullScreenCover(isPresented: $showsRealtimeConversation, onDismiss: {
             Task { await viewModel.refreshMessages() }
+            if accessAfterVoice { accessAfterVoice = false; deps.onShowAccess() }
         }) {
             RealtimeConversationView(
                 chat: viewModel,
                 deps: deps,
-                onSpeechPlayback: {}
+                onSpeechPlayback: {},
+                onRequestAccess: { accessAfterVoice = true }
             )
         }
         .sheet(isPresented: $showsContactDetails) {
@@ -273,6 +276,10 @@ public struct ChatView: View {
                             .transition(.opacity)
                         }
                         if let error = viewModel.errorMessage {
+                            if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
+                                Button("查看用量与权益", action: deps.onShowAccess)
+                                    .font(.footnote.weight(.semibold))
+                            }
                             Label(error, systemImage: "exclamationmark.triangle.fill")
                                 .font(.footnote)
                                 .foregroundStyle(Color.dsDanger)

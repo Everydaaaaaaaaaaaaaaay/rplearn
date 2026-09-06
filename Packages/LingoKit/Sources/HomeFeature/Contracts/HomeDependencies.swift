@@ -6,6 +6,7 @@ import PersistenceKit
 import SpeechKit
 
 public struct HomeDependencies: Sendable {
+    public let access: JourneyAccess
     public let economyStore: EconomyStore
     public let storyProgress: StoryProgressStore
     public let travelService: TravelService
@@ -21,6 +22,7 @@ public struct HomeDependencies: Sendable {
     public let npcRegistry: (any PublicNPCRegistry)?
 
     public init(
+        access: JourneyAccess = JourneyAccess(),
         economyStore: EconomyStore,
         storyProgress: StoryProgressStore,
         travelService: TravelService,
@@ -35,6 +37,7 @@ public struct HomeDependencies: Sendable {
         exampleTranslationActions: DictExampleTranslationActions,
         npcRegistry: (any PublicNPCRegistry)? = nil
     ) {
+        self.access = access
         self.economyStore = economyStore
         self.storyProgress = storyProgress
         self.travelService = travelService

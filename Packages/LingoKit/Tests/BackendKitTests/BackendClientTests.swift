@@ -117,6 +117,33 @@ struct BackendClientTests {
         })
     }
 
+    @Test("过期游客会话用原安装凭据恢复，不污染账号凭证")
+    func expiredGuestSessionRecovers() async throws {
+        let account = MemoryCredentialStore()
+        let guest = MemoryCredentialStore(StoredAuthCredential(
+            refreshToken: "invalid-refresh",
+            refreshTokenExpiresAt: Date(timeIntervalSince1970: 1_893_456_000),
+            sessionID: UUID(), userID: UUID()
+        ))
+        let transport = MockTransport()
+        await transport.setRefreshStatus(401)
+        let installationKey = String(repeating: "b", count: 64)
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: account, transport: transport,
+            guestCredentialStore: guest, guestInstallationKey: installationKey
+        )
+        let anonymous = try await client.anonymousClient()
+        let probe: Probe = try await anonymous.get("/v1/probe")
+        #expect(probe.ok)
+        #expect(try account.load() == nil)
+        let requests = await transport.requests
+        let bootstrap = try #require(requests.first { $0.url?.path == "/v1/auth/guest" })
+        let body = try #require(bootstrap.httpBody)
+        let payload = try #require(JSONSerialization.jsonObject(with: body) as? [String: Any])
+        #expect(payload["installationKey"] as? String == installationKey)
+    }
+
     @Test("login stores only the refresh credential and authenticates later requests")
     func loginAndAuthenticate() async throws {
         let store = MemoryCredentialStore()

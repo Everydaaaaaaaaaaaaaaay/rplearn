@@ -238,7 +238,7 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
 }
 
 /// 用户档案快照。
-public struct UserProfileDTO: Sendable, Equatable {
+public struct UserProfileDTO: Codable, Sendable, Equatable {
     public var displayName: String
     public var currentRegionID: String
     /// 首次选择伙伴所对应的起始城市；旅行后仍保持不变，用于恢复跨平台主线路线。

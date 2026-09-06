@@ -1,6 +1,6 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
 import { z, type ZodType } from "zod";
-import { authenticateRequest } from "../auth/http.js";
+import { authenticateActorRequest, authenticateRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import { AppError } from "../../shared/errors.js";
 import type { DomainService } from "./service.js";
@@ -152,7 +152,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       return domainService.getSnapshot(identity.userId);
     },
   );
@@ -166,7 +166,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const patch = parse(profilePatchSchema, request.body);
       return domainService.updateProfile(identity.userId, commandId(request), {
         ...(patch.difficulty === undefined ? {} : { difficulty: patch.difficulty }),
@@ -209,7 +209,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const selection = parse(onboardingSchema, request.body);
       return domainService.completeOnboarding(
         identity.userId,
@@ -228,7 +228,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const parameters = parse(storyParametersSchema, request.params);
       return domainService.completeStory(
         identity.userId,
@@ -247,7 +247,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       return domainService.claimStarterTicket(identity.userId, commandId(request));
     },
   );
@@ -261,7 +261,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const body = parse(ticketPurchaseSchema, request.body);
       return domainService.purchaseTicket(
         identity.userId,
@@ -281,7 +281,7 @@ export function registerDomainRoutes(
       },
     },
     async (request) => {
-      const identity = await authenticateRequest(request, authService);
+      const identity = await authenticateActorRequest(request, authService);
       const body = parse(travelSchema, request.body);
       return domainService.travel(
         identity.userId,

@@ -4,6 +4,20 @@ import Testing
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
+    @Test("游客首站完成与云端检查点合并，保留双方剧情标记")
+    func mergesGuestStoryAchievements() throws {
+        let local = LocalContentRecord(resourceType: .storyProgress, resourceID: "mainline_london", parentID: nil,
+            payloadJSON: "{\"completedAt\":10,\"flags\":{\"guest\":true,\"shared\":true}}")
+        let remote = RemoteContentRecord(createdAt: .now, deletedAt: nil, parentID: nil,
+            payloadJSON: "{\"schemaVersion\":1,\"currentNodeId\":\"start\",\"flags\":{\"cloud\":true,\"shared\":false}}",
+            resourceID: "mainline_london", resourceType: .storyProgress, updatedAt: .now, version: 4)
+        let merged = try #require(try ContentSyncStore.mergeGuest(local: local, remote: remote))
+        let payload = try JSONDecoder().decode(ContentStoryProgressPayload.self, from: Data(merged.payloadJSON.utf8))
+        #expect(payload.completedAt != nil)
+        #expect(payload.flags == ["guest": true, "cloud": true, "shared": true])
+        #expect(merged.version == 4)
+    }
+
     @Test("发送中再次编辑会生成下一版本，确认后清空 outbox")
     func versionsInFlightEdits() async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)

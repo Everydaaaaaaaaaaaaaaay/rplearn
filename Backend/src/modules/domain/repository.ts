@@ -1,6 +1,7 @@
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
+import { loadAccessPolicy } from "../../infrastructure/access-policy.js";
 import { newEntityId } from "../../shared/id.js";
 import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
 import { mapProfile, mapTicket, type ProfileRow } from "./repository-mappers.js";
@@ -29,8 +30,8 @@ export class DomainRepository {
 
   async ensureProfile(userId: string): Promise<void> {
     await this.resource.sql`
-      insert into app.user_profiles (user_id)
-      values (${userId})
+      insert into app.user_profiles (user_id,friend_slot_limit)
+      values (${userId},case when exists(select 1 from app.guest_installations where user_id=${userId}) then 3 else 5 end)
       on conflict (user_id) do nothing
     `;
   }
@@ -190,6 +191,25 @@ export class DomainRepository {
   ): Promise<Readonly<{ coins: number; rewardCoins: number; storyId: string }>> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql) => {
+      if ((await loadAccessPolicy(sql, userId)).isGuest) {
+        const [journey] = await sql<
+          { starter_region_id: string | null; has_completed_onboarding: boolean }[]
+        >`select starter_region_id,has_completed_onboarding from app.user_profiles where user_id=${userId}`;
+        if (
+          !journey?.has_completed_onboarding ||
+          ![
+            `mainline_${journey.starter_region_id ?? ""}`,
+            `mainline_${journey.starter_region_id ?? ""}_2`,
+          ].includes(storyId)
+        ) {
+          throw new AppError({
+            code: "LOGIN_REQUIRED",
+            message: "游客开放起始城市剧情首站，登录后可继续旅程。",
+            statusCode: 403,
+          });
+        }
+      }
+
       await sql`
         select pg_advisory_xact_lock(
           hashtextextended(${`${userId}:story:${storyId}`}, 0)
@@ -256,6 +276,15 @@ export class DomainRepository {
     operation: (sql: TransactionSql) => Promise<T>,
   ): Promise<T> {
     const result = await this.resource.sql.begin(async (sql) => {
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`domain:${userId}`},0))`;
+      const [claimed] =
+        await sql`select 1 from app.guest_installations where user_id=${userId} and claimed_at is not null`;
+      if (claimed)
+        throw new AppError({
+          code: "GUEST_ALREADY_CLAIMED",
+          message: "请登录已认领此旅程的账号。",
+          statusCode: 403,
+        });
       await sql`
         select pg_advisory_xact_lock(
           hashtextextended(${`${userId}:${command.commandId}`}, 0)
@@ -325,6 +354,16 @@ export class DomainRepository {
   ): Promise<UserProfile> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql): Promise<UserProfile> => {
+      if (
+        patch.hasCompletedOnboarding !== undefined &&
+        (await loadAccessPolicy(sql, userId)).isGuest
+      ) {
+        throw new AppError({
+          code: "ONBOARDING_STATE_READ_ONLY",
+          message: "起始城市选择完成后不可重置。",
+          statusCode: 403,
+        });
+      }
       if (patch.hasCompletedOnboarding === true) {
         const [journey] = await sql<{ starter_region_id: string | null }[]>`
           select starter_region_id
@@ -431,6 +470,13 @@ export class DomainRepository {
   ): Promise<Readonly<{ coins: number; ticket: Ticket }>> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql) => {
+      if ((await loadAccessPolicy(sql, userId)).isGuest)
+        throw new AppError({
+          code: "LOGIN_REQUIRED",
+          message: "登录后即可购票和飞往其他城市。",
+          statusCode: 403,
+        });
+
       const normalizedCountry =
         type === "country" ? countryCode?.toUpperCase() : undefined;
       if (type === "country" && normalizedCountry === undefined) {
@@ -631,6 +677,13 @@ export class DomainRepository {
   ): Promise<TravelResult> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql) => {
+      if ((await loadAccessPolicy(sql, userId)).isGuest)
+        throw new AppError({
+          code: "LOGIN_REQUIRED",
+          message: "登录后即可购票和飞往其他城市。",
+          statusCode: 403,
+        });
+
       const [profile] = await sql<{ current_region_id: string; version: number }[]>`
         select current_region_id, version
         from app.user_profiles

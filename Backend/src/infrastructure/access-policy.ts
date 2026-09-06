@@ -31,18 +31,20 @@ export async function loadAccessPolicy(
     select exists(select 1 from app.guest_installations where user_id = ${userId})
       or exists(select 1 from app.ai_guest_principals where user_id = ${userId}) as guest
   `;
-  const [plan] = await sql<{ tier: string; flags: Record<string, unknown> }[]>`
-    select p.tier, p.feature_flags as flags from app.billing_plans p
+  const [plan] = await sql<{ tier: string; flags: string }[]>`
+    select p.tier, p.feature_flags::text as flags from app.billing_plans p
     where p.is_active and (p.tier = 'free' or (${identity?.guest !== true} and exists (
       select 1 from app.entitlement_grants g where g.user_id = ${userId} and g.plan_id = p.id
       and g.status in ('active', 'grace') and (g.valid_until is null or g.valid_until > now())
     ))) order by p.rank desc limit 1
   `;
-  const [configuration] = await sql<{ value: Record<string, unknown> }[]>`
-    select value from app.service_metadata where key = 'guest-access-policy-v1'
+  const [configuration] = await sql<{ value: string }[]>`
+    select value::text from app.service_metadata where key = 'guest-access-policy-v1'
   `;
   const isGuest = identity?.guest === true;
-  const flags = isGuest ? (configuration?.value ?? {}) : (plan?.flags ?? {});
+  const flags = JSON.parse(
+    (isGuest ? configuration?.value : plan?.flags) ?? "{}",
+  ) as Record<string, unknown>;
   const code = isGuest
     ? "guest"
     : plan?.tier === "pro"

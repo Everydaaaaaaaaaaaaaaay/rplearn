@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 /// 首次抵达城市时保存的纪念票根。
-public struct TicketStubDTO: Sendable, Equatable, Identifiable {
+public struct TicketStubDTO: Codable, Sendable, Equatable, Identifiable {
     public var id: UUID
     public var fromRegionID: String
     public var toRegionID: String

@@ -1,3 +1,4 @@
+import BackendKit
 import AVFoundation
 import CoreKit
 import DesignSystem
@@ -15,6 +16,10 @@ private final class RealtimeConversationCoordinator {
     let chat: ChatViewModel
     let session: RealtimeVoiceSession
     private let speech: any SpeechService
+    private let accessClient: BackendClient?
+    var accessError: String?
+    private var leaseTask: Task<Void, Never>?
+    private var stopped = false
 
     init(chat: ChatViewModel, deps: ChatDependencies) {
         let character = chat.character
@@ -36,6 +41,7 @@ private final class RealtimeConversationCoordinator {
             gender: character.card.gender.rawValue,
             nationality: character.card.nationality
         )
+        self.accessClient = deps.accessClient
         self.chat = chat
         self.session = RealtimeVoiceSession(
             audioSession: deps.audioSession,
@@ -53,7 +59,56 @@ private final class RealtimeConversationCoordinator {
         if chat.conversation == nil {
             await chat.load()
         }
+        stopped = false
+        if accessClient != nil {
+            do { try await renewLease() }
+            catch { accessError = error.localizedDescription; return }
+        }
+        guard !stopped else { return }
         await session.start()
+    }
+
+    func stop() async {
+        stopped = true
+        leaseTask?.cancel()
+        leaseTask = nil
+        await session.stop()
+        if let id = chat.voiceLeaseID {
+            chat.voiceLeaseID = nil
+            try? await accessClient?.stopVoice(operationID: id)
+        }
+    }
+
+    private func renewLease() async throws {
+        guard let accessClient else { return }
+        if let previous = chat.voiceLeaseID {
+            try await accessClient.stopVoice(operationID: previous)
+            chat.voiceLeaseID = nil
+        }
+        let operationID = UUID()
+        let lease: BackendVoiceLease
+        do { lease = try await accessClient.reserveVoice(operationID: operationID) }
+        catch {
+            try? await accessClient.stopVoice(operationID: operationID)
+            throw error
+        }
+        guard !stopped else {
+            try? await accessClient.stopVoice(operationID: lease.operationId)
+            return
+        }
+        chat.voiceLeaseID = lease.operationId
+        leaseTask = Task { [weak self] in
+            do {
+                try await Task.sleep(for: .seconds(lease.amount))
+                guard let self, !self.stopped else { return }
+                try await self.renewLease()
+            } catch is CancellationError { return }
+            catch {
+                guard let self else { return }
+                self.accessError = error.localizedDescription
+                await self.stop()
+            }
+        }
     }
 
     private static func turnPolicy(for level: DifficultyLevel) -> VoiceTurnPolicy {
@@ -79,16 +134,19 @@ struct RealtimeConversationView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let onSpeechPlayback: () -> Void
+    private let onRequestAccess: () -> Void
 
     init(
         chat: ChatViewModel,
         deps: ChatDependencies,
-        onSpeechPlayback: @escaping () -> Void
+        onSpeechPlayback: @escaping () -> Void,
+        onRequestAccess: @escaping () -> Void
     ) {
         _coordinator = State(
             initialValue: RealtimeConversationCoordinator(chat: chat, deps: deps)
         )
         self.onSpeechPlayback = onSpeechPlayback
+        self.onRequestAccess = onRequestAccess
     }
 
     private var session: RealtimeVoiceSession { coordinator.session }
@@ -140,7 +198,11 @@ struct RealtimeConversationView: View {
         .onReceive(
             NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)
         ) { handleAudioInterruption($0) }
-        .onDisappear { Task { await session.stop() } }
+        .onDisappear { Task { await coordinator.stop() } }
+        .alert("语音用量", isPresented: Binding(get: { coordinator.accessError != nil }, set: { if !$0 { coordinator.accessError = nil } })) {
+            Button("查看用量与权益") { onRequestAccess(); endConversation() }
+            Button("结束", role: .cancel) { endConversation() }
+        } message: { Text(coordinator.accessError ?? "") }
     }
 
     private var background: some View {
@@ -515,7 +577,7 @@ struct RealtimeConversationView: View {
     private func endConversation() {
         Haptics.impact(.medium)
         Task {
-            await session.stop()
+            await coordinator.stop()
             dismiss()
         }
     }

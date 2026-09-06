@@ -38,6 +38,12 @@ struct EncounterCardSheet: View {
 
                 encounterHeader
                 characterCard
+                if isFriendSlotFull, deps.access.isGuest {
+                    Button("登录，解锁 5 个好友位") {
+                        onDismiss()
+                        deps.access.requestSignIn("登录即可将普通好友位从 3 个提升到 5 个，剧情旅伴不占位。")
+                    }.buttonStyle(.dsActionPrimary)
+                }
 
                 if let friendMessage {
                     Label(

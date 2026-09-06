@@ -19,6 +19,12 @@ public final class BillingController {
     public private(set) var products: [PurchasableProduct] = []
     public private(set) var tier: SubscriptionTier = .free
 
+    /// Launch with one primary paid tier while keeping existing higher-tier subscriptions manageable.
+    public var offeredProducts: [PurchasableProduct] {
+        let primary: SubscriptionTier = products.contains { $0.tier == .plus } ? .plus : .pro
+        return products.filter { $0.tier == primary || $0.tier == tier }
+    }
+
     private let backend: BackendClient
     private let defaults: UserDefaults
     private let economyStore: EconomyStore

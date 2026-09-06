@@ -94,6 +94,7 @@ export class AiRepository {
     route: AiRouteConfig,
     dailyLimit: number,
     inputCharacters: number,
+    operationId?: string,
   ): Promise<Readonly<{ requestId: string; startedAt: number }>> {
     const requestId = newEntityId();
     await this.database.sql.begin(async (sql) => {
@@ -136,7 +137,7 @@ export class AiRepository {
           provider,
           model,
           config_version,
-          input_characters
+          input_characters, operation_id
         )
         values (
           ${requestId},
@@ -145,7 +146,7 @@ export class AiRepository {
           ${route.provider}::app.ai_provider,
           ${route.model},
           ${route.configVersion},
-          ${inputCharacters}
+          ${inputCharacters}, ${operationId ?? null}
         )
       `;
     });
@@ -153,6 +154,11 @@ export class AiRepository {
       requestId,
       startedAt: Date.now(),
     };
+  }
+
+  async recordProviderAttempt(requestId: string): Promise<void> {
+    await this.database
+      .sql`update app.ai_requests set provider_attempts=provider_attempts+1 where id=${requestId}`;
   }
 
   async succeed(
@@ -168,6 +174,8 @@ export class AiRepository {
         set status = 'succeeded',
             input_tokens = ${usage.inputTokens},
             output_tokens = ${usage.outputTokens},
+            cache_hit_tokens = ${usage.cacheHitTokens ?? null},
+            cache_miss_tokens = ${usage.cacheMissTokens ?? null},
             upstream_request_id = ${upstreamRequestId},
             latency_ms = ${Math.max(0, Date.now() - startedAt)},
             completed_at = now()

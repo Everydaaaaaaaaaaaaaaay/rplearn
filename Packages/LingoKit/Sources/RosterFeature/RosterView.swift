@@ -54,7 +54,7 @@ public struct RosterView: View {
         RosterPresentationPolicy.sorted(friends.filter { !$0.isFavorite })
     }
 
-    private var slotLimit: Int { max(profile?.friendSlotLimit ?? 10, 1) }
+    private var slotLimit: Int { max(profile?.friendSlotLimit ?? 3, 1) }
 
     private var normalizedSearchText: String {
         searchText.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -37,6 +37,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         await runtime.database
           .sql`insert into app.guest_installations (user_id, installation_hash) values (${id}, ${id.replaceAll("-", "").repeat(2)})`;
       }
+      await runtime.database
+        .sql`insert into app.user_profiles(user_id,starter_region_id,current_region_id,has_completed_onboarding)
+        values (${viewer},'london','london',true),(${limitViewer},'london','london',true)`;
       for (const [i, id] of npcs.entries()) {
         const avatar = avatars[i];
         if (!avatar) throw new Error("Missing fixture avatar");
@@ -122,8 +125,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       );
       expect(results.filter((r) => r.status === "fulfilled")).toHaveLength(3);
       expect(results.filter((r) => r.status === "rejected")).toHaveLength(1);
-      const rows = await runtime.database
-        .sql<{ npc_id: string }[]>`select npc_id::text from app.user_npc_relationships where user_id = ${limitViewer} and status = 'friend'`;
+      const rows = await runtime.database.sql<
+        { npc_id: string }[]
+      >`select npc_id::text from app.user_npc_relationships where user_id = ${limitViewer} and status = 'friend'`;
       expect(rows).toHaveLength(3);
       const id = rows[0]?.npc_id;
       if (typeof id !== "string") throw new Error("Missing friend fixture");

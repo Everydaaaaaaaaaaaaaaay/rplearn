@@ -9,6 +9,8 @@ import SpeechKit
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    public let accessClient: BackendClient?
+    public let onShowAccess: @MainActor @Sendable () -> Void
     public let chatStore: ChatStore
     public let rosterStore: RosterStore
     public let favorites: FavoritesStore
@@ -27,6 +29,8 @@ public struct ChatDependencies: Sendable {
     public let npcRegistry: (any PublicNPCRegistry)?
 
     public init(
+        accessClient: BackendClient? = nil,
+        onShowAccess: @escaping @MainActor @Sendable () -> Void = {},
         chatStore: ChatStore,
         rosterStore: RosterStore,
         favorites: FavoritesStore,
@@ -44,6 +48,8 @@ public struct ChatDependencies: Sendable {
         voiceMedia: VoiceMediaCoordinator,
         npcRegistry: (any PublicNPCRegistry)? = nil
     ) {
+        self.accessClient = accessClient
+        self.onShowAccess = onShowAccess
         self.chatStore = chatStore
         self.rosterStore = rosterStore
         self.favorites = favorites

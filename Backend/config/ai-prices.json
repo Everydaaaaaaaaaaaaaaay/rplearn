@@ -1,0 +1,26 @@
+{
+  "version": "deepseek-cny-observed-2026-09-06",
+  "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+  "observedAt": "2026-09-06T10:15:00Z",
+  "currency": "CNY",
+  "models": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "effectiveFrom": "2026-09-06T10:15:00Z",
+      "inputPerMillion": 3,
+      "cachedInputPerMillion": 0.1,
+      "outputPerMillion": 9,
+      "offPeakMultiplier": 0.5
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "effectiveFrom": "2026-09-06T10:15:00Z",
+      "inputPerMillion": 9,
+      "cachedInputPerMillion": 0.3,
+      "outputPerMillion": 27,
+      "offPeakMultiplier": 0.5
+    }
+  ]
+}

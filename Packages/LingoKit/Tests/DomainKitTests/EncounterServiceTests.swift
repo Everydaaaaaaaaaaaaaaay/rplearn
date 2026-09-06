@@ -41,15 +41,24 @@ struct EncounterServiceTests {
         #expect(EncounterService.rollOrigin(roll: 0.999) == .foreigner)
     }
 
+    @Test("额度耗尽不会退回模板卡或继续重试")
+    func exhaustedQuotaStopsGeneration() async throws {
+        let mock = MockLLMProvider(completeHandler: { _ in throw LLMError.accessRestricted("额度已用完") })
+        let service = EncounterService(llm: mock)
+        await #expect(throws: LLMError.accessRestricted("额度已用完")) {
+            try await service.generateEncounter(origin: .local, region: region, userLevel: .junior3, existingNames: [])
+        }
+    }
+
     @Test("LLM 生成成功：解码 + 校验 + regionID 绑定当前地区")
-    func generationSuccess() async {
+    func generationSuccess() async throws {
         let mock = MockLLMProvider(completeHandler: { request in
             #expect(request.tier == .balanced)
             #expect(request.temperature == 1.0)
             return self.validJSON
         })
         let service = EncounterService(llm: mock)
-        let encounter = await service.generateEncounter(
+        let encounter = try await service.generateEncounter(
             origin: .local, region: region, userLevel: .junior3, existingNames: []
         )
         #expect(!encounter.isFallback)
@@ -62,10 +71,10 @@ struct EncounterServiceTests {
     }
 
     @Test("姓名重复触发重试，仍重复则回退模板卡")
-    func duplicateNameFallsBack() async {
+    func duplicateNameFallsBack() async throws {
         let mock = MockLLMProvider(completeHandler: { _ in self.validJSON })
         let service = EncounterService(llm: mock)
-        let encounter = await service.generateEncounter(
+        let encounter = try await service.generateEncounter(
             origin: .local, region: region, userLevel: .junior3,
             existingNames: ["Poppy Hale"] // 与生成结果重名
         )
@@ -75,13 +84,13 @@ struct EncounterServiceTests {
     }
 
     @Test("模型返回英文爱好时重试并回退中文模板")
-    func englishHobbiesFallBackToLocalizedTemplate() async {
+    func englishHobbiesFallBackToLocalizedTemplate() async throws {
         let englishJSON = validJSON.replacingOccurrences(
             of: #""hobbies":["园艺","骑行"]"#,
             with: #""hobbies":["gardening","cycling"]"#
         )
         let mock = MockLLMProvider(completeHandler: { _ in englishJSON })
-        let encounter = await EncounterService(llm: mock).generateEncounter(
+        let encounter = try await EncounterService(llm: mock).generateEncounter(
             origin: .local,
             region: region,
             userLevel: .junior3,
@@ -93,12 +102,12 @@ struct EncounterServiceTests {
     }
 
     @Test("LLM 全挂时回退模板卡，且避开已有姓名")
-    func llmFailureFallsBack() async {
+    func llmFailureFallsBack() async throws {
         let mock = MockLLMProvider(completeHandler: { _ in
             throw LLMError.http(status: 500, message: "down")
         })
         let service = EncounterService(llm: mock)
-        let encounter = await service.generateEncounter(
+        let encounter = try await service.generateEncounter(
             origin: .foreigner, region: region, userLevel: .senior1,
             existingNames: ["Sam Porter"]
         )

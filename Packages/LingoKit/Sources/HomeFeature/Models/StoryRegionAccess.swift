@@ -25,6 +25,8 @@ enum StoryRegionAccess: Equatable {
 
 func storyTravelErrorMessage(_ error: Error) -> String {
     switch error as? TravelService.TravelError {
+    case .loginRequired:
+        "登录后即可继续旅程，当前机票与进度会保留。"
     case .ticketRequired:
         "这座城市尚未解锁，请先在地图使用机票完成首次抵达。"
     case .ticketNotUsable:

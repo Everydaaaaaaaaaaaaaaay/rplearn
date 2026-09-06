@@ -1,3 +1,5 @@
+import { createAccessService } from "./modules/access/service.js";
+import { registerAccessRoutes } from "./modules/access/routes.js";
 import "dotenv/config";
 import { shutdownTelemetry } from "./instrumentation.js";
 import { buildApp } from "./app.js";
@@ -74,6 +76,7 @@ async function main(): Promise<void> {
   registerAuditHooks(app, config, dependencies.database);
   const authService = await createAuthService(config, dependencies.database);
   registerAuthRoutes(app, authService);
+  registerAccessRoutes(app, authService, createAccessService(dependencies.database));
   registerGuestRoutes(
     app,
     authService,
@@ -122,7 +125,7 @@ async function main(): Promise<void> {
     createDeepSeekClient(config),
   );
   registerAiRoutes(app, authService, aiService, {
-    guestAccessEnabled: config.aiGuestAccessEnabled,
+    guestAccessEnabled: false,
   });
   const dictionaryTranslationService = createDictionaryTranslationService(
     config,
@@ -139,7 +142,7 @@ async function main(): Promise<void> {
     app,
     authService,
     dictionaryTranslationService,
-    config.aiGuestAccessEnabled ? { resolveGuestUser: aiService.resolveGuestUser } : {},
+    {},
   );
   if (config.adminApiEnabled) {
     const authenticateAdmin = createAdminAuthenticator(config.adminApiKeys);
