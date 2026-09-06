@@ -6,8 +6,27 @@ enum HomeDepartureCanvas {
     static let width: CGFloat = 402
     static let height: CGFloat = width * 1844 / 853
 
-    /// 最低入口位于画布约 72% 处；短屏按这段有效内容整体缩放。
+    /// 包括倾斜热区四角的有效内容下界；底栏空间另行预留。
     static let interactiveContentBottom: CGFloat = 760
+
+    struct Placement {
+        let scale: CGFloat
+        let horizontalInset: CGFloat
+        let height: CGFloat
+    }
+
+    static func placement(in viewport: CGSize) -> Placement {
+        let widthScale = viewport.width / width
+        // SE 的浮动底栏也覆盖内容；不能将整个屏高当作可点击高度。
+        // 统一缩放背景/投影/热区，保留 96pt 底栏与呼吸空间。
+        let heightScale = max(1, viewport.height - 96) / interactiveContentBottom
+        let scale = max(0.0001, min(widthScale, heightScale))
+        return Placement(
+            scale: scale,
+            horizontalInset: max(0, (viewport.width - width * scale) / 2),
+            height: max(height, viewport.height / scale)
+        )
+    }
 }
 
 enum HomeSceneEntryID: String, CaseIterable, Sendable {
@@ -21,6 +40,7 @@ enum HomeSceneEntryID: String, CaseIterable, Sendable {
 enum HomePhotoSurfaceID: String, Sendable {
     case screen
     case doorLintel
+    case door
     case wall
     case floor
 }
@@ -170,6 +190,7 @@ struct HomePerspectiveCalibration: Sendable {
         switch id {
         case .screen: screen
         case .doorLintel: doorLintel
+        case .door: doorLintel // 新城市必须提供独立 photoSurface；旧标定仅作兼容回退。
         case .wall: wall
         case .floor: floor
         }
@@ -245,13 +266,15 @@ struct HomeDepartureHotspotLayout: Sendable {
     let hitSize: CGSize
     let renderSize: CGSize
     let surface: HomePhotoSurfaceID
+    /// 每张城市照片独立测量。渲染和点击投影必须读取同一个承载面。
+    var photoSurface: HomePhotoSurface? = nil
 
     func projectedRegion(
         size requestedSize: CGSize? = nil,
         calibration: HomePerspectiveCalibration = .production
     ) -> HomeProjectedRegion {
         let target = CGPoint(x: center.x, y: center.y)
-        let surface = calibration.surface(self.surface)
+        let surface = photoSurface ?? calibration.surface(self.surface)
         guard let inverse = surface.homography.inverted else {
             return HomeProjectedRegion(surface: surface, planeCenter: target, planeSize: .zero)
         }
@@ -289,35 +312,4 @@ struct HomeDepartureSceneLayout: Sendable {
     let map: HomeDepartureHotspotLayout
     let story: HomeDepartureHotspotLayout
     let activities: HomeDepartureHotspotLayout
-
-    /// 坐标按 853 × 1844 的一次性生产底图逐入口测量；所有角度都由承载面的
-    /// 固定单应矩阵统一产生，不再保留逐入口手调角度。
-    static let production = HomeDepartureSceneLayout(
-        assetName: "home_departure_foyer",
-        location: .init(
-            center: UnitPoint(x: 0.215, y: 0.12),
-            hitSize: CGSize(width: 142, height: 82),
-            renderSize: CGSize(width: 142, height: 82),
-            surface: .doorLintel
-        ),
-        map: .init(
-            // 纸质地图透视四边形的中心；入口视觉、形变与点击热区共用该锚点。
-            center: UnitPoint(x: 0.702, y: 0.264),
-            hitSize: CGSize(width: 132, height: 126),
-            renderSize: CGSize(width: 140, height: 132),
-            surface: .wall
-        ),
-        story: .init(
-            center: UnitPoint(x: 0.62, y: 0.49),
-            hitSize: CGSize(width: 146, height: 132),
-            renderSize: CGSize(width: 154, height: 140),
-            surface: .wall
-        ),
-        activities: .init(
-            center: UnitPoint(x: 0.25, y: 0.70),
-            hitSize: CGSize(width: 148, height: 126),
-            renderSize: CGSize(width: 144, height: 88),
-            surface: .floor
-        )
-    )
 }

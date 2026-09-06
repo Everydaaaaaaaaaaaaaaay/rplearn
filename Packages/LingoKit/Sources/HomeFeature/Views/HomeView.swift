@@ -19,7 +19,9 @@ public struct HomeView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    private let sceneLayout = HomeDepartureSceneLayout.production
+    private var sceneLayout: HomeDepartureSceneLayout {
+        .forRegion(currentRegion?.id)
+    }
 
     public init(
         deps: HomeDependencies,
@@ -60,18 +62,12 @@ public struct HomeView: View {
     private var departureScene: some View {
         GeometryReader { proxy in
             let widthScale = proxy.size.width / HomeDepartureCanvas.width
-            let heightScale = proxy.size.height / HomeDepartureCanvas.interactiveContentBottom
-            let sceneScale = min(widthScale, heightScale)
-            let horizontalInset = max(
-                0,
-                (proxy.size.width - HomeDepartureCanvas.width * sceneScale) / 2
-            )
-            // 生产底图的原始比例比部分全面屏机型略矮。只在宽度成为缩放约束时
-            // 延伸参考画布，背景与 Metal 层同步拉伸，避免底部安全区露出宿主底色。
-            let canvasHeight = max(
-                HomeDepartureCanvas.height,
-                proxy.size.height / max(sceneScale, 0.0001)
-            )
+            let placement = HomeDepartureCanvas.placement(in: proxy.size)
+            let sceneScale = placement.scale
+            let horizontalInset = placement.horizontalInset
+            // 画布不足以覆盖视口时背景和 Metal 同步延伸；短屏先为底栏留空间，
+            // 不再把底部可点击入口缩到标签栏后面。
+            let canvasHeight = placement.height
 
             ZStack(alignment: .topLeading) {
                 if sceneScale < widthScale {
@@ -365,13 +361,12 @@ private struct HomeNormalizedQuadShape: Shape {
 #if DEBUG
 private struct HomePerspectiveDebugOverlay: View {
     let layout: HomeDepartureSceneLayout
-    private let calibration = HomePerspectiveCalibration.production
 
     var body: some View {
         Canvas { context, size in
-            drawSurface(calibration.doorLintel, color: .yellow, context: &context, size: size)
-            drawSurface(calibration.wall, color: .cyan, context: &context, size: size)
-            drawSurface(calibration.floor, color: .orange, context: &context, size: size)
+            drawSurface(layout.location.projectedRegion().surface, color: .yellow, context: &context, size: size)
+            drawSurface(layout.map.projectedRegion().surface, color: .cyan, context: &context, size: size)
+            drawSurface(layout.activities.projectedRegion().surface, color: .orange, context: &context, size: size)
             drawRegion(layout.location.projectedRegion(), color: .yellow, context: &context, size: size)
             drawRegion(layout.map.projectedRegion(), color: .cyan, context: &context, size: size)
             drawRegion(layout.story.projectedRegion(), color: .cyan, context: &context, size: size)
