@@ -7,6 +7,7 @@ import Foundation
 public enum RoleplayReplyFormatter {
     public static let maximumSentencesPerMessage = 2
     public static let preferredWordsPerMessage = 9
+    /// 分条时的词数上限；超量内容合入最后一条时允许超过，优先保留完整语义。
     public static let maximumWordsPerMessage = 12
     public static let maximumMessagesPerReply = 4
     private static let maximumWordsForTwoSentenceMessage = 9
@@ -21,13 +22,11 @@ public enum RoleplayReplyFormatter {
         let chunks = lines.flatMap(messageChunks)
         guard chunks.count > maximumMessagesPerReply else { return chunks }
 
-        // 即使模型偶尔超量，也只保留真人一次连续发送较自然的四条。
-        // 前三条负责承接语境；若后文有完整问题，优先保留它，避免裁掉对话接续点。
-        // 没有问题时不保留溢出区的第一块，因为它可能是被长度规则拆开的半句话。
+        // 气泡数量只约束排版，不能成为删除模型回复内容的依据。
+        // 超量时将剩余文字按原顺序合入最后一条，即使它超过短消息的词数目标。
         let head = Array(chunks.prefix(maximumMessagesPerReply - 1))
         let remaining = chunks.dropFirst(maximumMessagesPerReply - 1)
-        let tail = remaining.first(where: looksLikeQuestion)
-        return tail.map { head + [$0] } ?? head
+        return head + [remaining.joined(separator: " ")]
     }
 
     /// 流式阶段仍使用一个临时气泡，但折叠模型输出的空行，并隐藏测验标记。
@@ -157,22 +156,6 @@ public enum RoleplayReplyFormatter {
     /// 与分条器相同的“词”定义：按可见空白分隔；连字符词仍视为一个口语词组。
     public static func wordCount(_ text: String) -> Int {
         text.split(whereSeparator: \.isWhitespace).count
-    }
-
-    private static func looksLikeQuestion(_ text: String) -> Bool {
-        if text.contains("?") { return true }
-        guard let firstToken = text
-            .split(whereSeparator: \.isWhitespace)
-            .first
-        else { return false }
-        let firstWord = firstToken
-            .lowercased()
-            .trimmingCharacters(in: .punctuationCharacters)
-        return [
-            "what", "why", "how", "when", "where", "who", "which",
-            "do", "does", "did", "are", "is", "can", "could", "would",
-            "will", "have", "has", "you", "fancy", "reckon", "wanna",
-        ].contains(firstWord)
     }
 
     private static func normalizeInlineWhitespace(_ text: String) -> String {

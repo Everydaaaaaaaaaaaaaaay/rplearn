@@ -35,8 +35,8 @@ struct RoleplayReplyFormatterTests {
         )
     }
 
-    @Test("超量回复最多保留四条且优先保留接续问题")
-    func limitsOverflowAndKeepsFollowUpQuestion() {
+    @Test("超量回复合入第四条，保留问题前后的全部内容")
+    func mergesOverflowWithoutDroppingContent() {
         let raw = "One. Two. Three. Four. Five. Six. Seven. Eight."
 
         #expect(
@@ -54,12 +54,12 @@ struct RoleplayReplyFormatterTests {
                 "One fairly long reaction goes right here.",
                 "Another useful detail follows after that point.",
                 "Extra detail probably should not survive here.",
-                "What do you honestly think about all this?",
+                "What do you honestly think about all this? Final aside after the question.",
             ]
         )
 
         let punctuationlessQuestion = "First longer reaction stays here.\nSecond longer detail stays too.\nThis part can go.\nYou settling in alright\nOne final aside."
-        #expect(RoleplayReplyFormatter.messages(from: punctuationlessQuestion).last == "You settling in alright")
+        #expect(RoleplayReplyFormatter.messages(from: punctuationlessQuestion).last == "You settling in alright One final aside.")
     }
 
     @Test("两句只有合计不超过九词时才放进同一气泡")
@@ -91,19 +91,53 @@ struct RoleplayReplyFormatterTests {
         })
     }
 
-    @Test("用户截图中的长回复会缩短约一半并在逗号处续发")
+    @Test("用户截图中的长回复保持完整并在逗号处续发")
     func splitsReportedLongReplyLikeNaturalTyping() {
         let raw = "Just got in from the shop, mate. Rain’s absolutely chucking it down outside, so I’m making a cuppa and pretending my novel’s going to write itself while I stare at the wall. You settling in alright?"
 
         let messages = RoleplayReplyFormatter.messages(from: raw)
 
         #expect(messages.count == RoleplayReplyFormatter.maximumMessagesPerReply)
-        #expect(messages.allSatisfy {
+        #expect(messages.dropLast().allSatisfy {
             $0.split(whereSeparator: \.isWhitespace).count
                 <= RoleplayReplyFormatter.maximumWordsPerMessage
         })
         #expect(messages.contains { $0.hasSuffix(",") })
-        #expect(messages.last == "You settling in alright?")
+        #expect(messages.last?.hasSuffix("You settling in alright?") == true)
+        #expect(messages.joined(separator: " ") == raw)
+    }
+
+    @Test("实测工作口语建议保留完整引文和后续问题")
+    func preservesRecordedWorkAdvice() {
+        // 成本实测 pro-work-voice-r2 第 12 轮：旧分条器在 first, 后丢失引文后半句。
+        let raw = """
+        Of course. How about: “To make sure the site is fully accessible, I’d suggest we release a smaller version first, then add the remaining features after we’ve tested it properly.”
+
+        Does that capture what you want to say?
+        """
+        let messages = RoleplayReplyFormatter.messages(from: raw)
+
+        #expect(messages.count == 4)
+        #expect(messages.last == "then add the remaining features after we’ve tested it properly.” Does that capture what you want to say?")
+        #expect(messages.joined(separator: " ") == raw.split(whereSeparator: \.isWhitespace).joined(separator: " "))
+    }
+
+    @Test("不同溢出形式只改变空白，不删除或重排文字", arguments: [
+        "First detail.\nSecond detail.\nThird detail.\nFourth detail.\nFifth detail.\nFinal detail.",
+        "First detail.\nSecond detail.\nThird detail.\nWhat happened?\nWhy did it happen?\nHere is the explanation.",
+        "Sure, try this one:\n\"What if we launch a smaller version first, then add features after?\"\nYou could also say\n\"Starting small means we can test everything properly before the launch.\"",
+        (1...100).map { "word\($0)" }.joined(separator: " "),
+        "第一条。\n第二条。\n第三条。\n第四条。\n最后一条。",
+        "One\t detail.\n\nTwo details.\u{2028}Three details.\u{2029}Four details.\n Five details 👋🏽",
+        "", " \n\t ",
+    ])
+    func preservesContentInOrder(raw: String) {
+        let messages = RoleplayReplyFormatter.messages(from: raw)
+        let normalized = raw.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+
+        #expect(messages.joined(separator: " ") == normalized)
+        #expect(messages.count <= RoleplayReplyFormatter.maximumMessagesPerReply)
+        #expect(messages.allSatisfy { !$0.isEmpty })
     }
 
     @Test("Unicode 空行也会被彻底移除")
