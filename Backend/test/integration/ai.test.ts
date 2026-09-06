@@ -256,10 +256,10 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
     guestUserId = principal?.user_id;
   });
 
-  it("enforces the persistent entitlement quota", async () => {
+  it("enforces the unified cost credit budget", async () => {
     await dependencies.database.sql`
-      insert into app.usage_operations(user_id,operation_id,request_hash,kind,window_key,plan,policy_version,amount,settled_amount,status,expires_at)
-      values (${userId},${newEntityId()},'test-exhaustion','chat', 'day:' || to_char(now() at time zone 'utc','YYYY-MM-DD'),'free',1,30,30,'succeeded',now())
+      insert into app.credit_operations(user_id,operation_id,request_hash,task,window_key,plan,policy_version,reserved_units,settled_units,status,price,expires_at)
+      values (${userId},${newEntityId()},'test-exhaustion','conversation', 'day:' || to_char(now() at time zone 'utc','YYYY-MM-DD'),'free','test',100000000,100000000,'settled','{}',now())
     `;
     const response = await app.inject({
       headers: { authorization: `Bearer ${accessToken}` },
@@ -271,7 +271,7 @@ describe.runIf(runIntegrationTests)("AI gateway", () => {
       url: "/v1/ai/completions",
     });
     expect(response.statusCode).toBe(429);
-    expect(response.json<{ code: string }>().code).toBe("USAGE_QUOTA_EXCEEDED");
+    expect(response.json<{ code: string }>().code).toBe("CREDITS_EXHAUSTED");
   });
 
   it("seeds every initial task to DeepSeek v4 Flash", async () => {

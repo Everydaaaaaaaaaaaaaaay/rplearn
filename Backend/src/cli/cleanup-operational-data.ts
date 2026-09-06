@@ -29,6 +29,8 @@ async function main(): Promise<void> {
     // Keep lifetime consumption and operation IDs; only short-lived replay content expires.
     await database.sql`update app.usage_operations set result=null where result is not null
       and completed_at < now()-interval '1 day'`;
+    await database.sql`update app.credit_operations set result=null where result is not null
+      and completed_at < now()-interval '1 day'`;
     const auditRows = await database.sql<{ id: string }[]>`
       delete from app.audit_events
       where created_at <

@@ -22,13 +22,7 @@ export function registerAccessRoutes(
         message: "A voice operation ID is required.",
         statusCode: 400,
       });
-    return service.reserve(
-      identity.userId,
-      parsed.data.operationId,
-      "voice-v1",
-      "voice",
-      60,
-    );
+    return service.reserveVoice(identity.userId, parsed.data.operationId);
   });
   app.post("/v1/access/voice/stop", async (request) => {
     const identity = await authenticateActorRequest(request, auth);

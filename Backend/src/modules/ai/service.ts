@@ -3,6 +3,7 @@ import type { RuntimeConfig } from "../../config/env.js";
 import type { DatabaseResource } from "../../db/client.js";
 import type { RedisResource } from "../../infrastructure/redis/client.js";
 import { AppError } from "../../shared/errors.js";
+import { createCreditService } from "../access/credit-service.js";
 import { createAccessService } from "../access/service.js";
 import type { BillingService } from "../billing/service.js";
 import type { DeepSeekClient } from "./deepseek/client.js";
@@ -28,6 +29,8 @@ export type AiRequestInput = Readonly<{
   task: string;
 }>;
 
+type StoredCompletion = Omit<AiCompletion, "usage"> & { usage: AiUsage | null };
+
 export type AiService = Readonly<{
   complete: (
     userId: string,
@@ -37,7 +40,7 @@ export type AiService = Readonly<{
       content: string;
       model: string;
       requestId: string;
-      usage: AiUsage;
+      usage: AiUsage | null;
     }>
   >;
   stream: (
@@ -120,6 +123,7 @@ export function createAiService(
 ): AiService {
   const repository = new AiRepository(database);
   const access = createAccessService(database);
+  const credits = createCreditService(database);
   const userReference = (userId: string): string =>
     createHmac("sha256", config.authTokenHashPepper)
       .update(`ai-user:${userId}`)
@@ -148,7 +152,7 @@ export function createAiService(
   ): Promise<
     Readonly<{
       operationId: string;
-      replay: AiCompletion | null;
+      replay: StoredCompletion | null;
       providerRequest: AiProviderRequest;
       requestId: string;
       startedAt: number;
@@ -197,16 +201,6 @@ export function createAiService(
         message: "Only conversations support a linked repair.",
         statusCode: 400,
       });
-    const kind =
-      input.voiceLeaseId !== undefined || input.parentOperationId !== undefined
-        ? "auxiliary"
-        : ["conversation", "character_generation"].includes(input.task)
-          ? "chat"
-          : ["grammar_explain", "dictionary_explain", "speech_feedback"].includes(
-                input.task,
-              )
-            ? "advanced"
-            : "auxiliary";
     const hash = createHash("sha256")
       .update(
         JSON.stringify({
@@ -219,14 +213,16 @@ export function createAiService(
         }),
       )
       .digest("hex");
-    const quota = await access.reserve(
-      userId,
-      operationId,
-      hash,
-      kind,
-      1,
-      input.parentOperationId,
-      Math.ceil(route.timeoutMs * config.aiRetryMaxAttempts / 1000) + 30,    );
+    const quota = await credits.reserve(userId, operationId, hash, {
+      task: input.task,
+      provider: route.provider,
+      model: route.model,
+      messages: input.messages,
+      maxOutputTokens: limits.maxOutputTokens,
+      ...(input.parentOperationId === undefined
+        ? {}
+        : { parentOperationId: input.parentOperationId }),
+    });
     let reservation = { requestId: operationId, startedAt: Date.now() };
     if (!quota.replay) {
       try {
@@ -238,7 +234,7 @@ export function createAiService(
           operationId,
         );
       } catch (error) {
-        await access.settle(userId, operationId, false);
+        await credits.finish(userId, operationId, null);
         throw error;
       }
     }
@@ -250,9 +246,19 @@ export function createAiService(
       });
     return {
       operationId,
-      replay: quota.replay ? (quota.result as AiCompletion) : null,
+      replay: quota.replay ? (quota.result as StoredCompletion) : null,
       providerRequest: {
-        onAttempt: () => repository.recordProviderAttempt(reservation.requestId),
+        maxAttempts: 1,
+        onAttempt: async () => {
+          if (input.signal?.aborted)
+            throw new AppError({
+              code: "AI_REQUEST_CANCELLED",
+              message: "请求已取消。",
+              statusCode: 499,
+            });
+          await repository.recordProviderAttempt(reservation.requestId);
+          await credits.dispatch(userId, operationId);
+        },
         maxOutputTokens: limits.maxOutputTokens,
         messages: input.messages,
         responseFormat: input.responseFormat,
@@ -271,7 +277,7 @@ export function createAiService(
     operationId: string,
     error: unknown,
   ): Promise<void> => {
-    await access.settle(userId, operationId, false);
+    await credits.finish(userId, operationId, null);
     const identity = errorIdentity(error);
     await repository.fail(
       userId,
@@ -299,6 +305,14 @@ export function createAiService(
         );
         throw error;
       }
+      await credits.finish(
+        userId,
+        prepared.operationId,
+        completion.usage,
+        completion,
+        completion.providerRequestId,
+        completion.model,
+      );
       await repository.succeed(
         userId,
         prepared.requestId,
@@ -306,7 +320,7 @@ export function createAiService(
         completion.usage,
         completion.providerRequestId,
       );
-      await access.settle(userId, prepared.operationId, true, completion);
+
       return {
         content: completion.content,
         model: completion.model,
@@ -328,7 +342,7 @@ export function createAiService(
               providerRequestId: replay.providerRequestId,
             };
             yield { type: "delta", text: replay.content };
-            yield { type: "usage", usage: replay.usage };
+            if (replay.usage !== null) yield { type: "usage", usage: replay.usage };
             yield { type: "done" };
           })(),
         };
@@ -352,38 +366,71 @@ export function createAiService(
           let finalized = false;
           let content = "";
           let providerRequestId: string | null = null;
-          let usage: AiUsage = {
-            inputTokens: 0,
-            outputTokens: 0,
-            totalTokens: 0,
-          };
+          let usage: AiUsage | null = null;
+          let model: string | null = null;
+          let done = false;
           try {
             for await (const event of providerEvents) {
               if (event.type === "delta") content += event.text;
-              if (event.type === "done") continue;
+              if (event.type === "done") {
+                done = true;
+                continue;
+              }
               if (event.type === "metadata") {
                 providerRequestId = event.providerRequestId;
+                model = event.model;
               } else if (event.type === "usage") {
                 usage = event.usage;
               }
               yield event;
             }
-            await repository.succeed(
+            if (!done)
+              throw new AppError({
+                code: "AI_UPSTREAM_PROTOCOL_ERROR",
+                message: "模型响应意外中断。",
+                statusCode: 502,
+              });
+            await credits.finish(
               userId,
-              prepared.requestId,
-              prepared.startedAt,
+              prepared.operationId,
               usage,
+              {
+                content,
+                model: model ?? prepared.providerRequest.route.model,
+                providerRequestId,
+                usage,
+              },
               providerRequestId,
+              model,
             );
-            await access.settle(userId, prepared.operationId, true, {
-              content,
-              model: prepared.providerRequest.route.model,
-              providerRequestId,
-              usage,
-            });
+            if (usage !== null)
+              await repository.succeed(
+                userId,
+                prepared.requestId,
+                prepared.startedAt,
+                usage,
+                providerRequestId,
+              );
+            else
+              await repository.fail(
+                userId,
+                prepared.requestId,
+                prepared.startedAt,
+                "AI_USAGE_PENDING",
+                false,
+              );
             finalized = true;
             yield { type: "done" };
           } catch (error) {
+            await credits.finish(
+              userId,
+              prepared.operationId,
+              usage,
+              null,
+              providerRequestId,
+              model,
+              errorIdentity(error).code,
+            );
             await fail(
               userId,
               prepared.requestId,
@@ -395,7 +442,15 @@ export function createAiService(
             throw error;
           } finally {
             if (!finalized) {
-              await access.settle(userId, prepared.operationId, false);
+              await credits.finish(
+                userId,
+                prepared.operationId,
+                usage,
+                null,
+                providerRequestId,
+                model,
+                "AI_REQUEST_CANCELLED",
+              );
               await repository.fail(
                 userId,
                 prepared.requestId,

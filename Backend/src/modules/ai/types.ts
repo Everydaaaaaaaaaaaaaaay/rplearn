@@ -64,6 +64,7 @@ export type AiCompletion = Readonly<{
 
 export type AiProviderRequest = Readonly<{
   onAttempt?: () => Promise<void>;
+  maxAttempts?: number;
   maxOutputTokens: number;
   messages: readonly AiMessage[];
   responseFormat: AiResponseFormat;

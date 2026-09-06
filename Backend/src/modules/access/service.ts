@@ -1,3 +1,4 @@
+import { createCreditService } from "./credit-service.js";
 import type { DatabaseResource } from "../../db/client.js";
 import type { Sql, TransactionSql } from "postgres";
 import {
@@ -69,8 +70,8 @@ async function balance(
 }
 export function createAccessService(database: DatabaseResource) {
   return {
-    snapshot: (userId: string): Promise<AccessSnapshot> =>
-      database.sql.begin(async (sql) => {
+    snapshot: async (userId: string): Promise<AccessSnapshot> => {
+      const legacy = await database.sql.begin(async (sql) => {
         const ctx = await context(sql, userId);
         const balances = {} as AccessSnapshot["balances"];
         for (const kind of ["chat", "advanced", "auxiliary", "voice"] as const) {
@@ -83,7 +84,69 @@ export function createAccessService(database: DatabaseResource) {
           );
         }
         return { policy: ctx.policy, resetsAt: ctx.resetsAt, balances };
-      }),
+      });
+      const credits = await createCreditService(database).snapshot(userId);
+      return {
+        ...legacy,
+        policy: { ...legacy.policy, quotaWindow: credits.window },
+        credits,
+        resetsAt: credits.resetsAt,
+      };
+    },
+    reserveVoice: async (
+      userId: string,
+      operationId: string,
+    ): Promise<UsageReservation> => {
+      const credits = await createCreditService(database).snapshot(userId);
+      if (credits.remaining <= 0)
+        throw new AppError({
+          code: "CREDITS_EXHAUSTED",
+          message: "积分不足，请查看用量与权益。",
+          statusCode: 429,
+        });
+      return database.sql.begin(async (sql) => {
+        const ctx = await context(sql, userId);
+        const [previous] = await sql<
+          { kind: string; amount: number; expires_at: string }[]
+        >`select kind,amount,expires_at::text from app.usage_operations where user_id=${userId} and operation_id=${operationId}`;
+        if (previous) {
+          if (previous.kind !== "voice")
+            throw new AppError({
+              code: "OPERATION_CONFLICT",
+              message: "请求编号已使用。",
+              statusCode: 409,
+            });
+          return {
+            operationId,
+            amount: previous.amount,
+            expiresAt: new Date(previous.expires_at).toISOString(),
+            replay: true,
+            result: null,
+          };
+        }
+        const [active] = await sql<
+          { count: number }[]
+        >`select count(*)::int as count from app.usage_operations where user_id=${userId} and kind='voice' and status='reserved'`;
+        if ((active?.count ?? 0) >= 3)
+          throw new AppError({
+            code: "VOICE_SESSION_LIMIT",
+            message: "请先结束已有语音会话。",
+            statusCode: 429,
+          });
+        const [lease] = await sql<
+          { expires_at: string }[]
+        >`insert into app.usage_operations(user_id,operation_id,request_hash,kind,window_key,plan,policy_version,amount,status,expires_at)
+          values(${userId},${operationId},'voice-credits-v1','voice',${ctx.window},${ctx.policy.plan},${ctx.policy.policyVersion},60,'reserved',now()+interval '60 seconds') returning expires_at::text`;
+        if (!lease) throw new Error("Missing voice lease");
+        return {
+          operationId,
+          amount: 60,
+          expiresAt: new Date(lease.expires_at).toISOString(),
+          replay: false,
+          result: null,
+        };
+      });
+    },
     reserve: (
       userId: string,
       operationId: string,

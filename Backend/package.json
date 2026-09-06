@@ -31,7 +31,9 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "worker": "tsx src/worker.ts",
-    "usage:report": "tsx src/cli/usage-report.ts"
+    "usage:report": "tsx src/cli/usage-report.ts",
+    "credits:report": "tsx src/cli/credit-ledger.ts report",
+    "credits:reconcile": "tsx src/cli/credit-ledger.ts reconcile"
   },
   "dependencies": {
     "@apple/app-store-server-library": "3.1.0",

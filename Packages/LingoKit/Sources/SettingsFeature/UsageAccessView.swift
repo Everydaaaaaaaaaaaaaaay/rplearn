@@ -26,13 +26,34 @@ public struct UsageAccessView: View {
                         Text("剧情旅伴不占好友位。已有好友、聊天和旅行成果会保留。")
                             .font(.footnote).foregroundStyle(.secondary)
                     }
-                    Section("剩余额度") {
-                        balance("chat", title: "聊天与邂逅", unit: "次", snapshot: snapshot)
-                        balance("voice", title: "实时语音", unit: "秒", snapshot: snapshot)
-                        balance("advanced", title: "专项解析", unit: "次", snapshot: snapshot)
-                        Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
-                        Text("专项解析包括语法解析、单词讲解和语音反馈。自动记忆与纠错不会额外扣聊天次数。语音按会话时长计量，识别和朗读在设备上完成。")
-                            .font(.footnote).foregroundStyle(.secondary)
+                    if let credits = snapshot.credits {
+                        Section("模型积分") {
+                            LabeledContent("可用积分", value: "\(points(credits.remaining)) / \(points(credits.limit))")
+                            LabeledContent("已消耗", value: points(credits.used))
+                            if credits.reserved > 0 { LabeledContent("请求预留", value: points(credits.reserved)) }
+                            if credits.pending > 0 {
+                                LabeledContent("待核对预留", value: points(credits.pending))
+                                Text("部分调用尚未取得完整用量，暂时保留预留积分；核对后按实际费用结算。")
+                                    .font(.footnote).foregroundStyle(.secondary)
+                            }
+                            Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
+                            Text("聊天、生成新角色、语法与单词讲解，以及自动记忆、纠错等模型调用，共用积分。按实际输入、缓存输入和输出消耗结算，未使用的预留会返还。设备上的语音识别、朗读和本地查词不扣模型积分。")
+                                .font(.footnote).foregroundStyle(.secondary)
+                        }
+                        if !credits.recent.isEmpty {
+                            Section("最近消耗") {
+                                ForEach(credits.recent) { entry in
+                                    LabeledContent(taskName(entry.task), value: entry.credits.map { "\(points($0)) 积分" } ?? (entry.status == "released" ? "未发出 · 已释放" : "预留 \(points(entry.heldCredits)) · \(entry.status == "pending" ? "待核对" : "处理中")"))
+                                }
+                            }
+                        }
+                    } else {
+                        Section("剩余额度") {
+                            balance("chat", title: "聊天与邂逅", unit: "次", snapshot: snapshot)
+                            balance("voice", title: "实时语音", unit: "秒", snapshot: snapshot)
+                            balance("advanced", title: "语法、单词与语音解析", unit: "次", snapshot: snapshot)
+                            Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
+                        }
                     }
                     if snapshot.policy.isGuest {
                         Section {
@@ -75,6 +96,20 @@ public struct UsageAccessView: View {
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
             .task { await reload() }
             .refreshable { await reload() }
+        }
+    }
+    private func points(_ value: Double) -> String {
+        value.formatted(.number.precision(.fractionLength(0...6)))
+    }
+    private func taskName(_ task: String) -> String {
+        switch task {
+        case "conversation": "聊天回复"
+        case "character_generation": "生成新角色"
+        case "grammar_explain": "语法讲解"
+        case "dictionary_explain": "单词讲解"
+        case "speech_feedback": "语音反馈"
+        case "dictionary_example_translation": "例句翻译"
+        default: "学习辅助"
         }
     }
     private func balance(_ key: String, title: String, unit: String, snapshot: BackendAccessSnapshot) -> some View {

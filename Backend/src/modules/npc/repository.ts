@@ -231,7 +231,7 @@ export class NpcRepository {
 
       if (
         !pending &&
-        (supply?.count ?? 0) >= Math.max(30, Math.min(600, policy.chatLimit * 3))
+        (supply?.count ?? 0) >= (policy.isGuest ? 30 : 90)
       )
         throw new AppError({
           code: "NPC_REGISTRATION_LIMIT",

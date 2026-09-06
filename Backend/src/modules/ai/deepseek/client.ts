@@ -193,7 +193,8 @@ export function createDeepSeekClient(
     stream: boolean,
   ): Promise<Response> => {
     let lastError: unknown;
-    for (let attempt = 1; attempt <= config.aiRetryMaxAttempts; attempt += 1) {
+    const maxAttempts = request.maxAttempts ?? config.aiRetryMaxAttempts;
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
       await request.onAttempt?.();
       const timeoutSignal = AbortSignal.timeout(request.route.timeoutMs);
       const signal =
@@ -215,7 +216,7 @@ export function createDeepSeekClient(
         }
         lastError = upstreamError(response.status);
         if (
-          attempt === config.aiRetryMaxAttempts ||
+          attempt === maxAttempts ||
           (response.status !== 429 && response.status < 500)
         ) {
           throw lastError;
@@ -243,7 +244,7 @@ export function createDeepSeekClient(
         ) {
           throw error;
         }
-        if (attempt === config.aiRetryMaxAttempts) {
+        if (attempt === maxAttempts) {
           throw error instanceof AppError ? error : upstreamError(502);
         }
       }
@@ -363,9 +364,7 @@ export function createDeepSeekClient(
             };
           }
         }
-        if (!doneSent) {
-          yield { type: "done" };
-        }
+        if (!doneSent) throw protocolError();
       })();
     },
   };

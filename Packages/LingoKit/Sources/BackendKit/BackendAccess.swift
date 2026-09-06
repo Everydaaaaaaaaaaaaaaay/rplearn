@@ -14,6 +14,26 @@ public struct BackendAccessSnapshot: Decodable, Sendable {
         public let reserved: Int
         public let remaining: Int
     }
+    public struct Credits: Decodable, Sendable {
+        public struct Entry: Decodable, Sendable, Identifiable {
+            public var id: String { operationId }
+            public let operationId: String
+            public let task: String
+            public let status: String
+            public let credits: Double?
+            public let heldCredits: Double
+            public let createdAt: String
+        }
+        public let limit: Double
+        public let used: Double
+        public let reserved: Double
+        public let pending: Double
+        public let remaining: Double
+        public let resetsAt: String?
+        public let window: String
+        public let recent: [Entry]
+    }
+    public let credits: Credits?
     public let policy: Policy
     public let resetsAt: String?
     public let balances: [String: Balance]
