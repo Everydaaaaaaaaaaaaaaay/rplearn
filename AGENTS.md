@@ -12,6 +12,10 @@ requested change; no mandatory repo scan or document preflight.
   is an optional lookup, not a prerequisite to editing.
 - For assets/models, start from the nearest manifest or README. Generated projects, build
   output, caches and binary assets are not architecture sources; inspect them only when relevant.
+- For photographic scene assets or their video/UI composites, follow
+  `docs/activity-scene-visual-acceptance.md` and keep a per-version acceptance record.
+  Unverified or rejected assets are not release-ready; successful generation and code tests
+  never substitute for spatial, object-use, and visual review.
 
 ## Boundaries
 
