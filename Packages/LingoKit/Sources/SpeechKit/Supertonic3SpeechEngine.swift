@@ -98,6 +98,9 @@ enum Supertonic3VoiceCatalog {
     }
 
     static func profile(for request: SpeechRequest) -> Profile {
+        if let voice = request.previewVoice {
+            return Profile(voiceID: voice.rawValue, speed: 1, silenceDuration: 0.05)
+        }
         // 词典发音固定使用同一音色，避免同一个单词因调用入口不同而换声。
         guard request.purpose != .pronunciation else {
             return Profile(voiceID: "F1", speed: 1.0, silenceDuration: 0.05)
@@ -343,7 +346,7 @@ actor Supertonic3SpeechEngine {
             Log.speech.error(
                 "Supertonic-3 播放失败，回退系统语音：\(error.localizedDescription, privacy: .public)"
             )
-            if !didBeginPlayback {
+            if !didBeginPlayback && request.previewVoice == nil {
                 await apple.speakAndWait(request)
             }
         }

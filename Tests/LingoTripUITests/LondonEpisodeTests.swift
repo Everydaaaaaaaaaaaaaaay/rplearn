@@ -202,6 +202,33 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 2))
     }
 
+    func testTemporaryVoiceAudition() {
+        app.launch()
+        let entry = app.buttons["episode.voices"]
+        XCTAssertTrue(entry.waitForExistence(timeout: 20))
+        entry.tap()
+        let first = app.buttons["voicePreview.M1"]
+        XCTAssertTrue(first.waitForExistence(timeout: 5))
+        first.tap()
+        let status = app.staticTexts["voicePreview.status"]
+        expectation(for: NSPredicate(format: "label CONTAINS %@", "正在播放 M1"), evaluatedWith: status)
+        waitForExpectations(timeout: 45)
+        app.buttons["voicePreview.M2"].tap()
+        XCTAssertTrue(status.label.contains("M2"))
+        app.buttons["voicePreview.stop"].tap()
+        XCTAssertEqual(status.label, "已停止")
+        app.swipeUp()
+        XCTAssertTrue(app.buttons["voicePreview.F5"].waitForExistence(timeout: 3))
+        app.buttons["voicePreview.F5"].tap()
+        expectation(for: NSPredicate(format: "label CONTAINS %@", "正在播放 F5"), evaluatedWith: status)
+        // Status can be scrolled off screen; return to it without stopping audio.
+        app.swipeDown()
+        waitForExpectations(timeout: 45)
+        app.buttons["voicePreview.close"].tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.buttons["episode.sound"].label, "开启剧情声音")
+    }
+
     func testDismissingLookupDoesNotRepeatNarration() {
         app.launchEnvironment["UI_TEST_EPISODE_AUDIO"] = "1"
         app.launch()

@@ -18,6 +18,7 @@ public struct LondonEpisodeView: View {
     @State private var showTranslation = true
     @State private var automatic = false
     @State private var showHistory = false
+    @State private var showVoicePreview = false
     @State private var showHistoryRestart = false
     @State private var showRestart = false
     @State private var wordSelection: TokenSelection?
@@ -139,6 +140,11 @@ public struct LondonEpisodeView: View {
             allowsSystemTranslationFallback: true
         )
         .sheet(isPresented: $showHistory) { historySheet }
+        #if DEBUG
+        .sheet(isPresented: $showVoicePreview, onDismiss: { updateAudio() }) {
+            SupertonicVoicePreviewSheet(audio: audio)
+        }
+        #endif
         .confirmationDialog("从头开始这一站？当前样章进度将被替换。", isPresented: $showRestart, titleVisibility: .visible) {
             Button("从头开始", role: .destructive) { restart() }
             Button("取消", role: .cancel) { }
@@ -210,6 +216,17 @@ public struct LondonEpisodeView: View {
                     Rectangle().fill(index <= session.current.act ? gold : paper.opacity(0.22)).frame(height: 2)
                 }
             }.padding(.horizontal, 9).accessibilityHidden(true)
+            #if DEBUG
+            Button {
+                automatic = false
+                audio.stop()
+                showVoicePreview = true
+            } label: {
+                Label("音色试听（临时）", systemImage: "headphones")
+                    .font(.caption).frame(minHeight: 32)
+            }
+            .accessibilityIdentifier("episode.voices")
+            #endif
         }
         .foregroundStyle(paper)
         .buttonStyle(EpisodePressStyle())
@@ -396,7 +413,7 @@ public struct LondonEpisodeView: View {
     }
 
     private var canAutoAdvance: Bool {
-        automatic && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
+        automatic && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart && !showVoicePreview
             && session?.current.choices == nil && session?.isFinished == false
             && (!soundEnabled || audio.completedID == session?.nodeID)
     }
@@ -420,7 +437,7 @@ public struct LondonEpisodeView: View {
     }
 
     private var canPlayAudio: Bool {
-        soundEnabled && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
+        soundEnabled && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart && !showVoicePreview
     }
     private var audioIdentity: String { "\(session?.nodeID ?? "")-\(canPlayAudio)" }
 

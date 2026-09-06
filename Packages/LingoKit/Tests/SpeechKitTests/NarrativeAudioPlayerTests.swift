@@ -139,6 +139,21 @@ struct NarrativeAudioPlayerTests {
                                           supertonicIsAvailable: true) == .supertonic3)
     }
 
+    @Test("十种试听音色精确选取且统一语速，不受角色散列或全局引擎影响")
+    func previewVoiceProfiles() {
+        #expect(SupertonicPreviewVoice.allCases.count == 10)
+        for voice in SupertonicPreviewVoice.allCases {
+            let request = SpeechRequest(text: "After the rain.", language: "en",
+                                        voiceHint: SpeechVoiceHint(stableID: "london.nora", gender: "female"),
+                                        engine: .system, previewVoice: voice)
+            let profile = Supertonic3VoiceCatalog.profile(for: request)
+            #expect(profile.voiceID == voice.rawValue)
+            #expect(profile.speed == 1)
+            #expect(SpeechEngineRouter.resolve(request: request, selectedEngine: .system,
+                                              supertonicIsAvailable: true) == .supertonic3)
+        }
+    }
+
     @Test("英音要求强制路由到系统引擎，不冒充 Supertonic 的 en 为 en-GB")
     func exactAccentRouting() {
         let request = SpeechRequest(text: "One page.", language: "en-GB", purpose: .characterDialogue,
