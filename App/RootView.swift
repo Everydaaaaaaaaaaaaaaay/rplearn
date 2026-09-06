@@ -11,6 +11,7 @@ import HomeFeature
 import MapFeature
 import OnboardingFeature
 import PlacementFeature
+import PersistenceKit
 import RosterFeature
 import SettingsFeature
 import SpeechKit
@@ -43,6 +44,7 @@ struct RootView: View {
     @State private var loginReason: String?
     @State private var showLondonEpisode = false
     @State private var activeSceneActivity: SceneActivity?
+    @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
@@ -240,6 +242,7 @@ struct RootView: View {
             }
             .onChange(of: activeUserID) { _, _ in
                 activeSceneActivity = nil
+                activeActivityChat = nil
             }
             .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
                 Task {
@@ -285,6 +288,13 @@ struct RootView: View {
 
     private func handleAuthenticationPhase() async {
         activationError = nil
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] != nil {
+            isGuestReady = true
+            return
+        }
+        #endif
         switch environment.authSession.phase {
         case .loading:
             // 会话恢复在后台进行，本地界面无需等待。
@@ -402,7 +412,8 @@ struct RootView: View {
             navigationTitle: activeHomeDestination?.navigationTitle ?? "",
             onBack: closeHomeDestination,
             navigationPath: $homePath,
-            showsNavigationBar: activeHomeDestination != .activities
+            showsNavigationBar: activeHomeDestination != .activities || activeActivityChat != nil,
+            backLabel: activeActivityChat == nil ? "返回" : "返回咖啡馆"
         ) {
             HomeView(
                 deps: homeDeps,
@@ -458,14 +469,29 @@ struct RootView: View {
                 homePath.append(chapter)
             }
         case .activities:
-            ActivitiesView(
-                deps: homeDeps,
-                storageNamespace: activityStorageNamespace,
-                isVisible: selectedTab == .home && !showSignIn && !showLondonEpisode,
-                activity: $activeSceneActivity,
-                onClose: closeHomeDestination
-            )
-            .id(activeUserID?.uuidString ?? "guest")
+            ZStack {
+                ActivitiesView(
+                    deps: homeDeps,
+                    storageNamespace: activityStorageNamespace,
+                    isVisible: selectedTab == .home && !showSignIn && !showLondonEpisode && activeActivityChat == nil,
+                    activity: $activeSceneActivity,
+                    onClose: closeHomeDestination,
+                    onChat: { character in
+                        withAnimation(sceneContentAnimation) { activeActivityChat = character }
+                    }
+                )
+                .id(activeUserID?.uuidString ?? "guest")
+                .opacity(activeActivityChat == nil ? 1 : 0)
+                .allowsHitTesting(activeActivityChat == nil)
+                .accessibilityHidden(activeActivityChat != nil)
+                if let character = activeActivityChat {
+                    // Use the existing scene navigation host, not a nested stack
+                    // whose toolbar is suppressed by the outer photographic page.
+                    ChatView(character: character, deps: chatDeps)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .transition(.opacity)
+                }
+            }
         case .map:
             MapView(
                 deps: mapDeps,
@@ -494,6 +520,10 @@ struct RootView: View {
     private func closeHomeDestination() {
         guard activeHomeDestination != nil else { return }
         withAnimation(sceneContentAnimation) {
+            if activeActivityChat != nil {
+                activeActivityChat = nil
+                return
+            }
             if activeHomeDestination == .activities, activeSceneActivity != nil {
                 activeSceneActivity = nil
                 return

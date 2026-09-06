@@ -4,10 +4,19 @@ import SwiftUI
 /// Map folds are not one perfect plane; use the central readable patch. The cup
 /// uses its front-facing area, not the horizontal tabletop plane.
 enum ActivitySceneAnchor: CaseIterable {
-    case map, cup, journal, binoculars, sketchbook, postcard
+    case map, cup, journal, binoculars, sketchbook, postcard, cafeMenu, cafeCup, cafeBook
 
     var quad: HomePerspectiveQuad {
         switch self {
+        case .cafeMenu:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 155, y: 905), topRight: CGPoint(x: 341, y: 898),
+                                bottomRight: CGPoint(x: 351, y: 1040), bottomLeft: CGPoint(x: 162, y: 1051))
+        case .cafeCup:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 552, y: 1088), topRight: CGPoint(x: 703, y: 1100),
+                                bottomRight: CGPoint(x: 690, y: 1200), bottomLeft: CGPoint(x: 556, y: 1188))
+        case .cafeBook:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 182, y: 1295), topRight: CGPoint(x: 319, y: 1250),
+                                bottomRight: CGPoint(x: 465, y: 1360), bottomLeft: CGPoint(x: 307, y: 1440))
         case .map:
             HomePerspectiveQuad(topLeft: CGPoint(x: 22, y: 1280), topRight: CGPoint(x: 353, y: 1198),
                                 bottomRight: CGPoint(x: 484, y: 1401), bottomLeft: CGPoint(x: 113, y: 1498))

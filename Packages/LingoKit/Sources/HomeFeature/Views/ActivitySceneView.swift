@@ -7,7 +7,7 @@ import UIKit
 /// Immutable photo coordinates shared by foreground, video and object hotspots.
 struct ActivitySceneView: View {
     private static let photos: [String: UIImage] = Dictionary(uniqueKeysWithValues:
-        ActivitySceneID.allCases.flatMap { [$0.poster, $0.table] }.compactMap { name in
+        ActivitySceneID.allCases.flatMap { [$0.poster, "activity-cafe-window"] }.compactMap { name in
             asset(name, "jpg").flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
         })
     let isVisible: Bool
@@ -53,27 +53,43 @@ struct ActivitySceneView: View {
             let scale = max(proxy.size.width / 852, proxy.size.height / 1847)
             let width = 852 * scale
             let height = 1847 * scale
-            let renderingScene = scene
             ZStack(alignment: .topLeading) {
                 Color(red: 0.14, green: 0.13, blue: 0.09)
                 ZStack(alignment: .topLeading) {
                     if let photo = Self.photos[scene.poster] {
-                        Image(uiImage: photo).resizable().frame(width: width, height: scene.videoHeight * scale)
+                        Image(uiImage: photo).resizable().frame(width: width, height: height)
                     }
-                    SceneMotionLayer(scene: scene, playing: usesMotion && isVisible && scenePhase == .active,
-                                  onFailure: { if scene == renderingScene { playbackFailed = true } },
-                                  onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
-                                  onLoop: { if scene == renderingScene { completedLoops = $0 } },
-                                  onQuiet: { if scene == renderingScene { quietInterval = $0 } })
-                        .id(scene)
-                        .frame(width: width, height: scene.videoHeight * scale)
-                        .opacity(usesMotion ? 1 : 0)
-                        .allowsHitTesting(false)
-                        .accessibilityHidden(true)
-                    if let photo = Self.photos[scene.table] {
-                        Image(uiImage: photo).resizable()
-                            .frame(width: width, height: (1847 - scene.tableTop) * scale)
-                            .offset(y: scene.tableTop * scale)
+                    // One physical window. Both resting plate and events use the
+                    // identical homography; the menu remains in front of the glass.
+                    ZStack {
+                        if let plate = Self.photos["activity-cafe-window"] {
+                            Image(uiImage: plate).resizable()
+                        }
+                        CafeMotionLayer(playing: usesMotion && isVisible && scenePhase == .active,
+                            onFailure: { playbackFailed = true },
+                            onPlayback: { videoPlaying = $0 },
+                            onEvent: { completedLoops = $0 },
+                            onQuiet: { quietInterval = $0 })
+                            .opacity(usesMotion ? 1 : 0)
+                    }
+                    .frame(width: 650 * scale, height: 520 * scale)
+                    .modifier(ActivityPlaneProjection(quad: HomePerspectiveQuad(
+                        topLeft: .zero, topRight: CGPoint(x: 653 * scale, y: 0),
+                        bottomRight: CGPoint(x: 627 * scale, y: 522 * scale),
+                        bottomLeft: CGPoint(x: 13 * scale, y: 518 * scale))))
+                    .offset(x: 95 * scale, y: 295 * scale)
+                    .allowsHitTesting(false).accessibilityHidden(true)
+                    if let photo = Self.photos[scene.poster] {
+                        Image(uiImage: photo).resizable().frame(width: width, height: height)
+                            .mask {
+                                Path { path in
+                                    path.move(to: CGPoint(x: 119 * scale, y: 795 * scale))
+                                    path.addLine(to: CGPoint(x: 355 * scale, y: 793 * scale))
+                                    path.addLine(to: CGPoint(x: 379 * scale, y: 1111 * scale))
+                                    path.addLine(to: CGPoint(x: 139 * scale, y: 1157 * scale))
+                                    path.closeSubpath()
+                                }
+                            }.allowsHitTesting(false)
                     }
                     if !typeSize.isAccessibilitySize && showsInterface {
                         ForEach(scene.actions) { activity in entrance(activity, scale: scale) }
@@ -94,8 +110,8 @@ struct ActivitySceneView: View {
                         Spacer()
                         Text(cityName.isEmpty ? "城市活动" : "\(cityName) · 城市活动").font(.subheadline.weight(.semibold))
                         Spacer()
-                        Button(action: onJournal) { Image(systemName: "book.closed").frame(width: 44, height: 44) }
-                            .accessibilityLabel("行动足迹，已完成 \(completedCount) 项")
+                        Button(action: onJournal) { Image(systemName: "person.2").frame(width: 44, height: 44) }
+                            .accessibilityLabel("相遇与足迹，已记录 \(completedCount) 项")
                             .accessibilityIdentifier("activities.journal")
                     }
                     ScrollViewReader { reader in
@@ -245,172 +261,5 @@ struct ActivitySceneLabel: View {
             // Matches DSHologramTextRenderer.displayPadding; pixel regression
             // test below catches any future mismatch if that renderer changes.
             .offset(x: -12)
-    }
-}
-
-/// AVFoundation decodes one small silent video; no SwiftUI timer or per-frame state writes.
-private struct SceneMotionLayer: UIViewRepresentable {
-    let scene: ActivitySceneID
-    let playing: Bool
-    let onFailure: () -> Void
-    let onPlayback: (Bool) -> Void
-    let onLoop: (Int) -> Void
-    let onQuiet: (Bool) -> Void
-
-    final class Surface: UIView {
-        override class var layerClass: AnyClass { AVPlayerLayer.self }
-        var playerLayer: AVPlayerLayer { layer as! AVPlayerLayer }
-    }
-
-    @MainActor final class Coordinator {
-        let player = AVQueuePlayer()
-        var looper: AVPlayerLooper?
-        var looperObservation: NSKeyValueObservation?
-        var observation: NSKeyValueObservation?
-        var playbackObservation: NSKeyValueObservation?
-        var endObservation: NSObjectProtocol?
-        var failureObservation: NSObjectProtocol?
-        var wakeTask: Task<Void, Never>?
-        var enabled = false
-        var waiting = false
-        var seeking = false
-        var remainingDelay: TimeInterval = 0
-        var waitStart: ContinuousClock.Instant?
-        var passes = 0
-        var cadence = ActivityAmbientCadence()
-        var random = SystemRandomNumberGenerator()
-        var onQuiet: (Bool) -> Void = { _ in }
-        var onLoop: (Int) -> Void = { _ in }
-
-        func setPlaying(_ value: Bool) {
-            guard enabled != value else { return }
-            enabled = value
-            if value {
-                if waiting { scheduleWake() } else if !seeking { player.play() }
-            } else {
-                player.pause()
-                if let waitStart {
-                    let elapsed = waitStart.duration(to: .now).components
-                    remainingDelay = max(0, remainingDelay - Double(elapsed.seconds) - Double(elapsed.attoseconds) / 1e18)
-                }
-                waitStart = nil
-                wakeTask?.cancel()
-                wakeTask = nil
-            }
-        }
-
-        func finishedPass() {
-            guard !waiting else { return }
-            passes += 1
-            onLoop(passes)
-            waiting = true
-            onQuiet(true)
-            remainingDelay = cadence.nextDelay(using: &random)
-            #if DEBUG
-            // Explicit UI-test acceleration; normal debug/phone launches use real cadence.
-            if ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_CADENCE"] == "accelerated" {
-                remainingDelay = 2
-            }
-            #endif
-            if enabled { scheduleWake() }
-        }
-
-        func scheduleWake() {
-            guard wakeTask == nil, waiting, enabled else { return }
-            waitStart = .now
-            let delay = remainingDelay
-            wakeTask = Task { [weak self] in
-                do { try await Task.sleep(for: .seconds(delay)) } catch { return }
-                guard let self, self.enabled, !Task.isCancelled else { return }
-                self.wakeTask = nil
-                self.waitStart = nil
-                self.remainingDelay = 0
-                self.waiting = false
-                self.seeking = true
-                // Hold the final empty frame until an exact seek has completed.
-                self.player.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] finished in
-                    Task { @MainActor in
-                        guard let self else { return }
-                        self.seeking = false
-                        guard finished else { return }
-                        self.onQuiet(false)
-                        if self.enabled { self.player.play() }
-                    }
-                }
-            }
-        }
-
-        func stop() {
-            setPlaying(false)
-            wakeTask?.cancel()
-            player.pause()
-            observation = nil
-            playbackObservation = nil
-            if let endObservation { NotificationCenter.default.removeObserver(endObservation) }
-            if let failureObservation { NotificationCenter.default.removeObserver(failureObservation) }
-            endObservation = nil
-            failureObservation = nil
-            player.currentItem?.cancelPendingSeeks()
-            looper?.disableLooping()
-            looperObservation = nil
-            looper = nil
-            player.replaceCurrentItem(with: nil)
-        }
-    }
-
-    func makeCoordinator() -> Coordinator { Coordinator() }
-
-    func makeUIView(context: Context) -> Surface {
-        let view = Surface()
-        view.backgroundColor = .clear
-        view.playerLayer.videoGravity = .resizeAspectFill
-        let coordinator = context.coordinator
-        coordinator.onQuiet = onQuiet
-        coordinator.onLoop = onLoop
-        coordinator.player.isMuted = true
-        coordinator.player.actionAtItemEnd = .pause
-        coordinator.player.preventsDisplaySleepDuringVideoPlayback = false
-        coordinator.playbackObservation = coordinator.player.observe(\.timeControlStatus, options: [.initial, .new]) { player, _ in
-            let running = player.timeControlStatus == .playing
-            Task { @MainActor in onPlayback(running) }
-        }
-        view.playerLayer.player = coordinator.player
-        if let url = ActivitySceneView.asset("activity-\(scene.rawValue)-loop", "mp4") {
-            let item = AVPlayerItem(url: url)
-            if scene == .pond {
-                coordinator.player.actionAtItemEnd = .advance
-                // AVPlayerLooper queues the next decode before the boundary;
-                // unlike a notification + seek, it does not pause at the seam.
-                coordinator.looper = AVPlayerLooper(player: coordinator.player, templateItem: item)
-                coordinator.looperObservation = coordinator.looper?.observe(\.status, options: [.new]) { looper, _ in
-                    if looper.status == .failed { Task { @MainActor in onFailure() } }
-                }
-            } else {
-                coordinator.player.replaceCurrentItem(with: item)
-                coordinator.endObservation = NotificationCenter.default.addObserver(
-                    forName: AVPlayerItem.didPlayToEndTimeNotification, object: item, queue: .main
-                ) { [weak coordinator] _ in
-                    Task { @MainActor in coordinator?.finishedPass() }
-                }
-            }
-            coordinator.failureObservation = NotificationCenter.default.addObserver(
-                forName: AVPlayerItem.failedToPlayToEndTimeNotification, object: item, queue: .main
-            ) { _ in Task { @MainActor in onFailure() } }
-            coordinator.observation = item.observe(\.status, options: [.initial, .new]) { item, _ in
-                if item.status == .failed { Task { @MainActor in onFailure() } }
-            }
-        } else {
-            Task { @MainActor in onFailure() }
-        }
-        return view
-    }
-
-    func updateUIView(_ view: Surface, context: Context) {
-        context.coordinator.setPlaying(playing)
-    }
-
-    static func dismantleUIView(_ view: Surface, coordinator: Coordinator) {
-        coordinator.stop()
-        view.playerLayer.player = nil
     }
 }

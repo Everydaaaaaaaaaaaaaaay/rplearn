@@ -1,14 +1,41 @@
 import XCTest
+import PersistenceKit
 @testable import HomeFeature
 
 final class ActivityJourneyTests: XCTestCase {
+    func testReunionEligibilityPreservesIdentityBoundariesWithoutDemographicFiltering() {
+        let now = Date()
+        var person = CharacterDTO(id: UUID(), card: CharacterCard(name: "Sam", age: 72,
+            gender: .female, nationality: "British", regionID: "london", occupation: "retired mechanic",
+            hobbies: ["heavy metal"], appearance: "", personality: "reserved", languages: ["English"]),
+            difficultyLevel: .junior3, isMainCharacter: false, isFriend: true, metAt: now)
+        XCTAssertTrue(CafeEncounterPolicy.eligible(person, regionID: "london"))
+        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "auckland"))
+        person.contactStatus = .removed
+        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
+        person.contactStatus = .friend
+        person.isMainCharacter = true
+        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
+        person.isMainCharacter = false
+        person.card.languages = ["French"]
+        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
+        person.card.languages = nil
+        XCTAssertTrue(CafeEncounterPolicy.eligible(person, regionID: "london"))
+        XCTAssertTrue(CafeEncounterPolicy.allowsReunion(lastSpokenAt: nil, now: now))
+        XCTAssertTrue(CafeEncounterPolicy.allowsReunion(lastSpokenAt: now.addingTimeInterval(-86_400), now: now))
+        XCTAssertFalse(CafeEncounterPolicy.allowsReunion(lastSpokenAt: now.addingTimeInterval(-100), now: now))
+        XCTAssertFalse(CafeEncounterPolicy.allowsReunion(lastSpokenAt: now.addingTimeInterval(100), now: now))
+    }
+
     func testEverySceneHasDistinctCompleteActionsAndBundledMedia() throws {
-        XCTAssertEqual(ActivitySceneID.allCases.count, 2)
-        XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 6)
+        XCTAssertEqual(ActivitySceneID.allCases.count, 1)
+        XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 3)
         for scene in ActivitySceneID.allCases {
             XCTAssertEqual(scene.actions.count, 3)
             XCTAssertEqual(Set(scene.actions.map(\.anchor)).count, 3)
-            for (name, ext) in [(scene.poster, "jpg"), (scene.table, "jpg"), ("activity-\(scene.rawValue)-loop", "mp4")] {
+            for (name, ext) in [(scene.poster, "jpg"), ("activity-cafe-window", "jpg"),
+                                ("activity-cafe-event-0", "mp4"), ("activity-cafe-event-1", "mp4"),
+                                ("activity-cafe-event-2", "mp4")] {
                 XCTAssertNotNil(Bundle.main.url(forResource: name, withExtension: ext), name)
             }
             for activity in scene.actions {
@@ -53,9 +80,49 @@ final class ActivityJourneyTests: XCTestCase {
                 }
             }
         }
-        XCTAssertEqual(try journal.records().count, 24)
+        XCTAssertEqual(try journal.records().count, 12)
         XCTAssertTrue(try ActivityJournal(namespace: "other", city: "london", defaults: defaults).records().isEmpty)
         XCTAssertTrue(try ActivityJournal(namespace: "guest", city: "auckland", defaults: defaults).records().isEmpty)
+    }
+
+    func testSocialRecordRetainsIdentityAndActualReplyWithoutBreakingLegacyRecords() throws {
+        let suite = "social-journal-\(UUID())"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let journal = ActivityJournal(namespace: "guest", city: "london", defaults: defaults)
+        let person = UUID()
+        let record = try XCTUnwrap(journal.complete(SceneActivity.catalog[0], selections: [0, 1], runID: UUID(),
+            characterID: person, characterName: "Alex", responses: ["你可以坐这里。", "祝你今天愉快！"]).last)
+        XCTAssertEqual(record.characterID, person)
+        XCTAssertTrue(record.choices[0].response.contains("你可以坐这里。"))
+        XCTAssertTrue(record.choices[1].response.contains("祝你今天愉快！"))
+        XCTAssertEqual(record.characterName, "Alex")
+        let legacy = "{\"version\":1,\"records\":[{\"id\":\"\(UUID())\",\"activityID\":\"walk\",\"title\":\"旧足迹\",\"date\":0,\"choices\":[]}]}"
+        defaults.set(Data(legacy.utf8), forKey: journal.key)
+        XCTAssertEqual(try journal.records().first?.title, "旧足迹")
+        XCTAssertNil(try journal.records().first?.characterID)
+    }
+
+    func testCafeShuffleUsesEveryRealEventAndNeverRepeatsAcrossBagBoundary() {
+        struct Seeded: RandomNumberGenerator {
+            var state: UInt64 = 97
+            mutating func next() -> UInt64 {
+                state = state &* 6364136223846793005 &+ 1442695040888963407
+                return state
+            }
+        }
+        var random = Seeded(), schedule = CafeEventSchedule()
+        var previous: Int?
+        for _ in 0..<100 {
+            var bag = Set<Int>()
+            for _ in 0..<3 {
+                let event = schedule.next(using: &random)
+                XCTAssertNotEqual(previous, event)
+                previous = event
+                bag.insert(event)
+            }
+            XCTAssertEqual(bag, Set(0..<3))
+        }
     }
 
     func testIncompleteOrCorruptDataNeverOverwritesHistory() throws {
