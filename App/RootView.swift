@@ -42,7 +42,7 @@ struct RootView: View {
     @State private var showSignIn = false
     @State private var loginReason: String?
     @State private var showLondonEpisode = false
-    @State private var showActivityScene = false
+    @State private var activeSceneActivity: SceneActivity?
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
@@ -120,10 +120,6 @@ struct RootView: View {
 
     var body: some View {
         appContent
-            .fullScreenCover(isPresented: $showActivityScene) {
-                ActivityScenePrototypeContainer(deps: homeDeps,
-                    chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) })
-            }
             .fullScreenCover(isPresented: $showLondonEpisode) {
                 LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest")
             }
@@ -241,6 +237,9 @@ struct RootView: View {
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
                 }
+            }
+            .onChange(of: activeUserID) { _, _ in
+                activeSceneActivity = nil
             }
             .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
                 Task {
@@ -402,7 +401,8 @@ struct RootView: View {
             isPresentingDestination: activeHomeDestination != nil,
             navigationTitle: activeHomeDestination?.navigationTitle ?? "",
             onBack: closeHomeDestination,
-            navigationPath: $homePath
+            navigationPath: $homePath,
+            showsNavigationBar: activeHomeDestination != .activities
         ) {
             HomeView(
                 deps: homeDeps,
@@ -460,9 +460,12 @@ struct RootView: View {
         case .activities:
             ActivitiesView(
                 deps: homeDeps,
-                chatBuilder: { character in AnyView(ChatView(character: character, deps: chatDeps)) },
-                onPreviewScene: { showActivityScene = true }
+                storageNamespace: activityStorageNamespace,
+                isVisible: selectedTab == .home && !showSignIn && !showLondonEpisode,
+                activity: $activeSceneActivity,
+                onClose: closeHomeDestination
             )
+            .id(activeUserID?.uuidString ?? "guest")
         case .map:
             MapView(
                 deps: mapDeps,
@@ -479,9 +482,22 @@ struct RootView: View {
             activeHomeDestination = destination
         }
     }
+
+    private var activityStorageNamespace: String {
+        #if DEBUG
+        if let testNamespace = ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"], !testNamespace.isEmpty {
+            return "ui-test.\(testNamespace)"
+        }
+        #endif
+        return activeUserID?.uuidString ?? "guest"
+    }
     private func closeHomeDestination() {
         guard activeHomeDestination != nil else { return }
         withAnimation(sceneContentAnimation) {
+            if activeHomeDestination == .activities, activeSceneActivity != nil {
+                activeSceneActivity = nil
+                return
+            }
             activeHomeDestination = nil
             homePath = NavigationPath()
         }
@@ -589,9 +605,7 @@ struct RootView: View {
 
     /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。
     private var sceneContentAnimation: Animation {
-        reduceMotion
-            ? .easeOut(duration: 0.10)
-            : .easeInOut(duration: 0.18)
+        DSSceneTransition.animation(reduceMotion: reduceMotion)
     }
 
     @ViewBuilder
