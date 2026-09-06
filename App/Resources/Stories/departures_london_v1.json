@@ -523,7 +523,15 @@
       "speaker": "Oliver",
       "text": "A small beginning. One page, no questions afterwards.",
       "translation": "小一点的开头。一页，读完先别提问。",
-      "next": "small_part2"
+      "next": "small_part2",
+      "speech": {
+        "intention": "私下提出能承受的条件，犹豫但不是悲伤；完整说完第一个想法后留一个短拍。",
+        "speed": 0.96,
+        "before": 0.12,
+        "after": 0.12,
+        "pauseAfter": "A small beginning.",
+        "pauseDuration": 0.18
+      }
     },
     {
       "id": "small_part2",
@@ -533,7 +541,13 @@
       "speaker": "Oliver",
       "text": "And permission to be bad at it.",
       "translation": "还得允许我读得不怎么样。",
-      "next": "clarify"
+      "next": "clarify",
+      "speech": {
+        "intention": "补上真正担心的事，语速稍收，不把自嘲演成哭腔。",
+        "speed": 0.94,
+        "before": 0.06,
+        "after": 0.25
+      }
     },
     {
       "id": "clarify",
@@ -553,7 +567,13 @@
       "speaker": "Oliver",
       "text": "I'll ask. If I can read my own words, I can say that much.",
       "translation": "我自己问吧。既然要读自己的文字，这句话也能自己说。",
-      "next": "agreement"
+      "next": "agreement",
+      "speech": {
+        "intention": "作出自己开口的决定，第一句短而确定，后半句保持自然连贯。",
+        "speed": 1.02,
+        "before": 0.08,
+        "after": 0.12
+      }
     },
     {
       "id": "agreement",
@@ -563,7 +583,13 @@
       "speaker": "Nora",
       "text": "Of course. A page, no questions.",
       "translation": "当然。一页，先不提问。",
-      "next": "agreement_part2"
+      "next": "agreement_part2",
+      "speech": {
+        "intention": "Nora 平静接住请求，确认条件；不热烈欢呼，不催促。",
+        "speed": 0.98,
+        "before": 0.08,
+        "after": 0.1
+      }
     },
     {
       "id": "agreement_part2",
@@ -573,7 +599,13 @@
       "speaker": "Nora",
       "text": "And you can change your mind before we begin.",
       "translation": "开始前，你也随时可以改主意。",
-      "next": "not_test"
+      "next": "not_test",
+      "speech": {
+        "intention": "强调决定仍属于 Oliver，留出空间而非宣布规定。",
+        "speed": 0.97,
+        "before": 0,
+        "after": 0.16
+      }
     },
     {
       "id": "not_test",
@@ -583,7 +615,13 @@
       "speaker": "Nora",
       "text": "This isn't an audition. Nobody here needs to earn their chair.",
       "translation": "这不是试镜。在这里，没有人需要证明自己才配坐下。",
-      "next": "silence"
+      "next": "silence",
+      "speech": {
+        "intention": "温和消除被评判的压力，两句保持完整语调，不机械分割。",
+        "speed": 0.96,
+        "before": 0.06,
+        "after": 0.24
+      }
     },
     {
       "id": "silence",
@@ -593,7 +631,13 @@
       "speaker": "旁白",
       "text": "Oliver turns the folded page over.",
       "translation": "Oliver 把折好的纸翻了个面。",
-      "next": "silence_part2"
+      "next": "silence_part2",
+      "speech": {
+        "intention": "旁白描述纸张动作，克制，不代替角色叹气。",
+        "speed": 0.98,
+        "before": 0.1,
+        "after": 0.16
+      }
     },
     {
       "id": "silence_part2",
@@ -603,7 +647,13 @@
       "speaker": "旁白",
       "text": "The conversation pauses long enough for him to breathe.",
       "translation": "大家没有催他，他终于有空呼吸。",
-      "next": "two_ways"
+      "next": "two_ways",
+      "speech": {
+        "intention": "旁白说完后真的给角色留一小段空白。",
+        "speed": 0.96,
+        "before": 0,
+        "after": 0.55
+      }
     },
     {
       "id": "two_ways",
@@ -613,7 +663,14 @@
       "speaker": "Oliver",
       "text": "I could try tonight. Or listen, and bring a page next time.",
       "translation": "我可以今晚试试。也可以先听，下次再带一页。",
-      "next": "two_ways_part2"
+      "next": "two_ways_part2",
+      "speech": {
+        "intention": "获得喘息空间后说出两种都可接受的选择；呼吸属于 Oliver。",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.18,
+        "expression": "breath"
+      }
     },
     {
       "id": "two_ways_part2",
@@ -623,7 +680,13 @@
       "speaker": "Oliver",
       "text": "Both feel real now.",
       "translation": "现在，这两个选择都像是真的了。",
-      "next": "tonight"
+      "next": "tonight",
+      "speech": {
+        "intention": "轻微释然，确认自己的选择；不用笑声夸张标注。",
+        "speed": 0.98,
+        "before": 0.06,
+        "after": 0.28
+      }
     },
     {
       "id": "tonight",

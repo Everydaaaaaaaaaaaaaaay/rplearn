@@ -76,6 +76,7 @@ public struct SpeechRequest: Sendable, Equatable {
     public let engine: SpeechSynthesisEngine?
     /// Authored locale-sensitive narration must not trade accent for voice quality.
     public let requiresExactLocale: Bool
+    public let delivery: SpeechDelivery?
 
     public init(
         text: String,
@@ -83,7 +84,8 @@ public struct SpeechRequest: Sendable, Equatable {
         purpose: SpeechPurpose = .general,
         voiceHint: SpeechVoiceHint? = nil,
         engine: SpeechSynthesisEngine? = nil,
-        requiresExactLocale: Bool = false
+        requiresExactLocale: Bool = false,
+        delivery: SpeechDelivery? = nil
     ) {
         self.text = text
         self.language = language
@@ -91,6 +93,7 @@ public struct SpeechRequest: Sendable, Equatable {
         self.voiceHint = voiceHint
         self.engine = engine
         self.requiresExactLocale = requiresExactLocale
+        self.delivery = delivery
     }
 }
 
@@ -183,8 +186,9 @@ public actor AppleTTSService: SpeechService {
         } else {
             utterance.voice = characterVoice(for: request) ?? bestVoice(for: request.language)
         }
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
-        utterance.postUtteranceDelay = 0.1
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92 * (request.narrativeDelivery?.speedMultiplier ?? 1)
+        utterance.preUtteranceDelay = request.narrativeDelivery?.leadingPause ?? 0
+        utterance.postUtteranceDelay = 0.1 + (request.narrativeDelivery?.trailingPause ?? 0)
         synthesizer.speak(utterance)
     }
 

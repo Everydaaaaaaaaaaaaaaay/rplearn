@@ -252,25 +252,43 @@ actor Supertonic3SpeechEngine {
         voiceStyles.removeAll()
     }
 
-    /// 真机集成测试只测推理，不播放音频；确保测到的是模型性能而非句子时长。
-    func benchmarkSynthesis(_ request: SpeechRequest) async throws
-        -> Supertonic3SynthesisBenchmarkResult {
+    /// Shared by playback and the opt-in local audition; no cache or player is
+    /// involved, so audition results exercise the actual production renderer.
+    func synthesizeSamples(_ request: SpeechRequest) async throws -> [Float] {
+        guard !request.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return [] }
         try await prepare()
         guard let manager else { throw Supertonic3SpeechEngineError.notReady }
+        try Task.checkCancellation()
         let profile = Supertonic3VoiceCatalog.profile(for: request)
         let style = try voiceStyle(profile.voiceID)
+        let cue = request.narrativeDelivery
+        let rate = Supertonic3AssetSelection.sampleRate
+        var samples = [Float](repeating: 0, count: Int((cue?.leadingPause ?? 0) * rate))
+        for segment in request.synthesisSegments {
+            try Task.checkCancellation()
+            let result = try await manager.synthesize(
+                text: segment.text, language: "en", style: style,
+                speed: profile.speed * (cue?.speedMultiplier ?? 1),
+                silenceDuration: profile.silenceDuration
+            )
+            try Task.checkCancellation()
+            guard !result.samples.isEmpty else { throw Supertonic3SpeechEngineError.notReady }
+            samples.append(contentsOf: result.samples)
+            samples.append(contentsOf: repeatElement(0, count: Int(segment.silenceAfter * rate)))
+        }
+        samples.append(contentsOf: repeatElement(0, count: Int((cue?.trailingPause ?? 0) * rate)))
+        return samples
+    }
+
+    /// 真机集成测试只测推理，不播放音频。
+    func benchmarkSynthesis(_ request: SpeechRequest) async throws
+        -> Supertonic3SynthesisBenchmarkResult {
         let startedAt = Date()
-        let result = try await manager.synthesize(
-            text: request.text,
-            language: "en",
-            style: style,
-            speed: profile.speed,
-            silenceDuration: profile.silenceDuration
-        )
+        let samples = try await synthesizeSamples(request)
         return Supertonic3SynthesisBenchmarkResult(
             synthesisDuration: Date().timeIntervalSince(startedAt),
-            audioDuration: TimeInterval(result.duration),
-            sampleCount: result.samples.count
+            audioDuration: Double(samples.count) / Supertonic3AssetSelection.sampleRate,
+            sampleCount: samples.count
         )
     }
 
@@ -281,7 +299,7 @@ actor Supertonic3SpeechEngine {
         var didBeginPlayback = false
         do {
             try await prepare()
-            guard let manager else { throw Supertonic3SpeechEngineError.notReady }
+            guard manager != nil else { throw Supertonic3SpeechEngineError.notReady }
             let profile = Supertonic3VoiceCatalog.profile(for: request)
             let cacheKey: SpeechAudioCacheKey? = SpeechAudioCachePolicy.shouldCache(
                 text: trimmed,
@@ -289,7 +307,8 @@ actor Supertonic3SpeechEngine {
             ) ? SpeechAudioCacheKey(
                 text: trimmed,
                 language: request.language,
-                voiceID: profile.cacheIdentity,
+                voiceID: request.narrativeDelivery == nil ? profile.cacheIdentity
+                    : profile.cacheIdentity + "-" + request.deliveryCacheIdentity,
                 pipelineVersion: Supertonic3AssetSelection.cachePipelineVersion
             ) : nil
 
@@ -298,17 +317,9 @@ actor Supertonic3SpeechEngine {
                 samples = cached
                 Log.speech.notice("Supertonic-3 发音缓存命中，跳过模型推理")
             } else {
-                let style = try voiceStyle(profile.voiceID)
                 let synthesisStartedAt = Date()
-                let result = try await manager.synthesize(
-                    text: trimmed,
-                    language: "en",
-                    style: style,
-                    speed: profile.speed,
-                    silenceDuration: profile.silenceDuration
-                )
+                samples = try await synthesizeSamples(request)
                 try Task.checkCancellation()
-                samples = result.samples
                 if let cacheKey, !samples.isEmpty {
                     await audioCache.insert(samples, for: cacheKey)
                 }
@@ -317,7 +328,7 @@ actor Supertonic3SpeechEngine {
                     Date().timeIntervalSince(synthesisStartedAt)
                 )
                 let realTimeFactor = Date().timeIntervalSince(synthesisStartedAt) > 0
-                    ? Double(result.duration) / Date().timeIntervalSince(synthesisStartedAt)
+                    ? (Double(samples.count) / Supertonic3AssetSelection.sampleRate) / Date().timeIntervalSince(synthesisStartedAt)
                     : 0
                 let speed = String(format: "%.2f", realTimeFactor)
                 Log.speech.notice(

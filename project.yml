@@ -142,6 +142,7 @@ targets:
         LingoTripCostEvalConfig: $(COST_EVAL_CONFIG)
         LingoTripRoleplayE2EEnabled: $(RUN_ROLEPLAY_E2E)
         LingoTripRoleplayE2ECycle: $(ROLEPLAY_E2E_CYCLE)
+        LingoTripSpeechSampleEnabled: $(RUN_SPEECH_SAMPLE)
     configFiles:
       Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
@@ -187,10 +188,13 @@ targets:
         product: RosterFeature
       - package: LingoKit
         product: StoryEngine
+      - package: LingoKit
+        product: StoryFeature
     settings:
       base:
         COST_EVAL_CONFIG: ""
         RUN_ROLEPLAY_E2E: "0"
+        RUN_SPEECH_SAMPLE: "0"
         ROLEPLAY_E2E_CYCLE: "0"
         PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).tests
         CODE_SIGN_STYLE: Automatic

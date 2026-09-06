@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-07",
+  "scope": "10 voiced lines, small through two_ways_part2; player prompt omitted",
+  "model": "bundled Supertonic-3 v1.7.3 / FluidAudio 0.15.5 / ANE INT4 / 8 steps / 44100 Hz",
+  "device": "iOS 26.1 simulator, LingoTrip Access QA; not physical-device timing",
+  "tests": {
+    "passed": 43,
+    "expandedExecutions": 46,
+    "failed": 0,
+    "skipped": 0
+  },
+  "asr": {
+    "model": "base.en",
+    "runtime": "1.2.1",
+    "wordNormalization": "lowercase English words; punctuation ignored; no reference-text prompt"
+  },
+  "variants": {
+    "original": {
+      "sequenceSeconds": 40.017,
+      "peak": 0.342529296875,
+      "asrWordEdits": 2,
+      "asrReferenceWords": 86,
+      "wavSHA256": "f74bf15865e16c7a9559196222b92240811b89ac53eaf09d4cda229e63d628f2",
+      "asrDiscrepancies": [
+        {
+          "node": "agreement",
+          "variant": "original",
+          "expected": "Of course. A page, no questions.",
+          "recognized": "of course, page no questions.",
+          "wordEdits": 1,
+          "referenceWords": 6,
+          "wer": 0.16666666666666666
+        },
+        {
+          "node": "two_ways",
+          "variant": "original",
+          "expected": "I could try tonight. Or listen, and bring a page next time.",
+          "recognized": "I could try tonight, or listen, bring a page next time.",
+          "wordEdits": 1,
+          "referenceWords": 12,
+          "wer": 0.08333333333333333
+        }
+      ]
+    },
+    "rhythm": {
+      "sequenceSeconds": 43.67,
+      "peak": 0.371337890625,
+      "asrWordEdits": 0,
+      "asrReferenceWords": 86,
+      "wavSHA256": "b150ccf58deaf13a8401b2d109999cca9ce071864516c391a3f73eb07b9ea0fd",
+      "asrDiscrepancies": []
+    },
+    "expressive": {
+      "sequenceSeconds": 44.14,
+      "peak": 0.371337890625,
+      "asrWordEdits": 0,
+      "asrReferenceWords": 86,
+      "wavSHA256": "f17b6b21dff6bad7a0535ce82e4c9e85b27a2d994c1c90ffcf030caa042c5978",
+      "asrDiscrepancies": []
+    }
+  },
+  "limitations": [
+    "Human naturalness/emotion ratings pending; no claim of emotional acting acceptance.",
+    "ASR differences are recognition candidates, not proven speech errors.",
+    "No random seed API; regenerated lines may differ due to diffusion sampling.",
+    "The 9 unchanged rhythm/expressive lines share PCM; only two_ways is regenerated.",
+    "Offline sequence excludes runtime synthesis latency, player prompt, rain, and visual interactions."
+  ]
+}

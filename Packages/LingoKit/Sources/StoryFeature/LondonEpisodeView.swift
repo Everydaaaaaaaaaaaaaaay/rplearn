@@ -429,15 +429,7 @@ public struct LondonEpisodeView: View {
         lastAudioPageID = session?.nodeID
         guard canPlayAudio, let session else { audio.stop(); return }
         let speaker = session.current.speaker
-        // User-auditioned British cast: M5 for Oliver, F5 for Nora/narration.
-        // This is authored casting, not a general accent-switching capability.
-        let identity = speaker == "Oliver" ? "london.oliver" : speaker == "Nora" ? "london.nora"
-            : "london.narrator"
-        let request = SpeechRequest(text: session.current.text, language: "en", purpose: .characterDialogue,
-                                    voiceHint: SpeechVoiceHint(stableID: identity,
-                                                              gender: speaker == "Oliver" ? "male" : "female",
-                                                              supertonicVoice: speaker == "Oliver" ? .m5 : .f5),
-                                    engine: .supertonic3)
+        let request = LondonEpisodeNarration.request(for: session.current)
         currentLineIsVoiced = speaker != "你" && session.current.choices == nil && narratedNodeID != session.nodeID
         if currentLineIsVoiced { narratedNodeID = session.nodeID }
         // The rain has stopped at the ending; inside, only distant window rain.

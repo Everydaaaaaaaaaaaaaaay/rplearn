@@ -30,6 +30,18 @@ public struct StoryEpisode: Decodable, Sendable {
         public let yes: String
         public let no: String
     }
+    /// Authored from the scene/branch, never guessed from isolated keywords.
+    /// Optional per node: older episodes and untouched lines retain their delivery.
+    public struct SpeechDirection: Decodable, Sendable {
+        public enum Expression: String, Decodable, Sendable { case breath, sigh, laugh }
+        public let intention: String
+        public let speed: Double
+        public let before: Double
+        public let after: Double
+        public let expression: Expression?
+        public let pauseAfter: String?
+        public let pauseDuration: Double?
+    }
     public struct Node: Decodable, Sendable, Identifiable {
         public let id: String
         public let act: Int
@@ -42,6 +54,7 @@ public struct StoryEpisode: Decodable, Sendable {
         public let choices: [Choice]?
         public let branch: Branch?
         public let ending: Bool?
+        public let speech: SpeechDirection?
 
         public var targets: [String] {
             if let choices { return choices.map(\.next) }
@@ -90,6 +103,25 @@ public struct StoryEpisode: Decodable, Sendable {
             else { return try reject("shot") }
         }
         for node in nodes {
+            if let cue = node.speech {
+                guard !cue.intention.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                      (0.88...1.12).contains(cue.speed), (0...1.2).contains(cue.before),
+                      (0...1.2).contains(cue.after), (0...1.2).contains(cue.pauseDuration ?? 0),
+                      node.choices == nil, node.speaker != "你"
+                else { return try reject("speech direction: \(node.id)") }
+                if let prefix = cue.pauseAfter {
+                    guard !prefix.isEmpty, node.text.hasPrefix(prefix),
+                          prefix.count < node.text.count, let last = prefix.last,
+                          ".!?…".contains(last), (cue.pauseDuration ?? 0) > 0,
+                          !node.text.dropFirst(prefix.count).trimmingCharacters(in: .whitespaces).isEmpty
+                    else { return try reject("speech pause: \(node.id)") }
+                } else if cue.pauseDuration != nil {
+                    return try reject("speech pause without anchor: \(node.id)")
+                }
+                if cue.expression != nil && node.speaker == "旁白" {
+                    return try reject("narrator must not perform a character's expression: \(node.id)")
+                }
+            }
             if let limit = maxDialogueCharacters {
                 let text = node.text.decomposedStringWithCompatibilityMapping
                 guard text.unicodeScalars.count <= limit, text.rangeOfCharacter(from: .newlines) == nil,
