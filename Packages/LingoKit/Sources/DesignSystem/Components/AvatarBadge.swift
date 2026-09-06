@@ -1,12 +1,13 @@
 import SwiftUI
+import UIKit
 
 public struct AvatarBadge: View {
     private let name: String
     private let tint: Color?
     private let size: CGFloat
-    private let imageName: String?
     private let remoteURL: URL?
     private let usesPendingPlaceholder: Bool
+    private let localImage: UIImage?
 
     private static let palette: [Color] = [
         .dsSky, .dsCyan, .dsSunset, .dsSuccess, .dsQuiz, .pink,
@@ -23,9 +24,9 @@ public struct AvatarBadge: View {
         self.name = name
         self.tint = tint
         self.size = size
-        self.imageName = imageName
         self.remoteURL = remoteURL
         self.usesPendingPlaceholder = usesPendingPlaceholder
+        self.localImage = DSAvatarAssets.image(named: imageName)
     }
 
     private var stableTint: Color {
@@ -45,7 +46,7 @@ public struct AvatarBadge: View {
         .frame(width: size, height: size)
         .clipShape(Circle())
         .shadow(color: stableTint.opacity(0.13), radius: size * 0.12, y: size * 0.045)
-        .accessibilityLabel(usesPendingPlaceholder && remoteURL == nil && imageName == nil ? "\(name)，头像待定" : name)
+        .accessibilityLabel(usesPendingPlaceholder && remoteURL == nil && localImage == nil ? "\(name)，头像待定" : name)
     }
 
     @ViewBuilder
@@ -56,13 +57,21 @@ public struct AvatarBadge: View {
                 case .success(let image):
                     image.resizable().scaledToFill()
                 default:
-                    fallbackContent
+                    localAvatarContent
                 }
             }
-        } else if let imageName, !imageName.isEmpty {
-            Image(imageName)
+        } else {
+            localAvatarContent
+        }
+    }
+
+    @ViewBuilder
+    private var localAvatarContent: some View {
+        if let localImage {
+            Image(uiImage: localImage)
                 .resizable()
                 .scaledToFill()
+                .background(stableTint.opacity(0.15))
         } else {
             fallbackContent
         }
