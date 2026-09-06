@@ -31,6 +31,7 @@ struct Supertonic3SynthesisBenchmarkResult: Sendable {
 /// 固定为 ANE int4 三档模型。L128 覆盖单词与普通短句，较长句子可自动升到
 /// L256/L512；因此同一套资源也能用于整句 NPC 台词的对比测试。
 enum Supertonic3AssetSelection {
+    static let maxSingleChunkCharacters = Supertonic3Constants.maxChunkLengthLatin
     static let repositoryFolder = Repo.supertonic3.folderName
     static let sampleRate = 44_100.0
     static let cachePipelineVersion = "supertonic-3-v1.7.3-ane-int4-44k1-steps8-cache-v2"
@@ -101,6 +102,9 @@ enum Supertonic3VoiceCatalog {
         // 词典发音固定使用同一音色，避免同一个单词因调用入口不同而换声。
         guard request.purpose != .pronunciation else {
             return Profile(voiceID: "F1", speed: 1.0, silenceDuration: 0.05)
+        }
+        if let voice = request.voiceHint?.supertonicVoice {
+            return Profile(voiceID: voice.rawValue, speed: 1, silenceDuration: 0.05)
         }
 
         let candidates: [String]
@@ -224,6 +228,10 @@ actor Supertonic3SpeechEngine {
         let task = playbackTask
         playbackTask = nil
         task?.cancel()
+        // A failed synthesis can be awaiting Apple playback inside this task.
+        // Stop that fallback before joining it, otherwise a skipped story line
+        // continues speaking and blocks the next request until its natural end.
+        if task != nil { await apple.stopSpeaking() }
         if let player {
             await player.stop()
         }

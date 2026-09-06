@@ -48,12 +48,22 @@ public struct SpeechVoiceHint: Sendable, Equatable {
     public let stableID: String
     public let gender: String?
     public let nationality: String?
+    /// Optional authored casting; nil keeps the stable automatic voice selection.
+    public let supertonicVoice: SupertonicVoice?
 
-    public init(stableID: String, gender: String? = nil, nationality: String? = nil) {
+    public init(stableID: String, gender: String? = nil, nationality: String? = nil,
+                supertonicVoice: SupertonicVoice? = nil) {
         self.stableID = stableID
         self.gender = gender
         self.nationality = nationality
+        self.supertonicVoice = supertonicVoice
     }
+}
+
+/// Exact bundled voice identifiers for authored character casting.
+public enum SupertonicVoice: String, CaseIterable, Sendable {
+    case m1 = "M1", m2 = "M2", m3 = "M3", m4 = "M4", m5 = "M5"
+    case f1 = "F1", f2 = "F2", f3 = "F3", f4 = "F4", f5 = "F5"
 }
 
 /// 一次朗读请求。新增引擎或选声策略时，业务层无需了解具体 TTS 实现。
@@ -64,19 +74,23 @@ public struct SpeechRequest: Sendable, Equatable {
     public let voiceHint: SpeechVoiceHint?
     /// nil 表示跟随全局设置；设置页试听可临时指定而不改变用户偏好。
     public let engine: SpeechSynthesisEngine?
+    /// Authored locale-sensitive narration must not trade accent for voice quality.
+    public let requiresExactLocale: Bool
 
     public init(
         text: String,
         language: String = "en-US",
         purpose: SpeechPurpose = .general,
         voiceHint: SpeechVoiceHint? = nil,
-        engine: SpeechSynthesisEngine? = nil
+        engine: SpeechSynthesisEngine? = nil,
+        requiresExactLocale: Bool = false
     ) {
         self.text = text
         self.language = language
         self.purpose = purpose
         self.voiceHint = voiceHint
         self.engine = engine
+        self.requiresExactLocale = requiresExactLocale
     }
 }
 
@@ -159,7 +173,16 @@ public actor AppleTTSService: SpeechService {
             replaceSynthesizer()
         }
         let utterance = AVSpeechUtterance(string: request.text)
-        utterance.voice = bestVoice(for: request.language)
+        if request.requiresExactLocale {
+            guard let voice = Self.exactLocaleVoice(from: AVSpeechSynthesisVoice.speechVoices(),
+                                                   language: request.language, gender: request.voiceHint?.gender) else {
+                Log.speech.warning("所需口音的系统语音不可用，未改用其他口音")
+                return
+            }
+            utterance.voice = voice
+        } else {
+            utterance.voice = characterVoice(for: request) ?? bestVoice(for: request.language)
+        }
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
         utterance.postUtteranceDelay = 0.1
         synthesizer.speak(utterance)
@@ -211,6 +234,33 @@ public actor AppleTTSService: SpeechService {
         if let voice {
             voiceCache[language] = voice
         }
+        return voice
+    }
+
+    private func characterVoice(for request: SpeechRequest) -> AVSpeechSynthesisVoice? {
+        guard request.purpose == .characterDialogue, request.language.lowercased().hasPrefix("en"),
+              let hint = request.voiceHint, let genderName = hint.gender?.lowercased(),
+              ["male", "female"].contains(genderName) else { return nil }
+        let key = "\(request.language)-\(hint.stableID)-\(hint.gender ?? "")"
+        if let voice = voiceCache[key] { return voice }
+        let gender: AVSpeechSynthesisVoiceGender = genderName == "male" ? .male : .female
+        let candidates = AVSpeechSynthesisVoice.speechVoices().filter {
+            $0.language.hasPrefix("en") && $0.gender == gender
+        }
+        let voice = Self.selectBestVoice(from: candidates, language: request.language)
+        if let voice { voiceCache[key] = voice }
+        return voice
+    }
+
+    static func exactLocaleVoice(from voices: [AVSpeechSynthesisVoice], language: String, gender: String?) -> AVSpeechSynthesisVoice? {
+        let candidates = voices.filter { $0.language.caseInsensitiveCompare(language) == .orderedSame }
+        let preferredGender: AVSpeechSynthesisVoiceGender = gender?.lowercased() == "male" ? .male : .female
+        let matchingGender = candidates.filter { $0.gender == preferredGender }
+        let pool = matchingGender.isEmpty ? candidates : matchingGender
+        if let voice = pool.sorted(by: { qualityRank($0.quality) > qualityRank($1.quality)
+            || ($0.quality == $1.quality && $0.identifier < $1.identifier) }).first { return voice }
+        guard let voice = AVSpeechSynthesisVoice(language: language),
+              voice.language.caseInsensitiveCompare(language) == .orderedSame else { return nil }
         return voice
     }
 

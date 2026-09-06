@@ -12,6 +12,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
     let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
     let exampleTranslationActions: DictExampleTranslationActions
+    let allowsSystemTranslationFallback: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public func body(content: Content) -> some View {
@@ -42,6 +43,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 favoriteActions: favoriteActions,
                                 aiFallback: aiFallback,
                                 exampleTranslationActions: exampleTranslationActions,
+                                allowsSystemTranslationFallback: allowsSystemTranslationFallback,
                                 onDismiss: { self.selection = nil }
                             )
                             .id(selection)
@@ -77,7 +79,8 @@ extension View {
         onSpeak: (@MainActor (String) -> Void)? = nil,
         favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil,
-        exampleTranslationActions: DictExampleTranslationActions
+        exampleTranslationActions: DictExampleTranslationActions,
+        allowsSystemTranslationFallback: Bool = true
     ) -> some View {
         modifier(
             WordLookupOverlayModifier(
@@ -87,7 +90,8 @@ extension View {
                 onSpeak: onSpeak,
                 favoriteActions: favoriteActions,
                 aiFallback: aiFallback,
-                exampleTranslationActions: exampleTranslationActions
+                exampleTranslationActions: exampleTranslationActions,
+                allowsSystemTranslationFallback: allowsSystemTranslationFallback
             )
         )
     }

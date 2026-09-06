@@ -6,12 +6,14 @@ import SwiftUI
 /// 剧情二级入口：主线负责跨城推进，城市剧情承载每座城市的独立故事。
 public struct StoryHubView: View {
     private let deps: HomeDependencies
+    private let onPreview: (() -> Void)?
 
     @State private var profile: UserProfileDTO?
     @State private var completed: Set<String> = []
 
-    public init(deps: HomeDependencies) {
+    public init(deps: HomeDependencies, onPreview: (() -> Void)? = nil) {
         self.deps = deps
+        self.onPreview = onPreview
     }
 
     private var journey: MainlineJourney {
@@ -40,6 +42,25 @@ public struct StoryHubView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: DSSpacing.lg) {
                 intro
+
+                if let onPreview {
+                    Button(action: onPreview) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("出发之后 · 新版伦敦样章").font(.caption.weight(.semibold)).tracking(1)
+                                .foregroundStyle(Color(red: 0.77, green: 0.62, blue: 0.37))
+                            Text("空着的那把椅子").font(.title2.weight(.semibold))
+                            Text("一个雨夜，一页没念过的文字，以及一个由你陪伴的决定。")
+                                .font(.subheadline).foregroundStyle(.secondary)
+                            HStack {
+                                Text("日系演出 · 两次选择 · 独立本地进度").font(.caption)
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }
+                        }.foregroundStyle(Color.primary).padding(22)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 16))
+                    }.buttonStyle(.pressableCard).accessibilityIdentifier("story.london.preview")
+                }
 
                 NavigationLink(value: HomeDestination.mainline) {
                     categoryCard(

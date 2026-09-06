@@ -121,14 +121,21 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         let trimmed = request.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
-        if await resolvedEngine(for: request) == .system {
-            await invalidateCurrentPlayback()
-            await apple.speakAndWait(request)
-            return
+        let generation = playbackRequestGate.issue()
+        await cancelCurrentPlayback()
+        guard playbackRequestGate.accepts(generation), !Task.isCancelled else { return }
+        let engine = await resolvedEngine(for: request)
+        if engine == .supertonic3 {
+            await prepareSupertonicIfNeeded(updateStatus: selectedEngine == .supertonic3)
         }
-
-        await speak(request)
-        await supertonic.waitUntilFinished()
+        guard playbackRequestGate.accepts(generation), !Task.isCancelled else { return }
+        if engine == .supertonic3, await supertonic.isReady {
+            await supertonic.speakAndWait(request)
+        } else {
+            // Await the actual fallback voice too; otherwise narrated pages advance
+            // while Apple is still speaking when model preparation fails.
+            await apple.speakAndWait(request)
+        }
     }
 
     public func stopSpeaking() async {

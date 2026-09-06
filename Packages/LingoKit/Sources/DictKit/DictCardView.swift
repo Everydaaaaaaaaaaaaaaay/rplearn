@@ -13,6 +13,7 @@ public struct DictCardView: View {
     private let favoriteActions: WordFavoriteActions?
     private let aiFallback: (@Sendable (String) async -> String?)?
     private let exampleTranslationActions: DictExampleTranslationActions
+    private let allowsSystemTranslationFallback: Bool
     private let onDismiss: (@MainActor () -> Void)?
 
     @State private var path: [DictTarget]
@@ -41,6 +42,7 @@ public struct DictCardView: View {
         favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil,
         exampleTranslationActions: DictExampleTranslationActions,
+        allowsSystemTranslationFallback: Bool = true,
         onDismiss: (@MainActor () -> Void)? = nil
     ) {
         _path = State(initialValue: [target])
@@ -52,6 +54,7 @@ public struct DictCardView: View {
         self.favoriteActions = favoriteActions
         self.aiFallback = aiFallback
         self.exampleTranslationActions = exampleTranslationActions
+        self.allowsSystemTranslationFallback = allowsSystemTranslationFallback
         self.onDismiss = onDismiss
     }
 
@@ -92,12 +95,19 @@ public struct DictCardView: View {
             await loadCurrentTarget()
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
-            try? await session.prepareTranslation()
-            for item in await appleTranslator.takeBatch() {
-                let sentenceZhHans = try? await session.translate(item.text).targetText
-                await appleTranslator.complete(item.id, with: sentenceZhHans)
+            let batch = await appleTranslator.takeBatch()
+            do {
+                try await session.prepareTranslation()
+                for item in batch {
+                    let sentenceZhHans = try? await session.translate(item.text).targetText
+                    await appleTranslator.complete(item.id, with: sentenceZhHans)
+                }
+            } catch {
+                for item in batch { await appleTranslator.complete(item.id, with: nil) }
             }
+            await appleTranslator.finishBatch()
         }
+        .onDisappear { appleTranslator.cancelAll() }
         .accessibilityAction(named: "关闭释义") {
             onDismiss?()
         }
@@ -707,10 +717,7 @@ public struct DictCardView: View {
         .flatMap(\.examples)
         guard !examples.isEmpty else { return }
 
-        let translationActions = exampleTranslationActions
-            .fallingBackToSentenceTranslation { [appleTranslator] sentence in
-                await appleTranslator.translate(sentence)
-            }
+        let translationActions = effectiveTranslationActions
         translatingExampleIDs = Set(examples.map(\.id))
         await withTaskGroup(of: (String, DictExampleTranslation?).self) { group in
             for example in examples {
@@ -735,12 +742,22 @@ public struct DictCardView: View {
         }
     }
 
+    private var effectiveTranslationActions: DictExampleTranslationActions {
+        translationActions(allowsDownload: false)
+    }
+
+    private func translationActions(allowsDownload: Bool) -> DictExampleTranslationActions {
+        guard allowsSystemTranslationFallback else { return exampleTranslationActions }
+        return exampleTranslationActions.fallingBackToSentenceTranslation { [appleTranslator] sentence in
+            await appleTranslator.translate(sentence, allowsDownload: allowsDownload)
+        }
+    }
+
     private func translateExample(_ example: DictUsageExample) {
         guard !translatingExampleIDs.contains(example.id) else { return }
-        let translationActions = exampleTranslationActions
-            .fallingBackToSentenceTranslation { [appleTranslator] sentence in
-                await appleTranslator.translate(sentence)
-            }
+        // This is an explicit Retry tap: language preparation/download may now ask
+        // for permission. Passive lookup and pronunciation never request downloads.
+        let translationActions = translationActions(allowsDownload: true)
         translatingExampleIDs.insert(example.id)
         Task {
             let translated = await DictExampleTranslationCache.shared.translation(
