@@ -30,6 +30,7 @@ public final class ChatViewModel {
     private var replyTask: Task<Void, Never>?
     private var replyCycleID = UUID()
     private var replyDeferralDeadline: TimeInterval?
+    var retryingMessageID: UUID?
 
     /// 本会话下一次出题的阈值（N=6±2，每次出题后重掷）。
     private var quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
@@ -113,11 +114,15 @@ public final class ChatViewModel {
     }
 
     public func sendDraft() async {
-        let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
+        let originalDraft = draft
+        let text = originalDraft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
         Haptics.impact(.light)
         draft = ""
-        await send(userText: text)
+        if !(await send(userText: text)), draft.isEmpty {
+            // Preserve failed input without overwriting anything typed while saving.
+            draft = originalDraft
+        }
     }
 
     /// 输入框仍在编辑时，续期尚未开始的回复，让连续短消息有机会归入同一话轮。
@@ -257,6 +262,7 @@ public final class ChatViewModel {
         replyTask = nil
         replyCycleID = UUID()
         replyDeferralDeadline = nil
+        retryingMessageID = nil
         isWaitingForUserBurst = false
         isStreaming = false
         streamingText = nil
@@ -292,20 +298,19 @@ public final class ChatViewModel {
         }
     }
 
-    /// 重试：删除中断的助手消息并按当前历史重新请求。
+    /// 重试成功后才删除旧中断消息；失败时仍保留用户已收到的内容。
     public func retryInterrupted(messageID: UUID) async {
-        guard !isStreaming, !isWaitingForUserBurst else { return }
-        do {
-            try await deps.chatStore.deleteMessage(messageID: messageID)
-            await reloadMessages()
-            scheduleAssistantReply(after: "", preferredDelay: 0.45)
-        } catch {
-            errorMessage = "重试失败：\(error.localizedDescription)"
-        }
+        guard !isStreaming, !isWaitingForUserBurst,
+              messages.contains(where: { $0.id == messageID && $0.role == .assistant && $0.isInterrupted })
+        else { return }
+        scheduleAssistantReply(after: "", preferredDelay: 0.45, replacing: messageID)
     }
 
-    private func send(userText: String) async {
-        guard let conversation else { return }
+    private func send(userText: String) async -> Bool {
+        guard let conversation else {
+            errorMessage = "聊天尚未加载，请稍后重试。"
+            return false
+        }
         let userMessage: MessageDTO
         do {
             userMessage = try await deps.chatStore.appendMessage(
@@ -318,11 +323,12 @@ public final class ChatViewModel {
             notifyConversationChanged()
         } catch {
             errorMessage = "发送失败：\(error.localizedDescription)"
-            return
+            return false
         }
         // 教练审核与主链路并行，互不阻塞。
         runInteractionReview(for: userMessage, source: .textChat)
         scheduleAssistantReply(after: userText)
+        return true
     }
 
     /// 一次后台调用同时完成语言点评与关系信号分析，避免每条消息额外消耗一轮模型请求。
@@ -358,9 +364,11 @@ public final class ChatViewModel {
 
     private func scheduleAssistantReply(
         after latestUserText: String,
-        preferredDelay: TimeInterval? = nil
+        preferredDelay: TimeInterval? = nil,
+        replacing messageID: UUID? = nil
     ) {
         replyTask?.cancel()
+        retryingMessageID = messageID
         let now = ProcessInfo.processInfo.systemUptime
         replyDeferralDeadline = now + RoleplayTurnTakingPolicy.standard.maximumDeferralAfterLatestMessage
 
@@ -395,6 +403,7 @@ public final class ChatViewModel {
 
     private func streamAssistantReply(cycleID: UUID) async {
         guard let conversation, cycleID == replyCycleID, !Task.isCancelled else { return }
+        let replacedMessageID = retryingMessageID
         isWaitingForUserBurst = false
         isStreaming = true
         streamingText = ""
@@ -407,6 +416,7 @@ public final class ChatViewModel {
                 streamingText = nil
                 replyDeferralDeadline = nil
                 replyTask = nil
+                retryingMessageID = nil
             }
         }
 
@@ -450,6 +460,11 @@ public final class ChatViewModel {
             }
             await reloadMessages()
             notifyConversationChanged()
+            return
+        }
+
+        guard !accumulated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            errorMessage = "暂时没有收到回复，请重试。"
             return
         }
 
@@ -525,6 +540,12 @@ public final class ChatViewModel {
                 elapsedSinceTypingBegan: ProcessInfo.processInfo.systemUptime - typingBeganAt,
                 cycleID: cycleID
             )
+            try Task.checkCancellation()
+            guard cycleID == replyCycleID else { throw CancellationError() }
+            if let replacedMessageID, !assistantMessages.isEmpty {
+                try await deps.chatStore.deleteMessage(messageID: replacedMessageID)
+                messages.removeAll { $0.id == replacedMessageID }
+            }
             let quiz = quizRequested
                 ? try? await QuizService.generate(
                     history: messages,

@@ -49,7 +49,7 @@ extension ChatViewModel {
         return PromptBuilder.roleplayRequest(
             card: character.card,
             learner: learner,
-            history: messages,
+            history: messages.filter { $0.id != retryingMessageID },
             memorySections: memorySections,
             relationshipContext: RelationshipEngine.promptContext(
                 currentCharacter?.relationship ?? character.relationship
