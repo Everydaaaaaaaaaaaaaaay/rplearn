@@ -67,11 +67,4 @@ public struct EconomyService: Sendable {
         }
     }
 
-    // MARK: - 调试
-
-    #if DEBUG
-    public func grantDebugCoins(_ amount: Int = 500) async {
-        _ = try? await economyStore.addCoins(amount)
-    }
-    #endif
 }

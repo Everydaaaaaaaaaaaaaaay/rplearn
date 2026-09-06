@@ -24,6 +24,7 @@ public struct MyPageView: View {
     private let onOpenMemory: @MainActor () -> Void
 
     @State private var pendingUsage = false
+    @State private var pendingSignIn = false
     @State private var showsUsage = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
@@ -90,11 +91,19 @@ public struct MyPageView: View {
         .onDisappear(perform: sceneActions.cancel)
         .sheet(isPresented: $showsAccountPanel, onDismiss: {
             if pendingUsage { pendingUsage = false; showsUsage = true }
+            else if pendingSignIn { pendingSignIn = false; onSignIn() }
         }) {
             accountPanel
         }
-        .sheet(isPresented: $showsUsage) {
-            if let accessClient { UsageAccessView(backend: accessClient, billing: billing, onSignIn: onSignIn) }
+        .sheet(isPresented: $showsUsage, onDismiss: {
+            if pendingSignIn { pendingSignIn = false; onSignIn() }
+        }) {
+            if let accessClient {
+                UsageAccessView(backend: accessClient, billing: billing) {
+                    pendingSignIn = true
+                    showsUsage = false
+                }
+            }
         }
         .manageSubscriptionsSheet(isPresented: $showsManageSubscriptions)
     }
@@ -223,39 +232,18 @@ public struct MyPageView: View {
     private var profileHotspot: some View {
         Button {
             sceneActions.perform(for: .profile) {
-                if isSignedIn {
-                    showsAccountPanel = true
-                } else {
-                    onSignIn()
-                }
+                showsAccountPanel = true
             }
         } label: {
             profileSceneEntry
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .profile))
         .accessibilityLabel("个人资料，\(presentation.displayName)，\(presentation.accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
-        .accessibilityHint(isSignedIn ? "打开账号与订阅" : "登录或创建账号")
+        .accessibilityHint("查看账号、用量与权益")
     }
 
-    @ViewBuilder
     private var coinHotspot: some View {
-        #if DEBUG
-        Button {
-            sceneActions.perform(for: .coin) {
-                Task {
-                    await economyService.grantDebugCoins()
-                    await reload()
-                }
-            }
-        } label: {
-            coinSceneEntry
-        }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .coin))
-        .accessibilityLabel("\(profile?.coins ?? 0) 金币")
-        .accessibilityHint("调试构建中轻点增加 500 金币")
-        #else
         coinLabel
-        #endif
     }
 
     private var coinLabel: some View {
@@ -686,9 +674,9 @@ public struct MyPageView: View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("开发期完整体验")
+                    Text("游客体验")
                         .font(.title3.bold())
-                    Text("AI 对话、城市探索、剧情和学习功能均可使用")
+                    Text("3 个普通好友位，体验起始城市与剧情首站")
                         .font(.footnote)
                         .opacity(0.86)
                 }
@@ -697,13 +685,16 @@ public struct MyPageView: View {
                     .font(.largeTitle)
             }
 
-            Button(action: onSignIn) {
+            Button {
+                if showsAccountPanel { pendingSignIn = true; showsAccountPanel = false }
+                else { onSignIn() }
+            } label: {
                 Label("登录或创建账号", systemImage: "icloud.and.arrow.up")
             }
             .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
             .tint(.white)
 
-            Text("登录仅用于跨设备同步和订阅恢复；未登录时功能不受限。")
+            Text("游客额度为一次性体验。登录后获得 5 个普通好友位和每日额度，并可继续剧情、飞往其他城市。剧情旅伴不占好友位。")
                 .font(.caption2)
                 .opacity(0.76)
         }
