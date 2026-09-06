@@ -6,7 +6,7 @@ Caddy 是唯一公网入口；API、Worker、PostgreSQL 17、Redis、MinIO 和 M
 
 ## 首次初始化
 
-服务器上的项目目录为 `/opt/lingotrip/backend`：
+首次初始化时，可将后端源码放到 `/opt/lingotrip/backend`，再运行：
 
 ```bash
 cd /opt/lingotrip/backend
@@ -28,8 +28,10 @@ cd Backend
 ./ops/native-server/package-release.sh <commit>
 scp build/lingotrip-backend-<commit>.tar.gz root@<server>:/tmp/
 ssh root@<server> \
-  "/opt/lingotrip/backend/ops/native-server/deploy.sh /tmp/lingotrip-backend-<commit>.tar.gz <commit>"
+  "/opt/lingotrip/ops/native-server/deploy.sh /tmp/lingotrip-backend-<commit>.tar.gz <commit>"
 ```
+
+线上运维脚本安装在 `/opt/lingotrip/ops/native-server`，与发布目录分开；旧 `/opt/lingotrip/backend` 链接可能指向已清理的历史目录，不能作为发布入口。发布包在独立临时目录编译，不携带已删除源码的旧编译产物或 macOS 资源分叉文件。
 
 部署脚本会安装内容寻址的生产依赖、执行数据库迁移、收紧运行时权限、原子切换
 `/opt/lingotrip/current`，然后重启 API 和 Worker 并检查 readiness。应用启动失败会切回
@@ -58,3 +60,19 @@ curl --fail https://rplearn.haruyuki.cn/health/ready
 
 Mailpit 仍只负责捕获开发邮件。Apple 登录和计费在外部凭据齐全前保持关闭。密钥、完整
 环境文件和用户内容不得进入 Git、命令参数、聊天记录或日志。
+
+## NPC 图库与后台补齐
+
+已验收头像以内容哈希命名存放在 `/srv/lingotrip/npc-avatars`，由 Caddy 的 `/npc-avatars/*` 路由提供公开 HTTPS 图片与长期 immutable 缓存。该目录只放公开 PNG；清单、来源记录和测试状态保存在非公开目录。图片上传后逐张校验 SHA，先确认公开 URL 可用，再导入清单；已有同名文件哈希不符时应拒绝覆盖。
+
+```bash
+# 在服务器上运行，环境值只由 Node 读取，不展开到命令参数。
+/opt/lingotrip/runtime/bin/node \
+  --env-file=/etc/lingotrip/backend.env \
+  --env-file=/etc/lingotrip/release.env \
+  /opt/lingotrip/current/dist/cli/import-npc-avatars.js /absolute/manifest.json
+```
+
+导入在同一数据库事务中唤醒待匹配请求。新版 `lingotrip-worker` 每分钟处理到期队列；App 登录进入前台后自动领取绑定结果。服务器发布不会替用户安装新版 iOS 客户端。
+
+2026-09-06 的 0006/0007 迁移只新增图库画像、匹配记录、待匹配表及调整头像共享索引；既有 29 个账号未重置。该次临时数据库快照与旧 Caddy 配置保留在 `/opt/lingotrip/migration-backups/npc-6f307a4-20260906`。旧程序启动要求迁移数量完全一致，因此另备了 `/opt/lingotrip/releases/npc-6f307a4-fallback`（原程序配合当前迁移文件）的回退包；普通旧发布目录不能在新迁移后直接重启。该回退包仅适用于本次兼容的迁移，后续发布不能机械复用。

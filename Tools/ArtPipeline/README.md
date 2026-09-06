@@ -1,6 +1,6 @@
 # NPC 头像图库施工与验收
 
-唯一生产图录：`Assets/NPC/Library/v3/catalog.json`。图录版本和 `styleVersion` 是不同概念；v3 使用 v5 美术规范。当前数量、真实测试结果见 `docs/npc-library/progress.md`。
+唯一生产图录：`Assets/NPC/Library/v3/catalog.json`。图录版本和 `styleVersion` 是不同概念；v3 使用 v5 美术规范。当前数量、真实测试结果见 `docs/npc-library/progress.md`；已部署的服务器版本与线上验收见 `docs/npc-library/deployment-2026-09-06.md`。
 
 ## 角色卡与头像的顺序
 
