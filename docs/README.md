@@ -20,6 +20,7 @@
 - [`realtime-voice.md`](realtime-voice.md)：端侧实时语音、低成本模型、生命周期与真机验收门槛。
 - [`relationship-system.md`](relationship-system.md)：多维角色关系、好感度计算、时间衰减与校准边界。
 - [`relationship-calibration-log.md`](relationship-calibration-log.md)：关系算法的历史实验、失败案例与验证证据。
+- [`user-cost-evaluation.md`](user-cost-evaluation.md)：原生端到端用户成本评测、场景和证据解释。
 - [`model-credits.md`](model-credits.md)：统一模型积分、试行预算、定价测算与核对规则。
 - [`../Backend/README.md`](../Backend/README.md)：后端本地开发。
 
