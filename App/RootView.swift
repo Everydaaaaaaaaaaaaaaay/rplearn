@@ -140,6 +140,16 @@ struct RootView: View {
                     requestAuthorization: true
                 )
             }
+            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")") {
+                guard scenePhase == .active,
+                      case .signedIn(let identity) = environment.authSession.phase,
+                      identity.userID == activeUserID else { return }
+                while !Task.isCancelled {
+                    await environment.npcAvatars.synchronize()
+                    do { try await Task.sleep(for: .seconds(60)) }
+                    catch { return }
+                }
+            }
             .task {
                 if ProactiveMessageRoute.consumeNotificationTap() {
                     selectedTab = .messages

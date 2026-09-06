@@ -58,6 +58,10 @@ public struct ChatView: View {
             inputBar
         }
         .background(Color.dsBackground)
+        .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
+            guard notification.object as? UUID == viewModel.character.id else { return }
+            Task { await viewModel.refreshCharacter() }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -67,7 +71,8 @@ public struct ChatView: View {
                             name: viewModel.character.displayName,
                             size: 32,
                             imageName: viewModel.character.card.avatarAssetName,
-                            remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                            remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                            usesPendingPlaceholder: true
                         )
                         Circle()
                             .fill(viewModel.isStreaming ? Color.dsSunset : Color.dsSuccess)
@@ -507,7 +512,8 @@ public struct ChatView: View {
                 name: viewModel.character.displayName,
                 size: 30,
                 imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                usesPendingPlaceholder: true
             )
         } else {
             Color.clear

@@ -75,7 +75,7 @@ enum RosterPresentationPolicy {
 }
 
 public struct CharacterProfileView: View {
-    private let character: CharacterDTO
+    @State private var character: CharacterDTO
     private let regionName: String
     private let rosterStore: RosterStore
     private let onFavoriteChanged: @MainActor (Bool) -> Void
@@ -104,7 +104,7 @@ public struct CharacterProfileView: View {
         chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
         callBuilder: (@MainActor (CharacterDTO) -> AnyView)? = nil
     ) {
-        self.character = character
+        _character = State(initialValue: character)
         self.regionName = regionName
         self.rosterStore = rosterStore
         self.onFavoriteChanged = onFavoriteChanged
@@ -167,6 +167,10 @@ public struct CharacterProfileView: View {
         .task {
             await reloadRelationship()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { note in
+            guard note.object as? UUID == character.id else { return }
+            Task { await reloadRelationship() }
+        }
         .onReceive(NotificationCenter.default.publisher(for: .rosterRelationshipDidChange)) { note in
             guard let characterID = note.object as? UUID, characterID == character.id else { return }
             Task { await reloadRelationship() }
@@ -179,7 +183,8 @@ public struct CharacterProfileView: View {
                 name: character.displayName,
                 size: 96,
                 imageName: card.avatarAssetName,
-                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:))
+                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)),
+                usesPendingPlaceholder: true
             )
             Text(character.displayName)
                 .font(.title2.bold())
@@ -353,6 +358,7 @@ public struct CharacterProfileView: View {
     @MainActor
     private func reloadRelationship() async {
         guard let latest = try? await rosterStore.character(id: character.id) else { return }
+        character = latest
         withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.25)) {
             relationship = latest.relationship
         }

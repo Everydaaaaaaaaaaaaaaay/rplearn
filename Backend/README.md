@@ -61,7 +61,9 @@ pnpm npc-avatars:import -- /absolute/path/npc-avatars.json
 
 数据库迁移只追加、不改写已经执行的历史文件；部署时先运行 `pnpm db:migrate`，迁移失败应停止发布，不能通过清空数据库绕过。`migrations/0004_npc_registry.sql` 建立公共 NPC、11 位旅伴号、头像池和用户私有关系映射。
 
-头像文件先放入 HTTPS 可访问的对象存储/CDN，再按 `npc-avatars.example.json` 的格式导入清单。导入可重复执行；已被 NPC 永久领取的头像不会被清单更新覆盖。匹配标签当前只使用 `gender:*` 和 `age:young|adult|mature`，明确不以国籍或地域推断外貌。
+头像文件先放入 HTTPS 可访问的对象存储/CDN，再使用美术流水线导出的 v2 清单（含实际年龄区间、创作性别、外貌描述与 SHA）导入。旧 `npc-avatars.example.json` 为 v1 兼容示例。导入可重复执行；已绑定头像的像素地址、画像档案和状态不可修改。匹配使用年龄、创作性别与全部 `requiredAvatarTags` 硬约束，明确不以国籍或地域推断外貌。
+
+迁移 `0007_npc_pending_portraits.sql` 新增持久待匹配队列：缺图时保留原始请求并返回 409，导入成功会在同一事务中唤醒请求。必须运行新版 `pnpm worker`（生产为 `pnpm start:worker`），每分钟处理最多 20 个到期请求，5 分钟预约窗口避免高频重复；进程重启后继续处理。匹配成功沿用原 NPC ID 并永久绑定，客户端以原请求重试即可领取结果。施工与批量测试见 [ArtPipeline](../Tools/ArtPipeline/README.md)。
 
 开发 API 默认监听 `http://127.0.0.1:8080`，OpenAPI 位于 `/docs/openapi.json`。
 生产发布只需按需阅读[部署说明](../docs/backend/DEPLOYMENT.md)。

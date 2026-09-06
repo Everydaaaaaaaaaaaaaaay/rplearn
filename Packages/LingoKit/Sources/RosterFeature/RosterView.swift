@@ -94,6 +94,12 @@ public struct RosterView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .task(id: reloadToken) { await reload() }
+            .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
+                Task {
+                    friends = (try? await deps.rosterStore.friends()) ?? friends
+                    formerContacts = (try? await deps.rosterStore.formerContacts()) ?? formerContacts
+                }
+            }
             .task(id: normalizedSearchText) { await lookupTravelerIDIfNeeded() }
             .overlay {
                 if isLoading {
@@ -410,7 +416,8 @@ public struct RosterView: View {
                     name: character.displayName,
                     size: 56,
                     imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    usesPendingPlaceholder: true
                 )
                     .accessibilityHidden(true)
 
@@ -480,37 +487,9 @@ public struct RosterView: View {
         guard let registry = deps.npcRegistry,
               let characters = try? await deps.rosterStore.allCharacters()
         else { return }
-        var changed = false
-        for character in characters where !character.isMainCharacter
-            && !character.publicIdentityRegistered {
-            guard !Task.isCancelled else { return }
-            do {
-                let registered = try await registry.registerPublicNPC(
-                    id: character.id,
-                    card: PublicNPCAdapter.backendCard(from: character.card)
-                )
-                try await deps.rosterStore.applyPublicIdentity(
-                    characterID: character.id,
-                    travelerID: registered.travelerId,
-                    card: PublicNPCAdapter.characterCard(from: registered)
-                )
-                let relationshipStatus: BackendNPCRelationshipStatus = switch character.contactStatus {
-                case .candidate: .candidate
-                case .friend: .friend
-                case .removed: .removed
-                }
-                try? await registry.linkPublicNPC(
-                    npcID: registered.id,
-                    localCharacterID: character.id,
-                    status: relationshipStatus
-                )
-                changed = true
-            } catch {
-                // 离线或游客状态保留端侧稳定身份；下次进入联系人页继续补登记。
-                return
-            }
-        }
-        guard changed else { return }
+        guard !characters.isEmpty else { return }
+        let coordinator = PublicNPCAvatarCoordinator(registry: registry, roster: deps.rosterStore)
+        guard await coordinator.synchronize() > 0 else { return }
         friends = (try? await deps.rosterStore.friends()) ?? friends
         formerContacts = (try? await deps.rosterStore.formerContacts()) ?? formerContacts
     }

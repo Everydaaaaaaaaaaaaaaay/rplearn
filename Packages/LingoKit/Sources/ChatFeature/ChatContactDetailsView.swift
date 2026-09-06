@@ -165,7 +165,8 @@ struct ChatContactDetailsView: View {
                 name: viewModel.character.displayName,
                 size: 58,
                 imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                usesPendingPlaceholder: true
             )
             VStack(alignment: .leading, spacing: 3) {
                 Text(viewModel.character.displayName)
@@ -523,7 +524,8 @@ private struct ChatCharacterProfileView: View {
                         name: character.displayName,
                         size: 96,
                         imageName: character.card.avatarAssetName,
-                        remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                        remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                        usesPendingPlaceholder: true
                     )
                     Text(character.displayName)
                         .font(.title2.bold())

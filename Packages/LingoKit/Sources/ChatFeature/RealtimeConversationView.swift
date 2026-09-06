@@ -116,6 +116,10 @@ struct RealtimeConversationView: View {
         }
         .preferredColorScheme(.dark)
         .task { await coordinator.start() }
+        .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { note in
+            guard note.object as? UUID == character.id else { return }
+            Task { await coordinator.chat.refreshCharacter() }
+        }
         .onChange(of: scenePhase) { _, newValue in
             Task {
                 switch newValue {
@@ -243,7 +247,12 @@ struct RealtimeConversationView: View {
                     .shadow(color: phaseTint.opacity(0.42), radius: 34)
                     .scaleEffect(reduceMotion ? 1 : 1 + session.activityLevel * 0.055)
 
-                AvatarBadge(name: character.card.name, tint: .white, size: 104)
+                AvatarBadge(
+                    name: character.card.name, tint: .white, size: 104,
+                    imageName: character.card.avatarAssetName,
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    usesPendingPlaceholder: true
+                )
                     .shadow(color: .black.opacity(0.2), radius: 16, y: 8)
             }
             .animation(

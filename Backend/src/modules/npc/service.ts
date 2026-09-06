@@ -8,6 +8,7 @@ import type {
 } from "./types.js";
 
 export type NpcService = Readonly<{
+  retryPendingAvatars: () => Promise<{ attempted: number; matched: number }>;
   find: (travelerId: string) => Promise<PublicNpc>;
   link: (
     userId: string,
@@ -20,6 +21,7 @@ export type NpcService = Readonly<{
 export function createNpcService(database: DatabaseResource): NpcService {
   const repository = new NpcRepository(database);
   return {
+    retryPendingAvatars: () => repository.retryPendingAvatars(),
     find: (travelerId) => repository.find(travelerId),
     link: (userId, npcId, input) => repository.link(userId, npcId, input),
     register: (userId, input) => {

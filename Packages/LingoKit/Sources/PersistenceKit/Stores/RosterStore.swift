@@ -3,6 +3,8 @@ import Foundation
 import SwiftData
 
 public extension Notification.Name {
+    /// Reviewed public portrait saved; observers refresh their existing view state.
+    static let npcAvatarDidChange = Notification.Name("LingoTripNPCAvatarDidChange")
     /// 特别关心状态完成持久化后发送；object 为角色 UUID，userInfo 包含 isFavorite。
     static let rosterFavoriteDidChange = Notification.Name("LingoTripRosterFavoriteDidChange")
     /// 一次关系状态完成持久化后发送；object 为角色 UUID。
@@ -198,6 +200,15 @@ public actor RosterStore {
            collision.characterID != characterID {
             throw RosterError.identityConflict
         }
+        if entity.publicIdentityRegistered {
+            guard entity.travelerID == travelerID else { throw RosterError.identityConflict }
+            let existing = Self.dto(from: entity).card
+            guard existing.avatarID == card.avatarID,
+                  existing.avatarRemoteURL == card.avatarRemoteURL else {
+                throw RosterError.identityConflict
+            }
+            return
+        }
         entity.travelerID = travelerID
         entity.publicIdentityRegistered = true
         entity.name = card.name
@@ -213,6 +224,9 @@ public actor RosterStore {
         entity.cardJSON = card.encodedJSON()
         try journal(entity)
         try modelContext.save()
+        Task { @MainActor in
+            NotificationCenter.default.post(name: .npcAvatarDidChange, object: characterID)
+        }
     }
 
     public func character(id: UUID) throws -> CharacterDTO? {

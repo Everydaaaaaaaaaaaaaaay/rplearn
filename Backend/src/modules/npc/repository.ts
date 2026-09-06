@@ -107,6 +107,18 @@ export class NpcRepository {
         return existing;
       }
 
+      const [pending] = await sql<{ user_id: string; card_hash: string }[]>`
+        select user_id::text, card_hash from app.npc_pending_avatars where npc_id = ${input.id}
+      `;
+      if (pending && (pending.user_id !== userId || pending.card_hash !== cardHash)) {
+        throw new AppError({
+          code: "NPC_IDENTITY_CONFLICT",
+          statusCode: 409,
+          message:
+            "This pending NPC identity already has a different owner or narrative.",
+        });
+      }
+
       // The short critical section makes random allocation collision-free without exposing a
       // guessable sequence. Public lookup still requires the final checksum digit.
       await sql`select pg_advisory_xact_lock(hashtextextended('public-npc-traveler-id', 0))`;
@@ -163,8 +175,14 @@ export class NpcRepository {
           eligible_count = excluded.eligible_count, unseen_count = excluded.unseen_count,
           selected_avatar_id = excluded.selected_avatar_id, updated_at = now()
       `;
-      if (avatar === undefined)
+      if (avatar === undefined) {
+        await sql`
+          insert into app.npc_pending_avatars (npc_id, user_id, input, card_hash, next_attempt_at)
+          values (${input.id}, ${userId}, ${JSON.stringify(input)}::jsonb, ${cardHash}, now() + interval '5 minutes')
+          on conflict (npc_id) do nothing
+        `;
         return { gap: match.reason, eligibleCount: match.eligibleCount };
+      }
       // Narrative identity stays intact. Only external appearance is finalized from reviewed art.
       const finalCard =
         avatar.profile === null
@@ -201,17 +219,55 @@ export class NpcRepository {
         localCharacterId: input.id,
         status: "candidate",
       });
+      await sql`delete from app.npc_pending_avatars where npc_id = ${input.id}`;
       return result;
     });
     if ("gap" in result)
       throw new AppError({
         code: "NPC_AVATAR_COVERAGE_GAP",
         message:
-          "No compatible unseen portrait is available; this identity has not been registered. Retry after the library is replenished.",
+          "No compatible unseen portrait is available. The original registration is saved for automatic retry after replenishment.",
         statusCode: 409,
         details: { reason: result.gap, eligibleCount: result.eligibleCount },
       });
     return result;
+  }
+
+  async retryPendingAvatars(
+    limit = 20,
+  ): Promise<{ attempted: number; matched: number }> {
+    if (!Number.isInteger(limit) || limit < 1 || limit > 100)
+      throw new Error("Invalid retry batch size");
+    // Reserve before work; never hold a queue-row lock while acquiring registration locks.
+    const requests = await this.database.sql<
+      {
+        user_id: string;
+        input: RegisterPublicNpcInput;
+        card_hash: string;
+      }[]
+    >`
+      with due as (
+        select pending.npc_id from app.npc_pending_avatars pending
+        join app.users owner on owner.id = pending.user_id and owner.status = 'active'
+        where pending.next_attempt_at <= now()
+        order by pending.next_attempt_at, pending.created_at, pending.npc_id
+        for update of pending skip locked limit ${limit}
+      )
+      update app.npc_pending_avatars pending set next_attempt_at = now() + interval '5 minutes'
+      from due where pending.npc_id = due.npc_id
+      returning pending.user_id::text, pending.input, pending.card_hash
+    `;
+    let matched = 0;
+    for (const request of requests) {
+      try {
+        await this.register(request.user_id, request.input, request.card_hash);
+        matched += 1;
+      } catch (error) {
+        if (!(error instanceof AppError) || error.code !== "NPC_AVATAR_COVERAGE_GAP")
+          throw error;
+      }
+    }
+    return { attempted: requests.length, matched };
   }
 
   async find(travelerId: string): Promise<PublicNpc> {

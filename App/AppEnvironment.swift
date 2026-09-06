@@ -34,6 +34,7 @@ final class AppEnvironment {
     let contentSyncStore: ContentSyncStore
     let voiceMediaQueueStore: VoiceMediaQueueStore
     let chatStore: ChatStore
+    let npcAvatars: PublicNPCAvatarCoordinator
     let rosterStore: RosterStore
     let economyStore: EconomyStore
     let favoritesStore: FavoritesStore
@@ -117,7 +118,9 @@ final class AppEnvironment {
         self.chatStore = chatStore
         let voiceMediaQueueStore = VoiceMediaQueueStore(modelContainer: container)
         self.voiceMediaQueueStore = voiceMediaQueueStore
-        self.rosterStore = RosterStore(modelContainer: container)
+        let rosterStore = RosterStore(modelContainer: container)
+        self.rosterStore = rosterStore
+        self.npcAvatars = PublicNPCAvatarCoordinator(registry: backendClient, roster: rosterStore)
         self.economyStore = EconomyStore(modelContainer: container)
         self.favoritesStore = FavoritesStore(modelContainer: container)
         self.memoryStore = MemoryStore(modelContainer: container)

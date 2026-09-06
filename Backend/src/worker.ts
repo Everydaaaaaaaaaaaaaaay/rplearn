@@ -21,6 +21,7 @@ import { createBillingService } from "./modules/billing/service.js";
 import { createDeepSeekClient } from "./modules/ai/deepseek/client.js";
 import { createAiService } from "./modules/ai/service.js";
 import { createDictionaryTranslationProcessor } from "./modules/dictionary-translation/processor.js";
+import { createNpcService } from "./modules/npc/service.js";
 
 async function main(): Promise<void> {
   let config: ReturnType<typeof loadConfig>;
@@ -102,6 +103,8 @@ async function main(): Promise<void> {
     repository: new JobRepository(database),
     workerId,
   });
+  const npcService = createNpcService(database);
+  let nextAvatarPollAt = 0;
   let closing = false;
 
   const shutdown = (signal: NodeJS.Signals): void => {
@@ -120,6 +123,18 @@ async function main(): Promise<void> {
     await assertMigrationsCurrent(database);
     logger.info({ workerId }, "Worker started");
     while (!controller.signal.aborted) {
+      if (Date.now() >= nextAvatarPollAt) {
+        nextAvatarPollAt = Date.now() + 60_000;
+        try {
+          const retry = await npcService.retryPendingAvatars();
+          if (retry.attempted > 0) logger.info(retry, "Pending NPC portraits retried");
+        } catch (error) {
+          logger.error(
+            { errorName: error instanceof Error ? error.name : "UnknownError" },
+            "NPC portrait retry failed",
+          );
+        }
+      }
       try {
         const result = await worker.runOnce();
         if (result !== "idle") {

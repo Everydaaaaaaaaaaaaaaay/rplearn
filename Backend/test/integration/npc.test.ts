@@ -28,6 +28,8 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
   let userId: string;
   const firstNpcId = newEntityId();
   const secondNpcId = newEntityId();
+  const pendingIds = [newEntityId(), newEntityId(), newEntityId()] as const;
+  const pendingAssetIds = [newEntityId(), newEntityId()] as const;
   const avatarId = newEntityId();
   const supplementId = newEntityId();
   const concurrentIds = [secondNpcId, newEntityId()] as const;
@@ -135,6 +137,8 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
       await dependencies?.close();
       return;
     }
+    await dependencies.database
+      .sql`delete from app.public_npcs where id in ${dependencies.database.sql(pendingIds)}`;
     await dependencies.database.sql`
       delete from app.public_npcs where id in (${firstNpcId}, ${secondNpcId}, ${concurrentIds[0]}, ${concurrentIds[1]})
     `;
@@ -142,6 +146,8 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
       .sql`delete from app.npc_avatar_match_events where user_id = ${userId}`;
     await dependencies.database
       .sql`delete from app.npc_avatars where id in (${avatarId}, ${supplementId})`;
+    await dependencies.database
+      .sql`delete from app.npc_avatars where id in ${dependencies.database.sql(pendingAssetIds)}`;
     await dependencies.database.sql`delete from app.jobs where user_id = ${userId}`;
     await dependencies.database.sql`
       delete from app.auth_security_events where user_id = ${userId}
@@ -187,7 +193,7 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     const second = await app.inject({
       headers: headers(),
       method: "POST",
-      payload: { card: { ...card, name: "Mara Hale" }, id: secondNpcId },
+      payload: { card, id: secondNpcId },
       url: "/v1/npcs",
     });
     expect(second.statusCode).toBe(409);
@@ -277,5 +283,140 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     });
     expect(replay.statusCode).toBe(200);
     expect(replay.json()).toEqual(success);
+  });
+  it("durably queues hard constraints, wakes on import, and binds once across worker/client retries", async () => {
+    // Finish the preceding scenario's unmatched fixture so it cannot consume this scenario's artwork.
+    await dependencies.database
+      .sql`delete from app.npc_pending_avatars where npc_id in (${concurrentIds[0]}, ${concurrentIds[1]})`;
+    const requiredAvatarTags = ["pose:pending-test"];
+    for (const id of pendingIds) {
+      const result = await app.inject({
+        headers: headers(),
+        method: "POST",
+        url: "/v1/npcs",
+        payload: { id, card, requiredAvatarTags },
+      });
+      expect(result.statusCode).toBe(409);
+    }
+    const saved = await dependencies.database.sql<
+      { input: unknown; card_hash: string }[]
+    >`
+      select input, card_hash from app.npc_pending_avatars where npc_id = ${pendingIds[0]}
+    `;
+    expect(saved[0]?.input).toEqual({ id: pendingIds[0], card, requiredAvatarTags });
+    const otherOwner = newEntityId();
+    await dependencies.database.sql`insert into app.users (id) values (${otherOwner})`;
+    try {
+      await expect(
+        createNpcService(dependencies.database).register(otherOwner, {
+          id: pendingIds[0],
+          card,
+          requiredAvatarTags,
+        }),
+      ).rejects.toMatchObject({ code: "NPC_IDENTITY_CONFLICT" });
+    } finally {
+      await dependencies.database.sql`delete from app.users where id = ${otherOwner}`;
+    }
+    const conflict = await app.inject({
+      headers: headers(),
+      method: "POST",
+      url: "/v1/npcs",
+      payload: { id: pendingIds[0], card: { ...card, age: 30 }, requiredAvatarTags },
+    });
+    expect(conflict.json<{ code: string }>().code).toBe("NPC_IDENTITY_CONFLICT");
+    // A restarted service has no in-memory queue; it must read the original PostgreSQL request.
+    const restarted = createNpcService(dependencies.database);
+    await importAvatarManifest(dependencies.database, {
+      version: 2,
+      avatars: [{ ...asset(pendingAssetIds[0]), tags: requiredAvatarTags }],
+    });
+    await Promise.all([
+      restarted.retryPendingAvatars(),
+      createNpcService(dependencies.database).retryPendingAvatars(),
+    ]);
+    const bound = await dependencies.database.sql<
+      { id: string; traveler_id: string; avatar_id: string }[]
+    >`
+      select id::text, traveler_id, avatar_id::text from app.public_npcs where id in ${dependencies.database.sql(pendingIds)}
+    `;
+    expect(bound).toHaveLength(1);
+    expect(bound[0]?.avatar_id).toBe(pendingAssetIds[0]);
+    const boundNpc = bound[0];
+    if (!boundNpc) throw Error("Expected a bound NPC");
+    const lookup = await app.inject({
+      method: "GET",
+      url: `/v1/npcs/by-traveler-id/${boundNpc.traveler_id}`,
+    });
+    const canonical = lookup.json<PublicNpc>();
+    expect(canonical.card).toEqual({
+      ...card,
+      appearance: asset(pendingAssetIds[0]).profile.appearance,
+    });
+    for (const retryCard of [card, canonical.card]) {
+      const retry = await app.inject({
+        headers: headers(),
+        method: "POST",
+        url: "/v1/npcs",
+        payload: { id: boundNpc.id, card: retryCard, requiredAvatarTags },
+      });
+      expect(retry.statusCode).toBe(200);
+      expect(retry.json()).toEqual(canonical);
+    }
+    const remaining = await dependencies.database.sql<{ npc_id: string }[]>`
+      select npc_id::text from app.npc_pending_avatars where npc_id in ${dependencies.database.sql(pendingIds)}
+    `;
+    expect(remaining).toHaveLength(2);
+    await app.inject({
+      headers: headers(),
+      method: "PUT",
+      url: `/v1/npcs/${boundNpc.id}/relationship`,
+      payload: { localCharacterId: boundNpc.id, status: "friend" },
+    });
+    await importAvatarManifest(dependencies.database, {
+      version: 2,
+      avatars: [{ ...asset(pendingAssetIds[1]), tags: requiredAvatarTags }],
+    });
+    const contender = remaining[0]?.npc_id;
+    if (!contender) throw Error("Expected a remaining request");
+    await Promise.all([
+      restarted.retryPendingAvatars(),
+      app.inject({
+        headers: headers(),
+        method: "POST",
+        url: "/v1/npcs",
+        payload: { id: contender, card, requiredAvatarTags },
+      }),
+    ]);
+    const allBound = await dependencies.database.sql<{ avatar_id: string }[]>`
+      select avatar_id::text from app.public_npcs where id in ${dependencies.database.sql(pendingIds)}
+    `;
+    expect(allBound).toHaveLength(2);
+    expect(new Set(allBound.map((row) => row.avatar_id)).size).toBe(2);
+    const [friend] = await dependencies.database.sql<{ status: string }[]>`
+      select status from app.user_npc_relationships where user_id = ${userId} and npc_id = ${boundNpc.id}
+    `;
+    expect(friend?.status).toBe("friend");
+    const immutable = await restarted.find(boundNpc.traveler_id);
+    expect(immutable).toEqual(canonical);
+    const [unmatched] = await dependencies.database.sql<{ count: number }[]>`
+      select count(*)::int as count from app.npc_pending_avatars where npc_id in ${dependencies.database.sql(pendingIds)}
+    `;
+    expect(unmatched?.count).toBe(1);
+    expect(await restarted.retryPendingAvatars()).toEqual({ attempted: 0, matched: 0 });
+    // Suspended/deleting accounts must not acquire more public identities from the worker.
+    await dependencies.database
+      .sql`update app.users set status = 'locked' where id = ${userId}`;
+    try {
+      await dependencies.database
+        .sql`update app.npc_pending_avatars set next_attempt_at = now() where user_id = ${userId}`;
+      expect(await restarted.retryPendingAvatars()).toEqual({
+        attempted: 0,
+        matched: 0,
+      });
+    } finally {
+      await dependencies.database
+        .sql`update app.users set status = 'active' where id = ${userId}`;
+    }
+    expect(await restarted.retryPendingAvatars()).toEqual({ attempted: 1, matched: 0 });
   });
 });

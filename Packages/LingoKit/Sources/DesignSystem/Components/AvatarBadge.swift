@@ -6,6 +6,7 @@ public struct AvatarBadge: View {
     private let size: CGFloat
     private let imageName: String?
     private let remoteURL: URL?
+    private let usesPendingPlaceholder: Bool
 
     private static let palette: [Color] = [
         .dsSky, .dsCyan, .dsSunset, .dsSuccess, .dsQuiz, .pink,
@@ -16,13 +17,15 @@ public struct AvatarBadge: View {
         tint: Color? = nil,
         size: CGFloat = 46,
         imageName: String? = nil,
-        remoteURL: URL? = nil
+        remoteURL: URL? = nil,
+        usesPendingPlaceholder: Bool = false
     ) {
         self.name = name
         self.tint = tint
         self.size = size
         self.imageName = imageName
         self.remoteURL = remoteURL
+        self.usesPendingPlaceholder = usesPendingPlaceholder
     }
 
     private var stableTint: Color {
@@ -42,7 +45,7 @@ public struct AvatarBadge: View {
         .frame(width: size, height: size)
         .clipShape(Circle())
         .shadow(color: stableTint.opacity(0.13), radius: size * 0.12, y: size * 0.045)
-        .accessibilityLabel(name)
+        .accessibilityLabel(usesPendingPlaceholder && remoteURL == nil && imageName == nil ? "\(name)，头像待定" : name)
     }
 
     @ViewBuilder
@@ -65,7 +68,25 @@ public struct AvatarBadge: View {
         }
     }
 
+    @ViewBuilder
     private var fallbackContent: some View {
+        if usesPendingPlaceholder {
+            ZStack {
+                Color.dsSky
+                Circle()
+                    .fill(Color.dsSkyDeep)
+                    .frame(width: size * 1.3, height: size * 1.3)
+                    .offset(x: size * 0.45, y: size * 0.55)
+                Image(systemName: "person.fill")
+                    .font(.system(size: size * 0.5, weight: .medium))
+                    .foregroundStyle(.white)
+            }
+        } else {
+            initialsContent
+        }
+    }
+
+    private var initialsContent: some View {
         ZStack {
             Circle()
                 .fill(

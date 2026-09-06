@@ -72,6 +72,9 @@ export async function importAvatarManifest(
       if (rows.length !== 1)
         throw new Error(`Bound avatar is immutable: ${avatar.id}; use a new asset ID`);
     }
+    // Registration takes the library lock before writing queue rows; worker claims commit before matching.
+    // Publish pixels/metadata and wake durable requests atomically in the same lock order.
+    await sql`update app.npc_pending_avatars set next_attempt_at = now()`;
     return manifest.avatars.length;
   });
 }

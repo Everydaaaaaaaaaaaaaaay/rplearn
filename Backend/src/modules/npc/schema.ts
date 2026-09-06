@@ -13,7 +13,11 @@ import {
 } from "drizzle-orm/pg-core";
 import { applicationSchema } from "../../db/schema.js";
 import { users } from "../../db/user-schema.js";
-import type { AvatarProfile, AvatarRequirements } from "./types.js";
+import type {
+  AvatarProfile,
+  AvatarRequirements,
+  RegisterPublicNpcInput,
+} from "./types.js";
 
 export const npcRelationshipStatus = applicationSchema.enum("npc_relationship_status", [
   "candidate",
@@ -128,5 +132,33 @@ export const userNpcRelationships = applicationSchema.table(
       table.localCharacterId,
     ),
     index("user_npc_relationships_status_index").on(table.userId, table.status),
+  ],
+);
+
+/// Durable unmatched registration, preserving the original narrative and hard requirements.
+export const npcPendingAvatars = applicationSchema.table(
+  "npc_pending_avatars",
+  {
+    npcId: uuid("npc_id").primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    input: jsonb("input").$type<RegisterPublicNpcInput>().notNull(),
+    cardHash: text("card_hash").notNull(),
+    createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    nextAttemptAt: timestamp("next_attempt_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    index("npc_pending_avatars_due_index").on(table.nextAttemptAt, table.npcId),
+    index("npc_pending_avatars_user_index").on(table.userId),
+    check(
+      "npc_pending_avatars_input_size",
+      sql`octet_length(${table.input}::text) <= 36864`,
+    ),
+    check("npc_pending_avatars_hash_format", sql`${table.cardHash} ~ '^[0-9a-f]{64}$'`),
   ],
 );

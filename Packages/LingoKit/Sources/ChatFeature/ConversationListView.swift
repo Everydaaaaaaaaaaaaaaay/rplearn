@@ -55,6 +55,9 @@ public struct ConversationListView: View {
             // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
             .task(id: reloadToken) { await reload() }
             .refreshable { await reload() }
+            .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
+                Task { await reload() }
+            }
             .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
                 Task { await reload() }
             }
@@ -200,7 +203,8 @@ public struct ConversationListView: View {
                     name: row.character.displayName,
                     size: 54,
                     imageName: row.character.card.avatarAssetName,
-                    remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                    remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    usesPendingPlaceholder: true
                 )
                     .accessibilityHidden(true)
                 if unread {

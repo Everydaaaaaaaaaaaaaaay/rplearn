@@ -15,6 +15,7 @@ struct EncounterCardSheet: View {
     let onDismiss: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var refreshedCharacter: CharacterDTO?
     @State private var showChat = false
     @State private var friendMessage: String?
     @State private var isFriend = false
@@ -23,7 +24,8 @@ struct EncounterCardSheet: View {
     @State private var friendSlotsOccupied: Int?
     @State private var friendSlotLimit: Int?
 
-    private var card: CharacterCard { presentation.character.card }
+    private var character: CharacterDTO { refreshedCharacter ?? presentation.character }
+    private var card: CharacterCard { character.card }
     private var tint: Color { presentation.activity.category.tint }
 
     var body: some View {
@@ -104,10 +106,17 @@ struct EncounterCardSheet: View {
                 hasRevealed = true
             }
         }
-        .task { await loadFriendCapacity() }
+        .task {
+            refreshedCharacter = try? await deps.rosterStore.character(id: character.id)
+            await loadFriendCapacity()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
+            guard notification.object as? UUID == character.id else { return }
+            Task { refreshedCharacter = try? await deps.rosterStore.character(id: character.id) }
+        }
         .fullScreenCover(isPresented: $showChat) {
             NavigationStack {
-                chatBuilder(presentation.character)
+                chatBuilder(character)
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
                             Button("返回") { showChat = false }
@@ -130,7 +139,8 @@ struct EncounterCardSheet: View {
                     name: card.name,
                     size: 82,
                     imageName: card.avatarAssetName,
-                    remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:))
+                    remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    usesPendingPlaceholder: true
                 )
             }
 
@@ -285,7 +295,7 @@ struct EncounterCardSheet: View {
             do {
                 let profile = try await deps.economyStore.profile()
                 try await deps.rosterStore.makeFriend(
-                    characterID: presentation.character.id,
+                    characterID: character.id,
                     slotLimit: profile.friendSlotLimit
                 )
                 isFriend = true
@@ -297,26 +307,30 @@ struct EncounterCardSheet: View {
                 Haptics.notify(.success)
                 friendMessage = "已加入好友，以后随时可以在消息里找到 TA"
                 if let registry = deps.npcRegistry {
-                    if presentation.character.publicIdentityRegistered {
+                    if character.publicIdentityRegistered {
                         try? await registry.linkPublicNPC(
-                            npcID: presentation.character.id,
-                            localCharacterID: presentation.character.id,
+                            npcID: character.id,
+                            localCharacterID: character.id,
                             status: .friend
                         )
                     } else if let registered = try? await registry.registerPublicNPC(
-                        id: presentation.character.id,
-                        card: PublicNPCAdapter.backendCard(from: presentation.character.card)
+                        id: character.id,
+                        card: PublicNPCAdapter.backendCard(from: character.card)
                     ) {
-                        try? await deps.rosterStore.applyPublicIdentity(
-                            characterID: presentation.character.id,
-                            travelerID: registered.travelerId,
-                            card: PublicNPCAdapter.characterCard(from: registered)
-                        )
-                        try? await registry.linkPublicNPC(
-                            npcID: registered.id,
-                            localCharacterID: presentation.character.id,
-                            status: .friend
-                        )
+                        do {
+                            try await registry.linkPublicNPC(
+                                npcID: registered.id,
+                                localCharacterID: character.id,
+                                status: .friend
+                            )
+                            try await deps.rosterStore.applyPublicIdentity(
+                                characterID: character.id,
+                                travelerID: registered.travelerId,
+                                card: PublicNPCAdapter.characterCard(from: registered)
+                            )
+                        } catch {
+                            // Keep registration pending locally so the foreground coordinator retries the link.
+                        }
                     }
                 }
             } catch RosterStore.RosterError.friendSlotsFull {
@@ -336,7 +350,7 @@ struct EncounterCardSheet: View {
         Task {
             if !isFriend {
                 try? await deps.chatStore.archiveConversations(
-                    characterID: presentation.character.id
+                    characterID: character.id
                 )
             }
             onDismiss()
