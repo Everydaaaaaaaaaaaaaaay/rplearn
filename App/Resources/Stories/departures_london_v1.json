@@ -306,7 +306,15 @@
       "speaker": "Nora",
       "text": "Not unless someone wants to. An empty slot isn't an emergency.",
       "translation": "除非有人自己愿意。空一个时段不是什么紧急情况。",
-      "next": "glance"
+      "next": "glance",
+      "speech": {
+        "intention": "平常而明确地说明不必补位，让否定词完整落地。",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.3,
+        "pauseAfter": "Not unless someone wants to.",
+        "pauseDuration": 0.25
+      }
     },
     {
       "id": "glance",

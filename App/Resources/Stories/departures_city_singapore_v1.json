@@ -1,0 +1,370 @@
+{
+  "id": "departures_city_singapore_v1",
+  "version": 1,
+  "title": "打包的另一份",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新加坡 · 熟食中心",
+    "饭盒里的约定"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_singapore",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You meet Mei for lunch at a hawker centre.",
+      "translation": "你和 Mei 在熟食中心碰面吃午餐。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "extra"
+    },
+    {
+      "id": "extra",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "I'll get another portion for my dad. He loves this stall.",
+      "translation": "我想给爸爸再带一份。他喜欢这家。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "phone"
+    },
+    {
+      "id": "phone",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Her father calls just as she reaches the queue.",
+      "translation": "她刚排进队伍，父亲就打来电话。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "call"
+    },
+    {
+      "id": "call",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Uncle Tan",
+      "text": "Are you buying lunch? Please don't get me the usual.",
+      "translation": "你在买午饭吗？今天别给我带平常那份了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "surprise"
+    },
+    {
+      "id": "surprise",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Really? You've called it the best lunch for ten years.",
+      "translation": "真的？你说它是最好的午饭，说了十年。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Uncle Tan",
+      "text": "It is good. I am allowed to want something else.",
+      "translation": "是好吃。但我也可以想吃点别的。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "laugh"
+    },
+    {
+      "id": "laugh",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Mei looks at the menu as if it has changed overnight.",
+      "translation": "Mei 望着菜单，仿佛它一夜之间换了模样。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What does she ask him?",
+      "translation": "她接下来问什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask what he is in the mood for today.",
+          "translation": "问问他今天想吃什么。",
+          "next": "choose_a",
+          "flags": {
+            "choose": true
+          },
+          "review": {
+            "context": "父亲不想吃惯常的午餐，Mei 才发现自己一直在替他决定。",
+            "outcome": "他选了不同的午饭，Mei 记住的是先问，而不是新的固定答案。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask whether he wants to come and choose for himself.",
+          "translation": "问他是否想过来自己挑。",
+          "next": "join_a",
+          "flags": {
+            "choose": false
+          },
+          "review": {
+            "context": "父亲不想吃惯常的午餐，Mei 才发现自己一直在替他决定。",
+            "outcome": "他来和你们一起吃饭，打包午餐变成了一次相聚。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "choose_a",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "What sounds good today?",
+      "translation": "今天想吃什么？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choose_b"
+    },
+    {
+      "id": "choose_b",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Uncle Tan",
+      "text": "Something warm, with soup. Let me hear the choices.",
+      "translation": "热一点的，带汤的。给我说说有什么。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choose_c"
+    },
+    {
+      "id": "choose_c",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She reads two options and waits for his answer.",
+      "translation": "她念出两个选择，等他回答。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choose_d"
+    },
+    {
+      "id": "choose_d",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Got it. I won't make this your new lunch forever.",
+      "translation": "知道了。我也不会把这个变成你永远的新午餐。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choose_e"
+    },
+    {
+      "id": "choose_e",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Uncle Tan",
+      "text": "Thank you. I was beginning to feel like a standing order.",
+      "translation": "谢谢。我都快觉得自己是一张常年不变的订单了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "join_a",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Would you rather come here? We have time.",
+      "translation": "你要不过来？我们还有时间。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "join_b"
+    },
+    {
+      "id": "join_b",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Uncle Tan",
+      "text": "If you save me a seat. I was waiting for an invitation.",
+      "translation": "替我留个座就来。我其实在等人邀请。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "join_c"
+    },
+    {
+      "id": "join_c",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "When he arrives, Mei moves her bag off the spare chair.",
+      "translation": "他来了，Mei 把包从旁边的椅子上拿开。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "join_d"
+    },
+    {
+      "id": "join_d",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Uncle Tan",
+      "text": "Now tell me what you two are having. I'm curious.",
+      "translation": "现在说说你们俩吃什么。我很好奇。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "join_e"
+    },
+    {
+      "id": "join_e",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "We can start at the beginning of the menu.",
+      "translation": "那我们从菜单开头慢慢看。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "饭盒里的约定",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "I thought remembering his favourite meant I knew the answer.",
+      "translation": "我以为记得他最喜欢什么，就等于知道答案。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "last"
+    },
+    {
+      "id": "last",
+      "act": 1,
+      "location": "饭盒里的约定",
+      "shot": "city",
+      "speaker": "你",
+      "text": "You can remember, and still ask.",
+      "translation": "可以记得，也可以再问一遍。",
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "饭盒里的约定",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Knowing someone leaves room to ask again.",
+      "translation": "了解一个人，也给再次询问留着余地。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

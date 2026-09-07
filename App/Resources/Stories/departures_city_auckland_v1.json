@@ -1,0 +1,332 @@
+{
+  "id": "departures_city_auckland_v1",
+  "version": 1,
+  "title": "工具箱归还之前",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "奥克兰 · 社区工作间",
+    "留到下周的部分"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_auckland",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You join Hana at a weekend repair table near the harbour.",
+      "translation": "周末，你到海港附近的一张维修工作台帮 Hana。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "project"
+    },
+    {
+      "id": "project",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Hana",
+      "text": "This little shelf was meant to take an hour.",
+      "translation": "这个小架子，本来打算一小时做完。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "complication"
+    },
+    {
+      "id": "complication",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "A visitor places a broken drawer beside it.",
+      "translation": "一位来访者把坏掉的抽屉放到旁边。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "request"
+    },
+    {
+      "id": "request",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Peter",
+      "text": "Could you do this one too? I'm hopeless with tools.",
+      "translation": "这个也能帮忙弄一下吗？我对工具实在没办法。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Hana",
+      "text": "I can show you the first step. I can't build two things today.",
+      "translation": "我能带你做第一步，但今天没法做完两样东西。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "hesitation"
+    },
+    {
+      "id": "hesitation",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Peter",
+      "text": "I was hoping to leave it with you. I don't want to ruin it.",
+      "translation": "我本想放在你这里。我怕把它弄得更糟。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ask"
+    },
+    {
+      "id": "ask",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Would you rather learn a little, or arrange another day?",
+      "translation": "你想先学一点，还是另约一天来修？",
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What can this visit realistically become?",
+      "translation": "这次来访，实际上能做到哪一步？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Help him label the pieces and learn one small step.",
+          "translation": "帮他标记零件，先学会一个小步骤。",
+          "next": "learn_a",
+          "flags": {
+            "learn": true
+          },
+          "review": {
+            "context": "Hana 的时间有限，来访者也担心把抽屉弄坏。",
+            "outcome": "来访者自己完成一个步骤，剩余部分带回并另约时间。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Help him write down the problem for a future session.",
+          "translation": "帮他记下问题，留到之后有时间再处理。",
+          "next": "later_a",
+          "flags": {
+            "learn": false
+          },
+          "review": {
+            "context": "Hana 的时间有限，来访者也担心把抽屉弄坏。",
+            "outcome": "抽屉没有被仓促拆开，问题与后续时间被记录清楚。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "learn_a",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Hana",
+      "text": "We start by looking. No dramatic hammering required.",
+      "translation": "先从观察开始。不需要戏剧性地抡锤子。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "learn_b"
+    },
+    {
+      "id": "learn_b",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Peter labels the pieces while she explains the loose joint.",
+      "translation": "她解释松动的接合处，Peter 在零件上做好标记。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "learn_c"
+    },
+    {
+      "id": "learn_c",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Peter",
+      "text": "I can see what is wrong now. That is already different.",
+      "translation": "我现在能看出哪里出问题了。已经和刚才不同。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "learn_d"
+    },
+    {
+      "id": "learn_d",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Hana",
+      "text": "Take the labels home with it. We can continue next week.",
+      "translation": "把标记一起带回去。下周我们可以接着做。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "later_a",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "When did it start sticking? We can note that first.",
+      "translation": "它从什么时候开始卡住的？先把这个记下来。",
+      "next": "later_b"
+    },
+    {
+      "id": "later_b",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Peter",
+      "text": "After I moved. I thought that detail didn't matter.",
+      "translation": "搬家之后。我原以为这个细节不重要。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "later_c"
+    },
+    {
+      "id": "later_c",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "Hana",
+      "text": "It might. Bring the note with you next time.",
+      "translation": "也许有用。下次把记录一起带来。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "later_d"
+    },
+    {
+      "id": "later_d",
+      "act": 0,
+      "location": "奥克兰 · 社区工作间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The drawer stays intact. Her own shelf is finished by lunch.",
+      "translation": "抽屉没有被拆开。午饭前，她自己的架子也完成了。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "留到下周的部分",
+      "shot": "city",
+      "speaker": "Peter",
+      "text": "I will bring the toolbox back on Monday.",
+      "translation": "我周一把工具箱还回来。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "last"
+    },
+    {
+      "id": "last",
+      "act": 1,
+      "location": "留到下周的部分",
+      "shot": "city",
+      "speaker": "Hana",
+      "text": "With all the pencils, if they haven't escaped again.",
+      "translation": "还有全部铅笔，如果它们没再逃跑的话。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "留到下周的部分",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "A beginning does not have to finish the whole job.",
+      "translation": "一个开头，不必当场做完整件事。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

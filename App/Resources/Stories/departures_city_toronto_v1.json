@@ -1,0 +1,370 @@
+{
+  "id": "departures_city_toronto_v1",
+  "version": 1,
+  "title": "谁带了主菜",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "多伦多 · 一张晚餐桌",
+    "开饭之前"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_toronto",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Maya invited you to a small potluck at her flat.",
+      "translation": "Maya 请你到家里参加一场大家各带一道菜的小聚。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "cake"
+    },
+    {
+      "id": "cake",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "Three cakes. We have accidentally planned a birthday.",
+      "translation": "三份蛋糕。我们不小心安排了一场生日会。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "guest"
+    },
+    {
+      "id": "guest",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Her friend Sam arrives with an empty shopping bag.",
+      "translation": "朋友 Sam 带着一个空购物袋来了。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "sam"
+    },
+    {
+      "id": "sam",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Sam",
+      "text": "Sorry. I thought 'bring yourself' was the whole instruction.",
+      "translation": "抱歉。我以为“人来就好”就是全部要求。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "maya"
+    },
+    {
+      "id": "maya",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "It was! I put the food message in the wrong group.",
+      "translation": "本来就是！食物那条消息，我发错群了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "awkward"
+    },
+    {
+      "id": "awkward",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Sam reaches for his coat before anyone has asked him to.",
+      "translation": "还没人说什么，Sam 就伸手去拿外套。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "offer"
+    },
+    {
+      "id": "offer",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Sam",
+      "text": "I can run out and get something.",
+      "translation": "我可以出去买点东西。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stop"
+    },
+    {
+      "id": "stop",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "Stay a second. This is dinner, not an entrance fee.",
+      "translation": "先别急着走。这是一顿饭，不是入场费。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "How do you turn the table into dinner?",
+      "translation": "怎么把这一桌东西变成晚餐？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "See what is in the kitchen and cook something together.",
+          "translation": "看看厨房里有什么，一起做点吃的。",
+          "next": "cook_a",
+          "flags": {
+            "cook": true
+          },
+          "review": {
+            "context": "邀请写得不清楚，Sam 没带食物也不该因此承担补救责任。",
+            "outcome": "大家自愿分工，用厨房现有的食材准备了晚饭。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Agree on a simple order, with the cost clear first.",
+          "translation": "商量一份简单的外卖，先把费用说清楚。",
+          "next": "order_a",
+          "flags": {
+            "cook": false
+          },
+          "review": {
+            "context": "邀请写得不清楚，Sam 没带食物也不该因此承担补救责任。",
+            "outcome": "大家先确认想吃什么和费用安排，再下单，没人被临时加账。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cook_a",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "There is rice, eggs, and enough vegetables for a small forest.",
+      "translation": "有米饭、鸡蛋，还有多得像一片小森林的蔬菜。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "cook_b"
+    },
+    {
+      "id": "cook_b",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Sam",
+      "text": "I can chop things. Slowly, but with great commitment.",
+      "translation": "我可以切东西。虽然慢，但态度很坚定。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "cook_c"
+    },
+    {
+      "id": "cook_c",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Let us check what everyone can eat before we start.",
+      "translation": "开始前，先确认一下大家都能吃什么。",
+      "next": "cook_d"
+    },
+    {
+      "id": "cook_d",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The kitchen fills with small jobs and competing music choices.",
+      "translation": "厨房里挤满了小任务，还有各不相让的选歌意见。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "order_a",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "I'll cover the main dishes. My invitation caused the mystery.",
+      "translation": "主菜我来付。毕竟谜团是我的邀请造成的。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "order_b"
+    },
+    {
+      "id": "order_b",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Sam",
+      "text": "Only if you mean it. I can contribute something next time.",
+      "translation": "得是你真愿意才行。下次我可以带点东西。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "order_c"
+    },
+    {
+      "id": "order_c",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "I mean it. Next time, I will send one message to one group.",
+      "translation": "我愿意。下次，我只向一个群发一条消息。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "order_d"
+    },
+    {
+      "id": "order_d",
+      "act": 0,
+      "location": "多伦多 · 一张晚餐桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Everyone checks the order before the phone goes away.",
+      "translation": "大家一起确认订单，然后把手机放到一边。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "开饭之前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "By dessert, nobody is counting who brought what.",
+      "translation": "等吃到甜点时，已经没人计算谁带了什么。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "last"
+    },
+    {
+      "id": "last",
+      "act": 1,
+      "location": "开饭之前",
+      "shot": "city",
+      "speaker": "Sam",
+      "text": "So whose birthday did we decide it was?",
+      "translation": "所以，最后决定是谁过生日了？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "last2"
+    },
+    {
+      "id": "last2",
+      "act": 1,
+      "location": "开饭之前",
+      "shot": "city",
+      "speaker": "Maya",
+      "text": "The group chat's. May it grow wiser.",
+      "translation": "群聊的。愿它长大后懂事一些。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "开饭之前",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "A place at the table does not need a receipt.",
+      "translation": "餐桌旁的位置，不需要一张付款凭证。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

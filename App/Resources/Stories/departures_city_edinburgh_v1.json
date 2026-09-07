@@ -1,0 +1,330 @@
+{
+  "id": "departures_city_edinburgh_v1",
+  "version": 1,
+  "title": "只剩一张票",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "爱丁堡 · 开演前",
+    "两种晚上的结尾"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_edinburgh",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Isla meets you outside a small theatre during the festival.",
+      "translation": "节庆期间，Isla 在一家小剧场外与你碰面。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ticket"
+    },
+    {
+      "id": "ticket",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "A return came in. One ticket. Of course it had to be one.",
+      "translation": "刚有人退了一张票。一张。偏偏就只有一张。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "want"
+    },
+    {
+      "id": "want",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "I've wanted to see this company since last summer.",
+      "translation": "从去年夏天起，我就一直想看这个剧团。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "you"
+    },
+    {
+      "id": "you",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "You should use it.",
+      "translation": "你去看吧。",
+      "next": "hesitate"
+    },
+    {
+      "id": "hesitate",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "I asked you out. Abandoning you at the door feels rude.",
+      "translation": "是我约你来的。把你留在门口，好像很失礼。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "truth"
+    },
+    {
+      "id": "truth",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I can have an evening without being abandoned.",
+      "translation": "我可以自己过一个晚上，不一定就是被抛下了。",
+      "next": "other"
+    },
+    {
+      "id": "other",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Across the road, another show is putting up its last poster.",
+      "translation": "马路对面，另一场演出正在贴最后一张海报。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "How would you like to spend the evening?",
+      "translation": "你想怎么过这个晚上？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "See different things, then meet to compare notes.",
+          "translation": "各自看不同的演出，结束后碰面聊聊。",
+          "next": "separate_a",
+          "flags": {
+            "separate": true
+          },
+          "review": {
+            "context": "只有一张退票，你们需要把真实愿望说出来。",
+            "outcome": "Isla 看到了期待的剧团，你也拥有了自己的一个晚上。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Look for something you can both choose freely.",
+          "translation": "一起找一场两人都愿意看的演出。",
+          "next": "together_a",
+          "flags": {
+            "separate": false
+          },
+          "review": {
+            "context": "只有一张退票，你们需要把真实愿望说出来。",
+            "outcome": "Isla 自己放弃这张票，你们共同选择另一场演出。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "separate_a",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "Same corner afterwards? I want your review.",
+      "translation": "结束后还在这个街角碰面？我想听你的评价。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "separate_b"
+    },
+    {
+      "id": "separate_b",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "You get three sentences before any spoilers.",
+      "translation": "剧透前，你有三句话的额度。",
+      "next": "separate_c"
+    },
+    {
+      "id": "separate_c",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Later, she returns with a programme folded into her coat.",
+      "translation": "后来，她把节目单折好放在外套里，回来找你。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "separate_d"
+    },
+    {
+      "id": "separate_d",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "I hated the ending. I've been wanting to tell you for an hour.",
+      "translation": "我不喜欢那个结尾。憋了一个小时，就想告诉你。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "separate_e"
+    },
+    {
+      "id": "separate_e",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Mine had no ending. We may need a second cup of tea.",
+      "translation": "我看的压根没有结尾。我们可能得再添一杯茶。",
+      "next": "finish"
+    },
+    {
+      "id": "together_a",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Only if you really want to. Not because you owe me company.",
+      "translation": "得是你真想一起去，不是觉得欠我一份陪伴。",
+      "next": "together_b"
+    },
+    {
+      "id": "together_b",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "I do. That poster has a very suspicious cardboard moon.",
+      "translation": "我想。那张海报上有一个很可疑的纸板月亮。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "together_c"
+    },
+    {
+      "id": "together_c",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She returns the ticket to the box office. You cross the road.",
+      "translation": "她把票交回售票处，你们一起过了马路。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "together_d"
+    },
+    {
+      "id": "together_d",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "If the moon falls down, we are applauding it.",
+      "translation": "如果那个月亮掉下来，我们一定给它鼓掌。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "together_e"
+    },
+    {
+      "id": "together_e",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "It does not fall. You are both a little disappointed.",
+      "translation": "月亮没掉下来。你们都有一点失望。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "两种晚上的结尾",
+      "shot": "city",
+      "speaker": "Isla",
+      "text": "Same time tomorrow? We can start with two tickets.",
+      "translation": "明天这个时间？我们可以先从两张票开始计划。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "两种晚上的结尾",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "An evening together can take more than one shape.",
+      "translation": "一起度过的晚上，也可以有不同的样子。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

@@ -8,10 +8,11 @@ import StoryEngine
 import SwiftUI
 import UIKit
 
-/// Opt-in preview: no rewards, roster mutations or legacy story checkpoints.
+/// Authored episode player. New story progress is isolated from legacy rewards/checkpoints.
 public struct LondonEpisodeView: View {
     private let deps: StoryDependencies
     private let storageKey: String
+    private let resourceName: String
     @State private var session: EpisodeSession?
     @State private var art: [String: UIImage] = [:]
     @State private var loadError = false
@@ -23,8 +24,8 @@ public struct LondonEpisodeView: View {
     @State private var wordSelection: TokenSelection?
     @State private var audio: NarrativeAudioPlayer
     @State private var soundEnabled = true
+    @State private var currentUsesPrepared = false
     @State private var spokenStarts = 0
-    @State private var narratedNodeID: String?
     @State private var lastAudioPageID: String?
     @State private var currentLineIsVoiced = false
     @Environment(\.dismiss) private var dismiss
@@ -38,17 +39,19 @@ public struct LondonEpisodeView: View {
     private let paper = Color(red: 0.98, green: 0.96, blue: 0.90)
     private let gold = Color(red: 0.84, green: 0.68, blue: 0.40)
 
-    public init(deps: StoryDependencies, storageNamespace: String = "guest") {
+    public init(deps: StoryDependencies, storageNamespace: String = "guest", resourceName: String = "departures_london_v1") {
         self.deps = deps
+        self.resourceName = resourceName
         _audio = State(initialValue: NarrativeAudioPlayer(speech: deps.speech, audioSession: deps.audioSession))
         #if DEBUG
         _soundEnabled = State(initialValue: ProcessInfo.processInfo.environment["UI_TEST_EPISODE_AUDIO"] != "0")
-        if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
+        if resourceName == "departures_london_v1", ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
             storageKey = "story.preview.departures.london.v1.uitest"
             return
         }
         #endif
-        storageKey = "story.preview.departures.london.v1.\(storageNamespace)"
+        storageKey = resourceName == "departures_london_v1" ? "story.preview.departures.london.v1.\(storageNamespace)"
+            : "story.preview.\(resourceName).\(storageNamespace)"
     }
 
     public var body: some View {
@@ -182,15 +185,13 @@ public struct LondonEpisodeView: View {
                 .accessibilityLabel("返回剧情")
                 .accessibilityIdentifier("episode.close")
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("出发之后  /  LONDON").font(.system(size: 10, weight: .medium)).tracking(2)
+                    Text("出发之后").font(.system(size: 10, weight: .medium)).tracking(2)
                         .foregroundStyle(gold)
                     Text(session.episode.acts[session.current.act]).font(.subheadline.weight(.medium))
                 }
                 Spacer(minLength: 0)
                 Button {
                     soundEnabled.toggle()
-                    // Explicitly enabling voice can replay; dismissing a lookup cannot.
-                    if soundEnabled { narratedNodeID = nil }
                 } label: {
                     Image(systemName: soundEnabled ? "speaker.wave.2" : "speaker.slash")
                         .frame(width: 44, height: 44)
@@ -217,10 +218,10 @@ public struct LondonEpisodeView: View {
 
     private var openingTitle: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("第一站 · 伦敦").font(.caption.weight(.medium)).tracking(3).foregroundStyle(gold)
-            Text("空着的\n那把椅子").font(.system(size: 38, weight: .medium, design: .serif))
+            Text(resourceName == "departures_london_v1" ? "第一站 · 伦敦" : "一段新的经历").font(.caption.weight(.medium)).tracking(3).foregroundStyle(gold)
+            Text(resourceName == "departures_london_v1" ? "空着的\n那把椅子" : (session?.episode.title ?? "出发之后")).font(.system(size: 38, weight: .medium, design: .serif))
                 .foregroundStyle(paper).lineSpacing(5)
-            Text("A PLACE FOR ONE PAGE").font(.system(size: 10)).tracking(3).foregroundStyle(paper.opacity(0.8))
+            Text(resourceName == "departures_london_v1" ? "A PLACE FOR ONE PAGE" : "AFTER DEPARTURE").font(.system(size: 10)).tracking(3).foregroundStyle(paper.opacity(0.8))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading, 10)
@@ -245,8 +246,8 @@ public struct LondonEpisodeView: View {
                     VStack(alignment: .leading, spacing: 14) {
                         TappableText(
                             tokens: TokenCache.tokens(for: session.isFinished ? "“\(session.current.text)”" : session.current.text,
-                                                      cacheKey: "episode-quoted-\(session.nodeID)"),
-                            contextID: "episode-\(session.nodeID)", textColor: ink, selection: wordSelection,
+                                                      cacheKey: "\(session.episode.id)-quoted-\(session.nodeID)"),
+                            contextID: "\(session.episode.id)-\(session.nodeID)", textColor: ink, selection: wordSelection,
                             onSelect: { selection in
                                 // An outgoing line may remain visible for a few frames.
                                 guard self.session?.nodeID == session.nodeID else { return }
@@ -404,7 +405,7 @@ public struct LondonEpisodeView: View {
 
     private func autoplay() async {
         guard canAutoAdvance, let current = session?.current else { return }
-        let delay = soundEnabled && currentLineIsVoiced ? 0.6 : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
+        let delay = soundEnabled && currentLineIsVoiced ? (currentUsesPrepared ? 0 : 0.6) : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
         do { try await Task.sleep(for: .seconds(delay)) } catch { return }
         guard !Task.isCancelled, canAutoAdvance, session?.nodeID == current.id else { return }
         advance()
@@ -413,7 +414,7 @@ public struct LondonEpisodeView: View {
     private var audioAccessibilityValue: String {
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
-            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none");node:\(session?.nodeID ?? "none")"
+            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none");node:\(session?.nodeID ?? "none");prepared:\(currentUsesPrepared)"
         }
         #endif
         return soundEnabled ? "角色配音与环境声已开启" : "剧情静音，查词仍可单独播放"
@@ -427,15 +428,19 @@ public struct LondonEpisodeView: View {
     private func updateAudio() {
         let newPage = lastAudioPageID != session?.nodeID
         lastAudioPageID = session?.nodeID
-        guard canPlayAudio, let session else { audio.stop(); return }
+        guard canPlayAudio, let session else { audio.pause(); return }
         let speaker = session.current.speaker
-        let request = LondonEpisodeNarration.request(for: session.current)
-        currentLineIsVoiced = speaker != "你" && session.current.choices == nil && narratedNodeID != session.nodeID
-        if currentLineIsVoiced { narratedNodeID = session.nodeID }
+        let request = StoryVoiceLibrary.bundled?.request(story: session.episode.id, node: session.nodeID,
+            speaker: speaker, text: session.current.text) ?? LondonEpisodeNarration.request(for: session.current)
+        currentLineIsVoiced = speaker != "你" && session.current.choices == nil
+        let prepared = currentLineIsVoiced ? StoryVoiceLibrary.bundled?.clip(
+            story: session.episode.id, node: session.nodeID, speaker: speaker, text: session.current.text) : nil
+        currentUsesPrepared = prepared != nil
         // The rain has stopped at the ending; inside, only distant window rain.
-        let rain: Float = session.current.act == 5 ? 0 : session.shot.background == "london_exterior" ? 0.25 : 0.06
+        let rain: Float = resourceName != "departures_london_v1" || session.current.act == 5 ? 0
+            : session.shot.background == "london_exterior" ? 0.25 : 0.06
         audio.play(id: session.nodeID, request: currentLineIsVoiced ? request : nil,
-                   rainVolume: rain, pageTurn: newPage && session.nodeID != session.episode.start)
+                   rainVolume: rain, pageTurn: newPage && session.nodeID != session.episode.start, prepared: prepared)
     }
 
     private func save() {
@@ -453,7 +458,6 @@ public struct LondonEpisodeView: View {
     private func restart() {
         guard let episode = session?.episode else { return }
         automatic = false
-        narratedNodeID = nil
         lastAudioPageID = nil
         session = EpisodeSession(episode: episode)
         save()
@@ -462,7 +466,7 @@ public struct LondonEpisodeView: View {
     private func load() async {
         guard session == nil else { return }
         do {
-            guard let url = Bundle.main.url(forResource: "departures_london_v1", withExtension: "json") else {
+            guard let url = Bundle.main.url(forResource: resourceName, withExtension: "json") else {
                 throw CocoaError(.fileNoSuchFile)
             }
             let episode = try StoryEpisode.load(data: Data(contentsOf: url))
@@ -473,8 +477,13 @@ public struct LondonEpisodeView: View {
             let loaded = try await Task.detached(priority: .userInitiated) {
                 var images: [String: UIImage] = [:]
                 for name in names {
-                    guard let url = Bundle.main.url(forResource: name, withExtension: name.hasPrefix("oliver") || name.hasPrefix("nora") ? "png" : "jpg"),
-                          let image = UIImage(contentsOfFile: url.path) else { throw CocoaError(.fileNoSuchFile) }
+                    let image: UIImage?
+                    if name.hasPrefix("city_backdrop_") {
+                        image = UIImage(named: name, in: Bundle.main, compatibleWith: nil)
+                    } else if let url = Bundle.main.url(forResource: name, withExtension: name.hasPrefix("oliver") || name.hasPrefix("nora") ? "png" : "jpg") {
+                        image = UIImage(contentsOfFile: url.path)
+                    } else { image = nil }
+                    guard let image else { throw CocoaError(.fileNoSuchFile) }
                     images[name] = image.preparingForDisplay() ?? image
                 }
                 return EpisodeArtwork(images: images)

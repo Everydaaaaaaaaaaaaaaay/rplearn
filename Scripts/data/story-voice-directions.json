@@ -1,0 +1,613 @@
+{
+  "version": 1,
+  "cast": {
+    "Oliver": {
+      "voice": "M5",
+      "rate": 1
+    },
+    "Nora": {
+      "voice": "F5",
+      "rate": 0.99
+    },
+    "旁白": {
+      "voice": "F5",
+      "rate": 0.99
+    },
+    "出发之后": {
+      "voice": "F5",
+      "rate": 0.99
+    },
+    "Ruby": {
+      "voice": "F3",
+      "rate": 1.06
+    },
+    "Marcus": {
+      "voice": "M3",
+      "rate": 1.05
+    },
+    "Hana": {
+      "voice": "F2",
+      "rate": 1
+    },
+    "Amara": {
+      "voice": "F4",
+      "rate": 0.99
+    },
+    "Aaliyah": {
+      "voice": "F4",
+      "rate": 1.01
+    },
+    "Calvin": {
+      "voice": "M2",
+      "rate": 1
+    },
+    "Leah": {
+      "voice": "F2",
+      "rate": 0.99
+    },
+    "Amina": {
+      "voice": "F1",
+      "rate": 1
+    },
+    "Maya": {
+      "voice": "F3",
+      "rate": 1
+    },
+    "Niamh": {
+      "voice": "F4",
+      "rate": 1
+    },
+    "Wanjiku": {
+      "voice": "F2",
+      "rate": 1
+    },
+    "Tahlia": {
+      "voice": "F3",
+      "rate": 1.03
+    },
+    "Isla": {
+      "voice": "F1",
+      "rate": 1.04
+    },
+    "Mei": {
+      "voice": "F1",
+      "rate": 1.02
+    },
+    "Noah": {
+      "voice": "M1",
+      "rate": 1.01
+    },
+    "Uncle Tan": {
+      "voice": "M4",
+      "rate": 0.98
+    },
+    "Elena": {
+      "voice": "F2",
+      "rate": 1
+    },
+    "Jonas": {
+      "voice": "M4",
+      "rate": 1
+    },
+    "Ruth": {
+      "voice": "F4",
+      "rate": 0.99
+    },
+    "Zuri": {
+      "voice": "F1",
+      "rate": 1
+    },
+    "Sam": {
+      "voice": "M1",
+      "rate": 1
+    },
+    "Peter": {
+      "voice": "M4",
+      "rate": 1
+    },
+    "June": {
+      "voice": "F4",
+      "rate": 0.99
+    }
+  },
+  "scenes": {
+    "departures_london_v1": {
+      "intention": "小书店里的自然对话，尊重犹豫，旁白克制留白",
+      "gapAfter": 0.38
+    }
+  },
+  "overrides": {
+    "departures_london_v1/arrival": {
+      "rate": 0.98,
+      "gapAfter": 0.38,
+      "intention": "雨夜开场，从街景走近书店，句尾从容"
+    },
+    "departures_london_v1/arrival_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.38,
+      "intention": "雨夜开场，从街景走近书店，句尾从容"
+    },
+    "departures_london_v1/invite": {
+      "rate": 0.98,
+      "gapAfter": 0.38,
+      "intention": "雨夜开场，从街景走近书店，句尾从容"
+    },
+    "departures_london_v1/invite_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.38,
+      "intention": "雨夜开场，从街景走近书店，句尾从容"
+    },
+    "departures_london_v1/threshold": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/threshold_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/warmth": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/warmth_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/nora_role": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/nora_role_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/glance": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/glance_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/silence": {
+      "rate": 0.99,
+      "gapAfter": 0.25,
+      "intention": "只描述翻纸动作"
+    },
+    "departures_london_v1/silence_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.8,
+      "intention": "说完后真的给他留出空间"
+    },
+    "departures_london_v1/read_setup": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/read_setup_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/read_breath": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/read_breath_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/excerpt_3": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/excerpt_3_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/read_finish": {
+      "rate": 0.99,
+      "gapAfter": 0.65,
+      "intention": "读完之后留一拍安静"
+    },
+    "departures_london_v1/read_finish_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/listen_setup": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/listen_setup_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/listen_room": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/listen_room_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/listen_notice": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/after_event": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/after_event_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/remember": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/door": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/door_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "贴近动作的安静旁白，不代演角色情绪"
+    },
+    "departures_london_v1/last": {
+      "rate": 0.99,
+      "gapAfter": 0.48,
+      "intention": "结尾带一点希望，保持平常而安静"
+    },
+    "departures_london_v1/last_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.48,
+      "intention": "结尾带一点希望，保持平常而安静"
+    },
+    "departures_london_v1/hello": {
+      "rate": 1.02,
+      "gapAfter": 0.3,
+      "intention": "熟悉的干幽默，轻轻接话，不加笑声"
+    },
+    "departures_london_v1/hello_part2": {
+      "rate": 1.02,
+      "gapAfter": 0.3,
+      "intention": "熟悉的干幽默，轻轻接话，不加笑声"
+    },
+    "departures_london_v1/joke": {
+      "rate": 1.02,
+      "gapAfter": 0.3,
+      "intention": "熟悉的干幽默，轻轻接话，不加笑声"
+    },
+    "departures_london_v1/permission": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "欢迎和解释都平常自然，不把空缺说成危机"
+    },
+    "departures_london_v1/nora_intro": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "欢迎和解释都平常自然，不把空缺说成危机"
+    },
+    "departures_london_v1/cancel": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "欢迎和解释都平常自然，不把空缺说成危机"
+    },
+    "departures_london_v1/cancel_part2": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "欢迎和解释都平常自然，不把空缺说成危机"
+    },
+    "departures_london_v1/nora_boundary": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "欢迎和解释都平常自然，不把空缺说成危机"
+    },
+    "departures_london_v1/admit": {
+      "rate": 0.98,
+      "gapAfter": 0.4,
+      "intention": "玩笑之后坦白自己的犹豫，不压成悲伤"
+    },
+    "departures_london_v1/admit_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.4,
+      "intention": "玩笑之后坦白自己的犹豫，不压成悲伤"
+    },
+    "departures_london_v1/private_2": {
+      "rate": 0.98,
+      "gapAfter": 0.4,
+      "intention": "玩笑之后坦白自己的犹豫，不压成悲伤"
+    },
+    "departures_london_v1/private_2_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.4,
+      "intention": "玩笑之后坦白自己的犹豫，不压成悲伤"
+    },
+    "departures_london_v1/private_3": {
+      "rate": 0.98,
+      "gapAfter": 0.4,
+      "intention": "玩笑之后坦白自己的犹豫，不压成悲伤"
+    },
+    "departures_london_v1/format_2": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "明确允许短一点，感谢没有替自己做决定"
+    },
+    "departures_london_v1/format_2_part2": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "明确允许短一点，感谢没有替自己做决定"
+    },
+    "departures_london_v1/format_4": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "明确允许短一点，感谢没有替自己做决定"
+    },
+    "departures_london_v1/format_4_part2": {
+      "rate": 1,
+      "gapAfter": 0.3,
+      "intention": "明确允许短一点，感谢没有替自己做决定"
+    },
+    "departures_london_v1/small": {
+      "rate": 0.98,
+      "gapAfter": 0.25,
+      "intention": "提出可承受的条件，两个想法间留短拍"
+    },
+    "departures_london_v1/small_part2": {
+      "rate": 0.96,
+      "gapAfter": 0.5,
+      "intention": "补上真正的担心，结束后等待玩家问句"
+    },
+    "departures_london_v1/own_voice": {
+      "rate": 1.02,
+      "gapAfter": 0.32,
+      "intention": "自己作决定，稍微恢复行动感"
+    },
+    "departures_london_v1/agreement": {
+      "rate": 1,
+      "gapAfter": 0.18,
+      "intention": "自然接住请求，短而明确"
+    },
+    "departures_london_v1/agreement_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.28,
+      "intention": "归还选择权，不宣布规定"
+    },
+    "departures_london_v1/not_test": {
+      "rate": 0.98,
+      "gapAfter": 0.48,
+      "intention": "平静消除被评判的压力"
+    },
+    "departures_london_v1/two_ways": {
+      "rate": 1,
+      "gapAfter": 0.22,
+      "intention": "调整呼吸后看见两种可接受的选择",
+      "breath": true
+    },
+    "departures_london_v1/two_ways_part2": {
+      "rate": 1,
+      "gapAfter": 0.45,
+      "intention": "确认选择，轻微释然"
+    },
+    "departures_london_v1/read_yes": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "决定尝试后恢复一点自嘲，不用夸张笑声"
+    },
+    "departures_london_v1/read_yes_part2": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "决定尝试后恢复一点自嘲，不用夸张笑声"
+    },
+    "departures_london_v1/read_intro": {
+      "rate": 1,
+      "gapAfter": 0.38,
+      "intention": "主持人简短介绍并守住免提问的约定"
+    },
+    "departures_london_v1/read_intro_part2": {
+      "rate": 1,
+      "gapAfter": 0.38,
+      "intention": "主持人简短介绍并守住免提问的约定"
+    },
+    "departures_london_v1/excerpt_1": {
+      "rate": 0.97,
+      "gapAfter": 0.15,
+      "intention": "第一次公开读自己的作品，呼吸后稳稳开始",
+      "breath": true
+    },
+    "departures_london_v1/excerpt_1_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.36,
+      "intention": "读小说时关注句子意象，清楚而克制"
+    },
+    "departures_london_v1/excerpt_2": {
+      "rate": 0.98,
+      "gapAfter": 0.36,
+      "intention": "读小说时关注句子意象，清楚而克制"
+    },
+    "departures_london_v1/excerpt_2_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.36,
+      "intention": "读小说时关注句子意象，清楚而克制"
+    },
+    "departures_london_v1/excerpt_4": {
+      "rate": 0.98,
+      "gapAfter": 0.36,
+      "intention": "读小说时关注句子意象，清楚而克制"
+    },
+    "departures_london_v1/excerpt_4_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.36,
+      "intention": "读小说时关注句子意象，清楚而克制"
+    },
+    "departures_london_v1/read_after": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "意外发现沉默也是聆听，自嘲重新变得轻松"
+    },
+    "departures_london_v1/read_after_part2": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "意外发现沉默也是聆听，自嘲重新变得轻松"
+    },
+    "departures_london_v1/read_specific": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "意外发现沉默也是聆听，自嘲重新变得轻松"
+    },
+    "departures_london_v1/read_specific_part2": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "意外发现沉默也是聆听，自嘲重新变得轻松"
+    },
+    "departures_london_v1/listen_yes": {
+      "rate": 1,
+      "gapAfter": 0.32,
+      "intention": "主动选择认真听，末句短而坚定"
+    },
+    "departures_london_v1/listen_yes_part2": {
+      "rate": 1,
+      "gapAfter": 0.32,
+      "intention": "主动选择认真听，末句短而坚定"
+    },
+    "departures_london_v1/listen_yes_part3": {
+      "rate": 1,
+      "gapAfter": 0.32,
+      "intention": "主动选择认真听，末句短而坚定"
+    },
+    "departures_london_v1/listen_intro": {
+      "rate": 1.01,
+      "gapAfter": 0.35,
+      "intention": "轻松接纳短一点的晚会，不暗示失望"
+    },
+    "departures_london_v1/listen_notice_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.42,
+      "intention": "靠近朋友低调分享观察，试着放下想象中的评判"
+    },
+    "departures_london_v1/listen_learn": {
+      "rate": 0.99,
+      "gapAfter": 0.42,
+      "intention": "靠近朋友低调分享观察，试着放下想象中的评判"
+    },
+    "departures_london_v1/listen_share": {
+      "rate": 0.99,
+      "gapAfter": 0.42,
+      "intention": "靠近朋友低调分享观察，试着放下想象中的评判"
+    },
+    "departures_london_v1/listen_excerpt": {
+      "rate": 0.98,
+      "gapAfter": 0.18,
+      "intention": "私下读第一句，给朋友听，自然连贯"
+    },
+    "departures_london_v1/listen_excerpt_part2": {
+      "rate": 0.98,
+      "gapAfter": 0.18,
+      "intention": "私下读第一句，给朋友听，自然连贯"
+    },
+    "departures_london_v1/listen_answer": {
+      "rate": 1,
+      "gapAfter": 0.36,
+      "intention": "好奇心得到回应，承诺具体且不勉强未来的自己"
+    },
+    "departures_london_v1/listen_answer_part2": {
+      "rate": 1,
+      "gapAfter": 0.36,
+      "intention": "好奇心得到回应，承诺具体且不勉强未来的自己"
+    },
+    "departures_london_v1/listen_commit": {
+      "rate": 1,
+      "gapAfter": 0.36,
+      "intention": "好奇心得到回应，承诺具体且不勉强未来的自己"
+    },
+    "departures_london_v1/listen_commit_part2": {
+      "rate": 1,
+      "gapAfter": 0.36,
+      "intention": "好奇心得到回应，承诺具体且不勉强未来的自己"
+    },
+    "departures_london_v1/nora_close": {
+      "rate": 1,
+      "gapAfter": 0.32,
+      "intention": "收拾时的随口邀请，让每一种参与都受欢迎"
+    },
+    "departures_london_v1/nora_close_part2": {
+      "rate": 1,
+      "gapAfter": 0.32,
+      "intention": "收拾时的随口邀请，让每一种参与都受欢迎"
+    },
+    "departures_london_v1/different": {
+      "rate": 1.02,
+      "gapAfter": 0.28,
+      "intention": "用熟悉的冷幽默承认这一晚有用"
+    },
+    "departures_london_v1/different_part2": {
+      "rate": 1.02,
+      "gapAfter": 0.28,
+      "intention": "用熟悉的冷幽默承认这一晚有用"
+    },
+    "departures_london_v1/remember_private": {
+      "rate": 0.99,
+      "gapAfter": 0.4,
+      "intention": "门口认真道谢，不做夸张总结"
+    },
+    "departures_london_v1/remember_private_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.4,
+      "intention": "门口认真道谢，不做夸张总结"
+    },
+    "departures_london_v1/remember_format": {
+      "rate": 0.99,
+      "gapAfter": 0.4,
+      "intention": "门口认真道谢，不做夸张总结"
+    },
+    "departures_london_v1/remember_format_part2": {
+      "rate": 0.99,
+      "gapAfter": 0.4,
+      "intention": "门口认真道谢，不做夸张总结"
+    },
+    "departures_london_v1/next_day": {
+      "rate": 1.01,
+      "gapAfter": 0.36,
+      "intention": "轻松约明天喝咖啡，也把关注还给朋友"
+    },
+    "departures_london_v1/deal": {
+      "rate": 1.01,
+      "gapAfter": 0.36,
+      "intention": "轻松约明天喝咖啡，也把关注还给朋友"
+    },
+    "departures_london_v1/deal_part2": {
+      "rate": 1.01,
+      "gapAfter": 0.36,
+      "intention": "轻松约明天喝咖啡，也把关注还给朋友"
+    },
+    "departures_london_v1/ending": {
+      "rate": 0.99,
+      "gapAfter": 0.48,
+      "intention": "结尾带一点希望，保持平常而安静"
+    }
+  }
+}

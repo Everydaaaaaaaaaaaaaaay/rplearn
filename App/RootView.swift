@@ -41,6 +41,7 @@ struct RootView: View {
     @State private var signInAfterUsage = false
     @State private var showSignIn = false
     @State private var loginReason: String?
+    @State private var pendingStoryLoginReason: String?
     @State private var showLondonEpisode = false
     @State private var activeSceneActivity: SceneActivity?
     @State private var showPlacementTest = false
@@ -120,8 +121,24 @@ struct RootView: View {
 
     var body: some View {
         appContent
-            .fullScreenCover(isPresented: $showLondonEpisode) {
-                LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest")
+            .fullScreenCover(isPresented: $showLondonEpisode, onDismiss: {
+                if let reason = pendingStoryLoginReason {
+                    pendingStoryLoginReason = nil
+                    loginReason = reason
+                }
+            }) {
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
+                    LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
+                                      resourceName: ProcessInfo.processInfo.environment["UI_TEST_DEPARTURE_RESOURCE"] ?? "departures_london_v1")
+                } else {
+                    DepartureStoriesView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
+                                         access: departureAccess, economy: environment.economyStore)
+                }
+                #else
+                DepartureStoriesView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
+                                         access: departureAccess, economy: environment.economyStore)
+                #endif
             }
             .overlay {
                 if let activationError {
@@ -785,6 +802,13 @@ struct RootView: View {
             speech: environment.speech,
             exampleTranslationActions: exampleTranslationActions
         )
+    }
+
+    private var departureAccess: JourneyAccess {
+        JourneyAccess(isGuest: !usesCloudState) { reason in
+            pendingStoryLoginReason = reason
+            showLondonEpisode = false
+        }
     }
 
     private var journeyAccess: JourneyAccess {

@@ -1,0 +1,644 @@
+{
+  "id": "departures_mainline_melbourne_v1",
+  "version": 1,
+  "title": "留给自己的一个下午",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "墨尔本 · 收班之前",
+    "写在日历上的时间",
+    "下午还没有结束"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_melbourne",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Ruby has invited you for coffee after her shift.",
+      "translation": "Ruby 约你在她收班后喝咖啡。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "cups"
+    },
+    {
+      "id": "cups",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She puts down two cups. Her phone lights up again.",
+      "translation": "她放下两只杯子，手机又亮了。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "hello"
+    },
+    {
+      "id": "hello",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "That's three favours before lunch. Personal best.",
+      "translation": "午饭前就接了三个请托。个人新纪录。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.05,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "invite"
+    },
+    {
+      "id": "invite",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Is our walk one of them?",
+      "translation": "我们约的散步也算其中一个吗？",
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "No! I wanted the walk. That's sort of the problem.",
+      "translation": "不是！我本来很想去散步。问题也就在这儿。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "deadline"
+    },
+    {
+      "id": "deadline",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "My marine biology application is due tonight.",
+      "translation": "我的海洋生物学项目申请今晚截止。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "deadline2"
+    },
+    {
+      "id": "deadline2",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "I've opened the form twelve times. Written my name twice.",
+      "translation": "表格我打开十二次了，名字写了两次。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "request"
+    },
+    {
+      "id": "request",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Her colleague asks if she can cover the late shift.",
+      "translation": "同事又问她能否顶晚班。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "reflex"
+    },
+    {
+      "id": "reflex",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "I nearly said yes before she finished the sentence.",
+      "translation": "她话还没说完，我差点就答应了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "why"
+    },
+    {
+      "id": "why",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "What happens if you say no?",
+      "translation": "如果拒绝，会怎么样？",
+      "next": "honest"
+    },
+    {
+      "id": "honest",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "She asks someone else. I feel awful for twenty minutes.",
+      "translation": "她会去问别人。我会内疚二十分钟。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "honest2"
+    },
+    {
+      "id": "honest2",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "I know how that sounds. Knowing doesn't quite fix it.",
+      "translation": "我知道这听起来没什么。但知道不等于做得到。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "How do you make room for her decision?",
+      "translation": "你怎么帮她留出做决定的空间？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Look at the time she actually has.",
+          "translation": "一起算算她真正剩下的时间。",
+          "next": "time_a",
+          "flags": {
+            "plan": true
+          },
+          "review": {
+            "context": "同事再次请她顶班，她的申请也快截止了。",
+            "outcome": "你们看清了时间冲突，Ruby 明确拒绝了晚班。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask what she wants to protect today.",
+          "translation": "问问她今天最想保住什么。",
+          "next": "want_a",
+          "flags": {
+            "plan": false
+          },
+          "review": {
+            "context": "同事再次请她顶班，她的申请也快截止了。",
+            "outcome": "Ruby 说出自己想完成申请，并亲自拒绝了晚班。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "time_a",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "What is already promised, and what is still yours?",
+      "translation": "哪些时间已经答应了别人，哪些仍属于你？",
+      "next": "time_b"
+    },
+    {
+      "id": "time_b",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "The morning shift is done. The afternoon is mine.",
+      "translation": "早班已经结束了。下午是我的。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "time_c"
+    },
+    {
+      "id": "time_c",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "I've been spending it as if nobody lived in it.",
+      "translation": "我一直把它花出去，仿佛没人住在这段时间里。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "decision"
+    },
+    {
+      "id": "want_a",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "If nobody asked for anything, what would you do?",
+      "translation": "如果没人来找你帮忙，你会做什么？",
+      "next": "want_b"
+    },
+    {
+      "id": "want_b",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Finish the application. Then walk without checking my phone.",
+      "translation": "写完申请。然后散步，不看手机。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "want_c"
+    },
+    {
+      "id": "want_c",
+      "act": 0,
+      "location": "墨尔本 · 收班之前",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Actually saying it makes the other answer harder to send.",
+      "translation": "一说出口，就更难发出另一种回答了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "decision"
+    },
+    {
+      "id": "decision",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "I can't cover tonight. I've got a deadline of my own.",
+      "translation": "我今晚不能顶班，我自己有一件到期的事。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "send"
+    },
+    {
+      "id": "send",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She sends it before adding a fourth apology.",
+      "translation": "她没再添第四句道歉，就发了出去。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "reply"
+    },
+    {
+      "id": "reply",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The reply is short: 'No worries. Good luck with it.'",
+      "translation": "回复很短：“没事，祝你顺利。”",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "relief"
+    },
+    {
+      "id": "relief",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Oh. The world appears to be coping.",
+      "translation": "哦。世界看起来还撑得住。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "form"
+    },
+    {
+      "id": "form",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You move to a quieter table. She opens the form.",
+      "translation": "你们换到安静些的桌边，她打开申请表。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stuck"
+    },
+    {
+      "id": "stuck",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "It asks why I want to do this. Now I sound like a brochure.",
+      "translation": "它问我为什么想参加。我写得像宣传册。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "boundary"
+    },
+    {
+      "id": "boundary",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Do you want a reader, or some quiet?",
+      "translation": "你想让我帮你读读，还是想安静写一会儿？",
+      "next": "second"
+    },
+    {
+      "id": "second",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What kind of company does she want?",
+      "translation": "她需要哪一种陪伴？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Offer to read one paragraph.",
+          "translation": "愿意替她读一段。",
+          "next": "reader_a",
+          "flags": {
+            "reader": true
+          },
+          "review": {
+            "context": "申请已经打开，她需要专注地把话写成自己的。",
+            "outcome": "你只指出一个具体细节；文字仍由 Ruby 自己完成。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Give her an hour, then meet outside.",
+          "translation": "给她一小时，之后在门外碰面。",
+          "next": "quiet_a",
+          "flags": {
+            "reader": false
+          },
+          "review": {
+            "context": "申请已经打开，她需要专注地把话写成自己的。",
+            "outcome": "你们暂时分开，Ruby 独自完成申请后出来赴约。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reader_a",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "One paragraph. Tell me where you hear me in it.",
+      "translation": "就一段。告诉我哪里听起来像我。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "reader_b"
+    },
+    {
+      "id": "reader_b",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "The part about returning to the same stretch of coast.",
+      "translation": "你写一再回到同一段海岸的地方。",
+      "next": "reader_c"
+    },
+    {
+      "id": "reader_c",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Good. I can start there. The brochure can have the rest.",
+      "translation": "好，那我从那里写。剩下的留给宣传册吧。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "submit"
+    },
+    {
+      "id": "quiet_a",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "An hour. If I send you a coffee meme, ignore it.",
+      "translation": "一小时。如果我发咖啡表情包给你，别理。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "quiet_b"
+    },
+    {
+      "id": "quiet_b",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You take the long way around the block.",
+      "translation": "你绕着街区慢慢走了一圈。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "quiet_c"
+    },
+    {
+      "id": "quiet_c",
+      "act": 1,
+      "location": "写在日历上的时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "When you return, her phone is face down.",
+      "translation": "你回来时，她的手机一直扣在桌上。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "submit"
+    },
+    {
+      "id": "submit",
+      "act": 2,
+      "location": "下午还没有结束",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She presses submit, then sits very still.",
+      "translation": "她按下提交，安静坐了一会儿。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "notwin"
+    },
+    {
+      "id": "notwin",
+      "act": 2,
+      "location": "下午还没有结束",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "They might say no. At least they'll be saying it to me.",
+      "translation": "他们可能会拒绝。至少这次有机会听见回答了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.5
+      },
+      "next": "thanks"
+    },
+    {
+      "id": "thanks",
+      "act": 2,
+      "location": "下午还没有结束",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Thanks for not turning my afternoon into your project.",
+      "translation": "谢谢你没把我的下午变成你的任务。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "walk"
+    },
+    {
+      "id": "walk",
+      "act": 2,
+      "location": "下午还没有结束",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Still want that walk?",
+      "translation": "还想去散步吗？",
+      "next": "walk2"
+    },
+    {
+      "id": "walk2",
+      "act": 2,
+      "location": "下午还没有结束",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Very much. No errands on the way.",
+      "translation": "非常想。路上不顺便办任何事。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 2,
+      "location": "下午还没有结束",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Some plans begin with a space left empty.",
+      "translation": "有些计划，从留出一段空白开始。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

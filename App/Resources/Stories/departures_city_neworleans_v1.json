@@ -1,0 +1,348 @@
+{
+  "id": "departures_city_neworleans_v1",
+  "version": 1,
+  "title": "点歌纸上的一行字",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新奥尔良 · 小场演出前",
+    "最后一首的空位"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_neworleans",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You help Calvin collect requests before a small evening set.",
+      "translation": "一场小型晚间演出前，你帮 Calvin 收集点歌。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "request"
+    },
+    {
+      "id": "request",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "Calvin",
+      "text": "This one says, 'Something for getting through Thursday.'",
+      "translation": "这一张写着：“来点撑过星期四的音乐。”",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "today"
+    },
+    {
+      "id": "today",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "It is Saturday.",
+      "translation": "今天是星期六。",
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "Calvin",
+      "text": "Some Thursdays take their time leaving.",
+      "translation": "有些星期四，需要花点时间才会离开。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "guest"
+    },
+    {
+      "id": "guest",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "A woman near the back raises her hand.",
+      "translation": "后排的一位女士举起了手。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "clarify"
+    },
+    {
+      "id": "clarify",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "June",
+      "text": "That's mine. Sorry, I don't know many song names.",
+      "translation": "那张是我写的。抱歉，我记不得多少歌名。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "noquiz"
+    },
+    {
+      "id": "noquiz",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "Calvin",
+      "text": "No test at the door. Tell me what you want to hear.",
+      "translation": "门口又不考试。告诉我你想听什么感觉。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What might help her describe it?",
+      "translation": "怎么帮她说得更具体一些？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask whether she wants energy or somewhere to rest.",
+          "translation": "问她想要一点力气，还是想安静歇一会儿。",
+          "next": "mood_a",
+          "flags": {
+            "mood": true
+          },
+          "review": {
+            "context": "点歌没有歌名，但她想听音乐的心情是具体的。",
+            "outcome": "她选择更有精神的节奏，Calvin 据此调整最后一首的安排。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask about a sound she remembers liking.",
+          "translation": "问问她记得自己喜欢过什么声音。",
+          "next": "sound_a",
+          "flags": {
+            "mood": false
+          },
+          "review": {
+            "context": "点歌没有歌名，但她想听音乐的心情是具体的。",
+            "outcome": "她描述了喜欢的柔和音色，乐手们留出一段安静的空间。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mood_a",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "June",
+      "text": "Something with a little lift. I have rested quite enough.",
+      "translation": "想要一点向上的劲儿。我已经歇得够久了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "mood_b"
+    },
+    {
+      "id": "mood_b",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "Calvin",
+      "text": "A little lift. We can work with that.",
+      "translation": "一点向上的劲儿。这个我们能试试。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "mood_c"
+    },
+    {
+      "id": "mood_c",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He speaks to the others, then changes the last line of the list.",
+      "translation": "他和其他乐手说了说，改动了曲目单最后一行。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "mood_d"
+    },
+    {
+      "id": "mood_d",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "June",
+      "text": "I didn't expect you to take that scrap of paper seriously.",
+      "translation": "我没想到你会认真看那张小纸条。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "sound_a",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "June",
+      "text": "A piano through an open window. Nothing in a hurry.",
+      "translation": "从敞开的窗户里传来的钢琴。不匆不忙的那种。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "sound_b"
+    },
+    {
+      "id": "sound_b",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "Calvin",
+      "text": "That's a clearer request than half the song titles I get.",
+      "translation": "这比我收到的一半歌名都更清楚。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "sound_c"
+    },
+    {
+      "id": "sound_c",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He asks the pianist for room in the last piece.",
+      "translation": "他请钢琴手在最后一首里多留一点空间。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "sound_d"
+    },
+    {
+      "id": "sound_d",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "city",
+      "speaker": "June",
+      "text": "I can sit with that for a while.",
+      "translation": "我想在那里坐一会儿。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "最后一首的空位",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "During the last piece, the paper stays folded in her hand.",
+      "translation": "最后一首响起时，那张纸仍折在她手心里。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "after"
+    },
+    {
+      "id": "after",
+      "act": 1,
+      "location": "最后一首的空位",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Did you get Thursday out of the room?",
+      "translation": "你把那个星期四送出房间了吗？",
+      "next": "after2"
+    },
+    {
+      "id": "after2",
+      "act": 1,
+      "location": "最后一首的空位",
+      "shot": "city",
+      "speaker": "Calvin",
+      "text": "Not my job to know. I gave it somewhere to sit.",
+      "translation": "这不是我能知道的。我只是给它找了个地方坐。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "最后一首的空位",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "You do not need the title to know what moves you.",
+      "translation": "知道什么会打动自己，不一定要先知道歌名。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

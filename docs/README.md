@@ -15,6 +15,7 @@
 涉及具体领域时再读：
 
 - [`journey-design.md`](journey-design.md)：主线路线、城市解锁和内容配置入口。
+- [`departures-collection.md`](departures-collection.md)：新五站主线、十五篇城市故事及声音制作边界。
 - [`story-rebuild-plan.md`](story-rebuild-plan.md)：新剧情施工流程、AI 美术一致性与全量发布门槛。
 - [`story-direction-draft.md`](story-direction-draft.md)：已确认的创作方向与首站范围。
 - [`story-london-production.md`](story-london-production.md)：伦敦日系可玩样章的脚本、资产、限制与验收记录。

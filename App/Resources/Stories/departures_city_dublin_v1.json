@@ -1,0 +1,354 @@
+{
+  "id": "departures_city_dublin_v1",
+  "version": 1,
+  "title": "重录之前",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "都柏林 · 咖啡馆打烊前",
+    "按下发送以后"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_dublin",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You hear the start of your friend's birthday message.",
+      "translation": "你听到朋友录的生日留言的开头。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "recording"
+    },
+    {
+      "id": "recording",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "Happy birthday, you absolute menace. No, not that bit.",
+      "translation": "生日快乐，你这个大麻烦。不，这句不算。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stop"
+    },
+    {
+      "id": "stop",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She stops the recording, then rubs her forehead.",
+      "translation": "她停掉录音，揉了揉额头。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "sister"
+    },
+    {
+      "id": "sister",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "My sister moved away last year. We used to share a wall.",
+      "translation": "我妹妹去年搬走了。以前我们房间只隔一面墙。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "problem"
+    },
+    {
+      "id": "problem",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "Now I keep trying to fit a whole year into a minute.",
+      "translation": "现在，我总想把整整一年塞进一分钟。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "question"
+    },
+    {
+      "id": "question",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "你",
+      "text": "What would you say through the wall?",
+      "translation": "如果隔着那面墙，你会说什么？",
+      "next": "ordinary"
+    },
+    {
+      "id": "ordinary",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "Turn that down. Usually. Sometimes, have you eaten?",
+      "translation": "一般是“小声点”。有时是“吃饭了吗？”",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "try"
+    },
+    {
+      "id": "try",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She opens the recorder again, then looks at you.",
+      "translation": "她又打开录音器，然后望向你。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What does she want to keep?",
+      "translation": "她想在留言里留下什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Tell one small memory instead of summarising the year.",
+          "translation": "讲一件小事，不概括一整年。",
+          "next": "memory_a",
+          "flags": {
+            "memory": true
+          },
+          "review": {
+            "context": "妹妹的生日到了，一条留言装不下分开之后的每件事。",
+            "outcome": "Niamh 留下一个只有姐妹俩熟悉的记忆，也保留了自然的笑声。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Leave a simple invitation for a call when her sister can.",
+          "translation": "简单邀请妹妹有空时通个电话。",
+          "next": "call_a",
+          "flags": {
+            "memory": false
+          },
+          "review": {
+            "context": "妹妹的生日到了，一条留言装不下分开之后的每件事。",
+            "outcome": "Niamh 把留言变成了明确的通话邀请，没有要求妹妹立即回复。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "memory_a",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "Remember the cake we dropped, and blamed on the table?",
+      "translation": "还记得我们把蛋糕摔了，却怪桌子的那次吗？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "memory_b"
+    },
+    {
+      "id": "memory_b",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "I bought one today. Same terrible icing. Miss your half.",
+      "translation": "今天我又买了一块。还是那糟糕的糖霜。少了你那半块。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "memory_c"
+    },
+    {
+      "id": "memory_c",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "This time she keeps the whole recording.",
+      "translation": "这一次，她留下了完整的录音。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "memory_d"
+    },
+    {
+      "id": "memory_d",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "That's enough, isn't it? She knows the rest.",
+      "translation": "够了，对吧？剩下的她都知道。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "call_a",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "Birthday call this weekend? Tell me a time that suits you.",
+      "translation": "这周末打个生日电话？告诉我一个你方便的时间。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "call_b"
+    },
+    {
+      "id": "call_b",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "No rush tonight. I hope somebody has bought you cake.",
+      "translation": "今晚不用急着回。希望有人给你买了蛋糕。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "call_c"
+    },
+    {
+      "id": "call_c",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She waits a beat, then adds one last thing.",
+      "translation": "她停了一拍，又添上一句。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "call_d"
+    },
+    {
+      "id": "call_d",
+      "act": 0,
+      "location": "都柏林 · 咖啡馆打烊前",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "And if they haven't, I have very strong opinions.",
+      "translation": "如果没人买，我可有很大的意见。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "按下发送以后",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The message leaves her phone. The café is closing.",
+      "translation": "消息发出去了，咖啡馆也快打烊了。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "after"
+    },
+    {
+      "id": "after",
+      "act": 1,
+      "location": "按下发送以后",
+      "shot": "city",
+      "speaker": "Niamh",
+      "text": "Now I can miss her without editing it for twenty minutes.",
+      "translation": "现在我可以想她了，不必先剪辑二十分钟。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "按下发送以后",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Some voices already know the way home.",
+      "translation": "有些声音，本来就认识回家的路。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

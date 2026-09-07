@@ -1,0 +1,578 @@
+{
+  "id": "departures_mainline_singapore_v1",
+  "version": 1,
+  "title": "下次见面的办法",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新加坡 · 最后一晚",
+    "一个能兑现的邀请",
+    "明天各自出发"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_singapore",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "It is your last evening in Singapore for now.",
+      "translation": "这一程，这是你在新加坡的最后一晚。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "table"
+    },
+    {
+      "id": "table",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Mei meets you for dinner. Your bag waits beside the chair.",
+      "translation": "Mei 来陪你吃饭，行李袋放在椅子旁。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "hello"
+    },
+    {
+      "id": "hello",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Packed already? That is suspiciously organised.",
+      "translation": "已经收好行李了？这么井井有条，有点可疑。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你",
+      "text": "The bag is ready. I'm less sure about leaving.",
+      "translation": "行李准备好了。我还不太确定自己准备好没有。",
+      "next": "me"
+    },
+    {
+      "id": "me",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Leaving people, or leaving the version of you here?",
+      "translation": "舍不得这里的人，还是舍不得在这里的自己？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "draft"
+    },
+    {
+      "id": "draft",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Your unsent message begins: 'We should all meet again.'",
+      "translation": "你没发出的消息以“我们一定要再见”开头。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "draft2"
+    },
+    {
+      "id": "draft2",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你",
+      "text": "It sounds nice. It does not contain a single date.",
+      "translation": "听起来挺好，却连一个日期都没有。",
+      "next": "gentle"
+    },
+    {
+      "id": "gentle",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Or a budget. We are very good at imaginary holidays.",
+      "translation": "也没有预算。想象中的假期，我们都很擅长安排。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "fact"
+    },
+    {
+      "id": "fact",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Work, study and distance have not disappeared.",
+      "translation": "工作、学业和距离，都不会因为这趟旅程而消失。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What do you actually want to send?",
+      "translation": "你真正想发出的是什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A small invitation with room to decline.",
+          "translation": "一个具体的小邀请，也允许对方拒绝。",
+          "next": "invite_a",
+          "flags": {
+            "specific": true
+          },
+          "review": {
+            "context": "旅程将结束，未发送的群聚提议既没有日期也没有预算。",
+            "outcome": "你提出一个小范围的线上约定，并明确可以改期或不参加。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "A specific thank-you, without asking for anything.",
+          "translation": "一句具体的感谢，暂时不要求任何回应。",
+          "next": "thanks_a",
+          "flags": {
+            "specific": false
+          },
+          "review": {
+            "context": "旅程将结束，未发送的群聚提议既没有日期也没有预算。",
+            "outcome": "你把感谢说具体，不用一个宏大的约定换取安心。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "invite_a",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Tea on a call next Sunday? Twenty minutes, if it works.",
+      "translation": "下周日连线喝杯茶？方便的话，二十分钟就好。",
+      "next": "invite_b"
+    },
+    {
+      "id": "invite_b",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Add the time zone. Affection doesn't convert clocks.",
+      "translation": "记得加上时区。感情可不会帮我们换算时间。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "invite_c"
+    },
+    {
+      "id": "invite_c",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你",
+      "text": "And if it does not, we can try another day.",
+      "translation": "如果不方便，我们可以改天。",
+      "next": "send"
+    },
+    {
+      "id": "thanks_a",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I keep thinking about the things we didn't rush.",
+      "translation": "我一直在想，我们没有急着赶完的那些事。",
+      "next": "thanks_b"
+    },
+    {
+      "id": "thanks_b",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Thank you for giving me time to become part of them.",
+      "translation": "谢谢你们，给我时间慢慢成为其中的一部分。",
+      "next": "thanks_c"
+    },
+    {
+      "id": "thanks_c",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "That's a message someone can keep. Send that.",
+      "translation": "这是一条值得留下的消息。就发这个吧。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "send"
+    },
+    {
+      "id": "send",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You send it. There is no instant chorus of replies.",
+      "translation": "你发出消息，没有立刻收到一片回复。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "wait"
+    },
+    {
+      "id": "wait",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Different evenings. Different jobs. They will find it.",
+      "translation": "每个人的夜晚和工作都不同。他们会看到的。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "ordinary"
+    },
+    {
+      "id": "ordinary",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You eat while the food is still hot.",
+      "translation": "你们趁热吃饭。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "response"
+    },
+    {
+      "id": "response",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "A little later, one reply arrives. Then another.",
+      "translation": "过了一会儿，一条回复到了。然后又一条。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "response2"
+    },
+    {
+      "id": "response2",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "One friend can make time. Another needs a different day.",
+      "translation": "一位朋友能抽出时间，另一位需要改天。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "reaction"
+    },
+    {
+      "id": "reaction",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "你",
+      "text": "This is less tidy than the message in my head.",
+      "translation": "这比我脑海里想象的回复要零散一些。",
+      "next": "reaction2"
+    },
+    {
+      "id": "reaction2",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Yes. There are actual people on the other end.",
+      "translation": "是啊。另一端是一个个真实的人。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "second"
+    },
+    {
+      "id": "second",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What do you keep for the journey home?",
+      "translation": "回程时，你想留下什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Keep a private note about one thing you want to continue.",
+          "translation": "私下记下一件自己想继续做的事。",
+          "next": "private_a",
+          "flags": {
+            "private": true
+          },
+          "review": {
+            "context": "晚餐快结束了，你不必把整趟旅行总结成一句大道理。",
+            "outcome": "你给未来的自己留下一件能做的小事，暂不公开。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask Mei to take one ordinary photograph together.",
+          "translation": "问 Mei 愿不愿意一起拍张平常的合照。",
+          "next": "photo_a",
+          "flags": {
+            "private": false
+          },
+          "review": {
+            "context": "晚餐快结束了，你不必把整趟旅行总结成一句大道理。",
+            "outcome": "Mei 同意合照；你们决定只把照片留给彼此。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "private_a",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You write a sentence and leave the next line empty.",
+      "translation": "你写下一句话，把下一行留白。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "private_b"
+    },
+    {
+      "id": "private_b",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Do I get to read it?",
+      "translation": "我能看看吗？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "private_c"
+    },
+    {
+      "id": "private_c",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Not yet. I want to try living it first.",
+      "translation": "还不行。我想先试着把它过出来。",
+      "next": "leave"
+    },
+    {
+      "id": "photo_a",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Of course. Just let me move the soup out of the way.",
+      "translation": "当然。先让我把汤挪开。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "photo_b"
+    },
+    {
+      "id": "photo_b",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The first picture blurs. You keep the second.",
+      "translation": "第一张拍糊了，你们留下第二张。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "photo_c"
+    },
+    {
+      "id": "photo_c",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Just for us?",
+      "translation": "只留给我们？",
+      "next": "photo_d"
+    },
+    {
+      "id": "photo_d",
+      "act": 1,
+      "location": "一个能兑现的邀请",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Just for us. The internet can survive without dinner.",
+      "translation": "只留给我们。互联网少看一顿晚饭也撑得住。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "leave"
+    },
+    {
+      "id": "leave",
+      "act": 2,
+      "location": "明天各自出发",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Outside, Mei waits while you adjust the strap on your bag.",
+      "translation": "走到外面，你调整背包带，Mei 站在旁边等你。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "goodbye"
+    },
+    {
+      "id": "goodbye",
+      "act": 2,
+      "location": "明天各自出发",
+      "shot": "city",
+      "speaker": "Mei",
+      "text": "Message me when you arrive. No travel essay required.",
+      "translation": "到了给我发条消息。不用写旅行散文。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "promise"
+    },
+    {
+      "id": "promise",
+      "act": 2,
+      "location": "明天各自出发",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I can promise that one.",
+      "translation": "这件事，我可以答应。",
+      "next": "tomorrow"
+    },
+    {
+      "id": "tomorrow",
+      "act": 2,
+      "location": "明天各自出发",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Tomorrow will not look like tonight. That is all right.",
+      "translation": "明天不会和今晚一样。那也没关系。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 2,
+      "location": "明天各自出发",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "You can leave without making it the last time.",
+      "translation": "离开，也可以不把它变成最后一次。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

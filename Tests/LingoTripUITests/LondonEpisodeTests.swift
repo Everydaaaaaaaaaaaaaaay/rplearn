@@ -160,6 +160,9 @@ final class LondonEpisodeTests: XCTestCase {
         story.tap()
         XCTAssertTrue(app.buttons["story.london.preview"].waitForExistence(timeout: 5))
         app.buttons["story.london.preview"].tap()
+        let london = app.buttons["departures.chapter.departures_london_v1"]
+        XCTAssertTrue(london.waitForExistence(timeout: 10))
+        london.tap()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
     }
 
@@ -235,6 +238,8 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(sound.waitForExistence(timeout: 20))
         expectation(for: NSPredicate(format: "value CONTAINS %@", "starts:1;"), evaluatedWith: sound)
         waitForExpectations(timeout: 30)
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "completed:arrival;"), evaluatedWith: sound)
+        waitForExpectations(timeout: 15)
         let word = app.buttons.matching(NSPredicate(format: "label MATCHES %@", "rain\\s*")).firstMatch
         for pronounce in [false, true] {
             word.tap()

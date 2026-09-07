@@ -1,0 +1,630 @@
+{
+  "id": "departures_mainline_newyork_v1",
+  "version": 1,
+  "title": "没有挂上的那张照片",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "纽约 · 布展前一天",
+    "换一个问题",
+    "墙上的空位"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_newyork",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Marcus asks you to help choose prints for a small show.",
+      "translation": "Marcus 请你帮他挑一场小展览的照片。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "table"
+    },
+    {
+      "id": "table",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Photographs cover the table. One space is carefully clear.",
+      "translation": "照片铺满桌面，有一个位置特意空着。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "proud"
+    },
+    {
+      "id": "proud",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "This one was going in the middle. First thing you saw.",
+      "translation": "这张本来要挂在正中间，让人一眼看见。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "subject"
+    },
+    {
+      "id": "subject",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "It is Elena outside her repair shop, after closing.",
+      "translation": "照片里是 Elena，修理店打烊后她站在门外。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "permission"
+    },
+    {
+      "id": "permission",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "She said yes to the picture. Not to the exhibition.",
+      "translation": "她同意拍照，却没同意参加展览。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "message"
+    },
+    {
+      "id": "message",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Her message says: 'I'd rather you didn't put it up.'",
+      "translation": "她发来消息：“我还是不希望你把它挂出去。”",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "reply"
+    },
+    {
+      "id": "reply",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Have you answered her?",
+      "translation": "你回复她了吗？",
+      "next": "honest"
+    },
+    {
+      "id": "honest",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "I typed 'of course'. Haven't sent it. Hate that about me.",
+      "translation": "我打了“当然”。还没发。我讨厌自己这样。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "loss"
+    },
+    {
+      "id": "loss",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "The show's called Working Hands. Hers held it together.",
+      "translation": "展览叫《工作的双手》。她那张把整组撑起来了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "Where do you begin?",
+      "translation": "你先从哪里谈起？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Help him answer Elena first.",
+          "translation": "先陪他回复 Elena。",
+          "next": "reply_a",
+          "flags": {
+            "replyFirst": true
+          },
+          "review": {
+            "context": "Elena 不愿参展，Marcus 还没把同意撤下的回复发出去。",
+            "outcome": "Marcus 先明确答应撤下照片，再讨论新的方案。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask what the photograph means to him.",
+          "translation": "先问这张照片对他意味着什么。",
+          "next": "meaning_a",
+          "flags": {
+            "replyFirst": false
+          },
+          "review": {
+            "context": "Elena 不愿参展，Marcus 还没把同意撤下的回复发出去。",
+            "outcome": "Marcus 说出了不舍，但仍明确答应撤下照片。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reply_a",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "你",
+      "text": "You can miss the picture and still send those two words.",
+      "translation": "你可以舍不得那张照片，也可以先发出那两个词。",
+      "next": "reply_b"
+    },
+    {
+      "id": "reply_b",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Of course. I'll leave it out. Thanks for telling me.",
+      "translation": "当然。我会把它撤下。谢谢你告诉我。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "reply_c"
+    },
+    {
+      "id": "reply_c",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He sends the message. Then puts the phone down.",
+      "translation": "他发出消息，把手机放下。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "empty"
+    },
+    {
+      "id": "meaning_a",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "She built that counter herself. Thirty years ago.",
+      "translation": "那个柜台是她自己做的，三十年前。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "meaning_b"
+    },
+    {
+      "id": "meaning_b",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "I wanted people to see what she made. Not just my light.",
+      "translation": "我想让大家看到她做成了什么，不只是我的光线。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "meaning_c"
+    },
+    {
+      "id": "meaning_c",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Then her answer is part of seeing her, too.",
+      "translation": "那么，听见她的回答，也是看见她的一部分。",
+      "next": "meaning_d"
+    },
+    {
+      "id": "meaning_d",
+      "act": 0,
+      "location": "纽约 · 布展前一天",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He reads the message once more, and agrees to leave it out.",
+      "translation": "他又读了一遍消息，答应撤下照片。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "empty"
+    },
+    {
+      "id": "empty",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Okay. A hole in the wall is better than a hole in that.",
+      "translation": "好吧。墙上空一块，总比这件事上缺一块强。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "visit"
+    },
+    {
+      "id": "visit",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The next afternoon, you bring Elena a print she asked for.",
+      "translation": "第二天下午，你们把 Elena 要的纸质照片送来。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "elena"
+    },
+    {
+      "id": "elena",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "For my daughter. She thinks I live behind that counter.",
+      "translation": "给我女儿的。她以为我一直住在那个柜台后面。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "elena2"
+    },
+    {
+      "id": "elena2",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "I don't want strangers asking me about that day.",
+      "translation": "我不想让陌生人来问那天发生了什么。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "accept"
+    },
+    {
+      "id": "accept",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "You don't have to explain it. The print is yours.",
+      "translation": "你不用解释。这张照片属于你。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "offer"
+    },
+    {
+      "id": "offer",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "You could ask me about something I repaired instead.",
+      "translation": "你倒可以问问我修好过什么。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "newquestion"
+    },
+    {
+      "id": "newquestion",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Marcus looks at the workbench, then back at her.",
+      "translation": "Marcus 看向工作台，又转头看她。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "second"
+    },
+    {
+      "id": "second",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What could the empty space become?",
+      "translation": "空出的位置可以变成什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask about photographing one repaired object.",
+          "translation": "问她是否愿意让一件修好的东西入镜。",
+          "next": "object_a",
+          "flags": {
+            "objects": true
+          },
+          "review": {
+            "context": "Elena 愿意谈手艺，你们先询问她能接受的表达方式。",
+            "outcome": "Elena 选了一盏灯，逐项确认照片和说明文字。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask about using her words, without a photograph.",
+          "translation": "问她愿不愿意只留下自己的话。",
+          "next": "words_a",
+          "flags": {
+            "objects": false
+          },
+          "review": {
+            "context": "Elena 愿意谈手艺，你们先询问她能接受的表达方式。",
+            "outcome": "Elena 选了一句话，并确认署名；墙上保留空白。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "object_a",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "That lamp. Three people told her to throw it away.",
+      "translation": "那盏灯。已经有三个人劝她扔掉了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "object_b"
+    },
+    {
+      "id": "object_b",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "A loose wire. Ten minutes. Don't make me sound heroic.",
+      "translation": "一根松掉的电线。十分钟。别把我写成英雄。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.01,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "object_c"
+    },
+    {
+      "id": "object_c",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "A lamp, and your words. Can I show you both first?",
+      "translation": "一盏灯，加上你的话。我先给你看过，可以吗？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "show"
+    },
+    {
+      "id": "words_a",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "Write this: 'Sometimes it only needs another look.'",
+      "translation": "写这句：“有时候，只需要再看一眼。”",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "words_b"
+    },
+    {
+      "id": "words_b",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Your name beside it, or just the shop?",
+      "translation": "旁边写你的名字，还是只写店名？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "words_c"
+    },
+    {
+      "id": "words_c",
+      "act": 1,
+      "location": "换一个问题",
+      "shot": "city",
+      "speaker": "Elena",
+      "text": "Elena is fine. Leave me room to change my mind.",
+      "translation": "Elena 就好。也给我留点改主意的余地。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "show"
+    },
+    {
+      "id": "show",
+      "act": 2,
+      "location": "墙上的空位",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "At the show, a visitor stops where the portrait would be.",
+      "translation": "展览那天，一位观众停在原本要挂肖像的位置。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "visitor"
+    },
+    {
+      "id": "visitor",
+      "act": 2,
+      "location": "墙上的空位",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "They stay longer than Marcus expected.",
+      "translation": "停留的时间比 Marcus 想象的更久。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "notice"
+    },
+    {
+      "id": "notice",
+      "act": 2,
+      "location": "墙上的空位",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "I kept calling it a missing picture. It isn't missing now.",
+      "translation": "我一直说这里少了一张照片。现在倒不觉得少了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "next"
+    },
+    {
+      "id": "next",
+      "act": 2,
+      "location": "墙上的空位",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Will you photograph her again?",
+      "translation": "以后还会给她拍照吗？",
+      "next": "future"
+    },
+    {
+      "id": "future",
+      "act": 2,
+      "location": "墙上的空位",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Maybe. If she asks. I've got other things to ask her.",
+      "translation": "也许，她想拍的话。我还有别的事想问她。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 2,
+      "location": "墙上的空位",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "What you leave out can belong to someone, too.",
+      "translation": "你决定不展示的部分，也有它的主人。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

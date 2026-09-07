@@ -1,3 +1,4 @@
+import AVFoundation
 import Foundation
 import Testing
 import StoryEngine
@@ -14,7 +15,7 @@ struct SpeechDeliveryTests {
     @Test("已登记的剧情方向保持原文、音色与分支恢复确定性")
     func sceneDirection() throws {
         let story = try episode()
-        #expect(story.nodes.filter { $0.speech != nil }.count == 10)
+        #expect(story.nodes.filter { $0.speech != nil }.count == 11)
         for node in story.nodes {
             let plain = LondonEpisodeNarration.request(for: node, variant: .original)
             let directed = LondonEpisodeNarration.request(for: node)
@@ -33,6 +34,26 @@ struct SpeechDeliveryTests {
         let narrator = LondonEpisodeNarration.request(for: try #require(story.node("silence_part2")))
         #expect(narrator.delivery?.expression == nil)
         #expect(narrator.delivery?.trailingPause == 0.55)
+    }
+
+    @Test("新故事所有英文配音随包，原文、选角与真实音频能解码")
+    @MainActor func preparedCollection() throws {
+        let library = try #require(StoryVoiceLibrary.bundled)
+        let catalogURL = try #require(Bundle.main.url(forResource: "departures_catalog", withExtension: "json"))
+        let file = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: catalogURL)) as? [String: Any])
+        let chapters = try #require(file["chapters"] as? [[String: String]])
+        for chapter in chapters {
+            let resource = try #require(chapter["id"])
+            let url = try #require(Bundle.main.url(forResource: resource, withExtension: "json"))
+            let episode = try StoryEpisode.load(data: Data(contentsOf: url))
+            for node in episode.nodes where node.choices == nil && node.speaker != "你" {
+                let clip = try #require(library.clip(story: episode.id, node: node.id, speaker: node.speaker, text: node.text))
+                let decoded = try AVAudioPlayer(contentsOf: clip.url)
+                #expect(abs(decoded.duration - clip.seconds) < 0.1)
+                #expect(library.request(story: episode.id, node: node.id, speaker: node.speaker, text: node.text)?.voiceHint?.supertonicVoice
+                        == LondonEpisodeNarration.request(for: node).voiceHint?.supertonicVoice)
+            }
+        }
     }
 
     @Test("精确停顿只切完整句子，错误锚点不吞字")

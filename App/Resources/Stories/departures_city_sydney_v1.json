@@ -1,0 +1,336 @@
+{
+  "id": "departures_city_sydney_v1",
+  "version": 1,
+  "title": "多坐一站",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "悉尼 · 渡轮码头",
+    "靠岸以后"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_sydney",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You meet Tahlia near the ferry wharf after her shift.",
+      "translation": "Tahlia 下班后，在渡轮码头附近与你碰面。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "plan"
+    },
+    {
+      "id": "plan",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "We could take the ferry and walk on the other side.",
+      "translation": "可以坐船过去，到对岸走走。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "you"
+    },
+    {
+      "id": "you",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I have about an hour before I need to call home.",
+      "translation": "大约一小时后，我要给家里打电话。",
+      "next": "time"
+    },
+    {
+      "id": "time",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "Oh. My version of 'a quick walk' has been growing.",
+      "translation": "哦。我所谓的“走一小会儿”，已经悄悄变长了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "want"
+    },
+    {
+      "id": "want",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "I wanted to show you a place I go when the week gets loud.",
+      "translation": "一周太嘈杂时，我会去一个地方。想带你看看。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ask"
+    },
+    {
+      "id": "ask",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Do we need to reach it today?",
+      "translation": "我们一定得今天走到那里吗？",
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "No. It isn't going anywhere. That is most of the appeal.",
+      "translation": "不用。它不会跑掉，这正是它迷人的地方。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What plan fits this evening?",
+      "translation": "哪种安排适合今晚？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Take a shorter trip and leave enough time for the call.",
+          "translation": "缩短行程，给电话留足时间。",
+          "next": "short_a",
+          "flags": {
+            "short": true
+          },
+          "review": {
+            "context": "你有一通重要的电话，Tahlia 则想分享一个私人的去处。",
+            "outcome": "你们先核对返程安排，只做时间允许的一小段行程。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Stay by the harbour and save the place for another day.",
+          "translation": "留在港边，把那个地方留到改天。",
+          "next": "shore_a",
+          "flags": {
+            "short": false
+          },
+          "review": {
+            "context": "你有一通重要的电话，Tahlia 则想分享一个私人的去处。",
+            "outcome": "你们留在岸边聊天，另外约好了去她喜欢的地方。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "short_a",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "Let us check the return before we buy anything.",
+      "translation": "先看返程安排，再买票。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "short_b"
+    },
+    {
+      "id": "short_b",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You agree on a shorter route. She sets an alarm.",
+      "translation": "你们商量好较短的路线，她设了个提醒。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "short_c"
+    },
+    {
+      "id": "short_c",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "A sunset with a sensible ending. Very unlike me.",
+      "translation": "一个结束得很理智的日落。不太像我。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "short_d"
+    },
+    {
+      "id": "short_d",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "你",
+      "text": "You can show me the rest without trying to beat a clock.",
+      "translation": "余下的，可以等不用赶时间的时候再带我看。",
+      "next": "finish"
+    },
+    {
+      "id": "shore_a",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "Then this bit of harbour is ours for the evening.",
+      "translation": "那今晚，这一小段海港就归我们了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "shore_b"
+    },
+    {
+      "id": "shore_b",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You find a place to sit while the ferry pulls away.",
+      "translation": "渡轮离岸时，你们找到了坐的地方。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "shore_c"
+    },
+    {
+      "id": "shore_c",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "I usually look at this shore from the water.",
+      "translation": "我平常都是从水上望这边的岸。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "shore_d"
+    },
+    {
+      "id": "shore_d",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "你",
+      "text": "What do you notice from here?",
+      "translation": "从这里看，你发现了什么？",
+      "next": "shore_e"
+    },
+    {
+      "id": "shore_e",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "That I can hear you without shouting over the engine.",
+      "translation": "我可以听清你说话，不必盖过发动机的声音。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "靠岸以后",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "When it is time to call, she gives you a little space.",
+      "translation": "到了通话时间，她给你留出一点空间。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "last"
+    },
+    {
+      "id": "last",
+      "act": 1,
+      "location": "靠岸以后",
+      "shot": "city",
+      "speaker": "Tahlia",
+      "text": "Tell them the harbour says hello. No need to rush.",
+      "translation": "替海港向他们问好。慢慢说，不急。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "靠岸以后",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Not every good evening needs a longer route.",
+      "translation": "不是每一个美好的晚上，都需要走得更远。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "id": "departures_city_vancouver_v1",
+  "version": 1,
+  "title": "慢一点的那条路",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "温哥华 · 海边步道",
+    "日落还在继续"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_vancouver",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You join Noah and his friend Ruth for a sunset walk.",
+      "translation": "你和 Noah、他的朋友 Ruth 一起散步看日落。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "plan"
+    },
+    {
+      "id": "plan",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Noah",
+      "text": "If we keep moving, we can reach the point before sunset.",
+      "translation": "继续走的话，我们能在日落前赶到那个岬角。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ruth"
+    },
+    {
+      "id": "ruth",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Ruth",
+      "text": "I can walk there. I can't enjoy it at that speed.",
+      "translation": "我能走到那里。但这个速度，我没法好好享受。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "stop"
+    },
+    {
+      "id": "stop",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Noah slows down. The camera stays in his hand.",
+      "translation": "Noah 放慢脚步，手里还握着相机。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "sorry"
+    },
+    {
+      "id": "sorry",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Noah",
+      "text": "Sorry. I turned the light into an appointment.",
+      "translation": "抱歉。我把光线当成一个必须赶上的预约了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ask"
+    },
+    {
+      "id": "ask",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Ruth, what would make this a good evening for you?",
+      "translation": "Ruth，对你来说，怎样算是一个不错的晚上？",
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Ruth",
+      "text": "Water, somewhere to sit, and a conversation I can finish.",
+      "translation": "看看水，有地方坐，还有一段我来得及说完的对话。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What do you suggest to the group?",
+      "translation": "你向大家提议什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Stay by the water and watch the light from here.",
+          "translation": "留在水边，就在这里看天光变化。",
+          "next": "stay_a",
+          "flags": {
+            "stay": true
+          },
+          "review": {
+            "context": "Ruth 明确说出了自己的节奏，Noah 也仍想拍照。",
+            "outcome": "三人一起留下，照片变成了散步中的一小部分。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let Noah take a short detour, then meet at the bench.",
+          "translation": "Noah 短暂绕路去拍照，之后在长椅碰面。",
+          "next": "detour_a",
+          "flags": {
+            "stay": false
+          },
+          "review": {
+            "context": "Ruth 明确说出了自己的节奏，Noah 也仍想拍照。",
+            "outcome": "大家同意短暂分开，Noah 按约返回，没有让别人追赶。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stay_a",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Noah",
+      "text": "The reflection is good here, actually.",
+      "translation": "其实这里的倒影就很不错。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stay_b"
+    },
+    {
+      "id": "stay_b",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Ruth",
+      "text": "You don't have to turn staying into a photography argument.",
+      "translation": "留下来，也不用非得找一个摄影上的理由。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.01,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stay_c"
+    },
+    {
+      "id": "stay_c",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Noah",
+      "text": "Fair. I'd like to stay. The reflection is a bonus.",
+      "translation": "有道理。我想留下。倒影算额外收获。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stay_d"
+    },
+    {
+      "id": "stay_d",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He puts the camera down while Ruth finishes her story.",
+      "translation": "Ruth 把故事讲完的时候，他放下了相机。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "detour_a",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Noah",
+      "text": "Ten minutes. Back at this bench, even if the light is perfect.",
+      "translation": "十分钟。再好的光，我也回到这张长椅。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "detour_b"
+    },
+    {
+      "id": "detour_b",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Ruth",
+      "text": "Go. Bring a picture, not an apology for being late.",
+      "translation": "去吧。带张照片回来，别带一份迟到的道歉。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.01,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "detour_c"
+    },
+    {
+      "id": "detour_c",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He returns while there is still colour on the water.",
+      "translation": "他回来时，水面上还有天光的颜色。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "detour_d"
+    },
+    {
+      "id": "detour_d",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "city",
+      "speaker": "Noah",
+      "text": "I missed the best second. Got most of a very good minute.",
+      "translation": "最好的那一秒没拍到。但拍到了很不错的一分钟。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "日落还在继续",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You leave after the story ends, not after the light does.",
+      "translation": "你们等故事讲完才离开，而不是等光线结束。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "日落还在继续",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "A good view has room for the people beside you.",
+      "translation": "好的风景，也容得下身边的人。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

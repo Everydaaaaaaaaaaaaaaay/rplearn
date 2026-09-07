@@ -13,6 +13,10 @@ public final class NarrativeAudioPlayer {
     @ObservationIgnored private var generation = 0
     @ObservationIgnored private var playback: Task<Void, Never>?
     @ObservationIgnored private var stopping: Task<Void, Never>?
+    @ObservationIgnored private var preparedPlayer: AVAudioPlayer?
+    @ObservationIgnored private var preparedIdentity: (id: String, url: URL)?
+    @ObservationIgnored private var pausedCompletedID: String?
+    @ObservationIgnored private var resumePoint: (id: String, url: URL, time: Double)?
     @ObservationIgnored private var rain: AVAudioPlayer?
     @ObservationIgnored private var page: AVAudioPlayer?
     @ObservationIgnored private var sounds: Task<(Data, Data), Never>?
@@ -24,7 +28,9 @@ public final class NarrativeAudioPlayer {
         self.soundEffects = soundEffects
     }
 
-    public func play(id: String, request: SpeechRequest?, rainVolume: Float, pageTurn: Bool = true) {
+    public func play(id: String, request: SpeechRequest?, rainVolume: Float, pageTurn: Bool = true, prepared: PreparedNarration? = nil) {
+        let alreadyCompleted = pausedCompletedID == id && prepared != nil
+        if request?.purpose != .pronunciation { pausedCompletedID = nil }
         cancelPlayback(preserveRain: rainVolume > 0)
         if soundEffects && sounds == nil {
             sounds = Task.detached(priority: .utility) {
@@ -56,18 +62,60 @@ public final class NarrativeAudioPlayer {
                 self.rain?.setVolume(rainVolume, fadeDuration: 0.3)
             }
             if pageTurn { self.page?.currentTime = 0; self.page?.play() }
-            if let request {
+            var playedPrepared = false
+            if let prepared, !alreadyCompleted {
+                do {
+                    let player = try AVAudioPlayer(contentsOf: prepared.url)
+                    self.preparedPlayer = player
+                    self.preparedIdentity = (id, prepared.url)
+                    if let resume = self.resumePoint, resume.id == id, resume.url == prepared.url {
+                        player.currentTime = min(resume.time, max(0, player.duration - 0.02))
+                    }
+                    self.resumePoint = nil
+                    player.prepareToPlay()
+                    playedPrepared = player.play()
+                    if playedPrepared {
+                        NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+                        // Track real playback completion, including the authored
+                        // final beat. Cancellation never publishes a completion.
+                        while player.isPlaying {
+                            try await Task.sleep(for: .milliseconds(20))
+                            guard self.generation == token else { return }
+                        }
+                    }
+                } catch is CancellationError { return } catch {
+                    // Decode/device failures use the existing plain-text renderer.
+                    self.preparedPlayer?.stop()
+                }
+            } else if request?.purpose != .pronunciation { self.resumePoint = nil }
+            if !alreadyCompleted, !playedPrepared, let request {
                 // Coalesce extremely quick skips without delaying the visual response.
                 do { try await Task.sleep(for: .milliseconds(100)) } catch { return }
                 guard self.generation == token else { return }
                 await self.speech.speakAndWait(request)
             }
             guard !Task.isCancelled, self.generation == token else { return }
+            self.preparedPlayer = nil
+            self.preparedIdentity = nil
             self.completedID = id
         }
     }
 
-    public func stop() { cancelPlayback(preserveRain: false) }
+    public func stop() {
+        resumePoint = nil
+        pausedCompletedID = nil
+        cancelPlayback(preserveRain: false)
+    }
+
+    /// Dictionary/history/background overlays pause a prepared line. Returning
+    /// resumes its real sample position instead of silently skipping its tail.
+    public func pause() {
+        if let completedID, completedID != "lookup" { pausedCompletedID = completedID }
+        if let player = preparedPlayer, let identity = preparedIdentity {
+            resumePoint = (identity.id, identity.url, player.currentTime)
+        }
+        cancelPlayback(preserveRain: false)
+    }
 
     private func cancelPlayback(preserveRain: Bool) {
         generation &+= 1
@@ -76,6 +124,9 @@ public final class NarrativeAudioPlayer {
         playback = nil
         if !preserveRain { rain?.pause() }
         page?.stop()
+        preparedPlayer?.stop()
+        preparedPlayer = nil
+        preparedIdentity = nil
         let previous = stopping
         let speech = speech
         let audioSession = audioSession

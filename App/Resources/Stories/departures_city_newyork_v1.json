@@ -1,0 +1,346 @@
+{
+  "id": "departures_city_newyork_v1",
+  "version": 1,
+  "title": "等你吃饭的十分钟",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "纽约 · 午餐时间",
+    "把话说清楚以后"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_newyork",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You find a table near the food truck Marcus recommended.",
+      "translation": "你在 Marcus 推荐的餐车附近找到桌子。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "late"
+    },
+    {
+      "id": "late",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "His message says: 'Ten minutes. Small job ran over.'",
+      "translation": "他发来消息：“十分钟。一个小活拖久了。”",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "wait"
+    },
+    {
+      "id": "wait",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Twenty minutes pass. Your lunch is getting cold.",
+      "translation": "二十分钟过去，你的午餐快凉了。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "call"
+    },
+    {
+      "id": "call",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Hey. I'm sorry. The small job grew several new heads.",
+      "translation": "嘿，抱歉。那个小活又长出了好几个脑袋。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "you"
+    },
+    {
+      "id": "you",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "How much longer do you actually need?",
+      "translation": "你实际上还需要多久？",
+      "next": "truth"
+    },
+    {
+      "id": "truth",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Half an hour. Maybe forty. I should've said that sooner.",
+      "translation": "半小时，也许四十分钟。我应该早点说实话。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "truth2"
+    },
+    {
+      "id": "truth2",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "I kept hoping I'd finish before you got annoyed.",
+      "translation": "我一直希望，能赶在你生气前做完。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What do you need from the rest of lunch?",
+      "translation": "接下来的午餐时间，你需要什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Eat now, and meet him for a short walk afterwards.",
+          "translation": "先吃饭，等他忙完一起走一小段。",
+          "next": "walk_a",
+          "flags": {
+            "wait": true
+          },
+          "review": {
+            "context": "Marcus 坦白无法很快赶到，你可以明确自己的时间安排。",
+            "outcome": "你没有继续饿着等；Marcus 忙完后按新约定来见你。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Keep your afternoon plans and arrange another lunch.",
+          "translation": "照原计划过下午，午餐另约时间。",
+          "next": "another_a",
+          "flags": {
+            "wait": false
+          },
+          "review": {
+            "context": "Marcus 坦白无法很快赶到，你可以明确自己的时间安排。",
+            "outcome": "你离开去做自己的事，两人约定下次及时说真实时间。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "walk_a",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I'll eat now. Send me a message when you're leaving.",
+      "translation": "我先吃。你出发的时候再给我发消息。",
+      "next": "walk_b"
+    },
+    {
+      "id": "walk_b",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "A real leaving message. Coat on, keys in hand.",
+      "translation": "真正出门的消息。穿好外套，钥匙拿在手里。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "walk_c"
+    },
+    {
+      "id": "walk_c",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Later, he arrives without pretending he has been nearby.",
+      "translation": "后来，他赶到了，没有假装自己一直在附近。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "walk_d"
+    },
+    {
+      "id": "walk_d",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "How was the lunch I so expertly failed to attend?",
+      "translation": "那顿我如此熟练地错过的午餐怎么样？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "walk_e"
+    },
+    {
+      "id": "walk_e",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Good. Better before it got cold.",
+      "translation": "不错，凉掉之前更不错。",
+      "next": "walk_f"
+    },
+    {
+      "id": "walk_f",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "Fair. Next time I'll be here for that part.",
+      "translation": "有道理。下次我争取赶上那个部分。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "another_a",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I have plans at two. Let's find a day with more room.",
+      "translation": "我两点有安排。我们另找一天，留宽裕些的时间。",
+      "next": "another_b"
+    },
+    {
+      "id": "another_b",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "You're right. Don't turn your afternoon into my waiting room.",
+      "translation": "你说得对。别把你的下午变成我的候场室。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "another_c"
+    },
+    {
+      "id": "another_c",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "That evening, he suggests a day and a time.",
+      "translation": "当天晚上，他发来了具体的日期和时间。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "another_d"
+    },
+    {
+      "id": "another_d",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "你",
+      "text": "And if work changes it?",
+      "translation": "如果工作又把计划打乱呢？",
+      "next": "another_e"
+    },
+    {
+      "id": "another_e",
+      "act": 0,
+      "location": "纽约 · 午餐时间",
+      "shot": "city",
+      "speaker": "Marcus",
+      "text": "I'll tell you when I know. Not when it looks better.",
+      "translation": "我一知道就告诉你，不等它变得好看一些。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "把话说清楚以后",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The next message contains an actual time. You can use it.",
+      "translation": "下一条消息里有一个真实的时间，你能据此安排自己。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "把话说清楚以后",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Being easy to meet starts with being clear.",
+      "translation": "让人容易见到你，从把话说清楚开始。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

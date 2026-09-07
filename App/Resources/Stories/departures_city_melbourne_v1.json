@@ -1,0 +1,362 @@
+{
+  "id": "departures_city_melbourne_v1",
+  "version": 1,
+  "title": "不下海的早晨",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "墨尔本 · 海边的早晨",
+    "换一种过法"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_melbourne",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You meet Ruby by the beach with a borrowed board.",
+      "translation": "你抱着借来的冲浪板，在海边见到 Ruby。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "check"
+    },
+    {
+      "id": "check",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "I checked the conditions again. We aren't going in today.",
+      "translation": "我又看了看今天的情况。我们今天不下水。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "disappoint"
+    },
+    {
+      "id": "disappoint",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I have been looking forward to this all week.",
+      "translation": "我盼了整整一周。",
+      "next": "same"
+    },
+    {
+      "id": "same",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Me too. The forecast doesn't take personal requests.",
+      "translation": "我也是。天气预报可不接受私人点单。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "honest"
+    },
+    {
+      "id": "honest",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She sounds disappointed, too. Not apologetic for the sea.",
+      "translation": "听起来她也失望，但没有替大海道歉。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "options"
+    },
+    {
+      "id": "options",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "We could stay for breakfast, or give the morning back.",
+      "translation": "可以留下吃早餐，也可以把上午还给各自。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "options2"
+    },
+    {
+      "id": "options2",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "You don't owe me a cheerful backup plan.",
+      "translation": "你不必为了我，假装很喜欢备用计划。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What would feel good now?",
+      "translation": "现在，你真正想做什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Stay for breakfast and let it be a different morning.",
+          "translation": "留下吃早餐，让它成为另一个样子的早晨。",
+          "next": "stay_a",
+          "flags": {
+            "stay": true
+          },
+          "review": {
+            "context": "海况不适合初学者，你们已经决定不下水。",
+            "outcome": "你们一起吃早餐，允许失望与轻松同时存在。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Make another plan today, and arrange a future lesson.",
+          "translation": "今天另作安排，下次再约一节课。",
+          "next": "later_a",
+          "flags": {
+            "stay": false
+          },
+          "review": {
+            "context": "海况不适合初学者，你们已经决定不下水。",
+            "outcome": "你明确说出想改天，Ruby 接受，借来的板也及时归还。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stay_a",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Breakfast. But I'm allowed to complain once.",
+      "translation": "吃早餐吧。但允许我抱怨一次。",
+      "next": "stay_b"
+    },
+    {
+      "id": "stay_b",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Once each. Mine involves getting up before the kettle.",
+      "translation": "一人一次。我的是起得比水壶还早。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stay_c"
+    },
+    {
+      "id": "stay_c",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You carry the boards back before finding a table.",
+      "translation": "你们先把板送回去，再找地方坐下。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stay_d"
+    },
+    {
+      "id": "stay_d",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Funny. I never come here when I can't call it training.",
+      "translation": "真奇怪，不打着训练的旗号，我从不来这里坐。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stay_e"
+    },
+    {
+      "id": "stay_e",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Does breakfast need a better excuse?",
+      "translation": "吃早餐还需要更好的借口吗？",
+      "next": "stay_f"
+    },
+    {
+      "id": "stay_f",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Not this breakfast. Look at those eggs.",
+      "translation": "这顿不需要。你看那盘蛋。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "later_a",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Can we try another morning? I want to do this properly.",
+      "translation": "我们能改个早晨再试吗？我想好好学一次。",
+      "next": "later_b"
+    },
+    {
+      "id": "later_b",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Absolutely. Let's check the conditions closer to the day.",
+      "translation": "当然。等临近那天再确认情况。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "later_c"
+    },
+    {
+      "id": "later_c",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You return the board together, then part at the corner.",
+      "translation": "你们一起归还冲浪板，在街角分开。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "later_d"
+    },
+    {
+      "id": "later_d",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "Thanks for saying what you wanted. Saves us both guessing.",
+      "translation": "谢谢你把想法说出来。不用两个人都在猜。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "later_e"
+    },
+    {
+      "id": "later_e",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Next time I am still claiming my first wave.",
+      "translation": "下次，我还是要等我的第一道浪。",
+      "next": "later_f"
+    },
+    {
+      "id": "later_f",
+      "act": 0,
+      "location": "墨尔本 · 海边的早晨",
+      "shot": "city",
+      "speaker": "Ruby",
+      "text": "And I'll still be there for the spectacular falling over.",
+      "translation": "壮观地摔下去的时候，我也还会在旁边。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.04,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "换一种过法",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The sea keeps its own plans. You have made yours.",
+      "translation": "大海照自己的计划继续，你们也重新安排了自己的。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "换一种过法",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "A changed plan can still be a day you chose.",
+      "translation": "计划变了，这一天仍然可以由你选择。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

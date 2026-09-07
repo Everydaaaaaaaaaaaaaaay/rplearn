@@ -1,0 +1,368 @@
+{
+  "id": "departures_city_london_v1",
+  "version": 1,
+  "title": "退回书架的那一本",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "伦敦 · 午后的书店",
+    "推荐之外"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_london",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You bring Oliver a book with a bookmark near the start.",
+      "translation": "你把一本书带给 Oliver，书签还夹在开头。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "hello"
+    },
+    {
+      "id": "hello",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Ah. A bookmark with very little travel experience.",
+      "translation": "啊，一枚没怎么出过远门的书签。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "admit"
+    },
+    {
+      "id": "admit",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Everyone loves this book. I keep avoiding it.",
+      "translation": "人人都喜欢这本书，可我总躲着不想读。",
+      "next": "answer"
+    },
+    {
+      "id": "answer",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Everyone isn't sitting on your sofa after work.",
+      "translation": "可晚上下班坐在你家沙发上的，又不是“人人”。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.01,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "pressure"
+    },
+    {
+      "id": "pressure",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I thought I should finish it before choosing another.",
+      "translation": "我原本觉得，读完这本才能选下一本。",
+      "next": "book"
+    },
+    {
+      "id": "book",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He opens it at the bookmark, then closes it again.",
+      "translation": "他翻到书签那页，又把书合上。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "question"
+    },
+    {
+      "id": "question",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "What were you hoping it would give you?",
+      "translation": "你原本希望从它那里得到什么？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What do you tell him?",
+      "translation": "你会怎么回答？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Something easy to return to after a long day.",
+          "translation": "漫长一天后，能轻松读进去的东西。",
+          "next": "rest_a",
+          "flags": {
+            "rest": true
+          },
+          "review": {
+            "context": "一本受欢迎的书没有适合你，这并不说明你必须放弃阅读。",
+            "outcome": "Oliver 推荐可分次读的短篇，并邀请你先试读再决定。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Something unfamiliar, even if it takes time.",
+          "translation": "某种没见过的东西，慢慢读也没关系。",
+          "next": "stretch_a",
+          "flags": {
+            "rest": false
+          },
+          "review": {
+            "context": "一本受欢迎的书没有适合你，这并不说明你必须放弃阅读。",
+            "outcome": "Oliver 推荐另一种陌生的写法，你决定从一段开始试读。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rest_a",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Short stories, perhaps. A door you can close before bed.",
+      "translation": "也许试试短篇。睡前来得及关上的一扇门。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "rest_b"
+    },
+    {
+      "id": "rest_b",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He chooses a slim book, without checking the price first.",
+      "translation": "他挑了一本薄书，没有先看价格。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "rest_c"
+    },
+    {
+      "id": "rest_c",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Try the first page. Don't buy a promise on my account.",
+      "translation": "先读第一页。别看在我的面子上买下一个承诺。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "rest_d"
+    },
+    {
+      "id": "rest_d",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "你",
+      "text": "And if I do not like it?",
+      "translation": "如果还是不喜欢呢？",
+      "next": "rest_e"
+    },
+    {
+      "id": "rest_e",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Then you've learned that before carrying it home.",
+      "translation": "那你就不用等到抱回家才知道了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.01,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "stretch_a",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Unfamiliar doesn't have to mean a thousand pages.",
+      "translation": "陌生，也不一定要足足一千页。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stretch_b"
+    },
+    {
+      "id": "stretch_b",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "He puts a small collection beside the book you returned.",
+      "translation": "他把一本小选集放在你带回的书旁。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stretch_c"
+    },
+    {
+      "id": "stretch_c",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "This one makes ordinary rooms feel slightly different.",
+      "translation": "这本会让平常的房间显得有点不同。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stretch_d"
+    },
+    {
+      "id": "stretch_d",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Will I understand all of it?",
+      "translation": "我能全部读懂吗？",
+      "next": "stretch_e"
+    },
+    {
+      "id": "stretch_e",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "I didn't. I went back because I wanted to.",
+      "translation": "我也没有。我是因为想读，才又翻回去的。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.45
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "推荐之外",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You read while he sorts a pile of paperbacks.",
+      "translation": "你读了一会儿，他在旁边整理一摞平装书。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "quiet"
+    },
+    {
+      "id": "quiet",
+      "act": 1,
+      "location": "推荐之外",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "For once, nobody asks how far you have got.",
+      "translation": "这一次，没人问你读到哪里了。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "leave"
+    },
+    {
+      "id": "leave",
+      "act": 1,
+      "location": "推荐之外",
+      "shot": "city",
+      "speaker": "Oliver",
+      "text": "Tea's still warm if you'd like another page.",
+      "translation": "茶还温着。愿意的话，可以再读一页。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "推荐之外",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "A book can wait. Your attention is yours.",
+      "translation": "书可以等一等。你的注意力属于你自己。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

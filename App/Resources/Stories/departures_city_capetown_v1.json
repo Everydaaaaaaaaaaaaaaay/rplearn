@@ -1,0 +1,376 @@
+{
+  "id": "departures_city_capetown_v1",
+  "version": 1,
+  "title": "借你半张桌子",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "开普敦 · 周末集市",
+    "桌子中间的那条线"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_capetown",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You help Amina carry her prints to a weekend market.",
+      "translation": "你帮 Amina 把画作搬到周末集市。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "space"
+    },
+    {
+      "id": "space",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "That table looked much bigger in the email.",
+      "translation": "邮件里看着，这张桌子可大多了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "neighbour"
+    },
+    {
+      "id": "neighbour",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Handmade notebooks fill the table beside her.",
+      "translation": "她旁边的桌上摆满了手工笔记本。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ask"
+    },
+    {
+      "id": "ask",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Jonas",
+      "text": "Could I borrow this corner until I've unpacked?",
+      "translation": "我拆完箱子之前，能借用这个角吗？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "yes"
+    },
+    {
+      "id": "yes",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "Of course. For a few minutes.",
+      "translation": "当然，几分钟没问题。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "later"
+    },
+    {
+      "id": "later",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The market opens. The boxes are still there.",
+      "translation": "集市开张了，箱子却还在。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "problem"
+    },
+    {
+      "id": "problem",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "People can't see the small prints. Those usually sell first.",
+      "translation": "小幅画都被挡住了。本来那些最先卖出去。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "hesitate"
+    },
+    {
+      "id": "hesitate",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "He isn't being unkind. I still need my table back.",
+      "translation": "他不是故意为难我。但我还是需要把桌子拿回来。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.4
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "What would make the request clear?",
+      "translation": "怎么把请求说清楚？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask for the corner back now, and help move the boxes.",
+          "translation": "请他现在腾出桌角，并帮忙搬箱子。",
+          "next": "move_a",
+          "flags": {
+            "moveNow": true
+          },
+          "review": {
+            "context": "临时借出的桌角被占用太久，画作也被挡住了。",
+            "outcome": "箱子被搬开，Amina 恢复完整陈列，邻摊得到短暂帮手。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Agree on a marked boundary for the rest of the morning.",
+          "translation": "商量好今天上午各自使用的明确范围。",
+          "next": "mark_a",
+          "flags": {
+            "moveNow": false
+          },
+          "review": {
+            "context": "临时借出的桌角被占用太久，画作也被挡住了。",
+            "outcome": "两位摊主确认了空间边界，各自重新安排陈列。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "move_a",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "I need this corner for the prints now. Where can we put these?",
+      "translation": "我现在要在这里摆画。箱子可以搬到哪里？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "move_b"
+    },
+    {
+      "id": "move_b",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Jonas",
+      "text": "Under my table. Sorry, I lost track when people arrived.",
+      "translation": "放到我的桌子下面吧。抱歉，来客人后我就忘了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "move_c"
+    },
+    {
+      "id": "move_c",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "You hold the notebooks while they move the empty boxes.",
+      "translation": "你扶着笔记本，他们把空箱搬走。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "move_d"
+    },
+    {
+      "id": "move_d",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "There. I can see the blue one again.",
+      "translation": "好了，又能看见那幅蓝色的了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "mark_a",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "Could we keep everything on your side of this join?",
+      "translation": "我们能让东西都留在接缝的你那一侧吗？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "mark_b"
+    },
+    {
+      "id": "mark_b",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Jonas",
+      "text": "Yes. I thought the corner was spare. I should have asked.",
+      "translation": "可以。我以为这个角闲着，应该再问你一下。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "mark_c"
+    },
+    {
+      "id": "mark_c",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "They move the displays until both can be seen.",
+      "translation": "他们挪好陈列，让两边的东西都看得见。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "mark_d"
+    },
+    {
+      "id": "mark_d",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "A very small border. Already improving relations.",
+      "translation": "小小的一条边界，已经开始改善关系了。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "桌子中间的那条线",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "A customer stops to look at the print that was hidden.",
+      "translation": "一位顾客停下来，看着刚才被挡住的那幅画。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "after"
+    },
+    {
+      "id": "after",
+      "act": 1,
+      "location": "桌子中间的那条线",
+      "shot": "city",
+      "speaker": "Jonas",
+      "text": "Tea when the rush slows down?",
+      "translation": "等人少一点，一起喝茶？",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "after2"
+    },
+    {
+      "id": "after2",
+      "act": 1,
+      "location": "桌子中间的那条线",
+      "shot": "city",
+      "speaker": "Amina",
+      "text": "Yes. On your table, this time.",
+      "translation": "好。这次用你的桌子。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.03,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "桌子中间的那条线",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Making room includes keeping some for yourself.",
+      "translation": "为别人留空间，也包括为自己留一点。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}

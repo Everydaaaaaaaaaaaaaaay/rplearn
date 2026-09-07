@@ -143,6 +143,7 @@ targets:
         LingoTripRoleplayE2EEnabled: $(RUN_ROLEPLAY_E2E)
         LingoTripRoleplayE2ECycle: $(ROLEPLAY_E2E_CYCLE)
         LingoTripSpeechSampleEnabled: $(RUN_SPEECH_SAMPLE)
+        LingoTripSpeechLibraryOutput: $(STORY_VOICE_OUTPUT)
     configFiles:
       Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig

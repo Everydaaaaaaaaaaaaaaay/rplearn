@@ -1,0 +1,336 @@
+{
+  "id": "departures_city_manchester_v1",
+  "version": 1,
+  "title": "你会留下哪一面",
+  "start": "arrival",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "曼彻斯特 · 唱片店的试听桌",
+    "唱针抬起以后"
+  ],
+  "shots": {
+    "city": {
+      "background": "city_backdrop_manchester",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "arrival",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "Leah has saved ten minutes at the listening table for you.",
+      "translation": "Leah 给你在试听桌留了十分钟。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "record"
+    },
+    {
+      "id": "record",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "A local band left this here. They want honest ears.",
+      "translation": "一个本地乐队把唱片留在这里。想听点真话。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "The first side is bright and busy. Leah taps the table.",
+      "translation": "第一面明亮又热闹，Leah 跟着敲起桌面。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "you"
+    },
+    {
+      "id": "you",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "你",
+      "text": "I liked the quieter bit near the end.",
+      "translation": "我更喜欢快结束时安静的那一段。",
+      "next": "different"
+    },
+    {
+      "id": "different",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Really? That's the bit I kept waiting to get past.",
+      "translation": "真的？那一段我一直盼着它赶快过去。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "stop"
+    },
+    {
+      "id": "stop",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She reaches for a review card, then stops writing.",
+      "translation": "她拿起评价卡，写了几笔又停下。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "honest"
+    },
+    {
+      "id": "honest",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "I wrote 'too slow'. Maybe that only means too slow for me.",
+      "translation": "我写了“太慢”。也许只是对我来说太慢。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.42
+      },
+      "next": "choice"
+    },
+    {
+      "id": "choice",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "你的选择",
+      "text": "How do you make room for both reactions?",
+      "translation": "怎么让两种反应都说得具体？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Listen to each favourite part once more.",
+          "translation": "把各自喜欢的片段再听一遍。",
+          "next": "compare_a",
+          "flags": {
+            "compare": true
+          },
+          "review": {
+            "context": "你们的喜好不同，不必为了交出一份评价而统一意见。",
+            "outcome": "你们轮流重听，Leah 听到了此前忽略的安静片段。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Write two separate notes, with a reason for each.",
+          "translation": "各写一段评价，也写出理由。",
+          "next": "notes_a",
+          "flags": {
+            "compare": false
+          },
+          "review": {
+            "context": "你们的喜好不同，不必为了交出一份评价而统一意见。",
+            "outcome": "两份署名评价都被保留，乐队能看到具体而不同的回应。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "compare_a",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Listen for what disappears when it slows down.",
+      "translation": "慢下来时，听听哪些声音退掉了。",
+      "next": "compare_b"
+    },
+    {
+      "id": "compare_b",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "This time she keeps her hand away from the needle.",
+      "translation": "这次她的手没有往唱针那里伸。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "compare_c"
+    },
+    {
+      "id": "compare_c",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Oh. You can hear the room around the singer.",
+      "translation": "哦，能听见歌手周围那个房间的声音。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "compare_d"
+    },
+    {
+      "id": "compare_d",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Still not my favourite. But I know what you stayed for.",
+      "translation": "仍然不是我最喜欢的，但我懂你为什么愿意停在那里。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "notes_a",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Mine says the drums make the room feel bigger.",
+      "translation": "我写的是：鼓声让房间显得更大。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "notes_b"
+    },
+    {
+      "id": "notes_b",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "你",
+      "text": "Mine says the quiet part makes it feel closer.",
+      "translation": "我写的是：安静的部分，让人感觉更近。",
+      "next": "notes_c"
+    },
+    {
+      "id": "notes_c",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Bigger and closer. They'll think we heard different records.",
+      "translation": "更大，也更近。他们会以为我们听了不同的唱片。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "notes_d"
+    },
+    {
+      "id": "notes_d",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "city",
+      "speaker": "旁白",
+      "text": "She puts both cards in the sleeve, without ranking them.",
+      "translation": "她把两张卡都放进唱片套，没有分出高下。",
+      "speech": {
+        "intention": "安静描述动作，不代演情绪",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "finish"
+    },
+    {
+      "id": "finish",
+      "act": 1,
+      "location": "唱针抬起以后",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Next week, you choose the record. I will bring my objections.",
+      "translation": "下周你选唱片。我带着我的反对意见来。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "last"
+    },
+    {
+      "id": "last",
+      "act": 1,
+      "location": "唱针抬起以后",
+      "shot": "city",
+      "speaker": "你",
+      "text": "And your ears?",
+      "translation": "还有你的耳朵？",
+      "next": "last2"
+    },
+    {
+      "id": "last2",
+      "act": 1,
+      "location": "唱针抬起以后",
+      "shot": "city",
+      "speaker": "Leah",
+      "text": "Those too. Apparently they are useful.",
+      "translation": "也带。据说还挺有用的。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 1.02,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ending"
+    },
+    {
+      "id": "ending",
+      "act": 1,
+      "location": "唱针抬起以后",
+      "shot": "city",
+      "speaker": "出发之后",
+      "text": "Different ears can share the same table.",
+      "translation": "不同的耳朵，可以坐在同一张桌边。",
+      "speech": {
+        "intention": "自然接话，留意对方的反应",
+        "speed": 0.99,
+        "before": 0,
+        "after": 0.48
+      },
+      "ending": true
+    }
+  ]
+}
