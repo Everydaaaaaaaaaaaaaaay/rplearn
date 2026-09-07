@@ -12,11 +12,13 @@ import type {
   AccountDeletionMode,
   AccountDeletionReceipt,
   AccountExport,
+  LinkedIdentity,
 } from "./types.js";
 
 export type AccountService = Readonly<{
   cancelDeletion: (token: string) => Promise<void>;
   exportData: (userId: string) => Promise<AccountExport>;
+  listIdentities: (userId: string) => Promise<readonly LinkedIdentity[]>;
   processDeletion: (
     payload: Readonly<{ requestId: string; userId: string }>,
   ) => Promise<void>;
@@ -24,6 +26,10 @@ export type AccountService = Readonly<{
     userId: string,
     mode: AccountDeletionMode,
   ) => Promise<AccountDeletionReceipt>;
+  unlinkIdentity: (
+    identity: Readonly<{ sessionId: string; userId: string }>,
+    identityId: string,
+  ) => Promise<void>;
 }>;
 
 type AccountServiceDependencies = Readonly<{
@@ -67,6 +73,8 @@ export function createAccountService(
     },
 
     exportData: (userId) => repository.exportData(userId, new Date()),
+
+    listIdentities: (userId) => repository.listIdentities(userId),
 
     processDeletion: async (payload) => {
       const work = await repository.beginDeletion(
@@ -160,6 +168,77 @@ export function createAccountService(
         purgeAt,
         requestId,
       };
+    },
+
+    unlinkIdentity: async (identity, identityId) => {
+      const preparation = await repository.prepareIdentityUnlink(
+        identity.userId,
+        identity.sessionId,
+        identityId,
+        new Date(Date.now() - 10 * 60 * 1000),
+      );
+      if (preparation.status !== "ready") {
+        const errors = {
+          last_identity: [
+            "LAST_LOGIN_IDENTITY",
+            "At least one login identity is required.",
+            409,
+          ],
+          not_found: ["IDENTITY_NOT_FOUND", "The login identity was not found.", 404],
+          reauthentication_required: [
+            "REAUTHENTICATION_REQUIRED",
+            "Sign in again before changing login identities.",
+            403,
+          ],
+        } as const;
+        const [code, message, statusCode] = errors[preparation.status];
+        throw new AppError({ code, message, statusCode });
+      }
+      const candidate = preparation.candidate;
+      if (candidate.provider === "apple") {
+        if (
+          candidate.credential === undefined ||
+          candidate.clientId == null ||
+          dependencies.appleTokenRevoker === undefined ||
+          dependencies.credentialSealer === undefined
+        ) {
+          throw new AppError({
+            code: "APPLE_REVOCATION_UNAVAILABLE",
+            expose: false,
+            message: "Apple authorization could not be revoked.",
+            statusCode: 503,
+          });
+        }
+        try {
+          await dependencies.appleTokenRevoker.revokeRefreshToken(
+            candidate.clientId,
+            dependencies.credentialSealer.open(candidate.credential),
+          );
+        } catch {
+          throw new AppError({
+            code: "APPLE_REVOCATION_FAILED",
+            expose: false,
+            message: "Apple authorization could not be revoked.",
+            statusCode: 502,
+          });
+        }
+      }
+      const result = await repository.unlinkIdentity(
+        identity.userId,
+        candidate.id,
+        candidate.provider,
+      );
+      if (result !== "deleted") {
+        throw new AppError({
+          code:
+            result === "last_identity" ? "LAST_LOGIN_IDENTITY" : "IDENTITY_NOT_FOUND",
+          message:
+            result === "last_identity"
+              ? "At least one login identity is required."
+              : "The login identity was not found.",
+          statusCode: result === "last_identity" ? 409 : 404,
+        });
+      }
     },
   };
 }

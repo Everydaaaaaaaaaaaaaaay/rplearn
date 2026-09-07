@@ -14,6 +14,7 @@ import type {
   CreateSessionParameters,
   EmailAccount,
   FederatedAccount,
+  FederatedIdentityProvider,
   RotateParameters,
   RotationResult,
 } from "./repository-types.js";
@@ -598,7 +599,10 @@ export class AuthRepository {
     });
   }
 
-  async findAppleAccount(subject: string): Promise<FederatedAccount | undefined> {
+  async findFederatedAccount(
+    provider: FederatedIdentityProvider,
+    subject: string,
+  ): Promise<FederatedAccount | undefined> {
     const [row] = await this.resource.sql<
       {
         identity_id: string;
@@ -614,7 +618,7 @@ export class AuthRepository {
         u.token_version
       from app.user_identities i
       join app.users u on u.id = i.user_id
-      where i.provider = 'apple'
+      where i.provider = ${provider}
         and i.provider_subject = ${subject}
       limit 1
     `;
@@ -630,13 +634,29 @@ export class AuthRepository {
     };
   }
 
-  async findOrCreateAppleAccount(parameters: {
+  async findOrCreateFederatedAccount(parameters: {
+    displayName?: string;
     email?: string;
     emailVerified: boolean;
+    provider: FederatedIdentityProvider;
     subject: string;
   }): Promise<FederatedAccount> {
-    const existing = await this.findAppleAccount(parameters.subject);
+    const existing = await this.findFederatedAccount(
+      parameters.provider,
+      parameters.subject,
+    );
     if (existing !== undefined) {
+      await this.resource.sql`
+        update app.user_identities
+        set email = coalesce(${parameters.email ?? null}, email),
+            email_verified_at = case
+              when ${parameters.emailVerified} then coalesce(email_verified_at, now())
+              else email_verified_at
+            end,
+            display_name = coalesce(${parameters.displayName ?? null}, display_name),
+            updated_at = now()
+        where id = ${existing.identityId}
+      `;
       return existing;
     }
 
@@ -656,15 +676,17 @@ export class AuthRepository {
             provider,
             provider_subject,
             email,
-            email_verified_at
+            email_verified_at,
+            display_name
           )
           values (
             ${identityId},
             ${userId},
-            'apple',
+            ${parameters.provider},
             ${parameters.subject},
             ${parameters.email ?? null},
-            ${verifiedAt}
+            ${verifiedAt},
+            ${parameters.displayName ?? null}
           )
         `;
       });
@@ -678,7 +700,10 @@ export class AuthRepository {
       if (!hasPostgresCode(error, "23505")) {
         throw error;
       }
-      const racedAccount = await this.findAppleAccount(parameters.subject);
+      const racedAccount = await this.findFederatedAccount(
+        parameters.provider,
+        parameters.subject,
+      );
       if (racedAccount === undefined) {
         throw error;
       }
@@ -686,16 +711,21 @@ export class AuthRepository {
     }
   }
 
-  async linkAppleIdentity(parameters: {
+  async linkFederatedIdentity(parameters: {
+    displayName?: string;
     email?: string;
     emailVerified: boolean;
+    provider: FederatedIdentityProvider;
     subject: string;
     userId: string;
   }): Promise<
     | Readonly<{ identityId: string; status: "linked" }>
     | Readonly<{ status: "conflict" }>
   > {
-    const existing = await this.findAppleAccount(parameters.subject);
+    const existing = await this.findFederatedAccount(
+      parameters.provider,
+      parameters.subject,
+    );
     if (existing !== undefined) {
       return existing.userId === parameters.userId
         ? { identityId: existing.identityId, status: "linked" }
@@ -712,15 +742,17 @@ export class AuthRepository {
           provider,
           provider_subject,
           email,
-          email_verified_at
+          email_verified_at,
+          display_name
         )
         select
           ${identityId},
           u.id,
-          'apple',
+          ${parameters.provider},
           ${parameters.subject},
           ${parameters.email ?? null},
-          ${verifiedAt}
+          ${verifiedAt},
+          ${parameters.displayName ?? null}
         from app.users u
         where u.id = ${parameters.userId}
           and u.status = 'active'
@@ -734,7 +766,10 @@ export class AuthRepository {
       if (!hasPostgresCode(error, "23505")) {
         throw error;
       }
-      const racedAccount = await this.findAppleAccount(parameters.subject);
+      const racedAccount = await this.findFederatedAccount(
+        parameters.provider,
+        parameters.subject,
+      );
       return racedAccount?.userId === parameters.userId
         ? { identityId: racedAccount.identityId, status: "linked" }
         : { status: "conflict" };

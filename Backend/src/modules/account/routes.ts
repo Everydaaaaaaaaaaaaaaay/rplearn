@@ -12,6 +12,8 @@ const scheduleSchema = z.object({
 const cancellationSchema = z.object({
   token: z.string().min(32).max(1024),
 });
+const unlinkSchema = z.object({ confirmation: z.literal("UNLINK") });
+const identityParametersSchema = z.object({ identityId: z.uuid() });
 
 function invalidRequest(details: unknown): AppError {
   return new AppError({
@@ -27,6 +29,51 @@ export function registerAccountRoutes(
   authService: AuthService,
   accountService: AccountService,
 ): void {
+  app.get(
+    "/v1/account/identities",
+    {
+      schema: {
+        security: [{ bearerAuth: [] }],
+        tags: ["account"],
+      },
+    },
+    async (request, reply) => {
+      const identity = await authenticateRequest(request, authService);
+      const identities = await accountService.listIdentities(identity.userId);
+      reply.header("cache-control", "no-store");
+      return {
+        identities: identities.map((linked) => ({
+          ...linked,
+          createdAt: linked.createdAt.toISOString(),
+          updatedAt: linked.updatedAt.toISOString(),
+        })),
+      };
+    },
+  );
+
+  app.delete(
+    "/v1/account/identities/:identityId",
+    {
+      schema: {
+        security: [{ bearerAuth: [] }],
+        tags: ["account"],
+      },
+    },
+    async (request, reply) => {
+      const identity = await authenticateRequest(request, authService);
+      const parameters = identityParametersSchema.safeParse(request.params);
+      const body = unlinkSchema.safeParse(request.body);
+      if (!parameters.success || !body.success) {
+        throw invalidRequest([
+          ...(parameters.success ? [] : parameters.error.issues),
+          ...(body.success ? [] : body.error.issues),
+        ]);
+      }
+      await accountService.unlinkIdentity(identity, parameters.data.identityId);
+      return reply.status(204).send();
+    },
+  );
+
   app.get(
     "/v1/account/export",
     {

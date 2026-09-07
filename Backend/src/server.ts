@@ -18,6 +18,8 @@ import { createAiConfigService } from "./modules/ai/config-service.js";
 import { createAdminAuthenticator } from "./modules/admin/http.js";
 import { registerAppleAuthRoutes } from "./modules/auth/apple/routes.js";
 import { createAppleAuthService } from "./modules/auth/apple/service.js";
+import { createCredentialSealer } from "./modules/auth/apple/credential-crypto.js";
+import { createAppleTokenRevoker } from "./modules/auth/apple/token-revoker.js";
 import { createAppleBillingVerifier } from "./modules/billing/apple/verifier.js";
 import { registerBillingRoutes } from "./modules/billing/routes.js";
 import { createBillingService } from "./modules/billing/service.js";
@@ -86,7 +88,16 @@ async function main(): Promise<void> {
   registerAccountRoutes(
     app,
     authService,
-    createAccountService(config, dependencies.database),
+    createAccountService(
+      config,
+      dependencies.database,
+      config.appleAuthEnabled
+        ? {
+            appleTokenRevoker: await createAppleTokenRevoker(config),
+            credentialSealer: createCredentialSealer(config),
+          }
+        : {},
+    ),
   );
   if (config.appleAuthEnabled) {
     const appleAuthService = await createAppleAuthService(

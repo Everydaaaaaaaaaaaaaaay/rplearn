@@ -7,6 +7,27 @@ export type AppleDeletionCredential = Readonly<{
   credential: SealedProviderCredential;
 }>;
 
+export type LinkedIdentity = Readonly<{
+  createdAt: Date;
+  displayName: string | null;
+  email: string | null;
+  emailVerified: boolean;
+  id: string;
+  provider: "email" | "apple" | "google";
+  updatedAt: Date;
+}>;
+
+export type IdentityUnlinkCandidate = Readonly<{
+  credential?: AppleDeletionCredential["credential"];
+  clientId?: string | null;
+  id: string;
+  provider: LinkedIdentity["provider"];
+}>;
+
+export type IdentityUnlinkPreparation =
+  | Readonly<{ status: "last_identity" | "not_found" | "reauthentication_required" }>
+  | Readonly<{ candidate: IdentityUnlinkCandidate; status: "ready" }>;
+
 export type AccountDeletionReceipt = Readonly<{
   cancellationToken: string | null;
   purgeAt: Date;
