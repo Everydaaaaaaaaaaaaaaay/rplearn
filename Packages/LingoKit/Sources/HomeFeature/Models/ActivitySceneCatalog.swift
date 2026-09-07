@@ -10,13 +10,6 @@ public enum ActivitySceneID: String, CaseIterable, Identifiable, Sendable {
         case .flowerstall: "街角花摊"
         }
     }
-    var subtitle: String {
-        switch self {
-        case .cafe: "借一个座位，让一句问候有机会发生。"
-        case .bookstall: "翻到同一页，也可能遇见不同的生活。"
-        case .flowerstall: "停在一束花旁，交换一点日常。"
-        }
-    }
     var actions: [SceneActivity] { SceneActivity.catalog.filter { $0.scene == self } }
     var poster: String { "activity-\(rawValue)-ambient-v4" }
     var encounterContext: String {

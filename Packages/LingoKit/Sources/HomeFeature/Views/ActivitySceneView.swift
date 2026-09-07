@@ -132,9 +132,8 @@ struct ActivitySceneView: View {
                             }
                         }
                     }
-                    HStack(alignment: .top) {
-                        Text(scene.subtitle).font(.caption).padding(.top, 10)
-                        Spacer(minLength: 6)
+                    HStack {
+                        Spacer()
                         Button {
                             requestsMotion.toggle()
                         } label: {
@@ -166,16 +165,6 @@ struct ActivitySceneView: View {
                     .font(.title2.bold()).buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
-
-                Text("情景美术 · 非城市实拍 / 实时画面")
-                    .font(.caption2)
-                    // All v4 masters have dark wood at this disclosure anchor.
-                    .foregroundStyle(Color.dsHologramIvory.opacity(0.9))
-                    .shadow(color: .black.opacity(0.55), radius: 0.7, y: 0.5)
-                    .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 78)
-                    .frame(width: proxy.size.width, height: proxy.size.height, alignment: .bottom)
-                    .opacity(showsInterface ? 1 : 0)
-                    .accessibilityIdentifier("activities.disclosure")
                 #if DEBUG
                 if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
                     Text(playbackDescription).font(.system(size: 1)).foregroundStyle(.clear)
@@ -231,13 +220,6 @@ struct ActivitySceneView: View {
                         .fixedSize().frame(width: 128, alignment: .center)
                 }
                 .frame(width: 128, height: 100)
-                .overlay(alignment: .topTrailing) {
-                    Image(systemName: "arrow.up.right.circle")
-                        .font(.system(size: 13, weight: .medium))
-                        .foregroundStyle(Color.dsHologramIvory.opacity(0.9))
-                        .padding(6)
-                        .accessibilityHidden(true)
-                }
             }
             .modifier(ActivityPlaneProjection(quad: anchor.localEntranceQuad(scale: scale)))
             .frame(width: bounds.width * scale, height: bounds.height * scale, alignment: .topLeading)

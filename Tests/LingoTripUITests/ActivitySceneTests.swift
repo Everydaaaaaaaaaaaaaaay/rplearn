@@ -38,15 +38,18 @@ final class ActivitySceneTests: XCTestCase {
     func testRevisedSceneVisualsAtNativeSize() {
         let app = launch()
         defer { app.terminate() }
-        for scene in ["cafe", "bookstall", "flowerstall"] {
+        let scenes = [
+            ("cafe", "借一个座位，让一句问候有机会发生。"),
+            ("bookstall", "翻到同一页，也可能遇见不同的生活。"),
+            ("flowerstall", "停在一束花旁，交换一点日常。")
+        ]
+        for (scene, removedSubtitle) in scenes {
             tap("activities.tab.\(scene)", app: app)
             let motion = app.buttons["activities.motion"]
             if motion.value as? String != "静态" { motion.tap() }
             XCTAssertEqual(motion.value as? String, "静态")
-            let disclosure = app.staticTexts["activities.disclosure"]
-            XCTAssertTrue(disclosure.exists)
-            XCTAssertGreaterThan(disclosure.frame.minY, app.frame.height * 0.65)
-            XCTAssertLessThan(disclosure.frame.maxY, app.frame.height - 80)
+            XCTAssertFalse(app.staticTexts[removedSubtitle].exists)
+            XCTAssertFalse(app.staticTexts["activities.disclosure"].exists)
             attach("ambient-v4-\(scene)", app: app)
         }
     }
