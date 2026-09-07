@@ -10,8 +10,64 @@
     "灯亮起来以后"
   ],
   "shots": {
-    "city": {
-      "background": "city_backdrop_capetown",
+    "room": {
+      "background": "dp_capetown_workshop",
+      "actors": []
+    },
+    "host": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Amara",
+          "asset": "dp_amara_offer",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "cards": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Amara",
+          "asset": "dp_amara_cards",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "together": {
+      "background": "dp_capetown_captions",
+      "actors": []
+    },
+    "amina": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Amina",
+          "asset": "dp_amina_boundary",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "jonas": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Jonas",
+          "asset": "dp_jonas_apology",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "printed": {
+      "background": "dp_capetown_cards_local",
+      "actors": []
+    },
+    "hand": {
+      "background": "dp_capetown_hand_local",
       "actors": []
     }
   },
@@ -20,7 +76,7 @@
       "id": "arrival",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "room",
       "speaker": "旁白",
       "text": "You signed up to help at a neighbourhood photo evening.",
       "translation": "你报名帮忙布置一场社区照片分享会。",
@@ -36,7 +92,7 @@
       "id": "host",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "Thank you for coming early. The chairs are winning.",
       "translation": "谢谢你早到。那些椅子快把我打败了。",
@@ -52,7 +108,7 @@
       "id": "task",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "Could you hold this while I check the captions?",
       "translation": "我核对说明文字，你能先帮我扶着这个吗？",
@@ -68,7 +124,7 @@
       "id": "caption",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "旁白",
       "text": "Two captions describe the same street in different ways.",
       "translation": "同一条街，两段说明写得截然不同。",
@@ -84,7 +140,7 @@
       "id": "names",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "Amara",
       "text": "One says 'a place to leave'. One says 'the way home'.",
       "translation": "一段写“想离开的地方”，一段写“回家的路”。",
@@ -100,7 +156,7 @@
       "id": "visitor",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "你",
       "text": "Are they from different times?",
       "translation": "它们写在不同的年代吗？",
@@ -110,7 +166,7 @@
       "id": "answer",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "Amara",
       "text": "Same afternoon. Different neighbours.",
       "translation": "同一个下午，不同的邻居。",
@@ -126,7 +182,7 @@
       "id": "pressure",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "Amara",
       "text": "The printer wants one title. I said it would be simple.",
       "translation": "印刷方只要一个标题。我还说过这事很简单。",
@@ -142,7 +198,7 @@
       "id": "cost",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "Amara",
       "text": "Now tidy looks rather like leaving somebody out.",
       "translation": "可现在，简明看起来有点像漏掉某个人。",
@@ -158,7 +214,7 @@
       "id": "first",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "你的选择",
       "text": "How do you start the conversation?",
       "translation": "你会怎么开始这段讨论？",
@@ -195,7 +251,7 @@
       "id": "together_a",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "together",
       "speaker": "Amina",
       "text": "Leaving was a good thing for me. Coming back is, too.",
       "translation": "对我来说，离开是件好事。回来也是。",
@@ -211,7 +267,7 @@
       "id": "together_b",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "together",
       "speaker": "Jonas",
       "text": "I thought 'leave' meant you didn't want us in the picture.",
       "translation": "我以为你说“离开”，是不想把我们留在画面里。",
@@ -227,7 +283,7 @@
       "id": "together_c",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "together",
       "speaker": "Amina",
       "text": "No. I needed a larger picture. You were still in it.",
       "translation": "不是。我需要更大的一幅画面。你们一直在。",
@@ -243,7 +299,7 @@
       "id": "separate_a",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "amina",
       "speaker": "Amina",
       "text": "Keep the part where I chose to go. It wasn't an accident.",
       "translation": "保留我选择离开的那句。那不是偶然。",
@@ -259,7 +315,7 @@
       "id": "separate_b",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "jonas",
       "speaker": "Jonas",
       "text": "And keep my front step. I waited for her on it.",
       "translation": "也保留我家门前的台阶。我在那里等过她。",
@@ -275,7 +331,7 @@
       "id": "separate_c",
       "act": 0,
       "location": "开普敦 · 开门之前",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "Two complete thoughts. I don't have to turn them into one.",
       "translation": "两个完整的想法。我不用硬把它们变成一个。",
@@ -291,7 +347,7 @@
       "id": "problem",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "旁白",
       "text": "The phone rings. The last print slot is nearly gone.",
       "translation": "电话响了，最后一个印刷时段快过去了。",
@@ -307,7 +363,7 @@
       "id": "options",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "We can print two smaller cards, or write one by hand.",
       "translation": "可以印两张小卡，也可以手写一张。",
@@ -323,7 +379,7 @@
       "id": "options2",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "Less polish, perhaps. More room to be specific.",
       "translation": "也许没那么精致，但可以说得更具体。",
@@ -339,7 +395,7 @@
       "id": "ask",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "host",
       "speaker": "你",
       "text": "Do they want their names beside the words?",
       "translation": "他们想在文字旁边署名吗？",
@@ -349,7 +405,7 @@
       "id": "names2",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "Let me ask. That is their choice as well.",
       "translation": "我去问问。那也该由他们决定。",
@@ -365,7 +421,7 @@
       "id": "second",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "cards",
       "speaker": "你的选择",
       "text": "Which format do you offer them?",
       "translation": "你会向他们提议哪种形式？",
@@ -402,7 +458,7 @@
       "id": "cards_a",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "together",
       "speaker": "Jonas",
       "text": "Put hers first. People can walk towards mine.",
       "translation": "她那张放前面吧。大家可以慢慢走到我的这张。",
@@ -418,7 +474,7 @@
       "id": "cards_b",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "together",
       "speaker": "Amina",
       "text": "Side by side. They can choose where to begin.",
       "translation": "还是并排吧。让他们自己选从哪里开始。",
@@ -434,7 +490,7 @@
       "id": "cards_c",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "printed",
       "speaker": "Amara",
       "text": "Side by side, then. No final answer at the bottom.",
       "translation": "那就并排。下面不另加一个最终答案。",
@@ -450,7 +506,7 @@
       "id": "hand_a",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "hand",
       "speaker": "旁白",
       "text": "Amina crosses out a word. Jonas leaves the crossing visible.",
       "translation": "Amina 划掉一个词，Jonas 没把划痕涂掉。",
@@ -466,7 +522,7 @@
       "id": "hand_b",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "hand",
       "speaker": "Jonas",
       "text": "That's part of the writing, isn't it?",
       "translation": "这也算写作的一部分，对吧？",
@@ -482,7 +538,7 @@
       "id": "hand_c",
       "act": 1,
       "location": "谁来决定标题",
-      "shot": "city",
+      "shot": "hand",
       "speaker": "Amara",
       "text": "It is. I'll make sure the light reaches both halves.",
       "translation": "是啊。我会让灯照到两边。",
@@ -498,7 +554,7 @@
       "id": "open",
       "act": 2,
       "location": "灯亮起来以后",
-      "shot": "city",
+      "shot": "printed",
       "speaker": "旁白",
       "text": "When the doors open, someone asks which caption is right.",
       "translation": "开门后，有人问哪一段说明才是对的。",
@@ -508,13 +564,18 @@
         "before": 0,
         "after": 0.35
       },
-      "next": "response"
+      "next": "response",
+      "shotBranch": {
+        "flag": "twoCards",
+        "yes": "printed",
+        "no": "hand"
+      }
     },
     {
       "id": "response",
       "act": 2,
       "location": "灯亮起来以后",
-      "shot": "city",
+      "shot": "printed",
       "speaker": "Amara",
       "text": "They belong to different people. Read them both.",
       "translation": "它们属于不同的人。两段都读读吧。",
@@ -524,13 +585,18 @@
         "before": 0,
         "after": 0.4
       },
-      "next": "later"
+      "next": "later",
+      "shotBranch": {
+        "flag": "twoCards",
+        "yes": "printed",
+        "no": "hand"
+      }
     },
     {
       "id": "later",
       "act": 2,
       "location": "灯亮起来以后",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "I thought hosting meant making everything agree.",
       "translation": "我原以为，主持这件事就是让所有内容一致。",
@@ -546,7 +612,7 @@
       "id": "later2",
       "act": 2,
       "location": "灯亮起来以后",
-      "shot": "city",
+      "shot": "host",
       "speaker": "Amara",
       "text": "Tonight I mostly made sure people could hear each other.",
       "translation": "今晚，我主要是让大家能够听见彼此。",
@@ -562,7 +628,7 @@
       "id": "ending",
       "act": 2,
       "location": "灯亮起来以后",
-      "shot": "city",
+      "shot": "room",
       "speaker": "出发之后",
       "text": "A shared room can hold more than one story.",
       "translation": "同一个房间，容得下不止一个故事。",

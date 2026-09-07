@@ -140,6 +140,8 @@ final class LondonEpisodeTests: XCTestCase {
         app.buttons["episode.choice.listen"].tap()
         advanceToNode("listen_room")
         screenshot("london-08-listening")
+        advanceToNode("listen_notice")
+        screenshot("london-08b-seated-response")
         advanceUntil("episode.restart")
         XCTAssertTrue(app.staticTexts["本章影响：你们留在台下；他私下分享了第一句，并决定下次带一页来。"].exists)
         XCTAssertTrue(app.staticTexts["先问 Nora 活动形式，不提 Oliver 的名字。"].exists)
@@ -164,6 +166,73 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(london.waitForExistence(timeout: 10))
         london.tap()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
+    }
+
+    func testDepartureCollectionArtworkAndChoices() {
+        let chapters = [
+            "mainline_melbourne", "mainline_newyork", "mainline_capetown", "mainline_singapore",
+            "city_london", "city_melbourne", "city_newyork", "city_capetown", "city_singapore",
+            "city_dublin", "city_edinburgh", "city_vancouver", "city_auckland", "city_nairobi",
+            "city_toronto", "city_sydney", "city_neworleans", "city_manchester", "city_kingston"
+        ]
+        for chapter in chapters {
+            app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_\(chapter)_v1"
+            app.launch()
+            XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15), chapter)
+            advanceUntil("episode.choice.a", limit: 40)
+            XCTAssertTrue(app.buttons["episode.choice.a"].isHittable, chapter)
+            XCTAssertTrue(app.buttons["episode.choice.b"].isHittable, chapter)
+            screenshot("\(chapter)-choice-stage")
+            app.buttons["episode.choice.a"].tap()
+            XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 5), chapter)
+            XCTAssertFalse(app.staticTexts["episode.saveError"].exists, chapter)
+            screenshot("\(chapter)-branch-stage")
+            app.terminate()
+        }
+    }
+
+    func testCaptionArtworkFollowsBothFinalChoices() {
+        app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_mainline_capetown_v1"
+        for choice in ["a", "b"] {
+            app.launch()
+            XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
+            advanceUntil("episode.choice.a", limit: 30)
+            app.buttons["episode.choice.a"].tap()
+            advanceUntil("episode.choice.\(choice)", limit: 30)
+            app.buttons["episode.choice.\(choice)"].tap()
+            advanceToNode("open")
+            screenshot("capetown-final-caption-\(choice)")
+            XCTAssertTrue(app.buttons["episode.next"].isHittable)
+            app.terminate()
+            app.launchEnvironment["UI_TEST_EPISODE_FRESH"] = "0"
+            app.launch()
+            XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
+            XCTAssertTrue((app.buttons["episode.sound"].value as? String)?.contains(";node:open;") == true)
+            screenshot("capetown-restored-caption-\(choice)")
+            app.terminate()
+            app.launchEnvironment["UI_TEST_EPISODE_FRESH"] = "1"
+        }
+    }
+
+    // Explicit device sampling, not an ordinary unit-test or release gate.
+    func testDeviceStoryMemorySample() throws {
+        guard ProcessInfo.processInfo.environment["LINGOTRIP_STORY_DEVICE_METRICS"] == "1" else {
+            throw XCTSkip("Run explicitly on an isolated device-test bundle.")
+        }
+        app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_mainline_capetown_v1"
+        app.launchEnvironment["UI_TEST_EPISODE_AUDIO"] = "1"
+        app.launch()
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 20))
+        let options = XCTMeasureOptions()
+        options.iterationCount = 1
+        measure(metrics: [XCTMemoryMetric(application: app)], options: options) {
+            advanceUntil("episode.choice.a", limit: 30)
+            app.buttons["episode.choice.a"].tap()
+            advanceUntil("episode.choice.b", limit: 30)
+            app.buttons["episode.choice.b"].tap()
+            advanceUntil("episode.restart", limit: 30)
+        }
+        screenshot("device-story-memory-ending")
     }
 
     func testLargeTextKeepsControlsReachable() {

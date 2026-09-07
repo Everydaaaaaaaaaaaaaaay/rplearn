@@ -9,8 +9,34 @@
     "日落还在继续"
   ],
   "shots": {
-    "city": {
-      "background": "city_backdrop_vancouver",
+    "shore": {
+      "background": "dp_vancouver_seawall",
+      "actors": []
+    },
+    "noah": {
+      "background": "dp_vancouver_seawall",
+      "actors": [
+        {
+          "id": "Noah",
+          "asset": "dp_noah_camera",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "ruth": {
+      "background": "dp_vancouver_seawall",
+      "actors": [
+        {
+          "id": "Ruth",
+          "asset": "dp_ruth_pause",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "bench": {
+      "background": "dp_vancouver_bench",
       "actors": []
     }
   },
@@ -19,7 +45,7 @@
       "id": "arrival",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "shore",
       "speaker": "旁白",
       "text": "You join Noah and his friend Ruth for a sunset walk.",
       "translation": "你和 Noah、他的朋友 Ruth 一起散步看日落。",
@@ -35,7 +61,7 @@
       "id": "plan",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "Noah",
       "text": "If we keep moving, we can reach the point before sunset.",
       "translation": "继续走的话，我们能在日落前赶到那个岬角。",
@@ -51,7 +77,7 @@
       "id": "ruth",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "ruth",
       "speaker": "Ruth",
       "text": "I can walk there. I can't enjoy it at that speed.",
       "translation": "我能走到那里。但这个速度，我没法好好享受。",
@@ -67,7 +93,7 @@
       "id": "stop",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "旁白",
       "text": "Noah slows down. The camera stays in his hand.",
       "translation": "Noah 放慢脚步，手里还握着相机。",
@@ -83,7 +109,7 @@
       "id": "sorry",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "Noah",
       "text": "Sorry. I turned the light into an appointment.",
       "translation": "抱歉。我把光线当成一个必须赶上的预约了。",
@@ -99,7 +125,7 @@
       "id": "ask",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "ruth",
       "speaker": "你",
       "text": "Ruth, what would make this a good evening for you?",
       "translation": "Ruth，对你来说，怎样算是一个不错的晚上？",
@@ -109,7 +135,7 @@
       "id": "answer",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "ruth",
       "speaker": "Ruth",
       "text": "Water, somewhere to sit, and a conversation I can finish.",
       "translation": "看看水，有地方坐，还有一段我来得及说完的对话。",
@@ -125,7 +151,7 @@
       "id": "choice",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "ruth",
       "speaker": "你的选择",
       "text": "What do you suggest to the group?",
       "translation": "你向大家提议什么？",
@@ -162,7 +188,7 @@
       "id": "stay_a",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "Noah",
       "text": "The reflection is good here, actually.",
       "translation": "其实这里的倒影就很不错。",
@@ -178,7 +204,7 @@
       "id": "stay_b",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "ruth",
       "speaker": "Ruth",
       "text": "You don't have to turn staying into a photography argument.",
       "translation": "留下来，也不用非得找一个摄影上的理由。",
@@ -194,7 +220,7 @@
       "id": "stay_c",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "Noah",
       "text": "Fair. I'd like to stay. The reflection is a bonus.",
       "translation": "有道理。我想留下。倒影算额外收获。",
@@ -210,7 +236,7 @@
       "id": "stay_d",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "bench",
       "speaker": "旁白",
       "text": "He puts the camera down while Ruth finishes her story.",
       "translation": "Ruth 把故事讲完的时候，他放下了相机。",
@@ -226,7 +252,7 @@
       "id": "detour_a",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "Noah",
       "text": "Ten minutes. Back at this bench, even if the light is perfect.",
       "translation": "十分钟。再好的光，我也回到这张长椅。",
@@ -242,7 +268,7 @@
       "id": "detour_b",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "ruth",
       "speaker": "Ruth",
       "text": "Go. Bring a picture, not an apology for being late.",
       "translation": "去吧。带张照片回来，别带一份迟到的道歉。",
@@ -258,7 +284,7 @@
       "id": "detour_c",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "旁白",
       "text": "He returns while there is still colour on the water.",
       "translation": "他回来时，水面上还有天光的颜色。",
@@ -274,7 +300,7 @@
       "id": "detour_d",
       "act": 0,
       "location": "温哥华 · 海边步道",
-      "shot": "city",
+      "shot": "noah",
       "speaker": "Noah",
       "text": "I missed the best second. Got most of a very good minute.",
       "translation": "最好的那一秒没拍到。但拍到了很不错的一分钟。",
@@ -290,7 +316,7 @@
       "id": "finish",
       "act": 1,
       "location": "日落还在继续",
-      "shot": "city",
+      "shot": "bench",
       "speaker": "旁白",
       "text": "You leave after the story ends, not after the light does.",
       "translation": "你们等故事讲完才离开，而不是等光线结束。",
@@ -306,7 +332,7 @@
       "id": "ending",
       "act": 1,
       "location": "日落还在继续",
-      "shot": "city",
+      "shot": "shore",
       "speaker": "出发之后",
       "text": "A good view has room for the people beside you.",
       "translation": "好的风景，也容得下身边的人。",

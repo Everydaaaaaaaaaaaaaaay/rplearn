@@ -5,7 +5,8 @@ import Vision
 import CoreImage
 import ImageIO
 
-guard CommandLine.arguments.count == 3 else { fatalError("Usage: input.png output.png") }
+guard (3...4).contains(CommandLine.arguments.count) else { fatalError("Usage: input.png output.png [--exterior-only]") }
+let exteriorOnly = CommandLine.arguments.dropFirst(3).contains("--exterior-only")
 let input = URL(fileURLWithPath: CommandLine.arguments[1])
 let output = URL(fileURLWithPath: CommandLine.arguments[2])
 guard !FileManager.default.fileExists(atPath: output.path) else { fatalError("Refusing to overwrite output") }
@@ -54,7 +55,7 @@ let eyeY = isNora ? 0.16...0.19 : 0.13...0.17
 for y in 0..<height {
     for x in 0..<width {
         let eyes = eyeX.contains(Double(x) / Double(width)) && eyeY.contains(Double(y) / Double(height))
-        if !eyes { enqueue(y * width + x) }
+        if !exteriorOnly && !eyes { enqueue(y * width + x) }
     }
 }
 var cursor = 0

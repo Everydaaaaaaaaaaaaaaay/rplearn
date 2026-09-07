@@ -47,6 +47,9 @@ public struct StoryEpisode: Decodable, Sendable {
         public let act: Int
         public let location: String
         public let shot: String
+        /// A shared later node can retain the visual consequence of a choice
+        /// without duplicating dialogue or changing prepared voice identities.
+        public let shotBranch: Branch?
         public let speaker: String
         public let text: String
         public let translation: String
@@ -103,6 +106,11 @@ public struct StoryEpisode: Decodable, Sendable {
             else { return try reject("shot") }
         }
         for node in nodes {
+            if let variant = node.shotBranch {
+                guard !variant.flag.isEmpty, shots[variant.yes] != nil, shots[variant.no] != nil,
+                      nodes.contains(where: { $0.choices?.contains(where: { $0.flags[variant.flag] != nil }) == true })
+                else { return try reject("shot branch: \(node.id)") }
+            }
             if let cue = node.speech {
                 guard !cue.intention.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                       (0.88...1.12).contains(cue.speed), (0...1.2).contains(cue.before),
@@ -179,7 +187,11 @@ public struct EpisodeSession: Sendable {
     public private(set) var history: [String] = []
 
     public var current: StoryEpisode.Node { episode.node(nodeID)! }
-    public var shot: StoryEpisode.Shot { episode.shots[current.shot]! }
+    public var shotID: String {
+        guard let branch = current.shotBranch, let value = flags[branch.flag] else { return current.shot }
+        return value ? branch.yes : branch.no
+    }
+    public var shot: StoryEpisode.Shot { episode.shots[shotID]! }
     public var isFinished: Bool { current.ending == true }
     public struct DecisionRecord: Identifiable, Sendable {
         public let id: String

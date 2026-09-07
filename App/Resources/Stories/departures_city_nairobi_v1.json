@@ -9,8 +9,38 @@
     "纸样之外"
   ],
   "shots": {
-    "city": {
-      "background": "city_backdrop_nairobi",
+    "room": {
+      "background": "dp_nairobi_room",
+      "actors": []
+    },
+    "wanjiku": {
+      "background": "dp_nairobi_room",
+      "actors": [
+        {
+          "id": "Wanjiku",
+          "asset": "dp_wanjiku_consider",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "shortage": {
+      "background": "dp_nairobi_shortage",
+      "actors": []
+    },
+    "zuri": {
+      "background": "dp_nairobi_room",
+      "actors": [
+        {
+          "id": "Zuri",
+          "asset": "dp_zuri_work",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "compare": {
+      "background": "dp_nairobi_compare",
       "actors": []
     }
   },
@@ -19,7 +49,7 @@
       "id": "arrival",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "room",
       "speaker": "旁白",
       "text": "Wanjiku invites you to a small sewing workshop she knows.",
       "translation": "Wanjiku 带你来到一家熟悉的小缝纫工作室。",
@@ -35,7 +65,7 @@
       "id": "fabric",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "wanjiku",
       "speaker": "Wanjiku",
       "text": "I came back for this blue. Apparently, so did everybody else.",
       "translation": "我专门回来买这个蓝色。看来别人也一样。",
@@ -51,7 +81,7 @@
       "id": "size",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "shortage",
       "speaker": "旁白",
       "text": "The piece on the table is smaller than the paper pattern.",
       "translation": "桌上的布，比旁边的纸样小了一截。",
@@ -67,7 +97,7 @@
       "id": "maker",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "shortage",
       "speaker": "Zuri",
       "text": "Enough for the front, not for the whole bag.",
       "translation": "够做正面，不够做整个包。",
@@ -83,7 +113,7 @@
       "id": "want",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "wanjiku",
       "speaker": "Wanjiku",
       "text": "I had a very clear picture of it. That may be the problem.",
       "translation": "我原本已经想得很清楚了。问题可能就在这里。",
@@ -99,7 +129,7 @@
       "id": "offer",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "We can change the back, or wait for something else.",
       "translation": "可以改一改背面，也可以再等等别的布。",
@@ -115,7 +145,7 @@
       "id": "ask",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "wanjiku",
       "speaker": "你",
       "text": "What part of the picture matters most to you?",
       "translation": "你想象中的那个包，哪一部分最重要？",
@@ -125,7 +155,7 @@
       "id": "choice",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "wanjiku",
       "speaker": "你的选择",
       "text": "What would she like to try?",
       "translation": "她想试哪一种办法？",
@@ -162,7 +192,7 @@
       "id": "contrast_a",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "Put them by the window. This light is too yellow.",
       "translation": "放到窗边去。这里的灯太黄了。",
@@ -178,7 +208,7 @@
       "id": "contrast_b",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "compare",
       "speaker": "旁白",
       "text": "The colours change beside the daylight.",
       "translation": "到了自然光旁边，两块布的颜色显得不同了。",
@@ -194,7 +224,7 @@
       "id": "contrast_c",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "compare",
       "speaker": "Wanjiku",
       "text": "Oh. That looks less like my drawing. More like something I'd use.",
       "translation": "哦。不太像我画的了，却更像我会用的东西。",
@@ -210,7 +240,7 @@
       "id": "contrast_d",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "Then let's mark it before either of us changes our mind.",
       "translation": "那就趁我们还没改主意，先把尺寸标下来。",
@@ -226,7 +256,7 @@
       "id": "wait_a",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "wanjiku",
       "speaker": "Wanjiku",
       "text": "I think I still want the first version. Is that annoying?",
       "translation": "我想我还是喜欢最初的设计。这样会很烦吗？",
@@ -242,7 +272,7 @@
       "id": "wait_b",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "Not at all. Cloth is patient. Most of my customers aren't.",
       "translation": "完全不会。布很有耐心，我的大部分顾客可没有。",
@@ -258,7 +288,7 @@
       "id": "wait_c",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "room",
       "speaker": "旁白",
       "text": "They write down the size instead of cutting the fabric.",
       "translation": "她们记下尺寸，没有动剪刀。",
@@ -274,7 +304,7 @@
       "id": "wait_d",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "city",
+      "shot": "wanjiku",
       "speaker": "Wanjiku",
       "text": "Tea, then? I've unexpectedly kept my afternoon budget.",
       "translation": "那去喝茶？我的下午预算，意外地保住了。",
@@ -290,7 +320,7 @@
       "id": "finish",
       "act": 1,
       "location": "纸样之外",
-      "shot": "city",
+      "shot": "room",
       "speaker": "旁白",
       "text": "Zuri pins the drawing where she can find it again.",
       "translation": "Zuri 把画稿钉在下次容易找到的位置。",
@@ -306,7 +336,7 @@
       "id": "ending",
       "act": 1,
       "location": "纸样之外",
-      "shot": "city",
+      "shot": "room",
       "speaker": "出发之后",
       "text": "You can change your picture, or give it more time.",
       "translation": "可以修改想象，也可以再给它一点时间。",

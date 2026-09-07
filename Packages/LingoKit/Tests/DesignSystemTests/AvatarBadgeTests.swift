@@ -14,11 +14,12 @@ struct AvatarBadgeTests {
         }
     }
 
-    @Test("Oliver 稳定头像键加载已打包剧情人物的方形头像")
+    @Test("Oliver 稳定头像键独立打包，不依赖退役的剧情站姿")
     func oliverUsesBundledStoryPortrait() throws {
         let portrait = try #require(DSAvatarAssets.image(named: "avatar_oliver"))
         #expect(portrait.size.width == portrait.size.height)
         #expect(portrait.size.width >= 256)
+        #expect(Bundle.main.url(forResource: "oliver_neutral", withExtension: "png") == nil)
         let actual = try render(imageName: "avatar_oliver", pending: false)
         let fallback = try render(imageName: nil, pending: false)
         #expect(actual != fallback)

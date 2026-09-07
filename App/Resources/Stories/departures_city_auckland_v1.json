@@ -9,8 +9,38 @@
     "留到下周的部分"
   ],
   "shots": {
-    "city": {
-      "background": "city_backdrop_auckland",
+    "workshop": {
+      "background": "dp_auckland_repair",
+      "actors": []
+    },
+    "hana": {
+      "background": "dp_auckland_repair",
+      "actors": [
+        {
+          "id": "Hana",
+          "asset": "dp_hana_explain",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "drawer": {
+      "background": "dp_auckland_repair",
+      "actors": [
+        {
+          "id": "Peter",
+          "asset": "dp_peter_drawer",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "learn": {
+      "background": "dp_auckland_joint",
+      "actors": []
+    },
+    "later": {
+      "background": "dp_auckland_finished_drawer",
       "actors": []
     }
   },
@@ -19,7 +49,7 @@
       "id": "arrival",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "workshop",
       "speaker": "旁白",
       "text": "You join Hana at a weekend repair table near the harbour.",
       "translation": "周末，你到海港附近的一张维修工作台帮 Hana。",
@@ -35,7 +65,7 @@
       "id": "project",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "Hana",
       "text": "This little shelf was meant to take an hour.",
       "translation": "这个小架子，本来打算一小时做完。",
@@ -51,7 +81,7 @@
       "id": "complication",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "drawer",
       "speaker": "旁白",
       "text": "A visitor places a broken drawer beside it.",
       "translation": "一位来访者把坏掉的抽屉放到旁边。",
@@ -67,7 +97,7 @@
       "id": "request",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "drawer",
       "speaker": "Peter",
       "text": "Could you do this one too? I'm hopeless with tools.",
       "translation": "这个也能帮忙弄一下吗？我对工具实在没办法。",
@@ -83,7 +113,7 @@
       "id": "answer",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "Hana",
       "text": "I can show you the first step. I can't build two things today.",
       "translation": "我能带你做第一步，但今天没法做完两样东西。",
@@ -99,7 +129,7 @@
       "id": "hesitation",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "drawer",
       "speaker": "Peter",
       "text": "I was hoping to leave it with you. I don't want to ruin it.",
       "translation": "我本想放在你这里。我怕把它弄得更糟。",
@@ -115,7 +145,7 @@
       "id": "ask",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "你",
       "text": "Would you rather learn a little, or arrange another day?",
       "translation": "你想先学一点，还是另约一天来修？",
@@ -125,7 +155,7 @@
       "id": "choice",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "你的选择",
       "text": "What can this visit realistically become?",
       "translation": "这次来访，实际上能做到哪一步？",
@@ -162,7 +192,7 @@
       "id": "learn_a",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "Hana",
       "text": "We start by looking. No dramatic hammering required.",
       "translation": "先从观察开始。不需要戏剧性地抡锤子。",
@@ -178,7 +208,7 @@
       "id": "learn_b",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "learn",
       "speaker": "旁白",
       "text": "Peter labels the pieces while she explains the loose joint.",
       "translation": "她解释松动的接合处，Peter 在零件上做好标记。",
@@ -194,7 +224,7 @@
       "id": "learn_c",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "learn",
       "speaker": "Peter",
       "text": "I can see what is wrong now. That is already different.",
       "translation": "我现在能看出哪里出问题了。已经和刚才不同。",
@@ -210,7 +240,7 @@
       "id": "learn_d",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "Hana",
       "text": "Take the labels home with it. We can continue next week.",
       "translation": "把标记一起带回去。下周我们可以接着做。",
@@ -226,7 +256,7 @@
       "id": "later_a",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "你",
       "text": "When did it start sticking? We can note that first.",
       "translation": "它从什么时候开始卡住的？先把这个记下来。",
@@ -236,7 +266,7 @@
       "id": "later_b",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "drawer",
       "speaker": "Peter",
       "text": "After I moved. I thought that detail didn't matter.",
       "translation": "搬家之后。我原以为这个细节不重要。",
@@ -252,7 +282,7 @@
       "id": "later_c",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "Hana",
       "text": "It might. Bring the note with you next time.",
       "translation": "也许有用。下次把记录一起带来。",
@@ -268,7 +298,7 @@
       "id": "later_d",
       "act": 0,
       "location": "奥克兰 · 社区工作间",
-      "shot": "city",
+      "shot": "later",
       "speaker": "旁白",
       "text": "The drawer stays intact. Her own shelf is finished by lunch.",
       "translation": "抽屉没有被拆开。午饭前，她自己的架子也完成了。",
@@ -284,7 +314,7 @@
       "id": "finish",
       "act": 1,
       "location": "留到下周的部分",
-      "shot": "city",
+      "shot": "drawer",
       "speaker": "Peter",
       "text": "I will bring the toolbox back on Monday.",
       "translation": "我周一把工具箱还回来。",
@@ -300,7 +330,7 @@
       "id": "last",
       "act": 1,
       "location": "留到下周的部分",
-      "shot": "city",
+      "shot": "hana",
       "speaker": "Hana",
       "text": "With all the pencils, if they haven't escaped again.",
       "translation": "还有全部铅笔，如果它们没再逃跑的话。",
@@ -316,7 +346,7 @@
       "id": "ending",
       "act": 1,
       "location": "留到下周的部分",
-      "shot": "city",
+      "shot": "workshop",
       "speaker": "出发之后",
       "text": "A beginning does not have to finish the whole job.",
       "translation": "一个开头，不必当场做完整件事。",

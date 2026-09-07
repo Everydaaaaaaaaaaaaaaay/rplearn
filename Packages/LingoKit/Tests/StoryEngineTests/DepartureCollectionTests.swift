@@ -26,10 +26,10 @@ struct DepartureCollectionTests {
             let url = try #require(Bundle.main.url(forResource: chapter.id, withExtension: "json"))
             let episode = try StoryEpisode.load(data: Data(contentsOf: url))
             #expect(episode.maxDialogueCharacters == 65)
-            #expect(episode.assetNames.count <= 8)
             for name in episode.assetNames {
-                if name.hasPrefix("city_backdrop_") { #expect(UIImage(named: name) != nil) }
-                else { #expect(Bundle.main.url(forResource: name, withExtension: name.hasPrefix("oliver") || name.hasPrefix("nora") ? "png" : "jpg") != nil) }
+                #expect(Bundle.main.url(forResource: name, withExtension: "png") != nil
+                    || Bundle.main.url(forResource: name, withExtension: "jpg") != nil
+                    || UIImage(named: name) != nil)
             }
         }
     }
@@ -58,6 +58,10 @@ struct DepartureCollectionTests {
                 var session = EpisodeSession(episode: episode)
                 for _ in 0...episode.nodes.count {
                     reached.insert(session.nodeID)
+                    if let variant = session.current.shotBranch {
+                        let value = try #require(session.flags[variant.flag])
+                        #expect(session.shotID == (value ? variant.yes : variant.no))
+                    }
                     let saved = try JSONEncoder().encode(session.checkpoint)
                     let restored = EpisodeSession(episode: episode, saved: saved)
                     #expect(restored.checkpoint == session.checkpoint)
@@ -66,6 +70,7 @@ struct DepartureCollectionTests {
                     let synced = try EpisodeSession(episode: episode, nodeID: session.nodeID, flags: session.flags, completed: false)
                     #expect(synced.checkpoint == session.checkpoint)
                     #expect(synced.history == session.history)
+                    #expect(synced.shot == session.shot)
                     if session.isFinished {
                         let completed = try EpisodeSession(episode: episode, nodeID: nil, flags: session.flags, completed: true)
                         #expect(completed.checkpoint == session.checkpoint)

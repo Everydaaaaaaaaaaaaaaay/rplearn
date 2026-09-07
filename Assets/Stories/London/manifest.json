@@ -4,7 +4,7 @@
   "style": "Japanese anime background painting, cel-shaded anime adults, clean delicate lines, warm amber/cool indigo. Photorealistic candidates rejected after user's direction change.",
   "state": "integrated",
   "notes": [
-    "Eight final deliverables, plus retained original sources. Runtime files only in App/Resources/StoryArt.",
+    "Four environment/reading CG deliverables remain; four repetitive sprites retired from runtime. New contextual actions are tracked in Departures/production.json.",
     "Generated fake checkerboard is not alpha. Original character RGB retained, local non-generative masks applied.",
     "No chained image-to-image derivatives; every expression references original Oliver master.",
     "No external paid API or stock purchase. Current imagegen skill used."
@@ -81,12 +81,16 @@
       "sha256": "832c76072b0ffe99bce2e2f55baba0c982a9b62aca67011329afc106cafc9527",
       "raw_sha256": "62067899e9cb3539e92bd83ca0a5b3cc034f8b8c9e052b74dfcc6d37d49fe947",
       "prompt": "Use case illustration-story. NEW canonical Oliver Bennett ANIME character sprite. NOT a real person, NOT realistic portrait, absolutely NO photo texture or skin pores. Beautiful contemporary Japanese visual novel anime male character, age24 adult not child, appealing expressive green anime eyes, refined small nose and clean jaw, tousled chestnut short-medium hair in distinct drawn locks, clean delicate dark linework, elegant 2-3 tone cel shading and subtle soft shading. Warm reserved neutral expression, slight three-quarter toward viewer left, relaxed standing knee-up pose, hands lowered naturally visible with plausible fingers. Worn brown corduroy blazer indicated with restrained drawn fabric lines not real fabric photography, loose charcoal scarf, cream knitted sweater, dark trousers. Reference1 is background STYLE/PALETTE/LIGHT DIRECTION only, NOT identity. Match golden indoor fill and subtle cool left light. Portrait1024x1536, full head with8% top margin and knees at94%, shoulders not cropped, center x50%. Genuine transparent alpha background, no checkerboard, no background scenery, no floor or shadow. Crisp anime sprite silhouette suitable compositing. If alpha unsupported use a single uniform pale ivory background with no pattern, no gradient. No words, no UI, no watermark.",
-      "status": "integrated",
+      "status": "reference-only",
       "generator": "built-in image_gen",
       "references": [
         "london_interior"
       ],
-      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint.",
+      "pose_review": {
+        "result": "retired",
+        "observation": "早期四张身体略左、头部略右、双手下垂的同姿母版，仅保留身份参考。正式演出已更换动作。"
+      }
     },
     {
       "id": "oliver_concerned",
@@ -101,12 +105,16 @@
       "sha256": "a0b1ad41988e0e8300410ce68190ad6b90a08503425f2bb43c184abe0d6f83a4",
       "raw_sha256": "29607af3d47e3552e5445a2aefa253a52ff782964b9dc36278d3f55e53dd7f56",
       "prompt": "Expression variant anime oliver_concerned1024x1536. Reference1 immutable canonical anime Oliver. Keep exact pose, silhouette, head/eye positions, body proportions, coat/scarf/sweater, colors/light/crop. Only change expression: uncertain, slight inward raised eyebrow tension and quiet closed mouth, no sweat marks, no exaggerated expressions. Same green anime eyes, brown hair, clean Japanese visual novel linework/cel-shading, no photorealism. Genuine transparent alpha if supported, never fake checkerboard; otherwise plain pale ivory. No other changes.",
-      "status": "integrated",
+      "status": "reference-only",
       "generator": "built-in image_gen",
       "references": [
         "oliver_neutral"
       ],
-      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint.",
+      "pose_review": {
+        "result": "retired",
+        "observation": "早期四张身体略左、头部略右、双手下垂的同姿母版，仅保留身份参考。正式演出已更换动作。"
+      }
     },
     {
       "id": "oliver_smile",
@@ -121,12 +129,16 @@
       "sha256": "4405ed6fec0727bf48e472d397c40bfc639a3b55ff80181b21a998f4e82ac89c",
       "raw_sha256": "a0dd9d0d8573d75f88cd57a630e7fdac813b3264b27d914a6374480c49864ac3",
       "prompt": "Expression variant anime oliver_smile1024x1536. Reference1 is immutable canonical anime Oliver, keep exact head/eye position, pose, body proportions, coat, scarf, sweater, colors, materials, lighting and crop. Change ONLY expression to a subtle relieved small closed-mouth smile, eyes and eyebrows softened. Same Japanese anime clean linework, cel-shading, green eyes and brown hair. No photorealism, no new objects, no restyling. True transparent alpha if supported, never painted checkerboard; otherwise plain pale ivory. Preserve silhouette and all non-face details.",
-      "status": "integrated",
+      "status": "reference-only",
       "generator": "built-in image_gen",
       "references": [
         "oliver_neutral"
       ],
-      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint.",
+      "pose_review": {
+        "result": "retired",
+        "observation": "早期四张身体略左、头部略右、双手下垂的同姿母版，仅保留身份参考。正式演出已更换动作。"
+      }
     },
     {
       "id": "nora_neutral",
@@ -141,12 +153,16 @@
       "sha256": "e90606550105c6227d8fe0374764e3b811b2a0c2d42a15c64011e9208f2b2f87",
       "raw_sha256": "47af16ceb0f77d269a0151bf334a7ae37e00d1f8c6f19a6d7897003ee0b62dda",
       "prompt": "New asset nora_neutral canonical anime woman sprite1024x1536. Reference1 STYLE, cel shading, proportions and light only; different identity. Japanese visual novel anime adult woman about40, warm brown skin in simple cel tones not realistic pores, kind dark expressive anime eyes, dark brown curly hair in a low loose bun, brick-red cardigan over cream blouse, navy trousers. Relaxed knee-up standing, natural lowered hands, calm encouraging expression, slight three-quarter toward viewer left. Same delicate linework and warm golden/cool window palette as reference, no photo textures, no realistic portrait. Entire head and shoulders visible, eye height and body scale match reference. Genuinely transparent alpha background, NO fake checkerboard; if unsupported flat plain pale ivory. No scenery/floor/shadows/text.",
-      "status": "integrated",
+      "status": "reference-only",
       "generator": "built-in image_gen",
       "references": [
         "oliver_neutral"
       ],
-      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint."
+      "processing": "Original RGB preserved. Deterministic local Vision foreground mask plus pale-neutral backdrop removal, protecting measured anime eye regions; see Scripts/prepare-story-sprite.swift. No generative repaint.",
+      "pose_review": {
+        "result": "retired",
+        "observation": "早期四张身体略左、头部略右、双手下垂的同姿母版，仅保留身份参考。正式演出已更换动作。"
+      }
     },
     {
       "id": "london_reading_cg",
@@ -168,9 +184,25 @@
         "oliver_neutral"
       ],
       "processing": "Deterministic JPEG quality92 export from unchanged original, no crop or resizing."
+    },
+    {
+      "id": "avatar_oliver",
+      "kind": "avatar",
+      "status": "integrated",
+      "raw_path": "Assets/Stories/London/raw/oliver_neutral.png",
+      "raw_sha256": "62067899e9cb3539e92bd83ca0a5b3cc034f8b8c9e052b74dfcc6d37d49fe947",
+      "target_path": "App/Resources/StoryArt/avatar_oliver.png",
+      "sha256": "286197c4f677b8e672c8a2d9ff79b26132e57c2a8361be450f570b34dd16eddc",
+      "has_alpha": true,
+      "dimensions": [
+        512,
+        512
+      ],
+      "bytes": 300154,
+      "processing": "Exact existing avatar crop [246, 0, 512, 512] from alpha-processed oliver_neutral in commit 6500565. Decoupled from retired scene sprite; avatar identity and framing unchanged."
     }
   ],
-  "runtime_bytes": 7962372,
+  "runtime_bytes": 2684922,
   "real_structure_references": [
     "https://dauntbooks.co.uk/shops/marylebone/",
     "https://londoncheapo.com/place/book-comic-exchange/",
@@ -178,6 +210,11 @@
     "https://www.pinterest.com/pin/807973989377775433/"
   ],
   "visual_qa": {
+    "date": "2026-09-07",
+    "result": "Four repetitive scene sprites retired. Avatar pixels preserved in independent avatar_oliver asset. New Oliver/Nora actions and listening CG integrated; native listening/replay and voice-toggle tests passed. See docs/verification/departures-art.md for full scope and device status.",
+    "evidence": "build/DerivedData-speech-direction/VerificationResults/20260907T134741Z-78624.xcresult"
+  },
+  "previous_visual_qa": {
     "date": "2026-09-06",
     "device": "LingoTrip-WT-c955 / iPhone 17 Pro / iOS 26.1 Simulator",
     "result": "Reviewed in native player: exterior, both actors, expression switches, choices, reading CG, listening shot and lookup. Five UI cases passed in final targeted reruns. User art approval and physical-device acceptance pending.",

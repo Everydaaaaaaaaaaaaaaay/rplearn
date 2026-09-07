@@ -21,7 +21,7 @@
       "actors": [
         {
           "id": "Oliver",
-          "asset": "oliver_neutral",
+          "asset": "dp_oliver_welcome",
           "x": 0.53,
           "scale": 1
         }
@@ -36,7 +36,7 @@
       "actors": [
         {
           "id": "Oliver",
-          "asset": "oliver_neutral",
+          "asset": "dp_oliver_manuscript",
           "x": 0.53,
           "scale": 1
         }
@@ -47,7 +47,7 @@
       "actors": [
         {
           "id": "Oliver",
-          "asset": "oliver_concerned",
+          "asset": "dp_oliver_manuscript",
           "x": 0.53,
           "scale": 1
         }
@@ -58,7 +58,7 @@
       "actors": [
         {
           "id": "Oliver",
-          "asset": "oliver_smile",
+          "asset": "dp_oliver_relief",
           "x": 0.53,
           "scale": 1
         }
@@ -69,7 +69,7 @@
       "actors": [
         {
           "id": "Nora",
-          "asset": "nora_neutral",
+          "asset": "dp_nora_host",
           "x": 0.53,
           "scale": 1
         }
@@ -88,18 +88,7 @@
       "actors": [
         {
           "id": "Nora",
-          "asset": "nora_neutral",
-          "x": 0.53,
-          "scale": 1
-        }
-      ]
-    },
-    "reading_oliver": {
-      "background": "london_reading",
-      "actors": [
-        {
-          "id": "Oliver",
-          "asset": "oliver_neutral",
+          "asset": "dp_nora_host",
           "x": 0.53,
           "scale": 1
         }
@@ -110,7 +99,22 @@
       "actors": [
         {
           "id": "Oliver",
-          "asset": "oliver_smile",
+          "asset": "dp_oliver_relief",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "listening": {
+      "background": "dp_oliver_listening",
+      "actors": []
+    },
+    "outside_relief": {
+      "background": "london_exterior",
+      "actors": [
+        {
+          "id": "Oliver",
+          "asset": "dp_oliver_relief",
           "x": 0.53,
           "scale": 1
         }
@@ -262,7 +266,7 @@
       "id": "nora_role_part2",
       "act": 1,
       "location": "伦敦 · 书架之间",
-      "shot": "nora",
+      "shot": "room",
       "speaker": "旁白",
       "text": "She folds a list once, then checks the door.",
       "translation": "她把名单折了一下，又看了看门口。",
@@ -320,7 +324,7 @@
       "id": "glance",
       "act": 1,
       "location": "伦敦 · 书架之间",
-      "shot": "oliver_worried",
+      "shot": "room",
       "speaker": "旁白",
       "text": "Oliver looks at the chair, then at his coat pocket.",
       "translation": "Oliver 看了眼椅子，又看了眼外套口袋。",
@@ -330,7 +334,7 @@
       "id": "glance_part2",
       "act": 1,
       "location": "伦敦 · 书架之间",
-      "shot": "oliver_worried",
+      "shot": "room",
       "speaker": "旁白",
       "text": "The edge of a folded page is showing.",
       "translation": "折好的纸露出一个角。",
@@ -340,7 +344,7 @@
       "id": "page",
       "act": 1,
       "location": "伦敦 · 书架之间",
-      "shot": "oliver_worried",
+      "shot": "room",
       "speaker": "你",
       "text": "Is that something you've written?",
       "translation": "那是你自己写的东西吗？",
@@ -350,7 +354,7 @@
       "id": "joke",
       "act": 1,
       "location": "伦敦 · 书架之间",
-      "shot": "oliver_worried",
+      "shot": "room",
       "speaker": "Oliver",
       "text": "Possibly. It could also be a very ambitious shopping list.",
       "translation": "也许吧。也可能只是一份野心过大的购物清单。",
@@ -1047,7 +1051,7 @@
       "id": "listen_notice",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "旁白",
       "text": "After the reading, Oliver leans towards you.",
       "translation": "朗读结束后，Oliver 凑近你。",
@@ -1057,7 +1061,7 @@
       "id": "listen_notice_part2",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "'She stopped mid-sentence and started again. Nobody minded.'",
       "translation": "「她一句话念到一半，停下来重念。也没有人在意。」",
@@ -1067,7 +1071,7 @@
       "id": "listen_reply",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "你",
       "text": "Maybe nobody was waiting for her to make a mistake.",
       "translation": "也许大家根本不是在等她出错。",
@@ -1077,7 +1081,7 @@
       "id": "listen_learn",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "I spend ages imagining an audience that doesn't exist.",
       "translation": "我花了好长时间，去想象一群根本不存在的观众。",
@@ -1087,7 +1091,7 @@
       "id": "listen_share",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver_smile",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "Would you like to hear the first sentence? Just you, for now.",
       "translation": "想听第一句吗？暂时只给你听。",
@@ -1097,7 +1101,7 @@
       "id": "listen_excerpt",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "Every morning, the man at number twelve opened his window",
       "translation": "每天早上，十二号屋子的那个人总是先打开窗，",
@@ -1107,7 +1111,7 @@
       "id": "listen_excerpt_part2",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "before he checked the weather.",
       "translation": "再看天气。",
@@ -1117,7 +1121,7 @@
       "id": "listen_question",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver",
+      "shot": "listening",
       "speaker": "你",
       "text": "Why does he open it first?",
       "translation": "他为什么要先开窗？",
@@ -1127,7 +1131,7 @@
       "id": "listen_answer",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver_smile",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "That's the question I wanted someone to ask.",
       "translation": "这就是我希望有人问的问题。",
@@ -1137,7 +1141,7 @@
       "id": "listen_answer_part2",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver_smile",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "I haven't quite earned the answer yet.",
       "translation": "答案我还没写到足够好的程度。",
@@ -1147,7 +1151,7 @@
       "id": "listen_commit",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver_smile",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "I'll bring a page next time.",
       "translation": "下次我会带一页来。",
@@ -1157,7 +1161,7 @@
       "id": "listen_commit_part2",
       "act": 3,
       "location": "伦敦 · 空着的椅子",
-      "shot": "reading_oliver_smile",
+      "shot": "listening",
       "speaker": "Oliver",
       "text": "Whether I read it to the room can be next time's decision.",
       "translation": "要不要念给整个房间听，可以留给下次再决定。",
@@ -1207,7 +1211,7 @@
       "id": "no_score",
       "act": 4,
       "location": "伦敦 · 散场以后",
-      "shot": "oliver_neutral",
+      "shot": "oliver_smile",
       "speaker": "你",
       "text": "Was tonight what you expected?",
       "translation": "今晚和你想象的一样吗？",
@@ -1237,7 +1241,7 @@
       "id": "remember",
       "act": 4,
       "location": "伦敦 · 散场以后",
-      "shot": "oliver_neutral",
+      "shot": "oliver_smile",
       "speaker": "旁白",
       "text": "At the door, he returns to something you said earlier.",
       "translation": "到门口时，他又提起你刚才说过的话。",
@@ -1311,7 +1315,7 @@
       "id": "next_day",
       "act": 5,
       "location": "伦敦 · 书店门口 · 夜",
-      "shot": "outside_oliver",
+      "shot": "outside_relief",
       "speaker": "Oliver",
       "text": "Coffee tomorrow? I won't make you review the whole novel.",
       "translation": "明天喝咖啡吗？不会让你审阅整本小说的。",
@@ -1321,7 +1325,7 @@
       "id": "your_condition",
       "act": 5,
       "location": "伦敦 · 书店门口 · 夜",
-      "shot": "outside_oliver",
+      "shot": "outside_relief",
       "speaker": "你",
       "text": "One page at a time?",
       "translation": "一次一页？",
@@ -1331,7 +1335,7 @@
       "id": "deal",
       "act": 5,
       "location": "伦敦 · 书店门口 · 夜",
-      "shot": "outside_oliver",
+      "shot": "outside_relief",
       "speaker": "Oliver",
       "text": "One page at a time.",
       "translation": "一次一页。",
@@ -1341,7 +1345,7 @@
       "id": "deal_part2",
       "act": 5,
       "location": "伦敦 · 书店门口 · 夜",
-      "shot": "outside_oliver",
+      "shot": "outside_relief",
       "speaker": "Oliver",
       "text": "And you can tell me about something you'd like to try.",
       "translation": "你也可以告诉我，有什么事是你想试试的。",

@@ -9,16 +9,15 @@ struct StoryEpisodeTests {
         return try Data(contentsOf: url)
     }
 
-    @Test("113 个短句节点、8 份美术、6 幕完整演出且资源均随包")
+    @Test("113 个短句节点、6 幕完整演出且全部引用美术随包")
     func resources() throws {
         let episode = try StoryEpisode.load(data: bundledData())
         #expect(episode.nodes.count == 113)
         #expect(episode.maxDialogueCharacters == 65)
-        #expect(episode.assetNames.count == 8)
         #expect(episode.acts.count == 6)
         for name in episode.assetNames {
-            let suffix = name.hasPrefix("oliver") || name.hasPrefix("nora") ? "png" : "jpg"
-            #expect(Bundle.main.url(forResource: name, withExtension: suffix) != nil)
+            #expect(Bundle.main.url(forResource: name, withExtension: "png") != nil
+                || Bundle.main.url(forResource: name, withExtension: "jpg") != nil)
         }
     }
 
@@ -27,7 +26,7 @@ struct StoryEpisodeTests {
         let episode = try StoryEpisode.load(data: bundledData())
         for node in episode.nodes where node.act == 3 && !node.id.hasPrefix("read_yes") && !node.id.hasPrefix("listen_yes") {
             let shot = try #require(episode.shots[node.shot])
-            #expect(["london_reading", "london_reading_cg"].contains(shot.background))
+            #expect(["london_reading", "london_reading_cg", "dp_oliver_listening"].contains(shot.background))
         }
     }
 
