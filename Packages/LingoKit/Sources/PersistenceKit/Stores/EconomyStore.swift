@@ -46,6 +46,35 @@ public actor EconomyStore {
         return entity.coins
     }
 
+    /// Guest story rewards and their receipt commit together. A failed save can
+    /// be retried without either losing the grant or crediting it twice.
+    public func claimLocalStoryReward(storyID: String, coins: Int) throws -> Bool {
+        do {
+            let profile = try fetchOrCreateProfile()
+            let existing = try modelContext.fetch(FetchDescriptor<StoryProgressEntity>(
+                predicate: #Predicate { $0.storyID == storyID }
+            )).first
+            if existing?.completedAt != nil { return false }
+            let receipt = existing ?? StoryProgressEntity(storyID: storyID)
+            if existing == nil { modelContext.insert(receipt) }
+            receipt.completedAt = .now
+            receipt.currentNodeID = nil
+            profile.coins += max(0, coins)
+            try ContentMutationJournal.upsert(
+                in: modelContext, resourceType: .storyProgress, resourceID: storyID, parentID: nil,
+                payloadJSON: try ContentMutationJournal.encode(ContentStoryProgressPayload(
+                    completedAt: receipt.completedAt, currentNodeId: nil,
+                    flags: StoryProgressStore.decodeFlags(receipt.flagsJSON)
+                ))
+            )
+            try modelContext.save()
+            return true
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
+    }
+
     @discardableResult
     public func spendCoins(_ amount: Int) throws -> Int {
         let entity = try fetchOrCreateProfile()

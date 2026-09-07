@@ -6,14 +6,12 @@ import SwiftUI
 /// 剧情二级入口：主线负责跨城推进，城市剧情承载每座城市的独立故事。
 public struct StoryHubView: View {
     private let deps: HomeDependencies
-    private let onPreview: (() -> Void)?
 
     @State private var profile: UserProfileDTO?
     @State private var completed: Set<String> = []
 
-    public init(deps: HomeDependencies, onPreview: (() -> Void)? = nil) {
+    public init(deps: HomeDependencies) {
         self.deps = deps
-        self.onPreview = onPreview
     }
 
     private var journey: MainlineJourney {
@@ -43,30 +41,11 @@ public struct StoryHubView: View {
             VStack(alignment: .leading, spacing: DSSpacing.lg) {
                 intro
 
-                if let onPreview {
-                    Button(action: onPreview) {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("出发之后 · 新故事集").font(.caption.weight(.semibold)).tracking(1)
-                                .foregroundStyle(Color(red: 0.77, green: 0.62, blue: 0.37))
-                            Text("五站主线，十五篇城市故事").font(.title2.weight(.semibold))
-                            Text("从书店、海边到一张晚餐桌，参与那些仍在发生的生活。")
-                                .font(.subheadline).foregroundStyle(.secondary)
-                            HStack {
-                                Text("双语阅读 · 分支选择 · 剧情配音").font(.caption)
-                                Spacer()
-                                Image(systemName: "arrow.right")
-                            }
-                        }.foregroundStyle(Color.primary).padding(22)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 16))
-                    }.buttonStyle(.pressableCard).accessibilityIdentifier("story.london.preview")
-                }
-
                 NavigationLink(value: HomeDestination.mainline) {
                     categoryCard(
-                        eyebrow: "五城回声",
+                        eyebrow: "出发之后",
                         title: "主线剧情",
-                        detail: "跟随初始伙伴跨越五座城市，推进共同的声音地图故事。",
+                        detail: "从一次邀请出发，在五座城市参与一些具体的生活。",
                         progressText: "\(completedMainlineCount) / \(journey.stops.count) 站",
                         progress: Double(completedMainlineCount) / Double(journey.stops.count),
                         artworkName: "home_mainline_\(currentRegion?.id ?? journey.starterRegionID)",
@@ -74,6 +53,7 @@ public struct StoryHubView: View {
                     )
                 }
                 .buttonStyle(.pressableCard)
+                .accessibilityIdentifier("story.mainline")
                 .frame(maxWidth: .infinity)
 
                 NavigationLink(value: HomeDestination.cityStories) {
@@ -88,6 +68,7 @@ public struct StoryHubView: View {
                     )
                 }
                 .buttonStyle(.pressableCard)
+                .accessibilityIdentifier("story.cities")
                 .frame(maxWidth: .infinity)
             }
             .padding(DSSpacing.md)

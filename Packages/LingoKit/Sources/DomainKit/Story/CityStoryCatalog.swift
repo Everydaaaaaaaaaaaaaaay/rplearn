@@ -19,94 +19,94 @@ public enum CityStoryCatalog {
     /// 顺序与地区目录一致，便于产品配置和完整性检查。
     public static let chapters: [CityStoryChapter] = [
         CityStoryChapter(
-            storyID: "mainline_london_2",
+            storyID: "departures_city_london_v1",
             regionID: "london",
-            title: "酒馆问答之夜",
-            subtitle: "跟着 Oliver 参加一场兵荒马乱的 pub quiz"
+            title: "退回书架的那一本",
+            subtitle: "一本人人称赞的书，你却读不下去。"
         ),
         CityStoryChapter(
-            storyID: "mainline_melbourne_2",
+            storyID: "departures_city_melbourne_v1",
             regionID: "melbourne",
-            title: "从豆子到一杯",
-            subtitle: "和 Ruby 烘一炉咖啡，拉第一杯 flat white"
+            title: "不下海的早晨",
+            subtitle: "期待已久的冲浪日，没有按照片里的样子到来。"
         ),
         CityStoryChapter(
-            storyID: "mainline_newyork_2",
+            storyID: "departures_city_newyork_v1",
             regionID: "newyork",
-            title: "地铁里的肖像",
-            subtitle: "Marcus 教你用尊重换来一张真实的照片"
+            title: "等你吃饭的十分钟",
+            subtitle: "约好的午餐被工作打断，两个人都不想显得难相处。"
         ),
         CityStoryChapter(
-            storyID: "city_capetown",
+            storyID: "departures_city_capetown_v1",
             regionID: "capetown",
-            title: "博卡普的调色课",
-            subtitle: "帮街坊为一面褪色的墙找回属于社区的颜色"
+            title: "借你半张桌子",
+            subtitle: "集市开张前，Amina 的摊位比想象中更挤。"
         ),
         CityStoryChapter(
-            storyID: "city_singapore",
+            storyID: "departures_city_singapore_v1",
             regionID: "singapore",
-            title: "熟食中心的空桌",
-            subtitle: "在一张共享餐桌上，学会这座城市最自然的问候"
+            title: "打包的另一份",
+            subtitle: "一份顺手的好意，也需要先问一句。"
         ),
         CityStoryChapter(
-            storyID: "city_dublin",
+            storyID: "departures_city_dublin_v1",
             regionID: "dublin",
-            title: "长厅遗失的书签",
-            subtitle: "沿着手写诗句，把一枚旧书签送回故事的主人"
+            title: "重录之前",
+            subtitle: "Niamh 想给远方的妹妹留一句生日祝福。"
         ),
         CityStoryChapter(
-            storyID: "city_edinburgh",
+            storyID: "departures_city_edinburgh_v1",
             regionID: "edinburgh",
-            title: "皇家一英里的最后一场",
-            subtitle: "在雨落之前，帮街头演员找回消失的结尾"
+            title: "只剩一张票",
+            subtitle: "Isla 手上有一张退票，你们却有两个人。"
         ),
         CityStoryChapter(
-            storyID: "city_vancouver",
+            storyID: "departures_city_vancouver_v1",
             regionID: "vancouver",
-            title: "海堤上的失物",
-            subtitle: "骑过森林与海湾，为一台旧相机寻找主人"
+            title: "慢一点的那条路",
+            subtitle: "Noah 想拍到日落，也想让这次散步真正属于同行的人。"
         ),
         CityStoryChapter(
-            storyID: "city_auckland",
+            storyID: "departures_city_auckland_v1",
             regionID: "auckland",
-            title: "风帆之城的口令",
-            subtitle: "加入临时船队，用清楚的英语把大家带回港湾"
+            title: "工具箱归还之前",
+            subtitle: "Hana 借出了一把工具，却收到了一个更大的请求。"
         ),
         CityStoryChapter(
-            storyID: "city_nairobi",
+            storyID: "departures_city_nairobi_v1",
             regionID: "nairobi",
-            title: "卡鲁拉森林的雨",
-            subtitle: "一场骤雨打乱路线，也让陌生人组成了小队"
+            title: "最后一块布",
+            subtitle: "一块不够大的布料，把原本确定的设计变成了讨论。"
         ),
         CityStoryChapter(
-            storyID: "city_toronto",
+            storyID: "departures_city_toronto_v1",
             regionID: "toronto",
-            title: "地下城的方向暗号",
-            subtitle: "在 PATH 的岔路间，用清楚的问题带陌生人找到出口"
+            title: "谁带了主菜",
+            subtitle: "Maya 的聚餐收到了三份甜点，还有一份没人敢问的沉默。"
         ),
         CityStoryChapter(
-            storyID: "city_sydney",
+            storyID: "departures_city_sydney_v1",
             regionID: "sydney",
-            title: "海风里的失物广播",
-            subtitle: "赶在渡轮离港前，用准确描述送回一本旅行笔记"
+            title: "多坐一站",
+            subtitle: "轮渡快到了，你们对“顺便走走”的理解却不一样。"
         ),
         CityStoryChapter(
-            storyID: "city_neworleans",
+            storyID: "departures_city_neworleans_v1",
             regionID: "neworleans",
-            title: "爵士街角的下一小节",
-            subtitle: "先听懂乐手的邀请，再为临时演出接上新的节拍"
+            title: "点歌纸上的一行字",
+            subtitle: "Calvin 收到的点歌没有歌名，只有一个说不清的心情。"
         ),
         CityStoryChapter(
-            storyID: "city_manchester",
+            storyID: "departures_city_manchester_v1",
             regionID: "manchester",
-            title: "雨夜唱片的 A 面",
-            subtitle: "在北区唱片店打烊前，替一首无名录音找到线索"
+            title: "你会留下哪一面",
+            subtitle: "Leah 的新唱片让两位朋友听出了完全不同的东西。"
         ),
         CityStoryChapter(
-            storyID: "city_kingston",
+            storyID: "departures_city_kingston_v1",
             regionID: "kingston",
-            title: "录音棚里缺失的开场",
-            subtitle: "听懂金斯敦自己的语言节奏，为社区节目补上第一句话"
+            title: "节目末尾的名字",
+            subtitle: "Aaliyah 的节目超时了，最容易剪掉的是别人的名字。"
         ),
     ]
 

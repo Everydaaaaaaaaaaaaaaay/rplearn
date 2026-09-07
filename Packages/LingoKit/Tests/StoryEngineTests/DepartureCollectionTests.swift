@@ -1,6 +1,7 @@
 import Foundation
 import Testing
 import UIKit
+import DomainKit
 @testable import StoryEngine
 
 @Suite("出发之后全篇分支与续读") @MainActor
@@ -33,6 +34,18 @@ struct DepartureCollectionTests {
         }
     }
 
+    @Test("正式目录与脚本一致；旧叙事退包，奖励标识保持唯一")
+    func formalCatalogAndRetirement() throws {
+        let chapters = try catalog().chapters
+        let ids = Set(chapters.map(\.id))
+        #expect(ids == Set(MainlineCatalog.chapters.map(\.storyID) + CityStoryCatalog.chapters.map(\.storyID)))
+        #expect(Set(DepartureStoryIdentity.rewardIDs.keys) == ids)
+        #expect(Set(DepartureStoryIdentity.rewardIDs.values).count == ids.count)
+        for legacyID in DepartureStoryIdentity.rewardIDs.values {
+            #expect(Bundle.main.url(forResource: legacyID, withExtension: "json") == nil)
+        }
+    }
+
     @Test("所有选择组合走到结尾；逐页恢复不换分支、不丢台词或画面")
     func allPathsAndCheckpoints() throws {
         for chapter in try catalog().chapters {
@@ -50,6 +63,14 @@ struct DepartureCollectionTests {
                     #expect(restored.checkpoint == session.checkpoint)
                     #expect(restored.history == session.history)
                     #expect(restored.shot == session.shot)
+                    let synced = try EpisodeSession(episode: episode, nodeID: session.nodeID, flags: session.flags, completed: false)
+                    #expect(synced.checkpoint == session.checkpoint)
+                    #expect(synced.history == session.history)
+                    if session.isFinished {
+                        let completed = try EpisodeSession(episode: episode, nodeID: nil, flags: session.flags, completed: true)
+                        #expect(completed.checkpoint == session.checkpoint)
+                        #expect(completed.decisionRecords.map(\.choice) == session.decisionRecords.map(\.choice))
+                    }
                     if session.isFinished { break }
                     if let options = session.current.choices {
                         let index = try #require(choices.firstIndex { $0.id == session.nodeID })
@@ -63,6 +84,21 @@ struct DepartureCollectionTests {
                 #expect(session.decisionRecords.allSatisfy { $0.outcome != nil })
             }
             #expect(reached == Set(episode.nodes.map(\.id)))
+        }
+    }
+
+    @Test("同步断点缺少选择、目标失效或含未知标志时拒绝恢复")
+    func invalidSyncedProgress() throws {
+        let url = try #require(Bundle.main.url(forResource: "departures_city_london_v1", withExtension: "json"))
+        let episode = try StoryEpisode.load(data: Data(contentsOf: url))
+        #expect(throws: StoryEpisode.ValidationError.self) {
+            try EpisodeSession(episode: episode, nodeID: "ending", flags: [:], completed: false)
+        }
+        #expect(throws: StoryEpisode.ValidationError.self) {
+            try EpisodeSession(episode: episode, nodeID: "removed-node", flags: ["rest": false], completed: false)
+        }
+        #expect(throws: StoryEpisode.ValidationError.self) {
+            try EpisodeSession(episode: episode, nodeID: episode.start, flags: ["unknown": true], completed: false)
         }
     }
 }

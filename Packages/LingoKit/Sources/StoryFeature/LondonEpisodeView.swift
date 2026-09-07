@@ -2,7 +2,9 @@ import AVFoundation
 import CoreKit
 import DesignSystem
 import DictKit
+import PersistenceKit
 import Foundation
+import ImageIO
 import SpeechKit
 import StoryEngine
 import SwiftUI
@@ -16,6 +18,9 @@ public struct LondonEpisodeView: View {
     @State private var session: EpisodeSession?
     @State private var art: [String: UIImage] = [:]
     @State private var loadError = false
+    @State private var saving = false
+    @State private var operationError: String?
+    @State private var completionSettled = false
     @State private var showTranslation = true
     @State private var automatic = false
     @State private var showHistory = false
@@ -72,7 +77,7 @@ public struct LondonEpisodeView: View {
                     .padding(.horizontal, 18)
                 } else if loadError {
                     ContentUnavailableView {
-                        Label("样章暂时无法载入", systemImage: "book.closed")
+                        Label("故事暂时无法载入", systemImage: "book.closed")
                     } description: {
                         Text("剧情或美术资源缺失。请返回后重试。")
                     } actions: { Button("返回剧情") { dismiss() } }
@@ -142,7 +147,7 @@ public struct LondonEpisodeView: View {
             allowsSystemTranslationFallback: true
         )
         .sheet(isPresented: $showHistory) { historySheet }
-        .confirmationDialog("从头开始这一站？当前样章进度将被替换。", isPresented: $showRestart, titleVisibility: .visible) {
+        .confirmationDialog("从头开始这一站？当前阅读进度将被替换，已获得的奖励会保留。", isPresented: $showRestart, titleVisibility: .visible) {
             Button("从头开始", role: .destructive) { restart() }
             Button("取消", role: .cancel) { }
         }
@@ -300,8 +305,8 @@ public struct LondonEpisodeView: View {
             .animation(.easeInOut(duration: reduceMotion ? 0.08 : 0.12), value: session.nodeID)
 
             if session.isFinished {
-                Button { dismiss() } label: {
-                    Label("结束旅程", systemImage: "arrow.right")
+                Button { Task { await finish() } } label: {
+                    Label(saving ? "正在保存…" : operationError != nil ? "重试完成" : "结束旅程", systemImage: "arrow.right")
                         .font(.subheadline.weight(.semibold)).foregroundStyle(paper)
                         .frame(maxWidth: .infinity, minHeight: 48)
                         .background(ink, in: RoundedRectangle(cornerRadius: 10))
@@ -311,8 +316,12 @@ public struct LondonEpisodeView: View {
                 .padding(.top, 12)
             }
 
+            if let operationError {
+                Text(operationError).font(.caption).foregroundStyle(.red)
+                    .accessibilityIdentifier("episode.saveError")
+            }
             HStack {
-                Text(session.isFinished ? "本设备已保存 · 样章不发放奖励" : "轻点英文可查词")
+                Text(session.isFinished ? (completionSettled ? "本章已完成" : "结束后保存完成状态") : "轻点英文可查词")
                     .font(.system(size: 10)).foregroundStyle(ink.opacity(0.55))
                 Spacer(minLength: 4)
                 if session.current.choices == nil {
@@ -328,6 +337,7 @@ public struct LondonEpisodeView: View {
                 }
             }.padding(.top, 8)
         }
+        .disabled(saving)
         .padding(.horizontal, 20).padding(.top, 6).padding(.bottom, 8)
         .background(paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.88),
                     in: RoundedRectangle(cornerRadius: 12))
@@ -341,7 +351,7 @@ public struct LondonEpisodeView: View {
         VStack(alignment: .leading, spacing: 18) {
             Rectangle().fill(ink.opacity(0.14)).frame(height: 1)
                 .padding(.top, 8).accessibilityHidden(true)
-            Text("这一晚，你留下的选择")
+            Text("这一站，你留下的选择")
                 .font(.headline.weight(.semibold))
                 .accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: 16) {
@@ -382,7 +392,7 @@ public struct LondonEpisodeView: View {
                         }
                     }.padding(24)
                 }
-            }.navigationTitle("这一晚的对话").navigationBarTitleDisplayMode(.inline)
+            }.navigationTitle("这一站的对话").navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) { Button("继续阅读") { showHistory = false } }
                     ToolbarItem(placement: .cancellationAction) {
@@ -397,7 +407,7 @@ public struct LondonEpisodeView: View {
     }
 
     private var canAutoAdvance: Bool {
-        automatic && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
+        automatic && !saving && operationError == nil && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
             && session?.current.choices == nil && session?.isFinished == false
             && (!soundEnabled || audio.completedID == session?.nodeID)
     }
@@ -443,24 +453,92 @@ public struct LondonEpisodeView: View {
                    rainVolume: rain, pageTurn: newPage && session.nodeID != session.episode.start, prepared: prepared)
     }
 
-    private func save() {
-        guard let cp = session?.checkpoint, let data = try? JSONEncoder().encode(cp) else { return }
-        UserDefaults.standard.set(data, forKey: storageKey)
+    private func persist(_ candidate: EpisodeSession) async -> Bool {
+        guard !saving else { return false }
+        saving = true
+        defer { saving = false }
+        do {
+            let loaded = try await artwork(for: candidate)
+            try await deps.storyProgress.saveCheckpoint(storyID: resourceName, nodeID: candidate.nodeID, flags: candidate.flags)
+            art = loaded.images
+            operationError = nil
+            return true
+        } catch {
+            automatic = false
+            operationError = "进度未能保存，请重试刚才的操作。当前阅读位置已保留。"
+            return false
+        }
     }
     private func advance() {
-        session?.advance()
-        if session?.isFinished == true { automatic = false }
-        save()
+        guard !saving, var candidate = session, candidate.advance() else { return }
+        Task {
+            if await persist(candidate) {
+                session = candidate
+                if candidate.isFinished { automatic = false }
+            }
+        }
     }
     private func choose(_ id: String) {
-        session?.choose(id); save()
+        guard !saving, var candidate = session else { return }
+        candidate.choose(id)
+        Task { if await persist(candidate) { session = candidate } }
     }
     private func restart() {
-        guard let episode = session?.episode else { return }
+        guard !saving, let episode = session?.episode else { return }
         automatic = false
-        lastAudioPageID = nil
-        session = EpisodeSession(episode: episode)
-        save()
+        let candidate = EpisodeSession(episode: episode)
+        Task {
+            if await persist(candidate) {
+                lastAudioPageID = nil
+                session = candidate
+            }
+        }
+    }
+    private func finish() async {
+        guard !saving, let session, session.isFinished else { return }
+        if completionSettled { dismiss(); return }
+        saving = true
+        automatic = false
+        defer { saving = false }
+        do {
+            try await EpisodeCompletion.settle(resourceName: resourceName, episode: session.episode, deps: deps)
+            completionSettled = true
+            operationError = nil
+            dismiss()
+        } catch {
+            operationError = "完成状态尚未保存，请检查网络后重试。已结算的奖励不会重复发放。"
+        }
+    }
+
+    nonisolated private static func artURL(_ name: String) -> URL? {
+        Bundle.main.url(forResource: name, withExtension: "png")
+            ?? Bundle.main.url(forResource: name, withExtension: "jpg")
+    }
+
+    private func artwork(for candidate: EpisodeSession) async throws -> EpisodeArtwork {
+        let shot = candidate.shot
+        let names = Set([shot.background] + shot.actors.map(\.asset))
+        let outgoing = session.map { Set([$0.shot.background] + $0.shot.actors.map(\.asset)) } ?? []
+        let retained = EpisodeArtwork(images: art.filter { names.contains($0.key) || outgoing.contains($0.key) })
+        return try await Task.detached(priority: .userInitiated) {
+            var images = retained.images
+            for name in names where images[name] == nil {
+                if Self.artURL(name) == nil, let bundled = UIImage(named: name) {
+                    images[name] = bundled.preparingThumbnail(of: CGSize(width: 854, height: 1280)) ?? bundled
+                    continue
+                }
+                guard let url = Self.artURL(name),
+                      let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+                      let cg = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                        kCGImageSourceCreateThumbnailFromImageAlways: true,
+                        kCGImageSourceThumbnailMaxPixelSize: 1280,
+                        kCGImageSourceCreateThumbnailWithTransform: true,
+                        kCGImageSourceShouldCacheImmediately: true,
+                      ] as CFDictionary) else { throw CocoaError(.fileReadCorruptFile) }
+                images[name] = UIImage(cgImage: cg)
+            }
+            return EpisodeArtwork(images: images)
+        }.value
     }
 
     private func load() async {
@@ -470,31 +548,40 @@ public struct LondonEpisodeView: View {
                 throw CocoaError(.fileNoSuchFile)
             }
             let episode = try StoryEpisode.load(data: Data(contentsOf: url))
-            // This one-station preview is bounded to eight images (~48 MiB decoded).
-            // Prepare them off-main once; never decode or read disk on a dialogue tap.
-            let names = episode.assetNames
-            guard names.count <= 8 else { throw CocoaError(.fileReadTooLarge) }
-            let loaded = try await Task.detached(priority: .userInitiated) {
-                var images: [String: UIImage] = [:]
-                for name in names {
-                    let image: UIImage?
-                    if name.hasPrefix("city_backdrop_") {
-                        image = UIImage(named: name, in: Bundle.main, compatibleWith: nil)
-                    } else if let url = Bundle.main.url(forResource: name, withExtension: name.hasPrefix("oliver") || name.hasPrefix("nora") ? "png" : "jpg") {
-                        image = UIImage(contentsOfFile: url.path)
-                    } else { image = nil }
-                    guard let image else { throw CocoaError(.fileNoSuchFile) }
-                    images[name] = image.preparingForDisplay() ?? image
-                }
-                return EpisodeArtwork(images: images)
-            }.value
-            guard !Task.isCancelled else { return }
-            art = loaded.images
-            var saved = UserDefaults.standard.data(forKey: storageKey)
+            // Validate references up front; decode only the current and outgoing
+            // shot, so richer chapters do not grow the player's memory budget.
+            for name in episode.assetNames {
+                guard Self.artURL(name) != nil || UIImage(named: name) != nil else { throw CocoaError(.fileNoSuchFile) }
+            }
+            let progress = try await deps.storyProgress.progress(storyID: resourceName)
+            completionSettled = progress?.isCompleted == true
             #if DEBUG
-            if ProcessInfo.processInfo.environment["UI_TEST_EPISODE_FRESH"] == "1" { saved = nil }
+            if ProcessInfo.processInfo.environment["UI_TEST_EPISODE_FRESH"] == "1" {
+                let fresh = EpisodeSession(episode: episode)
+                art = try await artwork(for: fresh).images
+                session = fresh
+                return
+            }
             #endif
-            session = EpisodeSession(episode: episode, saved: saved)
+            if let progress {
+                let restored = try EpisodeSession(episode: episode, nodeID: progress.currentNodeID,
+                    flags: progress.flags, completed: progress.isCompleted)
+                art = try await artwork(for: restored).images
+                session = restored
+            } else {
+                let saved = UserDefaults.standard.data(forKey: storageKey)
+                let candidate = EpisodeSession(episode: episode, saved: saved)
+                // Remove the old preview checkpoint only after durable migration.
+                // Undecodable data is retained for recovery instead of overwritten.
+                if let saved {
+                    let checkpoint = try JSONDecoder().decode(EpisodeSession.Checkpoint.self, from: saved)
+                    guard checkpoint == candidate.checkpoint else { throw CocoaError(.coderReadCorrupt) }
+                    try await deps.storyProgress.saveCheckpoint(storyID: resourceName, nodeID: candidate.nodeID, flags: candidate.flags)
+                    UserDefaults.standard.removeObject(forKey: storageKey)
+                }
+                art = try await artwork(for: candidate).images
+                session = candidate
+            }
         } catch { loadError = true }
     }
 }

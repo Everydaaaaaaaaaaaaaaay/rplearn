@@ -41,7 +41,6 @@ struct RootView: View {
     @State private var signInAfterUsage = false
     @State private var showSignIn = false
     @State private var loginReason: String?
-    @State private var pendingStoryLoginReason: String?
     @State private var showLondonEpisode = false
     @State private var activeSceneActivity: SceneActivity?
     @State private var showPlacementTest = false
@@ -121,23 +120,10 @@ struct RootView: View {
 
     var body: some View {
         appContent
-            .fullScreenCover(isPresented: $showLondonEpisode, onDismiss: {
-                if let reason = pendingStoryLoginReason {
-                    pendingStoryLoginReason = nil
-                    loginReason = reason
-                }
-            }) {
+            .fullScreenCover(isPresented: $showLondonEpisode) {
                 #if DEBUG
-                if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
-                    LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
-                                      resourceName: ProcessInfo.processInfo.environment["UI_TEST_DEPARTURE_RESOURCE"] ?? "departures_london_v1")
-                } else {
-                    DepartureStoriesView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
-                                         access: departureAccess, economy: environment.economyStore)
-                }
-                #else
-                DepartureStoriesView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
-                                         access: departureAccess, economy: environment.economyStore)
+                LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
+                                  resourceName: ProcessInfo.processInfo.environment["UI_TEST_DEPARTURE_RESOURCE"] ?? "departures_london_v1")
                 #endif
             }
             .overlay {
@@ -465,7 +451,7 @@ struct RootView: View {
     private func homeDestinationView(_ destination: HomeDestination) -> some View {
         switch destination {
         case .stories:
-            StoryHubView(deps: homeDeps, onPreview: { showLondonEpisode = true })
+            StoryHubView(deps: homeDeps)
         case .mainline:
             MainlineListView(deps: homeDeps) { chapter in
                 homePath.append(chapter)
@@ -718,11 +704,10 @@ struct RootView: View {
     }
 
     private func storyView(storyID: String) -> some View {
-        AVGStoryView(
-            storyID: storyID,
-            scriptURL: Bundle.main.url(forResource: storyID, withExtension: "json")!,
-            deps: storyDeps
-        )
+        LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest", resourceName: storyID)
+            .navigationBarBackButtonHidden()
+            .toolbar(.hidden, for: .tabBar)
+            .dsTabBarHidden()
     }
 
     private var homeDeps: HomeDependencies {
@@ -802,13 +787,6 @@ struct RootView: View {
             speech: environment.speech,
             exampleTranslationActions: exampleTranslationActions
         )
-    }
-
-    private var departureAccess: JourneyAccess {
-        JourneyAccess(isGuest: !usesCloudState) { reason in
-            pendingStoryLoginReason = reason
-            showLondonEpisode = false
-        }
     }
 
     private var journeyAccess: JourneyAccess {

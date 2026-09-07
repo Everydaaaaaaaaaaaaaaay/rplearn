@@ -56,13 +56,6 @@ public actor LocalUserStateCoordinator:
     }
 
     public func completeStory(_ storyID: String) async throws -> Bool {
-        guard try await storyProgressStore.progress(storyID: storyID)?.isCompleted != true else {
-            return false
-        }
-
-        // 先记录完成状态，确保重复回调不会重复发放本地奖励。
-        try await storyProgressStore.markCompleted(storyID: storyID)
-        _ = try await economyStore.addCoins(Self.storyCompletionReward)
-        return true
+        try await economyStore.claimLocalStoryReward(storyID: storyID, coins: Self.storyCompletionReward)
     }
 }

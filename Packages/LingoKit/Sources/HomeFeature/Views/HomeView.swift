@@ -292,7 +292,7 @@ public struct HomeView: View {
         guard let nextStop = mainlineJourney.stops.first(where: {
             !completedStories.contains($0.chapter.storyID)
         }) else {
-            return "五城回声 · 已完成"
+            return "出发之后 · 已完成"
         }
         let cityName = deps.regionCatalog.region(id: nextStop.regionID)?.nameZh ?? nextStop.chapter.title
         return "下一站 · \(cityName)"

@@ -7,7 +7,7 @@ struct MainlineCatalogTests {
     func mainlineChapterCatalog() {
         #expect(MainlineCatalog.chapters.count == 5)
         #expect(Set(MainlineCatalog.chapters.map(\.regionID)).count == 5)
-        #expect(MainlineCatalog.chapters.allSatisfy { $0.storyID.hasPrefix("mainline_") })
+        #expect(MainlineCatalog.chapters.allSatisfy { $0.storyID.hasPrefix("departures_") })
     }
 
     @Test("三条路线都经过五个主线城市，初始选择改变前期顺序")
@@ -66,7 +66,7 @@ struct MainlineCatalogTests {
         let guidance = MainlineCatalog.mapGuidance(
             starterRegionID: "london",
             currentRegionID: "london",
-            completedStoryIDs: ["mainline_london"],
+            completedStoryIDs: [MainlineCatalog.london.storyID],
             unlockedRegionIDs: ["london"],
             availableSideRegionIDs: ["dublin", "toronto"]
         )
@@ -132,7 +132,7 @@ struct CityStoryCatalogTests {
 
     @Test("可按城市查找对应剧情")
     func lookupByRegion() {
-        #expect(CityStoryCatalog.chapter(forRegion: "kingston")?.title == "录音棚里缺失的开场")
+        #expect(CityStoryCatalog.chapter(forRegion: "kingston")?.title == "节目末尾的名字")
         #expect(CityStoryCatalog.chapter(forRegion: "unknown") == nil)
     }
 }

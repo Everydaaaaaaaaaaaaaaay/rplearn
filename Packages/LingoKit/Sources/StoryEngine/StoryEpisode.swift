@@ -163,7 +163,7 @@ public struct StoryEpisode: Decodable, Sendable {
     }
 }
 
-/// Pilot-only local checkpoint. Stores decisions, then replays the validated graph
+/// Versioned local checkpoint. Stores decisions, then replays the validated graph
 /// to restore flags/history. Malformed or stale checkpoints restart safely.
 public struct EpisodeSession: Sendable {
     public struct Checkpoint: Codable, Sendable, Equatable {
@@ -222,6 +222,25 @@ public struct EpisodeSession: Sendable {
                 restored.choose(choiceID)
             } else if !restored.advance() { return }
         }
+    }
+
+    /// Restore synced progress by replaying the graph. A choice must be uniquely
+    /// identified by explicitly saved flags (missing is not false). Refuse stale
+    /// or ambiguous data so callers can preserve it and offer recovery.
+    public init(episode: StoryEpisode, nodeID: String?, flags: [String: Bool], completed: Bool) throws {
+        self.init(episode: episode)
+        for _ in 0..<episode.nodes.count {
+            if self.nodeID == nodeID || (nodeID == nil && completed && isFinished) {
+                guard self.flags == flags else { throw StoryEpisode.ValidationError.invalid("checkpoint flags") }
+                return
+            }
+            if let options = current.choices {
+                let matches = options.filter { !$0.flags.isEmpty && $0.flags.allSatisfy { flags[$0.key] == $0.value } }
+                guard matches.count == 1 else { throw StoryEpisode.ValidationError.invalid("checkpoint choice") }
+                choose(matches[0].id)
+            } else if !advance() { break }
+        }
+        throw StoryEpisode.ValidationError.invalid("checkpoint destination")
     }
 
     @discardableResult public mutating func advance() -> Bool {

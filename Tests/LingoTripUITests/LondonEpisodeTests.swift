@@ -41,7 +41,7 @@ final class LondonEpisodeTests: XCTestCase {
     private func advanceToNode(_ id: String) {
         for _ in 0..<160 {
             let value = app.buttons["episode.sound"].value as? String ?? ""
-            if value.hasSuffix(";node:\(id)") { return }
+            if value.contains(";node:\(id);") { return }
             guard app.buttons["episode.next"].exists else { break }
             app.buttons["episode.next"].tap()
         }
@@ -78,7 +78,7 @@ final class LondonEpisodeTests: XCTestCase {
         screenshot("london-05-ending")
         XCTAssertTrue(app.staticTexts["书架之间 · 他有稿却没报名，你如何帮忙？"].exists)
         XCTAssertTrue(app.staticTexts["本章影响：Oliver 自愿上场并读完一页，你在台下陪伴，随后给出了具体反馈。"].exists)
-        XCTAssertTrue(app.staticTexts["这一晚，你留下的选择"].exists)
+        XCTAssertTrue(app.staticTexts["这一站，你留下的选择"].exists)
         let replay = app.buttons["episode.restart"]
         let finish = app.buttons["episode.finish"]
         XCTAssertGreaterThanOrEqual(finish.frame.height, 48)
@@ -158,9 +158,9 @@ final class LondonEpisodeTests: XCTestCase {
         let story = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "剧情，")).firstMatch
         XCTAssertTrue(story.waitForExistence(timeout: 15))
         story.tap()
-        XCTAssertTrue(app.buttons["story.london.preview"].waitForExistence(timeout: 5))
-        app.buttons["story.london.preview"].tap()
-        let london = app.buttons["departures.chapter.departures_london_v1"]
+        XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
+        app.buttons["story.mainline"].tap()
+        let london = app.buttons["story.chapter.departures_london_v1"]
         XCTAssertTrue(london.waitForExistence(timeout: 10))
         london.tap()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))

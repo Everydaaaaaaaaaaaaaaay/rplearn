@@ -45,6 +45,7 @@ public struct MainlineListView: View {
                             }
                             .buttonStyle(.pressableCard)
                             .disabled(travelingStoryID != nil)
+                            .accessibilityIdentifier("story.chapter.\(stop.chapter.storyID)")
                             .accessibilityHint(
                                 access == .unlockedAway
                                     ? "自动飞往剧情所在城市后打开章节"
@@ -85,7 +86,7 @@ public struct MainlineListView: View {
         return VStack(alignment: .leading, spacing: DSSpacing.xs) {
             HStack(alignment: .firstTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("五城回声")
+                    Text("出发之后")
                         .font(.caption.weight(.bold))
                         .foregroundStyle(Color.dsSky)
                     Text(journey.title)

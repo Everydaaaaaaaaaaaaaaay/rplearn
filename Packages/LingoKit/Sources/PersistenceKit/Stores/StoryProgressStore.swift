@@ -27,19 +27,29 @@ public actor StoryProgressStore {
 
     /// 每步推进落一次进度。
     public func saveCheckpoint(storyID: String, nodeID: String?, flags: [String: Bool]) throws {
-        let entity = try fetchOrCreate(storyID)
-        entity.currentNodeID = nodeID
-        entity.flagsJSON = Self.encodeFlags(flags)
-        try journal(entity)
-        try modelContext.save()
+        do {
+            let entity = try fetchOrCreate(storyID)
+            entity.currentNodeID = nodeID
+            entity.flagsJSON = Self.encodeFlags(flags)
+            try journal(entity)
+            try modelContext.save()
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
     }
 
     public func markCompleted(storyID: String) throws {
-        let entity = try fetchOrCreate(storyID)
-        entity.completedAt = .now
-        entity.currentNodeID = nil
-        try journal(entity)
-        try modelContext.save()
+        do {
+            let entity = try fetchOrCreate(storyID)
+            entity.completedAt = entity.completedAt ?? .now
+            entity.currentNodeID = nil
+            try journal(entity)
+            try modelContext.save()
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
     }
 
     public func completedStoryIDs() throws -> Set<String> {

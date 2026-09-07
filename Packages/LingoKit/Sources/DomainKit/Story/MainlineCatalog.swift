@@ -94,34 +94,34 @@ public enum JourneyMapGuidance: Sendable, Equatable, Hashable {
 
 public enum MainlineCatalog {
     public static let london = MainlineChapter(
-        storyID: "mainline_london",
+        storyID: "departures_london_v1",
         regionID: "london",
-        title: "雨中的书店",
-        subtitle: "一本旧旅行札记，留下跨越五座城市的第一条回声"
+        title: "空着的那把椅子",
+        subtitle: "一页没念过的文字，以及一个由你陪伴的决定。"
     )
     public static let melbourne = MainlineChapter(
-        storyID: "mainline_melbourne",
+        storyID: "departures_mainline_melbourne_v1",
         regionID: "melbourne",
-        title: "清晨的海",
-        subtitle: "Ruby 在潮汐里发现了来自另一片海岸的录音"
+        title: "留给自己的一个下午",
+        subtitle: "Ruby 已经答应了所有人，却还没答应自己。"
     )
     public static let newYork = MainlineChapter(
-        storyID: "mainline_newyork",
+        storyID: "departures_mainline_newyork_v1",
         regionID: "newyork",
-        title: "快门与地铁",
-        subtitle: "Marcus 的旧胶片拍下了同一个神秘的罗盘符号"
+        title: "没有挂上的那张照片",
+        subtitle: "Marcus 最满意的照片，遇到了一个明确的“不”。"
     )
     public static let capeTown = MainlineChapter(
-        storyID: "mainline_capetown",
+        storyID: "departures_mainline_capetown_v1",
         regionID: "capetown",
-        title: "信号山的回声",
-        subtitle: "把三条线索带到桌山脚下，听见跨越海洋的广播"
+        title: "故事是谁的",
+        subtitle: "一场小型社区展览，不打算用一个声音代表所有人。"
     )
     public static let singapore = MainlineChapter(
-        storyID: "mainline_singapore",
+        storyID: "departures_mainline_singapore_v1",
         regionID: "singapore",
-        title: "雨林里的频率",
-        subtitle: "在新加坡拼合声音地图，决定它下一次被谁听见"
+        title: "下次见面的办法",
+        subtitle: "旅程接近尾声，你想留下一个真正可以兑现的约定。"
     )
 
     public static let chapters: [MainlineChapter] = [
@@ -137,23 +137,23 @@ public enum MainlineCatalog {
 
     public static let journeys: [MainlineJourney] = [
         journey(
-            id: "echoes-oliver",
+            id: "departures-oliver",
             starterRegionID: "london",
-            title: "旧书中的声音地图",
+            title: "从书店出发",
             characterOrder: [london, newYork, melbourne],
             postStoryRegionIDs: ["dublin", "edinburgh", "manchester", "toronto"]
         ),
         journey(
-            id: "echoes-ruby",
+            id: "departures-ruby",
             starterRegionID: "melbourne",
-            title: "潮汐送来的声音地图",
+            title: "从海边出发",
             characterOrder: [melbourne, london, newYork],
             postStoryRegionIDs: ["auckland", "sydney", "vancouver", "nairobi"]
         ),
         journey(
-            id: "echoes-marcus",
+            id: "departures-marcus",
             starterRegionID: "newyork",
-            title: "胶片里的声音地图",
+            title: "从街角出发",
             characterOrder: [newYork, melbourne, london],
             postStoryRegionIDs: ["neworleans", "kingston", "toronto", "manchester"]
         ),
@@ -224,7 +224,7 @@ public enum MainlineCatalog {
     ) -> Set<String> {
         var regionIDs = Set([journey(starterRegionID: starterRegionID).starterRegionID])
         for chapter in [london, melbourne, newYork]
-        where completedStoryIDs.contains(chapter.storyID) {
+        where completedStoryIDs.contains(chapter.storyID) || completedStoryIDs.contains(DepartureStoryIdentity.rewardID(for: chapter.storyID) ?? chapter.storyID) {
             regionIDs.insert(chapter.regionID)
         }
         return regionIDs
@@ -237,13 +237,6 @@ public enum MainlineCatalog {
         characterOrder: [MainlineChapter],
         postStoryRegionIDs: [String]
     ) -> MainlineJourney {
-        let objectives: [String] = [
-            "与你选择的伙伴会合，找到声音地图的第一块线索。",
-            "前往信号山追踪跨洋广播，确认这不是一场巧合。",
-            "循着广播中的名字找到第二位伙伴，补上新的城市回声。",
-            "找到最后一位伙伴，让三份线索指向同一个终点。",
-            "带着完整线索抵达新加坡，揭开声音地图留下的真正邀请。",
-        ]
         let chapters = [
             characterOrder[0],
             capeTown,
@@ -254,7 +247,7 @@ public enum MainlineCatalog {
         let stops = chapters.enumerated().map { index, chapter in
             MainlineStop(
                 chapter: chapter,
-                objective: objectives[index],
+                objective: chapter.subtitle,
                 sequenceNumber: index + 1,
                 isFinale: index == chapters.count - 1
             )
