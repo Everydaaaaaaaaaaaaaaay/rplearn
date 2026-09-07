@@ -8,8 +8,9 @@ import SpeechKit
 public struct HomeDependencies: Sendable {
     public let access: JourneyAccess
     public let economyStore: EconomyStore
+    public let itemStore: ItemStore
+    public let ticketStubStore: TicketStubStore
     public let storyProgress: StoryProgressStore
-    public let travelService: TravelService
     public let regionCatalog: RegionCatalog
     public let rosterStore: RosterStore
     public let chatStore: ChatStore
@@ -24,8 +25,9 @@ public struct HomeDependencies: Sendable {
     public init(
         access: JourneyAccess = JourneyAccess(),
         economyStore: EconomyStore,
+        itemStore: ItemStore,
+        ticketStubStore: TicketStubStore,
         storyProgress: StoryProgressStore,
-        travelService: TravelService,
         regionCatalog: RegionCatalog,
         rosterStore: RosterStore,
         chatStore: ChatStore,
@@ -39,8 +41,9 @@ public struct HomeDependencies: Sendable {
     ) {
         self.access = access
         self.economyStore = economyStore
+        self.itemStore = itemStore
+        self.ticketStubStore = ticketStubStore
         self.storyProgress = storyProgress
-        self.travelService = travelService
         self.regionCatalog = regionCatalog
         self.rosterStore = rosterStore
         self.chatStore = chatStore

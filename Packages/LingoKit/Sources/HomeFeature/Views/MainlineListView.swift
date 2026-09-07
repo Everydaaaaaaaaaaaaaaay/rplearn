@@ -9,10 +9,6 @@ public struct MainlineListView: View {
 
     @State private var profile: UserProfileDTO?
     @State private var completed: Set<String> = []
-    @State private var travelingStoryID: String?
-    @State private var pendingChapter: MainlineChapter?
-    @State private var flight: StoryTravelPresentation?
-    @State private var travelError: String?
 
     public init(
         deps: HomeDependencies,
@@ -33,27 +29,14 @@ public struct MainlineListView: View {
                     header(journey)
                     ForEach(Array(journey.stops.enumerated()), id: \.element.id) { index, stop in
                         let status = stopStatus(index: index, journey: journey)
-                        let access = StoryRegionAccess(
-                            regionID: stop.regionID,
-                            profile: profile
-                        )
-                        if access.canOpen {
-                            Button {
-                                open(stop, access: access)
-                            } label: {
-                                stopCard(stop, index: index, status: status, profile: profile)
-                            }
-                            .buttonStyle(.pressableCard)
-                            .disabled(travelingStoryID != nil)
-                            .accessibilityIdentifier("story.chapter.\(stop.chapter.storyID)")
-                            .accessibilityHint(
-                                access == .unlockedAway
-                                    ? "自动飞往剧情所在城市后打开章节"
-                                    : "打开章节"
-                            )
-                        } else {
+                        Button {
+                            open(stop, profile: profile)
+                        } label: {
                             stopCard(stop, index: index, status: status, profile: profile)
                         }
+                        .buttonStyle(.pressableCard)
+                        .accessibilityIdentifier("story.chapter.\(stop.chapter.storyID)")
+                        .accessibilityHint("在当前位置直接打开章节")
                     }
                 } else {
                     ProgressView().frame(maxWidth: .infinity, minHeight: 220)
@@ -66,19 +49,6 @@ public struct MainlineListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task { await reload() }
         .onAppear { Task { await reload() } }
-        .fullScreenCover(item: $flight, onDismiss: finishTravel) { presentation in
-            StoryTravelTransitionView(presentation: presentation) {
-                flight = nil
-            }
-        }
-        .dsModalDialog(
-            isPresented: Binding(
-                get: { travelError != nil },
-                set: { if !$0 { travelError = nil } }
-            ),
-            configuration: travelErrorDialog,
-            onPrimary: {}
-        )
     }
 
     private func header(_ journey: MainlineJourney) -> some View {
@@ -97,7 +67,7 @@ public struct MainlineListView: View {
                     .font(.subheadline.monospacedDigit().weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-            Text(deps.access.isGuest ? "游客开放起始城市的第一站；登录后可继续五城旅程，进度会保留。" : "五站剧情已全部开放，可自由选择章节；每站进度独立保存。")
+            Text(deps.access.isGuest ? "章节不再要求飞往当地。游客可体验第一站；登录后即可在当前位置继续完整主线。" : "五章均可在当前位置直接开始，不再切换所在城市；每章进度独立保存。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -133,148 +103,41 @@ public struct MainlineListView: View {
         let chapter = stop.chapter
         let isCompleted = status == .completed
         let isNext = status == .next
-        let access = StoryRegionAccess(regionID: stop.regionID, profile: profile)
-        let isHere = access == .current
         let region = deps.regionCatalog.region(id: stop.regionID)
         let accent = DSScenePalette.city(chapter.regionID).accent
-        let isLoading = travelingStoryID == chapter.storyID
+        let canOpenForIdentity = deps.access.allowsStory(
+            chapter.storyID,
+            starterRegionID: profile.starterRegionID
+        )
 
         return StoryChapterCard(
-            artworkName: "home_mainline_\(chapter.regionID)",
+            artworkName: DSCitySceneAssets.imageName(for: .messages, regionID: chapter.regionID),
             countryCode: region?.countryCode,
             artworkBadge: index + 1 < 10 ? "0\(index + 1)" : "\(index + 1)",
             eyebrow: "第 \(index + 1) 站 · \(region?.nameZh ?? stop.regionID)",
-            badge: isHere ? "当前城市" : nil,
+            badge: nil,
             title: stop.displayTitle,
             subtitle: chapter.subtitle,
-            statusText: isLoading
-                ? "正在同步位置…"
-                : actionText(status: status, access: access, regionName: region?.nameZh),
-            statusIcon: statusIcon(status: status, access: access),
+            statusText: canOpenForIdentity
+                ? (isCompleted ? "可重温" : "开展剧情")
+                : "登录后开展",
+            statusIcon: canOpenForIdentity
+                ? (isCompleted ? "checkmark.circle.fill" : "play.circle.fill")
+                : "person.crop.circle.badge.plus",
             accent: accent,
-            isHighlighted: isNext || (isCompleted && isHere),
+            isHighlighted: isNext,
             isDimmed: false,
-            isLoading: isLoading
+            isLoading: false
         )
     }
 
-    private func actionText(
-        status: StopStatus,
-        access: StoryRegionAccess,
-        regionName: String?
-    ) -> String {
-        switch status {
-        case .completed:
-            switch access {
-            case .current:
-                "可重温"
-            case .unlockedAway:
-                "飞往\(regionName ?? "剧情城市")重温"
-            case .locked:
-                "请先在地图解锁\(regionName ?? "剧情城市")"
-            }
-        case .next, .available:
-            switch access {
-            case .current:
-                "开展剧情"
-            case .unlockedAway:
-                "飞往\(regionName ?? "剧情城市")开展剧情"
-            case .locked:
-                "请先在地图解锁\(regionName ?? "目标城市")"
-            }
-        }
-    }
-
-    private func statusIcon(status: StopStatus, access: StoryRegionAccess) -> String {
-        switch status {
-        case .completed:
-            access == .unlockedAway ? "airplane" : "checkmark.circle.fill"
-        case .next, .available:
-            switch access {
-            case .current:
-                "play.circle.fill"
-            case .unlockedAway:
-                "airplane"
-            case .locked:
-                "ticket.fill"
-            }
-        }
-    }
-
-    private func open(_ stop: MainlineStop, access: StoryRegionAccess) {
-        guard let profile else { return }
+    private func open(_ stop: MainlineStop, profile: UserProfileDTO) {
         guard deps.access.allowsStory(stop.chapter.storyID, starterRegionID: profile.starterRegionID) else {
             deps.access.requestSignIn("游客可以体验起始城市的剧情首站，登录后即可继续后续旅程。")
             return
         }
-        switch access {
-        case .current:
-            Haptics.impact(.light)
-            onOpenChapter(stop.chapter)
-        case .unlockedAway:
-            beginTravel(to: stop)
-        case .locked:
-            break
-        }
-    }
-
-    private func beginTravel(to stop: MainlineStop) {
-        let chapter = stop.chapter
-        guard travelingStoryID == nil,
-              let profile,
-              let destination = deps.regionCatalog.region(id: chapter.regionID)
-        else { return }
-
-        let originName = deps.regionCatalog.region(id: profile.currentRegionID)?.nameZh ?? "当前城市"
-        travelingStoryID = chapter.storyID
         Haptics.impact(.light)
-
-        Task {
-            do {
-                _ = try await deps.travelService.travel(to: destination)
-                guard !Task.isCancelled else { return }
-                pendingChapter = chapter
-                flight = StoryTravelPresentation(
-                    fromName: originName,
-                    toName: destination.nameZh,
-                    storyTitle: stop.displayTitle
-                )
-            } catch TravelService.TravelError.alreadyThere {
-                travelingStoryID = nil
-                await reload()
-                onOpenChapter(chapter)
-            } catch {
-                travelingStoryID = nil
-                travelError = storyTravelErrorMessage(error)
-            }
-        }
-    }
-
-    private func finishTravel() {
-        guard let chapter = pendingChapter else {
-            travelingStoryID = nil
-            return
-        }
-        pendingChapter = nil
-        travelingStoryID = nil
-        Task {
-            await reload()
-            onOpenChapter(chapter)
-        }
-    }
-
-    private var travelErrorDialog: DSModalDialogConfiguration {
-        DSModalDialogConfiguration(
-            eyebrow: "航程未开始",
-            title: "暂时无法前往剧情城市",
-            message: travelError ?? "位置同步暂时没有完成，请稍后重试。",
-            icon: "airplane.circle.fill",
-            tone: .warning,
-            primaryTitle: "知道了",
-            primaryIcon: "checkmark",
-            primaryRole: .cancel,
-            secondaryTitle: nil
-        )
+        onOpenChapter(stop.chapter)
     }
 
     private func reload() async {

@@ -1,4 +1,4 @@
-/// 一座城市独立于主线的在地故事。首次抵达城市后解锁，并需在当地开展。
+/// 一座城市独立于主线的生活故事。解锁后可从任意位置直接开展。
 public struct CityStoryChapter: Sendable, Equatable, Hashable, Identifiable {
     public let storyID: String
     public let regionID: String
@@ -16,6 +16,10 @@ public struct CityStoryChapter: Sendable, Equatable, Hashable, Identifiable {
 }
 
 public enum CityStoryCatalog {
+    /// 城市剧情不再绑定到访状态：前六篇默认开放，之后每累计一张机票开放三篇。
+    public static let defaultUnlockedChapterCount = 6
+    public static let chaptersPerTicket = 3
+
     /// 顺序与地区目录一致，便于产品配置和完整性检查。
     public static let chapters: [CityStoryChapter] = [
         CityStoryChapter(
@@ -112,5 +116,17 @@ public enum CityStoryCatalog {
 
     public static func chapter(forRegion regionID: String) -> CityStoryChapter? {
         chapters.first { $0.regionID == regionID }
+    }
+
+    public static func unlockedChapterCount(earnedTicketCount: Int) -> Int {
+        min(
+            chapters.count,
+            defaultUnlockedChapterCount + max(0, earnedTicketCount) * chaptersPerTicket
+        )
+    }
+
+    public static func requiredTicketCount(forChapterAt index: Int) -> Int {
+        guard index >= defaultUnlockedChapterCount else { return 0 }
+        return (index - defaultUnlockedChapterCount) / chaptersPerTicket + 1
     }
 }
