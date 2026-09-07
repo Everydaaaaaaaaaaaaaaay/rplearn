@@ -14,6 +14,10 @@ requested change; no mandatory repo scan or document preflight.
   output, caches and binary assets are not architecture sources; inspect them only when relevant.
 - For photographic scene assets or their video/UI composites, follow
   `docs/activity-scene-visual-acceptance.md` and keep a per-version acceptance record.
+  Before every scene design, asset selection/generation, compositing, hotspot adjustment,
+  or acceptance task, read that rule file, its current rejection register, and the scene's
+  latest acceptance record. Use `docs/templates/activity-scene-acceptance-record.md`;
+  explicitly recheck each open user-reported issue before claiming completion.
   Unverified or rejected assets are not release-ready; successful generation and code tests
   never substitute for spatial, object-use, and visual review.
 
