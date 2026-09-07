@@ -10,6 +10,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
     let onBack: () -> Void
     let navigationPath: Binding<NavigationPath>?
     let showsNavigationBar: Bool
+    let backLabel: String
     let rootContent: RootContent
     let destinationContent: DestinationContent
 
@@ -21,6 +22,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         onBack: @escaping () -> Void,
         navigationPath: Binding<NavigationPath>? = nil,
         showsNavigationBar: Bool = true,
+        backLabel: String = "返回",
         @ViewBuilder root: () -> RootContent,
         @ViewBuilder destination: () -> DestinationContent
     ) {
@@ -29,6 +31,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         self.onBack = onBack
         self.navigationPath = navigationPath
         self.showsNavigationBar = showsNavigationBar
+        self.backLabel = backLabel
         self.rootContent = root()
         self.destinationContent = destination()
     }
@@ -88,7 +91,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: onBack) {
-                    Label("返回", systemImage: "chevron.left")
+                    Label(backLabel, systemImage: "chevron.left")
                 }
             }
         }

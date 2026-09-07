@@ -1,14 +1,14 @@
-import AVFoundation
 import DesignSystem
 import DomainKit
 import SwiftUI
 import UIKit
 
-/// Immutable photo coordinates shared by foreground, video and object hotspots.
+/// Immutable photo coordinates shared by the single master, light and hotspots.
 struct ActivitySceneView: View {
     private static let photos: [String: UIImage] = Dictionary(uniqueKeysWithValues:
-        ActivitySceneID.allCases.flatMap { [$0.poster, $0.table] }.compactMap { name in
-            asset(name, "jpg").flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
+        Set(ActivitySceneID.allCases.map(\.poster)).sorted().compactMap { name in
+            (asset(name, "png") ?? asset(name, "jpg"))
+                .flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
         })
     let isVisible: Bool
     let showsInterface: Bool
@@ -26,25 +26,24 @@ struct ActivitySceneView: View {
     @State private var requestsMotion = true
     @State private var lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
     @State private var thermal = ProcessInfo.processInfo.thermalState
-    @State private var playbackFailed = false
-    @State private var videoPlaying = false
+    @State private var lightPlaying = false
     @State private var completedLoops = 0
-    @State private var quietInterval = false
+    @State private var playbackSeconds = 0
 
     private var usesMotion: Bool {
-        requestsMotion && !reduceMotion && !lowPower && thermal != .serious && thermal != .critical
-            && !playbackFailed
+        ActivityAmbientLightLayer.permitsMotion(requested: requestsMotion, reduceMotion: reduceMotion,
+                                               lowPower: lowPower, thermal: thermal)
     }
 
     private var playbackDescription: String {
         guard usesMotion else { return "静态" }
-        let status = quietInterval ? "自然空场" : videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
+        let status = lightPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
-            return "动态 · \(status) · 循环\(completedLoops)"
+            return "动态 · \(status) · 循环\(completedLoops) · 秒\(playbackSeconds)"
         }
         #endif
-        return "动态 · \(status)"
+        return "环境光影 · \(status)"
     }
 
     var body: some View {
@@ -53,28 +52,26 @@ struct ActivitySceneView: View {
             let scale = max(proxy.size.width / 852, proxy.size.height / 1847)
             let width = 852 * scale
             let height = 1847 * scale
+            let origin = ActivitySceneLayout.origin(viewport: proxy.size, canvas: CGSize(width: width, height: height))
             let renderingScene = scene
             ZStack(alignment: .topLeading) {
                 Color(red: 0.14, green: 0.13, blue: 0.09)
                 ZStack(alignment: .topLeading) {
                     if let photo = Self.photos[scene.poster] {
-                        Image(uiImage: photo).resizable().frame(width: width, height: scene.videoHeight * scale)
+                        Image(uiImage: photo).resizable().frame(width: width, height: height)
                     }
-                    SceneMotionLayer(scene: scene, playing: usesMotion && isVisible && scenePhase == .active,
-                                  onFailure: { if scene == renderingScene { playbackFailed = true } },
-                                  onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
-                                  onLoop: { if scene == renderingScene { completedLoops = $0 } },
-                                  onQuiet: { if scene == renderingScene { quietInterval = $0 } })
-                        .id(scene)
-                        .frame(width: width, height: scene.videoHeight * scale)
+                    ActivityAmbientLightLayer(scene: scene,
+                        playing: usesMotion && isVisible && scenePhase == .active,
+                        onPlayback: { if scene == renderingScene { lightPlaying = $0 } },
+                        onProgress: { loops, seconds in
+                            if scene == renderingScene {
+                                completedLoops = loops
+                                playbackSeconds = seconds
+                            }
+                        })
+                        .frame(width: width, height: height)
                         .opacity(usesMotion ? 1 : 0)
-                        .allowsHitTesting(false)
-                        .accessibilityHidden(true)
-                    if let photo = Self.photos[scene.table] {
-                        Image(uiImage: photo).resizable()
-                            .frame(width: width, height: (1847 - scene.tableTop) * scale)
-                            .offset(y: scene.tableTop * scale)
-                    }
+                        .allowsHitTesting(false).accessibilityHidden(true)
                     if !typeSize.isAccessibilitySize && showsInterface {
                         ForEach(scene.actions) { activity in entrance(activity, scale: scale) }
                     }
@@ -82,10 +79,14 @@ struct ActivitySceneView: View {
                 .id(scene)
                 .transition(.opacity)
                 .frame(width: width, height: height, alignment: .topLeading)
-                .offset(x: (proxy.size.width - width) / 2, y: (proxy.size.height - height) / 2)
-                LinearGradient(colors: [.black.opacity(0.48), .black.opacity(0.24), .clear],
+                .offset(x: origin.x, y: origin.y)
+                // Overscan belongs to the photo, not the interface's layout proposal.
+                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .topLeading)
+                LinearGradient(stops: [.init(color: .black.opacity(0.48), location: 0),
+                                       .init(color: .black.opacity(0.42), location: 0.64),
+                                       .init(color: .clear, location: 1)],
                                startPoint: .top, endPoint: .bottom)
-                    .frame(height: max(proxy.safeAreaInsets.top, 54) + 220)
+                    .frame(height: max(proxy.safeAreaInsets.top, 54) + 250)
                     .allowsHitTesting(false).accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 9) {
                     HStack {
@@ -94,8 +95,8 @@ struct ActivitySceneView: View {
                         Spacer()
                         Text(cityName.isEmpty ? "城市活动" : "\(cityName) · 城市活动").font(.subheadline.weight(.semibold))
                         Spacer()
-                        Button(action: onJournal) { Image(systemName: "book.closed").frame(width: 44, height: 44) }
-                            .accessibilityLabel("行动足迹，已完成 \(completedCount) 项")
+                        Button(action: onJournal) { Image(systemName: "person.2").frame(width: 44, height: 44) }
+                            .accessibilityLabel("相遇与足迹，已记录 \(completedCount) 项")
                             .accessibilityIdentifier("activities.journal")
                     }
                     ScrollViewReader { reader in
@@ -137,14 +138,14 @@ struct ActivitySceneView: View {
                         Button {
                             requestsMotion.toggle()
                         } label: {
-                            Label(usesMotion ? "动态" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
+                            Label(usesMotion ? "光影" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
                                 .font(.caption).frame(minHeight: 44)
                         }
                         .accessibilityIdentifier("activities.motion")
                         .accessibilityValue(playbackDescription)
                     }
-                    if reduceMotion || lowPower || thermal == .serious || thermal == .critical || playbackFailed {
-                        Text(playbackFailed ? "视频暂不可用 · 静态场景" : "节能或减少动态效果 · 静态场景")
+                    if reduceMotion || lowPower || thermal == .serious || thermal == .critical {
+                        Text("节能或减少动态效果 · 静态场景")
                             .font(.caption)
                     }
                 }
@@ -153,6 +154,7 @@ struct ActivitySceneView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, max(proxy.safeAreaInsets.top, 54) + 8)
                 .opacity(showsInterface ? 1 : 0)
+                .accessibilityHidden(!showsInterface)
 
                 if typeSize.isAccessibilitySize && showsInterface {
                     VStack(spacing: 18) {
@@ -166,10 +168,22 @@ struct ActivitySceneView: View {
                 }
 
                 Text("情景美术 · 非城市实拍 / 实时画面")
-                    .font(.caption2).foregroundStyle(Color.dsHologramIvory.opacity(0.8))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    .font(.caption2)
+                    // All v4 masters have dark wood at this disclosure anchor.
+                    .foregroundStyle(Color.dsHologramIvory.opacity(0.9))
+                    .shadow(color: .black.opacity(0.55), radius: 0.7, y: 0.5)
                     .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 78)
+                    .frame(width: proxy.size.width, height: proxy.size.height, alignment: .bottom)
                     .opacity(showsInterface ? 1 : 0)
+                    .accessibilityIdentifier("activities.disclosure")
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+                    Text(playbackDescription).font(.system(size: 1)).foregroundStyle(.clear)
+                        .accessibilityIdentifier("activities.playbackStatus")
+                        .accessibilityValue(playbackDescription)
+                        .allowsHitTesting(false)
+                }
+                #endif
             }
             .clipped()
             .overlay(alignment: .leading) {
@@ -195,16 +209,15 @@ struct ActivitySceneView: View {
     private func switchScene(to item: ActivitySceneID) {
         guard scene != item else { return }
         actions.cancel()
-        playbackFailed = false
-        videoPlaying = false
+        lightPlaying = false
         completedLoops = 0
-        quietInterval = false
+        playbackSeconds = 0
         withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) { scene = item }
     }
 
     private func entrance(_ activity: SceneActivity, scale: CGFloat) -> some View {
         let id = activity.id, title = activity.title, symbol = activity.symbol, anchor = activity.anchor
-        let bounds = anchor.bounds
+        let bounds = anchor.entranceBounds
         return Button {
             actions.perform(for: id) { onSelect(activity) }
         } label: {
@@ -218,8 +231,15 @@ struct ActivitySceneView: View {
                         .fixedSize().frame(width: 128, alignment: .center)
                 }
                 .frame(width: 128, height: 100)
+                .overlay(alignment: .topTrailing) {
+                    Image(systemName: "arrow.up.right.circle")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(Color.dsHologramIvory.opacity(0.9))
+                        .padding(6)
+                        .accessibilityHidden(true)
+                }
             }
-            .modifier(ActivityPlaneProjection(quad: anchor.localQuad(scale: scale)))
+            .modifier(ActivityPlaneProjection(quad: anchor.localEntranceQuad(scale: scale)))
             .frame(width: bounds.width * scale, height: bounds.height * scale, alignment: .topLeading)
             .contentShape(Rectangle())
         }
@@ -245,172 +265,5 @@ struct ActivitySceneLabel: View {
             // Matches DSHologramTextRenderer.displayPadding; pixel regression
             // test below catches any future mismatch if that renderer changes.
             .offset(x: -12)
-    }
-}
-
-/// AVFoundation decodes one small silent video; no SwiftUI timer or per-frame state writes.
-private struct SceneMotionLayer: UIViewRepresentable {
-    let scene: ActivitySceneID
-    let playing: Bool
-    let onFailure: () -> Void
-    let onPlayback: (Bool) -> Void
-    let onLoop: (Int) -> Void
-    let onQuiet: (Bool) -> Void
-
-    final class Surface: UIView {
-        override class var layerClass: AnyClass { AVPlayerLayer.self }
-        var playerLayer: AVPlayerLayer { layer as! AVPlayerLayer }
-    }
-
-    @MainActor final class Coordinator {
-        let player = AVQueuePlayer()
-        var looper: AVPlayerLooper?
-        var looperObservation: NSKeyValueObservation?
-        var observation: NSKeyValueObservation?
-        var playbackObservation: NSKeyValueObservation?
-        var endObservation: NSObjectProtocol?
-        var failureObservation: NSObjectProtocol?
-        var wakeTask: Task<Void, Never>?
-        var enabled = false
-        var waiting = false
-        var seeking = false
-        var remainingDelay: TimeInterval = 0
-        var waitStart: ContinuousClock.Instant?
-        var passes = 0
-        var cadence = ActivityAmbientCadence()
-        var random = SystemRandomNumberGenerator()
-        var onQuiet: (Bool) -> Void = { _ in }
-        var onLoop: (Int) -> Void = { _ in }
-
-        func setPlaying(_ value: Bool) {
-            guard enabled != value else { return }
-            enabled = value
-            if value {
-                if waiting { scheduleWake() } else if !seeking { player.play() }
-            } else {
-                player.pause()
-                if let waitStart {
-                    let elapsed = waitStart.duration(to: .now).components
-                    remainingDelay = max(0, remainingDelay - Double(elapsed.seconds) - Double(elapsed.attoseconds) / 1e18)
-                }
-                waitStart = nil
-                wakeTask?.cancel()
-                wakeTask = nil
-            }
-        }
-
-        func finishedPass() {
-            guard !waiting else { return }
-            passes += 1
-            onLoop(passes)
-            waiting = true
-            onQuiet(true)
-            remainingDelay = cadence.nextDelay(using: &random)
-            #if DEBUG
-            // Explicit UI-test acceleration; normal debug/phone launches use real cadence.
-            if ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_CADENCE"] == "accelerated" {
-                remainingDelay = 2
-            }
-            #endif
-            if enabled { scheduleWake() }
-        }
-
-        func scheduleWake() {
-            guard wakeTask == nil, waiting, enabled else { return }
-            waitStart = .now
-            let delay = remainingDelay
-            wakeTask = Task { [weak self] in
-                do { try await Task.sleep(for: .seconds(delay)) } catch { return }
-                guard let self, self.enabled, !Task.isCancelled else { return }
-                self.wakeTask = nil
-                self.waitStart = nil
-                self.remainingDelay = 0
-                self.waiting = false
-                self.seeking = true
-                // Hold the final empty frame until an exact seek has completed.
-                self.player.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] finished in
-                    Task { @MainActor in
-                        guard let self else { return }
-                        self.seeking = false
-                        guard finished else { return }
-                        self.onQuiet(false)
-                        if self.enabled { self.player.play() }
-                    }
-                }
-            }
-        }
-
-        func stop() {
-            setPlaying(false)
-            wakeTask?.cancel()
-            player.pause()
-            observation = nil
-            playbackObservation = nil
-            if let endObservation { NotificationCenter.default.removeObserver(endObservation) }
-            if let failureObservation { NotificationCenter.default.removeObserver(failureObservation) }
-            endObservation = nil
-            failureObservation = nil
-            player.currentItem?.cancelPendingSeeks()
-            looper?.disableLooping()
-            looperObservation = nil
-            looper = nil
-            player.replaceCurrentItem(with: nil)
-        }
-    }
-
-    func makeCoordinator() -> Coordinator { Coordinator() }
-
-    func makeUIView(context: Context) -> Surface {
-        let view = Surface()
-        view.backgroundColor = .clear
-        view.playerLayer.videoGravity = .resizeAspectFill
-        let coordinator = context.coordinator
-        coordinator.onQuiet = onQuiet
-        coordinator.onLoop = onLoop
-        coordinator.player.isMuted = true
-        coordinator.player.actionAtItemEnd = .pause
-        coordinator.player.preventsDisplaySleepDuringVideoPlayback = false
-        coordinator.playbackObservation = coordinator.player.observe(\.timeControlStatus, options: [.initial, .new]) { player, _ in
-            let running = player.timeControlStatus == .playing
-            Task { @MainActor in onPlayback(running) }
-        }
-        view.playerLayer.player = coordinator.player
-        if let url = ActivitySceneView.asset("activity-\(scene.rawValue)-loop", "mp4") {
-            let item = AVPlayerItem(url: url)
-            if scene == .pond {
-                coordinator.player.actionAtItemEnd = .advance
-                // AVPlayerLooper queues the next decode before the boundary;
-                // unlike a notification + seek, it does not pause at the seam.
-                coordinator.looper = AVPlayerLooper(player: coordinator.player, templateItem: item)
-                coordinator.looperObservation = coordinator.looper?.observe(\.status, options: [.new]) { looper, _ in
-                    if looper.status == .failed { Task { @MainActor in onFailure() } }
-                }
-            } else {
-                coordinator.player.replaceCurrentItem(with: item)
-                coordinator.endObservation = NotificationCenter.default.addObserver(
-                    forName: AVPlayerItem.didPlayToEndTimeNotification, object: item, queue: .main
-                ) { [weak coordinator] _ in
-                    Task { @MainActor in coordinator?.finishedPass() }
-                }
-            }
-            coordinator.failureObservation = NotificationCenter.default.addObserver(
-                forName: AVPlayerItem.failedToPlayToEndTimeNotification, object: item, queue: .main
-            ) { _ in Task { @MainActor in onFailure() } }
-            coordinator.observation = item.observe(\.status, options: [.initial, .new]) { item, _ in
-                if item.status == .failed { Task { @MainActor in onFailure() } }
-            }
-        } else {
-            Task { @MainActor in onFailure() }
-        }
-        return view
-    }
-
-    func updateUIView(_ view: Surface, context: Context) {
-        context.coordinator.setPlaying(playing)
-    }
-
-    static func dismantleUIView(_ view: Surface, coordinator: Coordinator) {
-        coordinator.stop()
-        view.playerLayer.player = nil
     }
 }

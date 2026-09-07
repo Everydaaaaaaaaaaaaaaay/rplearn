@@ -10,6 +10,7 @@ public actor ChatStore {
         case conversationNotFound
         case voiceMediaConflict
         case voiceMessageNotFound
+        case activityIdentityConflict
     }
 
     /// 取角色的主会话，没有则创建。
@@ -20,6 +21,11 @@ public actor ChatStore {
             throw ChatError.characterNotFound
         }
         if let existing = character.conversations.first(where: { !$0.isArchived }) {
+            if character.isFriend && existing.isEncounterSession {
+                existing.isEncounterSession = false
+                try journal(existing)
+                try modelContext.save()
+            }
             return Self.dto(from: existing, characterID: characterID)
         }
         let conversation = ConversationEntity(isEncounterSession: isEncounterSession)
@@ -606,6 +612,77 @@ public actor ChatStore {
     }
 
     // MARK: - 私有
+
+    /// Commits only an actually revealed scene line, plus its contextual memory.
+    /// Retry uses the same UUID. Never archive/replace an existing friend's chat.
+    @discardableResult
+    public func appendActivityLineIfNeeded(
+        messageID: UUID, characterID: UUID, role: MessageRole, text: String,
+        translation: String, context: String
+    ) throws -> MessageDTO {
+        if let existing = try fetchMessage(id: messageID) {
+            guard existing.conversation?.character?.characterID == characterID,
+                  existing.roleRaw == role.rawValue, existing.text == text else {
+                throw ChatError.activityIdentityConflict
+            }
+            try journalActivityMemory(characterID: characterID, index: existing.orderIndex)
+            return dto(from: existing)
+        }
+        guard let character = try modelContext.fetch(FetchDescriptor<CharacterEntity>(
+            predicate: #Predicate { $0.characterID == characterID }
+        )).first else { throw ChatError.characterNotFound }
+        let conversation: ConversationEntity
+        if let current = character.conversations.first(where: { !$0.isArchived }) {
+            conversation = current
+        } else {
+            conversation = ConversationEntity(isEncounterSession: !character.isFriend)
+            conversation.character = character
+            modelContext.insert(conversation)
+        }
+        let index = (conversation.messages.map(\.orderIndex).max() ?? -1) + 1
+        let message = MessageEntity(messageID: messageID, roleRaw: role.rawValue,
+            kindRaw: MessageKind.text.rawValue, text: text, orderIndex: index)
+        message.translationZh = translation
+        message.conversation = conversation
+        modelContext.insert(message)
+        conversation.lastMessageAt = message.createdAt
+        conversation.lastReadAt = message.createdAt
+        if role == .assistant { conversation.turnCount += 1 }
+        let memory = MemoryEntity(tierRaw: MemoryTier.short.rawValue, sourceRaw: MemorySource.activity.rawValue,
+            content: "\(context)\n\(role == .user ? "用户" : character.name)：\(text)",
+            importance: 3, sourceUpToIndex: index)
+        memory.character = character
+        modelContext.insert(memory)
+        do {
+            try journal(message)
+            try journal(conversation)
+            // Commit line and memory together, then bind the permanent SwiftData
+            // identity using the same mapping as MemoryStore. Retry repairs outbox.
+            try modelContext.save()
+            try journalActivityMemory(characterID: characterID, index: index)
+            return dto(from: message)
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
+    }
+
+    private func journalActivityMemory(characterID: UUID, index: Int) throws {
+        let source = MemorySource.activity.rawValue
+        let memories = try modelContext.fetch(FetchDescriptor<MemoryEntity>(predicate: #Predicate {
+            $0.character?.characterID == characterID && $0.sourceRaw == source && $0.sourceUpToIndex == index
+        }))
+        for memory in memories {
+            let resourceID = try ContentMutationJournal.resourceID(in: modelContext, resourceType: .memory,
+                localKey: ContentMutationJournal.persistentKey(memory.persistentModelID))
+            try ContentMutationJournal.upsert(in: modelContext, resourceType: .memory,
+                resourceID: resourceID, parentID: characterID.uuidString.lowercased(),
+                payloadJSON: try ContentMutationJournal.encode(ContentMemoryPayload(
+                    content: memory.content, createdAt: memory.createdAt, importance: memory.importance,
+                    source: memory.sourceRaw, sourceUpToIndex: index, tier: memory.tierRaw)))
+        }
+        try modelContext.save()
+    }
 
     private func fetchConversation(id: UUID) throws -> ConversationEntity? {
         try modelContext.fetch(

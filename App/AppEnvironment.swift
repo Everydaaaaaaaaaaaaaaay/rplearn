@@ -108,7 +108,13 @@ final class AppEnvironment {
         let regionsURL = Bundle.main.url(forResource: "regions", withExtension: "json")!
         self.regionCatalog = try! RegionCatalog(url: regionsURL)
 
-        let container = try! ModelContainerFactory.makeContainer()
+        #if DEBUG
+        let isolatesSocialUITest = ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1"
+            && ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] != nil
+        #else
+        let isolatesSocialUITest = false
+        #endif
+        let container = try! ModelContainerFactory.makeContainer(inMemory: isolatesSocialUITest)
         self.modelContainer = container
         let accountCacheStore = AccountCacheStore(modelContainer: container)
         self.accountCacheStore = accountCacheStore
@@ -186,7 +192,11 @@ final class AppEnvironment {
         )
 
         Log.app.info("AppEnvironment initialized")
-        Task { await authSession.bootstrap() }
+        if isolatesSocialUITest {
+            needsOnboarding = false
+        } else {
+            Task { await authSession.bootstrap() }
+        }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
