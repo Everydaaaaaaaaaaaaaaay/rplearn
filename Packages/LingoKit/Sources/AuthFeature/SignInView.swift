@@ -350,7 +350,14 @@ public struct SignInView: View {
                 try await session.loginWithApple(
                     authorizationCode: authorizationCode,
                     challengeID: challenge.challengeId,
-                    identityToken: identityToken
+                    identityToken: identityToken,
+                    appleUserID: credential.user,
+                    displayName: credential.fullName.flatMap {
+                        let name = PersonNameComponentsFormatter()
+                            .string(from: $0)
+                            .trimmingCharacters(in: .whitespacesAndNewlines)
+                        return name.isEmpty ? nil : name
+                    }
                 )
             } catch {
                 errorMessage = error.localizedDescription

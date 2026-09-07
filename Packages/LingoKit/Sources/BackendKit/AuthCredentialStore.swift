@@ -2,6 +2,7 @@ import CoreKit
 import Foundation
 
 public struct StoredAuthCredential: Codable, Sendable, Equatable {
+    public let appleUserID: String?
     public let refreshToken: String
     public let refreshTokenExpiresAt: Date
     public let sessionID: UUID
@@ -11,8 +12,10 @@ public struct StoredAuthCredential: Codable, Sendable, Equatable {
         refreshToken: String,
         refreshTokenExpiresAt: Date,
         sessionID: UUID,
-        userID: UUID
+        userID: UUID,
+        appleUserID: String? = nil
     ) {
+        self.appleUserID = appleUserID
         self.refreshToken = refreshToken
         self.refreshTokenExpiresAt = refreshTokenExpiresAt
         self.sessionID = sessionID

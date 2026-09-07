@@ -406,6 +406,13 @@ public struct MyPageView: View {
                     subscriptionCard
                     usageButton
                     if isSignedIn {
+                        NavigationLink {
+                            AccountSecurityView(session: authSession)
+                        } label: {
+                            Label("账号与安全", systemImage: "person.badge.key.fill")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+
                         Button(role: .destructive) {
                             Task {
                                 await authSession.logout()

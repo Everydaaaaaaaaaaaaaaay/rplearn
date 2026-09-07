@@ -21,7 +21,17 @@ public actor BackendClient {
         let authorizationCode: String
         let challengeId: UUID
         let device: BackendDevice
+        let displayName: String?
         let identityToken: String
+    }
+
+    private struct IdentityUnlinkBody: Encodable, Sendable {
+        let confirmation = "UNLINK"
+    }
+
+    private struct AccountDeletionBody: Encodable, Sendable {
+        let confirmation = "DELETE"
+        let mode: String
     }
 
     private struct LogoutBody: Encodable, Sendable {
@@ -103,6 +113,10 @@ public actor BackendClient {
         return AuthIdentity(sessionID: stored.sessionID, userID: stored.userID)
     }
 
+    public func storedAppleUserID() throws -> String? {
+        try credentialStore.load()?.appleUserID
+    }
+
     /// The server deduplicates claims; a retry can never transfer this journey to a second account.
     public func claimGuestJourney() async throws {
         guard let guestInstallationKey else { return }
@@ -167,6 +181,8 @@ public actor BackendClient {
         authorizationCode: String,
         challengeID: UUID,
         identityToken: String,
+        appleUserID: String,
+        displayName: String?,
         device: BackendDevice
     ) async throws -> AuthIdentity {
         let token: AuthTokenResponse = try await send(
@@ -176,12 +192,77 @@ public actor BackendClient {
                 authorizationCode: authorizationCode,
                 challengeId: challengeID,
                 device: device,
+                displayName: displayName,
                 identityToken: identityToken
             ),
             authenticated: false
         )
-        try apply(token)
+        try apply(token, appleUserID: appleUserID)
         return AuthIdentity(sessionID: token.sessionId, userID: token.userId)
+    }
+
+    public func linkWithApple(
+        authorizationCode: String,
+        challengeID: UUID,
+        identityToken: String,
+        appleUserID: String,
+        displayName: String?
+    ) async throws {
+        struct Body: Encodable, Sendable {
+            let authorizationCode: String
+            let challengeId: UUID
+            let displayName: String?
+            let identityToken: String
+        }
+        try await sendWithoutResponse(
+            path: "/v1/auth/apple/link",
+            method: "POST",
+            body: Body(
+                authorizationCode: authorizationCode,
+                challengeId: challengeID,
+                displayName: displayName,
+                identityToken: identityToken
+            )
+        )
+        try updateStoredAppleUserID(appleUserID)
+    }
+
+    public func accountIdentities() async throws -> [AccountIdentity] {
+        let response: AccountIdentitiesResponse = try await get("/v1/account/identities")
+        return response.identities
+    }
+
+    public func accountDeviceSessions() async throws -> [AccountDeviceSession] {
+        let response: AccountDeviceSessionsResponse = try await get("/v1/auth/sessions")
+        return response.sessions
+    }
+
+    public func revokeDeviceSession(_ sessionID: UUID) async throws {
+        try await sendWithoutResponse(
+            path: "/v1/auth/sessions/\(sessionID.uuidString.lowercased())",
+            method: "DELETE",
+            body: EmptyBody()
+        )
+    }
+
+    public func unlinkIdentity(_ identityID: UUID) async throws {
+        try await sendWithoutResponse(
+            path: "/v1/account/identities/\(identityID.uuidString.lowercased())",
+            method: "DELETE",
+            body: IdentityUnlinkBody()
+        )
+    }
+
+    public func deleteAccount(
+        immediately: Bool = true
+    ) async throws -> AccountDeletionReceipt {
+        let receipt: AccountDeletionReceipt = try await send(
+            path: "/v1/account",
+            method: "DELETE",
+            body: AccountDeletionBody(mode: immediately ? "immediate" : "grace_period")
+        )
+        try clearSession()
+        return receipt
     }
 
     public func logout(allDevices: Bool = false) async {
@@ -654,24 +735,48 @@ public actor BackendClient {
         }
     }
 
-    private func apply(_ token: AuthTokenResponse) throws {
+    private func apply(_ token: AuthTokenResponse, appleUserID: String? = nil) throws {
         guard token.tokenType.caseInsensitiveCompare("Bearer") == .orderedSame,
               let refreshExpiry = parseISO8601(token.refreshTokenExpiresAt)
         else {
             throw BackendClientError.invalidResponse
         }
+        let existing = try credentialStore.load()
+        let retainedAppleUserID = appleUserID ?? (
+            existing?.userID == token.userId ? existing?.appleUserID : nil
+        )
         try credentialStore.save(
             StoredAuthCredential(
                 refreshToken: token.refreshToken,
                 refreshTokenExpiresAt: refreshExpiry,
                 sessionID: token.sessionId,
-                userID: token.userId
+                userID: token.userId,
+                appleUserID: retainedAppleUserID
             )
         )
         accessToken = token.accessToken
         accessTokenExpiresAt = Date.now.addingTimeInterval(
             TimeInterval(token.accessTokenExpiresIn)
         )
+    }
+
+    private func updateStoredAppleUserID(_ appleUserID: String?) throws {
+        guard let stored = try credentialStore.load() else {
+            throw BackendClientError.signedOut
+        }
+        try credentialStore.save(
+            StoredAuthCredential(
+                refreshToken: stored.refreshToken,
+                refreshTokenExpiresAt: stored.refreshTokenExpiresAt,
+                sessionID: stored.sessionID,
+                userID: stored.userID,
+                appleUserID: appleUserID
+            )
+        )
+    }
+
+    public func clearStoredAppleUserID() throws {
+        try updateStoredAppleUserID(nil)
     }
 
     private func parseISO8601(_ value: String) -> Date? {
