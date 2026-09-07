@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 @MainActor
 final class HomeCitySceneTests: XCTestCase {
@@ -37,7 +38,19 @@ final class HomeCitySceneTests: XCTestCase {
             NSPredicate(format: "label BEGINSWITH %@ AND label ENDSWITH %@", "当前驻地，", city)
         ).firstMatch
         XCTAssertTrue(location.exists, "城市名称必须与背景同步更新")
-        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        // 可访问树先于首个合成帧就绪，直接截图偶尔只得到启动底色。
+        // 检查内容区域的像素差异，而非增加一个与机器速度有关的固定 sleep。
+        var renderedScreenshot: XCUIScreenshot?
+        let rendered = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            let candidate = app.screenshot()
+            guard Self.hasRenderedScene(candidate.image) else { return false }
+            renderedScreenshot = candidate
+            return true
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [rendered], timeout: 10), .completed,
+                       "场景尚未实际呈现，不接受空白验收截图")
+        guard let renderedScreenshot else { return }
+        let screenshot = XCTAttachment(screenshot: renderedScreenshot)
         screenshot.name = "home-city-\(id)"
         screenshot.lifetime = .keepAlways
         add(screenshot)
@@ -59,5 +72,27 @@ final class HomeCitySceneTests: XCTestCase {
         XCTAssertTrue(activitiesBack.waitForExistence(timeout: 4))
         activitiesBack.tap()
         XCTAssertTrue(map.waitForExistence(timeout: 4))
+    }
+
+    private static func hasRenderedScene(_ image: UIImage) -> Bool {
+        guard let cg = image.cgImage,
+              let crop = cg.cropping(to: CGRect(x: CGFloat(cg.width) * 0.08,
+                                               y: CGFloat(cg.height) * 0.15,
+                                               width: CGFloat(cg.width) * 0.84,
+                                               height: CGFloat(cg.height) * 0.65)) else { return false }
+        var pixels = [UInt8](repeating: 0, count: 16 * 16 * 4)
+        let didDraw = pixels.withUnsafeMutableBytes { bytes -> Bool in
+            guard let context = CGContext(data: bytes.baseAddress, width: 16, height: 16,
+                bitsPerComponent: 8, bytesPerRow: 16 * 4, space: CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            context.draw(crop, in: CGRect(x: 0, y: 0, width: 16, height: 16))
+            return true
+        }
+        guard didDraw else { return false }
+        let brightness = stride(from: 0, to: pixels.count, by: 4).map {
+            (Int(pixels[$0]) + Int(pixels[$0 + 1]) + Int(pixels[$0 + 2])) / 3
+        }
+        // 忽略状态栏/底栏；大面积均匀底色不能作为场景截图通过。
+        return (brightness.max() ?? 0) - (brightness.min() ?? 0) > 40
     }
 }

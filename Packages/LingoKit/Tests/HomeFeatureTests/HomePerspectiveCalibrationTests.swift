@@ -8,6 +8,50 @@ import UIKit
 struct HomePerspectiveCalibrationTests {
     private let tolerance: CGFloat = 0.000_01
 
+    @Test("照片边缘回归：墨尔本、都柏林必须保留显著的向右上方收敛")
+    func obliqueMapFramesMatchPhotographicEdges() throws {
+        // 来自最终 JPEG 边缘的独立像素测量，不从布局反算预期值。
+        // 这是防止旧坐标回归的数值门禁，不能替代逐图叠线验收。
+        for (id, width, height, leftY, rightY) in [
+            ("melbourne", 844.0, 1824.0, 464.0, 288.0),
+            ("dublin", 842.0, 1821.0, 494.0, 367.0),
+        ] {
+            let layout = try #require(HomeDepartureSceneLayout.scenes[id])
+            let quad = layout.map.projectedRegion().surface.quad
+            #expect(abs(quad.topLeft.y * height - leftY) < 3)
+            #expect(abs(quad.topRight.y * height - rightY) < 3)
+            let slope = (quad.topRight.y - quad.topLeft.y) * height /
+                ((quad.topRight.x - quad.topLeft.x) * width)
+            #expect(slope < -0.4, "\(id): 不能把斜墙地图错误标成正视矩形")
+            #expect(layout.map.photoSurface?.quad.points == layout.story.photoSurface?.quad.points)
+        }
+    }
+
+    @Test("正视地图不能凭空增加倾斜和梯形；奥克兰顶边方向不能反转")
+    func frontFacingMapsStayFrontFacing() throws {
+        for id in ["edinburgh", "singapore", "sydney"] {
+            let layout = try #require(HomeDepartureSceneLayout.scenes[id])
+            for entry in [layout.map, layout.story] {
+                let q = entry.projectedRegion().photoQuad
+                #expect(abs(q.topLeft.y - q.topRight.y) < 0.0001)
+                #expect(abs(q.bottomLeft.y - q.bottomRight.y) < 0.0001)
+                #expect(abs(q.topLeft.x - q.bottomLeft.x) < 0.0001)
+            }
+        }
+        let auckland = try #require(HomeDepartureSceneLayout.scenes["auckland"])
+        let q = auckland.map.projectedRegion().surface.quad
+        #expect(q.topRight.y > q.topLeft.y)
+    }
+
+    @Test("多伦多活动入口沿下门板而不是上门楣的反向斜率")
+    func torontoUsesLocalDoorPanel() throws {
+        let layout = try #require(HomeDepartureSceneLayout.scenes["toronto"])
+        let activity = layout.activities.projectedRegion().photoQuad
+        let lintel = layout.location.projectedRegion().photoQuad
+        #expect(activity.topRight.y > activity.topLeft.y)
+        #expect(lintel.topRight.y < lintel.topLeft.y)
+    }
+
     @Test("城市入口的视觉和热区使用同一摄影承载面，且不越出有效内容")
     func citySceneGeometryIsBoundedAndInvertible() throws {
         for (id, layout) in HomeDepartureSceneLayout.scenes {
