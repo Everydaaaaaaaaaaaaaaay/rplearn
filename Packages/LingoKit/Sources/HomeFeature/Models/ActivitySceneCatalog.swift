@@ -18,11 +18,11 @@ public enum ActivitySceneID: String, CaseIterable, Identifiable, Sendable {
         }
     }
     var actions: [SceneActivity] { SceneActivity.catalog.filter { $0.scene == self } }
-    var poster: String { self == .cafe ? "activity-cafe-interior-v2" : "activity-\(rawValue)-foreground" }
+    var poster: String { "activity-\(rawValue)-ambient-v4" }
     var encounterContext: String {
         switch self {
         case .cafe:
-            "An ordinary shared-table cafe. A pause between everyday errands; no assumption of occupation, coffee or book interests."
+            "An ordinary shared-table outdoor cafe on a pedestrian courtyard. A pause between everyday errands; no assumption of occupation, coffee or book interests."
         case .bookstall:
             "An ordinary outdoor second-hand book stall on a pedestrian street. People may be buying a gift, waiting, browsing or passing. Do not assume literary interests or that they are staff."
         case .flowerstall:
@@ -92,7 +92,7 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
                               response: "Would you mind… 是委婉请求；Not at all 表示完全不介意。")]), farewell],
               closing: "一张共用桌，可以容纳不同的生活节奏。"),
         .init(id: "cafe-neighbourhood", scene: .cafe, title: "聊聊附近", symbol: "map",
-              introduction: "看看窗外，想一想接下来去哪里。你向同桌的人问起附近，也许对方同样刚刚来到这里。",
+              introduction: "看看桌边的街景，想一想接下来去哪里。你向同桌的人问起附近，也许对方同样刚刚来到这里。",
               steps: [
                 .init(context: "饮品还没喝完，你和旁边的客人都暂时停下了脚步。你打算问问周边。",
                       question: "你想从什么话题开始？", choices: [

@@ -1,5 +1,9 @@
 # 街角咖啡馆 · 社交试点
 
+**已被v4替代**：用户同意环境动态后，当前运行场景为完整外摆咖啡馆照片加局部树影，
+见[新素材及实现](../Ambient-v4/README.md)和[验收记录](../StreetStalls/acceptance-v4.md)。
+下文为已拒收v3的历史实现；旧资源已移至`../RejectedRuntime-v3/`，不再打包或播放。
+
 当前视觉状态：2026-09-07用户复查退回。v3已局部修复入口压扁/过小，室内外机位及循环问题仍未关闭。
 本文保留实现说明，不是放行证据；以[最新检查记录](../StreetStalls/acceptance-v3.md)为准。
 
@@ -24,7 +28,7 @@
 
 ```sh
 python Scripts/stabilize-cafe-footage.py <27023.mp4> /tmp/cafe-stabilized.mp4
-bash Scripts/prepare-cafe-activity-scene.sh /tmp/cafe-stabilized.mp4
+bash Scripts/prepare-cafe-activity-scene.sh --rejected-preview /tmp/cafe-stabilized.mp4 /tmp/cafe-rejected-preview
 ```
 
 室内运行时 PNG 与新母版字节一致，未二次生成、未放大。原视频取 13.5–60.5 秒，以建筑

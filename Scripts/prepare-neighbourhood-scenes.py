@@ -1,26 +1,38 @@
 #!/usr/bin/env python3
-"""Register licensed footage to a fixed facade, crop, grade and close the seam.
+"""Reproduce the REJECTED v3 scene composites for diagnosis only.
 
-Usage: python prepare-neighbourhood-scenes.py bookstall|flowerstall SOURCE OUTPUT_DIR
+Usage: python prepare-neighbourhood-scenes.py --rejected-preview bookstall|flowerstall SOURCE OUTPUT_DIR
 Requires opencv-python-headless, numpy and ffmpeg. No generative image processing.
 Masters/provenance: Assets/Activities/StreetStalls/README.md.
 """
 import pathlib
 import subprocess
-import sys
 import tempfile
+import argparse
+
+from scene_preview_guard import require_preview
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--rejected-preview", action="store_true")
+parser.add_argument("scene", choices=["bookstall", "flowerstall"])
+parser.add_argument("source")
+parser.add_argument("output")
+args = parser.parse_args()
+try:
+    out = require_preview(args.output, args.rejected_preview)
+except ValueError as error:
+    parser.error(str(error))
 
 import cv2
 import numpy as np
 
-scene, source, output = sys.argv[1:]
+scene, source = args.scene, args.source
 config = {
     "bookstall": dict(source=(3840, 2160), start=14.0, seconds=45.5, crop=(1700, 0, 1560, 2150),
                      size=(1024, 1412), mask=(0, 25, 720, 170), name="street", saturation=0.9),
     "flowerstall": dict(source=(1920, 1080), start=0.5, seconds=62.0, crop=(820, 0, 750, 1080),
                    size=(750, 1080), mask=(0, 5, 720, 160), name="street", saturation=0.9),
 }[scene]
-out = pathlib.Path(output)
 out.mkdir(parents=True, exist_ok=True)
 w, h = config["source"]
 ow, oh = config["size"]
@@ -71,8 +83,9 @@ with tempfile.TemporaryDirectory(prefix="lingotrip-registered-") as scratch:
         decode_status, encode_status = decoder.wait(), encoder.wait()
     if decode_status or encode_status or count != expected_frames:
         raise RuntimeError(f"Incomplete registration: {count}, {decode_status}/{encode_status}")
-    # The last 0.5 s transitions to the first 0.5 s. Start output at 0.5,
-    # so the file boundary itself is adjacent source frames, never a seek gap.
+    # Historical rejected effect: this whole-frame dissolve ghosts people.
+    # Rotating the join makes the file boundary adjacent but does NOT fix the
+    # visible transition inside the file. Kept only for before/after diagnosis.
     movie = out / f"activity-{scene}-{config['name']}-loop.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", intermediate, "-filter_complex",
         f"[0:v]eq=brightness=-0.025:saturation={config['saturation']},split[a][b];"
@@ -82,4 +95,4 @@ with tempfile.TemporaryDirectory(prefix="lingotrip-registered-") as scratch:
         "-pix_fmt", "yuv420p", "-g", "48", "-movflags", "+faststart", str(movie)], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(movie), "-frames:v", "1",
         "-q:v", "2", str(out / f"activity-{scene}-window.jpg")], check=True)
-print(f"{scene}: registered {count} frames; {config['seconds'] - 0.5} s continuous silent loop")
+print(f"REJECTED PREVIEW: {scene}, {count} registered frames, {config['seconds'] - 0.5} s. Not visually accepted; do not ship.")

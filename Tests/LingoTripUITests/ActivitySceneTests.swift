@@ -40,9 +40,13 @@ final class ActivitySceneTests: XCTestCase {
         for scene in ["cafe", "bookstall", "flowerstall"] {
             tap("activities.tab.\(scene)", app: app)
             let motion = app.buttons["activities.motion"]
-            if motion.label.contains("动态") { motion.tap() }
+            if motion.value as? String != "静态" { motion.tap() }
             XCTAssertEqual(motion.value as? String, "静态")
-            attach("clarity-v2-\(scene)", app: app)
+            let disclosure = app.staticTexts["activities.disclosure"]
+            XCTAssertTrue(disclosure.exists)
+            XCTAssertGreaterThan(disclosure.frame.minY, app.frame.height * 0.65)
+            XCTAssertLessThan(disclosure.frame.maxY, app.frame.height - 80)
+            attach("ambient-v4-\(scene)", app: app)
         }
     }
 
@@ -216,11 +220,11 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.action.start", app: app)
         waitFor("秒20", timeout: 15)
         edgeBack(app)
-        // Real media cadence, not shortened DEBUG timers. Cross two complete
-        // queue boundaries and verify a progressing playhead on the third pass.
-        waitFor("循环1", timeout: 35)
+        // Real 60-second Core Animation timeline, never shortened DEBUG timers.
+        // This validates playback state, NOT continuous human visual inspection.
+        waitFor("循环1", timeout: 70)
         attach("cafe-first-continuous-seam", app: app)
-        waitFor("循环2", timeout: 55)
+        waitFor("循环2", timeout: 70)
         waitFor("秒5", timeout: 10)
         attach("cafe-second-continuous-seam", app: app)
         motion.tap()

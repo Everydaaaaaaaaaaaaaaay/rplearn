@@ -61,4 +61,4 @@ finally:
     decode_status, encode_status = decoder.wait(), encoder.wait()
 if decode_status or encode_status or count != 1128:
     raise RuntimeError(f"Incomplete output: {count} frames, processes {decode_status}/{encode_status}")
-print(f"Registered {count} frames to the same facade; 47 s at natural speed.")
+print(f"Registered {count} frames; source timestamps preserved over 47 s. This does not validate natural gait or camera compatibility.")

@@ -1,5 +1,9 @@
 # 街边旧书摊 / 街角花摊
 
+**已被v4替代**：用户同意环境动态后，运行场景使用完整单次生成照片加局部树影，
+见[新素材及实现](../Ambient-v4/README.md)和[本轮验收](acceptance-v4.md)。
+下文是历史版本；旧运行合成在`../RejectedRuntime-v3/`，不再打包或播放。
+
 当前验收记录：[acceptance-v3.md](acceptance-v3.md)。v1、v2均已因用户复查退回。
 v3局部修复入口的变形、可读性和点击区域；背景慢放感、站位/抖动和循环自然性仍未关闭。
 其放行状态优先；不能以本文替代验收。
@@ -50,8 +54,8 @@ ffmpeg -i flowerstall-source-v1.png -vf 'pad=934:2025:0:341:color=black@0' -fram
 随后裁切、离线调色，H.264 24fps，无音轨。不再加 gblur，不会占用角色语音的音频会话。
 
 ```sh
-python Scripts/prepare-neighbourhood-scenes.py bookstall /path/to/67850.mp4 App/Resources/ActivityScene
-python Scripts/prepare-neighbourhood-scenes.py flowerstall /path/to/18027.mp4 App/Resources/ActivityScene
+python Scripts/prepare-neighbourhood-scenes.py --rejected-preview bookstall /path/to/67850.mp4 /tmp/bookstall-rejected-preview
+python Scripts/prepare-neighbourhood-scenes.py --rejected-preview flowerstall /path/to/18027.mp4 /tmp/flowerstall-rejected-preview
 ```
 
 - 书摊：原片 14–59.5 秒；使用3840×2160原片，裁切 (1700,0,1560,2150)，1024×1412，最终 45 秒。

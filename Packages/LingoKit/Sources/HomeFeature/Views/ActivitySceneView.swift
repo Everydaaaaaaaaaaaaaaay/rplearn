@@ -1,13 +1,12 @@
-import AVFoundation
 import DesignSystem
 import DomainKit
 import SwiftUI
 import UIKit
 
-/// Immutable photo coordinates shared by foreground, video and object hotspots.
+/// Immutable photo coordinates shared by the single master, light and hotspots.
 struct ActivitySceneView: View {
     private static let photos: [String: UIImage] = Dictionary(uniqueKeysWithValues:
-        Set(ActivitySceneID.allCases.flatMap { [$0.poster, $0.media.plate] }).sorted().compactMap { name in
+        Set(ActivitySceneID.allCases.map(\.poster)).sorted().compactMap { name in
             (asset(name, "png") ?? asset(name, "jpg"))
                 .flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
         })
@@ -27,25 +26,24 @@ struct ActivitySceneView: View {
     @State private var requestsMotion = true
     @State private var lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
     @State private var thermal = ProcessInfo.processInfo.thermalState
-    @State private var playbackFailed = false
-    @State private var videoPlaying = false
+    @State private var lightPlaying = false
     @State private var completedLoops = 0
     @State private var playbackSeconds = 0
 
     private var usesMotion: Bool {
-        requestsMotion && !reduceMotion && !lowPower && thermal != .serious && thermal != .critical
-            && !playbackFailed
+        ActivityAmbientLightLayer.permitsMotion(requested: requestsMotion, reduceMotion: reduceMotion,
+                                               lowPower: lowPower, thermal: thermal)
     }
 
     private var playbackDescription: String {
         guard usesMotion else { return "静态" }
-        let status = videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
+        let status = lightPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             return "动态 · \(status) · 循环\(completedLoops) · 秒\(playbackSeconds)"
         }
         #endif
-        return "动态 · \(status)"
+        return "环境光影 · \(status)"
     }
 
     var body: some View {
@@ -55,50 +53,25 @@ struct ActivitySceneView: View {
             let width = 852 * scale
             let height = 1847 * scale
             let origin = ActivitySceneLayout.origin(viewport: proxy.size, canvas: CGSize(width: width, height: height))
-            let media = scene.media
             let renderingScene = scene
             ZStack(alignment: .topLeading) {
                 Color(red: 0.14, green: 0.13, blue: 0.09)
                 ZStack(alignment: .topLeading) {
-                    if !media.alphaForeground, let photo = Self.photos[scene.poster] {
-                        Image(uiImage: photo).resizable().frame(width: width, height: height)
-                    }
-                    // Static and moving plates share exactly the same projection.
-                    // Outdoor stalls use their generated alpha, not a fake window.
-                    ZStack {
-                        if let plate = Self.photos[media.plate] {
-                            Image(uiImage: plate).resizable()
-                        }
-                        CafeMotionLayer(assetName: media.video,
-                            playing: usesMotion && isVisible && scenePhase == .active,
-                            onFailure: { if scene == renderingScene { playbackFailed = true } },
-                            onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
-                            onLoop: { if scene == renderingScene { completedLoops = $0 } },
-                            onProgress: { if scene == renderingScene { playbackSeconds = $0 } })
-                            .opacity(usesMotion ? 1 : 0)
-                    }
-                    .frame(width: media.size.width * scale, height: media.size.height * scale)
-                    .modifier(ActivityPlaneProjection(quad: media.localWindow(scale: scale)))
-                    .offset(x: media.origin.x * scale, y: media.origin.y * scale)
-                    .allowsHitTesting(false).accessibilityHidden(true)
                     if let photo = Self.photos[scene.poster] {
                         Image(uiImage: photo).resizable().frame(width: width, height: height)
-                            .mask {
-                                Path { path in
-                                    if media.alphaForeground {
-                                        path.addRect(CGRect(x: 0, y: 0, width: width, height: height))
-                                    }
-                                    for polygon in media.occluders {
-                                        guard let first = polygon.first else { continue }
-                                        path.move(to: CGPoint(x: first.x * scale, y: first.y * scale))
-                                        for point in polygon.dropFirst() {
-                                            path.addLine(to: CGPoint(x: point.x * scale, y: point.y * scale))
-                                        }
-                                        path.closeSubpath()
-                                    }
-                                }
-                            }.allowsHitTesting(false)
                     }
+                    ActivityAmbientLightLayer(scene: scene,
+                        playing: usesMotion && isVisible && scenePhase == .active,
+                        onPlayback: { if scene == renderingScene { lightPlaying = $0 } },
+                        onProgress: { loops, seconds in
+                            if scene == renderingScene {
+                                completedLoops = loops
+                                playbackSeconds = seconds
+                            }
+                        })
+                        .frame(width: width, height: height)
+                        .opacity(usesMotion ? 1 : 0)
+                        .allowsHitTesting(false).accessibilityHidden(true)
                     if !typeSize.isAccessibilitySize && showsInterface {
                         ForEach(scene.actions) { activity in entrance(activity, scale: scale) }
                     }
@@ -107,9 +80,13 @@ struct ActivitySceneView: View {
                 .transition(.opacity)
                 .frame(width: width, height: height, alignment: .topLeading)
                 .offset(x: origin.x, y: origin.y)
-                LinearGradient(colors: [.black.opacity(0.48), .black.opacity(0.24), .clear],
+                // Overscan belongs to the photo, not the interface's layout proposal.
+                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .topLeading)
+                LinearGradient(stops: [.init(color: .black.opacity(0.48), location: 0),
+                                       .init(color: .black.opacity(0.42), location: 0.64),
+                                       .init(color: .clear, location: 1)],
                                startPoint: .top, endPoint: .bottom)
-                    .frame(height: max(proxy.safeAreaInsets.top, 54) + 220)
+                    .frame(height: max(proxy.safeAreaInsets.top, 54) + 250)
                     .allowsHitTesting(false).accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 9) {
                     HStack {
@@ -161,14 +138,14 @@ struct ActivitySceneView: View {
                         Button {
                             requestsMotion.toggle()
                         } label: {
-                            Label(usesMotion ? "动态" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
+                            Label(usesMotion ? "光影" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
                                 .font(.caption).frame(minHeight: 44)
                         }
                         .accessibilityIdentifier("activities.motion")
                         .accessibilityValue(playbackDescription)
                     }
-                    if reduceMotion || lowPower || thermal == .serious || thermal == .critical || playbackFailed {
-                        Text(playbackFailed ? "视频暂不可用 · 静态场景" : "节能或减少动态效果 · 静态场景")
+                    if reduceMotion || lowPower || thermal == .serious || thermal == .critical {
+                        Text("节能或减少动态效果 · 静态场景")
                             .font(.caption)
                     }
                 }
@@ -192,16 +169,13 @@ struct ActivitySceneView: View {
 
                 Text("情景美术 · 非城市实拍 / 实时画面")
                     .font(.caption2)
-                    // The new book master has pale paper beneath this note.
-                    // Keep the disclosure readable without blurring the scene.
-                    .foregroundStyle(scene == .bookstall
-                        ? Color(red: 0.14, green: 0.18, blue: 0.17)
-                        : Color.dsHologramIvory.opacity(0.9))
-                    .shadow(color: scene == .bookstall ? .white.opacity(0.6) : .black.opacity(0.55),
-                            radius: 0.7, y: 0.5)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    // All v4 masters have dark wood at this disclosure anchor.
+                    .foregroundStyle(Color.dsHologramIvory.opacity(0.9))
+                    .shadow(color: .black.opacity(0.55), radius: 0.7, y: 0.5)
                     .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 78)
+                    .frame(width: proxy.size.width, height: proxy.size.height, alignment: .bottom)
                     .opacity(showsInterface ? 1 : 0)
+                    .accessibilityIdentifier("activities.disclosure")
                 #if DEBUG
                 if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
                     Text(playbackDescription).font(.system(size: 1)).foregroundStyle(.clear)
@@ -235,8 +209,7 @@ struct ActivitySceneView: View {
     private func switchScene(to item: ActivitySceneID) {
         guard scene != item else { return }
         actions.cancel()
-        playbackFailed = false
-        videoPlaying = false
+        lightPlaying = false
         completedLoops = 0
         playbackSeconds = 0
         withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) { scene = item }

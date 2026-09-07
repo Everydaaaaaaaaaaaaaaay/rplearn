@@ -21,35 +21,37 @@ enum ActivitySceneAnchor: CaseIterable {
     var quad: HomePerspectiveQuad {
         switch self {
         case .bookstallBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 123, y: 1176), topRight: CGPoint(x: 286, y: 1141),
-                                bottomRight: CGPoint(x: 310, y: 1222), bottomLeft: CGPoint(x: 143, y: 1260))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 140, y: 962), topRight: CGPoint(x: 300, y: 976),
+                                bottomRight: CGPoint(x: 300, y: 1065), bottomLeft: CGPoint(x: 140, y: 1050))
         case .bookstallRecommendations:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 576, y: 1172), topRight: CGPoint(x: 735, y: 1208),
-                                bottomRight: CGPoint(x: 707, y: 1301), bottomLeft: CGPoint(x: 544, y: 1263))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 565, y: 979), topRight: CGPoint(x: 740, y: 1015),
+                                bottomRight: CGPoint(x: 725, y: 1100), bottomLeft: CGPoint(x: 550, y: 1065))
         case .bookstallOpenBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 239, y: 1394), topRight: CGPoint(x: 391, y: 1383),
-                                bottomRight: CGPoint(x: 390, y: 1532), bottomLeft: CGPoint(x: 220, y: 1545))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 327, y: 1300), topRight: CGPoint(x: 517, y: 1310),
+                                bottomRight: CGPoint(x: 515, y: 1430), bottomLeft: CGPoint(x: 325, y: 1420))
         case .flowerstallBucket:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 65, y: 1170), topRight: CGPoint(x: 280, y: 1180),
-                                bottomRight: CGPoint(x: 269, y: 1325), bottomLeft: CGPoint(x: 79, y: 1315))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 80, y: 994), topRight: CGPoint(x: 257, y: 994),
+                                bottomRight: CGPoint(x: 254, y: 1120), bottomLeft: CGPoint(x: 85, y: 1120))
         case .flowerstallBouquet:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 541, y: 1270), topRight: CGPoint(x: 723, y: 1350),
-                                bottomRight: CGPoint(x: 604, y: 1480), bottomLeft: CGPoint(x: 473, y: 1405))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 545, y: 1280), topRight: CGPoint(x: 721, y: 1340),
+                                bottomRight: CGPoint(x: 673, y: 1440), bottomLeft: CGPoint(x: 500, y: 1380))
         case .flowerstallTable:
             // Near-side wrapping space: separate the waiting action from both
             // the bucket and bouquet, including their complete touch regions.
-            HomePerspectiveQuad(topLeft: CGPoint(x: 230, y: 1455), topRight: CGPoint(x: 390, y: 1455),
-                                bottomRight: CGPoint(x: 400, y: 1545), bottomLeft: CGPoint(x: 220, y: 1545))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 245, y: 1260), topRight: CGPoint(x: 395, y: 1260),
+                                bottomRight: CGPoint(x: 395, y: 1380), bottomLeft: CGPoint(x: 245, y: 1380))
         case .cafeSill:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 359, y: 883), topRight: CGPoint(x: 541, y: 883),
-                                bottomRight: CGPoint(x: 541, y: 989), bottomLeft: CGPoint(x: 359, y: 989))
+            // Historical enum name; v4 anchors the nearby conversation to the
+            // open courtyard beyond the chair, not an imaginary window sill.
+            HomePerspectiveQuad(topLeft: CGPoint(x: 463, y: 942), topRight: CGPoint(x: 643, y: 930),
+                                bottomRight: CGPoint(x: 643, y: 1040), bottomLeft: CGPoint(x: 463, y: 1052))
         case .cafeCup:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 583, y: 1297), topRight: CGPoint(x: 730, y: 1297),
-                                bottomRight: CGPoint(x: 716, y: 1376), bottomLeft: CGPoint(x: 600, y: 1376))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 580, y: 1230), topRight: CGPoint(x: 750, y: 1230),
+                                bottomRight: CGPoint(x: 742, y: 1340), bottomLeft: CGPoint(x: 584, y: 1340))
         case .cafePastry:
             // Empty near-side table, not glowing lettering projected over food.
-            HomePerspectiveQuad(topLeft: CGPoint(x: 185, y: 1290), topRight: CGPoint(x: 356, y: 1241),
-                                bottomRight: CGPoint(x: 383, y: 1318), bottomLeft: CGPoint(x: 198, y: 1374))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 170, y: 1130), topRight: CGPoint(x: 355, y: 1120),
+                                bottomRight: CGPoint(x: 355, y: 1230), bottomLeft: CGPoint(x: 170, y: 1240))
         case .map:
             HomePerspectiveQuad(topLeft: CGPoint(x: 22, y: 1280), topRight: CGPoint(x: 353, y: 1198),
                                 bottomRight: CGPoint(x: 484, y: 1401), bottomLeft: CGPoint(x: 113, y: 1498))
