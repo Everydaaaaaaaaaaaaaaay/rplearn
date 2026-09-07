@@ -191,7 +191,14 @@ struct ActivitySceneView: View {
                 }
 
                 Text("情景美术 · 非城市实拍 / 实时画面")
-                    .font(.caption2).foregroundStyle(Color.dsHologramIvory.opacity(0.8))
+                    .font(.caption2)
+                    // The new book master has pale paper beneath this note.
+                    // Keep the disclosure readable without blurring the scene.
+                    .foregroundStyle(scene == .bookstall
+                        ? Color(red: 0.14, green: 0.18, blue: 0.17)
+                        : Color.dsHologramIvory.opacity(0.9))
+                    .shadow(color: scene == .bookstall ? .white.opacity(0.6) : .black.opacity(0.55),
+                            radius: 0.7, y: 0.5)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                     .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 78)
                     .opacity(showsInterface ? 1 : 0)

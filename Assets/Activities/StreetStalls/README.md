@@ -1,15 +1,17 @@
 # 街边旧书摊 / 街角花摊
 
-验收记录：[acceptance-v1.md](acceptance-v1.md)。其放行状态优先；不能以本文替代验收。
+当前验收记录：[acceptance-v2.md](acceptance-v2.md)。v1 已因用户复查撤销通过。
+其放行状态优先；不能以本文替代验收。
 
 ## 一次性前景
 
-- `bookstall-source-v2.png`：内置 imagegen 全新生成；提示词 `bookstall-prompt-v2.md`。
-  SHA256 `3476cb9c4aae9821083312eef8ffc293a3c00418be042ba0e392a457438cfaf4`。
+- `bookstall-source-v3.png`：内置 imagegen 独立全新生成，1254×1254；提示词 `bookstall-prompt-v3.md`。
+  紧凑构图让像素集中在书封、书脊和纸页上；v2 只作为历史拒收记录保留。
 - `flowerstall-source-v1.png`：内置 imagegen 全新生成；提示词 `flowerstall-prompt-v1.md`。
   SHA256 `ae6cbe40214b7b292cdcd53fa7b9743993994974f12442351e1b61c0e8eb20b2`。
-- 两张输出实际均为 934×1684 RGBA，不假称生成器严格执行了要求尺寸。
-  等比例缩为 852×1536（整数舍入小于一像素），顶部补 311 像素透明留白至 852×1847。
+- 书摊只裁去底部34px腿下空隙，补1498px透明顶部至1254×2718。
+  花摊沿用934×1684原图，补341px透明顶部至934×2025。
+  两张均不缩放原生像素；运行时等比例适配已标定的852×1847坐标。
   不拉伸物品、不重绘、不去 UI、不借拒收图图生图。生成图没有街景或静止人物。
 - 运行时 `App/Resources/ActivityScene/activity-{bookstall,flowerstall}-foreground.png`；
   保留 alpha，由同一张静态前景遮挡背景视频，书叶/花茎边缘不用手画粗多边形。
@@ -18,7 +20,8 @@
 复现非生成处理（分别替换源图及目的路径）：
 
 ```sh
-ffmpeg -i bookstall-source-v2.png -vf 'scale=852:1536:flags=lanczos,pad=852:1847:0:311:color=black@0' -frames:v 1 activity-bookstall-foreground.png
+ffmpeg -i bookstall-source-v3.png -vf 'crop=1254:1220:0:0,pad=1254:2718:0:1498:color=black@0' -frames:v 1 activity-bookstall-foreground.png
+ffmpeg -i flowerstall-source-v1.png -vf 'pad=934:2025:0:341:color=black@0' -frames:v 1 activity-flowerstall-foreground.png
 ```
 
 ## 实拍动态与许可
@@ -33,7 +36,8 @@ ffmpeg -i bookstall-source-v2.png -vf 'scale=852:1536:flags=lanczos,pad=852:1847
   https://cdn.pixabay.com/video/2018/09/01/18027-287831458_large.mp4
   源 SHA256 `0e6bcbb61436f739c50f945dc8cff69766da3497774e05520a161756b0a239c4`。
   页面及 https://pixabay.com/service/license-summary/ 实际核对。
-  不原样出售/分发素材，不用人物作 NPC 身份或代言；裁切避开主要招牌并做远景柔焦。
+  不原样出售/分发素材，不用人物作 NPC 身份或代言。清晰版可见真实店招，
+  不把它们当合作品牌，也不抹除街景结构来伪称无招牌。
 - 背景是通用情景参考，不冒充用户当前驻地实拍、实时街景或真正存在的摊位。
   App 页面和素材来源页都有说明。原片不随 App 分发，仅打包加工后的背景。
 - 5330911 备用片来源页无法核实且遇安全验证，未使用；未绕过验证。
@@ -42,16 +46,16 @@ ffmpeg -i bookstall-source-v2.png -vf 'scale=852:1536:flags=lanczos,pad=852:1847
 ## 确定性动态处理
 
 `Scripts/prepare-neighbourhood-scenes.py` 用 OpenCV/SIFT 固定建筑作参照稳定画面，
-随后裁切、离线调色和失焦，H.264 24fps，无音轨。不会占用角色语音的音频会话。
+随后裁切、离线调色，H.264 24fps，无音轨。不再加 gblur，不会占用角色语音的音频会话。
 
 ```sh
 python Scripts/prepare-neighbourhood-scenes.py bookstall /path/to/67850.mp4 App/Resources/ActivityScene
 python Scripts/prepare-neighbourhood-scenes.py flowerstall /path/to/18027.mp4 App/Resources/ActivityScene
 ```
 
-- 书摊：原片 14–59.5 秒；先缩到 1920×1080，裁切 (850,0,780,1075)，512×706，最终 45 秒。
+- 书摊：原片 14–59.5 秒；使用3840×2160原片，裁切 (1700,0,1560,2150)，1024×1412，最终 45 秒。
   排除前 14 秒靠近镜头的路人，保留多组远处正常行走、停留的路人。
-- 花摊：原片 0.5–62.5 秒；裁切 (820,0,750,1080)，512×738，最终 61.5 秒。
+- 花摊：原片 0.5–62.5 秒；裁切 (820,0,750,1080)，保留750×1080，最终 61.5 秒。
 - 最后 0.5 秒衔接开头 0.5 秒，输出从原片 0.5 秒起；文件边界接相邻时刻。
   这只能消除播放/曝光硬切，是否有人影跳变必须通过实际接缝检查，不能只看时长断言自然。
 - 不定格等待、不倒放、不复制人影、不随机 seek。45/61.5 秒都是有限循环，

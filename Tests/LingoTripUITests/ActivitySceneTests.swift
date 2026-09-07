@@ -34,6 +34,18 @@ final class ActivitySceneTests: XCTestCase {
         button.tap()
     }
 
+    func testRevisedSceneVisualsAtNativeSize() {
+        let app = launch()
+        defer { app.terminate() }
+        for scene in ["cafe", "bookstall", "flowerstall"] {
+            tap("activities.tab.\(scene)", app: app)
+            let motion = app.buttons["activities.motion"]
+            if motion.label.contains("动态") { motion.tap() }
+            XCTAssertEqual(motion.value as? String, "静态")
+            attach("clarity-v2-\(scene)", app: app)
+        }
+    }
+
     func testCafeSocialConversationFriendAndChatHandoff() {
         let app = launch()
         defer { app.terminate() }
@@ -67,7 +79,7 @@ final class ActivitySceneTests: XCTestCase {
     func testGoodbyeDoesNotOfferFriendshipAndBothBackLevelsWork() {
         let app = launch()
         defer { app.terminate() }
-        tap("activities.scene.cafe-book", app: app)
+        tap("activities.scene.cafe-taste", app: app)
         edgeBack(app)
         XCTAssertTrue(app.buttons["activities.scene.cafe-neighbourhood"].waitForExistence(timeout: 4))
         tap("activities.scene.cafe-neighbourhood", app: app)
@@ -88,6 +100,7 @@ final class ActivitySceneTests: XCTestCase {
         let app = launch()
         defer { app.terminate() }
         for (scene, actions) in [
+            ("cafe", ["cafe-seat", "cafe-neighbourhood", "cafe-taste"]),
             ("bookstall", ["bookstall-cover", "bookstall-recommend", "bookstall-travel"]),
             ("flowerstall", ["flowerstall-colour", "flowerstall-bouquet", "flowerstall-queue"])
         ] {

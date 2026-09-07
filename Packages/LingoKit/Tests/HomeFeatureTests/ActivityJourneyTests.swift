@@ -10,8 +10,9 @@ final class ActivityJourneyTests: XCTestCase {
             XCTAssertTrue(scene.media.alphaForeground)
             let url = try XCTUnwrap(Bundle.main.url(forResource: scene.poster, withExtension: "png"))
             let image = try XCTUnwrap(UIImage(contentsOfFile: url.path)?.cgImage)
-            XCTAssertEqual(image.width, 852)
-            XCTAssertEqual(image.height, 1847)
+            XCTAssertEqual(image.width, scene == .bookstall ? 1254 : 934)
+            XCTAssertEqual(image.height, scene == .bookstall ? 2718 : 2025)
+            XCTAssertEqual(CGFloat(image.width) / CGFloat(image.height), 852.0 / 1847.0, accuracy: 0.001)
             XCTAssertTrue([CGImageAlphaInfo.first, .last, .premultipliedFirst, .premultipliedLast].contains(image.alphaInfo))
             // Rendering the top-left clear patch must not leave a white/black rectangle.
             var pixel = [UInt8](repeating: 0, count: 4)
@@ -57,7 +58,7 @@ final class ActivityJourneyTests: XCTestCase {
         for scene in ActivitySceneID.allCases {
             XCTAssertEqual(scene.actions.count, 3)
             XCTAssertEqual(Set(scene.actions.map(\.anchor)).count, 3)
-            for (name, ext) in [(scene.poster, scene == .cafe ? "jpg" : "png"), (scene.media.plate, "jpg"),
+            for (name, ext) in [(scene.poster, "png"), (scene.media.plate, "jpg"),
                                 (scene.media.video, "mp4")] {
                 XCTAssertNotNil(Bundle.main.url(forResource: name, withExtension: ext), name)
             }
@@ -79,6 +80,26 @@ final class ActivityJourneyTests: XCTestCase {
                 }
             }
         }
+    }
+
+    func testCafeActionsDoNotInventBookPropsAndRetiredActionHistorySurvives() throws {
+        let cafe = ActivitySceneID.cafe.actions
+        XCTAssertTrue(cafe.contains { $0.id == "cafe-taste" })
+        XCTAssertFalse(cafe.contains { $0.id == "cafe-book" })
+        for action in cafe {
+            XCTAssertFalse((action.title + action.introduction).contains("书"))
+            XCTAssertFalse(action.introduction.contains("菜单"))
+        }
+        let suite = "retired-cafe-action-\(UUID())"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let journal = ActivityJournal(namespace: "guest", city: "london", defaults: defaults)
+        let historical = "{\"version\":1,\"records\":[{\"id\":\"\(UUID())\",\"activityID\":\"cafe-book\",\"title\":\"借书开场\",\"date\":0,\"choices\":[]}]}"
+        defaults.set(Data(historical.utf8), forKey: journal.key)
+        let records = try journal.complete(try XCTUnwrap(cafe.first { $0.id == "cafe-taste" }), selections: [0, 1], runID: UUID())
+        XCTAssertEqual(records.count, 2)
+        XCTAssertEqual(records.first?.activityID, "cafe-book")
+        XCTAssertEqual(records.first?.title, "借书开场")
     }
 
     func testAllBranchesPreserveContextAndAreIdempotent() throws {
@@ -139,7 +160,7 @@ final class ActivityJourneyTests: XCTestCase {
         let track = try XCTUnwrap(video.first)
         let size = try await track.load(.naturalSize)
         let fps = try await track.load(.nominalFrameRate)
-        XCTAssertEqual(size, CGSize(width: 650, height: 520))
+        XCTAssertEqual(size, CGSize(width: 650, height: 404))
         XCTAssertEqual(fps, 24, accuracy: 0.01)
     }
 

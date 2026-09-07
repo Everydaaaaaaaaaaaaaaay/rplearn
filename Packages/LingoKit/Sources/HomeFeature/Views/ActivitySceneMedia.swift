@@ -26,20 +26,19 @@ extension ActivitySceneID {
         switch self {
         case .cafe:
             ActivitySceneMedia(plate: "activity-cafe-window", video: "activity-cafe-street-loop",
-                size: CGSize(width: 650, height: 520),
-                window: .init(topLeft: .init(x: 95, y: 295), topRight: .init(x: 748, y: 295),
-                    bottomRight: .init(x: 722, y: 817), bottomLeft: .init(x: 108, y: 813)),
-                occluders: [[.init(x: 119, y: 795), .init(x: 355, y: 793),
-                             .init(x: 379, y: 1111), .init(x: 139, y: 1157)]])
+                size: CGSize(width: 650, height: 404),
+                window: .init(topLeft: .init(x: 82, y: 340), topRight: .init(x: 827, y: 340),
+                    bottomRight: .init(x: 822, y: 803), bottomLeft: .init(x: 84, y: 803)),
+                occluders: [])
         case .bookstall:
             ActivitySceneMedia(plate: "activity-bookstall-window", video: "activity-bookstall-street-loop",
-                size: CGSize(width: 512, height: 706),
+                size: CGSize(width: 1024, height: 1412),
                 window: .init(topLeft: .zero, topRight: .init(x: 852, y: 0),
                     bottomRight: .init(x: 852, y: 1174.83), bottomLeft: .init(x: 0, y: 1174.83)),
                 occluders: [], alphaForeground: true)
         case .flowerstall:
             ActivitySceneMedia(plate: "activity-flowerstall-window", video: "activity-flowerstall-street-loop",
-                size: CGSize(width: 512, height: 738),
+                size: CGSize(width: 750, height: 1080),
                 window: .init(topLeft: .zero, topRight: .init(x: 852, y: 0),
                     bottomRight: .init(x: 852, y: 1228.13), bottomLeft: .init(x: 0, y: 1228.13)),
                 occluders: [], alphaForeground: true)

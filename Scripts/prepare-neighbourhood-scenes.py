@@ -15,10 +15,10 @@ import numpy as np
 
 scene, source, output = sys.argv[1:]
 config = {
-    "bookstall": dict(source=(1920, 1080), start=14.0, seconds=45.5, crop=(850, 0, 780, 1075),
-                     size=(512, 706), mask=(0, 25, 720, 170), name="street", saturation=0.78),
+    "bookstall": dict(source=(3840, 2160), start=14.0, seconds=45.5, crop=(1700, 0, 1560, 2150),
+                     size=(1024, 1412), mask=(0, 25, 720, 170), name="street", saturation=0.9),
     "flowerstall": dict(source=(1920, 1080), start=0.5, seconds=62.0, crop=(820, 0, 750, 1080),
-                   size=(512, 738), mask=(0, 5, 720, 160), name="street", saturation=0.65),
+                   size=(750, 1080), mask=(0, 5, 720, 160), name="street", saturation=0.9),
 }[scene]
 out = pathlib.Path(output)
 out.mkdir(parents=True, exist_ok=True)
@@ -75,7 +75,7 @@ with tempfile.TemporaryDirectory(prefix="lingotrip-registered-") as scratch:
     # so the file boundary itself is adjacent source frames, never a seek gap.
     movie = out / f"activity-{scene}-{config['name']}-loop.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", intermediate, "-filter_complex",
-        f"[0:v]eq=brightness=-0.025:saturation={config['saturation']},gblur=sigma=7,split[a][b];"
+        f"[0:v]eq=brightness=-0.025:saturation={config['saturation']},split[a][b];"
         f"[a][b]xfade=transition=fade:duration=0.5:offset={config['seconds'] - 0.5},"
         f"trim=start=0.5:end={config['seconds']},setpts=PTS-STARTPTS[v]",
         "-map", "[v]", "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "19",

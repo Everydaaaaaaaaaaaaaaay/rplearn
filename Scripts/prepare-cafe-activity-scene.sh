@@ -4,11 +4,11 @@ set -euo pipefail
 cafe_source="${1:?Pass stabilized 47-second intermediate from stabilize-cafe-footage.py}"
 cafe_output="${2:-App/Resources/ActivityScene}"
 mkdir -p "$cafe_output"
-# The approved indoor photograph is deliberately not regenerated or re-encoded.
+# The v2 interior is a separate one-shot master; never re-edit the old photograph.
 # 13.5–60.5: several complete distinct pedestrian passes, no foreground body at
 # the join. Fixed crop, natural speed. Reconcile distant movement/exposure over
 # 12 frames; rotate the finished seam to the end, then loop on consecutive frames.
-cafe_filter='fps=24,setsar=1,eq=brightness=-0.035:saturation=0.85'
+cafe_filter='crop=650:404:0:116,fps=24,setsar=1,eq=brightness=-0.035:saturation=0.85'
 ffmpeg -v error -y -t 47 -i "$cafe_source" \
   -t 0.5 -i "$cafe_source" -filter_complex \
   "[0:v]setpts=PTS-STARTPTS,$cafe_filter[a];[1:v]setpts=PTS-STARTPTS,$cafe_filter[b];[a][b]xfade=transition=fade:duration=0.5:offset=46.5,trim=start=0.5,setpts=PTS-STARTPTS,format=yuv420p[out]" \

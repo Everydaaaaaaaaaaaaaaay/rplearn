@@ -15,20 +15,20 @@ enum ActivitySceneLayout {
 /// Map folds are not one perfect plane; use the central readable patch. The cup
 /// uses its front-facing area, not the horizontal tabletop plane.
 enum ActivitySceneAnchor: CaseIterable {
-    case map, cup, journal, binoculars, sketchbook, postcard, cafeMenu, cafeCup, cafeBook
+    case map, cup, journal, binoculars, sketchbook, postcard, cafeSill, cafeCup, cafePastry
     case bookstallBook, bookstallRecommendations, bookstallOpenBook, flowerstallBucket, flowerstallBouquet, flowerstallTable
 
     var quad: HomePerspectiveQuad {
         switch self {
         case .bookstallBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 149, y: 1085), topRight: CGPoint(x: 312, y: 1126),
-                                bottomRight: CGPoint(x: 214, y: 1235), bottomLeft: CGPoint(x: 54, y: 1193))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 123, y: 1176), topRight: CGPoint(x: 286, y: 1141),
+                                bottomRight: CGPoint(x: 310, y: 1222), bottomLeft: CGPoint(x: 143, y: 1260))
         case .bookstallRecommendations:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 635, y: 984), topRight: CGPoint(x: 787, y: 1035),
-                                bottomRight: CGPoint(x: 673, y: 1095), bottomLeft: CGPoint(x: 523, y: 1042))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 576, y: 1172), topRight: CGPoint(x: 735, y: 1208),
+                                bottomRight: CGPoint(x: 707, y: 1301), bottomLeft: CGPoint(x: 544, y: 1263))
         case .bookstallOpenBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 232, y: 1425), topRight: CGPoint(x: 418, y: 1405),
-                                bottomRight: CGPoint(x: 413, y: 1575), bottomLeft: CGPoint(x: 199, y: 1573))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 239, y: 1394), topRight: CGPoint(x: 391, y: 1383),
+                                bottomRight: CGPoint(x: 390, y: 1532), bottomLeft: CGPoint(x: 220, y: 1545))
         case .flowerstallBucket:
             HomePerspectiveQuad(topLeft: CGPoint(x: 65, y: 1170), topRight: CGPoint(x: 280, y: 1180),
                                 bottomRight: CGPoint(x: 269, y: 1325), bottomLeft: CGPoint(x: 79, y: 1315))
@@ -40,15 +40,16 @@ enum ActivitySceneAnchor: CaseIterable {
             // project one flat label across raised scissors and twine.
             HomePerspectiveQuad(topLeft: CGPoint(x: 331, y: 1290), topRight: CGPoint(x: 491, y: 1290),
                                 bottomRight: CGPoint(x: 499, y: 1380), bottomLeft: CGPoint(x: 319, y: 1380))
-        case .cafeMenu:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 155, y: 905), topRight: CGPoint(x: 341, y: 898),
-                                bottomRight: CGPoint(x: 351, y: 1040), bottomLeft: CGPoint(x: 162, y: 1051))
+        case .cafeSill:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 359, y: 883), topRight: CGPoint(x: 541, y: 883),
+                                bottomRight: CGPoint(x: 541, y: 989), bottomLeft: CGPoint(x: 359, y: 989))
         case .cafeCup:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 552, y: 1088), topRight: CGPoint(x: 703, y: 1100),
-                                bottomRight: CGPoint(x: 690, y: 1200), bottomLeft: CGPoint(x: 556, y: 1188))
-        case .cafeBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 182, y: 1295), topRight: CGPoint(x: 319, y: 1250),
-                                bottomRight: CGPoint(x: 465, y: 1360), bottomLeft: CGPoint(x: 307, y: 1440))
+            HomePerspectiveQuad(topLeft: CGPoint(x: 583, y: 1297), topRight: CGPoint(x: 730, y: 1297),
+                                bottomRight: CGPoint(x: 716, y: 1376), bottomLeft: CGPoint(x: 600, y: 1376))
+        case .cafePastry:
+            // Empty near-side table, not glowing lettering projected over food.
+            HomePerspectiveQuad(topLeft: CGPoint(x: 185, y: 1290), topRight: CGPoint(x: 356, y: 1241),
+                                bottomRight: CGPoint(x: 383, y: 1318), bottomLeft: CGPoint(x: 198, y: 1374))
         case .map:
             HomePerspectiveQuad(topLeft: CGPoint(x: 22, y: 1280), topRight: CGPoint(x: 353, y: 1198),
                                 bottomRight: CGPoint(x: 484, y: 1401), bottomLeft: CGPoint(x: 113, y: 1498))

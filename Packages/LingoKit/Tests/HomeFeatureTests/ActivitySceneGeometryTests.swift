@@ -4,8 +4,8 @@ import UIKit
 @testable import HomeFeature
 
 final class ActivitySceneGeometryTests: XCTestCase {
-    func testStreetStallHotspotsClearTabBarOnCompactAndCurrentPhoneSizes() {
-        for scene in [ActivitySceneID.bookstall, .flowerstall] {
+    func testAllSceneHotspotsClearTabBarOnCompactAndCurrentPhoneSizes() {
+        for scene in ActivitySceneID.allCases {
             for size in [CGSize(width: 375, height: 667), CGSize(width: 402, height: 874)] {
                 let scale = max(size.width / 852, size.height / 1847)
                 let canvas = CGSize(width: 852 * scale, height: 1847 * scale)

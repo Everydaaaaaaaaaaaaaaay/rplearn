@@ -18,7 +18,7 @@ public enum ActivitySceneID: String, CaseIterable, Identifiable, Sendable {
         }
     }
     var actions: [SceneActivity] { SceneActivity.catalog.filter { $0.scene == self } }
-    var poster: String { "activity-\(rawValue)-\(self == .cafe ? "interior" : "foreground")" }
+    var poster: String { self == .cafe ? "activity-cafe-interior-v2" : "activity-\(rawValue)-foreground" }
     var encounterContext: String {
         switch self {
         case .cafe:
@@ -55,14 +55,15 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
     var anchor: ActivitySceneAnchor {
         switch id {
         case "cafe-seat": .cafeCup
-        case "cafe-neighbourhood": .cafeMenu
+        case "cafe-neighbourhood": .cafeSill
+        case "cafe-taste": .cafePastry
         case "bookstall-cover": .bookstallBook
         case "bookstall-recommend": .bookstallRecommendations
         case "bookstall-travel": .bookstallOpenBook
         case "flowerstall-colour": .flowerstallBucket
         case "flowerstall-bouquet": .flowerstallBouquet
         case "flowerstall-queue": .flowerstallTable
-        default: .cafeBook
+        default: .cafePastry
         }
     }
 
@@ -91,7 +92,7 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
                               response: "Would you mind… 是委婉请求；Not at all 表示完全不介意。")]), farewell],
               closing: "一张共用桌，可以容纳不同的生活节奏。"),
         .init(id: "cafe-neighbourhood", scene: .cafe, title: "聊聊附近", symbol: "map",
-              introduction: "在菜单旁想一想接下来去哪里。你向同桌的人问起附近，也许对方同样刚刚来到这里。",
+              introduction: "看看窗外，想一想接下来去哪里。你向同桌的人问起附近，也许对方同样刚刚来到这里。",
               steps: [
                 .init(context: "饮品还没喝完，你和旁边的客人都暂时停下了脚步。你打算问问周边。",
                       question: "你想从什么话题开始？", choices: [
@@ -100,15 +101,15 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
                         .init(english: "Are you exploring this area too?", chinese: "你也在探索这一带吗？",
                               response: "too 把话题放在双方的共同处境上，不把陌生人当成导游。")]), farewell],
               closing: "交换一点见闻，比收集一份标准答案更有意思。"),
-        .init(id: "cafe-book", scene: .cafe, title: "借书开场", symbol: "book",
-              introduction: "店里有几本供客人翻阅的书。你拿起一本，旁边的人也看了一眼——不必都是书迷才能聊两句。",
+        .init(id: "cafe-taste", scene: .cafe, title: "聊聊口味", symbol: "fork.knife",
+              introduction: "咖啡和点心端上来了。你和同桌的人对上目光，可以聊聊各自喜欢的口味，不必懂咖啡。",
               steps: [
-                .init(context: "你把共享书放到桌上，旁边的客人注意到了封面。你想试着聊一聊。",
+                .init(context: "你放下杯子，旁边的客人刚好也抬起头。你想从轻松的饮食偏好聊起，不打断对方用餐。",
                       question: "怎样给对方一个轻松的话题？", choices: [
-                        .init(english: "Does this cover remind you of anything?", chinese: "这个封面让你想起了什么吗？",
-                              response: "remind you of 邀请对方说联想，不要求对方读过这本书。"),
-                        .init(english: "Do you ever pick a book just for its cover?", chinese: "你会仅仅因为封面就挑一本书吗？",
-                              response: "ever 问的是有没有过这样的经历，不预设对方的阅读习惯。")]), farewell],
+                        .init(english: "Do you usually go for something sweet or savoury?", chinese: "你通常会选甜口的还是咸口的？",
+                              response: "go for 表示选择；savoury 指咸香口味，对方也可以说两种都喜欢。"),
+                        .init(english: "Do you have a favourite drink for a day like this?", chinese: "像今天这样的日子，你有没有特别想喝的饮品？",
+                              response: "a day like this 邀请分享当下偏好，不预设对方一定喝咖啡。")]), farewell],
               closing: "一段话题的起点，不必是一模一样的爱好。")
     ]
 }
