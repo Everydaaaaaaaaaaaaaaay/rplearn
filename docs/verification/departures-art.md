@@ -33,4 +33,6 @@ Oliver 好友头像原来动态裁切旧站姿。现将同样的方形像素独�
 
 上述 xcresult 位于 `build/DerivedData-speech-direction/VerificationResults/`。模拟器为独立 iPhone 17 Pro / iOS 26.1。单元遍历覆盖所有分支；原生端到端选择具有代表性的流程，不声称对每条路径进行独立人工操作。测试没有调用线上模型服务。
 
-真机独立测试 Bundle `com.tiantian.lingotrip.storyqa` 已在 iPhone 13 目标完成 Debug 构建与签名。Xcode 随后报告 `Unlock 姜予霖的iPhone to Continue`，在设备锁屏状态下等待，**内存与播放抽样尚未执行**。证据为 `build/departures-device-memory-v3.log`；这不是测试通过。独立 Bundle 用于隔离正式应用的数据。没有执行 App Store 上传或生产后端发布。本次不将服务器故障注入、跨设备线上账户同步或系统级低内存终止当作已经验证的项目。
+真机独立测试 Bundle `com.tiantian.lingotrip.storyqa` 已在 iPhone 13 目标完成 Debug 构建与签名。Xcode 随后报告 `Unlock 姜予霖的iPhone to Continue`；等待解锁数分钟后主动中止，释放构建锁并保留测试包，**内存与播放抽样尚未执行**。证据为 `build/departures-device-memory-v3.log`；这不是测试通过。独立 Bundle 用于隔离正式应用的数据。没有执行 App Store 上传或生产后端发布。本次不将服务器故障注入、跨设备线上账户同步或系统级低内存终止当作已经验证的项目。
+
+完成美术及相关代码的提交为 `1c719f7`。解锁手机后可复用 `build/DerivedData-departures-device`，以 `DEVELOPMENT_TEAM=L28WGN9J8T`、`LINGOTRIP_BUNDLE_ID=com.tiantian.lingotrip.storyqa`、`TEST_RUNNER_LINGOTRIP_STORY_DEVICE_METRICS=1` 运行 `LondonEpisodeTests/testDeviceStoryMemorySample`；使用新的 xcresult 路径，确认未跳过后再登记实际数据。
