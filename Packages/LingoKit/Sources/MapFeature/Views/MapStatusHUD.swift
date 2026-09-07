@@ -2,39 +2,16 @@ import DesignSystem
 import DomainKit
 import SwiftUI
 
-/// 地图顶部左侧的当前位置；资源与票根在右侧独立成列。
+/// 统一旅行工具栏中的当前位置，以单行排版保留地图可视面积。
 struct MapStatusHUD: View {
     let currentRegion: Region?
 
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
-        locationLine
-    }
-
-    private var locationLine: some View {
-        Group {
-            if let currentRegion {
-                Text("当前位于：")
-                    .fontWeight(.regular)
-                    + Text(currentRegion.flagEmoji)
-                    + Text(currentRegion.countryNameZh)
-                    .fontWeight(.heavy)
-                    + Text(" ")
-                    + Text(currentRegion.nameZh)
-                    .fontWeight(.heavy)
-            } else {
-                Text("当前位于：")
-                    .fontWeight(.regular)
-                    + Text("正在载入")
-                    .fontWeight(.heavy)
-            }
+        ViewThatFits(in: .horizontal) {
+            locationLine(showsContext: true)
+            locationLine(showsContext: false)
         }
-        .font(.system(size: 19, design: .rounded))
-        .foregroundStyle(primaryForeground)
-        .lineLimit(1)
-        .minimumScaleFactor(0.84)
-        .shadow(color: textHalo, radius: 1.5)
+        .frame(minHeight: 44)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(
             currentRegion.map {
@@ -43,26 +20,51 @@ struct MapStatusHUD: View {
         )
     }
 
-    private var primaryForeground: Color {
-        colorScheme == .dark ? .white : .black.opacity(0.88)
-    }
+    private func locationLine(showsContext: Bool) -> some View {
+        HStack(spacing: 4) {
+            Image(systemName: "location.north.fill")
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(Color.dsSky)
 
-    private var textHalo: Color {
-        colorScheme == .dark ? .black.opacity(0.44) : .white.opacity(0.72)
+            if showsContext {
+                Text("当前位置")
+                    .font(.system(size: 11, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.68))
+                    .fixedSize()
+            }
+
+            if let currentRegion {
+                Text(currentRegion.flagEmoji)
+                    .font(.system(size: 16))
+                    .fixedSize()
+
+                Text(currentRegion.nameZh)
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.96))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.78)
+            } else {
+                Text("正在载入")
+                    .font(.system(size: 13, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.84))
+                    .lineLimit(1)
+            }
+        }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
-/// 地图右上角的两行资源数字。以极简线性图标和柔光建立层级。
+/// 与当前位置同高的单行资源计数器。
 struct MapResourceHUD: View {
     let ticketCount: Int
     let coins: Int?
 
     var body: some View {
-        VStack(alignment: .trailing, spacing: 11) {
+        HStack(spacing: 10) {
             resource(
                 title: "机票",
                 value: ticketCount.formatted(),
-                tint: .dsSkyDeep,
+                tint: .dsSky,
                 icon: .ticket
             )
             resource(
@@ -72,6 +74,7 @@ struct MapResourceHUD: View {
                 icon: .coin
             )
         }
+        .frame(minHeight: 44)
         .accessibilityElement(children: .contain)
     }
 
@@ -81,17 +84,18 @@ struct MapResourceHUD: View {
         tint: Color,
         icon: MapResourceIcon.Kind
     ) -> some View {
-        HStack(spacing: 7) {
+        HStack(spacing: 4) {
             MapResourceIcon(kind: icon)
-                .frame(width: 17, height: 17)
-                .mapHUDGlow(tint, depthOpacity: 0.12)
+                .frame(width: 15, height: 15)
+                .foregroundStyle(tint)
 
             Text(value)
-                .font(.system(size: 15, weight: .regular, design: .rounded))
+                .font(.system(size: 13, weight: .semibold, design: .rounded))
                 .monospacedDigit()
-                .mapHUDGlow(tint, depthOpacity: 0.08)
+                .foregroundStyle(.white.opacity(0.94))
+                .lineLimit(1)
+                .minimumScaleFactor(0.76)
         }
-        .foregroundStyle(tint)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(title)
         .accessibilityValue(value)
@@ -111,12 +115,12 @@ private struct MapResourceIcon: View {
             switch kind {
             case .ticket:
                 Image(systemName: "airplane")
-                    .font(.system(size: 14, weight: .light))
+                    .font(.system(size: 13, weight: .semibold))
             case .coin:
                 MinimalCoinStackShape()
                     .stroke(
                         style: StrokeStyle(
-                            lineWidth: 1.05,
+                            lineWidth: 1.2,
                             lineCap: .round,
                             lineJoin: .round
                         )
@@ -165,15 +169,5 @@ private struct MinimalCoinStackShape: Shape {
         }
 
         return path
-    }
-}
-
-extension View {
-    /// 地图上的同色柔光与下投影：光晕提供发光感，偏移暗影赋予轻微厚度。
-    func mapHUDGlow(_ color: Color, depthOpacity: Double = 0.16) -> some View {
-        shadow(color: .white.opacity(0.76), radius: 1)
-            .shadow(color: color.opacity(0.58), radius: 3)
-            .shadow(color: color.opacity(0.32), radius: 7)
-            .shadow(color: .black.opacity(depthOpacity), radius: 1.1, x: 0, y: 1)
     }
 }

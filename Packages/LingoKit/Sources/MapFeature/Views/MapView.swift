@@ -119,7 +119,7 @@ public struct MapView: View {
             selectedRegionID: selectedRegionID,
             viewportRequest: viewportRequest,
             viewportInsets: UIEdgeInsets(
-                top: 128,
+                top: 92,
                 left: 30,
                 bottom: 104,
                 right: 30
@@ -131,66 +131,88 @@ public struct MapView: View {
     }
 
     private var mapHUD: some View {
-        ZStack(alignment: .topLeading) {
-            HStack(alignment: .top, spacing: 8) {
-                if let onBack {
-                    Button(action: onBack) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundStyle(Color.dsBrandInk)
-                            .frame(width: 40, height: 44, alignment: .top)
-                            .contentShape(Rectangle())
-                            .shadow(color: .white.opacity(0.78), radius: 2)
-                    }
-                    .buttonStyle(.pressableCard)
-                    .accessibilityLabel("返回首页")
+        HStack(spacing: 0) {
+            if let onBack {
+                Button(action: onBack) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.96))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
                 }
+                .buttonStyle(.pressableCard)
+                .accessibilityLabel("返回首页")
 
-                MapStatusHUD(
-                    currentRegion: currentRegion
-                )
-                    .layoutPriority(1)
-
-                Spacer(minLength: 0)
-
-                MapResourceHUD(
-                    ticketCount: tickets.count,
-                    coins: profile?.coins
-                )
+                mapHUDDivider
             }
-            .padding(.horizontal, DSSpacing.md)
-            .padding(.top, DSSpacing.xs)
+
+            MapStatusHUD(currentRegion: currentRegion)
+                .padding(.horizontal, 7)
+                .layoutPriority(2)
+
+            mapHUDDivider
+
+            MapResourceHUD(
+                ticketCount: tickets.count,
+                coins: profile?.coins
+            )
+            .padding(.horizontal, 7)
+            .layoutPriority(1)
+
+            mapHUDDivider
 
             NavigationLink(value: MapDestination.ticketStubs) {
-                Image(systemName: "ticket.fill")
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(.black)
-                    .frame(width: 42, height: 42)
-                    .background(.white, in: Circle())
-                    .contentShape(Circle())
-                    .shadow(color: .black.opacity(0.16), radius: 4, x: 0, y: 2)
+                HStack(spacing: 4) {
+                    Image(systemName: "ticket.fill")
+                        .font(.system(size: 14, weight: .semibold))
+                    Text("票根夹")
+                        .font(.system(size: 12, weight: .semibold, design: .rounded))
+                }
+                .foregroundStyle(.white.opacity(0.94))
+                .lineLimit(1)
+                .frame(minHeight: 44)
+                .padding(.horizontal, 7)
+                .contentShape(Rectangle())
             }
             .buttonStyle(.pressableCard)
             .accessibilityLabel("票根夹")
-            .padding(.leading, DSSpacing.md)
-            .padding(.top, 58)
         }
+        .frame(height: 54)
+        .padding(.horizontal, 4)
+        .background(
+            Color.dsTravelNavy.opacity(0.34),
+            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+        )
+        .dsSceneGlass(
+            radius: 18,
+            tint: .dsTravelNavy,
+            legibility: .enhanced
+        )
         .dynamicTypeSize(...DynamicTypeSize.large)
-        .frame(height: 112, alignment: .top)
+        .padding(.horizontal, 14)
+        .padding(.top, 8)
+        .frame(maxWidth: .infinity, alignment: .top)
         .background(alignment: .top) {
             LinearGradient(
                 colors: [
-                    Color.dsBackground.opacity(0.7),
-                    Color.dsBackground.opacity(0.18),
+                    Color.dsBackground.opacity(0.44),
+                    Color.dsBackground.opacity(0.1),
                     .clear,
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
-            .frame(height: 126)
+            .frame(height: 84)
             .ignoresSafeArea(edges: .top)
             .allowsHitTesting(false)
         }
+    }
+
+    private var mapHUDDivider: some View {
+        Rectangle()
+            .fill(.white.opacity(0.16))
+            .frame(width: 0.5, height: 22)
+            .accessibilityHidden(true)
     }
 
     private var mapRegionPresentations: [String: MapRegionPresentation] {
