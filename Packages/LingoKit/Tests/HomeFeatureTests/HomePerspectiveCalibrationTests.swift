@@ -1,10 +1,117 @@
 import CoreGraphics
+import DomainKit
 import Testing
+import UIKit
 @testable import HomeFeature
 
 @Suite("HomePerspectiveCalibration")
 struct HomePerspectiveCalibrationTests {
     private let tolerance: CGFloat = 0.000_01
+
+    @Test("照片边缘回归：墨尔本、都柏林必须保留显著的向右上方收敛")
+    func obliqueMapFramesMatchPhotographicEdges() throws {
+        // 来自最终 JPEG 边缘的独立像素测量，不从布局反算预期值。
+        // 这是防止旧坐标回归的数值门禁，不能替代逐图叠线验收。
+        for (id, width, height, leftY, rightY) in [
+            ("melbourne", 844.0, 1824.0, 464.0, 288.0),
+            ("dublin", 842.0, 1821.0, 494.0, 367.0),
+        ] {
+            let layout = try #require(HomeDepartureSceneLayout.scenes[id])
+            let quad = layout.map.projectedRegion().surface.quad
+            #expect(abs(quad.topLeft.y * height - leftY) < 3)
+            #expect(abs(quad.topRight.y * height - rightY) < 3)
+            let slope = (quad.topRight.y - quad.topLeft.y) * height /
+                ((quad.topRight.x - quad.topLeft.x) * width)
+            #expect(slope < -0.4, "\(id): 不能把斜墙地图错误标成正视矩形")
+            #expect(layout.map.photoSurface?.quad.points == layout.story.photoSurface?.quad.points)
+        }
+    }
+
+    @Test("正视地图不能凭空增加倾斜和梯形；奥克兰顶边方向不能反转")
+    func frontFacingMapsStayFrontFacing() throws {
+        for id in ["edinburgh", "singapore", "sydney"] {
+            let layout = try #require(HomeDepartureSceneLayout.scenes[id])
+            for entry in [layout.map, layout.story] {
+                let q = entry.projectedRegion().photoQuad
+                #expect(abs(q.topLeft.y - q.topRight.y) < 0.0001)
+                #expect(abs(q.bottomLeft.y - q.bottomRight.y) < 0.0001)
+                #expect(abs(q.topLeft.x - q.bottomLeft.x) < 0.0001)
+            }
+        }
+        let auckland = try #require(HomeDepartureSceneLayout.scenes["auckland"])
+        let q = auckland.map.projectedRegion().surface.quad
+        #expect(q.topRight.y > q.topLeft.y)
+    }
+
+    @Test("多伦多活动入口沿下门板而不是上门楣的反向斜率")
+    func torontoUsesLocalDoorPanel() throws {
+        let layout = try #require(HomeDepartureSceneLayout.scenes["toronto"])
+        let activity = layout.activities.projectedRegion().photoQuad
+        let lintel = layout.location.projectedRegion().photoQuad
+        #expect(activity.topRight.y > activity.topLeft.y)
+        #expect(lintel.topRight.y < lintel.topLeft.y)
+    }
+
+    @Test("城市入口的视觉和热区使用同一摄影承载面，且不越出有效内容")
+    func citySceneGeometryIsBoundedAndInvertible() throws {
+        for (id, layout) in HomeDepartureSceneLayout.scenes {
+            for entry in [layout.location, layout.map, layout.story, layout.activities] {
+                let visual = entry.projectedRegion()
+                let hit = entry.projectedRegion(size: entry.hitSize)
+                #expect(visual.surface.quad.points == hit.surface.quad.points)
+                let inverse = try #require(visual.surface.homography.inverted)
+                let center = CGPoint(x: entry.center.x, y: entry.center.y)
+                expect(visual.surface.homography.project(inverse.project(center)), equals: center)
+                for point in visual.photoQuad.points + hit.photoQuad.points {
+                    #expect(point.x.isFinite && point.y.isFinite)
+                    #expect(point.x >= 0 && point.x <= 1, "\(id) \(entry.surface): 水平方向越界")
+                    #expect(point.y > 0.07, "\(id): 顶部安全区")
+                    #expect(point.y * HomeDepartureCanvas.height <= HomeDepartureCanvas.interactiveContentBottom, "\(id): 底部安全区")
+                }
+            }
+        }
+    }
+
+    @Test("全部可用城市均有独立、可解码的随包首页图")
+    @MainActor
+    func everyCatalogCityHasBundledScene() throws {
+        let url = try #require(Bundle.main.url(forResource: "regions", withExtension: "json"))
+        let catalog = try RegionCatalog(url: url)
+        #expect(Set(catalog.regions.map(\.id)) == Set(HomeDepartureSceneLayout.scenes.keys))
+        #expect(HomeDepartureSceneLayout.scenes.count == 15)
+        for (id, layout) in HomeDepartureSceneLayout.scenes {
+            let image = try #require(UIImage(named: layout.assetName, in: .main, compatibleWith: nil), "\(id): 缺失资源")
+            #expect(image.size.width >= 800 && image.size.height >= 1800)
+            #expect(abs(image.size.width / image.size.height - 853.0 / 1844.0) < 0.001)
+        }
+    }
+
+    @Test("缺失城市安全回退，城市按稳定 ID 查找")
+    func cityLookupUsesStableIDs() {
+        #expect(HomeDepartureSceneLayout.forRegion(nil).assetName == HomeDepartureSceneLayout.production.assetName)
+        #expect(HomeDepartureSceneLayout.forRegion("unknown").assetName == HomeDepartureSceneLayout.production.assetName)
+        for (id, layout) in HomeDepartureSceneLayout.scenes {
+            #expect(HomeDepartureSceneLayout.forRegion(id).assetName == layout.assetName)
+        }
+    }
+
+    @Test("SE、标准屏和 Max 的入口不被底栏遮挡")
+    func sceneFitsPhoneSizes() {
+        for size in [CGSize(width: 375, height: 667), CGSize(width: 393, height: 852),
+                     CGSize(width: 402, height: 874), CGSize(width: 440, height: 956)] {
+            let placement = HomeDepartureCanvas.placement(in: size)
+            for (id, layout) in HomeDepartureSceneLayout.scenes {
+                for entry in [layout.map, layout.story, layout.activities] {
+                    for point in entry.projectedRegion(size: entry.hitSize).photoQuad.points {
+                        let x = point.x * HomeDepartureCanvas.width * placement.scale + placement.horizontalInset
+                        let y = point.y * placement.height * placement.scale
+                        #expect(x >= 0 && x <= size.width, "\(id): 横向裁切")
+                        #expect(y >= 40 && y <= size.height - 84, "\(id): 状态栏或底栏遮挡")
+                    }
+                }
+            }
+        }
+    }
 
     @Test("单应矩阵精确经过四个摄影标定角")
     func homographyMapsEveryCalibrationCorner() {
