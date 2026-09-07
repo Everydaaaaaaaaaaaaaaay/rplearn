@@ -36,10 +36,10 @@ enum ActivitySceneAnchor: CaseIterable {
             HomePerspectiveQuad(topLeft: CGPoint(x: 541, y: 1270), topRight: CGPoint(x: 723, y: 1350),
                                 bottomRight: CGPoint(x: 604, y: 1480), bottomLeft: CGPoint(x: 473, y: 1405))
         case .flowerstallTable:
-            // Clear worktop between the bucket and wrapping station: never
-            // project one flat label across raised scissors and twine.
-            HomePerspectiveQuad(topLeft: CGPoint(x: 331, y: 1290), topRight: CGPoint(x: 491, y: 1290),
-                                bottomRight: CGPoint(x: 499, y: 1380), bottomLeft: CGPoint(x: 319, y: 1380))
+            // Near-side wrapping space: separate the waiting action from both
+            // the bucket and bouquet, including their complete touch regions.
+            HomePerspectiveQuad(topLeft: CGPoint(x: 230, y: 1455), topRight: CGPoint(x: 390, y: 1455),
+                                bottomRight: CGPoint(x: 400, y: 1545), bottomLeft: CGPoint(x: 220, y: 1545))
         case .cafeSill:
             HomePerspectiveQuad(topLeft: CGPoint(x: 359, y: 883), topRight: CGPoint(x: 541, y: 883),
                                 bottomRight: CGPoint(x: 541, y: 989), bottomLeft: CGPoint(x: 359, y: 989))
@@ -82,6 +82,45 @@ enum ActivitySceneAnchor: CaseIterable {
         }
         return HomePerspectiveQuad(topLeft: local(quad.topLeft), topRight: local(quad.topRight),
                                    bottomRight: local(quad.bottomRight), bottomLeft: local(quad.bottomLeft))
+    }
+
+    /// The object is the anchor, not a mould into which we squeeze the glyphs.
+    /// This small floating plaque keeps the object's heading but turns towards
+    /// the observer. Width/height stay proportional even on a steep tabletop.
+    /// Coordinates remain attached to the photograph when its crop changes.
+    var entranceQuad: HomePerspectiveQuad {
+        let width: CGFloat = 248
+        let height = width * 100 / 128
+        let edge = CGVector(dx: quad.topRight.x - quad.topLeft.x,
+                            dy: quad.topRight.y - quad.topLeft.y)
+        let angle = min(max(atan2(edge.dy, edge.dx), -.pi / 15), .pi / 15)
+        func point(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+            CGPoint(x: bounds.midX + x * cos(angle) - y * sin(angle),
+                    y: bounds.midY + x * sin(angle) + y * cos(angle))
+        }
+        // A two-percent depth taper is enough to retain a spatial plane without
+        // reproducing the steep foreshortening of a tiny cup or horizontal book.
+        return HomePerspectiveQuad(topLeft: point(-width * 0.49, -height / 2),
+            topRight: point(width * 0.49, -height / 2),
+            bottomRight: point(width / 2, height / 2),
+            bottomLeft: point(-width / 2, height / 2))
+    }
+
+    var entranceBounds: CGRect {
+        let points = entranceQuad.points
+        let xs = points.map(\.x), ys = points.map(\.y)
+        return CGRect(x: xs.min()!, y: ys.min()!,
+                      width: xs.max()! - xs.min()!, height: ys.max()! - ys.min()!)
+    }
+
+    func localEntranceQuad(scale: CGFloat) -> HomePerspectiveQuad {
+        let rect = entranceBounds
+        func point(_ p: CGPoint) -> CGPoint {
+            CGPoint(x: (p.x - rect.minX) * scale, y: (p.y - rect.minY) * scale)
+        }
+        let q = entranceQuad
+        return HomePerspectiveQuad(topLeft: point(q.topLeft), topRight: point(q.topRight),
+            bottomRight: point(q.bottomRight), bottomLeft: point(q.bottomLeft))
     }
 }
 

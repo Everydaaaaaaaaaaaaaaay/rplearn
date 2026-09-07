@@ -13,10 +13,45 @@ final class ActivitySceneGeometryTests: XCTestCase {
                 XCTAssertLessThanOrEqual(origin.y, 0)
                 XCTAssertGreaterThanOrEqual(origin.y + canvas.height, size.height)
                 for action in scene.actions {
-                    let bounds = action.anchor.bounds
+                    let bounds = action.anchor.entranceBounds
                     XCTAssertLessThan(bounds.maxY * scale + origin.y, size.height - 108,
                                       "\(action.id) must clear the bottom navigation")
                     XCTAssertGreaterThan(bounds.minY * scale + origin.y, 220)
+                }
+            }
+        }
+    }
+
+    func testEntrancePlaquesPreserveGlyphProportionsAndUsableSize() {
+        for scene in ActivitySceneID.allCases {
+            for action in scene.actions {
+                let q = action.anchor.entranceQuad
+                func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat { hypot(a.x - b.x, a.y - b.y) }
+                let width = distance(q.topLeft, q.topRight)
+                let height = distance(q.topLeft, q.bottomLeft)
+                XCTAssertEqual(width / height, 128.0 / 100, accuracy: 0.03, action.id)
+                XCTAssertEqual(width / distance(q.bottomLeft, q.bottomRight), 0.98, accuracy: 0.001)
+                XCTAssertEqual(distance(q.topRight, q.bottomRight), height, accuracy: 0.001)
+                for phoneWidth: CGFloat in [375, 402] {
+                    let scale = phoneWidth / 852
+                    XCTAssertGreaterThanOrEqual(height * scale, 80, action.id)
+                    XCTAssertGreaterThanOrEqual(width * scale, 106, action.id)
+                    // Four-character Chinese titles remain ~19pt, not the old
+                    // cup's ~8pt vertical glyphs behind a large invisible hitbox.
+                    XCTAssertGreaterThanOrEqual(22 * width * scale / 128, 18, action.id)
+                }
+                XCTAssertEqual(action.anchor.entranceBounds.midX, action.anchor.bounds.midX, accuracy: 2)
+                XCTAssertEqual(action.anchor.entranceBounds.midY, action.anchor.bounds.midY, accuracy: 2)
+            }
+        }
+    }
+
+    func testNeighbouringEntranceHitRegionsNeverOverlap() {
+        for scene in ActivitySceneID.allCases {
+            for (index, first) in scene.actions.enumerated() {
+                for second in scene.actions.dropFirst(index + 1) {
+                    XCTAssertFalse(first.anchor.entranceBounds.intersects(second.anchor.entranceBounds),
+                                   "\(first.id) overlaps \(second.id)")
                 }
             }
         }

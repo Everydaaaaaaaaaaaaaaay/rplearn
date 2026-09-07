@@ -46,6 +46,30 @@ final class ActivitySceneTests: XCTestCase {
         }
     }
 
+    func testEntranceMarginsOpenTheirOwnActionAndReturn() {
+        let app = launch()
+        defer { app.terminate() }
+        let scenes: [(String, [(String, String)])] = [
+            ("cafe", [("cafe-seat", "共用一桌"), ("cafe-neighbourhood", "聊聊附近"), ("cafe-taste", "聊聊口味")]),
+            ("bookstall", [("bookstall-cover", "同翻一页"), ("bookstall-recommend", "交换推荐"), ("bookstall-travel", "聊聊见闻")]),
+            ("flowerstall", [("flowerstall-colour", "聊聊花色"), ("flowerstall-bouquet", "一束心意"), ("flowerstall-queue", "等候闲聊")])
+        ]
+        for (scene, entries) in scenes {
+            tap("activities.tab.\(scene)", app: app)
+            for (index, entry) in entries.enumerated() {
+                let button = app.buttons["activities.scene.\(entry.0)"]
+                XCTAssertGreaterThanOrEqual(button.frame.width, 44)
+                XCTAssertGreaterThanOrEqual(button.frame.height, 44)
+                button.coordinate(withNormalizedOffset: CGVector(dx: index.isMultiple(of: 2) ? 0.08 : 0.92, dy: 0.5)).tap()
+                XCTAssertTrue(app.buttons["activities.action.start"].waitForExistence(timeout: 4))
+                XCTAssertTrue(app.staticTexts[entry.1].firstMatch.exists)
+                edgeBack(app)
+                XCTAssertTrue(button.waitForExistence(timeout: 4))
+            }
+            attach("entrances-v3-\(scene)", app: app)
+        }
+    }
+
     func testCafeSocialConversationFriendAndChatHandoff() {
         let app = launch()
         defer { app.terminate() }

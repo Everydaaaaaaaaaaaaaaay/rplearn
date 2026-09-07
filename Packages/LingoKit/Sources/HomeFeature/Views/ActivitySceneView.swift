@@ -244,7 +244,7 @@ struct ActivitySceneView: View {
 
     private func entrance(_ activity: SceneActivity, scale: CGFloat) -> some View {
         let id = activity.id, title = activity.title, symbol = activity.symbol, anchor = activity.anchor
-        let bounds = anchor.bounds
+        let bounds = anchor.entranceBounds
         return Button {
             actions.perform(for: id) { onSelect(activity) }
         } label: {
@@ -258,8 +258,15 @@ struct ActivitySceneView: View {
                         .fixedSize().frame(width: 128, alignment: .center)
                 }
                 .frame(width: 128, height: 100)
+                .overlay(alignment: .topTrailing) {
+                    Image(systemName: "arrow.up.right.circle")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(Color.dsHologramIvory.opacity(0.9))
+                        .padding(6)
+                        .accessibilityHidden(true)
+                }
             }
-            .modifier(ActivityPlaneProjection(quad: anchor.localQuad(scale: scale)))
+            .modifier(ActivityPlaneProjection(quad: anchor.localEntranceQuad(scale: scale)))
             .frame(width: bounds.width * scale, height: bounds.height * scale, alignment: .topLeading)
             .contentShape(Rectangle())
         }
