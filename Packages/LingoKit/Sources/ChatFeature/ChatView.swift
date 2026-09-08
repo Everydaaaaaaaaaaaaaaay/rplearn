@@ -122,12 +122,7 @@ public struct ChatView: View {
             dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
             onSpeak: { word in
-                let speech = deps.speech
-                Task {
-                    await speech.speak(
-                        SpeechRequest(text: word, language: "en-US", purpose: .pronunciation)
-                    )
-                }
+                deps.speakLookupWord(word)
             },
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback,
@@ -174,6 +169,7 @@ public struct ChatView: View {
             NavigationStack {
                 ChatContactDetailsView(
                     viewModel: viewModel,
+                    deps: deps,
                     onSelectMessage: { messageID in
                         highlightedMessageID = messageID
                         showsContactDetails = false

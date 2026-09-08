@@ -1,4 +1,6 @@
+import CoreKit
 import DesignSystem
+import DictKit
 import Foundation
 import Observation
 import PersistenceKit
@@ -7,6 +9,7 @@ import SwiftUI
 /// 从聊天页进入的联系人设置。它只管理当前用户的私有关系状态，不修改公共 NPC 身份。
 struct ChatContactDetailsView: View {
     @Bindable var viewModel: ChatViewModel
+    let deps: ChatDependencies
     let onSelectMessage: (UUID) -> Void
     let onRemoved: () -> Void
 
@@ -19,10 +22,12 @@ struct ChatContactDetailsView: View {
 
     init(
         viewModel: ChatViewModel,
+        deps: ChatDependencies,
         onSelectMessage: @escaping (UUID) -> Void,
         onRemoved: @escaping () -> Void
     ) {
         self.viewModel = viewModel
+        self.deps = deps
         self.onSelectMessage = onSelectMessage
         self.onRemoved = onRemoved
         _isPinned = State(
@@ -34,7 +39,7 @@ struct ChatContactDetailsView: View {
         Form {
             Section {
                 NavigationLink {
-                    ChatCharacterProfileView(viewModel: viewModel)
+                    ChatCharacterProfileView(viewModel: viewModel, deps: deps)
                 } label: {
                     profileRow
                 }
@@ -513,6 +518,8 @@ private struct ChatHistoryContextView: View {
 
 private struct ChatCharacterProfileView: View {
     @Bindable var viewModel: ChatViewModel
+    let deps: ChatDependencies
+    @State private var wordSelection: TokenSelection?
 
     private var character: CharacterDTO { viewModel.character }
 
@@ -538,10 +545,9 @@ private struct ChatCharacterProfileView: View {
                         .font(.footnote.weight(.semibold))
                         .foregroundStyle(Color.dsSkyDeep)
                     if let signature = character.card.signature {
-                        Text(signature)
+                        lookupText(signature, field: "signature", textColor: .secondary)
                             .font(.body)
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -560,15 +566,16 @@ private struct ChatCharacterProfileView: View {
             }
 
             Section {
-                Text(character.card.personality)
+                lookupText(character.card.personality, field: "personality")
                 if let speechStyle = character.card.speechStyle {
-                    LabeledContent("说话方式") { Text(speechStyle).multilineTextAlignment(.trailing) }
+                    profileValue("说话方式", value: speechStyle, field: "speech-style")
                 }
                 if !character.card.hobbies.isEmpty {
-                    LabeledContent("爱好") {
-                        Text(character.card.localizedHobbies.joined(separator: "、"))
-                            .multilineTextAlignment(.trailing)
-                    }
+                    profileValue(
+                        "爱好",
+                        value: character.card.localizedHobbies.joined(separator: "、"),
+                        field: "hobbies"
+                    )
                 }
             } header: {
                 Text("稳定人格")
@@ -579,10 +586,10 @@ private struct ChatCharacterProfileView: View {
             if let voice = character.card.personaVoice,
                !voice.values.isEmpty || !voice.flaws.isEmpty || !voice.conversationalHabits.isEmpty {
                 Section("人物内核") {
-                    profileValue("看重", value: voice.values.joined(separator: "、"))
-                    profileValue("不完美之处", value: voice.flaws.joined(separator: "、"))
-                    profileValue("聊天习惯", value: voice.conversationalHabits.joined(separator: "、"))
-                    profileValue("边界", value: voice.boundaries.joined(separator: "、"))
+                    profileValue("看重", value: voice.values.joined(separator: "、"), field: "values")
+                    profileValue("不完美之处", value: voice.flaws.joined(separator: "、"), field: "flaws")
+                    profileValue("聊天习惯", value: voice.conversationalHabits.joined(separator: "、"), field: "habits")
+                    profileValue("边界", value: voice.boundaries.joined(separator: "、"), field: "boundaries")
                 }
             }
 
@@ -612,7 +619,9 @@ private struct ChatCharacterProfileView: View {
             }
 
             if let background = character.card.background {
-                Section("背景故事") { Text(background) }
+                Section("背景故事") {
+                    lookupText(background, field: "background")
+                }
             }
 
             Section("你们的关系") {
@@ -628,17 +637,47 @@ private struct ChatCharacterProfileView: View {
         }
         .navigationTitle("旅伴资料")
         .navigationBarTitleDisplayMode(.inline)
+        .wordLookupOverlay(
+            selection: $wordSelection,
+            dictionary: deps.dictionary,
+            grammar: deps.grammarPoints,
+            onSpeak: { word in deps.speakLookupWord(word) },
+            favoriteActions: deps.lookupWordFavoriteActions,
+            aiFallback: deps.lookupAIWordFallback,
+            exampleTranslationActions: deps.exampleTranslationActions
+        )
     }
 
     @ViewBuilder
-    private func profileValue(_ title: String, value: String?) -> some View {
+    private func profileValue(
+        _ title: String,
+        value: String?,
+        field: String? = nil
+    ) -> some View {
         if let value, !value.isEmpty {
             LabeledContent(title) {
-                Text(value)
+                lookupText(value, field: field ?? title)
                     .multilineTextAlignment(.trailing)
-                    .textSelection(.enabled)
             }
         }
+    }
+
+    private func lookupText(
+        _ text: String,
+        field: String,
+        textColor: Color? = nil
+    ) -> some View {
+        let contextID = "profile-\(character.id.uuidString)-\(field)"
+        return TappableText(
+            tokens: ChatProfileWordLookup.tokens(
+                for: text,
+                cacheKey: "\(contextID)-\(text)"
+            ),
+            contextID: contextID,
+            textColor: textColor,
+            selection: wordSelection,
+            onSelect: { wordSelection = $0 }
+        )
     }
 
     private func growthRow(_ arc: CharacterGrowthArc) -> some View {
@@ -676,6 +715,25 @@ private struct ChatCharacterProfileView: View {
         case .male: "男"
         case .female: "女"
         case .other: "未设定"
+        }
+    }
+}
+
+enum ChatProfileWordLookup {
+    @MainActor
+    static func tokens(for text: String, cacheKey: String) -> [TextToken] {
+        TokenCache.tokens(for: text, cacheKey: cacheKey).map { token in
+            TextToken(
+                id: token.id,
+                display: token.display,
+                word: token.word.flatMap { containsEnglishLetter($0) ? $0 : nil }
+            )
+        }
+    }
+
+    private static func containsEnglishLetter(_ word: String) -> Bool {
+        word.unicodeScalars.contains { scalar in
+            (65...90).contains(scalar.value) || (97...122).contains(scalar.value)
         }
     }
 }

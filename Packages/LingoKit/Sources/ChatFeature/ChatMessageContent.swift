@@ -336,29 +336,10 @@ extension ChatView {
 
     /// 词典未收录时的 AI 简释兜底（fast 档）。
     var aiWordFallback: @Sendable (String) async -> String? {
-        let llm = deps.llm
-        return { word in
-            let request = LLMRequest(
-                task: .dictionaryExplain,
-                tier: .fast,
-                system: "你是一个简明的英汉词典助手。用中文简要解释用户给出的英文词，格式：词性. 释义（不超过 3 条）；如是俚语/缩写/网络用语请注明。总长不超过 80 字。",
-                messages: [.user(word)],
-                maxTokens: 200,
-                temperature: 0.2
-            )
-            return try? await llm.complete(request)
-        }
+        deps.lookupAIWordFallback
     }
 
     var wordFavoriteActions: WordFavoriteActions {
-        let favorites = deps.favorites
-        return WordFavoriteActions(
-            contains: { word in
-                (try? await favorites.isWordFavorited(word)) ?? false
-            },
-            toggle: { word, translationZh in
-                (try? await favorites.toggleWord(word, translationZh: translationZh)) ?? false
-            }
-        )
+        deps.lookupWordFavoriteActions
     }
 }

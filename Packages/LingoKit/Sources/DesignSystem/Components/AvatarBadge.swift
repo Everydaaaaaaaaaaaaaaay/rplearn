@@ -2,12 +2,18 @@ import SwiftUI
 import UIKit
 
 public struct AvatarBadge: View {
+    private struct LoadedRemoteImage {
+        let url: URL
+        let image: UIImage
+    }
+
     private let name: String
     private let tint: Color?
     private let size: CGFloat
     private let remoteURL: URL?
     private let usesPendingPlaceholder: Bool
     private let localImage: UIImage?
+    @State private var loadedRemoteImage: LoadedRemoteImage?
 
     private static let palette: [Color] = [
         .dsSky, .dsCyan, .dsSunset, .dsSuccess, .dsQuiz, .pink,
@@ -27,6 +33,13 @@ public struct AvatarBadge: View {
         self.remoteURL = remoteURL
         self.usesPendingPlaceholder = usesPendingPlaceholder
         self.localImage = DSAvatarAssets.image(named: imageName)
+        _loadedRemoteImage = State(
+            initialValue: remoteURL.flatMap { url in
+                AvatarImageCache.shared.cachedImage(for: url).map {
+                    LoadedRemoteImage(url: url, image: $0)
+                }
+            }
+        )
     }
 
     private var stableTint: Color {
@@ -47,19 +60,29 @@ public struct AvatarBadge: View {
         .clipShape(Circle())
         .shadow(color: stableTint.opacity(0.13), radius: size * 0.12, y: size * 0.045)
         .accessibilityLabel(usesPendingPlaceholder && remoteURL == nil && localImage == nil ? "\(name)，头像待定" : name)
+        .task(id: remoteURL) {
+            guard let remoteURL else {
+                loadedRemoteImage = nil
+                return
+            }
+            if let cached = AvatarImageCache.shared.cachedImage(for: remoteURL) {
+                loadedRemoteImage = LoadedRemoteImage(url: remoteURL, image: cached)
+                return
+            }
+            if loadedRemoteImage?.url != remoteURL {
+                loadedRemoteImage = nil
+            }
+            guard let image = await AvatarImageCache.shared.image(for: remoteURL) else { return }
+            loadedRemoteImage = LoadedRemoteImage(url: remoteURL, image: image)
+        }
     }
 
     @ViewBuilder
     private var avatarContent: some View {
-        if let remoteURL {
-            AsyncImage(url: remoteURL, transaction: Transaction(animation: .easeOut(duration: 0.2))) { phase in
-                switch phase {
-                case .success(let image):
-                    image.resizable().scaledToFill()
-                default:
-                    localAvatarContent
-                }
-            }
+        if let loadedRemoteImage, loadedRemoteImage.url == remoteURL {
+            Image(uiImage: loadedRemoteImage.image)
+                .resizable()
+                .scaledToFill()
         } else {
             localAvatarContent
         }
