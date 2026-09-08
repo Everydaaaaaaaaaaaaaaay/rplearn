@@ -92,17 +92,17 @@ public struct SceneActivity: Identifiable, Equatable, Sendable {
                               response: "look like 给判断留有余地，对方即使不熟悉这里也容易回应。")]),
                 farewell],
               closing: "从同一张地图出发，也可以交换两种走法。"),
-        .init(id: "park-seat", scene: .park, title: "共用一桌", symbol: "cup.and.saucer",
-              introduction: "咖啡放在桌边，旁边还有空位。先问一句，再看看对方是否愿意共享这段安静时间。",
+        .init(id: "park-seat", scene: .park, title: "喝口咖啡", symbol: "cup.and.saucer",
+              introduction: "杯里的咖啡还热着。先喝一口，再看看远处的桥和草地。",
               steps: [
-                .init(context: "一位访客在桌边停下，把随身物品收到了自己一侧。你想确认旁边的位置。",
-                      question: "怎样礼貌地询问？", choices: [
-                        .init(english: "Excuse me, is this seat taken?", chinese: "打扰一下，这个座位有人吗？",
-                              response: "taken 在这里表示座位已被占用；先确认，比直接坐下更尊重对方。"),
-                        .init(english: "Would you mind if I sat here?", chinese: "你介意我坐在这里吗？",
-                              response: "Would you mind… 是委婉请求，也给对方保留拒绝的空间。")]),
+                .init(context: "你端起咖啡喝了一口。附近也有人停下来看向远处的桥，你们恰好在看同一处风景。",
+                      question: "怎样从眼前的景色自然开口？", choices: [
+                        .init(english: "The view is lovely from here, isn't it?", chinese: "从这里看风景很不错，对吧？",
+                              response: "from here 把话题放在共同看见的景色上，不涉及彼此的座位或桌面。"),
+                        .init(english: "It's a peaceful spot for a short break.", chinese: "这里很适合短暂休息一下。",
+                              response: "a short break 表达当下的小憩，也给对方留下简单回应或继续赶路的空间。")]),
                 farewell],
-              closing: "一张安静的共用桌，也可以容纳一声自然的问候。"),
+              closing: "一口咖啡之后，也可以从共同看见的风景开始一句简单交流。"),
         .init(id: "park-notes", scene: .park, title: "交换见闻", symbol: "book.closed",
               introduction: "笔记本里刚记下一点沿途见闻。另一位访客也在看远处的桥，你可以分享一个细节，不必追问行程。",
               steps: [

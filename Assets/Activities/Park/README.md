@@ -33,15 +33,20 @@ Run from repository root:
 bash Scripts/prepare-activity-scene.sh /path/to/4831-720.mp4 Assets/Activities/Park/table-source.png
 ```
 
-- One 8-second 24 fps silent H.264 clip, 852 × 1108, approximately 1.3 MB.
-- Background is frame zero. Only source y=180…530 is live, with 16-pixel feather
-  edges, clear of the complete head-to-foot silhouette. Source crop x=360…914.
-- At the beginning and end the visible path is empty. Opacity changes at 0…0.5 s
-  and 7.3…7.8 s affect empty scenery only. No reverse walking, no actor crossfade,
-  no interpolation-generated human frames. The last 0.2 seconds is the base frame.
-- Decoded first/last-frame PSNR 45.63 dB after lossy encoding. This is an image
-  difference check, not by itself proof of natural movement; contact sheets and
-  application playback must also be inspected.
+- One 81-second, 24 fps silent H.264 loop at 852 × 1108. It contains one natural-
+  speed runner pass near the beginning and 74 seconds of moving empty scenery.
+- The empty scenery is a three-second forward-only loop made from the person-free
+  source interval 1.1…4.1 seconds and a 1.1-second environmental dissolve back
+  through source 0…1.1. It repeats 27 times, so trees, grass and distant bridge
+  traffic keep moving for the whole 81 seconds instead of freezing with the runner.
+- The runner event uses source 1.1…8.25 at unchanged timing. It fades in during
+  the empty opening and fades back only after the runner has left the crop, so the
+  person is always fully opaque while visible. Both sides of the outer loop use
+  the ambient layer. There is no reverse playback, slow motion, duplicated actor,
+  frozen waiting interval or interpolation-generated human frame.
+- The 3-second environmental seam, the event-to-environment return and the 81-second
+  outer seam require normal-speed application review. Codec/file facts and still
+  frames do not by themselves prove that distant vehicles or foliage blend naturally.
 - Poster is extracted from the finished clip, so switching to static retains the
   crop and colour conversion. Table: source y=1058…1847. All layout is derived
   from the same 852 × 1847 canvas. No device-dependent safe-area background shift.
@@ -57,10 +62,10 @@ bash Scripts/prepare-activity-scene.sh /path/to/4831-720.mp4 Assets/Activities/P
   + 20 ms wait remain unchanged.
 - App composes destinations through the existing `SceneNavigationContainer`:
   opacity transition and leading-edge return are not a new feature-owned router.
-- One `AVPlayer` + `AVPlayerLayer`; no per-frame SwiftUI
+- One `AVQueuePlayer` + `AVPlayerLooper` + `AVPlayerLayer`; no per-frame SwiftUI
   timer, video-texture upload or full-page Metal rendering. Pause while covered,
   backgrounded, static, low-power or thermally constrained. Reduce Motion uses
-  the poster. Release observers, player item and pending wake task when the pilot closes.
+  the poster. Release observers and queued player items when the pilot closes.
 - Large accessibility text uses a readable alternate button layout.
 - Loop is silent and never reconfigures the app's audio session.
 
@@ -98,34 +103,26 @@ pending; no phone installation is implied by these simulator checks.
   this layout. `ActivitySceneLabel` compensates x only, before projection; y is
   unchanged. A 3× raster regression compares actual ink bounding-box centres,
   rather than assuming equal SwiftUI frames guarantee optical alignment.
-- The 8-second file now plays as an event, **not an 8-second repeating schedule**.
-  At its empty final frame the player pauses for a random 24–62 seconds, with a
-  25% draw chance for a longer 65–95-second pause. A near-repeat delay is adjusted
-  16 seconds away from the previous delay (overall bounds 24–95 seconds). Thus
-  pass-to-pass intervals are at least 32 seconds, often longer. No reverse motion,
-  speed randomization, human dissolve, or new synthetic person.
-- Backgrounding, covering and switching to static cancel the wake task and retain
-  remaining quiet time. Re-enabling does not immediately restart the same person.
-  The next event seeks only between matching empty frames, waits for completion,
-  then plays. Native APIs: https://developer.apple.com/documentation/avfoundation/avplayeritem
-- UI test acceleration is opt-in via `UI_TEST_ACTIVITY_CADENCE=accelerated` in
-  DEBUG only. A separate UI test uses actual production cooldown and checks that
-  toggling does not cause a premature repeat. Policy tests cover 200 seeded draws.
+- The old event-player cooldown was rejected because pausing its single player also
+  froze the bridge and foliage. The final 81-second asset now owns both cadence and
+  continuous ambience; the app player never enters a synthetic quiet/frozen state.
+- The same runner appears once per 81-second loop. Pausing for navigation, app
+  backgrounding, static mode, power or thermal policy pauses the complete scene as
+  expected; ordinary empty time does not. There is no DEBUG cadence override.
+- The cup and table belong to the first-person user. The cup entrance is titled
+  “喝口咖啡” and starts from a shared view of the bridge; it never describes a
+  passer-by taking the user's seat or sharing the user's table.
 
 ### Further diversity, deliberately not faked in this revision
 
 The remaining limitation is still one recognisable runner. Additional actors need
 compatible licensed footage (camera height, travel direction, scale, light and
 ground contact). Prefer multiple people from one locked-off take; composite only
-after inspecting extraction edges and shadows. Future scheduling should use a
-shuffle bag with per-actor cooldown, bounded occupancy and occasional long empty
-periods, not independent uncontrolled random spawns. Ambient foliage/water can be
-a separate subtle layer if matching footage exists; do not move the full camera
-or pulse exposure just to hide repetition. These additions are not shipped here.
+after inspecting extraction edges and shadows. Do not add them by copying the one
+runner or by freezing the environment between events. These additions are not
+shipped here.
 
-Refinement verification (2026-09-06, owned c955 simulator): all three
-`ActivitySceneGeometryTests` passed, including 3× ink-centre comparison;
-both `ActivitySceneTests` passed for sparse-event playback and navigation.
-After the final x-only text correction, the production cooldown UI test was
-rerun successfully and its full-screen attachment visually inspected. Existing
-dependency-scan warnings remain; no source/media outside this pilot was changed.
+The earlier sparse-event verification remains historical evidence for entrance
+geometry only; it does not validate the replacement 81-second media or continuous
+playback. Current results and open visual checks are recorded in
+`Assets/Activities/RealMotion-v5/acceptance-v5.md`.

@@ -31,7 +31,6 @@ struct ActivitySceneView: View {
     @State private var videoPlaying = false
     @State private var completedLoops = 0
     @State private var playbackSeconds = 0
-    @State private var quietInterval = false
 
     private var usesMotion: Bool {
         ActivitySceneVideoLayer.permitsMotion(requested: requestsMotion, reduceMotion: reduceMotion,
@@ -40,8 +39,7 @@ struct ActivitySceneView: View {
 
     private var playbackDescription: String {
         guard usesMotion else { return "静态" }
-        let status = quietInterval ? "自然空场" :
-            videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
+        let status = videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             return "动态 · \(status) · 循环\(completedLoops) · 秒\(playbackSeconds)"
@@ -66,13 +64,12 @@ struct ActivitySceneView: View {
                         Image(uiImage: photo).resizable().scaledToFill()
                             .frame(width: width, height: media.videoHeight * scale).clipped()
                     }
-                    ActivitySceneVideoLayer(assetName: media.video, mode: media.playbackMode,
+                    ActivitySceneVideoLayer(assetName: media.video,
                         playing: usesMotion && isVisible && scenePhase == .active,
                         onFailure: { if scene == renderingScene { playbackFailed = true } },
                         onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
                         onLoop: { if scene == renderingScene { completedLoops = $0 } },
-                        onProgress: { if scene == renderingScene { playbackSeconds = $0 } },
-                        onQuiet: { if scene == renderingScene { quietInterval = $0 } })
+                        onProgress: { if scene == renderingScene { playbackSeconds = $0 } })
                         .frame(width: width, height: media.videoHeight * scale)
                         .opacity(usesMotion ? 1 : 0)
                         .allowsHitTesting(false).accessibilityHidden(true)
@@ -213,7 +210,6 @@ struct ActivitySceneView: View {
         videoPlaying = false
         completedLoops = 0
         playbackSeconds = 0
-        quietInterval = false
         withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) { scene = item }
     }
 

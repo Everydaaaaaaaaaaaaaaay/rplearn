@@ -122,26 +122,4 @@ final class ActivitySceneGeometryTests: XCTestCase {
         XCTAssertGreaterThan(ActivitySceneAnchor.journal.bounds.width, ActivitySceneAnchor.cup.bounds.width)
     }
 
-    func testCadenceHasCooldownAndAvoidsNearlyEqualIntervals() {
-        struct Seeded: RandomNumberGenerator {
-            var state: UInt64 = 57
-            mutating func next() -> UInt64 {
-                state = state &* 6364136223846793005 &+ 1442695040888963407
-                return state
-            }
-        }
-        var generator = Seeded()
-        var cadence = ActivityAmbientCadence()
-        var previous: TimeInterval?
-        var draws: [TimeInterval] = []
-        for _ in 0..<200 {
-            let delay = cadence.nextDelay(using: &generator)
-            XCTAssertTrue((24...95).contains(delay))
-            if let previous { XCTAssertGreaterThanOrEqual(abs(delay - previous), 8) }
-            previous = delay
-            draws.append(delay)
-        }
-        XCTAssertTrue(draws.contains { $0 > 70 })
-        XCTAssertTrue(draws.contains { $0 < 40 })
-    }
 }

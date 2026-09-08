@@ -56,6 +56,8 @@ final class ActivityJourneyTests: XCTestCase {
         XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 9)
         XCTAssertEqual(Set(ActivitySceneID.allCases.map { $0.media.poster }).count, 3)
         XCTAssertEqual(Set(ActivitySceneID.allCases.map { $0.media.video }).count, 3)
+        XCTAssertEqual(ActivitySceneID.park.media.expectedDuration, 81)
+        XCTAssertEqual(ActivitySceneID.park.actions.first { $0.id == "park-seat" }?.title, "喝口咖啡")
         for scene in ActivitySceneID.allCases {
             XCTAssertEqual(scene.actions.count, 3)
             XCTAssertEqual(Set(scene.actions.map(\.anchor)).count, 3)
@@ -165,29 +167,6 @@ final class ActivityJourneyTests: XCTestCase {
                 }
             }
         }
-    }
-
-    func testSparseParkCadenceHasCooldownAndAvoidsNearlyEqualIntervals() {
-        struct Seeded: RandomNumberGenerator {
-            var state: UInt64 = 57
-            mutating func next() -> UInt64 {
-                state = state &* 6364136223846793005 &+ 1442695040888963407
-                return state
-            }
-        }
-        var generator = Seeded()
-        var cadence = ActivityAmbientCadence()
-        var previous: TimeInterval?
-        var draws: [TimeInterval] = []
-        for _ in 0..<200 {
-            let delay = cadence.nextDelay(using: &generator)
-            XCTAssertTrue((24...95).contains(delay))
-            if let previous { XCTAssertGreaterThanOrEqual(abs(delay - previous), 8) }
-            previous = delay
-            draws.append(delay)
-        }
-        XCTAssertTrue(draws.contains { $0 > 70 })
-        XCTAssertTrue(draws.contains { $0 < 40 })
     }
 
     func testIncompleteOrCorruptDataNeverOverwritesHistory() throws {

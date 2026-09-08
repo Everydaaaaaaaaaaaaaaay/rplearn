@@ -2,7 +2,7 @@ import XCTest
 
 @MainActor
 final class ActivitySceneTests: XCTestCase {
-    private func launch(acceleratedCadence: Bool = false) -> XCUIApplication {
+    private func launch() -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -11,7 +11,6 @@ final class ActivitySceneTests: XCTestCase {
         app.launchEnvironment["UI_TEST_HOME_DESTINATION"] = "activities"
         app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
         app.launchEnvironment["UI_TEST_SOCIAL_FIXTURE"] = "1"
-        if acceleratedCadence { app.launchEnvironment["UI_TEST_ACTIVITY_CADENCE"] = "accelerated" }
         app.launch()
         XCTAssertTrue(app.buttons["activities.tab.park"].waitForExistence(timeout: 15))
         XCTAssertTrue(app.buttons["activities.tab.pond"].exists)
@@ -65,7 +64,7 @@ final class ActivitySceneTests: XCTestCase {
         let app = launch()
         defer { app.terminate() }
         let scenes: [(String, [(String, String)])] = [
-            ("park", [("park-route", "问问路线"), ("park-seat", "共用一桌"), ("park-notes", "交换见闻")]),
+            ("park", [("park-route", "问问路线"), ("park-seat", "喝口咖啡"), ("park-notes", "交换见闻")]),
             ("pond", [("pond-reflection", "看看倒影"), ("pond-sketch", "聊聊速写"), ("pond-postcard", "写张短笺")]),
             ("raincafe", [("rain-weather", "聊聊雨天"), ("rain-pastry", "分享点心"), ("rain-napkin", "递张纸巾")])
         ]
@@ -157,16 +156,17 @@ final class ActivitySceneTests: XCTestCase {
         }
     }
 
-    func testParkRunnerUsesAQuietIntervalBeforeRepeating() {
-        let app = launch(acceleratedCadence: true)
+    func testParkEnvironmentContinuesAfterRunnerLeaves() {
+        let app = launch()
         defer { app.terminate() }
         let status = app.staticTexts["activities.playbackStatus"]
         waitFor("播放中", status: status, timeout: 10)
-        waitFor("循环1", status: status, timeout: 12)
-        waitFor("自然空场", status: status, timeout: 2)
-        waitFor("播放中", status: status, timeout: 5)
-        Thread.sleep(forTimeInterval: 5.5)
+        waitFor("秒10", status: status, timeout: 15)
+        waitFor("秒20", status: status, timeout: 15)
+        waitFor("播放中", status: status, timeout: 2)
+        attach("park-continuous-environment-after-runner", app: app)
+        waitFor("循环1", status: status, timeout: 70)
+        waitFor("秒4", status: status, timeout: 8)
         attach("park-second-sparse-runner-pass", app: app)
-        waitFor("循环2", status: status, timeout: 5)
     }
 }

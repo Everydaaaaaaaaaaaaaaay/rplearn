@@ -127,19 +127,3 @@ struct ActivityPlaneProjection: GeometryEffect {
         return ProjectionTransform(matrix)
     }
 }
-
-/// Repetition is sparse, bounded and deliberately non-periodic. A quarter of
-/// draws use a longer quiet interval; normal motion is never time-stretched.
-struct ActivityAmbientCadence {
-    private(set) var previousDelay: TimeInterval?
-
-    mutating func nextDelay(using generator: inout some RandomNumberGenerator) -> TimeInterval {
-        let longPause = Int.random(in: 0..<4, using: &generator) == 0
-        var delay = Double.random(in: longPause ? 65...95 : 24...62, using: &generator)
-        if let previousDelay, abs(delay - previousDelay) < 8 {
-            delay = previousDelay > 60 ? previousDelay - 16 : previousDelay + 16
-        }
-        previousDelay = delay
-        return delay
-    }
-}
