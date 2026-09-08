@@ -1,121 +1,87 @@
 import CoreKit
-import MascotKit
 import SwiftUI
 
-/// 咕咕的稳定姿态集合。资产名只在设计系统中维护，业务页不直接拼接。
-public enum BrandMascotPose: Equatable, Sendable {
+/// 咕咕与嘎嘎的稳定语义姿态。资产名只在设计系统中维护，业务页不直接拼接。
+public enum BrandMascotPose: CaseIterable, Equatable, Sendable {
     case greeting
     case guide
     case coach
     case celebrate
+    case resting
+    case reminder
+    case encouragement
+    case achievement
 
-    fileprivate var assetName: String {
+    var assetName: String {
         switch self {
-        case .greeting: "BrandMascotGreeting"
-        case .guide: "BrandMascotGuide"
-        case .coach: "BrandMascotCoach"
-        case .celebrate: "BrandMascotCelebrate"
+        case .greeting: "mascot_gugu_welcome"
+        case .guide: "mascot_gugu_explore"
+        case .coach: "mascot_gaga_think"
+        case .celebrate: "mascot_gugu_celebrate"
+        case .resting: "mascot_gugu_rest"
+        case .reminder: "mascot_gaga_pout"
+        case .encouragement: "mascot_gaga_care"
+        case .achievement: "mascot_gaga_proud"
         }
     }
 
-    fileprivate var actionDescription: String {
+    var characterName: String {
+        switch self {
+        case .greeting, .guide, .celebrate, .resting:
+            AppBrand.mascotName
+        case .coach, .reminder, .encouragement, .achievement:
+            "嘎嘎"
+        }
+    }
+
+    var actionDescription: String {
         switch self {
         case .greeting: "向你打招呼"
         case .guide: "为你指路"
-        case .coach: "准备给出英语建议"
+        case .coach: "正在认真思考"
         case .celebrate: "为你庆祝"
+        case .resting: "正在安静休息"
+        case .reminder: "轻轻提醒你"
+        case .encouragement: "正在鼓励你"
+        case .achievement: "认可你的进步"
         }
     }
 
-    public var defaultAnimation: MascotAnimationRequest {
-        switch self {
-        case .greeting, .guide, .coach:
-            .semantic(.idle)
-        case .celebrate:
-            .semantic(.success)
-        }
-    }
-}
-
-/// 页面可覆盖自动选择策略；小图标默认使用静态稿，重点场景使用动画模型。
-public enum BrandMascotRenderingMode: Equatable, Sendable {
-    case automatic
-    case animatedModel
-    case staticArtwork
-
-    public func usesAnimatedModel(at size: CGFloat) -> Bool {
-        switch self {
-        case .automatic:
-            size >= 52
-        case .animatedModel:
-            true
-        case .staticArtwork:
-            false
-        }
+    var accessibilityLabel: String {
+        "\(characterName)\(actionDescription)"
     }
 }
 
-/// 品牌吉祥物的统一渲染入口。
+/// 品牌吉祥物的统一渲染入口，只使用当前 2D 动作资源包。
 public struct BrandMascotView: View {
-    @State private var animationController: MascotAnimationController
-
     private let pose: BrandMascotPose
     private let size: CGFloat
     private let showsShadow: Bool
-    private let renderingMode: BrandMascotRenderingMode
-    private let animation: MascotAnimationRequest
-    private let isPaused: Bool
 
     public init(
         pose: BrandMascotPose,
         size: CGFloat,
-        showsShadow: Bool = true,
-        renderingMode: BrandMascotRenderingMode = .automatic,
-        animation: MascotAnimationRequest? = nil,
-        isPaused: Bool = false
+        showsShadow: Bool = true
     ) {
         self.pose = pose
         self.size = size
         self.showsShadow = showsShadow
-        self.renderingMode = renderingMode
-        self.animation = animation ?? pose.defaultAnimation
-        self.isPaused = isPaused
-        _animationController = State(
-            initialValue: MascotAnimationController(
-                initialAnimation: animation ?? pose.defaultAnimation
-            )
-        )
     }
 
     public var body: some View {
-        Group {
-            if renderingMode.usesAnimatedModel(at: size) {
-                MascotView(
-                    controller: animationController,
-                    animation: animation,
-                    isPaused: isPaused
-                ) {
-                    staticArtwork
-                }
-            } else {
-                staticArtwork
-            }
-        }
+        Image(pose.assetName)
+            .renderingMode(.original)
+            .resizable()
+            .interpolation(.high)
+            .antialiased(true)
+            .scaledToFit()
             .frame(width: size, height: size)
             .shadow(
                 color: showsShadow ? Color.dsBrandInk.opacity(0.16) : .clear,
                 radius: size * 0.07,
                 y: size * 0.035
             )
-            .accessibilityLabel("\(AppBrand.mascotName)\(pose.actionDescription)")
-    }
-
-    private var staticArtwork: some View {
-        Image(pose.assetName)
-            .resizable()
-            .interpolation(.high)
-            .antialiased(true)
-            .scaledToFit()
+            .accessibilityLabel(pose.accessibilityLabel)
     }
 }
 

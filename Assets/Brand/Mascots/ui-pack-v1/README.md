@@ -1,7 +1,7 @@
 # 咕游记 · 2D 吉祥物动作资源包 V1
 
 包含 8 张可直接导入的透明 PNG，以及通过独立 Xcode 资源编译的 `GuyujiMascots.xcassets`。
-本次仅制作资源，不修改现有页面、不覆盖应用图标、不自动增加运行时安装包内容。
+资源包已于 2026-09-08 通过 `project.yml` 接入 LingoTrip App target；不覆盖应用图标。
 
 ## 内容
 
@@ -22,8 +22,8 @@
 图片位于各自 `.imageset` 内，未做裁剪、重采样或像素改色。
 资源声明为 3x（418 pt 原生画布），保留完整分辨率；建议页面显示尺寸 100–300 pt。
 
-将整个 `GuyujiMascots.xcassets` 加入目标的资源目录，或只复制需要的 `.imageset` 至现有资源目录。
-本项目使用 `project.yml` 声明目标资源，正式接入时应在对应目标的资源配置中声明，而非只拖入生成的 Xcode 工程。
+整个 `GuyujiMascots.xcassets` 已在 `project.yml` 中声明为 LingoTrip 的资源目录，无需复制到 App 资源目录。
+后续调整仍应修改 `project.yml`，而非只拖入生成的 Xcode 工程。
 若置于 Swift Package 中，需声明 package resource，并使用其对应 Bundle。
 
 导入 app target 后的示例：
@@ -63,4 +63,4 @@ Image("mascot_gugu_welcome")
 
 另已执行 `xcrun actool` 独立编译（iPhone/iPad、iphonesimulator、最低 17.0），退出码 0，无警告。
 逐张查看输出，并在浏览器深色背景下检查了实际 UI 尺寸显示；修正了预览页 Grid 最小尺寸导致的裁图。
-结果见 `verification.json`。未做完整 app 构建，未更改 app 行为。
+结果见 `verification.json`。正式接入后已完成 App 构建、聚焦映射测试及模拟器页面验收。

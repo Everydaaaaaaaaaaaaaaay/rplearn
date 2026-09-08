@@ -26,7 +26,6 @@ public struct ChatView: View {
     @State var quizCelebrationTrigger = 0
     @State var shakingMessageID: UUID?
     @State var shakePhase = false
-    @State var isMascotPromptDismissed = false
     @State var showsRealtimeConversation = false
     @State private var accessAfterVoice = false
     @State var isNearConversationBottom = true

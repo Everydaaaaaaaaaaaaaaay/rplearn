@@ -35,4 +35,5 @@ for asset in manifest['assets']:
             'opaque_pixels_touch_border': False,
         })
 print(json.dumps({'assets': report, 'total_bytes': sum(a['bytes'] for a in report),
-                  'pixel_edits_applied': False, 'runtime_integrated': False}, indent=2))
+                  'pixel_edits_applied': False,
+                  'runtime_integrated': bool(manifest.get('runtimeIntegrated', False))}, indent=2))

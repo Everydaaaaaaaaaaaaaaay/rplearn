@@ -50,7 +50,9 @@ extension ChatView {
                 }
             }
         } label: {
-            BrandMascotView(pose: .coach, size: 28, showsShadow: false)
+            Image(systemName: "wand.and.sparkles")
+                .font(.system(size: 15, weight: .bold))
+                .foregroundStyle(Color.dsCoach)
                 .scaleEffect(isExpanded ? 1.06 : 1)
                 .frame(width: 32, height: 32)
                 .background {

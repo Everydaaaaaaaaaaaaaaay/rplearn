@@ -151,7 +151,7 @@ public struct OnboardingFlowView: View {
             .ignoresSafeArea()
 
             VStack(spacing: DSSpacing.sm) {
-                BrandMascotView(pose: .greeting, size: 64, showsShadow: false)
+                BrandMascotView(pose: .greeting, size: 112, showsShadow: false)
                 ProgressView()
                     .tint(.dsSky)
                 Text("\(AppBrand.mascotName)正在飞来…")
@@ -212,7 +212,7 @@ private struct PlacementCalibrationChoiceView: View {
             ScrollView {
                 VStack(spacing: DSSpacing.xl) {
                     HStack(alignment: .top, spacing: DSSpacing.md) {
-                        BrandMascotView(pose: .guide, size: 52, showsShadow: false)
+                        BrandMascotView(pose: .guide, size: 104, showsShadow: false)
                         VStack(alignment: .leading, spacing: 4) {
                             Text("要不要再校准一下？")
                                 .font(.system(.title2, design: .rounded, weight: .bold))
@@ -479,7 +479,7 @@ struct CharacterSelectView: View {
                 .padding(.top, DSSpacing.sm)
 
                 HStack(spacing: DSSpacing.xs) {
-                    BrandMascotView(pose: .guide, size: 40, showsShadow: false)
+                    BrandMascotView(pose: .guide, size: 88, showsShadow: false)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("选择你的第一位旅伴")
                             .font(.system(.title2, design: .rounded, weight: .black))

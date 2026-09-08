@@ -147,7 +147,7 @@
   ],
   "total_bytes": 6229266,
   "pixel_edits_applied": false,
-  "runtime_integrated": false,
+  "runtime_integrated": true,
   "asset_catalog_compile": {
     "tool": "xcrun actool",
     "platform": "iphonesimulator",
@@ -162,6 +162,23 @@
   "visual_checks": [
     "All eight generated images inspected individually.",
     "Browser preview checked on dark background at UI scale; responsive image clipping fixed.",
-    "Pose pack has stronger linework and additional crest details relative to approved identity master; not a replacement master."
-  ]
+    "Pose pack has stronger linework and additional crest details relative to approved identity master; not a replacement master.",
+    "LingoTrip placement-test introduction inspected on iPhone 17 Pro simulator: new explore artwork is visible, uncropped and clear over the photographic background.",
+    "Chat composer inspected with an existing conversation: the retired mascot conversation prompt is absent.",
+    "Fresh guest contacts and ticket-stub empty states inspected on iPhone 17 Pro simulator: artwork is semantically appropriate, uncropped and does not overlap copy."
+  ],
+  "app_integration": {
+    "date": "2026-09-08",
+    "target": "LingoTrip",
+    "resource_declaration": "project.yml",
+    "asset_names_confirmed_in_compiled_catalog": 8,
+    "focused_tests": {
+      "suite": "BrandMascotRenderingPolicyTests",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "app_build": "passed",
+    "legacy_3d_framework_or_bundle_in_app": false
+  }
 }

@@ -456,17 +456,25 @@ public struct RosterView: View {
     }
 
     private var emptyState: some View {
-        ContentUnavailableView(
-            "还没有好友",
-            systemImage: "person.2",
-            description: Text("继续旅行，认识的伙伴会出现在这里")
-        )
+        VStack(spacing: DSSpacing.sm) {
+            BrandMascotView(pose: .encouragement, size: 136, showsShadow: false)
+                .accessibilityHidden(true)
+            Text("还没有好友")
+                .font(.title3.bold())
+            Text("继续旅行，认识的伙伴会出现在这里")
+                .font(.subheadline)
+                .foregroundStyle(sceneSecondaryText)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity)
         .padding(DSSpacing.xl)
         .foregroundStyle(scenePrimaryText)
         .dsSceneGlass(
             tint: sceneGlassTint,
             legibility: .shielded
         )
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("还没有好友。继续旅行，认识的伙伴会出现在这里")
     }
 
     private func reload() async {

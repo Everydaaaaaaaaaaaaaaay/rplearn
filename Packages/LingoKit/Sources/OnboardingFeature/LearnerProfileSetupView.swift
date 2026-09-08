@@ -224,7 +224,7 @@ struct LearnerProfileSetupView: View {
     private var nicknameStep: some View {
         VStack(alignment: .leading, spacing: DSSpacing.lg) {
             HStack(alignment: .top, spacing: DSSpacing.sm) {
-                BrandMascotView(pose: .greeting, size: 46, showsShadow: false)
+                BrandMascotView(pose: .greeting, size: 88, showsShadow: false)
                 Text("在城市剧情和真实感对话里，把学过的英语真正用起来。我会帮你找到合适的旅伴。")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)

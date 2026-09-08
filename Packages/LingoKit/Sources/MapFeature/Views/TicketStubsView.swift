@@ -20,11 +20,19 @@ public struct TicketStubsView: View {
             Color.dsBackground.ignoresSafeArea()
 
             if stubs.isEmpty && !isLoading {
-                ContentUnavailableView(
-                    "还没有纪念票根",
-                    systemImage: "ticket",
-                    description: Text("首次解锁一座城市后，它的唯一票根会收藏在这里")
-                )
+                VStack(spacing: DSSpacing.sm) {
+                    BrandMascotView(pose: .guide, size: 152, showsShadow: false)
+                        .accessibilityHidden(true)
+                    Text("还没有纪念票根")
+                        .font(.title3.bold())
+                    Text("首次解锁一座城市后，它的唯一票根会收藏在这里")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(DSSpacing.xl)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("还没有纪念票根。首次解锁一座城市后，它的唯一票根会收藏在这里")
             } else {
                 ScrollView {
                     LazyVStack(spacing: DSSpacing.md) {

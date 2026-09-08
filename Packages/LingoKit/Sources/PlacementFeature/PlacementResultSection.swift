@@ -13,9 +13,8 @@ extension PlacementTestView {
                 VStack(spacing: DSSpacing.lg) {
                     BrandMascotView(
                         pose: .celebrate,
-                        size: 78,
-                        showsShadow: true,
-                        renderingMode: .animatedModel
+                        size: 112,
+                        showsShadow: true
                     )
 
                     VStack(spacing: 5) {

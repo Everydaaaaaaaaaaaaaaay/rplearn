@@ -208,8 +208,8 @@ struct GrammarAnalysisSheet: View {
             }
         } else if isLoadingAI {
             VStack(spacing: 12) {
-                BrandMascotView(pose: .coach, size: 54, showsShadow: false)
-                ProgressView("咕咕正在分析句子…")
+                BrandMascotView(pose: .coach, size: 104, showsShadow: false)
+                ProgressView("嘎嘎正在分析句子…")
                     .font(.subheadline)
                 Text("正在调用 AI 对整句进行独立解析")
                     .font(.caption)

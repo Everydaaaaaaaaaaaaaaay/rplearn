@@ -5,49 +5,49 @@
       "id": "gugu_greeting",
       "source_path": "~/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_WpqvF4XX2weSXRQ31S5nIX90.png",
       "raw_path": "Assets/Brand/raw/gugu_greeting.key.png",
-      "target_path": "App/Assets.xcassets/BrandMascotGreeting.imageset/brand_mascot_greeting.png",
+      "target_path": "Assets/Brand/Mascots/legacy-v1/BrandMascotGreeting.imageset/brand_mascot_greeting.png",
       "commands": [
         "python ~/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_greeting.key.png --out Assets/Brand/raw/gugu_greeting.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
         "node Tools/ArtPipeline/artasset.mjs process Assets/Brand/raw/gugu_greeting.alpha.png App/Assets.xcassets/BrandMascotGreeting.imageset/brand_mascot_greeting.png --size 512x512 --fit contain --trim-alpha"
       ],
-      "status": "accepted",
-      "notes": "透明边缘干净，身份锚点通过。"
+      "status": "retired",
+      "notes": "透明边缘干净；2026-09-08 退出 App target，仅保留为历史素材。"
     },
     {
       "id": "gugu_guide",
       "source_path": "~/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_fKOnWhvnweCFnq8PHw2v76D5.png",
       "raw_path": "Assets/Brand/raw/gugu_guide.key.png",
-      "target_path": "App/Assets.xcassets/BrandMascotGuide.imageset/brand_mascot_guide.png",
+      "target_path": "Assets/Brand/Mascots/legacy-v1/BrandMascotGuide.imageset/brand_mascot_guide.png",
       "commands": [
         "python ~/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_guide.key.png --out Assets/Brand/raw/gugu_guide.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
         "node Tools/ArtPipeline/artasset.mjs process Assets/Brand/raw/gugu_guide.alpha.png App/Assets.xcassets/BrandMascotGuide.imageset/brand_mascot_guide.png --size 512x512 --fit contain --trim-alpha"
       ],
-      "status": "accepted",
-      "notes": "指路姿态清晰，折叠地图无文字。"
+      "status": "retired",
+      "notes": "指路姿态清晰；2026-09-08 退出 App target，仅保留为历史素材。"
     },
     {
       "id": "gugu_coach",
       "source_path": "~/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_RGBVHWmTrQ6puL6z9SsCAj0h.png",
       "raw_path": "Assets/Brand/raw/gugu_coach.key.png",
-      "target_path": "App/Assets.xcassets/BrandMascotCoach.imageset/brand_mascot_coach.png",
+      "target_path": "Assets/Brand/Mascots/legacy-v1/BrandMascotCoach.imageset/brand_mascot_coach.png",
       "commands": [
         "python ~/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_coach.key.png --out Assets/Brand/raw/gugu_coach.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
         "node Tools/ArtPipeline/artasset.mjs process Assets/Brand/raw/gugu_coach.alpha.png App/Assets.xcassets/BrandMascotCoach.imageset/brand_mascot_coach.png --size 512x512 --fit contain --trim-alpha"
       ],
-      "status": "accepted",
-      "notes": "笔记本空白，可在聊天建议卡重复使用。"
+      "status": "retired",
+      "notes": "笔记本空白；2026-09-08 退出 App target，仅保留为历史素材。"
     },
     {
       "id": "gugu_celebrate",
       "source_path": "~/.codex/generated_images/019fa2b3-9646-7c10-b376-4dba3cb4ea05/call_LLRedCLpt1p4l8VKQJMAaPbn.png",
       "raw_path": "Assets/Brand/raw/gugu_celebrate.key.png",
-      "target_path": "App/Assets.xcassets/BrandMascotCelebrate.imageset/brand_mascot_celebrate.png",
+      "target_path": "Assets/Brand/Mascots/legacy-v1/BrandMascotCelebrate.imageset/brand_mascot_celebrate.png",
       "commands": [
         "python ~/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input Assets/Brand/raw/gugu_celebrate.key.png --out Assets/Brand/raw/gugu_celebrate.alpha.png --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
         "node Tools/ArtPipeline/artasset.mjs process Assets/Brand/raw/gugu_celebrate.alpha.png App/Assets.xcassets/BrandMascotCelebrate.imageset/brand_mascot_celebrate.png --size 512x512 --fit contain --trim-alpha"
       ],
-      "status": "accepted",
-      "notes": "未烘焙彩屑，动效由客户端负责。"
+      "status": "retired",
+      "notes": "未烘焙彩屑；2026-09-08 退出 App target，仅保留为历史素材。"
     },
     {
       "id": "coovingo_app_icon",

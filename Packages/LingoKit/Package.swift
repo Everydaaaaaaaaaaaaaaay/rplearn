@@ -19,7 +19,7 @@ let infraTargets: [Target] = [
     ),
     .target(
         name: "DesignSystem",
-        dependencies: [module("CoreKit"), module("MascotKit")]
+        dependencies: [module("CoreKit")]
     ),
 ]
 

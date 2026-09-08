@@ -183,9 +183,8 @@ public struct PlacementTestView: View {
                 VStack(spacing: 6) {
                     BrandMascotView(
                         pose: .guide,
-                        size: 92,
-                        showsShadow: true,
-                        renderingMode: .animatedModel
+                        size: 116,
+                        showsShadow: true
                     )
 
                     Text("选择或测一测，聊得更合拍")

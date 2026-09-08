@@ -12,15 +12,6 @@ import Translation
 extension ChatView {
 var inputBar: some View {
         VStack(spacing: 0) {
-            if shouldShowMascotPrompt {
-                mascotConversationPrompt
-                    .transition(
-                        reduceMotion
-                            ? .opacity
-                            : .move(edge: .bottom).combined(with: .opacity)
-                    )
-            }
-
             HStack(spacing: 8) {
                 Button {
                     withAnimation(.snappy) {
@@ -108,71 +99,4 @@ var inputBar: some View {
         .dsMaterial(.ultraThinMaterial, in: Rectangle())
     }
 
-    var shouldShowMascotPrompt: Bool {
-        !isVoiceMode
-            && !isMascotPromptDismissed
-            && viewModel.draft.isEmpty
-            && !viewModel.isStreaming
-            && viewModel.messages.count <= 3
-    }
-
-    var mascotConversationPrompt: some View {
-        HStack(alignment: .top, spacing: DSSpacing.xs) {
-            BrandMascotView(pose: .coach, size: 30, showsShadow: false)
-                .padding(.top, 1)
-
-            Button {
-                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                    viewModel.draft = conversationStarter
-                    isMascotPromptDismissed = true
-                    isTextInputFocused = true
-                }
-            } label: {
-                Text("咕咕：试试 “\(conversationStarter)”")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.primary)
-                    .multilineTextAlignment(.leading)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .layoutPriority(1)
-
-            Button {
-                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                    isMascotPromptDismissed = true
-                }
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.caption.bold())
-                    .frame(width: 30, height: 30)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel("关闭咕咕建议")
-        }
-        .padding(.horizontal, DSSpacing.sm)
-        .padding(.vertical, 5)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .top) { Divider() }
-    }
-
-    var conversationStarter: String {
-        "What do you love most about \(chatCityEnglishName)?"
-    }
-
-    var chatCityDisplayName: String {
-        let regions = ["london": "伦敦", "melbourne": "墨尔本", "newyork": "纽约"]
-        return regions[viewModel.character.card.regionID] ?? viewModel.character.card.regionID
-    }
-
-    var chatCityEnglishName: String {
-        let regions = [
-            "london": "London",
-            "melbourne": "Melbourne",
-            "newyork": "New York",
-        ]
-        return regions[viewModel.character.card.regionID]
-            ?? viewModel.character.card.regionID.replacingOccurrences(of: "_", with: " ").capitalized
-    }
 }

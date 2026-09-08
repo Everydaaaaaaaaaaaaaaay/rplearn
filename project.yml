@@ -50,6 +50,8 @@ targets:
       Release: Config/Signing.xcconfig
     sources:
       - App
+      - path: Assets/Brand/Mascots/ui-pack-v1/GuyujiMascots.xcassets
+        buildPhase: resources
     dependencies:
       - package: LingoKit
         product: CoreKit

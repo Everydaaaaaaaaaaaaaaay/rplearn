@@ -1,21 +1,34 @@
-import DesignSystem
-import MascotKit
+@testable import DesignSystem
 import Testing
 
 struct BrandMascotRenderingPolicyTests {
-    @Test("自动策略只在可读尺寸启用动画模型")
-    func automaticRenderingThreshold() {
-        #expect(!BrandMascotRenderingMode.automatic.usesAnimatedModel(at: 51))
-        #expect(BrandMascotRenderingMode.automatic.usesAnimatedModel(at: 52))
-        #expect(BrandMascotRenderingMode.animatedModel.usesAnimatedModel(at: 28))
-        #expect(!BrandMascotRenderingMode.staticArtwork.usesAnimatedModel(at: 92))
+    @Test("全部品牌姿态只映射到新版动作资源")
+    func poseAssetMapping() {
+        let names = Set(BrandMascotPose.allCases.map(\.assetName))
+
+        #expect(names.count == 8)
+        #expect(names == [
+            "mascot_gugu_welcome",
+            "mascot_gugu_celebrate",
+            "mascot_gugu_explore",
+            "mascot_gugu_rest",
+            "mascot_gaga_pout",
+            "mascot_gaga_proud",
+            "mascot_gaga_care",
+            "mascot_gaga_think",
+        ])
+        #expect(names.allSatisfy { $0.hasPrefix("mascot_") })
     }
 
-    @Test("品牌姿态映射到稳定动画语义")
-    func poseAnimationMapping() {
-        #expect(BrandMascotPose.greeting.defaultAnimation == .semantic(.idle))
-        #expect(BrandMascotPose.guide.defaultAnimation == .semantic(.idle))
-        #expect(BrandMascotPose.coach.defaultAnimation == .semantic(.idle))
-        #expect(BrandMascotPose.celebrate.defaultAnimation == .semantic(.success))
+    @Test("双吉祥物姿态使用正确角色名")
+    func poseCharacterMapping() {
+        #expect(BrandMascotPose.greeting.characterName == "咕咕")
+        #expect(BrandMascotPose.guide.characterName == "咕咕")
+        #expect(BrandMascotPose.celebrate.characterName == "咕咕")
+        #expect(BrandMascotPose.resting.characterName == "咕咕")
+        #expect(BrandMascotPose.coach.characterName == "嘎嘎")
+        #expect(BrandMascotPose.reminder.characterName == "嘎嘎")
+        #expect(BrandMascotPose.encouragement.characterName == "嘎嘎")
+        #expect(BrandMascotPose.achievement.characterName == "嘎嘎")
     }
 }
