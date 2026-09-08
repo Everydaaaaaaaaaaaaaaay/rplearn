@@ -169,7 +169,7 @@ public struct HomeView: View {
             .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $touchedSceneEntry))
             .frame(width: width, height: height)
             .accessibilityLabel("剧情，\(storySubtitle)")
-            .accessibilityHint("查看主线与当前城市剧情")
+            .accessibilityHint("查看主线与城市剧情")
 
             Button {
                 openSceneEntry(.activities, destination: .activities)

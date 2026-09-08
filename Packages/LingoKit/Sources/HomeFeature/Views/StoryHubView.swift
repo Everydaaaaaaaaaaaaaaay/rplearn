@@ -3,12 +3,17 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 剧情二级入口：主线负责跨城推进，城市剧情承载每座城市的独立故事。
+/// 剧情二级入口：主线承载五城长篇，城市剧情提供按机票渐进开放的独立故事。
 public struct StoryHubView: View {
     private let deps: HomeDependencies
 
     @State private var profile: UserProfileDTO?
     @State private var completed: Set<String> = []
+    @State private var cityUnlockProgress = CityStoryUnlockProgress(
+        profile: nil,
+        availableTickets: [],
+        ticketStubs: []
+    )
 
     public init(deps: HomeDependencies) {
         self.deps = deps
@@ -16,10 +21,6 @@ public struct StoryHubView: View {
 
     private var journey: MainlineJourney {
         MainlineCatalog.journey(starterRegionID: profile?.starterRegionID)
-    }
-
-    private var currentRegion: Region? {
-        profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
     }
 
     private var completedMainlineCount: Int {
@@ -31,24 +32,22 @@ public struct StoryHubView: View {
     }
 
     private var unlockedCityCount: Int {
-        guard let profile else { return 0 }
-        let unlocked = Set(profile.unlockedRegionIDs + [profile.currentRegionID])
-        return CityStoryCatalog.chapters.filter { unlocked.contains($0.regionID) }.count
+        cityUnlockProgress.unlockedChapterCount
     }
 
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DSSpacing.lg) {
-                intro
-
                 NavigationLink(value: HomeDestination.mainline) {
                     categoryCard(
-                        eyebrow: "出发之后",
+                        eyebrow: "五城长篇",
                         title: "主线剧情",
-                        detail: "从一次邀请出发，在五座城市参与一些具体的生活。",
-                        progressText: "\(completedMainlineCount) / \(journey.stops.count) 站",
+                        detail: "五座城市串起同一段旅程。所有章节都能直接开始，按自己的节奏走到终章。",
+                        progressText: "\(completedMainlineCount) / \(journey.stops.count) 章 · 全部开放",
                         progress: Double(completedMainlineCount) / Double(journey.stops.count),
-                        artworkName: "home_mainline_\(currentRegion?.id ?? journey.starterRegionID)",
+                        artworkNames: MainlineCatalog.chapters.map {
+                            DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
+                        },
                         tint: .dsSky
                     )
                 }
@@ -58,12 +57,14 @@ public struct StoryHubView: View {
 
                 NavigationLink(value: HomeDestination.cityStories) {
                     categoryCard(
-                        eyebrow: "抵达后解锁",
+                        eyebrow: "十五城短篇",
                         title: "城市剧情",
-                        detail: "每座城市都有一段独立故事，在当地认识街区与生活。",
-                        progressText: "\(completedCityCount) / \(CityStoryCatalog.chapters.count) 篇 · 已到访 \(unlockedCityCount) 城",
+                        detail: "六篇生活故事即刻可读；每累计一张机票再开放三篇，三张即可读遍十五座城市。",
+                        progressText: "\(completedCityCount) / \(CityStoryCatalog.chapters.count) 篇 · 已开放 \(unlockedCityCount) 篇",
                         progress: Double(completedCityCount) / Double(CityStoryCatalog.chapters.count),
-                        artworkName: "home_activity_\(currentRegion?.id ?? journey.starterRegionID)",
+                        artworkNames: CityStoryCatalog.chapters.map {
+                            DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
+                        },
                         tint: .dsSunset
                     )
                 }
@@ -71,22 +72,13 @@ public struct StoryHubView: View {
                 .accessibilityIdentifier("story.cities")
                 .frame(maxWidth: .infinity)
             }
-            .padding(DSSpacing.md)
+            .padding(.horizontal, DSSpacing.md)
+            .padding(.vertical, DSSpacing.sm)
         }
         .background(Color.dsBackground)
         .navigationTitle("剧情")
         .task { await reload() }
         .onAppear { Task { await reload() } }
-    }
-
-    private var intro: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.xs) {
-            Text("选择一段旅程")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-            Text("主线决定旅程的方向，城市剧情记录你真正抵达过的地方。")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
     }
 
     private func categoryCard(
@@ -95,17 +87,13 @@ public struct StoryHubView: View {
         detail: String,
         progressText: String,
         progress: Double,
-        artworkName: String,
+        artworkNames: [String],
         tint: Color
     ) -> some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             GeometryReader { proxy in
                 ZStack(alignment: .bottomLeading) {
-                    Image(artworkName)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: proxy.size.width, height: 154)
-                        .clipped()
+                    artworkStrips(artworkNames, width: proxy.size.width)
 
                     LinearGradient(
                         colors: [.clear, .black.opacity(0.72)],
@@ -163,10 +151,36 @@ public struct StoryHubView: View {
         .contentShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
     }
 
+    private func artworkStrips(_ artworkNames: [String], width: CGFloat) -> some View {
+        HStack(spacing: 0) {
+            ForEach(Array(artworkNames.enumerated()), id: \.offset) { _, artworkName in
+                Image(artworkName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(
+                        width: width / CGFloat(max(artworkNames.count, 1)),
+                        height: 154
+                    )
+                    .clipped()
+            }
+        }
+        .frame(width: width, height: 154)
+        .clipped()
+        .accessibilityHidden(true)
+    }
+
     private func reload() async {
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
-        profile = await loadedProfile
+        async let loadedTickets = try? deps.itemStore.unconsumedTickets()
+        async let loadedStubs = try? deps.ticketStubStore.all()
+        let resolvedProfile = await loadedProfile
+        profile = resolvedProfile
         completed = await loadedCompleted ?? []
+        cityUnlockProgress = CityStoryUnlockProgress(
+            profile: resolvedProfile,
+            availableTickets: await loadedTickets ?? [],
+            ticketStubs: await loadedStubs ?? []
+        )
     }
 }

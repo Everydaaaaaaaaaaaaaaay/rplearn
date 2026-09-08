@@ -161,7 +161,22 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(story.waitForExistence(timeout: 15))
         story.tap()
         XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["选择一段旅程"].exists)
+        XCTAssertFalse(app.staticTexts["主线决定旅程的方向，城市剧情记录你真正抵达过的地方。"].exists)
+        XCTAssertTrue(app.staticTexts["五座城市串起同一段旅程。所有章节都能直接开始，按自己的节奏走到终章。"].exists)
+        XCTAssertTrue(app.staticTexts["六篇生活故事即刻可读；每累计一张机票再开放三篇，三张即可读遍十五座城市。"].exists)
+        screenshot("story-hub-photo-collages")
+
+        app.buttons["story.cities"].tap()
+        XCTAssertTrue(app.staticTexts["十五城故事集"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["前六篇默认开放；每累计一张机票再开放三篇。机票使用后不会回锁，已开放剧情可在当前位置直接开始。"].exists)
+        screenshot("story-city-photo-catalog")
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+
+        XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
         app.buttons["story.mainline"].tap()
+        XCTAssertTrue(app.staticTexts["章节不再要求飞往当地。游客可体验第一站；登录后即可在当前位置继续完整主线。"].waitForExistence(timeout: 5))
+        screenshot("story-mainline-photo-catalog")
         let london = app.buttons["story.chapter.departures_london_v1"]
         XCTAssertTrue(london.waitForExistence(timeout: 10))
         london.tap()

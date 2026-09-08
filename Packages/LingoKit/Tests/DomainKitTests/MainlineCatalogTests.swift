@@ -135,4 +135,19 @@ struct CityStoryCatalogTests {
         #expect(CityStoryCatalog.chapter(forRegion: "kingston")?.title == "节目末尾的名字")
         #expect(CityStoryCatalog.chapter(forRegion: "unknown") == nil)
     }
+
+    @Test("前六篇默认开放，之后每张机票开放三篇")
+    func ticketUnlockMilestones() {
+        #expect(CityStoryCatalog.unlockedChapterCount(earnedTicketCount: 0) == 6)
+        #expect(CityStoryCatalog.unlockedChapterCount(earnedTicketCount: 1) == 9)
+        #expect(CityStoryCatalog.unlockedChapterCount(earnedTicketCount: 2) == 12)
+        #expect(CityStoryCatalog.unlockedChapterCount(earnedTicketCount: 3) == 15)
+        #expect(CityStoryCatalog.unlockedChapterCount(earnedTicketCount: 99) == 15)
+
+        #expect(CityStoryCatalog.requiredTicketCount(forChapterAt: 5) == 0)
+        #expect(CityStoryCatalog.requiredTicketCount(forChapterAt: 6) == 1)
+        #expect(CityStoryCatalog.requiredTicketCount(forChapterAt: 8) == 1)
+        #expect(CityStoryCatalog.requiredTicketCount(forChapterAt: 9) == 2)
+        #expect(CityStoryCatalog.requiredTicketCount(forChapterAt: 12) == 3)
+    }
 }

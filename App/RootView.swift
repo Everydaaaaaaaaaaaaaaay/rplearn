@@ -744,8 +744,9 @@ struct RootView: View {
         HomeDependencies(
             access: journeyAccess,
             economyStore: environment.economyStore,
+            itemStore: environment.itemStore,
+            ticketStubStore: environment.ticketStubStore,
             storyProgress: environment.storyProgressStore,
-            travelService: travelService,
             regionCatalog: environment.regionCatalog,
             rosterStore: environment.rosterStore,
             chatStore: environment.chatStore,
