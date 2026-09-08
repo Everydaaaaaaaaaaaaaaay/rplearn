@@ -21,7 +21,7 @@ public struct AccountSecurityView: View {
 
     public var body: some View {
         List {
-            Section("登录方式") {
+            Section {
                 if identities.isEmpty && isBusy {
                     ProgressView("正在载入…")
                 } else {
@@ -33,6 +33,8 @@ public struct AccountSecurityView: View {
                 if !identities.contains(where: { $0.provider == "apple" }) {
                     appleLinkButton
                 }
+            } header: {
+                Text("登录方式")
             } footer: {
                 Text("同一个旅途账号可以绑定多种登录方式。系统不会仅凭相同邮箱自动合并两个账号。")
             }
@@ -44,11 +46,13 @@ public struct AccountSecurityView: View {
                 }
             }
 
-            Section("账号数据") {
+            Section {
                 Button("永久删除账号", role: .destructive) {
                     showsDeleteConfirmation = true
                 }
                 .disabled(isBusy)
+            } header: {
+                Text("账号数据")
             } footer: {
                 Text("删除会立即退出所有设备并清理账号数据；已有 App Store 订阅仍需在系统订阅管理中取消。")
             }
