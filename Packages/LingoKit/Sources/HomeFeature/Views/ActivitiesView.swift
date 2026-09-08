@@ -14,7 +14,7 @@ public struct ActivitiesView: View {
     let onChat: (CharacterDTO) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var scene: ActivitySceneID = .cafe
+    @State private var scene: ActivitySceneID = .park
     @State private var cityID: String?
     @State private var cityName = ""
     @State private var records: [ActivityRecord] = []

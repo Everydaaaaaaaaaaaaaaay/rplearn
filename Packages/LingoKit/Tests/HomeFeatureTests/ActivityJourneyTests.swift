@@ -4,23 +4,27 @@ import PersistenceKit
 @testable import HomeFeature
 
 final class ActivityJourneyTests: XCTestCase {
-    func testCompleteSceneMastersKeepTheirNativePixelsAndCalibratedCanvas() throws {
+    func testScenePostersAndForegroundsKeepTheirAuthoredPixels() throws {
+        let expectedPosters: [ActivitySceneID: CGSize] = [
+            .park: CGSize(width: 852, height: 1108),
+            .pond: CGSize(width: 584, height: 584),
+            .raincafe: CGSize(width: 852, height: 1848)
+        ]
+        let expectedForegrounds: [ActivitySceneID: CGSize] = [
+            .park: CGSize(width: 852, height: 789),
+            .pond: CGSize(width: 852, height: 999)
+        ]
         for scene in ActivitySceneID.allCases {
-            let url = try XCTUnwrap(Bundle.main.url(forResource: scene.poster, withExtension: "png"))
-            let image = try XCTUnwrap(UIImage(contentsOfFile: url.path)?.cgImage)
-            XCTAssertEqual(image.width, scene == .bookstall ? 852 : 851)
-            XCTAssertEqual(image.height, scene == .bookstall ? 1846 : scene == .cafe ? 1847 : 1849)
-            XCTAssertEqual(CGFloat(image.width) / CGFloat(image.height), 852.0 / 1847.0, accuracy: 0.002)
-            // Full continuous photo, not a transparent foreground on old footage.
-            var pixel = [UInt8](repeating: 0, count: 4)
-            let patch = try XCTUnwrap(image.cropping(to: CGRect(x: 0, y: 0, width: 1, height: 1)))
-            pixel.withUnsafeMutableBytes { bytes in
-                let context = CGContext(data: bytes.baseAddress, width: 1, height: 1, bitsPerComponent: 8,
-                    bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(),
-                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
-                context.draw(patch, in: CGRect(x: 0, y: 0, width: 1, height: 1))
+            let posterURL = try XCTUnwrap(Bundle.main.url(forResource: scene.media.poster, withExtension: "jpg"))
+            let poster = try XCTUnwrap(UIImage(contentsOfFile: posterURL.path)?.cgImage)
+            XCTAssertEqual(CGSize(width: poster.width, height: poster.height), expectedPosters[scene])
+            if let name = scene.media.foreground {
+                let foregroundURL = try XCTUnwrap(Bundle.main.url(forResource: name, withExtension: "jpg"))
+                let foreground = try XCTUnwrap(UIImage(contentsOfFile: foregroundURL.path)?.cgImage)
+                XCTAssertEqual(CGSize(width: foreground.width, height: foreground.height), expectedForegrounds[scene])
+            } else {
+                XCTAssertNil(scene.media.foregroundTop)
             }
-            XCTAssertEqual(pixel[3], 255)
         }
     }
     func testReunionEligibilityPreservesIdentityBoundariesWithoutDemographicFiltering() {
@@ -50,13 +54,15 @@ final class ActivityJourneyTests: XCTestCase {
     func testEverySceneHasDistinctCompleteActionsAndBundledMedia() throws {
         XCTAssertEqual(ActivitySceneID.allCases.count, 3)
         XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 9)
-        XCTAssertEqual(Set(ActivitySceneID.allCases.map { $0.media.seed }).count, 3)
-        XCTAssertEqual(Set(ActivitySceneID.allCases.map(\.poster)).count, 3)
+        XCTAssertEqual(Set(ActivitySceneID.allCases.map { $0.media.poster }).count, 3)
+        XCTAssertEqual(Set(ActivitySceneID.allCases.map { $0.media.video }).count, 3)
         for scene in ActivitySceneID.allCases {
             XCTAssertEqual(scene.actions.count, 3)
             XCTAssertEqual(Set(scene.actions.map(\.anchor)).count, 3)
-            XCTAssertNotNil(Bundle.main.url(forResource: scene.poster, withExtension: "png"))
-            XCTAssertFalse(scene.media.lightPlanes.isEmpty)
+            XCTAssertNotNil(Bundle.main.url(forResource: scene.media.poster, withExtension: "jpg"))
+            XCTAssertNotNil(Bundle.main.url(forResource: scene.media.video, withExtension: "mp4"))
+            XCTAssertGreaterThan(scene.media.videoHeight, 0)
+            XCTAssertGreaterThan(scene.media.expectedDuration, 0)
             for activity in scene.actions {
                 XCTAssertEqual(activity.scene, scene)
                 XCTAssertFalse(activity.introduction.isEmpty)
@@ -77,21 +83,17 @@ final class ActivityJourneyTests: XCTestCase {
         }
     }
 
-    func testCafeActionsDoNotInventBookPropsAndRetiredActionHistorySurvives() throws {
-        let cafe = ActivitySceneID.cafe.actions
-        XCTAssertTrue(cafe.contains { $0.id == "cafe-taste" })
-        XCTAssertFalse(cafe.contains { $0.id == "cafe-book" })
-        for action in cafe {
-            XCTAssertFalse((action.title + action.introduction).contains("书"))
-            XCTAssertFalse(action.introduction.contains("菜单"))
-        }
+    func testRetiredActionHistorySurvivesSceneReplacement() throws {
+        let park = ActivitySceneID.park.actions
+        XCTAssertTrue(park.contains { $0.id == "park-seat" })
+        XCTAssertFalse(SceneActivity.catalog.contains { $0.id == "cafe-book" })
         let suite = "retired-cafe-action-\(UUID())"
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
         defer { defaults.removePersistentDomain(forName: suite) }
         let journal = ActivityJournal(namespace: "guest", city: "london", defaults: defaults)
         let historical = "{\"version\":1,\"records\":[{\"id\":\"\(UUID())\",\"activityID\":\"cafe-book\",\"title\":\"借书开场\",\"date\":0,\"choices\":[]}]}"
         defaults.set(Data(historical.utf8), forKey: journal.key)
-        let records = try journal.complete(try XCTUnwrap(cafe.first { $0.id == "cafe-taste" }), selections: [0, 1], runID: UUID())
+        let records = try journal.complete(try XCTUnwrap(park.first { $0.id == "park-seat" }), selections: [0, 1], runID: UUID())
         XCTAssertEqual(records.count, 2)
         XCTAssertEqual(records.first?.activityID, "cafe-book")
         XCTAssertEqual(records.first?.title, "借书开场")
@@ -143,40 +145,20 @@ final class ActivityJourneyTests: XCTestCase {
         XCTAssertNil(try journal.records().first?.characterID)
     }
 
-    func testRejectedCrowdCompositesAreNotBundled() {
-        for scene in ActivitySceneID.allCases {
-            XCTAssertNil(Bundle.main.url(forResource: "activity-\(scene.rawValue)-street-loop", withExtension: "mp4"))
-            XCTAssertNil(Bundle.main.url(forResource: "activity-\(scene.rawValue)-window", withExtension: "jpg"))
+    func testRetiredV4ScenesAndRejectedCrowdCompositesAreNotBundled() {
+        for scene in ["cafe", "bookstall", "flowerstall"] {
+            XCTAssertNil(Bundle.main.url(forResource: "activity-\(scene)-ambient-v4", withExtension: "png"))
+            XCTAssertNil(Bundle.main.url(forResource: "activity-\(scene)-street-loop", withExtension: "mp4"))
+            XCTAssertNil(Bundle.main.url(forResource: "activity-\(scene)-window", withExtension: "jpg"))
         }
     }
 
-    func testAmbientShadowCycleIsContinuousAndBounded() {
-        let duration = ActivityAmbientLightLayer.cycle
-        XCTAssertEqual(duration, 60)
-        for phase in [0.0, 0.5, 2.0, 4.0] {
-            let start = ActivityAmbientLightLayer.drift(at: 0, phase: phase)
-            let end = ActivityAmbientLightLayer.drift(at: duration, phase: phase)
-            XCTAssertEqual(start.x, end.x, accuracy: 0.000001)
-            XCTAssertEqual(start.y, end.y, accuracy: 0.000001)
-            let epsilon = 0.0001
-            let before = ActivityAmbientLightLayer.drift(at: duration - epsilon, phase: phase)
-            let after = ActivityAmbientLightLayer.drift(at: epsilon, phase: phase)
-            XCTAssertEqual((end.x - before.x) / epsilon, (after.x - start.x) / epsilon, accuracy: 0.001)
-            XCTAssertEqual((end.y - before.y) / epsilon, (after.y - start.y) / epsilon, accuracy: 0.001)
-            for time in stride(from: 0.0, through: 120, by: 0.25) {
-                let offset = ActivityAmbientLightLayer.drift(at: time, phase: phase)
-                XCTAssertLessThanOrEqual(abs(offset.x), 10)
-                XCTAssertLessThanOrEqual(abs(offset.y), 6)
-            }
-        }
-    }
-
-    func testAmbientMotionHonoursAccessibilityPowerAndTemperature() {
+    func testVideoMotionHonoursAccessibilityPowerAndTemperature() {
         for thermal in [ProcessInfo.ThermalState.nominal, .fair, .serious, .critical] {
             for requested in [false, true] {
                 for reduced in [false, true] {
                     for lowPower in [false, true] {
-                        XCTAssertEqual(ActivityAmbientLightLayer.permitsMotion(requested: requested,
+                        XCTAssertEqual(ActivitySceneVideoLayer.permitsMotion(requested: requested,
                             reduceMotion: reduced, lowPower: lowPower, thermal: thermal),
                             requested && !reduced && !lowPower && (thermal == .nominal || thermal == .fair))
                     }
@@ -185,27 +167,27 @@ final class ActivityJourneyTests: XCTestCase {
         }
     }
 
-    @MainActor
-    func testAmbientSurfacePausesResumesAndStopsWhenDetached() async throws {
-        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 402, height: 874))
-        let surface = ActivityAmbientLightLayer.Surface(scene: .cafe)
-        window.addSubview(surface)
-        surface.frame = window.bounds
-        window.isHidden = false
-        defer { surface.removeFromSuperview(); window.isHidden = true }
-        surface.setPlaying(true)
-        XCTAssertTrue(surface.running)
-        try await Task.sleep(for: .milliseconds(100))
-        surface.setPlaying(false)
-        let paused = surface.elapsed
-        XCTAssertGreaterThan(paused, 0.05)
-        XCTAssertFalse(surface.running)
-        try await Task.sleep(for: .milliseconds(100))
-        XCTAssertEqual(surface.elapsed, paused, accuracy: 0.002)
-        surface.setPlaying(true)
-        XCTAssertEqual(surface.elapsed, paused, accuracy: 0.02)
-        surface.removeFromSuperview()
-        XCTAssertFalse(surface.running)
+    func testSparseParkCadenceHasCooldownAndAvoidsNearlyEqualIntervals() {
+        struct Seeded: RandomNumberGenerator {
+            var state: UInt64 = 57
+            mutating func next() -> UInt64 {
+                state = state &* 6364136223846793005 &+ 1442695040888963407
+                return state
+            }
+        }
+        var generator = Seeded()
+        var cadence = ActivityAmbientCadence()
+        var previous: TimeInterval?
+        var draws: [TimeInterval] = []
+        for _ in 0..<200 {
+            let delay = cadence.nextDelay(using: &generator)
+            XCTAssertTrue((24...95).contains(delay))
+            if let previous { XCTAssertGreaterThanOrEqual(abs(delay - previous), 8) }
+            previous = delay
+            draws.append(delay)
+        }
+        XCTAssertTrue(draws.contains { $0 > 70 })
+        XCTAssertTrue(draws.contains { $0 < 40 })
     }
 
     func testIncompleteOrCorruptDataNeverOverwritesHistory() throws {

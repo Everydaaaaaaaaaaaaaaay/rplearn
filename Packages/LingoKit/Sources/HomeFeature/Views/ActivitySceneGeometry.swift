@@ -15,43 +15,11 @@ enum ActivitySceneLayout {
 /// Map folds are not one perfect plane; use the central readable patch. The cup
 /// uses its front-facing area, not the horizontal tabletop plane.
 enum ActivitySceneAnchor: CaseIterable {
-    case map, cup, journal, binoculars, sketchbook, postcard, cafeSill, cafeCup, cafePastry
-    case bookstallBook, bookstallRecommendations, bookstallOpenBook, flowerstallBucket, flowerstallBouquet, flowerstallTable
+    case map, cup, journal, binoculars, sketchbook, postcard
+    case rainWindow, rainPastry, rainNapkins
 
     var quad: HomePerspectiveQuad {
         switch self {
-        case .bookstallBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 140, y: 962), topRight: CGPoint(x: 300, y: 976),
-                                bottomRight: CGPoint(x: 300, y: 1065), bottomLeft: CGPoint(x: 140, y: 1050))
-        case .bookstallRecommendations:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 565, y: 979), topRight: CGPoint(x: 740, y: 1015),
-                                bottomRight: CGPoint(x: 725, y: 1100), bottomLeft: CGPoint(x: 550, y: 1065))
-        case .bookstallOpenBook:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 327, y: 1300), topRight: CGPoint(x: 517, y: 1310),
-                                bottomRight: CGPoint(x: 515, y: 1430), bottomLeft: CGPoint(x: 325, y: 1420))
-        case .flowerstallBucket:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 80, y: 994), topRight: CGPoint(x: 257, y: 994),
-                                bottomRight: CGPoint(x: 254, y: 1120), bottomLeft: CGPoint(x: 85, y: 1120))
-        case .flowerstallBouquet:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 545, y: 1280), topRight: CGPoint(x: 721, y: 1340),
-                                bottomRight: CGPoint(x: 673, y: 1440), bottomLeft: CGPoint(x: 500, y: 1380))
-        case .flowerstallTable:
-            // Near-side wrapping space: separate the waiting action from both
-            // the bucket and bouquet, including their complete touch regions.
-            HomePerspectiveQuad(topLeft: CGPoint(x: 245, y: 1260), topRight: CGPoint(x: 395, y: 1260),
-                                bottomRight: CGPoint(x: 395, y: 1380), bottomLeft: CGPoint(x: 245, y: 1380))
-        case .cafeSill:
-            // Historical enum name; v4 anchors the nearby conversation to the
-            // open courtyard beyond the chair, not an imaginary window sill.
-            HomePerspectiveQuad(topLeft: CGPoint(x: 463, y: 942), topRight: CGPoint(x: 643, y: 930),
-                                bottomRight: CGPoint(x: 643, y: 1040), bottomLeft: CGPoint(x: 463, y: 1052))
-        case .cafeCup:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 580, y: 1230), topRight: CGPoint(x: 750, y: 1230),
-                                bottomRight: CGPoint(x: 742, y: 1340), bottomLeft: CGPoint(x: 584, y: 1340))
-        case .cafePastry:
-            // Empty near-side table, not glowing lettering projected over food.
-            HomePerspectiveQuad(topLeft: CGPoint(x: 170, y: 1130), topRight: CGPoint(x: 355, y: 1120),
-                                bottomRight: CGPoint(x: 355, y: 1230), bottomLeft: CGPoint(x: 170, y: 1240))
         case .map:
             HomePerspectiveQuad(topLeft: CGPoint(x: 22, y: 1280), topRight: CGPoint(x: 353, y: 1198),
                                 bottomRight: CGPoint(x: 484, y: 1401), bottomLeft: CGPoint(x: 113, y: 1498))
@@ -59,8 +27,10 @@ enum ActivitySceneAnchor: CaseIterable {
             HomePerspectiveQuad(topLeft: CGPoint(x: 567, y: 1158), topRight: CGPoint(x: 756, y: 1158),
                                 bottomRight: CGPoint(x: 790, y: 1286), bottomLeft: CGPoint(x: 552, y: 1286))
         case .journal:
-            HomePerspectiveQuad(topLeft: CGPoint(x: 529, y: 1397), topRight: CGPoint(x: 772, y: 1451),
-                                bottomRight: CGPoint(x: 707, y: 1647), bottomLeft: CGPoint(x: 450, y: 1575))
+            // Use the notebook's upper writing area so the floating plaque stays
+            // above the persistent bottom navigation on a 375 × 667 screen.
+            HomePerspectiveQuad(topLeft: CGPoint(x: 529, y: 1347), topRight: CGPoint(x: 772, y: 1401),
+                                bottomRight: CGPoint(x: 707, y: 1597), bottomLeft: CGPoint(x: 450, y: 1525))
         case .binoculars:
             HomePerspectiveQuad(topLeft: CGPoint(x: 599, y: 906), topRight: CGPoint(x: 792, y: 953),
                                 bottomRight: CGPoint(x: 754, y: 1082), bottomLeft: CGPoint(x: 552, y: 1024))
@@ -70,6 +40,16 @@ enum ActivitySceneAnchor: CaseIterable {
         case .postcard:
             HomePerspectiveQuad(topLeft: CGPoint(x: 531, y: 1400), topRight: CGPoint(x: 762, y: 1380),
                                 bottomRight: CGPoint(x: 784, y: 1512), bottomLeft: CGPoint(x: 540, y: 1537))
+        case .rainWindow:
+            // Clear lower window pane near the live rain region.
+            HomePerspectiveQuad(topLeft: CGPoint(x: 548, y: 1024), topRight: CGPoint(x: 748, y: 1014),
+                                bottomRight: CGPoint(x: 752, y: 1216), bottomLeft: CGPoint(x: 552, y: 1226))
+        case .rainPastry:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 32, y: 1412), topRight: CGPoint(x: 226, y: 1398),
+                                bottomRight: CGPoint(x: 232, y: 1524), bottomLeft: CGPoint(x: 30, y: 1538))
+        case .rainNapkins:
+            HomePerspectiveQuad(topLeft: CGPoint(x: 362, y: 1432), topRight: CGPoint(x: 532, y: 1438),
+                                bottomRight: CGPoint(x: 526, y: 1552), bottomLeft: CGPoint(x: 356, y: 1546))
         }
     }
 

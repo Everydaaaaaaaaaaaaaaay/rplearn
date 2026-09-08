@@ -1,69 +1,75 @@
 import Foundation
 
 extension SceneActivity {
-    static let bookstallCatalog: [Self] = [
-        .init(id: "bookstall-cover", scene: .bookstall, title: "同翻一页", symbol: "book",
-              introduction: "旧书摊边，你和另一位客人留意到同一摞书。先聊封面，不必考验彼此读过多少。",
+    static let pondCatalog: [Self] = [
+        .init(id: "pond-reflection", scene: .pond, title: "看看倒影", symbol: "binoculars",
+              introduction: "双筒望远镜放在石台上。你和旁边的人都在看水面的树影，可以从刚刚发现的变化聊起。",
               steps: [
-                .init(context: "你刚把一本书放回书堆，旁边的客人也停下来看看。对方没有在阅读或打电话。",
-                      question: "你想从哪里开始聊？", choices: [
-                        .init(english: "What caught your eye about this book?", chinese: "这本书的什么地方吸引了你？",
-                              response: "catch your eye 表示吸引目光，比直接询问读后感更容易接话。"),
-                        .init(english: "Are you browsing, or looking for something in particular?", chinese: "你随便看看，还是在找某一本书？",
-                              response: "just browsing 是随便看看；in particular 表示特定的，不预设对方是书迷。")]), farewell],
-              closing: "同一本书，可以通向完全不同的故事。"),
-        .init(id: "bookstall-recommend", scene: .bookstall, title: "交换推荐", symbol: "text.bubble",
-              introduction: "书列旁，一位客人刚结束浏览。你们短暂对上目光，可以交换一点阅读偏好。",
+                .init(context: "水波把树枝的轮廓轻轻打散，对方也顺着你的视线看过去。",
+                      question: "怎样邀请对方一起看？", choices: [
+                        .init(english: "Have you noticed how the reflections keep changing?", chinese: "你注意到倒影一直在变化吗？",
+                              response: "Have you noticed… 是分享观察，不是在测试对方有没有认真看。"),
+                        .init(english: "The water makes the branches seem to move, doesn't it?", chinese: "水面让树枝看起来像在动，对吧？",
+                              response: "seem to 表示看起来如此，准确地区分了树枝和倒影。")]),
+                farewell],
+              closing: "同看一片水面，也能发现不一样的细节。"),
+        .init(id: "pond-sketch", scene: .pond, title: "聊聊速写", symbol: "pencil.and.outline",
+              introduction: "速写本翻在一页淡淡的草图上。你可以向同样停下来观察的人聊聊构图，不必假设对方会画画。",
               steps: [
-                .init(context: "对方把书放回右侧的小书堆，给你腾出位置。你想问问有没有值得一看的书。",
-                      question: "怎样问得轻松一点？", choices: [
-                        .init(english: "Have you read anything good lately?", chinese: "你最近读到什么不错的书了吗？",
-                              response: "anything good 是开放的问法；对方也可以说最近没有读书，不需要硬给推荐。"),
-                        .init(english: "What do you usually enjoy reading?", chinese: "你平时喜欢读些什么？",
-                              response: "enjoy reading 可以包括小说、漫画和文章，不把阅读局限在某一类书。")]), farewell],
-              closing: "交换推荐，不需要拥有相同的喜好。"),
-        .init(id: "bookstall-travel", scene: .bookstall, title: "聊聊见闻", symbol: "leaf",
-              introduction: "摊开的插图书里画着常见的花草。另一位客人也停下看看，你想从一次出门的见闻聊起。",
+                .init(context: "你在树的轮廓和水中的倒影之间犹豫，对方刚好看了一眼本子。",
+                      question: "你想怎样把话题交给对方？", choices: [
+                        .init(english: "Would you start with the tree or its reflection?", chinese: "你会先画树，还是先画它的倒影？",
+                              response: "would you start with 是轻松的设想，即使对方不画画也可以回答。"),
+                        .init(english: "I'm trying to keep this sketch simple.", chinese: "我想让这张速写保持简单。",
+                              response: "trying to 分享自己的过程，为对方留下回应或继续观察的空间。")]),
+                farewell],
+              closing: "聊构图，不需要先证明谁更懂画画。"),
+        .init(id: "pond-postcard", scene: .pond, title: "写张短笺", symbol: "envelope",
+              introduction: "几张明信片放在石台边。你想写一句池畔见闻，也可以问问身旁的人哪种表达更自然。",
               steps: [
-                .init(context: "你指向书中的花草插图，对方也笑着看了一眼。先聊出门时的发现，不追问住址或行程。",
-                      question: "哪一种开场更适合你？", choices: [
-                        .init(english: "Does this remind you of anywhere?", chinese: "这里让你想到什么地方吗？",
-                              response: "remind you of… 表示让你想起，不要求对方去过图中的地点。"),
-                        .init(english: "Do you prefer city walks or the countryside?", chinese: "你更喜欢在城市散步，还是到乡间走走？",
-                              response: "prefer 是更喜欢；可以说 neither 或 both，不必局限于给出的两种选择。")]), farewell],
-              closing: "一张插图，也可以打开一段不同的生活。")
+                .init(context: "你写下开头，又停下来看看水面。旁边的人没有在打电话或忙着离开。",
+                      question: "怎样自然地请对方给一点意见？", choices: [
+                        .init(english: "Does ‘a quiet spot by the pond’ sound natural?", chinese: "“池塘边一个安静的角落”这样说自然吗？",
+                              response: "sound natural 是请对方判断表达是否自然，不要求对方替你写完整张卡片。"),
+                        .init(english: "What small detail would you put on a postcard?", chinese: "你会把哪个小细节写进明信片？",
+                              response: "small detail 把话题留在共同看见的场景里，不追问私人收件人。")]),
+                farewell],
+              closing: "一张短笺，也可以从两个人共同看见的细节开始。")
     ]
 
-    static let flowerstallCatalog: [Self] = [
-        .init(id: "flowerstall-colour", scene: .flowerstall, title: "聊聊花色", symbol: "camera.macro",
-              introduction: "花桶旁，你和另一位客人都停下来看看。聊一种颜色就好，不需要懂园艺。",
+    static let rainCafeCatalog: [Self] = [
+        .init(id: "rain-weather", scene: .raincafe, title: "聊聊雨天", symbol: "cloud.rain",
+              introduction: "雨水沿着窗面落下。你和同桌的人都望向窗外，可以从天气轻轻聊起。",
               steps: [
-                .init(context: "对方看了看粉色和白色郁金香，又向旁边让出一点位置。你们有片刻不赶时间的空当。",
-                      question: "你想从哪一句开始？", choices: [
-                        .init(english: "Which colour would you go for?", chinese: "你会选哪种颜色？",
-                              response: "go for 在这里是选择，适合轻松地交换偏好，不是在询问专业知识。"),
-                        .init(english: "These really brighten up the street, don't they?", chinese: "这些花真让街道亮起来了，你说呢？",
-                              response: "brighten up 可以表示增添亮色或让心情变好；句尾轻轻邀请对方回应。")]), farewell],
-              closing: "喜欢不同的颜色，也能聊得来。"),
-        .init(id: "flowerstall-bouquet", scene: .flowerstall, title: "一束心意", symbol: "gift",
-              introduction: "包装好的花束旁，一位客人也在挑选。可以聊日常的小心意，不猜测对方的关系或送花对象。",
+                .init(context: "一阵雨声盖过了店里的背景声，对方也转头看了看窗外。",
+                      question: "怎样开启这个话题？", choices: [
+                        .init(english: "Do you enjoy watching the rain from somewhere warm?", chinese: "你喜欢待在温暖的地方看雨吗？",
+                              response: "from somewhere warm 说的是当下体验，不预设对方喜欢淋雨或讨厌雨天。"),
+                        .init(english: "It feels like a good day to slow down, doesn't it?", chinese: "今天好像很适合慢下来，对吧？",
+                              response: "feels like 表达个人感受，句尾给对方轻松回应的机会。")]),
+                farewell],
+              closing: "窗外的雨没有停，短短的话题已经让等待变得不一样。"),
+        .init(id: "rain-pastry", scene: .raincafe, title: "分享点心", symbol: "fork.knife",
+              introduction: "左侧盘里有几块点心。先确认对方是否愿意，再把分享变成一次不带压力的邀请。",
               steps: [
-                .init(context: "你看了看黄色花束，对方停下脚步。你想聊聊给普通一天添一点仪式感。",
-                      question: "你想怎样打开话题？", choices: [
-                        .init(english: "Do you ever buy flowers just for yourself?", chinese: "你会专门给自己买花吗？",
-                              response: "just for yourself 指单纯为了自己，不默认买花就是送给恋人。"),
-                        .init(english: "It's nice to make an ordinary day feel special.", chinese: "让普通的一天变得特别一点，感觉挺好。",
-                              response: "make… feel special 表示让某人或某一天显得特别，是分享想法而非盘问。")]), farewell],
-              closing: "一份心意，可以留给自己，也可以送给别人。"),
-        .init(id: "flowerstall-queue", scene: .flowerstall, title: "等候闲聊", symbol: "bubble.left.and.bubble.right",
-              introduction: "包装区旁，摊主正在整理一束花。你先确认谁在等候，再看看旁边的人是否愿意聊两句。",
+                .init(context: "点心盘放在桌边，对方看了一眼，但你不知道对方的口味或饮食习惯。",
+                      question: "怎样问得体贴一些？", choices: [
+                        .init(english: "Would you like to try one of these?", chinese: "你想尝一块吗？",
+                              response: "Would you like… 是提供选择；对方拒绝时不需要追问原因。"),
+                        .init(english: "Please help yourself if you'd like one.", chinese: "如果你想吃，请随意拿一块。",
+                              response: "help yourself 表示请自取，if 保留了不吃的选择。")]),
+                farewell],
+              closing: "分享食物之前先给选择，善意才不会变成压力。"),
+        .init(id: "rain-napkin", scene: .raincafe, title: "递张纸巾", symbol: "rectangle.stack",
+              introduction: "桌边的纸巾就在手边。雨水和热饮让一个小小的帮忙显得自然，但仍先问一句。",
               steps: [
-                .init(context: "包装纸和棉线放在台面上，一位客人刚收好手机。你站在一旁，不打断摊主手上的工作。",
-                      question: "你会怎样确认？", choices: [
-                        .init(english: "Excuse me, are you waiting to be served?", chinese: "打扰一下，你正在等店员接待吗？",
-                              response: "waiting to be served 是等候接待，适用于没有明显队伍的小摊或店铺。"),
-                        .init(english: "Is this the end of the queue?", chinese: "这里是队尾吗？",
-                              response: "the end of the queue 指队尾；确认之后留出通道，不挤到别人前面。")]), farewell],
-              closing: "短短的等候，也可以交换一句有温度的话。")
+                .init(context: "对方刚收起被雨打湿的随身物品，桌边的纸巾离你更近。",
+                      question: "怎样提供帮助而不显得冒失？", choices: [
+                        .init(english: "Would you like a napkin?", chinese: "你需要一张纸巾吗？",
+                              response: "简短询问先确认需要，再伸手递过去。"),
+                        .init(english: "The napkins are right here if you need one.", chinese: "如果你需要，纸巾就在这里。",
+                              response: "if you need one 让对方自行决定，也清楚指出物品位置。")]),
+                farewell],
+              closing: "一次恰到好处的小帮助，也可以成为自然的开场。")
     ]
 }

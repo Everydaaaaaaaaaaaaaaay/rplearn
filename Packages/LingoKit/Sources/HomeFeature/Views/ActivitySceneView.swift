@@ -3,12 +3,13 @@ import DomainKit
 import SwiftUI
 import UIKit
 
-/// Immutable photo coordinates shared by the single master, light and hotspots.
+/// Immutable photo coordinates shared by posters, real motion and hotspots.
 struct ActivitySceneView: View {
     private static let photos: [String: UIImage] = Dictionary(uniqueKeysWithValues:
-        Set(ActivitySceneID.allCases.map(\.poster)).sorted().compactMap { name in
-            (asset(name, "png") ?? asset(name, "jpg"))
-                .flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
+        Set(ActivitySceneID.allCases.flatMap { scene in
+            [scene.media.poster, scene.media.foreground].compactMap { $0 }
+        }).sorted().compactMap { name in
+            asset(name, "jpg").flatMap { UIImage(contentsOfFile: $0.path) }.map { (name, $0) }
         })
     let isVisible: Bool
     let showsInterface: Bool
@@ -26,18 +27,21 @@ struct ActivitySceneView: View {
     @State private var requestsMotion = true
     @State private var lowPower = ProcessInfo.processInfo.isLowPowerModeEnabled
     @State private var thermal = ProcessInfo.processInfo.thermalState
-    @State private var lightPlaying = false
+    @State private var playbackFailed = false
+    @State private var videoPlaying = false
     @State private var completedLoops = 0
     @State private var playbackSeconds = 0
+    @State private var quietInterval = false
 
     private var usesMotion: Bool {
-        ActivityAmbientLightLayer.permitsMotion(requested: requestsMotion, reduceMotion: reduceMotion,
-                                               lowPower: lowPower, thermal: thermal)
+        ActivitySceneVideoLayer.permitsMotion(requested: requestsMotion, reduceMotion: reduceMotion,
+                                             lowPower: lowPower, thermal: thermal) && !playbackFailed
     }
 
     private var playbackDescription: String {
         guard usesMotion else { return "静态" }
-        let status = lightPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
+        let status = quietInterval ? "自然空场" :
+            videoPlaying && isVisible && scenePhase == .active ? "播放中" : "已暂停或准备中"
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             return "动态 · \(status) · 循环\(completedLoops) · 秒\(playbackSeconds)"
@@ -53,25 +57,32 @@ struct ActivitySceneView: View {
             let width = 852 * scale
             let height = 1847 * scale
             let origin = ActivitySceneLayout.origin(viewport: proxy.size, canvas: CGSize(width: width, height: height))
+            let media = scene.media
             let renderingScene = scene
             ZStack(alignment: .topLeading) {
                 Color(red: 0.14, green: 0.13, blue: 0.09)
                 ZStack(alignment: .topLeading) {
-                    if let photo = Self.photos[scene.poster] {
-                        Image(uiImage: photo).resizable().frame(width: width, height: height)
+                    if let photo = Self.photos[media.poster] {
+                        Image(uiImage: photo).resizable().scaledToFill()
+                            .frame(width: width, height: media.videoHeight * scale).clipped()
                     }
-                    ActivityAmbientLightLayer(scene: scene,
+                    ActivitySceneVideoLayer(assetName: media.video, mode: media.playbackMode,
                         playing: usesMotion && isVisible && scenePhase == .active,
-                        onPlayback: { if scene == renderingScene { lightPlaying = $0 } },
-                        onProgress: { loops, seconds in
-                            if scene == renderingScene {
-                                completedLoops = loops
-                                playbackSeconds = seconds
-                            }
-                        })
-                        .frame(width: width, height: height)
+                        onFailure: { if scene == renderingScene { playbackFailed = true } },
+                        onPlayback: { if scene == renderingScene { videoPlaying = $0 } },
+                        onLoop: { if scene == renderingScene { completedLoops = $0 } },
+                        onProgress: { if scene == renderingScene { playbackSeconds = $0 } },
+                        onQuiet: { if scene == renderingScene { quietInterval = $0 } })
+                        .frame(width: width, height: media.videoHeight * scale)
                         .opacity(usesMotion ? 1 : 0)
                         .allowsHitTesting(false).accessibilityHidden(true)
+                    if let foreground = media.foreground,
+                       let foregroundTop = media.foregroundTop,
+                       let photo = Self.photos[foreground] {
+                        Image(uiImage: photo).resizable().scaledToFill()
+                            .frame(width: width, height: (1847 - foregroundTop) * scale).clipped()
+                            .offset(y: foregroundTop * scale)
+                    }
                     if !typeSize.isAccessibilitySize && showsInterface {
                         ForEach(scene.actions) { activity in entrance(activity, scale: scale) }
                     }
@@ -137,14 +148,14 @@ struct ActivitySceneView: View {
                         Button {
                             requestsMotion.toggle()
                         } label: {
-                            Label(usesMotion ? "光影" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
+                            Label(usesMotion ? "动态" : "静态", systemImage: usesMotion ? "pause.circle" : "play.circle")
                                 .font(.caption).frame(minHeight: 44)
                         }
                         .accessibilityIdentifier("activities.motion")
                         .accessibilityValue(playbackDescription)
                     }
-                    if reduceMotion || lowPower || thermal == .serious || thermal == .critical {
-                        Text("节能或减少动态效果 · 静态场景")
+                    if reduceMotion || lowPower || thermal == .serious || thermal == .critical || playbackFailed {
+                        Text(playbackFailed ? "视频暂不可用 · 静态场景" : "节能或减少动态效果 · 静态场景")
                             .font(.caption)
                     }
                 }
@@ -198,9 +209,11 @@ struct ActivitySceneView: View {
     private func switchScene(to item: ActivitySceneID) {
         guard scene != item else { return }
         actions.cancel()
-        lightPlaying = false
+        playbackFailed = false
+        videoPlaying = false
         completedLoops = 0
         playbackSeconds = 0
+        quietInterval = false
         withAnimation(DSSceneTransition.animation(reduceMotion: reduceMotion)) { scene = item }
     }
 
