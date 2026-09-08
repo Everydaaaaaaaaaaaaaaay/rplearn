@@ -1,4 +1,4 @@
-import { createRemoteJWKSet, jwtVerify } from "jose";
+import { createRemoteJWKSet, decodeJwt, decodeProtectedHeader, jwtVerify } from "jose";
 import { z } from "zod";
 import type { RuntimeConfig } from "../../../config/env.js";
 
@@ -29,6 +29,51 @@ export type AppleIdentity = Readonly<{
 export type AppleIdentityVerifier = Readonly<{
   verify: (identityToken: string, expectedNonce?: string) => Promise<AppleIdentity>;
 }>;
+
+export type AppleIdentityVerificationDiagnostic = Readonly<{
+  algorithmAllowed: boolean;
+  audienceAllowed: boolean;
+  issuerAllowed: boolean;
+  nonceMatches?: boolean;
+  noncePresent: boolean;
+  tokenDecodable: boolean;
+}>;
+
+export function diagnoseAppleIdentityToken(
+  identityToken: string,
+  allowedClientIds: readonly string[],
+  expectedNonce?: string,
+): AppleIdentityVerificationDiagnostic {
+  try {
+    const header = decodeProtectedHeader(identityToken);
+    const claims = decodeJwt(identityToken);
+    const audiences = Array.isArray(claims.aud)
+      ? claims.aud
+      : typeof claims.aud === "string"
+        ? [claims.aud]
+        : [];
+    const nonce = typeof claims.nonce === "string" ? claims.nonce : undefined;
+    return {
+      algorithmAllowed: header.alg === "RS256" || header.alg === "ES256",
+      audienceAllowed: audiences.some((audience) =>
+        allowedClientIds.includes(audience),
+      ),
+      issuerAllowed: claims.iss === "https://appleid.apple.com",
+      ...(expectedNonce === undefined ? {} : { nonceMatches: nonce === expectedNonce }),
+      noncePresent: nonce !== undefined,
+      tokenDecodable: true,
+    };
+  } catch {
+    return {
+      algorithmAllowed: false,
+      audienceAllowed: false,
+      issuerAllowed: false,
+      ...(expectedNonce === undefined ? {} : { nonceMatches: false }),
+      noncePresent: false,
+      tokenDecodable: false,
+    };
+  }
+}
 
 export function createAppleIdentityVerifier(
   config: RuntimeConfig,

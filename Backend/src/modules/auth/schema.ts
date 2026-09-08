@@ -76,6 +76,7 @@ export const userIdentities = applicationSchema.table(
       mode: "date",
       withTimezone: true,
     }),
+    displayName: text("display_name"),
     id: uuid("id").primaryKey(),
     passwordHash: text("password_hash"),
     provider: identityProvider("provider").notNull(),

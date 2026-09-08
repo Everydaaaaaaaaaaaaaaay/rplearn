@@ -35,6 +35,42 @@ public struct AppleAuthChallenge: Decodable, Sendable, Equatable {
     public let nonce: String
 }
 
+public struct AccountIdentity: Decodable, Identifiable, Sendable, Equatable {
+    public let createdAt: String
+    public let displayName: String?
+    public let email: String?
+    public let emailVerified: Bool
+    public let id: UUID
+    public let provider: String
+    public let updatedAt: String
+}
+
+struct AccountIdentitiesResponse: Decodable, Sendable {
+    let identities: [AccountIdentity]
+}
+
+public struct AccountDeviceSession: Decodable, Identifiable, Sendable, Equatable {
+    public let appVersion: String?
+    public let createdAt: String
+    public let current: Bool
+    public let deviceId: String
+    public let deviceName: String?
+    public let id: UUID
+    public let lastSeenAt: String
+    public let platform: String
+}
+
+struct AccountDeviceSessionsResponse: Decodable, Sendable {
+    let sessions: [AccountDeviceSession]
+}
+
+public struct AccountDeletionReceipt: Decodable, Sendable, Equatable {
+    public let cancellationToken: String?
+    public let purgeAt: String
+    public let requestId: UUID
+    public let status: String
+}
+
 struct AuthTokenResponse: Decodable, Sendable {
     let accessToken: String
     let accessTokenExpiresIn: Int

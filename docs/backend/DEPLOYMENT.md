@@ -61,6 +61,14 @@ curl --fail https://rplearn.haruyuki.cn/health/ready
 Mailpit 仍只负责捕获开发邮件。Apple 登录和计费在外部凭据齐全前保持关闭。密钥、完整
 环境文件和用户内容不得进入 Git、命令参数、聊天记录或日志。
 
+启用原生 Apple 登录前，在 Apple Developer 中为 App ID 打开 Sign in with Apple，并创建对应
+私钥。服务器环境至少填写 `APPLE_CLIENT_IDS`、`APPLE_TEAM_ID`、`APPLE_KEY_ID`、
+`APPLE_PRIVATE_KEY_BASE64`、`APPLE_CREDENTIAL_ENCRYPTION_KEY_BASE64` 和
+`APPLE_CREDENTIAL_KEY_VERSION`，再将 `APPLE_AUTH_ENABLED` 设为 `true`；纯原生 iOS 登录不填
+`APPLE_REDIRECT_URI`。加密密钥和版本需要随备份保留，轮换前必须保证旧版本仍可解密。
+发布后分别用新 Apple 账号、隐藏邮箱账号、已有邮箱账号的显式绑定、另一设备会话撤销、
+解除 Apple 登录和 App 内删除账号做真机验收；不得把模拟器或替身测试当作 Apple 线上验收。
+
 ## NPC 图库与后台补齐
 
 已验收头像以内容哈希命名存放在 `/srv/lingotrip/npc-avatars`，由 Caddy 的 `/npc-avatars/*` 路由提供公开 HTTPS 图片与长期 immutable 缓存。该目录只放公开 PNG；清单、来源记录和测试状态保存在非公开目录。图片上传后逐张校验 SHA，先确认公开 URL 可用，再导入清单；已有同名文件哈希不符时应拒绝覆盖。

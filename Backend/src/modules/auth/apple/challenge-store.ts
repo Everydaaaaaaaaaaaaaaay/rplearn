@@ -15,7 +15,7 @@ export type AppleChallengeStore = Readonly<{
 }>;
 
 function challengeKey(challengeId: string): string {
-  return `auth:apple:challenge:${challengeId}`;
+  return `auth:apple:challenge:${challengeId.toLowerCase()}`;
 }
 
 export function createAppleChallengeStore(

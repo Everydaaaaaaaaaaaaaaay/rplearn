@@ -4,6 +4,10 @@ import type { RedisResource } from "../../../infrastructure/redis/client.js";
 import { AppError } from "../../../shared/errors.js";
 import { AuthRepository } from "../repository.js";
 import type { AuthService } from "../service.js";
+import {
+  createFederatedAccountService,
+  type FederatedAccountService,
+} from "../federated-account-service.js";
 import type {
   AccessIdentity,
   AuthTokenPair,
@@ -19,13 +23,16 @@ import { createAppleCodeExchanger, type AppleCodeExchanger } from "./code-exchan
 import { createCredentialSealer, type CredentialSealer } from "./credential-crypto.js";
 import {
   createAppleIdentityVerifier,
+  diagnoseAppleIdentityToken,
   type AppleIdentity,
+  type AppleIdentityVerificationDiagnostic,
   type AppleIdentityVerifier,
 } from "./identity-verifier.js";
 
 export type AppleAuthentication = Readonly<{
   authorizationCode: string;
   challengeId: string;
+  displayName?: string;
   identityToken: string;
 }>;
 
@@ -42,12 +49,35 @@ export type AppleAuthService = Readonly<{
   ) => Promise<AuthTokenPair>;
 }>;
 
+export type AppleVerificationFailure = Readonly<{
+  diagnostic?: AppleIdentityVerificationDiagnostic;
+  errorCode?: string;
+  stage: "authorization_code_exchange" | "exchanged_identity" | "initial_identity";
+}>;
+
 type AppleAuthDependencies = Readonly<{
   challengeStore?: AppleChallengeStore;
   codeExchanger?: AppleCodeExchanger;
   credentialSealer?: CredentialSealer;
   identityVerifier?: AppleIdentityVerifier;
+  federatedAccounts?: FederatedAccountService;
+  onVerificationFailure?: (failure: AppleVerificationFailure) => void;
 }>;
+
+function errorCode(error: unknown): string | undefined {
+  if (error instanceof AppError) {
+    return error.code;
+  }
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    typeof error.code === "string"
+  ) {
+    return error.code;
+  }
+  return error instanceof Error ? error.name : undefined;
+}
 
 function assertAccountAvailable(status: string): void {
   if (status !== "active") {
@@ -70,6 +100,8 @@ export async function createAppleAuthService(
     throw new Error("Sign in with Apple is disabled");
   }
 
+  const federatedAccounts =
+    dependencies.federatedAccounts ?? createFederatedAccountService(database);
   const repository = new AuthRepository(database);
   const challengeStore =
     dependencies.challengeStore ?? createAppleChallengeStore(config, redis);
@@ -94,7 +126,17 @@ export async function createAppleAuthService(
     let identity: AppleIdentity;
     try {
       identity = await verifier.verify(authentication.identityToken, expectedNonce);
-    } catch {
+    } catch (error) {
+      const code = errorCode(error);
+      dependencies.onVerificationFailure?.({
+        diagnostic: diagnoseAppleIdentityToken(
+          authentication.identityToken,
+          config.appleClientIds,
+          expectedNonce,
+        ),
+        ...(code === undefined ? {} : { errorCode: code }),
+        stage: "initial_identity",
+      });
       throw new AppError({
         code: "APPLE_IDENTITY_INVALID",
         message: "The Apple identity token is invalid or expired.",
@@ -102,14 +144,30 @@ export async function createAppleAuthService(
       });
     }
 
-    const exchange = await exchanger.exchange(
-      authentication.authorizationCode,
-      identity.audience,
-    );
+    let exchange: Awaited<ReturnType<AppleCodeExchanger["exchange"]>>;
+    try {
+      exchange = await exchanger.exchange(
+        authentication.authorizationCode,
+        identity.audience,
+      );
+    } catch (error) {
+      const code = errorCode(error);
+      dependencies.onVerificationFailure?.({
+        ...(code === undefined ? {} : { errorCode: code }),
+        stage: "authorization_code_exchange",
+      });
+      throw error;
+    }
     let exchangedIdentity: AppleIdentity;
     try {
       exchangedIdentity = await verifier.verify(exchange.idToken);
-    } catch {
+    } catch (error) {
+      const code = errorCode(error);
+      dependencies.onVerificationFailure?.({
+        diagnostic: diagnoseAppleIdentityToken(exchange.idToken, config.appleClientIds),
+        ...(code === undefined ? {} : { errorCode: code }),
+        stage: "exchanged_identity",
+      });
       throw new AppError({
         code: "APPLE_IDENTITY_INVALID",
         message: "Apple returned an invalid identity token.",
@@ -138,13 +196,16 @@ export async function createAppleAuthService(
 
     link: async (accessIdentity, authentication) => {
       const verified = await verifyAuthentication(authentication);
-      const linked = await repository.linkAppleIdentity({
+      const linked = await federatedAccounts.link(accessIdentity.userId, {
+        ...(authentication.displayName === undefined
+          ? {}
+          : { displayName: authentication.displayName }),
         ...(verified.identity.email === undefined
           ? {}
           : { email: verified.identity.email }),
         emailVerified: verified.identity.emailVerified,
+        provider: "apple",
         subject: verified.identity.subject,
-        userId: accessIdentity.userId,
       });
       if (linked.status === "conflict") {
         throw new AppError({
@@ -162,11 +223,15 @@ export async function createAppleAuthService(
 
     login: async (authentication, device, metadata) => {
       const verified = await verifyAuthentication(authentication);
-      const account = await repository.findOrCreateAppleAccount({
+      const account = await federatedAccounts.findOrCreate({
+        ...(authentication.displayName === undefined
+          ? {}
+          : { displayName: authentication.displayName }),
         ...(verified.identity.email === undefined
           ? {}
           : { email: verified.identity.email }),
         emailVerified: verified.identity.emailVerified,
+        provider: "apple",
         subject: verified.identity.subject,
       });
       assertAccountAvailable(account.status);

@@ -17,6 +17,16 @@ export type FederatedAccount = Readonly<{
   userId: string;
 }>;
 
+export type FederatedIdentityProvider = "apple" | "google";
+
+export type VerifiedFederatedIdentity = Readonly<{
+  displayName?: string;
+  email?: string;
+  emailVerified: boolean;
+  provider: FederatedIdentityProvider;
+  subject: string;
+}>;
+
 export type ActionTokenParameters = Readonly<{
   expiresAt: Date;
   id: string;

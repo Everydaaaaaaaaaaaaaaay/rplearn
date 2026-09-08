@@ -8,6 +8,16 @@ struct BackendClientTests {
         let ok: Bool
     }
 
+    @Test("旧版钥匙串凭据缺少 Apple 用户标识时仍可解码")
+    func legacyCredentialRemainsDecodable() throws {
+        let data = Data(
+            #"{"refreshToken":"legacy-refresh","refreshTokenExpiresAt":600000000,"sessionID":"019c0123-4567-789a-8bcd-ef0123456789","userID":"019c0123-4567-789a-8bcd-ef0123456790"}"#.utf8
+        )
+        let credential = try JSONDecoder().decode(StoredAuthCredential.self, from: data)
+        #expect(credential.refreshToken == "legacy-refresh")
+        #expect(credential.appleUserID == nil)
+    }
+
     private final class MemoryCredentialStore: AuthCredentialStore, @unchecked Sendable {
         private let lock = NSLock()
         private var value: StoredAuthCredential?
@@ -56,7 +66,25 @@ struct BackendClientTests {
                 return json(Self.tokenJSON(access: "renewed-access", refresh: "rotated-refresh"))
             case "/v1/probe":
                 return json(#"{"ok":true}"#)
+            case "/v1/account/identities":
+                return json(
+                    #"{"identities":[{"createdAt":"2026-09-08T00:00:00.000Z","displayName":null,"email":"traveler@example.com","emailVerified":true,"id":"019c0123-4567-789a-8bcd-ef0123456791","provider":"email","updatedAt":"2026-09-08T00:00:00.000Z"}]}"#
+                )
+            case "/v1/auth/sessions":
+                return json(
+                    #"{"sessions":[{"appVersion":"1.0","createdAt":"2026-09-08T00:00:00.000Z","current":true,"deviceId":"test-device-id","deviceName":"Test iPhone","id":"019c0123-4567-789a-8bcd-ef0123456789","lastSeenAt":"2026-09-08T00:00:00.000Z","platform":"ios"}]}"#
+                )
+            case "/v1/account":
+                return json(
+                    #"{"cancellationToken":null,"purgeAt":"2026-09-08T00:00:00.000Z","requestId":"019c0123-4567-789a-8bcd-ef0123456792","status":"scheduled"}"#,
+                    status: 202
+                )
             default:
+                if request.url?.path.hasPrefix("/v1/auth/sessions/") == true ||
+                    request.url?.path.hasPrefix("/v1/account/identities/") == true
+                {
+                    return json("", status: 204)
+                }
                 return json(
                     #"{"code":"NOT_FOUND","message":"not found","requestId":"req-2"}"#,
                     status: 404
@@ -170,6 +198,36 @@ struct BackendClientTests {
         #expect(probe.ok)
         let requests = await transport.requests
         #expect(requests.last?.value(forHTTPHeaderField: "authorization") == "Bearer login-access")
+    }
+
+    @Test("账号管理读取身份和设备，并在删除账号后清除本地凭据")
+    func accountManagementLifecycle() async throws {
+        let stored = StoredAuthCredential(
+            refreshToken: "stored-refresh",
+            refreshTokenExpiresAt: Date(timeIntervalSince1970: 1_893_456_000),
+            sessionID: UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456789")!,
+            userID: UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!,
+            appleUserID: "apple-user-1"
+        )
+        let store = MemoryCredentialStore(stored)
+        let transport = MockTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: store,
+            transport: transport
+        )
+
+        let identities = try await client.accountIdentities()
+        let sessions = try await client.accountDeviceSessions()
+        #expect(identities.map(\.provider) == ["email"])
+        #expect(sessions.count == 1)
+        #expect(sessions[0].current)
+
+        try await client.unlinkIdentity(identities[0].id)
+        try await client.revokeDeviceSession(sessions[0].id)
+        let receipt = try await client.deleteAccount()
+        #expect(receipt.status == "scheduled")
+        #expect(try store.load() == nil)
     }
 
     @Test("concurrent requests share one refresh rotation")

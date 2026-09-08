@@ -1,8 +1,15 @@
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
+import { newEntityId } from "../../shared/id.js";
 import { insertPreparedJob } from "../jobs/transactional-enqueue.js";
 import type { PreparedJob } from "../jobs/types.js";
-import type { AccountExport, AppleDeletionCredential, DeletionWork } from "./types.js";
+import type {
+  AccountExport,
+  AppleDeletionCredential,
+  DeletionWork,
+  IdentityUnlinkPreparation,
+  LinkedIdentity,
+} from "./types.js";
 
 type JsonRow = Record<string, unknown>;
 
@@ -17,6 +24,127 @@ type ScheduleDeletionParameters = Readonly<{
 
 export class AccountRepository {
   constructor(private readonly database: DatabaseResource) {}
+
+  async listIdentities(userId: string): Promise<readonly LinkedIdentity[]> {
+    const rows = await this.database.sql<
+      {
+        created_at: string;
+        display_name: string | null;
+        email: string | null;
+        email_verified_at: string | null;
+        id: string;
+        provider: LinkedIdentity["provider"];
+        updated_at: string;
+      }[]
+    >`
+      select id::text, provider, email, email_verified_at, display_name,
+        created_at, updated_at
+      from app.user_identities
+      where user_id = ${userId}
+      order by created_at, id
+    `;
+    return rows.map((row) => ({
+      createdAt: new Date(row.created_at),
+      displayName: row.display_name,
+      email: row.email,
+      emailVerified: row.email_verified_at !== null,
+      id: row.id,
+      provider: row.provider,
+      updatedAt: new Date(row.updated_at),
+    }));
+  }
+
+  async prepareIdentityUnlink(
+    userId: string,
+    sessionId: string,
+    identityId: string,
+    sessionCreatedAfter: Date,
+  ): Promise<IdentityUnlinkPreparation> {
+    return this.database.sql.begin(async (sql) => {
+      const [session] = await sql<{ valid: boolean }[]>`
+        select exists(
+          select 1 from app.device_sessions
+          where id = ${sessionId}
+            and user_id = ${userId}
+            and status = 'active'
+            and created_at >= ${sessionCreatedAfter.toISOString()}
+        ) as valid
+      `;
+      if (session?.valid !== true) return { status: "reauthentication_required" };
+
+      await sql`select id from app.users where id = ${userId} for update`;
+      const identities = await sql<{ id: string }[]>`
+        select id::text from app.user_identities where user_id = ${userId}
+      `;
+      if (identities.length <= 1) return { status: "last_identity" };
+
+      const [row] = await sql<
+        {
+          ciphertext: Buffer | null;
+          id: string;
+          key_version: string | null;
+          nonce: Buffer | null;
+          provider: LinkedIdentity["provider"];
+          provider_client_id: string | null;
+          tag: Buffer | null;
+        }[]
+      >`
+        select i.id::text, i.provider, c.ciphertext, c.nonce, c.tag,
+          c.key_version, c.provider_client_id
+        from app.user_identities i
+        left join app.identity_provider_credentials c on c.identity_id = i.id
+        where i.id = ${identityId} and i.user_id = ${userId}
+      `;
+      if (row === undefined) return { status: "not_found" };
+      return {
+        candidate: {
+          ...(row.ciphertext !== null &&
+          row.nonce !== null &&
+          row.tag !== null &&
+          row.key_version !== null
+            ? {
+                credential: {
+                  ciphertext: row.ciphertext,
+                  keyVersion: row.key_version,
+                  nonce: row.nonce,
+                  tag: row.tag,
+                },
+              }
+            : {}),
+          clientId: row.provider_client_id,
+          id: row.id,
+          provider: row.provider,
+        },
+        status: "ready",
+      };
+    });
+  }
+
+  async unlinkIdentity(
+    userId: string,
+    identityId: string,
+    provider: LinkedIdentity["provider"],
+  ): Promise<"deleted" | "last_identity" | "not_found"> {
+    return this.database.sql.begin(async (sql) => {
+      await sql`select id from app.users where id = ${userId} for update`;
+      const identities = await sql<{ id: string }[]>`
+        select id::text from app.user_identities where user_id = ${userId}
+      `;
+      if (!identities.some((identity) => identity.id === identityId)) {
+        return "not_found";
+      }
+      if (identities.length <= 1) return "last_identity";
+      await sql`delete from app.user_identities where id = ${identityId} and user_id = ${userId}`;
+      await sql`
+        insert into app.auth_security_events (id, user_id, session_id, event_type, metadata)
+        values (
+          ${newEntityId()}, ${userId}, null, 'identity_unlinked',
+          ${JSON.stringify({ identityId, provider })}::jsonb
+        )
+      `;
+      return "deleted";
+    });
+  }
 
   async exportData(userId: string, generatedAt: Date): Promise<AccountExport> {
     return this.database.sql.begin(
@@ -47,6 +175,7 @@ export class AccountRepository {
             provider_subject as "providerSubject",
             email,
             email_verified_at as "emailVerifiedAt",
+            display_name as "displayName",
             created_at as "createdAt",
             updated_at as "updatedAt"
           from app.user_identities

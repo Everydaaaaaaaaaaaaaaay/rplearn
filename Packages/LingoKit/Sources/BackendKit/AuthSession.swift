@@ -1,3 +1,4 @@
+import AuthenticationServices
 import Foundation
 import Observation
 
@@ -23,6 +24,13 @@ public final class AuthSession {
 
     public func bootstrap() async {
         do {
+            if let appleUserID = try await client.storedAppleUserID() {
+                let state = try? await ASAuthorizationAppleIDProvider()
+                    .credentialState(forUserID: appleUserID)
+                if state == .revoked || state == .notFound || state == .transferred {
+                    await client.logout()
+                }
+            }
             phase = try await client.restoreSession().map(AuthPhase.signedIn) ?? .signedOut
         } catch let error as BackendClientError {
             if case .transport = error, let cached = try? await client.cachedIdentity() {
@@ -63,16 +71,65 @@ public final class AuthSession {
     public func loginWithApple(
         authorizationCode: String,
         challengeID: UUID,
-        identityToken: String
+        identityToken: String,
+        appleUserID: String,
+        displayName: String?
     ) async throws {
         let identity = try await client.loginWithApple(
             authorizationCode: authorizationCode,
             challengeID: challengeID,
             identityToken: identityToken,
+            appleUserID: appleUserID,
+            displayName: displayName,
             device: device
         )
         phase = .signedIn(identity)
         lastError = nil
+    }
+
+    public func linkWithApple(
+        authorizationCode: String,
+        challengeID: UUID,
+        identityToken: String,
+        appleUserID: String,
+        displayName: String?
+    ) async throws {
+        try await client.linkWithApple(
+            authorizationCode: authorizationCode,
+            challengeID: challengeID,
+            identityToken: identityToken,
+            appleUserID: appleUserID,
+            displayName: displayName
+        )
+    }
+
+    public func accountIdentities() async throws -> [AccountIdentity] {
+        try await client.accountIdentities()
+    }
+
+    public func accountDeviceSessions() async throws -> [AccountDeviceSession] {
+        try await client.accountDeviceSessions()
+    }
+
+    public func revokeDeviceSession(_ deviceSession: AccountDeviceSession) async throws {
+        try await client.revokeDeviceSession(deviceSession.id)
+    }
+
+    public func unlinkIdentity(_ identity: AccountIdentity) async throws {
+        try await client.unlinkIdentity(identity.id)
+        if identity.provider == "apple" {
+            try await client.clearStoredAppleUserID()
+        }
+    }
+
+    @discardableResult
+    public func deleteAccount(
+        immediately: Bool = true
+    ) async throws -> AccountDeletionReceipt {
+        let receipt = try await client.deleteAccount(immediately: immediately)
+        phase = .signedOut
+        lastError = nil
+        return receipt
     }
 
     public func logout(allDevices: Bool = false) async {

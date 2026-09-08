@@ -8,6 +8,7 @@ import type { AppleAuthService, AppleAuthentication } from "./service.js";
 const authenticationSchema = z.object({
   authorizationCode: z.string().min(1).max(4096),
   challengeId: z.uuid(),
+  displayName: z.string().trim().min(1).max(200).optional(),
   identityToken: z.string().min(1).max(16_384),
 });
 
@@ -31,7 +32,14 @@ function parseAuthentication(value: unknown): AppleAuthentication {
       statusCode: 400,
     });
   }
-  return result.data;
+  return {
+    authorizationCode: result.data.authorizationCode,
+    challengeId: result.data.challengeId,
+    ...(result.data.displayName === undefined
+      ? {}
+      : { displayName: result.data.displayName }),
+    identityToken: result.data.identityToken,
+  };
 }
 
 function publicTokenPair(pair: Awaited<ReturnType<AppleAuthService["login"]>>) {
@@ -89,6 +97,9 @@ export function registerAppleAuthRoutes(
         {
           authorizationCode: result.data.authorizationCode,
           challengeId: result.data.challengeId,
+          ...(result.data.displayName === undefined
+            ? {}
+            : { displayName: result.data.displayName }),
           identityToken: result.data.identityToken,
         },
         {

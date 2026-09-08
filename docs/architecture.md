@@ -57,6 +57,17 @@ Feature 只依赖下层模块，Feature 间跳转由组合根注入。模块直�
 登录失败不会阻塞启动，客户端会回退到游客空间。App 回到前台时同步用户状态、内容、
 语音媒体和订阅。
 
+账号只以 `users.id` 作为业务数据归属；邮箱、Apple、Google 等登录入口都是可增删的
+`user_identities`。外部身份用 `(provider, provider_subject)` 全局唯一定位账号，不以邮箱相同
+自动合并；已有账号增加登录方式必须在已认证会话中显式绑定。每次登录生成独立
+`device_sessions`，用户可查看并撤销其他设备。解除登录方式需要最近 10 分钟内建立的会话，
+且服务端始终保留至少一种登录方式；Apple 解除绑定和账号删除会先撤销服务端保存的 Apple
+refresh token。游客旅程继续通过幂等认领进入同一个 `users.id`，不把游客设备标识当作登录身份。
+
+iOS 使用原生 `AuthenticationServices` 获取一次性授权码、identity token、nonce 及 Apple 用户
+标识；服务端验证 token 后交换并加密保存 refresh token。客户端只在钥匙串保存本账号对应的
+Apple 用户标识，用于启动时检查授权状态，不保存 Apple 私钥或服务端 refresh token。
+
 SwiftData 包含用户内容、同步 Outbox、会话置顶/已读游标、语音上传与删除队列和旅程状态。
 `LingoMigrationPlan` 管理冻结的版本 Schema 与逐版本迁移；迁移失败必须保留原库并向上报告，不能通过删库或重置用户数据恢复。对早期没有版本校验和的开发库，仅允许 SwiftData 自动轻量迁移兜底。
 
@@ -124,7 +135,7 @@ PostgreSQL，客户端不能提交译文污染公共缓存。常用词的 Luna �
 
 后端是模块化单体，API 与 Worker 共享配置、数据库 Schema 和模块服务。
 
-- `auth / account`：邮箱、Apple、设备会话、导出和删除。
+- `auth / account`：可扩展登录身份、邮箱、Apple、设备会话、导出和删除。
 - `domain`：资料、金币、机票、旅行和剧情奖励。
 - `billing`：StoreKit 交易、订阅与统一权益。
 - `ai`：DeepSeek 路由、配额、流式中转和审计配置。

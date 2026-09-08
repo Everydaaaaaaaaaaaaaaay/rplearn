@@ -41,6 +41,7 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
   let userId: string;
   let transactionId: string;
   let originalTransactionId: string;
+  let googleIdentityId: string;
   const deletionRequestIds: string[] = [];
   const email = `account-${newEntityId()}@example.com`;
   const password = "Correct Horse Account 1!";
@@ -116,9 +117,10 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
     userId = tokens.userId;
 
     const authRepository = new AuthRepository(dependencies.database);
-    const linked = await authRepository.linkAppleIdentity({
+    const linked = await authRepository.linkFederatedIdentity({
       email: "account-apple@example.com",
       emailVerified: true,
+      provider: "apple",
       subject: `account-apple-${newEntityId()}`,
       userId,
     });
@@ -130,6 +132,17 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
       "com.tiantian.lingotrip",
       credentialSealer.seal("account-apple-refresh-token"),
     );
+    const google = await authRepository.linkFederatedIdentity({
+      email: "account-google@example.com",
+      emailVerified: true,
+      provider: "google",
+      subject: `account-google-${newEntityId()}`,
+      userId,
+    });
+    if (google.status !== "linked") {
+      throw new Error("Google identity fixture could not be linked");
+    }
+    googleIdentityId = google.identityId;
 
     transactionId = `account-transaction-${newEntityId()}`;
     originalTransactionId = `account-original-${newEntityId()}`;
@@ -256,6 +269,27 @@ describe.runIf(runIntegrationTests)("account data governance", () => {
 
   it("exports portable data, supports grace cancellation, and purges immediately", async () => {
     const authorization = { authorization: `Bearer ${accessToken}` };
+    const identities = await app.inject({
+      headers: authorization,
+      method: "GET",
+      url: "/v1/account/identities",
+    });
+    expect(identities.statusCode).toBe(200);
+    expect(
+      identities
+        .json<{ identities: readonly { provider: string }[] }>()
+        .identities.map((identity) => identity.provider)
+        .sort(),
+    ).toEqual(["apple", "email", "google"]);
+
+    const unlink = await app.inject({
+      headers: authorization,
+      method: "DELETE",
+      payload: { confirmation: "UNLINK" },
+      url: `/v1/account/identities/${googleIdentityId}`,
+    });
+    expect(unlink.statusCode).toBe(204);
+
     const exported = await app.inject({
       headers: authorization,
       method: "GET",
