@@ -55,6 +55,8 @@ final class SocialEncounterModel: ObservableObject {
     private let replyIDs = [UUID(), UUID()]
     private var pendingPublic: BackendPublicNPC?
     private var generatedCard: CharacterCard?
+    private var generatedDiversityProfile: BackendNPCDiversityProfile?
+    private var registeredGeneratedPublic: BackendPublicNPC?
     private let generatedID = UUID()
     private var generationOrigin: EncounterService.Origin = .local
     private let isFixture: Bool
@@ -217,20 +219,31 @@ final class SocialEncounterModel: ObservableObject {
         if character == nil {
             if generatedCard == nil {
                 generationOrigin = EncounterService.rollOrigin(roll: Double.random(in: 0..<1))
-                let generated = try await EncounterService(llm: deps.llm).generateEncounter(
-                    origin: generationOrigin, region: region, userLevel: profile.difficultyLevel,
-                    existingNames: Set(all.map { $0.card.name }),
-                    activityContext: activity.scene.encounterContext)
-                try Task.checkCancellation()
-                // Local template fallback must not masquerade as a newly generated identity.
-                guard !generated.isFallback else { throw SocialDialogueService.DialogueError.invalidReply }
-                generatedCard = generated.card
+                try await generateApprovedCandidate(
+                    userLevel: profile.difficultyLevel,
+                    existingNames: Set(all.map { $0.card.name })
+                )
             }
-            guard let card = generatedCard else { throw RosterStore.RosterError.characterNotFound }
-            let id = try await roster.addCharacter(characterID: generatedID, card: card,
-                difficulty: profile.difficultyLevel, isFriend: false)
+            let id: UUID
+            if let npc = registeredGeneratedPublic {
+                id = try await roster.addCharacter(
+                    characterID: npc.id,
+                    travelerID: npc.travelerId,
+                    card: PublicNPCAdapter.characterCard(from: npc),
+                    difficulty: profile.difficultyLevel,
+                    isFriend: false
+                )
+            } else {
+                guard let card = generatedCard else { throw RosterStore.RosterError.characterNotFound }
+                id = try await roster.addCharacter(
+                    characterID: generatedID,
+                    card: card,
+                    difficulty: profile.difficultyLevel,
+                    isFriend: false
+                )
+                registrationPending = true
+            }
             character = try await roster.character(id: id)
-            registrationPending = true
         }
         if let character {
             let recent = try await chat.recentMessages(characterID: character.id, limit: 8)
@@ -245,6 +258,77 @@ final class SocialEncounterModel: ObservableObject {
     private var sceneContext: String {
         "城市：\(region.nameZh)。\(activity.scene.title) · \(activity.title)。\(activity.steps[0].context)"
     }
+
+    private func generateApprovedCandidate(
+        userLevel: DifficultyLevel,
+        existingNames: Set<String>
+    ) async throws {
+        var names = existingNames
+        var guidance: [String] = []
+        for _ in 0..<3 {
+            let generated = try await EncounterService(llm: deps.llm).generateEncounter(
+                origin: generationOrigin,
+                region: region,
+                userLevel: userLevel,
+                existingNames: names,
+                activityContext: activity.scene.encounterContext,
+                diversityGuidance: guidance
+            )
+            try Task.checkCancellation()
+            // Local template fallback must not masquerade as a newly generated identity.
+            guard !generated.isFallback else { throw SocialDialogueService.DialogueError.invalidReply }
+            let backendCard = PublicNPCAdapter.backendCard(from: generated.card)
+            let diversityProfile = generated.diversityProfile.backendValue
+            guard let registry = deps.npcRegistry else {
+                generatedCard = generated.card
+                generatedDiversityProfile = diversityProfile
+                return
+            }
+            let review = try await registry.reviewEncounterNPC(
+                card: backendCard,
+                diversityProfile: diversityProfile,
+                context: encounterContext
+            )
+            try Task.checkCancellation()
+            guard review.decision == .accept else {
+                names.insert(generated.card.name)
+                guidance = review.guidance.isEmpty ? Self.genericDiversityGuidance : review.guidance
+                continue
+            }
+            do {
+                registeredGeneratedPublic = try await registry.registerEncounterNPC(
+                    id: generatedID,
+                    card: backendCard,
+                    diversityProfile: diversityProfile,
+                    context: encounterContext
+                )
+                generatedCard = generated.card
+                generatedDiversityProfile = diversityProfile
+                return
+            } catch let error as BackendClientError where error.code == "NPC_PERSONA_TOO_SIMILAR" {
+                // Another registration may have won after the read-only review. Ask again for
+                // current, explainable correction dimensions and regenerate the same local slot.
+                let current = try await registry.reviewEncounterNPC(
+                    card: backendCard,
+                    diversityProfile: diversityProfile,
+                    context: encounterContext
+                )
+                names.insert(generated.card.name)
+                guidance = current.guidance.isEmpty ? Self.genericDiversityGuidance : current.guidance
+            } catch let error as BackendClientError where error.code == "NPC_AVATAR_COVERAGE_GAP" {
+                // Registration already reserved this approved narrative in the durable pending queue.
+                generatedCard = generated.card
+                generatedDiversityProfile = diversityProfile
+                return
+            }
+        }
+        throw SocialDialogueService.DialogueError.invalidReply
+    }
+
+    private static let genericDiversityGuidance = [
+        "Change the occupation domain, social role and interaction style together.",
+        "Use a different background tension and interest combination; do not merely rename the person.",
+    ]
     private func performSelection() async throws {
         guard let selected, let character else { return }
         let choice = activity.steps[step].choices[selected]
@@ -286,13 +370,16 @@ final class SocialEncounterModel: ObservableObject {
     }
     private func startRegistration() {
         guard registrationPending, !isFixture, registrationTask == nil,
-              let character, let registry = deps.npcRegistry else { return }
+              let character, let diversityProfile = generatedDiversityProfile,
+              let registry = deps.npcRegistry else { return }
         // Portrait registration must not hold the dialogue's loading state open.
         registrationTask = Task {
             defer { registrationTask = nil }
             do {
                 let publicNPC = try await registry.registerEncounterNPC(id: character.id,
-                    card: PublicNPCAdapter.backendCard(from: character.card), context: encounterContext)
+                    card: PublicNPCAdapter.backendCard(from: character.card),
+                    diversityProfile: diversityProfile,
+                    context: encounterContext)
                 try Task.checkCancellation()
                 let latest = try await roster.character(id: character.id)
                 try await registry.linkPublicNPC(npcID: publicNPC.id, localCharacterID: character.id,
@@ -306,5 +393,21 @@ final class SocialEncounterModel: ObservableObject {
                 // coordinator retries missing portraits/network without replacing it.
             }
         }
+    }
+}
+
+private extension EncounterService.DiversityProfile {
+    var backendValue: BackendNPCDiversityProfile {
+        BackendNPCDiversityProfile(
+            occupationDomain: occupationDomain,
+            socialRole: socialRole,
+            interactionStyle: interactionStyle,
+            interestDomains: interestDomains,
+            traits: traits,
+            backgroundMotif: backgroundMotif,
+            energy: energy,
+            warmth: warmth,
+            structure: structure
+        )
     }
 }

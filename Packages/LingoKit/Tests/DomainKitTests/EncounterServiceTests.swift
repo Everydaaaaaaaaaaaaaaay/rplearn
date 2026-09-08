@@ -23,6 +23,10 @@ struct EncounterServiceTests {
     "conversational_habits":["notices small details","uses gentle humour"],
     "boundaries":["does not mock sincere questions"],
     "anchor_lines":["Give me a second, love.","I see your point, honestly."],
+    "diversity_profile":{"occupation_domain":"service-retail","social_role":"creator",
+    "interaction_style":"gentle","interest_domains":["nature","crafts-making"],
+    "traits":["empathetic","careful"],"background_motif":"mastery",
+    "energy":"medium","warmth":"warm","structure":"balanced"},
     "opening_line":"Oh! Sorry, mind the buckets - are you lost, love?"}
     """
 
@@ -67,6 +71,7 @@ struct EncounterServiceTests {
         #expect(encounter.card.hobbies == ["园艺", "骑行"])
         #expect(encounter.card.signature == "Flowers remember the weather.")
         #expect(encounter.card.personaVoice?.values == ["kindness", "craft"])
+        #expect(encounter.diversityProfile.occupationDomain == "service-retail")
         #expect(encounter.openingLine.contains("Sorry"))
     }
 
@@ -123,13 +128,17 @@ struct EncounterServiceTests {
             region: region,
             userLevel: .junior3,
             existingNames: ["A", "B"],
-            activityContext: "Browsing a weekend food market"
+            activityContext: "Browsing a weekend food market",
+            diversityGuidance: ["Choose an occupation outside hospitality-food."]
         )
         #expect(prompt.contains("ANOTHER city"))
         #expect(prompt.contains("Do NOT use these names: A, B"))
         #expect(prompt.contains("Simplified Chinese UI tag"))
         #expect(prompt.contains("weekend food market"))
         #expect(prompt.contains("stable voice bible"))
+        #expect(prompt.contains("previous candidate overlapped"))
+        #expect(prompt.contains("outside hospitality-food"))
+        #expect(prompt.contains("diversity_profile"))
     }
 
     @Test("公共身份转换只搬运稳定人物卡并保留永久头像")

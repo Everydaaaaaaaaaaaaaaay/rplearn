@@ -22,6 +22,7 @@
 - [`design-system.md`](design-system.md)：视觉方向与 DesignSystem 边界。
 - [`realtime-voice.md`](realtime-voice.md)：端侧实时语音、低成本模型、生命周期与真机验收门槛。
 - [`relationship-system.md`](relationship-system.md)：多维角色关系、好感度计算、时间衰减与校准边界。
+- [`npc-persona-diversity.md`](npc-persona-diversity.md)：城市偶遇 NPC 的人物指纹、重复判定、并发保护与验收边界。
 - [`relationship-calibration-log.md`](relationship-calibration-log.md)：关系算法的历史实验、失败案例与验证证据。
 - [`user-cost-evaluation.md`](user-cost-evaluation.md)：原生端到端用户成本评测、场景和证据解释。
 - [`user-cost-study-results-2026-09-06.md`](user-cost-study-results-2026-09-06.md)：分层重复、额度对照和长聊天压力实测；附可复核数据。

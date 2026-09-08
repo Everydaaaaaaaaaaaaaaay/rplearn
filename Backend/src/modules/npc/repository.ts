@@ -12,10 +12,20 @@ import type {
   RegisterPublicNpcInput,
   NpcEncounterContext,
   NpcEncounterSelection,
+  NpcDiversityProfile,
+  NpcDiversityReview,
+  ReviewNpcDiversityInput,
 } from "./types.js";
 import { travelerIdCheckDigit } from "./traveler-id.js";
 import { chooseAvatar } from "./avatar-matcher.js";
 import type { AvatarProfile, AvatarRequirements } from "./types.js";
+import {
+  canonicalizeDiversityProfile,
+  deriveDiversityProfile,
+  personaSignature,
+  reconcileDiversityProfile,
+  reviewPersonaDiversity,
+} from "./persona-diversity.js";
 
 type NpcRow = Readonly<{
   avatar_id: string | null;
@@ -31,6 +41,13 @@ type AvatarCandidateRow = Readonly<{
   image_url: string;
   tags_text: string;
   profile: AvatarProfile | null;
+}>;
+
+type PersonaCandidateRow = Readonly<{
+  card_text: string;
+  persona_profile_text: string | null;
+  persona_signature: string | null;
+  region_id: string;
 }>;
 
 function mapNpc(row: NpcRow): PublicNpc {
@@ -64,6 +81,26 @@ export class NpcRepository {
     private readonly database: DatabaseResource,
     private readonly draw: (maximum: number) => number = randomInt,
   ) {}
+
+  async reviewDiversity(
+    userId: string,
+    input: ReviewNpcDiversityInput,
+  ): Promise<NpcDiversityReview> {
+    if (input.encounterContext.regionId !== input.card.regionId)
+      throw new AppError({
+        code: "NPC_CONTEXT_CONFLICT",
+        message: "The character must belong to the encounter region.",
+        statusCode: 400,
+      });
+    return this.database.sql.begin(async (sql) => {
+      await loadAccessPolicy(sql, userId);
+      return this.reviewDiversityWithinTransaction(
+        sql,
+        input.card,
+        reconcileDiversityProfile(input.card, input.diversityProfile),
+      );
+    });
+  }
 
   async selectEncounter(
     userId: string,
@@ -228,11 +265,36 @@ export class NpcRepository {
             "This pending NPC identity already has a different owner or narrative.",
         });
       }
+      const pendingInput = pending
+        ? (JSON.parse(pending.input) as RegisterPublicNpcInput)
+        : undefined;
+      const personaProfile = canonicalizeDiversityProfile(
+        pendingInput?.diversityProfile
+          ? reconcileDiversityProfile(input.card, pendingInput.diversityProfile)
+          : input.diversityProfile
+            ? reconcileDiversityProfile(input.card, input.diversityProfile)
+            : deriveDiversityProfile(input.card),
+      );
+      const signature = personaSignature(input.card);
+      // Serialize semantic admission for the region, while the signature lock also protects
+      // exact duplicates racing in different regions.
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-persona-region:${input.card.regionId}`}, 0))`;
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-persona-signature:${signature}`}, 0))`;
+      const diversityReview = await this.reviewDiversityWithinTransaction(
+        sql,
+        input.card,
+        personaProfile,
+        input.id,
+      );
+      if (diversityReview.decision === "revise")
+        throw new AppError({
+          code: "NPC_PERSONA_TOO_SIMILAR",
+          message: "This character overlaps too heavily with an existing role.",
+          statusCode: 409,
+          details: diversityReview,
+        });
 
-      if (
-        !pending &&
-        (supply?.count ?? 0) >= (policy.isGuest ? 30 : 90)
-      )
+      if (!pending && (supply?.count ?? 0) >= (policy.isGuest ? 30 : 90))
         throw new AppError({
           code: "NPC_REGISTRATION_LIMIT",
           message: "本周期的新角色登记已达上限，已有角色会保留。",
@@ -295,9 +357,18 @@ export class NpcRepository {
           selected_avatar_id = excluded.selected_avatar_id, updated_at = now()
       `;
       if (avatar === undefined) {
+        const savedInput: RegisterPublicNpcInput = {
+          ...input,
+          diversityProfile: personaProfile,
+        };
         await sql`
-          insert into app.npc_pending_avatars (npc_id, user_id, input, card_hash, next_attempt_at)
-          values (${input.id}, ${userId}, ${JSON.stringify(input)}::jsonb, ${cardHash}, now() + interval '5 minutes')
+          insert into app.npc_pending_avatars (
+            npc_id, user_id, input, card_hash, persona_profile, persona_signature, next_attempt_at
+          )
+          values (
+            ${input.id}, ${userId}, ${JSON.stringify(savedInput)}::jsonb, ${cardHash},
+            ${JSON.stringify(personaProfile)}::jsonb, ${signature}, now() + interval '5 minutes'
+          )
           on conflict (npc_id) do nothing
         `;
         return { gap: match.reason, eligibleCount: match.eligibleCount };
@@ -313,6 +384,8 @@ export class NpcRepository {
           traveler_id,
           card,
           card_hash,
+          persona_profile,
+          persona_signature,
           avatar_id,
           created_by_user_id
         )
@@ -321,6 +394,8 @@ export class NpcRepository {
           ${travelerId},
           ${JSON.stringify(finalCard)}::jsonb,
           ${cardHash},
+          ${JSON.stringify(personaProfile)}::jsonb,
+          ${signature},
           ${avatar.id},
           ${userId}
         )
@@ -359,6 +434,55 @@ export class NpcRepository {
         details: { reason: result.gap, eligibleCount: result.eligibleCount },
       });
     return result;
+  }
+
+  private async reviewDiversityWithinTransaction(
+    sql: TransactionSql,
+    card: PublicNpcCard,
+    profile: NpcDiversityProfile,
+    excludingId?: string,
+  ): Promise<NpcDiversityReview> {
+    const signature = personaSignature(card);
+    const rows = await sql<PersonaCandidateRow[]>`
+      select card_text, persona_profile_text, persona_signature, region_id from (
+        select npc.id::text as source_id, npc.created_at,
+          npc.card::text as card_text, npc.persona_profile::text as persona_profile_text,
+          npc.persona_signature, npc.card->>'regionId' as region_id
+        from app.public_npcs npc
+        union all
+        select pending.npc_id::text as source_id, pending.created_at,
+          (pending.input->'card')::text as card_text,
+          pending.persona_profile::text as persona_profile_text,
+          pending.persona_signature,
+          pending.input->'card'->>'regionId' as region_id
+        from app.npc_pending_avatars pending
+      ) personas
+      where (${excludingId ?? null}::uuid is null or source_id <> ${excludingId ?? null})
+        and (
+          persona_signature = ${signature}
+          or region_id = ${card.regionId}
+          or persona_signature is null
+        )
+      order by (persona_signature = ${signature}) desc, created_at desc
+    `;
+    const existing = [];
+    for (const row of rows) {
+      const existingCard = JSON.parse(row.card_text) as PublicNpcCard;
+      if (
+        row.region_id !== card.regionId &&
+        row.persona_signature === null &&
+        personaSignature(existingCard) !== signature
+      )
+        continue;
+      existing.push({
+        card: existingCard,
+        profile:
+          row.persona_profile_text === null
+            ? deriveDiversityProfile(existingCard)
+            : (JSON.parse(row.persona_profile_text) as NpcDiversityProfile),
+      });
+    }
+    return reviewPersonaDiversity({ card, profile }, existing);
   }
 
   async retryPendingAvatars(

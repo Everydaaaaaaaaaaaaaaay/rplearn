@@ -17,15 +17,104 @@ public struct EncounterService: Sendable {
         case foreigner
     }
 
+    /// Non-visual dimensions used to prevent two generated identities from filling
+    /// effectively the same role. Raw story text remains on `CharacterCard`.
+    public struct DiversityProfile: Sendable, Equatable {
+        public var occupationDomain: String
+        public var socialRole: String
+        public var interactionStyle: String
+        public var interestDomains: [String]
+        public var traits: [String]
+        public var backgroundMotif: String
+        public var energy: String
+        public var warmth: String
+        public var structure: String
+
+        public init(
+            occupationDomain: String,
+            socialRole: String,
+            interactionStyle: String,
+            interestDomains: [String],
+            traits: [String],
+            backgroundMotif: String,
+            energy: String,
+            warmth: String,
+            structure: String
+        ) {
+            self.occupationDomain = occupationDomain
+            self.socialRole = socialRole
+            self.interactionStyle = interactionStyle
+            self.interestDomains = interestDomains
+            self.traits = traits
+            self.backgroundMotif = backgroundMotif
+            self.energy = energy
+            self.warmth = warmth
+            self.structure = structure
+        }
+
+        fileprivate var isValid: Bool {
+            Self.occupationDomains.contains(occupationDomain)
+                && Self.socialRoles.contains(socialRole)
+                && Self.interactionStyles.contains(interactionStyle)
+                && (1...4).contains(interestDomains.count)
+                && Set(interestDomains).count == interestDomains.count
+                && interestDomains.allSatisfy(Self.interestDomainValues.contains)
+                && (2...4).contains(traits.count)
+                && Set(traits).count == traits.count
+                && traits.allSatisfy(Self.traitValues.contains)
+                && Self.backgroundMotifs.contains(backgroundMotif)
+                && ["low", "medium", "high"].contains(energy)
+                && ["reserved", "balanced", "warm"].contains(warmth)
+                && ["spontaneous", "balanced", "structured"].contains(structure)
+        }
+
+        static let occupationDomains = [
+            "agriculture-nature", "arts-media", "business-finance", "education", "healthcare",
+            "hospitality-food", "public-service", "retired", "science-technology", "service-retail",
+            "skilled-trades", "sports-fitness", "student", "transport-logistics", "other",
+        ]
+        static let socialRoles = [
+            "caregiver", "connector", "creator", "explorer", "helper", "learner", "mentor", "observer",
+            "organizer", "performer", "problem-solver", "storyteller",
+        ]
+        static let interactionStyles = [
+            "analytical", "animated", "blunt", "formal", "gentle", "humorous", "playful", "practical",
+            "reflective", "reserved", "reassuring", "curious",
+        ]
+        static let interestDomainValues = [
+            "arts", "books-learning", "community", "crafts-making", "food-drink", "games",
+            "history-culture", "music", "nature", "photography-film", "sports", "technology", "travel", "wellness",
+        ]
+        static let traitValues = [
+            "adventurous", "ambitious", "calm", "candid", "careful", "curious", "disciplined", "empathetic",
+            "independent", "optimistic", "pragmatic", "reserved", "sociable", "spontaneous", "witty",
+        ]
+        static let backgroundMotifs = [
+            "belonging", "career-change", "exploration", "family-duty", "fresh-start", "mastery", "migration",
+            "ordinary-life", "recovery", "rivalry", "self-discovery", "service", "tradition",
+        ]
+    }
+
     /// 一次偶遇结果：角色卡 + 开场白。
     public struct Encounter: Sendable, Equatable {
         public var card: CharacterCard
+        public var diversityProfile: DiversityProfile
         public var openingLine: String
         public var origin: Origin
         /// 是否 LLM 生成失败后的本地模板卡。
         public var isFallback: Bool
-        public init(card: CharacterCard, openingLine: String, origin: Origin, isFallback: Bool) {
-            self.card = card; self.openingLine = openingLine; self.origin = origin; self.isFallback = isFallback
+        public init(
+            card: CharacterCard,
+            diversityProfile: DiversityProfile,
+            openingLine: String,
+            origin: Origin,
+            isFallback: Bool
+        ) {
+            self.card = card
+            self.diversityProfile = diversityProfile
+            self.openingLine = openingLine
+            self.origin = origin
+            self.isFallback = isFallback
         }
     }
 
@@ -76,7 +165,8 @@ public struct EncounterService: Sendable {
         region: Region,
         userLevel: DifficultyLevel,
         existingNames: Set<String>,
-        activityContext: String? = nil
+        activityContext: String? = nil,
+        diversityGuidance: [String] = []
     ) async throws -> Encounter {
         for _ in 0..<2 {
             do {
@@ -85,7 +175,8 @@ public struct EncounterService: Sendable {
                 region: region,
                 userLevel: userLevel,
                 existingNames: existingNames,
-                activityContext: activityContext
+                activityContext: activityContext,
+                diversityGuidance: diversityGuidance
                 )
             } catch let error as LLMError {
                 if case .accessRestricted = error { throw error }
@@ -116,6 +207,33 @@ public struct EncounterService: Sendable {
         var conversationalHabits: [String]?
         var boundaries: [String]?
         var anchorLines: [String]?
+        var diversityProfile: GeneratedDiversityProfile
+    }
+
+    private struct GeneratedDiversityProfile: Decodable {
+        var occupationDomain: String
+        var socialRole: String
+        var interactionStyle: String
+        var interestDomains: [String]
+        var traits: [String]
+        var backgroundMotif: String
+        var energy: String
+        var warmth: String
+        var structure: String
+
+        var domainValue: DiversityProfile {
+            DiversityProfile(
+                occupationDomain: occupationDomain,
+                socialRole: socialRole,
+                interactionStyle: interactionStyle,
+                interestDomains: interestDomains,
+                traits: traits,
+                backgroundMotif: backgroundMotif,
+                energy: energy,
+                warmth: warmth,
+                structure: structure
+            )
+        }
     }
 
     private func generateOnce(
@@ -123,7 +241,8 @@ public struct EncounterService: Sendable {
         region: Region,
         userLevel: DifficultyLevel,
         existingNames: Set<String>,
-        activityContext: String?
+        activityContext: String?,
+        diversityGuidance: [String]
     ) async throws -> Encounter {
         let request = LLMRequest(
             task: .characterGeneration,
@@ -133,10 +252,11 @@ public struct EncounterService: Sendable {
                 region: region,
                 userLevel: userLevel,
                 existingNames: existingNames,
-                activityContext: activityContext
+                activityContext: activityContext,
+                diversityGuidance: diversityGuidance
             ),
             messages: [.user("Generate one character now.")],
-            maxTokens: 900,
+            maxTokens: 1_100,
             temperature: 1.0,
             responseFormat: .jsonSchema(name: "character_card", schema: Self.schema)
         )
@@ -148,13 +268,15 @@ public struct EncounterService: Sendable {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let generated = try decoder.decode(GeneratedCard.self, from: data)
 
+        let diversityProfile = generated.diversityProfile.domainValue
         // 字段校验：不合格则抛错触发重试
         guard !generated.name.trimmingCharacters(in: .whitespaces).isEmpty,
               !existingNames.contains(generated.name),
               (14...85).contains(generated.age),
               !generated.openingLine.isEmpty,
               !generated.hobbies.isEmpty,
-              generated.hobbies.allSatisfy(Self.isChineseHobbyTag) else {
+              generated.hobbies.allSatisfy(Self.isChineseHobbyTag),
+              diversityProfile.isValid else {
             throw LLMError.invalidResponse("角色卡字段校验未通过")
         }
 
@@ -182,7 +304,13 @@ public struct EncounterService: Sendable {
                 anchorLines: generated.anchorLines ?? []
             )
         )
-        return Encounter(card: card, openingLine: generated.openingLine, origin: origin, isFallback: false)
+        return Encounter(
+            card: card,
+            diversityProfile: diversityProfile,
+            openingLine: generated.openingLine,
+            origin: origin,
+            isFallback: false
+        )
     }
 
     private static func isChineseHobbyTag(_ value: String) -> Bool {
@@ -196,7 +324,8 @@ public struct EncounterService: Sendable {
         region: Region,
         userLevel: DifficultyLevel,
         existingNames: Set<String>,
-        activityContext: String? = nil
+        activityContext: String? = nil,
+        diversityGuidance: [String] = []
     ) -> String {
         let originRule = switch origin {
         case .local:
@@ -212,11 +341,16 @@ public struct EncounterService: Sendable {
         let meetingRule = activityContext.map {
             "The meeting happens during this activity: \($0). The occupation, routine or interests should make the presence plausible, and opening_line must fit this exact moment."
         } ?? "The meeting happens during an ordinary local activity."
+        let diversityRule = diversityGuidance.isEmpty
+            ? ""
+            : "A previous candidate overlapped the library. Follow every correction below:\n- "
+                + diversityGuidance.joined(separator: "\n- ")
         return """
         You create a believable stranger the user bumps into in \(region.nameEn) \
         (\(region.countryNameEn)). \(originRule)
 
         \(meetingRule)
+        \(diversityRule)
 
         Requirements:
         - Diverse and specific: a real-feeling occupation, 3-4 concrete hobbies, distinctive \
@@ -234,6 +368,9 @@ public struct EncounterService: Sendable {
         These must all express the same personality and speech style. Write these fields in English.
         - Choose age (14-85) and gender freely for a believable person. Do not prefer a \
         youthful, conventionally attractive character by default.
+        - Classify the identity into diversity_profile using only the allowed enum values. The profile must \
+        truthfully summarize the occupation domain, social function, interaction style, interests, traits, \
+        background motif, energy, warmth and structure. It is checked against the shared character library.
         - Appearance will be finalized from a reviewed portrait after this narrative is generated. \
         Keep appearance provisional; do not lock hair, eye color, facial features, body build, \
         clothing or pose into background, personality, opening_line or other narrative fields. \
@@ -266,10 +403,48 @@ public struct EncounterService: Sendable {
             "conversational_habits": ["type": "array", "items": ["type": "string"]],
             "boundaries": ["type": "array", "items": ["type": "string"]],
             "anchor_lines": ["type": "array", "items": ["type": "string"]],
+            "diversity_profile": [
+                "type": "object",
+                "properties": [
+                    "occupation_domain": [
+                        "type": "string", "enum": .array(DiversityProfile.occupationDomains.map(JSONValue.string)),
+                    ],
+                    "social_role": [
+                        "type": "string", "enum": .array(DiversityProfile.socialRoles.map(JSONValue.string)),
+                    ],
+                    "interaction_style": [
+                        "type": "string", "enum": .array(DiversityProfile.interactionStyles.map(JSONValue.string)),
+                    ],
+                    "interest_domains": [
+                        "type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true,
+                        "items": [
+                            "type": "string",
+                            "enum": .array(DiversityProfile.interestDomainValues.map(JSONValue.string)),
+                        ],
+                    ],
+                    "traits": [
+                        "type": "array", "minItems": 2, "maxItems": 4, "uniqueItems": true,
+                        "items": [
+                            "type": "string", "enum": .array(DiversityProfile.traitValues.map(JSONValue.string)),
+                        ],
+                    ],
+                    "background_motif": [
+                        "type": "string", "enum": .array(DiversityProfile.backgroundMotifs.map(JSONValue.string)),
+                    ],
+                    "energy": ["type": "string", "enum": ["low", "medium", "high"]],
+                    "warmth": ["type": "string", "enum": ["reserved", "balanced", "warm"]],
+                    "structure": ["type": "string", "enum": ["spontaneous", "balanced", "structured"]],
+                ],
+                "required": [
+                    "occupation_domain", "social_role", "interaction_style", "interest_domains", "traits",
+                    "background_motif", "energy", "warmth", "structure",
+                ],
+                "additionalProperties": false,
+            ],
         ],
         "required": [
             "name", "age", "gender", "nationality", "occupation", "hobbies",
-            "appearance", "personality", "speech_style", "background", "opening_line",
+            "appearance", "personality", "speech_style", "background", "opening_line", "diversity_profile",
         ],
         "additionalProperties": false,
     ]
@@ -314,6 +489,18 @@ public struct EncounterService: Sendable {
         )
         return Encounter(
             card: card,
+            diversityProfile: DiversityProfile(
+                occupationDomain: pick.3 == "graduate student"
+                    ? "student" : pick.3 == "street food vendor" ? "hospitality-food" : "arts-media",
+                socialRole: pick.3 == "freelance designer" ? "creator" : "connector",
+                interactionStyle: "curious",
+                interestDomains: ["food-drink", "travel"],
+                traits: ["curious", "sociable"],
+                backgroundMotif: "ordinary-life",
+                energy: "medium",
+                warmth: "warm",
+                structure: "balanced"
+            ),
             openingLine: "Oh hey! Sorry, didn't mean to bump into you - first time around here?",
             origin: origin,
             isFallback: true

@@ -12,7 +12,11 @@ import { registerAuthRoutes } from "../../src/modules/auth/routes.js";
 import { createAuthService } from "../../src/modules/auth/service.js";
 import { registerNpcRoutes } from "../../src/modules/npc/routes.js";
 import { createNpcService } from "../../src/modules/npc/service.js";
-import type { PublicNpc } from "../../src/modules/npc/types.js";
+import type {
+  NpcDiversityProfile,
+  PublicNpc,
+  PublicNpcCard,
+} from "../../src/modules/npc/types.js";
 import { importAvatarManifest } from "../../src/modules/npc/avatar-import.js";
 import { newEntityId } from "../../src/shared/id.js";
 import { createTestJobWorker } from "../helpers/jobs.js";
@@ -28,6 +32,7 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
   let userId: string;
   const firstNpcId = newEntityId();
   const secondNpcId = newEntityId();
+  const personaDuplicateId = newEntityId();
   const pendingIds = [newEntityId(), newEntityId(), newEntityId()] as const;
   const pendingAssetIds = [newEntityId(), newEntityId()] as const;
   const avatarId = newEntityId();
@@ -62,6 +67,96 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     signature: "Every street has a story if you slow down.",
     speechStyle: "Conversational British English with concise questions",
   } as const;
+
+  const diversityProfiles: readonly NpcDiversityProfile[] = [
+    {
+      version: 1,
+      occupationDomain: "arts-media",
+      socialRole: "storyteller",
+      interactionStyle: "blunt",
+      interestDomains: ["community", "music"],
+      traits: ["candid", "curious"],
+      backgroundMotif: "service",
+      energy: "high",
+      warmth: "warm",
+      structure: "spontaneous",
+    },
+    {
+      version: 1,
+      occupationDomain: "skilled-trades",
+      socialRole: "problem-solver",
+      interactionStyle: "practical",
+      interestDomains: ["sports", "technology"],
+      traits: ["independent", "pragmatic"],
+      backgroundMotif: "fresh-start",
+      energy: "medium",
+      warmth: "balanced",
+      structure: "structured",
+    },
+    {
+      version: 1,
+      occupationDomain: "education",
+      socialRole: "mentor",
+      interactionStyle: "analytical",
+      interestDomains: ["books-learning", "history-culture"],
+      traits: ["curious", "disciplined"],
+      backgroundMotif: "mastery",
+      energy: "low",
+      warmth: "balanced",
+      structure: "structured",
+    },
+    {
+      version: 1,
+      occupationDomain: "healthcare",
+      socialRole: "caregiver",
+      interactionStyle: "reassuring",
+      interestDomains: ["nature", "wellness"],
+      traits: ["calm", "empathetic"],
+      backgroundMotif: "recovery",
+      energy: "medium",
+      warmth: "warm",
+      structure: "balanced",
+    },
+    {
+      version: 1,
+      occupationDomain: "public-service",
+      socialRole: "organizer",
+      interactionStyle: "formal",
+      interestDomains: ["community", "travel"],
+      traits: ["ambitious", "careful"],
+      backgroundMotif: "belonging",
+      energy: "high",
+      warmth: "reserved",
+      structure: "structured",
+    },
+  ];
+  const occupations = [
+    "radio producer",
+    "bicycle mechanic",
+    "adult education tutor",
+    "community nurse",
+    "neighborhood coordinator",
+  ] as const;
+  const cardFor = (index: number): PublicNpcCard => ({
+    ...card,
+    name: `${card.name} ${String(index)}`,
+    occupation: occupations[index] ?? `specialist ${String(index)}`,
+    background: `Distinct life story fixture ${String(index)} in London.`,
+    personality: `Distinct temperament fixture ${String(index)}.`,
+    speechStyle: `Distinct speaking pattern ${String(index)}.`,
+    hobbies: [`主题爱好${String(index)}`, `户外活动${String(index)}`],
+  });
+  const profileFor = (index: number): NpcDiversityProfile => {
+    const profile = diversityProfiles[index];
+    if (!profile) throw new Error(`Missing diversity profile ${String(index)}`);
+    return profile;
+  };
+  const pendingFixtures = new Map(
+    pendingIds.map((id, offset) => [
+      id,
+      { card: cardFor(offset + 2), diversityProfile: profileFor(offset + 2) },
+    ]),
+  );
 
   const asset = (id: string) => ({
     id,
@@ -140,7 +235,7 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     await dependencies.database
       .sql`delete from app.public_npcs where id in ${dependencies.database.sql(pendingIds)}`;
     await dependencies.database.sql`
-      delete from app.public_npcs where id in (${firstNpcId}, ${secondNpcId}, ${concurrentIds[0]}, ${concurrentIds[1]})
+      delete from app.public_npcs where id in (${firstNpcId}, ${secondNpcId}, ${personaDuplicateId}, ${concurrentIds[0]}, ${concurrentIds[1]})
     `;
     await dependencies.database
       .sql`delete from app.npc_avatar_match_events where user_id = ${userId}`;
@@ -160,7 +255,7 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     const first = await app.inject({
       headers: headers(),
       method: "POST",
-      payload: { card, id: firstNpcId },
+      payload: { card, diversityProfile: profileFor(0), id: firstNpcId },
       url: "/v1/npcs",
     });
     expect(first.statusCode).toBe(200);
@@ -176,7 +271,11 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     const canonical = await app.inject({
       headers: headers(),
       method: "POST",
-      payload: { card: registered.card, id: firstNpcId },
+      payload: {
+        card: registered.card,
+        diversityProfile: profileFor(0),
+        id: firstNpcId,
+      },
       url: "/v1/npcs",
     });
     expect(canonical.statusCode).toBe(200);
@@ -185,15 +284,56 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     const replay = await app.inject({
       headers: headers(),
       method: "POST",
-      payload: { card, id: firstNpcId },
+      payload: { card, diversityProfile: profileFor(0), id: firstNpcId },
       url: "/v1/npcs",
     });
     expect(replay.json<PublicNpc>()).toEqual(registered);
 
+    const review = await app.inject({
+      headers: headers(),
+      method: "POST",
+      payload: {
+        card: { ...card, name: "Renamed Nora" },
+        diversityProfile: profileFor(0),
+        encounterContext: {
+          regionId: "london",
+          activityId: "social-encounter",
+          category: "social",
+          language: "English",
+        },
+      },
+      url: "/v1/npcs/diversity-review",
+    });
+    expect(review.statusCode).toBe(200);
+    expect(review.json()).toMatchObject({
+      decision: "revise",
+      similarityScore: 100,
+    });
+    const duplicate = await app.inject({
+      headers: headers(),
+      method: "POST",
+      payload: {
+        card: { ...card, name: "Renamed Nora" },
+        diversityProfile: profileFor(0),
+        id: personaDuplicateId,
+      },
+      url: "/v1/npcs",
+    });
+    expect(duplicate.statusCode).toBe(409);
+    expect(duplicate.json<{ code: string }>().code).toBe("NPC_PERSONA_TOO_SIMILAR");
+    const duplicateEvents = await dependencies.database.sql`
+      select 1 from app.npc_avatar_match_events where npc_id = ${personaDuplicateId}
+    `;
+    expect(duplicateEvents).toHaveLength(0);
+
     const second = await app.inject({
       headers: headers(),
       method: "POST",
-      payload: { card, id: secondNpcId },
+      payload: {
+        card: cardFor(1),
+        diversityProfile: profileFor(1),
+        id: secondNpcId,
+      },
       url: "/v1/npcs",
     });
     expect(second.statusCode).toBe(409);
@@ -260,7 +400,7 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
         app.inject({
           headers: headers(),
           method: "POST",
-          payload: { card, id },
+          payload: { card: cardFor(1), diversityProfile: profileFor(1), id },
           url: "/v1/npcs",
         }),
       ),
@@ -278,7 +418,11 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     const replay = await app.inject({
       headers: headers(),
       method: "POST",
-      payload: { card, id: success.id },
+      payload: {
+        card: cardFor(1),
+        diversityProfile: profileFor(1),
+        id: success.id,
+      },
       url: "/v1/npcs",
     });
     expect(replay.statusCode).toBe(200);
@@ -289,12 +433,16 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     await dependencies.database
       .sql`delete from app.npc_pending_avatars where npc_id in (${concurrentIds[0]}, ${concurrentIds[1]})`;
     const requiredAvatarTags = ["pose:pending-test"];
+    const firstPendingFixture = pendingFixtures.get(pendingIds[0]);
+    if (!firstPendingFixture) throw new Error("Missing first pending persona fixture");
     for (const id of pendingIds) {
+      const fixture = pendingFixtures.get(id);
+      if (!fixture) throw new Error("Missing pending persona fixture");
       const result = await app.inject({
         headers: headers(),
         method: "POST",
         url: "/v1/npcs",
-        payload: { id, card, requiredAvatarTags },
+        payload: { id, ...fixture, requiredAvatarTags },
       });
       expect(result.statusCode).toBe(409);
     }
@@ -303,14 +451,23 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     >`
       select input, card_hash from app.npc_pending_avatars where npc_id = ${pendingIds[0]}
     `;
-    expect(saved[0]?.input).toEqual({ id: pendingIds[0], card, requiredAvatarTags });
+    expect(saved[0]?.input).toMatchObject({
+      id: pendingIds[0],
+      card: pendingFixtures.get(pendingIds[0])?.card,
+      requiredAvatarTags,
+      diversityProfile: {
+        occupationDomain: "education",
+        interactionStyle: "practical",
+        socialRole: "storyteller",
+      },
+    });
     const otherOwner = newEntityId();
     await dependencies.database.sql`insert into app.users (id) values (${otherOwner})`;
     try {
       await expect(
         createNpcService(dependencies.database).register(otherOwner, {
           id: pendingIds[0],
-          card,
+          ...firstPendingFixture,
           requiredAvatarTags,
         }),
       ).rejects.toMatchObject({ code: "NPC_IDENTITY_CONFLICT" });
@@ -321,7 +478,12 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
       headers: headers(),
       method: "POST",
       url: "/v1/npcs",
-      payload: { id: pendingIds[0], card: { ...card, age: 30 }, requiredAvatarTags },
+      payload: {
+        id: pendingIds[0],
+        ...firstPendingFixture,
+        card: { ...firstPendingFixture.card, age: 30 },
+        requiredAvatarTags,
+      },
     });
     expect(conflict.json<{ code: string }>().code).toBe("NPC_IDENTITY_CONFLICT");
     // A restarted service has no in-memory queue; it must read the original PostgreSQL request.
@@ -343,21 +505,28 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     expect(bound[0]?.avatar_id).toBe(pendingAssetIds[0]);
     const boundNpc = bound[0];
     if (!boundNpc) throw Error("Expected a bound NPC");
+    const boundFixture = pendingFixtures.get(boundNpc.id);
+    if (!boundFixture) throw Error("Missing bound persona fixture");
     const lookup = await app.inject({
       method: "GET",
       url: `/v1/npcs/by-traveler-id/${boundNpc.traveler_id}`,
     });
     const canonical = lookup.json<PublicNpc>();
     expect(canonical.card).toEqual({
-      ...card,
+      ...boundFixture.card,
       appearance: asset(pendingAssetIds[0]).profile.appearance,
     });
-    for (const retryCard of [card, canonical.card]) {
+    for (const retryCard of [boundFixture.card, canonical.card]) {
       const retry = await app.inject({
         headers: headers(),
         method: "POST",
         url: "/v1/npcs",
-        payload: { id: boundNpc.id, card: retryCard, requiredAvatarTags },
+        payload: {
+          id: boundNpc.id,
+          card: retryCard,
+          diversityProfile: boundFixture.diversityProfile,
+          requiredAvatarTags,
+        },
       });
       expect(retry.statusCode).toBe(200);
       expect(retry.json()).toEqual(canonical);
@@ -378,13 +547,15 @@ describe.runIf(runIntegrationTests)("public NPC registry", () => {
     });
     const contender = remaining[0]?.npc_id;
     if (!contender) throw Error("Expected a remaining request");
+    const contenderFixture = pendingFixtures.get(contender);
+    if (!contenderFixture) throw Error("Missing contender persona fixture");
     await Promise.all([
       restarted.retryPendingAvatars(),
       app.inject({
         headers: headers(),
         method: "POST",
         url: "/v1/npcs",
-        payload: { id: contender, card, requiredAvatarTags },
+        payload: { id: contender, ...contenderFixture, requiredAvatarTags },
       }),
     ]);
     const allBound = await dependencies.database.sql<{ avatar_id: string }[]>`

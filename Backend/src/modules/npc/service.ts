@@ -7,6 +7,8 @@ import type {
   RegisterPublicNpcInput,
   NpcEncounterContext,
   NpcEncounterSelection,
+  NpcDiversityReview,
+  ReviewNpcDiversityInput,
 } from "./types.js";
 
 export type NpcService = Readonly<{
@@ -15,6 +17,10 @@ export type NpcService = Readonly<{
     context: NpcEncounterContext,
   ) => Promise<NpcEncounterSelection>;
   retryPendingAvatars: () => Promise<{ attempted: number; matched: number }>;
+  reviewDiversity: (
+    userId: string,
+    input: ReviewNpcDiversityInput,
+  ) => Promise<NpcDiversityReview>;
   find: (travelerId: string) => Promise<PublicNpc>;
   link: (
     userId: string,
@@ -32,6 +38,7 @@ export function createNpcService(
   return {
     selectEncounter: (userId, context) => repository.selectEncounter(userId, context),
     retryPendingAvatars: () => repository.retryPendingAvatars(),
+    reviewDiversity: (userId, input) => repository.reviewDiversity(userId, input),
     find: (travelerId) => repository.find(travelerId),
     link: (userId, npcId, input) => repository.link(userId, npcId, input),
     register: (userId, input) => {

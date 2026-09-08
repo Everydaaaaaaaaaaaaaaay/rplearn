@@ -5,6 +5,14 @@ import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { NpcService } from "./service.js";
 import { isValidTravelerId } from "./traveler-id.js";
+import {
+  backgroundMotifs,
+  interactionStyles,
+  interestDomains,
+  occupationDomains,
+  socialRoles,
+  traits,
+} from "./persona-diversity.js";
 
 const uuid = z.uuid().transform((value) => value.toLowerCase());
 const nullableText = (maximum: number) =>
@@ -55,9 +63,25 @@ const publicCard = z
   })
   .strict();
 
+const diversityProfile = z
+  .object({
+    version: z.literal(1),
+    occupationDomain: z.enum(occupationDomains),
+    socialRole: z.enum(socialRoles),
+    interactionStyle: z.enum(interactionStyles),
+    interestDomains: z.array(z.enum(interestDomains)).min(1).max(4),
+    traits: z.array(z.enum(traits)).min(2).max(4),
+    backgroundMotif: z.enum(backgroundMotifs),
+    energy: z.enum(["low", "medium", "high"]),
+    warmth: z.enum(["reserved", "balanced", "warm"]),
+    structure: z.enum(["spontaneous", "balanced", "structured"]),
+  })
+  .strict();
+
 const registerBody = z
   .object({
     card: publicCard,
+    diversityProfile: diversityProfile.optional(),
     id: uuid,
     requiredAvatarTags: z
       .array(
@@ -78,6 +102,13 @@ const registerBody = z
       })
       .strict()
       .optional(),
+  })
+  .strict();
+const diversityReviewBody = z
+  .object({
+    card: publicCard,
+    diversityProfile,
+    encounterContext: registerBody.shape.encounterContext.unwrap(),
   })
   .strict();
 const relationshipBody = z
@@ -111,6 +142,16 @@ export function registerNpcRoutes(
   authService: AuthService,
   npcService: NpcService,
 ): void {
+  app.post(
+    "/v1/npcs/diversity-review",
+    { schema: { security: [{ bearerAuth: [] }], tags: ["npcs"] } },
+    async (request, reply) => {
+      const identity = await authenticateActorRequest(request, authService);
+      const input = parse(diversityReviewBody, request.body);
+      reply.header("cache-control", "no-store");
+      return npcService.reviewDiversity(identity.userId, input);
+    },
+  );
   app.post("/v1/npcs/encounters", { schema: { tags: ["npcs"] } }, async (request) => {
     const identity = await authenticateActorRequest(request, authService);
     const context = parse(registerBody.shape.encounterContext.unwrap(), request.body);

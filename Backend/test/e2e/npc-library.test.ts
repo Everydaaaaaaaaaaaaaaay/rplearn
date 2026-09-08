@@ -23,8 +23,17 @@ import {
   avatarMatches,
   type AvatarCandidate,
 } from "../../src/modules/npc/avatar-matcher.js";
+import {
+  backgroundMotifs,
+  interactionStyles,
+  interestDomains,
+  occupationDomains,
+  socialRoles,
+  traits,
+} from "../../src/modules/npc/persona-diversity.js";
 import type {
   AvatarRequirements,
+  NpcDiversityProfile,
   PublicNpc,
   PublicNpcCard,
   AvatarProfile,
@@ -71,27 +80,71 @@ function premise(
     age,
     gender,
     appearance: "Provisional appearance; finalized from reviewed portrait.",
-    background: `Collects local stories; narrative fixture ${String(index)}.`,
+    background: `Unique narrative fixture ${String(index)}.`,
     birthday: null,
-    hobbies: ["walking", "cooking"],
+    hobbies: [`主题${String(index)}`, `消遣${String(index)}`],
     hometown: null,
     languages: ["English"],
     name: `Test Traveler ${String(index)}`,
     nationality: required(["British", "Indian", "Brazilian", "Japanese"][index % 4]),
-    occupation: required(
-      ["teacher", "baker", "musician", "mechanic", "retired researcher"][index % 5],
-    ),
+    occupation: `vocation fixture ${String(index)}`,
     personaVoice: {
       anchorLines: ["Tell me more."],
       boundaries: ["respects privacy"],
-      conversationalHabits: ["asks precise questions"],
-      flaws: ["impatient"],
-      values: ["curiosity"],
+      conversationalHabits: [`habit fixture ${String(index)}`],
+      flaws: [`flaw fixture ${String(index)}`],
+      values: [`value fixture ${String(index)}`],
     },
-    personality: "Curious and direct",
+    personality: `Temperament fixture ${String(index)}`,
     regionId: "london",
     signature: null,
     speechStyle: null,
+  };
+}
+
+function diversityPremise(index: number): NpcDiversityProfile {
+  const occupationIndex = index % occupationDomains.length;
+  const socialIndex = Math.floor(index / occupationDomains.length) % socialRoles.length;
+  const interactionIndex =
+    Math.floor(index / (occupationDomains.length * socialRoles.length)) %
+    interactionStyles.length;
+  const firstInterest = index % interestDomains.length;
+  const secondInterest = (index + socialIndex + 1) % interestDomains.length;
+  const firstTrait = index % traits.length;
+  const secondTrait = (index + socialIndex + interactionIndex + 1) % traits.length;
+  return {
+    version: 1,
+    occupationDomain: required(occupationDomains[occupationIndex]),
+    socialRole: required(socialRoles[socialIndex]),
+    interactionStyle: required(interactionStyles[interactionIndex]),
+    interestDomains: [
+      required(interestDomains[firstInterest]),
+      required(
+        interestDomains[
+          secondInterest === firstInterest
+            ? (secondInterest + 1) % interestDomains.length
+            : secondInterest
+        ],
+      ),
+    ],
+    traits: [
+      required(traits[firstTrait]),
+      required(
+        traits[
+          secondTrait === firstTrait ? (secondTrait + 1) % traits.length : secondTrait
+        ],
+      ),
+    ],
+    backgroundMotif: required(
+      backgroundMotifs[(socialIndex + interactionIndex) % backgroundMotifs.length],
+    ),
+    energy: required((["low", "medium", "high"] as const)[interactionIndex % 3]),
+    warmth: required((["reserved", "balanced", "warm"] as const)[socialIndex % 3]),
+    structure: required(
+      (["spontaneous", "balanced", "structured"] as const)[
+        (socialIndex + interactionIndex) % 3
+      ],
+    ),
   };
 }
 describe.runIf(enabled)(
@@ -343,7 +396,12 @@ describe.runIf(enabled)(
             viewer = required(tokens[i % tokens.length]),
             id = randomUUID(),
             card = premise(age, gender, i),
-            payload = { id, card, requiredAvatarTags: requiredTags };
+            payload = {
+              id,
+              card,
+              diversityProfile: diversityPremise(i),
+              requiredAvatarTags: requiredTags,
+            };
           npcIds.push(id);
           const response = await request("/v1/npcs", payload, viewer.token);
           const body = (await response.json()) as PublicNpc & { code?: string };

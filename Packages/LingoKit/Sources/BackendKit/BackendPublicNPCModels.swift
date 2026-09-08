@@ -77,6 +77,67 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
     }
 }
 
+public struct BackendNPCDiversityProfile: Codable, Sendable, Equatable {
+    public let version: Int
+    public let occupationDomain: String
+    public let socialRole: String
+    public let interactionStyle: String
+    public let interestDomains: [String]
+    public let traits: [String]
+    public let backgroundMotif: String
+    public let energy: String
+    public let warmth: String
+    public let structure: String
+
+    public init(
+        version: Int = 1,
+        occupationDomain: String,
+        socialRole: String,
+        interactionStyle: String,
+        interestDomains: [String],
+        traits: [String],
+        backgroundMotif: String,
+        energy: String,
+        warmth: String,
+        structure: String
+    ) {
+        self.version = version
+        self.occupationDomain = occupationDomain
+        self.socialRole = socialRole
+        self.interactionStyle = interactionStyle
+        self.interestDomains = interestDomains
+        self.traits = traits
+        self.backgroundMotif = backgroundMotif
+        self.energy = energy
+        self.warmth = warmth
+        self.structure = structure
+    }
+}
+
+public struct BackendNPCDiversityReview: Codable, Sendable, Equatable {
+    public enum Decision: String, Codable, Sendable {
+        case accept
+        case revise
+    }
+
+    public let decision: Decision
+    public let similarityScore: Int
+    public let dimensions: [String]
+    public let guidance: [String]
+
+    public init(
+        decision: Decision,
+        similarityScore: Int,
+        dimensions: [String],
+        guidance: [String]
+    ) {
+        self.decision = decision
+        self.similarityScore = similarityScore
+        self.dimensions = dimensions
+        self.guidance = guidance
+    }
+}
+
 public struct BackendPublicNPC: Codable, Sendable, Equatable {
     public struct Avatar: Codable, Sendable, Equatable {
         public let id: UUID
@@ -117,7 +178,18 @@ public enum BackendNPCRelationshipStatus: String, Codable, Sendable {
 
 public protocol PublicNPCRegistry: Sendable {
     func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC?
+    func reviewEncounterNPC(
+        card: BackendPublicNPCCard,
+        diversityProfile: BackendNPCDiversityProfile,
+        context: BackendNPCEncounterContext
+    ) async throws -> BackendNPCDiversityReview
     func registerEncounterNPC(id: UUID, card: BackendPublicNPCCard, context: BackendNPCEncounterContext) async throws -> BackendPublicNPC
+    func registerEncounterNPC(
+        id: UUID,
+        card: BackendPublicNPCCard,
+        diversityProfile: BackendNPCDiversityProfile,
+        context: BackendNPCEncounterContext
+    ) async throws -> BackendPublicNPC
     func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC
     func linkPublicNPC(
         npcID: UUID,
@@ -139,15 +211,37 @@ public struct BackendNPCEncounterContext: Codable, Sendable {
 
 extension PublicNPCRegistry {
     public func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC? { nil }
+    public func reviewEncounterNPC(
+        card: BackendPublicNPCCard,
+        diversityProfile: BackendNPCDiversityProfile,
+        context: BackendNPCEncounterContext
+    ) async throws -> BackendNPCDiversityReview {
+        BackendNPCDiversityReview(decision: .accept, similarityScore: 0, dimensions: [], guidance: [])
+    }
     public func registerEncounterNPC(id: UUID, card: BackendPublicNPCCard, context: BackendNPCEncounterContext) async throws -> BackendPublicNPC {
         try await registerPublicNPC(id: id, card: card)
+    }
+    public func registerEncounterNPC(
+        id: UUID,
+        card: BackendPublicNPCCard,
+        diversityProfile: BackendNPCDiversityProfile,
+        context: BackendNPCEncounterContext
+    ) async throws -> BackendPublicNPC {
+        try await registerEncounterNPC(id: id, card: card, context: context)
     }
 }
 
 private struct RegisterPublicNPCBody: Encodable, Sendable {
     let card: BackendPublicNPCCard
+    var diversityProfile: BackendNPCDiversityProfile? = nil
     let id: UUID
     var encounterContext: BackendNPCEncounterContext? = nil
+}
+
+private struct ReviewNPCDiversityBody: Encodable, Sendable {
+    let card: BackendPublicNPCCard
+    let diversityProfile: BackendNPCDiversityProfile
+    let encounterContext: BackendNPCEncounterContext
 }
 
 private struct LinkPublicNPCBody: Encodable, Sendable {
@@ -164,6 +258,39 @@ extension BackendClient: PublicNPCRegistry {
 
     public func registerEncounterNPC(id: UUID, card: BackendPublicNPCCard, context: BackendNPCEncounterContext) async throws -> BackendPublicNPC {
         try await actorClient().send(path: "/v1/npcs", method: "POST", body: RegisterPublicNPCBody(card: card, id: id, encounterContext: context))
+    }
+    public func reviewEncounterNPC(
+        card: BackendPublicNPCCard,
+        diversityProfile: BackendNPCDiversityProfile,
+        context: BackendNPCEncounterContext
+    ) async throws -> BackendNPCDiversityReview {
+        try await actorClient().send(
+            path: "/v1/npcs/diversity-review",
+            method: "POST",
+            body: ReviewNPCDiversityBody(
+                card: card,
+                diversityProfile: diversityProfile,
+                encounterContext: context
+            )
+        )
+    }
+
+    public func registerEncounterNPC(
+        id: UUID,
+        card: BackendPublicNPCCard,
+        diversityProfile: BackendNPCDiversityProfile,
+        context: BackendNPCEncounterContext
+    ) async throws -> BackendPublicNPC {
+        try await actorClient().send(
+            path: "/v1/npcs",
+            method: "POST",
+            body: RegisterPublicNPCBody(
+                card: card,
+                diversityProfile: diversityProfile,
+                id: id,
+                encounterContext: context
+            )
+        )
     }
     public func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC {
         try await publicGet("/v1/npcs/by-traveler-id/\(travelerID)")

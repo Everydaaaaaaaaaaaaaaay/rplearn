@@ -45,7 +45,8 @@ public actor PublicNPCAvatarCoordinator {
                 )
                 changed += 1
             } catch let error as BackendClientError where error.code == "NPC_AVATAR_COVERAGE_GAP"
-                || error.code == "NPC_IDENTITY_CONFLICT" {
+                || error.code == "NPC_IDENTITY_CONFLICT"
+                || error.code == "NPC_PERSONA_TOO_SIMILAR" {
                 // A missing portrait or one conflicted identity must not starve all later characters.
                 continue
             } catch {

@@ -16,6 +16,7 @@ import { users } from "../../db/user-schema.js";
 import type {
   AvatarProfile,
   AvatarRequirements,
+  NpcDiversityProfile,
   RegisterPublicNpcInput,
 } from "./types.js";
 
@@ -61,6 +62,8 @@ export const publicNpcs = applicationSchema.table(
     }),
     card: jsonb("card").notNull(),
     cardHash: text("card_hash").notNull(),
+    personaProfile: jsonb("persona_profile").$type<NpcDiversityProfile | null>(),
+    personaSignature: text("persona_signature"),
     createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -75,10 +78,20 @@ export const publicNpcs = applicationSchema.table(
   },
   (table) => [
     uniqueIndex("public_npcs_traveler_id_unique").on(table.travelerId),
+    uniqueIndex("public_npcs_persona_signature_unique").on(table.personaSignature),
     index("public_npcs_avatar_id_index").on(table.avatarId),
+    index("public_npcs_region_id_index").on(sql`(${table.card}->>'regionId')`),
     index("public_npcs_creator_index").on(table.createdByUserId, table.createdAt),
     check("public_npcs_traveler_id_format", sql`${table.travelerId} ~ '^[0-9]{11}$'`),
     check("public_npcs_card_hash_format", sql`${table.cardHash} ~ '^[0-9a-f]{64}$'`),
+    check(
+      "public_npcs_persona_signature_format",
+      sql`${table.personaSignature} is null or ${table.personaSignature} ~ '^[0-9a-f]{64}$'`,
+    ),
+    check(
+      "public_npcs_persona_profile_size",
+      sql`${table.personaProfile} is null or octet_length(${table.personaProfile}::text) <= 4096`,
+    ),
     check("public_npcs_card_size", sql`octet_length(${table.card}::text) <= 32768`),
   ],
 );
@@ -196,6 +209,8 @@ export const npcPendingAvatars = applicationSchema.table(
       .references(() => users.id, { onDelete: "cascade" }),
     input: jsonb("input").$type<RegisterPublicNpcInput>().notNull(),
     cardHash: text("card_hash").notNull(),
+    personaProfile: jsonb("persona_profile").$type<NpcDiversityProfile | null>(),
+    personaSignature: text("persona_signature"),
     createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -206,10 +221,24 @@ export const npcPendingAvatars = applicationSchema.table(
   (table) => [
     index("npc_pending_avatars_due_index").on(table.nextAttemptAt, table.npcId),
     index("npc_pending_avatars_user_index").on(table.userId),
+    index("npc_pending_avatars_region_id_index").on(
+      sql`(${table.input}->'card'->>'regionId')`,
+    ),
+    uniqueIndex("npc_pending_avatars_persona_signature_unique").on(
+      table.personaSignature,
+    ),
     check(
       "npc_pending_avatars_input_size",
       sql`octet_length(${table.input}::text) <= 36864`,
     ),
     check("npc_pending_avatars_hash_format", sql`${table.cardHash} ~ '^[0-9a-f]{64}$'`),
+    check(
+      "npc_pending_avatars_persona_signature_format",
+      sql`${table.personaSignature} is null or ${table.personaSignature} ~ '^[0-9a-f]{64}$'`,
+    ),
+    check(
+      "npc_pending_avatars_persona_profile_size",
+      sql`${table.personaProfile} is null or octet_length(${table.personaProfile}::text) <= 4096`,
+    ),
   ],
 );
