@@ -105,6 +105,11 @@ async function main(): Promise<void> {
       dependencies.database,
       dependencies.redis,
       authService,
+      {
+        onVerificationFailure: (failure) => {
+          app.log.warn({ appleVerification: failure }, "Apple authentication failed");
+        },
+      },
     );
     registerAppleAuthRoutes(app, appleAuthService, authService);
   }

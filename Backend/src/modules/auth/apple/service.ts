@@ -23,7 +23,9 @@ import { createAppleCodeExchanger, type AppleCodeExchanger } from "./code-exchan
 import { createCredentialSealer, type CredentialSealer } from "./credential-crypto.js";
 import {
   createAppleIdentityVerifier,
+  diagnoseAppleIdentityToken,
   type AppleIdentity,
+  type AppleIdentityVerificationDiagnostic,
   type AppleIdentityVerifier,
 } from "./identity-verifier.js";
 
@@ -47,13 +49,35 @@ export type AppleAuthService = Readonly<{
   ) => Promise<AuthTokenPair>;
 }>;
 
+export type AppleVerificationFailure = Readonly<{
+  diagnostic?: AppleIdentityVerificationDiagnostic;
+  errorCode?: string;
+  stage: "authorization_code_exchange" | "exchanged_identity" | "initial_identity";
+}>;
+
 type AppleAuthDependencies = Readonly<{
   challengeStore?: AppleChallengeStore;
   codeExchanger?: AppleCodeExchanger;
   credentialSealer?: CredentialSealer;
   identityVerifier?: AppleIdentityVerifier;
   federatedAccounts?: FederatedAccountService;
+  onVerificationFailure?: (failure: AppleVerificationFailure) => void;
 }>;
+
+function errorCode(error: unknown): string | undefined {
+  if (error instanceof AppError) {
+    return error.code;
+  }
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    typeof error.code === "string"
+  ) {
+    return error.code;
+  }
+  return error instanceof Error ? error.name : undefined;
+}
 
 function assertAccountAvailable(status: string): void {
   if (status !== "active") {
@@ -102,7 +126,17 @@ export async function createAppleAuthService(
     let identity: AppleIdentity;
     try {
       identity = await verifier.verify(authentication.identityToken, expectedNonce);
-    } catch {
+    } catch (error) {
+      const code = errorCode(error);
+      dependencies.onVerificationFailure?.({
+        diagnostic: diagnoseAppleIdentityToken(
+          authentication.identityToken,
+          config.appleClientIds,
+          expectedNonce,
+        ),
+        ...(code === undefined ? {} : { errorCode: code }),
+        stage: "initial_identity",
+      });
       throw new AppError({
         code: "APPLE_IDENTITY_INVALID",
         message: "The Apple identity token is invalid or expired.",
@@ -110,14 +144,30 @@ export async function createAppleAuthService(
       });
     }
 
-    const exchange = await exchanger.exchange(
-      authentication.authorizationCode,
-      identity.audience,
-    );
+    let exchange: Awaited<ReturnType<AppleCodeExchanger["exchange"]>>;
+    try {
+      exchange = await exchanger.exchange(
+        authentication.authorizationCode,
+        identity.audience,
+      );
+    } catch (error) {
+      const code = errorCode(error);
+      dependencies.onVerificationFailure?.({
+        ...(code === undefined ? {} : { errorCode: code }),
+        stage: "authorization_code_exchange",
+      });
+      throw error;
+    }
     let exchangedIdentity: AppleIdentity;
     try {
       exchangedIdentity = await verifier.verify(exchange.idToken);
-    } catch {
+    } catch (error) {
+      const code = errorCode(error);
+      dependencies.onVerificationFailure?.({
+        diagnostic: diagnoseAppleIdentityToken(exchange.idToken, config.appleClientIds),
+        ...(code === undefined ? {} : { errorCode: code }),
+        stage: "exchanged_identity",
+      });
       throw new AppError({
         code: "APPLE_IDENTITY_INVALID",
         message: "Apple returned an invalid identity token.",
