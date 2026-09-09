@@ -136,6 +136,10 @@ public struct OnboardingFlowView: View {
                 #endif
             }
             #if DEBUG
+            if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_SELECTION"] == "1" {
+                phase = .selection
+                return
+            }
             if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1",
                let player {
                 phase = .story
@@ -593,7 +597,14 @@ struct CharacterSelectView: View {
                     .rotationEffect(.degrees(3))
             }
 
-            AvatarBadge(name: character.card.name, tint: .white, size: 112)
+            AvatarBadge(
+                name: character.card.name,
+                tint: .white,
+                size: 112,
+                imageName: character.card.avatarAssetName,
+                remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+            )
+                .accessibilityIdentifier("onboarding.character.avatar.\(character.card.regionID)")
                 .background(.white.opacity(0.16), in: Circle())
 
             VStack(spacing: 4) {

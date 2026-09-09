@@ -25,6 +25,16 @@ struct AvatarBadgeTests {
         #expect(actual != fallback)
     }
 
+    @Test("三位开局角色的稳定头像键都能解析为随包新版头像")
+    func starterCharacterPortraitsAreBundled() throws {
+        for name in ["avatar_oliver", "avatar_ruby", "avatar_marcus"] {
+            #expect(DSAvatarAssets.image(named: name) != nil, "\(name) must resolve locally")
+            let actual = try render(imageName: name, pending: false)
+            let fallback = try render(imageName: nil, pending: false)
+            #expect(actual != fallback, "\(name) must not render the initial-letter fallback")
+        }
+    }
+
     @Test("同一远程头像的并发请求只下载和解码一次")
     func coalescesConcurrentRemoteLoads() async throws {
         let data = try #require(solidImage(.systemPink).pngData())

@@ -13,6 +13,9 @@ public struct AvatarBadge: View {
     private let remoteURL: URL?
     private let usesPendingPlaceholder: Bool
     private let localImage: UIImage?
+    private let localImageAlignment: Alignment
+    private let localImageScale: CGFloat
+    private let localImageYOffset: CGFloat
     @State private var loadedRemoteImage: LoadedRemoteImage?
 
     private static let palette: [Color] = [
@@ -33,6 +36,10 @@ public struct AvatarBadge: View {
         self.remoteURL = remoteURL
         self.usesPendingPlaceholder = usesPendingPlaceholder
         self.localImage = DSAvatarAssets.image(named: imageName)
+        let presentation = DSAvatarAssets.presentation(named: imageName)
+        self.localImageAlignment = presentation.alignment
+        self.localImageScale = presentation.scale
+        self.localImageYOffset = presentation.yOffset
         _loadedRemoteImage = State(
             initialValue: remoteURL.flatMap { url in
                 AvatarImageCache.shared.cachedImage(for: url).map {
@@ -94,6 +101,10 @@ public struct AvatarBadge: View {
             Image(uiImage: localImage)
                 .resizable()
                 .scaledToFill()
+                .frame(width: size, height: size, alignment: localImageAlignment)
+                .scaleEffect(localImageScale, anchor: .top)
+                .offset(y: localImageYOffset)
+                .clipped()
                 .background(stableTint.opacity(0.15))
         } else {
             fallbackContent

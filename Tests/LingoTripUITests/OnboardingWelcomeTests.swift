@@ -20,10 +20,29 @@ final class OnboardingWelcomeTests: XCTestCase {
     func testWelcomeExplainsTheProductAndBeginsTheExistingOnboardingFlow() {
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["让英语，发生在旅途中。"].waitForExistence(timeout: 8))
-        XCTAssertTrue(app.staticTexts["走进城市"].exists)
-        XCTAssertTrue(app.staticTexts["遇见旅伴"].exists)
-        XCTAssertTrue(app.staticTexts["随时点词"].exists)
+        XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.staticTexts["旧书店的晚间朗读"].exists)
+        XCTAssertFalse(app.buttons["welcome.begin"].exists)
+
+        advance(toEyebrow: "会记住你的 AI 旅伴")
+        XCTAssertTrue(app.staticTexts["Ruby Walker"].exists)
+        XCTAssertTrue(app.staticTexts["她记得：你更喜欢安静的地方"].waitForExistence(timeout: 2))
+
+        advance(toEyebrow: "随时点词")
+        XCTAssertTrue(app.staticTexts["adj. 自发的；自然流露的"].waitForExistence(timeout: 2))
+
+        let back = app.buttons["welcome.back"]
+        XCTAssertTrue(back.exists)
+        XCTAssertTrue(back.isHittable)
+        back.tap()
+        XCTAssertTrue(app.staticTexts["会记住你的 AI 旅伴"].waitForExistence(timeout: 2))
+
+        advance(toEyebrow: "随时点词")
+        advance(toEyebrow: "为你实时适配")
+        XCTAssertTrue(app.staticTexts["选择第一位旅伴"].exists)
+        XCTAssertTrue(app.staticTexts["Oliver"].exists)
+        XCTAssertTrue(app.staticTexts["Ruby"].exists)
+        XCTAssertTrue(app.staticTexts["Marcus"].exists)
 
         let begin = app.buttons["welcome.begin"]
         XCTAssertTrue(begin.exists)
@@ -42,6 +61,61 @@ final class OnboardingWelcomeTests: XCTestCase {
             ),
             "欢迎页应进入建档、可选校准或已有进度对应的剧情阶段"
         )
+    }
+
+    func testWelcomeSupportsDirectSwipePaging() {
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 8))
+        app.swipeLeft()
+        XCTAssertTrue(app.staticTexts["会记住你的 AI 旅伴"].waitForExistence(timeout: 3))
+        app.swipeRight()
+        XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 3))
+    }
+
+    func testAccessibilityTextKeepsWelcomeNavigationReachable() {
+        app.launchArguments += [
+            "-UIPreferredContentSizeCategoryName",
+            "UICTContentSizeCategoryAccessibilityXXXL",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 8))
+        for eyebrow in ["会记住你的 AI 旅伴", "随时点词", "为你实时适配"] {
+            advance(toEyebrow: eyebrow)
+        }
+        XCTAssertTrue(app.buttons["welcome.begin"].isHittable)
+        XCTAssertTrue(app.buttons["welcome.back"].isHittable)
+    }
+
+    func testStarterSelectionUsesBundledPortraitInsteadOfInitialPlaceholder() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["选择你的第一位旅伴"].waitForExistence(timeout: 8))
+
+        let scroll = app.scrollViews.firstMatch
+        XCTAssertTrue(scroll.exists)
+        assertPortrait(regionID: "london", expectedLabel: "Oliver Bennett")
+        scroll.swipeLeft()
+        assertPortrait(regionID: "melbourne", expectedLabel: "Ruby Walker")
+        scroll.swipeLeft()
+        assertPortrait(regionID: "newyork", expectedLabel: "Marcus Rivera")
+    }
+
+    private func advance(toEyebrow eyebrow: String) {
+        let next = app.buttons["welcome.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 2))
+        XCTAssertTrue(next.isHittable)
+        next.tap()
+        XCTAssertTrue(app.staticTexts[eyebrow].waitForExistence(timeout: 3))
+    }
+
+    private func assertPortrait(regionID: String, expectedLabel: String) {
+        let avatar = app.descendants(matching: .any)["onboarding.character.avatar.\(regionID)"]
+        XCTAssertTrue(avatar.waitForExistence(timeout: 3))
+        XCTAssertEqual(avatar.label, expectedLabel)
     }
 
     private func waitForAny(_ elements: [XCUIElement], timeout: TimeInterval) -> Bool {

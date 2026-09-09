@@ -19,7 +19,12 @@ struct CharacterIntroCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             HStack(spacing: DSSpacing.sm) {
-                AvatarBadge(name: character.card.name, size: 56)
+                AvatarBadge(
+                    name: character.card.name,
+                    size: 56,
+                    imageName: character.card.avatarAssetName,
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
+                )
                 VStack(alignment: .leading, spacing: 3) {
                     Text(character.card.name)
                         .font(.headline)

@@ -116,6 +116,7 @@ struct RootView: View {
         #if DEBUG
         ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1"
             || ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_WELCOME"] == "1"
+            || ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_SELECTION"] == "1"
         #else
         false
         #endif
