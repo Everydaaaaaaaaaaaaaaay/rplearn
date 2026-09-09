@@ -25,10 +25,11 @@ public struct OnboardingDependencies: Sendable {
     }
 }
 
-/// 首启流程：建立学习档案 → 咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
+/// 首启流程：品牌欢迎 → 建立学习档案 → 咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
 public struct OnboardingFlowView: View {
     private enum Phase {
         case loading
+        case welcome
         case profile
         case calibration
         case story
@@ -46,6 +47,8 @@ public struct OnboardingFlowView: View {
     @State private var characters: [CharacterDTO] = []
     @AppStorage("onboarding.placement-offer.dismissed.v1")
     private var placementOfferDismissed = false
+    @AppStorage("onboarding.welcome.completed.v1")
+    private var welcomeCompleted = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -65,6 +68,16 @@ public struct OnboardingFlowView: View {
             switch phase {
             case .loading:
                 onboardingLoading
+            case .welcome:
+                WelcomeJourneyView {
+                    welcomeCompleted = true
+                    continueAfterWelcome()
+                }
+                .transition(
+                    reduceMotion
+                        ? .opacity
+                        : .opacity.combined(with: .scale(scale: 0.985))
+                )
             case .profile:
                 if let profile {
                     LearnerProfileSetupView(
@@ -110,13 +123,17 @@ public struct OnboardingFlowView: View {
             }
             characters = (try? await deps.rosterStore.allCharacters().filter(\.isMainCharacter)) ?? []
             if phase == .loading, let profile {
-                if !profile.hasCompletedProfileSetup {
-                    phase = .profile
-                } else if profile.proficiencySource == .placement || placementOfferDismissed {
-                    phase = .story
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_WELCOME"] == "1" {
+                    phase = .welcome
+                } else if !welcomeCompleted {
+                    phase = .welcome
                 } else {
-                    phase = .calibration
+                    phase = destination(afterWelcomeFor: profile)
                 }
+                #else
+                phase = welcomeCompleted ? destination(afterWelcomeFor: profile) : .welcome
+                #endif
             }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1",
@@ -166,6 +183,19 @@ public struct OnboardingFlowView: View {
         withAnimation(reduceMotion ? nil : .snappy) {
             phase = .story
         }
+    }
+
+    private func continueAfterWelcome() {
+        guard let profile else { return }
+        withAnimation(reduceMotion ? nil : .spring(response: 0.38, dampingFraction: 1)) {
+            phase = destination(afterWelcomeFor: profile)
+        }
+    }
+
+    private func destination(afterWelcomeFor profile: UserProfileDTO) -> Phase {
+        if !profile.hasCompletedProfileSetup { return .profile }
+        if profile.proficiencySource == .placement || placementOfferDismissed { return .story }
+        return .calibration
     }
 
     #if DEBUG

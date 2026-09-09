@@ -104,7 +104,7 @@ struct RootView: View {
     private var showsOnboarding: Binding<Bool> {
         Binding(
             get: {
-                (environment.needsOnboarding == true || forcesOnboardingStoryForUITest)
+                (environment.needsOnboarding == true || forcesOnboardingForUITest)
                     && !showPlacementTest
             },
             set: { newValue in
@@ -112,9 +112,10 @@ struct RootView: View {
             }
         )
     }
-    private var forcesOnboardingStoryForUITest: Bool {
+    private var forcesOnboardingForUITest: Bool {
         #if DEBUG
         ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1"
+            || ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_WELCOME"] == "1"
         #else
         false
         #endif
