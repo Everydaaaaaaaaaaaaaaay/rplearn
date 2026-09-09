@@ -43,6 +43,7 @@ struct RootView: View {
     @State private var showSignIn = false
     @State private var loginReason: String?
     @State private var showLondonEpisode = false
+    @StateObject private var activityJourney = ActivityJourneyCoordinator()
     @State private var activeSceneActivity: SceneActivity?
     @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
@@ -244,6 +245,7 @@ struct RootView: View {
                 }
             }
             .onChange(of: activeUserID) { _, _ in
+                activityJourney.reset()
                 activeSceneActivity = nil
                 activeActivityChat = nil
             }
@@ -388,6 +390,7 @@ struct RootView: View {
                 .tabItem {
                     Label("首页", systemImage: "house")
                 }
+                .badge(activityJourney.hasUnreadResult ? "•" : nil)
             meStack
                 .tag(AppTab.me)
                 .tabItem {
@@ -474,6 +477,7 @@ struct RootView: View {
         case .activities:
             ZStack {
                 ActivitiesView(
+                    journey: activityJourney,
                     deps: homeDeps,
                     storageNamespace: activityStorageNamespace,
                     isVisible: selectedTab == .home && !showSignIn && !showLondonEpisode && activeActivityChat == nil,
@@ -528,7 +532,12 @@ struct RootView: View {
                 return
             }
             if activeHomeDestination == .activities, activeSceneActivity != nil {
-                activeSceneActivity = nil
+                if activityJourney.isPreparing {
+                    activeHomeDestination = nil
+                } else {
+                    activityJourney.reset()
+                    activeSceneActivity = nil
+                }
                 return
             }
             activeHomeDestination = nil

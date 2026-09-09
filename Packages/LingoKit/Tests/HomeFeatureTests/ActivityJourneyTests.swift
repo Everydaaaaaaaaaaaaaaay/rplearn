@@ -41,10 +41,8 @@ final class ActivityJourneyTests: XCTestCase {
         XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
         person.card.languages = nil
         XCTAssertTrue(CafeEncounterPolicy.eligible(person, regionID: "london"))
-        XCTAssertTrue(CafeEncounterPolicy.allowsReunion(lastSpokenAt: nil, now: now))
-        XCTAssertTrue(CafeEncounterPolicy.allowsReunion(lastSpokenAt: now.addingTimeInterval(-86_400), now: now))
-        XCTAssertFalse(CafeEncounterPolicy.allowsReunion(lastSpokenAt: now.addingTimeInterval(-100), now: now))
-        XCTAssertFalse(CafeEncounterPolicy.allowsReunion(lastSpokenAt: now.addingTimeInterval(100), now: now))
+        XCTAssertGreaterThan(ActivityEncounterChance.personWeight(encounters: 1000, lastSeen: now, now: now), 0)
+
     }
 
     func testEverySceneHasDistinctCompleteActionsAndBundledMedia() throws {

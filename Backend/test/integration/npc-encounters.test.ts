@@ -88,21 +88,22 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await runtime.close();
     });
 
-    it("requires scene and language compatibility, preserves friendship, and avoids repeats and occupied portraits", async () => {
+    it("requires scene and language compatibility, preserves friendship and nonzero repeats while excluding occupied portraits", async () => {
       await service.link(viewer, firstNPC, {
         localCharacterId: firstNPC,
         status: "friend",
       });
       const selected = await service.selectEncounter(viewer, context);
       expect(selected.candidateCount).toBe(2);
-      expect(selected.npc?.id).toBe(npcs[0]);
+      expect(npcs.slice(0, 2)).toContain(selected.npc?.id);
       const [relation] = await runtime.database
         .sql`select status from app.user_npc_relationships where user_id = ${viewer} and npc_id = ${firstNPC}`;
       expect(relation?.status).toBe("friend");
-      expect((await service.selectEncounter(viewer, context)).npc?.id).toBe(npcs[1]);
-      expect((await service.selectEncounter(viewer, context)).reason).toBe(
-        "coverage_gap",
+      // A zero draw can legitimately repeat even after its weight decreases.
+      expect((await service.selectEncounter(viewer, context)).npc?.id).toBe(
+        selected.npc?.id,
       );
+      expect((await service.selectEncounter(viewer, context)).reason).toBe("reuse");
       await service.link(viewer, firstNPC, {
         localCharacterId: firstNPC,
         status: "removed",

@@ -6,6 +6,7 @@ struct ActivityRecord: Codable, Equatable, Identifiable {
     let title: String
     let date: Date
     let choices: [Selection]
+    var solitudeStory: String? = nil
     var characterID: UUID? = nil
     var characterName: String? = nil
     struct Selection: Codable, Equatable {
@@ -35,6 +36,15 @@ struct ActivityJournal {
         let archive = try JSONDecoder().decode(Archive.self, from: data)
         guard archive.version == 1 else { throw JournalError.unsupportedVersion }
         return archive.records
+    }
+    @discardableResult
+    func completeSolitude(_ activity: SceneActivity, runID: UUID, date: Date = Date()) throws -> [ActivityRecord] {
+        var saved = try records()
+        guard !saved.contains(where: { $0.id == runID }) else { return saved }
+        saved.append(.init(id: runID, activityID: activity.id, title: activity.solitude.title,
+            date: date, choices: [], solitudeStory: activity.solitude.story))
+        defaults.set(try JSONEncoder().encode(Archive(version: 1, records: saved)), forKey: key)
+        return saved
     }
     @discardableResult
     func complete(_ activity: SceneActivity, selections: [Int], runID: UUID, date: Date = Date(),

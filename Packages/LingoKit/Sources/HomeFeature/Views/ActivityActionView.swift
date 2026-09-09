@@ -8,13 +8,14 @@ import SwiftUI
 
 /// A real private conversation over the shared scene, not a disconnected quiz.
 struct ActivityActionView: View {
-    let activity: SceneActivity
+    var activity: SceneActivity { model.activity }
     let isVisible: Bool
     let onBack: () -> Void
     let onChat: (CharacterDTO) -> Void
     let onComplete: ([Int], UUID, CharacterDTO?, [String]) throws -> Void
     let deps: HomeDependencies
-    @StateObject private var model: SocialEncounterModel
+    @ObservedObject var model: SocialEncounterModel
+    @ObservedObject var journey: ActivityJourneyCoordinator
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.scenePhase) private var scenePhase
@@ -24,58 +25,34 @@ struct ActivityActionView: View {
     @State private var contentHeight: CGFloat = 0
     private let ink = Color(red: 0.10, green: 0.18, blue: 0.17)
 
-    init(activity: SceneActivity, region: Region, deps: HomeDependencies, isVisible: Bool,
+    init(model: SocialEncounterModel, journey: ActivityJourneyCoordinator, deps: HomeDependencies, isVisible: Bool,
          onBack: @escaping () -> Void, onChat: @escaping (CharacterDTO) -> Void,
          onComplete: @escaping ([Int], UUID, CharacterDTO?, [String]) throws -> Void) {
-        self.activity = activity; self.deps = deps; self.isVisible = isVisible
+        self.model = model; self.journey = journey; self.deps = deps; self.isVisible = isVisible
         self.onBack = onBack; self.onChat = onChat; self.onComplete = onComplete
-        _model = StateObject(wrappedValue: SocialEncounterModel(activity: activity, region: region, deps: deps))
     }
 
     var body: some View {
-        GeometryReader { proxy in
-            ZStack(alignment: .top) {
-                Color.black.opacity(0.23).ignoresSafeArea()
-                VStack(spacing: 12) {
-                    HStack {
-                        Button(action: onBack) {
-                            Image(systemName: "chevron.left").font(.title3).frame(width: 44, height: 44)
-                        }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
-                        Text(activity.title).font(.headline)
-                        Spacer()
-                        Text(model.summary ? "这一刻之后" : model.started ? "轻轻聊两句" : activity.scene.title)
-                            .font(.subheadline)
-                    }
-                    .foregroundStyle(Color.dsHologramIvory)
-                    Spacer(minLength: 8)
-                    ScrollView {
-                        panel
-                            .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { height in
-                                if abs(contentHeight - height) > 0.5 { contentHeight = height }
-                            }
-                    }
-                    .scrollBounceBehavior(.basedOnSize)
-                    .frame(height: min(contentHeight > 0 ? contentHeight : proxy.size.height * 0.72,
-                                       proxy.size.height * 0.72))
-                    .background(Color(red: 0.98, green: 0.965, blue: 0.91)
-                        .opacity(reduceTransparency ? 1 : 0.94), in: RoundedRectangle(cornerRadius: 24))
-                    .shadow(color: .black.opacity(0.16), radius: 16, y: 8)
+        TimelineView(.animation(minimumInterval: 0.1, paused: !isVisible || scenePhase != .active)) { timeline in
+            Group {
+                if model.started && !model.canReveal(at: timeline.date) {
+                    ActivityJourneyTransitionView(deadline: model.revealAt ?? timeline.date, now: timeline.date,
+                        cityID: model.region.id, cityName: model.region.nameZh,
+                        isVisible: isVisible && scenePhase == .active, error: model.error,
+                        onRetry: model.retry)
+                } else {
+                    resultContent
                 }
-                .padding(.horizontal, 22)
-                .padding(.top, max(proxy.safeAreaInsets.top, 54) + 8)
-                .padding(.bottom, max(proxy.safeAreaInsets.bottom, 24) + 82)
             }
         }
-        .ignoresSafeArea().foregroundStyle(ink)
-        .animation(DSSceneTransition.animation(reduceMotion: reduceMotion), value: model.step)
-        .animation(DSSceneTransition.animation(reduceMotion: reduceMotion), value: model.started)
+        .foregroundStyle(ink)
         .allowsHitTesting(isVisible)
-        .onDisappear { model.pause() }
-        .onChange(of: isVisible) { _, visible in if !visible { model.pause() } }
-        .onChange(of: scenePhase) { _, phase in if phase != .active { model.pause() } }
+        .onDisappear { model.stopSpeech() }
+        .onChange(of: isVisible) { _, visible in if !visible { model.stopSpeech() } }
+        .onChange(of: scenePhase) { _, phase in if phase != .active { model.stopSpeech() } }
         .onChange(of: wordSelection != nil) { _, showing in if showing { model.stopSpeech() } }
         .onChange(of: model.reply?.english) { _, _ in
-            if isVisible && scenePhase == .active { model.speak() }
+            if model.canReveal && isVisible && scenePhase == .active { model.speak() }
         }
         .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
@@ -87,6 +64,82 @@ struct ActivityActionView: View {
             exampleTranslationActions: deps.exampleTranslationActions)
     }
 
+    private var resultContent: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 28) {
+                HStack {
+                    Button(action: onBack) {
+                        Image(systemName: "chevron.left").frame(width: 44, height: 44)
+                    }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
+                    Spacer()
+                    Text(model.region.nameZh + " · " + activity.scene.title)
+                        .font(.caption).tracking(1.5)
+                }
+                if model.isSolitude {
+                    solitudeContent
+                } else {
+                    if model.started, let character = model.character { identity(character) }
+                    panel
+                }
+            }
+            .padding(.horizontal, 28)
+            .padding(.top, 16)
+            .padding(.bottom, 38)
+        }
+        .scrollBounceBehavior(.basedOnSize)
+        .background(Color(red: 0.965, green: 0.958, blue: 0.936).ignoresSafeArea())
+        .accessibilityIdentifier(model.started ? "activities.result" : "activities.confirmation")
+    }
+
+    private func identity(_ character: CharacterDTO) -> some View {
+        VStack(alignment: .leading, spacing: 18) {
+            Text(model.alreadyKnown ? "在人群中，再次遇见" : "旅途中，一个新的名字")
+                .font(.caption).tracking(2).foregroundStyle(ink.opacity(0.6))
+            HStack(alignment: .center, spacing: 22) {
+                AvatarBadge(name: character.card.name, size: 100,
+                    imageName: character.card.avatarAssetName,
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    usesPendingPlaceholder: true)
+                VStack(alignment: .leading, spacing: 9) {
+                    Text(character.displayName).font(.system(.largeTitle, design: .serif).weight(.regular))
+                    Text(character.card.occupation).font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                }
+            }
+            Text(character.card.personality).font(.subheadline).lineSpacing(5)
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 8) { interests(character) }
+                VStack(alignment: .leading, spacing: 8) { interests(character) }
+            }
+            Rectangle().fill(ink.opacity(0.15)).frame(height: 0.5).padding(.top, 10)
+        }
+        .accessibilityIdentifier("activities.encounter.identity")
+    }
+
+    private func interests(_ character: CharacterDTO) -> some View {
+        ForEach(Array(character.card.hobbies.prefix(3).enumerated()), id: \.offset) { _, hobby in
+            Text(hobby).font(.caption).padding(.horizontal, 12).padding(.vertical, 7)
+                .background(ink.opacity(0.05), in: Capsule())
+        }
+    }
+
+    private var solitudeContent: some View {
+        VStack(alignment: .leading, spacing: 26) {
+            Text("与城市独处的一刻").font(.caption).tracking(2).foregroundStyle(ink.opacity(0.6))
+            Image(systemName: "leaf").font(.system(size: 52, weight: .ultraLight)).padding(.vertical, 16)
+            Text(activity.solitude.title).font(.system(.largeTitle, design: .serif))
+            Rectangle().fill(ink.opacity(0.15)).frame(height: 0.5)
+            Text(activity.solitude.story).font(.title3).lineSpacing(9)
+            if let saveError { Text(saveError).font(.caption).foregroundStyle(.red) }
+            primary("记下这一刻，回到城市", id: "activities.solitude.finish") {
+                do {
+                    try onComplete([], model.runID, nil, [])
+                    onBack()
+                } catch { saveError = "这段足迹暂时没能保存，请再试一次。" }
+            }.padding(.top, 22)
+        }.accessibilityElement(children: .contain)
+        .accessibilityIdentifier("activities.solitude")
+    }
+
     private var panel: some View {
         VStack(alignment: .leading, spacing: 18) {
             if !model.started {
@@ -94,26 +147,8 @@ struct ActivityActionView: View {
                 Text(activity.title).font(.largeTitle.weight(.semibold))
                 Text(activity.introduction).lineSpacing(5)
                 Text("两次选择 · 可以告别 · 不消耗金币").font(.caption).foregroundStyle(ink.opacity(0.65))
-                primary("走近，打个招呼", id: "activities.action.start") { model.start() }
+                primary("出发，给相遇一点时间", id: "activities.action.start") { journey.start() }
             } else {
-                if let character = model.character {
-                    HStack(spacing: 14) {
-                        AvatarBadge(name: character.card.name, size: 66,
-                            imageName: character.card.avatarAssetName,
-                            remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                            usesPendingPlaceholder: true)
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(character.displayName).font(.title2.weight(.semibold))
-                            Text(model.alreadyKnown ? "又遇见了 · 身份与之前的交流都还在" : "在各自忙碌的间隙，停下来片刻")
-                                .font(.caption).foregroundStyle(ink.opacity(0.65))
-                        }
-                        Spacer(minLength: 0)
-                    }.accessibilityIdentifier("activities.encounter.identity")
-                    if model.registrationPending {
-                        Text("人物已保留 · 公共身份与头像待同步").font(.caption2).foregroundStyle(.secondary)
-                    }
-                    Divider()
-                }
                 if model.summary {
                     summary
                 } else {
@@ -122,7 +157,7 @@ struct ActivityActionView: View {
                         HStack(alignment: .top, spacing: 4) {
                             TappableText(tokens: TokenCache.tokens(for: reply.english,
                                 cacheKey: "social-\(model.runID)-\(model.step)-\(model.selected ?? -1)"),
-                                contextID: "social-\(model.runID)", selection: wordSelection,
+                                contextID: "social-\(model.runID)", textColor: ink, selection: wordSelection,
                                 onSelect: { wordSelection = $0 })
                                 .font(.system(.title3, design: .serif))
                                 .fixedSize(horizontal: false, vertical: true)
@@ -152,7 +187,7 @@ struct ActivityActionView: View {
                         .accessibilityIdentifier("activities.encounter.retry")
                 }
             }
-        }.padding(24).frame(maxWidth: .infinity, alignment: .leading)
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var choices: some View {
