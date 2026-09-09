@@ -59,6 +59,7 @@ public actor BackendUserStateCoordinator:
     private let itemCache: ItemStore
     private let ticketStubCache: TicketStubStore
     private let defaults: UserDefaults
+    private let accountStorageUserID: UUID?
     private let cachedOwnerKey = "backend.state.cached-owner.v1"
     private let cursorKeyPrefix = "backend.sync.cursor.v1."
     private let pendingCommandsKey = "backend.commands.pending.v1"
@@ -72,6 +73,7 @@ public actor BackendUserStateCoordinator:
         economyCache: EconomyStore,
         itemCache: ItemStore,
         ticketStubCache: TicketStubStore,
+        accountStorageUserID: UUID? = nil,
         defaults: UserDefaults = .standard
     ) {
         self.backend = backend
@@ -80,13 +82,24 @@ public actor BackendUserStateCoordinator:
         self.economyCache = economyCache
         self.itemCache = itemCache
         self.ticketStubCache = ticketStubCache
+        self.accountStorageUserID = accountStorageUserID
         self.defaults = defaults
     }
 
     public func activate(userID: UUID) async throws -> UserStateActivation {
+        if let accountStorageUserID, accountStorageUserID != userID {
+            throw BackendClientError.invalidResponse
+        }
         let owner = defaults.string(forKey: cachedOwnerKey).flatMap(UUID.init(uuidString:))
-        let canUseOfflineCache = owner == userID
-        let isAccountSwitch = owner != nil && owner != userID && !defaults.bool(forKey: guestOwnerKey)
+        let hasCursor = cursor(for: userID) != nil
+        let hasCachedProfile = try await accountCache.hasCachedProfile()
+        let hasAccountSnapshot = hasCursor && hasCachedProfile
+        let cacheBelongsToUser = accountStorageUserID == userID || owner == userID
+        let canUseOfflineCache = hasAccountSnapshot && cacheBelongsToUser
+        let isAccountSwitch = accountStorageUserID == nil
+            && owner != nil
+            && owner != userID
+            && !defaults.bool(forKey: guestOwnerKey)
         if isAccountSwitch {
             try await accountCache.clearAll()
             snapshot = nil

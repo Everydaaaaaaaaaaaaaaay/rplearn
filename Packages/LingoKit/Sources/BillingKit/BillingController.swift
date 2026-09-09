@@ -19,10 +19,16 @@ public final class BillingController {
     public private(set) var products: [PurchasableProduct] = []
     public private(set) var tier: SubscriptionTier = .free
 
-    /// Launch with one primary paid tier while keeping existing higher-tier subscriptions manageable.
+    /// Launch with one monthly paid offer. Existing Plus/Pro and annual transactions remain
+    /// recognized by entitlement reconciliation, but are not all promoted as new purchases.
     public var offeredProducts: [PurchasableProduct] {
-        let primary: SubscriptionTier = products.contains { $0.tier == .plus } ? .plus : .pro
-        return products.filter { $0.tier == primary || $0.tier == tier }
+        let hasPlusMonthly = products.contains {
+            $0.tier == .plus && $0.productID.hasSuffix(".monthly")
+        }
+        let primary: SubscriptionTier = hasPlusMonthly ? .plus : .pro
+        return products.filter {
+            $0.tier == primary && $0.productID.hasSuffix(".monthly")
+        }
     }
 
     private let backend: BackendClient

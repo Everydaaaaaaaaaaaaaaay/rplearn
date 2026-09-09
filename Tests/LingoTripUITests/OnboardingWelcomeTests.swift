@@ -18,6 +18,8 @@ final class OnboardingWelcomeTests: XCTestCase {
     }
 
     func testWelcomeExplainsTheProductAndBeginsTheExistingOnboardingFlow() {
+        app.launchEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] = "1"
+        app.launchEnvironment["UI_TEST_FORCE_SIGNED_OUT"] = "1"
         app.launch()
 
         XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 8))
@@ -51,16 +53,11 @@ final class OnboardingWelcomeTests: XCTestCase {
 
         XCTAssertTrue(begin.waitForNonExistence(timeout: 3))
         XCTAssertTrue(
-            waitForAny(
-                [
-                    app.staticTexts["先认识一下你"],
-                    app.staticTexts["要不要再校准一下？"],
-                    app.staticTexts["开始旅程 2 / 3"],
-                ],
-                timeout: 5
-            ),
-            "欢迎页应进入建档、可选校准或已有进度对应的剧情阶段"
+            app.staticTexts["继续你的语言之旅"].waitForExistence(timeout: 5),
+            "欢迎页完成后必须进入登录页"
         )
+        XCTAssertTrue(app.buttons["使用邮箱登录或注册"].exists)
+        XCTAssertFalse(app.tabBars.firstMatch.exists, "未登录时不得显示主界面")
     }
 
     func testWelcomeSupportsDirectSwipePaging() {

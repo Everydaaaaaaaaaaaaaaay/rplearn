@@ -6,6 +6,12 @@ import Testing
 
 @Suite("Backend content sync coordinator")
 struct BackendContentSyncCoordinatorTests {
+    private struct OfflineTransport: BackendTransport {
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            throw BackendClientError.transport("offline")
+        }
+    }
+
     private final class MemoryCredentials: AuthCredentialStore, @unchecked Sendable {
         private let credential: StoredAuthCredential
 
@@ -175,10 +181,10 @@ struct BackendContentSyncCoordinatorTests {
         )
 
         if fault == "none" {
-            try await coordinator.activate(userID: userID)
+            _ = try await coordinator.activate(userID: userID)
         } else {
             do {
-                try await coordinator.activate(userID: userID)
+                _ = try await coordinator.activate(userID: userID)
                 Issue.record("Malformed receipt must not acknowledge an upload")
             } catch {
                 #expect(error is BackendClientError)
@@ -235,11 +241,52 @@ struct BackendContentSyncCoordinatorTests {
             store: syncStore
         )
 
-        try await coordinator.activate(userID: userID)
+        _ = try await coordinator.activate(userID: userID)
 
         #expect(await transport.activityProfileAttempts == [true, false])
         #expect(try await syncStore.takePending().isEmpty)
         #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
+        await coordinator.deactivate()
+    }
+
+    @Test("完成过内容引导的账号可在断网时使用缓存")
+    func bootstrappedContentActivatesOffline() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let store = ContentSyncStore(modelContainer: container)
+        try await store.activateOwner(userID: userID)
+        try await store.bootstrap(records: [], syncCursor: "cached-content-cursor")
+        let backend = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: OfflineTransport()
+        )
+        let coordinator = BackendContentSyncCoordinator(backend: backend, store: store)
+
+        #expect(try await coordinator.activate(userID: userID) == .offlineCache)
+        await coordinator.deactivate()
+    }
+
+    @Test("首次内容同步没有缓存时断网不会伪装成可用")
+    func firstContentBootstrapRequiresNetwork() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let backend = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: OfflineTransport()
+        )
+        let coordinator = BackendContentSyncCoordinator(
+            backend: backend,
+            store: ContentSyncStore(modelContainer: container)
+        )
+
+        do {
+            _ = try await coordinator.activate(userID: userID)
+            Issue.record("首次内容同步必须联网完成")
+        } catch let error as BackendClientError {
+            #expect(error == .transport("offline"))
+        }
         await coordinator.deactivate()
     }
 }

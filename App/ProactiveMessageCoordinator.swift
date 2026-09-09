@@ -46,8 +46,7 @@ final class ProactiveMessageCoordinator {
 
     private nonisolated static let notificationPrefix = "lingotrip.proactive."
     private static let pendingKeyPrefix = "lingotrip.proactive.pending."
-    private static let unreadCountKey = "lingotrip.unread.count"
-
+    private let accountID: UUID
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
     private let economyStore: EconomyStore
@@ -60,6 +59,7 @@ final class ProactiveMessageCoordinator {
     private var queuedAuthorizationRequest = false
 
     init(
+        accountID: UUID,
         rosterStore: RosterStore,
         chatStore: ChatStore,
         economyStore: EconomyStore,
@@ -67,6 +67,7 @@ final class ProactiveMessageCoordinator {
         notificationCenter: UNUserNotificationCenter = .current(),
         defaults: UserDefaults = .standard
     ) {
+        self.accountID = accountID
         self.rosterStore = rosterStore
         self.chatStore = chatStore
         self.economyStore = economyStore
@@ -81,6 +82,15 @@ final class ProactiveMessageCoordinator {
             await removeScheduledNotifications()
         }
         await refresh(requestAuthorization: requestAuthorization)
+    }
+
+    /// Stop presenting account-specific notifications while no account workspace is visible.
+    /// Pending drafts remain under that account's scoped key and can be resumed after sign-in.
+    func deactivate() async {
+        scope = "inactive"
+        refreshQueued = false
+        queuedAuthorizationRequest = false
+        await removeScheduledNotifications()
     }
 
     func refresh(requestAuthorization: Bool) async {
@@ -102,7 +112,7 @@ final class ProactiveMessageCoordinator {
             }
         }
 
-        guard ProactiveMessagePreferences.isEnabled else {
+        guard ProactiveMessagePreferences.isEnabled(for: accountID, defaults: defaults) else {
             savePending([])
             await removeScheduledNotifications()
             return
@@ -128,7 +138,7 @@ final class ProactiveMessageCoordinator {
     }
 
     func setEnabled(_ enabled: Bool) async {
-        ProactiveMessagePreferences.isEnabled = enabled
+        ProactiveMessagePreferences.setEnabled(enabled, for: accountID, defaults: defaults)
         if enabled {
             await refresh(requestAuthorization: true)
         } else {
@@ -356,7 +366,10 @@ final class ProactiveMessageCoordinator {
         else { return }
 
         let baseBadge = await currentUnreadCount()
-        defaults.set(baseBadge, forKey: Self.unreadCountKey)
+        defaults.set(
+            baseBadge,
+            forKey: ProactiveMessagePreferences.unreadCountKey(for: accountID)
+        )
         for (index, message) in pending.sorted(by: { $0.dueAt < $1.dueAt }).enumerated() {
             guard let character = try? await rosterStore.character(id: message.characterID),
                   character.isFriend,
@@ -399,7 +412,9 @@ final class ProactiveMessageCoordinator {
         guard let friends = try? await rosterStore.friends(),
               let summaries = try? await chatStore.conversationSummaries()
         else {
-            return defaults.integer(forKey: Self.unreadCountKey)
+            return defaults.integer(
+                forKey: ProactiveMessagePreferences.unreadCountKey(for: accountID)
+            )
         }
         return ConversationReadState.totalUnreadCount(
             friends: friends,

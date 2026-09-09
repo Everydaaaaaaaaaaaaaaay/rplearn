@@ -78,10 +78,10 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
     }
 
     private let backend: BackendClient
-    private let guestID: String
+    private let guestID: String?
     private let pollingDelays: [Duration]
 
-    public init(backend: BackendClient, guestID: String) {
+    public init(backend: BackendClient, guestID: String? = nil) {
         self.init(
             backend: backend,
             guestID: guestID,
@@ -97,7 +97,7 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
         )
     }
 
-    init(backend: BackendClient, guestID: String, pollingDelays: [Duration]) {
+    init(backend: BackendClient, guestID: String?, pollingDelays: [Duration]) {
         self.backend = backend
         self.guestID = guestID
         self.pollingDelays = pollingDelays
@@ -128,12 +128,25 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
         _ request: BackendDictionaryExampleTranslationRequest,
         generateOnMiss: Bool
     ) async throws -> ResolveResult {
-        let response: ResolveResponse = try await backend.sendWithGuestAccess(
-            path: "/v1/dictionary/example-translations/resolve",
-            method: "POST",
-            body: ResolveBody(generateOnMiss: generateOnMiss, requests: [request]),
-            guestID: guestID
+        let body = ResolveBody(
+            generateOnMiss: generateOnMiss,
+            requests: [request]
         )
+        let response: ResolveResponse
+        if let guestID {
+            response = try await backend.sendWithGuestAccess(
+                path: "/v1/dictionary/example-translations/resolve",
+                method: "POST",
+                body: body,
+                guestID: guestID
+            )
+        } else {
+            response = try await backend.send(
+                path: "/v1/dictionary/example-translations/resolve",
+                method: "POST",
+                body: body
+            )
+        }
         guard let result = response.results.first,
               response.results.count == 1,
               result.requestId == request.requestId

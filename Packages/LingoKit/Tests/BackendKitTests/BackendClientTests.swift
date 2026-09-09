@@ -8,6 +8,12 @@ struct BackendClientTests {
         let ok: Bool
     }
 
+    private struct OfflineTransport: BackendTransport {
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            throw BackendClientError.transport("offline")
+        }
+    }
+
     @Test("旧版钥匙串凭据缺少 Apple 用户标识时仍可解码")
     func legacyCredentialRemainsDecodable() throws {
         let data = Data(
@@ -16,6 +22,41 @@ struct BackendClientTests {
         let credential = try JSONDecoder().decode(StoredAuthCredential.self, from: data)
         #expect(credential.refreshToken == "legacy-refresh")
         #expect(credential.appleUserID == nil)
+    }
+
+    @Test("已验证账号在断网启动时保留缓存身份")
+    @MainActor
+    func authSessionRestoresCachedIdentityOffline() async {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let store = MemoryCredentialStore(
+            StoredAuthCredential(
+                refreshToken: "cached-refresh",
+                refreshTokenExpiresAt: Date(timeIntervalSince1970: 1_893_456_000),
+                sessionID: UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456789")!,
+                userID: userID
+            )
+        )
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: store,
+            transport: OfflineTransport()
+        )
+        let session = AuthSession(
+            client: client,
+            device: BackendDevice(
+                appVersion: "1.0",
+                deviceID: "offline-test",
+                deviceName: "Test iPhone"
+            )
+        )
+
+        await session.bootstrap()
+
+        #expect(session.phase == .signedIn(AuthIdentity(
+            sessionID: UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456789")!,
+            userID: userID
+        )))
+        #expect(session.lastError != nil)
     }
 
     private final class MemoryCredentialStore: AuthCredentialStore, @unchecked Sendable {

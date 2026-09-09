@@ -4,7 +4,6 @@ import SwiftUI
 
 struct MyPagePresentation {
     let profile: UserProfileDTO?
-    let isSignedIn: Bool
     let tier: SubscriptionTier
 
     var displayName: String {
@@ -13,7 +12,7 @@ struct MyPagePresentation {
     }
 
     var accountBadgeTitle: String {
-        isSignedIn ? tier.displayName : "游客"
+        tier.displayName
     }
 
     var placementSummary: String {
@@ -22,7 +21,6 @@ struct MyPagePresentation {
     }
 
     var accountBadgeTint: Color {
-        guard isSignedIn else { return .secondary }
         return tier == .free ? .secondary : .dsSky
     }
 }

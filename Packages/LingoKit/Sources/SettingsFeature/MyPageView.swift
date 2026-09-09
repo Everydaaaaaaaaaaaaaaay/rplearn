@@ -16,15 +16,12 @@ public struct MyPageView: View {
     private let authSession: AuthSession
     private let billing: BillingController
     private let reloadToken: Int
-    private let isSignedIn: Bool
-    private let onSignIn: @MainActor () -> Void
     private let onCalibrateLevel: @MainActor () -> Void
     private let onOpenFavorites: @MainActor () -> Void
     private let onOpenSettings: @MainActor () -> Void
     private let onOpenMemory: @MainActor () -> Void
 
     @State private var pendingUsage = false
-    @State private var pendingSignIn = false
     @State private var showsUsage = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
@@ -39,7 +36,6 @@ public struct MyPageView: View {
     private var presentation: MyPagePresentation {
         MyPagePresentation(
             profile: profile,
-            isSignedIn: isSignedIn,
             tier: billing.tier
         )
     }
@@ -56,8 +52,6 @@ public struct MyPageView: View {
         authSession: AuthSession,
         billing: BillingController,
         reloadToken: Int = 0,
-        isSignedIn: Bool,
-        onSignIn: @escaping @MainActor () -> Void,
         onCalibrateLevel: @escaping @MainActor () -> Void,
         onOpenFavorites: @escaping @MainActor () -> Void,
         onOpenSettings: @escaping @MainActor () -> Void,
@@ -70,8 +64,6 @@ public struct MyPageView: View {
         self.authSession = authSession
         self.billing = billing
         self.reloadToken = reloadToken
-        self.isSignedIn = isSignedIn
-        self.onSignIn = onSignIn
         self.onCalibrateLevel = onCalibrateLevel
         self.onOpenFavorites = onOpenFavorites
         self.onOpenSettings = onOpenSettings
@@ -91,18 +83,12 @@ public struct MyPageView: View {
         .onDisappear(perform: sceneActions.cancel)
         .sheet(isPresented: $showsAccountPanel, onDismiss: {
             if pendingUsage { pendingUsage = false; showsUsage = true }
-            else if pendingSignIn { pendingSignIn = false; onSignIn() }
         }) {
             accountPanel
         }
-        .sheet(isPresented: $showsUsage, onDismiss: {
-            if pendingSignIn { pendingSignIn = false; onSignIn() }
-        }) {
+        .sheet(isPresented: $showsUsage) {
             if let accessClient {
-                UsageAccessView(backend: accessClient, billing: billing) {
-                    pendingSignIn = true
-                    showsUsage = false
-                }
+                UsageAccessView(backend: accessClient, billing: billing)
             }
         }
         .manageSubscriptionsSheet(isPresented: $showsManageSubscriptions)
@@ -298,23 +284,19 @@ public struct MyPageView: View {
     private var accountHotspot: some View {
         Button {
             sceneActions.perform(for: .account) {
-                if isSignedIn {
-                    showsAccountPanel = true
-                } else {
-                    onSignIn()
-                }
+                showsAccountPanel = true
             }
         } label: {
             fixedSceneEntry(
                 glyph: .account,
-                title: "登录",
+                title: "账号",
                 plane: sceneLayout.account.plane,
                 scale: sceneLayout.account.contentScale
             )
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .account))
-        .accessibilityLabel(isSignedIn ? "账号与订阅" : "登录或创建账号")
-        .accessibilityHint(isSignedIn ? "同步旅程与管理方案" : "跨设备同步与订阅恢复")
+        .accessibilityLabel("账号与订阅")
+        .accessibilityHint("同步旅程与管理方案")
     }
 
     #if DEBUG
@@ -405,25 +387,23 @@ public struct MyPageView: View {
                     profileCard
                     subscriptionCard
                     usageButton
-                    if isSignedIn {
-                        NavigationLink {
-                            AccountSecurityView(session: authSession)
-                        } label: {
-                            Label("账号与安全", systemImage: "person.badge.key.fill")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-
-                        Button(role: .destructive) {
-                            Task {
-                                await authSession.logout()
-                                showsAccountPanel = false
-                            }
-                        } label: {
-                            Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.dsAction(.secondary, fullWidth: true))
+                    NavigationLink {
+                        AccountSecurityView(session: authSession)
+                    } label: {
+                        Label("账号与安全", systemImage: "person.badge.key.fill")
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
+
+                    Button(role: .destructive) {
+                        Task {
+                            await authSession.logout()
+                            showsAccountPanel = false
+                        }
+                    } label: {
+                        Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.dsAction(.secondary, fullWidth: true))
                 }
                 .padding(DSSpacing.md)
             }
@@ -453,7 +433,7 @@ public struct MyPageView: View {
                     DSChip(
                         presentation.accountBadgeTitle,
                         tint: presentation.accountBadgeTint,
-                        prominent: isSignedIn && billing.tier != .free
+                        prominent: billing.tier != .free
                     )
                     Label("已认识 \(occupiedFriendSlots) 位旅途朋友", systemImage: "person.2.fill")
                         .foregroundStyle(.secondary)
@@ -470,7 +450,7 @@ public struct MyPageView: View {
                         DSChip(
                             presentation.accountBadgeTitle,
                             tint: presentation.accountBadgeTint,
-                            prominent: isSignedIn && billing.tier != .free
+                            prominent: billing.tier != .free
                         )
                         Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
                             .font(.caption)
@@ -501,8 +481,7 @@ public struct MyPageView: View {
 
     private var subscriptionCard: some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            if isSignedIn {
-                subscriptionHeader
+            subscriptionHeader
 
                 HStack {
                     Button {
@@ -593,9 +572,6 @@ public struct MyPageView: View {
                         .font(.caption)
                         .foregroundStyle(.white)
                 }
-            } else {
-                guestAccountPrompt
-            }
         }
         .foregroundStyle(.white)
         .padding(DSSpacing.md)
@@ -677,36 +653,6 @@ public struct MyPageView: View {
         .background(Color.dsSurfaceMuted, in: RoundedRectangle(cornerRadius: DSRadius.inline))
     }
 
-    private var guestAccountPrompt: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("游客体验")
-                        .font(.title3.bold())
-                    Text("3 个普通好友位，体验起始城市与剧情首站")
-                        .font(.footnote)
-                        .opacity(0.86)
-                }
-                Spacer()
-                Image(systemName: "person.crop.circle.badge.plus")
-                    .font(.largeTitle)
-            }
-
-            Button {
-                if showsAccountPanel { pendingSignIn = true; showsAccountPanel = false }
-                else { onSignIn() }
-            } label: {
-                Label("登录或创建账号", systemImage: "icloud.and.arrow.up")
-            }
-            .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
-            .tint(.white)
-
-            Text("游客额度为一次性体验。登录后获得 5 个普通好友位和每日额度，并可继续剧情、飞往其他城市。剧情旅伴不占好友位。")
-                .font(.caption2)
-                .opacity(0.76)
-        }
-    }
-
     @ViewBuilder
     private var subscriptionHeader: some View {
         if dynamicTypeSize.isAccessibilitySize {
@@ -747,29 +693,17 @@ public struct MyPageView: View {
             }
             .buttonStyle(.plain)
             Divider().padding(.leading, 56)
-            if isSignedIn {
-                Button(role: .destructive) {
-                    Task { await authSession.logout() }
-                } label: {
-                    MyPageEntryRow(
-                        "退出登录",
-                        subtitle: "退出账号并回到本地游客空间",
-                        icon: "rectangle.portrait.and.arrow.right",
-                        tint: .red
-                    )
-                }
-                .buttonStyle(.plain)
-            } else {
-                Button(action: onSignIn) {
-                    MyPageEntryRow(
-                        "登录或创建账号",
-                        subtitle: "用于跨设备同步与订阅恢复",
-                        icon: "person.crop.circle.badge.plus",
-                        tint: .dsSky
-                    )
-                }
-                .buttonStyle(.plain)
+            Button(role: .destructive) {
+                Task { await authSession.logout() }
+            } label: {
+                MyPageEntryRow(
+                    "退出登录",
+                    subtitle: "退出账号并返回登录页",
+                    icon: "rectangle.portrait.and.arrow.right",
+                    tint: .red
+                )
             }
+            .buttonStyle(.plain)
         }
         .dsSurface(.grouped, padding: 0)
     }

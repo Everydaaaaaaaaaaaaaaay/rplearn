@@ -23,6 +23,14 @@ public final class AuthSession {
     }
 
     public func bootstrap() async {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_FORCE_SIGNED_OUT"] == "1" {
+            await client.logout()
+            phase = .signedOut
+            lastError = nil
+            return
+        }
+        #endif
         do {
             if let appleUserID = try await client.storedAppleUserID() {
                 let state = try? await ASAuthorizationAppleIDProvider()

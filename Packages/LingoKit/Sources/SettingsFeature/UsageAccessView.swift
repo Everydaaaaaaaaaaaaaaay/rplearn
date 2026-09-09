@@ -6,22 +6,20 @@ import SwiftUI
 public struct UsageAccessView: View {
     let backend: BackendClient
     let billing: BillingController
-    let onSignIn: @MainActor () -> Void
     @State private var snapshot: BackendAccessSnapshot?
     @State private var error: String?
     @Environment(\.dismiss) private var dismiss
 
-    public init(backend: BackendClient, billing: BillingController, onSignIn: @escaping @MainActor () -> Void) {
+    public init(backend: BackendClient, billing: BillingController) {
         self.backend = backend
         self.billing = billing
-        self.onSignIn = onSignIn
     }
     public var body: some View {
         NavigationStack {
             List {
                 if let snapshot {
                     Section {
-                        LabeledContent("身份", value: snapshot.policy.isGuest ? "游客" : billing.tier.displayName)
+                        LabeledContent("方案", value: billing.tier.displayName)
                         LabeledContent("普通好友位", value: "\(snapshot.policy.friendSlotLimit)")
                         Text("剧情旅伴不占好友位。已有好友、聊天和旅行成果会保留。")
                             .font(.footnote).foregroundStyle(.secondary)
@@ -55,26 +53,18 @@ public struct UsageAccessView: View {
                             Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
                         }
                     }
-                    if snapshot.policy.isGuest {
-                        Section {
-                            Button("登录，获得每日额度") { dismiss(); onSignIn() }
-                            Text("游客额度为一次性体验，不会自动恢复。登录后可继续剧情并飞往其他城市。")
-                                .font(.footnote).foregroundStyle(.secondary)
+                    Section("订阅方案") {
+                        if billing.offeredProducts.isEmpty {
+                            Text("当前暂无可购买商品，请稍后在账号页查看。")
                         }
-                    } else {
-                        Section("订阅方案") {
-                            if billing.offeredProducts.isEmpty {
-                                Text("当前暂无可购买商品，请稍后在账号页查看。")
-                            }
-                            ForEach(billing.offeredProducts) { product in
-                                Button {
-                                    Task { await billing.purchase(product); await reload() }
-                                } label: {
-                                    LabeledContent(product.tier.displayName, value: product.displayPrice)
-                                }.disabled(billing.operation != .idle)
-                            }
-                            Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
+                        ForEach(billing.offeredProducts) { product in
+                            Button {
+                                Task { await billing.purchase(product); await reload() }
+                            } label: {
+                                LabeledContent(product.tier.displayName, value: product.displayPrice)
+                            }.disabled(billing.operation != .idle)
                         }
+                        Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
                     }
                     if snapshot.policy.provisional {
                         Section { Text("额度处于试行阶段，会结合实际使用成本调整。购买前请以商品页说明为准。")

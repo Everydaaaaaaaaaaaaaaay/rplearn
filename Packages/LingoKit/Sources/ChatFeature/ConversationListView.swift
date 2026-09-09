@@ -1,4 +1,5 @@
 import DesignSystem
+import CoreKit
 import Foundation
 import PersistenceKit
 import SwiftUI
@@ -14,9 +15,13 @@ public struct ConversationListView: View {
     @State private var isSearchPresented = false
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
-    @AppStorage("lingotrip.unread.count") private var persistedUnreadCount = 0
+    @AppStorage private var persistedUnreadCount: Int
 
-    public init(deps: ChatDependencies, reloadToken: Int = 0) {
+    public init(accountID: UUID, deps: ChatDependencies, reloadToken: Int = 0) {
+        _persistedUnreadCount = AppStorage(
+            wrappedValue: 0,
+            ProactiveMessagePreferences.unreadCountKey(for: accountID)
+        )
         self.deps = deps
         self.reloadToken = reloadToken
     }

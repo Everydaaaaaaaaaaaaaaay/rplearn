@@ -47,13 +47,29 @@ struct BillingControllerTests {
                 return json(
                     """
                     {
-                      "products":[{
-                        "featureFlags":{"friendSlotLimit":30},
-                        "planId":"pro",
-                        "productId":"com.tiantian.lingotrip.pro.monthly",
-                        "provider":"apple",
-                        "tier":"pro"
-                      }]
+                      "products":[
+                        {
+                          "featureFlags":{"friendSlotLimit":10},
+                          "planId":"plus",
+                          "productId":"com.tiantian.lingotrip.plus.monthly",
+                          "provider":"apple",
+                          "tier":"plus"
+                        },
+                        {
+                          "featureFlags":{"friendSlotLimit":10},
+                          "planId":"plus",
+                          "productId":"com.tiantian.lingotrip.plus.yearly",
+                          "provider":"apple",
+                          "tier":"plus"
+                        },
+                        {
+                          "featureFlags":{"friendSlotLimit":30},
+                          "planId":"pro",
+                          "productId":"com.tiantian.lingotrip.pro.monthly",
+                          "provider":"apple",
+                          "tier":"pro"
+                        }
+                      ]
                     }
                     """
                 )
@@ -91,7 +107,7 @@ struct BillingControllerTests {
             return """
             {
               "entitlements":[],
-              "featureFlags":{"friendSlotLimit":3},
+              "featureFlags":{"friendSlotLimit":5},
               "tier":"free"
             }
             """
@@ -177,7 +193,10 @@ struct BillingControllerTests {
         )
 
         #expect(fixture.controller.tier == .pro)
-        #expect(fixture.controller.products.count == 1)
+        #expect(fixture.controller.products.count == 3)
+        #expect(fixture.controller.offeredProducts.map(\.productID) == [
+            "com.tiantian.lingotrip.plus.monthly",
+        ])
         #expect(try await fixture.economy.profile().subscriptionTier == .pro)
         #expect(try await fixture.economy.profile().friendSlotLimit == 30)
         #expect(await storefront.finished == [42])
@@ -245,4 +264,3 @@ struct BillingControllerTests {
         )
     }
 }
-

@@ -1,8 +1,15 @@
 import SwiftData
 
-/// 清除本机账号域数据。账号切换时宁可重新同步，也不能让前一账号的数据短暂可见。
+/// 检查账号缓存是否足以离线启动，并兼容清理旧版共享数据库。
+/// 新版账号切换通过独立数据库完成，不会删除其他账号的离线数据。
 @ModelActor
 public actor AccountCacheStore {
+    public func hasCachedProfile() throws -> Bool {
+        var descriptor = FetchDescriptor<UserProfileEntity>()
+        descriptor.fetchLimit = 1
+        return try !modelContext.fetch(descriptor).isEmpty
+    }
+
     public func clearAll() throws {
         try modelContext.delete(model: VoiceMediaUploadEntity.self)
         try modelContext.delete(model: VoiceMediaLinkEntity.self)

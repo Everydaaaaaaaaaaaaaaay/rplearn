@@ -2,6 +2,11 @@ import BackendKit
 import Foundation
 import PersistenceKit
 
+public enum ContentSyncActivation: Sendable, Equatable {
+    case offlineCache
+    case synchronized
+}
+
 public actor BackendContentSyncCoordinator {
     private let backend: BackendClient
     private let store: ContentSyncStore
@@ -18,14 +23,23 @@ public actor BackendContentSyncCoordinator {
         self.store = store
     }
 
-    public func activate(userID: UUID) async throws {
+    public func activate(userID: UUID) async throws -> ContentSyncActivation {
         self.userID = userID
         try await store.activateOwner(userID: userID)
-        if try await store.needsBootstrap(userID: userID) {
+        let needsBootstrap = try await store.needsBootstrap(userID: userID)
+        if needsBootstrap {
             try await bootstrap()
         }
         startListener()
-        try await synchronize()
+        do {
+            try await synchronize()
+            return .synchronized
+        } catch let error as BackendClientError {
+            if case .transport = error, !needsBootstrap {
+                return .offlineCache
+            }
+            throw error
+        }
     }
 
     public func deactivate() {

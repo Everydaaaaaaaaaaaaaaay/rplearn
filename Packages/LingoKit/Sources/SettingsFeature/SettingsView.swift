@@ -33,10 +33,11 @@ public struct SettingsView: View {
         phase: .resourceMissing,
         selectedEngine: .supertonic3
     )
-    @AppStorage(ProactiveMessagePreferences.enabledKey) private var proactiveMessagesEnabled = true
+    @AppStorage private var proactiveMessagesEnabled: Bool
     @Environment(\.openURL) private var openURL
 
     public init(
+        accountID: UUID,
         router: LLMRouter,
         economyStore: EconomyStore,
         profileCommands: any ProfileCommandGateway,
@@ -47,6 +48,10 @@ public struct SettingsView: View {
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
         onOpenPhotoCredits: (@MainActor () -> Void)? = nil
     ) {
+        _proactiveMessagesEnabled = AppStorage(
+            wrappedValue: true,
+            ProactiveMessagePreferences.enabledKey(for: accountID)
+        )
         self.router = router
         self.economyStore = economyStore
         self.profileCommands = profileCommands

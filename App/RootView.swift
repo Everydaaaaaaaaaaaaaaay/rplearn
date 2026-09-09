@@ -32,16 +32,13 @@ struct RootView: View {
 
     let environment: AppEnvironment
 
-    @AppStorage("lingotrip.unread.count") private var unreadCount = 0
+    @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
     @State private var homePath = NavigationPath()
     @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
     @State private var activationError: String?
     @State private var showUsage = false
-    @State private var signInAfterUsage = false
-    @State private var showSignIn = false
-    @State private var loginReason: String?
     @State private var showLondonEpisode = false
     @State private var activeSceneActivity: SceneActivity?
     @State private var activeActivityChat: CharacterDTO?
@@ -49,11 +46,12 @@ struct RootView: View {
     @State private var showOnboardingPlacement = false
     @State private var placementCompletionRevision = 0
     @State private var activeUserID: UUID?
-    @State private var isGuestReady = false
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
     @State private var completedForcedOnboarding = false
+    @State private var completedForcedWelcome = false
+    @AppStorage("onboarding.welcome.completed.v1") private var welcomeCompleted = false
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -61,9 +59,6 @@ struct RootView: View {
         self.environment = environment
         #if DEBUG
         let requested = ProcessInfo.processInfo.environment["UI_TEST_TAB"]
-        if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
-            _showLondonEpisode = State(initialValue: true)
-        }
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
@@ -116,6 +111,15 @@ struct RootView: View {
             }
         )
     }
+
+    private var requiredActiveAccountID: UUID {
+        guard let activeUserID,
+              environment.workspace?.userID == activeUserID
+        else {
+            preconditionFailure("Account UI requested without its active workspace")
+        }
+        return activeUserID
+    }
     private var forcesOnboardingForUITest: Bool {
         #if DEBUG
         ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1"
@@ -127,11 +131,16 @@ struct RootView: View {
     }
 
     var body: some View {
-        appContent
+        launchContent
             .fullScreenCover(isPresented: $showLondonEpisode) {
                 #if DEBUG
-                LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest",
-                                  resourceName: ProcessInfo.processInfo.environment["UI_TEST_DEPARTURE_RESOURCE"] ?? "departures_london_v1")
+                LondonEpisodeView(
+                    deps: storyDeps,
+                    storageNamespace: activeUserID?.uuidString ?? "inactive",
+                    resourceName: ProcessInfo.processInfo.environment[
+                        "UI_TEST_DEPARTURE_RESOURCE"
+                    ] ?? "departures_london_v1"
+                )
                 #endif
             }
             .overlay {
@@ -140,48 +149,26 @@ struct RootView: View {
                         Text("旅程尚未载入").font(.headline)
                         Text(activationError).font(.subheadline)
                         Button("重试") { Task { await handleAuthenticationPhase() } }
-                        Button("退出此账号") { Task { await environment.authSession.logout() } }
-                    }.padding().frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(.background)
-                }
-            }
-            .overlay {
-                if !isInitialContentReady {
-                    Color("BrandLaunchBackground")
-                        .ignoresSafeArea()
-                        .accessibilityHidden(true)
-                }
-            }
-            .alert("登录后继续", isPresented: Binding(
-                get: { loginReason != nil }, set: { if !$0 { loginReason = nil } }
-            )) {
-                Button("登录") { loginReason = nil; showSignIn = true }
-                Button("稍后", role: .cancel) { loginReason = nil }
-            } message: {
-                Text(loginReason ?? "")
-            }
-            .sheet(isPresented: $showUsage, onDismiss: {
-                if signInAfterUsage { signInAfterUsage = false; showSignIn = true }
-            }) {
-                UsageAccessView(backend: environment.backendClient, billing: environment.billing) {
-                    showUsage = false
-                    signInAfterUsage = true
-                }
-            }
-            .sheet(isPresented: $showSignIn) {
-                NavigationStack {
-                    SignInView(session: environment.authSession)
-                        .toolbar {
-                            ToolbarItem(placement: .cancellationAction) {
-                                Button("稍后") {
-                                    showSignIn = false
-                                }
-                            }
+                        Button("退出此账号") {
+                            Task { await environment.authSession.logout() }
                         }
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.background)
+                }
+            }
+            .sheet(isPresented: $showUsage) {
+                if environment.workspace != nil {
+                    UsageAccessView(
+                        backend: environment.backendClient,
+                        billing: environment.billing
+                    )
                 }
             }
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
+                guard environment.workspace != nil else { return }
                 await reloadUnreadCount()
                 if environment.needsOnboarding != nil,
                    selectedTab != .home || activeHomeDestination != nil || !homePath.isEmpty {
@@ -191,12 +178,15 @@ struct RootView: View {
                     requestAuthorization: true
                 )
             }
-            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")-\(isGuestReady)") {
-                guard scenePhase == .active else { return }
+            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")") {
+                guard scenePhase == .active, environment.workspace != nil else { return }
                 switch environment.authSession.phase {
-                case .signedIn(let identity): guard identity.userID == activeUserID else { return }
-                case .signedOut: guard isGuestReady else { return }
-                case .loading: return
+                case .signedIn(let identity):
+                    guard identity.userID == activeUserID else { return }
+                case .signedOut:
+                    guard bypassesAuthenticationForUITesting else { return }
+                case .loading:
+                    return
                 }
                 while !Task.isCancelled {
                     await environment.npcAvatars.synchronize()
@@ -215,11 +205,10 @@ struct RootView: View {
                     shouldRefreshAfterBackground = true
                     return
                 }
-                // 权限弹窗只会让应用短暂 inactive。此时刷新根列表既没有必要，
-                // 还可能重建当前 NavigationLink；只在真正进入后台后恢复时同步。
                 guard phase == .active, shouldRefreshAfterBackground else { return }
                 shouldRefreshAfterBackground = false
                 Task {
+                    guard environment.workspace != nil else { return }
                     if case .signedIn(let identity) = environment.authSession.phase {
                         guard identity.userID == activeUserID else {
                             await handleAuthenticationPhase()
@@ -243,6 +232,7 @@ struct RootView: View {
             }
             .onChange(of: selectedTab) { _, tab in
                 guard tab == .messages,
+                      environment.workspace != nil,
                       !Self.disablesBackgroundRefreshForUITesting
                 else { return }
                 Task {
@@ -254,11 +244,11 @@ struct RootView: View {
                 activeActivityChat = nil
             }
             .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
-                Task {
-                    await reloadUnreadCount()
-                }
+                guard environment.workspace != nil else { return }
+                Task { await reloadUnreadCount() }
             }
             .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
+                guard environment.workspace != nil else { return }
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
                     await reloadUnreadCount()
@@ -272,9 +262,11 @@ struct RootView: View {
                 Task { try? await UNUserNotificationCenter.current().setBadgeCount(count) }
             }
             .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
+                guard environment.workspace != nil else { return }
                 Task { await reloadUnreadCount() }
             }
             .onReceive(NotificationCenter.default.publisher(for: .rosterContactDidChange)) { _ in
+                guard environment.workspace != nil else { return }
                 stateRevision += 1
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
@@ -288,7 +280,7 @@ struct RootView: View {
         case .loading:
             "loading"
         case .signedOut:
-            "guest"
+            bypassesAuthenticationForUITesting ? "ui-fixture" : "signed-out"
         case .signedIn(let identity):
             "account-\(identity.userID.uuidString)"
         }
@@ -298,30 +290,29 @@ struct RootView: View {
     private func handleAuthenticationPhase() async {
         activationError = nil
         #if DEBUG
-        if ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1",
-           ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] != nil {
-            isGuestReady = true
+        if bypassesAuthenticationForUITesting,
+           case .signedOut = environment.authSession.phase {
+            do {
+                activeUserID = try await environment.activateUITestWorkspace()
+                stateRevision += 1
+                if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
+                    showLondonEpisode = true
+                }
+            } catch {
+                activationError = error.localizedDescription
+            }
             return
         }
         #endif
         switch environment.authSession.phase {
         case .loading:
-            // 会话恢复在后台进行，本地界面无需等待。
             return
         case .signedOut:
+            await environment.deactivateAccount()
             activeUserID = nil
-            isGuestReady = false
-            do {
-                try await environment.activateGuest()
-                isGuestReady = true
-                stateRevision += 1
-            } catch {
-                Log.app.error("本地旅程载入失败：\(error)")
-                isInitialContentReady = true
-            }
+            unreadCount = 0
+            isInitialContentReady = false
         case .signedIn(let identity):
-            isGuestReady = false
-            showSignIn = false
             guard activeUserID != identity.userID else { return }
             do {
                 _ = try await environment.activateUser(identity)
@@ -336,19 +327,92 @@ struct RootView: View {
                 }
                 activeUserID = nil
                 activationError = error.localizedDescription
-                isInitialContentReady = true
                 Log.app.warning("账号载入失败，保留当前旅程等待重试：\(error)")
             }
         }
     }
 
+    @ViewBuilder
+    private var launchContent: some View {
+        if showsWelcome {
+            WelcomeJourneyView {
+                welcomeCompleted = true
+                completedForcedWelcome = true
+            }
+        } else {
+            switch environment.authSession.phase {
+            case .loading:
+                launchLoading
+            case .signedOut:
+                if bypassesAuthenticationForUITesting,
+                   activeUserID != nil,
+                   environment.workspace != nil {
+                    appContent
+                } else if bypassesAuthenticationForUITesting {
+                    launchLoading
+                } else {
+                    SignInView(session: environment.authSession)
+                }
+            case .signedIn(let identity):
+                if activeUserID == identity.userID,
+                   environment.workspace?.userID == identity.userID {
+                    appContent
+                } else {
+                    launchLoading
+                }
+            }
+        }
+    }
+
+    private var launchLoading: some View {
+        ZStack {
+            Color("BrandLaunchBackground").ignoresSafeArea()
+            ProgressView()
+                .tint(.dsSky)
+                .accessibilityLabel("正在载入旅程")
+        }
+    }
+
+    private var showsWelcome: Bool {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_WELCOME"] == "1" {
+            return !completedForcedWelcome
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_WELCOME"] == "0"
+            || ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] == "1" {
+            return false
+        }
+        #endif
+        return !welcomeCompleted
+    }
+
+    private var bypassesAuthenticationForUITesting: Bool {
+        #if DEBUG
+        let processEnvironment = ProcessInfo.processInfo.environment
+        if processEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] == "1" {
+            return false
+        }
+        return processEnvironment["UI_TEST_SKIP_ONBOARDING"] == "1"
+            || processEnvironment["UI_TEST_ONBOARDING_WELCOME"] != nil
+            || processEnvironment["UI_TEST_ONBOARDING_SELECTION"] == "1"
+            || processEnvironment["UI_TEST_ONBOARDING_STORY"] == "1"
+            || processEnvironment["UI_TEST_SOCIAL_FIXTURE"] == "1"
+        #else
+        return false
+        #endif
+    }
+
+    @ViewBuilder
     private var appContent: some View {
-        tabs
+        if let accountID = activeUserID,
+           environment.workspace?.userID == accountID {
+            tabs
             .fullScreenCover(isPresented: $showPlacementTest) {
                 placementTestView(isOnboarding: false)
             }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
+                    accountID: accountID,
                     deps: OnboardingDependencies(
                         economyStore: environment.economyStore,
                         profileCommands: profileCommands,
@@ -381,6 +445,9 @@ struct RootView: View {
                     placementTestView(isOnboarding: true)
                 }
             }
+        } else {
+            launchLoading
+        }
     }
 
     private var tabs: some View {
@@ -490,14 +557,14 @@ struct RootView: View {
                 ActivitiesView(
                     deps: homeDeps,
                     storageNamespace: activityStorageNamespace,
-                    isVisible: selectedTab == .home && !showSignIn && !showLondonEpisode && activeActivityChat == nil,
+                    isVisible: selectedTab == .home && !showLondonEpisode && activeActivityChat == nil,
                     activity: $activeSceneActivity,
                     onClose: closeHomeDestination,
                     onChat: { character in
                         withAnimation(sceneContentAnimation) { activeActivityChat = character }
                     }
                 )
-                .id(activeUserID?.uuidString ?? "guest")
+                .id(activeUserID?.uuidString ?? "inactive")
                 .opacity(activeActivityChat == nil ? 1 : 0)
                 .allowsHitTesting(activeActivityChat == nil)
                 .accessibilityHidden(activeActivityChat != nil)
@@ -532,7 +599,7 @@ struct RootView: View {
             return "ui-test.\(testNamespace)"
         }
         #endif
-        return activeUserID?.uuidString ?? "guest"
+        return activeUserID?.uuidString ?? "inactive"
     }
     private func closeHomeDestination() {
         guard activeHomeDestination != nil else { return }
@@ -551,7 +618,11 @@ struct RootView: View {
     }
     private var messagesStack: some View {
         NavigationStack {
-            ConversationListView(deps: chatDeps, reloadToken: stateRevision)
+            ConversationListView(
+                accountID: requiredActiveAccountID,
+                deps: chatDeps,
+                reloadToken: stateRevision
+            )
         }
     }
 
@@ -611,8 +682,6 @@ struct RootView: View {
             authSession: environment.authSession,
             billing: environment.billing,
             reloadToken: stateRevision,
-            isSignedIn: usesCloudState,
-            onSignIn: { showSignIn = true },
             onCalibrateLevel: { showPlacementTest = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
@@ -669,6 +738,7 @@ struct RootView: View {
 
         case .settings:
             SettingsView(
+                accountID: requiredActiveAccountID,
                 router: environment.llmRouter,
                 economyStore: environment.economyStore,
                 profileCommands: profileCommands,
@@ -748,7 +818,11 @@ struct RootView: View {
     }
 
     private func storyView(storyID: String) -> some View {
-        LondonEpisodeView(deps: storyDeps, storageNamespace: activeUserID?.uuidString ?? "guest", resourceName: storyID)
+        LondonEpisodeView(
+            deps: storyDeps,
+            storageNamespace: activeUserID?.uuidString ?? "inactive",
+            resourceName: storyID
+        )
             .navigationBarBackButtonHidden()
             .toolbar(.hidden, for: .tabBar)
             .dsTabBarHidden()
@@ -840,46 +914,31 @@ struct RootView: View {
     }
 
     private var journeyAccess: JourneyAccess {
-        JourneyAccess(isGuest: !usesCloudState) { reason in loginReason = reason }
-    }
-
-    private var usesCloudState: Bool {
-        guard let activeUserID,
-              case .signedIn(let identity) = environment.authSession.phase
-        else { return false }
-        return identity.userID == activeUserID
+        JourneyAccess()
     }
 
     private var profileCommands: any ProfileCommandGateway {
-        if usesCloudState || environment.guestStateReady {
-            environment.userState
-        } else {
-            environment.localUserState
-        }
+        bypassesAuthenticationForUITesting ? environment.localUserState : environment.userState
     }
 
     private var onboardingCommands: any OnboardingCommandGateway {
-        if usesCloudState || environment.guestStateReady {
-            environment.userState
-        } else {
-            environment.localUserState
-        }
+        bypassesAuthenticationForUITesting ? environment.localUserState : environment.userState
     }
 
     private var progression: any ProgressionRewardGateway {
-        if usesCloudState || environment.guestStateReady {
-            environment.userState
-        } else {
-            environment.localUserState
-        }
+        bypassesAuthenticationForUITesting ? environment.localUserState : environment.userState
     }
 
     private var travelService: TravelService {
-        usesCloudState ? environment.travelService : environment.localTravelService
+        bypassesAuthenticationForUITesting
+            ? environment.localTravelService
+            : environment.travelService
     }
 
     private var economyService: EconomyService {
-        usesCloudState ? environment.economyService : environment.localEconomyService
+        bypassesAuthenticationForUITesting
+            ? environment.localEconomyService
+            : environment.economyService
     }
 
     private func reloadUnreadCount() async {

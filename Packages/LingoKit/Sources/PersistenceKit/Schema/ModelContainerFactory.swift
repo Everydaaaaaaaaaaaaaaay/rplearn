@@ -3,9 +3,20 @@ import SwiftData
 
 public enum ModelContainerFactory {
     /// 使用显式版本计划打开本地库。迁移失败时保留原始数据库并向上抛错，绝不静默删库。
-    public static func makeContainer(inMemory: Bool = false) throws -> ModelContainer {
+    public static func makeContainer(
+        inMemory: Bool = false,
+        storeURL: URL? = nil
+    ) throws -> ModelContainer {
         let schema = Schema(versionedSchema: LingoSchema.self)
-        let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
+        let configuration: ModelConfiguration
+        if let storeURL, !inMemory {
+            configuration = ModelConfiguration(schema: schema, url: storeURL)
+        } else {
+            configuration = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: inMemory
+            )
+        }
         do {
             return try ModelContainer(
                 for: schema,

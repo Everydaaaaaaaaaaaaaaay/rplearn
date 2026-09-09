@@ -6,6 +6,12 @@ import Testing
 
 @Suite("Backend user state coordinator")
 struct BackendUserStateCoordinatorTests {
+    private struct OfflineTransport: BackendTransport {
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            throw BackendClientError.transport("offline")
+        }
+    }
+
     private final class MemoryCredentials: AuthCredentialStore, @unchecked Sendable {
         private let credential: StoredAuthCredential
 
@@ -453,5 +459,93 @@ struct BackendUserStateCoordinatorTests {
         conflictingGuest.displayName = "不应覆盖"
         let preserved = try await coordinator.importGuestLearnerProfileIfNeeded(conflictingGuest)
         #expect(preserved.displayName == "小咕")
+    }
+
+    @Test("已有完整账号缓存时断网仍可激活")
+    func cachedAccountActivatesOffline() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let economy = EconomyStore(modelContainer: container)
+        _ = try await economy.profile()
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defaults.set(
+            "cached-cursor",
+            forKey: "backend.sync.cursor.v1.\(userID.uuidString.lowercased())"
+        )
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: OfflineTransport()
+        )
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: economy,
+            itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
+            accountStorageUserID: userID,
+            defaults: defaults
+        )
+
+        #expect(try await coordinator.activate(userID: userID) == .offlineCache)
+        #expect(try await economy.profile().coins == 0)
+    }
+
+    @Test("空账号缓存断网时拒绝首次激活")
+    func emptyAccountCacheCannotActivateOffline() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defaults.set(
+            "cursor-without-profile",
+            forKey: "backend.sync.cursor.v1.\(userID.uuidString.lowercased())"
+        )
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: OfflineTransport()
+        )
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: EconomyStore(modelContainer: container),
+            itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
+            accountStorageUserID: userID,
+            defaults: defaults
+        )
+
+        do {
+            _ = try await coordinator.activate(userID: userID)
+            Issue.record("首次激活没有本地档案时不应绕过联网同步")
+        } catch let error as BackendClientError {
+            #expect(error == .transport("offline"))
+        }
+    }
+
+    @Test("账号工作区拒绝加载另一账号")
+    func accountWorkspaceRejectsMismatchedIdentity() async throws {
+        let storageUserID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let requestedUserID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456791")!
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: requestedUserID),
+            transport: OfflineTransport()
+        )
+        let coordinator = BackendUserStateCoordinator(
+            backend: client,
+            accountCache: AccountCacheStore(modelContainer: container),
+            economyCache: EconomyStore(modelContainer: container),
+            itemCache: ItemStore(modelContainer: container),
+            ticketStubCache: TicketStubStore(modelContainer: container),
+            accountStorageUserID: storageUserID
+        )
+
+        await #expect(throws: BackendClientError.invalidResponse) {
+            try await coordinator.activate(userID: requestedUserID)
+        }
     }
 }

@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 
 /// 首次启动的品牌入口：用可操作的产品界面缩影介绍旅程，再进入学习档案。
-struct WelcomeJourneyView: View {
+public struct WelcomeJourneyView: View {
     let onBegin: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -13,7 +13,11 @@ struct WelcomeJourneyView: View {
 
     private let pageCount = 4
 
-    var body: some View {
+    public init(onBegin: @escaping () -> Void) {
+        self.onBegin = onBegin
+    }
+
+    public var body: some View {
         ZStack {
             WelcomeBackdrop(colorScheme: colorScheme)
                 .ignoresSafeArea()

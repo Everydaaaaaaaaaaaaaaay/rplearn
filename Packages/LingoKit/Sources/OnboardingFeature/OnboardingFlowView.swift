@@ -25,11 +25,10 @@ public struct OnboardingDependencies: Sendable {
     }
 }
 
-/// 首启流程：品牌欢迎 → 建立学习档案 → 咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
+/// 登录后的账号首启流程：建立学习档案 → 咕咕带来旅行邀请 → 主角色资料浏览 → 选定出发。
 public struct OnboardingFlowView: View {
     private enum Phase {
         case loading
-        case welcome
         case profile
         case calibration
         case story
@@ -45,13 +44,11 @@ public struct OnboardingFlowView: View {
     @State private var profile: UserProfileDTO?
     @State private var player: StoryPlayer?
     @State private var characters: [CharacterDTO] = []
-    @AppStorage("onboarding.placement-offer.dismissed.v1")
-    private var placementOfferDismissed = false
-    @AppStorage("onboarding.welcome.completed.v1")
-    private var welcomeCompleted = false
+    @AppStorage private var placementOfferDismissed: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
+        accountID: UUID,
         deps: OnboardingDependencies,
         placementCompletionRevision: Int = 0,
         onRequestPlacement: @escaping () -> Void = {},
@@ -61,6 +58,10 @@ public struct OnboardingFlowView: View {
         self.placementCompletionRevision = placementCompletionRevision
         self.onRequestPlacement = onRequestPlacement
         self.onComplete = onComplete
+        _placementOfferDismissed = AppStorage(
+            wrappedValue: false,
+            "onboarding.placement-offer.dismissed.v2.\(accountID.uuidString.lowercased())"
+        )
     }
 
     public var body: some View {
@@ -68,16 +69,6 @@ public struct OnboardingFlowView: View {
             switch phase {
             case .loading:
                 onboardingLoading
-            case .welcome:
-                WelcomeJourneyView {
-                    welcomeCompleted = true
-                    continueAfterWelcome()
-                }
-                .transition(
-                    reduceMotion
-                        ? .opacity
-                        : .opacity.combined(with: .scale(scale: 0.985))
-                )
             case .profile:
                 if let profile {
                     LearnerProfileSetupView(
@@ -123,17 +114,7 @@ public struct OnboardingFlowView: View {
             }
             characters = (try? await deps.rosterStore.allCharacters().filter(\.isMainCharacter)) ?? []
             if phase == .loading, let profile {
-                #if DEBUG
-                if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_WELCOME"] == "1" {
-                    phase = .welcome
-                } else if !welcomeCompleted {
-                    phase = .welcome
-                } else {
-                    phase = destination(afterWelcomeFor: profile)
-                }
-                #else
-                phase = welcomeCompleted ? destination(afterWelcomeFor: profile) : .welcome
-                #endif
+                phase = destination(for: profile)
             }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_SELECTION"] == "1" {
@@ -189,14 +170,7 @@ public struct OnboardingFlowView: View {
         }
     }
 
-    private func continueAfterWelcome() {
-        guard let profile else { return }
-        withAnimation(reduceMotion ? nil : .spring(response: 0.38, dampingFraction: 1)) {
-            phase = destination(afterWelcomeFor: profile)
-        }
-    }
-
-    private func destination(afterWelcomeFor profile: UserProfileDTO) -> Phase {
+    private func destination(for profile: UserProfileDTO) -> Phase {
         if !profile.hasCompletedProfileSetup { return .profile }
         if profile.proficiencySource == .placement || placementOfferDismissed { return .story }
         return .calibration

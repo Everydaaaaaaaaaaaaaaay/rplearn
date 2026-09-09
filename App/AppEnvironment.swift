@@ -19,44 +19,50 @@ final class AppEnvironment {
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
-    let billing: BillingController
     let llmRouter: LLMRouter
     let dictionaryExampleTranslations: BackendDictionaryExampleTranslationResolver
     let dictionary: DictDatabase
     let grammarPoints: GrammarPointStore
     let regionCatalog: RegionCatalog
 
-    let modelContainer: ModelContainer
-    let accountCacheStore: AccountCacheStore
-    let contentSyncStore: ContentSyncStore
-    let voiceMediaQueueStore: VoiceMediaQueueStore
-    let chatStore: ChatStore
-    let npcAvatars: PublicNPCAvatarCoordinator
-    let rosterStore: RosterStore
-    let economyStore: EconomyStore
-    let favoritesStore: FavoritesStore
-    let memoryStore: MemoryStore
-    let itemStore: ItemStore
-    let storyProgressStore: StoryProgressStore
-    let ticketStubStore: TicketStubStore
-    let localUserState: LocalUserStateCoordinator
-    let localTravelService: TravelService
-    let localEconomyService: EconomyService
-    let travelService: TravelService
-    let userState: BackendUserStateCoordinator
-    let contentSync: BackendContentSyncCoordinator
-    let voiceMedia: VoiceMediaCoordinator
-    let proactiveMessages: ProactiveMessageCoordinator
-    private var proactiveMessageScope = "guest"
+    private(set) var workspace: AccountWorkspace?
+
+    var modelContainer: ModelContainer { requiredWorkspace.modelContainer }
+    var accountCacheStore: AccountCacheStore { requiredWorkspace.accountCacheStore }
+    var contentSyncStore: ContentSyncStore { requiredWorkspace.contentSyncStore }
+    var voiceMediaQueueStore: VoiceMediaQueueStore { requiredWorkspace.voiceMediaQueueStore }
+    var chatStore: ChatStore { requiredWorkspace.chatStore }
+    var npcAvatars: PublicNPCAvatarCoordinator { requiredWorkspace.npcAvatars }
+    var rosterStore: RosterStore { requiredWorkspace.rosterStore }
+    var economyStore: EconomyStore { requiredWorkspace.economyStore }
+    var favoritesStore: FavoritesStore { requiredWorkspace.favoritesStore }
+    var memoryStore: MemoryStore { requiredWorkspace.memoryStore }
+    var itemStore: ItemStore { requiredWorkspace.itemStore }
+    var storyProgressStore: StoryProgressStore { requiredWorkspace.storyProgressStore }
+    var ticketStubStore: TicketStubStore { requiredWorkspace.ticketStubStore }
+    var localUserState: LocalUserStateCoordinator { requiredWorkspace.localUserState }
+    var localTravelService: TravelService { requiredWorkspace.localTravelService }
+    var localEconomyService: EconomyService { requiredWorkspace.localEconomyService }
+    var travelService: TravelService { requiredWorkspace.travelService }
+    var userState: BackendUserStateCoordinator { requiredWorkspace.userState }
+    var contentSync: BackendContentSyncCoordinator { requiredWorkspace.contentSync }
+    var voiceMedia: VoiceMediaCoordinator { requiredWorkspace.voiceMedia }
+    var proactiveMessages: ProactiveMessageCoordinator { requiredWorkspace.proactiveMessages }
+    var billing: BillingController { requiredWorkspace.billing }
+    var economyService: EconomyService { requiredWorkspace.economyService }
 
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
-    var guestStateReady = false
-
     let audioSession: AudioSessionCoordinator
     let speech: AdaptiveSpeechService
     let translator: TranslationService
-    let economyService: EconomyService
+
+    private var requiredWorkspace: AccountWorkspace {
+        guard let workspace else {
+            preconditionFailure("Account-scoped service requested before account activation")
+        }
+        return workspace
+    }
 
     init() {
         // 离线模式后台预热 Supertonic-3；实时识别统一使用 Apple 系统能力。
@@ -93,11 +99,10 @@ final class AppEnvironment {
             )
         )
         self.llmRouter = LLMRouter(
-            client: BackendLLMProvider(backend: backendClient, guestID: deviceID)
+            client: BackendLLMProvider(backend: backendClient)
         )
         self.dictionaryExampleTranslations = BackendDictionaryExampleTranslationResolver(
-            backend: backendClient,
-            guestID: deviceID
+            backend: backendClient
         )
 
         // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。
@@ -107,184 +112,131 @@ final class AppEnvironment {
         self.grammarPoints = try! GrammarPointStore(url: grammarURL)
         let regionsURL = Bundle.main.url(forResource: "regions", withExtension: "json")!
         self.regionCatalog = try! RegionCatalog(url: regionsURL)
-
-        #if DEBUG
-        let isolatesSocialUITest = ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1"
-            && ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] != nil
-        #else
-        let isolatesSocialUITest = false
-        #endif
-        let container = try! ModelContainerFactory.makeContainer(inMemory: isolatesSocialUITest)
-        self.modelContainer = container
-        let accountCacheStore = AccountCacheStore(modelContainer: container)
-        self.accountCacheStore = accountCacheStore
-        let contentSyncStore = ContentSyncStore(modelContainer: container)
-        self.contentSyncStore = contentSyncStore
-        let chatStore = ChatStore(modelContainer: container)
-        self.chatStore = chatStore
-        let voiceMediaQueueStore = VoiceMediaQueueStore(modelContainer: container)
-        self.voiceMediaQueueStore = voiceMediaQueueStore
-        let rosterStore = RosterStore(modelContainer: container)
-        self.rosterStore = rosterStore
-        self.npcAvatars = PublicNPCAvatarCoordinator(registry: backendClient, roster: rosterStore)
-        self.economyStore = EconomyStore(modelContainer: container)
-        self.favoritesStore = FavoritesStore(modelContainer: container)
-        self.memoryStore = MemoryStore(modelContainer: container)
-        self.itemStore = ItemStore(modelContainer: container)
-        self.storyProgressStore = StoryProgressStore(modelContainer: container)
-        let ticketStubStore = TicketStubStore(modelContainer: container)
-        self.ticketStubStore = ticketStubStore
-        let localUserState = LocalUserStateCoordinator(
-            economyStore: economyStore,
-            itemStore: itemStore,
-            storyProgressStore: storyProgressStore
-        )
-        self.localUserState = localUserState
-        let userState = BackendUserStateCoordinator(
-            backend: backendClient,
-            accountCache: accountCacheStore,
-            economyCache: economyStore,
-            itemCache: itemStore,
-            ticketStubCache: ticketStubStore
-        )
-        self.userState = userState
-        self.contentSync = BackendContentSyncCoordinator(
-            backend: backendClient,
-            store: contentSyncStore
-        )
-        self.voiceMedia = VoiceMediaCoordinator(
-            backend: backendClient,
-            chatStore: chatStore,
-            queueStore: voiceMediaQueueStore
-        )
-        self.proactiveMessages = ProactiveMessageCoordinator(
-            rosterStore: rosterStore,
-            chatStore: chatStore,
-            economyStore: economyStore,
-            llm: llmRouter
-        )
-        self.billing = BillingController(
-            backend: backendClient,
-            economyStore: economyStore
-        )
-        self.travelService = TravelService(
-            economyStore: economyStore,
-            itemStore: itemStore,
-            stubStore: ticketStubStore,
-            commandGateway: userState
-        )
-        self.localTravelService = TravelService(
-            economyStore: economyStore,
-            itemStore: itemStore,
-            stubStore: ticketStubStore,
-            allowsTravel: false
-        )
-
         self.translator = TranslationService(llm: llmRouter)
-        self.economyService = EconomyService(
-            economyStore: economyStore,
-            itemStore: itemStore,
-            ticketPurchaseGateway: userState
-        )
-        self.localEconomyService = EconomyService(
-            economyStore: economyStore,
-            itemStore: itemStore
-        )
 
         Log.app.info("AppEnvironment initialized")
-        if isolatesSocialUITest {
-            needsOnboarding = false
-        } else {
-            Task { await authSession.bootstrap() }
-        }
+        Task { await authSession.bootstrap() }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
     func activateUser(_ identity: AuthIdentity) async throws -> UserStateActivation {
         needsOnboarding = nil
-        let guestProfile =
-            await userState.shouldCaptureGuestProfileForImport()
-            ? try? await economyStore.profile()
-            : nil
-        let hasGuestNPCs = guestProfile != nil ? (try await rosterStore.allCharacters()).contains(where: { !$0.isMainCharacter }) : false
-        if let guestProfile,
-           guestProfile.hasCompletedProfileSetup || guestProfile.hasCompletedOnboarding ||
-            hasGuestNPCs {
-            try await contentSyncStore.archiveGuestJourneyIfNeeded(profile: guestProfile, beforeLogin: true)
-            if guestStateReady {
-                try await userState.synchronize()
+        await deactivateAccount()
+
+        let defaults = UserDefaults.standard
+        let legacyOwnerID = defaults.string(forKey: "backend.state.cached-owner.v1")
+            .flatMap(UUID.init(uuidString:))
+        let preparation = try AccountStoreLocation.prepare(
+            for: identity.userID,
+            legacyOwnerID: legacyOwnerID,
+            legacyWasGuest: defaults.bool(forKey: "backend.state.guest-owner.v1")
+        )
+        let container = try ModelContainerFactory.makeContainer(
+            storeURL: preparation.storeURL
+        )
+        let account = AccountWorkspace(
+            userID: identity.userID,
+            modelContainer: container,
+            backend: backendClient,
+            llm: llmRouter
+        )
+        workspace = account
+
+        do {
+            let shouldCaptureGuestProfile: Bool
+            if preparation.importedLegacyStore {
+                shouldCaptureGuestProfile = await account.userState.shouldCaptureGuestProfileForImport()
             } else {
-                do {
-                    try await userState.activateAnonymous(legacyProfile: guestProfile,
-                        completedStories: try await storyProgressStore.completedStoryIDs(),
-                        hadStarterTicket: try await itemStore.hasTicket(source: .quest))
-                } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
-                    // The claim endpoint verifies whether this is the same destination account.
-                }
+                shouldCaptureGuestProfile = false
             }
-            try await backendClient.claimGuestJourney()
-        }
-        let activation = try await userState.activate(userID: identity.userID)
-        guestStateReady = false
-        if let guestProfile {
-            _ = try await userState.importGuestLearnerProfileIfNeeded(guestProfile)
-        }
-        await billing.activate(identity: identity)
-        let profile = try await economyStore.profile()
-        let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
-        let cards = try SeedData.mainCharacterCards(url: seedsURL)
-        try await rosterStore.importMainCharactersIfNeeded(cards: cards)
-        try await contentSync.activate(userID: identity.userID)
-        try await reconcileMainCharacters(profile: profile)
-        await voiceMedia.activate(userID: identity.userID)
-        proactiveMessageScope = "account-\(identity.userID.uuidString.lowercased())"
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] == "1" {
-            needsOnboarding = false
-        } else {
+            let guestProfile = shouldCaptureGuestProfile
+                ? try? await account.economyStore.profile()
+                : nil
+            let hasGuestNPCs = guestProfile != nil
+                ? try await account.rosterStore.allCharacters().contains(where: { !$0.isMainCharacter })
+                : false
+            if let guestProfile,
+               guestProfile.hasCompletedProfileSetup
+                    || guestProfile.hasCompletedOnboarding
+                    || hasGuestNPCs {
+                try await account.contentSyncStore.archiveGuestJourneyIfNeeded(
+                    profile: guestProfile,
+                    beforeLogin: true
+                )
+                do {
+                    try await account.userState.activateAnonymous(
+                        legacyProfile: guestProfile,
+                        completedStories: try await account.storyProgressStore.completedStoryIDs(),
+                        hadStarterTicket: try await account.itemStore.hasTicket(source: .quest)
+                    )
+                } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
+                    // The claim endpoint below verifies whether this is the same destination account.
+                }
+                try await backendClient.claimGuestJourney()
+            }
+            let activation = try await account.userState.activate(userID: identity.userID)
+            if let guestProfile {
+                _ = try await account.userState.importGuestLearnerProfileIfNeeded(guestProfile)
+            }
+            await account.billing.activate(identity: identity)
+            let profile = try await account.economyStore.profile()
+            try await importMainCharacters(into: account)
+            _ = try await account.contentSync.activate(userID: identity.userID)
+            try await reconcileMainCharacters(profile: profile)
+            await account.voiceMedia.activate(userID: identity.userID)
             needsOnboarding = !profile.hasCompletedOnboarding
+            return activation
+        } catch {
+            await deactivateAccount()
+            throw error
         }
-        #else
-        needsOnboarding = !profile.hasCompletedOnboarding
-        #endif
-        return activation
     }
 
-    /// 启用不依赖账号的本地游客空间。若刚退出账号，会先隔离账号缓存。
-    func activateGuest() async throws {
+    func deactivateAccount() async {
         needsOnboarding = nil
-        billing.deactivate()
-        await contentSync.deactivate()
-        await voiceMedia.deactivate()
-        try await userState.activateGuest()
-        guestStateReady = false
-        let legacyProfile = try await economyStore.profile()
-        let completedStories = try await storyProgressStore.completedStoryIDs()
-        let hadStarterTicket = try await itemStore.hasTicket(source: .quest)
-        // Archive once before replacing legacy offline assets with verified server state.
-        try await contentSyncStore.archiveGuestJourneyIfNeeded(profile: legacyProfile)
-        do {
-            try await userState.activateAnonymous(legacyProfile: legacyProfile,
-                completedStories: completedStories, hadStarterTicket: hadStarterTicket)
-            guestStateReady = true
-        } catch {
-            Log.app.info("游客在线状态暂不可用，保留本地旅程：\(String(describing: type(of: error)))")
-        }
-        let profile = try await economyStore.profile()
-        let seedsURL = Bundle.main.url(forResource: "main_characters", withExtension: "json")!
+        guard let current = workspace else { return }
+        current.billing.deactivate()
+        await current.contentSync.deactivate()
+        await current.voiceMedia.deactivate()
+        await current.proactiveMessages.deactivate()
+        workspace = nil
+    }
+
+    #if DEBUG
+    /// UI screenshots and interaction tests use an explicit in-memory fixture. Production builds
+    /// have no signed-out workspace and therefore cannot enter the application as a guest.
+    func activateUITestWorkspace() async throws -> UUID {
+        if let workspace { return workspace.userID }
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")!
+        let account = AccountWorkspace(
+            userID: userID,
+            modelContainer: try ModelContainerFactory.makeContainer(inMemory: true),
+            backend: backendClient,
+            llm: llmRouter
+        )
+        workspace = account
+        try await importMainCharacters(into: account)
+        let profile = try await account.economyStore.profile()
+        try await account.rosterStore.configureMainCharacters(
+            unlockedRegionIDs: Set(MainlineCatalog.journeys.map(\.starterRegionID)),
+            difficulty: profile.difficultyLevel
+        )
+        needsOnboarding = ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] != "1"
+        return userID
+    }
+    #endif
+
+    private func importMainCharacters(into account: AccountWorkspace) async throws {
+        let seedsURL = Bundle.main.url(
+            forResource: "main_characters",
+            withExtension: "json"
+        )!
         let cards = try SeedData.mainCharacterCards(url: seedsURL)
-        try await rosterStore.importMainCharactersIfNeeded(cards: cards)
-        try await reconcileMainCharacters(profile: profile)
-        proactiveMessageScope = "guest"
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] == "1" {
-            needsOnboarding = false
-        } else {
-            needsOnboarding = !profile.hasCompletedOnboarding
-        }
-        #else
-        needsOnboarding = !profile.hasCompletedOnboarding
-        #endif
+        try await account.rosterStore.importMainCharactersIfNeeded(cards: cards)
+    }
+
+    private var proactiveMessageScope: String {
+        "account-\(requiredWorkspace.userID.uuidString.lowercased())"
     }
 
     /// 首启引导完成：原子写入路线与起始城市，并开放五座主线城市。
@@ -353,6 +305,135 @@ final class AppEnvironment {
         try await rosterStore.configureMainCharacters(
             unlockedRegionIDs: unlocked,
             difficulty: profile.difficultyLevel
+        )
+    }
+}
+
+/// All mutable journey state lives inside one account-bound object graph. The root view swaps this
+/// graph only after authentication identifies the target account, so views can never render stores
+/// from the previously active account while a new account is loading.
+@MainActor
+final class AccountWorkspace {
+    let userID: UUID
+    let modelContainer: ModelContainer
+    let accountCacheStore: AccountCacheStore
+    let contentSyncStore: ContentSyncStore
+    let voiceMediaQueueStore: VoiceMediaQueueStore
+    let chatStore: ChatStore
+    let npcAvatars: PublicNPCAvatarCoordinator
+    let rosterStore: RosterStore
+    let economyStore: EconomyStore
+    let favoritesStore: FavoritesStore
+    let memoryStore: MemoryStore
+    let itemStore: ItemStore
+    let storyProgressStore: StoryProgressStore
+    let ticketStubStore: TicketStubStore
+    let localUserState: LocalUserStateCoordinator
+    let localTravelService: TravelService
+    let localEconomyService: EconomyService
+    let travelService: TravelService
+    let userState: BackendUserStateCoordinator
+    let contentSync: BackendContentSyncCoordinator
+    let voiceMedia: VoiceMediaCoordinator
+    let proactiveMessages: ProactiveMessageCoordinator
+    let billing: BillingController
+    let economyService: EconomyService
+
+    init(
+        userID: UUID,
+        modelContainer: ModelContainer,
+        backend: BackendClient,
+        llm: any LLMClient
+    ) {
+        self.userID = userID
+        self.modelContainer = modelContainer
+
+        let accountCacheStore = AccountCacheStore(modelContainer: modelContainer)
+        self.accountCacheStore = accountCacheStore
+        let contentSyncStore = ContentSyncStore(modelContainer: modelContainer)
+        self.contentSyncStore = contentSyncStore
+        let voiceMediaQueueStore = VoiceMediaQueueStore(modelContainer: modelContainer)
+        self.voiceMediaQueueStore = voiceMediaQueueStore
+        let chatStore = ChatStore(modelContainer: modelContainer)
+        self.chatStore = chatStore
+        let rosterStore = RosterStore(modelContainer: modelContainer)
+        self.rosterStore = rosterStore
+        self.npcAvatars = PublicNPCAvatarCoordinator(
+            registry: backend,
+            roster: rosterStore
+        )
+        let economyStore = EconomyStore(modelContainer: modelContainer)
+        self.economyStore = economyStore
+        self.favoritesStore = FavoritesStore(modelContainer: modelContainer)
+        self.memoryStore = MemoryStore(modelContainer: modelContainer)
+        let itemStore = ItemStore(modelContainer: modelContainer)
+        self.itemStore = itemStore
+        let storyProgressStore = StoryProgressStore(modelContainer: modelContainer)
+        self.storyProgressStore = storyProgressStore
+        let ticketStubStore = TicketStubStore(modelContainer: modelContainer)
+        self.ticketStubStore = ticketStubStore
+
+        let userState = BackendUserStateCoordinator(
+            backend: backend,
+            accountCache: accountCacheStore,
+            economyCache: economyStore,
+            itemCache: itemStore,
+            ticketStubCache: ticketStubStore,
+            accountStorageUserID: userID
+        )
+        self.userState = userState
+        self.contentSync = BackendContentSyncCoordinator(
+            backend: backend,
+            store: contentSyncStore
+        )
+        self.voiceMedia = VoiceMediaCoordinator(
+            backend: backend,
+            chatStore: chatStore,
+            queueStore: voiceMediaQueueStore,
+            ownerStore: UserDefaultsVoiceMediaOwnerStore(
+                key: "voice.media.owner.\(userID.uuidString.lowercased()).v1"
+            )
+        )
+        self.proactiveMessages = ProactiveMessageCoordinator(
+            accountID: userID,
+            rosterStore: rosterStore,
+            chatStore: chatStore,
+            economyStore: economyStore,
+            llm: llm
+        )
+        self.billing = BillingController(
+            backend: backend,
+            economyStore: economyStore
+        )
+        self.travelService = TravelService(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            stubStore: ticketStubStore,
+            commandGateway: userState
+        )
+        self.economyService = EconomyService(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            ticketPurchaseGateway: userState
+        )
+
+        // These gateways exist only for isolated DEBUG UI fixtures. Product navigation never
+        // selects them because a signed-out user has no workspace.
+        let localUserState = LocalUserStateCoordinator(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            storyProgressStore: storyProgressStore
+        )
+        self.localUserState = localUserState
+        self.localTravelService = TravelService(
+            economyStore: economyStore,
+            itemStore: itemStore,
+            stubStore: ticketStubStore,
+            allowsTravel: false
+        )
+        self.localEconomyService = EconomyService(
+            economyStore: economyStore,
+            itemStore: itemStore
         )
     }
 }
