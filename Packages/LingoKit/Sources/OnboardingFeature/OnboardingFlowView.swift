@@ -39,7 +39,7 @@ public struct OnboardingFlowView: View {
     private let deps: OnboardingDependencies
     private let placementCompletionRevision: Int
     private let onRequestPlacement: () -> Void
-    private let onComplete: (CharacterDTO) -> Void
+    private let onComplete: (CharacterDTO) async -> Bool
 
     @State private var phase: Phase = .loading
     @State private var profile: UserProfileDTO?
@@ -55,7 +55,7 @@ public struct OnboardingFlowView: View {
         deps: OnboardingDependencies,
         placementCompletionRevision: Int = 0,
         onRequestPlacement: @escaping () -> Void = {},
-        onComplete: @escaping (CharacterDTO) -> Void
+        onComplete: @escaping (CharacterDTO) async -> Bool
     ) {
         self.deps = deps
         self.placementCompletionRevision = placementCompletionRevision
@@ -223,7 +223,7 @@ public struct OnboardingFlowView: View {
         }
         if mode == "full", let first = characters.first {
             try? await Task.sleep(for: .milliseconds(500))
-            onComplete(first)
+            _ = await onComplete(first)
         }
     }
     #endif
@@ -476,13 +476,14 @@ struct CharacterSelectView: View {
     private static let confirmationDelay = Duration.milliseconds(260)
 
     let characters: [CharacterDTO]
-    let onSelect: (CharacterDTO) -> Void
+    let onSelect: (CharacterDTO) async -> Bool
 
     private static let regionNames = ["london": "伦敦", "melbourne": "墨尔本", "newyork": "纽约"]
     private static let regionFlags = ["london": "🇬🇧", "melbourne": "🇦🇺", "newyork": "🇺🇸"]
     @State private var selectedID: UUID?
     @State private var celebrationTrigger = 0
     @State private var isConfirming = false
+    @State private var selectionError: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
@@ -526,10 +527,11 @@ struct CharacterSelectView: View {
                 .padding(.horizontal, DSSpacing.lg)
 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: DSSpacing.md) {
+                    LazyHStack(spacing: 0) {
                         ForEach(characters) { character in
                             physicalCard(character)
-                                .containerRelativeFrame(.horizontal, count: 10, span: 8, spacing: DSSpacing.md)
+                                .padding(.horizontal, 28)
+                                .containerRelativeFrame(.horizontal)
                                 .id(character.id)
                                 .scrollTransition(.interactive, axis: .horizontal) { content, phase in
                                     content
@@ -545,9 +547,8 @@ struct CharacterSelectView: View {
                     }
                     .scrollTargetLayout()
                 }
-                .scrollTargetBehavior(.viewAligned)
+                .scrollTargetBehavior(.paging)
                 .scrollPosition(id: $selectedID)
-                .contentMargins(.horizontal, 28, for: .scrollContent)
 
                 HStack(spacing: 7) {
                     ForEach(characters) { character in
@@ -561,17 +562,35 @@ struct CharacterSelectView: View {
                 Button {
                     confirmSelection()
                 } label: {
-                    Text(buttonTitle)
+                    HStack(spacing: DSSpacing.xs) {
+                        if isConfirming {
+                            ProgressView()
+                                .tint(.white)
+                        }
+                        Text(isConfirming ? "正在准备旅程…" : buttonTitle)
+                    }
                 }
                 .buttonStyle(.dsActionPrimary)
                 .disabled(selectedCharacter == nil || isConfirming)
                 .celebration(true, tint: .dsSky, trigger: celebrationTrigger)
+                .accessibilityIdentifier("onboarding.selection.confirm")
                 .padding(.horizontal, DSSpacing.xl)
                 .padding(.bottom, DSSpacing.md)
             }
         }
         .onAppear { selectedID = selectedID ?? characters.first?.id }
         .sensoryFeedback(.impact(flexibility: .soft), trigger: selectedID)
+        .alert(
+            "暂时无法出发",
+            isPresented: Binding(
+                get: { selectionError != nil },
+                set: { if !$0 { selectionError = nil } }
+            )
+        ) {
+            Button("再试一次") { selectionError = nil }
+        } message: {
+            Text(selectionError ?? "请稍后重试。")
+        }
     }
 
     private var selectedCharacter: CharacterDTO? {
@@ -652,9 +671,18 @@ struct CharacterSelectView: View {
         celebrationTrigger += 1
         Task {
             if !reduceMotion {
-                try? await Task.sleep(for: Self.confirmationDelay)
+                do {
+                    try await Task.sleep(for: Self.confirmationDelay)
+                } catch {
+                    isConfirming = false
+                    return
+                }
             }
-            onSelect(character)
+            guard await onSelect(character) else {
+                isConfirming = false
+                selectionError = "旅程没有保存成功，请稍后再试一次。"
+                return
+            }
         }
     }
 

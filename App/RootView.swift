@@ -53,6 +53,7 @@ struct RootView: View {
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
+    @State private var completedForcedOnboarding = false
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -104,7 +105,10 @@ struct RootView: View {
     private var showsOnboarding: Binding<Bool> {
         Binding(
             get: {
-                (environment.needsOnboarding == true || forcesOnboardingForUITest)
+                (
+                    environment.needsOnboarding == true
+                        || (forcesOnboardingForUITest && !completedForcedOnboarding)
+                )
                     && !showPlacementTest
             },
             set: { newValue in
@@ -354,16 +358,23 @@ struct RootView: View {
                     placementCompletionRevision: placementCompletionRevision,
                     onRequestPlacement: { showOnboardingPlacement = true }
                 ) { character in
-                    Task {
-                        guard await environment.completeOnboarding(
-                            selected: character,
-                            onboardingCommands: onboardingCommands
-                        ) else { return }
-                        stateRevision += 1
-                        await refreshProactiveMessagesAfterInterfaceSettles(
-                            requestAuthorization: true
-                        )
+                    #if DEBUG
+                    if ProcessInfo.processInfo.environment[
+                        "UI_TEST_ONBOARDING_SELECTION_FAILURE"
+                    ] == "1" {
+                        return false
                     }
+                    #endif
+                    guard await environment.completeOnboarding(
+                        selected: character,
+                        onboardingCommands: onboardingCommands
+                    ) else { return false }
+                    completedForcedOnboarding = true
+                    stateRevision += 1
+                    await refreshProactiveMessagesAfterInterfaceSettles(
+                        requestAuthorization: true
+                    )
+                    return true
                 }
                 .interactiveDismissDisabled()
                 .fullScreenCover(isPresented: $showOnboardingPlacement) {

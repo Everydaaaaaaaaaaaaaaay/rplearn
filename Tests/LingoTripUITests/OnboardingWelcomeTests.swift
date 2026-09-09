@@ -97,11 +97,43 @@ final class OnboardingWelcomeTests: XCTestCase {
 
         let scroll = app.scrollViews.firstMatch
         XCTAssertTrue(scroll.exists)
-        assertPortrait(regionID: "london", expectedLabel: "Oliver Bennett")
+        assertCenteredPortrait(regionID: "london", expectedLabel: "Oliver Bennett")
         scroll.swipeLeft()
-        assertPortrait(regionID: "melbourne", expectedLabel: "Ruby Walker")
+        assertCenteredPortrait(regionID: "melbourne", expectedLabel: "Ruby Walker")
         scroll.swipeLeft()
-        assertPortrait(regionID: "newyork", expectedLabel: "Marcus Rivera")
+        assertCenteredPortrait(regionID: "newyork", expectedLabel: "Marcus Rivera")
+    }
+
+    func testStarterSelectionButtonCompletesTheFlow() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launch()
+
+        let title = app.staticTexts["选择你的第一位旅伴"]
+        XCTAssertTrue(title.waitForExistence(timeout: 8))
+        let confirm = app.buttons["onboarding.selection.confirm"]
+        XCTAssertTrue(confirm.exists)
+        XCTAssertTrue(confirm.isHittable)
+        confirm.tap()
+
+        XCTAssertTrue(title.waitForNonExistence(timeout: 8), "选择成功后应离开选角页")
+    }
+
+    func testStarterSelectionFailureCanRetry() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION_FAILURE"] = "1"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["选择你的第一位旅伴"].waitForExistence(timeout: 8))
+        let confirm = app.buttons["onboarding.selection.confirm"]
+        XCTAssertTrue(confirm.isHittable)
+        confirm.tap()
+
+        XCTAssertTrue(app.alerts["暂时无法出发"].waitForExistence(timeout: 3))
+        app.alerts.buttons["再试一次"].tap()
+        XCTAssertTrue(confirm.waitForExistence(timeout: 2))
+        XCTAssertTrue(confirm.isEnabled)
     }
 
     private func advance(toEyebrow eyebrow: String) {
@@ -112,10 +144,21 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(app.staticTexts[eyebrow].waitForExistence(timeout: 3))
     }
 
-    private func assertPortrait(regionID: String, expectedLabel: String) {
+    private func assertCenteredPortrait(regionID: String, expectedLabel: String) {
         let avatar = app.descendants(matching: .any)["onboarding.character.avatar.\(regionID)"]
         XCTAssertTrue(avatar.waitForExistence(timeout: 3))
         XCTAssertEqual(avatar.label, expectedLabel)
+        let windowMidX = app.windows.firstMatch.frame.midX
+        let centered = NSPredicate { object, _ in
+            guard let element = object as? XCUIElement else { return false }
+            return abs(element.frame.midX - windowMidX) <= 2
+        }
+        let expectation = XCTNSPredicateExpectation(predicate: centered, object: avatar)
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [expectation], timeout: 2),
+            .completed,
+            "\(expectedLabel) 的人物卡应吸附在屏幕正中"
+        )
     }
 
     private func waitForAny(_ elements: [XCUIElement], timeout: TimeInterval) -> Bool {
