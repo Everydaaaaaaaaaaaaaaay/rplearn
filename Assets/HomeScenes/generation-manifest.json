@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "status": "backgrounds_unchanged_pixel_alignment_review_completed",
+  "status": "realism_release_withdrawn_2026_09_10",
   "perspectiveReview": "Original blanket UI alignment acceptance was invalidated by Melbourne and Dublin defects. Final-JPEG pixel landmarks and hashes: perspective-landmarks.json. All 15 map surfaces and all entry groups rechecked; see docs/home-city-scene-acceptance.md for correction evidence. Historical uiReview fields below describe the original run, not proof of photographic alignment.",
   "generationMode": "Built-in imagegen, independent text-to-image for every attempt; no reference image supplied, no image-to-image",
   "processing": "Single-pass center crop and JPEG quality 95 encoding directly from original PNG; no upscaling, no synthesis or local repainting",
@@ -32,7 +32,14 @@
           "prompt": "Use case: photorealistic-natural. Generate ONE brand-new portrait architectural photograph, aspect ratio 9:19.5, highest resolution, for London home-screen background. Text-to-image only. No reference image, no collage, no interface, no lettering, no symbols, no watermarks.\nScene: standing in a welcoming small London townhouse entrance hall ready to explore the city, camera at eye level gently looking down, 28mm architectural lens, rectilinear verticals, inviting open space, not a cramped dramatic tunnel. Composition: open black exterior door and its complete white jamb occupy LEFT 42%; open door hinged visibly at far left, unobstructed limestone threshold leads directly to broad wet London pavement. Beyond door a recognizable London row of cream stucco Georgian terraces, black railings attached to actual stone boundaries, small leafy street tree. IMPORTANT there is NO GATE anywhere and no detached railing across the path. Pavement is same level beyond one clearly complete step; no inexplicable drop. RIGHT 58% warm cream plaster wall. A real rectangular folded paper world atlas map pinned flush onto wall, recognizable accurate continents and oceans, muted blue beige, occupies x55–90% y21–39%, not fantasy travel lines. Plain wall BELOW MAP at x56–86% y44–58% left empty for app story icon. Above door at x10–39% y11–15% quiet pale lintel for city label.\nLower right a sturdy dark wooden shoe bench from x49% y63% to bottom right; four physically connected legs and one low shelf, restrained construction. ONE closed dark notebook and ONE folded black umbrella realistically supported on bench top, not floor; no other clutter. ONE pair of sensible walking shoes tucked at bottom left around y85%, realistic matching left/right pair. Clear dark oak floor at x12–42% y67–78% reserved for activity UI. Lower 11% not important, native tabs will cover it. Natural overcast London light, damp exterior/dry interior, soft contact shadows under every object, tactile fine plaster, precise wood grain, realistic leather. Top 10% quiet warm wall for status bar. Credible functional architecture and object scale; no floating objects, impossible hinges, furniture intersections or superfluous architecture. Maintain photographic realism at full image size.",
           "reason": "铰链/锁具关系不能验证"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "退回",
+        "issue": "H-01",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "3808f74c4d757641aa78744e2445c6200e64e095b3960b41056b511eb57081ed"
+      }
     },
     {
       "id": "melbourne",
@@ -71,7 +78,14 @@
           "prompt": "Use case photorealistic-natural. Generate ONE brand-new high-resolution 9:19.5 portrait architectural photograph, not a collage. Text-to-image only, NO input image. A tactile lived-in local entryway, preparing to step out and explore this city. Natural rectilinear perspective, 28mm lens, eye level gently tilted down. Actual functional architecture, plausible scale, precise connected hinges/posts/furniture legs, all objects supported with contact shadows. A continuous safe walkable path leads outside. No gates at all; no floating railings or obstructed passages. No people, UI, symbols, lettering, watermarks, fantastical patterns or stereotypical costume props. Realistic quiet surfaces reserved for later UI, no UI baked in. Top 10% low-detail for status bar, bottom 12% no essential subjects for tabs. Need a recognizable muted world atlas on a wall (geographically recognizable continents, not arbitrary travel doodles), a closed notebook on a supported bench/console under adjacent blank wall, and clear darker foreground floor space for a walking activity icon. Materials crisp, restrained photographic color and realistic soft contact shadows.  Door hardware rule if a door is visible: single conventional latch/lever close to FREE edge, hinge pins on OPPOSITE edge connecting to actual jamb. Never central double knobs or locks on hinge side. Door dimensions fit opening. Every railing spans between supported posts and ends logically. Use simple construction with verifiable connections, not ornamental complexity. Melbourne Carlton heritage terrace COVERED FRONT VERANDA, photographed standing on the porch facing diagonally along it toward the street, with back to the house's front door (door is BEHIND CAMERA, never in image). No door leaf, no doorframe, no door hardware anywhere in this photograph. Actual cast-iron lace veranda frieze and two narrow iron columns properly joined to roof beam and bluestone bases at LEFT edges. Right sage-green rendered house wall, same heritage terrace, has an entirely visible framed world atlas x55–94% y22–41% used by guesthouse visitors, plain sage wall x55–93% y46–60%, small black timber bench y65% at right with closed journal and folded black umbrella resting naturally on it, one pair of shoes on low shelf. Straightforward grey bluestone porch floor, clear x17–44% y72–82%. Real tessellated tiles only a narrow floor border. Outside LEFT are a broad unobstructed path with one shallow step to pavement, historic red brick Carlton terraces, side view of small Melbourne green tram on street rails. No gates and no railings across pathway. Porch is less than one step above ground, requires no front balustrade. Iron columns and frieze structurally coherent, top restrained roof underlining protected porch. Crisp architectural photograph not illustration. Soft daylight.",
           "reason": "无入户门的开放门廊"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-03",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "0296d998fc94681e5b8627f5f05802a0a870d0d97e140d2bcd2554859db2b826"
+      }
     },
     {
       "id": "newyork",
@@ -105,7 +119,14 @@
           "prompt": "Use case photorealistic-natural. Generate ONE brand-new high-resolution 9:19.5 portrait architectural photograph, not a collage. Text-to-image only, NO input image. A tactile lived-in local entryway, preparing to step out and explore this city. Natural rectilinear perspective, 28mm lens, eye level gently tilted down. Actual functional architecture, plausible scale, precise connected hinges/posts/furniture legs, all objects supported with contact shadows. A continuous safe walkable path leads outside. No gates at all; no floating railings or obstructed passages. No people, UI, symbols, lettering, watermarks, fantastical patterns or stereotypical costume props. Realistic quiet surfaces reserved for later UI, no UI baked in. Top 10% low-detail for status bar, bottom 12% no essential subjects for tabs. Need a recognizable muted world atlas on a wall (geographically recognizable continents, not arbitrary travel doodles), a closed notebook on a supported bench/console under adjacent blank wall, and clear darker foreground floor space for a walking activity icon. Materials crisp, restrained photographic color and realistic soft contact shadows.  Door hardware rule if a door is visible: single conventional latch/lever close to FREE edge, hinge pins on OPPOSITE edge connecting to actual jamb. Never central double knobs or locks on hinge side. Door dimensions fit opening. Every railing spans between supported posts and ends logically. Use simple construction with verifiable connections, not ornamental complexity. New York Brooklyn brownstone vestibule, camera inside looking outside. Wide open single dark walnut front door on RIGHT, free edge at extreme right foreground, hinged far edge near image x70% at right doorway jamb. ONE simple small brass LEVER at free RIGHT edge, rectangular mortise latch plate on free edge. NO KNOBS, NO KNOCKERS, no extra lock boxes or multiple handles. NO hardware on the opposite empty LEFT jamb except ONE small strike plate at handle height. Entire opened door fits the whole rectangular doorway when closed. Large clear opening from x37–73% shows real brownstone stoop, complete stairs and attached wrought-iron side handrails between stone newels, tree-lined Brooklyn brownstone street, no gate. Warm walnut casing, LEFT cream plaster wall has compact entire muted world atlas at x4–31% y25–42%, quiet wall below at x5–32% y47–60%. Small narrow console at bottom left with closed notebook and keys in shallow dish. Dark slate floor foreground x48–77% y75–84% clear, simple small geometric tiled vestibule border; warm autumn afternoon, soft contrast, authentic stoops and facades. No towering Manhattan landmark pasted in. Physically consistent hinges, latch and door width are more important than ornament.  CRITICAL PHYSICAL DOOR: show a complete full-width single timber door opened inward approximately 80 degrees. Its hinge edge is the FAR edge attached to the doorway jamb near picture center; its free latch edge extends toward camera at the outer side of the image. The entire leaf is visible, visibly wide enough to cover the entire opening after rotation. A single modest brass LEVER on a rectangular backplate, with key cylinder below, sits close to that FREE outer edge. Mortise latch plate on this SAME free edge, three hinge pins on OPPOSITE edge by the doorway. No doorknobs anywhere, no knockers, no letterboxes on the inside, no second handle set, no detached hardware, no center pull, no undersized door. Open leaf doesn't intersect wall/floor or furniture. ",
           "reason": "原生入口留白不足"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-05",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "28e253cd378234e263e63dda723f1225fc227f1509602187d3e3f61c00484020"
+      }
     },
     {
       "id": "capetown",
@@ -128,7 +149,14 @@
       "asset": "App/Assets.xcassets/home_city_capetown.imageset/home_city_capetown.jpg",
       "structuralReview": "大角度开启的门扇有近处自由边、对应双面门钮及锁舌，远侧铰接边；透视造成窄投影，不是半扇门；无栅栏。当地彩墙街道与室内有门槛分界。",
       "uiReview": "Reviewed iPhone 17 Pro and iPhone SE native screenshots; entrance labels clear, scene hit navigation passed; bottom-bar overlap repaired and verified on SE.",
-      "rejected": []
+      "rejected": [],
+      "realismReview20260910": {
+        "status": "退回",
+        "issue": "H-02",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "549b58224684c2d48443ca378ffa62e0ac9f77d7913889531696511cc8d7c060"
+      }
     },
     {
       "id": "singapore",
@@ -157,7 +185,14 @@
           "prompt": "Use case photorealistic-natural. Generate ONE brand-new high-resolution 9:19.5 portrait architectural photograph, not a collage. Text-to-image only, NO input image. A tactile lived-in local entryway, preparing to step out and explore this city. Natural rectilinear perspective, 28mm lens, eye level gently tilted down. Actual functional architecture, plausible scale, precise connected hinges/posts/furniture legs, all objects supported with contact shadows. A continuous safe walkable path leads outside. No gates at all; no floating railings or obstructed passages. No people, UI, symbols, lettering, watermarks, fantastical patterns or stereotypical costume props. Realistic quiet surfaces reserved for later UI, no UI baked in. Top 10% low-detail for status bar, bottom 12% no essential subjects for tabs. Need a recognizable muted world atlas on a wall (geographically recognizable continents, not arbitrary travel doodles), a closed notebook on a supported bench/console under adjacent blank wall, and clear darker foreground floor space for a walking activity icon. Materials crisp, restrained photographic color and realistic soft contact shadows. Singapore Joo Chiat conserved Peranakan shophouse entry, unusually beautiful locally specific teal louvred timber shutters and pale jade plaster with a restrained waist-high band of Peranakan floral ceramic tiles. Looking from sheltered entry through open paired teak door on LEFT into a continuous roofed five-foot way, beyond are pastel pink and mint shophouses with pilasters, long shuttered windows, no pagoda. Rain just finished, dry covered interior. RIGHT wall has paper world atlas entirely visible within x54–93% y21–40%; keep plain jade plaster x54–91% y44–59% free. Dark teak bench lower right with notebook and folded umbrella resting on top; shoes neatly on low shelf. Muted charcoal floor foreground x13–44% y70–81% intentionally plain (decorative tiles only along floor border), readable UI area. Full hinged doors clear their frames and swing unobstructed, five-foot-way columns rooted to pavement, no gate or fence. Soft bright tropical shade, no oversaturated fantasy.",
           "reason": "窄门叶无法覆盖门洞"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-06",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "bb02114f662e03ac0013950b95063b20da50c48b3f1acab30bc96507d3406105"
+      }
     },
     {
       "id": "dublin",
@@ -191,7 +226,14 @@
           "prompt": "Use case photorealistic-natural. ONE new portrait 9:19.5 high-resolution architectural photo from TEXT ONLY, no reference images, no UI, symbols or watermark. Dublin Georgian home's enclosed INSIDE entrance hall, getting ready to leave. A recognizable intact semicircular radial fanlight over a CLOSED deep-red full-width Georgian six-panel front door on LEFT. White classical architrave and pilasters, restrained Georgian proportions. Whole door leaf and frame visible, door 0.95m wide2.1m high and fills opening completely; NO gaps or extra half door. Only ONE small brass lever with key cylinder below close to the door's right latch stile. Three small hinges on left edge attached to left jamb, no door knocker/letterbox on interior face, no duplicate knobs. To the left of door one narrow real glazed sidelight shows rainy red-brick Dublin townhouse facades and their colorful doors across the street; this window has a full fixed frame and glazed panes, not an unclosable opening. Camera nearly front-on with slight natural oblique perspective; ample indoor warm grey plaster wall RIGHT with a FULL rectangular framed muted world map contained x56–94% y24–44%. Keep plain wall x55–94% y48–61% free. Dark oak entry bench lower right, one closed notebook and folded wool scarf on top, one matching pair of boots below shelf, all indoors and supported. Dark slate floor foreground left x15–46% y72–83% empty and dry, muted coir mat just inside closed door. Top10% quiet ceiling/plaster; bottom10% reserved for tabs. Authentic Irish fanlight and red door are focal features, no shamrocks or fantasy architecture. Clear ceiling/wall/floor enclosure, safe domestic proportions, no gate. Real wood grain, glass reflections, contacts, soft Irish daylight.",
           "reason": "对侧上门框铰链状五金"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-07",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "7d67c9dbbbe956aa55542853281e2cccd14888bd76a1526fbedef3f12a33c8cc"
+      }
     },
     {
       "id": "edinburgh",
@@ -220,7 +262,14 @@
           "prompt": "Use case photorealistic-natural. Generate ONE brand-new high-resolution 9:19.5 portrait architectural photograph, not a collage. Text-to-image only, NO input image. A tactile lived-in local entryway, preparing to step out and explore this city. Natural rectilinear perspective, 28mm lens, eye level gently tilted down. Actual functional architecture, plausible scale, precise connected hinges/posts/furniture legs, all objects supported with contact shadows. A continuous safe walkable path leads outside. No gates at all; no floating railings or obstructed passages. No people, UI, symbols, lettering, watermarks, fantastical patterns or stereotypical costume props. Realistic quiet surfaces reserved for later UI, no UI baked in. Top 10% low-detail for status bar, bottom 12% no essential subjects for tabs. Need a recognizable muted world atlas on a wall (geographically recognizable continents, not arbitrary travel doodles), a closed notebook on a supported bench/console under adjacent blank wall, and clear darker foreground floor space for a walking activity icon. Materials crisp, restrained photographic color and realistic soft contact shadows. Edinburgh Stockbridge sandstone townhouse vestibule. Diagonal view toward open tall muted BLUE wooden door RIGHT; massive warm grey sandstone surround, restrained transom, outside damp setts, recognizably Edinburgh honey-grey ashlar terraces and stone steps, no castle pasted in wrong location. Full width low landing and realistic steps, any railings fastened to wall and stone posts, no gate. LEFT interior stone/plaster wall has muted real world atlas x7–42% y22–41%, quiet desaturated clay plaster below x10–42% y47–59%. Small dark wooden console lower left holding closed navy journal and folded charcoal tartan scarf, sensible clean items supported. A pair of boots below shelf. Dark flagstone foreground clear x57–85% y72–82%. Gentle cloudy Scottish morning, inviting not gloomy, accurately joined masonry courses, believable lintel span. Strong local stonework and streetscape.",
           "reason": "门叶裁切导致无法验证覆盖关系"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-08",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "182dd96470768704ca6dea484030e2fc58693d092e0c41ecb51c9b7c900669e8"
+      }
     },
     {
       "id": "vancouver",
@@ -254,7 +303,14 @@
           "prompt": "Photorealistic-natural. ONE NEW text-only 9:19.5 portrait photograph, high resolution, no UI/reference images/watermarks. INSIDE an enclosed Vancouver Mount Pleasant Craftsman home's warm entry hall, NOT an outdoor porch. View slightly oblique from inside showing ceiling, walls, door and floor all connected.\nRIGHT half: CLOSED full-width Douglas fir Craftsman front door, rectangular three-pane glazed top half and broad solid lower panel, normal0.95m width2.1m height; entire door precisely fills its complete wooden jamb and lintel with uniform reveal. Only one modest dark bronze lever and keyhole at LEFT latch edge; hinges on RIGHT only, no knobs or duplicates. Door outside is a porch with broad tapered timber column on brick base, visible THROUGH real glass, backed by Vancouver shingled Craftsman houses and a big cedar in damp coastal daylight. Never put furniture outside. LEFT wall painted deep muted moss-green with fine timber wainscot: fully visible rectangular real-world atlas x7–43% y23–42%, no fantasy routes; quiet green wall below x8–44% y46–60%. Modest fir shoe cabinet bottom left with closed waterproof notebook and folded rain jacket on top, one matching pair of boots inside open shelf. Dark fir plank floor, empty at x55–85% y75–84%, doorway threshold dry indoors, no open gaps, gate or pavilion. Top10% calm enclosed ceiling. Bottom10% spare floor for native tabs. Real close-grained fir, simple honest joinery, consistent soft contact shadows, rainforest-city character, no exaggerated mountain/safari scenery.",
           "reason": "世界地图被替换成无法核实的街区图"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-09",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "81c310f33b826952cf7763358760a3cea899399d58c7d407d5676d48a874a262"
+      }
     },
     {
       "id": "auckland",
@@ -283,7 +339,14 @@
           "prompt": "Use case photorealistic-natural. Generate ONE brand-new high-resolution 9:19.5 portrait architectural photograph, not a collage. Text-to-image only, NO input image. A tactile lived-in local entryway, preparing to step out and explore this city. Natural rectilinear perspective, 28mm lens, eye level gently tilted down. Actual functional architecture, plausible scale, precise connected hinges/posts/furniture legs, all objects supported with contact shadows. A continuous safe walkable path leads outside. No gates at all; no floating railings or obstructed passages. No people, UI, symbols, lettering, watermarks, fantastical patterns or stereotypical costume props. Realistic quiet surfaces reserved for later UI, no UI baked in. Top 10% low-detail for status bar, bottom 12% no essential subjects for tabs. Need a recognizable muted world atlas on a wall (geographically recognizable continents, not arbitrary travel doodles), a closed notebook on a supported bench/console under adjacent blank wall, and clear darker foreground floor space for a walking activity icon. Materials crisp, restrained photographic color and realistic soft contact shadows.  Door hardware rule if a door is visible: single conventional latch/lever close to FREE edge, hinge pins on OPPOSITE edge connecting to actual jamb. Never central double knobs or locks on hinge side. Door dimensions fit opening. Every railing spans between supported posts and ends logically. Use simple construction with verifiable connections, not ornamental complexity. Auckland Ponsonby heritage weatherboard villa covered veranda entrance, native tree ferns and mature pohutukawa framing view out LEFT to white timber villas; NOT Australian iron-lace, rather white timber fretwork attached to posts under continuous corrugated roof. Sheltered interior-edge wall RIGHT painted muted blue-grey with real paper world atlas x56–93% y22–41%; plain wall below x55–90% y47–60%; a kauri timber hall bench below with closed dark notebook and canvas day bag resting on it. Grey-stained timber veranda foreground x13–44% y72–82% clear for walking; sturdy posts land on deck; broad two steps lead into a stone garden path, no gate and no detached fence. Shoes beneath bench, no objects obstruct passage. Natural bright maritime light, botanical detail recognizably New Zealand without artificial Maori patterns or fantasy props. Door is outside frame; this is the sheltered porch looking toward exit, no need door hardware. Calm bright practical home.",
           "reason": "无入户门的开放门廊"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-04",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "7d82b786bc1303012eef87fc238cdc39bc04d18f69228b77b74ae45d42edf148"
+      }
     },
     {
       "id": "nairobi",
@@ -312,7 +375,14 @@
           "prompt": "Use case photorealistic-natural. Generate ONE brand-new high-resolution 9:19.5 portrait architectural photograph, not a collage. Text-to-image only, NO input image. A tactile lived-in local entryway, preparing to step out and explore this city. Natural rectilinear perspective, 28mm lens, eye level gently tilted down. Actual functional architecture, plausible scale, precise connected hinges/posts/furniture legs, all objects supported with contact shadows. A continuous safe walkable path leads outside. No gates at all; no floating railings or obstructed passages. No people, UI, symbols, lettering, watermarks, fantastical patterns or stereotypical costume props. Realistic quiet surfaces reserved for later UI, no UI baked in. Top 10% low-detail for status bar, bottom 12% no essential subjects for tabs. Need a recognizable muted world atlas on a wall (geographically recognizable continents, not arbitrary travel doodles), a closed notebook on a supported bench/console under adjacent blank wall, and clear darker foreground floor space for a walking activity icon. Materials crisp, restrained photographic color and realistic soft contact shadows.  Door hardware rule if a door is visible: single conventional latch/lever close to FREE edge, hinge pins on OPPOSITE edge connecting to actual jamb. Never central double knobs or locks on hinge side. Door dimensions fit opening. Every railing spans between supported posts and ends logically. Use simple construction with verifiable connections, not ornamental complexity. Nairobi Karen garden guesthouse departure veranda, honest low stone bungalow construction characteristic of leafy Karen, red clay tile roof supported by complete stout timber posts and beams, warm pale cream plaster wall on RIGHT. Through wide open veranda bay LEFT, a tidy stone walking path leads through a real lush Nairobi highland garden with jacaranda tree purple blossoms and red-soil planting beds, low stone bungalow across the garden. NOT safari camp, no animals, no desert, no tribal masks or stereotyped props. Framed real world atlas on RIGHT wall x57–93% y22–41%; quiet cream wall below x55–91% y47–60%; simple dark hardwood bench below with a closed notebook and woven sisal day bag on top, shoes on low shelf. Dark warm stone tile foreground x15–45% y72–83% completely clear. Covered veranda floor joins path through two broad safe steps, open bay means no hinged door needed. All roof loads visibly carried by columns at sides, no gate or fence. Pleasant filtered equatorial highland daylight, realistic locally credible domestic materials, welcoming and airy.",
           "reason": "家具处于开放门廊"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-10",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "39748fe3e58599b0c61f98bcfc959e4904579ab2179eec9fa08fd0e5f38464e6"
+      }
     },
     {
       "id": "toronto",
@@ -335,7 +405,14 @@
       "asset": "App/Assets.xcassets/home_city_toronto.imageset/home_city_toronto.jpg",
       "structuralReview": "完整红木闭门左铰右锁，彩玻璃边框和上亮窗；门外红砖山墙排屋及枫树；鞋柜位于室内。",
       "uiReview": "Reviewed iPhone 17 Pro and iPhone SE native screenshots; entrance labels clear, scene hit navigation passed; bottom-bar overlap repaired and verified on SE.",
-      "rejected": []
+      "rejected": [],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-11",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "53e210ac0fff89b7a5e2a572f8e9f8051b38d8ca4631fe58d006605f5dd6dcce"
+      }
     },
     {
       "id": "sydney",
@@ -364,7 +441,14 @@
           "prompt": "Photorealistic-natural. ONE fresh text-only high-resolution portrait9:19.5 architectural photograph. NO input reference image, no UI/text/watermark. Inside an enclosed small heritage guesthouse entrance in The Rocks, Sydney, not an outdoor porch. Warm honey sandstone wall detail, cream plaster, dark timber floor, natural coastal morning light. Ceiling/walls/floor fully connected.\nLEFT half a CLOSED broad navy-blue timber-framed glass entrance door, normal0.95m wide2.1m high; upper2/3 real clear glass, bottom solid wood. Entire leaf exactly fits complete door frame. ONLY one small brushed-brass lever and key cylinder close to right latch stile, three discreet hinges at left jamb only; no central knobs, duplicate hardware or open gaps. Through real glass view sandstone/brick heritage terraces and a lane in The Rocks; a modest DISTANT partial steel arch of Sydney Harbour Bridge appears above roofs, geographically plausible northward view, not gigantic bridge, no Opera House collage. RIGHT generous cream plaster wall with entire rectangular muted world atlas x56–93% y22–42%, accurate continents no printed title. Clear cream wall below x55–94% y46–60%. Small dark timber shoe cabinet inside bottom right, closed notebook and simple folded canvas sunhat on top, shoes on low shelf. Nothing outside except street architecture. Clear dark timber floor x17–46% y74–83%; top10% quiet ceiling and bottom10% spare floor for tabs. Correct human-scaled door, honest sandstone and wood texture, realistic glazing and contact shadows, welcoming lived-in departure scene rather than showroom.",
           "reason": "重复把手"
         }
-      ]
+      ],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-12",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "fde6c63f0b9122915871d06cb6120553d2790aa3fab2f5c5166cfea1615e732b"
+      }
     },
     {
       "id": "neworleans",
@@ -387,7 +471,14 @@
       "asset": "App/Assets.xcassets/home_city_neworleans.imageset/home_city_neworleans.jpg",
       "structuralReview": "完整双扇门在共同门框内闭合，两侧外缘铰链、中缝一主动锁把；右扇小件是对应锁扣；庭院栏杆、柱子有支撑，家具在门内。",
       "uiReview": "Reviewed iPhone 17 Pro and iPhone SE native screenshots; entrance labels clear, scene hit navigation passed; bottom-bar overlap repaired and verified on SE.",
-      "rejected": []
+      "rejected": [],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-13",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "31c5bec16c1a6b2cd73a7d3b9412a62322988f5f42b66800d4b6438bf22548b0"
+      }
     },
     {
       "id": "manchester",
@@ -410,7 +501,14 @@
       "asset": "App/Assets.xcassets/home_city_manchester.imageset/home_city_manchester.jpg",
       "structuralReview": "闭合钢框单扇门左铰右单把手，整扇覆盖门洞；室内砖、灰泥与木地板相接；街对面旧工厂窗，室内柜面雨衣、书及下层鞋。",
       "uiReview": "Reviewed iPhone 17 Pro and iPhone SE native screenshots; entrance labels clear, scene hit navigation passed; bottom-bar overlap repaired and verified on SE.",
-      "rejected": []
+      "rejected": [],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-14",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "f2401e494ef4339493384175bf9a2b24891a584afd4dd9942cc1fb4ce7a81e80"
+      }
     },
     {
       "id": "kingston",
@@ -433,7 +531,14 @@
       "asset": "App/Assets.xcassets/home_city_kingston.imageset/home_city_kingston.jpg",
       "structuralReview": "完整闭合木门右铰左单锁把；玻璃外廊柱和栏杆真实连接；室内顶墙地围护，书帽在凳面、凉鞋在架上。风格借鉴而非声称等同 Devon House。",
       "uiReview": "Reviewed iPhone 17 Pro and iPhone SE native screenshots; entrance labels clear, scene hit navigation passed; bottom-bar overlap repaired and verified on SE.",
-      "rejected": []
+      "rejected": [],
+      "realismReview20260910": {
+        "status": "待证实",
+        "issue": "H-15",
+        "releaseReady": false,
+        "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+        "sha256": "d1e309af0d61e8dca5a9135cf02b33e7cce911d22ebc7ed8fec06f8839c03f2b"
+      }
     }
   ],
   "verification": {
@@ -443,5 +548,11 @@
     "review": "All 30 native screenshots visually reviewed. Static checks for 375x667,393x852,402x874,440x956. No physical-device profiling or live travel purchase performed.",
     "renderer": "Existing HomeDepartureMetalView/HomePerspectiveArtwork/DSHologramMaterial reused; per-city homography shared by render and hit region.",
     "finalEncodedAssets": "HomeCitiesFinalResources.xcresult: 7/7 passed after single-pass PNG-to-JPEG 95 export"
+  },
+  "realismReview": {
+    "date": "2026-09-10",
+    "record": "docs/home-city-scene-realism-audit-2026-09-10.md",
+    "releaseReady": false,
+    "note": "历史几何/UI结果保留；不再代表背景真实性通过。2城退回、13城待证实；当前运行资源尚未替换。"
   }
 }

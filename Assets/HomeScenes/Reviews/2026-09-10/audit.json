@@ -1,0 +1,427 @@
+{
+  "version": "2026-09-10",
+  "reviewedCommit": "d47722e",
+  "runtimeAssetsChanged": false,
+  "cities": [
+    {
+      "city": "london",
+      "name": "伦敦",
+      "status": "退回",
+      "issue": "H-01",
+      "asset": "App/Assets.xcassets/home_city_london.imageset/home_city_london.jpg",
+      "sha256": "3808f74c4d757641aa78744e2445c6200e64e095b3960b41056b511eb57081ed",
+      "size": [
+        852,
+        1842
+      ],
+      "observation": "门槛外连续湿铺地直接接公共人行道，没有交代本住宅的门前缓冲；对侧排屋却有栏杆边界。用户明确拒收。",
+      "uncertainty": "不能仅凭临街断言建筑不可能；但本版缺少同类住宅从室内到街道的实拍证据，空间表达未达到项目要求。",
+      "requiredEvidenceOrCorrection": "独立重做具有可见门前平台、短路径和明确街道退距的玄关，先用完整实拍证明类型；不靠关门或模糊隐藏问题。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        699,
+        852,
+        1528
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "melbourne",
+      "name": "墨尔本",
+      "status": "待证实",
+      "issue": "H-03",
+      "asset": "App/Assets.xcassets/home_city_melbourne.imageset/home_city_melbourne.jpg",
+      "sha256": "0296d998fc94681e5b8627f5f05802a0a870d0d97e140d2bcd2554859db2b826",
+      "size": [
+        844,
+        1824
+      ],
+      "observation": "廊柱正落在玻璃门视口中部，柱脚后紧接电车/街面；近侧廊面深度被门板遮掉。",
+      "uncertainty": "可能有正常门廊，但本图无法判断门扇扫掠与柱子的距离、从门到人行道的绕行空间。",
+      "requiredEvidenceOrCorrection": "优先补同视点门廊实拍及侧视动线；若无法证明，换能看到廊面和出口的构图。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        693,
+        844,
+        1513
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "newyork",
+      "name": "纽约",
+      "status": "待证实",
+      "issue": "H-05",
+      "asset": "App/Assets.xcassets/home_city_newyork.imageset/home_city_newyork.jpg",
+      "sha256": "28e253cd378234e263e63dda723f1225fc227f1509602187d3e3f61c00484020",
+      "size": [
+        844,
+        1824
+      ],
+      "observation": "近侧视口底部可见两侧栏杆柱；对面棕石房有清楚的上楼台阶。鞋柜、书与鞋可识别。",
+      "uncertainty": "近侧栏杆之间的落脚平台与阶梯被门板遮挡；对面有台阶不能证明本住宅同样正确。",
+      "requiredEvidenceOrCorrection": "补近侧门廊和台阶高度参照，核对视平线及地面；保留已可识别的室内物件。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        693,
+        844,
+        1513
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "capetown",
+      "name": "开普敦",
+      "status": "退回",
+      "issue": "H-02",
+      "asset": "App/Assets.xcassets/home_city_capetown.imageset/home_city_capetown.jpg",
+      "sha256": "549b58224684c2d48443ca378ffa62e0ac9f77d7913889531696511cc8d7c060",
+      "size": [
+        843,
+        1822
+      ],
+      "observation": "门槛外仅见很窄的浅色石带，随后就是大面积卵石道路；对侧有明确人行道与入户台阶。",
+      "uncertainty": "近侧能否安全站立、再转入人行道无法从图说明，不能把门槛存在当成动线合理。",
+      "requiredEvidenceOrCorrection": "重做近侧门前停留平台和沿街人行区域，使用可核对的当地街道参照；不可直接把室内门洞接到车道。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        692,
+        843,
+        1512
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "singapore",
+      "name": "新加坡",
+      "status": "待证实",
+      "issue": "H-06",
+      "asset": "App/Assets.xcassets/home_city_singapore.imageset/home_city_singapore.jpg",
+      "sha256": "bb02114f662e03ac0013950b95063b20da50c48b3f1acab30bc96507d3406105",
+      "size": [
+        853,
+        1844
+      ],
+      "observation": "视口内对面店屋、花盆、路缘及道路清楚；自身近侧地面没有呈现。",
+      "uncertainty": "本住宅前是否有退让/廊道、如何接到街道未被证明；店屋风格本身不是问题。",
+      "requiredEvidenceOrCorrection": "补同类型真实入户空间，不强制所有店屋都具有同一廊道，按具体场所验收。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        700,
+        853,
+        1530
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "dublin",
+      "name": "都柏林",
+      "status": "待证实",
+      "issue": "H-07",
+      "asset": "App/Assets.xcassets/home_city_dublin.imageset/home_city_dublin.jpg",
+      "sha256": "7d67c9dbbbe956aa55542853281e2cccd14888bd76a1526fbedef3f12a33c8cc",
+      "size": [
+        842,
+        1821
+      ],
+      "observation": "侧窗露出近侧湿铺地、道路和对面蓝门；室内石地与木凳接地清楚。",
+      "uncertainty": "狭窄侧窗不足以解释本住宅门前平台与街道距离，不能由对面门脸推断近侧。",
+      "requiredEvidenceOrCorrection": "补同视角门前空间；保留门叶与固定侧窗的区分。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        691,
+        842,
+        1511
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "edinburgh",
+      "name": "爱丁堡",
+      "status": "待证实",
+      "issue": "H-08",
+      "asset": "App/Assets.xcassets/home_city_edinburgh.imageset/home_city_edinburgh.jpg",
+      "sha256": "182dd96470768704ca6dea484030e2fc58693d092e0c41ecb51c9b7c900669e8",
+      "size": [
+        853,
+        1844
+      ],
+      "observation": "对面石砌住宅、台阶和路缘可辨；近侧门板遮住室外落脚位置，室内门框及鞋凳清楚。",
+      "uncertainty": "灰砂岩和湿石街并不证明具体入口可信；左侧三幅地图是装饰，不能充当地域结构依据。",
+      "requiredEvidenceOrCorrection": "补近侧门槛/平台参照，并核查地图装饰的实际来源与版式。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        700,
+        853,
+        1530
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "vancouver",
+      "name": "温哥华",
+      "status": "待证实",
+      "issue": "H-09",
+      "asset": "App/Assets.xcassets/home_city_vancouver.imageset/home_city_vancouver.jpg",
+      "sha256": "81c310f33b826952cf7763358760a3cea899399d58c7d407d5676d48a874a262",
+      "size": [
+        843,
+        1823
+      ],
+      "observation": "门外右侧砖墩、灰柱和顶棚形成门廊线索；对面住宅退入植被之后。",
+      "uncertainty": "未见直接接车道的明显矛盾，但廊面和台阶仍被下门板遮挡；不能宣布完整动线通过。",
+      "requiredEvidenceOrCorrection": "补门廊地面至步道的真实参照和近侧高差证据。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        692,
+        843,
+        1513
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "auckland",
+      "name": "奥克兰",
+      "status": "待证实",
+      "issue": "H-04",
+      "asset": "App/Assets.xcassets/home_city_auckland.imageset/home_city_auckland.jpg",
+      "sha256": "7d82b786bc1303012eef87fc238cdc39bc04d18f69228b77b74ae45d42edf148",
+      "size": [
+        844,
+        1824
+      ],
+      "observation": "白廊柱位于门视口正前方，横栏及斜向栏杆占据下部；门前平台被门板遮挡。",
+      "uncertainty": "栏杆也可能围绕正常台阶，不能仅凭遮挡断言堵门；但出门往哪走缺少直接证据。",
+      "requiredEvidenceOrCorrection": "优先证明柱、平台、栏杆开口及台阶的相互位置；不能用画外出口解释一切。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        693,
+        844,
+        1513
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "nairobi",
+      "name": "内罗毕",
+      "status": "待证实",
+      "issue": "H-10",
+      "asset": "App/Assets.xcassets/home_city_nairobi.imageset/home_city_nairobi.jpg",
+      "sha256": "39748fe3e58599b0c61f98bcfc959e4904579ab2179eec9fa08fd0e5f38464e6",
+      "size": [
+        851,
+        1840
+      ],
+      "observation": "廊柱上接横梁，下部有柱脚；外部草地与石路和屋墙相接，室内书包与鞋架可理解。",
+      "uncertainty": "本轮没有确认到直接临车道问题；柱子与门之间可通行宽度没有尺度依据。",
+      "requiredEvidenceOrCorrection": "核对相近机位真实廊柱和小径；门锁组合仅记可见，不臆断多锁必然错误。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        699,
+        851,
+        1527
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "toronto",
+      "name": "多伦多",
+      "status": "待证实",
+      "issue": "H-11",
+      "asset": "App/Assets.xcassets/home_city_toronto.imageset/home_city_toronto.jpg",
+      "sha256": "53e210ac0fff89b7a5e2a572f8e9f8051b38d8ca4631fe58d006605f5dd6dcce",
+      "size": [
+        842,
+        1821
+      ],
+      "observation": "对面房屋有前院、连续台阶、围栏与人行道；自身门玻璃下沿只呈现道路与部分铺地。",
+      "uncertainty": "对侧缓冲空间表达较完整，但本住宅近侧入口仍待实拍证明。",
+      "requiredEvidenceOrCorrection": "补本住宅高度与前院路径关系，避免把对面正确当成整景正确。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        691,
+        842,
+        1511
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "sydney",
+      "name": "悉尼",
+      "status": "待证实",
+      "issue": "H-12",
+      "asset": "App/Assets.xcassets/home_city_sydney.imageset/home_city_sydney.jpg",
+      "sha256": "fde6c63f0b9122915871d06cb6120553d2790aa3fab2f5c5166cfea1615e732b",
+      "size": [
+        853,
+        1844
+      ],
+      "observation": "对面排屋有矮墙、围栏及台阶；近侧树根和一小段铺地靠近视口底部。",
+      "uncertainty": "本住宅与人行道的退距和近树通行关系没有充分证据。",
+      "requiredEvidenceOrCorrection": "补本住宅门前平台与树、步道的相对位置，不凭远景阳台判定整景通过。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        700,
+        853,
+        1530
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "neworleans",
+      "name": "新奥尔良",
+      "status": "待证实",
+      "issue": "H-13",
+      "asset": "App/Assets.xcassets/home_city_neworleans.imageset/home_city_neworleans.jpg",
+      "sha256": "31c5bec16c1a6b2cd73a7d3b9412a62322988f5f42b66800d4b6438bf22548b0",
+      "size": [
+        852,
+        1842
+      ],
+      "observation": "双门外为封闭院落，柱脚落在砖地上，阳台由立柱承托，未出现公共道路贴门问题。",
+      "uncertainty": "可見院落空间比临街版本清楚；双扇中缝的小五金功能及门扇操作仍需要实物参照。",
+      "requiredEvidenceOrCorrection": "补同类型院落和双扇门实物，核对开合、锁扣、阳台连接，不强行改成临街场景。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        699,
+        852,
+        1528
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "manchester",
+      "name": "曼彻斯特",
+      "status": "待证实",
+      "issue": "H-14",
+      "asset": "App/Assets.xcassets/home_city_manchester.imageset/home_city_manchester.jpg",
+      "sha256": "f2401e494ef4339493384175bf9a2b24891a584afd4dd9942cc1fb4ce7a81e80",
+      "size": [
+        853,
+        1844
+      ],
+      "observation": "对面旧砖建筑、路缘和石街可见，自身玻璃下沿以下完全由门板遮挡。",
+      "uncertainty": "可能是合理临街改造房，也可能缺少门前缓冲；当前证据不能区分。",
+      "requiredEvidenceOrCorrection": "补具体改造住处的真实入口及用途，不把工业风当成居住空间真实性。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        700,
+        853,
+        1530
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    },
+    {
+      "city": "kingston",
+      "name": "金斯敦",
+      "status": "待证实",
+      "issue": "H-15",
+      "asset": "App/Assets.xcassets/home_city_kingston.imageset/home_city_kingston.jpg",
+      "sha256": "d1e309af0d61e8dca5a9135cf02b33e7cce911d22ebc7ed8fec06f8839c03f2b",
+      "size": [
+        853,
+        1844
+      ],
+      "observation": "玻璃外呈现沿外墙延伸的廊顶、白柱、栏杆与棕榈；室内凳腿、书帽和鞋受支撑。",
+      "uncertainty": "未见门直贴车道的问题；门外地面和栏杆出口被遮挡，尚不能验证完整离开路线。",
+      "requiredEvidenceOrCorrection": "补沿廊走向与出口的实拍；不同气候的廊屋不套用伦敦方案。",
+      "originalSourceExists": true,
+      "detailCrop": [
+        0,
+        700,
+        853,
+        1530
+      ],
+      "rounds": [
+        "whole-image",
+        "native-central-detail",
+        "mobile-comparison-and-prior-claim-audit"
+      ],
+      "releaseReady": false
+    }
+  ]
+}
