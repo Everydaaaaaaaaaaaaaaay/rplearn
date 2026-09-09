@@ -24,6 +24,7 @@ struct BackendContentSyncCoordinatorTests {
     }
 
     private actor ContentTransport: BackendTransport {
+        private(set) var activityProfileAttempts: [Bool] = []
         private(set) var expectedVersions: [Int] = []
         private var fault: String
         init(fault: String = "none") { self.fault = fault }
@@ -59,6 +60,24 @@ struct BackendContentSyncCoordinatorTests {
                 let commands = try #require(
                     object["commands"] as? [[String: Any]]
                 )
+                let hasActivityProfile = commands.contains { command in
+                    guard let payload = command["payload"] as? [String: Any],
+                          let card = payload["card"] as? [String: Any]
+                    else { return false }
+                    return card["activityProfile"] != nil
+                }
+                activityProfileAttempts.append(hasActivityProfile)
+                if fault == "legacyActivityProfile", hasActivityProfile {
+                    fault = "none"
+                    return json(
+                        [
+                            "code": "INVALID_REQUEST",
+                            "message": "The request is invalid.",
+                            "requestId": "legacy-content-schema",
+                        ],
+                        status: 400
+                    )
+                }
                 let results = commands.map { command -> [String: Any] in
                     let expected = command["expectedVersion"] as? Int ?? -1
                     expectedVersions.append(expected)
@@ -175,5 +194,52 @@ struct BackendContentSyncCoordinatorTests {
         #expect(try await syncStore.takePending().isEmpty)
         await coordinator.deactivate()
     }
-}
 
+    @Test("旧服务端不识别作息字段时登录同步降级重试且保留本地设定")
+    func retriesAgainstLegacyActivityProfileSchema() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = ContentTransport(fault: "legacyActivityProfile")
+        let backend = BackendClient(
+            configuration: BackendConfiguration(
+                baseURL: URL(string: "https://api.example.com")!
+            ),
+            credentialStore: MemoryCredentials(userID: userID),
+            transport: transport
+        )
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let roster = RosterStore(modelContainer: container)
+        let syncStore = ContentSyncStore(modelContainer: container)
+        let expectedProfile = NPCActivityProfile(
+            timeZoneIdentifier: "Europe/London",
+            rhythm: .earlyBird,
+            focusDurationMinutes: 8
+        )
+        let characterID = try await roster.addCharacter(
+            card: CharacterCard(
+                name: "Alice",
+                age: 28,
+                gender: .female,
+                nationality: "British",
+                regionID: "london",
+                occupation: "Guide",
+                hobbies: ["books"],
+                appearance: "Brown hair",
+                personality: "Warm",
+                activityProfile: expectedProfile
+            ),
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let coordinator = BackendContentSyncCoordinator(
+            backend: backend,
+            store: syncStore
+        )
+
+        try await coordinator.activate(userID: userID)
+
+        #expect(await transport.activityProfileAttempts == [true, false])
+        #expect(try await syncStore.takePending().isEmpty)
+        #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
+        await coordinator.deactivate()
+    }
+}

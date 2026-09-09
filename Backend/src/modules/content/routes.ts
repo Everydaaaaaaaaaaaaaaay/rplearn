@@ -82,6 +82,26 @@ const personaVoicePayload = z
   })
   .strict();
 
+const activityProfilePayload = z
+  .object({
+    focusDurationMinutes: z.number().int().min(4).max(12),
+    rhythm: z.enum(["earlyBird", "daytime", "nightOwl", "irregular"]),
+    timeZoneIdentifier: z
+      .string()
+      .trim()
+      .min(1)
+      .max(80)
+      .refine((value) => {
+        try {
+          new Intl.DateTimeFormat("en-US", { timeZone: value }).format();
+          return true;
+        } catch {
+          return false;
+        }
+      }, "Expected an IANA time-zone identifier."),
+  })
+  .strict();
+
 const growthPayload = z
   .object({
     arcs: z
@@ -141,6 +161,7 @@ const characterPayload = z
         occupation: z.string().trim().min(1).max(120),
         personality: z.string().trim().min(1).max(2_000),
         personaVoice: personaVoicePayload.optional(),
+        activityProfile: activityProfilePayload.optional(),
         regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
         signature: nullableText(240),
         speechStyle: nullableText(2_000),

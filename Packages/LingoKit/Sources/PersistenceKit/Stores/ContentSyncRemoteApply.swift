@@ -39,6 +39,8 @@ extension ContentSyncStore {
             throw SyncStoreError.invalidPayload
         }
         let payload: ContentCharacterPayload = try decode(record.payloadJSON)
+        let existingActivityProfile = try character(id: id)
+            .flatMap { CharacterCard.decode(fromJSON: $0.cardJSON)?.activityProfile }
         let card = CharacterCard(
             name: payload.card.name,
             age: payload.card.age,
@@ -59,7 +61,9 @@ extension ContentSyncStore {
             hometown: payload.card.hometown,
             languages: payload.card.languages,
             personaVoice: payload.card.personaVoice,
-            activityProfile: payload.card.activityProfile
+            // Absence means a legacy server/device payload, not a request to erase the newer
+            // persona field. This also keeps rolling-version sync from repeatedly downgrading it.
+            activityProfile: payload.card.activityProfile ?? existingActivityProfile
         )
         let entity = try character(id: id) ?? {
             let created = CharacterEntity(

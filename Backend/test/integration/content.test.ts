@@ -133,6 +133,11 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
             nationality: "British",
             occupation: "Guide",
             personality: "Warm",
+            activityProfile: {
+              focusDurationMinutes: 8,
+              rhythm: "earlyBird",
+              timeZoneIdentifier: "Europe/London",
+            },
             regionId: "london",
             speechStyle: "Friendly",
           },
@@ -321,6 +326,13 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     const firstPage = firstPageResponse.json<ContentPage>();
     expect(firstPage.records).toHaveLength(2);
     expect(firstPage.records.find((record) => record.resourceId === characterId)?.payload).toMatchObject({
+      card: {
+        activityProfile: {
+          focusDurationMinutes: 8,
+          rhythm: "earlyBird",
+          timeZoneIdentifier: "Europe/London",
+        },
+      },
       growth: { schemaVersion: 2, isPaused: true },
     });
     expect(firstPage.hasMore).toBe(true);

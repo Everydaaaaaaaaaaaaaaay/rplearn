@@ -231,6 +231,61 @@ struct ContentSyncStoreTests {
         #expect(try await sync.takePending().isEmpty)
     }
 
+    @Test("旧设备的角色载荷不会清除本机已有作息")
+    func legacyCharacterPayloadPreservesActivityProfile() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let expectedProfile = NPCActivityProfile(
+            timeZoneIdentifier: "Europe/London",
+            rhythm: .nightOwl,
+            focusDurationMinutes: 9
+        )
+        var localCard = characterCard(name: "Alice")
+        localCard.activityProfile = expectedProfile
+        let characterID = try await roster.addCharacter(
+            card: localCard,
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let legacyPayload = ContentCharacterPayload(
+            card: ContentCharacterPayload.Card(
+                age: 28,
+                appearance: "Brown hair",
+                avatarAssetName: nil,
+                background: nil,
+                gender: "female",
+                hobbies: ["books"],
+                name: "Alice",
+                nationality: "British",
+                occupation: "Guide",
+                personality: "Warm",
+                regionId: "london",
+                speechStyle: "Friendly"
+            ),
+            difficulty: DifficultyLevel.junior3.rawValue,
+            isFriend: true,
+            isMainCharacter: false,
+            metAt: .now
+        )
+
+        try await sync.apply(
+            records: [
+                remote(
+                    type: .character,
+                    id: characterID.uuidString,
+                    parentID: nil,
+                    payload: try ContentMutationJournal.encode(legacyPayload),
+                    version: 2
+                ),
+            ],
+            nextCursor: "next"
+        )
+
+        #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
+    }
+
     private func characterCard(name: String) -> CharacterCard {
         CharacterCard(
             name: name,
