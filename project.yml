@@ -240,6 +240,7 @@ targets:
         includes:
           - DomainKitTests/PromptBuilderTests.swift
           - DomainKitTests/RoleplayReplyFormatterTests.swift
+          - DomainKitTests/NPCAttentionPolicyTests.swift
           - DomainKitTests/ProactiveMessageSchedulePolicyTests.swift
     dependencies:
       - package: LingoKit

@@ -165,6 +165,11 @@ struct EncounterServiceTests {
                 conversationalHabits: ["asks follow-up questions"],
                 boundaries: ["does not pressure people"],
                 anchorLines: ["Give me the short version."]
+            ),
+            activityProfile: NPCActivityProfile(
+                timeZoneIdentifier: "Europe/London",
+                rhythm: .nightOwl,
+                focusDurationMinutes: 9
             )
         )
         let id = UUID()
@@ -183,6 +188,7 @@ struct EncounterServiceTests {
 
         #expect(restored.name == local.name)
         #expect(restored.personaVoice == local.personaVoice)
+        #expect(restored.activityProfile == local.activityProfile)
         #expect(restored.avatarID == remote.avatar?.id.uuidString.lowercased())
         #expect(restored.avatarRemoteURL == "https://cdn.example.com/nora.webp")
     }

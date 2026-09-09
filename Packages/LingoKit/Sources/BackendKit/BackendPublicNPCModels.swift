@@ -22,6 +22,22 @@ public struct BackendPublicNPCVoice: Codable, Sendable, Equatable {
     }
 }
 
+public struct BackendNPCActivityProfile: Codable, Sendable, Equatable {
+    public let timeZoneIdentifier: String
+    public let rhythm: String
+    public let focusDurationMinutes: Int
+
+    public init(
+        timeZoneIdentifier: String,
+        rhythm: String,
+        focusDurationMinutes: Int
+    ) {
+        self.timeZoneIdentifier = timeZoneIdentifier
+        self.rhythm = rhythm
+        self.focusDurationMinutes = focusDurationMinutes
+    }
+}
+
 public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
     public let age: Int
     public let appearance: String
@@ -39,6 +55,7 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
     public let regionId: String
     public let signature: String?
     public let speechStyle: String?
+    public let activityProfile: BackendNPCActivityProfile?
 
     public init(
         age: Int,
@@ -56,7 +73,8 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
         personality: String,
         regionId: String,
         signature: String?,
-        speechStyle: String?
+        speechStyle: String?,
+        activityProfile: BackendNPCActivityProfile? = nil
     ) {
         self.age = age
         self.appearance = appearance
@@ -74,6 +92,7 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
         self.regionId = regionId
         self.signature = signature
         self.speechStyle = speechStyle
+        self.activityProfile = activityProfile
     }
 }
 

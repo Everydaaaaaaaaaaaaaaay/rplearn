@@ -107,32 +107,38 @@ struct ContentSyncStoreTests {
                 ),
             ]
         )
+        var remoteCard = ContentCharacterPayload.Card(
+            age: 28,
+            appearance: "Brown hair",
+            avatarAssetName: nil,
+            avatarId: "portrait-0042",
+            avatarRemoteUrl: "https://example.invalid/portrait-0042.webp",
+            background: "Guide",
+            birthday: "08-24",
+            gender: "female",
+            hobbies: ["books"],
+            hometown: "Bath",
+            languages: ["English", "French"],
+            name: "Alice",
+            nationality: "British",
+            occupation: "Guide",
+            personality: "Warm",
+            regionId: "london",
+            speechStyle: "Friendly",
+            signature: "Take the scenic route.",
+            personaVoice: PersonaVoiceProfile(
+                values: ["curiosity"],
+                flaws: ["overplans"],
+                conversationalHabits: ["asks specific questions"]
+            )
+        )
+        remoteCard.activityProfile = NPCActivityProfile(
+            timeZoneIdentifier: "Europe/London",
+            rhythm: .earlyBird,
+            focusDurationMinutes: 8
+        )
         let characterPayload = ContentCharacterPayload(
-            card: .init(
-                age: 28,
-                appearance: "Brown hair",
-                avatarAssetName: nil,
-                avatarId: "portrait-0042",
-                avatarRemoteUrl: "https://example.invalid/portrait-0042.webp",
-                background: "Guide",
-                birthday: "08-24",
-                gender: "female",
-                hobbies: ["books"],
-                hometown: "Bath",
-                languages: ["English", "French"],
-                name: "Alice",
-                nationality: "British",
-                occupation: "Guide",
-                personality: "Warm",
-                regionId: "london",
-                speechStyle: "Friendly",
-                signature: "Take the scenic route.",
-                personaVoice: PersonaVoiceProfile(
-                    values: ["curiosity"],
-                    flaws: ["overplans"],
-                    conversationalHabits: ["asks specific questions"]
-                )
-            ),
+            card: remoteCard,
             difficulty: DifficultyLevel.junior3.rawValue,
             isFriend: true,
             isFavorite: true,
@@ -206,6 +212,8 @@ struct ContentSyncStoreTests {
         #expect(restoredCharacter.card.avatarID == "portrait-0042")
         #expect(restoredCharacter.card.signature == "Take the scenic route.")
         #expect(restoredCharacter.card.personaVoice?.values == ["curiosity"])
+        #expect(restoredCharacter.card.activityProfile?.rhythm == .earlyBird)
+        #expect(restoredCharacter.card.activityProfile?.focusDurationMinutes == 8)
         #expect(restoredCharacter.travelerID == TravelerIDGenerator.make(from: characterID))
         #expect(restoredCharacter.publicIdentityRegistered)
         #expect(restoredCharacter.displayName == "小爱")

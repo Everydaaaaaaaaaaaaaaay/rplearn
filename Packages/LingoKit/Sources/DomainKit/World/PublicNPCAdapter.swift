@@ -26,7 +26,14 @@ public enum PublicNPCAdapter {
             personality: card.personality,
             regionId: card.regionID,
             signature: card.signature,
-            speechStyle: card.speechStyle
+            speechStyle: card.speechStyle,
+            activityProfile: card.activityProfile.map {
+                BackendNPCActivityProfile(
+                    timeZoneIdentifier: $0.timeZoneIdentifier,
+                    rhythm: $0.rhythm.rawValue,
+                    focusDurationMinutes: $0.focusDurationMinutes
+                )
+            }
         )
     }
 
@@ -56,7 +63,14 @@ public enum PublicNPCAdapter {
                 conversationalHabits: source.personaVoice.conversationalHabits,
                 boundaries: source.personaVoice.boundaries,
                 anchorLines: source.personaVoice.anchorLines
-            )
+            ),
+            activityProfile: source.activityProfile.map {
+                NPCActivityProfile(
+                    timeZoneIdentifier: $0.timeZoneIdentifier,
+                    rhythm: NPCActivityRhythm(rawValue: $0.rhythm) ?? .daytime,
+                    focusDurationMinutes: $0.focusDurationMinutes
+                )
+            }
         )
     }
 }

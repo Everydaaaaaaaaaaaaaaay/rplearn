@@ -73,6 +73,34 @@ public actor ChatStore {
             .map(dto(from:))
     }
 
+    /// 多个聊天页面或重启恢复同时尝试回复时，只允许仍位于时间线末端的用户消息继续。
+    public func isLatestUnansweredUserMessage(
+        conversationID: UUID,
+        messageID: UUID,
+        replacingAssistantMessageID: UUID? = nil
+    ) throws -> Bool {
+        guard let conversation = try fetchConversation(id: conversationID) else {
+            throw ChatError.conversationNotFound
+        }
+        let latestDialogueMessage = conversation.messages
+            .filter {
+                $0.roleRaw == MessageRole.user.rawValue
+                    || $0.roleRaw == MessageRole.assistant.rawValue
+            }
+            .max { lhs, rhs in
+                if lhs.orderIndex == rhs.orderIndex {
+                    return lhs.createdAt < rhs.createdAt
+                }
+                return lhs.orderIndex < rhs.orderIndex
+            }
+        if let replacingAssistantMessageID {
+            return latestDialogueMessage?.roleRaw == MessageRole.assistant.rawValue
+                && latestDialogueMessage?.messageID == replacingAssistantMessageID
+        }
+        return latestDialogueMessage?.roleRaw == MessageRole.user.rawValue
+            && latestDialogueMessage?.messageID == messageID
+    }
+
     /// 清空该角色的聊天记录但保留角色、好友关系和关系成长。返回本地语音文件名供媒体层清理。
     @discardableResult
     public func clearConversationHistory(characterID: UUID) throws -> [String] {
@@ -356,7 +384,8 @@ public actor ChatStore {
     public func appendAssistantReplyPart(
         conversationID: UUID,
         text: String,
-        startsNewReply: Bool
+        startsNewReply: Bool,
+        createdAt: Date = .now
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -367,7 +396,8 @@ public actor ChatStore {
             roleRaw: MessageRole.assistant.rawValue,
             text: cleanedText,
             orderIndex: nextIndex,
-            tokenEstimate: TokenEstimator.estimate(cleanedText)
+            tokenEstimate: TokenEstimator.estimate(cleanedText),
+            createdAt: createdAt
         )
         message.conversation = conversation
         modelContext.insert(message)
@@ -380,6 +410,28 @@ public actor ChatStore {
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
+    }
+
+    /// 首气泡提交门禁：末端检查与插入位于同一个 ModelActor 临界区，避免用户恰好
+    /// 在 UI 层检查通过后补发消息而让旧回复越过新消息。
+    public func appendAssistantReplyPartIfCurrent(
+        conversationID: UUID,
+        text: String,
+        respondingToMessageID: UUID,
+        replacingAssistantMessageID: UUID? = nil,
+        createdAt: Date = .now
+    ) throws -> MessageDTO? {
+        guard try isLatestUnansweredUserMessage(
+            conversationID: conversationID,
+            messageID: respondingToMessageID,
+            replacingAssistantMessageID: replacingAssistantMessageID
+        ) else { return nil }
+        return try appendAssistantReplyPart(
+            conversationID: conversationID,
+            text: text,
+            startsNewReply: true,
+            createdAt: createdAt
+        )
     }
 
     /// 更新消息文本（流式增量写入 / 结束时定稿）。

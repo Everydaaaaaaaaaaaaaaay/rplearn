@@ -26,6 +26,19 @@ const nullableText = (maximum: number) =>
     .transform((value) => value ?? null);
 const shortList = (maximumItems: number, maximumLength = 120) =>
   z.array(z.string().trim().min(1).max(maximumLength)).max(maximumItems);
+const timeZoneIdentifier = z
+  .string()
+  .trim()
+  .min(1)
+  .max(80)
+  .refine((value) => {
+    try {
+      new Intl.DateTimeFormat("en-US", { timeZone: value }).format();
+      return true;
+    } catch {
+      return false;
+    }
+  }, "Expected an IANA time-zone identifier.");
 
 const personaVoice = z
   .object({
@@ -60,8 +73,19 @@ const publicCard = z
     regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
     signature: nullableText(240),
     speechStyle: nullableText(2_000),
+    activityProfile: z
+      .object({
+        timeZoneIdentifier,
+        rhythm: z.enum(["earlyBird", "daytime", "nightOwl", "irregular"]),
+        focusDurationMinutes: z.number().int().min(4).max(12),
+      })
+      .strict()
+      .optional(),
   })
-  .strict();
+  .strict()
+  .transform(({ activityProfile, ...card }) =>
+    activityProfile === undefined ? card : { ...card, activityProfile },
+  );
 
 const diversityProfile = z
   .object({

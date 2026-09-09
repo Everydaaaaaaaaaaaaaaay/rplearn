@@ -207,6 +207,7 @@ public struct EncounterService: Sendable {
         var conversationalHabits: [String]?
         var boundaries: [String]?
         var anchorLines: [String]?
+        var activityRhythm: String?
         var diversityProfile: GeneratedDiversityProfile
     }
 
@@ -302,6 +303,11 @@ public struct EncounterService: Sendable {
                 conversationalHabits: generated.conversationalHabits ?? [],
                 boundaries: generated.boundaries ?? [],
                 anchorLines: generated.anchorLines ?? []
+            ),
+            activityProfile: NPCAttentionPolicy.defaultActivityProfile(
+                regionID: region.id,
+                rhythm: NPCActivityRhythm(rawValue: generated.activityRhythm ?? "")
+                    ?? .daytime
             )
         )
         return Encounter(
@@ -363,6 +369,8 @@ public struct EncounterService: Sendable {
         - opening_line: the character's first casual words to the user in English \
         (they just met during an activity), matching that level. 1-2 sentences, friendly, natural.
         - Add a short personal signature, birthday (MM-DD), hometown and spoken languages.
+        - activity_rhythm describes when this person is naturally reachable. Choose earlyBird, daytime, \
+        nightOwl or irregular from their occupation, habits and background; do not default everyone to daytime.
         - Define a stable voice bible: 2-4 values, 1-2 human flaws, 3-5 observable conversational habits, \
         1-3 boundaries, and 4 short anchor lines covering ordinary talk, awkwardness, disagreement and care. \
         These must all express the same personality and speech style. Write these fields in English.
@@ -403,6 +411,9 @@ public struct EncounterService: Sendable {
             "conversational_habits": ["type": "array", "items": ["type": "string"]],
             "boundaries": ["type": "array", "items": ["type": "string"]],
             "anchor_lines": ["type": "array", "items": ["type": "string"]],
+            "activity_rhythm": [
+                "type": "string", "enum": ["earlyBird", "daytime", "nightOwl", "irregular"],
+            ],
             "diversity_profile": [
                 "type": "object",
                 "properties": [
@@ -444,7 +455,8 @@ public struct EncounterService: Sendable {
         ],
         "required": [
             "name", "age", "gender", "nationality", "occupation", "hobbies",
-            "appearance", "personality", "speech_style", "background", "opening_line", "diversity_profile",
+            "appearance", "personality", "speech_style", "background", "opening_line", "activity_rhythm",
+            "diversity_profile",
         ],
         "additionalProperties": false,
     ]
@@ -485,6 +497,12 @@ public struct EncounterService: Sendable {
                     "I don't quite agree, but I get where you're coming from.",
                     "Hey, you don't have to solve everything tonight.",
                 ]
+            ),
+            activityProfile: NPCAttentionPolicy.defaultActivityProfile(
+                regionID: region.id,
+                rhythm: pick.3 == "graduate student" || pick.3 == "freelance designer"
+                    ? .irregular
+                    : .daytime
             )
         )
         return Encounter(

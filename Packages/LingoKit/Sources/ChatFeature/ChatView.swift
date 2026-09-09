@@ -65,28 +65,37 @@ public struct ChatView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                HStack(spacing: 8) {
-                    ZStack(alignment: .bottomTrailing) {
-                        AvatarBadge(
-                            name: viewModel.character.displayName,
-                            size: 32,
-                            imageName: viewModel.character.card.avatarAssetName,
-                            remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                            usesPendingPlaceholder: true
-                        )
-                        Circle()
-                            .fill(viewModel.isStreaming ? Color.dsSunset : Color.dsSuccess)
-                            .frame(width: 9, height: 9)
-                            .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
-                            .accessibilityHidden(true)
+                TimelineView(.periodic(from: .now, by: 15)) { context in
+                    let presence = viewModel.presence(at: context.date)
+                    HStack(spacing: 8) {
+                        ZStack(alignment: .bottomTrailing) {
+                            AvatarBadge(
+                                name: viewModel.character.displayName,
+                                size: 32,
+                                imageName: viewModel.character.card.avatarAssetName,
+                                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                                usesPendingPlaceholder: true
+                            )
+                            Circle()
+                                .fill(presenceColor(presence))
+                                .frame(width: 9, height: 9)
+                                .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
+                                .accessibilityHidden(true)
+                        }
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(viewModel.character.displayName)
+                                .font(.subheadline.bold())
+                            Text(chatStatus(presence, at: context.date))
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                                .contentTransition(.opacity)
+                                .animation(
+                                    reduceMotion ? nil : .easeInOut(duration: 0.2),
+                                    value: presence.state
+                                )
+                        }
                     }
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text(viewModel.character.displayName)
-                            .font(.subheadline.bold())
-                        Text(chatStatus)
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                    }
+                    .accessibilityElement(children: .combine)
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
@@ -203,9 +212,6 @@ public struct ChatView: View {
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
-        .onChange(of: viewModel.draft) {
-            viewModel.noteDraftActivity()
-        }
         .onDisappear {
             markVisibleConversationRead()
         }
@@ -218,14 +224,47 @@ public struct ChatView: View {
         }
     }
 
-    private var chatStatus: String {
+    private func chatStatus(_ presence: NPCPresenceSnapshot, at date: Date) -> String {
+        let city = deps.regionName(viewModel.character.card.regionID)
         if viewModel.isStreaming {
-            return "AI 旅伴 · 正在生成回复"
+            return "正在输入 · \(city)"
         }
-        if viewModel.conversation?.isEncounterSession == true {
-            return "AI 旅伴 · 偶遇中"
+        switch presence.state {
+        case .online:
+            return "在线 · \(city)"
+        case .recentlyActive:
+            return "刚刚在线 · \(city)"
+        case .offline:
+            guard let lastActiveAt = presence.lastActiveAt else {
+                return "离线 · \(city)"
+            }
+            var calendar = Calendar(identifier: .gregorian)
+            let timeZone = TimeZone(identifier: presence.timeZoneIdentifier)
+                ?? TimeZone(secondsFromGMT: 0)!
+            calendar.timeZone = timeZone
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "zh_CN")
+            formatter.timeZone = timeZone
+            formatter.dateFormat = "HH:mm"
+            let time = formatter.string(from: lastActiveAt)
+            if calendar.isDate(lastActiveAt, inSameDayAs: date) {
+                return "\(time) 在线过 · \(city)"
+            }
+            if let yesterday = calendar.date(byAdding: .day, value: -1, to: date),
+               calendar.isDate(lastActiveAt, inSameDayAs: yesterday) {
+                return "昨天 \(time) 在线 · \(city)"
+            }
+            formatter.dateFormat = "M月d日 HH:mm"
+            return "\(formatter.string(from: lastActiveAt)) 在线 · \(city)"
         }
-        return "AI 旅伴 · 可对话"
+    }
+
+    private func presenceColor(_ presence: NPCPresenceSnapshot) -> Color {
+        switch presence.state {
+        case .online: Color.dsSuccess
+        case .recentlyActive: Color.dsSunset
+        case .offline: Color.secondary.opacity(0.55)
+        }
     }
 
     private var messageList: some View {

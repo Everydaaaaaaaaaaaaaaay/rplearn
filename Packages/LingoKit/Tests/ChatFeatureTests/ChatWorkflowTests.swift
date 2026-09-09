@@ -17,10 +17,16 @@ struct ChatWorkflowTests {
     private actor Provider: LLMProvider {
         var response: String
         var fails: Bool
+        var streamDelayMilliseconds: Int
         private(set) var translations = 0
-        init(response: String = "A complete answer.", fails: Bool = false) {
+        init(
+            response: String = "A complete answer.",
+            fails: Bool = false,
+            streamDelayMilliseconds: Int = 0
+        ) {
             self.response = response
             self.fails = fails
+            self.streamDelayMilliseconds = streamDelayMilliseconds
         }
         nonisolated func modelID(for tier: LLMTier) -> String { "workflow-fixture" }
         func complete(_ request: LLMRequest) async throws -> String {
@@ -31,11 +37,20 @@ struct ChatWorkflowTests {
             return "{\"has_issues\":false,\"issues\":[]}"
         }
         func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
-            let response = response, fails = fails
+            let response = response
+            let fails = fails
+            let streamDelayMilliseconds = streamDelayMilliseconds
             return AsyncThrowingStream { continuation in
-                if !response.isEmpty { continuation.yield(.textDelta(response)) }
-                if fails { continuation.finish(throwing: URLError(.networkConnectionLost)) }
-                else { continuation.yield(.finished); continuation.finish() }
+                Task {
+                    if streamDelayMilliseconds > 0 {
+                        try? await Task.sleep(
+                            for: .milliseconds(streamDelayMilliseconds)
+                        )
+                    }
+                    if !response.isEmpty { continuation.yield(.textDelta(response)) }
+                    if fails { continuation.finish(throwing: URLError(.networkConnectionLost)) }
+                    else { continuation.yield(.finished); continuation.finish() }
+                }
             }
         }
     }
@@ -75,7 +90,8 @@ struct ChatWorkflowTests {
             audioSession: AudioSessionCoordinator(), memoryStore: MemoryStore(modelContainer: container),
             itemStore: items, economyStore: economy,
             progression: LocalUserStateCoordinator(economyStore: economy, itemStore: items, storyProgressStore: StoryProgressStore(modelContainer: container)),
-            voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container))
+            voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)),
+            replyDelayScale: 0
         )
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
@@ -110,6 +126,121 @@ struct ChatWorkflowTests {
         #expect(reopened.messages.filter { $0.role == .user }.map(\.text) == ["Tell me the whole story."])
         #expect(normalized(reopened.messages.filter { $0.role == .assistant }.map(\.text).joined(separator: " ")) == normalized(raw))
         #expect(reopened.messages.map(\.id) == f.model.messages.map(\.id))
+    }
+
+    @Test("退出或重启后会从未回复的最后一条用户消息恢复同一回复")
+    func unansweredMessageResumesAfterReopen() async throws {
+        let f = try await fixture()
+        let conversation = try #require(f.model.conversation)
+        _ = try await f.deps.chatStore.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: "Please come back to this message.",
+            tokenEstimate: 7
+        )
+
+        let reopened = await f.reopen()
+        try await settle(reopened)
+
+        #expect(reopened.messages.filter { $0.role == .user }.count == 1)
+        #expect(reopened.messages.filter { $0.role == .assistant }.map(\.text) == [
+            "A complete answer."
+        ])
+    }
+
+    @Test("连续发送新消息会取消旧计划且只生成一次最新回复")
+    func latestUserMessageSupersedesPendingReply() async throws {
+        let f = try await fixture(Provider(streamDelayMilliseconds: 120))
+        f.model.draft = "First thought."
+        await f.model.sendDraft()
+        f.model.draft = "One more detail."
+        await f.model.sendDraft()
+        try await settle(f.model)
+
+        #expect(f.model.messages.filter { $0.role == .user }.map(\.text) == [
+            "First thought.",
+            "One more detail.",
+        ])
+        #expect(f.model.messages.filter { $0.role == .assistant }.map(\.text) == [
+            "A complete answer."
+        ])
+    }
+
+    @Test("旧回复周期不能释放同一页面接管后的新租约")
+    func staleCycleCannotReleaseReplacementLease() {
+        let registry = NPCReplyLeaseRegistry.shared
+        let conversationID = UUID()
+        let ownerID = UUID()
+        let oldCycleID = UUID()
+        let newCycleID = UUID()
+        let otherOwnerID = UUID()
+        let oldMessageID = UUID()
+        let newMessageID = UUID()
+
+        #expect(registry.acquire(
+            conversationID: conversationID,
+            ownerID: ownerID,
+            cycleID: oldCycleID,
+            messageID: oldMessageID
+        ))
+        #expect(registry.acquire(
+            conversationID: conversationID,
+            ownerID: ownerID,
+            cycleID: newCycleID,
+            messageID: newMessageID
+        ))
+        registry.release(
+            conversationID: conversationID,
+            ownerID: ownerID,
+            cycleID: oldCycleID,
+            messageID: oldMessageID
+        )
+        #expect(!registry.acquire(
+            conversationID: conversationID,
+            ownerID: otherOwnerID,
+            cycleID: UUID(),
+            messageID: newMessageID
+        ))
+        registry.release(
+            conversationID: conversationID,
+            ownerID: ownerID,
+            cycleID: newCycleID,
+            messageID: newMessageID
+        )
+        let otherCycleID = UUID()
+        #expect(registry.acquire(
+            conversationID: conversationID,
+            ownerID: otherOwnerID,
+            cycleID: otherCycleID,
+            messageID: newMessageID
+        ))
+        registry.release(
+            conversationID: conversationID,
+            ownerID: otherOwnerID,
+            cycleID: otherCycleID,
+            messageID: newMessageID
+        )
+    }
+
+    @Test("同一未回复消息被两个页面恢复时只生成一次且双方都刷新")
+    func duplicateViewModelsShareOneReply() async throws {
+        let f = try await fixture(Provider(streamDelayMilliseconds: 120))
+        let conversation = try #require(f.model.conversation)
+        _ = try await f.deps.chatStore.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: "Please answer this once."
+        )
+
+        async let firstLoad = f.reopen()
+        async let secondLoad = f.reopen()
+        let (first, second) = await (firstLoad, secondLoad)
+        try await settle(first)
+        try await settle(second)
+
+        #expect(first.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(second.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(first.messages.map(\.id) == second.messages.map(\.id))
     }
 
     @Test("会话尚未准备好时保留草稿")

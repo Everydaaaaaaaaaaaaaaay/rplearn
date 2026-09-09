@@ -8,28 +8,30 @@ extension ContentSyncStore {
         var records: [LocalContentRecord] = []
         for entity in try modelContext.fetch(FetchDescriptor<CharacterEntity>()) {
             let card = CharacterCard.decode(fromJSON: entity.cardJSON)
+            var cardPayload = ContentCharacterPayload.Card(
+                age: entity.age,
+                appearance: entity.appearance,
+                avatarAssetName: entity.avatarAssetName,
+                avatarId: card?.avatarID,
+                avatarRemoteUrl: card?.avatarRemoteURL,
+                background: card?.background,
+                birthday: card?.birthday,
+                gender: entity.genderRaw,
+                hobbies: entity.hobbies,
+                hometown: card?.hometown,
+                languages: card?.languages,
+                name: entity.name,
+                nationality: entity.nationality,
+                occupation: entity.occupation,
+                personality: entity.personality,
+                regionId: entity.regionID,
+                speechStyle: card?.speechStyle,
+                signature: card?.signature,
+                personaVoice: card?.personaVoice
+            )
+            cardPayload.activityProfile = card?.activityProfile
             let payload = ContentCharacterPayload(
-                card: .init(
-                    age: entity.age,
-                    appearance: entity.appearance,
-                    avatarAssetName: entity.avatarAssetName,
-                    avatarId: card?.avatarID,
-                    avatarRemoteUrl: card?.avatarRemoteURL,
-                    background: card?.background,
-                    birthday: card?.birthday,
-                    gender: entity.genderRaw,
-                    hobbies: entity.hobbies,
-                    hometown: card?.hometown,
-                    languages: card?.languages,
-                    name: entity.name,
-                    nationality: entity.nationality,
-                    occupation: entity.occupation,
-                    personality: entity.personality,
-                    regionId: entity.regionID,
-                    speechStyle: card?.speechStyle,
-                    signature: card?.signature,
-                    personaVoice: card?.personaVoice
-                ),
+                card: cardPayload,
                 difficulty: entity.difficultyLevelRaw,
                 isFriend: entity.isFriend,
                 isFavorite: entity.isFavorite,

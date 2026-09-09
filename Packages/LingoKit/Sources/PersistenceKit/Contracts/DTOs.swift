@@ -1,5 +1,31 @@
 import Foundation
 
+/// NPC 的长期作息倾向。具体在线片段由角色、当地时间和日期稳定生成，
+/// 不把某次随机在线结果写回角色设定。
+public enum NPCActivityRhythm: String, Sendable, Codable, Equatable, CaseIterable {
+    case earlyBird
+    case daytime
+    case nightOwl
+    case irregular
+}
+
+/// 可随公共角色卡同步的作息元数据；旧角色缺失时由领域策略从地区与人物设定推断。
+public struct NPCActivityProfile: Sendable, Codable, Equatable {
+    public var timeZoneIdentifier: String
+    public var rhythm: NPCActivityRhythm
+    public var focusDurationMinutes: Int
+
+    public init(
+        timeZoneIdentifier: String,
+        rhythm: NPCActivityRhythm = .daytime,
+        focusDurationMinutes: Int = 7
+    ) {
+        self.timeZoneIdentifier = timeZoneIdentifier
+        self.rhythm = rhythm
+        self.focusDurationMinutes = min(max(focusDurationMinutes, 4), 12)
+    }
+}
+
 /// 角色卡：定义角色的全部设定，用于 AI 角色扮演与形象展示。
 /// 既是 main_characters.json 的解码目标，也是 AI 随机生成角色的结构化输出格式，
 /// 原始 JSON 存入 CharacterEntity.cardJSON 供 prompt 复渲染。
@@ -27,6 +53,7 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     public var hometown: String?
     public var languages: [String]?
     public var personaVoice: PersonaVoiceProfile?
+    public var activityProfile: NPCActivityProfile?
 
     public init(
         name: String,
@@ -47,7 +74,8 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         birthday: String? = nil,
         hometown: String? = nil,
         languages: [String]? = nil,
-        personaVoice: PersonaVoiceProfile? = nil
+        personaVoice: PersonaVoiceProfile? = nil,
+        activityProfile: NPCActivityProfile? = nil
     ) {
         self.name = name
         self.age = age
@@ -68,6 +96,7 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         self.hometown = hometown
         self.languages = languages
         self.personaVoice = personaVoice
+        self.activityProfile = activityProfile
     }
 
     public func encodedJSON() -> String {

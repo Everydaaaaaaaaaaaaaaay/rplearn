@@ -45,10 +45,19 @@ public actor RosterStore {
             FetchDescriptor<CharacterEntity>(predicate: #Predicate { $0.isMainCharacter })
         )
         let existingNames = Set(existing.map(\.name))
+        let bundledCardsByName = Dictionary(uniqueKeysWithValues: cards.map { ($0.name, $0) })
         for entity in existing {
             if let stableID = Self.mainCharacterID(avatarAssetName: entity.avatarAssetName) {
                 entity.characterID = stableID
                 entity.travelerID = TravelerIDGenerator.make(from: stableID)
+            }
+            // New product-owned persona metadata is backfilled without replacing the rest of an
+            // existing user's card (including a previously assigned remote portrait).
+            if var storedCard = CharacterCard.decode(fromJSON: entity.cardJSON),
+               storedCard.activityProfile == nil,
+               let bundledProfile = bundledCardsByName[entity.name]?.activityProfile {
+                storedCard.activityProfile = bundledProfile
+                entity.cardJSON = storedCard.encodedJSON()
             }
         }
         var importedCount = 0
@@ -448,28 +457,30 @@ public actor RosterStore {
 
     private func journal(_ entity: CharacterEntity) throws {
         let card = CharacterCard.decode(fromJSON: entity.cardJSON)
+        var cardPayload = ContentCharacterPayload.Card(
+            age: entity.age,
+            appearance: entity.appearance,
+            avatarAssetName: entity.avatarAssetName,
+            avatarId: card?.avatarID,
+            avatarRemoteUrl: card?.avatarRemoteURL,
+            background: card?.background,
+            birthday: card?.birthday,
+            gender: entity.genderRaw,
+            hobbies: entity.hobbies,
+            hometown: card?.hometown,
+            languages: card?.languages,
+            name: entity.name,
+            nationality: entity.nationality,
+            occupation: entity.occupation,
+            personality: entity.personality,
+            regionId: entity.regionID,
+            speechStyle: card?.speechStyle,
+            signature: card?.signature,
+            personaVoice: card?.personaVoice
+        )
+        cardPayload.activityProfile = card?.activityProfile
         let payload = ContentCharacterPayload(
-            card: .init(
-                age: entity.age,
-                appearance: entity.appearance,
-                avatarAssetName: entity.avatarAssetName,
-                avatarId: card?.avatarID,
-                avatarRemoteUrl: card?.avatarRemoteURL,
-                background: card?.background,
-                birthday: card?.birthday,
-                gender: entity.genderRaw,
-                hobbies: entity.hobbies,
-                hometown: card?.hometown,
-                languages: card?.languages,
-                name: entity.name,
-                nationality: entity.nationality,
-                occupation: entity.occupation,
-                personality: entity.personality,
-                regionId: entity.regionID,
-                speechStyle: card?.speechStyle,
-                signature: card?.signature,
-                personaVoice: card?.personaVoice
-            ),
+            card: cardPayload,
             difficulty: entity.difficultyLevelRaw,
             isFriend: entity.isFriend,
             isFavorite: entity.isFavorite,

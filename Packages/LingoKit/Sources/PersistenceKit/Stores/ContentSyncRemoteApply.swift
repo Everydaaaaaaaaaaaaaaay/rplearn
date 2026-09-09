@@ -58,7 +58,8 @@ extension ContentSyncStore {
             birthday: payload.card.birthday,
             hometown: payload.card.hometown,
             languages: payload.card.languages,
-            personaVoice: payload.card.personaVoice
+            personaVoice: payload.card.personaVoice,
+            activityProfile: payload.card.activityProfile
         )
         let entity = try character(id: id) ?? {
             let created = CharacterEntity(

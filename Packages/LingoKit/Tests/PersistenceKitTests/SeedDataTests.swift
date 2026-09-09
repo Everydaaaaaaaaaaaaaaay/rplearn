@@ -26,6 +26,9 @@ struct SeedDataTests {
             #expect(card.speechStyle?.isEmpty == false)
             #expect(card.background?.isEmpty == false)
             #expect(!card.hobbies.isEmpty)
+            #expect(card.activityProfile != nil)
+            #expect(TimeZone(identifier: card.activityProfile?.timeZoneIdentifier ?? "") != nil)
+            #expect((4...12).contains(card.activityProfile?.focusDurationMinutes ?? 0))
         }
     }
 

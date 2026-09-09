@@ -13,23 +13,27 @@ import SpeechKit
 @MainActor
 @Observable
 public final class ChatViewModel {
+    private static let minimumVisibleTypingDuration: TimeInterval = 0.9
+
     public internal(set) var character: CharacterDTO
     public internal(set) var learnerDifficulty: DifficultyLevel
     let deps: ChatDependencies
 
     public internal(set) var conversation: ConversationDTO?
     public internal(set) var messages: [MessageDTO] = []
-    /// 助手正在生成或输入；空字符串显示输入指示，nil 表示当前没有回复。
+    /// 角色已经进入可见输入阶段；空字符串显示输入指示，nil 表示当前没有回复。
     public private(set) var streamingText: String?
     public private(set) var isStreaming = false
-    /// 已收到用户消息，正在等用户把连续短消息说完；此阶段不显示“正在输入”。
+    /// 已收到用户消息，仍处于注意、准备或等待连续消息阶段；此时不显示“正在输入”。
     public private(set) var isWaitingForUserBurst = false
     public var errorMessage: String?
     public var draft = ""
 
     private var replyTask: Task<Void, Never>?
     private var replyCycleID = UUID()
-    private var replyDeferralDeadline: TimeInterval?
+    private var pendingReplyPlan: NPCReplyPlan?
+    private var typingBeganAt: Date?
+    private let replyOwnerID = UUID()
     var retryingMessageID: UUID?
 
     /// 本会话下一次出题的阈值（N=6±2，每次出题后重掷）。
@@ -53,6 +57,7 @@ public final class ChatViewModel {
             if let profile = try? await deps.economyStore.profile() {
                 learnerDifficulty = profile.difficultyLevel
             }
+            resumePendingReplyIfNeeded()
         } catch {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
@@ -125,17 +130,6 @@ public final class ChatViewModel {
         }
     }
 
-    /// 输入框仍在编辑时，续期尚未开始的回复，让连续短消息有机会归入同一话轮。
-    public func noteDraftActivity() {
-        let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !text.isEmpty, isWaitingForUserBurst else { return }
-        guard let deadline = replyDeferralDeadline else { return }
-
-        let remaining = deadline - ProcessInfo.processInfo.systemUptime
-        guard remaining > 0 else { return }
-        restartPendingReply(after: min(RoleplayTurnTakingPolicy.standard.draftActivityExtension, remaining))
-    }
-
     /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核。
     public func sendVoice(capture: VoiceRecorder.Capture) async {
         guard let conversation else { return }
@@ -174,7 +168,7 @@ public final class ChatViewModel {
         }
         runInteractionReview(for: userMessage, source: .voiceChat)
         runSpeechReview(for: userMessage)
-        scheduleAssistantReply(after: capture.transcript)
+        scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
     /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
@@ -257,11 +251,21 @@ public final class ChatViewModel {
 
     public func refreshMessages() async { await reloadMessages() }
 
+    public func presence(at date: Date) -> NPCPresenceSnapshot {
+        NPCAttentionPolicy.standard.presence(
+            for: character,
+            at: date,
+            lastAssistantMessageAt: messages.last(where: { $0.role == .assistant })?.createdAt,
+            pendingReplyPlan: pendingReplyPlan
+        )
+    }
+
     public func cancelPendingReply() {
         replyTask?.cancel()
         replyTask = nil
         replyCycleID = UUID()
-        replyDeferralDeadline = nil
+        pendingReplyPlan = nil
+        typingBeganAt = nil
         retryingMessageID = nil
         isWaitingForUserBurst = false
         isStreaming = false
@@ -327,7 +331,7 @@ public final class ChatViewModel {
         }
         // 教练审核与主链路并行，互不阻塞。
         runInteractionReview(for: userMessage, source: .textChat)
-        scheduleAssistantReply(after: userText)
+        scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
     }
 
@@ -363,60 +367,177 @@ public final class ChatViewModel {
     }
 
     private func scheduleAssistantReply(
-        after latestUserText: String,
+        after _: String,
         preferredDelay: TimeInterval? = nil,
-        replacing messageID: UUID? = nil
+        replacing messageID: UUID? = nil,
+        userMessage explicitUserMessage: MessageDTO? = nil
     ) {
         replyTask?.cancel()
         retryingMessageID = messageID
-        let now = ProcessInfo.processInfo.systemUptime
-        replyDeferralDeadline = now + RoleplayTurnTakingPolicy.standard.maximumDeferralAfterLatestMessage
+        guard let anchorMessage = explicitUserMessage
+            ?? messages.last(where: { $0.role == .user })
+            ?? messageID.flatMap({ replacementID in
+                messages.first(where: { $0.id == replacementID })
+            })
+        else { return }
 
-        let consecutiveUserMessages = messages.reversed().prefix { $0.role == .user }.count
-        let delay = preferredDelay ?? RoleplayTurnTakingPolicy.standard.quietWindow(
-            after: latestUserText,
-            consecutiveUserMessageCount: consecutiveUserMessages,
-            variation: Double.random(in: 0...1)
-        )
-        restartPendingReply(after: delay)
+        let plan: NPCReplyPlan
+        if let preferredDelay {
+            plan = NPCAttentionPolicy.standard.expeditedReplyPlan(
+                userMessageID: anchorMessage.id,
+                sentAt: deps.now(),
+                delay: preferredDelay
+            )
+        } else {
+            plan = NPCAttentionPolicy.standard.replyPlan(
+                for: character,
+                userMessage: anchorMessage,
+                history: messages
+            )
+        }
+        restartPendingReply(using: plan)
     }
 
-    private func restartPendingReply(after delay: TimeInterval) {
+    private func restartPendingReply(using plan: NPCReplyPlan) {
         replyTask?.cancel()
         replyCycleID = UUID()
         let cycleID = replyCycleID
+        pendingReplyPlan = plan
+        typingBeganAt = nil
         isWaitingForUserBurst = true
         isStreaming = false
         streamingText = nil
         errorMessage = nil
 
-        replyTask = Task { [weak self] in
+        // 任务在页面返回后仍保留 ViewModel，确保用户留在 App 内时回复不会丢失。
+        // App 被系统终止后，load() 会从最后一条用户消息重建同一份确定性计划。
+        replyTask = Task { [self] in
             do {
-                try await Task.sleep(for: .milliseconds(Int((max(0, delay) * 1_000).rounded())))
+                try await wait(until: plan.generationStartsAt)
                 try Task.checkCancellation()
             } catch {
                 return
             }
-            await self?.streamAssistantReply(cycleID: cycleID)
+            await streamAssistantReply(cycleID: cycleID, plan: plan)
         }
     }
 
-    private func streamAssistantReply(cycleID: UUID) async {
-        guard let conversation, cycleID == replyCycleID, !Task.isCancelled else { return }
-        let replacedMessageID = retryingMessageID
+    private func resumePendingReplyIfNeeded() {
+        guard replyTask == nil,
+              conversation?.isArchived == false,
+              let latest = messages.last,
+              latest.role == .user
+        else { return }
+        scheduleAssistantReply(
+            after: latest.text,
+            userMessage: latest
+        )
+    }
+
+    private func wait(until date: Date) async throws {
+        let remaining = date.timeIntervalSince(deps.now())
+        guard remaining > 0 else { return }
+        let scaledDelay = remaining * deps.replyDelayScale
+        guard scaledDelay > 0 else { return }
+        try await Task.sleep(
+            for: .milliseconds(Int((scaledDelay * 1_000).rounded()))
+        )
+    }
+
+    private func beginTyping(cycleID: UUID) {
+        guard cycleID == replyCycleID, !Task.isCancelled else { return }
+        if typingBeganAt == nil {
+            typingBeganAt = deps.now()
+        }
         isWaitingForUserBurst = false
         isStreaming = true
         streamingText = ""
-        errorMessage = nil
-        let typingBeganAt = ProcessInfo.processInfo.systemUptime
+    }
+
+    private func clearReplyState(cycleID: UUID) {
+        guard cycleID == replyCycleID else { return }
+        isWaitingForUserBurst = false
+        isStreaming = false
+        streamingText = nil
+        pendingReplyPlan = nil
+        typingBeganAt = nil
+        replyTask = nil
+        retryingMessageID = nil
+    }
+
+    private func isStillLatestUnanswered(
+        plan: NPCReplyPlan,
+        conversationID: UUID
+    ) async -> Bool {
+        do {
+            return try await deps.chatStore.isLatestUnansweredUserMessage(
+                conversationID: conversationID,
+                messageID: plan.userMessageID,
+                replacingAssistantMessageID: retryingMessageID
+            )
+        } catch {
+            errorMessage = "回复状态暂时无法确认，请稍后重试。"
+            return false
+        }
+    }
+
+    private func streamAssistantReply(cycleID: UUID, plan: NPCReplyPlan) async {
+        guard let conversation, cycleID == replyCycleID, !Task.isCancelled else { return }
+        guard await isStillLatestUnanswered(plan: plan, conversationID: conversation.id) else {
+            clearReplyState(cycleID: cycleID)
+            return
+        }
+        guard NPCReplyLeaseRegistry.shared.acquire(
+            conversationID: conversation.id,
+            ownerID: replyOwnerID,
+            cycleID: cycleID,
+            messageID: plan.userMessageID
+        ) else {
+            do {
+                try await NPCReplyLeaseRegistry.shared.waitUntilAvailable(
+                    conversationID: conversation.id
+                )
+                try Task.checkCancellation()
+            } catch {
+                return
+            }
+            guard cycleID == replyCycleID else { return }
+            await reloadMessages()
+            if await isStillLatestUnanswered(plan: plan, conversationID: conversation.id) {
+                await streamAssistantReply(cycleID: cycleID, plan: plan)
+            } else {
+                clearReplyState(cycleID: cycleID)
+            }
+            return
+        }
         defer {
+            NPCReplyLeaseRegistry.shared.release(
+                conversationID: conversation.id,
+                ownerID: replyOwnerID,
+                cycleID: cycleID,
+                messageID: plan.userMessageID
+            )
+        }
+        guard await isStillLatestUnanswered(plan: plan, conversationID: conversation.id) else {
+            clearReplyState(cycleID: cycleID)
+            return
+        }
+        let replacedMessageID = retryingMessageID
+        errorMessage = nil
+        let typingTimer = Task { @MainActor [weak self] in
+            guard let self else { return }
+            do {
+                try await wait(until: plan.typingStartsAt)
+                try Task.checkCancellation()
+            } catch {
+                return
+            }
+            beginTyping(cycleID: cycleID)
+        }
+        defer {
+            typingTimer.cancel()
             if cycleID == replyCycleID {
-                isWaitingForUserBurst = false
-                isStreaming = false
-                streamingText = nil
-                replyDeferralDeadline = nil
-                replyTask = nil
-                retryingMessageID = nil
+                clearReplyState(cycleID: cycleID)
             }
         }
 
@@ -533,12 +654,36 @@ public final class ChatViewModel {
 
         let replyText = accumulated
         guard cycleID == replyCycleID, !Task.isCancelled else { return }
+        guard await isStillLatestUnanswered(plan: plan, conversationID: conversation.id) else {
+            return
+        }
         do {
+            typingTimer.cancel()
+            do {
+                try await wait(until: plan.typingStartsAt)
+            } catch {
+                return
+            }
+            beginTyping(cycleID: cycleID)
+            let visibleTypingBeganAt = typingBeganAt ?? deps.now()
+            let earliestVisibleDelivery = visibleTypingBeganAt.addingTimeInterval(
+                Self.minimumVisibleTypingDuration
+            )
+            do {
+                try await wait(until: max(plan.firstBubbleAt, earliestVisibleDelivery))
+            } catch {
+                return
+            }
+            guard await isStillLatestUnanswered(
+                plan: plan,
+                conversationID: conversation.id
+            ) else { return }
             let assistantMessages = try await deliverAssistantReply(
                 conversationID: conversation.id,
                 text: replyText,
-                elapsedSinceTypingBegan: ProcessInfo.processInfo.systemUptime - typingBeganAt,
-                cycleID: cycleID
+                cycleID: cycleID,
+                plan: plan,
+                replacingAssistantMessageID: replacedMessageID
             )
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
@@ -598,12 +743,13 @@ public final class ChatViewModel {
             .joined(separator: "\n\n")
     }
 
-    /// 生成完成后仍保持输入指示，并依据每条文本长度逐条显示气泡。
+    /// 首条气泡已由 NPCReplyPlan 定时；之后仍依据文本长度逐条显示。
     private func deliverAssistantReply(
         conversationID: UUID,
         text: String,
-        elapsedSinceTypingBegan: TimeInterval,
-        cycleID: UUID
+        cycleID: UUID,
+        plan: NPCReplyPlan,
+        replacingAssistantMessageID: UUID?
     ) async throws -> [MessageDTO] {
         let texts = RoleplayReplyFormatter.messages(from: text)
         var delivered: [MessageDTO] = []
@@ -612,10 +758,10 @@ public final class ChatViewModel {
         for (index, text) in texts.enumerated() {
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
-            let delay = RoleplayTypingPace.standard.delay(
+            let delay = index == 0 ? 0 : RoleplayTypingPace.standard.delay(
                 for: text,
                 messageIndex: index,
-                elapsedSinceTypingBegan: elapsedSinceTypingBegan,
+                elapsedSinceTypingBegan: 0,
                 variation: Double.random(in: 0...1)
             )
             let milliseconds = Int((delay * 1_000).rounded())
@@ -625,11 +771,24 @@ public final class ChatViewModel {
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
 
-            let message = try await deps.chatStore.appendAssistantReplyPart(
-                conversationID: conversationID,
-                text: text,
-                startsNewReply: index == 0
-            )
+            let message: MessageDTO
+            if index == 0 {
+                guard let first = try await deps.chatStore.appendAssistantReplyPartIfCurrent(
+                    conversationID: conversationID,
+                    text: text,
+                    respondingToMessageID: plan.userMessageID,
+                    replacingAssistantMessageID: replacingAssistantMessageID,
+                    createdAt: deps.now()
+                ) else { throw CancellationError() }
+                message = first
+            } else {
+                message = try await deps.chatStore.appendAssistantReplyPart(
+                    conversationID: conversationID,
+                    text: text,
+                    startsNewReply: false,
+                    createdAt: deps.now()
+                )
+            }
             delivered.append(message)
             messages.append(message)
             messages.sort { $0.orderIndex < $1.orderIndex }

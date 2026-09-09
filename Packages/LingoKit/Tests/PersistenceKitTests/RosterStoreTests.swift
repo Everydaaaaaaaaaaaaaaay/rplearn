@@ -51,6 +51,30 @@ struct RosterStoreTests {
         #expect(try await store.occupiedFriendSlots() == 0)
     }
 
+    @Test("主角色升级只回填缺失作息，不覆盖已有角色资料")
+    func mainCharacterActivityProfileBackfill() async throws {
+        let store = try makeStore()
+        var original = sampleCard(name: "Oliver")
+        original.avatarAssetName = "avatar_oliver"
+        original.avatarRemoteURL = "https://example.com/kept-portrait.webp"
+        try await store.importMainCharactersIfNeeded(cards: [original])
+
+        var bundled = original
+        bundled.avatarRemoteURL = nil
+        bundled.personality = "new bundled copy that must not replace user data"
+        bundled.activityProfile = NPCActivityProfile(
+            timeZoneIdentifier: "Europe/London",
+            rhythm: .daytime,
+            focusDurationMinutes: 7
+        )
+        try await store.importMainCharactersIfNeeded(cards: [bundled])
+
+        let character = try #require(try await store.allCharacters().first)
+        #expect(character.card.avatarRemoteURL == original.avatarRemoteURL)
+        #expect(character.card.personality == original.personality)
+        #expect(character.card.activityProfile == bundled.activityProfile)
+    }
+
     @Test("好友位校验：满员抛错，主角色不受限")
     func friendSlots() async throws {
         let store = try makeStore()

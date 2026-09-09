@@ -21,6 +21,50 @@ struct ContentCharacterPayload: Codable {
         let speechStyle: String?
         var signature: String? = nil
         var personaVoice: PersonaVoiceProfile? = nil
+        var activityProfile: NPCActivityProfile? = nil
+
+        init(
+            age: Int,
+            appearance: String,
+            avatarAssetName: String?,
+            avatarId: String? = nil,
+            avatarRemoteUrl: String? = nil,
+            background: String?,
+            birthday: String? = nil,
+            gender: String,
+            hobbies: [String],
+            hometown: String? = nil,
+            languages: [String]? = nil,
+            name: String,
+            nationality: String,
+            occupation: String,
+            personality: String,
+            regionId: String,
+            speechStyle: String?,
+            signature: String? = nil,
+            personaVoice: PersonaVoiceProfile? = nil
+        ) {
+            self.age = age
+            self.appearance = appearance
+            self.avatarAssetName = avatarAssetName
+            self.avatarId = avatarId
+            self.avatarRemoteUrl = avatarRemoteUrl
+            self.background = background
+            self.birthday = birthday
+            self.gender = gender
+            self.hobbies = hobbies
+            self.hometown = hometown
+            self.languages = languages
+            self.name = name
+            self.nationality = nationality
+            self.occupation = occupation
+            self.personality = personality
+            self.regionId = regionId
+            self.speechStyle = speechStyle
+            self.signature = signature
+            self.personaVoice = personaVoice
+            self.activityProfile = nil
+        }
     }
 
     let card: Card

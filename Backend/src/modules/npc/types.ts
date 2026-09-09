@@ -137,6 +137,11 @@ export type PublicNpcCard = Readonly<{
   regionId: string;
   signature: string | null;
   speechStyle: string | null;
+  activityProfile?: Readonly<{
+    timeZoneIdentifier: string;
+    rhythm: "earlyBird" | "daytime" | "nightOwl" | "irregular";
+    focusDurationMinutes: number;
+  }>;
 }>;
 
 export type PublicNpc = Readonly<{

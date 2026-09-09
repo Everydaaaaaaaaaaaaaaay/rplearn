@@ -171,6 +171,85 @@ struct ChatStoreTests {
         #expect(messages.map(\.text) == ["hi", "hey!", "how are you"])
     }
 
+    @Test("回复提交前只认可时间线末端仍未回答的用户消息")
+    func latestUnansweredMessageGuard() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let first = try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: "First"
+        )
+        #expect(try await chat.isLatestUnansweredUserMessage(
+            conversationID: conversation.id,
+            messageID: first.id
+        ))
+
+        let second = try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: "Second"
+        )
+        #expect(!(try await chat.isLatestUnansweredUserMessage(
+            conversationID: conversation.id,
+            messageID: first.id
+        )))
+        #expect(try await chat.isLatestUnansweredUserMessage(
+            conversationID: conversation.id,
+            messageID: second.id
+        ))
+
+        let reply = try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .assistant,
+            text: "Answer"
+        )
+        #expect(!(try await chat.isLatestUnansweredUserMessage(
+            conversationID: conversation.id,
+            messageID: second.id
+        )))
+        #expect(try await chat.isLatestUnansweredUserMessage(
+            conversationID: conversation.id,
+            messageID: second.id,
+            replacingAssistantMessageID: reply.id
+        ))
+    }
+
+    @Test("首气泡写入与末端消息校验保持原子")
+    func firstReplyCommitGuardIsAtomic() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let stale = try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: "Stale"
+        )
+        let current = try await chat.appendMessage(
+            conversationID: conversation.id,
+            role: .user,
+            text: "Current"
+        )
+
+        let refused = try await chat.appendAssistantReplyPartIfCurrent(
+            conversationID: conversation.id,
+            text: "Must not appear",
+            respondingToMessageID: stale.id
+        )
+        let inserted = try await chat.appendAssistantReplyPartIfCurrent(
+            conversationID: conversation.id,
+            text: "Current answer",
+            respondingToMessageID: current.id
+        )
+
+        #expect(refused == nil)
+        #expect(inserted?.text == "Current answer")
+        #expect(try await chat.messages(conversationID: conversation.id).map(\.text) == [
+            "Stale", "Current", "Current answer",
+        ])
+    }
+
     @Test("assistant 消息递增 turnCount 与 turnsSinceQuiz")
     func turnCounting() async throws {
         let (chat, roster) = try makeStores()

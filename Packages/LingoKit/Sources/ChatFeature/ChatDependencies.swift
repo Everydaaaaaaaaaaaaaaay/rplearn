@@ -1,3 +1,4 @@
+import Foundation
 import BackendKit
 import CoreKit
 import DictKit
@@ -27,6 +28,9 @@ public struct ChatDependencies: Sendable {
     public let progression: any ProgressionRewardGateway
     public let voiceMedia: VoiceMediaCoordinator
     public let npcRegistry: (any PublicNPCRegistry)?
+    public let regionName: @Sendable (String) -> String
+    public let now: @Sendable () -> Date
+    public let replyDelayScale: Double
 
     public init(
         accessClient: BackendClient? = nil,
@@ -46,7 +50,12 @@ public struct ChatDependencies: Sendable {
         economyStore: EconomyStore,
         progression: any ProgressionRewardGateway,
         voiceMedia: VoiceMediaCoordinator,
-        npcRegistry: (any PublicNPCRegistry)? = nil
+        npcRegistry: (any PublicNPCRegistry)? = nil,
+        regionName: @escaping @Sendable (String) -> String = {
+            $0.replacingOccurrences(of: "_", with: " ").capitalized
+        },
+        now: @escaping @Sendable () -> Date = { .now },
+        replyDelayScale: Double = 1
     ) {
         self.accessClient = accessClient
         self.onShowAccess = onShowAccess
@@ -66,5 +75,8 @@ public struct ChatDependencies: Sendable {
         self.progression = progression
         self.voiceMedia = voiceMedia
         self.npcRegistry = npcRegistry
+        self.regionName = regionName
+        self.now = now
+        self.replyDelayScale = max(0, replyDelayScale)
     }
 }

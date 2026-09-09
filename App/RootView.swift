@@ -788,7 +788,8 @@ struct RootView: View {
     }
 
     private var chatDeps: ChatDependencies {
-        ChatDependencies(
+        let regionCatalog = environment.regionCatalog
+        return ChatDependencies(
             accessClient: environment.backendClient,
             onShowAccess: { showUsage = true },
             chatStore: environment.chatStore,
@@ -806,7 +807,11 @@ struct RootView: View {
             economyStore: environment.economyStore,
             progression: progression,
             voiceMedia: environment.voiceMedia,
-            npcRegistry: environment.backendClient
+            npcRegistry: environment.backendClient,
+            regionName: { regionID in
+                regionCatalog.region(id: regionID)?.nameZh
+                    ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
+            }
         )
     }
 
