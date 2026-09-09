@@ -28,7 +28,6 @@ public struct RosterView: View {
     @State private var occupiedSlots = 0
     @State private var isLoading = true
     @State private var searchText = ""
-    @State private var isSearchPresented = false
     @State private var travelerMatch: CharacterDTO?
     @State private var didFinishTravelerLookup = false
     @State private var expandedSections = Set(ContactSection.allCases)
@@ -119,13 +118,7 @@ public struct RosterView: View {
     private var searchAdaptedContent: some View {
         if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
             sceneContent
-                .searchable(
-                    text: $searchText,
-                    isPresented: $isSearchPresented,
-                    placement: .toolbar,
-                    prompt: "搜索联系人"
-                )
-                .dsCompactSearchToolbar()
+                .dsSceneSearch(text: $searchText, title: "联系人", prompt: "搜索联系人")
         } else {
             sceneContent
                 .safeAreaInset(edge: .top, spacing: 0) {
