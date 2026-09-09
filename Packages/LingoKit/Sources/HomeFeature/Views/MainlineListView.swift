@@ -23,58 +23,49 @@ public struct MainlineListView: View {
     }
 
     public var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: DSSpacing.sm) {
-                if let journey, let profile {
-                    header(journey)
-                    ForEach(Array(journey.stops.enumerated()), id: \.element.id) { index, stop in
-                        let status = stopStatus(index: index, journey: journey)
-                        Button {
-                            open(stop, profile: profile)
-                        } label: {
-                            stopCard(stop, index: index, status: status, profile: profile)
-                        }
-                        .buttonStyle(.pressableCard)
-                        .accessibilityIdentifier("story.chapter.\(stop.chapter.storyID)")
-                        .accessibilityHint("在当前位置直接打开章节")
+        Group {
+            if let journey, let profile {
+                StoryCoverFlow(
+                    items: coverItems(journey: journey, profile: profile),
+                    preferredItemID: preferredItemID(journey: journey),
+                    accessibilityIdentifier: "story.coverFlow.mainline"
+                ) { storyID in
+                    guard let stop = journey.stops.first(where: { $0.chapter.storyID == storyID }) else {
+                        return
                     }
-                } else {
-                    ProgressView().frame(maxWidth: .infinity, minHeight: 220)
+                    open(stop, profile: profile)
+                }
+            } else {
+                ZStack {
+                    StoryTheaterBackdrop(
+                        accent: .dsFoilGold,
+                        spotlightVisible: true,
+                        reduceTransparency: false
+                    )
+                    ProgressView()
+                        .tint(.white)
                 }
             }
-            .padding(DSSpacing.md)
         }
-        .background(Color.dsBackground)
+        .background(Color.black.ignoresSafeArea())
         .navigationTitle("主线剧情")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .tint(.white)
         .task { await reload() }
         .onAppear { Task { await reload() } }
     }
 
-    private func header(_ journey: MainlineJourney) -> some View {
-        let done = journey.stops.filter { completed.contains($0.chapter.storyID) }.count
-        return VStack(alignment: .leading, spacing: DSSpacing.xs) {
-            HStack(alignment: .firstTextBaseline) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("出发之后")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(Color.dsSky)
-                    Text(journey.title)
-                        .font(.system(.title3, design: .rounded, weight: .bold))
-                }
-                Spacer()
-                Text("\(done) / \(journey.stops.count) 站")
-                    .font(.subheadline.monospacedDigit().weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
-            Text(deps.access.isGuest ? "章节不再要求飞往当地。游客可体验第一站；登录后即可在当前位置继续完整主线。" : "五章均可在当前位置直接开始，不再切换所在城市；每章进度独立保存。")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-            ProgressView(value: Double(done) / Double(journey.stops.count))
-                .tint(.dsSuccess)
+    private func coverItems(journey: MainlineJourney, profile: UserProfileDTO) -> [StoryCoverItem] {
+        journey.stops.enumerated().map { index, stop in
+            coverItem(stop, index: index, status: stopStatus(index: index, journey: journey), profile: profile)
         }
-        .padding(.bottom, DSSpacing.xs)
+    }
+
+    private func preferredItemID(journey: MainlineJourney) -> String? {
+        journey.stops.first(where: { !completed.contains($0.chapter.storyID) })?.chapter.storyID
+            ?? journey.stops.first?.chapter.storyID
     }
 
     private enum StopStatus: Equatable {
@@ -94,15 +85,14 @@ public struct MainlineListView: View {
         return index == activeIndex ? .next : .available
     }
 
-    private func stopCard(
+    private func coverItem(
         _ stop: MainlineStop,
         index: Int,
         status: StopStatus,
         profile: UserProfileDTO
-    ) -> some View {
+    ) -> StoryCoverItem {
         let chapter = stop.chapter
         let isCompleted = status == .completed
-        let isNext = status == .next
         let region = deps.regionCatalog.region(id: stop.regionID)
         let accent = DSScenePalette.city(chapter.regionID).accent
         let canOpenForIdentity = deps.access.allowsStory(
@@ -110,12 +100,11 @@ public struct MainlineListView: View {
             starterRegionID: profile.starterRegionID
         )
 
-        return StoryChapterCard(
+        return StoryCoverItem(
+            id: chapter.storyID,
             artworkName: DSCitySceneAssets.imageName(for: .messages, regionID: chapter.regionID),
-            countryCode: region?.countryCode,
-            artworkBadge: index + 1 < 10 ? "0\(index + 1)" : "\(index + 1)",
-            eyebrow: "第 \(index + 1) 站 · \(region?.nameZh ?? stop.regionID)",
-            badge: nil,
+            sequenceText: stop.isFinale ? "终章" : "第 \(padded(index + 1)) 站",
+            eyebrow: region?.nameZh ?? stop.regionID,
             title: stop.displayTitle,
             subtitle: chapter.subtitle,
             statusText: canOpenForIdentity
@@ -125,9 +114,9 @@ public struct MainlineListView: View {
                 ? (isCompleted ? "checkmark.circle.fill" : "play.circle.fill")
                 : "person.crop.circle.badge.plus",
             accent: accent,
-            isHighlighted: isNext,
-            isDimmed: false,
-            isLoading: false
+            isEnabled: canOpenForIdentity,
+            isCompleted: isCompleted,
+            isDimmed: false
         )
     }
 
@@ -143,5 +132,9 @@ public struct MainlineListView: View {
     private func reload() async {
         profile = try? await deps.economyStore.profile()
         completed = (try? await deps.storyProgress.completedStoryIDs()) ?? []
+    }
+
+    private func padded(_ value: Int) -> String {
+        value < 10 ? "0\(value)" : "\(value)"
     }
 }

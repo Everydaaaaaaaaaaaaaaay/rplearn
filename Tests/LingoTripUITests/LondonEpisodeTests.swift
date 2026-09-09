@@ -168,15 +168,25 @@ final class LondonEpisodeTests: XCTestCase {
         screenshot("story-hub-photo-collages")
 
         app.buttons["story.cities"].tap()
-        XCTAssertTrue(app.staticTexts["十五城故事集"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["前六篇默认开放；每累计一张机票再开放三篇。机票使用后不会回锁，已开放剧情可在当前位置直接开始。"].exists)
-        screenshot("story-city-photo-catalog")
+        XCTAssertTrue(app.buttons["story.chapter.departures_city_london_v1"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["十五城故事集"].exists)
+        XCTAssertFalse(app.staticTexts["前六篇默认开放；每累计一张机票再开放三篇。机票使用后不会回锁，已开放剧情可在当前位置直接开始。"].exists)
+        screenshot("story-city-theater-cover-flow")
+        app.swipeLeft()
+        let secondCityCounter = app.staticTexts.matching(
+            NSPredicate(format: "label CONTAINS %@", "第 2 场")
+        ).firstMatch
+        XCTAssertTrue(secondCityCounter.waitForExistence(timeout: 3))
+        screenshot("story-city-theater-cover-flow-second")
         app.navigationBars.buttons.element(boundBy: 0).tap()
 
         XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
         app.buttons["story.mainline"].tap()
-        XCTAssertTrue(app.staticTexts["章节不再要求飞往当地。游客可体验第一站；登录后即可在当前位置继续完整主线。"].waitForExistence(timeout: 5))
-        screenshot("story-mainline-photo-catalog")
+        XCTAssertTrue(app.buttons["story.chapter.departures_london_v1"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["出发之后"].exists)
+        XCTAssertFalse(app.staticTexts["从书店出发"].exists)
+        XCTAssertFalse(app.staticTexts["章节不再要求飞往当地。游客可体验第一站；登录后即可在当前位置继续完整主线。"].exists)
+        screenshot("story-mainline-theater-cover-flow")
         let london = app.buttons["story.chapter.departures_london_v1"]
         XCTAssertTrue(london.waitForExistence(timeout: 10))
         london.tap()
