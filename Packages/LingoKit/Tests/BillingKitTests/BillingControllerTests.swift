@@ -146,6 +146,13 @@ struct BillingControllerTests {
                 StoreProductMetadata(
                     displayName: "LingoTrip Pro",
                     displayPrice: "¥48.00",
+                    introductoryOffer: $0.hasSuffix("plus.monthly")
+                        ? StorefrontIntroductoryOffer(
+                            displayPrice: "¥29.00",
+                            paymentMode: .payAsYouGo,
+                            periodDescription: "首月"
+                        )
+                        : nil,
                     periodDescription: "每个月",
                     productDescription: "Pro",
                     productID: $0
@@ -197,6 +204,11 @@ struct BillingControllerTests {
         #expect(fixture.controller.offeredProducts.map(\.productID) == [
             "com.tiantian.lingotrip.plus.monthly",
         ])
+        #expect(fixture.controller.offeredProducts.first?.checkoutDisplayPrice == "¥29.00")
+        #expect(
+            fixture.controller.offeredProducts.first?.checkoutPriceDetail
+                == "首月优惠，之后 ¥48.00 · 每个月"
+        )
         #expect(try await fixture.economy.profile().subscriptionTier == .pro)
         #expect(try await fixture.economy.profile().friendSlotLimit == 30)
         #expect(await storefront.finished == [42])

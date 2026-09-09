@@ -72,6 +72,7 @@ public struct PurchasableProduct: Identifiable, Sendable, Equatable {
 
     public let displayName: String
     public let displayPrice: String
+    public let introductoryOffer: StorefrontIntroductoryOffer?
     public let periodDescription: String?
     public let productDescription: String
     public let productID: String
@@ -80,6 +81,7 @@ public struct PurchasableProduct: Identifiable, Sendable, Equatable {
     public init(
         displayName: String,
         displayPrice: String,
+        introductoryOffer: StorefrontIntroductoryOffer? = nil,
         periodDescription: String?,
         productDescription: String,
         productID: String,
@@ -87,10 +89,27 @@ public struct PurchasableProduct: Identifiable, Sendable, Equatable {
     ) {
         self.displayName = displayName
         self.displayPrice = displayPrice
+        self.introductoryOffer = introductoryOffer
         self.periodDescription = periodDescription
         self.productDescription = productDescription
         self.productID = productID
         self.tier = tier
+    }
+
+    /// StoreKit only supplies an introductory offer here when this App Store account is eligible.
+    public var checkoutDisplayPrice: String {
+        introductoryOffer?.displayPrice ?? displayPrice
+    }
+
+    public var checkoutPriceDetail: String? {
+        guard let introductoryOffer else { return periodDescription }
+        let renewal = periodDescription.map { "\(displayPrice) · \($0)" } ?? displayPrice
+        switch introductoryOffer.paymentMode {
+        case .freeTrial:
+            return "\(introductoryOffer.periodDescription)免费，之后 \(renewal)"
+        case .payAsYouGo, .payUpFront:
+            return "\(introductoryOffer.periodDescription)优惠，之后 \(renewal)"
+        }
     }
 }
 
@@ -100,4 +119,3 @@ public enum BillingOperationState: Sendable, Equatable {
     case purchasing(String)
     case restoring
 }
-

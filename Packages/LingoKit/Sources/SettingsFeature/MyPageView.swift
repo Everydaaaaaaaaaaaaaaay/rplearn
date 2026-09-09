@@ -525,14 +525,14 @@ public struct MyPageView: View {
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(product.tier.displayName)
                                                 .fontWeight(.bold)
-                                            if let period = product.periodDescription {
-                                                Text(period)
+                                            if let detail = product.checkoutPriceDetail {
+                                                Text(detail)
                                                     .font(.caption)
                                                     .opacity(0.76)
                                             }
                                         }
                                         Spacer()
-                                        Text(product.displayPrice)
+                                        Text(product.checkoutDisplayPrice)
                                             .fontWeight(.bold)
                                             .monospacedDigit()
                                     }

@@ -61,7 +61,17 @@ public struct UsageAccessView: View {
                             Button {
                                 Task { await billing.purchase(product); await reload() }
                             } label: {
-                                LabeledContent(product.tier.displayName, value: product.displayPrice)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    LabeledContent(
+                                        product.tier.displayName,
+                                        value: product.checkoutDisplayPrice
+                                    )
+                                    if let detail = product.checkoutPriceDetail {
+                                        Text(detail)
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
                             }.disabled(billing.operation != .idle)
                         }
                         Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }

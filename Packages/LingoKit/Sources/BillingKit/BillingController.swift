@@ -162,6 +162,7 @@ public final class BillingController {
             return PurchasableProduct(
                 displayName: item.displayName,
                 displayPrice: item.displayPrice,
+                introductoryOffer: item.introductoryOffer,
                 periodDescription: item.periodDescription,
                 productDescription: item.productDescription,
                 productID: item.productID,

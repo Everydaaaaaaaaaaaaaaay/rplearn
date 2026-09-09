@@ -1,8 +1,31 @@
 import Foundation
 
+public enum StorefrontOfferPaymentMode: Sendable, Equatable {
+    case freeTrial
+    case payAsYouGo
+    case payUpFront
+}
+
+public struct StorefrontIntroductoryOffer: Sendable, Equatable {
+    public let displayPrice: String
+    public let paymentMode: StorefrontOfferPaymentMode
+    public let periodDescription: String
+
+    public init(
+        displayPrice: String,
+        paymentMode: StorefrontOfferPaymentMode,
+        periodDescription: String
+    ) {
+        self.displayPrice = displayPrice
+        self.paymentMode = paymentMode
+        self.periodDescription = periodDescription
+    }
+}
+
 public struct StoreProductMetadata: Sendable, Equatable {
     public let displayName: String
     public let displayPrice: String
+    public let introductoryOffer: StorefrontIntroductoryOffer?
     public let periodDescription: String?
     public let productDescription: String
     public let productID: String
@@ -10,12 +33,14 @@ public struct StoreProductMetadata: Sendable, Equatable {
     public init(
         displayName: String,
         displayPrice: String,
+        introductoryOffer: StorefrontIntroductoryOffer? = nil,
         periodDescription: String?,
         productDescription: String,
         productID: String
     ) {
         self.displayName = displayName
         self.displayPrice = displayPrice
+        self.introductoryOffer = introductoryOffer
         self.periodDescription = periodDescription
         self.productDescription = productDescription
         self.productID = productID
@@ -63,4 +88,3 @@ public protocol StorefrontClient: Sendable {
     func synchronize() async throws
     func transactionUpdates() async -> AsyncStream<StorefrontTransactionUpdate>
 }
-
