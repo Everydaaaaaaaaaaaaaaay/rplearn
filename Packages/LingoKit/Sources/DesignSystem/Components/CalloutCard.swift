@@ -3,13 +3,11 @@ import SwiftUI
 public struct CalloutCard<Content: View, Trailing: View>: View {
     public enum Kind: Sendable {
         case coach
-        case speech
         case quiz
 
         var title: String {
             switch self {
             case .coach: "咕咕建议"
-            case .speech: "咕咕口语点评"
             case .quiz: "咕咕小测验"
             }
         }
@@ -17,7 +15,6 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
         var icon: String {
             switch self {
             case .coach: "bird.fill"
-            case .speech: "waveform.badge.mic"
             case .quiz: "checkmark.bubble.fill"
             }
         }
@@ -25,7 +22,6 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
         var tint: Color {
             switch self {
             case .coach: .dsCoach
-            case .speech: .dsSpeech
             case .quiz: .dsQuiz
             }
         }
@@ -91,7 +87,7 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
             .accessibilityLabel(coachPersona.title)
             .font(.system(.caption, design: .rounded, weight: .bold))
             .foregroundStyle(kind.tint)
-        case .speech, .quiz:
+        case .quiz:
             Label(kind.title, systemImage: kind.icon)
                 .font(.system(.caption, design: .rounded, weight: .bold))
                 .foregroundStyle(kind.tint)

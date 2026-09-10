@@ -481,7 +481,6 @@ public struct ChatView: View {
                 translationFootnote(message, alignment: .trailing)
                 deliveryReceipt(at: index)
                 coachCard(message)
-                speechReviewCard(message)
             }
         case .assistant:
             VStack(alignment: .leading, spacing: 4) {

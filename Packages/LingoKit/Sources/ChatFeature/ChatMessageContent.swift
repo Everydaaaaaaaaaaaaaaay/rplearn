@@ -112,42 +112,6 @@ extension ChatView {
         }
     }
 
-    // MARK: - 口语点评
-
-    /// 语音消息的口语点评卡：自然度星级 + 中文点评 + 更自然说法建议。
-    @ViewBuilder
-    func speechReviewCard(_ message: MessageDTO) -> some View {
-        if message.kind == .voice, let review = CoachService.decodeSpeech(fromJSON: message.speechReviewJSON) {
-            CalloutCard(kind: .speech, trailing: {
-                    Text(String(repeating: "★", count: review.clampedRating)
-                        + String(repeating: "☆", count: 5 - review.clampedRating))
-                        .font(.caption)
-                        .foregroundStyle(Color.dsSpeech)
-                }) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(review.commentZh)
-                        .font(.footnote)
-                        .foregroundStyle(.primary)
-                    ForEach(Array(review.tips.enumerated()), id: \.offset) { _, tip in
-                        VStack(alignment: .leading, spacing: 2) {
-                            HStack(spacing: 6) {
-                                Text(tip.quote)
-                                    .strikethrough()
-                                    .foregroundStyle(.secondary)
-                                Image(systemName: "arrow.right").font(.caption2).foregroundStyle(.secondary)
-                                Text(tip.better).foregroundStyle(Color.dsSpeech)
-                            }
-                            .font(.subheadline)
-                            Text(tip.explanationZh)
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     // MARK: - 语境出题
 
     /// 角色回复附带的小测：选项气泡 + 作答反馈 + 「不再弹题」。

@@ -1,6 +1,6 @@
 import { isDeepStrictEqual } from "node:util";
 import type { FastifyInstance } from "fastify";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { buildApp } from "../../src/app.js";
 import { runMigrations } from "../../src/db/migrate.js";
 import { createAdminAuthenticator } from "../../src/modules/admin/http.js";
@@ -284,6 +284,27 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
     expect(update.json<{ code: string }>().code).toBe("INVALID_REQUEST");
   });
 
+  it("rejects retired speech feedback before provider calls or credit operations", async () => {
+    const complete = vi.fn<DeepSeekClient["complete"]>();
+    const stream = vi.fn<DeepSeekClient["stream"]>();
+    const ai = createAiService(
+      config, runtime.database, runtime.redis, createBillingService(runtime.database),
+      { configured: true, complete, stream }, { catalog, openRouter },
+    );
+    const operationId = newEntityId();
+    const input = {
+      operationId, task: "speech_feedback", responseFormat: "text" as const,
+      messages: [{ role: "user" as const, content: "See you tomorrow." }],
+    };
+    await expect(ai.complete(userId, input)).rejects.toMatchObject({ code: "AI_TASK_RETIRED" });
+    await expect(ai.stream(userId, input)).rejects.toMatchObject({ code: "AI_TASK_RETIRED" });
+    expect(complete).not.toHaveBeenCalled();
+    expect(stream).not.toHaveBeenCalled();
+    expect(await runtime.database.sql`
+      select operation_id from app.credit_operations where operation_id = ${operationId}
+    `).toHaveLength(0);
+  });
+
   it("aggregates total, model and per-user cost without treating unknowns as zero", async () => {
     const operationId = newEntityId();
     await runtime.database.sql`
@@ -333,11 +354,11 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
         })
       ).json<{ routes: AiManagedRoute[] }>().routes;
     const retiredBefore = await runtime.database.sql`
-      select * from app.ai_routes where task = 'translation'
+      select * from app.ai_routes where task in ('translation', 'speech_feedback') order by task
     `;
-    expect(retiredBefore).toHaveLength(1);
+    expect(retiredBefore).toHaveLength(2);
     const initial = await list();
-    expect(initial.some((route) => route.task === "translation")).toBe(false);
+    expect(initial.some((route) => ["translation", "speech_feedback"].includes(route.task))).toBe(false);
     const command = newEntityId();
     const payload = {
       provider: "openrouter",
@@ -404,7 +425,7 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
       const changed = response.json<{ routes: AiManagedRoute[] }>().routes;
       expect(changed).toHaveLength(initial.length);
       const retiredAfter = await runtime.database.sql`
-        select * from app.ai_routes where task = 'translation'
+        select * from app.ai_routes where task in ('translation', 'speech_feedback') order by task
       `;
       expect(retiredAfter).toEqual(retiredBefore);
       for (const original of initial) {

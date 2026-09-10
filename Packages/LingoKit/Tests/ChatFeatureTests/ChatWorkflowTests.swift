@@ -20,6 +20,7 @@ struct ChatWorkflowTests {
         var streamDelayMilliseconds: Int
         private(set) var translations = 0
         private(set) var requestedTasks: [LLMTask] = []
+        private(set) var streamedMessages: [LLMMessage] = []
         init(
             response: String = "A complete answer.",
             fails: Bool = false,
@@ -40,6 +41,7 @@ struct ChatWorkflowTests {
         }
         func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
             requestedTasks.append(request.task)
+            streamedMessages = request.messages
             let response = response
             let fails = fails
             let streamDelayMilliseconds = streamDelayMilliseconds
@@ -337,6 +339,30 @@ struct ChatWorkflowTests {
         #expect(!f.model.isWaitingForUserBurst)
         #expect(f.model.messages.contains { $0.id == complete.id })
         f.model.cancelPendingReply()
+    }
+
+    @Test("语音发送保留录音和时长，只向模型发送转写且不触发独立口语点评")
+    func voiceMessageUsesTranscriptWithoutSpeechFeedback() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        let transcript = "Could we meet at the bookshop tomorrow?"
+        let capture = VoiceRecorder.Capture(fileName: "voice-fixture.m4a", duration: 4.2, transcript: transcript)
+        await f.model.sendVoice(capture: capture)
+        try await settle(f.model)
+        let reopened = await f.reopen()
+        let voice = try #require(reopened.messages.first(where: { $0.role == .user }))
+        #expect(voice.kind == .voice)
+        #expect(voice.text == transcript)
+        #expect(voice.audioFileName == capture.fileName)
+        #expect(voice.audioDuration == capture.duration)
+        #expect(voice.speechReviewJSON == nil)
+        let sent = await provider.streamedMessages
+        #expect(sent.contains(.user(transcript)))
+        #expect(!sent.contains { $0.content.contains("voice-fixture.m4a") })
+        let tasks = await provider.tasks()
+        #expect(tasks.contains(.conversation))
+        #expect(!tasks.contains { $0.rawValue == "speech_feedback" })
+        #expect(reopened.messages.contains { $0.role == .assistant })
     }
 
     @Test("语音入口保存完整回复，文本翻译复用已存缓存")

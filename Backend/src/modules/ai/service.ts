@@ -185,6 +185,14 @@ export function createAiService(
       startedAt: number;
     }>
   > => {
+    // Reject old clients before opening a ledger operation or contacting a provider.
+    if (input.task === "speech_feedback") {
+      throw new AppError({
+        code: "AI_TASK_RETIRED",
+        message: "Automatic speech feedback is no longer available.",
+        statusCode: 410,
+      });
+    }
     const route = validateRuntimeRoute(await repository.route(input.task), routePolicy);
     const providerClient = clientFor(route.provider);
     const limits = validateInput(input, route);

@@ -28,38 +28,6 @@ public struct CoachReview: Sendable, Codable, Equatable {
     }
 }
 
-/// 口语点评结果：对语音消息转写文本的口语自然度点评。
-public struct SpeechReview: Sendable, Codable, Equatable {
-    public struct Tip: Sendable, Codable, Equatable {
-        /// 原说法（转写中的片段）。
-        public var quote: String
-        /// 更自然的口语说法。
-        public var better: String
-        public var explanationZh: String
-
-        public init(quote: String, better: String, explanationZh: String) {
-            self.quote = quote
-            self.better = better
-            self.explanationZh = explanationZh
-        }
-    }
-
-    /// 口语自然度 1-5。
-    public var rating: Int
-    /// 中文总体点评（鼓励为主）。
-    public var commentZh: String
-    /// 0-2 条更自然说法建议。
-    public var tips: [Tip]
-
-    public init(rating: Int, commentZh: String, tips: [Tip]) {
-        self.rating = rating
-        self.commentZh = commentZh
-        self.tips = tips
-    }
-
-    public var clampedRating: Int { min(5, max(1, rating)) }
-}
-
 /// 独立于角色的教练 AI：并行审核用户消息（fast 档、JSON 结构化输出、15s 超时静默放弃）。
 public struct CoachService: Sendable {
     public struct TimeoutError: Error {}
@@ -89,24 +57,6 @@ public struct CoachService: Sendable {
         return try Self.decodeReview(fromModelOutput: text)
     }
 
-    /// 口语点评：对语音转写文本做口语自然度点评（fast 档、JSON、超时静默放弃）。
-    public func reviewSpeech(transcript: String) async throws -> SpeechReview {
-        let request = LLMRequest(
-            task: .speechFeedback,
-            tier: .fast,
-            system: Self.speechSystemPrompt,
-            messages: [.user(transcript)],
-            maxTokens: 500,
-            temperature: 0.3,
-            responseFormat: .jsonSchema(name: "speech_review", schema: Self.speechSchema)
-        )
-        let llm = self.llm
-        let text = try await Self.withTimeout(timeout) {
-            try await llm.complete(request)
-        }
-        return try Self.decodeSpeechReview(fromModelOutput: text)
-    }
-
     // MARK: - 解析与序列化
 
     /// 模型输出 → CoachReview（snake_case JSON）。
@@ -130,26 +80,6 @@ public struct CoachService: Sendable {
         return try? JSONDecoder().decode(CoachReview.self, from: Data(json.utf8))
     }
 
-    /// 模型输出 → SpeechReview（snake_case JSON）。
-    static func decodeSpeechReview(fromModelOutput text: String) throws -> SpeechReview {
-        guard let data = JSONExtractor.extractJSONData(from: text) else {
-            throw LLMError.invalidResponse("口语点评输出无合法 JSON")
-        }
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode(SpeechReview.self, from: data)
-    }
-
-    public static func encode(_ review: SpeechReview) -> String? {
-        guard let data = try? JSONEncoder().encode(review) else { return nil }
-        return String(decoding: data, as: UTF8.self)
-    }
-
-    public static func decodeSpeech(fromJSON json: String?) -> SpeechReview? {
-        guard let json else { return nil }
-        return try? JSONDecoder().decode(SpeechReview.self, from: Data(json.utf8))
-    }
-
     // MARK: - Prompt
 
     static let systemPrompt = """
@@ -169,44 +99,6 @@ public struct CoachService: Sendable {
     explanation_zh (一句简短的中文讲解，为什么错、怎么改).
     At most 3 issues, the most important first. If the message is fine, return has_issues=false with empty issues.
     """
-
-    static let speechSystemPrompt = """
-    You are a friendly spoken-English coach. A Chinese learner just spoke a short message; below is \
-    the speech-to-text transcript. Judge it as SPOKEN English, not writing: reward natural, fluent \
-    phrasing; do not nitpick punctuation or capitalisation (the transcript has none). Ignore obvious \
-    transcription glitches. Your feedback appears as a note from Gugu, a warm travel-bird companion, \
-    so keep the Chinese wording encouraging, concise, and practical rather than teacher-like.
-
-    Respond with JSON only:
-    - rating: overall spoken naturalness, integer 1-5 (be encouraging; most everyday attempts are 3-4).
-    - comment_zh: 一句温暖鼓励的中文总体点评（先肯定，再点一个可提升的方向）。
-    - tips: 0-2 concrete upgrades, each -> quote (the fragment they said), better (a more natural \
-    spoken version), explanation_zh (一句简短中文说明为什么更自然/更地道). Only include a tip when it \
-    genuinely helps; return an empty list if the speech is already natural.
-    """
-
-    static let speechSchema: JSONValue = [
-        "type": "object",
-        "properties": [
-            "rating": ["type": "integer", "enum": [1, 2, 3, 4, 5]],
-            "comment_zh": ["type": "string"],
-            "tips": [
-                "type": "array",
-                "items": [
-                    "type": "object",
-                    "properties": [
-                        "quote": ["type": "string"],
-                        "better": ["type": "string"],
-                        "explanation_zh": ["type": "string"],
-                    ],
-                    "required": ["quote", "better", "explanation_zh"],
-                    "additionalProperties": false,
-                ],
-            ],
-        ],
-        "required": ["rating", "comment_zh", "tips"],
-        "additionalProperties": false,
-    ]
 
     static let schema: JSONValue = [
         "type": "object",

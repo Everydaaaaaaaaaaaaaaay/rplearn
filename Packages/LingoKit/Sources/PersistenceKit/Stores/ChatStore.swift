@@ -460,13 +460,6 @@ public actor ChatStore {
         try modelContext.save()
     }
 
-    public func setSpeechReview(messageID: UUID, json: String?) throws {
-        guard let message = try fetchMessage(id: messageID) else { return }
-        message.speechReviewJSON = json
-        try journal(message)
-        try modelContext.save()
-    }
-
     public func setTranslation(messageID: UUID, translationZh: String) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.translationZh = translationZh

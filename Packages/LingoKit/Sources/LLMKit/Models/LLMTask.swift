@@ -8,6 +8,5 @@ public enum LLMTask: String, Sendable, Codable, CaseIterable {
     case memorySummary = "memory_summary"
     case proactiveMessage = "proactive_message"
     case quiz
-    case speechFeedback = "speech_feedback"
     case translation
 }
