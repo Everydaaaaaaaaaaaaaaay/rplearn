@@ -300,7 +300,7 @@ public struct BackendLLMProvider: LLMProvider {
 
     private static func map(_ error: Error) -> Error {
         guard let backendError = error as? BackendClientError else { return error }
-        if ["CREDITS_EXHAUSTED", "OPERATION_FINALIZED", "USAGE_QUOTA_EXCEEDED", "VOICE_LEASE_EXPIRED", "LOGIN_REQUIRED", "GUEST_ALREADY_CLAIMED"].contains(backendError.code ?? "") {
+        if ["AUXILIARY_BUDGET_EXHAUSTED", "CREDITS_EXHAUSTED", "OPERATION_FINALIZED", "USAGE_QUOTA_EXCEEDED", "VOICE_LEASE_EXPIRED", "LOGIN_REQUIRED", "GUEST_ALREADY_CLAIMED"].contains(backendError.code ?? "") {
             return LLMError.accessRestricted(backendError.errorDescription ?? "当前额度已用完，请查看用量与权益。")
         }
         switch backendError {

@@ -123,19 +123,55 @@ struct BackendLLMProviderTests {
     }
 
     private actor QuotaTransport: BackendTransport {
+        let code: String
+        let message: String
+
+        init(
+            code: String = "AI_DAILY_QUOTA_EXCEEDED",
+            message: String = "The daily AI request quota has been reached."
+        ) {
+            self.code = code
+            self.message = message
+        }
+
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             BackendTransportResponse(
                 data: Data(
                     """
                     {
-                      "code":"AI_DAILY_QUOTA_EXCEEDED",
-                      "message":"The daily AI request quota has been reached.",
+                      "code":"\(code)",
+                      "message":"\(message)",
                       "requestId":"request"
                     }
                     """.utf8
                 ),
                 headers: ["content-type": "application/json"],
                 statusCode: 429
+            )
+        }
+    }
+
+    @Test("automatic helper budget exhaustion is a terminal silent-degrade signal")
+    func auxiliaryBudget() async {
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: Credentials(),
+            transport: QuotaTransport(
+                code: "AUXILIARY_BUDGET_EXHAUSTED",
+                message: "学习辅助额度已达上限，本次辅助任务已跳过。"
+            )
+        )
+        let provider = BackendLLMProvider(backend: client)
+
+        await #expect(
+            throws: LLMError.accessRestricted("学习辅助额度已达上限，本次辅助任务已跳过。")
+        ) {
+            try await provider.complete(
+                LLMRequest(
+                    task: .coachReview,
+                    tier: .fast,
+                    messages: [.user("review me")]
+                )
             )
         }
     }

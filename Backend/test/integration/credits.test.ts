@@ -86,6 +86,94 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await credits.finish(user, id, null);
       expect((await credits.snapshot(user)).used).toBe(b.used);
     });
+    it("caps automatic reviews and lets the next user message outrank their active hold", async () => {
+      const user = await actor();
+      const first = newEntityId();
+      const conversation = {
+        ...req,
+        messages: [
+          { role: "system" as const, content: "x".repeat(24_000) },
+          { role: "user" as const, content: "I must say pretty good" },
+        ],
+        maxOutputTokens: 120,
+      };
+      await credits.reserve(user, first, first, conversation);
+      await credits.dispatch(user, first);
+      await credits.finish(
+        user,
+        first,
+        usage,
+        { content: "Glad to hear it." },
+        "provider-first",
+        req.model,
+      );
+
+      const review = newEntityId();
+      await credits.reserve(user, review, review, {
+        ...req,
+        task: "coach_review",
+        messages: [{ role: "system", content: "x".repeat(7_081) }],
+        maxOutputTokens: 1_000,
+      });
+      await credits.dispatch(user, review);
+
+      // Even without another user request in flight, the helper pool itself is
+      // capped: the first large review cannot be followed by another helper.
+      await expect(
+        credits.reserve(user, newEntityId(), "second-review", {
+          ...req,
+          task: "memory_summary",
+          messages: [{ role: "user", content: "short summary" }],
+          maxOutputTokens: 100,
+        }),
+      ).rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
+
+      // The combined conservative holds exceed the free daily allowance, but
+      // the still-running automatic review cannot reject the next user action.
+      const second = newEntityId();
+      await expect(
+        credits.reserve(user, second, second, conversation),
+      ).resolves.toMatchObject({ replay: false });
+
+      await credits.dispatch(user, second);
+      await credits.finish(user, second, usage, {}, "provider-second", req.model);
+
+      // Keep the original review in flight through a third user turn as well.
+      const third = newEntityId();
+      await expect(
+        credits.reserve(user, third, third, conversation),
+      ).resolves.toMatchObject({ replay: false });
+      await credits.dispatch(user, third);
+
+      // Explicit learning tools belong to the user pool, not the helper pool.
+      const translation = newEntityId();
+      await expect(
+        credits.reserve(user, translation, translation, {
+          ...req,
+          task: "translation",
+          maxOutputTokens: 100,
+        }),
+      ).resolves.toMatchObject({ replay: false });
+      await credits.dispatch(user, translation);
+      await credits.finish(
+        user,
+        translation,
+        {
+          inputTokens: 100,
+          cacheHitTokens: 80,
+          cacheMissTokens: 20,
+          outputTokens: 20,
+          totalTokens: 120,
+        },
+        {},
+        "provider-translation",
+        req.model,
+      );
+
+      await credits.finish(user, third, usage, {}, "provider-third", req.model);
+      await credits.finish(user, review, usage, {}, "provider-review", req.model);
+      expect((await credits.snapshot(user)).used).toBeLessThan(32);
+    });
     it("retains uncertain holds across resets, releases only undispatched work, and requires reconciliation evidence", async () => {
       const user = await actor(),
         pending = newEntityId(),

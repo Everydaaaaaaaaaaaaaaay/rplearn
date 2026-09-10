@@ -20,6 +20,36 @@ const policySchema = z.object({
   pro: z.string().regex(/^\d{1,13}$/),
   max: z.string().regex(/^\d{1,13}$/),
 });
+
+// These tasks are initiated automatically after a user-facing action. They may
+// improve the experience, but they must never compete as peers with a message,
+// lookup, translation, or other operation the user explicitly requested.
+const AUXILIARY_TASKS = [
+  "coach_review",
+  "memory_summary",
+  "quiz",
+  "speech_feedback",
+] as const;
+const auxiliaryTaskSet = new Set<string>(AUXILIARY_TASKS);
+const AUXILIARY_SHARE_PERCENT = 35n;
+const ACTIVE_RESERVE_PERCENT = 50n;
+
+function isAuxiliaryTask(task: string): boolean {
+  return auxiliaryTaskSet.has(task);
+}
+
+function percentageOf(limit: bigint, percentage: bigint): bigint {
+  return (limit * percentage) / 100n;
+}
+
+function positive(value: bigint): bigint {
+  return value > 0n ? value : 0n;
+}
+
+function minimum(first: bigint, second: bigint): bigint {
+  return first < second ? first : second;
+}
+
 function reject(code: string, message: string, statusCode = 409): never {
   throw new AppError({ code, message, statusCode });
 }
@@ -66,24 +96,50 @@ async function balance(
   limit: bigint,
 ) {
   const [row] = await sql<
-    { used: string; reserved: string; pending: string; overrun: string }[]
+    {
+      used: string;
+      reserved: string;
+      pending: string;
+      overrun: string;
+      auxiliary_used: string;
+      auxiliary_reserved: string;
+      auxiliary_pending: string;
+      auxiliary_overrun: string;
+    }[]
   >`select
     coalesce(sum(settled_units) filter(where status='settled' and window_key=${window}),0)::text as used,
     coalesce(sum(reserved_units) filter(where status in ('reserved','dispatched')),0)::text as reserved,
     coalesce(sum(reserved_units) filter(where status='pending'),0)::text as pending,
-    coalesce(sum(greatest(settled_units-reserved_units,0)) filter(where status='settled' and window_key<>${window} and reconciliation is null),0)::text as overrun
+    coalesce(sum(greatest(settled_units-reserved_units,0)) filter(where status='settled' and window_key<>${window} and reconciliation is null),0)::text as overrun,
+    coalesce(sum(settled_units) filter(where status='settled' and window_key=${window} and task=any(${[...AUXILIARY_TASKS]}::text[])),0)::text as auxiliary_used,
+    coalesce(sum(reserved_units) filter(where status in ('reserved','dispatched') and task=any(${[...AUXILIARY_TASKS]}::text[])),0)::text as auxiliary_reserved,
+    coalesce(sum(reserved_units) filter(where status='pending' and task=any(${[...AUXILIARY_TASKS]}::text[])),0)::text as auxiliary_pending,
+    coalesce(sum(greatest(settled_units-reserved_units,0)) filter(where status='settled' and window_key<>${window} and reconciliation is null and task=any(${[...AUXILIARY_TASKS]}::text[])),0)::text as auxiliary_overrun
     from app.credit_operations where user_id=${userId} and (window_key=${window} or status in ('reserved','dispatched','pending') or (settled_units>reserved_units and reconciliation is null))`;
   const used = BigInt(row?.used ?? 0),
     reserved = BigInt(row?.reserved ?? 0),
     pending = BigInt(row?.pending ?? 0),
-    overrun = BigInt(row?.overrun ?? 0);
+    overrun = BigInt(row?.overrun ?? 0),
+    auxiliaryUsed = BigInt(row?.auxiliary_used ?? 0),
+    auxiliaryReserved = BigInt(row?.auxiliary_reserved ?? 0),
+    auxiliaryPending = BigInt(row?.auxiliary_pending ?? 0),
+    auxiliaryOverrun = BigInt(row?.auxiliary_overrun ?? 0);
   const remaining = limit - used - reserved - pending - overrun;
+  // A dispatched helper call may still be using its conservative hold when the
+  // user sends the next message. Excluding only that temporary helper hold here
+  // prevents the helper from winning the race. Settled and uncertain usage is
+  // still charged, and simultaneous user-initiated work still competes normally.
+  const activeRemaining =
+    limit - used - (reserved - auxiliaryReserved) - pending - overrun;
   return {
     limit,
     used,
     reserved,
     pending: pending + overrun,
-    remaining: remaining > 0n ? remaining : 0n,
+    remaining: positive(remaining),
+    activeRemaining: positive(activeRemaining),
+    auxiliaryCommitted:
+      auxiliaryUsed + auxiliaryReserved + auxiliaryPending + auxiliaryOverrun,
   };
 }
 export interface CreditSnapshot {
@@ -198,7 +254,34 @@ export function createCreditService(database: DatabaseResource) {
           request.maxOutputTokens,
         );
         const available = await balance(sql, userId, ctx.window, ctx.limit);
-        if (amount > available.remaining)
+        if (isAuxiliaryTask(request.task)) {
+          const auxiliaryLimit = percentageOf(ctx.limit, AUXILIARY_SHARE_PERCENT);
+          const protectedActiveCredits = percentageOf(
+            ctx.limit,
+            ACTIVE_RESERVE_PERCENT,
+          );
+          const auxiliaryRemaining = positive(
+            auxiliaryLimit - available.auxiliaryCommitted,
+          );
+          const safeTotalRemaining = positive(
+            available.remaining - protectedActiveCredits,
+          );
+          const usable = minimum(auxiliaryRemaining, safeTotalRemaining);
+          if (amount > usable)
+            throw new AppError({
+              code: "AUXILIARY_BUDGET_EXHAUSTED",
+              statusCode: 429,
+              message: "学习辅助额度已达上限，本次辅助任务已跳过。",
+              details: {
+                task: request.task,
+                remaining: displayCredits(usable),
+                required: displayCredits(amount),
+                auxiliaryLimit: displayCredits(auxiliaryLimit),
+                protectedActiveCredits: displayCredits(protectedActiveCredits),
+                resetsAt: ctx.reset,
+              },
+            });
+        } else if (amount > available.activeRemaining)
           throw new AppError({
             code: "CREDITS_EXHAUSTED",
             statusCode: 429,
@@ -206,7 +289,7 @@ export function createCreditService(database: DatabaseResource) {
               ? "游客积分不足，登录后可获得每日积分。"
               : "可用积分不足以预留本次请求，请等待恢复或升级订阅。",
             details: {
-              remaining: displayCredits(available.remaining),
+              remaining: displayCredits(available.activeRemaining),
               required: displayCredits(amount),
               resetsAt: ctx.reset,
               isGuest: ctx.actor.isGuest,
