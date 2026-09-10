@@ -2,58 +2,97 @@ import Observation
 import SwiftUI
 import Translation
 
-/// Apple 端上翻译（Translation 框架）封装为可按需调用的 async 接口。
-///
-/// `TranslationSession` 只能由 SwiftUI 的 `.translationTask` 修饰器提供、无法独立构造，
-/// 故这里用「配置触发 + 请求队列 + 续体」把它桥接成 `translate(_:) async -> String?`，
-/// 作为云端 LLM 翻译在离线/失败时的兜底。语言包首次使用需联网下载（系统弹窗）。
+/// Bridges SwiftUI's system-owned translation session into an on-demand local API.
+/// Language resources are downloaded by Apple with system consent, never bundled.
 @MainActor
 @Observable
 public final class AppleTranslator {
-    /// 绑定到 `.translationTask`；nil→非 nil 启动会话，`invalidate()` 触发重跑。
     public private(set) var configuration: TranslationSession.Configuration?
-
+    private(set) var sessionID = UUID()
+    private var isSessionRunning = false
     private var pending: [UUID: CheckedContinuation<String?, Never>] = [:]
     private var inbox: [(id: UUID, text: String)] = []
+    private var deadlines: [UUID: Task<Void, Never>] = [:]
 
     public init() {}
 
-    /// 把英文译成简体中文；语言包不可用或失败时返回 nil（含 20s 超时兜底，避免卡死）。
     public func translate(_ text: String) async -> String? {
+        #if targetEnvironment(simulator)
+        // Apple's translation models are unavailable in Simulator.
+        return nil
+        #else
+        return await enqueue(text)
+        #endif
+    }
+
+    func enqueue(_ text: String) async -> String? {
+        guard !Task.isCancelled, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
         let id = UUID()
-        return await withCheckedContinuation { continuation in
-            pending[id] = continuation
-            inbox.append((id, text))
-            triggerSession()
-            Task { @MainActor in
-                try? await Task.sleep(for: .seconds(20))
-                complete(id, with: nil)
+        return await withTaskCancellationHandler {
+            await withCheckedContinuation { continuation in
+                pending[id] = continuation
+                inbox.append((id, text))
+                triggerSession()
+                // Allow time for first-use language download and system consent.
+                deadlines[id] = Task { @MainActor in
+                    do { try await Task.sleep(for: .seconds(120)) }
+                    catch { return }
+                    cancelRequest(id)
+                }
             }
+        } onCancel: {
+            Task { @MainActor in self.cancelRequest(id) }
         }
     }
 
-    /// 取走并清空当前待翻译批次（由 `.translationTask` 闭包驱动）。
-    /// session 非 Sendable 只能在闭包内内联使用，故这里只交换纯数据。
-    func takeBatch() -> [(id: UUID, text: String)] {
+    func takeBatch(sessionID: UUID) -> [(id: UUID, text: String)] {
+        guard self.sessionID == sessionID else { return [] }
         let batch = inbox
         inbox.removeAll()
         return batch
     }
 
-    /// 回填一条翻译结果（供 `.translationTask` 闭包调用）。
     func complete(_ id: UUID, with value: String?) {
         guard let continuation = pending.removeValue(forKey: id) else { return }
+        inbox.removeAll { $0.id == id }
+        deadlines.removeValue(forKey: id)?.cancel()
         continuation.resume(returning: value)
     }
 
+    func finishSession(_ id: UUID, failed: Bool = false) {
+        guard sessionID == id else { return }
+        isSessionRunning = false
+        if failed {
+            for requestID in Array(pending.keys) { complete(requestID, with: nil) }
+        }
+        if !inbox.isEmpty { triggerSession() }
+    }
+
+    func cancelAll() {
+        sessionID = UUID()
+        configuration = nil
+        isSessionRunning = false
+        for id in Array(pending.keys) { complete(id, with: nil) }
+    }
+
+    private func cancelRequest(_ id: UUID) {
+        guard pending[id] != nil else { return }
+        complete(id, with: nil)
+        // A stalled/abandoned session must not trap later retries behind it.
+        if pending.isEmpty { cancelAll() }
+    }
+
     private func triggerSession() {
+        // New requests join the active session instead of invalidating each other.
+        guard !isSessionRunning else { return }
+        isSessionRunning = true
+        sessionID = UUID()
         if configuration == nil {
             configuration = TranslationSession.Configuration(
                 source: Locale.Language(identifier: "en"),
                 target: Locale.Language(identifier: "zh-Hans")
             )
         } else {
-            // 会话已存在：使其失效以让 .translationTask 用新 session 重跑。
             configuration?.invalidate()
         }
     }

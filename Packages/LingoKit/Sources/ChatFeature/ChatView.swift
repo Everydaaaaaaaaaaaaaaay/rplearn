@@ -200,16 +200,28 @@ public struct ChatView: View {
             }
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
-            // session 非 Sendable，只能在本闭包内内联使用；仅与协调器交换纯数据。
-            try? await session.prepareTranslation()
-            for item in await appleTranslator.takeBatch() {
-                let zh = try? await session.translate(item.text).targetText
-                await appleTranslator.complete(item.id, with: zh)
+            // Keep one session for queued requests, including language-pack preparation.
+            let sessionID = await appleTranslator.sessionID
+            var failed = false
+            do {
+                try await session.prepareTranslation()
+                while !Task.isCancelled {
+                    let batch = await appleTranslator.takeBatch(sessionID: sessionID)
+                    if batch.isEmpty { break }
+                    for item in batch {
+                        let zh = try? await session.translate(item.text).targetText
+                        await appleTranslator.complete(item.id, with: zh)
+                    }
+                }
+            } catch {
+                // The system owns download consent; cancellation/failure stays local.
+                failed = true
             }
+            await appleTranslator.finishSession(sessionID, failed: failed || Task.isCancelled)
         }
         .task {
-            // 注入 Apple 端上翻译作为云端翻译失败/离线时的兜底。
-            viewModel.translationFallback = { [appleTranslator] text in
+            // 整句翻译仅使用 Apple 系统语言包。
+            viewModel.localTranslation = { [appleTranslator] text in
                 await appleTranslator.translate(text)
             }
             await viewModel.load()
@@ -220,6 +232,7 @@ public struct ChatView: View {
             markVisibleConversationRead()
         }
         .onDisappear {
+            appleTranslator.cancelAll()
             markVisibleConversationRead()
         }
         .dsTabBarHidden()

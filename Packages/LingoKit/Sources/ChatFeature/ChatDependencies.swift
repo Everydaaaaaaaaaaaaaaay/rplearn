@@ -19,7 +19,6 @@ public struct ChatDependencies: Sendable {
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
-    public let translator: TranslationService
     public let exampleTranslationActions: DictExampleTranslationActions
     public let audioSession: AudioSessionCoordinator
     public let memoryStore: MemoryStore
@@ -42,7 +41,6 @@ public struct ChatDependencies: Sendable {
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
-        translator: TranslationService,
         exampleTranslationActions: DictExampleTranslationActions,
         audioSession: AudioSessionCoordinator,
         memoryStore: MemoryStore,
@@ -66,7 +64,6 @@ public struct ChatDependencies: Sendable {
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
-        self.translator = translator
         self.exampleTranslationActions = exampleTranslationActions
         self.audioSession = audioSession
         self.memoryStore = memoryStore

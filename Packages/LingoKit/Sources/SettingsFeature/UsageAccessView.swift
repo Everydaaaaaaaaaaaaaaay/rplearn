@@ -29,7 +29,7 @@ public struct UsageAccessView: View {
                             LabeledContent("可用积分", value: "\(points(credits.remaining)) / \(points(credits.limit))")
                             LabeledContent("已消耗", value: points(credits.used))
                             Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
-                            Text("只有你明确发起的云端操作会使用积分：发送消息、生成新角色，以及点击翻译、语法或单词讲解。操作完成后按实际输入、缓存输入和输出扣除积分，不预留、不冻结。")
+                            Text("只有你明确发起的云端操作会使用积分：发送消息、生成新角色，以及语法解析、单词讲解或词典例句云端翻译。聊天整句翻译使用 Apple 本地翻译，不消耗积分。云端操作完成后按实际输入、缓存输入和输出扣除积分，不预留、不冻结。")
                                 .font(.footnote).foregroundStyle(.secondary)
                             Text("开始时只要还有积分，就能完成本次操作；实际消耗可能超过剩余积分，用完后暂停新的操作。用量核对中的请求不占用额度。")
                                 .font(.footnote).foregroundStyle(.secondary)

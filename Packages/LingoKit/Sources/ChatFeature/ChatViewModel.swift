@@ -77,27 +77,34 @@ public final class ChatViewModel {
     /// 正在翻译中的消息（气泡下方转圈）。
     public private(set) var translatingMessageIDs: Set<UUID> = []
 
-    /// 云端翻译失败（离线/报错）时的兜底翻译，由 ChatView 注入 Apple 端上翻译。
-    public var translationFallback: (@MainActor (String) async -> String?)?
+    /// 由 ChatView 注入系统翻译会话；整句翻译不调用 LLM 或额度接口。
+    public var localTranslation: (@MainActor (String) async -> String?)?
 
-    /// 翻译整句并缓存到 translationZh（重复点击直接用缓存）。
-    /// 正常走云端 LLM；离线或失败时回退 Apple 端上翻译（Translation 框架）。
+    /// 翻译整句并持久缓存；同时检查最新消息，避免旧 DTO 导致重复翻译。
     public func translate(message: MessageDTO) async {
-        guard message.translationZh == nil, !translatingMessageIDs.contains(message.id) else { return }
+        guard message.translationZh == nil,
+              messages.first(where: { $0.id == message.id })?.translationZh == nil,
+              !translatingMessageIDs.contains(message.id) else { return }
         translatingMessageIDs.insert(message.id)
+        errorMessage = nil
         defer { translatingMessageIDs.remove(message.id) }
+        guard let localTranslation,
+              let result = await localTranslation(message.text),
+              !result.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            if !Task.isCancelled {
+                errorMessage = "Apple 本地翻译暂不可用。首次使用请联网并完成系统语言包下载，然后重试。"
+            }
+            return
+        }
+        guard !Task.isCancelled else { return }
         do {
-            let translation = try await deps.translator.translateToChinese(message.text)
-            try await deps.chatStore.setTranslation(messageID: message.id, translationZh: translation)
+            try await deps.chatStore.setTranslation(
+                messageID: message.id,
+                translationZh: result.trimmingCharacters(in: .whitespacesAndNewlines)
+            )
             await reloadMessages()
         } catch {
-            // 云端失败 → Apple 端上翻译兜底；仍失败才报错。
-            if let fallback = translationFallback, let local = await fallback(message.text) {
-                try? await deps.chatStore.setTranslation(messageID: message.id, translationZh: local)
-                await reloadMessages()
-            } else {
-                errorMessage = "翻译失败：\(error.localizedDescription)"
-            }
+            errorMessage = "保存译文失败，请重试：\(error.localizedDescription)"
         }
     }
 

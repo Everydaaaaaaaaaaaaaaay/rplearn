@@ -885,7 +885,6 @@ struct RootView: View {
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
-            translator: environment.translator,
             exampleTranslationActions: exampleTranslationActions,
             audioSession: environment.audioSession,
             memoryStore: environment.memoryStore,

@@ -55,7 +55,6 @@ final class AppEnvironment {
     var needsOnboarding: Bool?
     let audioSession: AudioSessionCoordinator
     let speech: AdaptiveSpeechService
-    let translator: TranslationService
 
     private var requiredWorkspace: AccountWorkspace {
         guard let workspace else {
@@ -112,7 +111,6 @@ final class AppEnvironment {
         self.grammarPoints = try! GrammarPointStore(url: grammarURL)
         let regionsURL = Bundle.main.url(forResource: "regions", withExtension: "json")!
         self.regionCatalog = try! RegionCatalog(url: regionsURL)
-        self.translator = TranslationService(llm: llmRouter)
 
         Log.app.info("AppEnvironment initialized")
         Task { await authSession.bootstrap() }

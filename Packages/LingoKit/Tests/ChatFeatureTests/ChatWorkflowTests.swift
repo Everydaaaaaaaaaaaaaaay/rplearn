@@ -90,7 +90,7 @@ struct ChatWorkflowTests {
             llm: llm,
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
             grammarPoints: try GrammarPointStore(url: #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json"))),
-            speech: SilentSpeech(), translator: TranslationService(llm: llm),
+            speech: SilentSpeech(),
             exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }),
             audioSession: AudioSessionCoordinator(), memoryStore: MemoryStore(modelContainer: container),
             itemStore: items, economyStore: economy,
@@ -346,12 +346,120 @@ struct ChatWorkflowTests {
         let raw = "First detail.\nSecond detail.\nThird detail.\nFourth detail.\nLast detail."
         await f.model.saveRealtimeAssistant(spokenText: raw, interrupted: false)
         let reply = try #require(f.model.messages.last)
+        var localCalls = 0
+        f.model.localTranslation = { text in
+            #expect(text == reply.text)
+            localCalls += 1
+            return "完整的翻译。"
+        }
         await f.model.translate(message: reply)
+        await f.model.translate(message: reply) // A stale DTO must also reuse persisted state.
+        #expect(localCalls == 1)
         let reopened = await f.reopen()
         let translated = try #require(reopened.messages.last)
         #expect(normalized(reopened.messages.map(\.text).joined(separator: " ")) == normalized(raw))
         #expect(translated.translationZh == "完整的翻译。")
         await reopened.translate(message: translated)
-        #expect(await provider.translations == 1)
+        #expect(await provider.translations == 0)
+        #expect(await provider.tasks().isEmpty)
+    }
+    @Test("系统翻译失败或返回空白不调用 AI，且可以重试")
+    func localTranslationFailureCanRetryWithoutAI() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        await f.model.saveRealtimeAssistant(spokenText: "Hello there.", interrupted: false)
+        let message = try #require(f.model.messages.last)
+        await f.model.translate(message: message) // No bound system session.
+        #expect(f.model.errorMessage?.contains("Apple") == true)
+        f.model.localTranslation = { _ in nil }
+        await f.model.translate(message: message)
+        f.model.localTranslation = { _ in "  \n " }
+        await f.model.translate(message: message)
+        #expect(f.model.messages.last?.translationZh == nil)
+        #expect(f.model.translatingMessageIDs.isEmpty)
+        f.model.localTranslation = { _ in "你好。" }
+        await f.model.translate(message: message)
+        #expect(f.model.messages.last?.translationZh == "你好。")
+        #expect(await provider.tasks().isEmpty)
+    }
+
+    @Test("重复点击合并进行中的本地翻译")
+    func duplicateLocalTranslationIsCoalesced() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        await f.model.saveRealtimeAssistant(spokenText: "Hello.", interrupted: false)
+        let message = try #require(f.model.messages.last)
+        var continuation: CheckedContinuation<String?, Never>?
+        var calls = 0
+        f.model.localTranslation = { _ in
+            calls += 1
+            return await withCheckedContinuation { continuation = $0 }
+        }
+        let first = Task { await f.model.translate(message: message) }
+        while continuation == nil { await Task.yield() }
+        await f.model.translate(message: message)
+        #expect(calls == 1)
+        continuation?.resume(returning: "你好。")
+        await first.value
+        #expect(f.model.messages.last?.translationZh == "你好。")
+        #expect(await provider.tasks().isEmpty)
+    }
+
+}
+
+@Suite("Apple 翻译请求生命周期", .serialized)
+@MainActor
+struct AppleTranslatorQueueTests {
+    @Test("并发请求共用会话且新消息不会打断正在翻译的消息")
+    func queuedRequestsShareSession() async throws {
+        let translator = AppleTranslator()
+        let first = Task { await translator.enqueue("First.") }
+        while translator.configuration == nil { await Task.yield() }
+        let sessionID = translator.sessionID
+        let batch = translator.takeBatch(sessionID: sessionID)
+        #expect(batch.count == 1)
+        let second = Task { await translator.enqueue("Second.") }
+        // Wait for the second task to run on this actor before inspecting its queue.
+        await Task.yield()
+        #expect(translator.sessionID == sessionID)
+        translator.complete(try #require(batch.first?.id), with: "第一句。")
+        #expect(await first.value == "第一句。")
+        var next = translator.takeBatch(sessionID: sessionID)
+        while next.isEmpty {
+            await Task.yield()
+            next = translator.takeBatch(sessionID: sessionID)
+        }
+        translator.complete(try #require(next.first?.id), with: "第二句。")
+        translator.finishSession(sessionID)
+        #expect(await second.value == "第二句。")
+    }
+
+    @Test("下载失败释放等待请求，后续可以重新启动")
+    func preparationFailureAndRetry() async {
+        let translator = AppleTranslator()
+        let first = Task { await translator.enqueue("Hello.") }
+        while translator.configuration == nil { await Task.yield() }
+        let oldID = translator.sessionID
+        translator.finishSession(oldID, failed: true)
+        #expect(await first.value == nil)
+        let retry = Task { await translator.enqueue("Hello.") }
+        while translator.sessionID == oldID { await Task.yield() }
+        translator.finishSession(oldID, failed: true) // A stale session cannot cancel the retry.
+        #expect(translator.takeBatch(sessionID: translator.sessionID).count == 1)
+        translator.cancelAll()
+        #expect(await retry.value == nil)
+        #expect(translator.configuration == nil)
+    }
+
+    @Test("取消请求移出队列，离开页面释放所有等待者")
+    func cancellationCleansQueue() async {
+        let translator = AppleTranslator()
+        let task = Task { await translator.enqueue("Hello.") }
+        while translator.configuration == nil { await Task.yield() }
+        task.cancel()
+        #expect(await task.value == nil)
+        #expect(translator.takeBatch(sessionID: translator.sessionID).isEmpty)
+        translator.cancelAll()
+        #expect(translator.configuration == nil)
     }
 }
