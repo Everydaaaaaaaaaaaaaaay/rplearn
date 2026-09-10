@@ -1,36 +1,27 @@
-# 文档
+# 文档索引
 
-文档只补充代码中不容易直接看出的稳定信息。模块 API、依赖和运行行为仍以代码、测试及
-构建配置为准。
+按任务阅读。必要工程规则集中在 [AGENTS.md](../AGENTS.md)，命令与实现以代码、测试和
+构建配置为准。领域文档补充设计意图，日期报告保留当时证据，不构成当前提交的固定流程。
 
-## 日常开发
+## 开发与当前设计
 
-- [`../README.md`](../README.md)：启动方式、仓库地图和最少开发约定。
-- [`development.md`](development.md)：按任务查找入口与选择最小验证；无需逐项执行。
-- [`system-verification.md`](system-verification.md)：功能验证矩阵、故障恢复、隔离端到端入口和未覆盖的真实环境边界。
-- [`system-audit-2026-09-07.md`](system-audit-2026-09-07.md)：本轮检查发现的问题、修复与实际验证记录。
-- [`architecture.md`](architecture.md)：客户端与后端的边界、数据流和改动入口。
-- [`algorithm-complexity-audit.md`](algorithm-complexity-audit.md)：App 与各模块的算法复杂度、热点和优化门槛。
+| 任务 | 入口 |
+| --- | --- |
+| 启动与仓库地图 | [项目 README](../README.md)、[后端 README](../Backend/README.md) |
+| 选择验证 | [开发速查](development.md)、[功能验证矩阵](system-verification.md) |
+| 模块、账号与同步边界 | [架构](architecture.md) |
+| 登录入口、账号隔离与订阅 | [账号与定价策略](account-access-and-pricing-policy-2026-09-10.md)；商店价格配置不等于已生效 |
+| 城市与剧情 | [旅行设计](journey-design.md)、[出发之后](departures-collection.md)、[剧情美术验收](verification/departures-art.md) |
+| 场景与活动 | [必要视觉验收](activity-scene-visual-acceptance.md)及其中最新记录、[相遇流程](activity-encounter-journey-plan.md) |
+| 视觉与语音 | [设计系统](design-system.md)、[实时语音](realtime-voice.md) |
+| NPC 与关系 | [人物多样性](npc-persona-diversity.md)、[关系系统](relationship-system.md) |
+| 积分与成本 | [模型积分](model-credits.md)、[成本评测](user-cost-evaluation.md) |
+| 部署与模型运营 | [部署](backend/DEPLOYMENT.md)、[AI 控制面](backend/AI_CONTROL_PLANE.md)；仅在对应任务使用 |
 
-涉及具体领域时再读：
+## 历史与证据
 
-- [`journey-design.md`](journey-design.md)：主线路线、城市解锁和内容配置入口。
-- [`departures-collection.md`](departures-collection.md)：新五站主线、十五篇城市故事及声音制作边界。
-- [`story-rebuild-plan.md`](story-rebuild-plan.md)：新剧情施工流程、AI 美术一致性与全量发布门槛。
-- [`story-direction-draft.md`](story-direction-draft.md)：已确认的创作方向与首站范围。
-- [`story-london-production.md`](story-london-production.md)：伦敦日系可玩样章的脚本、资产、限制与验收记录。
-- [`design-system.md`](design-system.md)：视觉方向与 DesignSystem 边界。
-- [`realtime-voice.md`](realtime-voice.md)：端侧实时语音、低成本模型、生命周期与真机验收门槛。
-- [`relationship-system.md`](relationship-system.md)：多维角色关系、好感度计算、时间衰减与校准边界。
-- [`npc-persona-diversity.md`](npc-persona-diversity.md)：城市偶遇 NPC 的人物指纹、重复判定、并发保护与验收边界。
-- [`relationship-calibration-log.md`](relationship-calibration-log.md)：关系算法的历史实验、失败案例与验证证据。
-- [`user-cost-evaluation.md`](user-cost-evaluation.md)：原生端到端用户成本评测、场景和证据解释。
-- [`user-cost-study-results-2026-09-06.md`](user-cost-study-results-2026-09-06.md)：分层重复、额度对照和长聊天压力实测；附可复核数据。
-- [`cost-pricing-proposal-2026-09-06.md`](cost-pricing-proposal-2026-09-06.md)：月度积分池、试运营价格及免费补贴的经营阈值（未上线）。
-- [`model-credits.md`](model-credits.md)：统一模型积分、试行预算、定价测算与核对规则。
-- [`../Backend/README.md`](../Backend/README.md)：后端本地开发。
+- [系统审计 2026-09-07](system-audit-2026-09-07.md)、[复杂度审计](algorithm-complexity-audit.md)：当时发现和验证范围。
+- [剧情重构原计划](story-rebuild-plan.md)、[创作方向](story-direction-draft.md)、[伦敦样章](story-london-production.md)：制作背景；当前正式篇目见《出发之后》。
+- [关系校准](relationship-calibration-log.md)、[成本实验结果](user-cost-study-results-2026-09-06.md)、[早期定价提案](cost-pricing-proposal-2026-09-06.md)：实验数据与假设，不代表当前权益或售价。
 
-## 按需部署
-
-`backend/DEPLOYMENT.md` 只记录当前服务器的实际发布入口。备份、集群、长期迁移和合规流程
-等尚未启用的设计不提前固化；需要了解演进历史时使用 Git。
+历史验收保留对应版本和未解问题；未变化证据可复用，修复状态以该领域最新记录为准。

@@ -31,7 +31,7 @@ App 壳的主入口与支持文件是：
 - `AppNavigationState.swift`：跨 Feature 导航状态。
 - `LegacyTabBarCapsuleInstaller.swift`：旧系统 Tab Bar 的隔离适配。
 
-其余代码位于单一本地 Swift Package 中。24 个 Target 按职责分为：
+其余代码位于单一本地 Swift Package 中，按职责分为：
 
 | 层 | 模块 |
 |---|---|

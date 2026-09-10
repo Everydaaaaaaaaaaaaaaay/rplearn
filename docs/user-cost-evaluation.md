@@ -6,7 +6,7 @@
 
 独立 iOS 模拟器 → 应用实际 ChatViewModel → LLMRouter/PromptBuilder → 真实 HTTP 后端 → 模型供应商 → PostgreSQL 金额账本。SwiftData 使用本次会话内存库，重新进入聊天时保留同一库。回复间隔、分气泡、自动关系/语言审阅、纠错回退、测验和记忆压缩按当前应用代码实际触发，测试不手工规定每句话应有几次辅助调用。
 
-`Backend/config/cost-scenarios.json` 是首批场景入口；第二轮使用 `cost-scenarios-study.json`、`cost-scenarios-stress.json`，协议见[分层实验设计](user-cost-study-design.md)。配置包含对话脚本、难度、角色卡、翻译/语法频率、重入聊天、切换 NPC 与语音分支。游客、免费、Plus、Pro 使用隔离数据库的真实身份与权益记录。额度对照必须另建批次并记录政策快照，不覆盖原始受限样本。当前活动 UI 已无 EncounterService 调用点，因此探索样本只属于能力基准，不参与当前应用的月度需求估计。
+`Backend/config/cost-scenarios.json` 是首批场景入口；第二轮使用 `cost-scenarios-study.json`、`cost-scenarios-stress.json`，协议见[分层实验设计](user-cost-study-design.md)。配置包含对话脚本、难度、角色卡、翻译/语法频率、重入聊天、切换 NPC 与语音分支。游客、免费、Plus、Pro 使用隔离数据库的真实身份与权益记录。额度对照必须另建批次并记录政策快照，不覆盖原始受限样本。该批实验时活动 UI 尚无 EncounterService 调用点，探索样本只属于当时能力基准。当前 SocialEncounterModel 已接入社交偶遇，且生产入口已改为必须登录；旧游客/探索样本不能直接外推当前月度需求，需在新的成本评测任务中更新场景。
 
 覆盖矩阵：
 

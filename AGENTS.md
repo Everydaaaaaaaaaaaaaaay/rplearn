@@ -1,56 +1,39 @@
 # LingoTrip
 
-Native SwiftUI iOS app + TypeScript/Fastify backend. Read the files relevant to the
-requested change; no mandatory repo scan or document preflight.
+Native SwiftUI iOS app + TypeScript/Fastify backend.
 
-## Where to look
+## Find the relevant code
 
-- Swift dependencies: `Packages/LingoKit/Package.swift`; Xcode targets/resources: `project.yml`.
-- Backend commands/tools: `Backend/package.json`; feature code: `Backend/src/modules/<module>/`.
-- Architecture: `docs/architecture.md`; domain docs: `docs/README.md`. Read them when needed.
-- Task routing and verification examples: `docs/development.md`. `Scripts/code-map.sh <scope>`
-  is an optional lookup, not a prerequisite to editing.
-- For assets/models, start from the nearest manifest or README. Generated projects, build
-  output, caches and binary assets are not architecture sources; inspect them only when relevant.
-- For photographic scene assets or their video/UI composites, follow
-  `docs/activity-scene-visual-acceptance.md` and keep a per-version acceptance record.
-  Before every scene design, asset selection/generation, compositing, hotspot adjustment,
-  or acceptance task, read that rule file, its current rejection register, and the scene's
-  latest acceptance record. Use `docs/templates/activity-scene-acceptance-record.md`;
-  explicitly recheck each open user-reported issue before claiming completion.
-  Unverified or rejected assets are not release-ready; successful generation and code tests
-  never substitute for spatial, object-use, and visual review.
+Read only what the task needs. Swift dependencies: `Packages/LingoKit/Package.swift`;
+Xcode targets/resources: `project.yml`; backend commands: `Backend/package.json`;
+backend features: `Backend/src/modules/<module>/`. Use `docs/README.md` for domain
+context and `docs/development.md` for verification examples; neither is a preflight checklist.
+For assets, start with the nearest manifest or README.
 
-## Boundaries
+## Essential boundaries
 
-- App assembles navigation. Feature targets do not import other Feature targets.
-- Declare Swift dependencies in `Package.swift`. Keep SwiftData entities inside PersistenceKit
-  actors; cross-actor/UI values are `Sendable` DTOs.
-- Backend routes call services; repositories own transactional persistence. Modules expose
-  types/services, not another module's repository/schema. Cross-module assembly belongs in
-  `server.ts`, `worker.ts` or an infrastructure capability.
+- App assembles navigation; Feature targets do not import other Feature targets.
+- Declare Swift dependencies in `Package.swift`. Keep SwiftData entities inside
+  PersistenceKit actors; expose `Sendable` DTOs across actors and to UI.
+- Backend routes call services; repositories own transactions. Cross-module access
+  uses types/services, with assembly in `server.ts`, `worker.ts` or infrastructure.
 - PostgreSQL is authoritative; Redis is disposable. Provider secrets stay server-side.
-- Preserve user data on migration failure. Never delete a database to make a test/build pass.
+- Preserve user data and historical migrations. Never delete a database to fix a failure.
 
-## Completion and verification
+## Verify and finish
 
-Carry the requested change through relevant verification and fix failures it causes. Choose
-checks by changed behavior and risk: a focused test, build or visual inspection is often enough.
-Docs-only edits need no app build. Do not automatically chain targeted tests, full suites,
-repeated passes and Release builds. Broaden when shared contracts, failures or release scope
-justify it; stop when the relevant evidence is sufficient.
+Choose checks for the changed behavior and risk; stop when evidence is sufficient.
+Docs-only changes need diff/link/command checks, not an app build. Use Xcode-hosted
+Swift tests (`Scripts/test.sh -only-testing:...`, or the focused scripts in the development
+guide); do not run `swift build` inside `Packages/LingoKit`. Local unit tests need no
+repeated approval. Database tests require an isolated environment; live AI evaluations,
+production probes and deployments require the corresponding task authorization.
 
-Local unit tests use mocks/in-memory fixtures and can be run and repaired without repeated
-approval. Database suites need an explicitly isolated test environment. Live AI evaluations,
-production probes and deployments are separate workflows; ordinary tests do not authorize them.
-Use Xcode-hosted tests (`Scripts/test.sh` with `-only-testing:...`); do not run `swift build`
-inside `Packages/LingoKit`. Historical calibration/production logs are evidence, not standing gates.
+For photographic scenes, use `docs/activity-scene-visual-acceptance.md` and the latest
+scene record. Reuse unchanged evidence; verify affected visuals and each open user issue.
+Keep a per-version record; rejected or unverified assets are not release-ready.
 
-## Git
-
-Inspect status before editing; preserve unrelated pre-existing changes. Finish completed work
-with a focused commit unless the user says otherwise. Stage explicit task paths, inspect the
-staged diff, and report verification and any remaining unrelated changes. Exclude generated
-build output, caches, credentials and local configuration. Do not rewrite existing commits
-without an explicit request. When synchronizing worktrees, preserve their work and use merges
-or fast-forwards rather than destructive resets.
+Inspect Git status first and preserve unrelated work. Finish with a focused commit unless
+asked otherwise: stage explicit task paths, inspect the staged diff, and report verification
+and remaining unrelated changes. Exclude generated output, caches, credentials and local
+configuration. Do not rewrite commits or destructively reset worktrees without explicit permission.
