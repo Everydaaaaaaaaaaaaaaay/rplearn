@@ -2,7 +2,7 @@ import XCTest
 
 @MainActor
 final class ActivitySceneTests: XCTestCase {
-    private func launch() -> XCUIApplication {
+    private func launch(extra: [String: String] = [:]) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -11,6 +11,7 @@ final class ActivitySceneTests: XCTestCase {
         app.launchEnvironment["UI_TEST_HOME_DESTINATION"] = "activities"
         app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
         app.launchEnvironment["UI_TEST_SOCIAL_FIXTURE"] = "1"
+        for (key, value) in extra { app.launchEnvironment[key] = value }
         app.launch()
         XCTAssertTrue(app.buttons["activities.tab.park"].waitForExistence(timeout: 15))
         XCTAssertTrue(app.buttons["activities.tab.pond"].exists)
@@ -36,7 +37,8 @@ final class ActivitySceneTests: XCTestCase {
 
     private func tap(_ id: String, app: XCUIApplication) {
         let button = app.buttons[id]
-        XCTAssertTrue(button.waitForExistence(timeout: 8), id)
+        XCTAssertTrue(button.waitForExistence(timeout: id.hasPrefix("activities.choice") ? 20 : 8), id)
+        for _ in 0..<3 where !button.isHittable { app.scrollViews.firstMatch.swipeUp() }
         button.tap()
     }
 
@@ -45,6 +47,67 @@ final class ActivitySceneTests: XCTestCase {
             (status.value as? String ?? "").contains(text)
         }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, text)
+    }
+
+    func testJourneyKeepsTabsAvailableAndCompletesOffscreen() {
+        let app = launch()
+        defer { app.terminate() }
+        tap("activities.scene.park-seat", app: app)
+        tap("activities.action.start", app: app)
+        XCTAssertTrue(app.otherElements["activities.journey"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.tabBars.buttons["我的"].isHittable)
+        attach("journey-glass-countdown", app: app)
+        app.tabBars.buttons["我的"].tap()
+        XCTAssertFalse(app.buttons["activities.choice.0"].exists)
+        // Wall-clock deadline runs offscreen; no application navigation should occur.
+        let wait = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.tabBars.buttons["首页"].value as? String == "•"
+        }, object: nil)
+        _ = XCTWaiter.wait(for: [wait], timeout: 16)
+        XCTAssertTrue(app.tabBars.buttons["我的"].isSelected)
+        app.tabBars.buttons["首页"].tap()
+        XCTAssertTrue(app.buttons["activities.choice.0"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.otherElements["activities.journey"].exists)
+        attach("journey-encounter-result", app: app)
+        tap("activities.choice.0", app: app)
+        app.tabBars.buttons["我的"].tap()
+        app.tabBars.buttons["首页"].tap()
+        XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 4))
+    }
+
+    func testJourneySolitudeCanBeSaved() {
+        let app = launch(extra: ["UI_TEST_SOLITUDE": "1"])
+        defer { app.terminate() }
+        tap("activities.scene.park-seat", app: app)
+        tap("activities.action.start", app: app)
+        XCTAssertTrue(app.buttons["activities.solitude.finish"].waitForExistence(timeout: 20))
+        XCTAssertFalse(app.buttons["activities.encounter.addFriend"].exists)
+        attach("journey-solitude-result", app: app)
+        tap("activities.solitude.finish", app: app)
+        tap("activities.journal", app: app)
+        XCTAssertTrue(app.staticTexts["留给自己的座位"].waitForExistence(timeout: 4))
+    }
+
+    func testJourneyFailureRetryDoesNotReplayCountdown() {
+        let app = launch(extra: ["UI_TEST_JOURNEY_FAILURE_FIRST": "1"])
+        defer { app.terminate() }
+        tap("activities.scene.park-seat", app: app)
+        tap("activities.action.start", app: app)
+        XCTAssertTrue(app.buttons["activities.journey.retry"].waitForExistence(timeout: 20))
+        attach("journey-failure", app: app)
+        app.buttons["activities.journey.retry"].tap()
+        XCTAssertTrue(app.buttons["activities.choice.0"].waitForExistence(timeout: 4))
+        XCTAssertFalse(app.otherElements["activities.journey"].exists)
+    }
+
+    func testJourneyWaitsNaturallyAfterFifteenSeconds() {
+        let app = launch(extra: ["UI_TEST_JOURNEY_DELAY": "1"])
+        defer { app.terminate() }
+        tap("activities.scene.park-seat", app: app)
+        tap("activities.action.start", app: app)
+        XCTAssertTrue(app.staticTexts["相遇正在途中"].waitForExistence(timeout: 17))
+        attach("journey-waiting", app: app)
+        XCTAssertTrue(app.buttons["activities.choice.0"].waitForExistence(timeout: 6))
     }
 
     func testRealMotionScenesAtNativeSize() {

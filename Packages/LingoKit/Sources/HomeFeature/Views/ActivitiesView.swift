@@ -6,6 +6,7 @@ import SwiftUI
 /// Production entry: a scene, never a category/route list. App owns the current
 /// action so its existing left-edge gesture returns exactly one level.
 public struct ActivitiesView: View {
+    @ObservedObject var journey: ActivityJourneyCoordinator
     let deps: HomeDependencies
     let storageNamespace: String
     let isVisible: Bool
@@ -23,9 +24,10 @@ public struct ActivitiesView: View {
     @State private var showsJournal = false
     @State private var recentPeople: [CharacterDTO] = []
 
-    public init(deps: HomeDependencies, storageNamespace: String, isVisible: Bool,
+    public init(journey: ActivityJourneyCoordinator, deps: HomeDependencies, storageNamespace: String, isVisible: Bool,
                 activity: Binding<SceneActivity?>, onClose: @escaping () -> Void,
                 onChat: @escaping (CharacterDTO) -> Void) {
+        self.journey = journey
         self.deps = deps
         self.storageNamespace = storageNamespace
         self.isVisible = isVisible
@@ -36,23 +38,28 @@ public struct ActivitiesView: View {
 
     public var body: some View {
         ZStack {
-            ActivitySceneView(isVisible: isVisible && !showsJournal,
+            ActivitySceneView(isVisible: isVisible && !showsJournal && activity == nil,
                               showsInterface: activity == nil,
                               scene: $scene, cityName: cityName,
                               completedCount: records.count,
                               onClose: onClose, onJournal: { showsJournal = true }) { selected in
-                guard cityID != nil else { return }
-                activity = selected
+                guard let cityID, let region = deps.regionCatalog.region(id: cityID) else { return }
+                journey.prepare(activity: selected, region: region, deps: deps, namespace: storageNamespace)
+                activity = journey.activeActivity
             }
             .allowsHitTesting(activity == nil && cityID != nil)
-            .accessibilityHidden(cityID == nil)
+            .accessibilityHidden(cityID == nil || activity != nil)
 
-            if let activity, let cityID, let region = deps.regionCatalog.region(id: cityID) {
-                ActivityActionView(activity: activity, region: region, deps: deps, isVisible: isVisible,
+            if let activity, let cityID, let model = journey.model {
+                ActivityActionView(model: model, journey: journey, deps: deps, isVisible: isVisible,
                                    onBack: onClose, onChat: onChat) { selections, runID, character, responses in
-                    records = try ActivityJournal(namespace: storageNamespace, city: cityID)
-                        .complete(activity, selections: selections, runID: runID,
-                                  characterID: character?.id, characterName: character?.card.name, responses: responses)
+                    let journal = ActivityJournal(namespace: storageNamespace, city: cityID)
+                    if model.isSolitude {
+                        records = try journal.completeSolitude(activity, runID: runID)
+                    } else {
+                        records = try journal.complete(activity, selections: selections, runID: runID,
+                            characterID: character?.id, characterName: character?.card.name, responses: responses)
+                    }
                 }
                 .id(activity.id)
                 .transition(.opacity)
@@ -69,6 +76,9 @@ public struct ActivitiesView: View {
             }
         }
         .animation(DSSceneTransition.animation(reduceMotion: reduceMotion), value: activity?.id)
+        .onAppear { journey.setViewing(isVisible) }
+        .onDisappear { journey.setViewing(false) }
+        .onChange(of: isVisible) { _, visible in journey.setViewing(visible) }
         .task(id: storageNamespace) { await loadContext() }
         .sheet(isPresented: $showsJournal) {
             NavigationStack {
@@ -108,6 +118,7 @@ public struct ActivitiesView: View {
                                     Spacer()
                                     Text(record.date, style: .date).font(.caption).foregroundStyle(.secondary)
                                 }
+                                if let story = record.solitudeStory { Text(story).lineSpacing(5) }
                                 if let name = record.characterName {
                                     Text("与 \(name) 的这次交流").font(.subheadline)
                                 }
@@ -138,6 +149,12 @@ public struct ActivitiesView: View {
 
     @MainActor private func loadContext() async {
         contextError = nil
+        if let model = journey.model, model.started {
+            cityID = model.region.id
+            cityName = model.region.nameZh
+            readRecords()
+            return
+        }
         do {
             var profile = try await deps.economyStore.profile()
             #if DEBUG

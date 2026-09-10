@@ -17,9 +17,7 @@ enum CafeEncounterPolicy {
             return value == "english" || value == "英语" || value == "英文" || value == "en" || value.hasPrefix("en-")
         }
     }
-    static func allowsReunion(lastSpokenAt: Date?, now: Date) -> Bool {
-        lastSpokenAt.map { now.timeIntervalSince($0) >= 86_400 } ?? true
-    }
+
 }
 
 @MainActor
@@ -37,6 +35,14 @@ final class SocialEncounterModel: ObservableObject {
     @Published private(set) var registrationPending = false
     @Published private(set) var contactBusy = false
     @Published private(set) var completed = false
+    @Published private(set) var revealAt: Date?
+    @Published private(set) var isSolitude = false
+    @Published private(set) var openingReady = false
+    private let history: ActivityEncounterHistory
+    var canReveal: Bool { canReveal(at: Date()) }
+    func canReveal(at date: Date) -> Bool {
+        started && (revealAt.map { date >= $0 } ?? false) && (isSolitude || openingReady)
+    }
     let runID = UUID()
     let activity: SceneActivity
     let region: Region
@@ -60,12 +66,16 @@ final class SocialEncounterModel: ObservableObject {
     private let generatedID = UUID()
     private var generationOrigin: EncounterService.Origin = .local
     private let isFixture: Bool
+    #if DEBUG
+    private var fixtureFailed = false
+    #endif
     var summary: Bool { step == activity.steps.count }
     var responses: [String] { (0..<activity.steps.count).map { cachedReplies[$0]?.chinese ?? "" } }
     var canConnect: Bool { summary && (reply?.acceptsContact == true || character?.isFriend == true) }
 
-    init(activity: SceneActivity, region: Region, deps: HomeDependencies) {
+    init(activity: SceneActivity, region: Region, deps: HomeDependencies, namespace: String) {
         self.activity = activity; self.region = region; self.deps = deps
+        history = ActivityEncounterHistory(namespace: namespace, city: region.id)
         #if DEBUG
         isFixture = ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1"
             && ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] != nil
@@ -78,11 +88,35 @@ final class SocialEncounterModel: ObservableObject {
     }
 
     func start() {
-        guard !busy else { return }
+        guard !busy, !isSolitude, !openingReady else { return }
+        if revealAt == nil { revealAt = Date().addingTimeInterval(15) }
         started = true
         launch {
+            var roll = Double.random(in: 0..<1)
+            #if DEBUG
+            if self.isFixture {
+                roll = ProcessInfo.processInfo.environment["UI_TEST_SOLITUDE"] == "1" ? 0.99 : 0
+            }
+            #endif
+            let receipt = try self.history.reserve(runID: self.runID, roll: roll)
+            #if DEBUG
+            if self.isFixture, ProcessInfo.processInfo.environment["UI_TEST_JOURNEY_FAILURE_FIRST"] == "1", !self.fixtureFailed {
+                self.fixtureFailed = true
+                throw SocialDialogueService.DialogueError.invalidReply
+            }
+            if self.isFixture, ProcessInfo.processInfo.environment["UI_TEST_JOURNEY_DELAY"] == "1" {
+                try await Task.sleep(for: .seconds(18))
+            }
+            #endif
+            if !receipt.encountersPerson {
+                try self.history.complete(runID: self.runID, characterID: nil)
+                self.isSolitude = true
+                return
+            }
             if self.character == nil { try await self.prepareCharacter() }
             try await self.obtainReply(index: -1)
+            try self.history.complete(runID: self.runID, characterID: self.character?.id)
+            self.openingReady = true
         }
     }
     func choose(_ index: Int) {
@@ -189,19 +223,19 @@ final class SocialEncounterModel: ObservableObject {
         let possible = all.filter { CafeEncounterPolicy.eligible($0, regionID: region.id) }
         if pendingPublic == nil && generatedCard == nil {
             // Leave room for unfamiliar library people even with a large local roster.
-            let reunions = Double.random(in: 0..<1) < 0.25 ? Array(possible.shuffled().prefix(12)) : []
-            for person in reunions {
-                let recent = try await chat.recentMessages(characterID: person.id, limit: 1)
-                try Task.checkCancellation()
-                if CafeEncounterPolicy.allowsReunion(lastSpokenAt: recent.last?.createdAt, now: Date()) {
-                    character = person
-                    alreadyKnown = !recent.isEmpty
-                    break
+            if !possible.isEmpty, Double.random(in: 0..<1) < 0.25 {
+                let past = try history.receipts()
+                let weights = possible.map { person in
+                    let meetings = past.filter { $0.characterID == person.id && $0.completedAt != nil }
+                    return ActivityEncounterChance.personWeight(encounters: meetings.count,
+                        lastSeen: meetings.compactMap(\.completedAt).max(), now: Date())
+                }
+                if let index = ActivityEncounterChance.chooseIndex(weights: weights, roll: Double.random(in: 0..<1)) {
+                    character = possible[index]
                 }
             }
             if character == nil, let registry = deps.npcRegistry {
-                // Deliberately not prefetched on scene appearance. Legacy server
-                // records selection as exposure; reserve/reveal is a later migration.
+                // Only confirmed actions select a public identity; Tab switches never select again.
                 pendingPublic = try await registry.selectEncounter(context: encounterContext)
                 try Task.checkCancellation()
             }

@@ -1,3 +1,4 @@
+import { encounterWeight, weightedIndex } from "./encounter-weights.js";
 import { randomInt } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import type { TransactionSql } from "postgres";
@@ -128,9 +129,13 @@ export class NpcRepository {
             statusCode: 403,
           });
       }
-      const candidates = await sql<NpcRow[]>`
+      const candidates = await sql<
+        (NpcRow & { encounters: number; days_since_seen: number })[]
+      >`
         select n.id::text, n.traveler_id, n.card::text as card_text, n.created_at::text,
-          n.avatar_id::text, a.image_url as avatar_url
+          n.avatar_id::text, a.image_url as avatar_url,
+          coalesce(h.encounters, 0)::int as encounters,
+          coalesce(extract(epoch from (now() - h.last_seen_at)) / 86400, 30)::float as days_since_seen
         from app.public_npcs n join app.npc_scene_affinities scene on scene.npc_id = n.id
         join app.npc_avatars a on a.id = n.avatar_id and a.enabled
         left join app.npc_encounter_history h on h.npc_id = n.id and h.user_id = ${userId}
@@ -138,21 +143,25 @@ export class NpcRepository {
           and scene.category = ${context.category} and lower(scene.language) = lower(${context.language})
           and n.card->>'regionId' = ${context.regionId}
           and exists(select 1 from jsonb_array_elements_text(n.card->'languages') lang where lower(lang) = lower(${context.language}))
-          and (h.last_seen_at is null or h.last_seen_at < now() - interval '24 hours')
           and not exists (
             select 1 from app.user_npc_relationships r join app.public_npcs seen on seen.id = r.npc_id
             where r.user_id = ${userId} and seen.avatar_id = n.avatar_id and seen.id <> n.id
           )
           and not exists(select 1 from app.user_npc_relationships r where r.user_id = ${userId} and r.npc_id = n.id and r.status = 'removed')
-        order by coalesce(h.encounters, 0), h.last_seen_at nulls first, n.id
-        limit 200
+        order by n.id
       `;
       // Reuse rises as a scene gains supply. Randomization is only within the eligible pool.
       const reuse =
         candidates.length > 0 && this.draw(100) < (candidates.length >= 12 ? 95 : 75);
-      const selected = reuse
-        ? candidates[this.draw(Math.min(candidates.length, 20))]
+      const index = reuse
+        ? weightedIndex(
+            candidates.map((candidate) =>
+              encounterWeight(candidate.encounters, candidate.days_since_seen),
+            ),
+            this.draw(1_000_000_000) / 1_000_000_000,
+          )
         : undefined;
+      const selected = index === undefined ? undefined : candidates[index];
       const npc = selected ? mapNpc(selected) : null;
       if (npc) {
         await this.linkWithinTransaction(

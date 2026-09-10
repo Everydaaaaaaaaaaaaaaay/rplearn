@@ -1,0 +1,160 @@
+[
+  {
+    "city": "auckland",
+    "title": "Piha Beach Walkthrough Music Video 4K60 / Auckland 4K video / New Zealand 4K video",
+    "author": "Beautiful New Zealand Scenery",
+    "authorURL": "https://www.youtube.com/channel/UCWz-dCLOY6_s5fkxwjO2ihQ",
+    "page": "https://www.youtube.com/watch?v=gi_vNfIpXKU",
+    "uploadDate": "20201206",
+    "license": "Creative Commons Attribution license (reuse allowed)",
+    "licenseEvidence": "https://support.google.com/youtube/answer/2797468",
+    "formatID": "315",
+    "source": "build/EncounterJourney/expanded/auckland-piha-source.webm",
+    "sourceSHA256": "65ab18ebdfff0716d5e0ff48445545bda5b6f0431f7d62ab6139685986c4752a",
+    "sourceProbe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 3840,
+          "height": 2160,
+          "r_frame_rate": "19001/317",
+          "avg_frame_rate": "19001/317",
+          "time_base": "1/1000",
+          "start_time": "0.000000"
+        }
+      ],
+      "format": {
+        "duration": "18.001000"
+      }
+    },
+    "preview": "Assets/Activities/EncounterJourney/previews-v2/auckland-piha-candidate.mp4",
+    "previewSHA256": "4c67a5331b7ef4675121d5e40e89e868bd4d4b69c1e8c5b57a65cf20d088b302",
+    "previewProbe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "nb_read_frames": "60"
+        }
+      ],
+      "format": {
+        "duration": "1.000000"
+      }
+    },
+    "sourceLocalFrameRange": [
+      300,
+      360
+    ],
+    "decodedFrames": 60,
+    "uniqueDecodedFrameHashes": 60,
+    "command": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-y",
+      "-i",
+      "build/EncounterJourney/expanded/auckland-piha-source.webm",
+      "-vf",
+      "trim=start_frame=300:end_frame=360,settb=1/60,setpts=N,scale=1280:720",
+      "-an",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "19",
+      "-enc_time_base",
+      "1:60",
+      "-fps_mode",
+      "passthrough",
+      "-movflags",
+      "+faststart",
+      "Assets/Activities/EncounterJourney/previews-v2/auckland-piha-candidate.mp4"
+    ],
+    "status": "source identified; landscape preview only, not approved runtime footage"
+  },
+  {
+    "city": "kingston",
+    "title": "Kingston, Jamaica: Driving from Barbican Road to Norman Manley International Airport",
+    "author": "Driving Time",
+    "authorURL": "https://www.youtube.com/channel/UCRK36g-UxXwxJQm-4MUCbiA",
+    "page": "https://www.youtube.com/watch?v=B8Fo1ZQz8ec",
+    "uploadDate": "20240718",
+    "license": "Creative Commons Attribution license (reuse allowed)",
+    "licenseEvidence": "https://support.google.com/youtube/answer/2797468",
+    "formatID": "315",
+    "source": "build/EncounterJourney/expanded/kingston-coast-source.webm",
+    "sourceSHA256": "dede69cc7557419305e4a3bfd129eabef22e5e26d9188343c5a6070e51303df6",
+    "sourceProbe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 3840,
+          "height": 2160,
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "time_base": "1/1000",
+          "start_time": "0.000000"
+        }
+      ],
+      "format": {
+        "duration": "7.999000"
+      }
+    },
+    "preview": "Assets/Activities/EncounterJourney/previews-v2/kingston-coast-candidate.mp4",
+    "previewSHA256": "b5f8584096efa507fd15778450e8a38c240a8fea31050e626be6cfef5f0d8afa",
+    "previewProbe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "nb_read_frames": "60"
+        }
+      ],
+      "format": {
+        "duration": "1.000000"
+      }
+    },
+    "sourceLocalFrameRange": [
+      240,
+      300
+    ],
+    "decodedFrames": 60,
+    "uniqueDecodedFrameHashes": 60,
+    "command": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-y",
+      "-i",
+      "build/EncounterJourney/expanded/kingston-coast-source.webm",
+      "-vf",
+      "trim=start_frame=240:end_frame=300,settb=1/60,setpts=N,scale=1280:720",
+      "-an",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "19",
+      "-enc_time_base",
+      "1:60",
+      "-fps_mode",
+      "passthrough",
+      "-movflags",
+      "+faststart",
+      "Assets/Activities/EncounterJourney/previews-v2/kingston-coast-candidate.mp4"
+    ],
+    "status": "source identified; landscape preview only, not approved runtime footage"
+  }
+]
