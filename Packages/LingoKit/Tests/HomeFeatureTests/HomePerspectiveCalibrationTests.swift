@@ -8,48 +8,25 @@ import UIKit
 struct HomePerspectiveCalibrationTests {
     private let tolerance: CGFloat = 0.000_01
 
-    @Test("照片边缘回归：墨尔本、都柏林必须保留显著的向右上方收敛")
-    func obliqueMapFramesMatchPhotographicEdges() throws {
-        // 来自最终 JPEG 边缘的独立像素测量，不从布局反算预期值。
-        // 这是防止旧坐标回归的数值门禁，不能替代逐图叠线验收。
-        for (id, width, height, leftY, rightY) in [
-            ("melbourne", 844.0, 1824.0, 464.0, 288.0),
-            ("dublin", 842.0, 1821.0, 494.0, 367.0),
+    @Test("重制背景使用新照片画框；同墙入口共享投影")
+    func replacementMapFramesMatchPhotographicEdges() throws {
+        // 独立观察的最终 JPEG 像素，防止退回旧图坐标。数值检查不代替视觉验收。
+        for (id, width, height, leftX, leftY, rightX, rightY) in [
+            ("london", 853.0, 1844.0, 514.0, 516.0, 844.0, 516.0),
+            ("toronto", 853.0, 1844.0, 615.0, 422.0, 853.0, 328.0),
+            ("edinburgh", 853.0, 1844.0, 515.0, 362.0, 829.0, 362.0),
         ] {
             let layout = try #require(HomeDepartureSceneLayout.scenes[id])
             let quad = layout.map.projectedRegion().surface.quad
+            #expect(abs(quad.topLeft.x * width - leftX) < 3)
             #expect(abs(quad.topLeft.y * height - leftY) < 3)
+            #expect(abs(quad.topRight.x * width - rightX) < 3)
             #expect(abs(quad.topRight.y * height - rightY) < 3)
-            let slope = (quad.topRight.y - quad.topLeft.y) * height /
-                ((quad.topRight.x - quad.topLeft.x) * width)
-            #expect(slope < -0.4, "\(id): 不能把斜墙地图错误标成正视矩形")
+        }
+        for layout in HomeDepartureSceneLayout.scenes.values {
             #expect(layout.map.photoSurface?.quad.points == layout.story.photoSurface?.quad.points)
+            #expect(layout.activities.surface == .floor)
         }
-    }
-
-    @Test("正视地图不能凭空增加倾斜和梯形；奥克兰顶边方向不能反转")
-    func frontFacingMapsStayFrontFacing() throws {
-        for id in ["edinburgh", "singapore", "sydney"] {
-            let layout = try #require(HomeDepartureSceneLayout.scenes[id])
-            for entry in [layout.map, layout.story] {
-                let q = entry.projectedRegion().photoQuad
-                #expect(abs(q.topLeft.y - q.topRight.y) < 0.0001)
-                #expect(abs(q.bottomLeft.y - q.bottomRight.y) < 0.0001)
-                #expect(abs(q.topLeft.x - q.bottomLeft.x) < 0.0001)
-            }
-        }
-        let auckland = try #require(HomeDepartureSceneLayout.scenes["auckland"])
-        let q = auckland.map.projectedRegion().surface.quad
-        #expect(q.topRight.y > q.topLeft.y)
-    }
-
-    @Test("多伦多活动入口沿下门板而不是上门楣的反向斜率")
-    func torontoUsesLocalDoorPanel() throws {
-        let layout = try #require(HomeDepartureSceneLayout.scenes["toronto"])
-        let activity = layout.activities.projectedRegion().photoQuad
-        let lintel = layout.location.projectedRegion().photoQuad
-        #expect(activity.topRight.y > activity.topLeft.y)
-        #expect(lintel.topRight.y < lintel.topLeft.y)
     }
 
     @Test("城市入口的视觉和热区使用同一摄影承载面，且不越出有效内容")
@@ -72,6 +49,20 @@ struct HomePerspectiveCalibrationTests {
         }
     }
 
+    @Test("入口投影不能把图标文字压成横条")
+    func projectedContentRetainsReadableHeight() {
+        // 回归实际截图发现的爱丁堡地面过度剪切；可点击不能替代字形可读性。
+        for (id, layout) in HomeDepartureSceneLayout.scenes {
+            for entry in [layout.map, layout.story, layout.activities] {
+                let q = entry.projectedRegion().photoQuad
+                let top = (q.topLeft.y + q.topRight.y) / 2
+                let bottom = (q.bottomLeft.y + q.bottomRight.y) / 2
+                #expect((bottom - top) * HomeDepartureCanvas.height >= entry.renderSize.height * 0.7,
+                        "\(id): 字形纵向投影小于原高度的 70%，需换可读的承载面")
+            }
+        }
+    }
+
     @Test("全部可用城市均有独立、可解码的随包首页图")
     @MainActor
     func everyCatalogCityHasBundledScene() throws {
@@ -81,7 +72,9 @@ struct HomePerspectiveCalibrationTests {
         #expect(HomeDepartureSceneLayout.scenes.count == 15)
         for (id, layout) in HomeDepartureSceneLayout.scenes {
             let image = try #require(UIImage(named: layout.assetName, in: .main, compatibleWith: nil), "\(id): 缺失资源")
-            #expect(image.size.width >= 800 && image.size.height >= 1800)
+            // Native crops retain >=2× the 402pt design canvas; never upscale to hit a pixel gate.
+            #expect(image.size.width >= HomeDepartureCanvas.width * 2)
+            #expect(image.size.height >= HomeDepartureCanvas.height * 2)
             #expect(abs(image.size.width / image.size.height - 853.0 / 1844.0) < 0.001)
         }
     }
@@ -102,6 +95,24 @@ struct HomePerspectiveCalibrationTests {
             let placement = HomeDepartureCanvas.placement(in: size)
             for (id, layout) in HomeDepartureSceneLayout.scenes {
                 for entry in [layout.map, layout.story, layout.activities] {
+                    let hitPoints = entry.projectedRegion(size: entry.hitSize).photoQuad.points.map {
+                        CGPoint(x: $0.x * HomeDepartureCanvas.width * placement.scale + placement.horizontalInset,
+                                y: $0.y * placement.height * placement.scale)
+                    }
+                    let center = CGPoint(
+                        x: entry.center.x * HomeDepartureCanvas.width * placement.scale + placement.horizontalInset,
+                        y: entry.center.y * placement.height * placement.scale
+                    )
+                    // 验证 44×44pt 方形整个落在真实投影热区内，不能只看放大的外接矩形。
+                    for offset in [CGPoint(x: -22, y: -22), CGPoint(x: 22, y: -22),
+                                   CGPoint(x: 22, y: 22), CGPoint(x: -22, y: 22)] {
+                        let point = CGPoint(x: center.x + offset.x, y: center.y + offset.y)
+                        for index in 0..<4 {
+                            let a = hitPoints[index], b = hitPoints[(index + 1) % 4]
+                            let cross = (b.x - a.x) * (point.y - a.y) - (b.y - a.y) * (point.x - a.x)
+                            #expect(cross >= 0, "\(id): 投影热区不足以包含 44×44pt")
+                        }
+                    }
                     for point in entry.projectedRegion(size: entry.hitSize).photoQuad.points {
                         let x = point.x * HomeDepartureCanvas.width * placement.scale + placement.horizontalInset
                         let y = point.y * placement.height * placement.scale

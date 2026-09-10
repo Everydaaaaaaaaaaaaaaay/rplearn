@@ -1,347 +1,246 @@
 {
-  "version": 1,
-  "coordinateSpace": "Final bundled JPEG pixels, origin top-left; TL, TR, BR, BL. Visible frame intersections at image borders are clipped vertical slices, not invented offscreen corners. Manual observations ~3 px tolerance; visual overlay review remains required.",
+  "version": 2,
+  "coordinateSpace": "2026-09-10 replacement final JPEG pixels; TL TR BR BL, manual visible edge observations ~3px tolerance. Clipped map edges are intersections, not offscreen corners. Floor quads follow observed tile/board/rug plane; visual review required.",
   "cities": [
     {
-      "id": "london",
+      "id": "auckland",
       "size": [
         852,
         1842
       ],
       "mapFrame": [
-        600,
-        402,
-        852,
-        396,
-        852,
-        780,
-        596,
-        778
-      ],
-      "sha256": "3808f74c4d757641aa78744e2445c6200e64e095b3960b41056b511eb57081ed"
-    },
-    {
-      "id": "melbourne",
-      "size": [
-        844,
-        1824
-      ],
-      "mapFrame": [
-        602,
-        464,
-        844,
-        288,
-        844,
-        779,
-        603,
-        798
-      ],
-      "otherSurfaces": {
-        "activities": [
-          142,
-          1054,
-          415,
-          1046,
-          415,
-          1299,
-          142,
-          1319
-        ]
-      },
-      "sha256": "0296d998fc94681e5b8627f5f05802a0a870d0d97e140d2bcd2554859db2b826"
-    },
-    {
-      "id": "newyork",
-      "size": [
-        844,
-        1824
-      ],
-      "mapFrame": [
-        459,
-        381,
-        814,
-        380,
-        813,
-        683,
-        459,
-        684
-      ],
-      "sha256": "28e253cd378234e263e63dda723f1225fc227f1509602187d3e3f61c00484020"
-    },
-    {
-      "id": "capetown",
-      "size": [
-        843,
-        1822
-      ],
-      "mapFrame": [
-        576,
-        356,
-        843,
-        201,
-        843,
-        700,
-        576,
-        714
-      ],
-      "otherSurfaces": {
-        "activities": [
-          210,
-          1450,
-          348,
-          1425,
-          389,
-          1523,
-          235,
-          1562
-        ]
-      },
-      "floorNote": "Local rectangular stone/tile patch, fit to visible grout directions; manually measured.",
-      "sha256": "549b58224684c2d48443ca378ffa62e0ac9f77d7913889531696511cc8d7c060"
-    },
-    {
-      "id": "singapore",
-      "size": [
-        853,
-        1844
-      ],
-      "mapFrame": [
-        520,
-        404,
-        853,
-        404,
-        853,
-        739,
-        520,
-        739
-      ],
-      "sha256": "bb02114f662e03ac0013950b95063b20da50c48b3f1acab30bc96507d3406105"
-    },
-    {
-      "id": "dublin",
-      "size": [
-        842,
-        1821
-      ],
-      "mapFrame": [
-        568,
-        494,
-        842,
-        367,
-        842,
-        881,
-        574,
-        861
-      ],
-      "otherSurfaces": {
-        "activities": [
-          211,
-          1496,
-          440,
-          1445,
-          546,
-          1577,
-          274,
-          1647
-        ]
-      },
-      "floorNote": "Local rectangular stone/tile patch, fit to visible grout directions; manually measured.",
-      "sha256": "7d67c9dbbbe956aa55542853281e2cccd14888bd76a1526fbedef3f12a33c8cc"
-    },
-    {
-      "id": "edinburgh",
-      "size": [
-        853,
-        1844
-      ],
-      "mapFrame": [
-        25,
-        470,
-        286,
-        470,
-        286,
-        982,
-        25,
-        982
-      ],
-      "otherSurfaces": {
-        "activities": [
-          480,
-          1084,
-          769,
-          1084,
-          769,
-          1337,
-          480,
-          1337
-        ]
-      },
-      "sha256": "182dd96470768704ca6dea484030e2fc58693d092e0c41ecb51c9b7c900669e8"
-    },
-    {
-      "id": "vancouver",
-      "size": [
-        843,
-        1823
-      ],
-      "mapFrame": [
-        0,
-        374,
-        323,
-        384,
-        323,
-        706,
-        0,
-        707
+        480,
+        498,
+        773,
+        496,
+        774,
+        742,
+        481,
+        743
       ],
       "otherSurfaces": {
         "location": [
-          342,
-          221,
-          825,
-          245,
-          825,
-          298,
-          342,
-          280
+          50,
+          325,
+          455,
+          325,
+          450,
+          375,
+          55,
+          375
         ],
         "activities": [
-          493,
-          1510,
-          683,
-          1495,
-          700,
-          1558,
-          497,
-          1578
+          53,
+          1440,
+          727,
+          1440,
+          778,
+          1618,
+          0,
+          1618
         ]
       },
-      "floorNote": "Local floor fit from parallel plank seams; not four corners of a single plank.",
-      "sha256": "81c310f33b826952cf7763358760a3cea899399d58c7d407d5676d48a874a262"
+      "sha256": "a0b4308c49409254bee239db094285305c0a064ca6952560992c0bc18a117365"
     },
     {
-      "id": "auckland",
-      "size": [
-        844,
-        1824
-      ],
-      "mapFrame": [
-        461,
-        452,
-        844,
-        461,
-        844,
-        843,
-        462,
-        844
-      ],
-      "otherSurfaces": {
-        "activities": [
-          54,
-          1346,
-          417,
-          1330,
-          449,
-          1438,
-          22,
-          1466
-        ]
-      },
-      "sha256": "7d82b786bc1303012eef87fc238cdc39bc04d18f69228b77b74ae45d42edf148"
-    },
-    {
-      "id": "nairobi",
+      "id": "vancouver",
       "size": [
         851,
         1840
       ],
       "mapFrame": [
-        0,
-        438,
-        415,
-        441,
-        415,
-        774,
-        0,
-        773
-      ],
-      "sha256": "39748fe3e58599b0c61f98bcfc959e4904579ab2179eec9fa08fd0e5f38464e6"
-    },
-    {
-      "id": "toronto",
-      "size": [
-        842,
-        1821
-      ],
-      "mapFrame": [
-        554,
-        407,
-        842,
-        398,
-        842,
-        747,
-        554,
-        745
+        519,
+        527,
+        839,
+        527,
+        839,
+        776,
+        519,
+        776
       ],
       "otherSurfaces": {
         "location": [
-          60,
-          321,
-          452,
-          311,
-          452,
-          378,
-          60,
-          390
+          25,
+          389,
+          460,
+          389,
+          460,
+          427,
+          25,
+          427
         ],
         "activities": [
-          110,
-          1026,
-          397,
-          1039,
-          397,
-          1278,
-          110,
-          1258
+          0,
+          1308,
+          483,
+          1308,
+          514,
+          1498,
+          0,
+          1498
         ]
       },
-      "sha256": "53e210ac0fff89b7a5e2a572f8e9f8051b38d8ca4631fe58d006605f5dd6dcce"
+      "sha256": "cbc1c7a6e0218b9fb855481374ef833e44de57f83055cae0834aef62c446e16b"
     },
     {
-      "id": "sydney",
-      "size": [
-        853,
-        1844
-      ],
-      "mapFrame": [
-        519,
-        478,
-        853,
-        478,
-        853,
-        818,
-        519,
-        818
-      ],
-      "sha256": "fde6c63f0b9122915871d06cb6120553d2790aa3fab2f5c5166cfea1615e732b"
-    },
-    {
-      "id": "neworleans",
+      "id": "singapore",
       "size": [
         852,
         1842
       ],
       "mapFrame": [
-        0,
-        477,
-        294,
-        477,
-        293,
-        817,
-        0,
-        817
+        489,
+        467,
+        816,
+        467,
+        816,
+        719,
+        489,
+        719
       ],
-      "sha256": "31c5bec16c1a6b2cd73a7d3b9412a62322988f5f42b66800d4b6438bf22548b0"
+      "otherSurfaces": {
+        "location": [
+          15,
+          227,
+          453,
+          227,
+          453,
+          254,
+          15,
+          254
+        ],
+        "activities": [
+          126,
+          1391,
+          354,
+          1391,
+          348,
+          1535,
+          92,
+          1535
+        ]
+      },
+      "sha256": "6150031b9fa540e22afde9f960883d0778ff38d0f6c4beccd2a8cd48cb581558"
+    },
+    {
+      "id": "dublin",
+      "size": [
+        850,
+        1838
+      ],
+      "mapFrame": [
+        465,
+        475,
+        770,
+        475,
+        770,
+        733,
+        465,
+        733
+      ],
+      "otherSurfaces": {
+        "location": [
+          48,
+          407,
+          404,
+          407,
+          404,
+          421,
+          48,
+          421
+        ],
+        "activities": [
+          55,
+          1338,
+          411,
+          1338,
+          446,
+          1495,
+          0,
+          1495
+        ]
+      },
+      "sha256": "2ce030392987b0680280ac118c2e4247d3b8c613efea2bc03bb9f1dad0f87a0b"
+    },
+    {
+      "id": "capetown",
+      "size": [
+        851,
+        1840
+      ],
+      "mapFrame": [
+        522,
+        453,
+        851,
+        453,
+        851,
+        771,
+        522,
+        771
+      ],
+      "otherSurfaces": {
+        "location": [
+          0,
+          260,
+          469,
+          260,
+          469,
+          308,
+          0,
+          308
+        ],
+        "activities": [
+          48,
+          1405,
+          315,
+          1405,
+          281,
+          1665,
+          0,
+          1667
+        ]
+      },
+      "sha256": "21b98c9baf278201e8215e3250717bb31eddba2d86625ce14a953d33b89c6ffd"
+    },
+    {
+      "id": "london",
+      "size": [
+        853,
+        1844
+      ],
+      "mapFrame": [
+        514,
+        516,
+        844,
+        516,
+        844,
+        797,
+        514,
+        797
+      ],
+      "otherSurfaces": {
+        "location": [
+          20,
+          251,
+          480,
+          251,
+          480,
+          295,
+          20,
+          295
+        ],
+        "activities": [
+          197,
+          1381,
+          318,
+          1381,
+          323,
+          1640,
+          145,
+          1640
+        ]
+      },
+      "sha256": "4776d8cfb483f7fec078fdf72417f8e505d46d232e5a9db7f6a656876b877539"
     },
     {
       "id": "manchester",
@@ -350,34 +249,359 @@
         1844
       ],
       "mapFrame": [
-        568,
-        283,
-        853,
-        171,
-        853,
-        658,
-        568,
-        670
+        512,
+        475,
+        836,
+        475,
+        836,
+        734,
+        512,
+        734
       ],
-      "sha256": "f2401e494ef4339493384175bf9a2b24891a584afd4dd9942cc1fb4ce7a81e80"
+      "otherSurfaces": {
+        "location": [
+          0,
+          223,
+          478,
+          223,
+          478,
+          261,
+          0,
+          261
+        ],
+        "activities": [
+          0,
+          1462,
+          853,
+          1462,
+          853,
+          1508,
+          0,
+          1508
+        ]
+      },
+      "sha256": "633cd4e9f64aca489b4a6011bff345ad83bd7c406dd518baf8a86b90abadabb3"
+    },
+    {
+      "id": "newyork",
+      "size": [
+        829,
+        1792
+      ],
+      "mapFrame": [
+        498,
+        450,
+        818,
+        449,
+        818,
+        729,
+        498,
+        729
+      ],
+      "otherSurfaces": {
+        "location": [
+          0,
+          211,
+          456,
+          211,
+          456,
+          264,
+          0,
+          264
+        ],
+        "activities": [
+          0,
+          1407,
+          829,
+          1407,
+          829,
+          1461,
+          0,
+          1461
+        ]
+      },
+      "sha256": "c23de14b73c832bbe2907ceb49d75de46729ed0db73f07fef9fe89010b0a3931"
+    },
+    {
+      "id": "melbourne",
+      "size": [
+        829,
+        1792
+      ],
+      "mapFrame": [
+        470,
+        434,
+        829,
+        434,
+        829,
+        744,
+        470,
+        744
+      ],
+      "otherSurfaces": {
+        "location": [
+          0,
+          195,
+          445,
+          195,
+          445,
+          247,
+          0,
+          247
+        ],
+        "activities": [
+          247,
+          1328,
+          328,
+          1328,
+          312,
+          1545,
+          205,
+          1545
+        ]
+      },
+      "sha256": "bd6af6180ac13b55f0c3636f89920b2a25c06a15a829d86887dea7b1e1e5fe7b"
     },
     {
       "id": "kingston",
+      "size": [
+        852,
+        1842
+      ],
+      "mapFrame": [
+        485,
+        481,
+        852,
+        481,
+        852,
+        759,
+        485,
+        759
+      ],
+      "otherSurfaces": {
+        "location": [
+          0,
+          280,
+          455,
+          280,
+          455,
+          314,
+          0,
+          314
+        ],
+        "activities": [
+          0,
+          1510,
+          852,
+          1510,
+          852,
+          1565,
+          0,
+          1565
+        ]
+      },
+      "sha256": "45957bcb937683b3d1a59e0320782042bfc3038b194ad4bb6f9399e40f973a86"
+    },
+    {
+      "id": "neworleans",
       "size": [
         853,
         1844
       ],
       "mapFrame": [
-        0,
-        270,
-        295,
-        407,
-        295,
-        812,
-        0,
-        838
+        503,
+        521,
+        853,
+        521,
+        853,
+        865,
+        503,
+        865
       ],
-      "sha256": "d1e309af0d61e8dca5a9135cf02b33e7cce911d22ebc7ed8fec06f8839c03f2b"
+      "otherSurfaces": {
+        "location": [
+          0,
+          347,
+          455,
+          347,
+          455,
+          388,
+          0,
+          388
+        ],
+        "activities": [
+          0,
+          1503,
+          853,
+          1503,
+          853,
+          1563,
+          0,
+          1563
+        ]
+      },
+      "sha256": "7c32c1a3ef534c803db9274da159a35464280fe7a7f59cc57de6f6f3884d696d"
+    },
+    {
+      "id": "sydney",
+      "size": [
+        853,
+        1844
+      ],
+      "mapFrame": [
+        498,
+        535,
+        853,
+        535,
+        853,
+        823,
+        498,
+        823
+      ],
+      "otherSurfaces": {
+        "location": [
+          27,
+          336,
+          466,
+          336,
+          466,
+          380,
+          27,
+          380
+        ],
+        "activities": [
+          0,
+          1450,
+          853,
+          1450,
+          853,
+          1486,
+          0,
+          1486
+        ]
+      },
+      "sha256": "498181c0adc54933143009ef06d0e16b40ebc1030d581132f2d12860968a9f81"
+    },
+    {
+      "id": "nairobi",
+      "size": [
+        853,
+        1844
+      ],
+      "mapFrame": [
+        511,
+        417,
+        853,
+        417,
+        853,
+        706,
+        511,
+        706
+      ],
+      "otherSurfaces": {
+        "location": [
+          28,
+          292,
+          458,
+          292,
+          458,
+          324,
+          28,
+          324
+        ],
+        "activities": [
+          159,
+          1418,
+          564,
+          1418,
+          592,
+          1575,
+          114,
+          1575
+        ]
+      },
+      "sha256": "d34c9d8b1f9ed89a267eaab4671888bcda6cede62a47144d095e8ecb259d24f6"
+    },
+    {
+      "id": "toronto",
+      "size": [
+        853,
+        1844
+      ],
+      "mapFrame": [
+        615,
+        422,
+        853,
+        328,
+        853,
+        756,
+        616,
+        727
+      ],
+      "otherSurfaces": {
+        "location": [
+          18,
+          194,
+          479,
+          212,
+          479,
+          253,
+          20,
+          233
+        ],
+        "activities": [
+          190,
+          1358,
+          257,
+          1343,
+          316,
+          1554,
+          245,
+          1574
+        ]
+      },
+      "sha256": "aed0ac97a1764b5192e59245dc565e915389fcfd9012c67f2e6bb42420e42402"
+    },
+    {
+      "id": "edinburgh",
+      "size": [
+        853,
+        1844
+      ],
+      "mapFrame": [
+        515,
+        362,
+        829,
+        362,
+        829,
+        708,
+        515,
+        708
+      ],
+      "otherSurfaces": {
+        "location": [
+          0,
+          185,
+          498,
+          185,
+          498,
+          243,
+          0,
+          243
+        ],
+        "activities": [
+          0,
+          1370,
+          752,
+          1370,
+          817,
+          1532,
+          0,
+          1532
+        ]
+      },
+      "sha256": "75e8ffe339d7979fc4f1a5f3c78e8c378f8f72b72e8fb7b74721f81a339690ca",
+      "floorObservation": "Floor border plane using visible transverse motif rows and right perimeter; left is clipped image slice. Previous diagonal motif quad caused unacceptable vertical shear in actual UI and was rejected."
     }
   ]
 }
