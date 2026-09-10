@@ -93,6 +93,7 @@ public struct RealtimeTranscription: Sendable, Equatable {
 
 @MainActor
 public protocol RealtimeSpeechOutput: AnyObject {
+    var onPlaybackStarted: (@MainActor @Sendable () -> Void)? { get set }
     var heardText: String { get }
 
     func beginResponse(language: String, voiceHint: SpeechVoiceHint?) async
@@ -112,92 +113,63 @@ public struct VoiceTurnPolicy: Sendable, Equatable {
 
 /// 把 LLM token 流切成可以尽快送入 TTS、同时仍保持自然韵律的短句。
 public struct StreamingSpeechSegmenter: Sendable {
-    private var buffer: [Character] = []
-    private var scannedCharacterCount = 0
-    private var isInsideWord = false
-    private var completedWordCount = 0
+    private var buffer = ""
+    private var hasEmitted = false
     private let maximumWordsWithoutPunctuation: Int
-
-    private static let sentencePunctuation: Set<Character> = [
-        ".", "?", "!", ";", ":", "\n", "。", "？", "！", "；", "：",
+    private static let abbreviations: Set<String> = [
+        "mr", "mrs", "ms", "dr", "prof", "st", "vs", "e.g", "i.e", "a.m", "p.m",
     ]
 
-    public init(maximumWordsWithoutPunctuation: Int = 7) {
+    public init(maximumWordsWithoutPunctuation: Int = 14) {
         self.maximumWordsWithoutPunctuation = max(4, maximumWordsWithoutPunctuation)
     }
 
     public mutating func append(_ delta: String) -> [String] {
-        let previousCount = buffer.count
-        buffer.append(contentsOf: delta)
-
+        buffer += delta
         var result: [String] = []
-        let punctuationIndices = buffer.indices.dropFirst(previousCount).filter {
-            Self.sentencePunctuation.contains(buffer[$0])
+        while let boundary = nextBoundary() {
+            let segment = SpokenTextSanitizer.sanitize(String(buffer[..<boundary]))
+            buffer.removeSubrange(..<boundary)
+            if !segment.isEmpty { result.append(segment); hasEmitted = true }
         }
-        if let lastPunctuationIndex = punctuationIndices.last {
-            var segmentStart = buffer.startIndex
-            for punctuationIndex in punctuationIndices {
-                appendSanitized(buffer[segmentStart...punctuationIndex], to: &result)
-                segmentStart = buffer.index(after: punctuationIndex)
-            }
-            buffer.removeFirst(buffer.distance(
-                from: buffer.startIndex,
-                to: buffer.index(after: lastPunctuationIndex)
-            ))
-            resetWordScan()
-        }
-
-        drainWordLimitedSegments(into: &result)
         return result
     }
 
     public mutating func finish() -> [String] {
-        let remainder = SpokenTextSanitizer.sanitize(String(buffer))
-        buffer.removeAll(keepingCapacity: true)
-        resetWordScan()
+        let remainder = SpokenTextSanitizer.sanitize(buffer)
+        buffer = ""
+        if !remainder.isEmpty { hasEmitted = true }
         return remainder.isEmpty ? [] : [remainder]
     }
 
-    private mutating func drainWordLimitedSegments(into result: inout [String]) {
-        var segmentStart = buffer.startIndex
-        var index = buffer.index(buffer.startIndex, offsetBy: scannedCharacterCount)
-        while index < buffer.endIndex {
+    private func nextBoundary() -> String.Index? {
+        var words = 0
+        var insideWord = false
+        let wordLimit = hasEmitted ? maximumWordsWithoutPunctuation : min(7, maximumWordsWithoutPunctuation)
+        for index in buffer.indices {
             let character = buffer[index]
-            if character.isWhitespace {
-                if isInsideWord {
-                    completedWordCount += 1
-                    isInsideWord = false
-                    if completedWordCount >= maximumWordsWithoutPunctuation {
-                        let boundary = buffer.index(after: index)
-                        appendSanitized(buffer[segmentStart..<boundary], to: &result)
-                        segmentStart = boundary
-                        completedWordCount = 0
-                    }
+            let after = buffer.index(after: index)
+            if "?!;:\n。？！；：".contains(character) { return after }
+            if character == ".", after < buffer.endIndex {
+                let next = buffer[after]
+                let token = buffer[..<index].split(whereSeparator: \.isWhitespace).last.map(String.init) ?? ""
+                let isInitial = token.count == 1 && token.first?.isLetter == true
+                if (next.isWhitespace || next == "\""),
+                   !isInitial, !Self.abbreviations.contains(token.lowercased()) {
+                    return after
                 }
-            } else {
-                isInsideWord = true
             }
-            index = buffer.index(after: index)
+            if character == ",", words >= 4 { return after }
+            if character.isWhitespace {
+                if insideWord { words += 1; insideWord = false }
+                if words >= wordLimit { return after }
+            } else {
+                insideWord = true
+            }
         }
-
-        if segmentStart > buffer.startIndex {
-            buffer.removeFirst(buffer.distance(from: buffer.startIndex, to: segmentStart))
-        }
-        scannedCharacterCount = buffer.count
-    }
-
-    private mutating func resetWordScan() {
-        scannedCharacterCount = 0
-        isInsideWord = false
-        completedWordCount = 0
-    }
-
-    private func appendSanitized<S: Sequence>(
-        _ characters: S,
-        to result: inout [String]
-    ) where S.Element == Character {
-        let spoken = SpokenTextSanitizer.sanitize(String(characters))
-        if !spoken.isEmpty { result.append(spoken) }
+        // A period at the end of a delta may be a decimal/abbreviation prefix.
+        // Wait for the next delta (or finish) instead of speaking "3." then "5".
+        return nil
     }
 }
 

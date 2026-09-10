@@ -60,6 +60,7 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     private var recognitionTask: SFSpeechRecognitionTask?
     private var recognitionGeneration = UUID()
     private var restartTask: Task<Void, Never>?
+    private var finalizationTask: Task<Void, Never>?
     private var isRunning = false
     private var isMuted = false
     private var prefersOnDeviceRecognition = true
@@ -143,6 +144,16 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         guard isRunning, !isMuted, let recognitionRequest else { return }
         runtime?.replaceRequest(nil)
         recognitionRequest.endAudio()
+        let generation = recognitionGeneration
+        finalizationTask?.cancel()
+        finalizationTask = Task { [weak self] in
+            do { try await Task.sleep(for: .milliseconds(500)) } catch { return }
+            guard let self, self.recognitionGeneration == generation,
+                  self.isRunning, !self.isMuted else { return }
+            // endAudio is not guaranteed to produce a final callback. Commit the
+            // latest measured transcript once and invalidate late callbacks.
+            self.completeRecognitionTurn(self.latestTranscript)
+        }
     }
 
     public func setMuted(_ muted: Bool) {
@@ -217,12 +228,11 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         if !normalized.isEmpty {
             latestTranscript = normalized
-            onTranscription?(.init(text: normalized, isFinal: isFinal))
+            if !isFinal { onTranscription?(.init(text: normalized, isFinal: false)) }
         }
 
         if isFinal {
-            resetSpeechGate()
-            scheduleRecognitionRestart()
+            completeRecognitionTurn(latestTranscript)
             return
         }
 
@@ -232,12 +242,16 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             prefersOnDeviceRecognition = false
             Log.speech.info("Apple 端侧识别不可用，下一轮改用系统识别服务")
         }
-        if !latestTranscript.isEmpty {
-            onTranscription?(.init(text: latestTranscript, isFinal: true))
-            resetSpeechGate()
-        }
+        let recoveredTranscript = latestTranscript
         Log.speech.warning("Apple 实时语音识别中断并自动恢复：\(failure)")
         onFailure?(failure)
+        completeRecognitionTurn(recoveredTranscript)
+    }
+
+    private func completeRecognitionTurn(_ text: String) {
+        stopRecognitionTask()
+        resetSpeechGate()
+        if !text.isEmpty { onTranscription?(.init(text: text, isFinal: true)) }
         scheduleRecognitionRestart()
     }
 
@@ -251,6 +265,8 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     }
 
     private func stopRecognitionTask() {
+        finalizationTask?.cancel()
+        finalizationTask = nil
         restartTask?.cancel()
         restartTask = nil
         runtime?.replaceRequest(nil)

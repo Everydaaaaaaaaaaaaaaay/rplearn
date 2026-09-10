@@ -41,6 +41,7 @@ actor SpeechPCMPlayer {
     private let format: AVAudioFormat
     private let sampleRate: Double
 
+    private var playbackID: UUID?
     private var generation: UInt64 = 0
     private var scheduledBufferCount = 0
     private var scheduledSampleCount = 0
@@ -65,8 +66,9 @@ actor SpeechPCMPlayer {
         engine.connect(playerNode, to: engine.mainMixerNode, format: format)
     }
 
-    func prepare() throws {
+    func prepare(playbackID: UUID? = nil) throws {
         stop()
+        self.playbackID = playbackID
         producerDidFinish = false
         engine.prepare()
         try engine.start()
@@ -187,8 +189,9 @@ actor SpeechPCMPlayer {
         playerNode.play()
         guard !hasBegunPlayback else { return false }
         hasBegunPlayback = true
+        let playbackID = playbackID
         Task { @MainActor in
-            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: playbackID)
         }
         return true
     }

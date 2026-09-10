@@ -170,7 +170,7 @@ public final class ChatViewModel {
     }
 
     /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
-    /// 该方法先持久化用户话轮，再返回纯文本增量；音频不会离开设备。
+    /// 该方法先持久化用户话轮，再返回纯文本增量；应用不向 LLM 上传音频。
     var voiceLeaseID: UUID?
 
     public func realtimeReplyStream(
@@ -194,7 +194,9 @@ public final class ChatViewModel {
         messages.sort { $0.orderIndex < $1.orderIndex }
         notifyConversationChanged()
 
+        try Task.checkCancellation()
         var request = await makeRoleplayRequest(quizRequested: false, voiceMode: true)
+        try Task.checkCancellation()
         request.voiceLeaseID = voiceLeaseID
         let upstream = await deps.llm.stream(request)
         return AsyncThrowingStream { continuation in

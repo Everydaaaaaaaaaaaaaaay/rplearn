@@ -17,6 +17,7 @@ public final class RealtimeVoiceSession {
     public private(set) var errorMessage: String?
     public private(set) var requiresSettings = false
     public private(set) var isMuted = false
+    public private(set) var isEnding = false
 
     private let input: any RealtimeSpeechInput
     private let output: any RealtimeSpeechOutput
@@ -33,7 +34,10 @@ public final class RealtimeVoiceSession {
     private var endpointFallbackTask: Task<Void, Never>?
     private var visualTask: Task<Void, Never>?
     private var persistenceTail: Task<Void, Never>?
-    private var finalizationInProgress = false
+    private var finalizationID: UUID?
+    private var interruptionTask: Task<Void, Never>?
+    private var lastVoiceAt: ContinuousClock.Instant?
+    private let clock = ContinuousClock()
 
     public init(
         audioSession: AudioSessionCoordinator,
@@ -80,7 +84,7 @@ public final class RealtimeVoiceSession {
         phase = .connecting
         errorMessage = nil
         requiresSettings = false
-        finalizationInProgress = false
+        finalizationID = nil
 
         do {
             try await input.start()
@@ -105,15 +109,8 @@ public final class RealtimeVoiceSession {
         endpointFallbackTask = nil
         visualTask?.cancel()
         visualTask = nil
-        let hadActiveResponse = activeResponseID != nil || responseTask != nil
-        responseTask?.cancel()
-        responseTask = nil
-        activeResponseID = nil
-
-        let heard = SpokenTextSanitizer.sanitize(await output.stop())
-        if hadActiveResponse, !heard.isEmpty {
-            queueAssistantSave(heard, interrupted: true)
-        }
+        phase = .idle
+        await interruptActiveResponse(nextPhase: .idle)
         await input.stop()
         await persistenceTail?.value
         resetTransientState()
@@ -130,14 +127,8 @@ public final class RealtimeVoiceSession {
         endpointFallbackTask = nil
         visualTask?.cancel()
         visualTask = nil
-        let hadActiveResponse = activeResponseID != nil || responseTask != nil
-        responseTask?.cancel()
-        responseTask = nil
-        activeResponseID = nil
-        let heard = SpokenTextSanitizer.sanitize(await output.stop())
-        if hadActiveResponse, !heard.isEmpty {
-            queueAssistantSave(heard, interrupted: true)
-        }
+        phase = .paused
+        await interruptActiveResponse(nextPhase: .paused)
         await input.stop()
         rawInputLevel = 0
         activityLevel = 0
@@ -149,7 +140,28 @@ public final class RealtimeVoiceSession {
         await start()
     }
 
+    /// A lease/credit failure must not cut off a reply already admitted by the server.
+    public func finishSpeakingAndStop() async {
+        isEnding = true
+        isMuted = true
+        input.setMuted(true)
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
+        liveTranscript = ""
+        errorMessage = "本轮回复结束后，通话将结束。"
+        while activeResponseID != nil || finalizationID != nil {
+            if let responseTask {
+                await responseTask.value
+            } else {
+                // A response may still be preparing its output before installing its task.
+                try? await Task.sleep(for: .milliseconds(10))
+            }
+        }
+        await stop()
+    }
+
     public func toggleMuted() {
+        guard !isEnding, phase != .idle, phase != .paused, phase != .failed else { return }
         isMuted.toggle()
         endpointFallbackTask?.cancel()
         endpointFallbackTask = nil
@@ -171,6 +183,10 @@ public final class RealtimeVoiceSession {
     #endif
 
     private func bindInput() {
+        output.onPlaybackStarted = { [weak self] in
+            guard let self, self.activeResponseID != nil, self.phase == .thinking else { return }
+            self.phase = .speaking
+        }
         input.onLevel = { [weak self] level in self?.receiveLevel(level) }
         input.onSpeechStarted = { [weak self] in self?.receiveSpeechStarted() }
         input.onTranscription = { [weak self] transcription in
@@ -189,6 +205,7 @@ public final class RealtimeVoiceSession {
     private func receiveLevel(_ level: Double) {
         guard phase != .idle, phase != .connecting, phase != .paused, phase != .failed,
               !isMuted else { return }
+        if level >= 0.07 { lastVoiceAt = clock.now }
         rawInputLevel = level
         if phase == .listening || phase == .userSpeaking {
             activityLevel = level
@@ -200,13 +217,13 @@ public final class RealtimeVoiceSession {
               !isMuted else { return }
         endpointFallbackTask?.cancel()
         endpointFallbackTask = nil
-        liveTranscript = ""
+        lastVoiceAt = clock.now
+        let wasBusy = agentIsBusy
         phase = .userSpeaking
 
-        if agentIsBusy {
-            Task { [weak self] in
-                await self?.interruptActiveResponse(nextPhase: .userSpeaking)
-            }
+        if wasBusy {
+            // Invalidate the reply synchronously; late deltas cannot enqueue more speech.
+            beginInterruption(nextPhase: .userSpeaking)
         }
     }
 
@@ -220,11 +237,18 @@ public final class RealtimeVoiceSession {
         if transcription.isFinal {
             endpointFallbackTask?.cancel()
             endpointFallbackTask = nil
-            Task { [weak self] in await self?.submitFinalTranscript(text) }
+            let generation = generation
+            Task { [weak self] in
+                guard let self, self.generation == generation, !self.isMuted,
+                      self.phase != .idle, self.phase != .paused, self.phase != .failed else { return }
+                await self.submitFinalTranscript(text)
+            }
         } else {
+            let changed = liveTranscript != text
             liveTranscript = text
+            if agentIsBusy { beginInterruption(nextPhase: .userSpeaking) }
             phase = .userSpeaking
-            scheduleEndpointFallback(for: text)
+            if changed || endpointFallbackTask == nil { scheduleEndpointFallback(for: text) }
         }
     }
 
@@ -234,6 +258,12 @@ public final class RealtimeVoiceSession {
             guard let self else { return }
             do {
                 try await Task.sleep(for: self.turnPolicy.fallbackEndOfTurnDelay)
+                // Stable ASR text does not mean silence: a learner may still be speaking.
+                while let lastVoiceAt = self.lastVoiceAt {
+                    let remaining = self.turnPolicy.fallbackEndOfTurnDelay - lastVoiceAt.duration(to: self.clock.now)
+                    if remaining <= .zero { break }
+                    try await Task.sleep(for: remaining)
+                }
             } catch {
                 return
             }
@@ -244,13 +274,14 @@ public final class RealtimeVoiceSession {
     }
 
     private func submitFinalTranscript(_ text: String) async {
-        guard !finalizationInProgress else { return }
-        finalizationInProgress = true
-        defer { finalizationInProgress = false }
+        guard finalizationID == nil else { return }
+        let finalizationID = UUID()
+        let generation = generation
+        self.finalizationID = finalizationID
+        defer { if self.finalizationID == finalizationID { self.finalizationID = nil } }
 
-        if agentIsBusy {
-            await interruptActiveResponse(nextPhase: .thinking)
-        }
+        await interruptActiveResponse(nextPhase: .thinking)
+        guard self.generation == generation, !isMuted else { return }
         liveTranscript = ""
         userTranscript = text
         await beginResponse(to: text)
@@ -263,6 +294,7 @@ public final class RealtimeVoiceSession {
         errorMessage = nil
         phase = .thinking
         await output.beginResponse(language: voiceLanguage, voiceHint: voiceHint)
+        guard activeResponseID == responseID else { return }
 
         let pendingSave = persistenceTail
         responseTask = Task { [weak self] in
@@ -274,7 +306,7 @@ public final class RealtimeVoiceSession {
 
     private func runResponse(id: UUID, userText: String) async {
         var generated = ""
-        var segmenter = StreamingSpeechSegmenter(maximumWordsWithoutPunctuation: 7)
+        var segmenter = StreamingSpeechSegmenter()
 
         do {
             let stream = try await conversation.replyStream(userText)
@@ -299,7 +331,12 @@ public final class RealtimeVoiceSession {
             guard activeResponseID == id else { return }
             completeResponse(id: id, spokenText: output.heardText)
         } catch is CancellationError {
-            return
+            // An upstream cancellation can also happen without a local barge-in.
+            // Release the turn so draining/ending a call cannot wait forever.
+            guard activeResponseID == id else { return }
+            let heard = await output.stop()
+            guard activeResponseID == id else { return }
+            completeResponse(id: id, spokenText: heard, interrupted: true)
         } catch {
             guard activeResponseID == id else { return }
             enqueue(segmenter.finish(), responseID: id)
@@ -307,7 +344,7 @@ public final class RealtimeVoiceSession {
             guard activeResponseID == id else { return }
             let heard = output.heardText
             if !heard.isEmpty {
-                completeResponse(id: id, spokenText: heard)
+                completeResponse(id: id, spokenText: heard, interrupted: true)
             } else {
                 activeResponseID = nil
                 responseTask = nil
@@ -321,32 +358,39 @@ public final class RealtimeVoiceSession {
         guard activeResponseID == responseID else { return }
         for segment in segments where !segment.isEmpty {
             output.enqueue(segment)
-            phase = .speaking
         }
     }
 
-    private func completeResponse(id: UUID, spokenText: String) {
+    private func completeResponse(id: UUID, spokenText: String, interrupted: Bool = false) {
         guard activeResponseID == id else { return }
         let spokenText = SpokenTextSanitizer.sanitize(spokenText)
         activeResponseID = nil
         responseTask = nil
         assistantTranscript = spokenText
         phase = .listening
-        if !spokenText.isEmpty { queueAssistantSave(spokenText, interrupted: false) }
+        if !spokenText.isEmpty { queueAssistantSave(spokenText, interrupted: interrupted) }
     }
 
-    private func interruptActiveResponse(nextPhase: RealtimeVoicePhase) async {
-        guard activeResponseID != nil || responseTask != nil else {
-            phase = nextPhase
-            return
-        }
+    private func beginInterruption(nextPhase: RealtimeVoicePhase) {
+        phase = nextPhase
+        guard activeResponseID != nil || responseTask != nil else { return }
         activeResponseID = nil
         responseTask?.cancel()
         responseTask = nil
-        let heard = SpokenTextSanitizer.sanitize(await output.stop())
-        assistantTranscript = heard
-        if !heard.isEmpty { queueAssistantSave(heard, interrupted: true) }
-        phase = nextPhase
+        let previous = interruptionTask
+        let generation = generation
+        interruptionTask = Task { [weak self] in
+            await previous?.value
+            guard let self else { return }
+            let heard = SpokenTextSanitizer.sanitize(await self.output.stop())
+            if !heard.isEmpty { self.queueAssistantSave(heard, interrupted: true) }
+            if self.generation == generation { self.assistantTranscript = heard }
+        }
+    }
+
+    private func interruptActiveResponse(nextPhase: RealtimeVoicePhase) async {
+        beginInterruption(nextPhase: nextPhase)
+        await interruptionTask?.value
     }
 
     private func queueAssistantSave(_ text: String, interrupted: Bool) {
@@ -406,8 +450,10 @@ public final class RealtimeVoiceSession {
         assistantTranscript = ""
         activityLevel = 0
         rawInputLevel = 0
+        lastVoiceAt = nil
         errorMessage = nil
         requiresSettings = false
-        finalizationInProgress = false
+        isEnding = false
+        finalizationID = nil
     }
 }

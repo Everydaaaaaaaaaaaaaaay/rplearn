@@ -117,7 +117,22 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         }
     }
 
+    public func prepareForPlayback(_ request: SpeechRequest) async -> PreparedSpeech? {
+        guard !Task.isCancelled, request.purpose == .realtimeConversation,
+              await resolvedEngine(for: request) == .supertonic3,
+              !Task.isCancelled else { return nil }
+        do {
+            let samples = try await supertonic.synthesizeSamples(request)
+            try Task.checkCancellation()
+            return PreparedSpeech(request: request, samples: samples)
+        } catch { return nil }
+    }
+
     public func speakAndWait(_ request: SpeechRequest) async {
+        await speakAndWait(request, prepared: nil)
+    }
+
+    public func speakAndWait(_ request: SpeechRequest, prepared: PreparedSpeech?) async {
         let trimmed = request.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
@@ -130,7 +145,7 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         }
         guard playbackRequestGate.accepts(generation), !Task.isCancelled else { return }
         if engine == .supertonic3, await supertonic.isReady {
-            await supertonic.speakAndWait(request)
+            await supertonic.speakAndWait(request, prepared: prepared)
         } else {
             // Await the actual fallback voice too; otherwise narrated pages advance
             // while Apple is still speaking when model preparation fails.

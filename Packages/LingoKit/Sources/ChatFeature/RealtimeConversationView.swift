@@ -105,7 +105,9 @@ private final class RealtimeConversationCoordinator {
             } catch is CancellationError { return }
             catch {
                 guard let self else { return }
-                self.accessError = error.localizedDescription
+                let message = error.localizedDescription
+                await self.session.finishSpeakingAndStop()
+                self.accessError = message
                 await self.stop()
             }
         }
@@ -114,11 +116,11 @@ private final class RealtimeConversationCoordinator {
     private static func turnPolicy(for level: DifficultyLevel) -> VoiceTurnPolicy {
         let fallbackDelay: Duration = switch level {
         case .kindergarten, .primary1, .primary2, .primary3, .primary4, .primary5, .primary6:
-            .milliseconds(1_350)
+            .milliseconds(1_800)
         case .junior1, .junior2, .junior3:
-            .milliseconds(1_200)
+            .milliseconds(1_500)
         case .senior1, .senior2, .senior3:
-            .milliseconds(1_100)
+            .milliseconds(1_300)
         case .undergraduate, .postgraduate, .advanced:
             .milliseconds(1_000)
         }
@@ -162,6 +164,13 @@ struct RealtimeConversationView: View {
                 Spacer(minLength: 18)
                 subtitleArea
                 Spacer(minLength: 18)
+                if let error = session.errorMessage, session.phase != .failed {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.8))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 12)
+                }
                 controls
             }
             .padding(.horizontal, 22)
@@ -398,7 +407,7 @@ struct RealtimeConversationView: View {
 
     private var controls: some View {
         VStack(spacing: 18) {
-            Text("原始音频仅在本机识别；只有终稿文本会发送给 AI")
+            Text("使用 Apple 语音识别（可能联网），角色语音在本机合成")
                 .font(.caption2)
                 .foregroundStyle(.white.opacity(0.38))
                 .multilineTextAlignment(.center)
@@ -436,7 +445,7 @@ struct RealtimeConversationView: View {
                     Haptics.selection()
                     session.toggleMuted()
                 }
-                .disabled(session.phase == .connecting || session.phase == .failed)
+                .disabled(session.isEnding || session.phase == .connecting || session.phase == .failed)
             }
         }
     }
@@ -539,6 +548,7 @@ struct RealtimeConversationView: View {
     }
 
     private var statusTitle: String {
+        if session.isEnding { return "本轮说完后结束" }
         if session.isMuted { return "麦克风已关闭" }
         return switch session.phase {
         case .idle: "对话已结束"
@@ -554,6 +564,7 @@ struct RealtimeConversationView: View {
     }
 
     private var statusDetail: String {
+        if session.isEnding { return "当前回复会完整播放，之后结束通话" }
         if session.isMuted { return "点按麦克风即可继续" }
         return switch session.phase {
         case .idle: "字幕已保存到聊天记录"

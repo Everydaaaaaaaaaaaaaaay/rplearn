@@ -204,17 +204,17 @@ actor Supertonic3SpeechEngine {
         await warmUpIfNeeded()
     }
 
-    func speak(_ request: SpeechRequest) async {
+    func speak(_ request: SpeechRequest, prepared: PreparedSpeech? = nil) async {
         await stopPlayback()
         let task = Task { [weak self] in
             guard let self else { return }
-            await self.performPlayback(request)
+            await self.performPlayback(request, prepared: prepared)
         }
         playbackTask = task
     }
 
-    func speakAndWait(_ request: SpeechRequest) async {
-        await speak(request)
+    func speakAndWait(_ request: SpeechRequest, prepared: PreparedSpeech? = nil) async {
+        await speak(request, prepared: prepared)
         await waitUntilFinished()
     }
 
@@ -294,7 +294,7 @@ actor Supertonic3SpeechEngine {
         )
     }
 
-    private func performPlayback(_ request: SpeechRequest) async {
+    private func performPlayback(_ request: SpeechRequest, prepared: PreparedSpeech?) async {
         let trimmed = request.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
@@ -315,7 +315,9 @@ actor Supertonic3SpeechEngine {
             ) : nil
 
             let samples: [Float]
-            if let cacheKey, let cached = await audioCache.samples(for: cacheKey) {
+            if let prepared, prepared.request == request {
+                samples = prepared.samples
+            } else if let cacheKey, let cached = await audioCache.samples(for: cacheKey) {
                 samples = cached
                 Log.speech.notice("Supertonic-3 发音缓存命中，跳过模型推理")
             } else {
@@ -344,7 +346,7 @@ actor Supertonic3SpeechEngine {
                 : .playback
             try await audioSession.activate(mode)
             let player = try await playbackPlayer()
-            try await player.prepare()
+            try await player.prepare(playbackID: request.playbackID)
             if try await player.enqueue(samples) {
                 didBeginPlayback = true
             }

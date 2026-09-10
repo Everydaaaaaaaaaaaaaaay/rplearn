@@ -9,13 +9,22 @@ public extension Notification.Name {
 
 private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
     var onCompletion: (@Sendable () -> Void)?
+    private let lock = NSLock()
+    private var playbackIDs: [ObjectIdentifier: UUID] = [:]
+
+    func register(_ utterance: AVSpeechUtterance, id: UUID?) {
+        lock.withLock { playbackIDs[ObjectIdentifier(utterance)] = id }
+    }
+
+    func clearPlaybackIDs() { lock.withLock { playbackIDs.removeAll() } }
 
     func speechSynthesizer(
         _ synthesizer: AVSpeechSynthesizer,
         didStart utterance: AVSpeechUtterance
     ) {
+        let id = lock.withLock { playbackIDs[ObjectIdentifier(utterance)] }
         Task { @MainActor in
-            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+            NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: id)
         }
     }
 
@@ -23,6 +32,7 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
         _ synthesizer: AVSpeechSynthesizer,
         didFinish utterance: AVSpeechUtterance
     ) {
+        _ = lock.withLock { playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }
         onCompletion?()
     }
 
@@ -30,6 +40,7 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
         _ synthesizer: AVSpeechSynthesizer,
         didCancel utterance: AVSpeechUtterance
     ) {
+        _ = lock.withLock { playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }
         onCompletion?()
     }
 }
@@ -77,6 +88,8 @@ public struct SpeechRequest: Sendable, Equatable {
     /// Authored locale-sensitive narration must not trade accent for voice quality.
     public let requiresExactLocale: Bool
     public let delivery: SpeechDelivery?
+    /// Correlates actual playback with a realtime phrase; nil for ordinary speech.
+    public let playbackID: UUID?
 
     public init(
         text: String,
@@ -85,7 +98,8 @@ public struct SpeechRequest: Sendable, Equatable {
         voiceHint: SpeechVoiceHint? = nil,
         engine: SpeechSynthesisEngine? = nil,
         requiresExactLocale: Bool = false,
-        delivery: SpeechDelivery? = nil
+        delivery: SpeechDelivery? = nil,
+        playbackID: UUID? = nil
     ) {
         self.text = text
         self.language = language
@@ -94,7 +108,14 @@ public struct SpeechRequest: Sendable, Equatable {
         self.engine = engine
         self.requiresExactLocale = requiresExactLocale
         self.delivery = delivery
+        self.playbackID = playbackID
     }
+}
+
+/// Opaque, single-utterance lookahead. PCM stays in SpeechKit and is never persisted.
+public struct PreparedSpeech: Sendable {
+    let request: SpeechRequest
+    let samples: [Float]
 }
 
 /// 语音朗读服务。具体引擎、随包模型资源和回退策略都隐藏在协议后。
@@ -102,6 +123,9 @@ public protocol SpeechService: Sendable {
     func speak(_ request: SpeechRequest) async
     /// 播放并等待真实结束。实时语音按短分句串行调用，普通朗读无需使用。
     func speakAndWait(_ request: SpeechRequest) async
+    /// Prepare at most one upcoming phrase while the current phrase is audibly playing.
+    func prepareForPlayback(_ request: SpeechRequest) async -> PreparedSpeech?
+    func speakAndWait(_ request: SpeechRequest, prepared: PreparedSpeech?) async
     func stopSpeaking() async
     /// 用户在系统设置里增删语音后刷新音源缓存（默认空实现）。
     func refreshVoices() async
@@ -115,6 +139,12 @@ extension SpeechService {
     /// 兼容现有调用点的轻量入口。language 为 BCP-47 口音（en-GB/en-AU/en-US）。
     public func speak(_ text: String, language: String) async {
         await speak(SpeechRequest(text: text, language: language))
+    }
+
+    public func prepareForPlayback(_ request: SpeechRequest) async -> PreparedSpeech? { nil }
+
+    public func speakAndWait(_ request: SpeechRequest, prepared: PreparedSpeech?) async {
+        await speakAndWait(request)
     }
 
     public func refreshVoices() async {}
@@ -189,6 +219,7 @@ public actor AppleTTSService: SpeechService {
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92 * (request.narrativeDelivery?.speedMultiplier ?? 1)
         utterance.preUtteranceDelay = request.narrativeDelivery?.leadingPause ?? 0
         utterance.postUtteranceDelay = 0.1 + (request.narrativeDelivery?.trailingPause ?? 0)
+        delegateBox.register(utterance, id: request.playbackID)
         synthesizer.speak(utterance)
     }
 
@@ -217,6 +248,7 @@ public actor AppleTTSService: SpeechService {
     private func replaceSynthesizer() {
         let previous = synthesizer
         previous.delegate = nil
+        delegateBox.clearPlaybackIDs()
         if previous.isSpeaking || previous.isPaused {
             previous.stopSpeaking(at: .immediate)
         }
