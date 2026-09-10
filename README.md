@@ -63,7 +63,7 @@ App 组合根
 ├── 领域与集成：DomainKit / StoryEngine / SyncKit
 ├── 服务：BackendKit / BillingKit / LLMKit / MediaKit / SpeechKit /
 │        RealtimeVoiceKit / DictKit / PersistenceKit
-└── 基础：CoreKit / MascotKit / DesignSystem
+└── 基础：CoreKit / DesignSystem
 ```
 
 Feature 之间不直接依赖。跨页面导航和服务选择在 `App/RootView.swift` 与

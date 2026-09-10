@@ -38,7 +38,9 @@ App 壳的主入口与支持文件是：
 | Feature | Auth、Home、Chat、Onboarding、Placement、Story、Roster、Map、Favorites、Settings |
 | 领域与集成 | DomainKit、StoryEngine、SyncKit |
 | 服务 | BackendKit、BillingKit、LLMKit、MediaKit、SpeechKit、RealtimeVoiceKit、DictKit、PersistenceKit |
-| 基础 | CoreKit、MascotKit、DesignSystem |
+| 基础 | CoreKit、DesignSystem |
+
+吉祥物由 DesignSystem 的 `BrandMascotView` 使用 2D 图片渲染；旧 3D `MascotKit` 与 GLTFKit2 已移除。
 
 Feature 只依赖下层模块，Feature 间跳转由组合根注入。模块直接依赖以
 `Packages/LingoKit/Package.swift` 为准，不从目录嵌套推断。

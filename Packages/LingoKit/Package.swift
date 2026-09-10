@@ -11,13 +11,6 @@ func module(_ name: String) -> Target.Dependency {
 let infraTargets: [Target] = [
     .target(name: "CoreKit"),
     .target(
-        name: "MascotKit",
-        dependencies: [
-            .product(name: "GLTFKit2", package: "GLTFKit2"),
-        ],
-        resources: [.process("Resources")]
-    ),
-    .target(
         name: "DesignSystem",
         dependencies: [module("CoreKit")]
     ),
@@ -177,10 +170,6 @@ let package = Package(
     platforms: [.iOS(.v18)],
     products: allTargets.map { .library(name: $0.name, targets: [$0.name]) },
     dependencies: [
-        .package(
-            url: "https://github.com/warrenm/GLTFKit2.git",
-            exact: "0.5.15"
-        ),
         // 精确锁定：Supertonic-3 的模型目录与 Core ML API 会随 FluidAudio 演进，
         // 升级必须经过包体、音质和真机延迟回归，不能自动漂移。
         .package(

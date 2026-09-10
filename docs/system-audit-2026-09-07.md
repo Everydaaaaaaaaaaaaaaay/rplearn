@@ -48,7 +48,6 @@
 原始后端证据位于 `build/verification/20260906T191316Z-18568c64/`（完整数据库/进程流程）和
 `build/verification/20260906T192532Z-119d5930/`（入口清理修改后的积分定向复测）。
 客户端精确结果与证据位置见 [机器可读摘要](data/system-audit-2026-09-07.json)。Xcode 已自动轮换早期 `Logs/Test` 结果包；当时读取的完整汇总 JSON 已另存 `build/verification/system-audit-20260907-summaries/`，剧情截图另存 `ui-audit-20260907/`。新入口使用显式 `VerificationResults` 路径保留完整结果包。本机证据路径不作为 CI 固定门禁。
-运行时存在原有未跟踪美术资产和 `Artifacts/`，它们未纳入本轮提交；构建证据包含当时工作区状态。
 
 ## 解释边界
 

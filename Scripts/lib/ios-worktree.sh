@@ -92,9 +92,7 @@ lingotrip_acquire_pipeline_lock() {
 }
 
 lingotrip_package_cache_ready() {
-  [[ -f "$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/FluidAudio/Package.swift" ]] &&
-    [[ -f "$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/GLTFKit2/Package.swift" ]] &&
-    [[ -d "$LINGOTRIP_SOURCE_PACKAGES_PATH/artifacts/gltfkit2/GLTFKit2/GLTFKit2.xcframework" ]]
+  [[ -f "$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/FluidAudio/Package.swift" ]]
 }
 
 lingotrip_prepare_workspace() {
