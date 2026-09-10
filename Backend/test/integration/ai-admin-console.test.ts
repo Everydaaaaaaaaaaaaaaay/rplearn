@@ -332,7 +332,12 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
           url: "/internal/admin/ai/routes",
         })
       ).json<{ routes: AiManagedRoute[] }>().routes;
+    const retiredBefore = await runtime.database.sql`
+      select * from app.ai_routes where task = 'translation'
+    `;
+    expect(retiredBefore).toHaveLength(1);
     const initial = await list();
+    expect(initial.some((route) => route.task === "translation")).toBe(false);
     const command = newEntityId();
     const payload = {
       provider: "openrouter",
@@ -398,6 +403,10 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
       expect(response.statusCode, response.body).toBe(200);
       const changed = response.json<{ routes: AiManagedRoute[] }>().routes;
       expect(changed).toHaveLength(initial.length);
+      const retiredAfter = await runtime.database.sql`
+        select * from app.ai_routes where task = 'translation'
+      `;
+      expect(retiredAfter).toEqual(retiredBefore);
       for (const original of initial) {
         const current = required(changed.find((route) => route.task === original.task));
         expect(current).toMatchObject({

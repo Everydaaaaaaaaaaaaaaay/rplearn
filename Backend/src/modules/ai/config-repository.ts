@@ -67,6 +67,8 @@ function notFound(): AppError {
 export class AiConfigRepository {
   constructor(private readonly database: DatabaseResource) {}
 
+  // Sentence translation is now on-device. Retain historical configuration and
+  // billing records, but omit its route from console management and bulk changes.
   async listRoutes(): Promise<readonly AiManagedRoute[]> {
     const rows = await this.database.sql<ManagedRouteRow[]>`
       select
@@ -84,6 +86,7 @@ export class AiConfigRepository {
         config_version,
         updated_at
       from app.ai_routes
+      where task <> 'translation'
       order by task
     `;
     return rows.map(managed);
@@ -174,7 +177,7 @@ export class AiConfigRepository {
       }
       const tasks = await sql<
         { task: string }[]
-      >`select task from app.ai_routes order by task`;
+      >`select task from app.ai_routes where task <> 'translation' order by task`;
       if (
         !isDeepStrictEqual(
           tasks.map((row) => row.task).sort(),
