@@ -131,7 +131,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         credits.reserve(user, newEntityId(), "second-review", {
           ...req,
           task: "memory_summary",
-          messages: [{ role: "user", content: "x".repeat(20_000) }],
+          messages: [{ role: "user", content: "x".repeat(40_000) }],
           maxOutputTokens: 1_000,
         }),
       ).rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
@@ -400,7 +400,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             "data: " +
               JSON.stringify({
                 id: "s",
-                model: req.model,
+                model: "deepseek-flash",
                 choices: [{ delta: { content: "hello" } }],
               }) +
               "\n\ndata: " +

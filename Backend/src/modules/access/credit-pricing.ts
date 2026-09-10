@@ -113,6 +113,28 @@ export function creditPrice(
     output: rate(row.outputPerMillion),
   };
 }
+/** Only provider-documented aliases may share an accounting identity.
+ * https://api-docs.deepseek.com/zh-cn/quick_start/pricing (verified 2026-09-11).
+ * Pro and arbitrary model names must never be silently treated as Flash.
+ */
+export function creditModelMatches(
+  price: CreditPrice,
+  returnedModel: string | null,
+): boolean {
+  if (returnedModel === price.model) return true;
+  const flashAliases = [
+    "deepseek-flash",
+    "deepseek-v4-flash",
+    "deepseek-v4-flash-vision-exp",
+  ];
+  return (
+    price.provider === "deepseek" &&
+    returnedModel !== null &&
+    flashAliases.includes(price.model) &&
+    flashAliases.includes(returnedModel)
+  );
+}
+
 export function exactCreditCost(
   price: CreditPrice,
   usage: AiUsage | null,

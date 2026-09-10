@@ -6,6 +6,7 @@ import { AppError } from "../../shared/errors.js";
 import type { AiMessage, AiUsage } from "../ai/types.js";
 import {
   creditPrice,
+  creditModelMatches,
   displayCredits,
   exactCreditCost,
   loadCreditPriceBook,
@@ -359,7 +360,7 @@ export function createCreditService(
         if (!row || row.status === "settled" || row.status === "released") return;
         if (row.status === "pending" && usage === null && result === null) return;
         const cost =
-          model === row.price.model ||
+          creditModelMatches(row.price, model) ||
           (row.price.provider === "openrouter" && usage?.providerCostUsd !== undefined)
             ? exactCreditCost(row.price, usage)
             : null;
@@ -371,7 +372,7 @@ export function createCreditService(
               : "pending";
         await sql`update app.credit_operations set status=${status},settled_units=${cost === null ? null : String(cost)},
         usage=${JSON.stringify(usage)}::jsonb,result=${JSON.stringify(result)}::jsonb,provider_request_id=${providerRequestId},
-        reason=${reason ?? (cost !== null ? null : usage === null ? "usage_missing" : model !== row.price.model && row.price.provider !== "openrouter" ? "model_mismatch" : "usage_invalid")},completed_at=now()
+        reason=${reason ?? (cost !== null ? null : usage === null ? "usage_missing" : !creditModelMatches(row.price, model) && row.price.provider !== "openrouter" ? "model_mismatch" : "usage_invalid")},completed_at=now()
         where user_id=${userId} and operation_id=${operationId}`;
       }),
     // Operator-only service, deliberately absent from public HTTP routes. Evidence is required;

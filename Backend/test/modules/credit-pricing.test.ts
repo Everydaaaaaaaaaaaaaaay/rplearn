@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   creditPrice,
+  creditModelMatches,
   decimalUnits,
   exactCreditCost,
   loadCreditPriceBook,
@@ -15,6 +16,28 @@ const peak = creditPrice(
   new Date("2026-09-07T01:00:00Z"),
 );
 describe("exact credit pricing", () => {
+  it("accepts documented Flash aliases but never unrelated models or providers", () => {
+    expect(creditModelMatches(peak, "deepseek-flash")).toBe(true);
+    expect(creditModelMatches(peak, "deepseek-v4-flash-vision-exp")).toBe(true);
+    expect(creditModelMatches(peak, "deepseek-v4-pro")).toBe(false);
+    expect(creditModelMatches(peak, "deepseek-flash-unknown")).toBe(false);
+    expect(creditModelMatches(peak, null)).toBe(false);
+    expect(
+      creditModelMatches({ ...peak, provider: "openrouter" }, "deepseek-flash"),
+    ).toBe(false);
+  });
+  it("uses newly verified Flash rates without rewriting historical snapshots", () => {
+    const current = creditPrice(
+      book,
+      "deepseek",
+      "deepseek-v4-flash",
+      new Date("2026-09-11T00:00:00Z"),
+    );
+    expect(current.input).toBe("1000");
+    expect(current.cachedInput).toBe("20");
+    expect(current.output).toBe("4000");
+    expect(peak.input).toBe("3000");
+  });
   it("separately bills cache hit, cache miss and output without rounding drift", () => {
     const usage = {
       inputTokens: 5000,
