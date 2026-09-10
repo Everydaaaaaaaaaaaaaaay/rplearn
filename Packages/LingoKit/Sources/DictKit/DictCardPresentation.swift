@@ -1,6 +1,5 @@
 import CoreKit
 import DesignSystem
-import NaturalLanguage
 import SwiftUI
 
 /// 词典卡内容目标：单词或语法点，卡内栈式跳转（原信息替换显示）。
@@ -419,8 +418,6 @@ enum DictUsageExamplePolicy {
 
     static func groups(
         for entry: DictEntry,
-        requestedWord: String,
-        contextText: String?,
         limit: Int = 4,
         perPartOfSpeechLimit: Int = 2
     ) -> [DictUsageExampleGroup] {
@@ -455,39 +452,6 @@ enum DictUsageExamplePolicy {
 
         let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
         let descriptors = senseGroups.map { descriptor(for: $0, entry: entry) }
-        let matchingWords = [requestedWord, entry.word]
-        if let contextual = contextualSentence(
-            in: contextText,
-            matching: matchingWords
-        ) {
-            var contextualDescriptor: PartOfSpeechDescriptor?
-            if let inferredLabel = contextualPartOfSpeechLabel(
-                in: contextual,
-                matching: matchingWords
-            ) {
-                if let index = descriptors.firstIndex(where: { $0.label == inferredLabel }) {
-                    contextualDescriptor = descriptorForContext(
-                        descriptors[index],
-                        senseGroup: senseGroups[index]
-                    )
-                } else {
-                    contextualDescriptor = descriptor(
-                        for: entry.meaningGroups.first { $0.partOfSpeech == inferredLabel }
-                    )
-                }
-            } else if descriptors.count == 1 {
-                contextualDescriptor = descriptorForContext(
-                    descriptors[0],
-                    senseGroup: senseGroups[0]
-                )
-            } else if entry.meaningGroups.count == 1 {
-                contextualDescriptor = descriptor(for: entry.meaningGroups.first)
-            }
-            if let contextualDescriptor {
-                append(contextual, descriptor: contextualDescriptor)
-            }
-        }
-
         // 先让尚未出现的词性各获得一句，再为每个词性补到最多两句。
         for (group, baseDescriptor) in zip(senseGroups, descriptors)
         where countsByPartOfSpeech[baseDescriptor.id, default: 0] == 0 {
@@ -560,28 +524,6 @@ enum DictUsageExamplePolicy {
     }
 
     private static func descriptor(
-        for meaningGroup: DictMeaningGroup?
-    ) -> PartOfSpeechDescriptor? {
-        guard let meaningGroup,
-              let label = meaningGroup.partOfSpeech,
-              let abbreviation = meaningGroup.partOfSpeechAbbreviation
-        else { return nil }
-        return PartOfSpeechDescriptor(
-            id: abbreviation,
-            partOfSpeech: meaningGroup.partOfSpeech ?? "",
-            label: label,
-            abbreviation: abbreviation,
-            meaningZh: {
-                let values = DictDisplayText.splitTopLevelMeanings(meaningGroup.meaning)
-                return values.count == 1 ? values.first : nil
-            }(),
-            candidateMeaningsZhHans: DictDisplayText.splitTopLevelMeanings(meaningGroup.meaning),
-            senseID: nil,
-            definitionEn: nil
-        )
-    }
-
-    private static func descriptor(
         for sense: DictSense,
         in group: DictSenseDisplayGroup,
         fallback: PartOfSpeechDescriptor
@@ -598,82 +540,4 @@ enum DictUsageExamplePolicy {
         )
     }
 
-    private static func descriptorForContext(
-        _ descriptor: PartOfSpeechDescriptor,
-        senseGroup: DictSenseDisplayGroup
-    ) -> PartOfSpeechDescriptor {
-        // Context-only examples have no reliable WordNet sense identity; let the
-        // resolver choose among the complete candidate list.
-        descriptor
-    }
-
-    private static func contextualPartOfSpeechLabel(
-        in sentence: String,
-        matching words: [String]
-    ) -> String? {
-        let candidates = Set(
-            words
-                .map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
-                .filter { !$0.isEmpty }
-        )
-        guard !candidates.isEmpty else { return nil }
-
-        let tagger = NLTagger(tagSchemes: [.lexicalClass])
-        tagger.string = sentence
-        var inferredLabel: String?
-        tagger.enumerateTags(
-            in: sentence.startIndex..<sentence.endIndex,
-            unit: .word,
-            scheme: .lexicalClass,
-            options: [.omitWhitespace, .omitPunctuation, .joinNames]
-        ) { tag, tokenRange in
-            let token = sentence[tokenRange].lowercased()
-            guard candidates.contains(token) else { return true }
-            switch tag {
-            case .noun: inferredLabel = "名词"
-            case .verb: inferredLabel = "动词"
-            case .adjective: inferredLabel = "形容词"
-            case .adverb: inferredLabel = "副词"
-            case .pronoun: inferredLabel = "代词"
-            case .conjunction: inferredLabel = "连词"
-            case .preposition: inferredLabel = "介词"
-            case .interjection: inferredLabel = "感叹词"
-            default: break
-            }
-            return false
-        }
-        return inferredLabel
-    }
-
-    private static func contextualSentence(
-        in contextText: String?,
-        matching words: [String]
-    ) -> String? {
-        guard let contextText else { return nil }
-        let candidates = words
-            .map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty }
-        guard !candidates.isEmpty else { return nil }
-
-        var sentences: [String] = []
-        contextText.enumerateSubstrings(
-            in: contextText.startIndex..<contextText.endIndex,
-            options: .bySentences
-        ) { substring, _, _, _ in
-            if let substring {
-                sentences.append(substring.trimmingCharacters(in: .whitespacesAndNewlines))
-            }
-        }
-        if sentences.isEmpty {
-            sentences = [contextText.trimmingCharacters(in: .whitespacesAndNewlines)]
-        }
-
-        return sentences.first { sentence in
-            let sentenceWords = WordTokenizer.tokenize(sentence).compactMap(\.word)
-            guard sentenceWords.count >= 3 else { return false }
-            return sentenceWords.contains { token in
-                candidates.contains(token.lowercased())
-            }
-        }
-    }
 }

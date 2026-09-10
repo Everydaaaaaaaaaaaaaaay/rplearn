@@ -6,20 +6,17 @@ public struct TokenSelection: Hashable, Sendable {
     public let contextID: String
     public let tokenID: Int
     public let word: String
-    public let contextText: String?
     public let phraseCandidates: [String]
 
     public init(
         contextID: String,
         tokenID: Int,
         word: String,
-        contextText: String? = nil,
         phraseCandidates: [String] = []
     ) {
         self.contextID = contextID
         self.tokenID = tokenID
         self.word = word
-        self.contextText = contextText
         self.phraseCandidates = phraseCandidates
     }
 }
@@ -98,7 +95,6 @@ public struct TappableText: View {
             contextID: contextID,
             tokenID: token.id,
             word: token.word ?? token.display,
-            contextText: tokens.map(\.display).joined(),
             phraseCandidates: phraseCandidates(around: token.id)
         )
     }

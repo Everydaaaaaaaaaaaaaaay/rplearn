@@ -8,7 +8,6 @@ public struct DictCardView: View {
     private let phraseCandidates: [String]
     private let dictionary: DictDatabase
     private let grammar: GrammarPointStore
-    private let contextText: String?
     private let onSpeak: (@MainActor (String) -> Void)?
     private let favoriteActions: WordFavoriteActions?
     private let aiFallback: (@Sendable (String) async -> String?)?
@@ -35,7 +34,6 @@ public struct DictCardView: View {
     public init(
         target: DictTarget,
         phraseCandidates: [String] = [],
-        contextText: String? = nil,
         dictionary: DictDatabase,
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
@@ -47,7 +45,6 @@ public struct DictCardView: View {
     ) {
         _path = State(initialValue: [target])
         self.phraseCandidates = phraseCandidates
-        self.contextText = contextText
         self.dictionary = dictionary
         self.grammar = grammar
         self.onSpeak = onSpeak
@@ -260,21 +257,13 @@ public struct DictCardView: View {
             if !entry.senses.isEmpty || !entry.fallbackEnglishDefinitions.isEmpty {
                 englishDisclosureSection(entry)
             }
-            // In chat, the sentence the learner just tapped is more useful than
-            // related phrases. Keep its contextual meaning and translation above
-            // the fold instead of hiding them in the scrollable tail of the card.
-            if contextText != nil {
-                usageExampleSection(entry, requestedWord: word)
-            }
             if !contextualPhrases.isEmpty || !relatedPhrases.isEmpty {
                 phraseSection(
                     contextual: path.count == 1 ? contextualPhrases : [],
                     related: relatedPhrases
                 )
             }
-            if contextText == nil {
-                usageExampleSection(entry, requestedWord: word)
-            }
+            usageExampleSection(entry)
             if !entry.wordForms.isEmpty {
                 wordFormsSection(entry)
             }
@@ -494,11 +483,9 @@ public struct DictCardView: View {
     }
 
     @ViewBuilder
-    private func usageExampleSection(_ entry: DictEntry, requestedWord: String) -> some View {
+    private func usageExampleSection(_ entry: DictEntry) -> some View {
         let groups = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: requestedWord,
-            contextText: contextText
+            for: entry
         )
         if !groups.isEmpty {
             VStack(alignment: .leading, spacing: 5) {
@@ -826,18 +813,15 @@ public struct DictCardView: View {
         isFavorite = await favoriteActions?.contains(resolvedWord) ?? false
         isLoading = false
         if let loadedEntry {
-            await translateUsageExamples(for: loadedEntry, requestedWord: word)
+            await translateUsageExamples(for: loadedEntry)
         }
     }
 
     private func translateUsageExamples(
-        for entry: DictEntry,
-        requestedWord: String
+        for entry: DictEntry
     ) async {
         let examples = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: requestedWord,
-            contextText: contextText
+            for: entry
         )
         .flatMap(\.examples)
         guard !examples.isEmpty else { return }

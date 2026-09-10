@@ -124,9 +124,7 @@ struct DictDatabaseTests {
         )
 
         let examples = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: "mate",
-            contextText: nil
+            for: entry
         ).flatMap(\.examples)
 
         #expect(examples.count == 2)
@@ -261,8 +259,8 @@ struct DictDatabaseTests {
         #expect(await counter.count() == 2)
     }
 
-    @Test("例句优先保留当前语境并按词性适量分组")
-    func usageExamplesCoverContextAndPartsOfSpeech() {
+    @Test("例句只取词典固定内容并保留稳定词义身份")
+    func usageExamplesUseOnlyDictionarySenses() {
         let entry = DictEntry(
             word: "test",
             translation: "n. 测试\\nv. 检验",
@@ -285,19 +283,17 @@ struct DictDatabaseTests {
         )
 
         let groups = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: "test",
-            contextText: "We can test it after lunch. This sentence is unrelated."
+            for: entry
         )
 
-        #expect(groups.map(\.partOfSpeechLabel) == ["动词", "名词"])
-        #expect(groups[0].examples.map(\.text) == [
-            "We can test it after lunch.",
-            "They test the alarm every week.",
-        ])
-        #expect(groups[0].examples.allSatisfy { $0.annotation == "（v. 检验）" })
-        #expect(groups[1].examples.map(\.text) == ["The test starts at nine."])
-        #expect(groups[1].examples.first?.annotation == "（n. 测试）")
+        #expect(groups.map(\.partOfSpeechLabel) == ["名词", "动词"])
+        #expect(groups[0].examples.map(\.text) == ["The test starts at nine."])
+        #expect(groups[0].examples.first?.annotation == "（n. 测试）")
+        #expect(groups[1].examples.map(\.text) == ["They test the alarm every week."])
+        #expect(groups[1].examples.allSatisfy { $0.annotation == "（v. 检验）" })
+        let examples = groups.flatMap(\.examples)
+        #expect(examples.allSatisfy { $0.translationRequest.stableSenseId != nil })
+        #expect(Set(examples.map { $0.translationRequest.sentence }) == Set(entry.senses.flatMap(\.examples)))
     }
 
     @Test("WordNet 动词例句匹配 ECDICT 及物动词释义且不回退到名词")
@@ -324,9 +320,7 @@ struct DictDatabaseTests {
         )
 
         let groups = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: "tube",
-            contextText: nil
+            for: entry
         )
         let verbGroup = groups.first { $0.partOfSpeechLabel == "动词" }
 
@@ -344,9 +338,7 @@ struct DictDatabaseTests {
         let entry = try #require(await db.lookup("tube"))
 
         let groups = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: "tube",
-            contextText: nil
+            for: entry
         )
         let verbExamples = try #require(
             groups.first { $0.partOfSpeechLabel == "动词" }?.examples
@@ -389,16 +381,14 @@ struct DictDatabaseTests {
         )
 
         let groups = DictUsageExamplePolicy.groups(
-            for: entry,
-            requestedWord: "overwhelming",
-            contextText: "London can be overwhelming on day one."
+            for: entry
         )
 
         #expect(groups.count == 1)
         #expect(groups[0].examples.count == 2)
         #expect(groups[0].examples.map(\.text) == [
-            "London can be overwhelming on day one.",
             "An overwhelming need for solitude.",
+            "They won an overwhelming majority.",
         ])
         #expect(groups[0].examples.map(\.annotation) == ["（adj.）", "（adj.）"])
     }
