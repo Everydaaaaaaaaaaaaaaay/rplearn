@@ -19,6 +19,19 @@ const updateSchema = z
   })
   .strict();
 
+const bulkModelSchema = z
+  .object({
+    changeReason: z.string().trim().min(8).max(500),
+    provider: z.enum(["deepseek", "openrouter"]),
+    model: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._:/-]{1,191}$/),
+    expectedVersions: z
+      .record(z.string().regex(/^[a-z][a-z0-9_]{1,63}$/), z.number().int().min(1))
+      .refine(
+        (value) => Object.keys(value).length > 0 && Object.keys(value).length <= 100,
+      ),
+  })
+  .strict();
+
 const rollbackSchema = z
   .object({
     changeReason: z.string().trim().min(8).max(500),
@@ -85,6 +98,22 @@ export function registerAiAdminRoutes(
       routes: await service.listRoutes(),
     };
   });
+
+  app.post(
+    "/internal/admin/ai/routes/switch-model",
+    { schema: { hide: true } },
+    async (request) => {
+      const operatorKeyId = authenticate(request);
+      const { changeReason, ...change } = parse(bulkModelSchema, request.body);
+      return {
+        routes: await service.switchAllModels(change, {
+          changeReason,
+          commandId: commandId(request),
+          operatorKeyId,
+        }),
+      };
+    },
+  );
 
   app.get("/internal/admin/ai/models", { schema: { hide: true } }, async (request) => {
     authenticate(request);

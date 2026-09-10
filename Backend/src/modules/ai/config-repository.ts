@@ -1,3 +1,5 @@
+import type { TransactionSql } from "postgres";
+import { v5 as uuidv5 } from "uuid";
 import { isDeepStrictEqual } from "node:util";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -138,7 +140,87 @@ export class AiConfigRepository {
     changeReason: string,
     requestHash: string,
   ): Promise<AiManagedRoute> {
+    return this.database.sql.begin((sql) =>
+      this.updateInTransaction(
+        sql,
+        task,
+        expectedVersion,
+        nextSettings,
+        commandId,
+        operatorKeyId,
+        changeReason,
+        requestHash,
+      ),
+    );
+  }
+
+  async updateAll(
+    changes: readonly Readonly<{
+      task: string;
+      expectedVersion: number;
+      settings: AiRouteSettings;
+    }>[],
+    commandId: string,
+    operatorKeyId: string,
+    changeReason: string,
+    requestHash: string,
+  ): Promise<readonly AiManagedRoute[]> {
     return this.database.sql.begin(async (sql) => {
+      // Same command lock as single-route writes; ordered route locks prevent deadlocks.
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`ai-route-command:${commandId}`}, 0))`;
+      const ordered = [...changes].sort((a, b) => a.task.localeCompare(b.task));
+      for (const change of ordered) {
+        await sql`select pg_advisory_xact_lock(hashtextextended(${`ai-route:${change.task}`}, 0))`;
+      }
+      const tasks = await sql<
+        { task: string }[]
+      >`select task from app.ai_routes order by task`;
+      if (
+        !isDeepStrictEqual(
+          tasks.map((row) => row.task).sort(),
+          ordered.map((row) => row.task).sort(),
+        )
+      ) {
+        throw new AppError({
+          code: "AI_ROUTE_VERSION_CONFLICT",
+          message: "The task list changed. Refresh before switching all routes.",
+          statusCode: 409,
+        });
+      }
+      const routes: AiManagedRoute[] = [];
+      for (const [index, change] of ordered.entries()) {
+        routes.push(
+          await this.updateInTransaction(
+            sql,
+            change.task,
+            change.expectedVersion,
+            change.settings,
+            index === 0 ? commandId : uuidv5(change.task, commandId),
+            operatorKeyId,
+            changeReason,
+            requestHash,
+            true,
+            false,
+          ),
+        );
+      }
+      return routes;
+    });
+  }
+
+  private async updateInTransaction(
+    sql: TransactionSql,
+    task: string,
+    expectedVersion: number,
+    nextSettings: AiRouteSettings,
+    commandId: string,
+    operatorKeyId: string,
+    changeReason: string,
+    requestHash: string,
+    allowUnchanged = false,
+    acquireLocks = true,
+  ): Promise<AiManagedRoute> {
+    if (acquireLocks) {
       await sql`
         select pg_advisory_xact_lock(
           hashtextextended(${`ai-route-command:${commandId}`}, 0)
@@ -147,15 +229,16 @@ export class AiConfigRepository {
       await sql`
         select pg_advisory_xact_lock(hashtextextended(${`ai-route:${task}`}, 0))
       `;
-      const [existing] = await sql<
-        {
-          changed_at: string;
-          config_version: number;
-          new_config_text: string;
-          request_hash: string;
-          task: string;
-        }[]
-      >`
+    }
+    const [existing] = await sql<
+      {
+        changed_at: string;
+        config_version: number;
+        new_config_text: string;
+        request_hash: string;
+        task: string;
+      }[]
+    >`
         select
           task,
           config_version,
@@ -165,24 +248,24 @@ export class AiConfigRepository {
         from app.ai_route_revisions
         where command_id = ${commandId}
       `;
-      if (existing !== undefined) {
-        if (existing.request_hash !== requestHash || existing.task !== task) {
-          throw new AppError({
-            code: "IDEMPOTENCY_KEY_CONFLICT",
-            message:
-              "This idempotency key was already used for another configuration change.",
-            statusCode: 409,
-          });
-        }
-        return {
-          ...(JSON.parse(existing.new_config_text) as AiRouteSettings),
-          configVersion: existing.config_version,
-          task,
-          updatedAt: new Date(existing.changed_at).toISOString(),
-        };
+    if (existing !== undefined) {
+      if (existing.request_hash !== requestHash || existing.task !== task) {
+        throw new AppError({
+          code: "IDEMPOTENCY_KEY_CONFLICT",
+          message:
+            "This idempotency key was already used for another configuration change.",
+          statusCode: 409,
+        });
       }
+      return {
+        ...(JSON.parse(existing.new_config_text) as AiRouteSettings),
+        configVersion: existing.config_version,
+        task,
+        updatedAt: new Date(existing.changed_at).toISOString(),
+      };
+    }
 
-      const [current] = await sql<ManagedRouteRow[]>`
+    const [current] = await sql<ManagedRouteRow[]>`
         select
           task,
           provider,
@@ -201,27 +284,27 @@ export class AiConfigRepository {
         where task = ${task}
         for update
       `;
-      if (current === undefined) {
-        throw notFound();
-      }
-      if (current.config_version !== expectedVersion) {
-        throw new AppError({
-          code: "AI_ROUTE_VERSION_CONFLICT",
-          details: { currentVersion: current.config_version },
-          message: "The AI route was changed by another operator.",
-          statusCode: 409,
-        });
-      }
-      const previousSettings = settings(current);
-      if (isDeepStrictEqual(previousSettings, nextSettings)) {
-        throw new AppError({
-          code: "AI_ROUTE_CONFIG_UNCHANGED",
-          message: "The requested AI route configuration is unchanged.",
-          statusCode: 409,
-        });
-      }
-      const nextVersion = current.config_version + 1;
-      const [updated] = await sql<ManagedRouteRow[]>`
+    if (current === undefined) {
+      throw notFound();
+    }
+    if (current.config_version !== expectedVersion) {
+      throw new AppError({
+        code: "AI_ROUTE_VERSION_CONFLICT",
+        details: { currentVersion: current.config_version },
+        message: "The AI route was changed by another operator.",
+        statusCode: 409,
+      });
+    }
+    const previousSettings = settings(current);
+    if (!allowUnchanged && isDeepStrictEqual(previousSettings, nextSettings)) {
+      throw new AppError({
+        code: "AI_ROUTE_CONFIG_UNCHANGED",
+        message: "The requested AI route configuration is unchanged.",
+        statusCode: 409,
+      });
+    }
+    const nextVersion = current.config_version + 1;
+    const [updated] = await sql<ManagedRouteRow[]>`
         update app.ai_routes
         set provider = ${nextSettings.provider}::app.ai_provider,
             model = ${nextSettings.model},
@@ -252,10 +335,10 @@ export class AiConfigRepository {
           config_version,
           updated_at
       `;
-      if (updated === undefined) {
-        throw notFound();
-      }
-      await sql`
+    if (updated === undefined) {
+      throw notFound();
+    }
+    await sql`
         insert into app.ai_route_revisions (
           id,
           task,
@@ -279,7 +362,6 @@ export class AiConfigRepository {
           ${JSON.stringify(nextSettings)}::jsonb
         )
       `;
-      return managed(updated);
-    });
+    return managed(updated);
   }
 }

@@ -1,3 +1,4 @@
+import { isDeepStrictEqual } from "node:util";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -42,6 +43,7 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
       ADMIN_API_ENABLED: "true",
       ADMIN_API_KEYS: `${operatorKeyId}=${operatorToken}`,
       NODE_ENV: "test",
+      DEEPSEEK_API_KEY: "test-deepseek-key",
       OPENROUTER_API_KEY: "test-openrouter-key",
       OPENROUTER_USD_TO_CNY: "7.2",
     });
@@ -137,6 +139,7 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
     const page = await app.inject({ method: "GET", url: "/internal/admin/ai" });
     expect(page.statusCode).toBe(200);
     expect(page.body).toContain("模型控制台");
+    expect(page.body).toContain("一键切换全部模型");
     expect(page.headers["content-security-policy"]).toContain("default-src 'none'");
     expect(
       (await app.inject({ method: "GET", url: "/internal/admin/ai/models" }))
@@ -318,6 +321,162 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
     expect(body.byModel[0]?.key).toBe("openrouter/inclusionai/ling-3.0-flash");
     expect(body.users[0]).toMatchObject({ costCny: "0.001500", key: userId });
   });
+
+  it("atomically switches every model, preserves task settings and supports safe retries", async () => {
+    await catalog.refreshOpenRouter();
+    const list = async () =>
+      (
+        await app.inject({
+          headers: auth,
+          method: "GET",
+          url: "/internal/admin/ai/routes",
+        })
+      ).json<{ routes: AiManagedRoute[] }>().routes;
+    const initial = await list();
+    const command = newEntityId();
+    const payload = {
+      provider: "openrouter",
+      model: "inclusionai/ling-3.0-flash",
+      changeReason: "Switch every task after batch model evaluation",
+      expectedVersions: Object.fromEntries(
+        initial.map((route) => [route.task, route.configVersion]),
+      ),
+    };
+    const post = (body: unknown, id = newEntityId(), headers = auth) =>
+      app.inject({
+        headers: { ...headers, "idempotency-key": id },
+        method: "POST",
+        payload: body as Record<string, unknown>,
+        url: "/internal/admin/ai/routes/switch-model",
+      });
+    expect(
+      (await post(payload, newEntityId(), { authorization: "Bearer invalid" }))
+        .statusCode,
+    ).toBe(401);
+    expect(
+      (
+        await app.inject({
+          headers: auth,
+          method: "POST",
+          payload,
+          url: "/internal/admin/ai/routes/switch-model",
+        })
+      ).statusCode,
+    ).toBe(400);
+    expect(
+      (await post({ ...payload, expectedVersions: { conversation: 1 } })).statusCode,
+    ).toBe(409);
+    expect((await post({ ...payload, model: "missing/model" })).statusCode).toBe(409);
+    expect(await list()).toEqual(initial);
+    await runtime.database
+      .sql`update app.ai_model_catalog set supported_parameters='[]'::jsonb where provider='openrouter' and model=${payload.model}`;
+    try {
+      const unsupported = await post(payload);
+      expect(unsupported.statusCode).toBe(409);
+      expect(unsupported.json<{ code: string }>().code).toBe(
+        "AI_MODEL_CAPABILITY_MISSING",
+      );
+      expect(await list()).toEqual(initial);
+    } finally {
+      await catalog.refreshOpenRouter();
+    }
+
+    // A conflict in the last task must roll back writes and revisions for earlier tasks.
+    const last = required(initial.at(-1));
+    const stale = await post({
+      ...payload,
+      expectedVersions: {
+        ...payload.expectedVersions,
+        [last.task]: last.configVersion + 1,
+      },
+    });
+    expect(stale.statusCode).toBe(409);
+    expect(await list()).toEqual(initial);
+
+    try {
+      const response = await post(payload, command);
+      expect(response.statusCode, response.body).toBe(200);
+      const changed = response.json<{ routes: AiManagedRoute[] }>().routes;
+      expect(changed).toHaveLength(initial.length);
+      for (const original of initial) {
+        const current = required(changed.find((route) => route.task === original.task));
+        expect(current).toMatchObject({
+          ...settings(original),
+          provider: "openrouter",
+          model: payload.model,
+          providerOptions:
+            original.provider === "openrouter"
+              ? original.providerOptions
+              : { provider: { require_parameters: true } },
+          configVersion: original.configVersion + 1,
+        });
+        const history = (
+          await app.inject({
+            headers: auth,
+            method: "GET",
+            url: `/internal/admin/ai/routes/${original.task}/revisions`,
+          })
+        ).json<{ revisions: { operatorKeyId: string; changeReason: string }[] }>();
+        expect(history.revisions[0]).toMatchObject({
+          operatorKeyId,
+          changeReason: payload.changeReason,
+        });
+      }
+      expect((await post(payload, command)).json()).toEqual(response.json());
+      expect(
+        (
+          await post(
+            { ...payload, changeReason: "Different request with reused command key" },
+            command,
+          )
+        ).statusCode,
+      ).toBe(409);
+      expect(await list()).toEqual(changed);
+
+      // Two operators publishing the same snapshot: exactly one whole batch wins.
+      const back = {
+        ...payload,
+        provider: "deepseek",
+        model: "deepseek-v4-flash",
+        expectedVersions: Object.fromEntries(
+          changed.map((route) => [route.task, route.configVersion]),
+        ),
+      };
+      const concurrent = await Promise.all([post(back), post(back)]);
+      expect(concurrent.map((response) => response.statusCode).sort()).toEqual([
+        200, 409,
+      ]);
+      for (const route of await list()) {
+        expect(route.provider).toBe("deepseek");
+        expect(route.providerOptions).toEqual({ thinking: { type: "disabled" } });
+        expect(route.configVersion).toBe(
+          required(initial.find((before) => before.task === route.task)).configVersion +
+            2,
+        );
+      }
+    } finally {
+      for (const route of await list()) {
+        const original = required(initial.find((before) => before.task === route.task));
+        if (isDeepStrictEqual(settings(route), settings(original))) continue;
+        const restored = await app.inject({
+          headers: { ...auth, "idempotency-key": newEntityId() },
+          method: "POST",
+          url: `/internal/admin/ai/routes/${route.task}/rollback`,
+          payload: {
+            changeReason: "Restore original settings after batch integration test",
+            expectedVersion: route.configVersion,
+            targetVersion: original.configVersion,
+          },
+        });
+        expect(restored.statusCode, restored.body).toBe(200);
+      }
+    }
+  }, 30_000);
+
+  function required<T>(value: T | undefined): T {
+    if (value === undefined) throw new Error("Expected a route in the test fixture");
+    return value;
+  }
 
   function settings(route: AiManagedRoute): AiRouteSettings {
     return {
