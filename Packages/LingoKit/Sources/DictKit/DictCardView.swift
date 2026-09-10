@@ -76,6 +76,7 @@ public struct DictCardView: View {
             }
             .frame(width: DictCardLayout.width)
             .scrollIndicators(.visible)
+            .id(currentTarget)
         }
         .frame(width: DictCardLayout.width)
         .frame(maxHeight: DictCardLayout.maximumHeight)
@@ -122,8 +123,11 @@ public struct DictCardView: View {
                     _ = path.popLast()
                 } label: {
                     Image(systemName: "chevron.backward")
+                        .frame(minWidth: 44, minHeight: 44)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.borderless)
+                .accessibilityLabel("返回上一条释义")
             }
             switch currentTarget {
             case .word(let word):
@@ -695,11 +699,10 @@ public struct DictCardView: View {
                     compactSectionTitle("常见形式")
                     FlowLayout(spacing: 6, lineSpacing: 5) {
                         ForEach(entry.commonForms, id: \.self) { form in
-                            Text(form)
+                            grammarLinkedText(form)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(Color.dsSkyDeep)
                                 .padding(.horizontal, 7)
-                                .padding(.vertical, 4)
+                                .padding(.vertical, 6)
                                 .background(
                                     Color.dsSky.opacity(0.1),
                                     in: RoundedRectangle(cornerRadius: 7, style: .continuous)
@@ -736,10 +739,44 @@ public struct DictCardView: View {
     private func grammarTermSection(title: String, text: String) -> some View {
         VStack(alignment: .leading, spacing: 3) {
             compactSectionTitle(title)
-            Text(text)
+            grammarLinkedText(text)
                 .font(.subheadline)
                 .fixedSize(horizontal: false, vertical: true)
         }
+    }
+
+    /// Native inline links preserve normal wrapping and VoiceOver link actions.
+    private func grammarLinkedText(_ text: String) -> some View {
+        var attributed = AttributedString()
+        for segment in GrammarTermCatalog.segments(in: text) {
+            switch segment {
+            case .text(let value):
+                attributed.append(AttributedString(value))
+            case .term(let term):
+                var link = AttributedString(term)
+                if currentTarget != .grammarTerm(term) {
+                    var url = URLComponents()
+                    url.scheme = "lingotrip-grammar"
+                    url.host = "term"
+                    url.queryItems = [URLQueryItem(name: "name", value: term)]
+                    link.link = url.url
+                    link.underlineStyle = .single
+                }
+                attributed.append(link)
+            }
+        }
+        return Text(attributed)
+            .tint(Color.dsSkyDeep)
+            .environment(\.openURL, OpenURLAction { url in
+                guard url.scheme == "lingotrip-grammar",
+                      let term = URLComponents(url: url, resolvingAgainstBaseURL: false)?
+                        .queryItems?.first(where: { $0.name == "name" })?.value,
+                      GrammarTermCatalog.entry(for: term) != nil else { return .discarded }
+                if currentTarget != .grammarTerm(term) {
+                    path.append(.grammarTerm(term))
+                }
+                return .handled
+            })
     }
 
     private func highlightedExample(_ example: GrammarTermExample) -> AttributedString {

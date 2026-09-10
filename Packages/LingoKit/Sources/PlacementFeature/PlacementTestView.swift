@@ -109,6 +109,8 @@ public struct PlacementTestView: View {
                 .padding(.top, 2)
                 .padding(.bottom, 5)
         }
+        // The photographic workbench stays light in both system appearances.
+        .foregroundStyle(Color.dsPaperInk)
         .task { await prepareIfNeeded() }
         .onDisappear {
             listeningPlayer.stop()
