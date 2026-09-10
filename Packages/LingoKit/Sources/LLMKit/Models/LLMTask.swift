@@ -6,6 +6,7 @@ public enum LLMTask: String, Sendable, Codable, CaseIterable {
     case dictionaryExplain = "dictionary_explain"
     case grammarExplain = "grammar_explain"
     case memorySummary = "memory_summary"
+    case proactiveMessage = "proactive_message"
     case quiz
     case speechFeedback = "speech_feedback"
     case translation

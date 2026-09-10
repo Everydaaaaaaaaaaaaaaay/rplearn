@@ -35,8 +35,19 @@ public struct UsageAccessView: View {
                                     .font(.footnote).foregroundStyle(.secondary)
                             }
                             Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
-                            Text("聊天、生成新角色、语法与单词讲解，以及自动记忆、纠错等模型调用，共用积分。按实际输入、缓存输入和输出消耗结算，未使用的预留会返还。设备上的语音识别、朗读和本地查词不扣模型积分。")
+                            Text("只有你明确发起的云端操作会使用积分：发送消息、生成新角色，以及点击翻译、语法或单词讲解。按实际输入、缓存输入和输出结算，未使用的临时预留会立即返还。")
                                 .font(.footnote).foregroundStyle(.secondary)
+                            Text("自动关系理解、咕咕或嘎嘎建议、旅伴记忆、主动问候、自动小测和语音反馈由产品承担，不会出现在你的消耗记录中。设备上的语音识别、朗读和本地查词同样不扣积分。")
+                                .font(.footnote).foregroundStyle(.secondary)
+                        }
+                        if credits.limit == 100 {
+                            Section("每日 100 积分怎么理解") {
+                                LabeledContent("若平均每次 2 积分", value: "约 50 次")
+                                LabeledContent("若平均每次 5 积分", value: "约 20 次")
+                                LabeledContent("若平均每次 8 积分", value: "约 12 次")
+                                Text("这不是固定次数包。短文本、缓存命中多时消耗较少；上下文较长、生成内容较多时消耗较高。下方“最近消耗”会显示每次操作的真实结算值。")
+                                    .font(.footnote).foregroundStyle(.secondary)
+                            }
                         }
                         if !credits.recent.isEmpty {
                             Section("最近消耗") {

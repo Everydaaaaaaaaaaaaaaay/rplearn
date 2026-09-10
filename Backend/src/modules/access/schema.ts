@@ -72,6 +72,7 @@ export const creditOperations = applicationSchema.table(
     parentOperationId: uuid("parent_operation_id"),
     requestHash: text("request_hash").notNull(),
     task: text("task").notNull(),
+    billingScope: text("billing_scope").default("user").notNull(),
     plan: text("plan").notNull(),
     windowKey: text("window_key").notNull(),
     policyVersion: text("policy_version").notNull(),
@@ -103,6 +104,10 @@ export const creditOperations = applicationSchema.table(
       .where(sql`${table.parentOperationId} is not null`),
     check("credit_operations_reserved_units_check", sql`${table.reservedUnits} >= 0`),
     check("credit_operations_settled_units_check", sql`${table.settledUnits} >= 0`),
+    check(
+      "credit_operations_billing_scope_check",
+      sql`${table.billingScope} in ('user','service')`,
+    ),
     check(
       "credit_operations_status_check",
       sql`${table.status} in ('reserved','dispatched','pending','settled','released')`,

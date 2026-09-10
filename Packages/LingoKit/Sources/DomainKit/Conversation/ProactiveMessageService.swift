@@ -44,7 +44,7 @@ public struct ProactiveMessageService: Sendable {
                 ? ""
                 : "\nThe previous draft was invalid or repetitive. Rewrite it more briefly and with a different opening."
             let request = LLMRequest(
-                task: .conversation,
+                task: .proactiveMessage,
                 tier: .fast,
                 system: Self.prompt(
                     character: character,

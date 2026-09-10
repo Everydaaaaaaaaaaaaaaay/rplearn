@@ -86,7 +86,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await credits.finish(user, id, null);
       expect((await credits.snapshot(user)).used).toBe(b.used);
     });
-    it("caps automatic reviews and lets the next user message outrank their active hold", async () => {
+    it("keeps product automation out of user credits across several explicit operations", async () => {
       const user = await actor();
       const first = newEntityId();
       const conversation = {
@@ -117,19 +117,26 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       });
       await credits.dispatch(user, review);
 
-      // Even without another user request in flight, the helper pool itself is
-      // capped: the first large review cannot be followed by another helper.
+      const whileReviewRuns = await credits.snapshot(user);
+      expect(whileReviewRuns.used).toBeLessThan(8);
+      expect(whileReviewRuns.reserved).toBe(0);
+      expect(
+        whileReviewRuns.recent.every((entry) => entry.task !== "coach_review"),
+      ).toBe(true);
+
+      // Product automation has its own abuse/cost ceiling, independent of the
+      // user's 100 credits. Oversized automatic work degrades silently.
       await expect(
         credits.reserve(user, newEntityId(), "second-review", {
           ...req,
           task: "memory_summary",
-          messages: [{ role: "user", content: "short summary" }],
-          maxOutputTokens: 100,
+          messages: [{ role: "user", content: "x".repeat(20_000) }],
+          maxOutputTokens: 1_000,
         }),
       ).rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
 
-      // The combined conservative holds exceed the free daily allowance, but
-      // the still-running automatic review cannot reject the next user action.
+      // The review remains dispatched while explicit requests continue. Its
+      // hold is absent from the user ledger rather than merely deprioritized.
       const second = newEntityId();
       await expect(
         credits.reserve(user, second, second, conversation),
@@ -172,7 +179,58 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
 
       await credits.finish(user, third, usage, {}, "provider-third", req.model);
       await credits.finish(user, review, usage, {}, "provider-review", req.model);
-      expect((await credits.snapshot(user)).used).toBeLessThan(32);
+      const final = await credits.snapshot(user);
+      expect(final.used).toBeLessThan(24);
+      expect(
+        final.recent.every(
+          (entry) => entry.task !== "coach_review" && entry.task !== "memory_summary",
+        ),
+      ).toBe(true);
+    });
+    it("classifies every current automatic task as service-funded", async () => {
+      const user = await actor();
+      const automaticTasks = [
+        "coach_review",
+        "memory_summary",
+        "proactive_message",
+        "quiz",
+        "speech_feedback",
+      ];
+      const tinyUsage = {
+        inputTokens: 1,
+        cacheHitTokens: 0,
+        cacheMissTokens: 1,
+        outputTokens: 1,
+        totalTokens: 2,
+      };
+
+      for (const task of automaticTasks) {
+        const operation = newEntityId();
+        await credits.reserve(user, operation, operation, {
+          ...req,
+          task,
+          maxOutputTokens: 1,
+        });
+        await credits.dispatch(user, operation);
+        await credits.finish(user, operation, tinyUsage, {}, task, req.model);
+      }
+
+      const snapshot = await credits.snapshot(user);
+      expect(snapshot.used).toBe(0);
+      expect(snapshot.remaining).toBe(100);
+      expect(snapshot.recent).toEqual([]);
+      const scopes = await runtime.database.sql<
+        { task: string; billing_scope: string }[]
+      >`select task,billing_scope from app.credit_operations where user_id=${user} order by task`;
+      expect(scopes).toEqual(
+        [...automaticTasks]
+          .sort()
+          .map((task) => ({ task, billing_scope: "service" })),
+      );
+      const [route] = await runtime.database.sql<
+        { max_output_tokens: number }[]
+      >`select max_output_tokens from app.ai_routes where task='proactive_message'`;
+      expect(route?.max_output_tokens).toBe(128);
     });
     it("retains uncertain holds across resets, releases only undispatched work, and requires reconciliation evidence", async () => {
       const user = await actor(),

@@ -1,4 +1,5 @@
 import Foundation
+import LLMKit
 import Testing
 @testable import DomainKit
 import PersistenceKit
@@ -7,8 +8,10 @@ import PersistenceKit
 struct ProactiveMessageServiceTests {
     @Test("模型输出会整理为一条自然消息")
     func normalizesGeneratedMessage() async {
-        let llm = MockLLMProvider { _ in
-            "  \"Found an old photo today. What photos do you like?\"  \n"
+        let recorder = ProactiveRequestRecorder()
+        let llm = MockLLMProvider { request in
+            await recorder.record(request)
+            return "  \"Found an old photo today. What photos do you like?\"  \n"
         }
         let service = ProactiveMessageService(llm: llm)
 
@@ -19,6 +22,7 @@ struct ProactiveMessageServiceTests {
         )
 
         #expect(message == "Found an old photo today. What photos do you like?")
+        #expect(await recorder.tasks == [.proactiveMessage])
     }
 
     @Test("消息空白通过一次扫描统一归一化")
@@ -204,6 +208,14 @@ struct ProactiveMessageServiceTests {
             isFriend: true,
             metAt: .now
         )
+    }
+}
+
+private actor ProactiveRequestRecorder {
+    private(set) var tasks: [LLMTask] = []
+
+    func record(_ request: LLMRequest) {
+        tasks.append(request.task)
     }
 }
 

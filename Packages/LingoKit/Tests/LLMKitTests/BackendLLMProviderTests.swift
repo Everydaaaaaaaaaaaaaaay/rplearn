@@ -158,13 +158,13 @@ struct BackendLLMProviderTests {
             credentialStore: Credentials(),
             transport: QuotaTransport(
                 code: "AUXILIARY_BUDGET_EXHAUSTED",
-                message: "学习辅助额度已达上限，本次辅助任务已跳过。"
+                message: "产品学习辅助预算已达上限，本次后台任务已跳过。"
             )
         )
         let provider = BackendLLMProvider(backend: client)
 
         await #expect(
-            throws: LLMError.accessRestricted("学习辅助额度已达上限，本次辅助任务已跳过。")
+            throws: LLMError.accessRestricted("产品学习辅助预算已达上限，本次后台任务已跳过。")
         ) {
             try await provider.complete(
                 LLMRequest(
