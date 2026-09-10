@@ -60,8 +60,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         ids.map((id) => credits.reserve(user, id, id, req)),
       );
       const accepted = ids.filter((_, i) => results[i]?.status === "fulfilled");
-      expect(accepted.length).toBe(3);
-      expect((await credits.snapshot(user)).reserved).toBeLessThanOrEqual(100);
+      expect(accepted.length).toBe(8);
+      expect((await credits.snapshot(user)).reserved).toBe(0);
+      expect((await credits.snapshot(user)).remaining).toBe(100);
       const id = accepted[0];
       if (!id) throw new Error("No requests accepted");
       await credits.dispatch(user, id);
@@ -223,16 +224,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         { task: string; billing_scope: string }[]
       >`select task,billing_scope from app.credit_operations where user_id=${user} order by task`;
       expect(scopes).toEqual(
-        [...automaticTasks]
-          .sort()
-          .map((task) => ({ task, billing_scope: "service" })),
+        [...automaticTasks].sort().map((task) => ({ task, billing_scope: "service" })),
       );
       const [route] = await runtime.database.sql<
         { max_output_tokens: number }[]
       >`select max_output_tokens from app.ai_routes where task='proactive_message'`;
       expect(route?.max_output_tokens).toBe(128);
     });
-    it("retains uncertain holds across resets, releases only undispatched work, and requires reconciliation evidence", async () => {
+    it("keeps unknown costs auditable without freezing credits across resets", async () => {
       const user = await actor(),
         pending = newEntityId(),
         unused = newEntityId();
@@ -242,7 +241,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await runtime.database
         .sql`update app.credit_operations set expires_at=now()-interval '1 second',window_key='day:2000-01-01' where user_id=${user}`;
       const snapshot = await credits.snapshot(user);
-      expect(snapshot.pending).toBeGreaterThan(0);
+      expect(snapshot.pending).toBe(0);
+      expect(snapshot.remaining).toBe(100);
       expect(snapshot.reserved).toBe(0);
       await expect(credits.reserve(user, pending, pending, req)).rejects.toMatchObject({
         code: "OPERATION_FINALIZED",
@@ -259,6 +259,70 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         credits.reconcile(user, pending, 0n, "cannot charge twice"),
       ).rejects.toThrow();
     });
+    it("allows the last credit to finish a full operation, charges actual cost and stops the next", async () => {
+      const user = await actor();
+      const previous = newEntityId();
+      await credits.reserve(user, previous, previous, req);
+      await runtime.database
+        .sql`update app.credit_operations set status='settled',settled_units=99000000 where user_id=${user} and operation_id=${previous}`;
+      expect((await credits.snapshot(user)).remaining).toBe(1);
+      const last = newEntityId();
+      await credits.reserve(user, last, last, req);
+      expect((await credits.snapshot(user)).remaining).toBe(1);
+      await credits.dispatch(user, last);
+      await credits.finish(
+        user,
+        last,
+        usage,
+        { content: "Complete reply" },
+        "last-credit",
+        req.model,
+      );
+      const after = await credits.snapshot(user);
+      expect(after.used).toBeGreaterThan(100);
+      expect(after.remaining).toBe(0);
+      expect(after.pending).toBe(0);
+      expect(after.reserved).toBe(0);
+      await expect(
+        credits.reserve(user, newEntityId(), "next", req),
+      ).rejects.toMatchObject({ code: "CREDITS_EXHAUSTED" });
+      // A paid result can still be replayed with an exhausted balance.
+      expect((await credits.reserve(user, last, last, req)).replay).toBe(true);
+      // Yesterday's completed overrun cannot freeze today's refreshed allowance.
+      await runtime.database
+        .sql`update app.credit_operations set window_key='day:2000-01-01' where user_id=${user}`;
+      expect((await credits.snapshot(user)).remaining).toBe(100);
+    });
+
+    it("restores the screenshot's frozen balance without deleting unresolved accounting records", async () => {
+      const user = await actor();
+      const paid = newEntityId();
+      await credits.reserve(user, paid, paid, req);
+      await runtime.database
+        .sql`update app.credit_operations set status='settled',settled_units=10249344 where user_id=${user} and operation_id=${paid}`;
+      for (const estimate of [42804000, 15318000, 14478000, 14169000]) {
+        const id = newEntityId();
+        await credits.reserve(user, id, id, req);
+        await credits.dispatch(user, id);
+        await credits.finish(user, id, null);
+        await runtime.database
+          .sql`update app.credit_operations set reserved_units=${estimate} where user_id=${user} and operation_id=${id}`;
+      }
+      const snapshot = await credits.snapshot(user);
+      expect(snapshot.remaining).toBe(89.750656);
+      expect(snapshot.used).toBe(10.249344);
+      expect(snapshot.reserved).toBe(0);
+      expect(snapshot.pending).toBe(0);
+      expect(snapshot.recent.filter((item) => item.status === "pending")).toHaveLength(
+        4,
+      );
+      expect(snapshot.recent.every((item) => item.heldCredits === 0)).toBe(true);
+      const next = newEntityId();
+      await expect(
+        credits.reserve(user, next, next, { ...req, maxOutputTokens: 16000 }),
+      ).resolves.toMatchObject({ replay: false });
+    });
+
     it("preserves guest lifetime spending and increases daily budget on upgrade without resetting spending", async () => {
       const user = await actor(true),
         id = newEntityId();
@@ -313,12 +377,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const user = await actor();
       let calls = 0;
       let mode = "complete";
+      let upstreamSignal: AbortSignal | undefined;
       const config = loadConfig({
         ...process.env,
         NODE_ENV: "test",
         DEEPSEEK_API_KEY: "test",
       });
-      const client = createDeepSeekClient(config, async () => {
+      const client = createDeepSeekClient(config, async (_url, init) => {
+        upstreamSignal = init?.signal ?? undefined;
         await Promise.resolve();
         calls++;
         if (mode === "error") throw new Error("connection lost");
@@ -338,7 +404,15 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
                 choices: [{ delta: { content: "hello" } }],
               }) +
               "\n\ndata: " +
-              JSON.stringify({ choices: [], usage: raw }) +
+              JSON.stringify({
+                choices: [],
+                usage: {
+                  prompt_tokens: raw.prompt_tokens,
+                  prompt_tokens_details: { cached_tokens: raw.prompt_cache_hit_tokens },
+                  completion_tokens: raw.completion_tokens,
+                  total_tokens: raw.total_tokens,
+                },
+              }) +
               "\n\ndata: [DONE]\n\n",
           );
         return Response.json({
@@ -367,16 +441,26 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(calls).toBe(1);
       const before = (await credits.snapshot(user)).used;
       mode = "stream";
-      const stream = await ai.stream(user, { ...input, operationId: newEntityId() });
+      const cancellation = new AbortController();
+      const stream = await ai.stream(user, {
+        ...input,
+        operationId: newEntityId(),
+        signal: cancellation.signal,
+      });
       for await (const event of stream.events) {
+        if (event.type === "delta") cancellation.abort();
         expect(event.type).toBeDefined();
       }
-      expect((await credits.snapshot(user)).used).toBe(before * 2);
+      expect(upstreamSignal?.aborted).toBe(false);
+      const settled = await credits.snapshot(user);
+      expect(settled.used).toBe(before * 2);
+      expect(settled.pending).toBe(0);
+      expect(settled.reserved).toBe(0);
       mode = "error";
       const id = newEntityId();
       await expect(ai.complete(user, { ...input, operationId: id })).rejects.toThrow();
       expect(calls).toBe(3);
-      expect((await credits.snapshot(user)).pending).toBeGreaterThan(0);
+      expect((await credits.snapshot(user)).pending).toBe(0);
       await expect(
         ai.complete(user, { ...input, operationId: id }),
       ).rejects.toMatchObject({ code: "OPERATION_FINALIZED" });
@@ -441,7 +525,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const first = await ai.stream(user, input);
       for await (const event of first.events) expect(event.type).toBeDefined();
       const pending = (await credits.snapshot(user)).pending;
-      expect(pending).toBeGreaterThan(0);
+      expect(pending).toBe(0);
+      expect((await credits.snapshot(user)).remaining).toBe(100);
       const replay = await ai.stream(user, input);
       for await (const event of replay.events) expect(event.type).not.toBe("usage");
       expect(calls).toBe(1);
@@ -453,7 +538,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           for await (const event of truncated.events) expect(event.type).toBeDefined();
         })(),
       ).rejects.toMatchObject({ code: "AI_UPSTREAM_PROTOCOL_ERROR" });
-      expect((await credits.snapshot(user)).pending).toBeGreaterThan(pending);
+      expect((await credits.snapshot(user)).pending).toBe(0);
+      expect((await credits.snapshot(user)).remaining).toBe(100);
+      const [unknown] = await runtime.database.sql<{ count: number }[]>`
+        select count(*)::int as count from app.credit_operations where user_id=${user} and status='pending'`;
+      expect(unknown?.count).toBe(2);
       mode = "metered";
       const metered = await ai.stream(user, { ...input, operationId: newEntityId() });
       for await (const event of metered.events) {

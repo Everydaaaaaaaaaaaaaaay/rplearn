@@ -12,6 +12,11 @@ import type {
 const usageSchema = z.object({
   prompt_cache_hit_tokens: z.number().int().nonnegative().optional(),
   prompt_cache_miss_tokens: z.number().int().nonnegative().optional(),
+  prompt_tokens_details: z
+    .object({
+      cached_tokens: z.number().int().nonnegative().optional(),
+    })
+    .nullish(),
   completion_tokens: z.number().int().nonnegative(),
   prompt_tokens: z.number().int().nonnegative(),
   total_tokens: z.number().int().nonnegative(),
@@ -58,13 +63,18 @@ const modelListSchema = z.object({
 });
 
 function mapUsage(usage: z.infer<typeof usageSchema>): AiUsage {
+  const hit =
+    usage.prompt_cache_hit_tokens ?? usage.prompt_tokens_details?.cached_tokens;
+  const miss = usage.prompt_cache_miss_tokens;
+  // Both API cache representations carry measured values. Derive only the
+  // complementary count; never assume uncached input when neither is supplied.
+  const cacheHitTokens =
+    hit ?? (miss === undefined ? undefined : usage.prompt_tokens - miss);
+  const cacheMissTokens =
+    miss ?? (hit === undefined ? undefined : usage.prompt_tokens - hit);
   return {
-    ...(usage.prompt_cache_hit_tokens === undefined
-      ? {}
-      : { cacheHitTokens: usage.prompt_cache_hit_tokens }),
-    ...(usage.prompt_cache_miss_tokens === undefined
-      ? {}
-      : { cacheMissTokens: usage.prompt_cache_miss_tokens }),
+    ...(cacheHitTokens === undefined ? {} : { cacheHitTokens }),
+    ...(cacheMissTokens === undefined ? {} : { cacheMissTokens }),
     inputTokens: usage.prompt_tokens,
     outputTokens: usage.completion_tokens,
     totalTokens: usage.total_tokens,
@@ -195,10 +205,20 @@ export function createDeepSeekClient(
     let lastError: unknown;
     const maxAttempts = request.maxAttempts ?? config.aiRetryMaxAttempts;
     for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+      // Cancel before dispatch, but once a streamed request is sent, drain its
+      // bounded response through terminal usage even if the app disconnects.
+      // Otherwise a successful generation can permanently strand its credit hold.
+      if (request.signal?.aborted) {
+        throw new AppError({
+          code: "AI_REQUEST_CANCELLED",
+          message: "The AI request was cancelled.",
+          statusCode: 499,
+        });
+      }
       await request.onAttempt?.();
       const timeoutSignal = AbortSignal.timeout(request.route.timeoutMs);
       const signal =
-        request.signal === undefined
+        stream || request.signal === undefined
           ? timeoutSignal
           : AbortSignal.any([request.signal, timeoutSignal]);
       try {
@@ -222,7 +242,7 @@ export function createDeepSeekClient(
           throw lastError;
         }
       } catch (error) {
-        if (request.signal?.aborted === true) {
+        if (!stream && request.signal?.aborted === true) {
           throw new AppError({
             code: "AI_REQUEST_CANCELLED",
             message: "The AI request was cancelled.",

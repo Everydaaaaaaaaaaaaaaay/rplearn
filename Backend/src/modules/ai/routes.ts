@@ -1,4 +1,3 @@
-import { once } from "node:events";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
@@ -6,6 +5,7 @@ import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { AiService } from "./service.js";
 import type { AiProviderStreamEvent } from "./types.js";
+import { writeSseEvent } from "./sse-writer.js";
 
 const aiRequestSchema = z.object({
   operationId: z.uuid().optional(),
@@ -174,13 +174,10 @@ export function registerAiRoutes(
       reply.raw.setHeader("x-ai-request-id", stream.requestId);
       reply.raw.flushHeaders();
 
+      let clientWritable = !reply.raw.destroyed;
       const write = async (event: string, data: unknown): Promise<void> => {
-        const writable = reply.raw.write(
-          `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`,
-        );
-        if (!writable) {
-          await once(reply.raw, "drain");
-        }
+        if (!clientWritable) return;
+        clientWritable = await writeSseEvent(reply.raw, event, data);
       };
 
       try {

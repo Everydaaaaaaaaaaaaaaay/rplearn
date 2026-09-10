@@ -27,7 +27,8 @@ async function main(): Promise<void> {
         sum(settled_units)::text as settled_nanoyuan,sum(reserved_units) filter(where status in ('pending','dispatched','reserved'))::text as held_nanoyuan
         from app.credit_operations group by plan,billing_scope,task,price->>'provider',price->>'model',price->>'version',status order by plan,billing_scope,task,status`;
       const pending =
-        await database.sql`select user_id::text,operation_id::text,billing_scope,task,provider_request_id,price,reserved_units::text,reason,created_at
+        await database.sql`select user_id::text,operation_id::text,billing_scope,task,provider_request_id,price,reserved_units::text,reason,usage,result->>'model' as reported_model,
+        result is not null as has_replay_result,expires_at,created_at
         from app.credit_operations where status='pending' or (status='dispatched' and expires_at<=now()) order by created_at limit 1000`;
       process.stdout.write(
         JSON.stringify(

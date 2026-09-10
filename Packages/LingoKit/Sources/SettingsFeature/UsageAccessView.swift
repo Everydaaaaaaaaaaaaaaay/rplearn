@@ -28,14 +28,10 @@ public struct UsageAccessView: View {
                         Section("模型积分") {
                             LabeledContent("可用积分", value: "\(points(credits.remaining)) / \(points(credits.limit))")
                             LabeledContent("已消耗", value: points(credits.used))
-                            if credits.reserved > 0 { LabeledContent("请求预留", value: points(credits.reserved)) }
-                            if credits.pending > 0 {
-                                LabeledContent("待核对预留", value: points(credits.pending))
-                                Text("部分调用尚未取得完整用量，暂时保留预留积分；核对后按实际费用结算。")
-                                    .font(.footnote).foregroundStyle(.secondary)
-                            }
                             Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
-                            Text("只有你明确发起的云端操作会使用积分：发送消息、生成新角色，以及点击翻译、语法或单词讲解。按实际输入、缓存输入和输出结算，未使用的临时预留会立即返还。")
+                            Text("只有你明确发起的云端操作会使用积分：发送消息、生成新角色，以及点击翻译、语法或单词讲解。操作完成后按实际输入、缓存输入和输出扣除积分，不预留、不冻结。")
+                                .font(.footnote).foregroundStyle(.secondary)
+                            Text("开始时只要还有积分，就能完成本次操作；实际消耗可能超过剩余积分，用完后暂停新的操作。用量核对中的请求不占用额度。")
                                 .font(.footnote).foregroundStyle(.secondary)
                             Text("自动关系理解、咕咕或嘎嘎建议、旅伴记忆、主动问候、自动小测和语音反馈由产品承担，不会出现在你的消耗记录中。设备上的语音识别、朗读和本地查词同样不扣积分。")
                                 .font(.footnote).foregroundStyle(.secondary)
@@ -52,7 +48,7 @@ public struct UsageAccessView: View {
                         if !credits.recent.isEmpty {
                             Section("最近消耗") {
                                 ForEach(credits.recent) { entry in
-                                    LabeledContent(taskName(entry.task), value: entry.credits.map { "\(points($0)) 积分" } ?? (entry.status == "released" ? "未发出 · 已释放" : "预留 \(points(entry.heldCredits)) · \(entry.status == "pending" ? "待核对" : "处理中")"))
+                                    LabeledContent(taskName(entry.task), value: entry.credits.map { "\(points($0)) 积分" } ?? (entry.status == "released" ? "未发出 · 未扣费" : entry.status == "pending" ? "用量核对中 · 不占额度" : "处理中 · 未扣费"))
                                 }
                             }
                         }

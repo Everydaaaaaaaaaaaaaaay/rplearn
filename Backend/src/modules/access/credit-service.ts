@@ -114,12 +114,16 @@ async function balance(
     reserved = BigInt(row?.reserved ?? 0),
     pending = BigInt(row?.pending ?? 0),
     overrun = BigInt(row?.overrun ?? 0);
-  const remaining = limit - used - reserved - pending - overrun;
+  // User admission is based solely on settled usage. Estimates and unresolved
+  // provider bills remain auditable but never freeze a user's daily allowance.
+  // Keep the product automation pool's separate operational cost ceiling.
+  const remaining =
+    limit - used - (billingScope === "service" ? reserved + pending + overrun : 0n);
   return {
     limit,
     used,
-    reserved,
-    pending: pending + overrun,
+    reserved: billingScope === "user" ? 0n : reserved,
+    pending: billingScope === "user" ? 0n : pending + overrun,
     remaining: positive(remaining),
   };
 }
@@ -173,7 +177,7 @@ export function createCreditService(
           remaining: displayCredits(b.remaining),
           resetsAt: ctx.reset,
           window: ctx.actor.isGuest ? "lifetime" : "day",
-          policyVersion: ctx.policy.version,
+          policyVersion: `${ctx.policy.version}:actual-usage-v1`,
           provisional: true,
           recent: rows.map((r) => ({
             operationId: r.operation_id,
@@ -181,7 +185,7 @@ export function createCreditService(
             status: r.status,
             credits:
               r.settled_units === null ? null : displayCredits(BigInt(r.settled_units)),
-            heldCredits: displayCredits(BigInt(r.reserved_units)),
+            heldCredits: 0,
             createdAt: new Date(r.created_at).toISOString(),
           })),
         };
@@ -290,7 +294,11 @@ export function createCreditService(
         const limit =
           billingScope === "user" ? ctx.limit : serviceLimitFor(ctx.actor.plan);
         const available = await balance(sql, userId, ctx.window, limit, billingScope);
-        if (amount > available.remaining)
+        if (
+          billingScope === "user"
+            ? available.remaining <= 0n
+            : amount > available.remaining
+        )
           throw new AppError({
             code:
               billingScope === "user"
@@ -301,19 +309,21 @@ export function createCreditService(
               billingScope === "service"
                 ? "产品学习辅助预算已达上限，本次后台任务已跳过。"
                 : ctx.actor.isGuest
-                  ? "游客积分不足，登录后可获得每日积分。"
-                  : "可用积分不足以预留本次请求，请等待恢复或升级订阅。",
+                  ? "游客积分已用完，登录后可获得每日积分。"
+                  : "本期积分已用完，请等待恢复或升级订阅。",
             details: {
               task: request.task,
               billingScope,
               remaining: displayCredits(available.remaining),
-              required: displayCredits(amount),
+              ...(billingScope === "service"
+                ? { required: displayCredits(amount) }
+                : {}),
               resetsAt: ctx.reset,
               isGuest: ctx.actor.isGuest,
             },
           });
         await sql`insert into app.credit_operations(user_id,operation_id,parent_operation_id,request_hash,task,billing_scope,plan,window_key,policy_version,reserved_units,status,price,expires_at)
-        values(${userId},${operationId},${request.parentOperationId ?? null},${hash},${request.task},${billingScope},${ctx.actor.plan},${ctx.window},${ctx.policy.version},${String(amount)},'reserved',${JSON.stringify(price)}::jsonb,now()+interval '5 minutes')`;
+        values(${userId},${operationId},${request.parentOperationId ?? null},${hash},${request.task},${billingScope},${ctx.actor.plan},${ctx.window},${`${ctx.policy.version}:actual-usage-v1`},${String(amount)},'reserved',${JSON.stringify(price)}::jsonb,now()+interval '5 minutes')`;
         return { replay: false, result: null };
       });
     },
@@ -361,7 +371,7 @@ export function createCreditService(
               : "pending";
         await sql`update app.credit_operations set status=${status},settled_units=${cost === null ? null : String(cost)},
         usage=${JSON.stringify(usage)}::jsonb,result=${JSON.stringify(result)}::jsonb,provider_request_id=${providerRequestId},
-        reason=${reason ?? (cost === null ? "usage_or_model_unverified" : null)},completed_at=now()
+        reason=${reason ?? (cost !== null ? null : usage === null ? "usage_missing" : model !== row.price.model && row.price.provider !== "openrouter" ? "model_mismatch" : "usage_invalid")},completed_at=now()
         where user_id=${userId} and operation_id=${operationId}`;
       }),
     // Operator-only service, deliberately absent from public HTTP routes. Evidence is required;

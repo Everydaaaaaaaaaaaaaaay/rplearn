@@ -173,6 +173,86 @@ describe("DeepSeek client", () => {
     ]);
   });
 
+  it("collects terminal usage after a downstream cancellation", async () => {
+    const cancellation = new AbortController();
+    let upstreamSignal: AbortSignal | undefined;
+    const client = createDeepSeekClient(config(), async (_url, init) => {
+      await Promise.resolve();
+      upstreamSignal = init?.signal ?? undefined;
+      return new Response(
+        [
+          'data: {"id":"drained","model":"deepseek-v4-flash","choices":[{"delta":{"content":"Hi"}}]}',
+          "",
+          'data: {"choices":[],"usage":{"prompt_tokens":10,"completion_tokens":2,"total_tokens":12,"prompt_tokens_details":{"cached_tokens":6}}}',
+          "",
+          "data: [DONE]",
+          "",
+          "",
+        ].join("\n"),
+      );
+    });
+    const events = [];
+    for await (const event of await client.stream({
+      ...request(),
+      signal: cancellation.signal,
+    })) {
+      if (event.type === "delta") cancellation.abort();
+      events.push(event);
+    }
+    expect(upstreamSignal?.aborted).toBe(false);
+    expect(events).toContainEqual({
+      type: "usage",
+      usage: {
+        inputTokens: 10,
+        outputTokens: 2,
+        totalTokens: 12,
+        cacheHitTokens: 6,
+        cacheMissTokens: 4,
+      },
+    });
+    expect(events.at(-1)).toEqual({ type: "done" });
+  });
+
+  it("never dispatches an already cancelled stream", async () => {
+    const fetchMock = vi.fn<typeof fetch>();
+    const onAttempt = vi.fn();
+    const client = createDeepSeekClient(config(), fetchMock);
+    await expect(
+      client.stream({ ...request(), onAttempt, signal: AbortSignal.abort() }),
+    ).rejects.toMatchObject({ code: "AI_REQUEST_CANCELLED" });
+    expect(onAttempt).not.toHaveBeenCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    [{ prompt_cache_hit_tokens: 6 }, 6, 4],
+    [{ prompt_cache_miss_tokens: 4 }, 6, 4],
+    [{ prompt_tokens_details: { cached_tokens: 0 } }, 0, 10],
+  ])(
+    "derives only the measured cache count's complement (%j)",
+    async (cache, hit, miss) => {
+      const client = createDeepSeekClient(config(), () =>
+        Promise.resolve(
+          Response.json({
+            id: "cache",
+            model: route.model,
+            choices: [{ message: { content: "hello" } }],
+            usage: {
+              prompt_tokens: 10,
+              completion_tokens: 2,
+              total_tokens: 12,
+              ...cache,
+            },
+          }),
+        ),
+      );
+      expect((await client.complete(request())).usage).toMatchObject({
+        cacheHitTokens: hit,
+        cacheMissTokens: miss,
+      });
+    },
+  );
+
   it("does not operate without a runtime secret", async () => {
     const client = createDeepSeekClient(
       loadConfig({ NODE_ENV: "test" }),

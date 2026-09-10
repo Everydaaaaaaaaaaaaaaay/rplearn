@@ -197,10 +197,20 @@ export function createOpenRouterClient(
     let lastError: unknown;
     const maxAttempts = request.maxAttempts ?? config.aiRetryMaxAttempts;
     for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+      // Cancel before dispatch, but once a streamed request is sent, drain its
+      // bounded response through terminal usage even if the app disconnects.
+      // Otherwise a successful generation can permanently strand its credit hold.
+      if (request.signal?.aborted) {
+        throw new AppError({
+          code: "AI_REQUEST_CANCELLED",
+          message: "The AI request was cancelled.",
+          statusCode: 499,
+        });
+      }
       await request.onAttempt?.();
       const timeoutSignal = AbortSignal.timeout(request.route.timeoutMs);
       const signal =
-        request.signal === undefined
+        stream || request.signal === undefined
           ? timeoutSignal
           : AbortSignal.any([request.signal, timeoutSignal]);
       try {
@@ -219,7 +229,7 @@ export function createOpenRouterClient(
           throw lastError;
         }
       } catch (error) {
-        if (request.signal?.aborted === true) {
+        if (!stream && request.signal?.aborted === true) {
           throw new AppError({
             code: "AI_REQUEST_CANCELLED",
             message: "The AI request was cancelled.",
