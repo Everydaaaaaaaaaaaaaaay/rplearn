@@ -21,10 +21,12 @@ enum DSAvatarAssets {
 
     static func presentation(named name: String?) -> (alignment: Alignment, scale: CGFloat, yOffset: CGFloat) {
         switch name {
-        case "avatar_ruby", "avatar_marcus":
-            // These reviewed source portraits are tall character poses. A top-biased,
-            // modestly enlarged crop turns them into legible head-and-shoulder badges.
-            return (.top, 1.48, 6)
+        case "avatar_ruby":
+            // Ruby 的源图是全身站姿；放大到头肩构图，避免圆形头像上半部出现大块留白。
+            return (.top, 1.95, -2)
+        case "avatar_marcus":
+            // Marcus 的人物在源画布中更窄，需比 Ruby 再放大一些才能与 Oliver 视觉等重。
+            return (.top, 2.25, -3)
         default:
             return (.center, 1, 0)
         }

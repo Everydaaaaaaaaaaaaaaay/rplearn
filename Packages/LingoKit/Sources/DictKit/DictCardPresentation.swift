@@ -7,6 +7,7 @@ import SwiftUI
 public enum DictTarget: Hashable, Sendable {
     case word(String)
     case grammarPoint(String)
+    case grammarTerm(String)
 }
 
 /// 词典卡与收藏仓库之间的轻量接口，避免 DictKit 直接依赖具体持久化实现。

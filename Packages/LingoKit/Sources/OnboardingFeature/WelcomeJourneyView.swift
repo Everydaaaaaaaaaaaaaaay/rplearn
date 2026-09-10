@@ -716,19 +716,24 @@ private struct WelcomeMiniTabBar: View {
     ]
 
     var body: some View {
-        HStack {
-            ForEach(Array(tabs.enumerated()), id: \.offset) { index, tab in
-                VStack(spacing: 2) {
-                    Image(systemName: tab.1)
-                    Text(tab.0)
-                        .font(.system(size: 7, weight: .bold))
+        GeometryReader { proxy in
+            HStack(spacing: 0) {
+                ForEach(Array(tabs.enumerated()), id: \.offset) { index, tab in
+                    VStack(spacing: 2) {
+                        Image(systemName: tab.1)
+                        Text(tab.0)
+                            .font(.system(size: 7, weight: .bold))
+                    }
+                    .foregroundStyle(index == selected ? Color.dsSkyDeep : .secondary)
+                    .frame(width: proxy.size.width / CGFloat(tabs.count), height: proxy.size.height)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityIdentifier("welcome.preview.tab.\(index)")
                 }
-                .foregroundStyle(index == selected ? Color.dsSkyDeep : .secondary)
-                .frame(maxWidth: .infinity)
             }
+            .frame(width: proxy.size.width, height: proxy.size.height, alignment: .leading)
         }
+        .frame(height: 39)
         .font(.system(size: 12, weight: .semibold))
-        .padding(.vertical, 7)
         .background(.ultraThinMaterial)
         .overlay(alignment: .top) { Divider() }
     }

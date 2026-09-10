@@ -64,10 +64,12 @@ final class OnboardingWelcomeTests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 8))
+        assertAllCityPreviewTabsVisible()
         app.swipeLeft()
         XCTAssertTrue(app.staticTexts["会记住你的 AI 旅伴"].waitForExistence(timeout: 3))
         app.swipeRight()
         XCTAssertTrue(app.staticTexts["真实城市剧情"].waitForExistence(timeout: 3))
+        assertAllCityPreviewTabsVisible()
     }
 
     func testAccessibilityTextKeepsWelcomeNavigationReachable() {
@@ -95,10 +97,13 @@ final class OnboardingWelcomeTests: XCTestCase {
         let scroll = app.scrollViews.firstMatch
         XCTAssertTrue(scroll.exists)
         assertCenteredPortrait(regionID: "london", expectedLabel: "Oliver Bennett")
+        captureScreen(named: "starter-oliver")
         scroll.swipeLeft()
         assertCenteredPortrait(regionID: "melbourne", expectedLabel: "Ruby Walker")
+        captureScreen(named: "starter-ruby")
         scroll.swipeLeft()
         assertCenteredPortrait(regionID: "newyork", expectedLabel: "Marcus Rivera")
+        captureScreen(named: "starter-marcus")
     }
 
     func testStarterSelectionButtonCompletesTheFlow() {
@@ -156,6 +161,25 @@ final class OnboardingWelcomeTests: XCTestCase {
             .completed,
             "\(expectedLabel) 的人物卡应吸附在屏幕正中"
         )
+    }
+
+    private func assertAllCityPreviewTabsVisible() {
+        let tabs = (0..<3).map {
+            app.descendants(matching: .any)["welcome.preview.tab.\($0)"]
+        }
+        for tab in tabs {
+            XCTAssertTrue(tab.waitForExistence(timeout: 2))
+            XCTAssertTrue(app.windows.firstMatch.frame.intersects(tab.frame))
+        }
+        XCTAssertLessThan(tabs[0].frame.midX, tabs[1].frame.midX)
+        XCTAssertLessThan(tabs[1].frame.midX, tabs[2].frame.midX)
+    }
+
+    private func captureScreen(named name: String) {
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
     }
 
     private func waitForAny(_ elements: [XCUIElement], timeout: TimeInterval) -> Bool {

@@ -32,17 +32,20 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
     }
 
     private let kind: Kind
+    private let coachPersona: DSCoachPersona
     private let maxWidth: CGFloat?
     private let trailing: Trailing
     private let content: Content
 
     public init(
         kind: Kind,
+        coachPersona: DSCoachPersona = .gugu,
         maxWidth: CGFloat? = 320,
         @ViewBuilder trailing: () -> Trailing,
         @ViewBuilder content: () -> Content
     ) {
         self.kind = kind
+        self.coachPersona = coachPersona
         self.maxWidth = maxWidth
         self.trailing = trailing()
         self.content = content()
@@ -51,9 +54,7 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: DSSpacing.sm) {
             HStack(spacing: DSSpacing.xs) {
-                Label(kind.title, systemImage: kind.icon)
-                    .font(.system(.caption, design: .rounded, weight: .bold))
-                    .foregroundStyle(kind.tint)
+                calloutHeading
                 Spacer(minLength: DSSpacing.xs)
                 trailing
             }
@@ -77,14 +78,40 @@ public struct CalloutCard<Content: View, Trailing: View>: View {
         }
         .shadow(color: .black.opacity(0.035), radius: 6, y: 2)
     }
+
+    @ViewBuilder
+    private var calloutHeading: some View {
+        switch kind {
+        case .coach:
+            HStack(spacing: 6) {
+                BrandMascotView(pose: coachPersona.pose, size: 26, showsShadow: false)
+                Text(coachPersona.title)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(coachPersona.title)
+            .font(.system(.caption, design: .rounded, weight: .bold))
+            .foregroundStyle(kind.tint)
+        case .speech, .quiz:
+            Label(kind.title, systemImage: kind.icon)
+                .font(.system(.caption, design: .rounded, weight: .bold))
+                .foregroundStyle(kind.tint)
+        }
+    }
 }
 
 public extension CalloutCard where Trailing == EmptyView {
     init(
         kind: Kind,
+        coachPersona: DSCoachPersona = .gugu,
         maxWidth: CGFloat? = 320,
         @ViewBuilder content: () -> Content
     ) {
-        self.init(kind: kind, maxWidth: maxWidth, trailing: { EmptyView() }, content: content)
+        self.init(
+            kind: kind,
+            coachPersona: coachPersona,
+            maxWidth: maxWidth,
+            trailing: { EmptyView() },
+            content: content
+        )
     }
 }

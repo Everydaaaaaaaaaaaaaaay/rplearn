@@ -13,6 +13,7 @@ import Translation
 public struct ChatView: View {
     @State var viewModel: ChatViewModel
     @State var wordSelection: TokenSelection?
+    @State var grammarTermSelection: GrammarTermSelection?
     @State var grammarAnalysis: GrammarAnalysisRequest?
     @State var grammarAICache: [UUID: AIGrammarAnalysis] = [:]
     @State var expandedCoachMessageIDs: Set<UUID> = []
@@ -134,6 +135,12 @@ public struct ChatView: View {
             },
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback,
+            exampleTranslationActions: deps.exampleTranslationActions
+        )
+        .grammarTermLookupOverlay(
+            selection: $grammarTermSelection,
+            dictionary: deps.dictionary,
+            grammar: deps.grammarPoints,
             exampleTranslationActions: deps.exampleTranslationActions
         )
         .sheet(item: $grammarAnalysis) { request in

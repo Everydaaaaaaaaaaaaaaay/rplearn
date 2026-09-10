@@ -35,6 +35,19 @@ struct AvatarBadgeTests {
         }
     }
 
+    @Test("全身源图使用分别校准的头肩裁切，不再共享小头像参数")
+    func starterPortraitCropsFillAvatar() {
+        let ruby = DSAvatarAssets.presentation(named: "avatar_ruby")
+        let marcus = DSAvatarAssets.presentation(named: "avatar_marcus")
+
+        #expect(ruby.alignment == .top)
+        #expect(marcus.alignment == .top)
+        #expect(ruby.scale >= 1.9)
+        #expect(marcus.scale > ruby.scale)
+        #expect(ruby.yOffset <= 0)
+        #expect(marcus.yOffset <= 0)
+    }
+
     @Test("同一远程头像的并发请求只下载和解码一次")
     func coalescesConcurrentRemoteLoads() async throws {
         let data = try #require(solidImage(.systemPink).pngData())

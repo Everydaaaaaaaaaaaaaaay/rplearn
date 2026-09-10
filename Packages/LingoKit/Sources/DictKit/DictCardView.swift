@@ -145,6 +145,15 @@ public struct DictCardView: View {
                     .lineLimit(1)
                 Spacer(minLength: 4)
                 dismissButton
+            case .grammarTerm(let term):
+                Text(term)
+                    .font(.headline)
+                    .lineLimit(1)
+                Text("语法术语")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Color.dsCoach)
+                Spacer(minLength: 4)
+                dismissButton
             case nil:
                 EmptyView()
             }
@@ -216,6 +225,13 @@ public struct DictCardView: View {
                 grammarContent(point)
             } else {
                 Text("未找到该语法点")
+                    .foregroundStyle(.secondary)
+            }
+        case .grammarTerm(let term):
+            if let entry = GrammarTermCatalog.entry(for: term) {
+                grammarTermContent(entry)
+            } else {
+                Text("未找到该语法术语")
                     .foregroundStyle(.secondary)
             }
         case nil:
@@ -666,6 +682,78 @@ public struct DictCardView: View {
                 }
             }
         }
+    }
+
+    private func grammarTermContent(_ entry: GrammarTermEntry) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            grammarTermSection(title: "定义", text: entry.definition)
+            Divider()
+            grammarTermSection(title: "用法", text: entry.usage)
+            if !entry.commonForms.isEmpty {
+                Divider()
+                VStack(alignment: .leading, spacing: 6) {
+                    compactSectionTitle("常见形式")
+                    FlowLayout(spacing: 6, lineSpacing: 5) {
+                        ForEach(entry.commonForms, id: \.self) { form in
+                            Text(form)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(Color.dsSkyDeep)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 4)
+                                .background(
+                                    Color.dsSky.opacity(0.1),
+                                    in: RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                )
+                        }
+                    }
+                }
+            }
+            if !entry.examples.isEmpty {
+                Divider()
+                VStack(alignment: .leading, spacing: 6) {
+                    compactSectionTitle("例句")
+                    ForEach(Array(entry.examples.enumerated()), id: \.offset) { _, example in
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(highlightedExample(example))
+                                .font(.subheadline)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Text(example.chinese)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            Color.dsBubbleIncoming,
+                            in: RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    private func grammarTermSection(title: String, text: String) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            compactSectionTitle(title)
+            Text(text)
+                .font(.subheadline)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private func highlightedExample(_ example: GrammarTermExample) -> AttributedString {
+        var attributed = AttributedString(example.english)
+        for highlight in example.highlights where !highlight.isEmpty {
+            var searchRange = attributed.startIndex..<attributed.endIndex
+            while let range = attributed[searchRange].range(of: highlight) {
+                attributed[range].foregroundColor = Color.dsCoach
+                attributed[range].font = .system(.subheadline, design: .rounded, weight: .bold)
+                attributed[range].backgroundColor = Color.dsCoach.opacity(0.14)
+                searchRange = range.upperBound..<attributed.endIndex
+            }
+        }
+        return attributed
     }
 
     // MARK: - 加载

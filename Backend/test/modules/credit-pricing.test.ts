@@ -4,6 +4,7 @@ import {
   decimalUnits,
   exactCreditCost,
   loadCreditPriceBook,
+  reservationCost,
 } from "../../src/modules/access/credit-pricing.js";
 const book = loadCreditPriceBook();
 const peak = creditPrice(
@@ -67,6 +68,25 @@ describe("exact credit pricing", () => {
         cacheMissTokens: 0,
       }),
     ).toBeNull();
+  });
+  it("keeps a realistic fresh-account first chat inside the 100-credit free budget", () => {
+    const messages = [
+      { role: "system" as const, content: "x".repeat(24_000) },
+      { role: "assistant" as const, content: "Hey, how was your trip here?" },
+      { role: "user" as const, content: "I must say pretty good" },
+    ];
+    const mainReplyHold = reservationCost(peak, messages, 120);
+    const freeDailyBudget = 100_000_000n;
+
+    expect(mainReplyHold).toBeLessThan(freeDailyBudget);
+    // A large background relationship review can make both holds exceed the budget;
+    // the client therefore must not start it before the user-visible conversation.
+    const backgroundReviewHold = reservationCost(
+      peak,
+      [{ role: "system", content: "x".repeat(12_000) }],
+      1_000,
+    );
+    expect(mainReplyHold + backgroundReviewHold).toBeGreaterThan(freeDailyBudget);
   });
   it("rejects unknown and historical prices and excessive precision", () => {
     expect(() => creditPrice(book, "other", "deepseek-v4-flash", new Date())).toThrow();

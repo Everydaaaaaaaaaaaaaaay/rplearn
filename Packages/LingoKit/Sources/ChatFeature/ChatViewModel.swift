@@ -166,8 +166,6 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
-        runInteractionReview(for: userMessage, source: .voiceChat)
-        runSpeechReview(for: userMessage)
         scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
@@ -329,8 +327,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return false
         }
-        // 教练审核与主链路并行，互不阻塞。
-        runInteractionReview(for: userMessage, source: .textChat)
+        // 辅助点评必须等主回复完成：免费额度下不能让后台任务抢走用户可见回复的预留。
         scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
     }
@@ -343,7 +340,8 @@ public final class ChatViewModel {
         let relationship = RelationshipService(llm: deps.llm, rosterStore: deps.rosterStore)
         let chatStore = deps.chatStore
         let character = character
-        let history = messages
+        // 点评延后到主回复之后执行，但输入语境必须停在这条用户消息，不能把后生成的回复倒灌到它前面。
+        let history = messages.filter { $0.orderIndex <= message.orderIndex }
         let fallbackCoach = CoachService(llm: deps.llm)
         Task(priority: .utility) { [weak self] in
             let review: CoachReview
@@ -355,6 +353,11 @@ public final class ChatViewModel {
                     source: source
                 )
             } catch {
+                if case LLMError.accessRestricted = error {
+                    // 辅助任务没有剩余额度时只记录本地互动，不再追加第二次教练请求。
+                    try? await relationship.recordContact(characterID: character.id, message: message)
+                    return
+                }
                 Log.app.warning("关系互动审阅失败，回退语言点评：\(error.localizedDescription)")
                 try? await relationship.recordContact(characterID: character.id, message: message)
                 guard let fallback = try? await fallbackCoach.review(userText: message.text) else { return }
@@ -690,6 +693,17 @@ public final class ChatViewModel {
             if let replacedMessageID, !assistantMessages.isEmpty {
                 try await deps.chatStore.deleteMessage(messageID: replacedMessageID)
                 messages.removeAll { $0.id == replacedMessageID }
+            }
+            // 主对话已经完成并结算后，才允许低优先级学习辅助申请额度。
+            // 额度不足时这些任务会静默跳过，但绝不会反过来阻断 NPC 回复。
+            if let userMessage = messages.first(where: { $0.id == plan.userMessageID }) {
+                let source: RelationshipEventRecord.Source = userMessage.kind == .voice
+                    ? .voiceChat
+                    : .textChat
+                runInteractionReview(for: userMessage, source: source)
+                if userMessage.kind == .voice {
+                    runSpeechReview(for: userMessage)
+                }
             }
             let quiz = quizRequested
                 ? try? await QuizService.generate(

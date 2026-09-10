@@ -52,6 +52,33 @@ public enum BrandMascotPose: CaseIterable, Equatable, Sendable {
     }
 }
 
+/// 聊天建议由两位品牌伙伴共同给出。分配规则只依赖消息 ID，重绘或重启后不会换人。
+public enum DSCoachPersona: CaseIterable, Equatable, Sendable {
+    case gugu
+    case gaga
+
+    public var title: String {
+        switch self {
+        case .gugu: "咕咕建议"
+        case .gaga: "嘎嘎建议"
+        }
+    }
+
+    public var pose: BrandMascotPose {
+        switch self {
+        case .gugu: .guide
+        case .gaga: .coach
+        }
+    }
+
+    /// UUID 末位在 v4 UUID 中仍为完整随机位，用奇偶分桶可稳定获得近似 50/50 分布。
+    public static func assigned(to messageID: UUID) -> Self {
+        let lastHex = messageID.uuidString.reversed().first(where: \Character.isHexDigit)
+        let value = lastHex.flatMap { Int(String($0), radix: 16) } ?? 0
+        return value.isMultiple(of: 2) ? .gugu : .gaga
+    }
+}
+
 /// 品牌吉祥物的统一渲染入口，只使用当前 2D 动作资源包。
 public struct BrandMascotView: View {
     private let pose: BrandMascotPose

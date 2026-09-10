@@ -40,6 +40,7 @@ extension ChatView {
     /// 紧贴用户气泡中线的纠错入口；可见尺寸克制，触控区域保持 44pt。
     func coachButton(_ message: MessageDTO) -> some View {
         let isExpanded = expandedCoachMessageIDs.contains(message.id)
+        let persona = DSCoachPersona.assigned(to: message.id)
         return Button {
             Haptics.selection()
             withAnimation(DSAnimation.snappy) {
@@ -50,26 +51,24 @@ extension ChatView {
                 }
             }
         } label: {
-            Image(systemName: "wand.and.sparkles")
-                .font(.system(size: 15, weight: .bold))
-                .foregroundStyle(Color.dsCoach)
+            BrandMascotView(pose: persona.pose, size: 30, showsShadow: false)
                 .scaleEffect(isExpanded ? 1.06 : 1)
-                .frame(width: 32, height: 32)
+                .frame(width: 36, height: 36)
                 .background {
-                    Circle()
-                        .fill(isExpanded ? Color.dsBrandCream : Color.dsSurface)
+                    RoundedRectangle(cornerRadius: 13, style: .continuous)
+                        .fill(isExpanded ? Color.dsCoach.opacity(0.14) : Color.dsSurface)
                         .shadow(color: Color.dsCoach.opacity(0.18), radius: 4, y: 2)
                 }
                 .overlay {
-                    Circle()
+                    RoundedRectangle(cornerRadius: 13, style: .continuous)
                         .stroke(Color.dsCoach.opacity(isExpanded ? 0.55 : 0.3), lineWidth: 1)
                 }
                 .frame(width: 44, height: 44)
-                .contentShape(Circle())
+                .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 .animation(DSAnimation.snappy, value: isExpanded)
         }
         .buttonStyle(.pressableCard)
-        .accessibilityLabel(isExpanded ? "收起改进建议" : "查看改进建议")
+        .accessibilityLabel(isExpanded ? "收起\(persona.title)" : "查看\(persona.title)")
         .accessibilityAddTraits(isExpanded ? .isSelected : [])
     }
 
@@ -79,9 +78,10 @@ extension ChatView {
         if expandedCoachMessageIDs.contains(message.id),
            let review = CoachService.decode(fromJSON: message.coachReviewJSON),
            review.hasIssues {
-            CalloutCard(kind: .coach) {
+            let persona = DSCoachPersona.assigned(to: message.id)
+            CalloutCard(kind: .coach, coachPersona: persona) {
                 VStack(alignment: .leading, spacing: 10) {
-                    ForEach(Array(review.issues.enumerated()), id: \.offset) { _, issue in
+                    ForEach(Array(review.issues.enumerated()), id: \.offset) { index, issue in
                         VStack(alignment: .leading, spacing: 4) {
                             HStack(spacing: 6) {
                                 Text(issue.quote)
@@ -94,9 +94,16 @@ extension ChatView {
                                     .foregroundStyle(Color.dsSuccess)
                             }
                             .font(.subheadline)
-                            Text(issue.explanationZh)
+                            TappableGrammarTermText(
+                                issue.explanationZh,
+                                contextID: "coach-\(message.id.uuidString)-\(index)",
+                                selection: grammarTermSelection,
+                                onSelect: { selection in
+                                    wordSelection = nil
+                                    grammarTermSelection = selection
+                                }
+                            )
                                 .font(.footnote)
-                                .foregroundStyle(.secondary)
                         }
                     }
                 }
@@ -303,6 +310,7 @@ extension ChatView {
 
     func selectWord(_ selection: TokenSelection) {
         isTextInputFocused = false
+        grammarTermSelection = nil
         wordSelection = selection
     }
 

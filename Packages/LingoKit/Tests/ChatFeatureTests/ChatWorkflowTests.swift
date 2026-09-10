@@ -19,6 +19,7 @@ struct ChatWorkflowTests {
         var fails: Bool
         var streamDelayMilliseconds: Int
         private(set) var translations = 0
+        private(set) var requestedTasks: [LLMTask] = []
         init(
             response: String = "A complete answer.",
             fails: Bool = false,
@@ -30,6 +31,7 @@ struct ChatWorkflowTests {
         }
         nonisolated func modelID(for tier: LLMTier) -> String { "workflow-fixture" }
         func complete(_ request: LLMRequest) async throws -> String {
+            requestedTasks.append(request.task)
             if request.task == .translation {
                 translations += 1
                 return "完整的翻译。"
@@ -37,6 +39,7 @@ struct ChatWorkflowTests {
             return "{\"has_issues\":false,\"issues\":[]}"
         }
         func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
+            requestedTasks.append(request.task)
             let response = response
             let fails = fails
             let streamDelayMilliseconds = streamDelayMilliseconds
@@ -53,6 +56,8 @@ struct ChatWorkflowTests {
                 }
             }
         }
+
+        func tasks() -> [LLMTask] { requestedTasks }
     }
     private struct SilentSpeech: SpeechService {
         func speak(_ request: SpeechRequest) async {}
@@ -126,6 +131,24 @@ struct ChatWorkflowTests {
         #expect(reopened.messages.filter { $0.role == .user }.map(\.text) == ["Tell me the whole story."])
         #expect(normalized(reopened.messages.filter { $0.role == .assistant }.map(\.text).joined(separator: " ")) == normalized(raw))
         #expect(reopened.messages.map(\.id) == f.model.messages.map(\.id))
+    }
+
+    @Test("首条消息先完成 NPC 回复，后台点评不能抢占免费额度")
+    func visibleReplyHasPriorityOverCoachReview() async throws {
+        let provider = Provider(streamDelayMilliseconds: 180)
+        let f = try await fixture(provider)
+        f.model.draft = "I must say pretty good"
+        await f.model.sendDraft()
+
+        try await Task.sleep(for: .milliseconds(50))
+        #expect(await provider.tasks() == [.conversation])
+
+        try await settle(f.model)
+        try await Task.sleep(for: .milliseconds(80))
+        let tasks = await provider.tasks()
+        #expect(tasks.first == .conversation)
+        #expect(tasks.dropFirst().allSatisfy { $0 == .coachReview })
+        #expect(f.model.messages.contains { $0.role == .assistant })
     }
 
     @Test("退出或重启后会从未回复的最后一条用户消息恢复同一回复")

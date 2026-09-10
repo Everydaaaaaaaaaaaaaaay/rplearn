@@ -104,6 +104,10 @@ public struct UsageAccessView: View {
     private func taskName(_ task: String) -> String {
         switch task {
         case "conversation": "聊天回复"
+        case "coach_review": "学习建议与关系理解"
+        case "memory_summary": "旅伴记忆整理"
+        case "quiz": "情境小测"
+        case "translation": "整句翻译"
         case "character_generation": "生成新角色"
         case "grammar_explain": "语法讲解"
         case "dictionary_explain": "单词讲解"

@@ -1,4 +1,5 @@
 @testable import DesignSystem
+import Foundation
 import Testing
 
 struct BrandMascotRenderingPolicyTests {
@@ -30,5 +31,18 @@ struct BrandMascotRenderingPolicyTests {
         #expect(BrandMascotPose.reminder.characterName == "嘎嘎")
         #expect(BrandMascotPose.encouragement.characterName == "嘎嘎")
         #expect(BrandMascotPose.achievement.characterName == "嘎嘎")
+    }
+
+    @Test("建议角色按消息稳定分桶且两位吉祥物都可出现")
+    func coachPersonaAssignment() throws {
+        let even = try #require(UUID(uuidString: "00000000-0000-4000-8000-000000000000"))
+        let odd = try #require(UUID(uuidString: "00000000-0000-4000-8000-000000000001"))
+
+        #expect(DSCoachPersona.assigned(to: even) == .gugu)
+        #expect(DSCoachPersona.assigned(to: odd) == .gaga)
+        #expect(DSCoachPersona.assigned(to: even).title == "咕咕建议")
+        #expect(DSCoachPersona.assigned(to: odd).title == "嘎嘎建议")
+        #expect(DSCoachPersona.assigned(to: even).pose == .guide)
+        #expect(DSCoachPersona.assigned(to: odd).pose == .coach)
     }
 }
