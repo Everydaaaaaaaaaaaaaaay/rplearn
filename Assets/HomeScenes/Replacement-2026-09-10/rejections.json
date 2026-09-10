@@ -1,0 +1,88 @@
+[
+  {
+    "city": "auckland",
+    "version": 1,
+    "sha256": "d421cc71b96af8ac8348fddf58b1f0535adf4a1dd617fea4fcf0d8e2e0603cd6",
+    "reason": "Map/bench cropped; insufficient wall width for readable native entries",
+    "deleted": true
+  },
+  {
+    "city": "auckland",
+    "version": 2,
+    "sha256": "c42ff34744860275535468ceb17a0e60ddfe17daf30f06ba3ebbf8e4288e5a1e",
+    "reason": "Repeated cropped map/bench; two distinct door handle sets, rejected",
+    "deleted": true
+  },
+  {
+    "city": "london",
+    "version": 1,
+    "sha256": "79a54fac25f766e886c4ee4c16119b1dc4b8e7bc99ba6b42b030f95713506dc4",
+    "dimensions": [
+      929,
+      1694
+    ],
+    "reason": "Wrong aspect ratio; crop removes required usable width",
+    "deleted": true
+  },
+  {
+    "city": "london",
+    "version": 2,
+    "sha256": "5d3a78820fbeaeccbd5d2386c017896f37b43afc6ceea3ce5fef5f43a83725f7",
+    "dimensions": [
+      906,
+      1735
+    ],
+    "reason": "Wrong aspect ratio again; upward steps not supported by reference; simplified next design",
+    "deleted": true
+  },
+  {
+    "city": "manchester",
+    "version": 1,
+    "sha256": "aa0b187c0085fdbd948d639a2961c791a3ac1c308ee8fa435b1361e2ecaa2d57",
+    "dimensions": [
+      853,
+      1844
+    ],
+    "reason": "Path ends against solid brick wall between piers with no exit",
+    "deleted": true
+  },
+  {
+    "city": "neworleans",
+    "version": 1,
+    "sha256": "cb7962026e299eff61ae0de85c28cd31ee7ec679ddbf31e4657f512bb103d262",
+    "dimensions": [
+      1203,
+      1308
+    ],
+    "reason": "Near-square canvas; phone crop would lose door and map",
+    "deleted": true
+  },
+  {
+    "city": "nairobi",
+    "version": 1,
+    "sha256": "661a9ebe61599899af0e5f15877149789349dd9c989c56f67ce343deb679e4f5",
+    "reason": "Garden rises above vestibule with unsupported level relationship; uncertain -> rejected",
+    "deleted": true
+  },
+  {
+    "city": "nairobi",
+    "version": 2,
+    "sha256": "18a8e766db7d8b5ef8ea93962e62f2640ceb2658d0786bc993fde22116a88c08",
+    "reason": "Wrong canvas ratio loses map width in final crop",
+    "deleted": true
+  },
+  {
+    "city": "toronto",
+    "version": 1,
+    "sha256": "973fdc796a9661c7f4baf8dd93b6ace21bb152d21f5bb832ed8243a302c18718",
+    "reason": "Garden rises to a second terrace; uncertain level relationship -> rejected",
+    "deleted": true
+  },
+  {
+    "city": "edinburgh",
+    "version": 1,
+    "sha256": "d4028e5bb430d0cc59862e99c53589aa0c43ef9554893664ef4967b6c5799d48",
+    "reason": "Upward steps contradict intended raised entry reference; rejected",
+    "deleted": true
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-10",
+  "worktree": "c955",
+  "tests": [
+    {
+      "resultBundle": "build/HomeReplacementUI27.xcresult",
+      "passed": 15,
+      "failed": 0,
+      "coverage": "iOS27 standard; every city 3 entries and return"
+    },
+    {
+      "resultBundle": "build/HomeReplacementUICompact27.xcresult",
+      "passed": 15,
+      "failed": 0,
+      "coverage": "iOS27 compact; every city 3 entries and return"
+    },
+    {
+      "resultBundle": "build/HomeReplacementUIFix27.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "coverage": "Edinburgh corrected UI + London entry edges and background resume"
+    },
+    {
+      "resultBundle": "build/HomeReplacementUICompactFix27.xcresult",
+      "passed": 2,
+      "failed": 0,
+      "coverage": "Same corrected/edge/resume paths on compact"
+    },
+    {
+      "resultBundle": "build/HomeReplacementFinalGeometryClean27.xcresult",
+      "passed": 9,
+      "failed": 0,
+      "coverage": "15 resources, inverse/geometry, four viewports, full 44pt inscribed hit square and readable projected height"
+    }
+  ],
+  "geometryOverlay": "build/HomePerspectiveAudit; all15 manually reviewed; hash/size/edge agreement passed",
+  "visualReview": "15 whole generated candidates plus all five native regions each, projected-edge overlays, 30 final standard/compact actual app screenshots individually reviewed. Edinburgh first UI screenshot rejected; final corrected screenshots replace it in evidence.",
+  "screenshotIndex": "Assets/HomeScenes/Replacement-2026-09-10/ui/evidence.json",
+  "device": "iPhone17Pro iOS27.0 build24A5423a / 402x874pt; SE3 simulator configuration iOS27 / 375x667pt",
+  "physicalDeviceTested": false,
+  "notRetested": [
+    "system Reduce Motion preference (static assets; no new playback behavior)",
+    "live backend AI dialogue"
+  ],
+  "failuresResolved": [
+    "Auckland activity and Edinburgh/Toronto upper or right bounds adjusted before final run",
+    "Edinburgh floor projection visually squashed text; corrected physical-plane calibration; both screens rechecked",
+    "Final unit target first hit beta Xcode incremental linker error StoryEngine.EpisodeSession after switching UI/unit scheme; worktree clean rebuild passed9/9"
+  ],
+  "nonAcceptanceRuns": [
+    "HomeReplacementGeometry (script default iOS26.1; failed old boundary iteration)",
+    "HomeReplacementGeometry27 (earlier Toronto bound; failed)",
+    "HomeReplacementFinalGeometry27 (linker failed, not a test pass)"
+  ],
+  "releaseReady": true
+}

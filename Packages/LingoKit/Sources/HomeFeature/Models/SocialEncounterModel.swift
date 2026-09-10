@@ -1,6 +1,7 @@
 import BackendKit
 import CoreKit
 import DomainKit
+import LLMKit
 import PersistenceKit
 import SpeechKit
 import SwiftUI
@@ -200,9 +201,24 @@ final class SocialEncounterModel: ObservableObject {
             } catch {
                 guard !Task.isCancelled else { return }
                 busy = false
-                self.error = "暂时未能继续交流。\(error.localizedDescription)"
+                self.error = Self.message(for: error)
             }
         }
+    }
+
+    enum PreparationError: Error { case characterUnavailable }
+
+    static func message(for error: Error) -> String {
+        if let error = error as? SocialDialogueService.DialogueError {
+            return error.localizedDescription
+        }
+        if error is PreparationError {
+            return "暂时未能准备好这次相遇的人物，请稍后重试。"
+        }
+        if case LLMError.accessRestricted(let message) = error {
+            return message
+        }
+        return "暂时无法连接交流服务，请稍后重试。当前人物和你的选择会保留。"
     }
 
     private func prepareCharacter() async throws {
@@ -310,7 +326,7 @@ final class SocialEncounterModel: ObservableObject {
             )
             try Task.checkCancellation()
             // Local template fallback must not masquerade as a newly generated identity.
-            guard !generated.isFallback else { throw SocialDialogueService.DialogueError.invalidReply }
+            guard !generated.isFallback else { throw PreparationError.characterUnavailable }
             let backendCard = PublicNPCAdapter.backendCard(from: generated.card)
             let diversityProfile = generated.diversityProfile.backendValue
             guard let registry = deps.npcRegistry else {
@@ -356,7 +372,7 @@ final class SocialEncounterModel: ObservableObject {
                 return
             }
         }
-        throw SocialDialogueService.DialogueError.invalidReply
+        throw PreparationError.characterUnavailable
     }
 
     private static let genericDiversityGuidance = [

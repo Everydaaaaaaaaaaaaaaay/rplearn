@@ -12,7 +12,6 @@ public struct ConversationListView: View {
     @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
     @State private var searchText = ""
-    @State private var isSearchPresented = false
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
     @AppStorage private var persistedUnreadCount: Int
@@ -91,13 +90,7 @@ public struct ConversationListView: View {
     private var searchAdaptedContent: some View {
         if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
             sceneContent
-                .searchable(
-                    text: $searchText,
-                    isPresented: $isSearchPresented,
-                    placement: .toolbar,
-                    prompt: "搜索信息"
-                )
-                .dsCompactSearchToolbar()
+                .dsSceneSearch(text: $searchText, title: "信息", prompt: "搜索信息")
         } else {
             sceneContent
                 .safeAreaInset(edge: .top, spacing: 0) {

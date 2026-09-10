@@ -486,6 +486,9 @@ struct RootView: View {
         }
         .tint(.dsSky)
         .background {
+            if #available(iOS 27.0, *) {
+                TabSceneTransitionInstaller()
+            }
             if !DSPlatformVisualPolicy.usesLiquidGlass {
                 LegacyTabBarAppearanceInstaller()
             }
