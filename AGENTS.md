@@ -29,6 +29,11 @@ guide); do not run `swift build` inside `Packages/LingoKit`. Local unit tests ne
 repeated approval. Database tests require an isolated environment; live AI evaluations,
 production probes and deployments require the corresponding task authorization.
 
+Standing owner authorization (2026-09-11): after completing backend changes and
+relevant checks, deploy them to production and verify the affected online behavior
+without asking again, unless the user explicitly defers deployment. Preserve data
+and rollback readiness. Backend deployment does not publish an iOS App Store build.
+
 For photographic scenes, use `docs/activity-scene-visual-acceptance.md` and the latest
 scene record. Reuse unchanged evidence; verify affected visuals and each open user issue.
 Keep a per-version record; rejected or unverified assets are not release-ready.

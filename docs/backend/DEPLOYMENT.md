@@ -37,6 +37,16 @@ ssh root@<server> \
 `/opt/lingotrip/current`，然后重启 API 和 Worker 并检查 readiness。应用启动失败会切回
 上一个发布目录；数据库结构不自动回滚。
 
+## 最近发布验证
+
+2026-09-11：发布 `c36296c`，上一版本为 `credit-fix-30fa8b4`。发布包 SHA-256：
+`66fd7928d253ee3a74685d053b94368d28adf9f4d79a0305adb3da8b87468cf4`。
+此次无迁移文件变更，沿用现有生产依赖。API / Worker 均为 active，readiness 返回 ready。
+在已登录的 Chrome 页面 `https://coovingo.com/internal/admin/ai` 刷新数据后，
+确认任务路由只剩 9 项，不再显示整句翻译和语音反馈；其他任务仍使用 GLM 5.3 Flash。
+语音反馈的旧客户端请求会在模型调用与额度操作前被拒绝，历史账单和配置记录保留。
+这次上线的是后端；Apple 本地整句翻译和客户端点评卡移除需安装新版 iOS App。
+
 ## 数据保护
 
 保留现有账号、媒体和迁移历史；服务端迁移只追加，SwiftData 使用版本化迁移。
