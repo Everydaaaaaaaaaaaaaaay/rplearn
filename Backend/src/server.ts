@@ -11,6 +11,11 @@ import { createGuestService } from "./modules/auth/guest-service.js";
 import { registerGuestRoutes } from "./modules/auth/guest-routes.js";
 import { createGuestClaim } from "./infrastructure/guest-claim.js";
 import { createDeepSeekClient } from "./modules/ai/deepseek/client.js";
+import { createOpenRouterClient } from "./modules/ai/openrouter/client.js";
+import { AiCatalogRepository } from "./modules/ai/catalog-repository.js";
+import { createAiCatalogService } from "./modules/ai/catalog-service.js";
+import { AiAnalyticsRepository } from "./modules/ai/analytics-repository.js";
+import { registerAiAdminConsoleRoutes } from "./modules/ai/admin-console.js";
 import { registerAiRoutes } from "./modules/ai/routes.js";
 import { createAiService } from "./modules/ai/service.js";
 import { registerAiAdminRoutes } from "./modules/ai/admin-routes.js";
@@ -133,12 +138,19 @@ async function main(): Promise<void> {
     appleBillingEnabled: config.appleBillingEnabled,
     enableDebugRoutes: config.nodeEnv !== "production",
   });
+  const openRouter = createOpenRouterClient(config);
+  const aiCatalog = createAiCatalogService(
+    config,
+    new AiCatalogRepository(dependencies.database),
+    openRouter,
+  );
   const aiService = createAiService(
     config,
     dependencies.database,
     dependencies.redis,
     billingService,
     createDeepSeekClient(config),
+    { catalog: aiCatalog, openRouter },
   );
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,
@@ -165,8 +177,13 @@ async function main(): Promise<void> {
     registerAiAdminRoutes(
       app,
       authenticateAdmin,
-      createAiConfigService(config, dependencies.database),
+      createAiConfigService(config, dependencies.database, aiCatalog),
+      {
+        analytics: new AiAnalyticsRepository(dependencies.database),
+        catalog: aiCatalog,
+      },
     );
+    registerAiAdminConsoleRoutes(app);
     registerDictionaryTranslationAdminRoutes(
       app,
       authenticateAdmin,

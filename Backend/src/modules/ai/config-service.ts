@@ -3,6 +3,7 @@ import type { RuntimeConfig } from "../../config/env.js";
 import type { DatabaseResource } from "../../db/client.js";
 import { validateManagedSettings } from "./config.js";
 import { AiConfigRepository } from "./config-repository.js";
+import type { AiCatalogService } from "./catalog-service.js";
 import type { AiManagedRoute, AiRouteRevision, AiRouteSettings } from "./types.js";
 
 type ChangeContext = Readonly<{
@@ -14,6 +15,10 @@ type ChangeContext = Readonly<{
 
 export type AiConfigService = Readonly<{
   allowedModels: readonly string[];
+  providerStatus: Readonly<{
+    deepseek: Readonly<{ configured: boolean }>;
+    openrouter: Readonly<{ configured: boolean; usdToCny: string | null }>;
+  }>;
   listRoutes: () => Promise<readonly AiManagedRoute[]>;
   revisions: (task: string, limit: number) => Promise<readonly AiRouteRevision[]>;
   rollback: (
@@ -35,18 +40,27 @@ function requestHash(value: unknown): string {
 export function createAiConfigService(
   config: RuntimeConfig,
   database: DatabaseResource,
+  catalog?: AiCatalogService,
 ): AiConfigService {
   const repository = new AiConfigRepository(database);
-  const apply = (
+  const apply = async (
     task: string,
     rawSettings: unknown,
     context: ChangeContext,
     action: Readonly<Record<string, unknown>>,
   ): Promise<AiManagedRoute> => {
-    const settings = validateManagedSettings(
-      rawSettings,
-      config.aiDeepSeekAllowedModels,
-    );
+    const settings = validateManagedSettings(rawSettings, {
+      deepSeekAllowedModels: config.aiDeepSeekAllowedModels,
+      openRouterEnabled: catalog?.configured ?? false,
+    });
+    if (settings.provider === "openrouter") {
+      if (catalog === undefined) {
+        throw new Error("OpenRouter catalog is unavailable");
+      }
+      await catalog.assertSelectable(settings.model, {
+        requiresJson: settings.allowJsonResponse,
+      });
+    }
     return repository.update(
       task,
       context.expectedVersion,
@@ -67,6 +81,13 @@ export function createAiConfigService(
 
   return {
     allowedModels: config.aiDeepSeekAllowedModels,
+    providerStatus: {
+      deepseek: { configured: config.deepSeekApiKey !== undefined },
+      openrouter: {
+        configured: catalog?.configured ?? false,
+        usdToCny: catalog?.usdToCny ?? null,
+      },
+    },
     listRoutes: () => repository.listRoutes(),
     revisions: (task, limit) => repository.revisions(task, limit),
     rollback: async (task, targetVersion, context) => {

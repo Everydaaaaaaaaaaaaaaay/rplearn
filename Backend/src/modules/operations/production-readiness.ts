@@ -4,6 +4,7 @@ import type { DatabaseResource } from "../../db/client.js";
 import { assertMigrationsCurrent } from "../../db/migrate.js";
 import type { RedisResource } from "../../infrastructure/redis/client.js";
 import type { DeepSeekOperationalClient } from "../ai/deepseek/client.js";
+import type { OpenRouterClient } from "../ai/openrouter/client.js";
 import { createAppleClientSecretFactory } from "../auth/apple/client-secret.js";
 import type { SmtpAuthNotifier } from "../auth/notifier.js";
 import { createAppleBillingStatusClient } from "../billing/apple/server-api-client.js";
@@ -203,6 +204,58 @@ export function assertAllowedModelsAvailable(
   }
 }
 
+export function assertOpenRouterModelsAvailable(
+  activeModels: readonly string[],
+  localModels: readonly string[],
+  upstreamModels: readonly string[],
+  configured: boolean,
+): void {
+  if (activeModels.length === 0) return;
+  if (!configured) {
+    throw new ProductionReadinessError("OPENROUTER_NOT_CONFIGURED");
+  }
+  const local = new Set(localModels);
+  const upstream = new Set(upstreamModels);
+  if (activeModels.some((model) => !local.has(model) || !upstream.has(model))) {
+    throw new ProductionReadinessError("OPENROUTER_MODEL_UNAVAILABLE");
+  }
+}
+
+async function assertActiveOpenRouterRoutes(
+  database: DatabaseResource,
+  openRouter: OpenRouterClient,
+): Promise<void> {
+  const active = await database.sql<{ model: string }[]>`
+    select distinct model
+    from app.ai_routes
+    where enabled=true and provider='openrouter'
+  `;
+  if (active.length === 0) return;
+  if (!openRouter.configured) {
+    assertOpenRouterModelsAvailable(
+      active.map((route) => route.model),
+      [],
+      [],
+      false,
+    );
+    return;
+  }
+  const [local, upstream] = await Promise.all([
+    database.sql<{ model: string }[]>`
+      select model
+      from app.ai_model_catalog
+      where provider='openrouter' and available=true
+    `,
+    openRouter.models(),
+  ]);
+  assertOpenRouterModelsAvailable(
+    active.map((route) => route.model),
+    local.map((model) => model.model),
+    upstream.map((model) => model.id),
+    true,
+  );
+}
+
 async function assertAppleConfiguration(config: RuntimeConfig): Promise<void> {
   if (!config.appleBillingEnabled) {
     throw new ProductionReadinessError("APPLE_BILLING_DISABLED");
@@ -236,6 +289,7 @@ export function createProductionReadinessChecks(
     ai: DeepSeekOperationalClient;
     database: DatabaseResource;
     media: MediaObjectStore;
+    openRouter: OpenRouterClient;
     redis: RedisResource;
     smtp: SmtpAuthNotifier;
   }>,
@@ -283,6 +337,12 @@ export function createProductionReadinessChecks(
       },
       failureCode: "AI_PROVIDER_UNAVAILABLE",
       name: "ai_provider_models",
+    },
+    {
+      check: () =>
+        assertActiveOpenRouterRoutes(dependencies.database, dependencies.openRouter),
+      failureCode: "OPENROUTER_PROVIDER_UNAVAILABLE",
+      name: "openrouter_active_models",
     },
     {
       check: () => assertAppleConfiguration(config),

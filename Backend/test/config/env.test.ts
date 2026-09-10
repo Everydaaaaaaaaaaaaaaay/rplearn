@@ -14,6 +14,8 @@ describe("loadConfig", () => {
       trustProxy: false,
     });
     expect(config.deepSeekApiKey).toBeUndefined();
+    expect(config.openRouterApiKey).toBeUndefined();
+    expect(config.openRouterBaseUrl).toBe("https://openrouter.ai/api/v1");
   });
 
   it("parses comma separated origins and an explicit boolean", () => {
@@ -75,6 +77,20 @@ describe("loadConfig", () => {
         NODE_ENV: "production",
       }),
     ).toThrow(ConfigurationError);
+  });
+
+  it("requires a reviewed settlement rate with OpenRouter credentials", () => {
+    expect(() => loadConfig({ OPENROUTER_API_KEY: "test-openrouter-key" })).toThrow(
+      ConfigurationError,
+    );
+    const config = loadConfig({
+      OPENROUTER_API_KEY: "test-openrouter-key",
+      OPENROUTER_USD_TO_CNY: "7.200000",
+    });
+    expect(config).toMatchObject({
+      openRouterApiKey: "test-openrouter-key",
+      openRouterUsdToCny: "7.200000",
+    });
   });
 
   it("requires explicit persistent dependencies in production", () => {

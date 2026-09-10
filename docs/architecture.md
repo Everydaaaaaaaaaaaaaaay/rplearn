@@ -143,7 +143,7 @@ PostgreSQL，客户端不能提交译文污染公共缓存。常用词的 Luna �
 - `auth / account`：可扩展登录身份、邮箱、Apple、设备会话、导出和删除。
 - `domain`：资料、金币、机票、旅行和剧情奖励。
 - `billing`：StoreKit 交易、订阅与统一权益。
-- `ai`：DeepSeek 路由、配额、流式中转和审计配置。
+- `ai`：DeepSeek/OpenRouter 适配、按任务版本化路由、模型目录、配额、流式中转、成本分析和审计配置。
 - `dictionary-translation`：例句翻译公共缓存、安全解析、可信预生成导入和异步回填。
 - `content / sync`：版本化内容、墓碑和有序变更。
 - `media`：私有语音资产生命周期。

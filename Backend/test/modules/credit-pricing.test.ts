@@ -4,6 +4,7 @@ import {
   decimalUnits,
   exactCreditCost,
   loadCreditPriceBook,
+  openRouterCreditPrice,
   reservationCost,
 } from "../../src/modules/access/credit-pricing.js";
 const book = loadCreditPriceBook();
@@ -95,5 +96,35 @@ describe("exact credit pricing", () => {
     ).toThrow();
     expect(() => decimalUnits("0.0000000001", 9)).toThrow();
     expect(decimalUnits("0.1", 9)).toBe(100_000_000n);
+  });
+  it("converts catalog prices and exact OpenRouter response cost without float drift", () => {
+    const price = openRouterCreditPrice(
+      "inclusionai/ling-3.0-flash",
+      {
+        cachedInputPriceUsd: "0.0000000042",
+        completionPriceUsd: "0.000000063",
+        observedAt: "2026-09-11T00:00:00.000Z",
+        promptPriceUsd: "0.000000021",
+      },
+      "7.2",
+      new Date("2026-09-11T00:01:00.000Z"),
+    );
+    expect(price).toMatchObject({
+      cachedInput: "31",
+      input: "152",
+      output: "454",
+      provider: "openrouter",
+      usdToCny: "7.2",
+    });
+    expect(
+      exactCreditCost(price, {
+        cacheHitTokens: 4000,
+        cacheMissTokens: 1000,
+        inputTokens: 5000,
+        outputTokens: 500,
+        providerCostUsd: "0.000100000000",
+        totalTokens: 5500,
+      }),
+    ).toBe(720_000n);
   });
 });

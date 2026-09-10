@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   assertAllowedModelsAvailable,
+  assertOpenRouterModelsAvailable,
   assertRuntimeDatabaseAuthority,
   ProductionReadinessError,
   runProductionReadinessChecks,
@@ -110,5 +111,23 @@ describe("production readiness", () => {
         ["deepseek-v4-flash"],
       ),
     ).toThrow(new ProductionReadinessError("AI_MODEL_UNAVAILABLE"));
+  });
+
+  it("requires every active OpenRouter model locally and upstream", () => {
+    expect(() => assertOpenRouterModelsAvailable([], [], [], false)).not.toThrow();
+    expect(() =>
+      assertOpenRouterModelsAvailable(["vendor/model"], [], [], false),
+    ).toThrow(new ProductionReadinessError("OPENROUTER_NOT_CONFIGURED"));
+    expect(() =>
+      assertOpenRouterModelsAvailable(["vendor/model"], ["vendor/model"], [], true),
+    ).toThrow(new ProductionReadinessError("OPENROUTER_MODEL_UNAVAILABLE"));
+    expect(() =>
+      assertOpenRouterModelsAvailable(
+        ["vendor/model"],
+        ["vendor/model"],
+        ["vendor/model"],
+        true,
+      ),
+    ).not.toThrow();
   });
 });

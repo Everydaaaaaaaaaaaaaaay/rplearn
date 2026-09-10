@@ -67,6 +67,11 @@ export type RuntimeConfig = Readonly<{
   databaseUrl: string;
   deepSeekApiKey?: string;
   deepSeekBaseUrl: string;
+  openRouterApiKey?: string;
+  openRouterAppName: string;
+  openRouterBaseUrl: string;
+  openRouterSiteUrl?: string;
+  openRouterUsdToCny?: string;
   host: string;
   httpGlobalIpMinuteLimit: number;
   jobLeaseSeconds: number;

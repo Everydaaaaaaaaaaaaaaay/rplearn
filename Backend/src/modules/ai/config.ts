@@ -24,20 +24,92 @@ export const deepSeekProviderOptionsSchema = z
   })
   .strict();
 
-export const aiRouteSettingsSchema = z
+const openRouterProviderOptionsSchema = z
   .object({
-    allowJsonResponse: z.boolean(),
-    enabled: z.boolean(),
-    maxInputCharacters: z.number().int().min(1).max(500_000),
-    maxMessages: z.number().int().min(1).max(100),
-    maxOutputTokens: z.number().int().min(1).max(384_000),
-    model: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]{1,127}$/),
-    provider: z.literal("deepseek"),
-    providerOptions: deepSeekProviderOptionsSchema,
-    temperature: z.number().min(0).max(2).nullable(),
-    timeoutMs: z.number().int().min(1_000).max(120_000),
+    frequency_penalty: z.number().min(-2).max(2).optional(),
+    presence_penalty: z.number().min(-2).max(2).optional(),
+    provider: z
+      .object({
+        allow_fallbacks: z.boolean().optional(),
+        data_collection: z.enum(["allow", "deny"]).optional(),
+        ignore: z.array(z.string().trim().min(1).max(128)).max(32).optional(),
+        only: z.array(z.string().trim().min(1).max(128)).max(32).optional(),
+        order: z.array(z.string().trim().min(1).max(128)).max(32).optional(),
+        require_parameters: z.boolean().optional(),
+        sort: z.enum(["price", "latency", "throughput"]).optional(),
+      })
+      .strict()
+      .optional(),
+    reasoning: z
+      .object({
+        enabled: z.boolean().optional(),
+        effort: z.enum(["minimal", "low", "medium", "high"]).optional(),
+        max_tokens: z.number().int().min(1).max(64_000).optional(),
+      })
+      .strict()
+      .optional(),
+    repetition_penalty: z.number().min(0).max(2).optional(),
+    seed: z.number().int().optional(),
+    stop: stopSchema.nullable().optional(),
+    top_k: z.number().int().min(0).max(500).optional(),
+    top_p: z.number().min(0).max(1).optional(),
   })
   .strict();
+
+const commonRouteSettings = {
+  allowJsonResponse: z.boolean(),
+  enabled: z.boolean(),
+  maxInputCharacters: z.number().int().min(1).max(500_000),
+  maxMessages: z.number().int().min(1).max(100),
+  maxOutputTokens: z.number().int().min(1).max(384_000),
+  temperature: z.number().min(0).max(2).nullable(),
+  timeoutMs: z.number().int().min(1_000).max(120_000),
+};
+
+export const aiRouteSettingsSchema = z
+  .discriminatedUnion("provider", [
+    z
+      .object({
+        ...commonRouteSettings,
+        model: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]{1,127}$/),
+        provider: z.literal("deepseek"),
+        providerOptions: deepSeekProviderOptionsSchema,
+      })
+      .strict(),
+    z
+      .object({
+        ...commonRouteSettings,
+        model: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._:/-]{1,191}$/),
+        provider: z.literal("openrouter"),
+        providerOptions: openRouterProviderOptionsSchema,
+      })
+      .strict(),
+  ])
+  .superRefine((settings, context) => {
+    if (
+      settings.provider === "openrouter" &&
+      settings.allowJsonResponse &&
+      settings.providerOptions.provider?.require_parameters !== true
+    ) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "OpenRouter JSON routes must require providers to support every requested parameter.",
+        path: ["providerOptions", "provider", "require_parameters"],
+      });
+    }
+  });
+
+export type AiModelPolicy = Readonly<{
+  deepSeekAllowedModels: readonly string[];
+  openRouterEnabled: boolean;
+}>;
+
+function normalizedPolicy(policy: readonly string[] | AiModelPolicy): AiModelPolicy {
+  return "deepSeekAllowedModels" in policy
+    ? policy
+    : { deepSeekAllowedModels: policy, openRouterEnabled: false };
+}
 
 function invalidConfig(details: unknown): AppError {
   return new AppError({
@@ -50,17 +122,28 @@ function invalidConfig(details: unknown): AppError {
 
 export function validateManagedSettings(
   value: unknown,
-  allowedModels: readonly string[],
+  rawPolicy: readonly string[] | AiModelPolicy,
 ): AiRouteSettings {
+  const policy = normalizedPolicy(rawPolicy);
   const result = aiRouteSettingsSchema.safeParse(value);
   if (!result.success) {
     throw invalidConfig(result.error.issues);
   }
-  if (!allowedModels.includes(result.data.model)) {
+  if (
+    result.data.provider === "deepseek" &&
+    !policy.deepSeekAllowedModels.includes(result.data.model)
+  ) {
     throw new AppError({
       code: "AI_MODEL_NOT_ALLOWED",
-      details: { allowedModels },
+      details: { allowedModels: policy.deepSeekAllowedModels },
       message: "The selected AI model is not allowed by runtime policy.",
+      statusCode: 409,
+    });
+  }
+  if (result.data.provider === "openrouter" && !policy.openRouterEnabled) {
+    throw new AppError({
+      code: "AI_PROVIDER_NOT_CONFIGURED",
+      message: "OpenRouter is not configured for this deployment.",
       statusCode: 409,
     });
   }
@@ -69,7 +152,7 @@ export function validateManagedSettings(
 
 export function validateRuntimeRoute(
   route: AiRouteConfig,
-  allowedModels: readonly string[],
+  policy: readonly string[] | AiModelPolicy,
 ): AiRouteConfig {
   let settings: AiRouteSettings;
   try {
@@ -86,7 +169,7 @@ export function validateRuntimeRoute(
         temperature: route.temperature,
         timeoutMs: route.timeoutMs,
       },
-      allowedModels,
+      policy,
     );
   } catch (cause) {
     throw new AppError({

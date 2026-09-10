@@ -4,6 +4,8 @@ import { AppError } from "../../shared/errors.js";
 import type { AdminAuthenticator } from "../admin/http.js";
 import { aiRouteSettingsSchema } from "./config.js";
 import type { AiConfigService } from "./config-service.js";
+import type { AiCatalogService } from "./catalog-service.js";
+import type { AiAnalyticsRepository } from "./analytics-repository.js";
 
 const taskParamsSchema = z.object({
   task: z.string().regex(/^[a-z][a-z0-9_]{1,63}$/),
@@ -27,6 +29,14 @@ const rollbackSchema = z
 
 const historyQuerySchema = z.object({
   limit: z.coerce.number().int().min(1).max(100).default(20),
+});
+const analyticsQuerySchema = z.object({
+  days: z.coerce
+    .number()
+    .int()
+    .refine((value) => [1, 7, 30, 90].includes(value))
+    .default(7),
+  userId: z.uuid().optional(),
 });
 
 function parse<T>(schema: ZodType<T>, value: unknown): T {
@@ -62,14 +72,62 @@ export function registerAiAdminRoutes(
   app: FastifyInstance,
   authenticate: AdminAuthenticator,
   service: AiConfigService,
+  options: Readonly<{
+    analytics?: AiAnalyticsRepository;
+    catalog?: AiCatalogService;
+  }> = {},
 ): void {
   app.get("/internal/admin/ai/routes", { schema: { hide: true } }, async (request) => {
     authenticate(request);
     return {
       allowedModels: service.allowedModels,
+      providerStatus: service.providerStatus,
       routes: await service.listRoutes(),
     };
   });
+
+  app.get("/internal/admin/ai/models", { schema: { hide: true } }, async (request) => {
+    authenticate(request);
+    if (options.catalog === undefined) return { models: [] };
+    return {
+      models: await options.catalog.listOpenRouter(),
+      provider: "openrouter",
+      providerStatus: service.providerStatus.openrouter,
+    };
+  });
+
+  app.post(
+    "/internal/admin/ai/models/openrouter/refresh",
+    { schema: { hide: true } },
+    async (request) => {
+      authenticate(request);
+      if (options.catalog === undefined) {
+        throw new AppError({
+          code: "AI_PROVIDER_NOT_CONFIGURED",
+          message: "The OpenRouter catalog is unavailable.",
+          statusCode: 503,
+        });
+      }
+      return { models: await options.catalog.refreshOpenRouter() };
+    },
+  );
+
+  app.get(
+    "/internal/admin/ai/analytics",
+    { schema: { hide: true } },
+    async (request) => {
+      authenticate(request);
+      if (options.analytics === undefined) {
+        throw new AppError({
+          code: "AI_ANALYTICS_UNAVAILABLE",
+          message: "AI analytics is unavailable.",
+          statusCode: 503,
+        });
+      }
+      const query = parse(analyticsQuerySchema, request.query);
+      return options.analytics.report(query.days, query.userId ?? null);
+    },
+  );
 
   app.get(
     "/internal/admin/ai/routes/:task/revisions",

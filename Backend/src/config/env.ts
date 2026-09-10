@@ -167,6 +167,11 @@ const rawEnvironmentSchema = z.object({
     .max(100 * 1024 * 1024 * 1024)
     .default(1024 * 1024 * 1024),
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+  OPENROUTER_API_KEY: optionalSecret,
+  OPENROUTER_APP_NAME: z.string().trim().min(1).max(128).default("LingoTrip"),
+  OPENROUTER_BASE_URL: z.url().default("https://openrouter.ai/api/v1"),
+  OPENROUTER_SITE_URL: optionalSecret.pipe(z.url().optional()),
+  OPENROUTER_USD_TO_CNY: optionalSecret,
   PORT: z.coerce.number().int().min(1).max(65_535).default(8080),
   READINESS_TIMEOUT_MS: z.coerce.number().int().min(100).max(30_000).default(2000),
   REDIS_CONNECT_TIMEOUT_MS: z.coerce.number().int().min(100).max(60_000).default(5000),
@@ -371,6 +376,23 @@ export function loadConfig(
     )
   ) {
     issues.push("AI_DEEPSEEK_ALLOWED_MODELS must contain valid model identifiers");
+  }
+
+  if (
+    result.data.OPENROUTER_USD_TO_CNY !== undefined &&
+    !/^(?:[1-9]\d{0,2})(?:\.\d{1,6})?$/.test(result.data.OPENROUTER_USD_TO_CNY)
+  ) {
+    issues.push(
+      "OPENROUTER_USD_TO_CNY must be a positive decimal with at most 6 places",
+    );
+  }
+  if (
+    result.data.OPENROUTER_API_KEY !== undefined &&
+    result.data.OPENROUTER_USD_TO_CNY === undefined
+  ) {
+    issues.push(
+      "OPENROUTER_USD_TO_CNY is required when OPENROUTER_API_KEY is configured",
+    );
   }
 
   if (
@@ -670,6 +692,17 @@ export function loadConfig(
       ? {}
       : { deepSeekApiKey: result.data.DEEPSEEK_API_KEY }),
     deepSeekBaseUrl: result.data.DEEPSEEK_BASE_URL,
+    ...(result.data.OPENROUTER_API_KEY === undefined
+      ? {}
+      : { openRouterApiKey: result.data.OPENROUTER_API_KEY }),
+    openRouterAppName: result.data.OPENROUTER_APP_NAME,
+    openRouterBaseUrl: result.data.OPENROUTER_BASE_URL,
+    ...(result.data.OPENROUTER_SITE_URL === undefined
+      ? {}
+      : { openRouterSiteUrl: result.data.OPENROUTER_SITE_URL }),
+    ...(result.data.OPENROUTER_USD_TO_CNY === undefined
+      ? {}
+      : { openRouterUsdToCny: result.data.OPENROUTER_USD_TO_CNY }),
     host: result.data.HOST,
     httpGlobalIpMinuteLimit: result.data.HTTP_GLOBAL_IP_MINUTE_LIMIT,
     jobLeaseSeconds: result.data.JOB_LEASE_SECONDS,

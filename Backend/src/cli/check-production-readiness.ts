@@ -2,6 +2,7 @@ import "dotenv/config";
 import { ConfigurationError, loadConfig } from "../config/env.js";
 import { createRuntimeDependencies } from "../infrastructure/runtime-dependencies.js";
 import { createDeepSeekClient } from "../modules/ai/deepseek/client.js";
+import { createOpenRouterClient } from "../modules/ai/openrouter/client.js";
 import { createSmtpAuthNotifier } from "../modules/auth/notifier.js";
 import { createMediaObjectStore } from "../modules/media/object-store.js";
 import {
@@ -44,6 +45,7 @@ async function main(): Promise<void> {
         ai: createDeepSeekClient(config),
         database: dependencies.database,
         media: createMediaObjectStore(config),
+        openRouter: createOpenRouterClient(config),
         redis: dependencies.redis,
         smtp: createSmtpAuthNotifier(config),
       }),

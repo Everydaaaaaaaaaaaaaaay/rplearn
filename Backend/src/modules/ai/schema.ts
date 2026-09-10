@@ -7,6 +7,7 @@ import {
   index,
   integer,
   jsonb,
+  numeric,
   primaryKey,
   real,
   text,
@@ -19,10 +20,51 @@ import { users } from "../../db/user-schema.js";
 
 export const aiProvider = applicationSchema.enum("ai_provider", [
   "deepseek",
+  "openrouter",
   "openai",
   "anthropic",
   "google",
 ]);
+
+export const aiModelCatalog = applicationSchema.table(
+  "ai_model_catalog",
+  {
+    architecture: jsonb("architecture").default({}).notNull(),
+    available: boolean("available").default(true).notNull(),
+    cachedInputPriceUsd: numeric("cached_input_price_usd", {
+      precision: 30,
+      scale: 18,
+    }),
+    completionPriceUsd: numeric("completion_price_usd", {
+      precision: 30,
+      scale: 18,
+    }).notNull(),
+    contextLength: integer("context_length"),
+    displayName: text("display_name").notNull(),
+    model: text("model").notNull(),
+    promptPriceUsd: numeric("prompt_price_usd", {
+      precision: 30,
+      scale: 18,
+    }).notNull(),
+    provider: aiProvider("provider").notNull(),
+    refreshedAt: timestamp("refreshed_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    supportedParameters: jsonb("supported_parameters").default([]).notNull(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.provider, table.model] }),
+    index("ai_model_catalog_provider_name_index").on(table.provider, table.displayName),
+    check(
+      "ai_model_catalog_context_positive",
+      sql`${table.contextLength} is null or ${table.contextLength} > 0`,
+    ),
+    check(
+      "ai_model_catalog_prices_nonnegative",
+      sql`${table.promptPriceUsd} >= 0 and ${table.completionPriceUsd} >= 0 and (${table.cachedInputPriceUsd} is null or ${table.cachedInputPriceUsd} >= 0)`,
+    ),
+  ],
+);
 
 export const aiRequestStatus = applicationSchema.enum("ai_request_status", [
   "started",
@@ -182,6 +224,7 @@ export const aiRequests = applicationSchema.table(
     latencyMs: integer("latency_ms"),
     model: text("model").notNull(),
     outputTokens: integer("output_tokens"),
+    providerCostUsd: numeric("provider_cost_usd", { precision: 24, scale: 12 }),
     provider: aiProvider("provider").notNull(),
     requestedAt: timestamp("requested_at", {
       mode: "date",
@@ -208,6 +251,10 @@ export const aiRequests = applicationSchema.table(
     check(
       "ai_requests_output_tokens_nonnegative",
       sql`${table.outputTokens} is null or ${table.outputTokens} >= 0`,
+    ),
+    check(
+      "ai_requests_provider_cost_nonnegative",
+      sql`${table.providerCostUsd} is null or ${table.providerCostUsd} >= 0`,
     ),
     check(
       "ai_requests_latency_nonnegative",

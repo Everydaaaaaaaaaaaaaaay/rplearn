@@ -5,6 +5,8 @@ export type AiMessage = Readonly<{
 
 export type AiResponseFormat = "json_object" | "text";
 
+export type AiProvider = "anthropic" | "deepseek" | "google" | "openai" | "openrouter";
+
 export type AiRouteConfig = Readonly<{
   allowJsonResponse: boolean;
   configVersion: number;
@@ -12,7 +14,7 @@ export type AiRouteConfig = Readonly<{
   maxMessages: number;
   maxOutputTokens: number;
   model: string;
-  provider: "deepseek" | "openai" | "anthropic" | "google";
+  provider: AiProvider;
   providerOptions: Readonly<Record<string, unknown>>;
   task: string;
   temperature: number | null;
@@ -26,7 +28,7 @@ export type AiRouteSettings = Readonly<{
   maxMessages: number;
   maxOutputTokens: number;
   model: string;
-  provider: "deepseek" | "openai" | "anthropic" | "google";
+  provider: AiProvider;
   providerOptions: Readonly<Record<string, unknown>>;
   temperature: number | null;
   timeoutMs: number;
@@ -52,7 +54,14 @@ export type AiUsage = Readonly<{
   cacheMissTokens?: number;
   inputTokens: number;
   outputTokens: number;
+  providerCostUsd?: string;
   totalTokens: number;
+}>;
+
+export type AiProviderClient = Readonly<{
+  complete: (request: AiProviderRequest) => Promise<AiCompletion>;
+  configured: boolean;
+  stream: (request: AiProviderRequest) => Promise<AsyncIterable<AiProviderStreamEvent>>;
 }>;
 
 export type AiCompletion = Readonly<{

@@ -22,7 +22,46 @@ export type CreditPrice = Readonly<{
   input: string;
   cachedInput: string;
   output: string;
+  usdToCny?: string;
 }>;
+
+export type ExternalCreditPriceResolver = (
+  provider: string,
+  model: string,
+  at: Date,
+) => Promise<CreditPrice>;
+
+function ceilDivide(value: bigint, divisor: bigint): bigint {
+  return (value + divisor - 1n) / divisor;
+}
+
+export function openRouterCreditPrice(
+  model: string,
+  pricing: Readonly<{
+    cachedInputPriceUsd: string | null;
+    completionPriceUsd: string;
+    observedAt: string;
+    promptPriceUsd: string;
+  }>,
+  usdToCny: string,
+  at: Date,
+): CreditPrice {
+  const fx = decimalUnits(usdToCny, 6);
+  const rate = (usdPerToken: string): string =>
+    String(ceilDivide(decimalUnits(usdPerToken, 18) * fx, 1_000_000_000_000_000n));
+  return {
+    cachedInput: rate(pricing.cachedInputPriceUsd ?? pricing.promptPriceUsd),
+    effectiveFrom: pricing.observedAt,
+    input: rate(pricing.promptPriceUsd),
+    model,
+    output: rate(pricing.completionPriceUsd),
+    pricedAt: at.toISOString(),
+    provider: "openrouter",
+    source: "https://openrouter.ai/api/v1/models",
+    usdToCny,
+    version: `openrouter-catalog-${pricing.observedAt}`,
+  };
+}
 export function loadCreditPriceBook(): PriceBook {
   return priceBookSchema.parse(
     JSON.parse(
@@ -79,6 +118,16 @@ export function exactCreditCost(
   usage: AiUsage | null,
 ): bigint | null {
   if (!usage) return null;
+  if (price.usdToCny !== undefined && usage.providerCostUsd !== undefined) {
+    try {
+      return ceilDivide(
+        decimalUnits(usage.providerCostUsd, 12) * decimalUnits(price.usdToCny, 6),
+        1_000_000_000n,
+      );
+    } catch {
+      return null;
+    }
+  }
   const {
     inputTokens: input,
     outputTokens: output,

@@ -176,6 +176,7 @@ export class AiRepository {
             output_tokens = ${usage.outputTokens},
             cache_hit_tokens = ${usage.cacheHitTokens ?? null},
             cache_miss_tokens = ${usage.cacheMissTokens ?? null},
+            provider_cost_usd = ${usage.providerCostUsd ?? null},
             upstream_request_id = ${upstreamRequestId},
             latency_ms = ${Math.max(0, Date.now() - startedAt)},
             completed_at = now()

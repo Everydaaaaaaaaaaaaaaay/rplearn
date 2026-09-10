@@ -7,12 +7,14 @@ import { createCreditService } from "../access/credit-service.js";
 import { createAccessService } from "../access/service.js";
 import type { BillingService } from "../billing/service.js";
 import type { DeepSeekClient } from "./deepseek/client.js";
+import type { AiCatalogService } from "./catalog-service.js";
 import { validateRuntimeRoute } from "./config.js";
 import { AiRepository } from "./repository.js";
 import type {
   AiCompletion,
   AiMessage,
   AiProviderRequest,
+  AiProviderClient,
   AiProviderStreamEvent,
   AiResponseFormat,
   AiUsage,
@@ -120,10 +122,34 @@ export function createAiService(
   redis: RedisResource,
   _billingService: BillingService,
   deepSeek: DeepSeekClient,
+  options: Readonly<{
+    catalog?: AiCatalogService;
+    openRouter?: AiProviderClient;
+  }> = {},
 ): AiService {
   const repository = new AiRepository(database);
   const access = createAccessService(database);
-  const credits = createCreditService(database);
+  const credits = createCreditService(database, options.catalog?.resolveCreditPrice);
+  const routePolicy = {
+    deepSeekAllowedModels: config.aiDeepSeekAllowedModels,
+    openRouterEnabled: options.openRouter?.configured ?? false,
+  };
+  const clientFor = (provider: string): AiProviderClient => {
+    const client =
+      provider === "deepseek"
+        ? deepSeek
+        : provider === "openrouter"
+          ? options.openRouter
+          : undefined;
+    if (!client?.configured) {
+      throw new AppError({
+        code: "AI_PROVIDER_NOT_CONFIGURED",
+        message: "The AI provider for this task is not configured.",
+        statusCode: 503,
+      });
+    }
+    return client;
+  };
   const userReference = (userId: string): string =>
     createHmac("sha256", config.authTokenHashPepper)
       .update(`ai-user:${userId}`)
@@ -152,23 +178,15 @@ export function createAiService(
   ): Promise<
     Readonly<{
       operationId: string;
+      providerClient: AiProviderClient;
       replay: StoredCompletion | null;
       providerRequest: AiProviderRequest;
       requestId: string;
       startedAt: number;
     }>
   > => {
-    const route = validateRuntimeRoute(
-      await repository.route(input.task),
-      config.aiDeepSeekAllowedModels,
-    );
-    if (route.provider !== "deepseek" || !deepSeek.configured) {
-      throw new AppError({
-        code: "AI_PROVIDER_NOT_CONFIGURED",
-        message: "The AI provider for this task is not configured.",
-        statusCode: 503,
-      });
-    }
+    const route = validateRuntimeRoute(await repository.route(input.task), routePolicy);
+    const providerClient = clientFor(route.provider);
     const limits = validateInput(input, route);
     const minuteCount = await redis.consumeFixedWindow(
       `ai:minute:${userReference(userId)}`,
@@ -246,6 +264,7 @@ export function createAiService(
       });
     return {
       operationId,
+      providerClient,
       replay: quota.replay ? (quota.result as StoredCompletion) : null,
       providerRequest: {
         maxAttempts: 1,
@@ -294,7 +313,7 @@ export function createAiService(
       if (prepared.replay) return { ...prepared.replay, requestId: prepared.requestId };
       let completion: AiCompletion;
       try {
-        completion = await deepSeek.complete(prepared.providerRequest);
+        completion = await prepared.providerClient.complete(prepared.providerRequest);
       } catch (error) {
         await fail(
           userId,
@@ -349,7 +368,7 @@ export function createAiService(
       }
       let providerEvents: AsyncIterable<AiProviderStreamEvent>;
       try {
-        providerEvents = await deepSeek.stream(prepared.providerRequest);
+        providerEvents = await prepared.providerClient.stream(prepared.providerRequest);
       } catch (error) {
         await fail(
           userId,
@@ -469,10 +488,7 @@ export function createAiService(
       return repository.ensureGuestPrincipal(guestUserId(reference), reference);
     },
     routeIdentity: async (task) => {
-      const route = validateRuntimeRoute(
-        await repository.route(task),
-        config.aiDeepSeekAllowedModels,
-      );
+      const route = validateRuntimeRoute(await repository.route(task), routePolicy);
       return {
         configVersion: route.configVersion,
         model: route.model,

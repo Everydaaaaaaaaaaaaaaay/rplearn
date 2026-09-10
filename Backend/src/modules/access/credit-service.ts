@@ -12,6 +12,7 @@ import {
   reservationCost,
   UNITS_PER_CREDIT,
   type CreditPrice,
+  type ExternalCreditPriceResolver,
 } from "./credit-pricing.js";
 
 const policySchema = z.object({
@@ -141,7 +142,10 @@ export interface CreditSnapshot {
     createdAt: string;
   }[];
 }
-export function createCreditService(database: DatabaseResource) {
+export function createCreditService(
+  database: DatabaseResource,
+  externalPrice?: ExternalCreditPriceResolver,
+) {
   const book = loadCreditPriceBook();
   return {
     snapshot: (userId: string): Promise<CreditSnapshot> =>
@@ -182,7 +186,7 @@ export function createCreditService(database: DatabaseResource) {
           })),
         };
       }),
-    reserve: (
+    reserve: async (
       userId: string,
       operationId: string,
       hash: string,
@@ -194,8 +198,49 @@ export function createCreditService(database: DatabaseResource) {
         maxOutputTokens: number;
         parentOperationId?: string;
       },
-    ): Promise<{ replay: boolean; result: unknown }> =>
-      database.sql.begin(async (sql) => {
+    ): Promise<{ replay: boolean; result: unknown }> => {
+      // Preserve idempotent replay even if the original model has since left the
+      // live catalog. The transaction below repeats these checks under the user
+      // lock to close the concurrent-insert race.
+      const [existingCredit] = await database.sql<
+        { request_hash: string; result: unknown; status: string }[]
+      >`select request_hash,status,result from app.credit_operations where user_id=${userId} and operation_id=${operationId}`;
+      if (existingCredit !== undefined) {
+        if (existingCredit.request_hash !== hash) {
+          reject("OPERATION_CONFLICT", "此请求编号已用于其他内容。");
+        }
+        if (existingCredit.result !== null) {
+          return { replay: true, result: existingCredit.result };
+        }
+        reject(
+          existingCredit.status === "reserved" || existingCredit.status === "dispatched"
+            ? "OPERATION_IN_PROGRESS"
+            : "OPERATION_FINALIZED",
+          "此请求已处理或正在核对，请勿重复提交。",
+        );
+      }
+      const [existingLegacy] = await database.sql<
+        { request_hash: string; result: unknown; status: string }[]
+      >`select request_hash,status,result from app.usage_operations where user_id=${userId} and operation_id=${operationId}`;
+      if (existingLegacy !== undefined) {
+        if (existingLegacy.request_hash !== hash) {
+          reject("OPERATION_CONFLICT", "此请求编号已用于其他内容。");
+        }
+        if (existingLegacy.status === "succeeded" && existingLegacy.result !== null) {
+          return { replay: true, result: existingLegacy.result };
+        }
+        reject("OPERATION_FINALIZED", "旧版请求已处理，请勿重复提交。");
+      }
+      // External catalog lookup uses the pool. Resolve it before opening the ledger
+      // transaction so saturated traffic cannot make every transaction wait for a
+      // second connection from the same pool.
+      const externalPriceSnapshot =
+        request.provider === "deepseek"
+          ? undefined
+          : externalPrice === undefined
+            ? reject("AI_PRICE_UNAVAILABLE", "模型价格尚未核验，暂不能使用。", 503)
+            : await externalPrice(request.provider, request.model, new Date());
+      return database.sql.begin(async (sql) => {
         const ctx = await context(sql, userId);
         const [old] = await sql<
           { request_hash: string; status: string; result: unknown }[]
@@ -229,7 +274,13 @@ export function createCreditService(database: DatabaseResource) {
           if (!parent || repair || request.task !== "conversation")
             reject("REPAIR_NOT_ALLOWED", "此回复不能再次修复。");
         }
-        const price = creditPrice(book, request.provider, request.model, ctx.at, true);
+        const price =
+          request.provider === "deepseek"
+            ? creditPrice(book, request.provider, request.model, ctx.at, true)
+            : externalPriceSnapshot;
+        if (price === undefined) {
+          throw new Error("External model price snapshot is unavailable");
+        }
         const amount = reservationCost(
           price,
           request.messages,
@@ -264,7 +315,8 @@ export function createCreditService(database: DatabaseResource) {
         await sql`insert into app.credit_operations(user_id,operation_id,parent_operation_id,request_hash,task,billing_scope,plan,window_key,policy_version,reserved_units,status,price,expires_at)
         values(${userId},${operationId},${request.parentOperationId ?? null},${hash},${request.task},${billingScope},${ctx.actor.plan},${ctx.window},${ctx.policy.version},${String(amount)},'reserved',${JSON.stringify(price)}::jsonb,now()+interval '5 minutes')`;
         return { replay: false, result: null };
-      }),
+      });
+    },
     dispatch: (userId: string, operationId: string): Promise<void> =>
       database.sql.begin(async (sql) => {
         await lock(sql, userId);
@@ -272,12 +324,12 @@ export function createCreditService(database: DatabaseResource) {
           { price: CreditPrice; at: string }[]
         >`select price,now()::text as at from app.credit_operations where user_id=${userId} and operation_id=${operationId} and status='reserved' and expires_at>now() for update`;
         if (!row) reject("OPERATION_FINALIZED", "请求已结束，不能再次调用模型。");
-        const price = creditPrice(
-          book,
-          row.price.provider,
-          row.price.model,
-          new Date(row.at),
-        );
+        const price =
+          row.price.provider === "deepseek"
+            ? creditPrice(book, row.price.provider, row.price.model, new Date(row.at))
+            : row.price.provider === "openrouter"
+              ? row.price
+              : reject("AI_PRICE_UNAVAILABLE", "模型价格尚未核验，暂不能使用。", 503);
         await sql`update app.credit_operations set status='dispatched',dispatched_at=now(),price=${JSON.stringify(price)}::jsonb where user_id=${userId} and operation_id=${operationId}`;
       }),
     finish: (
@@ -297,7 +349,10 @@ export function createCreditService(database: DatabaseResource) {
         if (!row || row.status === "settled" || row.status === "released") return;
         if (row.status === "pending" && usage === null && result === null) return;
         const cost =
-          model === row.price.model ? exactCreditCost(row.price, usage) : null;
+          model === row.price.model ||
+          (row.price.provider === "openrouter" && usage?.providerCostUsd !== undefined)
+            ? exactCreditCost(row.price, usage)
+            : null;
         const status =
           cost !== null
             ? "settled"

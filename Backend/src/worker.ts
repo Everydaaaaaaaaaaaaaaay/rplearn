@@ -19,6 +19,9 @@ import { createMediaService } from "./modules/media/service.js";
 import { createRedisResource } from "./infrastructure/redis/client.js";
 import { createBillingService } from "./modules/billing/service.js";
 import { createDeepSeekClient } from "./modules/ai/deepseek/client.js";
+import { createOpenRouterClient } from "./modules/ai/openrouter/client.js";
+import { AiCatalogRepository } from "./modules/ai/catalog-repository.js";
+import { createAiCatalogService } from "./modules/ai/catalog-service.js";
 import { createAiService } from "./modules/ai/service.js";
 import { createDictionaryTranslationProcessor } from "./modules/dictionary-translation/processor.js";
 import { createNpcService } from "./modules/npc/service.js";
@@ -65,12 +68,19 @@ async function main(): Promise<void> {
       ? {}
       : { deleteMediaObjects: mediaObjectStore.deleteObjects }),
   });
+  const openRouter = createOpenRouterClient(config);
+  const aiCatalog = createAiCatalogService(
+    config,
+    new AiCatalogRepository(database),
+    openRouter,
+  );
   const aiService = createAiService(
     config,
     database,
     redis,
     createBillingService(database),
     createDeepSeekClient(config),
+    { catalog: aiCatalog, openRouter },
   );
   const dictionaryTranslationProcessor = createDictionaryTranslationProcessor(
     database,
