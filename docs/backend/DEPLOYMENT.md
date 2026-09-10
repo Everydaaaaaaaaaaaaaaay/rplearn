@@ -1,8 +1,8 @@
 # 后端部署
 
 当前开发服务运行在 `rplearn.haruyuki.cn`，采用 Ubuntu 原生 systemd，不使用 Docker。
-Caddy 是唯一公网入口；API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机
-监听。
+Caddy 是唯一公网入口；`PUBLIC_HOST` 提供 App API，`ADMIN_HOST` 仅提供受管理员鉴权保护的
+AI 控制台。API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机监听。
 
 ## 首次初始化
 

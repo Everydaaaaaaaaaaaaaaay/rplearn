@@ -28,6 +28,7 @@ postgres_password="$(value_for POSTGRES_PASSWORD)"
 runtime_password="$(value_for RUNTIME_DB_PASSWORD)"
 redis_password="$(value_for REDIS_PASSWORD)"
 public_host="$(value_for PUBLIC_HOST)"
+admin_host="$(value_for ADMIN_HOST)"
 media_bucket="$(value_for MEDIA_S3_BUCKET)"
 media_access_key="$(value_for MEDIA_S3_ACCESS_KEY_ID)"
 media_secret_key="$(value_for MEDIA_S3_SECRET_ACCESS_KEY)"
@@ -89,6 +90,7 @@ MINIO_ROOT_USER=${media_access_key}
 EOF
 
 cat >"${caddy_file}" <<EOF
+ADMIN_HOST=${admin_host}
 MEDIA_S3_BUCKET=${media_bucket}
 PUBLIC_HOST=${public_host}
 EOF

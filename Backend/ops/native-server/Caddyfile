@@ -30,3 +30,26 @@
 		}
 	}
 }
+
+{$ADMIN_HOST} {
+	encode zstd gzip
+
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Robots-Tag "noindex, nofollow, noarchive"
+	}
+
+	route {
+		@root path /
+		redir @root /internal/admin/ai 302
+
+		@ai_console path /internal/admin/ai /internal/admin/ai/*
+		reverse_proxy @ai_console 127.0.0.1:8080 {
+			flush_interval -1
+		}
+
+		respond 404
+	}
+}

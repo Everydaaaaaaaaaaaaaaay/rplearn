@@ -27,11 +27,13 @@ base64_file() {
 }
 
 public_host="${PUBLIC_HOST:-rplearn.haruyuki.cn}"
+admin_host="${ADMIN_HOST:-coovingo.com}"
 app_version="${APP_VERSION:-$(git rev-parse --short=12 HEAD 2>/dev/null || date -u +%Y%m%d%H%M%S)}"
 jwt_key_id="production-$(date -u +%Y%m%d)-$(random_hex 4)"
 
 {
   printf 'PUBLIC_HOST=%s\n' "${public_host}"
+  printf 'ADMIN_HOST=%s\n' "${admin_host}"
   printf 'APP_VERSION=%s\n' "${app_version}"
   printf 'POSTGRES_PASSWORD=%s\n' "$(random_hex 24)"
   printf 'RUNTIME_DB_PASSWORD=%s\n' "$(random_hex 24)"
@@ -51,11 +53,16 @@ jwt_key_id="production-$(date -u +%Y%m%d)-$(random_hex 4)"
   printf 'CORS_ALLOWED_ORIGINS=https://%s\n' "${public_host}"
   printf 'METRICS_ENABLED=true\n'
   printf 'METRICS_BEARER_TOKEN=%s\n' "$(random_hex 32)"
-  printf 'ADMIN_API_ENABLED=false\n'
-  printf 'ADMIN_API_KEYS=\n'
+  printf 'ADMIN_API_ENABLED=%s\n' "${ADMIN_API_ENABLED:-false}"
+  printf 'ADMIN_API_KEYS=%s\n' "${ADMIN_API_KEYS:-}"
   printf 'DEEPSEEK_API_KEY=%s\n' "${DEEPSEEK_API_KEY}"
   printf 'DEEPSEEK_BASE_URL=https://api.deepseek.com\n'
   printf 'AI_DEEPSEEK_ALLOWED_MODELS=deepseek-v4-flash\n'
+  printf 'OPENROUTER_API_KEY=%s\n' "${OPENROUTER_API_KEY:-}"
+  printf 'OPENROUTER_BASE_URL=https://openrouter.ai/api/v1\n'
+  printf 'OPENROUTER_APP_NAME=LingoTrip\n'
+  printf 'OPENROUTER_SITE_URL=https://%s\n' "${admin_host}"
+  printf 'OPENROUTER_USD_TO_CNY=%s\n' "${OPENROUTER_USD_TO_CNY:-}"
   printf 'AI_GUEST_ACCESS_ENABLED=true\n'
   printf 'MEDIA_STORAGE_ENABLED=true\n'
   printf 'MEDIA_S3_BUCKET=lingotrip-media\n'
