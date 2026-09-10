@@ -87,6 +87,10 @@ targets:
         product: PlacementFeature
       - package: LingoKit
         product: StoryFeature
+      # RootView instantiates LondonEpisodeView, whose SwiftUI state exposes
+      # EpisodeSession metadata. Link StoryEngine directly into the app host.
+      - package: LingoKit
+        product: StoryEngine
       - package: LingoKit
         product: RosterFeature
       - package: LingoKit

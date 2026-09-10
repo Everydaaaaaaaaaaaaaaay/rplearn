@@ -164,7 +164,8 @@ struct SocialEncounterDiversityTests {
         let model = SocialEncounterModel(
             activity: try #require(SceneActivity.catalog.first),
             region: region,
-            deps: deps
+            deps: deps,
+            namespace: "social-encounter-diversity-test"
         )
         model.start()
         let deadline = ContinuousClock.now.advanced(by: .seconds(10))
