@@ -14,4 +14,4 @@ SHA-256: `6927a16f2adabb8f75f40e90bf9a1276c0ff7502a0f1d667552b4c1502a4945c`.
 
 The first attempted Swift command named package directories as test targets and did not run. The corrected hosted `LingoTripTests` invocation above passed. Xcode emitted dependency-scan warnings for DomainKit; no build or test failure remained.
 
-Semantic uniqueness is an editorial judgment, not a mathematical guarantee. Cohort/index screening can miss subtle similarities; the final acceptance rejects identified substantive overlaps without banning ordinary shared human traits. Production rollout and device installation are recorded separately after execution.
+Semantic uniqueness is an editorial judgment, not a mathematical guarantee. Cohort/index screening can miss subtle similarities; the final acceptance rejects identified substantive overlaps without banning ordinary shared human traits. See [production rollout](rollout.md) for the executed deployment, data-preservation verification and device installation status.
