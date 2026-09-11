@@ -39,6 +39,13 @@ ssh root@<server> \
 
 ## 最近发布验证
 
+2026-09-11：发布 `f4977bb`，上一版本 `8b2ef54` 保留。发布包 SHA-256：
+`aa63029d61fe3de2bdfbc68feb5dcd3393d9e982a8478c0cd7ab511c1d2f478e`。
+GLM 聊天改为 minimal 思考、总输出预算下限 512（受路由上限约束）；空正文记为失败并由服务承担。
+API / Worker active，公网 readiness 正常。使用当前发布的真实 OpenRouter 流式适配器验证，
+收到非空正文及 done，实际输出 30 tokens。无新增数据库迁移。
+详见[空回复修复记录](../chat-empty-reply-fix-2026-09-11.md)。新版 iPhone 13 开发包已覆盖安装成功。
+
 2026-09-11：发布 `8b2ef54`，上一版本 `c36296c` 保留用于回滚。发布包 SHA-256：
 `e978bc6c87150e63861328c96f96fc61e235f3e2873e904a808c5e8ad7b45709`。
 此次只改 OpenRouter 会话粘性路由，无新增迁移或生产依赖；API / Worker 均 active，

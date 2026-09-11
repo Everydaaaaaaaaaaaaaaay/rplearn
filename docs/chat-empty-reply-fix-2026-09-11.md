@@ -37,3 +37,11 @@ native_tokens_completion=120、native_tokens_reasoning=122。以前的服务把�
   使用 512 上限与 minimal 思考，两次合计 $0.00038835。不调用用户积分账本。
 - 证据：`/tmp/lingotrip-ruby-credit-tests2/report.json`、`/tmp/lingotrip-ruby-live-check.log`、
   `/tmp/lingotrip-grammar-derived-20260911/VerificationResults/20260911T012736Z-88116.xcresult`。
+
+## 发布与修正
+
+后端 `f4977bb` 已发布，API / Worker / readiness 正常。当前发布的真实流式适配器实测正文
+非空且正常 done，实际输出 30 tokens；该次供应商费用 $0.00032535，无用户积分扣款。
+报告账号有确定空正文证据的既有账单已转为服务承担；保留供应商用量与金额，补充更正标记，
+原始记录备份位于服务器受限运维审计目录。没有清库或删除聊天记录。
+新版原生 App 构建成功，并已覆盖安装到用户的 iPhone 13。
