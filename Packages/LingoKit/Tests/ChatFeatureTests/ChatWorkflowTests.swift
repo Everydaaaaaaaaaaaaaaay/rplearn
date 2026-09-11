@@ -134,7 +134,7 @@ struct ChatWorkflowTests {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
     }
 
-    @Test("聚焦不续期，一个字符就续期，退出缩短等待并保留草稿")
+    @Test("聚焦与单字符不续期，四种字符续期，退出缩短等待")
     func composerEventsControlHandoff() async throws {
         let provider = Provider()
         let clock = TestClock()
@@ -151,6 +151,8 @@ struct ChatWorkflowTests {
         f.model.composerFocusChanged(true)
         #expect((8...9).contains(f.model.userTurnHandoffDate(after: message).timeIntervalSince(sentAt)))
         f.model.draft = "I"
+        #expect((8...9).contains(f.model.userTurnHandoffDate(after: message).timeIntervalSince(sentAt)))
+        f.model.draft = "what"
         #expect(f.model.userTurnHandoffDate(after: message) == sentAt.addingTimeInterval(32))
         clock.set(sentAt.addingTimeInterval(20))
         f.model.draft = "I also wanted to say"

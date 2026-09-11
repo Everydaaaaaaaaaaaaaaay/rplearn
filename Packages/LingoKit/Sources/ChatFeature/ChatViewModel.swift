@@ -29,7 +29,7 @@ public final class ChatViewModel {
     public var errorMessage: String?
     public var draft = "" {
         didSet {
-            if draft != oldValue { composerActivity.recordEdit(at: deps.now()) }
+            if draft != oldValue { composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now()) }
         }
     }
     private var composerActivity = RoleplayComposerActivity()

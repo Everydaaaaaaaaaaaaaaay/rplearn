@@ -1,10 +1,12 @@
 import Foundation
 
-/// Local evidence of composing. Only actual edits extend the wait; focus never does.
+/// Local evidence of composing. Four distinct newly added characters extend the wait; focus never does.
 public struct RoleplayComposerActivity: Sendable {
     public private(set) var isFocused = false
     public private(set) var editedAt: Date?
     public private(set) var unfocusedAt: Date?
+
+    private var lastQualifiedDraft = ""
 
     public init() {}
 
@@ -14,14 +16,30 @@ public struct RoleplayComposerActivity: Sendable {
         if !focused { unfocusedAt = date }
     }
 
-    public mutating func recordEdit(at date: Date) {
+    public mutating func recordEdit(from oldDraft: String, to newDraft: String, at date: Date) {
+        let current = Array(newDraft.lowercased())
+        // Deletion, cursor movement and capitalization alone cannot renew the lease.
+        let insertedThisEdit = current.difference(from: Array(oldDraft.lowercased())).contains {
+            if case .insert = $0 { return true }
+            return false
+        }
+        guard insertedThisEdit else { return }
+        // Re-evaluate surviving additions, so typing and deleting noise cannot accumulate
+        // credit, and an already-qualified draft cannot renew on every subsequent keystroke.
+        let additions = current.difference(from: Array(lastQualifiedDraft)).compactMap { change -> Character? in
+            guard case let .insert(_, character, _) = change, !character.isWhitespace else { return nil }
+            return character
+        }
+        guard Set(additions).count >= 4 else { return }
         editedAt = date
+        lastQualifiedDraft = newDraft.lowercased()
     }
 
     /// Sending finishes this composition, even if the keyboard remains open.
     public mutating func didSend() {
         editedAt = nil
         unfocusedAt = nil
+        lastQualifiedDraft = ""
     }
 }
 

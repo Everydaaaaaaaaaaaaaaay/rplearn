@@ -261,12 +261,60 @@ struct RoleplayTypingPaceTests {
 struct RoleplayTurnTakingPolicyTests {
     private let policy = RoleplayTurnTakingPolicy.standard
 
+    @Test("四个不同字符才续期，删除和重复按键不会累积资格")
+    func distinctCharacterThreshold() {
+        var activity = RoleplayComposerActivity()
+        let start = Date(timeIntervalSince1970: 1000)
+        var draft = ""
+        func edit(_ next: String, seconds: Double) {
+            activity.recordEdit(from: draft, to: next, at: start.addingTimeInterval(seconds))
+            draft = next
+        }
+        for _ in 0..<10 {
+            edit("a", seconds: 1)
+            edit("", seconds: 2)
+        }
+        edit("aaaAAA   ", seconds: 3)
+        #expect(activity.editedAt == nil)
+        edit("abc", seconds: 4)
+        #expect(activity.editedAt == nil)
+        edit("abcd", seconds: 5)
+        #expect(activity.editedAt == start.addingTimeInterval(5))
+        // The existing four characters are not a permanent pass for later noise.
+        edit("abcda", seconds: 6)
+        edit("abcd", seconds: 7)
+        edit("", seconds: 8)
+        edit("abcd", seconds: 9)
+        #expect(activity.editedAt == start.addingTimeInterval(5))
+        edit("abcdefgh", seconds: 10)
+        #expect(activity.editedAt == start.addingTimeInterval(10))
+        activity.didSend()
+        draft = ""
+        edit("abcd", seconds: 11)
+        #expect(activity.editedAt == start.addingTimeInterval(11))
+    }
+
+    @Test("删除掉的不同字符不算，粘贴与中间插入可达标")
+    func survivingAdditionsAndReplacement() {
+        let start = Date(timeIntervalSince1970: 1000)
+        var activity = RoleplayComposerActivity()
+        for text in ["a", "b", "c", "d"] {
+            activity.recordEdit(from: "", to: text, at: start)
+            activity.recordEdit(from: text, to: "", at: start)
+        }
+        #expect(activity.editedAt == nil)
+        activity.recordEdit(from: "", to: "Hello", at: start)
+        #expect(activity.editedAt == start) // h/e/l/o
+        activity.recordEdit(from: "Hello", to: "Hworldello", at: start.addingTimeInterval(1))
+        #expect(activity.editedAt == start.addingTimeInterval(1))
+    }
+
     @Test("发送后键盘常开不会自动续期，重复检查也不延长等待")
     func idleOpenKeyboard() {
         let start = Date(timeIntervalSince1970: 1000)
         var activity = RoleplayComposerActivity()
         activity.focusChanged(true, at: start.addingTimeInterval(-5))
-        activity.recordEdit(at: start.addingTimeInterval(-1))
+        activity.recordEdit(from: "", to: "abcd", at: start.addingTimeInterval(-1))
         activity.didSend()
         activity.focusChanged(true, at: start.addingTimeInterval(7)) // unchanged focus
         for _ in 0..<4 {
@@ -282,7 +330,7 @@ struct RoleplayTurnTakingPolicyTests {
         activity.focusChanged(true, at: start.addingTimeInterval(7))
         #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(8))
-        activity.recordEdit(at: start.addingTimeInterval(20))
+        activity.recordEdit(from: "", to: "abcd", at: start.addingTimeInterval(20))
         #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(45))
         activity.focusChanged(false, at: start.addingTimeInterval(21))
@@ -291,7 +339,7 @@ struct RoleplayTurnTakingPolicyTests {
         activity.focusChanged(true, at: start.addingTimeInterval(24))
         #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(26))
-        activity.recordEdit(at: start.addingTimeInterval(24))
+        activity.recordEdit(from: "", to: "efgh", at: start.addingTimeInterval(24))
         #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(49))
     }
@@ -314,10 +362,10 @@ struct RoleplayTurnTakingPolicyTests {
         let start = Date(timeIntervalSince1970: 1000)
         var activity = RoleplayComposerActivity()
         activity.focusChanged(true, at: start)
-        activity.recordEdit(at: start.addingTimeInterval(3))
+        activity.recordEdit(from: "", to: "abcd", at: start.addingTimeInterval(3))
         #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(28))
-        activity.recordEdit(at: start.addingTimeInterval(200))
+        activity.recordEdit(from: "", to: "efgh", at: start.addingTimeInterval(200))
         #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(225))
     }
