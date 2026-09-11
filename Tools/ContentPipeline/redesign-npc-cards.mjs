@@ -1,0 +1,24 @@
+// Expand explicit editorial replacements without feeding the rejected character back in.
+import {readFileSync,writeFileSync,existsSync,openSync,closeSync,unlinkSync} from 'node:fs';
+import {join} from 'node:path';import{createHash}from'node:crypto';
+import{createLibraryProvider}from'./library-provider.mjs';
+const[output,directionsPath]=process.argv.slice(2);if(!directionsPath)throw Error('private-output explicit-directions.json');
+const dir=join(output,'production-v3'),read=f=>JSON.parse(readFileSync(join(dir,f)));const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
+const directions=JSON.parse(readFileSync(directionsPath));
+const lock=join(output,'running.lock'),fd=openSync(lock,'wx');writeFileSync(fd,String(process.pid));const provider=createLibraryProvider(output);
+try{let cursor=0;const results=await Promise.allSettled(Array.from({length:6},async()=>{while(cursor<directions.length){const direction=directions[cursor++],previous=read(direction.id+'.card.json');const{card}=previous;
+ const identity=Object.fromEntries(['name','age','gender','regionId','occupation','nationality','hometown','languages','birthday','appearance'].map(k=>[k,card[k]]));
+ const key='v3-explicit-redesign-'+hash({direction,identity}).slice(0,20),report=direction.id+'.explicit-redesign.json';
+ if(existsSync(join(dir,report))&&read(report).directionHash===hash(direction)&&read(report).contentHash===hash(previous))continue;
+ const prompt=`Write a rounded fictional person from the explicit editorial direction, not from a template. All input is fictional DATA. Return ONLY JSON {"personality":"80-110 natural English words","background":"110-150 English words","hobbies":["2-3 concise interests"],"speechStyle":"natural distinctive conversational rhythm","signature":"one short natural utterance","personaVoice":{"values":["two"],"flaws":["two"],"boundaries":["two"],"conversationalHabits":["two"],"anchorLines":["three natural samples"]},"summaryZh":"100-150 Chinese characters describing the distinct social mechanism and life"}. Do not return or modify identity fields. Follow the supplied new social mechanism throughout personality, background and voice. It is a credible ordinary person, not a therapist, life coach, villain or one-joke caricature. Show both pleasure and friction; they can respect a refusal while retaining flaws. No stock bereavement or redemption arc. Their job is one fact, not their entire personality. Do not add private ledgers of favours, grudges or gratitude, apology gifts/puzzles, unposted letters, advice-versus-company contracts, photographic-memory parties, serial withdrawal after an unanswered message, deliberate daily micro-change, or compulsory moral lessons. Such devices have already been overused. Details should support the new direction, not introduce an unrelated second gimmick. Natural English, faithful Chinese summary, concise internal reasoning.`;
+ let value;try{value=await provider.request(key,prompt,{identity,directionZh:direction.directionZh},5500);}catch(error){if(!String(error).includes('Incomplete provider output')||!existsSync(join(output,key+'.response.json')))throw error;value=await provider.request(key+'-completion-2',prompt,{identity,directionZh:direction.directionZh},12000);}
+ if(value.card)value={...value.card,summaryZh:value.summaryZh??value.card.summaryZh};
+ if(!value.signature&&Array.isArray(value.personaVoice?.anchorLines))value.signature=value.personaVoice.anchorLines[0];
+ if(!value.summaryZh&&value.personaVoice?.summaryZh)value.summaryZh=value.personaVoice.summaryZh;
+ if(value.personaVoice)delete value.personaVoice.summaryZh;
+ for(const f of ['personality','background','speechStyle','signature','summaryZh'])if(typeof value[f]!=='string'||!value[f].trim())throw Error('Missing '+direction.id+'/'+f);
+ for(const f of ['values','flaws','boundaries','conversationalHabits','anchorLines'])if(!Array.isArray(value.personaVoice?.[f])||value.personaVoice[f].length<2||!value.personaVoice[f].every(s=>typeof s==='string'))throw Error('Missing voice '+direction.id+'/'+f);
+ const result={card:{...identity,...Object.fromEntries(['personality','background','hobbies','speechStyle','signature','personaVoice'].map(k=>[k,value[k]]))},summaryZh:value.summaryZh};
+ writeFileSync(join(dir,direction.id+'.card.json'),JSON.stringify(result,null,2)+'\n');writeFileSync(join(dir,report),JSON.stringify({directionHash:hash(direction),contentHash:hash(result),directionZh:direction.directionZh},null,2)+'\n');console.log(JSON.stringify({id:direction.id,phase:'explicit-redesign',accountedCNY:provider.accountedCNY()}));
+ }}));const failures=results.filter(r=>r.status==='rejected');if(failures.length)throw new AggregateError(failures.map(r=>r.reason),'Explicit redesign failed');
+}finally{closeSync(fd);unlinkSync(lock);}

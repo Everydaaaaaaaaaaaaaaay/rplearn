@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 // All planning, generation and review share one durable admission ledger.
 // Interrupted/unknown-cost attempts retain their upper bound; never assume free.
-export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch } = {}) {
+export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch, reasoningEffort = 'minimal', model = 'z-ai/glm-5.3-flash', promptPriceCeiling = 0.2, completionPriceCeiling = 0.6, preferredProviders = ['Parasail'] } = {}) {
   if (!(capCNY > 0 && capCNY <= 25)) throw Error('Library budget must be within CNY 25');
   mkdirSync(output, { recursive: true });
   const ledgerPath = join(output, 'ledger.jsonl');
@@ -19,9 +19,9 @@ export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch } =
   async function request(key, system, data, maxTokens = 14000) {
     if (!/^[a-z0-9-]+$/.test(key)) throw Error('Invalid receipt key');
     const body = {
-      model: 'z-ai/glm-5.3-flash', messages: [{ role: 'system', content: system }, { role: 'user', content: JSON.stringify(data) }],
-      max_tokens: maxTokens, temperature: 0.65, reasoning: { effort: 'minimal' }, response_format: { type: 'json_object' },
-      provider: { order: ['Parasail'], allow_fallbacks: true, require_parameters: true, max_price: { prompt: 0.2, completion: 0.6 } },
+      model, messages: [{ role: 'system', content: system }, { role: 'user', content: JSON.stringify(data) }],
+      max_tokens: maxTokens, temperature: 0.65, reasoning: { effort: reasoningEffort }, response_format: { type: 'json_object' },
+      provider: { ...(preferredProviders.length ? {order: preferredProviders} : {}), allow_fallbacks: true, require_parameters: true, max_price: { prompt: promptPriceCeiling, completion: completionPriceCeiling } },
       user: 'lingotrip-offline-library-20260911',
     };
     const serialized = JSON.stringify(body);
@@ -33,7 +33,7 @@ export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch } =
       if (!existsSync(responsePath)) throw Error('Unresolved paid attempt; manual reconciliation required: ' + key);
       return decode(JSON.parse(readFileSync(responsePath, 'utf8')));
     }
-    const upperUSD = (Buffer.byteLength(serialized) * 0.2 + maxTokens * 0.6) / 1e6 * 1.1;
+    const upperUSD = (Buffer.byteLength(serialized) * promptPriceCeiling + maxTokens * completionPriceCeiling) / 1e6 * 1.1;
     if (accountedCNY() + upperUSD * 7.2 > capCNY) throw Error('CNY 25 library budget exhausted');
     if (!process.env.OPENROUTER_API_KEY) throw Error('Server-side provider key required');
     writeFileSync(requestPath, serialized);
@@ -58,5 +58,7 @@ export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch } =
 function decode(envelope) {
   if (envelope.error) throw Error('Provider request failed: ' + String(envelope.error.code));
   if (envelope.choices?.[0]?.finish_reason !== 'stop') throw Error('Incomplete provider output');
-  return JSON.parse(envelope.choices[0].message.content);
+  const text = envelope.choices[0].message.content.trim();
+  const fenced = /^```(?:json)?\s*([\s\S]*?)\s*```$/.exec(text);
+  return JSON.parse(fenced ? fenced[1] : text);
 }

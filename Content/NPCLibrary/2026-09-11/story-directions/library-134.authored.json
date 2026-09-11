@@ -1,0 +1,254 @@
+{
+  "story": {
+    "titleZh": "报喜太快",
+    "actionId": "rain-napkin",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Rain taps the café window. You offer a tissue to the person folding a wet bag beside the table.",
+            "chinese": "雨点敲着咖啡馆窗户。桌旁的人正收起湿袋子，你递过去一张纸巾。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thanks. The outside got wet, but the things inside are all right.",
+            "chinese": "谢谢。外面湿了，里面的东西倒没事。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Remy accepts the tissue and wipes the bag. A message lights up his phone.",
+            "chinese": "Remy接过纸巾，擦了擦袋子。他的手机亮起一条消息。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Oh, good! Leon finally fixed that sink. I knew he would. Wait — that says André. I was about to give the wrong man a cheer.",
+            "chinese": "太好了！Leon终于把水槽修好了。我就知道他能行。等等——上面写的是André。我差点给错人喝彩。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask whose news it actually is.",
+            "chinese": "问消息里到底是谁修好的。",
+            "next": "a"
+          },
+          {
+            "english": "Ask whether he celebrates every small bit of good news.",
+            "chinese": "问他是不是小小的好消息也会庆祝。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He picks up the phone and reads the message again.",
+            "chinese": "他拿起手机，重新读那条消息。"
+          },
+          {
+            "speaker": "npc",
+            "english": "André. Definitely André. Leon told me about the leak, which is not the same as fixing it.",
+            "chinese": "André。确实是André。Leon跟我说过漏水，但说过可不等于修好。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I had the name ready before I had the facts. That happens more than I like to admit.",
+            "chinese": "我还没弄清事实，名字就先出口了。这种事比我愿意承认的还多。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He sets the phone down, this time without announcing anything else.",
+            "chinese": "他放下手机，这回没再宣布别的事。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Suggest he say the correction clearly.",
+            "chinese": "建议他把正确的人说明白。",
+            "next": "aa"
+          },
+          {
+            "english": "Ask whether people have pointed this out before.",
+            "chinese": "问以前有没有人指出过这个毛病。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Quite often. A machine working again, a drawer finally opening — I like the moment when a job is done.",
+            "chinese": "挺常的。机器又能转了，抽屉终于拉开了——我喜欢事情办成的那一下。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He presses the tissue into a damp fold in his bag.",
+            "chinese": "他用纸巾按了按袋子里一道湿折痕。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Sometimes I start cheering while someone still wants to complain about how hard it was. Bit early of me.",
+            "chinese": "有时别人还想抱怨有多难，我就已经开始欢呼了。是有点太早。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He gives a small, sheepish smile and puts the used tissue aside.",
+            "chinese": "他有点不好意思地笑了笑，把用过的纸巾放到一边。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Say an unfinished problem need not become a celebration yet.",
+            "chinese": "说问题还没解决时不必急着庆祝。",
+            "next": "ba"
+          },
+          {
+            "english": "Ask what he has finished himself lately.",
+            "chinese": "问他自己最近办成了什么。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Right. André fixed it. Leon told me it was leaking. Two different jobs, two different people.",
+            "chinese": "对。André修好的，Leon告诉我它在漏。两件不同的事，两个人。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He says the names slowly, then laughs at his own rushed announcement.",
+            "chinese": "他慢慢把名字说清楚，然后笑自己刚才报得太急。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There. That one needed a correction, not a louder voice.",
+            "chinese": "好了。这回需要的是更正，不是再大声一点。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He folds the dry bag and puts it beside his chair.",
+            "chinese": "他把擦干的袋子折好，放到椅子旁。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "They have. Usually after I have told the story with great confidence.",
+            "chinese": "有过。通常是在我信心满满地讲完之后。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He glances once more at the name on the screen.",
+            "chinese": "他又看了一眼屏幕上的名字。"
+          },
+          {
+            "speaker": "npc",
+            "english": "André. I have it now. I can be pleased for him without adding the wrong person to it.",
+            "chinese": "André。这回记清了。替他高兴就好，不用再把别的人加进去。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The phone goes into his pocket. He finishes drying the last corner of the bag.",
+            "chinese": "他把手机收进口袋，擦干袋子最后一个湿角。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Fair. Sometimes it is only half fixed. Or the person is just tired.",
+            "chinese": "有道理。有时只修好一半，或者那个人就是累了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He stops twisting the tissue and rests his hands on the table.",
+            "chinese": "他不再绞那张纸巾，把手放到桌上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll hear the rest before I announce the happy ending. At least, that's the plan.",
+            "chinese": "先听完，再宣布圆满结束。至少我打算这样。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He smiles, then leaves a comfortable pause beside the sound of rain.",
+            "chinese": "他笑了笑，随着雨声留下一段自然的停顿。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "One corner of a drawer. It has been full of odd bits for two years. I finally cleared that corner.",
+            "chinese": "抽屉的一角。那些零碎东西堆了两年，我终于清出一个角。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He makes a small square with his fingers, deliberately keeping it small.",
+            "chinese": "他用手指比了一个小方块，特意比得很小。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Not the whole drawer. One corner. And that one was definitely me.",
+            "chinese": "不是整个抽屉，就一个角。而且这回肯定是我自己干的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He laughs and tucks the folded bag out of the way.",
+            "chinese": "他笑起来，把折好的袋子放到不碍事的地方。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  },
+  "summaryZh": "Remy接纸巾擦湿袋时把朋友修水槽的喜讯叫错了名字，复看消息后明确纠正。用户可追问归功与旧毛病，也可聊庆祝是否过早，或听他讲自己清完一小格抽屉的真实成果。",
+  "reunion": {
+    "titleZh": "道具先躲雨",
+    "beats": [
+      {
+        "speaker": "narrator",
+        "english": "At a rainy café, you offer Remy a tissue as he puts away a damp case.",
+        "chinese": "雨天咖啡馆里，Remy正收起湿道具盒，你递给他纸巾。"
+      },
+      {
+        "speaker": "npc",
+        "english": "Thanks. Just the lid needs a wipe.",
+        "chinese": "谢谢。擦擦盖子就行。"
+      },
+      {
+        "speaker": "narrator",
+        "english": "He accepts it and dries the outside. Inside, a few ordinary coins lie in separate slots.",
+        "chinese": "他接过纸巾擦干盒外。里面几枚普通硬币放在分开的小格里。"
+      },
+      {
+        "speaker": "npc",
+        "english": "My magic kit. No performance today — the coins and I are just staying out of the rain.",
+        "chinese": "我的魔术道具。今天不表演——硬币和我都只是来躲雨的。"
+      },
+      {
+        "speaker": "narrator",
+        "english": "He closes the case and settles it safely in his bag.",
+        "chinese": "他合上盒子，稳妥放进包里。"
+      }
+    ]
+  }
+}

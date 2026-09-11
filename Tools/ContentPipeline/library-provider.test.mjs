@@ -12,7 +12,7 @@ test('receipts survive resume, replay is free and changed inputs cannot reuse ID
   let calls = 0;
   const fetcher = async () => {
     calls++;
-    return new Response(JSON.stringify({ usage: { cost: 0.001 }, choices: [{ finish_reason: 'stop', message: { content: '{"ok":true}' } }] }));
+    return new Response(JSON.stringify({ usage: { cost: 0.001 }, choices: [{ finish_reason: 'stop', message: { content: '```json\n{"ok":true}\n```' } }] }));
   };
   try {
     const first = createLibraryProvider(dir, { fetcher });
