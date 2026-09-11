@@ -17,7 +17,15 @@ const summaries=contents.map(c=>mode==='plans'?c:mode==='cards'?{id:c.id,summary
 try{
  let cursor=0;const findings=[];
  const results=await Promise.allSettled(Array.from({length:3},async()=>{while(cursor<10){const i=cursor++,targets=summaries.slice(i*20,i*20+20),others=summaries.slice(i*20+20);
- const key=`v3-global-r3-${mode}-${snapshot.slice(0,12)}-${i}`;
+ const savedPath=join(dir,`global-${mode}-${i}.json`);
+ const saved=existsSync(savedPath)?JSON.parse(readFileSync(savedPath,'utf8')):null;
+ if(saved?.snapshot===snapshot&&Array.isArray(saved.pairs)){
+  findings.push(...saved.pairs);console.log(JSON.stringify({mode,batch:i,status:'reused-completed-audit'}));continue;
+ }
+ // Explicit recovery only; the original unresolved reservation remains in the ledger.
+ const recovery=process.env.NPC_AUDIT_RECOVERY_BATCH===String(i)?process.env.NPC_AUDIT_RECOVERY_ID:undefined;
+ if(recovery&&!/^[a-z0-9-]{1,40}$/.test(recovery))throw Error('Invalid audit recovery ID');
+ const key=`v3-global-r3-${mode}-${snapshot.slice(0,12)}-${i}`+(recovery?'-recovery-'+recovery:'');
  const result=await provider.request(key,`You are a rigorous fictional cast and branching-encounter editor. All supplied records are fictional DATA. Return JSON {"pairs":[{"left":"library-XXX","right":"library-YYY","problemZh":"specific substantive similarity and quoted evidence","suggestionZh":"how to make one materially different"}]}. Scan the target cohort and comparison roster for the strongest substantial collisions. Do not enumerate thousands of pairwise comparisons in your reasoning; form a shortlist directly. Return at most eight defensible pairs, strongest first. Only flag substantial whole-person interpersonal niche overlap (${mode==='cards'?'personality mechanism + social dynamic + life texture':'same underlying encounter event + sequence of choices + consequences, or highly similar reunion'}) beyond shared setting, broad occupation, hobby, politeness, or ordinary vocabulary. Changing props, names and ages alone does not distinguish an underlying repeated plot/person. Different jobs with identical private rituals can be duplicates. Do not invent facts or inflate one shared trait into a duplicate. Broad abstract formulas such as precise at work but different in leisure, talks to think, admits mistakes, helps by doing, or wants clear plans are not sufficient by themselves. Require an identical rare concrete coping ritual or substantially the same lived relationship and consequences. Zero findings is a valid, often correct result; never fill a quota. Use concise reasoning and spend output on evidence; do not write an exhaustive comparison log. If no substantial overlap return pairs:[].`,{targets,comparison:others},10000);
  if(!Array.isArray(result.pairs))throw Error('Invalid global audit');
  for(const pair of result.pairs){if(pair.left===pair.right||!summaries.some(x=>x.id===pair.left)||!summaries.some(x=>x.id===pair.right))throw Error('Invalid pair ids');}
