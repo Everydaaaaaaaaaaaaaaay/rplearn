@@ -42,3 +42,7 @@ Inspect Git status first and preserve unrelated work. Finish with a focused comm
 asked otherwise: stage explicit task paths, inspect the staged diff, and report verification
 and remaining unrelated changes. Exclude generated output, caches, credentials and local
 configuration. Do not rewrite commits or destructively reset worktrees without explicit permission.
+
+Standing owner instruction (2026-09-11): automatically create a focused commit after
+each completed and verified logical change, without waiting for a separate commit request.
+Continue to stage only task-related paths and preserve unrelated work.
