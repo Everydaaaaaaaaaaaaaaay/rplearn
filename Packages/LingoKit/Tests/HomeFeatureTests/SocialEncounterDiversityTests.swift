@@ -106,7 +106,7 @@ struct SocialEncounterDiversityTests {
         let expected = try library.chapter(characterID:npc.id,actionID:activity.id,choices:[1,0])
         #expect(model.chapters.last == expected)
         let messages = try await deps.chatStore.recentMessages(characterID:npc.id,limit:100)
-        #expect(messages.count == model.chapters.flatMap(\.beats).filter { $0.speaker == "npc" }.count + 2)
+        #expect(messages.isEmpty)
         #expect(await calls.count == 0)
         #expect(Set(await registry.runIDs) == [model.runID])
         let previousCount = await registry.runIDs.count

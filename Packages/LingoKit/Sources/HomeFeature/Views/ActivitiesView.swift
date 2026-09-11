@@ -52,7 +52,7 @@ public struct ActivitiesView: View {
 
             if let activity, let cityID, let model = journey.model {
                 ActivityActionView(model: model, journey: journey, deps: deps, isVisible: isVisible,
-                                   onBack: onClose, onChat: onChat) { selections, runID, character, responses in
+                                   onBack: onClose) { selections, runID, character, responses in
                     let journal = ActivityJournal(namespace: storageNamespace, city: cityID)
                     if model.isSolitude {
                         records = try journal.completeSolitude(activity, runID: runID)

@@ -61,19 +61,33 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, text)
     }
 
+    func testPreparationIsCentered() {
+        let app = launch()
+        defer { app.terminate() }
+        tap("activities.scene.park-seat", app: app)
+        let start = app.buttons["activities.action.start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 5))
+        XCTAssertTrue(start.isHittable)
+        XCTAssertGreaterThan(start.frame.midY, app.frame.height * 0.4)
+        XCTAssertLessThan(start.frame.midY, app.frame.height * 0.8)
+        attach("centered-preparation", app: app)
+    }
+
     func testEncounterAppearance() {
         let originalAppearance = XCUIDevice.shared.appearance
         defer { XCUIDevice.shared.appearance = originalAppearance }
         for appearance in ["Dark", "Light"] {
             let app = launch(appearance: appearance)
             tap("activities.scene.park-seat", app: app)
+            XCTAssertTrue(app.buttons["activities.action.start"].waitForExistence(timeout: 5))
             attach("encounter-confirmation-\(appearance)", app: app)
             tap("activities.action.start", app: app)
             XCTAssertTrue(app.otherElements["activities.journey"].waitForExistence(timeout: 3))
             attach("encounter-journey-\(appearance)", app: app)
             XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 20))
             attach("encounter-story-\(appearance)", app: app)
-            XCTAssertTrue(app.switches["自动播放台词"].exists)
+            XCTAssertFalse(app.switches["自动播放台词"].exists)
+            XCTAssertTrue(app.buttons["activities.story.play"].exists)
             app.terminate()
         }
     }
@@ -90,17 +104,17 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertFalse(app.buttons["activities.choice.0"].exists)
         // Wall-clock deadline runs offscreen; no application navigation should occur.
         let wait = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            app.tabBars.buttons["首页"].value as? String == "•"
+            app.tabBars.buttons["活动"].value as? String == "•"
         }, object: nil)
         _ = XCTWaiter.wait(for: [wait], timeout: 16)
         XCTAssertTrue(app.tabBars.buttons["我的"].isSelected)
-        app.tabBars.buttons["首页"].tap()
+        app.tabBars.buttons["活动"].tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 3))
         XCTAssertFalse(app.otherElements["activities.journey"].exists)
         attach("journey-encounter-result", app: app)
         tap("activities.action.next", app: app)
         app.tabBars.buttons["我的"].tap()
-        app.tabBars.buttons["首页"].tap()
+        app.tabBars.buttons["活动"].tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 4))
     }
 
@@ -178,20 +192,20 @@ final class ActivitySceneTests: XCTestCase {
         }
     }
 
-    func testParkSocialConversationFriendAndChatHandoff() {
+    func testParkEncounterFriendshipAndJournal() {
         let app = launch()
         defer { app.terminate() }
         attach("park-scene", app: app)
         tap("activities.scene.park-seat", app: app)
         tap("activities.action.start", app: app)
         finishChapter(app, choice: 0)
+        XCTAssertFalse(app.buttons["activities.encounter.chat"].exists)
+        app.buttons["回顾你的选择"].tap()
+        attach("bilingual-choice-review", app: app)
+        app.buttons["回顾你的选择"].tap()
         tap("activities.encounter.addFriend", app: app)
         XCTAssertTrue(app.staticTexts["activities.encounter.contactStatus"].waitForExistence(timeout: 5))
-        tap("activities.encounter.chat", app: app)
-        XCTAssertTrue(app.buttons["返回城市活动"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.staticTexts.containing(
-            NSPredicate(format: "label CONTAINS %@", "加载会话失败")).firstMatch.exists)
-        app.buttons["返回城市活动"].tap()
+        XCTAssertFalse(app.buttons["activities.encounter.chat"].exists)
         tap("activities.action.finish", app: app)
         tap("activities.journal", app: app)
         XCTAssertTrue(app.navigationBars["相遇与足迹"].waitForExistence(timeout: 4))
@@ -207,6 +221,12 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.scene.park-route", app: app)
         tap("activities.action.start", app: app)
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 22))
+        let occupation = app.buttons.matching(NSPredicate(format: "label MATCHES %@", "bicycle\\s*")).firstMatch
+        XCTAssertTrue(occupation.waitForExistence(timeout: 4))
+        occupation.tap()
+        XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 5))
+        attach("occupation-word-lookup", app: app)
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.24)).tap()
         let word = app.buttons.matching(NSPredicate(format: "label MATCHES %@", "map\\s*")).firstMatch
         XCTAssertTrue(word.waitForExistence(timeout: 4))
         word.tap()
@@ -215,10 +235,10 @@ final class ActivitySceneTests: XCTestCase {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.24)).tap()
         XCTAssertFalse(app.buttons["播放读音"].exists)
         tap("activities.action.next", app: app)
-        XCTAssertTrue(app.buttons["播放台词"].waitForExistence(timeout: 4))
-        app.buttons["播放台词"].tap()
-        XCTAssertTrue(app.buttons["停止"].exists)
-        app.buttons["停止"].tap()
+        tap("activities.story.play", app: app)
+        tap("activities.story.history", app: app)
+        XCTAssertEqual(app.buttons["activities.story.history"].value as? String, "展开")
+
     }
 
     func testChapterAlwaysOffersFriendshipAndAllowsLeaving() {
@@ -231,7 +251,7 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.action.start", app: app)
         finishChapter(app, choice: 1)
         XCTAssertTrue(app.buttons["activities.encounter.addFriend"].exists)
-        XCTAssertTrue(app.buttons["activities.encounter.chat"].exists)
+        XCTAssertFalse(app.buttons["activities.encounter.chat"].exists)
         tap("activities.action.finish", app: app)
         edgeBack(app)
         XCTAssertTrue(app.buttons["城市活动"].waitForExistence(timeout: 4))

@@ -469,7 +469,7 @@ struct RootView: View {
             homeStack
                 .tag(AppTab.home)
                 .tabItem {
-                    Label("首页", systemImage: "house")
+                    Label("活动", systemImage: "figure.walk")
                 }
                 .badge(activityJourney.hasUnreadResult ? "•" : nil)
             meStack

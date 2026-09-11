@@ -6,18 +6,16 @@ import PersistenceKit
 import SpeechKit
 import SwiftUI
 
-/// A real private conversation over the shared scene, not a disconnected quiz.
+/// A self-contained encounter story with shared dictionary and speech controls.
 struct ActivityActionView: View {
     var activity: SceneActivity { model.activity }
     let isVisible: Bool
     let onBack: () -> Void
-    let onChat: (CharacterDTO) -> Void
     let onComplete: ([Int], UUID, CharacterDTO?, [String]) throws -> Void
     let deps: HomeDependencies
     @ObservedObject var model: SocialEncounterModel
     @ObservedObject var journey: ActivityJourneyCoordinator
     @Environment(\.scenePhase) private var scenePhase
-    @State private var autoVoice = false
     @State private var showsTranscript = false
     @State private var saved = false
     @State private var saveError: String?
@@ -25,10 +23,10 @@ struct ActivityActionView: View {
     private let ink = Color.dsSceneTextPrimary
 
     init(model: SocialEncounterModel, journey: ActivityJourneyCoordinator, deps: HomeDependencies, isVisible: Bool,
-         onBack: @escaping () -> Void, onChat: @escaping (CharacterDTO) -> Void,
+         onBack: @escaping () -> Void,
          onComplete: @escaping ([Int], UUID, CharacterDTO?, [String]) throws -> Void) {
         self.model = model; self.journey = journey; self.deps = deps; self.isVisible = isVisible
-        self.onBack = onBack; self.onChat = onChat; self.onComplete = onComplete
+        self.onBack = onBack; self.onComplete = onComplete
     }
 
     var body: some View {
@@ -39,6 +37,8 @@ struct ActivityActionView: View {
                         cityID: model.region.id, cityName: model.region.nameZh,
                         isVisible: isVisible && scenePhase == .active, error: model.error,
                         onRetry: model.retry)
+                } else if !model.started {
+                    preparationContent
                 } else {
                     resultContent
                 }
@@ -50,9 +50,6 @@ struct ActivityActionView: View {
         .onChange(of: isVisible) { _, visible in if !visible { model.stopSpeech() } }
         .onChange(of: scenePhase) { _, phase in if phase != .active { model.stopSpeech() } }
         .onChange(of: wordSelection != nil) { _, showing in if showing { model.stopSpeech() } }
-        .onChange(of: model.reply?.english) { _, _ in
-            if autoVoice && model.canReveal && isVisible && scenePhase == .active && wordSelection == nil { model.speak() }
-        }
         .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
             onSpeak: { word in
@@ -63,17 +60,46 @@ struct ActivityActionView: View {
             exampleTranslationActions: deps.exampleTranslationActions)
     }
 
+    private var navigationHeader: some View {
+        HStack {
+            Button(action: onBack) {
+                Image(systemName: "chevron.left").frame(width: 44, height: 44)
+            }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
+            Spacer()
+            Text(model.region.nameZh + " · " + activity.scene.title)
+                .font(.caption).foregroundStyle(ink.opacity(0.7))
+        }
+    }
+
+    private var preparationContent: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 0) {
+                    navigationHeader
+                    Spacer(minLength: 28)
+                    VStack(spacing: 22) {
+                        Text(activity.title).font(.largeTitle.weight(.semibold))
+                        Text(activity.introduction).font(.body).lineSpacing(6)
+                            .foregroundStyle(ink.opacity(0.75))
+                        primary("出发", id: "activities.action.start") { journey.start() }
+                            .padding(.top, 10)
+                    }
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 480)
+                    Spacer(minLength: 28)
+                }
+                .padding(.horizontal, 28).padding(.top, 16).padding(.bottom, 38)
+                .frame(minHeight: geometry.size.height)
+            }.scrollBounceBehavior(.basedOnSize)
+        }
+        .background(Color.dsBackground.ignoresSafeArea())
+        .accessibilityIdentifier("activities.confirmation")
+    }
+
     private var resultContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
-                HStack {
-                    Button(action: onBack) {
-                        Image(systemName: "chevron.left").frame(width: 44, height: 44)
-                    }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
-                    Spacer()
-                    Text(model.region.nameZh + " · " + activity.scene.title)
-                        .font(.caption).tracking(1.5)
-                }
+                navigationHeader
                 if model.isSolitude {
                     solitudeContent
                 } else {
@@ -97,7 +123,7 @@ struct ActivityActionView: View {
                 remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
             VStack(alignment: .leading, spacing: 5) {
                 Text(character.displayName).font(.title2.weight(.semibold))
-                Text(character.card.occupation).font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                lookupText(character.card.occupation, key: "occupation").font(.subheadline)
             }
             Spacer(minLength: 0)
         }.accessibilityIdentifier("activities.encounter.identity")
@@ -124,10 +150,8 @@ struct ActivityActionView: View {
     private var panel: some View {
         VStack(alignment: .leading, spacing: 18) {
             if !model.started {
-                Text("一次相遇，未必从自我介绍开始。").font(.caption).foregroundStyle(ink.opacity(0.65))
                 Text(activity.title).font(.largeTitle.weight(.semibold))
                 Text(activity.introduction).lineSpacing(5)
-                Text("一章小故事 · 两次行动选择 · 结尾自由加好友").font(.caption).foregroundStyle(ink.opacity(0.65))
                 primary("出发，给相遇一点时间", id: "activities.action.start") { journey.start() }
             } else {
                 if model.summary {
@@ -135,28 +159,28 @@ struct ActivityActionView: View {
                 } else {
                     if let part = model.chapters.indices.contains(model.step) ? model.chapters[model.step] : nil {
                         Text(model.chapters.first?.title ?? part.title).font(.system(.title, design: .serif))
-                        Text("第 \(model.step + 1) / \(model.chapterCount) 幕 · \(model.beatIndex + 1) / \(part.beats.count)")
-                            .font(.caption).foregroundStyle(ink.opacity(0.65))
                         if let beat = model.currentBeat {
-                            Text(beat.speaker == "npc" ? (model.character?.displayName ?? "对方") : "此刻")
-                                .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.6))
+                            HStack {
+                                Text(beat.speaker == "npc" ? (model.character?.displayName ?? "对方") : "此刻")
+                                    .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.6))
+                                Spacer()
+                                Button { model.speak() } label: {
+                                    Image(systemName: "speaker.wave.2").frame(width: 44, height: 44)
+                                }.accessibilityLabel("播放当前剧情").accessibilityIdentifier("activities.story.play")
+                                Button { showsTranscript.toggle() } label: {
+                                    Image(systemName: "clock.arrow.circlepath").frame(width: 44, height: 44)
+                                }.accessibilityLabel("回看已读剧情").accessibilityIdentifier("activities.story.history")
+                                    .accessibilityValue(showsTranscript ? "展开" : "收起")
+                            }
                             lookupText(beat.english, key: "beat-\(model.step)-\(model.beatIndex)")
                                 .font(.system(.title3, design: .serif)).lineSpacing(6)
                             Text(beat.chinese).font(.subheadline).lineSpacing(4).foregroundStyle(ink.opacity(0.75))
-                            if beat.speaker == "npc" {
-                                HStack {
-                                    Button { model.speak() } label: { Label("播放台词", systemImage: "speaker.wave.2") }
-                                    Spacer()
-                                    Button { model.stopSpeech() } label: { Label("停止", systemImage: "stop.circle") }
-                                }.frame(minHeight: 44)
-                            }
                         }
-                        Toggle("自动播放台词", isOn: $autoVoice).font(.subheadline)
-                            .onChange(of: autoVoice) { _, enabled in if enabled { model.speak() } else { model.stopSpeech() } }
-                        DisclosureGroup("回看已读内容", isExpanded: $showsTranscript) {
+                        if showsTranscript {
+                            VStack(alignment: .leading, spacing: 18) {
                             ForEach(0...model.step, id: \.self) { stage in
                                 ForEach(Array(model.chapters[stage].beats.enumerated()), id: \.offset) { index, beat in
-                                    if stage < model.step || index < model.beatIndex {
+                                    if stage < model.step || index <= model.beatIndex {
                                         VStack(alignment: .leading, spacing: 5) {
                                             lookupText(beat.english, key: "history-\(stage)-\(index)")
                                             Text(beat.chinese).font(.caption).foregroundStyle(.secondary)
@@ -164,7 +188,9 @@ struct ActivityActionView: View {
                                     }
                                 }
                             }
-                        }.font(.subheadline)
+                            }
+                            .padding(16).background(ink.opacity(0.04), in: RoundedRectangle(cornerRadius: 14))
+                        }
                         if !model.busy, model.error == nil {
                             if model.atChoice { choices }
                             else {
@@ -213,38 +239,42 @@ struct ActivityActionView: View {
 
     private var summary: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(model.alreadyKnown ? "把这次短短的照面，也留在旅途中。" : activity.closing).font(.system(.title3, design: .serif)).lineSpacing(3)
             if !model.selections.isEmpty {
-            DisclosureGroup("回顾你的选择") {
-            ForEach(Array(model.selections.enumerated()), id: \.offset) { index, selected in
-                let choice = activity.steps[index].choices[selected]
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(activity.steps[index].question).font(.caption).foregroundStyle(.secondary)
-                    lookupText(choice.english, key: "summary-\(index)").font(.subheadline.weight(.medium))
-                    Text(model.responses[index]).font(.subheadline).foregroundStyle(ink.opacity(0.75))
+                DisclosureGroup("回顾你的选择") {
+                    VStack(alignment: .leading, spacing: 28) {
+                        ForEach(Array(model.selections.enumerated()), id: \.offset) { index, selected in
+                            let choice = model.chapters[index].choices[selected]
+                            VStack(alignment: .leading, spacing: 18) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text("你的选择").font(.caption).foregroundStyle(.secondary)
+                                    lookupText(choice.english, key: "summary-choice-\(index)").font(.headline)
+                                    Text(choice.chinese).font(.subheadline).foregroundStyle(.secondary)
+                                }
+                                if model.chapters.indices.contains(index + 1) {
+                                    ForEach(Array(model.chapters[index + 1].beats.enumerated()), id: \.offset) { beatIndex, beat in
+                                        VStack(alignment: .leading, spacing: 8) {
+                                            Text(beat.speaker == "npc" ? (model.character?.displayName ?? "对方") : "随后")
+                                                .font(.caption).foregroundStyle(.secondary)
+                                            lookupText(beat.english, key: "summary-beat-\(index)-\(beatIndex)").font(.body)
+                                            Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7)).lineSpacing(4)
+                                        }
+                                    }
+                                }
+                            }
+                            if index + 1 < model.selections.count { Divider() }
+                        }
+                    }.padding(.vertical, 16)
                 }
             }
-            }
-            }
-            Divider()
-            if model.canConnect, let character = model.character {
-                Text(character.isFriend ? "你们已经是好友，可以接着聊。" : "要不要把这位旅途中的新朋友加入联系人？由你决定。")
-                    .font(.subheadline)
-                if !character.isFriend {
-                    primary(model.contactBusy ? "正在添加…" : "加为好友", id: "activities.encounter.addFriend") { model.addFriend() }
-                        .disabled(model.contactBusy)
-                }
-                Button("继续聊天") { onChat(character) }
-                    .frame(minHeight: 44).accessibilityIdentifier("activities.encounter.chat")
-            } else {
-                Text("这次交流先停在这里。没有成为好友，也不代表一次相遇没有意义。")
-                    .font(.subheadline).foregroundStyle(.secondary)
+            if model.canConnect, let character = model.character, !character.isFriend {
+                primary(model.contactBusy ? "正在添加…" : "加为好友", id: "activities.encounter.addFriend") { model.addFriend() }
+                    .disabled(model.contactBusy)
             }
             if let message = model.contactMessage {
                 Text(message).font(.caption).accessibilityIdentifier("activities.encounter.contactStatus")
             }
             if let saveError { Text(saveError).font(.caption).foregroundStyle(.red) }
-            primary(saved ? "回到场景" : "就此告别，记下这次相遇", id: "activities.action.finish") {
+            primary("告别，回到活动", id: "activities.action.finish") {
                 do {
                     if !saved {
                         try onComplete(model.selections, model.runID, model.character, model.responses)
@@ -253,8 +283,6 @@ struct ActivityActionView: View {
                     onBack()
                 } catch { saveError = "记录未保存，已有数据未改动。请重试。" }
             }
-            Text("已读台词与选择会保留；不会自动添加好友。")
-                .font(.caption2).foregroundStyle(.secondary)
         }
     }
 

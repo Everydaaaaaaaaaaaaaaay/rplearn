@@ -56,12 +56,9 @@ final class SocialEncounterModel: ObservableObject {
     let region: Region
     let deps: HomeDependencies
     private let roster: RosterStore
-    private let chat: ChatStore
     private var task: Task<Void, Never>?
     private var speechTask: Task<Void, Never>?
     private var contactTask: Task<Void, Never>?
-    private let userIDs = [UUID(), UUID()]
-    private let beatIDs = (0..<3).map { _ in (0..<6).map { _ in UUID() } }
     private var pendingStage = 0
     private var library: AuthoredEncounterLibrary?
     private var pendingPublic: BackendPublicNPC?
@@ -88,9 +85,8 @@ final class SocialEncounterModel: ObservableObject {
         #else
         isFixture = false
         #endif
-        // App supplies one isolated in-memory container for the UI fixture, so
-        // handing off to its real ChatView tests the same stores without user writes.
-        roster = deps.rosterStore; chat = deps.chatStore
+        // UI fixtures use the App-provided isolated in-memory stores.
+        roster = deps.rosterStore
     }
 
     func start() {
@@ -163,12 +159,12 @@ final class SocialEncounterModel: ObservableObject {
         Task { await speech.stopSpeaking() }
     }
     func speak() {
-        guard let reply, currentBeat?.speaker == "npc", let character, !isFixture else { return }
+        guard let beat = currentBeat, let character, !isFixture else { return }
         speechTask?.cancel()
         let speech = deps.speech
         let card = character.card
         speechTask = Task {
-            await speech.speak(SpeechRequest(text: reply.english,
+            await speech.speak(SpeechRequest(text: beat.english,
                 language: AccentMapper.language(forNationality: card.nationality), purpose: .characterDialogue,
                 voiceHint: SpeechVoiceHint(stableID: character.id.uuidString.lowercased(), gender: card.gender.rawValue,
                                           nationality: card.nationality)))
@@ -234,7 +230,7 @@ final class SocialEncounterModel: ObservableObject {
         try Task.checkCancellation()
         if isFixture {
             let card = CharacterCard(name: "Alex", age: 46, gender: .male, nationality: "British",
-                regionID: region.id, occupation: "维修技师", hobbies: ["烘焙", "爵士乐"],
+                regionID: region.id, occupation: "bicycle mechanic", hobbies: ["烘焙", "爵士乐"],
                 appearance: "", personality: "reserved, kind, practical", avatarAssetName: "avatar_oliver")
             let id = try await roster.addCharacter(characterID: generatedID, card: card,
                 difficulty: profile.difficultyLevel, isFriend: false)
@@ -263,29 +259,18 @@ final class SocialEncounterModel: ObservableObject {
             character = try await roster.character(id: id)
         }
         if let character {
-            let recent = try await chat.recentMessages(characterID: character.id, limit: 1)
-            alreadyKnown = character.isFriend || !recent.isEmpty
+            let recent = try await deps.chatStore.recentMessages(characterID: character.id, limit: 1)
+            let metBefore = try history.receipts().contains { $0.characterID == character.id }
+            alreadyKnown = character.isFriend || !recent.isEmpty || metBefore
         }
     }
 
     private var encounterContext: BackendNPCEncounterContext {
         .init(regionID: region.id, activityID: authoredActivity.id, category: "social")
     }
-    private var sceneContext: String {
-        "城市：\(region.nameZh)。\(authoredActivity.scene.title) · \(authoredActivity.title)。本次相遇：\(chapters.first?.title ?? authoredActivity.title)。"
-    }
-    private func visibleContext(through index: Int) -> String {
-        guard chapters.indices.contains(step) else { return sceneContext }
-        let narration = chapters[step].beats.prefix(index + 1)
-            .filter { $0.speaker == "narrator" }.map(\.english).joined(separator: " ")
-        return narration.isEmpty ? sceneContext : sceneContext + "\n已读场景：" + narration
-    }
     private func performSelection() async throws {
-        guard let selected, let character else { return }
+        guard let selected else { return }
         let source = pendingStage - 1
-        let choice = chapters[source].choices[selected]
-        try await chat.appendActivityLineIfNeeded(messageID: userIDs[source], characterID: character.id,
-            role: .user, text: choice.english, translation: choice.chinese, context: visibleContext(through: beatIndex))
         if selections.count == source { selections.append(selected) }
         try await loadChapter(pendingStage)
         self.selected = nil
@@ -310,12 +295,6 @@ final class SocialEncounterModel: ObservableObject {
         try await revealBeat(0)
     }
     private func revealBeat(_ index: Int) async throws {
-        guard let character else { return }
-        let beat = chapters[step].beats[index]
-        if beat.speaker == "npc" {
-            try await chat.appendActivityLineIfNeeded(messageID: beatIDs[step][index], characterID: character.id,
-                role: .assistant, text: beat.english, translation: beat.chinese, context: visibleContext(through: index))
-        }
         try Task.checkCancellation()
         beatIndex = index
     }
