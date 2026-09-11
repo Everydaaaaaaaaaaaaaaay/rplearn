@@ -292,6 +292,12 @@ public struct ChatView: View {
     }
 
     private var messageList: some View {
+        GeometryReader { viewport in
+            messageList(viewportHeight: viewport.size.height)
+        }
+    }
+
+    private func messageList(viewportHeight: CGFloat) -> some View {
         ScrollViewReader { proxy in
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
@@ -359,7 +365,13 @@ public struct ChatView: View {
                     }
                     .padding(.horizontal, 12)
                     .padding(.vertical, 10)
+                    // Fill short/empty conversations so blank taps land inside scroll content.
+                    .frame(minHeight: max(0, viewportHeight), alignment: .bottom)
+                    .background {
+                        keyboardDismissBackdrop
+                    }
                 }
+                .accessibilityIdentifier("chat.messages")
                 .defaultScrollAnchor(.bottom)
                 .defaultScrollAnchor(.bottom, for: .sizeChanges)
                 .scrollBounceBehavior(.always)
@@ -450,6 +462,16 @@ public struct ChatView: View {
                 }
             }
         }
+    }
+
+    /// Background-only hit target: word taps and bubble menus remain in the foreground.
+    private var keyboardDismissBackdrop: some View {
+        Color.dsBackground
+            .contentShape(Rectangle())
+            .onTapGesture {
+                isTextInputFocused = false
+            }
+            .accessibilityHidden(true)
     }
 
     private var messageListKeyboardDismissGesture: some Gesture {

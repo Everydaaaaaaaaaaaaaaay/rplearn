@@ -62,6 +62,7 @@ var inputBar: some View {
                     )
                         .lineLimit(1...4)
                         .focused($isTextInputFocused)
+                        .accessibilityIdentifier("chat.composer")
                         // 保留学习者实际输入，避免系统把语法/拼写错误改成另一个词后再送去点评。
                         .autocorrectionDisabled(true)
                         .submitLabel(.send)
@@ -78,6 +79,19 @@ var inputBar: some View {
                         .onSubmit {
                             Task { await viewModel.sendDraft() }
                         }
+
+                    if isTextInputFocused {
+                        Button {
+                            isTextInputFocused = false
+                        } label: {
+                            Image(systemName: "keyboard.chevron.compact.down")
+                                .font(.system(size: 20))
+                                .frame(width: 32, height: 32)
+                                .contentShape(Rectangle())
+                        }
+                        .accessibilityLabel("收起键盘")
+                        .accessibilityIdentifier("chat.dismissKeyboard")
+                    }
 
                     Button {
                         Task { await viewModel.sendDraft() }

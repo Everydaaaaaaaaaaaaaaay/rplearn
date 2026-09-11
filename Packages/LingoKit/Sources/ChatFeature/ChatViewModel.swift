@@ -29,41 +29,46 @@ public final class ChatViewModel {
     public var errorMessage: String?
     public var draft = "" {
         didSet {
-            if draft != oldValue { lastComposerActivityAt = deps.now() }
+            if draft != oldValue { composerActivity.recordEdit(at: deps.now()) }
         }
     }
-    private var lastComposerActivityAt: Date?
+    private var composerActivity = RoleplayComposerActivity()
 
     public func composerFocusChanged(_ focused: Bool) {
-        if focused { lastComposerActivityAt = deps.now() }
+        composerActivity.focusChanged(focused, at: deps.now())
+    }
+
+    func userTurnHandoffDate(after message: MessageDTO) -> Date {
+        let policy = RoleplayTurnTakingPolicy.standard
+        let quiet = policy.quietWindow(after: message.text,
+            consecutiveUserMessageCount: messages.reversed().prefix { $0.role == .user }.count,
+            variation: 0.5)
+        return policy.handoffDate(sentAt: message.createdAt, quietWindow: quiet,
+            activity: composerActivity)
     }
 
     /// Editing extends the quiet window without restarting an in-flight paid request.
     private func waitForUserToFinish(plan: NPCReplyPlan) async throws {
         guard deps.replyDelayScale > 0 else { return }
-        let policy = RoleplayTurnTakingPolicy.standard
-        let anchor = messages.first { $0.id == plan.userMessageID }
-        let sentAt = anchor?.createdAt ?? deps.now()
-        let quiet = policy.quietWindow(after: anchor?.text ?? "",
-            consecutiveUserMessageCount: messages.reversed().prefix { $0.role == .user }.count,
-            variation: 0.5)
-        let waitingBeganAt = deps.now()
+        guard let anchor = messages.first(where: { $0.id == plan.userMessageID }) else { return }
         let cycle = replyCycleID
         let wasStreaming = isStreaming
+        let previousStreamingText = streamingText
         var paused = false
         defer {
             if paused, cycle == replyCycleID, !Task.isCancelled {
                 isStreaming = wasStreaming
+                streamingText = previousStreamingText
                 isWaitingForUserBurst = !wasStreaming
             }
         }
         while true {
             try Task.checkCancellation()
             let now = deps.now()
-            let until = policy.handoffDate(sentAt: sentAt, quietWindow: quiet,
-                lastActivityAt: lastComposerActivityAt, waitingBeganAt: waitingBeganAt)
+            let until = userTurnHandoffDate(after: anchor)
             guard until > now else { return }
             paused = true
+            streamingText = nil
             isStreaming = false
             isWaitingForUserBurst = true
             try await Task.sleep(for: .milliseconds(250))
@@ -169,7 +174,7 @@ public final class ChatViewModel {
         guard !text.isEmpty else { return }
         Haptics.impact(.light)
         draft = ""
-        lastComposerActivityAt = nil
+        composerActivity.didSend()
         if !(await send(userText: text)), draft.isEmpty {
             // Preserve failed input without overwriting anything typed while saving.
             draft = originalDraft

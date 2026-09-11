@@ -1,5 +1,30 @@
 import Foundation
 
+/// Local evidence of composing. Only actual edits extend the wait; focus never does.
+public struct RoleplayComposerActivity: Sendable {
+    public private(set) var isFocused = false
+    public private(set) var editedAt: Date?
+    public private(set) var unfocusedAt: Date?
+
+    public init() {}
+
+    public mutating func focusChanged(_ focused: Bool, at date: Date) {
+        guard focused != isFocused else { return }
+        isFocused = focused
+        if !focused { unfocusedAt = date }
+    }
+
+    public mutating func recordEdit(at date: Date) {
+        editedAt = date
+    }
+
+    /// Sending finishes this composition, even if the keyboard remains open.
+    public mutating func didSend() {
+        editedAt = nil
+        unfocusedAt = nil
+    }
+}
+
 /// 文本聊天的回合交接策略。
 ///
 /// 用户消息立即送达，但角色会等待一段安静时间再开始回复。短时间内连续发送的
@@ -10,18 +35,18 @@ public struct RoleplayTurnTakingPolicy: Sendable {
     public let minimumQuietWindow: TimeInterval
     public let maximumQuietWindow: TimeInterval
     public let draftActivityExtension: TimeInterval
-    public let maximumDeferralAfterLatestMessage: TimeInterval
+    public let unfocusedGrace: TimeInterval
 
     public init(
-        minimumQuietWindow: TimeInterval = 10,
-        maximumQuietWindow: TimeInterval = 18,
+        minimumQuietWindow: TimeInterval = 8,
+        maximumQuietWindow: TimeInterval = 9,
         draftActivityExtension: TimeInterval = 25,
-        maximumDeferralAfterLatestMessage: TimeInterval = 120
+        unfocusedGrace: TimeInterval = 5
     ) {
         self.minimumQuietWindow = minimumQuietWindow
         self.maximumQuietWindow = maximumQuietWindow
         self.draftActivityExtension = draftActivityExtension
-        self.maximumDeferralAfterLatestMessage = maximumDeferralAfterLatestMessage
+        self.unfocusedGrace = unfocusedGrace
     }
 
     /// 根据最后一条消息是否像说完、长度及连续消息数量，计算开始回复前的静默窗口。
@@ -40,17 +65,24 @@ public struct RoleplayTurnTakingPolicy: Sendable {
         let burstGrace = min(Double(burstCount - 1) * 0.32, 0.96)
         let unfinishedGrace = looksLikeOpenThought(trimmed) ? 0.7 : 0
         let jitter = (clampedVariation - 0.5) * 0.5
-        let target = 11.5 + readingTime + burstGrace + unfinishedGrace + jitter
+        let target = 8 + readingTime + burstGrace + unfinishedGrace + jitter
         return min(max(target, minimumQuietWindow), maximumQuietWindow)
     }
 
-    /// A stale open keyboard does not imply typing forever; recent edits do.
+    /// Rechecking this deadline cannot extend it: only a new edit event can.
+    /// Leaving the field shortens any outstanding grace to at most five seconds.
     public func handoffDate(sentAt: Date, quietWindow: TimeInterval,
-                            lastActivityAt: Date?, waitingBeganAt: Date) -> Date {
-        let quietUntil = sentAt.addingTimeInterval(quietWindow)
-        let editingUntil = lastActivityAt?.addingTimeInterval(draftActivityExtension) ?? sentAt
-        let deadline = max(sentAt, waitingBeganAt).addingTimeInterval(maximumDeferralAfterLatestMessage)
-        return min(deadline, max(quietUntil, editingUntil))
+                            activity: RoleplayComposerActivity) -> Date {
+        var until = sentAt.addingTimeInterval(quietWindow)
+        if let editedAt = activity.editedAt, editedAt >= sentAt {
+            until = max(until, editedAt.addingTimeInterval(draftActivityExtension))
+        }
+        // Reopening the keyboard must not undo a previous dismissal's shorter deadline.
+        if let exitedAt = activity.unfocusedAt, exitedAt >= sentAt,
+           activity.editedAt.map({ $0 <= exitedAt }) ?? true {
+            until = min(until, exitedAt.addingTimeInterval(unfocusedGrace))
+        }
+        return until
     }
 
     private func looksLikeOpenThought(_ text: String) -> Bool {
@@ -91,9 +123,9 @@ public struct RoleplayTypingPace: Sendable {
     public let minimumFirstMessageDelay: TimeInterval
 
     public init(
-        minimumDelay: TimeInterval = 3,
-        maximumDelay: TimeInterval = 60,
-        minimumFirstMessageDelay: TimeInterval = 3
+        minimumDelay: TimeInterval = 1.2,
+        maximumDelay: TimeInterval = 24,
+        minimumFirstMessageDelay: TimeInterval = 1
     ) {
         self.minimumDelay = minimumDelay
         self.maximumDelay = maximumDelay
@@ -115,14 +147,16 @@ public struct RoleplayTypingPace: Sendable {
         let visibleCharacters = text.filter { !$0.isWhitespace }.count
         let punctuationPauses = text.filter { ",;:?!\u{2026}\u{2014}".contains($0) }.count
         let clampedVariation = min(max(variation, 0), 1)
-        let jitter = (clampedVariation - 0.5) * 0.8
-        let continuationPause = messageIndex > 0 ? 0.55 : 0
+        let jitter = (clampedVariation - 0.5) * 0.6
+        let continuationPause = messageIndex > 0 ? 0.25 : 0
 
-        let simulatedTyping = 1.8
+        // Product pace: ordinary ten-word bubbles take about 6–8 seconds.
+        // Long words can take longer; count words and characters as alternatives,
+        // rather than charging twice for the same text.
+        let simulatedTyping = 0.65
             + continuationPause
-            + Double(words) * (60.0 / 35.0)
-            + Double(visibleCharacters) * 0.025
-            + Double(punctuationPauses) * 0.12
+            + max(Double(words) * 0.58, Double(visibleCharacters) * 0.11)
+            + Double(punctuationPauses) * 0.1
             + jitter
         let target = min(max(simulatedTyping, minimumDelay), maximumDelay)
 

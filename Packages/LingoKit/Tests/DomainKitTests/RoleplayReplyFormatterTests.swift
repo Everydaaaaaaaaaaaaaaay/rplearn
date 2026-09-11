@@ -174,14 +174,21 @@ struct RoleplayReplyFormatterTests {
 struct RoleplayTypingPaceTests {
     private let pace = RoleplayTypingPace.standard
 
-    @Test("十词气泡保留真实手机打字时间")
+    @Test("普通十词气泡采用六到八秒产品节奏")
     func conversationalSpeed() {
-        let delay = pace.delay(for: "I just got back from the coffee shop near home",
+        let sentence = "I just got back from the coffee shop near home"
+        for index in 0...2 {
+            for variation in [0.0, 0.5, 1.0] {
+                let delay = pace.delay(for: sentence, messageIndex: index,
+                    elapsedSinceTypingBegan: 0, variation: variation)
+                #expect((6...8).contains(delay))
+            }
+        }
+        let shortWords = pace.delay(for: "We can go to the bay for a bit now",
             messageIndex: 1, elapsedSinceTypingBegan: 0, variation: 0.5)
-        #expect(delay >= 18)
-        #expect(delay < 25)
-        #expect(RoleplayTurnTakingPolicy.standard.minimumQuietWindow >= 10)
-        #expect(RoleplayTurnTakingPolicy.standard.draftActivityExtension >= 25)
+        let longWords = pace.delay(for: "Extraordinary international collaborations require exceptionally sophisticated interdisciplinary communication strategies worldwide",
+            messageIndex: 1, elapsedSinceTypingBegan: 0, variation: 0.5)
+        #expect(longWords > shortWords)
     }
 
     @Test("文本越长等待越久且始终有上限")
@@ -254,20 +261,64 @@ struct RoleplayTypingPaceTests {
 struct RoleplayTurnTakingPolicyTests {
     private let policy = RoleplayTurnTakingPolicy.standard
 
-    @Test("输入续期、停止输入释放、等待有界")
+    @Test("发送后键盘常开不会自动续期，重复检查也不延长等待")
+    func idleOpenKeyboard() {
+        let start = Date(timeIntervalSince1970: 1000)
+        var activity = RoleplayComposerActivity()
+        activity.focusChanged(true, at: start.addingTimeInterval(-5))
+        activity.recordEdit(at: start.addingTimeInterval(-1))
+        activity.didSend()
+        activity.focusChanged(true, at: start.addingTimeInterval(7)) // unchanged focus
+        for _ in 0..<4 {
+            #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+                == start.addingTimeInterval(8))
+        }
+    }
+
+    @Test("聚焦不续期，实际编辑续期，退出最多再等5秒")
     func typingHandoff() {
         let start = Date(timeIntervalSince1970: 1000)
-        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
-            lastActivityAt: nil, waitingBeganAt: start) == start.addingTimeInterval(12))
-        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
-            lastActivityAt: start.addingTimeInterval(20), waitingBeganAt: start)
+        var activity = RoleplayComposerActivity()
+        activity.focusChanged(true, at: start.addingTimeInterval(7))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+            == start.addingTimeInterval(8))
+        activity.recordEdit(at: start.addingTimeInterval(20))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(45))
-        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
-            lastActivityAt: start.addingTimeInterval(119), waitingBeganAt: start)
-            == start.addingTimeInterval(120))
-        // A later bubble must still respect newly resumed typing.
-        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
-            lastActivityAt: start.addingTimeInterval(200), waitingBeganAt: start.addingTimeInterval(200))
+        activity.focusChanged(false, at: start.addingTimeInterval(21))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+            == start.addingTimeInterval(26))
+        activity.focusChanged(true, at: start.addingTimeInterval(24))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+            == start.addingTimeInterval(26))
+        activity.recordEdit(at: start.addingTimeInterval(24))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+            == start.addingTimeInterval(49))
+    }
+
+    @Test("没有补充文字就收起键盘也会缩短等待")
+    func focusWithoutEditingThenDismiss() {
+        let start = Date(timeIntervalSince1970: 1000)
+        var activity = RoleplayComposerActivity()
+        activity.focusChanged(true, at: start.addingTimeInterval(7))
+        activity.focusChanged(false, at: start.addingTimeInterval(9))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+            == start.addingTimeInterval(8))
+        // Old focus/blur activity cannot shorten the next message's quiet window.
+        #expect(policy.handoffDate(sentAt: start.addingTimeInterval(30), quietWindow: 8,
+            activity: activity) == start.addingTimeInterval(38))
+    }
+
+    @Test("旧草稿不会无限续期，后续气泡仍尊重新的编辑")
+    func laterEditing() {
+        let start = Date(timeIntervalSince1970: 1000)
+        var activity = RoleplayComposerActivity()
+        activity.focusChanged(true, at: start)
+        activity.recordEdit(at: start.addingTimeInterval(3))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
+            == start.addingTimeInterval(28))
+        activity.recordEdit(at: start.addingTimeInterval(200))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 8, activity: activity)
             == start.addingTimeInterval(225))
     }
 

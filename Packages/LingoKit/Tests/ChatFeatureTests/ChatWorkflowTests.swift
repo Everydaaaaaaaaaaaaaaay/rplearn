@@ -84,7 +84,16 @@ struct ChatWorkflowTests {
             return reopened
         }
     }
-    private func fixture(_ provider: Provider = Provider()) async throws -> Fixture {
+    private final class TestClock: @unchecked Sendable {
+        private let lock = NSLock()
+        private var date = Date.now
+        func now() -> Date { lock.withLock { date } }
+        func set(_ value: Date) { lock.withLock { date = value } }
+    }
+
+    private func fixture(_ provider: Provider = Provider(),
+                         now: @escaping @Sendable () -> Date = { .now },
+                         replyDelayScale: Double = 0) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let chat = ChatStore(modelContainer: container), roster = RosterStore(modelContainer: container)
         let economy = EconomyStore(modelContainer: container), items = ItemStore(modelContainer: container)
@@ -102,7 +111,7 @@ struct ChatWorkflowTests {
             itemStore: items, economyStore: economy,
             progression: LocalUserStateCoordinator(economyStore: economy, itemStore: items, storyProgressStore: StoryProgressStore(modelContainer: container)),
             voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)),
-            replyDelayScale: 0
+            now: now, replyDelayScale: replyDelayScale
         )
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
@@ -123,6 +132,69 @@ struct ChatWorkflowTests {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+
+    @Test("聚焦不续期，一个字符就续期，退出缩短等待并保留草稿")
+    func composerEventsControlHandoff() async throws {
+        let provider = Provider()
+        let clock = TestClock()
+        let f = try await fixture(provider, now: { clock.now() }, replyDelayScale: 0.001)
+        defer { f.model.cancelPendingReply() }
+        f.model.composerFocusChanged(true)
+        f.model.draft = "Hello there."
+        await f.model.sendDraft()
+        let message = try #require(f.model.messages.last(where: { $0.role == .user }))
+        let sentAt = message.createdAt
+        #expect((8...9).contains(f.model.userTurnHandoffDate(after: message).timeIntervalSince(sentAt)))
+        f.model.composerFocusChanged(false)
+        clock.set(sentAt.addingTimeInterval(7))
+        f.model.composerFocusChanged(true)
+        #expect((8...9).contains(f.model.userTurnHandoffDate(after: message).timeIntervalSince(sentAt)))
+        f.model.draft = "I"
+        #expect(f.model.userTurnHandoffDate(after: message) == sentAt.addingTimeInterval(32))
+        clock.set(sentAt.addingTimeInterval(20))
+        f.model.draft = "I also wanted to say"
+        #expect(f.model.userTurnHandoffDate(after: message) == sentAt.addingTimeInterval(45))
+        clock.set(sentAt.addingTimeInterval(21))
+        f.model.composerFocusChanged(false)
+        #expect(f.model.userTurnHandoffDate(after: message) == sentAt.addingTimeInterval(26))
+        try await Task.sleep(for: .milliseconds(450))
+        #expect(await provider.tasks().isEmpty)
+        #expect(f.model.streamingText == nil)
+        clock.set(sentAt.addingTimeInterval(1000))
+        try await settle(f.model)
+        #expect(f.model.messages.contains { $0.role == .assistant })
+        #expect(f.model.draft == "I also wanted to say")
+        #expect(await provider.tasks().filter { $0 == .conversation }.count == 1)
+    }
+
+    @Test("模型生成期间恢复输入会推迟投递，不会重复请求")
+    func editingDuringGenerationDefersDelivery() async throws {
+        let provider = Provider(streamDelayMilliseconds: 600)
+        let clock = TestClock()
+        let f = try await fixture(provider, now: { clock.now() }, replyDelayScale: 0.001)
+        defer { f.model.cancelPendingReply() }
+        f.model.draft = "Hello there."
+        await f.model.sendDraft()
+        let sentAt = try #require(f.model.messages.last(where: { $0.role == .user })).createdAt
+        clock.set(sentAt.addingTimeInterval(1000))
+        for _ in 0..<100 {
+            if await provider.tasks().contains(.conversation) { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await provider.tasks().filter { $0 == .conversation }.count == 1)
+        f.model.composerFocusChanged(true)
+        f.model.draft = "One more thing"
+        try await Task.sleep(for: .milliseconds(750))
+        #expect(!f.model.messages.contains { $0.role == .assistant })
+        #expect(f.model.isWaitingForUserBurst)
+        #expect(f.model.streamingText == nil)
+        clock.set(sentAt.addingTimeInterval(1001))
+        f.model.composerFocusChanged(false)
+        clock.set(sentAt.addingTimeInterval(1007))
+        try await settle(f.model)
+        #expect(f.model.messages.contains { $0.role == .assistant })
+        #expect(await provider.tasks().filter { $0 == .conversation }.count == 1)
     }
 
     @Test("模型完整回复经发送、落库、重新进入后逐字保留")
