@@ -39,6 +39,14 @@ ssh root@<server> \
 
 ## 最近发布验证
 
+2026-09-11：发布 `8b2ef54`，上一版本 `c36296c` 保留用于回滚。发布包 SHA-256：
+`e978bc6c87150e63861328c96f96fc61e235f3e2873e904a808c5e8ad7b45709`。
+此次只改 OpenRouter 会话粘性路由，无新增迁移或生产依赖；API / Worker 均 active，
+公网 `/health/ready` 返回 ready。对当前发布的客户端模块注入模拟 fetch，验证跨轮 session_id
+一致及缓存 token 解析正常，未追加真实供应商调用。此前 8 次 GLM 缓存对照见
+[费用优化与缓存实测](../ai-cost-optimization-2026-09-11.md)。
+小测合并、记忆策略及提示词重排仍需安装新版 iOS App。
+
 2026-09-11：发布 `c36296c`，上一版本为 `credit-fix-30fa8b4`。发布包 SHA-256：
 `66fd7928d253ee3a74685d053b94368d28adf9f4d79a0305adb3da8b87468cf4`。
 此次无迁移文件变更，沿用现有生产依赖。API / Worker 均为 active，readiness 返回 ready。
