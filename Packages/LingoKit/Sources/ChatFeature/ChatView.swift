@@ -68,7 +68,10 @@ public struct ChatView: View {
             ToolbarItem(placement: .principal) {
                 TimelineView(.periodic(from: .now, by: 15)) { context in
                     let presence = viewModel.presence(at: context.date)
-                    HStack(spacing: 8) {
+                    ChatTitleView(
+                        title: viewModel.character.displayName,
+                        subtitle: chatStatus(presence, at: context.date)
+                    ) {
                         ZStack(alignment: .bottomTrailing) {
                             AvatarBadge(
                                 name: viewModel.character.displayName,
@@ -82,18 +85,6 @@ public struct ChatView: View {
                                 .frame(width: 9, height: 9)
                                 .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
                                 .accessibilityHidden(true)
-                        }
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(viewModel.character.displayName)
-                                .font(.subheadline.bold())
-                            Text(chatStatus(presence, at: context.date))
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                                .contentTransition(.opacity)
-                                .animation(
-                                    reduceMotion ? nil : .easeInOut(duration: 0.2),
-                                    value: presence.state
-                                )
                         }
                     }
                     .accessibilityElement(children: .combine)
@@ -225,6 +216,16 @@ public struct ChatView: View {
                 await appleTranslator.translate(text)
             }
             await viewModel.load()
+            #if DEBUG
+            if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+               ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+               ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_DICTIONARY"] == "1",
+               let message = viewModel.messages.first(where: { $0.text.contains("cosy") }),
+               let token = TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString).first(where: { $0.word == "cosy" }) {
+                try? await Task.sleep(for: .seconds(1))
+                wordSelection = TokenSelection(contextID: message.id.uuidString, tokenID: token.id, word: "cosy")
+            }
+            #endif
             knownLatestMessageID = viewModel.messages.last?.id
             markVisibleConversationRead()
         }

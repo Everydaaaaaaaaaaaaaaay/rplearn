@@ -1,24 +1,316 @@
 {
   "id": "onboarding_chat",
-  "start": "n01",
+  "start": "start",
   "nodes": [
-    { "id": "n01", "type": "line", "speaker": "咕咕", "text": "咕——！请问，是你吗？我总算飞对窗户了！", "next": "n02" },
-    { "id": "n02", "type": "line", "speaker": "咕咕", "text": "先自我介绍一下：我叫咕咕，是「咕游记」的旅行向导，也是你的英语搭子。", "next": "n03" },
-    { "id": "n03", "type": "line", "speaker": "咕咕", "text": "我从云层里一路飞来，是因为旅行包里有一封写着你名字的邀请。", "next": "n04" },
-    { "id": "n04", "type": "line", "speaker": "咕咕", "text": "你获得了一整年的海外生活体验：选一座城市住下，认识当地朋友，用英语过真实的日子。", "next": "c01" },
-    { "id": "c01", "type": "choice", "options": [
-      { "text": "等一下，你居然会说话？", "next": "n05a", "setFlags": { "surprised_by_gugu": true } },
-      { "text": "先告诉我能去哪！", "next": "n05b" }
-    ] },
-    { "id": "n05a", "type": "line", "speaker": "咕咕", "text": "当然！不过我更擅长听你说英语。说错也没关系，我会悄悄在旁边递小纸条。", "next": "n06" },
-    { "id": "n05b", "type": "line", "speaker": "咕咕", "text": "行动派，我喜欢！你可以从三座城市里选一站出发。", "next": "n06" },
-    { "id": "n06", "type": "line", "speaker": "咕咕", "text": "每座城市都有一位当地伙伴等着你。我在地图上都做了记号，给你逐个介绍！", "next": "n07" },
-    { "id": "n07", "type": "line", "speaker": "咕咕", "text": "🇬🇧 伦敦：Oliver Bennett，24 岁，二手书店店员，业余写小说。嘴上有点毒舌，做事却很靠谱。", "sprite": "card:london", "next": "n08" },
-    { "id": "n08", "type": "line", "speaker": "咕咕", "text": "🇦🇺 墨尔本：Ruby Walker，22 岁，咖啡师兼海洋生物学学生，周末还是冲浪教练。", "sprite": "card:melbourne", "next": "n09" },
-    { "id": "n09", "type": "line", "speaker": "咕咕", "text": "🇺🇸 纽约：Marcus Rivera，26 岁，布鲁克林街头摄影师。语速飞快，但特别会照顾人的感受。", "sprite": "card:newyork", "next": "n10" },
-    { "id": "n10", "type": "line", "speaker": "咕咕", "text": "他们平时都说英语。别担心，你负责大胆开口，我负责在对话旁给你自然又不扫兴的建议。", "next": "n11" },
-    { "id": "n11", "type": "line", "speaker": "咕咕", "text": "到了首页也留意我：我会飞出来告诉你下一段剧情从哪里开始，不让你在旅途中迷路。", "next": "n12" },
-    { "id": "n12", "type": "line", "speaker": "咕咕", "text": "现在，选一位最想先认识的旅伴吧。我们的第一句 Hello，就从这里开始！", "next": "end" },
-    { "id": "end", "type": "end", "unlocks": ["character_selection"] }
+    {
+      "id": "start",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "你来啦！我把地图摊开了，结果嘎嘎把行李箱坐住了。",
+      "next": "gaga",
+      "sprite": ""
+    },
+    {
+      "id": "gaga",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "因为他还没问你想怎么出发。我是嘎嘎，先陪你坐一会儿也行。",
+      "next": "c1",
+      "sprite": ""
+    },
+    {
+      "id": "c1",
+      "type": "choice",
+      "options": [
+        {
+          "text": "想先去街上走走。",
+          "next": "explore",
+          "setFlags": {
+            "explore": true
+          }
+        },
+        {
+          "text": "想先认识一个朋友。",
+          "next": "friend",
+          "setFlags": {
+            "friend": true
+          }
+        },
+        {
+          "text": "有点紧张，慢慢来吧。",
+          "next": "gentle",
+          "setFlags": {
+            "gentle": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "explore",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "那就不赶景点。找个公园坐下，或者躲进咖啡馆，看看生活会把谁带到你面前。",
+      "next": "explore2",
+      "sprite": ""
+    },
+    {
+      "id": "explore2",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "我们先帮你认识一位当地旅伴。以后去「活动」里选个行动，就能遇见更多人，也可能享受一段独处。",
+      "next": "invite",
+      "sprite": ""
+    },
+    {
+      "id": "friend",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "好，那就先从一个名字、一句招呼开始。不需要准备一篇自我介绍。",
+      "next": "friend2",
+      "sprite": ""
+    },
+    {
+      "id": "friend2",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "我认识三个很不一样的人。他们各自留了句话，你听听更想接上谁的话题。",
+      "next": "invite",
+      "sprite": ""
+    },
+    {
+      "id": "gentle",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "那我们慢一点。这里不会因为一句话说得不够漂亮，就让你重新开始。",
+      "next": "gentle2",
+      "sprite": ""
+    },
+    {
+      "id": "gentle2",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "先看看三位旅伴也好，等你愿意了再说 Hello。我替你把催促的闹钟关掉。",
+      "next": "invite",
+      "sprite": ""
+    },
+    {
+      "id": "invite",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "三座城市，三份邀请。哪一份让你想多停留一会儿？",
+      "next": "oliver",
+      "sprite": ""
+    },
+    {
+      "id": "oliver",
+      "type": "line",
+      "speaker": "Oliver",
+      "text": "I found a note in a second-hand book. No name, just a terrible poem. Want to judge it with me?\n\n我在一本旧书里发现一张字条。没署名，只有一首糟糕的诗。想一起品评一下吗？",
+      "next": "ruby",
+      "sprite": "card:london"
+    },
+    {
+      "id": "ruby",
+      "type": "line",
+      "speaker": "Ruby",
+      "text": "My coffee art looks like a jellyfish today. I’m calling it a marine biology project.\n\n今天的拉花像只水母。我决定管它叫海洋生物学项目。",
+      "next": "marcus",
+      "sprite": "card:melbourne"
+    },
+    {
+      "id": "marcus",
+      "type": "line",
+      "speaker": "Marcus",
+      "text": "I took two photos of the same street. Somehow they tell completely different stories. Which one would you keep?\n\n我拍了同一条街的两张照片，它们却像两个不同的故事。你会留下哪张？",
+      "next": "c2",
+      "sprite": "card:newyork"
+    },
+    {
+      "id": "c2",
+      "type": "choice",
+      "options": [
+        {
+          "text": "那首诗到底有多糟？",
+          "next": "poem",
+          "setFlags": {
+            "poem": true
+          }
+        },
+        {
+          "text": "水母咖啡，我想看看。",
+          "next": "coffee",
+          "setFlags": {
+            "coffee": true
+          }
+        },
+        {
+          "text": "给我看看那两张照片。",
+          "next": "photo",
+          "setFlags": {
+            "photo": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "poem",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "你已经找到接话的角度了：好奇心。有时候一句「然后呢」比完美的开场白更有用。",
+      "next": "poem2",
+      "sprite": ""
+    },
+    {
+      "id": "poem2",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "Oliver 在伦敦的旧书店工作，自己也写小说。你们大概会对「糟糕」的标准争论一会儿。",
+      "next": "practice",
+      "sprite": ""
+    },
+    {
+      "id": "coffee",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "Ruby 在墨尔本一边做咖啡，一边学海洋生物学。聊起海里的事，她可就认真了。",
+      "next": "coffee2",
+      "sprite": ""
+    },
+    {
+      "id": "coffee2",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "从她的小玩笑接话就很好。不用把聊天变成姓名、年龄、职业的问卷。",
+      "next": "practice",
+      "sprite": ""
+    },
+    {
+      "id": "photo",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "Marcus 是纽约的街头摄影师。同一条街，他总能注意到别人错过的东西。",
+      "next": "photo2",
+      "sprite": ""
+    },
+    {
+      "id": "photo2",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "你可以有自己的看法，也可以说还没想好。聊天不是猜一个标准答案。",
+      "next": "practice",
+      "sprite": ""
+    },
+    {
+      "id": "practice",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "假如刚认识的旅伴问：What would you like to do first?\n\n你想先做什么？试着选一句你会说的话。",
+      "next": "c3",
+      "sprite": ""
+    },
+    {
+      "id": "c3",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Let’s explore a little.",
+          "next": "say_explore",
+          "setFlags": {
+            "say_explore": true
+          }
+        },
+        {
+          "text": "Somewhere quiet would be nice.",
+          "next": "say_quiet",
+          "setFlags": {
+            "say_quiet": true
+          }
+        },
+        {
+          "text": "I’m not sure yet. Any ideas?",
+          "next": "say_help",
+          "setFlags": {
+            "say_help": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "say_explore",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "「我们先随便逛逛吧。」听起来已经迈出第一步了。我会记得你在这次出发前说过，想先看看周围。",
+      "next": "help",
+      "sprite": ""
+    },
+    {
+      "id": "say_quiet",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "「找个安静的地方就好。」把自己的偏好告诉对方，也是很自然的聊天。不是每段旅程都要热热闹闹。",
+      "next": "help",
+      "sprite": ""
+    },
+    {
+      "id": "say_help",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "「还没想好，你有什么主意吗？」这也是完整的回应。你不必一个人负责所有话题。",
+      "next": "help",
+      "sprite": ""
+    },
+    {
+      "id": "help",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "真正聊天时，遇到不懂的英文可以直接点词；需要看看整句意思，也可以翻译。咕咕和我会在对话旁给你表达建议。",
+      "next": "recall",
+      "sprite": ""
+    },
+    {
+      "id": "recall",
+      "type": "branch",
+      "flag": "gentle",
+      "ifTrue": "gentle_end",
+      "ifFalse": "recall_explore"
+    },
+    {
+      "id": "recall_explore",
+      "type": "branch",
+      "flag": "explore",
+      "ifTrue": "explore_end",
+      "ifFalse": "friend_end"
+    },
+    {
+      "id": "gentle_end",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "说好慢慢来的。下面只要选一个你觉得舒服的人开始认识，其他城市可以留到以后。",
+      "next": "end",
+      "sprite": ""
+    },
+    {
+      "id": "explore_end",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "地图还在这儿等你。先选第一位旅伴，接着就去街上看看——这回我一定让你来带路。",
+      "next": "end",
+      "sprite": ""
+    },
+    {
+      "id": "friend_end",
+      "type": "line",
+      "speaker": "咕咕",
+      "text": "你说想先认识一个朋友。现在，把那句最想接的话，留给你选中的第一位旅伴吧。",
+      "next": "end",
+      "sprite": ""
+    },
+    {
+      "id": "end",
+      "type": "end",
+      "unlocks": [
+        "character_selection"
+      ]
+    }
   ]
 }

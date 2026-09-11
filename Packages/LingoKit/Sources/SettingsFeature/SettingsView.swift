@@ -25,6 +25,7 @@ public struct SettingsView: View {
     private let speech: any SpeechService
     private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
     private let onOpenPhotoCredits: (@MainActor () -> Void)?
+    private let onOpenIntroduction: (@MainActor () -> Void)?
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
@@ -46,7 +47,8 @@ public struct SettingsView: View {
         chatStore: ChatStore,
         speech: any SpeechService,
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
-        onOpenPhotoCredits: (@MainActor () -> Void)? = nil
+        onOpenPhotoCredits: (@MainActor () -> Void)? = nil,
+        onOpenIntroduction: (@MainActor () -> Void)? = nil
     ) {
         _proactiveMessagesEnabled = AppStorage(
             wrappedValue: true,
@@ -61,6 +63,7 @@ public struct SettingsView: View {
         self.speech = speech
         self.onProactiveMessagesChanged = onProactiveMessagesChanged
         self.onOpenPhotoCredits = onOpenPhotoCredits
+        self.onOpenIntroduction = onOpenIntroduction
     }
 
     public var body: some View {
@@ -80,6 +83,15 @@ public struct SettingsView: View {
                         paperSectionDivider
                         servicePanel
                         paperSectionDivider
+                        if let onOpenIntroduction {
+                            Button(action: onOpenIntroduction) {
+                                settingsLinkLabel("重看旅程介绍", systemImage: "book.pages")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.introduction")
+                            paperSectionDivider
+                        }
                         creditsPanel
                     }
                 }

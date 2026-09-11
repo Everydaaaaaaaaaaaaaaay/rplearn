@@ -24,6 +24,12 @@ public final class AuthSession {
 
     public func bootstrap() async {
         #if DEBUG
+        // Physical-device showcase captures must not restore or clear the owner's credentials.
+        if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1" {
+            phase = .signedOut
+            lastError = nil
+            return
+        }
         if ProcessInfo.processInfo.environment["UI_TEST_FORCE_SIGNED_OUT"] == "1" {
             await client.logout()
             phase = .signedOut

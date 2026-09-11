@@ -220,6 +220,22 @@ final class AppEnvironment {
             unlockedRegionIDs: Set(MainlineCatalog.journeys.map(\.starterRegionID)),
             difficulty: profile.difficultyLevel
         )
+        if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
+            let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
+            let lines: [(MessageRole, String)] = [
+                (.assistant, "How did your first day go? Found any good coffee yet?"),
+                (.user, "Not yet! I went for a walk by the river instead."),
+                (.assistant, "Good choice. That’s my favourite place to clear my head."),
+                (.user, "I’d love to find a quiet café tomorrow."),
+                (.assistant, "There’s a cosy little place near the river. Big windows, good coffee, no loud music."),
+                (.assistant, "Want me to send you the name?")
+            ]
+            for (index, line) in lines.enumerated() {
+                _ = try await account.chatStore.appendMessage(conversationID: conversation.id,
+                    role: line.0, text: line.1, createdAt: Date().addingTimeInterval(Double(index - lines.count) * 60))
+            }
+        }
         needsOnboarding = ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] != "1"
         return userID
     }

@@ -114,6 +114,7 @@ let featureTargets: [Target] = [
         module("MediaKit"),
     ]),
     feature("OnboardingFeature", dependencies: [
+        module("DictKit"),
         module("CoreKit"),
         module("DomainKit"),
         module("StoryEngine"),

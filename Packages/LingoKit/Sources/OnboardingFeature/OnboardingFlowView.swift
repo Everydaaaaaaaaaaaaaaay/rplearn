@@ -1,5 +1,6 @@
 import CoreKit
 import DesignSystem
+import DictKit
 import DomainKit
 import PersistenceKit
 import StoryEngine
@@ -10,17 +11,23 @@ public struct OnboardingDependencies: Sendable {
     public let economyStore: EconomyStore
     public let profileCommands: any ProfileCommandGateway
     public let rosterStore: RosterStore
+    public let dictionary: DictDatabase
+    public let grammarPoints: GrammarPointStore
     public let scriptURL: URL
 
     public init(
         economyStore: EconomyStore,
         profileCommands: any ProfileCommandGateway,
         rosterStore: RosterStore,
-        scriptURL: URL
+        scriptURL: URL,
+        dictionary: DictDatabase,
+        grammarPoints: GrammarPointStore
     ) {
         self.economyStore = economyStore
         self.profileCommands = profileCommands
         self.rosterStore = rosterStore
+        self.dictionary = dictionary
+        self.grammarPoints = grammarPoints
         self.scriptURL = scriptURL
     }
 }
@@ -90,7 +97,7 @@ public struct OnboardingFlowView: View {
                 )
             case .story:
                 if let player {
-                    ChatStoryView(player: player, characters: characters) {
+                    ChatStoryView(player: player, characters: characters, deps: deps) {
                         withAnimation(reduceMotion ? nil : .snappy) {
                             phase = .selection
                         }
@@ -122,14 +129,8 @@ public struct OnboardingFlowView: View {
                 return
             }
             if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_STORY"] == "1",
-               let player {
+               player != nil {
                 phase = .story
-                while player.history.count < 5, !player.isFinished {
-                    if player.currentChoices != nil {
-                        player.choose(0)
-                    }
-                    player.advance()
-                }
                 return
             }
             await autoplayIfRequested()
@@ -298,34 +299,43 @@ private struct PlacementCalibrationChoiceView: View {
 struct ChatStoryView: View {
     let player: StoryPlayer
     let characters: [CharacterDTO]
+    let deps: OnboardingDependencies
     let onFinished: () -> Void
+    @State private var wordSelection: TokenSelection?
+    @State private var replies: [Int: String] = [:]
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        ZStack {
-            LinearGradient(
-                colors: [
-                    Color.dsSky.opacity(0.035),
-                    Color.dsBackground,
-                ],
-                startPoint: .top,
-                endPoint: .center
-            )
-            .ignoresSafeArea()
-
+        NavigationStack {
             VStack(spacing: 0) {
-                header
                 ScrollViewReader { proxy in
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 10) {
                             ForEach(Array(player.history.enumerated()), id: \.element.id) { index, line in
-                                VStack(alignment: .leading, spacing: 2) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    if let reply = replies[index] {
+                                        MessageBubble(side: .outgoing) {
+                                            Text(reply).foregroundStyle(.white)
+                                        }
+                                        .padding(.vertical, 8)
+                                    }
                                     Text(line.speaker)
                                         .font(.caption2.weight(.semibold))
-                                        .foregroundStyle(Color.dsSkyDeep)
-                                        .padding(.leading, 6)
-                                    MessageBubble(side: .incoming) {
-                                        Text(line.text)
+                                        .foregroundStyle(.secondary)
+                                        .padding(.leading, 44)
+                                    MessageBubble(side: .incoming, leadingAccessory: {
+                                        if line.speaker == "咕咕" || line.speaker == "嘎嘎" {
+                                            BrandMascotView(pose: line.speaker == "嘎嘎" ? .coach : .guide,
+                                                            size: 32, showsShadow: false)
+                                        } else if let character = character(for: line.sprite) {
+                                            AvatarBadge(name: character.card.name, size: 32,
+                                                        imageName: character.card.avatarAssetName)
+                                        }
+                                    }) {
+                                        TappableText(tokens: TokenCache.tokens(for: line.text, cacheKey: "opening-\(line.id)"),
+                                            contextID: "opening-\(line.id)", selection: wordSelection,
+                                            onSelect: { wordSelection = $0 })
+                                            .fixedSize(horizontal: false, vertical: true)
                                     }
                                     if shouldShowCard(at: index, line: line),
                                        let character = character(for: line.sprite) {
@@ -356,49 +366,37 @@ struct ChatStoryView: View {
                         }
                     }
                 }
-                footer
+            }
+            .safeAreaInset(edge: .bottom, spacing: 0) { footer }
+            .background(Color.dsBackground)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    ChatTitleView(title: "出发前的小群聊", subtitle: "咕咕与嘎嘎 · 陪你开始") {
+                        HStack(spacing: -8) {
+                            BrandMascotView(pose: .guide, size: 30, showsShadow: false)
+                            BrandMascotView(pose: .coach, size: 30, showsShadow: false)
+                        }
+                    }
+                }
             }
         }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            advanceOrFinish()
-        }
-        .accessibilityAction(named: player.isFinished ? "查看伙伴资料" : "继续") {
-            advanceOrFinish()
-        }
-    }
-
-    private var header: some View {
-        HStack(spacing: DSSpacing.xs) {
-            BrandMascotView(pose: .greeting, size: 38, showsShadow: false)
-            VStack(alignment: .leading, spacing: 0) {
-                Text(AppBrand.mascotName)
-                    .font(.headline.weight(.bold))
-                Text(AppBrand.mascotRole)
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-            Text("开始旅程 2 / 3")
-                .font(.caption2.weight(.semibold))
-                .foregroundStyle(.secondary)
-        }
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.vertical, DSSpacing.xs)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .bottom) { Divider() }
+        .background(Color.dsBackground)
+        .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
+                           grammar: deps.grammarPoints,
+                           exampleTranslationActions: .init(translate: { _ in nil }),
+                           allowsSystemTranslationFallback: false)
+        .accessibilityIdentifier("onboarding.story")
     }
 
     @ViewBuilder
     private var footer: some View {
         if let choices = player.currentChoices {
             VStack(spacing: 8) {
-                Text("你想怎么回答\(AppBrand.mascotName)？")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
                 ForEach(Array(choices.enumerated()), id: \.offset) { index, option in
                     Button {
                         withAnimation(reduceMotion ? nil : .snappy) {
+                            replies[player.history.count] = option.text
                             player.choose(index)
                             player.advance()
                         }
@@ -407,19 +405,19 @@ struct ChatStoryView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.dsAction(.secondary))
+                    .accessibilityIdentifier("onboarding.story.choice.\(index)")
                 }
             }
-            .padding(12)
-            .background(.ultraThinMaterial)
-            .overlay(alignment: .top) { Divider() }
+            .padding(16)
+            .background(Color.dsBackground.opacity(0.96))
         } else {
-            Label(
-                player.isFinished ? "查看伙伴资料" : "轻点继续",
-                systemImage: player.isFinished ? "person.2.crop.square.stack.fill" : "hand.tap.fill"
-            )
-            .font(.footnote.weight(.semibold))
-            .foregroundStyle(player.isFinished ? Color.dsSkyDeep : .secondary)
-            .padding(.vertical, 10)
+            Button(action: advanceOrFinish) {
+                Label(player.isFinished ? "认识第一位旅伴" : "继续", systemImage: "arrow.right")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.dsActionPrimary)
+            .accessibilityIdentifier("onboarding.story.continue")
+            .padding(16)
         }
     }
 
@@ -662,5 +660,51 @@ struct CharacterSelectView: View {
 
     private func firstName(_ name: String) -> String {
         name.split(separator: " ").first.map(String.init) ?? name
+    }
+}
+
+/// 只读重看入口：不重置档案、不重新选角，也不写入正式聊天。
+public struct JourneyIntroductionView: View {
+    private let deps: OnboardingDependencies
+    @State private var showsStory = false
+    @State private var player: StoryPlayer?
+    @State private var characters: [CharacterDTO] = []
+    @State private var loadFailed = false
+    @Environment(\.dismiss) private var dismiss
+
+    public init(deps: OnboardingDependencies) { self.deps = deps }
+
+    public var body: some View {
+        Group {
+            if !showsStory {
+                WelcomeJourneyView { showsStory = true }
+            } else if let player {
+                ChatStoryView(player: player, characters: characters, deps: deps) { dismiss() }
+            } else if loadFailed {
+                ContentUnavailableView("暂时无法打开介绍", systemImage: "book.closed")
+            } else {
+                ProgressView()
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            Button("关闭", systemImage: "xmark", action: { dismiss() })
+                .labelStyle(.iconOnly)
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.circle)
+                .accessibilityIdentifier("introduction.close")
+                .padding(.trailing, 16)
+                .padding(.top, 8)
+        }
+        .task {
+            do {
+                let script = try StoryScript.load(from: deps.scriptURL)
+                characters = try await deps.rosterStore.allCharacters().filter(\.isMainCharacter)
+                let loaded = StoryPlayer(script: script)
+                loaded.advance()
+                player = loaded
+            } catch {
+                loadFailed = true
+            }
+        }
     }
 }

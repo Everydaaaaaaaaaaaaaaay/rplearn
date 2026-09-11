@@ -45,6 +45,10 @@ struct RootView: View {
     @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
+    @State private var showIntroduction = false
+    #if DEBUG
+    @State private var captureCharacter: CharacterDTO?
+    #endif
     @State private var placementCompletionRevision = 0
     @State private var activeUserID: UUID?
     @State private var stateRevision = 0
@@ -133,6 +137,12 @@ struct RootView: View {
 
     var body: some View {
         launchContent
+            #if DEBUG
+            .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
+            .fullScreenCover(item: $captureCharacter) { character in
+                NavigationStack { ChatView(character: character, deps: chatDeps) }
+            }
+            #endif
             .environment(\.userAvatar, environment.workspace?.userAvatar)
             .fullScreenCover(isPresented: $showLondonEpisode) {
                 #if DEBUG
@@ -171,6 +181,15 @@ struct RootView: View {
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
                 guard environment.workspace != nil else { return }
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+                   ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+                   bypassesAuthenticationForUITesting {
+                    captureCharacter = try? await environment.rosterStore.allCharacters().first {
+                        $0.isMainCharacter && $0.card.regionID == "melbourne"
+                    }
+                }
+                #endif
                 await reloadUnreadCount()
                 if environment.needsOnboarding != nil,
                    selectedTab != .home || activeHomeDestination != nil || !homePath.isEmpty {
@@ -410,6 +429,16 @@ struct RootView: View {
         if let accountID = activeUserID,
            environment.workspace?.userID == accountID {
             tabs
+            .fullScreenCover(isPresented: $showIntroduction) {
+                JourneyIntroductionView(deps: OnboardingDependencies(
+                    economyStore: environment.economyStore,
+                    profileCommands: profileCommands,
+                    rosterStore: environment.rosterStore,
+                    scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
+                    dictionary: environment.dictionary,
+                    grammarPoints: environment.grammarPoints
+                ))
+            }
             .fullScreenCover(isPresented: $showPlacementTest) {
                 placementTestView(isOnboarding: false)
             }
@@ -420,7 +449,9 @@ struct RootView: View {
                         economyStore: environment.economyStore,
                         profileCommands: profileCommands,
                         rosterStore: environment.rosterStore,
-                        scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!
+                        scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
+                        dictionary: environment.dictionary,
+                        grammarPoints: environment.grammarPoints
                     ),
                     placementCompletionRevision: placementCompletionRevision,
                     onRequestPlacement: { showOnboardingPlacement = true }
@@ -762,7 +793,8 @@ struct RootView: View {
                 onProactiveMessagesChanged: { enabled in
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
                 },
-                onOpenPhotoCredits: { openMe(.photoCredits) }
+                onOpenPhotoCredits: { openMe(.photoCredits) },
+                onOpenIntroduction: { showIntroduction = true }
             )
 
         case .photoCredits:
