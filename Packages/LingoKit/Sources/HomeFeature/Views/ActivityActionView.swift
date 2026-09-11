@@ -197,7 +197,7 @@ struct ActivityActionView: View {
                     VStack(alignment: .leading, spacing: 7) {
                         Text(choice.english).font(.body.weight(.medium))
                         Text(choice.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7))
-                        if model.selected == index {
+                        if model.selected == index, !choice.response.isEmpty {
                             Text(choice.response).font(.caption).lineSpacing(3)
                                 .accessibilityIdentifier("activities.action.feedback")
                         }

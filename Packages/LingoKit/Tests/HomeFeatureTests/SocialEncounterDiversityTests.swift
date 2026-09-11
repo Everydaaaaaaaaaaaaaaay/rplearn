@@ -69,10 +69,12 @@ struct SocialEncounterDiversityTests {
     private actor LLMFixture {
         private var generationCount = 0
         private(set) var generationPrompts: [String] = []
+        private(set) var planCount = 0
 
         func complete(_ request: LLMRequest) -> String {
-            if case .jsonSchema(let name, _) = request.responseFormat, name == "social_reply" {
-                return #"{"english":"Hi! Is this seat free?","chinese":"你好！这个座位有人吗？","acceptsContact":false}"#
+            if case .jsonSchema(let name, _) = request.responseFormat, name == "social_encounter_plan" {
+                planCount += 1
+                return Self.planJSON
             }
             generationPrompts.append(request.system ?? "")
             generationCount += 1
@@ -84,6 +86,27 @@ struct SocialEncounterDiversityTests {
                 interactionStyle: generationCount == 1 ? "gentle" : "practical",
                 motif: generationCount == 1 ? "mastery" : "career-change"
             )
+        }
+
+        static var planJSON: String {
+            func reply(_ english: String, _ accepts: Bool = false) -> [String: Any] {
+                ["english": english, "chinese": "这是一句自然的回应。", "acceptsContact": accepts]
+            }
+            func choice(_ english: String) -> [String: String] {
+                ["english": english, "chinese": "这是一句可选的话。"]
+            }
+            let branches: [[String: Any]] = (0..<2).map { index in
+                ["choice": choice(index == 0 ? "Is this a quiet spot?" : "Do you like this view?"),
+                 "reply": reply(index == 0 ? "Yes, it is peaceful." : "The view is lovely."),
+                 "endings": [
+                    ["intent": "invite", "choice": choice("Would you like to keep in touch?"),
+                     "reply": reply(index == 0 ? "Sure, that would be nice." : "Thanks, but I prefer to leave it here.", index == 0)],
+                    ["intent": "leave", "choice": choice("Have a nice day!"), "reply": reply("You too. Goodbye!")]
+                 ]]
+            }
+            return String(decoding: try! JSONSerialization.data(withJSONObject: [
+                "opening": reply("Hello! Taking a break?"), "branches": branches
+            ]), as: UTF8.self)
         }
 
         private static func cardJSON(
@@ -165,7 +188,8 @@ struct SocialEncounterDiversityTests {
             activity: try #require(SceneActivity.catalog.first),
             region: region,
             deps: deps,
-            namespace: "social-encounter-diversity-test"
+            namespace: "social-encounter-diversity-test-\(UUID())",
+            encounterRoll: { 0 }
         )
         model.start()
         let deadline = ContinuousClock.now.advanced(by: .seconds(10))
@@ -185,5 +209,25 @@ struct SocialEncounterDiversityTests {
         let prompts = await fixture.generationPrompts
         #expect(prompts.count == 2)
         #expect(prompts[1].contains("outside the service-retail domain"))
+        #expect(await fixture.planCount == 1)
+        #expect(try await deps.chatStore.recentMessages(characterID: #require(model.character?.id), limit: 20).count == 1)
+        // Choosing the second branch must not reuse the first branch's acceptance.
+        model.choose(1)
+        while model.busy { try await Task.sleep(for: .milliseconds(10)) }
+        #expect(model.reply?.english == "The view is lovely.")
+        model.advance()
+        model.choose(0)
+        while model.busy { try await Task.sleep(for: .milliseconds(10)) }
+        model.advance()
+        #expect(model.error == nil)
+        #expect(model.summary)
+        #expect(!model.canConnect)
+        #expect(await fixture.planCount == 1)
+        let messages = try await deps.chatStore.recentMessages(characterID: #require(model.character?.id), limit: 20)
+        #expect(messages.count == 5)
+        #expect(!messages.contains { $0.text == "Yes, it is peaceful." || $0.text == "Sure, that would be nice." })
+        model.start()
+        #expect(await fixture.planCount == 1)
+
     }
 }

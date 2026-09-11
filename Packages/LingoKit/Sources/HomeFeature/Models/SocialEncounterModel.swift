@@ -45,7 +45,23 @@ final class SocialEncounterModel: ObservableObject {
         started && (revealAt.map { date >= $0 } ?? false) && (isSolitude || openingReady)
     }
     let runID = UUID()
-    let activity: SceneActivity
+    private let authoredActivity: SceneActivity
+    @Published private var encounterPlan: SocialEncounterPlan?
+    var activity: SceneActivity {
+        guard let plan = encounterPlan else { return authoredActivity }
+        let branch = plan.branches[selections.first ?? (step == 0 ? selected : nil) ?? 0]
+        let first = SceneActivity.Step(context: authoredActivity.steps[0].context,
+            question: "你想怎样回应？", choices: plan.branches.map {
+                .init(english: $0.choice.english, chinese: $0.choice.chinese, response: "")
+            })
+        let last = SceneActivity.Step(context: authoredActivity.steps[1].context,
+            question: "接下来，你想怎样回应？", choices: branch.endings.map {
+                .init(english: $0.choice.english, chinese: $0.choice.chinese, response: "")
+            })
+        return SceneActivity(id: authoredActivity.id, scene: authoredActivity.scene,
+            title: authoredActivity.title, symbol: authoredActivity.symbol,
+            introduction: authoredActivity.introduction, steps: [first, last], closing: authoredActivity.closing)
+    }
     let region: Region
     let deps: HomeDependencies
     private let roster: RosterStore
@@ -66,6 +82,7 @@ final class SocialEncounterModel: ObservableObject {
     private var registeredGeneratedPublic: BackendPublicNPC?
     private let generatedID = UUID()
     private var generationOrigin: EncounterService.Origin = .local
+    private let encounterRoll: @Sendable () -> Double
     private let isFixture: Bool
     #if DEBUG
     private var fixtureFailed = false
@@ -74,8 +91,10 @@ final class SocialEncounterModel: ObservableObject {
     var responses: [String] { (0..<activity.steps.count).map { cachedReplies[$0]?.chinese ?? "" } }
     var canConnect: Bool { summary && (reply?.acceptsContact == true || character?.isFriend == true) }
 
-    init(activity: SceneActivity, region: Region, deps: HomeDependencies, namespace: String) {
-        self.activity = activity; self.region = region; self.deps = deps
+    init(activity: SceneActivity, region: Region, deps: HomeDependencies, namespace: String,
+         encounterRoll: @escaping @Sendable () -> Double = { Double.random(in: 0..<1) }) {
+        self.encounterRoll = encounterRoll
+        self.authoredActivity = activity; self.region = region; self.deps = deps
         history = ActivityEncounterHistory(namespace: namespace, city: region.id)
         #if DEBUG
         isFixture = ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1"
@@ -93,7 +112,7 @@ final class SocialEncounterModel: ObservableObject {
         if revealAt == nil { revealAt = Date().addingTimeInterval(15) }
         started = true
         launch {
-            var roll = Double.random(in: 0..<1)
+            var roll = self.encounterRoll()
             #if DEBUG
             if self.isFixture {
                 roll = ProcessInfo.processInfo.environment["UI_TEST_SOLITUDE"] == "1" ? 0.99 : 0
@@ -398,10 +417,25 @@ final class SocialEncounterModel: ObservableObject {
                     chinese: index < 0 ? "你好！你也来歇一会儿吗？" : index == 0 ? "当然。忙碌的一天，歇一会儿很有帮助。" : selected == 0 ? "好啊，我们保持联系吧。" : "很高兴认识你，保重！",
                     acceptsContact: index == 1 && selected == 0)
             } else {
-                cachedReplies[index] = try await SocialDialogueService(llm: deps.llm).reply(
-                    card: character.card, context: sceneContext, history: transcript,
-                    userLine: choice?.english, invitesContact: index == 1 && selected == 0,
-                    alreadyKnown: alreadyKnown, difficulty: character.difficultyLevel)
+                if encounterPlan == nil {
+                    guard index == -1 else { throw SocialDialogueService.DialogueError.invalidReply }
+                    let plan = try await SocialDialogueService(llm: deps.llm).plan(
+                        card: character.card, context: sceneContext, history: transcript,
+                        alreadyKnown: alreadyKnown, difficulty: character.difficultyLevel)
+                    try Task.checkCancellation()
+                    encounterPlan = plan
+                }
+                guard let plan = encounterPlan else { throw SocialDialogueService.DialogueError.invalidReply }
+                switch index {
+                case -1: cachedReplies[index] = plan.opening
+                case 0:
+                    guard let selected else { throw SocialDialogueService.DialogueError.invalidReply }
+                    cachedReplies[index] = plan.branches[selected].reply
+                case 1:
+                    guard let first = selections.first, let selected else { throw SocialDialogueService.DialogueError.invalidReply }
+                    cachedReplies[index] = plan.branches[first].endings[selected].reply
+                default: throw SocialDialogueService.DialogueError.invalidReply
+                }
             }
         }
         try Task.checkCancellation()
