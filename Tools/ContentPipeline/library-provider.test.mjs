@@ -52,3 +52,14 @@ test('interrupted attempts stay reserved and cannot silently redispatch', async 
     rmSync(dir, { recursive: true });
   }
 });
+
+
+test('authorized total ceiling is 35 CNY and cannot be raised by a caller', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'npc-authorized-cap-'));
+  try {
+    assert.doesNotThrow(() => createLibraryProvider(dir, { capCNY: 35 }));
+    for (const capCNY of [35.01, Infinity, NaN, 0, -1]) {
+      assert.throws(() => createLibraryProvider(dir, { capCNY }), /within CNY 35/);
+    }
+  } finally { rmSync(dir, { recursive: true }); }
+});

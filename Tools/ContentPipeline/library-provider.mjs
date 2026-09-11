@@ -4,8 +4,8 @@ import { join } from 'node:path';
 
 // All planning, generation and review share one durable admission ledger.
 // Interrupted/unknown-cost attempts retain their upper bound; never assume free.
-export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch, reasoningEffort = 'minimal', model = 'z-ai/glm-5.3-flash', promptPriceCeiling = 0.2, completionPriceCeiling = 0.6, preferredProviders = ['Parasail'] } = {}) {
-  if (!(capCNY > 0 && capCNY <= 25)) throw Error('Library budget must be within CNY 25');
+export function createLibraryProvider(output, { capCNY = 35, fetcher = fetch, reasoningEffort = 'minimal', model = 'z-ai/glm-5.3-flash', promptPriceCeiling = 0.2, completionPriceCeiling = 0.6, preferredProviders = ['Parasail'] } = {}) {
+  if (!(capCNY > 0 && capCNY <= 35)) throw Error('Library budget must be within CNY 35');
   mkdirSync(output, { recursive: true });
   const ledgerPath = join(output, 'ledger.jsonl');
   const rows = existsSync(ledgerPath) ? readFileSync(ledgerPath, 'utf8').split('\n').filter(Boolean).map(JSON.parse) : [];
@@ -34,7 +34,7 @@ export function createLibraryProvider(output, { capCNY = 25, fetcher = fetch, re
       return decode(JSON.parse(readFileSync(responsePath, 'utf8')));
     }
     const upperUSD = (Buffer.byteLength(serialized) * promptPriceCeiling + maxTokens * completionPriceCeiling) / 1e6 * 1.1;
-    if (accountedCNY() + upperUSD * 7.2 > capCNY) throw Error('CNY 25 library budget exhausted');
+    if (accountedCNY() + upperUSD * 7.2 > capCNY) throw Error(`CNY ${capCNY} library budget exhausted`);
     if (!process.env.OPENROUTER_API_KEY) throw Error('Server-side provider key required');
     writeFileSync(requestPath, serialized);
     costs.set(key, upperUSD);

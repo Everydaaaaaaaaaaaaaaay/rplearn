@@ -1,4 +1,4 @@
-// Paid, opt-in offline production. All stages share the durable CNY 25 ledger.
+// Paid, opt-in offline production. All stages share the durable CNY 35 ledger.
 import { readFileSync, writeFileSync, existsSync, mkdirSync, openSync, closeSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';

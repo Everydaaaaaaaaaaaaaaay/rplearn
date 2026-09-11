@@ -9,5 +9,5 @@ for(const r of requests.values()){
  if(typeof r.costUSD==='number')actualUSD+=r.costUSD;else{unknownUpperUSD+=r.upperUSD;unresolved.push({key:r.key,upperUSD:r.upperUSD,status:r.status??'no receipt'});}
  cachedTokens+=r.usage?.prompt_tokens_details?.cached_tokens??0;promptTokens+=r.usage?.prompt_tokens??0;completionTokens+=r.usage?.completion_tokens??0;
 }
-const report={currency:'CNY',usdCny:7.2,budgetCNY:25,requests:requests.size,actualCNY:actualUSD*7.2,unresolvedUpperCNY:unknownUpperUSD*7.2,accountedCNY:(actualUSD+unknownUpperUSD)*7.2,unresolved,promptTokens,cachedTokens,completionTokens,scope:'Offline library planning, rejected drafts, production and review in the shared ledger; excludes Codex usage and the earlier standalone ten-person pilot.'};
+const report={currency:'CNY',usdCny:7.2,budgetCNY:35,requests:requests.size,actualCNY:actualUSD*7.2,unresolvedUpperCNY:unknownUpperUSD*7.2,accountedCNY:(actualUSD+unknownUpperUSD)*7.2,unresolved,promptTokens,cachedTokens,completionTokens,scope:'Offline library planning, rejected drafts, production and review in the shared ledger; excludes Codex usage and the earlier standalone ten-person pilot.'};
 writeFileSync(destination,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
