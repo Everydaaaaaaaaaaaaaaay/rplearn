@@ -18,6 +18,7 @@ for(const mode of ['cards','stories']){
   if(dispositions.snapshot!==audit.snapshot)throw Error('Stale adjudications');
   for(const p of audit.findings){const decision=dispositions.decisions.find(d=>[d.left,d.right].sort().join('/')===[p.left,p.right].sort().join('/'));
    if(decision?.status!=='distinct'||!decision.reasonZh||decision.reasonZh.length<20)throw Error('Unresolved duplicate '+p.left+'/'+p.right);
+   for(const side of ['left','right']){const value=read(decision[side]+(mode==='cards'?'.card.json':'.json'));if(decision[side+'Hash']!==digest(value))throw Error('Stale pair evidence '+decision[side]);}
   }
  }
 }

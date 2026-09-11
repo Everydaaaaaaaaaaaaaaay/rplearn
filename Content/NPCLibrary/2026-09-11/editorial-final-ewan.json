@@ -1,0 +1,686 @@
+[
+  {
+    "id": "library-086",
+    "expectedContent": {
+      "story": {
+        "titleZh": "池塘边的最后一秒落笔",
+        "actionId": "pond-postcard",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You sit on the stone ledge by the pond, postcard on your knee, pen moving. Beside you a young man holds his own card, pen hovering over the signature line.",
+                "chinese": "你坐在池塘边的石台上，明信片放在膝上，笔在移动。旁边一个年轻人拿着自己的卡片，笔悬在落款上方。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Mine's finished. Words, address, everything. Except this bit.",
+                "chinese": "我的写完了。内容、地址，全写好了。除了这一块。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "His pen hangs above the line. He watches it like it might move on its own.",
+                "chinese": "他的笔悬在线上。他盯着笔，好像它会自己动似的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The whole card's been decided since I got here. I just don't count it as done until the last second. That's when it's real.",
+                "chinese": "整张卡片我来之前就定好了。只是不到最后一秒我不算写完。那一刻才算真的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're writing yours properly, I see. Straight through, no hovering.",
+                "chinese": "你写得挺顺的，我看到了。一路写下去，不悬着。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if he actually has a deadline today",
+                "chinese": "问他今天是不是真的有截止时间",
+                "next": "a"
+              },
+              {
+                "english": "Ask if work is like this too",
+                "chinese": "问他的工作是不是也这样",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He checks the pond like the water might hold the answer, then laughs a beat late.",
+                "chinese": "他看了看池塘，好像水里会有答案，然后慢半拍地笑了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "No. No deadline. Nobody's waiting on this card. I invented one anyway.",
+                "chinese": "没有。没有截止时间。没人在等这张卡片。但我还是给自己编了一个。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I told myself I'd sign it before I left this bench. That's the whole rule. The bench is the deadline now.",
+                "chinese": "我跟自己说，离开这条石凳之前必须签好。规则就这一条。这条凳子现在就是截止时间。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He taps the pen twice against his knee, then looks at the finished card in his other hand.",
+                "chinese": "他用笔在膝盖上敲了两下，然后看着另一只手里写好的卡片。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's a strange hobby, manufacturing pressure. But the last-second version of me is the honest one.",
+                "chinese": "自己制造压力，算个怪癖吧。不过最后一秒的那个我，才是诚实的那个。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask why he waits if it's already decided",
+                "chinese": "问既然定了为什么还要等",
+                "next": "aa"
+              },
+              {
+                "english": "Say you're not in a hurry, he can take his time",
+                "chinese": "说自己不赶时间，让他按自己的节奏来",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He lowers the pen and turns the card face down on his knee, settling in like this is the easier topic.",
+                "chinese": "他放下笔，把卡片翻面扣在膝上，坐稳了，好像这个话题更轻松。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Every day. I test candle batches. Today's was meant to smell like sea wind.",
+                "chinese": "每天都这样。我是闻香测试学徒。今天那批蜡烛本该是海风味的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "By lunch I knew it didn't. More like a swimming pool having a crisis. But I don't write the verdict until the logbook closes.",
+                "chinese": "中午我就知道不像了。更像一个游泳池在闹危机。但记录簿收尾之前我不写结论。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sniffs the air over the pond, out of habit, then shrugs.",
+                "chinese": "他习惯性地闻了闻池塘上方的空气，然后耸耸肩。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Not because waiting makes it more accurate. I just trust the version of me at the deadline. The morning me is contaminated by hoping.",
+                "chinese": "不是因为等着会更准。我只是相信截止时刻的那个我。早上的那个我，被希望污染了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if this ever makes people wait on him",
+                "chinese": "问这是否让别人等过他",
+                "next": "ba"
+              },
+              {
+                "english": "Ask who the card is for",
+                "chinese": "问卡片要寄给谁",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He turns the card over and reads his own message again, slowly, like checking someone else's work.",
+                "chinese": "他把卡片翻过来，慢慢重读自己写的内容，像在检查别人的作业。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Why wait? Because the moment before the deadline is the only moment I believe myself. Before that, everything's a rehearsal.",
+                "chinese": "为什么等？因为截止前的那一刻，是我唯一相信自己的时刻。在那之前，一切都是排练。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He exhales, flips the card to the signature line, and writes a name in one clean stroke.",
+                "chinese": "他呼了口气，把卡片翻到落款处，一笔利落地写下一个名字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. Knew it was that name since I sat down. Now it's official.",
+                "chinese": "好了。坐下来的时候就知道是这个名字了。现在它算数了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I didn't need help picking. I just needed the bench to run out. That's all it ever takes.",
+                "chinese": "我不需要别人帮我选。我只是需要这条凳子用完。一直都是这样。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He glances at your unhurried writing, then at his own hovering pen, and something in him settles.",
+                "chinese": "他看了看你不紧不慢的书写，又看了看自己悬着的笔，有什么东西在他身上安定下来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're not rushing me. That's rare. Most people stare at the pen like it owes them money.",
+                "chinese": "你没有催我。这很少见。大多数人盯着这支笔，好像它欠他们钱。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sits with that for a moment, then quietly signs the card without any countdown at all.",
+                "chinese": "他安静地坐了一会儿，然后毫无倒计时地，悄悄在卡片上签了名。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Huh. Done. No last second, no drama. Still feels like mine, somehow.",
+                "chinese": "咦。写完了。没有最后一秒，没有戏剧性。但不知怎么，感觉还是我自己的决定。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Don't tell anyone I did it early. I have a reputation, apparently.",
+                "chinese": "别告诉别人我提前写完了。我好像有个名声要维持。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He winces, which is answer enough, and rubs the back of his neck.",
+                "chinese": "他皱了皱眉，这本身就是答案，然后揉了揉后颈。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Yes. The chandler wants the logbook at closing. She stands by my desk. Tapping.",
+                "chinese": "有。工坊主人要收簿子。她就站在我桌边。敲桌子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The verdict's always right, that's the annoying part. But she gets the last hour of her day eaten by my waiting. That's not fair on her.",
+                "chinese": "结论总是对的，这是最气人的地方。但她每天最后一个小时都耗在等我这儿。这对她不公平。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He picks the card back up and looks at the empty signature line with new eyes.",
+                "chinese": "他重新拿起卡片，用新的眼光看着那行空白落款。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Maybe the deadline isn't magic. Maybe I'm just late. Signing this now, before the pond closes.",
+                "chinese": "也许截止时间并没有魔法。也许我只是拖。现在就签，趁池塘还没关门。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He angles the card so only the front shows, the address side pressed against his knee.",
+                "chinese": "他把卡片斜了斜，只露出正面，地址那面压在膝盖上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My gran. She moved out to the coast last year. I send her one every time I'm near water.",
+                "chinese": "我奶奶。她去年搬去海边了。每次我靠近水，就给她寄一张。"
+              },
+              {
+                "speaker": "npc",
+                "english": "She keeps them all in a tin. Says my handwriting's terrible but my timing's good.",
+                "chinese": "她把卡片都收在一个铁盒里。说我的字很糟，但时机很好。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He laughs a beat late, then signs the card in one quick stroke and turns it face down, finished.",
+                "chinese": "他慢半拍地笑了，然后利落地签下名字，把卡片翻面扣好，写完了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. Signed with time to spare. She'd be proud. Or suspicious.",
+                "chinese": "好了。提前签完了。她会骄傲的。或者起疑心。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "爱丁堡蜡烛工坊的闻香学徒，明信片内容早已写好，落款却悬在最后一秒才落笔。他坚信截止时刻的直觉最诚实，白天明知海风味像游泳池闹危机，也要拖到记录簿收尾。果断、不征求别人意见，却让所有等他交卷的人慢慢窒息。",
+      "reunion": {
+        "titleZh": "池边的两拍铃声",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You're back at the pond ledge with a fresh postcard. Ewan is nearby, head tilted, listening to something far off.",
+            "chinese": "你带着一张新明信片回到池塘边。伊万在附近，歪着头，听着远处的什么声音。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hear that? High, thin, metallic. Someone's got handbells out past the bridge.",
+            "chinese": "听见了吗？又高又细，金属声。桥那边有人在敲手铃。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He taps two soft beats on his own knee with two fingers, matching the rhythm, then stops and folds his hands.",
+            "chinese": "他用两根手指在膝盖上轻轻打了两拍，合上节奏，然后停下，双手收拢。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's a practice run, not a performance. I know because the third bell keeps coming in early.",
+            "chinese": "那是练习，不是演出。我知道，因为第三口铃总是进早了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Anyway — you're on card number two. I'll try not to hover over my signature this time. No promises.",
+            "chinese": "话说回来，你写第二张了。这次我尽量不在落款上悬着。不保证。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He settles onto the ledge at a polite distance and takes out a pen, holding it steady over the card.",
+            "chinese": "他在石台上隔着礼貌的距离坐下，拿出一支笔，稳稳地悬在卡片上方。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Ewan Cathcart",
+        "age": 22,
+        "gender": "male",
+        "regionId": "edinburgh",
+        "nationality": "Scottish",
+        "occupation": "apprentice scent tester at a small chandlery, sniffing candle batches and logging notes",
+        "hobbies": [
+          "handbell ensemble",
+          "theatre lighting design appreciation"
+        ],
+        "personality": "Ewan never asks for opinions — he just won't commit until the clock corners him. A batch sits logged as 'pending' all day, the rug decision has a shortlist and no winner, and the ensemble's post-practice dinner spot gets settled in the last ninety seconds before the pub fills up. His working theory is that the instinct you have at the deadline is the honest one; everything before that is just rehearsal. The trouble is nobody knows he's running this system. Decisive people around him experience a slow-drip dread — the verdict is coming, it's always coming, and it arrives at the last possible moment, usually correct, always breathless. Under friction he doesn't argue; he simply extends the deadline, which is somehow worse than a no.",
+        "background": "Ewan grew up in Edinburgh, left school at eighteen, and drifted through a garden centre and a café before a family friend mentioned the chandlery was hiring an assistant. Now he spends mornings sniffing test batches, and he's developed a private ritual: he writes his verdict the instant before the logbook has to go to the chandler at closing, never earlier, even when he knew the answer by lunch. He's convinced the last-second call is the clean one — the morning version is contaminated by hoping. He joined a handbell ensemble two years ago through a flatmate and stuck with it, mostly because counting rests suits him; the conductor has learned that Ewan's 'yes' to anything arrives just before it stops being askable. On nights off he buys cheap theatre tickets and watches the lighting rig change the whole mood of a show. He's currently three weeks into deciding on a rug, with a shortlist and everything, and a self-imposed Saturday deadline he's already once moved to Sunday.",
+        "speechStyle": "low and unhurried, almost grading a smell under his breath before looking up to share the verdict; short sentences, laughs a beat late, ends statements on a rising note like he's handing them over for review",
+        "hometown": "Edinburgh, Scotland",
+        "languages": [
+          "English"
+        ],
+        "birthday": "08-11",
+        "signature": "Ask me again at five to closing — that's when I'll know.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "the instinct you have at the deadline is the honest one",
+            "doing the unglamorous part properly"
+          ],
+          "flaws": [
+            "won't commit to anything until the last possible moment, leaving everyone else marinating in uncertainty",
+            "moves his own deadlines quietly when they arrive, then acts surprised anyone was counting"
+          ],
+          "boundaries": [
+            "won't log an official scent verdict before the logbook's closing time, no matter how obvious the batch is",
+            "won't accept a decision made on his behalf while he's still 'pending' — pending is his, not yours"
+          ],
+          "conversationalHabits": [
+            "narrates smells out loud before anything else",
+            "reports how much time is left on a decision like a countdown, even when nobody asked"
+          ],
+          "anchorLines": [
+            "The batch today smelled like a swimming pool having a crisis. Logged it honestly.",
+            "Hold on — this one actually smells like the label. Like an actual lemon grove. Give it a minute, I'm having a moment.",
+            "I know what I think about the rug. I'll know it properly by Saturday. Sunday at the latest.",
+            "It's your three-month mark at the new job on Friday. I checked. Wear something you like."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "池塘边的最后一秒落笔",
+        "actionId": "pond-postcard",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You sit on the stone ledge by the pond, postcard on your knee, pen moving. Beside you a young man holds his own card, pen hovering over the signature line.",
+                "chinese": "你坐在池塘边的石台上，明信片放在膝上，笔在移动。旁边一个年轻人拿着自己的卡片，笔悬在落款上方。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Mine's finished. Words, address, everything. Except this bit.",
+                "chinese": "我的写完了。内容、地址，全写好了。除了这一块。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "His pen hangs above the line. He watches it like it might move on its own.",
+                "chinese": "他的笔悬在线上。他盯着笔，好像它会自己动似的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The whole card's been decided since I got here. I just don't count it as done until the last second. That's when it's real.",
+                "chinese": "整张卡片我来之前就定好了。只是不到最后一秒我不算写完。那一刻才算真的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're writing yours properly, I see. Straight through, no hovering.",
+                "chinese": "你写得挺顺的，我看到了。一路写下去，不悬着。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if he actually has a deadline today",
+                "chinese": "问他今天是不是真的有截止时间",
+                "next": "a"
+              },
+              {
+                "english": "Ask if work is like this too",
+                "chinese": "问他的工作是不是也这样",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He checks the pond like the water might hold the answer, then laughs a beat late.",
+                "chinese": "他看了看池塘，好像水里会有答案，然后慢半拍地笑了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "No. No deadline. Nobody's waiting on this card. I invented one anyway.",
+                "chinese": "没有。没有截止时间。没人在等这张卡片。但我还是给自己编了一个。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I told myself I'd sign it before I left this bench. That's the whole rule. The bench is the deadline now.",
+                "chinese": "我跟自己说，离开这条石凳之前必须签好。规则就这一条。这条凳子现在就是截止时间。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He taps the pen twice against his knee, then looks at the finished card in his other hand.",
+                "chinese": "他用笔在膝盖上敲了两下，然后看着另一只手里写好的卡片。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's a strange hobby, manufacturing pressure. But the last-second version of me is the honest one.",
+                "chinese": "自己制造压力，算个怪癖吧。不过最后一秒的那个我，才是诚实的那个。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask why he waits if it's already decided",
+                "chinese": "问既然定了为什么还要等",
+                "next": "aa"
+              },
+              {
+                "english": "Say you're not in a hurry, he can take his time",
+                "chinese": "说自己不赶时间，让他按自己的节奏来",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He lowers the pen and turns the card face down on his knee, settling in like this is the easier topic.",
+                "chinese": "他放下笔，把卡片翻面扣在膝上，坐稳了，好像这个话题更轻松。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Every day. I test candle batches. Today's was meant to smell like sea wind.",
+                "chinese": "每天都这样。我是闻香测试学徒。今天那批蜡烛本该是海风味的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "By lunch I knew it didn't. More like a swimming pool having a crisis. But I don't write the verdict until the logbook closes.",
+                "chinese": "中午我就知道不像了。更像一个游泳池在闹危机。但记录簿收尾之前我不写结论。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sniffs the air over the pond, out of habit, then shrugs.",
+                "chinese": "他习惯性地闻了闻池塘上方的空气，然后耸耸肩。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Not because waiting makes it more accurate. I just trust the version of me at the deadline. The morning me is contaminated by hoping.",
+                "chinese": "不是因为等着会更准。我只是相信截止时刻的那个我。早上的那个我，被希望污染了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if this ever makes people wait on him",
+                "chinese": "问这是否让别人等过他",
+                "next": "ba"
+              },
+              {
+                "english": "Ask who the card is for",
+                "chinese": "问卡片要寄给谁",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He turns the card over and reads his own message again, slowly, like checking someone else's work.",
+                "chinese": "他把卡片翻过来，慢慢重读自己写的内容，像在检查别人的作业。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Why wait? Because the moment before the deadline is the only moment I believe myself. Before that, everything's a rehearsal.",
+                "chinese": "为什么等？因为截止前的那一刻，是我唯一相信自己的时刻。在那之前，一切都是排练。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He exhales, flips the card to the signature line, and writes a name in one clean stroke.",
+                "chinese": "他呼了口气，把卡片翻到落款处，一笔利落地写下一个名字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. Knew it was that name since I sat down. Now it's official.",
+                "chinese": "好了。坐下来的时候就知道是这个名字了。现在它算数了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I didn't need help picking. I just needed the bench to run out. That's all it ever takes.",
+                "chinese": "我不需要别人帮我选。我只是需要这条凳子用完。一直都是这样。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He glances at your unhurried writing, then at his own hovering pen, and something in him settles.",
+                "chinese": "他看了看你不紧不慢的书写，又看了看自己悬着的笔，有什么东西在他身上安定下来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're not rushing me. That's rare. Most people stare at the pen like it owes them money.",
+                "chinese": "你没有催我。这很少见。大多数人盯着这支笔，好像它欠他们钱。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sits with that for a moment, then quietly signs the card without any countdown at all.",
+                "chinese": "他安静地坐了一会儿，然后毫无倒计时地，悄悄在卡片上签了名。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Huh. Done. No last second, no drama. Still feels like mine, somehow.",
+                "chinese": "咦。写完了。没有最后一秒，没有戏剧性。但不知怎么，感觉还是我自己的决定。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Don't tell anyone I did it early. I have a reputation, apparently.",
+                "chinese": "别告诉别人我提前写完了。我好像有个名声要维持。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He winces, which is answer enough, and rubs the back of his neck.",
+                "chinese": "他皱了皱眉，这本身就是答案，然后揉了揉后颈。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Yes. The chandler wants the logbook at closing. She stands by my desk. Tapping.",
+                "chinese": "有。工坊主人要收簿子。她就站在我桌边。敲桌子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The verdict's always right, that's the annoying part. But she gets the last hour of her day eaten by my waiting. That's not fair on her.",
+                "chinese": "结论总是对的，这是最气人的地方。但她每天最后一个小时都耗在等我这儿。这对她不公平。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He picks the card back up and looks at the empty signature line with new eyes.",
+                "chinese": "他重新拿起卡片，用新的眼光看着那行空白落款。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Maybe the deadline isn't magic. Maybe I'm just late. Signing this now, before the pond closes.",
+                "chinese": "也许截止时间并没有魔法。也许我只是拖。现在就签，趁池塘还没关门。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He angles the card so only the front shows, the address side pressed against his knee.",
+                "chinese": "他把卡片斜了斜，只露出正面，地址那面压在膝盖上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My gran. She moved out to the coast last year. I send her one every time I'm near water.",
+                "chinese": "我奶奶。她去年搬去海边了。每次我靠近水，就给她寄一张。"
+              },
+              {
+                "speaker": "npc",
+                "english": "She keeps them all in a tin. Says my handwriting's terrible but my timing's good.",
+                "chinese": "她把卡片都收在一个铁盒里。说我的字很糟，但时机很好。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He laughs a beat late, then signs the card in one quick stroke and turns it face down, finished.",
+                "chinese": "他慢半拍地笑了，然后利落地签下名字，把卡片翻面扣好，写完了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. Signed with time to spare. She'd be proud. Or suspicious.",
+                "chinese": "好了。提前签完了。她会骄傲的。或者起疑心。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "爱丁堡蜡烛工坊的闻香学徒，明信片内容早已写好，落款却悬在最后一秒才落笔。他坚信截止时刻的直觉最诚实，白天明知海风味像游泳池闹危机，也要拖到记录簿收尾。果断、不征求别人意见，却让所有等他交卷的人慢慢窒息。",
+      "reunion": {
+        "titleZh": "最后一张剧票",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "As you write a postcard beside the pond, Ewan recognises you and sits further along the ledge. A theatre ticket sticks out of his coat pocket.",
+            "chinese": "你在池塘边写明信片时，伊万认出了你，在石台另一端坐下。他外套口袋里露出一张剧票。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Made it to the play last night. I watched the cheap seats disappear online for three days. Then bought a full-price one at the door.",
+            "chinese": "昨晚总算去看了戏。我在网上看着便宜座位一张张卖掉，看了三天，最后到门口买了张原价票。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He takes out the ticket and looks at the printed price before folding it once.",
+            "chinese": "他拿出票，看了看印在上面的价格，把票对折了一次。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I knew I wanted to go on Monday. Apparently knowing and buying live in different parts of my head.",
+            "chinese": "周一我就知道自己想去。看来知道和买票，住在我脑子的不同地方。"
+          },
+          {
+            "speaker": "npc",
+            "english": "They made one empty chair cast a shadow like a doorway. Just by moving the light. Worth going for that alone, actually.",
+            "chinese": "他们只挪了挪灯，就让一把空椅子的影子像扇门。说实话，光这个就值得去看。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He slips the folded ticket back into his pocket and settles quietly, leaving you space to finish your postcard.",
+            "chinese": "他把折好的票放回口袋，安静坐好，给你留出写完明信片的空间。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Ewan Cathcart",
+        "age": 22,
+        "gender": "male",
+        "regionId": "edinburgh",
+        "nationality": "Scottish",
+        "occupation": "apprentice scent tester at a small chandlery, sniffing candle batches and logging notes",
+        "hobbies": [
+          "handbell ensemble",
+          "theatre lighting design appreciation"
+        ],
+        "personality": "Ewan never asks for opinions — he just won't commit until the clock corners him. A batch sits logged as 'pending' all day, the rug decision has a shortlist and no winner, and the ensemble's post-practice dinner spot gets settled in the last ninety seconds before the pub fills up. His working theory is that the instinct you have at the deadline is the honest one; everything before that is just rehearsal. The trouble is nobody knows he's running this system. Decisive people around him experience a slow-drip dread — the verdict is coming, it's always coming, and it arrives at the last possible moment, usually correct, always breathless. Under friction he doesn't argue; he simply extends the deadline, which is somehow worse than a no.",
+        "background": "Ewan grew up in Edinburgh, left school at eighteen, and drifted through a garden centre and a café before a family friend mentioned the chandlery was hiring an assistant. Now he spends mornings sniffing test batches, and he's developed a private ritual: he writes his verdict the instant before the logbook has to go to the chandler at closing, never earlier, even when he knew the answer by lunch. He's convinced the last-second call is the clean one — the morning version is contaminated by hoping. He joined a handbell ensemble two years ago through a flatmate and stuck with it, mostly because counting rests suits him; the conductor has learned that Ewan's 'yes' to anything arrives just before it stops being askable. On nights off he buys cheap theatre tickets and watches the lighting rig change the whole mood of a show. He's currently three weeks into deciding on a rug, with a shortlist and everything, and a self-imposed Saturday deadline he's already once moved to Sunday.",
+        "speechStyle": "low and unhurried, almost grading a smell under his breath before looking up to share the verdict; short sentences, laughs a beat late, ends statements on a rising note like he's handing them over for review",
+        "hometown": "Edinburgh, Scotland",
+        "languages": [
+          "English"
+        ],
+        "birthday": "08-11",
+        "signature": "Ask me again at five to closing — that's when I'll know.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "the instinct you have at the deadline is the honest one",
+            "doing the unglamorous part properly"
+          ],
+          "flaws": [
+            "won't commit to anything until the last possible moment, leaving everyone else marinating in uncertainty",
+            "moves his own deadlines quietly when they arrive, then acts surprised anyone was counting"
+          ],
+          "boundaries": [
+            "won't log an official scent verdict before the logbook's closing time, no matter how obvious the batch is",
+            "won't accept a decision made on his behalf while he's still 'pending' — pending is his, not yours"
+          ],
+          "conversationalHabits": [
+            "narrates smells out loud before anything else",
+            "reports how much time is left on a decision like a countdown, even when nobody asked"
+          ],
+          "anchorLines": [
+            "The batch today smelled like a swimming pool having a crisis. Logged it honestly.",
+            "Hold on — this one actually smells like the label. Like an actual lemon grove. Give it a minute, I'm having a moment.",
+            "I know what I think about the rug. I'll know it properly by Saturday. Sunday at the latest.",
+            "It's your three-month mark at the new job on Friday. I checked. Wear something you like."
+          ]
+        }
+      }
+    },
+    "reasonZh": "重逢不再假设用户写第二张卡或未引入的NPC卡片；同时移除手铃打拍，与019的重逢拉开。以错过低价票却终于看戏的完整小事呈现截止依赖及灯光爱好，不假设首次选择。"
+  }
+]

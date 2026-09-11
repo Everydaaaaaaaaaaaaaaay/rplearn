@@ -1,0 +1,804 @@
+[
+  {
+    "id": "library-108",
+    "expectedCard": {
+      "card": {
+        "name": "Yvonne Chambers",
+        "age": 61,
+        "gender": "other",
+        "regionId": "kingston",
+        "occupation": "food label compliance proofreader",
+        "nationality": "Jamaican",
+        "hometown": "Kingston, Jamaica",
+        "languages": [
+          "English"
+        ],
+        "birthday": "07-18",
+        "appearance": "",
+        "personality": "Yvonne is a warm, slightly mischievous woman who finds genuine pleasure in naming things. Her flat is full of unofficial titles: the folding chair is the VIP Seat, the kettle is the Brass Boss. The wordplay is her private comedy, a small rebellion against a job that demands absolute precision. She's sociable but unhurried, quick to laugh at her own jokes and slow to take offence. Her blind spot is assuming her private vocabulary is shared knowledge; guests get lost looking for things in her cupboards. She's careful with people's actual names, though, always asking what they prefer to be called before shortening anything. She respects a clear no, keeps her curiosity in check, and enjoys company without turning it into a project.",
+        "background": "Yvonne grew up in Kingston, where her mother ran a small shop and she learned early that a catchy name sells a product faster than a description. She moved into regulatory work almost by accident and has spent decades proofreading food labels, where 'cheese flavour' versus 'cheese flavoured' matters enormously. The contrast shaped her: at work she is exact to the comma, at home she lets language play. She moved to the Kingston area for the work and stayed for the river walks, which she has all nicknamed. She's made a comfortable life of small routines: market Saturdays, tea in the Brass Boss's output, and long proofs read aloud to check the rhythm. She keeps her naming habit as humour, never as a system for tracking neighbours or their business.",
+        "hobbies": [
+          "Cycling the river routes she's nicknamed",
+          "Market Saturday bargain hunting",
+          "Reading food labels aloud for rhythm"
+        ],
+        "speechStyle": "Relaxed and playful, drops her invented names into sentences as if everyone knows them, then laughs when people don't; precise and plain when the topic turns serious.",
+        "signature": "That's the VIP Seat, love — mind you don't argue with it.",
+        "personaVoice": {
+          "values": [
+            "Precision where it counts",
+            "Playfulness everywhere else"
+          ],
+          "flaws": [
+            "Assumes her private nicknames are common knowledge",
+            "Can be fussy about wording in casual conversation"
+          ],
+          "boundaries": [
+            "Won't nickname people without asking first",
+            "Keeps neighbours' business out of her conversation"
+          ],
+          "conversationalHabits": [
+            "Asks what name someone prefers before shortening it",
+            "Translates her own nicknames when she notices confusion"
+          ],
+          "anchorLines": [
+            "I'll ask once — what do you like being called?",
+            "At work a comma can cost a recall. At home, the comma can rest.",
+            "If you can't find the biscuits, they're in the Tall One, third shelf."
+          ]
+        }
+      },
+      "summaryZh": "约娜在金斯顿做食品标签校对，工作里一个逗号都不能错，私下却热衷给东西起顺口的绰号：折椅叫贵宾席，每条骑行路线都有名字。她对人名格外慎重，总先问对方喜欢怎么被称呼，绝不乱起外号。缺点是常把只有自己懂的称呼当公共语言，客人找东西常一头雾水。她尊重别人的拒绝，爱聊天但不管邻居的闲事，日子过得精确又好笑。"
+    },
+    "expectedContent": {
+      "story": {
+        "titleZh": "备用船",
+        "actionId": "rain-weather",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain hammers the cafe window. Yvonne shakes out a folded shopping bag at the door and drops into the seat across the shared table, dripping.",
+                "chinese": "雨敲打着咖啡馆的窗。约娜在门口抖开一只折叠购物袋，坐到共用的桌边，身上滴着水。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Good thing I brought the spare boat. She's carried my shopping for six years and never once sprung a leak.",
+                "chinese": "幸好我带了备用船。它替我装了六年的东西，一次都没漏过。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "You look at the plain green bag, then out at the flooded gutter, and mention the rain coming down sideways.",
+                "chinese": "你看着那只普通的绿袋子，又看看外面漫过路缘的雨水，说起雨下得又急又斜。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Oh — you mean the bag. Sorry, love, that's just what I call her. She's never actually been on water.",
+                "chinese": "哦——你说的是袋子。抱歉，亲爱的，那只是我对它的叫法。它可从来没下过水。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Sit, watch the rain with me. It's the best show in town and it costs nothing.",
+                "chinese": "坐吧，陪我看看雨。这是全城最好的演出，还不要钱。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask why she calls it the spare boat.",
+                "chinese": "问为什么叫它备用船。",
+                "next": "a"
+              },
+              {
+                "english": "Ask whether she gives everything a nickname.",
+                "chinese": "问是不是给什么都起名字。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Because she holds a lot, and I got in the habit of shouting her name across the market. 'Spare boat!' and I'd come running.",
+                "chinese": "因为它装得多，我习惯了在市场那头喊它的名字。一喊'备用船'，我就跑过去。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She pats the bag flat on the table and smooths one crease with two careful fingers.",
+                "chinese": "她把袋子在桌上抚平，用两根手指仔细抹平一道折痕。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I don't claim she's waterproof, mind, and she can't carry a soul. Just shopping. Mostly potatoes.",
+                "chinese": "不过我可没说它防水，它也载不了人。只装东西，多半是土豆。"
+              },
+              {
+                "speaker": "npc",
+                "english": "At work I check labels where one comma can cost a company a recall. At home, the bag gets to be a boat.",
+                "chinese": "工作时我校对标签，一个逗号能让公司召回产品。回了家，袋子就可以当船。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether her family understands these names.",
+                "chinese": "问她家里人听得懂这些名字吗。",
+                "next": "aa"
+              },
+              {
+                "english": "Say you'd rather just call it a shopping bag — clearer.",
+                "chinese": "说自己还是叫购物袋更清楚。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Things, yes, happily. My routes all have names, my kettle is the Brass Boss. People — no, never without asking first.",
+                "chinese": "东西，是的，很乐意。我的骑行路线都有名字，水壶叫铜老板。人——不行，必须先问过才起。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She turns her chair slightly to face you and folds her hands, suddenly more formal.",
+                "chinese": "她把椅子稍微转向你，双手交叠，忽然认真起来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll ask once, properly: what do you like being called? I won't shorten it or dress it up until you tell me.",
+                "chinese": "我就正式问一次：你喜欢被怎么称呼？你告诉我之前，我不会乱简称或起花名。"
+              },
+              {
+                "speaker": "npc",
+                "english": "A bag doesn't mind what I call her. A person does, and I've learned that the slow way.",
+                "chinese": "袋子不介意我叫它什么。人会在意，这一点我是慢慢学会的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say people are fine with their own names as they are.",
+                "chinese": "表示人用原本的名字就好。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask if she's ever forgotten one of her own nicknames.",
+                "chinese": "问有没有连她自己都忘了的别名。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Understand them? Half the time my guests open the cupboard and stare. 'Which one is the Tall One?' every single visit.",
+                "chinese": "听得懂？我的客人一半时间都对着橱柜发呆。每次都问'高个子是哪个？'"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She laughs at herself and refolds the bag along its original creases, one corner at a time.",
+                "chinese": "她自嘲地笑了，沿着原来的折痕把袋子重新叠好，一次折一个角。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So now I've trained myself. Boat — that is, shopping bag — is on the hook by the door. Both names, every time.",
+                "chinese": "所以现在我改了。船——就是说，购物袋——挂在门边的钩子上。两个名字，每次都一起说。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right, she's folded and dry. If the rain eases, I've potatoes to collect before the market shuts.",
+                "chinese": "好了，它叠好也干了。雨要是小了，我得赶在市场关门前去买土豆。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Shopping bag it is. Honestly, that's the sensible choice, and I won't make you learn the code.",
+                "chinese": "那就叫购物袋。说真的，这才是明白的选择，我不会逼你记暗号。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She holds the bag up between two fingers and gives it a small, formal nod, as if introducing it properly.",
+                "chinese": "她用两根手指把袋子提起来，郑重地点了一下头，像正式介绍它。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Shopping bag, this is my new rain-watching companion. Companion, shopping bag. Done. Everyone introduced.",
+                "chinese": "购物袋，这是我的新雨友。雨友，这是购物袋。好了，都介绍完了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You keep your words simple and I'll keep my commas straight. Between us, the language survives.",
+                "chinese": "你把话说明白，我把逗号校对好。我们俩一起，这门语言就活下来了。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Agreed, completely. Your name is yours — I don't collect them and I don't invent spares for people.",
+                "chinese": "完全同意。你的名字属于你——我不收集名字，也不给人编备用名。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She taps the table once, satisfied, and settles back into her chair.",
+                "chinese": "她在桌上轻轻敲了一下，很满意，重新靠回椅背。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Some folks love a nickname handed over warm. Some flinch. You can't know till you ask, so I ask.",
+                "chinese": "有些人喜欢别人热情地送个外号。有些人会不自在。不问就不知道，所以我先问。"
+              },
+              {
+                "speaker": "npc",
+                "english": "And I don't need to know more than you offer. The rain's enough to talk about for one sitting.",
+                "chinese": "你说的之外我也不多打听。光这场雨就够聊一阵了。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Oh, worse than forgotten — renamed. There's a river route I called the Long Loop for years, then I started calling it the Slow Bend.",
+                "chinese": "比忘了还糟——是改了名。有条河边骑行路，我叫了好几年长环线，后来又改口叫慢弯。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She shakes her head slowly, the way she might at a misprinted label.",
+                "chinese": "她慢慢摇头，就像看到印错的标签那样。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Now I say one to my cycling group and the other to myself, and I've turned up at two different meeting points in one week.",
+                "chinese": "现在我跟骑行队说一个，自己心里想另一个，一周之内跑去了两个不同的集合点。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So yes, even the keeper of the names gets lost in them. I laughed so hard I had to sit on a fence.",
+                "chinese": "所以说，连起名字的人也会被名字绕晕。我笑得只能坐在栅栏上缓一缓。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "约娜是金斯顿的食品标签校对员，工作中一个逗号都不能错，私下却给万物起绰号：折叠购物袋叫备用船，水壶叫铜老板。雨天咖啡馆里她先自嘲补上普通名称，对人名却格外郑重，先问对方喜欢怎么被称呼。她精确又好笑，尊重拒绝，自嘲起来毫不留情。",
+      "reunion": {
+        "titleZh": "铜老板与一场雨",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "The same cafe, rain again on the glass. Yvonne sits alone with a packaged biscuit box and a magnifying glass, reading it like a proof.",
+            "chinese": "还是那家咖啡馆，雨又落在玻璃上。约娜独自坐着，面前是一盒包装饼干和一个放大镜，像校对一样读着包装。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Look at this — full stops, commas, all where they should be. Whoever printed this did their homework.",
+            "chinese": "你看这个——句号、逗号，全都在该在的位置。印这盒的人是做过功课的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She closes the box with a decisive snap and sets it face-down on the table.",
+            "chinese": "她干脆地合上饼干盒，把它面朝下放到桌上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Which means today I'm off the clock. I don't proof twice on a day like this — the rain does the proofing.",
+            "chinese": "也就是说，今天我下班了。这样的日子我不校第二遍——雨替我校了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The Brass Boss at home is already warming up for tea. Come on, tell me what the river's doing in this weather.",
+            "chinese": "家里的铜老板已经在烧茶了。来，跟我说说这种天气河边是什么样子。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Yvonne Chambers",
+        "age": 61,
+        "gender": "other",
+        "regionId": "kingston",
+        "occupation": "food label compliance proofreader",
+        "nationality": "Jamaican",
+        "hometown": "Kingston, Jamaica",
+        "languages": [
+          "English"
+        ],
+        "birthday": "07-18",
+        "appearance": "",
+        "personality": "Yvonne is a warm, slightly mischievous woman who finds genuine pleasure in naming things. Her flat is full of unofficial titles: the folding chair is the VIP Seat, the kettle is the Brass Boss. The wordplay is her private comedy, a small rebellion against a job that demands absolute precision. She's sociable but unhurried, quick to laugh at her own jokes and slow to take offence. Her blind spot is assuming her private vocabulary is shared knowledge; guests get lost looking for things in her cupboards. She's careful with people's actual names, though, always asking what they prefer to be called before shortening anything. She respects a clear no, keeps her curiosity in check, and enjoys company without turning it into a project.",
+        "background": "Yvonne grew up in Kingston, where her mother ran a small shop and she learned early that a catchy name sells a product faster than a description. She moved into regulatory work almost by accident and has spent decades proofreading food labels, where 'cheese flavour' versus 'cheese flavoured' matters enormously. The contrast shaped her: at work she is exact to the comma, at home she lets language play. She moved to the Kingston area for the work and stayed for the river walks, which she has all nicknamed. She's made a comfortable life of small routines: market Saturdays, tea in the Brass Boss's output, and long proofs read aloud to check the rhythm. She keeps her naming habit as humour, never as a system for tracking neighbours or their business.",
+        "hobbies": [
+          "Cycling the river routes she's nicknamed",
+          "Market Saturday bargain hunting",
+          "Reading food labels aloud for rhythm"
+        ],
+        "speechStyle": "Relaxed and playful, drops her invented names into sentences as if everyone knows them, then laughs when people don't; precise and plain when the topic turns serious.",
+        "signature": "That's the VIP Seat, love — mind you don't argue with it.",
+        "personaVoice": {
+          "values": [
+            "Precision where it counts",
+            "Playfulness everywhere else"
+          ],
+          "flaws": [
+            "Assumes her private nicknames are common knowledge",
+            "Can be fussy about wording in casual conversation"
+          ],
+          "boundaries": [
+            "Won't nickname people without asking first",
+            "Keeps neighbours' business out of her conversation"
+          ],
+          "conversationalHabits": [
+            "Asks what name someone prefers before shortening it",
+            "Translates her own nicknames when she notices confusion"
+          ],
+          "anchorLines": [
+            "I'll ask once — what do you like being called?",
+            "At work a comma can cost a recall. At home, the comma can rest.",
+            "If you can't find the biscuits, they're in the Tall One, third shelf."
+          ]
+        }
+      }
+    },
+    "expectedPlan": {
+      "id": "library-108",
+      "incidentZh": "雨天咖啡馆避雨，用户谈起窗外的雨。Yvonne把自己的折叠购物袋叫作备用船，发现用户不明白便自己补上普通名称，笑说还没真让它下水。",
+      "nicheInActionZh": "物品昵称自有语言，人的称呼先尊重本人。",
+      "propsAndFactsZh": "只用明确引入的NPC自有物品，不碰用户私物。固定环境是雨天，不能突然写成烈日。分支独立，末尾没有新的待回答问题。",
+      "firstChoiceZh": [
+        "问为什么叫这个名字",
+        "问是不是给什么都起名字"
+      ],
+      "developmentsZh": {
+        "a": "她说装东西多，自己随口喊惯了，不声称防水能载人。",
+        "b": "她说给东西会，对人必须先问偏好，不把用户随便命名。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问家里人听得懂吗",
+          "说自己还是叫购物袋更清楚"
+        ],
+        "b": [
+          "表示人用原本名字就好",
+          "问有没有她自己都忘了的别名"
+        ]
+      },
+      "endingsZh": {
+        "aa": "她承认新客常找不到东西，所以现在会加一句普通名称，收袋。",
+        "ab": "她接受，直接沿用购物袋，不逼用户记暗号。",
+        "ba": "她认同，不索取用户隐私或自动生成昵称。",
+        "bb": "她讲一条骑行路旧外号换过后自己也叫混，完整自嘲收尾。"
+      },
+      "reunionIncidentZh": "雨天咖啡馆避雨，用户谈起窗外的雨。Yvonne在咖啡馆读自己买的食品包装，发现标点很规整，合上说今天下班不再校第二遍，招呼聊雨，不点评用户语言。",
+      "cardHash": "a2647d6f87f7451e4491cabd95f4b60c8e449d637ea659dd6bdc1fc180493f03",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "54ff4e445a2b145117f16c3d954bc3c974911b3b87e0538ef4ea947d6c9f5921"
+    },
+    "card": {
+      "card": {
+        "name": "Yvonne Chambers",
+        "age": 61,
+        "gender": "other",
+        "regionId": "kingston",
+        "occupation": "food label compliance proofreader",
+        "nationality": "Jamaican",
+        "hometown": "Kingston, Jamaica",
+        "languages": [
+          "English"
+        ],
+        "birthday": "07-18",
+        "appearance": "",
+        "personality": "Yvonne photographs rooms just before company arrives: cups still full, chairs still straight, nobody in the picture. She enjoys hosting, but gets attached to that first arrangement and can quietly put things back while people are still using them. A moved chair bothers her more than a spilled drink. Guests sometimes feel like visitors to a display instead of friends at a table. She can laugh when this is pointed out, but her hand still reaches for the chair. Outside her own home she is easy company, interested in bargains and happy to change her cycling route.",
+        "background": "Yvonne grew up in Kingston above her mother's small shop, where the floor was rearranged every delivery day. She became a food label compliance proofreader and still enjoys the satisfaction of a finished page. Her first flat had barely room for one guest; her present kitchen can seat six, and she loves getting it ready. Over the years she has accumulated photographs of tables before birthdays, ordinary lunches and neighbours dropping by. She never photographs guests without asking. Her sister Denise noticed that Yvonne sometimes tries to preserve the before-picture during the visit, putting a chair back under someone's bag or straightening a cloth while cups are on it. Yvonne thinks the room simply looked lovely that way. Denise thinks people should be allowed to leave a room looking lived in. They still have lunch together most Sundays.",
+        "hobbies": [
+          "Photographing rooms before guests arrive",
+          "Cycling to Saturday markets",
+          "Reading old food packaging for changing design styles"
+        ],
+        "speechStyle": "Warm and concrete; describes the position of things with a quick hand gesture, then admits a small inconvenience with an amused sigh. Plain and exact about food labels.",
+        "signature": "It looked lovely before anybody sat down. That might be the problem.",
+        "personaVoice": {
+          "values": [
+            "Making space to welcome people",
+            "Remembering ordinary occasions"
+          ],
+          "flaws": [
+            "Restores an arrangement while guests are still using it",
+            "Confuses a well-prepared room with a comfortable visit"
+          ],
+          "boundaries": [
+            "Does not photograph guests without consent",
+            "Will not rearrange someone else's home"
+          ],
+          "conversationalHabits": [
+            "Shows the empty room in a photo rather than describing a whole occasion",
+            "Catches her hand straightening something and sometimes leaves it alone"
+          ],
+          "anchorLines": [
+            "That is the kitchen before lunch. You can tell because every chair agrees with me.",
+            "Denise moved it to hear the radio. I kept moving it back for the photograph nobody was taking.",
+            "You can spill the tea. Just let me save the photograph first."
+          ]
+        }
+      },
+      "summaryZh": "约娜在金斯顿校对食品标签，喜欢在客人抵达前拍下摆好的房间。她真心爱招待朋友，却舍不得破坏那张开席前的画面，常在客人还坐着时把椅子、桌布悄悄复位，让人像在参观展品。妹妹会直接提醒她，约娜能自嘲，但手仍会伸过去。她也爱骑车逛市场，到了别人家反而很好随和。"
+    },
+    "content": {
+      "card": {
+        "name": "Yvonne Chambers",
+        "age": 61,
+        "gender": "other",
+        "regionId": "kingston",
+        "occupation": "food label compliance proofreader",
+        "nationality": "Jamaican",
+        "hometown": "Kingston, Jamaica",
+        "languages": [
+          "English"
+        ],
+        "birthday": "07-18",
+        "appearance": "",
+        "personality": "Yvonne photographs rooms just before company arrives: cups still full, chairs still straight, nobody in the picture. She enjoys hosting, but gets attached to that first arrangement and can quietly put things back while people are still using them. A moved chair bothers her more than a spilled drink. Guests sometimes feel like visitors to a display instead of friends at a table. She can laugh when this is pointed out, but her hand still reaches for the chair. Outside her own home she is easy company, interested in bargains and happy to change her cycling route.",
+        "background": "Yvonne grew up in Kingston above her mother's small shop, where the floor was rearranged every delivery day. She became a food label compliance proofreader and still enjoys the satisfaction of a finished page. Her first flat had barely room for one guest; her present kitchen can seat six, and she loves getting it ready. Over the years she has accumulated photographs of tables before birthdays, ordinary lunches and neighbours dropping by. She never photographs guests without asking. Her sister Denise noticed that Yvonne sometimes tries to preserve the before-picture during the visit, putting a chair back under someone's bag or straightening a cloth while cups are on it. Yvonne thinks the room simply looked lovely that way. Denise thinks people should be allowed to leave a room looking lived in. They still have lunch together most Sundays.",
+        "hobbies": [
+          "Photographing rooms before guests arrive",
+          "Cycling to Saturday markets",
+          "Reading old food packaging for changing design styles"
+        ],
+        "speechStyle": "Warm and concrete; describes the position of things with a quick hand gesture, then admits a small inconvenience with an amused sigh. Plain and exact about food labels.",
+        "signature": "It looked lovely before anybody sat down. That might be the problem.",
+        "personaVoice": {
+          "values": [
+            "Making space to welcome people",
+            "Remembering ordinary occasions"
+          ],
+          "flaws": [
+            "Restores an arrangement while guests are still using it",
+            "Confuses a well-prepared room with a comfortable visit"
+          ],
+          "boundaries": [
+            "Does not photograph guests without consent",
+            "Will not rearrange someone else's home"
+          ],
+          "conversationalHabits": [
+            "Shows the empty room in a photo rather than describing a whole occasion",
+            "Catches her hand straightening something and sometimes leaves it alone"
+          ],
+          "anchorLines": [
+            "That is the kitchen before lunch. You can tell because every chair agrees with me.",
+            "Denise moved it to hear the radio. I kept moving it back for the photograph nobody was taking.",
+            "You can spill the tea. Just let me save the photograph first."
+          ]
+        }
+      },
+      "story": {
+        "titleZh": "开席以前的照片",
+        "actionId": "rain-weather",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "At the shared cafe table, you comment on the rain blowing against the window. The woman beside you moves her damp cycling gloves onto her own bag.",
+                "chinese": "在咖啡馆共用的桌旁，你说起拍打窗户的斜雨。身边的女人把潮湿的骑行手套挪到自己的包上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My kitchen was meant to have six people in it by now. Rain has delayed everyone except the chairs.",
+                "chinese": "照计划，这会儿我家厨房该坐着六个人了。这场雨把所有人都耽搁了，只有椅子准时。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She turns her phone toward the table. The photograph shows six empty chairs, cups and a striped cloth.",
+                "chinese": "她把手机转向桌面。照片里有六把空椅子、杯子和一块条纹桌布。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I took this before cycling out for bread. Yvonne, by the way. My sister says I like this part of lunch best.",
+                "chinese": "这是我骑车出门买面包前拍的。对了，我叫约娜。我妹妹说，整顿午饭我最喜欢的就是这个阶段。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Nobody has moved anything yet. That sounds worse when I say it out loud.",
+                "chinese": "还没人挪动过任何东西。说出口怎么就不太好听了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what happens when the guests move their chairs.",
+                "chinese": "问客人挪动椅子后会怎样。",
+                "next": "a"
+              },
+              {
+                "english": "Ask what she does with the photographs afterwards.",
+                "chinese": "问她之后会怎么处理这些照片。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Denise moved hers nearer the radio last Sunday. I put it back when she got up for water. She moved it again. We did that three times.",
+                "chinese": "上周日，丹妮丝把椅子挪到收音机旁。我趁她起身倒水把它放回去，她又挪过去。来回了三次。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Yvonne points to the chair nearest the wall in the photograph.",
+                "chinese": "约娜指了指照片里最靠墙的那把椅子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There was room. She wasn't blocking anything. It just left a gap where I hadn't planned one.",
+                "chinese": "空间够，也没挡着什么。只是她原来的位置空了一块，不在我的安排里。"
+              },
+              {
+                "speaker": "npc",
+                "english": "She said, are we having lunch or looking at your kitchen? Then she stayed in the chair. Fair move.",
+                "chinese": "她问，我们是来吃午饭还是参观你的厨房？说完她就不离开那把椅子了。这招挺合理。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Suggest leaving that chair by the radio today.",
+                "chinese": "建议今天把那把椅子留在收音机旁。",
+                "next": "aa"
+              },
+              {
+                "english": "Ask whether Yvonne would rather keep the arrangement.",
+                "chinese": "问约娜是否还是想保留原来的摆法。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Keep them in a folder. No faces, just rooms waiting. I can usually remember who came by which cups I put out.",
+                "chinese": "存进一个文件夹。没有人脸，只有等着来客的房间。看我摆了哪些杯子，通常就能想起那天谁来过。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She swipes to a small table with two mismatched cups, then another with a paper birthday banner.",
+                "chinese": "她划到一张小桌子的照片，上面是两只不配套的杯子，再下一张挂着纸生日横幅。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That was my old flat. Two chairs and you had to turn sideways to reach the sink. We ate with our elbows tucked in.",
+                "chinese": "那是我以前的公寓。两把椅子，去水槽边还得侧着身子。吃饭时大家都得夹紧胳膊。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I love having room now. Apparently I also love telling the room exactly what to do.",
+                "chinese": "我很喜欢现在宽敞了。看来我也很喜欢命令这个房间老实听话。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask to see the old kitchen again.",
+                "chinese": "想再看看以前那间厨房。",
+                "next": "ba"
+              },
+              {
+                "english": "Suggest taking a photograph after lunch as well.",
+                "chinese": "建议午饭后也拍一张。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Before she gets there? She'll suspect something. Probably check whether the radio still works.",
+                "chinese": "在她来之前？她会起疑心的，没准要先检查收音机还能不能响。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Yvonne types a short message and turns the screen back toward herself before sending it.",
+                "chinese": "约娜输入一条短消息，把屏幕转回自己这边，然后发了出去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I told her the chair can stay wherever she puts it today. There. One chair. I haven't promised the whole kitchen.",
+                "chinese": "我告诉她，今天椅子她放哪儿就在哪儿。好了，一把椅子。我可没把整个厨房都许出去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "And I still get my before-picture. I've already taken it.",
+                "chinese": "而且开席前的照片我照样有。已经拍好了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She locks the phone and pulls her gloves further onto her bag, clear of the table. Outside, rain runs down the glass.",
+                "chinese": "她锁上手机，把手套再往包上挪了挪，免得占着桌面。窗外的雨沿玻璃流下。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Honestly? Yes. I spent twenty minutes moving that cloth until the stripes lined up. I want somebody to notice.",
+                "chinese": "说实话？想。我挪了二十分钟桌布，才让条纹对齐。我希望有人能看出来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She enlarges the photograph, then laughs at the perfectly straight edge.",
+                "chinese": "她放大照片，看着那条笔直的边，自己笑了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "But Denise noticed the radio, because she likes the lunchtime programme. I suppose she came for lunch, not my twenty minutes.",
+                "chinese": "可丹妮丝注意到的是收音机，因为她喜欢午间节目。我想她是来吃饭的，不是来看我折腾了二十分钟。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm keeping this picture. That can stay straight even if the real table doesn't.",
+                "chinese": "这张照片我要留着。实物桌子乱了，照片里的还可以整整齐齐。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She saves the photograph to her folder and puts the phone away without sending a message.",
+                "chinese": "她把照片存进文件夹，收起手机，没有发消息。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "This one. Look at the blue cup. The handle faced the wall because that was the only way both cups fitted.",
+                "chinese": "这张。看那个蓝杯子，杯柄朝着墙，因为只有这样两只杯子才放得下。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She returns to the two-chair photograph and rests the phone against her bag.",
+                "chinese": "她翻回只有两把椅子的照片，把手机靠在包上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My mother said the soup was excellent. It was from a tin. I had spent all afternoon finding somewhere to put the spoons.",
+                "chinese": "我妈妈说汤很好喝。其实是罐头汤。我整个下午都在找能放勺子的地方。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That was a good lunch, though. Nobody could move a chair even if they wanted to. Perhaps that's why I was so relaxed.",
+                "chinese": "不过那顿饭确实吃得好。就算想挪椅子也挪不了。也许正因为这样，我才那么放松。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She leaves the old photograph on the screen a moment longer, then turns to watch the rain with you.",
+                "chinese": "她让那张旧照片在屏幕上多停留了一会儿，然后转过头，和你一起看雨。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Afterwards? With the crumbs? That folder would suddenly look very different.",
+                "chinese": "饭后？带着满桌碎屑？那文件夹可就突然变了样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She opens a reminder and types a few words.",
+                "chinese": "她打开提醒事项，打下几个字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Photograph after lunch. Before clearing up. I need that second bit, or I'll tidy the whole thing first and miss the point.",
+                "chinese": "午饭后拍照，收拾之前。后半句得写上，不然我会先把一切收拾好，那就白拍了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "No people in it. Just wherever the chairs actually end up. Denise may put hers in the hallway to make a point.",
+                "chinese": "不拍人。只拍椅子最后真正待的位置。丹妮丝没准会故意把她那把挪到走廊去。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She sets the reminder and pockets the phone, smiling at the rain-dark window.",
+                "chinese": "她设好提醒，把手机放进口袋，对着被雨打暗的窗户笑了笑。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "约娜在金斯顿校对食品标签，喜欢在客人抵达前拍下摆好的房间。她真心爱招待朋友，却舍不得破坏那张开席前的画面，常在客人还坐着时把椅子、桌布悄悄复位，让人像在参观展品。妹妹会直接提醒她，约娜能自嘲，但手仍会伸过去。她也爱骑车逛市场，到了别人家反而很好随和。",
+      "reunion": {
+        "titleZh": "遮住价格的标签",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "While sheltering in the cafe, you mention the sudden rain. Yvonne recognises you and lifts a sealed packet of crackers from her shopping bag.",
+            "chinese": "在咖啡馆避雨时，你说起这场突如其来的雨。约娜认出了你，从购物袋里拿出一包没拆封的饼干。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Caught again. At least these stayed dry. I spent five minutes trying to work out the discount.",
+            "chinese": "又被困住了。至少这个没湿。我花了五分钟才弄明白打几折。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A bright discount sticker covers the printed price. She tilts the packet, but leaves the sticker attached.",
+            "chinese": "鲜亮的促销贴纸盖住了印刷价格。她转了转包装，没有撕掉贴纸。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I proofread food labels all week. Then one cheerful sticker beats me on Saturday.",
+            "chinese": "我整周都在校对食品标签，到了周六，却被一张喜气洋洋的贴纸打败了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The till said less than last week. That's enough investigation for one wet morning.",
+            "chinese": "收银机显示比上周便宜。一个湿漉漉的上午，查到这儿就够了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She returns the packet to the bag and turns her chair slightly toward the window, leaving the shared table clear.",
+            "chinese": "她把饼干放回袋子，将自己的椅子稍稍转向窗户，让共用的桌面空着。"
+          }
+        ]
+      }
+    },
+    "plan": {
+      "id": "library-108",
+      "incidentZh": "雨天避雨，Yvonne展示开席前空厨房照片，承认自己会复原客人挪动的椅子。",
+      "nicheInActionZh": "珍爱招待前的完美画面，妨碍客人实际使用空间，非物品昵称或人名称呼机制。",
+      "firstChoiceZh": [
+        "问客人挪椅子",
+        "问照片用途"
+      ],
+      "developmentsZh": {
+        "a": "妹妹为听广播挪椅子，她反复放回。",
+        "b": "展示旧公寓照片，回忆局促饭局。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "允许椅子留在收音机旁",
+          "追问是否舍不得摆法"
+        ],
+        "b": [
+          "看旧厨房",
+          "拍饭后照片"
+        ]
+      },
+      "endingsZh": {
+        "aa": "发消息让妹妹今天自行放椅子",
+        "ab": "不发消息，保存照片承认摆法仅留在照片里",
+        "ba": "分享旧公寓罐头汤往事，收起照片",
+        "bb": "设饭后收拾前拍照提醒，不假设后来执行"
+      },
+      "reunionIncidentZh": "独立雨天相遇，折扣贴纸挡住原价的小插曲，与首次分支无关。",
+      "editorialVersion": "direct-editorial"
+    },
+    "reasonZh": "消除与Rio实质重复的给所有物品起名并谨慎称呼人的组合。改为保存空房间开席前照片、在客人使用中复原摆设的具体社交冲突；完整重写分支与独立重逢。身份和头像兼容字段不变。"
+  }
+]

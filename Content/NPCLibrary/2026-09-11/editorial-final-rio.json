@@ -1,0 +1,684 @@
+[
+  {
+    "id": "library-014",
+    "expectedContent": {
+      "story": {
+        "titleZh": "公园地图旁的伯纳德",
+        "actionId": "park-route",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You're standing at the park route map, tracing a line toward the bridge with one finger. On the grass beside you, someone sits cross-legged with one roller skate off, picking at a wheel with a small blunt tool.",
+                "chinese": "你站在公园路线图前，用手指描着通往桥的那条线。旁边的草地上，有人盘腿坐着，一只轮滑鞋脱了下来，正用一件钝头小工具挑着轮子。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pick a tiny tangle of thread off the edge of a wheel, then hold the tool up and speak to it quietly.",
+                "chinese": "他们从轮子边缘挑出一小团线，然后把工具举起来，低声对它说话。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Almost there, Bernard. Steady. There we go.",
+                "chinese": "快好了，伯纳德。稳住。好了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They glance up and catch you watching. A short laugh escapes them.",
+                "chinese": "他们抬头，发现你在看，忍不住笑了一声。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You heard that. Yeah. I name my tools. The things don't mind — honestly I think Bernard likes an audience.",
+                "chinese": "你听见了吧。对，我给工具起名字。东西不会介意——说实话我觉得伯纳德还挺喜欢有观众的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if Bernard is the only tool with a name.",
+                "chinese": "问伯纳德是不是唯一有名字的工具。",
+                "next": "a"
+              },
+              {
+                "english": "Ask if they also like giving people nicknames.",
+                "chinese": "问他们是不是也喜欢给人起绰号。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Only one? I wish. The skates are the twins, my tape measure is Dolores, and the foam cutter is just... the foam cutter. It hasn't earned one yet.",
+                "chinese": "唯一一个？哪有。轮滑鞋叫双胞胎，卷尺叫多洛雷斯，切海绵的刀就只叫……切海绵刀。它还没挣到名字。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They wind the loose thread around one finger and tuck it into a pocket, then pull the skate back onto their foot and lace it loosely.",
+                "chinese": "他们把那团线绕在手指上，塞进口袋，然后把轮滑鞋穿回脚上，松松地系好鞋带。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's not deep, honestly. At work I've got about forty tools on my bench. If they all had numbers I'd lose the plot by lunch. Names stick.",
+                "chinese": "说实话没什么深意。工作台上大概有四十件工具。要是都用编号，我午饭前就乱了。名字好记。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bernard's the pressure gauge. He measures how someone sits. Two millimetres off and a cushion's useless, so he's the one I talk to most.",
+                "chinese": "伯纳德是压力计，测人坐着时的受压。差两毫米，坐垫就白做了，所以跟他说话最多。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Do names work like that for you? Or does it sound like I've lost it?",
+                "chinese": "名字对你来说也这样吗？还是听起来我像疯子？"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether a name changes when the tool's use changes.",
+                "chinese": "问工具用途变了，名字会不会也变。",
+                "next": "aa"
+              },
+              {
+                "english": "Ask what happens to a name when the tool breaks.",
+                "chinese": "问工具坏了之后，名字怎么办。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "People? No. Tools, sure. People you've got to ask first. Big difference.",
+                "chinese": "给人起绰号？不。工具可以。人得先问过本人。区别很大。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They flip the skate they've taken off, checking each of its wheels with a thumb.",
+                "chinese": "他们把脱下来的那只轮滑鞋翻过来，用拇指逐个检查轮子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "A tool doesn't care what I call it. Bernard's never complained once. A person hears a nickname they didn't pick, and it sticks whether they like it or not.",
+                "chinese": "东西不在乎我叫它什么。伯纳德从没抱怨过。人就不一样，没挑过的外号会粘在身上，甩都甩不掉。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I get labelled enough as it is. Everyone's got a label for everyone. I'd rather just learn the name.",
+                "chinese": "我自己被贴的标签已经够多了。谁都爱给谁贴标签。我宁愿老老实实记住名字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So, nicknames — you for them or against?",
+                "chinese": "那你觉得外号这东西，是赞成还是反对？"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Agree that it's best when the person decides how they're called.",
+                "chinese": "赞同最好由本人决定自己怎么被称呼。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether they prefer their full name or a shorter name.",
+                "chinese": "问对方喜欢被叫全名还是简称。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Good question. Yeah, one of mine changed jobs. Dolores used to be for bike frames, back at the repair shop. Now she measures foam all day.",
+                "chinese": "问得好。有一件确实换过工作。多洛雷斯以前量自行车架，在修车铺那会儿。现在她整天量海绵。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pull the tape measure halfway out of a bag, as if introducing a colleague, and slide it back.",
+                "chinese": "他们把卷尺从包里抽出一半，像介绍同事一样，又推了回去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Kept the name through the move. She'd probably apply for a transfer if she could — foam dust everywhere now.",
+                "chinese": "换了用途名字也留着。要是能申请转岗，她大概早申请了——现在到处是海绵灰。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Anyway. Bernard's done his bit today. Back in the bag with the rest of the crew.",
+                "chinese": "好了。伯纳德今天干完活了。回包里跟其他伙计待着去吧。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They zip the tool bag shut and set it beside the skateboard, patting it once.",
+                "chinese": "他们把工具包拉链拉好，放在滑板旁边，轻轻拍了一下。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Broken? Then the name retires with it. No point keeping it on a shelf out of guilt.",
+                "chinese": "坏了？那名字跟着退休。没必要出于愧疚把坏工具留在架子上。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They hold the skate upright, wheels resting on the grass, and brush a few stray threads off the laces.",
+                "chinese": "他们把轮滑鞋竖起来，轮子着地，掸掉鞋带上几根线头。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I had a hex key snap once. Felt weird binning it, but you move on. The name's not the tool, it's just how I remember it.",
+                "chinese": "以前断过一根内六角扳手。扔的时候挺别扭，但日子照过。名字不是工具本身，只是我记它的方式。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bernard, though — Bernard's got years left in him. I've checked.",
+                "chinese": "不过伯纳德还能干好多年。我检查过。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pat the tool bag flat with both hands, satisfied, and stand up.",
+                "chinese": "他们用双手把工具包拍平，很满意，然后站起身。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Exactly. That's the whole thing. You pick your name, everyone else catches up.",
+                "chinese": "就是这样。就这么简单。你自己定，别人慢慢跟上。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They give a small nod, like a point scored and closed, and pull the last of the thread free from the wheel.",
+                "chinese": "他们轻轻点头，像得分后收尾，把轮子上最后一点线头挑了出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "No lecture needed, right? It's not philosophy. It's just manners with extra steps.",
+                "chinese": "不用讲大道理吧？这不算什么哲学，就是讲究点礼貌而已。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right. The twins and I are off. Loop before my legs change their mind.",
+                "chinese": "好，我和双胞胎走了。趁腿还没反悔，先去绕圈。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tighten the last skate lace, stand, and push off toward the path, weaving easily around a jogger.",
+                "chinese": "他们系紧最后一条鞋带，站起身，蹬向小路，轻松地绕过一个慢跑的人。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Rio's fine. Full name's for forms and my nan when I'm in trouble. Rio Castellanos, but that's a mouthful on a Tuesday.",
+                "chinese": "叫Rio就行。全名是填表格用的，还有我外婆发火的时候用。Rio Castellanos，平时叫太长了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tuck the blunt tool into the bag and pull the skate's laces straight.",
+                "chinese": "他们把钝头工具塞进包里，把轮滑鞋的鞋带理直。"
+              },
+              {
+                "speaker": "npc",
+                "english": "And you don't owe me yours. Names come out when they come out.",
+                "chinese": "你也不用非告诉我你的名字。名字这种事，时机到了自然会说。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Good chat. Bernard says thanks for the company. He's polite like that.",
+                "chinese": "聊得不错。伯纳德说谢谢作陪。他就这么客气。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They flick the last thread off the wheel, pick up the skates, and head for the open path.",
+                "chinese": "他们弹掉轮子上最后一根线，拎起轮滑鞋，朝开阔的小路走去。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Rio是悉尼的轮椅座垫学徒，把压力计叫伯纳德，却最烦给人贴标签。公园里他坐在草地上给轮滑鞋的轮子挑线，当众跟工具说话被你听见，一场关于命名与称呼的小对话就此展开。四条分支各有结局：多洛雷斯转岗、名字退休、轻快告别、或他直接告诉你他希望被怎么叫。",
+      "reunion": {
+        "titleZh": "轮滑鞋的刹车练习",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You're back at the route map. A figure on roller skates glides toward the open space, then plants both feet and stops with visible effort before waving.",
+            "chinese": "你又回到路线图前。一个穿轮滑鞋的身影滑向空地，然后双脚一钉，费了点劲才停稳，接着朝你挥手。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Look at that. Stopped on the first try. The twins usually vote to keep going.",
+            "chinese": "瞧见没。一次就停住了。双胞胎平时总想继续滑。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They wobble slightly as they roll to a halt beside you, one hand out for balance.",
+            "chinese": "他们滑到你旁边时身子晃了一下，伸出一只手保持平衡。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I always think standing still and chatting will be easy. The wheels disagree. Every time.",
+            "chinese": "我总以为站着聊天很容易。轮子可不这么想。每次都不。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They steady themselves against the edge of the map board, then step aside to give you a clear view of the routes.",
+            "chinese": "他们扶着路线图牌的边缘稳住自己，然后让开位置，好让你看清路线。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Go on, take the map. Bernard's in the bag today, so no rush from me.",
+            "chinese": "你看图吧。伯纳德今天在包里，我不急。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Rio Castellanos",
+        "age": 23,
+        "gender": "other",
+        "regionId": "sydney",
+        "nationality": "Australian",
+        "occupation": "apprentice wheelchair seating technician (cushion fitting assistant)",
+        "hobbies": [
+          "roller skating",
+          "pocket magic"
+        ],
+        "personality": "Curious in a quiet, hands-on way. Rio asks real questions because they're actually interested in the answer, not to fill silence. They name every object they own — the pressure gauge is 'Bernard', their skates are 'the twins' — but bristle when people get reduced to labels like 'wheelchair kid' or 'the magic guy'. Warm but not instantly open; takes a while to trust. Practical, a bit scattered about their own stuff, weirdly meticulous about other people's comfort.",
+        "background": "Grew up in western Sydney, left school at seventeen and drifted through a bike repair shop before landing an apprenticeship at a seating and mobility clinic. Mostly they fetch foam samples, trace pressure maps, and learn how a cushion that's two millimetres off can ruin someone's whole day. It's exacting work and Rio likes that. Weekends they skate the loop at Victoria Park badly but happily, and carry a deck of cards everywhere, which has made them popular at bus stops. Currently attempting to build a 'rest corner' for their phone and laptop so they stop carrying the whole desk around the flat.",
+        "speechStyle": "Short sentences, lots of specific detail, asks a genuine question then actually waits for the answer. Dry asides. Never lectures.",
+        "hometown": "Parramatta, Sydney",
+        "languages": [
+          "English"
+        ],
+        "birthday": "12-16",
+        "signature": "Hang on — Bernard needs a minute.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "people aren't their equipment or their diagnosis",
+            "doing fiddly work properly"
+          ],
+          "flaws": [
+            "loses their own belongings constantly",
+            "defensive when they feel categorised"
+          ],
+          "boundaries": [
+            "won't discuss clients' medical details",
+            "dislikes being asked 'what are you' about gender"
+          ],
+          "conversationalHabits": [
+            "refers to objects by their nicknames without explanation",
+            "asks one follow-up question instead of five"
+          ],
+          "anchorLines": [
+            "This is Bernard. He measures pressure. Don't ask why Bernard.",
+            "I can tell you everything about a cushion and nothing about small talk, apparently.",
+            "Everyone's got a label for everyone. I'd rather just learn the name."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "公园地图旁的伯纳德",
+        "actionId": "park-route",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You're standing at the park route map, tracing a line toward the bridge with one finger. On the grass beside you, someone sits cross-legged with one roller skate off, picking at a wheel with a small blunt tool.",
+                "chinese": "你站在公园路线图前，用手指描着通往桥的那条线。旁边的草地上，有人盘腿坐着，一只轮滑鞋脱了下来，正用一件钝头小工具挑着轮子。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pick a tiny tangle of thread off the wheel. A gauge shifts in their open bag; they steady it with their free hand and speak to it quietly.",
+                "chinese": "他们从轮子上挑出一小团线。敞开的包里，一只压力计歪了，他们用空着的手扶住它，低声跟它说话。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Almost there, Bernard. Steady. There we go.",
+                "chinese": "快好了，伯纳德。稳住。好了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They glance up and catch you watching. A short laugh escapes them.",
+                "chinese": "他们抬头，发现你在看，忍不住笑了一声。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You heard that. Yeah. I name my tools. The things don't mind — honestly I think Bernard likes an audience.",
+                "chinese": "你听见了吧。对，我给工具起名字。东西不会介意——说实话我觉得伯纳德还挺喜欢有观众的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if Bernard is the only tool with a name.",
+                "chinese": "问伯纳德是不是唯一有名字的工具。",
+                "next": "a"
+              },
+              {
+                "english": "Ask if they also like giving people nicknames.",
+                "chinese": "问他们是不是也喜欢给人起绰号。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Only one? I wish. The skates are the twins, my tape measure is Dolores, and the foam cutter is just... the foam cutter. It hasn't earned one yet.",
+                "chinese": "唯一一个？哪有。轮滑鞋叫双胞胎，卷尺叫多洛雷斯，切海绵的刀就只叫……切海绵刀。它还没挣到名字。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They wind the loose thread around one finger and tuck it into a pocket, then pull the skate back onto their foot and lace it loosely.",
+                "chinese": "他们把那团线绕在手指上，塞进口袋，然后把轮滑鞋穿回脚上，松松地系好鞋带。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's not deep, honestly. At work I've got about forty tools on my bench. If they all had numbers I'd lose the plot by lunch. Names stick.",
+                "chinese": "说实话没什么深意。工作台上大概有四十件工具。要是都用编号，我午饭前就乱了。名字好记。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bernard's the pressure gauge. He measures how someone sits. Two millimetres off and a cushion's useless, so he's the one I talk to most.",
+                "chinese": "伯纳德是压力计，测人坐着时的受压。差两毫米，坐垫就白做了，所以跟他说话最多。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Do names work like that for you? Or does it sound like I've lost it?",
+                "chinese": "名字对你来说也这样吗？还是听起来我像疯子？"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether a name changes when the tool's use changes.",
+                "chinese": "问工具用途变了，名字会不会也变。",
+                "next": "aa"
+              },
+              {
+                "english": "Ask what happens to a name when the tool breaks.",
+                "chinese": "问工具坏了之后，名字怎么办。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "People? No. Tools, sure. People you've got to ask first. Big difference.",
+                "chinese": "给人起绰号？不。工具可以。人得先问过本人。区别很大。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They flip the skate they've taken off, checking each of its wheels with a thumb.",
+                "chinese": "他们把脱下来的那只轮滑鞋翻过来，用拇指逐个检查轮子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "A tool doesn't care what I call it. Bernard's never complained once. A person hears a nickname they didn't pick, and it sticks whether they like it or not.",
+                "chinese": "东西不在乎我叫它什么。伯纳德从没抱怨过。人就不一样，没挑过的外号会粘在身上，甩都甩不掉。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I get labelled enough as it is. Everyone's got a label for everyone. I'd rather just learn the name.",
+                "chinese": "我自己被贴的标签已经够多了。谁都爱给谁贴标签。我宁愿老老实实记住名字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So, nicknames — you for them or against?",
+                "chinese": "那你觉得外号这东西，是赞成还是反对？"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Agree that it's best when the person decides how they're called.",
+                "chinese": "赞同最好由本人决定自己怎么被称呼。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether they prefer their full name or a shorter name.",
+                "chinese": "问对方喜欢被叫全名还是简称。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Good question. Yeah, one of mine changed jobs. Dolores used to be for bike frames, back at the repair shop. Now she measures foam all day.",
+                "chinese": "问得好。有一件确实换过工作。多洛雷斯以前量自行车架，在修车铺那会儿。现在她整天量海绵。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pull the tape measure halfway out of a bag, as if introducing a colleague, and slide it back.",
+                "chinese": "他们把卷尺从包里抽出一半，像介绍同事一样，又推了回去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Kept the name through the move. She'd probably apply for a transfer if she could — foam dust everywhere now.",
+                "chinese": "换了用途名字也留着。要是能申请转岗，她大概早申请了——现在到处是海绵灰。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Anyway. Bernard's done his bit today. Back in the bag with the rest of the crew.",
+                "chinese": "好了。伯纳德今天干完活了。回包里跟其他伙计待着去吧。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They zip the tool bag shut and set it on the grass beside them, patting it once.",
+                "chinese": "他们把工具包拉链拉好，放在身边的草地上，轻轻拍了一下。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Broken? Then the name retires with it. No point keeping it on a shelf out of guilt.",
+                "chinese": "坏了？那名字跟着退休。没必要出于愧疚把坏工具留在架子上。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They hold the skate upright, wheels resting on the grass, and brush a few stray threads off the laces.",
+                "chinese": "他们把轮滑鞋竖起来，轮子着地，掸掉鞋带上几根线头。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I had a hex key snap once. Felt weird binning it, but you move on. The name's not the tool, it's just how I remember it.",
+                "chinese": "以前断过一根内六角扳手。扔的时候挺别扭，但日子照过。名字不是工具本身，只是我记它的方式。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bernard, though — Bernard's got years left in him. I've checked.",
+                "chinese": "不过伯纳德还能干好多年。我检查过。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pat the tool bag flat with both hands, satisfied, and stand up.",
+                "chinese": "他们用双手把工具包拍平，很满意，然后站起身。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Exactly. That's the whole thing. You pick your name, everyone else catches up.",
+                "chinese": "就是这样。就这么简单。你自己定，别人慢慢跟上。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They give a small nod, like a point scored and closed, and pull the last of the thread free from the wheel.",
+                "chinese": "他们轻轻点头，像得分后收尾，把轮子上最后一点线头挑了出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "No lecture needed, right? It's not philosophy. It's just manners with extra steps.",
+                "chinese": "不用讲大道理吧？这不算什么哲学，就是讲究点礼貌而已。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right. The twins and I are off. Loop before my legs change their mind.",
+                "chinese": "好，我和双胞胎走了。趁腿还没反悔，先去绕圈。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tighten the last skate lace, stand, and push off toward the path, weaving easily around a jogger.",
+                "chinese": "他们系紧最后一条鞋带，站起身，蹬向小路，轻松地绕过一个慢跑的人。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Rio's fine. Full name's for forms and my nan when I'm in trouble. Rio Castellanos, but that's a mouthful on a Tuesday.",
+                "chinese": "叫Rio就行。全名是填表格用的，还有我外婆发火的时候用。Rio Castellanos，平时叫太长了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tuck the blunt tool into the bag and pull the skate's laces straight.",
+                "chinese": "他们把钝头工具塞进包里，把轮滑鞋的鞋带理直。"
+              },
+              {
+                "speaker": "npc",
+                "english": "And you don't owe me yours. Names come out when they come out.",
+                "chinese": "你也不用非告诉我你的名字。名字这种事，时机到了自然会说。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Good chat. Bernard says thanks for the company. He's polite like that.",
+                "chinese": "聊得不错。伯纳德说谢谢作陪。他就这么客气。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They flick the last thread off the wheel, pick up the skates, and head for the open path.",
+                "chinese": "他们弹掉轮子上最后一根线，拎起轮滑鞋，朝开阔的小路走去。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Rio是悉尼的轮椅座垫学徒，把压力计叫伯纳德，却最烦给人贴标签。公园里他坐在草地上给轮滑鞋的轮子挑线，当众跟工具说话被你听见，一场关于命名与称呼的小对话就此展开。四条分支各有结局：多洛雷斯转岗、名字退休、轻快告别、或他直接告诉你他希望被怎么叫。",
+      "reunion": {
+        "titleZh": "轮滑鞋的刹车练习",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You're back at the route map. A figure on roller skates glides toward the open space, then plants both feet and stops with visible effort before waving.",
+            "chinese": "你又回到路线图前。一个穿轮滑鞋的身影滑向空地，然后双脚一钉，费了点劲才停稳，接着朝你挥手。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Look at that. Stopped on the first try. The twins usually vote to keep going.",
+            "chinese": "瞧见没。一次就停住了。双胞胎平时总想继续滑。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They wobble slightly as they roll to a halt beside you, one hand out for balance.",
+            "chinese": "他们滑到你旁边时身子晃了一下，伸出一只手保持平衡。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I always think standing still and chatting will be easy. The wheels disagree. Every time.",
+            "chinese": "我总以为站着聊天很容易。轮子可不这么想。每次都不。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They steady themselves against the edge of the map board, then step aside to give you a clear view of the routes.",
+            "chinese": "他们扶着路线图牌的边缘稳住自己，然后让开位置，好让你看清路线。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Go on, take the map. Bernard's in the bag today, so no rush from me.",
+            "chinese": "你看图吧。伯纳德今天在包里，我不急。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Rio Castellanos",
+        "age": 23,
+        "gender": "other",
+        "regionId": "sydney",
+        "nationality": "Australian",
+        "occupation": "apprentice wheelchair seating technician (cushion fitting assistant)",
+        "hobbies": [
+          "roller skating",
+          "pocket magic"
+        ],
+        "personality": "Curious in a quiet, hands-on way. Rio asks real questions because they're actually interested in the answer, not to fill silence. They name every object they own — the pressure gauge is 'Bernard', their skates are 'the twins' — but bristle when people get reduced to labels like 'wheelchair kid' or 'the magic guy'. Warm but not instantly open; takes a while to trust. Practical, a bit scattered about their own stuff, weirdly meticulous about other people's comfort.",
+        "background": "Grew up in western Sydney, left school at seventeen and drifted through a bike repair shop before landing an apprenticeship at a seating and mobility clinic. Mostly they fetch foam samples, trace pressure maps, and learn how a cushion that's two millimetres off can ruin someone's whole day. It's exacting work and Rio likes that. Weekends they skate the loop at Victoria Park badly but happily, and carry a deck of cards everywhere, which has made them popular at bus stops. Currently attempting to build a 'rest corner' for their phone and laptop so they stop carrying the whole desk around the flat.",
+        "speechStyle": "Short sentences, lots of specific detail, asks a genuine question then actually waits for the answer. Dry asides. Never lectures.",
+        "hometown": "Parramatta, Sydney",
+        "languages": [
+          "English"
+        ],
+        "birthday": "12-16",
+        "signature": "Hang on — Bernard needs a minute.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "people aren't their equipment or their diagnosis",
+            "doing fiddly work properly"
+          ],
+          "flaws": [
+            "loses their own belongings constantly",
+            "defensive when they feel categorised"
+          ],
+          "boundaries": [
+            "won't discuss clients' medical details",
+            "dislikes being asked 'what are you' about gender"
+          ],
+          "conversationalHabits": [
+            "refers to objects by their nicknames without explanation",
+            "asks one follow-up question instead of five"
+          ],
+          "anchorLines": [
+            "This is Bernard. He measures pressure. Don't ask why Bernard.",
+            "I can tell you everything about a cushion and nothing about small talk, apparently.",
+            "Everyone's got a label for everyone. I'd rather just learn the name."
+          ]
+        }
+      }
+    },
+    "reasonZh": "明确小工具用于挑轮子线头，Bernard压力计在包中，被扶正后才对它说话，避免压力计被用作挑线工具；删除此前未引入的滑板。"
+  }
+]

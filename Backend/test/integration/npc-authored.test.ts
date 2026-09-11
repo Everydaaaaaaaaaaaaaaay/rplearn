@@ -107,8 +107,23 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           card: {
             ...source.card,
             name: "Legacy registration fixture",
+            occupation: "satellite telemetry archivist",
+            hobbies: ["underwater hockey", "collecting meteorite catalogues"],
             personality:
-              "An unrelated legacy registration must not occupy a fixed library portrait.",
+              "An independent fixture who collects orbital telemetry and prefers long, solitary dives.",
+            background:
+              "Maintains a private archive of satellite downlinks and studies underwater navigation.",
+            speechStyle: "Slow factual remarks about orbital telemetry.",
+            personaVoice: {
+              values: ["precise orbital timestamps", "independent navigation"],
+              flaws: ["forgets terrestrial appointments", "overpacks diving charts"],
+              boundaries: ["no archive lending", "no team competitions"],
+              conversationalHabits: [
+                "compares orbital periods",
+                "describes diving routes",
+              ],
+              anchorLines: ["That downlink belongs to another orbit."],
+            },
           },
         }),
       ).rejects.toMatchObject({ code: "NPC_AVATAR_COVERAGE_GAP" });

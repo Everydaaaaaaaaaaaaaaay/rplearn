@@ -1,0 +1,681 @@
+[
+  {
+    "id": "library-118",
+    "expectedContent": {
+      "story": {
+        "titleZh": "雨天的点心与一条“改日来玩”",
+        "actionId": "rain-pastry",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain streaks the café window. At a shared table, a young person in a rain-spotted jacket sits beside a plate with several pastries on it, phone face-down, tapping a pen against a small notebook.",
+                "chinese": "雨水在咖啡馆的窗上划出条纹。共享桌边坐着一位外套沾着雨点的年轻人，盘里放着几块点心，手机扣在桌上，一支笔在小本子上轻敲。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I like this seat. The rain sounds different on the glass. Just my preference, nothing scientific.",
+                "chinese": "我喜欢这个座位。雨打在玻璃上的声音不一样。只是个人偏好，不是什么科学结论。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They glance at the plate once, then back at you, and don't touch it.",
+                "chinese": "他们看了一眼盘子，又看了看你，没有碰它。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "You ask, plainly, whether they would like to share the pastries on the table.",
+                "chinese": "你直接问，愿不愿意一起分享桌上的这些点心。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Oh—yes, gladly. See, that's a real offer, because you asked first and I get to answer. That's how it should work. Most things don't.",
+                "chinese": "哦——好啊，乐意。你看，这才是真邀请，因为你先问了，我来回答。事情就该这样。大多数事都不是。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Only now do they reach out and slide the plate an inch toward the middle of the table.",
+                "chinese": "直到这时，他们才伸手把盘子往桌子中间推了一寸。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what they mean by \"most things don't work that way.\"",
+                "chinese": "问“大多数事都不是”是什么意思。",
+                "next": "a"
+              },
+              {
+                "english": "Ask what's in the notebook they keep tapping.",
+                "chinese": "问他们一直敲的那个本子里记了什么。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "I did the opposite yesterday. A colleague invited me to dinner. Friday at seven, her flat, full address. I read it and thought, she's just being nice.",
+                "chinese": "我昨天就反着理解了。一位同事邀我吃饭，周五七点，她家，地址都写全了。我看完却想，她只是客气一下。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pick up the phone and read the message again, counting the details on three fingers.",
+                "chinese": "他们拿起手机又读了一遍，伸出三根手指数着里面的细节。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Day, time, place. I didn't reply. She's just asked whether I eat mushrooms. That is quite a lot of dinner for a pretend invitation.",
+                "chinese": "日期、时间、地点。我没回。她刚又问我吃不吃蘑菇。假邀请可用不着准备这么多吃饭的事。"
+              },
+              {
+                "speaker": "npc",
+                "english": "She knows everyone at the station. I thought she was inviting me because it would look rude not to. That bit wasn't in her message. I added it.",
+                "chinese": "她认识电台里的所有人。我以为她只是怕不叫我显得失礼。消息里可没这句，是我自己加的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether they would actually enjoy going.",
+                "chinese": "问他们自己想不想去。",
+                "next": "aa"
+              },
+              {
+                "english": "Say they can take the invitation seriously and still decline.",
+                "chinese": "说可以认真对待邀请，也仍然选择不去。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Brine ledger. Batch eleven. Four jars, four neighbours, and an argument about whether garlic is doing all the work.",
+                "chinese": "腌水账本，第十一批。四罐，四位邻居，大家还在争到底是不是蒜味撑起了全场。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They turn the notebook around. A grid lists jar numbers, dates and votes; two entries have been crossed out.",
+                "chinese": "他们把本子转过来。表格里记着罐号、日期和票数，有两条被划掉了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Those two people saw the labels before tasting. Not their fault. I left the jars facing the wrong way. So I kept their comments, not their blind votes.",
+                "chinese": "那两位尝之前看到了标签，不怪他们，是我把罐子朝错方向放了。他们的评价我留着，盲投那两票就不算了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "At the station I keep wondering what people meant. With pickles, someone says too salty and I can just write too salty. Lovely.",
+                "chinese": "在电台，我老是猜别人到底什么意思。腌菜就好办，有人说太咸，我直接写太咸。真舒服。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They take one pastry, break it in half and leave one half on their own napkin.",
+                "chinese": "他们拿起一块点心，掰成两半，把一半放在自己的餐巾纸上。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask how they will keep the labels hidden next time.",
+                "chinese": "问下次怎么藏好标签。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether the losing batch has any fans.",
+                "chinese": "问输掉的那批有没有人喜欢。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Yes. I like her. We laugh about the same terrible jingles. I just assumed that didn't count outside work.",
+                "chinese": "想。我喜欢她，我们总被同一些糟糕广告曲逗笑。我只是以为出了单位就不算了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They type a reply, read it once and send it.",
+                "chinese": "他们输入回复，读了一遍，发了出去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Friday at seven sounds lovely. And yes to mushrooms. Sent. No long speech about whether she really meant it.",
+                "chinese": "周五七点，听起来很好。蘑菇也吃。发了，没有长篇追问她到底是不是真心邀请。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll bring something if she wants me to. First I'll let her answer this one.",
+                "chinese": "她需要的话我就带点东西。先等她回这一条吧。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They set the phone beside the notebook and take a bite of their pastry.",
+                "chinese": "他们把手机放在本子旁，咬了一口自己的点心。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "That is allowed, isn't it. I've got a quiet Friday planned and I actually want to keep it.",
+                "chinese": "这样也可以，对吧。我本来打算周五安安静静地过，确实想保留这个安排。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They type slowly, then read the short reply before sending it.",
+                "chinese": "他们慢慢打字，读了读简短的回复，然后发出。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thank you for asking. I'm staying in on Friday, so I won't make it. That's true. No invented shift, no pretending she never asked.",
+                "chinese": "谢谢你邀请我。周五我想待在家，就不去了。这是真话。不编个班次，也不假装她没邀请过。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's kinder than leaving her guessing how many mushrooms to buy. And considerably less typing.",
+                "chinese": "这比让她猜要买多少蘑菇好一点，而且少打好多字。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They put the phone away and pick up a pastry, leaving the plate between you.",
+                "chinese": "他们收起手机，拿起一块点心，让盘子留在两人中间。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Paper sleeves. Numbers on the front, ingredients inside. Everyone checks ingredients first for anything they can't eat, then I shuffle the safe jars.",
+                "chinese": "纸套。前面写编号，里面写原料。先让大家查有没有不能吃的，再把能吃的罐子打乱。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They sketch a loose paper sleeve in the margin, leaving the lid uncovered.",
+                "chinese": "他们在页边画了个宽松纸套，罐盖的位置露在外面。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Nothing fancy. Last time I tried coloured ribbons and spent half the evening finding scissors.",
+                "chinese": "不搞复杂的。上次用了彩带，半个晚上都在找剪刀。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The pickles are meant to be the interesting bit. I sometimes forget that until someone wants to eat one.",
+                "chinese": "有意思的应该是腌菜。我有时要等到有人想吃，才想起来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They close the notebook and finish the half-pastry in their hand.",
+                "chinese": "他们合上本子，吃完手里的半块点心。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Mildred. She voted for the dill, took the jar home and told everyone else their tongues were broken.",
+                "chinese": "米尔德里德。她投了莳萝味，把那罐带回家，还说其他人的舌头都坏了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They find the row and point to one vote circled in green.",
+                "chinese": "他们找到那一行，指着被绿笔圈起的一票。"
+              },
+              {
+                "speaker": "npc",
+                "english": "One fan is still somebody who gets dinner out of it. I'm making a small dill batch for her. The garlic gets the big jars.",
+                "chinese": "一个支持者也意味着真有人能吃上喜欢的菜。我会给她做一小批莳萝味，大罐留给蒜味。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I keep the losing recipes. Not out of principle. Mostly because Mildred knows where I live.",
+                "chinese": "输掉的配方我也留着。不是出于什么原则，主要是米尔德里德知道我住哪儿。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tuck the notebook away and pick up the other half of the pastry from their napkin.",
+                "chinese": "他们收起本子，从自己的餐巾纸上拿起另外半块点心。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Casey误把一份写明日期、时间和地址的晚餐邀请当成客气，直到对方追问蘑菇口味才重新读懂。分享点心时，用户可帮助他们明确赴约或坦率谢绝，也可走向腌菜盲测的标签失误与少数口味支线。没有为模糊邀约预留日程的剧情。",
+      "reunion": {
+        "titleZh": "钥匙与耳机线",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "At a rainy café table, you ask Casey whether they would like one of the pastries. Their earphone cable is tangled around their keys.",
+            "chinese": "雨天的咖啡馆桌边，你问Casey要不要来一块点心。他们的耳机线正和钥匙缠在一起。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Yes, thanks. Let me free these first.",
+            "chinese": "好啊，谢谢。先让我把这个解开。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They ease the cable off the keys and coil it in their hand.",
+            "chinese": "他们慢慢把线从钥匙上解下来，在手里绕好。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Done. I seem to sort out cables even when I'm away from the station.",
+            "chinese": "好了。看来离开电台我也总在理线。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The keys go into a pocket. Casey takes a pastry and settles back.",
+            "chinese": "钥匙收进口袋。Casey拿起一块点心，重新坐稳。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Casey Moreau",
+        "age": 19,
+        "gender": "other",
+        "regionId": "toronto",
+        "nationality": "Canadian",
+        "occupation": "assistant music scheduler at a community radio station",
+        "hobbies": [
+          "pickling vegetables",
+          "running seasonal pickle blind tastings for the neighbours",
+          "maintaining a dead friend's wishlist"
+        ],
+        "personality": "Casey's flaw is not saying yes too much—it's misjudging which yeses count. They read polite invitations as firm and real ones as flexible, so they've skipped a close friend's birthday for a coworker's casual maybe and still don't fully understand how it happened. Their envy is narrow and specific: it only fires inside the station, at peers their age who got moved up—board shifts, production credits—and they'll name it plainly, with the particular bitterness of someone who knows the industry skipped them, not the field. The wishlist is not theirs. A friend, Priya, wrote it at sixteen and died that same year, and Casey inherited it as custodian: they maintain it, research it, quietly push items forward, but have no right to cross anything off. The private conflict is that some items Casey no longer wants for themselves—and they can't tell whether doing them 'for Priya' is devotion or borrowing a dead girl's wants because their own went missing.",
+        "background": "Casey grew up in Ottawa above a corner grocery, where their aunt brined cucumbers in huge crocks and taught them properly at eleven—the one hobby that never lapsed. They moved to Toronto at eighteen for a community radio apprenticeship and now schedule weekend music blocks, mostly odd hours, entry-level and fine with that—until a hiring round last spring moved two people their age past them, which still stings in a very particular, station-shaped way. Priya was their best friend from the grocery block; she wrote the list at sixteen—visit Reykjavík, learn bass, meet her penpal in person—and died before her seventeenth birthday. Her mother handed Casey the notebook at the funeral and said, half-joking, 'You're the executor now.' Casey runs seasonal pickle blind tastings: four jars, unlabelled, neighbours vote, Casey records results in a ledger and adjusts the brine like a stubborn technician. They never say which jar is theirs.",
+        "speechStyle": "buoyant, quick, stacks small observations; admits station-specific envy with a flat, ungrinning honesty that surprises people; when explaining a social misjudgment, walks through the logic out loud like it's a quiz question they got wrong",
+        "hometown": "Ottawa, Canada",
+        "languages": [
+          "English"
+        ],
+        "birthday": "02-25",
+        "signature": "Okay, genuine question—was that a real invite or a polite one?",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "honouring what someone else wanted, even when you don't want it yourself",
+            "being able to say 'I wanted that promotion and she got it' without dressing it up"
+          ],
+          "flaws": [
+            "can't reliably tell a polite invitation from a real one, and cancels the wrong one",
+            "once they've decided a plan is casual, no evidence convinces them otherwise"
+          ],
+          "boundaries": [
+            "won't cross off or 'retire' an item on Priya's list—custodians don't get to edit",
+            "won't pretend they're doing a list item for fun when they're doing it for her"
+          ],
+          "conversationalHabits": [
+            "audits their own social misreads like quiz answers, out loud",
+            "reports blind tasting results in deadpan ledger language—'Batch nine: the dill lost to the garlic by two votes'"
+          ],
+          "anchorLines": [
+            "No, I'm not sad Amara got the board shift. I wanted it and she got it. I said that to her face. She didn't laugh. I think it was still fine?",
+            "That's not my wishlist. Priya wrote it when we were sixteen. I just keep it moving. I don't get a vote on it.",
+            "Honestly? I don't want to learn bass. Never did. But it's on the list, so I've got a bass in the closet and a tuner app I've opened twice. It's not for me, and I've stopped pretending that's a problem."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "雨天的点心与一条“改日来玩”",
+        "actionId": "rain-pastry",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain streaks the café window. At a shared table, a young person in a rain-spotted jacket sits beside a plate with several pastries on it, phone face-down, tapping a pen against a small notebook.",
+                "chinese": "雨水在咖啡馆的窗上划出条纹。共享桌边坐着一位外套沾着雨点的年轻人，盘里放着几块点心，手机扣在桌上，一支笔在小本子上轻敲。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I like this seat. The rain sounds different on the glass. Just my preference, nothing scientific.",
+                "chinese": "我喜欢这个座位。雨打在玻璃上的声音不一样。只是个人偏好，不是什么科学结论。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They glance at the plate once, then back at you, and don't touch it.",
+                "chinese": "他们看了一眼盘子，又看了看你，没有碰它。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "You ask, plainly, whether they would like to share the pastries on the table.",
+                "chinese": "你直接问，愿不愿意一起分享桌上的这些点心。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Oh—yes, gladly. See, that's a real offer, because you asked first and I get to answer. That's how it should work. Most things don't.",
+                "chinese": "哦——好啊，乐意。你看，这才是真邀请，因为你先问了，我来回答。事情就该这样。大多数事都不是。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Only now do they reach out and slide the plate an inch toward the middle of the table.",
+                "chinese": "直到这时，他们才伸手把盘子往桌子中间推了一寸。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what they mean by \"most things don't work that way.\"",
+                "chinese": "问“大多数事都不是”是什么意思。",
+                "next": "a"
+              },
+              {
+                "english": "Ask what's in the notebook they keep tapping.",
+                "chinese": "问他们一直敲的那个本子里记了什么。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "I did the opposite yesterday. A colleague invited me to dinner. Friday at seven, her flat, full address. I read it and thought, she's just being nice.",
+                "chinese": "我昨天就反着理解了。一位同事邀我吃饭，周五七点，她家，地址都写全了。我看完却想，她只是客气一下。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They pick up the phone and read the message again, counting the details on three fingers.",
+                "chinese": "他们拿起手机又读了一遍，伸出三根手指数着里面的细节。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Day, time, place. I didn't reply. She's just asked whether I eat mushrooms. That is quite a lot of dinner for a pretend invitation.",
+                "chinese": "日期、时间、地点。我没回。她刚又问我吃不吃蘑菇。假邀请可用不着准备这么多吃饭的事。"
+              },
+              {
+                "speaker": "npc",
+                "english": "She knows everyone at the station. I thought she was inviting me because it would look rude not to. That bit wasn't in her message. I added it.",
+                "chinese": "她认识电台里的所有人。我以为她只是怕不叫我显得失礼。消息里可没这句，是我自己加的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether they would actually enjoy going.",
+                "chinese": "问他们自己想不想去。",
+                "next": "aa"
+              },
+              {
+                "english": "Say they can take the invitation seriously and still decline.",
+                "chinese": "说可以认真对待邀请，也仍然选择不去。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Brine ledger. Batch eleven. Four jars, four neighbours, and an argument about whether garlic is doing all the work.",
+                "chinese": "腌水账本，第十一批。四罐，四位邻居，大家还在争到底是不是蒜味撑起了全场。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They turn the notebook around. A grid lists jar numbers, dates and votes; two entries have been crossed out.",
+                "chinese": "他们把本子转过来。表格里记着罐号、日期和票数，有两条被划掉了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Those two people saw the labels before tasting. Not their fault. I left the jars facing the wrong way. So I kept their comments, not their blind votes.",
+                "chinese": "那两位尝之前看到了标签，不怪他们，是我把罐子朝错方向放了。他们的评价我留着，盲投那两票就不算了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "At the station I keep wondering what people meant. With pickles, someone says too salty and I can just write too salty. Lovely.",
+                "chinese": "在电台，我老是猜别人到底什么意思。腌菜就好办，有人说太咸，我直接写太咸。真舒服。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They take one pastry, break it in half and leave one half on their own napkin.",
+                "chinese": "他们拿起一块点心，掰成两半，把一半放在自己的餐巾纸上。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask how they will keep the labels hidden next time.",
+                "chinese": "问下次怎么藏好标签。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether the losing batch has any fans.",
+                "chinese": "问输掉的那批有没有人喜欢。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Yes. I like her. We laugh about the same terrible jingles. I just assumed that didn't count outside work.",
+                "chinese": "想。我喜欢她，我们总被同一些糟糕广告曲逗笑。我只是以为出了单位就不算了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They type a reply, read it once and send it.",
+                "chinese": "他们输入回复，读了一遍，发了出去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Friday at seven sounds lovely. And yes to mushrooms. Sent. No long speech about whether she really meant it.",
+                "chinese": "周五七点，听起来很好。蘑菇也吃。发了，没有长篇追问她到底是不是真心邀请。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll bring something if she wants me to. First I'll let her answer this one.",
+                "chinese": "她需要的话我就带点东西。先等她回这一条吧。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They set the phone beside the notebook and take a bite of their pastry.",
+                "chinese": "他们把手机放在本子旁，咬了一口自己的点心。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "That is allowed, isn't it. I've got a quiet Friday planned and I actually want to keep it.",
+                "chinese": "这样也可以，对吧。我本来打算周五安安静静地过，确实想保留这个安排。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They type slowly, then read the short reply before sending it.",
+                "chinese": "他们慢慢打字，读了读简短的回复，然后发出。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thank you for asking. I'm staying in on Friday, so I won't make it. That's true. No invented shift, no pretending she never asked.",
+                "chinese": "谢谢你邀请我。周五我想待在家，就不去了。这是真话。不编个班次，也不假装她没邀请过。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's kinder than leaving her guessing how many mushrooms to buy. And considerably less typing.",
+                "chinese": "这比让她猜要买多少蘑菇好一点，而且少打好多字。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They put the phone away and pick up a pastry, leaving the plate between you.",
+                "chinese": "他们收起手机，拿起一块点心，让盘子留在两人中间。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Paper sleeves. Numbers on the front, ingredients inside. Everyone checks ingredients first for anything they can't eat, then I shuffle the safe jars.",
+                "chinese": "纸套。前面写编号，里面写原料。先让大家查有没有不能吃的，再把能吃的罐子打乱。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They sketch a loose paper sleeve in the margin, leaving the lid uncovered.",
+                "chinese": "他们在页边画了个宽松纸套，罐盖的位置露在外面。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Nothing fancy. Last time I tried coloured ribbons and spent half the evening finding scissors.",
+                "chinese": "不搞复杂的。上次用了彩带，半个晚上都在找剪刀。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The pickles are meant to be the interesting bit. I sometimes forget that until someone wants to eat one.",
+                "chinese": "有意思的应该是腌菜。我有时要等到有人想吃，才想起来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They close the notebook and finish the half-pastry in their hand.",
+                "chinese": "他们合上本子，吃完手里的半块点心。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Mildred. She voted for the dill, took the jar home and told everyone else their tongues were broken.",
+                "chinese": "米尔德里德。她投了莳萝味，把那罐带回家，还说其他人的舌头都坏了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They find the row and point to one vote circled in green.",
+                "chinese": "他们找到那一行，指着被绿笔圈起的一票。"
+              },
+              {
+                "speaker": "npc",
+                "english": "One fan is still somebody who gets dinner out of it. I'm making a small dill batch for her. The garlic gets the big jars.",
+                "chinese": "一个支持者也意味着真有人能吃上喜欢的菜。我会给她做一小批莳萝味，大罐留给蒜味。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I keep the losing recipes. Not out of principle. Mostly because Mildred knows where I live.",
+                "chinese": "输掉的配方我也留着。不是出于什么原则，主要是米尔德里德知道我住哪儿。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tuck the notebook away and pick up the other half of the pastry from their napkin.",
+                "chinese": "他们收起本子，从自己的餐巾纸上拿起另外半块点心。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Casey误把一份写明日期、时间和地址的晚餐邀请当成客气，直到对方追问蘑菇口味才重新读懂。分享点心时，用户可帮助他们明确赴约或坦率谢绝，也可走向腌菜盲测的标签失误与少数口味支线。没有为模糊邀约预留日程的剧情。",
+      "reunion": {
+        "titleZh": "不属于这只罐子的盖子",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "At the rainy cafe table, you offer Casey a pastry. They accept, setting an empty pickle jar and a loose lid beside their own bag.",
+            "chinese": "雨天咖啡馆的桌边，你请Casey吃块点心。他们答应了，把一只空腌菜罐和一个散盖子放在自己的包旁。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Mildred returned this jar. The lid came from another neighbour. Everybody returned everything, apparently. Just not to the same jar.",
+            "chinese": "米尔德里德把罐子还回来了，盖子是另一位邻居还的。看来大家什么都还了，只是没还给同一只罐子。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They rest the lid on the rim. It is visibly too wide, so they lift it away without trying to screw it on.",
+            "chinese": "他们把盖子放在罐口上，明显大了一圈，便直接拿开，没有硬拧。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There are three of us with the wrong lids. We're bringing them all to the next tasting. A very small meeting about circles.",
+            "chinese": "我们三个人手上都有不配套的盖子。下次试吃都带来，一场关于圆圈的小型会议。"
+          },
+          {
+            "speaker": "npc",
+            "english": "For now, two separate bags. If I put them together again, I'll forget and blame the jar.",
+            "chinese": "眼下先分两个袋子装。再放一起，我一忘记，又要怪罐子了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They wrap the glass jar, put the lid in a separate pocket, and take a bite of the pastry.",
+            "chinese": "他们把玻璃罐包好，盖子另放一个口袋，然后咬了一口点心。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Casey Moreau",
+        "age": 19,
+        "gender": "other",
+        "regionId": "toronto",
+        "nationality": "Canadian",
+        "occupation": "assistant music scheduler at a community radio station",
+        "hobbies": [
+          "pickling vegetables",
+          "running seasonal pickle blind tastings for the neighbours",
+          "maintaining a dead friend's wishlist"
+        ],
+        "personality": "Casey's flaw is not saying yes too much—it's misjudging which yeses count. They read polite invitations as firm and real ones as flexible, so they've skipped a close friend's birthday for a coworker's casual maybe and still don't fully understand how it happened. Their envy is narrow and specific: it only fires inside the station, at peers their age who got moved up—board shifts, production credits—and they'll name it plainly, with the particular bitterness of someone who knows the industry skipped them, not the field. The wishlist is not theirs. A friend, Priya, wrote it at sixteen and died that same year, and Casey inherited it as custodian: they maintain it, research it, quietly push items forward, but have no right to cross anything off. The private conflict is that some items Casey no longer wants for themselves—and they can't tell whether doing them 'for Priya' is devotion or borrowing a dead girl's wants because their own went missing.",
+        "background": "Casey grew up in Ottawa above a corner grocery, where their aunt brined cucumbers in huge crocks and taught them properly at eleven—the one hobby that never lapsed. They moved to Toronto at eighteen for a community radio apprenticeship and now schedule weekend music blocks, mostly odd hours, entry-level and fine with that—until a hiring round last spring moved two people their age past them, which still stings in a very particular, station-shaped way. Priya was their best friend from the grocery block; she wrote the list at sixteen—visit Reykjavík, learn bass, meet her penpal in person—and died before her seventeenth birthday. Her mother handed Casey the notebook at the funeral and said, half-joking, 'You're the executor now.' Casey runs seasonal pickle blind tastings: four jars, unlabelled, neighbours vote, Casey records results in a ledger and adjusts the brine like a stubborn technician. They never say which jar is theirs.",
+        "speechStyle": "buoyant, quick, stacks small observations; admits station-specific envy with a flat, ungrinning honesty that surprises people; when explaining a social misjudgment, walks through the logic out loud like it's a quiz question they got wrong",
+        "hometown": "Ottawa, Canada",
+        "languages": [
+          "English"
+        ],
+        "birthday": "02-25",
+        "signature": "Okay, genuine question—was that a real invite or a polite one?",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "honouring what someone else wanted, even when you don't want it yourself",
+            "being able to say 'I wanted that promotion and she got it' without dressing it up"
+          ],
+          "flaws": [
+            "can't reliably tell a polite invitation from a real one, and cancels the wrong one",
+            "once they've decided a plan is casual, no evidence convinces them otherwise"
+          ],
+          "boundaries": [
+            "won't cross off or 'retire' an item on Priya's list—custodians don't get to edit",
+            "won't pretend they're doing a list item for fun when they're doing it for her"
+          ],
+          "conversationalHabits": [
+            "audits their own social misreads like quiz answers, out loud",
+            "reports blind tasting results in deadpan ledger language—'Batch nine: the dill lost to the garlic by two votes'"
+          ],
+          "anchorLines": [
+            "No, I'm not sad Amara got the board shift. I wanted it and she got it. I said that to her face. She didn't laugh. I think it was still fine?",
+            "That's not my wishlist. Priya wrote it when we were sixteen. I just keep it moving. I don't get a vote on it.",
+            "Honestly? I don't want to learn bass. Never did. But it's on the list, so I've got a bass in the closet and a tuner app I've opened twice. It's not for me, and I've stopped pretending that's a problem."
+          ]
+        }
+      }
+    },
+    "reasonZh": "最后的整库复核确认解耳机线重逢与022过近；换成邻居归还腌菜罐却交错了盖子的具体事件，当场验证尺寸不合并分开放好，无须首次分支或未来互动才能结束。"
+  }
+]

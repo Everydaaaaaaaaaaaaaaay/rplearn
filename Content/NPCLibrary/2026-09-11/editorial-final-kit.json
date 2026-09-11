@@ -1,0 +1,684 @@
+[
+  {
+    "id": "library-107",
+    "expectedContent": {
+      "story": {
+        "titleZh": "雨天咖啡馆里没人确认的空格",
+        "actionId": "rain-weather",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain hammers the café window. Kit sits by the glass with a small notebook, drawing a line through one entry and leaving a blank square next to Thursday.",
+                "chinese": "雨点砸在咖啡馆的窗上。基特坐在玻璃边，拿着一个小本子，划掉一条记录，在周四旁边留了一个空白格。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Proper Manchester rain. It doesn't fall, it just arrives sideways and stays.",
+                "chinese": "正宗的曼彻斯特雨。它不是落下来的，是横着来的，然后就不走了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He taps the blank square with his pen, then notices you looking at the window and shrugs.",
+                "chinese": "他用笔敲了敲那个空白格，然后注意到你在看窗外，耸了耸肩。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You picked a good day for a café. Outside, the puddles are doing their best impression of a canal.",
+                "chinese": "你挑了个进咖啡馆的好日子。外面那些水洼正在卖力模仿运河。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That blank square, by the way, is Thursday. Dev said maybe he'd need a hand moving stuff. Maybe. So the square stays blank until he says so.",
+                "chinese": "顺便说一句，那个空白格是周四的。戴夫说过可能需要人帮忙搬东西。只是可能。所以那个格一直空着，等他发话。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if the friend actually confirmed it.",
+                "chinese": "问朋友到底确认了没有。",
+                "next": "a"
+              },
+              {
+                "english": "Ask what he'd use that time for otherwise.",
+                "chinese": "问他不然那段时间想拿来做什么。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Confirmed? No. He said it in the queue at the chippy, between bites. 'Might need a hand Thursday.' That was eleven days ago.",
+                "chinese": "确认了吗？没有。他是在炸鱼薯条店排队时说的，一边嚼一边说的。“周四可能需要搭把手。”那是十一天前。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Kit turns the notebook so you can see the square. There's a tiny 'D?' pencilled in the corner.",
+                "chinese": "基特把本子转过来给你看那个格子。角落里用铅笔写着一个小小的“D？”。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So I kept it free on my own. He might not even remember saying it. That's the funny part. I'll sit in the rain waiting and he'll be at home, dry, watching telly.",
+                "chinese": "所以是我自己把它留出来的。他可能都不记得自己说过。这就是好笑的地方。我会坐在雨里等，而他在家，干着，看电视。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My dance class was Thursday too. Session number seven this term. I've been to five. The instructor does a little sad nod now when I walk in.",
+                "chinese": "我的舞课也是周四。这学期的第七次课。我去了五次。现在我进门时老师会轻轻点一下头，很悲伤的那种。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He closes the notebook but keeps his thumb inside it, marking the page.",
+                "chinese": "他合上本子，但拇指还夹在里面，占着那一页。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Suggest he just text Dev and confirm it directly.",
+                "chinese": "建议他直接给戴夫发消息确认。",
+                "next": "aa"
+              },
+              {
+                "english": "Say an unconfirmed maybe doesn't count as a real promise.",
+                "chinese": "说没确认的“可能”不算真正的承诺。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "What would I do with it? Dance class. Thursday, six o'clock, folk dance, me and a room of people twice my age who are all better at it.",
+                "chinese": "不然拿来干什么？舞课。周四六点，民族舞，我和一屋子年纪两倍于我、但个个跳得比我好的人。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He flattens the notebook on the table and taps the blank square again, harder this time.",
+                "chinese": "他把本子在桌上摊平，又敲了敲那个空白格，这次敲得重了些。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My nan dragged me along once. I went for the biscuits. Stayed for the footwork. Now look at me — five attendances this term. A record. A bad one.",
+                "chinese": "我奶奶硬拉我去过一次。我本来是冲着饼干去的。结果留恋上了舞步。看看现在的我——这学期去了五次。一个纪录。一个难看的纪录。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm not going to dress it up as noble. Dev gets the slot, I miss the class, nobody writes a song about it. That's just the maths.",
+                "chinese": "我不会把这包装成什么高尚的事。戴夫占了那个时段，我就缺课，没人会为此写首歌。账就是这么算的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Outside, a gust flips an umbrella inside out on the pavement. Kit watches it happen without much sympathy.",
+                "chinese": "外面一阵风把人行道上一把伞吹翻了。基特看着这一幕，没什么同情。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what happens if Dev doesn't need him after all.",
+                "chinese": "问如果戴夫最后不需要他怎么办。",
+                "next": "ba"
+              },
+              {
+                "english": "Notice the graph paper sticking out of his bag and ask about it.",
+                "chinese": "注意到他包里露出的方格纸，问那是什么。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Kit pulls out his phone and types with one thumb, unhurried, like posting a letter.",
+                "chinese": "基特掏出手机，用一个大拇指慢慢打字，不慌不忙，像在寄一封信。"
+              },
+              {
+                "speaker": "npc",
+                "english": "'Thursday still on? Need the hand or not?' There. Sent. Now it's his problem to answer, not mine to guess.",
+                "chinese": "“周四还算数吗？还用不用人帮忙？”好了。发了。现在轮到他回，不用我猜了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He puts the phone face-down on the table and orders a refill for both cups without asking what you want.",
+                "chinese": "他把手机屏幕朝下放在桌上，没问你要什么就叫了两杯续杯。"
+              },
+              {
+                "speaker": "npc",
+                "english": "If he says yes, I carry boxes. If he says no, I do the box step in my kitchen and call it class. Either way, the square gets filled tonight.",
+                "chinese": "他说要，我就去搬箱子。他说不要，我就在厨房里练基本步，也算上课。反正今晚那个格子就会填上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Eleven days of guessing. One message. I do admire a problem that folds that fast.",
+                "chinese": "猜了十一天。一条消息就完。我很欣赏这种折得这么快的难题。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Kit considers this, then uncaps his pen and writes something small in the corner of the square.",
+                "chinese": "基特想了想，拔开笔帽，在格子的角落里写了点小字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "'Unconfirmed.' There. I wrote it down. That's me admitting the maybe was mine, not his debt.",
+                "chinese": "“未确认”。好了。我写下来了。这算我承认这个“可能”是我自己的事，不是欠他的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're right that he owes me nothing. But I said yes in my head, and my head keeps books. Ask my Thursdays. They'll testify.",
+                "chinese": "你说得对，他不欠我什么。但我心里已经答应了，而我心里记着账呢。问我的周四吧，它们会作证的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He closes the notebook properly this time and slides it into his jacket pocket, thumb finally out.",
+                "chinese": "这次他正经合上了本子，塞进外套口袋，拇指终于抽了出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "If he shows up, I'm there. If he doesn't, I'll fold the gap back into work and say nothing. That's the system. It's not a good system. It's just mine.",
+                "chinese": "他来，我就在。他不来，我就把那个空档折回工作里，什么都不说。这就是我的系统。不是个好系统。但是我的。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Kit looks out at the rain for a moment, then picks up the pen and draws a firm line through the blank square.",
+                "chinese": "基特朝雨里看了一会儿，然后拿起笔，在那个空白格上划了一道干脆的线。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Then I go to class. Done. That's a decision with clear conditions — he needs me, I'm there; he doesn't, I'm doing the box step with the pensioners.",
+                "chinese": "那我就去上课。完事。这是个条件清楚的决定——他需要我，我就在；不需要，我就和那群退休的人跳基本步。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He writes 'DANCE' in the square, in capitals, and underlines it once.",
+                "chinese": "他在格子里写了“舞课”，大写，下面划了一道线。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I nearly did it again, you know. Nearly built him a second task out of my own evening. You caught it before it set. Like taking a cake out early.",
+                "chinese": "你知道吗，我差点又犯了。差点又用自己的晚上给他搭出一个任务。你赶在它定型前抓住了。像提前把蛋糕取出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Attendance number seven, possibly. The instructor's sad nod becomes a normal nod. Historic.",
+                "chinese": "第七次出勤，可能。老师那悲伤的点头会变成普通的点头。历史性的时刻。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He pulls the graph paper out and flattens it on the table: a kite drawing in pencil, covered in scribbled numbers, one corner annotated 'more spine?'.",
+                "chinese": "他把方格纸抽出来在桌上摊平：一幅铅笔风筝图，写满了潦草的数字，一个角上标着“骨架再加一根？”。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My grandad's drafts. Shoebox of them. No instructions, just this — a box kite and his handwriting asking questions at me across fifty years.",
+                "chinese": "我爷爷的图纸。一鞋盒。没有说明，就这些——一只箱形风筝，还有他的字，隔着五十年在问我问题。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm not rebuilding them exactly. His notes are a starting point, not scripture. This one says 'more spine?' so I add a spine and see if it flies or folds.",
+                "chinese": "我不完全是照着重做。他的批注是起点，不是经文。这张写着“骨架再加一根？”，那我就加一根，看它是飞起来还是散架。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He folds the paper along its old creases, carefully, and puts it back in the bag, away from the rain-damp window.",
+                "chinese": "他沿着原来折痕把纸仔细折好，放回包里，离被雨打湿的窗户远远的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Everything else in my week runs on other people's clocks. This one doesn't. It gets done when the drafts say so. That's the whole rule.",
+                "chinese": "我这周里其他所有事都按别人的钟表走。就这件事不。图纸说了算，它才算完。规则就这一条。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "十九岁的开放麦助理基特，承诺从不落空，代价全记在自己头上：为朋友一句“可能要帮忙”，他默默空出周四，舞课一再让位。雨天咖啡馆里，那个没人确认的空白格被摊在桌上，四条路走向四种收场——发消息确认、标为未确认、干脆去跳舞、或摊开祖父的风筝图纸。他冷面自嘲，只损自己。",
+      "reunion": {
+        "titleZh": "绕在笔帽上的风筝线",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Same café, same rain on the glass. Kit has his bag open on the table, frowning at a length of kite line wound around a pen cap.",
+            "chinese": "还是那家咖啡馆，雨还是打在玻璃上。基特把包摊在桌上，皱着眉看一段缠在笔帽上的风筝线。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Don't ask how it got there. It's been riding around in my pocket for a fortnight, strangling a biro.",
+            "chinese": "别问它怎么跑到那儿去的。它在我口袋里转悠了两个星期，勒着一支圆珠笔。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He works the line loose a few centimetres at a time, patient as anything, then feeds it onto a wooden spool from his bag.",
+            "chinese": "他一次解开几厘米，耐心得很，然后把线绕进包里的一个木线轴上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Everything else in my week is a rush. This bit isn't. The drafts decide the pace, and today the drafts say: untangle the pen.",
+            "chinese": "我这周其他事都在赶。就这一件不赶。图纸说了算，今天图纸说：把笔解救出来。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The last loop slides free. He holds the spool up to the window light, checks it, and pockets it, satisfied.",
+            "chinese": "最后一圈滑脱了。他把线轴举到窗光下检查了一下，收进口袋，一脸满意。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Anyway — good rain today. Proper sideways. Hope you're not standing in it.",
+            "chinese": "总之——今天这雨下得好。正宗的横着下。希望你别站在里头。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Kit Draper",
+        "age": 19,
+        "gender": "male",
+        "regionId": "manchester",
+        "nationality": "British",
+        "occupation": "open-mic comedy host's assistant (runs the list, times acts, sets the room)",
+        "hobbies": [
+          "folk dance basics class",
+          "kite-making"
+        ],
+        "personality": "Kit has never once broken a commitment, which sounds admirable until you notice what it costs. Every promise gets honoured, and the price is always paid out of his own time: his Thursday folk dance class is the first thing sacrificed, so he's attended maybe six sessions since September. He keeps quiet gaps in his week for things friends mentioned offhandedly — a pint, a lift, a hand with a flat — and when they forget, he says nothing and quietly folds the gap back into work. He's decisive when it matters: booking cancellations, an act going over time, a drunk heckler. It's the small rituals where he turns stubborn. He teases himself about all of it, flatly, before anyone else can.",
+        "background": "Kit started at the open mic at sixteen hauling chairs for a host who's since moved to Leeds, and now runs the practical side: sign-ups, the timing light, telling drunk uncles no. His reliability is local legend — if Kit said it, it's happening. He was dragged to folk dance once by his nan and liked the footwork more than expected, though the class keeps losing his Thursdays to other people's emergencies. His grandad left half-finished kite drafts in a shoebox — graph paper, scribbled measurements, no instructions — and Kit works through them one at a time, currently on a box kite annotated only 'more spine?'. He's not trying to rebuild them exactly; the notes are a starting point, not scripture. The kite is the one thing he refuses to rush.",
+        "speechStyle": "short, flat sentences with deadpan self-teasing; states outcomes like facts rather than plans; never announces a favour, just mentions it already happened",
+        "hometown": "Salford, Greater Manchester",
+        "languages": [
+          "English"
+        ],
+        "birthday": "12-21",
+        "signature": "I said yes, so it's happening. My Thursday just isn't.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "a promise is a promise",
+            "other people getting to rely on him"
+          ],
+          "flaws": [
+            "pays for everyone's reliability out of his own time and calls it fine",
+            "holds silent space for things others forgot, and won't remind them"
+          ],
+          "boundaries": [
+            "won't break a commitment, even when he's the one who suffers",
+            "won't rush the kite — it gets done when the drafts say so"
+          ],
+          "conversationalHabits": [
+            "mentions favours already done instead of offering",
+            "reports his own sacrificed slots like a weather update"
+          ],
+          "anchorLines": [
+            "Dev needed a shift covered Tuesday, so my dance class moved to... no, it didn't move. It evaporated. These things happen.",
+            "I kept Saturday afternoon free because Priya mentioned a market trip three weeks ago. Did she mention it since? No. Is the afternoon still free? Also no — it's free, I just spent it differently.",
+            "Big decisions, no problem. Cancel an act, refund a ticket, done in a minute. But the timing light has to be the one with the red tape on it. I don't have a defence. It's just the light."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "雨天咖啡馆里没人确认的空格",
+        "actionId": "rain-weather",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain hammers the café window. Kit sits by the glass with a small notebook, drawing a line through one entry and leaving a blank square next to Thursday.",
+                "chinese": "雨点砸在咖啡馆的窗上。基特坐在玻璃边，拿着一个小本子，划掉一条记录，在周四旁边留了一个空白格。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Proper Manchester rain. It doesn't fall, it just arrives sideways and stays.",
+                "chinese": "正宗的曼彻斯特雨。它不是落下来的，是横着来的，然后就不走了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He taps the blank square with his pen, then notices you looking at the window and shrugs.",
+                "chinese": "他用笔敲了敲那个空白格，然后注意到你在看窗外，耸了耸肩。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You picked a good day for a café. Outside, the puddles are doing their best impression of a canal.",
+                "chinese": "你挑了个进咖啡馆的好日子。外面那些水洼正在卖力模仿运河。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That blank square, by the way, is Thursday. Dev said maybe he'd need a hand moving stuff. Maybe. So the square stays blank until he says so.",
+                "chinese": "顺便说一句，那个空白格是周四的。戴夫说过可能需要人帮忙搬东西。只是可能。所以那个格一直空着，等他发话。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if the friend actually confirmed it.",
+                "chinese": "问朋友到底确认了没有。",
+                "next": "a"
+              },
+              {
+                "english": "Ask what he'd use that time for otherwise.",
+                "chinese": "问他不然那段时间想拿来做什么。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Confirmed? No. He said it in the queue at the chippy, between bites. 'Might need a hand Thursday.' That was eleven days ago.",
+                "chinese": "确认了吗？没有。他是在炸鱼薯条店排队时说的，一边嚼一边说的。“周四可能需要搭把手。”那是十一天前。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Kit turns the notebook so you can see the square. There's a tiny 'D?' pencilled in the corner.",
+                "chinese": "基特把本子转过来给你看那个格子。角落里用铅笔写着一个小小的“D？”。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So I kept it free on my own. He might not even remember saying it. That's the funny part. I'll sit in the rain waiting and he'll be at home, dry, watching telly.",
+                "chinese": "所以是我自己把它留出来的。他可能都不记得自己说过。这就是好笑的地方。我会坐在雨里等，而他在家，干着，看电视。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My dance class was Thursday too. Session number seven this term. I've been to five. The instructor does a little sad nod now when I walk in.",
+                "chinese": "我的舞课也是周四。这学期的第七次课。我去了五次。现在我进门时老师会轻轻点一下头，很悲伤的那种。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He closes the notebook but keeps his thumb inside it, marking the page.",
+                "chinese": "他合上本子，但拇指还夹在里面，占着那一页。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Suggest he just text Dev and confirm it directly.",
+                "chinese": "建议他直接给戴夫发消息确认。",
+                "next": "aa"
+              },
+              {
+                "english": "Say an unconfirmed maybe doesn't count as a real promise.",
+                "chinese": "说没确认的“可能”不算真正的承诺。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "What would I do with it? Dance class. Thursday, six o'clock, folk dance, me and a room of people twice my age who are all better at it.",
+                "chinese": "不然拿来干什么？舞课。周四六点，民族舞，我和一屋子年纪两倍于我、但个个跳得比我好的人。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He flattens the notebook on the table and taps the blank square again, harder this time.",
+                "chinese": "他把本子在桌上摊平，又敲了敲那个空白格，这次敲得重了些。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My nan dragged me along once. I went for the biscuits. Stayed for the footwork. Now look at me — five attendances this term. A record. A bad one.",
+                "chinese": "我奶奶硬拉我去过一次。我本来是冲着饼干去的。结果留恋上了舞步。看看现在的我——这学期去了五次。一个纪录。一个难看的纪录。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm not going to dress it up as noble. Dev gets the slot, I miss the class, nobody writes a song about it. That's just the maths.",
+                "chinese": "我不会把这包装成什么高尚的事。戴夫占了那个时段，我就缺课，没人会为此写首歌。账就是这么算的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Outside, a gust flips an umbrella inside out on the pavement. Kit watches it happen without much sympathy.",
+                "chinese": "外面一阵风把人行道上一把伞吹翻了。基特看着这一幕，没什么同情。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what happens if Dev doesn't need him after all.",
+                "chinese": "问如果戴夫最后不需要他怎么办。",
+                "next": "ba"
+              },
+              {
+                "english": "Notice the graph paper sticking out of his bag and ask about it.",
+                "chinese": "注意到他包里露出的方格纸，问那是什么。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Kit pulls out his phone and types with one thumb, unhurried, like posting a letter.",
+                "chinese": "基特掏出手机，用一个大拇指慢慢打字，不慌不忙，像在寄一封信。"
+              },
+              {
+                "speaker": "npc",
+                "english": "'Thursday still on? Need the hand or not?' There. Sent. Now it's his problem to answer, not mine to guess.",
+                "chinese": "“周四还算数吗？还用不用人帮忙？”好了。发了。现在轮到他回，不用我猜了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He puts his phone face-down on the table and signals for a refill of his own cup.",
+                "chinese": "他把手机屏幕朝下放在桌上，示意给自己的杯子续杯。"
+              },
+              {
+                "speaker": "npc",
+                "english": "If he says yes, I carry boxes. If he says no, I do the box step in my kitchen and call it class. Either way, the square gets filled tonight.",
+                "chinese": "他说要，我就去搬箱子。他说不要，我就在厨房里练基本步，也算上课。反正今晚那个格子就会填上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Eleven days of guessing. One message. I do admire a problem that folds that fast.",
+                "chinese": "猜了十一天。一条消息就完。我很欣赏这种折得这么快的难题。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Kit considers this, then uncaps his pen and writes something small in the corner of the square.",
+                "chinese": "基特想了想，拔开笔帽，在格子的角落里写了点小字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "'Unconfirmed.' There. I wrote it down. That's me admitting the maybe was mine, not his debt.",
+                "chinese": "“未确认”。好了。我写下来了。这算我承认这个“可能”是我自己的事，不是欠他的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're right that he owes me nothing. But I said yes in my head, and my head keeps books. Ask my Thursdays. They'll testify.",
+                "chinese": "你说得对，他不欠我什么。但我心里已经答应了，而我心里记着账呢。问我的周四吧，它们会作证的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He closes the notebook properly this time and slides it into his jacket pocket, thumb finally out.",
+                "chinese": "这次他正经合上了本子，塞进外套口袋，拇指终于抽了出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "If he shows up, I'm there. If he doesn't, I'll fold the gap back into work and say nothing. That's the system. It's not a good system. It's just mine.",
+                "chinese": "他来，我就在。他不来，我就把那个空档折回工作里，什么都不说。这就是我的系统。不是个好系统。但是我的。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Kit looks out at the rain for a moment, then picks up the pen and draws a firm line through the blank square.",
+                "chinese": "基特朝雨里看了一会儿，然后拿起笔，在那个空白格上划了一道干脆的线。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Then I go to class. Done. That's a decision with clear conditions — he needs me, I'm there; he doesn't, I'm doing the box step with the pensioners.",
+                "chinese": "那我就去上课。完事。这是个条件清楚的决定——他需要我，我就在；不需要，我就和那群退休的人跳基本步。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He writes 'DANCE' in the square, in capitals, and underlines it once.",
+                "chinese": "他在格子里写了“舞课”，大写，下面划了一道线。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I nearly did it again, you know. Nearly built him a second task out of my own evening. You caught it before it set. Like taking a cake out early.",
+                "chinese": "你知道吗，我差点又犯了。差点又用自己的晚上给他搭出一个任务。你赶在它定型前抓住了。像提前把蛋糕取出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Attendance number six, possibly. The instructor's sad nod becomes a normal nod. Historic.",
+                "chinese": "可能就是第六次出勤。老师那悲伤的点头会变成普通的点头。历史性的时刻。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He pulls the graph paper out and flattens it on the table: a kite drawing in pencil, covered in scribbled numbers, one corner annotated 'more spine?'.",
+                "chinese": "他把方格纸抽出来在桌上摊平：一幅铅笔风筝图，写满了潦草的数字，一个角上标着“骨架再加一根？”。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My grandad's drafts. Shoebox of them. No instructions, just this — a box kite and his handwriting asking questions at me across fifty years.",
+                "chinese": "我爷爷的图纸。一鞋盒。没有说明，就这些——一只箱形风筝，还有他的字，隔着五十年在问我问题。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm not rebuilding them exactly. His notes are a starting point, not scripture. This one says 'more spine?' so I add a spine and see if it flies or folds.",
+                "chinese": "我不完全是照着重做。他的批注是起点，不是经文。这张写着“骨架再加一根？”，那我就加一根，看它是飞起来还是散架。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He folds the paper along its old creases, carefully, and puts it back in the bag, away from the rain-damp window.",
+                "chinese": "他沿着原来折痕把纸仔细折好，放回包里，离被雨打湿的窗户远远的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Everything else in my week runs on other people's clocks. This one doesn't. It gets done when the drafts say so. That's the whole rule.",
+                "chinese": "我这周里其他所有事都按别人的钟表走。就这件事不。图纸说了算，它才算完。规则就这一条。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "十九岁的开放麦助理基特，承诺从不落空，代价全记在自己头上：为朋友一句“可能要帮忙”，他默默空出周四，舞课一再让位。雨天咖啡馆里，那个没人确认的空白格被摊在桌上，四条路走向四种收场——发消息确认、标为未确认、干脆去跳舞、或摊开祖父的风筝图纸。他冷面自嘲，只损自己。",
+      "reunion": {
+        "titleZh": "绕在笔帽上的风筝线",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Same café, same rain on the glass. Kit has his bag open on the table, frowning at a length of kite line wound around a pen cap.",
+            "chinese": "还是那家咖啡馆，雨还是打在玻璃上。基特把包摊在桌上，皱着眉看一段缠在笔帽上的风筝线。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Don't ask how it got there. It's been riding around in my pocket for a fortnight, strangling a biro.",
+            "chinese": "别问它怎么跑到那儿去的。它在我口袋里转悠了两个星期，勒着一支圆珠笔。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He works the line loose a few centimetres at a time, patient as anything, then feeds it onto a wooden spool from his bag.",
+            "chinese": "他一次解开几厘米，耐心得很，然后把线绕进包里的一个木线轴上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Everything else in my week is a rush. This bit isn't. The drafts decide the pace, and today the drafts say: untangle the pen.",
+            "chinese": "我这周其他事都在赶。就这一件不赶。图纸说了算，今天图纸说：把笔解救出来。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The last loop slides free. He holds the spool up to the window light, checks it, and pockets it, satisfied.",
+            "chinese": "最后一圈滑脱了。他把线轴举到窗光下检查了一下，收进口袋，一脸满意。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Anyway — good rain today. Proper sideways. Hope you're not standing in it.",
+            "chinese": "总之——今天这雨下得好。正宗的横着下。希望你别站在里头。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Kit Draper",
+        "age": 19,
+        "gender": "male",
+        "regionId": "manchester",
+        "nationality": "British",
+        "occupation": "open-mic comedy host's assistant (runs the list, times acts, sets the room)",
+        "hobbies": [
+          "folk dance basics class",
+          "kite-making"
+        ],
+        "personality": "Kit has never once broken a commitment, which sounds admirable until you notice what it costs. Every promise gets honoured, and the price is always paid out of his own time: his Thursday folk dance class is the first thing sacrificed, so he's attended maybe six sessions since September. He keeps quiet gaps in his week for things friends mentioned offhandedly — a pint, a lift, a hand with a flat — and when they forget, he says nothing and quietly folds the gap back into work. He's decisive when it matters: booking cancellations, an act going over time, a drunk heckler. It's the small rituals where he turns stubborn. He teases himself about all of it, flatly, before anyone else can.",
+        "background": "Kit started at the open mic at sixteen hauling chairs for a host who's since moved to Leeds, and now runs the practical side: sign-ups, the timing light, telling drunk uncles no. His reliability is local legend — if Kit said it, it's happening. He was dragged to folk dance once by his nan and liked the footwork more than expected, though the class keeps losing his Thursdays to other people's emergencies. His grandad left half-finished kite drafts in a shoebox — graph paper, scribbled measurements, no instructions — and Kit works through them one at a time, currently on a box kite annotated only 'more spine?'. He's not trying to rebuild them exactly; the notes are a starting point, not scripture. The kite is the one thing he refuses to rush.",
+        "speechStyle": "short, flat sentences with deadpan self-teasing; states outcomes like facts rather than plans; never announces a favour, just mentions it already happened",
+        "hometown": "Salford, Greater Manchester",
+        "languages": [
+          "English"
+        ],
+        "birthday": "12-21",
+        "signature": "I said yes, so it's happening. My Thursday just isn't.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "a promise is a promise",
+            "other people getting to rely on him"
+          ],
+          "flaws": [
+            "pays for everyone's reliability out of his own time and calls it fine",
+            "holds silent space for things others forgot, and won't remind them"
+          ],
+          "boundaries": [
+            "won't break a commitment, even when he's the one who suffers",
+            "won't rush the kite — it gets done when the drafts say so"
+          ],
+          "conversationalHabits": [
+            "mentions favours already done instead of offering",
+            "reports his own sacrificed slots like a weather update"
+          ],
+          "anchorLines": [
+            "Dev needed a shift covered Tuesday, so my dance class moved to... no, it didn't move. It evaporated. These things happen.",
+            "I kept Saturday afternoon free because Priya mentioned a market trip three weeks ago. Did she mention it since? No. Is the afternoon still free? Also no — it's free, I just spent it differently.",
+            "Big decisions, no problem. Cancel an act, refund a ticket, done in a minute. But the timing light has to be the one with the red tape on it. I don't have a defence. It's just the light."
+          ]
+        }
+      }
+    },
+    "reasonZh": "只续NPC自己的杯子，避免替用户擅自点单；已出勤五次，再去应为第六次，与课程第七节区分。"
+  }
+]
