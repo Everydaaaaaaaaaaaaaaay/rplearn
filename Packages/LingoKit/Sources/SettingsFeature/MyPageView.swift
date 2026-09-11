@@ -4,6 +4,7 @@ import CoreKit
 import DesignSystem
 import DomainKit
 import PersistenceKit
+import PhotosUI
 import StoreKit
 import SwiftUI
 
@@ -20,6 +21,11 @@ public struct MyPageView: View {
     private let onOpenFavorites: @MainActor () -> Void
     private let onOpenSettings: @MainActor () -> Void
     private let onOpenMemory: @MainActor () -> Void
+
+    @Environment(\.userAvatar) private var userAvatar
+    @State private var selectedAvatar: PhotosPickerItem?
+    @State private var avatarError: String?
+    @State private var isSavingAvatar = false
 
     @State private var pendingUsage = false
     @State private var showsUsage = false
@@ -80,6 +86,22 @@ public struct MyPageView: View {
         }
         .background(Color.dsBackground.ignoresSafeArea())
         .task(id: reloadToken) { await reload() }
+        .task(id: selectedAvatar) {
+            guard let item = selectedAvatar, let userAvatar else { return }
+            isSavingAvatar = true
+            defer { isSavingAvatar = false }
+            do {
+                guard let data = try await item.loadTransferable(type: Data.self) else { return }
+                try Task.checkCancellation()
+                try await userAvatar.save(photoData: data)
+            } catch is CancellationError {
+            } catch {
+                avatarError = "头像保存失败：\(error.localizedDescription)"
+            }
+        }
+        .alert("未能更换头像", isPresented: Binding(
+            get: { avatarError != nil }, set: { if !$0 { avatarError = nil } }
+        )) { Button("好", role: .cancel) {} } message: { Text(avatarError ?? "") }
         .onDisappear(perform: sceneActions.cancel)
         .sheet(isPresented: $showsAccountPanel, onDismiss: {
             if pendingUsage { pendingUsage = false; showsUsage = true }
@@ -420,12 +442,31 @@ public struct MyPageView: View {
         .presentationDragIndicator(.visible)
     }
 
+    private func avatarPicker(size: CGFloat) -> some View {
+        let avatar = UserAvatar(name: presentation.displayName, size: size)
+        let saving = isSavingAvatar
+        return PhotosPicker(selection: $selectedAvatar, matching: .images) {
+            avatar
+                .overlay(alignment: .bottomTrailing) {
+                    Image(systemName: "camera.fill")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(Color.dsSkyDeep)
+                        .padding(6).background(.regularMaterial, in: Circle())
+                }
+                .overlay { if saving { ProgressView() } }
+        }
+        .buttonStyle(.plain)
+        .disabled(isSavingAvatar || userAvatar == nil)
+        .accessibilityLabel("从相册更换头像")
+        .accessibilityIdentifier("profile.avatarPicker")
+    }
+
     private var profileCard: some View {
         Group {
             if dynamicTypeSize.isAccessibilitySize {
                 VStack(alignment: .leading, spacing: DSSpacing.sm) {
                     HStack(spacing: DSSpacing.sm) {
-                        AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 60)
+                        avatarPicker(size: 60)
                         Text(presentation.displayName)
                             .font(.title2.bold())
                             .fixedSize(horizontal: false, vertical: true)
@@ -443,7 +484,7 @@ public struct MyPageView: View {
                 }
             } else {
                 HStack(spacing: DSSpacing.md) {
-                    AvatarBadge(name: presentation.displayName, tint: .dsSky, size: 68)
+                    avatarPicker(size: 68)
                     VStack(alignment: .leading, spacing: 5) {
                         Text(presentation.displayName)
                             .font(.title2.bold())
@@ -510,7 +551,7 @@ public struct MyPageView: View {
                                 .tint(.white)
                                 .frame(maxWidth: .infinity)
                         } else if billing.offeredProducts.isEmpty {
-                            Text("当前 App Store 账户暂无可购买方案。")
+                            Text(billing.catalogStatusMessage)
                                 .font(.footnote)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } else {
@@ -543,6 +584,11 @@ public struct MyPageView: View {
                                 .disabled(billing.operation != .idle)
                             }
                         }
+
+                        Button("重新加载方案") {
+                            Task { await billing.synchronize(showLoading: true) }
+                        }
+                        .disabled(billing.operation != .idle)
 
                         Button("恢复购买") {
                             Task {

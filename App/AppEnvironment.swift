@@ -1,6 +1,7 @@
 import BackendKit
 import BillingKit
 import CoreKit
+import DesignSystem
 import DictKit
 import DomainKit
 import Foundation
@@ -313,6 +314,7 @@ final class AppEnvironment {
 @MainActor
 final class AccountWorkspace {
     let userID: UUID
+    let userAvatar: UserAvatarStore
     let modelContainer: ModelContainer
     let accountCacheStore: AccountCacheStore
     let contentSyncStore: ContentSyncStore
@@ -344,6 +346,7 @@ final class AccountWorkspace {
         llm: any LLMClient
     ) {
         self.userID = userID
+        self.userAvatar = UserAvatarStore(accountID: userID)
         self.modelContainer = modelContainer
 
         let accountCacheStore = AccountCacheStore(modelContainer: modelContainer)

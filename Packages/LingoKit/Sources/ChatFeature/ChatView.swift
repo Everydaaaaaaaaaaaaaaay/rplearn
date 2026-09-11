@@ -619,7 +619,7 @@ public struct ChatView: View {
     @ViewBuilder
     private func outgoingAvatar(isVisible: Bool) -> some View {
         if isVisible {
-            AvatarBadge(name: "我", tint: Color.dsSkyDeep, size: 30)
+            UserAvatar(size: 30)
         } else {
             Color.clear
                 .frame(width: 30, height: 30)

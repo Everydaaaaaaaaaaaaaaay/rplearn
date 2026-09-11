@@ -2,6 +2,7 @@ import BackendKit
 import Foundation
 import Observation
 import PersistenceKit
+import StoreKit
 
 @MainActor
 @Observable
@@ -9,6 +10,20 @@ public final class BillingController {
     private struct PendingCommand: Codable {
         let createdAt: Date
         let id: UUID
+    }
+
+    public enum CatalogState: Equatable {
+        case notLoaded, loading, available, empty, failed
+    }
+    public private(set) var catalogState: CatalogState = .notLoaded
+    public var catalogStatusMessage: String {
+        switch catalogState {
+        case .notLoaded: "订阅方案尚未加载。"
+        case .loading: "正在加载订阅方案…"
+        case .available: ""
+        case .empty: "App Store 暂未返回可购买方案，请稍后重试。"
+        case .failed: "订阅方案加载未完成，请重新加载。"
+        }
     }
 
     public private(set) var entitlements: [BillingEntitlement] = []
@@ -67,6 +82,7 @@ public final class BillingController {
         updatesTask = nil
         activeUserID = nil
         products = []
+        catalogState = .notLoaded
         entitlements = []
         featureFlags = [:]
         tier = .free
@@ -76,17 +92,25 @@ public final class BillingController {
     }
 
     public func synchronize(showLoading: Bool = false) async {
-        guard activeUserID != nil else { return }
-        if showLoading {
-            operation = .loading
-        }
+        guard activeUserID != nil, operation == .idle else { return }
+        operation = .loading
+        catalogState = .loading
         do {
             try await refreshCatalogAndEntitlements()
             try await reconcileCurrentTransactions()
             try await refreshEntitlements()
             lastError = nil
         } catch {
-            lastError = error.localizedDescription
+            if catalogState == .loading { catalogState = .failed }
+            let nsError = error as NSError
+            let storeCancelled: Bool
+            if case StoreKitError.userCancelled = error { storeCancelled = true } else { storeCancelled = false }
+            if error is CancellationError || (nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled)
+                || storeCancelled {
+                lastError = nil
+            } else {
+                lastError = "订阅同步失败，请检查网络后重试。"
+            }
         }
         operation = .idle
     }
@@ -170,6 +194,7 @@ public final class BillingController {
             )
         }
         .sorted(by: Self.productOrder)
+        catalogState = offeredProducts.isEmpty ? .empty : .available
     }
 
     private func refreshEntitlements() async throws {

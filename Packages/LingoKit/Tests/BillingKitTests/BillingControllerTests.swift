@@ -128,6 +128,12 @@ struct BillingControllerTests {
     private actor FakeStorefront: StorefrontClient {
         private let transactions: [StorefrontTransaction]
         private(set) var finished: [UInt64] = []
+        private var cancelsCatalog = false
+        private var emptyCatalog = false
+        func configureCatalog(cancelled: Bool = false, empty: Bool = false) {
+            cancelsCatalog = cancelled
+            emptyCatalog = empty
+        }
 
         init(transactions: [StorefrontTransaction]) {
             self.transactions = transactions
@@ -142,7 +148,9 @@ struct BillingControllerTests {
         }
 
         func loadProducts(ids: Set<String>) async throws -> [StoreProductMetadata] {
-            ids.map {
+            if cancelsCatalog { throw CancellationError() }
+            if emptyCatalog { return [] }
+            return ids.map {
                 StoreProductMetadata(
                     displayName: "LingoTrip Pro",
                     displayPrice: "¥48.00",
@@ -245,6 +253,25 @@ struct BillingControllerTests {
         #expect(fixture.controller.tier == .free)
         #expect(await transport.submittedIdempotencyKeys.isEmpty)
         #expect(await storefront.finished.isEmpty)
+    }
+
+    @Test("目录取消不等于无商品，重试后可恢复")
+    @MainActor
+    func catalogCancellationCanRetry() async throws {
+        let userID = UUID()
+        let storefront = FakeStorefront(transactions: [])
+        await storefront.configureCatalog(cancelled: true)
+        let fixture = try makeController(userID: userID, transport: BillingTransport(), storefront: storefront)
+        await fixture.controller.activate(identity: AuthIdentity(sessionID: UUID(), userID: userID))
+        #expect(fixture.controller.catalogState == .failed)
+        #expect(fixture.controller.lastError == nil)
+        await storefront.configureCatalog()
+        await fixture.controller.synchronize(showLoading: true)
+        #expect(fixture.controller.catalogState == .available)
+        #expect(fixture.controller.offeredProducts.count == 1)
+        await storefront.configureCatalog(empty: true)
+        await fixture.controller.synchronize(showLoading: true)
+        #expect(fixture.controller.catalogState == .empty)
     }
 
     @MainActor

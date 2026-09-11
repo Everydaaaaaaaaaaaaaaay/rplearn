@@ -62,7 +62,9 @@ public struct UsageAccessView: View {
                     }
                     Section("订阅方案") {
                         if billing.offeredProducts.isEmpty {
-                            Text("当前暂无可购买商品，请稍后在账号页查看。")
+                            Text(billing.catalogStatusMessage)
+                            Button("重新加载方案") { Task { await billing.synchronize(showLoading: true) } }
+                                .disabled(billing.operation != .idle)
                         }
                         ForEach(billing.offeredProducts) { product in
                             Button {

@@ -133,6 +133,7 @@ struct RootView: View {
 
     var body: some View {
         launchContent
+            .environment(\.userAvatar, environment.workspace?.userAvatar)
             .fullScreenCover(isPresented: $showLondonEpisode) {
                 #if DEBUG
                 LondonEpisodeView(
