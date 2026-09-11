@@ -22,7 +22,7 @@ struct ActivityActionView: View {
     @State private var saved = false
     @State private var saveError: String?
     @State private var wordSelection: TokenSelection?
-    private let ink = Color(red: 0.10, green: 0.18, blue: 0.17)
+    private let ink = Color.dsSceneTextPrimary
 
     init(model: SocialEncounterModel, journey: ActivityJourneyCoordinator, deps: HomeDependencies, isVisible: Bool,
          onBack: @escaping () -> Void, onChat: @escaping (CharacterDTO) -> Void,
@@ -87,7 +87,7 @@ struct ActivityActionView: View {
         }
         .tint(ink)
         .scrollBounceBehavior(.basedOnSize)
-        .background(Color(red: 0.965, green: 0.958, blue: 0.936).ignoresSafeArea())
+        .background(Color.dsBackground.ignoresSafeArea())
         .accessibilityIdentifier(model.started ? "activities.result" : "activities.confirmation")
     }
 
@@ -262,8 +262,8 @@ struct ActivityActionView: View {
         Button(action: action) {
             HStack { Text(title); Spacer(); Image(systemName: "arrow.right") }
                 .font(.headline).padding(18).frame(maxWidth: .infinity)
-                .foregroundStyle(Color.dsHologramIvory)
-                .background(ink, in: RoundedRectangle(cornerRadius: 15))
+                .foregroundStyle(Color.white)
+                .background(Color.dsTravelNavy, in: RoundedRectangle(cornerRadius: 15))
         }.buttonStyle(DSSceneEntranceButtonStyle()).accessibilityIdentifier(id)
     }
 }

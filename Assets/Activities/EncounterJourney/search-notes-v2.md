@@ -25,3 +25,10 @@
 ## 尚未解决
 
 金斯敦仍需更温和、少车辆干扰的最终镜头。两城来源缺口已有技术候选，但十五城整片、运镜速度匹配、手机裁切和玻璃数字仍未验收；旧 New Orleans 13107072 地点证据仍待补足。没有安装运行影片。
+
+## 2026-09-12 补充排除与发布约束
+
+用户明确要求完成十五城实拍影片后才更新，不采用城市静图替代，也不单独安装主题修复。
+新增检索：RwHZKLAQlCY（Kingston Waterfront // Sunset // 60fps）提供 720p60，但元数据未提供可复用许可，未采用；s9hmCAuEocw 虽为 CC，说明明确是纽约州 Kingston 且仅 25 fps，排除；DP_6sybRbqY 为 CC、最高 30 fps，排除；CbyBYN7GAgA 不可访问。没有新增放行素材，V-01/02/03 保持开放。
+
+相遇界面已改用 DesignSystem 自适应背景/文字及固定深色主按钮。UI 测试通过（1 项，涵盖深浅两种系统外观），结果包：`/tmp/lingotrip-grammar-derived-20260911/VerificationResults/20260911T184210Z-22502.xcresult`。已查看剧情截图，深浅背景和正文正确切换；此结果不代表正式影片验收或真机安装。测试使用 XCUIDevice.appearance，原 AppleInterfaceStyle 启动参数没有实际切换外观，已替换，结束恢复原外观。

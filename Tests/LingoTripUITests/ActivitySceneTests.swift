@@ -2,9 +2,10 @@ import XCTest
 
 @MainActor
 final class ActivitySceneTests: XCTestCase {
-    private func launch(extra: [String: String] = [:]) -> XCUIApplication {
+    private func launch(extra: [String: String] = [:], appearance: String? = nil) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
+        if let appearance { XCUIDevice.shared.appearance = appearance == "Dark" ? .dark : .light }
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
         app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
         app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
@@ -58,6 +59,23 @@ final class ActivitySceneTests: XCTestCase {
             (status.value as? String ?? "").contains(text)
         }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, text)
+    }
+
+    func testEncounterAppearance() {
+        let originalAppearance = XCUIDevice.shared.appearance
+        defer { XCUIDevice.shared.appearance = originalAppearance }
+        for appearance in ["Dark", "Light"] {
+            let app = launch(appearance: appearance)
+            tap("activities.scene.park-seat", app: app)
+            attach("encounter-confirmation-\(appearance)", app: app)
+            tap("activities.action.start", app: app)
+            XCTAssertTrue(app.otherElements["activities.journey"].waitForExistence(timeout: 3))
+            attach("encounter-journey-\(appearance)", app: app)
+            XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 20))
+            attach("encounter-story-\(appearance)", app: app)
+            XCTAssertTrue(app.switches["自动播放台词"].exists)
+            app.terminate()
+        }
     }
 
     func testJourneyKeepsTabsAvailableAndCompletesOffscreen() {
