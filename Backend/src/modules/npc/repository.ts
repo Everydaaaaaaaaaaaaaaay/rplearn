@@ -1,4 +1,8 @@
-import { encounterWeight, weightedIndex } from "./encounter-weights.js";
+import {
+  balancedEncounterWeights,
+  encounterWeight,
+  weightedIndex,
+} from "./encounter-weights.js";
 import { randomInt } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import type { TransactionSql } from "postgres";
@@ -155,8 +159,10 @@ export class NpcRepository {
         candidates.length > 0 && this.draw(100) < (candidates.length >= 12 ? 95 : 75);
       const index = reuse
         ? weightedIndex(
-            candidates.map((candidate) =>
-              encounterWeight(candidate.encounters, candidate.days_since_seen),
+            balancedEncounterWeights(
+              candidates.map((candidate) =>
+                encounterWeight(candidate.encounters, candidate.days_since_seen),
+              ),
             ),
             this.draw(1_000_000_000) / 1_000_000_000,
           )

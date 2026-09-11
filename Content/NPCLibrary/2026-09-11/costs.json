@@ -1,0 +1,778 @@
+{
+  "currency": "CNY",
+  "usdCny": 7.2,
+  "actualKnownCNY": 0.37439928,
+  "unresolvedAttemptKeys": [
+    "plan-04"
+  ],
+  "unresolvedUpperCNY": 0.092423232,
+  "accountedUpperCNY": 0.466822512,
+  "callsDispatched": 24,
+  "receipts": [
+    {
+      "at": "2026-09-11T08:04:37.237Z",
+      "kind": "receipt",
+      "key": "plan-01",
+      "status": 200,
+      "ms": 38854,
+      "costUSD": 0.0010873,
+      "usage": {
+        "prompt_tokens": 1462,
+        "completion_tokens": 1736,
+        "total_tokens": 3198,
+        "cost": 0.0010873,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0010873,
+          "upstream_inference_prompt_cost": 0.0002193,
+          "upstream_inference_completions_cost": 0.000868
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 54,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789113839-3gLvSoKcsGjJ5YjaG70X"
+    },
+    {
+      "at": "2026-09-11T08:05:16.351Z",
+      "kind": "receipt",
+      "key": "plan-02",
+      "status": 200,
+      "ms": 39106,
+      "costUSD": 0.00143985,
+      "usage": {
+        "prompt_tokens": 3049,
+        "completion_tokens": 1965,
+        "total_tokens": 5014,
+        "cost": 0.00143985,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00143985,
+          "upstream_inference_prompt_cost": 0.00045735,
+          "upstream_inference_completions_cost": 0.0009825
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 107,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789113877-AEx7acYxgsTB9hqOUTqI"
+    },
+    {
+      "at": "2026-09-11T08:05:57.378Z",
+      "kind": "receipt",
+      "key": "plan-03",
+      "status": 200,
+      "ms": 41023,
+      "costUSD": 0.00175995,
+      "usage": {
+        "prompt_tokens": 4813,
+        "completion_tokens": 2076,
+        "total_tokens": 6889,
+        "cost": 0.00175995,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00175995,
+          "upstream_inference_prompt_cost": 0.00072195,
+          "upstream_inference_completions_cost": 0.001038
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 67,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789113916-PP205XOxw3wphFGvIkNi"
+    },
+    {
+      "at": "2026-09-11T08:07:54.707Z",
+      "kind": "receipt",
+      "key": "plan-v2-01",
+      "status": 200,
+      "ms": 13581,
+      "costUSD": 0.00093545,
+      "usage": {
+        "prompt_tokens": 1353,
+        "completion_tokens": 1465,
+        "total_tokens": 2818,
+        "cost": 0.00093545,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00093545,
+          "upstream_inference_prompt_cost": 0.00020295,
+          "upstream_inference_completions_cost": 0.0007325
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114062-WhiZPJcH6BwEzByRXz2C"
+    },
+    {
+      "at": "2026-09-11T08:10:09.276Z",
+      "kind": "receipt",
+      "key": "plan-v2-02",
+      "status": 200,
+      "ms": 21391,
+      "costUSD": 0.00120145,
+      "usage": {
+        "prompt_tokens": 2753,
+        "completion_tokens": 1577,
+        "total_tokens": 4330,
+        "cost": 0.00120145,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00120145,
+          "upstream_inference_prompt_cost": 0.00041295,
+          "upstream_inference_completions_cost": 0.0007885
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 25,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114189-VAoZvTSM0yHwFtTH5K3G"
+    },
+    {
+      "at": "2026-09-11T08:10:28.961Z",
+      "kind": "receipt",
+      "key": "plan-v2-03",
+      "status": 200,
+      "ms": 19680,
+      "costUSD": 0.00141345,
+      "usage": {
+        "prompt_tokens": 4223,
+        "completion_tokens": 1560,
+        "total_tokens": 5783,
+        "cost": 0.00141345,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00141345,
+          "upstream_inference_prompt_cost": 0.00063345,
+          "upstream_inference_completions_cost": 0.00078
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 76,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114209-9TuUUVCsnJ0A81Br1bqy"
+    },
+    {
+      "at": "2026-09-11T08:11:00.144Z",
+      "kind": "receipt",
+      "key": "plan-v2-04",
+      "status": 200,
+      "ms": 31174,
+      "costUSD": 0.00174085,
+      "usage": {
+        "prompt_tokens": 5639,
+        "completion_tokens": 1790,
+        "total_tokens": 7429,
+        "cost": 0.00174085,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00174085,
+          "upstream_inference_prompt_cost": 0.00084585,
+          "upstream_inference_completions_cost": 0.000895
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 117,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114229-aeQTg6hlG1eaVZl5jp7H"
+    },
+    {
+      "at": "2026-09-11T08:11:18.769Z",
+      "kind": "receipt",
+      "key": "plan-v2-05",
+      "status": 200,
+      "ms": 18620,
+      "costUSD": 0.00164047,
+      "usage": {
+        "prompt_tokens": 7223,
+        "completion_tokens": 1667,
+        "total_tokens": 8890,
+        "cost": 0.00164047,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 2304,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00164047,
+          "upstream_inference_prompt_cost": 0.00080697,
+          "upstream_inference_completions_cost": 0.0008335
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 21,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114260-pLGTd1pOU8lYIZCHKsND"
+    },
+    {
+      "at": "2026-09-11T08:11:35.239Z",
+      "kind": "receipt",
+      "key": "plan-v2-06",
+      "status": 200,
+      "ms": 16462,
+      "costUSD": 0.00161699,
+      "usage": {
+        "prompt_tokens": 8803,
+        "completion_tokens": 1699,
+        "total_tokens": 10502,
+        "cost": 0.00161699,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 4608,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00161699,
+          "upstream_inference_prompt_cost": 0.00076749,
+          "upstream_inference_completions_cost": 0.0008495
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 77,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114278-G16HOhlxsJVbEkWxfApy"
+    },
+    {
+      "at": "2026-09-11T08:11:58.496Z",
+      "kind": "receipt",
+      "key": "plan-v2-07",
+      "status": 200,
+      "ms": 23249,
+      "costUSD": 0.00185744,
+      "usage": {
+        "prompt_tokens": 10346,
+        "completion_tokens": 1717,
+        "total_tokens": 12063,
+        "cost": 0.00185744,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 4608,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00185744,
+          "upstream_inference_prompt_cost": 0.00099894,
+          "upstream_inference_completions_cost": 0.0008585
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 16,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114295-Ru06K7ZAnLmepmILRqWR"
+    },
+    {
+      "at": "2026-09-11T08:12:27.930Z",
+      "kind": "receipt",
+      "key": "plan-v2-08",
+      "status": 200,
+      "ms": 29428,
+      "costUSD": 0.00183981,
+      "usage": {
+        "prompt_tokens": 11975,
+        "completion_tokens": 1746,
+        "total_tokens": 13721,
+        "cost": 0.00183981,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 6912,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00183981,
+          "upstream_inference_prompt_cost": 0.00096681,
+          "upstream_inference_completions_cost": 0.000873
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 21,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114318-4GBsNlNmm2srSewaSOeg"
+    },
+    {
+      "at": "2026-09-11T08:12:49.660Z",
+      "kind": "receipt",
+      "key": "plan-v2-09",
+      "status": 200,
+      "ms": 21724,
+      "costUSD": 0.00179408,
+      "usage": {
+        "prompt_tokens": 13630,
+        "completion_tokens": 1711,
+        "total_tokens": 15341,
+        "cost": 0.00179408,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 9216,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00179408,
+          "upstream_inference_prompt_cost": 0.00093858,
+          "upstream_inference_completions_cost": 0.0008555
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 24,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114348-JQarhGiH6R4CpEuxRUTN"
+    },
+    {
+      "at": "2026-09-11T08:13:12.127Z",
+      "kind": "receipt",
+      "key": "plan-v2-10",
+      "status": 200,
+      "ms": 22456,
+      "costUSD": 0.00203943,
+      "usage": {
+        "prompt_tokens": 15239,
+        "completion_tokens": 1719,
+        "total_tokens": 16958,
+        "cost": 0.00203943,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 9216,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00203943,
+          "upstream_inference_prompt_cost": 0.00117993,
+          "upstream_inference_completions_cost": 0.0008595
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 23,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114369-YXineSl4ZzLWZMkEbxdm"
+    },
+    {
+      "at": "2026-09-11T08:13:32.272Z",
+      "kind": "receipt",
+      "key": "plan-v2-11",
+      "status": 200,
+      "ms": 20137,
+      "costUSD": 0.0019259,
+      "usage": {
+        "prompt_tokens": 16862,
+        "completion_tokens": 1558,
+        "total_tokens": 18420,
+        "cost": 0.0019259,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 11520,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0019259,
+          "upstream_inference_prompt_cost": 0.0011469,
+          "upstream_inference_completions_cost": 0.000779
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 30,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114392-FNhjAiH2wtWDF7eH2vK3"
+    },
+    {
+      "at": "2026-09-11T08:13:58.859Z",
+      "kind": "receipt",
+      "key": "plan-v2-12",
+      "status": 200,
+      "ms": 26582,
+      "costUSD": 0.00230507,
+      "usage": {
+        "prompt_tokens": 18323,
+        "completion_tokens": 2431,
+        "total_tokens": 20754,
+        "cost": 0.00230507,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 13824,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00230507,
+          "upstream_inference_prompt_cost": 0.00108957,
+          "upstream_inference_completions_cost": 0.0012155
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 914,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114412-nK6DOxcrpEkYbhqnhGoP"
+    },
+    {
+      "at": "2026-09-11T08:14:18.435Z",
+      "kind": "receipt",
+      "key": "plan-v2-13",
+      "status": 200,
+      "ms": 19571,
+      "costUSD": 0.00220797,
+      "usage": {
+        "prompt_tokens": 19759,
+        "completion_tokens": 1806,
+        "total_tokens": 21565,
+        "cost": 0.00220797,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 13824,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00220797,
+          "upstream_inference_prompt_cost": 0.00130497,
+          "upstream_inference_completions_cost": 0.000903
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 22,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114439-mUtq8rSYVcMJcEqpwddM"
+    },
+    {
+      "at": "2026-09-11T08:14:44.329Z",
+      "kind": "receipt",
+      "key": "plan-v2-14",
+      "status": 200,
+      "ms": 25888,
+      "costUSD": 0.00279124,
+      "usage": {
+        "prompt_tokens": 21454,
+        "completion_tokens": 3017,
+        "total_tokens": 24471,
+        "cost": 0.00279124,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 16128,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00279124,
+          "upstream_inference_prompt_cost": 0.00128274,
+          "upstream_inference_completions_cost": 0.0015085
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1279,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114458-jvKueNdAqbpIcK4dURzu"
+    },
+    {
+      "at": "2026-09-11T08:15:02.395Z",
+      "kind": "receipt",
+      "key": "plan-v2-15",
+      "status": 200,
+      "ms": 18047,
+      "costUSD": 0.00211256,
+      "usage": {
+        "prompt_tokens": 23106,
+        "completion_tokens": 1717,
+        "total_tokens": 24823,
+        "cost": 0.00211256,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 18432,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00211256,
+          "upstream_inference_prompt_cost": 0.00125406,
+          "upstream_inference_completions_cost": 0.0008585
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 83,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114484-2ABIsp4cJGHkYy23AQlW"
+    },
+    {
+      "at": "2026-09-11T08:15:26.358Z",
+      "kind": "receipt",
+      "key": "plan-v2-16",
+      "status": 200,
+      "ms": 23955,
+      "costUSD": 0.00302596,
+      "usage": {
+        "prompt_tokens": 24662,
+        "completion_tokens": 3077,
+        "total_tokens": 27739,
+        "cost": 0.00302596,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 18432,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00302596,
+          "upstream_inference_prompt_cost": 0.00148746,
+          "upstream_inference_completions_cost": 0.0015385
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1485,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114502-zvtz6MlRgX2jAcKnhD2i"
+    },
+    {
+      "at": "2026-09-11T08:15:47.953Z",
+      "kind": "receipt",
+      "key": "plan-v2-17",
+      "status": 200,
+      "ms": 21588,
+      "costUSD": 0.00235923,
+      "usage": {
+        "prompt_tokens": 26167,
+        "completion_tokens": 1845,
+        "total_tokens": 28012,
+        "cost": 0.00235923,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 20736,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00235923,
+          "upstream_inference_prompt_cost": 0.00143673,
+          "upstream_inference_completions_cost": 0.0009225
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 81,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114526-ttPZhgkhrt9Kvgq3PTk8"
+    },
+    {
+      "at": "2026-09-11T08:16:07.476Z",
+      "kind": "receipt",
+      "key": "plan-v2-18",
+      "status": 200,
+      "ms": 19514,
+      "costUSD": 0.00230365,
+      "usage": {
+        "prompt_tokens": 27843,
+        "completion_tokens": 1784,
+        "total_tokens": 29627,
+        "cost": 0.00230365,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 23040,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00230365,
+          "upstream_inference_prompt_cost": 0.00141165,
+          "upstream_inference_completions_cost": 0.000892
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 23,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114548-kvzM6KvPkcRTrpOr2TWH"
+    },
+    {
+      "at": "2026-09-11T08:16:32.022Z",
+      "kind": "receipt",
+      "key": "plan-v2-19",
+      "status": 200,
+      "ms": 24537,
+      "costUSD": 0.0025492,
+      "usage": {
+        "prompt_tokens": 29530,
+        "completion_tokens": 1769,
+        "total_tokens": 31299,
+        "cost": 0.0025492,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 23040,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0025492,
+          "upstream_inference_prompt_cost": 0.0016647,
+          "upstream_inference_completions_cost": 0.0008845
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 18,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114567-oVwyuITV5UGMcDZRNF7i"
+    },
+    {
+      "at": "2026-09-11T08:18:08.330Z",
+      "kind": "receipt",
+      "key": "global-plan-v2",
+      "status": 200,
+      "ms": 72274,
+      "costUSD": 0.0100526,
+      "usage": {
+        "prompt_tokens": 33684,
+        "completion_tokens": 10000,
+        "total_tokens": 43684,
+        "cost": 0.0100526,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0100526,
+          "upstream_inference_prompt_cost": 0.0050526,
+          "upstream_inference_completions_cost": 0.005
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6593,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "provider": "Parasail",
+      "requestId": "gen-1789114617-ELKjWwYCzmAkTnNTLJUr"
+    }
+  ],
+  "notes": [
+    "Planning and global review only; no 190-person story generation occurred.",
+    "Rejected v1 planning and truncated global review are included.",
+    "The stopped plan-04 has no returned receipt and retains its conservative upper bound.",
+    "This excludes the earlier ten-person pilot and Codex usage."
+  ]
+}

@@ -4,6 +4,19 @@ export function encounterWeight(encounters: number, daysSinceSeen: number): numb
   return Math.max(0.02, 1 / (1 + Math.max(0, encounters) * recent));
 }
 
+/** Reserve 40% of selection mass for uniform exploration within the eligible pool.
+ * Each candidate therefore has probability >= 0.4 / N, even after many meetings.
+ * Remaining mass retains scene-fit/recency preferences; this never creates eligibility.
+ */
+export function balancedEncounterWeights(weights: readonly number[]): number[] {
+  if (weights.length === 0) return [];
+  const safe = weights.map((weight) =>
+    Number.isFinite(weight) ? Math.max(0.02, Math.min(weight, 1e6)) : 0.02,
+  );
+  const mean = safe.reduce((sum, weight) => sum + weight, 0) / safe.length;
+  return safe.map((weight) => 0.6 * weight + 0.4 * mean);
+}
+
 export function weightedIndex(
   weights: readonly number[],
   roll: number,
