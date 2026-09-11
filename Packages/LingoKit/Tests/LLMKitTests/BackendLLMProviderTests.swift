@@ -309,6 +309,28 @@ struct BackendLLMProviderTests {
         #expect(body["apiKey"] == nil)
     }
 
+    @Test("schema 键顺序稳定且置于可变上下文之前")
+    func stableSchemaPrefix() async throws {
+        let transport = Transport()
+        let provider = makeProvider(transport: transport)
+        var prefixes: [String] = []
+        for index in 0..<3 {
+            let schema: JSONValue = index % 2 == 0
+                ? ["type": "object", "properties": ["a": ["type": "string"], "b": ["type": "number"]]]
+                : ["properties": ["b": ["type": "number"], "a": ["type": "string"]], "type": "object"]
+            _ = try await provider.complete(LLMRequest(task: .coachReview, tier: .fast,
+                system: "DYNAMIC \(index)", messages: [.user("turn \(index)")],
+                responseFormat: .jsonSchema(name: "review", schema: schema)))
+            let body = try #require(await transport.aiBodies.last)
+            let messages = try #require(body["messages"]?.value as? [[String: Any]])
+            let system = try #require(messages.first?["content"] as? String)
+            #expect(system.contains("JSON Schema"))
+            #expect(system.hasSuffix("DYNAMIC \(index)"))
+            prefixes.append(system.components(separatedBy: "DYNAMIC")[0])
+        }
+        #expect(Set(prefixes).count == 1)
+    }
+
     @Test("JSON schema is constrained inline and stream events remain incremental")
     func schemaAndStream() async throws {
         let transport = Transport()

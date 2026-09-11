@@ -130,7 +130,7 @@ struct PromptBuilderTests {
         #expect((learner.nickname?.count ?? 0) <= 40)
     }
 
-    @Test("记忆段落会注入，最终回复契约保持在生成前的末尾位置")
+    @Test("固定回复契约位于可变时间和记忆之前以复用输入缓存")
     func memorySections() {
         let prompt = PromptBuilder.roleplaySystemPrompt(
             card: card,
@@ -138,7 +138,9 @@ struct PromptBuilderTests {
             memorySections: ["[Things you remember]\n- user likes cats"]
         )
         #expect(prompt.contains("[Things you remember]\n- user likes cats"))
-        #expect(prompt.hasSuffix("before any optional quiz block."))
+        #expect(prompt.contains("before any optional quiz block."))
+        #expect(prompt.hasSuffix("- user likes cats"))
+        #expect(prompt.range(of: "## Final reply contract")!.lowerBound < prompt.range(of: "## Trusted present-time context")!.lowerBound)
     }
 
     @Test("多维关系状态会作为私有连续信号注入且禁止公开分数")

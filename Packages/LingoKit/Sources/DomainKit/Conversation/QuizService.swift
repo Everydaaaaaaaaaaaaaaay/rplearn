@@ -147,7 +147,7 @@ public enum QuizService {
     /// 答对奖励金币。
     public static let correctReward = 20
 
-    private static let schema: JSONValue = [
+    static let schema: JSONValue = [
         "type": "object",
         "properties": [
             "question": ["type": "string"],

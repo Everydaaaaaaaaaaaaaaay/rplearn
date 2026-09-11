@@ -557,11 +557,13 @@ public actor ChatStore {
 
     // MARK: - 语境出题
 
-    /// 出题成功：把 quiz 挂到该助手消息，并清零本会话的 turnsSinceQuiz。
-    public func attachQuiz(messageID: UUID, quizJSON: String, conversationID: UUID) throws {
+    /// 后台出题已在派发时重置计数，可保留等待期间新增的回合。
+    public func attachQuiz(
+        messageID: UUID, quizJSON: String, conversationID: UUID, resetCounter: Bool = true
+    ) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.quizJSON = quizJSON
-        if let conversation = try fetchConversation(id: conversationID) {
+        if resetCounter, let conversation = try fetchConversation(id: conversationID) {
             conversation.turnsSinceQuiz = 0
             try journal(conversation)
         }

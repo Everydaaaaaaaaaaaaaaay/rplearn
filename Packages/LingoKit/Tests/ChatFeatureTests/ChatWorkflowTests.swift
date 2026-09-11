@@ -16,6 +16,7 @@ import Testing
 struct ChatWorkflowTests {
     private actor Provider: LLMProvider {
         var response: String
+        var reviewResponse: String
         var fails: Bool
         var streamDelayMilliseconds: Int
         private(set) var translations = 0
@@ -23,9 +24,11 @@ struct ChatWorkflowTests {
         private(set) var streamedMessages: [LLMMessage] = []
         init(
             response: String = "A complete answer.",
+            reviewResponse: String = "{\"has_issues\":false,\"issues\":[]}",
             fails: Bool = false,
             streamDelayMilliseconds: Int = 0
         ) {
+            self.reviewResponse = reviewResponse
             self.response = response
             self.fails = fails
             self.streamDelayMilliseconds = streamDelayMilliseconds
@@ -37,7 +40,7 @@ struct ChatWorkflowTests {
                 translations += 1
                 return "完整的翻译。"
             }
-            return "{\"has_issues\":false,\"issues\":[]}"
+            return reviewResponse
         }
         func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
             requestedTasks.append(request.task)
@@ -149,8 +152,32 @@ struct ChatWorkflowTests {
         try await Task.sleep(for: .milliseconds(80))
         let tasks = await provider.tasks()
         #expect(tasks.first == .conversation)
-        #expect(tasks.dropFirst().allSatisfy { $0 == .coachReview })
+        #expect(tasks == [.conversation, .coachReview])
         #expect(f.model.messages.contains { $0.role == .assistant })
+    }
+
+    @Test("到期小测与点评共用一次请求，题目保存到 NPC 消息")
+    func quizSharesBackgroundReview() async throws {
+        let provider = Provider(reviewResponse: #"{"coach_review":{"has_issues":false,"issues":[]},"relationship":{"warmth":0,"responsiveness":0,"respect":0,"empathy":0,"reciprocity":0,"disclosure":0,"resonance":0,"engagement":0,"boundary_harm":0,"repair":0,"significance":0,"confidence":0.8,"reason_zh":""},"growth":null,"quiz":{"question":"Choose the greeting","options":["Hello","Blue","Train","Book"],"answer":0,"explanation_zh":"Hello 是问候语"}}"#)
+        let f = try await fixture(provider)
+        _ = try await f.deps.economyStore.updateProfile { $0.quizGloballyEnabled = true }
+        let conversation = try #require(f.model.conversation)
+        for _ in 0..<9 {
+            _ = try await f.deps.chatStore.appendAssistantReply(conversationID: conversation.id, texts: ["Hello there."])
+        }
+        f.model.draft = "Hello, how are you?"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        for _ in 0..<50 {
+            let saved = try await f.deps.chatStore.messages(conversationID: conversation.id)
+            if saved.contains(where: { $0.quizJSON != nil }) { break }
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        let saved = try await f.deps.chatStore.messages(conversationID: conversation.id)
+        #expect(await provider.tasks() == [.conversation, .coachReview])
+        let target = try #require(saved.last(where: { $0.role == .assistant }))
+        #expect(QuizService.decode(fromJSON: target.quizJSON)?.answer == 0)
+        #expect(try await f.deps.chatStore.conversation(id: conversation.id)?.turnsSinceQuiz == 0)
     }
 
     @Test("退出或重启后会从未回复的最后一条用户消息恢复同一回复")

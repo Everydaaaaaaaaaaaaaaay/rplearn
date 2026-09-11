@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { setTimeout as delay } from "node:timers/promises";
 import { z } from "zod";
 import type { RuntimeConfig } from "../../../config/env.js";
@@ -118,6 +119,13 @@ function protocolError(cause?: unknown): AppError {
 function requestBody(request: AiProviderRequest, stream: boolean): unknown {
   return {
     ...request.route.providerOptions,
+    // Opaque, stable per user/task/model. Dynamic opening messages must not move
+    // an ongoing workflow between providers and discard a warm prefix cache.
+    session_id: createHash("sha256")
+      .update(
+        `lingotrip-cache-v1:${request.userReference}:${request.route.task}:${request.route.model}`,
+      )
+      .digest("hex"),
     max_tokens: request.maxOutputTokens,
     messages: request.messages,
     model: request.route.model,

@@ -263,14 +263,16 @@ public struct BackendLLMProvider: LLMProvider {
         case .text:
             responseFormat = "text"
         case .jsonSchema(let name, let schema):
-            let schemaData = try JSONEncoder().encode(schema)
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys]
+            let schemaData = try encoder.encode(schema)
             let schemaText = String(decoding: schemaData, as: UTF8.self)
-            systemParts.append(
+            systemParts.insert(
                 """
                 Return only one JSON object matching schema "\(name)". Do not add Markdown or explanation.
                 JSON Schema:
                 \(schemaText)
-                """
+                """, at: 0
             )
             responseFormat = "json_object"
         }

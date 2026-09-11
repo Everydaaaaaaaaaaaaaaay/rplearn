@@ -327,36 +327,40 @@ public final class ChatViewModel {
     /// 一次后台调用同时完成语言点评与关系信号分析，避免每条消息额外消耗一轮模型请求。
     private func runInteractionReview(
         for message: MessageDTO,
-        source: RelationshipEventRecord.Source
+        source: RelationshipEventRecord.Source,
+        quizTarget: MessageDTO? = nil,
+        quizConversationID: UUID? = nil
     ) {
         let relationship = RelationshipService(llm: deps.llm, rosterStore: deps.rosterStore)
         let chatStore = deps.chatStore
         let character = character
         // 点评延后到主回复之后执行，但输入语境必须停在这条用户消息，不能把后生成的回复倒灌到它前面。
         let history = messages.filter { $0.orderIndex <= message.orderIndex }
-        let fallbackCoach = CoachService(llm: deps.llm)
+        let quizLevel = quizTarget == nil ? nil : learnerDifficulty
+        let economyStore = deps.economyStore
         Task(priority: .utility) { [weak self] in
-            let review: CoachReview
+            let result: InteractionReview
             do {
-                review = try await relationship.reviewAndApply(
-                    character: character,
-                    history: history,
-                    userMessage: message,
-                    source: source
+                result = try await relationship.reviewInteractionAndApply(
+                    character: character, history: history, userMessage: message,
+                    source: source, quizLevel: quizLevel
                 )
             } catch {
-                if case LLMError.accessRestricted = error {
-                    // 辅助任务没有剩余额度时只记录本地互动，不再追加第二次教练请求。
-                    try? await relationship.recordContact(characterID: character.id, message: message)
-                    return
-                }
-                Log.app.warning("关系互动审阅失败，回退语言点评：\(error.localizedDescription)")
+                Log.app.warning("互动审阅失败，本轮跳过辅助点评：\(error.localizedDescription)")
                 try? await relationship.recordContact(characterID: character.id, message: message)
-                guard let fallback = try? await fallbackCoach.review(userText: message.text) else { return }
-                review = fallback
+                return
             }
-            guard review.hasIssues, let json = CoachService.encode(review) else { return }
-            try? await chatStore.setCoachReview(messageID: message.id, json: json)
+            if result.coachReview.hasIssues, let json = CoachService.encode(result.coachReview) {
+                try? await chatStore.setCoachReview(messageID: message.id, json: json)
+            }
+            if let target = quizTarget, let conversationID = quizConversationID,
+               let quiz = result.quiz, quiz.isValid,
+               (try? await economyStore.profile().quizGloballyEnabled) == true,
+               let conversation = try? await chatStore.conversation(id: conversationID),
+               !conversation.quizOptOut, let json = QuizService.encode(quiz) {
+                try? await chatStore.attachQuiz(messageID: target.id, quizJSON: json,
+                    conversationID: conversationID, resetCounter: false)
+            }
             await self?.reloadMessages()
         }
     }
@@ -686,32 +690,16 @@ public final class ChatViewModel {
                 try await deps.chatStore.deleteMessage(messageID: replacedMessageID)
                 messages.removeAll { $0.id == replacedMessageID }
             }
-            // 主对话已经完成并结算后，才允许低优先级学习辅助申请额度。
-            // 额度不足时这些任务会静默跳过，但绝不会反过来阻断 NPC 回复。
-            if let userMessage = messages.first(where: { $0.id == plan.userMessageID }) {
-                let source: RelationshipEventRecord.Source = userMessage.kind == .voice
-                    ? .voiceChat
-                    : .textChat
-                runInteractionReview(for: userMessage, source: source)
-            }
-            let quiz = quizRequested
-                ? try? await QuizService.generate(
-                    history: messages,
-                    learnerDifficulty: learnerDifficulty,
-                    using: deps.llm
-                )
-                : nil
-            if let assistantMessage = assistantMessages.last,
-               let quiz,
-               let json = QuizService.encode(quiz) {
-                try? await deps.chatStore.attachQuiz(
-                    messageID: assistantMessage.id, quizJSON: json, conversationID: conversation.id
-                )
-                quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
-            } else if quizRequested {
-                // 指令已发但没解析出 quiz：清零计数，避免每轮重复追加出题指令。
+            // 小测与点评共用后台请求，失败不追加调用，也不阻断已完成的回复。
+            if quizRequested {
                 try? await deps.chatStore.resetQuizCounter(conversationID: conversation.id)
                 quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
+            }
+            if let userMessage = messages.first(where: { $0.id == plan.userMessageID }) {
+                let source: RelationshipEventRecord.Source = userMessage.kind == .voice ? .voiceChat : .textChat
+                runInteractionReview(for: userMessage, source: source,
+                    quizTarget: quizRequested ? assistantMessages.last : nil,
+                    quizConversationID: conversation.id)
             }
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）

@@ -71,7 +71,6 @@ public enum PromptBuilder {
             """
         )
 
-        sections.append(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: currentDate))
 
         sections.append(
             """
@@ -173,16 +172,6 @@ public enum PromptBuilder {
         if let guidance {
             sections.append(guidance)
         }
-        if let relationshipContext, !relationshipContext.isEmpty {
-            sections.append(relationshipContext)
-        }
-        if let growthContext, !growthContext.isEmpty {
-            sections.append(growthContext)
-        }
-        sections.append(contentsOf: memorySections)
-        if let conversationTimingContext, !conversationTimingContext.isEmpty {
-            sections.append(conversationTimingContext)
-        }
         sections.append(
             """
             ## Silent continuity check before every reply
@@ -229,6 +218,19 @@ public enum PromptBuilder {
         }
         if quizRequested {
             sections.append(QuizService.promptInstruction)
+        }
+
+        // Keep the reusable prefix before time, relationship, retrieved memory and turn-specific context.
+        sections.append(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: currentDate))
+        if let relationshipContext, !relationshipContext.isEmpty {
+            sections.append(relationshipContext)
+        }
+        if let growthContext, !growthContext.isEmpty {
+            sections.append(growthContext)
+        }
+        sections.append(contentsOf: memorySections)
+        if let conversationTimingContext, !conversationTimingContext.isEmpty {
+            sections.append(conversationTimingContext)
         }
 
         return sections

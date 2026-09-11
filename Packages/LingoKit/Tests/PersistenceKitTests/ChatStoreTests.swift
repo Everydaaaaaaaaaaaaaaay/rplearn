@@ -27,6 +27,21 @@ struct ChatStoreTests {
         )
     }
 
+    @Test("延迟返回的小测保留等待期间新增的出题计数")
+    func delayedQuizPreservesNewTurns() async throws {
+        let (chat, roster) = try makeStores()
+        let characterID = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let messages = try await chat.appendAssistantReply(conversationID: conversation.id, texts: ["Hello"])
+        let target = try #require(messages.last)
+        try await chat.resetQuizCounter(conversationID: conversation.id)
+        _ = try await chat.appendAssistantReply(conversationID: conversation.id, texts: ["Another turn"])
+        try await chat.attachQuiz(messageID: target.id, quizJSON: "{}", conversationID: conversation.id, resetCounter: false)
+        #expect(try await chat.conversation(id: conversation.id)?.turnsSinceQuiz == 1)
+        try await chat.attachQuiz(messageID: target.id, quizJSON: "{}", conversationID: conversation.id)
+        #expect(try await chat.conversation(id: conversation.id)?.turnsSinceQuiz == 0)
+    }
+
     @Test("同一角色重复 open 返回同一会话")
     func openConversationReuses() async throws {
         let (chat, roster) = try makeStores()

@@ -45,6 +45,36 @@ function request(): AiProviderRequest {
 }
 
 describe("OpenRouter client", () => {
+  it("keeps sticky routing stable across turns and isolates users, tasks and models", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockImplementation(() =>
+      Promise.resolve(
+        Response.json({
+          choices: [{ message: { content: "OK" } }],
+          model: route.model,
+          usage: { prompt_tokens: 5, completion_tokens: 1, total_tokens: 6 },
+        }),
+      ),
+    );
+    const client = createOpenRouterClient(config(), fetchMock);
+    const base = request();
+    for (const item of [
+      base,
+      { ...base, messages: [{ role: "user" as const, content: "A different turn" }] },
+      { ...base, userReference: "another-user" },
+      { ...base, route: { ...route, task: "conversation" as const } },
+      { ...base, route: { ...route, model: "another/model" } },
+    ])
+      await client.complete(item);
+    const ids = fetchMock.mock.calls.map(([, init]) => {
+      if (typeof init?.body !== "string") throw new Error("missing body");
+      return (JSON.parse(init.body) as { session_id: string }).session_id;
+    });
+    expect(ids[0]).toMatch(/^[a-f0-9]{64}$/);
+    expect(ids[1]).toBe(ids[0]);
+    expect(new Set(ids).size).toBe(4);
+    expect(ids[0]).not.toContain(base.userReference);
+  });
+
   it("loads and normalizes the public model catalog", async () => {
     const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
       Response.json({

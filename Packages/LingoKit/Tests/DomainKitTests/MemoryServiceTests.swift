@@ -64,6 +64,38 @@ struct MemoryServiceTests {
 
     private let factsJSON = #"{"memories":[{"content":"Friend supports Arsenal","importance":3},{"content":"Friend plans a trip to Paris","importance":4}]}"#
 
+    @Test("同一会话压缩互斥，失败冷却后允许重试")
+    func compressionGate() async {
+        let gate = MemoryCompressionGate()
+        let id = UUID(), other = UUID(), now = Date()
+        #expect(await gate.begin(id, at: now))
+        #expect(!(await gate.begin(id, at: now)))
+        #expect(await gate.begin(other, at: now))
+        await gate.finish(id, succeeded: false, at: now)
+        #expect(!(await gate.begin(id, at: now.addingTimeInterval(30))))
+        #expect(await gate.begin(id, at: now.addingTimeInterval(61)))
+        await gate.finish(id, succeeded: true, at: now)
+        #expect(await gate.begin(id, at: now.addingTimeInterval(62)))
+    }
+
+    @Test("本地过滤重复记忆，同时保留否定和主客体变化")
+    func exactFactDeduplication() async throws {
+        let fixture = try await makeFixture()
+        try await fill(fixture, messageCount: 25)
+        try await fixture.memoryStore.addMemories(characterID: fixture.characterID, tier: .short,
+            facts: [.init(content: "Alice likes Bob", importance: 4)], sourceUpToIndex: 0)
+        let mock = MockLLMProvider(completeHandler: { _ in
+            #"{"memories":[{"content":"Alice likes Bob","importance":4},{"content":"Bob likes Alice","importance":4},{"content":"Bob likes Alice","importance":4},{"content":"Alice does not like Bob","importance":4}]}"#
+        })
+        let service = MemoryService(llm: mock, chatStore: fixture.chatStore, memoryStore: fixture.memoryStore)
+        await service.compressIfNeeded(conversationID: fixture.conversationID, characterName: "Memo")
+        let memories = try await fixture.memoryStore.memories(characterID: fixture.characterID, tier: .short)
+        #expect(memories.count == 3)
+        let context = await service.memorySections(characterID: fixture.characterID)
+        #expect(context.joined().contains("Bob likes Alice"))
+        #expect(context.joined().contains("Alice does not like Bob"))
+    }
+
     @Test("达到 24 条未压缩消息触发压缩并推进游标")
     func triggersAtThreshold() async throws {
         let fixture = try await makeFixture()
@@ -333,7 +365,7 @@ struct MemoryServiceTests {
     @Test("short 超配额合并进 mid（Free shortMid=8）")
     func shortOverflowMergesToMid() async throws {
         let fixture = try await makeFixture()
-        try await seedShorts(fixture, count: 12) // 溢出 4（≥3）
+        try await seedShorts(fixture, count: 14) // 溢出 6，合批后再整理
         let midJSON = #"{"memories":[{"content":"They chatted a lot about hobbies","importance":3}]}"#
         let mock = MockLLMProvider(completeHandler: { _ in midJSON })
         let service = MemoryService(
@@ -344,15 +376,15 @@ struct MemoryServiceTests {
 
         let shortCount = try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .short)
         let mids = try await fixture.memoryStore.memories(characterID: fixture.characterID, tier: .mid)
-        #expect(shortCount == 8) // 溢出的 4 条被合并删除
+        #expect(shortCount == 8) // 溢出的 6 条被合并删除
         #expect(mids.count == 1)
         #expect(mids.first?.content == "They chatted a lot about hobbies")
     }
 
-    @Test("short 溢出不足 3 条不触发合并")
+    @Test("short 溢出不足 6 条不触发合并")
     func smallOverflowNoMerge() async throws {
         let fixture = try await makeFixture()
-        try await seedShorts(fixture, count: 10) // 溢出 2（<3）
+        try await seedShorts(fixture, count: 10) // 溢出 2，暂不发请求
         let mock = MockLLMProvider(completeHandler: { _ in
             Issue.record("不应调用 LLM 合并")
             return "{}"

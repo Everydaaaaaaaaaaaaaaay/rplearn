@@ -1,0 +1,275 @@
+{
+  "route": {
+    "model": "z-ai/glm-5.3-flash",
+    "provider_options": {
+      "provider": {
+        "require_parameters": true
+      }
+    },
+    "temperature": 0.8
+  },
+  "results": [
+    {
+      "group": "baseline",
+      "turn": 1,
+      "id": "gen-1789085415-cknVX4VnXIjHLxgl0n4B",
+      "provider": "Relace",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 5395,
+      "usage": {
+        "prompt_tokens": 2069,
+        "completion_tokens": 120,
+        "total_tokens": 2189,
+        "cost": 0.00022221,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00022221,
+          "upstream_inference_prompt_cost": 0.00018621,
+          "upstream_inference_completions_cost": 3.6e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 133,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "length"
+    },
+    {
+      "group": "baseline",
+      "turn": 2,
+      "id": "gen-1789085420-DPoxDCvcyexztY4Kw5Wj",
+      "provider": "StreamLake",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 2492,
+      "usage": {
+        "prompt_tokens": 2185,
+        "completion_tokens": 120,
+        "total_tokens": 2305,
+        "cost": 0.000348975,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.000348975,
+          "upstream_inference_prompt_cost": 0.000294975,
+          "upstream_inference_completions_cost": 5.4e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 118,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "length"
+    },
+    {
+      "group": "baseline",
+      "turn": 3,
+      "id": "gen-1789085422-7PnK717OxOE2Ebqry9Gj",
+      "provider": "Relace",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 2121,
+      "usage": {
+        "prompt_tokens": 2202,
+        "completion_tokens": 120,
+        "total_tokens": 2322,
+        "cost": 0.00023418,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00023418,
+          "upstream_inference_prompt_cost": 0.00019818,
+          "upstream_inference_completions_cost": 3.6e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 137,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "length"
+    },
+    {
+      "group": "baseline",
+      "turn": 4,
+      "id": "gen-1789085424-mduaLcK036VnwpK3QZQc",
+      "provider": "DeepInfra",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 1711,
+      "usage": {
+        "prompt_tokens": 2231,
+        "completion_tokens": 20,
+        "total_tokens": 2251,
+        "cost": 0.000172325,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.000172325,
+          "upstream_inference_prompt_cost": 0.000167325,
+          "upstream_inference_completions_cost": 5e-06
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 11,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "stop"
+    },
+    {
+      "group": "optimized",
+      "turn": 1,
+      "id": "gen-1789085426-bDzY7LAgqQeZ6v5LSDXv",
+      "provider": "Wafer",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 1572,
+      "usage": {
+        "prompt_tokens": 2069,
+        "completion_tokens": 40,
+        "total_tokens": 2109,
+        "cost": 0.0002209,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0002209,
+          "upstream_inference_prompt_cost": 0.0002069,
+          "upstream_inference_completions_cost": 1.4e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 8,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "stop"
+    },
+    {
+      "group": "optimized",
+      "turn": 2,
+      "id": "gen-1789085428-hV7Bm3wjvv446BVVOHwY",
+      "provider": "Wafer",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 1582,
+      "usage": {
+        "prompt_tokens": 2185,
+        "completion_tokens": 32,
+        "total_tokens": 2217,
+        "cost": 0.0002297,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0002297,
+          "upstream_inference_prompt_cost": 0.0002185,
+          "upstream_inference_completions_cost": 1.12e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "stop"
+    },
+    {
+      "group": "optimized",
+      "turn": 3,
+      "id": "gen-1789085429-UVuZTQkhwMrbXwcxnuey",
+      "provider": "Wafer",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 1252,
+      "usage": {
+        "prompt_tokens": 2202,
+        "completion_tokens": 20,
+        "total_tokens": 2222,
+        "cost": 7.36e-05,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 1920,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 7.36e-05,
+          "upstream_inference_prompt_cost": 6.66e-05,
+          "upstream_inference_completions_cost": 7e-06
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "stop"
+    },
+    {
+      "group": "optimized",
+      "turn": 4,
+      "id": "gen-1789085431-FLdIAuZysGGh7QuOOpP3",
+      "provider": "Wafer",
+      "model": "z-ai/glm-5.3-flash",
+      "elapsedMs": 1399,
+      "usage": {
+        "prompt_tokens": 2231,
+        "completion_tokens": 32,
+        "total_tokens": 2263,
+        "cost": 8.07e-05,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 1920,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 8.07e-05,
+          "upstream_inference_prompt_cost": 6.95e-05,
+          "upstream_inference_completions_cost": 1.12e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 16,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "fixtureHashes": {
+    "baseline": "2db1668bec178b76ed7836a6d0ebec7641aafb318831764d1cd4be064f935f39",
+    "optimized": "889cf3d94c2d74982aba7ff98b54f5bfae5a56b530db1357fc212fd47f817348"
+  },
+  "method": "Four fixed synthetic product conversations per arm, actual PromptBuilder export; baseline first then optimized, same GLM model, temperature 0.8, max_tokens 120; no provider pinning or artificial padding. Direct provider calls, no user ledger.",
+  "date": "2026-09-11"
+}

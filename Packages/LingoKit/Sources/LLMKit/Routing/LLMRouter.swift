@@ -24,12 +24,15 @@ public final class LLMRouter: LLMClient, Sendable {
 
     public func complete(_ request: LLMRequest) async throws -> String {
         let provider = try await currentClient()
+        // Automatic learning tasks can retry on a later interaction; never amplify
+        // one failed background review into several paid provider attempts.
+        let retryLimit = [.coachReview, .memorySummary, .quiz].contains(request.task) ? 0 : maxRetries
         var attempt = 0
         while true {
             do {
                 return try await provider.complete(request)
             } catch {
-                guard Self.isRetryable(error), attempt < maxRetries else { throw error }
+                guard Self.isRetryable(error), attempt < retryLimit else { throw error }
                 attempt += 1
                 Log.llm.warning("complete 失败，第 \(attempt) 次重试：\(error)")
                 try await Task.sleep(nanoseconds: Self.backoffNanos(attempt: attempt))

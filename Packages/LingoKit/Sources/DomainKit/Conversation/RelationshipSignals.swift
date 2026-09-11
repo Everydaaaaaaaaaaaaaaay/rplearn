@@ -51,4 +51,5 @@ public struct InteractionReview: Sendable, Codable, Equatable {
     public var coachReview: CoachReview
     public var relationship: RelationshipSignal
     public var growth: CharacterGrowthSignal?
+    public var quiz: Quiz? = nil
 }
