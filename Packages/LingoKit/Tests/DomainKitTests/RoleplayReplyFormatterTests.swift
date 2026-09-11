@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 @testable import DomainKit
 
@@ -173,6 +174,16 @@ struct RoleplayReplyFormatterTests {
 struct RoleplayTypingPaceTests {
     private let pace = RoleplayTypingPace.standard
 
+    @Test("十词气泡保留真实手机打字时间")
+    func conversationalSpeed() {
+        let delay = pace.delay(for: "I just got back from the coffee shop near home",
+            messageIndex: 1, elapsedSinceTypingBegan: 0, variation: 0.5)
+        #expect(delay >= 18)
+        #expect(delay < 25)
+        #expect(RoleplayTurnTakingPolicy.standard.minimumQuietWindow >= 10)
+        #expect(RoleplayTurnTakingPolicy.standard.draftActivityExtension >= 25)
+    }
+
     @Test("文本越长等待越久且始终有上限")
     func scalesWithMessageLength() {
         let short = pace.delay(
@@ -242,6 +253,23 @@ struct RoleplayTypingPaceTests {
 @Suite("角色文本回合交接")
 struct RoleplayTurnTakingPolicyTests {
     private let policy = RoleplayTurnTakingPolicy.standard
+
+    @Test("输入续期、停止输入释放、等待有界")
+    func typingHandoff() {
+        let start = Date(timeIntervalSince1970: 1000)
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
+            lastActivityAt: nil, waitingBeganAt: start) == start.addingTimeInterval(12))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
+            lastActivityAt: start.addingTimeInterval(20), waitingBeganAt: start)
+            == start.addingTimeInterval(45))
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
+            lastActivityAt: start.addingTimeInterval(119), waitingBeganAt: start)
+            == start.addingTimeInterval(120))
+        // A later bubble must still respect newly resumed typing.
+        #expect(policy.handoffDate(sentAt: start, quietWindow: 12,
+            lastActivityAt: start.addingTimeInterval(200), waitingBeganAt: start.addingTimeInterval(200))
+            == start.addingTimeInterval(225))
+    }
 
     @Test("未收尾和连续短消息会获得更长等待窗口")
     func extendsLikelyOpenTurnsAndMessageBursts() {

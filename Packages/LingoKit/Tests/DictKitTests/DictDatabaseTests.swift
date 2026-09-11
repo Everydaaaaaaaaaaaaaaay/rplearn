@@ -22,6 +22,16 @@ struct DictDatabaseTests {
         return try DictDatabase(databaseURL: url)
     }
 
+    @Test("toasties 是烤三明治的复数，不能回到形容词 toasty")
+    func toastiePlural() async throws {
+        let db = try openDatabase()
+        #expect(await db.lookup("toasties")?.word == "toastie")
+        #expect(await db.lookup("toastie")?.translation?.contains("烤三明治") == true)
+        #expect(await db.lookup("toasty")?.exchange == nil)
+        #expect(await db.lookup("toast")?.translation?.contains("烤面包") == true)
+        #expect(WordFormRules.candidates(for: "toasties").first == "toastie")
+    }
+
     @Test("精确命中")
     func exactHit() async throws {
         let db = try openDatabase()

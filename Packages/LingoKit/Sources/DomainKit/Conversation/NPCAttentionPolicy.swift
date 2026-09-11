@@ -191,34 +191,40 @@ public struct NPCAttentionPolicy: Sendable {
     }
 
     public func activityProfile(for character: CharacterDTO) -> NPCActivityProfile {
-        if let explicit = character.card.activityProfile,
+        Self.activityProfile(for: character.card)
+    }
+
+    public static func activityProfile(for card: CharacterCard) -> NPCActivityProfile {
+        if let explicit = card.activityProfile,
            TimeZone(identifier: explicit.timeZoneIdentifier) != nil {
             return explicit
         }
         let identityText = [
-            character.card.occupation,
-            character.card.personality,
-            character.card.background ?? "",
+            card.occupation,
+            card.personality,
+            card.background ?? "",
         ]
         .joined(separator: " ")
         .lowercased()
         let rhythm: NPCActivityRhythm
         let nightSignals = [
-            "night", "late", "jazz", "club", "bar", "pub", "夜", "酒吧", "夜班", "爵士",
+            "night", "late", "jazz", "club", "bartender", "pub", "夜", "酒吧", "夜班", "爵士",
         ]
         let earlySignals = [
             "barista", "bakery", "teacher", "farmer", "surf", "咖啡师", "烘焙", "教师", "农", "冲浪",
         ]
-        if nightSignals.contains(where: identityText.contains) {
+        let words = Set(identityText.split { !$0.isLetter }.map(String.init))
+        func matches(_ signal: String) -> Bool {
+            signal.allSatisfy(\.isASCII) ? words.contains(signal) : identityText.contains(signal)
+        }
+        if nightSignals.contains(where: matches) {
             rhythm = .nightOwl
-        } else if earlySignals.contains(where: identityText.contains) {
+        } else if earlySignals.contains(where: matches) {
             rhythm = .earlyBird
-        } else if stableUnit(characterID: character.id, bucket: 0, salt: "rhythm") < 0.16 {
-            rhythm = .irregular
         } else {
             rhythm = .daytime
         }
-        return Self.defaultActivityProfile(regionID: character.card.regionID, rhythm: rhythm)
+        return Self.defaultActivityProfile(regionID: card.regionID, rhythm: rhythm)
     }
 
     public static func defaultActivityProfile(
@@ -234,22 +240,7 @@ public struct NPCAttentionPolicy: Sendable {
     }
 
     public static func timeZoneIdentifier(for regionID: String) -> String {
-        switch regionID {
-        case "london", "edinburgh", "manchester": "Europe/London"
-        case "melbourne": "Australia/Melbourne"
-        case "newyork": "America/New_York"
-        case "capetown": "Africa/Johannesburg"
-        case "singapore": "Asia/Singapore"
-        case "dublin": "Europe/Dublin"
-        case "vancouver": "America/Vancouver"
-        case "auckland": "Pacific/Auckland"
-        case "nairobi": "Africa/Nairobi"
-        case "toronto": "America/Toronto"
-        case "sydney": "Australia/Sydney"
-        case "neworleans": "America/Chicago"
-        case "kingston": "America/Jamaica"
-        default: "Etc/UTC"
-        }
+        RoleplayTemporalContext.timeZone(for: regionID).identifier
     }
 
     func makeReplyPlan(

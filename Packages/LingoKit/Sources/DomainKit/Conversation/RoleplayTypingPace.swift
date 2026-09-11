@@ -13,10 +13,10 @@ public struct RoleplayTurnTakingPolicy: Sendable {
     public let maximumDeferralAfterLatestMessage: TimeInterval
 
     public init(
-        minimumQuietWindow: TimeInterval = 2.2,
-        maximumQuietWindow: TimeInterval = 4.8,
-        draftActivityExtension: TimeInterval = 1.8,
-        maximumDeferralAfterLatestMessage: TimeInterval = 9
+        minimumQuietWindow: TimeInterval = 10,
+        maximumQuietWindow: TimeInterval = 18,
+        draftActivityExtension: TimeInterval = 25,
+        maximumDeferralAfterLatestMessage: TimeInterval = 120
     ) {
         self.minimumQuietWindow = minimumQuietWindow
         self.maximumQuietWindow = maximumQuietWindow
@@ -40,8 +40,17 @@ public struct RoleplayTurnTakingPolicy: Sendable {
         let burstGrace = min(Double(burstCount - 1) * 0.32, 0.96)
         let unfinishedGrace = looksLikeOpenThought(trimmed) ? 0.7 : 0
         let jitter = (clampedVariation - 0.5) * 0.5
-        let target = 2.35 + readingTime + burstGrace + unfinishedGrace + jitter
+        let target = 11.5 + readingTime + burstGrace + unfinishedGrace + jitter
         return min(max(target, minimumQuietWindow), maximumQuietWindow)
+    }
+
+    /// A stale open keyboard does not imply typing forever; recent edits do.
+    public func handoffDate(sentAt: Date, quietWindow: TimeInterval,
+                            lastActivityAt: Date?, waitingBeganAt: Date) -> Date {
+        let quietUntil = sentAt.addingTimeInterval(quietWindow)
+        let editingUntil = lastActivityAt?.addingTimeInterval(draftActivityExtension) ?? sentAt
+        let deadline = max(sentAt, waitingBeganAt).addingTimeInterval(maximumDeferralAfterLatestMessage)
+        return min(deadline, max(quietUntil, editingUntil))
     }
 
     private func looksLikeOpenThought(_ text: String) -> Bool {
@@ -82,9 +91,9 @@ public struct RoleplayTypingPace: Sendable {
     public let minimumFirstMessageDelay: TimeInterval
 
     public init(
-        minimumDelay: TimeInterval = 1.05,
-        maximumDelay: TimeInterval = 7.5,
-        minimumFirstMessageDelay: TimeInterval = 0.9
+        minimumDelay: TimeInterval = 3,
+        maximumDelay: TimeInterval = 60,
+        minimumFirstMessageDelay: TimeInterval = 3
     ) {
         self.minimumDelay = minimumDelay
         self.maximumDelay = maximumDelay
@@ -109,10 +118,10 @@ public struct RoleplayTypingPace: Sendable {
         let jitter = (clampedVariation - 0.5) * 0.8
         let continuationPause = messageIndex > 0 ? 0.55 : 0
 
-        let simulatedTyping = 0.65
+        let simulatedTyping = 1.8
             + continuationPause
-            + Double(words) * 0.24
-            + Double(visibleCharacters) * 0.012
+            + Double(words) * (60.0 / 35.0)
+            + Double(visibleCharacters) * 0.025
             + Double(punctuationPauses) * 0.12
             + jitter
         let target = min(max(simulatedTyping, minimumDelay), maximumDelay)

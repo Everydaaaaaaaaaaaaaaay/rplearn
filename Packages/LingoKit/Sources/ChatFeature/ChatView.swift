@@ -245,7 +245,11 @@ public struct ChatView: View {
     }
 
     private func chatStatus(_ presence: NPCPresenceSnapshot, at date: Date) -> String {
-        let city = deps.regionName(viewModel.character.card.regionID)
+        let clock = DateFormatter()
+        clock.locale = Locale(identifier: "zh_CN")
+        clock.timeZone = TimeZone(identifier: presence.timeZoneIdentifier)
+        clock.dateFormat = "HH:mm"
+        let city = "\(deps.regionName(viewModel.character.card.regionID)) \(clock.string(from: date))"
         if viewModel.isStreaming {
             return "正在输入 · \(city)"
         }
@@ -399,6 +403,7 @@ public struct ChatView: View {
                     }
                 }
                 .onChange(of: isTextInputFocused) {
+                    viewModel.composerFocusChanged(isTextInputFocused)
                     guard isTextInputFocused else { return }
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         proxy.scrollTo("conversation-bottom", anchor: .bottom)

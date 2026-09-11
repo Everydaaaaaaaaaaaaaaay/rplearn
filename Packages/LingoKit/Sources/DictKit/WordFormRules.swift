@@ -15,7 +15,10 @@ public enum WordFormRules {
         if w.hasSuffix("'") { add(String(w.dropLast())) }
 
         // 复数/三单：ies→y、es、s
-        if w.hasSuffix("ies") { add(String(w.dropLast(3)) + "y") }
+        if w.hasSuffix("ies") {
+            add(String(w.dropLast())) // toasties → toastie, cookies → cookie
+            add(String(w.dropLast(3)) + "y")
+        }
         if w.hasSuffix("es") { add(String(w.dropLast(2))) }
         if w.hasSuffix("s"), !w.hasSuffix("ss") { add(String(w.dropLast())) }
 

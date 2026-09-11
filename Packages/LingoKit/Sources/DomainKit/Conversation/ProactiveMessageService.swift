@@ -141,7 +141,7 @@ public struct ProactiveMessageService: Sendable {
             "Values: \(voice.values.joined(separator: ", "))\nConversational habits: \(voice.conversationalHabits.joined(separator: ", "))\nVoice examples (do not copy): \(voice.anchorLines.prefix(4).joined(separator: " | "))"
         } ?? "")
 
-        \(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: deliveryDate))
+        \(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: deliveryDate, profile: NPCAttentionPolicy.activityProfile(for: card)))
 
         \(situation)
 

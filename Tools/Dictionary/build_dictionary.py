@@ -289,6 +289,13 @@ def build_database(args: argparse.Namespace) -> tuple[int, int, int, int]:
         sorted(lemma_pairs),
     )
 
+    # ECDICT incorrectly treats the adjective toasty as a noun with plural toasties.
+    database.execute("UPDATE word SET translation = 'n. 烤三明治（toastie 的复数形式）', definition = 'plural of toastie: toasted sandwiches', pos = 'n', exchange = '0:toastie/1:s' WHERE wl = 'toasties'")
+    database.execute("UPDATE word SET exchange = NULL WHERE wl = 'toasty'")
+    database.execute("UPDATE word SET exchange = 's:toasties' WHERE wl = 'toastie'")
+    database.execute("DELETE FROM lemma WHERE form = 'toasties'")
+    database.execute("INSERT OR IGNORE INTO lemma SELECT 'toasties', 'toastie' WHERE EXISTS (SELECT 1 FROM word WHERE wl = 'toastie')")
+
     sense_count = 0
     if args.wordnet_dir:
         for row in wordnet_sense_rows(args.wordnet_dir, set(best)):

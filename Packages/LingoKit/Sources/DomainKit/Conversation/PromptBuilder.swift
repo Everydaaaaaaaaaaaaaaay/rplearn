@@ -221,7 +221,7 @@ public enum PromptBuilder {
         }
 
         // Keep the reusable prefix before time, relationship, retrieved memory and turn-specific context.
-        sections.append(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: currentDate))
+        sections.append(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: currentDate, profile: NPCAttentionPolicy.activityProfile(for: card)))
         if let relationshipContext, !relationshipContext.isEmpty {
             sections.append(relationshipContext)
         }

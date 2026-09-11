@@ -19,6 +19,23 @@ struct PromptBuilderTests {
         background: "grew up in Kent"
     )
 
+    @Test("墨尔本正午和用户上午分开，夏令时自动换算")
+    func localClocks() throws {
+        let date = try #require(ISO8601DateFormatter().date(from: "2026-09-11T02:20:00Z"))
+        let context = RoleplayTemporalContext.currentSituation(regionID: "melbourne", at: date,
+            userTimeZone: try #require(TimeZone(identifier: "Asia/Shanghai")))
+        #expect(context.contains("12:20"))
+        #expect(context.contains("10:20"))
+        #expect(context.contains("during the midday"))
+        let summer = try #require(ISO8601DateFormatter().date(from: "2026-12-11T02:20:00Z"))
+        #expect(RoleplayTemporalContext.currentSituation(regionID: "melbourne", at: summer).contains("13:20"))
+        var ruby = card
+        ruby.occupation = "barista"
+        ruby.personality = "friendly"
+        ruby.background = nil
+        #expect(NPCAttentionPolicy.activityProfile(for: ruby).rhythm == .earlyBird)
+    }
+
     @Test("system prompt 锁定关键结构（snapshot 式断言）")
     func systemPromptStructure() {
         let prompt = PromptBuilder.roleplaySystemPrompt(

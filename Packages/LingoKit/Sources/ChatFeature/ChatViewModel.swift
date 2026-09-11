@@ -27,7 +27,48 @@ public final class ChatViewModel {
     /// 已收到用户消息，仍处于注意、准备或等待连续消息阶段；此时不显示“正在输入”。
     public private(set) var isWaitingForUserBurst = false
     public var errorMessage: String?
-    public var draft = ""
+    public var draft = "" {
+        didSet {
+            if draft != oldValue { lastComposerActivityAt = deps.now() }
+        }
+    }
+    private var lastComposerActivityAt: Date?
+
+    public func composerFocusChanged(_ focused: Bool) {
+        if focused { lastComposerActivityAt = deps.now() }
+    }
+
+    /// Editing extends the quiet window without restarting an in-flight paid request.
+    private func waitForUserToFinish(plan: NPCReplyPlan) async throws {
+        guard deps.replyDelayScale > 0 else { return }
+        let policy = RoleplayTurnTakingPolicy.standard
+        let anchor = messages.first { $0.id == plan.userMessageID }
+        let sentAt = anchor?.createdAt ?? deps.now()
+        let quiet = policy.quietWindow(after: anchor?.text ?? "",
+            consecutiveUserMessageCount: messages.reversed().prefix { $0.role == .user }.count,
+            variation: 0.5)
+        let waitingBeganAt = deps.now()
+        let cycle = replyCycleID
+        let wasStreaming = isStreaming
+        var paused = false
+        defer {
+            if paused, cycle == replyCycleID, !Task.isCancelled {
+                isStreaming = wasStreaming
+                isWaitingForUserBurst = !wasStreaming
+            }
+        }
+        while true {
+            try Task.checkCancellation()
+            let now = deps.now()
+            let until = policy.handoffDate(sentAt: sentAt, quietWindow: quiet,
+                lastActivityAt: lastComposerActivityAt, waitingBeganAt: waitingBeganAt)
+            guard until > now else { return }
+            paused = true
+            isStreaming = false
+            isWaitingForUserBurst = true
+            try await Task.sleep(for: .milliseconds(250))
+        }
+    }
 
     private var replyTask: Task<Void, Never>?
     private var replyCycleID = UUID()
@@ -128,6 +169,7 @@ public final class ChatViewModel {
         guard !text.isEmpty else { return }
         Haptics.impact(.light)
         draft = ""
+        lastComposerActivityAt = nil
         if !(await send(userText: text)), draft.isEmpty {
             // Preserve failed input without overwriting anything typed while saving.
             draft = originalDraft
@@ -417,6 +459,10 @@ public final class ChatViewModel {
         replyTask = Task { [self] in
             do {
                 try await wait(until: plan.generationStartsAt)
+                try await waitForUserToFinish(plan: plan)
+                let wordCount = messages.last(where: { $0.role == .user })?.text.split(whereSeparator: \.isWhitespace).count ?? 0
+                try await wait(until: deps.now().addingTimeInterval(2.5 + min(8, Double(wordCount) * 0.2)))
+                try await waitForUserToFinish(plan: plan)
                 try Task.checkCancellation()
             } catch {
                 return
@@ -770,16 +816,18 @@ public final class ChatViewModel {
         for (index, text) in texts.enumerated() {
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
-            let delay = index == 0 ? 0 : RoleplayTypingPace.standard.delay(
+            try await waitForUserToFinish(plan: plan)
+            let delay = RoleplayTypingPace.standard.delay(
                 for: text,
                 messageIndex: index,
                 elapsedSinceTypingBegan: 0,
                 variation: Double.random(in: 0...1)
             )
-            let milliseconds = Int((delay * 1_000).rounded())
+            let milliseconds = Int((delay * deps.replyDelayScale * 1_000).rounded())
             if milliseconds > 0 {
                 try await Task.sleep(for: .milliseconds(milliseconds))
             }
+            try await waitForUserToFinish(plan: plan)
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
 
