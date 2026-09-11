@@ -179,6 +179,11 @@ export type NpcEncounterSelection = Readonly<{
   reason: "reuse" | "coverage_gap" | "diversity";
 }>;
 
+export type AuthoredEncounterRequest = Readonly<{
+  libraryVersion: string;
+  runId: string;
+}>;
+
 export type AvatarRequirements = Readonly<{
   age: number;
   gender: NpcGender;

@@ -8,149 +8,55 @@ import SpeechKit
 import Testing
 @testable import HomeFeature
 
-@Suite("城市偶遇人物多样性闭环", .serialized)
+@Suite("预写相遇，无模型费用", .serialized)
 @MainActor
 struct SocialEncounterDiversityTests {
+    private struct Manifest: Decodable {
+        struct Entry: Decodable { let id: UUID; let travelerId: String; let card: BackendPublicNPCCard }
+        let entries: [Entry]
+    }
+    private actor ModelCalls { private(set) var count = 0; func record() { count += 1 } }
     private actor Registry: PublicNPCRegistry {
-        private(set) var reviewedNames: [String] = []
-        private(set) var registeredNames: [String] = []
-
-        func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC? { nil }
-
-        func reviewEncounterNPC(
-            card: BackendPublicNPCCard,
-            diversityProfile: BackendNPCDiversityProfile,
-            context: BackendNPCEncounterContext
-        ) async throws -> BackendNPCDiversityReview {
-            reviewedNames.append(card.name)
-            if reviewedNames.count == 1 {
-                return BackendNPCDiversityReview(
-                    decision: .revise,
-                    similarityScore: 91,
-                    dimensions: ["occupation-domain", "social-role", "interaction-style"],
-                    guidance: ["Choose an occupation outside the service-retail domain."]
-                )
-            }
-            return BackendNPCDiversityReview(decision: .accept, similarityScore: 28, dimensions: [], guidance: [])
+        let npc: BackendPublicNPC
+        var failFirst: Bool
+        let empty: Bool
+        private(set) var runIDs: [UUID] = []
+        init(npc: BackendPublicNPC, failFirst: Bool, empty: Bool) { self.npc = npc; self.failFirst = failFirst; self.empty = empty }
+        func selectAuthoredEncounter(context: BackendNPCEncounterContext, libraryVersion: String, runID: UUID) async throws -> BackendPublicNPC? {
+            runIDs.append(runID)
+            #expect(context.activityId == "park-route")
+            if failFirst { failFirst = false; throw BackendClientError.invalidResponse }
+            return empty ? nil : npc
         }
-
-        func registerEncounterNPC(
-            id: UUID,
-            card: BackendPublicNPCCard,
-            diversityProfile: BackendNPCDiversityProfile,
-            context: BackendNPCEncounterContext
-        ) async throws -> BackendPublicNPC {
-            registeredNames.append(card.name)
-            return BackendPublicNPC(
-                avatar: BackendPublicNPC.Avatar(
-                    id: UUID(uuidString: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa")!,
-                    url: URL(string: "https://example.com/reviewed-npc.png")!
-                ),
-                card: card,
-                createdAt: "2026-09-09T00:00:00Z",
-                id: id,
-                travelerId: "12345678903"
-            )
-        }
-
-        func registerPublicNPC(id: UUID, card: BackendPublicNPCCard) async throws -> BackendPublicNPC {
-            throw BackendClientError.invalidResponse
-        }
-        func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC {
-            throw BackendClientError.invalidResponse
-        }
-        func linkPublicNPC(
-            npcID: UUID,
-            localCharacterID: UUID,
-            status: BackendNPCRelationshipStatus
-        ) async throws {}
+        func registerPublicNPC(id: UUID, card: BackendPublicNPCCard) async throws -> BackendPublicNPC { throw BackendClientError.invalidResponse }
+        func findPublicNPC(travelerID: String) async throws -> BackendPublicNPC { throw BackendClientError.invalidResponse }
+        func linkPublicNPC(npcID: UUID, localCharacterID: UUID, status: BackendNPCRelationshipStatus) async throws {}
     }
-
-    private actor LLMFixture {
-        private var generationCount = 0
-        private(set) var generationPrompts: [String] = []
-        private(set) var planCount = 0
-
-        func complete(_ request: LLMRequest) -> String {
-            if case .jsonSchema(let name, _) = request.responseFormat, name == "social_encounter_plan" {
-                planCount += 1
-                return Self.planJSON
-            }
-            generationPrompts.append(request.system ?? "")
-            generationCount += 1
-            return Self.cardJSON(
-                name: generationCount == 1 ? "Poppy Hale" : "Dev Singh",
-                occupation: generationCount == 1 ? "flower stall seller" : "bicycle mechanic",
-                occupationDomain: generationCount == 1 ? "service-retail" : "skilled-trades",
-                socialRole: generationCount == 1 ? "creator" : "problem-solver",
-                interactionStyle: generationCount == 1 ? "gentle" : "practical",
-                motif: generationCount == 1 ? "mastery" : "career-change"
-            )
-        }
-
-        static var planJSON: String {
-            func reply(_ english: String, _ accepts: Bool = false) -> [String: Any] {
-                ["english": english, "chinese": "这是一句自然的回应。", "acceptsContact": accepts]
-            }
-            func choice(_ english: String) -> [String: String] {
-                ["english": english, "chinese": "这是一句可选的话。"]
-            }
-            let branches: [[String: Any]] = (0..<2).map { index in
-                ["choice": choice(index == 0 ? "Is this a quiet spot?" : "Do you like this view?"),
-                 "reply": reply(index == 0 ? "Yes, it is peaceful." : "The view is lovely."),
-                 "endings": [
-                    ["intent": "invite", "choice": choice("Would you like to keep in touch?"),
-                     "reply": reply(index == 0 ? "Sure, that would be nice." : "Thanks, but I prefer to leave it here.", index == 0)],
-                    ["intent": "leave", "choice": choice("Have a nice day!"), "reply": reply("You too. Goodbye!")]
-                 ]]
-            }
-            return String(decoding: try! JSONSerialization.data(withJSONObject: [
-                "opening": reply("Hello! Taking a break?"), "branches": branches
-            ]), as: UTF8.self)
-        }
-
-        private static func cardJSON(
-            name: String,
-            occupation: String,
-            occupationDomain: String,
-            socialRole: String,
-            interactionStyle: String,
-            motif: String
-        ) -> String {
-            """
-            {"name":"\(name)","age":34,"gender":"male","nationality":"British",
-            "occupation":"\(occupation)","hobbies":["修理自行车","逛旧货市场"],
-            "appearance":"provisional portrait","personality":"practical, candid and calm",
-            "speech_style":"short, concrete answers","background":"Changed careers and now repairs useful things.",
-            "signature":"Small fixes add up.","birthday":"04-19","hometown":"Bristol","languages":["English"],
-            "values":["craft"],"flaws":["occasionally blunt"],
-            "conversational_habits":["asks concrete questions"],"boundaries":["respects privacy"],
-            "anchor_lines":["Let me think.","That should work."],
-            "diversity_profile":{"occupation_domain":"\(occupationDomain)","social_role":"\(socialRole)",
-            "interaction_style":"\(interactionStyle)","interest_domains":["technology","sports"],
-            "traits":["pragmatic","candid"],"background_motif":"\(motif)",
-            "energy":"medium","warmth":"balanced","structure":"structured"},
-            "opening_line":"Hi there."}
-            """
-        }
-    }
-
     private struct SilentSpeech: SpeechService {
         func speak(_ request: SpeechRequest) async {}
         func stopSpeaking() async {}
     }
-
-    @Test("重复候选会带着差异要求重生，通过审查后才落本地并立即带头像")
-    func revisesBeforePersistingAndRegistering() async throws {
+    private func settle(_ model: SocialEncounterModel) async throws {
+        let deadline = ContinuousClock.now.advanced(by: .seconds(10))
+        while model.busy && ContinuousClock.now < deadline { try await Task.sleep(for: .milliseconds(10)) }
+        #expect(!model.busy)
+    }
+    @Test("一次抽取、重试身份稳定、本地分支和再次相遇", arguments: [(false, false), (true, false), (false, true)])
+    func offlineStory(failFirstPart: Bool, noCandidate: Bool) async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let economy = EconomyStore(modelContainer: container)
         _ = try await economy.updateProfile {
             $0.currentRegionID = "london"
             $0.difficultyLevel = .junior3
         }
-        let fixture = LLMFixture()
-        let llm = MockLLMProvider(completeHandler: { request in await fixture.complete(request) })
-        let registry = Registry()
+        let calls = ModelCalls()
+        let llm = MockLLMProvider(completeHandler: { _ in await calls.record(); throw BackendClientError.invalidResponse })
+        let library = try AuthoredEncounterLibrary.bundled()
+        let data = try Data(contentsOf: #require(Bundle.main.url(forResource: "npc-library-v3", withExtension: "json")))
+        let manifest = try JSONDecoder().decode(Manifest.self, from: data)
+        let source = try #require(manifest.entries.first { $0.card.regionId == "london" && library.entries[$0.id]?.story.actionId == "park-route" })
+        let npc = BackendPublicNPC(avatar: nil, card: source.card, createdAt: "2026-09-11T00:00:00Z", id: source.id, travelerId: source.travelerId)
+        let registry = Registry(npc: npc, failFirst: failFirstPart, empty: noCandidate)
         let deps = HomeDependencies(
             economyStore: economy,
             itemStore: ItemStore(modelContainer: container),
@@ -173,61 +79,45 @@ struct SocialEncounterDiversityTests {
             exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }),
             npcRegistry: registry
         )
-        let region = Region(
-            id: "london",
-            nameEn: "London",
-            nameZh: "伦敦",
-            countryCode: "GB",
-            countryNameEn: "United Kingdom",
-            countryNameZh: "英国",
-            taglineZh: "-",
-            landmarks: [],
-            activities: []
-        )
-        let model = SocialEncounterModel(
-            activity: try #require(SceneActivity.catalog.first),
-            region: region,
-            deps: deps,
-            namespace: "social-encounter-diversity-test-\(UUID())",
-            encounterRoll: { 0 }
-        )
-        model.start()
-        let deadline = ContinuousClock.now.advanced(by: .seconds(10))
-        while model.busy, ContinuousClock.now < deadline {
-            try await Task.sleep(for: .milliseconds(20))
+        let region = Region(id:"london", nameEn:"London", nameZh:"伦敦", countryCode:"GB",
+            countryNameEn:"United Kingdom", countryNameZh:"英国", taglineZh:"-", landmarks:[], activities:[])
+        let activity = try #require(SceneActivity.catalog.first { $0.id == "park-route" })
+        let namespace = "authored-test-\(UUID())"
+        let model = SocialEncounterModel(activity:activity, region:region, deps:deps, namespace:namespace, encounterRoll:{0}, library:library)
+        model.start(); try await settle(model)
+        if failFirstPart { #expect(model.error != nil); model.retry(); try await settle(model) }
+        #expect(model.error == nil)
+        if noCandidate {
+            #expect(model.isSolitude)
+            #expect(try ActivityEncounterHistory(namespace:namespace,city:region.id).receipts().first?.encountersPerson == false)
+            #expect(await calls.count == 0)
+            return
         }
-
-        #expect(model.busy == false)
-        #expect(model.error == nil)
-        #expect(model.character?.card.name == "Dev Singh")
+        #expect(model.character?.id == npc.id)
         #expect(model.character?.publicIdentityRegistered == true)
-        #expect(model.character?.card.avatarRemoteURL == "https://example.com/reviewed-npc.png")
-        #expect(model.registrationPending == false)
-        #expect(await registry.reviewedNames == ["Poppy Hale", "Dev Singh"])
-        #expect(await registry.registeredNames == ["Dev Singh"])
-        #expect(try await deps.rosterStore.allCharacters().map(\.card.name) == ["Dev Singh"])
-        let prompts = await fixture.generationPrompts
-        #expect(prompts.count == 2)
-        #expect(prompts[1].contains("outside the service-retail domain"))
-        #expect(await fixture.planCount == 1)
-        #expect(try await deps.chatStore.recentMessages(characterID: #require(model.character?.id), limit: 20).count == 1)
-        // Choosing the second branch must not reuse the first branch's acceptance.
-        model.choose(1)
-        while model.busy { try await Task.sleep(for: .milliseconds(10)) }
-        #expect(model.reply?.english == "The view is lovely.")
-        model.advance()
-        model.choose(0)
-        while model.busy { try await Task.sleep(for: .milliseconds(10)) }
-        model.advance()
-        #expect(model.error == nil)
-        #expect(model.summary)
-        #expect(!model.canConnect)
-        #expect(await fixture.planCount == 1)
-        let messages = try await deps.chatStore.recentMessages(characterID: #require(model.character?.id), limit: 20)
-        #expect(messages.count == 5)
-        #expect(!messages.contains { $0.text == "Yes, it is peaceful." || $0.text == "Sure, that would be nice." })
-        model.start()
-        #expect(await fixture.planCount == 1)
-
+        #expect(try await deps.chatStore.recentMessages(characterID:npc.id,limit:100).isEmpty)
+        for stage in 0..<3 {
+            for _ in 0..<6 where !model.atChoice && !model.atEnding { model.advance(); try await settle(model) }
+            if stage < 2 { #expect(model.atChoice); model.choose(stage == 0 ? 1 : 0); try await settle(model) }
+            else { model.advance() }
+        }
+        #expect(model.summary && model.canConnect)
+        #expect(model.selections == [1,0])
+        let expected = try library.chapter(characterID:npc.id,actionID:activity.id,choices:[1,0])
+        #expect(model.chapters.last == expected)
+        let messages = try await deps.chatStore.recentMessages(characterID:npc.id,limit:100)
+        #expect(messages.count == model.chapters.flatMap(\.beats).filter { $0.speaker == "npc" }.count + 2)
+        #expect(await calls.count == 0)
+        #expect(Set(await registry.runIDs) == [model.runID])
+        let previousCount = await registry.runIDs.count
+        model.start(); try await settle(model)
+        #expect(await registry.runIDs.count == previousCount)
+        let reunion = SocialEncounterModel(activity:activity,region:region,deps:deps,namespace:namespace,encounterRoll:{0},library:library)
+        reunion.start(); try await settle(reunion)
+        #expect(reunion.alreadyKnown && reunion.chapterCount == 1)
+        #expect(reunion.chapters.first == (try library.chapter(characterID:npc.id,actionID:activity.id,choices:[],reunion:true)))
+        for _ in 0..<6 where !reunion.atEnding { reunion.advance(); try await settle(reunion) }
+        #expect(!reunion.atChoice); reunion.advance(); #expect(reunion.summary)
+        #expect(await calls.count == 0)
     }
 }

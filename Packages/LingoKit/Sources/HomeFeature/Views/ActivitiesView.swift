@@ -57,8 +57,8 @@ public struct ActivitiesView: View {
                     if model.isSolitude {
                         records = try journal.completeSolitude(activity, runID: runID)
                     } else {
-                        records = try journal.complete(activity, selections: selections, runID: runID,
-                            characterID: character?.id, characterName: character?.card.name, responses: responses)
+                        records = try journal.complete(model.activity, selections: selections, runID: runID,
+                            characterID: character?.id, characterName: character?.card.name, responses: responses, chapters: model.chapters)
                     }
                 }
                 .id(activity.id)
@@ -121,6 +121,19 @@ public struct ActivitiesView: View {
                                 if let story = record.solitudeStory { Text(story).lineSpacing(5) }
                                 if let name = record.characterName {
                                     Text("与 \(name) 的这次交流").font(.subheadline)
+                                }
+                                if let chapters = record.chapters {
+                                    DisclosureGroup("完整故事") {
+                                        ForEach(Array(chapters.enumerated()), id: \.offset) { stage, chapter in
+                                            ForEach(Array(chapter.beats.enumerated()), id: \.offset) { _, beat in
+                                                Text(beat.english).font(.body).padding(.top, 8)
+                                                Text(beat.chinese).font(.caption).foregroundStyle(.secondary)
+                                            }
+                                            if record.choices.indices.contains(stage) {
+                                                Text("你的选择：" + record.choices[stage].chinese).font(.subheadline.weight(.medium)).padding(.vertical, 8)
+                                            }
+                                        }
+                                    }
                                 }
                                 ForEach(Array(record.choices.enumerated()), id: \.offset) { _, choice in
                                     VStack(alignment: .leading, spacing: 4) {

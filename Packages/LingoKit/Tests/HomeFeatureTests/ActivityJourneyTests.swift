@@ -27,28 +27,6 @@ final class ActivityJourneyTests: XCTestCase {
             }
         }
     }
-    func testReunionEligibilityPreservesIdentityBoundariesWithoutDemographicFiltering() {
-        let now = Date()
-        var person = CharacterDTO(id: UUID(), card: CharacterCard(name: "Sam", age: 72,
-            gender: .female, nationality: "British", regionID: "london", occupation: "retired mechanic",
-            hobbies: ["heavy metal"], appearance: "", personality: "reserved", languages: ["English"]),
-            difficultyLevel: .junior3, isMainCharacter: false, isFriend: true, metAt: now)
-        XCTAssertTrue(CafeEncounterPolicy.eligible(person, regionID: "london"))
-        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "auckland"))
-        person.contactStatus = .removed
-        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
-        person.contactStatus = .friend
-        person.isMainCharacter = true
-        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
-        person.isMainCharacter = false
-        person.card.languages = ["French"]
-        XCTAssertFalse(CafeEncounterPolicy.eligible(person, regionID: "london"))
-        person.card.languages = nil
-        XCTAssertTrue(CafeEncounterPolicy.eligible(person, regionID: "london"))
-        XCTAssertGreaterThan(ActivityEncounterChance.personWeight(encounters: 1000, lastSeen: now, now: now), 0)
-
-    }
-
     func testEverySceneHasDistinctCompleteActionsAndBundledMedia() throws {
         XCTAssertEqual(ActivitySceneID.allCases.count, 3)
         XCTAssertEqual(Set(SceneActivity.catalog.map(\.id)).count, 9)
@@ -165,6 +143,22 @@ final class ActivityJourneyTests: XCTestCase {
                 }
             }
         }
+    }
+
+    @MainActor
+    func testReunionIsJournaledWithoutInventingChoices() throws {
+        let suite = "reunion-test-\(UUID())"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let journal = ActivityJournal(namespace: "guest", city: "london", defaults: defaults)
+        let activity = try XCTUnwrap(SceneActivity.catalog.first)
+        let reunion = try SocialEncounterModel.fixtureChapter(2)
+        let runID = UUID()
+        let result = try journal.complete(activity, selections: [], runID: runID, chapters: [reunion])
+        XCTAssertEqual(result.count, 1)
+        XCTAssertTrue(result[0].choices.isEmpty)
+        XCTAssertEqual(result[0].chapters, [reunion])
+        XCTAssertEqual(try journal.complete(activity, selections: [], runID: runID, chapters: [reunion]), result)
     }
 
     func testIncompleteOrCorruptDataNeverOverwritesHistory() throws {

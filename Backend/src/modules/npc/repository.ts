@@ -3,7 +3,7 @@ import {
   encounterWeight,
   weightedIndex,
 } from "./encounter-weights.js";
-import { randomInt } from "node:crypto";
+import { randomInt, createHash } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
@@ -20,6 +20,7 @@ import type {
   NpcDiversityProfile,
   NpcDiversityReview,
   ReviewNpcDiversityInput,
+  AuthoredEncounterRequest,
 } from "./types.js";
 import { travelerIdCheckDigit } from "./traveler-id.js";
 import { chooseAvatar } from "./avatar-matcher.js";
@@ -110,6 +111,7 @@ export class NpcRepository {
   async selectEncounter(
     userId: string,
     context: NpcEncounterContext,
+    authored?: AuthoredEncounterRequest,
   ): Promise<NpcEncounterSelection> {
     return this.database.sql.begin(async (sql) => {
       await sql`select pg_advisory_xact_lock(hashtextextended(${`npc-viewer:${userId}`}, 0))`;
@@ -133,6 +135,32 @@ export class NpcRepository {
             statusCode: 403,
           });
       }
+      const requestHash = createHash("sha256")
+        .update(JSON.stringify({ context, libraryVersion: authored?.libraryVersion }))
+        .digest("hex");
+      if (authored) {
+        const [previous] = await sql<
+          { request_hash: string; selection: NpcEncounterSelection }[]
+        >`
+          select request_hash, selection from app.npc_authored_encounter_runs where user_id=${userId} and run_id=${authored.runId}`;
+        if (previous) {
+          if (previous.request_hash !== requestHash)
+            throw new AppError({
+              code: "NPC_ENCOUNTER_CONFLICT",
+              statusCode: 409,
+              message: "同一次外出的场景不能更改，请重新开始。",
+            });
+          return previous.selection;
+        }
+        const [version] =
+          await sql`select 1 from app.npc_library_versions where version=${authored.libraryVersion}`;
+        if (!version)
+          throw new AppError({
+            code: "NPC_LIBRARY_UNAVAILABLE",
+            statusCode: 503,
+            message: "人物库暂未准备好，请稍后重试。",
+          });
+      }
       const candidates = await sql<
         (NpcRow & { encounters: number; days_since_seen: number })[]
       >`
@@ -145,6 +173,7 @@ export class NpcRepository {
         left join app.npc_encounter_history h on h.npc_id = n.id and h.user_id = ${userId}
         where scene.region_id = ${context.regionId} and scene.activity_id = ${context.activityId}
           and scene.category = ${context.category} and lower(scene.language) = lower(${context.language})
+          and (${authored?.libraryVersion ?? null}::text is null or scene.library_version=${authored?.libraryVersion ?? null})
           and n.card->>'regionId' = ${context.regionId}
           and exists(select 1 from jsonb_array_elements_text(n.card->'languages') lang where lower(lang) = lower(${context.language}))
           and not exists (
@@ -156,7 +185,9 @@ export class NpcRepository {
       `;
       // Reuse rises as a scene gains supply. Randomization is only within the eligible pool.
       const reuse =
-        candidates.length > 0 && this.draw(100) < (candidates.length >= 12 ? 95 : 75);
+        candidates.length > 0 &&
+        (authored !== undefined ||
+          this.draw(100) < (candidates.length >= 12 ? 95 : 75));
       const index = reuse
         ? weightedIndex(
             balancedEncounterWeights(
@@ -185,11 +216,15 @@ export class NpcRepository {
         on conflict (region_id, activity_id, language) do update set selections = app.npc_scene_supply.selections + 1,
           reuses = app.npc_scene_supply.reuses + excluded.reuses, gaps = app.npc_scene_supply.gaps + excluded.gaps,
           candidate_count = excluded.candidate_count, updated_at = now()`;
-      return {
+      const result: NpcEncounterSelection = {
         npc,
         candidateCount: candidates.length,
         reason: npc ? "reuse" : candidates.length ? "diversity" : "coverage_gap",
       };
+      if (authored)
+        await sql`insert into app.npc_authored_encounter_runs(user_id,run_id,request_hash,selection)
+        values(${userId},${authored.runId},${requestHash},${JSON.stringify(result)}::jsonb)`;
+      return result;
     });
   }
 
@@ -340,6 +375,11 @@ export class NpcRepository {
           avatar.profile
         from app.npc_avatars avatar
         where avatar.enabled = true
+          and not exists (
+            select 1 from app.public_npcs fixed
+            join app.npc_scene_affinities scene on scene.npc_id = fixed.id
+            where fixed.avatar_id = avatar.id and scene.library_version is not null
+          )
         order by avatar.created_at, avatar.id
         for share of avatar
       `;

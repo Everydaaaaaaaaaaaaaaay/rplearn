@@ -46,6 +46,10 @@ const manifest = () => ({
       },
       summaryZh: "Test only",
       story: { ...pilot.story, actionId: slot.actionId },
+      reunion: {
+        titleZh: "再次相遇",
+        beats: (pilot.story.nodes as { beats: unknown[] }[])[0]?.beats,
+      },
     };
   }),
 });

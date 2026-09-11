@@ -9,12 +9,14 @@ import type {
   NpcEncounterSelection,
   NpcDiversityReview,
   ReviewNpcDiversityInput,
+  AuthoredEncounterRequest,
 } from "./types.js";
 
 export type NpcService = Readonly<{
   selectEncounter: (
     userId: string,
     context: NpcEncounterContext,
+    authored?: AuthoredEncounterRequest,
   ) => Promise<NpcEncounterSelection>;
   retryPendingAvatars: () => Promise<{ attempted: number; matched: number }>;
   reviewDiversity: (
@@ -36,7 +38,8 @@ export function createNpcService(
 ): NpcService {
   const repository = new NpcRepository(database, draw);
   return {
-    selectEncounter: (userId, context) => repository.selectEncounter(userId, context),
+    selectEncounter: (userId, context, authored) =>
+      repository.selectEncounter(userId, context, authored),
     retryPendingAvatars: () => repository.retryPendingAvatars(),
     reviewDiversity: (userId, input) => repository.reviewDiversity(userId, input),
     find: (travelerId) => repository.find(travelerId),

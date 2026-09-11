@@ -6,30 +6,26 @@ import PersistenceKit
 import SpeechKit
 import SwiftUI
 
-/// Place, communication and recency are constraints; age, job and hobbies are not.
-enum CafeEncounterPolicy {
-    static func eligible(_ person: CharacterDTO, regionID: String) -> Bool {
-        guard !person.isMainCharacter, person.contactStatus != .removed,
-              person.card.regionID == regionID else { return false }
-        // Legacy cards omit languages. An explicit non-English card must not be rewritten.
-        guard let languages = person.card.languages, !languages.isEmpty else { return true }
-        return languages.contains {
-            let value = $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-            return value == "english" || value == "英语" || value == "英文" || value == "en" || value.hasPrefix("en-")
-        }
-    }
-
-}
-
 @MainActor
 final class SocialEncounterModel: ObservableObject {
     @Published private(set) var character: CharacterDTO?
     @Published private(set) var started = false
     @Published private(set) var busy = false
     @Published private(set) var step = 0
+    @Published private(set) var beatIndex = 0
     @Published private(set) var selected: Int?
     @Published private(set) var selections: [Int] = []
-    @Published private(set) var reply: SocialDialogueService.Reply?
+    @Published private(set) var chapters: [EncounterChapter] = []
+    var currentBeat: EncounterChapter.Beat? {
+        guard chapters.indices.contains(step), chapters[step].beats.indices.contains(beatIndex) else { return nil }
+        return chapters[step].beats[beatIndex]
+    }
+    var reply: SocialDialogueService.Reply? {
+        currentBeat.map { .init(english: $0.english, chinese: $0.chinese) }
+    }
+    var atChoice: Bool { !summary && chapters.indices.contains(step) && !chapters[step].choices.isEmpty && beatIndex == chapters[step].beats.count - 1 }
+    var chapterCount: Int { alreadyKnown ? 1 : 3 }
+    var atEnding: Bool { chapters.indices.contains(step) && chapters[step].choices.isEmpty && beatIndex == chapters[step].beats.count - 1 }
     @Published private(set) var error: String?
     @Published private(set) var contactMessage: String?
     @Published private(set) var alreadyKnown = false
@@ -46,21 +42,16 @@ final class SocialEncounterModel: ObservableObject {
     }
     let runID = UUID()
     private let authoredActivity: SceneActivity
-    @Published private var encounterPlan: SocialEncounterPlan?
     var activity: SceneActivity {
-        guard let plan = encounterPlan else { return authoredActivity }
-        let branch = plan.branches[selections.first ?? (step == 0 ? selected : nil) ?? 0]
-        let first = SceneActivity.Step(context: authoredActivity.steps[0].context,
-            question: "你想怎样回应？", choices: plan.branches.map {
-                .init(english: $0.choice.english, chinese: $0.choice.chinese, response: "")
+        let steps = chapters.prefix(2).map { part in
+            SceneActivity.Step(context: part.title, question: "你想怎么做？", choices: part.choices.map {
+                .init(english: $0.english, chinese: $0.chinese, response: "")
             })
-        let last = SceneActivity.Step(context: authoredActivity.steps[1].context,
-            question: "接下来，你想怎样回应？", choices: branch.endings.map {
-                .init(english: $0.choice.english, chinese: $0.choice.chinese, response: "")
-            })
+        }
+        guard steps.count == 2 else { return authoredActivity }
         return SceneActivity(id: authoredActivity.id, scene: authoredActivity.scene,
-            title: authoredActivity.title, symbol: authoredActivity.symbol,
-            introduction: authoredActivity.introduction, steps: [first, last], closing: authoredActivity.closing)
+            title: chapters.first?.title ?? authoredActivity.title, symbol: authoredActivity.symbol,
+            introduction: authoredActivity.introduction, steps: steps, closing: "把这一刻留在旅途中。")
     }
     let region: Region
     let deps: HomeDependencies
@@ -69,30 +60,25 @@ final class SocialEncounterModel: ObservableObject {
     private var task: Task<Void, Never>?
     private var speechTask: Task<Void, Never>?
     private var contactTask: Task<Void, Never>?
-    private var registrationTask: Task<Void, Never>?
-    private var transcript = ""
-    private var cachedReplies: [Int: SocialDialogueService.Reply] = [:]
-    private var committedReplies = Set<Int>()
-    private let openingID = UUID()
     private let userIDs = [UUID(), UUID()]
-    private let replyIDs = [UUID(), UUID()]
+    private let beatIDs = (0..<3).map { _ in (0..<6).map { _ in UUID() } }
+    private var pendingStage = 0
+    private var library: AuthoredEncounterLibrary?
     private var pendingPublic: BackendPublicNPC?
-    private var generatedCard: CharacterCard?
-    private var generatedDiversityProfile: BackendNPCDiversityProfile?
-    private var registeredGeneratedPublic: BackendPublicNPC?
     private let generatedID = UUID()
-    private var generationOrigin: EncounterService.Origin = .local
     private let encounterRoll: @Sendable () -> Double
     private let isFixture: Bool
     #if DEBUG
     private var fixtureFailed = false
     #endif
-    var summary: Bool { step == activity.steps.count }
-    var responses: [String] { (0..<activity.steps.count).map { cachedReplies[$0]?.chinese ?? "" } }
-    var canConnect: Bool { summary && (reply?.acceptsContact == true || character?.isFriend == true) }
+    var summary: Bool { completed }
+    var responses: [String] { chapters.dropFirst().map { $0.beats.map(\.chinese).joined(separator: "\n") } }
+    var canConnect: Bool { summary && character != nil }
 
     init(activity: SceneActivity, region: Region, deps: HomeDependencies, namespace: String,
-         encounterRoll: @escaping @Sendable () -> Double = { Double.random(in: 0..<1) }) {
+         encounterRoll: @escaping @Sendable () -> Double = { Double.random(in: 0..<1) },
+         library: AuthoredEncounterLibrary? = nil) {
+        self.library = library
         self.encounterRoll = encounterRoll
         self.authoredActivity = activity; self.region = region; self.deps = deps
         history = ActivityEncounterHistory(namespace: namespace, city: region.id)
@@ -134,36 +120,39 @@ final class SocialEncounterModel: ObservableObject {
                 return
             }
             if self.character == nil { try await self.prepareCharacter() }
-            try await self.obtainReply(index: -1)
+            if self.isSolitude { return }
+            try await self.loadChapter(0)
             try self.history.complete(runID: self.runID, characterID: self.character?.id)
             self.openingReady = true
         }
     }
     func choose(_ index: Int) {
-        guard !busy, !summary, selected == nil,
-              activity.steps[step].choices.indices.contains(index) else { return }
+        guard !busy, atChoice, selected == nil, chapters[step].choices.indices.contains(index) else { return }
         selected = index
         stopSpeech()
-        reply = nil
+        pendingStage = step + 1
         launch { try await self.performSelection() }
     }
     func retry() {
         guard !busy else { return }
-        if selected == nil { start() }
-        else { launch { try await self.performSelection() } }
+        if !openingReady { start() }
+        else if selected != nil { launch { try await self.performSelection() } }
+        else { launch { try await self.revealBeat(self.beatIndex) } }
     }
     func advance() {
-        guard !busy, let selected, reply != nil, !summary else { return }
-        selections.append(selected)
-        self.selected = nil
-        step += 1
-        if summary { completed = true }
+        guard !busy, !summary, chapters.indices.contains(step) else { return }
+        if beatIndex + 1 < chapters[step].beats.count {
+            stopSpeech()
+            launch { try await self.revealBeat(self.beatIndex + 1) }
+        } else if atEnding {
+            stopSpeech()
+            completed = true
+        }
     }
     func pause() {
         task?.cancel(); task = nil
         contactTask?.cancel(); contactTask = nil
         contactBusy = false
-        registrationTask?.cancel(); registrationTask = nil
         if busy { error = "交流已暂停。回来后可重试，不会重新生成人物。" }
         busy = false
         stopSpeech()
@@ -174,7 +163,7 @@ final class SocialEncounterModel: ObservableObject {
         Task { await speech.stopSpeaking() }
     }
     func speak() {
-        guard let reply, let character, !isFixture else { return }
+        guard let reply, currentBeat?.speaker == "npc", let character, !isFixture else { return }
         speechTask?.cancel()
         let speech = deps.speech
         let card = character.card
@@ -252,246 +241,93 @@ final class SocialEncounterModel: ObservableObject {
             character = try await roster.character(id: id)
             return
         }
-        let all = try await roster.allCharacters()
-        // A current local person may meet us in a different activity, but never
-        // silently restore removed contacts, teleport cities or reset their card.
-        let possible = all.filter { CafeEncounterPolicy.eligible($0, regionID: region.id) }
-        if pendingPublic == nil && generatedCard == nil {
-            // Leave room for unfamiliar library people even with a large local roster.
-            if !possible.isEmpty, Double.random(in: 0..<1) < 0.25 {
-                let past = try history.receipts()
-                let weights = possible.map { person in
-                    let meetings = past.filter { $0.characterID == person.id && $0.completedAt != nil }
-                    return ActivityEncounterChance.personWeight(encounters: meetings.count,
-                        lastSeen: meetings.compactMap(\.completedAt).max(), now: Date())
-                }
-                if let index = ActivityEncounterChance.chooseIndex(weights: weights, roll: Double.random(in: 0..<1)) {
-                    character = possible[index]
-                }
-            }
-            if character == nil, let registry = deps.npcRegistry {
-                // Only confirmed actions select a public identity; Tab switches never select again.
-                pendingPublic = try await registry.selectEncounter(context: encounterContext)
-                try Task.checkCancellation()
-            }
+        if library == nil { library = try AuthoredEncounterLibrary.bundled() }
+        guard let library, let registry = deps.npcRegistry else { throw PreparationError.characterUnavailable }
+        if pendingPublic == nil {
+            pendingPublic = try await registry.selectAuthoredEncounter(context: encounterContext,
+                libraryVersion: library.version, runID: runID)
+            try Task.checkCancellation()
         }
-        if character == nil, let npc = pendingPublic {
-            if let existing = try await roster.character(id: npc.id) {
-                guard existing.contactStatus != .removed else { throw RosterStore.RosterError.identityConflict }
-                character = existing
-            } else {
-                let id = try await roster.addCharacter(characterID: npc.id, travelerID: npc.travelerId,
-                    card: PublicNPCAdapter.characterCard(from: npc), difficulty: profile.difficultyLevel, isFriend: false)
-                character = try await roster.character(id: id)
-            }
+        guard let npc = pendingPublic else {
+            try history.completeUnavailable(runID: runID)
+            isSolitude = true
+            return
         }
-        if character == nil {
-            if generatedCard == nil {
-                generationOrigin = EncounterService.rollOrigin(roll: Double.random(in: 0..<1))
-                try await generateApprovedCandidate(
-                    userLevel: profile.difficultyLevel,
-                    existingNames: Set(all.map { $0.card.name })
-                )
-            }
-            let id: UUID
-            if let npc = registeredGeneratedPublic {
-                id = try await roster.addCharacter(
-                    characterID: npc.id,
-                    travelerID: npc.travelerId,
-                    card: PublicNPCAdapter.characterCard(from: npc),
-                    difficulty: profile.difficultyLevel,
-                    isFriend: false
-                )
-            } else {
-                guard let card = generatedCard else { throw RosterStore.RosterError.characterNotFound }
-                id = try await roster.addCharacter(
-                    characterID: generatedID,
-                    card: card,
-                    difficulty: profile.difficultyLevel,
-                    isFriend: false
-                )
-                registrationPending = true
-            }
+        guard library.entries[npc.id]?.story.actionId == authoredActivity.id else { throw PreparationError.characterUnavailable }
+        if let existing = try await roster.character(id: npc.id) {
+            guard existing.contactStatus != .removed else { throw RosterStore.RosterError.identityConflict }
+            character = existing
+        } else {
+            let id = try await roster.addCharacter(characterID: npc.id, travelerID: npc.travelerId,
+                card: PublicNPCAdapter.characterCard(from: npc), difficulty: profile.difficultyLevel, isFriend: false)
             character = try await roster.character(id: id)
         }
         if let character {
-            let recent = try await chat.recentMessages(characterID: character.id, limit: 8)
-            alreadyKnown = !recent.isEmpty
-            transcript = recent.map { "\($0.role.rawValue): \($0.text)" }.joined(separator: "\n")
+            let recent = try await chat.recentMessages(characterID: character.id, limit: 1)
+            alreadyKnown = character.isFriend || !recent.isEmpty
         }
     }
 
     private var encounterContext: BackendNPCEncounterContext {
-        .init(regionID: region.id, activityID: SceneActivity.encounterPoolID, category: "social")
+        .init(regionID: region.id, activityID: authoredActivity.id, category: "social")
     }
     private var sceneContext: String {
-        "城市：\(region.nameZh)。\(activity.scene.title) · \(activity.title)。\(activity.steps[0].context)"
+        "城市：\(region.nameZh)。\(authoredActivity.scene.title) · \(authoredActivity.title)。本次相遇：\(chapters.first?.title ?? authoredActivity.title)。"
     }
-
-    private func generateApprovedCandidate(
-        userLevel: DifficultyLevel,
-        existingNames: Set<String>
-    ) async throws {
-        var names = existingNames
-        var guidance: [String] = []
-        for _ in 0..<3 {
-            let generated = try await EncounterService(llm: deps.llm).generateEncounter(
-                origin: generationOrigin,
-                region: region,
-                userLevel: userLevel,
-                existingNames: names,
-                activityContext: activity.scene.encounterContext,
-                diversityGuidance: guidance
-            )
-            try Task.checkCancellation()
-            // Local template fallback must not masquerade as a newly generated identity.
-            guard !generated.isFallback else { throw PreparationError.characterUnavailable }
-            let backendCard = PublicNPCAdapter.backendCard(from: generated.card)
-            let diversityProfile = generated.diversityProfile.backendValue
-            guard let registry = deps.npcRegistry else {
-                generatedCard = generated.card
-                generatedDiversityProfile = diversityProfile
-                return
-            }
-            let review = try await registry.reviewEncounterNPC(
-                card: backendCard,
-                diversityProfile: diversityProfile,
-                context: encounterContext
-            )
-            try Task.checkCancellation()
-            guard review.decision == .accept else {
-                names.insert(generated.card.name)
-                guidance = review.guidance.isEmpty ? Self.genericDiversityGuidance : review.guidance
-                continue
-            }
-            do {
-                registeredGeneratedPublic = try await registry.registerEncounterNPC(
-                    id: generatedID,
-                    card: backendCard,
-                    diversityProfile: diversityProfile,
-                    context: encounterContext
-                )
-                generatedCard = generated.card
-                generatedDiversityProfile = diversityProfile
-                return
-            } catch let error as BackendClientError where error.code == "NPC_PERSONA_TOO_SIMILAR" {
-                // Another registration may have won after the read-only review. Ask again for
-                // current, explainable correction dimensions and regenerate the same local slot.
-                let current = try await registry.reviewEncounterNPC(
-                    card: backendCard,
-                    diversityProfile: diversityProfile,
-                    context: encounterContext
-                )
-                names.insert(generated.card.name)
-                guidance = current.guidance.isEmpty ? Self.genericDiversityGuidance : current.guidance
-            } catch let error as BackendClientError where error.code == "NPC_AVATAR_COVERAGE_GAP" {
-                // Registration already reserved this approved narrative in the durable pending queue.
-                generatedCard = generated.card
-                generatedDiversityProfile = diversityProfile
-                return
-            }
-        }
-        throw PreparationError.characterUnavailable
+    private func visibleContext(through index: Int) -> String {
+        guard chapters.indices.contains(step) else { return sceneContext }
+        let narration = chapters[step].beats.prefix(index + 1)
+            .filter { $0.speaker == "narrator" }.map(\.english).joined(separator: " ")
+        return narration.isEmpty ? sceneContext : sceneContext + "\n已读场景：" + narration
     }
-
-    private static let genericDiversityGuidance = [
-        "Change the occupation domain, social role and interaction style together.",
-        "Use a different background tension and interest combination; do not merely rename the person.",
-    ]
     private func performSelection() async throws {
         guard let selected, let character else { return }
-        let choice = activity.steps[step].choices[selected]
-        try Task.checkCancellation()
-        try await chat.appendActivityLineIfNeeded(messageID: userIDs[step], characterID: character.id,
-            role: .user, text: choice.english, translation: choice.chinese, context: sceneContext)
-        try Task.checkCancellation()
-        try await obtainReply(index: step)
+        let source = pendingStage - 1
+        let choice = chapters[source].choices[selected]
+        try await chat.appendActivityLineIfNeeded(messageID: userIDs[source], characterID: character.id,
+            role: .user, text: choice.english, translation: choice.chinese, context: visibleContext(through: beatIndex))
+        if selections.count == source { selections.append(selected) }
+        try await loadChapter(pendingStage)
+        self.selected = nil
     }
-    private func obtainReply(index: Int) async throws {
-        guard let character else { throw RosterStore.RosterError.characterNotFound }
-        let choice = index >= 0 ? selected.map { activity.steps[index].choices[$0] } : nil
-        if cachedReplies[index] == nil {
-            if isFixture {
-                cachedReplies[index] = .init(
-                    english: index < 0 ? "Hello! Taking a little break too?" : index == 0 ? "Of course. A short break makes a busy day better." : selected == 0 ? "I'd like that. Let's keep in touch." : "It was lovely meeting you. Take care!",
-                    chinese: index < 0 ? "你好！你也来歇一会儿吗？" : index == 0 ? "当然。忙碌的一天，歇一会儿很有帮助。" : selected == 0 ? "好啊，我们保持联系吧。" : "很高兴认识你，保重！",
-                    acceptsContact: index == 1 && selected == 0)
-            } else {
-                if encounterPlan == nil {
-                    guard index == -1 else { throw SocialDialogueService.DialogueError.invalidReply }
-                    let plan = try await SocialDialogueService(llm: deps.llm).plan(
-                        card: character.card, context: sceneContext, history: transcript,
-                        alreadyKnown: alreadyKnown, difficulty: character.difficultyLevel)
-                    try Task.checkCancellation()
-                    encounterPlan = plan
-                }
-                guard let plan = encounterPlan else { throw SocialDialogueService.DialogueError.invalidReply }
-                switch index {
-                case -1: cachedReplies[index] = plan.opening
-                case 0:
-                    guard let selected else { throw SocialDialogueService.DialogueError.invalidReply }
-                    cachedReplies[index] = plan.branches[selected].reply
-                case 1:
-                    guard let first = selections.first, let selected else { throw SocialDialogueService.DialogueError.invalidReply }
-                    cachedReplies[index] = plan.branches[first].endings[selected].reply
-                default: throw SocialDialogueService.DialogueError.invalidReply
-                }
-            }
-        }
-        try Task.checkCancellation()
-        guard let result = cachedReplies[index] else { throw SocialDialogueService.DialogueError.invalidReply }
-        reply = result
-        if !committedReplies.contains(index) {
-            try await chat.appendActivityLineIfNeeded(messageID: index < 0 ? openingID : replyIDs[index],
-                characterID: character.id, role: .assistant, text: result.english,
-                translation: result.chinese, context: sceneContext)
-            try Task.checkCancellation()
-            committedReplies.insert(index)
-            if let choice { transcript += "\nuser: \(choice.english)" }
-            transcript += "\nassistant: \(result.english)"
-        }
-        startRegistration()
-    }
-    private func startRegistration() {
-        guard registrationPending, !isFixture, registrationTask == nil,
-              let character, let diversityProfile = generatedDiversityProfile,
-              let registry = deps.npcRegistry else { return }
-        // Portrait registration must not hold the dialogue's loading state open.
-        registrationTask = Task {
-            defer { registrationTask = nil }
-            do {
-                let publicNPC = try await registry.registerEncounterNPC(id: character.id,
-                    card: PublicNPCAdapter.backendCard(from: character.card),
-                    diversityProfile: diversityProfile,
-                    context: encounterContext)
-                try Task.checkCancellation()
-                let latest = try await roster.character(id: character.id)
-                try await registry.linkPublicNPC(npcID: publicNPC.id, localCharacterID: character.id,
-                    status: latest?.contactStatus == .removed ? .removed : latest?.isFriend == true ? .friend : .candidate)
-                try await roster.applyPublicIdentity(characterID: character.id, travelerID: publicNPC.travelerId,
-                                                     card: PublicNPCAdapter.characterCard(from: publicNPC))
-                self.character = try await roster.character(id: character.id)
-                registrationPending = false
-            } catch {
-                // Keep this exact local identity; existing foreground registration
-                // coordinator retries missing portraits/network without replacing it.
-            }
-        }
-    }
-}
 
-private extension EncounterService.DiversityProfile {
-    var backendValue: BackendNPCDiversityProfile {
-        BackendNPCDiversityProfile(
-            occupationDomain: occupationDomain,
-            socialRole: socialRole,
-            interactionStyle: interactionStyle,
-            interestDomains: interestDomains,
-            traits: traits,
-            backgroundMotif: backgroundMotif,
-            energy: energy,
-            warmth: warmth,
-            structure: structure
-        )
+    private func loadChapter(_ stage: Int) async throws {
+        guard let character else { throw RosterStore.RosterError.characterNotFound }
+        if chapters.count == stage {
+            let part: EncounterChapter
+            if isFixture {
+                part = try Self.fixtureChapter(stage)
+            } else {
+                guard let library else { throw PreparationError.characterUnavailable }
+                part = try library.chapter(characterID: character.id, actionID: authoredActivity.id,
+                    choices: selections, reunion: alreadyKnown)
+            }
+            chapters.append(part)
+        }
+        try Task.checkCancellation()
+        step = stage
+        beatIndex = 0
+        try await revealBeat(0)
+    }
+    private func revealBeat(_ index: Int) async throws {
+        guard let character else { return }
+        let beat = chapters[step].beats[index]
+        if beat.speaker == "npc" {
+            try await chat.appendActivityLineIfNeeded(messageID: beatIDs[step][index], characterID: character.id,
+                role: .assistant, text: beat.english, translation: beat.chinese, context: visibleContext(through: index))
+        }
+        try Task.checkCancellation()
+        beatIndex = index
+    }
+    static func fixtureChapter(_ stage: Int) throws -> EncounterChapter {
+        let beats: [[String: String]] = [
+            ["speaker":"narrator","english":"A gust of wind lifts a folded map off the table. It catches beneath a nearby chair.","chinese":"一阵风把桌上的折叠地图吹了起来，卡在旁边的椅子下。"],
+            ["speaker":"npc","english":"That map seems keen to explore without us. Could you hold this corner while I flatten it?","chinese":"这张地图好像想自己去探险。你能帮我按住这一角，让我把它铺平吗？"],
+            ["speaker":"narrator","english":"The paper settles between two cups. A pencilled route appears beside the bridge.","chinese":"纸张在两只杯子之间平整下来，桥边有一条铅笔画的路线。"],
+            ["speaker":"npc","english":stage == 2 ? "Thanks for the help. A small detour turned into the best part of my break. Enjoy your walk!" : "I drew this route myself. I like finding quiet corners, even when getting there takes a little longer.","chinese":stage == 2 ? "谢谢你帮忙。这个小插曲成了我休息时最有趣的部分，祝你散步愉快！" : "这条路线是我自己画的。我喜欢找安静的角落，哪怕绕点路。"]
+        ]
+        let choices = stage == 2 ? [] : [["english":"Let's check the route together.","chinese":"我们一起看看这条路线吧。"],["english":"What makes that corner special?","chinese":"那个角落有什么特别的地方？"]]
+        let data = try JSONSerialization.data(withJSONObject: ["title":"风里的地图","outline":"地图被吹起，两人一起整理路线，带着各自的发现告别。","beats":beats,"choices":choices])
+        return try EncounterChapter.decode(String(decoding: data, as: UTF8.self), stage: stage)
     }
 }

@@ -1,134 +1,12 @@
+import { authoredLibrarySchema } from "./authored-content.js";
+export {
+  authoredLibrarySchema,
+  authoredStorySchema,
+  authoredActions,
+} from "./authored-content.js";
 import { createHash } from "node:crypto";
-import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
-import { publicCard } from "./card-schema.js";
 import { deriveDiversityProfile, personaSignature } from "./persona-diversity.js";
-import { isValidTravelerId } from "./traveler-id.js";
-
-export const authoredActions = [
-  "park-route",
-  "park-seat",
-  "park-notes",
-  "pond-reflection",
-  "pond-sketch",
-  "pond-postcard",
-  "rain-weather",
-  "rain-pastry",
-  "rain-napkin",
-] as const;
-const cities = [
-  "london",
-  "melbourne",
-  "newyork",
-  "capetown",
-  "singapore",
-  "dublin",
-  "edinburgh",
-  "vancouver",
-  "auckland",
-  "nairobi",
-  "toronto",
-  "sydney",
-  "neworleans",
-  "manchester",
-  "kingston",
-];
-const beat = z
-  .object({
-    speaker: z.enum(["narrator", "npc"]),
-    english: z.string().trim().min(1).max(420),
-    chinese: z.string().trim().min(1).max(260),
-  })
-  .strict();
-const choice = z
-  .object({
-    english: z.string().trim().min(1).max(180),
-    chinese: z.string().trim().min(1).max(100),
-    next: z.string(),
-  })
-  .strict();
-const node = z
-  .object({
-    id: z.string(),
-    beats: z.array(beat).min(4).max(6),
-    choices: z.array(choice).max(2),
-  })
-  .strict();
-export const authoredStorySchema = z
-  .object({
-    titleZh: z.string().trim().min(1).max(80),
-    actionId: z.enum(authoredActions),
-    nodes: z.array(node).length(7),
-  })
-  .strict()
-  .superRefine((story, ctx) => {
-    const edges: Record<string, string[]> = {
-      start: ["a", "b"],
-      a: ["aa", "ab"],
-      b: ["ba", "bb"],
-      aa: [],
-      ab: [],
-      ba: [],
-      bb: [],
-    };
-    if (new Set(story.nodes.map((n) => n.id)).size !== 7)
-      ctx.addIssue({ code: "custom", message: "Duplicate story nodes" });
-    for (const n of story.nodes) {
-      if (
-        !edges[n.id] ||
-        JSON.stringify(n.choices.map((c) => c.next)) !== JSON.stringify(edges[n.id])
-      )
-        ctx.addIssue({ code: "custom", message: "Invalid story edges" });
-      if (
-        n.beats.filter((b) => b.speaker === "npc").length < 2 ||
-        !n.beats.some((b) => b.speaker === "narrator")
-      )
-        ctx.addIssue({ code: "custom", message: "Missing dialogue or narration" });
-    }
-  });
-export const authoredLibrarySchema = z
-  .object({
-    version: z.literal(1),
-    libraryVersion: z.string().regex(/^[a-z0-9-]{1,80}$/),
-    entries: z
-      .array(
-        z
-          .object({
-            id: z.uuid(),
-            travelerId: z.string().refine(isValidTravelerId),
-            avatarId: z.uuid(),
-            avatarSHA256: z.string().regex(/^[a-f0-9]{64}$/),
-            card: publicCard,
-            summaryZh: z.string().min(1).max(600),
-            story: authoredStorySchema,
-          })
-          .strict(),
-      )
-      .length(200),
-  })
-  .strict()
-  .superRefine((library, ctx) => {
-    for (const key of ["id", "travelerId", "avatarId"] as const)
-      if (new Set(library.entries.map((e) => e[key])).size !== 200)
-        ctx.addIssue({ code: "custom", message: "Duplicate " + key });
-    for (const entry of library.entries)
-      if (
-        !cities.includes(entry.card.regionId) ||
-        !entry.card.languages.includes("English")
-      )
-        ctx.addIssue({ code: "custom", message: "Unsupported city/language" });
-    for (const city of cities)
-      for (const action of authoredActions)
-        if (
-          !library.entries.some(
-            (e) => e.card.regionId === city && e.story.actionId === action,
-          )
-        )
-          ctx.addIssue({
-            code: "custom",
-            message: `Unreachable city/action ${city}/${action}`,
-          });
-  });
 
 /** Offline CLI-only atomic roster replacement; never called from outing routes. */
 export async function importAuthoredLibrary(
@@ -138,6 +16,15 @@ export async function importAuthoredLibrary(
   const library = authoredLibrarySchema.parse(input);
   return database.sql.begin(async (sql) => {
     await sql`select pg_advisory_xact_lock(hashtextextended('npc-avatar-library', 0))`;
+    const manifestHash = createHash("sha256")
+      .update(JSON.stringify(library))
+      .digest("hex");
+    const versions =
+      await sql`insert into app.npc_library_versions(version,manifest_hash)
+      values(${library.libraryVersion},${manifestHash}) on conflict(version) do update set version=excluded.version
+      where app.npc_library_versions.manifest_hash=excluded.manifest_hash returning version`;
+    if (versions.length !== 1)
+      throw Error("Library version is immutable; publish a new version");
     for (const entry of library.entries) {
       const avatars =
         await sql`select id from app.npc_avatars where id=${entry.avatarId} and enabled
@@ -157,11 +44,15 @@ export async function importAuthoredLibrary(
       if (inserted.length !== 1)
         throw Error(`Existing identity conflicts: ${entry.id}`);
     }
+    // Explicit replacement authorization releases old portrait bindings, never deletes people/messages.
+    await sql`update app.public_npcs set avatar_id=null,updated_at=now()
+      where avatar_id=any(${library.entries.map((e) => e.avatarId)}::uuid[])
+      and not(id=any(${library.entries.map((e) => e.id)}::uuid[]))`;
     // Authoritative scene pool only. Friends, messages and identities remain intact.
     await sql`delete from app.npc_scene_affinities`;
     for (const entry of library.entries)
-      await sql`insert into app.npc_scene_affinities(npc_id,region_id,activity_id,category,language)
-      values(${entry.id},${entry.card.regionId},${entry.story.actionId},'social','English')`;
+      await sql`insert into app.npc_scene_affinities(npc_id,region_id,activity_id,category,language,library_version)
+      values(${entry.id},${entry.card.regionId},${entry.story.actionId},'social','English',${library.libraryVersion})`;
     return library.entries.length;
   });
 }

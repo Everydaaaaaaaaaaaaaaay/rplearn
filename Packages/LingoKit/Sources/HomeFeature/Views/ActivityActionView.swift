@@ -16,13 +16,12 @@ struct ActivityActionView: View {
     let deps: HomeDependencies
     @ObservedObject var model: SocialEncounterModel
     @ObservedObject var journey: ActivityJourneyCoordinator
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.scenePhase) private var scenePhase
+    @State private var autoVoice = false
+    @State private var showsTranscript = false
     @State private var saved = false
     @State private var saveError: String?
     @State private var wordSelection: TokenSelection?
-    @State private var contentHeight: CGFloat = 0
     private let ink = Color(red: 0.10, green: 0.18, blue: 0.17)
 
     init(model: SocialEncounterModel, journey: ActivityJourneyCoordinator, deps: HomeDependencies, isVisible: Bool,
@@ -52,7 +51,7 @@ struct ActivityActionView: View {
         .onChange(of: scenePhase) { _, phase in if phase != .active { model.stopSpeech() } }
         .onChange(of: wordSelection != nil) { _, showing in if showing { model.stopSpeech() } }
         .onChange(of: model.reply?.english) { _, _ in
-            if model.canReveal && isVisible && scenePhase == .active { model.speak() }
+            if autoVoice && model.canReveal && isVisible && scenePhase == .active && wordSelection == nil { model.speak() }
         }
         .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
@@ -86,40 +85,22 @@ struct ActivityActionView: View {
             .padding(.top, 16)
             .padding(.bottom, 38)
         }
+        .tint(ink)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color(red: 0.965, green: 0.958, blue: 0.936).ignoresSafeArea())
         .accessibilityIdentifier(model.started ? "activities.result" : "activities.confirmation")
     }
 
     private func identity(_ character: CharacterDTO) -> some View {
-        VStack(alignment: .leading, spacing: 18) {
-            Text(model.alreadyKnown ? "在人群中，再次遇见" : "旅途中，一个新的名字")
-                .font(.caption).tracking(2).foregroundStyle(ink.opacity(0.6))
-            HStack(alignment: .center, spacing: 22) {
-                AvatarBadge(name: character.card.name, size: 100,
-                    imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                    usesPendingPlaceholder: true)
-                VStack(alignment: .leading, spacing: 9) {
-                    Text(character.displayName).font(.system(.largeTitle, design: .serif).weight(.regular))
-                    Text(character.card.occupation).font(.subheadline).foregroundStyle(ink.opacity(0.65))
-                }
+        HStack(spacing: 14) {
+            AvatarBadge(name: character.card.name, size: 52, imageName: character.card.avatarAssetName,
+                remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
+            VStack(alignment: .leading, spacing: 5) {
+                Text(character.displayName).font(.title2.weight(.semibold))
+                Text(character.card.occupation).font(.subheadline).foregroundStyle(ink.opacity(0.65))
             }
-            Text(character.card.personality).font(.subheadline).lineSpacing(5)
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 8) { interests(character) }
-                VStack(alignment: .leading, spacing: 8) { interests(character) }
-            }
-            Rectangle().fill(ink.opacity(0.15)).frame(height: 0.5).padding(.top, 10)
-        }
-        .accessibilityIdentifier("activities.encounter.identity")
-    }
-
-    private func interests(_ character: CharacterDTO) -> some View {
-        ForEach(Array(character.card.hobbies.prefix(3).enumerated()), id: \.offset) { _, hobby in
-            Text(hobby).font(.caption).padding(.horizontal, 12).padding(.vertical, 7)
-                .background(ink.opacity(0.05), in: Capsule())
-        }
+            Spacer(minLength: 0)
+        }.accessibilityIdentifier("activities.encounter.identity")
     }
 
     private var solitudeContent: some View {
@@ -146,33 +127,51 @@ struct ActivityActionView: View {
                 Text("一次相遇，未必从自我介绍开始。").font(.caption).foregroundStyle(ink.opacity(0.65))
                 Text(activity.title).font(.largeTitle.weight(.semibold))
                 Text(activity.introduction).lineSpacing(5)
-                Text("两次选择 · 可以告别 · 不消耗金币").font(.caption).foregroundStyle(ink.opacity(0.65))
+                Text("一章小故事 · 两次行动选择 · 结尾自由加好友").font(.caption).foregroundStyle(ink.opacity(0.65))
                 primary("出发，给相遇一点时间", id: "activities.action.start") { journey.start() }
             } else {
                 if model.summary {
                     summary
                 } else {
-                    Text(activity.steps[model.step].context).font(.subheadline).foregroundStyle(ink.opacity(0.75))
-                    if let reply = model.reply {
-                        HStack(alignment: .top, spacing: 4) {
-                            TappableText(tokens: TokenCache.tokens(for: reply.english,
-                                cacheKey: "social-\(model.runID)-\(model.step)-\(model.selected ?? -1)"),
-                                contextID: "social-\(model.runID)", textColor: ink, selection: wordSelection,
-                                onSelect: { wordSelection = $0 })
-                                .font(.system(.title3, design: .serif))
-                                .fixedSize(horizontal: false, vertical: true)
-                            Button { model.speak() } label: {
-                                Image(systemName: "speaker.wave.2").frame(width: 44, height: 44)
-                            }.accessibilityLabel("播放角色语音")
+                    if let part = model.chapters.indices.contains(model.step) ? model.chapters[model.step] : nil {
+                        Text(model.chapters.first?.title ?? part.title).font(.system(.title, design: .serif))
+                        Text("第 \(model.step + 1) / \(model.chapterCount) 幕 · \(model.beatIndex + 1) / \(part.beats.count)")
+                            .font(.caption).foregroundStyle(ink.opacity(0.65))
+                        if let beat = model.currentBeat {
+                            Text(beat.speaker == "npc" ? (model.character?.displayName ?? "对方") : "此刻")
+                                .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.6))
+                            lookupText(beat.english, key: "beat-\(model.step)-\(model.beatIndex)")
+                                .font(.system(.title3, design: .serif)).lineSpacing(6)
+                            Text(beat.chinese).font(.subheadline).lineSpacing(4).foregroundStyle(ink.opacity(0.75))
+                            if beat.speaker == "npc" {
+                                HStack {
+                                    Button { model.speak() } label: { Label("播放台词", systemImage: "speaker.wave.2") }
+                                    Spacer()
+                                    Button { model.stopSpeech() } label: { Label("停止", systemImage: "stop.circle") }
+                                }.frame(minHeight: 44)
+                            }
                         }
-                        Text(reply.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.72))
-                    }
-                    if !model.busy && model.error == nil && model.character != nil {
-                        Text(activity.steps[model.step].question).font(.headline)
-                        choices
-                    }
-                    if model.selected != nil, model.reply != nil, !model.busy, model.error == nil {
-                        primary(model.step == 0 ? "继续" : "回看这次相遇", id: "activities.action.next") { model.advance() }
+                        Toggle("自动播放台词", isOn: $autoVoice).font(.subheadline)
+                            .onChange(of: autoVoice) { _, enabled in if enabled { model.speak() } else { model.stopSpeech() } }
+                        DisclosureGroup("回看已读内容", isExpanded: $showsTranscript) {
+                            ForEach(0...model.step, id: \.self) { stage in
+                                ForEach(Array(model.chapters[stage].beats.enumerated()), id: \.offset) { index, beat in
+                                    if stage < model.step || index < model.beatIndex {
+                                        VStack(alignment: .leading, spacing: 5) {
+                                            lookupText(beat.english, key: "history-\(stage)-\(index)")
+                                            Text(beat.chinese).font(.caption).foregroundStyle(.secondary)
+                                        }.padding(.vertical, 6)
+                                    }
+                                }
+                            }
+                        }.font(.subheadline)
+                        if !model.busy, model.error == nil {
+                            if model.atChoice { choices }
+                            else {
+                                primary(model.atEnding ? "为这次相遇收尾" : "继续故事",
+                                        id: "activities.action.next") { model.advance() }
+                            }
+                        }
                     }
                 }
                 if model.busy {
@@ -190,41 +189,46 @@ struct ActivityActionView: View {
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    private func lookupText(_ text: String, key: String) -> some View {
+        TappableText(tokens: TokenCache.tokens(for: text, cacheKey: "chapter-\(model.runID)-\(key)"),
+            contextID: "chapter-\(model.runID)-\(key)", textColor: ink, selection: wordSelection,
+            onSelect: { wordSelection = $0 }).fixedSize(horizontal: false, vertical: true)
+    }
+
     private var choices: some View {
-        ForEach(Array(activity.steps[model.step].choices.enumerated()), id: \.offset) { index, choice in
-            if model.selected == nil || model.selected == index {
-                Button { model.choose(index) } label: {
-                    VStack(alignment: .leading, spacing: 7) {
-                        Text(choice.english).font(.body.weight(.medium))
-                        Text(choice.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7))
-                        if model.selected == index, !choice.response.isEmpty {
-                            Text(choice.response).font(.caption).lineSpacing(3)
-                                .accessibilityIdentifier("activities.action.feedback")
-                        }
-                    }
-                    .padding(15).frame(maxWidth: .infinity, alignment: .leading)
-                    .background(ink.opacity(model.selected == index ? 0.09 : 0.045), in: RoundedRectangle(cornerRadius: 14))
-                }.buttonStyle(DSSceneEntranceButtonStyle())
-                    .disabled(model.selected != nil)
-                    .accessibilityIdentifier("activities.choice.\(index)")
+        VStack(alignment: .leading, spacing: 16) {
+            Text("你想怎么做？").font(.headline)
+            ForEach(Array(model.chapters[model.step].choices.enumerated()), id: \.offset) { index, choice in
+                VStack(alignment: .leading, spacing: 8) {
+                    lookupText(choice.english, key: "choice-\(model.step)-\(index)")
+                    Text(choice.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7))
+                    Button("选择这项行动") { model.choose(index) }
+                        .frame(minHeight: 44).disabled(model.selected != nil)
+                        .accessibilityIdentifier("activities.choice.\(index)")
+                }.padding(16).frame(maxWidth: .infinity, alignment: .leading)
+                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 14))
             }
         }
     }
 
     private var summary: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(activity.closing).font(.system(.title3, design: .serif)).lineSpacing(3)
+            Text(model.alreadyKnown ? "把这次短短的照面，也留在旅途中。" : activity.closing).font(.system(.title3, design: .serif)).lineSpacing(3)
+            if !model.selections.isEmpty {
+            DisclosureGroup("回顾你的选择") {
             ForEach(Array(model.selections.enumerated()), id: \.offset) { index, selected in
                 let choice = activity.steps[index].choices[selected]
                 VStack(alignment: .leading, spacing: 5) {
                     Text(activity.steps[index].question).font(.caption).foregroundStyle(.secondary)
-                    Text(choice.english).font(.subheadline.weight(.medium))
+                    lookupText(choice.english, key: "summary-\(index)").font(.subheadline.weight(.medium))
                     Text(model.responses[index]).font(.subheadline).foregroundStyle(ink.opacity(0.75))
                 }
             }
+            }
+            }
             Divider()
             if model.canConnect, let character = model.character {
-                Text(character.isFriend ? "你们已经是好友，可以接着聊。" : "对方愿意保持联系。要不要留下这个新的起点？")
+                Text(character.isFriend ? "你们已经是好友，可以接着聊。" : "要不要把这位旅途中的新朋友加入联系人？由你决定。")
                     .font(.subheadline)
                 if !character.isFriend {
                     primary(model.contactBusy ? "正在添加…" : "加为好友", id: "activities.encounter.addFriend") { model.addFriend() }
@@ -240,7 +244,7 @@ struct ActivityActionView: View {
                 Text(message).font(.caption).accessibilityIdentifier("activities.encounter.contactStatus")
             }
             if let saveError { Text(saveError).font(.caption).foregroundStyle(.red) }
-            primary(saved ? "回到场景" : "记下这次相遇，回到场景", id: "activities.action.finish") {
+            primary(saved ? "回到场景" : "就此告别，记下这次相遇", id: "activities.action.finish") {
                 do {
                     if !saved {
                         try onComplete(model.selections, model.runID, model.character, model.responses)
@@ -249,7 +253,7 @@ struct ActivityActionView: View {
                     onBack()
                 } catch { saveError = "记录未保存，已有数据未改动。请重试。" }
             }
-            Text("交流已记入这个人的聊天与记忆；没有自动扣费或建立好友关系。")
+            Text("已读台词与选择会保留；不会自动添加好友。")
                 .font(.caption2).foregroundStyle(.secondary)
         }
     }

@@ -1,4 +1,5 @@
 import { publicCard } from "./card-schema.js";
+import { authoredActions } from "./authored-content.js";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
@@ -110,6 +111,32 @@ export function registerNpcRoutes(
     const context = parse(registerBody.shape.encounterContext.unwrap(), request.body);
     return npcService.selectEncounter(identity.userId, context);
   });
+  app.post(
+    "/v1/npcs/authored-encounters",
+    { schema: { tags: ["npcs"] } },
+    async (request, reply) => {
+      const identity = await authenticateActorRequest(request, authService);
+      const input = parse(
+        z
+          .object({
+            context: registerBody.shape.encounterContext.unwrap().extend({
+              activityId: z.enum(authoredActions),
+              category: z.literal("social"),
+              language: z.literal("English"),
+            }),
+            libraryVersion: z.string().regex(/^[a-z0-9-]{1,80}$/),
+            runId: uuid,
+          })
+          .strict(),
+        request.body,
+      );
+      reply.header("cache-control", "no-store");
+      return npcService.selectEncounter(identity.userId, input.context, {
+        libraryVersion: input.libraryVersion,
+        runId: input.runId,
+      });
+    },
+  );
   app.post(
     "/v1/npcs",
     { schema: { security: [{ bearerAuth: [] }], tags: ["npcs"] } },

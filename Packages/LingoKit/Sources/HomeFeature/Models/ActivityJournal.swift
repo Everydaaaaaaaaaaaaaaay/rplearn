@@ -1,4 +1,5 @@
 import Foundation
+import DomainKit
 
 struct ActivityRecord: Codable, Equatable, Identifiable {
     let id: UUID
@@ -7,6 +8,7 @@ struct ActivityRecord: Codable, Equatable, Identifiable {
     let date: Date
     let choices: [Selection]
     var solitudeStory: String? = nil
+    var chapters: [EncounterChapter]? = nil
     var characterID: UUID? = nil
     var characterName: String? = nil
     struct Selection: Codable, Equatable {
@@ -48,8 +50,9 @@ struct ActivityJournal {
     }
     @discardableResult
     func complete(_ activity: SceneActivity, selections: [Int], runID: UUID, date: Date = Date(),
-                  characterID: UUID? = nil, characterName: String? = nil, responses: [String] = []) throws -> [ActivityRecord] {
-        guard selections.count == activity.steps.count,
+                  characterID: UUID? = nil, characterName: String? = nil, responses: [String] = [], chapters: [EncounterChapter]? = nil) throws -> [ActivityRecord] {
+        let isReunion = chapters?.count == 1 && chapters?.first?.choices.isEmpty == true && selections.isEmpty
+        guard isReunion || selections.count == activity.steps.count,
               zip(activity.steps, selections).allSatisfy({ $0.choices.indices.contains($1) })
         else { throw JournalError.invalidCompletion }
         var saved = try records()
@@ -61,8 +64,8 @@ struct ActivityJournal {
                                             chinese: choice.chinese, response: responses.indices.contains(stepIndex)
                                                 ? "\(responses[stepIndex])\n\(choice.response)" : choice.response)
         }
-        saved.append(.init(id: runID, activityID: activity.id, title: activity.title, date: date, choices: choices,
-                           characterID: characterID, characterName: characterName))
+        saved.append(.init(id: runID, activityID: activity.id, title: chapters?.first?.title ?? activity.title, date: date, choices: choices,
+                           chapters: chapters, characterID: characterID, characterName: characterName))
         defaults.set(try JSONEncoder().encode(Archive(version: 1, records: saved)), forKey: key)
         return saved
     }

@@ -196,6 +196,7 @@ public enum BackendNPCRelationshipStatus: String, Codable, Sendable {
 }
 
 public protocol PublicNPCRegistry: Sendable {
+    func selectAuthoredEncounter(context: BackendNPCEncounterContext, libraryVersion: String, runID: UUID) async throws -> BackendPublicNPC?
     func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC?
     func reviewEncounterNPC(
         card: BackendPublicNPCCard,
@@ -229,6 +230,7 @@ public struct BackendNPCEncounterContext: Codable, Sendable {
 }
 
 extension PublicNPCRegistry {
+    public func selectAuthoredEncounter(context: BackendNPCEncounterContext, libraryVersion: String, runID: UUID) async throws -> BackendPublicNPC? { nil }
     public func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC? { nil }
     public func reviewEncounterNPC(
         card: BackendPublicNPCCard,
@@ -269,6 +271,13 @@ private struct LinkPublicNPCBody: Encodable, Sendable {
 }
 
 extension BackendClient: PublicNPCRegistry {
+    public func selectAuthoredEncounter(context: BackendNPCEncounterContext, libraryVersion: String, runID: UUID) async throws -> BackendPublicNPC? {
+        struct Body: Encodable, Sendable { let context: BackendNPCEncounterContext; let libraryVersion: String; let runId: UUID }
+        struct Selection: Decodable, Sendable { let npc: BackendPublicNPC? }
+        let result: Selection = try await actorClient().send(path: "/v1/npcs/authored-encounters", method: "POST",
+            body: Body(context: context, libraryVersion: libraryVersion, runId: runID))
+        return result.npc
+    }
     public func selectEncounter(context: BackendNPCEncounterContext) async throws -> BackendPublicNPC? {
         struct Selection: Decodable, Sendable { let npc: BackendPublicNPC? }
         let result: Selection = try await actorClient().send(path: "/v1/npcs/encounters", method: "POST", body: context)

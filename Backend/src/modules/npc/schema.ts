@@ -148,6 +148,49 @@ export const userNpcRelationships = applicationSchema.table(
   ],
 );
 
+export const npcLibraryVersions = applicationSchema.table(
+  "npc_library_versions",
+  {
+    version: text("version").primaryKey(),
+    manifestHash: text("manifest_hash").notNull(),
+    createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    check(
+      "npc_library_versions_manifest_hash_check",
+      sql`${t.manifestHash} ~ '^[0-9a-f]{64}$'`,
+    ),
+  ],
+);
+
+export const npcAuthoredEncounterRuns = applicationSchema.table(
+  "npc_authored_encounter_runs",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    runId: uuid("run_id").notNull(),
+    requestHash: text("request_hash").notNull(),
+    selection: jsonb("selection").notNull(),
+    createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.runId] }),
+    check(
+      "npc_authored_encounter_runs_request_hash_check",
+      sql`${t.requestHash} ~ '^[0-9a-f]{64}$'`,
+    ),
+    check(
+      "npc_authored_encounter_runs_selection_check",
+      sql`octet_length(${t.selection}::text) <= 65536`,
+    ),
+  ],
+);
+
 export const npcSceneAffinities = applicationSchema.table(
   "npc_scene_affinities",
   {
@@ -158,6 +201,9 @@ export const npcSceneAffinities = applicationSchema.table(
     activityId: text("activity_id").notNull(),
     category: text("category").notNull(),
     language: text("language").notNull(),
+    libraryVersion: text("library_version").references(
+      () => npcLibraryVersions.version,
+    ),
   },
   (t) => [
     primaryKey({ columns: [t.npcId, t.regionId, t.activityId, t.language] }),

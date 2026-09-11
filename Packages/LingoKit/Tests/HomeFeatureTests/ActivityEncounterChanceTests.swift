@@ -13,23 +13,6 @@ final class ActivityEncounterChanceTests: XCTestCase {
             previous = p
         }
     }
-    func testRepeatedPeopleRemainSelectableAndRecoverWithTime() {
-        let now = Date()
-        let once = ActivityEncounterChance.personWeight(encounters: 1, lastSeen: now, now: now)
-        let repeated = ActivityEncounterChance.personWeight(encounters: 5, lastSeen: now, now: now)
-        XCTAssertLessThan(repeated, once)
-        XCTAssertGreaterThan(ActivityEncounterChance.personWeight(encounters: 5,
-            lastSeen: now.addingTimeInterval(-86400 * 14), now: now), repeated)
-        let weights = [1.0, repeated, 0.02]
-        var hits = [0, 0, 0]
-        for i in 0..<10000 {
-            hits[ActivityEncounterChance.chooseIndex(weights: weights, roll: Double(i) / 10000)!] += 1
-        }
-        XCTAssertGreaterThan(hits[0], hits[1])
-        XCTAssertGreaterThan(hits[1], hits[2])
-        XCTAssertGreaterThan(hits[2], 0)
-        XCTAssertNil(ActivityEncounterChance.chooseIndex(weights: [], roll: 0))
-    }
     func testRetryPreservesRollAndFailedRequestsDoNotCountAsMisses() throws {
         let suite = "journey-\(UUID())"
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))

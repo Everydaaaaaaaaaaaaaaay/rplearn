@@ -5,23 +5,6 @@ enum ActivityEncounterChance {
     static func encounterProbability(misses: Int) -> Double {
         0.90 - 0.25 * pow(0.65, Double(max(0, misses)))
     }
-
-    static func personWeight(encounters: Int, lastSeen: Date?, now: Date) -> Double {
-        let days = lastSeen.map { max(0, now.timeIntervalSince($0)) / 86_400 } ?? 30
-        let recent = exp(-days / 7)
-        return max(0.02, 1 / (1 + Double(max(0, encounters)) * recent))
-    }
-
-    static func chooseIndex(weights: [Double], roll: Double) -> Int? {
-        guard !weights.isEmpty else { return nil }
-        let safe = weights.map { $0.isFinite ? max(0.02, $0) : 0.02 }
-        var remaining = min(max(roll, 0), 1.nextDown) * safe.reduce(0, +)
-        for (index, weight) in safe.enumerated() {
-            remaining -= weight
-            if remaining < 0 { return index }
-        }
-        return safe.count - 1
-    }
 }
 
 /// Local activity history, scoped like ActivityJournal. Failed decoding never overwrites data.
@@ -60,6 +43,13 @@ struct ActivityEncounterHistory {
         guard items[index].encountersPerson == (characterID != nil) else { throw ActivityJournal.JournalError.invalidCompletion }
         items[index].characterID = characterID
         items[index].completedAt = now
+        try save(items)
+    }
+    /// The server can confirm an empty eligible pool (for example all contacts were removed).
+    func completeUnavailable(runID: UUID, now: Date = Date()) throws {
+        var items = try receipts()
+        guard let index = items.firstIndex(where: { $0.runID == runID }), items[index].completedAt == nil else { return }
+        items[index] = Receipt(runID: runID, encountersPerson: false, characterID: nil, completedAt: now)
         try save(items)
     }
     private func save(_ items: [Receipt]) throws {
