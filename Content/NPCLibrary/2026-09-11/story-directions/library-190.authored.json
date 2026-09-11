@@ -1,0 +1,289 @@
+{
+  "story": {
+    "titleZh": "池塘边的望远镜与门槛上的拘谨",
+    "actionId": "pond-reflection",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You use the binoculars on the stone platform to look at tree reflections in the pond. Small ripples keep changing their outlines.",
+            "chinese": "你用石台上的双筒望远镜观察池中树影。细小波纹不断改变倒影的轮廓。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Nearby, Kiptoo drinks from his own water bottle. An old concert wristband is tied loosely around his wrist.",
+            "chinese": "附近的Kiptoo正喝自己水瓶里的水。一条旧演出腕带松松系在手腕上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I visited a new colleague yesterday. There was a cup ready for guests, and I still waited for her to say I could take it.",
+            "chinese": "昨天去了新同事家。杯子都给客人摆好了，我还是等她开口才敢拿。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Out here, I'm fine. In someone else's sitting room, I suddenly get terribly careful. I did ask in the end.",
+            "chinese": "在外面我挺自在。一进别人客厅，忽然就特别小心。最后我还是问了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He laughs at himself and screws the cap back on his bottle.",
+            "chinese": "他笑了笑自己，把水瓶盖拧好。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask why he waited so long at his new colleague's place before taking the cup that was already set out for guests.",
+            "chinese": "问昨晚在新同事家，杯子明明摆给客人了，他为什么等主人开口才拿。",
+            "next": "a"
+          },
+          {
+            "english": "Ask whether he is this stiff at work too, with all his colleagues around.",
+            "chinese": "问他在工作时、同事都在的情况下，是不是也这么拘谨。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He gives a short, honest laugh and turns the closed bottle in his hands.",
+            "chinese": "他坦率地短笑一声，在手里转着盖好的水瓶。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Because the cup was right there, water and all, and my hand still wouldn't move. I sat there thirsty like a guest at a museum.",
+            "chinese": "因为杯子就在那儿，水都倒好了，我的手还是不动。我坐在那儿口渴，像博物馆里的客人。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I know the trick, you understand. One sentence—'may I?'—and it's done. I told myself that the whole evening.",
+            "chinese": "我知道窍门的。一句话，'我能喝吗？'，就完事了。整晚我都在心里对自己说这句。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He turns the bottle slowly in his hands, watching the label instead of the water.",
+            "chinese": "他慢慢转着手里的瓶子，看着标签而不是水面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "In the end I did ask. She laughed and said the cup had been waiting for me for an hour. So it works, asking. I just forget at the doorstep.",
+            "chinese": "最后我还是问了。她笑着说那杯子已经等了我一个小时。所以问是有用的，我只是在门槛上总忘。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask whether he relaxed once the host explained, or whether the stiffness stayed all evening.",
+            "chinese": "问主人说明之后他放松了吗，还是那股拘谨持续了一整晚。",
+            "next": "aa"
+          },
+          {
+            "english": "Say that every household probably has different habits, so his caution makes sense.",
+            "chinese": "说每户人家的习惯可能都不一样，所以他的谨慎说得通。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He shakes his head firmly, and this time the laugh comes out easy and full.",
+            "chinese": "他用力摇头，这次笑声轻松而响亮。"
+          },
+          {
+            "speaker": "npc",
+            "english": "At work? No. My crew would be surprised to see me so quiet. We have plenty to laugh about once the equipment is ready.",
+            "chinese": "工作时？不啊。同事看到我这么安静会吃惊。设备准备好了，我们有不少笑话聊。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's familiar ground. I know where things go and what I can touch.",
+            "chinese": "那里熟悉，东西放哪儿、什么可以碰，我都知道。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He gestures at the pond with the bottle, easy and loose, a man completely at home outdoors.",
+            "chinese": "他用瓶子朝池塘比了比，姿态放松，是个在户外完全自在的人。"
+          },
+          {
+            "speaker": "npc",
+            "english": "It's only the doorway that catches me. Put me in a stranger's sitting room and I go careful. Out here, under the sky? I'm fine.",
+            "chinese": "只有门槛会卡住我。把我放进陌生人的客厅，我就变得小心翼翼。在户外、天空底下？我没事。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask whether his friends would be surprised to see him so quiet in someone's home.",
+            "chinese": "问朋友们看到他在别人家那么安静，会不会吃惊。",
+            "next": "ba"
+          },
+          {
+            "english": "Point at the concert wristband on his wrist and ask about it.",
+            "chinese": "指着他手腕上的演出腕带，问那是怎么回事。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He nods slowly, like he is checking the memory against himself before answering.",
+            "chinese": "他缓缓点头，像是在心里核对那段记忆后才回答。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Relaxed, yes. Once she said 'the cup is yours,' something unlocked. By the end I was teasing her about her tiny spoons.",
+            "chinese": "放松了。她一说'杯子是你的'，什么东西就解开了。到最后我都在拿她家的小勺子开玩笑。"
+          },
+          {
+            "speaker": "npc",
+            "english": "And her home was fine, you know. Warm, plenty of food, good music. I wasn't judging how she hosts—I was the one stuck at my own doorstep.",
+            "chinese": "她家挺好的，热情，吃的多，音乐也好。我不是在评判她怎么待客，卡住的是我自己。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He unscrews the bottle, takes a drink, and closes it again.",
+            "chinese": "他拧开水瓶喝了一口，再把盖子拧好。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So next time I'll try asking at the door, not after an hour of thirst. Small repairs, same as my scanners.",
+            "chinese": "所以下次我试试在门口就问，别渴一个小时。小修小补，跟我修检票机一个道理。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He considers this and looks toward the tree shadows on the water.",
+            "chinese": "他想了想，看向水面的树影。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's true. Some houses you're handed a plate before you sit. Others you wait to be called. Neither is wrong.",
+            "chinese": "这话对。有的家你还没坐下盘子就递过来了。有的家要等人家叫你。哪种都没错。"
+          },
+          {
+            "speaker": "npc",
+            "english": "In my mother's house in Nakuru, visitors got the full ceremony—kids out of the sitting room until invited. I grew up thinking that was just how homes worked.",
+            "chinese": "在纳库鲁我母亲家，客人来了有一整套规矩，孩子没被叫就不进客厅。我从小以为家家都这样。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He opens his own bottle for another drink, then puts the cap back on.",
+            "chinese": "他打开自己的水瓶又喝一口，然后盖好。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So I'll keep asking. One question costs nothing. Anyway—this water is mine, and nobody had to tell me it was.",
+            "chinese": "所以我会继续问。问一句话不费什么。再说，这瓶水是我自己的，不用谁告诉我能喝。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He grins and shakes the bottle a little, like the question amuses him physically.",
+            "chinese": "他咧嘴一笑，轻轻晃了晃瓶子，好像这个问题让他觉得好玩。"
+          },
+          {
+            "speaker": "npc",
+            "english": "They would laugh first, then worry. 'Kiptoo, are you sick? You've said four words in an hour.'",
+            "chinese": "他们会先笑，然后担心。'基普托你是不是病了？一个小时就说了四个字。'"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'd have to explain. That I'm not avoiding them, and I don't dislike anyone's home—I just don't want to grab the wrong thing off a stranger's shelf.",
+            "chinese": "我得解释。我不是躲着他们，也不是讨厌谁家，我只是不想在陌生人的架子上乱拿东西。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He points the bottle toward the binoculars on the stone platform, then back at himself.",
+            "chinese": "他用瓶子指了指石台上的双筒望远镜，又指了指自己。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Like these—I wouldn't pick them up in your house without asking. Here in the park, different rules. The sky belongs to everyone.",
+            "chinese": "就像这个——在你家我不会不问就拿。在公园里规矩不一样，天空是大家的。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He lifts his wrist so the woven wristband catches the light, a faded strip of fabric with a torn edge.",
+            "chinese": "他抬起手腕，让编织腕带对着光，一条褪色的布带，边缘有点破。"
+          },
+          {
+            "speaker": "npc",
+            "english": "From my first big show as a technician. We had a scanner fail and had to switch to the spare. Quite a start.",
+            "chinese": "我第一次做大演出技术员时留下的。一台检票机坏了，得换备用的，开头可真够忙。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I kept it after the show and tied the ends together. I collect the old ones. This one isn't a pass anymore.",
+            "chinese": "演出后我留了下来，把两端系在一起。我收这些旧腕带，这条已经不是通行证了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He tucks the wristband back under his sleeve, unhurried, and picks up his bottle again.",
+            "chinese": "他把腕带收回袖子里，不慌不忙，又拿起水瓶。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The new ones open gates. This one just opens the story. Cheaper ticket, better view.",
+            "chinese": "新的能开闸门。这条只能开故事。票便宜，风景更好。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  },
+  "summaryZh": "Kiptoo在公共池边很自在，却主动自嘲去新同事家不敢拿客人杯子。用户可问后来怎样放松、不同人家习惯，或聊工作反差与旧演出腕带。每条路线结束在普通交流，不把公园里的他写成拘谨者。",
+  "reunion": {
+    "titleZh": "回家再修",
+    "beats": [
+      {
+        "speaker": "narrator",
+        "english": "You look at tree shadows through the pond-side binoculars. Kiptoo stops nearby to put a small shopping note into his pocket.",
+        "chinese": "你透过池边望远镜看树影。Kiptoo在附近停下，把一张小购物单收进口袋。"
+      },
+      {
+        "speaker": "npc",
+        "english": "Good to see you. Got the bits for my old radio at last.",
+        "chinese": "又见面了。修旧收音机的小零件总算买齐了。"
+      },
+      {
+        "speaker": "narrator",
+        "english": "He closes the small parts bag and puts it away, well clear of the water.",
+        "chinese": "他合好零件小袋，把它收好，离水边远远的。"
+      },
+      {
+        "speaker": "npc",
+        "english": "I'll work on it at home. These little pieces don't need a swim.",
+        "chinese": "回家再弄。这些小零件可不用游泳。"
+      },
+      {
+        "speaker": "narrator",
+        "english": "He smiles and pauses to watch the water before continuing along the path.",
+        "chinese": "他笑着停下看看水面，然后沿步道继续走。"
+      }
+    ]
+  }
+}

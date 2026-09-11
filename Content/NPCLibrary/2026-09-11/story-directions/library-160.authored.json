@@ -1,0 +1,254 @@
+{
+  "story": {
+    "titleZh": "背包里的两种天气",
+    "actionId": "park-seat",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You sit down in the park with your coffee. Beside the bench, Peter searches his own backpack. A spare battery comes out, then a folded jacket.",
+            "chinese": "你拿着咖啡在公园坐下。长椅旁，Peter正在翻自己的背包，先掏出备用电池，又拿出一件折好的外套。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Tissues. I know I packed some. Apparently I packed two kinds of weather as well.",
+            "chinese": "纸巾。我记得带了。看样子还把两种天气一起装进去了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He finds a small packet in a side pocket and holds it up with a smile.",
+            "chinese": "他从侧袋找到一小包纸巾，笑着举起来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There they are. I could have tried that pocket first.",
+            "chinese": "找到了。我本来可以先找这个口袋。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask whether carrying all that gets heavy.",
+            "chinese": "问带这么多会不会重。",
+            "next": "a"
+          },
+          {
+            "english": "Ask whether he has found what he needed.",
+            "chinese": "问他是不是已经找到了。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "It does. I like having things ready, but my shoulders have an opinion about that.",
+            "chinese": "会。我喜欢准备齐全，不过肩膀对此有不同意见。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He puts the battery into a small case inside the bag.",
+            "chinese": "他把电池放回包里的小盒子。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Half of it comes home unused. Not that I mind every time. I just notice it on the longer walks.",
+            "chinese": "一半东西都原样带回家。也不是每次都介意，只是走得远时就有感觉了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He folds the jacket smaller before putting it away.",
+            "chinese": "他把外套折小一点，再放回去。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask whether he might bring less next time.",
+            "chinese": "问下次会不会少带一点。",
+            "next": "aa"
+          },
+          {
+            "english": "Ask whether friends often borrow things from him.",
+            "chinese": "问朋友是不是常向他借东西。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Yes, all sorted. Just wanted to wipe my own hands.",
+            "chinese": "是的，找到了。只是想擦擦自己的手。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He takes one tissue and closes the packet.",
+            "chinese": "他抽出一张纸巾，把小包合好。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Now I can put my little shop back in its bag.",
+            "chinese": "现在可以把我的小杂货铺收回包里了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He clears his things from the end of the bench.",
+            "chinese": "他把长椅一端自己的东西收好。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Say you do not need to borrow anything.",
+            "chinese": "说明自己不需要借东西。",
+            "next": "ba"
+          },
+          {
+            "english": "Ask which item he actually uses most.",
+            "chinese": "问最常用的是哪一件。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Probably that second packet of batteries. I have a spare already. A spare spare may be too much.",
+            "chinese": "大概可以少带第二包电池。我已经有备用的了，备用的备用也许有点多。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He checks the two small cases, then puts both back for the journey home.",
+            "chinese": "他确认了一下两个小盒子，再把它们都收好带回家。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll leave one at home next time. The jacket stays, though. I do use that.",
+            "chinese": "下次留一包在家。不过外套还得带，我真用得上。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He closes the backpack and sits beside it, letting his shoulders rest.",
+            "chinese": "他合上背包，在旁边坐下，让肩膀歇一会儿。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Often enough. Someone forgets a light or a jacket, and I am the first person they ask.",
+            "chinese": "挺常的。有人忘了带灯或者外套，第一个就来问我。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He rests a hand on the closed bag.",
+            "chinese": "他把手搭在合好的包上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Usually I'm happy to help. But sometimes I need what I've got. I can say that, too.",
+            "chinese": "通常我愿意帮忙。不过有时自己的也要用，这个我也可以直说。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He gives an easy smile and settles back without offering you an unwanted item.",
+            "chinese": "他轻松地笑了笑，靠着椅背坐稳，没有硬塞东西给你。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "All right. Nothing you need to take, then.",
+            "chinese": "好，那就不用拿什么。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He slips the tissue packet into the side pocket where he found it.",
+            "chinese": "他把纸巾放回刚才找到它的侧袋。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That is where those belong. I may remember it by the next stop.",
+            "chinese": "它们原来该放这儿。到下一次歇脚时，我也许就记住了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He laughs quietly and leaves the space beside your coffee clear.",
+            "chinese": "他轻轻笑了，给你咖啡旁留出空位。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "The thin jacket. More than the clever bits, honestly.",
+            "chinese": "那件薄外套。说真的，比那些小工具常用。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He pats the folded jacket near the top of the bag.",
+            "chinese": "他拍了拍放在包上层的折好外套。"
+          },
+          {
+            "speaker": "npc",
+            "english": "It does one simple job. And I can find it without unloading everything. Usually.",
+            "chinese": "用途很简单，而且不用把包倒空就找得到。通常是这样。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He pulls the zip closed and gives himself a small, amused shake of the head.",
+            "chinese": "他拉好拉链，觉得好笑似的轻轻摇了摇头。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  },
+  "summaryZh": "Peter找纸巾时先掏出电池与外套，展示准备过头的普通摩擦。用户可问负担与借用，或让他收好东西、聊最常用的外套；他愿意帮忙也能说自己不够，不强送、不记人情债。",
+  "reunion": {
+    "titleZh": "白天休息的小手电",
+    "beats": [
+      {
+        "speaker": "narrator",
+        "english": "You sit in the park with a coffee. Peter is checking the switch on his own small torch, keeping it pointed at his bag.",
+        "chinese": "你拿着咖啡在公园坐下。Peter正检查自己的小手电开关，始终朝着包里。"
+      },
+      {
+        "speaker": "npc",
+        "english": "Hello again. Just making sure this is off before I pack it.",
+        "chinese": "又见面了。收起来前，先确认它关好了。"
+      },
+      {
+        "speaker": "narrator",
+        "english": "He turns the switch off and puts the torch into a side pocket.",
+        "chinese": "他关掉开关，把手电放进侧袋。"
+      },
+      {
+        "speaker": "npc",
+        "english": "No work for it now. It can save its batteries.",
+        "chinese": "现在不用它干活，先省点电。"
+      },
+      {
+        "speaker": "narrator",
+        "english": "He closes the pocket and sits back for his own break.",
+        "chinese": "他合好口袋，靠着椅背歇下来。"
+      }
+    ]
+  }
+}
