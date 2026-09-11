@@ -1,0 +1,611 @@
+{
+  "scope": "10 reviewed pilot profiles, all 45 pairs; labels authored from narrative, reconciled with existing backend classifier. Avatar appearance excluded. This is not comparison against the production roster.",
+  "profiles": [
+    {
+      "name": "Elliot Shaw",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "transport-logistics",
+        "socialRole": "mentor",
+        "interactionStyle": "reserved",
+        "interestDomains": [
+          "books-learning",
+          "community",
+          "food-drink"
+        ],
+        "traits": [
+          "candid",
+          "careful",
+          "pragmatic",
+          "reserved"
+        ],
+        "backgroundMotif": "service",
+        "energy": "low",
+        "warmth": "balanced",
+        "structure": "structured"
+      }
+    },
+    {
+      "name": "Maya Bell",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "arts-media",
+        "socialRole": "mentor",
+        "interactionStyle": "reserved",
+        "interestDomains": [
+          "books-learning",
+          "food-drink",
+          "music",
+          "nature"
+        ],
+        "traits": [
+          "careful",
+          "curious",
+          "reserved",
+          "sociable"
+        ],
+        "backgroundMotif": "self-discovery",
+        "energy": "low",
+        "warmth": "warm",
+        "structure": "spontaneous"
+      }
+    },
+    {
+      "name": "Ruth Mercer",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "retired",
+        "socialRole": "creator",
+        "interactionStyle": "analytical",
+        "interestDomains": [
+          "books-learning",
+          "crafts-making",
+          "music"
+        ],
+        "traits": [
+          "disciplined",
+          "independent",
+          "witty"
+        ],
+        "backgroundMotif": "fresh-start",
+        "energy": "low",
+        "warmth": "reserved",
+        "structure": "structured"
+      }
+    },
+    {
+      "name": "Morgan Vale",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "skilled-trades",
+        "socialRole": "helper",
+        "interactionStyle": "reserved",
+        "interestDomains": [
+          "arts",
+          "books-learning",
+          "community",
+          "crafts-making"
+        ],
+        "traits": [
+          "ambitious",
+          "candid",
+          "pragmatic",
+          "reserved"
+        ],
+        "backgroundMotif": "migration",
+        "energy": "low",
+        "warmth": "warm",
+        "structure": "structured"
+      }
+    },
+    {
+      "name": "Daniel Reed",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "science-technology",
+        "socialRole": "creator",
+        "interactionStyle": "analytical",
+        "interestDomains": [
+          "arts",
+          "books-learning",
+          "music",
+          "nature"
+        ],
+        "traits": [
+          "candid",
+          "careful",
+          "disciplined",
+          "empathetic"
+        ],
+        "backgroundMotif": "family-duty",
+        "energy": "medium",
+        "warmth": "warm",
+        "structure": "structured"
+      }
+    },
+    {
+      "name": "Aisha Grant",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "skilled-trades",
+        "socialRole": "mentor",
+        "interactionStyle": "reserved",
+        "interestDomains": [
+          "books-learning",
+          "crafts-making",
+          "food-drink",
+          "games"
+        ],
+        "traits": [
+          "careful",
+          "independent",
+          "pragmatic",
+          "reserved"
+        ],
+        "backgroundMotif": "exploration",
+        "energy": "low",
+        "warmth": "balanced",
+        "structure": "balanced"
+      }
+    },
+    {
+      "name": "Simon Holt",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "business-finance",
+        "socialRole": "helper",
+        "interactionStyle": "reserved",
+        "interestDomains": [
+          "arts",
+          "crafts-making",
+          "food-drink",
+          "sports"
+        ],
+        "traits": [
+          "careful",
+          "empathetic",
+          "reserved"
+        ],
+        "backgroundMotif": "family-duty",
+        "energy": "low",
+        "warmth": "warm",
+        "structure": "structured"
+      }
+    },
+    {
+      "name": "Nora Price",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "sports-fitness",
+        "socialRole": "helper",
+        "interactionStyle": "reserved",
+        "interestDomains": [
+          "books-learning",
+          "community",
+          "food-drink",
+          "history-culture"
+        ],
+        "traits": [
+          "calm",
+          "candid",
+          "careful",
+          "empathetic"
+        ],
+        "backgroundMotif": "career-change",
+        "energy": "low",
+        "warmth": "balanced",
+        "structure": "balanced"
+      }
+    },
+    {
+      "name": "Alex Rowan",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "arts-media",
+        "socialRole": "helper",
+        "interactionStyle": "analytical",
+        "interestDomains": [
+          "arts",
+          "books-learning",
+          "games",
+          "history-culture"
+        ],
+        "traits": [
+          "careful",
+          "curious",
+          "reserved"
+        ],
+        "backgroundMotif": "migration",
+        "energy": "low",
+        "warmth": "warm",
+        "structure": "structured"
+      }
+    },
+    {
+      "name": "Victor Lane",
+      "profile": {
+        "version": 1,
+        "occupationDomain": "retired",
+        "socialRole": "storyteller",
+        "interactionStyle": "animated",
+        "interestDomains": [
+          "arts",
+          "books-learning",
+          "crafts-making",
+          "nature"
+        ],
+        "traits": [
+          "candid",
+          "sociable",
+          "witty"
+        ],
+        "backgroundMotif": "tradition",
+        "energy": "high",
+        "warmth": "warm",
+        "structure": "balanced"
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "a": "Morgan Vale",
+      "b": "Simon Holt",
+      "decision": "accept",
+      "similarityScore": 51,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Morgan Vale",
+      "b": "Aisha Grant",
+      "decision": "accept",
+      "similarityScore": 48,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 47,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Aisha Grant",
+      "decision": "accept",
+      "similarityScore": 46,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Morgan Vale",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 44,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Aisha Grant",
+      "decision": "accept",
+      "similarityScore": 43,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Morgan Vale",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 41,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Simon Holt",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 41,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Maya Bell",
+      "decision": "accept",
+      "similarityScore": 38,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Daniel Reed",
+      "decision": "accept",
+      "similarityScore": 37,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 35,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Simon Holt",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 35,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 34,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Morgan Vale",
+      "decision": "accept",
+      "similarityScore": 32,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Aisha Grant",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 32,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Simon Holt",
+      "decision": "accept",
+      "similarityScore": 27,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Simon Holt",
+      "decision": "accept",
+      "similarityScore": 27,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Daniel Reed",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 27,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Morgan Vale",
+      "decision": "accept",
+      "similarityScore": 25,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Daniel Reed",
+      "b": "Simon Holt",
+      "decision": "accept",
+      "similarityScore": 25,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 24,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Aisha Grant",
+      "b": "Simon Holt",
+      "decision": "accept",
+      "similarityScore": 24,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Nora Price",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 24,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 22,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Aisha Grant",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 17,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Daniel Reed",
+      "decision": "accept",
+      "similarityScore": 15,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Alex Rowan",
+      "decision": "accept",
+      "similarityScore": 15,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Morgan Vale",
+      "decision": "accept",
+      "similarityScore": 15,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Morgan Vale",
+      "b": "Daniel Reed",
+      "decision": "accept",
+      "similarityScore": 15,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Morgan Vale",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 14,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Daniel Reed",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 14,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Daniel Reed",
+      "decision": "accept",
+      "similarityScore": 13,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Ruth Mercer",
+      "decision": "accept",
+      "similarityScore": 12,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Simon Holt",
+      "decision": "accept",
+      "similarityScore": 12,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Aisha Grant",
+      "decision": "accept",
+      "similarityScore": 11,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Ruth Mercer",
+      "decision": "accept",
+      "similarityScore": 10,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Maya Bell",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 10,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Aisha Grant",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 9,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Simon Holt",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 9,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Alex Rowan",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 9,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Nora Price",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 8,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Ruth Mercer",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 7,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Daniel Reed",
+      "b": "Nora Price",
+      "decision": "accept",
+      "similarityScore": 7,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Elliot Shaw",
+      "b": "Victor Lane",
+      "decision": "accept",
+      "similarityScore": 3,
+      "dimensions": [],
+      "guidance": []
+    },
+    {
+      "a": "Daniel Reed",
+      "b": "Aisha Grant",
+      "decision": "accept",
+      "similarityScore": 3,
+      "dimensions": [],
+      "guidance": []
+    }
+  ]
+}

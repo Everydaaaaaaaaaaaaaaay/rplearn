@@ -1,0 +1,320 @@
+{
+  "card": {
+    "name": "Simon Holt",
+    "age": 53,
+    "gender": "male",
+    "regionId": "london",
+    "nationality": "Novandian",
+    "occupation": "tax advisor and amateur puppet playwright",
+    "hobbies": [
+      "writing puppet plays",
+      "jogging along the canal",
+      "repairing small clockwork mechanisms"
+    ],
+    "personality": "Simon is careful, dry and quietly generous, the sort of man who checks a form twice before signing. He is shy in his own voice but startlingly warm when he speaks through a puppet. He loves precision, hates waste, and worries that his real voice sounds too flat to be kind. His stubbornness is small but real: he resists changing a routine once it works.",
+    "background": "Simon spent twenty years making numbers behave for clients, then started writing short puppet plays for a children's library group as a weekend escape. His best-received character was born from a joke about a bakery receipt. He keeps a workshop drawer of springs, felt and tiny hinges, and jogs slowly but faithfully along the canal to think through dialogue. He is currently rehearsing a new play and wants, for once, to give a compliment using his own voice instead of a puppet's.",
+    "speechStyle": "Short, measured sentences with pauses; precise word choices; occasionally slips into a higher, livelier puppet voice mid-conversation, then apologizes for it with a small cough.",
+    "hometown": "Marlow Bottom",
+    "languages": [
+      "English"
+    ],
+    "birthday": "02-17",
+    "signature": "Let me try that again — in my own voice, this time.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "honesty in small things",
+        "craft done properly"
+      ],
+      "flaws": [
+        "hides behind his puppet voice",
+        "overthinks simple kindness"
+      ],
+      "boundaries": [
+        "does not discuss clients' finances",
+        "will not be rushed into naming things"
+      ],
+      "conversationalHabits": [
+        "pauses before answering",
+        "names objects out loud when thinking"
+      ],
+      "anchorLines": [
+        "Mind the puddle — it claims at least one shoe an hour.",
+        "I'm not shy, exactly. My voice just needs a warm-up.",
+        "That name has a good shape to it. Round, like the pastry."
+      ]
+    }
+  },
+  "summaryZh": "西蒙是个寡言的税务顾问，业余给儿童戏偶写剧本。雨天咖啡馆里，他借分享点心的机会为新角色挑名字，一会儿用戏偶的尖细嗓音说话，一会儿又咳嗽着换回自己的声音。他正练习第一次不用手偶、亲口说出一句赞美——这份笨拙的真诚让人很难忘记。",
+  "story": {
+    "titleZh": "雨天的酥皮与名字",
+    "actionId": "rain-pastry",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Rain drums on the café window. A man at the next table shakes water off his umbrella and sets a folder of sketches beside a small felt puppet.",
+            "chinese": "雨点敲打着咖啡馆的窗。邻桌的男人抖掉伞上的水，把一叠草图放在一只毛毡手偶旁边。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Sorry — this thing drips like a dog. I didn't expect the rain to follow me in.",
+            "chinese": "抱歉——这伞滴水滴得像条狗。没想到雨会跟着我进来。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He notices the pastry plate between you and studies it with real concentration, as if it were a tax form.",
+            "chinese": "他注意到你们之间的点心盘，认真端详起来，像在看一张税表。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That looks like a good one. Would you mind sharing? I'll trade you the dry half of my table.",
+            "chinese": "那个看起来不错。你介意分我一点吗？我用我这半边干桌子来换。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Fair warning: I'm choosing a name for a puppet today, and I judge pastries the same way I judge names.",
+            "chinese": "先说好：我今天要给一个戏偶选名字，而我评判点心和评判名字用的是同一套标准。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Push the plate toward him and offer to split it.",
+            "chinese": "把盘子推过去，提议一人一半。",
+            "next": "a"
+          },
+          {
+            "english": "Ask what makes a pastry name good before sharing.",
+            "chinese": "先问问他什么样的点心名字算好，再分享。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You split the pastry down the middle. He accepts his half with both hands, like something fragile.",
+            "chinese": "你把点心从中间分开。他双手接过自己那一半，像捧着什么易碎的东西。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thank you. Flaky on the outside, soft in the middle. Most good characters are built exactly like this.",
+            "chinese": "谢谢。外面酥脆，中间柔软。大多数好角色就是这样造出来的。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The play is for the library children. A little creature who works in a bakery and worries too much.",
+            "chinese": "这出戏是给图书馆的孩子们演的。一个小家伙，在面包店工作，总是想太多。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He lifts the felt puppet and makes it sniff the air above the pastry, moving its little arms.",
+            "chinese": "他举起毛毡手偶，让它凑近点心上方嗅了嗅，摆动着小胳膊。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Ooh, butter! That's a Tuesday smell if ever I smelled one! Sorry — that's the character talking. He gets excited around food.",
+            "chinese": "哦，黄油！要说什么是星期二的味道，那肯定就是它！抱歉，刚才是戏偶角色在说话。它一见食物就激动。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Suggest naming the puppet after this pastry.",
+            "chinese": "建议就用这种点心给戏偶命名。",
+            "next": "aa"
+          },
+          {
+            "english": "Ask what the puppet worries about in the play.",
+            "chinese": "问问戏偶在剧里都担心些什么。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "A good short name is easy to call across a room. Try 'Pip' with a big smile. The children at the back need to catch it too.",
+            "chinese": "好用的短名字，隔着房间也容易喊清楚。试着笑着说‘皮普’。坐在后排的孩子也得听得到。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He demonstrates with an exaggerated smile, turning his head toward an imaginary back row of seats.",
+            "chinese": "他夸张地笑着演示，把头转向想象中最后一排的座位。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Pip works. I tried Reginald once, and spent half the rehearsal repeating it. A fine name, just rather a lot for this little fellow.",
+            "chinese": "皮普挺好。我试过雷金纳德，结果半场排练都在重复名字。名字是不错，对这个小家伙来说却有点长。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He glances at the pastry on your plate, then at his sketches, connecting the two quietly.",
+            "chinese": "他看看你盘子里的点心，又看看他的草图，默默把两者联系起来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So. If you're willing to share that pastry, we could test names on it. Real science, this.",
+            "chinese": "所以。如果你愿意分享那块点心，我们可以拿它来测名字。这可是正经科学。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Share the pastry, then try calling the puppet “Pip”.",
+            "chinese": "分享点心，再试着喊戏偶“皮普”。",
+            "next": "ba"
+          },
+          {
+            "english": "Share, but argue for a longer, grander name.",
+            "chinese": "分享点心，但主张用一个更长更气派的名字。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Name him after the pastry? Hmm. 'Crumb'? Too small. 'Puff'? He'd never take himself seriously again.",
+            "chinese": "用点心给他命名？嗯。'渣渣'？太小了。'泡芙'？他以后就再也严肃不起来了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He writes three candidates on the corner of a sketch, crossing out two immediately.",
+            "chinese": "他在草图一角写下三个候选名字，立刻划掉两个。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'Puff' it is, actually. He worries, he puffs up, then he deflates and laughs. That's the whole play.",
+            "chinese": "其实就'泡芙'吧。他担心，他鼓起来，然后泄了气笑出来。整出戏就是这个。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He straightens up, puts the puppet down, and looks at you directly — no felt between you.",
+            "chinese": "他坐直身子，放下手偶，直视着你——中间没有隔着毛毡。"
+          },
+          {
+            "speaker": "npc",
+            "english": "In my own voice now: this was a genuinely good idea. Thank you. That was harder to say than it should have been.",
+            "chinese": "现在用我自己的声音说：这真是个好主意。谢谢你。这句话说出来比想象中难。"
+          },
+          {
+            "speaker": "npc",
+            "english": "First performance without the puppet. I'll jog home lighter, I think.",
+            "chinese": "第一次不靠戏偶表演。我想我跑步回家时会轻一些。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "What does he worry about? Everything. Whether the bread will rise. Whether the oven is honest.",
+            "chinese": "他担心什么？什么都担心。面包发不发得起来。烤箱诚不诚实。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He makes the puppet wring its tiny felt hands while he speaks in his normal voice.",
+            "chinese": "他一边用正常嗓音说话，一边让手偶绞着自己毛毡做的小手。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The play's answer is that worry is just care with nowhere to go. He learns to give it somewhere — into the kneading.",
+            "chinese": "这出戏的答案是：担心不过是没处安放的在意。他学会给它找个去处——揉进面团里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So he needs a soft name. Something that folds. Not 'Crumb' — too breakable.",
+            "chinese": "所以他需要一个柔软的名字。能折叠起来的。不能叫'渣渣'——太容易碎了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He tears a piece of the shared pastry, shapes it absently, and stops, pleased.",
+            "chinese": "他掰下一块共享的点心，心不在焉地捏着，然后停下来，面露喜色。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'Roll'. Like a bread roll, and like rolling worry away. You shared the pastry that named him. That goes in the programme notes.",
+            "chinese": "'卷卷'。像面包卷，也像把担心卷走。是你分享的这块点心给了他名字。这要写进节目单的。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "After sharing the pastry, you try the name Pip aloud. Simon turns the puppet toward you as if it has heard its name for the first time.",
+            "chinese": "分享完点心，你试着喊了一声皮普。西蒙让戏偶转向你，像是它第一次听见自己的名字。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Pip. Clear as anything. It doesn't need a grand introduction — just someone calling it from the other side of the room.",
+            "chinese": "皮普。再清楚不过了。不需要盛大的介绍，只要有人从房间另一边喊它一声。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He makes the puppet bow toward you, a small stiff bow with felt arms.",
+            "chinese": "他让手偶向你鞠躬，一个僵硬的小鞠躬，挥着毛毡胳膊。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Pip, meet the person who named you. Pip is nervous. Pip is always nervous. It's his whole personality.",
+            "chinese": "皮普，见见给你起名字的人。皮普很紧张。皮普总是紧张。这就是他的全部性格。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll write him a scene where he shares a pastry with a stranger on a rainy day. Art, meeting life.",
+            "chinese": "我要给他写一场戏：雨天和一个陌生人分享点心。艺术照进生活。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "A grander name? Like 'Bartholomew'? The children would chew it for a week and spit it out.",
+            "chinese": "更气派的名字？比如'巴塞洛缪'？孩子们得嚼一个星期，然后吐出来。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He tries the long name in a booming stage voice, runs out of breath halfway through the greeting, and laughs at himself.",
+            "chinese": "他用洪亮的舞台腔试着喊长名字，招呼打到一半就没气了，自己也笑起来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "All right. Compromise. Grand name, small nickname. 'Bartholomew' on the poster, 'Pip' in the play.",
+            "chinese": "好吧。折中一下。大气派的名字，小昵称。海报上写'巴塞洛缪'，戏里叫'皮普'。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's actually better. He can complain about his grand name in scene one. Instant character.",
+            "chinese": "这样其实更好。他可以在第一幕抱怨自己的大名。性格立刻就出来了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He writes both names on the sketch, one above the other, and taps the page twice, satisfied.",
+            "chinese": "他把两个名字都写在草图上，一上一下，满意地在纸上敲了两下。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You argued with me and improved the play. Most people just agree. I liked the argument.",
+            "chinese": "你跟我争论，还把戏改好了。大多数人只会点头同意。我喜欢这场争论。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "card": {
+    "name": "Daniel Reed",
+    "age": 41,
+    "gender": "male",
+    "regionId": "london",
+    "nationality": "fictional nationality: Norvish",
+    "occupation": "data organiser at a local library",
+    "hobbies": [
+      "stargazing",
+      "instrumental music",
+      "weekend football refereeing"
+    ],
+    "personality": "Daniel is methodical and fair, the kind of man who sorts his sketching pencils by grade before drawing a single line. He referees weekend football, so he can admit a mistake out loud, but he over-explains while doing it. He loves order, yet he is slowly learning that some things resist categories, like his father's handwritten recipes.",
+    "background": "Daniel works at a local library, untangling decades of mislabelled records into clean catalogues. On weekends he referees amateur football matches, where a wrong call must be owned quickly and publicly. At home he is transcribing his father's chaotic recipe cards, and keeps finding instructions that make no sense, like 'add the good spoon of salt'. He is learning to keep what he cannot classify.",
+    "speechStyle": "Measured, slightly formal sentences with numbered points when nervous. He says 'to be honest' and 'strictly speaking' often, corrects himself mid-sentence, and asks short clarifying questions.",
+    "hometown": "Fenwick Hollow",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "Strictly speaking, that wasn't part of the plan.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "fairness",
+        "order"
+      ],
+      "flaws": [
+        "over-explains",
+        "over-fond of tidiness"
+      ],
+      "boundaries": [
+        "won't pretend certainty he doesn't have",
+        "won't let anyone touch his sketchbook without asking"
+      ],
+      "conversationalHabits": [
+        "numbers his points when flustered",
+        "self-corrects mid-sentence"
+      ],
+      "anchorLines": [
+        "Strictly speaking, that line shouldn't be there. But it is.",
+        "Let me put it in three points, if that's all right.",
+        "I referee football, so I'm used to owning a bad call."
+      ]
+    }
+  },
+  "summaryZh": "丹尼尔是图书馆的数据整理员，周末兼职足球裁判，做事讲条理却正在学着接纳无法归类的杂物。他在池边速写时手肘一移多出一笔，围绕这一笔去留的纠结，恰好映照他整理父亲菜谱时的心得：有些意外值得保留。",
+  "story": {
+    "titleZh": "池边多出的一笔",
+    "actionId": "pond-sketch",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You pause over your sketchbook beside the pond, choosing between a tree and its reflection. Nearby, a man on a folding stool looks up from a second sketchbook.",
+            "chinese": "你在池塘边翻开速写本，在树和倒影之间犹豫。旁边坐在折叠凳上的男子，也从自己的速写本上抬起头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Same difficult choice? I'm stuck on mine too. Would you look at my page a moment — tree on the left, or the reflection filling it?",
+            "chinese": "你也在为这个选择犯难？我这张也卡住了。愿意帮我看看吗——左边画树，还是让倒影铺满画面？"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He shifts the sketchbook so the pond is visible, then taps the water line twice with his eraser.",
+            "chinese": "他把速写本转过来让你看到池塘，然后用橡皮在水面线上轻敲了两下。"
+          },
+          {
+            "speaker": "npc",
+            "english": "To be honest, I've been sitting here longer than I'd like to admit. One: the tree is steadier. Two: the reflection is more interesting. I referee football, so I'm used to making the call. But this one won't be called.",
+            "chinese": "说实话，我坐在这里的时间比我想承认的要长。第一，树更稳。第二，倒影更有意思。我当足球裁判，习惯做判罚。可这个判不了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You've been looking at it a while. Which one would you pick?",
+            "chinese": "你看了好一会儿了。你会选哪个？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "The reflection — the tree can wait.",
+            "chinese": "选倒影——树可以等等。",
+            "next": "a"
+          },
+          {
+            "english": "The tree — roots first, water later.",
+            "chinese": "选树——先画根，水以后再说。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He rotates the sketchbook so the reflection fills the page, then starts with the water line, working upward in short strokes.",
+            "chinese": "他把速写本转过来让倒影占满整页，从水面线开始，用短笔触向上画。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Good call. The reflection changes every minute, so it has to be caught now. The tree isn't going anywhere. To be honest, I'd give you a third reason, but there isn't one. I just like having a three.",
+            "chinese": "选得好。倒影每分钟都在变，必须现在抓住。树又不会跑。说实话，我还想给你第三个理由，但没有。我就是喜欢凑个第三。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Reaching to steady the page, his elbow knocks against the stool's arm. The pencil skids across the sky area, leaving a long grey streak straight through the reflection.",
+            "chinese": "他伸手扶正画纸，手肘撞上了凳子扶手。铅笔一滑，在倒影上方划出一道长长的灰痕，正好穿过画面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Oh no. That's my elbow, not the wind — I felt it happen. That's ruined the whole upper half. Or has it? Strictly speaking, a streak like that could be wind on the water. Could it?",
+            "chinese": "哦不。那是我的手肘，不是风——我感觉到它发生了。这把上半部分全毁了。还是说没有？严格来说，这样的划痕可以当成水面的风。可以吗？"
+          },
+          {
+            "speaker": "npc",
+            "english": "I referee football, so I'm used to owning a bad call. But before I own this one — is it a mistake, or is it wind?",
+            "chinese": "我当足球裁判，习惯承认误判。但在承认之前——这是一笔失误，还是一阵风？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Keep it — it reads as wind on the water.",
+            "chinese": "保留——看起来像水上的风。",
+            "next": "aa"
+          },
+          {
+            "english": "Erase it — the reflection should stay clean.",
+            "chinese": "擦掉——倒影应该保持干净。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He anchors the page with the tree's trunk first, pressing harder at the roots, then leaves the water half empty for now.",
+            "chinese": "他先从树干入手固定画面，在根部加重笔压，暂时留空了水的那一半。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Roots first. That's how I sort records at the library, actually — start with what's solid, file the rest around it. One trunk, two branches, then everything else finds its shelf.",
+            "chinese": "先画根。我在图书馆整理档案其实也是这样——从扎实的东西开始，其余的围绕它归档。一根树干，两条枝，其余的自然各就各位。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A breeze crosses the pond and the reflection ripples. Distracted, he shifts his own elbow to watch it, and the idle pencil drags a soft diagonal line across the blank water half.",
+            "chinese": "一阵风吹过池塘，倒影起了涟漪。他分神去看，挪动了自己的手肘，闲放的铅笔在空白的水面那半边拖出一道柔和的斜线。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hm. That wasn't planned — my elbow moved, not the wind. To be honest, it sits exactly where the ripple just went. One: erase it and keep the plan tidy. Two: leave it and call it the breeze. I keep going back and forth.",
+            "chinese": "嗯。这笔没在计划里——是我的手肘动了，不是风。说实话，它正好落在刚才涟漪的位置。第一，擦掉，保持计划的整洁。第二，留着，就叫它风。我一直在犹豫。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You watched it happen. In your eyes, does that line belong in the picture or not?",
+            "chinese": "你亲眼看到它出现的。在你看来，这条线属于这幅画吗？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "It belongs — it's the breeze, signed by the breeze.",
+            "chinese": "它属于这幅画——是风留下的签名。",
+            "next": "ba"
+          },
+          {
+            "english": "It doesn't — the roots should carry the page.",
+            "chinese": "它不属于——这页应该由树根来撑。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He studies the streak, then instead of erasing, he softens its edges with short feathering strokes until it blends into the water.",
+            "chinese": "他端详着那道划痕，然后没有擦，而是用轻柔的短笔触把边缘晕开，让它融进水面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Wind on the water. All right. I'll keep it. You know, I'm transcribing my father's recipe cards at the moment, and some of them say things like 'add the good spoon of salt'. No numbers, no measure. I used to flag them as errors.",
+            "chinese": "水上的风。好，我留着它。你知道吗，我最近在整理我父亲的手写菜谱卡片，有些上面写着'加那把好勺子盐'。没有数字，没有量。我以前都把它们标成错误。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He signs a small D.R. in the corner, then holds the page up beside the real pond, tilting it to compare.",
+            "chinese": "他在角落签上小小的D.R.，然后把画举到真池塘旁边，倾斜着对比。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Now I keep the good spoon too. One streak, one spoon — both unclassified, both staying. Thank you for the call. I'd have erased it and been quietly annoyed all week.",
+            "chinese": "现在'那把好勺子'我也留着。一道划痕，一把勺子——都没法归类，都留下来。谢谢你这次的判罚。要是我擦了它，会闷闷不乐一整周。"
+          },
+          {
+            "speaker": "npc",
+            "english": "If you sketch here often, maybe we'll both be arguing with the water again sometime. It's a good opponent — never repeats itself.",
+            "chinese": "如果你常来这里速写，也许我们改天还会一起和水较劲。它是个好对手——从不重复自己。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He rubs the streak out carefully, sweeping the crumbs into his palm with the side of his hand and tipping them into a small paper fold.",
+            "chinese": "他仔细地把划痕擦掉，用手侧把橡皮屑扫进掌心，倒进一个小纸折里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Clean page. You're right — the reflection was the whole point, and a streak through it argues with the idea. Strictly speaking, the idea deserves a fair hearing.",
+            "chinese": "干净的页面。你说得对——倒影才是重点，一道划痕穿过它会跟这个想法唱反调。严格来说，这个想法值得一次公正的审理。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He redraws the water line in one confident pass, and the reflection sits undisturbed on the page.",
+            "chinese": "他一笔笃定地重画了水面线，倒影安然落在纸上，未被打扰。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll tell you where this habit pays off — refereeing. Last month I blew a call, a handball nobody else saw. I stopped the match and said so, out loud. The losing captain still bought me a tea afterwards.",
+            "chinese": "告诉你这个习惯在哪有用——裁判。上个月我误判了一次，一个没人看见的手球。我暂停了比赛，大声承认了。输球的队长赛后还请我喝了杯茶。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Erasing isn't hiding, it's just... tidying before the whistle. Anyway. The page is honest now. Thanks for the steady hand of a second opinion.",
+            "chinese": "擦掉不是掩盖，只是……在哨响之前把事情理顺。总之，这页现在是诚实的了。谢谢你这双'第二意见'的稳当之手。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He turns the sketchbook toward the breeze's direction, as if checking the line against the source, then nods once and leaves the stroke untouched.",
+            "chinese": "他把速写本转向风吹来的方向，仿佛在对照源头核实那条线，然后点了下头，让笔触原样留着。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Signed by the breeze. I like that. One: I didn't draw it on purpose. Two: I'm choosing not to remove it. That's a different thing from an accident, isn't it? It's an adoption.",
+            "chinese": "风签的名。我喜欢这个说法。第一，我不是故意画的。第二，我选择不把它去掉。这跟意外是两回事，对吧？这是一种收养。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He writes a tiny note in the margin — 'the good line' — and underlines it twice, the way his recipe cards are underlined.",
+            "chinese": "他在页边写了个小注——'那条好线'——并画了两道下划线，就像他那些菜谱卡片上的划法。"
+          },
+          {
+            "speaker": "npc",
+            "english": "My father wrote 'add the good spoon of salt' on a card, and I nearly filed it under 'unclear'. Now it goes in a new folder I've started. It's called 'keep anyway'. You've just watched me add its first drawing.",
+            "chinese": "我父亲在一张卡片上写'加那把好勺子盐'，我差点把它归到'不清晰'那一类。现在我建了一个新文件夹，叫'无论如何都保留'。你刚见证了我放进去的第一张画。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Strictly speaking, you only answered one question. But it was the right one. The pond can referee the rest.",
+            "chinese": "严格来说，你只回答了一个问题。但那是个对的问题。剩下的让池塘来裁判。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "He lifts the pencil away and cleans the diagonal line with a few precise passes, restoring the empty water half to blank paper.",
+            "chinese": "他移开铅笔，用几笔精确的擦拭清除了那道斜线，让水面那半边恢复成空白。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Gone. The roots carry the page, as you said. To be honest, I half-hoped you'd say keep it — decisions are easier to defend than to make. But no. The plan stands, and the plan is sound.",
+            "chinese": "擦掉了。就像你说的，这页由树根来撑。说实话，我有点希望你说留着——决定容易辩护，难做出。但不行。计划成立，而且计划是合理的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He uses the edge of a spare card to mark a smaller frame around the roots. The water stays outside this version of the picture.",
+            "chinese": "他用一张备用卡片的边缘，在树根周围框出较小的画面。这一版里，水面被留在了画外。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There's a card in my father's recipes that just says 'stir until it looks right'. I fought that one for weeks. But you know what — a clean page and a vague card can live in the same box. One is a plan. The other is a person.",
+            "chinese": "我父亲的菜谱里有张卡片只写着'搅拌到看起来对了为止'。我跟它较劲了好几周。但你知道吗——一张干净的页和一张含糊的卡片可以待在同一个盒子里。一个是计划，另一个是人。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Roots done. I'll stop at this edge instead of squeezing everything in. Thanks — deciding what to leave outside was harder than drawing the tree.",
+            "chinese": "树根画好了。我就在这条边停下，不把什么都挤进来。谢谢——决定把什么留在画外，比画这棵树还难。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

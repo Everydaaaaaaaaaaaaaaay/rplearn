@@ -1,0 +1,309 @@
+{
+  "card": {
+    "name": "Nora Price",
+    "age": 58,
+    "gender": "female",
+    "regionId": "london",
+    "nationality": "Welsh",
+    "occupation": "community pool lifeguard and assistant for adult beginner swim classes",
+    "hobbies": [
+      "collecting oral histories from strangers",
+      "repairing old valve radios"
+    ],
+    "personality": "Calm and observant, with a dry humour that surfaces slowly. She is patient with nervous learners because she hates being rushed herself. Her strength is noticing what people do instead of what they announce. Her contradiction: she guards her own quiet fiercely, yet asks strangers surprisingly direct questions once they have earned it. She dislikes uninvited encouragement and empty praise.",
+    "background": "She spent thirty years as a postal clerk, then took a lifeguard qualification at fifty and now helps with adult beginner swim classes. Many students are ashamed of learning late; she learned late too, so she lets them go slow without commentary. Evenings, she records short oral histories on a battered tape recorder and fixes old radios at a cluttered kitchen table. She is currently chasing a rare 1960s Bush model she keeps losing at flea markets.",
+    "speechStyle": "Short, level sentences with long pauses implied. Uses swimming and radio metaphors naturally. Rarely exclaims; asks one careful question at a time. Says 'right then' when shifting topics and 'no rush' like a motto.",
+    "hometown": "Swansea, Wales",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "No rush. The water isn't going anywhere.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "letting people set their own pace",
+        "honest attention over cheerleading"
+      ],
+      "flaws": [
+        "can seem distant when first meeting someone",
+        "silently judges people who rush others"
+      ],
+      "boundaries": [
+        "does not give pep talks unless asked",
+        "keeps her own stories short until trust is built"
+      ],
+      "conversationalHabits": [
+        "pauses before answering, then speaks plainly",
+        "points at things rather than explaining them"
+      ],
+      "anchorLines": [
+        "No rush. The water isn't going anywhere.",
+        "People tell you the pace they need, if you watch long enough.",
+        "Right then. Your turn, if you want it."
+      ]
+    }
+  },
+  "summaryZh": "诺拉从邮政工作转行做了救生员，也协助成年人学习游泳。她不急着替别人打气，喜欢先问对方需要什么。公园里，她数着桥上的步速，常把自己的咖啡看凉了；回家还有几台等她修好的旧收音机。",
+  "story": {
+    "titleZh": "桥上的步速",
+    "actionId": "park-seat",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You find the last free bench in the park rest area, coffee in hand, and sit down facing the old bridge in the distance.",
+            "chinese": "你端着咖啡，在公园休息区找到最后一张空长椅坐下，正对着远处那座旧桥。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The woman already on the bench shifts her canvas bag to make room, then nods at the cup in your hands.",
+            "chinese": "长椅上那位女士把帆布包挪了挪，腾出位置，然后朝你手里的杯子点了点头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Careful where you set that — the bench arm wobbles. People spill more coffee on it than they drink, I reckon.",
+            "chinese": "放杯子的时候小心点——这条椅臂会晃。我猜在这上面洒掉的咖啡比喝进嘴里的还多。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She keeps her own cup in her hands, away from the loose arm, and looks back toward the bridge.",
+            "chinese": "她把自己的杯子握在手里，避开松动的扶手，再次望向桥。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'm counting, by the way. Not people. Paces. Watch the bridge a moment.",
+            "chinese": "顺便说一句，我在数数。不是数人，是数步速。看一会儿那座桥吧。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That person went past two others, then stopped in the middle. I can count the change of pace. Why they stopped — I couldn't tell you.",
+            "chinese": "那个人超过另外两人，又在桥中央停下了。我能数出步速的变化。至于为什么停，我可不知道。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Watch the bridge with her and ask what she counts for",
+            "chinese": "和她一起看桥，问她数这个做什么",
+            "next": "a"
+          },
+          {
+            "english": "Point out a jogger crossing at a steady pace",
+            "chinese": "指给她看一个匀速跑过桥的慢跑者",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You watch the distant bridge together in silence for a moment. Your coffee steams between your hands.",
+            "chinese": "你们一起安静地看了一会儿远处的桥。咖啡的热气在你手里冒着。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Habit, mostly. At the pool a change of rhythm tells me to pay attention. It doesn't tell me the whole story — I still have to check.",
+            "chinese": "主要是习惯。在泳池，节奏有变化会提醒我留意。但那不能说明全部情况，我还得去确认。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I help with the adult beginners' class. Grown people, some of them shaking at the shallow end. Nobody teaches you how to be bad at something in public.",
+            "chinese": "我在成人初学班帮忙。都是大人，有的在浅水区发抖。没人教过你怎么在大庭广众之下不擅长一件事。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "On the bridge, a woman stops halfway, grips the rail, and just stands there looking at the water for a long while.",
+            "chinese": "桥上一个女人走到一半，扶住栏杆，站在那儿久久地望着水面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Someone's stopped by the rail. Maybe for the view, maybe for a rest. All I can really see from here is that they aren't moving.",
+            "chinese": "有人在栏杆边停下了。可能想看风景，也可能休息。从这里我真正看得清的，只是那个人没在走。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Say you'd probably be the one gripping the rail",
+            "chinese": "说自己大概也会是那个扶栏杆的人",
+            "next": "aa"
+          },
+          {
+            "english": "Ask if her students ever quit",
+            "chinese": "问她有没有学员中途放弃",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "The jogger crosses the distant bridge in even, unhurried strides, the only person not rushing.",
+            "chinese": "那个慢跑者迈着均匀从容的步子跑过远处的桥，是唯一不赶时间的人。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Steady as a metronome. I like that rhythm. No idea where they're going, though. A steady pace can belong to a very busy day.",
+            "chinese": "稳得像节拍器。我喜欢这种节奏。不过我不知道那个人去哪儿。走得稳定，也可能是在过忙碌的一天。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She takes a sip from her own cup and grimaces faintly. It has clearly gone cold.",
+            "chinese": "她喝了口自己杯里的咖啡，微微皱眉。显然已经凉了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Cold again. I do this every time — sit down, start watching, forget the cup exists. I'm Nora, by the way. I watch bridges when the pool gives me a day off.",
+            "chinese": "又凉了。我每次都这样——一坐下开始看，就忘了杯子。我叫诺拉。泳池放假的时候我就来看桥。"
+          },
+          {
+            "speaker": "npc",
+            "english": "At work I have to be ready to act. Here, I can just notice a rhythm and let it pass. That's a useful difference.",
+            "chinese": "工作时我得随时准备行动。在这里，我可以只是注意到一种节奏，再让它过去。这点区别对我挺有用。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Offer to move her cold cup to the flat slat next to her bag",
+            "chinese": "提出帮她把凉咖啡挪到帆布包旁的平板上",
+            "next": "ba"
+          },
+          {
+            "english": "Leave the cup alone and ask what she does at the pool",
+            "chinese": "不动她的杯子，问她在泳池做什么工作",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "On the bridge, the woman at the rail finally lets go and walks on — slowly, but without stopping again.",
+            "chinese": "桥上，扶栏杆的女人终于松开手继续走——很慢，但没再停。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You'd grip the rail too, then. That's honest of you to say. Most people wouldn't admit it.",
+            "chinese": "那你也会扶栏杆。你能说出来，挺诚实。大多数人不会承认。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She turns to look at you properly for the first time, then nods once, as if filing something away.",
+            "chinese": "她第一次正眼看你，然后点了下头，像把什么记了下来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I learned at fifty. First lesson, I held that pool rail so hard my hands ached after. So I never tell my students 'you're doing great'. I tell them: no rush. The water isn't going anywhere.",
+            "chinese": "我五十岁才学。第一节课，我抓着池边扶手，抓到手都疼。所以我从不对学员说'你做得真棒'。我只说：不急。水又不会跑。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Cheering someone on before they ask for it — that's just noise with good intentions. Right then. Your coffee's gone cold too, I'd say. Mine certainly has.",
+            "chinese": "人家没开口你就加油——那只是好心的噪音。好了，你的咖啡也凉了吧。我的肯定是。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "A gull lands on the distant bridge rail where the woman stood, and Nora takes a slow sip of her cold coffee before answering.",
+            "chinese": "一只海鸥落在远处桥上那女人刚才扶的栏杆上。诺拉慢慢喝了口凉咖啡，才开口。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Quit? A few. One man lasted two lessons. Came back a year later, though — asked me to record what he remembered about his father teaching him to swim. Badly, he said.",
+            "chinese": "放弃？有几个。有个男人只上了两节课。不过一年后他回来了——让我录下他记得的、他父亲教他游泳的事。教得很糟，他自己说的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She pats the canvas bag on the bench between you. Something inside it clinks softly, like glass tubes.",
+            "chinese": "她拍了拍你们之间长椅上的帆布包。里面有什么东西轻轻磕碰，像玻璃管。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I collect stories like that, on tape — only when people ask me to, mind. They remember odd things. Not the swimming — the smell of the changing rooms, the way his father rolled his trousers. That's the good stuff.",
+            "chinese": "我就收集这样的故事，用磁带录——当然，得人家自己愿意。人们记住的总是怪东西。不是游泳——是更衣室的味道，是他父亲卷裤脚的样子。那才是好东西。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So no, I don't count the quitters as failures. Some of them just wanted permission to be slow, and the pool wasn't where they found it. This bench might be.",
+            "chinese": "所以我不把放弃的人算作失败。有的只是想要个'可以慢'的许可，而泳池不是他们找到它的地方。也许这张长椅是。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "She says yes and lifts her fingers clear while you move the cup to the flat slat beside her bag. It rests there without wobbling.",
+            "chinese": "她说了声好，松开手，让你把杯子放到包旁平整的椅面上。杯子稳稳地停在那里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thank you. I kept it in my hands so long I'd forgotten I could put it down. That's very like me.",
+            "chinese": "谢谢。我握了太久，差点忘了还能放下。真像我会干的事。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She flexes her fingers, relieved of the cup, and turns back to the distant bridge.",
+            "chinese": "她活动了一下手指，从杯子里解放出来，又转回去看远处的桥。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I appreciate you asking first. Sometimes I want help, sometimes I just want my hands around a cup. Today they wanted a rest.",
+            "chinese": "谢谢你先问了一句。有时我想要帮忙，有时只想握着杯子。今天我的手倒是想歇一歇。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Another group is crossing now. I'll let them pass without counting this time. My fingers get a break, and so does my little bridge survey.",
+            "chinese": "又有一群人在过桥。这次我就不数了。手指歇一歇，我这个小小的桥上观察也歇一歇。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You leave her cup in her hands and simply ask. She seems to appreciate that, taking her time before answering.",
+            "chinese": "你让她自己拿着杯子，只是开口问。她似乎挺受用，不慌不忙地才回答。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Lifeguard, and I assist with the adult beginners. The ones who never learned, or learned and then something happened, and now the deep end is a cliff.",
+            "chinese": "救生员，另外给成人初学班当助教。那些从没学过的，或者学过但后来出了事，现在深水区对他们来说就是悬崖。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A small group pauses near the middle of the bridge. Nora looks for a moment, then turns back to give your question her attention.",
+            "chinese": "一小群人在桥中央附近停下来。诺拉看了一会儿，转回来，认真听你的问题。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The lessons are my favourite part. People tell me what they want to try, and we agree on a small next step together.",
+            "chinese": "我最喜欢的是上课。大家告诉我想试什么，我们一起商量一个小小的下一步。"
+          },
+          {
+            "speaker": "npc",
+            "english": "When the pool's loud and the radios at home are broken and waiting, I come here and count paces. Right then — your cup's still warm, I hope. Don't waste it watching an old woman watch a bridge.",
+            "chinese": "泳池吵的时候，家里那些等着修的收音机也吵的时候，我就来这儿数步速。好了——你的咖啡应该还是热的吧。别浪费了，陪一个老太婆看桥。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

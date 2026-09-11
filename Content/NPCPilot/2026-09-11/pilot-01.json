@@ -1,0 +1,304 @@
+{
+  "card": {
+    "name": "Elliot Shaw",
+    "age": 38,
+    "gender": "male",
+    "regionId": "london",
+    "nationality": "fictional nationality of Mereland",
+    "occupation": "bus accessibility route surveyor",
+    "hobbies": [
+      "making jam",
+      "collecting bad jokes that flop"
+    ],
+    "personality": "Practical and blunt, Elliot trusts his own feet over any official form. He is generous with directions but bristles when strangers treat him as a free tour guide. Careful to a fault, he double-checks slopes twice, yet he still laughs first at his own terrible jokes, which keeps him human.",
+    "background": "Elliot once recommended a bus route from a spreadsheet alone, and a passenger met a steep ramp the data never mentioned. Since then he walks every route himself before signing it off. Today he is checking paths around this park for a new low-step bus stop, map in one hand, notebook in the other, hunting for a bridge approach the plan quietly ignores.",
+    "speechStyle": "Short, plain sentences with dry asides. Counts things aloud when checking. Drops a deliberately bad joke, then rates it himself.",
+    "hometown": "Marlow Fen",
+    "languages": [
+      "English"
+    ],
+    "birthday": "04-17",
+    "signature": "\"The map says flat. The map lies.\"",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "verified facts over paperwork",
+        "practical help without fuss"
+      ],
+      "flaws": [
+        "too blunt when correcting people",
+        "keeps testing things long after it is needed"
+      ],
+      "boundaries": [
+        "will not guess what he has not walked",
+        "refuses to be treated as an all-purpose guide"
+      ],
+      "conversationalHabits": [
+        "counts steps and slopes out loud",
+        "self-rates his own bad jokes"
+      ],
+      "anchorLines": [
+        "The map says flat. The map lies.",
+        "I don't sign off on paths I haven't walked.",
+        "That joke was a two out of ten. I'll allow it."
+      ]
+    }
+  },
+  "summaryZh": "埃利奥特是公交无障碍路线调查员，曾被一张表格坑过，如今坚持用自己的双脚验证每条路。他直言、爱数台阶，还会自产自销冷笑话。公园地图上没标出的台阶，正好撞上他最较真的那根神经。",
+  "story": {
+    "titleZh": "地图上没有的台阶",
+    "actionId": "park-map",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You stand at the park map board, tracing the dotted line toward the bridge with one finger. The paper is sun-faded and the paths look simpler than the park actually is.",
+            "chinese": "你站在公园地图牌前，用手指描着通往桥的虚线。图纸已经晒得褪色，上面的路径看起来比公园实际的样子简单得多。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A man with a notebook under his arm stops beside you. He taps the same dotted line twice with his pencil.",
+            "chinese": "一个胳膊下夹着本子的男人在你身边停下。他用铅笔在那条虚线上敲了两下。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You're looking at the bridge path too? Careful. That map says it's step-free. I counted eleven steps down there yesterday.",
+            "chinese": "你也在看去桥的那条路？小心。这图上写着无台阶。我昨天在那边数了十一级。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I survey bus routes for wheelchair access. I don't trust maps I haven't argued with. Want to help me settle this?",
+            "chinese": "我调查公交线路的无障碍情况。我不信我没吵过架的地图。想帮我弄清楚这事吗？"
+          },
+          {
+            "speaker": "npc",
+            "english": "Two ways to check. We walk the bridge path and count, or we follow that dotted line to the north gate and see where it actually goes.",
+            "chinese": "有两种查法。我们走去桥的那条路数台阶，或者顺着虚线走到北门，看看它到底通到哪里。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Let's walk the bridge path and count the steps.",
+            "chinese": "我们去桥那条路数台阶吧。",
+            "next": "a"
+          },
+          {
+            "english": "Let's follow the dotted line to the north gate.",
+            "chinese": "我们顺着虚线走到北门吧。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You walk the gravel path together. The bridge appears ahead, and sure enough, a short flight of steps drops down to its deck.",
+            "chinese": "你们一起走在碎石路上。桥出现在前方，果然，一小段台阶通向桥面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "One, two, three... eleven. Eleven steps, no ramp, no rail on the left. The map calls this step-free. Unbelievable.",
+            "chinese": "一，二，三……十一。十一级台阶，没有坡道，左边连扶手都没有。地图管这叫无台阶。难以置信。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He writes in a small notebook, pressing hard enough that you can see the numbers dent the next page.",
+            "chinese": "他在一个小本子上写字，用力到你能看见数字压出了下一页的印子。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Here's the thing. There's a side trail behind those bushes. It might loop around the steps, or it might be a dead end. I've been fooled before.",
+            "chinese": "问题是，那丛灌木后面有条小径。它可能绕过台阶，也可能是条死路。我以前被坑过。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So. Do we test the side trail, or do we go back and photograph every step for my report?",
+            "chinese": "那么，我们去试那条小径，还是回去把每级台阶都拍下来写进报告？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Let's test the side trail behind the bushes.",
+            "chinese": "我们去试灌木后面的小径。",
+            "next": "aa"
+          },
+          {
+            "english": "Let's go back and photograph the steps for the report.",
+            "chinese": "我们回去把台阶拍下来写报告。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You follow the dotted line along a hedge. It stops at a locked maintenance gate with a faded sign.",
+            "chinese": "你们沿着树篱的虚线走。虚线在一扇上锁的维修门前停住了，门上的牌子已经褪色。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There it is. The dotted line ends at a locked gate. Someone drew this map from a desk chair.",
+            "chinese": "看到了吧。虚线的尽头是一扇锁着的门。有人是坐在办公椅上画的这张图。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He knocks twice on the gate, then crouches to look at the gap underneath it.",
+            "chinese": "他敲了两下门，然后蹲下来看了看门下的缝隙。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Gap's too narrow for wheels, so that's that. But look — there's a proper paved path running along the outside of this fence. It curves right around toward the road.",
+            "chinese": "缝隙太窄，轮椅过不去，就这样吧。不过你看——围栏外面有一条正经的铺砌小路。它绕过去正好通向马路。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Your call. We take the paved path and trace it all the way round to see where it lets out, or we go back now and record this gate as a dead end.",
+            "chinese": "你来定。我们走那条铺砌小路，一路绕过去看它通到哪儿，或者现在就回去，把这扇门记成死路。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Let's take the paved path and trace it around.",
+            "chinese": "我们走那条铺砌小路，绕过去看看。",
+            "next": "ba"
+          },
+          {
+            "english": "Let's go back and record the gate as a dead end.",
+            "chinese": "我们回去把那扇门记成死路。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "The side trail is narrow but solid. It curves behind the bushes and rises gently to meet the bridge deck with no steps at all.",
+            "chinese": "小径很窄但很结实。它绕到灌木后面，缓缓上坡，一级台阶都没有就接上了桥面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, look at that. A way onto the bridge with no steps, hiding behind a bush. The map missed it, the council missed it, and a bush has been doing their job.",
+            "chinese": "看啊。一条没有台阶的桥路，就藏在灌木后面。地图漏了它，市政漏了它，一丛灌木替他们干了活。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He walks it twice, once fast, once slow, counting under his breath both times. Then he kneels and presses his palm flat on the surface.",
+            "chinese": "他走了两遍，一遍快，一遍慢，每次都小声数着什么。然后他跪下来，用手掌平按在路面上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Feels firm today, and the slope looks gentle. But I've been burned by 'looks gentle' before, so this goes in as a candidate approach only. Width, exact gradient, and park permission still need checking before anyone calls it accessible.",
+            "chinese": "今天摸着很结实，坡度看着也平缓。但“看着平缓”坑过我，所以这条只作为候选路线记下。宽度、精确坡度和公园的许可都得查过，才能说它无障碍。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Still — you counted with me, so I'll note a second witness. That's rare. Here's a joke for the road. Why don't steps ever win arguments? Because they always get stepped over. ...That was a three out of ten. Don't encourage me.",
+            "chinese": "不过——你陪我一起数了，所以我会记上有一个证人。这可少见。送你一个路上讲的笑话。为什么台阶从来吵不赢架？因为它们总是被踩过去。……那个我自评三分。别鼓励我。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You walk back to the steps. He photographs them from three angles, then lays a small level tool on the nosing of one step.",
+            "chinese": "你们走回台阶。他从三个角度拍照，然后把一个小水平仪放在一级台阶的边缘上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Eleven steps, no ramp, and the rise on this one is taller than the rest. That's the kind of detail a spreadsheet never shows. This goes straight to the council.",
+            "chinese": "十一级台阶，没有坡道，而且这级比其他的高。这种细节表格永远不会显示。这要直接交给市政。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He marks the page with a red sticker and closes the notebook with a snap that sounds final.",
+            "chinese": "他在那一页贴上红色标签，啪的一声合上本子，听着像是定了案。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The side trail behind the bushes might loop around, but I'm not writing maybes into a report. Photos first, trails later. That's the rule that keeps people safe.",
+            "chinese": "灌木后面的小径也许能绕过去，但我不会把“也许”写进报告。先拍照，再探路。这是保证大家安全的规矩。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You did the boring thing with me. Most people wander off at step three. I owe you a jar of jam if we ever meet where I'm not holding a clipboard.",
+            "chinese": "你陪我做了这件无聊的事。大多数人数到第三级就溜了。要是哪天碰上我手里没拿记录板，我欠你一罐果酱。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You follow the paved path as it curves along the outside of the fence. It is smooth and wide, and it lets out onto a quiet street with a bus stop sign.",
+            "chinese": "你们沿着铺砌小路走，它顺着围栏外侧拐弯。路面平整宽阔，最后通到一条安静的街上，那里立着一个公交站牌。"
+          },
+          {
+            "speaker": "npc",
+            "english": "A bus stop. Right here, on the other side of that locked gate. Do you see what this means? The dotted line was half right. The route exists. The gate is the lie.",
+            "chinese": "一个公交站。就在那扇锁着的门的另一边。你明白这意味着什么吗？虚线对了一半。路线是存在的。说谎的是那扇门。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He photographs the gate from the street side, then the bus stop, then the paved path, narrating the order to himself.",
+            "chinese": "他从街这边拍下那扇门，再拍公交站，再拍那条铺砌小路，一边拍一边给自己报顺序。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Report writes itself now. Request a gate key for staff, or a pedestrian latch. Either way, this street becomes a real transfer point instead of a dotted lie.",
+            "chinese": "报告现在自己会写了。要么给工作人员配一把门的钥匙，要么装一个行人闩。不管哪种，这条街都能变成真正的换乘点，而不是一条撒谎的虚线。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Good walking, by the way. You kept pace the whole way round without one complaint. That's rarer than you'd think. That's a four out of ten joke I just didn't tell. Saving it.",
+            "chinese": "顺便说一句，你走得不错。你全程跟上了速度，一句怨言都没有。这比你想象的少见。我刚忍住了一个四分笑话。留着备用。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You walk back the way you came. At the map board, he opens his own notebook and draws a firm X over his sketch of the dotted line.",
+            "chinese": "你们原路返回。在地图牌前，他打开自己的本子，在临摹的虚线草图上画了一个重重的叉。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Locked north gate. I'll keep this in my notes until the park team checks it. A dotted line shouldn't promise a way through that isn't there.",
+            "chinese": "北门锁着。我先记在自己的本子里，等公园工作人员核实。地图上的虚线不能把不通的地方画成通路。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He takes out his phone and types a short note to the park office, reading it aloud as he taps.",
+            "chinese": "他掏出手机给公园管理处写了条简短留言，一边打字一边念出来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'North gate path ends at locked maintenance gate. Map shows it as through route. Please correct or unlock.' Short, factual, no drama. That's how you get things fixed.",
+            "chinese": "“北门小路止于上锁的维修门。地图显示为通路。请更正或开锁。”简短，就事论事，不带情绪。这样才能把事办成。"
+          },
+          {
+            "speaker": "npc",
+            "english": "We didn't find a shortcut today, but we closed a trap. That counts. And you got to watch me not tell a joke about gates. You're welcome.",
+            "chinese": "今天我们没找到近路，但堵住了一个陷阱。这算数。而且你亲眼看到我没讲一个关于门的笑话。不用谢。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

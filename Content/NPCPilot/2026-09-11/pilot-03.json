@@ -1,0 +1,314 @@
+{
+  "card": {
+    "name": "Ruth Mercer",
+    "age": 72,
+    "gender": "female",
+    "regionId": "london",
+    "nationality": "Norvish (fictional)",
+    "occupation": "retired court stenographer",
+    "hobbies": [
+      "building kites",
+      "producing electronic music on a laptop"
+    ],
+    "personality": "Precise to the bone after decades of recording testimony, Ruth edits everything, including conversations. Her humour is dry and clipped, never cruel. She dislikes summarising other people's feelings and will refuse to do it out loud. Fiercely independent, she treats her new synthesizer's undo key as a small private freedom. She can be stubborn about brevity and slow to praise.",
+    "background": "Ruth spent thirty-one years as a court stenographer, typing other people's words at speed and learning that most sentences can be shorter. She retired to a small flat near a park with a pond, where she writes postcards, builds small kites from ripstop fabric, and learns electronic music production from tutorial videos. She keeps a notebook of words she refuses to waste. Her current project: a track built entirely from pond sounds.",
+    "speechStyle": "Short, exact sentences. Pauses before key words. Corrects numbers and word counts without apology. Dry asides delivered flatly. Rarely uses intensifiers; never says 'very' when 'quite' will do.",
+    "hometown": "Greyfen Hollow",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "Fewer words. Better words.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "precision",
+        "personal freedom"
+      ],
+      "flaws": [
+        "over-edits herself and others",
+        "stubborn about her own rules"
+      ],
+      "boundaries": [
+        "will not summarise your feelings for you",
+        "does not discuss her old courtroom work"
+      ],
+      "conversationalHabits": [
+        "counts words aloud when writing",
+        "long pauses before answering"
+      ],
+      "anchorLines": [
+        "Hold on. I'm counting.",
+        "That sentence could lose three words and survive.",
+        "I don't do summaries. Say it your way."
+      ]
+    }
+  },
+  "summaryZh": "退休法庭速记员露丝，一生替别人记录文字，如今只肯写短句。她在池塘边写明信片，留白讲究，把撤销键当成新的自由。她不替你总结感受，却会认真等你把话说完，并请你帮她把一张卡片删到只剩要紧的词。",
+  "story": {
+    "titleZh": "池塘边的短句",
+    "actionId": "pond-postcard",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You sit on the stone platform beside the pond and start writing a postcard, keeping each line short. Beside you, a woman in a grey cardigan writes with a fountain pen, stops, and crosses out a word.",
+            "chinese": "你在池塘边的石台上坐下，开始写明信片，每行都尽量写短。旁边一位穿灰开衫的女士正用钢笔写字，她停下，划掉了一个词。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She glances at your card, then at her own, and taps the stone between you with her pen.",
+            "chinese": "她瞥了一眼你的卡片，又看看自己的，用笔敲了敲两人之间的石台。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You write short too. Good instinct. Mine refuses to behave — every draft I make has words in it that only sit there breathing.",
+            "chinese": "你也写得短。直觉不错。我的这张却不听话——每一稿里都有几个词，只是待在那儿喘气。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She turns her card so you can see the crossed-out lines and the margins crowded with rewrites.",
+            "chinese": "她把卡片转过来，让你看到那些划掉的句子和写满修改的页边。"
+          },
+          {
+            "speaker": "npc",
+            "english": "This is an invitation for my kite club. The field changed, and I'm trying to keep the place, day and hour clear without crowding the card. I can show you my draft, if you'd like.",
+            "chinese": "这是给风筝俱乐部写的邀请卡。场地换了，我想把地点、日子和时间写清楚，又不想挤满整张卡。你愿意的话，可以看看我的草稿。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She caps her pen, sets it down neatly, and waits. The pond water moves against the stone.",
+            "chinese": "她合上笔帽，整齐地放下笔，等着。池水轻轻拍打着石台。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask what the invitation actually needs to say.",
+            "chinese": "问这张邀请函到底需要写什么。",
+            "next": "a"
+          },
+          {
+            "english": "Point at the word she crossed out and ask why.",
+            "chinese": "指着她划掉的那个词，问为什么。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "It goes out once a year. One card, whether the gathering happens and where. I'm the one who writes it, which is why I overthink it.",
+            "chinese": "它一年寄出一次。一张卡片，说明聚会是否举行、在哪里。写字的人是我，所以我想得太多。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She picks up the pen, uncaps it, and holds it over the card without writing.",
+            "chinese": "她拿起笔，拔开笔帽，悬在卡片上方却没有落笔。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Last year's card said the field, the day, the hour, and one instruction about string. Everyone came. The year before, I added scenery, and half of them arrived at the wrong hour.",
+            "chinese": "去年的卡片写了场地、日子、钟点，还有一句带线的嘱咐。所有人都来了。前年我加了些景色描写，一半人记错了钟点。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So this year's draft announces the new field. But the name is long, and the place, the day and the hour together crowd the card. Something must go.",
+            "chinese": "所以今年的草稿要宣布新场地。可名字很长，地点、日子和钟点放在一起，卡片就挤满了。总得删点什么。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She turns the draft toward you. Beneath several crossed-out descriptions, you can read 'which is unfortunately' beside the old field's name.",
+            "chinese": "她把草稿转向你。几处景物描写被划掉了，旧场地的名字旁还留着‘但不巧的是’几个字。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Suggest cutting the description and keeping only the place, day and hour.",
+            "chinese": "建议删掉描述，只留地点、日子和钟点。",
+            "next": "aa"
+          },
+          {
+            "english": "Suggest keeping a short reason for the change so people trust it.",
+            "chinese": "建议保留一句简短的改址原因，让人放心。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "That word was 'peaceful.' The pond is peaceful, but the card isn't about the pond. It's an invitation. Peaceful was decoration.",
+            "chinese": "那个词是'宁静的'。池塘确实宁静，但卡片不是写池塘的。它是邀请函。'宁静'只是装饰。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She taps the pen twice on the stone. A duck passes close to the platform and she watches it go.",
+            "chinese": "她在石台上轻敲了两下笔。一只鸭子游近石台，她目送它游远。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thirty-one years I typed other people's words, exactly as spoken. You learn which words carry weight and which ones just take up room.",
+            "chinese": "我替别人一字不差地打了三十一年字。你会学会哪些词有分量，哪些只是占地方。"
+          },
+          {
+            "speaker": "npc",
+            "english": "This card is for my kite club. The draft says the gathering field changed, and I can't make the new place, the day and the hour fit without crowding the card.",
+            "chinese": "这张卡片写给我的风筝俱乐部。草稿说聚会场地换了，可新的地点、日子和钟点，怎么写都会把卡片挤满。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She slides the draft closer. The old field's name is followed by 'which is unfortunately', then a crowded note about flooding. She waits while you read.",
+            "chinese": "她把草稿推近。旧场地的名字后面接着‘但不巧的是’，旁边挤着一段关于积水的说明。她等你看完。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Offer to read the draft aloud so she can hear which word drags.",
+            "chinese": "提出把草稿读出声，让她听听哪个词拖沓。",
+            "next": "ba"
+          },
+          {
+            "english": "Ask what the gathering actually needs people to know, nothing more.",
+            "chinese": "问聚会到底需要人们知道什么，仅此而已。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "She takes your suggestion, strikes two lines, and writes in small, even letters. Then she counts with her finger.",
+            "chinese": "她采纳了你的建议，划掉两行，用小而工整的字写下。然后用手指逐词数。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'New field, Harrow Meadow, Saturday, noon, bring string.' Place, day, hour, one instruction. Room to spare. Good.",
+            "chinese": "'新场地，哈罗草甸，周六，正午，带线。'地点、日子、钟点，一句嘱咐。还有余量。好。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She holds the card at arm's length, reads it once more, and nods slowly.",
+            "chinese": "她把卡片举到一臂远，又读了一遍，缓缓点头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "People trust a short card. They think: she knows what she's doing. They'll find the meadow. There's one road in, and it's marked.",
+            "chinese": "人们相信简短的卡片。他们会想：她知道自己在做什么。他们会找到草甸的。那儿只有一条路，还有路标。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You left the important bits room to breathe. I like that. You're welcome at Harrow Meadow on Saturday at noon; we have spare string if you need it.",
+            "chinese": "你给重要的信息留出了空隙。我喜欢这样。周六中午欢迎来哈罗草地，需要的话我们有备用风筝线。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "She considers your suggestion to keep a reason, then points at the note about flooding and rewrites that explanation in a shorter line.",
+            "chinese": "她想了想你保留原因的建议，指着积水的说明，把它重新写成一句短话。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'Field flooded. New field, Harrow Meadow, Saturday, noon.' The reason earns its keep, I'll admit. The old field's under water — that's fact, not decoration.",
+            "chinese": "'场地被淹。新场地，哈罗草甸，周六，正午。'我承认，这个理由配得上它的位置。旧场地泡在水里——这是事实，不是装饰。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She stamps the card, presses the stamp flat with her thumb, and looks at you properly for the first time.",
+            "chinese": "她给卡片贴上邮票，用拇指压平，第一次正眼看你。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I argued with myself about that reason all week. You settled it in one sentence. Don't let it go to your head.",
+            "chinese": "那个理由我跟我自己争了一个星期。你一句话就解决了。别得意。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The flooded field is why I'm here, actually. Listening to the water. Some of it's going into a track I'm making. Pond sounds, layered.",
+            "chinese": "其实我被淹的场地正是我来这儿的原因。听水声。有些会进到我正在做的一首曲子里。池塘的声音，分层叠加。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You read the draft aloud. She listens with her eyes closed, one finger raised, and stops you mid-sentence.",
+            "chinese": "你把草稿读出声。她闭着眼听，举起一根手指，在句子中途叫停了你。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There. 'which is unfortunately' — that's the drag. Cut it. The meadow doesn't need an apology.",
+            "chinese": "就是那儿。'很遗憾是'——就是它在拖。删掉。草甸不需要道歉。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She rewrites the card in quick strokes, mouthing each word as the pen lands.",
+            "chinese": "她快速重写卡片，笔落下时嘴里默念着每个词。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'Gathering moved to Harrow Meadow, Saturday, noon, wind permitting.' Place, day, hour, and one honest condition. Reading aloud was how I learned to hear other people's sentences — I typed them for a living, and I won't discuss that further.",
+            "chinese": "'聚会改到哈罗草甸，周六，正午，视风力而定。'地点、日子、钟点，还有一个如实的条件。读出声是我学会听别人句子的方法——我靠打字谋生，这个就不多谈了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She tucks the pen away and picks up her bag, but doesn't leave yet.",
+            "chinese": "她收起笔，拎起包，却还没走。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You read steadily. Most people rush. If you're ever near Harrow Meadow on Saturday, the kites go up at noon, wind permitting.",
+            "chinese": "你读得很稳。大多数人会赶。如果周六你碰巧在哈罗草甸附近，正午风允许的话风筝就上天。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "They need to know where and when. That's all. Everything else is me enjoying the sound of my own pen.",
+            "chinese": "他们需要知道地点和时间。就这些。其余的都是我在享受自己笔尖的声音。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She writes a short line, stops, and laughs — a dry, brief sound, like a hiccup she approved in advance.",
+            "chinese": "她写下一行短句，停住，笑了——干涩短促的一声，像提前批准过的打嗝。"
+          },
+          {
+            "speaker": "npc",
+            "english": "'Harrow Meadow, Saturday, noon.' Nothing else. I've never written a card that bare. It feels like pressing undo.",
+            "chinese": "'哈罗草甸，周六，正午。'再无别的。我从没写过这么素的卡片。感觉像按下了撤销键。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She seals the card in her bag, then takes out a small notebook and writes something in it without showing you.",
+            "chinese": "她把卡片收进包里，然后拿出一个小笔记本，写了点什么，不给你看。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's my word notebook. Words I refuse to waste. 'Peaceful' just went back in. You've cost me a word and saved me a whole paragraph. Fair trade. Harrow Meadow, Saturday noon — you know where to find the kites now.",
+            "chinese": "那是我的词语笔记本。记着我不肯浪费的词。'宁静'刚回到里面去了。你让我花掉一个词，省下一整段。公平交易。哈罗草甸，周六正午——现在你知道去哪儿找风筝了。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

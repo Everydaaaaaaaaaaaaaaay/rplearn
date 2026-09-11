@@ -1,0 +1,319 @@
+{
+  "card": {
+    "name": "Morgan Vale",
+    "age": 46,
+    "gender": "other",
+    "regionId": "london",
+    "nationality": "Fenwick Islander",
+    "occupation": "ceramic restorer",
+    "hobbies": [
+      "table football",
+      "indoor climbing"
+    ],
+    "personality": "Patient with objects, less so with excuses. Morgan can spend a week rebuilding a chipped bowl, yet turns everything into a quiet contest, even a friendly match. They resist the fashion of calling every crack beautiful; some damage is just damage that needs honest work. Warm underneath, stubborn on the surface, and learning to enter things without needing to win them.",
+    "background": "Morgan spent fifteen years restoring ceramics for museums and private collectors, learning to read breaks like handwriting. Last year they moved their small studio above a community hall and started repairing neighbours' everyday pots for free. They also help run the hall's table football league, which is where their competitive streak gets loud. This season they signed up for a climbing social that scores nobody, and they keep pretending that decision was easy.",
+    "speechStyle": "Short, measured sentences with craft vocabulary slipping in; counts things out loud; dry humour delivered flat; says 'right' before starting anything.",
+    "hometown": "Greyharbour",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "Right. Let's look at the break properly.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "honest repair over pretty cover-ups",
+        "fair play"
+      ],
+      "flaws": [
+        "secretly keeps score at everything",
+        "judges people who romanticise damage"
+      ],
+      "boundaries": [
+        "won't let anyone glue a repair wrong just to finish fast",
+        "won't discuss clients' private pieces"
+      ],
+      "conversationalHabits": [
+        "counts steps aloud",
+        "says 'right' before acting"
+      ],
+      "anchorLines": [
+        "Right. Let's look at the break properly.",
+        "I don't cover cracks. I make them hold.",
+        "Winning's fine. Losing quietly is the skill I'm practising."
+      ]
+    }
+  },
+  "summaryZh": "陶瓷修复师摩根·维尔：对器物极有耐心，对自己却处处较劲。一场雨打湿了社区桌式足球赛的四张号码签，递过去的纸巾按住了水，却按不住晕开的墨。是照着照片重做一套完全相同的纸签，还是保留水痕原样、另做一套公平的替身签？嘴上说'不求夺冠'、心里默默计分的匠人，正练习一场不设胜负的比赛。",
+  "story": {
+    "titleZh": "湿透的号码签",
+    "actionId": "rain-napkin",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Rain hammers the cafe window. At the corner table, Morgan shakes water off a canvas folder, and four folded paper slips slide out onto the wet wood.",
+            "chinese": "雨水敲打着咖啡馆的窗。角落桌边，摩根抖掉帆布文件夹上的水，四张折好的纸签滑落到湿漉漉的桌面上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The draw slips for tonight's table football tournament. Numbers one to four. The rain got into my bag at the crossing.",
+            "chinese": "今晚桌式足球赛的抽签号码签。一到四号。过马路的时候雨灌进了我的包。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You hold out the nearby napkins. Morgan nods and takes two, pressing them gently against the wet slips rather than rubbing the ink.",
+            "chinese": "你递出手边的纸巾。摩根点头接过两张，轻轻吸去纸签上的水，没有擦拭墨迹。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Napkins, right. Blot, never wipe. Thank you, that was quick. Two, three, four... and this one. The ink on number one is running already.",
+            "chinese": "纸巾，好。要按，不能擦。谢谢，反应真快。二、三、四……还有这张。一号的墨迹已经开始晕了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Morgan lays out the four slips and opens a saved photo on their phone. All four numbers are clear in the photo; one wet slip is now a grey blur.",
+            "chinese": "摩根铺开四张纸签，打开手机里保存的照片。照片上的四个数字都很清楚，湿纸签里却有一张已经模糊成灰色。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I have a clear record, at least. But one soft, soggy slip would feel different in the jar. We need a set nobody can tell apart by touch.",
+            "chinese": "至少记录还清楚。不过一张软塌塌的湿纸签放进罐子，摸起来会不一样。我们得准备一套摸不出区别的纸签。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Suggest checking the saved photo of the slips and remaking the whole set.",
+            "chinese": "建议查看保存的纸签照片，重做一整套。",
+            "next": "a"
+          },
+          {
+            "english": "Suggest keeping the stained originals and making a separate set for the draw.",
+            "chinese": "建议保留污渍原签，另做一套用于抽签。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Morgan props their phone against the napkin stack. On the screen is a photo of the four slips, taken on the studio table before the rain.",
+            "chinese": "摩根把手机靠在纸巾堆上。屏幕上是四张纸签的照片，是下雨前在工作室桌上拍的。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I photograph every batch before it leaves the studio. Old habit. There's the proof: one, two, three, four. So we know exactly what number one says.",
+            "chinese": "每批纸签离开工作室前我都会拍照。老习惯。证据在这儿：一、二、三、四。所以我们确切知道一号写的是什么。"
+          },
+          {
+            "speaker": "npc",
+            "english": "But here's the rule. If we remake one, we remake all four. Same paper, same size, same fold. If the new slips feel different, someone could tell them apart in the jar.",
+            "chinese": "但规矩是这样的。要重做就四张全重做。同样的纸，同样的大小，同样的折法。如果新纸签手感不一样，有人在罐子里就能摸出区别。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Morgan lifts the three damp survivors, weighs them on one palm like shards of the same bowl, and sets them aside.",
+            "chinese": "摩根拿起那三张幸存的湿纸签，像掂量同一个碗的碎片那样放在掌心掂了掂，然后放到一边。"
+          },
+          {
+            "speaker": "npc",
+            "english": "These three did nothing wrong, but a mixed set isn't a fair set. They retire. We write four fresh ones from the photo.",
+            "chinese": "这三张没做错什么，但混搭的一套不是公平的一套。它们退役。我们照照片写四张新的。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Agree to remake all four identical slips from the photo now.",
+            "chinese": "同意现在照照片重做四张完全相同的纸签。",
+            "next": "aa"
+          },
+          {
+            "english": "Save the photo and remake the set at the hall, where the proper paper is kept.",
+            "chinese": "保存照片，到活动厅再用那里的纸重新制作。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Morgan leans back with arms crossed, studying the stained slips the way they study a cracked bowl before touching it.",
+            "chinese": "摩根双臂交叉向后靠，像观察有裂纹的碗那样端详着这些染了污渍的纸签。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Keep them as they are? I restore things for a living, so people expect me to love every stain. I don't. Some stains are just damage. But... a draw slip isn't a bowl.",
+            "chinese": "保留原样？我以修复器物为生，所以人们以为我爱每一块污渍。我不爱。有些污渍就是损坏。不过……抽签号码签又不是碗。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You suggest the originals could be kept as a memento while a fresh set does the actual draw. Morgan's fingers drum once on the table.",
+            "chinese": "你提议把原签留作纪念，抽签另用一套新的。摩根的手指在桌上敲了一下。"
+          },
+          {
+            "speaker": "npc",
+            "english": "A display set and a working set. Hm. That's how I label repaired pieces, actually. The original stays honest in a case, the record does the talking.",
+            "chinese": "一套展示，一套干活。嗯。其实我给修复件就是这么标注的。原件老老实实待在展柜里，记录替它说话。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right. The originals retire with their rain story intact. For the draw we make four new slips, and they must be identical, or the draw is a lie.",
+            "chinese": "好。原签带着它们的故事退役。抽签用四张新签，而且必须完全一样，否则抽签就是撒谎。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Agree, and start writing the four replacement numbers on matching paper.",
+            "chinese": "同意，开始用相同的纸写四张替换号码签。",
+            "next": "ba"
+          },
+          {
+            "english": "Ask whether the cafe has enough matching paper before starting.",
+            "chinese": "先问咖啡馆有没有足够的相同纸张，再动手。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Morgan asks the cafe staff for plain scrap paper. Using borrowed scissors, they cut four matching pieces from one sheet and line them up neatly.",
+            "chinese": "摩根向店员要了一张普通废纸，借来剪刀，剪出四张相同的小纸片，整齐地排好。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Same width, same height, same fold. Two, three, four, one. There. Now nobody can feel a difference, and nobody gets an edge.",
+            "chinese": "同宽，同高，同折法。二、三、四、一。好了。现在谁也摸不出区别，谁也不占便宜。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You copy the numbers from the photo while Morgan folds. They check each slip against the phone screen before it goes into the jar.",
+            "chinese": "你照着照片抄号码，摩根负责折。每张纸签进罐子前，他们都对着手机屏幕核对一遍。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Four slips, four numbers, all honest. The originals go home with me. I'll press them flat and keep them as the record of tonight's weather.",
+            "chinese": "四张签，四个号码，全都诚实。原签我带回家。我把它们压平，当作今晚天气的记录留着。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll keep the jar closed until the tournament. There, one job finished without turning it into a race. That's unusual for me. Thanks for staying with it.",
+            "chinese": "比赛开始前我会把罐子盖好。好了，一件事做完了，还没被我弄成比赛。这对我可不常见。谢谢你陪我弄完。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Morgan saves a second copy of the clear photo and puts the phone away. The wet slips stay spread out on the napkins.",
+            "chinese": "摩根把清晰的照片另存了一份，收起手机。湿纸签仍摊在纸巾上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The hall has a whole stack of the right paper. You're right. I don't have to solve everything with whatever happens to be on this table.",
+            "chinese": "活动厅里有一整叠合适的纸。你说得对，我不必只靠这张桌上现有的东西解决所有问题。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They write a short reminder on the folder: make four equal slips before the draw. Then they leave the folder open so the originals can dry.",
+            "chinese": "他们在文件夹上记下提醒：抽签前制作四张相同纸签。随后让文件夹敞着，继续晾干原件。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Photo saved, paper waiting, draw postponed until the set is ready. That's a plan. It just lacks the dramatic rescue I had in mind.",
+            "chinese": "照片存好了，纸也有了，等整套做好再抽签。这也是个计划，只是没有我想象中那么惊险的救场。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll take a calm finish for once. And a fresh napkin, if there's one left. My coffee has been sitting in this puddle the whole time.",
+            "chinese": "这回我就接受平静收尾吧。要是还剩纸巾，我再拿一张。我的咖啡杯一直坐在这摊水里呢。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You find a stack of plain napkin-sized cards behind the cafe counter, and the staff lets you take four. Morgan holds one up beside an original slip.",
+            "chinese": "你们在咖啡馆柜台后面找到一叠和纸巾差不多大小的素色卡片，店员让你们拿四张。摩根拿起一张和原签比了比。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "They turn both over, feel the thickness, then nod once.",
+            "chinese": "他们把两张都翻过来，掂了掂厚度，然后点了一下头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Close enough. Same weight, same size. I write the numbers, you fold. If your folds are tighter than mine, that's a skill issue and I'll practise later.",
+            "chinese": "够接近了。同样的克重，同样的大小。我写号码，你折。如果你的折痕比我的整齐，那是手艺问题，我回头练。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You fold the matching cards while Morgan writes one, two, three, four, checking each against the clear photo on their phone.",
+            "chinese": "你折好相同的小卡片，摩根写下一、二、三、四，逐一核对手机上的清晰照片。"
+          },
+          {
+            "speaker": "npc",
+            "english": "New set draws tonight. Old set gets framed above the league board, rain stains and all. Not because stains are precious. Because it's a true record.",
+            "chinese": "新签今晚抽。旧签装框挂在联赛记分板上方，雨渍原样保留。不是因为污渍珍贵。因为它是真实的记录。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The new set is ready. I'll display the old ones beside it at the hall — and explain which set we're actually using. No mystery for the players.",
+            "chinese": "新的一套做好了。我会在活动厅把旧纸签放在旁边展示，再说明真正用的是哪套。不能让参赛的人摸不着头脑。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "The staff first offers a receipt and a few pieces from different pads. Morgan feels their edges, then puts them back on the table.",
+            "chinese": "店员先拿来一张收据和几张不同便笺。摩根摸了摸纸边，又把它们放回桌上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "No. Absolutely not. A thick sticky note folds differently from a flyer. Anyone's fingers could tell them apart in the jar. That's a rigged draw, even by accident.",
+            "chinese": "不行。绝对不行。厚便利贴折起来和传单不一样。任何人的手指都能在罐子里摸出区别。那是被操纵的抽签，哪怕是无意的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The staff finds one larger sheet and lends Morgan scissors. They cut it into four equal pieces, then copy the numbers from the saved photo.",
+            "chinese": "店员找到一张大些的纸，借给摩根剪刀。他们把它裁成四张相同的小片，照着保存的照片写上数字。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There. Four twins. The scraps go back to the counter, and the stained originals stay for our display. Asking first saved a lot of wasted folds.",
+            "chinese": "好了，四胞胎。零碎纸片还给柜台，污渍原件留作展示。先问清楚，省了不少白折的工夫。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Good instinct though, checking the materials before we wrote anything. Most people just start scribbling. You blot first and check second. I rate that.",
+            "chinese": "不过先查材料再动笔，这个直觉不错。大多数人上来就乱写。你先按干再核对。我给好评。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right. Four identical slips, one jar, and a framed rain story for the hall wall. Tonight's draw will be fair and slightly damp in memory.",
+            "chinese": "好。四张相同的纸签，一个罐子，还有一幅挂上大厅墙面的雨中故事。今晚的抽签会公平，回忆里会带点潮气。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "card": {
+    "name": "Alex Rowan",
+    "age": 28,
+    "gender": "other",
+    "regionId": "london",
+    "nationality": "Alderish",
+    "occupation": "museum lighting technician",
+    "hobbies": [
+      "speed jigsaw puzzles",
+      "learning sign language"
+    ],
+    "personality": "Alex notices things other people walk past — a flicker in a reflection, a shadow slightly too sharp. They are patient with objects and slower with people, often forgetting the time when focused. Honest to a fault about their own mistakes, they recently admitted a lighting design hid the details it was meant to show. Warm once talking, but they need a reason to start.",
+    "background": "Alex spent years wiring gallery lights, tuning each beam until paintings looked right. Last season they told a curator that their own plan washed out the brushwork on a small portrait — the admission cost sleep but earned respect. Now they walk home past a park pond, using the water as a free test bench for how light moves, and they keep a pair of binoculars in their bag for checking distant details.",
+    "speechStyle": "Short, precise sentences with pauses. Names what they see before what they feel. Often says 'look —' before an observation, and trails off when a thought is still forming.",
+    "hometown": "Fenmere",
+    "languages": [
+      "English"
+    ],
+    "birthday": "04-17",
+    "signature": "Look — see how it moves.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "honesty about mistakes",
+        "careful observation"
+      ],
+      "flaws": [
+        "loses track of time",
+        "slow to start conversations"
+      ],
+      "boundaries": [
+        "won't pretend to understand when they don't",
+        "won't rush a conclusion"
+      ],
+      "conversationalHabits": [
+        "starts sentences with 'look —'",
+        "pauses mid-thought and restarts"
+      ],
+      "anchorLines": [
+        "Look — the line moved again.",
+        "I could be wrong. Usually I check twice.",
+        "Sorry, I lost track of everything just now."
+      ]
+    }
+  },
+  "summaryZh": "博物馆灯光技术员亚历克斯，在池塘边把水面当成免费的光学试验台。他们观察极细、开口很慢，却会坦白自己灯光方案的失误。一条在倒影里忽隐忽现的线，是打开话匣子的钥匙——认真起来连时间都会忘。",
+  "story": {
+    "titleZh": "水影里忽隐忽现的线",
+    "actionId": "pond-reflection",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "At the edge of the pond, tree shadows waver across the water. A pair of binoculars rests on the stone platform, and someone is leaning over the rail, staring down at the surface instead of through the lenses.",
+            "chinese": "池塘边，树影在水面晃动。石台上放着一副望远镜，有人俯身靠着栏杆，盯着水面看，而不是用镜片看。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Look — right there, between the two big trees. A line keeps appearing and vanishing in the reflection. Sorry, I'm talking to myself again. These are mine, by the way, if you want them.",
+            "chinese": "看——就在那两棵大树之间。倒影里有一条线，一会儿出现，一会儿消失。抱歉，我又在自言自语了。对了，望远镜是我的，你想用就用。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The stranger taps the rail twice, then goes still, eyes fixed on the water as if the pond might change its mind.",
+            "chinese": "陌生人敲了两下栏杆，然后一动不动，眼睛盯着水面，好像池塘会改变主意似的。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The wind moves the leaves, but this line moves differently. Slower. That's what's bothering me. I could be wrong. Usually I check twice.",
+            "chinese": "风吹动树叶，可这条线动得不一样。更慢。这就是让我在意的地方。我可能弄错了。通常我会检查两遍。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So — do you want to look for it down here with me, or take the binoculars and check the far bank?",
+            "chinese": "那么——你想和我在这儿的水面上找，还是拿望远镜去看看对岸？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Follow their gaze and look for the line in the reflection.",
+            "chinese": "顺着他们的目光，在倒影里找那条线。",
+            "next": "a"
+          },
+          {
+            "english": "Take the binoculars and check the far bank.",
+            "chinese": "拿起望远镜，查看对岸。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You crouch by the rail and trace the reflection. Between the mirrored trees, a thin dark line slides under the surface, then fades as the ripples cross it.",
+            "chinese": "你蹲在栏杆边追踪倒影。在镜像的树之间，一条细细的黑线从水面下滑过，又在涟漪穿过时消失。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There — it disappears when a ripple crosses that spot. I'd like to see it happen again before I decide what we're looking at.",
+            "chinese": "看——涟漪经过那个位置时，它就消失了。我想再看一次，然后才判断我们看到的是什么。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Water bends light. Things under the surface jump around. But this jumps in a pattern, and patterns have causes. I just don't know the cause yet.",
+            "chinese": "水会折射光。水面下的东西会跳动。但它的跳动有规律，有规律就有原因。我只是还不知道原因。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A duck lands nearby; the whole reflection shatters into pieces and slowly knits itself back together.",
+            "chinese": "一只鸭子落在附近，整个倒影碎成一片片，又慢慢重新拼合。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Ugh. Okay. We lost it. But I marked the spot — it was just left of the flat stone on the far bank. Do we wait for the water to calm, or walk around and look from the other side?",
+            "chinese": "唉。好吧。跟丢了。但我记住了位置——就在对岸那块平石的左边。我们是等水面平静，还是绕过去从另一边看？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Wait quietly by the rail until the ripples settle.",
+            "chinese": "安静地等在栏杆边，直到涟漪平息。",
+            "next": "aa"
+          },
+          {
+            "english": "Walk around the pond to see the spot from the other bank.",
+            "chinese": "绕着池塘走，从对岸看那个位置。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You lift the binoculars from the stone platform and aim them across the pond at the far bank. The stranger straightens up, suddenly interested.",
+            "chinese": "你从石台上拿起望远镜，对准池塘对岸。陌生人直起身子，突然来了兴趣。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Oh, good idea. I kept looking down and forgot I could look across. Aim it just left of the flat stone, near the roots.",
+            "chinese": "哦，好主意。我一直低头看，忘了可以直接看对岸。对准平石左边一点，靠近树根的地方。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Through the lenses, the far bank jumps close: the flat stone, tangled roots, and a thin line stretched low over the water between two trunks.",
+            "chinese": "透过镜片，对岸一下子拉近了：平石、缠结的树根，还有一条细线低低地横在水面上，连着两棵树干。"
+          },
+          {
+            "speaker": "npc",
+            "english": "A line. Someone strung it across. That's our mystery — its reflection, breaking up in the ripples.",
+            "chinese": "一条线。有人拉的线横过去。那就是我们的谜——它的倒影，被涟漪打碎了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Now the real question: who put it there, and why? I can see a knot on this end. Do we go around and follow it, or try to read the knot from here first?",
+            "chinese": "现在真正的问题是：谁拉的，为什么拉？我能看到这一头有个结。我们绕过去顺着它走，还是先从这边研究那个结？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Study the knot through the binoculars from where you stand.",
+            "chinese": "站在原地用望远镜研究那个结。",
+            "next": "ba"
+          },
+          {
+            "english": "Walk around the pond to follow the line on foot.",
+            "chinese": "绕过池塘，步行去追踪那条线。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You wait by the rail. The water slowly smooths, and the line reappears — longer now, and perfectly straight.",
+            "chinese": "你在栏杆边等待。水面慢慢平静，那条线重新出现——现在更长，而且笔直。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That looks pulled tight between two points. A line somebody tied there, perhaps. Let's see whether anything else is attached.",
+            "chinese": "看起来像是在两点之间拉紧的线。也许是谁系在那里的。看看上面还连着什么吧。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A boy on the far bank tugs something; the line twitches, and a small model boat jerks forward across the pond, towed along the almost invisible thread.",
+            "chinese": "对岸一个男孩拉了拉什么东西，线抖了一下，一只小模型船猛地沿着那条几乎看不见的细线向前驶过池塘。"
+          },
+          {
+            "speaker": "npc",
+            "english": "It's a tow line. He's pulling a model boat across with it. All that mystery, and it's a kid practicing. I built up a whole theory, and the answer was simpler.",
+            "chinese": "那是一根拖绳。他在用它拉模型船。这么神秘，结果是个孩子在练习。我建了一整套理论，答案却更简单。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The boy waves at you both, hauls the boat in, and starts winding the line onto a small reel.",
+            "chinese": "男孩朝你们俩挥手，把船拉回来，开始把线绕到一个小线轴上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thanks for waiting with me — I'd have stood here alone for an hour. Look — he's packing it up properly. That answers that.",
+            "chinese": "谢谢你陪我等——不然我一个人会在这儿站上一个小时。看——他在好好收线。这就清楚了。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You walk around the pond together. From the other bank, the mystery line is obvious: a thin string tied from a root to a small reel, holding a model boat against the drifting wind.",
+            "chinese": "你们一起绕过池塘。从对岸看，那条神秘的线一目了然：一根细绳从树根系到一个小线轴上，把一只模型船拦住，不让风刮走。"
+          },
+          {
+            "speaker": "npc",
+            "english": "A string and a reel. Someone ties a boat here so it won't drift off. From our side it looked like a ghost.",
+            "chinese": "一根绳和一个线轴。有人把船系在这儿，免得它漂走。从我们那边看，它像个幽灵。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Taped to the root is a small laminated tag, its letters worn but readable: 'Model Sailing Club — tow line, please rewind.'",
+            "chinese": "树根上贴着一张小塑封标签，字迹磨损但还能认：'模型帆船俱乐部——拖绳，用完请收好。'"
+          },
+          {
+            "speaker": "npc",
+            "english": "A club. So it's practice equipment, not a message in a bottle. I like that better, honestly — it means someone comes here often and takes care of it.",
+            "chinese": "俱乐部。所以这是练习用具，不是漂流瓶里的信息。说实话我更喜欢这样——说明有人常来，还很爱惜。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The boy from the reel jogs up, unties the boat, and carries it off with a nod of thanks for leaving his line alone.",
+            "chinese": "线轴边的男孩跑过来，解开船，道了声谢——谢谢你们没动他的线——然后抱着船走了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Look — he rewound it without being asked. Small habits like that tell you a lot. Good answer for one line in the water.",
+            "chinese": "看——没人提醒他就把线收好了。这样的小习惯能说明很多事。水里一条线，能查出这样的结果，不错了。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You steady the binoculars on the rail and study the knot. It's not a random tie — it's a loop with a loose tail, the kind that comes undone with one pull.",
+            "chinese": "你把望远镜稳稳架在栏杆上研究那个结。那不是随便系的——是一个带松尾的环，一拉就能解开的那种打法。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's set up to be taken down fast. Someone uses this regularly and doesn't want it permanent. Could be a boat club, could be something else. I won't guess harder than that.",
+            "chinese": "这是为了能快速拆掉。有人经常用它，但不想弄成永久性的。可能是船类俱乐部，也可能是别的。我不想再瞎猜了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "While you watch, a figure in a green coat crosses the far bank, tugs the tail, and the whole line drops into the grass.",
+            "chinese": "你看的时候，一个穿绿外套的人走过对岸，拉了一下绳尾，整条线就落进了草丛。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The figure reels the line in, clips a small model boat to their bag, and walks off toward the park gate.",
+            "chinese": "那人把线收起来，把一只小模型船别在包上，朝公园门口走去。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There — gone in two seconds, boat and all. A model-boat sailor, most likely. Reading the knot instead of guessing saved me. That's the second time this month careful looking has paid off.",
+            "chinese": "看——两秒钟就收走了，连船一起。多半是个玩模型船的人。研究那个结而不是瞎猜救了我。这是这个月认真观察第二次派上用场了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I got this wrong in my head first — I thought it was something hidden. Checking before concluding. I keep relearning that one.",
+            "chinese": "我一开始在心里想错了——以为藏着什么。先查证再下结论。这一课我总在重新学。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You walk the path around the pond. The line ends at a wooden post behind the trees, where a laminated card hangs on a nail: 'Model Sailing Club — please rewind the line after use.'",
+            "chinese": "你们沿着池塘边的小路走。线的尽头在树后的一根木桩上，木桩上钉着一张塑封卡片：'模型帆船俱乐部——用完请把线收好。'"
+          },
+          {
+            "speaker": "npc",
+            "english": "A model sailing club. Right here. I've walked past this pond for months and never noticed. That's humbling, in a good way.",
+            "chinese": "模型帆船俱乐部。就在这儿。我在这个池塘边走了好几个月，从来没注意到。挺让人惭愧的，不过是个好的惭愧。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Under the post, a small rack holds rolled sails and a notebook with names and dates written in pencil.",
+            "chinese": "木桩下面，一个小架子上放着卷好的帆，还有一本用铅笔写着名字和日期的笔记本。"
+          },
+          {
+            "speaker": "npc",
+            "english": "They log every run. Look — someone wrote 'wind tricky, boat kept hiding in the reflection.' So they see the same line we do. It's their tow rope.",
+            "chinese": "他们每次都记录。看——有人写着'风不好对付，船老藏在倒影里'。所以他们也看到了同一条线。那是他们的拖绳。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Alex takes out their own notebook and writes the club's name with a small sketch of the line. They leave the sailing log exactly where it is.",
+            "chinese": "亚历克斯拿出自己的笔记本，记下俱乐部的名字，画了一小段线的示意图。航行记录本仍留在原处。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Now I have something to look up later. One little reflection led us all the way round the pond. Worth the walk, I'd say.",
+            "chinese": "这下以后有东西可查了。一点小倒影让我们绕池塘走了一圈。我觉得这段路挺值。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

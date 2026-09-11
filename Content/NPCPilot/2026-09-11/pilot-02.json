@@ -1,0 +1,295 @@
+{
+  "card": {
+    "name": "Maya Bell",
+    "age": 24,
+    "gender": "female",
+    "regionId": "london",
+    "nationality": "fictional nationality of Coravia",
+    "occupation": "theatre sound assistant",
+    "hobbies": [
+      "identifying edible mushrooms from guidebooks",
+      "penalty shootouts",
+      "field-recording city sounds"
+    ],
+    "personality": "Maya is sharp-eared, playful and generous with her knowledge, but she over-explains and struggles to end a topic once it hooks her. She is careful and ethical about boundaries—especially consent around recording—yet careless with her own free time. She is learning to let silences sit, and she is honestly a bit proud of every small pause she manages to keep.",
+    "background": "Maya grew up in a river town where her uncle ran a small theatre, so she learned to patch cables before she learned to drive. She now works as a sound assistant at a fringe theatre in London, rigging speakers and hunting for clean outdoor recordings in the evenings. She keeps a notebook of city sounds and a mushroom field guide she treats like scripture. She never gives advice on wild fungi—she points people to books instead. Lately she is practising leaving gaps in conversation instead of filling every quiet second.",
+    "speechStyle": "Quick, curious bursts; she tags observations with 'listen—' and 'right, so'. She asks short follow-up questions, sometimes three in a row, then catches herself and says 'sorry, that was a lot.'",
+    "hometown": "Wrenford",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "Listen—did you hear that?",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "consent before recording",
+        "curiosity over certainty"
+      ],
+      "flaws": [
+        "talks too long",
+        "assumes others share her obsessions"
+      ],
+      "boundaries": [
+        "never records anyone's voice without asking first",
+        "never gives wild mushroom eating advice"
+      ],
+      "conversationalHabits": [
+        "says 'listen—' before an observation",
+        "apologises cheerfully when she over-explains"
+      ],
+      "anchorLines": [
+        "Listen—did you hear that? The bridge does something weird with it.",
+        "Sorry, that was a lot. You can stop me anytime.",
+        "I don't record people without asking. Ever. It's a rule."
+      ]
+    }
+  },
+  "summaryZh": "剧场音效助理玛雅坐在公园长椅上，追听远处桥上传来的奇怪嗡声，耳朵灵、话匣子关不住，正在练习留白。她守规矩：从不录别人的声音，野菇只荐书不荐吃。四条分支里，你和她用跑者脚步、车流间隙和一条松动的长椅螺丝，把嗡声的来源一点点试出来，最后只得到谨慎的观察，没有武断的结论。",
+  "story": {
+    "titleZh": "远桥的嗡声",
+    "actionId": "park-notes",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You are writing observations in a notebook at a park rest area. Runners pass on the path nearby. Far off, traffic crosses a stone bridge, and a woman on the next bench tilts her head toward it, a small recorder hanging unused at her chest.",
+            "chinese": "你在公园休息区往笔记本上写见闻。跑者从旁边的小径跑过。远处，车流驶过一座石桥，邻座长椅上的一位女士朝桥的方向侧着头，胸前挂着一台没有在用的录音机。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Listen—did you hear that? Every time the traffic hits the bridge, this little buzz drifts over. Stones don't usually buzz.",
+            "chinese": "听——你听到了吗？每次车流上桥，就会飘来一点嗡嗡声。石头一般不会嗡嗡响。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She catches herself, glances at your notebook, and points at it with a small apologetic smile.",
+            "chinese": "她回过神来，瞥了一眼你的笔记本，带着一点抱歉的笑指了指它。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Sorry—hi. I'm not recording anyone, I promise. I never record people without asking. Ever. It's a rule.",
+            "chinese": "抱歉——你好。我保证没在录任何人。我从不未经允许录人。这是规矩。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right, so—you're writing things down. May I ask what? Because I could use a second pair of notes on that buzz.",
+            "chinese": "那个——你在写东西。能问问写的是什么吗？因为那个嗡声，我正需要第二双眼睛帮我记。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Offer to time the buzz against the runners' footsteps.",
+            "chinese": "提出用跑者的脚步来给嗡声计时。",
+            "next": "a"
+          },
+          {
+            "english": "Suggest checking whether the buzz is coming from something nearby, not the bridge.",
+            "chinese": "提议查查嗡声是不是来自附近的东西，而不是桥。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Timing it against footsteps—clever. My theory is the buzz is just the bridge echo, stretched by distance.",
+            "chinese": "用脚步计时——聪明。我的理论是，嗡声只是桥的回声，被距离拉长了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She taps her own recorder against her palm but keeps it lowered, then nods at the runners on the path.",
+            "chinese": "她把自己的录音机在掌心敲了敲，但没举起来，然后朝小径上的跑者点了点头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "If the buzz rides on each footstep's rhythm, it's local. If it ignores the runners and follows the traffic, it's the bridge. Two theories, one test.",
+            "chinese": "如果嗡声跟着脚步的节奏走，那就是附近的东西。如果它不理跑者、只跟车流，那就是桥。两个理论，一次测试。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So, which do we count first—feet or traffic? Sorry, that was a lot. You can stop me anytime.",
+            "chinese": "那我们先数哪个——脚步还是车流？抱歉，说太多了。你随时可以让我停下。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Count the runners' footsteps first.",
+            "chinese": "先数跑者的脚步。",
+            "next": "aa"
+          },
+          {
+            "english": "Count the traffic bursts on the bridge first.",
+            "chinese": "先数桥上的车流。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Nearby, not the bridge? Huh. Right, so—there is one suspect. This bench. The fitting on my side is loose. Listen.",
+            "chinese": "来自附近，不是桥？嗯。那个——确实有一个嫌疑对象。这条长椅。我这边有个松动的固定件。听。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She presses her hand on the bench slat and rocks it once. A faint rattle answers, close to the pitch of the distant buzz.",
+            "chinese": "她用手压了压椅板，摇了一下。一声轻微的咔嗒声响起，音高和远处的嗡声很接近。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hear that rattle? Almost the same note. But a loose bench can't buzz on its own—something has to shake it. Maybe the runners, maybe the traffic.",
+            "chinese": "听到那声咔嗒了吗？音几乎一样。但松长椅自己不会嗡嗡响——得有什么东西在震它。也许是跑者，也许是车流。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Two suspects for the shaking: footsteps thumping the path, or heavy vehicles rolling the ground. Pick one and we watch the bench like hawks.",
+            "chinese": "震动有两个嫌疑：脚步震小径，或者重车震地面。选一个，我们就像老鹰一样盯着长椅。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Test whether passing runners make the bench rattle.",
+            "chinese": "测试跑者经过时长椅会不会响。",
+            "next": "ba"
+          },
+          {
+            "english": "Test whether heavy traffic makes the bench rattle.",
+            "chinese": "测试重车经过时长椅会不会响。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You count footsteps together as three runners pass. Each time, the buzz stays perfectly steady, ignoring the rhythm completely.",
+            "chinese": "你们一起数着三个跑者的脚步。每一次，嗡声都稳稳当当，完全不理会那个节奏。"
+          },
+          {
+            "speaker": "npc",
+            "english": "It's not riding the footsteps at all. So my echo theory survives, at least for now.",
+            "chinese": "它根本不跟着脚步走。所以我的回声理论暂时还站得住。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "A heavy lorry crosses the far bridge. The buzz swells for a moment, then settles back to its low hum.",
+            "chinese": "一辆重卡车驶过远处的桥。嗡声胀大了一瞬，然后又落回低鸣。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Listen—there. Louder with the lorry. So it's probably traffic-driven, but I won't swear to it. One lorry is one data point.",
+            "chinese": "听——就是现在。卡车经过时变响了。所以多半是车流引起的，但我不敢打包票。一辆卡车只是一个数据点。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Tentative verdict: distant traffic, maybe bouncing off something. I'll write 'needs more lorries' in my notes. Thanks for counting.",
+            "chinese": "暂定结论：远处车流，也许被什么东西弹了回来。我要在笔记里写'需要更多卡车'。谢谢你一起数。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You count traffic bursts while she counts the buzzes. Halfway through, she holds up a hand, frowning.",
+            "chinese": "你们数车流，她数嗡声。数到一半，她举起一只手，皱起眉。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The numbers don't match. More buzzes than vehicles. Listen—there was a buzz just now with no traffic at all.",
+            "chinese": "数字对不上。嗡声比车多。听——刚才有一声嗡响，可根本没有车。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She falls quiet, actually quiet, for a long moment. Then her eyes drop to the loose bench fitting beside her.",
+            "chinese": "她安静下来，是真的安静，好一会儿。然后她的目光落到身边那条松动的长椅固定件上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Maybe some of it is this bench, rattling when runners pass. I was so sure it was the bridge. Good thing you like counting.",
+            "chinese": "也许有一部分是这条长椅，跑者经过时在响。我原本那么肯定是桥。幸好你喜欢数数。"
+          },
+          {
+            "speaker": "npc",
+            "english": "New note: 'bridge plus something local, unconfirmed.' I'll leave it there for now. A useful question is worth keeping, even without a neat answer.",
+            "chinese": "新记录：‘桥上的声音加上附近的声音，尚未确认。’今天先记到这里。没有漂亮的答案，一个有用的问题也值得留下。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You both watch the bench as a runner approaches. The footsteps thump closer—and the loose slat gives one small rattle, then goes still.",
+            "chinese": "你们一起盯着长椅，一个跑者跑近。脚步声越来越近——松动的椅板轻轻响了一下，然后又静了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "It rattled! One little rattle per runner. But listen—the distant buzz didn't change at all during that.",
+            "chinese": "它响了！每个跑者经过响一下。但听——那段时间远处的嗡声一点没变。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She presses the slat down firmly with her palm and holds it, and the rattle stops even as another runner passes.",
+            "chinese": "她用手掌把椅板牢牢压住，另一个跑者跑过时，咔嗒声没有了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Held down, no rattle. So the bench makes its own little noise, but it can't be the whole distant buzz. Different animals.",
+            "chinese": "压住就不响了。所以长椅会发出自己的小声音，但远处的嗡声不全是它。两码事。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Tentative note: 'bench rattles per runner; buzz unaffected.' Two sounds, not one. That's a real finding for one bench sit.",
+            "chinese": "暂定笔记：'长椅随跑者咔嗒响；嗡声不受影响。'是两种声音，不是一种。坐一条长椅能有这发现，不错了。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You wait for a gap in the runners, watching the slat. A heavy vehicle rolls somewhere on the far bridge—and the fitting gives a tiny buzz, then fades.",
+            "chinese": "你们等跑者的空档，盯着椅板。远处桥上某处驶过一辆重车——固定件发出一丝嗡声，然后淡去。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There! It buzzed with the traffic. But hold on—the big buzz from before didn't wait for vehicles. So it's both.",
+            "chinese": "就是它！车来的时候它嗡了。但等等——之前那个大嗡声并不等车来。所以两边都有份。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She rocks the slat once more, listening to its rattle, then lets it be and leans back.",
+            "chinese": "她又摇了一下椅板，听听那声咔嗒，然后随它去，靠回椅背。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So: loose bench for the near buzz, bridge or something else for the far one. I can't prove which yet, and that's fine. Notes over proofs.",
+            "chinese": "所以：近处的嗡声是松长椅，远处的是桥或者别的什么。我还证明不了是哪个，没关系。笔记比结论重要。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thanks for watching the bench with me. You made me look closer instead of staring at the bridge. I'll keep both possibilities in the notebook.",
+            "chinese": "谢谢你陪我观察长椅。你让我看了看近处，没有一直盯着桥。我会把两种可能都记进本子。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

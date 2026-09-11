@@ -1,0 +1,331 @@
+{
+  "card": {
+    "name": "Victor Lane",
+    "age": 76,
+    "gender": "male",
+    "regionId": "london",
+    "nationality": "Novarian",
+    "occupation": "retired ferry dispatcher",
+    "hobbies": [
+      "mending theatre costumes",
+      "amateur astronomy",
+      "collecting ferry timetables"
+    ],
+    "personality": "Victor is warm, chatty, and quick with a story, but he has learned to stop halfway and admit when he has stretched the truth. He loves precision—timetables, star charts, seam allowances—yet his memory embellishes freely. Outgoing with strangers, he still respects a closed door. He is proudest of fixing things: schedules, costumes, and lately, his own tall tales.",
+    "background": "For thirty-one years Victor coordinated ferry departures, where one wrong minute meant a dock full of angry passengers. Retirement left his hands restless, so a costume shop taught him to mend, and now he repairs theatre costumes at his kitchen table. He studies the night sky with a secondhand telescope and is rewriting his most-repeated ferry anecdote into a version that honestly admits what he misremembered. Today he is testing a new walking route through the park against the old one he has used for years.",
+    "speechStyle": "Rhythmic and dispatch-like: short counted phrases, then a longer roll. Says 'mark my words' and 'here's the honest bit'. Often pauses to correct himself mid-story, numbering details like departure times.",
+    "hometown": "Gullsmark",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "One minute late is a story; two minutes late is a disaster.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "honesty in storytelling",
+        "punctuality"
+      ],
+      "flaws": [
+        "embellishes memories",
+        "talks too long"
+      ],
+      "boundaries": [
+        "won't be rushed mid-story",
+        "won't pretend certainty he lacks"
+      ],
+      "conversationalHabits": [
+        "counts points on his fingers",
+        "stops to self-correct with 'here's the honest bit'"
+      ],
+      "anchorLines": [
+        "Two ways to go—old path or new path. I've walked one of them for years.",
+        "Here's the honest bit: I got half of that story wrong for twenty years.",
+        "Mark my words, a good route is like a good timetable—you test it twice."
+      ]
+    },
+    "summaryZh": "退休轮渡调度员维克多，讲起往事绘声绘色，却总在讲到一半时认真喊停，承认自己记错了细节。他爱缝补戏服、看星星，如今正把自己讲了二十年的趣事改写成诚实版本。和他一起在公园地图前选路，你会遇到一个既爱夸张又拼命求真的可爱老头。"
+  },
+  "summaryZh": "维克多退休前调度轮渡，退休后缝戏服、学看星图，也爱讲故事。他最常讲的天鹅趣事其实掺了不少改编，如今想给故事贴上诚实的标签。你选哪条园路，会决定听到一个改写的旧故事，还是看到他准备尝试的新事情。",
+  "story": {
+    "titleZh": "旧路与新路",
+    "actionId": "park-map",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You stop at the park map to plan your walk. An old man stands beside you, tapping the frame with one finger, shifting his weight from foot to foot.",
+            "chinese": "你在公园地图前停下，想规划散步路线。一位老人站在你旁边，用手指敲着图框，重心左右移动。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Two ways to go—old path or new path. I've walked one of them for years, and the other one just appeared on this map. Mark my words, this is a real decision.",
+            "chinese": "两条路可走——旧路或新路。有一条我走了好多年，另一条是刚画上地图的。记住我的话，这可是个真正的决定。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He pulls a folded paper from his coat pocket and smooths it against the map frame. It is a hand-drawn copy of the same map, with tiny notes in the margins.",
+            "chinese": "他从外套口袋里掏出一张折起的纸，在地图框上抹平。那是同一张地图的手绘版，边上有许多小注。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I made my own copy. A dispatcher likes a second timetable. The old path runs by the water; the new one bends toward those benches inside the park.",
+            "chinese": "我自己画了一份。做调度的总喜欢多备一张时刻表。旧路沿水边走，新路则拐向公园里面那几张长椅。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, stranger, you've got fresh eyes. Which way should we test first?",
+            "chinese": "嗯，这位朋友，你眼睛是新的。我们先试哪条路？"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Let's take the old path by the water.",
+            "chinese": "我们走水边的旧路吧。",
+            "next": "a"
+          },
+          {
+            "english": "Let's try the new path toward the benches.",
+            "chinese": "我们试试通向长椅的新路吧。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "The old path it is. Good choice for a first test—this is the control route, as we used to say. Every ferry needs a baseline.",
+            "chinese": "就走旧路。第一次测试选得好——这是基准路线，我们以前常这么说。每班渡轮都需要个基准。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You walk along the water together. Victor points at a bench with his walking stick as you pass it.",
+            "chinese": "你们一起沿水边走。经过一条长椅时，维克多用手杖指了指它。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That bench reminds me of a story I tell about my ferry days. I always say a swan blocked the gangway and made me miss a departure by one minute.",
+            "chinese": "那张长椅让我想起轮渡时期常讲的一件事。我总说一只天鹅挡住跳板，让我晚了一分钟，错过开船。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He stops walking and turns to face the bench, as if checking it against a memory.",
+            "chinese": "他停下脚步，转身面对长椅，好像在把它和记忆核对。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Here's the honest bit: I got half of that story wrong for twenty years. It wasn't a swan. It was a delivery cart, and I was two minutes late, not one. I'm rewriting the whole tale this week.",
+            "chinese": "说实话的部分来了：这个故事我讲错了二十年。不是天鹅，是一辆送货的车，而且我晚了不止一分钟，是两分钟。这周我正在重写整个故事。"
+          },
+          {
+            "speaker": "npc",
+            "english": "So—do I keep telling it with the swan, because it's funnier? Or tell it true? You decide while we walk.",
+            "chinese": "那么——我是继续讲天鹅版，因为它更好笑？还是讲真话版？我们边走你边决定。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Tell it true. The cart version sounds better anyway.",
+            "chinese": "讲真话吧。送货车的版本其实更有意思。",
+            "next": "aa"
+          },
+          {
+            "english": "Keep the swan, but say you changed it. That's honest too.",
+            "chinese": "保留天鹅，但说明你改过了。这也算诚实。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "New path it is. I'll mark the turn as we go. Otherwise I'll be telling everyone I discovered this route myself by next week.",
+            "chinese": "那就走新路。我边走边记下转弯。不然过一星期，我怕是又要说这条路是自己发现的了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "At a park bench, Victor opens his bag. A folded paper star wheel slips against a photo of a costume with a loose shoulder seam.",
+            "chinese": "走到公园长椅边，维克多打开包。折好的纸星盘贴着一张戏服照片，照片上肩部的接缝松开了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Two things I'm learning. How to use this star wheel, and how to offer help without announcing that I know best. The costume belongs to a theatre group.",
+            "chinese": "两件我正在学的事：怎么用这个星盘，还有怎么提出帮忙，又不摆出自己最懂的架势。戏服是一家剧团的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He smooths both papers on his knees, keeping the photo in its sleeve. His finger stops over the loose seam, then moves to the wheel.",
+            "chinese": "他在膝头铺平两张纸，照片还留在保护套里。他的手指停在松开的接缝上，随后移到星盘旁。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I mend costumes at home. They shared this photo asking about repairs, and I've been drafting an offer. The star wheel is a much quieter problem.",
+            "chinese": "我在家里修补戏服。他们发了这张照片询问维修，我一直在拟一份帮忙的留言。比起来，星盘这个难题安静多了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Which shall I untangle first — the paper wheel, or that little note? I've got time for one before I carry on walking.",
+            "chinese": "我先理清哪一个——纸星盘，还是那张小留言？继续散步前，我还有时间弄好一件。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Look at the instructions on his paper star wheel together.",
+            "chinese": "一起看看纸星盘上的使用说明。",
+            "next": "ba"
+          },
+          {
+            "english": "Help him keep the repair offer short and optional.",
+            "chinese": "帮他把修补邀约写得简短，也给对方留下选择。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "True version it is. The delivery cart. You know, when I say it out loud, the cart is funnier—a man in a good coat, defeated by flour sacks.",
+            "chinese": "就讲真话版。送货的车。你知道吗，大声说出来，那车反而更好笑——一个穿着体面外套的男人，败给了一袋袋面粉。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You reach the end of the water path. Victor takes out his hand-drawn map and crosses out a small note with a pencil stub.",
+            "chinese": "你们走到水路的尽头。维克多掏出手绘地图，用一小截铅笔划掉一条小注。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There. Note deleted: 'swan, one minute.' New note: 'cart, two minutes, and I was reading the wrong timetable.' That last part I only admitted last spring.",
+            "chinese": "好了。注解删掉：'天鹅，一分钟'。新注解：'送货车，两分钟，而且我看错了时刻表'。最后那部分我是去年春天才承认的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He folds the map carefully along its worn creases and pats it twice before pocketing it.",
+            "chinese": "他沿着磨旧的折痕仔细把地图折好，拍了拍，才放回口袋。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You helped me finish a job twenty years long. First honest telling happens this week, I promise you. Mark my words—the cart stays.",
+            "chinese": "你帮我完成了一项二十年的工作。第一次诚实的讲述这周就会发生，我向你保证。记住我的话——送货车留下。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Keep the swan, but say I changed it. Hmm. 'Once upon a time there was a swan, but the truth was a cart.' That's almost a poem, isn't it?",
+            "chinese": "保留天鹅，但说明我改过了。嗯。'从前有一只天鹅，但真相是一辆车。'这几乎像一句诗了，对吧？"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Victor walks a few steps in silence, mouthing the sentence to himself like he is testing the weight of it.",
+            "chinese": "维克多默默走了几步，嘴里念着那句话，像在掂它的分量。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's the honest version for a stage, maybe. I mend costumes for the theatre—people pay to watch a story they know isn't real. Nobody minds, as long as the curtain says so.",
+            "chinese": "那也许是在舞台上的诚实版本。我给剧院缝戏服——人们花钱看一个他们明知不是真的故事。只要幕布上写明，没人介意。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He takes out his hand-drawn map and writes a new line in the margin, reading it aloud as he writes.",
+            "chinese": "他掏出手绘地图，在边上写下一行字，边写边念出来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "New note: 'swan version allowed, only if labelled as a story.' My granddaughter will laugh. She's been calling me out on that swan since she was nine.",
+            "chinese": "新注解：'天鹅版可以讲，但必须注明是故事'。我孙女会笑的。她从九岁起就揪着那只天鹅不放。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You've given me a third option I didn't see from the map. That's worth a walk any day.",
+            "chinese": "你给了我一个从地图上看不出来的第三种选择。这值得走一趟。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You look at the printed instructions together. Victor finds the month ring, then turns the paper disc until two marked practice arrows meet.",
+            "chinese": "你们一起看印好的说明。维克多找到月份环，转动纸盘，让两个练习箭头对齐。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Ah, it says this example is for practice. I was trying to make the diagram match the sky without even setting the date. Very professional of me.",
+            "chinese": "啊，上面写了这只是练习示例。我连日期都没设，就想让图对上天空。真是太专业了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He turns the wheel back and repeats the steps himself. This time he stops at the instruction about checking the place, date and time.",
+            "chinese": "他把纸盘转回去，自己再做了一次。这回读到核对地点、日期和时间的提示，他停下来记住了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thirty-one years checking ferry times, and I forgot the clock on a paper sky. I'll try it properly another time. For now, I understand which ring moves.",
+            "chinese": "查了三十一年轮渡时刻，我却忘了纸天空也要看时间。改天再正式试。至少现在我明白该转哪一圈了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He folds the wheel along its existing creases and adds a small star beside the bench on his personal map.",
+            "chinese": "他沿原有折痕收好星盘，在自己的地图上，给长椅旁画了一颗小星星。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There. New path, one useful bench, one less muddle. I can tell that story exactly as it happened. No swans required.",
+            "chinese": "好了，新路，一张有用的长椅，少了一件糊涂事。这个故事可以照实讲，一只天鹅都不用添。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Victor takes out a pencil and a spare card. He starts with a long account of his sewing experience, then pauses over the crowded first line.",
+            "chinese": "维克多拿出铅笔和备用卡片，先写了一大段自己的缝补经历，又望着挤满的第一行停下来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That's a speech, isn't it? You said short and optional. Right. They asked about repairs, not the history of my kitchen table.",
+            "chinese": "这成演讲了，对吧？你说要简短，也要留选择。好。他们问的是修补，不是我家厨房桌子的历史。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He turns the card over and writes a new draft, leaving space beneath it for any details the group might ask for later.",
+            "chinese": "他把卡片翻过来，重写一份草稿，下面留着空位，以后对方问起细节时再补。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I mend costumes and could look at that seam, if useful. No hurry — let me know. There. An offer, not a rescue mission.",
+            "chinese": "我会修补戏服，如果需要，可以帮忙看看那条接缝。不急，方便时告诉我。好了，这是个邀约，不是什么救援行动。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He places the unsent draft behind the photo in its sleeve. Then he puts both safely in his bag and checks the path ahead.",
+            "chinese": "他把尚未发出的草稿放到照片后面的保护套里，一并收回包中，再看向前方的园路。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll read it once more at home before I decide to send it. A new path and a finished draft — plenty for one walk. Thanks for keeping me brief.",
+            "chinese": "回家我会再看一遍，然后决定要不要发。走了新路，也写好了草稿，一趟散步够充实了。谢谢你让我少说两句。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}

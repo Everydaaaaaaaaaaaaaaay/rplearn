@@ -1,0 +1,315 @@
+{
+  "card": {
+    "name": "Aisha Grant",
+    "age": 22,
+    "gender": "female",
+    "regionId": "london",
+    "nationality": "Marovian",
+    "occupation": "apprentice electrician",
+    "hobbies": [
+      "collecting perfume scent strips",
+      "word puzzles",
+      "self-taught perfumery"
+    ],
+    "personality": "Careful and practical on the job, which makes her oddly playful off it. She double-checks everything twice, then makes a terrible pun about it. She is stubborn about doing hobbies for fun, not profit, and quietly embarrassed when she takes small things too seriously.",
+    "background": "Aisha finished school and went straight into a four-year electrician apprenticeship, wiring flats across the city. Evenings, she teaches herself perfumery from library books and cheap materials, keeping a tin of scent strips in her jacket. Last month she named a homemade blend something so grand her study group teased her for a week, and now she is practising plainer names on everything, including the rain.",
+    "speechStyle": "Short, measured sentences with sudden odd jokes dropped in flatly. Counts things on her fingers. Says 'right, so' before explanations and 'that's the one' when satisfied.",
+    "hometown": "Fenmere Hollow",
+    "languages": [
+      "English"
+    ],
+    "birthday": "03-17",
+    "signature": "Everything smells like something, if you bother to check.",
+    "appearance": "",
+    "personaVoice": {
+      "values": [
+        "doing things properly",
+        "keeping hobbies joyful, not career-shaped"
+      ],
+      "flaws": [
+        "overthinks small decisions",
+        "deflects praise with bad jokes"
+      ],
+      "boundaries": [
+        "won't mix her trade talk with damp weather repairs",
+        "won't turn her perfume hobby into a side hustle just because people suggest it"
+      ],
+      "conversationalHabits": [
+        "counts points on her fingers",
+        "answers questions with a question before committing"
+      ],
+      "anchorLines": [
+        "Right, so, two options here.",
+        "That's the one. Plain and done.",
+        "I'm not selling it, I'm just smelling it."
+      ]
+    }
+  },
+  "summaryZh": "学徒电工艾莎下班躲雨，随身带着香味试纸，认真到给雨味取名都会纠结。她务实又冷幽默，坚持调香只是爱好不卖钱。和她在窗边一起给雨声雨味起个普通名字，会发现她较真又可爱的一面。",
+  "story": {
+    "titleZh": "给雨取个普通的名字",
+    "actionId": "rain-weather",
+    "nodes": [
+      {
+        "id": "start",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You watch rain run down the cafe window. At the neighbouring seat, a woman sets a small tin beside her cup and follows the same trail down the glass.",
+            "chinese": "你看着雨水沿咖啡馆窗户流下。邻座女子把一个小铁盒放在杯边，也望着玻璃上那道水痕。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Typical. One job finishes, the sky opens. Right, so, at least this seat has the best view of the disaster.",
+            "chinese": "真典型。活儿刚干完，天就开了口。行吧，至少这个位子看这场灾难视角最好。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She glances at the rain running down the glass between you, then taps the window with one knuckle, as if testing it.",
+            "chinese": "她瞥了一眼你们之间顺着玻璃流下的雨水，然后用指节敲了敲窗户，像是在测试它。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You've been watching it too, haven't you? Everyone watches rain. Nobody names it. That's a gap in the market.",
+            "chinese": "你也在看它，对吧？人人都看雨，却没人给它起名。这是个市场空白。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Not that I'm selling anything. I just think the rain deserves a proper name, and 'rain' is doing overtime.",
+            "chinese": "不是说我有什么要卖的。我只是觉得这场雨值得一个正经名字，'雨'这个词已经超负荷了。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Ask her what rain actually smells like to her.",
+            "chinese": "问她雨在她闻起来到底是什么味道。",
+            "next": "a"
+          },
+          {
+            "english": "Suggest you two try naming the sound of the rain instead.",
+            "chinese": "提议你们俩试着给雨声起个名字。",
+            "next": "b"
+          }
+        ]
+      },
+      {
+        "id": "a",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Good question. Most people say 'wet'. That's lazy. Wet is a state, not a smell.",
+            "chinese": "问得好。大多数人说'潮'。太偷懒了。潮是一种状态，不是味道。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She opens the tin and lifts out a white paper strip, holding it up to the light without offering it yet.",
+            "chinese": "她打开铁盒抽出一张白色试纸，举到灯下看了看，还没递过来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "This is a test strip from a blend I made at home — 'sample four', for now. It reminds me of a wet pavement. I'll keep it on my side.",
+            "chinese": "这是我在家调好的一款香味试纸，暂时叫‘四号样品’。它让我想到下过雨的人行道。我先放在自己这边。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She sets the prepared strip beside her own cup and turns its handwritten label toward you. You can discuss the name without trying the scent.",
+            "chinese": "她把预先蘸好香味的试纸放在自己的杯边，把手写标签转向你。你们可以聊名字，不必闻它。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I was aiming for dust, stone and a little metal. Whether I got there is another question. The name is easier to fix than the blend.",
+            "chinese": "我想调出灰尘、石头，再加一点金属的感觉。有没有做到是另一回事。名字总比香味容易修改。"
+          },
+          {
+            "speaker": "npc",
+            "english": "My last blend was called 'Ode to Dusk'. My friends laughed for a week. So now, plain names only.",
+            "chinese": "我上一款调香叫'暮色颂'。朋友们笑了我一个星期。所以现在只用普通名字。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Suggest the name “Wet Street” for the blend she described.",
+            "chinese": "给她描述的香味起名“湿街道”。",
+            "next": "aa"
+          },
+          {
+            "english": "Ask what 'Ode to Dusk' actually smelled like.",
+            "chinese": "问问'暮色颂'到底是什么味道。",
+            "next": "ab"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "The sound? Nobody names that either. It's not a patter, it's not a drum. It's... specific.",
+            "chinese": "声音？也没人给声音起名。这不是噼啪，也不是鼓点。它是……很具体的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She taps the window twice with one knuckle, then holds up three fingers and counts off, like she's checking a circuit.",
+            "chinese": "她用指节在窗上敲了两下，然后竖起三根手指逐一数着，像在检查一条线路。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right, so. One: it hisses on the road. Two: it knocks on glass. Three: it gurgles down that broken drain. Three sounds, one storm.",
+            "chinese": "好，这样。一：雨在马路上嘶嘶响。二：雨敲玻璃。三：雨顺着那个坏掉的排水管咕噜咕噜。三种声音，一场雨。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I like naming things in threes. It's how I check my work. If a name needs a fourth thing, it's too complicated.",
+            "chinese": "我喜欢三个三个地起名。我干活也这样。如果一个名字需要第四样东西，那就太复杂了。"
+          }
+        ],
+        "choices": [
+          {
+            "english": "Propose turning the three sounds into a little word puzzle.",
+            "chinese": "提议把三种声音变成一个小文字游戏。",
+            "next": "ba"
+          },
+          {
+            "english": "Suggest naming the rain like she names parts of a job.",
+            "chinese": "提议像她给工作部件命名那样给雨命名。",
+            "next": "bb"
+          }
+        ]
+      },
+      {
+        "id": "aa",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "'Wet street'. Hm. Say it again.",
+            "chinese": "'湿街道'。嗯。再说一遍。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "You repeat it. She writes it on the back of a receipt with a pencil stub, then reads it aloud against the sound of the rain.",
+            "chinese": "你又重复了一遍。她用一小截铅笔把它写在收据背面，然后对着雨声念出来。"
+          },
+          {
+            "speaker": "npc",
+            "english": "It fits. That's annoying. I spent an hour on 'Petrichor of the Sleeping City' and yours is better.",
+            "chinese": "很贴切。真气人。我花了一个小时想'沉睡之城的潮土香'，结果你的更好。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She folds the receipt carefully and tucks it into the tin, next to the paper strips, like it belongs there.",
+            "chinese": "她小心地把收据折好，塞进铁盒里，和试纸放在一起，好像它本来就属于那里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right, so, new rule for me. If a name takes longer than the thing itself, it's wrong. 'Wet street'. Done. That's the one.",
+            "chinese": "好，那我给自己定个新规矩。起名的时间比东西本身还久，就是错的。'湿街道'。完事。就是它了。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ab",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "It smelled like cold smoke and orange peel. Very serious. Very silly. I made ten drops and wore it once.",
+            "chinese": "闻起来像冷烟和橘子皮。特别严肃，也特别傻。我做了十滴，只戴过一次。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She laughs at herself, a short flat laugh, and draws a fresh scent strip from the tin to wave near the window.",
+            "chinese": "她自嘲地短促笑了一声，从铁盒里抽出一张新试纸，在窗边挥了挥。"
+          },
+          {
+            "speaker": "npc",
+            "english": "That sample can keep its ridiculous name. This new one is still sample four. I'm allowed one serious label and one bad joke, surely.",
+            "chinese": "那款就留着它夸张的名字吧。新的这款还叫四号样品。我总可以有一个正经标签，再留一个烂笑话吧。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You know what, let's give it a stupid name on purpose. Something so plain it circles back to funny. My worst idea is 'rain soup'.",
+            "chinese": "要不我们故意给它起个傻名字吧。普通到反过来好笑的那种。我最烂的主意是'雨水汤'。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She writes 'Rain Soup' on the back of the new label, then laughs at it herself and closes the tin.",
+            "chinese": "她在新标签背面写下‘雨水汤’，自己先笑了起来，随后盖上铁盒。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Rain Soup. There, a working name. I can improve it later; today it only has to stop me calling everything sample four.",
+            "chinese": "雨水汤。好了，有个暂用名了。以后还能改，今天只要让我别再把什么都叫四号样品就行。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "ba",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "A puzzle, in this weather? Fine. Three sounds, three plain names, no fancy words allowed. I'll go first.",
+            "chinese": "这种天气玩解谜？行啊。三种声音，三个普通名字，不许用花哨词。我先来。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She pulls the tin closer, using the lid as a small tray, and mimes writing on it with her finger.",
+            "chinese": "她把铁盒拉近，用盒盖当小托盘，用手指在上面比划着写字。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Road first. It hisses, so... 'street sizzle'? No, that's a kitchen. Hm. Just 'the hiss'. Plain. Done.",
+            "chinese": "先来马路。雨是嘶嘶的，那……'街道滋滋'？不行，那是厨房。嗯。就叫'嘶嘶'。普通。完事。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She points through the glass toward the road and drain, listening from her seat as each sound rises above the others.",
+            "chinese": "她隔着玻璃指了指路面和排水口，坐在座位上听着几种声音交替响起。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Glass is 'the knock'. Drain is 'the glug'. Hiss, knock, glug. Right, so, I just solved my own puzzle. That's the one.",
+            "chinese": "玻璃是'咚咚'。排水管是'咕噜'。嘶嘶、咚咚、咕噜。好，这样，我把自己出的题解了。就是它了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Three little labels. I'll keep them on this receipt before I try to make them grander. That's usually where I get into trouble.",
+            "chinese": "三个小标签。我先把它们留在这张收据上，别急着改得气派。我通常就是从那一步开始犯愁的。"
+          }
+        ],
+        "choices": []
+      },
+      {
+        "id": "bb",
+        "beats": [
+          {
+            "speaker": "npc",
+            "english": "Like a job? Hm. So the road is the 'supply', the glass is the 'fixture', and the drain is the 'fault'. Everything's a fault until checked.",
+            "chinese": "像干活那样？嗯。那马路是'进线'，玻璃是'固定件'，排水管是'故障'。检查之前，一切都算故障。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She points at the window, the road, then the drain outside, ticking them off in order, completely serious.",
+            "chinese": "她依次指着窗户、马路、然后是外面的排水管，一样样点过去，一本正经。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Don't worry, I'm not fixing anything out there. Rain and electrics don't mix. I just can't switch the naming habit off.",
+            "chinese": "别担心，我不会出去修东西。雨天和电不搭。我只是关不掉这个起名的习惯。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She writes the three labels on the receipt, then holds it up against the window so the real rain sits behind its names.",
+            "chinese": "她把三个标签写在收据上，然后举到窗前，让真正的雨正好衬在名字后面。"
+          },
+          {
+            "speaker": "npc",
+            "english": "There. Supply, fixture, fault. Checked twice, signed off. That's the one. Best job I've done all day, and it took no wires at all.",
+            "chinese": "好了。进线、固定件、故障。检查两遍，签收。就是它了。我今天干得最漂亮的活儿，一根电线都没用。"
+          }
+        ],
+        "choices": []
+      }
+    ]
+  }
+}
