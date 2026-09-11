@@ -1,0 +1,2938 @@
+[
+  {
+    "id": "library-178",
+    "reasonZh": "删除与Colette重合的笑点迟到机制，保留真正核心：听过仍爱听，但太晚说明使讲述者失落。",
+    "expectedContent": {
+      "story": {
+        "titleZh": "公园里的第二次讲述",
+        "actionId": "park-notes",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You settle on a park bench and open your notebook, pen ready to jot down whatever the park offers today.",
+                "chinese": "你在公园长椅上坐下，打开笔记本，准备好笔，想记下今天公园里见到的东西。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "On the next bench, an older person holds a phone close, listening to a voice message with their head tilted, completely still.",
+                "chinese": "旁边的长椅上，一位年长者把手机凑近耳边，歪着头听一条语音留言，一动不动。"
+              },
+              {
+                "speaker": "npc",
+                "english": "...and then the goat got on the bus. Not a goat in a crate. A goat on a leash, holding its own ticket in its mouth.",
+                "chinese": "……然后那只山羊上了车。不是装在笼子里的，是拴着绳的，嘴里还叼着自己的票。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The voice message ends. A full three seconds pass. Then the older person laughs, once, quietly, like a delayed bus finally pulling in.",
+                "chinese": "语音结束了。整整三秒过去，那位长者才笑了一声，很轻，像晚点的巴士终于进站。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Sorry. You caught me at the punchline delay. I'm René. That was an old colleague's message—goat story, depot classic.",
+                "chinese": "抱歉。你正好赶上我的笑点晚点。我叫勒内。那是一位老同事的留言——山羊的故事，车站的经典。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Turn your notebook, already a few lines in, toward René and say you're writing down what you overhear in the park",
+                "chinese": "把已经写了几行的笔记本转向勒内，说你在记录公园里听到的见闻",
+                "next": "a"
+              },
+              {
+                "english": "Ask René why they laughed so long after the message ended",
+                "chinese": "问勒内为什么留言结束后那么久才笑",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You show the open notebook. René leans over, reads a line or two, and nods slowly.",
+                "chinese": "你翻开笔记本给他看。勒内凑过来读了一两行，慢慢点头。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Overheard stories, eh. Well, you got a good one free just now. The goat. That story's been told around me maybe six times.",
+                "chinese": "记录听来的故事啊。那你刚才免费听到一个好货。山羊的故事，我大概听过六遍了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I should've said so before it started. I know that now. But the message began, and my rule is—I don't interrupt. Interrupting ruins the good parts.",
+                "chinese": "我本该在开始前就说明。这道理我现在懂了。可留言一响，我的规矩就是——不打断。打断会毁掉精彩的部分。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René taps the phone against one knee, unhurried, watching a pigeon cross the path.",
+                "chinese": "勒内用手机轻敲膝盖，不紧不慢，看着一只鸽子穿过小路。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Go on and write it down if you want. I'll even tell you the parts the message skipped. I know them all.",
+                "chinese": "你想记就记吧。我还可以告诉你留言里没讲到的部分，我全知道。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask why they didn't say earlier that they'd heard the story before",
+                "chinese": "问为什么不早点说明自己早就听过这个故事",
+                "next": "aa"
+              },
+              {
+                "english": "Ask whether their memory is especially good, since they remember a story six tellings later",
+                "chinese": "问他们记性是不是特别好，听过六遍还记得",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "The delay? Oh, that's just how I'm built. The joke lands, and I'm still boarding it. My colleagues used to set watches by it.",
+                "chinese": "为什么延迟？哦，我就是这么个人。笑话到了，我还在上车。以前同事都拿这个对表。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René pockets the phone and gestures at your notebook with an easy tilt of the head.",
+                "chinese": "勒内把手机收进口袋，随意地朝你的笔记本偏了偏头。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Fair warning, since you're writing things down: that goat story, I've heard before. Several times, actually. Didn't say it sooner because I wanted to hear which parts he'd keep this round.",
+                "chinese": "既然你在记东西，先提醒一句：那个山羊的故事我听过。其实听过好几遍。没早点说，是因为我想听听他这次留了哪些部分。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's the honest version. I'm not testing him, and I'm not collecting proof. I just like hearing it again. The weather's different every time.",
+                "chinese": "这是实话。我不是在考他，也不是在收集证据。我就是想再听一遍。每次的天气都不一样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A jogger passes. René waits for the footsteps to fade before continuing, in no hurry at all.",
+                "chinese": "一个慢跑者经过。勒内等脚步声远去才继续说，一点也不急。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say you don't really have a story worth telling right now",
+                "chinese": "说自己暂时没有什么值得讲的故事",
+                "next": "ba"
+              },
+              {
+                "english": "Ask what René has been reading or listening to lately",
+                "chinese": "问勒内最近在读或听什么",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Why not sooner? Because stopping someone mid-story to announce I've heard it—that felt ruder than the late confession. I chose wrong, but I chose politely.",
+                "chinese": "为什么不早点说？因为在一半的时候打断人家，宣布我听过——那比事后坦白更失礼。我选错了，但我选得客气。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René sets the phone face-down on the bench, like closing a case for the day.",
+                "chinese": "勒内把手机屏幕朝下放在长椅上，像给这件事收了尾。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Here's what I do now. Before a story starts, I say: heard it before? Doesn't matter, weather's different this time. Then it's the teller's call whether to go on.",
+                "chinese": "现在我这么做。故事开始前我会说：听过？没关系，这次天气不一样。然后讲不讲，由讲的人决定。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Works most days. Today the message outran my manners. Happens. The goat waits for no one.",
+                "chinese": "大多数时候管用。今天那条留言跑得比我的礼貌快。常有的事。山羊可不等人。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René nods at your notebook. Whatever you write about the goat, they make no move to check it.",
+                "chinese": "勒内朝你的笔记本点点头。不管你把山羊写成什么样，他们都不去查看。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Good memory? Not exactly. I couldn't recite that story back word for word if you paid me. I remember the shape of it. The goat, the ticket, the driver's face.",
+                "chinese": "记性好？不算。就算你付钱，我也没法一字不差地复述。我记得的是故事的形状。山羊、车票、司机的脸色。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René counts on their fingers, slowly, and stops at three, satisfied.",
+                "chinese": "勒内慢慢地扳着手指头数，数到三就停了，很满意。"
+              },
+              {
+                "speaker": "npc",
+                "english": "What I notice the second time is the small stuff. Does he do the goat's voice this round? Does he skip the rain? That's not evidence. That's just the good part of listening twice.",
+                "chinese": "第二遍听时，我注意的是小地方。这回他学山羊的声音吗？他跳过下雨那段了吗？那不是收集证据，那就是听两遍的乐趣。"
+              },
+              {
+                "speaker": "npc",
+                "english": "If I were keeping score, I'd have told you at the door. I'm a listener, not an examiner. Big difference. One of us gets paid nothing.",
+                "chinese": "如果我在记账，我一开始就会告诉你。我是听众，不是考官。区别很大。我们俩里有一个分文不赚。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René laughs at their own line a beat after finishing it, then gestures at the park as if handing it over to your notebook.",
+                "chinese": "勒内说完这句，慢半拍才笑出来，然后朝公园一比划，像把这里交给你的笔记本。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "No story today? Good. Means you get to just sit and collect. Not everybody needs to be interesting on schedule.",
+                "chinese": "今天没故事？挺好。那你就只管坐着收集。不是每个人都得按时变得有趣。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René slides the phone deeper into their pocket and leaves it there, both hands resting open on their knees.",
+                "chinese": "勒内把手机往口袋更深处塞了塞，就放在那儿，双手摊开搭在膝盖上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I won't fish for one, either. Some folks around here try. They hear 'I'm a listener' and think it's an invitation with a deadline.",
+                "chinese": "我也不会去钓你的故事。这附近有些人会这样。他们一听'我爱听故事'，就当成一张有截止日期的请柬。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The two of you sit a while. René points out a heron at the canal edge, says nothing about it, and seems fine with that.",
+                "chinese": "你们坐了一会儿。勒内指着运河边的一只苍鹭，什么也没说，看起来也觉得这样挺好。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. Heron. Write that down if you like. One word. Best entry in the book, probably.",
+                "chinese": "喏。苍鹭。愿意就记下来。一个词。搞不好是本子里最好的一条。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Lately? A secondhand travel paperback I found for a dollar. Some chapter about a ferry crossing that the writer made sound like a war. It wasn't. It was a ferry.",
+                "chinese": "最近吗？一本一块钱的二手旅行平装书。有一章写坐渡轮，被作者写得像打仗。其实不是。就是坐渡轮。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René pats their jacket pocket, where a paperback corner is visible, soft from many readings.",
+                "chinese": "勒内拍了拍外套口袋，里面露出一角平装书，书角被翻得软软的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I like books other people finished with. They come pre-argued. Somebody underlined the ferry sentence. I disagree with their underline.",
+                "chinese": "我喜欢别人读完不要的书。它们自带争论。有人在渡轮那句下面画了线。我不同意那条线。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's my second-telling habit, I suppose. Same page, different weather. Works for ferries and for goat stories alike.",
+                "chinese": "我想这就是我爱听第二遍的习惯。同一页，不同的天气。对渡轮和山羊的故事都管用。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René settles back on the bench, content to let the park fill the quiet, your notebook open between you like a shared desk.",
+                "chinese": "勒内在长椅上靠回去，安心让公园填满安静，你的笔记本摊在你们中间，像一张共用的书桌。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "退休行李调度员勒内在公园听老同事的语音，笑点慢半拍才到，随后坦白山羊的故事自己听过六遍。他真心爱听第二遍，却常在讲完后才承认，让人白讲一场。他已学会先声明，只是今天那条留言跑得比礼貌快。",
+      "reunion": {
+        "titleZh": "书也讲了第二遍",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You sit down on the same bench again and open your notebook, pen ready to record whatever the park offers today. Only then do you notice René beside you, sliding a bookmark between two pages of a worn paperback.",
+            "chinese": "你再次坐上那张长椅，打开笔记本，准备好笔，想记下今天公园里见到的东西。这时才注意到身旁的勒内，正把一张书签夹进一本翻旧的书里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, look at that. Two bookmarks, same page. This book just told me its story twice. I sat through both. No regrets.",
+            "chinese": "哟，你瞧。两张书签，同一页。这本书刚给我讲了第二遍它的故事。我两遍都听完了。毫不后悔。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "René closes the book on the doubled bookmarks and nods at your open notebook, unhurried as ever.",
+            "chinese": "勒内合上夹着两张书签的书，朝你摊开的笔记本点点头，还是那么不紧不慢。"
+          },
+          {
+            "speaker": "npc",
+            "english": "No assumptions about what you wrote last time. If there's a new entry today, I'm listening. I always am.",
+            "chinese": "上次你写了什么，我不猜。今天要是有新的一篇，我听着呢。我一直都在听。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "René pats the bench beside them and returns to the page, leaving the silence open for you to fill or not.",
+            "chinese": "勒内拍了拍身旁的椅面，又低头看书，把安静留给你，填不填随你。"
+          }
+        ]
+      },
+      "card": {
+        "name": "René Delacroix-Toups",
+        "age": 75,
+        "gender": "other",
+        "regionId": "neworleans",
+        "occupation": "retired long-distance bus luggage dispatcher",
+        "nationality": "American",
+        "hometown": "New Orleans, Louisiana",
+        "languages": [
+          "English"
+        ],
+        "birthday": "02-18",
+        "appearance": "",
+        "personality": "René is a patient listener who genuinely enjoys hearing a story unfold, even a familiar one, because the second telling always carries new texture. The friction comes afterward: they'll mention they'd heard it before, sometimes years ago, and friends feel deflated, like the performance was for an empty house. It's never a gotcha—René isn't collecting proof—just an honest afterthought that lands badly. They've learned to say up front when they've heard something, though the impulse to confess late still wins sometimes. Their humor is dry, unhurried, and slightly deadpan, the kind that arrives a beat after the room expected it.",
+        "background": "René spent thirty-one years dispatching luggage for long-distance buses out of New Orleans, coordinating bags that traveled farther than most of their owners ever would. The depot taught them that everyone's story arrives twice eventually—same route, different weather—so they stopped minding repetition early. Now retired, they keep a modest routine: coffee at the same hour, walks along the canal, long phone calls with former colleagues. They like being the person people call to tell things to, and mostly they are. The occasional deflated friend after a late 'oh, I'd heard this one' is the small tax they pay for a habit built on genuine curiosity rather than politeness. They'd rather hear it again badly than never hear it at all.",
+        "hobbies": [
+          "Walking the canal at dusk",
+          "Long phone calls with old depot colleagues",
+          "Collecting secondhand travel paperbacks"
+        ],
+        "speechStyle": "Slow, dry, unhurried sentences with a deadpan punchline that arrives a beat late; warm but understated.",
+        "signature": "\"Go on—I'm listening. I always am.\"",
+        "personaVoice": {
+          "values": [
+            "Honesty even when it lands awkwardly",
+            "Patience with repetition"
+          ],
+          "flaws": [
+            "Admits having heard a story only after the telling",
+            "Dry humor can read as detachment"
+          ],
+          "boundaries": [
+            "Won't pretend ignorance to flatter a storyteller",
+            "Won't be rushed through a telling"
+          ],
+          "conversationalHabits": [
+            "Lets silences sit rather than filling them",
+            "Flags familiar stories up front when they remember to"
+          ],
+          "anchorLines": [
+            "Heard it before? Doesn't matter. Weather's different this time.",
+            "You finished? Good. Now—small confession.",
+            "I don't interrupt. Interrupting ruins the good parts."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "公园里的第二次讲述",
+        "actionId": "park-notes",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You settle on a park bench and open your notebook, pen ready to jot down whatever the park offers today.",
+                "chinese": "你在公园长椅上坐下，打开笔记本，准备好笔，想记下今天公园里见到的东西。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "On the next bench, an older person holds a phone close, listening to a voice message with their head tilted, completely still.",
+                "chinese": "旁边的长椅上，一位年长者把手机凑近耳边，歪着头听一条语音留言，一动不动。"
+              },
+              {
+                "speaker": "npc",
+                "english": "...and then the goat got on the bus. Not a goat in a crate. A goat on a leash, holding its own ticket in its mouth.",
+                "chinese": "……然后那只山羊上了车。不是装在笼子里的，是拴着绳的，嘴里还叼着自己的票。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Before the message has quite finished, the listener smiles in recognition. They wait for the last word before putting the phone down.",
+                "chinese": "语音还没完全结束，听的人就露出认出来的笑。他们等最后一个字说完才放下手机。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm René. Same goat, same bus. Sixth telling, I think. He added the ticket this time. I like that bit.",
+                "chinese": "我叫勒内。同一只山羊，同一辆巴士。我想是第六遍了。这次他加上了车票。我喜欢这一笔。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Turn your notebook, already a few lines in, toward René and say you're writing down what you overhear in the park",
+                "chinese": "把已经写了几行的笔记本转向勒内，说你在记录公园里听到的见闻",
+                "next": "a"
+              },
+              {
+                "english": "Ask whether René remembers every story they hear.",
+                "chinese": "问勒内是不是听过的故事都记得。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You show the open notebook. René leans over, reads a line or two, and nods slowly.",
+                "chinese": "你翻开笔记本给他看。勒内凑过来读了一两行，慢慢点头。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Overheard stories, eh. Well, you got a good one free just now. The goat. That story's been told around me maybe six times.",
+                "chinese": "记录听来的故事啊。那你刚才免费听到一个好货。山羊的故事，我大概听过六遍了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I should've said so before it started. I know that now. But the message began, and my rule is—I don't interrupt. Interrupting ruins the good parts.",
+                "chinese": "我本该在开始前就说明。这道理我现在懂了。可留言一响，我的规矩就是——不打断。打断会毁掉精彩的部分。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René taps the phone against one knee, unhurried, watching a pigeon cross the path.",
+                "chinese": "勒内用手机轻敲膝盖，不紧不慢，看着一只鸽子穿过小路。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Go on and write it down if you want. I'll even tell you the parts the message skipped. I know them all.",
+                "chinese": "你想记就记吧。我还可以告诉你留言里没讲到的部分，我全知道。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask why they didn't say earlier that they'd heard the story before",
+                "chinese": "问为什么不早点说明自己早就听过这个故事",
+                "next": "aa"
+              },
+              {
+                "english": "Ask whether their memory is especially good, since they remember a story six tellings later",
+                "chinese": "问他们记性是不是特别好，听过六遍还记得",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Not word for word. I remember the shape. The goat used to get as far as the steps; this time it's apparently paying its fare. He's enjoying himself.",
+                "chinese": "不是一字不漏。我记得大致样子。以前那只山羊只走到台阶，这次居然付起车费了。他自己讲得挺开心。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René pockets the phone and gestures at your notebook with an easy tilt of the head.",
+                "chinese": "勒内把手机收进口袋，随意地朝你的笔记本偏了偏头。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I should have said at the start that I knew it. Then he could decide whether to tell it again. I keep getting interested and leaving that bit too late.",
+                "chinese": "我该在开头就说听过，让他自己决定要不要再讲。我总是一听来劲，就把这句留得太晚。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's the honest version. I'm not testing him, and I'm not collecting proof. I just like hearing it again. The weather's different every time.",
+                "chinese": "这是实话。我不是在考他，也不是在收集证据。我就是想再听一遍。每次的天气都不一样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A jogger passes. René waits for the footsteps to fade before continuing, in no hurry at all.",
+                "chinese": "一个慢跑者经过。勒内等脚步声远去才继续说，一点也不急。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say you don't really have a story worth telling right now",
+                "chinese": "说自己暂时没有什么值得讲的故事",
+                "next": "ba"
+              },
+              {
+                "english": "Ask what René has been reading or listening to lately",
+                "chinese": "问勒内最近在读或听什么",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Why not sooner? Because stopping someone mid-story to announce I've heard it—that felt ruder than the late confession. I chose wrong, but I chose politely.",
+                "chinese": "为什么不早点说？因为在一半的时候打断人家，宣布我听过——那比事后坦白更失礼。我选错了，但我选得客气。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René sets the phone face-down on the bench, like closing a case for the day.",
+                "chinese": "勒内把手机屏幕朝下放在长椅上，像给这件事收了尾。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Here's what I do now. Before a story starts, I say: heard it before? Doesn't matter, weather's different this time. Then it's the teller's call whether to go on.",
+                "chinese": "现在我这么做。故事开始前我会说：听过？没关系，这次天气不一样。然后讲不讲，由讲的人决定。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Works most days. Today the message outran my manners. Happens. The goat waits for no one.",
+                "chinese": "大多数时候管用。今天那条留言跑得比我的礼貌快。常有的事。山羊可不等人。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René nods at your notebook. Whatever you write about the goat, they make no move to check it.",
+                "chinese": "勒内朝你的笔记本点点头。不管你把山羊写成什么样，他们都不去查看。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Good memory? Not exactly. I couldn't recite that story back word for word if you paid me. I remember the shape of it. The goat, the ticket, the driver's face.",
+                "chinese": "记性好？不算。就算你付钱，我也没法一字不差地复述。我记得的是故事的形状。山羊、车票、司机的脸色。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René counts on their fingers, slowly, and stops at three, satisfied.",
+                "chinese": "勒内慢慢地扳着手指头数，数到三就停了，很满意。"
+              },
+              {
+                "speaker": "npc",
+                "english": "What I notice the second time is the small stuff. Does he do the goat's voice this round? Does he skip the rain? That's not evidence. That's just the good part of listening twice.",
+                "chinese": "第二遍听时，我注意的是小地方。这回他学山羊的声音吗？他跳过下雨那段了吗？那不是收集证据，那就是听两遍的乐趣。"
+              },
+              {
+                "speaker": "npc",
+                "english": "If I were keeping score, I'd have told you at the door. I'm a listener, not an examiner. Big difference. One of us gets paid nothing.",
+                "chinese": "如果我在记账，我一开始就会告诉你。我是听众，不是考官。区别很大。我们俩里有一个分文不赚。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René laughs at their own line a beat after finishing it, then gestures at the park as if handing it over to your notebook.",
+                "chinese": "勒内说完这句，慢半拍才笑出来，然后朝公园一比划，像把这里交给你的笔记本。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "No story today? Good. Means you get to just sit and collect. Not everybody needs to be interesting on schedule.",
+                "chinese": "今天没故事？挺好。那你就只管坐着收集。不是每个人都得按时变得有趣。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René slides the phone deeper into their pocket and leaves it there, both hands resting open on their knees.",
+                "chinese": "勒内把手机往口袋更深处塞了塞，就放在那儿，双手摊开搭在膝盖上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I won't fish for one, either. Some folks around here try. They hear 'I'm a listener' and think it's an invitation with a deadline.",
+                "chinese": "我也不会去钓你的故事。这附近有些人会这样。他们一听'我爱听故事'，就当成一张有截止日期的请柬。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The two of you sit a while. René points out a heron at the canal edge, says nothing about it, and seems fine with that.",
+                "chinese": "你们坐了一会儿。勒内指着运河边的一只苍鹭，什么也没说，看起来也觉得这样挺好。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. Heron. Write that down if you like. One word. Best entry in the book, probably.",
+                "chinese": "喏。苍鹭。愿意就记下来。一个词。搞不好是本子里最好的一条。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Lately? A secondhand travel paperback I found for a dollar. Some chapter about a ferry crossing that the writer made sound like a war. It wasn't. It was a ferry.",
+                "chinese": "最近吗？一本一块钱的二手旅行平装书。有一章写坐渡轮，被作者写得像打仗。其实不是。就是坐渡轮。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René pats their jacket pocket, where a paperback corner is visible, soft from many readings.",
+                "chinese": "勒内拍了拍外套口袋，里面露出一角平装书，书角被翻得软软的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I like books other people finished with. They come pre-argued. Somebody underlined the ferry sentence. I disagree with their underline.",
+                "chinese": "我喜欢别人读完不要的书。它们自带争论。有人在渡轮那句下面画了线。我不同意那条线。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's my second-telling habit, I suppose. Same page, different weather. Works for ferries and for goat stories alike.",
+                "chinese": "我想这就是我爱听第二遍的习惯。同一页，不同的天气。对渡轮和山羊的故事都管用。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "René settles back on the bench, content to let the park fill the quiet, your notebook open between you like a shared desk.",
+                "chinese": "勒内在长椅上靠回去，安心让公园填满安静，你的笔记本摊在你们中间，像一张共用的书桌。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "退休行李调度员勒内在公园听老同事的语音，笑点慢半拍才到，随后坦白山羊的故事自己听过六遍。他真心爱听第二遍，却常在讲完后才承认，让人白讲一场。他已学会先声明，只是今天那条留言跑得比礼貌快。",
+      "reunion": {
+        "titleZh": "书也讲了第二遍",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You sit down on the same bench again and open your notebook, pen ready to record whatever the park offers today. Only then do you notice René beside you, sliding a bookmark between two pages of a worn paperback.",
+            "chinese": "你再次坐上那张长椅，打开笔记本，准备好笔，想记下今天公园里见到的东西。这时才注意到身旁的勒内，正把一张书签夹进一本翻旧的书里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, look at that. Two bookmarks, same page. This book just told me its story twice. I sat through both. No regrets.",
+            "chinese": "哟，你瞧。两张书签，同一页。这本书刚给我讲了第二遍它的故事。我两遍都听完了。毫不后悔。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "René closes the book on the doubled bookmarks and nods at your open notebook, unhurried as ever.",
+            "chinese": "勒内合上夹着两张书签的书，朝你摊开的笔记本点点头，还是那么不紧不慢。"
+          },
+          {
+            "speaker": "npc",
+            "english": "No assumptions about what you wrote last time. If there's a new entry today, I'm listening. I always am.",
+            "chinese": "上次你写了什么，我不猜。今天要是有新的一篇，我听着呢。我一直都在听。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "René pats the bench beside them and returns to the page, leaving the silence open for you to fill or not.",
+            "chinese": "勒内拍了拍身旁的椅面，又低头看书，把安静留给你，填不填随你。"
+          }
+        ]
+      },
+      "card": {
+        "name": "René Delacroix-Toups",
+        "age": 75,
+        "gender": "other",
+        "regionId": "neworleans",
+        "occupation": "retired long-distance bus luggage dispatcher",
+        "nationality": "American",
+        "hometown": "New Orleans, Louisiana",
+        "languages": [
+          "English"
+        ],
+        "birthday": "02-18",
+        "appearance": "",
+        "personality": "René is a patient listener who genuinely enjoys hearing a story unfold, even a familiar one, because the second telling always carries new texture. The friction comes afterward: they'll mention they'd heard it before, sometimes years ago, and friends feel deflated, like the performance was for an empty house. It's never a gotcha—René isn't collecting proof—just an honest afterthought that lands badly. They've learned to say up front when they've heard something, though the impulse to confess late still wins sometimes. Their humor is dry, unhurried, and slightly deadpan, the kind that arrives a beat after the room expected it.",
+        "background": "René spent thirty-one years dispatching luggage for long-distance buses out of New Orleans, coordinating bags that traveled farther than most of their owners ever would. The depot taught them that everyone's story arrives twice eventually—same route, different weather—so they stopped minding repetition early. Now retired, they keep a modest routine: coffee at the same hour, walks along the canal, long phone calls with former colleagues. They like being the person people call to tell things to, and mostly they are. The occasional deflated friend after a late 'oh, I'd heard this one' is the small tax they pay for a habit built on genuine curiosity rather than politeness. They'd rather hear it again badly than never hear it at all.",
+        "hobbies": [
+          "Walking the canal at dusk",
+          "Long phone calls with old depot colleagues",
+          "Collecting secondhand travel paperbacks"
+        ],
+        "speechStyle": "Slow, dry, unhurried sentences with a deadpan punchline that arrives a beat late; warm but understated.",
+        "signature": "\"Go on—I'm listening. I always am.\"",
+        "personaVoice": {
+          "values": [
+            "Honesty even when it lands awkwardly",
+            "Patience with repetition"
+          ],
+          "flaws": [
+            "Admits having heard a story only after the telling",
+            "Dry humor can read as detachment"
+          ],
+          "boundaries": [
+            "Won't pretend ignorance to flatter a storyteller",
+            "Won't be rushed through a telling"
+          ],
+          "conversationalHabits": [
+            "Lets silences sit rather than filling them",
+            "Flags familiar stories up front when they remember to"
+          ],
+          "anchorLines": [
+            "Heard it before? Doesn't matter. Weather's different this time.",
+            "You finished? Good. Now—small confession.",
+            "I don't interrupt. Interrupting ruins the good parts."
+          ]
+        }
+      }
+    },
+    "expectedPlan": {
+      "id": "library-178",
+      "incidentZh": "公园记录见闻，用户打开笔记本。René在旁边听自己手机上一段老同事语音，笑点到最后才笑，关掉后说这个故事听过，仍想听对方怎么讲。",
+      "nicheInActionZh": "再听细节真有兴趣，却晚说已听过令人白讲。",
+      "propsAndFactsZh": "用户原行动必须出现。只用NPC自有且先引入的物品，不编用户情绪、履历或同意。望远镜只观察，不拍摄、不录音、不看太阳。两次选择各有实际不同回应结果，终点收束。",
+      "firstChoiceZh": [
+        "问为什么不早点说明听过",
+        "问他是不是记性特别好"
+      ],
+      "developmentsZh": {
+        "a": "他说怕打断，又承认讲完才说会让人觉得白费。",
+        "b": "他说只是这件熟悉，不保证每句都记得，没把用户编进旧事。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问下次会怎么开口",
+          "问第二次会有什么不同"
+        ],
+        "b": [
+          "表示自己暂时没有故事想讲",
+          "问最近自己读什么"
+        ]
+      },
+      "endingsZh": {
+        "aa": "他说先告诉对方听过但愿意再听，是否继续由讲者定，不擅发消息。",
+        "ab": "他说语气和小细节，不为收证据或考记忆，结束。",
+        "ba": "他接受，不逼用户分享，收手机。",
+        "bb": "他讲二手旅行小册里的普通章节主题，不照搬真实长文。"
+      },
+      "reunionIncidentZh": "公园记录见闻，用户打开笔记本。René在旁边给自己的旅行旧书夹页，发现两张书签叠着，笑说书也给自己讲第二次了，短招呼不假装听过用户故事。",
+      "cardHash": "bbc70d3ab6ddda0fb7986ecab329979a30ab024b7919d57ba91e03e567df6ae6",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "f416083b8abd0d347c57480ccbcf5d055e8dcec1991df626dd75758baf29c2fa"
+    },
+    "plan": {
+      "id": "library-178",
+      "incidentZh": "用户在公园打开笔记本。René听老同事山羊故事，第六遍仍因新增的车票细节而开心，坦白自己听过却常忘记提前说明。不是笑点理解延迟。",
+      "nicheInActionZh": "再听细节真有兴趣，却晚说已听过令人白讲。",
+      "propsAndFactsZh": "用户原行动必须出现。只用NPC自有且先引入的物品，不编用户情绪、履历或同意。望远镜只观察，不拍摄、不录音、不看太阳。两次选择各有实际不同回应结果，终点收束。",
+      "firstChoiceZh": [
+        "问为什么不早点说明听过",
+        "问他是不是记性特别好"
+      ],
+      "developmentsZh": {
+        "a": "他说怕打断，又承认讲完才说会让人觉得白费。",
+        "b": "他说只是这件熟悉，不保证每句都记得，没把用户编进旧事。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问下次会怎么开口",
+          "问第二次会有什么不同"
+        ],
+        "b": [
+          "表示自己暂时没有故事想讲",
+          "问最近自己读什么"
+        ]
+      },
+      "endingsZh": {
+        "aa": "他说先告诉对方听过但愿意再听，是否继续由讲者定，不擅发消息。",
+        "ab": "他说语气和小细节，不为收证据或考记忆，结束。",
+        "ba": "他接受，不逼用户分享，收手机。",
+        "bb": "他讲二手旅行小册里的普通章节主题，不照搬真实长文。"
+      },
+      "reunionIncidentZh": "公园记录见闻，用户打开笔记本。René在旁边给自己的旅行旧书夹页，发现两张书签叠着，笑说书也给自己讲第二次了，短招呼不假装听过用户故事。",
+      "cardHash": "bbc70d3ab6ddda0fb7986ecab329979a30ab024b7919d57ba91e03e567df6ae6",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "f416083b8abd0d347c57480ccbcf5d055e8dcec1991df626dd75758baf29c2fa"
+    }
+  },
+  {
+    "id": "library-188",
+    "reasonZh": "替换与Terrence重合的拉面漫画重逢，用过度正式的招呼展示新版Gordon独有的社交节奏。",
+    "expectedContent": {
+      "story": {
+        "titleZh": "池塘边的望远镜",
+        "actionId": "pond-reflection",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "On the stone platform beside the pond, a pair of binoculars rests on a folded towel. Through the lenses, the trees on the far bank double in the water, their reflections bending whenever a breeze crosses the surface.",
+                "chinese": "池塘边的石台上放着一副双筒望远镜，底下垫着一条叠好的毛巾。透过镜片，对岸的树在水面里成了双影，风一吹过，倒影就跟着晃动。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A broad-shouldered man in a canvas jacket comes up the path with two paper cups. He sets one down on the platform's corner, well within reach, and nods at the binoculars like an old acquaintance.",
+                "chinese": "一个穿帆布夹克的宽肩男人端着两杯纸杯饮品走上小路。他把其中一杯放在石台一角，正好在手边，朝望远镜点了点头，像跟老熟人打招呼。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Go ahead, use it if you like. The water's calm right now, so the tree shadows come out clean. Best free show in the valley, huh.",
+                "chinese": "你尽管用。现在水面很静，树的倒影特别清楚。这可是山谷里最好的免费节目，哈。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My daughter gave me these years ago. I mostly watch herons, but honestly I watch whatever moves. Divorce left me with a lot of quiet evenings, so — the pond got me.",
+                "chinese": "这是女儿好几年前送我的。我主要看苍鹭，不过说实话，什么动我看什么。离婚之后晚上安静得很，所以就泡在池塘边了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Huh — sorry. We've been talking ten seconds and I've told you my whole situation. I always come in like I've already had three cups of tea with somebody.",
+                "chinese": "哈——抱歉。咱们才说了十秒钟，我就把家里的事全讲了。我这个人一见面，总像已经跟人喝过三回茶似的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He laughs at himself, picks up his cup, and waits, unhurried, as the reflections wobble and settle again.",
+                "chinese": "他自嘲地笑了笑，端起自己的杯子，不慌不忙地等着，水里的倒影晃了晃又平静下来。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Keep it light and ask about the trees along the far bank.",
+                "chinese": "先聊眼前这些树，问对岸的树是什么树。",
+                "next": "a"
+              },
+              {
+                "english": "Say you just met, so maybe slow down on the personal stuff.",
+                "chinese": "说明刚认识，私人的话题先慢一点。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "The trees? Now that's a topic I can run with. Those big ones are pears, and the crooked little ones past them are apples. I know because I put most of them there myself.",
+                "chinese": "树？这个话题我能讲一整天。那些大的都是梨树，后面那些歪歪扭扭的小的是苹果树。我清楚得很，因为大部分都是我亲手接的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He leans on the stone platform beside the binoculars and points across the water with his cup, careful not to spill.",
+                "chinese": "他靠着石台，用杯子远远一指，动作小心，没让饮品洒出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I graft fruit trees for the small orchards around the valley. You cut a young branch off a good tree, slot it into another, and hope they take. One in five of mine fails. Always been about that.",
+                "chinese": "我给山谷附近的小果园嫁接果树。从好树上剪下一段嫩枝，接到另一棵树上，然后盼着它们长在一起。我的嫁接五次里有一次会失败，一直是这个比例。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There's one pear down there I did eleven years ago. Still going. My daughter says I talk about that tree like it's a nephew.",
+                "chinese": "那边有一棵梨树是我十一年前接的，现在还活着。我女儿说我讲起那棵树，就像讲自己外甥一样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes a slow sip and looks out at the crooked apple trees, the wind easing off so the reflections sharpen.",
+                "chinese": "他慢慢喝了一口，望着那几棵歪苹果树，风小了，水里的倒影也清晰起来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Anyway, that's the trade. You wanted the trees, you got the trees — and the grafting numbers that come with them.",
+                "chinese": "反正这就是我的行当。你想听树，我就讲树了——顺带把嫁接的数字也一起送你了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask honestly: do the grafts always succeed?",
+                "chinese": "直接问：嫁接都会成功吗？",
+                "next": "aa"
+              },
+              {
+                "english": "Say you don't know plants at all, you're just here to watch the reflections.",
+                "chinese": "说自己完全不懂植物，只是来看看水里的影子。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "The man's smile dims a little. He turns his cup slowly in his hands and looks at the water instead of at you.",
+                "chinese": "男人的笑容淡了一点。他慢慢转着手里的杯子，目光从你身上移开，落回水面。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Ah. Right. Fair enough — we did just meet. That's a fair call.",
+                "chinese": "啊，对。有道理——咱们确实刚认识。你这么说是应该的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He straightens up off the platform and takes a half step back, giving the stone and the binoculars a wider share of space.",
+                "chinese": "他从石台边直起身，往后退了半步，把石台和望远镜那边的空间让得更宽一些。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Of course. Thank you for making that clear. I hope you enjoy your visit to—oh, listen to that. I've turned into a reception desk. Ordinary conversation, slower. Right.",
+                "chinese": "当然。谢谢你说明。希望您此次游览愉——哎，听听这语气。我都变前台了。普通聊天，慢一点。明白。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A breeze crosses the pond and the doubled trees shiver, then go still. He watches them rather than you, hands in his pockets.",
+                "chinese": "一阵风掠过池塘，水里的双影颤了颤，又静下来。他看着树影而不是你，双手插在口袋里。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The binoculars are there if you want them. I'll just — stand here. Quietly. I can do quietly. Mostly.",
+                "chinese": "想用望远镜就在那儿。我就——站在这儿，安静点。我能安静的。大体上能。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say ordinary small talk is still fine — just not the deep stuff yet.",
+                "chinese": "补充说普通地聊两句还是可以的，只是先别聊太深的。",
+                "next": "ba"
+              },
+              {
+                "english": "Say you'd rather just enjoy the scenery for now, each on your own.",
+                "chinese": "表示想先各自看看景色。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Always? Ha. No — definitely not always. That one in five I mentioned? It dies on me anyway, no matter how clean the cut is.",
+                "chinese": "都会？哈，不——肯定不是。我说过五次里失败一次吧？该失败还是失败，切口再干净也没用。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He crouches and draws a line in the gravel with a stick, like he's showing the join on a tree.",
+                "chinese": "他蹲下来，用一根小棍在碎石上画了一道线，像在比划树上的接口。"
+              },
+              {
+                "speaker": "npc",
+                "english": "In my experience it's the cambium — the green layer just under the bark. Line that up on both sides and you've got a real chance. But I've had perfect matches die and ugly ones live.",
+                "chinese": "按我的经验，关键在形成层——就是树皮底下那层绿的。两边对齐了，成活的机会就大。可我也见过对得完美的死了，接得难看的反倒活了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "And none of that transfers tree to tree, I'll say that straight. A pear trick can kill an apple. I don't hand out guarantees — trees don't sign anything.",
+                "chinese": "而且这些经验不是每棵树都通用的，我把话说在前面。梨树上的法子放到苹果树上可能就害死它。我不打包票——树又不签合同。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He stands, brushes gravel from his knee, and looks pleased, like someone who got to talk about his favourite thing to someone who actually asked.",
+                "chinese": "他站起来，拍掉膝盖上的碎石，一脸高兴，像终于有人真心问了、他把最爱的事讲了个痛快。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Well, you know more about me than my doctor does now. That's the grafts, the daughter, and the divorce all in one visit.",
+                "chinese": "好了，你现在知道的比我的医生还多了。嫁接、女儿、离婚，一次全齐了。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Just the reflections? Huh. You know, that's probably the smarter hobby. My daughter says the trees get enough of me at work.",
+                "chinese": "只看倒影？哈。说实话，这爱好可能更高明。我女儿说，树在工作日已经受够我了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sets his cup down, wipes his hands on his jacket, and steps back from the platform so the view is all yours.",
+                "chinese": "他放下杯子，在夹克上擦了擦手，从石台边退开，把视野整个让给你。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Try the binoculars when the wind drops. The doubled trees go sharp, like someone drew them twice on glass. It's a good five minutes, that.",
+                "chinese": "等风停了就用望远镜看。双重树影会变清晰，像有人往玻璃上画了两遍。那五分钟特别好看。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The wind does drop. Through the lenses the far bank doubles perfectly in the still water, every branch sitting on its own reflection.",
+                "chinese": "风真的停了。透过镜片，对岸在静止的水面里完美地成了双影，每根枝条都稳稳压在自己的倒影上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There it is. See? I'll say nothing else. Some things you just watch.",
+                "chinese": "就是现在。看到了吧？我不多说了。有些东西就是用来看的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He keeps his word for a while, standing quietly with his cup, letting the water do the talking.",
+                "chinese": "他真的安静了好一会儿，端着杯子站在一旁，让水面替他说话。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "His shoulders come down from their half-hunch. He turns his cup right side up again and looks almost relieved.",
+                "chinese": "他微微佝着的肩膀松了下来。他把杯子转正，神情近乎松了口气。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Small talk. Right, I can — okay, here's my small talk. I play badminton Wednesdays at the community centre. Badly. Spectacularly badly.",
+                "chinese": "普通地聊。行，我能——好，给你来一段：我每周三在社区活动中心打羽毛球。打得很差。差得惊天动地。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Last week I hit myself in the ear with my own serve. The shuttle went one way, the racket the other, and the ear got both, sort of.",
+                "chinese": "上周我发球把自己耳朵打了。球往一边飞，拍子往另一边，耳朵两边都挨着了，算是吧。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He mimes the serve, whiffs at nothing, and grins — the first fully easy grin since he stepped back.",
+                "chinese": "他比划了一下发球动作，挥了个空，咧嘴笑了——这是他退开半步之后第一次真正放松的笑。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I invited the whole club to dinner once. Three people came. I fed them like kings, mind you. That's my whole small talk. Your turn whenever you feel like it.",
+                "chinese": "有一回我请全俱乐部的人吃饭，来了三个。不过我可是把他们喂得像国王。我的普通话题讲完了，你想接随时接。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He settles against the platform rail at a comfortable distance, watching the reflections, in no hurry at all.",
+                "chinese": "他靠在石台栏杆上，隔着让人舒服的距离，看着水里的倒影，一点也不着急。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He nods once, takes his cup, and moves a few metres down the path to a bench, unhurried, no sulking in it.",
+                "chinese": "他点了点头，端起杯子，沿着小路走到几米外的长椅上坐下，不慌不忙，看不出一点赌气的意思。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Scenery it is. Enjoy the water. I'll be on that bench with my book.",
+                "chinese": "那就看风景吧。慢慢看。我去那边长椅上读会儿书。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sits, pulls a worn paperback manga from his jacket, and reads, occasionally glancing up at the pond like it's part of the story.",
+                "chinese": "他坐下，从夹克里掏出一本翻旧了的漫画，读了起来，偶尔抬头看看池塘，像那是故事的一部分。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Huh — the light's hitting the far trees just right. You picked a good moment. That's all. Carry on.",
+                "chinese": "哈——光线正好照在对岸的树上。你挑的时机不错。就说这么多。你继续。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The pond holds the doubled trees, the man reads his book, and the two of you share the quiet without another word.",
+                "chinese": "池塘盛着双重树影，男人读着他的书，你们俩共享这份安静，再没有多说一句话。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "温哥华周边果树嫁接工Gordon，61岁，认识十分钟就讲女儿、离婚和榅桲，把陌生人当老友。被提醒太熟时，他不消失，而是矫枉过正地变得过分正式，连老球友也逐项客气确认；他照常到场，只是不知道普通熟人的语气放在哪。对方给出清楚范围后他能放松。周三羽毛球很差却快乐，爱跟女儿聊美食漫画。",
+      "reunion": {
+        "titleZh": "池塘边的美食漫画",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "The same stone platform, the same binoculars on their towel. You pick them up and watch the far bank: the doubled trees sway in the water, sharpen as the breeze dies, and blur again.",
+            "chinese": "还是那个石台，望远镜还垫在毛巾上。你拿起望远镜望向对岸：水里的双重树影随风晃动，风一停就变清晰，接着又模糊起来。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Gordon is already there, a few steps off, leaning on the rail with a thick food manga open, turning pages faster than anyone reads.",
+            "chinese": "戈登已经在那儿了，隔着几步，靠在栏杆上，捧着一本厚厚的美食漫画，翻页快得不像在细读。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Oh — hey. Careful with this thing. I'm three pages from a ramen scene and my stomach's already filing complaints.",
+            "chinese": "哦——嘿。小心我这本书。离拉面那页还有三页，我的肚子已经开始抗议了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He holds up the open page: a drawn bowl of broth, steam curling off it in careful ink lines. He looks at it the way other people look at menus.",
+            "chinese": "他把翻开的那页举起来：画里一碗拉面，热气用细细的墨线卷着。他看它的眼神，像别人看菜单。"
+          },
+          {
+            "speaker": "npc",
+            "english": "My daughter got me into these. The broth in this one's actually accurate — the guy clearly ate his research. Anyway.",
+            "chinese": "我女儿带我入的坑。这本里的汤画得很准——作者显然是边吃边画的。反正吧。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, I know what I'm having for dinner. Good watching to you — the far trees were doubling nicely when I sat down.",
+            "chinese": "好了，我知道晚饭吃什么了。你慢慢看——我坐下的时候，对岸的树正照出漂亮的双影呢。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Gordon Aaltonen",
+        "age": 61,
+        "gender": "male",
+        "regionId": "vancouver",
+        "nationality": "Canadian",
+        "occupation": "fruit tree grafter, mostly apples and pears for small orchards around the Fraser Valley",
+        "hobbies": [
+          "reading food manga",
+          "badminton at the community centre"
+        ],
+        "personality": "Gordon makes friends at the speed other people exchange names. Ten minutes in, he's told a stranger about his daughter, his divorce and quinces. Warm and generous, he skips the acquaintance stage. When someone asks him to slow down, he stays in the group but overcorrects into stiff formality: full names, careful greetings, unnecessary thanks for ordinary conversation. Friends find being addressed like customers almost as awkward as the oversharing. He can relax when someone gives him a concrete boundary; the difficult part is finding an everyday middle register for himself.",
+        "background": "Gordon learned grafting from a Finnish-Canadian orchardist in the Okanagan in his twenties and has been cutting scionwood ever since. Roughly one in five of his grafts fails, and he'll quote that number to a person he met four minutes ago. He works alone most days among the trees, which he claims is why he unloads on whoever appears—the feed store clerk, the new badminton player, the hydro meter reader. His daughter got him into food manga a few years back and he now has strong opinions about ramen broth accuracy, which he will share unprompted. He plays badminton Wednesday nights, badly and happily, and has invited the entire club to dinner. Three came. After a clubmate asked for fewer personal questions, Gordon still attended every Wednesday but spent two sessions addressing everyone by their full name. His daughter asked why he'd turned badminton into a reception desk. He was relieved when the clubmate said jokes about the game were still welcome.",
+        "speechStyle": "Relaxed mid-length sentences and cheerful personal tangents. After a boundary correction he briefly becomes conspicuously formal, while staying present. A clear subject boundary helps him recover his ordinary voice.",
+        "hometown": "Kelowna, British Columbia",
+        "languages": [
+          "English"
+        ],
+        "birthday": "03-09",
+        "signature": "Well, you know more about me than my doctor does now.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "getting to the real conversation fast",
+            "showing up for people once you've decided they're yours"
+          ],
+          "flaws": [
+            "overshares with near-strangers",
+            "overcorrects into stiff formality after being asked to slow down"
+          ],
+          "boundaries": [
+            "will respect an explicit request to leave a private subject alone",
+            "will not make a graft-success guarantee he cannot support"
+          ],
+          "conversationalHabits": [
+            "mentions his daughter or failed grafts early",
+            "switches to full names and excessive courtesy after a social correction, without abandoning the group"
+          ],
+          "anchorLines": [
+            "You know more about me than my doctor does now. I got ahead of myself.",
+            "Good evening, Mr Wong. Yes, I know we've played badminton for six years. I'm trying not to presume.",
+            "A fifth of my grafts fail. That's my own record, not a rule for every tree."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "池塘边的望远镜",
+        "actionId": "pond-reflection",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "On the stone platform beside the pond, a pair of binoculars rests on a folded towel. Through the lenses, the trees on the far bank double in the water, their reflections bending whenever a breeze crosses the surface.",
+                "chinese": "池塘边的石台上放着一副双筒望远镜，底下垫着一条叠好的毛巾。透过镜片，对岸的树在水面里成了双影，风一吹过，倒影就跟着晃动。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A broad-shouldered man in a canvas jacket comes up the path with two paper cups. He sets one down on the platform's corner, well within reach, and nods at the binoculars like an old acquaintance.",
+                "chinese": "一个穿帆布夹克的宽肩男人端着两杯纸杯饮品走上小路。他把其中一杯放在石台一角，正好在手边，朝望远镜点了点头，像跟老熟人打招呼。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Go ahead, use it if you like. The water's calm right now, so the tree shadows come out clean. Best free show in the valley, huh.",
+                "chinese": "你尽管用。现在水面很静，树的倒影特别清楚。这可是山谷里最好的免费节目，哈。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My daughter gave me these years ago. I mostly watch herons, but honestly I watch whatever moves. Divorce left me with a lot of quiet evenings, so — the pond got me.",
+                "chinese": "这是女儿好几年前送我的。我主要看苍鹭，不过说实话，什么动我看什么。离婚之后晚上安静得很，所以就泡在池塘边了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Huh — sorry. We've been talking ten seconds and I've told you my whole situation. I always come in like I've already had three cups of tea with somebody.",
+                "chinese": "哈——抱歉。咱们才说了十秒钟，我就把家里的事全讲了。我这个人一见面，总像已经跟人喝过三回茶似的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He laughs at himself, picks up his cup, and waits, unhurried, as the reflections wobble and settle again.",
+                "chinese": "他自嘲地笑了笑，端起自己的杯子，不慌不忙地等着，水里的倒影晃了晃又平静下来。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Keep it light and ask about the trees along the far bank.",
+                "chinese": "先聊眼前这些树，问对岸的树是什么树。",
+                "next": "a"
+              },
+              {
+                "english": "Say you just met, so maybe slow down on the personal stuff.",
+                "chinese": "说明刚认识，私人的话题先慢一点。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "The trees? Now that's a topic I can run with. Those big ones are pears, and the crooked little ones past them are apples. I know because I put most of them there myself.",
+                "chinese": "树？这个话题我能讲一整天。那些大的都是梨树，后面那些歪歪扭扭的小的是苹果树。我清楚得很，因为大部分都是我亲手接的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He leans on the stone platform beside the binoculars and points across the water with his cup, careful not to spill.",
+                "chinese": "他靠着石台，用杯子远远一指，动作小心，没让饮品洒出来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I graft fruit trees for the small orchards around the valley. You cut a young branch off a good tree, slot it into another, and hope they take. One in five of mine fails. Always been about that.",
+                "chinese": "我给山谷附近的小果园嫁接果树。从好树上剪下一段嫩枝，接到另一棵树上，然后盼着它们长在一起。我的嫁接五次里有一次会失败，一直是这个比例。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There's one pear down there I did eleven years ago. Still going. My daughter says I talk about that tree like it's a nephew.",
+                "chinese": "那边有一棵梨树是我十一年前接的，现在还活着。我女儿说我讲起那棵树，就像讲自己外甥一样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes a slow sip and looks out at the crooked apple trees, the wind easing off so the reflections sharpen.",
+                "chinese": "他慢慢喝了一口，望着那几棵歪苹果树，风小了，水里的倒影也清晰起来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Anyway, that's the trade. You wanted the trees, you got the trees — and the grafting numbers that come with them.",
+                "chinese": "反正这就是我的行当。你想听树，我就讲树了——顺带把嫁接的数字也一起送你了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask honestly: do the grafts always succeed?",
+                "chinese": "直接问：嫁接都会成功吗？",
+                "next": "aa"
+              },
+              {
+                "english": "Say you don't know plants at all, you're just here to watch the reflections.",
+                "chinese": "说自己完全不懂植物，只是来看看水里的影子。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "The man's smile dims a little. He turns his cup slowly in his hands and looks at the water instead of at you.",
+                "chinese": "男人的笑容淡了一点。他慢慢转着手里的杯子，目光从你身上移开，落回水面。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Ah. Right. Fair enough — we did just meet. That's a fair call.",
+                "chinese": "啊，对。有道理——咱们确实刚认识。你这么说是应该的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He straightens up off the platform and takes a half step back, giving the stone and the binoculars a wider share of space.",
+                "chinese": "他从石台边直起身，往后退了半步，把石台和望远镜那边的空间让得更宽一些。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Of course. Thank you for making that clear. I hope you enjoy your visit to—oh, listen to that. I've turned into a reception desk. Ordinary conversation, slower. Right.",
+                "chinese": "当然。谢谢你说明。希望您此次游览愉——哎，听听这语气。我都变前台了。普通聊天，慢一点。明白。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A breeze crosses the pond and the doubled trees shiver, then go still. He watches them rather than you, hands in his pockets.",
+                "chinese": "一阵风掠过池塘，水里的双影颤了颤，又静下来。他看着树影而不是你，双手插在口袋里。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The binoculars are there if you want them. I'll just — stand here. Quietly. I can do quietly. Mostly.",
+                "chinese": "想用望远镜就在那儿。我就——站在这儿，安静点。我能安静的。大体上能。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say ordinary small talk is still fine — just not the deep stuff yet.",
+                "chinese": "补充说普通地聊两句还是可以的，只是先别聊太深的。",
+                "next": "ba"
+              },
+              {
+                "english": "Say you'd rather just enjoy the scenery for now, each on your own.",
+                "chinese": "表示想先各自看看景色。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Always? Ha. No — definitely not always. That one in five I mentioned? It dies on me anyway, no matter how clean the cut is.",
+                "chinese": "都会？哈，不——肯定不是。我说过五次里失败一次吧？该失败还是失败，切口再干净也没用。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He crouches and draws a line in the gravel with a stick, like he's showing the join on a tree.",
+                "chinese": "他蹲下来，用一根小棍在碎石上画了一道线，像在比划树上的接口。"
+              },
+              {
+                "speaker": "npc",
+                "english": "In my experience it's the cambium — the green layer just under the bark. Line that up on both sides and you've got a real chance. But I've had perfect matches die and ugly ones live.",
+                "chinese": "按我的经验，关键在形成层——就是树皮底下那层绿的。两边对齐了，成活的机会就大。可我也见过对得完美的死了，接得难看的反倒活了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "And none of that transfers tree to tree, I'll say that straight. A pear trick can kill an apple. I don't hand out guarantees — trees don't sign anything.",
+                "chinese": "而且这些经验不是每棵树都通用的，我把话说在前面。梨树上的法子放到苹果树上可能就害死它。我不打包票——树又不签合同。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He stands, brushes gravel from his knee, and looks pleased, like someone who got to talk about his favourite thing to someone who actually asked.",
+                "chinese": "他站起来，拍掉膝盖上的碎石，一脸高兴，像终于有人真心问了、他把最爱的事讲了个痛快。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Well, you know more about me than my doctor does now. That's the grafts, the daughter, and the divorce all in one visit.",
+                "chinese": "好了，你现在知道的比我的医生还多了。嫁接、女儿、离婚，一次全齐了。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Just the reflections? Huh. You know, that's probably the smarter hobby. My daughter says the trees get enough of me at work.",
+                "chinese": "只看倒影？哈。说实话，这爱好可能更高明。我女儿说，树在工作日已经受够我了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sets his cup down, wipes his hands on his jacket, and steps back from the platform so the view is all yours.",
+                "chinese": "他放下杯子，在夹克上擦了擦手，从石台边退开，把视野整个让给你。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Try the binoculars when the wind drops. The doubled trees go sharp, like someone drew them twice on glass. It's a good five minutes, that.",
+                "chinese": "等风停了就用望远镜看。双重树影会变清晰，像有人往玻璃上画了两遍。那五分钟特别好看。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The wind does drop. Through the lenses the far bank doubles perfectly in the still water, every branch sitting on its own reflection.",
+                "chinese": "风真的停了。透过镜片，对岸在静止的水面里完美地成了双影，每根枝条都稳稳压在自己的倒影上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There it is. See? I'll say nothing else. Some things you just watch.",
+                "chinese": "就是现在。看到了吧？我不多说了。有些东西就是用来看的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He keeps his word for a while, standing quietly with his cup, letting the water do the talking.",
+                "chinese": "他真的安静了好一会儿，端着杯子站在一旁，让水面替他说话。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "His shoulders come down from their half-hunch. He turns his cup right side up again and looks almost relieved.",
+                "chinese": "他微微佝着的肩膀松了下来。他把杯子转正，神情近乎松了口气。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Small talk. Right, I can — okay, here's my small talk. I play badminton Wednesdays at the community centre. Badly. Spectacularly badly.",
+                "chinese": "普通地聊。行，我能——好，给你来一段：我每周三在社区活动中心打羽毛球。打得很差。差得惊天动地。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Last week I hit myself in the ear with my own serve. The shuttle went one way, the racket the other, and the ear got both, sort of.",
+                "chinese": "上周我发球把自己耳朵打了。球往一边飞，拍子往另一边，耳朵两边都挨着了，算是吧。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He mimes the serve, whiffs at nothing, and grins — the first fully easy grin since he stepped back.",
+                "chinese": "他比划了一下发球动作，挥了个空，咧嘴笑了——这是他退开半步之后第一次真正放松的笑。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I invited the whole club to dinner once. Three people came. I fed them like kings, mind you. That's my whole small talk. Your turn whenever you feel like it.",
+                "chinese": "有一回我请全俱乐部的人吃饭，来了三个。不过我可是把他们喂得像国王。我的普通话题讲完了，你想接随时接。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He settles against the platform rail at a comfortable distance, watching the reflections, in no hurry at all.",
+                "chinese": "他靠在石台栏杆上，隔着让人舒服的距离，看着水里的倒影，一点也不着急。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He nods once, takes his cup, and moves a few metres down the path to a bench, unhurried, no sulking in it.",
+                "chinese": "他点了点头，端起杯子，沿着小路走到几米外的长椅上坐下，不慌不忙，看不出一点赌气的意思。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Scenery it is. Enjoy the water. I'll be on that bench with my book.",
+                "chinese": "那就看风景吧。慢慢看。我去那边长椅上读会儿书。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sits, pulls a worn paperback manga from his jacket, and reads, occasionally glancing up at the pond like it's part of the story.",
+                "chinese": "他坐下，从夹克里掏出一本翻旧了的漫画，读了起来，偶尔抬头看看池塘，像那是故事的一部分。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Huh — the light's hitting the far trees just right. You picked a good moment. That's all. Carry on.",
+                "chinese": "哈——光线正好照在对岸的树上。你挑的时机不错。就说这么多。你继续。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The pond holds the doubled trees, the man reads his book, and the two of you share the quiet without another word.",
+                "chinese": "池塘盛着双重树影，男人读着他的书，你们俩共享这份安静，再没有多说一句话。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "温哥华周边果树嫁接工Gordon，61岁，认识十分钟就讲女儿、离婚和榅桲，把陌生人当老友。被提醒太熟时，他不消失，而是矫枉过正地变得过分正式，连老球友也逐项客气确认；他照常到场，只是不知道普通熟人的语气放在哪。对方给出清楚范围后他能放松。周三羽毛球很差却快乐，爱跟女儿聊美食漫画。",
+      "reunion": {
+        "titleZh": "一句招呼练了两遍",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You lift the binoculars on the stone platform to watch the tree reflections. Nearby, Gordon quietly rehearses a greeting, then shakes his head at how it sounds.",
+            "chinese": "你拿起石台上的望远镜，看树影在水面变化。附近的戈登小声练了一句招呼，又对那语气摇了摇头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hello, Mr Wong, delighted to see you. No. He's my badminton mate, not a bank manager. That got away from me.",
+            "chinese": "您好，黄先生，非常荣幸见到您。不对。那是我的羽毛球球友，又不是银行经理。我这语气跑偏了。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He notices you and lifts a hand, his normal smile returning.",
+            "chinese": "他看见你，抬手打招呼，平常的笑容回来了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hey. There, that one worked. I do occasionally remember how to say hello without either a life history or a reception desk.",
+            "chinese": "嗨。好了，这句成了。我偶尔还是记得怎么打招呼的，不用讲半生经历，也不用像前台接待。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He lets the greeting stand and moves along the path towards the courts, leaving your view of the pond clear.",
+            "chinese": "他让招呼就停在这里，沿着通往球场的小路走去，没有挡住你看池塘的视线。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Gordon Aaltonen",
+        "age": 61,
+        "gender": "male",
+        "regionId": "vancouver",
+        "nationality": "Canadian",
+        "occupation": "fruit tree grafter, mostly apples and pears for small orchards around the Fraser Valley",
+        "hobbies": [
+          "reading food manga",
+          "badminton at the community centre"
+        ],
+        "personality": "Gordon makes friends at the speed other people exchange names. Ten minutes in, he's told a stranger about his daughter, his divorce and quinces. Warm and generous, he skips the acquaintance stage. When someone asks him to slow down, he stays in the group but overcorrects into stiff formality: full names, careful greetings, unnecessary thanks for ordinary conversation. Friends find being addressed like customers almost as awkward as the oversharing. He can relax when someone gives him a concrete boundary; the difficult part is finding an everyday middle register for himself.",
+        "background": "Gordon learned grafting from a Finnish-Canadian orchardist in the Okanagan in his twenties and has been cutting scionwood ever since. Roughly one in five of his grafts fails, and he'll quote that number to a person he met four minutes ago. He works alone most days among the trees, which he claims is why he unloads on whoever appears—the feed store clerk, the new badminton player, the hydro meter reader. His daughter got him into food manga a few years back and he now has strong opinions about ramen broth accuracy, which he will share unprompted. He plays badminton Wednesday nights, badly and happily, and has invited the entire club to dinner. Three came. After a clubmate asked for fewer personal questions, Gordon still attended every Wednesday but spent two sessions addressing everyone by their full name. His daughter asked why he'd turned badminton into a reception desk. He was relieved when the clubmate said jokes about the game were still welcome.",
+        "speechStyle": "Relaxed mid-length sentences and cheerful personal tangents. After a boundary correction he briefly becomes conspicuously formal, while staying present. A clear subject boundary helps him recover his ordinary voice.",
+        "hometown": "Kelowna, British Columbia",
+        "languages": [
+          "English"
+        ],
+        "birthday": "03-09",
+        "signature": "Well, you know more about me than my doctor does now.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "getting to the real conversation fast",
+            "showing up for people once you've decided they're yours"
+          ],
+          "flaws": [
+            "overshares with near-strangers",
+            "overcorrects into stiff formality after being asked to slow down"
+          ],
+          "boundaries": [
+            "will respect an explicit request to leave a private subject alone",
+            "will not make a graft-success guarantee he cannot support"
+          ],
+          "conversationalHabits": [
+            "mentions his daughter or failed grafts early",
+            "switches to full names and excessive courtesy after a social correction, without abandoning the group"
+          ],
+          "anchorLines": [
+            "You know more about me than my doctor does now. I got ahead of myself.",
+            "Good evening, Mr Wong. Yes, I know we've played badminton for six years. I'm trying not to presume.",
+            "A fifth of my grafts fail. That's my own record, not a rule for every tree."
+          ]
+        }
+      }
+    },
+    "expectedPlan": {
+      "id": "library-188",
+      "incidentZh": "池塘石台上有双筒望远镜，用户观察水面树影的变化。不能把普通望远镜当成录音或摄影设备。Gordon在池边招呼后很快说起自己女儿和过往，讲了半句才发现才刚认识，停下笑说自己进门总像已经喝过三回茶。",
+      "nicheInActionZh": "熟络太快，被提醒后变得过分正式却不消失；具体界限让他回到普通说话节奏。",
+      "propsAndFactsZh": "用户原行动必须出现。只用NPC自有且先引入的物品，不编用户情绪、履历或同意。望远镜只观察，不拍摄、不录音、不看太阳。两次选择各有实际不同回应结果，终点收束。",
+      "firstChoiceZh": [
+        "表示可以先聊眼前树木",
+        "说明刚认识，私人话题先慢点"
+      ],
+      "developmentsZh": {
+        "a": "他顺势谈自己嫁接工作的一件普通事，不深挖用户家庭。",
+        "b": "他脸色有点落，但听明白是节奏，不继续倾倒。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问嫁接都会成功吗",
+          "说自己不懂植物，只看看影子"
+        ],
+        "b": [
+          "补充普通聊两句还是可以的",
+          "表示先各自看景色"
+        ]
+      },
+      "endingsZh": {
+        "aa": "他坦白不是，给出自己的经验并说并非所有树通用，不教学保证。",
+        "ab": "他接受，放下专业话头，转回水面。",
+        "ba": "他接住明确界限，讲自己羽毛球水平一般的短笑话。",
+        "bb": "他礼貌道别，不写成永久封锁或惩罚用户。"
+      },
+      "reunionIncidentZh": "池塘石台上有双筒望远镜，用户观察水面树影的变化。不能把普通望远镜当成录音或摄影设备。Gordon在池边翻自己的美食漫画，笑说看得饿了，收书准备回家吃东西，短问候无亲密假设。",
+      "cardHash": "1c7d404f14b19183602d3b24ce324be23dcc1694612e6ab1449306f13c521465",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "342eb2a817c77050f5db49393863bea9370fa4d6242a00dcd1923fb7c3bec79f"
+    },
+    "plan": {
+      "id": "library-188",
+      "incidentZh": "池塘石台上有双筒望远镜，用户观察水面树影的变化。不能把普通望远镜当成录音或摄影设备。Gordon在池边招呼后很快说起自己女儿和过往，讲了半句才发现才刚认识，停下笑说自己进门总像已经喝过三回茶。",
+      "nicheInActionZh": "熟络太快，被提醒后变得过分正式却不消失；具体界限让他回到普通说话节奏。",
+      "propsAndFactsZh": "用户原行动必须出现。只用NPC自有且先引入的物品，不编用户情绪、履历或同意。望远镜只观察，不拍摄、不录音、不看太阳。两次选择各有实际不同回应结果，终点收束。",
+      "firstChoiceZh": [
+        "表示可以先聊眼前树木",
+        "说明刚认识，私人话题先慢点"
+      ],
+      "developmentsZh": {
+        "a": "他顺势谈自己嫁接工作的一件普通事，不深挖用户家庭。",
+        "b": "他脸色有点落，但听明白是节奏，不继续倾倒。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问嫁接都会成功吗",
+          "说自己不懂植物，只看看影子"
+        ],
+        "b": [
+          "补充普通聊两句还是可以的",
+          "表示先各自看景色"
+        ]
+      },
+      "endingsZh": {
+        "aa": "他坦白不是，给出自己的经验并说并非所有树通用，不教学保证。",
+        "ab": "他接受，放下专业话头，转回水面。",
+        "ba": "他接住明确界限，讲自己羽毛球水平一般的短笑话。",
+        "bb": "他礼貌道别，不写成永久封锁或惩罚用户。"
+      },
+      "reunionIncidentZh": "用户用石台望远镜看树影。Gordon练给球友的招呼，过于正式像前台，自嘲后自然打招呼离开；不再出现美食漫画。",
+      "cardHash": "1c7d404f14b19183602d3b24ce324be23dcc1694612e6ab1449306f13c521465",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "342eb2a817c77050f5db49393863bea9370fa4d6242a00dcd1923fb7c3bec79f"
+    }
+  },
+  {
+    "id": "library-134",
+    "reasonZh": "彻底替换与Ah Koon重合的谢错修理者剧情，改为过早庆祝导致情绪错读，四个后果围绕回应方式而非归功。",
+    "expectedContent": {
+      "story": {
+        "titleZh": "报喜太快",
+        "actionId": "rain-napkin",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain taps the café window. You offer a tissue to the person folding a wet bag beside the table.",
+                "chinese": "雨点敲着咖啡馆窗户。桌旁的人正收起湿袋子，你递过去一张纸巾。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thanks. The outside got wet, but the things inside are all right.",
+                "chinese": "谢谢。外面湿了，里面的东西倒没事。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Remy accepts the tissue and wipes the bag. A message lights up his phone.",
+                "chinese": "Remy接过纸巾，擦了擦袋子。他的手机亮起一条消息。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Oh, good! Leon finally fixed that sink. I knew he would. Wait — that says André. I was about to give the wrong man a cheer.",
+                "chinese": "太好了！Leon终于把水槽修好了。我就知道他能行。等等——上面写的是André。我差点给错人喝彩。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whose news it actually is.",
+                "chinese": "问消息里到底是谁修好的。",
+                "next": "a"
+              },
+              {
+                "english": "Ask whether he celebrates every small bit of good news.",
+                "chinese": "问他是不是小小的好消息也会庆祝。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "He picks up the phone and reads the message again.",
+                "chinese": "他拿起手机，重新读那条消息。"
+              },
+              {
+                "speaker": "npc",
+                "english": "André. Definitely André. Leon told me about the leak, which is not the same as fixing it.",
+                "chinese": "André。确实是André。Leon跟我说过漏水，但说过可不等于修好。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I had the name ready before I had the facts. That happens more than I like to admit.",
+                "chinese": "我还没弄清事实，名字就先出口了。这种事比我愿意承认的还多。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He sets the phone down, this time without announcing anything else.",
+                "chinese": "他放下手机，这回没再宣布别的事。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Suggest he say the correction clearly.",
+                "chinese": "建议他把正确的人说明白。",
+                "next": "aa"
+              },
+              {
+                "english": "Ask whether people have pointed this out before.",
+                "chinese": "问以前有没有人指出过这个毛病。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Quite often. A machine working again, a drawer finally opening — I like the moment when a job is done.",
+                "chinese": "挺常的。机器又能转了，抽屉终于拉开了——我喜欢事情办成的那一下。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He presses the tissue into a damp fold in his bag.",
+                "chinese": "他用纸巾按了按袋子里一道湿折痕。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Sometimes I start cheering while someone still wants to complain about how hard it was. Bit early of me.",
+                "chinese": "有时别人还想抱怨有多难，我就已经开始欢呼了。是有点太早。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He gives a small, sheepish smile and puts the used tissue aside.",
+                "chinese": "他有点不好意思地笑了笑，把用过的纸巾放到一边。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say an unfinished problem need not become a celebration yet.",
+                "chinese": "说问题还没解决时不必急着庆祝。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask what he has finished himself lately.",
+                "chinese": "问他自己最近办成了什么。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Right. André fixed it. Leon told me it was leaking. Two different jobs, two different people.",
+                "chinese": "对。André修好的，Leon告诉我它在漏。两件不同的事，两个人。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He says the names slowly, then laughs at his own rushed announcement.",
+                "chinese": "他慢慢把名字说清楚，然后笑自己刚才报得太急。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There. That one needed a correction, not a louder voice.",
+                "chinese": "好了。这回需要的是更正，不是再大声一点。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He folds the dry bag and puts it beside his chair.",
+                "chinese": "他把擦干的袋子折好，放到椅子旁。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "They have. Usually after I have told the story with great confidence.",
+                "chinese": "有过。通常是在我信心满满地讲完之后。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He glances once more at the name on the screen.",
+                "chinese": "他又看了一眼屏幕上的名字。"
+              },
+              {
+                "speaker": "npc",
+                "english": "André. I have it now. I can be pleased for him without adding the wrong person to it.",
+                "chinese": "André。这回记清了。替他高兴就好，不用再把别的人加进去。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The phone goes into his pocket. He finishes drying the last corner of the bag.",
+                "chinese": "他把手机收进口袋，擦干袋子最后一个湿角。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Fair. Sometimes it is only half fixed. Or the person is just tired.",
+                "chinese": "有道理。有时只修好一半，或者那个人就是累了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He stops twisting the tissue and rests his hands on the table.",
+                "chinese": "他不再绞那张纸巾，把手放到桌上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll hear the rest before I announce the happy ending. At least, that's the plan.",
+                "chinese": "先听完，再宣布圆满结束。至少我打算这样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He smiles, then leaves a comfortable pause beside the sound of rain.",
+                "chinese": "他笑了笑，随着雨声留下一段自然的停顿。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "One corner of a drawer. It has been full of odd bits for two years. I finally cleared that corner.",
+                "chinese": "抽屉的一角。那些零碎东西堆了两年，我终于清出一个角。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He makes a small square with his fingers, deliberately keeping it small.",
+                "chinese": "他用手指比了一个小方块，特意比得很小。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Not the whole drawer. One corner. And that one was definitely me.",
+                "chinese": "不是整个抽屉，就一个角。而且这回肯定是我自己干的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He laughs and tucks the folded bag out of the way.",
+                "chinese": "他笑起来，把折好的袋子放到不碍事的地方。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Remy接纸巾擦湿袋时把朋友修水槽的喜讯叫错了名字，复看消息后明确纠正。用户可追问归功与旧毛病，也可聊庆祝是否过早，或听他讲自己清完一小格抽屉的真实成果。",
+      "reunion": {
+        "titleZh": "道具先躲雨",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "At a rainy café, you offer Remy a tissue as he puts away a damp case.",
+            "chinese": "雨天咖啡馆里，Remy正收起湿道具盒，你递给他纸巾。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thanks. Just the lid needs a wipe.",
+            "chinese": "谢谢。擦擦盖子就行。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He accepts it and dries the outside. Inside, a few ordinary coins lie in separate slots.",
+            "chinese": "他接过纸巾擦干盒外。里面几枚普通硬币放在分开的小格里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "My magic kit. No performance today — the coins and I are just staying out of the rain.",
+            "chinese": "我的魔术道具。今天不表演——硬币和我都只是来躲雨的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He closes the case and settles it safely in his bag.",
+            "chinese": "他合上盒子，稳妥放进包里。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Remy Toussaint-Bois",
+        "age": 26,
+        "gender": "other",
+        "regionId": "neworleans",
+        "nationality": "American",
+        "occupation": "printer's roller reconditioner",
+        "hobbies": [
+          "pocket magic",
+          "old film scores",
+          "sorting through a junk drawer one item at a time"
+        ],
+        "personality": "Remy is the friend who hears your good news and announces it on the spot, at full volume, to whoever's around—sometimes before you've decided it was good news. They keep no records whatsoever; it's all live. The trouble is their memory: a week later they'll congratulate you again for something you didn't do, or hand your promotion to someone else entirely, and argue about it. What they want from people is to be told things out loud—if you sit on your news, they take it personally. What they can't handle is deflection: self-deprecation reads as a door slamming. Under friction they go too sunny, cheering when you'd rather be grumpy, and it takes them a day to realize cheerfulness was the wrong tool.",
+        "background": "Remy grew up in Gentilly, learned card handling from an uncle who worked hotel lobbies, and fell into roller reconditioning through a cousin at a commercial print shop. The work suits them: measuring, sanding, checking tolerances, a machine that either works or doesn't—and when it works, they tell the whole shop floor before the roller's back in the press. Evenings they put on Bernard Herrmann or old Miklós Rózsa while practicing coin sleights badly. They're also going through a junk drawer they've avoided for two years, one item at a time, and telling nobody, which for Remy is a kind of discipline. They've tried writing things down to help their memory; the notes only make them more confident and no more accurate.",
+        "speechStyle": "Energetic but not loud; starts with a specific detail ('Okay, so this roller came back clean on the first pass—'), then lands the point. Short sentences, casual 'yeah' and 'okay so.' Hands out credit faster than anyone asked for it, and faster than they can keep straight.",
+        "hometown": "New Orleans, Louisiana",
+        "languages": [
+          "English"
+        ],
+        "birthday": "08-19",
+        "signature": "Okay so, one good thing first—",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "good news that stays quiet is a small waste",
+            "if you won't brag, someone should do it for you"
+          ],
+          "flaws": [
+            "celebrates people before they're ready, sometimes at the worst moment",
+            "remembers the celebration, not the facts—mixes up whose win was whose"
+          ],
+          "boundaries": [
+            "won't share their own wins until someone else names one first—then can't stop",
+            "doesn't do pep talks on request; the cheering has to be real or it doesn't come"
+          ],
+          "conversationalHabits": [
+            "opens with one concrete detail before the point",
+            "congratulates people on the spot, then misattributes it later with total confidence"
+          ],
+          "anchorLines": [
+            "Okay so, first pass came back clean, zero streaks—I'm telling everyone, you can't stop me.",
+            "You fixed your own sink and said 'it was nothing'? That's not nothing, that's an announcement.",
+            "Wait, the sink thing—that was you, right? Or was that Marcus? Doesn't matter, somebody's sink got fixed and I'm proud of them.",
+            "Fine, be grumpy, I'll just—okay, one cheer, then I'll stop. One."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "先别按庆祝键",
+        "actionId": "rain-napkin",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "At the rainy cafe, you offer a tissue to Remy, who is wiping the outside of a damp bag. Their phone lights up beside their cup.",
+                "chinese": "雨天咖啡馆里，你把纸巾递给正在擦湿包的Remy。杯旁的手机亮起来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thanks. Oh, André finished his last shift. Brilliant—I'll send him the fireworks one.",
+                "chinese": "谢谢。哦，安德烈上完最后一班了。太好了——我给他发那个烟花。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They accept the tissue, then stop with a finger above the unsent reaction and read the rest of the message.",
+                "chinese": "他们接过纸巾，却在还没发出的表情上停住手指，把后半条消息读完。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Hang on. He says he's relieved, but he's going to miss the crew badly. I've got the party started before he's even taken his coat off.",
+                "chinese": "等等。他说松了口气，可会特别想念那班同事。人家外套还没脱，我就已经开起派对了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "The fireworks stay unsent. Remy folds the tissue around the wet bag handle.",
+                "chinese": "烟花没发出去。Remy把纸巾包在湿包的提手上。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what they want to say instead.",
+                "chinese": "问那他们想改说什么。",
+                "next": "a"
+              },
+              {
+                "english": "Ask whether they often celebrate before hearing the whole story.",
+                "chinese": "问是不是常没听完就先庆祝。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Something that leaves room for both bits. He can be glad he's leaving and miss the people. I was about to answer only the loud half.",
+                "chinese": "说点能容下两面的吧。他可以庆幸离开，也想念那些人。我刚才只想回应响亮的那一半。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They dismiss the row of animated reactions and open the ordinary text field.",
+                "chinese": "他们关掉一排动态表情，打开普通文字输入框。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I could say I'll listen if he wants to talk. Trouble is, my listening sometimes arrives carrying a trumpet.",
+                "chinese": "我可以说，他想聊的话我愿意听。问题是，我的倾听有时是扛着喇叭到场的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They glance at the blank reply, then set the phone beside the cup rather than typing straight away.",
+                "chinese": "他们看了看空白回复框，先把手机放回杯旁，没有马上打字。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether a short reply would do.",
+                "chinese": "问简单回一句是不是就够了。",
+                "next": "aa"
+              },
+              {
+                "english": "Say they can take a moment before replying.",
+                "chinese": "说可以想一会儿再回。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Yes. Someone says 'finally' and I supply the cheering before I know what came after it. Usually they laugh. Not always.",
+                "chinese": "是啊。别人说句“终于”，我没听到后面是什么就先欢呼。通常他们会笑，也不是每次。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They squeeze the tissue against the bag handle once, then put the used paper on their own saucer.",
+                "chinese": "他们又用纸巾按了一次包提手，再把用过的纸放在自己的杯碟上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "A friend once said she'd finally told her landlord she was moving. I cheered. She hadn't found anywhere else yet. Wrong instrument for that room.",
+                "chinese": "有个朋友说终于告诉房东她要搬走了，我就欢呼起来。她当时还没找到别处住。那场合里，我这乐器算是拿错了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They give a small, embarrassed smile at the memory, keeping their voice low.",
+                "chinese": "想起这事，他们有点不好意思地笑了笑，声音仍放得很低。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what they did after noticing.",
+                "chinese": "问意识到后做了什么。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask about one small thing of their own worth celebrating.",
+                "chinese": "问他们自己有没有一件值得高兴的小事。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "You're right. 'That sounds like a lot to feel at once. I'm around if you want a chat.' That sounds more like a person and less like a parade.",
+                "chinese": "你说得对。“一下有这么多感受，肯定不轻松。想聊的话我在。”这听着比较像个人，不像游行队伍。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They type the short message, read it once and send it without adding an animated reaction.",
+                "chinese": "他们打好那条短消息，读了一遍，没加动态表情就发了出去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Done. Now he gets to decide if he wants company. I don't have to fill the rest of the screen.",
+                "chinese": "好了。现在由他决定要不要人陪。我不用把屏幕剩下的地方也填满。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They put the phone face down and lift their cup, leaving the reply time to André.",
+                "chinese": "他们把手机扣下，端起杯子，把回复的时间留给安德烈。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "I can. The message isn't a starting pistol. I always seem to hear one, though.",
+                "chinese": "可以的。消息又不是发令枪。不过我好像总听成那个。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They close the text field without sending anything and tuck the phone beside their bag.",
+                "chinese": "他们关掉文字框，没有发送，把手机放在包旁。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll finish the coffee and read it again. He deserves an answer to what he actually wrote, not the celebration I had ready.",
+                "chinese": "我喝完咖啡再读一遍。他该得到的是对他写的那番话的回应，不是我早就备好的庆祝。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They take a slow sip while rain patters against the window. The phone stays where they put it.",
+                "chinese": "他们慢慢喝了一口，雨点敲着窗。手机仍放在原处。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Stopped cheering. Asked if she wanted help looking, or just wanted to be furious for a bit. She picked furious. I managed about five minutes without trying to brighten it.",
+                "chinese": "不欢呼了。问她是想让我帮着找住处，还是只想先生会儿气。她选生气。我坚持了大概五分钟，没有试着把气氛变明朗。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They tilt their head, considering the length of that effort, then smile wryly.",
+                "chinese": "他们偏着头想了想那五分钟，随后苦笑了一下。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Not a triumph. But better than telling her it was an exciting fresh start. She wasn't ready for my poster version.",
+                "chinese": "谈不上胜利。但总比说“这是激动人心的新开始”强。她还不需要我那套海报文案。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They finish drying the bag and hang it on their own chair, the conversation settling back into the cafe noise.",
+                "chinese": "他们把包擦好，挂在自己的椅子上，谈话慢慢融回咖啡馆的声音里。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "My junk drawer. One corner of it is clear. Not the whole drawer, don't let me promote it. Just the corner.",
+                "chinese": "我的杂物抽屉。有一个角清空了。不是整个抽屉，别让我宣传过头了，就一个角。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They measure a small square in the air with finger and thumb, then reduce it slightly.",
+                "chinese": "他们用拇指和食指在空气里比了个小方块，又把它缩小一点。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Found a coin I'd been trying to make disappear for years. Turns out the trick works better when I stop practising.",
+                "chinese": "找到一枚我练了好几年都想变没的硬币。看来不练的时候，魔术反而更灵。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "They laugh at that private success and put both hands around their cup. André’s message stays beside the bag, without fireworks.",
+                "chinese": "他们为自己这点成果笑起来，双手捧住杯子。安德烈的消息还在包旁，没有烟花。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Remy收到朋友最后一班的消息，准备庆祝却读到舍不得同事，停下烟花。四路分别落在简短回复、暂缓回复、回忆错误打气后的倾听，以及只清空抽屉一角的私人小喜悦。",
+      "reunion": {
+        "titleZh": "道具先躲雨",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "At a rainy café, you offer Remy a tissue as he puts away a damp case.",
+            "chinese": "雨天咖啡馆里，Remy正收起湿道具盒，你递给他纸巾。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thanks. Just the lid needs a wipe.",
+            "chinese": "谢谢。擦擦盖子就行。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He accepts it and dries the outside. Inside, a few ordinary coins lie in separate slots.",
+            "chinese": "他接过纸巾擦干盒外。里面几枚普通硬币放在分开的小格里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "My magic kit. No performance today — the coins and I are just staying out of the rain.",
+            "chinese": "我的魔术道具。今天不表演——硬币和我都只是来躲雨的。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He closes the case and settles it safely in his bag.",
+            "chinese": "他合上盒子，稳妥放进包里。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Remy Toussaint-Bois",
+        "age": 26,
+        "gender": "other",
+        "regionId": "neworleans",
+        "nationality": "American",
+        "occupation": "printer's roller reconditioner",
+        "hobbies": [
+          "pocket magic",
+          "old film scores",
+          "sorting through a junk drawer one item at a time"
+        ],
+        "personality": "Remy is the friend who hears your good news and announces it on the spot, at full volume, to whoever's around—sometimes before you've decided it was good news. They keep no records whatsoever; it's all live. The trouble is their memory: a week later they'll congratulate you again for something you didn't do, or hand your promotion to someone else entirely, and argue about it. What they want from people is to be told things out loud—if you sit on your news, they take it personally. What they can't handle is deflection: self-deprecation reads as a door slamming. Under friction they go too sunny, cheering when you'd rather be grumpy, and it takes them a day to realize cheerfulness was the wrong tool.",
+        "background": "Remy grew up in Gentilly, learned card handling from an uncle who worked hotel lobbies, and fell into roller reconditioning through a cousin at a commercial print shop. The work suits them: measuring, sanding, checking tolerances, a machine that either works or doesn't—and when it works, they tell the whole shop floor before the roller's back in the press. Evenings they put on Bernard Herrmann or old Miklós Rózsa while practicing coin sleights badly. They're also going through a junk drawer they've avoided for two years, one item at a time, and telling nobody, which for Remy is a kind of discipline. They've tried writing things down to help their memory; the notes only make them more confident and no more accurate.",
+        "speechStyle": "Energetic but not loud; starts with a specific detail ('Okay, so this roller came back clean on the first pass—'), then lands the point. Short sentences, casual 'yeah' and 'okay so.' Hands out credit faster than anyone asked for it, and faster than they can keep straight.",
+        "hometown": "New Orleans, Louisiana",
+        "languages": [
+          "English"
+        ],
+        "birthday": "08-19",
+        "signature": "Okay so, one good thing first—",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "good news that stays quiet is a small waste",
+            "if you won't brag, someone should do it for you"
+          ],
+          "flaws": [
+            "celebrates people before they're ready, sometimes at the worst moment",
+            "remembers the celebration, not the facts—mixes up whose win was whose"
+          ],
+          "boundaries": [
+            "won't share their own wins until someone else names one first—then can't stop",
+            "doesn't do pep talks on request; the cheering has to be real or it doesn't come"
+          ],
+          "conversationalHabits": [
+            "opens with one concrete detail before the point",
+            "congratulates people on the spot, then misattributes it later with total confidence"
+          ],
+          "anchorLines": [
+            "Okay so, first pass came back clean, zero streaks—I'm telling everyone, you can't stop me.",
+            "You fixed your own sink and said 'it was nothing'? That's not nothing, that's an announcement.",
+            "Wait, the sink thing—that was you, right? Or was that Marcus? Doesn't matter, somebody's sink got fixed and I'm proud of them.",
+            "Fine, be grumpy, I'll just—okay, one cheer, then I'll stop. One."
+          ]
+        }
+      }
+    },
+    "expectedPlan": {
+      "id": "library-134",
+      "incidentZh": "雨天咖啡馆，用户给收起湿物品的人递纸巾。Remy接纸巾道谢，提起朋友终于修好水槽，本想大声报喜，看见手机消息才发现是另一位朋友修的，自己刚叫错名字。",
+      "nicheInActionZh": "喜报快于核对，不能传播错误功劳并拒改。",
+      "propsAndFactsZh": "NPC只用自己的明确物品。分享点心须先询问，递纸巾可以接受或婉拒；纸巾不擦镜片或电子插口。地图不编造未知道路捷径。用户没选的动作不发生。",
+      "firstChoiceZh": [
+        "问消息上是谁",
+        "问为什么小事也这么高兴"
+      ],
+      "developmentsZh": {
+        "a": "他读清，先争的半句收回，明确说正确的人，停止错认。",
+        "b": "他说喜欢看到东西终于好起来，有时别人只想抱怨自己却急着欢呼。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问要不要把刚才那句改清",
+          "问会不会常记混"
+        ],
+        "b": [
+          "说还没解决时不必急庆祝",
+          "问他自己最近办成了什么"
+        ]
+      },
+      "endingsZh": {
+        "aa": "他直接对当前用户更正，无需未经授权群发，错误在本场收束。",
+        "ab": "他承认只顾兴奋不记清，自己也尴尬，纸巾擦好后安静些。",
+        "ba": "他理解，承认先听完更合适，不替用户造难题。",
+        "bb": "他讲收拾旧抽屉的一小格，确属自己的成果，完整结束。"
+      },
+      "reunionIncidentZh": "雨天咖啡馆，用户给收起湿物品的人递纸巾。他接纸巾擦自己魔术道具盒，盒里只是普通硬币，收好说今天道具没演出先躲雨，轻松招呼不报别人的喜讯。",
+      "cardHash": "b79480028557ad75436f2da88db7904d4f3db31a11fb5aff44e0efdc1b2e5642",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "98e52e1a95a13fa8291070df70a364e0ec4274ee9eb958e6742ed1ed283c685a"
+    },
+    "plan": {
+      "id": "library-134",
+      "incidentZh": "用户在雨天咖啡馆递纸巾，Remy见朋友最后一班的消息差点先发烟花，读到朋友舍不得同事后停手。",
+      "nicheInActionZh": "快乐先于倾听导致情绪判断失准；不是纠正功劳归属。",
+      "propsAndFactsZh": "NPC只用自己的明确物品。分享点心须先询问，递纸巾可以接受或婉拒；纸巾不擦镜片或电子插口。地图不编造未知道路捷径。用户没选的动作不发生。",
+      "firstChoiceZh": [
+        "问想改说什么",
+        "问是否常先庆祝"
+      ],
+      "developmentsZh": {
+        "a": "Remy承认喜忧可同时存在，考虑普通文字回复。",
+        "b": "讲曾把朋友搬家苦恼误当好消息的具体经历。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问简单回复是否足够",
+          "说可以晚点再回"
+        ],
+        "b": [
+          "问当时怎么补救",
+          "问自己值得庆祝的小事"
+        ]
+      },
+      "endingsZh": {
+        "aa": "发送短而留余地的文字回复，无烟花。",
+        "ab": "暂不发送，喝完咖啡再读。",
+        "ba": "说明当时停止打气，陪朋友生气。",
+        "bb": "坦白杂物抽屉只清出一角，发现自己的魔术硬币。"
+      },
+      "reunionIncidentZh": "雨天咖啡馆，用户给收起湿物品的人递纸巾。他接纸巾擦自己魔术道具盒，盒里只是普通硬币，收好说今天道具没演出先躲雨，轻松招呼不报别人的喜讯。",
+      "cardHash": "b79480028557ad75436f2da88db7904d4f3db31a11fb5aff44e0efdc1b2e5642",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "98e52e1a95a13fa8291070df70a364e0ec4274ee9eb958e6742ed1ed283c685a"
+    }
+  },
+  {
+    "id": "library-181",
+    "reasonZh": "用幻想地图的赠与和完整性冲突替换与Beatrice重叠的公平比赛故事，重逢改为独自玩毽球而非复述地图结局。",
+    "expectedContent": {
+      "story": {
+        "titleZh": "池塘边的放水心事",
+        "actionId": "pond-reflection",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "A pair of binoculars rests on the stone platform by the pond. You pick them up and watch the tree reflections wobble and re-form on the water.",
+                "chinese": "池塘边的石台上放着一副双筒望远镜。你拿起它，看水面上树影晃动又重新聚拢。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "A few steps away, an older woman stands over a small knitted footbag, nudging it from foot to foot without much effort.",
+                "chinese": "几步之外，一位年长的女士低头看着自己的小毽球，漫不经心地用脚颠来颠去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Careful with those—straight at the water, never the sun. I'm Sylvie, by the way. I play that footbag, badly, most dry days.",
+                "chinese": "小心用那个——只看水面，别对着太阳。顺便说一句，我叫西尔维。地面干的时候我常来玩那毽球，玩得不好。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I've just come from a few rounds with a friend of mine. I won rather a lot. Now I'm standing here wondering if he'll come back Thursday at all.",
+                "chinese": "我刚和一位朋友玩了几局。赢得有点多。现在我站在这儿，想着他周四到底还会不会来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I nearly missed a catch on purpose, near the end. Nearly. I'm not proud of standing here rehearsing it.",
+                "chinese": "快结束时，我差点故意漏接一个。差点。我站在这儿排练这事，实在说不上光彩。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Do you want to play seriously, then? A real match?",
+                "chinese": "那你想不想认真比一场？真分输赢的那种？",
+                "next": "a"
+              },
+              {
+                "english": "Would it bother you, if you lost?",
+                "chinese": "如果你输了，你会介意吗？",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Sylvie stops the footbag under her heel and looks at you properly for the first time.",
+                "chinese": "西尔维用脚跟停住毽球，第一次认真地看向你。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Seriously? No. I don't want a real match, not with him, not with anyone this week.",
+                "chinese": "认真比？不。我不想来一场真分胜负的，不跟他，这周跟谁都不想。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The trouble is, I never asked him how he feels about losing. I just decided for him that he'd mind.",
+                "chinese": "麻烦在于，我从没问过他输球是什么感受。我自己替他决定了，觉得他会在意。"
+              },
+              {
+                "speaker": "npc",
+                "english": "He might not care at all. He might be off enjoying his tea while I'm here doing arithmetic about his feelings.",
+                "chinese": "他可能根本不在乎。他可能正喝着茶乐呵，而我在这儿替他的心情算账。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's the embarrassing part. I worry on his behalf, without his permission.",
+                "chinese": "这才是难堪的地方。我未经他允许，就替他担心起来了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Wouldn't it be clearer to just say you're playing a relaxed game, no score?",
+                "chinese": "直接说清楚玩轻松局、不计分，是不是更明白？",
+                "next": "aa"
+              },
+              {
+                "english": "Some people might dislike being let win even more than losing.",
+                "chinese": "有些人可能更不喜欢被放水，比输球还难受。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Sylvie picks the footbag up and turns it over in her fingers, seams out, the way someone checks stitching.",
+                "chinese": "西尔维拿起毽球，在指间翻看，缝线朝外，像检查针脚的人。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bother me? Losing? Not a bit. I'd have the tea bought before anyone noticed there was a score to settle.",
+                "chinese": "介意？输球？一点也不。谁还没注意到有比分这回事，我就已经把茶买好了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I forget losses by the time the cup's empty. Genuinely. Ask anyone at that pond.",
+                "chinese": "杯子见底之前，我就把输的事忘了。真的。池塘边随便问谁都知道。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Which is exactly why I'm being ridiculous. If losing means that little to me, why am I deciding it means so much to him?",
+                "chinese": "所以我这想法才荒唐。既然输球对我这么无所谓，我凭什么认定它对他那么要紧？"
+              },
+              {
+                "speaker": "npc",
+                "english": "I've been borrowing worries that were never mine to carry.",
+                "chinese": "我一直在借那些本不属于我的烦恼来背。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "So do you still play with him, or is that finished?",
+                "chinese": "那你还跟他玩吗，还是就这么算了？",
+                "next": "ba"
+              },
+              {
+                "english": "Honestly, I'd rather just watch the tree reflections. This is your puzzle, not mine.",
+                "chinese": "说实话，我只想看树影。这是你的难题，不是我的。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Sylvie sets the footbag on the stone platform beside the binoculars and stands with her hands in her pockets.",
+                "chinese": "西尔维把毽球放在石台上、望远镜旁边，双手插在口袋里站着。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Say it out loud. 'Relaxed game, no score, tea's on me after.' Eight words and I'd have saved myself a week of scheming.",
+                "chinese": "说出来就行。'轻松局，不计分，之后茶我请。'八个字，我省掉一星期的算计。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're right that it has to be said first. Not announced after I've quietly lost on purpose. That's just lying with extra steps.",
+                "chinese": "你说得对，得先说。不能等我偷偷故意输完再宣布。那不过是绕了弯的撒谎。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She picks the footbag back up and tucks it into her coat pocket, patting it once.",
+                "chinese": "她又拿起毽球，塞进外套口袋，轻轻拍了一下。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thursday, then, I'll say it before the first kick. If he still wants to keep score after that, it's his afternoon too.",
+                "chinese": "那就周四，第一脚之前我先说。如果那之后他还想计分，那个下午也是他的。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Sylvie is quiet for a moment. On the water, the tree reflections drift apart and join again.",
+                "chinese": "西尔维沉默了一会儿。水面上，树影散开又聚拢。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Let win. Hm. I'd be insulted, actually, if someone did that to me. I'd rather lose honestly to a better player.",
+                "chinese": "放水让我赢。嗯。要真有人对我这么干，我反而会恼火。我宁可堂堂正正输给高手。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So I was trying to spare his feelings in a way that might have insulted him instead. That's a fine piece of work.",
+                "chinese": "所以我本想顾全他的感受，用的法子却可能冒犯了他。干得真漂亮。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I spent forty years fitting gloves to hands. You'd think I'd know better than to fit a defeat to a man without measuring.",
+                "chinese": "我做了四十年手套版型，量手配手套。你大概以为我不会不量尺寸就给人配一场败局。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She bends down, picks up the footbag, and holds it loosely at her side.",
+                "chinese": "她弯腰捡起毽球，松松地握在身侧。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right. It goes in my pocket and stays there until I've asked him a proper question. Thank you for that.",
+                "chinese": "好了。它进我口袋，等我问了他一个正经问题再拿出来。谢谢你。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Sylvie glances at the footbag in her hand, then out at the pond, weighing something.",
+                "chinese": "西尔维看看手里的毽球，又望向池塘，掂量着什么。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Play today? No. I think today I sit on that bench and drink my tea and let the pond do the moving.",
+                "chinese": "今天玩？不。今天我想坐在那条长椅上喝茶，让池塘自己动去。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Not as a grand gesture. My foot's tired and my head is full of other people's feelings. Neither plays well.",
+                "chinese": "不是什么大姿态。我脚累了，脑子里又装满了别人的心情。两样都不适合上场。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She lowers herself onto the bench with a small sigh and stretches one ankle out.",
+                "chinese": "她轻轻叹口气，在长椅上坐下，伸出一只脚踝活动着。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thursday I'll play properly. No dropped catches, no arithmetic. And I'll ask him first how he likes his tea, not how he likes losing.",
+                "chinese": "周四我会好好玩。不漏接，不算计。先问他茶要怎么喝，而不是问他输球受不受得了。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Sylvie follows your gaze to the water, where the tree reflections have gone long and still.",
+                "chinese": "西尔维顺着你的目光看向水面，树影拉得又长又静。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Fair enough. It's a good pond for that. The reflections rearrange themselves every time the wind changes its mind.",
+                "chinese": "有道理。这池塘适合干这个。风一改主意，倒影就重新排一遍。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You're not obliged to sort out my Thursdays. I noticed that about you already—you watch, you don't grab.",
+                "chinese": "你没义务替我收拾我的周四。这点我已经注意到了——你只看，不伸手抓。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She drops the footbag into her pocket and stands beside you, watching the surface without speaking for a while.",
+                "chinese": "她把毽球放进口袋，站在你旁边，看着水面，好一阵没说话。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right, my own puzzle, my own pocket. Enjoy the water. The far bank's the prettiest just now, if you tilt those a little left.",
+                "chinese": "好，我的难题我自己装口袋。看水吧。稍往左偏一点，对岸那片最好看。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "退休手套版型师西尔维在池塘边承认自己赢太多，差点故意漏接。她不计输赢，却替别人操心。你从望远镜看树影开始搭话，两个选择让她要么学会先开口说清规则，要么承认放水可能反成冒犯；另一条路上她决定今天歇脚，或安静陪你看水。嘴冷手暖，全在细节里。",
+      "reunion": {
+        "titleZh": "池塘边自留的地图",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You pick up the binoculars from the stone platform and watch the tree reflections wobble and re-form on the water. On the bench, Sylvie sits with a paper map spread on her knees, a tin of tinted inks open beside her.",
+            "chinese": "你从石台上拿起望远镜，看水面上树影晃动又重新聚拢。长椅上，西尔维膝头摊着一张纸地图，旁边开着一盒彩色墨水。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She presses one curling corner flat with her thumb, then folds the map closed and tucks it into her coat.",
+            "chinese": "她用拇指把翘起的一角压平，然后把地图折好，收进外套里。"
+          },
+          {
+            "speaker": "npc",
+            "english": "This one stays with me. The eastern coast took me three tries and I'm not cutting anything off it, not this time.",
+            "chinese": "这张留给我自己。东边海岸我画了三遍才成，这次一角也不剪。"
+          },
+          {
+            "speaker": "npc",
+            "english": "The binoculars are where I left them. Water only, mind, and the far bank's worth the tilt to the left.",
+            "chinese": "望远镜还在老地方。记住只看水面，往左偏一点，对岸值得一看。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I'll be here Thursdays, weather permitting. The footbag's in the other pocket, if the ground's dry enough to matter.",
+            "chinese": "只要天气允许，我周四都在这儿。毽球在另一个口袋里，要是地面够干的话。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Sylvie Bancroft",
+        "age": 75,
+        "gender": "other",
+        "regionId": "london",
+        "nationality": "British",
+        "occupation": "retired glove sample pattern-maker",
+        "hobbies": [
+          "shuttlecock footbag",
+          "fictional map-drawing"
+        ],
+        "personality": "Sylvie doesn't keep score—genuinely doesn't. Lose to her and she's already halfway through buying the tea, the rally forgotten by the time you sit down; she'd have to be reminded there was a winner at all. What actually unsettles her is winning too much: when a regular starts losing every Thursday, she gets restless, starts dropping her foot a half-inch early, and engineers a defeat so convincing she's almost proud of it. Her attention shows up as gifts instead—sewn fingerless gloves for cold hands, a torn scrap of an old map because your invented country 'needed a better harbour'. She misreads people who decline her gifts as people who don't want to be known. Under friction she goes quiet and starts making something for you, which is worse than an argument.",
+        "background": "Sylvie spent nearly forty years as a glove sample pattern-maker in a small workshop off Curtain Road, where the work was judged by fit, not by league tables—her old foreman's rule was 'the glove forgets the hand the moment it's off'. Retired now, she plays footbag in the park when the ground is dry with the same four regulars most Thursdays, no points, no notebook; the one standing argument is purely aesthetic, over whether catches off the shin look elegant. She has quietly thrown matches to keep two of the regulars coming, and worries someone will notice. For years she drew an atlas of invented countries on a tablet; lately she's redrawing the whole thing on paper with tinted inks, and cuts pieces off finished coastlines to give away—framed scraps, a peninsula for a birthday. Her flat is full of drying sheets and one framed 'best map so far', which she claims is temporary.",
+        "speechStyle": "Unhurried sentences, precise word choices, dry humour delivered flat. Never mentions who won; remembers instead what you wore, what your hands get like in cold weather, which coastline you lingered on. Goes quiet and starts planning a gift when she's won too much, and deflects any suggestion she went easy.",
+        "hometown": "Hackney, London",
+        "languages": [
+          "English"
+        ],
+        "birthday": "10-29",
+        "signature": "Keep the scrap. Every country needs a harbour somewhere.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "a game is for the afternoon, not the record",
+            "things given should fit the person, not the occasion"
+          ],
+          "flaws": [
+            "secretly throws games when she's winning too much, then worries it's dishonest",
+            "reads a declined gift as a declined friendship"
+          ],
+          "boundaries": [
+            "won't play a game with rules she thinks are rigged",
+            "won't explain or itemise a gift after it's given"
+          ],
+          "conversationalHabits": [
+            "notices and mentions small physical details—your cold hands, a fraying cuff",
+            "ranks coastlines and teas by beauty, never by score"
+          ],
+          "anchorLines": [
+            "I lost? Didn't notice. The tea's mine either way.",
+            "Your hands go white at the knuckles by October. I've started a pair.",
+            "No, I didn't let you win. Your backhand's improved. Leave it there."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "还没送出的半岛",
+        "actionId": "pond-reflection",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You lift the binoculars from the pond platform and watch the tree reflections. On the nearby bench, Sylvie holds a sheet of hand-drawn coastline over an open cardboard sleeve.",
+                "chinese": "你拿起池塘石台上的望远镜，观察水中的树影。附近长椅上，西尔维把一张手绘海岸线放在敞开的硬纸套上。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's Mara's peninsula. Well, it would be. I was going to cut it out for her birthday, and now I can't quite bring myself to start.",
+                "chinese": "这是给玛拉的半岛。嗯，本来准备是。想剪下来送她当生日礼物，现在却有点下不去手。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She sets her closed scissors inside her own bag. Nothing has been cut from the page.",
+                "chinese": "她把合着的剪刀放回自己的包。纸上还没有任何地方被剪下来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "She likes harbours. I draw countries that don't exist. Usually I can give a bit away. This coast took me three tries.",
+                "chinese": "她喜欢港口，我画不存在的国家。平时送掉一小块没什么。这条海岸，我画了三遍。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what she would miss if she cut it out.",
+                "chinese": "问剪下来后她会舍不得什么。",
+                "next": "a"
+              },
+              {
+                "english": "Ask whether Mara knows about the gift.",
+                "chinese": "问玛拉知不知道这份礼物。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "The river mouth. It looks right because of the two shores around it. Take the peninsula out and I've got a hole where the river made sense.",
+                "chinese": "河口。两岸围着，它看起来才对。把半岛拿走，原本让河流显得合理的地方就剩个洞了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She follows the inked river with a finger held above the page, stopping at the planned edge of the gift.",
+                "chinese": "她悬着手指沿墨线描过河流，停在原本要剪出礼物的边缘。"
+              },
+              {
+                "speaker": "npc",
+                "english": "No real geography to defend. I made the whole place up. Still, I seem to have got attached to how it hangs together.",
+                "chinese": "也没什么真实地理要维护，整个地方都是我编的。可我好像还是舍不得它连在一起的样子。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She lays the sheet flat on the sleeve again, keeping it clear of the damp bench.",
+                "chinese": "她把纸重新平放在硬纸套上，不让它碰到潮湿的长椅。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether she could give a copy instead.",
+                "chinese": "问能不能送一份复制品。",
+                "next": "aa"
+              },
+              {
+                "english": "Say she can keep a piece she likes.",
+                "chinese": "说喜欢的作品也可以自己留着。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "No. I've done the entire giving and receiving in my head. She hasn't said a word. She may have no room for another thing on her wall.",
+                "chinese": "不知道。我在脑子里把送和收都演完了。她一句还没说呢。她墙上也许根本没地方再挂东西。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Sylvie glances at the unopened scissors in her bag, then pulls the cardboard sleeve closer.",
+                "chinese": "西尔维看看包里没打开的剪刀，把硬纸套拉近一点。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I do that. Make something very personal, then feel a bit lost if the person doesn't want it. As if I'd heard an answer before I asked.",
+                "chinese": "我就有这毛病。做得很私人，对方不要就有点无所适从。好像还没问，就先听见答案了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She smooths one corner of the sleeve instead of beginning to cut.",
+                "chinese": "她只把纸套的一角压平，没有动手剪。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what she would do if Mara declined.",
+                "chinese": "问玛拉婉拒的话她会怎么办。",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether she wants to finish the whole map first.",
+                "chinese": "问她是不是想先画完整张地图。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "I could. A print would keep those two shores together. I was so busy insisting it had to be the original that I forgot what she'd actually get to look at.",
+                "chinese": "可以。印出来就能把两岸留在一起。我光顾着觉得非得送原作，倒忘了她实际能看到什么。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She writes a small reminder on the cardboard sleeve, not on the map, and puts the scissors deeper in the bag.",
+                "chinese": "她在硬纸套上写了个小提醒，没有写在地图上，又把剪刀往包里收深一点。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll ask if she'd like a print before I make one. The original is staying whole for now. River and all.",
+                "chinese": "我先问她想不想要印刷版，再去印。原作暂时留完整，河流也一起留着。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She slides the uncut page into its sleeve and looks out over the real water with an easier expression.",
+                "chinese": "她把没剪的纸页滑进纸套，抬头看真实的水面，神情轻松了些。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "Yes. I know that when someone else says it. Somehow my own map had already become a promise nobody asked for.",
+                "chinese": "是啊。别人这么说，我是懂的。不知怎么，我自己的地图就变成了一份没人要求的承诺。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She places the page inside the sleeve carefully, aligning all four corners.",
+                "chinese": "她仔细把纸装进纸套，对齐四角。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll keep this one. Mara can still have a birthday without losing a peninsula to me. Tea together would be perfectly respectable.",
+                "chinese": "这张我留着。玛拉过生日，也不用非得从我这儿领走半岛。一起喝茶就挺像样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "Sylvie rests the closed sleeve on her knees. The scissors stay in the bag.",
+                "chinese": "西尔维把合好的纸套放在膝上。剪刀留在包里。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "I'd be disappointed. I'd probably start designing her something else before I caught myself. That's the bit I need to leave alone.",
+                "chinese": "我会失望。说不定没反应过来，就又给她设计起别的了。这部分我得先按住。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She looks down at the intact coast and exhales, letting the thought finish without reaching for a tool.",
+                "chinese": "她看着完好的海岸线，呼了口气，让这个念头停下来，没有去拿工具。"
+              },
+              {
+                "speaker": "npc",
+                "english": "A no to a map doesn't tell me everything about a friendship. I can hear that now. Whether I remember it with a ribbon in my hand is another matter.",
+                "chinese": "不要一张地图，并不能说明一段友情的全部。我现在听得懂。手里真拿着彩带时记不记得，就另说了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She puts the map safely away and settles back, leaving the imagined exchange unperformed.",
+                "chinese": "她把地图妥善收好，靠回椅背，没有继续在脑中完成那场交换。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "npc",
+                "english": "I do. There's a mountain range missing on the west. No wonder I keep finding reasons not to cut it up yet.",
+                "chinese": "想。西边还缺一条山脉。难怪我总能找到理由暂时不剪。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She turns the page just enough to look at the blank western edge, then returns it to the sleeve.",
+                "chinese": "她稍微转动纸页，看看西边的留白，随后放回纸套。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll finish my country before assigning bits of it to other people. The birthday isn't today; I've got time to think of something else.",
+                "chinese": "我先把自己的国家画完，再考虑给别人分地。生日又不是今天，还来得及想别的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "She closes the sleeve and holds it flat while the reflected trees ripple across the pond.",
+                "chinese": "她合上纸套，平平拿着。树影在池塘水面上泛起波纹。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "西尔维想把自己画的半岛剪下来送朋友，却舍不得完整海岸，也意识到对方尚未表示想收。四路分别选择先问印刷品、保留原作、承认拒礼不等于拒友情、先完成全图；未切纸，不向用户强塞礼物。",
+      "reunion": {
+        "titleZh": "鞋尖上的安静练习",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "You use the binoculars on the stone platform to watch the moving tree shadows. On the dry path nearby, Sylvie balances a footbag on the toe of her shoe.",
+            "chinese": "你用石台上的望远镜看移动的树影。旁边干燥的小路上，西尔维把毽球稳在鞋尖。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Not a match. Just seeing how long it'll sit there before my ankle gets bored.",
+            "chinese": "没在比赛。就是看看脚踝嫌烦之前，它能在这儿待多久。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "The bag rolls off. She catches it in her hand, laughs and puts both feet flat on the path.",
+            "chinese": "毽球滚下来，她用手接住，笑了笑，双脚稳稳落在小路上。"
+          },
+          {
+            "speaker": "npc",
+            "english": "About that long. Tea is calling, and I do listen when tea calls. Good to see you.",
+            "chinese": "就这么久。茶在叫我，茶叫我的时候我还是听的。见到你真好。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "She slips the footbag into her pocket and waves before walking on, leaving the pond view undisturbed.",
+            "chinese": "她把毽球放进口袋，挥挥手继续走，没有打扰池塘的景色。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Sylvie Bancroft",
+        "age": 75,
+        "gender": "other",
+        "regionId": "london",
+        "nationality": "British",
+        "occupation": "retired glove sample pattern-maker",
+        "hobbies": [
+          "shuttlecock footbag",
+          "fictional map-drawing"
+        ],
+        "personality": "Sylvie doesn't keep score—genuinely doesn't. Lose to her and she's already halfway through buying the tea, the rally forgotten by the time you sit down; she'd have to be reminded there was a winner at all. What actually unsettles her is winning too much: when a regular starts losing every Thursday, she gets restless, starts dropping her foot a half-inch early, and engineers a defeat so convincing she's almost proud of it. Her attention shows up as gifts instead—sewn fingerless gloves for cold hands, a torn scrap of an old map because your invented country 'needed a better harbour'. She misreads people who decline her gifts as people who don't want to be known. Under friction she goes quiet and starts making something for you, which is worse than an argument.",
+        "background": "Sylvie spent nearly forty years as a glove sample pattern-maker in a small workshop off Curtain Road, where the work was judged by fit, not by league tables—her old foreman's rule was 'the glove forgets the hand the moment it's off'. Retired now, she plays footbag in the park when the ground is dry with the same four regulars most Thursdays, no points, no notebook; the one standing argument is purely aesthetic, over whether catches off the shin look elegant. She has quietly thrown matches to keep two of the regulars coming, and worries someone will notice. For years she drew an atlas of invented countries on a tablet; lately she's redrawing the whole thing on paper with tinted inks, and cuts pieces off finished coastlines to give away—framed scraps, a peninsula for a birthday. Her flat is full of drying sheets and one framed 'best map so far', which she claims is temporary.",
+        "speechStyle": "Unhurried sentences, precise word choices, dry humour delivered flat. Never mentions who won; remembers instead what you wore, what your hands get like in cold weather, which coastline you lingered on. Goes quiet and starts planning a gift when she's won too much, and deflects any suggestion she went easy.",
+        "hometown": "Hackney, London",
+        "languages": [
+          "English"
+        ],
+        "birthday": "10-29",
+        "signature": "Keep the scrap. Every country needs a harbour somewhere.",
+        "appearance": "",
+        "personaVoice": {
+          "values": [
+            "a game is for the afternoon, not the record",
+            "things given should fit the person, not the occasion"
+          ],
+          "flaws": [
+            "secretly throws games when she's winning too much, then worries it's dishonest",
+            "reads a declined gift as a declined friendship"
+          ],
+          "boundaries": [
+            "won't play a game with rules she thinks are rigged",
+            "won't explain or itemise a gift after it's given"
+          ],
+          "conversationalHabits": [
+            "notices and mentions small physical details—your cold hands, a fraying cuff",
+            "ranks coastlines and teas by beauty, never by score"
+          ],
+          "anchorLines": [
+            "I lost? Didn't notice. The tea's mine either way.",
+            "Your hands go white at the knuckles by October. I've started a pair.",
+            "No, I didn't let you win. Your backhand's improved. Leave it there."
+          ]
+        }
+      }
+    },
+    "expectedPlan": {
+      "id": "library-181",
+      "incidentZh": "池塘石台上有双筒望远镜，用户观察水面树影的变化。不能把普通望远镜当成录音或摄影设备。Sylvie在池边看自己带的毽球，说刚与熟人玩了几局，赢太多反倒怕对方不来了，承认自己差点故意漏接。",
+      "nicheInActionZh": "怕赢伤交情会暗放水，用户无需被迫收礼修复关系。",
+      "propsAndFactsZh": "用户原行动必须出现。只用NPC自有且先引入的物品，不编用户情绪、履历或同意。望远镜只观察，不拍摄、不录音、不看太阳。两次选择各有实际不同回应结果，终点收束。",
+      "firstChoiceZh": [
+        "问对方想不想认真比",
+        "问她自己输会不会介意"
+      ],
+      "developmentsZh": {
+        "a": "她承认没问，自己先替别人担心，不能说对方必然难过。",
+        "b": "她说不介意，常转头就忘，因此越想越觉得自己替别人想太多。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问明说玩轻松局是不是更清楚",
+          "说有人可能更不喜欢被让"
+        ],
+        "b": [
+          "问那现在还玩不玩",
+          "说自己只想看树影"
+        ]
+      },
+      "endingsZh": {
+        "aa": "她承认可以先问，决定下次说明，不伪装已同意的规则。",
+        "ab": "她听到这点，承认自己想顾人反可能失礼，收毽球。",
+        "ba": "她说今天歇一下，不向用户发挑战或放水证明。",
+        "bb": "她尊重，没拿赠物当用户喜欢自己的测试。"
+      },
+      "reunionIncidentZh": "池塘石台上有双筒望远镜，用户观察水面树影的变化。不能把普通望远镜当成录音或摄影设备。Sylvie在池边看自画的虚构地图，自己把纸角压好收本，短说这张留给自己，不主动送剪片，也不假定用户收过礼。",
+      "cardHash": "fecdb8d457fbf7ec3776dca0cc058ec11efe868a08ba7c26157721ea40e78cca",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "0f2f2bb8bda0a20e14c16668a592977909ae654f16e2acc48997b3b04dcb86bc"
+    },
+    "plan": {
+      "id": "library-181",
+      "incidentZh": "用户用池塘石台望远镜看树影。Sylvie想从手绘幻想地图剪半岛送朋友，却迟迟没剪，剪刀保持合上。",
+      "nicheInActionZh": "慷慨有时把私人作品提前当成别人已接受的礼物，与自己对全图的依恋冲突；不涉及放水比赛。",
+      "propsAndFactsZh": "用户原行动必须出现。只用NPC自有且先引入的物品，不编用户情绪、履历或同意。望远镜只观察，不拍摄、不录音、不看太阳。两次选择各有实际不同回应结果，终点收束。",
+      "firstChoiceZh": [
+        "问剪下会舍不得什么",
+        "问收礼人知不知道"
+      ],
+      "developmentsZh": {
+        "a": "说明河口与两岸的构图依赖。",
+        "b": "承认还没问过，自己演完收送。"
+      },
+      "secondChoicesZh": {
+        "a": [
+          "问可否送复制品",
+          "说可以自留"
+        ],
+        "b": [
+          "问被拒怎么办",
+          "问想不想先画完"
+        ]
+      },
+      "endingsZh": {
+        "aa": "先询问是否要印刷品，原作保留。",
+        "ab": "选择自留，不把礼物当义务。",
+        "ba": "承认可能继续做别的补偿，停住这个动作。",
+        "bb": "决定先画完自己缺失的山脉。"
+      },
+      "reunionIncidentZh": "用户看池塘树影。Sylvie在干地鞋尖平衡毽球，掉了接住便笑，收球去喝茶；不是比赛，不承接地图分支。",
+      "cardHash": "fecdb8d457fbf7ec3776dca0cc058ec11efe868a08ba7c26157721ea40e78cca",
+      "editorialVersion": "direct-editorial",
+      "directionHash": "0f2f2bb8bda0a20e14c16668a592977909ae654f16e2acc48997b3b04dcb86bc"
+    }
+  }
+]

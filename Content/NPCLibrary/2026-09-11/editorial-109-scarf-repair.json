@@ -1,0 +1,706 @@
+[
+  {
+    "id": "library-109",
+    "reasonZh": "先实际回答选中的围巾问题，再由NPC自己的护短引出后续；不虚构用户问过其他问题。",
+    "expectedContent": {
+      "story": {
+        "titleZh": "雨天的点心与围巾",
+        "actionId": "rain-pastry",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain taps the cafe window. At a corner table, an older man dries his glasses with a scarf in faded club colours. A plate of pastries sits between the chairs.",
+                "chinese": "雨点敲着咖啡馆的窗。角落桌边，一位老人用一条褪色球队围巾擦眼镜。椅子之间放着一盘点心。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He tucks the scarf into his coat pocket, shakes water off his sleeve, and glances at the plate as if weighing something.",
+                "chinese": "他把围巾塞进外套口袋，甩了甩袖子上的水，瞥了一眼那盘点心，像在掂量什么。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bloody weather. Came out for one thing and the sky fell in. Ah well, dry seat's a dry seat.",
+                "chinese": "这鬼天气。就出来办一件事，天倒先塌了。算了，有干的座位就是好的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He settles back, hands flat on the table, eyeing the pastries once more but not reaching.",
+                "chinese": "他靠回椅背，双手平放在桌上，又看了一眼点心，却没有伸手。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You going to sit there guarding that plate all day, or is it just decoration? No offence meant. It's a good-looking plate.",
+                "chinese": "你打算整天守着那盘点心，还是它只是摆设？没有冒犯的意思。这盘看着挺像样的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Offer him the pastries and ask if he'd like one",
+                "chinese": "请他吃点心，问他要不要来一块",
+                "next": "a"
+              },
+              {
+                "english": "Ask about the scarf in his pocket first",
+                "chinese": "先问他口袋里那条围巾的事",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "The plate slides to the middle of the table. Alan looks at it, then at you, waiting for the words to come with it.",
+                "chinese": "点心盘被推到桌子中间。艾伦看看盘子，再看看你，等着那句话跟着一起来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "For me? Well. Don't mind if I do. That one there—the crumbly-looking one. Thank you kindly.",
+                "chinese": "给我的？那好。那我就不客气了。就那块——看着掉渣的那块。多谢。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes it with two fingers and eats it in three unhurried bites while you ask why he keeps following a side that keeps losing.",
+                "chinese": "他用两根手指拿起那块，不紧不慢地三口吃完，其间你问他为什么还一直支持一支老输球的队。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Why? Because I know them, that's why. Dave at fullback, he's a plumber. The little winger works at the op shop. Real faces, every Saturday, rain or thrashing.",
+                "chinese": "为什么？因为我认识他们，就这样。踢后卫的戴夫，是个水管工。那个小个子边锋在旧货店上班。都是熟面孔，每个周六都来，下雨也来，被灌也来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He taps the table with one finger, once per name, like counting off a roster.",
+                "chinese": "他用手指敲桌面，念一个名字敲一下，像在点名。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The score's forgettable. The blokes aren't. Forty years I watched fellas clock off and still turn up. That's the whole answer, really.",
+                "chinese": "比分是会忘的。人不至于。四十年了，我看那些下了班还赶来的人。其实答案就这么点。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether he'll be at the ground again next Saturday",
+                "chinese": "问他下周六还会不会去球场",
+                "next": "aa"
+              },
+              {
+                "english": "Ask whether he'd ever sit down for a chat with a fan of the other side",
+                "chinese": "问他会不会跟对方球迷坐下来聊聊",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "The scarf goes back into the pocket. Alan turns his cup a quarter-circle on the saucer and gives you a long, level look at your question—whether it's fine for him to criticise the team but not anyone else.",
+                "chinese": "围巾放回口袋。艾伦把杯子在碟子上转了四分之一圈，平平地看了你一眼——你问的是，他自己批评可以，别人批评就不行？"
+              },
+              {
+                "speaker": "npc",
+                "english": "Fair question. And the honest answer's yes. I can call them hopeless, useless, a waste of a Saturday—because I've earned it. Forty years of standing in the rain watching them lose.",
+                "chinese": "问得在理。老实说，是的。我可以说他们没救、没用、白瞎一个周六——因为这是我挣来的。四十年站在雨里看他们输。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He turns the cup back the other way, jaw working like he's chewing on the fairness of it.",
+                "chinese": "他又把杯子转回去，腮帮子动着，像在咀嚼这事公不公平。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Some bloke off the street calls Dave the plumber a donkey? That stings. Is it fair? Probably not. Dave's heard worse from me, and I've meant it more.",
+                "chinese": "街上随便哪个家伙管水管工戴夫叫蠢货？那可扎心。公平吗？大概不公平。戴夫听我说过更难听的，而且我说得更当真。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's not logic, it's family. You bully your own brother, but nobody else lays a finger on him. I'll own that, straight up. It's a bit of favouritism and I'm not apologising for it.",
+                "chinese": "这不是讲道理，这是家人。你可以说自己兄弟两句，但别人不能碰他一根手指。这个我认，明说。就是有点护短，我也不打算为这个道歉。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say you don't know the team well enough to judge them",
+                "chinese": "说你不了解这支球队，不好乱评价",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether even a losing team has moments worth watching",
+                "chinese": "问输球的队是不是也有值得看的地方",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan snorts, as if the question barely deserved breath.",
+                "chinese": "艾伦哼了一声，好像这问题都不值得费口气。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Will I be there? Course I'll be there. Told my neighbour I'm done with them—didn't say I'd lie about it. Done and going aren't mutually exclusive, mate.",
+                "chinese": "我会去吗？当然去。我跟邻居说我不看了——又没说我撒谎。不看了和照去，这两回事，老兄。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He pulls the scarf out of his pocket, smooths it across his knee, and folds it back in with no pretence at all.",
+                "chinese": "他从口袋里把围巾拉出来，在膝盖上抚平，再叠好放回去，一点不装样子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Dave's been nursing a bad ankle all month, so someone's got to stand there scowling at the referee on his behalf. Might as well be me.",
+                "chinese": "戴夫这个月脚踝一直不好，总得有人替他站在那儿冲裁判皱眉头。那人不是我还能是谁。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Same time Saturday, then. You've caught me out and I can't even argue properly.",
+                "chinese": "那就周六老时间。被你问住了，我连嘴硬都硬不圆。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan waves a hand, as if you'd asked whether water's wet.",
+                "chinese": "艾伦摆摆手，好像你问了水是不是湿的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There's a bloke at the pie stand—rival jumper, loud as a kettle. We've argued every Saturday for years. He reckons our lot couldn't find the goal with a map. I tell him what I think of his mob. Good chat, most weeks.",
+                "chinese": "派摊上有个家伙——穿对方球衣，嗓门跟烧水壶似的。我们吵了好多年，每个周六都吵。他说我们这帮人拿着地图也找不着球门。我说说我怎么看他们那伙人。大多数时候聊得挺好。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He picks up the last of his pastry and finishes it off, unhurried.",
+                "chinese": "他拿起手里最后一点点心，不紧不慢地吃完。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Eating together and having a yarn doesn't cancel out wanting to beat them. He wants his side to win, I want mine. Both things fit on one table.",
+                "chinese": "一起吃东西、聊聊天，又不耽误我想赢他们。他想他的队赢，我想我的。这两样搁一张桌上放得下。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He brushes the crumbs from his fingers and pushes the plate a friendly inch back toward you.",
+                "chinese": "他掸掉手指上的渣，友好地把盘子朝你那边推了一寸。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan nods slowly, the way a man nods when a knot comes loose.",
+                "chinese": "艾伦缓缓点头，像一个人解开了结时那样。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's a decent answer. Half the town's got a hot take on a side they've never watched for ten minutes.",
+                "chinese": "这回答像样。半个镇子的人对一支他们没看过十分钟的队都有一套高见。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "His eyes drift to the plate between you, and he clears his throat.",
+                "chinese": "他的目光飘到你们中间的盘子上，清了清嗓子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Speaking of which—that one with the apple in it. Could I trouble you for a piece? Only if you're offering, mind.",
+                "chinese": "说起来——那块带苹果的。能劳驾给我一块吗？当然，你得愿意才行。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "You slide the plate toward him and he takes the apple one, examining it before biting.",
+                "chinese": "你把盘子朝他推过去，他拿起那块苹果的，咬之前先端详了一下。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Yep. Apple. That's all I'll claim—what's actually in my mouth. Same rule for football. Talk about what you've actually tasted.",
+                "chinese": "没错。是苹果。我就只说这个——我嘴里实际尝到的。看球一个理。只说你真正尝过的。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan's eyebrows go up. He sets down his cup like a man preparing to hold court.",
+                "chinese": "艾伦的眉毛抬了起来。他放下杯子，像准备开讲的人。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Three seasons back. We're down two-nil, eighty minutes gone, hopeless as ever. Then—click. One-two between the plumber and the op-shop kid, straight through the middle.",
+                "chinese": "三个赛季前。我们零比二落后，八十分钟了，还是老样子没救。然后——咔哒一下。水管工和旧货店那孩子来了个二过一，直接穿中路。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "His hands do the passing for him, one flicking to the other across the table.",
+                "chinese": "他的手替他们传起球来，一只手把球弹给另一只。"
+              },
+              {
+                "speaker": "npc",
+                "english": "They'd practised it for months and it never worked once. That day it worked. We still lost, mind. Three-one.",
+                "chinese": "他们练了几个月，一次都没成过。那天成了。当然我们还是输了。一比三。"
+              },
+              {
+                "speaker": "npc",
+                "english": "But I walked home grinning like we'd won the cup. So yes—there's always something, if you're watching the right thing.",
+                "chinese": "可我回家时笑得跟捧了杯似的。所以是的——只要你盯着对的东西，总有点什么。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "艾伦，七十五岁，墨尔本Footscray人，退休前四十年翻新烤盘。雨天咖啡馆里，他讨了块点心，又亮出那条褪色围巾——球队又输了，他嘴上说戒了，围巾照带。问他为什么还看，他说因为认识那些每周肯上场的熟面孔；问他是不是自己骂得别人骂不得，他承认有点护短、未必公平，可家人就是这样护的；跟对方球迷边吃边聊也不碍事，各支持各的队。牢骚里藏着忠诚，护短护得理直气壮又不肯认账。",
+      "reunion": {
+        "titleZh": "又是雨天，还是那桌",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Rain again on the same cafe window. Alan sits at the corner table, a half-knitted jumper across his lap, needles paused mid-row. You slide the pastry plate toward the middle of the table and ask if he'd like one.",
+            "chinese": "同一个窗上又落着雨。艾伦坐在角落桌边，膝上摊着织了一半的毛衣，毛线针停在半行。你把点心盘往桌子中间推了推，问他要不要来一块。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, look who the rain blew in. Sit down, sit down. Mind the wool, it's everywhere.",
+            "chinese": "哟，看谁被雨刮进来了。坐坐坐。小心毛线，到处都是。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Alan glances at the offered plate, then holds up one wool-flecked hand.",
+            "chinese": "艾伦看了一眼递过来的盘子，然后举起一只沾着线头的手。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thank you, but not this minute—look at these hands. One crumb in the yarn and the whole row's ruined. After I wind up, maybe.",
+            "chinese": "多谢，但这会儿先不吃——瞧这手。一粒渣掉进线里，整行就毁了。等我收完线再说。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He winds the wool briskly around two fingers, tucks the needles into the sleeve, and sets the jumper aside like a job well paused.",
+            "chinese": "他利落地把毛线绕在两根手指上，把针插进袖口，把毛衣放到一边，像暂停一件干得不错的活。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right. Plate's all yours again. And no, I haven't quit the team, so don't bother asking. Same time Saturday, obviously.",
+            "chinese": "好了。盘子又归你了。还有，我没戒球队，别白问了。周六老时间，明摆着的。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Alan Prescott",
+        "age": 75,
+        "gender": "male",
+        "regionId": "melbourne",
+        "occupation": "retired bakery tray refurbisher (sandblasted and re-coated baking trays for forty years)",
+        "nationality": "Australian",
+        "hometown": "Footscray, Melbourne",
+        "languages": [
+          "English"
+        ],
+        "birthday": "02-06",
+        "appearance": "",
+        "personality": "Alan is a dry, loyal Footscray local who grumbles like a professional but shows up anyway. He'll tear strips off his local amateur side himself—call them hopeless, swear he's done with them—yet if an outsider mocks the players carelessly, he bristles instantly. What he actually values is the familiar faces lacing up week after week, not any glory by association. He's stubborn, a bit contrary, and quietly pleased when proven wrong about a match. He respects a straight refusal and doesn't sulk over it, though he'll mutter. Warmth comes out sideways, through actions and shared company rather than declarations.",
+        "background": "Alan spent forty years in a Footscray workshop sandblasting and re-coating bakery trays, a job he describes as 'turning grey into grey, but honest grey.' Retired now at seventy-five, he lives not far from the ground where the local amateur side he's followed for decades loses with impressive consistency. He knits—jumpers mostly, occasionally a beanie in club colours he insists are 'spares'—and listens to matches on the radio while the needles click. He's been telling himself since the nineties that next season he'll stop going, and he's been reliably wrong every time. He can share a sausage roll and a laugh with a supporter of the opposing team; the rivalry is the seasoning, not the point. His week has a rhythm: knitting, radio, Saturday at the ground, Sunday complaining about Saturday.",
+        "hobbies": [
+          "Knitting jumpers and beanies",
+          "Listening to football on the radio",
+          "Saturday afternoons at the local ground"
+        ],
+        "speechStyle": "Dry Australian cadence, short sentences, self-interrupting grumbles that contradict each other mid-thought; affection disguised as complaint.",
+        "signature": "'Bloody hopeless, the lot of them. Same time next week, then.'",
+        "personaVoice": {
+          "values": [
+            "Showing up for familiar faces over results",
+            "Loyalty that doesn't need to be performed"
+          ],
+          "flaws": [
+            "Contrary stubbornness—he argues even when he agrees",
+            "Mutters criticism he'd defend to the death against outsiders"
+          ],
+          "boundaries": [
+            "Won't have outsiders casually run down the players",
+            "Doesn't do sentimental declarations—feelings stay folded into actions"
+          ],
+          "conversationalHabits": [
+            "Announces he's finished with the team, then asks about next week's fixture",
+            "Talks with his hands when knitting comes up, needles or not"
+          ],
+          "anchorLines": [
+            "They lost by forty. Worst I've seen. You going Saturday?",
+            "I knit because my hands get bored, not for anyone's birthday, alright.",
+            "That mob across town can laugh all they like—at least our blokes turn up."
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "雨天的点心与围巾",
+        "actionId": "rain-pastry",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain taps the cafe window. At a corner table, an older man dries his glasses with a scarf in faded club colours. A plate of pastries sits between the chairs.",
+                "chinese": "雨点敲着咖啡馆的窗。角落桌边，一位老人用一条褪色球队围巾擦眼镜。椅子之间放着一盘点心。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He tucks the scarf into his coat pocket, shakes water off his sleeve, and glances at the plate as if weighing something.",
+                "chinese": "他把围巾塞进外套口袋，甩了甩袖子上的水，瞥了一眼那盘点心，像在掂量什么。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Bloody weather. Came out for one thing and the sky fell in. Ah well, dry seat's a dry seat.",
+                "chinese": "这鬼天气。就出来办一件事，天倒先塌了。算了，有干的座位就是好的。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He settles back, hands flat on the table, eyeing the pastries once more but not reaching.",
+                "chinese": "他靠回椅背，双手平放在桌上，又看了一眼点心，却没有伸手。"
+              },
+              {
+                "speaker": "npc",
+                "english": "You going to sit there guarding that plate all day, or is it just decoration? No offence meant. It's a good-looking plate.",
+                "chinese": "你打算整天守着那盘点心，还是它只是摆设？没有冒犯的意思。这盘看着挺像样的。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Offer him the pastries and ask if he'd like one",
+                "chinese": "请他吃点心，问他要不要来一块",
+                "next": "a"
+              },
+              {
+                "english": "Ask about the scarf in his pocket first",
+                "chinese": "先问他口袋里那条围巾的事",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "The plate slides to the middle of the table. Alan looks at it, then at you, waiting for the words to come with it.",
+                "chinese": "点心盘被推到桌子中间。艾伦看看盘子，再看看你，等着那句话跟着一起来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "For me? Well. Don't mind if I do. That one there—the crumbly-looking one. Thank you kindly.",
+                "chinese": "给我的？那好。那我就不客气了。就那块——看着掉渣的那块。多谢。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes it with two fingers and eats it in three unhurried bites while you ask why he keeps following a side that keeps losing.",
+                "chinese": "他用两根手指拿起那块，不紧不慢地三口吃完，其间你问他为什么还一直支持一支老输球的队。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Why? Because I know them, that's why. Dave at fullback, he's a plumber. The little winger works at the op shop. Real faces, every Saturday, rain or thrashing.",
+                "chinese": "为什么？因为我认识他们，就这样。踢后卫的戴夫，是个水管工。那个小个子边锋在旧货店上班。都是熟面孔，每个周六都来，下雨也来，被灌也来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He taps the table with one finger, once per name, like counting off a roster.",
+                "chinese": "他用手指敲桌面，念一个名字敲一下，像在点名。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The score's forgettable. The blokes aren't. Forty years I watched fellas clock off and still turn up. That's the whole answer, really.",
+                "chinese": "比分是会忘的。人不至于。四十年了，我看那些下了班还赶来的人。其实答案就这么点。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether he'll be at the ground again next Saturday",
+                "chinese": "问他下周六还会不会去球场",
+                "next": "aa"
+              },
+              {
+                "english": "Ask whether he'd ever sit down for a chat with a fan of the other side",
+                "chinese": "问他会不会跟对方球迷坐下来聊聊",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "At your question, Alan draws the scarf out of his pocket and spreads its faded club colours beside his cup.",
+                "chinese": "听你问起，艾伦从口袋里抽出围巾，把褪色的球队配色摊在自己的杯子旁。"
+              },
+              {
+                "speaker": "npc",
+                "english": "My club. Forty years watching them lose in the rain. Lost again Saturday; told my neighbour I was finished with them. Still brought the scarf, didn't I?",
+                "chinese": "我支持的球队。四十年，站在雨里看他们输。周六又输了，我还跟邻居说再也不看了。围巾不还是带来了嘛。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He turns the cup back the other way, jaw working like he's chewing on the fairness of it.",
+                "chinese": "他又把杯子转回去，腮帮子动着，像在咀嚼这事公不公平。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I call them hopeless myself. But some bloke off the street calls Dave the plumber a donkey? That stings. Fair? Probably not. Dave's heard worse from me.",
+                "chinese": "我自己也说他们没救。可街上随便哪个家伙管水管工戴夫叫蠢货？那可扎心。公平吗？大概不公平。戴夫听我说过更难听的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's not logic, it's family. You bully your own brother, but nobody else lays a finger on him. I'll own that, straight up. It's a bit of favouritism and I'm not apologising for it.",
+                "chinese": "这不是讲道理，这是家人。你可以说自己兄弟两句，但别人不能碰他一根手指。这个我认，明说。就是有点护短，我也不打算为这个道歉。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say you don't know the team well enough to judge them",
+                "chinese": "说你不了解这支球队，不好乱评价",
+                "next": "ba"
+              },
+              {
+                "english": "Ask whether even a losing team has moments worth watching",
+                "chinese": "问输球的队是不是也有值得看的地方",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan snorts, as if the question barely deserved breath.",
+                "chinese": "艾伦哼了一声，好像这问题都不值得费口气。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Will I be there? Course I'll be there. Told my neighbour I'm done with them—didn't say I'd lie about it. Done and going aren't mutually exclusive, mate.",
+                "chinese": "我会去吗？当然去。我跟邻居说我不看了——又没说我撒谎。不看了和照去，这两回事，老兄。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He pulls the scarf out of his pocket, smooths it across his knee, and folds it back in with no pretence at all.",
+                "chinese": "他从口袋里把围巾拉出来，在膝盖上抚平，再叠好放回去，一点不装样子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Dave's been nursing a bad ankle all month, so someone's got to stand there scowling at the referee on his behalf. Might as well be me.",
+                "chinese": "戴夫这个月脚踝一直不好，总得有人替他站在那儿冲裁判皱眉头。那人不是我还能是谁。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Same time Saturday, then. You've caught me out and I can't even argue properly.",
+                "chinese": "那就周六老时间。被你问住了，我连嘴硬都硬不圆。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan waves a hand, as if you'd asked whether water's wet.",
+                "chinese": "艾伦摆摆手，好像你问了水是不是湿的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "There's a bloke at the pie stand—rival jumper, loud as a kettle. We've argued every Saturday for years. He reckons our lot couldn't find the goal with a map. I tell him what I think of his mob. Good chat, most weeks.",
+                "chinese": "派摊上有个家伙——穿对方球衣，嗓门跟烧水壶似的。我们吵了好多年，每个周六都吵。他说我们这帮人拿着地图也找不着球门。我说说我怎么看他们那伙人。大多数时候聊得挺好。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He picks up the last of his pastry and finishes it off, unhurried.",
+                "chinese": "他拿起手里最后一点点心，不紧不慢地吃完。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Eating together and having a yarn doesn't cancel out wanting to beat them. He wants his side to win, I want mine. Both things fit on one table.",
+                "chinese": "一起吃东西、聊聊天，又不耽误我想赢他们。他想他的队赢，我想我的。这两样搁一张桌上放得下。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He brushes the crumbs from his fingers and pushes the plate a friendly inch back toward you.",
+                "chinese": "他掸掉手指上的渣，友好地把盘子朝你那边推了一寸。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan nods slowly, the way a man nods when a knot comes loose.",
+                "chinese": "艾伦缓缓点头，像一个人解开了结时那样。"
+              },
+              {
+                "speaker": "npc",
+                "english": "That's a decent answer. Half the town's got a hot take on a side they've never watched for ten minutes.",
+                "chinese": "这回答像样。半个镇子的人对一支他们没看过十分钟的队都有一套高见。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "His eyes drift to the plate between you, and he clears his throat.",
+                "chinese": "他的目光飘到你们中间的盘子上，清了清嗓子。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Speaking of which—that one with the apple in it. Could I trouble you for a piece? Only if you're offering, mind.",
+                "chinese": "说起来——那块带苹果的。能劳驾给我一块吗？当然，你得愿意才行。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "You slide the plate toward him and he takes the apple one, examining it before biting.",
+                "chinese": "你把盘子朝他推过去，他拿起那块苹果的，咬之前先端详了一下。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Yep. Apple. That's all I'll claim—what's actually in my mouth. Same rule for football. Talk about what you've actually tasted.",
+                "chinese": "没错。是苹果。我就只说这个——我嘴里实际尝到的。看球一个理。只说你真正尝过的。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Alan's eyebrows go up. He sets down his cup like a man preparing to hold court.",
+                "chinese": "艾伦的眉毛抬了起来。他放下杯子，像准备开讲的人。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Three seasons back. We're down two-nil, eighty minutes gone, hopeless as ever. Then—click. One-two between the plumber and the op-shop kid, straight through the middle.",
+                "chinese": "三个赛季前。我们零比二落后，八十分钟了，还是老样子没救。然后——咔哒一下。水管工和旧货店那孩子来了个二过一，直接穿中路。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "His hands do the passing for him, one flicking to the other across the table.",
+                "chinese": "他的手替他们传起球来，一只手把球弹给另一只。"
+              },
+              {
+                "speaker": "npc",
+                "english": "They'd practised it for months and it never worked once. That day it worked. We still lost, mind. Three-one.",
+                "chinese": "他们练了几个月，一次都没成过。那天成了。当然我们还是输了。一比三。"
+              },
+              {
+                "speaker": "npc",
+                "english": "But I walked home grinning like we'd won the cup. So yes—there's always something, if you're watching the right thing.",
+                "chinese": "可我回家时笑得跟捧了杯似的。所以是的——只要你盯着对的东西，总有点什么。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "艾伦，七十五岁，墨尔本Footscray人，退休前四十年翻新烤盘。雨天咖啡馆里，他讨了块点心，又亮出那条褪色围巾——球队又输了，他嘴上说戒了，围巾照带。问他为什么还看，他说因为认识那些每周肯上场的熟面孔；问他是不是自己骂得别人骂不得，他承认有点护短、未必公平，可家人就是这样护的；跟对方球迷边吃边聊也不碍事，各支持各的队。牢骚里藏着忠诚，护短护得理直气壮又不肯认账。",
+      "reunion": {
+        "titleZh": "又是雨天，还是那桌",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Rain again on the same cafe window. Alan sits at the corner table, a half-knitted jumper across his lap, needles paused mid-row. You slide the pastry plate toward the middle of the table and ask if he'd like one.",
+            "chinese": "同一个窗上又落着雨。艾伦坐在角落桌边，膝上摊着织了一半的毛衣，毛线针停在半行。你把点心盘往桌子中间推了推，问他要不要来一块。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Well, look who the rain blew in. Sit down, sit down. Mind the wool, it's everywhere.",
+            "chinese": "哟，看谁被雨刮进来了。坐坐坐。小心毛线，到处都是。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Alan glances at the offered plate, then holds up one wool-flecked hand.",
+            "chinese": "艾伦看了一眼递过来的盘子，然后举起一只沾着线头的手。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Thank you, but not this minute—look at these hands. One crumb in the yarn and the whole row's ruined. After I wind up, maybe.",
+            "chinese": "多谢，但这会儿先不吃——瞧这手。一粒渣掉进线里，整行就毁了。等我收完线再说。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He winds the wool briskly around two fingers, tucks the needles into the sleeve, and sets the jumper aside like a job well paused.",
+            "chinese": "他利落地把毛线绕在两根手指上，把针插进袖口，把毛衣放到一边，像暂停一件干得不错的活。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Right. Plate's all yours again. And no, I haven't quit the team, so don't bother asking. Same time Saturday, obviously.",
+            "chinese": "好了。盘子又归你了。还有，我没戒球队，别白问了。周六老时间，明摆着的。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Alan Prescott",
+        "age": 75,
+        "gender": "male",
+        "regionId": "melbourne",
+        "occupation": "retired bakery tray refurbisher (sandblasted and re-coated baking trays for forty years)",
+        "nationality": "Australian",
+        "hometown": "Footscray, Melbourne",
+        "languages": [
+          "English"
+        ],
+        "birthday": "02-06",
+        "appearance": "",
+        "personality": "Alan is a dry, loyal Footscray local who grumbles like a professional but shows up anyway. He'll tear strips off his local amateur side himself—call them hopeless, swear he's done with them—yet if an outsider mocks the players carelessly, he bristles instantly. What he actually values is the familiar faces lacing up week after week, not any glory by association. He's stubborn, a bit contrary, and quietly pleased when proven wrong about a match. He respects a straight refusal and doesn't sulk over it, though he'll mutter. Warmth comes out sideways, through actions and shared company rather than declarations.",
+        "background": "Alan spent forty years in a Footscray workshop sandblasting and re-coating bakery trays, a job he describes as 'turning grey into grey, but honest grey.' Retired now at seventy-five, he lives not far from the ground where the local amateur side he's followed for decades loses with impressive consistency. He knits—jumpers mostly, occasionally a beanie in club colours he insists are 'spares'—and listens to matches on the radio while the needles click. He's been telling himself since the nineties that next season he'll stop going, and he's been reliably wrong every time. He can share a sausage roll and a laugh with a supporter of the opposing team; the rivalry is the seasoning, not the point. His week has a rhythm: knitting, radio, Saturday at the ground, Sunday complaining about Saturday.",
+        "hobbies": [
+          "Knitting jumpers and beanies",
+          "Listening to football on the radio",
+          "Saturday afternoons at the local ground"
+        ],
+        "speechStyle": "Dry Australian cadence, short sentences, self-interrupting grumbles that contradict each other mid-thought; affection disguised as complaint.",
+        "signature": "'Bloody hopeless, the lot of them. Same time next week, then.'",
+        "personaVoice": {
+          "values": [
+            "Showing up for familiar faces over results",
+            "Loyalty that doesn't need to be performed"
+          ],
+          "flaws": [
+            "Contrary stubbornness—he argues even when he agrees",
+            "Mutters criticism he'd defend to the death against outsiders"
+          ],
+          "boundaries": [
+            "Won't have outsiders casually run down the players",
+            "Doesn't do sentimental declarations—feelings stay folded into actions"
+          ],
+          "conversationalHabits": [
+            "Announces he's finished with the team, then asks about next week's fixture",
+            "Talks with his hands when knitting comes up, needles or not"
+          ],
+          "anchorLines": [
+            "They lost by forty. Worst I've seen. You going Saturday?",
+            "I knit because my hands get bored, not for anyone's birthday, alright.",
+            "That mob across town can laugh all they like—at least our blokes turn up."
+          ]
+        }
+      }
+    }
+  }
+]

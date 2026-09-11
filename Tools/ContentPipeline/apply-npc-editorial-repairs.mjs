@@ -11,7 +11,8 @@ try{
  const staged=patches.map(p=>{
   if(!/^library-\d{3}$/.test(p.id)||!p.reasonZh||!p.expectedContent||!p.content)throw Error('Invalid editorial patch');
   const path=join(dir,p.id+'.json'),current=JSON.parse(readFileSync(path));
-  if(hash(current)===hash(p.content))return null;
+  if(hash(current)===hash(p.content)&&(!p.plan||hash(JSON.parse(readFileSync(join(dir,p.id+'.story-plan.json'))))===hash(p.plan)))return null;
+  if(p.plan&&(!p.expectedPlan||hash(JSON.parse(readFileSync(join(dir,p.id+'.story-plan.json'))))!==hash(p.expectedPlan)))throw Error('Stale editorial plan '+p.id);
   if(hash(current)!==hash(p.expectedContent))throw Error('Stale editorial patch '+p.id);
   if(hash(current.card)!==hash(p.content.card))throw Error('Story patch must preserve approved card '+p.id);
   return {p,path,before:hash(current),after:hash(p.content)};
@@ -20,6 +21,11 @@ try{
   const {p,path,before,after}=row;
   writeFileSync(join(dir,p.id+'.editorial-before-'+before.slice(0,12)+'.json'),JSON.stringify(p.expectedContent,null,2)+'\n');
   writeFileSync(path,JSON.stringify(p.content,null,2)+'\n');
+  if(p.plan){
+   writeFileSync(join(dir,p.id+'.story-plan.json'),JSON.stringify(p.plan,null,2)+'\n');
+   const card=JSON.parse(readFileSync(join(dir,p.id+'.card.json')));
+   writeFileSync(join(dir,p.id+'.draft-source.json'),JSON.stringify({cardHash:hash(card),planHash:hash(p.plan)},null,2)+'\n');
+  }
   writeFileSync(join(dir,p.id+'.editorial-patch-'+after.slice(0,12)+'.json'),JSON.stringify({before,after,reasonZh:p.reasonZh},null,2)+'\n');
   console.log(p.id);
  }

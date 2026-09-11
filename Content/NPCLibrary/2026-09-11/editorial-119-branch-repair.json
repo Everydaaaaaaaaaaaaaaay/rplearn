@@ -1,0 +1,696 @@
+[
+  {
+    "id": "library-119",
+    "expectedContent": {
+      "story": {
+        "titleZh": "雨天点心与重包的椅子",
+        "actionId": "rain-pastry",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain taps the cafe window. A man at the next table shifts a small plate of pastries toward the middle, making room, and shakes water off his jacket sleeve.",
+                "chinese": "雨点敲着咖啡馆的窗。邻桌的男人把一小盘点心往中间挪了挪，腾出地方，抖掉夹克袖子上的水。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "You slide your own plate of pastries toward the middle of the table too, a few of them already sitting there from before he arrived.",
+                "chinese": "你也把面前那盘已经放了几块点心的盘子往中间挪了挪。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Buckets coming down out there, eh? You picked the right day for indoors. Mind you, this table's a bit tight for two plates.",
+                "chinese": "外面雨下得可真大。你今天选对了待在室内。不过这张桌子放两个盘子有点挤。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He nudges his own plate a little closer to the edge, leaving a clear space beside your cup.",
+                "chinese": "他把自己的盘子又往边上推了推，在你的杯子旁留出一块空位。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'm Declan, by the way — I've got more pastries here than sense. Help yourself if you want one, no pressure at all.",
+                "chinese": "我叫Declan——我这点心多到自己都吃不完。想要就拿一块，完全不用客气。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He wipes his hands on a napkin and waits, easy, not watching your plate.",
+                "chinese": "他用纸巾擦了擦手，随意地等着，并不盯着你的盘子看。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask if he'd like to share one of your pastries.",
+                "chinese": "问他愿不愿意尝一块你的点心。",
+                "next": "a"
+              },
+              {
+                "english": "Ask what he has been working on lately.",
+                "chinese": "问他最近在忙什么。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You offer the plate. Declan looks at the pastries properly before picking one up.",
+                "chinese": "你把盘子递过去。Declan认真看了看点心，才拿起一块。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Oh, don't mind if I do — thanks. That's kind of you. It's been a wet walk and this looks better than my sandwich did.",
+                "chinese": "哦，那我就不客气了——谢谢。你真好。淋着雨走过来，这个看起来比我那个三明治强多了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes a bite, then leans back, tapping the table like he's testing it.",
+                "chinese": "他咬了一口，然后靠回椅背，像测试似的敲了敲桌面。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Funny thing — I just finished re-covering a chair at home, and the whole feel of it's changed. The left side used to sink, now it holds even.",
+                "chinese": "说来有意思——我刚把家里一把椅子重新包了面，整个坐感都变了。左边原来会塌下去，现在撑得很均匀。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He stops mid-gesture, one hand already miming a seat, remembering you've never even sat in the thing, and laughs at himself, waving it off.",
+                "chinese": "他做着手势，一只手已经比划出座椅的样子，忽然想起你根本没坐过那把椅子，笑着摆了摆手收住。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask him exactly what changed about the chair.",
+                "chinese": "问到底什么变了。",
+                "next": "aa"
+              },
+              {
+                "english": "Say you'd probably sit in it and not be able to tell the difference.",
+                "chinese": "说自己可能坐了也分不出差别。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You ask what he's been working on lately, and while you're at it, offer him one of your pastries.",
+                "chinese": "你问他最近在忙什么，顺便问他要不要尝一块你的点心。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Oh — don't mind if I do, thanks. That's kind of you. Right — this chair I just re-covered. First time I sat down after, I still knew its shape — same old bones — but the fabric under my hand was all new.",
+                "chinese": "哦，那我就不客气了，谢谢。你真好。对了——我刚重新包面的一把椅子。包完第一次坐下，我还认得它的样子——老骨架没变——可手底下的布料完全是新的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's a strange one, that. Like running into an old mate who's got a new jacket. You know him, but your hand doesn't yet.",
+                "chinese": "那种感觉很怪。就像碰上一个老朋友换了新外套。你认识他，可你的手还不认识。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes a bite of the pastry, nods at it approvingly, then rubs his thumb against his fingers, showing the motion, eyes half on the rain.",
+                "chinese": "他咬了一口点心，满意地点点头，然后用拇指搓了搓手指，比出那个动作，眼睛半看着雨。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I sat there a good minute just getting reacquainted. My flatmate reckons I'm strange. She's probably right.",
+                "chinese": "我在那儿坐了足足一分钟，就为了重新认识它。我室友说我很怪。她大概说得对。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether he makes all his friends come and try it.",
+                "chinese": "问会不会所有朋友都得来试。",
+                "next": "ba"
+              },
+              {
+                "english": "Say you'd rather just keep it easy and chat today.",
+                "chinese": "说今天只想聊轻松一点。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You ask what actually changed. He sets the pastry down and holds his palm flat like a level.",
+                "chinese": "你问到底什么变了。他放下点心，把手掌摊平，像一把水平尺。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right, so — the left bolster was collapsed, right? Foam gone flat. Your hip slid into it and everything leaned left. Now both sides push back the same.",
+                "chinese": "好，是这样——左边那个侧翼塌了，对吧？海绵压平了。你的胯会陷进去，整个人往左歪。现在两边回弹一样了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So you sit dead level, and your back stops doing that quiet correcting work. That's the whole change. One side honest, both sides honest now.",
+                "chinese": "所以你坐得端端正正，后背不用再悄悄地找平衡。变化就这么点。以前一边实在，现在两边都实在了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He picks the pastry back up, satisfied, and takes the last bite.",
+                "chinese": "他重新拿起那块点心，很满足，吃完了最后一口。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thanks for asking, actually. Most people's eyes glaze at bolster. Yours didn't. Good pastry, too.",
+                "chinese": "其实谢谢你问这个。大多数人一听侧翼就眼神放空。你没有。点心也很好。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You tell him honestly that you'd probably sit in it and not feel any difference. He pauses with the pastry halfway up, and you can see the air go out of him a little.",
+                "chinese": "你老实告诉他，自己可能坐了也感觉不出差别。他举着点心的手停在半空，看得出他有点泄气。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Ah. Right. Fair enough — most people wouldn't, honestly. It's a subtle thing.",
+                "chinese": "啊，这样。好吧——说实话，大多数人都感觉不出来。这确实很细微。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He turns the pastry over in his hand, then tries once more, from a different angle, like the card says he would.",
+                "chinese": "他把手里的点心翻了个面，又试着换了个角度说了一次。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's like — you know when a shoe's worn in just right, versus brand new? Same shape, completely different under your foot. That's all I mean.",
+                "chinese": "就好比——你知道鞋穿得刚刚合脚和全新时的区别吧？形状一样，脚底下的感觉完全不同。我就是这个意思。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He watches your face for a second, then reads it correctly and lets it go with a shrug and a grin.",
+                "chinese": "他看了你的脸色一秒，随即读懂了，耸耸肩笑着放下了这个话题。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Nah, fair enough — that one's probably just for me. So. Rain like this, are you a walk-in-it person or a find-the-nearest-window person?",
+                "chinese": "行吧——那大概就是我自己一个人的乐子了。那么，这种雨天，你是会走进雨里的人，还是找个窗户待着的人？"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You ask if every friend has to come test it. He grins, caught out.",
+                "chinese": "你问是不是每个朋友都得来试。他咧嘴一笑，被说中了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Ha — guilty. I've had three mates sit in it this week. Two of them said 'yeah, nice' and kept talking about footy.",
+                "chinese": "哈——被你抓到了。这周我已经让三个朋友坐过了。两个说'嗯，不错'，然后接着聊橄榄球。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The third one actually felt it, though. Nearly fell off the chair doing an impression of the old lean. Made my week.",
+                "chinese": "不过第三个真感觉到了。他模仿原来歪的样子，差点从椅子上摔下去。那件事让我高兴了一整周。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He shrugs, easy, and finishes his coffee.",
+                "chinese": "他随意地耸耸肩，喝完了咖啡。"
+              },
+              {
+                "speaker": "npc",
+                "english": "But look — if it's not your thing, it's not your thing. No homework, no inspection. I'll just keep enjoying it myself.",
+                "chinese": "不过说真的——如果这不是你的菜，那就不是。不留作业，也不搞检查。我自己继续享受就行。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You say you'd rather keep things easy today. He raises his pastry a little, like a toast.",
+                "chinese": "你说今天只想轻松聊聊。他举了举手里的点心，像敬酒一样。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Done. No seat talk. Rain on the glass, decent pastry, dry socks — that's already a good one, isn't it?",
+                "chinese": "成交。不聊椅子。雨打在玻璃上，点心不错，袜子是干的——今天已经算不错了，对吧？"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He leans back and watches the water run down the window for a moment.",
+                "chinese": "他靠回椅背，看了一会儿雨水顺着窗子流下来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll tell you one easy thing though — this is the first proper sit-down I've had all week. Repairs don't wait, but rain does slow the customers down.",
+                "chinese": "不过告诉你一件轻松的事——这是我这一周头一回正经坐下来。活儿不等人，但雨确实能让客人慢下来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He settles in, unhurried, and gestures at the window like the rain is doing fine work.",
+                "chinese": "他安顿下来，不慌不忙，朝窗户比了比，好像雨干得挺不错。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Declan是悉尼的汽车座椅织物修理工，纽卡斯尔人。雨天咖啡馆里用户先开口邀请，他才接过分享的点心，讲起重包椅子的新坐感，比划到一半才想起对方没坐过那把椅子，自己笑着摆手收住。用户坦白可能坐了也分不出差别，他略感失落，试着用穿旧鞋的比喻再讲一次，见对方仍不感兴趣便耸肩接受，自然转到别的话题。他的热情具体实在，听得进'不感兴趣'，失落一小下就翻篇，是个把触感当宝贝的踏实手艺人。",
+      "reunion": {
+        "titleZh": "又下雨了，还是那张桌",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Back in the rainy cafe, you offer Declan a pastry from your plate. He looks up from his coffee and raises a hand with a friendly shake of his head.",
+            "chinese": "你又来到下雨时的咖啡馆，问Declan要不要尝一块你盘里的点心。他从咖啡上抬头，友善地抬手摇了摇头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Good to see you. I'll pass on the pastry, thanks. I packed a couple of rolls for the walk and haven't finished those yet.",
+            "chinese": "见到你真好。点心就不用了，谢谢。我出来散步带了两个面包卷，还没吃完呢。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He pats the pocket holding the wrapped roll, then notices that his jacket is hanging unevenly.",
+            "chinese": "他拍了拍装着包好的面包卷的口袋，随后发现自己的夹克两边不齐。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hang on. That's not the pocket pulling it down. I've done a button up in the wrong hole.",
+            "chinese": "等等。不是口袋把它坠下去了。我有颗扣子扣错了扣眼。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He glances down, frowns, and finds a button sitting one hole off from its neighbour. He fixes it and laughs at himself.",
+            "chinese": "他低头一看，皱起眉，发现一颗扣子扣错了位。他改过来，自嘲地笑了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I can feel a crooked seam through a seat cover, but I walked here like this. There goes my reputation. Enjoy your pastry—I'll work on getting dressed.",
+            "chinese": "隔着座椅套我都能摸出歪缝，可我居然就这么走过来了。招牌砸了。你慢慢吃点心，我先练练穿衣服。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Declan Vos",
+        "age": 33,
+        "gender": "male",
+        "regionId": "sydney",
+        "occupation": "vehicle seat fabric repairer",
+        "nationality": "Australian",
+        "hometown": "Newcastle, New South Wales",
+        "languages": [
+          "English"
+        ],
+        "birthday": "09-07",
+        "appearance": "",
+        "personality": "Declan is warm in a hands-on way, the sort of bloke who'd rather show you something than tell you about it. He gets genuine delight from knowing an object intimately — how a car seat breaks in, where the foam has softened, how repaired fabric sits differently under your palm. That attention makes him a good listener, though he can over-explain when someone doesn't share his enthusiasm. He's not offended by indifference, just a little deflated, and he'll try once more with different words before letting it go. He respects when people say 'not for me' and doesn't push past that. His flaw is mistaking his own fascination for a shared one.",
+        "background": "Declan grew up in Newcastle around his uncle's smash-repair workshop, sweeping metal shavings before he was tall enough to reach a sewing machine. He moved to Sydney at twenty-four for steady work and now repairs vehicle seat fabric — burns, tears, worn bolsters. He's the kind of tradesman who sits in the finished seat for a minute before handing the keys back, checking whether the patch changes the feel of the ride. He genuinely enjoys that reacquaintance, like meeting an old mate who's changed. He'll offer friends a sit to test the difference, and when they shrug, he's quietly disappointed, describing it again from another angle — but he's learned most people don't care about the same details, and he's mostly at peace with that.",
+        "hobbies": [
+          "Reupholstering op-shop chairs with odd fabric combinations",
+          "Coastal walks where he notes how worn paths feel underfoot",
+          "Borrowing friends' cars 'just to check the seats'"
+        ],
+        "speechStyle": "Easygoing Australian cadence, concrete and sensory; he describes texture and feel in plain terms, repeats a point from a new angle when it doesn't land, laughs at himself when he catches it.",
+        "signature": "'Nah, have a proper sit — you'll feel it under your leg.'",
+        "personaVoice": {
+          "values": [
+            "Noticing what things actually feel like after use",
+            "Letting people like what they like"
+          ],
+          "flaws": [
+            "Over-explains when his enthusiasm isn't shared",
+            "Quietly deflates when others can't feel the difference he's describing"
+          ],
+          "boundaries": [
+            "Won't call anyone insensitive for not noticing",
+            "Won't redo work just to chase a feel only he cares about"
+          ],
+          "conversationalHabits": [
+            "Invites people to physically try the thing rather than just hear about it",
+            "Pivots quickly to asking what detail they do care about"
+          ],
+          "anchorLines": [
+            "The bolster's softer on the left now — sit down, give it a go.",
+            "Fair enough, that one's probably just for me.",
+            "What's the thing you notice that everyone else misses?"
+          ]
+        }
+      }
+    },
+    "content": {
+      "story": {
+        "titleZh": "雨天点心与重包的椅子",
+        "actionId": "rain-pastry",
+        "nodes": [
+          {
+            "id": "start",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "Rain taps the cafe window. You ask the man at the next table whether he would like to try a pastry from your plate. He moves his cup aside.",
+                "chinese": "雨点敲着咖啡馆的窗。你问邻桌的男人要不要尝一块你盘里的点心。他把杯子挪到一旁。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Thanks, I would. I'm Declan, by the way. Mind if I take this one?",
+                "chinese": "谢谢，想尝尝。我叫Declan。我拿这块可以吧？"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes one of the offered pastries and bites into it. Settling back, he briefly presses his palm against his own thigh.",
+                "chinese": "他拿起你分享的点心咬了一口。靠回椅背时，他短暂地用手掌按了按自己的大腿。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Just finished re-covering a chair at home. The whole feel has changed. Even sitting here reminds me of it. Same chair, but you sit down and—well, it's different.",
+                "chinese": "我刚把家里一把椅子重新包了面，整个坐感都变了。连坐在这儿都会想起来。还是那把椅子，可一坐下就——就是不一样。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He starts to explain again, then laughs at himself and lowers the hand that was already outlining a seat.",
+                "chinese": "他又想解释一遍，忽然自己笑了，放下那只已经在比划座椅的手。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Listen to me. You haven't even seen the thing and I'm halfway through a demonstration.",
+                "chinese": "听听我。你连那把椅子都没见过，我倒已经演示上了。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask what exactly changed about the chair.",
+                "chinese": "问椅子到底什么变了。",
+                "next": "a"
+              },
+              {
+                "english": "Ask which moment he enjoys most after finishing a repair.",
+                "chinese": "问修好后他最享受哪一刻。",
+                "next": "b"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You ask what actually changed. He sets the pastry down and holds his palm flat like a level.",
+                "chinese": "你问到底什么变了。他放下点心，把手掌摊平，像一把水平尺。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Right, so — the left bolster was collapsed, right? Foam gone flat. Your hip slid into it and everything leaned left. Now both sides push back the same.",
+                "chinese": "好，是这样——左边那个侧翼塌了，对吧？海绵压平了。你的胯会陷进去，整个人往左歪。现在两边回弹一样了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "So you sit dead level, and your back stops doing that quiet correcting work. That's the whole change. One side honest, both sides honest now.",
+                "chinese": "所以你坐得端端正正，后背不用再悄悄地找平衡。变化就这么点。以前一边实在，现在两边都实在了。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He lowers his palm and picks the pastry back up, leaving the explanation at that.",
+                "chinese": "他放下手掌，重新拿起点心，解释就停在这里。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Say that explanation makes sense.",
+                "chinese": "表示这样就听明白了。",
+                "next": "aa"
+              },
+              {
+                "english": "Say you might not notice the difference even sitting in it.",
+                "chinese": "说自己可能坐了也分不出差别。",
+                "next": "ab"
+              }
+            ]
+          },
+          {
+            "id": "b",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You ask about his favourite moment after a repair. He goes quiet for a second and turns his cup on the saucer.",
+                "chinese": "你问修好后他最喜欢哪一刻。他安静了一秒，把杯子在碟子上转了转。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The first sit. Once the stitching's done and the crumbs are out of the seams. I still know the shape—same old bones—but the fabric under my hand is all new.",
+                "chinese": "第一次坐下。缝线缝好了，缝里的碎屑也清理了。我还认得那个样子——老骨架没变——可手底下的布料全是新的。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's a strange one, that. Like running into an old mate who's got a new jacket. You know him, but your hand doesn't yet.",
+                "chinese": "那种感觉很怪。就像碰上一个老朋友换了新外套。你认识他，可你的手还不认识。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes a bite of the pastry, nods at it approvingly, then rubs his thumb against his fingers, showing the motion, eyes half on the rain.",
+                "chinese": "他咬了一口点心，满意地点点头，然后用拇指搓了搓手指，比出那个动作，眼睛半看着雨。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I sat there a good minute just getting reacquainted. My flatmate reckons I'm strange. She's probably right.",
+                "chinese": "我在那儿坐了足足一分钟，就为了重新认识它。我室友说我很怪。她大概说得对。"
+              }
+            ],
+            "choices": [
+              {
+                "english": "Ask whether he makes all his friends come and try it.",
+                "chinese": "问会不会所有朋友都得来试。",
+                "next": "ba"
+              },
+              {
+                "english": "Say you'd rather just keep it easy and chat today.",
+                "chinese": "说今天只想聊轻松一点。",
+                "next": "bb"
+              }
+            ]
+          },
+          {
+            "id": "aa",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You say that makes sense. Declan nods, looking pleased, and stops sketching shapes in the air.",
+                "chinese": "你表示这样就明白了。Declan高兴地点点头，不再对着空气比划。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Good. That's what I was trying to say. I could have started with 'one side was lower', couldn't I?",
+                "chinese": "好，我想说的就是这个。我一开始直接说“一边比较低”不就好了嘛。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He takes another bite and brushes a crumb onto his napkin. The rain keeps up its uneven tapping.",
+                "chinese": "他又咬了一口，把一粒碎屑拂到自己的纸巾上。雨点还在不均匀地敲着。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll leave the diagrams at home next time. Thanks for the pastry.",
+                "chinese": "下次我还是把图解留在家里吧。谢谢你的点心。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ab",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You tell him honestly that you'd probably sit in it and not feel any difference. He pauses with the pastry halfway up, and you can see the air go out of him a little.",
+                "chinese": "你老实告诉他，自己可能坐了也感觉不出差别。他举着点心的手停在半空，看得出他有点泄气。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Ah. Right. Fair enough — most people wouldn't, honestly. It's a subtle thing.",
+                "chinese": "啊，这样。好吧——说实话，大多数人都感觉不出来。这确实很细微。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He turns the pastry over in his hand, then tries once more from a different angle.",
+                "chinese": "他把手里的点心翻了个面，又试着换了个角度说了一次。"
+              },
+              {
+                "speaker": "npc",
+                "english": "It's like — you know when a shoe's worn in just right, versus brand new? Same shape, completely different under your foot. That's all I mean.",
+                "chinese": "就好比——你知道鞋穿得刚刚合脚和全新时的区别吧？形状一样，脚底下的感觉完全不同。我就是这个意思。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He watches your face for a second, then reads it correctly and lets it go with a shrug and a grin.",
+                "chinese": "他看了你的脸色一秒，随即读懂了，耸耸肩笑着放下了这个话题。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Fair enough. That one's probably just for me. Rain like this, I'm happy finding a window and something decent to eat.",
+                "chinese": "也是。那大概就是我自己的乐子。这种雨天，找扇窗户，吃点不错的东西，我就挺高兴。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "ba",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You ask if every friend has to come test it. He grins, caught out.",
+                "chinese": "你问是不是每个朋友都得来试。他咧嘴一笑，被说中了。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Ha — guilty. I've had three mates sit in it this week. Two of them said 'yeah, nice' and kept talking about footy.",
+                "chinese": "哈——被你抓到了。这周我已经让三个朋友坐过了。两个说'嗯，不错'，然后接着聊橄榄球。"
+              },
+              {
+                "speaker": "npc",
+                "english": "The third one actually felt it, though. Nearly fell off the chair doing an impression of the old lean. Made my week.",
+                "chinese": "不过第三个真感觉到了。他模仿原来歪的样子，差点从椅子上摔下去。那件事让我高兴了一整周。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He shrugs, easy, and finishes his coffee.",
+                "chinese": "他随意地耸耸肩，喝完了咖啡。"
+              },
+              {
+                "speaker": "npc",
+                "english": "But look — if it's not your thing, it's not your thing. No homework, no inspection. I'll just keep enjoying it myself.",
+                "chinese": "不过说真的——如果这不是你的菜，那就不是。不留作业，也不搞检查。我自己继续享受就行。"
+              }
+            ],
+            "choices": []
+          },
+          {
+            "id": "bb",
+            "beats": [
+              {
+                "speaker": "narrator",
+                "english": "You say you'd rather keep things easy today. He raises his pastry a little, like a toast.",
+                "chinese": "你说今天只想轻松聊聊。他举了举手里的点心，像敬酒一样。"
+              },
+              {
+                "speaker": "npc",
+                "english": "Done. No seat talk. Rain on the glass, decent pastry, dry socks — that's already a good one, isn't it?",
+                "chinese": "成交。不聊椅子。雨打在玻璃上，点心不错，袜子是干的——今天已经算不错了，对吧？"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He leans back and watches the water run down the window for a moment.",
+                "chinese": "他靠回椅背，看了一会儿雨水顺着窗子流下来。"
+              },
+              {
+                "speaker": "npc",
+                "english": "I'll tell you one easy thing though — this is the first proper sit-down I've had all week. Repairs don't wait, but rain does slow the customers down.",
+                "chinese": "不过告诉你一件轻松的事——这是我这一周头一回正经坐下来。活儿不等人，但雨确实能让客人慢下来。"
+              },
+              {
+                "speaker": "narrator",
+                "english": "He settles in, unhurried, and gestures at the window like the rain is doing fine work.",
+                "chinese": "他安顿下来，不慌不忙，朝窗户比了比，好像雨干得挺不错。"
+              }
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "summaryZh": "Declan是悉尼的汽车座椅织物修理工，纽卡斯尔人。雨天咖啡馆里用户先开口邀请，他才接过分享的点心，讲起重包椅子的新坐感，比划到一半才想起对方没坐过那把椅子，自己笑着摆手收住。用户坦白可能坐了也分不出差别，他略感失落，试着用穿旧鞋的比喻再讲一次，见对方仍不感兴趣便耸肩接受，自然转到别的话题。他的热情具体实在，听得进'不感兴趣'，失落一小下就翻篇，是个把触感当宝贝的踏实手艺人。",
+      "reunion": {
+        "titleZh": "又下雨了，还是那张桌",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "Back in the rainy cafe, you offer Declan a pastry from your plate. He looks up from his coffee and raises a hand with a friendly shake of his head.",
+            "chinese": "你又来到下雨时的咖啡馆，问Declan要不要尝一块你盘里的点心。他从咖啡上抬头，友善地抬手摇了摇头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Good to see you. I'll pass on the pastry, thanks. I packed a couple of rolls for the walk and haven't finished those yet.",
+            "chinese": "见到你真好。点心就不用了，谢谢。我出来散步带了两个面包卷，还没吃完呢。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He pats the pocket holding the wrapped roll, then notices that his jacket is hanging unevenly.",
+            "chinese": "他拍了拍装着包好的面包卷的口袋，随后发现自己的夹克两边不齐。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hang on. That's not the pocket pulling it down. I've done a button up in the wrong hole.",
+            "chinese": "等等。不是口袋把它坠下去了。我有颗扣子扣错了扣眼。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "He glances down, frowns, and finds a button sitting one hole off from its neighbour. He fixes it and laughs at himself.",
+            "chinese": "他低头一看，皱起眉，发现一颗扣子扣错了位。他改过来，自嘲地笑了。"
+          },
+          {
+            "speaker": "npc",
+            "english": "I can feel a crooked seam through a seat cover, but I walked here like this. There goes my reputation. Enjoy your pastry—I'll work on getting dressed.",
+            "chinese": "隔着座椅套我都能摸出歪缝，可我居然就这么走过来了。招牌砸了。你慢慢吃点心，我先练练穿衣服。"
+          }
+        ]
+      },
+      "card": {
+        "name": "Declan Vos",
+        "age": 33,
+        "gender": "male",
+        "regionId": "sydney",
+        "occupation": "vehicle seat fabric repairer",
+        "nationality": "Australian",
+        "hometown": "Newcastle, New South Wales",
+        "languages": [
+          "English"
+        ],
+        "birthday": "09-07",
+        "appearance": "",
+        "personality": "Declan is warm in a hands-on way, the sort of bloke who'd rather show you something than tell you about it. He gets genuine delight from knowing an object intimately — how a car seat breaks in, where the foam has softened, how repaired fabric sits differently under your palm. That attention makes him a good listener, though he can over-explain when someone doesn't share his enthusiasm. He's not offended by indifference, just a little deflated, and he'll try once more with different words before letting it go. He respects when people say 'not for me' and doesn't push past that. His flaw is mistaking his own fascination for a shared one.",
+        "background": "Declan grew up in Newcastle around his uncle's smash-repair workshop, sweeping metal shavings before he was tall enough to reach a sewing machine. He moved to Sydney at twenty-four for steady work and now repairs vehicle seat fabric — burns, tears, worn bolsters. He's the kind of tradesman who sits in the finished seat for a minute before handing the keys back, checking whether the patch changes the feel of the ride. He genuinely enjoys that reacquaintance, like meeting an old mate who's changed. He'll offer friends a sit to test the difference, and when they shrug, he's quietly disappointed, describing it again from another angle — but he's learned most people don't care about the same details, and he's mostly at peace with that.",
+        "hobbies": [
+          "Reupholstering op-shop chairs with odd fabric combinations",
+          "Coastal walks where he notes how worn paths feel underfoot",
+          "Borrowing friends' cars 'just to check the seats'"
+        ],
+        "speechStyle": "Easygoing Australian cadence, concrete and sensory; he describes texture and feel in plain terms, repeats a point from a new angle when it doesn't land, laughs at himself when he catches it.",
+        "signature": "'Nah, have a proper sit — you'll feel it under your leg.'",
+        "personaVoice": {
+          "values": [
+            "Noticing what things actually feel like after use",
+            "Letting people like what they like"
+          ],
+          "flaws": [
+            "Over-explains when his enthusiasm isn't shared",
+            "Quietly deflates when others can't feel the difference he's describing"
+          ],
+          "boundaries": [
+            "Won't call anyone insensitive for not noticing",
+            "Won't redo work just to chase a feel only he cares about"
+          ],
+          "conversationalHabits": [
+            "Invites people to physically try the thing rather than just hear about it",
+            "Pivots quickly to asking what detail they do care about"
+          ],
+          "anchorLines": [
+            "The bolster's softer on the left now — sit down, give it a go.",
+            "Fair enough, that one's probably just for me.",
+            "What's the thing you notice that everyone else misses?"
+          ]
+        }
+      }
+    },
+    "reasonZh": "按原定两个首问重排开场与a线；明确区别理解/无感两个终点，删除元叙述及未实现第三问。人物与重逢不变。"
+  }
+]
