@@ -51,18 +51,11 @@ extension ChatView {
                 }
             }
         } label: {
-            BrandMascotView(pose: persona.pose, size: 30, showsShadow: false)
-                .scaleEffect(isExpanded ? 1.06 : 1)
-                .frame(width: 36, height: 36)
-                .background {
-                    RoundedRectangle(cornerRadius: 13, style: .continuous)
-                        .fill(isExpanded ? Color.dsCoach.opacity(0.14) : Color.dsSurface)
-                        .shadow(color: Color.dsCoach.opacity(0.18), radius: 4, y: 2)
-                }
-                .overlay {
-                    RoundedRectangle(cornerRadius: 13, style: .continuous)
-                        .stroke(Color.dsCoach.opacity(isExpanded ? 0.55 : 0.3), lineWidth: 1)
-                }
+            Image(systemName: isExpanded ? "text.bubble.fill" : "text.bubble")
+                .font(.system(size: 18, weight: .medium))
+                .foregroundStyle(Color.dsSky)
+                .frame(width: 32, height: 32)
+                .background(Color.dsSky.opacity(isExpanded ? 0.16 : 0.08), in: Circle())
                 .frame(width: 44, height: 44)
                 .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 .animation(DSAnimation.snappy, value: isExpanded)

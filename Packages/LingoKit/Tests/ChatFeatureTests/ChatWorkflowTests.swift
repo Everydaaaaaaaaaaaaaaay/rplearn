@@ -63,6 +63,7 @@ struct ChatWorkflowTests {
         }
 
         func tasks() -> [LLMTask] { requestedTasks }
+        func setResponse(_ text: String) { response = text }
     }
     private struct SilentSpeech: SpeechService {
         func speak(_ request: SpeechRequest) async {}
@@ -319,13 +320,39 @@ struct ChatWorkflowTests {
 
     @Test("空模型输出不能当作成功回复")
     func emptyReplyShowsFailure() async throws {
-        let f = try await fixture(Provider(response: ""))
+        let provider = Provider(response: "")
+        let f = try await fixture(provider)
         f.model.draft = "Hello."
         await f.model.sendDraft()
         try await settle(f.model)
         #expect(f.model.errorMessage != nil)
         #expect(f.model.messages.filter { $0.role == .user }.count == 1)
         #expect(f.model.messages.filter { $0.role == .assistant }.isEmpty)
+        let calls = await provider.tasks().count
+        let reopened = await f.reopen()
+        try await Task.sleep(for: .milliseconds(80))
+        #expect(await provider.tasks().count == calls)
+        #expect(reopened.canRetryUnansweredReply)
+        await provider.setResponse("Hi, I'm here now.")
+        reopened.retryUnansweredReply()
+        try await settle(reopened)
+        #expect(reopened.messages.contains { $0.role == .assistant })
+        #expect(!reopened.canRetryUnansweredReply)
+    }
+
+    @Test("电话空回复结束后，重新进入不会把转写自动重发")
+    func realtimeFailureDoesNotAutoResend() async throws {
+        let provider = Provider(response: "")
+        let f = try await fixture(provider)
+        let stream = try await f.model.realtimeReplyStream(userText: "Hello")
+        await #expect(throws: LLMError.emptyResponse) {
+            for try await _ in stream {}
+        }
+        let reopened = await f.reopen()
+        try await Task.sleep(for: .milliseconds(80))
+        #expect(await provider.tasks().filter { $0 == .conversation }.count == 1)
+        #expect(reopened.canRetryUnansweredReply)
+        #expect(reopened.messages.last?.text == "Hello")
     }
 
     @Test("流式断网保留已收到文字和中断标记，重新进入仍可见")

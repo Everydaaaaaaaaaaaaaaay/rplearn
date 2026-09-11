@@ -435,6 +435,14 @@ public actor ChatStore {
     }
 
     /// 更新消息文本（流式增量写入 / 结束时定稿）。
+    /// 用户消息的中断标记表示已尝试回复，重新打开页面不得自动重发付费请求。
+    public func setReplyInterrupted(userMessageID: UUID, interrupted: Bool) throws {
+        guard let message = try fetchMessage(id: userMessageID), message.roleRaw == MessageRole.user.rawValue else { return }
+        message.isInterrupted = interrupted
+        try journal(message)
+        try modelContext.save()
+    }
+
     public func updateMessageText(messageID: UUID, text: String, isInterrupted: Bool = false, tokenEstimate: Int? = nil) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.text = text

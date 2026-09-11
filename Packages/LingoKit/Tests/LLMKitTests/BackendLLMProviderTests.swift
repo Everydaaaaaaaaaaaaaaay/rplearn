@@ -151,6 +151,17 @@ struct BackendLLMProviderTests {
         }
     }
 
+    @Test("空正文错误不会触发客户端自动重试")
+    func emptyResponseIsTerminal() async {
+        let client = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: GuestCredentials(), transport: QuotaTransport(code: "AI_EMPTY_RESPONSE", message: "模型未返回正文"))
+        let provider = BackendLLMProvider(backend: client, guestID: "guest-empty-response-fixture")
+        await #expect(throws: LLMError.emptyResponse) {
+            _ = try await provider.complete(LLMRequest(task: .conversation, tier: .fast, messages: [.user("Hello")]))
+        }
+        #expect(!LLMRouter.isRetryable(LLMError.emptyResponse))
+    }
+
     @Test("automatic helper budget exhaustion is a terminal silent-degrade signal")
     func auxiliaryBudget() async {
         let client = BackendClient(

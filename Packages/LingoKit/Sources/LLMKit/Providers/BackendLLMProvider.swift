@@ -199,6 +199,7 @@ public struct BackendLLMProvider: LLMProvider {
                                     StreamFailure.self,
                                     from: Data(event.data.utf8)
                                 )
+                                if failure.code == "AI_EMPTY_RESPONSE" { throw LLMError.emptyResponse }
                                 throw LLMError.http(
                                     status: failure.retryable ? 503 : 400,
                                     message: failure.code
@@ -305,6 +306,7 @@ public struct BackendLLMProvider: LLMProvider {
         if ["AUXILIARY_BUDGET_EXHAUSTED", "CREDITS_EXHAUSTED", "OPERATION_FINALIZED", "USAGE_QUOTA_EXCEEDED", "VOICE_LEASE_EXPIRED", "LOGIN_REQUIRED", "GUEST_ALREADY_CLAIMED"].contains(backendError.code ?? "") {
             return LLMError.accessRestricted(backendError.errorDescription ?? "当前额度已用完，请查看用量与权益。")
         }
+        if backendError.code == "AI_EMPTY_RESPONSE" { return LLMError.emptyResponse }
         switch backendError {
         case .api(_, _, _, let status):
             return LLMError.http(

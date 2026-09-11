@@ -53,6 +53,74 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         await runtime.database.sql`delete from app.users where id=${id}`;
       await runtime.close();
     });
+    it.each([false, true])(
+      "empty output is a failed, service-funded operation (stream=%s)",
+      async (streaming) => {
+        const user = await actor();
+        const config = loadConfig({
+          ...process.env,
+          NODE_ENV: "test",
+          DEEPSEEK_API_KEY: "test",
+        });
+        const provider = createDeepSeekClient(config, () =>
+          Promise.resolve(
+            streaming
+              ? new Response(
+                  'data: {"id":"empty","model":"deepseek-v4-flash","choices":[{"delta":{"content":""}}]}\n\ndata: {"choices":[],"usage":{"prompt_tokens":100,"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":100,"completion_tokens":120,"total_tokens":220}}\n\ndata: [DONE]\n\n',
+                )
+              : Response.json({
+                  id: "empty",
+                  model: req.model,
+                  choices: [{ message: { content: "" } }],
+                  usage: {
+                    prompt_tokens: 100,
+                    prompt_cache_hit_tokens: 0,
+                    prompt_cache_miss_tokens: 100,
+                    completion_tokens: 120,
+                    total_tokens: 220,
+                  },
+                }),
+          ),
+        );
+        const ai = createAiService(
+          config,
+          runtime.database,
+          runtime.redis,
+          createBillingService(runtime.database),
+          provider,
+        );
+        const operationId = newEntityId();
+        const input = {
+          task: "conversation",
+          operationId,
+          messages: req.messages,
+          responseFormat: "text" as const,
+        };
+        await expect(
+          (async () => {
+            if (!streaming) return ai.complete(user, input);
+            const response = await ai.stream(user, input);
+            for await (const event of response.events)
+              expect(event.type).not.toBe("done");
+            return undefined;
+          })(),
+        ).rejects.toMatchObject({ code: "AI_EMPTY_RESPONSE" });
+        expect((await credits.snapshot(user)).remaining).toBe(100);
+        const [row] = await runtime.database
+          .sql`select billing_scope,status,reason,settled_units::text, result from app.credit_operations where user_id=${user} and operation_id=${operationId}`;
+        expect(row).toMatchObject({
+          billing_scope: "service",
+          status: "settled",
+          reason: "AI_EMPTY_RESPONSE",
+          result: null,
+        });
+        expect(Number(row?.settled_units)).toBeGreaterThan(0);
+        await expect(ai.complete(user, input)).rejects.toMatchObject({
+          code: "OPERATION_FINALIZED",
+        });
+      },
+    );
+
     it("serializes competing requests and never dispatches a replay", async () => {
       const user = await actor(),
         ids = Array.from({ length: 8 }, () => newEntityId());

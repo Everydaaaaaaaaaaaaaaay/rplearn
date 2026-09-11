@@ -1,3 +1,4 @@
+import { outputTokenBudget } from "../../../src/modules/ai/output-budget.js";
 import { describe, expect, it, vi } from "vitest";
 import { loadConfig } from "../../../src/config/env.js";
 import { createOpenRouterClient } from "../../../src/modules/ai/openrouter/client.js";
@@ -73,6 +74,38 @@ describe("OpenRouter client", () => {
     expect(ids[1]).toBe(ids[0]);
     expect(new Set(ids).size).toBe(4);
     expect(ids[0]).not.toContain(base.userReference);
+  });
+
+  it("uses minimal GLM thinking with enough budget for a visible reply", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockImplementation(() =>
+      Promise.resolve(
+        Response.json({
+          choices: [{ message: { content: "Hi" } }],
+          model: "z-ai/glm-5.3-flash",
+          usage: { prompt_tokens: 5, completion_tokens: 1, total_tokens: 6 },
+        }),
+      ),
+    );
+    const glmRoute = {
+      ...route,
+      task: "conversation" as const,
+      model: "z-ai/glm-5.3-flash",
+    };
+    expect(outputTokenBudget(120, glmRoute)).toBe(512);
+    expect(outputTokenBudget(700, glmRoute)).toBe(700);
+    expect(outputTokenBudget(120, { ...glmRoute, maxOutputTokens: 256 })).toBe(256);
+    expect(outputTokenBudget(120, route)).toBe(120);
+    const client = createOpenRouterClient(config(), fetchMock);
+    await client.complete({
+      ...request(),
+      route: { ...route, task: "conversation", model: "z-ai/glm-5.3-flash" },
+    });
+    const body = fetchMock.mock.calls[0]?.[1]?.body;
+    if (typeof body !== "string") throw new Error("missing body");
+    expect(JSON.parse(body)).toMatchObject({
+      reasoning: { effort: "minimal" },
+      max_tokens: 700,
+    });
   });
 
   it("loads and normalizes the public model catalog", async () => {

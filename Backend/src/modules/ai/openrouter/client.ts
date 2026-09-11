@@ -119,6 +119,11 @@ function protocolError(cause?: unknown): AppError {
 function requestBody(request: AiProviderRequest, stream: boolean): unknown {
   return {
     ...request.route.providerOptions,
+    // GLM requires reasoning; use its lowest effort for short conversational replies.
+    ...(request.route.task === "conversation" &&
+    request.route.model.startsWith("z-ai/glm-")
+      ? { reasoning: { effort: "minimal" } }
+      : {}),
     // Opaque, stable per user/task/model. Dynamic opening messages must not move
     // an ongoing workflow between providers and discard a warm prefix cache.
     session_id: createHash("sha256")

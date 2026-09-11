@@ -342,6 +342,13 @@ public struct ChatView: View {
                                 .background(.regularMaterial, in: Capsule())
                                 .padding(.top, 8)
                         }
+                        if viewModel.canRetryUnansweredReply {
+                            Button("重试回复", systemImage: "arrow.clockwise") {
+                                viewModel.retryUnansweredReply()
+                            }
+                            .font(.footnote.weight(.semibold))
+                            .padding(.vertical, 8)
+                        }
                         Color.clear
                             .frame(height: 1)
                             .id("conversation-bottom")

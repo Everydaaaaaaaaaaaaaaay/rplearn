@@ -1,4 +1,5 @@
 import { createHash, createHmac, randomUUID } from "node:crypto";
+import { outputTokenBudget } from "./output-budget.js";
 import type { RuntimeConfig } from "../../config/env.js";
 import type { DatabaseResource } from "../../db/client.js";
 import type { RedisResource } from "../../infrastructure/redis/client.js";
@@ -109,10 +110,7 @@ function validateInput(
   }
   return {
     inputCharacters,
-    maxOutputTokens: Math.min(
-      input.maxOutputTokens ?? route.maxOutputTokens,
-      route.maxOutputTokens,
-    ),
+    maxOutputTokens: outputTokenBudget(input.maxOutputTokens, route),
   };
 }
 
@@ -332,6 +330,30 @@ export function createAiService(
         );
         throw error;
       }
+      if (!completion.content.trim()) {
+        const error = new AppError({
+          code: "AI_EMPTY_RESPONSE",
+          message: "模型未返回正文，请重试。",
+          statusCode: 502,
+        });
+        await credits.finish(
+          userId,
+          prepared.operationId,
+          completion.usage,
+          null,
+          completion.providerRequestId,
+          completion.model,
+          error.code,
+        );
+        await repository.fail(
+          userId,
+          prepared.requestId,
+          prepared.startedAt,
+          error.code,
+          false,
+        );
+        throw error;
+      }
       await credits.finish(
         userId,
         prepared.operationId,
@@ -415,6 +437,12 @@ export function createAiService(
               throw new AppError({
                 code: "AI_UPSTREAM_PROTOCOL_ERROR",
                 message: "模型响应意外中断。",
+                statusCode: 502,
+              });
+            if (!content.trim())
+              throw new AppError({
+                code: "AI_EMPTY_RESPONSE",
+                message: "模型未返回正文，请重试。",
                 statusCode: 502,
               });
             await credits.finish(

@@ -371,6 +371,7 @@ export function createCreditService(
               ? "released"
               : "pending";
         await sql`update app.credit_operations set status=${status},settled_units=${cost === null ? null : String(cost)},
+        billing_scope=case when ${reason}='AI_EMPTY_RESPONSE' then 'service' else billing_scope end,
         usage=${JSON.stringify(usage)}::jsonb,result=${JSON.stringify(result)}::jsonb,provider_request_id=${providerRequestId},
         reason=${reason ?? (cost !== null ? null : usage === null ? "usage_missing" : !creditModelMatches(row.price, model) && row.price.provider !== "openrouter" ? "model_mismatch" : "usage_invalid")},completed_at=now()
         where user_id=${userId} and operation_id=${operationId}`;

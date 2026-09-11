@@ -194,6 +194,7 @@ public final class ChatViewModel {
             text: text,
             tokenEstimate: TokenEstimator.estimate(text)
         )
+        try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
         notifyConversationChanged()
@@ -207,12 +208,15 @@ public final class ChatViewModel {
             let task = Task { [weak self] in
                 defer { self?.runInteractionReview(for: userMessage, source: .voiceChat) }
                 do {
+                    var receivedText = false
                     for try await event in upstream {
                         try Task.checkCancellation()
                         if case .textDelta(let delta) = event, !delta.isEmpty {
+                            if !delta.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { receivedText = true }
                             continuation.yield(delta)
                         }
                     }
+                    guard receivedText else { throw LLMError.emptyResponse }
                     continuation.finish()
                 } catch {
                     continuation.finish(throwing: error)
@@ -421,12 +425,26 @@ public final class ChatViewModel {
         }
     }
 
+    public var canRetryUnansweredReply: Bool {
+        !isStreaming && !isWaitingForUserBurst && messages.last?.role == .user
+            && messages.last?.isInterrupted == true
+    }
+
+    public func retryUnansweredReply() {
+        guard canRetryUnansweredReply, let latest = messages.last else { return }
+        scheduleAssistantReply(after: latest.text, preferredDelay: 0.45, userMessage: latest)
+    }
+
     private func resumePendingReplyIfNeeded() {
         guard replyTask == nil,
               conversation?.isArchived == false,
               let latest = messages.last,
               latest.role == .user
         else { return }
+        guard !latest.isInterrupted else {
+            errorMessage = "上次回复未完成，点重试继续。"
+            return
+        }
         scheduleAssistantReply(
             after: latest.text,
             userMessage: latest
@@ -556,6 +574,8 @@ public final class ChatViewModel {
 
         var accumulated = ""
         do {
+            try await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true)
+            await reloadMessages()
             for try await event in await deps.llm.stream(request) {
                 try Task.checkCancellation()
                 guard cycleID == replyCycleID else { throw CancellationError() }
@@ -568,7 +588,7 @@ public final class ChatViewModel {
         } catch {
             guard cycleID == replyCycleID else { return }
             Log.llm.error("流式回复失败：\(error)")
-            if accumulated.isEmpty {
+            if accumulated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 errorMessage = ChatErrorPresentation.assistantReply(error)
             } else {
                 // 已收增量落库并标记中断，气泡上提供重试。
@@ -584,7 +604,7 @@ public final class ChatViewModel {
         }
 
         guard !accumulated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            errorMessage = "暂时没有收到回复，请重试。"
+            errorMessage = "暂时没有收到回复，请点重试。"
             return
         }
 
@@ -690,6 +710,7 @@ public final class ChatViewModel {
                 try await deps.chatStore.deleteMessage(messageID: replacedMessageID)
                 messages.removeAll { $0.id == replacedMessageID }
             }
+            try? await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: false)
             // 小测与点评共用后台请求，失败不追加调用，也不阻断已完成的回复。
             if quizRequested {
                 try? await deps.chatStore.resetQuizCounter(conversationID: conversation.id)
