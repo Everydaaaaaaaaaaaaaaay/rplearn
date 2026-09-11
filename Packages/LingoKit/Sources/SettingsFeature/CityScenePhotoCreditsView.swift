@@ -48,10 +48,40 @@ public struct CityScenePhotoCreditsView: View {
         credit("金斯敦", "联系人页", "Avda", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Bob_Marley_-_Statue_-_Kingston_-_Jamaica.jpg"),
     ]
 
+    private static let journeyCredits: [Credit] = [
+        credit("伦敦", "十五城相遇影片", "Anh Nguyen", "Pexels License", "https://www.pexels.com/video/35286695/"),
+        credit("墨尔本", "十五城相遇影片", "Camilo Rodriguez", "Pexels License", "https://www.pexels.com/video/30331414/"),
+        credit("纽约", "十五城相遇影片", "Emre Yurttakalın", "Pexels License", "https://www.pexels.com/video/28608250/"),
+        credit("开普敦", "十五城相遇影片", "Benjamin Sprankle", "Pexels License", "https://www.pexels.com/video/29801279/"),
+        credit("新加坡", "十五城相遇影片", "Vasilis Karkalas", "Pexels License", "https://www.pexels.com/video/37147087/"),
+        credit("都柏林", "十五城相遇影片", "Flávio Nascimento", "Pexels License", "https://www.pexels.com/video/29478528/"),
+        credit("爱丁堡", "十五城相遇影片", "Mateusz Max Maksiak", "Pexels License", "https://www.pexels.com/video/38682240/"),
+        credit("温哥华", "十五城相遇影片", "The Six", "Pexels License", "https://www.pexels.com/video/33290794/"),
+        credit("奥克兰", "Piha Beach Walkthrough Music Video 4K60", "Beautiful New Zealand Scenery", "CC Attribution (YouTube)", "https://www.youtube.com/watch?v=gi_vNfIpXKU"),
+        credit("内罗毕", "十五城相遇影片", "Ken Mwaura", "Pexels License", "https://www.pexels.com/video/29069413/"),
+        credit("多伦多", "十五城相遇影片", "Numan Gilgil", "Pexels License", "https://www.pexels.com/video/29904667/"),
+        credit("悉尼", "十五城相遇影片", "Ben Prater", "Pexels License", "https://www.pexels.com/video/36427881/"),
+        credit("新奥尔良", "十五城相遇影片", "Ahmed Ari", "Pexels License", "https://www.pexels.com/video/13107072/"),
+        credit("曼彻斯特", "十五城相遇影片", "Declan Conor", "Pexels License", "https://www.pexels.com/video/25839532/"),
+        credit("金斯敦", "UWI (Mona) gardens and Ruins", "Spicy_FPV_Jamaica", "CC Attribution (YouTube)", "https://www.youtube.com/watch?v=OtiXjWrmNvo"),
+    ]
+
     public init() {}
 
     public var body: some View {
         List {
+            Section("十五城 · 相遇影片") {
+                Text("各城真实摄影，经选段、竖屏裁切、缩放及无声编码。每城一秒；并非实时画面。")
+                    .font(.footnote).foregroundStyle(.secondary)
+                ForEach(Self.journeyCredits) { credit in
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(credit.city).font(.caption).foregroundStyle(.secondary)
+                        creditRow(credit)
+                    }
+                }
+                Link("Pexels License", destination: URL(string: "https://www.pexels.com/license/")!)
+                Link("YouTube 知识共享署名许可说明", destination: URL(string: "https://support.google.com/youtube/answer/2797468")!)
+            }
             Section("城市活动 · 街角咖啡馆") {
                 Text("室内为 AI 情景美术，窗外为加工后的素材画面；并非当前城市实拍或实时影像。视频路人不代表可互动角色。")
                     .font(.footnote).foregroundStyle(.secondary)
@@ -73,7 +103,7 @@ public struct CityScenePhotoCreditsView: View {
             citySections
             licenseSection
         }
-        .navigationTitle("城市背景照片")
+        .navigationTitle("影像来源与许可")
         .navigationBarTitleDisplayMode(.inline)
     }
 

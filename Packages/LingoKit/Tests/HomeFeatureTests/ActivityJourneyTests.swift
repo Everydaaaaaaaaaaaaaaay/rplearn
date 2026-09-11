@@ -1,9 +1,51 @@
+import AVFoundation
 import XCTest
 import UIKit
 import PersistenceKit
 @testable import HomeFeature
 
 final class ActivityJourneyTests: XCTestCase {
+    func testBundledJourneyContainsFifteenDecodableSeconds() async throws {
+        struct Manifest: Decodable {
+            let movie: String
+            let cities: [String]
+            let names: [String: String]
+        }
+        let manifestURL = try XCTUnwrap(Bundle.main.url(forResource: "encounter-journey", withExtension: "json"))
+        let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: manifestURL))
+        let expected = Set(["london", "melbourne", "newyork", "capetown", "singapore", "dublin",
+                            "edinburgh", "vancouver", "auckland", "nairobi", "toronto", "sydney",
+                            "neworleans", "manchester", "kingston"])
+        XCTAssertEqual(manifest.cities.count, 15)
+        XCTAssertEqual(Set(manifest.cities), expected)
+        XCTAssertEqual(Set(manifest.names.keys), expected)
+        let url = try XCTUnwrap(Bundle.main.url(forResource: manifest.movie, withExtension: "mp4"))
+        let asset = AVURLAsset(url: url)
+        let duration = try await asset.load(.duration)
+        XCTAssertEqual(duration.seconds, 15, accuracy: 0.001)
+        let tracks = try await asset.loadTracks(withMediaType: .video)
+        let track = try XCTUnwrap(tracks.first)
+        let rate = try await track.load(.nominalFrameRate)
+        XCTAssertEqual(rate, 60)
+        let audio = try await asset.loadTracks(withMediaType: .audio)
+        XCTAssertTrue(audio.isEmpty)
+        let reader = try AVAssetReader(asset: asset)
+        let output = AVAssetReaderTrackOutput(track: track, outputSettings: [
+            kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA
+        ])
+        reader.add(output)
+        XCTAssertTrue(reader.startReading())
+        var frames = 0
+        while let sample = output.copyNextSampleBuffer() {
+            XCTAssertNotNil(CMSampleBufferGetImageBuffer(sample))
+            XCTAssertEqual(CMSampleBufferGetPresentationTimeStamp(sample).seconds,
+                           Double(frames) / 60, accuracy: 0.001)
+            frames += 1
+        }
+        XCTAssertEqual(reader.status, .completed)
+        XCTAssertEqual(frames, 900)
+    }
+
     func testScenePostersAndForegroundsKeepTheirAuthoredPixels() throws {
         let expectedPosters: [ActivitySceneID: CGSize] = [
             .park: CGSize(width: 852, height: 1108),

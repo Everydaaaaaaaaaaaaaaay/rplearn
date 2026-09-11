@@ -10,8 +10,8 @@
   旧图已退回替换；[旧图复核](home-city-scene-realism-audit-2026-09-10.md)保留历史问题。
 - 活动公园/池畔/雨天咖啡馆：最新为 [v5](../Assets/Activities/RealMotion-v5/acceptance-v5.md)，
   状态仍为待证实，完整原速连续视觉审看未完成；v4 不再是当前版。
-- 十五城相遇过渡影像：见 [v2 来源记录](../Assets/Activities/EncounterJourney/acceptance-v2.md)，
-  候选尚未放行，未安装正式运行影片。
+- 十五城相遇过渡影像：见 [v5 完整候选记录](../Assets/Activities/EncounterJourney/acceptance-v5.md)，
+  十五城影片已合成并通过用户预览验收，App 解码、标准屏及小屏验证通过，已局域网安装；证据及未测范围见记录。
 
 以上是已有记录的索引，本次文档修改不新增视觉验收或关闭任何问题。
 
