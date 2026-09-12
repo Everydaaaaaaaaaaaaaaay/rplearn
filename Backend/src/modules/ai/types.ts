@@ -65,6 +65,7 @@ export type AiProviderClient = Readonly<{
 }>;
 
 export type AiCompletion = Readonly<{
+  finishReason?: string;
   content: string;
   model: string;
   providerRequestId: string | null;

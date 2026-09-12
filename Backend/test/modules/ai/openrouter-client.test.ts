@@ -95,17 +95,70 @@ describe("OpenRouter client", () => {
     expect(outputTokenBudget(700, glmRoute)).toBe(700);
     expect(outputTokenBudget(120, { ...glmRoute, maxOutputTokens: 256 })).toBe(256);
     expect(outputTokenBudget(120, route)).toBe(120);
+    expect(outputTokenBudget(72, { ...glmRoute, task: "proactive_message" })).toBe(512);
+    expect(
+      outputTokenBudget(600, {
+        ...glmRoute,
+        task: "coach_review",
+        maxOutputTokens: 2048,
+      }),
+    ).toBe(1536);
+    expect(
+      outputTokenBudget(600, {
+        ...glmRoute,
+        task: "coach_review",
+        maxOutputTokens: 1000,
+      }),
+    ).toBe(1000);
     const client = createOpenRouterClient(config(), fetchMock);
     await client.complete({
       ...request(),
       route: { ...route, task: "conversation", model: "z-ai/glm-5.3-flash" },
     });
+    for (const task of [
+      "character_generation",
+      "encounter_story",
+      "proactive_message",
+      "coach_review",
+    ]) {
+      await client.complete({
+        ...request(),
+        route: { ...route, task, model: "z-ai/glm-5.3-flash" },
+      });
+      const latestBody = fetchMock.mock.calls.at(-1)?.[1]?.body;
+      if (typeof latestBody !== "string") throw new Error("missing body");
+      expect(JSON.parse(latestBody)).toHaveProperty("reasoning.effort", "minimal");
+    }
     const body = fetchMock.mock.calls[0]?.[1]?.body;
     if (typeof body !== "string") throw new Error("missing body");
     expect(JSON.parse(body)).toMatchObject({
       reasoning: { effort: "minimal" },
       max_tokens: 700,
     });
+  });
+
+  it("preserves billable usage when reasoning exhausts the budget with null content", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+      Response.json({
+        id: "reasoning-only",
+        model: route.model,
+        choices: [{ finish_reason: "length", message: { content: null } }],
+        usage: {
+          prompt_tokens: 1000,
+          completion_tokens: 2400,
+          total_tokens: 3400,
+          cost: 0.0009,
+        },
+      }),
+    );
+    const result = await createOpenRouterClient(config(), fetchMock).complete(
+      request(),
+    );
+    expect(result.content).toBe("");
+    expect(result.finishReason).toBe("length");
+    expect(result.providerRequestId).toBe("reasoning-only");
+    expect(result.usage.providerCostUsd).toBe("0.0009");
+    expect(result.usage.outputTokens).toBe(2400);
   });
 
   it("loads and normalizes the public model catalog", async () => {

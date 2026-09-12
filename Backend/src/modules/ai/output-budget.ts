@@ -7,9 +7,11 @@ export function outputTokenBudget(
 ): number {
   const minimum =
     route.provider === "openrouter" &&
-    route.task === "conversation" &&
+    ["conversation", "proactive_message", "coach_review"].includes(route.task) &&
     route.model.startsWith("z-ai/glm-")
-      ? 512
+      ? route.task === "coach_review"
+        ? 1536
+        : 512
       : 1;
   return Math.min(
     Math.max(requested ?? route.maxOutputTokens, minimum),

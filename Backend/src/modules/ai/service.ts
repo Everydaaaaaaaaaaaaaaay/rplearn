@@ -332,8 +332,14 @@ export function createAiService(
       }
       if (!completion.content.trim()) {
         const error = new AppError({
-          code: "AI_EMPTY_RESPONSE",
-          message: "模型未返回正文，请重试。",
+          code:
+            completion.finishReason === "length"
+              ? "AI_OUTPUT_LIMIT"
+              : "AI_EMPTY_RESPONSE",
+          message:
+            completion.finishReason === "length"
+              ? "模型生成预算耗尽，未返回正文。"
+              : "模型未返回正文，请重试。",
           statusCode: 502,
         });
         await credits.finish(

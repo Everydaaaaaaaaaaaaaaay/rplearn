@@ -22,7 +22,14 @@ const usageSchema = z.object({
   total_tokens: z.number().int().nonnegative(),
 });
 const completionSchema = z.object({
-  choices: z.array(z.object({ message: z.object({ content: z.string() }) })).min(1),
+  choices: z
+    .array(
+      z.object({
+        message: z.object({ content: z.string().nullable() }),
+        finish_reason: z.string().nullish(),
+      }),
+    )
+    .min(1),
   id: z.string().optional(),
   model: z.string(),
   usage: usageSchema,
@@ -120,8 +127,13 @@ function requestBody(request: AiProviderRequest, stream: boolean): unknown {
   return {
     ...request.route.providerOptions,
     // GLM requires reasoning; use its lowest effort for short conversational replies.
-    ...(request.route.task === "conversation" &&
-    request.route.model.startsWith("z-ai/glm-")
+    ...([
+      "conversation",
+      "character_generation",
+      "encounter_story",
+      "proactive_message",
+      "coach_review",
+    ].includes(request.route.task) && request.route.model.startsWith("z-ai/glm-")
       ? { reasoning: { effort: "minimal" } }
       : {}),
     // Opaque, stable per user/task/model. Dynamic opening messages must not move
@@ -327,7 +339,8 @@ export function createOpenRouterClient(
       const first = result.data.choices[0];
       if (first === undefined) throw protocolError();
       return {
-        content: first.message.content,
+        content: first.message.content ?? "",
+        ...(first.finish_reason ? { finishReason: first.finish_reason } : {}),
         model: result.data.model,
         providerRequestId: result.data.id ?? null,
         usage: mapUsage(result.data.usage),
