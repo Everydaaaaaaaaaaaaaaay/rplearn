@@ -91,9 +91,16 @@ final class SocialEncounterModel: ObservableObject {
 
     func start() {
         guard !busy, !isSolitude, !openingReady else { return }
-        if revealAt == nil { revealAt = Date().addingTimeInterval(15) }
+        if revealAt == nil { revealAt = Date().addingTimeInterval(deps.tutorial == nil ? 15 : 1.5) }
         started = true
         launch {
+            if let tutorial = self.deps.tutorial {
+                if self.character == nil { try await self.prepareCharacter() }
+                try await self.loadChapter(0)
+                self.openingReady = true
+                tutorial.onEvent("encounter")
+                return
+            }
             var roll = self.encounterRoll()
             #if DEBUG
             if self.isFixture {
@@ -143,6 +150,7 @@ final class SocialEncounterModel: ObservableObject {
         } else if atEnding {
             stopSpeech()
             completed = true
+            deps.tutorial?.onEvent("summary")
         }
     }
     func pause() {
@@ -181,6 +189,7 @@ final class SocialEncounterModel: ObservableObject {
                 try await roster.makeFriend(characterID: character.id, slotLimit: profile.friendSlotLimit)
                 self.character = try await roster.character(id: character.id)
                 contactMessage = "已加入好友，可以在联系人和消息中继续聊天。"
+                deps.tutorial?.onEvent("friend")
                 if !isFixture, character.publicIdentityRegistered, let registry = deps.npcRegistry {
                     do {
                         try await registry.linkPublicNPC(npcID: character.id, localCharacterID: character.id, status: .friend)
@@ -228,10 +237,15 @@ final class SocialEncounterModel: ObservableObject {
     private func prepareCharacter() async throws {
         let profile = try await deps.economyStore.profile()
         try Task.checkCancellation()
-        if isFixture {
-            let card = CharacterCard(name: "Alex", age: 46, gender: .male, nationality: "British",
-                regionID: region.id, occupation: "bicycle mechanic", hobbies: ["烘焙", "爵士乐"],
-                appearance: "", personality: "reserved, kind, practical", avatarAssetName: "avatar_oliver")
+        if isFixture || deps.tutorial != nil {
+            let card = deps.tutorial != nil
+                ? CharacterCard(name: "Elliot Shaw", age: 38, gender: .male, nationality: "British",
+                    regionID: region.id, occupation: "bus accessibility route surveyor",
+                    hobbies: ["making jam", "collecting bad jokes"], appearance: "",
+                    personality: "Practical and blunt, with dry humour.", avatarAssetName: "tutorial-elliot")
+                : CharacterCard(name: "Alex", age: 46, gender: .male, nationality: "British",
+                    regionID: region.id, occupation: "bicycle mechanic", hobbies: ["烘焙", "爵士乐"],
+                    appearance: "", personality: "reserved, kind, practical", avatarAssetName: "avatar_oliver")
             let id = try await roster.addCharacter(characterID: generatedID, card: card,
                 difficulty: profile.difficultyLevel, isFriend: false)
             character = try await roster.character(id: id)
@@ -280,7 +294,9 @@ final class SocialEncounterModel: ObservableObject {
         guard let character else { throw RosterStore.RosterError.characterNotFound }
         if chapters.count == stage {
             let part: EncounterChapter
-            if isFixture {
+            if deps.tutorial != nil {
+                part = try Self.tutorialChapter(stage, selections: selections, location: authoredActivity.title)
+            } else if isFixture {
                 part = try Self.fixtureChapter(stage)
             } else {
                 guard let library else { throw PreparationError.characterUnavailable }
@@ -298,6 +314,27 @@ final class SocialEncounterModel: ObservableObject {
         try Task.checkCancellation()
         beatIndex = index
     }
+    static func tutorialChapter(_ stage: Int, selections: [Int], location: String) throws -> EncounterChapter {
+        let opening = [
+            EncounterChapter.Beat(speaker: "narrator", english: "A folded map slips off a nearby seat. You catch it before the wind does.", chinese: "一张折叠地图从旁边的座位滑落，你赶在风吹走它之前接住了。"),
+            EncounterChapter.Beat(speaker: "npc", english: "Thanks! I marked a few quiet places on it. Do you like exploring?", chinese: "谢谢！我在上面标了几个安静的地方。你喜欢探索吗？")
+        ]
+        let middle = [
+            EncounterChapter.Beat(speaker: "narrator", english: "Elliot smooths out the map and points to a tiny drawing.", chinese: "Elliot 展平地图，指了指上面的一幅小画。"),
+            EncounterChapter.Beat(speaker: "npc", english: selections.first == 0 ? "Same here. I found this corner by taking a wrong turn." : "This one has a great view. I drew it so I wouldn't forget.", chinese: selections.first == 0 ? "我也是。我是拐错弯才发现这个角落的。" : "这里景色很好。我画下来，免得自己忘了。")
+        ]
+        let ending = [
+            EncounterChapter.Beat(speaker: "narrator", english: "Elliot folds the map carefully this time, smiling at your reply.", chinese: "听了你的回答，Elliot 笑了，这次仔细地把地图折好。"),
+            EncounterChapter.Beat(speaker: "npc", english: "Thanks for rescuing my map. It's been lovely chatting with you!", chinese: "谢谢你救下我的地图，很高兴和你聊了聊！")
+        ]
+        return EncounterChapter(title: "风里的地图", outline: location,
+            beats: stage == 0 ? opening : stage == 1 ? middle : ending,
+            choices: stage == 2 ? [] : [
+                .init(english: stage == 0 ? "Yes, especially quiet places." : "A wrong turn can be a good thing.", chinese: stage == 0 ? "喜欢，尤其是安静的地方。" : "拐错弯也可能是好事。"),
+                .init(english: stage == 0 ? "Which place is your favourite?" : "I'll keep my eyes open.", chinese: stage == 0 ? "你最喜欢哪个地方？" : "我也会留意身边的风景。")
+            ])
+    }
+
     static func fixtureChapter(_ stage: Int) throws -> EncounterChapter {
         let beats: [[String: String]] = [
             ["speaker":"narrator","english":"A gust of wind lifts a folded map off the table. It catches beneath a nearby chair.","chinese":"一阵风把桌上的折叠地图吹了起来，卡在旁边的椅子下。"],

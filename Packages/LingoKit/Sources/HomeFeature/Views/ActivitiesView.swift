@@ -53,6 +53,7 @@ public struct ActivitiesView: View {
             if let activity, let cityID, let model = journey.model {
                 ActivityActionView(model: model, journey: journey, deps: deps, isVisible: isVisible,
                                    onBack: onClose) { selections, runID, character, responses in
+                    if let tutorial = deps.tutorial { tutorial.onEvent("ending"); return }
                     let journal = ActivityJournal(namespace: storageNamespace, city: cityID)
                     if model.isSolitude {
                         records = try journal.completeSolitude(activity, runID: runID)
@@ -194,7 +195,7 @@ public struct ActivitiesView: View {
         }
     }
     private func readRecords() {
-        guard let cityID else { return }
+        guard deps.tutorial == nil, let cityID else { return }
         do {
             records = try ActivityJournal(namespace: storageNamespace, city: cityID).records()
             journalError = nil

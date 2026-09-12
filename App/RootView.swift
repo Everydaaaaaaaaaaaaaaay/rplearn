@@ -440,7 +440,8 @@ struct RootView: View {
                     rosterStore: environment.rosterStore,
                     scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                     dictionary: environment.dictionary,
-                    grammarPoints: environment.grammarPoints
+                    grammarPoints: environment.grammarPoints,
+                    tutorial: tutorialPresenter
                 ), startsWithTutorial: mode == .tutorial)
             }
             .fullScreenCover(isPresented: $showPlacementTest) {
@@ -455,7 +456,8 @@ struct RootView: View {
                         rosterStore: environment.rosterStore,
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                         dictionary: environment.dictionary,
-                        grammarPoints: environment.grammarPoints
+                        grammarPoints: environment.grammarPoints,
+                        tutorial: tutorialPresenter
                     ),
                     placementCompletionRevision: placementCompletionRevision,
                     onRequestPlacement: { showOnboardingPlacement = true }
@@ -909,6 +911,12 @@ struct RootView: View {
             regionCatalog: environment.regionCatalog,
             storyProgress: environment.storyProgressStore
         )
+    }
+
+    private var tutorialPresenter: TutorialPresenter {
+        { character, finish in
+            AnyView(ProductionTutorialView(character: character, environment: environment, onFinish: finish))
+        }
     }
 
     private var chatDeps: ChatDependencies {

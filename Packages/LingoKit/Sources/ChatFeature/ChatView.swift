@@ -95,6 +95,7 @@ public struct ChatView: View {
                     isTextInputFocused = false
                     voicePlayer.stop()
                     // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
+                    guard deps.tutorial == nil else { return }
                     showsRealtimeConversation = true
                 } label: {
                     Image(systemName: "phone.fill")
@@ -126,8 +127,12 @@ public struct ChatView: View {
             },
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback,
-            exampleTranslationActions: deps.exampleTranslationActions
+            exampleTranslationActions: deps.exampleTranslationActions,
+            allowsSystemTranslationFallback: deps.tutorial == nil
         )
+        .onChange(of: wordSelection) { _, selection in
+            if selection != nil { deps.tutorial?.onEvent("word") }
+        }
         .grammarTermLookupOverlay(
             selection: $grammarTermSelection,
             dictionary: deps.dictionary,
@@ -213,7 +218,12 @@ public struct ChatView: View {
         .task {
             // 整句翻译仅使用 Apple 系统语言包。
             viewModel.localTranslation = { [appleTranslator] text in
-                await appleTranslator.translate(text)
+                if let tutorial = deps.tutorial {
+                    guard text == "That sounds lovely. Tell me more!" else { return nil }
+                    tutorial.onEvent("translation")
+                    return "听起来很棒，再跟我说说！"
+                }
+                return await appleTranslator.translate(text)
             }
             await viewModel.load()
             #if DEBUG

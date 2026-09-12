@@ -14,6 +14,7 @@ public struct OnboardingDependencies: Sendable {
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let scriptURL: URL
+    public let tutorial: TutorialPresenter
 
     public init(
         economyStore: EconomyStore,
@@ -21,7 +22,8 @@ public struct OnboardingDependencies: Sendable {
         rosterStore: RosterStore,
         scriptURL: URL,
         dictionary: DictDatabase,
-        grammarPoints: GrammarPointStore
+        grammarPoints: GrammarPointStore,
+        tutorial: @escaping TutorialPresenter
     ) {
         self.economyStore = economyStore
         self.profileCommands = profileCommands
@@ -29,6 +31,7 @@ public struct OnboardingDependencies: Sendable {
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.scriptURL = scriptURL
+        self.tutorial = tutorial
     }
 }
 
@@ -116,8 +119,7 @@ public struct OnboardingFlowView: View {
                     .transition(reduceMotion ? .opacity : .move(edge: .trailing).combined(with: .opacity))
             case .tutorial:
                 if let character = tutorialCharacter {
-                    HandsOnTutorialView(character: character, dictionary: deps.dictionary,
-                        grammar: deps.grammarPoints, onFinish: { await onComplete(character) })
+                    deps.tutorial(character, { await onComplete(character) })
                 }
             }
         }
@@ -657,8 +659,7 @@ public struct JourneyIntroductionView: View {
         Group {
             if showsTutorial {
                 if let character = characters.first {
-                    HandsOnTutorialView(character: character, dictionary: deps.dictionary,
-                        grammar: deps.grammarPoints, onFinish: { dismiss(); return true })
+                    deps.tutorial(character, { dismiss(); return true })
                 } else if loadFailed {
                     ContentUnavailableView("暂时无法打开练习", systemImage: "book.closed")
                 } else { ProgressView() }

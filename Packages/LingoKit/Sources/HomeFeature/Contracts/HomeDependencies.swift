@@ -1,3 +1,4 @@
+import Foundation
 import BackendKit
 import DictKit
 import DomainKit
@@ -5,7 +6,13 @@ import LLMKit
 import PersistenceKit
 import SpeechKit
 
+public struct ActivityTutorialConfiguration: Sendable {
+    public let onEvent: @MainActor @Sendable (String) -> Void
+    public init(onEvent: @escaping @MainActor @Sendable (String) -> Void) { self.onEvent = onEvent }
+}
+
 public struct HomeDependencies: Sendable {
+    public let tutorial: ActivityTutorialConfiguration?
     public let access: JourneyAccess
     public let economyStore: EconomyStore
     public let itemStore: ItemStore
@@ -23,6 +30,7 @@ public struct HomeDependencies: Sendable {
     public let npcRegistry: (any PublicNPCRegistry)?
 
     public init(
+        tutorial: ActivityTutorialConfiguration? = nil,
         access: JourneyAccess = JourneyAccess(),
         economyStore: EconomyStore,
         itemStore: ItemStore,
@@ -39,6 +47,7 @@ public struct HomeDependencies: Sendable {
         exampleTranslationActions: DictExampleTranslationActions,
         npcRegistry: (any PublicNPCRegistry)? = nil
     ) {
+        self.tutorial = tutorial
         self.access = access
         self.economyStore = economyStore
         self.itemStore = itemStore

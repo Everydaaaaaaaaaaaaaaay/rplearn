@@ -140,34 +140,57 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCUIDevice.shared.appearance = .dark
         app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
         app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launchEnvironment["UI_TEST_TUTORIAL_AUDIO"] = "1"
         app.launch()
         XCTAssertTrue(app.buttons["onboarding.selection.confirm"].waitForExistence(timeout: 8))
         app.buttons["onboarding.selection.confirm"].tap()
-        let bubble = app.descendants(matching: .any)["tutorial.bubble"].firstMatch
-        XCTAssertTrue(bubble.waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["tutorial.next"].isEnabled)
-        bubble.press(forDuration: 1.2)
+        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "lovely")).firstMatch
+        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        word.press(forDuration: 1.2)
         XCTAssertTrue(app.buttons["翻译"].waitForExistence(timeout: 3))
         app.buttons["翻译"].tap()
-        XCTAssertTrue(app.staticTexts["tutorial.translation"].waitForExistence(timeout: 3))
-        captureScreen(named: "tutorial-translation")
+        XCTAssertTrue(app.staticTexts["听起来很棒，再跟我说说！"].waitForExistence(timeout: 3))
+        captureScreen(named: "tutorial-production-chat")
+        word.press(forDuration: 1.2)
+        app.buttons["播放"].tap()
+        let guide = app.buttons["tutorial.guide"]
+        expectation(for: NSPredicate(format: "value != %@", "audio:0"), evaluatedWith: guide)
+        waitForExpectations(timeout: 30)
         app.buttons["tutorial.next"].tap()
-        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "lovely")).firstMatch
-        XCTAssertTrue(word.waitForExistence(timeout: 3))
+        let prior = guide.value as? String
         word.tap()
         XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 3))
-        app.staticTexts["上手试一试"].tap()
+        app.buttons["播放读音"].tap()
+        expectation(for: NSPredicate(format: "value != %@", prior ?? ""), evaluatedWith: guide)
+        waitForExpectations(timeout: 30)
+        guide.tap()
         app.buttons["tutorial.next"].tap()
-        app.buttons["tutorial.outing"].tap()
-        app.buttons["tutorial.choice.a"].tap()
-        let add = app.buttons["tutorial.addFriend"]
-        if !add.isHittable { app.swipeUp() }
+        let seat = app.buttons["activities.scene.park-seat"]
+        XCTAssertTrue(seat.waitForExistence(timeout: 8))
+        captureScreen(named: "tutorial-production-activities")
+        seat.tap()
+        XCTAssertTrue(app.buttons["activities.action.start"].waitForExistence(timeout: 5))
+        app.buttons["activities.action.start"].tap()
+        for _ in 0..<15 {
+            if app.buttons["activities.encounter.addFriend"].exists { break }
+            let choice = app.buttons["activities.choice.0"]
+            if choice.exists {
+                if !choice.isHittable { app.swipeUp() }
+                choice.tap()
+            } else {
+                let next = app.buttons["activities.action.next"]
+                XCTAssertTrue(next.waitForExistence(timeout: 6))
+                if !next.isHittable { app.swipeUp() }
+                next.tap()
+            }
+        }
+        let add = app.buttons["activities.encounter.addFriend"]
         XCTAssertTrue(add.waitForExistence(timeout: 3))
+        if !add.isHittable { app.swipeUp() }
+        captureScreen(named: "tutorial-production-encounter")
         add.tap()
-        XCTAssertTrue(app.staticTexts["已体验添加好友"].exists)
-        captureScreen(named: "tutorial-encounter")
+        XCTAssertTrue(app.staticTexts["activities.encounter.contactStatus"].waitForExistence(timeout: 3))
         app.buttons["tutorial.next"].tap()
-        captureScreen(named: "tutorial-explore")
         XCTAssertTrue(app.buttons["tutorial.next"].isEnabled)
     }
 

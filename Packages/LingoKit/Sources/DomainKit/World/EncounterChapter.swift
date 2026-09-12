@@ -7,15 +7,23 @@ public struct EncounterChapter: Codable, Equatable, Sendable {
         public let speaker: String
         public let english: String
         public let chinese: String
+        public init(speaker: String, english: String, chinese: String) {
+            self.speaker = speaker; self.english = english; self.chinese = chinese
+        }
     }
     public struct Choice: Codable, Equatable, Sendable {
         public let english: String
         public let chinese: String
+        public init(english: String, chinese: String) { self.english = english; self.chinese = chinese }
     }
     public let title: String
     public let outline: String
     public let beats: [Beat]
     public let choices: [Choice]
+
+    public init(title: String, outline: String, beats: [Beat], choices: [Choice]) {
+        self.title = title; self.outline = outline; self.beats = beats; self.choices = choices
+    }
 
     public static func decode(_ text: String, stage: Int) throws -> Self {
         guard (0...2).contains(stage), let data = JSONExtractor.extractJSONData(from: text),

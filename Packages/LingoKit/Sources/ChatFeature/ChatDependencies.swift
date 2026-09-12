@@ -8,8 +8,14 @@ import MediaKit
 import PersistenceKit
 import SpeechKit
 
+public struct ChatTutorialConfiguration: Sendable {
+    public let onEvent: @MainActor @Sendable (String) -> Void
+    public init(onEvent: @escaping @MainActor @Sendable (String) -> Void) { self.onEvent = onEvent }
+}
+
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void
     public let chatStore: ChatStore
@@ -32,6 +38,7 @@ public struct ChatDependencies: Sendable {
     public let replyDelayScale: Double
 
     public init(
+        tutorial: ChatTutorialConfiguration? = nil,
         accessClient: BackendClient? = nil,
         onShowAccess: @escaping @MainActor @Sendable () -> Void = {},
         chatStore: ChatStore,
@@ -55,6 +62,7 @@ public struct ChatDependencies: Sendable {
         now: @escaping @Sendable () -> Date = { .now },
         replyDelayScale: Double = 1
     ) {
+        self.tutorial = tutorial
         self.accessClient = accessClient
         self.onShowAccess = onShowAccess
         self.chatStore = chatStore
