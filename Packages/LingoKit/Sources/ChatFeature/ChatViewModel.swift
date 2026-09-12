@@ -27,6 +27,8 @@ public final class ChatViewModel {
     /// 已收到用户消息，仍处于注意、准备或等待连续消息阶段；此时不显示“正在输入”。
     public private(set) var isWaitingForUserBurst = false
     public var errorMessage: String?
+    public var tutorialSendNoticeID: UUID?
+    private var tutorialMessageSent = false
     public var draft = "" {
         didSet {
             if draft != oldValue { composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now()) }
@@ -172,11 +174,19 @@ public final class ChatViewModel {
         let originalDraft = draft
         let text = originalDraft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
+        if deps.tutorial != nil {
+            guard !tutorialMessageSent else {
+                tutorialSendNoticeID = UUID()
+                return
+            }
+            tutorialMessageSent = true
+        }
         Haptics.impact(.light)
         draft = ""
         composerActivity.didSend()
         if !(await send(userText: text)), draft.isEmpty {
             // Preserve failed input without overwriting anything typed while saving.
+            tutorialMessageSent = false
             draft = originalDraft
         }
     }

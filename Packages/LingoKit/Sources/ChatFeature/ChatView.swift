@@ -58,6 +58,23 @@ public struct ChatView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             inputBar
         }
+        .overlay(alignment: .bottom) {
+            if viewModel.tutorialSendNoticeID != nil {
+                Text("把话留给正式使用的时候吧～")
+                    .font(.subheadline)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(.regularMaterial, in: Capsule())
+                    .padding(.bottom, 12)
+                    .accessibilityIdentifier("tutorial.sendLimitNotice")
+                    .allowsHitTesting(false)
+            }
+        }
+        .task(id: viewModel.tutorialSendNoticeID) {
+            guard viewModel.tutorialSendNoticeID != nil else { return }
+            do { try await Task.sleep(for: .seconds(2.5)) } catch { return }
+            viewModel.tutorialSendNoticeID = nil
+        }
         .background(Color.dsBackground)
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }

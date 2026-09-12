@@ -198,7 +198,7 @@ private enum TutorialFailure: Error { case unavailable }
 private struct TutorialLLM: LLMClient {
     func complete(_ request: LLMRequest) async throws -> String { throw TutorialFailure.unavailable }
     func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
-        AsyncThrowingStream { $0.yield(.textDelta("I'm happy to listen. What would you like to share?")); $0.yield(.finished); $0.finish() }
+        AsyncThrowingStream { $0.yield(.textDelta("That's interesting. Thanks for sharing!")); $0.yield(.finished); $0.finish() }
     }
 }
 private struct TutorialMediaOwner: VoiceMediaOwnerStore {
