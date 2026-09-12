@@ -593,63 +593,9 @@ struct CharacterSelectView: View {
     }
 
     private func physicalCard(_ character: CharacterDTO) -> some View {
-        let palette = DSScenePalette.city(character.card.regionID)
-        return VStack(spacing: DSSpacing.md) {
-            HStack {
-                Text(firstName(character.card.name))
-                    .font(.system(size: 34, weight: .black, design: .rounded))
-                Spacer()
-                Text(Self.regionFlags[character.card.regionID] ?? "🌍")
-                    .font(.system(size: 32))
-                    .padding(7)
-                    .background(.white.opacity(0.9), in: RoundedRectangle(cornerRadius: 6))
-                    .rotationEffect(.degrees(3))
-            }
-
-            AvatarBadge(
-                name: character.card.name,
-                tint: .white,
-                size: 112,
-                imageName: character.card.avatarAssetName,
-                remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
-            )
-                .accessibilityIdentifier("onboarding.character.avatar.\(character.card.regionID)")
-                .background(.white.opacity(0.16), in: Circle())
-
-            VStack(spacing: 4) {
-                Text("\(character.card.age) 岁 · \(Self.regionNames[character.card.regionID] ?? character.card.regionID) · \(character.card.occupation)")
-                    .font(.subheadline.bold())
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                Text(character.card.personality)
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(3)
-                    .opacity(0.88)
-            }
-
-            FlowLayout(spacing: 6, lineSpacing: 6) {
-                ForEach(character.card.localizedHobbies.prefix(3), id: \.self) { hobby in
-                    DSChip(hobby, tint: .white)
-                }
-            }
-        }
-        .foregroundStyle(.white)
-        .padding(DSSpacing.lg)
-        .frame(maxHeight: 520)
-        .background(
-            LinearGradient(
-                colors: [palette.skyTop, palette.accent, palette.silhouetteNear],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            ),
-            in: RoundedRectangle(cornerRadius: 30, style: .continuous)
-        )
-        .overlay {
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .stroke(.white.opacity(0.78), lineWidth: 7)
-        }
-        .shadow(color: palette.silhouetteNear.opacity(0.35), radius: 18, y: 12)
+        return StarterPortraitCard(card: character.card,
+            city: Self.regionNames[character.card.regionID] ?? character.card.regionID,
+            flag: Self.regionFlags[character.card.regionID] ?? "🌍")
         .scaleEffect(!reduceMotion && isConfirming && selectedID == character.id ? 1.04 : 1)
         .animation(reduceMotion ? nil : DSAnimation.celebration, value: isConfirming)
         .padding(.vertical, 18)
@@ -695,7 +641,7 @@ public struct JourneyIntroductionView: View {
     public var body: some View {
         Group {
             if !showsStory {
-                WelcomeJourneyView { showsStory = true }
+                WelcomeJourneyView(dictionary: deps.dictionary, grammar: deps.grammarPoints) { showsStory = true }
             } else if let player {
                 ChatStoryView(player: player, characters: characters, deps: deps) { dismiss() }
             } else if loadFailed {

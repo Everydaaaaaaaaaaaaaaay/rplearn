@@ -5,6 +5,7 @@ import Translation
 
 /// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
 public struct DictCardView: View {
+    private let maximumHeight: CGFloat
     private let phraseCandidates: [String]
     private let dictionary: DictDatabase
     private let grammar: GrammarPointStore
@@ -41,8 +42,10 @@ public struct DictCardView: View {
         aiFallback: (@Sendable (String) async -> String?)? = nil,
         exampleTranslationActions: DictExampleTranslationActions,
         allowsSystemTranslationFallback: Bool = true,
-        onDismiss: (@MainActor () -> Void)? = nil
+        onDismiss: (@MainActor () -> Void)? = nil,
+        maximumHeight: CGFloat = 340
     ) {
+        self.maximumHeight = maximumHeight
         _path = State(initialValue: [target])
         self.phraseCandidates = phraseCandidates
         self.dictionary = dictionary
@@ -76,7 +79,7 @@ public struct DictCardView: View {
             .id(currentTarget)
         }
         .frame(width: DictCardLayout.width)
-        .frame(maxHeight: DictCardLayout.maximumHeight)
+        .frame(maxHeight: maximumHeight)
         .fixedSize(horizontal: false, vertical: true)
         .background(
             reduceTransparency

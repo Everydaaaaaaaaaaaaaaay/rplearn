@@ -190,6 +190,19 @@ final class OnboardingWelcomeTests: XCTestCase {
                     abs(image.frame.midX - self.app.frame.midX) < 2
                 }, object: nil)
                 XCTAssertEqual(XCTWaiter.wait(for: [centered], timeout: 3), .completed)
+                if page == 0 {
+                    for label in ["信息", "联系人", "活动", "我的"] {
+                        XCTAssertTrue(image.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", label)).firstMatch.exists)
+                    }
+                } else if page == 2 {
+                    XCTAssertTrue(image.staticTexts["spontaneous"].waitForExistence(timeout: 3))
+                    XCTAssertTrue(image.staticTexts["Fancy a spontaneous trip?"].exists)
+                } else if page == 3 {
+                    XCTAssertTrue(image.descendants(matching: .any)["onboarding.character.avatar.london"].firstMatch.exists)
+                    for label in ["表达难度", "开口辅助", "动态调整"] {
+                        XCTAssertFalse(image.staticTexts[label].exists)
+                    }
+                }
                 captureScreen(named: "welcome-\(appearance)-\(page)")
                 if page < 3 { app.buttons["welcome.next"].tap() }
             }

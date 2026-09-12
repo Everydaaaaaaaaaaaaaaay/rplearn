@@ -1,11 +1,15 @@
 import CoreKit
 import DesignSystem
+import DictKit
+import PersistenceKit
 import SwiftUI
 import UIKit
 
 /// 首次启动的品牌入口：用概念展示介绍旅程，再进入学习档案。
 public struct WelcomeJourneyView: View {
     let onBegin: () -> Void
+    let dictionary: DictDatabase
+    let grammar: GrammarPointStore
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
@@ -13,7 +17,9 @@ public struct WelcomeJourneyView: View {
 
     private let pageCount = 4
 
-    public init(onBegin: @escaping () -> Void) {
+    public init(dictionary: DictDatabase, grammar: GrammarPointStore, onBegin: @escaping () -> Void) {
+        self.dictionary = dictionary
+        self.grammar = grammar
         self.onBegin = onBegin
     }
 
@@ -57,7 +63,7 @@ public struct WelcomeJourneyView: View {
                             detail: "在资料、剧情和聊天里直接查看释义、发音与例句，学完继续聊。",
                             accessibilityID: "welcome.page.dictionary"
                         ) {
-                            WelcomeDictionaryScreen(isActive: currentPage == 2, reduceMotion: reduceMotion)
+                            WelcomeDictionaryScreen(dictionary: dictionary, grammar: grammar)
                                 .accessibilityIdentifier("welcome.concept.dictionary")
                         }
 
@@ -344,12 +350,12 @@ private struct WelcomeCityScreen: View {
                             )
 
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("旧书店的晚间朗读")
+                                Text("城市活动")
                                     .font(.system(size: 13, weight: .bold, design: .rounded))
-                                Text("Oliver 正在等你开口")
+                                Text("去街头走走，遇见新朋友")
                                     .font(.system(size: 10, weight: .medium))
                                     .foregroundStyle(.secondary)
-                                Label("进入故事", systemImage: "arrow.right.circle.fill")
+                                Label("外出探索", systemImage: "figure.walk")
                                     .font(.system(size: 10, weight: .bold))
                                     .foregroundStyle(Color.dsSkyDeep)
                             }
@@ -367,8 +373,77 @@ private struct WelcomeCityScreen: View {
                 }
                 .frame(maxHeight: .infinity)
 
-                WelcomeMiniTabBar(selected: 0)
+                WelcomeMiniTabBar(selected: 2)
             }
+        }
+    }
+}
+
+// Render shared production components at a consistent device-space scale.
+private struct WelcomeDeviceCanvas<Content: View>: View {
+    var minimumHeight: CGFloat = 0
+    @ViewBuilder let content: () -> Content
+    var body: some View {
+        GeometryReader { geometry in
+            let scale = min(geometry.size.width / 390,
+                            minimumHeight > 0 ? geometry.size.height / minimumHeight : .infinity)
+            content()
+                .frame(width: 390, height: geometry.size.height / scale)
+                .environment(\.dynamicTypeSize, .medium)
+                .scaleEffect(scale, anchor: .topLeading)
+                .offset(x: (geometry.size.width - 390 * scale) / 2)
+        }
+        .clipped()
+    }
+}
+
+private struct WelcomeChatHeader: View {
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "chevron.left").foregroundStyle(Color.dsSky)
+            Spacer(minLength: 0)
+            ChatTitleView(title: "Ruby", subtitle: "在线 · 墨尔本 17:20") {
+                AvatarBadge(name: "Ruby Walker", size: 32, imageName: "avatar_ruby")
+                    .overlay(alignment: .bottomTrailing) {
+                        Circle().fill(Color.dsSuccess).frame(width: 9, height: 9)
+                            .overlay(Circle().stroke(Color.dsSurface, lineWidth: 1.5))
+                    }
+            }
+            Spacer(minLength: 0)
+            Image(systemName: "phone.fill")
+            Image(systemName: "ellipsis.circle")
+        }
+        .padding(12)
+        .background(.ultraThinMaterial)
+    }
+}
+
+/// Mirrors ChatComposerSection's idle state; no draft, microphone or account mutation.
+private struct WelcomeChatComposer: View {
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "mic").font(.system(size: 22)).frame(width: 32)
+            Text("用英语说点什么…").foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 12).padding(.vertical, 8)
+                .background(Color.dsBubbleIncoming, in: RoundedRectangle(cornerRadius: DSRadius.bubble))
+            Image(systemName: "arrow.up.circle.fill").font(.system(size: 30)).foregroundStyle(Color.dsSky.opacity(0.4))
+        }
+        .padding(.horizontal, 12).padding(.vertical, 8)
+        .background(.ultraThinMaterial)
+    }
+}
+
+private struct WelcomeChatMessage: View {
+    let text: String
+    var outgoing = false
+    var body: some View {
+        MessageBubble(side: outgoing ? .outgoing : .incoming, leadingAccessory: {
+            if !outgoing {
+                AvatarBadge(name: "Ruby Walker", size: 28, imageName: "avatar_ruby")
+            }
+        }) {
+            Text(text).font(.body)
         }
     }
 }
@@ -376,192 +451,54 @@ private struct WelcomeCityScreen: View {
 private struct WelcomeConversationScreen: View {
     let isActive: Bool
     let reduceMotion: Bool
-
     var body: some View {
-        WelcomeProductFrame(accent: .dsBrandCoral, accessibilityLabel: "Ruby 对话页概念展示") {
-            VStack(spacing: 0) {
-                HStack(spacing: 9) {
-                    AvatarBadge(name: "Ruby Walker", size: 34, imageName: "avatar_ruby")
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text("Ruby Walker")
-                            .font(.caption.weight(.bold))
-                        HStack(spacing: 4) {
-                            Circle().fill(Color.dsSuccess).frame(width: 5, height: 5)
-                            Text("刚刚在线 · 墨尔本")
-                        }
-                        .font(.system(size: 9, weight: .medium))
-                        .foregroundStyle(.secondary)
+        WelcomeProductFrame(accent: .dsBrandCoral, accessibilityLabel: "Ruby 聊天界面概念展示") {
+            WelcomeDeviceCanvas {
+                VStack(spacing: 0) {
+                    WelcomeChatHeader()
+                    VStack(spacing: 12) {
+                        Text("17:20 · 墨尔本").font(.caption2).foregroundStyle(.secondary)
+                        WelcomeChatMessage(text: "Fancy a walk by the sea?")
+                        WelcomeChatMessage(text: "Yes! Somewhere quiet?", outgoing: true)
+                        WelcomeChatMessage(text: "I remember your favourite spot. Meet you there!")
                     }
-                    Spacer()
-                    Image(systemName: "phone.fill")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color.dsSkyDeep)
-                        .frame(width: 28, height: 28)
-                        .background(Color.dsSky.opacity(0.1), in: Circle())
+                    .padding(12)
+                    .frame(maxHeight: .infinity)
+                    WelcomeChatComposer()
                 }
-                .padding(.horizontal, 13)
-                .padding(.vertical, 8)
-                .overlay(alignment: .bottom) { Divider() }
-
-                VStack(spacing: 8) {
-                    WelcomeMessageBubble(
-                        text: "The tide's perfect this arvo. Want to join?",
-                        isOutgoing: false,
-                        delay: 0,
-                        isActive: isActive,
-                        reduceMotion: reduceMotion
-                    )
-                    WelcomeMessageBubble(
-                        text: "Save me a board? I'll be there at five.",
-                        isOutgoing: true,
-                        delay: 0.05,
-                        isActive: isActive,
-                        reduceMotion: reduceMotion
-                    )
-                    WelcomeMessageBubble(
-                        text: "Deal. And I remembered—you prefer the quiet end of the beach.",
-                        isOutgoing: false,
-                        delay: 0.1,
-                        isActive: isActive,
-                        reduceMotion: reduceMotion
-                    )
-
-                    Label("她记得：你更喜欢安静的地方", systemImage: "brain.head.profile.fill")
-                        .font(.system(size: 9, weight: .bold))
-                        .foregroundStyle(Color.dsBrandCoral)
-                        .padding(.horizontal, 9)
-                        .padding(.vertical, 6)
-                        .background(Color.dsBrandCoral.opacity(0.09), in: Capsule())
-                        .opacity(isActive ? 1 : 0)
-                        .animation(reduceMotion ? .easeOut(duration: 0.18) : .easeOut(duration: 0.28).delay(0.14), value: isActive)
-                }
-                .padding(11)
-                .frame(maxHeight: .infinity)
-
-                HStack(spacing: 8) {
-                    Image(systemName: "waveform")
-                        .foregroundStyle(Color.dsSkyDeep)
-                    Text("用英语回复 Ruby…")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Image(systemName: "arrow.up")
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundStyle(.white)
-                        .frame(width: 24, height: 24)
-                        .background(Color.dsSky, in: Circle())
-                }
-                .padding(8)
-                .background(Color.dsSurfaceMuted, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
-                .padding(10)
+                .background(Color.dsBackground)
             }
         }
     }
 }
 
 private struct WelcomeDictionaryScreen: View {
-    let isActive: Bool
-    let reduceMotion: Bool
-
-    @State private var showsDefinition = true
-
+    let dictionary: DictDatabase
+    let grammar: GrammarPointStore
     var body: some View {
-        WelcomeProductFrame(accent: .dsQuiz, accessibilityLabel: "资料页点词与单词弹窗概念展示") {
-            VStack(spacing: 0) {
-                HStack(spacing: 8) {
-                    AvatarBadge(name: "Oliver Bennett", size: 32, imageName: "avatar_oliver")
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("Oliver 的资料")
-                            .font(.caption.weight(.bold))
-                        Text("性格与表达方式")
-                            .font(.system(size: 9))
-                            .foregroundStyle(.secondary)
+        WelcomeProductFrame(accent: .dsSky, accessibilityLabel: "聊天中打开真实单词卡片") {
+            WelcomeDeviceCanvas(minimumHeight: 370) {
+                ZStack(alignment: .bottom) {
+                    VStack(spacing: 0) {
+                        WelcomeChatHeader()
+                        WelcomeChatMessage(text: "Fancy a spontaneous trip?")
+                            .padding(12)
+                        Spacer(minLength: 0)
+                        WelcomeChatComposer()
                     }
-                    Spacer()
-                    Image(systemName: "ellipsis")
-                        .foregroundStyle(.secondary)
-                }
-                .padding(.horizontal, 13)
-                .padding(.vertical, 8)
-                .overlay(alignment: .bottom) { Divider() }
-
-                VStack(alignment: .leading, spacing: 7) {
-                    Text("HOW HE SPEAKS")
-                        .font(.system(size: 8, weight: .bold))
-                        .foregroundStyle(.secondary)
-                        .tracking(0.8)
-
-                    HStack(spacing: 3) {
-                        Text("Dry humour, but surprisingly")
-                        Button {
-                            withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                                showsDefinition.toggle()
+                    .background(Color.dsBackground)
+                    DictCardView(target: .word("spontaneous"), dictionary: dictionary, grammar: grammar,
+                        onSpeak: { _ in },
+                        exampleTranslationActions: .init(translate: { request in
+                            switch request.sentence {
+                            case "spontaneous laughter": .init(sentenceZh: "自然而然的笑声")
+                            case "spontaneous combustion": .init(sentenceZh: "自燃")
+                            default: nil
                             }
-                        } label: {
-                            Text("spontaneous")
-                                .fontWeight(.bold)
-                                .foregroundStyle(Color.dsQuiz)
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 2)
-                                .background(Color.dsQuiz.opacity(0.12), in: RoundedRectangle(cornerRadius: 5))
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("单词 spontaneous，轻点查看释义")
-                    }
-                    .font(.system(size: 11, weight: .medium, design: .rounded))
-                    .fixedSize(horizontal: false, vertical: true)
-
-                    Text("He often turns a simple invitation into a playful challenge.")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundStyle(.secondary)
-                }
-                .padding(12)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-                Spacer(minLength: 0)
-
-                if showsDefinition {
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text("spontaneous")
-                                .font(.system(size: 17, weight: .black, design: .rounded))
-                            Text("/spɒnˈteɪ.ni.əs/")
-                                .font(.system(size: 9, weight: .medium))
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                            Image(systemName: "speaker.wave.2.fill")
-                                .foregroundStyle(Color.dsQuiz)
-                        }
-                        Text("adj. 自发的；自然流露的")
-                            .font(.system(size: 11, weight: .bold))
-                        Text("It was a spontaneous trip to the coast.")
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundStyle(.secondary)
-                        HStack {
-                            Label("已匹配当前语境", systemImage: "checkmark.circle.fill")
-                            Spacer()
-                            Label("收藏", systemImage: "bookmark")
-                        }
-                        .font(.system(size: 9, weight: .bold))
-                        .foregroundStyle(Color.dsQuiz)
-                    }
-                    .padding(12)
-                    .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 17, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 17, style: .continuous)
-                            .stroke(Color.dsQuiz.opacity(0.2), lineWidth: 1)
-                    }
-                    .shadow(color: Color.dsQuiz.opacity(0.13), radius: 16, y: 7)
-                    .padding(11)
-                    .offset(y: reduceMotion || isActive ? 0 : 18)
-                    .opacity(isActive ? 1 : 0.08)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                    .animation(reduceMotion ? .easeOut(duration: 0.18) : .spring(response: 0.4, dampingFraction: 0.92), value: isActive)
-                } else {
-                    Label("轻点高亮单词，立即查看释义", systemImage: "hand.tap.fill")
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundStyle(Color.dsQuiz)
-                        .padding(.bottom, 24)
+                        }),
+                        allowsSystemTranslationFallback: false, onDismiss: {}, maximumHeight: 195)
+                        .padding(.bottom, 12)
+                        .allowsHitTesting(false)
                 }
             }
         }
@@ -571,57 +508,34 @@ private struct WelcomeDictionaryScreen: View {
 private struct WelcomePersonalizedScreen: View {
     let isActive: Bool
     let reduceMotion: Bool
+    // Read the production starter catalog; do not invent profile fields for marketing.
+    private struct Catalog: Decodable { let characters: [CharacterCard] }
+    private static let oliver: CharacterCard? = {
+        guard let url = Bundle.main.url(forResource: "main_characters", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let catalog = try? JSONDecoder().decode(Catalog.self, from: data) else { return nil }
+        return catalog.characters.first { $0.regionID == "london" }
+    }()
 
     var body: some View {
-        WelcomeProductFrame(accent: .dsCyan, accessibilityLabel: "个性化学习档案与旅伴选择概念展示") {
-            VStack(spacing: 11) {
-                HStack(alignment: .top, spacing: 10) {
-                    BrandMascotView(pose: .guide, size: 52, showsShadow: false)
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("你的第一段旅程")
-                            .font(.system(size: 14, weight: .black, design: .rounded))
-                        Text("根据当前水平实时调整")
-                            .font(.system(size: 9, weight: .medium))
-                            .foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    Text("B1")
-                        .font(.system(size: 15, weight: .black, design: .rounded))
-                        .foregroundStyle(Color.dsSkyDeep)
-                        .frame(width: 40, height: 40)
-                        .background(Color.dsSky.opacity(0.12), in: Circle())
-                }
-
+        WelcomeProductFrame(accent: .dsCyan, accessibilityLabel: "选择第一位旅伴概念展示") {
+            WelcomeDeviceCanvas(minimumHeight: 400) {
                 VStack(spacing: 8) {
-                    WelcomeSettingRow(icon: "textformat", title: "表达难度", value: "生活交流")
-                    Divider().padding(.leading, 30)
-                    WelcomeSettingRow(icon: "waveform", title: "开口辅助", value: "需要时出现")
-                    Divider().padding(.leading, 30)
-                    WelcomeSettingRow(icon: "arrow.triangle.2.circlepath", title: "动态调整", value: "已开启")
-                }
-                .padding(10)
-                .background(Color.dsSurfaceMuted, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("选择第一位旅伴")
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundStyle(.secondary)
-                    HStack(spacing: 14) {
-                        WelcomeCompanionChoice(name: "Oliver", city: "伦敦", imageName: "avatar_oliver", isSelected: true)
-                        WelcomeCompanionChoice(name: "Ruby", city: "墨尔本", imageName: "avatar_ruby", isSelected: false)
-                        WelcomeCompanionChoice(name: "Marcus", city: "纽约", imageName: "avatar_marcus", isSelected: false)
+                    Text("选择你的第一位旅伴").font(.subheadline.bold())
+                    if let card = Self.oliver {
+                        StarterPortraitCard(card: card, city: "伦敦", flag: "🇬🇧", compact: true)
                     }
-                    .frame(maxWidth: .infinity)
+                    HStack(spacing: 7) {
+                        Capsule().fill(Color.dsSky).frame(width: 18, height: 7)
+                        Circle().fill(Color.dsBorder).frame(width: 7, height: 7)
+                        Circle().fill(Color.dsBorder).frame(width: 7, height: 7)
+                    }
+                    Text("去伦敦找 Oliver").font(.subheadline.bold())
+                        .foregroundStyle(.white).frame(maxWidth: .infinity).padding(10)
+                        .background(Color.dsSky, in: RoundedRectangle(cornerRadius: 12))
                 }
-
-                Label("所有选择之后都能修改", systemImage: "checkmark.seal.fill")
-                    .font(.system(size: 9, weight: .bold))
-                    .foregroundStyle(Color.dsCyan)
-                    .opacity(isActive ? 1 : 0)
-                    .scaleEffect(reduceMotion || isActive ? 1 : 0.9)
-                    .animation(reduceMotion ? .easeOut(duration: 0.18) : .spring(response: 0.4, dampingFraction: 0.86).delay(0.1), value: isActive)
+                .padding(14)
             }
-            .padding(13)
         }
     }
 }
@@ -658,46 +572,21 @@ private struct WelcomeProductFrame<Content: View>: View {
     }
 }
 
-private struct WelcomeMessageBubble: View {
-    let text: String
-    let isOutgoing: Bool
-    let delay: Double
-    let isActive: Bool
-    let reduceMotion: Bool
-
-    var body: some View {
-        HStack {
-            if isOutgoing { Spacer(minLength: 42) }
-            Text(text)
-                .font(.system(size: 10.5, weight: .medium, design: .rounded))
-                .foregroundStyle(isOutgoing ? .white : .primary)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 8)
-                .background(
-                    isOutgoing ? Color.dsSky : Color.dsBubbleIncoming,
-                    in: RoundedRectangle(cornerRadius: 13, style: .continuous)
-                )
-            if !isOutgoing { Spacer(minLength: 42) }
-        }
-        .offset(y: reduceMotion || isActive ? 0 : 12)
-        .opacity(isActive ? 1 : 0.12)
-        .animation(
-            reduceMotion
-                ? .easeOut(duration: 0.16)
-                : .spring(response: 0.38, dampingFraction: 0.94).delay(delay),
-            value: isActive
-        )
-    }
-}
-
 private struct WelcomeMiniTabBar: View {
     let selected: Int
 
-    private let tabs = [
+    private var tabs: [(String, String)] {
+        var items = [
+        ("信息", "bubble.left.and.bubble.right"),
+        ("联系人", "person.2"),
         ("活动", "figure.walk"),
-        ("消息", "bubble.left.and.bubble.right.fill"),
-        ("我的", "person.crop.circle.fill"),
-    ]
+        ("我的", "person"),
+        ]
+        #if DEBUG
+        items.append(("测试", "heart.text.square"))
+        #endif
+        return items
+    }
 
     var body: some View {
         GeometryReader { proxy in
@@ -720,56 +609,6 @@ private struct WelcomeMiniTabBar: View {
         .font(.system(size: 12, weight: .semibold))
         .background(.ultraThinMaterial)
         .overlay(alignment: .top) { Divider() }
-    }
-}
-
-private struct WelcomeSettingRow: View {
-    let icon: String
-    let title: String
-    let value: String
-
-    var body: some View {
-        HStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 10, weight: .bold))
-                .foregroundStyle(Color.dsCyan)
-                .frame(width: 22, height: 22)
-                .background(Color.dsCyan.opacity(0.1), in: RoundedRectangle(cornerRadius: 7))
-            Text(title)
-                .font(.system(size: 10, weight: .semibold))
-            Spacer()
-            Text(value)
-                .font(.system(size: 9, weight: .bold))
-                .foregroundStyle(.secondary)
-        }
-    }
-}
-
-private struct WelcomeCompanionChoice: View {
-    let name: String
-    let city: String
-    let imageName: String
-    let isSelected: Bool
-
-    var body: some View {
-        VStack(spacing: 4) {
-            AvatarBadge(name: name, size: 48, imageName: imageName)
-                .overlay {
-                    if isSelected {
-                        Circle()
-                            .stroke(Color.dsSky, lineWidth: 2.5)
-                            .padding(-3)
-                    }
-                }
-            Text(name)
-                .font(.system(size: 9, weight: .bold))
-            Text(city)
-                .font(.system(size: 8, weight: .medium))
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 7)
-        .background(isSelected ? Color.dsSky.opacity(0.08) : Color.clear, in: RoundedRectangle(cornerRadius: 12))
     }
 }
 

@@ -357,7 +357,7 @@ struct RootView: View {
     @ViewBuilder
     private var launchContent: some View {
         if showsWelcome {
-            WelcomeJourneyView {
+            WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
                 welcomeCompleted = true
                 completedForcedWelcome = true
             }
