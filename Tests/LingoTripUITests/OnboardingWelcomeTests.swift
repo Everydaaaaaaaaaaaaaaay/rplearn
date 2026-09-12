@@ -196,7 +196,7 @@ final class OnboardingWelcomeTests: XCTestCase {
                     }
                 } else if page == 2 {
                     XCTAssertTrue(image.staticTexts["spontaneous"].waitForExistence(timeout: 3))
-                    XCTAssertTrue(image.staticTexts["Fancy a spontaneous trip?"].exists)
+                    XCTAssertTrue(image.staticTexts["Are you a spontaneous person?"].exists)
                 } else if page == 3 {
                     XCTAssertTrue(image.descendants(matching: .any)["onboarding.character.avatar.london"].firstMatch.exists)
                     for label in ["表达难度", "开口辅助", "动态调整"] {

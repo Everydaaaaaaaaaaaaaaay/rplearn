@@ -49,7 +49,7 @@ public struct WelcomeJourneyView: View {
                             index: 1,
                             eyebrow: "会记住你的 AI 旅伴",
                             title: "对话结束，\n关系不会归零。",
-                            detail: "旅伴会记住你说过的话、共同经历的故事，也会保留自己的性格。",
+                            detail: "AI 旅伴会记住你聊过的话题和喜好，也有各自的性格与故事。",
                             accessibilityID: "welcome.page.companion"
                         ) {
                             WelcomeConversationScreen(isActive: currentPage == 1, reduceMotion: reduceMotion)
@@ -71,7 +71,7 @@ public struct WelcomeJourneyView: View {
                             index: 3,
                             eyebrow: "你的第一位旅伴",
                             title: "从一句 Hello，\n认识一个新朋友。",
-                            detail: "伦敦、墨尔本、纽约。选一位合拍的旅伴，按自己的节奏开始。",
+                            detail: "在开场剧情里认识三位 AI 旅伴，再选择一位，开始你的英语对话。",
                             accessibilityID: "welcome.page.personalized"
                         ) {
                             WelcomePersonalizedScreen(isActive: currentPage == 3, reduceMotion: reduceMotion)
@@ -458,9 +458,9 @@ private struct WelcomeConversationScreen: View {
                     WelcomeChatHeader()
                     VStack(spacing: 12) {
                         Text("17:20 · 墨尔本").font(.caption2).foregroundStyle(.secondary)
-                        WelcomeChatMessage(text: "Fancy a walk by the sea?")
-                        WelcomeChatMessage(text: "Yes! Somewhere quiet?", outgoing: true)
-                        WelcomeChatMessage(text: "I remember your favourite spot. Meet you there!")
+                        WelcomeChatMessage(text: "How did your presentation go?")
+                        WelcomeChatMessage(text: "Much better! I felt more confident.", outgoing: true)
+                        WelcomeChatMessage(text: "You said you were nervous last time. What helped?")
                     }
                     .padding(12)
                     .frame(maxHeight: .infinity)
@@ -481,7 +481,7 @@ private struct WelcomeDictionaryScreen: View {
                 ZStack(alignment: .bottom) {
                     VStack(spacing: 0) {
                         WelcomeChatHeader()
-                        WelcomeChatMessage(text: "Fancy a spontaneous trip?")
+                        WelcomeChatMessage(text: "Are you a spontaneous person?")
                             .padding(12)
                         Spacer(minLength: 0)
                         WelcomeChatComposer()
@@ -518,21 +518,17 @@ private struct WelcomePersonalizedScreen: View {
     }()
 
     var body: some View {
-        WelcomeProductFrame(accent: .dsCyan, accessibilityLabel: "选择第一位旅伴概念展示") {
+        WelcomeProductFrame(accent: .dsCyan, accessibilityLabel: "AI 旅伴 Oliver 资料预览") {
             WelcomeDeviceCanvas(minimumHeight: 400) {
                 VStack(spacing: 8) {
-                    Text("选择你的第一位旅伴").font(.subheadline.bold())
+                    Text("认识 AI 旅伴 · Oliver").font(.subheadline.bold())
                     if let card = Self.oliver {
                         StarterPortraitCard(card: card, city: "伦敦", flag: "🇬🇧", compact: true)
                     }
-                    HStack(spacing: 7) {
-                        Capsule().fill(Color.dsSky).frame(width: 18, height: 7)
-                        Circle().fill(Color.dsBorder).frame(width: 7, height: 7)
-                        Circle().fill(Color.dsBorder).frame(width: 7, height: 7)
-                    }
-                    Text("去伦敦找 Oliver").font(.subheadline.bold())
-                        .foregroundStyle(.white).frame(maxWidth: .infinity).padding(10)
-                        .background(Color.dsSky, in: RoundedRectangle(cornerRadius: 12))
+                    Text("伦敦的 AI 旅伴")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .padding(.top, 8)
                 }
                 .padding(14)
             }

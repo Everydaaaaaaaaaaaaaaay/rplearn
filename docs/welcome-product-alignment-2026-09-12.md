@@ -34,3 +34,9 @@ Verification results and installation status are recorded after the final visual
 
 Bundles: `/tmp/lingotrip-grammar-derived-20260911/VerificationResults/`.
 Final compact captures: `/tmp/welcome-real-final-images/`.
+
+## Virtual companion presentation correction
+
+Welcome and promotional examples must describe AI conversation and in-app stories without implying real-world meetings or physical contact with NPCs. Ruby's sample now recalls the user's presentation nerves; the dictionary example asks about personality instead of inviting a trip.
+
+The final welcome illustration is a static Oliver profile preview. Removed its decorative paging dots and fake travel button. The functional four-page welcome indicator remains. Actual three-way starter selection occurs after the opening group-chat story, as reflected in the welcome description.
