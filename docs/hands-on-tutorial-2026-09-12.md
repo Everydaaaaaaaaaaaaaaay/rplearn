@@ -14,7 +14,7 @@ App/ProductionTutorialView 在组合根装配正式 ChatFeature.ChatView 和 Hom
 
 每次打开创建独立 inMemory ModelContainer。聊天、好友、收藏、资产和记忆的 stores 全部来自该容器；不会传入正式账号的 stores、BackendClient 或生产 LLM。唯一真实写入是首启最后保存选定旅伴的原有完成回调。重玩完成回调只有 dismiss。
 
-教程用本地 LLM adapter 提供固定练习回复，其他 AI 请求不联网。初始句翻译预置；不会为任意输入伪造译文。词典整句系统翻译回退关闭。录音和实时通话不在本教程开放，避免媒体文件与外部权限流程；正式聊天不受影响。
+教程用本地 LLM adapter 提供固定练习回复，其他 AI 请求不联网。初始句翻译预置；不会为任意输入伪造译文。词典例句优先读取开场演示词的预置译文；其余例句使用 Apple 本地翻译兜底，不调用付费 AI。语言包未就绪时，用户点重试可触发系统语言准备流程。录音和实时通话不在本教程开放，避免媒体文件与外部权限流程；正式聊天不受影响。
 
 Home 的教程配置确保不调用 NPC 注册/选人服务、不 reserve/complete ActivityEncounterHistory，也不读写 ActivityJournal。练习加好友调用正式 RosterStore.makeFriend，但仅操作内存容器。各场景使用本地短分支文本，呈现、选择和结束的状态机与正式功能一致。
 

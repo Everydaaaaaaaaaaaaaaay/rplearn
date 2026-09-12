@@ -145,7 +145,7 @@ public struct ChatView: View {
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback,
             exampleTranslationActions: deps.exampleTranslationActions,
-            allowsSystemTranslationFallback: deps.tutorial == nil
+            allowsSystemTranslationFallback: true
         )
         .onChange(of: wordSelection) { _, selection in
             if selection != nil { deps.tutorial?.onEvent("word") }

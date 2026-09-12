@@ -3,6 +3,7 @@ import ChatFeature
 import CoreKit
 import DesignSystem
 import DomainKit
+import DictKit
 import HomeFeature
 import LLMKit
 import MediaKit
@@ -182,7 +183,7 @@ private final class TutorialWorkspace {
         ChatDependencies(tutorial: .init(onEvent: onEvent), chatStore: chat, rosterStore: roster,
             favorites: favorites, llm: TutorialLLM(), dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: environment.speech,
-            exampleTranslationActions: .init(translate: { _ in nil }), audioSession: environment.audioSession,
+            exampleTranslationActions: TutorialExampleTranslations.actions, audioSession: environment.audioSession,
             memoryStore: memory, itemStore: items, economyStore: economy, progression: progression,
             voiceMedia: voice, regionName: { environment.regionCatalog.region(id: $0)?.nameZh ?? $0 }, replyDelayScale: 0)
     }
@@ -191,7 +192,7 @@ private final class TutorialWorkspace {
             ticketStubStore: stubs, storyProgress: stories, regionCatalog: environment.regionCatalog,
             rosterStore: roster, chatStore: chat, favorites: favorites, dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: environment.speech, llm: TutorialLLM(),
-            exampleTranslationActions: .init(translate: { _ in nil }))
+            exampleTranslationActions: TutorialExampleTranslations.actions)
     }
 }
 private enum TutorialFailure: Error { case unavailable }
@@ -210,4 +211,30 @@ private struct TutorialMediaBackend: VoiceMediaBackend {
     func deleteVoiceMedia(assetID: UUID) async throws { throw TutorialFailure.unavailable }
     func reserveVoiceMedia(assetID: UUID, byteSize: Int, checksumSha256: String, contentType: String) async throws -> BackendMediaReservation { throw TutorialFailure.unavailable }
     func voiceMediaDownload(assetID: UUID) async throws -> BackendMediaDownload { throw TutorialFailure.unavailable }
+}
+
+/// Prepared translations for the opening practice; other entries use on-device translation.
+private enum TutorialExampleTranslations {
+    static let actions = DictExampleTranslationActions { request in
+        translations[request.sentence].map { DictExampleTranslation(sentenceZh: $0) }
+    }
+    static let translations: [String: String] = [
+        "more land": "更多土地",
+        "more support": "更多支持",
+        "more interesting": "更有趣",
+        "more beautiful": "更美丽",
+        "sound investments": "稳健的投资",
+        "a sound economy": "稳健的经济",
+        "the sound of rain on the roof": "雨落在屋顶上的声音",
+        "the beautiful sound of music": "悦耳的音乐声",
+        "This sounds interesting": "这听起来很有趣。",
+        "She went `Mmmmm'": "她发出了“嗯——”的声音。",
+        "The gun went `bang'": "枪“砰”的一声响了。",
+        "He said that he wanted to marry her": "他说他想娶她。",
+        "tell me what is bothering you": "告诉我你在烦恼什么。",
+        "he wanted his share in cash": "他希望自己的那一份以现金支付。",
+        "he bought 100 shares of IBM at the market price": "他按市价买了 100 股 IBM 股票。",
+        "Our children share a love of music": "我们的孩子都热爱音乐。",
+        "The two countries share a long border": "这两个国家有一条很长的共同边界。",
+    ]
 }

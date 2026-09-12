@@ -17,6 +17,23 @@ final class OnboardingWelcomeTests: XCTestCase {
         app = nil
     }
 
+    func testTutorialMoreExamplesHavePreparedTranslationsWithoutBackend() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launch()
+        let confirm = app.buttons["onboarding.selection.confirm"]
+        XCTAssertTrue(confirm.waitForExistence(timeout: 8))
+        confirm.tap()
+        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "more")).firstMatch
+        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        word.tap()
+        for translation in ["更多土地", "更多支持", "更有趣", "更美丽"] {
+            XCTAssertTrue(app.staticTexts["中文翻译：" + translation].waitForExistence(timeout: 5), translation)
+        }
+        XCTAssertFalse(app.staticTexts["翻译暂不可用，点击重试"].exists)
+        captureScreen(named: "tutorial-prepared-example-translations")
+    }
+
     func testWelcomeExplainsTheProductAndBeginsTheExistingOnboardingFlow() {
         app.launchEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] = "1"
         app.launchEnvironment["UI_TEST_FORCE_SIGNED_OUT"] = "1"

@@ -58,7 +58,7 @@ struct ActivityActionView: View {
                 contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
                 toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }),
             exampleTranslationActions: deps.exampleTranslationActions,
-            allowsSystemTranslationFallback: deps.tutorial == nil)
+            allowsSystemTranslationFallback: true)
     }
 
     private var navigationHeader: some View {
