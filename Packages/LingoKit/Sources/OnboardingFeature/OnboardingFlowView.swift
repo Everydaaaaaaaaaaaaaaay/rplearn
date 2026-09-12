@@ -310,7 +310,7 @@ struct ChatStoryView: View {
             VStack(spacing: 0) {
                 ScrollViewReader { proxy in
                     ScrollView {
-                        LazyVStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading, spacing: 14) {
                             ForEach(Array(player.history.enumerated()), id: \.element.id) { index, line in
                                 VStack(alignment: .leading, spacing: 8) {
                                     if let reply = replies[index] {
@@ -325,17 +325,31 @@ struct ChatStoryView: View {
                                         .padding(.leading, 44)
                                     MessageBubble(side: .incoming, leadingAccessory: {
                                         if line.speaker == "咕咕" || line.speaker == "嘎嘎" {
-                                            BrandMascotView(pose: line.speaker == "嘎嘎" ? .coach : .guide,
+                                            BrandMascotView(pose: line.speaker == "嘎嘎" ? .reminder : .guide,
                                                             size: 32, showsShadow: false)
-                                        } else if let character = character(for: line.sprite) {
+                                        } else if let character = speakingCharacter(line.speaker) {
                                             AvatarBadge(name: character.card.name, size: 32,
                                                         imageName: character.card.avatarAssetName)
                                         }
                                     }) {
-                                        TappableText(tokens: TokenCache.tokens(for: line.text, cacheKey: "opening-\(line.id)"),
-                                            contextID: "opening-\(line.id)", selection: wordSelection,
-                                            onSelect: { wordSelection = $0 })
-                                            .fixedSize(horizontal: false, vertical: true)
+                                        VStack(alignment: .leading, spacing: 10) {
+                                            let paragraphs = line.text.components(separatedBy: "\n\n")
+                                            ForEach(Array(paragraphs.enumerated()), id: \.offset) { paragraphIndex, paragraph in
+                                                if paragraphIndex == 0, speakingCharacter(line.speaker) != nil {
+                                                    TappableText(tokens: TokenCache.tokens(for: paragraph, cacheKey: "opening-\(line.id)-en"),
+                                                        contextID: "opening-\(line.id)", selection: wordSelection,
+                                                        onSelect: { wordSelection = $0 })
+                                                        .fixedSize(horizontal: false, vertical: true)
+                                                } else {
+                                                    Text(paragraph)
+                                                        .font(paragraphIndex == 0 ? .body : .subheadline)
+                                                        .foregroundStyle(paragraphIndex == 0 ? Color.primary : Color.secondary)
+                                                        .lineSpacing(4)
+                                                        .fixedSize(horizontal: false, vertical: true)
+                                                        .accessibilityIdentifier("onboarding.story.line.\(line.id).paragraph.\(paragraphIndex)")
+                                                }
+                                            }
+                                        }
                                     }
                                     if shouldShowCard(at: index, line: line),
                                        let character = character(for: line.sprite) {
@@ -356,14 +370,20 @@ struct ChatStoryView: View {
                                 )
                             }
                         }
-                        .padding(12)
-                    }
-                    .onChange(of: player.history.count) {
-                        if let last = player.history.last {
-                            withAnimation(reduceMotion ? nil : .snappy) {
-                                proxy.scrollTo(last.id, anchor: .bottom)
-                            }
+                        .padding(16)
+                        .onGeometryChange(for: CGSize.self) { $0.size } action: { _ in
+                            // Eager rows have their final bilingual/card height before scrolling.
+                            proxy.scrollTo("opening.bottom", anchor: .bottom)
                         }
+                        Color.clear.frame(height: 1).id("opening.bottom")
+                    }
+                    .accessibilityIdentifier("onboarding.story.messages")
+                    .defaultScrollAnchor(.bottom, for: .sizeChanges)
+                    .contentShape(Rectangle())
+                    .onTapGesture { advanceOrFinish() }
+                    .accessibilityAction(named: "继续剧情") { advanceOrFinish() }
+                    .onChange(of: player.history.count) {
+                        proxy.scrollTo("opening.bottom", anchor: .bottom)
                     }
                 }
             }
@@ -410,18 +430,12 @@ struct ChatStoryView: View {
             }
             .padding(16)
             .background(Color.dsBackground.opacity(0.96))
-        } else {
-            Button(action: advanceOrFinish) {
-                Label(player.isFinished ? "认识第一位旅伴" : "继续", systemImage: "arrow.right")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.dsActionPrimary)
-            .accessibilityIdentifier("onboarding.story.continue")
-            .padding(16)
+
         }
     }
 
     private func advanceOrFinish() {
+        guard wordSelection == nil else { return }
         if player.isFinished {
             onFinished()
         } else if player.currentChoices == nil {
@@ -429,6 +443,10 @@ struct ChatStoryView: View {
                 player.advance()
             }
         }
+    }
+
+    private func speakingCharacter(_ speaker: String) -> CharacterDTO? {
+        characters.first { $0.card.name.split(separator: " ").first.map(String.init) == speaker }
     }
 
     private func shouldShowCard(at index: Int, line: StoryPlayer.Line) -> Bool {

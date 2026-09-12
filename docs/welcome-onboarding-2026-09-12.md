@@ -1,5 +1,8 @@
 # Welcome and opening story · 2026-09-12
 
+This v1 record is superseded by [the v2 correction](welcome-onboarding-v2-2026-09-12.md).
+It records the earlier implementation and its tests, not acceptance of the current release.
+
 ## Delivered behavior
 
 - Welcome uses eight physical iPhone 13 screenshots (four screens × light/dark), replacing

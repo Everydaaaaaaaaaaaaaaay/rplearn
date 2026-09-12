@@ -56,12 +56,12 @@ final class OnboardingWelcomeTests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["走进城市生活"].waitForExistence(timeout: 8))
-        XCTAssertTrue(app.images["welcome.screenshot.activity"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["welcome.concept.activity"].firstMatch.exists)
         app.swipeLeft()
         XCTAssertTrue(app.staticTexts["会记住你的 AI 旅伴"].waitForExistence(timeout: 3))
         app.swipeRight()
         XCTAssertTrue(app.staticTexts["走进城市生活"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.images["welcome.screenshot.activity"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["welcome.concept.activity"].firstMatch.exists)
     }
 
     func testAccessibilityTextKeepsWelcomeNavigationReachable() {
@@ -134,7 +134,7 @@ final class OnboardingWelcomeTests: XCTestCase {
         app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
         app.launchEnvironment["UI_TEST_ONBOARDING_STORY"] = "1"
         app.launch()
-        XCTAssertTrue(app.buttons["onboarding.story.continue"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.scrollViews["onboarding.story.messages"].waitForExistence(timeout: 10))
         var choices = 0
         for _ in 0..<55 {
             if app.buttons["onboarding.selection.confirm"].exists { break }
@@ -146,12 +146,11 @@ final class OnboardingWelcomeTests: XCTestCase {
                 option.tap()
                 choices += 1
             } else {
-                let next = app.buttons["onboarding.story.continue"]
-                XCTAssertTrue(next.waitForExistence(timeout: 3))
-                next.tap()
+                advanceStory()
+                XCTAssertFalse(app.buttons["onboarding.story.continue"].exists)
             }
         }
-        XCTAssertEqual(choices, 3)
+        XCTAssertEqual(choices, 1)
         XCTAssertTrue(app.buttons["onboarding.selection.confirm"].waitForExistence(timeout: 5))
     }
 
@@ -170,7 +169,7 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(app.buttons["welcome.next"].waitForExistence(timeout: 5))
         for _ in 0..<3 { app.buttons["welcome.next"].tap() }
         app.buttons["welcome.begin"].tap()
-        XCTAssertTrue(app.buttons["onboarding.story.continue"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.scrollViews["onboarding.story.messages"].waitForExistence(timeout: 5))
         app.buttons["introduction.close"].tap()
         XCTAssertTrue(introduction.waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["onboarding.selection.confirm"].exists)
@@ -185,7 +184,7 @@ final class OnboardingWelcomeTests: XCTestCase {
             XCTAssertTrue(app.buttons["welcome.next"].waitForExistence(timeout: 8))
             for page in 0..<4 {
                 let names = ["activity", "chat", "dictionary", "companion"]
-                let image = app.images["welcome.screenshot.\(names[page])"]
+                let image = app.descendants(matching: .any)["welcome.concept.\(names[page])"].firstMatch
                 XCTAssertTrue(image.waitForExistence(timeout: 3))
                 let centered = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
                     abs(image.frame.midX - self.app.frame.midX) < 2
@@ -196,6 +195,38 @@ final class OnboardingWelcomeTests: XCTestCase {
             }
             app.terminate()
         }
+    }
+
+    private func advanceStory() {
+        let messages = app.scrollViews["onboarding.story.messages"]
+        XCTAssertTrue(messages.waitForExistence(timeout: 3))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.45)).tap()
+    }
+
+    func testStoryScrollsToNewCardsAndWordLookupDoesNotAdvance() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_STORY"] = "1"
+        app.launch()
+        XCTAssertTrue(app.scrollViews["onboarding.story.messages"].waitForExistence(timeout: 10))
+        for region in ["london", "melbourne", "newyork"] {
+            let card = app.otherElements["onboarding.intro.\(region)"]
+            for _ in 0..<5 where !card.exists { advanceStory() }
+            XCTAssertTrue(card.waitForExistence(timeout: 3))
+            let visible = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                card.frame.maxY <= self.app.frame.maxY - 8 && card.frame.minY > 0
+            }, object: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [visible], timeout: 3), .completed)
+            captureScreen(named: "opening-card-\(region)")
+        }
+        // The short English invitation remains a real lookup target; a word tap must not progress.
+        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "photographer")).firstMatch
+        XCTAssertTrue(word.exists)
+        XCTAssertFalse(app.staticTexts["onboarding.story.line.6.paragraph.0"].exists)
+        word.tap()
+        XCTAssertTrue(app.staticTexts["photographer"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.staticTexts["onboarding.story.line.6.paragraph.0"].exists)
+        XCTAssertFalse(app.buttons["onboarding.story.choice.0"].exists)
+        captureScreen(named: "opening-word-lookup")
     }
 
     private func advance(toEyebrow eyebrow: String) {

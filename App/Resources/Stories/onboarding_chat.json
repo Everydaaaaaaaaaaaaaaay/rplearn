@@ -6,7 +6,7 @@
       "id": "start",
       "type": "line",
       "speaker": "咕咕",
-      "text": "你来啦！我把地图摊开了，结果嘎嘎把行李箱坐住了。",
+      "text": "咕！终于等到你啦！我是咕咕，地图、行李，还有接你的朋友——我全都准备好啦咕！",
       "next": "gaga",
       "sprite": ""
     },
@@ -14,82 +14,7 @@
       "id": "gaga",
       "type": "line",
       "speaker": "嘎嘎",
-      "text": "因为他还没问你想怎么出发。我是嘎嘎，先陪你坐一会儿也行。",
-      "next": "c1",
-      "sprite": ""
-    },
-    {
-      "id": "c1",
-      "type": "choice",
-      "options": [
-        {
-          "text": "想先去街上走走。",
-          "next": "explore",
-          "setFlags": {
-            "explore": true
-          }
-        },
-        {
-          "text": "想先认识一个朋友。",
-          "next": "friend",
-          "setFlags": {
-            "friend": true
-          }
-        },
-        {
-          "text": "有点紧张，慢慢来吧。",
-          "next": "gentle",
-          "setFlags": {
-            "gentle": true
-          }
-        }
-      ]
-    },
-    {
-      "id": "explore",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "那就不赶景点。找个公园坐下，或者躲进咖啡馆，看看生活会把谁带到你面前。",
-      "next": "explore2",
-      "sprite": ""
-    },
-    {
-      "id": "explore2",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "我们先帮你认识一位当地旅伴。以后去「活动」里选个行动，就能遇见更多人，也可能享受一段独处。",
-      "next": "invite",
-      "sprite": ""
-    },
-    {
-      "id": "friend",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "好，那就先从一个名字、一句招呼开始。不需要准备一篇自我介绍。",
-      "next": "friend2",
-      "sprite": ""
-    },
-    {
-      "id": "friend2",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "我认识三个很不一样的人。他们各自留了句话，你听听更想接上谁的话题。",
-      "next": "invite",
-      "sprite": ""
-    },
-    {
-      "id": "gentle",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "那我们慢一点。这里不会因为一句话说得不够漂亮，就让你重新开始。",
-      "next": "gentle2",
-      "sprite": ""
-    },
-    {
-      "id": "gentle2",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "先看看三位旅伴也好，等你愿意了再说 Hello。我替你把催促的闹钟关掉。",
+      "text": "地图拿反了。……我是嘎嘎，行李牌是我检查的。才不是特意等你，只是顺便看着这只迷糊鸟嘎。",
       "next": "invite",
       "sprite": ""
     },
@@ -97,7 +22,7 @@
       "id": "invite",
       "type": "line",
       "speaker": "咕咕",
-      "text": "三座城市，三份邀请。哪一份让你想多停留一会儿？",
+      "text": "嘿嘿，先不管地图！Oliver、Ruby、Marcus，我们的新旅伴到啦！谁先来接人咕？",
       "next": "oliver",
       "sprite": ""
     },
@@ -105,7 +30,7 @@
       "id": "oliver",
       "type": "line",
       "speaker": "Oliver",
-      "text": "I found a note in a second-hand book. No name, just a terrible poem. Want to judge it with me?\n\n我在一本旧书里发现一张字条。没署名，只有一首糟糕的诗。想一起品评一下吗？",
+      "text": "I vote London. I’m Oliver. I work in a second-hand bookshop, so I can offer you a good book and shelter from the rain. Mostly the rain.\n\n我投伦敦一票。我是 Oliver，在一家旧书店工作。我能给你一本好书，还有一个躲雨的地方。主要是躲雨。",
       "next": "ruby",
       "sprite": "card:london"
     },
@@ -113,7 +38,7 @@
       "id": "ruby",
       "type": "line",
       "speaker": "Ruby",
-      "text": "My coffee art looks like a jellyfish today. I’m calling it a marine biology project.\n\n今天的拉花像只水母。我决定管它叫海洋生物学项目。",
+      "text": "A rainy bookshop? Strong pitch, Oliver! I’m Ruby, in Melbourne. I make coffee and study marine biology. Come for a flat white; stay for my extremely passionate turtle stories.\n\n下雨天的旧书店？很会拉票嘛，Oliver！我是墨尔本的 Ruby，做咖啡，也学海洋生物学。来喝杯澳白吧，然后留下来听我滔滔不绝地讲海龟。",
       "next": "marcus",
       "sprite": "card:melbourne"
     },
@@ -121,187 +46,106 @@
       "id": "marcus",
       "type": "line",
       "speaker": "Marcus",
-      "text": "I took two photos of the same street. Somehow they tell completely different stories. Which one would you keep?\n\n我拍了同一条街的两张照片，它们却像两个不同的故事。你会留下哪张？",
-      "next": "c2",
+      "text": "Now I’m competing with books AND turtles? I’m Marcus, a street photographer in New York. Give me one afternoon. I’ll show you the bits of the city that never make the postcards.\n\n现在我要同时跟书和海龟竞争了？我是 Marcus，在纽约拍街头摄影。给我一个下午，我带你看看那些从没出现在明信片上的城市角落。",
+      "next": "gaga2",
       "sprite": "card:newyork"
     },
     {
-      "id": "c2",
+      "id": "gaga2",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "喂喂，一个人又不能分成三份！……不过书、咖啡和散步，我都要。你先挑，剩下的替我留着嘎。",
+      "next": "choice",
+      "sprite": ""
+    },
+    {
+      "id": "choice",
       "type": "choice",
       "options": [
         {
-          "text": "那首诗到底有多糟？",
-          "next": "poem",
+          "text": "我想先钻进那家旧书店。",
+          "next": "book",
           "setFlags": {
-            "poem": true
+            "book": true
           }
         },
         {
-          "text": "水母咖啡，我想看看。",
+          "text": "咖啡和海龟，听起来很难拒绝。",
           "next": "coffee",
           "setFlags": {
             "coffee": true
           }
         },
         {
-          "text": "给我看看那两张照片。",
-          "next": "photo",
+          "text": "明信片之外的纽约？带我看看。",
+          "next": "street",
           "setFlags": {
-            "photo": true
+            "street": true
           }
         }
       ]
     },
     {
-      "id": "poem",
+      "id": "book",
       "type": "line",
-      "speaker": "嘎嘎",
-      "text": "你已经找到接话的角度了：好奇心。有时候一句「然后呢」比完美的开场白更有用。",
-      "next": "poem2",
+      "speaker": "Oliver",
+      "text": "Excellent. I’ll clear the chair by the window. If you find my unfinished novel on it, please pretend you didn’t.\n\n太好了。我把窗边那张椅子收拾出来。如果上面放着我没写完的小说，请假装没看见。",
+      "next": "book2",
       "sprite": ""
     },
     {
-      "id": "poem2",
+      "id": "book2",
       "type": "line",
-      "speaker": "咕咕",
-      "text": "Oliver 在伦敦的旧书店工作，自己也写小说。你们大概会对「糟糕」的标准争论一会儿。",
-      "next": "practice",
+      "speaker": "Ruby",
+      "text": "Too late, Oliver. Now we all want to read it.\n\n晚了，Oliver。现在我们都想看了。",
+      "next": "end_gaga",
       "sprite": ""
     },
     {
       "id": "coffee",
       "type": "line",
-      "speaker": "咕咕",
-      "text": "Ruby 在墨尔本一边做咖啡，一边学海洋生物学。聊起海里的事，她可就认真了。",
+      "speaker": "Ruby",
+      "text": "Deal! One coffee, one turtle story. I’ll try to keep it to one. No promises, though.\n\n成交！一杯咖啡，一个海龟故事。我尽量只讲一个。不过不保证哦。",
       "next": "coffee2",
       "sprite": ""
     },
     {
       "id": "coffee2",
       "type": "line",
-      "speaker": "嘎嘎",
-      "text": "从她的小玩笑接话就很好。不用把聊天变成姓名、年龄、职业的问卷。",
-      "next": "practice",
+      "speaker": "Marcus",
+      "text": "I’ve heard “just one turtle story” before. Bring a charger.\n\n“只讲一个海龟故事”这话我听过。记得带充电器。",
+      "next": "end_gaga",
       "sprite": ""
     },
     {
-      "id": "photo",
+      "id": "street",
+      "type": "line",
+      "speaker": "Marcus",
+      "text": "You’re on. Comfortable shoes, no checklist. We’ll let the street surprise us.\n\n说定了。穿双舒服的鞋，不列打卡清单。让街道给我们一点惊喜。",
+      "next": "street2",
+      "sprite": ""
+    },
+    {
+      "id": "street2",
+      "type": "line",
+      "speaker": "Oliver",
+      "text": "A photographer saying “no checklist” is how you end up walking ten miles.\n\n摄影师说“不列清单”，通常意味着你最后会走上十英里。",
+      "next": "end_gaga",
+      "sprite": ""
+    },
+    {
+      "id": "end_gaga",
+      "type": "line",
+      "speaker": "嘎嘎",
+      "text": "看吧，刚认识就已经吵吵闹闹的了。……还挺热闹。别看我，我可没在偷笑嘎。",
+      "next": "finish",
+      "sprite": ""
+    },
+    {
+      "id": "finish",
       "type": "line",
       "speaker": "咕咕",
-      "text": "Marcus 是纽约的街头摄影师。同一条街，他总能注意到别人错过的东西。",
-      "next": "photo2",
-      "sprite": ""
-    },
-    {
-      "id": "photo2",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "你可以有自己的看法，也可以说还没想好。聊天不是猜一个标准答案。",
-      "next": "practice",
-      "sprite": ""
-    },
-    {
-      "id": "practice",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "假如刚认识的旅伴问：What would you like to do first?\n\n你想先做什么？试着选一句你会说的话。",
-      "next": "c3",
-      "sprite": ""
-    },
-    {
-      "id": "c3",
-      "type": "choice",
-      "options": [
-        {
-          "text": "Let’s explore a little.",
-          "next": "say_explore",
-          "setFlags": {
-            "say_explore": true
-          }
-        },
-        {
-          "text": "Somewhere quiet would be nice.",
-          "next": "say_quiet",
-          "setFlags": {
-            "say_quiet": true
-          }
-        },
-        {
-          "text": "I’m not sure yet. Any ideas?",
-          "next": "say_help",
-          "setFlags": {
-            "say_help": true
-          }
-        }
-      ]
-    },
-    {
-      "id": "say_explore",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "「我们先随便逛逛吧。」听起来已经迈出第一步了。我会记得你在这次出发前说过，想先看看周围。",
-      "next": "help",
-      "sprite": ""
-    },
-    {
-      "id": "say_quiet",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "「找个安静的地方就好。」把自己的偏好告诉对方，也是很自然的聊天。不是每段旅程都要热热闹闹。",
-      "next": "help",
-      "sprite": ""
-    },
-    {
-      "id": "say_help",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "「还没想好，你有什么主意吗？」这也是完整的回应。你不必一个人负责所有话题。",
-      "next": "help",
-      "sprite": ""
-    },
-    {
-      "id": "help",
-      "type": "line",
-      "speaker": "嘎嘎",
-      "text": "真正聊天时，遇到不懂的英文可以直接点词；需要看看整句意思，也可以翻译。咕咕和我会在对话旁给你表达建议。",
-      "next": "recall",
-      "sprite": ""
-    },
-    {
-      "id": "recall",
-      "type": "branch",
-      "flag": "gentle",
-      "ifTrue": "gentle_end",
-      "ifFalse": "recall_explore"
-    },
-    {
-      "id": "recall_explore",
-      "type": "branch",
-      "flag": "explore",
-      "ifTrue": "explore_end",
-      "ifFalse": "friend_end"
-    },
-    {
-      "id": "gentle_end",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "说好慢慢来的。下面只要选一个你觉得舒服的人开始认识，其他城市可以留到以后。",
-      "next": "end",
-      "sprite": ""
-    },
-    {
-      "id": "explore_end",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "地图还在这儿等你。先选第一位旅伴，接着就去街上看看——这回我一定让你来带路。",
-      "next": "end",
-      "sprite": ""
-    },
-    {
-      "id": "friend_end",
-      "type": "line",
-      "speaker": "咕咕",
-      "text": "你说想先认识一个朋友。现在，把那句最想接的话，留给你选中的第一位旅伴吧。",
+      "text": "翅膀都等得痒痒啦！挑一位旅伴，第一站就出发——另外两位，下次见咕！",
       "next": "end",
       "sprite": ""
     },

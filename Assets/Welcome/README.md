@@ -1,4 +1,7 @@
-# Welcome screenshots · v1
+# Welcome screenshots · v1 (retired)
+
+Superseded by the user-requested concept previews on 2026-09-12. These eight screenshots
+are no longer bundled. The capture scripts and hashes remain as historical provenance.
 
 Four product views, each in light and dark appearance. Captured on a **physical iPhone 13**
 using `xcrun devicectl device capture screenshot` on 2026-09-12. No generated mock UI.
