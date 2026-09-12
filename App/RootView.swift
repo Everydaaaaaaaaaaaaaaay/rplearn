@@ -45,7 +45,11 @@ struct RootView: View {
     @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
     @State private var showOnboardingPlacement = false
-    @State private var showIntroduction = false
+    private enum IntroductionMode: String, Identifiable {
+        case introduction, tutorial
+        var id: String { rawValue }
+    }
+    @State private var introductionMode: IntroductionMode?
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
     #endif
@@ -429,7 +433,7 @@ struct RootView: View {
         if let accountID = activeUserID,
            environment.workspace?.userID == accountID {
             tabs
-            .fullScreenCover(isPresented: $showIntroduction) {
+            .fullScreenCover(item: $introductionMode) { mode in
                 JourneyIntroductionView(deps: OnboardingDependencies(
                     economyStore: environment.economyStore,
                     profileCommands: profileCommands,
@@ -437,7 +441,7 @@ struct RootView: View {
                     scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                     dictionary: environment.dictionary,
                     grammarPoints: environment.grammarPoints
-                ))
+                ), startsWithTutorial: mode == .tutorial)
             }
             .fullScreenCover(isPresented: $showPlacementTest) {
                 placementTestView(isOnboarding: false)
@@ -794,7 +798,8 @@ struct RootView: View {
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
                 },
                 onOpenPhotoCredits: { openMe(.photoCredits) },
-                onOpenIntroduction: { showIntroduction = true }
+                onOpenIntroduction: { introductionMode = .introduction },
+                onOpenTutorial: { introductionMode = .tutorial }
             )
 
         case .photoCredits:

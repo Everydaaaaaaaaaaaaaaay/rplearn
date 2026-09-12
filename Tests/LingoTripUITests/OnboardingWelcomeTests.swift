@@ -111,6 +111,9 @@ final class OnboardingWelcomeTests: XCTestCase {
         confirm.tap()
 
         XCTAssertTrue(title.waitForNonExistence(timeout: 8), "选择成功后应离开选角页")
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForExistence(timeout: 5))
+        app.buttons["tutorial.skip"].tap()
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForNonExistence(timeout: 8))
     }
 
     func testStarterSelectionFailureCanRetry() {
@@ -124,10 +127,48 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(confirm.isHittable)
         confirm.tap()
 
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForExistence(timeout: 5))
+        app.buttons["tutorial.skip"].tap()
         XCTAssertTrue(app.alerts["暂时无法出发"].waitForExistence(timeout: 3))
-        app.alerts.buttons["再试一次"].tap()
-        XCTAssertTrue(confirm.waitForExistence(timeout: 2))
-        XCTAssertTrue(confirm.isEnabled)
+        app.alerts.buttons["稍后再试"].tap()
+        XCTAssertTrue(app.buttons["tutorial.skip"].isEnabled)
+    }
+
+    func testHandsOnTutorialUsesLocalTranslationDictionaryAndEncounter() {
+        let original = XCUIDevice.shared.appearance
+        defer { XCUIDevice.shared.appearance = original }
+        XCUIDevice.shared.appearance = .dark
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launch()
+        XCTAssertTrue(app.buttons["onboarding.selection.confirm"].waitForExistence(timeout: 8))
+        app.buttons["onboarding.selection.confirm"].tap()
+        let bubble = app.descendants(matching: .any)["tutorial.bubble"].firstMatch
+        XCTAssertTrue(bubble.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["tutorial.next"].isEnabled)
+        bubble.press(forDuration: 1.2)
+        XCTAssertTrue(app.buttons["翻译"].waitForExistence(timeout: 3))
+        app.buttons["翻译"].tap()
+        XCTAssertTrue(app.staticTexts["tutorial.translation"].waitForExistence(timeout: 3))
+        captureScreen(named: "tutorial-translation")
+        app.buttons["tutorial.next"].tap()
+        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "lovely")).firstMatch
+        XCTAssertTrue(word.waitForExistence(timeout: 3))
+        word.tap()
+        XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 3))
+        app.staticTexts["上手试一试"].tap()
+        app.buttons["tutorial.next"].tap()
+        app.buttons["tutorial.outing"].tap()
+        app.buttons["tutorial.choice.a"].tap()
+        let add = app.buttons["tutorial.addFriend"]
+        if !add.isHittable { app.swipeUp() }
+        XCTAssertTrue(add.waitForExistence(timeout: 3))
+        add.tap()
+        XCTAssertTrue(app.staticTexts["已体验添加好友"].exists)
+        captureScreen(named: "tutorial-encounter")
+        app.buttons["tutorial.next"].tap()
+        captureScreen(named: "tutorial-explore")
+        XCTAssertTrue(app.buttons["tutorial.next"].isEnabled)
     }
 
     func testOpeningChoicesAppearAsMessagesAndReachSelection() {
@@ -172,6 +213,24 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(app.scrollViews["onboarding.story.messages"].waitForExistence(timeout: 5))
         app.buttons["introduction.close"].tap()
         XCTAssertTrue(introduction.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["onboarding.selection.confirm"].exists)
+    }
+
+    func testTutorialCanBeReplayedWithoutSelectingAnotherCompanion() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_TAB"] = "me"
+        app.launch()
+        let settings = app.buttons["设置，AI、语音与偏好"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 10))
+        settings.tap()
+        let entry = app.buttons["settings.tutorial"]
+        for _ in 0..<5 where !entry.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(entry.isHittable)
+        entry.tap()
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForExistence(timeout: 5))
+        app.buttons["tutorial.skip"].tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["onboarding.selection.confirm"].exists)
     }
 
