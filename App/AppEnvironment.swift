@@ -215,6 +215,11 @@ final class AppEnvironment {
         )
         workspace = account
         try await importMainCharacters(into: account)
+        // Exercise the real profile-driven backgrounds without touching a persisted account.
+        if let regionID = ProcessInfo.processInfo.environment["UI_TEST_CITY_TAB_REGION"],
+           regionCatalog.region(id: regionID) != nil {
+            _ = try await account.economyStore.updateProfile { $0.currentRegionID = regionID }
+        }
         let profile = try await account.economyStore.profile()
         try await account.rosterStore.configureMainCharacters(
             unlockedRegionIDs: Set(MainlineCatalog.journeys.map(\.starterRegionID)),
