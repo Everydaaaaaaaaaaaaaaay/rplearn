@@ -173,8 +173,8 @@ final class SocialEncounterModel: ObservableObject {
         let card = character.card
         speechTask = Task {
             await speech.speak(SpeechRequest(text: beat.english,
-                language: AccentMapper.language(forNationality: card.nationality), purpose: .characterDialogue,
-                voiceHint: SpeechVoiceHint(stableID: character.id.uuidString.lowercased(), gender: card.gender.rawValue,
+                language: StoryVoiceCasting.isNarrator(beat.speaker) ? "en-US" : AccentMapper.language(forNationality: card.nationality), purpose: .characterDialogue,
+                voiceHint: StoryVoiceCasting.isNarrator(beat.speaker) ? StoryVoiceCasting.narrator : SpeechVoiceHint(stableID: character.id.uuidString.lowercased(), gender: card.gender.rawValue,
                                           nationality: card.nationality)))
         }
     }

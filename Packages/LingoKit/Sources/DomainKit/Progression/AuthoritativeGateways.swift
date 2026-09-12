@@ -43,6 +43,7 @@ public protocol ProgressionRewardGateway: Sendable {
     /// 返回 true 表示本次首次领取；false 表示当前状态空间已发放过。
     func claimStarterTicket() async throws -> Bool
     func completeStory(_ storyID: String) async throws -> Bool
+    func completeStoryReward(_ storyID: String) async throws -> Int?
 }
 
 /// 旅行命令由服务器决定是否消耗机票以及是否新增解锁。

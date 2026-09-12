@@ -387,10 +387,14 @@ public actor BackendUserStateCoordinator:
     }
 
     public func completeStory(_ storyID: String) async throws -> Bool {
+        try await completeStoryReward(storyID) != nil
+    }
+
+    public func completeStoryReward(_ storyID: String) async throws -> Int? {
         let intent = "progression:story:\(storyID)"
         let commandID = pendingCommandID(for: intent)
         do {
-            let _: BackendStoryCompletion = try await requestBackend.send(
+            let result: BackendStoryCompletion = try await requestBackend.send(
                 path: "/v1/progression/stories/\(storyID)/complete",
                 method: "POST",
                 body: EmptyCommand(),
@@ -398,12 +402,12 @@ public actor BackendUserStateCoordinator:
             )
             try await refreshCurrentSnapshot()
             completeCommand(for: intent)
-            return true
+            return result.rewardCoins
         } catch let error as BackendClientError {
             if error.code == "STORY_ALREADY_COMPLETED" {
                 completeCommand(for: intent)
                 try await refreshCurrentSnapshot()
-                return false
+                return nil
             }
             abandonCommand(for: intent, ifDeterministic: error)
             throw error

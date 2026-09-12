@@ -104,14 +104,14 @@ enum Supertonic3VoiceCatalog {
             return Profile(voiceID: "F1", speed: 1.0, silenceDuration: 0.05)
         }
         if let voice = request.voiceHint?.supertonicVoice {
-            return Profile(voiceID: voice.rawValue, speed: 1, silenceDuration: 0.05)
+            return Profile(voiceID: (request.purpose != .characterDialogue || request.voiceHint?.stableID == StoryVoiceCasting.narratorID ? voice : StoryVoiceCasting.voice(speaker: "character", proposed: voice)).rawValue, speed: 1, silenceDuration: 0.05)
         }
 
         let candidates: [String]
         switch request.voiceHint?.gender?.lowercased() {
-        case "female": candidates = (1...5).map { "F\($0)" }
+        case "female": candidates = (1...4).map { "F\($0)" }
         case "male": candidates = (1...5).map { "M\($0)" }
-        default: candidates = ["F1", "M1", "F2", "M2", "F3", "M3", "F4", "M4", "F5", "M5"]
+        default: candidates = ["F1", "M1", "F2", "M2", "F3", "M3", "F4", "M4", "M5"]
         }
         let key = request.voiceHint?.stableID ?? request.language
         let voiceID = candidates[stableIndex(key, upperBound: candidates.count)]

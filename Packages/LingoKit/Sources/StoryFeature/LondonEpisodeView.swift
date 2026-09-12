@@ -21,6 +21,7 @@ public struct LondonEpisodeView: View {
     @State private var saving = false
     @State private var operationError: String?
     @State private var completionSettled = false
+    @State private var earnedCoins: Int?
     @State private var showTranslation = true
     @State private var automatic = false
     @State private var showHistory = false
@@ -111,6 +112,17 @@ public struct LondonEpisodeView: View {
         .task { await load() }
         .task(id: autoplayIdentity) { await autoplay() }
         .onChange(of: audioIdentity, initial: true) { _, _ in updateAudio() }
+        .overlay {
+            if let earnedCoins {
+                Text("首次完成 +\(earnedCoins) 金币")
+                    .font(.subheadline.weight(.semibold))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 14)
+                    .background(.regularMaterial, in: Capsule())
+                    .accessibilityIdentifier("story.rewardToast")
+                    .allowsHitTesting(false)
+            }
+        }
         .onDisappear { audio.stop() }
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
             if let type = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
@@ -501,9 +513,13 @@ public struct LondonEpisodeView: View {
         automatic = false
         defer { saving = false }
         do {
-            try await EpisodeCompletion.settle(resourceName: resourceName, episode: session.episode, deps: deps)
+            let coins = try await EpisodeCompletion.settle(resourceName: resourceName, episode: session.episode, deps: deps)
             completionSettled = true
             operationError = nil
+            if let coins, coins > 0 {
+                earnedCoins = coins
+                try? await Task.sleep(for: .seconds(1.8))
+            }
             dismiss()
         } catch {
             operationError = "完成状态尚未保存，请检查网络后重试。已结算的奖励不会重复发放。"

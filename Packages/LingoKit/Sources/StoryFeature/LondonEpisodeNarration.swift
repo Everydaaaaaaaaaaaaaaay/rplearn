@@ -16,9 +16,9 @@ enum LondonEpisodeNarration {
             "Sam": .m1, "Tahlia": .f3, "Calvin": .m2, "June": .f4,
             "Leah": .f2, "Aaliyah": .f4, "Uncle Tan": .m4
         ]
-        let voice = voices[node.speaker] ?? .f5
+        let voice = StoryVoiceCasting.voice(speaker: node.speaker, proposed: voices[node.speaker] ?? .f2)
         let oliver = node.speaker == "Oliver"
-        let identity = oliver ? "london.oliver" : node.speaker == "Nora" ? "london.nora" : "departures.\(node.speaker)"
+        let identity = StoryVoiceCasting.isNarrator(node.speaker) ? StoryVoiceCasting.narratorID : oliver ? "london.oliver" : node.speaker == "Nora" ? "london.nora" : "departures.\(node.speaker)"
         let delivery: SpeechDelivery?
         if variant != .original, let cue = node.speech {
             delivery = SpeechDelivery(

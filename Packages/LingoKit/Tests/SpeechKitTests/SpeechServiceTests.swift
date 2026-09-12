@@ -6,6 +6,20 @@ import Testing
 
 @Suite("AppleTTS 语音选择")
 struct SpeechServiceTests {
+    @Test("旁白固定 F5，自动和显式人物选角均避开 F5")
+    func narratorHasReservedVoice() {
+        let narrator = SpeechRequest(text: "A quiet morning.", purpose: .characterDialogue, voiceHint: StoryVoiceCasting.narrator)
+        #expect(Supertonic3VoiceCatalog.profile(for: narrator).voiceID == "F5")
+        for index in 0..<200 {
+            let request = SpeechRequest(text: "Hello.", purpose: .characterDialogue,
+                voiceHint: SpeechVoiceHint(stableID: "npc-\(index)", gender: "female"))
+            #expect(Supertonic3VoiceCatalog.profile(for: request).voiceID != "F5")
+        }
+        let authored = SpeechRequest(text: "Hello.", purpose: .characterDialogue,
+            voiceHint: SpeechVoiceHint(stableID: "nora", supertonicVoice: .f5))
+        #expect(Supertonic3VoiceCatalog.profile(for: authored).voiceID == "F2")
+    }
+
     typealias Candidate = (language: String, qualityRank: Int, name: String)
 
     @Test("高速播放请求只允许最后一次继续")

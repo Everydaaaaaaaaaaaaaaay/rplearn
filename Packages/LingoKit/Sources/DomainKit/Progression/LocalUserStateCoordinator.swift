@@ -59,6 +59,11 @@ public actor LocalUserStateCoordinator:
     }
 
     public func completeStory(_ storyID: String) async throws -> Bool {
-        try await economyStore.claimLocalStoryReward(storyID: storyID, coins: Int.random(in: Self.storyRewardRange(storyID)))
+        try await completeStoryReward(storyID) != nil
+    }
+
+    public func completeStoryReward(_ storyID: String) async throws -> Int? {
+        let coins = Int.random(in: Self.storyRewardRange(storyID))
+        return try await economyStore.claimLocalStoryReward(storyID: storyID, coins: coins) ? coins : nil
     }
 }

@@ -4,11 +4,11 @@ import StoryEngine
 /// The server owns reward amounts. Stable reward/event identities also protect
 /// users who already completed the retired version of a story.
 enum EpisodeCompletion {
-    static func settle(resourceName: String, episode: StoryEpisode, deps: StoryDependencies) async throws {
+    static func settle(resourceName: String, episode: StoryEpisode, deps: StoryDependencies) async throws -> Int? {
         guard let rewardID = DepartureStoryIdentity.rewardID(for: resourceName) else {
             throw StoryEpisode.ValidationError.invalid("unregistered completion")
         }
-        _ = try await deps.progression.completeStory(rewardID)
+        let coins = try await deps.progression.completeStoryReward(rewardID)
         if let chapter = MainlineCatalog.chapters.first(where: { $0.storyID == resourceName }),
            ["london", "melbourne", "newyork"].contains(chapter.regionID) {
             try await deps.rosterStore.unlockMainCharacter(regionID: chapter.regionID)
@@ -27,5 +27,6 @@ enum EpisodeCompletion {
             )
         }
         try await deps.storyProgress.markCompleted(storyID: resourceName)
+        return coins
     }
 }

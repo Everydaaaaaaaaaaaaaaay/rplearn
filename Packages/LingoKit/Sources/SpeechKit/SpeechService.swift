@@ -77,6 +77,18 @@ public enum SupertonicVoice: String, CaseIterable, Sendable {
     case f1 = "F1", f2 = "F2", f3 = "F3", f4 = "F4", f5 = "F5"
 }
 
+/// F5 is reserved for narration across authored stories and encounters.
+public enum StoryVoiceCasting {
+    public static let narratorID = "story.narrator"
+    public static let narrator = SpeechVoiceHint(stableID: narratorID, gender: "female", supertonicVoice: .f5)
+    public static func isNarrator(_ speaker: String) -> Bool {
+        ["旁白", "出发之后", "narrator"].contains(speaker)
+    }
+    public static func voice(speaker: String, proposed: SupertonicVoice) -> SupertonicVoice {
+        isNarrator(speaker) ? .f5 : (proposed == .f5 ? .f2 : proposed)
+    }
+}
+
 /// 一次朗读请求。新增引擎或选声策略时，业务层无需了解具体 TTS 实现。
 public struct SpeechRequest: Sendable, Equatable {
     public let text: String
@@ -280,10 +292,14 @@ public actor AppleTTSService: SpeechService {
         let key = "\(request.language)-\(hint.stableID)-\(hint.gender ?? "")"
         if let voice = voiceCache[key] { return voice }
         let gender: AVSpeechSynthesisVoiceGender = genderName == "male" ? .male : .female
-        let candidates = AVSpeechSynthesisVoice.speechVoices().filter {
-            $0.language.hasPrefix("en") && $0.gender == gender
+        let voices = AVSpeechSynthesisVoice.speechVoices()
+        let narrator = Self.selectBestVoice(from: voices.filter { $0.language.hasPrefix("en") && $0.gender == .female }, language: "en-US")
+        if hint.stableID == StoryVoiceCasting.narratorID { return narrator }
+        let candidates = voices.filter {
+            $0.language.hasPrefix("en") && $0.gender == gender && $0.identifier != narrator?.identifier
         }
-        let voice = Self.selectBestVoice(from: candidates, language: request.language)
+        let pool = candidates.isEmpty ? voices.filter { $0.language.hasPrefix("en") && $0.identifier != narrator?.identifier } : candidates
+        let voice = Self.selectBestVoice(from: pool, language: request.language)
         if let voice { voiceCache[key] = voice }
         return voice
     }

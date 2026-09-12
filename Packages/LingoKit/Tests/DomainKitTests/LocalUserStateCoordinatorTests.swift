@@ -72,8 +72,9 @@ struct LocalUserStateCoordinatorTests {
     func storyRewardIsIdempotent() async throws {
         let fixture = try makeFixture()
 
-        #expect(try await fixture.coordinator.completeStory("mainline_london"))
-        #expect(try await !fixture.coordinator.completeStory("mainline_london"))
+        let reward = try #require(await fixture.coordinator.completeStoryReward("mainline_london"))
+        #expect(reward == (try await fixture.economyStore.profile()).coins)
+        #expect(try await fixture.coordinator.completeStoryReward("mainline_london") == nil)
         #expect(
             LocalUserStateCoordinator.storyRewardRange("mainline_london").contains(try await fixture.economyStore.profile().coins)
         )
