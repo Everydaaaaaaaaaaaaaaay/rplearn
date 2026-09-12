@@ -12,6 +12,11 @@ export async function findUserForOriginalTransaction(
     where provider = 'apple'
       and environment = ${environment}::app.billing_environment
       and original_transaction_id = ${originalTransactionId}
+    union all
+    select user_id::text from app.billing_transactions
+    where provider='apple' and environment=${environment}::app.billing_environment
+      and original_transaction_id=${originalTransactionId}
+    limit 1
   `;
   return row?.user_id ?? undefined;
 }

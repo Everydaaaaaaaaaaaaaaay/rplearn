@@ -62,6 +62,7 @@ function mapTransaction(
       ? {}
       : { ownershipType: payload.inAppOwnershipType }),
     productId: requiredString(payload.productId, "productId"),
+    ...(payload.price === undefined ? {} : { price: payload.price }),
     purchasedAt: requiredDate(payload.purchaseDate, "purchaseDate"),
     rawPayload: payload,
     ...(payload.revocationDate === undefined

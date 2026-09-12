@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  primaryKey,
   boolean,
   check,
   index,
@@ -71,6 +72,8 @@ export const billingPlans = applicationSchema.table(
 export const storeProducts = applicationSchema.table(
   "store_products",
   {
+    coinAmount: integer("coin_amount").notNull().default(0),
+    ticketCount: integer("ticket_count").notNull().default(0),
     createdAt: timestamp("created_at", {
       mode: "date",
       withTimezone: true,
@@ -96,6 +99,8 @@ export const storeProducts = applicationSchema.table(
       table.productId,
     ),
     index("store_products_plan_index").on(table.planId),
+    check("store_products_coin_amount_check", sql`${table.coinAmount} >= 0`),
+    check("store_products_ticket_count_check", sql`${table.ticketCount} >= 0`),
   ],
 );
 
@@ -322,4 +327,36 @@ export const billingProviderEvents = applicationSchema.table(
       .on(table.provider, table.receivedAt)
       .where(sql`${table.processedAt} is null`),
   ],
+);
+
+export const billingAssetGrants = applicationSchema.table(
+  "billing_asset_grants",
+  {
+    environment: billingEnvironment("environment").notNull(),
+    transactionId: text("transaction_id").notNull(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    coins: integer("coins").notNull(),
+    ticketIds: uuid("ticket_ids")
+      .array()
+      .notNull()
+      .default(sql`'{}'`),
+    revoked: boolean("revoked").notNull().default(false),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.environment, table.transactionId] }),
+    check("billing_asset_grants_coins_check", sql`${table.coins} >= 0`),
+  ],
+);
+export const coinAdjustmentDebts = applicationSchema.table(
+  "coin_adjustment_debts",
+  {
+    userId: uuid("user_id")
+      .primaryKey()
+      .references(() => users.id, { onDelete: "cascade" }),
+    coins: integer("coins").notNull().default(0),
+  },
+  (table) => [check("coin_adjustment_debts_coins_check", sql`${table.coins} >= 0`)],
 );

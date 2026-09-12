@@ -251,7 +251,9 @@ public struct MyPageView: View {
     }
 
     private var coinHotspot: some View {
-        coinLabel
+        Button { showsUsage = true } label: { coinLabel }
+            .buttonStyle(.plain)
+            .accessibilityHint("查看金币获取方式与订阅权益")
     }
 
     private var coinLabel: some View {

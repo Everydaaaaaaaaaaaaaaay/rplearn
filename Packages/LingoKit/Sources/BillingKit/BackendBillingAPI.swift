@@ -6,6 +6,10 @@ private struct SignedTransactionBody: Encodable, Sendable {
 }
 
 extension BackendClient {
+    func billingCatalog() async throws -> BillingProductsResponse {
+        try await get("/v1/billing/products")
+    }
+
     public func billingProducts() async throws -> [BillingCatalogProduct] {
         let response: BillingProductsResponse = try await get("/v1/billing/products")
         return response.products

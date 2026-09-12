@@ -385,17 +385,14 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       url: "/v1/progression/stories/mainline_london/complete",
     });
     expect(storyCompletion.statusCode).toBe(200);
-    expect(
-      storyCompletion.json<{
-        coins: number;
-        rewardCoins: number;
-        storyId: string;
-      }>(),
-    ).toEqual({
-      coins: 600,
-      rewardCoins: 100,
-      storyId: "mainline_london",
-    });
+    const reward = storyCompletion.json<{
+      coins: number;
+      rewardCoins: number;
+      storyId: string;
+    }>();
+    expect(reward.rewardCoins).toBeGreaterThanOrEqual(120);
+    expect(reward.rewardCoins).toBeLessThanOrEqual(180);
+    expect(reward.coins).toBe(500 + reward.rewardCoins);
     const storyRetry = await app.inject({
       headers: authenticated({ idempotencyKey: storyCommand }),
       method: "POST",
@@ -419,4 +416,26 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     expect(unknownStory.statusCode).toBe(404);
     expect(unknownStory.json<{ code: string }>().code).toBe("STORY_NOT_FOUND");
   }, 30_000);
+  it("marks a story claimed even when refund debt absorbs the entire reward", async () => {
+    await dependencies.database.sql`insert into app.coin_adjustment_debts(user_id,coins)
+      values(${userId},1000) on conflict(user_id) do update set coins=1000`;
+    const complete = () =>
+      app.inject({
+        headers: authenticated({ idempotencyKey: newEntityId() }),
+        method: "POST",
+        url: "/v1/progression/stories/city_dublin/complete",
+      });
+    const first = await complete();
+    expect(first.statusCode).toBe(200);
+    const [before] = await dependencies.database.sql<
+      { coins: number }[]
+    >`select coins from app.coin_adjustment_debts where user_id=${userId}`;
+    expect(before?.coins).toBeGreaterThanOrEqual(870);
+    expect(before?.coins).toBeLessThanOrEqual(900);
+    expect((await complete()).statusCode).toBe(409);
+    const [after] = await dependencies.database.sql<
+      { coins: number }[]
+    >`select coins from app.coin_adjustment_debts where user_id=${userId}`;
+    expect(after).toEqual(before);
+  });
 });

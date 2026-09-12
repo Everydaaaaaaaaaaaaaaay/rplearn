@@ -425,7 +425,8 @@ final class AccountWorkspace {
         )
         self.billing = BillingController(
             backend: backend,
-            economyStore: economyStore
+            economyStore: economyStore,
+            refreshAssets: { try await userState.synchronize() }
         )
         self.travelService = TravelService(
             economyStore: economyStore,

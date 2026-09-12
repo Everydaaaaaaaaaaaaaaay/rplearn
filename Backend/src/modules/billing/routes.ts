@@ -64,7 +64,10 @@ export function registerBillingRoutes(
         tags: ["billing"],
       },
     },
-    async () => ({ products: await billingService.listProducts() }),
+    async () => ({
+      products: await billingService.listProducts(),
+      applePurchasesEnabled: options.appleBillingEnabled,
+    }),
   );
 
   app.get(

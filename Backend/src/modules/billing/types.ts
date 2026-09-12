@@ -10,6 +10,7 @@ export type VerifiedStoreTransaction = Readonly<{
   originalTransactionId: string;
   ownershipType?: string;
   productId: string;
+  price?: number;
   purchasedAt: Date;
   rawPayload: unknown;
   revokedAt?: Date;
@@ -63,6 +64,8 @@ export type SubscriptionReconciliationResult = Readonly<{
 }>;
 
 export type BillingProduct = Readonly<{
+  coinAmount?: number;
+  ticketCount?: number;
   featureFlags: Readonly<Record<string, boolean | number | string>>;
   planId: string;
   productId: string;

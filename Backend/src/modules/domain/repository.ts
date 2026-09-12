@@ -1,3 +1,4 @@
+import { awardCoins } from "../../infrastructure/coin-awards.js";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -221,6 +222,7 @@ export class DomainRepository {
         where user_id = ${userId}
           and reference_type = 'story_completion'
           and reference_id = ${storyId}
+        union all select story_id as id from app.story_reward_claims where user_id=${userId} and story_id=${storyId}
       `;
       if (existing !== undefined) {
         throw new AppError({
@@ -229,43 +231,14 @@ export class DomainRepository {
           statusCode: 409,
         });
       }
-      const [profile] = await sql<{ coins: number }[]>`
-        select coins
-        from app.user_profiles
-        where user_id = ${userId}
-        for update
-      `;
-      if (profile === undefined) {
-        throw new Error("Profile does not exist");
-      }
-      const coins = profile.coins + rewardCoins;
-      await sql`
-        update app.user_profiles
-        set coins = ${coins},
-            version = version + 1,
-            updated_at = now()
-        where user_id = ${userId}
-      `;
-      await sql`
-        insert into app.coin_ledger (
-          id,
-          user_id,
-          delta,
-          balance_after,
-          reason,
-          reference_type,
-          reference_id
-        )
-        values (
-          ${newEntityId()},
-          ${userId},
-          ${rewardCoins},
-          ${coins},
-          'story_completion',
-          'story_completion',
-          ${storyId}
-        )
-      `;
+      await sql`insert into app.story_reward_claims(user_id,story_id,reward_coins) values(${userId},${storyId},${rewardCoins})`;
+      const coins = await awardCoins(
+        sql,
+        userId,
+        rewardCoins,
+        "story_completion",
+        storyId,
+      );
       return { coins, rewardCoins, storyId };
     });
   }

@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  primaryKey,
   boolean,
   check,
   index,
@@ -283,4 +284,16 @@ export const commandReceipts = applicationSchema.table(
     ),
     index("command_receipts_created_index").on(table.createdAt),
   ],
+);
+
+export const storyRewardClaims = applicationSchema.table(
+  "story_reward_claims",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    storyId: text("story_id").notNull(),
+    rewardCoins: integer("reward_coins").notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.userId, table.storyId] })],
 );

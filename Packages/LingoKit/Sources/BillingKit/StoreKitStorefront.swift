@@ -8,7 +8,7 @@ public enum StoreKitStorefrontError: LocalizedError, Sendable {
     public var errorDescription: String? {
         switch self {
         case .productUnavailable:
-            "这个订阅商品当前不可购买，请稍后重试。"
+            "这个商品当前不可购买，请稍后重试。"
         case .verificationFailed:
             "Apple 交易签名未通过设备校验。"
         }
@@ -68,6 +68,14 @@ public actor StoreKitStorefront: StorefrontClient {
             let transaction = try verifiedTransaction(verification)
             transactions[transaction.id] = transaction
             values.append(Self.envelope(transaction, jws: verification.jwsRepresentation))
+        }
+        // Consumables are absent from currentEntitlements. Recover paid but unfinished deliveries too.
+        for await verification in Transaction.unfinished {
+            let transaction = try verifiedTransaction(verification)
+            transactions[transaction.id] = transaction
+            if !values.contains(where: { $0.transactionID == transaction.id }) {
+                values.append(Self.envelope(transaction, jws: verification.jwsRepresentation))
+            }
         }
         return values
     }

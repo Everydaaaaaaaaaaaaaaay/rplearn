@@ -221,13 +221,6 @@ export function createBillingService(
     },
     ingestAppleTransaction: async (userId, commandId, signedTransaction) => {
       const transaction = await verifier().verifyTransaction(signedTransaction);
-      if (transaction.expiresAt === undefined) {
-        throw new AppError({
-          code: "APPLE_SUBSCRIPTION_EXPIRY_REQUIRED",
-          message: "The verified transaction is not a subscription.",
-          statusCode: 400,
-        });
-      }
       if (transaction.appAccountToken !== undefined) {
         if (transaction.appAccountToken.toLowerCase() !== userId.toLowerCase()) {
           throw new AppError({

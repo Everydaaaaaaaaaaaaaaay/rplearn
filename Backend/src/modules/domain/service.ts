@@ -1,3 +1,4 @@
+import { rollStoryReward } from "./story-rewards.js";
 import { createHash } from "node:crypto";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -59,29 +60,6 @@ export type DomainService = Readonly<{
   ) => Promise<UserProfile>;
 }>;
 
-const STORY_REWARDS = new Map<string, number>([
-  ["mainline_london", 100],
-  ["mainline_london_2", 120],
-  ["mainline_melbourne", 100],
-  ["mainline_melbourne_2", 120],
-  ["mainline_newyork", 100],
-  ["mainline_newyork_2", 120],
-  ["mainline_capetown", 140],
-  ["mainline_singapore", 200],
-  ["city_capetown", 120],
-  ["city_singapore", 120],
-  ["city_dublin", 120],
-  ["city_edinburgh", 120],
-  ["city_vancouver", 120],
-  ["city_auckland", 120],
-  ["city_nairobi", 120],
-  ["city_toronto", 120],
-  ["city_sydney", 120],
-  ["city_neworleans", 120],
-  ["city_manchester", 120],
-  ["city_kingston", 120],
-]);
-
 const STARTER_REGION_IDS = new Set(["london", "melbourne", "newyork"]);
 
 function command(commandId: string, route: string, payload: unknown): CommandIdentity {
@@ -119,7 +97,7 @@ export function createDomainService(database: DatabaseResource): DomainService {
       );
     },
     completeStory: (userId, commandId, storyId) => {
-      const rewardCoins = STORY_REWARDS.get(storyId);
+      const rewardCoins = rollStoryReward(storyId);
       if (rewardCoins === undefined) {
         return Promise.reject(
           new AppError({

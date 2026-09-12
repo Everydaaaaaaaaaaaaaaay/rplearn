@@ -61,7 +61,7 @@ public struct UsageAccessView: View {
                         }
                     }
                     Section("订阅方案") {
-                        if billing.offeredProducts.isEmpty {
+                        if billing.offeredProducts.isEmpty || !billing.purchasesEnabled {
                             Text(billing.catalogStatusMessage)
                             Button("重新加载方案") { Task { await billing.synchronize(showLoading: true) } }
                                 .disabled(billing.operation != .idle)
@@ -75,15 +75,32 @@ public struct UsageAccessView: View {
                                         product.tier.displayName,
                                         value: product.checkoutDisplayPrice
                                     )
+                                    if product.ticketCount > 0 {
+                                        Text("每个付费周期赠 \(product.ticketCount) 张通用机票").font(.caption)
+                                    }
                                     if let detail = product.checkoutPriceDetail {
                                         Text(detail)
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }
                                 }
-                            }.disabled(billing.operation != .idle)
+                            }.disabled(billing.operation != .idle || !billing.purchasesEnabled)
                         }
                         Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
+                    }
+                    Section("金币") {
+                        Text("城市剧情首次完成 100～130 金币；主线首次完成 120～180 金币。通用机票 500 金币一张。")
+                            .font(.footnote).foregroundStyle(.secondary)
+                        if billing.coinProducts.isEmpty { Text(billing.catalogStatusMessage) }
+                        ForEach(billing.coinProducts) { product in
+                            Button {
+                                Task { await billing.purchase(product); await reload() }
+                            } label: {
+                                LabeledContent("\(product.coinAmount) 金币", value: product.displayPrice)
+                            }.disabled(billing.operation != .idle || !billing.purchasesEnabled)
+                        }
+                        Text("金币用于购买机票，不是 AI 使用额度。完成全部城市剧情，扣除解锁所需两张机票后，至少剩 500 金币。")
+                            .font(.footnote).foregroundStyle(.secondary)
                     }
                     if snapshot.policy.provisional {
                         Section { Text("额度处于试行阶段，会结合实际使用成本调整。购买前请以商品页说明为准。")

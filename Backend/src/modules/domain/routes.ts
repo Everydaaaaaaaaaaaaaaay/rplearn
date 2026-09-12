@@ -94,7 +94,7 @@ const travelSchema = z.object({
 });
 
 const storyParametersSchema = z.object({
-  storyId: z.string().regex(/^mainline_[a-z0-9_]{2,48}$/),
+  storyId: z.string().regex(/^(?:mainline|city)_[a-z0-9_]{2,48}$/),
 });
 
 const onboardingSchema = z.object({

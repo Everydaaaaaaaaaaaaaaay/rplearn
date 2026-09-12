@@ -43,6 +43,8 @@ public enum BillingFeatureValue: Codable, Sendable, Equatable {
 }
 
 public struct BillingCatalogProduct: Decodable, Sendable, Equatable {
+    public let coinAmount: Int?
+    public let ticketCount: Int?
     public let featureFlags: [String: BillingFeatureValue]
     public let planId: String
     public let productId: String
@@ -52,6 +54,7 @@ public struct BillingCatalogProduct: Decodable, Sendable, Equatable {
 
 struct BillingProductsResponse: Decodable, Sendable {
     let products: [BillingCatalogProduct]
+    let applePurchasesEnabled: Bool?
 }
 
 public struct BillingEntitlement: Decodable, Sendable, Equatable {
@@ -68,6 +71,8 @@ public struct BillingEntitlementSnapshot: Decodable, Sendable, Equatable {
 }
 
 public struct PurchasableProduct: Identifiable, Sendable, Equatable {
+    public let coinAmount: Int
+    public let ticketCount: Int
     public var id: String { productID }
 
     public let displayName: String
@@ -79,6 +84,8 @@ public struct PurchasableProduct: Identifiable, Sendable, Equatable {
     public let tier: SubscriptionTier
 
     public init(
+        coinAmount: Int = 0,
+        ticketCount: Int = 0,
         displayName: String,
         displayPrice: String,
         introductoryOffer: StorefrontIntroductoryOffer? = nil,
@@ -87,6 +94,8 @@ public struct PurchasableProduct: Identifiable, Sendable, Equatable {
         productID: String,
         tier: SubscriptionTier
     ) {
+        self.coinAmount = coinAmount
+        self.ticketCount = ticketCount
         self.displayName = displayName
         self.displayPrice = displayPrice
         self.introductoryOffer = introductoryOffer

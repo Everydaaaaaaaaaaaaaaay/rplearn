@@ -13,7 +13,7 @@ public final class BillingController {
     }
 
     public enum CatalogState: Equatable {
-        case notLoaded, loading, available, empty, failed
+        case notLoaded, loading, available, empty, failed, unavailable
     }
     public private(set) var catalogState: CatalogState = .notLoaded
     public var catalogStatusMessage: String {
@@ -21,7 +21,8 @@ public final class BillingController {
         case .notLoaded: "订阅方案尚未加载。"
         case .loading: "正在加载订阅方案…"
         case .available: ""
-        case .empty: "App Store 暂未返回可购买方案，请稍后重试。"
+        case .empty: "App Store 尚未提供这些商品，当前暂不可购买。"
+        case .unavailable: "购买服务尚未开通，当前无法付款。"
         case .failed: "订阅方案加载未完成，请重新加载。"
         }
     }
@@ -34,17 +35,12 @@ public final class BillingController {
     public private(set) var products: [PurchasableProduct] = []
     public private(set) var tier: SubscriptionTier = .free
 
-    /// Launch with one monthly paid offer. Existing Plus/Pro and annual transactions remain
-    /// recognized by entitlement reconciliation, but are not all promoted as new purchases.
     public var offeredProducts: [PurchasableProduct] {
-        let hasPlusMonthly = products.contains {
-            $0.tier == .plus && $0.productID.hasSuffix(".monthly")
-        }
-        let primary: SubscriptionTier = hasPlusMonthly ? .plus : .pro
-        return products.filter {
-            $0.tier == primary && $0.productID.hasSuffix(".monthly")
-        }
+        products.filter { $0.coinAmount == 0 && $0.productID.hasSuffix(".monthly") }
     }
+    public var coinProducts: [PurchasableProduct] { products.filter { $0.coinAmount > 0 } }
+    public private(set) var purchasesEnabled = false
+    private let refreshAssets: @Sendable () async throws -> Void
 
     private let backend: BackendClient
     private let defaults: UserDefaults
@@ -59,8 +55,10 @@ public final class BillingController {
         backend: BackendClient,
         economyStore: EconomyStore,
         storefront: any StorefrontClient = StoreKitStorefront(),
-        defaults: UserDefaults = .standard
+        defaults: UserDefaults = .standard,
+        refreshAssets: @escaping @Sendable () async throws -> Void = {}
     ) {
+        self.refreshAssets = refreshAssets
         self.backend = backend
         self.economyStore = economyStore
         self.storefront = storefront
@@ -83,6 +81,7 @@ public final class BillingController {
         activeUserID = nil
         products = []
         catalogState = .notLoaded
+        purchasesEnabled = false
         entitlements = []
         featureFlags = [:]
         tier = .free
@@ -116,7 +115,7 @@ public final class BillingController {
     }
 
     public func purchase(_ product: PurchasableProduct) async {
-        guard let activeUserID,
+        guard operation == .idle, purchasesEnabled, let activeUserID,
               catalogByProductID[product.productID] != nil
         else {
             lastError = "订阅商品目录尚未准备好。"
@@ -136,7 +135,7 @@ public final class BillingController {
                 message = "购买正在等待 Apple 确认，确认后会自动生效。"
             case .purchased(let transaction):
                 try await submitAndFinish(transaction)
-                message = "订阅已生效。"
+                message = product.coinAmount > 0 ? "金币已到账。" : "订阅已生效，权益已同步。"
             }
         } catch {
             lastError = error.localizedDescription
@@ -167,10 +166,11 @@ public final class BillingController {
     }
 
     private func refreshCatalogAndEntitlements() async throws {
-        async let catalogRequest = backend.billingProducts()
+        async let catalogRequest = backend.billingCatalog()
         async let entitlementRequest = backend.billingEntitlements()
         let (catalog, snapshot) = try await (catalogRequest, entitlementRequest)
-        let appleCatalog = catalog.filter { $0.provider == "apple" }
+        purchasesEnabled = catalog.applePurchasesEnabled ?? true
+        let appleCatalog = catalog.products.filter { $0.provider == "apple" }
         catalogByProductID = Dictionary(
             uniqueKeysWithValues: appleCatalog.map { ($0.productId, $0) }
         )
@@ -184,6 +184,8 @@ public final class BillingController {
                 return nil
             }
             return PurchasableProduct(
+                coinAmount: catalog.coinAmount ?? 0,
+                ticketCount: catalog.ticketCount ?? 0,
                 displayName: item.displayName,
                 displayPrice: item.displayPrice,
                 introductoryOffer: item.introductoryOffer,
@@ -194,7 +196,7 @@ public final class BillingController {
             )
         }
         .sorted(by: Self.productOrder)
-        catalogState = offeredProducts.isEmpty ? .empty : .available
+        catalogState = !purchasesEnabled ? .unavailable : products.isEmpty ? .empty : .available
     }
 
     private func refreshEntitlements() async throws {
@@ -235,6 +237,7 @@ public final class BillingController {
             idempotencyKey: commandID
         )
         try await apply(snapshot)
+        try await refreshAssets()
         await storefront.finish(transactionID: transaction.transactionID)
         completeCommand(for: intent)
     }

@@ -10,7 +10,10 @@ public actor LocalUserStateCoordinator:
     OnboardingCommandGateway,
     ProgressionRewardGateway
 {
-    public static let storyCompletionReward = 100
+    public static func storyRewardRange(_ storyID: String) -> ClosedRange<Int> {
+        let rewardID = DepartureStoryIdentity.rewardID(for: storyID) ?? storyID
+        return rewardID.hasPrefix("city_") || rewardID.hasSuffix("_2") ? 100...130 : 120...180
+    }
 
     private let economyStore: EconomyStore
     private let itemStore: ItemStore
@@ -56,6 +59,6 @@ public actor LocalUserStateCoordinator:
     }
 
     public func completeStory(_ storyID: String) async throws -> Bool {
-        try await economyStore.claimLocalStoryReward(storyID: storyID, coins: Self.storyCompletionReward)
+        try await economyStore.claimLocalStoryReward(storyID: storyID, coins: Int.random(in: Self.storyRewardRange(storyID)))
     }
 }

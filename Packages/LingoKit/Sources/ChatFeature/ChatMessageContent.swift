@@ -125,7 +125,7 @@ extension ChatView {
                         let correct = chosen == quiz.answer
                         VStack(alignment: .leading, spacing: 4) {
                             Text(correct
-                                ? "🎉 答对了！+\(QuizService.correctReward) 金币"
+                                ? "🎉 答对了！"
                                 : "正确答案：\(QuizService.optionLabel(quiz.answer)). \(quiz.options[quiz.answer])")
                                 .font(.footnote.weight(.semibold))
                                 .foregroundStyle(correct ? Color.dsSuccess : Color.dsWarning)

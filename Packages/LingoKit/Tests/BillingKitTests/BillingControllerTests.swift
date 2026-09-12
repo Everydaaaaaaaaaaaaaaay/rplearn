@@ -211,6 +211,7 @@ struct BillingControllerTests {
         #expect(fixture.controller.products.count == 3)
         #expect(fixture.controller.offeredProducts.map(\.productID) == [
             "com.tiantian.lingotrip.plus.monthly",
+            "com.tiantian.lingotrip.pro.monthly",
         ])
         #expect(fixture.controller.offeredProducts.first?.checkoutDisplayPrice == "¥29.00")
         #expect(
@@ -268,7 +269,7 @@ struct BillingControllerTests {
         await storefront.configureCatalog()
         await fixture.controller.synchronize(showLoading: true)
         #expect(fixture.controller.catalogState == .available)
-        #expect(fixture.controller.offeredProducts.count == 1)
+        #expect(fixture.controller.offeredProducts.count == 2)
         await storefront.configureCatalog(empty: true)
         await fixture.controller.synchronize(showLoading: true)
         #expect(fixture.controller.catalogState == .empty)

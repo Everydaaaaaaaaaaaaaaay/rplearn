@@ -1,3 +1,4 @@
+import { applyAssetGrant } from "./asset-grants.js";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -33,6 +34,8 @@ export class BillingRepository {
   async listProducts(): Promise<readonly BillingProduct[]> {
     const rows = await this.database.sql<
       {
+        coin_amount: number;
+        ticket_count: number;
         feature_flags_text: string;
         plan_id: string;
         product_id: string;
@@ -41,6 +44,7 @@ export class BillingRepository {
       }[]
     >`
       select
+        sp.coin_amount, sp.ticket_count,
         p.id as plan_id,
         p.tier,
         p.feature_flags::text as feature_flags_text,
@@ -54,6 +58,8 @@ export class BillingRepository {
       order by p.rank, sp.provider, sp.product_id
     `;
     return rows.map((row) => ({
+      coinAmount: row.coin_amount,
+      ticketCount: row.ticket_count,
       featureFlags: parseFeatureFlags(row.feature_flags_text),
       planId: row.plan_id,
       productId: row.product_id,
@@ -131,8 +137,11 @@ export class BillingRepository {
     status: EntitlementStatus,
     providerStatus: number | undefined,
   ): Promise<AppliedState> {
-    const [plan] = await sql<Pick<PlanRow, "id" | "tier">[]>`
-      select p.id, p.tier
+    await sql`select pg_advisory_xact_lock(hashtextextended(${`apple:${transaction.environment}:${transaction.transactionId}`},0))`;
+    const [plan] = await sql<
+      (Pick<PlanRow, "id" | "tier"> & { coin_amount: number; ticket_count: number })[]
+    >`
+      select p.id, p.tier, sp.coin_amount, sp.ticket_count
       from app.store_products sp
       join app.billing_plans p on p.id = sp.plan_id
       where sp.provider = 'apple'
@@ -145,6 +154,14 @@ export class BillingRepository {
         code: "BILLING_PRODUCT_UNKNOWN",
         message: "The verified store product is not configured.",
         statusCode: 409,
+      });
+    }
+
+    if (plan.coin_amount > 0 !== (transaction.expiresAt === undefined)) {
+      throw new AppError({
+        code: "BILLING_PRODUCT_TYPE_MISMATCH",
+        message: "Verified product type does not match the catalog.",
+        statusCode: 400,
       });
     }
 
@@ -235,6 +252,23 @@ export class BillingRepository {
       where app.billing_transactions.user_id = excluded.user_id
         and excluded.signed_at >= app.billing_transactions.signed_at
     `;
+
+    await applyAssetGrant(
+      sql,
+      userId,
+      transaction,
+      plan.coin_amount,
+      plan.ticket_count,
+    );
+    if (plan.coin_amount > 0) {
+      return {
+        changed: true,
+        planId: plan.id,
+        status,
+        tier: plan.tier,
+        validUntil: null,
+      };
+    }
 
     const validUntil = effectiveUntil(transaction, renewal, status);
     const [subscription] = await sql<{ id: string }[]>`

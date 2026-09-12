@@ -1,3 +1,4 @@
+import { BillingRepository } from "../../src/modules/billing/repository.js";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -179,7 +180,7 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
       url: "/v1/billing/products",
     });
     expect(products.statusCode).toBe(200);
-    expect(products.json<{ products: readonly unknown[] }>().products).toHaveLength(4);
+    expect(products.json<{ products: readonly unknown[] }>().products).toHaveLength(7);
 
     const initial = await app.inject({
       headers: headers(),
@@ -386,5 +387,117 @@ describe.runIf(runIntegrationTests)("billing entitlements", () => {
     });
     expect(response.statusCode).toBe(409);
     expect(response.json<{ code: string }>().code).toBe("APP_ACCOUNT_TOKEN_MISMATCH");
+  });
+  it("delivers consumables once, recovers refunds and grants paid-period tickets", async () => {
+    const repo = new BillingRepository(dependencies.database);
+    await dependencies.database
+      .sql`update app.user_profiles set coins=0 where user_id=${userId}`;
+    const purchase: VerifiedStoreTransaction = {
+      appAccountToken: userId,
+      environment: "sandbox",
+      originalTransactionId: "coin-purchase-test",
+      transactionId: "coin-purchase-test",
+      productId: "com.tiantian.lingotrip.coins.500",
+      purchasedAt: new Date(),
+      signedAt: new Date(),
+      rawPayload: {},
+      price: 6000,
+    };
+    await Promise.all(
+      [1, 2].map(() =>
+        repo.ingestTransaction(userId, newEntityId(), "coins", purchase, "active"),
+      ),
+    );
+    const balance = async () =>
+      (
+        await dependencies.database.sql<
+          { coins: number }[]
+        >`select coins from app.user_profiles where user_id=${userId}`
+      )[0]?.coins;
+    expect(await balance()).toBe(500);
+    expect(
+      (await repo.entitlements(userId)).entitlements.every(
+        (e) => e.entitlementKey === "subscription",
+      ),
+    ).toBe(true);
+    await dependencies.database
+      .sql`update app.user_profiles set coins=0 where user_id=${userId}`;
+    const refund = {
+      ...purchase,
+      revokedAt: new Date(),
+      signedAt: new Date(Date.now() + 1000),
+    };
+    await repo.ingestTransaction(userId, newEntityId(), "refund", refund, "revoked");
+    await repo.ingestTransaction(
+      userId,
+      newEntityId(),
+      "refund-again",
+      refund,
+      "revoked",
+    );
+    expect(
+      (
+        await dependencies.database.sql<
+          { coins: number }[]
+        >`select coins from app.coin_adjustment_debts where user_id=${userId}`
+      )[0]?.coins,
+    ).toBe(500);
+    await repo.ingestTransaction(userId, newEntityId(), "stale", purchase, "active");
+    expect(await balance()).toBe(0);
+    const second = {
+      ...purchase,
+      transactionId: "coin-purchase-second",
+      originalTransactionId: "coin-purchase-second",
+    };
+    await repo.ingestTransaction(userId, newEntityId(), "second", second, "active");
+    expect(await balance()).toBe(0); // settles spent refund debt first
+    for (const [tier, count] of [
+      ["plus", 1],
+      ["pro", 2],
+    ] as const) {
+      const transaction = {
+        ...purchase,
+        transactionId: `tickets-${tier}`,
+        originalTransactionId: `tickets-${tier}`,
+        productId: `com.tiantian.lingotrip.${tier}.monthly`,
+        expiresAt: new Date("2030-01-01"),
+        price: 39000,
+      };
+      await repo.ingestTransaction(userId, newEntityId(), tier, transaction, "active");
+      await repo.ingestTransaction(userId, newEntityId(), tier, transaction, "active");
+      const [grant] = await dependencies.database.sql<
+        { ticket_ids: string[] }[]
+      >`select ticket_ids from app.billing_asset_grants where transaction_id=${transaction.transactionId}`;
+      expect(grant?.ticket_ids).toHaveLength(count);
+      await repo.ingestTransaction(
+        userId,
+        newEntityId(),
+        `refund-${tier}`,
+        {
+          ...transaction,
+          revokedAt: new Date(),
+          signedAt: new Date(Date.now() + 1000),
+        },
+        "revoked",
+      );
+      if (!grant) throw new Error("Missing ticket grant");
+      const items = await dependencies.database.sql<
+        { status: string }[]
+      >`select status from app.inventory_items where id=any(${grant.ticket_ids}::uuid[])`;
+      expect(items.every((i) => i.status === "revoked")).toBe(true);
+    }
+    const trial = {
+      ...purchase,
+      transactionId: "free-trial",
+      originalTransactionId: "free-trial",
+      productId: "com.tiantian.lingotrip.plus.monthly",
+      expiresAt: new Date("2030-01-01"),
+      price: 0,
+    };
+    await repo.ingestTransaction(userId, newEntityId(), "trial", trial, "active");
+    expect(
+      await dependencies.database
+        .sql`select * from app.billing_asset_grants where transaction_id='free-trial'`,
+    ).toHaveLength(0);
   });
 });

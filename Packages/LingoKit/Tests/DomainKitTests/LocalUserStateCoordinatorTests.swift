@@ -75,8 +75,7 @@ struct LocalUserStateCoordinatorTests {
         #expect(try await fixture.coordinator.completeStory("mainline_london"))
         #expect(try await !fixture.coordinator.completeStory("mainline_london"))
         #expect(
-            try await fixture.economyStore.profile().coins
-                == LocalUserStateCoordinator.storyCompletionReward
+            LocalUserStateCoordinator.storyRewardRange("mainline_london").contains(try await fixture.economyStore.profile().coins)
         )
         #expect(
             try await fixture.storyProgressStore.progress(storyID: "mainline_london")?.isCompleted
