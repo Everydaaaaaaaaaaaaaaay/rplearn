@@ -36,20 +36,29 @@ struct WorldMapCanvas: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true
-        mapView.isPitchEnabled = false
-        mapView.isRotateEnabled = false
+        mapView.isPitchEnabled = true
+        mapView.isRotateEnabled = true
+        // The system compass avoids the top HUD and provides a native north reset.
         mapView.showsCompass = false
         mapView.showsScale = false
         mapView.showsUserLocation = false
         mapView.pointOfInterestFilter = .excludingAll
 
-        let configuration = MKStandardMapConfiguration(
-            elevationStyle: .flat,
-            emphasisStyle: .muted
-        )
+        let configuration = MKHybridMapConfiguration(elevationStyle: .realistic)
         configuration.pointOfInterestFilter = .excludingAll
         configuration.showsTraffic = false
+        // Realistic elevation lets MapKit transition into its globe renderer at world scale.
         mapView.preferredConfiguration = configuration
+        let compass = MKCompassButton(mapView: mapView)
+        compass.compassVisibility = .adaptive
+        compass.translatesAutoresizingMaskIntoConstraints = false
+        mapView.addSubview(compass)
+        NSLayoutConstraint.activate([
+            compass.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -18),
+            compass.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: 78),
+            compass.widthAnchor.constraint(equalToConstant: 44),
+            compass.heightAnchor.constraint(equalToConstant: 44),
+        ])
 
         mapView.register(
             RegionAnnotationView.self,

@@ -47,6 +47,18 @@ public struct MapView: View {
         .overlay(alignment: .top) {
             mapHUD
         }
+        .overlay(alignment: .bottomTrailing) {
+            Button { resetOverview() } label: {
+                Image(systemName: "globe")
+                    .font(.system(size: 21, weight: .medium))
+                    .frame(width: 48, height: 48)
+                    .background(.regularMaterial, in: Circle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("回到地球全景")
+            .padding(.trailing, 18)
+            .padding(.bottom, 18)
+        }
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(for: MapDestination.self) { destination in
             switch destination {
@@ -247,7 +259,7 @@ public struct MapView: View {
             revision: viewportRevision,
             target: .camera(
                 center: coordinate(region),
-                distance: 5_800_000
+                distance: 22_000_000
             ),
             animated: animated && !reduceMotion
         )

@@ -29,6 +29,16 @@ final class HomeNavigationTests: XCTestCase {
         let elapsed = ContinuousClock.now - start
 
         XCTAssertGreaterThanOrEqual(elapsed, .milliseconds(100))
+        let overview = app.buttons["回到地球全景"]
+        XCTAssertTrue(overview.exists)
+        app.swipeLeft()
+        overview.tap()
+        // Allow the native camera transition and globe tiles to settle before visual capture.
+        RunLoop.current.run(until: Date().addingTimeInterval(4))
+        let capture = XCTAttachment(screenshot: app.screenshot())
+        capture.name = "world-globe-overview"
+        capture.lifetime = .keepAlways
+        add(capture)
     }
 
     func testMapSupportsLeadingEdgeSwipeBack() {
