@@ -34,6 +34,10 @@ struct RootView: View {
 
     @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
+    @State private var messagesPath = NavigationPath()
+    @State private var contactsPath = NavigationPath()
+    @State private var messagesNavigationRevision = 0
+    @State private var contactsNavigationRevision = 0
     @State private var homePath = NavigationPath()
     @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
@@ -493,7 +497,13 @@ struct RootView: View {
     }
 
     private var tabs: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: Binding(
+            get: { selectedTab },
+            set: { tab in
+                returnTabToRoot(tab)
+                selectedTab = tab
+            }
+        )) {
             messagesStack
                 .tag(AppTab.messages)
                 .tabItem {
@@ -525,6 +535,24 @@ struct RootView: View {
             if !DSPlatformVisualPolicy.usesLiquidGlass {
                 LegacyTabBarAppearanceInstaller()
             }
+        }
+    }
+
+    /// 点击事件独立于 selectedTab 的变化，因此重复点击当前标签也会返回入口。
+    private func returnTabToRoot(_ tab: AppTab) {
+        switch tab {
+        case .messages:
+            messagesPath = NavigationPath()
+            messagesNavigationRevision += 1
+        case .contacts:
+            contactsPath = NavigationPath()
+            contactsNavigationRevision += 1
+        case .home:
+            homePath = NavigationPath()
+            activeHomeDestination = nil
+            activeActivityChat = nil
+        case .me:
+            mePath.removeAll()
         }
     }
 
@@ -662,42 +690,48 @@ struct RootView: View {
         }
     }
     private var messagesStack: some View {
-        NavigationStack {
-            ConversationListView(
-                accountID: requiredActiveAccountID,
-                deps: chatDeps,
-                reloadToken: stateRevision
-            )
+        ZStack {
+            NavigationStack(path: $messagesPath) {
+                ConversationListView(
+                    accountID: requiredActiveAccountID,
+                    deps: chatDeps,
+                    reloadToken: stateRevision
+                )
+            }
+            .id(messagesNavigationRevision)
         }
     }
 
     private var contactsStack: some View {
         let regionCatalog = environment.regionCatalog
-        return NavigationStack {
-            RosterView(
-                deps: RosterDependencies(
-                    rosterStore: environment.rosterStore,
-                    economyStore: environment.economyStore,
-                    npcRegistry: environment.backendClient,
-                    regionName: { regionID in
-                        regionCatalog.region(id: regionID)?.nameZh
-                            ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
-                    }
-                ),
-                reloadToken: stateRevision,
-                chatBuilder: { character in
-                    AnyView(ChatView(character: character, deps: chatDeps))
-                },
-                callBuilder: { character in
-                    AnyView(
-                        ChatView(
-                            character: character,
-                            deps: chatDeps,
-                            startsInRealtimeConversation: true
+        return ZStack {
+            NavigationStack(path: $contactsPath) {
+                RosterView(
+                    deps: RosterDependencies(
+                        rosterStore: environment.rosterStore,
+                        economyStore: environment.economyStore,
+                        npcRegistry: environment.backendClient,
+                        regionName: { regionID in
+                            regionCatalog.region(id: regionID)?.nameZh
+                                ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
+                        }
+                    ),
+                    reloadToken: stateRevision,
+                    chatBuilder: { character in
+                        AnyView(ChatView(character: character, deps: chatDeps))
+                    },
+                    callBuilder: { character in
+                        AnyView(
+                            ChatView(
+                                character: character,
+                                deps: chatDeps,
+                                startsInRealtimeConversation: true
+                            )
                         )
-                    )
-                }
-            )
+                    }
+                )
+            }
+            .id(contactsNavigationRevision)
         }
     }
 

@@ -14,17 +14,70 @@ final class TabSceneTransitionTests: XCTestCase {
 
         XCTAssertTrue(app.buttons["sceneSearch.open"].waitForExistence(timeout: 15))
         for _ in 0..<2 {
-            for title in ["联系人", "首页", "我的", "信息"] {
+            for title in ["联系人", "活动", "我的", "信息"] {
                 let tab = app.tabBars.buttons[title]
                 tab.tap()
-                XCTAssertTrue(tab.isSelected, "SwiftUI and the native tab controller must agree")
+                XCTAssertTrue(tab.isSelected, "SwiftUI 与原生标签栏的选中状态必须一致")
             }
-            let open = app.buttons["sceneSearch.open"]
-            XCTAssertTrue(open.waitForExistence(timeout: 3))
-            open.tap()
-            XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 3))
-            app.buttons["sceneSearch.close"].tap()
-            XCTAssertTrue(open.waitForExistence(timeout: 3))
+            for title in ["信息", "联系人"] {
+                app.tabBars.buttons[title].tap()
+                let open = app.buttons["sceneSearch.open"]
+                XCTAssertTrue(open.waitForExistence(timeout: 3))
+                open.tap()
+                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 3))
+                app.buttons["sceneSearch.dismissKeyboard"].tap()
+                app.tabBars.buttons[title].tap()
+                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForNonExistence(timeout: 3))
+                XCTAssertTrue(open.waitForExistence(timeout: 3))
+            }
+        }
+    }
+
+    func testSceneTabsReturnToRootOnReselectionAndSwitchBack() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launchEnvironment["UI_TEST_TAB"] = "home"
+        app.launch()
+        defer { app.terminate() }
+
+        for (title, entry) in [("活动", "世界地图"), ("我的", "设置，AI、语音与偏好")] {
+            app.tabBars.buttons[title].tap()
+            for switchesAway in [false, true] {
+                XCTAssertTrue(app.buttons[entry].waitForExistence(timeout: 15))
+                app.buttons[entry].tap()
+                let back = app.buttons[title == "活动" ? "返回首页" : "返回"]
+                XCTAssertTrue(back.waitForExistence(timeout: 5))
+                if switchesAway { app.tabBars.buttons["联系人"].tap() }
+                app.tabBars.buttons[title].tap()
+                XCTAssertTrue(back.waitForNonExistence(timeout: 5), "点击标签应关闭二级页面")
+                XCTAssertTrue(app.buttons[entry].isHittable, "初始页面入口应恢复可点击")
+            }
+        }
+    }
+    func testContactProfileReturnsToRoot() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["UI_TEST_TAB"] = "contacts"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launch()
+        defer { app.terminate() }
+
+        for switchesAway in [false, true] {
+            let entry = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Oliver")).firstMatch
+            XCTAssertTrue(entry.waitForExistence(timeout: 15))
+            entry.tap()
+            let message = app.buttons["发消息"]
+            XCTAssertTrue(message.waitForExistence(timeout: 5))
+            if switchesAway { app.tabBars.buttons["活动"].tap() }
+            app.tabBars.buttons["联系人"].tap()
+            XCTAssertTrue(message.waitForNonExistence(timeout: 5))
+            XCTAssertTrue(entry.waitForExistence(timeout: 5))
+            XCTAssertTrue(entry.isHittable, "点击标签应返回联系人列表")
         }
     }
 }
