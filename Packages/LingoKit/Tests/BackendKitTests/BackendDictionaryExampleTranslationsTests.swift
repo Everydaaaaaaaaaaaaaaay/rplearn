@@ -12,12 +12,12 @@ struct BackendDictionaryExampleTranslationsTests {
 
     private actor MockTransport: BackendTransport {
         private(set) var requests: [URLRequest] = []
-        private var responseIndex = 0
+        private let status: String
+
+        init(status: String) { self.status = status }
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             requests.append(request)
-            let status = responseIndex == 0 ? "pending" : "ready"
-            responseIndex += 1
             let output = status == "ready"
                 ? #", "sentenceZhHans":"这是他第一次以首发身份对阵昔日的队友。", "contextualMeaningZhHans":"队友""#
                 : ""
@@ -32,9 +32,9 @@ struct BackendDictionaryExampleTranslationsTests {
         }
     }
 
-    @Test("miss is queued without blocking the card and a later poll returns both fields")
-    func pendingThenReady() async throws {
-        let transport = MockTransport()
+    @Test("cache lookup never generates or polls", arguments: ["ready", "missing", "pending"])
+    func cacheOnly(status: String) async throws {
+        let transport = MockTransport(status: status)
         let backend = BackendClient(
             configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
             credentialStore: EmptyCredentialStore(),
@@ -42,8 +42,7 @@ struct BackendDictionaryExampleTranslationsTests {
         )
         let resolver = BackendDictionaryExampleTranslationResolver(
             backend: backend,
-            guestID: "test-device-id",
-            pollingDelays: [.zero]
+            guestID: "test-device-id"
         )
         let result = try await resolver.resolve(
             BackendDictionaryExampleTranslationRequest(
@@ -58,19 +57,20 @@ struct BackendDictionaryExampleTranslationsTests {
             )
         )
 
-        #expect(result?.contextualMeaningZhHans == "队友")
-        #expect(result?.sentenceZhHans == "这是他第一次以首发身份对阵昔日的队友。")
+        if status == "ready" {
+            #expect(result?.contextualMeaningZhHans == "队友")
+            #expect(result?.sentenceZhHans == "这是他第一次以首发身份对阵昔日的队友。")
+        } else {
+            #expect(result == nil)
+        }
         let requests = await transport.requests
-        #expect(requests.count == 2)
+        #expect(requests.count == 1)
         #expect(requests.allSatisfy {
             $0.url?.path == "/v1/dictionary/example-translations/resolve"
                 && $0.value(forHTTPHeaderField: "x-lingotrip-guest-id") == "test-device-id"
         })
         let firstBody = try #require(requests.first?.httpBody)
         let firstJSON = try #require(JSONSerialization.jsonObject(with: firstBody) as? [String: Any])
-        #expect(firstJSON["generateOnMiss"] as? Bool == true)
-        let secondBody = try #require(requests.last?.httpBody)
-        let secondJSON = try #require(JSONSerialization.jsonObject(with: secondBody) as? [String: Any])
-        #expect(secondJSON["generateOnMiss"] as? Bool == false)
+        #expect(firstJSON["generateOnMiss"] as? Bool == false)
     }
 }

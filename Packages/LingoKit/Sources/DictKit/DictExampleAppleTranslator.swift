@@ -2,8 +2,8 @@ import Observation
 import SwiftUI
 import Translation
 
-/// Server translation remains authoritative. This coordinator only supplies a
-/// sentence-level, on-device fallback when the server cannot return a result.
+/// Reuses existing server translations first; this coordinator translates any
+/// uncached sentence on device without requesting cloud generation.
 @MainActor
 @Observable
 final class DictExampleAppleTranslator {
