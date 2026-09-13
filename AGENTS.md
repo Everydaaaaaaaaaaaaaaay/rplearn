@@ -46,3 +46,7 @@ configuration. Do not rewrite commits or destructively reset worktrees without e
 Standing owner instruction (2026-09-11): automatically create a focused commit after
 each completed and verified logical change, without waiting for a separate commit request.
 Continue to stage only task-related paths and preserve unrelated work.
+
+完成 iOS 改动后，使用 `Scripts/preview.sh` 安装最新构建，留在模拟器中供用户查看。
+Device Hub 与免登录预览见 `docs/development.md`。优先用 Computer Use 简短检查受影响页面，
+复用已有构建和当前模拟器，不默认运行整套 UI 自动化。

@@ -61,3 +61,50 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
   原审核；改图后复核新字节，发布保留完整性、许可、路径与永久身份约束。
 - iOS 脚本已有模型校验缓存和构建锁，轻量对话测试不读取语音模型。遇到源码接口存在但
   编译器读取旧模块时，可换独立 `LINGOTRIP_DERIVED_DATA_PATH` 重试一次，不要每次都清空缓存。
+
+## Device Hub 与免登录预览
+
+参考 ClassMind 的 `run-classmind` 驱动：固定构建目录、复用模拟器、读取产物 Bundle ID、
+重启 App 使启动参数生效。LingoTrip 使用现有 Debug 内存账号，不复制 ClassMind 的 onboarding defaults。
+
+```bash
+Scripts/preview.sh status                 # 确认 Xcode、设备与产物
+Scripts/preview.sh build home             # 源码改变后：增量构建、安装、免登录启动
+Scripts/preview.sh preview home           # 已构建/测试后：只安装和启动
+```
+
+页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`。产物固定取
+`build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
+`LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
+脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备按既有工作树配置或已启动 iPhone 选择，
+可用 `LINGOTRIP_SIMULATOR_UDID` 显式指定；不创建 Clone，不关闭其他项目的设备。
+
+免登录参数通过 `SIMCTL_CHILD_` 传入：`UI_TEST_SKIP_ONBOARDING=1`、
+`UI_TEST_REQUIRE_AUTHENTICATION=0`、`UI_TEST_DISABLE_BACKGROUND_REFRESH=1`，后端固定
+`http://127.0.0.1:9`。在 Debug 且未登录时，`RootView` 调用
+`AppEnvironment.activateUITestWorkspace()`，使用内存数据和本地角色；重启后测试数据重置。
+若已有真实登录态，不会强行替换账号；不要清空钥匙串或数据库来制造测试条件。
+此方式只用于页面预览，不能验证真实登录、在线 AI 或同步。Release 不支持该入口。
+
+Xcode 27 的模拟器窗口由 **Device Hub** 提供，应用标识 `com.apple.dt.Devices`；本机路径为
+`/Volumes/data/Applications/Xcode.app/Contents/Applications/DeviceHub.app`。
+从 Xcode → Open Developer Tool → Device Hub 打开并选择脚本输出的设备。
+[Apple 官方说明](https://developer.apple.com/documentation/xcode/device-hub)
+与[设备管理入口](https://developer.apple.com/documentation/xcode/pairing-your-devices-with-your-mac)。
+旧 `Contents/Developer/Applications/Simulator.app` 路径在此 Xcode 安装中不存在。
+
+完成 iOS 工作后，安装当前源码的最新构建并留在目标页面供用户查看。优先用 Computer Use
+短流程验证受影响交互；无需默认跑整套 UI 测试或反复构建。
+2026-09-14 实测：Computer Use 可读取 Xcode，但 Device Hub 连接返回 `timeoutReached`，
+从 Xcode 菜单打开后仍未解决；不能将此限制解释为 App 失败。遇到同样问题不要循环换名称重试，
+可用下列只读截图确认首屏，但应明确未完成 Computer Use 交互验证：
+
+```bash
+DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
+  xcrun simctl io <脚本输出的设备UDID> screenshot /tmp/lingotrip-preview.png
+```
+
+首屏是异步加载的；刚启动立即截图可能只有背景，应待页面加载后再截一次，不因此重建 App。
+点击底部 Tab 前先收起键盘，避免点击落在键盘区域。隐藏的首页仍可能存在于辅助功能树，
+使用入口可点击性或二级页面返回按钮消失判断是否返回首页。测试失败时先读 xcresult 的实际
+断言位置；诊断收集阶段的 `simctl` 错误不等于测试根因。
