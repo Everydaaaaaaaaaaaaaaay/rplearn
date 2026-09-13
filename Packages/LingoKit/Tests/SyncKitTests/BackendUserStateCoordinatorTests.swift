@@ -80,6 +80,8 @@ struct BackendUserStateCoordinatorTests {
                     }
                     """
                 )
+            case ("GET", "/v1/sync/changes"):
+                return json(#"{"changes":[],"nextCursor":"same-cursor","hasMore":false}"#)
             case ("GET", "/v1/sync/snapshot"):
                 snapshotRequestCount += 1
                 return json(snapshotJSON())
@@ -375,6 +377,29 @@ struct BackendUserStateCoordinatorTests {
             #expect(try await storyProgress.progress(storyID: "guest_story")?.isCompleted == true)
         }
         #expect(await transport.snapshotRequestCount == 0)
+    }
+
+    @Test("重启后没有增量变更也能立即修改英语水平")
+    func relaunchWithNoChangesCanUpdateLevel() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = StateTransport()
+        let client = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID), transport: transport)
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let suiteName = "relaunch.\(UUID())"
+        let economy = EconomyStore(modelContainer: container)
+        func makeCoordinator() -> BackendUserStateCoordinator {
+            BackendUserStateCoordinator(backend: client, accountCache: AccountCacheStore(modelContainer: container),
+                economyCache: economy, itemCache: ItemStore(modelContainer: container),
+                ticketStubCache: TicketStubStore(modelContainer: container), defaults: UserDefaults(suiteName: suiteName)!)
+        }
+        _ = try await makeCoordinator().activate(userID: userID)
+        let relaunched = makeCoordinator()
+        _ = try await relaunched.activate(userID: userID)
+        let updated = try await relaunched.updateProfile { $0.difficultyLevel = .primary2 }
+        #expect(updated.difficultyLevel == .primary2)
+        #expect(try await economy.profile().difficultyLevel == .primary2)
+        #expect(await transport.mutationHeaders.count == 1)
     }
 
     @Test("首次登录保留游客内容以便后续上传")

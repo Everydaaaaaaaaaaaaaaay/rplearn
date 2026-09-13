@@ -1,4 +1,5 @@
 export type DifficultyLevel =
+  | "kindergarten"
   | "primary1"
   | "primary2"
   | "primary3"

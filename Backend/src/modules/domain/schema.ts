@@ -15,6 +15,7 @@ import { applicationSchema } from "../../db/schema.js";
 import { users } from "../../db/user-schema.js";
 
 export const difficultyLevel = applicationSchema.enum("difficulty_level", [
+  "kindergarten",
   "primary1",
   "primary2",
   "primary3",

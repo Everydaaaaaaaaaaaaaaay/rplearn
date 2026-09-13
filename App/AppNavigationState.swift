@@ -12,9 +12,9 @@ enum MeDestination: Hashable {
     case favorites
     case settings
     case photoCredits
-    #if DEBUG
     case memory
-    #endif
+    case account
+    case subscription
 }
 
 extension HomeDestination {

@@ -8,6 +8,8 @@ import PhotosUI
 import StoreKit
 import SwiftUI
 
+public enum MyPageSection: Sendable { case account, subscription }
+
 /// “我的”聚合页：资料、订阅、金币与二级入口。
 public struct MyPageView: View {
     private let accessClient: BackendClient?
@@ -20,6 +22,9 @@ public struct MyPageView: View {
     private let onCalibrateLevel: @MainActor () -> Void
     private let onOpenFavorites: @MainActor () -> Void
     private let onOpenSettings: @MainActor () -> Void
+    private let section: MyPageSection?
+    private let onOpenAccount: @MainActor () -> Void
+    private let onOpenSubscription: @MainActor () -> Void
     private let onOpenMemory: @MainActor () -> Void
 
     @Environment(\.userAvatar) private var userAvatar
@@ -27,13 +32,10 @@ public struct MyPageView: View {
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
 
-    @State private var pendingUsage = false
     @State private var showsUsage = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
-    @State private var showsTierPicker = false
     @State private var showsManageSubscriptions = false
-    @State private var showsAccountPanel = false
     @StateObject private var sceneActions = DSSceneActionCoordinator<MyPageSceneHotspot>()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
@@ -61,7 +63,10 @@ public struct MyPageView: View {
         onCalibrateLevel: @escaping @MainActor () -> Void,
         onOpenFavorites: @escaping @MainActor () -> Void,
         onOpenSettings: @escaping @MainActor () -> Void,
-        onOpenMemory: @escaping @MainActor () -> Void = {}
+        onOpenMemory: @escaping @MainActor () -> Void = {},
+        section: MyPageSection? = nil,
+        onOpenAccount: @escaping @MainActor () -> Void = {},
+        onOpenSubscription: @escaping @MainActor () -> Void = {}
     ) {
         self.accessClient = accessClient
         self.economyStore = economyStore
@@ -74,11 +79,16 @@ public struct MyPageView: View {
         self.onOpenFavorites = onOpenFavorites
         self.onOpenSettings = onOpenSettings
         self.onOpenMemory = onOpenMemory
+        self.section = section
+        self.onOpenAccount = onOpenAccount
+        self.onOpenSubscription = onOpenSubscription
     }
 
     public var body: some View {
         Group {
-            if dynamicTypeSize.isAccessibilitySize {
+            if let section {
+                detailPage(section)
+            } else if dynamicTypeSize.isAccessibilitySize {
                 accessibleContent
             } else {
                 modernTravelDesk
@@ -103,11 +113,6 @@ public struct MyPageView: View {
             get: { avatarError != nil }, set: { if !$0 { avatarError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(avatarError ?? "") }
         .onDisappear(perform: sceneActions.cancel)
-        .sheet(isPresented: $showsAccountPanel, onDismiss: {
-            if pendingUsage { pendingUsage = false; showsUsage = true }
-        }) {
-            accountPanel
-        }
         .sheet(isPresented: $showsUsage) {
             if let accessClient {
                 UsageAccessView(backend: accessClient, billing: billing)
@@ -121,12 +126,10 @@ public struct MyPageView: View {
             VStack(spacing: DSSpacing.md) {
                 profileCard
                 learningProfileCard
-                subscriptionCard
+                Button("订阅与金币", action: onOpenSubscription)
                 usageButton
                 entryList
-                #if DEBUG
                 debugCard
-                #endif
             }
             .padding(DSSpacing.md)
         }
@@ -217,11 +220,9 @@ public struct MyPageView: View {
                 .frame(width: layout.account.size.width, height: layout.account.size.height)
                 .position(x: width * layout.account.center.x, y: sceneHeight * layout.account.center.y)
 
-            #if DEBUG
             memoryDebugHotspot
                 .frame(width: layout.memory.size.width, height: layout.memory.size.height)
                 .position(x: width * layout.memory.center.x, y: sceneHeight * layout.memory.center.y)
-            #endif
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
     }
@@ -240,18 +241,19 @@ public struct MyPageView: View {
     private var profileHotspot: some View {
         Button {
             sceneActions.perform(for: .profile) {
-                showsAccountPanel = true
+                onOpenAccount()
             }
         } label: {
             profileSceneEntry
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .profile))
+        .accessibilityIdentifier("me.profile")
         .accessibilityLabel("个人资料，\(presentation.displayName)，\(presentation.accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
         .accessibilityHint("查看账号、用量与权益")
     }
 
     private var coinHotspot: some View {
-        Button { showsUsage = true } label: { coinLabel }
+        Button(action: onOpenSubscription) { coinLabel }
             .buttonStyle(.plain)
             .accessibilityHint("查看金币获取方式与订阅权益")
     }
@@ -269,6 +271,7 @@ public struct MyPageView: View {
             learningSceneEntry
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .learning))
+        .accessibilityIdentifier("me.level")
         .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")
     }
@@ -308,22 +311,22 @@ public struct MyPageView: View {
     private var accountHotspot: some View {
         Button {
             sceneActions.perform(for: .account) {
-                showsAccountPanel = true
+                onOpenSubscription()
             }
         } label: {
             fixedSceneEntry(
-                glyph: .account,
-                title: "账号",
+                glyph: .system("sparkles.rectangle.stack.fill"),
+                title: "订阅",
                 plane: sceneLayout.account.plane,
                 scale: sceneLayout.account.contentScale
             )
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .account))
-        .accessibilityLabel("账号与订阅")
+        .accessibilityIdentifier("me.subscription")
+        .accessibilityLabel("订阅与金币")
         .accessibilityHint("同步旅程与管理方案")
     }
 
-    #if DEBUG
     private var memoryDebugHotspot: some View {
         Button {
             sceneActions.perform(for: .memory, action: onOpenMemory)
@@ -336,10 +339,9 @@ public struct MyPageView: View {
             )
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .memory))
-        .accessibilityLabel("记忆调试面板")
+        .accessibilityLabel("记忆档案")
         .accessibilityHint("查看角色长期与近期记忆")
     }
-    #endif
 
     private var profileSceneEntry: some View {
         let scale = sceneLayout.profile.contentScale
@@ -402,46 +404,6 @@ public struct MyPageView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
-    }
-
-    private var accountPanel: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: DSSpacing.md) {
-                    profileCard
-                    subscriptionCard
-                    usageButton
-                    NavigationLink {
-                        AccountSecurityView(session: authSession)
-                    } label: {
-                        Label("账号与安全", systemImage: "person.badge.key.fill")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-
-                    Button(role: .destructive) {
-                        Task {
-                            await authSession.logout()
-                            showsAccountPanel = false
-                        }
-                    } label: {
-                        Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.dsAction(.secondary, fullWidth: true))
-                }
-                .padding(DSSpacing.md)
-            }
-            .background(Color.dsBackground)
-            .navigationTitle("账号与版本")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("完成") { showsAccountPanel = false }
-                }
-            }
-        }
-        .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.visible)
     }
 
     private func avatarPicker(size: CGFloat) -> some View {
@@ -517,121 +479,8 @@ public struct MyPageView: View {
 
     private var usageButton: some View {
         Button {
-            if showsAccountPanel { pendingUsage = true; showsAccountPanel = false }
-            else { showsUsage = true }
+            showsUsage = true
         } label: { Label("用量与权益", systemImage: "chart.bar.fill") }
-    }
-
-    private var subscriptionCard: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            subscriptionHeader
-
-                HStack {
-                    Button {
-                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            showsTierPicker.toggle()
-                        }
-                    } label: {
-                        Label(showsTierPicker ? "收起方案" : "查看订阅方案", systemImage: "sparkles")
-                    }
-                    .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
-                    .tint(.white)
-
-                    if billing.tier != .free {
-                        Button("管理") {
-                            showsManageSubscriptions = true
-                        }
-                        .buttonStyle(.dsAction(.glass, fullWidth: false, compact: true))
-                        .tint(.white)
-                    }
-                }
-
-                if showsTierPicker {
-                    VStack(spacing: DSSpacing.xs) {
-                        if billing.operation == .loading {
-                            ProgressView()
-                                .tint(.white)
-                                .frame(maxWidth: .infinity)
-                        } else if billing.offeredProducts.isEmpty {
-                            Text(billing.catalogStatusMessage)
-                                .font(.footnote)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        } else {
-                            ForEach(billing.offeredProducts) { product in
-                                Button {
-                                    Task {
-                                        await billing.purchase(product)
-                                        await reload()
-                                    }
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(product.tier.displayName)
-                                                .fontWeight(.bold)
-                                            if let detail = product.checkoutPriceDetail {
-                                                Text(detail)
-                                                    .font(.caption)
-                                                    .opacity(0.76)
-                                            }
-                                        }
-                                        Spacer()
-                                        Text(product.checkoutDisplayPrice)
-                                            .fontWeight(.bold)
-                                            .monospacedDigit()
-                                    }
-                                    .frame(maxWidth: .infinity)
-                                }
-                                .buttonStyle(.dsAction(.glass, fullWidth: true, compact: true))
-                                .tint(.white)
-                                .disabled(billing.operation != .idle)
-                            }
-                        }
-
-                        Button("重新加载方案") {
-                            Task { await billing.synchronize(showLoading: true) }
-                        }
-                        .disabled(billing.operation != .idle)
-
-                        Button("恢复购买") {
-                            Task {
-                                await billing.restorePurchases()
-                                await reload()
-                            }
-                        }
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .disabled(billing.operation != .idle)
-                    }
-                    .transition(reduceMotion ? .opacity : .move(edge: .top).combined(with: .opacity))
-                }
-
-                if let validity = billing.currentValidityDescription {
-                    Text(validity)
-                        .font(.caption2)
-                        .opacity(0.76)
-                }
-                if let message = billing.message {
-                    Label(message, systemImage: "checkmark.circle.fill")
-                        .font(.caption)
-                        .foregroundStyle(.white)
-                }
-                if let error = billing.lastError {
-                    Label(error, systemImage: "exclamationmark.triangle.fill")
-                        .font(.caption)
-                        .foregroundStyle(.white)
-                }
-        }
-        .foregroundStyle(.white)
-        .padding(DSSpacing.md)
-        .background(
-            LinearGradient(
-                colors: [Color.dsSkyDeep, Color.dsSky, Color.dsCyan],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            ),
-            in: RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-        )
-        .shadow(color: Color.dsSky.opacity(0.24), radius: 12, y: 5)
     }
 
     private var learningProfileCard: some View {
@@ -701,34 +550,6 @@ public struct MyPageView: View {
         .background(Color.dsSurfaceMuted, in: RoundedRectangle(cornerRadius: DSRadius.inline))
     }
 
-    @ViewBuilder
-    private var subscriptionHeader: some View {
-        if dynamicTypeSize.isAccessibilitySize {
-            VStack(alignment: .leading, spacing: DSSpacing.xs) {
-                Image(systemName: "sparkles.rectangle.stack.fill")
-                    .font(.title)
-                Text("\(AppBrand.englishName) \(billing.tier.displayName)")
-                    .font(.headline.bold())
-                Text("更长的角色记忆，让每段友谊都有延续")
-                    .font(.body)
-                    .opacity(0.86)
-            }
-        } else {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("\(AppBrand.englishName) \(billing.tier.displayName)")
-                        .font(.title3.bold())
-                    Text("更长的角色记忆，让每段友谊都有延续")
-                        .font(.footnote)
-                        .opacity(0.86)
-                }
-                Spacer()
-                Image(systemName: "sparkles.rectangle.stack.fill")
-                    .font(.largeTitle)
-            }
-        }
-    }
-
     private var entryList: some View {
         VStack(spacing: 0) {
             Button(action: onOpenFavorites) {
@@ -756,22 +577,183 @@ public struct MyPageView: View {
         .dsSurface(.grouped, padding: 0)
     }
 
-    #if DEBUG
     private var debugCard: some View {
         VStack(spacing: 0) {
             Button(action: onOpenMemory) {
-                MyPageEntryRow("记忆调试面板", subtitle: "查看角色长期与近期记忆", icon: "brain.head.profile", tint: .dsQuiz)
+                MyPageEntryRow("记忆档案", subtitle: "查看角色长期与近期记忆", icon: "brain.head.profile", tint: .dsQuiz)
             }
             .buttonStyle(.plain)
         }
         .dsSurface(.grouped, padding: 0)
     }
-    #endif
 
     private func reload() async {
         async let loadedProfile = try? economyStore.profile()
         async let loadedSlots = try? rosterStore.occupiedFriendSlots()
         profile = await loadedProfile
         occupiedFriendSlots = await loadedSlots ?? 0
+    }
+}
+
+extension MyPageView {
+    private func detailPage(_ section: MyPageSection) -> some View {
+        ZStack {
+            DSWorkbenchBackdrop(focus: .settings)
+            ScrollView {
+                VStack(alignment: .leading, spacing: DSSpacing.lg) {
+                    if section == .account {
+                        DSWorkbenchPaperSheet {
+                            VStack(alignment: .leading, spacing: DSSpacing.lg) {
+                                HStack(spacing: DSSpacing.md) {
+                                    avatarPicker(size: 72)
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        Text(presentation.displayName)
+                                            .font(.title2.bold())
+                                            .fixedSize(horizontal: false, vertical: true)
+                                        Text(presentation.accountBadgeTitle)
+                                            .font(.subheadline)
+                                            .foregroundStyle(Color.dsPaperInkSecondary)
+                                        Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
+                                            .font(.footnote)
+                                            .foregroundStyle(Color.dsPaperInkSecondary)
+                                    }
+                                    Spacer(minLength: 0)
+                                }
+                                Divider()
+                                NavigationLink {
+                                    AccountSecurityView(session: authSession)
+                                } label: {
+                                    HStack {
+                                        Label("账号与安全", systemImage: "person.badge.key.fill")
+                                        Spacer()
+                                        Image(systemName: "chevron.right").font(.caption.weight(.semibold))
+                                    }
+                                    .frame(minHeight: 44)
+                                }
+                                Button(role: .destructive) {
+                                    Task { await authSession.logout() }
+                                } label: {
+                                    Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(minHeight: 44)
+                                }
+                                .buttonStyle(.plain)
+                                .foregroundStyle(.red)
+                            }
+                        }
+                    } else {
+                        subscriptionOverview
+                        storePlans
+                        coinStore
+                        DSWorkbenchPaperSheet {
+                            VStack(alignment: .leading, spacing: DSSpacing.md) {
+                                usageButton
+                                Button("管理订阅") { showsManageSubscriptions = true }
+                                Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
+                                    .disabled(billing.operation != .idle)
+                                if let message = billing.message { Text(message).font(.footnote) }
+                                if let error = billing.lastError {
+                                    Text(error).font(.footnote).foregroundStyle(.red)
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                }
+                .foregroundStyle(Color.dsPaperInk)
+                .frame(maxWidth: 620)
+                .padding(DSSpacing.lg)
+                .padding(.bottom, DSSpacing.lg)
+                .frame(maxWidth: .infinity)
+            }
+            .scrollIndicators(.hidden)
+        }
+        .task {
+            if section == .subscription { await billing.synchronize(showLoading: true) }
+        }
+    }
+
+    private var subscriptionOverview: some View {
+        DSWorkbenchPaperSheet {
+            HStack(alignment: .center, spacing: DSSpacing.lg) {
+                DSObsidianMedallion(systemImage: "sparkles.rectangle.stack.fill", size: 60, isRaised: false)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(billing.tier.displayName).font(.title2.bold())
+                    if let validity = billing.currentValidityDescription {
+                        Text(validity).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                    }
+                    Text("\(profile?.coins ?? 0) 金币")
+                        .font(.subheadline.monospacedDigit())
+                        .foregroundStyle(Color.dsPaperInkSecondary)
+                }
+                Spacer(minLength: 0)
+            }
+        }
+    }
+
+    private var storePlans: some View {
+        DSWorkbenchPaperSheet {
+            VStack(alignment: .leading, spacing: DSSpacing.lg) {
+                Text("订阅计划").font(.title3.bold())
+                if billing.operation == .loading { ProgressView() }
+                if billing.offeredProducts.isEmpty {
+                    Text(billing.catalogStatusMessage)
+                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
+                    Button("重新加载方案") { Task { await billing.synchronize(showLoading: true) } }
+                        .disabled(billing.operation != .idle)
+                }
+                ForEach(billing.offeredProducts) { product in
+                    VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(product.tier.displayName).font(.headline)
+                            Spacer()
+                            Text(product.checkoutDisplayPrice).font(.headline.monospacedDigit())
+                        }
+                        if product.ticketCount > 0 {
+                            Text("每个付费周期赠 \(product.ticketCount) 张通用机票")
+                                .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
+                        }
+                        if let detail = product.checkoutPriceDetail {
+                            Text(detail).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                        }
+                        Button("订阅 \(product.tier.displayName)") {
+                            Task { await billing.purchase(product); await reload() }
+                        }
+                        .buttonStyle(.dsWorkbenchAction)
+                        .disabled(billing.operation != .idle || !billing.purchasesEnabled)
+                    }
+                    Divider()
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    private var coinStore: some View {
+        DSWorkbenchPaperSheet {
+            VStack(alignment: .leading, spacing: DSSpacing.md) {
+                Text("金币充值").font(.title3.bold())
+                Text("通用机票 500 金币一张，也可以通过首次完成剧情赚取金币。")
+                    .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
+                if billing.coinProducts.isEmpty {
+                    Text(billing.catalogStatusMessage).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                }
+                ForEach(billing.coinProducts) { product in
+                    Button {
+                        Task { await billing.purchase(product); await reload() }
+                    } label: {
+                        HStack {
+                            Label("\(product.coinAmount) 金币", systemImage: "circle.grid.2x1.fill")
+                            Spacer()
+                            Text(product.displayPrice).monospacedDigit()
+                        }
+                        .frame(minHeight: 44)
+                    }
+                    .disabled(billing.operation != .idle || !billing.purchasesEnabled)
+                    Divider()
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 }

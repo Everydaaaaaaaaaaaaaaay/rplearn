@@ -28,7 +28,7 @@ struct DifficultyLevelSelectionPage: View {
                         .foregroundStyle(Color.dsPaperInk)
                         .shadow(color: Color.dsBrandCream.opacity(0.98), radius: 5)
                         .shadow(color: Color.white.opacity(0.72), radius: 1)
-                    Text("这是应用内的学习设置，不会请求通知或其他系统权限。测试建议仅供参考，之后仍可修改。")
+                    Text("点击完成后立即生效，之后仍可随时修改。")
                         .font(.subheadline)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -112,6 +112,7 @@ struct DifficultyLevelSelectionPage: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("placement.level.\(level.rawValue)")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 

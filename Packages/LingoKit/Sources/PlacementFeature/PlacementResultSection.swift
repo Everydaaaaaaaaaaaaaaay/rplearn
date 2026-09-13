@@ -221,6 +221,7 @@ extension PlacementTestView {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("placement.chooseLevel")
         .accessibilityLabel("\(title)，当前选择 \(selectedLevel.displayName)")
         .accessibilityHint("打开全部英语水平列表")
     }

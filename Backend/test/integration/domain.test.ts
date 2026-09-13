@@ -438,4 +438,22 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     >`select coins from app.coin_adjustment_debts where user_id=${userId}`;
     expect(after).toEqual(before);
   });
+  it("persists kindergarten and primary levels through the profile endpoint", async () => {
+    for (const difficulty of ["kindergarten", "primary2"]) {
+      const snapshot = await app.inject({
+        headers: authenticated(),
+        method: "GET",
+        url: "/v1/me",
+      });
+      const current = snapshot.json<UserSnapshot>().profile;
+      const result = await app.inject({
+        headers: authenticated({ idempotencyKey: newEntityId() }),
+        method: "PATCH",
+        url: "/v1/me",
+        payload: { difficulty, expectedVersion: current.version },
+      });
+      expect(result.statusCode).toBe(200);
+      expect(result.json<UserSnapshot["profile"]>().difficulty).toBe(difficulty);
+    }
+  });
 });

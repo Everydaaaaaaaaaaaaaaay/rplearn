@@ -6,6 +6,7 @@ import { AppError } from "../../shared/errors.js";
 import type { DomainService } from "./service.js";
 
 const difficultySchema = z.enum([
+  "kindergarten",
   "primary1",
   "primary2",
   "primary3",

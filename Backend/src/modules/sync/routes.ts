@@ -6,6 +6,7 @@ import type { AuthService } from "../auth/service.js";
 import type { SyncCommand, SyncService } from "./service.js";
 
 const difficultySchema = z.enum([
+  "kindergarten",
   "primary1",
   "primary2",
   "primary3",

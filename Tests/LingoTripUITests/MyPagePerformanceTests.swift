@@ -161,6 +161,40 @@ final class MyPagePerformanceTests: XCTestCase {
     }
 
     @MainActor
+    func testAccountSubscriptionAndMemoryPages() throws {
+        launch(on: "me")
+        let profile = app.buttons["me.profile"]
+        XCTAssertTrue(profile.waitForExistence(timeout: 10))
+        profile.tap()
+        XCTAssertTrue(app.navigationBars["个人资料"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["profile.avatarPicker"].exists)
+        let account = XCTAttachment(screenshot: app.screenshot()); account.name = "account-page"; account.lifetime = .keepAlways; add(account)
+        app.navigationBars.buttons["返回"].tap()
+        app.buttons["me.subscription"].tap()
+        XCTAssertTrue(app.navigationBars["订阅与金币"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["订阅计划"].exists)
+        XCTAssertTrue(app.staticTexts["金币充值"].exists)
+        let store = XCTAttachment(screenshot: app.screenshot()); store.name = "subscription-page"; store.lifetime = .keepAlways; add(store)
+        app.navigationBars.buttons["返回"].tap()
+        app.buttons["记忆档案"].tap()
+        XCTAssertTrue(app.staticTexts["记忆档案库"].waitForExistence(timeout: 5))
+    }
+
+    func testLevelDoneSavesImmediately() throws {
+        launch(on: "me")
+        XCTAssertTrue(app.buttons["me.level"].waitForExistence(timeout: 10))
+        app.buttons["me.level"].tap()
+        XCTAssertTrue(app.buttons["placement.chooseLevel"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "直接应用")).firstMatch.exists)
+        app.buttons["placement.chooseLevel"].tap()
+        let level = app.buttons["placement.level.primary2"]
+        XCTAssertTrue(level.waitForExistence(timeout: 5))
+        level.tap()
+        app.buttons["完成"].tap()
+        XCTAssertTrue(app.buttons["me.level"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["me.level"].label.contains("小学二年级"))
+    }
+
     private func launch(on tab: String) {
         app.launchEnvironment["UI_TEST_TAB"] = tab
         app.launch()

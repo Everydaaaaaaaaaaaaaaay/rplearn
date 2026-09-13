@@ -11,6 +11,7 @@ const isoDate = z.iso.datetime({ offset: true });
 const nullableText = (maximum: number) => z.string().max(maximum).nullable().optional();
 const schemaVersion = z.literal(1);
 const difficulty = z.enum([
+  "kindergarten",
   "primary1",
   "primary2",
   "primary3",

@@ -91,8 +91,15 @@ public struct PlacementTestView: View {
                         recommendedLevel: levelSelectionReturnPhase == .result
                             ? result?.difficultyLevel
                             : nil,
-                        onDone: closeLevelSelection
+                        onDone: { applySelectedLevel(testResult: levelSelectionReturnPhase == .result ? result : nil) }
                     )
+                    .disabled(isApplying)
+                    .overlay(alignment: .top) {
+                        if let errorMessage {
+                            Text(errorMessage).font(.footnote).foregroundStyle(.red)
+                                .padding().background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
                 case .question:
                     questionView
                 case .result:
@@ -193,7 +200,7 @@ public struct PlacementTestView: View {
                         .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(Color.dsPaperInk)
                         .multilineTextAlignment(.center)
-                    Text("直接使用当前水平，或用 4–6 分钟短测获得建议。")
+                    Text("选择你的英语水平，或用 4–6 分钟短测获得建议。")
                         .font(.subheadline)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .multilineTextAlignment(.center)
@@ -216,27 +223,6 @@ public struct PlacementTestView: View {
                             detail: "可随时修改",
                             recommendedLevel: nil
                         )
-
-                        Divider()
-                            .overlay(Color.dsPaperInk.opacity(0.12))
-                            .padding(.horizontal, DSSpacing.md)
-
-                        Button {
-                            applySelectedLevel(testResult: nil)
-                        } label: {
-                            HStack {
-                                Label("直接应用 \(selectedLevel.displayName)", systemImage: "checkmark.circle")
-                                Spacer()
-                                if isApplying { ProgressView() }
-                            }
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(Color.dsSkyDeep)
-                            .frame(minHeight: 50)
-                            .padding(.horizontal, DSSpacing.md)
-                            .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
-                        .disabled(isApplying)
 
                         Divider()
                             .overlay(Color.dsPaperInk.opacity(0.12))

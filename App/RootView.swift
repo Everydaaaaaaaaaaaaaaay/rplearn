@@ -718,7 +718,9 @@ struct RootView: View {
         }
     }
 
-    private var meRootView: some View {
+    private var meRootView: some View { myPage() }
+
+    private func myPage(section: MyPageSection? = nil) -> some View {
         MyPageView(
             accessClient: environment.backendClient,
             economyStore: environment.economyStore,
@@ -730,11 +732,10 @@ struct RootView: View {
             onCalibrateLevel: { showPlacementTest = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
-            onOpenMemory: {
-                #if DEBUG
-                openMe(.memory)
-                #endif
-            }
+            onOpenMemory: { openMe(.memory) },
+            section: section,
+            onOpenAccount: { openMe(.account) },
+            onOpenSubscription: { openMe(.subscription) }
         )
         .id("me-root")
     }
@@ -745,9 +746,9 @@ struct RootView: View {
         case .favorites: "收藏夹"
         case .settings: "设置"
         case .photoCredits: "城市背景照片"
-        #if DEBUG
-        case .memory: ""
-        #endif
+        case .memory: "记忆档案"
+        case .account: "个人资料"
+        case .subscription: "订阅与金币"
         }
     }
 
@@ -802,7 +803,10 @@ struct RootView: View {
         case .photoCredits:
             CityScenePhotoCreditsView()
 
-        #if DEBUG
+        case .account:
+            myPage(section: .account)
+        case .subscription:
+            myPage(section: .subscription)
         case .memory:
             MemoryDebugView(
                 memoryStore: environment.memoryStore,
@@ -815,7 +819,6 @@ struct RootView: View {
                     economyStore: environment.economyStore
                 )
             )
-        #endif
         }
     }
 

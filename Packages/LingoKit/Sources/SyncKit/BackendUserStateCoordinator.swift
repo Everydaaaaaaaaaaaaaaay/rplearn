@@ -221,6 +221,7 @@ public actor BackendUserStateCoordinator:
         _ mutate: @Sendable (inout UserProfileDTO) -> Void,
         retryAfterConflict: Bool
     ) async throws -> UserProfileDTO {
+        if snapshot == nil { try await refreshCurrentSnapshot() }
         guard let current = snapshot?.state.profile else {
             throw BackendClientError.invalidResponse
         }
@@ -469,7 +470,7 @@ public actor BackendUserStateCoordinator:
             }
             throw error
         }
-        if foundChanges {
+        if foundChanges || snapshot == nil {
             try await refreshSnapshot(for: userID)
         }
     }
