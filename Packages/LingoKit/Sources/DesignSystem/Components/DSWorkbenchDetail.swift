@@ -7,6 +7,8 @@ public enum DSWorkbenchSceneFocus: Sendable, Equatable {
     case settings
     case account
     case archive
+    case profile
+    case subscription
 
     fileprivate var assetName: String {
         switch self {
@@ -15,18 +17,20 @@ public enum DSWorkbenchSceneFocus: Sendable, Equatable {
         case .settings: "detail_settings_studio"
         case .account: "detail_account_sync_desk"
         case .archive: "detail_memory_archive_desk"
+        case .profile: "detail_profile_journal_desk"
+        case .subscription: "detail_subscription_budget_desk"
         }
     }
 
     fileprivate var scale: CGFloat {
         switch self {
-        case .learning, .favorites, .settings, .account, .archive: 1
+        case .learning, .favorites, .settings, .account, .archive, .profile, .subscription: 1
         }
     }
 
     fileprivate var anchor: UnitPoint {
         switch self {
-        case .learning, .favorites, .settings, .account, .archive: .center
+        case .learning, .favorites, .settings, .account, .archive, .profile, .subscription: .center
         }
     }
 }
@@ -52,6 +56,15 @@ public struct DSWorkbenchBackdrop: View {
                 .scaleEffect(focus.scale, anchor: focus.anchor)
                 .clipped()
                 .overlay { backdropWash }
+                .overlay(alignment: .top) {
+                    if focus == .profile || focus == .subscription {
+                        LinearGradient(
+                            colors: [Color(red: 0.97, green: 0.94, blue: 0.87).opacity(0.88), .clear],
+                            startPoint: .top, endPoint: .bottom
+                        )
+                        .frame(height: 180)
+                    }
+                }
         }
         .ignoresSafeArea()
         .accessibilityHidden(true)

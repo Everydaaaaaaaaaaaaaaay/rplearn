@@ -32,7 +32,6 @@ public struct MyPageView: View {
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
 
-    @State private var showsUsage = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
     @Environment(\.openURL) private var openURL
@@ -114,11 +113,6 @@ public struct MyPageView: View {
             get: { avatarError != nil }, set: { if !$0 { avatarError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(avatarError ?? "") }
         .onDisappear(perform: sceneActions.cancel)
-        .sheet(isPresented: $showsUsage) {
-            if let accessClient {
-                UsageAccessView(backend: accessClient, billing: billing)
-            }
-        }
         .alert("无法打开订阅管理", isPresented: Binding(
             get: { subscriptionManagementError != nil },
             set: { if !$0 { subscriptionManagementError = nil } }
@@ -259,9 +253,8 @@ public struct MyPageView: View {
     }
 
     private var coinHotspot: some View {
-        Button(action: onOpenSubscription) { coinLabel }
-            .buttonStyle(.plain)
-            .accessibilityHint("查看金币获取方式与订阅权益")
+        coinLabel
+            .accessibilityIdentifier("me.coinBalance")
     }
 
     private var coinLabel: some View {
@@ -484,9 +477,21 @@ public struct MyPageView: View {
     }
 
     private var usageButton: some View {
-        Button {
-            showsUsage = true
-        } label: { Label("用量与权益", systemImage: "chart.bar.fill") }
+        Group {
+            if let accessClient {
+                NavigationLink {
+                    UsageAccessView(backend: accessClient, billing: billing)
+                } label: {
+                    HStack {
+                        Label("积分余额与明细", systemImage: "chart.bar.fill")
+                        Spacer()
+                        Image(systemName: "chevron.right").font(.caption.weight(.semibold))
+                    }
+                    .frame(minHeight: 44)
+                }
+                .accessibilityIdentifier("me.credits")
+            }
+        }
     }
 
     private var learningProfileCard: some View {
@@ -604,7 +609,7 @@ public struct MyPageView: View {
 extension MyPageView {
     private func detailPage(_ section: MyPageSection) -> some View {
         ZStack {
-            DSWorkbenchBackdrop(focus: .settings)
+            DSWorkbenchBackdrop(focus: section == .account ? .profile : .subscription)
             ScrollView {
                 VStack(alignment: .leading, spacing: DSSpacing.lg) {
                     if section == .account {
@@ -649,20 +654,30 @@ extension MyPageView {
                         }
                     } else {
                         subscriptionOverview
+                        DSWorkbenchPaperSheet {
+                            VStack(alignment: .leading, spacing: 6) {
+                                usageButton
+                                Text("查看 AI 积分余额、恢复时间和消耗记录")
+                                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                            }
+                        }
                         storePlans
                         coinStore
                         DSWorkbenchPaperSheet {
                             VStack(alignment: .leading, spacing: DSSpacing.md) {
-                                usageButton
-                                Button("在 App Store 管理订阅") {
+                                Button("续费与取消（App Store）") {
                                     openURL(URL(string: "https://apps.apple.com/account/subscriptions")!) { accepted in
                                         if !accepted {
                                             subscriptionManagementError = "请打开系统设置，进入 Apple 账户 → 订阅。"
                                         }
                                     }
                                 }
+                                Text("打开 Apple 的订阅列表，管理自动续费。")
+                                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                                 Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
                                     .disabled(billing.operation != .idle)
+                                Text("已购买但订阅权益未显示时使用，不会补回已消耗的积分或金币。")
+                                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                                 if let message = billing.message { Text(message).font(.footnote) }
                                 if let error = billing.lastError {
                                     Text(error).font(.footnote).foregroundStyle(.red)

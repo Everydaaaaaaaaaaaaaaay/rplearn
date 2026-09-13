@@ -8,121 +8,76 @@ public struct UsageAccessView: View {
     let billing: BillingController
     @State private var snapshot: BackendAccessSnapshot?
     @State private var error: String?
-    @Environment(\.dismiss) private var dismiss
 
     public init(backend: BackendClient, billing: BillingController) {
         self.backend = backend
         self.billing = billing
     }
     public var body: some View {
-        NavigationStack {
-            List {
-                if let snapshot {
+        List {
+            if let snapshot {
+                Section {
+                    LabeledContent("方案", value: billing.tier.displayName)
+                    LabeledContent("普通好友位", value: "\(snapshot.policy.friendSlotLimit)")
+                    Text("剧情旅伴不占好友位。已有好友、聊天和旅行成果会保留。")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+                if let credits = snapshot.credits {
+                    Section("AI 积分余额") {
+                        LabeledContent("可用积分", value: points(credits.remaining))
+                        LabeledContent("本期额度", value: points(credits.limit))
+                        Text("积分用于云端 AI 功能；金币用于购买机票，两者独立。")
+                            .font(.footnote).foregroundStyle(.secondary)
+                        LabeledContent("已消耗", value: points(credits.used))
+                        Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
+                    }
+                    Section("最近消耗") {
+                        if credits.recent.isEmpty {
+                            Text("暂无消耗记录").foregroundStyle(.secondary)
+                        }
+                        ForEach(credits.recent) { entry in
+                            VStack(alignment: .leading, spacing: 5) {
+                                LabeledContent(taskName(entry.task), value: entry.credits.map { "\(points($0)) 积分" } ?? (entry.status == "released" ? "未扣费" : "用量核对中 · 未扣费"))
+                                Text(entryDate(entry.createdAt)).font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
+                    }
                     Section {
-                        LabeledContent("方案", value: billing.tier.displayName)
-                        LabeledContent("普通好友位", value: "\(snapshot.policy.friendSlotLimit)")
-                        Text("剧情旅伴不占好友位。已有好友、聊天和旅行成果会保留。")
-                            .font(.footnote).foregroundStyle(.secondary)
+                        DisclosureGroup("积分如何使用") {
+                            Text("发送消息、生成角色及主动发起的云端讲解和翻译，按实际用量消耗积分。")
+                            Text("自动关系理解、学习建议、旅伴记忆和主动问候不扣用户积分。设备上的语音识别、朗读、本地查词与 Apple 整句翻译同样不扣积分。")
+                            Text("用量核对中的请求不占用额度。积分用完后暂停新的云端操作；已开始的操作可以完成。")
+                        }.font(.footnote)
                     }
-                    if let credits = snapshot.credits {
-                        Section("模型积分") {
-                            LabeledContent("可用积分", value: "\(points(credits.remaining)) / \(points(credits.limit))")
-                            LabeledContent("已消耗", value: points(credits.used))
-                            Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
-                            Text("只有你明确发起的云端操作会使用积分：发送消息、生成新角色，以及语法解析、单词讲解或词典例句云端翻译。聊天整句翻译使用 Apple 本地翻译，不消耗积分。云端操作完成后按实际输入、缓存输入和输出扣除积分，不预留、不冻结。")
-                                .font(.footnote).foregroundStyle(.secondary)
-                            Text("开始时只要还有积分，就能完成本次操作；实际消耗可能超过剩余积分，用完后暂停新的操作。用量核对中的请求不占用额度。")
-                                .font(.footnote).foregroundStyle(.secondary)
-                            Text("自动关系理解、咕咕或嘎嘎建议、旅伴记忆、主动问候、自动小测和语音反馈由产品承担，不会出现在你的消耗记录中。设备上的语音识别、朗读和本地查词同样不扣积分。")
-                                .font(.footnote).foregroundStyle(.secondary)
-                        }
-                        if credits.limit == 100 {
-                            Section("每日 100 积分怎么理解") {
-                                LabeledContent("若平均每次 2 积分", value: "约 50 次")
-                                LabeledContent("若平均每次 5 积分", value: "约 20 次")
-                                LabeledContent("若平均每次 8 积分", value: "约 12 次")
-                                Text("这不是固定次数包。短文本、缓存命中多时消耗较少；上下文较长、生成内容较多时消耗较高。下方“最近消耗”会显示每次操作的真实结算值。")
-                                    .font(.footnote).foregroundStyle(.secondary)
-                            }
-                        }
-                        if !credits.recent.isEmpty {
-                            Section("最近消耗") {
-                                ForEach(credits.recent) { entry in
-                                    LabeledContent(taskName(entry.task), value: entry.credits.map { "\(points($0)) 积分" } ?? (entry.status == "released" ? "未发出 · 未扣费" : entry.status == "pending" ? "用量核对中 · 不占额度" : "处理中 · 未扣费"))
-                                }
-                            }
-                        }
-                    } else {
-                        Section("剩余额度") {
-                            balance("chat", title: "聊天与邂逅", unit: "次", snapshot: snapshot)
-                            balance("voice", title: "实时语音", unit: "秒", snapshot: snapshot)
-                            balance("advanced", title: "语法、单词与语音解析", unit: "次", snapshot: snapshot)
-                            Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
-                        }
-                    }
-                    Section("订阅方案") {
-                        if billing.offeredProducts.isEmpty || !billing.purchasesEnabled {
-                            Text(billing.catalogStatusMessage)
-                            Button("重新加载方案") { Task { await billing.synchronize(showLoading: true) } }
-                                .disabled(billing.operation != .idle)
-                        }
-                        ForEach(billing.offeredProducts) { product in
-                            Button {
-                                Task { await billing.purchase(product); await reload() }
-                            } label: {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    LabeledContent(
-                                        product.tier.displayName,
-                                        value: product.checkoutDisplayPrice
-                                    )
-                                    if product.ticketCount > 0 {
-                                        Text("每个付费周期赠 \(product.ticketCount) 张通用机票").font(.caption)
-                                    }
-                                    if let detail = product.checkoutPriceDetail {
-                                        Text(detail)
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                }
-                            }.disabled(billing.operation != .idle || !billing.purchasesEnabled)
-                        }
-                        Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
-                    }
-                    Section("金币") {
-                        Text("城市剧情首次完成 100～130 金币；主线首次完成 120～180 金币。通用机票 500 金币一张。")
-                            .font(.footnote).foregroundStyle(.secondary)
-                        if billing.coinProducts.isEmpty { Text(billing.catalogStatusMessage) }
-                        ForEach(billing.coinProducts) { product in
-                            Button {
-                                Task { await billing.purchase(product); await reload() }
-                            } label: {
-                                LabeledContent("\(product.coinAmount) 金币", value: product.displayPrice)
-                            }.disabled(billing.operation != .idle || !billing.purchasesEnabled)
-                        }
-                        Text("金币用于购买机票，不是 AI 使用额度。完成全部城市剧情，扣除解锁所需两张机票后，至少剩 500 金币。")
-                            .font(.footnote).foregroundStyle(.secondary)
-                    }
-                    if snapshot.policy.provisional {
-                        Section { Text("额度处于试行阶段，会结合实际使用成本调整。购买前请以商品页说明为准。")
-                            .font(.footnote).foregroundStyle(.secondary) }
-                    }
-                } else if error == nil { ProgressView("正在读取用量…") }
-                if FileManager.default.fileExists(atPath: ContentSyncStore.guestArchiveURL.path) {
-                    Section("旧版本旅程备份") {
-                        ShareLink("导出迁移前的本地记录", item: ContentSyncStore.guestArchiveURL)
-                        Text("备份保留旧版金币、机票、角色和学习记录。可用资产按服务器确认的奖励恢复，开发期赠送额度不会重新启用。")
-                            .font(.footnote).foregroundStyle(.secondary)
+                } else {
+                    Section("剩余额度") {
+                        Text("当前服务尚未返回积分余额与明细。请稍后重试。")
+                        balance("chat", title: "聊天与邂逅", unit: "次", snapshot: snapshot)
+                        balance("voice", title: "实时语音", unit: "秒", snapshot: snapshot)
+                        balance("advanced", title: "语法、单词与语音解析", unit: "次", snapshot: snapshot)
+                        Text(resetDescription(snapshot)).font(.footnote).foregroundStyle(.secondary)
                     }
                 }
-                if let error {
-                    Section { Text(error); Button("重试") { Task { await reload() } } }
+                if snapshot.policy.provisional {
+                    Section { Text("额度处于试行阶段，会结合实际使用成本调整。购买前请以商品页说明为准。")
+                        .font(.footnote).foregroundStyle(.secondary) }
+                }
+            } else if error == nil { ProgressView("正在读取用量…") }
+            if let error {
+                Section("积分加载失败") { Text(error); Button("重试") { Task { await reload() } } }
+            }
+            if FileManager.default.fileExists(atPath: ContentSyncStore.guestArchiveURL.path) {
+                Section("旧版本旅程备份") {
+                    ShareLink("导出迁移前的本地记录", item: ContentSyncStore.guestArchiveURL)
+                    Text("备份保留旧版金币、机票、角色和学习记录。可用资产按服务器确认的奖励恢复，开发期赠送额度不会重新启用。")
+                        .font(.footnote).foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("用量与权益")
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
-            .task { await reload() }
-            .refreshable { await reload() }
+
         }
+        .navigationTitle("积分余额与明细")
+        .task { await reload() }
+        .refreshable { await reload() }
     }
     private func points(_ value: Double) -> String {
         value.formatted(.number.precision(.fractionLength(0...6)))
@@ -153,11 +108,17 @@ public struct UsageAccessView: View {
         }
     }
     private func resetDescription(_ snapshot: BackendAccessSnapshot) -> String {
-        guard let date = snapshot.resetsAt else { return "一次性体验额度，不会自动恢复。" }
+        guard let date = snapshot.credits?.resetsAt ?? snapshot.resetsAt else { return "一次性体验额度，不会自动恢复。" }
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        guard let parsed = formatter.date(from: date) else { return "按服务器时间恢复额度。" }
+        guard let parsed = formatter.date(from: date) ?? ISO8601DateFormatter().date(from: date) else { return "按服务器时间恢复额度。" }
         return "下次恢复：\(parsed.formatted(date: .abbreviated, time: .shortened))。未用完的额度不累计。"
+    }
+    private func entryDate(_ value: String) -> String {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        guard let date = formatter.date(from: value) ?? ISO8601DateFormatter().date(from: value) else { return value }
+        return date.formatted(date: .abbreviated, time: .shortened)
     }
     private func reload() async {
         do { snapshot = try await backend.accessSnapshot(); error = nil }
