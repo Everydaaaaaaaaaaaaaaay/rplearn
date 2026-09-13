@@ -6,9 +6,6 @@ enum AppTab: Hashable {
     case contacts
     case home
     case me
-    #if DEBUG
-    case relationshipLab
-    #endif
 }
 
 enum MeDestination: Hashable {

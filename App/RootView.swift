@@ -73,7 +73,6 @@ struct RootView: View {
         case "contacts": .contacts
         case "home", "map": .home
         case "me": .me
-        case "relationship": .relationshipLab
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
@@ -514,13 +513,6 @@ struct RootView: View {
                 .tabItem {
                     Label("我的", systemImage: "person")
                 }
-            #if DEBUG
-            relationshipLabStack
-                .tag(AppTab.relationshipLab)
-                .tabItem {
-                    Label("测试", systemImage: "heart.text.square")
-                }
-            #endif
         }
         .tint(.dsSky)
         .background {
@@ -824,16 +816,6 @@ struct RootView: View {
         }
     }
 
-    #if DEBUG
-    private var relationshipLabStack: some View {
-        NavigationStack {
-            RelationshipLabView(
-                rosterStore: environment.rosterStore,
-                llm: environment.llmRouter
-            )
-        }
-    }
-    #endif
 
     private func placementTestView(isOnboarding: Bool) -> some View {
         PlacementTestView(
