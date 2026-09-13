@@ -34,8 +34,6 @@ public struct MyPageView: View {
 
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
-    @Environment(\.openURL) private var openURL
-    @State private var subscriptionManagementError: String?
     @StateObject private var sceneActions = DSSceneActionCoordinator<MyPageSceneHotspot>()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
@@ -86,7 +84,9 @@ public struct MyPageView: View {
 
     public var body: some View {
         Group {
-            if let section {
+            if section == .subscription {
+                SubscriptionView(billing: billing)
+            } else if let section {
                 detailPage(section)
             } else if dynamicTypeSize.isAccessibilitySize {
                 accessibleContent
@@ -113,12 +113,7 @@ public struct MyPageView: View {
             get: { avatarError != nil }, set: { if !$0 { avatarError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(avatarError ?? "") }
         .onDisappear(perform: sceneActions.cancel)
-        .alert("无法打开订阅管理", isPresented: Binding(
-            get: { subscriptionManagementError != nil },
-            set: { if !$0 { subscriptionManagementError = nil } }
-        )) {
-            Button("知道了", role: .cancel) {}
-        } message: { Text(subscriptionManagementError ?? "") }
+
     }
 
     private var accessibleContent: some View {
@@ -126,7 +121,7 @@ public struct MyPageView: View {
             VStack(spacing: DSSpacing.md) {
                 profileCard
                 learningProfileCard
-                Button("订阅与金币", action: onOpenSubscription)
+                Button("会员订阅", action: onOpenSubscription)
                 usageButton
                 entryList
                 debugCard
@@ -322,8 +317,8 @@ public struct MyPageView: View {
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .account))
         .accessibilityIdentifier("me.subscription")
-        .accessibilityLabel("订阅与金币")
-        .accessibilityHint("同步旅程与管理方案")
+        .accessibilityLabel("会员订阅")
+        .accessibilityHint("查看会员权益与订阅方案")
     }
 
     private var memoryDebugHotspot: some View {
@@ -652,39 +647,6 @@ extension MyPageView {
                                 .foregroundStyle(.red)
                             }
                         }
-                    } else {
-                        subscriptionOverview
-                        DSWorkbenchPaperSheet {
-                            VStack(alignment: .leading, spacing: 6) {
-                                usageButton
-                                Text("查看 AI 积分余额、恢复时间和消耗记录")
-                                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
-                            }
-                        }
-                        storePlans
-                        coinStore
-                        DSWorkbenchPaperSheet {
-                            VStack(alignment: .leading, spacing: DSSpacing.md) {
-                                Button("续费与取消（App Store）") {
-                                    openURL(URL(string: "https://apps.apple.com/account/subscriptions")!) { accepted in
-                                        if !accepted {
-                                            subscriptionManagementError = "请打开系统设置，进入 Apple 账户 → 订阅。"
-                                        }
-                                    }
-                                }
-                                Text("打开 Apple 的订阅列表，管理自动续费。")
-                                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
-                                Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
-                                    .disabled(billing.operation != .idle)
-                                Text("已购买但订阅权益未显示时使用，不会补回已消耗的积分或金币。")
-                                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
-                                if let message = billing.message { Text(message).font(.footnote) }
-                                if let error = billing.lastError {
-                                    Text(error).font(.footnote).foregroundStyle(.red)
-                                }
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
                     }
                 }
                 .foregroundStyle(Color.dsPaperInk)
@@ -694,93 +656,6 @@ extension MyPageView {
                 .frame(maxWidth: .infinity)
             }
             .scrollIndicators(.hidden)
-        }
-        .task {
-            if section == .subscription { await billing.synchronize(showLoading: true) }
-        }
-    }
-
-    private var subscriptionOverview: some View {
-        DSWorkbenchPaperSheet {
-            HStack(alignment: .center, spacing: DSSpacing.lg) {
-                DSObsidianMedallion(systemImage: "sparkles.rectangle.stack.fill", size: 60, isRaised: false)
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(billing.tier.displayName).font(.title2.bold())
-                    if let validity = billing.currentValidityDescription {
-                        Text(validity).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
-                    }
-                    Text("\(profile?.coins ?? 0) 金币")
-                        .font(.subheadline.monospacedDigit())
-                        .foregroundStyle(Color.dsPaperInkSecondary)
-                }
-                Spacer(minLength: 0)
-            }
-        }
-    }
-
-    private var storePlans: some View {
-        DSWorkbenchPaperSheet {
-            VStack(alignment: .leading, spacing: DSSpacing.lg) {
-                Text("订阅计划").font(.title3.bold())
-                if billing.operation == .loading { ProgressView() }
-                if billing.offeredProducts.isEmpty {
-                    Text(billing.catalogStatusMessage)
-                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
-                    Button("重新加载方案") { Task { await billing.synchronize(showLoading: true) } }
-                        .disabled(billing.operation != .idle)
-                }
-                ForEach(billing.offeredProducts) { product in
-                    VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(product.tier.displayName).font(.headline)
-                            Spacer()
-                            Text(product.checkoutDisplayPrice).font(.headline.monospacedDigit())
-                        }
-                        if product.ticketCount > 0 {
-                            Text("每个付费周期赠 \(product.ticketCount) 张通用机票")
-                                .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
-                        }
-                        if let detail = product.checkoutPriceDetail {
-                            Text(detail).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
-                        }
-                        Button("订阅 \(product.tier.displayName)") {
-                            Task { await billing.purchase(product); await reload() }
-                        }
-                        .buttonStyle(.dsWorkbenchAction)
-                        .disabled(billing.operation != .idle || !billing.purchasesEnabled)
-                    }
-                    Divider()
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-
-    private var coinStore: some View {
-        DSWorkbenchPaperSheet {
-            VStack(alignment: .leading, spacing: DSSpacing.md) {
-                Text("金币充值").font(.title3.bold())
-                Text("通用机票 500 金币一张，也可以通过首次完成剧情赚取金币。")
-                    .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
-                if billing.coinProducts.isEmpty {
-                    Text(billing.catalogStatusMessage).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
-                }
-                ForEach(billing.coinProducts) { product in
-                    Button {
-                        Task { await billing.purchase(product); await reload() }
-                    } label: {
-                        HStack {
-                            Label("\(product.coinAmount) 金币", systemImage: "circle.grid.2x1.fill")
-                            Spacer()
-                            Text(product.displayPrice).monospacedDigit()
-                        }
-                        .frame(minHeight: 44)
-                    }
-                    .disabled(billing.operation != .idle || !billing.purchasesEnabled)
-                    Divider()
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }

@@ -76,13 +76,16 @@ struct RootView: View {
         case "messages": .messages
         case "contacts": .contacts
         case "home", "map": .home
-        case "me": .me
+        case "me", "subscription": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
                 : .home
         }
         _selectedTab = State(initialValue: initial)
+        if requested == "subscription" {
+            _mePath = State(initialValue: [.subscription])
+        }
         if requested == "map" {
             _activeHomeDestination = State(initialValue: .map)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
@@ -782,7 +785,7 @@ struct RootView: View {
         case .photoCredits: "城市背景照片"
         case .memory: "记忆档案"
         case .account: "个人资料"
-        case .subscription: "订阅与金币"
+        case .subscription: "会员订阅"
         }
     }
 

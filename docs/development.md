@@ -73,7 +73,7 @@ Scripts/preview.sh build home             # 源码改变后：增量构建、安
 Scripts/preview.sh preview home           # 已构建/测试后：只安装和启动
 ```
 
-页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`。产物固定取
+页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）。产物固定取
 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
 脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备按既有工作树配置或已启动 iPhone 选择，
@@ -108,3 +108,8 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 点击底部 Tab 前先收起键盘，避免点击落在键盘区域。隐藏的首页仍可能存在于辅助功能树，
 使用入口可点击性或二级页面返回按钮消失判断是否返回首页。测试失败时先读 xcresult 的实际
 断言位置；诊断收集阶段的 `simctl` 错误不等于测试根因。
+
+会员订阅页的完整价格排版可用
+`SIMCTL_CHILD_UI_TEST_SUBSCRIPTION_PRICES=1 Scripts/preview.sh preview subscription` 查看。
+该 Debug 专用夹具明确显示“示例价格，不可购买”，不改变 StoreKit 商品、生产价格或权益。
+正常预览不设置该变量，缺少商店价格时显示重新加载入口并禁用购买。
