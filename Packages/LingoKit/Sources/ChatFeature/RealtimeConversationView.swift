@@ -2,6 +2,8 @@ import BackendKit
 import AVFoundation
 import CoreKit
 import DesignSystem
+import DictKit
+import Translation
 import Foundation
 import Observation
 import PersistenceKit
@@ -132,6 +134,10 @@ private final class RealtimeConversationCoordinator {
 struct RealtimeConversationView: View {
     @State private var coordinator: RealtimeConversationCoordinator
     @State private var captionsVisible = true
+    @State private var wordSelection: TokenSelection?
+    @State private var translator = AppleTranslator()
+    @State private var translatedText = ""
+    private let deps: ChatDependencies
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -147,6 +153,7 @@ struct RealtimeConversationView: View {
         _coordinator = State(
             initialValue: RealtimeConversationCoordinator(chat: chat, deps: deps)
         )
+        self.deps = deps
         self.onSpeechPlayback = onSpeechPlayback
         self.onRequestAccess = onRequestAccess
     }
@@ -180,6 +187,44 @@ struct RealtimeConversationView: View {
             if session.phase == .failed {
                 failureCard
             }
+        }
+        .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
+            grammar: deps.grammarPoints,
+            onSpeak: { word in
+                Task {
+                    await session.suspend()
+                    await deps.speech.speakAndWait(SpeechRequest(text: word, language: "en-US", purpose: .pronunciation))
+                    await session.resume()
+                }
+            },
+            favoriteActions: WordFavoriteActions(
+                contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
+                toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }),
+            exampleTranslationActions: deps.exampleTranslationActions)
+        .translationTask(translator.configuration) { @Sendable session in
+            let id = await translator.sessionID
+            var failed = false
+            do {
+                try await session.prepareTranslation()
+                while !Task.isCancelled {
+                    let batch = await translator.takeBatch(sessionID: id)
+                    if batch.isEmpty { break }
+                    for item in batch {
+                        let zh = try? await session.translate(item.text).targetText
+                        await translator.complete(item.id, with: zh)
+                    }
+                }
+            } catch { failed = true }
+            await translator.finishSession(id, failed: failed || Task.isCancelled)
+        }
+        .task(id: captionsVisible ? session.assistantTranscript : "") {
+            let text = session.assistantTranscript
+            translatedText = ""
+            guard captionsVisible, !text.isEmpty else { return }
+            do { try await Task.sleep(for: .milliseconds(600)) } catch { return }
+            let translated = await translator.translate(text)
+            guard !Task.isCancelled, session.assistantTranscript == text else { return }
+            translatedText = translated ?? ""
         }
         .preferredColorScheme(.dark)
         .task { await coordinator.start() }
@@ -350,7 +395,8 @@ struct RealtimeConversationView: View {
     @ViewBuilder
     private var subtitleArea: some View {
         if captionsVisible {
-            VStack(spacing: 12) {
+            ScrollView {
+              VStack(spacing: 12) {
                 if !displayedUserText.isEmpty {
                     subtitle(
                         speaker: "你",
@@ -367,14 +413,22 @@ struct RealtimeConversationView: View {
                         tint: phaseTint
                     )
                 }
+                if !translatedText.isEmpty {
+                    Text(translatedText)
+                        .font(.subheadline)
+                        .foregroundStyle(.white.opacity(0.62))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
                 if displayedUserText.isEmpty && session.assistantTranscript.isEmpty {
                     Text("字幕会在这里实时出现")
                         .font(.subheadline)
                         .foregroundStyle(.white.opacity(0.34))
                         .frame(maxWidth: .infinity, minHeight: 74)
                 }
+              }
             }
-            .frame(maxWidth: 560)
+            .frame(maxWidth: 560, maxHeight: .infinity)
             .transition(.opacity.combined(with: .move(edge: .bottom)))
         } else {
             Text("字幕已隐藏")
@@ -394,15 +448,15 @@ struct RealtimeConversationView: View {
             Text(speaker)
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(tint)
-            Text(text)
+            TappableText(tokens: TokenCache.tokens(for: text, cacheKey: "call-" + speaker + text),
+                contextID: "call-" + speaker, textColor: .white.opacity(0.92),
+                selection: wordSelection, onSelect: { wordSelection = $0 })
                 .font(.system(.body, design: .rounded))
-                .foregroundStyle(.white.opacity(0.92))
-                .lineLimit(3)
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(alignment == .leading ? .leading : .trailing)
         }
         .frame(maxWidth: .infinity, alignment: alignment)
         .contentTransition(.opacity)
-        .accessibilityElement(children: .combine)
     }
 
     private var controls: some View {

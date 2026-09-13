@@ -263,13 +263,20 @@ public final class ChatViewModel {
         let upstream = await deps.llm.stream(request)
         return AsyncThrowingStream { continuation in
             let task = Task { [weak self] in
-                defer { self?.runInteractionReview(for: userMessage, source: .voiceChat) }
+                var reviewStarted = false
+                defer {
+                    if !reviewStarted { self?.runInteractionReview(for: userMessage, source: .voiceChat) }
+                }
                 do {
                     var receivedText = false
                     for try await event in upstream {
                         try Task.checkCancellation()
                         if case .textDelta(let delta) = event, !delta.isEmpty {
                             if !delta.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { receivedText = true }
+                            if receivedText && !reviewStarted {
+                                reviewStarted = true
+                                self?.runInteractionReview(for: userMessage, source: .voiceChat)
+                            }
                             continuation.yield(delta)
                         }
                     }

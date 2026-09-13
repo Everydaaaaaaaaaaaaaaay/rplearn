@@ -414,6 +414,19 @@ struct ChatWorkflowTests {
         #expect(!reopened.canRetryUnansweredReply)
     }
 
+    @Test("电话转写也触发且只触发一次联合点评")
+    func realtimeTriggersReview() async throws {
+        let provider = Provider(response: "I love the breeze too.")
+        let f = try await fixture(provider)
+        let stream = try await f.model.realtimeReplyStream(userText: "The wind floats to on my face.")
+        for try await _ in stream {}
+        for _ in 0..<50 {
+            if await provider.tasks().contains(.coachReview) { break }
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        #expect(await provider.tasks().filter { $0 == .coachReview }.count == 1)
+    }
+
     @Test("电话空回复结束后，重新进入不会把转写自动重发")
     func realtimeFailureDoesNotAutoResend() async throws {
         let provider = Provider(response: "")
