@@ -268,6 +268,9 @@ struct RootView: View {
                 activeSceneActivity = nil
                 activeActivityChat = nil
             }
+            .onReceive(NotificationCenter.default.publisher(for: .memoryKnowledgeDidChange)) { _ in
+                Task { await environment.workspace?.proactiveMessages.learnerProfileDidChange() }
+            }
             .onReceive(NotificationCenter.default.publisher(for: .proactiveMessagesDidChange)) { _ in
                 guard environment.workspace != nil else { return }
                 Task { await reloadUnreadCount() }

@@ -421,7 +421,8 @@ final class AccountWorkspace {
             rosterStore: rosterStore,
             chatStore: chatStore,
             economyStore: economyStore,
-            llm: llm
+            llm: llm,
+            memoryStore: memoryStore
         )
         self.billing = BillingController(
             backend: backend,

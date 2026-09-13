@@ -406,17 +406,34 @@ public final class ChatViewModel {
         let history = messages.filter { $0.orderIndex <= message.orderIndex }
         let quizLevel = quizTarget == nil ? nil : learnerDifficulty
         let economyStore = deps.economyStore
+        let memoryStore = deps.memoryStore
         Task(priority: .utility) { [weak self] in
+            let extractMemory = MemoryFact.shouldExtract(message.text)
+            let existing = extractMemory ? ((try? await memoryStore.memories(characterID: character.id, tier: .long, includingArchived: true)) ?? []) : []
+            let context = existing.filter { $0.record?.edited != true }.suffix(4).compactMap {
+                $0.record.map { $0.key + ": " + String($0.text.prefix(90)) }
+            }.joined(separator: "\n")
+            let historyCutoff = try? await memoryStore.extractionCutoff(characterID: character.id)
+            let reviewHistory = history.filter { historyCutoff == nil || $0.createdAt > historyCutoff! }
             let result: InteractionReview
             do {
                 result = try await relationship.reviewInteractionAndApply(
-                    character: character, history: history, userMessage: message,
-                    source: source, quizLevel: quizLevel
+                    character: character, history: reviewHistory, userMessage: message,
+                    source: source, quizLevel: quizLevel, memoryContext: context, extractMemory: extractMemory
                 )
             } catch {
                 Log.app.warning("互动审阅失败，本轮跳过辅助点评：\(error.localizedDescription)")
                 try? await relationship.recordContact(characterID: character.id, message: message)
                 return
+            }
+            let cutoff = try? await memoryStore.extractionCutoff(characterID: character.id)
+            if extractMemory && (cutoff == nil || message.createdAt > cutoff!) {
+                var keys = Set<String>()
+                let records = (result.memoryFacts ?? []).compactMap { $0.record(from: message) }
+                    .filter { keys.insert($0.key).inserted }
+                do {
+                    try await memoryStore.applyFacts(characterID: character.id, records: records, sourceIndex: message.orderIndex + 1)
+                } catch { Log.app.warning("记忆更新保存失败：\(error.localizedDescription)") }
             }
             if result.coachReview.hasIssues, let json = CoachService.encode(result.coachReview) {
                 try? await chatStore.setCoachReview(messageID: message.id, json: json)

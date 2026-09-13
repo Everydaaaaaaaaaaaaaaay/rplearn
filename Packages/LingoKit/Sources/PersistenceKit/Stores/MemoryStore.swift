@@ -10,6 +10,7 @@ public struct MemoryDTO: Sendable, Equatable, Identifiable {
     public var importance: Int
     public var sourceUpToIndex: Int
     public var createdAt: Date
+    public var record: MemoryRecord? = nil
 }
 
 /// 分级记忆仓库。
@@ -63,7 +64,7 @@ public actor MemoryStore {
     }
 
     /// 某角色某层的全部记忆（按时间升序）。
-    public func memories(characterID: UUID, tier: MemoryTier) throws -> [MemoryDTO] {
+    public func memories(characterID: UUID, tier: MemoryTier, includingArchived: Bool = false, includingForgotten: Bool = false) throws -> [MemoryDTO] {
         let tierRaw = tier.rawValue
         let predicate = #Predicate<MemoryEntity> { entity in
             entity.tierRaw == tierRaw && entity.character?.characterID == characterID
@@ -72,25 +73,25 @@ public actor MemoryStore {
             predicate: predicate,
             sortBy: [SortDescriptor(\.createdAt)]
         )
-        return try modelContext.fetch(descriptor).map { entity in
-            MemoryDTO(
+        return try modelContext.fetch(descriptor).compactMap { entity in
+            let record = MemoryRecord.decode(entity.content)
+            guard includingForgotten || record?.forgotten != true,
+                  includingArchived || record?.archived != true else { return nil }
+            return MemoryDTO(
                 id: entity.persistentModelID,
                 tier: MemoryTier(rawValue: entity.tierRaw) ?? .short,
                 source: MemorySource(rawValue: entity.sourceRaw) ?? .chat,
-                content: entity.content,
+                content: record?.text ?? entity.content,
                 importance: entity.importance,
                 sourceUpToIndex: entity.sourceUpToIndex,
-                createdAt: entity.createdAt
+                createdAt: record?.observedAt ?? entity.createdAt,
+                record: record
             )
         }
     }
 
     public func count(characterID: UUID, tier: MemoryTier) throws -> Int {
-        let tierRaw = tier.rawValue
-        let predicate = #Predicate<MemoryEntity> { entity in
-            entity.tierRaw == tierRaw && entity.character?.characterID == characterID
-        }
-        return try modelContext.fetchCount(FetchDescriptor<MemoryEntity>(predicate: predicate))
+        try memories(characterID: characterID, tier: tier).count
     }
 
     public func deleteMemories(ids: [PersistentIdentifier]) throws {
@@ -124,6 +125,66 @@ public actor MemoryStore {
             })
         )
         try deleteMemories(ids: entities.map(\.persistentModelID))
+    }
+
+
+    public func applyFacts(characterID: UUID, records: [MemoryRecord], sourceIndex: Int) throws {
+        guard let character = try modelContext.fetch(FetchDescriptor<CharacterEntity>(
+            predicate: #Predicate { $0.characterID == characterID })).first else { throw MemoryError.characterNotFound }
+        let entries = try modelContext.fetch(FetchDescriptor<MemoryEntity>(
+            predicate: #Predicate { $0.character?.characterID == characterID }))
+        do {
+            let cutoff = try extractionCutoff(characterID: characterID)
+            var seenKeys = Set<String>()
+            for record in records.prefix(2) {
+                guard seenKeys.insert(record.key).inserted, cutoff == nil || record.observedAt > cutoff! else { continue }
+                // User edits and forgetting are authoritative, including late model results.
+                let matches = entries.filter { MemoryRecord.decode($0.content)?.key == record.key }
+                if matches.contains(where: {
+                    guard let prior = MemoryRecord.decode($0.content) else { return false }
+                    return prior.forgotten || prior.edited || prior.observedAt >= record.observedAt
+                }) { continue }
+                let entity = matches.first ?? MemoryEntity(tierRaw: MemoryTier.long.rawValue,
+                    sourceRaw: MemorySource.chat.rawValue, content: "", importance: 4, sourceUpToIndex: sourceIndex)
+                if matches.isEmpty { entity.character = character; modelContext.insert(entity) }
+                entity.content = try record.encoded()
+                entity.sourceUpToIndex = sourceIndex
+                try modelContext.save()
+                try journal(entity)
+            }
+            try modelContext.save()
+        } catch { modelContext.rollback(); throw error }
+    }
+
+    public func updateMemory(id: PersistentIdentifier, text: String? = nil, forgotten: Bool = false, archived: Bool = false, status: String? = nil) throws {
+        guard let entity = modelContext.model(for: id) as? MemoryEntity else { return }
+        var record = MemoryRecord.decode(entity.content) ?? MemoryRecord(
+            key: "legacy." + ContentMutationJournal.persistentKey(entity.persistentModelID),
+            text: entity.content, observedAt: entity.createdAt)
+        if let text {
+            record.text = String(text.trimmingCharacters(in: .whitespacesAndNewlines).prefix(300))
+            record.edited = true
+            record.evidence = nil
+            record.messageID = nil
+            record.eventDate = nil
+            record.observedAt = .now
+        }
+        if let status { record.status = status; record.edited = true; record.observedAt = .now }
+        if forgotten { record.forgotten = true; record.observedAt = .now; record.text = ""; record.evidence = nil; record.eventDate = nil; record.messageID = nil }
+        record.archived = archived
+        entity.content = try record.encoded()
+        try journal(entity)
+        try modelContext.save()
+        if forgotten || text != nil || status != nil {
+            NotificationCenter.default.post(name: .memoryKnowledgeDidChange, object: nil)
+        }
+    }
+
+    /// Conservative privacy barrier: pre-forgetting conversations are never re-extracted.
+    public func extractionCutoff(characterID: UUID) throws -> Date? {
+        try MemoryTier.allCases.flatMap {
+            try memories(characterID: characterID, tier: $0, includingArchived: true, includingForgotten: true)
+        }.filter { $0.record?.forgotten == true || $0.record?.edited == true }.map(\.createdAt).max()
     }
 
     private func journal(_ entity: MemoryEntity) throws {

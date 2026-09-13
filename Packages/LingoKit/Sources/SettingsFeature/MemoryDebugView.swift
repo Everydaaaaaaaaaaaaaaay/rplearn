@@ -3,8 +3,7 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 记忆调试面板：按角色可视化 long/mid/short 三层记忆、对照订阅配额，
-/// 可删除单条、手动整理、注入示例，便于开发期观察分层压缩行为。
+/// 按角色查看、纠正和遗忘记忆；归档记录仍可按话题召回。
 public struct MemoryDebugView: View {
     private let memoryStore: MemoryStore
     private let rosterStore: RosterStore
@@ -19,6 +18,11 @@ public struct MemoryDebugView: View {
     @State private var quota: MemoryQuota?
     @State private var subscription: SubscriptionTier = .free
     @State private var isBusy = false
+    @State private var editingMemory: MemoryDTO?
+    @State private var editedText = ""
+    @State private var showsEditor = false
+    @State private var includeArchived = false
+    @State private var memoryError: String?
 
     public init(
         memoryStore: MemoryStore,
@@ -54,7 +58,7 @@ public struct MemoryDebugView: View {
                             )
                             paperSectionDivider
                             tierPanel(
-                                title: "阶段合并",
+                                title: "过往记忆",
                                 code: "mid",
                                 icon: "square.stack.3d.up.fill",
                                 items: mids,
@@ -91,16 +95,22 @@ public struct MemoryDebugView: View {
                     .shadow(color: Color.black.opacity(0.78), radius: 1.4, y: 1)
                     .accessibilityAddTraits(.isHeader)
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Menu {
-                    Button("注入示例 short 记忆") { Task { await seedSamples() } }
-                    Button("手动整理分层") { Task { await consolidate() } }
-                } label: {
-                    Image(systemName: "wrench.and.screwdriver")
-                }
-                .disabled(selectedID == nil || isBusy)
-            }
+
         }
+        .alert("纠正记忆", isPresented: $showsEditor) {
+            TextField("正确的内容", text: $editedText)
+            Button("保存") {
+                guard let memory = editingMemory, !editedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+                Task {
+                    do { try await memoryStore.updateMemory(id: memory.id, text: editedText); await reloadMemories() }
+                    catch { memoryError = "保存失败，请重试。" }
+                }
+            }
+            Button("取消", role: .cancel) {}
+        }
+        .alert("记忆未更新", isPresented: Binding(get: { memoryError != nil }, set: { if !$0 { memoryError = nil } })) {
+            Button("知道了") { memoryError = nil }
+        } message: { Text(memoryError ?? "") }
         .task { await bootstrap() }
     }
 
@@ -155,6 +165,10 @@ public struct MemoryDebugView: View {
 
     private var characterPanel: some View {
         HStack(spacing: DSSpacing.md) {
+            Menu {
+                Toggle("包含归档", isOn: $includeArchived)
+            } label: { Image(systemName: "archivebox") }
+            .onChange(of: includeArchived) { _, _ in Task { await reloadMemories() } }
             Label("角色档案", systemImage: "person.text.rectangle")
                 .font(.headline)
                 .foregroundStyle(Color.dsPaperInk)
@@ -239,6 +253,10 @@ public struct MemoryDebugView: View {
                     .font(.subheadline)
                     .foregroundStyle(Color.dsPaperInk)
                     .fixedSize(horizontal: false, vertical: true)
+                if let record = memory.record {
+                    Text((record.archived ? "已归档 · " : "") + (record.status == "planned" ? "计划，结果待确认" : record.status == "cancelled" ? "已取消／过时" : record.status == "completed" ? "已确认完成" : "已记录"))
+                        .font(.caption2).foregroundStyle(Color.dsPaperInkSecondary)
+                }
                 Text(String(repeating: "★", count: memory.importance)
                     + String(repeating: "☆", count: max(0, 5 - memory.importance)))
                     .font(.caption2)
@@ -247,18 +265,24 @@ public struct MemoryDebugView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            Button {
-                Task { await delete(items: [memory]) }
+            Menu {
+                Button("纠正") {
+                    editingMemory = memory; editedText = memory.content; showsEditor = true
+                }
+                Button("已经过时") {
+                    Task {
+                        do { try await memoryStore.updateMemory(id: memory.id, status: "cancelled"); await reloadMemories() }
+                        catch { memoryError = "保存失败，请重试。" }
+                    }
+                }
+                Button("忘掉这件事", role: .destructive) { Task { await delete(items: [memory]) } }
             } label: {
-                Image(systemName: "trash")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color.dsDanger)
+                Image(systemName: "ellipsis.circle")
                     .frame(width: 44, height: 44)
-                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             .disabled(isBusy)
-            .accessibilityLabel("删除这条记忆")
+            .accessibilityLabel("管理这条记忆")
         }
         .padding(.vertical, DSSpacing.xs)
     }
@@ -286,33 +310,16 @@ public struct MemoryDebugView: View {
 
     private func reloadMemories() async {
         guard let selectedID else { longs = []; mids = []; shorts = []; return }
-        longs = (try? await memoryStore.memories(characterID: selectedID, tier: .long)) ?? []
-        mids = (try? await memoryStore.memories(characterID: selectedID, tier: .mid)) ?? []
-        shorts = (try? await memoryStore.memories(characterID: selectedID, tier: .short)) ?? []
+        longs = (try? await memoryStore.memories(characterID: selectedID, tier: .long, includingArchived: includeArchived)) ?? []
+        mids = (try? await memoryStore.memories(characterID: selectedID, tier: .mid, includingArchived: includeArchived)) ?? []
+        shorts = (try? await memoryStore.memories(characterID: selectedID, tier: .short, includingArchived: includeArchived)) ?? []
     }
 
     private func delete(items: [MemoryDTO]) async {
-        try? await memoryStore.deleteMemories(ids: items.map(\.id))
+        do {
+            for item in items { try await memoryStore.updateMemory(id: item.id, forgotten: true) }
+        } catch { memoryError = "遗忘操作未保存，请重试。" }
         await reloadMemories()
     }
 
-    private func seedSamples() async {
-        guard let selectedID else { return }
-        isBusy = true
-        defer { isBusy = false }
-        let samples = (1...4).map { index in
-            MemoryStore.NewMemory(content: "调试样例记忆 #\(index)（\(Date.now.formatted(date: .omitted, time: .standard))）", importance: (index % 5) + 1)
-        }
-        try? await memoryStore.addMemories(characterID: selectedID, tier: .short, facts: samples, sourceUpToIndex: 0)
-        await reloadMemories()
-    }
-
-    private func consolidate() async {
-        guard let selectedID,
-              let character = characters.first(where: { $0.id == selectedID }) else { return }
-        isBusy = true
-        defer { isBusy = false }
-        await memoryService.maintainTiers(characterID: selectedID, characterName: character.card.name)
-        await reloadMemories()
-    }
 }

@@ -45,11 +45,12 @@ extension ChatViewModel {
         } else {
             learner = .fallback(difficulty: character.difficultyLevel)
         }
+        let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
         return PromptBuilder.roleplayRequest(
             card: character.card,
             learner: learner,
-            history: messages.filter { $0.id != retryingMessageID },
+            history: messages.filter { $0.id != retryingMessageID && (memoryCutoff == nil || $0.createdAt > memoryCutoff!) },
             memorySections: memorySections,
             relationshipContext: RelationshipEngine.promptContext(
                 currentCharacter?.relationship ?? character.relationship

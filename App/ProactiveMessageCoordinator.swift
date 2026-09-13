@@ -50,10 +50,12 @@ final class ProactiveMessageCoordinator {
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
     private let economyStore: EconomyStore
+    private let memoryStore: MemoryStore?
     private let messageService: ProactiveMessageService
     private let notificationCenter: UNUserNotificationCenter
     private let defaults: UserDefaults
     private var scope = "guest"
+    private var knowledgeRevision = 0
     private var isRefreshing = false
     private var refreshQueued = false
     private var queuedAuthorizationRequest = false
@@ -64,6 +66,7 @@ final class ProactiveMessageCoordinator {
         chatStore: ChatStore,
         economyStore: EconomyStore,
         llm: any LLMClient,
+        memoryStore: MemoryStore? = nil,
         notificationCenter: UNUserNotificationCenter = .current(),
         defaults: UserDefaults = .standard
     ) {
@@ -71,6 +74,7 @@ final class ProactiveMessageCoordinator {
         self.rosterStore = rosterStore
         self.chatStore = chatStore
         self.economyStore = economyStore
+        self.memoryStore = memoryStore
         self.messageService = ProactiveMessageService(llm: llm)
         self.notificationCenter = notificationCenter
         self.defaults = defaults
@@ -118,19 +122,23 @@ final class ProactiveMessageCoordinator {
             return
         }
 
+        let revision = knowledgeRevision
         var pending = loadPending()
         let learner = await currentLearnerContext()
         pending = await pendingStillMatchingConversation(pending)
         let materialized = await materializeDueMessages(in: &pending)
         let opened = await ensureInitialMessages(learner: learner)
         pending = await fillSchedule(pending, learner: learner)
+        guard revision == knowledgeRevision else { return }
         savePending(pending)
 
         let settings = await notificationCenter.notificationSettings()
         if requestAuthorization, settings.authorizationStatus == .notDetermined {
             _ = try? await notificationCenter.requestAuthorization(options: [.alert, .sound, .badge])
         }
+        guard revision == knowledgeRevision else { return }
         await scheduleNotifications(for: pending)
+        if revision != knowledgeRevision { await removeScheduledNotifications() }
 
         if materialized || opened {
             NotificationCenter.default.post(name: .proactiveMessagesDidChange, object: nil)
@@ -149,6 +157,7 @@ final class ProactiveMessageCoordinator {
 
     /// 学习档案变化后丢弃尚未到期的旧难度文案；已经进入聊天记录的消息不回写。
     func learnerProfileDidChange() async {
+        knowledgeRevision += 1
         savePending([])
         await removeScheduledNotifications()
     }
@@ -354,7 +363,9 @@ final class ProactiveMessageCoordinator {
     private func storedMessages(for characterID: UUID) async -> [MessageDTO]? {
         guard let summaries = try? await chatStore.conversationSummaries() else { return nil }
         guard let summary = summaries.first(where: { $0.characterID == characterID }) else { return [] }
-        return try? await chatStore.messages(conversationID: summary.conversationID)
+        let messages = try? await chatStore.messages(conversationID: summary.conversationID)
+        let cutoff = try? await memoryStore?.extractionCutoff(characterID: characterID)
+        return messages?.filter { cutoff == nil || $0.createdAt > cutoff! }
     }
 
     private func scheduleNotifications(for pending: [PendingMessage]) async {

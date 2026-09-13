@@ -64,6 +64,89 @@ struct MemoryServiceTests {
 
     private let factsJSON = #"{"memories":[{"content":"Friend supports Arsenal","importance":3},{"content":"Friend plans a trip to Paris","importance":4}]}"#
 
+
+    @Test("可选记忆输出损坏不影响语法点评")
+    func malformedOptionalMemoryDoesNotLoseReview() throws {
+        let json = #"{"coach_review":{"has_issues":false,"issues":[]},"relationship":{"warmth":0,"responsiveness":0,"respect":0,"empathy":0,"reciprocity":0,"disclosure":0,"resonance":0,"engagement":0,"boundary_harm":0,"repair":0,"significance":0,"confidence":0.8,"reason_zh":""},"growth":null,"memory_facts":[{"text":42}]}"#
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let review = try decoder.decode(InteractionReview.self, from: Data(json.utf8))
+        #expect(!review.coachReview.hasIssues)
+        #expect(review.memoryFacts == nil)
+    }
+
+    @Test("记忆须有用户原话，计划保留待确认状态")
+    func evidenceAndPlanState() async throws {
+        let f = try await makeFixture()
+        let message = try await f.chatStore.appendMessage(conversationID: f.conversationID, role: .user,
+            text: "I plan to have an interview tomorrow.")
+        let fact = MemoryFact(key: "user.interview.plan", text: "Friend plans an interview tomorrow.", status: "planned",
+            evidence: "I plan to have an interview tomorrow.", eventDate: nil)
+        let record = try #require(fact.record(from: message))
+        #expect(record.status == "planned")
+        #expect(record.eventDate != nil)
+        #expect(!record.text.contains("tomorrow"))
+        var fabricated = fact
+        fabricated.evidence = "I passed my interview."
+        #expect(fabricated.record(from: message) == nil)
+    }
+
+    @Test("普通寒暄不增加记忆输出，明确个人事实才提取")
+    func extractionGateKeepsSmallTalkCheap() {
+        for message in ["Hello there!", "How are you?", "That sounds nice.", "The weather is good."] {
+            #expect(!MemoryFact.shouldExtract(message))
+        }
+        for message in ["I live in Melbourne.", "I no longer drink coffee.", "My interview was rescheduled.", "我打算下周去面试。"] {
+            #expect(MemoryFact.shouldExtract(message))
+        }
+    }
+
+    @Test("事实更新保留最新版本，拒绝乱序覆盖，角色相互隔离")
+    func structuredFactsUpdateInOrder() async throws {
+        let f = try await makeFixture()
+        let older = MemoryRecord(key: "user.drink.preference", text: "Friend likes coffee.", observedAt: Date(timeIntervalSince1970: 10))
+        let newer = MemoryRecord(key: older.key, text: "Friend no longer drinks coffee.", observedAt: Date(timeIntervalSince1970: 20))
+        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [newer], sourceIndex: 2)
+        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [older], sourceIndex: 1)
+        let facts = try await f.memoryStore.memories(characterID: f.characterID, tier: .long)
+        #expect(facts.count == 1)
+        #expect(facts.first?.content == newer.text)
+        #expect(try await f.memoryStore.memories(characterID: UUID(), tier: .long).isEmpty)
+    }
+
+    @Test("遗忘清除正文、隔离旧摘要，并阻止迟到结果重新写入")
+    func forgettingPreventsResurrection() async throws {
+        let f = try await makeFixture()
+        let record = MemoryRecord(key: "user.drink.preference", text: "Friend likes coffee.", observedAt: .distantPast)
+        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [record], sourceIndex: 1)
+        try await seedShorts(f, count: 2)
+        let stored = try #require(await f.memoryStore.memories(characterID: f.characterID, tier: .long).first)
+        try await f.memoryStore.updateMemory(id: stored.id, forgotten: true)
+        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [record], sourceIndex: 1)
+        #expect(try await f.memoryStore.memories(characterID: f.characterID, tier: .long).isEmpty)
+        #expect(try await f.memoryStore.memories(characterID: f.characterID, tier: .short, includingArchived: true).count == 2)
+        let service = MemoryService(llm: MockLLMProvider(), chatStore: f.chatStore, memoryStore: f.memoryStore)
+        #expect(await service.memorySections(characterID: f.characterID, query: "short fact").isEmpty)
+        let markers = try await f.memoryStore.memories(characterID: f.characterID, tier: .long, includingArchived: true, includingForgotten: true)
+        #expect(markers.first?.content == "")
+        #expect(try await f.memoryStore.extractionCutoff(characterID: f.characterID) != nil)
+    }
+
+    @Test("手动纠正优先于模型，归档历史仍可按话题召回")
+    func editedAndArchivedFacts() async throws {
+        let f = try await makeFixture()
+        let record = MemoryRecord(key: "user.pet.name", text: "Friend's dog is called Milo.", observedAt: .distantPast)
+        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [record], sourceIndex: 1)
+        let stored = try #require(await f.memoryStore.memories(characterID: f.characterID, tier: .long).first)
+        try await f.memoryStore.updateMemory(id: stored.id, text: "Friend's dog is called Miko.", archived: true)
+        var wrong = record; wrong.observedAt = .distantFuture
+        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [wrong], sourceIndex: 2)
+        let service = MemoryService(llm: MockLLMProvider(), chatStore: f.chatStore, memoryStore: f.memoryStore)
+        let context = await service.memorySections(characterID: f.characterID, query: "dog Miko")
+        #expect(context.joined().contains("Miko"))
+        #expect(!context.joined().contains("Milo"))
+    }
+
     @Test("同一会话压缩互斥，失败冷却后允许重试")
     func compressionGate() async {
         let gate = MemoryCompressionGate()
@@ -362,12 +445,12 @@ struct MemoryServiceTests {
         #expect(await service.quota() == EconomyService.memoryQuota(for: .pro))
     }
 
-    @Test("short 超配额合并进 mid（Free shortMid=8）")
-    func shortOverflowMergesToMid() async throws {
+    @Test("溢出保留归档，不消耗 AI 合并请求")
+    func shortOverflowArchivesWithoutRequests() async throws {
         let fixture = try await makeFixture()
-        try await seedShorts(fixture, count: 14) // 溢出 6，合批后再整理
+        try await seedShorts(fixture, count: 14) // 溢出 6，直接本地归档
         let midJSON = #"{"memories":[{"content":"They chatted a lot about hobbies","importance":3}]}"#
-        let mock = MockLLMProvider(completeHandler: { _ in midJSON })
+        let mock = MockLLMProvider(completeHandler: { _ in Issue.record("归档不应调用模型"); return midJSON })
         let service = MemoryService(
             llm: mock, chatStore: fixture.chatStore,
             memoryStore: fixture.memoryStore, economyStore: fixture.economyStore
@@ -376,12 +459,14 @@ struct MemoryServiceTests {
 
         let shortCount = try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .short)
         let mids = try await fixture.memoryStore.memories(characterID: fixture.characterID, tier: .mid)
-        #expect(shortCount == 8) // 溢出的 6 条被合并删除
-        #expect(mids.count == 1)
-        #expect(mids.first?.content == "They chatted a lot about hobbies")
+        #expect(shortCount == 8) // 仅活跃层限制为 8，历史仍保留
+        #expect(mids.isEmpty)
+        let all = try await fixture.memoryStore.memories(characterID: fixture.characterID, tier: .short, includingArchived: true)
+        #expect(all.count == 14)
+        #expect(all.filter { $0.record?.archived == true }.count == 6)
     }
 
-    @Test("short 溢出不足 6 条不触发合并")
+    @Test("少量溢出也本地归档，不触发模型")
     func smallOverflowNoMerge() async throws {
         let fixture = try await makeFixture()
         try await seedShorts(fixture, count: 10) // 溢出 2，暂不发请求
@@ -394,7 +479,7 @@ struct MemoryServiceTests {
             memoryStore: fixture.memoryStore, economyStore: fixture.economyStore
         )
         await service.maintainTiers(characterID: fixture.characterID, characterName: "Memo")
-        #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .short) == 10)
+        #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .short) == 8)
         #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .mid) == 0)
     }
 
