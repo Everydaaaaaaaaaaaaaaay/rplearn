@@ -70,7 +70,7 @@ struct TravelDeskSceneLayout {
             center: UnitPoint(x: 421.0 / 825, y: 1508.0 / 1906),
             size: CGSize(width: 126, height: 136),
             plane: .surface(rotationZ: 0.3, horizontalShadow: -1, tiltX: 2, tiltY: 0),
-            contentScale: 1.08
+            contentScale: 0.92
         ),
         memory: .init(
             // 位于相机上方，并沿相机轻微右倾的中轴线延伸。

@@ -165,6 +165,7 @@ final class MyPagePerformanceTests: XCTestCase {
         launch(on: "me")
         let profile = app.buttons["me.profile"]
         XCTAssertTrue(profile.waitForExistence(timeout: 10))
+        let scene = XCTAttachment(screenshot: app.screenshot()); scene.name = "subscription-entry-size"; scene.lifetime = .keepAlways; add(scene)
         profile.tap()
         XCTAssertTrue(app.navigationBars["个人资料"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["profile.avatarPicker"].exists)
@@ -174,6 +175,7 @@ final class MyPagePerformanceTests: XCTestCase {
         XCTAssertTrue(app.navigationBars["订阅与金币"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["订阅计划"].exists)
         XCTAssertTrue(app.staticTexts["金币充值"].exists)
+        XCTAssertTrue(app.buttons["在 App Store 管理订阅"].exists)
         let store = XCTAttachment(screenshot: app.screenshot()); store.name = "subscription-page"; store.lifetime = .keepAlways; add(store)
         app.navigationBars.buttons["返回"].tap()
         app.buttons["记忆档案"].tap()

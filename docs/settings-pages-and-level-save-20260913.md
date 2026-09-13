@@ -22,3 +22,8 @@
 - 后端已发布 settings-level-20260913，前版 ai-glm-20260913 保留。API／Worker active，公网 readiness ready，线上枚举查询确认 kindergarten 与 primary2 均存在。未修改真实用户等级进行探测。
 
 客户端变更需安装新版 App；已有 TestFlight 安装不会因为后端部署自动获得新页面或记忆入口，仍需后续上传新的测试构建。
+
+## 订阅管理入口跟进（同日）
+
+移除应用内 StoreKit manageSubscriptionsSheet，改为明确的“在 App Store 管理订阅”链接，打开 Apple 官方账户订阅地址。系统拒绝打开时提供设置路径；不读取、代填或保存 Apple 购买账号。此调整避免内嵌系统页持续占据应用，但不能保证 Apple 服务的登录／加载一定成功；未进行真实账户登录或付费验证。测试环境的购买账户与应用登录会话相互独立。
+场景订阅入口 contentScale 从 1.08 调至 0.92（缩小约 15%），实心图标改为轮廓版本，点击范围和背景均不变。已检查 /tmp/subscription-management-images 中的实际模拟器截图，导航 UI 测试通过（/tmp/subscription-management-ui.xcresult）。

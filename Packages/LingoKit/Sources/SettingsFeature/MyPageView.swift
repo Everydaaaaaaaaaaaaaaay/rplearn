@@ -35,7 +35,8 @@ public struct MyPageView: View {
     @State private var showsUsage = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
-    @State private var showsManageSubscriptions = false
+    @Environment(\.openURL) private var openURL
+    @State private var subscriptionManagementError: String?
     @StateObject private var sceneActions = DSSceneActionCoordinator<MyPageSceneHotspot>()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
@@ -118,7 +119,12 @@ public struct MyPageView: View {
                 UsageAccessView(backend: accessClient, billing: billing)
             }
         }
-        .manageSubscriptionsSheet(isPresented: $showsManageSubscriptions)
+        .alert("无法打开订阅管理", isPresented: Binding(
+            get: { subscriptionManagementError != nil },
+            set: { if !$0 { subscriptionManagementError = nil } }
+        )) {
+            Button("知道了", role: .cancel) {}
+        } message: { Text(subscriptionManagementError ?? "") }
     }
 
     private var accessibleContent: some View {
@@ -315,7 +321,7 @@ public struct MyPageView: View {
             }
         } label: {
             fixedSceneEntry(
-                glyph: .system("sparkles.rectangle.stack.fill"),
+                glyph: .system("sparkles.rectangle.stack"),
                 title: "订阅",
                 plane: sceneLayout.account.plane,
                 scale: sceneLayout.account.contentScale
@@ -648,7 +654,13 @@ extension MyPageView {
                         DSWorkbenchPaperSheet {
                             VStack(alignment: .leading, spacing: DSSpacing.md) {
                                 usageButton
-                                Button("管理订阅") { showsManageSubscriptions = true }
+                                Button("在 App Store 管理订阅") {
+                                    openURL(URL(string: "https://apps.apple.com/account/subscriptions")!) { accepted in
+                                        if !accepted {
+                                            subscriptionManagementError = "请打开系统设置，进入 Apple 账户 → 订阅。"
+                                        }
+                                    }
+                                }
                                 Button("恢复购买") { Task { await billing.restorePurchases(); await reload() } }
                                     .disabled(billing.operation != .idle)
                                 if let message = billing.message { Text(message).font(.footnote) }
