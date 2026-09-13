@@ -36,9 +36,10 @@ final class SubscriptionPageTests: XCTestCase {
         app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
         app.launch()
         XCTAssertTrue(app.staticTexts["咕游记会员"].waitForExistence(timeout: 15))
-        app.swipeUp()
         let pro = app.buttons["subscription.plan.pro"]
         XCTAssertTrue(pro.waitForExistence(timeout: 5))
+        XCTAssertTrue(pro.isHittable, "首屏应能直接选择 Pro")
+        XCTAssertLessThanOrEqual(pro.frame.maxY, app.buttons["subscription.purchase"].frame.minY, "全部方案应显示在购买按钮上方")
         pro.tap()
         XCTAssertTrue(app.buttons["subscription.purchase"].label.contains("Pro"))
         XCTAssertFalse(app.buttons["subscription.purchase"].isEnabled)

@@ -40,7 +40,7 @@ struct SubscriptionView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 32) {
+            VStack(alignment: .leading, spacing: 20) {
                 introduction
                 benefits
                 plans
@@ -62,8 +62,8 @@ struct SubscriptionView: View {
             }
             .frame(maxWidth: 560)
             .padding(.horizontal, 24)
-            .padding(.top, 24)
-            .padding(.bottom, 28)
+            .padding(.top, 12)
+            .padding(.bottom, 16)
             .frame(maxWidth: .infinity)
         }
         .accessibilityIdentifier("subscription.content")
@@ -78,15 +78,11 @@ struct SubscriptionView: View {
     }
 
     private var introduction: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("咕游记会员")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(Color.dsSky)
-            Text("让每一次交流，\n都更进一步。")
-                .font(.system(.largeTitle, weight: .bold))
-                .fixedSize(horizontal: false, vertical: true)
-            Text("认识更多旅途朋友，让他们记住你们的故事。")
-                .font(.body).foregroundStyle(.secondary)
+                .font(.title2.bold())
+            Text("认识更多朋友，让每次交流更进一步。")
+                .font(.subheadline).foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             if billing.tier != .free {
                 Text("当前会员：\(billing.tier.displayName)")
@@ -99,35 +95,26 @@ struct SubscriptionView: View {
     }
 
     private var benefits: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("会员能为你带来什么")
-                .font(.headline)
-                .padding(.bottom, 8)
-            benefit("person.2", "更多旅途朋友", "拓展好友空间，与更多角色保持联系。")
-            Divider()
-            benefit("text.bubble", "更连贯的对话", "保留更长的交流上下文，延续你们的话题。")
-            Divider()
-            benefit("heart.text.clipboard", "更长久的记忆", "记住更多关于你的喜好与共同经历。")
+        VStack(alignment: .leading, spacing: 10) {
+            benefit("person.2", "更多旅途朋友")
+            benefit("text.bubble", "更连贯的对话")
+            benefit("heart.text.clipboard", "更长久的记忆")
         }
     }
 
-    private func benefit(_ symbol: String, _ title: String, _ detail: String) -> some View {
-        HStack(alignment: .top, spacing: 14) {
+    private func benefit(_ symbol: String, _ title: String) -> some View {
+        Label {
+            Text(title).font(.subheadline)
+        } icon: {
             Image(systemName: symbol)
-                .font(.title3).foregroundStyle(Color.dsSky)
-                .frame(width: 26).accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title).font(.subheadline.weight(.semibold))
-                Text(detail).font(.subheadline).foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+                .foregroundStyle(Color.dsSky)
+                .frame(width: 24)
         }
-        .padding(.vertical, 16)
     }
 
     private var plans: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("选择会员方案").font(.headline).padding(.bottom, 16)
+            Text("选择会员方案").font(.headline).padding(.bottom, 10)
             if products.isEmpty {
                 if billing.operation == .loading {
                     HStack(spacing: 10) {
@@ -180,7 +167,7 @@ struct SubscriptionView: View {
                 }
                 .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.vertical, 18)
+            .padding(.vertical, 12)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
