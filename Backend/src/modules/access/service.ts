@@ -98,7 +98,7 @@ export function createAccessService(database: DatabaseResource) {
       operationId: string,
     ): Promise<UsageReservation> => {
       const credits = await createCreditService(database).snapshot(userId);
-      if (credits.remaining <= 0)
+      if (credits.remaining <= 0 && credits.consumptionMultiplier !== 0)
         throw new AppError({
           code: "CREDITS_EXHAUSTED",
           message: "积分不足，请查看用量与权益。",

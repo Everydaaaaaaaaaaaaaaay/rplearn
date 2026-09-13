@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  boolean,
   check,
   index,
   integer,
@@ -78,6 +79,9 @@ export const creditOperations = applicationSchema.table(
     policyVersion: text("policy_version").notNull(),
     reservedUnits: numeric("reserved_units", { precision: 24, scale: 0 }).notNull(),
     settledUnits: numeric("settled_units", { precision: 24, scale: 0 }),
+    rawSettledUnits: numeric("raw_settled_units", { precision: 24, scale: 0 }),
+    rateUnits: integer("rate_units").default(10000).notNull(),
+    rateVersion: integer("rate_version"),
     status: text("status").notNull(),
     price: jsonb("price").notNull(),
     usage: jsonb("usage"),
@@ -114,3 +118,25 @@ export const creditOperations = applicationSchema.table(
     ),
   ],
 );
+
+export const creditRatePolicy = applicationSchema.table("credit_rate_policy", {
+  singleton: boolean("singleton").primaryKey().default(true),
+  version: integer("version").notNull().default(1),
+  rateUnits: integer("rate_units").notNull().default(10000),
+});
+export const creditRateOverrides = applicationSchema.table("credit_rate_overrides", {
+  userId: uuid("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  rateUnits: integer("rate_units").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+export const creditRateChanges = applicationSchema.table("credit_rate_changes", {
+  commandId: uuid("command_id").primaryKey(),
+  version: integer("version").notNull().unique(),
+  operatorKeyId: text("operator_key_id").notNull(),
+  reason: text("reason").notNull(),
+  request: jsonb("request").notNull(),
+  previous: jsonb("previous").notNull(),
+  changedAt: timestamp("changed_at", { withTimezone: true }).notNull().defaultNow(),
+});

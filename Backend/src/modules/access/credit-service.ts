@@ -16,6 +16,12 @@ import {
   type ExternalCreditPriceResolver,
 } from "./credit-pricing.js";
 
+import {
+  applyCreditRate,
+  effectiveCreditRate,
+  RATE_SCALE,
+} from "./credit-rate-repository.js";
+
 const policySchema = z.object({
   version: z.string(),
   guest: z.string().regex(/^\d{1,13}$/),
@@ -129,6 +135,7 @@ async function balance(
   };
 }
 export interface CreditSnapshot {
+  consumptionMultiplier: number;
   limit: number;
   used: number;
   reserved: number;
@@ -157,6 +164,7 @@ export function createCreditService(
       database.sql.begin(async (sql) => {
         const ctx = await context(sql, userId),
           b = await balance(sql, userId, ctx.window, ctx.limit, "user");
+        const rate = await effectiveCreditRate(sql, userId);
         const rows = await sql<
           {
             operation_id: string;
@@ -171,6 +179,7 @@ export function createCreditService(
         from app.credit_operations where user_id=${userId} and billing_scope='user'
         order by created_at desc limit 20`;
         return {
+          consumptionMultiplier: rate.rate / RATE_SCALE,
           limit: displayCredits(b.limit),
           used: displayCredits(b.used),
           reserved: displayCredits(b.reserved),
@@ -292,12 +301,14 @@ export function createCreditService(
           request.maxOutputTokens,
         );
         const billingScope = billingScopeForTask(request.task);
+        const rate = await effectiveCreditRate(sql, userId);
+        const rateUnits = billingScope === "user" ? rate.rate : RATE_SCALE;
         const limit =
           billingScope === "user" ? ctx.limit : serviceLimitFor(ctx.actor.plan);
         const available = await balance(sql, userId, ctx.window, limit, billingScope);
         if (
           billingScope === "user"
-            ? available.remaining <= 0n
+            ? rateUnits > 0 && available.remaining <= 0n
             : amount > available.remaining
         )
           throw new AppError({
@@ -323,8 +334,8 @@ export function createCreditService(
               isGuest: ctx.actor.isGuest,
             },
           });
-        await sql`insert into app.credit_operations(user_id,operation_id,parent_operation_id,request_hash,task,billing_scope,plan,window_key,policy_version,reserved_units,status,price,expires_at)
-        values(${userId},${operationId},${request.parentOperationId ?? null},${hash},${request.task},${billingScope},${ctx.actor.plan},${ctx.window},${`${ctx.policy.version}:actual-usage-v1`},${String(amount)},'reserved',${JSON.stringify(price)}::jsonb,now()+interval '5 minutes')`;
+        await sql`insert into app.credit_operations(user_id,operation_id,parent_operation_id,request_hash,task,billing_scope,plan,window_key,policy_version,reserved_units,status,price,expires_at,rate_units,rate_version)
+        values(${userId},${operationId},${request.parentOperationId ?? null},${hash},${request.task},${billingScope},${ctx.actor.plan},${ctx.window},${`${ctx.policy.version}:actual-usage-v1`},${String(amount)},'reserved',${JSON.stringify(price)}::jsonb,now()+interval '5 minutes',${rateUnits},${rate.version})`;
         return { replay: false, result: null };
       });
     },
@@ -355,22 +366,36 @@ export function createCreditService(
       database.sql.begin(async (sql) => {
         await lock(sql, userId);
         const [row] = await sql<
-          { status: string; price: CreditPrice }[]
-        >`select status,price from app.credit_operations where user_id=${userId} and operation_id=${operationId} for update`;
+          {
+            status: string;
+            price: CreditPrice;
+            rate_units: number;
+            billing_scope: BillingScope;
+          }[]
+        >`select status,price,rate_units,billing_scope from app.credit_operations where user_id=${userId} and operation_id=${operationId} for update`;
         if (!row || row.status === "settled" || row.status === "released") return;
         if (row.status === "pending" && usage === null && result === null) return;
-        const cost =
+        const rawCost =
           creditModelMatches(row.price, model) ||
           (row.price.provider === "openrouter" && usage?.providerCostUsd !== undefined)
             ? exactCreditCost(row.price, usage)
             : null;
+        const cost =
+          rawCost === null
+            ? null
+            : applyCreditRate(
+                rawCost,
+                row.billing_scope === "service" || reason === "AI_EMPTY_RESPONSE"
+                  ? RATE_SCALE
+                  : row.rate_units,
+              );
         const status =
           cost !== null
             ? "settled"
             : row.status === "reserved"
               ? "released"
               : "pending";
-        await sql`update app.credit_operations set status=${status},settled_units=${cost === null ? null : String(cost)},
+        await sql`update app.credit_operations set status=${status},settled_units=${cost === null ? null : String(cost)},raw_settled_units=${rawCost === null ? null : String(rawCost)},
         billing_scope=case when ${reason}='AI_EMPTY_RESPONSE' then 'service' else billing_scope end,
         usage=${JSON.stringify(usage)}::jsonb,result=${JSON.stringify(result)}::jsonb,provider_request_id=${providerRequestId},
         reason=${reason ?? (cost !== null ? null : usage === null ? "usage_missing" : !creditModelMatches(row.price, model) && row.price.provider !== "openrouter" ? "model_mismatch" : "usage_invalid")},completed_at=now()
@@ -391,10 +416,19 @@ export function createCreditService(
           );
         await lock(sql, userId);
         const [previous] = await sql<
-          { settled_units: string | null; status: string }[]
-        >`select settled_units::text,status from app.credit_operations where user_id=${userId} and operation_id=${operationId} for update`;
+          {
+            settled_units: string | null;
+            status: string;
+            rate_units: number;
+            billing_scope: BillingScope;
+          }[]
+        >`select settled_units::text,status,rate_units,billing_scope from app.credit_operations where user_id=${userId} and operation_id=${operationId} for update`;
+        const charged = applyCreditRate(
+          units,
+          previous?.billing_scope === "user" ? previous.rate_units : RATE_SCALE,
+        );
         const rows =
-          await sql`update app.credit_operations set settled_units=${String(units)},status='settled',completed_at=now(),
+          await sql`update app.credit_operations set raw_settled_units=${String(units)},settled_units=${String(charged)},status='settled',completed_at=now(),
         reconciliation=${JSON.stringify({ evidence, previous, at: new Date().toISOString() })}::jsonb where user_id=${userId} and operation_id=${operationId}
         and (status='pending' or (status='settled' and settled_units>reserved_units and reconciliation is null)) returning operation_id`;
         if (rows.length !== 1)

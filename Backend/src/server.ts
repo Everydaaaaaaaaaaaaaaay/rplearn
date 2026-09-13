@@ -1,3 +1,6 @@
+import { registerCreditRateAdminRoutes } from "./modules/access/credit-rate-admin-routes.js";
+import { CreditRateService } from "./modules/access/credit-rate-service.js";
+import { CreditRateRepository } from "./modules/access/credit-rate-repository.js";
 import { createAccessService } from "./modules/access/service.js";
 import { registerAccessRoutes } from "./modules/access/routes.js";
 import "dotenv/config";
@@ -182,6 +185,11 @@ async function main(): Promise<void> {
         analytics: new AiAnalyticsRepository(dependencies.database),
         catalog: aiCatalog,
       },
+    );
+    registerCreditRateAdminRoutes(
+      app,
+      authenticateAdmin,
+      new CreditRateService(new CreditRateRepository(dependencies.database)),
     );
     registerAiAdminConsoleRoutes(app);
     registerDictionaryTranslationAdminRoutes(
