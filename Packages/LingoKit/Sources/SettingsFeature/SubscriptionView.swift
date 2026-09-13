@@ -9,6 +9,7 @@ struct SubscriptionView: View {
     @State private var selectedProductID: String?
     @State private var managementError: String?
     @Environment(\.openURL) private var openURL
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     private var products: [PurchasableProduct] {
         #if DEBUG
@@ -49,7 +50,7 @@ struct SubscriptionView: View {
                         .accessibilityIdentifier("subscription.error")
                 }
                 if let message = billing.message {
-                    Text(message).font(.footnote).foregroundStyle(.secondary)
+                    Text(message).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                 }
                 HStack(spacing: 24) {
                     Button("恢复购买") { Task { await billing.restorePurchases() } }
@@ -67,28 +68,43 @@ struct SubscriptionView: View {
             .frame(maxWidth: .infinity)
         }
         .accessibilityIdentifier("subscription.content")
-        .background(Color(uiColor: .systemBackground))
-        .foregroundStyle(.primary)
-        .tint(.dsSky)
+        .foregroundStyle(Color.dsPaperInk)
+        .tint(.dsTravelNavy)
         .safeAreaInset(edge: .bottom, spacing: 0) { purchaseDock }
+        .background {
+            DSWorkbenchBackdrop(focus: .subscription)
+            LinearGradient(
+                stops: [
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.94), location: 0),
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.88), location: 0.26),
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.18), location: 0.48),
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.12), location: 1)
+                ],
+                startPoint: .top, endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
+        }
         .task { await billing.synchronize(showLoading: true) }
         .alert("无法打开订阅管理", isPresented: Binding(
             get: { managementError != nil }, set: { if !$0 { managementError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(managementError ?? "") }
     }
 
+    private var paperTone: Color { Color(red: 0.985, green: 0.970, blue: 0.925) }
+
     private var introduction: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("咕游记会员")
                 .font(.title2.bold())
             Text("认识更多朋友，让每次交流更进一步。")
-                .font(.subheadline).foregroundStyle(.secondary)
+                .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                 .fixedSize(horizontal: false, vertical: true)
             if billing.tier != .free {
                 Text("当前会员：\(billing.tier.displayName)")
                     .font(.subheadline.weight(.medium))
                 if let validity = billing.currentValidityDescription {
-                    Text(validity).font(.footnote).foregroundStyle(.secondary)
+                    Text(validity).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                 }
             }
         }
@@ -107,7 +123,7 @@ struct SubscriptionView: View {
             Text(title).font(.subheadline)
         } icon: {
             Image(systemName: symbol)
-                .foregroundStyle(Color.dsSky)
+                .foregroundStyle(Color.dsTravelNavy)
                 .frame(width: 24)
         }
     }
@@ -121,10 +137,10 @@ struct SubscriptionView: View {
                         ProgressView()
                         Text("正在获取 App Store 价格…")
                     }
-                    .font(.subheadline).foregroundStyle(.secondary)
+                    .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                 } else {
                     Text("暂时无法获取订阅价格")
-                        .font(.subheadline).foregroundStyle(.secondary)
+                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                     Button("重新加载") { Task { await billing.synchronize(showLoading: true) } }
                         .font(.subheadline.weight(.medium))
                         .padding(.top, 12)
@@ -147,7 +163,7 @@ struct SubscriptionView: View {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: selectedProduct?.id == product.id ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
-                    .foregroundStyle(selectedProduct?.id == product.id ? Color.dsSky : Color.secondary)
+                    .foregroundStyle(selectedProduct?.id == product.id ? Color.dsTravelNavy : Color.dsPaperInkSecondary)
                     .padding(.top, 2)
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(alignment: .firstTextBaseline) {
@@ -156,13 +172,13 @@ struct SubscriptionView: View {
                         Text(product.checkoutDisplayPrice).font(.headline.monospacedDigit())
                     }
                     Text(product.tier == .pro ? "更深入的陪伴，适合高频交流" : "开启更多交流，适合日常练习")
-                        .font(.subheadline).foregroundStyle(.secondary)
+                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                     if product.ticketCount > 0 {
                         Text("每个付费周期含 \(product.ticketCount) 张通用机票")
-                            .font(.footnote).foregroundStyle(.secondary)
+                            .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                     }
                     if let detail = product.checkoutPriceDetail {
-                        Text(detail).font(.footnote).foregroundStyle(.secondary)
+                        Text(detail).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                     }
                 }
                 .fixedSize(horizontal: false, vertical: true)
@@ -192,22 +208,20 @@ struct SubscriptionView: View {
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
             }
-            .buttonStyle(.plain)
-            .foregroundStyle(.white)
-            .background(Color.dsSky, in: RoundedRectangle(cornerRadius: 10))
+            .buttonStyle(.dsWorkbenchAction)
             .disabled(usesPreviewPrices || busy || selectedProduct == nil || (!isCurrentPlan && !billing.purchasesEnabled))
             .opacity(busy || selectedProduct == nil || (!isCurrentPlan && !billing.purchasesEnabled) ? 0.5 : 1)
             .accessibilityIdentifier("subscription.purchase")
             if let product = selectedProduct {
                 Text(product.checkoutPriceDetail.map { "\(product.checkoutDisplayPrice) · \($0)" } ?? product.checkoutDisplayPrice)
-                    .font(.footnote).foregroundStyle(.secondary)
+                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                     .multilineTextAlignment(.center)
             }
             if usesPreviewPrices {
-                Text("界面预览 · 示例价格，不可购买").font(.caption).foregroundStyle(.secondary)
+                Text("界面预览 · 示例价格，不可购买").font(.caption).foregroundStyle(Color.dsPaperInkSecondary)
             }
             Text("通过 Apple 账户付款，自动续费，可随时在 App Store 管理或取消。")
-                .font(.caption).foregroundStyle(.secondary)
+                .font(.caption).foregroundStyle(Color.dsPaperInkSecondary)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -215,7 +229,7 @@ struct SubscriptionView: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 16)
         .frame(maxWidth: .infinity)
-        .background(Color(uiColor: .systemBackground))
+        .background(paperTone.opacity(reduceTransparency ? 1 : 0.84))
         .overlay(alignment: .top) { Divider() }
     }
 
