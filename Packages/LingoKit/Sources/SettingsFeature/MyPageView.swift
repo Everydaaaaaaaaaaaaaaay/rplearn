@@ -688,7 +688,7 @@ extension MyPageView {
                                         Image(systemName: "person.2.fill")
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text("加入测试群")
-                                            Text("咕游记LingoTrip测试 · 群号 1104063286")
+                                            Text("咕游记Coovingo测试 · 群号 1104063286")
                                                 .font(.footnote)
                                                 .foregroundStyle(Color.dsPaperInkSecondary)
                                                 .fixedSize(horizontal: false, vertical: true)
