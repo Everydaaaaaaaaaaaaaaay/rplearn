@@ -25,9 +25,11 @@ struct BillingControllerTests {
 
     private actor BillingTransport: BackendTransport {
         private var subscribed = false
+        private(set) var requestCount = 0
         private(set) var submittedIdempotencyKeys: [String] = []
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            requestCount += 1
             switch (request.httpMethod, request.url?.path) {
             case ("POST", "/v1/auth/refresh"):
                 return json(
@@ -273,6 +275,23 @@ struct BillingControllerTests {
         await storefront.configureCatalog(empty: true)
         await fixture.controller.synchronize(showLoading: true)
         #expect(fixture.controller.catalogState == .empty)
+    }
+
+    @Test("启动可复用会员状态而不等待商品网络请求")
+    @MainActor
+    func deferredActivationKeepsCachedTierAndLoadsOnDemand() async throws {
+        let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = BillingTransport()
+        let fixture = try makeController(userID: userID, transport: transport, storefront: FakeStorefront(transactions: []))
+        try await fixture.economy.applyAuthoritativeEntitlement(tier: .pro, friendSlotLimit: 30)
+        await fixture.controller.activate(identity: AuthIdentity(sessionID: UUID(), userID: userID), refreshImmediately: false)
+        #expect(fixture.controller.tier == .pro)
+        #expect(await transport.requestCount == 0)
+        #expect(fixture.controller.products.isEmpty)
+        await fixture.controller.synchronize()
+        #expect(await transport.requestCount > 0)
+        #expect(!fixture.controller.products.isEmpty)
+        fixture.controller.deactivate()
     }
 
     @MainActor

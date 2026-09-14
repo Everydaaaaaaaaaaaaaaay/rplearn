@@ -5,6 +5,7 @@ import PersistenceKit
 
 public enum UserStateActivation: Sendable, Equatable {
     case offlineCache
+    case cached
     case synchronized
 }
 
@@ -86,7 +87,7 @@ public actor BackendUserStateCoordinator:
         self.defaults = defaults
     }
 
-    public func activate(userID: UUID) async throws -> UserStateActivation {
+    public func activate(userID: UUID, preferCache: Bool = false) async throws -> UserStateActivation {
         if let accountStorageUserID, accountStorageUserID != userID {
             throw BackendClientError.invalidResponse
         }
@@ -107,6 +108,11 @@ public actor BackendUserStateCoordinator:
         requestBackend = backend
         currentUserID = userID
         prunePendingCommands()
+
+        // 仅复用已核验归属且完整的快照；首次登录仍需获取服务器状态。
+        if preferCache, canUseOfflineCache {
+            return .cached
+        }
 
         do {
             if canUseOfflineCache, cursor(for: userID) != nil {

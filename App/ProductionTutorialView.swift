@@ -180,12 +180,13 @@ private final class TutorialWorkspace {
         return result
     }
     func chatDependencies(environment: AppEnvironment, onEvent: @escaping @MainActor @Sendable (String) -> Void) -> ChatDependencies {
-        ChatDependencies(tutorial: .init(onEvent: onEvent), chatStore: chat, rosterStore: roster,
+        let regionCatalog = environment.regionCatalog
+        return ChatDependencies(tutorial: .init(onEvent: onEvent), chatStore: chat, rosterStore: roster,
             favorites: favorites, llm: TutorialLLM(), dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: environment.speech,
             exampleTranslationActions: TutorialExampleTranslations.actions, audioSession: environment.audioSession,
             memoryStore: memory, itemStore: items, economyStore: economy, progression: progression,
-            voiceMedia: voice, regionName: { environment.regionCatalog.region(id: $0)?.nameZh ?? $0 }, replyDelayScale: 0)
+            voiceMedia: voice, regionName: { regionCatalog.region(id: $0)?.nameZh ?? $0 }, replyDelayScale: 0)
     }
     func homeDependencies(environment: AppEnvironment, onEvent: @escaping @MainActor @Sendable (String) -> Void) -> HomeDependencies {
         HomeDependencies(tutorial: .init(onEvent: onEvent), economyStore: economy, itemStore: items,

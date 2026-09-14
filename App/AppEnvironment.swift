@@ -22,9 +22,30 @@ final class AppEnvironment {
     let authSession: AuthSession
     let llmRouter: LLMRouter
     let dictionaryExampleTranslations: BackendDictionaryExampleTranslationResolver
-    let dictionary: DictDatabase
-    let grammarPoints: GrammarPointStore
-    let regionCatalog: RegionCatalog
+    private struct LaunchResources: Sendable {
+        let dictionary: DictDatabase
+        let grammarPoints: GrammarPointStore
+        let regionCatalog: RegionCatalog
+    }
+
+    private var resources: LaunchResources?
+    private let resourcesTask: Task<LaunchResources, Never>
+    var resourcesReady: Bool { resources != nil }
+    var dictionary: DictDatabase { requiredResources.dictionary }
+    var grammarPoints: GrammarPointStore { requiredResources.grammarPoints }
+    var regionCatalog: RegionCatalog { requiredResources.regionCatalog }
+
+    private var requiredResources: LaunchResources {
+        guard let resources else { preconditionFailure("启动资源尚未就绪") }
+        return resources
+    }
+
+    func prepareResources() async {
+        guard resources == nil else { return }
+        let startedAt = ContinuousClock.now
+        resources = await resourcesTask.value
+        Log.app.info("启动耗时：等待随包资源 \(String(describing: startedAt.duration(to: .now)), privacy: .public)")
+    }
 
     private(set) var workspace: AccountWorkspace?
 
@@ -65,14 +86,20 @@ final class AppEnvironment {
     }
 
     init() {
-        // 离线模式后台预热 Supertonic-3；实时识别统一使用 Apple 系统能力。
+        // 文件读取与解码不占用主线程；同时允许账号恢复独立进行。
+        resourcesTask = Task.detached(priority: .userInitiated) {
+            let bundle = Bundle.main
+            return LaunchResources(
+                dictionary: try! DictDatabase(databaseURL: bundle.url(forResource: "learner_dictionary", withExtension: "sqlite")!),
+                grammarPoints: try! GrammarPointStore(url: bundle.url(forResource: "grammar_points", withExtension: "json")!),
+                regionCatalog: try! RegionCatalog(url: bundle.url(forResource: "regions", withExtension: "json")!)
+            )
+        }
+        // 语音按需可用，预热由首屏后的任务统一调度。
         let audioSession = AudioSessionCoordinator()
         self.audioSession = audioSession
         let speech = AdaptiveSpeechService(audioSession: audioSession)
         self.speech = speech
-        Task.detached(priority: .userInitiated) {
-            await speech.prepareForLaunch()
-        }
 
         let keychain = KeychainStore()
         self.keychain = keychain
@@ -105,40 +132,41 @@ final class AppEnvironment {
             backend: backendClient
         )
 
-        // 随包资源缺失/损坏属于构建错误，直接崩溃暴露。
-        let dictURL = Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite")!
-        self.dictionary = try! DictDatabase(databaseURL: dictURL)
-        let grammarURL = Bundle.main.url(forResource: "grammar_points", withExtension: "json")!
-        self.grammarPoints = try! GrammarPointStore(url: grammarURL)
-        let regionsURL = Bundle.main.url(forResource: "regions", withExtension: "json")!
-        self.regionCatalog = try! RegionCatalog(url: regionsURL)
-
         Log.app.info("AppEnvironment initialized")
         Task { await authSession.bootstrap() }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
     func activateUser(_ identity: AuthIdentity) async throws -> UserStateActivation {
+        let startedAt = ContinuousClock.now
+        defer { Log.app.info("启动耗时：账号工作区 \(String(describing: startedAt.duration(to: .now)), privacy: .public)") }
         needsOnboarding = nil
         await deactivateAccount()
 
         let defaults = UserDefaults.standard
         let legacyOwnerID = defaults.string(forKey: "backend.state.cached-owner.v1")
             .flatMap(UUID.init(uuidString:))
-        let preparation = try AccountStoreLocation.prepare(
-            for: identity.userID,
-            legacyOwnerID: legacyOwnerID,
-            legacyWasGuest: defaults.bool(forKey: "backend.state.guest-owner.v1")
-        )
-        let container = try ModelContainerFactory.makeContainer(
-            storeURL: preparation.storeURL
-        )
-        let account = AccountWorkspace(
+        let legacyWasGuest = defaults.bool(forKey: "backend.state.guest-owner.v1")
+        let preparation = try await Task.detached(priority: .userInitiated) {
+            try AccountStoreLocation.prepare(
+                for: identity.userID,
+                legacyOwnerID: legacyOwnerID,
+                legacyWasGuest: legacyWasGuest
+            )
+        }.value
+        let storeURL = preparation.storeURL
+        let databaseStartedAt = ContinuousClock.now
+        let container = try await Task.detached(priority: .userInitiated) {
+            try ModelContainerFactory.makeContainer(storeURL: storeURL)
+        }.value
+        Log.app.info("启动耗时：打开账号数据库 \(String(describing: databaseStartedAt.duration(to: .now)), privacy: .public)")
+        let account = await AccountWorkspace(
             userID: identity.userID,
             modelContainer: container,
             backend: backendClient,
             llm: llmRouter
         )
+        try Task.checkCancellation()
         workspace = account
 
         do {
@@ -173,14 +201,18 @@ final class AppEnvironment {
                 }
                 try await backendClient.claimGuestJourney()
             }
-            let activation = try await account.userState.activate(userID: identity.userID)
+            let stateStartedAt = ContinuousClock.now
+            let activation = try await account.userState.activate(userID: identity.userID, preferCache: true)
+            Log.app.info("启动耗时：用户状态 \(String(describing: stateStartedAt.duration(to: .now)), privacy: .public)，路径 \(String(describing: activation), privacy: .public)")
             if let guestProfile {
                 _ = try await account.userState.importGuestLearnerProfileIfNeeded(guestProfile)
             }
-            await account.billing.activate(identity: identity)
+            await account.billing.activate(identity: identity, refreshImmediately: false)
             let profile = try await account.economyStore.profile()
             try await importMainCharacters(into: account)
-            _ = try await account.contentSync.activate(userID: identity.userID)
+            let contentStartedAt = ContinuousClock.now
+            let contentActivation = try await account.contentSync.activate(userID: identity.userID, preferCache: true)
+            Log.app.info("启动耗时：内容激活 \(String(describing: contentStartedAt.duration(to: .now)), privacy: .public)，路径 \(String(describing: contentActivation), privacy: .public)")
             try await reconcileMainCharacters(profile: profile)
             await account.voiceMedia.activate(userID: identity.userID)
             needsOnboarding = !profile.hasCompletedOnboarding
@@ -207,12 +239,16 @@ final class AppEnvironment {
     func activateUITestWorkspace() async throws -> UUID {
         if let workspace { return workspace.userID }
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")!
-        let account = AccountWorkspace(
+        let container = try await Task.detached(priority: .userInitiated) {
+            try ModelContainerFactory.makeContainer(inMemory: true)
+        }.value
+        let account = await AccountWorkspace(
             userID: userID,
-            modelContainer: try ModelContainerFactory.makeContainer(inMemory: true),
+            modelContainer: container,
             backend: backendClient,
             llm: llmRouter
         )
+        try Task.checkCancellation()
         workspace = account
         try await importMainCharacters(into: account)
         // Exercise the real profile-driven backgrounds without touching a persisted account.
@@ -251,7 +287,9 @@ final class AppEnvironment {
             forResource: "main_characters",
             withExtension: "json"
         )!
-        let cards = try SeedData.mainCharacterCards(url: seedsURL)
+        let cards = try await Task.detached(priority: .userInitiated) {
+            try SeedData.mainCharacterCards(url: seedsURL)
+        }.value
         try await account.rosterStore.importMainCharactersIfNeeded(cards: cards)
     }
 
@@ -306,23 +344,32 @@ final class AppEnvironment {
         }
     }
 
-    private func reconcileMainCharacters(profile: UserProfileDTO) async throws {
+    func refreshAccountPresentation(_ account: AccountWorkspace) async throws {
+        let profile = try await account.economyStore.profile()
+        guard workspace === account, !Task.isCancelled else { return }
+        try await reconcileMainCharacters(profile: profile, account: account)
+        guard workspace === account, !Task.isCancelled else { return }
+        needsOnboarding = !profile.hasCompletedOnboarding
+    }
+
+    private func reconcileMainCharacters(profile: UserProfileDTO, account: AccountWorkspace? = nil) async throws {
         guard profile.hasCompletedOnboarding else { return }
+        let account = account ?? requiredWorkspace
         let starterRegionID =
             profile.starterRegionID
             ?? MainlineCatalog.journeys.first(where: { $0.starterRegionID == profile.currentRegionID })?.starterRegionID
             ?? "london"
         if profile.starterRegionID == nil {
-            _ = try await economyStore.updateProfile {
+            _ = try await account.economyStore.updateProfile {
                 $0.starterRegionID = starterRegionID
             }
         }
-        let completed = try await storyProgressStore.completedStoryIDs()
+        let completed = try await account.storyProgressStore.completedStoryIDs()
         let unlocked = MainlineCatalog.unlockedMainCharacterRegionIDs(
             starterRegionID: starterRegionID,
             completedStoryIDs: completed
         )
-        try await rosterStore.configureMainCharacters(
+        try await account.rosterStore.configureMainCharacters(
             unlockedRegionIDs: unlocked,
             difficulty: profile.difficultyLevel
         )
@@ -365,34 +412,34 @@ final class AccountWorkspace {
         modelContainer: ModelContainer,
         backend: BackendClient,
         llm: any LLMClient
-    ) {
+    ) async {
         self.userID = userID
         self.userAvatar = UserAvatarStore(accountID: userID)
         self.modelContainer = modelContainer
 
-        let accountCacheStore = AccountCacheStore(modelContainer: modelContainer)
+        let stores = await Task.detached(priority: .userInitiated) {
+            AccountPersistence(modelContainer: modelContainer)
+        }.value
+        let accountCacheStore = stores.accountCacheStore
         self.accountCacheStore = accountCacheStore
-        let contentSyncStore = ContentSyncStore(modelContainer: modelContainer)
+        let contentSyncStore = stores.contentSyncStore
         self.contentSyncStore = contentSyncStore
-        let voiceMediaQueueStore = VoiceMediaQueueStore(modelContainer: modelContainer)
+        let voiceMediaQueueStore = stores.voiceMediaQueueStore
         self.voiceMediaQueueStore = voiceMediaQueueStore
-        let chatStore = ChatStore(modelContainer: modelContainer)
+        let chatStore = stores.chatStore
         self.chatStore = chatStore
-        let rosterStore = RosterStore(modelContainer: modelContainer)
+        let rosterStore = stores.rosterStore
         self.rosterStore = rosterStore
-        self.npcAvatars = PublicNPCAvatarCoordinator(
-            registry: backend,
-            roster: rosterStore
-        )
-        let economyStore = EconomyStore(modelContainer: modelContainer)
+        self.npcAvatars = PublicNPCAvatarCoordinator(registry: backend, roster: rosterStore)
+        let economyStore = stores.economyStore
         self.economyStore = economyStore
-        self.favoritesStore = FavoritesStore(modelContainer: modelContainer)
-        self.memoryStore = MemoryStore(modelContainer: modelContainer)
-        let itemStore = ItemStore(modelContainer: modelContainer)
+        self.favoritesStore = stores.favoritesStore
+        self.memoryStore = stores.memoryStore
+        let itemStore = stores.itemStore
         self.itemStore = itemStore
-        let storyProgressStore = StoryProgressStore(modelContainer: modelContainer)
+        let storyProgressStore = stores.storyProgressStore
         self.storyProgressStore = storyProgressStore
-        let ticketStubStore = TicketStubStore(modelContainer: modelContainer)
+        let ticketStubStore = stores.ticketStubStore
         self.ticketStubStore = ticketStubStore
 
         let userState = BackendUserStateCoordinator(
@@ -459,5 +506,34 @@ final class AccountWorkspace {
             economyStore: economyStore,
             itemStore: itemStore
         )
+    }
+}
+
+/// 在后台创建仓库的 ModelContext，避免后续 actor 查询仍排队到主线程。
+private struct AccountPersistence: Sendable {
+    let accountCacheStore: AccountCacheStore
+    let contentSyncStore: ContentSyncStore
+    let voiceMediaQueueStore: VoiceMediaQueueStore
+    let chatStore: ChatStore
+    let rosterStore: RosterStore
+    let economyStore: EconomyStore
+    let favoritesStore: FavoritesStore
+    let memoryStore: MemoryStore
+    let itemStore: ItemStore
+    let storyProgressStore: StoryProgressStore
+    let ticketStubStore: TicketStubStore
+
+    init(modelContainer: ModelContainer) {
+        accountCacheStore = AccountCacheStore(modelContainer: modelContainer)
+        contentSyncStore = ContentSyncStore(modelContainer: modelContainer)
+        voiceMediaQueueStore = VoiceMediaQueueStore(modelContainer: modelContainer)
+        chatStore = ChatStore(modelContainer: modelContainer)
+        rosterStore = RosterStore(modelContainer: modelContainer)
+        economyStore = EconomyStore(modelContainer: modelContainer)
+        favoritesStore = FavoritesStore(modelContainer: modelContainer)
+        memoryStore = MemoryStore(modelContainer: modelContainer)
+        itemStore = ItemStore(modelContainer: modelContainer)
+        storyProgressStore = StoryProgressStore(modelContainer: modelContainer)
+        ticketStubStore = TicketStubStore(modelContainer: modelContainer)
     }
 }

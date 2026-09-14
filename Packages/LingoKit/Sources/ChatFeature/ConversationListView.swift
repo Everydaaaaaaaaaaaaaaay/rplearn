@@ -334,12 +334,14 @@ public struct ConversationListView: View {
 
     private func reload() async {
         defer { isLoading = false }
-        if let loadedProfile = try? await deps.economyStore.profile() {
-            currentRegionID = loadedProfile.currentRegionID
+        async let loadedProfile = try? deps.economyStore.profile()
+        async let loadedFriends = deps.rosterStore.friends()
+        async let loadedSummaries = deps.chatStore.conversationSummaries()
+        if let profile = await loadedProfile {
+            currentRegionID = profile.currentRegionID
         }
         do {
-            let friends = try await deps.rosterStore.friends()
-            let summaries = try await deps.chatStore.conversationSummaries()
+            let (friends, summaries) = try await (loadedFriends, loadedSummaries)
             rows = ConversationListProjection.rows(friends: friends, summaries: summaries)
             updateUnreadCount()
         } catch {

@@ -65,14 +65,17 @@ public final class BillingController {
         self.defaults = defaults
     }
 
-    public func activate(identity: AuthIdentity) async {
+    public func activate(identity: AuthIdentity, refreshImmediately: Bool = true) async {
         updatesTask?.cancel()
         activeUserID = identity.userID
         lastError = nil
         message = nil
         prunePendingCommands()
         startTransactionListener()
-        await synchronize(showLoading: true)
+        if let profile = try? await economyStore.profile() {
+            tier = profile.subscriptionTier
+        }
+        if refreshImmediately { await synchronize(showLoading: true) }
     }
 
     public func deactivate() {

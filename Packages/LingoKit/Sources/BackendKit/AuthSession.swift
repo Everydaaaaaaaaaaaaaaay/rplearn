@@ -1,4 +1,5 @@
 import AuthenticationServices
+import CoreKit
 import Foundation
 import Observation
 
@@ -23,6 +24,8 @@ public final class AuthSession {
     }
 
     public func bootstrap() async {
+        let startedAt = ContinuousClock.now
+        defer { Log.app.info("启动耗时：会话恢复 \(String(describing: startedAt.duration(to: .now)), privacy: .public)") }
         #if DEBUG
         // Physical-device showcase captures must not restore or clear the owner's credentials.
         if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1" {

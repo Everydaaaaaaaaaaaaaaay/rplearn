@@ -113,3 +113,7 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 `SIMCTL_CHILD_UI_TEST_SUBSCRIPTION_PRICES=1 Scripts/preview.sh preview subscription` 查看。
 该 Debug 专用夹具明确显示“示例价格，不可购买”，不改变 StoreKit 商品、生产价格或权益。
 正常预览不设置该变量，缺少商店价格时显示重新加载入口并禁用购买。
+
+## 启动速度与偶发慢启动
+
+测量口径、缓存启动策略和定向复测命令见 [启动性能记录](launch-performance.md)。

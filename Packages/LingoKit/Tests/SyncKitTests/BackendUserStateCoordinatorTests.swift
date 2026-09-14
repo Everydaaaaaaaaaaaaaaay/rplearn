@@ -6,8 +6,10 @@ import Testing
 
 @Suite("Backend user state coordinator")
 struct BackendUserStateCoordinatorTests {
-    private struct OfflineTransport: BackendTransport {
+    private actor OfflineTransport: BackendTransport {
+        private(set) var requestCount = 0
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            requestCount += 1
             throw BackendClientError.transport("offline")
         }
     }
@@ -486,9 +488,10 @@ struct BackendUserStateCoordinatorTests {
         #expect(preserved.displayName == "小咕")
     }
 
-    @Test("已有完整账号缓存时断网仍可激活")
-    func cachedAccountActivatesOffline() async throws {
+    @Test("已有完整账号缓存支持离线与优先展示", arguments: [false, true])
+    func cachedAccountActivatesOffline(preferCache: Bool) async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = OfflineTransport()
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let economy = EconomyStore(modelContainer: container)
         _ = try await economy.profile()
@@ -501,7 +504,7 @@ struct BackendUserStateCoordinatorTests {
         let client = BackendClient(
             configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
             credentialStore: MemoryCredentials(userID: userID),
-            transport: OfflineTransport()
+            transport: transport
         )
         let coordinator = BackendUserStateCoordinator(
             backend: client,
@@ -513,12 +516,13 @@ struct BackendUserStateCoordinatorTests {
             defaults: defaults
         )
 
-        #expect(try await coordinator.activate(userID: userID) == .offlineCache)
+        #expect(try await coordinator.activate(userID: userID, preferCache: preferCache) == (preferCache ? .cached : .offlineCache))
+        #expect(await transport.requestCount == (preferCache ? 0 : 1))
         #expect(try await economy.profile().coins == 0)
     }
 
-    @Test("空账号缓存断网时拒绝首次激活")
-    func emptyAccountCacheCannotActivateOffline() async throws {
+    @Test("空账号缓存不能跳过首次同步", arguments: [false, true])
+    func emptyAccountCacheCannotActivateOffline(preferCache: Bool) async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let suite = "BackendUserStateCoordinatorTests.\(UUID().uuidString)"
@@ -543,7 +547,7 @@ struct BackendUserStateCoordinatorTests {
         )
 
         do {
-            _ = try await coordinator.activate(userID: userID)
+            _ = try await coordinator.activate(userID: userID, preferCache: preferCache)
             Issue.record("首次激活没有本地档案时不应绕过联网同步")
         } catch let error as BackendClientError {
             #expect(error == .transport("offline"))

@@ -20,7 +20,7 @@ import SwiftUI
 import UserNotifications
 
 struct RootView: View {
-    private static let proactiveRefreshDelay = Duration.milliseconds(900)
+    private static let proactiveRefreshDelay = Duration.seconds(5)
 
     private static var disablesBackgroundRefreshForUITesting: Bool {
         #if DEBUG
@@ -34,6 +34,7 @@ struct RootView: View {
 
     @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
+    @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
     @State private var contactsPath = NavigationPath()
     @State private var messagesNavigationRevision = 0
@@ -213,7 +214,7 @@ struct RootView: View {
                     requestAuthorization: true
                 )
             }
-            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")") {
+            .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")", priority: .utility) {
                 guard scenePhase == .active, environment.workspace != nil else { return }
                 switch environment.authSession.phase {
                 case .signedIn(let identity):
@@ -223,6 +224,8 @@ struct RootView: View {
                 case .loading:
                     return
                 }
+                do { try await Task.sleep(for: .seconds(4)) }
+                catch { return }
                 while !Task.isCancelled {
                     await environment.npcAvatars.synchronize()
                     do { try await Task.sleep(for: .seconds(60)) }
@@ -234,6 +237,46 @@ struct RootView: View {
                     selectedTab = .messages
                 }
                 try? await UNUserNotificationCenter.current().setBadgeCount(unreadCount)
+            }
+            .task(id: activeUserID) {
+                guard let account = environment.workspace,
+                      account.userID == activeUserID,
+                      case .signedIn(let identity) = environment.authSession.phase,
+                      identity.userID == account.userID else { return }
+                do {
+                    try await Task.sleep(for: .seconds(1))
+                    async let userState: Void = account.userState.synchronize()
+                    async let content: Void = account.contentSync.synchronize()
+                    _ = try await (userState, content)
+                    try Task.checkCancellation()
+                    guard environment.workspace === account else { return }
+                    try await environment.refreshAccountPresentation(account)
+                    guard !Task.isCancelled, environment.workspace === account else { return }
+                    stateRevision += 1
+                    await reloadUnreadCount()
+                } catch is CancellationError {
+                } catch {
+                    guard !Task.isCancelled, environment.workspace === account else { return }
+                    if !environment.authSession.handleAuthenticationFailure(error) {
+                        Log.app.warning("启动后同步暂未完成，保留本地旅程：\(error)")
+                    }
+                }
+            }
+            .task(id: activeUserID.map { "billing-\($0)" }, priority: .utility) {
+                guard let account = environment.workspace,
+                      account.userID == activeUserID,
+                      case .signedIn = environment.authSession.phase else { return }
+                do { try await Task.sleep(for: .seconds(2)) }
+                catch { return }
+                guard !Task.isCancelled, environment.workspace === account else { return }
+                await account.billing.synchronize()
+            }
+            .task(id: isInitialContentReady && scenePhase == .active, priority: .utility) {
+                guard isInitialContentReady, scenePhase == .active else { return }
+                do { try await Task.sleep(for: .seconds(3)) }
+                catch { return }
+                guard !Task.isCancelled else { return }
+                await environment.speech.prepareForLaunch()
             }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .background {
@@ -328,6 +371,8 @@ struct RootView: View {
 
     private func handleAuthenticationPhase() async {
         activationError = nil
+        await environment.prepareResources()
+        guard !Task.isCancelled else { return }
         #if DEBUG
         if bypassesAuthenticationForUITesting,
            case .signedOut = environment.authSession.phase {
@@ -373,7 +418,9 @@ struct RootView: View {
 
     @ViewBuilder
     private var launchContent: some View {
-        if showsWelcome {
+        if !environment.resourcesReady {
+            launchLoading
+        } else if showsWelcome {
             WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
                 welcomeCompleted = true
                 completedForcedWelcome = true
@@ -508,28 +555,31 @@ struct RootView: View {
                 selectedTab = tab
             }
         )) {
-            messagesStack
+            deferredTab(.messages) { messagesStack }
                 .tag(AppTab.messages)
                 .tabItem {
                     Label("信息", systemImage: "bubble.left.and.bubble.right")
                 }
                 .badge(unreadCount)
-            contactsStack
+            deferredTab(.contacts) { contactsStack }
                 .tag(AppTab.contacts)
                 .tabItem {
                     Label("联系人", systemImage: "person.2")
                 }
-            homeStack
+            deferredTab(.home) { homeStack }
                 .tag(AppTab.home)
                 .tabItem {
                     Label("活动", systemImage: "figure.walk")
                 }
                 .badge(activityJourney.hasUnreadResult ? "•" : nil)
-            meStack
+            deferredTab(.me) { meStack }
                 .tag(AppTab.me)
                 .tabItem {
                     Label("我的", systemImage: "person")
                 }
+        }
+        .onChange(of: selectedTab) { previous, current in
+            visitedTabs.formUnion([previous, current])
         }
         .tint(.dsSky)
         .background {
@@ -539,6 +589,16 @@ struct RootView: View {
             if !DSPlatformVisualPolicy.usesLiquidGlass {
                 LegacyTabBarAppearanceInstaller()
             }
+        }
+    }
+
+    /// 首次选中才创建页面；已访问页面继续保留，避免切换时重建状态。
+    @ViewBuilder
+    private func deferredTab<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
+        if selectedTab == tab || visitedTabs.contains(tab) {
+            content()
+        } else {
+            Color.clear
         }
     }
 

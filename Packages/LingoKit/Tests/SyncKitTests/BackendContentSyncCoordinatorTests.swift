@@ -6,8 +6,10 @@ import Testing
 
 @Suite("Backend content sync coordinator")
 struct BackendContentSyncCoordinatorTests {
-    private struct OfflineTransport: BackendTransport {
+    private actor OfflineTransport: BackendTransport {
+        private(set) var requestCount = 0
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            requestCount += 1
             throw BackendClientError.transport("offline")
         }
     }
@@ -249,9 +251,10 @@ struct BackendContentSyncCoordinatorTests {
         await coordinator.deactivate()
     }
 
-    @Test("完成过内容引导的账号可在断网时使用缓存")
-    func bootstrappedContentActivatesOffline() async throws {
+    @Test("完成内容引导的账号支持离线与优先展示", arguments: [false, true])
+    func bootstrappedContentActivatesOffline(preferCache: Bool) async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = OfflineTransport()
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let store = ContentSyncStore(modelContainer: container)
         try await store.activateOwner(userID: userID)
@@ -259,16 +262,17 @@ struct BackendContentSyncCoordinatorTests {
         let backend = BackendClient(
             configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
             credentialStore: MemoryCredentials(userID: userID),
-            transport: OfflineTransport()
+            transport: transport
         )
         let coordinator = BackendContentSyncCoordinator(backend: backend, store: store)
 
-        #expect(try await coordinator.activate(userID: userID) == .offlineCache)
+        #expect(try await coordinator.activate(userID: userID, preferCache: preferCache) == (preferCache ? .cached : .offlineCache))
+        #expect(await transport.requestCount == (preferCache ? 0 : 1))
         await coordinator.deactivate()
     }
 
-    @Test("首次内容同步没有缓存时断网不会伪装成可用")
-    func firstContentBootstrapRequiresNetwork() async throws {
+    @Test("首次内容同步不能跳过联网", arguments: [false, true])
+    func firstContentBootstrapRequiresNetwork(preferCache: Bool) async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let backend = BackendClient(
@@ -282,7 +286,7 @@ struct BackendContentSyncCoordinatorTests {
         )
 
         do {
-            _ = try await coordinator.activate(userID: userID)
+            _ = try await coordinator.activate(userID: userID, preferCache: preferCache)
             Issue.record("首次内容同步必须联网完成")
         } catch let error as BackendClientError {
             #expect(error == .transport("offline"))

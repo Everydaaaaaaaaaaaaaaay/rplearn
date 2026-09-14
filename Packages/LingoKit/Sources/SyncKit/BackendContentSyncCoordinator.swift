@@ -4,6 +4,7 @@ import PersistenceKit
 
 public enum ContentSyncActivation: Sendable, Equatable {
     case offlineCache
+    case cached
     case synchronized
 }
 
@@ -23,7 +24,7 @@ public actor BackendContentSyncCoordinator {
         self.store = store
     }
 
-    public func activate(userID: UUID) async throws -> ContentSyncActivation {
+    public func activate(userID: UUID, preferCache: Bool = false) async throws -> ContentSyncActivation {
         self.userID = userID
         try await store.activateOwner(userID: userID)
         let needsBootstrap = try await store.needsBootstrap(userID: userID)
@@ -31,6 +32,7 @@ public actor BackendContentSyncCoordinator {
             try await bootstrap()
         }
         startListener()
+        if preferCache, !needsBootstrap { return .cached }
         do {
             try await synchronize()
             return .synchronized
