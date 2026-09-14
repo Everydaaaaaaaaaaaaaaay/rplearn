@@ -48,7 +48,9 @@ final class TabSceneTransitionTests: XCTestCase {
             for switchesAway in [false, true] {
                 XCTAssertTrue(app.buttons[entry].waitForExistence(timeout: 15))
                 app.buttons[entry].tap()
-                let back = app.buttons[title == "活动" ? "返回首页" : "返回"]
+                let back = title == "活动"
+                    ? app.buttons["返回首页"]
+                    : app.navigationBars["设置"].buttons.firstMatch
                 XCTAssertTrue(back.waitForExistence(timeout: 5))
                 if switchesAway { app.tabBars.buttons["联系人"].tap() }
                 app.tabBars.buttons[title].tap()
@@ -57,6 +59,31 @@ final class TabSceneTransitionTests: XCTestCase {
             }
         }
     }
+    func testMePagesUseNativeBackAndEdgeSwipe() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launchEnvironment["UI_TEST_TAB"] = "me"
+        app.launch()
+        defer { app.terminate() }
+
+        for (prefix, title) in [("个人资料，", "个人资料"), ("会员订阅", "会员订阅"),
+                                ("收藏夹，", "收藏夹"), ("设置，", "设置"), ("记忆档案", "记忆档案")] {
+            let entry = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
+            XCTAssertTrue(entry.waitForExistence(timeout: 15))
+            entry.tap()
+            let navigationBar = app.navigationBars[title]
+            XCTAssertTrue(navigationBar.waitForExistence(timeout: 5))
+            XCTAssertTrue(navigationBar.buttons.firstMatch.isHittable, "应显示原生返回按钮")
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5))
+                .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.5)))
+            XCTAssertTrue(navigationBar.waitForNonExistence(timeout: 5), "左缘滑动应返回我的页")
+            XCTAssertTrue(entry.isHittable)
+        }
+    }
+
     func testContactProfileReturnsToRoot() {
         continueAfterFailure = false
         let app = XCUIApplication()

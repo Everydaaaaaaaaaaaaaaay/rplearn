@@ -741,26 +741,15 @@ struct RootView: View {
     }
 
     private var meStack: some View {
-        SceneNavigationContainer(
-            isPresentingDestination: !mePath.isEmpty,
-            navigationTitle: meNavigationTitle,
-            onBack: closeMeDestination
-        ) {
-            meRootView
-        } destination: {
-            Group {
-                if let destination = mePath.last {
-                    meDestinationView(destination)
-                        .id(destination)
-                }
-            }
-        }
-    }
-
-    private var meRootView: some View {
-        NavigationStack {
+        NavigationStack(path: $mePath) {
             myPage()
                 .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: MeDestination.self) { destination in
+                    meDestinationView(destination)
+                        .navigationTitle(meNavigationTitle(for: destination))
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(.visible, for: .navigationBar)
+                }
                 .navigationDestination(isPresented: $showPlacementTest) {
                     placementTestView(isOnboarding: false)
                 }
@@ -787,8 +776,7 @@ struct RootView: View {
         .id("me-root")
     }
 
-    private var meNavigationTitle: String {
-        guard let destination = mePath.last else { return "" }
+    private func meNavigationTitle(for destination: MeDestination) -> String {
         return switch destination {
         case .favorites: "收藏夹"
         case .settings: "设置"
@@ -800,16 +788,7 @@ struct RootView: View {
     }
 
     private func openMe(_ destination: MeDestination) {
-        withAnimation(sceneContentAnimation) {
-            mePath.append(destination)
-        }
-    }
-
-    private func closeMeDestination() {
-        guard !mePath.isEmpty else { return }
-        withAnimation(sceneContentAnimation) {
-            _ = mePath.removeLast()
-        }
+        mePath.append(destination)
     }
 
     /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。

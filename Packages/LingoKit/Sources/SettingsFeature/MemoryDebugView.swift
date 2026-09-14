@@ -83,7 +83,7 @@ public struct MemoryDebugView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .navigationTitle("")
+        .navigationTitle("记忆档案")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
