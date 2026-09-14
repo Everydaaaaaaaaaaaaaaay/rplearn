@@ -32,6 +32,9 @@ public struct MyPageView: View {
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
 
+    @State private var credits: BackendAccessSnapshot.Credits?
+    @State private var creditsError: String?
+    @State private var isLoadingCredits = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
     @StateObject private var sceneActions = DSSceneActionCoordinator<MyPageSceneHotspot>()
@@ -471,6 +474,48 @@ public struct MyPageView: View {
         .dsSurface(.elevated)
     }
 
+    private var accountCredits: some View {
+        VStack(alignment: .leading, spacing: DSSpacing.sm) {
+            Text("AI 积分").font(.headline)
+            if let credits {
+                LabeledContent("可用积分", value: credits.remaining.formatted(.number.precision(.fractionLength(2))))
+                LabeledContent("已用积分", value: credits.used.formatted(.number.precision(.fractionLength(2))))
+                LabeledContent("本期额度", value: credits.limit.formatted(.number.precision(.fractionLength(2))))
+            } else if isLoadingCredits {
+                ProgressView("正在读取积分…")
+            } else {
+                Text(creditsError ?? "暂无积分用量")
+                    .font(.footnote)
+                    .foregroundStyle(Color.dsPaperInkSecondary)
+                Button("重试") { Task { await reloadCredits() } }
+            }
+            usageButton
+            Button(action: onOpenSubscription) {
+                HStack {
+                    Label("查看会员订阅", systemImage: "sparkles")
+                    Spacer()
+                    Image(systemName: "chevron.right").font(.caption.weight(.semibold))
+                }
+                .frame(minHeight: 44)
+            }
+            .accessibilityIdentifier("profile.subscription")
+        }
+        .monospacedDigit()
+    }
+
+    private func reloadCredits() async {
+        guard let accessClient, !isLoadingCredits else { return }
+        isLoadingCredits = true
+        defer { isLoadingCredits = false }
+        do {
+            credits = try await accessClient.accessSnapshot().credits
+            creditsError = nil
+        } catch is CancellationError {
+        } catch {
+            creditsError = "积分暂时无法加载，请重试。"
+        }
+    }
+
     private var usageButton: some View {
         Group {
             if let accessClient {
@@ -626,6 +671,8 @@ extension MyPageView {
                                     Spacer(minLength: 0)
                                 }
                                 Divider()
+                                accountCredits
+                                Divider()
                                 NavigationLink {
                                     AccountSecurityView(session: authSession)
                                 } label: {
@@ -656,6 +703,11 @@ extension MyPageView {
                 .frame(maxWidth: .infinity)
             }
             .scrollIndicators(.hidden)
+            .task { await reloadCredits() }
+            .refreshable {
+                await reload()
+                await reloadCredits()
+            }
         }
     }
 }

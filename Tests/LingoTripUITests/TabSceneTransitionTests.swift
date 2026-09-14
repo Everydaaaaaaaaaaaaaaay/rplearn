@@ -77,6 +77,16 @@ final class TabSceneTransitionTests: XCTestCase {
             let navigationBar = app.navigationBars[title]
             XCTAssertTrue(navigationBar.waitForExistence(timeout: 5))
             XCTAssertTrue(navigationBar.buttons.firstMatch.isHittable, "应显示原生返回按钮")
+            if title == "个人资料" {
+                let subscription = app.buttons["profile.subscription"]
+                XCTAssertTrue(subscription.waitForExistence(timeout: 5))
+                XCTAssertTrue(app.staticTexts["AI 积分"].exists)
+                subscription.tap()
+                let subscriptionBar = app.navigationBars["会员订阅"]
+                XCTAssertTrue(subscriptionBar.waitForExistence(timeout: 5))
+                subscriptionBar.buttons.firstMatch.tap()
+                XCTAssertTrue(navigationBar.waitForExistence(timeout: 5), "订阅返回应保留个人资料层级")
+            }
             app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5))
                 .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.5)))
             XCTAssertTrue(navigationBar.waitForNonExistence(timeout: 5), "左缘滑动应返回我的页")

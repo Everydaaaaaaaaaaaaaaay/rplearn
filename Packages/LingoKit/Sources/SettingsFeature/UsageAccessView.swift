@@ -80,7 +80,7 @@ public struct UsageAccessView: View {
         .refreshable { await reload() }
     }
     private func points(_ value: Double) -> String {
-        value.formatted(.number.precision(.fractionLength(0...6)))
+        value.formatted(.number.precision(.fractionLength(2)))
     }
     private func taskName(_ task: String) -> String {
         switch task {
