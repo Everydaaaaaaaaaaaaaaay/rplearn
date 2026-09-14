@@ -683,6 +683,23 @@ extension MyPageView {
                                     }
                                     .frame(minHeight: 44)
                                 }
+                                Link(destination: URL(string: "https://qm.qq.com/q/Ft5ajqgxOw")!) {
+                                    HStack(spacing: DSSpacing.sm) {
+                                        Image(systemName: "person.2.fill")
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text("加入测试群")
+                                            Text("咕游记LingoTrip测试 · 群号 1104063286")
+                                                .font(.footnote)
+                                                .foregroundStyle(Color.dsPaperInkSecondary)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                        }
+                                        Spacer(minLength: 0)
+                                        Image(systemName: "arrow.up.right")
+                                            .font(.caption.weight(.semibold))
+                                    }
+                                    .frame(minHeight: 44)
+                                }
+                                .accessibilityIdentifier("profile.testGroup")
                                 Button(role: .destructive) {
                                     Task { await authSession.logout() }
                                 } label: {
