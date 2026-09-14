@@ -76,13 +76,16 @@ struct RootView: View {
         case "messages": .messages
         case "contacts": .contacts
         case "home", "map": .home
-        case "me", "subscription": .me
+        case "me", "subscription", "learning": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
                 : .home
         }
         _selectedTab = State(initialValue: initial)
+        if requested == "learning" {
+            _showPlacementTest = State(initialValue: true)
+        }
         if requested == "subscription" {
             _mePath = State(initialValue: [.subscription])
         }
@@ -109,6 +112,7 @@ struct RootView: View {
             || ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1"
         {
             _showPlacementTest = State(initialValue: true)
+            _selectedTab = State(initialValue: .me)
         }
         #endif
     }
@@ -453,9 +457,6 @@ struct RootView: View {
                     tutorial: tutorialPresenter
                 ), startsWithTutorial: mode == .tutorial)
             }
-            .fullScreenCover(isPresented: $showPlacementTest) {
-                placementTestView(isOnboarding: false)
-            }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
                     accountID: accountID,
@@ -555,6 +556,7 @@ struct RootView: View {
             activeHomeDestination = nil
             activeActivityChat = nil
         case .me:
+            showPlacementTest = false
             mePath.removeAll()
         }
     }
@@ -755,7 +757,15 @@ struct RootView: View {
         }
     }
 
-    private var meRootView: some View { myPage() }
+    private var meRootView: some View {
+        NavigationStack {
+            myPage()
+                .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(isPresented: $showPlacementTest) {
+                    placementTestView(isOnboarding: false)
+                }
+        }
+    }
 
     private func myPage(section: MyPageSection? = nil) -> some View {
         MyPageView(
@@ -872,16 +882,15 @@ struct RootView: View {
                 speech: environment.speech,
                 audioSession: environment.audioSession
             ),
+            usesNativeNavigation: !isOnboarding,
             onComplete: { updated in
+                stateRevision += 1
                 Task {
-                    await environment.applyLearnerProfile(updated)
-                    stateRevision += 1
                     if isOnboarding {
                         showOnboardingPlacement = false
                         placementCompletionRevision += 1
-                    } else {
-                        showPlacementTest = false
                     }
+                    await environment.applyLearnerProfile(updated)
                 }
             },
             onCancel: {

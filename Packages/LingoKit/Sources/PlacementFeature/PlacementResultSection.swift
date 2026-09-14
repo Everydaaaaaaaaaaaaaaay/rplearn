@@ -296,7 +296,8 @@ extension PlacementTestView {
     }
 
     func prepareIfNeeded() async {
-        guard questions.isEmpty else { return }
+        guard !hasPrepared else { return }
+        hasPrepared = true
         await prepare(force: false)
     }
 
@@ -312,7 +313,11 @@ extension PlacementTestView {
             currentLevel = profile.difficultyLevel
             selectedLevel = profile.difficultyLevel
             do {
-                questions = try PlacementQuestionBank.load(from: deps.questionBankURL)
+                let questionBankURL = deps.questionBankURL
+                // 文件读取、JSON 解码和完整题库校验不占用主线程。
+                questions = try await Task.detached(priority: .userInitiated) {
+                    try PlacementQuestionBank.load(from: questionBankURL)
+                }.value
                 engine = AdaptivePlacementEngine(priorLevel: profile.difficultyLevel)
                 questionBankError = nil
             } catch {
@@ -433,6 +438,12 @@ extension PlacementTestView {
                 }
                 isApplying = false
                 Haptics.notify(.success)
+                if usesNativeNavigation {
+                    currentLevel = updated.difficultyLevel
+                    selectedLevel = updated.difficultyLevel
+                    engine = AdaptivePlacementEngine(priorLevel: updated.difficultyLevel)
+                    phase = .introduction
+                }
                 onComplete(updated)
             } catch {
                 isApplying = false

@@ -39,11 +39,13 @@ public struct PlacementTestView: View {
         case failure
     }
 
+    let usesNativeNavigation: Bool
     let deps: PlacementDependencies
     let onComplete: (UserProfileDTO) -> Void
     let onCancel: () -> Void
     @State var listeningPlayer: PlacementListeningAudioPlayer
 
+    @State var hasPrepared = false
     @State var phase: Phase = .loading
     @State var questions: [PlacementQuestion] = []
     @State var engine: AdaptivePlacementEngine?
@@ -63,9 +65,11 @@ public struct PlacementTestView: View {
 
     public init(
         deps: PlacementDependencies,
+        usesNativeNavigation: Bool = false,
         onComplete: @escaping (UserProfileDTO) -> Void,
         onCancel: @escaping () -> Void
     ) {
+        self.usesNativeNavigation = usesNativeNavigation
         self.deps = deps
         self.onComplete = onComplete
         self.onCancel = onCancel
@@ -111,13 +115,18 @@ public struct PlacementTestView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .placementTopBar {
-            header
-                .padding(.horizontal, DSSpacing.md)
-                .padding(.top, 2)
-                .padding(.bottom, 5)
+            if !usesNativeNavigation || phase != .introduction {
+                header
+                    .padding(.horizontal, DSSpacing.md)
+                    .padding(.top, 2)
+                    .padding(.bottom, 5)
+            }
         }
         // The photographic workbench stays light in both system appearances.
         .foregroundStyle(Color.dsPaperInk)
+        .navigationTitle("英语旅程")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(usesNativeNavigation && phase == .introduction ? .visible : .hidden, for: .navigationBar)
         .task { await prepareIfNeeded() }
         .onDisappear {
             listeningPlayer.stop()
