@@ -165,6 +165,8 @@ public struct MyPageView: View {
                 height: proxy.size.height,
                 alignment: .topLeading
             )
+            .dsSceneDragMotion(viewport: proxy.size)
+            .background { compactHeightBackdrop(size: proxy.size) }
             .clipped()
         }
         .ignoresSafeArea(edges: [.top, .bottom])
