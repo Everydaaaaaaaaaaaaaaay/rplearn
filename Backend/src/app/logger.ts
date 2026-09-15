@@ -85,14 +85,12 @@ export function createLoggerOptions(
         };
       },
       res: (response: unknown) => {
-        const serialized = stdSerializers.res(
-          response as Parameters<typeof stdSerializers.res>[0],
-        ) as {
+        // Fastify 可能传入 Reply，直接读取状态码，避免 Node 序列化器误判。
+        const value = response as {
           statusCode?: number;
+          raw?: { statusCode?: number };
         };
-        return {
-          statusCode: serialized.statusCode,
-        };
+        return { statusCode: value.statusCode ?? value.raw?.statusCode };
       },
     },
   };

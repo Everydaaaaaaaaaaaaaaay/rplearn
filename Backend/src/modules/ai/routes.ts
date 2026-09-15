@@ -4,7 +4,7 @@ import { AppError } from "../../shared/errors.js";
 import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { AiService } from "./service.js";
-import type { AiProviderStreamEvent } from "./types.js";
+import type { AiProviderStreamEvent, AiUsage } from "./types.js";
 import { writeSseEvent } from "./sse-writer.js";
 
 const aiRequestSchema = z.object({
@@ -115,7 +115,8 @@ export function registerAiRoutes(
     async (request) => {
       const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
-      return aiService.complete(userId, {
+      const started = performance.now();
+      const result = await aiService.complete(userId, {
         ...(body.maxOutputTokens === undefined
           ? {}
           : { maxOutputTokens: body.maxOutputTokens }),
@@ -128,6 +129,19 @@ export function registerAiRoutes(
         responseFormat: body.responseFormat,
         task: body.task,
       });
+      request.log.info(
+        {
+          event: "ai.completion.finished",
+          task: body.task,
+          operationId: body.operationId,
+          aiRequestId: result.requestId,
+          model: result.model,
+          usage: result.usage,
+          durationMs: Math.round(performance.now() - started),
+        },
+        "AI 请求完成",
+      );
+      return result;
     },
   );
 
@@ -142,6 +156,7 @@ export function registerAiRoutes(
     async (request, reply) => {
       const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
+      const started = performance.now();
       const cancellation = new AbortController();
       request.raw.once("aborted", () => {
         cancellation.abort();
@@ -174,6 +189,14 @@ export function registerAiRoutes(
       reply.raw.setHeader("x-ai-request-id", stream.requestId);
       reply.raw.flushHeaders();
 
+      let firstDeltaMs: number | null = null;
+      let outputCharacters = 0;
+      let deltaCount = 0;
+      let model: string | undefined;
+      let providerRequestId: string | null | undefined;
+      let usage: AiUsage | undefined;
+      let errorCode: string | undefined;
+      let completed = false;
       let clientWritable = !reply.raw.destroyed;
       const write = async (event: string, data: unknown): Promise<void> => {
         if (!clientWritable) return;
@@ -182,13 +205,53 @@ export function registerAiRoutes(
 
       try {
         for await (const event of stream.events) {
+          if (event.type === "delta") {
+            if (event.text.length > 0)
+              firstDeltaMs ??= Math.round(performance.now() - started);
+            outputCharacters += event.text.length;
+            deltaCount += 1;
+          } else if (event.type === "metadata") {
+            model = event.model;
+            providerRequestId = event.providerRequestId;
+          } else if (event.type === "usage") {
+            usage = event.usage;
+          } else {
+            completed = true;
+          }
           await write(event.type, eventData(event));
         }
       } catch (error) {
+        errorCode = streamError(error).code;
         if (!reply.raw.destroyed) {
           await write("error", streamError(error));
         }
       } finally {
+        const outcome =
+          cancellation.signal.aborted || !clientWritable || reply.raw.destroyed
+            ? "disconnected"
+            : errorCode !== undefined
+              ? "error"
+              : completed
+                ? "completed"
+                : "incomplete";
+        request.log[outcome === "completed" ? "info" : "warn"](
+          {
+            event: "ai.stream.finished",
+            task: body.task,
+            operationId: body.operationId,
+            aiRequestId: stream.requestId,
+            model,
+            providerRequestId,
+            usage,
+            firstDeltaMs,
+            deltaCount,
+            outputCharacters,
+            errorCode,
+            outcome,
+            durationMs: Math.round(performance.now() - started),
+          },
+          "AI 流式请求结束",
+        );
         if (!reply.raw.destroyed) {
           reply.raw.end();
         }
