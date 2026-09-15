@@ -8,7 +8,7 @@ import { Paper, media, clamp, ease } from "../design";
 export const Outro = () => {
   const f = useCurrentFrame();
   return (
-    <Paper background="bg-bookshop.jpg" dark>
+    <Paper background="bg-london.jpg" dark>
       <Interactive.Div
         name="Coovingo English learning"
         style={{

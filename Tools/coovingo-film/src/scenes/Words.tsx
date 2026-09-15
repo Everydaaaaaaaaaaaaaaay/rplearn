@@ -1,6 +1,6 @@
 import { Paper, Headline, NativeScreen, FeatureRail } from "../design";
 export const Words = () => (
-  <Paper background="bg-bookshop.jpg">
+  <Paper background="bg-desk.jpg">
     <Headline>让生词，在语境里读懂</Headline>
     <NativeScreen
       file="03-dictionary.png"

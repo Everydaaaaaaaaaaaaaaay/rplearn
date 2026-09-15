@@ -1,7 +1,7 @@
 import { Paper, Headline, NativeScreen } from "../design";
 export const Hello = () => (
   <Paper background="bg-london.jpg" dark>
-    <Headline>在情境中，学会英语</Headline>
+    <Headline>在聊天中，学英语</Headline>
     <div
       style={{
         position: "absolute",
@@ -15,7 +15,7 @@ export const Hello = () => (
       COOVINGO · 咕游记
     </div>
     <NativeScreen
-      file="08-story.png"
+      file="03-dictionary.png"
       x={-80}
       y={730}
       width={440}
@@ -30,6 +30,6 @@ export const Hello = () => (
       angle={8}
       delay={32}
     />
-    <NativeScreen file="05-city.png" x={260} y={505} width={560} delay={8} />
+    <NativeScreen file="02-chat.png" x={260} y={505} width={560} delay={8} />
   </Paper>
 );

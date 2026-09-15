@@ -4,10 +4,10 @@ import { fade } from "@remotion/transitions/fade";
 import { media } from "./design";
 import { Hello } from "./scenes/Hello";
 import { Level } from "./scenes/Level";
-import { Story } from "./scenes/Story";
-import { Words } from "./scenes/Words";
 import { Presence } from "./scenes/Presence";
+import { Words } from "./scenes/Words";
 import { Keep } from "./scenes/Keep";
+import { Story } from "./scenes/Story";
 import { Outro } from "./scenes/Outro";
 export const Film = () => (
   <>
@@ -27,29 +27,29 @@ export const Film = () => (
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence durationInFrames={414} name="Story">
-        <Story />
-      </TransitionSeries.Sequence>
-      <TransitionSeries.Transition
-        presentation={fade()}
-        timing={linearTiming({ durationInFrames: 24 })}
-      />
-      <TransitionSeries.Sequence durationInFrames={414} name="Words">
-        <Words />
-      </TransitionSeries.Sequence>
-      <TransitionSeries.Transition
-        presentation={fade()}
-        timing={linearTiming({ durationInFrames: 24 })}
-      />
-      <TransitionSeries.Sequence durationInFrames={384} name="Presence">
+      <TransitionSeries.Sequence durationInFrames={444} name="Presence">
         <Presence />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence durationInFrames={354} name="Keep">
+      <TransitionSeries.Sequence durationInFrames={474} name="Words">
+        <Words />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition
+        presentation={fade()}
+        timing={linearTiming({ durationInFrames: 24 })}
+      />
+      <TransitionSeries.Sequence durationInFrames={414} name="Keep">
         <Keep />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition
+        presentation={fade()}
+        timing={linearTiming({ durationInFrames: 24 })}
+      />
+      <TransitionSeries.Sequence durationInFrames={234} name="Story">
+        <Story />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
