@@ -77,13 +77,16 @@ struct RootView: View {
         case "messages": .messages
         case "contacts": .contacts
         case "home", "map": .home
-        case "me", "subscription", "learning": .me
+        case "me", "subscription", "learning", "favorites": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
                 : .home
         }
         _selectedTab = State(initialValue: initial)
+        if requested == "favorites", ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
+            _mePath = State(initialValue: [.favorites])
+        }
         if requested == "learning" {
             _showPlacementTest = State(initialValue: true)
         }
@@ -155,7 +158,17 @@ struct RootView: View {
             #if DEBUG
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
-                NavigationStack { ChatView(character: character, deps: chatDeps) }
+                NavigationStack {
+                    if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "profile" {
+                        CharacterProfileView(character: character,
+                            regionName: environment.regionCatalog.region(id: character.card.regionID)?.nameZh ?? "",
+                            rosterStore: environment.rosterStore,
+                            chatBuilder: { AnyView(ChatView(character: $0, deps: chatDeps)) },
+                            callBuilder: { AnyView(ChatView(character: $0, deps: chatDeps, startsInRealtimeConversation: true)) })
+                    } else {
+                        ChatView(character: character, deps: chatDeps)
+                    }
+                }
             }
             #endif
             .environment(\.userAvatar, environment.workspace?.userAvatar)
@@ -197,7 +210,7 @@ struct RootView: View {
                 await handleAuthenticationPhase()
                 guard environment.workspace != nil else { return }
                 #if DEBUG
-                if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+                if ["chat", "profile"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
                    ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
                    bypassesAuthenticationForUITesting {
                     captureCharacter = try? await environment.rosterStore.allCharacters().first {

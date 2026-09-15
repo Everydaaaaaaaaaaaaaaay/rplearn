@@ -187,6 +187,17 @@ public struct ActivitiesView: View {
                 contextError = "没有找到当前城市，请返回首页后重试。"
                 return
             }
+            #if DEBUG
+            if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
+               ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "encounter",
+               ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1",
+               let selected = SceneActivity.catalog.first(where: { $0.id == "park-route" }),
+               let region = deps.regionCatalog.region(id: profile.currentRegionID) {
+                journey.prepare(activity: selected, region: region, deps: deps, namespace: storageNamespace)
+                activity = journey.activeActivity
+                journey.start()
+            }
+            #endif
             cityID = profile.currentRegionID
             cityName = deps.regionCatalog.region(id: profile.currentRegionID)?.nameZh ?? "当前城市"
             readRecords()

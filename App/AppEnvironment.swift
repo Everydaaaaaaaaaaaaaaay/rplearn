@@ -262,6 +262,7 @@ final class AppEnvironment {
             difficulty: profile.difficultyLevel
         )
         if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] != "1",
            let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
             let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
             let lines: [(MessageRole, String)] = [
@@ -276,6 +277,9 @@ final class AppEnvironment {
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id,
                     role: line.0, text: line.1, createdAt: Date().addingTimeInterval(Double(index - lines.count) * 60))
             }
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
+            try await seedMarketingCapture(into: account)
         }
         needsOnboarding = ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] != "1"
         return userID

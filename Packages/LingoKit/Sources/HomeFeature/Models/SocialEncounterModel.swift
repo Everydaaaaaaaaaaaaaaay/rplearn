@@ -127,6 +127,11 @@ final class SocialEncounterModel: ObservableObject {
             try await self.loadChapter(0)
             try self.history.complete(runID: self.runID, characterID: self.character?.id)
             self.openingReady = true
+            #if DEBUG
+            if self.isFixture, ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
+                self.beatIndex = max(0, self.chapters[0].beats.count - 1)
+            }
+            #endif
         }
     }
     func choose(_ index: Int) {
@@ -235,6 +240,14 @@ final class SocialEncounterModel: ObservableObject {
     }
 
     private func prepareCharacter() async throws {
+        #if DEBUG
+        if isFixture, ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
+            library = try AuthoredEncounterLibrary.bundled()
+            character = try await roster.character(id: UUID(uuidString: "cd59614d-51fa-5876-b419-3ec74a60f52f")!)
+            guard character != nil else { throw RosterStore.RosterError.characterNotFound }
+            return
+        }
+        #endif
         let profile = try await deps.economyStore.profile()
         try Task.checkCancellation()
         if isFixture || deps.tutorial != nil {
@@ -297,7 +310,15 @@ final class SocialEncounterModel: ObservableObject {
             if deps.tutorial != nil {
                 part = try Self.tutorialChapter(stage, selections: selections, location: authoredActivity.title)
             } else if isFixture {
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1", let library {
+                    part = try library.chapter(characterID: character.id, actionID: authoredActivity.id, choices: selections)
+                } else {
+                    part = try Self.fixtureChapter(stage)
+                }
+                #else
                 part = try Self.fixtureChapter(stage)
+                #endif
             } else {
                 guard let library else { throw PreparationError.characterUnavailable }
                 part = try library.chapter(characterID: character.id, actionID: authoredActivity.id,
