@@ -11,7 +11,7 @@ HTTP 4xx 计入失败；服务端错误为 HTTP 5xx 或 error 级别；AI 流内
 
 ## 读取与权限
 
-接口 `GET /internal/admin/diagnostics` 仅管理员可用，返回 `Cache-Control: no-store`。
+接口 `GET /internal/admin/ai/diagnostics` 仅管理员可用，返回 `Cache-Control: no-store`。
 异步执行固定 `journalctl` 命令，仅查询 `lingotrip-api.service` 和 `lingotrip-worker.service`。
 无 shell 拼接，不接受用户指定命令、路径或服务名；超时 8 秒、输出上限 32 MiB。
 每个时间窗口缓存 10 秒并合并并发读取；最多读取最近 20,000 条，超限明确提示缩小范围。

@@ -27,7 +27,7 @@ export const diagnosticsJavascript = `
     $('logsError').textContent='';$('logsNotice').textContent='正在读取日志…';
     $('logsPrevious').disabled=true;$('logsNext').disabled=true;
     try{
-      const result=await api('/internal/admin/diagnostics?'+params);
+      const result=await api('/internal/admin/ai/diagnostics?'+params);
       if(generation!==logsGeneration)return;
       logsTotal=result.total;
       $('logsNotice').textContent=(result.truncated?'⚠ 日志超过上限，仅统计最近 20,000 条；请缩小时间范围。 ':'')+'读取 '+fmt(result.scanned)+' 条，当前筛选 '+fmt(result.total)+' 条。更新于 '+new Date(result.generatedAt).toLocaleString()+(result.oldest?'；最早可见 '+new Date(result.oldest).toLocaleString():'')+'。日志按服务器保留期限可用，缓存 10 秒。';

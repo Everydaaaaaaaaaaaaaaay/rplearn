@@ -31,7 +31,7 @@ export function registerDiagnosticsRoutes(
   service: DiagnosticsService,
 ): void {
   app.get(
-    "/internal/admin/diagnostics",
+    "/internal/admin/ai/diagnostics",
     { schema: { hide: true } },
     async (request, reply) => {
       authenticate(request);

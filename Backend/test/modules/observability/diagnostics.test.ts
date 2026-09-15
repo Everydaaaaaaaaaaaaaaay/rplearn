@@ -153,7 +153,7 @@ describe("管理后台诊断", () => {
       createAdminAuthenticator([{ keyId: "test", token: "test-token" }]),
       new DiagnosticsService(read),
     );
-    expect((await app.inject("/internal/admin/diagnostics")).statusCode).toBe(401);
+    expect((await app.inject("/internal/admin/ai/diagnostics")).statusCode).toBe(401);
     expect(read).not.toHaveBeenCalled();
     const headers = { authorization: "Bearer test-token" };
     for (const suffix of [
@@ -164,11 +164,14 @@ describe("管理后台诊断", () => {
       "offset=-1",
     ]) {
       expect(
-        (await app.inject({ url: "/internal/admin/diagnostics?" + suffix, headers }))
+        (await app.inject({ url: "/internal/admin/ai/diagnostics?" + suffix, headers }))
           .statusCode,
       ).toBe(400);
     }
-    const response = await app.inject({ url: "/internal/admin/diagnostics", headers });
+    const response = await app.inject({
+      url: "/internal/admin/ai/diagnostics",
+      headers,
+    });
     expect(response.statusCode).toBe(200);
     expect(response.headers["cache-control"]).toBe("no-store");
     await app.close();
