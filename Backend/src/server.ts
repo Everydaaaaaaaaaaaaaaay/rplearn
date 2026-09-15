@@ -1,3 +1,6 @@
+import { readServiceJournal } from "./infrastructure/journal-reader.js";
+import { DiagnosticsService } from "./modules/observability/diagnostics-service.js";
+import { registerDiagnosticsRoutes } from "./modules/observability/diagnostics-routes.js";
 import { registerCreditRateAdminRoutes } from "./modules/access/credit-rate-admin-routes.js";
 import { CreditRateService } from "./modules/access/credit-rate-service.js";
 import { CreditRateRepository } from "./modules/access/credit-rate-repository.js";
@@ -190,6 +193,11 @@ async function main(): Promise<void> {
       app,
       authenticateAdmin,
       new CreditRateService(new CreditRateRepository(dependencies.database)),
+    );
+    registerDiagnosticsRoutes(
+      app,
+      authenticateAdmin,
+      new DiagnosticsService(readServiceJournal),
     );
     registerAiAdminConsoleRoutes(app);
     registerDictionaryTranslationAdminRoutes(

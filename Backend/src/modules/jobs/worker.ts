@@ -190,6 +190,7 @@ export class JobWorker {
               jobId: job.id,
               jobType: job.type,
               result,
+              errorName,
             },
             "Job execution failed",
           );
