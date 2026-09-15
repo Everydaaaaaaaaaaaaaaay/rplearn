@@ -11,7 +11,7 @@ Track page: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300
 License generator: https://incompetech.com/music/royalty-free/licenses/
 Original download: https://incompetech.com/music/royalty-free/mp3-royaltyfree/George%20Street%20Shuffle.mp3
 
-Retrieved 2026-09-15. The official license generator's renderCC function supplies the CC BY 4.0 credit above. Edit: 44-second excerpt starting at 18.823529 seconds, opening and ending fades, loudness adjustment. No endorsement by the composer is implied. Attribution is also embedded in the final picture; keep it when redistributing. Exact downloaded asset hashes are in assets.json.
+Retrieved 2026-09-15. The official license generator's renderCC function supplies the CC BY 4.0 credit above. Edit: 40-second excerpt starting at 18.823529 seconds, opening and ending fades, loudness adjustment. No endorsement by the composer is implied. Attribution is also embedded in the final picture; keep it when redistributing. Exact downloaded asset hashes are in assets.json.
 
 ## Product imagery
 
@@ -20,3 +20,5 @@ Original iPhone 13 screenshots: owner's 2026-09-15 v2 physical-device capture; o
 Additional footage: see QA.md and raw capture manifest. Native screen recording, not HTML app mockups. Prepared conversational text exercises the real typing and bubble delivery. No claim that it measures live AI latency.
 
 Brand icon and Ruby/Oliver/Marcus/Victor artwork are the product's existing accepted assets. Sources and provenance remain in Assets/Brand/asset-manifest.json and Assets/NPC/Library/v3/catalog.json. Screenshot story illustration belongs to the existing Departures collection; no new unverified illustration is introduced.
+
+Second edition adds a physical iPhone 13 capture of the English-level screen, recorded in capture-manifest.json.

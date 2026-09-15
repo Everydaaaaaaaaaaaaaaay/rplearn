@@ -1,76 +1,61 @@
 import { Audio } from "@remotion/media";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
+import { media } from "./design";
 import { Hello } from "./scenes/Hello";
-import { Presence } from "./scenes/Presence";
-import { Encounter } from "./scenes/Encounter";
+import { Level } from "./scenes/Level";
 import { Story } from "./scenes/Story";
 import { Words } from "./scenes/Words";
+import { Presence } from "./scenes/Presence";
 import { Keep } from "./scenes/Keep";
 import { Outro } from "./scenes/Outro";
-import { media } from "./design";
 export const Film = () => (
   <>
-    <Audio src={media("music.m4a")} />
+    <Audio src={media("music-v2.m4a")} />
     <TransitionSeries>
-      <TransitionSeries.Sequence
-        durationInFrames={330}
-        name="A reason to say hello"
-      >
+      <TransitionSeries.Sequence durationInFrames={264} name="Hello">
         <Hello />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence
-        durationInFrames={570}
-        name="Friends with their own rhythm"
-      >
-        <Presence />
+      <TransitionSeries.Sequence durationInFrames={354} name="Level">
+        <Level />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence
-        durationInFrames={390}
-        name="Cities and encounters"
-      >
-        <Encounter />
-      </TransitionSeries.Sequence>
-      <TransitionSeries.Transition
-        presentation={fade()}
-        timing={linearTiming({ durationInFrames: 24 })}
-      />
-      <TransitionSeries.Sequence
-        durationInFrames={390}
-        name="Meaningful story choices"
-      >
+      <TransitionSeries.Sequence durationInFrames={414} name="Story">
         <Story />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence durationInFrames={390} name="Learn in context">
+      <TransitionSeries.Sequence durationInFrames={414} name="Words">
         <Words />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence
-        durationInFrames={330}
-        name="Keep useful expressions"
-      >
+      <TransitionSeries.Sequence durationInFrames={384} name="Presence">
+        <Presence />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition
+        presentation={fade()}
+        timing={linearTiming({ durationInFrames: 24 })}
+      />
+      <TransitionSeries.Sequence durationInFrames={354} name="Keep">
         <Keep />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 24 })}
       />
-      <TransitionSeries.Sequence durationInFrames={384} name="Coovingo">
+      <TransitionSeries.Sequence durationInFrames={360} name="Outro">
         <Outro />
       </TransitionSeries.Sequence>
     </TransitionSeries>

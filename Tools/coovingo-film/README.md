@@ -1,10 +1,10 @@
-# 咕游记 · 把英语，聊成生活
+# 咕游记 · 在情境中学英语
 
-44秒原生产品宣传片，1080×1920 / 60fps，Remotion 4.0.524。
+40秒原生产品宣传片，1080×1920 / 60fps，Remotion 4.0.524。
 
 ## 观看与编辑
 
-交付目录：`/Users/tiantian/Movies/Coovingo-Promo-20260915/`。
+交付目录：`/Users/tiantian/Movies/Coovingo-Promo-20260915-v2/`。
 
 ```sh
 cd Tools/coovingo-film
@@ -21,7 +21,7 @@ npm run render
 
 - `RESEARCH.md`：产品深入梳理、来源、成熟度与分镜取舍。
 - `src/scenes/`：七个可编辑场景。
-- `src/design.tsx`：版式、原生像素裁切与逐帧动效。
+- `src/design.tsx`：单句标题、完整原生界面与逐帧动效。
 - `src/Film.tsx`：时间线与配乐。
 - `scripts/capture-motion.py`：隔离Debug原生录屏/实机截图。
 - `scripts/prepare.py`：媒体恢复、音频剪辑与正常速度转码。
@@ -43,3 +43,7 @@ python3 scripts/capture-motion.py --device 47DD7BF7-5378-47D7-ACC3-792EF8AAFF11 
 ```
 
 重新录制会得到新的时间/画面哈希，必须复查后更新清单。原版raw/take2保留，不应覆盖；上方命令仅用于理解当次调用，重拍请换新的目录。
+
+## 第二版
+
+根据用户反馈重做：学习是首要定位；删除人际关系主导的标语、编号、副标题、页脚和分离式界面裁切。六个功能镜头均保持原生屏幕完整，新拍 iPhone 英语水平页。聊天仅作为英语表达练习，约占六秒。旧版保留在原交付目录，属于已被用户否决的创意版本。

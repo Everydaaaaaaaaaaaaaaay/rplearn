@@ -1,36 +1,31 @@
-# Verification — 2026-09-15
+# 第二版验证 · 2026-09-15
 
-## Native capture
+## 反馈处理
 
-- Capture fixture commit: `b53a165`. Simulator and signed iPhone 13 Debug builds passed; iOS architecture check and Git whitespace check passed.
-- Physical iPhone 13 installation succeeded; fresh Singapore home screenshot visually reviewed, 1170×2532. Normal phone launch restored.
-- Physical phone CoreDevice recording returned error 1001 / Screen Recording unsupported. Device Hub Computer Use returned -10005. Neither is counted as a successful recording or interaction check.
-- Native motion take 2: iPhone 17 Pro simulator, 1206×2622, variable frame rate. The complete prepared two-bubble reply is present in the recorded end frame and the separate screenshot.
-- Active typing/delivery timings are not sped up or slowed down. A 60fps transcode preserves source presentation time. The completed static end frame is held for two editorial seconds because simctl stops emitting frames when the UI is idle; no animated person or background is frozen to extend a loop.
-- Video and screenshots exercise actual SwiftUI views. Dialogue is prepared demonstration data, not a measurement of live-model response speed.
-- Latest simulator build installed again via `Scripts/preview.sh preview messages` after capture and left available.
+- 第一版创意被用户否决，原交付文件及 QA-v1.md 保留为历史记录。
+- 当前定位为英语学习：难度、故事阅读、查词、表达练习、词汇和句子收藏。
+- 删除所有拆分式 UI 裁切、章节编号、副标题与功能页脚；每个功能镜头只有一行外部文案。
+- 六个功能镜头保持完整原生屏幕。动效采用逐帧缓出位移和 24 帧叠化，无 CSS 时间动画。
+- 聊天录屏约 6 秒，源视频从第 6 秒开始正常速度播放；保留原生回复节奏。
 
-## Picture and motion
+## 原生素材
 
-- Seven scene layouts checked at render resolution or 50% review scale. Revised overlapping opening footer, partially clipped chat crop, and story framing; story now separates the visible character and complete choice card.
-- Animation uses deterministic frame-based interpolation, monotone cubic-bezier easing, 24-frame crossfades and no CSS time animations or random motion. Product footage uses playbackRate 1.
-- Native screenshots stay unretouched: device presentation and detail crops occur in the composition, without inventing app controls.
-- Studio opens, resolves the composition and reports no error overlay. In-app browser playback state did not demonstrate advancing frames, so it is not represented as proof of continuous audiovisual viewing.
-- No unverified activity background videos or defective world-map screenshots are included. Existing static encounter/story screenshot evidence is reused; this does not close the source scene-loop acceptance issues.
+- 新补拍 iPhone 13 英语水平页，1170×2532；截图和哈希保存在交付目录 raw 与 capture-manifest.json。拍摄后恢复正常启动。
+- 其余素材复用已检查的实机截图与原生模拟器录屏；固定内存演示账号，无真实账号写入。
+- 不展示未完成验收的实时通话、活动动态背景和存在标注问题的世界地图。
+- 未修改 iOS 或后端源代码，无需重新构建或部署。
 
-## Source checks
+## 检查范围
 
-- `npm run lint` (ESLint + TypeScript): passed.
-- Python capture/preparation scripts compile.
-- Copied source hashes checked against the original screenshot manifest and `assets.json`. Raw additional sources are identified by `capture-manifest.json`.
-- Music source and CC BY 4.0 requirement verified from the official Incompetech catalog/license generator; full attribution is embedded in the ending and in CREDITS.md.
+- ESLint、TypeScript 通过；媒体准备脚本语法检查通过。
+- 完整编码帧抽查覆盖每个场景、两条回复和叠化边界；源画面不拆分，标题与画面无重叠。
+- 配乐保持原授权来源与片尾署名，重新剪辑为 40 秒并淡入淡出。
+- 连续人工音画观看不作已完成声明；验证由实际编码帧检查、源时间线核对与完整解码组成。
 
-## Final file
+## 最终导出
 
-- Export: `coovingo-44s.mp4`, H.264, 1080×1920, 60/1 fps, exactly 2,640 video frames (44.000 seconds). AAC stereo 48kHz. Container duration 44.053 seconds including AAC padding.
-- Size: 19668990 bytes; SHA-256: `d1898229e101934832d613707207c9834cc793c27fc24d452eab940f4a0fd5e3`.
-- Complete FFmpeg video/audio decode: passed, empty error log.
-- Final integrated loudness: -18.21 LUFS; true peak -4.57 dBTP; loudness range 1.70 LU. No clipping; opening/ending fades included.
-- Final encoded-frame review: 12 selected frames cover intro, profile, active typing, first bubble, completed two-bubble reply, city/encounter, full story choices, dictionary, favorites and ending. Both reply parts and both story options are visibly present. Contact sheet is in the delivery directory.
-- Screenshot/source SHA verification passed. Original physical screenshots were not altered.
-- Full continuous perceptual audiovisual review by a human is not claimed; verification combines source-timing inspection, native end-state evidence, encoded-frame visual review and full technical decode.
+- H.264，1080×1920，60 fps，2400 帧；视频 40 秒，含 AAC 尾部填充的容器 40.043 秒。
+- AAC 48 kHz；响度 -18.1 LUFS，真峰值 -4.8 dBFS，无削波。
+- FFmpeg 完整音视频解码通过，错误日志为空。
+- 12 张最终编码帧覆盖各场景、打字、两条完整回复与三处转场。
+- 文件 12227135 字节，SHA-256：`53f6266313aacd39444064371aa30a8e739004b15d5474bcc4e9bb60242e77eb`。

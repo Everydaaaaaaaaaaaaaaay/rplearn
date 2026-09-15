@@ -6,119 +6,63 @@ import {
 } from "remotion";
 import { Paper, media, clamp, ease } from "../design";
 export const Outro = () => {
-  const frame = useCurrentFrame();
+  const f = useCurrentFrame();
   return (
-    <Paper tone="#eaf1ef">
+    <Paper>
       <Interactive.Div
-        name="Brand icon"
+        name="Coovingo English learning"
         style={{
           position: "absolute",
-          left: 394,
-          top: 206,
-          width: 292,
-          height: 292,
-          borderRadius: 66,
-          overflow: "hidden",
-          boxShadow: "0 28px 65px #23465724",
-          opacity: interpolate(frame, [15, 48], [0, 1], clamp),
-          scale: interpolate(frame, [15, 86], [0.88, 1], {
-            ...clamp,
-            easing: ease,
-          }),
-        }}
-      >
-        <CanvasImage src={media("icon.png")} style={{ width: "100%" }} />
-      </Interactive.Div>
-      <Interactive.Div
-        name="Brand and promise"
-        style={{
-          position: "absolute",
-          left: 60,
-          right: 60,
-          top: 557,
+          top: 560,
+          left: 80,
+          right: 80,
           textAlign: "center",
-          translate: interpolate(frame, [30, 90], ["0px 40px", "0px 0px"], {
-            ...clamp,
-            easing: ease,
-          }),
-          opacity: interpolate(frame, [30, 60], [0, 1], clamp),
+          opacity: interpolate(f, [8, 45], [0, 1], clamp),
+          transform: `translateY(${interpolate(f, [0, 75], [26, 0], { ...clamp, easing: ease })}px)`,
         }}
       >
-        <div style={{ fontSize: 38, letterSpacing: 4 }}>
-          咕游记{" "}
-          <span style={{ color: "#6b7f88", fontSize: 30, letterSpacing: 2 }}>
-            COOVINGO
-          </span>
+        <CanvasImage
+          src={media("icon.png")}
+          style={{ width: 180, height: 180, borderRadius: 40 }}
+        />
+        <div
+          style={{
+            fontSize: 80,
+            fontWeight: 500,
+            marginTop: 42,
+            letterSpacing: 4,
+          }}
+        >
+          咕游记
         </div>
         <div
           style={{
-            fontSize: 102,
-            fontWeight: 600,
-            letterSpacing: -4,
-            lineHeight: 1.28,
-            marginTop: 45,
+            fontSize: 26,
+            letterSpacing: 7,
+            color: "#6a8595",
+            marginTop: 16,
           }}
         >
-          把英语，
-          <br />
-          聊成生活。
+          COOVINGO
         </div>
-        <div style={{ fontSize: 44, color: "#58727b", marginTop: 28 }}>
-          从一句 Hello，开始你的旅程。
+        <div style={{ fontSize: 52, fontWeight: 400, marginTop: 74 }}>
+          让英语学习，有情境。
         </div>
       </Interactive.Div>
       <div
         style={{
           position: "absolute",
-          left: -120,
-          right: -120,
-          top: 1130,
-          height: 475,
-          overflow: "hidden",
-          maskImage:
-            "linear-gradient(transparent,black 6%,black 77%,transparent)",
-        }}
-      >
-        {[
-          "01-messages.png",
-          "08-story.png",
-          "03-dictionary.png",
-          "09-favorites.png",
-        ].map((file, i) => (
-          <div
-            key={file}
-            style={{
-              position: "absolute",
-              left: i * 326 + interpolate(frame, [0, 384], [0, -65], clamp),
-              top: i % 2 ? 50 : 0,
-              width: 296,
-              height: 640,
-              borderRadius: 28,
-              overflow: "hidden",
-              rotate: `${i % 2 ? 4 : -4}deg`,
-              boxShadow: "0 15px 35px #1b394520",
-            }}
-          >
-            <CanvasImage src={media(file)} style={{ width: "100%" }} />
-          </div>
-        ))}
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 74,
-          right: 74,
-          top: 1683,
+          bottom: 110,
+          left: 70,
+          right: 70,
           textAlign: "center",
-          fontSize: 25,
-          lineHeight: 1.5,
-          color: "#536b76",
+          fontSize: 20,
+          lineHeight: 1.65,
+          color: "#72818b",
         }}
       >
-        <div style={{ marginBottom: 15 }}>
-          AI 虚构旅伴 · 实机与模拟器演示画面
-        </div>
-        <div>Music: “George Street Shuffle” — Kevin MacLeod</div>
+        <div>产品演示画面 · AI 虚构角色</div>
+        <div>Music: George Street Shuffle — Kevin MacLeod</div>
         <div>incompetech.com · CC BY 4.0 · Edited excerpt</div>
         <div>creativecommons.org/licenses/by/4.0/</div>
       </div>

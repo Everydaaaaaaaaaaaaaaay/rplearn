@@ -1,7 +1,7 @@
 {
   "name": "coovingo-film",
   "version": "1.0.0",
-  "description": "Coovingo · 把英语，聊成生活 · 44-second native product film",
+  "description": "Coovingo · 在情境中学英语 · 40-second native learning film",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
@@ -28,7 +28,7 @@
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
-    "render": "remotion render Coovingo out/coovingo-44s.mp4"
+    "render": "remotion render Coovingo out/coovingo-learning-40s.mp4"
   },
   "sideEffects": [
     "*.css"
