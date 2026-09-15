@@ -1,0 +1,48 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-09-15",
+  "common": "Use case: style-transfer. Create one finished square 1024x1024 avatar for LingoTrip, faithful to the CHARACTER in reference 1, matching only the graphic rendering language of reference 2. P3 Reload inspired economical graphic anime portrait. One chromatic THEME family + near-black + neutral white. Skin is flat neutral white, not natural peach. Eyes decisive upper lid and flat iris; minimal nose and purposeful mouth. Hair coherent large masses, clothing two or three hard-edged shadow planes. No gradients, texture, grain, glow, tiny marks, text, logos or transparency. Background bright MAIN THEME plus one broad deeper same-hue arc or diagonal region. Opaque edge to edge. Square source for circular avatar: eyes nose mouth chin and dominant hair inside centered safe circle; head height 55-60% of square, shoulders fill lower frame, hair crown with 8% margin. Distinct recognizable original character identity; do not copy the glasses or facial structure of style reference. No hands, props or full body.",
+  "initial": [
+    [
+      "oliver",
+      "Oliver Bennett, 24-year-old British young man. Preserve messy layered side-parted medium-short hair, lean oval face, gentle angular chin, slightly raised eyebrow and dry half-smile, collared shirt under corduroy lapel jacket and thick wrapped scarf. Reference 1 defines exact identity. Theme saturated VIOLET / PURPLE, hair near-black with white planar highlights. Three-quarter facing slightly right.",
+      "/Users/tiantian/eng/App/Resources/StoryArt/avatar_oliver.png"
+    ],
+    [
+      "ruby",
+      "Ruby Walker, 22-year-old Australian young woman. Preserve high ponytail, long loose face-framing forelock, expressive eyes, youthful oval face, open overshirt over crew-neck tee. Warm lively smile, beach-loving optimistic personality. Reference 1 defines exact identity. Theme saturated CORAL RED, hair stylized mostly white with near-black and coral hard-edged shadows to preserve blonde impression without yellow. Three-quarter facing slightly left, both eyes readable; ponytail visible inside circle.",
+      "/Users/tiantian/eng/App/Resources/StoryArt/Departures/dp_ruby_open.png"
+    ],
+    [
+      "marcus",
+      "Marcus Rivera, 26-year-old Puerto Rican New Yorker. Preserve short tightly curled haircut and faded sides, strong dark eyebrows, broad angular jaw, neat short beard as simple black graphic shape, vintage color-block track jacket over crew neck tee; camera strap may appear as two simple straight bands. Friendly confident smile looking toward viewer instead of down. Reference 1 defines exact identity. Theme saturated GOLDEN YELLOW, near-black curly hair and neutral-white skin as required by style. Simplify curls into 6-10 larger locks, no tiny spiral texture.",
+      "/Users/tiantian/eng/App/Resources/StoryArt/Departures/dp_marcus_print.png"
+    ]
+  ],
+  "corrections": [
+    [
+      "oliver",
+      "/Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427/exec-75cf4fbc-52b9-4edd-b0ac-4c009e0bb971.png",
+      "Precise palette correction only. Keep this exact portrait identity, hair, expression, scarf, jacket, geometry, framing and background unchanged. Change BOTH green irises to flat violet-purple irises. Enforce violet/purple, near-black and neutral white only. No green or new colors. Preserve entire square."
+    ],
+    [
+      "marcus",
+      "/Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427/exec-08bbb327-bf84-487b-a9a3-1dcfa283c78b.png",
+      "Style and palette correction. Keep Marcus's exact head silhouette, short curly hair, broad jaw, eyebrow shape, friendly confident expression, white skin, jacket block pattern and square composition. STRICT single hue palette: saturated GOLDEN YELLOW + deeper mustard yellow + near-black + neutral white ONLY. Recolor every blue/navy jacket section to yellow or near-black and the orange/red shirt to golden yellow, with big hard edged mustard shadows. Recolor ivory band to neutral white. Simplify beard from tiny hatching to a few solid near-black graphic planes so beard remains unmistakable; simplify side fade hatching and individual curls into larger solid shapes. Keep yellow background broad arc. No blue, red, orange, green, realistic texture, gradients or added details. Match flat economical P3 Reload NPC avatar graphics. Do not change identity or pose."
+    ]
+  ],
+  "final": {
+    "oliver": {
+      "output": "Generated images are saved to /Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427 as /Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427/exec-1e27eb8c-88e3-4de1-bde9-93ebb95fb6db.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "asset": "App/Resources/Avatars/avatar_p3r_oliver.png"
+    },
+    "ruby": {
+      "output": "Generated images are saved to /Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427 as /Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427/exec-6baa56cc-1853-4c96-b8cb-047017ed0cff.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "asset": "App/Resources/Avatars/avatar_p3r_ruby.png"
+    },
+    "marcus": {
+      "output": "Generated images are saved to /Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427 as /Users/tiantian/.codex/generated_images/01a08ca2-7252-7a43-be10-ac88eaaa1427/exec-87ba825c-be61-4f3e-9534-957859feda74.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "asset": "App/Resources/Avatars/avatar_p3r_marcus.png"
+    }
+  }
+}

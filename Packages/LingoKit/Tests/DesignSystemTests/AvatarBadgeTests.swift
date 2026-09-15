@@ -35,17 +35,17 @@ struct AvatarBadgeTests {
         }
     }
 
-    @Test("全身源图使用分别校准的头肩裁切，不再共享小头像参数")
-    func starterPortraitCropsFillAvatar() {
-        let ruby = DSAvatarAssets.presentation(named: "avatar_ruby")
-        let marcus = DSAvatarAssets.presentation(named: "avatar_marcus")
-
-        #expect(ruby.alignment == .top)
-        #expect(marcus.alignment == .top)
-        #expect(ruby.scale >= 1.9)
-        #expect(marcus.scale > ruby.scale)
-        #expect(ruby.yOffset <= 0)
-        #expect(marcus.yOffset <= 0)
+    @Test("P3R 方形头像居中显示，不继承全身立绘的放大裁切")
+    func starterPortraitCropsFillAvatar() throws {
+        for name in ["oliver", "ruby", "marcus"] {
+            let crop = DSAvatarAssets.presentation(named: "avatar_\(name)")
+            #expect(crop.alignment == .center)
+            #expect(crop.scale == 1)
+            #expect(crop.yOffset == 0)
+            let actual = try #require(DSAvatarAssets.image(named: "avatar_\(name)"))
+            let expected = try #require(UIImage(named: "avatar_p3r_\(name)"))
+            #expect(actual === expected)
+        }
     }
 
     @Test("同一远程头像的并发请求只下载和解码一次")
