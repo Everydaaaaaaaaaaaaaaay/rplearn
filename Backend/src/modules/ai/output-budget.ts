@@ -7,9 +7,11 @@ export function outputTokenBudget(
 ): number {
   const minimum =
     route.provider === "openrouter" &&
-    ["conversation", "proactive_message", "coach_review"].includes(route.task) &&
+    ["conversation", "proactive_message", "coach_review", "memory_summary"].includes(
+      route.task,
+    ) &&
     route.model.startsWith("z-ai/glm-")
-      ? route.task === "coach_review"
+      ? ["coach_review", "memory_summary"].includes(route.task)
         ? 1536
         : 512
       : 1;

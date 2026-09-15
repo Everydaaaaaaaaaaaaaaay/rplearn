@@ -91,6 +91,20 @@ describe("OpenRouter client", () => {
       task: "conversation" as const,
       model: "z-ai/glm-5.3-flash",
     };
+    expect(
+      outputTokenBudget(650, {
+        ...glmRoute,
+        task: "memory_summary",
+        maxOutputTokens: 1600,
+      }),
+    ).toBe(1536);
+    expect(
+      outputTokenBudget(650, {
+        ...glmRoute,
+        task: "memory_summary",
+        maxOutputTokens: 1000,
+      }),
+    ).toBe(1000);
     expect(outputTokenBudget(120, glmRoute)).toBe(512);
     expect(outputTokenBudget(700, glmRoute)).toBe(700);
     expect(outputTokenBudget(120, { ...glmRoute, maxOutputTokens: 256 })).toBe(256);
@@ -120,6 +134,7 @@ describe("OpenRouter client", () => {
       "encounter_story",
       "proactive_message",
       "coach_review",
+      "memory_summary",
     ]) {
       await client.complete({
         ...request(),
