@@ -61,6 +61,38 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, text)
     }
 
+    func testEncounterTranslationWholeChoicesAndScrolling() {
+        let app = launch()
+        defer { app.terminate() }
+        tap("activities.tab.raincafe", app: app)
+        tap("activities.scene.rain-napkin", app: app)
+        tap("activities.action.start", app: app)
+        XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 22))
+        let translation = app.buttons["activities.story.translation"]
+        XCTAssertEqual(translation.value as? String, "关闭")
+        XCTAssertFalse(app.staticTexts["风里的地图"].exists)
+        attach("encounter-rain-english", app: app)
+        translation.tap()
+        XCTAssertEqual(translation.value as? String, "开启")
+        // The control must not also advance the global tap surface.
+        XCTAssertFalse(app.otherElements["activities.beat.0.1"].exists)
+        // Tap the paragraph itself, not a next button.
+        let paragraph = app.otherElements["activities.beat.0.0"]
+        paragraph.coordinate(withNormalizedOffset: CGVector(dx: 0.8, dy: 0.9)).tap()
+        XCTAssertTrue(app.otherElements["activities.beat.0.1"].waitForExistence(timeout: 3))
+        for _ in 0..<2 { tap("activities.action.next", app: app) }
+        let choice = app.buttons["activities.choice.1"]
+        XCTAssertTrue(choice.waitForExistence(timeout: 3))
+        XCTAssertTrue(choice.isHittable, "新选项应自动滚动至可见位置")
+        XCTAssertFalse(app.buttons["选择这项行动"].exists)
+        attach("encounter-rain-translated-choices", app: app)
+        choice.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        XCTAssertTrue(app.otherElements["activities.beat.1.0"].waitForExistence(timeout: 4))
+        XCTAssertFalse(app.otherElements["activities.beat.1.1"].exists, "选项不能同时触发继续")
+        XCTAssertTrue(app.otherElements["activities.beat.0.0"].exists, "已读剧情应继续保留")
+        attach("encounter-rain-next-chapter", app: app)
+    }
+
     func testPreparationIsCentered() {
         let app = launch()
         defer { app.terminate() }
@@ -226,18 +258,18 @@ final class ActivitySceneTests: XCTestCase {
         occupation.tap()
         XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 5))
         attach("occupation-word-lookup", app: app)
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.24)).tap()
-        let word = app.buttons.matching(NSPredicate(format: "label MATCHES %@", "map\\s*")).firstMatch
+        app.buttons["关闭释义"].tap()
+        let word = app.staticTexts.matching(NSPredicate(format: "label MATCHES %@", "map\\s*")).firstMatch
         XCTAssertTrue(word.waitForExistence(timeout: 4))
-        word.tap()
+        word.press(forDuration: 0.7)
         XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 5))
         attach("chapter-word-lookup", app: app)
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.24)).tap()
-        XCTAssertFalse(app.buttons["播放读音"].exists)
+        app.buttons["关闭释义"].tap()
+        XCTAssertTrue(app.buttons["播放读音"].waitForNonExistence(timeout: 3))
         tap("activities.action.next", app: app)
         tap("activities.story.play", app: app)
-        tap("activities.story.history", app: app)
-        XCTAssertEqual(app.buttons["activities.story.history"].value as? String, "展开")
+        XCTAssertTrue(app.otherElements["activities.beat.0.0"].exists)
+        XCTAssertTrue(app.otherElements["activities.beat.0.1"].exists)
 
     }
 

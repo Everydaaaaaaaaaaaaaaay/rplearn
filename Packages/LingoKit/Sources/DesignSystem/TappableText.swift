@@ -38,6 +38,7 @@ public struct TappableText: View {
     private let keywords: Set<String>
     private let textColor: Color?
     private let selection: TokenSelection?
+    private let lookupOnLongPress: Bool
     private let onSelect: (TokenSelection) -> Void
 
     public init(
@@ -46,6 +47,7 @@ public struct TappableText: View {
         keywords: Set<String> = [],
         textColor: Color? = nil,
         selection: TokenSelection? = nil,
+        lookupOnLongPress: Bool = false,
         onSelect: @escaping (TokenSelection) -> Void
     ) {
         self.tokens = tokens
@@ -53,6 +55,7 @@ public struct TappableText: View {
         self.keywords = keywords
         self.textColor = textColor
         self.selection = selection
+        self.lookupOnLongPress = lookupOnLongPress
         self.onSelect = onSelect
     }
 
@@ -69,7 +72,15 @@ public struct TappableText: View {
         let isSelected = selection?.contextID == contextID && selection?.tokenID == token.id
         let isKeyword = token.word.map { keywords.contains($0) } ?? false
 
-        if token.word != nil {
+        if token.word != nil, lookupOnLongPress {
+            tokenLabel(token, isKeyword: isKeyword, isSelected: isSelected)
+                .onLongPressGesture { onSelect(makeSelection(for: token)) }
+                .accessibilityHint("长按查看单词释义")
+                .accessibilityAction(named: "查看单词释义") { onSelect(makeSelection(for: token)) }
+                .anchorPreference(key: SelectedTokenAnchorKey.self, value: .bounds) { anchor in
+                    isSelected ? anchor : nil
+                }
+        } else if token.word != nil {
             Button {
                 onSelect(makeSelection(for: token))
             } label: {

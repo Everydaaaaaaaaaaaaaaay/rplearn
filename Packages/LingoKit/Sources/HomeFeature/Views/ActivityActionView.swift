@@ -16,11 +16,12 @@ struct ActivityActionView: View {
     @ObservedObject var model: SocialEncounterModel
     @ObservedObject var journey: ActivityJourneyCoordinator
     @Environment(\.scenePhase) private var scenePhase
-    @State private var showsTranscript = false
+    @State private var showsTranslation = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var saved = false
     @State private var saveError: String?
     @State private var wordSelection: TokenSelection?
-    private let ink = Color.dsSceneTextPrimary
+    private let ink = Color.dsTravelNavy
 
     init(model: SocialEncounterModel, journey: ActivityJourneyCoordinator, deps: HomeDependencies, isVisible: Bool,
          onBack: @escaping () -> Void,
@@ -59,6 +60,22 @@ struct ActivityActionView: View {
                 toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }),
             exampleTranslationActions: deps.exampleTranslationActions,
             allowsSystemTranslationFallback: true)
+        .overlay(alignment: .topTrailing) {
+            if wordSelection != nil {
+                Button { wordSelection = nil } label: {
+                    Image(systemName: "xmark").frame(width: 44, height: 44)
+                        .background(.regularMaterial, in: Circle())
+                }.accessibilityLabel("关闭释义").padding(.trailing, 16).padding(.top, 6)
+            }
+        }
+    }
+
+    private var sceneName: String {
+        switch activity.scene {
+        case .park: "Park Break"
+        case .pond: "By the Pond"
+        case .raincafe: "Rainy Cafe"
+        }
     }
 
     private var navigationHeader: some View {
@@ -67,8 +84,10 @@ struct ActivityActionView: View {
                 Image(systemName: "chevron.left").frame(width: 44, height: 44)
             }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
             Spacer()
-            Text(model.region.nameZh + " · " + activity.scene.title)
-                .font(.caption).foregroundStyle(ink.opacity(0.7))
+            VStack(alignment: .trailing, spacing: 3) {
+                Text(model.region.nameEn + " · " + sceneName)
+                if showsTranslation { Text(model.region.nameZh + " · " + activity.scene.title) }
+            }.font(.caption).foregroundStyle(ink.opacity(0.7))
         }
     }
 
@@ -98,36 +117,99 @@ struct ActivityActionView: View {
     }
 
     private var resultContent: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
-                navigationHeader
-                if model.isSolitude {
-                    solitudeContent
-                } else {
-                    if model.started, let character = model.character { identity(character) }
-                    panel
+        ScrollViewReader { reader in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    if model.isSolitude {
+                        solitudeContent.padding(24).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 28))
+                    } else {
+                        if let character = model.character { identity(character) }
+                        panel
+                    }
+                    Color.clear.frame(height: 1).id("encounter-bottom")
+                }
+                .padding(.horizontal, 22).padding(.top, 12).padding(.bottom, 32)
+                .frame(maxWidth: 620)
+                .frame(maxWidth: .infinity)
+            }
+            .contentShape(Rectangle())
+            .onTapGesture { advanceIfAllowed() }
+            .scrollBounceBehavior(.basedOnSize)
+            .onChange(of: progressID) {
+                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.3)) {
+                    reader.scrollTo("encounter-bottom", anchor: .bottom)
                 }
             }
-            .padding(.horizontal, 28)
-            .padding(.top, 16)
-            .padding(.bottom, 38)
+        }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            HStack(spacing: 4) {
+                Button(action: onBack) {
+                    Image(systemName: "chevron.left").frame(width: 44, height: 44)
+                }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(model.region.nameEn).font(.caption.weight(.semibold))
+                    Text(sceneName).font(.caption2).foregroundStyle(ink.opacity(0.6))
+                }
+                Spacer(minLength: 4)
+                translationAndSpeech
+            }
+            .padding(.horizontal, 16).padding(.vertical, 6)
+            .background(.regularMaterial)
         }
         .tint(ink)
-        .scrollBounceBehavior(.basedOnSize)
-        .background(Color.dsBackground.ignoresSafeArea())
-        .accessibilityIdentifier(model.started ? "activities.result" : "activities.confirmation")
+        .background {
+            ActivitySceneView(isVisible: false, showsInterface: false,
+                scene: .constant(activity.scene), cityName: model.region.nameZh,
+                completedCount: 0, onClose: {}, onJournal: {}, onSelect: { _ in })
+                .blur(radius: 10, opaque: true)
+                .overlay(Color.white.opacity(0.26))
+                .ignoresSafeArea().allowsHitTesting(false).accessibilityHidden(true)
+        }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("activities.result")
+    }
+
+    private var progressID: String {
+        "\(model.step)-\(model.beatIndex)-\(model.summary)-\(showsTranslation)"
+    }
+
+    private func advanceIfAllowed() {
+        guard isVisible, wordSelection == nil, !model.busy, model.error == nil,
+              !model.atChoice, !model.summary else { return }
+        model.advance()
     }
 
     private func identity(_ character: CharacterDTO) -> some View {
-        HStack(spacing: 14) {
-            AvatarBadge(name: character.card.name, size: 52, imageName: character.card.avatarAssetName,
-                remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
-            VStack(alignment: .leading, spacing: 5) {
-                Text(character.displayName).font(.title2.weight(.semibold))
-                lookupText(character.card.occupation, key: "occupation").font(.subheadline)
+        VStack(alignment: .leading, spacing: 18) {
+            Text(model.alreadyKnown ? "PATHS CROSS AGAIN" : "A CHANCE ENCOUNTER")
+                .font(.system(.caption2, design: .rounded, weight: .bold)).tracking(2.2)
+                .foregroundStyle(ink.opacity(0.62))
+            HStack(alignment: .center, spacing: 16) {
+                AvatarBadge(name: character.card.name, size: 72, imageName: character.card.avatarAssetName,
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
+                    .padding(5).background(.white.opacity(0.8), in: Circle())
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(character.displayName).font(.system(.title2, design: .rounded, weight: .bold))
+                    lookupText(character.card.occupation, key: "occupation")
+                        .font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                }
             }
-            Spacer(minLength: 0)
-        }.accessibilityIdentifier("activities.encounter.identity")
+            if let chapter = model.chapters.first {
+                Rectangle().fill(ink.opacity(0.13)).frame(height: 1)
+                Text(chapter.titleEnglish ?? "A Map in the Wind")
+                    .font(.system(.largeTitle, design: .serif, weight: .medium))
+                    .tracking(-0.7).fixedSize(horizontal: false, vertical: true)
+                if showsTranslation {
+                    Text(chapter.title).font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                }
+            }
+        }
+        .padding(24)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 28))
+        .overlay(RoundedRectangle(cornerRadius: 28).strokeBorder(.white.opacity(0.65)))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("activities.encounter.identity")
     }
 
     private var solitudeContent: some View {
@@ -148,125 +230,136 @@ struct ActivityActionView: View {
         .accessibilityIdentifier("activities.solitude")
     }
 
+    private var translationAndSpeech: some View {
+        HStack(spacing: 4) {
+            Button { showsTranslation.toggle() } label: {
+                Image(systemName: "translate").frame(width: 44, height: 44)
+                    .background(showsTranslation ? ink.opacity(0.1) : .clear, in: Circle())
+            }
+            .accessibilityLabel("中文翻译").accessibilityValue(showsTranslation ? "开启" : "关闭")
+            .accessibilityIdentifier("activities.story.translation")
+            Button { model.speak() } label: {
+                Image(systemName: "speaker.wave.2").frame(width: 44, height: 44)
+            }.accessibilityLabel("播放当前剧情").accessibilityIdentifier("activities.story.play")
+        }
+    }
+
     private var panel: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            if !model.started {
-                Text(activity.title).font(.largeTitle.weight(.semibold))
-                Text(activity.introduction).lineSpacing(5)
-                primary("出发，给相遇一点时间", id: "activities.action.start") { journey.start() }
-            } else {
-                if model.summary {
-                    summary
-                } else {
-                    if let part = model.chapters.indices.contains(model.step) ? model.chapters[model.step] : nil {
-                        Text(model.chapters.first?.title ?? part.title).font(.system(.title, design: .serif))
-                        if let beat = model.currentBeat {
-                            HStack {
-                                Text(beat.speaker == "npc" ? (model.character?.displayName ?? "对方") : "此刻")
-                                    .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.6))
-                                Spacer()
-                                Button { model.speak() } label: {
-                                    Image(systemName: "speaker.wave.2").frame(width: 44, height: 44)
-                                }.accessibilityLabel("播放当前剧情").accessibilityIdentifier("activities.story.play")
-                                Button { showsTranscript.toggle() } label: {
-                                    Image(systemName: "clock.arrow.circlepath").frame(width: 44, height: 44)
-                                }.accessibilityLabel("回看已读剧情").accessibilityIdentifier("activities.story.history")
-                                    .accessibilityValue(showsTranscript ? "展开" : "收起")
-                            }
-                            lookupText(beat.english, key: "beat-\(model.step)-\(model.beatIndex)")
-                                .font(.system(.title3, design: .serif)).lineSpacing(6)
-                            Text(beat.chinese).font(.subheadline).lineSpacing(4).foregroundStyle(ink.opacity(0.75))
-                        }
-                        if showsTranscript {
-                            VStack(alignment: .leading, spacing: 18) {
-                            ForEach(0...model.step, id: \.self) { stage in
-                                ForEach(Array(model.chapters[stage].beats.enumerated()), id: \.offset) { index, beat in
-                                    if stage < model.step || index <= model.beatIndex {
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            lookupText(beat.english, key: "history-\(stage)-\(index)")
-                                            Text(beat.chinese).font(.caption).foregroundStyle(.secondary)
-                                        }.padding(.vertical, 6)
-                                    }
-                                }
-                            }
-                            }
-                            .padding(16).background(ink.opacity(0.04), in: RoundedRectangle(cornerRadius: 14))
-                        }
-                        if !model.busy, model.error == nil {
-                            if model.atChoice { choices }
-                            else {
-                                primary(model.atEnding ? "为这次相遇收尾" : "继续故事",
-                                        id: "activities.action.next") { model.advance() }
-                            }
-                        }
+        VStack(alignment: .leading, spacing: 22) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text("THE MOMENT").font(.caption2.weight(.bold)).tracking(1.7)
+                if showsTranslation { Text("此刻").font(.caption2) }
+            }.foregroundStyle(ink.opacity(0.6))
+            ForEach(Array(model.chapters.enumerated()), id: \.offset) { stage, chapter in
+                ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
+                    if stage < model.step || (stage == model.step && index <= model.beatIndex) {
+                        beatRow(beat, stage: stage, index: index)
                     }
                 }
-                if model.busy {
-                    HStack(spacing: 10) {
-                        ProgressView()
-                        Text(model.character == nil ? "看看此刻会遇见谁…" : "等对方回应…").font(.subheadline)
-                    }.frame(minHeight: 44).accessibilityIdentifier("activities.encounter.loading")
-                }
-                if let error = model.error {
-                    Text(error).font(.callout).foregroundStyle(.secondary)
-                    Button("重试，不更换人物") { model.retry() }
-                        .accessibilityIdentifier("activities.encounter.retry")
+                if stage < model.selections.count {
+                    let choice = chapter.choices[model.selections[stage]]
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(systemName: "arrow.turn.down.right").font(.caption)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(choice.english).font(.subheadline.weight(.semibold))
+                            if showsTranslation { Text(choice.chinese).font(.caption) }
+                        }
+                    }.foregroundStyle(ink.opacity(0.7)).padding(.vertical, 8)
                 }
             }
-        }.frame(maxWidth: .infinity, alignment: .leading)
+            if model.summary {
+                summary
+            } else if !model.busy, model.error == nil {
+                if model.atChoice { choices }
+                else {
+                    Button(action: advanceIfAllowed) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "hand.tap").font(.caption)
+                            Text("Tap to continue").font(.caption)
+                            if showsTranslation { Text("轻点继续").font(.caption2) }
+                        }.foregroundStyle(ink.opacity(0.48))
+                            .frame(maxWidth: .infinity).frame(minHeight: 44)
+                    }.buttonStyle(.plain).accessibilityIdentifier("activities.action.next")
+                }
+            }
+            if model.busy {
+                ProgressView().frame(maxWidth: .infinity).accessibilityIdentifier("activities.encounter.loading")
+            }
+            if let error = model.error {
+                Text(error).font(.callout)
+                Button("重试，不更换人物") { model.retry() }
+                    .accessibilityIdentifier("activities.encounter.retry")
+            }
+        }
+        .padding(24).frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white.opacity(0.90), in: RoundedRectangle(cornerRadius: 28))
+        .overlay(RoundedRectangle(cornerRadius: 28).strokeBorder(.white.opacity(0.7)))
+    }
+
+    private func beatRow(_ beat: EncounterChapter.Beat, stage: Int, index: Int) -> some View {
+        let isNarration = beat.speaker != "npc"
+        return VStack(alignment: .leading, spacing: 10) {
+            if !isNarration {
+                Text(model.character?.displayName ?? "Companion")
+                    .font(.caption2.weight(.bold)).tracking(0.8).foregroundStyle(ink.opacity(0.52))
+            }
+            lookupText(beat.english, key: "beat-\(stage)-\(index)")
+                .font(isNarration ? .system(.body, design: .serif) : .system(.title3, design: .serif))
+                .lineSpacing(6)
+            if showsTranslation {
+                Text(beat.chinese).font(.subheadline).lineSpacing(5).foregroundStyle(ink.opacity(0.62))
+            }
+        }
+        .padding(.leading, isNarration ? 14 : 0)
+        .overlay(alignment: .leading) {
+            if isNarration { RoundedRectangle(cornerRadius: 1).fill(ink.opacity(0.15)).frame(width: 2) }
+        }
+        .padding(.vertical, 8)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("activities.beat.\(stage).\(index)")
     }
 
     private func lookupText(_ text: String, key: String) -> some View {
         TappableText(tokens: TokenCache.tokens(for: text, cacheKey: "chapter-\(model.runID)-\(key)"),
-            contextID: "chapter-\(model.runID)-\(key)", textColor: ink, selection: wordSelection,
+            contextID: "chapter-\(model.runID)-\(key)", textColor: ink, selection: wordSelection, lookupOnLongPress: key != "occupation",
             onSelect: { wordSelection = $0 }).fixedSize(horizontal: false, vertical: true)
     }
 
     private var choices: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("你想怎么做？").font(.headline)
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("YOUR MOVE").font(.caption.weight(.bold)).tracking(1.8)
+                if showsTranslation { Text("你想怎么做？").font(.caption) }
+            }.foregroundStyle(ink.opacity(0.55)).padding(.top, 12).padding(.bottom, 4)
             ForEach(Array(model.chapters[model.step].choices.enumerated()), id: \.offset) { index, choice in
-                VStack(alignment: .leading, spacing: 8) {
-                    lookupText(choice.english, key: "choice-\(model.step)-\(index)")
-                    Text(choice.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7))
-                    Button("选择这项行动") { model.choose(index) }
-                        .frame(minHeight: 44).disabled(model.selected != nil)
-                        .accessibilityIdentifier("activities.choice.\(index)")
-                }.padding(16).frame(maxWidth: .infinity, alignment: .leading)
-                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 14))
+                Button { model.choose(index) } label: {
+                    HStack(alignment: .center, spacing: 12) {
+                        Text(String(format: "%02d", index + 1))
+                            .font(.system(.caption, design: .monospaced, weight: .medium))
+                            .foregroundStyle(ink.opacity(0.4))
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(choice.english).font(.system(.body, design: .rounded, weight: .semibold))
+                                .fixedSize(horizontal: false, vertical: true)
+                            if showsTranslation {
+                                Text(choice.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                            }
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        Image(systemName: "arrow.up.right").font(.caption.weight(.semibold))
+                    }
+                    .multilineTextAlignment(.leading).padding(18)
+                    .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 18))
+                    .overlay(RoundedRectangle(cornerRadius: 18).strokeBorder(ink.opacity(0.14)))
+                    .contentShape(RoundedRectangle(cornerRadius: 18))
+                }
+                .buttonStyle(DSSceneEntranceButtonStyle()).disabled(model.selected != nil || model.busy)
+                .accessibilityIdentifier("activities.choice.\(index)")
             }
         }
     }
 
     private var summary: some View {
         VStack(alignment: .leading, spacing: 16) {
-            if !model.selections.isEmpty {
-                DisclosureGroup("回顾你的选择") {
-                    VStack(alignment: .leading, spacing: 28) {
-                        ForEach(Array(model.selections.enumerated()), id: \.offset) { index, selected in
-                            let choice = model.chapters[index].choices[selected]
-                            VStack(alignment: .leading, spacing: 18) {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text("你的选择").font(.caption).foregroundStyle(.secondary)
-                                    lookupText(choice.english, key: "summary-choice-\(index)").font(.headline)
-                                    Text(choice.chinese).font(.subheadline).foregroundStyle(.secondary)
-                                }
-                                if model.chapters.indices.contains(index + 1) {
-                                    ForEach(Array(model.chapters[index + 1].beats.enumerated()), id: \.offset) { beatIndex, beat in
-                                        VStack(alignment: .leading, spacing: 8) {
-                                            Text(beat.speaker == "npc" ? (model.character?.displayName ?? "对方") : "随后")
-                                                .font(.caption).foregroundStyle(.secondary)
-                                            lookupText(beat.english, key: "summary-beat-\(index)-\(beatIndex)").font(.body)
-                                            Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7)).lineSpacing(4)
-                                        }
-                                    }
-                                }
-                            }
-                            if index + 1 < model.selections.count { Divider() }
-                        }
-                    }.padding(.vertical, 16)
-                }
-            }
             if model.canConnect, let character = model.character, !character.isFriend {
                 primary(model.contactBusy ? "正在添加…" : "加为好友", id: "activities.encounter.addFriend") { model.addFriend() }
                     .disabled(model.contactBusy)

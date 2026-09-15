@@ -17,11 +17,13 @@ public struct EncounterChapter: Codable, Equatable, Sendable {
         public init(english: String, chinese: String) { self.english = english; self.chinese = chinese }
     }
     public let title: String
+    public let titleEnglish: String?
     public let outline: String
     public let beats: [Beat]
     public let choices: [Choice]
 
-    public init(title: String, outline: String, beats: [Beat], choices: [Choice]) {
+    public init(title: String, outline: String, beats: [Beat], choices: [Choice], titleEnglish: String? = nil) {
+        self.titleEnglish = titleEnglish
         self.title = title; self.outline = outline; self.beats = beats; self.choices = choices
     }
 

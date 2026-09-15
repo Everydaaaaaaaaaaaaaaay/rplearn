@@ -63,6 +63,13 @@ public struct AuthoredEncounterLibrary: Sendable {
         entries = Dictionary(uniqueKeysWithValues: manifest.entries.map { ($0.id, $0) })
     }
 
+    private static let englishTitles: [String: String] = {
+        guard let url = Bundle.main.url(forResource: "npc-encounter-titles-en", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let titles = try? JSONDecoder().decode([String: String].self, from: data) else { return [:] }
+        return titles
+    }()
+
     private static let bundledResult: Result<Self, Error> = Result {
         guard let url = Bundle.main.url(forResource: "npc-library-v3", withExtension: "json") else {
             throw LibraryError.missingBundle
@@ -76,7 +83,7 @@ public struct AuthoredEncounterLibrary: Sendable {
         if reunion {
             guard choices.isEmpty else { throw LibraryError.invalidChoice }
             return EncounterChapter(title: entry.reunion.titleZh, outline: entry.reunion.titleZh,
-                                    beats: entry.reunion.beats, choices: [])
+                                    beats: entry.reunion.beats, choices: [], titleEnglish: Self.englishTitles[entry.reunion.titleZh])
         }
         guard choices.count <= 2 else { throw LibraryError.invalidChoice }
         let nodes = Dictionary(uniqueKeysWithValues: entry.story.nodes.map { ($0.id, $0) })
@@ -87,7 +94,8 @@ public struct AuthoredEncounterLibrary: Sendable {
         }
         guard let node = nodes[key] else { throw LibraryError.invalidContent }
         return EncounterChapter(title: entry.story.titleZh, outline: entry.story.titleZh, beats: node.beats,
-                                choices: node.choices.map { .init(english: $0.english, chinese: $0.chinese) })
+                                choices: node.choices.map { .init(english: $0.english, chinese: $0.chinese) },
+                                titleEnglish: Self.englishTitles[entry.story.titleZh])
     }
 
     private static func validate(_ beats: [EncounterChapter.Beat]) throws {

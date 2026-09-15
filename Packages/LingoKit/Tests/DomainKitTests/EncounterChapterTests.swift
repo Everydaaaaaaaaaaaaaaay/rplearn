@@ -11,6 +11,7 @@ struct EncounterChapterTests {
         for entry in library.entries.values {
             let opening = try library.chapter(characterID: entry.id, actionID: entry.story.actionId, choices: [])
             #expect(opening.choices.count == 2)
+            #expect(opening.titleEnglish?.isEmpty == false)
             for first in 0...1 {
                 let middle = try library.chapter(characterID: entry.id, actionID: entry.story.actionId, choices: [first])
                 #expect(middle.choices.count == 2)
@@ -22,6 +23,7 @@ struct EncounterChapterTests {
             }
             let reunion = try library.chapter(characterID: entry.id, actionID: entry.story.actionId, choices: [], reunion: true)
             #expect(reunion.choices.isEmpty)
+            #expect(reunion.titleEnglish?.isEmpty == false)
             #expect(reunion.beats != opening.beats)
             #expect(throws: (any Error).self) { try library.chapter(characterID: entry.id, actionID: "missing", choices: []) }
             #expect(throws: (any Error).self) { try library.chapter(characterID: entry.id, actionID: entry.story.actionId, choices: [2]) }
