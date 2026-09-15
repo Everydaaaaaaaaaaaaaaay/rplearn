@@ -56,6 +56,8 @@ extension AppEnvironment {
                 (.assistant, preview)
             ] : [(.user, "What's been the highlight of your day?"), (.assistant, preview)]
             for (lineIndex, line) in lines.enumerated() {
+                if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1",
+                   character.card.name == "Ruby Walker", lineIndex == lines.count - 1 { continue }
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id, role: line.0,
                     text: line.1, createdAt: Date().addingTimeInterval(Double(-index * 180 - (lines.count - lineIndex) * 20)))
             }

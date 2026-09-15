@@ -1007,7 +1007,7 @@ struct RootView: View {
 
     private var chatDeps: ChatDependencies {
         let regionCatalog = environment.regionCatalog
-        return ChatDependencies(
+        var dependencies = ChatDependencies(
             accessClient: environment.backendClient,
             onShowAccess: { showUsage = true },
             chatStore: environment.chatStore,
@@ -1030,6 +1030,13 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
+        #if DEBUG
+        dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
+            && bypassesAuthenticationForUITesting
+            && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"
+            && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1"
+        #endif
+        return dependencies
     }
 
     private var storyDeps: StoryDependencies {

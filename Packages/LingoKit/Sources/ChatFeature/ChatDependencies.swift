@@ -15,6 +15,10 @@ public struct ChatTutorialConfiguration: Sendable {
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    #if DEBUG
+    /// Set only by the app's isolated in-memory marketing workspace.
+    public var marketingMotionCapture = false
+    #endif
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

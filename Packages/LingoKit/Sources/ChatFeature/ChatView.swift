@@ -259,6 +259,9 @@ public struct ChatView: View {
             #endif
             knownLatestMessageID = viewModel.messages.last?.id
             markVisibleConversationRead()
+            #if DEBUG
+            await viewModel.playMarketingCaptureReply()
+            #endif
         }
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()

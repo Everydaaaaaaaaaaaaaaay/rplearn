@@ -105,7 +105,11 @@ public final class ChatViewModel {
             if let profile = try? await deps.economyStore.profile() {
                 learnerDifficulty = profile.difficultyLevel
             }
+            #if DEBUG
+            if !deps.marketingMotionCapture { resumePendingReplyIfNeeded() }
+            #else
             resumePendingReplyIfNeeded()
+            #endif
         } catch {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
@@ -970,6 +974,29 @@ public final class ChatViewModel {
         }
         return messages
     }
+
+    #if DEBUG
+    /// Records the native typing indicator and production bubble delivery at normal speed.
+    /// Only the reply text is prepared; no model, relationship review or paid gateway runs.
+    func playMarketingCaptureReply() async {
+        guard deps.marketingMotionCapture, let conversation,
+              let user = messages.last, user.role == .user,
+              user.text == "How did your latte art practice go?" else { return }
+        let cycle = replyCycleID
+        let plan = NPCAttentionPolicy.standard.expeditedReplyPlan(
+            userMessageID: user.id, sentAt: user.createdAt, delay: 0)
+        pendingReplyPlan = plan
+        defer { clearReplyState(cycleID: cycle) }
+        do {
+            try await Task.sleep(for: .seconds(4))
+            beginTyping(cycleID: cycle)
+            _ = try await deliverAssistantReply(conversationID: conversation.id,
+                text: "A jellyfish 😂\nApparently, foam has other plans.",
+                cycleID: cycle, plan: plan, replacingAssistantMessageID: nil)
+        } catch is CancellationError { }
+        catch { errorMessage = "Capture playback failed: \(error.localizedDescription)" }
+    }
+    #endif
 
     // MARK: - 语境出题
 
