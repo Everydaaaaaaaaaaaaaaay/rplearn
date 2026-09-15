@@ -33,3 +33,12 @@ The explicit DEBUG marketing flag runs inside the existing in-memory UI-test wor
 - Capture script syntax and Git whitespace checks passed.
 - The attempted world-map screenshot was rejected because globe city annotations were incorrectly positioned and overlapping. It is excluded from the final set; that existing map issue needs a separate fix.
 - Starter avatar generation, reference provenance and palette corrections are recorded in `avatars-20260915.md` and `avatar-prompts.json`.
+
+## Updated physical-device set — 2026-09-15 v2
+
+- Built source commit `edb6723` in signed device Debug configuration; build succeeded and installation on the owner's iPhone 13 succeeded. Includes encounter redesign, welcome presence window and chat reply recovery.
+- Recaptured all nine scenes from the phone, with the same isolated in-memory demonstration workspace. Normal app launch restored successfully afterward.
+- Originals: `/Users/tiantian/Pictures/LingoTrip-Promo-20260915-v2/final/`; ZIP: sibling `LingoTrip-Promo-20260915-v2.zip` (exactly nine originals); resized review overview: `overview.jpg`.
+- All nine images visually inspected. Message list has six varied NPCs and balanced palettes; dictionary examples and saved sentence are visible. Encounter now showcases the English title, character identity, scene backdrop and continuous narrative; its choices are below the captured viewport. Story screenshot shows both branching choices.
+- Each original is 1170 × 2532; unique SHA-256 hashes recorded in `screenshots-20260915-v2.json`. ZIP integrity and entry count verified. Original v1 retained.
+- No source UI/assets changed in this capture task. Prior scene-motion acceptance limitations remain unchanged; screenshots verify these captured frames only.
