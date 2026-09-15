@@ -76,6 +76,10 @@ public struct ChatView: View {
             viewModel.tutorialSendNoticeID = nil
         }
         .background(Color.dsBackground)
+        .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
+            guard notification.object as? UUID == viewModel.character.id else { return }
+            Task { await viewModel.refreshMessages() }
+        }
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshCharacter() }

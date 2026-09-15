@@ -370,6 +370,48 @@ struct ChatWorkflowTests {
         #expect(first.messages.map(\.id) == second.messages.map(\.id))
     }
 
+    @Test("生成期间重新进入不误报中断也不重复生成")
+    func reopenDuringActiveGeneration() async throws {
+        let provider = Provider(streamDelayMilliseconds: 400)
+        let f = try await fixture(provider)
+        f.model.draft = "Hello again."
+        await f.model.sendDraft()
+        for _ in 0..<100 {
+            if f.model.messages.last?.isInterrupted == true { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(f.model.messages.last?.isInterrupted == true)
+        let reopened = await f.reopen()
+        #expect(reopened.errorMessage == nil)
+        #expect(!reopened.canRetryUnansweredReply)
+        #expect(reopened.isWaitingForUserBurst)
+        try await settle(f.model)
+        try await settle(reopened)
+        #expect(reopened.messages.contains { $0.role == .assistant })
+        #expect(reopened.errorMessage == nil)
+        #expect(await provider.tasks().filter { $0 == .conversation }.count == 1)
+    }
+
+    @Test("重新进入后追加消息不会被旧观察任务清空状态")
+    func sendWhileFollowingExistingProducer() async throws {
+        let provider = Provider(streamDelayMilliseconds: 300)
+        let f = try await fixture(provider)
+        f.model.draft = "One moment."
+        await f.model.sendDraft()
+        for _ in 0..<100 {
+            if f.model.messages.last?.isInterrupted == true { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        let reopened = await f.reopen()
+        reopened.draft = "Here is the rest of my question."
+        await reopened.sendDraft()
+        try await settle(f.model)
+        try await settle(reopened)
+        #expect(reopened.messages.last?.role == .assistant)
+        #expect(reopened.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(!reopened.canRetryUnansweredReply)
+    }
+
     @Test("会话尚未准备好时保留草稿")
     func draftSurvivesUnavailableConversation() async throws {
         let f = try await fixture()

@@ -121,6 +121,37 @@ struct NPCAttentionPolicyTests {
         #expect(snapshot.state == .online)
     }
 
+    @Test("刚认识的角色在夜间也保留在线窗口，重建不延长")
+    func encounterWelcomeWindow() {
+        var npc = character(rhythm: .daytime, focusMinutes: 7)
+        npc.metAt = referenceDate
+        let date = referenceDate.addingTimeInterval(19 * 60)
+        #expect(policy.presence(for: npc, at: date, lastAssistantMessageAt: nil,
+                                pendingReplyPlan: nil).state == .online)
+        let user = message(role: .user, order: 0, at: date)
+        #expect(policy.replyPlan(for: npc, userMessage: user, history: [user]).attention == .focused)
+        let later = referenceDate.addingTimeInterval(36 * 60)
+        #expect(policy.presence(for: npc, at: later, lastAssistantMessageAt: nil,
+            pendingReplyPlan: nil) == policy.scheduledPresence(for: npc, at: later))
+    }
+
+    @Test("作息边界不锁定整点整分且相同时间结果稳定")
+    func irregularStablePresenceBoundaries() {
+        let npc = character(rhythm: .daytime, focusMinutes: 7)
+        var departures = Set<Date>()
+        for minute in stride(from: 0, to: 48 * 60, by: 5) {
+            let date = referenceDate.addingTimeInterval(Double(minute * 60))
+            let value = policy.scheduledPresence(for: npc, at: date)
+            #expect(value == policy.scheduledPresence(for: npc, at: date))
+            if value.state != .online, let last = value.lastActiveAt {
+                #expect(last <= date)
+                departures.insert(last)
+            }
+        }
+        #expect(departures.count > 5)
+        #expect(departures.allSatisfy { $0.timeIntervalSince1970.truncatingRemainder(dividingBy: 60) != 0 })
+    }
+
     private func character(
         rhythm: NPCActivityRhythm,
         focusMinutes: Int
@@ -146,7 +177,7 @@ struct NPCAttentionPolicyTests {
             difficultyLevel: .junior3,
             isMainCharacter: false,
             isFriend: true,
-            metAt: referenceDate
+            metAt: referenceDate.addingTimeInterval(-86400)
         )
     }
 

@@ -321,7 +321,12 @@ public final class ChatViewModel {
         }
     }
 
-    public func refreshMessages() async { await reloadMessages() }
+    public func refreshMessages() async {
+        await reloadMessages()
+        if messages.last?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
+            errorMessage = nil
+        }
+    }
 
     public func presence(at date: Date) -> NPCPresenceSnapshot {
         NPCAttentionPolicy.standard.presence(
@@ -512,7 +517,12 @@ public final class ChatViewModel {
 
     public var canRetryUnansweredReply: Bool {
         !isStreaming && !isWaitingForUserBurst && messages.last?.role == .user
-            && messages.last?.isInterrupted == true
+            && messages.last?.isInterrupted == true && !hasActiveReplyProducer
+    }
+
+    private var hasActiveReplyProducer: Bool {
+        guard let conversation, let latest = messages.last else { return false }
+        return NPCReplyLeaseRegistry.shared.contains(conversationID: conversation.id, messageID: latest.id)
     }
 
     public func retryUnansweredReply() {
@@ -526,6 +536,30 @@ public final class ChatViewModel {
               let latest = messages.last,
               latest.role == .user
         else { return }
+        // The persisted interruption marker is also a crash-recovery checkpoint.
+        // Another living page may still own this request; follow it instead of
+        // reporting a failure or starting another paid generation.
+        if hasActiveReplyProducer, let conversation {
+            isWaitingForUserBurst = true
+            errorMessage = nil
+            replyCycleID = UUID()
+            let observerCycle = replyCycleID
+            replyTask = Task { [self] in
+                defer {
+                    if replyCycleID == observerCycle { replyTask = nil; isWaitingForUserBurst = false }
+                }
+                do {
+                    try await NPCReplyLeaseRegistry.shared.waitUntilAvailable(conversationID: conversation.id)
+                    try Task.checkCancellation()
+                    await reloadMessages()
+                    guard replyCycleID == observerCycle else { return }
+                    if messages.last?.role == .user, messages.last?.isInterrupted == true {
+                        errorMessage = "上次回复未完成，点重试继续。"
+                    }
+                } catch { }
+            }
+            return
+        }
         guard !latest.isInterrupted else {
             errorMessage = "上次回复未完成，点重试继续。"
             return
@@ -891,6 +925,7 @@ public final class ChatViewModel {
             delivered.append(message)
             messages.append(message)
             messages.sort { $0.orderIndex < $1.orderIndex }
+            notifyConversationChanged()
 
             // 关键词标注不阻塞下一条气泡的计时和显示。
             Task(priority: .utility) { [weak self] in

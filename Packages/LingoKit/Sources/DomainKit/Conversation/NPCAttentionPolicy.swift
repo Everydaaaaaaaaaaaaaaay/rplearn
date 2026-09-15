@@ -95,7 +95,7 @@ public struct NPCAttentionPolicy: Sendable {
         } ?? false
 
         let attention: NPCAttentionLevel
-        if isFocused {
+        if isFocused || isNewEncounterOnline(character, at: userMessage.createdAt) {
             attention = .focused
         } else {
             attention = switch scheduledPresence(
@@ -140,6 +140,11 @@ public struct NPCAttentionPolicy: Sendable {
     ) -> NPCPresenceSnapshot {
         let profile = activityProfile(for: character)
         let timeZoneIdentifier = profile.timeZoneIdentifier
+
+        if isNewEncounterOnline(character, at: date) {
+            return NPCPresenceSnapshot(state: .online, lastActiveAt: date,
+                timeZoneIdentifier: timeZoneIdentifier)
+        }
 
         if let lastAssistantMessageAt {
             let focusDuration = TimeInterval(
@@ -320,49 +325,40 @@ public struct NPCAttentionPolicy: Sendable {
         profile: NPCActivityProfile? = nil
     ) -> NPCPresenceSnapshot {
         let profile = profile ?? activityProfile(for: character)
-        let bucket = Self.halfHourBucket(containing: date)
-        if isScheduledOnline(
-            characterID: character.id,
-            at: bucket,
-            profile: profile
-        ) {
-            return NPCPresenceSnapshot(
-                state: .online,
-                lastActiveAt: date,
-                timeZoneIdentifier: profile.timeZoneIdentifier
-            )
+        // Jitter each boundary independently. Adjacent windows remain ordered
+        // (6–54 minutes), and rebuilding the same date never rerolls presence.
+        var bucket = Int(floor(date.timeIntervalSince1970 / 1800))
+        while boundary(character.id, bucket: bucket) > date { bucket -= 1 }
+        while boundary(character.id, bucket: bucket + 1) <= date { bucket += 1 }
+        if isScheduledOnline(characterID: character.id,
+                             at: boundary(character.id, bucket: bucket), profile: profile) {
+            return NPCPresenceSnapshot(state: .online, lastActiveAt: date,
+                timeZoneIdentifier: profile.timeZoneIdentifier)
         }
-
-        let priorBucket = bucket.addingTimeInterval(-30 * 60)
-        if isScheduledOnline(
-            characterID: character.id,
-            at: priorBucket,
-            profile: profile
-        ) {
-            return NPCPresenceSnapshot(
-                state: .recentlyActive,
-                lastActiveAt: bucket,
-                timeZoneIdentifier: profile.timeZoneIdentifier
-            )
-        }
-
         var lastActiveAt: Date?
-        for offset in 2...96 {
-            let candidate = bucket.addingTimeInterval(TimeInterval(-offset * 30 * 60))
-            if isScheduledOnline(
-                characterID: character.id,
-                at: candidate,
-                profile: profile
-            ) {
-                lastActiveAt = candidate.addingTimeInterval(30 * 60)
+        for offset in 1...96 {
+            if isScheduledOnline(characterID: character.id,
+                at: boundary(character.id, bucket: bucket - offset), profile: profile) {
+                lastActiveAt = boundary(character.id, bucket: bucket - offset + 1)
                 break
             }
         }
-        return NPCPresenceSnapshot(
-            state: .offline,
-            lastActiveAt: lastActiveAt,
-            timeZoneIdentifier: profile.timeZoneIdentifier
-        )
+        let recentlyActive = lastActiveAt.map { date.timeIntervalSince($0) < 30 * 60 } ?? false
+        return NPCPresenceSnapshot(state: recentlyActive ? .recentlyActive : .offline,
+            lastActiveAt: lastActiveAt, timeZoneIdentifier: profile.timeZoneIdentifier)
+    }
+
+    private func boundary(_ id: UUID, bucket: Int) -> Date {
+        Date(timeIntervalSince1970: Double(bucket) * 1800
+             + (stableUnit(characterID: id, bucket: bucket, salt: "boundary") * 2 - 1) * 720)
+    }
+
+    /// Persisted meeting time provides a 20–35 minute welcome window, even at night.
+    /// User messages do not extend it; actual replies renew the ordinary focus lease.
+    private func isNewEncounterOnline(_ character: CharacterDTO, at date: Date) -> Bool {
+        let duration = 1200 + stableUnit(characterID: character.id,
+            bucket: Int(character.metAt.timeIntervalSince1970), salt: "welcome") * 900
+        return (0...duration).contains(date.timeIntervalSince(character.metAt))
     }
 
     func onlineProbability(
@@ -421,7 +417,10 @@ public struct NPCAttentionPolicy: Sendable {
         calendar.timeZone = TimeZone(identifier: profile.timeZoneIdentifier)
             ?? TimeZone(secondsFromGMT: 0)!
         let components = calendar.dateComponents([.weekday, .hour, .minute], from: bucket)
-        let hour = Double(components.hour ?? 0) + Double(components.minute ?? 0) / 60
+        let localDay = Int(calendar.startOfDay(for: bucket).timeIntervalSince1970 / 86400)
+        let dailyShift = (stableUnit(characterID: characterID, bucket: localDay, salt: "daily-rhythm") * 2 - 1)
+        let hour = (Double(components.hour ?? 0) + Double(components.minute ?? 0) / 60
+                    + dailyShift + 24).truncatingRemainder(dividingBy: 24)
         let weekday = components.weekday ?? 1
         let probability = onlineProbability(
             rhythm: profile.rhythm,
@@ -458,10 +457,4 @@ public struct NPCAttentionPolicy: Sendable {
         return Double(hash % 1_000_001) / 1_000_000
     }
 
-    private static func halfHourBucket(containing date: Date) -> Date {
-        let interval: TimeInterval = 30 * 60
-        return Date(
-            timeIntervalSince1970: floor(date.timeIntervalSince1970 / interval) * interval
-        )
-    }
 }

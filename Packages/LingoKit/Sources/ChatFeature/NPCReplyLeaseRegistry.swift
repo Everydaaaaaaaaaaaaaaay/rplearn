@@ -16,6 +16,10 @@ final class NPCReplyLeaseRegistry {
 
     private init() {}
 
+    func contains(conversationID: UUID, messageID: UUID) -> Bool {
+        leases[conversationID]?.messageID == messageID
+    }
+
     func acquire(
         conversationID: UUID,
         ownerID: UUID,
