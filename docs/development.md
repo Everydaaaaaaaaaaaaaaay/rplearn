@@ -73,6 +73,11 @@ Scripts/preview.sh build home             # 源码改变后：增量构建、安
 Scripts/preview.sh preview home           # 已构建/测试后：只安装和启动
 ```
 
+若新增 Swift 文件后在 Xcode 中出现 `Cannot find ... in scope`（例如 `seedMarketingCapture`），
+先确认定义文件存在，再运行 `Scripts/preview.sh build home`。该命令会先用 `project.yml`
+重新生成工程，补齐新增文件的编译成员，再构建安装。只更新源码而未重新生成 `.xcodeproj`
+会造成此类报错；不要删除调用或复制定义来绕过，生成的工程文件不提交。
+
 页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（英语旅程）。产物固定取
 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
