@@ -37,3 +37,9 @@ HTTP 完成日志与 AI 业务完成日志分别描述网络响应与生成过�
 使用 Node 24 执行应用层测试和架构检查；类型检查、改动文件 ESLint 通过。
 部署使用 `Backend/ops/native-server/package-release.sh` 和服务器现有原生发布脚本，
 保留上一版本 `memory-budget-20260915` 供程序回滚；积分配置独立于程序版本。
+
+发布结果：`diagnostics-20260915-01` 已激活（代码提交 `1ab1363`），API / worker 均 active。
+线上 `/health/ready` 返回 ready；带诊断请求编号的健康请求记录状态 200、耗时，
+未授权 AI 请求记录 UNAUTHORIZED / 401，并与完成日志关联；原完成日志状态码不再为 null。
+发布后再次读取倍率：版本 3、rateUnits 100、个人覆盖为空。
+AI 流式成功/失败日志由本地模拟供应商测试验证，本次未发起真实供应商付费生成。
