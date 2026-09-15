@@ -1,4 +1,7 @@
-import { LearningScene } from "../design";
+import { Paper, Headline, NativeScreen } from "../design";
 export const Presence = () => (
-  <LearningScene title="用英语，练习表达" file="chat-motion.mp4" video />
+  <Paper background="bg-london.jpg" dark>
+    <Headline>把学到的，聊出来</Headline>
+    <NativeScreen file="chat-motion.mp4" video x={195} y={315} width={690} />
+  </Paper>
 );

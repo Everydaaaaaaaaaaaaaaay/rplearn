@@ -35,3 +35,8 @@ if hashlib.sha256(raw_motion.read_bytes()).hexdigest()!=record['sha256']:
 # end-state for two editorial seconds; active typing/arrival timestamps are unchanged.
 subprocess.run(['ffmpeg','-hide_banner','-y','-i',str(a.captures/'take2/chat-motion-raw.mp4'),'-vf','fps=60,tpad=stop_mode=clone:stop_duration=2','-an','-c:v','libx264','-crf','17','-pix_fmt','yuv420p','-movflags','+faststart',str(dest/'chat-motion.mp4')],check=True)
 print('Prepared original screenshots, native footage and attributed music.')
+
+# Third edition uses existing product artwork as editorial backgrounds.
+copy(repo/'App/Assets.xcassets/home_city_london.imageset/home_city_london.jpg','bg-london.jpg')
+copy(repo/'App/Assets.xcassets/detail_placement_learning_desk.imageset/detail_placement_learning_desk.jpg','bg-desk.jpg')
+copy(repo/'App/Resources/StoryArt/Departures/dp_london_day.jpg','bg-bookshop.jpg')

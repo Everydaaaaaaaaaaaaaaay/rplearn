@@ -8,12 +8,12 @@ import { Paper, media, clamp, ease } from "../design";
 export const Outro = () => {
   const f = useCurrentFrame();
   return (
-    <Paper>
+    <Paper background="bg-bookshop.jpg" dark>
       <Interactive.Div
         name="Coovingo English learning"
         style={{
           position: "absolute",
-          top: 560,
+          top: 480,
           left: 80,
           right: 80,
           textAlign: "center",
@@ -39,14 +39,14 @@ export const Outro = () => {
           style={{
             fontSize: 26,
             letterSpacing: 7,
-            color: "#6a8595",
+            color: "#dacdb1",
             marginTop: 16,
           }}
         >
           COOVINGO
         </div>
-        <div style={{ fontSize: 52, fontWeight: 400, marginTop: 74 }}>
-          让英语学习，有情境。
+        <div style={{ fontSize: 72, fontWeight: 400, marginTop: 74 }}>
+          边聊边学，没压力
         </div>
       </Interactive.Div>
       <div
@@ -58,7 +58,7 @@ export const Outro = () => {
           textAlign: "center",
           fontSize: 20,
           lineHeight: 1.65,
-          color: "#72818b",
+          color: "#d5d6cc",
         }}
       >
         <div>产品演示画面 · AI 虚构角色</div>
