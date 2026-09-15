@@ -107,6 +107,7 @@ async function balance(
   window: string,
   limit: bigint,
   billingScope: BillingScope,
+  budgetRateUnits = RATE_SCALE,
 ) {
   const [row] = await sql<
     { used: string; reserved: string; pending: string; overrun: string }[]
@@ -117,10 +118,12 @@ async function balance(
     coalesce(sum(greatest(settled_units-reserved_units,0)) filter(where status='settled' and window_key<>${window} and reconciliation is null),0)::text as overrun
     from app.credit_operations where user_id=${userId} and billing_scope=${billingScope}
     and (window_key=${window} or status in ('reserved','dispatched','pending') or (settled_units>reserved_units and reconciliation is null))`;
-  const used = BigInt(row?.used ?? 0),
-    reserved = BigInt(row?.reserved ?? 0),
-    pending = BigInt(row?.pending ?? 0),
-    overrun = BigInt(row?.overrun ?? 0);
+  // 辅助任务保留原始成本账本，在预算准入时复用积分倍率折算。
+  // 同一周期内已消耗、在途预留和待核账金额一起折算，调低倍率后可立即继续测试。
+  const used = applyCreditRate(BigInt(row?.used ?? 0), budgetRateUnits),
+    reserved = applyCreditRate(BigInt(row?.reserved ?? 0), budgetRateUnits),
+    pending = applyCreditRate(BigInt(row?.pending ?? 0), budgetRateUnits),
+    overrun = applyCreditRate(BigInt(row?.overrun ?? 0), budgetRateUnits);
   // User admission is based solely on settled usage. Estimates and unresolved
   // provider bills remain auditable but never freeze a user's daily allowance.
   // Keep the product automation pool's separate operational cost ceiling.
@@ -305,11 +308,19 @@ export function createCreditService(
         const rateUnits = billingScope === "user" ? rate.rate : RATE_SCALE;
         const limit =
           billingScope === "user" ? ctx.limit : serviceLimitFor(ctx.actor.plan);
-        const available = await balance(sql, userId, ctx.window, limit, billingScope);
+        const available = await balance(
+          sql,
+          userId,
+          ctx.window,
+          limit,
+          billingScope,
+          billingScope === "service" ? rate.auxiliaryRate : RATE_SCALE,
+        );
+        const budgetAmount = applyCreditRate(amount, rate.auxiliaryRate);
         if (
           billingScope === "user"
             ? rateUnits > 0 && available.remaining <= 0n
-            : amount > available.remaining
+            : rate.auxiliaryRate > 0 && budgetAmount > available.remaining
         )
           throw new AppError({
             code:
@@ -328,7 +339,10 @@ export function createCreditService(
               billingScope,
               remaining: displayCredits(available.remaining),
               ...(billingScope === "service"
-                ? { required: displayCredits(amount) }
+                ? {
+                    required: displayCredits(budgetAmount),
+                    consumptionMultiplier: rate.auxiliaryRate / RATE_SCALE,
+                  }
                 : {}),
               resetsAt: ctx.reset,
               isGuest: ctx.actor.isGuest,

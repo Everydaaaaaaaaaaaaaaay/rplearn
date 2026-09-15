@@ -7,8 +7,8 @@ export function applyCreditRate(units: bigint, rate: number): bigint {
   return (units * BigInt(rate) + BigInt(RATE_SCALE - 1)) / BigInt(RATE_SCALE);
 }
 export async function effectiveCreditRate(sql: TransactionSql, userId: string) {
-  const [row] = await sql<{ rate: number; version: number }[]>`
-    select coalesce(o.rate_units,p.rate_units) as rate,p.version
+  const [row] = await sql<{ rate: number; auxiliaryRate: number; version: number }[]>`
+    select coalesce(o.rate_units,p.rate_units) as rate,p.auxiliary_rate_units as "auxiliaryRate",p.version
     from app.credit_rate_policy p left join app.credit_rate_overrides o on o.user_id=${userId}
     where p.singleton=true`;
   if (!row) throw new Error("Missing credit rate policy");
@@ -16,7 +16,7 @@ export async function effectiveCreditRate(sql: TransactionSql, userId: string) {
 }
 export interface CreditRateChange {
   expectedVersion: number;
-  scope: "global" | "users";
+  scope: "global" | "users" | "auxiliary";
   userIds: string[];
   rateUnits: number | null;
   changeReason: string;
@@ -26,8 +26,10 @@ export class CreditRateRepository {
 
   async read() {
     return this.database.sql.begin(async (sql) => {
-      const [policy] = await sql<{ version: number; rate_units: number }[]>`
-        select version,rate_units from app.credit_rate_policy where singleton=true for share`;
+      const [policy] = await sql<
+        { version: number; rate_units: number; auxiliary_rate_units: number }[]
+      >`
+        select version,rate_units,auxiliary_rate_units from app.credit_rate_policy where singleton=true for share`;
       if (!policy) throw new Error("Missing credit rate policy");
       const overrides = await sql<{ userId: string; rateUnits: number }[]>`
         select user_id::text as "userId",rate_units as "rateUnits" from app.credit_rate_overrides order by user_id`;
@@ -37,6 +39,7 @@ export class CreditRateRepository {
       return {
         version: policy.version,
         globalRateUnits: policy.rate_units,
+        auxiliaryRateUnits: policy.auxiliary_rate_units,
         overrides,
         history,
       };
@@ -45,8 +48,10 @@ export class CreditRateRepository {
 
   async update(change: CreditRateChange, operator: string, commandId: string) {
     return this.database.sql.begin(async (sql) => {
-      const [policy] = await sql<{ version: number; rate_units: number }[]>`
-        select version,rate_units from app.credit_rate_policy where singleton=true for update`;
+      const [policy] = await sql<
+        { version: number; rate_units: number; auxiliary_rate_units: number }[]
+      >`
+        select version,rate_units,auxiliary_rate_units from app.credit_rate_policy where singleton=true for update`;
       if (!policy) throw new Error("Missing credit rate policy");
       const payload = JSON.stringify(change);
       const [old] = await sql<
@@ -72,6 +77,9 @@ export class CreditRateRepository {
       let previous: unknown = { rateUnits: policy.rate_units };
       if (change.scope === "global") {
         await sql`update app.credit_rate_policy set rate_units=${change.rateUnits} where singleton=true`;
+      } else if (change.scope === "auxiliary") {
+        previous = { rateUnits: policy.auxiliary_rate_units };
+        await sql`update app.credit_rate_policy set auxiliary_rate_units=${change.rateUnits} where singleton=true`;
       } else {
         const users =
           await sql`select id from app.users where id in ${sql(change.userIds)}`;

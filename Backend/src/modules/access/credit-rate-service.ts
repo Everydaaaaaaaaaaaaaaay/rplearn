@@ -5,7 +5,7 @@ import type { CreditRateRepository } from "./credit-rate-repository.js";
 const schema = z
   .object({
     expectedVersion: z.number().int().positive(),
-    scope: z.enum(["global", "users"]),
+    scope: z.enum(["global", "users", "auxiliary"]),
     userIds: z
       .array(z.uuid().transform((value) => value.toLowerCase()))
       .max(500)
@@ -15,7 +15,7 @@ const schema = z
   })
   .strict()
   .refine((value) =>
-    value.scope === "global"
+    value.scope !== "users"
       ? value.rateUnits !== null && value.userIds.length === 0
       : value.userIds.length > 0 &&
         new Set(value.userIds).size === value.userIds.length,
