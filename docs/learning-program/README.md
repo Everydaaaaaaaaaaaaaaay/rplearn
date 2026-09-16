@@ -208,3 +208,7 @@
 执行细节见 [工作流与模板](workflow.md)；跨轮次状态见 [进度账本](status.md)。
 
 工作流自身也接受运行监测与持续修订：异常取证、根因判断、最小规则变更、验证、生效、采用核验和后测回退，详见工作流第 9 节与 [版本账本](workflow-versions.md)。后续批次必须采用最新已验证并正式生效的规则，不能仅凭最新草案覆盖当前工作流。
+
+## 执行账本自动检查
+
+每批更新 [机器账本](execution-state.json)，运行 `python3 Scripts/verify-learning-program.py`；修改检查器时运行 `python3 -m unittest discover -s Scripts/tests -p 'test_learning_program_ledger.py'`。检查器核对生效版本、依赖、验收状态和证据路径，并列出可继续的任务；单个受阻任务不会阻塞无依赖的工作。证据文件存在不代表内容真实或质量合格，仍须人工/代理复核；该工具不运行账本中的命令、不启动后台循环、不代替测试及视觉检查。

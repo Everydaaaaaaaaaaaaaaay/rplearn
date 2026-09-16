@@ -1,0 +1,53 @@
+{
+  "workflow_version": "WF-1.2",
+  "tasks": [
+    {
+      "id": "SOURCE-WRITE",
+      "status": "complete",
+      "depends_on": [],
+      "checks": [{"name": "11 source/identity/sync tests and preview installation", "status": "passed", "evidence": ["docs/learning-program/research-b002.md"]}]
+    },
+    {
+      "id": "SOURCE-UI",
+      "status": "blocked",
+      "blocker": "Device Hub Computer Use cannot open; native visual review remains unverified",
+      "depends_on": ["SOURCE-WRITE"],
+      "checks": [
+        {"name": "2 source-read tests and preview build", "status": "passed", "evidence": ["docs/learning-program/research-b002.md"]},
+        {"name": "Native source disclosure, long text and accessibility visual review", "status": "blocked"}
+      ]
+    },
+    {
+      "id": "REVIEW-TASK-PROTOTYPE",
+      "status": "complete",
+      "depends_on": [],
+      "checks": [{"name": "Browser task path, undo and summary counts (not a usability study)", "status": "passed", "evidence": ["docs/learning-program/first-review-spec.md", "docs/learning-program/prototypes/context-review.html"]}]
+    },
+    {
+      "id": "MOBILE-DIRECT-RESEARCH",
+      "status": "blocked",
+      "blocker": "No accessible logged-in competitor mobile app session yet; optional device/account availability question pending",
+      "depends_on": [],
+      "checks": [{"name": "Actual mobile task interaction evidence beyond official screenshots", "status": "blocked"}]
+    },
+    {
+      "id": "MOBILE-SPEAKING-READING",
+      "status": "in_progress",
+      "depends_on": [],
+      "checks": [{"name": "Official mobile screens and supported mechanism claims with explicit access limits", "status": "pending"}]
+    },
+    {
+      "id": "REVIEW-DATA-DESIGN",
+      "status": "ready",
+      "depends_on": ["SOURCE-WRITE", "REVIEW-TASK-PROTOTYPE"],
+      "checks": [{"name": "Content versioning, idempotency, undo, account isolation and migration design", "status": "pending"}]
+    },
+    {
+      "id": "REVIEW-USABILITY",
+      "status": "blocked",
+      "blocker": "Requires an actual unbriefed test participant; none contacted or simulated",
+      "depends_on": ["REVIEW-TASK-PROTOTYPE"],
+      "checks": [{"name": "Independent participant completes task and understands ratings", "status": "blocked"}]
+    }
+  ]
+}
