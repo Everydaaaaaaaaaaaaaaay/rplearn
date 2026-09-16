@@ -15,7 +15,7 @@ export const RemotionRoot = () => (
     <Composition
       id="CoovingoLandscape"
       component={LandscapeFilm}
-      durationInFrames={2640}
+      durationInFrames={3360}
       fps={60}
       width={1920}
       height={1080}

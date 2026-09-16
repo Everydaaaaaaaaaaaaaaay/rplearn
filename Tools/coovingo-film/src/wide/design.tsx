@@ -156,7 +156,7 @@ export const Phone: React.FC<{
         {video ? (
           <Video
             src={media(file)}
-            trimBefore={288}
+            trimBefore={240}
             muted
             style={{ width: "100%", display: "block" }}
           />

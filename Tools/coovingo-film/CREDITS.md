@@ -26,3 +26,5 @@ Second edition adds a physical iPhone 13 capture of the English-level screen, re
 Third edition backgrounds reuse bundled London home, placement desk and Departures London bookshop still artwork. Exact source paths and hashes are in assets.json. Editorial pan/zoom is not native scene-loop footage.
 
 Landscape edition: 44-second edited excerpt. The three activity screenshots are fresh native simulator captures; public marketing screenshots remain from the owner’s iPhone. Static activity art provenance: Assets/Activities/{Park,Pond,RainCafe}/README.md. Native dynamic background loops are not used.
+
+Landscape second edition: 56-second excerpt beginning at 18.823529 seconds, fades and loudness adjustment. New world-map image is an untouched native simulator screenshot with map attribution retained. Prior 40/44-second credits describe archived editions.

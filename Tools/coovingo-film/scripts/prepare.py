@@ -8,6 +8,7 @@ p.add_argument('--screenshots',type=Path,default=Path('/Users/tiantian/Pictures/
 p.add_argument('--captures',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Promo-20260915/raw'))
 p.add_argument('--learning-capture',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Promo-20260915-v2/raw/10-level.png'))
 p.add_argument('--landscape-captures',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Landscape-20260916/raw'))
+p.add_argument('--map-capture',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Landscape-20260916-v2/raw/map-singapore.png'))
 a=p.parse_args();repo=root.parents[1];dest=root/'public/media';dest.mkdir(parents=True,exist_ok=True)
 expected={e['file']:e['sha256'] for e in json.loads((root/'assets.json').read_text())}
 def verify(path):
@@ -48,3 +49,7 @@ attachments=json.loads((a.landscape_captures/'manifest.json').read_text())[0]['a
 for scene in ['park','pond','raincafe']:
  record=next(x for x in attachments if f'-{scene}_' in x['suggestedHumanReadableName'])
  copy(a.landscape_captures/record['exportedFileName'],f'activity-{scene}-wide.png')
+
+copy(a.map_capture,"map-singapore.png")
+
+subprocess.run(['ffmpeg','-hide_banner','-y','-ss','18.823529','-i',str(music),'-t','56','-af','afade=t=in:st=0:d=0.6,afade=t=out:st=53:d=3,loudnorm=I=-18:TP=-1.5:LRA=9','-ar','48000','-c:a','aac','-b:a','256k',str(dest/'music-wide-56.m4a')],check=True)
