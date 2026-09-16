@@ -2,6 +2,31 @@ import XCTest
 
 @MainActor
 final class ChatKeyboardTests: XCTestCase {
+    func testAutomaticReadingToggle() throws {
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launchEnvironment["UI_TEST_MARKETING_CAPTURE"] = "1"
+        app.launchEnvironment["UI_TEST_NATIVE_CAPTURE"] = "chat"
+        app.launch()
+        defer { app.terminate() }
+        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby Walker")).firstMatch
+        XCTAssertTrue(ruby.waitForExistence(timeout: 15))
+        ruby.tap()
+        let toggle = app.buttons["chat.autoRead"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 15))
+        XCTAssertEqual(toggle.value as? String, "关闭")
+        toggle.tap()
+        XCTAssertEqual(toggle.value as? String, "开启")
+        let image = XCTAttachment(screenshot: app.screenshot())
+        image.name = "Chat automatic reading enabled"
+        image.lifetime = .keepAlways
+        add(image)
+        toggle.tap()
+        XCTAssertEqual(toggle.value as? String, "关闭")
+    }
+
     func testDismissKeyboardPreservesDraft() throws {
         continueAfterFailure = false
         let app = XCUIApplication()

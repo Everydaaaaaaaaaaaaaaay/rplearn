@@ -12,6 +12,10 @@ import Translation
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
     @State var viewModel: ChatViewModel
+    @State private var autoReadEnabled = false
+    @State private var autoReadReady = false
+    @State private var autoReadQueue: ChatAutoReadQueue
+    @Environment(\.scenePhase) private var scenePhase
     @State var wordSelection: TokenSelection?
     @State var grammarTermSelection: GrammarTermSelection?
     @State var grammarAnalysis: GrammarAnalysisRequest?
@@ -48,6 +52,7 @@ public struct ChatView: View {
         _recorder = State(initialValue: VoiceRecorder(audioSession: deps.audioSession))
         _voicePlayer = State(initialValue: VoiceMessagePlayer(audioSession: deps.audioSession))
         _showsRealtimeConversation = State(initialValue: startsInRealtimeConversation)
+        _autoReadQueue = State(initialValue: ChatAutoReadQueue(speech: deps.speech))
         self.deps = deps
     }
 
@@ -110,6 +115,18 @@ public struct ChatView: View {
                     }
                     .accessibilityElement(children: .combine)
                 }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    autoReadEnabled.toggle()
+                } label: {
+                    Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                        .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                }
+                .accessibilityLabel("自动朗读新消息")
+                .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                .accessibilityHint("按顺序朗读你和旅伴的新消息")
+                .accessibilityIdentifier("chat.autoRead")
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -247,6 +264,9 @@ public struct ChatView: View {
                 return await appleTranslator.translate(text)
             }
             await viewModel.load()
+            guard !Task.isCancelled else { return }
+            autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
+            autoReadReady = true
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
                ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
@@ -266,11 +286,35 @@ public struct ChatView: View {
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
+        .onChange(of: shouldAutoRead) { _, enabled in
+            autoReadQueue.configure(enabled: enabled, existingIDs: viewModel.messages.map(\.id))
+        }
+        .onChange(of: viewModel.messages) { _, messages in
+            autoReadQueue.observe(messages.sorted { $0.orderIndex < $1.orderIndex }.compactMap { message in
+                guard message.role == .user || message.role == .assistant,
+                      message.kind == .text else { return nil }
+                return ChatAutoReadQueue.Item(id: message.id, request: viewModel.speechRequest(for: message))
+            })
+        }
         .onDisappear {
+            autoReadReady = false
+            autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
             appleTranslator.cancelAll()
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private var shouldAutoRead: Bool {
+        let recording: Bool
+        switch recorder.state {
+        case .recording, .transcribing: recording = true
+        default: recording = false
+        }
+        return autoReadReady && autoReadEnabled && scenePhase == .active
+            && !showsRealtimeConversation && !showsContactDetails && !recording
+            && wordSelection == nil && grammarTermSelection == nil && grammarAnalysis == nil
+            && voicePlayer.playingFileName == nil
     }
 
     private func markVisibleConversationRead() {
@@ -699,7 +743,8 @@ public struct ChatView: View {
             Label("翻译", systemImage: "character.book.closed.zh")
         }
         Button {
-            Task { await viewModel.speak(message: message) }
+            let stopped = autoReadQueue.interrupt()
+            Task { await stopped?.value; await viewModel.speak(message: message) }
         } label: {
             Label("播放", systemImage: "speaker.wave.2")
         }
