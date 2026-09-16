@@ -60,3 +60,9 @@ App 优先已执行，本批未深挖纯网站；无付费、外联或线上 AI 
 来源写入提交 `74afec5`，FavoritesStoreTests 11 项通过（包含新增三项）；同步测试的首次失败是测试解码器未使用 ISO 日期策略，修正测试后通过。已用 Scripts/preview.sh 安装最新 messages 模拟器预览。Device Hub 的 Computer Use 打开失败，Simulator 标识也不可用，未声称完成原生视觉检查。新增加的原句展开界面另行验证，不包含在该提交中。
 
 原句展示后续提交 `18410ab`：两项 source 模型测试通过，覆盖用户原句/已有翻译、删除来源仍保留收藏、旧来源/未同步来源/中断消息不可用。已增量构建并安装模拟器 me 预览，原生 UI 人工视觉检查仍待补；没有把该限制写成已通过。
+
+## 原句入口原生证据补充（2026-09-16）
+
+Device Hub Computer Use 仍无法打开，改用仓库已有 Xcode 原生测试路径进行针对性验收。`Scripts/test-ui.sh -only-testing:LingoTripUITests/FavoriteSourceUITests`：1 通过、0 失败、0 跳过；实际启动营销内存夹具的收藏页，展开 cosy 原句、核对完整英文、再次收起。
+
+证据：`build/DerivedData/VerificationResults/20260916T052157Z-27338.xcresult`；已导出并目视查看 `favorites-original-context` 附件，普通 iPhone 布局中来源说话者和完整原句可见。此证据补齐普通字号展开/收起，不代表大字体、VoiceOver、iPad 或删除来源状态的 UI 已验收；删除来源仍只有模型测试证据。

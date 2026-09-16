@@ -17,8 +17,7 @@
     },
     {
       "id": "SOURCE-UI",
-      "status": "blocked",
-      "blocker": "Device Hub Computer Use cannot open; native visual review remains unverified",
+      "status": "in_progress",
       "depends_on": [
         "SOURCE-WRITE"
       ],
@@ -31,8 +30,16 @@
           ]
         },
         {
-          "name": "Native source disclosure, long text and accessibility visual review",
-          "status": "blocked"
+          "name": "Native iPhone default-size disclosure and full source text screenshot",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/research-b002.md",
+            "Tests/LingoTripUITests/FavoriteSourceTests.swift"
+          ]
+        },
+        {
+          "name": "Large text, iPad and VoiceOver source presentation",
+          "status": "pending"
         }
       ]
     },
