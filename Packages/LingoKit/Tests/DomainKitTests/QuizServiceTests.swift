@@ -1,5 +1,7 @@
 import Foundation
 import Testing
+import LLMKit
+import PersistenceKit
 @testable import DomainKit
 
 @Suite("QuizService")
@@ -8,6 +10,19 @@ struct QuizServiceTests {
     Ha, good question! We'd usually say "I'm keen on it".
     <quiz>{"question":"Which word means very tired?","options":["keen","exhausted","brave","tidy"],"answer":1,"explanation_zh":"exhausted 表示筋疲力尽。"}</quiz>
     """
+
+    @Test("兜底出题请求包含实际水平而不是模板代码", arguments: [DifficultyLevel.primary1, .advanced])
+    func fallbackRespectsLearnerLevel(level: DifficultyLevel) async throws {
+        let client = MockLLMProvider(completeHandler: { request in
+            #expect(request.system?.contains(PromptBuilder.languageGuidance(for: level)) == true)
+            #expect(request.system?.contains("PromptBuilder.languageGuidance") == false)
+            return """
+            {"question":"Which word means tired?","options":["exhausted","keen","brave","tidy"],"answer":0,"explanation_zh":"exhausted 表示疲惫。"}
+            """
+        })
+        let quiz = try await QuizService.generate(history: [], learnerDifficulty: level, using: client)
+        #expect(quiz.answer == 0)
+    }
 
     @Test("双开关 + 阈值触发判定")
     func triggerGate() {
