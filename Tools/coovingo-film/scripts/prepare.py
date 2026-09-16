@@ -7,6 +7,7 @@ p=argparse.ArgumentParser()
 p.add_argument('--screenshots',type=Path,default=Path('/Users/tiantian/Pictures/LingoTrip-Promo-20260915-v2/final'))
 p.add_argument('--captures',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Promo-20260915/raw'))
 p.add_argument('--learning-capture',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Promo-20260915-v2/raw/10-level.png'))
+p.add_argument('--landscape-captures',type=Path,default=Path('/Users/tiantian/Movies/Coovingo-Landscape-20260916/raw'))
 a=p.parse_args();repo=root.parents[1];dest=root/'public/media';dest.mkdir(parents=True,exist_ok=True)
 expected={e['file']:e['sha256'] for e in json.loads((root/'assets.json').read_text())}
 def verify(path):
@@ -40,3 +41,10 @@ print('Prepared original screenshots, native footage and attributed music.')
 copy(repo/'App/Assets.xcassets/home_city_london.imageset/home_city_london.jpg','bg-london.jpg')
 copy(repo/'App/Assets.xcassets/detail_placement_learning_desk.imageset/detail_placement_learning_desk.jpg','bg-desk.jpg')
 copy(repo/'App/Resources/StoryArt/Departures/dp_london_day.jpg','bg-bookshop.jpg')
+
+# Landscape uses a 44-second score and fresh native static activity captures.
+subprocess.run(['ffmpeg','-hide_banner','-y','-ss','18.823529','-i',str(music),'-t','44','-af','afade=t=in:st=0:d=0.6,afade=t=out:st=41.1:d=2.9,loudnorm=I=-18:TP=-1.5:LRA=9','-ar','48000','-c:a','aac','-b:a','256k',str(dest/'music.m4a')],check=True)
+attachments=json.loads((a.landscape_captures/'manifest.json').read_text())[0]['attachments']
+for scene in ['park','pond','raincafe']:
+ record=next(x for x in attachments if f'-{scene}_' in x['suggestedHumanReadableName'])
+ copy(a.landscape_captures/record['exportedFileName'],f'activity-{scene}-wide.png')

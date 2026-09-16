@@ -24,3 +24,5 @@ Brand icon and Ruby/Oliver/Marcus/Victor artwork are the product's existing acce
 Second edition adds a physical iPhone 13 capture of the English-level screen, recorded in capture-manifest.json.
 
 Third edition backgrounds reuse bundled London home, placement desk and Departures London bookshop still artwork. Exact source paths and hashes are in assets.json. Editorial pan/zoom is not native scene-loop footage.
+
+Landscape edition: 44-second edited excerpt. The three activity screenshots are fresh native simulator captures; public marketing screenshots remain from the owner’s iPhone. Static activity art provenance: Assets/Activities/{Park,Pond,RainCafe}/README.md. Native dynamic background loops are not used.

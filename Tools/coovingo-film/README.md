@@ -55,3 +55,7 @@ python3 scripts/capture-motion.py --device 47DD7BF7-5378-47D7-ACC3-792EF8AAFF11 
 ## 第四版（当前）
 
 以聊天中的英语学习为主线。水平设置后直接进入聊天，再接查词与收藏；剧情后移并缩至 3.9 秒。开场突出聊天与学习工具。保持 40 秒、第三版视觉语言与「边聊边学，没压力」片尾。
+
+## B 站横版（独立构图）
+
+1920×1080 / 60 fps / 44 秒，composition `CoovingoLandscape`。执行 `npm run render:landscape` 导出；原竖版 `Coovingo` 保留。设计依据、时间线与素材证据见 LANDSCAPE.md。交付目录 `/Users/tiantian/Movies/Coovingo-Landscape-20260916/`。
