@@ -307,6 +307,8 @@ extension ChatView {
     }
 
     var wordFavoriteActions: WordFavoriteActions {
-        deps.lookupWordFavoriteActions
+        deps.lookupWordFavoriteActions(
+            sourceMessageID: wordSelection.flatMap { UUID(uuidString: $0.contextID) }
+        )
     }
 }

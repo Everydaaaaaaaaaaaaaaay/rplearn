@@ -1,5 +1,7 @@
+import Foundation
 import DictKit
 import LLMKit
+import PersistenceKit
 import SpeechKit
 
 extension ChatDependencies {
@@ -14,13 +16,17 @@ extension ChatDependencies {
     }
 
     var lookupWordFavoriteActions: WordFavoriteActions {
+        lookupWordFavoriteActions(sourceMessageID: nil)
+    }
+
+    func lookupWordFavoriteActions(sourceMessageID: UUID?) -> WordFavoriteActions {
         let favorites = favorites
         return WordFavoriteActions(
             contains: { word in
                 (try? await favorites.isWordFavorited(word)) ?? false
             },
             toggle: { word, translationZh in
-                (try? await favorites.toggleWord(word, translationZh: translationZh)) ?? false
+                (try? await favorites.toggleWord(word, translationZh: translationZh, sourceMessageID: sourceMessageID)) ?? false
             }
         )
     }

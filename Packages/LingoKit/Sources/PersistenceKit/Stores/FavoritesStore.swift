@@ -48,15 +48,25 @@ public actor FavoritesStore {
 
     /// 收藏一个单词；同一单词忽略大小写并保持幂等。
     @discardableResult
-    public func addWord(_ rawWord: String, translationZh: String? = nil) throws -> FavoriteDTO? {
+    public func addWord(
+        _ rawWord: String,
+        translationZh: String? = nil,
+        sourceMessageID: UUID? = nil
+    ) throws -> FavoriteDTO? {
         let word = Self.normalizedWord(rawWord)
         guard !word.isEmpty else { return nil }
         if let existing = try fetchWord(word) {
+            // Enrich legacy favorites once; keep the original context on subsequent encounters.
+            if existing.sourceMessageID == nil, let sourceMessageID {
+                existing.sourceMessageID = sourceMessageID
+                try journal(existing)
+                try modelContext.save()
+            }
             return Self.dto(from: existing)
         }
         let entity = FavoriteEntity(
             sentence: word,
-            sourceMessageID: nil,
+            sourceMessageID: sourceMessageID,
             characterName: Self.wordCollectionMarker,
             translationZh: translationZh
         )
@@ -67,7 +77,11 @@ public actor FavoritesStore {
     }
 
     /// 切换单词收藏，返回切换后的收藏状态。
-    public func toggleWord(_ rawWord: String, translationZh: String? = nil) throws -> Bool {
+    public func toggleWord(
+        _ rawWord: String,
+        translationZh: String? = nil,
+        sourceMessageID: UUID? = nil
+    ) throws -> Bool {
         let word = Self.normalizedWord(rawWord)
         guard !word.isEmpty else { return false }
         if let existing = try fetchWord(word) {
@@ -80,7 +94,7 @@ public actor FavoritesStore {
             try modelContext.save()
             return false
         }
-        _ = try addWord(word, translationZh: translationZh)
+        _ = try addWord(word, translationZh: translationZh, sourceMessageID: sourceMessageID)
         return true
     }
 
@@ -201,8 +215,14 @@ public actor FavoritesStore {
     }
 
     private func fetchBySource(_ sourceMessageID: UUID) throws -> FavoriteEntity? {
-        try modelContext.fetch(
-            FetchDescriptor<FavoriteEntity>(predicate: #Predicate { $0.sourceMessageID == sourceMessageID })
+        let wordMarker = Self.wordCollectionMarker
+        let grammarPrefix = Self.grammarCollectionPrefix
+        return try modelContext.fetch(
+            FetchDescriptor<FavoriteEntity>(predicate: #Predicate {
+                $0.sourceMessageID == sourceMessageID
+                    && $0.characterName != wordMarker
+                    && !$0.characterName.starts(with: grammarPrefix)
+            })
         ).first
     }
 
@@ -211,9 +231,7 @@ public actor FavoritesStore {
         return try modelContext.fetch(
             FetchDescriptor<FavoriteEntity>(
                 predicate: #Predicate {
-                    $0.sourceMessageID == nil
-                        && $0.characterName == marker
-                        && $0.sentence == word
+                    $0.characterName == marker && $0.sentence == word
                 }
             )
         ).first

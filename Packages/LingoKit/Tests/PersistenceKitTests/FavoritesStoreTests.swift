@@ -88,6 +88,66 @@ struct FavoritesStoreTests {
         #expect(try await store.all().map(\.kind) == [.sentence])
     }
 
+    @Test("同一消息的多个词与句子收藏互不冲突")
+    func sourceWordsDoNotCollideWithSentence() async throws {
+        let store = try makeStore()
+        let source = UUID()
+        let word = try #require(try await store.addWord("Quiet", sourceMessageID: source))
+        _ = try await store.addWord("place", sourceMessageID: source)
+        #expect(!(try await store.isFavorited(sourceMessageID: source)))
+        let sentence = try await store.add(sentence: "A quiet place.", sourceMessageID: source, characterName: "Ruby")
+        #expect(sentence.kind == .sentence)
+        #expect(sentence.id != word.id)
+        #expect(try await store.all().count == 3)
+        #expect(try await store.isWordFavorited("QUIET"))
+        #expect(!(try await store.toggleWord("quiet")))
+        #expect(try await store.isFavorited(sourceMessageID: source))
+        #expect(try await store.isWordFavorited("place"))
+    }
+
+    @Test("旧单词可补来源且重复遇见不覆盖原语境")
+    func enrichesLegacySourceOnlyOnce() async throws {
+        let store = try makeStore()
+        let legacy = try #require(try await store.addWord("quiet", translationZh: "安静的"))
+        let source = UUID()
+        let enriched = try #require(try await store.addWord("QUIET", sourceMessageID: source))
+        let repeated = try #require(try await store.addWord("quiet", sourceMessageID: UUID()))
+        #expect(enriched.id == legacy.id)
+        #expect(repeated.sourceMessageID == source)
+        #expect(repeated.translationZh == "安静的")
+        #expect(try await store.all().count == 1)
+    }
+
+    @Test("带来源单词同步至新设备后仍可去重与取消收藏")
+    func sourceSurvivesSync() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let store = FavoritesStore(modelContainer: container)
+        let owner = UUID()
+        try await sync.activateOwner(userID: owner)
+        let source = UUID()
+        #expect(try await store.toggleWord("Quiet", sourceMessageID: source))
+        let pending = try #require(try await sync.takePending().first)
+        let payload = try #require(pending.payloadJSON)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let decoded = try decoder.decode(ContentFavoritePayload.self, from: Data(payload.utf8))
+        #expect(decoded.sourceMessageId == source)
+        let otherContainer = try ModelContainerFactory.makeContainer(inMemory: true)
+        let otherSync = ContentSyncStore(modelContainer: otherContainer)
+        let otherStore = FavoritesStore(modelContainer: otherContainer)
+        try await otherSync.activateOwner(userID: owner)
+        try await otherSync.apply(records: [RemoteContentRecord(
+            createdAt: .now, deletedAt: nil, parentID: nil, payloadJSON: payload,
+            resourceID: pending.resourceID, resourceType: .favorite, updatedAt: .now, version: 1
+        )], nextCursor: "1")
+        let restored = try #require(try await otherStore.addWord("QUIET"))
+        #expect(restored.sourceMessageID == source)
+        #expect(try await otherStore.all().count == 1)
+        #expect(!(try await otherStore.toggleWord("quiet")))
+        #expect(try await otherStore.all().isEmpty)
+    }
+
     @Test("语法点收藏按稳定 ID 幂等并保留展示快照")
     func grammarPointFavoriteIsIdempotent() async throws {
         let store = try makeStore()
