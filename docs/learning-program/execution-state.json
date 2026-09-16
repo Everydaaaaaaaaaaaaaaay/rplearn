@@ -127,13 +127,30 @@
     },
     {
       "id": "REVIEW-DOMAIN-CORE",
-      "status": "in_progress",
+      "status": "complete",
       "depends_on": [
         "REVIEW-EVENT-PROTOTYPE"
       ],
       "checks": [
         {
           "name": "Native deterministic single-session event projection with isolation and correction tests; no persistence claim",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/review-data-design.md",
+            "Packages/LingoKit/Tests/DomainKitTests/ReviewSessionProjectionTests.swift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCHEDULER-EVALUATION",
+      "status": "in_progress",
+      "depends_on": [
+        "REVIEW-DATA-DESIGN"
+      ],
+      "checks": [
+        {
+          "name": "Pin candidate implementation and license; compare parameters and semantics before adopting",
           "status": "pending"
         }
       ]

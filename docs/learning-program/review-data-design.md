@@ -53,3 +53,11 @@
 | 退出/切换账号 | 缓存、待上传、游标全部按账号隔离，无串号回传 |
 
 下一步先实现独立、确定性的事件归约与统计测试，再接持久化和界面。测试必须覆盖上述语义；不得把这份设计记录视为运行通过。排程算法仍单独评估，普通复习零新增 LLM 调用。
+
+## 原生单会话核心验证
+
+`DomainKit/Learning/ReviewSessionProjection.swift` 已实现纯确定性单会话事件投影：账号/会话边界、材料版本不可变、重复事件幂等、冲突拒绝、撤销保留暴露、尝试数与材料数分离。未接网络、数据库或 UI，也不进行排程；这是后续界面的共用业务规则，不是学习系统已开放。
+
+`Scripts/test.sh -only-testing:LingoTripTests/ReviewSessionProjectionTests`：9 通过、0 失败、0 跳过，证据 `build/DerivedData/VerificationResults/20260916T050914Z-23796.xcresult`。`Scripts/preview.sh build me` 已完成最新构建与模拟器安装；本切片不改变可见页面。
+
+首次测试构建读到了旧 DomainKit 产品模块（12:43），而新的中间模块已在 13:07 生成；将该单个生成缓存移至临时目录后重跑通过。没有删用户数据或整个 DerivedData。与前批 PersistenceKit 的缓存问题同类，纳入工作流故障恢复复盘。
