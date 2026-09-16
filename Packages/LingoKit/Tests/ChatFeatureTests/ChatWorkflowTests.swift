@@ -8,6 +8,8 @@ import MediaKit
 import PersistenceKit
 import SpeechKit
 import Testing
+import SwiftUI
+import UIKit
 @testable import ChatFeature
 
 /// Shipping view model → real SwiftData stores → reopened view model. Only external services are replaced.
@@ -132,6 +134,43 @@ struct ChatWorkflowTests {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+
+    @Test("停留信息列表时，后台回复立即刷新头像未读数，无需切换页面")
+    func visibleListRefreshesForBackgroundReply() async throws {
+        let f = try await fixture(Provider(response: "First bubble.\nSecond bubble."))
+        let accountID = UUID()
+        let key = ProactiveMessagePreferences.unreadCountKey(for: accountID)
+        let scene = try #require(UIApplication.shared.connectedScenes.first as? UIWindowScene)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.rootViewController = UIHostingController(rootView: NavigationStack {
+            ConversationListView(accountID: accountID, deps: f.deps)
+        })
+        window.makeKeyAndVisible()
+        defer {
+            window.isHidden = true
+            window.rootViewController = nil
+            previous?.makeKey()
+            UserDefaults.standard.removeObject(forKey: key)
+            f.model.cancelPendingReply()
+        }
+        // Let the list finish its initial snapshot before the hidden chat produces a reply.
+        for _ in 0..<100 where UserDefaults.standard.object(forKey: key) == nil {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        #expect(UserDefaults.standard.object(forKey: key) != nil)
+        #expect(UserDefaults.standard.integer(forKey: key) == 0)
+        f.model.draft = "Hello there"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        let expected = try await f.deps.chatStore.conversationSummaries().reduce(0) { $0 + $1.unreadCount }
+        #expect(expected > 0)
+        for _ in 0..<100 where UserDefaults.standard.integer(forKey: key) != expected {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        // Only ConversationListView writes this account-specific total, from its visible rows.
+        #expect(UserDefaults.standard.integer(forKey: key) == expected)
     }
 
     @Test("聚焦与单字符不续期，四种字符续期，退出缩短等待")

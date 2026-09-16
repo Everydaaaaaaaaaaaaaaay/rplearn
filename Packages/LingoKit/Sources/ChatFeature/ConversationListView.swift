@@ -1,3 +1,4 @@
+import DomainKit
 import DesignSystem
 import CoreKit
 import Foundation
@@ -11,6 +12,8 @@ public struct ConversationListView: View {
 
     @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
+    @State private var isVisible = false
+    @State private var reloadGeneration = UUID()
     @State private var searchText = ""
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
@@ -57,7 +60,13 @@ public struct ConversationListView: View {
             .toolbarColorScheme(.dark, for: .navigationBar)
             // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
             // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
+            .onAppear { isVisible = true }
+            .onDisappear { isVisible = false }
             .task(id: reloadToken) { await reload() }
+            .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
+                guard isVisible else { return }
+                Task { await reload() }
+            }
             .refreshable { await reload() }
             .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
                 Task { await reload() }
@@ -333,15 +342,17 @@ public struct ConversationListView: View {
     }
 
     private func reload() async {
-        defer { isLoading = false }
+        let generation = UUID()
+        reloadGeneration = generation
+        defer { if reloadGeneration == generation { isLoading = false } }
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedFriends = deps.rosterStore.friends()
         async let loadedSummaries = deps.chatStore.conversationSummaries()
-        if let profile = await loadedProfile {
-            currentRegionID = profile.currentRegionID
-        }
+        let profile = await loadedProfile
         do {
             let (friends, summaries) = try await (loadedFriends, loadedSummaries)
+            guard !Task.isCancelled, reloadGeneration == generation else { return }
+            if let profile { currentRegionID = profile.currentRegionID }
             rows = ConversationListProjection.rows(friends: friends, summaries: summaries)
             updateUnreadCount()
         } catch {
