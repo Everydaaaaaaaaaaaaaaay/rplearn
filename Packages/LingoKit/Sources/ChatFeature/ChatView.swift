@@ -117,38 +117,47 @@ public struct ChatView: View {
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    autoReadEnabled.toggle()
-                } label: {
-                    Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                        .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                HStack(spacing: 0) {
+                    Button {
+                        autoReadEnabled.toggle()
+                    } label: {
+                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                            .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("自动朗读新消息")
+                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                    .accessibilityHint("按顺序朗读你和旅伴的新消息")
+                    .accessibilityIdentifier("chat.autoRead")
+
+                    Button {
+                        isTextInputFocused = false
+                        voicePlayer.stop()
+                        // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
+                        guard deps.tutorial == nil else { return }
+                        showsRealtimeConversation = true
+                    } label: {
+                        Image(systemName: "phone.fill")
+                            .foregroundStyle(Color.accentColor)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
+
+                    Button {
+                        isTextInputFocused = false
+                        voicePlayer.stop()
+                        showsContactDetails = true
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .foregroundStyle(Color.accentColor)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("聊天设置")
                 }
-                .accessibilityLabel("自动朗读新消息")
-                .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                .accessibilityHint("按顺序朗读你和旅伴的新消息")
-                .accessibilityIdentifier("chat.autoRead")
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    isTextInputFocused = false
-                    voicePlayer.stop()
-                    // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
-                    guard deps.tutorial == nil else { return }
-                    showsRealtimeConversation = true
-                } label: {
-                    Image(systemName: "phone.fill")
-                }
-                .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    isTextInputFocused = false
-                    voicePlayer.stop()
-                    showsContactDetails = true
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
-                .accessibilityLabel("聊天设置")
+                .buttonStyle(.plain)
             }
         }
         .accessibilityAction(named: "聊天设置") {

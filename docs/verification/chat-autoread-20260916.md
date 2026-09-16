@@ -13,3 +13,8 @@
 - Reviewed enabled screenshot `build/chat-autoread-review/41ABDFD9-9C5E-49A2-814D-0F016954AE0A.png`: three controls share one capsule, title remains readable, speaker is highlighted.
 - Device Hub Computer Use remains unavailable (-10005 earlier this session); focused Xcode automation used. Physical-device listening not verified in this task.
 - Incremental build succeeded. Latest app installed with `Scripts/preview.sh`; simulator left in isolated Ruby chat preview. No account data or backend changes.
+
+## Compact toolbar follow-up
+
+- Grouped the three actions into one zero-spacing HStack inside one ToolbarItem, eliminating automatic inter-item spacing while retaining independent 44 × 44 point targets and the system glass capsule. Phone/settings retain accent color.
+- Reused toggle UI test on 375-point iPhone SE: passed in `20260916T021033Z-98708.xcresult`. Screenshot `build/chat-toolbar-small/02BBF1D6-6BA5-4D83-B287-7D9D0A0988E9.png` reviewed: Ruby name and full `在线 · 墨尔本 12:11` subtitle fit without truncation. Final color-only adjustment followed by incremental build/preview.
