@@ -1,5 +1,5 @@
 {
-  "workflow_version": "WF-1.2",
+  "workflow_version": "WF-1.3",
   "tasks": [
     {
       "id": "SOURCE-WRITE",
@@ -144,13 +144,29 @@
     },
     {
       "id": "SCHEDULER-EVALUATION",
-      "status": "in_progress",
+      "status": "complete",
       "depends_on": [
         "REVIEW-DATA-DESIGN"
       ],
       "checks": [
         {
           "name": "Pin candidate implementation and license; compare parameters and semantics before adopting",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/scheduler-evaluation.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-MATERIAL-CONTRACT",
+      "status": "ready",
+      "depends_on": [
+        "REVIEW-DOMAIN-CORE"
+      ],
+      "checks": [
+        {
+          "name": "Word/meaning/context contract rejects unusable material and keeps answer hidden before reveal",
           "status": "pending"
         }
       ]
