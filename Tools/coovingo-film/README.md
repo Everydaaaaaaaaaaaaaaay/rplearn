@@ -58,4 +58,4 @@ python3 scripts/capture-motion.py --device 47DD7BF7-5378-47D7-ACC3-792EF8AAFF11 
 
 ## B 站横版（独立构图）
 
-1920×1080 / 60 fps / 56 秒，composition `CoovingoLandscape`。执行 `npm run render:landscape` 导出；原竖版 `Coovingo` 保留。设计依据、时间线与素材证据见 LANDSCAPE.md。当前交付目录 `/Users/tiantian/Movies/Coovingo-Landscape-20260916-v2/`。第二版补回地图与双语剧情，并加入角色档案；第一版说明保存在 LANDSCAPE-v1.md。
+1920×1080 / 60 fps / 56 秒，composition `CoovingoLandscape`。执行 `npm run render:landscape` 导出；原竖版 `Coovingo` 保留。设计依据、时间线与素材证据见 LANDSCAPE.md。当前交付目录 `/Users/tiantian/Movies/Coovingo-Landscape-20260916-v3/`。第二版补回地图与双语剧情，并加入角色档案；第一版说明保存在 LANDSCAPE-v1.md。

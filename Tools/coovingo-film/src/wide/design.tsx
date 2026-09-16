@@ -61,7 +61,8 @@ export const Copy: React.FC<{
   kicker?: string;
   top?: number;
   width?: number;
-}> = ({ title, body, kicker, top = 220, width = 920 }) => {
+  exitAt?: number;
+}> = ({ title, body, kicker, top = 220, width = 920, exitAt }) => {
   const f = useCurrentFrame();
   return (
     <Interactive.Div
@@ -71,7 +72,11 @@ export const Copy: React.FC<{
         left: 112,
         top,
         width,
-        opacity: interpolate(f, [6, 36], [0, 1], clamp),
+        opacity:
+          interpolate(f, [6, 36], [0, 1], clamp) *
+          (exitAt === undefined
+            ? 1
+            : interpolate(f, [exitAt, exitAt + 30], [1, 0], clamp)),
         translate: interpolate(f, [0, 65], ["0px 28px", "0px 0px"], {
           ...clamp,
           easing: ease,
@@ -174,7 +179,8 @@ export const DetailLine: React.FC<{
   items: string[];
   top?: number;
   dark?: boolean;
-}> = ({ items, top = 810, dark = false }) => {
+  exitAt?: number;
+}> = ({ items, top = 810, dark = false, exitAt }) => {
   const f = useCurrentFrame();
   return (
     <div
@@ -191,7 +197,11 @@ export const DetailLine: React.FC<{
             fontSize: 27,
             lineHeight: 1.6,
             whiteSpace: "pre-line",
-            opacity: interpolate(f, [60 + i * 25, 90 + i * 25], [0, 1], clamp),
+            opacity:
+              interpolate(f, [60 + i * 25, 90 + i * 25], [0, 1], clamp) *
+              (exitAt === undefined
+                ? 1
+                : interpolate(f, [exitAt, exitAt + 30], [1, 0], clamp)),
             translate: interpolate(
               f,
               [60 + i * 25, 110 + i * 25],
