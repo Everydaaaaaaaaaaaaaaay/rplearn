@@ -160,13 +160,29 @@
     },
     {
       "id": "REVIEW-MATERIAL-CONTRACT",
-      "status": "ready",
+      "status": "complete",
       "depends_on": [
         "REVIEW-DOMAIN-CORE"
       ],
       "checks": [
         {
-          "name": "Word/meaning/context contract rejects unusable material and keeps answer hidden before reveal",
+          "name": "Code audit and documented material acceptance contract (not implemented UI verification)",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/material-contract.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-NATIVE-PILOT",
+      "status": "ready",
+      "depends_on": [
+        "REVIEW-MATERIAL-CONTRACT"
+      ],
+      "checks": [
+        {
+          "name": "Native debug task path with explicit selection and session projection; preserve outstanding device visual gate",
           "status": "pending"
         }
       ]
