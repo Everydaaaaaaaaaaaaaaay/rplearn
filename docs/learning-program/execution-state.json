@@ -176,13 +176,30 @@
     },
     {
       "id": "REVIEW-NATIVE-PILOT",
-      "status": "ready",
+      "status": "complete",
       "depends_on": [
         "REVIEW-MATERIAL-CONTRACT"
       ],
       "checks": [
         {
           "name": "Native debug task path with explicit selection and session projection; preserve outstanding device visual gate",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/native-review-pilot.md",
+            "Tests/LingoTripUITests/ReviewPilotTests.swift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-REAL-MATERIALS",
+      "status": "ready",
+      "depends_on": [
+        "REVIEW-NATIVE-PILOT"
+      ],
+      "checks": [
+        {
+          "name": "Explicitly selected real favorites feed native pilot with missing-definition fallback, no account writes",
           "status": "pending"
         }
       ]

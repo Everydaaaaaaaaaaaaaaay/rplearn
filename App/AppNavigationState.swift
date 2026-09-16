@@ -9,6 +9,9 @@ enum AppTab: Hashable {
 }
 
 enum MeDestination: Hashable {
+    #if DEBUG
+    case reviewPilot
+    #endif
     case favorites
     case settings
     case photoCredits
