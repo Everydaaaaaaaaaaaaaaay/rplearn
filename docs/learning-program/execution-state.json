@@ -110,13 +110,30 @@
     },
     {
       "id": "REVIEW-EVENT-PROTOTYPE",
-      "status": "in_progress",
+      "status": "complete",
       "depends_on": [
         "REVIEW-DATA-DESIGN"
       ],
       "checks": [
         {
           "name": "Executable prototype preserves exposure after undo and rejects duplicate/conflicting ratings",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/first-review-spec.md",
+            "Scripts/tests/review-ledger.test.mjs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-DOMAIN-CORE",
+      "status": "in_progress",
+      "depends_on": [
+        "REVIEW-EVENT-PROTOTYPE"
+      ],
+      "checks": [
+        {
+          "name": "Native deterministic single-session event projection with isolation and correction tests; no persistence claim",
           "status": "pending"
         }
       ]
