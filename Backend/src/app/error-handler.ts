@@ -17,6 +17,28 @@ export function registerErrorHandling(app: FastifyInstance): void {
   });
 
   app.setErrorHandler((error: FastifyError, request, reply) => {
+    request.log[
+      (error instanceof AppError && error.statusCode < 500) || isValidationError(error)
+        ? "warn"
+        : "error"
+    ](
+      {
+        event: "http.request.error",
+        errorCode:
+          error instanceof AppError
+            ? error.code
+            : isValidationError(error)
+              ? "INVALID_REQUEST"
+              : "INTERNAL_ERROR",
+        statusCode:
+          error instanceof AppError
+            ? error.statusCode
+            : isValidationError(error)
+              ? 400
+              : 500,
+      },
+      "请求失败",
+    );
     if (isValidationError(error)) {
       const body: PublicErrorBody = {
         code: "INVALID_REQUEST",

@@ -1,3 +1,4 @@
+import { registerRequestDiagnostics } from "./app/request-diagnostics.js";
 import cors from "@fastify/cors";
 import helmet from "@fastify/helmet";
 import sensible from "@fastify/sensible";
@@ -48,6 +49,7 @@ export async function buildApp(
     trustProxy: config.trustProxy,
   });
 
+  registerRequestDiagnostics(app);
   app.decorateRequest("authUserId", null);
   app.decorateRequest("operatorKeyId", null);
 
