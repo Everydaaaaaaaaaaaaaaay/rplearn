@@ -263,8 +263,8 @@ public struct ChatView: View {
             await appleTranslator.finishSession(sessionID, failed: failed || Task.isCancelled)
         }
         .task {
-            // 整句翻译仅使用 Apple 系统语言包。
-            viewModel.localTranslation = { [appleTranslator] text in
+            // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
+            viewModel.translationFallback = { [appleTranslator] text in
                 if let tutorial = deps.tutorial {
                     guard text == "That sounds lovely. Tell me more!" else { return nil }
                     tutorial.onEvent("translation")

@@ -77,6 +77,7 @@ final class AppEnvironment {
     var needsOnboarding: Bool?
     let audioSession: AudioSessionCoordinator
     let speech: AdaptiveSpeechService
+    let translator: TranslationService
 
     private var requiredWorkspace: AccountWorkspace {
         guard let workspace else {
@@ -128,6 +129,7 @@ final class AppEnvironment {
         self.llmRouter = LLMRouter(
             client: BackendLLMProvider(backend: backendClient)
         )
+        self.translator = TranslationService(llm: llmRouter)
         self.dictionaryExampleTranslations = BackendDictionaryExampleTranslationResolver(
             backend: backendClient
         )

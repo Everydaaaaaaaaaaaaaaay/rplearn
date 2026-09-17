@@ -184,6 +184,7 @@ private final class TutorialWorkspace {
         return ChatDependencies(tutorial: .init(onEvent: onEvent), chatStore: chat, rosterStore: roster,
             favorites: favorites, llm: TutorialLLM(), dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: environment.speech,
+            translator: TranslationService(llm: TutorialLLM()),
             exampleTranslationActions: TutorialExampleTranslations.actions, audioSession: environment.audioSession,
             memoryStore: memory, itemStore: items, economyStore: economy, progression: progression,
             voiceMedia: voice, regionName: { regionCatalog.region(id: $0)?.nameZh ?? $0 }, replyDelayScale: 0)

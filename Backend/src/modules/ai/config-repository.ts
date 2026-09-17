@@ -67,8 +67,9 @@ function notFound(): AppError {
 export class AiConfigRepository {
   constructor(private readonly database: DatabaseResource) {}
 
-  // Sentence translation is on-device and speech feedback is retired. Retain
-  // historical records, but omit both routes from console management and bulk changes.
+  // Automatic speech feedback is retired; chat sentence translation is served
+  // by the cloud route again, so only the retired task stays out of management.
+  // Retain historical records for the retired route.
   async listRoutes(): Promise<readonly AiManagedRoute[]> {
     const rows = await this.database.sql<ManagedRouteRow[]>`
       select
@@ -86,7 +87,7 @@ export class AiConfigRepository {
         config_version,
         updated_at
       from app.ai_routes
-      where task not in ('translation', 'speech_feedback')
+      where task <> 'speech_feedback'
       order by task
     `;
     return rows.map(managed);
@@ -177,7 +178,7 @@ export class AiConfigRepository {
       }
       const tasks = await sql<
         { task: string }[]
-      >`select task from app.ai_routes where task not in ('translation', 'speech_feedback') order by task`;
+      >`select task from app.ai_routes where task <> 'speech_feedback' order by task`;
       if (
         !isDeepStrictEqual(
           tasks.map((row) => row.task).sort(),
