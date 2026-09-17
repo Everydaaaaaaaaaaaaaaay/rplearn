@@ -69,7 +69,8 @@ const rawEnvironmentSchema = z.object({
   APPLE_TEAM_ID: optionalSecret,
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
   AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
-  AI_DEEPSEEK_ALLOWED_MODELS: z.string().default("deepseek-v4-flash"),
+  // DeepSeek 的标准模型名是 deepseek-flash；deepseek-v4-flash 等旧名仍被上游接受但已退役。
+  AI_DEEPSEEK_ALLOWED_MODELS: z.string().default("deepseek-flash"),
   AI_GUEST_ACCESS_ENABLED: booleanFromString.default(false),
   AI_USAGE_RETENTION_DAYS: z.coerce.number().int().min(30).max(730).default(90),
   AI_USER_MINUTE_LIMIT: z.coerce.number().int().min(1).max(300).default(30),

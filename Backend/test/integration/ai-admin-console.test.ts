@@ -472,7 +472,7 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
       const back = {
         ...payload,
         provider: "deepseek",
-        model: "deepseek-v4-flash",
+        model: "deepseek-flash",
         expectedVersions: Object.fromEntries(
           changed.map((route) => [route.task, route.configVersion]),
         ),

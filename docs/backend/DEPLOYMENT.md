@@ -39,6 +39,19 @@ ssh root@<server> \
 
 ## 最近发布验证
 
+2026-09-17：DeepSeek 模型名对齐官方标准（无需发布新包，只改运行环境与路由）。
+官方定价页（`https://api-docs.deepseek.com/quick_start/pricing`）现在只列 `deepseek-flash`
+（DeepSeek-V4.1-Flash）与 `deepseek-v4-pro`；`deepseek-v4-flash`、`deepseek-v4-flash-vision-exp`
+仍是旧名，请求会被 V4.1-Flash 承接并按 Flash 价计费，但官方要求用标准名。
+操作顺序避免断档：先把 `/etc/lingotrip/backend.env` 与 `/opt/lingotrip/shared/.env.production` 的
+`AI_DEEPSEEK_ALLOWED_MODELS` 设为 `deepseek-flash,deepseek-v4-flash` 并重启，再用管理 API 把两条
+DeepSeek 路由改名（`translation` v4→v5、`dictionary_example_translation` v5→v6，其余参数不变），
+最后把白名单收窄为 `deepseek-flash` 再重启。API / Worker active，公网 `/health/ready` 返回 ready，
+重启后日志无异常；用标准名直连实测一次翻译返回 `model=deepseek-flash`、`finish_reason=stop`、0.56s。
+仓库侧：迁移 `0024_deepseek_flash_model_name` 统一旧名、`AI_DEEPSEEK_ALLOWED_MODELS` 默认值改为
+`deepseek-flash`、价格手册版本刷到 2026-09-17（价格行不变，旧名条目保留用于历史对账）。
+备份：`/etc/lingotrip/backend.env.bak-deepseek-20260917`。
+
 2026-09-17：发布 `output-budget-20260917-01`，上一版本 `translation-route-20260917-01` 保留用于回滚。
 发布包 SHA-256：`f58c61cba86d6b3d36b490102e9b4d721f2593bb16aa16b6888fc6a6a41543a8`。
 同样是基于线上 `dist` 的热修（诊断模块仍只在生产存在）：只补 `dist/modules/ai/output-budget.js`
