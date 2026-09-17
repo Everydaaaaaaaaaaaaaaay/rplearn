@@ -17,6 +17,30 @@ lingotrip_require_command() {
   fi
 }
 
+# 包目标会同时留下 Products/<Name>.swiftmodule（App 目标使用的静态库模块）和
+# PackageFrameworks/<Name>.framework 里的动态副本。测试构建重新编译包目标到
+# PackageFrameworks，但编译参数里 -I Products 优先，于是 App 构建留下的旧副本会
+# 遮蔽新模块，新增公开符号时表现为“cannot find type in scope”。
+# 只移除确实比框架副本更旧的镜像；App 构建之后会按需重新生成。
+lingotrip_clear_shadowed_package_modules() {
+  local products="$LINGOTRIP_DERIVED_DATA_PATH/Build/Products/Debug-iphonesimulator"
+  local frameworks="$products/PackageFrameworks"
+  if [[ ! -d "$products" || ! -d "$frameworks" ]]; then
+    return 0
+  fi
+  local framework name mirror mirror_module framework_module
+  for framework in "$frameworks"/*.framework; do
+    [[ -d "$framework" ]] || continue
+    name="$(basename "$framework" .framework)"
+    mirror="$products/$name.swiftmodule"
+    mirror_module="$mirror/arm64-apple-ios-simulator.swiftmodule"
+    framework_module="$framework/Modules/$name.swiftmodule/arm64-apple-ios-simulator.swiftmodule"
+    if [[ -f "$mirror_module" && -f "$framework_module" && "$mirror_module" -ot "$framework_module" ]]; then
+      find "$mirror" -depth -delete 2>/dev/null || true
+    fi
+  done
+}
+
 lingotrip_remove_stale_lock() {
   local stale_lock="$LINGOTRIP_PIPELINE_LOCK_DIR.stale.$$"
   if mv "$LINGOTRIP_PIPELINE_LOCK_DIR" "$stale_lock" 2>/dev/null; then

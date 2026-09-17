@@ -121,7 +121,7 @@ struct ActivityActionView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     if model.isSolitude {
-                        solitudeContent.padding(24).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 28))
+                        solitudeContent.padding(24).background { paperSurface(RoundedRectangle(cornerRadius: 28)) }
                     } else {
                         if let character = model.character { identity(character) }
                         panel
@@ -154,7 +154,7 @@ struct ActivityActionView: View {
                 translationAndSpeech
             }
             .padding(.horizontal, 16).padding(.vertical, 6)
-            .background(.regularMaterial)
+            .background { paperSurface(Rectangle()) }
         }
         .tint(ink)
         .background {
@@ -171,6 +171,14 @@ struct ActivityActionView: View {
 
     private var progressID: String {
         "\(model.step)-\(model.beatIndex)-\(model.summary)-\(showsTranslation)"
+    }
+
+    /// 阅读页的纸面控件。场景照在两种外观下都是亮的，正文墨色也固定为纸面深蓝，
+    /// 材质若跟随深色外观就会压成深灰，和墨色叠成一片、读不清（教程里尤其明显）。
+    /// 固定为浅色材质，等价于正文区已有的白色纸卡外观。
+    private func paperSurface<S: Shape>(_ shape: S) -> some View {
+        shape.fill(.regularMaterial)
+            .environment(\.colorScheme, .light)
     }
 
     private func advanceIfAllowed() {
@@ -206,7 +214,7 @@ struct ActivityActionView: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 28))
+        .background { paperSurface(RoundedRectangle(cornerRadius: 28)) }
         .overlay(RoundedRectangle(cornerRadius: 28).strokeBorder(.white.opacity(0.65)))
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("activities.encounter.identity")

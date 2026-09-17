@@ -105,7 +105,11 @@ public final class ChatViewModel {
             if let profile = try? await deps.economyStore.profile() {
                 learnerDifficulty = profile.difficultyLevel
             }
+            #if DEBUG
+            if !deps.marketingMotionCapture { resumePendingReplyIfNeeded() }
+            #else
             resumePendingReplyIfNeeded()
+            #endif
         } catch {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
@@ -122,31 +126,43 @@ public final class ChatViewModel {
     /// 正在翻译中的消息（气泡下方转圈）。
     public private(set) var translatingMessageIDs: Set<UUID> = []
 
-    /// 由 ChatView 注入系统翻译会话；整句翻译不调用 LLM 或额度接口。
-    public var localTranslation: (@MainActor (String) async -> String?)?
+    /// 云端翻译失败（离线/报错/额度）时的兜底翻译，由 ChatView 注入 Apple 端上翻译。
+    public var translationFallback: (@MainActor (String) async -> String?)?
 
-    /// 翻译整句并持久缓存；同时检查最新消息，避免旧 DTO 导致重复翻译。
+    /// 翻译整句并持久缓存：优先云端 LLM，失败时回退本地翻译。
+    /// 同时检查最新消息，避免旧 DTO 导致重复翻译。
     public func translate(message: MessageDTO) async {
+        let text = message.text
         guard message.translationZh == nil,
               messages.first(where: { $0.id == message.id })?.translationZh == nil,
               !translatingMessageIDs.contains(message.id) else { return }
         translatingMessageIDs.insert(message.id)
         errorMessage = nil
         defer { translatingMessageIDs.remove(message.id) }
-        guard let localTranslation,
-              let result = await localTranslation(message.text),
-              !result.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            if !Task.isCancelled {
-                errorMessage = "Apple 本地翻译暂不可用。首次使用请联网并完成系统语言包下载，然后重试。"
-            }
-            return
+
+        var translation: String?
+        var cloudError: Error?
+        do {
+            let candidate = try await deps.translator.translateToChinese(text)
+            translation = candidate.isEmpty ? nil : candidate
+        } catch {
+            cloudError = error
         }
         guard !Task.isCancelled else { return }
+
+        if translation == nil, let fallback = translationFallback {
+            let local = await fallback(text)?.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let local, !local.isEmpty { translation = local }
+            guard !Task.isCancelled else { return }
+        }
+
+        guard let translation else {
+            let detail = cloudError?.localizedDescription ?? "请稍后重试"
+            errorMessage = "翻译失败：\(detail)"
+            return
+        }
         do {
-            try await deps.chatStore.setTranslation(
-                messageID: message.id,
-                translationZh: result.trimmingCharacters(in: .whitespacesAndNewlines)
-            )
+            try await deps.chatStore.setTranslation(messageID: message.id, translationZh: translation)
             await reloadMessages()
         } catch {
             errorMessage = "保存译文失败，请重试：\(error.localizedDescription)"
@@ -155,18 +171,19 @@ public final class ChatViewModel {
 
     /// 播放消息音频（按角色国籍口音）。
     public func speak(message: MessageDTO) async {
-        let language = AccentMapper.language(forNationality: character.card.nationality)
-        await deps.speech.speak(
-            SpeechRequest(
-                text: message.text,
-                language: language,
-                purpose: .characterDialogue,
-                voiceHint: SpeechVoiceHint(
-                    stableID: character.id.uuidString.lowercased(),
-                    gender: character.card.gender.rawValue,
-                    nationality: character.card.nationality
-                )
-            )
+        await deps.speech.speak(speechRequest(for: message))
+    }
+
+    func speechRequest(for message: MessageDTO) -> SpeechRequest {
+        SpeechRequest(
+            text: message.text,
+            language: AccentMapper.language(forNationality: character.card.nationality),
+            purpose: message.role == .assistant ? .characterDialogue : .pronunciation,
+            voiceHint: message.role == .assistant ? SpeechVoiceHint(
+                stableID: character.id.uuidString.lowercased(),
+                gender: character.card.gender.rawValue,
+                nationality: character.card.nationality
+            ) : nil
         )
     }
 
@@ -970,6 +987,29 @@ public final class ChatViewModel {
         }
         return messages
     }
+
+    #if DEBUG
+    /// Records the native typing indicator and production bubble delivery at normal speed.
+    /// Only the reply text is prepared; no model, relationship review or paid gateway runs.
+    func playMarketingCaptureReply() async {
+        guard deps.marketingMotionCapture, let conversation,
+              let user = messages.last, user.role == .user,
+              user.text == "How did your latte art practice go?" else { return }
+        let cycle = replyCycleID
+        let plan = NPCAttentionPolicy.standard.expeditedReplyPlan(
+            userMessageID: user.id, sentAt: user.createdAt, delay: 0)
+        pendingReplyPlan = plan
+        defer { clearReplyState(cycleID: cycle) }
+        do {
+            try await Task.sleep(for: .seconds(4))
+            beginTyping(cycleID: cycle)
+            _ = try await deliverAssistantReply(conversationID: conversation.id,
+                text: "A jellyfish 😂\nApparently, foam has other plans.",
+                cycleID: cycle, plan: plan, replacingAssistantMessageID: nil)
+        } catch is CancellationError { }
+        catch { errorMessage = "Capture playback failed: \(error.localizedDescription)" }
+    }
+    #endif
 
     // MARK: - 语境出题
 

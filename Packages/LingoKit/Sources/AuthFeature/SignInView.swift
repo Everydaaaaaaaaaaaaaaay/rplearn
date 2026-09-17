@@ -4,20 +4,14 @@ import DesignSystem
 import SwiftUI
 
 public struct SignInView: View {
-    private enum AppleSignInState {
-        case preparing
-        case ready(AppleAuthChallenge)
-        case signingIn
-        case unavailable
-    }
-
     private enum Mode: Hashable {
         case login
         case register
     }
 
     @Bindable private var session: AuthSession
-    @State private var appleSignInState: AppleSignInState = .preparing
+    @State private var applePreparation: AppleSignInPreparation
+    @Environment(\.scenePhase) private var scenePhase
     @State private var email = ""
     @State private var errorMessage: String?
     @State private var isBusy = false
@@ -28,6 +22,7 @@ public struct SignInView: View {
 
     public init(session: AuthSession) {
         self.session = session
+        _applePreparation = State(initialValue: AppleSignInPreparation { try await session.prepareAppleChallenge() })
     }
 
     public var body: some View {
@@ -52,7 +47,11 @@ public struct SignInView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .task { await reloadAppleChallenge() }
+        .onAppear { applePreparation.start() }
+        .onDisappear { applePreparation.stop() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { applePreparation.becameActive() }
+        }
     }
 
     private var header: some View {
@@ -121,22 +120,23 @@ public struct SignInView: View {
         VStack(spacing: 8) {
             SignInWithAppleButton(.continue) { request in
                 request.requestedScopes = [.email, .fullName]
-                request.nonce = appleChallenge?.nonce
+                request.nonce = applePreparation.beginAuthorization()?.nonce
             } onCompletion: { result in
                 handleAppleCompletion(result)
             }
             .signInWithAppleButtonStyle(.black)
             .frame(height: 52)
             .clipShape(RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous))
+            .disabled(!isAppleSignInReady || isBusy)
             .allowsHitTesting(isAppleSignInReady && !isBusy)
             .opacity(isAppleSignInReady ? 1 : 0.55)
 
-            switch appleSignInState {
+            switch applePreparation.state {
             case .preparing:
                 Text("正在准备安全登录…")
                     .font(.caption)
                     .foregroundStyle(Color.dsPaperInkSecondary)
-            case .signingIn:
+            case .authorizing:
                 HStack(spacing: 6) {
                     ProgressView()
                         .controlSize(.small)
@@ -144,13 +144,15 @@ public struct SignInView: View {
                 }
                 .font(.caption)
                 .foregroundStyle(Color.dsPaperInkSecondary)
-            case .unavailable:
+            case .unavailable(let failure):
                 HStack(spacing: 8) {
-                    Label("Apple 登录暂不可用", systemImage: "exclamationmark.circle")
+                    Label(failure.message, systemImage: "exclamationmark.circle")
+                        .fixedSize(horizontal: false, vertical: true)
                     Button("重试") {
-                        Task { await reloadAppleChallenge() }
+                        applePreparation.refresh()
                     }
                     .buttonStyle(.plain)
+                    .fixedSize()
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.dsSkyDeep)
                     .disabled(isBusy)
@@ -164,12 +166,15 @@ public struct SignInView: View {
     }
 
     private var appleChallenge: AppleAuthChallenge? {
-        guard case .ready(let challenge) = appleSignInState else { return nil }
-        return challenge
+        switch applePreparation.state {
+        case .ready(let challenge), .authorizing(let challenge): return challenge
+        default: return nil
+        }
     }
 
     private var isAppleSignInReady: Bool {
-        appleChallenge != nil
+        if case .ready = applePreparation.state { return true }
+        return false
     }
 
     private var credentials: some View {
@@ -308,18 +313,6 @@ public struct SignInView: View {
         }
     }
 
-    private func reloadAppleChallenge() async {
-        appleSignInState = .preparing
-        do {
-            let challenge = try await session.prepareAppleChallenge()
-            guard !Task.isCancelled else { return }
-            appleSignInState = .ready(challenge)
-        } catch {
-            guard !Task.isCancelled else { return }
-            appleSignInState = .unavailable
-        }
-    }
-
     private func handleAppleCompletion(
         _ result: Result<ASAuthorization, any Error>
     ) {
@@ -337,13 +330,12 @@ public struct SignInView: View {
                     errorMessage = error.localizedDescription
                 }
             }
-            Task { await reloadAppleChallenge() }
+            applePreparation.authorizationFinished()
             return
         }
 
         isBusy = true
         errorMessage = nil
-        appleSignInState = .signingIn
         Task {
             defer { isBusy = false }
             do {
@@ -361,7 +353,7 @@ public struct SignInView: View {
                 )
             } catch {
                 errorMessage = error.localizedDescription
-                await reloadAppleChallenge()
+                applePreparation.authorizationFinished()
             }
         }
     }

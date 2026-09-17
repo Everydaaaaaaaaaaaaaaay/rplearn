@@ -12,12 +12,18 @@ import Translation
 extension ChatView {
 // MARK: - 教练纠错
 
+    /// 本条消息的点评。落库后仍按原文复核一次，历史误存的上文旧错句不再显示。
+    func groundedCoachReview(_ message: MessageDTO) -> CoachReview? {
+        CoachService.decode(fromJSON: message.coachReviewJSON)?
+            .grounded(inLearnerMessage: message.text)
+    }
+
     @ViewBuilder
     func userMessageBubble(
         _ message: MessageDTO,
         groupPosition: MessageBubbleGroupPosition
     ) -> some View {
-        if CoachService.decode(fromJSON: message.coachReviewJSON)?.hasIssues == true {
+        if groundedCoachReview(message)?.hasIssues == true {
             MessageBubble(
                 side: .outgoing,
                 groupPosition: groupPosition,
@@ -69,7 +75,7 @@ extension ChatView {
     @ViewBuilder
     func coachCard(_ message: MessageDTO) -> some View {
         if expandedCoachMessageIDs.contains(message.id),
-           let review = CoachService.decode(fromJSON: message.coachReviewJSON),
+           let review = groundedCoachReview(message),
            review.hasIssues {
             let persona = DSCoachPersona.assigned(to: message.id)
             CalloutCard(kind: .coach, coachPersona: persona) {
@@ -307,6 +313,8 @@ extension ChatView {
     }
 
     var wordFavoriteActions: WordFavoriteActions {
-        deps.lookupWordFavoriteActions
+        deps.lookupWordFavoriteActions(
+            sourceMessageID: wordSelection.flatMap { UUID(uuidString: $0.contextID) }
+        )
     }
 }

@@ -354,11 +354,16 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
         })
       ).json<{ routes: AiManagedRoute[] }>().routes;
     const retiredBefore = await runtime.database.sql`
-      select * from app.ai_routes where task in ('translation', 'speech_feedback') order by task
+      select * from app.ai_routes where task = 'speech_feedback'
     `;
-    expect(retiredBefore).toHaveLength(2);
+    expect(retiredBefore).toHaveLength(1);
     const initial = await list();
-    expect(initial.some((route) => ["translation", "speech_feedback"].includes(route.task))).toBe(false);
+    expect(initial.some((route) => route.task === "translation")).toBe(true);
+    // 单词弹窗例句翻译使用独立任务路由，与整句翻译分别控制。
+    expect(
+      initial.some((route) => route.task === "dictionary_example_translation"),
+    ).toBe(true);
+    expect(initial.some((route) => route.task === "speech_feedback")).toBe(false);
     const command = newEntityId();
     const payload = {
       provider: "openrouter",
@@ -425,7 +430,7 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
       const changed = response.json<{ routes: AiManagedRoute[] }>().routes;
       expect(changed).toHaveLength(initial.length);
       const retiredAfter = await runtime.database.sql`
-        select * from app.ai_routes where task in ('translation', 'speech_feedback') order by task
+        select * from app.ai_routes where task = 'speech_feedback'
       `;
       expect(retiredAfter).toEqual(retiredBefore);
       for (const original of initial) {

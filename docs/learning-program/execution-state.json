@@ -1,0 +1,215 @@
+{
+  "workflow_version": "WF-1.3",
+  "tasks": [
+    {
+      "id": "SOURCE-WRITE",
+      "status": "complete",
+      "depends_on": [],
+      "checks": [
+        {
+          "name": "11 source/identity/sync tests and preview installation",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/research-b002.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SOURCE-UI",
+      "status": "in_progress",
+      "depends_on": [
+        "SOURCE-WRITE"
+      ],
+      "checks": [
+        {
+          "name": "2 source-read tests and preview build",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/research-b002.md"
+          ]
+        },
+        {
+          "name": "Native iPhone default-size disclosure and full source text screenshot",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/research-b002.md",
+            "Tests/LingoTripUITests/FavoriteSourceTests.swift"
+          ]
+        },
+        {
+          "name": "Large text, iPad and VoiceOver source presentation",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-TASK-PROTOTYPE",
+      "status": "complete",
+      "depends_on": [],
+      "checks": [
+        {
+          "name": "Browser task path, undo and summary counts (not a usability study)",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/first-review-spec.md",
+            "docs/learning-program/prototypes/context-review.html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOBILE-DIRECT-RESEARCH",
+      "status": "blocked",
+      "blocker": "No accessible logged-in competitor mobile app session yet; optional device/account availability question pending",
+      "depends_on": [],
+      "checks": [
+        {
+          "name": "Actual mobile task interaction evidence beyond official screenshots",
+          "status": "blocked"
+        }
+      ]
+    },
+    {
+      "id": "MOBILE-SPEAKING-READING",
+      "status": "complete",
+      "depends_on": [],
+      "checks": [
+        {
+          "name": "Official mobile screens and supported mechanism claims with explicit access limits",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/research-b004.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-DATA-DESIGN",
+      "status": "complete",
+      "depends_on": [
+        "SOURCE-WRITE",
+        "REVIEW-TASK-PROTOTYPE"
+      ],
+      "checks": [
+        {
+          "name": "Content versioning, idempotency, undo, account isolation and migration design",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/review-data-design.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-USABILITY",
+      "status": "blocked",
+      "blocker": "Requires an actual unbriefed test participant; none contacted or simulated",
+      "depends_on": [
+        "REVIEW-TASK-PROTOTYPE"
+      ],
+      "checks": [
+        {
+          "name": "Independent participant completes task and understands ratings",
+          "status": "blocked"
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-EVENT-PROTOTYPE",
+      "status": "complete",
+      "depends_on": [
+        "REVIEW-DATA-DESIGN"
+      ],
+      "checks": [
+        {
+          "name": "Executable prototype preserves exposure after undo and rejects duplicate/conflicting ratings",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/first-review-spec.md",
+            "Scripts/tests/review-ledger.test.mjs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-DOMAIN-CORE",
+      "status": "complete",
+      "depends_on": [
+        "REVIEW-EVENT-PROTOTYPE"
+      ],
+      "checks": [
+        {
+          "name": "Native deterministic single-session event projection with isolation and correction tests; no persistence claim",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/review-data-design.md",
+            "Packages/LingoKit/Tests/DomainKitTests/ReviewSessionProjectionTests.swift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCHEDULER-EVALUATION",
+      "status": "complete",
+      "depends_on": [
+        "REVIEW-DATA-DESIGN"
+      ],
+      "checks": [
+        {
+          "name": "Pin candidate implementation and license; compare parameters and semantics before adopting",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/scheduler-evaluation.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-MATERIAL-CONTRACT",
+      "status": "complete",
+      "depends_on": [
+        "REVIEW-DOMAIN-CORE"
+      ],
+      "checks": [
+        {
+          "name": "Code audit and documented material acceptance contract (not implemented UI verification)",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/material-contract.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-NATIVE-PILOT",
+      "status": "complete",
+      "depends_on": [
+        "REVIEW-MATERIAL-CONTRACT"
+      ],
+      "checks": [
+        {
+          "name": "Native debug task path with explicit selection and session projection; preserve outstanding device visual gate",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/native-review-pilot.md",
+            "Tests/LingoTripUITests/ReviewPilotTests.swift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REVIEW-REAL-MATERIALS",
+      "status": "ready",
+      "depends_on": [
+        "REVIEW-NATIVE-PILOT"
+      ],
+      "checks": [
+        {
+          "name": "Explicitly selected real favorites feed native pilot with missing-definition fallback, no account writes",
+          "status": "pending"
+        }
+      ]
+    }
+  ]
+}

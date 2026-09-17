@@ -39,6 +39,31 @@ ssh root@<server> \
 
 ## 最近发布验证
 
+2026-09-17：发布 `output-budget-20260917-01`，上一版本 `translation-route-20260917-01` 保留用于回滚。
+发布包 SHA-256：`f58c61cba86d6b3d36b490102e9b4d721f2593bb16aa16b6888fc6a6a41543a8`。
+同样是基于线上 `dist` 的热修（诊断模块仍只在生产存在）：只补 `dist/modules/ai/output-budget.js`
+的 GLM 输出预算下限。用户反馈词典里没有的词做 AI 解释时报「解释失败，请稍后再试」：客户端只请求
+200 tokens，而 OpenRouter 上 GLM 的推理无法关闭（`Reasoning is mandatory for this endpoint`），
+实测一次「kilda」解释消耗 295 completion tokens、其中 241 是推理，正文因此被截断为空，
+后端记为 `AI_OUTPUT_LIMIT`。现在 `dictionary_explain` 与 `grammar_explain` 与 coach_review /
+memory_summary 一样至少给 1536（仍受路由上限约束），DeepSeek 之类可关闭推理的 provider 不受影响。
+该修复由 `Backend/src/modules/ai/output-budget.ts` 与其单测承载，仓库改动在提交
+`Fix AI explanations truncated by GLM reasoning budget`。
+API / Worker / Caddy 均 active，公网 `/health/ready` 返回 ready，重启后日志无异常。
+
+2026-09-17：发布 `translation-route-20260917-01`，上一版本 `auxiliary-rate-20260916-01` 保留用于回滚。
+发布包 SHA-256：`fceb265b3218b071f662556f997102d4846c3754aa6222c37732503c924405fa`。
+本次是线上热修：本地仓库 `87939db` 的 `dist` 缺少生产 `auxiliary-rate-20260916-01` 里的
+管理诊断模块（`app/request-diagnostics`、`modules/ai/diagnostics-console`、
+`modules/observability/diagnostics-routes|service`、`infrastructure/journal-reader`，本地仓库没有对应
+源码），直接用仓库构建包发布会丢掉该功能，因此以当前线上 `dist` 为基础，只把
+`modules/ai/config-repository.js` 的任务过滤改回 `where task <> 'speech_feedback'`，再按标准
+`deploy.sh` 切换发布。无新增迁移，依赖键未变（复用既有 `node_modules`）。API / Worker / Caddy
+均 active，公网 `/health/ready` 返回 ready；管理员 API `/internal/admin/ai/routes` 返回 10 条路由，
+含 `translation`（openrouter / z-ai/glm-5.3-flash，v2）与 `dictionary_example_translation`
+（同模型，v3），两者可分别编辑并参与一键切换。
+待办：把生产独有的诊断模块源码找回并入仓库，否则下次用仓库构建包发布会再次丢功能。
+
 2026-09-11：发布 `f4977bb`，上一版本 `8b2ef54` 保留。发布包 SHA-256：
 `aa63029d61fe3de2bdfbc68feb5dcd3393d9e982a8478c0cd7ab511c1d2f478e`。
 GLM 聊天改为 minimal 思考、总输出预算下限 512（受路由上限约束）；空正文记为失败并由服务承担。

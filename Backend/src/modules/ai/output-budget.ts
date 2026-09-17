@@ -5,16 +5,20 @@ export function outputTokenBudget(
   requested: number | undefined,
   route: AiRouteConfig,
 ): number {
-  const minimum =
-    route.provider === "openrouter" &&
-    ["conversation", "proactive_message", "coach_review", "memory_summary"].includes(
-      route.task,
-    ) &&
-    route.model.startsWith("z-ai/glm-")
-      ? ["coach_review", "memory_summary"].includes(route.task)
-        ? 1536
-        : 512
-      : 1;
+  // GLM on OpenRouter cannot disable reasoning ("Reasoning is mandatory for this endpoint"),
+  // so short JSON answers still need room for thinking before any visible body.
+  const glmReasoningFloor =
+    route.provider === "openrouter" && route.model.startsWith("z-ai/glm-");
+  const minimum = !glmReasoningFloor
+    ? 1
+    : [
+          "coach_review",
+          "memory_summary",
+          "dictionary_explain",
+          "grammar_explain",
+        ].includes(route.task)
+      ? 1536
+      : 512;
   return Math.min(
     Math.max(requested ?? route.maxOutputTokens, minimum),
     route.maxOutputTokens,

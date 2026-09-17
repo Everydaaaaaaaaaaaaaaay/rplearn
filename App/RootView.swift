@@ -77,7 +77,7 @@ struct RootView: View {
         case "messages": .messages
         case "contacts": .contacts
         case "home", "map": .home
-        case "me", "subscription", "learning", "favorites": .me
+        case "me", "subscription", "learning", "favorites", "review": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
@@ -86,6 +86,9 @@ struct RootView: View {
         _selectedTab = State(initialValue: initial)
         if requested == "favorites", ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
             _mePath = State(initialValue: [.favorites])
+        }
+        if requested == "review" {
+            _mePath = State(initialValue: [.reviewPilot])
         }
         if requested == "learning" {
             _showPlacementTest = State(initialValue: true)
@@ -851,6 +854,9 @@ struct RootView: View {
 
     private func meNavigationTitle(for destination: MeDestination) -> String {
         return switch destination {
+        #if DEBUG
+        case .reviewPilot: "短复习预览"
+        #endif
         case .favorites: "收藏夹"
         case .settings: "设置"
         case .photoCredits: "城市背景照片"
@@ -872,6 +878,10 @@ struct RootView: View {
     @ViewBuilder
     private func meDestinationView(_ destination: MeDestination) -> some View {
         switch destination {
+        #if DEBUG
+        case .reviewPilot:
+            ReviewPilotView()
+        #endif
         case .favorites:
             FavoritesView(
                 deps: favoritesDeps,
@@ -1007,7 +1017,7 @@ struct RootView: View {
 
     private var chatDeps: ChatDependencies {
         let regionCatalog = environment.regionCatalog
-        return ChatDependencies(
+        var dependencies = ChatDependencies(
             accessClient: environment.backendClient,
             onShowAccess: { showUsage = true },
             chatStore: environment.chatStore,
@@ -1017,6 +1027,7 @@ struct RootView: View {
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
+            translator: environment.translator,
             exampleTranslationActions: exampleTranslationActions,
             audioSession: environment.audioSession,
             memoryStore: environment.memoryStore,
@@ -1030,6 +1041,13 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
+        #if DEBUG
+        dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
+            && bypassesAuthenticationForUITesting
+            && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"
+            && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1"
+        #endif
+        return dependencies
     }
 
     private var storyDeps: StoryDependencies {

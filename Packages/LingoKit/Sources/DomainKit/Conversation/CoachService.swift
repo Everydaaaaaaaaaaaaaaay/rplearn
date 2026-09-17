@@ -26,6 +26,31 @@ public struct CoachReview: Sendable, Codable, Equatable {
         self.hasIssues = hasIssues
         self.issues = issues
     }
+
+    /// 只保留能在本条学习者消息里定位到的问题。
+    /// 审阅请求带着上文语境，模型偶尔会把更早那句的旧错句重复报给当前消息，
+    /// 于是同一提示会落到下一句上；这里按原文校对，丢掉对不上号的问题。
+    public func grounded(inLearnerMessage message: String) -> CoachReview {
+        // 模型判定「没有错误」时保持沉默，即使它顺手列了问题。
+        guard hasIssues else { return CoachReview(hasIssues: false, issues: []) }
+        let context = Self.matchableText(message)
+        let grounded = context.isEmpty ? [] : issues.filter { issue in
+            let quote = Self.matchableText(issue.quote)
+            return !quote.isEmpty && context.contains(quote)
+        }
+        return CoachReview(hasIssues: !grounded.isEmpty, issues: grounded)
+    }
+
+    /// 比对时忽略大小写、空白和弯引号，忠实引用不会因排版差异被误删。
+    static func matchableText(_ text: String) -> String {
+        String(
+            text.lowercased()
+                .replacingOccurrences(of: "\u{2019}", with: "'")
+                .replacingOccurrences(of: "\u{201C}", with: "\"")
+                .replacingOccurrences(of: "\u{201D}", with: "\"")
+                .filter { !$0.isWhitespace }
+        )
+    }
 }
 
 /// 独立于角色的教练 AI：并行审核用户消息（fast 档、JSON 结构化输出、15s 超时静默放弃）。
@@ -55,6 +80,7 @@ public struct CoachService: Sendable {
             try await llm.complete(request)
         }
         return try Self.decodeReview(fromModelOutput: text)
+            .grounded(inLearnerMessage: userText)
     }
 
     // MARK: - 解析与序列化

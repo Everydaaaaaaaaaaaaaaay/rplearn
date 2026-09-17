@@ -21,7 +21,7 @@ cd "$LINGOTRIP_REPO_ROOT"
 mode="${1:-preview}"
 case "$mode" in
   help|--help|-h)
-    echo "用法：Scripts/preview.sh [preview|build|status] [messages|contacts|home|map|me|subscription|learning]"
+    echo "用法：Scripts/preview.sh [preview|build|status] [messages|contacts|home|map|me|subscription|learning|review]"
     echo "preview 复用 Debug 构建并免登录启动；build 先增量构建；status 只读设备与产物。"
     exit 0
     ;;
@@ -30,7 +30,7 @@ case "$mode" in
 esac
 preview_tab="${2:-messages}"
 case "$preview_tab" in
-  messages|contacts|home|map|me|subscription|learning) ;;
+  messages|contacts|home|map|me|subscription|learning|review) ;;
   *) echo "错误：不支持的页面：$preview_tab" >&2; exit 1 ;;
 esac
 udid="$(lingotrip_simulator_udid)"

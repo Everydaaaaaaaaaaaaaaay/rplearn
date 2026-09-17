@@ -8,10 +8,15 @@ import PersistenceKit
 import SpeechKit
 import SwiftUI
 import Translation
+import UIKit
 
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
     @State var viewModel: ChatViewModel
+    @State private var autoReadEnabled = false
+    @State private var autoReadReady = false
+    @State private var autoReadQueue: ChatAutoReadQueue
+    @Environment(\.scenePhase) private var scenePhase
     @State var wordSelection: TokenSelection?
     @State var grammarTermSelection: GrammarTermSelection?
     @State var grammarAnalysis: GrammarAnalysisRequest?
@@ -34,6 +39,8 @@ public struct ChatView: View {
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
     @State var highlightedMessageID: UUID?
+    /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
+    @State private var isKeyboardVisible = false
     @FocusState var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.dismiss) var dismiss
@@ -48,15 +55,23 @@ public struct ChatView: View {
         _recorder = State(initialValue: VoiceRecorder(audioSession: deps.audioSession))
         _voicePlayer = State(initialValue: VoiceMessagePlayer(audioSession: deps.audioSession))
         _showsRealtimeConversation = State(initialValue: startsInRealtimeConversation)
+        _autoReadQueue = State(initialValue: ChatAutoReadQueue(speech: deps.speech))
         self.deps = deps
     }
 
     public var body: some View {
-        messageList
-        // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
-        // 而不是覆盖输入栏或当前可见消息。
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            inputBar
+        GeometryReader { proxy in
+            messageList
+            // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
+            // 而不是覆盖输入栏或当前可见消息。
+            //
+            // 底部安全区由输入栏自己接管（忽略容器的底部安全区再补进输入栏），
+            // 这样 iOS 26 与 iOS 27（后者不会把安全区算进 safeAreaInset 视图）都能
+            // 让输入栏材质贴住屏幕底边，消息列表也不会在输入栏下方露出。
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
+            }
+            .ignoresSafeArea(.container, edges: .bottom)
         }
         .overlay(alignment: .bottom) {
             if viewModel.tutorialSendNoticeID != nil {
@@ -83,6 +98,12 @@ public struct ChatView: View {
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshCharacter() }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+            isKeyboardVisible = true
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+            isKeyboardVisible = false
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -112,26 +133,47 @@ public struct ChatView: View {
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    isTextInputFocused = false
-                    voicePlayer.stop()
-                    // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
-                    guard deps.tutorial == nil else { return }
-                    showsRealtimeConversation = true
-                } label: {
-                    Image(systemName: "phone.fill")
+                HStack(spacing: 0) {
+                    Button {
+                        autoReadEnabled.toggle()
+                    } label: {
+                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                            .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("自动朗读新消息")
+                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                    .accessibilityHint("按顺序朗读你和旅伴的新消息")
+                    .accessibilityIdentifier("chat.autoRead")
+
+                    Button {
+                        isTextInputFocused = false
+                        voicePlayer.stop()
+                        // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
+                        guard deps.tutorial == nil else { return }
+                        showsRealtimeConversation = true
+                    } label: {
+                        Image(systemName: "phone.fill")
+                            .foregroundStyle(Color.accentColor)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
+
+                    Button {
+                        isTextInputFocused = false
+                        voicePlayer.stop()
+                        showsContactDetails = true
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .foregroundStyle(Color.accentColor)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("聊天设置")
                 }
-                .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    isTextInputFocused = false
-                    voicePlayer.stop()
-                    showsContactDetails = true
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
-                .accessibilityLabel("聊天设置")
+                .buttonStyle(.plain)
             }
         }
         .accessibilityAction(named: "聊天设置") {
@@ -237,8 +279,8 @@ public struct ChatView: View {
             await appleTranslator.finishSession(sessionID, failed: failed || Task.isCancelled)
         }
         .task {
-            // 整句翻译仅使用 Apple 系统语言包。
-            viewModel.localTranslation = { [appleTranslator] text in
+            // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
+            viewModel.translationFallback = { [appleTranslator] text in
                 if let tutorial = deps.tutorial {
                     guard text == "That sounds lovely. Tell me more!" else { return nil }
                     tutorial.onEvent("translation")
@@ -247,6 +289,9 @@ public struct ChatView: View {
                 return await appleTranslator.translate(text)
             }
             await viewModel.load()
+            guard !Task.isCancelled else { return }
+            autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
+            autoReadReady = true
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
                ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
@@ -259,15 +304,42 @@ public struct ChatView: View {
             #endif
             knownLatestMessageID = viewModel.messages.last?.id
             markVisibleConversationRead()
+            #if DEBUG
+            await viewModel.playMarketingCaptureReply()
+            #endif
         }
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
+        .onChange(of: shouldAutoRead) { _, enabled in
+            autoReadQueue.configure(enabled: enabled, existingIDs: viewModel.messages.map(\.id))
+        }
+        .onChange(of: viewModel.messages) { _, messages in
+            autoReadQueue.observe(messages.sorted { $0.orderIndex < $1.orderIndex }.compactMap { message in
+                guard message.role == .user || message.role == .assistant,
+                      message.kind == .text else { return nil }
+                return ChatAutoReadQueue.Item(id: message.id, request: viewModel.speechRequest(for: message))
+            })
+        }
         .onDisappear {
+            autoReadReady = false
+            autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
             appleTranslator.cancelAll()
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private var shouldAutoRead: Bool {
+        let recording: Bool
+        switch recorder.state {
+        case .recording, .transcribing: recording = true
+        default: recording = false
+        }
+        return autoReadReady && autoReadEnabled && scenePhase == .active
+            && !showsRealtimeConversation && !showsContactDetails && !recording
+            && wordSelection == nil && grammarTermSelection == nil && grammarAnalysis == nil
+            && voicePlayer.playingFileName == nil
     }
 
     private func markVisibleConversationRead() {
@@ -277,42 +349,12 @@ public struct ChatView: View {
     }
 
     private func chatStatus(_ presence: NPCPresenceSnapshot, at date: Date) -> String {
-        let clock = DateFormatter()
-        clock.locale = Locale(identifier: "zh_CN")
-        clock.timeZone = TimeZone(identifier: presence.timeZoneIdentifier)
-        clock.dateFormat = "HH:mm"
-        let city = "\(deps.regionName(viewModel.character.card.regionID)) \(clock.string(from: date))"
-        if viewModel.isStreaming {
-            return "正在输入 · \(city)"
-        }
-        switch presence.state {
-        case .online:
-            return "在线 · \(city)"
-        case .recentlyActive:
-            return "刚刚在线 · \(city)"
-        case .offline:
-            guard let lastActiveAt = presence.lastActiveAt else {
-                return "离线 · \(city)"
-            }
-            var calendar = Calendar(identifier: .gregorian)
-            let timeZone = TimeZone(identifier: presence.timeZoneIdentifier)
-                ?? TimeZone(secondsFromGMT: 0)!
-            calendar.timeZone = timeZone
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "zh_CN")
-            formatter.timeZone = timeZone
-            formatter.dateFormat = "HH:mm"
-            let time = formatter.string(from: lastActiveAt)
-            if calendar.isDate(lastActiveAt, inSameDayAs: date) {
-                return "\(time) 在线过 · \(city)"
-            }
-            if let yesterday = calendar.date(byAdding: .day, value: -1, to: date),
-               calendar.isDate(lastActiveAt, inSameDayAs: yesterday) {
-                return "昨天 \(time) 在线 · \(city)"
-            }
-            formatter.dateFormat = "M月d日 HH:mm"
-            return "\(formatter.string(from: lastActiveAt)) 在线 · \(city)"
-        }
+        ChatHeaderStatus.text(
+            presence: presence,
+            at: date,
+            regionName: deps.regionName(viewModel.character.card.regionID),
+            isStreaming: viewModel.isStreaming
+        )
     }
 
     private func presenceColor(_ presence: NPCPresenceSnapshot) -> Color {
@@ -696,7 +738,8 @@ public struct ChatView: View {
             Label("翻译", systemImage: "character.book.closed.zh")
         }
         Button {
-            Task { await viewModel.speak(message: message) }
+            let stopped = autoReadQueue.interrupt()
+            Task { await stopped?.value; await viewModel.speak(message: message) }
         } label: {
             Label("播放", systemImage: "speaker.wave.2")
         }

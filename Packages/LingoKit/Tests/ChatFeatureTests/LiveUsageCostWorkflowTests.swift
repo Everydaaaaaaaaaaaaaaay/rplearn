@@ -132,9 +132,10 @@ struct LiveUsageCostWorkflowTests {
         try await economy.applyAuthoritativeEntitlement(tier: tier, friendSlotLimit: access.policy.friendSlotLimit)
         _ = try await economy.updateProfile { profile in profile.displayName = "Mia"; profile.difficultyLevel = level; profile.learningGoal = .dailyConversation; profile.studyStage = .university; profile.quizGloballyEnabled = persona.quizEnabled ?? true; profile.currentRegionID = "london" }
         let memory = MemoryStore(modelContainer: container)
+        let translator = TranslationService(llm: llm)
         let dictionary = try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite")))
         let grammar = try GrammarPointStore(url: #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json")))
-        let deps = ChatDependencies(accessClient: backend, chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container), llm: llm, dictionary: dictionary, grammarPoints: grammar, speech: SilentSpeech(), exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }), audioSession: AudioSessionCoordinator(), memoryStore: memory, itemStore: item, economyStore: economy, progression: LocalUserStateCoordinator(economyStore: economy, itemStore: item, storyProgressStore: StoryProgressStore(modelContainer: container)), voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)))
+        let deps = ChatDependencies(accessClient: backend, chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container), llm: llm, dictionary: dictionary, grammarPoints: grammar, speech: SilentSpeech(), translator: translator, exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }), audioSession: AudioSessionCoordinator(), memoryStore: memory, itemStore: item, economyStore: economy, progression: LocalUserStateCoordinator(economyStore: economy, itemStore: item, storyProgressStore: StoryProgressStore(modelContainer: container)), voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)))
         var card = CharacterCard(name: "Oliver Bennett", age: 24, gender: .male, nationality: "British", regionID: "london", occupation: "bookseller", hobbies: ["books", "walking", "indie music"], appearance: "brown hair and a green jacket", personality: "curious, kind, dry humour", speechStyle: "casual British English", background: "grew up in Kent and works near Covent Garden")
         card = persona.characters?.first ?? card
         do {
@@ -190,9 +191,10 @@ struct LiveUsageCostWorkflowTests {
                 evidence.actions.append(Action(kind: "chat", startedAt: start.ISO8601Format(), status: "completed", milliseconds: Int(Date().timeIntervalSince(start)*1000), detail: text))
                 evidence.calls = await trace.snapshot(); try save()
                 if persona.translateEvery > 0 && (index+1) % persona.translateEvery == 0, let message = model.messages.last(where: { $0.role == .assistant }) {
-                    // This headless cost audit cannot host Apple's SwiftUI session.
-                    // Local translation behavior is covered by ChatWorkflowTests.
-                    evidence.actions.append(Action(kind: "local_translation", startedAt: Date().ISO8601Format(), status: "skipped", milliseconds: 0, detail: "Apple system session requires a device UI; no cloud request for: \(message.id)"))
+                    let t = Date(); await model.translate(message: message)
+                    let cached = try await chat.messages(conversationID: #require(model.conversation?.id)).first(where: { $0.id == message.id })
+                    if let cached { await model.translate(message: cached) }
+                    evidence.actions.append(Action(kind: "translation_and_cache_reopen", startedAt: t.ISO8601Format(), status: cached?.translationZh == nil ? "failed" : "completed", milliseconds: Int(Date().timeIntervalSince(t)*1000), detail: "Repeated display must reuse stored translation"))
                 }
                 if persona.grammarEvery > 0 && (index+1) % persona.grammarEvery == 0 {
                     let t = Date(); _ = try await GrammarAnalysisService(llm: llm).analyze(sentence: text, learnerLevel: level.rawValue)

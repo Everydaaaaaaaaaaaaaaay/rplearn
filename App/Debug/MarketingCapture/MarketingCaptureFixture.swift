@@ -56,8 +56,13 @@ extension AppEnvironment {
                 (.assistant, preview)
             ] : [(.user, "What's been the highlight of your day?"), (.assistant, preview)]
             for (lineIndex, line) in lines.enumerated() {
-                _ = try await account.chatStore.appendMessage(conversationID: conversation.id, role: line.0,
+                if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1",
+                   character.card.name == "Ruby Walker", lineIndex == lines.count - 1 { continue }
+                let message = try await account.chatStore.appendMessage(conversationID: conversation.id, role: line.0,
                     text: line.1, createdAt: Date().addingTimeInterval(Double(-index * 180 - (lines.count - lineIndex) * 20)))
+                if line.1 == "A cosy café, a good book, and absolutely no alarm clocks." {
+                    _ = try await account.favoritesStore.addWord("cosy", sourceMessageID: message.id)
+                }
             }
         }
     }

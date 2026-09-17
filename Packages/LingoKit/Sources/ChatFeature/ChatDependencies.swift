@@ -15,6 +15,10 @@ public struct ChatTutorialConfiguration: Sendable {
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    #if DEBUG
+    /// Set only by the app's isolated in-memory marketing workspace.
+    public var marketingMotionCapture = false
+    #endif
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void
@@ -25,6 +29,7 @@ public struct ChatDependencies: Sendable {
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
+    public let translator: TranslationService
     public let exampleTranslationActions: DictExampleTranslationActions
     public let audioSession: AudioSessionCoordinator
     public let memoryStore: MemoryStore
@@ -48,6 +53,7 @@ public struct ChatDependencies: Sendable {
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
+        translator: TranslationService,
         exampleTranslationActions: DictExampleTranslationActions,
         audioSession: AudioSessionCoordinator,
         memoryStore: MemoryStore,
@@ -72,6 +78,7 @@ public struct ChatDependencies: Sendable {
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
+        self.translator = translator
         self.exampleTranslationActions = exampleTranslationActions
         self.audioSession = audioSession
         self.memoryStore = memoryStore

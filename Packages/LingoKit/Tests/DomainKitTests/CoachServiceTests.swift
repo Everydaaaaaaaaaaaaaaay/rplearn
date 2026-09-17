@@ -36,6 +36,41 @@ struct CoachServiceTests {
         #expect(review.issues.isEmpty)
     }
 
+    @Test("对不上原文的引用（上文旧错句）不显示")
+    func staleQuoteIsDropped() async throws {
+        let mock = MockLLMProvider(completeHandler: { _ in
+            #"{"has_issues":true,"issues":[{"quote":"Feels like you want put all the sweet","type":"grammar","correction":"Feels like you want to put all the sweet things","explanation_zh":"want 后接动词需用不定式"}]}"#
+        })
+        let review = try await CoachService(llm: mock).review(userText: "Received the order, madam")
+        #expect(!review.hasIssues)
+        #expect(review.issues.isEmpty)
+    }
+
+    @Test("只保留能定位到的问题，大小写与空白差异不影响")
+    func partialQuotesAreGrounded() async throws {
+        let mock = MockLLMProvider(completeHandler: { _ in
+            """
+            {"has_issues":true,"issues":[\
+            {"quote":"want put all the sweet","type":"grammar","correction":"want to put all the sweet things","explanation_zh":"want 后接不定式"},\
+            {"quote":"i   very LIKE","type":"grammar","correction":"I really like","explanation_zh":"really 修饰动词"}]}
+            """
+        })
+        let review = try await CoachService(llm: mock).review(userText: "I very like football")
+        #expect(review.hasIssues)
+        #expect(review.issues.map(\.quote) == ["i   very LIKE"])
+    }
+
+    @Test("模型判定没有错误时保持沉默")
+    func explicitNoIssuesWins() {
+        let review = CoachReview(
+            hasIssues: false,
+            issues: [.init(quote: "very like", type: "grammar", correction: "really like", explanationZh: "really 修饰动词")]
+        )
+        let grounded = review.grounded(inLearnerMessage: "I very like football")
+        #expect(!grounded.hasIssues)
+        #expect(grounded.issues.isEmpty)
+    }
+
     @Test("超时抛错（调用方静默放弃）")
     func timeout() async {
         let mock = MockLLMProvider(completeHandler: { _ in

@@ -326,6 +326,51 @@ struct RelationshipServiceTests {
         #expect(try await roster.character(id: characterID)?.relationship.lastEvaluatedMessageID == message.id)
     }
 
+    @Test("上下文里的旧错句不会重复报到下一条消息的点评上")
+    func staleCoachQuoteIsDropped() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let roster = RosterStore(modelContainer: container)
+        let characterID = try await roster.addCharacter(
+            card: card,
+            difficulty: .junior3,
+            isFriend: true
+        )
+        let character = try #require(try await roster.character(id: characterID))
+        let earlier = MessageDTO(
+            id: UUID(),
+            role: .user,
+            kind: .text,
+            text: "Feels like you want put all the sweet in your bowl",
+            orderIndex: 1,
+            createdAt: now.addingTimeInterval(-60)
+        )
+        let message = MessageDTO(
+            id: UUID(),
+            role: .user,
+            kind: .text,
+            text: "Received the order, madam",
+            orderIndex: 2
+        )
+        let mock = MockLLMProvider(completeHandler: { request in
+            // 上文必须仍作为语境传给模型，社交判断依赖它。
+            #expect(request.messages.first?.content.contains(earlier.text) == true)
+            return """
+            {"coach_review":{"has_issues":true,"issues":[{"quote":"want put all the sweet","type":"grammar","correction":"want to put all the sweet stuff","explanation_zh":"want 后接不定式"}]},"relationship":{"warmth":0.6,"responsiveness":0.7,"respect":0.8,"empathy":0.4,"reciprocity":0.5,"disclosure":0.2,"resonance":0.5,"engagement":0.7,"boundary_harm":0,"repair":0,"significance":0.4,"confidence":0.8,"reason_zh":"接单式回应"}}
+            """
+        })
+        let review = try await RelationshipService(llm: mock, rosterStore: roster).reviewAndApply(
+            character: character,
+            history: [earlier],
+            userMessage: message,
+            source: .textChat,
+            at: now
+        )
+
+        #expect(!review.hasIssues)
+        #expect(review.issues.isEmpty)
+        #expect(try await roster.character(id: characterID)?.relationship.lastEvaluatedMessageID == message.id)
+    }
+
     @Test("活动与剧情事件原子写入，稳定事件 ID 阻止剧情重玩刷分")
     func contextEventsArePersistentAndIdempotent() async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)

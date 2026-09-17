@@ -8,6 +8,8 @@ import MediaKit
 import PersistenceKit
 import SpeechKit
 import Testing
+import SwiftUI
+import UIKit
 @testable import ChatFeature
 
 /// Shipping view model → real SwiftData stores → reopened view model. Only external services are replaced.
@@ -20,6 +22,8 @@ struct ChatWorkflowTests {
         var fails: Bool
         var streamDelayMilliseconds: Int
         private(set) var translations = 0
+        /// nil 表示模拟云端翻译失败（离线）；空串用于验证空白译文的回退。
+        private var translationResult: String? = "完整的翻译。"
         private(set) var requestedTasks: [LLMTask] = []
         private(set) var streamedMessages: [LLMMessage] = []
         init(
@@ -38,7 +42,8 @@ struct ChatWorkflowTests {
             requestedTasks.append(request.task)
             if request.task == .translation {
                 translations += 1
-                return "完整的翻译。"
+                guard let translationResult else { throw URLError(.notConnectedToInternet) }
+                return translationResult
             }
             return reviewResponse
         }
@@ -64,6 +69,8 @@ struct ChatWorkflowTests {
 
         func tasks() -> [LLMTask] { requestedTasks }
         func setResponse(_ text: String) { response = text }
+        func failTranslations() { translationResult = nil }
+        func completeTranslations(with text: String) { translationResult = text }
     }
     private struct SilentSpeech: SpeechService {
         func speak(_ request: SpeechRequest) async {}
@@ -106,6 +113,7 @@ struct ChatWorkflowTests {
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
             grammarPoints: try GrammarPointStore(url: #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json"))),
             speech: SilentSpeech(),
+            translator: TranslationService(llm: llm),
             exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }),
             audioSession: AudioSessionCoordinator(), memoryStore: MemoryStore(modelContainer: container),
             itemStore: items, economyStore: economy,
@@ -132,6 +140,43 @@ struct ChatWorkflowTests {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+
+    @Test("停留信息列表时，后台回复立即刷新头像未读数，无需切换页面")
+    func visibleListRefreshesForBackgroundReply() async throws {
+        let f = try await fixture(Provider(response: "First bubble.\nSecond bubble."))
+        let accountID = UUID()
+        let key = ProactiveMessagePreferences.unreadCountKey(for: accountID)
+        let scene = try #require(UIApplication.shared.connectedScenes.first as? UIWindowScene)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.rootViewController = UIHostingController(rootView: NavigationStack {
+            ConversationListView(accountID: accountID, deps: f.deps)
+        })
+        window.makeKeyAndVisible()
+        defer {
+            window.isHidden = true
+            window.rootViewController = nil
+            previous?.makeKey()
+            UserDefaults.standard.removeObject(forKey: key)
+            f.model.cancelPendingReply()
+        }
+        // Let the list finish its initial snapshot before the hidden chat produces a reply.
+        for _ in 0..<100 where UserDefaults.standard.object(forKey: key) == nil {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        #expect(UserDefaults.standard.object(forKey: key) != nil)
+        #expect(UserDefaults.standard.integer(forKey: key) == 0)
+        f.model.draft = "Hello there"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        let expected = try await f.deps.chatStore.conversationSummaries().reduce(0) { $0 + $1.unreadCount }
+        #expect(expected > 0)
+        for _ in 0..<100 where UserDefaults.standard.integer(forKey: key) != expected {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        // Only ConversationListView writes this account-specific total, from its visible rows.
+        #expect(UserDefaults.standard.integer(forKey: key) == expected)
     }
 
     @Test("聚焦与单字符不续期，四种字符续期，退出缩短等待")
@@ -469,6 +514,32 @@ struct ChatWorkflowTests {
         #expect(await provider.tasks().filter { $0 == .coachReview }.count == 1)
     }
 
+    @Test("点评只落在原文消息上，上文旧错句不会重复报到下一句")
+    func staleCoachQuoteIsNotStoredOnNextMessage() async throws {
+        let provider = Provider(reviewResponse: #"""
+            {"coach_review":{"has_issues":true,"issues":[{"quote":"want put all the sweet","type":"grammar","correction":"want to put all the sweet stuff","explanation_zh":"want 后接不定式"}]},"relationship":{"warmth":0.6,"responsiveness":0.7,"respect":0.8,"empathy":0.4,"reciprocity":0.5,"disclosure":0.2,"resonance":0.5,"engagement":0.7,"boundary_harm":0,"repair":0,"significance":0.4,"confidence":0.8,"reason_zh":"日常回应"},"growth":null}
+            """#)
+        let f = try await fixture(provider)
+        f.model.draft = "Feels like you want put all the sweet in your bowl"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        f.model.draft = "Received the order, madam"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        for _ in 0..<50 {
+            if await provider.tasks().filter { $0 == .coachReview }.count >= 2 { break }
+            try await Task.sleep(for: .milliseconds(20))
+        }
+
+        let conversationID = try #require(f.model.conversation?.id)
+        let saved = try await f.deps.chatStore.messages(conversationID: conversationID)
+        let userMessages = saved.filter { $0.role == .user }
+        #expect(userMessages.count == 2)
+        // 第一句确实含该错误，提示保留；第二句原文对不上，不得再出现同一提示。
+        #expect(userMessages[0].coachReviewJSON != nil)
+        #expect(userMessages[1].coachReviewJSON == nil)
+    }
+
     @Test("电话空回复结束后，重新进入不会把转写自动重发")
     func realtimeFailureDoesNotAutoResend() async throws {
         let provider = Provider(response: "")
@@ -548,59 +619,69 @@ struct ChatWorkflowTests {
         #expect(reopened.messages.contains { $0.role == .assistant })
     }
 
-    @Test("语音入口保存完整回复，文本翻译复用已存缓存")
-    func voiceAndTranslationPersist() async throws {
+    @Test("整句翻译优先云端 LLM，译文持久缓存后不再重复调用")
+    func translationUsesCloudAndPersists() async throws {
         let provider = Provider()
         let f = try await fixture(provider)
         let raw = "First detail.\nSecond detail.\nThird detail.\nFourth detail.\nLast detail."
         await f.model.saveRealtimeAssistant(spokenText: raw, interrupted: false)
         let reply = try #require(f.model.messages.last)
-        var localCalls = 0
-        f.model.localTranslation = { text in
+        var fallbackCalls = 0
+        f.model.translationFallback = { text in
             #expect(text == reply.text)
-            localCalls += 1
-            return "完整的翻译。"
+            fallbackCalls += 1
+            return "端上翻译。"
         }
         await f.model.translate(message: reply)
         await f.model.translate(message: reply) // A stale DTO must also reuse persisted state.
-        #expect(localCalls == 1)
+        #expect(await provider.translations == 1)
+        #expect(fallbackCalls == 0)
         let reopened = await f.reopen()
         let translated = try #require(reopened.messages.last)
         #expect(normalized(reopened.messages.map(\.text).joined(separator: " ")) == normalized(raw))
         #expect(translated.translationZh == "完整的翻译。")
         await reopened.translate(message: translated)
-        #expect(await provider.translations == 0)
-        #expect(await provider.tasks().isEmpty)
+        #expect(await provider.translations == 1)
     }
-    @Test("系统翻译失败或返回空白不调用 AI，且可以重试")
-    func localTranslationFailureCanRetryWithoutAI() async throws {
+
+    @Test("云端翻译失败或返回空译文时回退端上翻译，都失败才报错")
+    func cloudFailureFallsBackToLocalTranslation() async throws {
         let provider = Provider()
         let f = try await fixture(provider)
         await f.model.saveRealtimeAssistant(spokenText: "Hello there.", interrupted: false)
         let message = try #require(f.model.messages.last)
-        await f.model.translate(message: message) // No bound system session.
-        #expect(f.model.errorMessage?.contains("Apple") == true)
-        f.model.localTranslation = { _ in nil }
+
+        // Cloud outage with no bound fallback surfaces a retryable error.
+        await provider.failTranslations()
         await f.model.translate(message: message)
-        f.model.localTranslation = { _ in "  \n " }
+        #expect(f.model.errorMessage?.contains("翻译失败") == true)
+        #expect(f.model.translatingMessageIDs.isEmpty)
+
+        // A blank or failed system translation is not cached.
+        f.model.translationFallback = { _ in nil }
+        await f.model.translate(message: message)
+        f.model.translationFallback = { _ in "  \n " }
         await f.model.translate(message: message)
         #expect(f.model.messages.last?.translationZh == nil)
         #expect(f.model.translatingMessageIDs.isEmpty)
-        f.model.localTranslation = { _ in "你好。" }
+
+        // Empty cloud output falls back too, then the system result is cached.
+        await provider.completeTranslations(with: "   ")
+        f.model.translationFallback = { _ in "你好。" }
         await f.model.translate(message: message)
         #expect(f.model.messages.last?.translationZh == "你好。")
-        #expect(await provider.tasks().isEmpty)
     }
 
-    @Test("重复点击合并进行中的本地翻译")
-    func duplicateLocalTranslationIsCoalesced() async throws {
+    @Test("重复点击合并进行中的端上翻译")
+    func duplicateFallbackTranslationIsCoalesced() async throws {
         let provider = Provider()
         let f = try await fixture(provider)
         await f.model.saveRealtimeAssistant(spokenText: "Hello.", interrupted: false)
         let message = try #require(f.model.messages.last)
+        await provider.failTranslations()
         var continuation: CheckedContinuation<String?, Never>?
         var calls = 0
-        f.model.localTranslation = { _ in
+        f.model.translationFallback = { _ in
             calls += 1
             return await withCheckedContinuation { continuation = $0 }
         }
@@ -611,7 +692,6 @@ struct ChatWorkflowTests {
         continuation?.resume(returning: "你好。")
         await first.value
         #expect(f.model.messages.last?.translationZh == "你好。")
-        #expect(await provider.tasks().isEmpty)
     }
 
 }

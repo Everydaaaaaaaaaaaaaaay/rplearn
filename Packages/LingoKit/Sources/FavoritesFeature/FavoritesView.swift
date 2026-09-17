@@ -494,6 +494,10 @@ public struct FavoritesView: View {
                     }
                 }
 
+                if favorite.sourceMessageID != nil {
+                    FavoriteSourceView(favoriteID: favorite.id, store: deps.favorites)
+                }
+
                 favoriteDate(favorite.createdAt)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -110,6 +110,28 @@ describe("OpenRouter client", () => {
     expect(outputTokenBudget(120, { ...glmRoute, maxOutputTokens: 256 })).toBe(256);
     expect(outputTokenBudget(120, route)).toBe(120);
     expect(outputTokenBudget(72, { ...glmRoute, task: "proactive_message" })).toBe(512);
+    // 单词讲解/语法解析的可见输出很短，但 GLM 思考必须同样装进预算，否则会空正文失败。
+    expect(
+      outputTokenBudget(200, {
+        ...glmRoute,
+        task: "dictionary_explain",
+        maxOutputTokens: 2400,
+      }),
+    ).toBe(1536);
+    expect(
+      outputTokenBudget(200, {
+        ...glmRoute,
+        task: "grammar_explain",
+        maxOutputTokens: 2400,
+      }),
+    ).toBe(1536);
+    expect(
+      outputTokenBudget(200, {
+        ...glmRoute,
+        task: "dictionary_explain",
+        maxOutputTokens: 800,
+      }),
+    ).toBe(800);
     expect(
       outputTokenBudget(600, {
         ...glmRoute,
