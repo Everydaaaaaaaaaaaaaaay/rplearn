@@ -18,7 +18,7 @@
 | 聊天异常恢复 | 断网保留已收到的片段；重试失败保留旧内容；普通消息不能被重试入口删除 | `ChatWorkflowTests` 故障注入；`LLMRouterTests`、`SSEParserTests` | 系统强杀进程与真实网络切换、生成中连续发送/离开页面 |
 | 语音、实时对话 | 终稿进入聊天；打断停止生成与 TTS；保存实际已听片段；录音权限/路由状态可恢复 | `RealtimeVoiceCoreTests`、`VoiceRecorderTests`、`SpeechServiceTests`、`ChatWorkflowTests` | 真机麦克风、蓝牙/扬声器回声、后台打断、模型音频质量；文字输入不算语音 E2E |
 | 聊天整句翻译 | 优先云端 LLM 并持久缓存；重复点击与重新进入复用译文；云端失败回退 Apple 端上翻译，两者都失败才报错；回退队列取消可恢复 | `ChatWorkflowTests`、`TranslationServiceTests`、`AppleTranslatorQueueTests`；后端 `ai`/`credits` | 译文质量需真实样本人工审阅；真机系统语言包下载/取消、离线回退与逐句延迟；模拟器不运行翻译模型 |
-| 语法、纠错、词典 | 结果保留并缓存；结构化输出和词义定位正确 | `GrammarAnalysisServiceTests`、`CoachServiceTests`、`Dict*Tests`；后端 `dictionary-translation` | 语言教学准确率需人工/真实样本审阅；词典系统翻译回退 |
+| 语法、纠错、词典 | 结果保留并缓存；结构化输出和词义定位正确；点评引用必须来自本条消息，上文旧错句不会重复报到下一句 | `GrammarAnalysisServiceTests`、`CoachServiceTests`、`RelationshipServiceTests`、`ChatWorkflowTests`、`Dict*Tests`；后端 `dictionary-translation` | 语言教学准确率需人工/真实样本审阅；词典系统翻译回退 |
 | 记忆、关系、成长 | 重复处理不叠加；阈值、衰减和历史引用正确；用户之间关系隔离 | `MemoryServiceTests`、`MemorySourceTests`、`Relationship*Tests`、`CharacterGrowthEngineTests` | 长期自然对话的记忆准确性和人物一致性，不能用数值断言替代 |
 | NPC、头像、好友 | 公共身份稳定；头像绑定不随重试改变；缺图可恢复；剧情旅伴不占普通好友位 | `PublicNPCAvatarCoordinatorTests`、`AvatarBadgeTests`、`RosterStoreTests`；后端 `npc`、`npc-encounters`、`access` | 头像素材真实可达性、匹配审美；活动生成与真实模型质量另验收 |
 | 金币、机票、旅行、剧情奖励 | 服务器为准；重复请求不重复扣款/领奖；保留旧游客跨城限制的兼容测试；失败不吞资产 | `Economy*Tests`、`TravelServiceTests`、`LocalUserStateCoordinatorTests`；后端 `domain`、`guest-journey`、`sync` | 真机登录/切号后界面权益刷新；旧游客迁移兼容 |

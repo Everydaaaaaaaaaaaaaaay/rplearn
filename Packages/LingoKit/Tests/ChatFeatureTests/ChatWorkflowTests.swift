@@ -514,6 +514,32 @@ struct ChatWorkflowTests {
         #expect(await provider.tasks().filter { $0 == .coachReview }.count == 1)
     }
 
+    @Test("点评只落在原文消息上，上文旧错句不会重复报到下一句")
+    func staleCoachQuoteIsNotStoredOnNextMessage() async throws {
+        let provider = Provider(reviewResponse: #"""
+            {"coach_review":{"has_issues":true,"issues":[{"quote":"want put all the sweet","type":"grammar","correction":"want to put all the sweet stuff","explanation_zh":"want 后接不定式"}]},"relationship":{"warmth":0.6,"responsiveness":0.7,"respect":0.8,"empathy":0.4,"reciprocity":0.5,"disclosure":0.2,"resonance":0.5,"engagement":0.7,"boundary_harm":0,"repair":0,"significance":0.4,"confidence":0.8,"reason_zh":"日常回应"},"growth":null}
+            """#)
+        let f = try await fixture(provider)
+        f.model.draft = "Feels like you want put all the sweet in your bowl"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        f.model.draft = "Received the order, madam"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        for _ in 0..<50 {
+            if await provider.tasks().filter { $0 == .coachReview }.count >= 2 { break }
+            try await Task.sleep(for: .milliseconds(20))
+        }
+
+        let conversationID = try #require(f.model.conversation?.id)
+        let saved = try await f.deps.chatStore.messages(conversationID: conversationID)
+        let userMessages = saved.filter { $0.role == .user }
+        #expect(userMessages.count == 2)
+        // 第一句确实含该错误，提示保留；第二句原文对不上，不得再出现同一提示。
+        #expect(userMessages[0].coachReviewJSON != nil)
+        #expect(userMessages[1].coachReviewJSON == nil)
+    }
+
     @Test("电话空回复结束后，重新进入不会把转写自动重发")
     func realtimeFailureDoesNotAutoResend() async throws {
         let provider = Provider(response: "")
