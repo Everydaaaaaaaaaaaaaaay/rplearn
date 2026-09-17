@@ -68,11 +68,11 @@ OpenRouter 候选需兼容全部任务的 JSON 要求；目录为空时先同步
 `deepseek` 直连消耗 DeepSeek 平台账户余额（`DEEPSEEK_API_KEY`），不占用 OpenRouter 额度；
 用户积分仍按 `config/ai-prices.json` 的 DeepSeek 价格核验（含北京时间 00:30–08:30 非高峰折扣）。
 
-DeepSeek 的标准模型名是 **`deepseek-flash`**（DeepSeek-V4.1-Flash，支持关闭 thinking，
-上下文 1M、最大输出 384K）。旧名 `deepseek-v4-flash` 与 `deepseek-v4-flash-vision-exp`
-已退役：上游仍接受请求，但由 V4.1-Flash 承载并按 Flash 价计费，官方建议直接用标准名。
-`AI_DEEPSEEK_ALLOWED_MODELS` 默认值为 `deepseek-flash`；迁移 `0024` 会把指向旧名的
-DeepSeek 路由改名为标准名并写入版本记录，价格手册同时保留旧名条目，历史请求仍按原价核对。
+DeepSeek 官方现在的标准模型名是 **`deepseek-flash`**（DeepSeek-V4.1-Flash，支持关闭 thinking，
+上下文 1M、最大输出 384K）；旧名 `deepseek-v4-flash` 与 `deepseek-v4-flash-vision-exp` 已退役，
+但上游仍接受请求，由同一个 V4.1-Flash 承载并按 Flash 价计费（官方定价页 2026-09-17 复核）。
+当前两条翻译路由按业主选择继续使用旧名 `deepseek-v4-flash`，`AI_DEEPSEEK_ALLOWED_MODELS`
+需要包含它；`Backend/config/ai-prices.json` 同时保留新旧名条目，历史请求仍按原价核对。
 
 每个用户的每分钟请求上限由 `AI_USER_MINUTE_LIMIT` 控制（默认 30，可设 1–300），同时约束
 所有 AI 任务和词典例句生成：一次未命中的词卡最多生成 4 条例句（外加 1 次单词讲解），因此
