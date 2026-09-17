@@ -39,7 +39,25 @@ ssh root@<server> \
 
 ## 最近发布验证
 
-2026-09-17：DeepSeek 模型名对齐官方标准（无需发布新包，只改运行环境与路由）。
+2026-09-17（当晚）：发布 `ab144cc7`，上一版本 `output-budget-20260917-01` 保留用于回滚。
+发布包 SHA-256：`41d1cb8c0c763dda08bad507369a302cc74357b88f045ad4bf38d0e174b5f6bc`。
+这次把此前只推送到仓库、尚未上线的一批提交正式部署（管理后台报错统计与服务日志分区、诊断接口
+对齐管理域名、辅助任务预算倍率、迁移 `0023` 把 `translation` 输出上限提到 2400 等）。
+诊断读 journal 需要 systemd 组权限，因此同时把 `Backend/ops/native-server/systemd/lingotrip-api.service`
+（与线上既有单元逐行一致，仅多 `SupplementaryGroups=systemd-journal`）覆盖到
+`/etc/systemd/system/lingotrip-api.service` 并 `daemon-reload` + 重启 api。
+API / Worker / Caddy 均 active，公网 `/health/ready` 返回 ready；`GET /internal/admin/ai/diagnostics?hours=6`
+返回 200（scanned 835、summary/errors/records 均有数据），确认 journal 读取生效。
+
+2026-09-17（当晚，模型名回退）：按业主决定，两条翻译路由从 `deepseek-flash` 改回
+`deepseek-v4-flash`（`translation` v6→v7、`dictionary_example_translation` v6→v7，其余参数不变，
+输出上限保持迁移 0023 后的 2400）。`AI_DEEPSEEK_ALLOWED_MODELS` 设为
+`deepseek-v4-flash,deepseek-flash`：实际使用旧名，同时保留标准名可选，避免控制台选择时报 409。
+直连实测旧名仍可用：HTTP 200、`model` 返回 `deepseek-flash`（由 V4.1-Flash 承载）、0.36s，
+与官方定价页“旧名仍被接受、按 Flash 价计费”一致。备份：
+`/etc/lingotrip/backend.env.bak-deepseek-20260917`（含第一次白名单改动前的内容）。
+
+2026-09-17：DeepSeek 模型名对齐官方标准（无需发布新包，只改运行环境与路由）。**（当晚已按业主决定回退为 `deepseek-v4-flash`，见下方最新一条。）**
 官方定价页（`https://api-docs.deepseek.com/quick_start/pricing`）现在只列 `deepseek-flash`
 （DeepSeek-V4.1-Flash）与 `deepseek-v4-pro`；`deepseek-v4-flash`、`deepseek-v4-flash-vision-exp`
 仍是旧名，请求会被 V4.1-Flash 承接并按 Flash 价计费，但官方要求用标准名。
