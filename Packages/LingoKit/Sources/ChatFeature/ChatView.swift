@@ -333,42 +333,12 @@ public struct ChatView: View {
     }
 
     private func chatStatus(_ presence: NPCPresenceSnapshot, at date: Date) -> String {
-        let clock = DateFormatter()
-        clock.locale = Locale(identifier: "zh_CN")
-        clock.timeZone = TimeZone(identifier: presence.timeZoneIdentifier)
-        clock.dateFormat = "HH:mm"
-        let city = "\(deps.regionName(viewModel.character.card.regionID)) \(clock.string(from: date))"
-        if viewModel.isStreaming {
-            return "正在输入 · \(city)"
-        }
-        switch presence.state {
-        case .online:
-            return "在线 · \(city)"
-        case .recentlyActive:
-            return "刚刚在线 · \(city)"
-        case .offline:
-            guard let lastActiveAt = presence.lastActiveAt else {
-                return "离线 · \(city)"
-            }
-            var calendar = Calendar(identifier: .gregorian)
-            let timeZone = TimeZone(identifier: presence.timeZoneIdentifier)
-                ?? TimeZone(secondsFromGMT: 0)!
-            calendar.timeZone = timeZone
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "zh_CN")
-            formatter.timeZone = timeZone
-            formatter.dateFormat = "HH:mm"
-            let time = formatter.string(from: lastActiveAt)
-            if calendar.isDate(lastActiveAt, inSameDayAs: date) {
-                return "\(time) 在线过 · \(city)"
-            }
-            if let yesterday = calendar.date(byAdding: .day, value: -1, to: date),
-               calendar.isDate(lastActiveAt, inSameDayAs: yesterday) {
-                return "昨天 \(time) 在线 · \(city)"
-            }
-            formatter.dateFormat = "M月d日 HH:mm"
-            return "\(formatter.string(from: lastActiveAt)) 在线 · \(city)"
-        }
+        ChatHeaderStatus.text(
+            presence: presence,
+            at: date,
+            regionName: deps.regionName(viewModel.character.card.regionID),
+            isStreaming: viewModel.isStreaming
+        )
     }
 
     private func presenceColor(_ presence: NPCPresenceSnapshot) -> Color {

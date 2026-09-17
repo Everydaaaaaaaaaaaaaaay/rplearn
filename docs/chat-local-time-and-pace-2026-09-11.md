@@ -28,6 +28,14 @@ ECDICT 数据错误地包含 toasties → toasty，并在 toasty 上写有 s:toa
 ## 验证
 
 - Xcode 托管测试：78 通过，0 失败，覆盖 PromptBuilder、NPCAttentionPolicy、RoleplayTypingPace、RoleplayTurnTakingPolicy、DictDatabase、ChatWorkflow。
+
+## 更新（2026-09-17）：顶部状态在任何状态下都完整
+
+「刚刚在线 · 墨尔本 12:19」比「在线 · 墨尔本 12:19」更长，聊天标题在真机上被截断成
+「刚好在线 · 墨尔本 1…」，城市当地时间看不全。现在 `ChatTitleView` 对标题和副标题使用
+`lineLimit(1)` + `minimumScaleFactor`（副标题最低 0.6）与 `allowsTightening`，空间不足时
+缩小而不是截断；状态文案本身抽成 `ChatHeaderStatus`，测试覆盖在线 / 刚刚在线 / 离线
+（今天、昨天、更早）与正在输入，保证每种状态都同时包含城市和当地时间。
 - 证据：`/tmp/lingotrip-grammar-derived-20260911/VerificationResults/20260911T025034Z-532.xcresult`。
 - 新增测试覆盖墨尔本正午/上海上午、夏令时、咖啡师作息、词条原形、输入续期/超时/后续气泡重新输入以及十词气泡时长。
 - SQLite quick_check 返回 ok，toasties 唯一 lemma 为 toastie。
