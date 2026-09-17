@@ -62,7 +62,7 @@ API / Worker / Caddy 均 active，公网 `/health/ready` 返回 ready，重启�
 均 active，公网 `/health/ready` 返回 ready；管理员 API `/internal/admin/ai/routes` 返回 10 条路由，
 含 `translation`（openrouter / z-ai/glm-5.3-flash，v2）与 `dictionary_example_translation`
 （同模型，v3），两者可分别编辑并参与一键切换。
-待办：把生产独有的诊断模块源码找回并入仓库，否则下次用仓库构建包发布会再次丢功能。
+该待办已在 2026-09-17 解决：生产独有的诊断模块源码（`app/request-diagnostics`、`modules/ai/diagnostics-console`、`modules/observability/diagnostics-routes|service`、`infrastructure/journal-reader`）此前只存在于生产 `dist`，合并本地 `main`（`e1a3819`）后已回到仓库，用仓库构建的发布包不再因此丢功能。
 
 2026-09-11：发布 `f4977bb`，上一版本 `8b2ef54` 保留。发布包 SHA-256：
 `aa63029d61fe3de2bdfbc68feb5dcd3393d9e982a8478c0cd7ab511c1d2f478e`。
