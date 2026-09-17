@@ -112,6 +112,22 @@ var inputBar: some View {
             .padding(.vertical, 8)
         }
         .dsMaterial(.ultraThinMaterial, in: Rectangle())
+        .background(alignment: .bottom) {
+            // 部分真机在隐藏标签栏或收起键盘后会保留底部安全区，输入栏会浮在屏幕底边之上，
+            // 下方露出还留在屏幕里的消息内容（iPhone 13 实机反馈）。这里用同一材质向屏幕底边
+            // 再铺一段：输入栏正常贴底时它落在屏幕外，看不到任何变化；真的被顶起来时刚好补住缝隙。
+            Rectangle()
+                .fill(Color.clear)
+                .dsMaterial(.ultraThinMaterial, in: Rectangle())
+                .frame(height: Self.composerBottomBleed)
+                .offset(y: Self.composerBottomBleed)
+                .ignoresSafeArea(edges: .bottom)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+        }
     }
+
+    /// 输入栏材质向下补铺的高度，覆盖标签栏残留安全区等系统差异。
+    private static let composerBottomBleed: CGFloat = 160
 
 }
