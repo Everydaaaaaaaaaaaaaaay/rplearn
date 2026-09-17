@@ -10,7 +10,10 @@ import SwiftUI
 import Translation
 
 extension ChatView {
-var inputBar: some View {
+    /// 输入栏。`bottomInset` 是屏幕底部安全区（home indicator）——iOS 26 的 `safeAreaInset`
+    /// 会把安全区算进输入栏自身，iOS 27 不会；为了让输入栏在所有系统上都贴住屏幕底边，
+    /// 这里由输入栏自己带上这段高度（材质一起铺下去，内容仍留在 indicator 之上）。
+    func inputBar(bottomInset: CGFloat) -> some View {
         VStack(spacing: 0) {
             HStack(spacing: 8) {
                 Button {
@@ -111,23 +114,8 @@ var inputBar: some View {
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
         }
+        .padding(.bottom, max(0, bottomInset))
         .dsMaterial(.ultraThinMaterial, in: Rectangle())
-        .background(alignment: .bottom) {
-            // 部分真机在隐藏标签栏或收起键盘后会保留底部安全区，输入栏会浮在屏幕底边之上，
-            // 下方露出还留在屏幕里的消息内容（iPhone 13 实机反馈）。这里用同一材质向屏幕底边
-            // 再铺一段：输入栏正常贴底时它落在屏幕外，看不到任何变化；真的被顶起来时刚好补住缝隙。
-            Rectangle()
-                .fill(Color.clear)
-                .dsMaterial(.ultraThinMaterial, in: Rectangle())
-                .frame(height: Self.composerBottomBleed)
-                .offset(y: Self.composerBottomBleed)
-                .ignoresSafeArea(edges: .bottom)
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
-        }
     }
-
-    /// 输入栏材质向下补铺的高度，覆盖标签栏残留安全区等系统差异。
-    private static let composerBottomBleed: CGFloat = 160
 
 }

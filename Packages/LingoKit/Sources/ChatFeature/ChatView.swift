@@ -8,6 +8,7 @@ import PersistenceKit
 import SpeechKit
 import SwiftUI
 import Translation
+import UIKit
 
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
@@ -38,6 +39,8 @@ public struct ChatView: View {
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
     @State var highlightedMessageID: UUID?
+    /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
+    @State private var isKeyboardVisible = false
     @FocusState var isTextInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.dismiss) var dismiss
@@ -57,11 +60,18 @@ public struct ChatView: View {
     }
 
     public var body: some View {
-        messageList
-        // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
-        // 而不是覆盖输入栏或当前可见消息。
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            inputBar
+        GeometryReader { proxy in
+            messageList
+            // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
+            // 而不是覆盖输入栏或当前可见消息。
+            //
+            // 底部安全区由输入栏自己接管（忽略容器的底部安全区再补进输入栏），
+            // 这样 iOS 26 与 iOS 27（后者不会把安全区算进 safeAreaInset 视图）都能
+            // 让输入栏材质贴住屏幕底边，消息列表也不会在输入栏下方露出。
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
+            }
+            .ignoresSafeArea(.container, edges: .bottom)
         }
         .overlay(alignment: .bottom) {
             if viewModel.tutorialSendNoticeID != nil {
@@ -88,6 +98,12 @@ public struct ChatView: View {
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshCharacter() }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+            isKeyboardVisible = true
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+            isKeyboardVisible = false
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
