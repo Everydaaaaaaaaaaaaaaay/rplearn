@@ -359,6 +359,10 @@ describe.runIf(runIntegrationTests)("AI operations console", () => {
     expect(retiredBefore).toHaveLength(1);
     const initial = await list();
     expect(initial.some((route) => route.task === "translation")).toBe(true);
+    // 单词弹窗例句翻译使用独立任务路由，与整句翻译分别控制。
+    expect(
+      initial.some((route) => route.task === "dictionary_example_translation"),
+    ).toBe(true);
     expect(initial.some((route) => route.task === "speech_feedback")).toBe(false);
     const command = newEntityId();
     const payload = {
