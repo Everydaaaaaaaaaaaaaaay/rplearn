@@ -57,7 +57,8 @@ final class SocialEncounterModel: ObservableObject {
     let deps: HomeDependencies
     private let roster: RosterStore
     private var task: Task<Void, Never>?
-    private var speechTask: Task<Void, Never>?
+    private let speechQueue: SpeechPlaybackQueue
+    private var speechIDs: [String: UUID] = [:]
     private var contactTask: Task<Void, Never>?
     private var pendingStage = 0
     private var library: AuthoredEncounterLibrary?
@@ -75,6 +76,7 @@ final class SocialEncounterModel: ObservableObject {
     init(activity: SceneActivity, region: Region, deps: HomeDependencies, namespace: String,
          encounterRoll: @escaping @Sendable () -> Double = { Double.random(in: 0..<1) },
          library: AuthoredEncounterLibrary? = nil) {
+        speechQueue = SpeechPlaybackQueue(speech: deps.speech)
         self.library = library
         self.encounterRoll = encounterRoll
         self.authoredActivity = activity; self.region = region; self.deps = deps
@@ -137,7 +139,6 @@ final class SocialEncounterModel: ObservableObject {
     func choose(_ index: Int) {
         guard !busy, atChoice, selected == nil, chapters[step].choices.indices.contains(index) else { return }
         selected = index
-        stopSpeech()
         pendingStage = step + 1
         launch { try await self.performSelection() }
     }
@@ -150,10 +151,8 @@ final class SocialEncounterModel: ObservableObject {
     func advance() {
         guard !busy, !summary, chapters.indices.contains(step) else { return }
         if beatIndex + 1 < chapters[step].beats.count {
-            stopSpeech()
             launch { try await self.revealBeat(self.beatIndex + 1) }
         } else if atEnding {
-            stopSpeech()
             completed = true
             deps.tutorial?.onEvent("summary")
         }
@@ -166,22 +165,28 @@ final class SocialEncounterModel: ObservableObject {
         busy = false
         stopSpeech()
     }
-    func stopSpeech() {
-        speechTask?.cancel(); speechTask = nil
-        let speech = deps.speech
-        Task { await speech.stopSpeaking() }
-    }
-    func speak() {
-        guard let beat = currentBeat, let character, !isFixture else { return }
-        speechTask?.cancel()
-        let speech = deps.speech
-        let card = character.card
-        speechTask = Task {
-            await speech.speak(SpeechRequest(text: beat.english,
-                language: StoryVoiceCasting.isNarrator(beat.speaker) ? "en-US" : AccentMapper.language(forNationality: card.nationality), purpose: .characterDialogue,
-                voiceHint: StoryVoiceCasting.isNarrator(beat.speaker) ? StoryVoiceCasting.narrator : SpeechVoiceHint(stableID: character.id.uuidString.lowercased(), gender: card.gender.rawValue,
-                                          nationality: card.nationality)))
+    @discardableResult
+    func stopSpeech() -> Task<Void, Never>? { speechQueue.interrupt() }
+
+    func updateAutoReading(enabled: Bool) {
+        guard let character else { return }
+        var items: [SpeechPlaybackQueue.Item] = []
+        for (stage, chapter) in chapters.enumerated() where stage <= step {
+            for (index, beat) in chapter.beats.enumerated() where stage < step || index <= beatIndex {
+                let key = "\(stage)-\(index)"
+                let id = speechIDs[key] ?? UUID()
+                speechIDs[key] = id
+                let narrator = StoryVoiceCasting.isNarrator(beat.speaker)
+                items.append(.init(id: id, request: SpeechRequest(text: beat.english,
+                    language: narrator ? "en-US" : AccentMapper.language(forNationality: character.card.nationality),
+                    purpose: .characterDialogue,
+                    voiceHint: narrator ? StoryVoiceCasting.narrator : SpeechVoiceHint(
+                        stableID: character.id.uuidString.lowercased(), gender: character.card.gender.rawValue,
+                        nationality: character.card.nationality))))
+            }
         }
+        speechQueue.configure(enabled: enabled, existingIDs: items.dropLast().map(\.id))
+        speechQueue.observe(items)
     }
     func addFriend() {
         guard canConnect, let character, !character.isFriend, !contactBusy else { return }

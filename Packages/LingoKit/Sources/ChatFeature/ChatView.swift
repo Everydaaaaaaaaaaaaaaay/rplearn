@@ -73,23 +73,7 @@ public struct ChatView: View {
             }
             .ignoresSafeArea(.container, edges: .bottom)
         }
-        .overlay(alignment: .bottom) {
-            if viewModel.tutorialSendNoticeID != nil {
-                Text("把话留给正式使用的时候吧～")
-                    .font(.subheadline)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
-                    .background(.regularMaterial, in: Capsule())
-                    .padding(.bottom, 12)
-                    .accessibilityIdentifier("tutorial.sendLimitNotice")
-                    .allowsHitTesting(false)
-            }
-        }
-        .task(id: viewModel.tutorialSendNoticeID) {
-            guard viewModel.tutorialSendNoticeID != nil else { return }
-            do { try await Task.sleep(for: .seconds(2.5)) } catch { return }
-            viewModel.tutorialSendNoticeID = nil
-        }
+        .dsQuickNotice($viewModel.quickNotice)
         .background(Color.dsBackground)
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
@@ -151,7 +135,6 @@ public struct ChatView: View {
                         isTextInputFocused = false
                         voicePlayer.stop()
                         // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
-                        guard deps.tutorial == nil else { return }
                         showsRealtimeConversation = true
                     } label: {
                         Image(systemName: "phone.fill")
@@ -281,10 +264,8 @@ public struct ChatView: View {
         .task {
             // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
             viewModel.translationFallback = { [appleTranslator] text in
-                if let tutorial = deps.tutorial {
-                    guard text == "That sounds lovely. Tell me more!" else { return nil }
-                    tutorial.onEvent("translation")
-                    return "听起来很棒，再跟我说说！"
+                if deps.tutorial != nil {
+                    if text == "That sounds lovely. Tell me more!" { return "听起来很棒，再跟我说说！" }
                 }
                 return await appleTranslator.translate(text)
             }
@@ -310,6 +291,12 @@ public struct ChatView: View {
         }
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
+        }
+        .onChange(of: showsRealtimeConversation || showsContactDetails || wordSelection != nil || grammarTermSelection != nil || grammarAnalysis != nil || isTextInputFocused) { _, presented in
+            deps.tutorial?.onEvent(presented ? "presented" : "dismissed")
+        }
+        .onChange(of: viewModel.messages.contains(where: { $0.role == .assistant })) { _, hasBubble in
+            deps.tutorial?.onEvent(hasBubble ? "hasBubble" : "noBubble")
         }
         .onChange(of: autoReadSnapshot) { previous, current in
             autoReadQueue.synchronize(from: previous, to: current)
@@ -612,6 +599,9 @@ public struct ChatView: View {
                     }
                 ) {
                     tappableText(message, textColor: nil)
+                        .tutorialFocus("chat.bubble", active: deps.tutorial?.focus == "chat.bubble"
+                            && message.id == viewModel.messages.last(where: { $0.role == .assistant })?.id,
+                            padding: 10)
                 }
                 .accessibilityAction(named: "语法解析") {
                     presentGrammarAnalysis(for: message)

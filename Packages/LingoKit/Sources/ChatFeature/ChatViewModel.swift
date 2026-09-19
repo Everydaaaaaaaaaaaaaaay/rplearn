@@ -27,8 +27,7 @@ public final class ChatViewModel {
     /// 已收到用户消息，仍处于注意、准备或等待连续消息阶段；此时不显示“正在输入”。
     public private(set) var isWaitingForUserBurst = false
     public var errorMessage: String?
-    public var tutorialSendNoticeID: UUID?
-    private var tutorialMessageSent = false
+    public var quickNotice: DSQuickNotice?
     public var draft = "" {
         didSet {
             if draft != oldValue { composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now()) }
@@ -142,11 +141,14 @@ public final class ChatViewModel {
 
         var translation: String?
         var cloudError: Error?
-        do {
-            let candidate = try await deps.translator.translateToChinese(text)
-            translation = candidate.isEmpty ? nil : candidate
-        } catch {
-            cloudError = error
+        if deps.tutorial != nil, let fallback = translationFallback {
+            translation = await fallback(text)
+        }
+        if translation == nil {
+            do {
+                let candidate = try await deps.translator.translateToChinese(text)
+                translation = candidate.isEmpty ? nil : candidate
+            } catch { cloudError = error }
         }
         guard !Task.isCancelled else { return }
 
@@ -164,6 +166,7 @@ public final class ChatViewModel {
         do {
             try await deps.chatStore.setTranslation(messageID: message.id, translationZh: translation)
             await reloadMessages()
+            deps.tutorial?.onEvent("translation")
         } catch {
             errorMessage = "保存译文失败，请重试：\(error.localizedDescription)"
         }
@@ -187,30 +190,42 @@ public final class ChatViewModel {
         )
     }
 
+    private func reserveTutorialMessage() -> Bool {
+        guard let tutorial = deps.tutorial else { return true }
+        guard tutorial.session.reserveMessage() else {
+            quickNotice = DSQuickNotice("请先完成教程再和朋友聊天吧～", symbol: .finishPractice)
+            return false
+        }
+        return true
+    }
+
+    public func canRemoveFriend() -> Bool {
+        guard deps.tutorial != nil else { return true }
+        quickNotice = DSQuickNotice("在教程中无法删除好友～", symbol: .protectedFriend)
+        return false
+    }
+
     public func sendDraft() async {
         let originalDraft = draft
         let text = originalDraft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
-        if deps.tutorial != nil {
-            guard !tutorialMessageSent else {
-                tutorialSendNoticeID = UUID()
-                return
-            }
-            tutorialMessageSent = true
-        }
+        guard reserveTutorialMessage() else { return }
         Haptics.impact(.light)
         draft = ""
         composerActivity.didSend()
-        if !(await send(userText: text)), draft.isEmpty {
-            // Preserve failed input without overwriting anything typed while saving.
-            tutorialMessageSent = false
-            draft = originalDraft
+        if !(await send(userText: text)) {
+            deps.tutorial?.session.releaseFailedMessage()
+            if draft.isEmpty { draft = originalDraft }
         }
     }
 
     /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核。
     public func sendVoice(capture: VoiceRecorder.Capture) async {
         guard let conversation else { return }
+        guard reserveTutorialMessage() else {
+            if let file = capture.fileName { VoiceMessageStorage.delete(fileName: file) }
+            return
+        }
         let userMessage: MessageDTO
         let messageID = UUID()
         do {
@@ -241,6 +256,7 @@ public final class ChatViewModel {
             await reloadMessages()
             notifyConversationChanged()
         } catch {
+            deps.tutorial?.session.releaseFailedMessage()
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
@@ -262,12 +278,16 @@ public final class ChatViewModel {
             throw AppError.storage("语音转写为空")
         }
 
+        guard reserveTutorialMessage() else { throw AppError.storage("请先完成教程再和朋友聊天吧～") }
+        var persisted = false
+        defer { if !persisted { deps.tutorial?.session.releaseFailedMessage() } }
         let userMessage = try await deps.chatStore.appendMessage(
             conversationID: conversation.id,
             role: .user,
             text: text,
             tokenEstimate: TokenEstimator.estimate(text)
         )
+        persisted = true
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
@@ -493,6 +513,12 @@ public final class ChatViewModel {
                 userMessageID: anchorMessage.id,
                 sentAt: deps.now(),
                 delay: preferredDelay
+            )
+        } else if deps.tutorial != nil {
+            // The same typing/delivery pipeline, without making a practice wait
+            // for the NPC's next scheduled online window.
+            plan = NPCAttentionPolicy.standard.expeditedReplyPlan(
+                userMessageID: anchorMessage.id, sentAt: deps.now(), delay: 1
             )
         } else {
             plan = NPCAttentionPolicy.standard.replyPlan(

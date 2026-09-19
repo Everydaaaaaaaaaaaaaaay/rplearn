@@ -53,14 +53,14 @@ public struct ActivitiesView: View {
             if let activity, let cityID, let model = journey.model {
                 ActivityActionView(model: model, journey: journey, deps: deps, isVisible: isVisible,
                                    onBack: onClose) { selections, runID, character, responses in
-                    if let tutorial = deps.tutorial { tutorial.onEvent("ending"); return }
-                    let journal = ActivityJournal(namespace: storageNamespace, city: cityID)
+                    let journal = ActivityJournal(namespace: storageNamespace, city: cityID, defaults: journalDefaults)
                     if model.isSolitude {
                         records = try journal.completeSolitude(activity, runID: runID)
                     } else {
                         records = try journal.complete(model.activity, selections: selections, runID: runID,
                             characterID: character?.id, characterName: character?.card.name, responses: responses, chapters: model.chapters)
                     }
+                    deps.tutorial?.onEvent("ending")
                 }
                 .id(activity.id)
                 .transition(.opacity)
@@ -81,6 +81,7 @@ public struct ActivitiesView: View {
         .onDisappear { journey.setViewing(false) }
         .onChange(of: isVisible) { _, visible in journey.setViewing(visible) }
         .task(id: storageNamespace) { await loadContext() }
+        .onChange(of: showsJournal) { _, presented in deps.tutorial?.onEvent(presented ? "presented" : "dismissed") }
         .sheet(isPresented: $showsJournal) {
             NavigationStack {
                 ScrollView {
@@ -205,10 +206,15 @@ public struct ActivitiesView: View {
             contextError = "城市信息暂时无法读取，请重试。"
         }
     }
+    private var journalDefaults: UserDefaults {
+        guard deps.tutorial != nil else { return .standard }
+        return UserDefaults(suiteName: "lingotrip.tutorial.\(storageNamespace)") ?? .standard
+    }
+
     private func readRecords() {
-        guard deps.tutorial == nil, let cityID else { return }
+        guard let cityID else { return }
         do {
-            records = try ActivityJournal(namespace: storageNamespace, city: cityID).records()
+            records = try ActivityJournal(namespace: storageNamespace, city: cityID, defaults: journalDefaults).records()
             journalError = nil
         } catch {
             journalError = "原有记录暂时无法读取，已保留原数据。请重试；读取恢复前不会覆盖保存。"

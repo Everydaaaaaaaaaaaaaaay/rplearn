@@ -252,6 +252,7 @@ struct RealtimeConversationView: View {
         .onReceive(
             NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)
         ) { handleAudioInterruption($0) }
+        .dsQuickNotice(Binding(get: { coordinator.chat.quickNotice }, set: { coordinator.chat.quickNotice = $0 }))
         .onDisappear { Task { await coordinator.stop() } }
         .alert("语音用量", isPresented: Binding(get: { coordinator.accessError != nil }, set: { if !$0 { coordinator.accessError = nil } })) {
             Button("查看用量与权益") { onRequestAccess(); endConversation() }

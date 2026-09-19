@@ -118,7 +118,7 @@ struct ChatContactDetailsView: View {
                 .disabled(isWorking || viewModel.messages.isEmpty)
 
                 Button("移除好友", role: .destructive) {
-                    showsRemoveConfirmation = true
+                    if viewModel.canRemoveFriend() { showsRemoveConfirmation = true }
                 }
                 .disabled(isWorking || !viewModel.character.isFriend)
             } footer: {
@@ -132,6 +132,7 @@ struct ChatContactDetailsView: View {
                 }
             }
         }
+        .dsQuickNotice($viewModel.quickNotice)
         .navigationTitle("聊天设置")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

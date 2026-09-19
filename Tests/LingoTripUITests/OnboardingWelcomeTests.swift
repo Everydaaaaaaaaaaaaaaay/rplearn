@@ -170,18 +170,15 @@ final class OnboardingWelcomeTests: XCTestCase {
         captureScreen(named: "tutorial-production-chat")
         word.press(forDuration: 1.2)
         app.buttons["播放"].tap()
-        let guide = app.buttons["tutorial.guide"]
+        let guide = app.descendants(matching: .any)["tutorial.guide"].firstMatch
         expectation(for: NSPredicate(format: "value != %@", "audio:0"), evaluatedWith: guide)
         waitForExpectations(timeout: 30)
-        app.buttons["tutorial.next"].tap()
-        let prior = guide.value as? String
+        XCTAssertFalse(app.buttons["tutorial.next"].exists)
+        XCTAssertFalse(app.buttons["tutorial.skipStep"].exists)
         word.tap()
         XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 3))
         app.buttons["播放读音"].tap()
-        expectation(for: NSPredicate(format: "value != %@", prior ?? ""), evaluatedWith: guide)
-        waitForExpectations(timeout: 30)
-        guide.tap()
-        app.buttons["tutorial.next"].tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.4)).tap()
         let seat = app.buttons["activities.scene.park-seat"]
         XCTAssertTrue(seat.waitForExistence(timeout: 8))
         captureScreen(named: "tutorial-production-activities")
@@ -204,11 +201,80 @@ final class OnboardingWelcomeTests: XCTestCase {
         let add = app.buttons["activities.encounter.addFriend"]
         XCTAssertTrue(add.waitForExistence(timeout: 3))
         if !add.isHittable { app.swipeUp() }
+        let autoRead = app.buttons["activities.story.play"]
+        XCTAssertEqual(autoRead.value as? String, "开启")
+        autoRead.tap()
+        XCTAssertEqual(autoRead.value as? String, "关闭")
+        autoRead.tap()
         captureScreen(named: "tutorial-production-encounter")
         add.tap()
         XCTAssertTrue(app.staticTexts["activities.encounter.contactStatus"].waitForExistence(timeout: 3))
-        app.buttons["tutorial.next"].tap()
-        XCTAssertTrue(app.buttons["tutorial.next"].isEnabled)
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForNonExistence(timeout: 10))
+    }
+
+    func testTutorialExplorationKeepsControlsAndProtectsFriend() {
+        let original = XCUIDevice.shared.appearance
+        defer { XCUIDevice.shared.appearance = original }
+        XCUIDevice.shared.appearance = .light
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launch()
+        XCTAssertTrue(app.buttons["onboarding.selection.confirm"].waitForExistence(timeout: 8))
+        app.buttons["onboarding.selection.confirm"].tap()
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForExistence(timeout: 8))
+        XCTAssertFalse(app.buttons["tutorial.next"].exists)
+        XCTAssertFalse(app.buttons["tutorial.skipStep"].exists)
+        captureScreen(named: "tutorial-floating-guide")
+        app.buttons["聊天设置"].firstMatch.tap()
+        let remove = app.buttons["移除好友"]
+        XCTAssertTrue(remove.waitForExistence(timeout: 5))
+        if !remove.isHittable { app.swipeUp() }
+        remove.tap()
+        XCTAssertTrue(app.staticTexts["在教程中无法删除好友～"].waitForExistence(timeout: 3))
+        captureScreen(named: "tutorial-protected-friend-notice")
+        XCTAssertTrue(app.staticTexts["在教程中无法删除好友～"].waitForNonExistence(timeout: 4))
+        app.buttons["完成"].tap()
+        let mic = app.buttons["切换到语音"]
+        XCTAssertTrue(mic.waitForExistence(timeout: 5))
+        mic.tap()
+        XCTAssertTrue(app.buttons["切换到键盘"].exists)
+        app.buttons["切换到键盘"].tap()
+        let phone = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "实时语音对话")).firstMatch
+        phone.tap()
+        let systemAlert = XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch
+        if systemAlert.waitForExistence(timeout: 2) {
+            let deny = systemAlert.buttons["不允许"]
+            if deny.exists { deny.tap() }
+        }
+        XCTAssertTrue(app.buttons["结束实时语音"].firstMatch.waitForExistence(timeout: 8))
+        captureScreen(named: "tutorial-real-call")
+        app.buttons["结束实时语音"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["tutorial.skip"].waitForExistence(timeout: 5))
+    }
+
+    func testTutorialSixthMessageShowsBriefNoticeAndKeepsDraft() {
+        let original = XCUIDevice.shared.appearance
+        defer { XCUIDevice.shared.appearance = original }
+        XCUIDevice.shared.appearance = .light
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
+        app.launch()
+        XCTAssertTrue(app.buttons["onboarding.selection.confirm"].waitForExistence(timeout: 8))
+        app.buttons["onboarding.selection.confirm"].tap()
+        let composer = app.descendants(matching: .any)["chat.composer"].firstMatch
+        XCTAssertTrue(composer.waitForExistence(timeout: 8))
+        composer.tap()
+        for index in 1...5 {
+            composer.typeText("Hi \(index)")
+            app.buttons["发送消息"].tap()
+        }
+        composer.typeText("One more")
+        app.buttons["发送消息"].tap()
+        let notice = app.staticTexts["请先完成教程再和朋友聊天吧～"]
+        XCTAssertTrue(notice.waitForExistence(timeout: 3))
+        captureScreen(named: "tutorial-sixth-message-light")
+        XCTAssertTrue(notice.waitForNonExistence(timeout: 4))
+        XCTAssertEqual(composer.value as? String, "One more")
     }
 
     func testOpeningChoicesAppearAsMessagesAndReachSelection() {

@@ -17,6 +17,8 @@ struct ActivityActionView: View {
     @ObservedObject var journey: ActivityJourneyCoordinator
     @Environment(\.scenePhase) private var scenePhase
     @State private var showsTranslation = false
+    @State private var autoReadEnabled = true
+    @State private var resultVisible = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var saved = false
     @State private var saveError: String?
@@ -47,14 +49,14 @@ struct ActivityActionView: View {
         }
         .foregroundStyle(ink)
         .allowsHitTesting(isVisible)
-        .onDisappear { model.stopSpeech() }
-        .onChange(of: isVisible) { _, visible in if !visible { model.stopSpeech() } }
-        .onChange(of: scenePhase) { _, phase in if phase != .active { model.stopSpeech() } }
-        .onChange(of: wordSelection != nil) { _, showing in if showing { model.stopSpeech() } }
+        .onDisappear { model.updateAutoReading(enabled: false) }
+        .onChange(of: shouldAutoRead) { _, enabled in model.updateAutoReading(enabled: enabled) }
+        .onChange(of: progressID) { model.updateAutoReading(enabled: shouldAutoRead) }
         .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
             grammar: deps.grammarPoints,
             onSpeak: { word in
-                Task { await deps.speech.speak(SpeechRequest(text: word, purpose: .pronunciation)) }
+                let stopped = model.stopSpeech()
+                Task { await stopped?.value; await deps.speech.speak(SpeechRequest(text: word, purpose: .pronunciation)) }
             }, favoriteActions: WordFavoriteActions(
                 contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
                 toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }),
@@ -167,6 +169,12 @@ struct ActivityActionView: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("activities.result")
+        .onAppear { resultVisible = true; model.updateAutoReading(enabled: shouldAutoRead) }
+        .onDisappear { resultVisible = false; model.updateAutoReading(enabled: false) }
+    }
+
+    private var shouldAutoRead: Bool {
+        autoReadEnabled && resultVisible && isVisible && scenePhase == .active && wordSelection == nil
     }
 
     private var progressID: String {
@@ -246,9 +254,13 @@ struct ActivityActionView: View {
             }
             .accessibilityLabel("中文翻译").accessibilityValue(showsTranslation ? "开启" : "关闭")
             .accessibilityIdentifier("activities.story.translation")
-            Button { model.speak() } label: {
-                Image(systemName: "speaker.wave.2").frame(width: 44, height: 44)
-            }.accessibilityLabel("播放当前剧情").accessibilityIdentifier("activities.story.play")
+            Button { autoReadEnabled.toggle() } label: {
+                Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                    .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                    .frame(width: 44, height: 44)
+            }
+            .accessibilityLabel("自动朗读新剧情").accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+            .accessibilityIdentifier("activities.story.play")
         }
     }
 
@@ -281,12 +293,7 @@ struct ActivityActionView: View {
                 if model.atChoice { choices }
                 else {
                     Button(action: advanceIfAllowed) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "hand.tap").font(.caption)
-                            Text("Tap to continue").font(.caption)
-                            if showsTranslation { Text("轻点继续").font(.caption2) }
-                        }.foregroundStyle(ink.opacity(0.48))
-                            .frame(maxWidth: .infinity).frame(minHeight: 44)
+                        TapToContinueHint(showsTranslation: showsTranslation)
                     }.buttonStyle(.plain).accessibilityIdentifier("activities.action.next")
                 }
             }
@@ -362,6 +369,7 @@ struct ActivityActionView: View {
                 }
                 .buttonStyle(DSSceneEntranceButtonStyle()).disabled(model.selected != nil || model.busy)
                 .accessibilityIdentifier("activities.choice.\(index)")
+                .tutorialFocus("activity.action", active: deps.tutorial != nil && index == 0)
             }
         }
     }
@@ -395,5 +403,6 @@ struct ActivityActionView: View {
                 .foregroundStyle(Color.white)
                 .background(Color.dsTravelNavy, in: RoundedRectangle(cornerRadius: 15))
         }.buttonStyle(DSSceneEntranceButtonStyle()).accessibilityIdentifier(id)
+            .tutorialFocus("activity.action", active: deps.tutorial != nil && id == "activities.action.start")
     }
 }

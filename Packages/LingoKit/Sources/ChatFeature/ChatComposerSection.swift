@@ -19,7 +19,6 @@ extension ChatView {
                 Button {
                     withAnimation(.snappy) {
                         isTextInputFocused = false
-                        guard deps.tutorial == nil else { return }
                         isVoiceMode.toggle()
                         recorder.resetFailure()
                     }

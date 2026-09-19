@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 import BackendKit
 import CoreKit
 import DictKit
@@ -8,9 +9,28 @@ import MediaKit
 import PersistenceKit
 import SpeechKit
 
+/// One disposable tutorial owns the allowance, including reopened chats and calls.
+@MainActor @Observable
+public final class ChatTutorialSession {
+    public private(set) var sentMessages = 0
+    public let limit: Int
+    public init(limit: Int = 5) { self.limit = max(0, limit) }
+    public func reserveMessage() -> Bool {
+        guard sentMessages < limit else { return false }
+        sentMessages += 1
+        return true
+    }
+    public func releaseFailedMessage() { sentMessages = max(0, sentMessages - 1) }
+}
+
 public struct ChatTutorialConfiguration: Sendable {
+    public let session: ChatTutorialSession
+    public let focus: String?
     public let onEvent: @MainActor @Sendable (String) -> Void
-    public init(onEvent: @escaping @MainActor @Sendable (String) -> Void) { self.onEvent = onEvent }
+    public init(session: ChatTutorialSession, focus: String? = nil,
+                onEvent: @escaping @MainActor @Sendable (String) -> Void) {
+        self.session = session; self.focus = focus; self.onEvent = onEvent
+    }
 }
 
 /// ChatFeature 所需依赖，由组合根注入。

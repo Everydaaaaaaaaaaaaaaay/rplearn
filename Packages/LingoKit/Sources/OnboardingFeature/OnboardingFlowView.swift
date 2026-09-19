@@ -443,7 +443,12 @@ struct ChatStoryView: View {
             }
             .padding(16)
             .background(Color.dsBackground.opacity(0.96))
-
+        } else {
+            Button(action: advanceOrFinish) {
+                TapToContinueHint(showsTranslation: true)
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("onboarding.story.continueHint")
         }
     }
 

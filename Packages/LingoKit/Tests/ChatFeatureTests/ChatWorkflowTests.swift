@@ -100,7 +100,8 @@ struct ChatWorkflowTests {
 
     private func fixture(_ provider: Provider = Provider(),
                          now: @escaping @Sendable () -> Date = { .now },
-                         replyDelayScale: Double = 0) async throws -> Fixture {
+                         replyDelayScale: Double = 0,
+                         tutorial: ChatTutorialConfiguration? = nil) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let chat = ChatStore(modelContainer: container), roster = RosterStore(modelContainer: container)
         let economy = EconomyStore(modelContainer: container), items = ItemStore(modelContainer: container)
@@ -108,7 +109,7 @@ struct ChatWorkflowTests {
         let llm = LLMRouter(client: provider, maxRetries: 0)
         let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!), credentialStore: NoCredentials())
         let deps = ChatDependencies(
-            chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container),
+            tutorial: tutorial, chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container),
             llm: llm,
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
             grammarPoints: try GrammarPointStore(url: #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json"))),
@@ -140,6 +141,59 @@ struct ChatWorkflowTests {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+
+    @Test("教程五条额度跨页面共用，文字、语音和通话不能绕过，不可删除好友")
+    func tutorialLimitsAndFriendProtection() async throws {
+        let session = ChatTutorialSession()
+        let provider = Provider(response: "Hello! How was your morning?")
+        let f = try await fixture(provider, tutorial: .init(session: session, onEvent: { _ in }))
+        f.model.draft = "Hi!"
+        await f.model.sendDraft()
+        try await settle(f.model)
+        #expect(f.model.messages.contains { $0.role == .assistant && $0.text.contains("morning") })
+        for index in 2...5 {
+            f.model.draft = "Message \(index)"
+            await f.model.sendDraft()
+        }
+        f.model.cancelPendingReply()
+        let reopened = await f.reopen()
+        reopened.draft = "Sixth message stays in the composer"
+        await reopened.sendDraft()
+        #expect(reopened.draft == "Sixth message stays in the composer")
+        #expect(reopened.quickNotice?.text == "请先完成教程再和朋友聊天吧～")
+        await reopened.sendVoice(capture: .init(fileName: nil, duration: 1, transcript: "Voice bypass"))
+        do {
+            _ = try await reopened.realtimeReplyStream(userText: "Call bypass")
+            Issue.record("Tutorial call exceeded the shared message limit")
+        } catch { }
+        await reopened.refreshMessages()
+        #expect(reopened.messages.filter { $0.role == .user }.count == 5)
+        #expect(session.sentMessages == 5)
+        try await reopened.removeFriend()
+        #expect(reopened.quickNotice?.text == "在教程中无法删除好友～")
+        #expect(try await f.deps.rosterStore.character(id: reopened.character.id)?.isFriend == true)
+    }
+
+    @Test("教程未落库的发送不消耗额度，失败草稿保留")
+    func tutorialFailedSaveRefundsAllowance() async throws {
+        let session = ChatTutorialSession()
+        let f = try await fixture(tutorial: .init(session: session, onEvent: { _ in }))
+        let unloaded = ChatViewModel(character: f.model.character, deps: f.deps)
+        unloaded.draft = "Keep this draft"
+        await unloaded.sendDraft()
+        #expect(session.sentMessages == 0)
+        #expect(unloaded.draft == "Keep this draft")
+    }
+
+    @Test("教程发送失败释放预约额度")
+    func tutorialAllowanceReservation() {
+        let session = ChatTutorialSession()
+        for _ in 0..<5 { #expect(session.reserveMessage()) }
+        #expect(!session.reserveMessage())
+        session.releaseFailedMessage()
+        #expect(session.reserveMessage())
+        #expect(!session.reserveMessage())
     }
 
     @Test("停留信息列表时，后台回复立即刷新头像未读数，无需切换页面")

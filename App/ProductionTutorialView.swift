@@ -12,7 +12,8 @@ import SpeechKit
 import SwiftData
 import SwiftUI
 
-/// Owns a disposable workspace. No production account stores or network clients enter it.
+/// All learning state is disposable; inference uses the regular service so free
+/// exploration behaves like the app. No tutorial roster or memories are synced.
 @MainActor
 struct ProductionTutorialView: View {
     let character: CharacterDTO
@@ -25,86 +26,73 @@ struct ProductionTutorialView: View {
     @State private var finishedEncounter = false
     @State private var encounterStarted = false
     @State private var atEncounterSummary = false
+    @State private var guidanceObscured = false
+    @State private var hasPracticeBubble = true
     @State private var activity: SceneActivity?
+    @State private var encounterChat: CharacterDTO?
     @StateObject private var journey = ActivityJourneyCoordinator()
     @State private var saving = false
     @State private var error: String?
-    @State private var guidanceExpanded = true
     @State private var speechStarts = 0
+    @State private var guideHeight: CGFloat = 120
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var ready: Bool {
-        step == 0 ? translated : step == 1 ? lookedUp : step == 2 ? finishedEncounter : true
+        !guidanceObscured && encounterChat == nil && (step == 0 ? translated : step == 1 ? lookedUp : step == 2 ? finishedEncounter : true)
     }
     private var prompt: String {
+        if step < 2, !hasPracticeBubble {
+            return "可以先聊一句，等旅伴回复后再练习；右侧也能直接结束教程咕。"
+        }
         switch step {
-        case 0: return translated ? "译文会显示在消息下方，菜单里也能播放整句咕。" : "长按旅伴的气泡，再点「翻译」试试咕。"
-        case 1: return lookedUp ? "不必急着记住，遇到不懂的词随时点开就行嘎。" : "点一下 lovely 看释义，再点喇叭听听读音嘎。"
+        case 0: return translated ? "译文就在消息下面，还能在菜单里听整句咕。" : "长按发光的气泡，再点「翻译」试试咕。"
+        case 1: return "点气泡里的英文单词看释义，也可以点小喇叭听读音嘎。"
         case 2:
             if finishedEncounter || atEncounterSummary { return "加好友或道别都由你决定，这次练习不会留下记录咕。" }
-            if encounterStarted { return "跟着故事往下看，遇到选项就选你想说的话咕。" }
+            if encounterStarted { return "轻点空白读下去，遇到选项就选你想说的话咕。" }
             return "点场景里的行动，按「出发」体验一次相遇咕。"
-        default: return "地图里的机票通向别的城市，剧情里还有新故事，剩下的惊喜就交给你好奇心嘎。"
+        default: return "地图里的机票通向别的城市，还有新故事等着你，接下来就自由探索嘎。"
         }
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Button { guidanceExpanded.toggle() } label: {
-                    Label("上手练习", systemImage: guidanceExpanded ? "chevron.up" : "chevron.down")
-                }
-                .accessibilityIdentifier("tutorial.guide")
-                .accessibilityValue(ProcessInfo.processInfo.environment["UI_TEST_TUTORIAL_AUDIO"] == "1" ? "audio:\(speechStarts)" : "")
-                Spacer()
-                Button("跳过教程", action: finish).disabled(saving)
-                    .accessibilityIdentifier("tutorial.skip")
-            }.font(.subheadline).padding(.horizontal, 16).padding(.vertical, 8)
-            if guidanceExpanded {
-                HStack(alignment: .top, spacing: 10) {
-                    BrandMascotView(pose: step == 1 || step == 3 ? .reminder : .guide, size: 36, showsShadow: false)
-                    Text(prompt).font(.subheadline).fixedSize(horizontal: false, vertical: true)
-                }.padding(.horizontal, 16).padding(.bottom, 8)
-            }
+        Group {
             if let workspace {
                 if step < 2 {
                     NavigationStack {
-                        ChatView(character: workspace.character, deps: workspace.chatDependencies(environment: environment) { event in
-                            if event == "translation" { translated = true }
-                            if event == "word" { lookedUp = true }
-                        })
+                        ChatView(character: workspace.character, deps: workspace.chatDependencies(
+                            environment: environment, focus: "chat.bubble", onEvent: chatEvent))
                     }
-                } else if step == 2 {
+                } else {
                     ActivitiesView(journey: journey,
                         deps: workspace.homeDependencies(environment: environment) { event in
                             if event == "encounter" { encounterStarted = true; atEncounterSummary = false }
                             if event == "summary" { atEncounterSummary = true }
+                            if event == "presented" { guidanceObscured = true }
+                            if event == "dismissed" { guidanceObscured = false }
                             if event == "ending" || event == "friend" { finishedEncounter = true }
                         }, storageNamespace: workspace.id.uuidString,
                         isVisible: true, activity: $activity,
                         onClose: {
                             if activity != nil { journey.reset(); activity = nil; encounterStarted = false; atEncounterSummary = false }
-                            else { advance() }
-                        }, onChat: { _ in })
-                } else {
-                    VStack(spacing: 24) {
-                        BrandMascotView(pose: .encouragement, size: 90, showsShadow: false)
-                        Text("接下来，按你的节奏探索").font(.title2.bold())
-                        Text("聊聊天、出门转转，或者打开地图挑个新去处。").foregroundStyle(.secondary)
-                    }.padding(24).frame(maxWidth: .infinity, maxHeight: .infinity)
+                            else { step = 0; translated = false; lookedUp = false }
+                        }, onChat: { encounterChat = $0 })
                 }
             } else {
                 ProgressView("正在准备练习").frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            HStack {
-                if step < 3 {
-                    Button("跳过这一步", action: advance).accessibilityIdentifier("tutorial.skipStep")
-                    Spacer()
+        }
+        .overlayPreferenceValue(TutorialTargetPreference.self) { targets in
+            GeometryReader { geometry in
+                if !guidanceObscured && encounterChat == nil {
+                    guide
+                        .frame(width: min(340, max(240, geometry.size.width - 44)))
+                        .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { guideHeight = $0 }
+                        .position(x: geometry.size.width / 2,
+                                  y: guideY(in: geometry.size, target: (targets["chat.bubble"] ?? targets["activity.action"]).map { geometry[$0] }))
+                        .animation(reduceMotion ? nil : .smooth(duration: 0.3), value: step)
                 }
-                Button(step == 3 ? "开始我的旅程" : "继续") {
-                    step == 3 ? finish() : advance()
-                }.buttonStyle(.borderedProminent).disabled(!ready || saving)
-                    .accessibilityIdentifier("tutorial.next")
-            }.padding(.horizontal, 16).padding(.vertical, 8)
+            }
         }
         .background(Color.dsBackground)
         .task {
@@ -112,24 +100,93 @@ struct ProductionTutorialView: View {
             do { workspace = try await TutorialWorkspace.make(character: character) }
             catch { self.error = "练习暂时无法打开，可以跳过后开始旅程。" }
         }
+        .task(id: "\(step)-\(ready)") {
+            guard ready, workspace != nil else { return }
+            do { try await Task.sleep(for: .seconds(step == 3 ? 4 : 1.6)) } catch { return }
+            guard !Task.isCancelled else { return }
+            if step == 3 { finish() }
+            else {
+                if step == 1 { await environment.speech.stopSpeaking() }
+                withAnimation(reduceMotion ? .easeInOut(duration: 0.2) : .smooth(duration: 0.35)) { step += 1 }
+            }
+        }
+        .fullScreenCover(item: $encounterChat) { person in
+            if let workspace {
+                NavigationStack {
+                    ChatView(character: person, deps: workspace.chatDependencies(environment: environment, onEvent: { _ in }))
+                        .toolbar { ToolbarItem(placement: .topBarLeading) { Button("返回") { encounterChat = nil } } }
+                }
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { _ in speechStarts += 1 }
-        .onDisappear { journey.reset(); Task { await environment.speech.stopSpeaking() } }
+        .onDisappear {
+            // Presenting a real subpage must not destroy the practice underneath.
+            guard encounterChat == nil, !guidanceObscured else { return }
+            journey.reset()
+            Task { await environment.speech.stopSpeaking() }
+        }
         .alert("暂时无法出发", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
             Button("再试一次", action: finish)
             Button("稍后再试", role: .cancel) { error = nil }
         } message: { Text(error ?? "") }
     }
-    private func advance() {
-        journey.reset(); activity = nil; guidanceExpanded = true
-        Task { await environment.speech.stopSpeaking() }
-        step = min(3, step + 1)
+
+    private var guide: some View {
+        HStack(spacing: 8) {
+            HStack(alignment: .center, spacing: 8) {
+                BrandMascotView(pose: step == 1 || step == 3 ? .reminder : .guide, size: 56, showsShadow: false)
+                    .phaseAnimator([false, true]) { content, lifted in
+                        content.offset(y: reduceMotion ? 0 : (lifted ? -2 : 2))
+                    } animation: { _ in .easeInOut(duration: 1.6) }
+                    .id(step).transition(.opacity.combined(with: .scale(scale: reduceMotion ? 1 : 0.94)))
+                Text(prompt).font(.callout.weight(.medium)).lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .id(prompt).transition(.opacity)
+            }
+            .padding(.vertical, 14).padding(.leading, 8).padding(.trailing, 16)
+            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.dsSkyDeep.opacity(0.18)))
+            .shadow(color: .black.opacity(0.09), radius: 12, y: 5)
+            .accessibilityElement(children: .combine)
+            .accessibilityIdentifier("tutorial.guide")
+            .accessibilityValue(ProcessInfo.processInfo.environment["UI_TEST_TUTORIAL_AUDIO"] == "1" ? "audio:\(speechStarts)" : "")
+            Button(action: finish) {
+                Image(systemName: "forward.end").font(.system(size: 17, weight: .medium))
+                    .frame(width: 44, height: 44).background(.regularMaterial, in: Circle())
+            }
+            .buttonStyle(.plain).disabled(saving)
+            .accessibilityLabel("跳过教程").accessibilityIdentifier("tutorial.skip")
+        }
+        .animation(.easeInOut(duration: 0.25), value: prompt)
     }
+
+    private func guideY(in size: CGSize, target: CGRect?) -> CGFloat {
+        let half = guideHeight / 2
+        let top = half + 70, bottom = max(top, size.height - half - 70)
+        let preferred = min(bottom, max(top, size.height * 0.27))
+        guard let target, target.maxY > 0, target.minY < size.height,
+              target.intersects(CGRect(x: 0, y: preferred - half - 16, width: size.width, height: guideHeight + 32))
+        else { return preferred }
+        let below = target.maxY + half + 20
+        return below <= bottom ? below : max(top, min(bottom, target.minY - half - 20))
+    }
+
+    private func chatEvent(_ event: String) {
+        if event == "hasBubble" { hasPracticeBubble = true }
+        if event == "noBubble" { hasPracticeBubble = false }
+        if event == "translation" { translated = true }
+        if event == "word" { lookedUp = true }
+        if event == "presented" { guidanceObscured = true }
+        if event == "dismissed" { guidanceObscured = false }
+    }
+
     private func finish() {
         guard !saving else { return }
         saving = true
         Task {
             await environment.speech.stopSpeaking()
-            if !(await onFinish()) { error = "旅伴选择还没有保存成功，请重试。" }
+            if await onFinish() { await workspace?.cleanupVoiceFiles() }
+            else { error = "旅伴选择还没有保存成功，请重试。" }
             saving = false
         }
     }
@@ -138,6 +195,7 @@ struct ProductionTutorialView: View {
 @MainActor
 private final class TutorialWorkspace {
     let id = UUID()
+    let session = ChatTutorialSession()
     let container: ModelContainer
     let character: CharacterDTO
     let chat: ChatStore
@@ -179,31 +237,34 @@ private final class TutorialWorkspace {
             text: "That sounds lovely. Tell me more!", createdAt: .now)
         return result
     }
-    func chatDependencies(environment: AppEnvironment, onEvent: @escaping @MainActor @Sendable (String) -> Void) -> ChatDependencies {
+    func cleanupVoiceFiles() async {
+        UserDefaults.standard.removePersistentDomain(forName: "lingotrip.tutorial.\(id.uuidString)")
+        for person in (try? await roster.allCharacters()) ?? [] {
+            for file in (try? await chat.clearConversationHistory(characterID: person.id)) ?? [] {
+                VoiceMessageStorage.delete(fileName: file)
+            }
+        }
+    }
+
+    func chatDependencies(environment: AppEnvironment, focus: String? = nil, onEvent: @escaping @MainActor @Sendable (String) -> Void) -> ChatDependencies {
         let regionCatalog = environment.regionCatalog
-        return ChatDependencies(tutorial: .init(onEvent: onEvent), chatStore: chat, rosterStore: roster,
-            favorites: favorites, llm: TutorialLLM(), dictionary: environment.dictionary,
+        return ChatDependencies(tutorial: .init(session: session, focus: focus, onEvent: onEvent), chatStore: chat, rosterStore: roster,
+            favorites: favorites, llm: environment.llmRouter, dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: environment.speech,
-            translator: TranslationService(llm: TutorialLLM()),
+            translator: environment.translator,
             exampleTranslationActions: TutorialExampleTranslations.actions, audioSession: environment.audioSession,
             memoryStore: memory, itemStore: items, economyStore: economy, progression: progression,
-            voiceMedia: voice, regionName: { regionCatalog.region(id: $0)?.nameZh ?? $0 }, replyDelayScale: 0)
+            voiceMedia: voice, regionName: { regionCatalog.region(id: $0)?.nameZh ?? $0 })
     }
     func homeDependencies(environment: AppEnvironment, onEvent: @escaping @MainActor @Sendable (String) -> Void) -> HomeDependencies {
         HomeDependencies(tutorial: .init(onEvent: onEvent), economyStore: economy, itemStore: items,
             ticketStubStore: stubs, storyProgress: stories, regionCatalog: environment.regionCatalog,
             rosterStore: roster, chatStore: chat, favorites: favorites, dictionary: environment.dictionary,
-            grammarPoints: environment.grammarPoints, speech: environment.speech, llm: TutorialLLM(),
+            grammarPoints: environment.grammarPoints, speech: environment.speech, llm: environment.llmRouter,
             exampleTranslationActions: TutorialExampleTranslations.actions)
     }
 }
 private enum TutorialFailure: Error { case unavailable }
-private struct TutorialLLM: LLMClient {
-    func complete(_ request: LLMRequest) async throws -> String { throw TutorialFailure.unavailable }
-    func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
-        AsyncThrowingStream { $0.yield(.textDelta("That's interesting. Thanks for sharing!")); $0.yield(.finished); $0.finish() }
-    }
-}
 private struct TutorialMediaOwner: VoiceMediaOwnerStore {
     func load() -> UUID? { nil }
     func save(_ userID: UUID) {}

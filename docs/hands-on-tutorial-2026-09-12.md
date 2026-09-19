@@ -1,35 +1,33 @@
 # 选角后的上手练习：复用正式界面
 
-## 界面与引导
+## 当前规范（2026-09-19）
 
-选角后进入教程；完成或跳过才保存正式旅伴。设置中的“上手练习”只打开可随时关闭的练习，不重新选人。
+选角后进入教程；完成或跳过才保存正式旅伴。设置中的“上手练习”只打开练习，不重新选人。
 
-App/ProductionTutorialView 在组合根装配正式 ChatFeature.ChatView 和 HomeFeature.ActivitiesView。OnboardingFeature 只接收 TutorialPresenter，不导入其他 Feature。旧独立教学聊天/外出页面已删除。
+`App/ProductionTutorialView` 装配正式 `ChatView`、`ActivitiesView`。OnboardingFeature 只接收 TutorialPresenter，不导入其他 Feature。不要再制作精简版聊天、通话或相遇界面。
 
-聊天的导航栏、消息列表、输入栏、长按菜单、查词浮窗全部来自正式 ChatView。外出直接复用 ActivitySceneView、ActivityActionView、ActivityJourneyCoordinator 和 SocialEncounterModel：实拍场景热点 → 准备页 → 出发动画 → 剧情翻页 → 两次选择 → 加好友/告别。短提示可折叠，下一阶段重新展开。练习的出行动画仍使用正式播放器，仅缩短为 1.5 秒；不等待网络生成。
+- 吉祥物与一两句指引组成屏幕中上部的窄浮层，右侧同一行是 44pt 原生风格跳过图标；不使用顶部折叠栏、底部继续栏或跳过单步按钮。
+- 指引避让教学目标，键盘、释义、语法、聊天设置与通话打开时暂时隐去；文本和吉祥物交叉淡入淡出。吉祥物轻微浮动、目标呼吸高亮尊重 Reduce Motion。
+- 长按翻译成功后自动进入查词；查词并关闭浮窗后进入外出；加好友或告别后给出简短探索提示并完成。无需额外点击继续。
+- 咕/嘎直接接在句尾、标点之前，不独立成句。
+- 开场剧情与 NPC 相遇复用 `TapToContinueHint`。相遇自动朗读默认开启，与聊天共用 `SpeechPlaybackQueue`，完整播完一段再播下一段；离开、关闭或查词时停止队列。
 
-咕咕和嘎嘎的“咕/嘎”直接接在句尾，标点之前，不用逗号或独立短句隔开。文案按当前场景/剧情状态调整，不教学用户应该怎样聊天。
+## 完整功能与限制
+
+教程使用正式模型路由，不再固定回复；电话、语音输入、查词、翻译、语法、收藏、聊天设置均为实际功能。聊天仍走正式打字和气泡投递流程，但练习回复不等待 NPC 下次上线。真实 AI 请求沿用现有服务和计费，不承诺离线或零成本。
+
+`ChatTutorialSession` 在整个临时工作区共享，最多成功保存 5 条用户消息（文字、语音、通话合计）。第 6 条保留草稿、不落库、不请求回复，显示“请先完成教程再和朋友聊天吧～”。发送落库失败释放名额；重开聊天或清空记录不重置计数。
+
+删除好友在 UI 与模型层均拦截，显示“在教程中无法删除好友～”。两者统一使用 `DSQuickNotice`：图标在上、文字在下，12pt 微圆角、系统自适应材质、淡入淡出、停留 2 秒，不阻塞交互。今后同类短反馈复用该组件，图标从统一 SF Symbols 枚举扩展。
 
 ## 数据隔离
 
-每次打开创建独立 inMemory ModelContainer。聊天、好友、收藏、资产和记忆的 stores 全部来自该容器；不会传入正式账号的 stores、BackendClient 或生产 LLM。唯一真实写入是首启最后保存选定旅伴的原有完成回调。重玩完成回调只有 dismiss。
+每次教程创建独立 in-memory ModelContainer；聊天、好友、收藏、资产和记忆不写入账号 stores，不参与同步或公共 NPC 注册。真实推理仍会产生正常服务请求与用量记录。唯一账号业务写入是原有完成回调保存正式选定旅伴。
 
-教程用本地 LLM adapter 提供固定练习回复，其他 AI 请求不联网。初始句翻译预置；不会为任意输入伪造译文。词典例句优先读取开场演示词的预置译文；其余例句使用 Apple 本地翻译兜底，不调用付费 AI。语言包未就绪时，用户点重试可触发系统语言准备流程。录音和实时通话不在本教程开放，避免媒体文件与外部权限流程；正式聊天不受影响。
+语音文件仅本机使用，不上传云端；成功完成/跳过时清理临时聊天引用的语音文件。活动足迹使用临时工作区专属 UserDefaults suite，结束时清理，不再禁用足迹功能。
 
-Home 的教程配置确保不调用 NPC 注册/选人服务、不 reserve/complete ActivityEncounterHistory，也不读写 ActivityJournal。练习加好友调用正式 RosterStore.makeFriend，但仅操作内存容器。各场景使用本地短分支文本，呈现、选择和结束的状态机与正式功能一致。
-
-练习 NPC 使用 Elliot Shaw 的既有头像，源 Assets/NPC/Library/v3/images/npc-0007.png，复制为 App/Resources/tutorial-elliot.png；与正式选定旅伴区分，无远程头像下载。
-
-## 语音修复
-
-旧版自己创建 AVSpeechSynthesizer，绕过正式 AudioSessionCoordinator；已移除。整句和词典读音均通过正式 SpeechService / AdaptiveSpeechService，使用 Supertonic 与系统回退以及现有播放会话管理。教程退出/换阶段停止播放。
-
-UI 测试监听 SpeechKit 的 speechPlaybackDidBegin（系统 didStart 或 PCM 播放开始），分别确认整句和单词两次点击实际进入播放；没有用点击成功冒充发声，也没有验证手机扬声器的物理音量。
+初始句及部分演示例句保留预置翻译，其余词典例句仍使用 Apple 本地翻译。外出沿用正式场景热点、准备页、过场、章节、选项和结束页，保留预备分支与 1.5 秒教学过场以免等待生成。练习 NPC 的既有 Elliot 头像保持不变。
 
 ## 验证
 
-20260912T134234Z-31687：正式聊天长按翻译、整句播放、单词查词与播放、场景热点、出发、两轮剧情选择、练习加好友和设置重玩均通过；已检查三张正式界面截图。
-
-新配置默认 nil，正式 Chat/Home 路径维持原有行为与 15 秒过场。无后端部署。
-
-20260912T134824Z-33088：iPhone SE 深色完整教程（含两次实际音频开始事件）、跳过与保存失败重试 3 项通过；检查了热点、独立头像与结束菜单截图。场景媒体未修改，沿用 Assets/Activities/RealMotion-v5/acceptance-v5.md 的既有范围和未验证项；本轮仅验证教程容器的裁切与热点操作，不新增媒体循环验收结论。
+当前验证记录见 `verification/tutorial-floating-guide-20260919.md`。场景图片/视频未改动，不新增媒体资产验收结论。

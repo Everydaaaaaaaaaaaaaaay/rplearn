@@ -95,6 +95,7 @@ extension ChatViewModel {
 
     /// 移除好友关系；聊天和共同经历仍保留，供“过往联系人”恢复。
     public func removeFriend() async throws {
+        guard canRemoveFriend() else { return }
         cancelPendingReply()
         try await deps.rosterStore.removeFriend(characterID: character.id)
         try? await deps.npcRegistry?.linkPublicNPC(
