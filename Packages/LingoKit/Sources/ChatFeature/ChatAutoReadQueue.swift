@@ -4,10 +4,22 @@ import SpeechKit
 /// One visible chat owns a FIFO; snapshots also prevent replay after translation or reload.
 @MainActor
 final class ChatAutoReadQueue {
-    struct Item {
+    struct Item: Equatable {
         let id: UUID
         let request: SpeechRequest
     }
+    struct Snapshot: Equatable {
+        let enabled: Bool
+        let items: [Item]
+    }
+
+    /// Apply control and message changes together, using the previous rendered
+    /// snapshot as history. A new bubble arriving in the enable frame is not history.
+    func synchronize(from previous: Snapshot, to current: Snapshot) {
+        configure(enabled: current.enabled, existingIDs: previous.items.map(\.id))
+        observe(current.items)
+    }
+
     private let speech: any SpeechService
     private var seen: Set<UUID> = []
     private var pending: [Item] = []
@@ -19,14 +31,15 @@ final class ChatAutoReadQueue {
     init(speech: any SpeechService) { self.speech = speech }
 
     func configure(enabled: Bool, existingIDs: [UUID]) {
+        if self.enabled != enabled || !enabled { seen.formUnion(existingIDs) }
         self.enabled = enabled
-        seen.formUnion(existingIDs)
         if !enabled { interrupt() }
     }
 
     func observe(_ items: [Item]) {
-        for item in items where seen.insert(item.id).inserted {
-            guard enabled, !item.request.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { continue }
+        for item in items {
+            guard !item.request.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                  seen.insert(item.id).inserted, enabled else { continue }
             pending.append(item)
         }
         guard enabled, worker == nil, !pending.isEmpty else { return }

@@ -20,6 +20,45 @@ struct SpeechServiceTests {
         #expect(Supertonic3VoiceCatalog.profile(for: authored).voiceID == "F2")
     }
 
+    @Test("系统语音在启动、逗号停顿时保持等待，旧句回调不能结束新句")
+    func utteranceCompletionOwnership() {
+        var completion = SpeechUtteranceCompletion()
+        let first = UUID(), second = UUID()
+        completion.begin(first)
+        #expect(completion.isPending)
+        completion.finish(UUID())
+        #expect(completion.isPending)
+        completion.finish(first)
+        #expect(!completion.isPending)
+        completion.begin(second)
+        completion.finish(first)
+        #expect(completion.isPending)
+        completion.finish(second)
+        #expect(!completion.isPending)
+    }
+
+    @Test("完成和取消精确释放等待者，重复或迟到回调不重复恢复 continuation")
+    func completionReleasesWaiter() async {
+        await withCheckedContinuation { continuation in
+            var completion = SpeechUtteranceCompletion()
+            let id = UUID()
+            completion.begin(id, waiter: continuation)
+            completion.finish(UUID())
+            #expect(completion.isPending)
+            completion.finish(id)
+            completion.finish(id)
+            completion.cancel()
+            #expect(!completion.isPending)
+        }
+        await withCheckedContinuation { continuation in
+            var completion = SpeechUtteranceCompletion()
+            completion.begin(UUID(), waiter: continuation)
+            completion.cancel()
+            completion.cancel()
+            #expect(!completion.isPending)
+        }
+    }
+
     typealias Candidate = (language: String, qualityRank: Int, name: String)
 
     @Test("高速播放请求只允许最后一次继续")

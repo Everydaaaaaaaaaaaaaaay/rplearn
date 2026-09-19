@@ -290,8 +290,8 @@ public struct ChatView: View {
             }
             await viewModel.load()
             guard !Task.isCancelled else { return }
-            autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
             autoReadReady = true
+            autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
                ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
@@ -311,15 +311,8 @@ public struct ChatView: View {
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
-        .onChange(of: shouldAutoRead) { _, enabled in
-            autoReadQueue.configure(enabled: enabled, existingIDs: viewModel.messages.map(\.id))
-        }
-        .onChange(of: viewModel.messages) { _, messages in
-            autoReadQueue.observe(messages.sorted { $0.orderIndex < $1.orderIndex }.compactMap { message in
-                guard message.role == .user || message.role == .assistant,
-                      message.kind == .text else { return nil }
-                return ChatAutoReadQueue.Item(id: message.id, request: viewModel.speechRequest(for: message))
-            })
+        .onChange(of: autoReadSnapshot) { previous, current in
+            autoReadQueue.synchronize(from: previous, to: current)
         }
         .onDisappear {
             autoReadReady = false
@@ -328,6 +321,16 @@ public struct ChatView: View {
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private var autoReadSnapshot: ChatAutoReadQueue.Snapshot {
+        .init(enabled: shouldAutoRead, items: viewModel.messages.sorted {
+            $0.orderIndex < $1.orderIndex
+        }.compactMap { message in
+            guard message.role == .user || message.role == .assistant,
+                  message.kind == .text else { return nil }
+            return .init(id: message.id, request: viewModel.speechRequest(for: message))
+        })
     }
 
     private var shouldAutoRead: Bool {

@@ -80,4 +80,47 @@ struct ChatAutoReadQueueTests {
         #expect(await speech.stops == 1)
         await queue.interrupt()?.value
     }
+    @Test("首次开启同一帧到达的 NPC 消息不能被当作历史跳过")
+    func enableWithIncomingReply() async throws {
+        let speech = QueuedSpeechProbe()
+        let queue = ChatAutoReadQueue(speech: speech)
+        let history = item("history"), npc = item("Hello, welcome back!")
+        queue.synchronize(from: .init(enabled: false, items: [history]),
+                          to: .init(enabled: true, items: [history, npc]))
+        try await wait { await speech.started == [npc.request.text] }
+        await queue.interrupt()?.value
+    }
+
+    @Test("开启后重复配置不能吞掉新消息，用户和旅伴都连续播放")
+    func repeatedConfiguration() async throws {
+        let speech = QueuedSpeechProbe()
+        let queue = ChatAutoReadQueue(speech: speech)
+        queue.configure(enabled: true, existingIDs: [])
+        let user = item("Hello"), npc = item("Hi, how was your day?")
+        queue.observe([user])
+        try await wait { await speech.started == ["Hello"] }
+        queue.configure(enabled: true, existingIDs: [user.id, npc.id])
+        queue.observe([user, npc])
+        await speech.finish()
+        try await wait { await speech.started == ["Hello", npc.request.text] }
+        await queue.interrupt()?.value
+    }
+
+    @Test("空消息后填入完整文本仍会朗读，包含多个逗号的全文只入队一次")
+    func emptyThenComplete() async throws {
+        let speech = QueuedSpeechProbe()
+        let queue = ChatAutoReadQueue(speech: speech)
+        queue.configure(enabled: true, existingIDs: [])
+        let id = UUID()
+        queue.observe([item("", id: id)])
+        let complete = item("Well, I thought about it, and I agree with you.", id: id)
+        queue.observe([complete])
+        try await wait { await speech.started == [complete.request.text] }
+        queue.observe([complete, item("Next sentence.")])
+        #expect(await speech.started == [complete.request.text])
+        await speech.finish()
+        try await wait { await speech.started == [complete.request.text, "Next sentence."] }
+        await queue.interrupt()?.value
+    }
+
 }

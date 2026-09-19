@@ -8,12 +8,12 @@ public extension Notification.Name {
 }
 
 private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
-    var onCompletion: (@Sendable () -> Void)?
+    var onCompletion: (@Sendable (UUID) -> Void)?
     private let lock = NSLock()
-    private var playbackIDs: [ObjectIdentifier: UUID] = [:]
+    private var playbackIDs: [ObjectIdentifier: (playback: UUID?, completion: UUID)] = [:]
 
-    func register(_ utterance: AVSpeechUtterance, id: UUID?) {
-        lock.withLock { playbackIDs[ObjectIdentifier(utterance)] = id }
+    func register(_ utterance: AVSpeechUtterance, id: UUID?, completion: UUID) {
+        lock.withLock { playbackIDs[ObjectIdentifier(utterance)] = (id, completion) }
     }
 
     func clearPlaybackIDs() { lock.withLock { playbackIDs.removeAll() } }
@@ -22,7 +22,7 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
         _ synthesizer: AVSpeechSynthesizer,
         didStart utterance: AVSpeechUtterance
     ) {
-        let id = lock.withLock { playbackIDs[ObjectIdentifier(utterance)] }
+        let id = lock.withLock { playbackIDs[ObjectIdentifier(utterance)]?.playback }
         Task { @MainActor in
             NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: id)
         }
@@ -32,16 +32,18 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
         _ synthesizer: AVSpeechSynthesizer,
         didFinish utterance: AVSpeechUtterance
     ) {
-        _ = lock.withLock { playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }
-        onCompletion?()
+        if let entry = lock.withLock({ playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }) {
+            onCompletion?(entry.completion)
+        }
     }
 
     func speechSynthesizer(
         _ synthesizer: AVSpeechSynthesizer,
         didCancel utterance: AVSpeechUtterance
     ) {
-        _ = lock.withLock { playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }
-        onCompletion?()
+        if let entry = lock.withLock({ playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }) {
+            onCompletion?(entry.completion)
+        }
     }
 }
 
@@ -184,13 +186,39 @@ struct SpeechPlaybackRequestGate: Sendable {
     }
 }
 
+/// Owned by the speech actor. Only the submitted utterance can release its waiter;
+/// a queued cancellation callback from a replaced synthesizer is harmless.
+struct SpeechUtteranceCompletion {
+    private var id: UUID?
+    private var waiter: CheckedContinuation<Void, Never>?
+    var isPending: Bool { id != nil }
+
+    mutating func begin(_ id: UUID, waiter: CheckedContinuation<Void, Never>? = nil) {
+        cancel()
+        self.id = id
+        self.waiter = waiter
+    }
+
+    mutating func finish(_ id: UUID) {
+        guard self.id == id else { return }
+        cancel()
+    }
+
+    mutating func cancel() {
+        id = nil
+        let pending = waiter
+        waiter = nil
+        pending?.resume()
+    }
+}
+
 /// Apple 本地 TTS：AVSpeechSynthesizer，按口音选择最高质量 voice。
 public actor AppleTTSService: SpeechService {
     private var synthesizer: AVSpeechSynthesizer
     private let delegateBox: SpeechPlaybackDelegateBox
     private let audioSession: AudioSessionCoordinator
     private var voiceCache: [String: AVSpeechSynthesisVoice] = [:]
-    private var completionWaiters: [CheckedContinuation<Void, Never>] = []
+    private var completion = SpeechUtteranceCompletion()
     private var requestGate = SpeechPlaybackRequestGate()
 
     public init(audioSession: AudioSessionCoordinator) {
@@ -198,23 +226,32 @@ public actor AppleTTSService: SpeechService {
         self.delegateBox = delegateBox
         self.synthesizer = Self.makeSynthesizer(delegate: delegateBox)
         self.audioSession = audioSession
-        delegateBox.onCompletion = { [weak self] in
-            Task { await self?.playbackDidComplete() }
+        delegateBox.onCompletion = { [weak self] id in
+            Task { await self?.playbackDidComplete(id) }
         }
     }
 
     public func speak(_ request: SpeechRequest) async {
-        guard !request.text.isEmpty else { return }
+        guard let utterance = await prepareUtterance(request) else { return }
+        let id = UUID()
+        delegateBox.register(utterance, id: request.playbackID, completion: id)
+        completion.begin(id)
+        synthesizer.speak(utterance)
+    }
+
+    private func prepareUtterance(_ request: SpeechRequest) async -> AVSpeechUtterance? {
+        guard !request.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !Task.isCancelled else { return nil }
         let generation = requestGate.issue()
         let mode: AudioSessionCoordinator.Mode = request.purpose == .realtimeConversation
             ? .conversation
             : .playback
         try? await audioSession.activate(mode)
-        guard requestGate.accepts(generation) else { return }
+        guard requestGate.accepts(generation), !Task.isCancelled else { return nil }
 
         // AVSpeechSynthesizer 的 immediate stop 会异步收尾。高速重复点击时如果立刻
         // 复用同一个实例，下一条 utterance 可能在取消过渡态中被静默丢弃。
-        if synthesizer.isSpeaking || synthesizer.isPaused {
+        if completion.isPending || synthesizer.isSpeaking || synthesizer.isPaused {
             replaceSynthesizer()
         }
         let utterance = AVSpeechUtterance(string: request.text)
@@ -222,7 +259,7 @@ public actor AppleTTSService: SpeechService {
             guard let voice = Self.exactLocaleVoice(from: AVSpeechSynthesisVoice.speechVoices(),
                                                    language: request.language, gender: request.voiceHint?.gender) else {
                 Log.speech.warning("所需口音的系统语音不可用，未改用其他口音")
-                return
+                return nil
             }
             utterance.voice = voice
         } else {
@@ -231,15 +268,17 @@ public actor AppleTTSService: SpeechService {
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92 * (request.narrativeDelivery?.speedMultiplier ?? 1)
         utterance.preUtteranceDelay = request.narrativeDelivery?.leadingPause ?? 0
         utterance.postUtteranceDelay = 0.1 + (request.narrativeDelivery?.trailingPause ?? 0)
-        delegateBox.register(utterance, id: request.playbackID)
-        synthesizer.speak(utterance)
+        return utterance
     }
 
     public func speakAndWait(_ request: SpeechRequest) async {
-        await speak(request)
-        guard synthesizer.isSpeaking else { return }
+        guard let utterance = await prepareUtterance(request) else { return }
         await withCheckedContinuation { continuation in
-            completionWaiters.append(continuation)
+            // Register before submitting: startup and punctuation pauses are not completion.
+            let id = UUID()
+            delegateBox.register(utterance, id: request.playbackID, completion: id)
+            completion.begin(id, waiter: continuation)
+            synthesizer.speak(utterance)
         }
     }
 
@@ -265,7 +304,7 @@ public actor AppleTTSService: SpeechService {
             previous.stopSpeaking(at: .immediate)
         }
         synthesizer = Self.makeSynthesizer(delegate: delegateBox)
-        resumeCompletionWaiters()
+        completion.cancel()
     }
 
     /// 是否已有增强/高级音质（供设置页引导用户到系统设置下载增强语音）。
@@ -321,14 +360,8 @@ public actor AppleTTSService: SpeechService {
         voiceCache.removeAll()
     }
 
-    private func playbackDidComplete() {
-        resumeCompletionWaiters()
-    }
-
-    private func resumeCompletionWaiters() {
-        let waiters = completionWaiters
-        completionWaiters.removeAll()
-        waiters.forEach { $0.resume() }
+    private func playbackDidComplete(_ id: UUID) {
+        completion.finish(id)
     }
 
     /// AVSpeechSynthesisVoiceQuality → 数值档：premium 3 > enhanced 2 > default(含其它) 1。
