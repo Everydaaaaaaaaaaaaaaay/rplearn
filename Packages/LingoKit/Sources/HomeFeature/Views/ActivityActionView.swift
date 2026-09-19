@@ -16,6 +16,7 @@ struct ActivityActionView: View {
     @ObservedObject var model: SocialEncounterModel
     @ObservedObject var journey: ActivityJourneyCoordinator
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.tutorialGuideClearance) private var tutorialGuideClearance
     @State private var showsTranslation = false
     @State private var autoReadEnabled = true
     @State private var resultVisible = false
@@ -111,7 +112,7 @@ struct ActivityActionView: View {
                                 .background(ink, in: Capsule())
                         }.buttonStyle(DSSceneEntranceButtonStyle())
                             .accessibilityIdentifier("activities.action.start")
-                            .tutorialFocus("activity.action", active: deps.tutorial != nil)
+                            .tutorialFocus("activity.action", active: deps.tutorial != nil, shape: Capsule())
                             .padding(.top, 10)
                     }
                     .multilineTextAlignment(.center)
@@ -308,13 +309,22 @@ struct ActivityActionView: View {
                 }
             }
             if model.summary {
+                if tutorialGuideClearance > 0 {
+                    Color.clear.frame(height: tutorialGuideClearance).accessibilityHidden(true)
+                }
                 summary
             } else if !model.busy, model.error == nil {
-                if model.atChoice { choices }
+                if model.atChoice {
+                    if tutorialGuideClearance > 0 {
+                        Color.clear.frame(height: tutorialGuideClearance).accessibilityHidden(true)
+                    }
+                    choices
+                }
                 else {
                     Button(action: advanceIfAllowed) {
                         TapToContinueHint(showsTranslation: showsTranslation)
                     }.buttonStyle(.plain).accessibilityIdentifier("activities.action.next")
+                        .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { ["activity.continue": $0] }
                 }
             }
             if model.busy {
@@ -395,6 +405,7 @@ struct ActivityActionView: View {
                 .tutorialFocus("activity.action", active: deps.tutorial != nil && index == 0)
             }
         }
+        .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { ["activity.action": $0] }
     }
 
     private var summary: some View {
@@ -417,6 +428,7 @@ struct ActivityActionView: View {
                 } catch { saveError = "记录未保存，已有数据未改动。请重试。" }
             }
         }
+        .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { ["activity.action": $0] }
     }
 
     private func primary(_ title: String, id: String, action: @escaping () -> Void) -> some View {

@@ -168,6 +168,7 @@ struct ActivitySceneView: View {
                         ForEach(scene.actions) { activity in
                             Button(activity.title) { onSelect(activity) }
                                 .accessibilityIdentifier("activities.scene.\(activity.id)")
+                                .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { ["activity.entrance.\(activity.id)": $0] }
                         }
                     }
                     .font(.title2.bold()).buttonStyle(.borderedProminent)
@@ -237,6 +238,7 @@ struct ActivitySceneView: View {
         .buttonStyle(DSSceneEntranceButtonStyle(keepsPressedAppearance: actions.pressedHotspot == id))
         .accessibilityLabel(title).accessibilityHint("开始这项情境行动")
         .accessibilityIdentifier("activities.scene.\(id)")
+        .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { ["activity.entrance.\(id)": $0] }
         .position(x: bounds.midX * scale, y: bounds.midY * scale)
     }
 

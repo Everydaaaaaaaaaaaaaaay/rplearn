@@ -599,10 +599,9 @@ public struct ChatView: View {
                     }
                 ) {
                     tappableText(message, textColor: nil)
-                        .tutorialFocus("chat.bubble", active: deps.tutorial?.focus == "chat.bubble"
-                            && message.id == viewModel.messages.last(where: { $0.role == .assistant })?.id,
-                            padding: 10)
                 }
+                .environment(\.tutorialBubbleFocused, deps.tutorial?.focus == "chat.bubble"
+                    && message.id == viewModel.messages.last(where: { $0.role == .assistant })?.id)
                 .accessibilityAction(named: "语法解析") {
                     presentGrammarAnalysis(for: message)
                 }
@@ -731,6 +730,7 @@ public struct ChatView: View {
             Label("翻译", systemImage: "character.book.closed.zh")
         }
         Button {
+            deps.tutorial?.onEvent("manualPlayback")
             let stopped = autoReadQueue.interrupt()
             Task { await stopped?.value; await viewModel.speak(message: message) }
         } label: {

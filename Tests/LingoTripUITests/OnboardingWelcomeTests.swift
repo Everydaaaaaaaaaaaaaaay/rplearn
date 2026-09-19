@@ -152,12 +152,21 @@ final class OnboardingWelcomeTests: XCTestCase {
     }
 
     func testHandsOnTutorialUsesLocalTranslationDictionaryAndEncounter() {
+        runHandsOnTutorial(verifyAudio: true)
+    }
+
+    func testTutorialGuideWaitsForPlaybackAndFollowsTargets() {
+        runHandsOnTutorial(verifyAudio: false)
+    }
+
+    private func runHandsOnTutorial(verifyAudio: Bool) {
         let original = XCUIDevice.shared.appearance
         defer { XCUIDevice.shared.appearance = original }
         XCUIDevice.shared.appearance = .dark
         app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
         app.launchEnvironment["UI_TEST_ONBOARDING_SELECTION"] = "1"
         app.launchEnvironment["UI_TEST_TUTORIAL_AUDIO"] = "1"
+        app.launchEnvironment["UI_TEST_TUTORIAL_SILENT"] = verifyAudio ? "0" : "1"
         app.launch()
         XCTAssertTrue(app.buttons["onboarding.selection.confirm"].waitForExistence(timeout: 8))
         app.buttons["onboarding.selection.confirm"].tap()
@@ -167,12 +176,24 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(app.buttons["翻译"].waitForExistence(timeout: 3))
         app.buttons["翻译"].tap()
         XCTAssertTrue(app.staticTexts["听起来很棒，再跟我说说！"].waitForExistence(timeout: 3))
+        let playbackPrompt = app.staticTexts["长按发光的气泡，再点「播放」听整句咕。"]
+        XCTAssertTrue(playbackPrompt.waitForExistence(timeout: 3))
+        let prematureAdvance = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: playbackPrompt)
+        prematureAdvance.isInverted = true
+        XCTAssertEqual(XCTWaiter.wait(for: [prematureAdvance], timeout: 3), .completed,
+                       "朗读步骤必须等待用户操作，不能被翻译完成的计时器跳过")
+        let hint = app.descendants(matching: .any)["tutorial.guide"].firstMatch
+        XCTAssertLessThan(hint.frame.maxY, word.frame.minY)
+        XCTAssertLessThan(word.frame.minY - hint.frame.maxY, 100)
         captureScreen(named: "tutorial-production-chat")
         word.press(forDuration: 1.2)
         app.buttons["播放"].tap()
-        let guide = app.descendants(matching: .any)["tutorial.guide"].firstMatch
-        expectation(for: NSPredicate(format: "value != %@", "audio:0"), evaluatedWith: guide)
-        waitForExpectations(timeout: 30)
+        if verifyAudio {
+            let guide = app.descendants(matching: .any)["tutorial.guide"].firstMatch
+            expectation(for: NSPredicate(format: "value != %@", "audio:0"), evaluatedWith: guide)
+            waitForExpectations(timeout: 30)
+        }
+        XCTAssertTrue(app.staticTexts["点气泡里的英文单词看释义，也可以点小喇叭听读音嘎。"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["tutorial.next"].exists)
         XCTAssertFalse(app.buttons["tutorial.skipStep"].exists)
         word.tap()
@@ -181,9 +202,12 @@ final class OnboardingWelcomeTests: XCTestCase {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.4)).tap()
         let seat = app.buttons["activities.scene.park-seat"]
         XCTAssertTrue(seat.waitForExistence(timeout: 8))
+        XCTAssertTrue(app.staticTexts["点亮着的任意一个「行动」，先选你想做的事咕。"].exists)
         captureScreen(named: "tutorial-production-activities")
         seat.tap()
         XCTAssertTrue(app.buttons["activities.action.start"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["点「出发」，看看这次会遇见谁咕。"].waitForExistence(timeout: 3))
+        captureScreen(named: "tutorial-production-departure")
         app.buttons["activities.action.start"].tap()
         for _ in 0..<15 {
             if app.buttons["activities.encounter.addFriend"].exists { break }

@@ -15,6 +15,7 @@ public struct MessageBubble<Content: View>: View {
         case outgoing
     }
 
+    @Environment(\.tutorialBubbleFocused) private var tutorialFocused
     private let side: Side
     private let groupPosition: MessageBubbleGroupPosition
     private let leadingAccessory: AnyView?
@@ -121,6 +122,7 @@ public struct MessageBubble<Content: View>: View {
                     bubbleShape.stroke(Color.dsBrandInk.opacity(0.18), lineWidth: 0.9)
                 }
             }
+            .tutorialFocus("chat.bubble", active: tutorialFocused, shape: bubbleShape)
             .contentShape(.interaction, bubbleShape)
             .contentShape(.contextMenuPreview, bubbleShape)
     }

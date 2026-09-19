@@ -7,7 +7,8 @@ public struct TutorialTargetPreference: PreferenceKey {
     }
 }
 
-private struct TutorialFocusModifier: ViewModifier {
+private struct TutorialFocusModifier<S: InsettableShape>: ViewModifier {
+    let shape: S
     let id: String
     let active: Bool
     let padding: CGFloat
@@ -18,7 +19,7 @@ private struct TutorialFocusModifier: ViewModifier {
             .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { active ? [id: $0] : [:] }
             .overlay {
                 if active {
-                    RoundedRectangle(cornerRadius: 20)
+                    shape
                         .strokeBorder(Color.dsSkyDeep.opacity(glowing ? 0.85 : 0.3), lineWidth: 2)
                         .shadow(color: Color.dsSkyDeep.opacity(glowing ? 0.3 : 0.05), radius: glowing ? 10 : 3)
                         .padding(-padding).allowsHitTesting(false).accessibilityHidden(true)
@@ -33,6 +34,33 @@ private struct TutorialFocusModifier: ViewModifier {
 
 public extension View {
     func tutorialFocus(_ id: String, active: Bool, padding: CGFloat = 3) -> some View {
-        modifier(TutorialFocusModifier(id: id, active: active, padding: padding))
+        modifier(TutorialFocusModifier(shape: RoundedRectangle(cornerRadius: 20), id: id, active: active, padding: padding))
+    }
+}
+
+private struct TutorialBubbleFocusKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+public extension EnvironmentValues {
+    var tutorialBubbleFocused: Bool {
+        get { self[TutorialBubbleFocusKey.self] }
+        set { self[TutorialBubbleFocusKey.self] = newValue }
+    }
+}
+
+public extension View {
+    func tutorialFocus<S: InsettableShape>(_ id: String, active: Bool, shape: S) -> some View {
+        modifier(TutorialFocusModifier(shape: shape, id: id, active: active, padding: 0))
+    }
+}
+
+private struct TutorialGuideClearanceKey: EnvironmentKey {
+    static let defaultValue: CGFloat = 0
+}
+public extension EnvironmentValues {
+    var tutorialGuideClearance: CGFloat {
+        get { self[TutorialGuideClearanceKey.self] }
+        set { self[TutorialGuideClearanceKey.self] = newValue }
     }
 }
