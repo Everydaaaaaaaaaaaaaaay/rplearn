@@ -68,6 +68,8 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.scene.rain-napkin", app: app)
         tap("activities.action.start", app: app)
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 22))
+        let identity = app.otherElements["activities.encounter.identity"]
+        let identityFrame = identity.frame
         let translation = app.buttons["activities.story.translation"]
         XCTAssertEqual(translation.value as? String, "关闭")
         XCTAssertFalse(app.staticTexts["风里的地图"].exists)
@@ -76,15 +78,21 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertEqual(translation.value as? String, "开启")
         // The control must not also advance the global tap surface.
         XCTAssertFalse(app.otherElements["activities.beat.0.1"].exists)
-        // Tap the paragraph itself, not a next button.
+        // Blank margin advances without competing with word buttons.
         let paragraph = app.otherElements["activities.beat.0.0"]
-        paragraph.coordinate(withNormalizedOffset: CGVector(dx: 0.8, dy: 0.9)).tap()
+        app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: 28, dy: paragraph.frame.midY)).tap()
         XCTAssertTrue(app.otherElements["activities.beat.0.1"].waitForExistence(timeout: 3))
         for _ in 0..<2 { tap("activities.action.next", app: app) }
         let choice = app.buttons["activities.choice.1"]
         XCTAssertTrue(choice.waitForExistence(timeout: 3))
         XCTAssertTrue(choice.isHittable, "新选项应自动滚动至可见位置")
         XCTAssertFalse(app.buttons["选择这项行动"].exists)
+        XCTAssertEqual(identity.frame.minY, identityFrame.minY, accuracy: 1)
+        XCTAssertEqual(identity.frame.height, identityFrame.height, accuracy: 1)
+        let speech = app.buttons["activities.story.play"]
+        speech.tap()
+        XCTAssertEqual(speech.value as? String, "关闭")
+        XCTAssertTrue(speech.isHittable)
         attach("encounter-rain-translated-choices", app: app)
         choice.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         XCTAssertTrue(app.otherElements["activities.beat.1.0"].waitForExistence(timeout: 4))
@@ -102,6 +110,8 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertTrue(start.isHittable)
         XCTAssertGreaterThan(start.frame.midY, app.frame.height * 0.4)
         XCTAssertLessThan(start.frame.midY, app.frame.height * 0.8)
+        XCTAssertLessThan(start.frame.width, app.frame.width * 0.6)
+        XCTAssertEqual(start.frame.midX, app.frame.midX, accuracy: 2)
         attach("centered-preparation", app: app)
     }
 
@@ -259,9 +269,10 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 5))
         attach("occupation-word-lookup", app: app)
         app.buttons["关闭释义"].tap()
-        let word = app.staticTexts.matching(NSPredicate(format: "label MATCHES %@", "map\\s*")).firstMatch
+        let word = app.buttons.matching(NSPredicate(format: "label MATCHES %@", "map\\s*")).firstMatch
         XCTAssertTrue(word.waitForExistence(timeout: 4))
-        word.press(forDuration: 0.7)
+        word.tap()
+        XCTAssertFalse(app.otherElements["activities.beat.0.1"].exists)
         XCTAssertTrue(app.buttons["播放读音"].waitForExistence(timeout: 5))
         attach("chapter-word-lookup", app: app)
         app.buttons["关闭释义"].tap()

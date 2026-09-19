@@ -97,24 +97,33 @@ struct ActivityActionView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    navigationHeader
+                    navigationHeader.padding(8)
+                        .background { paperSurface(RoundedRectangle(cornerRadius: 20)) }
                     Spacer(minLength: 28)
                     VStack(spacing: 22) {
                         Text(activity.title).font(.largeTitle.weight(.semibold))
                         Text(activity.introduction).font(.body).lineSpacing(6)
                             .foregroundStyle(ink.opacity(0.75))
-                        primary("出发", id: "activities.action.start") { journey.start() }
+                        Button { journey.start() } label: {
+                            HStack(spacing: 14) { Text("出发"); Image(systemName: "arrow.right") }
+                                .font(.headline).padding(.horizontal, 30).padding(.vertical, 17)
+                                .foregroundStyle(.white)
+                                .background(ink, in: Capsule())
+                        }.buttonStyle(DSSceneEntranceButtonStyle())
+                            .accessibilityIdentifier("activities.action.start")
+                            .tutorialFocus("activity.action", active: deps.tutorial != nil)
                             .padding(.top, 10)
                     }
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: 480)
+                    .padding(26).frame(maxWidth: 480)
+                    .background { paperSurface(RoundedRectangle(cornerRadius: 28)) }
                     Spacer(minLength: 28)
                 }
                 .padding(.horizontal, 28).padding(.top, 16).padding(.bottom, 38)
                 .frame(minHeight: geometry.size.height)
             }.scrollBounceBehavior(.basedOnSize)
         }
-        .background(Color.dsBackground.ignoresSafeArea())
+        .background { sceneBackdrop }
         .accessibilityIdentifier("activities.confirmation")
     }
 
@@ -125,7 +134,6 @@ struct ActivityActionView: View {
                     if model.isSolitude {
                         solitudeContent.padding(24).background { paperSurface(RoundedRectangle(cornerRadius: 28)) }
                     } else {
-                        if let character = model.character { identity(character) }
                         panel
                     }
                     Color.clear.frame(height: 1).id("encounter-bottom")
@@ -134,8 +142,15 @@ struct ActivityActionView: View {
                 .frame(maxWidth: 620)
                 .frame(maxWidth: .infinity)
             }
-            .contentShape(Rectangle())
-            .onTapGesture { advanceIfAllowed() }
+            .background {
+                Color.clear.contentShape(Rectangle()).onTapGesture { advanceIfAllowed() }
+            }
+            .mask {
+                VStack(spacing: 0) {
+                    LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom).frame(height: 22)
+                    Rectangle().fill(.black)
+                }
+            }
             .scrollBounceBehavior(.basedOnSize)
             .onChange(of: progressID) {
                 withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.3)) {
@@ -144,33 +159,40 @@ struct ActivityActionView: View {
             }
         }
         .safeAreaInset(edge: .top, spacing: 0) {
-            HStack(spacing: 4) {
-                Button(action: onBack) {
-                    Image(systemName: "chevron.left").frame(width: 44, height: 44)
-                }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(model.region.nameEn).font(.caption.weight(.semibold))
-                    Text(sceneName).font(.caption2).foregroundStyle(ink.opacity(0.6))
+            VStack(spacing: 8) {
+                HStack(spacing: 4) {
+                    Button(action: onBack) {
+                        Image(systemName: "chevron.left").frame(width: 44, height: 44)
+                    }.accessibilityLabel("返回场景").accessibilityIdentifier("activities.action.back")
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(model.region.nameEn).font(.caption.weight(.semibold))
+                        Text(sceneName).font(.caption2).foregroundStyle(ink.opacity(0.6))
+                    }
+                    Spacer(minLength: 4)
+                    translationAndSpeech
                 }
-                Spacer(minLength: 4)
-                translationAndSpeech
+                .padding(.horizontal, 16).padding(.vertical, 6)
+                .background { paperSurface(Rectangle()) }
+                if !model.isSolitude, let character = model.character {
+                    identity(character).padding(.horizontal, 22)
+                }
             }
-            .padding(.horizontal, 16).padding(.vertical, 6)
-            .background { paperSurface(Rectangle()) }
         }
         .tint(ink)
-        .background {
-            ActivitySceneView(isVisible: false, showsInterface: false,
-                scene: .constant(activity.scene), cityName: model.region.nameZh,
-                completedCount: 0, onClose: {}, onJournal: {}, onSelect: { _ in })
-                .blur(radius: 10, opaque: true)
-                .overlay(Color.white.opacity(0.26))
-                .ignoresSafeArea().allowsHitTesting(false).accessibilityHidden(true)
-        }
+        .background { sceneBackdrop }
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("activities.result")
         .onAppear { resultVisible = true; model.updateAutoReading(enabled: shouldAutoRead) }
         .onDisappear { resultVisible = false; model.updateAutoReading(enabled: false) }
+    }
+
+    private var sceneBackdrop: some View {
+        ActivitySceneView(isVisible: false, showsInterface: false,
+            scene: .constant(activity.scene), cityName: model.region.nameZh,
+            completedCount: 0, onClose: {}, onJournal: {}, onSelect: { _ in })
+            .blur(radius: 10, opaque: true)
+            .overlay(Color.white.opacity(0.26))
+            .ignoresSafeArea().allowsHitTesting(false).accessibilityHidden(true)
     }
 
     private var shouldAutoRead: Bool {
@@ -197,11 +219,8 @@ struct ActivityActionView: View {
 
     private func identity(_ character: CharacterDTO) -> some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text(model.alreadyKnown ? "PATHS CROSS AGAIN" : "A CHANCE ENCOUNTER")
-                .font(.system(.caption2, design: .rounded, weight: .bold)).tracking(2.2)
-                .foregroundStyle(ink.opacity(0.62))
             HStack(alignment: .center, spacing: 16) {
-                AvatarBadge(name: character.card.name, size: 72, imageName: character.card.avatarAssetName,
+                AvatarBadge(name: character.card.name, size: 52, imageName: character.card.avatarAssetName,
                     remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
                     .padding(5).background(.white.opacity(0.8), in: Circle())
                 VStack(alignment: .leading, spacing: 6) {
@@ -210,17 +229,8 @@ struct ActivityActionView: View {
                         .font(.subheadline).foregroundStyle(ink.opacity(0.65))
                 }
             }
-            if let chapter = model.chapters.first {
-                Rectangle().fill(ink.opacity(0.13)).frame(height: 1)
-                Text(chapter.titleEnglish ?? "A Map in the Wind")
-                    .font(.system(.largeTitle, design: .serif, weight: .medium))
-                    .tracking(-0.7).fixedSize(horizontal: false, vertical: true)
-                if showsTranslation {
-                    Text(chapter.title).font(.subheadline).foregroundStyle(ink.opacity(0.65))
-                }
-            }
         }
-        .padding(24)
+        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background { paperSurface(RoundedRectangle(cornerRadius: 28)) }
         .overlay(RoundedRectangle(cornerRadius: 28).strokeBorder(.white.opacity(0.65)))
@@ -255,10 +265,11 @@ struct ActivityActionView: View {
             .accessibilityLabel("中文翻译").accessibilityValue(showsTranslation ? "开启" : "关闭")
             .accessibilityIdentifier("activities.story.translation")
             Button { autoReadEnabled.toggle() } label: {
-                Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                    .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                Image(systemName: "speaker.wave.2.fill")
+                    .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : ink.opacity(0.35))
                     .frame(width: 44, height: 44)
             }
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: autoReadEnabled)
             .accessibilityLabel("自动朗读新剧情").accessibilityValue(autoReadEnabled ? "开启" : "关闭")
             .accessibilityIdentifier("activities.story.play")
         }
@@ -266,9 +277,18 @@ struct ActivityActionView: View {
 
     private var panel: some View {
         VStack(alignment: .leading, spacing: 22) {
+            if let chapter = model.chapters.first {
+                VStack(alignment: .leading, spacing: 10) {
+                    lookupText(chapter.titleEnglish ?? "A Map in the Wind", key: "title")
+                    if showsTranslation {
+                        Text(chapter.title).foregroundStyle(ink.opacity(0.72))
+                    }
+                }.font(.system(.title, design: .serif, weight: .medium))
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             VStack(alignment: .leading, spacing: 3) {
                 Text("THE MOMENT").font(.caption2.weight(.bold)).tracking(1.7)
-                if showsTranslation { Text("此刻").font(.caption2) }
+                if showsTranslation { Text("此刻").font(.caption2.weight(.bold)) }
             }.foregroundStyle(ink.opacity(0.6))
             ForEach(Array(model.chapters.enumerated()), id: \.offset) { stage, chapter in
                 ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
@@ -282,7 +302,7 @@ struct ActivityActionView: View {
                         Image(systemName: "arrow.turn.down.right").font(.caption)
                         VStack(alignment: .leading, spacing: 6) {
                             Text(choice.english).font(.subheadline.weight(.semibold))
-                            if showsTranslation { Text(choice.chinese).font(.caption) }
+                            if showsTranslation { Text(choice.chinese).font(.subheadline.weight(.semibold)) }
                         }
                     }.foregroundStyle(ink.opacity(0.7)).padding(.vertical, 8)
                 }
@@ -307,7 +327,10 @@ struct ActivityActionView: View {
             }
         }
         .padding(24).frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.white.opacity(0.90), in: RoundedRectangle(cornerRadius: 28))
+        .background {
+            RoundedRectangle(cornerRadius: 28).fill(Color.white.opacity(0.90))
+                .onTapGesture { advanceIfAllowed() }
+        }
         .overlay(RoundedRectangle(cornerRadius: 28).strokeBorder(.white.opacity(0.7)))
     }
 
@@ -322,7 +345,7 @@ struct ActivityActionView: View {
                 .font(isNarration ? .system(.body, design: .serif) : .system(.title3, design: .serif))
                 .lineSpacing(6)
             if showsTranslation {
-                Text(beat.chinese).font(.subheadline).lineSpacing(5).foregroundStyle(ink.opacity(0.62))
+                Text(beat.chinese).font(isNarration ? .system(.body, design: .serif) : .system(.title3, design: .serif)).lineSpacing(6).foregroundStyle(ink.opacity(0.62))
             }
         }
         .padding(.leading, isNarration ? 14 : 0)
@@ -336,7 +359,7 @@ struct ActivityActionView: View {
 
     private func lookupText(_ text: String, key: String) -> some View {
         TappableText(tokens: TokenCache.tokens(for: text, cacheKey: "chapter-\(model.runID)-\(key)"),
-            contextID: "chapter-\(model.runID)-\(key)", textColor: ink, selection: wordSelection, lookupOnLongPress: key != "occupation",
+            contextID: "chapter-\(model.runID)-\(key)", textColor: ink, selection: wordSelection, lookupOnLongPress: false,
             onSelect: { wordSelection = $0 }).fixedSize(horizontal: false, vertical: true)
     }
 
@@ -344,7 +367,7 @@ struct ActivityActionView: View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("YOUR MOVE").font(.caption.weight(.bold)).tracking(1.8)
-                if showsTranslation { Text("你想怎么做？").font(.caption) }
+                if showsTranslation { Text("你想怎么做？").font(.caption.weight(.bold)) }
             }.foregroundStyle(ink.opacity(0.55)).padding(.top, 12).padding(.bottom, 4)
             ForEach(Array(model.chapters[model.step].choices.enumerated()), id: \.offset) { index, choice in
                 Button { model.choose(index) } label: {
@@ -356,7 +379,7 @@ struct ActivityActionView: View {
                             Text(choice.english).font(.system(.body, design: .rounded, weight: .semibold))
                                 .fixedSize(horizontal: false, vertical: true)
                             if showsTranslation {
-                                Text(choice.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                                Text(choice.chinese).font(.system(.body, design: .rounded, weight: .semibold)).foregroundStyle(ink.opacity(0.65))
                             }
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         Image(systemName: "arrow.up.right").font(.caption.weight(.semibold))
