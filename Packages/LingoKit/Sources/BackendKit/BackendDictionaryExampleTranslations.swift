@@ -106,9 +106,30 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
     }
 
     public func learnerExamples(for lemma: String) async throws -> [BackendSharedLearnerExample] {
-        struct Response: Decodable, Sendable { let examples: [BackendSharedLearnerExample] }
+        struct Response: Decodable, Sendable {
+            let examples: [BackendSharedLearnerExample]
+            let status: String?
+        }
+        struct Body: Encodable, Sendable { let lemma: String; let generateOnMiss: Bool }
         guard let encoded = lemma.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else { return [] }
-        let response: Response = try await backend.publicGet("/v1/dictionary/learner-examples/" + encoded)
+        let path = "/v1/dictionary/learner-examples/" + encoded
+        var response: Response = try await backend.publicGet(path)
+        // Only the server's authoritative 'missing' status authorizes a new job.
+        // Old servers, ready caches and cooling-down failures never trigger one.
+        if response.status == "missing" {
+            let body = Body(lemma: lemma, generateOnMiss: true)
+            if let guestID {
+                response = try await backend.sendWithGuestAccess(path: "/v1/dictionary/learner-examples/resolve", method: "POST", body: body, guestID: guestID)
+            } else {
+                response = try await backend.send(path: "/v1/dictionary/learner-examples/resolve", method: "POST", body: body)
+            }
+        }
+        for delay in pollingDelays {
+            guard response.status == "pending" else { break }
+            try await Task.sleep(for: delay)
+            try Task.checkCancellation()
+            response = try await backend.publicGet(path)
+        }
         return response.examples
     }
 

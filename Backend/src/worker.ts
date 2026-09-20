@@ -1,3 +1,7 @@
+import { DictionaryExampleGenerationRepository } from "./modules/dictionary-translation/generation-repository.js";
+import { DictionaryExampleCatalogRepository } from "./modules/dictionary-translation/catalog-repository.js";
+import { createDictionaryExampleCatalogService } from "./modules/dictionary-translation/catalog-service.js";
+import { createDictionaryExampleGenerationProcessor } from "./modules/dictionary-translation/generation-processor.js";
 import "dotenv/config";
 import { shutdownTelemetry } from "./instrumentation.js";
 import { setTimeout as delay } from "node:timers/promises";
@@ -100,6 +104,20 @@ async function main(): Promise<void> {
       },
     },
   );
+  const dictionaryExampleProcessor = createDictionaryExampleGenerationProcessor(
+    new DictionaryExampleGenerationRepository(database),
+    createDictionaryExampleCatalogService(
+      new DictionaryExampleCatalogRepository(database),
+    ),
+    (userId, messages, operationId) =>
+      aiService.complete(userId, {
+        task: "dictionary_example_translation",
+        messages,
+        responseFormat: "json_object",
+        maxOutputTokens: 1400,
+        operationId,
+      }),
+  );
   const worker = new JobWorker({
     cipher: createJobPayloadCipher(config),
     config,
@@ -110,6 +128,7 @@ async function main(): Promise<void> {
       ? {}
       : { processMediaDelete: mediaService.processDeletion }),
     processDictionaryTranslation: dictionaryTranslationProcessor.process,
+    processDictionaryExamples: dictionaryExampleProcessor.process,
     repository: new JobRepository(database),
     workerId,
   });

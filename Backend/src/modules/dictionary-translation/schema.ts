@@ -119,3 +119,59 @@ export const dictionaryExampleTranslations = applicationSchema.table(
     ),
   ],
 );
+
+export const dictionaryExampleLexicon = applicationSchema.table(
+  "dictionary_example_lexicon",
+  {
+    lemma: text("lemma").primaryKey(),
+    definition: text("definition").notNull(),
+    meaning: text("meaning").notNull(),
+    forms: jsonb("forms")
+      .notNull()
+      .default(sql`'[]'`),
+    existingExamples: jsonb("existing_examples")
+      .notNull()
+      .default(sql`'[]'`),
+    sourceVersion: text("source_version").notNull(),
+  },
+  (table) => [
+    check(
+      "dictionary_example_lexicon_existing_examples_check",
+      sql`jsonb_typeof(${table.existingExamples}) = 'array' AND jsonb_array_length(${table.existingExamples}) <= 2`,
+    ),
+  ],
+);
+
+export const dictionaryExampleGenerations = applicationSchema.table(
+  "dictionary_example_generations",
+  {
+    lemma: text("lemma")
+      .primaryKey()
+      .references(() => dictionaryExampleLexicon.lemma),
+    revision: integer("revision").notNull().default(1),
+    // The cross-module ON DELETE SET NULL constraint is owned by migration 0025.
+    jobId: uuid("job_id"),
+    status: text("status").notNull().default("pending"),
+    examples: jsonb("examples")
+      .notNull()
+      .default(sql`'[]'`),
+    attempts: integer("attempts").notNull().default(0),
+    failureCode: text("failure_code"),
+    retryAfter: timestamp("retry_after", { withTimezone: true }),
+    model: text("model"),
+    promptVersion: text("prompt_version")
+      .notNull()
+      .default("learner-examples-runtime-v1"),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    check(
+      "dictionary_example_generations_status_check",
+      sql`${table.status} IN ('pending','ready','failed')`,
+    ),
+    check(
+      "dictionary_example_generations_examples_check",
+      sql`jsonb_typeof(${table.examples}) = 'array' AND jsonb_array_length(${table.examples}) <= 2`,
+    ),
+  ],
+);

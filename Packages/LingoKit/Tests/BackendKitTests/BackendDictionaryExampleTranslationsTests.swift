@@ -58,6 +58,47 @@ struct BackendDictionaryExampleTranslationsTests {
         #expect(requests.allSatisfy { $0.url?.path == "/v1/dictionary/learner-examples/the" && $0.httpMethod == "GET" && $0.value(forHTTPHeaderField: "Authorization") == nil })
     }
 
+    private actor GeneratingCatalogTransport: BackendTransport {
+        var requests: [URLRequest] = []
+        private var statuses: [String]
+        init(_ statuses: [String]) { self.statuses = statuses }
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            requests.append(request)
+            let status = statuses.count > 1 ? statuses.removeFirst() : statuses[0]
+            let examples = status == "ready" ? #"[{"rank":-299,"partOfSpeech":"n","definition":"a lucky discovery","sentence":"Serendipity led us to this quiet cafe.","sentenceZhHans":"机缘巧合让我们发现了这家安静的咖啡馆。","contextualMeaningZhHans":"机缘巧合"}]"# : "[]"
+            return BackendTransportResponse(data: Data("{\"status\":\"\(status)\",\"examples\":\(examples)}".utf8), headers: [:], statusCode: 200)
+        }
+    }
+
+    @Test("缺例句只提交一次生成，其余轮询与后续打开均读取共享结果")
+    func runtimeExamplesGenerateOnceAndPoll() async throws {
+        let transport = GeneratingCatalogTransport(["missing", "pending", "pending", "ready", "ready"])
+        let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!), credentialStore: EmptyCredentialStore(), transport: transport)
+        let resolver = BackendDictionaryExampleTranslationResolver(backend: backend, guestID: "test-device-id", pollingDelays: [.zero, .zero])
+        #expect(try await resolver.learnerExamples(for: "serendipity").count == 1)
+        #expect(try await resolver.learnerExamples(for: "serendipity").count == 1)
+        let requests = await transport.requests
+        #expect(requests.filter { $0.httpMethod == "POST" }.count == 1)
+        #expect(requests.filter { $0.httpMethod == "GET" }.count == 4)
+        let post = try #require(requests.first { $0.httpMethod == "POST" })
+        let data = try #require(post.httpBody)
+        let body = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        #expect(body["lemma"] as? String == "serendipity")
+        #expect(body["generateOnMiss"] as? Bool == true)
+        #expect(body["count"] == nil)
+    }
+
+    @Test("失败冷却或未知词不反复触发生成，轮询超时也不重复提交")
+    func runtimeExamplesDoNotLoopGeneration() async throws {
+        for status in ["failed", "unavailable", "pending"] {
+            let transport = GeneratingCatalogTransport([status])
+            let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!), credentialStore: EmptyCredentialStore(), transport: transport)
+            let resolver = BackendDictionaryExampleTranslationResolver(backend: backend, guestID: "test-device-id", pollingDelays: [.zero])
+            #expect(try await resolver.learnerExamples(for: "serendipity").isEmpty)
+            #expect(await transport.requests.allSatisfy { $0.httpMethod == "GET" })
+        }
+    }
+
     private func request() -> BackendDictionaryExampleTranslationRequest {
         BackendDictionaryExampleTranslationRequest(
             candidateMeaningsZhHans: ["配偶", "对手", "助手", "(象棋)将死"],

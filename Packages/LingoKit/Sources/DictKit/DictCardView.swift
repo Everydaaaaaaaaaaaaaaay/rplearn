@@ -28,6 +28,10 @@ public struct DictCardView: View {
     @State private var isEnglishExpanded = false
     @State private var exampleTranslations: [String: DictExampleTranslation] = [:]
     @State private var translatingExampleIDs: Set<String> = []
+    private struct LoadID: Equatable { let path: [DictTarget]; let retry: Int }
+    @State private var exampleRetry = 0
+    @State private var isFetchingSharedExamples = false
+    @State private var sharedExamplesUnavailable = false
     @State private var appleTranslator = DictExampleAppleTranslator()
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -92,7 +96,7 @@ public struct DictCardView: View {
                 .stroke(Color.dsBorder, lineWidth: 1)
         }
         .shadow(color: .black.opacity(0.14), radius: 14, y: 6)
-        .task(id: path) {
+        .task(id: LoadID(path: path, retry: exampleRetry)) {
             await loadCurrentTarget()
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
@@ -523,6 +527,23 @@ public struct DictCardView: View {
                 }
             }
         }
+        if isFetchingSharedExamples {
+            HStack(spacing: 6) {
+                ProgressView().controlSize(.small)
+                Text("正在补充例句…")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .accessibilityIdentifier("dict.examples.generating")
+        } else if sharedExamplesUnavailable {
+            HStack {
+                Text("例句暂未就绪")
+                Button("重试", systemImage: "arrow.clockwise") { exampleRetry += 1 }
+                    .accessibilityIdentifier("dict.examples.retry")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+        }
     }
 
     @ViewBuilder
@@ -800,6 +821,8 @@ public struct DictCardView: View {
         aiExplanation = nil
         contextualPhrases = []
         relatedPhrases = []
+        isFetchingSharedExamples = false
+        sharedExamplesUnavailable = false
         exampleTranslations = [:]
         translatingExampleIDs = []
         var loadedEntry = await dictionary.lookup(word)
@@ -826,6 +849,9 @@ public struct DictCardView: View {
         isLoading = false
         if var loadedEntry {
             if DictUsageExamplePolicy.groups(for: loadedEntry).flatMap(\.examples).count < 2 {
+                isFetchingSharedExamples = true
+                let localEntry = loadedEntry
+                async let localTranslations: Void = translateUsageExamples(for: localEntry)
                 let shared = await exampleTranslationActions.loadExamples(loadedEntry.word)
                 guard !Task.isCancelled else { return }
                 let valid = shared.filter {
@@ -839,6 +865,10 @@ public struct DictCardView: View {
                         exampleTranslations[example.id] = source.translation
                     }
                 }
+                isFetchingSharedExamples = false
+                sharedExamplesUnavailable = DictUsageExamplePolicy.groups(for: loadedEntry).flatMap(\.examples).count < 2
+                await localTranslations
+                return
             }
             await translateUsageExamples(for: loadedEntry)
         }

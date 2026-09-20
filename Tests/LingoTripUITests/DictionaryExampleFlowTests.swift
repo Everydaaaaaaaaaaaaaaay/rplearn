@@ -76,6 +76,44 @@ final class DictionaryExampleFlowTests: XCTestCase {
         capture("the-shared-examples", app)
     }
 
+    func testRuntimeExamplesAndSharedReuse() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["RUN_LIVE_DICTIONARY_E2E"] == "1")
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "UI_TEST_WELCOME_CAPTURE": "1", "UI_TEST_DICTIONARY_EXAMPLES": "1",
+            "UI_TEST_RUNTIME_EXAMPLES": "1", "UI_TEST_TAB": "contacts",
+            "LINGOTRIP_BACKEND_URL": "https://rplearn.haruyuki.cn"
+        ]
+        app.launch()
+        defer { app.terminate() }
+        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby")).firstMatch
+        XCTAssertTrue(ruby.waitForExistence(timeout: 25))
+        ruby.tap()
+        let chat = app.buttons["发消息"]
+        XCTAssertTrue(chat.waitForExistence(timeout: 5))
+        chat.tap()
+        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Murmuration")).firstMatch
+        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        word.tap()
+        let rows = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "dict.example."))
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in rows.count >= 2 }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 120), .completed, app.debugDescription)
+        let identities = (0..<rows.count).map { rows.element(boundBy: $0).identifier }
+        for id in identities {
+            let row = app.descendants(matching: .any)[id].firstMatch
+            XCTAssertTrue(row.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@ AND NOT (label CONTAINS %@)", "中文翻译：", "加载中")).firstMatch.waitForExistence(timeout: 10))
+        }
+        capture("murmuration-runtime-examples", app)
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.3)).tap()
+        word.tap()
+        for id in identities {
+            XCTAssertTrue(app.descendants(matching: .any)[id].firstMatch.waitForExistence(timeout: 15))
+        }
+        capture("murmuration-shared-reuse", app)
+    }
+
     private func capture(_ name: String, _ app: XCUIApplication) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name

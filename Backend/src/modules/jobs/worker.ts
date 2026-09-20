@@ -8,6 +8,7 @@ import {
   AUTH_EMAIL_VERIFICATION_JOB,
   AUTH_PASSWORD_RESET_JOB,
   DICTIONARY_EXAMPLE_TRANSLATION_JOB,
+  DICTIONARY_EXAMPLE_GENERATION_JOB,
   MEDIA_DELETE_JOB,
   type ClaimedJob,
   type JobEmailNotifier,
@@ -35,11 +36,19 @@ const dictionaryTranslationPayloadSchema = z
     userId: z.uuid(),
   })
   .strict();
+const dictionaryExamplesPayloadSchema = z
+  .object({
+    lemma: z.string().min(1).max(120),
+    revision: z.number().int().positive(),
+    userId: z.uuid(),
+  })
+  .strict();
 const OBSERVABLE_JOB_TYPES: ReadonlySet<string> = new Set([
   ACCOUNT_PURGE_JOB,
   AUTH_EMAIL_VERIFICATION_JOB,
   AUTH_PASSWORD_RESET_JOB,
   DICTIONARY_EXAMPLE_TRANSLATION_JOB,
+  DICTIONARY_EXAMPLE_GENERATION_JOB,
   MEDIA_DELETE_JOB,
 ]);
 
@@ -61,6 +70,10 @@ type JobWorkerDependencies = Readonly<{
   ) => Promise<void>;
   processMediaDelete?: (
     payload: z.infer<typeof mediaDeletePayloadSchema>,
+  ) => Promise<void>;
+  processDictionaryExamples?: (
+    payload: z.infer<typeof dictionaryExamplesPayloadSchema>,
+    attempt: number,
   ) => Promise<void>;
   processDictionaryTranslation?: (
     payload: z.infer<typeof dictionaryTranslationPayloadSchema>,
@@ -110,6 +123,14 @@ export class JobWorker {
         }
         await this.dependencies.processMediaDelete(
           mediaDeletePayloadSchema.parse(payload),
+        );
+        return;
+      case DICTIONARY_EXAMPLE_GENERATION_JOB:
+        if (this.dependencies.processDictionaryExamples === undefined)
+          throw new Error("DictionaryExamplesHandlerUnavailable");
+        await this.dependencies.processDictionaryExamples(
+          dictionaryExamplesPayloadSchema.parse(payload),
+          job.attempts,
         );
         return;
       case DICTIONARY_EXAMPLE_TRANSLATION_JOB:

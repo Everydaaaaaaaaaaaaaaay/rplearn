@@ -258,10 +258,10 @@ def contains_target(sentence: str, word: str, exchange: str | None) -> bool:
     return any(target and any(actual[i:i+len(target)] == target for i in range(len(actual)-len(target)+1)) for target in map(tokens, forms))
 
 
-def iter_jobs(database: sqlite3.Connection) -> Iterator[dict[str, object]]:
+def iter_jobs(database: sqlite3.Connection, words=None) -> Iterator[dict[str, object]]:
     abbreviation = {"n": "n.", "v": "v.", "a": "adj.", "s": "adj.", "r": "adv."}
 
-    for word in iter_top_words(database):
+    for word in (iter_top_words(database) if words is None else words):
         meanings = candidates_by_pos(word["translation"])
         sense_rows = database.execute(
             """

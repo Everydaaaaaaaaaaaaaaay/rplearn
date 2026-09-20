@@ -89,5 +89,46 @@ indexed lemma query. Clients with fewer than two local examples fetch the catalo
 merge valid examples and display their included translations. Empty results are not
 cached, so a subsequent opening sees newly imported content. Offline users keep the
 bundled examples. Older clients need **one app update** to gain this reader; later
-server supplements need no app update. This release does **not** implement paid
-on-demand generation of arbitrary long-tail English examples.
+server supplements need no app update. Runtime completion below extends this reader with on-demand generation for
+recognized long-tail words.
+
+
+## Runtime completion (2026-09-20)
+
+The server owns a lexical baseline exported from the bundled dictionary (761,380
+eligible entries), using the same relevance/display selection as offline seeding.
+Client-supplied definitions and example counts are never trusted.
+
+```
+python3 Tools/Dictionary/LearnerExamples/export_lexicon.py Backend/build/dictionary-lexicon.jsonl.gz
+# On the server, with its environment loaded:
+node dist/cli/import-dictionary-lexicon.js /path/to/dictionary-lexicon.jsonl.gz
+```
+
+The gzip is a generated build artifact, not committed. Import upserts baseline rows
+without deleting generated or historical data. Re-export/import when the bundled
+lexicon changes.
+
+GET `/v1/dictionary/learner-examples/:lemma` reads shared results and status without
+spending credits. Authenticated POST `/v1/dictionary/learner-examples/resolve` with
+`{lemma, generateOnMiss: true}` schedules a persistent job only when needed: zero
+examples adds two; one adds one; two or more adds none. Unknown words are unavailable.
+Guest actors use the same authenticated flow as signed-in users.
+
+The LLM generates English, Chinese translation and contextual gloss together.
+Validation checks count, target/attested form, duplicates, POS and Chinese fields;
+it does not guarantee perfect semantic quality. Generated ranks reserve -299/-298.
+PostgreSQL stores accepted examples for every user; job retention does not remove
+this shared content. Concurrent requests lock the lemma and reuse the same job.
+At most three attempts run, followed by a one-hour failure cooldown. Limits are
+12 new jobs/user/minute, 200/user/day and 5,000 globally/day; cache reads are free
+of generation. Blocked actor requests cannot consume the global quota.
+
+The updated App requests once, polls with a time bound, and offers retry when not
+ready. Closing the card stops polling but leaves the persistent job running.
+Original examples remain usable while completion runs. Included translations avoid
+another translation request. Both tutorial and normal cards use this flow. One app
+update enables the trigger; later shared content appears without another update.
+English generation has no Apple fallback; existing translation fallback is unchanged.
+
+Verification: [runtime verification record](../../../docs/verification/dictionary-runtime-examples-20260920.md).

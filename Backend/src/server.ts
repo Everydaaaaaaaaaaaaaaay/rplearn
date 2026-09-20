@@ -53,6 +53,9 @@ import { registerMediaRoutes } from "./modules/media/routes.js";
 import { createMediaService } from "./modules/media/service.js";
 import { registerNpcRoutes } from "./modules/npc/routes.js";
 import { createNpcService } from "./modules/npc/service.js";
+import { DictionaryExampleGenerationRepository } from "./modules/dictionary-translation/generation-repository.js";
+import { createDictionaryExampleGenerationService } from "./modules/dictionary-translation/generation-service.js";
+import { createJobPayloadCipher } from "./modules/jobs/crypto.js";
 import { DictionaryExampleCatalogRepository } from "./modules/dictionary-translation/catalog-repository.js";
 import { createDictionaryExampleCatalogService } from "./modules/dictionary-translation/catalog-service.js";
 import { registerDictionaryExampleCatalogRoutes } from "./modules/dictionary-translation/catalog-routes.js";
@@ -175,12 +178,19 @@ async function main(): Promise<void> {
       },
     },
   );
-  registerDictionaryExampleCatalogRoutes(
-    app,
-    createDictionaryExampleCatalogService(
-      new DictionaryExampleCatalogRepository(dependencies.database),
-    ),
+  const dictionaryExampleCatalog = createDictionaryExampleCatalogService(
+    new DictionaryExampleCatalogRepository(dependencies.database),
   );
+  const dictionaryExampleGeneration = createDictionaryExampleGenerationService(
+    new DictionaryExampleGenerationRepository(dependencies.database),
+    dictionaryExampleCatalog,
+    createJobPayloadCipher(config),
+    dependencies.redis,
+  );
+  registerDictionaryExampleCatalogRoutes(app, dictionaryExampleCatalog, {
+    generation: dictionaryExampleGeneration,
+    auth: authService,
+  });
   registerDictionaryTranslationRoutes(
     app,
     authService,
