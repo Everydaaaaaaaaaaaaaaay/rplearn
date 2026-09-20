@@ -27,6 +27,7 @@ public enum PublicNPCAdapter {
             regionId: card.regionID,
             signature: card.signature,
             speechStyle: card.speechStyle,
+            readingVoice: card.resolvedReadingVoice,
             activityProfile: card.activityProfile.map {
                 BackendNPCActivityProfile(
                     timeZoneIdentifier: $0.timeZoneIdentifier,
@@ -57,6 +58,7 @@ public enum PublicNPCAdapter {
             birthday: source.birthday,
             hometown: source.hometown,
             languages: source.languages,
+            readingVoice: source.readingVoice,
             personaVoice: PersonaVoiceProfile(
                 values: source.personaVoice.values,
                 flaws: source.personaVoice.flaws,

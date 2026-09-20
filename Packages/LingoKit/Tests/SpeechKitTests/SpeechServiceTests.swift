@@ -6,18 +6,24 @@ import Testing
 
 @Suite("AppleTTS 语音选择")
 struct SpeechServiceTests {
-    @Test("旁白固定 F5，自动和显式人物选角均避开 F5")
-    func narratorHasReservedVoice() {
+    @Test("英国角色使用 M5/F5，用户和旁白共用 F5")
+    func narratorAndBritishCasting() {
         let narrator = SpeechRequest(text: "A quiet morning.", purpose: .characterDialogue, voiceHint: StoryVoiceCasting.narrator)
         #expect(Supertonic3VoiceCatalog.profile(for: narrator).voiceID == "F5")
-        for index in 0..<200 {
-            let request = SpeechRequest(text: "Hello.", purpose: .characterDialogue,
-                voiceHint: SpeechVoiceHint(stableID: "npc-\(index)", gender: "female"))
-            #expect(Supertonic3VoiceCatalog.profile(for: request).voiceID != "F5")
+        for gender in ["male", "female"] {
+            for purpose: SpeechPurpose in [.characterDialogue, .realtimeConversation] {
+                let request = SpeechRequest(text: "Hello.", purpose: purpose,
+                    voiceHint: SpeechVoiceHint(stableID: "british", gender: gender, nationality: "British", supertonicVoice: .f2))
+                #expect(Supertonic3VoiceCatalog.profile(for: request).voiceID == (gender == "male" ? "M5" : "F5"))
+            }
         }
-        let authored = SpeechRequest(text: "Hello.", purpose: .characterDialogue,
-            voiceHint: SpeechVoiceHint(stableID: "nora", supertonicVoice: .f5))
-        #expect(Supertonic3VoiceCatalog.profile(for: authored).voiceID == "F2")
+        #expect(StoryVoiceCasting.voice(speaker: "Nora", proposed: .f2) == .f5)
+        #expect(StoryVoiceCasting.voice(speaker: "你", proposed: .m3) == .f5)
+        #expect(Supertonic3VoiceCatalog.profile(for: SpeechRequest(text: "Hello")).voiceID == "F5")
+        for voice in SupertonicVoice.allCases {
+            let hint = SpeechVoiceHint(stableID: "fixed-character", supertonicVoice: voice)
+            #expect(Supertonic3VoiceCatalog.profile(for: SpeechRequest(text: "Hello", purpose: .characterDialogue, voiceHint: hint)).voiceID == voice.rawValue)
+        }
     }
 
     @Test("系统语音在启动、逗号停顿时保持等待，旧句回调不能结束新句")

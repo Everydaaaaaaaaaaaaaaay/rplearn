@@ -103,24 +103,16 @@ enum Supertonic3VoiceCatalog {
         guard request.purpose != .pronunciation else {
             return Profile(voiceID: "F1", speed: 1.0, silenceDuration: 0.05)
         }
-        if let voice = request.voiceHint?.supertonicVoice {
-            return Profile(voiceID: (request.purpose != .characterDialogue || request.voiceHint?.stableID == StoryVoiceCasting.narratorID ? voice : StoryVoiceCasting.voice(speaker: "character", proposed: voice)).rawValue, speed: 1, silenceDuration: 0.05)
+        let hint = request.voiceHint
+        let voice: SupertonicVoice
+        if hint == nil || hint?.stableID == StoryVoiceCasting.narratorID {
+            voice = .narrator
+        } else if CharacterReadingVoice.isBritish(hint?.nationality ?? "") {
+            voice = hint?.gender == "male" ? .m5 : .f5
+        } else {
+            voice = hint?.supertonicVoice ?? .assigned(name: hint?.stableID ?? "", gender: hint?.gender ?? "", nationality: hint?.nationality ?? "")
         }
-
-        let candidates: [String]
-        switch request.voiceHint?.gender?.lowercased() {
-        case "female": candidates = (1...4).map { "F\($0)" }
-        case "male": candidates = (1...5).map { "M\($0)" }
-        default: candidates = ["F1", "M1", "F2", "M2", "F3", "M3", "F4", "M4", "M5"]
-        }
-        let key = request.voiceHint?.stableID ?? request.language
-        let voiceID = candidates[stableIndex(key, upperBound: candidates.count)]
-
-        // 同一基础音色再配合小幅语速差异，形成更多可辨识的角色表达档案。
-        // 范围刻意保持克制，避免为了“不同”牺牲发音清晰度与自然度。
-        let speeds: [Float] = [0.96, 1.00, 1.04, 1.08, 1.12]
-        let speed = speeds[stableIndex("\(key)-delivery", upperBound: speeds.count)]
-        return Profile(voiceID: voiceID, speed: speed, silenceDuration: 0.05)
+        return Profile(voiceID: voice.rawValue, speed: 1, silenceDuration: 0.05)
     }
 
     static func stableIndex(_ value: String, upperBound: Int) -> Int {

@@ -74,20 +74,24 @@ public struct SpeechVoiceHint: Sendable, Equatable {
 }
 
 /// Exact bundled voice identifiers for authored character casting.
-public enum SupertonicVoice: String, CaseIterable, Sendable {
-    case m1 = "M1", m2 = "M2", m3 = "M3", m4 = "M4", m5 = "M5"
-    case f1 = "F1", f2 = "F2", f3 = "F3", f4 = "F4", f5 = "F5"
-}
+public typealias SupertonicVoice = CharacterReadingVoice
 
-/// F5 is reserved for narration across authored stories and encounters.
+/// Narrator and user messages share one identity across the app.
 public enum StoryVoiceCasting {
     public static let narratorID = "story.narrator"
-    public static let narrator = SpeechVoiceHint(stableID: narratorID, gender: "female", supertonicVoice: .f5)
+    public static let narrator = SpeechVoiceHint(stableID: narratorID, gender: "female", nationality: "British", supertonicVoice: .narrator)
     public static func isNarrator(_ speaker: String) -> Bool {
-        ["旁白", "出发之后", "narrator"].contains(speaker)
+        ["旁白", "出发之后", "narrator", "你", "you", "user"].contains(speaker)
     }
     public static func voice(speaker: String, proposed: SupertonicVoice) -> SupertonicVoice {
-        isNarrator(speaker) ? .f5 : (proposed == .f5 ? .f2 : proposed)
+        if isNarrator(speaker) { return .narrator }
+        switch speaker {
+        case "Oliver", "Oliver Bennett": return .m5
+        case "Nora", "Isla": return .f5
+        case "Ruby", "Ruby Walker": return .f3
+        case "Marcus", "Marcus Rivera": return .m3
+        default: return proposed
+        }
     }
 }
 
@@ -116,9 +120,10 @@ public struct SpeechRequest: Sendable, Equatable {
         playbackID: UUID? = nil
     ) {
         self.text = text
-        self.language = language
+        let resolvedHint = voiceHint ?? (purpose == .general ? StoryVoiceCasting.narrator : nil)
+        self.language = resolvedHint?.stableID == StoryVoiceCasting.narratorID && language.hasPrefix("en") && !requiresExactLocale ? "en-GB" : language
         self.purpose = purpose
-        self.voiceHint = voiceHint
+        self.voiceHint = resolvedHint
         self.engine = engine
         self.requiresExactLocale = requiresExactLocale
         self.delivery = delivery
@@ -325,14 +330,14 @@ public actor AppleTTSService: SpeechService {
     }
 
     private func characterVoice(for request: SpeechRequest) -> AVSpeechSynthesisVoice? {
-        guard request.purpose == .characterDialogue, request.language.lowercased().hasPrefix("en"),
+        guard (request.purpose == .characterDialogue || request.purpose == .realtimeConversation || request.voiceHint?.stableID == StoryVoiceCasting.narratorID), request.language.lowercased().hasPrefix("en"),
               let hint = request.voiceHint, let genderName = hint.gender?.lowercased(),
               ["male", "female"].contains(genderName) else { return nil }
         let key = "\(request.language)-\(hint.stableID)-\(hint.gender ?? "")"
         if let voice = voiceCache[key] { return voice }
         let gender: AVSpeechSynthesisVoiceGender = genderName == "male" ? .male : .female
         let voices = AVSpeechSynthesisVoice.speechVoices()
-        let narrator = Self.selectBestVoice(from: voices.filter { $0.language.hasPrefix("en") && $0.gender == .female }, language: "en-US")
+        let narrator = Self.selectBestVoice(from: voices.filter { $0.language.hasPrefix("en") && $0.gender == .female }, language: "en-GB")
         if hint.stableID == StoryVoiceCasting.narratorID { return narrator }
         let candidates = voices.filter {
             $0.language.hasPrefix("en") && $0.gender == gender && $0.identifier != narrator?.identifier
@@ -527,7 +532,8 @@ public struct VoiceReport: Sendable, Equatable, Identifiable {
 /// 角色国籍 → TTS 口音映射。
 public enum AccentMapper {
     public static func language(forNationality nationality: String) -> String {
-        switch nationality.lowercased() {
+        if CharacterReadingVoice.isBritish(nationality) { return "en-GB" }
+        return switch nationality.lowercased() {
         case "british", "english", "uk": "en-GB"
         case "australian", "australia": "en-AU"
         case "american", "usa", "us": "en-US"

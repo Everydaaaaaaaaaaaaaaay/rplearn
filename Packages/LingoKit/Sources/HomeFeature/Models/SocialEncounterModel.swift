@@ -178,11 +178,11 @@ final class SocialEncounterModel: ObservableObject {
                 speechIDs[key] = id
                 let narrator = StoryVoiceCasting.isNarrator(beat.speaker)
                 items.append(.init(id: id, request: SpeechRequest(text: beat.english,
-                    language: narrator ? "en-US" : AccentMapper.language(forNationality: character.card.nationality),
+                    language: narrator ? "en-GB" : AccentMapper.language(forNationality: character.card.nationality),
                     purpose: .characterDialogue,
                     voiceHint: narrator ? StoryVoiceCasting.narrator : SpeechVoiceHint(
                         stableID: character.id.uuidString.lowercased(), gender: character.card.gender.rawValue,
-                        nationality: character.card.nationality))))
+                        nationality: character.card.nationality, supertonicVoice: character.card.resolvedReadingVoice))))
             }
         }
         speechQueue.configure(enabled: enabled, existingIDs: items.dropLast().map(\.id))

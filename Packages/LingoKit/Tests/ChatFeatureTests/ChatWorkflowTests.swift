@@ -127,6 +127,23 @@ struct ChatWorkflowTests {
         await model.load()
         return Fixture(model: model, deps: deps)
     }
+    @Test("聊天角色使用存档音色，用户使用全局旁白音色")
+    func readingVoiceRequests() async throws {
+        let fixture = try await fixture()
+        for role: MessageRole in [.assistant, .user] {
+            let message = MessageDTO(id: UUID(), role: role, kind: .text, text: "Hello.", orderIndex: 0)
+            let request = fixture.model.speechRequest(for: message)
+            #expect(request.language == "en-GB")
+            #expect(request.purpose == .characterDialogue)
+            if role == .assistant {
+                #expect(request.voiceHint?.supertonicVoice == fixture.model.character.card.resolvedReadingVoice)
+                #expect(request.voiceHint?.stableID != StoryVoiceCasting.narratorID)
+            } else {
+                #expect(request.voiceHint == StoryVoiceCasting.narrator)
+            }
+        }
+    }
+
     private func settle(_ model: ChatViewModel) async throws {
         let deadline = ContinuousClock.now.advanced(by: .seconds(30))
         while model.isStreaming || model.isWaitingForUserBurst {

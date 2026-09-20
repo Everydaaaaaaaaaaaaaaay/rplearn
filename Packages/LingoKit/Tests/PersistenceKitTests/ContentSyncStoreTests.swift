@@ -132,6 +132,7 @@ struct ContentSyncStoreTests {
                 conversationalHabits: ["asks specific questions"]
             )
         )
+        remoteCard.readingVoice = .f5
         remoteCard.activityProfile = NPCActivityProfile(
             timeZoneIdentifier: "Europe/London",
             rhythm: .earlyBird,
@@ -212,6 +213,7 @@ struct ContentSyncStoreTests {
         #expect(restoredCharacter.card.avatarID == "portrait-0042")
         #expect(restoredCharacter.card.signature == "Take the scenic route.")
         #expect(restoredCharacter.card.personaVoice?.values == ["curiosity"])
+        #expect(restoredCharacter.card.readingVoice == .f5)
         #expect(restoredCharacter.card.activityProfile?.rhythm == .earlyBird)
         #expect(restoredCharacter.card.activityProfile?.focusDurationMinutes == 8)
         #expect(restoredCharacter.travelerID == TravelerIDGenerator.make(from: characterID))

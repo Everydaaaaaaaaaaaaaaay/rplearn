@@ -177,13 +177,14 @@ public final class ChatViewModel {
     func speechRequest(for message: MessageDTO) -> SpeechRequest {
         SpeechRequest(
             text: message.text,
-            language: AccentMapper.language(forNationality: character.card.nationality),
-            purpose: message.role == .assistant ? .characterDialogue : .pronunciation,
+            language: message.role == .assistant ? AccentMapper.language(forNationality: character.card.nationality) : "en-GB",
+            purpose: .characterDialogue,
             voiceHint: message.role == .assistant ? SpeechVoiceHint(
                 stableID: character.id.uuidString.lowercased(),
                 gender: character.card.gender.rawValue,
-                nationality: character.card.nationality
-            ) : nil
+                nationality: character.card.nationality,
+                supertonicVoice: character.card.resolvedReadingVoice
+            ) : StoryVoiceCasting.narrator
         )
     }
 

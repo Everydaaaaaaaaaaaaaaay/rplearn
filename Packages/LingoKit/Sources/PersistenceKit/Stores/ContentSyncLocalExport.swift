@@ -29,6 +29,7 @@ extension ContentSyncStore {
                 signature: card?.signature,
                 personaVoice: card?.personaVoice
             )
+            cardPayload.readingVoice = card?.resolvedReadingVoice
             cardPayload.activityProfile = card?.activityProfile
             let payload = ContentCharacterPayload(
                 card: cardPayload,

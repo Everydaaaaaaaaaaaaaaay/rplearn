@@ -1,4 +1,5 @@
 import Foundation
+import CoreKit
 
 public struct BackendPublicNPCVoice: Codable, Sendable, Equatable {
     public let anchorLines: [String]
@@ -55,6 +56,7 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
     public let regionId: String
     public let signature: String?
     public let speechStyle: String?
+    public let readingVoice: CharacterReadingVoice?
     public let activityProfile: BackendNPCActivityProfile?
 
     public init(
@@ -74,6 +76,7 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
         regionId: String,
         signature: String?,
         speechStyle: String?,
+        readingVoice: CharacterReadingVoice? = nil,
         activityProfile: BackendNPCActivityProfile? = nil
     ) {
         self.age = age
@@ -92,6 +95,7 @@ public struct BackendPublicNPCCard: Codable, Sendable, Equatable {
         self.regionId = regionId
         self.signature = signature
         self.speechStyle = speechStyle
+        self.readingVoice = readingVoice
         self.activityProfile = activityProfile
     }
 }

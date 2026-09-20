@@ -1,4 +1,5 @@
 import Foundation
+import CoreKit
 
 /// NPC 的长期作息倾向。具体在线片段由角色、当地时间和日期稳定生成，
 /// 不把某次随机在线结果写回角色设定。
@@ -52,6 +53,11 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     public var birthday: String?
     public var hometown: String?
     public var languages: [String]?
+    public var readingVoice: CharacterReadingVoice?
+    public var resolvedReadingVoice: CharacterReadingVoice {
+        if CharacterReadingVoice.isBritish(nationality) { return gender == .male ? .m5 : .f5 }
+        return readingVoice ?? .assigned(name: name, gender: gender.rawValue, nationality: nationality, age: age)
+    }
     public var personaVoice: PersonaVoiceProfile?
     public var activityProfile: NPCActivityProfile?
 
@@ -74,6 +80,7 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         birthday: String? = nil,
         hometown: String? = nil,
         languages: [String]? = nil,
+        readingVoice: CharacterReadingVoice? = nil,
         personaVoice: PersonaVoiceProfile? = nil,
         activityProfile: NPCActivityProfile? = nil
     ) {
@@ -95,6 +102,7 @@ public struct CharacterCard: Sendable, Codable, Equatable {
         self.birthday = birthday
         self.hometown = hometown
         self.languages = languages
+        self.readingVoice = readingVoice ?? .assigned(name: name, gender: gender.rawValue, nationality: nationality, age: age)
         self.personaVoice = personaVoice
         self.activityProfile = activityProfile
     }
@@ -102,7 +110,9 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     public func encodedJSON() -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.sortedKeys]
-        guard let data = try? encoder.encode(self) else { return "{}" }
+        var stored = self
+        stored.readingVoice = resolvedReadingVoice
+        guard let data = try? encoder.encode(stored) else { return "{}" }
         return String(decoding: data, as: UTF8.self)
     }
 

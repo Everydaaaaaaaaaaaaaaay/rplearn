@@ -58,6 +58,7 @@ export const publicCard = z
     regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
     signature: nullableText(240),
     speechStyle: nullableText(2_000),
+    readingVoice: z.enum(["M1", "M2", "M3", "M4", "M5", "F1", "F2", "F3", "F4", "F5"]).optional(),
     activityProfile: z
       .object({
         timeZoneIdentifier,
@@ -68,6 +69,8 @@ export const publicCard = z
       .optional(),
   })
   .strict()
-  .transform(({ activityProfile, ...card }) =>
-    activityProfile === undefined ? card : { ...card, activityProfile },
-  );
+  .transform(({ activityProfile, readingVoice, ...card }) => ({
+    ...card,
+    ...(activityProfile === undefined ? {} : { activityProfile }),
+    ...(readingVoice === undefined ? {} : { readingVoice }),
+  }));

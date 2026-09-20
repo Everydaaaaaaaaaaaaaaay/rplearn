@@ -41,7 +41,8 @@ private final class RealtimeConversationCoordinator {
         let voiceHint = SpeechVoiceHint(
             stableID: character.id.uuidString.lowercased(),
             gender: character.card.gender.rawValue,
-            nationality: character.card.nationality
+            nationality: character.card.nationality,
+            supertonicVoice: character.card.resolvedReadingVoice
         )
         self.accessClient = deps.accessClient
         self.chat = chat

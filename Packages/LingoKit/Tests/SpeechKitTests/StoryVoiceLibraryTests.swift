@@ -37,6 +37,20 @@ struct StoryVoiceLibraryTests {
         #expect(library.request(story: "test", node: "line", speaker: "Oliver", text: "One page.")?.voiceHint?.supertonicVoice == .m5)
     }
 
+    @Test("旧预制音色不再匹配角色时使用正确音色实时合成")
+    func staleCastingFallsBack() throws {
+        let (folder, url) = try fixture()
+        defer { try? FileManager.default.removeItem(at: folder) }
+        var manifest = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+        var clips = try #require(manifest["clips"] as? [[String: Any]])
+        clips[0]["voice"] = "M1"
+        manifest["clips"] = clips
+        try JSONSerialization.data(withJSONObject: manifest).write(to: url)
+        let library = try StoryVoiceLibrary(manifestURL: url)
+        #expect(library.clip(story: "test", node: "line", speaker: "Oliver", text: "One page.") == nil)
+        #expect(library.request(story: "test", node: "line", speaker: "Oliver", text: "One page.")?.voiceHint?.supertonicVoice == .m5)
+    }
+
     @Test("重复映射和跨目录文件使清单失效")
     func rejectAmbiguity() throws {
         for (filename, duplicate) in [("../sv-other.m4a", false), ("sv-test-line.m4a", true)] {

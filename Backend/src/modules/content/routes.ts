@@ -161,6 +161,7 @@ const characterPayload = z
         nationality: z.string().trim().min(1).max(80),
         occupation: z.string().trim().min(1).max(120),
         personality: z.string().trim().min(1).max(2_000),
+        readingVoice: z.enum(["M1", "M2", "M3", "M4", "M5", "F1", "F2", "F3", "F4", "F5"]).optional(),
         personaVoice: personaVoicePayload.optional(),
         activityProfile: activityProfilePayload.optional(),
         regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),

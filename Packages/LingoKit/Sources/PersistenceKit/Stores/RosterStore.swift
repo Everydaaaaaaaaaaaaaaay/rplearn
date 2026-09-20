@@ -30,6 +30,10 @@ public actor RosterStore {
         let allExisting = try modelContext.fetch(FetchDescriptor<CharacterEntity>())
         var backfilledIdentity = false
         for entity in allExisting {
+            if let card = CharacterCard.decode(fromJSON: entity.cardJSON), card.readingVoice != card.resolvedReadingVoice {
+                entity.cardJSON = card.encodedJSON()
+                backfilledIdentity = true
+            }
             if entity.travelerID == nil || entity.travelerID?.isEmpty == true {
                 entity.travelerID = TravelerIDGenerator.make(from: entity.characterID)
                 backfilledIdentity = true
@@ -478,6 +482,7 @@ public actor RosterStore {
             signature: card?.signature,
             personaVoice: card?.personaVoice
         )
+        cardPayload.readingVoice = card?.resolvedReadingVoice
         cardPayload.activityProfile = card?.activityProfile
         let payload = ContentCharacterPayload(
             card: cardPayload,

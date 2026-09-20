@@ -1,4 +1,5 @@
 import Foundation
+import CoreKit
 
 struct ContentCharacterPayload: Codable {
     struct Card: Codable {
@@ -20,6 +21,7 @@ struct ContentCharacterPayload: Codable {
         let regionId: String
         let speechStyle: String?
         var signature: String? = nil
+        var readingVoice: CharacterReadingVoice? = nil
         var personaVoice: PersonaVoiceProfile? = nil
         var activityProfile: NPCActivityProfile? = nil
 

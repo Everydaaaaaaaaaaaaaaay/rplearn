@@ -7,11 +7,32 @@ import UIKit
 /// 校验随包种子数据的完整性与一致性。
 @Suite("种子数据")
 struct SeedDataTests {
+    @Test("音色属性保存，旧人物卡无音色时稳定恢复")
+    func readingVoicePersistence() throws {
+        let url = try #require(Bundle.main.url(forResource: "main_characters", withExtension: "json"))
+        let cards = try SeedData.mainCharacterCards(url: url)
+        for card in cards {
+            var old = card
+            old.readingVoice = nil
+            let raw = try JSONEncoder().encode(old)
+            let decoded = try JSONDecoder().decode(CharacterCard.self, from: raw)
+            #expect(decoded.resolvedReadingVoice == card.resolvedReadingVoice)
+            let stored = try #require(CharacterCard.decode(fromJSON: decoded.encodedJSON()))
+            #expect(stored.readingVoice == card.resolvedReadingVoice)
+        }
+        var custom = cards[1]
+        custom.readingVoice = .f2
+        #expect(CharacterCard.decode(fromJSON: custom.encodedJSON())?.readingVoice == .f2)
+        custom.nationality = "British"
+        #expect(custom.resolvedReadingVoice == .f5)
+    }
+
     @Test("main_characters.json：3 位主角色，地区各不相同且都在 regions.json 中")
     func mainCharacters() throws {
         let cardsURL = try #require(Bundle.main.url(forResource: "main_characters", withExtension: "json"))
         let cards = try SeedData.mainCharacterCards(url: cardsURL)
         #expect(cards.count == 3)
+        #expect(cards.map(\.readingVoice) == [.m5, .f3, .m3])
 
         let regionsURL = try #require(Bundle.main.url(forResource: "regions", withExtension: "json"))
         let catalog = try RegionCatalog(url: regionsURL)
