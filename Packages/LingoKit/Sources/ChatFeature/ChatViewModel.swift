@@ -546,7 +546,12 @@ public final class ChatViewModel {
                 try await wait(until: plan.generationStartsAt)
                 try await waitForUserToFinish(plan: plan)
                 let wordCount = messages.last(where: { $0.role == .user })?.text.split(whereSeparator: \.isWhitespace).count ?? 0
-                try await wait(until: deps.now().addingTimeInterval(2.5 + min(8, Double(wordCount) * 0.2)))
+                // Preserve turn-taking/typing grace on both sides of preparation.
+                // The shorter focused preparation starts only after the user yields.
+                let preparationDelay = plan.continuingConversation
+                    ? plan.typingStartsAt.timeIntervalSince(plan.noticedAt)
+                    : 2.5 + min(8, Double(wordCount) * 0.2)
+                try await wait(until: deps.now().addingTimeInterval(preparationDelay))
                 try await waitForUserToFinish(plan: plan)
                 try Task.checkCancellation()
             } catch {

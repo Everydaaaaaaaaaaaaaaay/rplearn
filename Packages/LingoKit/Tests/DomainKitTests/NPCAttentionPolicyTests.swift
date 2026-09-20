@@ -69,6 +69,36 @@ struct NPCAttentionPolicyTests {
         ).attention != .focused)
     }
 
+    @Test("持续交谈两到三秒开始输入，超时与初次相遇保留原时序")
+    func continuingConversationTypingTiming() {
+        let npc = character(rhythm: .daytime, focusMinutes: 7)
+        let assistant = message(role: .assistant, order: 0, at: referenceDate)
+        for seconds in [1.0, 60, 420] {
+            for _ in 0..<64 {
+                let user = message(role: .user, order: 1,
+                                   at: referenceDate.addingTimeInterval(seconds))
+                let plan = policy.replyPlan(for: npc, userMessage: user, history: [assistant, user])
+                #expect(plan.continuingConversation)
+                #expect((2.0...3.0).contains(plan.typingStartsAt.timeIntervalSince(user.createdAt)))
+                #expect(plan.generationStartsAt <= plan.typingStartsAt)
+                #expect(plan.firstBubbleAt > plan.typingStartsAt)
+                #expect(plan == policy.replyPlan(for: npc, userMessage: user, history: [assistant, user]))
+            }
+        }
+        let expired = message(role: .user, order: 1, at: referenceDate.addingTimeInterval(421))
+        let expiredPlan = policy.replyPlan(for: npc, userMessage: expired, history: [assistant, expired])
+        #expect(!expiredPlan.continuingConversation)
+        #expect(expiredPlan == policy.makeReplyPlan(attention: expiredPlan.attention,
+            userMessageID: expired.id, sentAt: expired.createdAt))
+        var newFriend = npc
+        newFriend.metAt = referenceDate
+        let first = message(role: .user, order: 0, at: referenceDate)
+        let firstPlan = policy.replyPlan(for: newFriend, userMessage: first, history: [first])
+        #expect(!firstPlan.continuingConversation)
+        #expect(firstPlan == policy.makeReplyPlan(attention: .focused,
+            userMessageID: first.id, sentAt: first.createdAt))
+    }
+
     @Test("回复计划跨重启重建仍完全一致")
     func planIsStableForPersistedMessageIdentity() {
         let id = UUID(uuidString: "4F4A0464-8C15-43D7-9DFB-30B98DF72673")!

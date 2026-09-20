@@ -38,6 +38,7 @@ public struct NPCReplyPlan: Sendable, Equatable {
     public let generationStartsAt: Date
     public let typingStartsAt: Date
     public let firstBubbleAt: Date
+    public let continuingConversation: Bool
 
     public init(
         userMessageID: UUID,
@@ -45,7 +46,8 @@ public struct NPCReplyPlan: Sendable, Equatable {
         noticedAt: Date,
         generationStartsAt: Date,
         typingStartsAt: Date,
-        firstBubbleAt: Date
+        firstBubbleAt: Date,
+        continuingConversation: Bool = false
     ) {
         self.userMessageID = userMessageID
         self.attention = attention
@@ -53,6 +55,7 @@ public struct NPCReplyPlan: Sendable, Equatable {
         self.generationStartsAt = generationStartsAt
         self.typingStartsAt = typingStartsAt
         self.firstBubbleAt = firstBubbleAt
+        self.continuingConversation = continuingConversation
     }
 }
 
@@ -111,7 +114,8 @@ public struct NPCAttentionPolicy: Sendable {
         return makeReplyPlan(
             attention: attention,
             userMessageID: userMessage.id,
-            sentAt: userMessage.createdAt
+            sentAt: userMessage.createdAt,
+            continuingConversation: isFocused
         )
     }
 
@@ -251,7 +255,8 @@ public struct NPCAttentionPolicy: Sendable {
     func makeReplyPlan(
         attention: NPCAttentionLevel,
         userMessageID: UUID,
-        sentAt: Date
+        sentAt: Date,
+        continuingConversation: Bool = false
     ) -> NPCReplyPlan {
         let range = switch attention {
         case .focused: focusedReplyRange
@@ -279,7 +284,16 @@ public struct NPCAttentionPolicy: Sendable {
             ),
             max(0.8, firstDelay - 0.5)
         )
-        let typingStartsAt = firstBubbleAt.addingTimeInterval(-typingLead)
+        // Only a recent actual reply establishes conversational attention. The
+        // welcome-online window alone must retain the existing first-turn pacing.
+        let typingStartsAt = continuingConversation
+            ? sentAt.addingTimeInterval(sampledDuration(
+                in: 2...3, messageID: userMessageID, salt: "focused-typing-start"
+            ))
+            : firstBubbleAt.addingTimeInterval(-typingLead)
+        let deliveryAt = continuingConversation
+            ? max(firstBubbleAt, typingStartsAt.addingTimeInterval(typingLead))
+            : firstBubbleAt
 
         let noticedAt: Date
         switch attention {
@@ -315,7 +329,8 @@ public struct NPCAttentionPolicy: Sendable {
             noticedAt: noticedAt,
             generationStartsAt: max(noticedAt, generationStartsAt),
             typingStartsAt: typingStartsAt,
-            firstBubbleAt: firstBubbleAt
+            firstBubbleAt: deliveryAt,
+            continuingConversation: continuingConversation
         )
     }
 
