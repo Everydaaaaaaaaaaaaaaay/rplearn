@@ -487,16 +487,8 @@ private struct WelcomeDictionaryScreen: View {
                         WelcomeChatComposer()
                     }
                     .background(Color.dsBackground)
-                    DictCardView(target: .word("spontaneous"), dictionary: dictionary, grammar: grammar,
-                        onSpeak: { _ in },
-                        exampleTranslationActions: .init(translate: { request in
-                            switch request.sentence {
-                            case "spontaneous laughter": .init(sentenceZh: "自然而然的笑声")
-                            case "spontaneous combustion": .init(sentenceZh: "自燃")
-                            default: nil
-                            }
-                        }),
-                        allowsSystemTranslationFallback: false, onDismiss: {}, maximumHeight: 195)
+                    DictCardPreview(target: .word("spontaneous"), dictionary: dictionary, grammar: grammar,
+                        translations: ["spontaneous laughter": "自然而然的笑声", "spontaneous combustion": "自燃"])
                         .padding(.bottom, 12)
                         .allowsHitTesting(false)
                 }

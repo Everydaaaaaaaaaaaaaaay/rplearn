@@ -157,6 +157,11 @@ struct RootView: View {
     }
 
     var body: some View {
+        configuredRootContent
+            .dictionaryPopupServices(DictionaryPopupServices(examples: environment.exampleTranslationActions))
+    }
+
+    private var configuredRootContent: some View {
         launchContent
             #if DEBUG
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
@@ -517,7 +522,6 @@ struct RootView: View {
                     scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                     dictionary: environment.dictionary,
                     grammarPoints: environment.grammarPoints,
-                    exampleTranslationActions: exampleTranslationActions,
                     tutorial: tutorialPresenter
                 ), startsWithTutorial: mode == .tutorial)
             }
@@ -531,7 +535,6 @@ struct RootView: View {
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                         dictionary: environment.dictionary,
                         grammarPoints: environment.grammarPoints,
-                        exampleTranslationActions: exampleTranslationActions,
                         tutorial: tutorialPresenter
                     ),
                     placementCompletionRevision: placementCompletionRevision,
@@ -993,7 +996,6 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
             llm: environment.llmRouter,
-            exampleTranslationActions: exampleTranslationActions,
             npcRegistry: environment.backendClient
         )
     }
@@ -1030,7 +1032,6 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
             translator: environment.translator,
-            exampleTranslationActions: exampleTranslationActions,
             audioSession: environment.audioSession,
             memoryStore: environment.memoryStore,
             itemStore: environment.itemStore,
@@ -1061,9 +1062,7 @@ struct RootView: View {
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
-            audioSession: environment.audioSession,
-            exampleTranslationActions: exampleTranslationActions
-        )
+            audioSession: environment.audioSession)
     }
 
     private var favoritesDeps: FavoritesDependencies {
@@ -1071,9 +1070,7 @@ struct RootView: View {
             favorites: environment.favoritesStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
-            speech: environment.speech,
-            exampleTranslationActions: exampleTranslationActions
-        )
+            speech: environment.speech)
     }
 
     private var journeyAccess: JourneyAccess {

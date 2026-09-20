@@ -60,9 +60,7 @@ struct ActivityActionView: View {
                 Task { await stopped?.value; await deps.speech.speak(SpeechRequest(text: word, purpose: .pronunciation)) }
             }, favoriteActions: WordFavoriteActions(
                 contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
-                toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }),
-            exampleTranslationActions: deps.exampleTranslationActions,
-            allowsSystemTranslationFallback: true)
+                toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }))
         .overlay(alignment: .topTrailing) {
             if wordSelection != nil {
                 Button { wordSelection = nil } label: {

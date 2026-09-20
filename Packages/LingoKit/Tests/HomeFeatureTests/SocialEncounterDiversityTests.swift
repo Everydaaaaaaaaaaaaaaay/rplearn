@@ -76,7 +76,6 @@ struct SocialEncounterDiversityTests {
             ),
             speech: SilentSpeech(),
             llm: llm,
-            exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }),
             npcRegistry: registry
         )
         let region = Region(id:"london", nameEn:"London", nameZh:"伦敦", countryCode:"GB",

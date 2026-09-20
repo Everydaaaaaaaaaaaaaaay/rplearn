@@ -11,20 +11,16 @@ public struct FavoritesDependencies: Sendable {
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
-    public let exampleTranslationActions: DictExampleTranslationActions
 
     public init(
         favorites: FavoritesStore,
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
-        speech: any SpeechService,
-        exampleTranslationActions: DictExampleTranslationActions
-    ) {
+        speech: any SpeechService) {
         self.favorites = favorites
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
         self.speech = speech
-        self.exampleTranslationActions = exampleTranslationActions
     }
 }
 
@@ -145,9 +141,7 @@ public struct FavoritesView: View {
                     )
                 }
             },
-            favoriteActions: wordFavoriteActions,
-            exampleTranslationActions: deps.exampleTranslationActions
-        )
+            favoriteActions: wordFavoriteActions)
         .onChange(of: wordSelection) { _, selection in
             if selection == nil {
                 Task { await reload() }

@@ -12,7 +12,7 @@ public struct OnboardingDependencies: Sendable {
     public let profileCommands: any ProfileCommandGateway
     public let rosterStore: RosterStore
     public let dictionary: DictDatabase
-    public let exampleTranslationActions: DictExampleTranslationActions
+
     public let grammarPoints: GrammarPointStore
     public let scriptURL: URL
     public let tutorial: TutorialPresenter
@@ -24,7 +24,6 @@ public struct OnboardingDependencies: Sendable {
         scriptURL: URL,
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
-        exampleTranslationActions: DictExampleTranslationActions,
         tutorial: @escaping TutorialPresenter
     ) {
         self.economyStore = economyStore
@@ -32,7 +31,7 @@ public struct OnboardingDependencies: Sendable {
         self.rosterStore = rosterStore
         self.dictionary = dictionary
         self.grammarPoints = grammarPoints
-        self.exampleTranslationActions = exampleTranslationActions
+
         self.scriptURL = scriptURL
         self.tutorial = tutorial
     }
@@ -419,8 +418,7 @@ struct ChatStoryView: View {
         }
         .background(Color.dsBackground)
         .wordLookupOverlay(selection: $wordSelection, dictionary: deps.dictionary,
-                           grammar: deps.grammarPoints,
-                           exampleTranslationActions: deps.exampleTranslationActions)
+                           grammar: deps.grammarPoints)
         .accessibilityIdentifier("onboarding.story")
     }
 

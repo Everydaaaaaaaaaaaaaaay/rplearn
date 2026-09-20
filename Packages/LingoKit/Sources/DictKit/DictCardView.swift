@@ -3,8 +3,81 @@ import DesignSystem
 import SwiftUI
 import Translation
 
-/// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
+/// Interactive dictionary card. Examples, generation, retries and Apple fallback
+/// are owned here, not supplied by each presenting feature.
 public struct DictCardView: View {
+    @Environment(\.dictionaryPopupServices) private var services
+    private let target: DictTarget
+    private let phraseCandidates: [String]
+    private let dictionary: DictDatabase
+    private let grammar: GrammarPointStore
+    private let onSpeak: (@MainActor (String) -> Void)?
+    private let favoriteActions: WordFavoriteActions?
+    private let aiFallback: (@Sendable (String) async -> String?)?
+    private let onDismiss: (@MainActor () -> Void)?
+    private let maximumHeight: CGFloat
+
+    public init(target: DictTarget, phraseCandidates: [String] = [],
+                dictionary: DictDatabase, grammar: GrammarPointStore,
+                onSpeak: (@MainActor (String) -> Void)? = nil,
+                favoriteActions: WordFavoriteActions? = nil,
+                aiFallback: (@Sendable (String) async -> String?)? = nil,
+                onDismiss: (@MainActor () -> Void)? = nil, maximumHeight: CGFloat = 340) {
+        self.target = target
+        self.phraseCandidates = phraseCandidates
+        self.dictionary = dictionary
+        self.grammar = grammar
+        self.onSpeak = onSpeak
+        self.favoriteActions = favoriteActions
+        self.aiFallback = aiFallback
+        self.onDismiss = onDismiss
+        self.maximumHeight = maximumHeight
+    }
+
+    public var body: some View {
+        if let services {
+            ConfiguredDictCardView(target: target, phraseCandidates: phraseCandidates,
+                dictionary: dictionary, grammar: grammar, onSpeak: onSpeak,
+                favoriteActions: favoriteActions, aiFallback: aiFallback,
+                exampleTranslationActions: services.examples,
+                onDismiss: onDismiss, maximumHeight: maximumHeight)
+        } else {
+            ContentUnavailableView("词典服务未配置", systemImage: "exclamationmark.triangle",
+                description: Text("请重新打开应用后重试。"))
+                .accessibilityIdentifier("dict.configurationMissing")
+                .onAppear {
+                    assertionFailure("Install dictionaryPopupServices once at the App root")
+                }
+        }
+    }
+}
+
+/// Explicit noninteractive marketing sample; cannot act as a lookup entry point.
+public struct DictCardPreview: View {
+    private let target: DictTarget
+    private let dictionary: DictDatabase
+    private let grammar: GrammarPointStore
+    private let translations: [String: String]
+    private let previewCache = DictExampleTranslationCache()
+    private let maximumHeight: CGFloat
+
+    public init(target: DictTarget, dictionary: DictDatabase, grammar: GrammarPointStore,
+                translations: [String: String], maximumHeight: CGFloat = 195) {
+        self.target = target; self.dictionary = dictionary; self.grammar = grammar
+        self.translations = translations; self.maximumHeight = maximumHeight
+    }
+
+    public var body: some View {
+        ConfiguredDictCardView(target: target, dictionary: dictionary, grammar: grammar, onSpeak: { _ in },
+            exampleTranslationActions: .init(translate: { [translations] request in
+                translations[request.sentence].map { DictExampleTranslation(sentenceZh: $0) }
+            }), allowsSystemTranslationFallback: false, translationCache: previewCache, maximumHeight: maximumHeight)
+            .allowsHitTesting(false)
+    }
+}
+
+/// 词典浮窗卡片：释义/音标/考试标签/语法点，卡内词与 related 可继续点击跳转。
+private struct ConfiguredDictCardView: View {
     private let maximumHeight: CGFloat
     private let phraseCandidates: [String]
     private let dictionary: DictDatabase
@@ -14,6 +87,7 @@ public struct DictCardView: View {
     private let aiFallback: (@Sendable (String) async -> String?)?
     private let exampleTranslationActions: DictExampleTranslationActions
     private let allowsSystemTranslationFallback: Bool
+    private let translationCache: DictExampleTranslationCache
     private let onDismiss: (@MainActor () -> Void)?
 
     @State private var path: [DictTarget]
@@ -46,6 +120,7 @@ public struct DictCardView: View {
         aiFallback: (@Sendable (String) async -> String?)? = nil,
         exampleTranslationActions: DictExampleTranslationActions,
         allowsSystemTranslationFallback: Bool = true,
+        translationCache: DictExampleTranslationCache = .shared,
         onDismiss: (@MainActor () -> Void)? = nil,
         maximumHeight: CGFloat = 340
     ) {
@@ -59,6 +134,7 @@ public struct DictCardView: View {
         self.aiFallback = aiFallback
         self.exampleTranslationActions = exampleTranslationActions
         self.allowsSystemTranslationFallback = allowsSystemTranslationFallback
+        self.translationCache = translationCache
         self.onDismiss = onDismiss
     }
 
@@ -885,11 +961,12 @@ public struct DictCardView: View {
         guard !examples.isEmpty else { return }
 
         let translationActions = effectiveTranslationActions
+        let translationCache = translationCache
         translatingExampleIDs = Set(examples.map(\.id))
         await withTaskGroup(of: (String, DictExampleTranslation?).self) { group in
             for example in examples {
                 group.addTask {
-                    let translated = await DictExampleTranslationCache.shared.translation(
+                    let translated = await translationCache.translation(
                         for: example.translationRequest,
                         using: translationActions
                     )
@@ -926,7 +1003,7 @@ public struct DictCardView: View {
         let translationActions = translationActions(allowsDownload: true)
         translatingExampleIDs.insert(example.id)
         Task {
-            let translated = await DictExampleTranslationCache.shared.translation(
+            let translated = await translationCache.translation(
                 for: example.translationRequest,
                 using: translationActions
             )

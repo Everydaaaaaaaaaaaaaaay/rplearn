@@ -95,7 +95,7 @@ public struct GrammarTermLookupOverlayModifier: ViewModifier {
     @Binding var selection: GrammarTermSelection?
     let dictionary: DictDatabase
     let grammar: GrammarPointStore
-    let exampleTranslationActions: DictExampleTranslationActions
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public func body(content: Content) -> some View {
@@ -117,7 +117,6 @@ public struct GrammarTermLookupOverlayModifier: ViewModifier {
                                 target: .grammarTerm(selection.term),
                                 dictionary: dictionary,
                                 grammar: grammar,
-                                exampleTranslationActions: exampleTranslationActions,
                                 onDismiss: { self.selection = nil }
                             )
                             .id(selection)
@@ -151,16 +150,12 @@ extension View {
     public func grammarTermLookupOverlay(
         selection: Binding<GrammarTermSelection?>,
         dictionary: DictDatabase,
-        grammar: GrammarPointStore,
-        exampleTranslationActions: DictExampleTranslationActions
-    ) -> some View {
+        grammar: GrammarPointStore) -> some View {
         modifier(
             GrammarTermLookupOverlayModifier(
                 selection: selection,
                 dictionary: dictionary,
-                grammar: grammar,
-                exampleTranslationActions: exampleTranslationActions
-            )
+                grammar: grammar)
         )
     }
 }

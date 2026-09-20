@@ -172,19 +172,14 @@ public struct ChatView: View {
                 deps.speakLookupWord(word)
             },
             favoriteActions: wordFavoriteActions,
-            aiFallback: aiWordFallback,
-            exampleTranslationActions: deps.exampleTranslationActions,
-            allowsSystemTranslationFallback: true
-        )
+            aiFallback: aiWordFallback)
         .onChange(of: wordSelection) { _, selection in
             if selection != nil { deps.tutorial?.onEvent("word") }
         }
         .grammarTermLookupOverlay(
             selection: $grammarTermSelection,
             dictionary: deps.dictionary,
-            grammar: deps.grammarPoints,
-            exampleTranslationActions: deps.exampleTranslationActions
-        )
+            grammar: deps.grammarPoints)
         .sheet(item: $grammarAnalysis) { request in
             GrammarAnalysisSheet(
                 request: request,
@@ -203,7 +198,6 @@ public struct ChatView: View {
                 },
                 favoriteActions: wordFavoriteActions,
                 aiFallback: aiWordFallback,
-                exampleTranslationActions: deps.exampleTranslationActions,
                 onAIAnalysis: { analysis in
                     grammarAICache[request.id] = analysis
                 }

@@ -2,7 +2,7 @@ import Foundation
 import BackendKit
 import DictKit
 
-extension RootView {
+extension AppEnvironment {
     var exampleTranslationActions: DictExampleTranslationActions {
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
@@ -17,7 +17,7 @@ extension RootView {
             }
         }
         #endif
-        return environment.dictionaryExampleTranslations.dictionaryActions
+        return dictionaryExampleTranslations.dictionaryActions
     }
 }
 

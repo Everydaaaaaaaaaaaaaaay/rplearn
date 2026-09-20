@@ -30,6 +30,12 @@ if [[ "$scope" == --ios || "$scope" == --all ]]; then
     printf '%s\n' "$feature_imports" >&2
     fail 'Feature targets must not import other Feature targets'
   fi
+  popup_overrides="$(rg -n 'DictExampleTranslationActions|exampleTranslationActions|allowsSystemTranslationFallback|dictionaryPopupServices\(' \
+    Packages/LingoKit/Sources/*Feature --glob '*.swift' || [[ "$?" == 1 ]])"
+  if [[ -n "$popup_overrides" ]]; then
+    printf '%s\n' "$popup_overrides" >&2
+    fail 'Feature screens must inherit dictionary popup services; do not forward or override example translation'
+  fi
 fi
 
 if [[ "$scope" == --backend || "$scope" == --all ]]; then

@@ -14,7 +14,6 @@ public struct StoryDependencies: Sendable {
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
     public let audioSession: AudioSessionCoordinator
-    public let exampleTranslationActions: DictExampleTranslationActions
 
     public init(
         storyProgress: StoryProgressStore,
@@ -24,9 +23,7 @@ public struct StoryDependencies: Sendable {
         dictionary: DictDatabase,
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
-        audioSession: AudioSessionCoordinator,
-        exampleTranslationActions: DictExampleTranslationActions
-    ) {
+        audioSession: AudioSessionCoordinator) {
         self.storyProgress = storyProgress
         self.progression = progression
         self.rosterStore = rosterStore
@@ -35,7 +32,6 @@ public struct StoryDependencies: Sendable {
         self.grammarPoints = grammarPoints
         self.speech = speech
         self.audioSession = audioSession
-        self.exampleTranslationActions = exampleTranslationActions
     }
 }
 

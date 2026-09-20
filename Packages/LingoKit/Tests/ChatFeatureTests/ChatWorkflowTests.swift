@@ -115,7 +115,6 @@ struct ChatWorkflowTests {
             grammarPoints: try GrammarPointStore(url: #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json"))),
             speech: SilentSpeech(),
             translator: TranslationService(llm: llm),
-            exampleTranslationActions: DictExampleTranslationActions(translate: { _ in nil }),
             audioSession: AudioSessionCoordinator(), memoryStore: MemoryStore(modelContainer: container),
             itemStore: items, economyStore: economy,
             progression: LocalUserStateCoordinator(economyStore: economy, itemStore: items, storyProgressStore: StoryProgressStore(modelContainer: container)),

@@ -104,9 +104,7 @@ struct EncounterCardSheet: View {
                 }
             },
             favoriteActions: wordFavoriteActions,
-            aiFallback: aiWordFallback,
-            exampleTranslationActions: deps.exampleTranslationActions
-        )
+            aiFallback: aiWordFallback)
         .onAppear {
             withAnimation(reduceMotion ? DSAnimation.feedback : DSAnimation.scene) {
                 hasRevealed = true

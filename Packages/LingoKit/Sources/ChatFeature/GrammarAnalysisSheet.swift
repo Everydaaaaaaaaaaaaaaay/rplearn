@@ -43,7 +43,7 @@ struct GrammarAnalysisSheet: View {
     let onSpeak: (@MainActor (String) -> Void)?
     let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
-    let exampleTranslationActions: DictExampleTranslationActions
+
     let onAIAnalysis: @MainActor (AIGrammarAnalysis) -> Void
 
     @State private var aiAnalysis: AIGrammarAnalysis?
@@ -65,7 +65,6 @@ struct GrammarAnalysisSheet: View {
         onSpeak: (@MainActor (String) -> Void)? = nil,
         favoriteActions: WordFavoriteActions? = nil,
         aiFallback: (@Sendable (String) async -> String?)? = nil,
-        exampleTranslationActions: DictExampleTranslationActions,
         onAIAnalysis: @escaping @MainActor (AIGrammarAnalysis) -> Void = { _ in }
     ) {
         self.request = request
@@ -77,7 +76,7 @@ struct GrammarAnalysisSheet: View {
         self.onSpeak = onSpeak
         self.favoriteActions = favoriteActions
         self.aiFallback = aiFallback
-        self.exampleTranslationActions = exampleTranslationActions
+
         self.onAIAnalysis = onAIAnalysis
         _aiAnalysis = State(initialValue: initialAIAnalysis)
     }
@@ -112,9 +111,7 @@ struct GrammarAnalysisSheet: View {
             grammar: grammar,
             onSpeak: onSpeak,
             favoriteActions: favoriteActions,
-            aiFallback: aiFallback,
-            exampleTranslationActions: exampleTranslationActions
-        )
+            aiFallback: aiFallback)
         .onChange(of: selectedSource) { _, source in
             guard source == .ai, aiAnalysis == nil else { return }
             Task { await loadAIAnalysis() }

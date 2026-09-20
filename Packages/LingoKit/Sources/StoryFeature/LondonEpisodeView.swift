@@ -154,10 +154,7 @@ public struct LondonEpisodeView: View {
             favoriteActions: WordFavoriteActions(
                 contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
                 toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }
-            ),
-            exampleTranslationActions: deps.exampleTranslationActions,
-            allowsSystemTranslationFallback: true
-        )
+            ))
         .sheet(isPresented: $showHistory) { historySheet }
         .confirmationDialog("从头开始这一站？当前阅读进度将被替换，已获得的奖励会保留。", isPresented: $showRestart, titleVisibility: .visible) {
             Button("从头开始", role: .destructive) { restart() }

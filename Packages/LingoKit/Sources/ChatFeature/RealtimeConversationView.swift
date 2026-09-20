@@ -200,8 +200,7 @@ struct RealtimeConversationView: View {
             },
             favoriteActions: WordFavoriteActions(
                 contains: { (try? await deps.favorites.isWordFavorited($0)) ?? false },
-                toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }),
-            exampleTranslationActions: deps.exampleTranslationActions)
+                toggle: { (try? await deps.favorites.toggleWord($0, translationZh: $1)) ?? false }))
         .translationTask(translator.configuration) { @Sendable session in
             let id = await translator.sessionID
             var failed = false

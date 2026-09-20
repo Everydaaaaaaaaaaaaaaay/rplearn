@@ -26,7 +26,7 @@ public struct HomeDependencies: Sendable {
     public let grammarPoints: GrammarPointStore
     public let speech: any SpeechService
     public let llm: any LLMClient
-    public let exampleTranslationActions: DictExampleTranslationActions
+
     public let npcRegistry: (any PublicNPCRegistry)?
 
     public init(
@@ -44,7 +44,6 @@ public struct HomeDependencies: Sendable {
         grammarPoints: GrammarPointStore,
         speech: any SpeechService,
         llm: any LLMClient,
-        exampleTranslationActions: DictExampleTranslationActions,
         npcRegistry: (any PublicNPCRegistry)? = nil
     ) {
         self.tutorial = tutorial
@@ -61,7 +60,7 @@ public struct HomeDependencies: Sendable {
         self.grammarPoints = grammarPoints
         self.speech = speech
         self.llm = llm
-        self.exampleTranslationActions = exampleTranslationActions
+
         self.npcRegistry = npcRegistry
     }
 }

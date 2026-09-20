@@ -287,7 +287,7 @@ private final class TutorialWorkspace {
             favorites: favorites, llm: environment.llmRouter, dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: TutorialSpeech.resolve(environment.speech),
             translator: environment.translator,
-            exampleTranslationActions: environment.dictionaryExampleTranslations.dictionaryActions, audioSession: environment.audioSession,
+            audioSession: environment.audioSession,
             memoryStore: memory, itemStore: items, economyStore: economy, progression: progression,
             voiceMedia: voice, regionName: { regionCatalog.region(id: $0)?.nameZh ?? $0 })
     }
@@ -295,8 +295,7 @@ private final class TutorialWorkspace {
         HomeDependencies(tutorial: .init(onEvent: onEvent), economyStore: economy, itemStore: items,
             ticketStubStore: stubs, storyProgress: stories, regionCatalog: environment.regionCatalog,
             rosterStore: roster, chatStore: chat, favorites: favorites, dictionary: environment.dictionary,
-            grammarPoints: environment.grammarPoints, speech: TutorialSpeech.resolve(environment.speech), llm: environment.llmRouter,
-            exampleTranslationActions: environment.dictionaryExampleTranslations.dictionaryActions)
+            grammarPoints: environment.grammarPoints, speech: TutorialSpeech.resolve(environment.speech), llm: environment.llmRouter)
     }
 }
 private enum TutorialFailure: Error { case unavailable }

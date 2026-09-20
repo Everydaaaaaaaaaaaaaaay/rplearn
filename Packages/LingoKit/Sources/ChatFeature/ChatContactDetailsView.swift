@@ -644,9 +644,7 @@ private struct ChatCharacterProfileView: View {
             grammar: deps.grammarPoints,
             onSpeak: { word in deps.speakLookupWord(word) },
             favoriteActions: deps.lookupWordFavoriteActions,
-            aiFallback: deps.lookupAIWordFallback,
-            exampleTranslationActions: deps.exampleTranslationActions
-        )
+            aiFallback: deps.lookupAIWordFallback)
     }
 
     @ViewBuilder

@@ -11,8 +11,7 @@ public struct WordLookupOverlayModifier: ViewModifier {
     let onSpeak: (@MainActor (String) -> Void)?
     let favoriteActions: WordFavoriteActions?
     let aiFallback: (@Sendable (String) async -> String?)?
-    let exampleTranslationActions: DictExampleTranslationActions
-    let allowsSystemTranslationFallback: Bool
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public func body(content: Content) -> some View {
@@ -41,8 +40,6 @@ public struct WordLookupOverlayModifier: ViewModifier {
                                 onSpeak: onSpeak,
                                 favoriteActions: favoriteActions,
                                 aiFallback: aiFallback,
-                                exampleTranslationActions: exampleTranslationActions,
-                                allowsSystemTranslationFallback: allowsSystemTranslationFallback,
                                 onDismiss: { self.selection = nil }
                             )
                             .id(selection)
@@ -77,10 +74,7 @@ extension View {
         grammar: GrammarPointStore,
         onSpeak: (@MainActor (String) -> Void)? = nil,
         favoriteActions: WordFavoriteActions? = nil,
-        aiFallback: (@Sendable (String) async -> String?)? = nil,
-        exampleTranslationActions: DictExampleTranslationActions,
-        allowsSystemTranslationFallback: Bool = true
-    ) -> some View {
+        aiFallback: (@Sendable (String) async -> String?)? = nil) -> some View {
         modifier(
             WordLookupOverlayModifier(
                 selection: selection,
@@ -88,10 +82,7 @@ extension View {
                 grammar: grammar,
                 onSpeak: onSpeak,
                 favoriteActions: favoriteActions,
-                aiFallback: aiFallback,
-                exampleTranslationActions: exampleTranslationActions,
-                allowsSystemTranslationFallback: allowsSystemTranslationFallback
-            )
+                aiFallback: aiFallback)
         )
     }
 }
