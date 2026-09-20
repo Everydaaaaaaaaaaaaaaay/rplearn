@@ -69,7 +69,7 @@ struct NPCAttentionPolicyTests {
         ).attention != .focused)
     }
 
-    @Test("持续交谈两到三秒开始输入，超时与初次相遇保留原时序")
+    @Test("持续交谈三到四秒开始输入，超时与初次相遇保留原时序")
     func continuingConversationTypingTiming() {
         let npc = character(rhythm: .daytime, focusMinutes: 7)
         let assistant = message(role: .assistant, order: 0, at: referenceDate)
@@ -79,7 +79,7 @@ struct NPCAttentionPolicyTests {
                                    at: referenceDate.addingTimeInterval(seconds))
                 let plan = policy.replyPlan(for: npc, userMessage: user, history: [assistant, user])
                 #expect(plan.continuingConversation)
-                #expect((2.0...3.0).contains(plan.typingStartsAt.timeIntervalSince(user.createdAt)))
+                #expect((3.0...4.0).contains(plan.typingStartsAt.timeIntervalSince(user.createdAt)))
                 #expect(plan.generationStartsAt <= plan.typingStartsAt)
                 #expect(plan.firstBubbleAt > plan.typingStartsAt)
                 #expect(plan == policy.replyPlan(for: npc, userMessage: user, history: [assistant, user]))

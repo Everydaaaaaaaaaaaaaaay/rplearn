@@ -43,7 +43,7 @@ public final class ChatViewModel {
         let policy = RoleplayTurnTakingPolicy.standard
         let quiet = policy.quietWindow(after: message.text,
             consecutiveUserMessageCount: messages.reversed().prefix { $0.role == .user }.count,
-            variation: 0.5)
+            variation: 0.5, continuingConversation: pendingReplyPlan?.continuingConversation == true)
         return policy.handoffDate(sentAt: message.createdAt, quietWindow: quiet,
             activity: composerActivity)
     }
@@ -546,12 +546,13 @@ public final class ChatViewModel {
                 try await wait(until: plan.generationStartsAt)
                 try await waitForUserToFinish(plan: plan)
                 let wordCount = messages.last(where: { $0.role == .user })?.text.split(whereSeparator: \.isWhitespace).count ?? 0
-                // Preserve turn-taking/typing grace on both sides of preparation.
-                // The shorter focused preparation starts only after the user yields.
-                let preparationDelay = plan.continuingConversation
-                    ? plan.typingStartsAt.timeIntervalSince(plan.noticedAt)
-                    : 2.5 + min(8, Double(wordCount) * 0.2)
-                try await wait(until: deps.now().addingTimeInterval(preparationDelay))
+                // During an active conversation, preparation overlaps the quiet
+                // window instead of adding another delay after the user yields.
+                if !plan.continuingConversation {
+                    try await wait(until: deps.now().addingTimeInterval(
+                        2.5 + min(8, Double(wordCount) * 0.2)
+                    ))
+                }
                 try await waitForUserToFinish(plan: plan)
                 try Task.checkCancellation()
             } catch {

@@ -72,7 +72,8 @@ public struct RoleplayTurnTakingPolicy: Sendable {
     public func quietWindow(
         after text: String,
         consecutiveUserMessageCount: Int,
-        variation: Double
+        variation: Double,
+        continuingConversation: Bool = false
     ) -> TimeInterval {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         let words = trimmed.split(whereSeparator: \.isWhitespace).count
@@ -83,7 +84,9 @@ public struct RoleplayTurnTakingPolicy: Sendable {
         let burstGrace = min(Double(burstCount - 1) * 0.32, 0.96)
         let unfinishedGrace = looksLikeOpenThought(trimmed) ? 0.7 : 0
         let jitter = (clampedVariation - 0.5) * 0.5
-        let target = 8 + readingTime + burstGrace + unfinishedGrace + jitter
+        let base: TimeInterval = continuingConversation ? 3 : 8
+        let target = base + readingTime + burstGrace + unfinishedGrace + jitter
+        if continuingConversation { return min(max(target, 3), 4) }
         return min(max(target, minimumQuietWindow), maximumQuietWindow)
     }
 

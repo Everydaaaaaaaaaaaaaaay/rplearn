@@ -249,6 +249,28 @@ struct ChatWorkflowTests {
         #expect(UserDefaults.standard.integer(forKey: key) == expected)
     }
 
+    @Test("持续聊天实际在四秒左右开始输入，不叠加八秒静默与准备")
+    func ongoingConversationStartsTypingPromptly() async throws {
+        let f = try await fixture(Provider(streamDelayMilliseconds: 5000), replyDelayScale: 1)
+        let conversation = try #require(f.model.conversation)
+        _ = try await f.deps.chatStore.appendMessage(conversationID: conversation.id,
+            role: .assistant, text: "I'm here.", tokenEstimate: 3)
+        let model = await f.reopen()
+        defer { model.cancelPendingReply() }
+        model.draft = "Hello there."
+        await model.sendDraft()
+        let message = try #require(model.messages.last(where: { $0.role == .user }))
+        #expect((3...4).contains(model.userTurnHandoffDate(after: message)
+            .timeIntervalSince(message.createdAt)))
+        let deadline = ContinuousClock.now.advanced(by: .seconds(5))
+        while !model.isStreaming && ContinuousClock.now < deadline {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        #expect(model.isStreaming)
+        #expect(Date.now.timeIntervalSince(message.createdAt) < 4.8)
+        #expect(Date.now.timeIntervalSince(message.createdAt) >= 3)
+    }
+
     @Test("聚焦与单字符不续期，四种字符续期，退出缩短等待")
     func composerEventsControlHandoff() async throws {
         let provider = Provider()

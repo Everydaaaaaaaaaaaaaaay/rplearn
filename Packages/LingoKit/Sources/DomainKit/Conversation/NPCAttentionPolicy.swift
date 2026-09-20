@@ -288,7 +288,7 @@ public struct NPCAttentionPolicy: Sendable {
         // welcome-online window alone must retain the existing first-turn pacing.
         let typingStartsAt = continuingConversation
             ? sentAt.addingTimeInterval(sampledDuration(
-                in: 2...3, messageID: userMessageID, salt: "focused-typing-start"
+                in: 3...4, messageID: userMessageID, salt: "focused-typing-start"
             ))
             : firstBubbleAt.addingTimeInterval(-typingLead)
         let deliveryAt = continuingConversation

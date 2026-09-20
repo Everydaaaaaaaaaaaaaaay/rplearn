@@ -309,6 +309,25 @@ struct RoleplayTurnTakingPolicyTests {
         #expect(activity.editedAt == start.addingTimeInterval(1))
     }
 
+    @Test("持续对话静默窗口三到四秒，实际输入仍延长等待")
+    func focusedQuietWindowPreservesEditingGrace() {
+        let start = Date(timeIntervalSince1970: 1000)
+        for text in ["Hi!", "And then...", String(repeating: "hello ", count: 100)] {
+            for count in [1, 4, 10] {
+                let quiet = policy.quietWindow(after: text,
+                    consecutiveUserMessageCount: count, variation: 0.5,
+                    continuingConversation: true)
+                #expect((3.0...4.0).contains(quiet))
+                var activity = RoleplayComposerActivity()
+                #expect(policy.handoffDate(sentAt: start, quietWindow: quiet, activity: activity)
+                    == start.addingTimeInterval(quiet))
+                activity.recordEdit(from: "", to: "abcd", at: start.addingTimeInterval(2))
+                #expect(policy.handoffDate(sentAt: start, quietWindow: quiet, activity: activity)
+                    == start.addingTimeInterval(27))
+            }
+        }
+    }
+
     @Test("发送后键盘常开不会自动续期，重复检查也不延长等待")
     func idleOpenKeyboard() {
         let start = Date(timeIntervalSince1970: 1000)
