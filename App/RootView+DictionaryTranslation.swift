@@ -5,7 +5,8 @@ import DictKit
 extension RootView {
     var exampleTranslationActions: DictExampleTranslationActions {
         #if DEBUG
-        if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1" {
+        if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_DICTIONARY_EXAMPLES"] != "1" {
             return DictExampleTranslationActions { request in
                 let samples = [
                     "a cozy nook near the fire": "炉火旁温暖舒适的小角落",

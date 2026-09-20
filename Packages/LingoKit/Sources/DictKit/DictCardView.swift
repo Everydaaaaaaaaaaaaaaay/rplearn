@@ -513,6 +513,8 @@ public struct DictCardView: View {
                                     .lineSpacing(1)
                                     exampleTranslationText(example)
                                 }
+                                .accessibilityElement(children: .contain)
+                                .accessibilityIdentifier("dict.example.\(example.text)")
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)

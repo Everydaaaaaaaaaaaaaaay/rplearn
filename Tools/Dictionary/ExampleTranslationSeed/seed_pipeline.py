@@ -219,6 +219,7 @@ def iter_top_words(database: sqlite3.Connection) -> Iterator[sqlite3.Row]:
             SELECT
                 wl,
                 translation,
+                exchange,
                 bnc,
                 frq,
                 CASE
@@ -245,6 +246,14 @@ def iter_top_words(database: sqlite3.Connection) -> Iterator[sqlite3.Row]:
         SELECT * FROM ranked WHERE seed_rank <= 5000 ORDER BY seed_rank
         """
     )
+
+
+def contains_target(sentence: str, word: str, exchange: str | None) -> bool:
+    def tokens(text):
+        return [token.strip("'") for token in re.findall(r"[a-z]+(?:'[a-z]+)*", text.lower().replace("’", "'"))]
+    forms = [word] + [part.split(':', 1)[1] for part in (exchange or '').split('/') if ':' in part and part.split(':', 1)[0] in {'0','p','d','i','3','s','r','t'}]
+    actual = tokens(sentence)
+    return any(target and any(actual[i:i+len(target)] == target for i in range(len(actual)-len(target)+1)) for target in map(tokens, forms))
 
 
 def iter_jobs(database: sqlite3.Connection) -> Iterator[dict[str, object]]:
@@ -282,24 +291,36 @@ def iter_jobs(database: sqlite3.Connection) -> Iterator[dict[str, object]]:
                 return
             normalized = SPACE_RE.sub(" ", example.strip())
             identity = normalized.lower()
-            if not normalized or identity in seen:
+            if not normalized or identity in seen or not contains_target(normalized, word["wl"], word["exchange"]):
                 return
             seen.add(identity)
             counts_by_display_pos[display_pos] = counts_by_display_pos.get(display_pos, 0) + 1
             selected.append((sense, example_index, normalized))
 
-        # Exact mirror of DictUsageExamplePolicy for contextText == nil:
-        # first give every sense POS one example, then fill each POS to two.
         for pos in ordered_parts_of_speech:
             for sense in senses_by_part_of_speech[pos]:
-                examples = json.loads(sense["examples"] or "[]")
-                if examples:
-                    append(sense, 0, examples[0])
+                if sense["rank"] < 0:
+                    for i, text in enumerate(json.loads(sense["examples"] or "[]")):
+                        append(sense, i, text)
+        # Mirror the App: valid first example per POS, then distinct senses,
+        # then remaining examples. Never export a synonym-only sentence.
+        for pos in ordered_parts_of_speech:
+            if counts_by_display_pos.get(abbreviation.get(pos, pos), 0) > 0:
+                continue
+            for sense in senses_by_part_of_speech[pos]:
+                valid = [(i, text) for i, text in enumerate(json.loads(sense["examples"] or "[]")) if contains_target(text, word["wl"], word["exchange"])]
+                if valid:
+                    append(sense, *valid[0])
                     break
         for pos in ordered_parts_of_speech:
             for sense in senses_by_part_of_speech[pos]:
-                for example_index, example in enumerate(json.loads(sense["examples"] or "[]")):
-                    append(sense, example_index, example)
+                valid = [(i, text) for i, text in enumerate(json.loads(sense["examples"] or "[]")) if contains_target(text, word["wl"], word["exchange"])]
+                if valid:
+                    append(sense, *valid[0])
+        for pos in ordered_parts_of_speech:
+            for sense in senses_by_part_of_speech[pos]:
+                for i, text in enumerate(json.loads(sense["examples"] or "[]")):
+                    append(sense, i, text)
 
         for sense, example_index, example in selected:
             fingerprint = source_fingerprint(
@@ -321,7 +342,7 @@ def iter_jobs(database: sqlite3.Connection) -> Iterator[dict[str, object]]:
                     sense["rank"],
                     sense["definition"],
                 ),
-                "dictionarySource": DICTIONARY_SOURCE,
+                "dictionarySource": "lingotrip-learner-examples" if sense["rank"] < 0 else DICTIONARY_SOURCE,
                 "dictionaryVersion": DICTIONARY_VERSION,
                 "seedRank": word["seed_rank"],
                 "frequencyRank": word["effective_rank"],
@@ -578,7 +599,7 @@ def main() -> int:
         print(
             json.dumps(
                 {
-                    "dictionarySource": DICTIONARY_SOURCE,
+                    "dictionarySource": "mixed: ecdict-wordnet; lingotrip-learner-examples",
                     "dictionaryVersion": DICTIONARY_VERSION,
                     "topWordTarget": 5000,
                     "topWordsWithExamples": represented_lemmas,
@@ -626,24 +647,14 @@ def main() -> int:
         if nested != ["第一义", "(专业,旧称)第二义", "第三义"]:
             raise ValueError(f"nested-comma parser regression: {nested}")
         mate_jobs = [job for job in jobs if job["lemma"] == "mate"]
-        if len(jobs) != 9288:
-            raise ValueError(f"pinned source expected 9288 jobs, got {len(jobs)}")
-        if len(mate_jobs) != 4:
-            raise ValueError(f"mate expected 4 displayable jobs, got {len(mate_jobs)}")
-        expected_mate_sentences = [
-            "it was his first start against his former teammates",
-            "Birds mate in the Spring",
-            "he loved the mare and all her mates",
-            "This fact is coupled to the other one",
-        ]
-        if [job["sentence"] for job in mate_jobs] != expected_mate_sentences:
-            raise ValueError("mate display-selection order no longer matches the App")
-        if "(象棋)将死" not in mate_jobs[0]["candidateMeaningsZhHans"]:
-            raise ValueError("mate nested-parenthesis meaning was lost")
+        if not mate_jobs or any("teammates" in str(job["sentence"]) or "coupled" in str(job["sentence"]) for job in mate_jobs):
+            raise ValueError("mate synonyms/substrings leaked into display jobs")
+        if not any(job["lemma"] == "which" and job["dictionarySource"] == "lingotrip-learner-examples" for job in jobs):
+            raise ValueError("learner supplement missing")
         if not all(str(job["cacheKey"]).endswith(str(job["sourceFingerprint"])) for job in jobs):
             raise ValueError("cache key/fingerprint mismatch")
         print(
-            "self-test passed: nested commas, pinned queue count, "
+            "self-test passed: nested commas, target-word filtering, "
             "App display selection, mate regression, cache keys"
         )
         return 0

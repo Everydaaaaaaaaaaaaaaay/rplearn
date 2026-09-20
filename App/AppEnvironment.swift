@@ -267,7 +267,7 @@ final class AppEnvironment {
            ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] != "1",
            let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
             let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
-            let lines: [(MessageRole, String)] = [
+            var lines: [(MessageRole, String)] = [
                 (.assistant, "How did your first day go? Found any good coffee yet?"),
                 (.user, "Not yet! I went for a walk by the river instead."),
                 (.assistant, "Good choice. That’s my favourite place to clear my head."),
@@ -275,6 +275,9 @@ final class AppEnvironment {
                 (.assistant, "There’s a cosy little place near the river. Big windows, good coffee, no loud music."),
                 (.assistant, "Want me to send you the name?")
             ]
+            if ProcessInfo.processInfo.environment["UI_TEST_DICTIONARY_EXAMPLES"] == "1" {
+                lines = [(.assistant, "Just finished my coffee. Which would you prefer, tea or coffee?")]
+            }
             for (index, line) in lines.enumerated() {
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id,
                     role: line.0, text: line.1, createdAt: Date().addingTimeInterval(Double(index - lines.count) * 60))

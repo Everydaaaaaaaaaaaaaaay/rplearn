@@ -241,6 +241,7 @@ struct DictFallbackDefinitionDisplayGroup: Identifiable, Equatable {
 
 struct DictUsageExample: Identifiable, Equatable {
     let senseID: String?
+    let dictionarySource: String
     let lemma: String
     let partOfSpeech: String
     let partOfSpeechLabel: String
@@ -252,6 +253,7 @@ struct DictUsageExample: Identifiable, Equatable {
 
     init(
         senseID: String? = nil,
+        dictionarySource: String = "ecdict-wordnet",
         lemma: String = "",
         partOfSpeech: String = "",
         partOfSpeechLabel: String,
@@ -262,6 +264,7 @@ struct DictUsageExample: Identifiable, Equatable {
         text: String
     ) {
         self.senseID = senseID
+        self.dictionarySource = dictionarySource
         self.lemma = lemma
         self.partOfSpeech = partOfSpeech
         self.partOfSpeechLabel = partOfSpeechLabel
@@ -290,7 +293,8 @@ struct DictUsageExample: Identifiable, Equatable {
             partOfSpeech: partOfSpeech,
             definitionEn: definitionEn,
             candidateMeaningsZhHans: candidateMeaningsZhHans,
-            stableSenseId: senseID
+            stableSenseId: senseID,
+            dictionarySource: dictionarySource
         )
     }
 }
@@ -410,6 +414,25 @@ enum DictSenseDisplayPolicy {
 }
 
 enum DictUsageExamplePolicy {
+    /// Match complete tokens (or a complete phrase), including dictionary-attested
+    /// inflections. Synonyms and substring matches are not examples of this lemma.
+    static func containsTarget(_ text: String, entry: DictEntry) -> Bool {
+        func tokens(_ value: String) -> [String] {
+            value.lowercased().replacingOccurrences(of: "’", with: "'")
+                .split(whereSeparator: { !$0.isLetter && $0 != "'" })
+                .map { String($0).trimmingCharacters(in: CharacterSet(charactersIn: "'")) }
+                .filter { !$0.isEmpty }
+        }
+        let sentence = tokens(text)
+        return ([entry.word] + entry.wordForms.map(\.word)).contains { form in
+            let target = tokens(form)
+            guard !target.isEmpty, target.count <= sentence.count else { return false }
+            return (0...(sentence.count - target.count)).contains { start in
+                Array(sentence[start..<(start + target.count)]) == target
+            }
+        }
+    }
+
     private struct PartOfSpeechDescriptor {
         let id: String
         let partOfSpeech: String
@@ -418,6 +441,7 @@ enum DictUsageExamplePolicy {
         let meaningZh: String?
         let candidateMeaningsZhHans: [String]
         let senseID: String?
+        let dictionarySource: String
         let definitionEn: String?
     }
 
@@ -436,12 +460,13 @@ enum DictUsageExamplePolicy {
                   countsByPartOfSpeech[descriptor.id, default: 0] < perPartOfSpeechLimit
             else { return }
             let normalized = DictDisplayText.normalizedWhitespace(text)
-            guard !normalized.isEmpty,
+            guard !normalized.isEmpty, containsTarget(normalized, entry: entry),
                   seen.insert(normalized.lowercased()).inserted
             else { return }
             results.append(
                 DictUsageExample(
                     senseID: descriptor.senseID,
+                    dictionarySource: descriptor.dictionarySource,
                     lemma: entry.word,
                     partOfSpeech: descriptor.partOfSpeech,
                     partOfSpeechLabel: descriptor.label,
@@ -457,15 +482,31 @@ enum DictUsageExamplePolicy {
 
         let senseGroups = DictSenseDisplayPolicy.groups(for: entry.senses)
         let descriptors = senseGroups.map { descriptor(for: $0, entry: entry) }
+        // Reviewed learner examples cover common uses before secondary WordNet senses.
+        for (group, baseDescriptor) in zip(senseGroups, descriptors) {
+            for sense in group.senses where sense.rank < 0 {
+                if let example = sense.examples.first(where: { containsTarget($0, entry: entry) }) {
+                    append(example, descriptor: descriptor(for: sense, in: group, fallback: baseDescriptor))
+                }
+            }
+        }
         // 先让尚未出现的词性各获得一句，再为每个词性补到最多两句。
         for (group, baseDescriptor) in zip(senseGroups, descriptors)
         where countsByPartOfSpeech[baseDescriptor.id, default: 0] == 0 {
-            if let sense = group.senses.first(where: { !$0.examples.isEmpty }),
-               let example = sense.examples.first {
+            if let sense = group.senses.first(where: { $0.examples.contains { containsTarget($0, entry: entry) } }),
+               let example = sense.examples.first(where: { containsTarget($0, entry: entry) }) {
                 append(
                     example,
                     descriptor: descriptor(for: sense, in: group, fallback: baseDescriptor)
                 )
+            }
+        }
+        // Prefer distinct senses before a second example of the same sense.
+        for (group, baseDescriptor) in zip(senseGroups, descriptors) {
+            for sense in group.senses {
+                if let example = sense.examples.first(where: { containsTarget($0, entry: entry) }) {
+                    append(example, descriptor: descriptor(for: sense, in: group, fallback: baseDescriptor))
+                }
             }
         }
         for (group, baseDescriptor) in zip(senseGroups, descriptors) {
@@ -524,6 +565,7 @@ enum DictUsageExamplePolicy {
             meaningZh: fallbackMeaning,
             candidateMeaningsZhHans: matchingMeanings,
             senseID: nil,
+            dictionarySource: "ecdict-wordnet",
             definitionEn: nil
         )
     }
@@ -541,6 +583,7 @@ enum DictUsageExamplePolicy {
             meaningZh: fallback.meaningZh,
             candidateMeaningsZhHans: fallback.candidateMeaningsZhHans,
             senseID: sense.id,
+            dictionarySource: sense.rank < 0 ? "lingotrip-learner-examples" : "ecdict-wordnet",
             definitionEn: DictDisplayText.normalizedWhitespace(sense.definition)
         )
     }

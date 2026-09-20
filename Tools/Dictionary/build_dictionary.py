@@ -20,6 +20,7 @@ import os
 import re
 import sqlite3
 import sys
+from LearnerExamples.apply import apply as apply_learner_examples
 
 
 CORE_MAX_RANK = 40_000
@@ -313,6 +314,8 @@ def build_database(args: argparse.Namespace) -> tuple[int, int, int, int]:
             WHERE EXISTS (SELECT 1 FROM sense WHERE sense.wl = word.wl)
             """
         )
+
+    apply_learner_examples(database)
 
     database.executemany(
         "INSERT INTO metadata VALUES (?,?)",

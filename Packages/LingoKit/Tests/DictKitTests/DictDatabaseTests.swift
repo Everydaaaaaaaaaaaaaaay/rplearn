@@ -22,6 +22,29 @@ struct DictDatabaseTests {
         return try DictDatabase(databaseURL: url)
     }
 
+    @Test("目标词完整匹配，不允许近义词或子串，保留已知不规则词形")
+    func examplesMatchTheActualHeadword() {
+        let just = DictEntry(word: "just")
+        #expect(!DictUsageExamplePolicy.containsTarget("I was merely asking.", entry: just))
+        #expect(!DictUsageExamplePolicy.containsTarget("It is simply a matter of time.", entry: just))
+        #expect(!DictUsageExamplePolicy.containsTarget("We need justice.", entry: just))
+        #expect(DictUsageExamplePolicy.containsTarget("I've JUST arrived.", entry: just))
+        #expect(DictUsageExamplePolicy.containsTarget("She went home.", entry: DictEntry(word: "go", exchange: "p:went/d:gone")))
+        #expect(!DictUsageExamplePolicy.containsTarget("The window is open.", entry: DictEntry(word: "in")))
+    }
+
+    @Test("随包高频词补充可查询、用法不同且来源独立", arguments: ["which", "what", "who", "whom", "whose", "where", "when", "why", "how", "because", "although", "though", "if", "unless", "whether", "while", "since", "until", "before", "after", "than", "that", "this", "these", "those", "each", "every", "either", "neither", "both", "any", "some", "another", "other", "such", "only", "even", "also", "just", "yet"])
+    func learnerExampleCoverage(word: String) async throws {
+        let db = try openDatabase()
+        let entry = try #require(await db.lookup(word))
+        let examples = DictUsageExamplePolicy.groups(for: entry).flatMap(\.examples)
+        let added = examples.filter { $0.dictionarySource == "lingotrip-learner-examples" }
+        #expect(added.count == 2)
+        #expect(Set(added.map(\.senseID)).count == 2)
+        #expect(examples.allSatisfy { DictUsageExamplePolicy.containsTarget($0.text, entry: entry) })
+        #expect(!examples.contains { $0.text == "I was merely asking" || $0.text == "it is simply a matter of time" })
+    }
+
     @Test("toasties 是烤三明治的复数，不能回到形容词 toasty")
     func toastiePlural() async throws {
         let db = try openDatabase()
