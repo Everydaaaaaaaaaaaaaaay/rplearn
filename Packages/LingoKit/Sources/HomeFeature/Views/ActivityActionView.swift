@@ -197,7 +197,8 @@ struct ActivityActionView: View {
     }
 
     private var shouldAutoRead: Bool {
-        autoReadEnabled && resultVisible && isVisible && scenePhase == .active && wordSelection == nil
+        // Looking up a word keeps narration playing; onSpeak explicitly interrupts it.
+        autoReadEnabled && resultVisible && isVisible && scenePhase == .active
     }
 
     private var progressID: String {
