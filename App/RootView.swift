@@ -517,6 +517,7 @@ struct RootView: View {
                     scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                     dictionary: environment.dictionary,
                     grammarPoints: environment.grammarPoints,
+                    exampleTranslationActions: exampleTranslationActions,
                     tutorial: tutorialPresenter
                 ), startsWithTutorial: mode == .tutorial)
             }
@@ -530,6 +531,7 @@ struct RootView: View {
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                         dictionary: environment.dictionary,
                         grammarPoints: environment.grammarPoints,
+                        exampleTranslationActions: exampleTranslationActions,
                         tutorial: tutorialPresenter
                     ),
                     placementCompletionRevision: placementCompletionRevision,
