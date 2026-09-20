@@ -80,18 +80,55 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
 
     private let backend: BackendClient
     private let guestID: String?
+    private let pollingDelays: [Duration]
+    private let retryDelay: Duration
+
     public init(backend: BackendClient, guestID: String? = nil) {
-        self.backend = backend
-        self.guestID = guestID
+        self.init(backend: backend, guestID: guestID,
+                  pollingDelays: [.milliseconds(500), .seconds(1)] + Array(repeating: .seconds(2), count: 45),
+                  retryDelay: .milliseconds(500))
     }
 
-    /// Reuse existing translations only. Missing/pending results immediately
-    /// return to the caller's Apple translation fallback, without paid generation.
+    init(backend: BackendClient, guestID: String?, pollingDelays: [Duration], retryDelay: Duration = .zero) {
+        self.backend = backend
+        self.guestID = guestID
+        self.pollingDelays = pollingDelays
+        self.retryDelay = retryDelay
+    }
+
+    /// Cache first, then at most three generation attempts. Pending jobs are only
+    /// polled; never enqueue another paid generation while one is still running.
     public func resolve(
         _ request: BackendDictionaryExampleTranslationRequest
     ) async throws -> BackendDictionaryExampleTranslation? {
-        let result = try await send(request, generateOnMiss: false)
-        return readyTranslation(from: result)
+        var lastError: Error?
+        for attempt in 0..<3 {
+            try Task.checkCancellation()
+            if attempt > 0 { try await Task.sleep(for: retryDelay) }
+            do {
+                var result = try await send(request, generateOnMiss: false)
+                if let ready = readyTranslation(from: result) { return ready }
+                if result.status != .pending {
+                    result = try await send(request, generateOnMiss: true)
+                    if let ready = readyTranslation(from: result) { return ready }
+                }
+                for delay in pollingDelays {
+                    guard result.status == .pending else { break }
+                    try await Task.sleep(for: delay)
+                    try Task.checkCancellation()
+                    result = try await send(request, generateOnMiss: false)
+                    if let ready = readyTranslation(from: result) { return ready }
+                }
+                // A worker that remains unavailable must not hold the UI forever.
+                // Its eventual result will still be persisted for the next lookup.
+                if result.status == .pending { return nil }
+            } catch {
+                try Task.checkCancellation()
+                lastError = error
+            }
+        }
+        if let lastError { throw lastError }
+        return nil
     }
 
     private func send(

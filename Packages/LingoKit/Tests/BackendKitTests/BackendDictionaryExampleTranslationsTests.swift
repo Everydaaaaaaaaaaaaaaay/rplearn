@@ -59,7 +59,8 @@ struct BackendDictionaryExampleTranslationsTests {
         return (
             BackendDictionaryExampleTranslationResolver(
                 backend: backend,
-                guestID: "test-device-id"
+                guestID: "test-device-id",
+                pollingDelays: [.zero, .zero, .zero]
             ),
             transport
         )
@@ -95,23 +96,35 @@ struct BackendDictionaryExampleTranslationsTests {
         })
     }
 
-    @Test("未命中立即交给端上，不触发生成")
-    func missDoesNotGenerate() async throws {
+    @Test("缺失时最多生成三次，耗尽后交给端上")
+    func missRetriesThreeTimes() async throws {
         let (resolver, transport) = resolver(status: "missing")
         let result = try await resolver.resolve(request())
 
         #expect(result == nil)
         let requests = await transport.requests
-        #expect(requests.count == 1)
-        #expect(try generateOnMissFlags(requests) == [false])
+        #expect(requests.count == 6)
+        #expect(try generateOnMissFlags(requests) == [false, true, false, true, false, true])
     }
 
-    @Test("已有任务仍在生成时立即交给端上，不轮询或再次生成")
-    func pendingImmediatelyFallsBack() async throws {
+    @Test("已有生成任务只轮询，就绪后使用完整译文")
+    func pendingPollsWithoutGenerating() async throws {
         let (resolver, transport) = resolver(statuses: ["pending", "ready"])
+        #expect(try await resolver.resolve(request())?.sentenceZhHans != nil)
+        #expect(try generateOnMissFlags(await transport.requests) == [false, false])
+    }
+
+    @Test("第一次生成失败后重新生成成功，成功后停止重试")
+    func failedGenerationThenSuccess() async throws {
+        let (resolver, transport) = resolver(statuses: ["missing", "pending", "missing", "missing", "pending", "ready"])
+        #expect(try await resolver.resolve(request())?.sentenceZhHans != nil)
+        #expect(try generateOnMissFlags(await transport.requests) == [false, true, false, false, true, false])
+    }
+
+    @Test("生成超时不重复提交付费任务")
+    func pendingTimeoutDoesNotRegenerate() async throws {
+        let (resolver, transport) = resolver(status: "pending")
         #expect(try await resolver.resolve(request()) == nil)
-        let requests = await transport.requests
-        #expect(requests.count == 1)
-        #expect(try generateOnMissFlags(requests) == [false])
+        #expect(try generateOnMissFlags(await transport.requests) == [false, false, false, false])
     }
 }

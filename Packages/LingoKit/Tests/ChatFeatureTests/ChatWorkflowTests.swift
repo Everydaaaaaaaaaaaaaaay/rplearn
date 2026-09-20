@@ -673,10 +673,10 @@ struct ChatWorkflowTests {
         #expect(reopened.messages.contains { $0.role == .assistant })
     }
 
-    @Test("整句翻译优先云端 LLM，译文持久缓存后不再重复调用")
-    func translationUsesCloudAndPersists() async throws {
+    @Test("正式聊天与教程整句翻译均优先云端，译文持久缓存", arguments: [false, true])
+    func translationUsesCloudAndPersists(tutorial: Bool) async throws {
         let provider = Provider()
-        let f = try await fixture(provider)
+        let f = try await fixture(provider, tutorial: tutorial ? .init(session: ChatTutorialSession(), onEvent: { _ in }) : nil)
         let raw = "First detail.\nSecond detail.\nThird detail.\nFourth detail.\nLast detail."
         await f.model.saveRealtimeAssistant(spokenText: raw, interrupted: false)
         let reply = try #require(f.model.messages.last)
@@ -698,10 +698,25 @@ struct ChatWorkflowTests {
         #expect(await provider.translations == 1)
     }
 
-    @Test("云端翻译失败或返回空译文时回退端上翻译，都失败才报错")
-    func cloudFailureFallsBackToLocalTranslation() async throws {
+    @Test("相同整句跨消息复用持久译文")
+    func repeatedSentenceUsesPersistedTranslation() async throws {
         let provider = Provider()
         let f = try await fixture(provider)
+        await f.model.saveRealtimeAssistant(spokenText: "A familiar sentence.", interrupted: false)
+        let first = try #require(f.model.messages.last)
+        await f.model.translate(message: first)
+        await f.model.saveRealtimeAssistant(spokenText: "A familiar sentence.", interrupted: false)
+        let second = try #require(f.model.messages.last)
+        #expect(first.id != second.id)
+        await f.model.translate(message: second)
+        #expect(f.model.messages.last?.translationZh == "完整的翻译。")
+        #expect(await provider.translations == 1)
+    }
+
+    @Test("正式聊天与教程云端翻译失败或为空时回退端上", arguments: [false, true])
+    func cloudFailureFallsBackToLocalTranslation(tutorial: Bool) async throws {
+        let provider = Provider()
+        let f = try await fixture(provider, tutorial: tutorial ? .init(session: ChatTutorialSession(), onEvent: { _ in }) : nil)
         await f.model.saveRealtimeAssistant(spokenText: "Hello there.", interrupted: false)
         let message = try #require(f.model.messages.last)
 
@@ -710,6 +725,8 @@ struct ChatWorkflowTests {
         await f.model.translate(message: message)
         #expect(f.model.errorMessage?.contains("翻译失败") == true)
         #expect(f.model.translatingMessageIDs.isEmpty)
+
+        #expect(await provider.translations == 3)
 
         // A blank or failed system translation is not cached.
         f.model.translationFallback = { _ in nil }
@@ -724,6 +741,7 @@ struct ChatWorkflowTests {
         f.model.translationFallback = { _ in "你好。" }
         await f.model.translate(message: message)
         #expect(f.model.messages.last?.translationZh == "你好。")
+        #expect(await provider.translations == 12)
     }
 
     @Test("重复点击合并进行中的端上翻译")

@@ -2,12 +2,18 @@ import Foundation
 import LLMKit
 
 /// 整句翻译（balanced 档、temp 0.3；结果由调用方缓存到 translationZh）。
-/// 云端结果比端上机器翻译明显更自然，因此是首选；失败时才由调用方回退本地翻译。
+/// 最多尝试三次（包括空响应）；耗尽后由调用方回退 Apple 本地翻译。
 public struct TranslationService: Sendable {
     private let llm: any LLMClient
+    private let retryDelay: Duration
 
     public init(llm: any LLMClient) {
+        self.init(llm: llm, retryDelay: .milliseconds(500))
+    }
+
+    init(llm: any LLMClient, retryDelay: Duration) {
         self.llm = llm
+        self.retryDelay = retryDelay
     }
 
     public func translateToChinese(_ sentence: String) async throws -> String {
@@ -22,7 +28,21 @@ public struct TranslationService: Sendable {
             maxTokens: 400,
             temperature: 0.3
         )
-        return try await llm.complete(request)
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        for attempt in 0..<3 {
+            try Task.checkCancellation()
+            if attempt > 0 { try await Task.sleep(for: retryDelay) }
+            do {
+                let result = try await llm.complete(request)
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !result.isEmpty else { throw TranslationFailure.emptyResponse }
+                return result
+            } catch {
+                try Task.checkCancellation()
+                if attempt == 2 { throw error }
+            }
+        }
+        throw TranslationFailure.emptyResponse
     }
 }
+
+private enum TranslationFailure: Error { case emptyResponse }

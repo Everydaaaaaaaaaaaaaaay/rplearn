@@ -139,11 +139,8 @@ public final class ChatViewModel {
         errorMessage = nil
         defer { translatingMessageIDs.remove(message.id) }
 
-        var translation: String?
+        var translation = try? await deps.chatStore.cachedTranslation(for: text)
         var cloudError: Error?
-        if deps.tutorial != nil, let fallback = translationFallback {
-            translation = await fallback(text)
-        }
         if translation == nil {
             do {
                 let candidate = try await deps.translator.translateToChinese(text)

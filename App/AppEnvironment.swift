@@ -131,7 +131,7 @@ final class AppEnvironment {
         )
         self.translator = TranslationService(llm: llmRouter)
         self.dictionaryExampleTranslations = BackendDictionaryExampleTranslationResolver(
-            backend: backendClient
+            backend: backendClient, guestID: deviceID
         )
 
         Log.app.info("AppEnvironment initialized")

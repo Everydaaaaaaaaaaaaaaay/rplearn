@@ -287,7 +287,7 @@ private final class TutorialWorkspace {
             favorites: favorites, llm: environment.llmRouter, dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: TutorialSpeech.resolve(environment.speech),
             translator: environment.translator,
-            exampleTranslationActions: TutorialExampleTranslations.actions, audioSession: environment.audioSession,
+            exampleTranslationActions: TutorialExampleTranslations.actions(resolver: environment.dictionaryExampleTranslations), audioSession: environment.audioSession,
             memoryStore: memory, itemStore: items, economyStore: economy, progression: progression,
             voiceMedia: voice, regionName: { regionCatalog.region(id: $0)?.nameZh ?? $0 })
     }
@@ -296,7 +296,7 @@ private final class TutorialWorkspace {
             ticketStubStore: stubs, storyProgress: stories, regionCatalog: environment.regionCatalog,
             rosterStore: roster, chatStore: chat, favorites: favorites, dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints, speech: TutorialSpeech.resolve(environment.speech), llm: environment.llmRouter,
-            exampleTranslationActions: TutorialExampleTranslations.actions)
+            exampleTranslationActions: TutorialExampleTranslations.actions(resolver: environment.dictionaryExampleTranslations))
     }
 }
 private enum TutorialFailure: Error { case unavailable }
@@ -311,10 +311,13 @@ private struct TutorialMediaBackend: VoiceMediaBackend {
     func voiceMediaDownload(assetID: UUID) async throws -> BackendMediaDownload { throw TutorialFailure.unavailable }
 }
 
-/// Prepared translations for the opening practice; other entries use on-device translation.
+/// Reuse prepared practice translations; all other examples share the production cache/LLM resolver.
 private enum TutorialExampleTranslations {
-    static let actions = DictExampleTranslationActions { request in
-        translations[request.sentence].map { DictExampleTranslation(sentenceZh: $0) }
+    static func actions(resolver: BackendDictionaryExampleTranslationResolver) -> DictExampleTranslationActions {
+        DictExampleTranslationActions { request in
+            if let cached = translations[request.sentence] { return DictExampleTranslation(sentenceZh: cached) }
+            return await resolver.resolve(request)
+        }
     }
     static let translations: [String: String] = [
         "more land": "更多土地",

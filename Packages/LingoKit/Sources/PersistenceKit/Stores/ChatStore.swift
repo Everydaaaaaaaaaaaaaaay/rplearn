@@ -468,6 +468,16 @@ public actor ChatStore {
         try modelContext.save()
     }
 
+    /// Reuse an exact sentence's persisted translation within this user's store.
+    /// Do not share private chat text through a global/cloud dictionary cache.
+    public func cachedTranslation(for sentence: String) throws -> String? {
+        var descriptor = FetchDescriptor<MessageEntity>(predicate: #Predicate {
+            $0.text == sentence && $0.translationZh != nil && $0.translationZh != ""
+        })
+        descriptor.fetchLimit = 1
+        return try modelContext.fetch(descriptor).first?.translationZh
+    }
+
     public func setTranslation(messageID: UUID, translationZh: String) throws {
         guard let message = try fetchMessage(id: messageID) else { return }
         message.translationZh = translationZh

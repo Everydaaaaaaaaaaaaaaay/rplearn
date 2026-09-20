@@ -264,9 +264,6 @@ public struct ChatView: View {
         .task {
             // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
             viewModel.translationFallback = { [appleTranslator] text in
-                if deps.tutorial != nil {
-                    if text == "That sounds lovely. Tell me more!" { return "听起来很棒，再跟我说说！" }
-                }
                 return await appleTranslator.translate(text)
             }
             await viewModel.load()
