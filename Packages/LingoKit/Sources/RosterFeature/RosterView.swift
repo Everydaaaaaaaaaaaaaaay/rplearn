@@ -22,6 +22,9 @@ public struct RosterView: View {
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
     private let callBuilder: (@MainActor (CharacterDTO) -> AnyView)?
 
+    @State private var lastReplies: [UUID: Date] = [:]
+    @State private var pendingPlans: [UUID: NPCReplyPlan] = [:]
+    @State private var presenceDate = Date.now
     @State private var friends: [CharacterDTO] = []
     @State private var formerContacts: [CharacterDTO] = []
     @State private var profile: UserProfileDTO?
@@ -93,6 +96,15 @@ public struct RosterView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .task(id: reloadToken) { await reload() }
+            .task {
+                while !Task.isCancelled {
+                    presenceDate = .now
+                    do { try await Task.sleep(for: .seconds(15)) } catch { return }
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
+                Task { await reloadPresence() }
+            }
             .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
                 Task {
                     friends = (try? await deps.rosterStore.friends()) ?? friends
@@ -420,11 +432,19 @@ public struct RosterView: View {
                         .foregroundStyle(scenePrimaryText)
                         .lineLimit(1)
                         .layoutPriority(1)
-                    Text(friendStatus(character))
-                        .font(.footnote.weight(.medium))
-                        .foregroundStyle(sceneSecondaryText)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
+                    HStack(spacing: 5) {
+                        if character.contactStatus != .removed {
+                            Circle()
+                                .fill(presenceDotColor(character))
+                                .frame(width: 6, height: 6)
+                                .accessibilityHidden(true)
+                        }
+                        Text(friendStatus(character))
+                            .font(.footnote.weight(.medium))
+                            .foregroundStyle(sceneSecondaryText)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                    }
                 }
 
                 Spacer(minLength: 0)
@@ -438,14 +458,40 @@ public struct RosterView: View {
         .accessibilityHint("打开联系人详情")
     }
 
+    private func contactPresence(_ character: CharacterDTO) -> NPCPresenceState {
+        NPCAttentionPolicy.standard.presence(
+            for: character, at: presenceDate,
+            lastAssistantMessageAt: lastReplies[character.id],
+            pendingReplyPlan: pendingPlans[character.id]
+        ).state
+    }
+
+    private func presenceDotColor(_ character: CharacterDTO) -> Color {
+        switch contactPresence(character) {
+        case .online: Color(red: 0.55, green: 0.90, blue: 0.65)
+        case .recentlyActive: Color(red: 0.96, green: 0.77, blue: 0.40)
+        case .offline: Color(white: 0.66)
+        }
+    }
+
     private func friendStatus(_ character: CharacterDTO) -> String {
         if character.contactStatus == .removed {
             return "过往联系人 · 可重新添加"
         }
-        if character.isMainCharacter {
-            return "剧情旅伴 · \(character.card.occupation)"
+        let state = contactPresence(character)
+        let status = switch state {
+        case .online: "在线"
+        case .recentlyActive: "近期在线"
+        case .offline: "离线"
         }
-        return "\(character.card.nationality) · \(character.card.occupation)"
+        let occupation: String
+        switch character.isMainCharacter ? character.card.avatarAssetName : nil {
+        case "avatar_oliver": occupation = "Bookshop assistant & aspiring novelist"
+        case "avatar_ruby": occupation = "Barista, marine biology student & surf instructor"
+        case "avatar_marcus": occupation = "Street photographer & record shop assistant"
+        default: occupation = character.card.occupation
+        }
+        return "\(status) | \(character.card.nationality) · \(occupation)"
     }
 
     private var emptyState: some View {
@@ -481,7 +527,28 @@ public struct RosterView: View {
         profile = await loadedProfile ?? profile
         occupiedSlots = await loadedSlots ?? occupiedSlots
         isLoading = false
+        await reloadPresence()
         await registerPendingPublicNPCs()
+    }
+
+    private func reloadPresence() async {
+        guard let store = deps.chatStore,
+              let summaries = try? await store.conversationSummaries() else { return }
+        var replies: [UUID: Date] = [:]
+        var plans: [UUID: NPCReplyPlan] = [:]
+        for summary in summaries {
+            replies[summary.characterID] = summary.assistantMessageDates.last
+            if summary.lastMessageRole == .user,
+               let character = (friends + formerContacts).first(where: { $0.id == summary.characterID }),
+               let history = try? await store.messages(conversationID: summary.conversationID),
+               let user = history.last, user.role == .user, !user.isInterrupted {
+                plans[character.id] = NPCAttentionPolicy.standard.replyPlan(
+                    for: character, userMessage: user, history: history)
+            }
+        }
+        lastReplies = replies
+        pendingPlans = plans
+        presenceDate = .now
     }
 
     private func registerPendingPublicNPCs() async {

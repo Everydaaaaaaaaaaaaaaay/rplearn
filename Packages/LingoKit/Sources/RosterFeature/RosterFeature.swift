@@ -8,6 +8,7 @@ import SwiftUI
 public struct RosterDependencies: Sendable {
     public let rosterStore: RosterStore
     public let economyStore: EconomyStore
+    public let chatStore: ChatStore?
     public let regionName: @Sendable (String) -> String
     public let npcRegistry: (any PublicNPCRegistry)?
 
@@ -15,10 +16,12 @@ public struct RosterDependencies: Sendable {
         rosterStore: RosterStore,
         economyStore: EconomyStore,
         npcRegistry: (any PublicNPCRegistry)? = nil,
+        chatStore: ChatStore? = nil,
         regionName: @escaping @Sendable (String) -> String = {
             $0.replacingOccurrences(of: "_", with: " ").capitalized
         }
     ) {
+        self.chatStore = chatStore
         self.rosterStore = rosterStore
         self.economyStore = economyStore
         self.npcRegistry = npcRegistry

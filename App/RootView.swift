@@ -797,6 +797,7 @@ struct RootView: View {
                         rosterStore: environment.rosterStore,
                         economyStore: environment.economyStore,
                         npcRegistry: environment.backendClient,
+                        chatStore: environment.chatStore,
                         regionName: { regionID in
                             regionCatalog.region(id: regionID)?.nameZh
                                 ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
