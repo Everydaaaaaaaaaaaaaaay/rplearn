@@ -48,8 +48,7 @@ struct BackendDictionaryExampleTranslationsTests {
     }
 
     private func resolver(
-        statuses: [String],
-        pollingDelays: [Duration] = []
+        statuses: [String]
     ) -> (BackendDictionaryExampleTranslationResolver, MockTransport) {
         let transport = MockTransport(statuses: statuses)
         let backend = BackendClient(
@@ -60,18 +59,16 @@ struct BackendDictionaryExampleTranslationsTests {
         return (
             BackendDictionaryExampleTranslationResolver(
                 backend: backend,
-                guestID: "test-device-id",
-                pollingDelays: pollingDelays
+                guestID: "test-device-id"
             ),
             transport
         )
     }
 
     private func resolver(
-        status: String,
-        pollingDelays: [Duration] = []
+        status: String
     ) -> (BackendDictionaryExampleTranslationResolver, MockTransport) {
-        resolver(statuses: [status], pollingDelays: pollingDelays)
+        resolver(statuses: [status])
     }
 
     private func generateOnMissFlags(_ requests: [URLRequest]) throws -> [Bool] {
@@ -91,52 +88,30 @@ struct BackendDictionaryExampleTranslationsTests {
         #expect(result?.sentenceZhHans == "这是他第一次以首发身份对阵昔日的队友。")
         let requests = await transport.requests
         #expect(requests.count == 1)
-        #expect(try generateOnMissFlags(requests) == [true])
+        #expect(try generateOnMissFlags(requests) == [false])
         #expect(requests.allSatisfy {
             $0.url?.path == "/v1/dictionary/example-translations/resolve"
                 && $0.value(forHTTPHeaderField: "x-lingotrip-guest-id") == "test-device-id"
         })
     }
 
-    @Test("未命中时请求生成一次，等不到结果就交给端上翻译")
-    func missRequestsGenerationOnce() async throws {
+    @Test("未命中立即交给端上，不触发生成")
+    func missDoesNotGenerate() async throws {
         let (resolver, transport) = resolver(status: "missing")
         let result = try await resolver.resolve(request())
 
         #expect(result == nil)
         let requests = await transport.requests
         #expect(requests.count == 1)
-        #expect(try generateOnMissFlags(requests) == [true])
+        #expect(try generateOnMissFlags(requests) == [false])
     }
 
-    @Test("排队生成后按有界节奏轮询，就绪即返回")
-    func pendingPollsUntilReady() async throws {
-        let (resolver, transport) = resolver(
-            statuses: ["pending", "ready"],
-            pollingDelays: [.milliseconds(1)]
-        )
-
-        let result = try await resolver.resolve(request())
-
-        #expect(result?.sentenceZhHans == "这是他第一次以首发身份对阵昔日的队友。")
+    @Test("已有任务仍在生成时立即交给端上，不轮询或再次生成")
+    func pendingImmediatelyFallsBack() async throws {
+        let (resolver, transport) = resolver(statuses: ["pending", "ready"])
+        #expect(try await resolver.resolve(request()) == nil)
         let requests = await transport.requests
-        #expect(requests.count == 2)
-        // 首次排队生成，之后只读缓存，不重复排队。
-        #expect(try generateOnMissFlags(requests) == [true, false])
-    }
-
-    @Test("轮询次数有上限，仍未就绪即放弃")
-    func pollingIsBounded() async throws {
-        let (resolver, transport) = resolver(
-            status: "pending",
-            pollingDelays: [.milliseconds(1), .milliseconds(1)]
-        )
-
-        let result = try await resolver.resolve(request())
-
-        #expect(result == nil)
-        let requests = await transport.requests
-        #expect(requests.count == 3)
-        #expect(try generateOnMissFlags(requests) == [true, false, false])
+        #expect(requests.count == 1)
+        #expect(try generateOnMissFlags(requests) == [false])
     }
 }

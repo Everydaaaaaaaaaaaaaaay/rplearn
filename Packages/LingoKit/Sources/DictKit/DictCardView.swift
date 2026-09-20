@@ -96,18 +96,19 @@ public struct DictCardView: View {
             await loadCurrentTarget()
         }
         .translationTask(appleTranslator.configuration) { @Sendable session in
-            let batch = await appleTranslator.takeBatch()
+            guard let batch = await appleTranslator.takeBatch() else { return }
             do {
                 try await session.prepareTranslation()
-                for item in batch {
+                for item in batch.items {
                     let sentenceZhHans = try? await session.translate(item.text).targetText
                     await appleTranslator.complete(item.id, with: sentenceZhHans)
                 }
             } catch {
-                for item in batch { await appleTranslator.complete(item.id, with: nil) }
+                for item in batch.items { await appleTranslator.complete(item.id, with: nil) }
             }
-            await appleTranslator.finishBatch()
+            await appleTranslator.finishBatch(batch.sessionID)
         }
+        .onAppear { appleTranslator.activate() }
         .onDisappear { appleTranslator.cancelAll() }
         .accessibilityAction(named: "关闭释义") {
             onDismiss?()
@@ -855,7 +856,7 @@ public struct DictCardView: View {
     }
 
     private var effectiveTranslationActions: DictExampleTranslationActions {
-        translationActions(allowsDownload: false)
+        translationActions(allowsDownload: true)
     }
 
     private func translationActions(allowsDownload: Bool) -> DictExampleTranslationActions {
@@ -867,8 +868,7 @@ public struct DictCardView: View {
 
     private func translateExample(_ example: DictUsageExample) {
         guard !translatingExampleIDs.contains(example.id) else { return }
-        // This is an explicit Retry tap: language preparation/download may now ask
-        // for permission. Passive lookup and pronunciation never request downloads.
+        // Retry uses the same Apple preparation path as the initial lookup.
         let translationActions = translationActions(allowsDownload: true)
         translatingExampleIDs.insert(example.id)
         Task {

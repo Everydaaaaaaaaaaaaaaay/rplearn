@@ -80,51 +80,18 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
 
     private let backend: BackendClient
     private let guestID: String?
-    private let pollingDelays: [Duration]
-
     public init(backend: BackendClient, guestID: String? = nil) {
-        self.init(
-            backend: backend,
-            guestID: guestID,
-            pollingDelays: [
-                .milliseconds(250),
-                .milliseconds(500),
-                .seconds(1),
-                .milliseconds(1_500),
-                .milliseconds(2_500),
-                .seconds(4),
-                .seconds(6),
-            ]
-        )
-    }
-
-    init(backend: BackendClient, guestID: String?, pollingDelays: [Duration]) {
         self.backend = backend
         self.guestID = guestID
-        self.pollingDelays = pollingDelays
     }
 
-    /// 云端优先：命中缓存直接返回，未命中先请求生成再做有界轮询。
-    /// 生成超时、失败或仍未就绪时返回 nil，由调用方回退端上翻译。
+    /// Reuse existing translations only. Missing/pending results immediately
+    /// return to the caller's Apple translation fallback, without paid generation.
     public func resolve(
         _ request: BackendDictionaryExampleTranslationRequest
     ) async throws -> BackendDictionaryExampleTranslation? {
-        var result = try await send(request, generateOnMiss: true)
-        if let ready = readyTranslation(from: result) {
-            return ready
-        }
-        guard result.status == .pending else { return nil }
-
-        for delay in pollingDelays {
-            try await Task.sleep(for: delay)
-            try Task.checkCancellation()
-            result = try await send(request, generateOnMiss: false)
-            if let ready = readyTranslation(from: result) {
-                return ready
-            }
-            guard result.status == .pending else { return nil }
-        }
-        return nil
+        let result = try await send(request, generateOnMiss: false)
+        return readyTranslation(from: result)
     }
 
     private func send(

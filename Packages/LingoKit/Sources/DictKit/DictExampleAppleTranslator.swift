@@ -2,71 +2,101 @@ import Observation
 import SwiftUI
 import Translation
 
-/// Reuses existing server translations first; this coordinator translates any
-/// uncached sentence on device without requesting cloud generation.
+/// One scheduled/running session owns the queue, including the interval before
+/// SwiftUI starts translationTask. Existing translations are resolved upstream.
 @MainActor
 @Observable
 final class DictExampleAppleTranslator {
     private(set) var configuration: TranslationSession.Configuration?
-
+    private(set) var sessionID: UUID?
+    var pendingCount: Int { pending.count }
+    private var generation = UUID()
+    private var isActive = true
     private var pending: [UUID: CheckedContinuation<String?, Never>] = [:]
     private var inbox: [(id: UUID, text: String)] = []
-    private var isSessionRunning = false
+    private var timeouts: [UUID: Task<Void, Never>] = [:]
+    private let availability: @MainActor () async -> LanguageAvailability.Status
 
-    func translate(_ text: String, allowsDownload: Bool = false) async -> String? {
+    init(availability: @escaping @MainActor () async -> LanguageAvailability.Status = {
         #if targetEnvironment(simulator)
-        // Apple's on-device Translation models are not available in Simulator.
-        return nil
+        return .unsupported
         #else
-        let availability = await LanguageAvailability().status(
+        return await LanguageAvailability().status(
             from: Locale.Language(identifier: "en"), to: Locale.Language(identifier: "zh-Hans")
         )
-        guard !Task.isCancelled,
-              DictSystemTranslationPolicy.canStart(availability, allowsDownload: allowsDownload) else { return nil }
-        let id = UUID()
-        return await withCheckedContinuation { continuation in
-            pending[id] = continuation
-            inbox.append((id, text))
-            triggerSession()
-            Task { @MainActor in
-                try? await Task.sleep(for: .seconds(allowsDownload ? 120 : 20))
-                complete(id, with: nil)
-            }
-        }
         #endif
+    }) {
+        self.availability = availability
     }
 
-    func takeBatch() -> [(id: UUID, text: String)] {
-        isSessionRunning = true
+    func translate(_ text: String, allowsDownload: Bool = true) async -> String? {
+        guard isActive else { return nil }
+        let currentGeneration = generation
+        let status = await availability()
+        guard currentGeneration == generation, !Task.isCancelled,
+              DictSystemTranslationPolicy.canStart(status, allowsDownload: allowsDownload) else { return nil }
+        let id = UUID()
+        return await withTaskCancellationHandler {
+            await withCheckedContinuation { continuation in
+                guard !Task.isCancelled else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+                pending[id] = continuation
+                inbox.append((id, text))
+                triggerSession()
+                timeouts[id] = Task { @MainActor in
+                    do { try await Task.sleep(for: .seconds(120)) }
+                    catch { return }
+                    complete(id, with: nil)
+                }
+            }
+        } onCancel: {
+            Task { @MainActor in self.complete(id, with: nil) }
+        }
+    }
+
+    func takeBatch() -> (sessionID: UUID, items: [(id: UUID, text: String)])? {
+        guard let sessionID else { return nil }
         let batch = inbox
         inbox.removeAll()
-        return batch
+        return (sessionID, batch)
     }
 
     func complete(_ id: UUID, with value: String?) {
         guard let continuation = pending.removeValue(forKey: id) else { return }
+        timeouts.removeValue(forKey: id)?.cancel()
         inbox.removeAll { $0.id == id }
         continuation.resume(returning: value)
     }
 
-    func finishBatch() {
-        isSessionRunning = false
+    func finishBatch(_ id: UUID) {
+        // A disappearing card's old task must not reset a newly opened session.
+        guard sessionID == id else { return }
+        sessionID = nil
         if !inbox.isEmpty { triggerSession() }
     }
 
+    func activate() { isActive = true }
+
     func cancelAll() {
-        let continuations = pending.values
+        isActive = false
+        generation = UUID()
+        let continuations = Array(pending.values)
         pending.removeAll()
         inbox.removeAll()
-        isSessionRunning = false
+        for timeout in timeouts.values { timeout.cancel() }
+        timeouts.removeAll()
+        sessionID = nil
         configuration = nil
         for continuation in continuations { continuation.resume(returning: nil) }
     }
 
     private func triggerSession() {
-        // New examples queue behind an active translation instead of invalidating
-        // and cancelling each other's system session.
-        guard !isSessionRunning else { return }
+        guard sessionID == nil else { return }
+        // Reserve synchronously, not in takeBatch: concurrent arrivals must not
+        // invalidate the configuration before SwiftUI has even started it.
+        sessionID = UUID()
         if configuration == nil {
             configuration = TranslationSession.Configuration(
                 source: Locale.Language(identifier: "en"),
