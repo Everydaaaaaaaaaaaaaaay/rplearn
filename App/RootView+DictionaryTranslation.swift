@@ -16,14 +16,15 @@ extension RootView {
             }
         }
         #endif
-        let resolver = environment.dictionaryExampleTranslations
-        return DictExampleTranslationActions { request in
-            await resolver.resolve(request)
-        }
+        return environment.dictionaryExampleTranslations.dictionaryActions
     }
 }
 
 extension BackendDictionaryExampleTranslationResolver {
+    var dictionaryActions: DictExampleTranslationActions {
+        DictExampleTranslationActions { request in await self.resolve(request) }
+    }
+
     func resolve(_ request: DictExampleTranslationRequest) async -> DictExampleTranslation? {
         guard !request.lemma.isEmpty, !request.partOfSpeech.isEmpty,
               let translated = try? await resolve(

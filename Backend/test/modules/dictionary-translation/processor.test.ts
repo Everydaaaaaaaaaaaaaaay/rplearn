@@ -94,6 +94,56 @@ describe("dictionary translation processor", () => {
     expect(state.fail).not.toHaveBeenCalled();
   });
 
+  it("accepts canonical provider model names without losing valid translations", async () => {
+    const record = pendingRecord();
+    const state = repositoryFor(record);
+    const processor = createDictionaryTranslationProcessor(database, {
+      repository: state.repository,
+      completionClient: {
+        runtimeModelVersion: () => Promise.resolve(record.translationModelVersion),
+        complete: () =>
+          Promise.resolve({
+            model: "deepseek-v4-flash-canonical-revision",
+            content: JSON.stringify({
+              sentenceZhHans: "他与昔日队友交手。",
+              contextualMeaningZhHans: "队友",
+            }),
+          }),
+      },
+    });
+    await processor.process(payload);
+    expect(state.complete).toHaveBeenCalledOnce();
+    expect(state.fail).not.toHaveBeenCalled();
+  });
+
+  it("rejects a route revision change during generation", async () => {
+    const record = pendingRecord();
+    const state = repositoryFor(record);
+    let calls = 0;
+    const processor = createDictionaryTranslationProcessor(database, {
+      repository: state.repository,
+      completionClient: {
+        runtimeModelVersion: () =>
+          Promise.resolve(
+            ++calls === 1 ? record.translationModelVersion : "new-model@config-2",
+          ),
+        complete: () =>
+          Promise.resolve({
+            model: "deepseek-v4-flash",
+            content: JSON.stringify({
+              sentenceZhHans: "他与昔日队友交手。",
+              contextualMeaningZhHans: "队友",
+            }),
+          }),
+      },
+    });
+    await expect(processor.process(payload)).rejects.toMatchObject({
+      code: "DICTIONARY_TRANSLATION_MODEL_VERSION_STALE",
+    });
+    expect(state.complete).not.toHaveBeenCalled();
+    expect(state.fail).toHaveBeenCalledOnce();
+  });
+
   it("ignores harmless input fields echoed by the model", async () => {
     const record = pendingRecord();
     const state = repositoryFor(record);

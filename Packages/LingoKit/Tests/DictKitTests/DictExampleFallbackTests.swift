@@ -77,6 +77,27 @@ struct DictExampleFallbackTests {
         #expect(await calls.sentences == ["She opened the book."])
     }
 
+    @Test("Apple 临时兜底不冒充 LLM 缓存，下次打开重新查询云端")
+    func localFallbackDoesNotPoisonCloudCache() async {
+        let cache = DictExampleTranslationCache()
+        let calls = FallbackCalls()
+        let request = DictExampleTranslationRequest(sentence: "She opened the book.", lemma: "book")
+        let offline = DictExampleTranslationActions { _ in nil }
+            .fallingBackToSentenceTranslation { _ in "本地译文" }
+        let first = await cache.translation(for: request, using: offline)
+        #expect(first?.isSystemFallback == true)
+        let recovered = DictExampleTranslationActions { request in
+            await calls.record(request.sentence)
+            return DictExampleTranslation(sentenceZhHans: "LLM 译文")
+        }
+        let second = await cache.translation(for: request, using: recovered)
+        let third = await cache.translation(for: request, using: recovered)
+        #expect(second?.sentenceZhHans == "LLM 译文")
+        #expect(second?.isSystemFallback == false)
+        #expect(third == second)
+        #expect(await calls.sentences.count == 1)
+    }
+
     @Test("服务端成功时不触发系统翻译")
     func successfulPrimaryDoesNotLaunchSystem() async {
         let calls = FallbackCalls()

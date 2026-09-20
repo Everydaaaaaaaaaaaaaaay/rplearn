@@ -34,3 +34,16 @@ Evidence: `build/DerivedData/VerificationResults/20260920T033241Z-43827.xcresult
 Suites: TranslationServiceTests, BackendDictionaryExampleTranslationsTests, DictExampleFallbackTests, ChatWorkflowTests.
 Backend command: `node node_modules/vitest/vitest.mjs run test/modules/dictionary-translation` (14 passed).
 These are mocked-provider/queue tests, not live paid AI or real-device Apple model evaluations.
+
+## Follow-up: instant tutorial translations and production cache failures
+
+- Removed the tutorial's prepared translation table. Tutorial and normal cards now use the same production action factory.
+- Marked Apple fallback results explicitly and excluded them from the reusable example cache; a later lookup retries the cloud path. Added a regression proving recovery to LLM and subsequent cache reuse.
+- Live guest-authenticated generation reproduced a pending → missing result. PostgreSQL recorded `DICTIONARY_TRANSLATION_MODEL_MISMATCH`, while the underlying AI request was `succeeded`. The worker discarded successful output because it compared a provider model label with the configured alias.
+- Worker now checks the configured route revision before and after generation, allowing provider canonical names while rejecting a configuration change during processing. Output validation remains required before cache writes.
+- iOS suites: 11 passed (`20260920T035501Z-48896.xcresult`). First build encountered stale module metadata; rebuilding resolved it.
+- The next live probe exposed a separate output rejection: the model emitted multiple glosses separated by semicolons. Prompt v3 now explicitly prohibits all list separators and requests only two fields, without a meaning index. Validation was not relaxed.
+- Backend validation: 16 tests passed, TypeScript typecheck and focused ESLint passed.
+- Deployment: initial artifact root permissions caused readiness failure and automatic rollback; corrected permissions and deployed `20260920-dictionary-llm-v3` successfully. Previous releases retained for rollback.
+- Live authenticated guest probe succeeded on 2026-09-20 at 04:04:19 UTC: `Felix became a herpetologist instead` → `费利克斯转而成为了爬行动物学家。`, contextual gloss `转而`. State changed pending → ready, then another read returned the same generated timestamp and cache key. Configured model `deepseek-v4-flash@config-7`; actual provider alias observed `deepseek-flash`.
+- Latest Debug build installed and launched successfully on the owner's iPhone; simulator preview also installed. No app data was cleared. The online generation/cache path was verified via API, not claimed as a completed phone UI walkthrough.

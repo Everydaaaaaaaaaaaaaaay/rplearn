@@ -19,7 +19,7 @@ import type {
 } from "./types.js";
 import { validatedGeneratedTranslation } from "./validation.js";
 
-export const DICTIONARY_TRANSLATION_PROMPT_VERSION = "dictionary-example-zh-hans-v2";
+export const DICTIONARY_TRANSLATION_PROMPT_VERSION = "dictionary-example-zh-hans-v3";
 
 export type DictionaryTranslationService = Readonly<{
   importTrusted: (

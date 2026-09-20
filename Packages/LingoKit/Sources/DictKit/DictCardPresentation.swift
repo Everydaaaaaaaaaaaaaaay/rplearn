@@ -84,6 +84,7 @@ public struct DictExampleTranslationRequest: Sendable, Hashable {
 public struct DictExampleTranslation: Sendable, Equatable {
     public let sentenceZhHans: String
     public let contextualMeaningZhHans: String?
+    public let isSystemFallback: Bool
 
     /// 暂时兼容尚未迁移的组合根调用方。
     public var sentenceZh: String { sentenceZhHans }
@@ -92,11 +93,13 @@ public struct DictExampleTranslation: Sendable, Equatable {
     public init(sentenceZh: String) {
         self.sentenceZhHans = sentenceZh
         self.contextualMeaningZhHans = nil
+        self.isSystemFallback = false
     }
 
-    public init(sentenceZhHans: String, contextualMeaningZhHans: String? = nil) {
+    public init(sentenceZhHans: String, contextualMeaningZhHans: String? = nil, isSystemFallback: Bool = false) {
         self.sentenceZhHans = sentenceZhHans
         self.contextualMeaningZhHans = contextualMeaningZhHans
+        self.isSystemFallback = isSystemFallback
     }
 }
 
@@ -131,7 +134,8 @@ public struct DictExampleTranslationActions: Sendable {
             }
         return DictExampleTranslation(
             sentenceZhHans: sentenceZh,
-            contextualMeaningZhHans: meaningZh?.isEmpty == false ? meaningZh : nil
+            contextualMeaningZhHans: meaningZh?.isEmpty == false ? meaningZh : nil,
+            isSystemFallback: translated.isSystemFallback
         )
     }
 
@@ -148,7 +152,7 @@ public struct DictExampleTranslationActions: Sendable {
             guard let sentenceZhHans = await fallback(request.sentence) else {
                 return nil
             }
-            return DictExampleTranslation(sentenceZhHans: sentenceZhHans)
+            return DictExampleTranslation(sentenceZhHans: sentenceZhHans, isSystemFallback: true)
         }
     }
 }
@@ -178,7 +182,8 @@ actor DictExampleTranslationCache {
         inFlight[key] = task
         let translated = await task.value
         inFlight[key] = nil
-        if let translated {
+        // Apple is a temporary fallback, never a reusable LLM cache hit.
+        if let translated, !translated.isSystemFallback {
             translations[key] = translated
         }
         return translated
