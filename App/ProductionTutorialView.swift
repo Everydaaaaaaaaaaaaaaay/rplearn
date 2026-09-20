@@ -72,7 +72,10 @@ struct ProductionTutorialView: View {
                             if event == "summary" { atEncounterSummary = true }
                             if event == "presented" { guidanceObscured = true }
                             if event == "dismissed" { guidanceObscured = false }
-                            if event == "ending" || event == "friend" { finishedEncounter = true }
+                            if event == "ending" || event == "friend" {
+                                finishedEncounter = true
+                                step = 3
+                            }
                         }, storageNamespace: workspace.id.uuidString,
                         isVisible: true, activity: $activity,
                         onClose: {
@@ -90,7 +93,8 @@ struct ProductionTutorialView: View {
                 if !guidanceObscured && encounterChat == nil {
                     let entrances = targets.filter { $0.key.hasPrefix("activity.entrance.") }
                         .map { geometry[$0.value] }
-                    let choosingAction = step == 2 && activity == nil
+                    let choosingAction = step == 2 && !finishedEncounter && activity == nil
+                    let latestBeat = step == 2 ? targets["activity.latestBeat"].map { geometry[$0] } : nil
                     let target = step < 2 ? targets["chat.bubble"].map { geometry[$0] }
                         : (choosingAction ? entrances.reduce(CGRect.null) { $0.union($1) }
                            : (targets["activity.action"] ?? targets["activity.continue"]).map { geometry[$0] })
@@ -107,8 +111,8 @@ struct ProductionTutorialView: View {
                         .frame(width: min(340, max(240, geometry.size.width - 32)))
                         .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { guideHeight = $0 }
                         .position(x: geometry.size.width / 2,
-                                  y: guideY(in: geometry.size, target: target))
-                        .animation(reduceMotion ? nil : .smooth(duration: 0.3), value: target)
+                                  y: guideY(in: geometry.size, target: target, avoiding: latestBeat))
+                        .animation(reduceMotion || latestBeat != nil ? nil : .smooth(duration: 0.3), value: target)
                         .animation(reduceMotion ? nil : .smooth(duration: 0.3), value: step)
                 }
             }
@@ -179,19 +183,26 @@ struct ProductionTutorialView: View {
         .animation(.easeInOut(duration: 0.25), value: prompt)
     }
 
-    private func guideY(in size: CGSize, target: CGRect?) -> CGFloat {
+    private func guideY(in size: CGSize, target: CGRect?, avoiding latestBeat: CGRect?) -> CGFloat {
         let half = guideHeight / 2
         let top = half + 70, bottom = max(top, size.height - half - 70)
-        guard let target, !target.isNull, target.maxY > 0, target.minY < size.height else {
-            return min(bottom, max(top, size.height * 0.72))
+        let preferred: CGFloat
+        if let target, !target.isNull, target.maxY > 0, target.minY < size.height {
+            let above = target.minY - half - (step < 2 ? 44 : 16)
+            let below = target.maxY + half + 16
+            if step >= 2, below <= bottom { preferred = max(top, below) }
+            else if above >= top { preferred = min(bottom, above) }
+            else { preferred = min(bottom, max(top, below)) }
+        } else {
+            preferred = min(bottom, max(top, size.height * 0.72))
         }
-        let above = target.minY - half - (step < 2 ? 44 : 16)
-        let below = target.maxY + half + 16
-        // Stay beside the actual operation. Chat input stays clear; story hints
-        // prefer the unused space below the current paragraph/continue target.
-        if step >= 2, below <= bottom { return max(top, below) }
-        if above >= top { return min(bottom, above) }
-        return min(bottom, max(top, below))
+        if let latestBeat, latestBeat.maxY > 0, latestBeat.minY < size.height,
+           latestBeat.intersects(CGRect(x: 0, y: preferred - half - 12, width: size.width, height: guideHeight + 24)) {
+            // Protect new information even when the continue control is at the
+            // bottom: move over older content instead of covering the last beat.
+            return max(top, min(bottom, latestBeat.minY - half - 16))
+        }
+        return preferred
     }
 
     private func chatEvent(_ event: String) {

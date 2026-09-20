@@ -365,6 +365,9 @@ struct ActivityActionView: View {
         .padding(.vertical, 8)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("activities.beat.\(stage).\(index)")
+        .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) {
+            stage == model.step && index == model.beatIndex ? ["activity.latestBeat": $0] : [:]
+        }
     }
 
     private func lookupText(_ text: String, key: String) -> some View {

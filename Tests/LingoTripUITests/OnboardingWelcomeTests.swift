@@ -159,7 +159,11 @@ final class OnboardingWelcomeTests: XCTestCase {
         runHandsOnTutorial(verifyAudio: false)
     }
 
-    private func runHandsOnTutorial(verifyAudio: Bool) {
+    func testTutorialFarewellImmediatelyShowsFinalGuide() {
+        runHandsOnTutorial(verifyAudio: false, farewell: true)
+    }
+
+    private func runHandsOnTutorial(verifyAudio: Bool, farewell: Bool = false) {
         let original = XCUIDevice.shared.appearance
         defer { XCUIDevice.shared.appearance = original }
         XCUIDevice.shared.appearance = .dark
@@ -219,6 +223,13 @@ final class OnboardingWelcomeTests: XCTestCase {
                 let next = app.buttons["activities.action.next"]
                 XCTAssertTrue(next.waitForExistence(timeout: 6))
                 if !next.isHittable { app.swipeUp() }
+                let beats = app.otherElements.matching(NSPredicate(format: "identifier BEGINSWITH %@", "activities.beat."))
+                let visibleBeats = beats.allElementsBoundByIndex.filter { $0.frame.intersects(app.frame) }
+                if let latest = visibleBeats.last {
+                    let guide = app.descendants(matching: .any)["tutorial.guide"].firstMatch
+                    XCTAssertFalse(guide.frame.intersects(latest.frame), "提示不能遮挡最新剧情")
+                }
+                captureScreen(named: "tutorial-reading-\(next.identifier)-\(visibleBeats.count)")
                 next.tap()
             }
         }
@@ -231,8 +242,12 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertEqual(autoRead.value as? String, "关闭")
         autoRead.tap()
         captureScreen(named: "tutorial-production-encounter")
-        add.tap()
-        XCTAssertTrue(app.staticTexts["activities.encounter.contactStatus"].waitForExistence(timeout: 3))
+        if farewell { app.buttons["activities.action.finish"].tap() }
+        else { add.tap() }
+        let finalPrompt = app.staticTexts["地图里的机票通向别的城市，还有新故事等着你，接下来就自由探索嘎。"]
+        XCTAssertTrue(finalPrompt.waitForExistence(timeout: 1))
+        XCTAssertFalse(app.staticTexts["点亮着的任意一个「行动」，先选你想做的事咕。"].exists)
+        captureScreen(named: "tutorial-immediate-final-guide")
         XCTAssertTrue(app.buttons["tutorial.skip"].waitForNonExistence(timeout: 10))
     }
 
