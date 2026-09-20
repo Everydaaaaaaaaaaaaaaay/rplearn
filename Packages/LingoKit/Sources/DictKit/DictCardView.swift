@@ -581,11 +581,11 @@ private struct ConfiguredDictCardView: View {
                     ) {
                         englishPartOfSpeechText("例句")
                         VStack(alignment: .leading, spacing: 6) {
-                            ForEach(Array(group.examples.enumerated()), id: \.element.id) { index, example in
+                            ForEach(group.examples) { example in
                                 VStack(alignment: .leading, spacing: 2) {
                                     tappableExampleText(
                                         example,
-                                        contextID: "dict-\(entry.word)-usage-\(group.id)-\(index)",
+                                        contextID: "dict-\(entry.word)-usage-\(example.id)",
                                         contextualMeaningZhHans: exampleTranslations[example.id]?
                                             .contextualMeaningZhHans
                                     )

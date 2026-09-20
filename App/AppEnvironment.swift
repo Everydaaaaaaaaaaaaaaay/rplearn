@@ -281,7 +281,9 @@ final class AppEnvironment {
             if ProcessInfo.processInfo.environment["UI_TEST_SHARED_EXAMPLES"] == "1" {
                 lines = [(.assistant, "The coffee smells wonderful today.")]
             }
-            if ProcessInfo.processInfo.environment["UI_TEST_RUNTIME_EXAMPLES"] == "1" {
+            if ProcessInfo.processInfo.environment["UI_TEST_LAUGHING_EXAMPLES"] == "1" {
+                lines = [(.assistant, "You caught me laughing at my own watering grid.")]
+            } else if ProcessInfo.processInfo.environment["UI_TEST_RUNTIME_EXAMPLES"] == "1" {
                 lines = [(.assistant, "Murmuration was the word we discussed today.")]
             }
             for (index, line) in lines.enumerated() {

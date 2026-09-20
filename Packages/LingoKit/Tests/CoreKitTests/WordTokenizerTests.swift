@@ -1,8 +1,22 @@
 import Testing
+import Foundation
 @testable import CoreKit
 
 @Suite("WordTokenizer")
 struct WordTokenizerTests {
+    @Test("同一上下文原文更新时不得复用旧分词，包括例句插入与流式文本")
+    @MainActor
+    func cachedSourceChanges() {
+        let key = UUID().uuidString
+        for text in ["laughing children", "The laughing baby kicked her feet happily on the blanket.",
+                     "laughing children", "Hello", "Hello, world!", "", "你好 hello"] {
+            let actual = TokenCache.tokens(for: text, cacheKey: key)
+            #expect(actual == WordTokenizer.tokenize(text))
+            #expect(actual.map(\.display).joined() == text)
+            #expect(TokenCache.tokens(for: text, cacheKey: key) == actual)
+        }
+    }
+
     @Test("标点粘附到前一个词 token")
     func punctuationAttachment() {
         let tokens = WordTokenizer.tokenize("Hello, world!")

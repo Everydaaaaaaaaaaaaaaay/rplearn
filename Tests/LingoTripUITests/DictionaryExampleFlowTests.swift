@@ -4,6 +4,43 @@ import XCTest
 /// Run explicitly: creates a small number of paid, shared-cache translations.
 @MainActor
 final class DictionaryExampleFlowTests: XCTestCase {
+    func testInsertedExampleRendersItsOwnEnglishTokens() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["RUN_LIVE_DICTIONARY_E2E"] == "1")
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "UI_TEST_WELCOME_CAPTURE": "1", "UI_TEST_DICTIONARY_EXAMPLES": "1",
+            "UI_TEST_LAUGHING_EXAMPLES": "1", "UI_TEST_TAB": "contacts",
+            "LINGOTRIP_BACKEND_URL": "https://rplearn.haruyuki.cn"
+        ]
+        app.launch()
+        defer { app.terminate() }
+        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby")).firstMatch
+        XCTAssertTrue(ruby.waitForExistence(timeout: 25)); ruby.tap()
+        let chat = app.buttons["发消息"]
+        XCTAssertTrue(chat.waitForExistence(timeout: 5)); chat.tap()
+        for opening in 0..<2 {
+            let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "laughing")).firstMatch
+            XCTAssertTrue(word.waitForExistence(timeout: 10)); word.tap()
+            let sentence = "The laughing baby kicked her feet happily on the blanket."
+            let generated = app.descendants(matching: .any)["dict.example." + sentence].firstMatch
+            XCTAssertTrue(generated.waitForExistence(timeout: 60), app.debugDescription)
+            // Check rendered tappable words, NOT only the model-derived row identifier:
+            // the old cache rendered 'laughing children' under this correct identifier.
+            XCTAssertTrue(generated.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "baby")).firstMatch.exists, app.debugDescription)
+            XCTAssertFalse(generated.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "children")).firstMatch.exists)
+            let original = app.descendants(matching: .any)["dict.example.laughing children"].firstMatch
+            XCTAssertTrue(original.exists)
+            XCTAssertTrue(original.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "children")).firstMatch.exists)
+            for row in [generated, original] {
+                XCTAssertTrue(row.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@ AND NOT (label CONTAINS %@)", "中文翻译：", "加载中")).firstMatch.waitForExistence(timeout: 120))
+            }
+            capture("laughing-correct-source-\(opening)", app)
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.3)).tap()
+        }
+    }
+
     func testOpeningStoryExamplesUseLiveTranslations() throws {
         try XCTSkipUnless(ProcessInfo.processInfo.environment["RUN_LIVE_DICTIONARY_E2E"] == "1")
         continueAfterFailure = false

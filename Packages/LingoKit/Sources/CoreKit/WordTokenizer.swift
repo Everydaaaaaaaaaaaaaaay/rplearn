@@ -59,22 +59,27 @@ public enum WordTokenizer {
     }
 }
 
-/// 按消息 id 缓存分词结果（tokenize 为纯函数，同一消息只算一次）。
+/// Cache by context and verify source text: messages and asynchronously enriched
+/// dictionary rows can change while retaining the same presentation identity.
 @MainActor
 public enum TokenCache {
     private final class Box {
+        let sourceText: String
         let tokens: [TextToken]
-        init(_ tokens: [TextToken]) { self.tokens = tokens }
+        init(sourceText: String, tokens: [TextToken]) {
+            self.sourceText = sourceText
+            self.tokens = tokens
+        }
     }
 
     private static let cache = NSCache<NSString, AnyObject>()
 
     public static func tokens(for text: String, cacheKey: String) -> [TextToken] {
-        if let box = cache.object(forKey: cacheKey as NSString) as? Box {
+        if let box = cache.object(forKey: cacheKey as NSString) as? Box, box.sourceText == text {
             return box.tokens
         }
         let tokens = WordTokenizer.tokenize(text)
-        cache.setObject(Box(tokens), forKey: cacheKey as NSString)
+        cache.setObject(Box(sourceText: text, tokens: tokens), forKey: cacheKey as NSString)
         return tokens
     }
 }
