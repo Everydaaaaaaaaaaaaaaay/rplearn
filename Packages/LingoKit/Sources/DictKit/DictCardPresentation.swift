@@ -103,17 +103,44 @@ public struct DictExampleTranslation: Sendable, Equatable {
     }
 }
 
+public struct DictSharedLearnerExample: Sendable {
+    public let rank: Int
+    public let partOfSpeech: String
+    public let definition: String
+    public let sentence: String
+    public let translation: DictExampleTranslation
+
+    public init(rank: Int, partOfSpeech: String, definition: String, sentence: String, translation: DictExampleTranslation) {
+        self.rank = rank
+        self.partOfSpeech = partOfSpeech
+        self.definition = definition
+        self.sentence = sentence
+        self.translation = translation
+    }
+
+    var sense: DictSense {
+        DictSense(rank: rank, partOfSpeech: partOfSpeech, definition: definition, examples: [sentence], synonyms: [])
+    }
+}
+
 /// 词典例句翻译能力由组合根注入，DictKit 不直接依赖具体 LLM 服务。
 public struct DictExampleTranslationActions: Sendable {
+    let loadExamples: @Sendable (String) async -> [DictSharedLearnerExample]
     private let translateAction: @Sendable (
         DictExampleTranslationRequest
     ) async -> DictExampleTranslation?
 
+    public init(translate: @escaping @Sendable (DictExampleTranslationRequest) async -> DictExampleTranslation?) {
+        self.init(loadExamples: { _ in [] }, translate: translate)
+    }
+
     public init(
+        loadExamples: @escaping @Sendable (String) async -> [DictSharedLearnerExample],
         translate: @escaping @Sendable (
             DictExampleTranslationRequest
         ) async -> DictExampleTranslation?
     ) {
+        self.loadExamples = loadExamples
         self.translateAction = translate
     }
 
@@ -145,7 +172,7 @@ public struct DictExampleTranslationActions: Sendable {
         _ fallback: @escaping @Sendable (String) async -> String?
     ) -> Self {
         let primary = self
-        return Self { request in
+        return Self(loadExamples: primary.loadExamples) { request in
             if let translated = await primary.translate(request) {
                 return translated
             }
@@ -424,6 +451,10 @@ enum DictUsageExamplePolicy {
                 .filter { !$0.isEmpty }
         }
         let sentence = tokens(text)
+        // Corpus headword n't is a bound negative suffix, never a standalone word.
+        if entry.word.lowercased() == "n't" {
+            return sentence.contains { $0.count > 3 && $0.hasSuffix("n't") }
+        }
         return ([entry.word] + entry.wordForms.map(\.word)).contains { form in
             let target = tokens(form)
             guard !target.isEmpty, target.count <= sentence.count else { return false }
@@ -581,7 +612,7 @@ enum DictUsageExamplePolicy {
             label: fallback.label,
             abbreviation: fallback.abbreviation,
             meaningZh: fallback.meaningZh,
-            candidateMeaningsZhHans: fallback.candidateMeaningsZhHans,
+            candidateMeaningsZhHans: sense.rank < -100 ? [] : fallback.candidateMeaningsZhHans,
             senseID: sense.id,
             dictionarySource: sense.rank < 0 ? "lingotrip-learner-examples" : "ecdict-wordnet",
             definitionEn: DictDisplayText.normalizedWhitespace(sense.definition)

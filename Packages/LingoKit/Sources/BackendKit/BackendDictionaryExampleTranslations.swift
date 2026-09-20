@@ -51,6 +51,15 @@ public struct BackendDictionaryExampleTranslation: Sendable, Equatable {
     }
 }
 
+public struct BackendSharedLearnerExample: Decodable, Sendable {
+    public let rank: Int
+    public let partOfSpeech: String
+    public let definition: String
+    public let sentence: String
+    public let sentenceZhHans: String
+    public let contextualMeaningZhHans: String
+}
+
 /// Resolves dictionary example translations through the server cache and, on a miss,
 /// asks the server to generate one with the dictionary AI route. Bounded polling keeps
 /// the card's translation row up to date while it remains visible; a timeout or a
@@ -94,6 +103,13 @@ public struct BackendDictionaryExampleTranslationResolver: Sendable {
         self.guestID = guestID
         self.pollingDelays = pollingDelays
         self.retryDelay = retryDelay
+    }
+
+    public func learnerExamples(for lemma: String) async throws -> [BackendSharedLearnerExample] {
+        struct Response: Decodable, Sendable { let examples: [BackendSharedLearnerExample] }
+        guard let encoded = lemma.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else { return [] }
+        let response: Response = try await backend.publicGet("/v1/dictionary/learner-examples/" + encoded)
+        return response.examples
     }
 
     /// Cache first, then at most three generation attempts. Pending jobs are only

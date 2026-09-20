@@ -96,6 +96,13 @@ export const dictionaryExampleTranslations = applicationSchema.table(
         and ${table.selectedMeaningIndex} is null
       )`,
     ),
+    index("dictionary_translations_lemma_catalog_index").on(
+      table.lemma,
+      table.dictionarySource,
+      table.dictionaryVersion,
+      table.generationKind,
+      table.status,
+    ),
     index("dictionary_translations_source_status_index").on(
       table.sourceKey,
       table.status,

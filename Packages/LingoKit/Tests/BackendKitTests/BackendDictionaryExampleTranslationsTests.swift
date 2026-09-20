@@ -34,6 +34,30 @@ struct BackendDictionaryExampleTranslationsTests {
         }
     }
 
+    private actor CatalogTransport: BackendTransport {
+        var requests: [URLRequest] = []
+        func data(for request: URLRequest) async throws -> BackendTransportResponse {
+            requests.append(request)
+            let json = requests.count == 1 ? #"{"examples":[]}"# : #"{"examples":[{"rank":-199,"partOfSpeech":"art.","definition":"a specific thing","sentence":"Please close the door.","sentenceZhHans":"请关上门。","contextualMeaningZhHans":"特指"}]}"#
+            return BackendTransportResponse(data: Data(json.utf8), headers: [:], statusCode: 200)
+        }
+    }
+
+    @Test("共享例句无需登录，空结果不阻止下次读取新增内容")
+    func sharedCatalogRefreshesAfterEmptyResult() async throws {
+        let transport = CatalogTransport()
+        let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: EmptyCredentialStore(), transport: transport)
+        let resolver = BackendDictionaryExampleTranslationResolver(backend: backend)
+        #expect(try await resolver.learnerExamples(for: "the").isEmpty)
+        let examples = try await resolver.learnerExamples(for: "the")
+        #expect(examples.count == 1)
+        #expect(examples.first?.sentenceZhHans == "请关上门。")
+        let requests = await transport.requests
+        #expect(requests.count == 2)
+        #expect(requests.allSatisfy { $0.url?.path == "/v1/dictionary/learner-examples/the" && $0.httpMethod == "GET" && $0.value(forHTTPHeaderField: "Authorization") == nil })
+    }
+
     private func request() -> BackendDictionaryExampleTranslationRequest {
         BackendDictionaryExampleTranslationRequest(
             candidateMeaningsZhHans: ["配偶", "对手", "助手", "(象棋)将死"],

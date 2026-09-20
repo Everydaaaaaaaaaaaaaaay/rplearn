@@ -1,5 +1,6 @@
 import Foundation
 import Testing
+import SQLite3
 @testable import DictKit
 
 private actor TranslationInvocationCounter {
@@ -22,6 +23,40 @@ struct DictDatabaseTests {
         return try DictDatabase(databaseURL: url)
     }
 
+    @Test("常用五千词全部展示两到四条相关例句")
+    func topFiveThousandExampleCoverage() async throws {
+        let url = try #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))
+        var handle: OpaquePointer?
+        #expect(sqlite3_open_v2(url.path, &handle, SQLITE_OPEN_READONLY, nil) == SQLITE_OK)
+        defer { sqlite3_close(handle) }
+        var statement: OpaquePointer?
+        let query = """
+        SELECT wl FROM word WHERE (bnc > 0 OR frq > 0)
+          AND instr(wl, ' ') = 0 AND wl NOT GLOB '*[^A-Za-z''-]*'
+        ORDER BY CASE WHEN bnc=0 THEN frq WHEN frq=0 THEN bnc ELSE min(bnc,frq) END,
+          CASE WHEN frq=0 THEN 2147483647 ELSE frq END,
+          CASE WHEN bnc=0 THEN 2147483647 ELSE bnc END, wl LIMIT 5000
+        """
+        #expect(sqlite3_prepare_v2(handle, query, -1, &statement, nil) == SQLITE_OK)
+        defer { sqlite3_finalize(statement) }
+        var words: [String] = []
+        while sqlite3_step(statement) == SQLITE_ROW {
+            words.append(String(cString: sqlite3_column_text(statement, 0)))
+        }
+        #expect(words.count == 5000)
+        let db = try openDatabase()
+        for word in words {
+            let entry = try #require(await db.exactEntry(word), "Missing word: \(word)")
+            let examples = DictUsageExamplePolicy.groups(for: entry).flatMap(\.examples)
+            #expect((2...4).contains(examples.count), "Coverage: \(word) = \(examples.count)")
+            #expect(examples.allSatisfy { DictUsageExamplePolicy.containsTarget($0.text, entry: entry) }, "Target: \(word)")
+            #expect(Set(examples.map { $0.text.lowercased() }).count == examples.count)
+            for example in examples where entry.senses.contains(where: { $0.id == example.senseID && $0.rank < -100 }) {
+                #expect(example.translationRequest.candidateMeaningsZhHans.isEmpty)
+            }
+        }
+    }
+
     @Test("目标词完整匹配，不允许近义词或子串，保留已知不规则词形")
     func examplesMatchTheActualHeadword() {
         let just = DictEntry(word: "just")
@@ -31,6 +66,8 @@ struct DictDatabaseTests {
         #expect(DictUsageExamplePolicy.containsTarget("I've JUST arrived.", entry: just))
         #expect(DictUsageExamplePolicy.containsTarget("She went home.", entry: DictEntry(word: "go", exchange: "p:went/d:gone")))
         #expect(!DictUsageExamplePolicy.containsTarget("The window is open.", entry: DictEntry(word: "in")))
+        #expect(DictUsageExamplePolicy.containsTarget("She doesn't like rain.", entry: DictEntry(word: "n't")))
+        #expect(!DictUsageExamplePolicy.containsTarget("She likes rain.", entry: DictEntry(word: "n't")))
     }
 
     @Test("随包高频词补充可查询、用法不同且来源独立", arguments: ["which", "what", "who", "whom", "whose", "where", "when", "why", "how", "because", "although", "though", "if", "unless", "whether", "while", "since", "until", "before", "after", "than", "that", "this", "these", "those", "each", "every", "either", "neither", "both", "any", "some", "another", "other", "such", "only", "even", "also", "just", "yet"])

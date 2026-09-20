@@ -53,6 +53,9 @@ import { registerMediaRoutes } from "./modules/media/routes.js";
 import { createMediaService } from "./modules/media/service.js";
 import { registerNpcRoutes } from "./modules/npc/routes.js";
 import { createNpcService } from "./modules/npc/service.js";
+import { DictionaryExampleCatalogRepository } from "./modules/dictionary-translation/catalog-repository.js";
+import { createDictionaryExampleCatalogService } from "./modules/dictionary-translation/catalog-service.js";
+import { registerDictionaryExampleCatalogRoutes } from "./modules/dictionary-translation/catalog-routes.js";
 import { registerDictionaryTranslationRoutes } from "./modules/dictionary-translation/routes.js";
 import { registerDictionaryTranslationAdminRoutes } from "./modules/dictionary-translation/admin-routes.js";
 import { createDictionaryTranslationService } from "./modules/dictionary-translation/service.js";
@@ -171,6 +174,12 @@ async function main(): Promise<void> {
         return `${route.model}@config-${String(route.configVersion)}`;
       },
     },
+  );
+  registerDictionaryExampleCatalogRoutes(
+    app,
+    createDictionaryExampleCatalogService(
+      new DictionaryExampleCatalogRepository(dependencies.database),
+    ),
   );
   registerDictionaryTranslationRoutes(
     app,

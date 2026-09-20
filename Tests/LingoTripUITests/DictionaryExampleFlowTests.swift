@@ -47,6 +47,35 @@ final class DictionaryExampleFlowTests: XCTestCase {
         capture("which-learner-examples", app)
     }
 
+    func testSharedExamplesArriveWithoutBundledUpdate() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["RUN_LIVE_DICTIONARY_E2E"] == "1")
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "UI_TEST_WELCOME_CAPTURE": "1", "UI_TEST_DICTIONARY_EXAMPLES": "1",
+            "UI_TEST_SHARED_EXAMPLES": "1", "UI_TEST_TAB": "contacts",
+            "LINGOTRIP_BACKEND_URL": "https://rplearn.haruyuki.cn"
+        ]
+        app.launch()
+        defer { app.terminate() }
+        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby")).firstMatch
+        XCTAssertTrue(ruby.waitForExistence(timeout: 25))
+        ruby.tap()
+        let chat = app.buttons["发消息"]
+        XCTAssertTrue(chat.waitForExistence(timeout: 5))
+        chat.tap()
+        let word = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "The")).firstMatch
+        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        word.tap()
+        for sentence in ["Please close the window before you leave.", "The cat is sleeping on the warm sofa."] {
+            let row = app.descendants(matching: .any)["dict.example." + sentence].firstMatch
+            XCTAssertTrue(row.waitForExistence(timeout: 30), app.debugDescription)
+            XCTAssertTrue(row.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@ AND NOT (label CONTAINS %@)", "中文翻译：", "加载中")).firstMatch.waitForExistence(timeout: 30), app.debugDescription)
+        }
+        capture("the-shared-examples", app)
+    }
+
     private func capture(_ name: String, _ app: XCUIApplication) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name

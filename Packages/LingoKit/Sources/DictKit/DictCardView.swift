@@ -802,7 +802,13 @@ public struct DictCardView: View {
         relatedPhrases = []
         exampleTranslations = [:]
         translatingExampleIDs = []
-        let loadedEntry = await dictionary.lookup(word)
+        var loadedEntry = await dictionary.lookup(word)
+        #if DEBUG
+        // Explicit live-E2E fixture: emulate a pre-supplement dictionary snapshot.
+        if ProcessInfo.processInfo.environment["UI_TEST_SHARED_EXAMPLES"] == "1", word.lowercased() == "the" {
+            loadedEntry?.senses.removeAll { $0.rank < -100 }
+        }
+        #endif
         if path.count == 1 {
             contextualPhrases = await dictionary.matchingPhrases(
                 phraseCandidates,
@@ -818,7 +824,22 @@ public struct DictCardView: View {
         let resolvedWord = loadedEntry?.word ?? word
         isFavorite = await favoriteActions?.contains(resolvedWord) ?? false
         isLoading = false
-        if let loadedEntry {
+        if var loadedEntry {
+            if DictUsageExamplePolicy.groups(for: loadedEntry).flatMap(\.examples).count < 2 {
+                let shared = await exampleTranslationActions.loadExamples(loadedEntry.word)
+                guard !Task.isCancelled else { return }
+                let valid = shared.filter {
+                    $0.rank < 0 && DictUsageExamplePolicy.containsTarget($0.sentence, entry: loadedEntry)
+                }
+                let ids = Set(valid.map { $0.sense.id })
+                loadedEntry.senses = valid.map(\.sense) + loadedEntry.senses.filter { !ids.contains($0.id) }
+                entry = loadedEntry
+                for example in DictUsageExamplePolicy.groups(for: loadedEntry).flatMap(\.examples) {
+                    if let source = valid.first(where: { $0.sentence == example.text }) {
+                        exampleTranslations[example.id] = source.translation
+                    }
+                }
+            }
             await translateUsageExamples(for: loadedEntry)
         }
     }
@@ -830,6 +851,7 @@ public struct DictCardView: View {
             for: entry
         )
         .flatMap(\.examples)
+        .filter { exampleTranslations[$0.id] == nil }
         guard !examples.isEmpty else { return }
 
         let translationActions = effectiveTranslationActions

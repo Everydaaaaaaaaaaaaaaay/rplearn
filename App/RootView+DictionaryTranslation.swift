@@ -23,7 +23,15 @@ extension RootView {
 
 extension BackendDictionaryExampleTranslationResolver {
     var dictionaryActions: DictExampleTranslationActions {
-        DictExampleTranslationActions { request in await self.resolve(request) }
+        DictExampleTranslationActions(loadExamples: { lemma in
+            guard let examples = try? await self.learnerExamples(for: lemma) else { return [] }
+            return examples.map {
+                DictSharedLearnerExample(rank: $0.rank, partOfSpeech: $0.partOfSpeech,
+                    definition: $0.definition, sentence: $0.sentence,
+                    translation: DictExampleTranslation(sentenceZhHans: $0.sentenceZhHans,
+                        contextualMeaningZhHans: $0.contextualMeaningZhHans))
+            }
+        }) { request in await self.resolve(request) }
     }
 
     func resolve(_ request: DictExampleTranslationRequest) async -> DictExampleTranslation? {

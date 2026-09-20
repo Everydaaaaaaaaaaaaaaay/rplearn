@@ -253,6 +253,8 @@ def contains_target(sentence: str, word: str, exchange: str | None) -> bool:
         return [token.strip("'") for token in re.findall(r"[a-z]+(?:'[a-z]+)*", text.lower().replace("’", "'"))]
     forms = [word] + [part.split(':', 1)[1] for part in (exchange or '').split('/') if ':' in part and part.split(':', 1)[0] in {'0','p','d','i','3','s','r','t'}]
     actual = tokens(sentence)
+    if word.lower() == "n't":
+        return any(len(token) > 3 and token.endswith("n't") for token in actual)
     return any(target and any(actual[i:i+len(target)] == target for i in range(len(actual)-len(target)+1)) for target in map(tokens, forms))
 
 
@@ -352,7 +354,7 @@ def iter_jobs(database: sqlite3.Connection) -> Iterator[dict[str, object]]:
                 "senseDefinition": sense["definition"],
                 "exampleIndex": example_index,
                 "sentence": example,
-                "candidateMeaningsZhHans": meanings.get(candidate_pos, []),
+                "candidateMeaningsZhHans": [] if sense["rank"] < -100 else meanings.get(candidate_pos, []),
             }
 
 
