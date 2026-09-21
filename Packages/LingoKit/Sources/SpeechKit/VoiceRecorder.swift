@@ -129,6 +129,7 @@ public final class VoiceRecorder {
     public private(set) var pendingAutoCapture: Capture?
 
     private let audioSession: AudioSessionCoordinator
+    private var localeIdentifier = "en_US"
     private var engine: AVAudioEngine?
     private var audioFile: AVAudioFile?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -142,7 +143,8 @@ public final class VoiceRecorder {
     private let permissionRequester: @MainActor (VoiceRecorder) async -> Bool
     private let captureStarter: @MainActor (VoiceRecorder) throws -> StartedCapture
 
-    public init(audioSession: AudioSessionCoordinator) {
+    public init(audioSession: AudioSessionCoordinator, localeIdentifier: String = "en_US") {
+        self.localeIdentifier = localeIdentifier
         self.audioSession = audioSession
         self.permissionRequester = { recorder in
             await recorder.requestPermissions()
@@ -359,10 +361,10 @@ public final class VoiceRecorder {
     }
 
     private func startSystemCapture() throws -> StartedCapture {
-        try Self.startSystemCapture(callbacks: makeRuntimeCallbacks())
+        try Self.startSystemCapture(callbacks: makeRuntimeCallbacks(), localeIdentifier: localeIdentifier)
     }
 
-    private nonisolated static func startSystemCapture(callbacks: RuntimeCallbacks) throws -> StartedCapture {
+    private nonisolated static func startSystemCapture(callbacks: RuntimeCallbacks, localeIdentifier: String) throws -> StartedCapture {
         let engine = AVAudioEngine()
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
@@ -377,7 +379,7 @@ public final class VoiceRecorder {
         do {
             let writer = AudioBufferFileWriter(fileURL: fileURL)
 
-            guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en_US")),
+            guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: localeIdentifier)),
                   recognizer.isAvailable else {
                 throw NSError(domain: "VoiceRecorder", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: "语音识别当前不可用",

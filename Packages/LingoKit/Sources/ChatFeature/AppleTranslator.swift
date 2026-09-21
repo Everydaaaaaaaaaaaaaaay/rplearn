@@ -14,7 +14,13 @@ public final class AppleTranslator {
     private var inbox: [(id: UUID, text: String)] = []
     private var deadlines: [UUID: Task<Void, Never>] = [:]
 
-    public init() {}
+    private let sourceLanguage: String
+    private let targetLanguage: String
+
+    public init(sourceLanguage: String = "en", targetLanguage: String = "zh-Hans") {
+        self.sourceLanguage = sourceLanguage
+        self.targetLanguage = targetLanguage
+    }
 
     public func translate(_ text: String) async -> String? {
         #if targetEnvironment(simulator)
@@ -89,8 +95,8 @@ public final class AppleTranslator {
         sessionID = UUID()
         if configuration == nil {
             configuration = TranslationSession.Configuration(
-                source: Locale.Language(identifier: "en"),
-                target: Locale.Language(identifier: "zh-Hans")
+                source: Locale.Language(identifier: sourceLanguage),
+                target: Locale.Language(identifier: targetLanguage)
             )
         } else {
             configuration?.invalidate()

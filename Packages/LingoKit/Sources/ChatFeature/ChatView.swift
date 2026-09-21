@@ -15,7 +15,7 @@ public struct ChatView: View {
     @State var viewModel: ChatViewModel
     @State private var autoReadEnabled = false
     @State private var autoReadReady = false
-    @State private var autoReadQueue: ChatAutoReadQueue
+    @State var autoReadQueue: ChatAutoReadQueue
     @Environment(\.scenePhase) private var scenePhase
     @State var wordSelection: TokenSelection?
     @State var grammarTermSelection: GrammarTermSelection?
@@ -23,6 +23,10 @@ public struct ChatView: View {
     @State var grammarAICache: [UUID: AIGrammarAnalysis] = [:]
     @State var expandedCoachMessageIDs: Set<UUID> = []
     @State var transcriptVisibleMessageIDs: Set<UUID> = []
+    @State var composerTranslation = ComposerTranslationModel()
+    @State var composerAppleTranslator = AppleTranslator(sourceLanguage: "zh-Hans", targetLanguage: "en")
+    @State var chineseRecorder: VoiceRecorder
+    @State var chineseRecordingTask: Task<Void, Never>?
     @State var isVoiceMode = false
     @State var recorder: VoiceRecorder
     @State var voicePlayer: VoiceMessagePlayer
@@ -42,6 +46,7 @@ public struct ChatView: View {
     /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
     @State private var isKeyboardVisible = false
     @FocusState var isTextInputFocused: Bool
+    @FocusState var isChineseInputFocused: Bool
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.dismiss) var dismiss
     let deps: ChatDependencies
@@ -52,6 +57,7 @@ public struct ChatView: View {
         startsInRealtimeConversation: Bool = false
     ) {
         _viewModel = State(initialValue: ChatViewModel(character: character, deps: deps))
+        _chineseRecorder = State(initialValue: VoiceRecorder(audioSession: deps.audioSession, localeIdentifier: "zh_CN"))
         _recorder = State(initialValue: VoiceRecorder(audioSession: deps.audioSession))
         _voicePlayer = State(initialValue: VoiceMessagePlayer(audioSession: deps.audioSession))
         _showsRealtimeConversation = State(initialValue: startsInRealtimeConversation)
@@ -469,9 +475,15 @@ public struct ChatView: View {
                         unseenIncomingMessageCount += 1
                     }
                 }
-                .onChange(of: isTextInputFocused) {
-                    viewModel.composerFocusChanged(isTextInputFocused)
-                    guard isTextInputFocused else { return }
+                .onChange(of: isTextInputFocused || isChineseInputFocused) {
+                    viewModel.composerFocusChanged(isTextInputFocused || isChineseInputFocused)
+                    guard isTextInputFocused || isChineseInputFocused else { return }
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                    }
+                }
+                .onChange(of: composerTranslation.isOpen) {
+                    guard isNearConversationBottom else { return }
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         proxy.scrollTo("conversation-bottom", anchor: .bottom)
                     }

@@ -35,6 +35,10 @@ public final class ChatViewModel {
     }
     private var composerActivity = RoleplayComposerActivity()
 
+    func composerSourceEdited(from old: String, to new: String) {
+        composerActivity.recordEdit(from: old, to: new, at: deps.now())
+    }
+
     public func composerFocusChanged(_ focused: Bool) {
         composerActivity.focusChanged(focused, at: deps.now())
     }

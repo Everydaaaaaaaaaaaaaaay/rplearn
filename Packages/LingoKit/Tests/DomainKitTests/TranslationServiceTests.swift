@@ -4,6 +4,17 @@ import Testing
 
 @Suite("TranslationService")
 struct TranslationServiceTests {
+    @Test("中文草稿显式翻译为英文，不沿用英译中指令")
+    func composerEnglishDirection() async throws {
+        let service = TranslationService(llm: MockLLMProvider(completeHandler: { request in
+            #expect(request.task == .translation)
+            #expect(request.system?.contains("Chinese into natural, simple conversational English") == true)
+            #expect(request.messages == [.user("把名字发给我吧")])
+            return "  Please send me the name.  "
+        }))
+        #expect(try await service.translateToEnglish("把名字发给我吧") == "Please send me the name.")
+    }
+
     @Test("翻译走 balanced 档、低温采样，输出去除首尾空白")
     func requestShape() async throws {
         let mock = MockLLMProvider(completeHandler: { request in
