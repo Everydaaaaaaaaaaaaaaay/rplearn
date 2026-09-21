@@ -39,6 +39,8 @@ public struct ChatView: View {
     @State var showsRealtimeConversation = false
     @State private var accessAfterVoice = false
     @State var isNearConversationBottom = true
+    @State private var followsComposerResize = true
+    @State private var isUserScrollingMessages = false
     @State var unseenIncomingMessageCount = 0
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
@@ -374,6 +376,8 @@ public struct ChatView: View {
                             }
                             messageRow(message, at: index)
                                 .id(message.id)
+                                .accessibilityElement(children: .contain)
+                                .accessibilityIdentifier(message.id == viewModel.messages.last?.id ? "chat.message.latest" : "chat.message.\(message.id)")
                                 .padding(.top, messageTopSpacing(at: index))
                                 .background(
                                     highlightedMessageID == message.id
@@ -445,9 +449,24 @@ public struct ChatView: View {
                     geometry.contentSize.height - geometry.visibleRect.maxY < 96
                 } action: { _, isNearBottom in
                     isNearConversationBottom = isNearBottom
+                    if isUserScrollingMessages { followsComposerResize = isNearBottom }
                     if isNearBottom {
                         unseenIncomingMessageCount = 0
                     }
+                }
+                // Follow the actual laid-out viewport, not the mode toggle before layout.
+                // Keep this intent separate from proximity: shrinking the viewport can
+                // temporarily move the bottom outside the visible rect.
+                .onScrollGeometryChange(for: CGSize.self) { geometry in
+                    CGSize(width: geometry.containerSize.width,
+                           height: geometry.containerSize.height - geometry.contentInsets.top - geometry.contentInsets.bottom)
+                } action: { old, new in
+                    guard old != new, followsComposerResize else { return }
+                    proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                }
+                .onScrollPhaseChange { _, phase in
+                    isUserScrollingMessages = phase == .tracking || phase == .interacting || phase == .decelerating
+                    if isUserScrollingMessages { followsComposerResize = isNearConversationBottom }
                 }
                 .onChange(of: viewModel.streamingText) {
                     guard isNearConversationBottom else { return }
@@ -468,6 +487,7 @@ public struct ChatView: View {
                         return
                     }
                     if isNearConversationBottom || last.role == .user {
+                        followsComposerResize = true
                         withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                             proxy.scrollTo("conversation-bottom", anchor: .bottom)
                         }
@@ -478,18 +498,20 @@ public struct ChatView: View {
                 .onChange(of: isTextInputFocused || isChineseInputFocused) {
                     viewModel.composerFocusChanged(isTextInputFocused || isChineseInputFocused)
                     guard isTextInputFocused || isChineseInputFocused else { return }
+                    followsComposerResize = true
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         proxy.scrollTo("conversation-bottom", anchor: .bottom)
                     }
                 }
                 .onChange(of: composerTranslation.isOpen) {
-                    guard isNearConversationBottom else { return }
+                    guard followsComposerResize else { return }
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         proxy.scrollTo("conversation-bottom", anchor: .bottom)
                     }
                 }
                 .onChange(of: highlightedMessageID) { _, messageID in
                     guard let messageID else { return }
+                    followsComposerResize = false
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         proxy.scrollTo(messageID, anchor: .center)
                     }
@@ -505,6 +527,7 @@ public struct ChatView: View {
                         withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                             proxy.scrollTo("conversation-bottom", anchor: .bottom)
                         }
+                        followsComposerResize = true
                         isNearConversationBottom = true
                         unseenIncomingMessageCount = 0
                     } label: {

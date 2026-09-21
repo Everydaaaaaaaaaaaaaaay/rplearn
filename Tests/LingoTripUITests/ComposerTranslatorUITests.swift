@@ -18,6 +18,8 @@ final class ComposerTranslatorUITests: XCTestCase {
         english.tap(); english.typeText("Yes, please send me the name.")
         app.buttons["chat.dismissKeyboard"].tap()
         toggle.tap()
+        Thread.sleep(forTimeInterval: 0.7)
+        assertLatestMessageVisible(app)
         let source = app.descendants(matching: .any)["chat.translator.source"].firstMatch
         XCTAssertTrue(source.waitForExistence(timeout: 5))
         app.buttons["AI"].tap()
@@ -29,6 +31,8 @@ final class ComposerTranslatorUITests: XCTestCase {
         Thread.sleep(forTimeInterval: 0.7)
         XCTAssertTrue(String(describing: english.value).contains("Yes, please"))
         capture("composer-translator", app)
+        assertLatestMessageVisible(app)
+
         XCTAssertTrue(app.buttons["翻译"].exists)
         for _ in 0..<3 { toggle.tap(); toggle.tap() }
         XCTAssertTrue(source.exists)
@@ -36,6 +40,14 @@ final class ComposerTranslatorUITests: XCTestCase {
         toggle.tap()
         XCTAssertFalse(source.isEnabled)
         XCTAssertEqual(toggle.label, "打开翻译器")
+    }
+
+    private func assertLatestMessageVisible(_ app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
+        let latest = app.descendants(matching: .any)["chat.message.latest"].firstMatch
+        XCTAssertTrue(latest.waitForExistence(timeout: 5), file: file, line: line)
+        let mode = app.buttons["即时"]
+        XCTAssertLessThanOrEqual(latest.frame.maxY, mode.frame.minY - 4,
+            "Latest message must remain above the expanded composer", file: file, line: line)
     }
 
     private func capture(_ name: String, _ app: XCUIApplication) {
