@@ -24,7 +24,7 @@ public struct ChatView: View {
     @State var expandedCoachMessageIDs: Set<UUID> = []
     @State var transcriptVisibleMessageIDs: Set<UUID> = []
     @State var composerTranslation = ComposerTranslationModel()
-    @State var composerAppleTranslator = AppleTranslator(sourceLanguage: "zh-Hans", targetLanguage: "en")
+    @State var composerAppleTranslator = AppleTranslator(sourceLanguage: "zh-Hans", targetLanguage: "en", requestTimeout: .seconds(20))
     @State var chineseRecorder: VoiceRecorder
     @State var chineseRecordingTask: Task<Void, Never>?
     @State var isVoiceMode = false
@@ -243,25 +243,11 @@ public struct ChatView: View {
                 )
             }
         }
-        .translationTask(appleTranslator.configuration) { @Sendable session in
-            // Keep one session for queued requests, including language-pack preparation.
-            let sessionID = await appleTranslator.sessionID
-            var failed = false
-            do {
-                try await session.prepareTranslation()
-                while !Task.isCancelled {
-                    let batch = await appleTranslator.takeBatch(sessionID: sessionID)
-                    if batch.isEmpty { break }
-                    for item in batch {
-                        let zh = try? await session.translate(item.text).targetText
-                        await appleTranslator.complete(item.id, with: zh)
-                    }
-                }
-            } catch {
-                // The system owns download consent; cancellation/failure stays local.
-                failed = true
+        .background {
+            ZStack {
+                AppleTranslationHost(translator: appleTranslator)
+                AppleTranslationHost(translator: composerAppleTranslator)
             }
-            await appleTranslator.finishSession(sessionID, failed: failed || Task.isCancelled)
         }
         .task {
             // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
@@ -304,6 +290,11 @@ public struct ChatView: View {
             autoReadReady = false
             autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
             appleTranslator.cancelAll()
+            isChineseInputFocused = false
+            composerTranslation.cancel()
+            composerAppleTranslator.cancelAll()
+            chineseRecordingTask?.cancel()
+            Task { await chineseRecorder.cancelRecording() }
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
@@ -560,6 +551,7 @@ public struct ChatView: View {
             .contentShape(Rectangle())
             .onTapGesture {
                 isTextInputFocused = false
+                isChineseInputFocused = false
             }
             .accessibilityHidden(true)
     }
@@ -567,8 +559,9 @@ public struct ChatView: View {
     private var messageListKeyboardDismissGesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                guard isTextInputFocused, value.translation.height > 0 else { return }
+                guard isTextInputFocused || isChineseInputFocused, value.translation.height > 0 else { return }
                 isTextInputFocused = false
+                isChineseInputFocused = false
             }
     }
 

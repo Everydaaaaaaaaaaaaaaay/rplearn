@@ -809,6 +809,24 @@ struct ChatWorkflowTests {
 @Suite("Apple 翻译请求生命周期", .serialized)
 @MainActor
 struct AppleTranslatorQueueTests {
+    @Test("未启动的会话超时后释放请求并允许重试")
+    func stalledSessionTimesOut() async {
+        let translator = AppleTranslator(requestTimeout: .milliseconds(30))
+        let first = Task { await translator.enqueue("Hello") }
+        while translator.configuration == nil { await Task.yield() }
+        let oldID = translator.sessionID
+        #expect(await first.value == nil)
+        #expect(translator.configuration == nil)
+        let retry = Task { await translator.enqueue("Again") }
+        while translator.configuration == nil { await Task.yield() }
+        translator.finishSession(oldID, failed: true)
+        let batch = translator.takeBatch(sessionID: translator.sessionID)
+        #expect(batch.count == 1)
+        if let id = batch.first?.id { translator.complete(id, with: "再次") }
+        #expect(await retry.value == "再次")
+        translator.cancelAll()
+    }
+
     @Test("并发请求共用会话且新消息不会打断正在翻译的消息")
     func queuedRequestsShareSession() async throws {
         let translator = AppleTranslator()

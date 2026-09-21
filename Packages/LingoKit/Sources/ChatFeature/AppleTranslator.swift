@@ -14,10 +14,12 @@ public final class AppleTranslator {
     private var inbox: [(id: UUID, text: String)] = []
     private var deadlines: [UUID: Task<Void, Never>] = [:]
 
+    private let requestTimeout: Duration
     private let sourceLanguage: String
     private let targetLanguage: String
 
-    public init(sourceLanguage: String = "en", targetLanguage: String = "zh-Hans") {
+    public init(sourceLanguage: String = "en", targetLanguage: String = "zh-Hans", requestTimeout: Duration = .seconds(120)) {
+        self.requestTimeout = requestTimeout
         self.sourceLanguage = sourceLanguage
         self.targetLanguage = targetLanguage
     }
@@ -36,12 +38,13 @@ public final class AppleTranslator {
         let id = UUID()
         return await withTaskCancellationHandler {
             await withCheckedContinuation { continuation in
+                guard !Task.isCancelled else { continuation.resume(returning: nil); return }
                 pending[id] = continuation
                 inbox.append((id, text))
                 triggerSession()
                 // Allow time for first-use language download and system consent.
                 deadlines[id] = Task { @MainActor in
-                    do { try await Task.sleep(for: .seconds(120)) }
+                    do { try await Task.sleep(for: requestTimeout) }
                     catch { return }
                     cancelRequest(id)
                 }
@@ -101,5 +104,36 @@ public final class AppleTranslator {
         } else {
             configuration?.invalidate()
         }
+    }
+}
+
+/// Each direction gets an independent stable host, outside the resizing input bar.
+/// Capture the generation before launching, so a late old task cannot take a new queue.
+struct AppleTranslationHost: View {
+    let translator: AppleTranslator
+
+    var body: some View {
+        let generation = translator.sessionID
+        Color.clear
+            .frame(width: 1, height: 1)
+            .translationTask(translator.configuration) { @Sendable session in
+                var failed = false
+                do {
+                    try await session.prepareTranslation()
+                    while !Task.isCancelled {
+                        let batch = await translator.takeBatch(sessionID: generation)
+                        if batch.isEmpty { break }
+                        for item in batch {
+                            try Task.checkCancellation()
+                            let result = try? await session.translate(item.text).targetText
+                            await translator.complete(item.id, with: result)
+                        }
+                    }
+                } catch { failed = true }
+                await translator.finishSession(generation, failed: failed || Task.isCancelled)
+            }
+            .id(generation)
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
     }
 }

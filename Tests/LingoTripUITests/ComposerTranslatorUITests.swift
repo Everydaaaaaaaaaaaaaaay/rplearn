@@ -34,6 +34,14 @@ final class ComposerTranslatorUITests: XCTestCase {
         assertLatestMessageVisible(app)
 
         XCTAssertTrue(app.buttons["翻译"].exists)
+        // The edge beside bubbles is blank chat background, not a word/button target.
+        let blankY = app.buttons["即时"].frame.minY - 110
+        app.coordinate(withNormalizedOffset: .zero)
+            .withOffset(CGVector(dx: app.frame.width - 3, dy: blankY)).tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        XCTAssertTrue(source.exists)
+        XCTAssertTrue(String(describing: source.value).contains("可以呀"))
+
         for _ in 0..<3 { toggle.tap(); toggle.tap() }
         XCTAssertTrue(source.exists)
         XCTAssertTrue(String(describing: source.value).contains("可以呀"))

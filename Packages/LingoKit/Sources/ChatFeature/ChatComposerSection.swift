@@ -143,33 +143,10 @@ extension ChatView {
             composerAppleTranslator.cancelAll()
             if composerTranslation.mode == .instant { translateComposer() }
         }
-        .translationTask(composerAppleTranslator.configuration) { @Sendable session in
-            let id = await composerAppleTranslator.sessionID
-            var failed = false
-            do {
-                try await session.prepareTranslation()
-                while !Task.isCancelled {
-                    let batch = await composerAppleTranslator.takeBatch(sessionID: id)
-                    if batch.isEmpty { break }
-                    for item in batch {
-                        let result = try? await session.translate(item.text).targetText
-                        await composerAppleTranslator.complete(item.id, with: result)
-                    }
-                }
-            } catch { failed = true }
-            await composerAppleTranslator.finishSession(id, failed: failed || Task.isCancelled)
-        }
         .onChange(of: chineseRecorder.pendingAutoCapture?.transcript) { _, transcript in
             guard let transcript, composerTranslation.isOpen else { return }
             composerTranslation.source = transcript
             if let file = chineseRecorder.pendingAutoCapture?.fileName { VoiceMessageStorage.delete(fileName: file) }
-        }
-        .onDisappear {
-            isChineseInputFocused = false
-            composerTranslation.cancel()
-            composerAppleTranslator.cancelAll()
-            chineseRecordingTask?.cancel()
-            Task { await chineseRecorder.cancelRecording() }
         }
     }
 
