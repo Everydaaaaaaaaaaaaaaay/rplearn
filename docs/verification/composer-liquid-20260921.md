@@ -1,5 +1,7 @@
 # Composer liquid — 2026-09-21
 
+> Superseded: the owner rejected this visual treatment. The liquid renderer, motion sampling, and related tests were removed in favor of static blue/lilac composer surfaces. This record documents the retired implementation, not the current UI.
+
 ## Scope
 
 Replaces the blurred full-width waterline in the existing chat composer. Translation flow, field layout and compact composer height are unchanged.

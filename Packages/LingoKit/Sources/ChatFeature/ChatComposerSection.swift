@@ -131,7 +131,7 @@ extension ChatView {
         }
         .padding(.bottom, max(0, bottomInset))
         .tint(composerTint)
-        .background(ComposerWaterSurface(expanded: composerTranslation.isOpen, bottomInset: max(0, bottomInset)))
+        .background(ComposerPanelSurface(expanded: composerTranslation.isOpen))
         .animation(reduceMotion ? .linear(duration: 0.15) : .spring(response: 0.42, dampingFraction: 0.94), value: composerTranslation.isOpen)
         .onChange(of: composerTranslation.source) { old, new in
             if composerTranslation.isOpen { viewModel.composerSourceEdited(from: old, to: new) }
