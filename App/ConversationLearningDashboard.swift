@@ -197,7 +197,11 @@ private struct LearningListeningView: View {
                         Text("完整听完至少一遍后可作答。交卷前不显示台词与答案。") .font(.caption).foregroundStyle(.secondary)
                     } else if let session {
                         Text("本组 \(session.score)/6").font(.largeTitle.bold()).accessibilityIdentifier("learningListening.result")
-                        Text(session.passed ? "本次表现达标；还需另一组新题和间隔证据。" : "先看看没听清的部分，之后可尝试新的题组。")
+                        if LearningListeningSession.confirmed(band: session.band, sessions: model.state.listening, now: .now) {
+                            Text("本档已完成跨日确认，无需再做一组来重复确认。可以复听原文，或自愿尝试其他难度。")
+                        } else {
+                            Text(session.passed ? "本组表现达标；跨日新题或分项证据还未满足确认条件。" : "本组尚未达标。可以对照原文复听，看看哪些信息没听清。")
+                        }
                         ForEach(session.items) { item in
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(item.question).font(.headline)
@@ -213,7 +217,7 @@ private struct LearningListeningView: View {
                 }.padding()
             }
             .navigationTitle("听力尝试")
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("稍后继续") { stop(); dismiss() } } }
+            .toolbar { ToolbarItem(placement: .cancellationAction) { Button(session?.finishedAt == nil ? "稍后继续" : "完成") { stop(); dismiss() } } }
         }
         .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidFinish)) { note in
             guard let id = note.object as? UUID, id == playbackID, let itemID = playingItem else { return }
