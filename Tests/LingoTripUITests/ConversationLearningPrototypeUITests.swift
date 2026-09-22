@@ -2,7 +2,7 @@ import XCTest
 
 @MainActor
 final class ConversationLearningPrototypeUITests: XCTestCase {
-    private func launch(namespace: String, largeText: Bool = false) -> XCUIApplication {
+    private func launch(namespace: String, largeText: Bool = false, day: Int = 0) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
             "UI_TEST_WELCOME_CAPTURE": "1", "UI_TEST_NATIVE_CAPTURE": "learningLab", "UI_TEST_TAB": "contacts",
@@ -11,6 +11,7 @@ final class ConversationLearningPrototypeUITests: XCTestCase {
             app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark"
             app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         }
+        app.launchEnvironment["UI_TEST_LEARNING_DAY_OFFSET"] = String(day)
         app.launch()
         XCTAssertTrue(app.buttons["learning.start"].waitForExistence(timeout: 30))
         return app
@@ -24,6 +25,31 @@ final class ConversationLearningPrototypeUITests: XCTestCase {
         XCTAssertTrue(app.buttons["learning.return"].exists)
         app.buttons["learning.return"].tap()
         XCTAssertTrue(app.buttons["learning.review"].waitForExistence(timeout: 10))
+    }
+    func testOptionalTransferSurvivesDeferralAndUsesExistingChat() {
+        let namespace = "ui-\(UUID().uuidString)"
+        var app = launch(namespace: namespace)
+        send(app)
+        app.buttons["learning.review"].tap()
+        XCTAssertTrue(app.staticTexts["learning.reward"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["learning.transfer"].exists)
+        app.terminate(); app = launch(namespace: namespace, day: 1)
+        for _ in 0..<4 where !app.buttons["learning.deferTransfer"].isHittable { app.swipeUp() }
+        app.buttons["learning.deferTransfer"].tap()
+        app.terminate(); app = launch(namespace: namespace, day: 1)
+        XCTAssertFalse(app.buttons["learning.transfer"].exists)
+        app.terminate(); app = launch(namespace: namespace, day: 2)
+        for _ in 0..<4 where !app.buttons["learning.transfer"].isHittable { app.swipeUp() }
+        capture("learning-optional-transfer", app)
+        app.buttons["learning.transfer"].tap()
+        XCTAssertTrue(app.buttons["learning.return"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts["情景练习：饮料选择"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["chat.composer"].firstMatch.exists)
+        app.buttons["learning.return"].tap()
+        XCTAssertFalse(app.buttons["learning.transfer"].exists)
+        XCTAssertEqual(app.staticTexts["learning.xp"].label, "10 XP")
+        app.terminate(); app = launch(namespace: namespace, day: 2)
+        XCTAssertEqual(app.staticTexts["learning.activeContext"].label, "当前情境：饮料选择")
     }
     func testRealComposerResumeReviewAndDeduplicate() {
         let namespace = "ui-\(UUID().uuidString)"

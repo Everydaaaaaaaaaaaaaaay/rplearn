@@ -59,6 +59,27 @@ public struct ConversationLearningLedger: Codable, Sendable, Equatable {
     /// Reward tombstones survive evidence deletion; deleting text never enables farming it again.
     public private(set) var rewardKeys: Set<String> = []
     public private(set) var revision = 0
+    private var transferDeferredUntil: Int?
+    public struct TransferSuggestion: Sendable, Equatable {
+        public let sourceID: UUID
+        public let context: String
+    }
+    /// One optional invitation, after a later day; no model call, notification or extra reward.
+    public func transferSuggestion(day: Int, origin: Origin) -> TransferSuggestion? {
+        guard active == nil, day >= (transferDeferredUntil ?? Int.min),
+              let source = attempts.last(where: { $0.origin == origin && $0.phase == .completed }),
+              source.day < day, !source.evidence.isEmpty, !source.turns.isEmpty else { return nil }
+        let contexts = ["周末去处", "饮料选择", "推荐一本书"]
+        guard let index = contexts.firstIndex(of: source.context) else { return nil }
+        // Do not nag immediately after any practice (including an abandoned/free conversation).
+        guard !attempts.contains(where: { $0.origin == origin && $0.day >= day }) else { return nil }
+        return TransferSuggestion(sourceID: source.id, context: contexts[(index + 1) % contexts.count])
+    }
+    public mutating func deferTransfer(day: Int) {
+        guard day < Int.max else { return }
+        transferDeferredUntil = day + 1
+        revision += 1
+    }
     public init() {}
     public var xp: Int { attempts.reduce(0) { $0 + $1.awardedXP } }
     public var level: Int { 1 + xp / 60 }
@@ -125,8 +146,9 @@ public struct ConversationLearningLedger: Codable, Sendable, Equatable {
         revision += 1
         return true
     }
-    public mutating func abandon(_ id: UUID) {
+    public mutating func abandon(_ id: UUID, endedDay: Int? = nil) {
         guard let i = attempts.firstIndex(where: { $0.id == id }), attempts[i].phase == .active else { return }
+        if let endedDay { attempts[i].day = endedDay }
         attempts[i].phase = .abandoned; revision += 1
     }
     public mutating func deleteEvidence(_ id: UUID) {

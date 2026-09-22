@@ -8,11 +8,13 @@ struct ConversationLearningReviewerTests {
     private actor Client: LLMClient {
         var calls = 0
         var operations: [UUID] = []
+        var payloads: [String] = []
         let outputs: [String]
         let failure: LLMError?
         init(_ outputs: [String] = [], failure: LLMError? = nil) { self.outputs = outputs; self.failure = failure }
         func complete(_ request: LLMRequest) async throws -> String {
             operations.append(request.operationID); calls += 1
+            payloads.append(request.messages.first?.content ?? "")
             if let failure { throw failure }
             return outputs[min(calls - 1, outputs.count - 1)]
         }
@@ -186,5 +188,43 @@ struct ConversationLearningReviewerTests {
         let result = try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: Client([raw]))
         #expect(result.review.verdict == .uncertain)
         #expect(result.calls == 2)
+    }
+    @Test("NPC 上下文可解释指代，但不能冒充用户的理由")
+    func partnerCannotSupplyEvidence() async throws {
+        var ledger = ConversationLearningLedger()
+        let attempt = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        let id = UUID()
+        ledger.observe(.sent(id: id, text: "Yes.", voice: false), attemptID: attempt)
+        let raw = String(decoding: try JSONSerialization.data(withJSONObject: [
+            "verdict": "complete", "wantsToStop": false, "evidenceMessageIDs": [id.uuidString],
+            "feedback": "完成", "choiceEnglish": "Yes", "reasonEnglish": "it is close"]), as: UTF8.self)
+        let result = try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: Client([raw]),
+            precedingPartnerText: [id: "Would you choose the park because it is close?"])
+        #expect(result.review.verdict == .uncertain)
+        #expect(result.calls == 2)
+    }
+    @Test("上下文仅保留送审用户消息对应部分，长度有界")
+    func partnerContextIsBounded() async throws {
+        var ledger = ConversationLearningLedger()
+        let attempt = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        var prompts: [UUID: String] = [UUID(): "UNRELATED_PRIVATE_CONTEXT"]
+        for _ in 0..<8 {
+            let id = UUID()
+            ledger.observe(.sent(id: id, text: "The park because it is close.", voice: false), attemptID: attempt)
+            prompts[id] = String(repeating: "x", count: 3000)
+        }
+        let id = ledger.active!.turns.last!.id
+        let raw = String(decoding: try JSONSerialization.data(withJSONObject: [
+            "verdict": "needsSupport", "wantsToStop": false, "evidenceMessageIDs": [id.uuidString],
+            "feedback": "再说说看", "choiceEnglish": "", "reasonEnglish": ""]), as: UTF8.self)
+        let client = Client([raw])
+        _ = try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: client, precedingPartnerText: prompts)
+        let input = await client.payloads[0]
+        #expect(!input.contains("UNRELATED_PRIVATE_CONTEXT"))
+        let records = try JSONSerialization.jsonObject(with: Data(input.utf8)) as! [[String: Any]]
+        let sizes = records.compactMap { ($0["precedingPartnerText"] as? String)?.count }
+        #expect(sizes.reduce(0, +) == 1800)
+        #expect(sizes.allSatisfy { $0 <= 600 })
+        #expect(records.count == 8)
     }
 }

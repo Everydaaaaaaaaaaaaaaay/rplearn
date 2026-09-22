@@ -5,6 +5,53 @@ import Testing
 @Suite("对话学习原型闭环")
 struct ConversationLearningPrototypeTests {
     typealias Ledger = ConversationLearningLedger
+    @Test("跨情境邀请：当日不催促，隔天可选，帮助不改变参与资格", arguments: [false, true])
+    func transferTiming(assisted: Bool) throws {
+        var ledger = Ledger()
+        let (id, message) = start(&ledger, context: "周末去处", assisted: assisted)
+        try complete(&ledger, id: id, message: message)
+        #expect(ledger.transferSuggestion(day: 1, origin: .replay) == nil)
+        #expect(ledger.transferSuggestion(day: 0, origin: .replay) == nil)
+        #expect(ledger.transferSuggestion(day: 2, origin: .live) == nil)
+        #expect(ledger.transferSuggestion(day: 2, origin: .replay)?.context == "饮料选择")
+        let xp = ledger.xp
+        ledger.deferTransfer(day: 2)
+        ledger = try JSONDecoder().decode(Ledger.self, from: JSONEncoder().encode(ledger))
+        #expect(ledger.transferSuggestion(day: 2, origin: .replay) == nil)
+        #expect(ledger.transferSuggestion(day: 3, origin: .replay)?.sourceID == id)
+        #expect(ledger.xp == xp)
+        ledger.deleteEvidence(id)
+        #expect(ledger.transferSuggestion(day: 3, origin: .replay) == nil)
+    }
+    @Test("中途离开、自由聊天与未完成时不叠加邀请")
+    func transferRespectsOngoingUse() throws {
+        var ledger = Ledger()
+        let (id, message) = start(&ledger, context: "饮料选择")
+        try complete(&ledger, id: id, message: message)
+        let next = ledger.begin(context: "自由聊天", character: "Ruby", day: 2, origin: .replay)
+        #expect(ledger.transferSuggestion(day: 2, origin: .replay) == nil)
+        ledger.abandon(next)
+        #expect(ledger.transferSuggestion(day: 2, origin: .replay) == nil)
+        #expect(ledger.transferSuggestion(day: 3, origin: .replay)?.context == "推荐一本书")
+        let resumed = ledger.begin(context: "推荐一本书", character: "Ruby", day: 3, origin: .replay)
+        ledger.abandon(resumed, endedDay: 7)
+        #expect(ledger.transferSuggestion(day: 7, origin: .replay) == nil)
+        #expect(ledger.transferSuggestion(day: 8, origin: .replay)?.context == "推荐一本书")
+    }
+    @Test("新邀请兼容旧存档，不复活已删除的较新证据")
+    func transferLegacyAndDeletion() throws {
+        var ledger = Ledger()
+        let (id, message) = start(&ledger, context: "周末去处")
+        try complete(&ledger, id: id, message: message)
+        var encoded = try JSONSerialization.jsonObject(with: JSONEncoder().encode(ledger)) as! [String: Any]
+        encoded.removeValue(forKey: "transferDeferredUntil")
+        ledger = try JSONDecoder().decode(Ledger.self, from: JSONSerialization.data(withJSONObject: encoded))
+        #expect(ledger.transferSuggestion(day: 2, origin: .replay) != nil)
+        let (next, msg) = start(&ledger, day: 2, context: "推荐一本书", text: "The Hobbit because it is exciting.")
+        try complete(&ledger, id: next, message: msg)
+        ledger.deleteEvidence(next)
+        #expect(ledger.transferSuggestion(day: 3, origin: .replay) == nil)
+    }
     @Test("真实操作组合：来源、帮助时机、重启、关闭与延迟评价", arguments: 0..<96)
     func lifecycleCombinations(_ scenario: Int) throws {
         var ledger = Ledger()
