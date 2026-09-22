@@ -77,7 +77,7 @@ struct LearningSystemPolicyTests {
     }
     func bank() -> [LearningListeningItem] {
         (0..<12).map { i in
-            LearningListeningItem(id:"q\(i)",band:1,skill:LearningListeningItem.Skill.allCases[i%3],script:"I usually walk to the small library after school because it is quiet and I can read my favourite books there.",question:"去哪？",options:["图书馆","学校","商店"],answer:0,explanation:"图书馆")
+            LearningListeningItem(id:"q\(i)",band:1,skill:LearningListeningItem.Skill.allCases[i%3],script:"I usually walk to the small library after school because it is quiet and I can read my favourite books there at desk \(i).",question:"去哪？",options:["图书馆","学校","商店"],answer:0,explanation:"图书馆")
         }
     }
     @Test func listeningRequiresCompletedPlaybackAndLocksAnswer() throws {
@@ -152,6 +152,31 @@ struct LearningSystemPolicyTests {
         insert(duplicate, into: &ledger)
         #expect(ledger.independentEvidence(skill: .preference, band: 1, now: duplicate.date).isEmpty)
         #expect(ledger.xp == 10)
+    }
+
+    @Test func expiredFirstConfirmationCannotConfirmAgain() {
+        var ledger = P.Ledger()
+        for (i, d) in [0,1,2,3,4,7].enumerated() { insert(evidence(day: Double(d), index: i), into: &ledger) }
+        insert(evidence(day: 12, index: 6, confirmation: true, topic: "work"), into: &ledger)
+        insert(evidence(day: 200, index: 7, confirmation: true, topic: "study"), into: &ledger)
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(200 * P.day)) != .confirmed)
+    }
+
+    @Test func duplicateListeningIDsCannotBuildAnUnfinishableSession() {
+        let b = bank()
+        let duplicate = Array(repeating: b[0], count: 2) + Array(repeating: b[1], count: 2) + Array(repeating: b[2], count: 2)
+        #expect(LearningListeningSession(band: 1, bank: duplicate, seen: [], now: start) == nil)
+    }
+
+    @Test func renamedRepeatedAudioCannotConfirmListening() throws {
+        let b = bank()
+        var a = try #require(LearningListeningSession(band: 1, bank: b, seen: [], now: start))
+        while let q = a.current { a.completedPlayback(itemID: q.id); _ = a.answer(q.answer, now: start) }
+        let renamed = a.items.map { q in LearningListeningItem(id: "new-" + q.id, band: q.band, skill: q.skill,
+            script: q.script, question: q.question, options: q.options, answer: q.answer, explanation: q.explanation) }
+        var second = try #require(LearningListeningSession(band: 1, bank: renamed, seen: [], now: start.addingTimeInterval(7 * P.day)))
+        while let q = second.current { second.completedPlayback(itemID: q.id); _ = second.answer(q.answer, now: second.startedAt) }
+        #expect(!LearningListeningSession.confirmed(band: 1, sessions: [a,second], now: second.startedAt))
     }
 
 }

@@ -116,7 +116,7 @@ public enum LearningSystemPolicy {
             for (i, a) in confirms.enumerated() {
                 let basis = Array(history.filter { !$0.confirmation && $0.date < a.date && a.date.timeIntervalSince($0.date) <= 90 * day }.suffix(6))
                 guard isReady(basis), let first = basis.first else { continue }
-                for b in confirms.dropFirst(i + 1) where b.topic != a.topic && b.date.timeIntervalSince(a.date) >= 2 * day && b.date.timeIntervalSince(first.date) >= 14 * day {
+                for b in confirms.dropFirst(i + 1) where b.topic != a.topic && b.date.timeIntervalSince(a.date) >= 2 * day && b.date.timeIntervalSince(first.date) >= 14 * day && b.date.timeIntervalSince(first.date) <= 90 * day {
                     confirmedAt = max(confirmedAt ?? .distantPast, b.date)
                 }
             }

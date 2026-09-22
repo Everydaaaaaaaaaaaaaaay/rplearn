@@ -30,8 +30,13 @@ public struct LearningListeningSession: Codable, Sendable, Equatable, Identifiab
     public private(set) var abandoned = false
     public init?(band: Int, bank: [LearningListeningItem], seen: Set<String>, now: Date, audioVersion: String = "supertonic3-F5-default-v1") {
         var selected: [LearningListeningItem] = []
+        var ids = Set<String>(), scripts = Set<String>()
         for skill in LearningListeningItem.Skill.allCases {
-            let options = bank.filter { $0.band == band && $0.skill == skill && $0.valid && !seen.contains($0.id) }
+            let options = bank.filter { item in
+                guard item.band == band, item.skill == skill, item.valid, !seen.contains(item.id),
+                      !ids.contains(item.id), !scripts.contains(LearningSystemPolicy.digest(item.script)) else { return false }
+                ids.insert(item.id); scripts.insert(LearningSystemPolicy.digest(item.script)); return true
+            }
             guard options.count >= 2 else { return nil }
             selected += options.prefix(2)
         }
@@ -63,7 +68,8 @@ public struct LearningListeningSession: Codable, Sendable, Equatable, Identifiab
             for b in eligible where b.id != a.id {
                 let distance = b.startedAt.timeIntervalSince(a.finishedAt!)
                 guard a.audioVersion == b.audioVersion, distance >= 7 * LearningSystemPolicy.day, distance <= 30 * LearningSystemPolicy.day,
-                      Set(a.items.map(\.id)).isDisjoint(with: b.items.map(\.id)) else { continue }
+                      Set(a.items.map(\.id)).isDisjoint(with: b.items.map(\.id)),
+                      Set(a.items.map { LearningSystemPolicy.digest($0.script) }).isDisjoint(with: b.items.map { LearningSystemPolicy.digest($0.script) }) else { continue }
                 let skillsPass = LearningListeningItem.Skill.allCases.allSatisfy { skill in
                     [a, b].reduce(0) { total, session in total + session.items.filter { $0.skill == skill && session.answers[$0.id] == $0.answer }.count } >= 3
                 }
