@@ -222,6 +222,7 @@ struct RootView: View {
                 await handleAuthenticationPhase()
                 #if DEBUG
                 await ConversationLearningLiveEvaluation.runIfRequested(environment: environment)
+                LearningSystemLiveEvaluation.runIfRequested(environment: environment)
                 #endif
                 guard environment.workspace != nil else { return }
                 #if DEBUG

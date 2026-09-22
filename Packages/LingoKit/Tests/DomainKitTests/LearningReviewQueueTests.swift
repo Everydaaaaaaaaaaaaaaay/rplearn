@@ -43,4 +43,13 @@ struct LearningReviewQueueTests {
             #expect(LearningReviewQueue.endsChallenge(paused: false, assessments: [item]) == expected)
         }
     }
+    @Test func failedBatchDoesNotBlockOtherChatsOrSpinAutomaticRetries() {
+        let failed = LearningReviewQueue.Candidate(id: UUID(), count: 4, lastDate: now, blocked: true)
+        let healthy = LearningReviewQueue.Candidate(id: UUID(), count: 4, lastDate: now)
+        #expect(failed.delay(now: now) == nil)
+        #expect(LearningReviewQueue.next([failed], now: now) == nil)
+        #expect(LearningReviewQueue.next([failed,healthy], now: now) == healthy.id)
+        #expect(LearningReviewQueue.next([failed,healthy], now: now, force: true) == failed.id)
+    }
+
 }

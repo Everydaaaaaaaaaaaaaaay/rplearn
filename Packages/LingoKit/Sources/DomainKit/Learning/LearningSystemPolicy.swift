@@ -142,7 +142,7 @@ public enum LearningSystemPolicy {
         public func nextReview(now: Date) -> Evidence? {
             guard now >= latestDate, now >= (deferredUntil ?? .distantPast) else { return nil }
             return Skill.allCases.compactMap { skill -> Evidence? in
-                let items = evidence.filter { !$0.deleted && $0.skill == skill && $0.successful }
+                let items = evidence.filter { !$0.deleted && $0.skill == skill && $0.successful }.sorted { $0.date < $1.date }
                 guard let last = items.last else { return nil }
                 let interval = items.count == 1 ? 2 : items.count == 2 ? 7 : 21
                 return now.timeIntervalSince(last.date) >= Double(interval) * day ? last : nil

@@ -58,7 +58,7 @@ struct ConversationLearningDashboard: View {
                 if case .signedIn = environment.authSession.phase { } else {
                     Text("界面预览：真实模型回顾需要登录，未启用固定回复。") .font(.caption).foregroundStyle(.secondary)
                 }
-                Toggle("记录聊天中的学习", isOn: Binding(get: { model.state.enabled }, set: { model.setEnabled($0) }))
+                Toggle("记录聊天中的学习", isOn: Binding(get: { model.state.enabled }, set: { model.setEnabled($0); model.resume(environment: environment) }))
                     .accessibilityIdentifier("learningSystem.enabled")
                 Text("只记录开启后新发出的内容。每日至多6批回顾、12次请求，会使用现有模型额度。关闭后停止新回顾。")
                     .font(.caption).foregroundStyle(.secondary)
@@ -126,7 +126,7 @@ struct ConversationLearningDashboard: View {
                 }
                 if model.state.ledger.evidence.filter({ !$0.deleted }).isEmpty { Text("新的表达会在聊天后自动出现在这里。") .foregroundStyle(.secondary) }
             }
-            if let error = model.error { Section { Text(error).foregroundStyle(.secondary); Button("重试待处理回顾") { Task { await model.review(environment: environment) } }.disabled(model.reviewing) } }
+            if model.error != nil || model.state.pending.contains(where: { $0.failure != nil }) { Section { Text(model.error ?? "部分表达尚未完成回顾，已保留；其他聊天会正常记录。").foregroundStyle(.secondary); Button("重试待处理回顾") { Task { await model.review(environment: environment, force: true) } }.disabled(model.reviewing) } }
             if model.reviewing { Section { ProgressView("正在回顾，不影响聊天") } }
             else if model.state.pending.contains(where: { !$0.turns.isEmpty }) {
                 Section { Text("还有表达等待回顾。达到每日上限时会保留到之后处理，不影响聊天。") .font(.caption).foregroundStyle(.secondary) }
@@ -148,6 +148,16 @@ private struct LearningRulesView: View {
             Section("听力") { Text("两组不重题，相隔7–30天，每组至少5/6，各分项合计至少3/4。仅表示本产品题目表现，不是CEFR或考试成绩。") }
             Section("证据有效期") { Text("最近90天用于当前能力判断。长期没有新证据显示需重新确认；历史参与经验保留。") }
         }.navigationTitle("判断依据")
+    }
+}
+
+/// Options remain readable while interaction is locked until audio completes.
+private struct LearningListeningOptionStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundStyle(.primary)
+            .background(.primary.opacity(configuration.isPressed ? 0.12 : 0.06), in: RoundedRectangle(cornerRadius: 16))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(.secondary.opacity(0.25)))
     }
 }
 
@@ -179,7 +189,8 @@ private struct LearningListeningView: View {
                         ForEach(item.options.indices, id: \.self) { index in
                             Button { model.answer(sessionID: sessionID, choice: index) } label: {
                                 Text(item.options[index]).frame(maxWidth: .infinity, alignment: .leading).padding()
-                            }.buttonStyle(.bordered).accessibilityIdentifier("learningListening.option.\(index)")
+                            }.buttonStyle(LearningListeningOptionStyle()).accessibilityIdentifier("learningListening.option.\(index)")
+                                .accessibilityHint(session.plays[item.id, default: 0] == 0 ? "完整听完音频后可选择" : "选择此答案")
                                 .disabled(playbackID != nil || session.plays[item.id, default: 0] == 0)
                         }
                         Text("完整听完至少一遍后可作答。交卷前不显示台词与答案。") .font(.caption).foregroundStyle(.secondary)

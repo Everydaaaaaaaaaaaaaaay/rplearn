@@ -25,6 +25,7 @@ final class ConversationLearningSystem {
         let conversationID: UUID
         var turns: [LearningSystemReviewer.Turn] = []
         var assisted = false
+        var failure: String?
         var challenge: Challenge?
         var lastDate: Date = .now
     }
@@ -49,11 +50,12 @@ final class ConversationLearningSystem {
     var state = State()
     var ready = false
     private var loading = false
+    private var storageFailed = false
     var error: String?
     var reviewing = false
     private var timer: Task<Void, Never>?
     private var reviewTask: Task<Void, Never>?
-    private var saving: Task<Void, Never>?
+    private var saving: Task<Bool, Never>?
     private var active = Set<UUID>()
     init(owner: UUID) { self.owner = owner; file = LearningSystemFile(owner: owner) }
     func load() async {
@@ -70,24 +72,28 @@ final class ConversationLearningSystem {
         do {
             let data = try JSONEncoder().encode(state), previous = saving
             saving = Task { [weak self, file] in
-                await previous?.value
-                do { try await file.write(data) } catch { self?.error = "学习记录保存失败，请稍后重试。" }
+                _ = await previous?.value
+                do {
+                    try await file.write(data)
+                    self?.storageFailed = false
+                    if self?.error == "学习记录保存失败，请稍后重试。" { self?.error = nil }
+                    return true
+                } catch { self?.storageFailed = true; self?.error = "学习记录保存失败，请稍后重试。"; return false }
             }
-        } catch { self.error = "学习记录编码失败，未覆盖原文件。" }
+        } catch { storageFailed = true; saving = Task { false }; self.error = "学习记录编码失败，未覆盖原文件。" }
     }
     private func checkpoint() async -> Bool {
         persist()
-        await saving?.value
-        return error == nil
+        return await saving?.value ?? false
     }
     func setEnabled(_ value: Bool) { state.enabled = value; if !value { timer?.cancel(); reviewTask?.cancel() }; persist() }
     func observe(character: UUID, conversation: UUID, event: ConversationLearningObservation, environment: AppEnvironment) {
         guard ready, state.enabled else { return }
         let challenge = state.challenge?.characterID == character ? state.challenge : nil
-        if !state.pending.contains(where: { $0.conversationID == conversation && $0.challenge?.task.id == challenge?.task.id && !active.contains($0.id) }) {
+        if !state.pending.contains(where: { $0.conversationID == conversation && $0.challenge?.task.id == challenge?.task.id && $0.failure == nil && !active.contains($0.id) }) {
             state.pending.append(Pending(characterID: character, conversationID: conversation, challenge: challenge))
         }
-        guard let i = state.pending.lastIndex(where: { $0.conversationID == conversation && $0.challenge?.task.id == challenge?.task.id && !active.contains($0.id) }) else { return }
+        guard let i = state.pending.lastIndex(where: { $0.conversationID == conversation && $0.challenge?.task.id == challenge?.task.id && $0.failure == nil && !active.contains($0.id) }) else { return }
         switch event {
         case .assistance, .unattributed: state.pending[i].assisted = true
         case .sent(let id, let text, let voice):
@@ -102,10 +108,8 @@ final class ConversationLearningSystem {
     private func schedule(environment: AppEnvironment) {
         timer?.cancel()
         let day = LearningSystemPolicy.utcDay(.now)
-        guard state.enabled, !reviewing, error == nil, state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12 else { return }
-        let waits = state.pending.filter { !$0.turns.isEmpty && !active.contains($0.id) }.map {
-            $0.turns.count >= 4 ? 0 : max(0, 90 - Date.now.timeIntervalSince($0.lastDate))
-        }
+        guard state.enabled, !reviewing, !storageFailed, state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12 else { return }
+        let waits = candidates.compactMap { $0.delay(now: .now) }
         guard let delay = waits.min() else { return }
         timer = Task { [weak self, weak environment] in
             if delay > 0 { try? await Task.sleep(for: .seconds(delay)) }
@@ -113,30 +117,48 @@ final class ConversationLearningSystem {
             self.reviewTask = Task { await self.review(environment: environment) }
         }
     }
-    func review(environment: AppEnvironment) async {
+    private var candidates: [LearningReviewQueue.Candidate] {
+        state.pending.filter { !active.contains($0.id) }.map { .init(id: $0.id, count: $0.turns.count, lastDate: $0.lastDate, blocked: $0.failure != nil) }
+    }
+    func resume(environment: AppEnvironment) { schedule(environment: environment) }
+    func review(environment: AppEnvironment, force: Bool = false) async {
         guard state.enabled, ready, !reviewing,
               case .signedIn(let identity) = environment.authSession.phase, identity.userID == owner else { return }
         let day = LearningSystemPolicy.utcDay(.now)
         guard Date.now >= state.ledger.latestDate else { error = "设备时间早于已保存记录，请恢复正确时间后重试。"; return }
         guard state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12,
-              let batch = state.pending.first(where: { !$0.turns.isEmpty && !active.contains($0.id) }) else { return }
+              let batchID = LearningReviewQueue.next(candidates, now: .now, force: force),
+              let index = state.pending.firstIndex(where: { $0.id == batchID }) else { schedule(environment: environment); return }
+        var batch = state.pending[index]
+        batch.failure = nil
+        let count = LearningReviewQueue.prefixCount(batch.turns.map(\.text))
+        let consumed = max(1, count)
+        if consumed < batch.turns.count {
+            var remainder = batch
+            remainder.id = UUID(); remainder.turns = Array(batch.turns.dropFirst(consumed))
+            state.pending.insert(remainder, at: index + 1)
+        }
+        batch.turns = Array(batch.turns.prefix(consumed))
+        state.pending[index] = batch
         error = nil
         reviewing = true; active.insert(batch.id)
-        defer { reviewing = false; active.remove(batch.id); schedule(environment: environment) }
+        defer {
+            if let error, let index = state.pending.firstIndex(where: { $0.id == batch.id }) { state.pending[index].failure = error }
+            reviewing = false; active.remove(batch.id); persist(); schedule(environment: environment)
+        }
         state.batches[day, default: 0] += 1
         guard await checkpoint() else { return }
-        var budget = 4000
-        var selected: [LearningSystemReviewer.Turn] = []
-        for turn in batch.turns.suffix(8).reversed() {
-            guard budget >= turn.text.count else { break }
-            budget -= turn.text.count; selected.append(turn)
-        }
-        let turns = Array(selected.reversed())
+        let turns = count == 0 ? [] : batch.turns
         guard !turns.isEmpty else {
             state.pending.removeAll { $0.id == batch.id }
             error = "这条消息较长，本次不作能力判断。完整原文仍在聊天记录中。"; persist(); return
         }
-        let messages = (try? await environment.chatStore.messages(conversationID: batch.conversationID)) ?? []
+        let messages: [MessageDTO]
+        do { messages = try await environment.chatStore.messages(conversationID: batch.conversationID) }
+        catch { self.error = "聊天上下文暂时无法读取，已保留表达，稍后可重试。"; return }
+        guard turns.allSatisfy({ turn in messages.contains(where: { $0.id == turn.id }) }) else {
+            error = "部分原消息已不可用，本次不作能力判断。"; return
+        }
         let context = turns.map { turn in
             let index = messages.firstIndex(where: { $0.id == turn.id }) ?? 0
             let preceding = messages.prefix(index).suffix(3).filter { $0.role == .assistant }.map(\.text).joined(separator: " ")
@@ -150,7 +172,7 @@ final class ConversationLearningSystem {
                   case .signedIn(let current) = environment.authSession.phase, current.userID == owner else { return }
             do {
                 let result = try await LearningSystemReviewer.assess(turns: Array(turns), context: context, task: batch.challenge?.task, llm: environment.llmRouter)
-                guard state.enabled, case .signedIn(let current) = environment.authSession.phase, current.userID == owner else { return }
+                guard !Task.isCancelled, state.enabled, case .signedIn(let current) = environment.authSession.phase, current.userID == owner else { return }
                 let items = result.paused ? [] : result.assessments.map { item in
                     LearningSystemPolicy.Evidence(batchID: batch.id, characterID: batch.characterID, date: batch.lastDate,
                         skill: item.skill, band: item.band, topic: item.topic, scores: item.scores, quote: item.quote,
@@ -161,7 +183,8 @@ final class ConversationLearningSystem {
                     self.error = "记录时间异常或批次重复，原文已保留，未增加经验。"; return
                 }
                 state.pending.removeAll { $0.id == batch.id }
-                if let challenge = batch.challenge, state.challenge?.task.id == challenge.task.id {
+                if let challenge = batch.challenge, state.challenge?.task.id == challenge.task.id,
+                   LearningReviewQueue.endsChallenge(paused: result.paused, assessments: result.assessments) {
                     state.challenge = nil
                 }
                 error = nil; persist(); return

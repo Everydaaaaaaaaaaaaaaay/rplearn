@@ -179,4 +179,33 @@ struct LearningSystemPolicyTests {
         #expect(!LearningListeningSession.confirmed(band: 1, sessions: [a,second], now: second.startedAt))
     }
 
+    @Test func delayedOlderBatchDoesNotMoveReviewBackwards() {
+        var ledger = P.Ledger()
+        let recent = evidence(day: 7, index: 1), older = evidence(day: 0, index: 0)
+        let acceptedRecent = ledger.record([recent], batchID: recent.batchID, now: start.addingTimeInterval(10 * P.day)); #expect(acceptedRecent)
+        let acceptedOlder = ledger.record([older], batchID: older.batchID, now: start.addingTimeInterval(11 * P.day)); #expect(acceptedOlder)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(11 * P.day)) == nil)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(14 * P.day))?.id == recent.id)
+    }
+
+    @Test("不同频率、辅助与删除的长周期记录", arguments: 0..<32)
+    func longRunningLedgerInvariants(seed: Int) throws {
+        var ledger = P.Ledger()
+        for i in 0..<120 {
+            let value = evidence(day: Double(i * (seed % 3 + 1)), index: i % (seed % 11 + 1),
+                scores: (i + seed) % 4 == 0 ? [1,2,1,1] : [2,2,1,1], independent: (i + seed) % 3 != 0)
+            let before = ledger.xp
+            let accepted = ledger.record([value], batchID: value.batchID, now: value.date); #expect(accepted)
+            #expect(ledger.xp >= before && ledger.xp <= before + 10)
+            let repeated = ledger.record([value], batchID: value.batchID, now: value.date); #expect(!repeated)
+            if i % 7 == 0 { ledger.delete(value.id) }
+            if i % 13 == 0 { ledger = try JSONDecoder().decode(P.Ledger.self, from: JSONEncoder().encode(ledger)) }
+            #expect(ledger.status(skill: .preference, band: 1, now: value.date) != .confirmed, "Natural chat alone cannot forge explicit confirmation")
+            let independent = ledger.independentEvidence(skill: .preference, band: 1, now: value.date)
+            #expect(Set(independent.map { P.utcDay($0.date) }).count == independent.count)
+            #expect(Set(independent.map(\.fingerprint)).count == independent.count)
+            #expect(independent.allSatisfy { !$0.deleted && $0.independent && value.date.timeIntervalSince($0.date) <= 90 * P.day })
+        }
+    }
+
 }
