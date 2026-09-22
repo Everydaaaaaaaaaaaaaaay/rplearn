@@ -231,6 +231,24 @@
           ]
         }
       ]
+    },
+    {
+      "id": "LEARNING-SYSTEM-AUDIT",
+      "status": "in_progress",
+      "depends_on": [],
+      "checks": [
+        {
+          "name": "Repeated expression and deletion review scheduling regressions",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/learning-system-audit-2026-09-22.md"
+          ]
+        },
+        {
+          "name": "Confirmation interference, midnight budget, listening feedback and accessible UI",
+          "status": "pending"
+        }
+      ]
     }
   ]
 }

@@ -55,7 +55,7 @@ struct LearningSystemPolicyTests {
         var restored = try JSONDecoder().decode(P.Ledger.self,from:JSONSerialization.data(withJSONObject:object))
         #expect(restored.ruleRevision == nil)
         restored.adoptCurrentRules()
-        #expect(restored.ruleRevision == 2)
+        #expect(restored.ruleRevision == P.ruleRevision)
         #expect(restored.evidence == ledger.evidence)
         #expect(restored.rewards == ledger.rewards)
         #expect(restored.processed == ledger.processed)
@@ -91,6 +91,38 @@ struct LearningSystemPolicyTests {
         ledger.deferredUntil=start.addingTimeInterval(3*P.day)
         #expect(ledger.nextReview(now:start.addingTimeInterval(2*P.day)) == nil)
     }
+    @Test func repeatedExpressionDoesNotPostponeReview() throws {
+        var ledger = P.Ledger()
+        let original = evidence(day: 0, index: 0)
+        insert(original, into: &ledger)
+        insert(evidence(day: 0.1, index: 0), into: &ledger)
+        insert(evidence(day: 0.2, index: 0), into: &ledger)
+        ledger = try JSONDecoder().decode(P.Ledger.self, from: JSONEncoder().encode(ledger))
+        #expect(ledger.nextReview(now: start.addingTimeInterval(2 * P.day))?.id == original.id)
+    }
+
+    @Test func deletedSourceDuplicateCannotRestoreReview() {
+        var ledger = P.Ledger()
+        let original = evidence(day: 0, index: 0)
+        insert(original, into: &ledger)
+        ledger.delete(original.id)
+        insert(evidence(day: 1, index: 0), into: &ledger)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(30 * P.day)) == nil)
+    }
+
+    @Test func distinctSuccessfulExpressionsAdvanceReviewIntervals() {
+        var ledger = P.Ledger()
+        insert(evidence(day: 0, index: 0), into: &ledger)
+        let second = evidence(day: 2, index: 1)
+        insert(second, into: &ledger)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(9 * P.day - 1)) == nil)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(9 * P.day))?.id == second.id)
+        let third = evidence(day: 9, index: 2)
+        insert(third, into: &ledger)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(30 * P.day - 1)) == nil)
+        #expect(ledger.nextReview(now: start.addingTimeInterval(30 * P.day))?.id == third.id)
+    }
+
     @Test func taskBankHasDistinctCompleteCoverage() {
         let bank=LearningTask.bank
         #expect(bank.count == 216)

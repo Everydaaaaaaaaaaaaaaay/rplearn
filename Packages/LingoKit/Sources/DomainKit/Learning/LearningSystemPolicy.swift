@@ -4,7 +4,7 @@ import CryptoKit
 /// Executable v1 product thresholds, not a calibrated CEFR assessment.
 public enum LearningSystemPolicy {
     public static let version = 1
-    public static let ruleRevision = 2
+    public static let ruleRevision = 3
     public static let day: TimeInterval = 86_400
     public static let idleSeconds: TimeInterval = 90
     public static let batchSize = 4
@@ -167,7 +167,13 @@ public enum LearningSystemPolicy {
         public func nextReview(now: Date) -> Evidence? {
             guard now >= latestDate, now >= (deferredUntil ?? .distantPast) else { return nil }
             return Skill.allCases.compactMap { skill -> Evidence? in
-                let items = evidence.filter { !$0.deleted && $0.skill == skill && $0.successful }.sorted { $0.date < $1.date }
+                // Retain the first occurrence, including deletion tombstones. Repeating
+                // an expression cannot restore a deleted source or postpone retrieval.
+                var fingerprints = Set<String>()
+                let items = evidence.filter { item in
+                    guard item.skill == skill, fingerprints.insert(item.fingerprint).inserted else { return false }
+                    return !item.deleted && item.successful && item.date <= now
+                }.sorted { $0.date < $1.date }
                 guard let last = items.last else { return nil }
                 let interval = items.count == 1 ? 2 : items.count == 2 ? 7 : 21
                 return now.timeIntervalSince(last.date) >= Double(interval) * day ? last : nil
