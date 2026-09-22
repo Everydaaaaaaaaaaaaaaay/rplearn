@@ -115,6 +115,21 @@ struct LearningSystemPolicyTests {
         #expect(restored.processed == ledger.processed)
         #expect(restored.status(skill:.preference,band:1,now:start.addingTimeInterval(0.02 * P.day)) == .independent)
     }
+    @Test func newerStorageOrRulesCannotBeSilentlyDowngraded() throws {
+        var newerStorage = P.Ledger()
+        newerStorage.version = P.version + 1
+        #expect(throws: P.StorageCompatibilityError.self) { try newerStorage.validateStorageCompatibility() }
+        var object = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(P.Ledger())) as? [String:Any])
+        object["ruleRevision"] = P.ruleRevision + 1
+        let newerRules = try JSONDecoder().decode(P.Ledger.self, from: JSONSerialization.data(withJSONObject: object))
+        #expect(throws: P.StorageCompatibilityError.self) { try newerRules.validateStorageCompatibility() }
+        #expect(newerRules.ruleRevision == P.ruleRevision + 1)
+        object.removeValue(forKey: "ruleRevision")
+        let legacy = try JSONDecoder().decode(P.Ledger.self, from: JSONSerialization.data(withJSONObject: object))
+        try legacy.validateStorageCompatibility()
+        try P.Ledger().validateStorageCompatibility()
+    }
+
     @Test func repeatedDayDoesNotAdvance() {
         var ledger = P.Ledger()
         for i in 0..<8 { insert(evidence(day:Double(i)/100,index:i),into:&ledger) }

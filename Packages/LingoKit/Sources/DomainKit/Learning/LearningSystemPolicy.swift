@@ -80,9 +80,21 @@ public enum LearningSystemPolicy {
         public let date: Date
         public let xp: Int
     }
+    public enum StorageCompatibilityError: Error, LocalizedError {
+        case newerOrUnsupportedVersion
+        public var errorDescription: String? {
+            "这份学习记录使用了当前版本不支持的格式或规则，请使用更新版本打开。"
+        }
+    }
     public struct Ledger: Codable, Sendable, Equatable {
         public var version = LearningSystemPolicy.version
         public private(set) var ruleRevision: Int? = LearningSystemPolicy.ruleRevision
+        public func validateStorageCompatibility() throws {
+            guard version == LearningSystemPolicy.version,
+                  (1...LearningSystemPolicy.ruleRevision).contains(ruleRevision ?? 1) else {
+                throw StorageCompatibilityError.newerOrUnsupportedVersion
+            }
+        }
         public mutating func adoptCurrentRules() { ruleRevision = LearningSystemPolicy.ruleRevision }
         public private(set) var evidence: [Evidence] = []
         public private(set) var rewards: [Reward] = []

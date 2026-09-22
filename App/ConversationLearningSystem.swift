@@ -70,7 +70,11 @@ final class ConversationLearningSystem {
         loading = true
         defer { loading = false }
         do {
-            if let data = try await file.read() { state = try JSONDecoder().decode(State.self, from: data) }
+            if let data = try await file.read() {
+                let restored = try JSONDecoder().decode(State.self, from: data)
+                try restored.ledger.validateStorageCompatibility()
+                state = restored
+            }
             ready = true
             if state.ledger.ruleRevision != LearningSystemPolicy.ruleRevision {
                 state.ledger.adoptCurrentRules(); persist()
