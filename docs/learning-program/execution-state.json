@@ -17,7 +17,7 @@
     },
     {
       "id": "SOURCE-UI",
-      "status": "in_progress",
+      "status": "deferred",
       "depends_on": [
         "SOURCE-WRITE"
       ],
@@ -41,7 +41,8 @@
           "name": "Large text, iPad and VoiceOver source presentation",
           "status": "pending"
         }
-      ]
+      ],
+      "deferral_reason": "历史独立短练/竞品研究候选；当前优先对话学习v1。后续只有明确服务于当前聊天学习问题时再恢复，不代表完成。"
     },
     {
       "id": "REVIEW-TASK-PROTOTYPE",
@@ -60,7 +61,7 @@
     },
     {
       "id": "MOBILE-DIRECT-RESEARCH",
-      "status": "blocked",
+      "status": "deferred",
       "blocker": "No accessible logged-in competitor mobile app session yet; optional device/account availability question pending",
       "depends_on": [],
       "checks": [
@@ -68,7 +69,8 @@
           "name": "Actual mobile task interaction evidence beyond official screenshots",
           "status": "blocked"
         }
-      ]
+      ],
+      "deferral_reason": "历史独立短练/竞品研究候选；当前优先对话学习v1。后续只有明确服务于当前聊天学习问题时再恢复，不代表完成。"
     },
     {
       "id": "MOBILE-SPEAKING-READING",
@@ -103,7 +105,7 @@
     },
     {
       "id": "REVIEW-USABILITY",
-      "status": "blocked",
+      "status": "deferred",
       "blocker": "Requires an actual unbriefed test participant; none contacted or simulated",
       "depends_on": [
         "REVIEW-TASK-PROTOTYPE"
@@ -113,7 +115,8 @@
           "name": "Independent participant completes task and understands ratings",
           "status": "blocked"
         }
-      ]
+      ],
+      "deferral_reason": "历史独立短练/竞品研究候选；当前优先对话学习v1。后续只有明确服务于当前聊天学习问题时再恢复，不代表完成。"
     },
     {
       "id": "REVIEW-EVENT-PROTOTYPE",
@@ -200,7 +203,7 @@
     },
     {
       "id": "REVIEW-REAL-MATERIALS",
-      "status": "ready",
+      "status": "deferred",
       "depends_on": [
         "REVIEW-NATIVE-PILOT"
       ],
@@ -209,7 +212,8 @@
           "name": "Explicitly selected real favorites feed native pilot with missing-definition fallback, no account writes",
           "status": "pending"
         }
-      ]
+      ],
+      "deferral_reason": "历史独立短练/竞品研究候选；当前优先对话学习v1。后续只有明确服务于当前聊天学习问题时再恢复，不代表完成。"
     },
     {
       "id": "LEARNING-NATURAL-REVIEW",
@@ -238,14 +242,21 @@
       "depends_on": [],
       "checks": [
         {
-          "name": "Repeated expression and deletion review scheduling regressions",
+          "name": "Review deduplication, daily learner readiness, confirmation interference and UTC retry budget",
           "status": "passed",
           "evidence": [
             "docs/learning-program/learning-system-audit-2026-09-22.md"
           ]
         },
         {
-          "name": "Confirmation interference, midnight budget, listening feedback and accessible UI",
+          "name": "Listening option bias, version isolation, real Supertonic UI, dark accessibility XXXL navigation",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/learning-system-audit-2026-09-22.md"
+          ]
+        },
+        {
+          "name": "Small screen/iPad, actual VoiceOver and independent longitudinal learner calibration",
           "status": "pending"
         }
       ]

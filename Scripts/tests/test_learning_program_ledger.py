@@ -44,6 +44,15 @@ class LedgerChecks(unittest.TestCase):
         errors, _ = self.run_check([self.task()], 'WF-1.1')
         self.assertEqual(len(errors), 2)
 
+    def test_deferred_candidate_is_preserved_but_not_scheduled(self):
+        deferred = self.task('A', 'deferred', 'pending')
+        errors, _ = self.run_check([deferred])
+        self.assertTrue(any('deferral reason' in e for e in errors))
+        deferred['deferral_reason'] = 'Independent review is outside the current conversation-first scope'
+        errors, ready = self.run_check([deferred, self.task('B', 'ready', 'pending'), self.task('C', 'ready', 'pending', ['A'])])
+        self.assertEqual(errors, [])
+        self.assertEqual(ready, ['B'])
+
     def test_verified_dependency_unlocks_next_task(self):
         errors, ready = self.run_check([self.task(), self.task('B', 'ready', 'pending', ['A'])])
         self.assertEqual(errors, [])

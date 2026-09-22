@@ -18,10 +18,12 @@ def check(state, root, current_version):
     by_id = {t['id']: t for t in tasks}
     for task in tasks:
         name = task['id']
-        if task.get('status') not in ('ready', 'in_progress', 'blocked', 'complete'):
+        if task.get('status') not in ('ready', 'in_progress', 'blocked', 'deferred', 'complete'):
             errors.append(name + ': invalid status')
         if task.get('status') == 'blocked' and not task.get('blocker'):
             errors.append(name + ': missing concrete blocker')
+        if task.get('status') == 'deferred' and not task.get('deferral_reason'):
+            errors.append(name + ': missing deferral reason')
         for dep in task.get('depends_on', []):
             if dep not in by_id:
                 errors.append(name + ': unknown dependency ' + dep)
