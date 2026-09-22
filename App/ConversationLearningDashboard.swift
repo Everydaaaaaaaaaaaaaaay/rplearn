@@ -18,6 +18,7 @@ struct ConversationLearningDashboard: View {
         Group {
             if let model, model.ready { content(model) }
             else if let error = model?.error { ContentUnavailableView("记录暂不可用", systemImage: "externaldrive.badge.exclamationmark", description: Text(error)) }
+            else if model != nil { ProgressView("正在读取学习记录") }
             else { ContentUnavailableView("需要登录", systemImage: "person.crop.circle", description: Text("登录后在正常聊天中记录成长；这里不会使用固定回复模拟真人。")) }
         }
         .navigationTitle("共同篇章")
@@ -87,7 +88,7 @@ struct ConversationLearningDashboard: View {
                     Button("换个情境，再试一次") {
                         model.startChallenge(skill: evidence.skill, band: evidence.band, characterID: character.id)
 
-                    }.disabled(model.state.challenge != nil)
+                    }.disabled(!model.state.enabled || model.state.challenge != nil)
                     Button("今天先不练") { model.state.ledger.deferredUntil = Date.now.addingTimeInterval(86_400); model.persist() }
                 } else { Text("没有到期任务，照常聊天就好。") .foregroundStyle(.secondary) }
                 if let challenge = model.state.challenge {
@@ -116,7 +117,8 @@ struct ConversationLearningDashboard: View {
             }
             Section("我的表达") {
                 Toggle("只看与\(character.displayName)的篇章", isOn: $onlyThisCharacter)
-                ForEach(model.state.ledger.evidence.filter { !$0.deleted && (!onlyThisCharacter || $0.characterID == character.id) }.reversed()) { item in
+                let visibleEvidence = model.state.ledger.evidence.filter { !$0.deleted && (!onlyThisCharacter || $0.characterID == character.id) }
+                ForEach(visibleEvidence.reversed()) { item in
                     VStack(alignment: .leading, spacing: 7) {
                         Text("\(item.skill.title) · 第\(item.band)档").font(.headline)
                         Text(item.quote).textSelection(.enabled)
@@ -125,7 +127,10 @@ struct ConversationLearningDashboard: View {
                         Button("删除原文", role: .destructive) { deleting = item.id }
                     }
                 }
-                if model.state.ledger.evidence.filter({ !$0.deleted }).isEmpty { Text("新的表达会在聊天后自动出现在这里。") .foregroundStyle(.secondary) }
+                if visibleEvidence.isEmpty {
+                    Text(onlyThisCharacter ? "还没有与\(character.displayName)的表达记录。新的表达会在聊天后出现在这里。" : "新的表达会在聊天后自动出现在这里。")
+                        .foregroundStyle(.secondary)
+                }
             }
             if model.error != nil || model.state.pending.contains(where: { $0.failure != nil }) { Section { Text(model.error ?? "部分表达尚未完成回顾，已保留；其他聊天会正常记录。").foregroundStyle(.secondary); Button("重试待处理回顾") { Task { await model.review(environment: environment, force: true) } }.disabled(model.reviewing) } }
             if model.reviewing { Section { ProgressView("正在回顾，不影响聊天") } }
@@ -183,10 +188,12 @@ private struct LearningListeningView: View {
                         Button {
                             play(item)
                         } label: {
-                            Label(playbackID == nil ? "播放音频 · 已听\(session.plays[item.id, default: 0])/2遍" : "正在播放", systemImage: "speaker.wave.2.fill")
+                            Label(playbackID == nil ? "播放音频" : "正在播放", systemImage: "speaker.wave.2.fill")
                                 .frame(maxWidth: .infinity).padding()
                         }.buttonStyle(.borderedProminent).accessibilityIdentifier("learningListening.play")
                             .disabled(playbackID != nil || session.plays[item.id, default: 0] >= 2)
+                        Text("已完整播放\(session.plays[item.id, default: 0])/2遍")
+                            .font(.caption).foregroundStyle(.secondary)
                         ForEach(item.options.indices, id: \.self) { index in
                             Button { model.answer(sessionID: sessionID, choice: index) } label: {
                                 Text(item.options[index]).frame(maxWidth: .infinity, alignment: .leading).padding()

@@ -2,6 +2,42 @@ import XCTest
 
 @MainActor
 final class LearningSystemUITests: XCTestCase {
+    func testLargeTextDarkDashboardRulesAndListeningRemainReachable() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING":"1", "UI_TEST_DISABLE_BACKGROUND_REFRESH":"1",
+            "UI_TEST_WELCOME_CAPTURE":"1", "UI_TEST_NATIVE_CAPTURE":"learningSystem", "UI_TEST_TAB":"contacts",
+            "UI_TEST_CAPTURE_APPEARANCE":"dark", "LINGOTRIP_BACKEND_URL":"http://127.0.0.1:9",
+            "UI_TEST_LEARNING_V1_OWNER": UUID().uuidString]
+        app.launch()
+        XCTAssertTrue(app.switches["learningSystem.enabled"].waitForExistence(timeout:30))
+        let rules = app.buttons["判断依据与间隔"]
+        for _ in 0..<18 where !rules.isHittable { app.swipeUp() }
+        XCTAssertTrue(rules.isHittable)
+        rules.tap()
+        XCTAssertTrue(app.navigationBars["判断依据"].waitForExistence(timeout:5))
+        let attachment = XCTAttachment(screenshot:app.screenshot())
+        attachment.name = "learning-rules-dark-accessibility-xxxl"
+        attachment.lifetime = .keepAlways; add(attachment)
+        app.navigationBars.buttons.firstMatch.tap()
+        let start = app.buttons["learningListening.start.1"]
+        for _ in 0..<18 where !start.isHittable { app.swipeUp() }
+        XCTAssertTrue(start.isHittable); start.tap()
+        let play = app.buttons["learningListening.play"]
+        XCTAssertTrue(play.waitForExistence(timeout:10))
+        for i in 0..<3 {
+            let option = app.buttons["learningListening.option.\(i)"]
+            for _ in 0..<8 where !option.isHittable { app.swipeUp() }
+            XCTAssertTrue(option.isHittable, "Large-text options must remain reachable by scrolling")
+            XCTAssertFalse(option.isEnabled, "Reading options must not bypass audio")
+        }
+        XCTAssertTrue(app.buttons["稍后继续"].isHittable)
+        let question = XCTAttachment(screenshot:app.screenshot())
+        question.name = "learning-question-dark-accessibility-xxxl"
+        question.lifetime = .keepAlways; add(question)
+    }
+
     func testRealListeningWithoutSubtitlesThenReview() {
         let app = XCUIApplication()
         app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING":"1","UI_TEST_DISABLE_BACKGROUND_REFRESH":"1",
