@@ -7,6 +7,7 @@ enum SpeechEngineRouter {
         selectedEngine: SpeechSynthesisEngine,
         supertonicIsAvailable: Bool
     ) -> SpeechSynthesisEngine {
+        if request.engine == .supertonic3, !request.allowsSystemFallback { return .supertonic3 }
         // Bundled Supertonic exposes English (`en`), not a regional accent selector.
         if request.requiresExactLocale { return .system }
         let requestedEngine = request.engine ?? selectedEngine

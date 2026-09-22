@@ -30,7 +30,12 @@ public final class ChatViewModel {
     public var quickNotice: DSQuickNotice?
     public var draft = "" {
         didSet {
-            if draft != oldValue { composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now()) }
+            if draft != oldValue {
+                composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now())
+                // Bulk insertion can be paste, dictation or a keyboard suggestion. Treat
+                // provenance conservatively; never inspect the system clipboard.
+                if draft.count - oldValue.count > 16 { observeLearning(.unattributed) }
+            }
         }
     }
     private var composerActivity = RoleplayComposerActivity()
@@ -97,6 +102,11 @@ public final class ChatViewModel {
         self.character = character
         self.learnerDifficulty = character.difficultyLevel
         self.deps = deps
+    }
+
+    func observeLearning(_ event: ConversationLearningObservation) {
+        deps.learningObserver?(event)
+        if let conversation { deps.learningRecorder?(character.id, conversation.id, event) }
     }
 
     public func load() async {
@@ -262,7 +272,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
-        deps.learningObserver?(.sent(id: userMessage.id, text: userMessage.text, voice: true))
+        observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: true))
         scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
@@ -291,7 +301,7 @@ public final class ChatViewModel {
             tokenEstimate: TokenEstimator.estimate(text)
         )
         persisted = true
-        deps.learningObserver?(.sent(id: userMessage.id, text: userMessage.text, voice: true))
+        observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: true))
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
@@ -433,7 +443,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return false
         }
-        deps.learningObserver?(.sent(id: userMessage.id, text: userMessage.text, voice: false))
+        observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: false))
         // 辅助点评必须等主回复完成：免费额度下不能让后台任务抢走用户可见回复的预留。
         scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
@@ -1052,6 +1062,7 @@ public final class ChatViewModel {
 
     /// 双开关都开、且距上次出题已达阈值 → 本回合请求出题。
     private func shouldRequestQuiz(conversationID: UUID) async -> Bool {
+        guard deps.learningEnabled?() != true else { return false }
         let globallyEnabled = (try? await deps.economyStore.profile().quizGloballyEnabled) ?? true
         guard let conversation = try? await deps.chatStore.conversation(id: conversationID) else { return false }
         return QuizService.shouldRequestQuiz(

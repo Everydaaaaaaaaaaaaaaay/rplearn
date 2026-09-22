@@ -6,6 +6,15 @@ import Testing
 
 @Suite("AppleTTS 语音选择")
 struct SpeechServiceTests {
+    @Test("听力测评坚持随包TTS，不因系统偏好或缺失模型回退Apple")
+    func listeningRequiresBundledEngine() {
+        let request = SpeechRequest(text: "Listen carefully.", engine: .supertonic3, allowsSystemFallback: false)
+        for available in [true, false] {
+            #expect(SpeechEngineRouter.resolve(request: request, selectedEngine: .system, supertonicIsAvailable: available) == .supertonic3)
+        }
+        #expect(SpeechRequest(text: "ordinary").allowsSystemFallback)
+    }
+
     @Test("英国角色使用 M5/F5，用户和旁白共用 F5")
     func narratorAndBritishCasting() {
         let narrator = SpeechRequest(text: "A quiet morning.", purpose: .characterDialogue, voiceHint: StoryVoiceCasting.narrator)

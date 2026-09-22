@@ -171,6 +171,13 @@ actor SpeechPCMPlayer {
 
     private func finishIfDrained() {
         guard producerDidFinish, scheduledBufferCount == 0 else { return }
+        if hasBegunPlayback {
+            hasBegunPlayback = false
+            let completedID = playbackID
+            Task { @MainActor in
+                NotificationCenter.default.post(name: .speechPlaybackDidFinish, object: completedID)
+            }
+        }
         playerNode.stop()
         engine.stop()
         isPlaybackRunning = false

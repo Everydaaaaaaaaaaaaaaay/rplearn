@@ -352,9 +352,9 @@ actor Supertonic3SpeechEngine {
             }
             guard !Task.isCancelled else { return }
             Log.speech.error(
-                "Supertonic-3 播放失败，回退系统语音：\(error.localizedDescription, privacy: .public)"
+                "Supertonic-3 播放失败：\(error.localizedDescription, privacy: .public)"
             )
-            if !didBeginPlayback {
+            if !didBeginPlayback && request.allowsSystemFallback {
                 await apple.speakAndWait(request)
             }
         }

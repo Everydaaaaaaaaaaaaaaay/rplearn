@@ -17,6 +17,9 @@ import UIKit
 @MainActor
 @Observable
 final class AppEnvironment {
+    #if DEBUG
+    var learningSystemInstance: ConversationLearningSystem?
+    #endif
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession

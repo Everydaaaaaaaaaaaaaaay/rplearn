@@ -3,7 +3,9 @@ import CoreKit
 import Foundation
 
 public extension Notification.Name {
-    /// AVSpeechSynthesizer 实际开始一次语音播放。
+    /// Posted only after audio finishes naturally, never when playback is cancelled.
+    static let speechPlaybackDidFinish = Notification.Name("LingoTripSpeechPlaybackDidFinish")
+    /// Posted when speech audio actually begins playing.
     static let speechPlaybackDidBegin = Notification.Name("LingoTripSpeechPlaybackDidBegin")
 }
 
@@ -34,6 +36,9 @@ private final class SpeechPlaybackDelegateBox: NSObject, AVSpeechSynthesizerDele
     ) {
         if let entry = lock.withLock({ playbackIDs.removeValue(forKey: ObjectIdentifier(utterance)) }) {
             onCompletion?(entry.completion)
+            Task { @MainActor in
+                NotificationCenter.default.post(name: .speechPlaybackDidFinish, object: entry.playback)
+            }
         }
     }
 
@@ -103,6 +108,8 @@ public struct SpeechRequest: Sendable, Equatable {
     public let voiceHint: SpeechVoiceHint?
     /// nil 表示跟随全局设置；设置页试听可临时指定而不改变用户偏好。
     public let engine: SpeechSynthesisEngine?
+    /// Assessment audio must not silently switch engines when synthesis fails.
+    public let allowsSystemFallback: Bool
     /// Authored locale-sensitive narration must not trade accent for voice quality.
     public let requiresExactLocale: Bool
     public let delivery: SpeechDelivery?
@@ -115,6 +122,7 @@ public struct SpeechRequest: Sendable, Equatable {
         purpose: SpeechPurpose = .general,
         voiceHint: SpeechVoiceHint? = nil,
         engine: SpeechSynthesisEngine? = nil,
+        allowsSystemFallback: Bool = true,
         requiresExactLocale: Bool = false,
         delivery: SpeechDelivery? = nil,
         playbackID: UUID? = nil
@@ -125,6 +133,7 @@ public struct SpeechRequest: Sendable, Equatable {
         self.purpose = purpose
         self.voiceHint = resolvedHint
         self.engine = engine
+        self.allowsSystemFallback = allowsSystemFallback
         self.requiresExactLocale = requiresExactLocale
         self.delivery = delivery
         self.playbackID = playbackID
