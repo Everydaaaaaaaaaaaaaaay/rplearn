@@ -9,6 +9,8 @@ struct HomePerspectiveVertexUniforms {
     float4 region;
     // x = 局部缩放，yz = 照片归一化坐标中的屏幕位移
     float4 transform;
+    float4 spatialCamera;
+    float4 opening;
 };
 
 struct HomePerspectiveFragmentUniforms {
@@ -39,6 +41,13 @@ vertex HomePerspectiveRasterizerData homePerspectiveVertex(
     float3 h2 = uniforms.homographyColumn2.xyz;
     float3 projected = h0 * planeCoordinate.x + h1 * planeCoordinate.y + h2;
     projected.xy += uniforms.transform.yz * projected.z;
+    // 与背景网格、SwiftUI 命中四角共享同一深度场；光效也经过相同投影。
+    float2 p = projected.xy / projected.z;
+    float horizontal = smoothstep(0.0, 0.035, min(p.x - uniforms.opening.x, uniforms.opening.z - p.x));
+    float vertical = smoothstep(0.0, 0.02, min(p.y - uniforms.opening.y, uniforms.opening.w - p.y));
+    float floorDepth = smoothstep(uniforms.spatialCamera.z, 1.0, p.y);
+    float depth = 0.16 - 0.13 * horizontal * vertical + 0.16 * floorDepth;
+    projected.xy += uniforms.spatialCamera.xy * depth * projected.z;
 
     HomePerspectiveRasterizerData output;
     // 照片坐标原点在左上；Metal 裁剪坐标原点在中心且 Y 轴向上。

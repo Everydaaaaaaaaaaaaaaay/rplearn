@@ -1,4 +1,5 @@
 import SwiftUI
+import DesignSystem
 
 /// 人工标定的相对深度，不代表照片包含真实测距数据。静止时严格还原原图。
 enum MyPageSpatialGeometry {
@@ -50,16 +51,11 @@ enum MyPageSpatialGeometry {
     }
 
     static func resisted(_ translation: CGSize) -> CGSize {
-        let distance = hypot(translation.width, translation.height)
-        let factor = 0.55 / (1 + distance * 0.55 / cameraLimit)
-        return CGSize(width: translation.width * factor, height: translation.height * factor)
+        DSSceneCameraResistance.resisted(translation)
     }
 
-    /// 重新抓取回弹时，由当前显示位置恢复手势原点，避免跳回逻辑零点。
     static func unresisted(_ camera: CGSize) -> CGSize {
-        let distance = min(hypot(camera.width, camera.height), cameraLimit - 0.01)
-        let factor = 1 / (0.55 * (1 - distance / cameraLimit))
-        return CGSize(width: camera.width * factor, height: camera.height * factor)
+        DSSceneCameraResistance.unresisted(camera)
     }
 
     static func coverageScale(camera: CGSize) -> CGFloat {

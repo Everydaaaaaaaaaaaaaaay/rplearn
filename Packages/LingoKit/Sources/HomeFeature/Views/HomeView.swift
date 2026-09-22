@@ -10,6 +10,7 @@ public struct HomeView: View {
     private let onInitialLoad: @MainActor () -> Void
     private let onOpenDestination: @MainActor (HomeDestination) -> Void
 
+    @State private var spatialPhotoReady = false
     @State private var profile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
     @State private var touchedSceneEntry: HomeSceneEntryID?
@@ -69,27 +70,30 @@ public struct HomeView: View {
             // 不再把底部可点击入口缩到标签栏后面。
             let canvasHeight = placement.height
 
-            ZStack(alignment: .topLeading) {
-                if sceneScale < widthScale {
-                    compactHeightBackdrop(size: proxy.size)
-                }
+            DSSceneSpatialScene { proposedCamera in
+                let camera = spatialPhotoReady ? proposedCamera : .zero
+                ZStack(alignment: .topLeading) {
+                    if sceneScale < widthScale {
+                        compactHeightBackdrop(size: proxy.size)
+                    }
 
-                departureCanvas(height: canvasHeight)
-                    .frame(
-                        width: HomeDepartureCanvas.width,
-                        height: canvasHeight,
-                        alignment: .topLeading
-                    )
-                    .dynamicTypeSize(...DynamicTypeSize.xLarge)
-                    .scaleEffect(sceneScale, anchor: .topLeading)
-                    .offset(x: horizontalInset)
+                    departureCanvas(height: canvasHeight, camera: camera)
+                        .frame(
+                            width: HomeDepartureCanvas.width,
+                            height: canvasHeight,
+                            alignment: .topLeading
+                        )
+                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                        .scaleEffect(sceneScale, anchor: .topLeading)
+                        .offset(x: horizontalInset)
+                }
+                .frame(
+                    width: proxy.size.width,
+                    height: proxy.size.height,
+                    alignment: .topLeading
+                )
             }
-            .frame(
-                width: proxy.size.width,
-                height: proxy.size.height,
-                alignment: .topLeading
-            )
-            .dsSceneDragMotion(viewport: proxy.size)
+            .id(sceneLayout.assetName)
             .background { compactHeightBackdrop(size: proxy.size) }
             .clipped()
         }
@@ -110,12 +114,14 @@ public struct HomeView: View {
     }
 
     /// 背景、入口、光效和命中范围都在这张 402pt 参考画布中；运行时只整体缩放。
-    private func departureCanvas(height: CGFloat) -> some View {
+    private func departureCanvas(height: CGFloat, camera: CGSize) -> some View {
         let width = HomeDepartureCanvas.width
         let layout = sceneLayout
+        let geometry = HomeSpatialGeometry(assetName: layout.assetName)
+        let size = CGSize(width: width, height: height)
 
         return ZStack(alignment: .topLeading) {
-            sceneBackground(width: width, height: height)
+            sceneBackground(width: width, height: height, camera: camera)
 
             HomeDepartureMetalView(
                 layout: layout,
@@ -123,7 +129,8 @@ public struct HomeView: View {
                 cityName: currentRegion?.nameZh,
                 storySubtitle: storySubtitle,
                 pressedEntry: touchedSceneEntry ?? sceneActions.pressedHotspot,
-                reduceMotion: reduceMotion
+                reduceMotion: reduceMotion,
+                camera: camera
             )
             .frame(width: width, height: height)
             .accessibilityHidden(true)
@@ -142,8 +149,8 @@ public struct HomeView: View {
                 HomeSceneHitTarget()
                 .frame(width: layout.location.hitSize.width, height: layout.location.hitSize.height)
                 .position(
-                    x: width * layout.location.center.x,
-                    y: height * layout.location.center.y
+                    x: width * geometry.project(CGPoint(x: layout.location.center.x, y: layout.location.center.y), camera: camera, size: size).x,
+                    y: height * geometry.project(CGPoint(x: layout.location.center.x, y: layout.location.center.y), camera: camera, size: size).y
                 )
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
@@ -153,7 +160,7 @@ public struct HomeView: View {
                 openSceneEntry(.map, destination: .map)
             } label: {
                 HomePerspectiveHitTarget(
-                    quad: layout.map.projectedRegion(size: layout.map.hitSize).photoQuad
+                    quad: geometry.project(layout.map.projectedRegion(size: layout.map.hitSize).photoQuad, camera: camera, size: size)
                 )
             }
             .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $touchedSceneEntry))
@@ -165,7 +172,7 @@ public struct HomeView: View {
                 openSceneEntry(.story, destination: .stories)
             } label: {
                 HomePerspectiveHitTarget(
-                    quad: layout.story.projectedRegion(size: layout.story.hitSize).photoQuad
+                    quad: geometry.project(layout.story.projectedRegion(size: layout.story.hitSize).photoQuad, camera: camera, size: size)
                 )
             }
             .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $touchedSceneEntry))
@@ -177,7 +184,7 @@ public struct HomeView: View {
                 openSceneEntry(.activities, destination: .activities)
             } label: {
                 HomePerspectiveHitTarget(
-                    quad: layout.activities.projectedRegion(size: layout.activities.hitSize).photoQuad
+                    quad: geometry.project(layout.activities.projectedRegion(size: layout.activities.hitSize).photoQuad, camera: camera, size: size)
                 )
             }
             .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $touchedSceneEntry))
@@ -186,13 +193,21 @@ public struct HomeView: View {
             .accessibilityHint("参加当地活动并认识旅途朋友")
         }
         .frame(width: width, height: height, alignment: .topLeading)
+        .scaleEffect(HomeSpatialGeometry.coverageScale(camera: camera, size: size))
     }
 
-    private func sceneBackground(width: CGFloat, height: CGFloat) -> some View {
+    private func sceneBackground(width: CGFloat, height: CGFloat, camera: CGSize) -> some View {
         ZStack {
             Image(sceneLayout.assetName, bundle: .main)
                 .resizable()
                 .frame(width: width, height: height)
+
+            DSSceneDepthPhoto(assetName: sceneLayout.assetName, camera: camera,
+                              size: CGSize(width: width, height: height),
+                              depth: HomeSpatialGeometry(assetName: sceneLayout.assetName).depth) { ready in
+                spatialPhotoReady = ready
+            }
+            .id(sceneLayout.assetName)
 
             Color.black.opacity(colorScheme == .dark ? 0.22 : 0.015)
         }
