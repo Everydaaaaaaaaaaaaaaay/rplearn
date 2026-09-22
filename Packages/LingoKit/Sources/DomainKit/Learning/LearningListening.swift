@@ -19,16 +19,19 @@ public struct LearningListeningItem: Codable, Sendable, Identifiable, Equatable 
 }
 
 public struct LearningListeningSession: Codable, Sendable, Equatable, Identifiable {
+    public static let currentMaterialVersion = "listening-options-v2"
     public let id: UUID
     public let band: Int
     public let startedAt: Date
     public let audioVersion: String
+    /// Nil in legacy records whose options had not passed shortcut-bias review.
+    public let materialVersion: String?
     public let items: [LearningListeningItem]
     public private(set) var answers: [String: Int] = [:]
     public private(set) var plays: [String: Int] = [:]
     public private(set) var finishedAt: Date?
     public private(set) var abandoned = false
-    public init?(band: Int, bank: [LearningListeningItem], seen: Set<String>, now: Date, audioVersion: String = "supertonic3-F5-default-v1") {
+    public init?(band: Int, bank: [LearningListeningItem], seen: Set<String>, now: Date, audioVersion: String = "supertonic3-F5-default-v1", materialVersion: String = LearningListeningSession.currentMaterialVersion) {
         var selected: [LearningListeningItem] = []
         var ids = Set<String>(), scripts = Set<String>()
         for skill in LearningListeningItem.Skill.allCases {
@@ -41,6 +44,7 @@ public struct LearningListeningSession: Codable, Sendable, Equatable, Identifiab
             selected += options.prefix(2)
         }
         self.id = UUID(); self.band = band; self.startedAt = now; self.audioVersion = audioVersion
+        self.materialVersion = materialVersion
         self.items = selected.map { item in
             let order = item.options.indices.shuffled()
             return LearningListeningItem(id: item.id, band: item.band, skill: item.skill, script: item.script,
@@ -63,7 +67,7 @@ public struct LearningListeningSession: Codable, Sendable, Equatable, Identifiab
     }
     public mutating func abandon() { abandoned = true }
     public static func confirmed(band: Int, sessions: [Self], now: Date) -> Bool {
-        let eligible = sessions.filter { $0.band == band && $0.passed && $0.finishedAt! <= now && now.timeIntervalSince($0.finishedAt!) <= 90 * LearningSystemPolicy.day }
+        let eligible = sessions.filter { $0.materialVersion == currentMaterialVersion && $0.band == band && $0.passed && $0.finishedAt! <= now && now.timeIntervalSince($0.finishedAt!) <= 90 * LearningSystemPolicy.day }
         for a in eligible {
             for b in eligible where b.id != a.id {
                 let distance = b.startedAt.timeIntervalSince(a.finishedAt!)

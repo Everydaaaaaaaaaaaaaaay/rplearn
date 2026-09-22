@@ -231,6 +231,20 @@ struct LearningSystemPolicyTests {
         #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(15 * P.day)) == .confirmed)
         #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(104 * P.day + 1)) == .stale)
     }
+    @Test func oldListeningMaterialsRemainReadableButCannotConfirmCurrentVersion() throws {
+        var a = try #require(LearningListeningSession(band: 1, bank: bank(), seen: [], now: start))
+        while let q = a.current { a.completedPlayback(itemID: q.id); _ = a.answer(q.answer, now: start) }
+        var object = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(a)) as? [String:Any])
+        object.removeValue(forKey: "materialVersion")
+        let old = try JSONDecoder().decode(LearningListeningSession.self, from: JSONSerialization.data(withJSONObject: object))
+        #expect(old.materialVersion == nil)
+        #expect(old.score == a.score && old.items == a.items)
+        var b = try #require(LearningListeningSession(band: 1, bank: bank(), seen: Set(a.items.map(\.id)), now: start.addingTimeInterval(7 * P.day)))
+        while let q = b.current { b.completedPlayback(itemID: q.id); _ = b.answer(q.answer, now: b.startedAt) }
+        #expect(!LearningListeningSession.confirmed(band: 1, sessions: [old,b], now: b.startedAt))
+        #expect(LearningListeningSession.confirmed(band: 1, sessions: [a,b], now: b.startedAt))
+    }
+
     @Test func differentAudioVersionsCannotConfirm() throws {
         var a = try #require(LearningListeningSession(band: 1, bank: bank(), seen: [], now: start, audioVersion: "old"))
         while let q = a.current { a.completedPlayback(itemID: q.id); _ = a.answer(q.answer, now: start) }

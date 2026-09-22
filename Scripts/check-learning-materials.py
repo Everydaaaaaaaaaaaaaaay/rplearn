@@ -22,10 +22,25 @@ for q in bank:
     assert len(q['options']) == len(set(q['options'])) == 3
     assert q['answer'] in range(3)
     assert len(q['question']) <= 35 and max(map(len, q['options'])) <= 22
+    assert max(map(len, q['options'])) - min(map(len, q['options'])) <= 2, (q['id'], 'option length cue')
     assert q['explanation']
     coverage[band,q['skill']] += 1
 assert len(coverage) == 9 and set(coverage.values()) == {4}
 print('36 items validated: IDs, distinct scripts, lengths, options, and 3 × 3 skill coverage. Audio/psychometric calibration not implied.')
+
+# A cheap adversarial baseline: answer without listening, using only length.
+# Ties are random; this is not an estimate of learner ability or item validity.
+for band in (1, 2, 3):
+    questions = [q for q in bank if q['band'] == band]
+    for label, extreme in [('longest', max), ('shortest', min)]:
+        expected = 0
+        for q in questions:
+            lengths = list(map(len, q['options']))
+            tied = [i for i, length in enumerate(lengths) if length == extreme(lengths)]
+            expected += 1 / len(tied) if q['answer'] in tied else 0
+        rate = expected / len(questions)
+        assert rate <= 0.5, (band, label, rate, 'length-only shortcut requires review')
+        print(f'Band {band} {label}-only expected accuracy: {rate:.3f}')
 
 # Reuse the frozen dictionary frequency data; this is a screen, not CEFR calibration.
 connection = sqlite3.connect(f"file:{root / 'App/Resources/learner_dictionary.sqlite'}?mode=ro", uri=True)

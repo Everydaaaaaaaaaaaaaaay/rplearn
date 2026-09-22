@@ -197,6 +197,10 @@ private struct LearningListeningView: View {
                         Text("完整听完至少一遍后可作答。交卷前不显示台词与答案。") .font(.caption).foregroundStyle(.secondary)
                     } else if let session {
                         Text("本组 \(session.score)/6").font(.largeTitle.bold()).accessibilityIdentifier("learningListening.result")
+                        if session.materialVersion != LearningListeningSession.currentMaterialVersion {
+                            Text("这是旧版材料的练习记录，原成绩和原文保留，不与新版测评合并确认。")
+                                .font(.caption).foregroundStyle(.secondary)
+                        }
                         if LearningListeningSession.confirmed(band: session.band, sessions: model.state.listening, now: .now) {
                             Text("本档已完成跨日确认，无需再做一组来重复确认。可以复听原文，或自愿尝试其他难度。")
                         } else {
