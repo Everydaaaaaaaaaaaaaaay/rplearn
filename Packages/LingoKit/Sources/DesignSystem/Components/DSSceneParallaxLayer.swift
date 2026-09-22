@@ -7,12 +7,15 @@ public struct DSSceneParallaxLayer: Sendable {
     public var contours: [[CGPoint]] { [contour] + additionalContours }
     public let depth: CGFloat
     public let inverted: Bool
+    /// 补全取样的同材质区域，归一化到原图；空值允许整图。
+    public let repairRegion: CGRect?
 
-    public init(contour: [CGPoint], depth: CGFloat, inverted: Bool = false, additionalContours: [[CGPoint]] = []) {
+    public init(contour: [CGPoint], depth: CGFloat, inverted: Bool = false, additionalContours: [[CGPoint]] = [], repairRegion: CGRect? = nil) {
         self.contour = contour
         self.additionalContours = additionalContours
         self.depth = depth
         self.inverted = inverted
+        self.repairRegion = repairRegion
     }
 
     public var bounds: CGRect {

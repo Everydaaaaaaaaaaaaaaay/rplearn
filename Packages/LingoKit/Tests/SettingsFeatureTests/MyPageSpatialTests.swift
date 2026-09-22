@@ -51,6 +51,7 @@ struct MyPageSpatialTests {
         let anchors: [(Int, CGPoint)] = [
             (0, CGPoint(x: 280, y: 375)), (1, CGPoint(x: 440, y: 424)),
             (1, CGPoint(x: 350, y: 420)), (7, CGPoint(x: 682, y: 1540)),
+            (0, CGPoint(x: 325, y: 410)),
             (2, CGPoint(x: 700, y: 355)), (2, CGPoint(x: 791, y: 472)),
             (3, CGPoint(x: 410, y: 930)), (4, CGPoint(x: 170, y: 1450)),
             (4, CGPoint(x: 109, y: 1680)), (5, CGPoint(x: 420, y: 1500)),

@@ -74,20 +74,34 @@ kernel void sceneParallaxRepair(texture2d<float, access::sample> original [[text
                                 constant float4 *masks [[buffer(1)]],
                                 constant uint &count [[buffer(2)]],
                                 constant uint2 *ranges [[buffer(3)]],
+                                constant float4 *repairRegions [[buffer(4)]],
                                 uint2 pixel [[thread_position_in_grid]]) {
     if (pixel.x >= repaired.get_width() || pixel.y >= repaired.get_height()) return;
     constexpr sampler sampling(filter::linear, address::clamp_to_edge);
     float2 dimensions(repaired.get_width(), repaired.get_height());
     float2 p = float2(pixel) + 0.5;
     float2 donor = p;
+    float4 neighborhood = float4(0);
+    float neighborhoodWeight = 0;
     for (uint i = 0; i < count; ++i) {
         float4 mask = masks[i];
         float2 nearest;
         float distance = layerDistance(p, points, ranges, mask, dimensions, nearest);
         if (distance <= 0 || distance > 48) continue;
         float2 direction = normalize(nearest - p);
-        // 不重复折返三像素纹理带，避免阴影出现周期性黏连条纹。
-        donor = nearest + direction * (mask.z > 0 ? 3 + fmod(distance, 3.0) : 4.0);
+        // 物件使用边界外等宽纹理带，保留二维纹理，不把单行像素拉成条纹。
+        // 门洞沿用现有窄带取样；物件额外受桌面/地图材质范围约束。
+        if (mask.z > 0) {
+            donor = nearest + direction * (3 + fmod(distance, 3.0));
+        } else {
+            // 沿图像轴延展，避免绕斜边镜像把横向木纹折成鱼骨纹。
+            bool horizontal = abs(direction.x) >= abs(direction.y);
+            float component = horizontal ? direction.x : direction.y;
+            float2 axis = horizontal ? float2(sign(component), 0) : float2(0, sign(component));
+            donor = p + axis * (2 * distance / max(abs(component), 0.001) + 2);
+        }
+        float4 region = repairRegions[i] * dimensions.xyxy;
+        float2 searchOrigin = mask.z > 0 ? nearest : donor;
         // 相邻物件之间不能沿同一方向盲目延伸，否则会取到邻近物件。
         // 从轮廓附近寻找最近的无遮挡纹理，搜索仅发生在初始化的窄带内。
         bool valid = false;
@@ -97,18 +111,29 @@ kernel void sceneParallaxRepair(texture2d<float, access::sample> original [[text
                 uint sample = attempt - 1;
                 float angle = float(sample % 16) * 0.3926990817;
                 float radius = float(sample / 16 + 1) * 8;
-                candidate = nearest + float2(cos(angle), sin(angle)) * radius;
+                candidate = searchOrigin + float2(cos(angle), sin(angle)) * radius;
             }
             bool occluded = any(candidate < 0) || any(candidate >= dimensions);
+            if (mask.z <= 0) occluded = occluded || any(candidate < region.xy + 1) || any(candidate >= region.zw - 1);
             for (uint j = 0; j < count && !occluded; ++j) {
                 float2 q;
                 float d = layerDistance(candidate, points, ranges, masks[j], dimensions, q);
                 occluded = d > -2;
             }
-            if (!occluded) { donor = candidate; valid = true; break; }
+            if (!occluded) {
+                valid = true;
+                if (mask.z > 0 || attempt == 0) { donor = candidate; break; }
+                // 受相邻物件或纸边阻挡时，综合同一搜索环上的合法纹理，
+                // 避免第一个命中点在相邻像素间突然跳换，形成亮点和碎块。
+                float weight = 1.0 / max(dot(candidate - searchOrigin, candidate - searchOrigin), 1.0);
+                neighborhood += original.sample(sampling, candidate / dimensions) * weight;
+                neighborhoodWeight += weight;
+            }
+            if (attempt > 0 && attempt % 16 == 0 && neighborhoodWeight > 0) break;
         }
         if (!valid) donor = p;
         break;
     }
-    repaired.write(original.sample(sampling, donor / dimensions), pixel);
+    float4 color = neighborhoodWeight > 0 ? neighborhood / neighborhoodWeight : original.sample(sampling, donor / dimensions);
+    repaired.write(color, pixel);
 }

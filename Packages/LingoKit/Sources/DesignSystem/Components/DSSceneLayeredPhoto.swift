@@ -104,6 +104,12 @@ public struct DSSceneLayeredPhoto: UIViewRepresentable {
             plate.storageMode = .private
             guard let repaired = device.makeTexture(descriptor: plate),
                   let command = queue.makeCommandBuffer(), let encoder = command.makeComputeCommandEncoder() else { return }
+            let repairRegions: [SIMD4<Float>] = layers.map { layer in
+                let region = layer.repairRegion ?? CGRect(x: 0, y: 0, width: 1, height: 1)
+                return SIMD4(Float(region.minX), Float(region.minY), Float(region.maxX), Float(region.maxY))
+            }
+            guard let regionBuffer = device.makeBuffer(bytes: repairRegions,
+                length: repairRegions.count * MemoryLayout<SIMD4<Float>>.stride) else { return }
             var count = UInt32(layers.count)
             encoder.setComputePipelineState(compute)
             encoder.setTexture(original, index: 0)
@@ -111,6 +117,7 @@ public struct DSSceneLayeredPhoto: UIViewRepresentable {
             encoder.setBuffer(points, offset: 0, index: 0)
             encoder.setBuffer(maskBuffer, offset: 0, index: 1)
             encoder.setBuffer(contourRanges, offset: 0, index: 3)
+            encoder.setBuffer(regionBuffer, offset: 0, index: 4)
             encoder.setBytes(&count, length: MemoryLayout<UInt32>.size, index: 2)
             encoder.dispatchThreads(MTLSize(width: original.width, height: original.height, depth: 1),
                                     threadsPerThreadgroup: MTLSize(width: 8, height: 8, depth: 1))

@@ -11,7 +11,7 @@ enum MyPageSpatialGeometry {
     /// 母版物件的外轮廓，包含紧贴物件的原有接触阴影；每个物件只有一个移动速度。
     static let layers: [DSSceneParallaxLayer] = [
         layer(0.21, shadowRight: 12, [(5,242),(281,187),(293,196),(329,440),(317,453),(46,482),(32,466)]),
-        layer(0.39, shadowBottom: 6, [(359,340),(406,341),(414,348),(549,357),(558,370),(549,509),(532,516),(331,493),(326,475),(340,365),(347,354)]),
+        layer(0.39, shadowBottom: 6, shadowLeft: 2, [(359,340),(406,341),(414,348),(549,357),(558,370),(549,509),(532,516),(340,493),(332,483),(332,469),(337,382),(347,365),(347,354)]),
         layer(0.27, [(634,265),(651,269),(790,309),(802,323),(793,417),(777,446),(797,459),(811,475),(805,486),(789,485),(765,457),(740,458),(588,411),(581,398),(615,281)]),
         layer(0.21, [(294,712),(533,714),(551,730),(551,1134),(537,1156),(285,1154),(268,1136),(271,732)]),
         layer(0.29, [(22,1291),(231,1248),(249,1253),(318,1606),(304,1626),(116,1665),(124,1690),(108,1702),(91,1669),(79,1639)]),
@@ -20,7 +20,7 @@ enum MyPageSpatialGeometry {
         layer(0.35, [(699,1488),(732,1498),(764,1518),(775,1543),(764,1588),(745,1610),(715,1606),(681,1589),(670,1567),(680,1516)]),
     ]
 
-    private static func layer(_ depth: CGFloat, shadowBottom: CGFloat = 30, shadowRight: CGFloat = 22, _ points: [(CGFloat, CGFloat)]) -> DSSceneParallaxLayer {
+    private static func layer(_ depth: CGFloat, shadowBottom: CGFloat = 30, shadowRight: CGFloat = 22, shadowLeft: CGFloat = 10, _ points: [(CGFloat, CGFloat)]) -> DSSceneParallaxLayer {
         // 把抗锯齿和取样接缝放到物件外侧的背景中，扩大接触阴影的覆盖范围。
         // 下方与右侧保留更多投影，避免同一阴影一半随物件移动、一半留在底图。
         // 相机底部紧邻地图；护照和手表右侧紧邻其他物件，分别限制扩张。
@@ -53,14 +53,24 @@ enum MyPageSpatialGeometry {
             let denominator = max(0.25, 1 + a.dx*b.dx + a.dy*b.dy)
             let nx = (a.dx + b.dx) / denominator
             let ny = (a.dy + b.dy) / denominator
-            let horizontalMargin: CGFloat = nx > 0 ? shadowRight : 10
+            let horizontalMargin: CGFloat = nx > 0 ? shadowRight : shadowLeft
             let verticalMargin: CGFloat = ny > 0 ? shadowBottom : 10
             return CGPoint(x: (current.x + nx * horizontalMargin)/825,
                            y: (current.y + ny * verticalMargin)/1906)
         }
         // 只开放微小的遮挡差，避免单张照片中的接触阴影与新视点明显分离。
         let parallaxDepth = backgroundDepth + (depth - backgroundDepth) * 0.6
-        return DSSceneParallaxLayer(contour: expanded, depth: parallaxDepth)
+        // 取样不能跨越地图纸边；这些区域只限制底图补全，不改变图层形状。
+        let top = points.map { $0.1 }.min() ?? 0
+        let material: CGRect
+        if top < 550 {
+            material = CGRect(x: 0, y: 0, width: 1, height: 526.0 / 1906)
+        } else if top < 1200 {
+            material = CGRect(x: 0, y: 550.0 / 1906, width: 1, height: 660.0 / 1906)
+        } else {
+            material = CGRect(x: 0, y: 1240.0 / 1906, width: 1, height: 666.0 / 1906)
+        }
+        return DSSceneParallaxLayer(contour: expanded, depth: parallaxDepth, repairRegion: material)
     }
 
     static func depth(at point: CGPoint) -> CGFloat {
