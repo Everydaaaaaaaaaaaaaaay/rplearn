@@ -4,7 +4,7 @@ import CryptoKit
 /// Executable v1 product thresholds, not a calibrated CEFR assessment.
 public enum LearningSystemPolicy {
     public static let version = 1
-    public static let ruleRevision = 3
+    public static let ruleRevision = 4
     public static let day: TimeInterval = 86_400
     public static let idleSeconds: TimeInterval = 90
     public static let batchSize = 4
@@ -109,7 +109,7 @@ public enum LearningSystemPolicy {
             guard let i = evidence.firstIndex(where: { $0.id == id }) else { return }
             evidence[i].quote = ""; evidence[i].explanation = ""; evidence[i].deleted = true
         }
-        public func independentEvidence(skill: Skill, band: Int, now: Date, maxAge: TimeInterval = 90 * LearningSystemPolicy.day) -> [Evidence] {
+        public func independentEvidence(skill: Skill, band: Int, now: Date, maxAge: TimeInterval = 90 * LearningSystemPolicy.day, confirmation: Bool? = nil) -> [Evidence] {
             var fingerprints = Set<String>(), days = Set<Int>()
             var originalIDs: [String: UUID] = [:]
             for item in evidence where item.skill == skill && item.band == band {
@@ -122,32 +122,42 @@ public enum LearningSystemPolicy {
                 return $0.date < $1.date
             }.filter { item in
                 guard !item.deleted, item.independent, item.skill == skill, item.band == band,
+                      confirmation == nil || item.confirmation == confirmation,
                       originalIDs[item.fingerprint] == item.id,
                       item.date <= now, now.timeIntervalSince(item.date) <= maxAge,
                       !fingerprints.contains(item.fingerprint), !days.contains(utcDay(item.date)) else { return false }
                 fingerprints.insert(item.fingerprint); days.insert(utcDay(item.date)); return true
             }.sorted { $0.date < $1.date }
         }
+        private func isReady(_ observations: [Evidence]) -> Bool {
+            let window = observations.suffix(6)
+            let successes = window.filter(\.successful)
+            // Recent performance and observation duration are different requirements.
+            // Six consecutive daily samples span only five days, however long a
+            // learner has participated; measuring duration on that suffix locks them out.
+            return window.count == 6 && successes.count >= 5 && Set(successes.map(\.topic)).count >= 3
+                && (window.last?.date.timeIntervalSince(observations.first!.date) ?? 0) >= 7 * day
+        }
+        private func basis(skill: Skill, band: Int, before date: Date) -> [Evidence] {
+            Array(independentEvidence(skill: skill, band: band, now: date, confirmation: false)
+                .filter { $0.date < date })
+        }
         public func status(skill: Skill, band: Int, now: Date) -> Status {
-            let current = independentEvidence(skill: skill, band: band, now: now)
-            func isReady(_ window: [Evidence]) -> Bool {
-                let successes = window.filter(\.successful)
-                return window.count == 6 && successes.count >= 5 && Set(successes.map(\.topic)).count >= 3
-                    && (window.last?.date.timeIntervalSince(window.first!.date) ?? 0) >= 7 * day
-            }
-            let history = independentEvidence(skill: skill, band: band, now: now, maxAge: .infinity)
-            let confirms = history.filter { $0.confirmation && $0.successful }
+            let current = independentEvidence(skill: skill, band: band, now: now, confirmation: false)
+            let confirms = independentEvidence(skill: skill, band: band, now: now, maxAge: .infinity, confirmation: true)
+                .filter(\.successful)
             var confirmedAt: Date?
+            var pendingConfirmation = false
             for (i, a) in confirms.enumerated() {
-                let basis = Array(history.filter { !$0.confirmation && $0.date < a.date && a.date.timeIntervalSince($0.date) <= 90 * day }.suffix(6))
+                let basis = basis(skill: skill, band: band, before: a.date)
                 guard isReady(basis), let first = basis.first else { continue }
+                if now.timeIntervalSince(first.date) <= 90 * day { pendingConfirmation = true }
                 for b in confirms.dropFirst(i + 1) where b.topic != a.topic && b.date.timeIntervalSince(a.date) >= 2 * day && b.date.timeIntervalSince(first.date) >= 14 * day && b.date.timeIntervalSince(first.date) <= 90 * day {
                     confirmedAt = max(confirmedAt ?? .distantPast, b.date)
                 }
             }
             if let confirmedAt, now.timeIntervalSince(confirmedAt) <= 90 * day { return .confirmed }
-            let ready = isReady(Array(current.filter { !$0.confirmation }.suffix(6)))
-            if ready { return .ready }
+            if isReady(current) || pendingConfirmation { return .ready }
             if confirmedAt != nil { return .stale }
             if !current.filter(\.successful).isEmpty { return .independent }
             if evidence.contains(where: { !$0.deleted && $0.skill == skill && $0.band == band }) {
@@ -158,11 +168,17 @@ public enum LearningSystemPolicy {
         }
         public func nextConfirmationDate(skill: Skill, band: Int, now: Date) -> Date? {
             guard status(skill: skill, band: band, now: now) == .ready else { return nil }
-            let entries = independentEvidence(skill: skill, band: band, now: now)
-            let basis = Array(entries.filter { !$0.confirmation }.suffix(6))
-            guard let first = basis.first, let last = basis.last,
-                  let confirmation = entries.last(where: { $0.confirmation && $0.date > last.date }) else { return nil }
-            return max(confirmation.date.addingTimeInterval(2 * day), first.date.addingTimeInterval(14 * day))
+            let attempts = independentEvidence(skill: skill, band: band, now: now, confirmation: true)
+            guard let last = attempts.last else { return nil }
+            // Anchor the second task to the basis that actually unlocked the first.
+            // Later ordinary chat must not erase either the wait or the earned basis.
+            for firstConfirmation in attempts where firstConfirmation.successful {
+                let basis = basis(skill: skill, band: band, before: firstConfirmation.date)
+                if isReady(basis), let first = basis.first, now.timeIntervalSince(first.date) <= 90 * day {
+                    return max(last.date.addingTimeInterval(2 * day), first.date.addingTimeInterval(14 * day))
+                }
+            }
+            return last.date.addingTimeInterval(2 * day)
         }
         public func nextReview(now: Date) -> Evidence? {
             guard now >= latestDate, now >= (deferredUntil ?? .distantPast) else { return nil }

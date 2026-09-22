@@ -40,9 +40,10 @@ struct ConversationLearningDashboard: View {
     private func progressSummary(_ model: ConversationLearningSystem, skill: LearningSystemPolicy.Skill, band: Int) -> String {
         let status = model.state.ledger.status(skill: skill, band: band, now: .now)
         if status == .confirmed { return "已满足本档的跨情境确认条件。" }
-        let samples = Array(model.state.ledger.independentEvidence(skill: skill, band: band, now: .now).filter { !$0.confirmation }.suffix(6))
+        let observations = model.state.ledger.independentEvidence(skill: skill, band: band, now: .now, confirmation: false)
+        let samples = Array(observations.suffix(6))
         let successes = samples.filter(\.successful)
-        let span = samples.first.flatMap { first in samples.last.map { Int($0.date.timeIntervalSince(first.date) / 86_400) } } ?? 0
+        let span = observations.first.flatMap { first in samples.last.map { Int($0.date.timeIntervalSince(first.date) / 86_400) } } ?? 0
         if status == .ready {
             if let date = model.state.ledger.nextConfirmationDate(skill: skill, band: band, now: .now), date > .now {
                 return "基础证据已够，下次确认：\(date.formatted(date: .abbreviated, time: .shortened))"
@@ -140,7 +141,7 @@ private struct LearningRulesView: View {
         List {
             Section("文字沟通") {
                 Text("任务完成、可理解性、衔接、语言控制：每项0–2分。总分至少6分、任务完成2分、其他项至少1分，才计一次成功。")
-                Text("待确认：最近6条独立证据至少5条成功，跨3个日期、3个主题，跨度至少7天。")
+                Text("待确认：最近6条独立证据至少5条成功，跨3个主题；有效独立观察期至少7天，每日最多计一条。")
                 Text("确认：再完成2个不同情境的新任务，间隔至少48小时；从首次证据起至少14天。")
                 Text("查词、翻译、来源不明或语音转写可以记录参与，不用于确认独立文字能力。")
             }

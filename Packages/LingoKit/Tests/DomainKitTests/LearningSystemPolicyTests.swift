@@ -32,6 +32,60 @@ struct LearningSystemPolicyTests {
         ledger.delete(ledger.evidence.last!.id)
         #expect(ledger.status(skill:.preference,band:1,now:start.addingTimeInterval(14*P.day)) == .ready)
     }
+    @Test func dailyLearnerCanBecomeReadyWithoutArtificiallySkippingDays() {
+        var ledger = P.Ledger()
+        for i in 0...8 { insert(evidence(day: Double(i), index: i), into: &ledger) }
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(8 * P.day)) == .ready)
+    }
+
+    @Test("不同聊天频率均能进入确认，短期突击不能", arguments: [1.0, 1.5, 2.0, 7.0])
+    func readinessAcrossFrequencies(interval: Double) {
+        var ledger = P.Ledger()
+        for i in 0...8 { insert(evidence(day: Double(i) * interval, index: i), into: &ledger) }
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(8 * interval * P.day)) == .ready)
+    }
+
+    @Test func oldSuccessCannotHideRecentRepeatedFailures() {
+        var ledger = P.Ledger()
+        for i in 0...10 { insert(evidence(day: Double(i), index: i, scores: i >= 7 ? [1,1,1,1] : [2,2,1,1]), into: &ledger) }
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(10 * P.day)) != .ready)
+    }
+
+    @Test func deletingBasisWithdrawsPendingConfirmation() {
+        var ledger = P.Ledger()
+        for (i, day) in [0,1,2,3,4,7].enumerated() { insert(evidence(day: Double(day), index: i), into: &ledger) }
+        insert(evidence(day: 12, index: 6, confirmation: true, topic: "work"), into: &ledger)
+        ledger.delete(ledger.evidence[0].id)
+        insert(evidence(day: 14, index: 7, confirmation: true, topic: "study"), into: &ledger)
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(14 * P.day)) != .confirmed)
+    }
+
+    @Test func naturalChatOnConfirmationDaysDoesNotHideConfirmation() {
+        var ledger = P.Ledger()
+        for (i, day) in [0,1,2,3,4,7].enumerated() { insert(evidence(day: Double(day), index: i), into: &ledger) }
+        insert(evidence(day: 12, index: 20), into: &ledger)
+        insert(evidence(day: 12.01, index: 21, confirmation: true, topic: "work"), into: &ledger)
+        insert(evidence(day: 14.02, index: 22), into: &ledger)
+        insert(evidence(day: 14.03, index: 23, confirmation: true, topic: "study"), into: &ledger)
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(14.03 * P.day)) == .confirmed)
+    }
+
+    @Test func interveningChatDoesNotRemoveConfirmationCooldown() {
+        var ledger = P.Ledger()
+        for (i, day) in [0,1,2,3,4,7].enumerated() { insert(evidence(day: Double(day), index: i), into: &ledger) }
+        insert(evidence(day: 12, index: 6, confirmation: true, topic: "work"), into: &ledger)
+        insert(evidence(day: 13, index: 7), into: &ledger)
+        #expect(ledger.nextConfirmationDate(skill: .preference, band: 1, now: start.addingTimeInterval(13 * P.day)) == start.addingTimeInterval(14 * P.day))
+    }
+
+    @Test func sameDayReadinessThenNewTaskCanStartConfirmation() {
+        var ledger = P.Ledger()
+        for (i, day) in [0,1,2,3,4,7].enumerated() { insert(evidence(day: Double(day), index: i), into: &ledger) }
+        insert(evidence(day: 7.01, index: 6, confirmation: true, topic: "work"), into: &ledger)
+        insert(evidence(day: 14, index: 7, confirmation: true, topic: "study"), into: &ledger)
+        #expect(ledger.status(skill: .preference, band: 1, now: start.addingTimeInterval(14 * P.day)) == .confirmed)
+    }
+
     @Test func practiceCannotForgeIndependence() {
         var ledger = P.Ledger()
         for i in 0..<8 { insert(evidence(day:Double(i),index:i,independent:false),into:&ledger) }
