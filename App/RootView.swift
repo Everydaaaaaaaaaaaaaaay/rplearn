@@ -167,7 +167,9 @@ struct RootView: View {
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
                 NavigationStack {
-                    if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "profile" {
+                    if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "learningLab" {
+                        ConversationLearningPrototypeView(character: character, environment: environment)
+                    } else if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "profile" {
                         CharacterProfileView(character: character,
                             regionName: environment.regionCatalog.region(id: character.card.regionID)?.nameZh ?? "",
                             rosterStore: environment.rosterStore,
@@ -218,7 +220,7 @@ struct RootView: View {
                 await handleAuthenticationPhase()
                 guard environment.workspace != nil else { return }
                 #if DEBUG
-                if ["chat", "profile"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
+                if ["chat", "profile", "learningLab"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
                    ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
                    bypassesAuthenticationForUITesting {
                     captureCharacter = try? await environment.rosterStore.allCharacters().first {
@@ -1046,6 +1048,10 @@ struct RootView: View {
             }
         )
         #if DEBUG
+        let prototypeEnvironment = environment
+        dependencies.learningPrototypeDestination = { character in
+            AnyView(ConversationLearningPrototypeView(character: character, environment: prototypeEnvironment))
+        }
         dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
             && bypassesAuthenticationForUITesting
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"

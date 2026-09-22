@@ -182,7 +182,7 @@ public struct ChatView: View {
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback)
         .onChange(of: wordSelection) { _, selection in
-            if selection != nil { deps.tutorial?.onEvent("word") }
+            if selection != nil { deps.tutorial?.onEvent("word"); deps.learningObserver?(.assistance) }
         }
         .grammarTermLookupOverlay(
             selection: $grammarTermSelection,

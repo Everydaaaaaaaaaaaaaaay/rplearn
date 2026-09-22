@@ -262,6 +262,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
+        deps.learningObserver?(.sent(id: userMessage.id, text: userMessage.text, voice: true))
         scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
@@ -290,6 +291,7 @@ public final class ChatViewModel {
             tokenEstimate: TokenEstimator.estimate(text)
         )
         persisted = true
+        deps.learningObserver?(.sent(id: userMessage.id, text: userMessage.text, voice: true))
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
@@ -431,6 +433,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return false
         }
+        deps.learningObserver?(.sent(id: userMessage.id, text: userMessage.text, voice: false))
         // 辅助点评必须等主回复完成：免费额度下不能让后台任务抢走用户可见回复的预留。
         scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
