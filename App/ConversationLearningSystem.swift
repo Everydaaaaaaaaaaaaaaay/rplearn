@@ -118,7 +118,7 @@ final class ConversationLearningSystem {
     private func schedule(environment: AppEnvironment) {
         timer?.cancel()
         let day = LearningSystemPolicy.utcDay(.now)
-        guard state.enabled, !reviewing, activeReplyOwners.isEmpty, !storageFailed, state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12 else { return }
+        guard state.enabled, !reviewing, activeReplyOwners.isEmpty, !storageFailed, state.batches[day, default: 0] < LearningSystemPolicy.dailyBatches, state.calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2 else { return }
         let waits = candidates.compactMap { $0.delay(now: .now) }
         guard let delay = waits.min() else { return }
         timer = Task { [weak self, weak environment] in
@@ -140,7 +140,7 @@ final class ConversationLearningSystem {
               case .signedIn(let identity) = environment.authSession.phase, identity.userID == owner else { return }
         let day = LearningSystemPolicy.utcDay(.now)
         guard Date.now >= state.ledger.latestDate else { error = "设备时间早于已保存记录，请恢复正确时间后重试。"; return }
-        guard state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12,
+        guard state.batches[day, default: 0] < LearningSystemPolicy.dailyBatches, state.calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2,
               let batchID = LearningReviewQueue.next(candidates, now: .now, force: force),
               let index = state.pending.firstIndex(where: { $0.id == batchID }) else { schedule(environment: environment); return }
         var batch = state.pending[index]
@@ -186,8 +186,9 @@ final class ConversationLearningSystem {
         }.joined(separator: "\n")
             + (batch.challenge.map { "\nExplicit user-selected task: \($0.task.instruction)" } ?? "")
         for attempt in 0..<2 {
-            guard state.calls[day, default: 0] < 12 else { break }
-            state.calls[day, default: 0] += 1
+            guard LearningReviewQueue.reserveCall(&state.calls, now: .now) else {
+                error = "今日学习回顾请求已达上限，表达已保留，可之后重试。"; break
+            }
             guard await checkpoint(), state.enabled, !Task.isCancelled,
                   case .signedIn(let current) = environment.authSession.phase, current.userID == owner else { return }
             do {

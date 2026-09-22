@@ -2,6 +2,16 @@ import Foundation
 
 /// Shared by foreground recovery, the idle timer and explicit retry.
 public enum LearningReviewQueue {
+    /// Reserve against the date of this attempt, including a retry after UTC midnight.
+    /// Persist the updated counts before contacting the provider.
+    @discardableResult
+    public static func reserveCall(_ calls: inout [Int: Int], now: Date) -> Bool {
+        let day = LearningSystemPolicy.utcDay(now)
+        guard calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2 else { return false }
+        calls[day, default: 0] += 1
+        return true
+    }
+
     public struct Candidate: Sendable {
         public let id: UUID
         public let count: Int

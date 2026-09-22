@@ -5,6 +5,22 @@ import Testing
 @Suite("学习回顾真实使用队列")
 struct LearningReviewQueueTests {
     let now = Date(timeIntervalSince1970: 1_700_000_000)
+    @Test func retryAcrossMidnightUsesActualDayBudget() throws {
+        let midnight = Date(timeIntervalSince1970: Double(LearningSystemPolicy.utcDay(now) + 1) * LearningSystemPolicy.day)
+        let yesterday = LearningSystemPolicy.utcDay(midnight.addingTimeInterval(-1))
+        let today = LearningSystemPolicy.utcDay(midnight)
+        var calls = [yesterday: 11]
+        #expect(LearningReviewQueue.reserveCall(&calls, now: midnight.addingTimeInterval(-1)))
+        #expect(calls[yesterday] == 12)
+        #expect(LearningReviewQueue.reserveCall(&calls, now: midnight))
+        #expect(calls[today] == 1)
+        calls = try JSONDecoder().decode([Int:Int].self, from: JSONEncoder().encode(calls))
+        for _ in 0..<11 { #expect(LearningReviewQueue.reserveCall(&calls, now: midnight)) }
+        #expect(!LearningReviewQueue.reserveCall(&calls, now: midnight))
+        #expect(calls[today] == 12)
+        #expect(calls[yesterday] == 12)
+    }
+
     @Test func foregroundDoesNotForceFreshMessages() {
         let fresh = LearningReviewQueue.Candidate(id: UUID(), count: 1, lastDate: now)
         #expect(LearningReviewQueue.next([fresh], now: now) == nil)
