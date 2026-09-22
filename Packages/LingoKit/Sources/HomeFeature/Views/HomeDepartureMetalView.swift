@@ -48,7 +48,7 @@ struct HomeDepartureMetalView: UIViewRepresentable {
             pressedEntry: pressedEntry,
             reduceMotion: reduceMotion
         )
-        context.coordinator.setCamera(camera, layout: layout)
+        context.coordinator.setCamera(camera)
         view.setNeedsDisplay()
     }
 
@@ -113,9 +113,8 @@ struct HomeDepartureMetalView: UIViewRepresentable {
             }
         }
 
-        func setCamera(_ camera: CGSize, layout: HomeDepartureSceneLayout) {
+        func setCamera(_ camera: CGSize) {
             renderer?.camera = camera
-            renderer?.spatialGeometry = HomeSpatialGeometry(assetName: layout.assetName)
         }
 
         func draw(in view: MTKView) {
@@ -201,7 +200,6 @@ private final class HomePerspectiveMetalRenderer {
         var region: SIMD4<Float>
         var transform: SIMD4<Float>
         var spatialCamera: SIMD4<Float>
-        var opening: SIMD4<Float>
     }
 
     private struct FragmentUniforms {
@@ -235,7 +233,6 @@ private final class HomePerspectiveMetalRenderer {
     private var items: [Item] = []
     var pressAmounts: [HomeSceneEntryID: CGFloat] = [:]
     var camera = CGSize.zero
-    var spatialGeometry = HomeSpatialGeometry(assetName: "home_city_london")
 
     init?(device: MTLDevice, sampleCount: Int) {
         guard let commandQueue = device.makeCommandQueue(),
@@ -488,9 +485,7 @@ private final class HomePerspectiveMetalRenderer {
             ),
             spatialCamera: SIMD4(Float(camera.width / max(canvasSize.width, 1)),
                                  Float(camera.height / max(canvasSize.height, 1)),
-                                 Float(spatialGeometry.floorStart), 0),
-            opening: SIMD4(Float(spatialGeometry.opening.minX), Float(spatialGeometry.opening.minY),
-                           Float(spatialGeometry.opening.maxX), Float(spatialGeometry.opening.maxY))
+                                 0, 0)
         )
         // DSHologramSurface 的大半径落影。低透明度只负责说明标牌离开了承载面，
         // 不再用一份偏移的完整字形模拟深度。

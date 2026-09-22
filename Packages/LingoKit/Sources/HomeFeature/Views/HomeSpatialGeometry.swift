@@ -1,18 +1,18 @@
 import SwiftUI
+import DesignSystem
 
 /// 按当前十五张城市母版标定门内远景范围；不是相机测距，也不重建遮挡背面。
 struct HomeSpatialGeometry {
     let opening: CGRect
-    let floorStart: CGFloat
+    private let city: String
 
     init(assetName: String) {
-        let city = assetName.replacingOccurrences(of: "home_city_", with: "")
+        city = assetName.replacingOccurrences(of: "home_city_", with: "")
         let values = Self.calibrations[city] ?? Self.calibrations["london"]!
-        opening = CGRect(x: values[0], y: values[1], width: values[2] - values[0], height: values[3] - values[1])
-        floorStart = values[4]
+        opening = CGRect(x: values[0], y: values[1], width: values[2] - values[0], height: values[3] - values[1]).insetBy(dx: 0.008, dy: 0.005)
     }
 
-    // 左、上、右、下、室内地面起点；基于最终 JPEG 的归一化坐标。
+    // 左、上、右、下（第五项保留旧标定中的地面起点，不再用于形变）；基于最终 JPEG 的归一化坐标。
     static let calibrations: [String: [CGFloat]] = [
         "auckland": [0.14, 0.27, 0.43, 0.60, 0.64],
         "capetown": [0.10, 0.20, 0.44, 0.66, 0.73],
@@ -31,19 +31,35 @@ struct HomeSpatialGeometry {
         "vancouver": [0.12, 0.29, 0.44, 0.65, 0.69],
     ]
 
-    func depth(at p: CGPoint) -> CGFloat {
-        func smooth(_ t: CGFloat) -> CGFloat {
-            let t = min(max(t, 0), 1)
-            return t * t * (3 - 2 * t)
+    static let foregroundDepth: CGFloat = 0.16
+    static let backgroundDepth: CGFloat = 0.03
+
+    var layers: [DSSceneParallaxLayer] {
+        var contour = [
+            CGPoint(x: opening.minX, y: opening.minY), CGPoint(x: opening.maxX, y: opening.minY),
+            CGPoint(x: opening.maxX, y: opening.maxY), CGPoint(x: opening.minX, y: opening.maxY),
+        ]
+        if city == "london" {
+            // 玻璃内侧切分；门把手与左下方室内植物仍归属完整室内层。
+            contour = [
+                CGPoint(x: opening.minX, y: opening.minY), CGPoint(x: opening.maxX, y: opening.minY),
+                CGPoint(x: opening.maxX, y: 0.468), CGPoint(x: 0.424, y: 0.468),
+                CGPoint(x: 0.424, y: 0.485), CGPoint(x: opening.maxX, y: 0.485),
+                CGPoint(x: opening.maxX, y: opening.maxY), CGPoint(x: opening.minX, y: opening.maxY),
+                CGPoint(x: opening.minX, y: 0.628), CGPoint(x: 0.175, y: 0.615),
+                CGPoint(x: 0.175, y: 0.540), CGPoint(x: opening.minX, y: 0.518),
+            ]
         }
-        let horizontal = smooth(min(p.x - opening.minX, opening.maxX - p.x) / 0.035)
-        let vertical = smooth(min(p.y - opening.minY, opening.maxY - p.y) / 0.02)
-        let floor = smooth((p.y - floorStart) / (1 - floorStart))
-        return 0.16 - 0.13 * horizontal * vertical + 0.16 * floor
+        return [DSSceneParallaxLayer(contour: contour, depth: Self.foregroundDepth, inverted: true)]
+    }
+
+    func depth(at p: CGPoint) -> CGFloat {
+        layers[0].contains(p) ? Self.foregroundDepth : Self.backgroundDepth
     }
 
     func project(_ point: CGPoint, camera: CGSize, size: CGSize) -> CGPoint {
-        let d = depth(at: point)
+        // 所有入口属于完整室内前景，不在门玻璃的深度断面上插值。
+        let d = Self.foregroundDepth
         return CGPoint(x: point.x + camera.width * d / size.width,
                        y: point.y + camera.height * d / size.height)
     }
@@ -56,6 +72,6 @@ struct HomeSpatialGeometry {
     }
 
     static func coverageScale(camera: CGSize, size: CGSize) -> CGFloat {
-        1 + max(abs(camera.width) / size.width, abs(camera.height) / size.height) * 0.70
+        1 + max(abs(camera.width) / size.width, abs(camera.height) / size.height) * 0.36
     }
 }
