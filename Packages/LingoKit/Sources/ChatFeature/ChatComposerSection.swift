@@ -238,7 +238,7 @@ extension ChatView {
     private func translateComposer() {
         let mode = composerTranslation.mode
         composerTranslation.translate(automatic: mode == .instant,
-            readDraft: { viewModel.draft }, writeDraft: { viewModel.draft = $0 },
+            readDraft: { viewModel.draft }, writeDraft: { viewModel.draft = $0; deps.learningObserver?(.assistance) },
             perform: { text in
                 if mode == .ai { return try await deps.translator.translateToEnglish(text) }
                 guard let result = await composerAppleTranslator.translate(text) else {

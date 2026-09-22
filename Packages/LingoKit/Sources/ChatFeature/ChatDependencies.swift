@@ -8,6 +8,7 @@ import LLMKit
 import MediaKit
 import PersistenceKit
 import SpeechKit
+import SwiftUI
 
 /// One disposable tutorial owns the allowance, including reopened chats and calls.
 @MainActor @Observable
@@ -35,9 +36,13 @@ public struct ChatTutorialConfiguration: Sendable {
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    /// Optional prototype telemetry; nil in normal app assembly.
+    public var learningObserver: (@MainActor @Sendable (ConversationLearningObservation) -> Void)? = nil
+
     #if DEBUG
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
+    public var learningPrototypeDestination: (@MainActor @Sendable (CharacterDTO) -> AnyView)?
     #endif
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?

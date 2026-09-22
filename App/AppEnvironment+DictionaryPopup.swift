@@ -6,6 +6,23 @@ extension AppEnvironment {
     var exampleTranslationActions: DictExampleTranslationActions {
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
+            // Offline demonstration data for the actual shared-example UI, never an account write.
+            return DictExampleTranslationActions(loadExamples: { lemma in
+                guard ["cosy", "cozy"].contains(lemma.lowercased()) else { return [] }
+                return [
+                    DictSharedLearnerExample(rank: -1, partOfSpeech: "adjective",
+                        definition: "warm and comfortable",
+                        sentence: "We found a cosy café by the river.",
+                        translation: DictExampleTranslation(sentenceZhHans: "我们在河边找到一家温馨的咖啡馆。", contextualMeaningZhHans: "温暖舒适的")),
+                    DictSharedLearnerExample(rank: -2, partOfSpeech: "adjective",
+                        definition: "warm and comfortable",
+                        sentence: "This room feels cosy on rainy days.",
+                        translation: DictExampleTranslation(sentenceZhHans: "下雨天，这个房间让人觉得很舒适。", contextualMeaningZhHans: "温暖舒适的"))
+                ]
+            }, translate: { _ in nil })
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
            ProcessInfo.processInfo.environment["UI_TEST_DICTIONARY_EXAMPLES"] != "1" {
             return DictExampleTranslationActions { request in
                 let samples = [

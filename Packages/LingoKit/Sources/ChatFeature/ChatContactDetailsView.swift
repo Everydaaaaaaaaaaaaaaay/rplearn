@@ -57,6 +57,15 @@ struct ChatContactDetailsView: View {
                 }
             }
 
+            #if DEBUG
+            if let destination = deps.learningPrototypeDestination {
+                Section {
+                    NavigationLink { destination(viewModel.character) } label: {
+                        Label("共同篇章（原型）", systemImage: "leaf.fill")
+                    }
+                }
+            }
+            #endif
             Section("聊天设置") {
                 Toggle("特别关心", systemImage: "star.fill", isOn: favoriteBinding)
                 Toggle("置顶聊天", systemImage: "pin.fill", isOn: pinnedBinding)

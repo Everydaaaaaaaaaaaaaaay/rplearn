@@ -182,7 +182,7 @@ public struct ChatView: View {
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback)
         .onChange(of: wordSelection) { _, selection in
-            if selection != nil { deps.tutorial?.onEvent("word") }
+            if selection != nil { deps.tutorial?.onEvent("word"); deps.learningObserver?(.assistance) }
         }
         .grammarTermLookupOverlay(
             selection: $grammarTermSelection,
@@ -259,6 +259,15 @@ public struct ChatView: View {
             autoReadReady = true
             autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
             #if DEBUG
+            // Screenshot-only presentation of seeded reviews in the isolated marketing workspace.
+            if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+               ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+               ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
+               ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_COACHES"] == "1" {
+                expandedCoachMessageIDs = Set(viewModel.messages.filter {
+                    CoachService.decode(fromJSON: $0.coachReviewJSON)?.hasIssues == true
+                }.map(\.id))
+            }
             if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
                ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
                ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_DICTIONARY"] == "1",

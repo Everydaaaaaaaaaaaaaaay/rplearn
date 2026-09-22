@@ -14,6 +14,7 @@
 | 城市与剧情 | [旅行设计](journey-design.md)、[出发之后](departures-collection.md)、[剧情美术验收](verification/departures-art.md) |
 | 场景与活动 | [必要视觉验收](activity-scene-visual-acceptance.md)及其中最新记录、[相遇流程](activity-encounter-journey-plan.md) |
 | 视觉与语音 | [设计系统](design-system.md)、[实时语音](realtime-voice.md) |
+| 对话成长原生原型 | [入口、规则、循环记录与验证边界](learning-program/conversation-prototype-2026-09-22.md) |
 | 学习系统扩展工程（待启动） | [总方案](learning-program/README.md)、[执行工作流](learning-program/workflow.md)、[进度账本](learning-program/status.md) |
 | NPC 与关系 | [人物多样性](npc-persona-diversity.md)、[关系系统](relationship-system.md) |
 | 积分与成本 | [模型积分](model-credits.md)、[成本评测](user-cost-evaluation.md) |
