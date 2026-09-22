@@ -31,6 +31,7 @@ public struct MyPageView: View {
     @State private var selectedAvatar: PhotosPickerItem?
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
+    @State private var spatialPhotoReady = false
 
     @State private var credits: BackendAccessSnapshot.Credits?
     @State private var creditsError: String?
@@ -145,27 +146,29 @@ public struct MyPageView: View {
                 (proxy.size.width - TravelDeskLayout.canvasWidth * sceneScale) / 2
             )
 
-            ZStack(alignment: .topLeading) {
-                if sceneScale < widthScale {
-                    compactHeightBackdrop(size: proxy.size)
-                }
+            MyPageSpatialScene { proposedCamera in
+                let camera = spatialPhotoReady ? proposedCamera : .zero
+                ZStack(alignment: .topLeading) {
+                    if sceneScale < widthScale {
+                        compactHeightBackdrop(size: proxy.size)
+                    }
 
-                travelDeskCanvas
-                    .frame(
-                        width: TravelDeskLayout.canvasWidth,
-                        height: TravelDeskLayout.canvasHeight,
-                        alignment: .topLeading
-                    )
-                    .dynamicTypeSize(...DynamicTypeSize.xLarge)
-                    .scaleEffect(sceneScale, anchor: .topLeading)
-                    .offset(x: horizontalInset)
+                    travelDeskCanvas(camera: camera)
+                        .frame(
+                            width: TravelDeskLayout.canvasWidth,
+                            height: TravelDeskLayout.canvasHeight,
+                            alignment: .topLeading
+                        )
+                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                        .scaleEffect(sceneScale, anchor: .topLeading)
+                        .offset(x: horizontalInset)
+                }
+                .frame(
+                    width: proxy.size.width,
+                    height: proxy.size.height,
+                    alignment: .topLeading
+                )
             }
-            .frame(
-                width: proxy.size.width,
-                height: proxy.size.height,
-                alignment: .topLeading
-            )
-            .dsSceneDragMotion(viewport: proxy.size)
             .background { compactHeightBackdrop(size: proxy.size) }
             .clipped()
         }
@@ -187,55 +190,67 @@ public struct MyPageView: View {
     }
 
     /// 所有背景像素、入口、微光和点击区域都在同一参考画布中布局。
-    /// 运行时只整体等比缩放画布，避免不同 iPhone 宽度下出现独立取整与锚点漂移。
-    private var travelDeskCanvas: some View {
+    /// 先按共享深度投影，再整体等比适配设备，避免图片、入口与命中区域各自取整。
+    private func travelDeskCanvas(camera: CGSize) -> some View {
         let width = TravelDeskLayout.canvasWidth
         let sceneHeight = TravelDeskLayout.canvasHeight
         let layout = sceneLayout
 
         return ZStack(alignment: .topLeading) {
-            travelDeskBackground(width: width, height: sceneHeight)
+            travelDeskBackground(width: width, height: sceneHeight, camera: camera)
 
             profileHotspot
                 .frame(width: layout.profile.size.width, height: layout.profile.size.height)
                 .position(x: width * layout.profile.center.x, y: sceneHeight * layout.profile.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: layout.profile.center, camera: camera, floating: true))
 
             coinHotspot
                 .frame(width: layout.coin.size.width, height: layout.coin.size.height)
                 .position(x: width * layout.coin.center.x, y: sceneHeight * layout.coin.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: layout.coin.center, camera: camera, floating: true))
 
             learningHotspot
                 .frame(width: layout.learning.size.width, height: layout.learning.size.height)
                 .position(x: width * layout.learning.center.x, y: sceneHeight * layout.learning.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: layout.learning.center, camera: camera, floating: true))
 
             favoritesHotspot
                 .frame(width: layout.favorites.size.width, height: layout.favorites.size.height)
                 .position(x: width * layout.favorites.center.x, y: sceneHeight * layout.favorites.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: layout.favorites.center, camera: camera, floating: true))
 
             settingsHotspot
                 .frame(width: layout.settings.size.width, height: layout.settings.size.height)
                 .position(x: width * layout.settings.center.x, y: sceneHeight * layout.settings.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: layout.settings.center, camera: camera, floating: true))
 
             accountHotspot
                 .frame(width: layout.account.size.width, height: layout.account.size.height)
                 .position(x: width * layout.account.center.x, y: sceneHeight * layout.account.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: layout.account.center, camera: camera, floating: true))
 
             memoryDebugHotspot
                 .frame(width: layout.memory.size.width, height: layout.memory.size.height)
                 .position(x: width * layout.memory.center.x, y: sceneHeight * layout.memory.center.y)
+                .offset(MyPageSpatialGeometry.displacement(at: UnitPoint(x: 441.0 / 825, y: 424.0 / 1906), camera: camera, floating: true))
         }
         .frame(width: width, height: sceneHeight, alignment: .topLeading)
+        .scaleEffect(MyPageSpatialGeometry.coverageScale(camera: camera))
     }
 
-    private func travelDeskBackground(width: CGFloat, height: CGFloat) -> some View {
-        MyPageTravelDeskBackground(
-            assetName: sceneLayout.assetName,
-            size: CGSize(width: width, height: height),
-            overlayOpacity: colorScheme == .dark ? 0.28 : 0.02
-        )
-            .equatable()
-            .accessibilityHidden(true)
-            .allowsHitTesting(false)
+    private func travelDeskBackground(width: CGFloat, height: CGFloat, camera: CGSize) -> some View {
+        ZStack {
+            // Metal 不可用时保留原始照片与全部原生入口。
+            Image(sceneLayout.assetName, bundle: .main)
+                .resizable()
+            MyPageSpatialPhoto(assetName: sceneLayout.assetName, camera: camera) { ready in
+                spatialPhotoReady = ready
+            }
+            Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
+        }
+        .frame(width: width, height: height)
+        .accessibilityHidden(true)
+        .allowsHitTesting(false)
     }
 
     private var profileHotspot: some View {
