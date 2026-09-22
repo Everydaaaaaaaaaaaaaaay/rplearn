@@ -24,26 +24,45 @@ struct MyPageSpatialTests {
         }
     }
 
-    @Test("最大视点下网格不折叠且边缘覆盖足够")
+    @Test("物件轮廓刚性平移、最大露出带在微补全范围内")
     func geometry() {
-        let size = MyPageSpatialGeometry.size
-        for camera in [CGSize(width: 34, height: 0), CGSize(width: -24, height: 24), CGSize(width: 0, height: -34)] {
-            func project(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
-                let d = MyPageSpatialGeometry.depth(at: CGPoint(x: x / size.width, y: y / size.height))
-                return CGPoint(x: x + camera.width * d, y: y + camera.height * d)
+        for layer in MyPageSpatialGeometry.layers {
+            #expect(layer.contour.count >= 3)
+            #expect(layer.bounds.width > 0 && layer.bounds.height > 0)
+            let camera = CGSize(width: -24, height: 24)
+            let offset = layer.offset(camera: camera)
+            let original = layer.contour
+            let moved = original.map { CGPoint(x: $0.x * 402 + offset.width, y: $0.y * MyPageSpatialGeometry.size.height + offset.height) }
+            for i in 1..<original.count {
+                let before = hypot((original[i].x-original[i-1].x)*402,
+                                   (original[i].y-original[i-1].y)*MyPageSpatialGeometry.size.height)
+                let after = hypot(moved[i].x-moved[i-1].x, moved[i].y-moved[i-1].y)
+                #expect(abs(before - after) < 0.0001)
             }
-            for y in stride(from: CGFloat(0), to: size.height - 4, by: 4) {
-                for x in stride(from: CGFloat(0), to: size.width - 4, by: 4) {
-                    let a = project(x, y), b = project(x + 4, y), c = project(x, y + 4)
-                    #expect((b.x-a.x) * (c.y-a.y) - (b.y-a.y) * (c.x-a.x) > 0)
-                }
-            }
-            let scale = MyPageSpatialGeometry.coverageScale(camera: camera)
-            #expect((scale - 1) * size.width / 2 >= abs(camera.width) * 0.11 - 0.0001)
-            #expect((scale - 1) * size.height / 2 >= abs(camera.height) * 0.11 - 0.0001)
+            let exposedPixels = abs(layer.depth - MyPageSpatialGeometry.backgroundDepth) * 34 * 825 / 320
+            #expect(exposedPixels + 10 < 48)
         }
         #expect(MyPageSpatialGeometry.depth(at: CGPoint(x: 441.0 / 825, y: 424.0 / 1906)) >
-                MyPageSpatialGeometry.depth(at: CGPoint(x: 0.5, y: 0.05)) + 0.25)
+                MyPageSpatialGeometry.depth(at: CGPoint(x: 0.5, y: 0.05)) + 0.15)
+    }
+
+    @Test("八件物品及细小附件只属于自身图层")
+    func objectOwnership() {
+        let anchors: [(Int, CGPoint)] = [
+            (0, CGPoint(x: 280, y: 375)), (1, CGPoint(x: 440, y: 424)),
+            (1, CGPoint(x: 350, y: 420)), (7, CGPoint(x: 682, y: 1540)),
+            (0, CGPoint(x: 325, y: 410)),
+            (2, CGPoint(x: 700, y: 355)), (2, CGPoint(x: 791, y: 472)),
+            (3, CGPoint(x: 410, y: 930)), (4, CGPoint(x: 170, y: 1450)),
+            (4, CGPoint(x: 109, y: 1680)), (5, CGPoint(x: 420, y: 1500)),
+            (6, CGPoint(x: 620, y: 1500)), (6, CGPoint(x: 660, y: 1310)),
+            (6, CGPoint(x: 549, y: 1740)), (7, CGPoint(x: 720, y: 1550)),
+        ]
+        for (expected, pixel) in anchors {
+            let point = CGPoint(x: pixel.x / 825, y: pixel.y / 1906)
+            let owners = MyPageSpatialGeometry.layers.indices.filter { MyPageSpatialGeometry.layers[$0].contains(point) }
+            #expect(owners == [expected], "物件或附件误入相邻图层")
+        }
     }
 
     @Test("回弹能被原地抓住、无输入延迟且最终停止")

@@ -107,8 +107,22 @@ public struct DSSceneSpatialScene<Content: View>: View {
         self.content = content
     }
 
+    private var presentedCamera: CGSize {
+        #if DEBUG
+        let environment = ProcessInfo.processInfo.environment
+        if environment["UI_TEST_SKIP_ONBOARDING"] == "1",
+           let x = environment["UI_TEST_SCENE_CAMERA_X"].flatMap(Double.init),
+           let y = environment["UI_TEST_SCENE_CAMERA_Y"].flatMap(Double.init) {
+            // 固定视点仅供本地截图验收，不能影响 Release 或普通预览。
+            let scale = min(1, 32 / max(hypot(x, y), 0.001))
+            return CGSize(width: x * scale, height: y * scale)
+        }
+        #endif
+        return motion.camera
+    }
+
     public var body: some View {
-        content(reduceMotion ? .zero : motion.camera)
+        content(reduceMotion ? .zero : presentedCamera)
             .contentShape(Rectangle())
             .highPriorityGesture(
                 DragGesture(minimumDistance: 4, coordinateSpace: .local)

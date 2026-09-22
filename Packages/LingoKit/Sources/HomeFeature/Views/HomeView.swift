@@ -202,9 +202,10 @@ public struct HomeView: View {
                 .resizable()
                 .frame(width: width, height: height)
 
-            DSSceneDepthPhoto(assetName: sceneLayout.assetName, camera: camera,
+            DSSceneLayeredPhoto(assetName: sceneLayout.assetName, camera: camera,
                               size: CGSize(width: width, height: height),
-                              depth: HomeSpatialGeometry(assetName: sceneLayout.assetName).depth) { ready in
+                              backgroundDepth: HomeSpatialGeometry.backgroundDepth,
+                              layers: HomeSpatialGeometry(assetName: sceneLayout.assetName).layers) { ready in
                 spatialPhotoReady = ready
             }
             .id(sceneLayout.assetName)

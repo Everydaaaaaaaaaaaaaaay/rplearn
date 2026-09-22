@@ -7,8 +7,9 @@ struct MyPageSpatialPhoto: View {
     let onReady: (Bool) -> Void
 
     var body: some View {
-        DSSceneDepthPhoto(assetName: assetName, camera: camera,
+        DSSceneLayeredPhoto(assetName: assetName, camera: camera,
                          size: MyPageSpatialGeometry.size,
-                         depth: MyPageSpatialGeometry.depth, onReady: onReady)
+                         backgroundDepth: MyPageSpatialGeometry.backgroundDepth,
+                         layers: MyPageSpatialGeometry.layers, onReady: onReady)
     }
 }
