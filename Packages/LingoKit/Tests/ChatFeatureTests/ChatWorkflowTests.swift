@@ -101,14 +101,15 @@ struct ChatWorkflowTests {
     private func fixture(_ provider: Provider = Provider(),
                          now: @escaping @Sendable () -> Date = { .now },
                          replyDelayScale: Double = 0,
-                         tutorial: ChatTutorialConfiguration? = nil) async throws -> Fixture {
+                         tutorial: ChatTutorialConfiguration? = nil,
+                         learningActivity: (@MainActor @Sendable (UUID, Bool) -> Void)? = nil) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let chat = ChatStore(modelContainer: container), roster = RosterStore(modelContainer: container)
         let economy = EconomyStore(modelContainer: container), items = ItemStore(modelContainer: container)
         _ = try await economy.updateProfile { $0.quizGloballyEnabled = false }
         let llm = LLMRouter(client: provider, maxRetries: 0)
         let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!), credentialStore: NoCredentials())
-        let deps = ChatDependencies(
+        var deps = ChatDependencies(
             tutorial: tutorial, chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container),
             llm: llm,
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
@@ -121,11 +122,28 @@ struct ChatWorkflowTests {
             voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)),
             now: now, replyDelayScale: replyDelayScale
         )
+        deps.learningReplyActivity = learningActivity
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
         await model.load()
         return Fixture(model: model, deps: deps)
     }
+    @MainActor private final class LearningActivityRecorder { var values: [Bool] = [] }
+    @Test func learningWaitsForReplyAndReleasesAfterCompletionOrCancellation() async throws {
+        let recorder = LearningActivityRecorder()
+        let f = try await fixture(Provider(streamDelayMilliseconds: 100), learningActivity: { _, busy in recorder.values.append(busy) })
+        f.model.draft = "Hi!"
+        await f.model.sendDraft()
+        #expect(recorder.values.first == true)
+        try await settle(f.model)
+        #expect(recorder.values.last == false)
+        f.model.draft = "One more question"
+        await f.model.sendDraft()
+        #expect(recorder.values.last == true)
+        f.model.cancelPendingReply()
+        #expect(recorder.values.last == false)
+    }
+
     @Test("聊天角色使用存档音色，用户使用全局旁白音色")
     func readingVoiceRequests() async throws {
         let fixture = try await fixture()

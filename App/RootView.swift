@@ -223,6 +223,7 @@ struct RootView: View {
                 #if DEBUG
                 await ConversationLearningLiveEvaluation.runIfRequested(environment: environment)
                 LearningSystemLiveEvaluation.runIfRequested(environment: environment)
+                LearningSystemFlowEvaluation.runIfRequested(environment: environment)
                 #endif
                 guard environment.workspace != nil else { return }
                 #if DEBUG
@@ -1069,6 +1070,9 @@ struct RootView: View {
         }
         dependencies.learningAccessory = { character in
             AnyView(LearningChatAccessory(characterID: character.id, environment: prototypeEnvironment))
+        }
+        dependencies.learningReplyActivity = { owner, active in
+            prototypeEnvironment.learningSystem()?.replyActivity(owner: owner, active: active, environment: prototypeEnvironment)
         }
         dependencies.learningEnabled = { prototypeEnvironment.learningSystemInstance?.state.enabled == true }
         dependencies.learningRecorder = { character, conversation, event in

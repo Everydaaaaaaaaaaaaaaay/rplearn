@@ -7,8 +7,9 @@ import PersistenceKit
 
 actor LearningSystemFile {
     let url: URL
-    init(owner: UUID) {
-        url = URL.applicationSupportDirectory.appendingPathComponent("LearningSystem-v1/\(owner.uuidString).json")
+    init(owner: UUID, evaluationID: UUID? = nil) {
+        let directory = evaluationID.map { "LearningSystemEvaluation/\($0.uuidString)" } ?? "LearningSystem-v1"
+        url = URL.applicationSupportDirectory.appendingPathComponent("\(directory)/\(owner.uuidString).json")
     }
     func read() throws -> Data? { FileManager.default.fileExists(atPath: url.path) ? try Data(contentsOf: url) : nil }
     func write(_ data: Data) throws {
@@ -47,6 +48,7 @@ final class ConversationLearningSystem {
     }
     let owner: UUID
     private let file: LearningSystemFile
+    private let sourceChatStore: ChatStore?
     var state = State()
     var ready = false
     private var loading = false
@@ -57,7 +59,11 @@ final class ConversationLearningSystem {
     private var reviewTask: Task<Void, Never>?
     private var saving: Task<Bool, Never>?
     private var active = Set<UUID>()
-    init(owner: UUID) { self.owner = owner; file = LearningSystemFile(owner: owner) }
+    private var activeReplyOwners = Set<UUID>()
+    init(owner: UUID, evaluationID: UUID? = nil, sourceChatStore: ChatStore? = nil) {
+        self.owner = owner; file = LearningSystemFile(owner: owner, evaluationID: evaluationID); self.sourceChatStore = sourceChatStore
+    }
+    func waitForPersistence() async -> Bool { await saving?.value ?? true }
     func load() async {
         guard !ready, !loading else { return }
         loading = true
@@ -108,7 +114,7 @@ final class ConversationLearningSystem {
     private func schedule(environment: AppEnvironment) {
         timer?.cancel()
         let day = LearningSystemPolicy.utcDay(.now)
-        guard state.enabled, !reviewing, !storageFailed, state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12 else { return }
+        guard state.enabled, !reviewing, activeReplyOwners.isEmpty, !storageFailed, state.batches[day, default: 0] < 6, state.calls[day, default: 0] < 12 else { return }
         let waits = candidates.compactMap { $0.delay(now: .now) }
         guard let delay = waits.min() else { return }
         timer = Task { [weak self, weak environment] in
@@ -120,9 +126,13 @@ final class ConversationLearningSystem {
     private var candidates: [LearningReviewQueue.Candidate] {
         state.pending.filter { !active.contains($0.id) }.map { .init(id: $0.id, count: $0.turns.count, lastDate: $0.lastDate, blocked: $0.failure != nil) }
     }
+    func replyActivity(owner: UUID, active: Bool, environment: AppEnvironment) {
+        if active { activeReplyOwners.insert(owner) } else { activeReplyOwners.remove(owner) }
+        schedule(environment: environment)
+    }
     func resume(environment: AppEnvironment) { schedule(environment: environment) }
     func review(environment: AppEnvironment, force: Bool = false) async {
-        guard state.enabled, ready, !reviewing,
+        guard state.enabled, ready, !reviewing, activeReplyOwners.isEmpty,
               case .signedIn(let identity) = environment.authSession.phase, identity.userID == owner else { return }
         let day = LearningSystemPolicy.utcDay(.now)
         guard Date.now >= state.ledger.latestDate else { error = "设备时间早于已保存记录，请恢复正确时间后重试。"; return }
@@ -154,15 +164,15 @@ final class ConversationLearningSystem {
             error = "这条消息较长，本次不作能力判断。完整原文仍在聊天记录中。"; persist(); return
         }
         let messages: [MessageDTO]
-        do { messages = try await environment.chatStore.messages(conversationID: batch.conversationID) }
+        do { messages = try await (sourceChatStore ?? environment.chatStore).messages(conversationID: batch.conversationID) }
         catch { self.error = "聊天上下文暂时无法读取，已保留表达，稍后可重试。"; return }
         guard turns.allSatisfy({ turn in messages.contains(where: { $0.id == turn.id }) }) else {
             error = "部分原消息已不可用，本次不作能力判断。"; return
         }
-        let context = turns.map { turn in
+        let context = turns.enumerated().map { offset, turn in
             let index = messages.firstIndex(where: { $0.id == turn.id }) ?? 0
             let preceding = messages.prefix(index).suffix(3).filter { $0.role == .assistant }.map(\.text).joined(separator: " ")
-            return "Before learner message \(turn.id): \(preceding.prefix(500))"
+            return "Before learner message m\(offset + 1): \(preceding.prefix(500))"
         }.joined(separator: "\n")
             + (batch.challenge.map { "\nExplicit user-selected task: \($0.task.instruction)" } ?? "")
         for attempt in 0..<2 {
@@ -190,18 +200,10 @@ final class ConversationLearningSystem {
                 error = nil; persist(); return
             } catch {
                 if Task.isCancelled { return }
-                if attempt == 0 && retryable(error) { try? await Task.sleep(for: .seconds(2)); continue }
+                if attempt == 0 && LearningSystemReviewer.isRetryable(error) { try? await Task.sleep(for: .seconds(2)); continue }
                 self.error = "这次表达还未完成回顾，已保留，稍后可重试；不会扣分。"
             }
         }
-    }
-    private func retryable(_ error: Error) -> Bool {
-        if error is DecodingError || error is ConversationLearningLedger.Rejection { return true }
-        if let e = error as? URLError { return [.timedOut, .networkConnectionLost].contains(e.code) }
-        if let e = error as? LLMError {
-            switch e { case .invalidResponse, .emptyResponse: return true; case .http(let status, _): return status >= 500; default: return false }
-        }
-        return false
     }
     func startRecommendedChallenge(characterID: UUID) {
         for skill in LearningSystemPolicy.Skill.allCases {

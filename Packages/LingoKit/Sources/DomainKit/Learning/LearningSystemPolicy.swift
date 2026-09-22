@@ -19,11 +19,28 @@ public enum LearningSystemPolicy {
             case .clarification: "澄清误解"
             }
         }
+        public func requirements(band: Int) -> [String] {
+            switch (self, band) {
+            case (.preference, 1): ["choice", "reason"]
+            case (.preference, 2): ["alternatives", "comparison", "tradeoff_or_reason"]
+            case (.preference, 3): ["changed_choice", "constraint", "reason"]
+            case (.experience, 1): ["past_event", "detail"]
+            case (.experience, 2): ["first_event", "second_event", "sequence"]
+            case (.experience, 3): ["cause", "consequence", "lesson_or_adjustment"]
+            case (.planning, 1): ["intended_action", "time_or_place"]
+            case (.planning, 2): ["first_action", "second_action", "sequence"]
+            case (.planning, 3): ["constraint", "viable_alternative"]
+            case (.clarification, 1): ["unclear_point", "request"]
+            case (.clarification, 2): ["original_meaning", "rephrasing"]
+            case (.clarification, 3): ["misunderstanding", "correction", "understanding_check"]
+            default: []
+            }
+        }
         public var rubric: String {
             switch self {
             case .preference: "1: choice with meaningful reason; 2: compare alternatives and explain tradeoff; 3: revise choice under changed constraints and explain"
-            case .experience: "1: a past event and detail; 2: sequence at least two events; 3: explain cause and consequence plus reflection"
-            case .planning: "1: intended action and time or place; 2: sequence two planned actions; 3: resolve a scheduling conflict with a viable alternative"
+            case .experience: "1: a past event and detail; 2: sequence at least two events; 3: explain cause and consequence plus a relevant lesson or a next-time adjustment based on that experience; an emotion is not required"
+            case .planning: "1: intended action and time or place; 2: sequence two planned actions; 3: resolve a changed constraint with a viable alternative"
             case .clarification: "1: identify unclear content and ask clarification; 2: rephrase own meaning; 3: correct a specific misunderstanding and check shared understanding"
             }
         }

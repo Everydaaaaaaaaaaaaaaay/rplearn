@@ -36,6 +36,8 @@ public struct ChatTutorialConfiguration: Sendable {
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    /// Per-view-model owner token; excludes distant scheduled replies until they become active.
+    public var learningReplyActivity: (@MainActor @Sendable (UUID, Bool) -> Void)? = nil
     public var learningEnabled: (@MainActor @Sendable () -> Bool)? = nil
     public var learningRecorder: (@MainActor @Sendable (UUID, UUID, ConversationLearningObservation) -> Void)? = nil
 

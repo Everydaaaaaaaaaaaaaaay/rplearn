@@ -1,6 +1,7 @@
 #if DEBUG
 import Foundation
 import DomainKit
+import LLMKit
 import BackendKit
 import UIKit
 
@@ -9,17 +10,36 @@ import UIKit
 @MainActor enum LearningSystemLiveEvaluation {
     private static var started = false
     private static var runner: Task<Void, Never>?
+    private actor RecordingClient: LLMClient {
+        let upstream: any LLMClient
+        private(set) var output: String?
+        init(_ upstream: any LLMClient) { self.upstream = upstream }
+        func complete(_ request: LLMRequest) async throws -> String {
+            output = nil
+            let value = try await upstream.complete(request)
+            output = value
+            return value
+        }
+        func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
+            await upstream.stream(request)
+        }
+    }
+    struct FailedAttempt: Codable { let error: String; let output: String? }
     struct Row: Codable {
         let id: String
         let expected: Bool
+        var expectedPaused: Bool? = nil
         let actual: Bool?
         let paused: Bool?
         let scores: [[Int]]
         let explanations: [String]
         let seconds: Double
         let error: String?
+        var failedAttempts: [FailedAttempt] = []
+        var rejectedOutput: String? = nil
+        var authoredTurns: [LearningSystemReviewer.Turn]? = nil
     }
-    struct Report: Codable { let version: Int; let complete: Bool; let networkProbe: String?; let rows: [Row] }
+    struct Report: Codable { let group: String; let startedAt: Date; let version: Int; let complete: Bool; let networkProbe: String?; let rows: [Row] }
     static func runIfRequested(environment: AppEnvironment) {
         guard ProcessInfo.processInfo.environment["LINGOTRIP_LEARNING_V1_EVAL"] == "1", !started,
               case .signedIn = environment.authSession.phase else { return }
@@ -31,10 +51,13 @@ import UIKit
         UIApplication.shared.isIdleTimerDisabled = true
         defer { UIApplication.shared.isIdleTimerDisabled = prior }
         let url = URL.documentsDirectory.appendingPathComponent("learning-v1-evaluation.json")
+        let group = ProcessInfo.processInfo.environment["LINGOTRIP_LEARNING_V1_EVAL_GROUP"] ?? "base"
+        let selectedIDs = Set((ProcessInfo.processInfo.environment["LINGOTRIP_LEARNING_V1_CASE_IDS"] ?? "").split(separator: ",").map(String.init))
+        let startedAt = Date.now
         var rows: [Row] = []
         var networkProbe: String?
         func save(complete: Bool) {
-            if let data = try? JSONEncoder().encode(Report(version: 1, complete: complete, networkProbe: networkProbe, rows: rows)) { try? data.write(to: url, options: .atomic) }
+            if let data = try? JSONEncoder().encode(Report(group: group, startedAt: startedAt, version: 3, complete: complete, networkProbe: networkProbe, rows: rows)) { try? data.write(to: url, options: .atomic) }
         }
         do {
             let request = URLRequest(url: BackendConfiguration.live.baseURL, timeoutInterval: 10)
@@ -42,6 +65,44 @@ import UIKit
             networkProbe = "HTTP \((response as? HTTPURLResponse)?.statusCode ?? 0)"
         } catch { networkProbe = "\((error as NSError).domain):\((error as NSError).code)" }
         save(complete: false)
+        func evaluate(id: String, turns: [String], context: String, task: LearningTask, expected: Bool, expectedPaused: Bool? = nil) async -> Bool {
+            guard selectedIDs.isEmpty || selectedIDs.contains(id) else { return true }
+            guard !Task.isCancelled, case .signedIn = environment.authSession.phase else { save(complete: false); return false }
+            let start = Date.now
+            let client = RecordingClient(environment.llmRouter)
+            let authoredTurns = turns.map { LearningSystemReviewer.Turn(id: UUID(), text: $0) }
+            var failures: [FailedAttempt] = []
+            for attempt in 0..<2 {
+                do {
+                    let result = try await LearningSystemReviewer.assess(turns: authoredTurns, context: context, task: task, llm: client)
+                    let success = !result.paused && LearningReviewQueue.endsChallenge(paused: false, assessments: result.assessments)
+                    rows.append(Row(id: id, expected: expected, expectedPaused: expectedPaused, actual: success, paused: result.paused,
+                        scores: result.assessments.map(\.scores), explanations: result.assessments.map(\.explanation), seconds: Date.now.timeIntervalSince(start), error: nil,
+                        failedAttempts: failures, authoredTurns: failures.isEmpty ? nil : authoredTurns))
+                    break
+                } catch {
+                    failures.append(.init(error: "\((error as NSError).domain):\((error as NSError).code)", output: await client.output))
+                    if attempt == 0 && LearningSystemReviewer.isRetryable(error) {
+                        try? await Task.sleep(for: .seconds(2))
+                        if !Task.isCancelled { continue }
+                    }
+                    rows.append(Row(id: id, expected: expected, expectedPaused: expectedPaused, actual: nil, paused: nil,
+                        scores: [], explanations: [], seconds: Date.now.timeIntervalSince(start), error: failures.last?.error,
+                        failedAttempts: failures, rejectedOutput: await client.output, authoredTurns: authoredTurns))
+                    if rows.suffix(3).count == 3 && rows.suffix(3).allSatisfy({ $0.error != nil }) { save(complete: false); return false }
+                    break
+                }
+            }
+            save(complete: false); return true
+        }
+        if group == "edges" {
+            for sample in LearningSystemEdgeSamples.all {
+                guard let task = LearningTask.bank.first(where: { $0.skill == sample.skill && $0.band == sample.band && $0.topic == "travel" }) else { continue }
+                guard await evaluate(id: sample.id, turns: sample.turns, context: sample.context, task: task,
+                                     expected: sample.expected, expectedPaused: sample.paused) else { return }
+            }
+            save(complete: true); return
+        }
         let positive: [LearningSystemPolicy.Skill: [String]] = [
             .preference: [
                 "I'd choose the park because it is close to home.",
@@ -76,19 +137,8 @@ import UIKit
                     ]
                 }
                 for (name, text, expected) in cases {
-                    guard !Task.isCancelled, case .signedIn = environment.authSession.phase else { save(complete: false); return }
-                    let start = Date.now
-                    do {
-                        let result = try await LearningSystemReviewer.assess(turns: [.init(id: UUID(), text: text)], context: "", task: task, llm: environment.llmRouter)
-                        let success = !result.paused && LearningReviewQueue.endsChallenge(paused: false, assessments: result.assessments)
-                        rows.append(Row(id: "\(skill.rawValue)-\(band)-\(name)", expected: expected, actual: success, paused: result.paused,
-                            scores: result.assessments.map(\.scores), explanations: result.assessments.map(\.explanation), seconds: Date.now.timeIntervalSince(start), error: nil))
-                    } catch {
-                        rows.append(Row(id: "\(skill.rawValue)-\(band)-\(name)", expected: expected, actual: nil, paused: nil,
-                            scores: [], explanations: [], seconds: Date.now.timeIntervalSince(start), error: "\((error as NSError).domain):\((error as NSError).code)"))
-                        if rows.suffix(3).count == 3 && rows.suffix(3).allSatisfy({ $0.error != nil }) { save(complete: false); return }
-                    }
-                    save(complete: false)
+                    guard await evaluate(id: "\(skill.rawValue)-\(band)-\(name)", turns: [text], context: "", task: task,
+                                         expected: expected, expectedPaused: name == "refusal" ? true : nil) else { return }
                 }
             }
         }

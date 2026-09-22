@@ -35,7 +35,7 @@ public struct LearningTask: Codable, Sendable, Identifiable, Equatable {
                 case .preference:
                     instruction = band == 1 ? "聊聊\(scene)：说出你的选择和一个理由。" : band == 2 ? "聊聊\(scene)：比较\(options)，说说你的取舍。" : "聊聊\(scene)：\(change)，你会怎样调整选择？为什么？"
                 case .experience:
-                    instruction = band == 1 ? "聊聊你上次\(scene)时发生的一件事，加一个细节。" : band == 2 ? "聊聊你上次\(scene)的经历，讲清至少两件事的先后顺序。" : "聊聊你上次\(scene)遇到的问题，解释原因、结果和你的感受。"
+                    instruction = band == 1 ? "聊聊你上次\(scene)时发生的一件事，加一个细节。" : band == 2 ? "聊聊你上次\(scene)的经历，讲清至少两件事的先后顺序。" : "聊聊你上次\(scene)遇到的问题，解释原因、结果，并说出从中学到什么或下次会怎样调整。"
                 case .planning:
                     instruction = band == 1 ? "聊聊\(scene)：你准备做什么？什么时候或在哪里？" : band == 2 ? "聊聊\(scene)：讲清两个安排以及它们的顺序。" : "聊聊\(scene)：\(change)，提出一个可行的替代安排。"
                 case .clarification:

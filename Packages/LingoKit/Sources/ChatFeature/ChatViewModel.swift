@@ -389,6 +389,7 @@ public final class ChatViewModel {
     }
 
     public func cancelPendingReply() {
+        deps.learningReplyActivity?(replyOwnerID, false)
         replyTask?.cancel()
         replyTask = nil
         replyCycleID = UUID()
@@ -550,6 +551,7 @@ public final class ChatViewModel {
         replyCycleID = UUID()
         let cycleID = replyCycleID
         pendingReplyPlan = plan
+        deps.learningReplyActivity?(replyOwnerID, plan.generationStartsAt.timeIntervalSince(deps.now()) <= 60)
         typingBeganAt = nil
         isWaitingForUserBurst = true
         isStreaming = false
@@ -561,6 +563,8 @@ public final class ChatViewModel {
         replyTask = Task { [self] in
             do {
                 try await wait(until: plan.generationStartsAt)
+                guard cycleID == replyCycleID, !Task.isCancelled else { return }
+                deps.learningReplyActivity?(replyOwnerID, true)
                 try await waitForUserToFinish(plan: plan)
                 let wordCount = messages.last(where: { $0.role == .user })?.text.split(whereSeparator: \.isWhitespace).count ?? 0
                 // During an active conversation, preparation overlaps the quiet
@@ -656,6 +660,7 @@ public final class ChatViewModel {
 
     private func clearReplyState(cycleID: UUID) {
         guard cycleID == replyCycleID else { return }
+        deps.learningReplyActivity?(replyOwnerID, false)
         isWaitingForUserBurst = false
         isStreaming = false
         streamingText = nil
