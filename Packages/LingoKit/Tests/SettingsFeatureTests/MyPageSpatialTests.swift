@@ -46,6 +46,23 @@ struct MyPageSpatialTests {
                 MyPageSpatialGeometry.depth(at: CGPoint(x: 0.5, y: 0.05)) + 0.15)
     }
 
+    @Test("八件物品及细小附件只属于自身图层")
+    func objectOwnership() {
+        let anchors: [(Int, CGPoint)] = [
+            (0, CGPoint(x: 280, y: 375)), (1, CGPoint(x: 440, y: 424)),
+            (2, CGPoint(x: 700, y: 355)), (2, CGPoint(x: 791, y: 472)),
+            (3, CGPoint(x: 410, y: 930)), (4, CGPoint(x: 170, y: 1450)),
+            (4, CGPoint(x: 109, y: 1680)), (5, CGPoint(x: 420, y: 1500)),
+            (6, CGPoint(x: 620, y: 1500)), (6, CGPoint(x: 660, y: 1310)),
+            (6, CGPoint(x: 549, y: 1740)), (7, CGPoint(x: 720, y: 1550)),
+        ]
+        for (expected, pixel) in anchors {
+            let point = CGPoint(x: pixel.x / 825, y: pixel.y / 1906)
+            let owners = MyPageSpatialGeometry.layers.indices.filter { MyPageSpatialGeometry.layers[$0].contains(point) }
+            #expect(owners == [expected], "物件或附件误入相邻图层")
+        }
+    }
+
     @Test("回弹能被原地抓住、无输入延迟且最终停止")
     @MainActor
     func interruption() {

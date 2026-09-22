@@ -3,58 +3,96 @@ import DesignSystem
 
 /// 按当前十五张城市母版标定门内远景范围；不是相机测距，也不重建遮挡背面。
 struct HomeSpatialGeometry {
-    let opening: CGRect
-    private let city: String
+    private let calibration: Calibration
+    var opening: CGRect { calibration.normalizedContours[0].reduce(CGRect.null) { $0.union(CGRect(origin: $1, size: .zero)) } }
 
     init(assetName: String) {
-        city = assetName.replacingOccurrences(of: "home_city_", with: "")
-        let values = Self.calibrations[city] ?? Self.calibrations["london"]!
-        opening = CGRect(x: values[0], y: values[1], width: values[2] - values[0], height: values[3] - values[1]).insetBy(dx: 0.008, dy: 0.005)
+        let city = assetName.replacingOccurrences(of: "home_city_", with: "")
+        calibration = Self.calibrations[city] ?? Self.calibrations["london"]!
     }
 
-    // 左、上、右、下（第五项保留旧标定中的地面起点，不再用于形变）；基于最终 JPEG 的归一化坐标。
-    static let calibrations: [String: [CGFloat]] = [
-        "auckland": [0.14, 0.27, 0.43, 0.60, 0.64],
-        "capetown": [0.10, 0.20, 0.44, 0.66, 0.73],
-        "dublin": [0.11, 0.25, 0.40, 0.58, 0.63],
-        "edinburgh": [0.10, 0.17, 0.44, 0.63, 0.69],
-        "kingston": [0.11, 0.26, 0.42, 0.60, 0.66],
-        "london": [0.125, 0.19, 0.455, 0.663, 0.70],
-        "manchester": [0.10, 0.19, 0.44, 0.63, 0.70],
-        "melbourne": [0.09, 0.18, 0.41, 0.59, 0.68],
-        "nairobi": [0.11, 0.24, 0.45, 0.635, 0.66],
-        "neworleans": [0.095, 0.24, 0.43, 0.65, 0.71],
-        "newyork": [0.095, 0.22, 0.425, 0.59, 0.66],
-        "singapore": [0.10, 0.235, 0.45, 0.65, 0.70],
-        "sydney": [0.13, 0.295, 0.435, 0.64, 0.69],
-        "toronto": [0.09, 0.205, 0.44, 0.585, 0.65],
-        "vancouver": [0.12, 0.29, 0.44, 0.65, 0.69],
+    struct Calibration {
+        let sourceSize: CGSize
+        let apertures: [[CGPoint]]
+
+        init(_ width: CGFloat, _ height: CGFloat, _ polygons: [[(CGFloat, CGFloat)]]) {
+            sourceSize = CGSize(width: width, height: height)
+            apertures = polygons.map { $0.map { CGPoint(x: $0.0, y: $0.1) } }
+        }
+
+        var normalizedContours: [[CGPoint]] {
+            apertures.map { $0.map { CGPoint(x: $0.x / sourceSize.width, y: $0.y / sourceSize.height) } }
+        }
+    }
+
+    // 逐张原图像素标定完整玻璃开口，门廊、台阶、门外花盆不属于门框。
+    // 每个门把手有独立凹口；都柏林上窗按玻璃分片，保留窗棂。
+    static let calibrations: [String: Calibration] = [
+        "auckland": .init(852, 1842, [
+            [(127,427),(363,427),(363,827),(346,827),(346,845),(363,845),(363,1095),(127,1095)],
+        ]),
+        "capetown": .init(851, 1840, [
+            [(92,373),(371,373),(371,857),(346,857),(346,877),(371,877),(371,1213),(92,1213)],
+        ]),
+        "dublin": .init(850, 1838, [
+            [(103,465),(335,465),(335,816),(322,816),(322,833),(335,833),(335,1056),(103,1056)],
+            [(78,392),(82,374),(90,356),(103,337),(187,386),(184,392)],
+            [(112,330),(136,310),(156,301),(196,367),(191,375)],
+            [(168,295),(185,289),(204,286),(214,285),(214,363),(203,364)],
+            [(226,285),(249,287),(270,294),(239,365),(226,362)],
+            [(281,301),(305,314),(328,334),(249,378),(244,370)],
+            [(338,344),(351,366),(360,392),(259,392),(255,384)],
+            [(192,394),(197,384),(208,377),(220,375),(234,378),(246,386),(249,394)],
+        ]),
+        "edinburgh": .init(853, 1844, [
+            [(97,316),(375,316),(375,809),(358,809),(358,831),(375,831),(375,1144),(97,1144)],
+        ]),
+        "kingston": .init(852, 1842, [
+            [(99,386),(347,386),(347,815),(338,815),(338,836),(347,836),(347,1075),(99,1075)],
+        ]),
+        "london": .init(853, 1844, [
+            [(112,359),(381,359),(381,868),(362,868),(362,886),(381,886),(381,1215),(112,1215),(112,1152),(114,1165),(112,1138),(124,1138),(126,1128),(122,1110),(112,1090),(112,1080),(127,1110),(129,1102),(121,1070),(112,1057),(112,1042),(121,1058),(124,1060),(122,1050),(115,1038),(112,1037)],
+        ]),
+        "manchester": .init(853, 1844, [
+            [(94,347),(366,347),(366,847),(347,847),(347,866),(366,866),(366,1109),(94,1109)],
+        ]),
+        "melbourne": .init(829, 1792, [
+            [(83,310),(336,310),(336,1022),(83,1022),(83,815),(103,815),(103,795),(83,795)],
+        ]),
+        "nairobi": .init(853, 1844, [
+            [(106,378),(374,378),(374,789),(347,789),(347,807),(374,807),(374,1124),(106,1124)],
+        ]),
+        "neworleans": .init(853, 1844, [
+            [(91,453),(359,453),(359,910),(331,910),(331,927),(359,927),(359,1181),(91,1181)],
+        ]),
+        "newyork": .init(829, 1792, [
+            [(89,329),(345,329),(345,810),(336,810),(336,824),(345,824),(345,1050),(89,1050)],
+        ]),
+        "singapore": .init(852, 1842, [
+            [(90,311),(376,311),(376,825),(347,825),(347,847),(376,847),(376,1169),(90,1169)],
+        ]),
+        "sydney": .init(853, 1844, [
+            [(115,438),(366,438),(366,1166),(115,1166),(115,893),(130,893),(130,878),(115,878)],
+        ]),
+        "toronto": .init(853, 1844, [
+            [(85,305),(376,312),(376,1066),(85,1072),(85,836),(103,836),(103,818),(85,818)],
+        ]),
+        "vancouver": .init(851, 1840, [
+            [(111,478),(366,478),(366,892),(346,892),(346,909),(366,909),(366,1184),(111,1184)],
+        ]),
     ]
 
     static let foregroundDepth: CGFloat = 0.16
     static let backgroundDepth: CGFloat = 0.03
 
     var layers: [DSSceneParallaxLayer] {
-        var contour = [
-            CGPoint(x: opening.minX, y: opening.minY), CGPoint(x: opening.maxX, y: opening.minY),
-            CGPoint(x: opening.maxX, y: opening.maxY), CGPoint(x: opening.minX, y: opening.maxY),
-        ]
-        if city == "london" {
-            // 玻璃内侧切分；门把手与左下方室内植物仍归属完整室内层。
-            contour = [
-                CGPoint(x: opening.minX, y: opening.minY), CGPoint(x: opening.maxX, y: opening.minY),
-                CGPoint(x: opening.maxX, y: 0.468), CGPoint(x: 0.424, y: 0.468),
-                CGPoint(x: 0.424, y: 0.485), CGPoint(x: opening.maxX, y: 0.485),
-                CGPoint(x: opening.maxX, y: opening.maxY), CGPoint(x: opening.minX, y: opening.maxY),
-                CGPoint(x: opening.minX, y: 0.628), CGPoint(x: 0.175, y: 0.615),
-                CGPoint(x: 0.175, y: 0.540), CGPoint(x: opening.minX, y: 0.518),
-            ]
-        }
-        return [DSSceneParallaxLayer(contour: contour, depth: Self.foregroundDepth, inverted: true)]
+        let apertures = calibration.normalizedContours
+        return [DSSceneParallaxLayer(contour: apertures[0], depth: Self.foregroundDepth,
+                                    inverted: true, additionalContours: Array(apertures.dropFirst()))]
     }
 
-    func depth(at p: CGPoint) -> CGFloat {
-        layers[0].contains(p) ? Self.foregroundDepth : Self.backgroundDepth
+    func depth(at point: CGPoint) -> CGFloat {
+        layers[0].contains(point) ? Self.foregroundDepth : Self.backgroundDepth
     }
 
     func project(_ point: CGPoint, camera: CGSize, size: CGSize) -> CGPoint {

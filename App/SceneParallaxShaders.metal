@@ -4,7 +4,7 @@ using namespace metal;
 struct ParallaxUniforms {
     float4 region;
     float4 motion; // xy 为归一化位移
-    float4 mask;   // 点数组起点、数量、是否反向、是否启用遮罩
+    float4 mask;   // 轮廓数组起点、数量、是否反向、是否启用遮罩
 };
 struct ParallaxOutput { float4 position [[position]]; float2 uv; };
 
@@ -27,6 +27,19 @@ float contourDistance(float2 p, constant float2 *points, uint start, uint count,
     return inside ? best : -best;
 }
 
+// 同层可包含多个独立开口，例如拱形上窗的各块玻璃；窗棂仍留在室内层。
+float layerDistance(float2 p, constant float2 *points, constant uint2 *ranges,
+                    float4 mask, float2 dimensions, thread float2 &nearest) {
+    float distance = -1e20;
+    for (uint i = 0; i < uint(mask.y); ++i) {
+        uint2 range = ranges[uint(mask.x) + i];
+        float2 q;
+        float d = contourDistance(p, points, range.x, range.y, dimensions, q);
+        if (d > distance) { distance = d; nearest = q; }
+    }
+    return mask.z > 0 ? -distance : distance;
+}
+
 vertex ParallaxOutput sceneParallaxVertex(uint index [[vertex_id]], constant ParallaxUniforms &u [[buffer(0)]]) {
     constexpr float2 corners[6] = {float2(0,0),float2(1,0),float2(0,1),float2(0,1),float2(1,0),float2(1,1)};
     float2 uv = u.region.xy + corners[index] * u.region.zw;
@@ -37,14 +50,14 @@ vertex ParallaxOutput sceneParallaxVertex(uint index [[vertex_id]], constant Par
 fragment float4 sceneParallaxFragment(ParallaxOutput in [[stage_in]],
                                       texture2d<float> photo [[texture(0)]],
                                       constant ParallaxUniforms &u [[buffer(0)]],
-                                      constant float2 *points [[buffer(1)]]) {
+                                      constant float2 *points [[buffer(1)]],
+                                      constant uint2 *ranges [[buffer(2)]]) {
     constexpr sampler sampling(filter::linear, address::clamp_to_edge);
     float alpha = 1;
     if (u.mask.w > 0) {
         float2 nearest;
         float2 dimensions(photo.get_width(), photo.get_height());
-        float distance = contourDistance(in.uv * dimensions, points, uint(u.mask.x), uint(u.mask.y), dimensions, nearest);
-        if (u.mask.z > 0) distance = -distance;
+        float distance = layerDistance(in.uv * dimensions, points, ranges, u.mask, dimensions, nearest);
         float feather = u.mask.z > 0 ? 2.0 : 10.0;
         alpha = smoothstep(-feather, feather, distance);
     }
@@ -59,6 +72,7 @@ kernel void sceneParallaxRepair(texture2d<float, access::sample> original [[text
                                 constant float2 *points [[buffer(0)]],
                                 constant float4 *masks [[buffer(1)]],
                                 constant uint &count [[buffer(2)]],
+                                constant uint2 *ranges [[buffer(3)]],
                                 uint2 pixel [[thread_position_in_grid]]) {
     if (pixel.x >= repaired.get_width() || pixel.y >= repaired.get_height()) return;
     constexpr sampler sampling(filter::linear, address::clamp_to_edge);
@@ -68,8 +82,7 @@ kernel void sceneParallaxRepair(texture2d<float, access::sample> original [[text
     for (uint i = 0; i < count; ++i) {
         float4 mask = masks[i];
         float2 nearest;
-        float distance = contourDistance(p, points, uint(mask.x), uint(mask.y), dimensions, nearest);
-        if (mask.z > 0) distance = -distance;
+        float distance = layerDistance(p, points, ranges, mask, dimensions, nearest);
         if (distance <= 0 || distance > 48) continue;
         float2 direction = normalize(nearest - p);
         donor = nearest + direction * (3.0 + fmod(distance, 3.0));
@@ -87,8 +100,7 @@ kernel void sceneParallaxRepair(texture2d<float, access::sample> original [[text
             bool occluded = any(candidate < 0) || any(candidate >= dimensions);
             for (uint j = 0; j < count && !occluded; ++j) {
                 float2 q;
-                float d = contourDistance(candidate, points, uint(masks[j].x), uint(masks[j].y), dimensions, q);
-                if (masks[j].z > 0) d = -d;
+                float d = layerDistance(candidate, points, ranges, masks[j], dimensions, q);
                 occluded = d > -2;
             }
             if (!occluded) { donor = candidate; valid = true; break; }

@@ -58,12 +58,13 @@ public struct DSSceneLayeredPhoto: UIViewRepresentable {
         private var original: MTLTexture?
         private var repaired: MTLTexture?
         private var points: MTLBuffer?
+        private var contourRanges: MTLBuffer?
         private var layers: [DSSceneParallaxLayer] = []
         private var masks: [SIMD4<Float>] = []
-        var isReady: Bool { pipeline != nil && repaired != nil && original != nil && points != nil }
+        var isReady: Bool { pipeline != nil && repaired != nil && original != nil && points != nil && contourRanges != nil }
 
         func install(_ view: MTKView, assetName: String, layers: [DSSceneParallaxLayer]) {
-            guard !layers.isEmpty, layers.allSatisfy({ $0.contour.count >= 3 }),
+            guard !layers.isEmpty, layers.allSatisfy({ $0.contours.allSatisfy { $0.count >= 3 } }),
                   let device = view.device, let queue = device.makeCommandQueue(),
                   let library = try? device.makeDefaultLibrary(bundle: .main),
                   let vertex = library.makeFunction(name: "sceneParallaxVertex"),
@@ -86,11 +87,16 @@ public struct DSSceneLayeredPhoto: UIViewRepresentable {
                     cgImage: image, options: [.SRGB: true, .origin: MTKTextureLoader.Origin.topLeft]
                   ) else { return }
             var allPoints: [SIMD2<Float>] = []
+            var ranges: [SIMD2<UInt32>] = []
             for layer in layers {
-                masks.append(SIMD4(Float(allPoints.count), Float(layer.contour.count), layer.inverted ? 1 : 0, 1))
-                allPoints += layer.contour.map { SIMD2(Float($0.x), Float($0.y)) }
+                masks.append(SIMD4(Float(ranges.count), Float(layer.contours.count), layer.inverted ? 1 : 0, 1))
+                for contour in layer.contours {
+                    ranges.append(SIMD2(UInt32(allPoints.count), UInt32(contour.count)))
+                    allPoints += contour.map { SIMD2(Float($0.x), Float($0.y)) }
+                }
             }
             guard let points = device.makeBuffer(bytes: allPoints, length: allPoints.count * MemoryLayout<SIMD2<Float>>.stride),
+                  let contourRanges = device.makeBuffer(bytes: ranges, length: ranges.count * MemoryLayout<SIMD2<UInt32>>.stride),
                   let maskBuffer = device.makeBuffer(bytes: masks, length: masks.count * MemoryLayout<SIMD4<Float>>.stride) else { return }
             let plate = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba16Float,
                 width: original.width, height: original.height, mipmapped: false)
@@ -104,6 +110,7 @@ public struct DSSceneLayeredPhoto: UIViewRepresentable {
             encoder.setTexture(repaired, index: 1)
             encoder.setBuffer(points, offset: 0, index: 0)
             encoder.setBuffer(maskBuffer, offset: 0, index: 1)
+            encoder.setBuffer(contourRanges, offset: 0, index: 3)
             encoder.setBytes(&count, length: MemoryLayout<UInt32>.size, index: 2)
             encoder.dispatchThreads(MTLSize(width: original.width, height: original.height, depth: 1),
                                     threadsPerThreadgroup: MTLSize(width: 8, height: 8, depth: 1))
@@ -115,18 +122,20 @@ public struct DSSceneLayeredPhoto: UIViewRepresentable {
             self.original = original
             self.repaired = repaired
             self.points = points
+            self.contourRanges = contourRanges
             self.layers = layers
             view.delegate = self
         }
 
         public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
         public func draw(in view: MTKView) {
-            guard let pipeline, let original, let repaired, let points,
+            guard let pipeline, let original, let repaired, let points, let contourRanges,
                   let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable,
                   let command = queue?.makeCommandBuffer(),
                   let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return }
             encoder.setRenderPipelineState(pipeline)
             encoder.setFragmentBuffer(points, offset: 0, index: 1)
+            encoder.setFragmentBuffer(contourRanges, offset: 0, index: 2)
             func draw(_ photo: MTLTexture, region: CGRect, depth: CGFloat, mask: SIMD4<Float>) {
                 var u = Uniforms(region: SIMD4(Float(region.minX), Float(region.minY), Float(region.width), Float(region.height)),
                     motion: SIMD4(Float(camera.width * depth / max(size.width, 1)), Float(camera.height * depth / max(size.height, 1)), 0, 0),
