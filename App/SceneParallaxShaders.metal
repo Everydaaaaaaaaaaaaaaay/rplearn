@@ -58,7 +58,8 @@ fragment float4 sceneParallaxFragment(ParallaxOutput in [[stage_in]],
         float2 nearest;
         float2 dimensions(photo.get_width(), photo.get_height());
         float distance = layerDistance(in.uv * dimensions, points, ranges, u.mask, dimensions, nearest);
-        float feather = u.mask.z > 0 ? 2.0 : 10.0;
+        // 物件轮廓已包含阴影保护带，只保留像素级抗锯齿，减少重复叠影。
+        float feather = 2.0;
         alpha = smoothstep(-feather, feather, distance);
     }
     float4 color = photo.sample(sampling, in.uv);
@@ -85,7 +86,8 @@ kernel void sceneParallaxRepair(texture2d<float, access::sample> original [[text
         float distance = layerDistance(p, points, ranges, mask, dimensions, nearest);
         if (distance <= 0 || distance > 48) continue;
         float2 direction = normalize(nearest - p);
-        donor = nearest + direction * (3.0 + fmod(distance, 3.0));
+        // 不重复折返三像素纹理带，避免阴影出现周期性黏连条纹。
+        donor = nearest + direction * (mask.z > 0 ? 3 + fmod(distance, 3.0) : 4.0);
         // 相邻物件之间不能沿同一方向盲目延伸，否则会取到邻近物件。
         // 从轮廓附近寻找最近的无遮挡纹理，搜索仅发生在初始化的窄带内。
         bool valid = false;
