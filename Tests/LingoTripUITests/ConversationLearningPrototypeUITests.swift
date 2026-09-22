@@ -52,6 +52,15 @@ final class ConversationLearningPrototypeUITests: XCTestCase {
         app.buttons["learning.review"].tap()
         XCTAssertTrue(app.staticTexts["learning.error"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["learning.xp"].label, "0 XP")
+        app.swipeUp()
+        let restoredNetwork = app.switches["模拟断网"]
+        XCTAssertTrue(restoredNetwork.waitForExistence(timeout: 5))
+        restoredNetwork.tap()
+        app.swipeDown()
+        app.buttons["learning.review"].tap()
+        XCTAssertTrue(app.staticTexts["learning.reward"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["learning.xp"].label, "10 XP")
+        XCTAssertFalse(app.staticTexts["learning.error"].exists)
     }
     func testDeleteEvidenceSurvivesRelaunchAndPreservesReward() {
         let namespace = "ui-\(UUID().uuidString)"

@@ -28,7 +28,12 @@ struct ConversationLearningReviewerTests {
         return (ledger.active!, id)
     }
     private func response(_ id: UUID) throws -> String {
-        String(decoding: try JSONEncoder().encode(ConversationLearningLedger.Review(verdict: .complete, evidenceMessageIDs: [id], feedback: "意思清楚")), as: UTF8.self)
+        String(decoding: try JSONSerialization.data(withJSONObject: ["verdict": "complete", "wantsToStop": false, "evidenceMessageIDs": [id.uuidString], "feedback": "意思清楚", "choiceEnglish": "tea", "reasonEnglish": "it is warm"]), as: UTF8.self)
+    }
+    private func wire(_ review: ConversationLearningLedger.Review) throws -> String {
+        var fields = try JSONSerialization.jsonObject(with: JSONEncoder().encode(review)) as! [String: Any]
+        fields["wantsToStop"] = false
+        return String(decoding: try JSONSerialization.data(withJSONObject: fields), as: UTF8.self)
     }
     @Test("围栏 JSON 本地恢复，不额外调用模型")
     func fenced() async throws {
@@ -81,5 +86,105 @@ struct ConversationLearningReviewerTests {
         }
         _ = await task.value
         #expect(await client.calls == 0)
+    }
+    @Test("被窗口截掉的真实消息也不能作为本次评价证据")
+    func excludedHistoricalEvidence() async throws {
+        var ledger = ConversationLearningLedger()
+        let attempt = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        let historical = UUID()
+        ledger.observe(.sent(id: historical, text: "The beach because it is quiet.", voice: false), attemptID: attempt)
+        for _ in 0..<8 {
+            ledger.observe(.sent(id: UUID(), text: "I have not decided yet.", voice: false), attemptID: attempt)
+        }
+        let client = Client([try response(historical)])
+        await #expect(throws: ConversationLearningLedger.Rejection.self) {
+            try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: client)
+        }
+        #expect(await client.calls == 2)
+        #expect(ledger.xp == 0)
+    }
+    @Test("空窗口不请求模型，包括只有超长消息")
+    func emptyWindow() async {
+        var ledger = ConversationLearningLedger()
+        let id = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        let client = Client(["{}"])
+        _ = try? await ConversationLearningReviewer.review(attempt: ledger.active!, llm: client)
+        ledger.observe(.sent(id: UUID(), text: String(repeating: "x", count: 8001), voice: false), attemptID: id)
+        _ = try? await ConversationLearningReviewer.review(attempt: ledger.active!, llm: client)
+        #expect(await client.calls == 0)
+    }
+    @Test("重复证据 ID 和超长反馈不能通过结构校验", arguments: [true, false])
+    func invalidShape(duplicate: Bool) async throws {
+        let (attempt, id) = sample()
+        let invalid = ConversationLearningLedger.Review(verdict: .complete,
+            evidenceMessageIDs: duplicate ? [id, id] : [id],
+            feedback: duplicate ? "ok" : String(repeating: "a", count: 601))
+        let client = Client([try wire(invalid)])
+        await #expect(throws: ConversationLearningLedger.Rejection.self) {
+            try await ConversationLearningReviewer.review(attempt: attempt, llm: client)
+        }
+        #expect(await client.calls == 2)
+    }
+    @Test("空白反馈触发有界恢复，避免完成却没有任何说明")
+    func blankFeedback() async throws {
+        let (attempt, id) = sample()
+        let invalid = ConversationLearningLedger.Review(verdict: .complete, evidenceMessageIDs: [id], feedback: " \n\t ")
+        let client = Client([try wire(invalid), try response(id)])
+        let result = try await ConversationLearningReviewer.review(attempt: attempt, llm: client)
+        #expect(result.calls == 2)
+        #expect(!result.review.feedback.isEmpty)
+    }
+    @Test("完成必须引用真实英文，而非把中文悄悄翻译成证据", arguments: ["公园", "the park", ""])
+    func translatedOrMissingProof(choice: String) async throws {
+        var ledger = ConversationLearningLedger()
+        let attempt = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        let id = UUID()
+        ledger.observe(.sent(id: id, text: "我选择公园 because it is near home.", voice: false), attemptID: attempt)
+        let raw = String(decoding: try JSONSerialization.data(withJSONObject: [
+            "verdict": "complete", "wantsToStop": false, "evidenceMessageIDs": [id.uuidString], "feedback": "完成",
+            "choiceEnglish": choice, "reasonEnglish": "it is near home"]), as: UTF8.self)
+        let client = Client([raw])
+        let result = try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: client)
+        #expect(result.review.verdict == .uncertain)
+        #expect(await client.calls == 2)
+        try ledger.apply(result.review, attemptID: attempt, expectedRevision: ledger.revision)
+        #expect(ledger.xp == 0)
+        #expect(ledger.active != nil)
+    }
+    @Test("停止意愿优先于模型给出的完成标签")
+    func stoppingOverridesCompletion() async throws {
+        let (attempt, id) = sample()
+        let raw = String(decoding: try JSONSerialization.data(withJSONObject: [
+            "verdict": "complete", "wantsToStop": true, "evidenceMessageIDs": [id.uuidString],
+            "feedback": "好的，我们先停在这里。", "choiceEnglish": "tea", "reasonEnglish": "it is warm"]), as: UTF8.self)
+        let client = Client([raw])
+        let result = try await ConversationLearningReviewer.review(attempt: attempt, llm: client)
+        #expect(result.review.verdict == .needsSupport)
+        #expect(result.calls == 1)
+    }
+    @Test("英文表达里的中文专名不应被整体拒绝")
+    func properNameInsideEnglish() async throws {
+        var ledger = ConversationLearningLedger()
+        let attempt = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        let id = UUID()
+        ledger.observe(.sent(id: id, text: "I choose 北京 because I love its old buildings.", voice: false), attemptID: attempt)
+        let raw = String(decoding: try JSONSerialization.data(withJSONObject: [
+            "verdict": "complete", "wantsToStop": false, "evidenceMessageIDs": [id.uuidString],
+            "feedback": "选择和理由清楚。", "choiceEnglish": "I choose 北京", "reasonEnglish": "I love its old buildings"]), as: UTF8.self)
+        let result = try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: Client([raw]))
+        #expect(result.review.verdict == .complete)
+    }
+    @Test("连接词不冒充英文理由")
+    func connectorIsNotReason() async throws {
+        var ledger = ConversationLearningLedger()
+        let attempt = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: .live)
+        let id = UUID()
+        ledger.observe(.sent(id: id, text: "I choose the beach because 那里很安静。", voice: false), attemptID: attempt)
+        let raw = String(decoding: try JSONSerialization.data(withJSONObject: [
+            "verdict": "complete", "wantsToStop": false, "evidenceMessageIDs": [id.uuidString],
+            "feedback": "完成", "choiceEnglish": "the beach", "reasonEnglish": "because 那里很安静"]), as: UTF8.self)
+        let result = try await ConversationLearningReviewer.review(attempt: ledger.active!, llm: Client([raw]))
+        #expect(result.review.verdict == .uncertain)
+        #expect(result.calls == 2)
     }
 }

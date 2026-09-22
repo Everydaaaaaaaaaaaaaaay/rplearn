@@ -5,6 +5,44 @@ import Testing
 @Suite("对话学习原型闭环")
 struct ConversationLearningPrototypeTests {
     typealias Ledger = ConversationLearningLedger
+    @Test("真实操作组合：来源、帮助时机、重启、关闭与延迟评价", arguments: 0..<96)
+    func lifecycleCombinations(_ scenario: Int) throws {
+        var ledger = Ledger()
+        let voice = scenario % 2 == 1
+        let help = (scenario / 2) % 3
+        let restore = (scenario / 6) % 2 == 1
+        let ending = (scenario / 12) % 4
+        let origin: Ledger.Origin = scenario < 48 ? .live : .replay
+        let id = ledger.begin(context: "weekend", character: "Ruby", day: 1, origin: origin)
+        if help == 1 { ledger.observe(.assistance, attemptID: id) }
+        let first = UUID(), second = UUID()
+        ledger.observe(.sent(id: first, text: "The park.", voice: voice), attemptID: id)
+        ledger.observe(.sent(id: second, text: "It is close to home.", voice: voice), attemptID: id)
+        if help == 2 { ledger.observe(.assistance, attemptID: id) }
+        if restore { ledger = try JSONDecoder().decode(Ledger.self, from: JSONEncoder().encode(ledger)) }
+        let reviewedRevision = ledger.revision
+        let review = Ledger.Review(verdict: .complete, evidenceMessageIDs: [first, second], feedback: "意思清楚")
+        switch ending {
+        case 1: ledger.abandon(id)
+        case 2: ledger.deleteEvidence(id)
+        case 3: ledger.observe(.sent(id: UUID(), text: "Actually I have changed my mind.", voice: false), attemptID: id)
+        default: break
+        }
+        if ending == 0 {
+            try ledger.apply(review, attemptID: id, expectedRevision: reviewedRevision, completedDay: 2)
+            #expect(ledger.xp == 10)
+            #expect(ledger.attempts.last?.independent == (!voice && help == 0))
+            #expect(ledger.attempts.last?.day == 2)
+            #expect(try !ledger.apply(review, attemptID: id, expectedRevision: reviewedRevision))
+        } else {
+            #expect(throws: Ledger.Rejection.self) {
+                try ledger.apply(review, attemptID: id, expectedRevision: reviewedRevision)
+            }
+            #expect(ledger.xp == 0)
+        }
+        let restored = try JSONDecoder().decode(Ledger.self, from: JSONEncoder().encode(ledger))
+        #expect(restored == ledger)
+    }
     private func start(_ ledger: inout Ledger, day: Int = 1, context: String = "café", text: String = "I prefer tea because it is warm.", assisted: Bool = false, voice: Bool = false) -> (UUID, UUID) {
         let id = ledger.begin(context: context, character: "Ruby", day: day, origin: .replay)
         if assisted { ledger.observe(.assistance, attemptID: id) }
