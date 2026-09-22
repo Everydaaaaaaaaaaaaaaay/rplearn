@@ -33,7 +33,7 @@ struct ConversationLearningPrototypeTests {
         #expect(ledger.xp == 10)
         #expect(!ledger.attempts[1].independent)
     }
-    @Test("重组旧句引用不重复发奖")
+    @Test("新旧混合表达奖励新增内容，重组已用引用不重复发奖")
     func recombinedEvidence() throws {
         var ledger = Ledger()
         let (first, old) = start(&ledger)
@@ -42,8 +42,13 @@ struct ConversationLearningPrototypeTests {
         let added = UUID()
         ledger.observe(.sent(id: added, text: "It also smells good.", voice: false), attemptID: second)
         try ledger.apply(.init(verdict: .complete, evidenceMessageIDs: [repeated, added], feedback: ""), attemptID: second, expectedRevision: ledger.revision)
-        #expect(ledger.xp == 10)
-        #expect(!ledger.attempts[1].independent)
+        #expect(ledger.xp == 20)
+        let (third, again) = start(&ledger, day: 3)
+        let repeatedAddition = UUID()
+        ledger.observe(.sent(id: repeatedAddition, text: "It also smells good.", voice: false), attemptID: third)
+        try ledger.apply(.init(verdict: .complete, evidenceMessageIDs: [repeatedAddition, again], feedback: ""), attemptID: third, expectedRevision: ledger.revision)
+        #expect(ledger.xp == 20)
+        #expect(!ledger.attempts[2].independent)
     }
     @Test("辅助和语音转写不冒充独立掌握，但参与奖励相同")
     func helpAndVoice() throws {
@@ -54,6 +59,35 @@ struct ConversationLearningPrototypeTests {
             #expect(ledger.xp == 10)
             #expect(ledger.attempts[0].independent == (!pair.0 && !pair.1))
         }
+    }
+    @Test("长旧消息不阻塞新短句，送审不截断原文且有界")
+    func boundedReviewWindow() throws {
+        var ledger = Ledger()
+        let (id, _) = start(&ledger, text: String(repeating: "x", count: 8001))
+        #expect(ledger.active?.reviewTurns().isEmpty == true)
+        let next = UUID()
+        ledger.observe(.sent(id: next, text: "I prefer tea because it is warm.", voice: false), attemptID: id)
+        #expect(ledger.active?.reviewTurns().map(\.id) == [next])
+        #expect(ledger.active?.turns.first?.text.count == 8001)
+        #expect(ledger.active?.reviewTurns(maxCount: 0).isEmpty == true)
+        #expect(ledger.active?.reviewTurns(maxCharacters: 1).isEmpty == true)
+    }
+    @Test("跨天完成按完成日计入上限，重复引用被拒绝")
+    func completionDayAndRepeatedIDs() throws {
+        var ledger = Ledger()
+        for index in 0..<3 {
+            let (id, message) = start(&ledger, day: 2, text: "I choose \(index) because it helps.")
+            try complete(&ledger, id: id, message: message)
+        }
+        let (id, message) = start(&ledger, day: 1, text: "I prefer reading because I enjoy stories.")
+        #expect(throws: Ledger.Rejection.self) {
+            try ledger.apply(.init(verdict: .complete, evidenceMessageIDs: [message, message], feedback: ""), attemptID: id, expectedRevision: ledger.revision)
+        }
+        try ledger.apply(.init(verdict: .complete, evidenceMessageIDs: [message], feedback: ""), attemptID: id, expectedRevision: ledger.revision, completedDay: 2)
+        #expect(ledger.xp == 30)
+        #expect(ledger.attempts.last?.day == 2)
+        #expect(ledger.attempts.last?.awardedXP == 0)
+        #expect(ledger.attempts.last?.rewardNote?.contains("上限") == true)
     }
     @Test("迟到判定、虚构证据、放弃后的判定不发奖励")
     func staleAndInvalid() throws {
@@ -86,6 +120,7 @@ struct ConversationLearningPrototypeTests {
         #expect(ledger.xp == 0)
         try complete(&ledger, id: id, message: message)
         #expect(ledger.xp == 10)
+        #expect(!ledger.attempts.last!.independent)
     }
     @Test("来源未知只记练习；回放证据不能混入真实能力判断")
     func originAndUnknown() throws {

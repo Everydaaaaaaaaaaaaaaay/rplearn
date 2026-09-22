@@ -33,6 +33,18 @@ public struct ConversationLearningLedger: Codable, Sendable, Equatable {
         public var evidence: [UUID] = []
         public var independent = false
         public var awardedXP = 0
+        public var rewardNote: String? = nil
+        /// A contiguous recent suffix; a long historical turn cannot block a new short attempt.
+        public func reviewTurns(maxCount: Int = 8, maxCharacters: Int = 8000) -> [Turn] {
+            guard maxCount > 0, maxCharacters > 0 else { return [] }
+            var selected: [Turn] = []
+            var length = 0
+            for turn in turns.suffix(maxCount).reversed() {
+                guard turn.text.count <= maxCharacters - length else { break }
+                selected.append(turn); length += turn.text.count
+            }
+            return selected.reversed()
+        }
     }
     public struct Review: Codable, Sendable {
         public var verdict: Verdict
@@ -78,17 +90,18 @@ public struct ConversationLearningLedger: Codable, Sendable, Equatable {
         revision += 1
     }
     /// Caller supplies the exact reviewed revision. A late result cannot overwrite later work.
-    @discardableResult public mutating func apply(_ review: Review, attemptID: UUID, expectedRevision: Int) throws -> Bool {
+    @discardableResult public mutating func apply(_ review: Review, attemptID: UUID, expectedRevision: Int, completedDay: Int? = nil) throws -> Bool {
         guard let i = attempts.firstIndex(where: { $0.id == attemptID }) else { throw Rejection.missingAttempt }
         if attempts[i].phase == .completed { return false }
         guard attempts[i].phase == .active else { throw Rejection.closed }
         guard revision == expectedRevision else { throw Rejection.stale }
         let ids = Set(review.evidenceMessageIDs)
         let turns = attempts[i].turns.filter { ids.contains($0.id) }
-        guard !ids.isEmpty, turns.count == ids.count,
+        guard !ids.isEmpty, ids.count == review.evidenceMessageIDs.count, turns.count == ids.count,
               review.feedback.count <= 600 else { throw Rejection.invalidEvidence }
         attempts[i].feedback = review.feedback
         if review.verdict == .complete {
+            if let completedDay { attempts[i].day = completedDay }
             attempts[i].phase = .completed
             attempts[i].evidence = review.evidenceMessageIDs
             // Voice transcription is not proof of independent speaking competence.
@@ -98,10 +111,16 @@ public struct ConversationLearningLedger: Codable, Sendable, Equatable {
                 return "\(attempts[i].origin.rawValue)|\(digest)"
             })
             let dailyXP = attempts.filter { $0.day == attempts[i].day && $0.origin == attempts[i].origin }.reduce(0) { $0 + $1.awardedXP }
-            let firstExpression = keys.isDisjoint(with: rewardKeys)
+            let firstExpression = !keys.subtracting(rewardKeys).isEmpty
             rewardKeys.formUnion(keys)
             if !firstExpression { attempts[i].independent = false }
             if firstExpression && dailyXP < 30 { attempts[i].awardedXP = 10 }
+            attempts[i].rewardNote = !firstExpression
+                ? "这些表达已记录过，本次保留练习记录，不重复增加经验。"
+                : dailyXP >= 30 ? "今天的参与经验已达上限，新的表达仍会保留。" : nil
+        } else {
+            // Feedback may contain a model-written example. Future attempts are supported practice.
+            attempts[i].assistanceUsed = true
         }
         revision += 1
         return true

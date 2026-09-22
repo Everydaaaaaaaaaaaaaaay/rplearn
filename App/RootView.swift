@@ -218,6 +218,9 @@ struct RootView: View {
             }
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
+                #if DEBUG
+                await ConversationLearningLiveEvaluation.runIfRequested(environment: environment)
+                #endif
                 guard environment.workspace != nil else { return }
                 #if DEBUG
                 if ["chat", "profile", "learningLab"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
