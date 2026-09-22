@@ -4,6 +4,7 @@ import CryptoKit
 /// Executable v1 product thresholds, not a calibrated CEFR assessment.
 public enum LearningSystemPolicy {
     public static let version = 1
+    public static let ruleRevision = 2
     public static let day: TimeInterval = 86_400
     public static let idleSeconds: TimeInterval = 90
     public static let batchSize = 4
@@ -81,6 +82,8 @@ public enum LearningSystemPolicy {
     }
     public struct Ledger: Codable, Sendable, Equatable {
         public var version = LearningSystemPolicy.version
+        public private(set) var ruleRevision: Int? = LearningSystemPolicy.ruleRevision
+        public mutating func adoptCurrentRules() { ruleRevision = LearningSystemPolicy.ruleRevision }
         public private(set) var evidence: [Evidence] = []
         public private(set) var rewards: [Reward] = []
         public private(set) var processed: Set<UUID> = []
@@ -112,13 +115,18 @@ public enum LearningSystemPolicy {
             for item in evidence where item.skill == skill && item.band == band {
                 if originalIDs[item.fingerprint] == nil { originalIDs[item.fingerprint] = item.id }
             }
-            return evidence.sorted { $0.date < $1.date }.filter { item in
+            // A partial attempt must not consume the day's sole evidence slot before
+            // a later independently completed expression. Duplicate provenance stays unchanged.
+            return evidence.sorted {
+                if $0.successful != $1.successful { return $0.successful }
+                return $0.date < $1.date
+            }.filter { item in
                 guard !item.deleted, item.independent, item.skill == skill, item.band == band,
                       originalIDs[item.fingerprint] == item.id,
                       item.date <= now, now.timeIntervalSince(item.date) <= maxAge,
                       !fingerprints.contains(item.fingerprint), !days.contains(utcDay(item.date)) else { return false }
                 fingerprints.insert(item.fingerprint); days.insert(utcDay(item.date)); return true
-            }
+            }.sorted { $0.date < $1.date }
         }
         public func status(skill: Skill, band: Int, now: Date) -> Status {
             let current = independentEvidence(skill: skill, band: band, now: now)

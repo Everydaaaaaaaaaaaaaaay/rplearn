@@ -35,6 +35,8 @@ import UIKit
         let explanations: [String]
         let seconds: Double
         let error: String?
+        var expectedSkills: [String]? = nil
+        var actualSkills: [String]? = nil
         var failedAttempts: [FailedAttempt] = []
         var rejectedOutput: String? = nil
         var authoredTurns: [LearningSystemReviewer.Turn]? = nil
@@ -65,7 +67,7 @@ import UIKit
             networkProbe = "HTTP \((response as? HTTPURLResponse)?.statusCode ?? 0)"
         } catch { networkProbe = "\((error as NSError).domain):\((error as NSError).code)" }
         save(complete: false)
-        func evaluate(id: String, turns: [String], context: String, task: LearningTask, expected: Bool, expectedPaused: Bool? = nil) async -> Bool {
+        func evaluate(id: String, turns: [String], context: String, task: LearningTask?, expected: Bool, expectedPaused: Bool? = nil, expectedSkills: [LearningSystemPolicy.Skill]? = nil) async -> Bool {
             guard selectedIDs.isEmpty || selectedIDs.contains(id) else { return true }
             guard !Task.isCancelled, case .signedIn = environment.authSession.phase else { save(complete: false); return false }
             let start = Date.now
@@ -77,7 +79,8 @@ import UIKit
                     let result = try await LearningSystemReviewer.assess(turns: authoredTurns, context: context, task: task, llm: client)
                     let success = !result.paused && LearningReviewQueue.endsChallenge(paused: false, assessments: result.assessments)
                     rows.append(Row(id: id, expected: expected, expectedPaused: expectedPaused, actual: success, paused: result.paused,
-                        scores: result.assessments.map(\.scores), explanations: result.assessments.map(\.explanation), seconds: Date.now.timeIntervalSince(start), error: nil,
+                        scores: result.assessments.map(\.scores), explanations: result.assessments.map(\.explanation), seconds: Date.now.timeIntervalSince(start), error: nil, expectedSkills: expectedSkills?.map(\.rawValue),
+                        actualSkills: result.assessments.filter { LearningReviewQueue.endsChallenge(paused: false, assessments: [$0]) }.map { $0.skill.rawValue },
                         failedAttempts: failures, authoredTurns: failures.isEmpty ? nil : authoredTurns))
                     break
                 } catch {
@@ -94,6 +97,13 @@ import UIKit
                 }
             }
             save(complete: false); return true
+        }
+        if group == "observation" {
+            for sample in LearningSystemObservationSamples.all {
+                guard await evaluate(id: sample.id, turns: sample.turns, context: sample.context, task: nil,
+                                     expected: sample.expected, expectedSkills: sample.skills) else { return }
+            }
+            save(complete: true); return
         }
         if group == "edges" {
             for sample in LearningSystemEdgeSamples.all {

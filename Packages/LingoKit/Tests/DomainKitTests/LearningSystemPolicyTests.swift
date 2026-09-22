@@ -37,6 +37,30 @@ struct LearningSystemPolicyTests {
         for i in 0..<8 { insert(evidence(day:Double(i),index:i,independent:false),into:&ledger) }
         #expect(ledger.status(skill:.preference,band:1,now:start.addingTimeInterval(8*P.day)) == .attempted)
     }
+    @Test func laterIndependentSuccessIsNotHiddenByMorningPartial() {
+        var ledger = P.Ledger()
+        insert(evidence(day:0,index:0,scores:[1,2,2,2]), into:&ledger)
+        insert(evidence(day:0.01,index:1), into:&ledger)
+        let selected = ledger.independentEvidence(skill:.preference,band:1,now:start.addingTimeInterval(0.02 * P.day))
+        #expect(selected.count == 1)
+        #expect(selected.first?.successful == true)
+        #expect(ledger.status(skill:.preference,band:1,now:start.addingTimeInterval(0.02 * P.day)) == .independent)
+    }
+    @Test func oldLedgerAdoptsRulesWithoutChangingEvidenceOrRewards() throws {
+        var ledger = P.Ledger()
+        insert(evidence(day:0,index:0,scores:[1,2,2,2]),into:&ledger)
+        insert(evidence(day:0.01,index:1),into:&ledger)
+        var object = try #require(JSONSerialization.jsonObject(with:JSONEncoder().encode(ledger)) as? [String:Any])
+        object.removeValue(forKey:"ruleRevision")
+        var restored = try JSONDecoder().decode(P.Ledger.self,from:JSONSerialization.data(withJSONObject:object))
+        #expect(restored.ruleRevision == nil)
+        restored.adoptCurrentRules()
+        #expect(restored.ruleRevision == 2)
+        #expect(restored.evidence == ledger.evidence)
+        #expect(restored.rewards == ledger.rewards)
+        #expect(restored.processed == ledger.processed)
+        #expect(restored.status(skill:.preference,band:1,now:start.addingTimeInterval(0.02 * P.day)) == .independent)
+    }
     @Test func repeatedDayDoesNotAdvance() {
         var ledger = P.Ledger()
         for i in 0..<8 { insert(evidence(day:Double(i)/100,index:i),into:&ledger) }

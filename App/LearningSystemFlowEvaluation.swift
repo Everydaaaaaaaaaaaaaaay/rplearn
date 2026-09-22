@@ -86,10 +86,22 @@ import PersistenceKit
             guard await sendAndWait("Hi Ruby!") else { save(true); return }
             await learning.review(environment: environment, force: true)
             check("greeting-keeps-task", learning.state.challenge != nil && learning.state.ledger.evidence.isEmpty, learning.error ?? "")
-            guard await sendAndWait("For our weekend trip, I'd choose the park because it is quiet and close to home.") else { save(true); return }
+            let split = ProcessInfo.processInfo.environment["LINGOTRIP_LEARNING_V1_FLOW_SPLIT"] == "1"
+            if split {
+                guard await sendAndWait("I choose the park.") else { save(true); return }
+                await learning.review(environment: environment, force: true)
+                let partialSaved = await learning.waitForPersistence()
+                let partialRestored = ConversationLearningSystem(owner: owner, evaluationID: evaluationID, sourceChatStore: chat)
+                await partialRestored.load()
+                check("partial-context-survives-reload", partialSaved && partialRestored.state.challenge?.context?.turns.contains { $0.text == "I choose the park." } == true)
+                check("partial-keeps-task", learning.state.challenge != nil && !learning.state.ledger.evidence.contains { $0.successful })
+            }
+            let answer = split ? "Because it is quiet and close to home." : "For our weekend trip, I'd choose the park because it is quiet and close to home."
+            guard await sendAndWait(answer) else { save(true); return }
             await learning.review(environment: environment, force: true)
             check("answer-completes-task", learning.state.challenge == nil, learning.error ?? "")
             check("independent-evidence-recorded", learning.state.ledger.evidence.contains { $0.successful && $0.independent })
+            check("independent-status-visible", learning.state.ledger.status(skill:.preference,band:1,now:.now) == .independent)
             check("not-instant-level-up", learning.state.ledger.status(skill: .preference, band: 1, now: .now) != .confirmed)
             let saved = await learning.waitForPersistence(); check("saved", saved)
             let restored = ConversationLearningSystem(owner: owner, evaluationID: evaluationID, sourceChatStore: chat)

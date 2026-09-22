@@ -22,6 +22,8 @@ def problems(report, expected_count):
             issues.append(f'{name}: no valid model judgment ({row.get("error", "missing result")})')
         elif type(row.get('expected')) is not bool or row['actual'] != row['expected']:
             issues.append(f'{name}: expected {row.get("expected")}, got {row["actual"]}; {row.get("explanations", [])}')
+        if row.get('expectedSkills') is not None and not set(row['expectedSkills']).issubset(set(row.get('actualSkills') or [])):
+            issues.append(f'{name}: missing expected skill: {row["expectedSkills"]}; actual {row.get("actualSkills")}')
         if row.get('expectedPaused') is not None and row.get('paused') != row['expectedPaused']:
             issues.append(f'{name}: incorrect pause behavior')
     return issues

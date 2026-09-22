@@ -52,4 +52,24 @@ struct LearningReviewQueueTests {
         #expect(LearningReviewQueue.next([failed,healthy], now: now, force: true) == failed.id)
     }
 
+    @Test func taskContextKeepsOrderAssistanceAndRemovesDeletedMessages() throws {
+        let a = LearningSystemReviewer.Turn(id:UUID(),text:"I choose the park.")
+        let b = LearningSystemReviewer.Turn(id:UUID(),text:"Because it is quiet.")
+        let first = LearningChallengeContext().appending([a],assisted:true,available:[a.id])
+        let restored = try JSONDecoder().decode(LearningChallengeContext.self,from:JSONEncoder().encode(first))
+        let combined = restored.appending([a,b],assisted:false,available:[a.id,b.id])
+        #expect(combined.turns.map(\.id) == [a.id,b.id])
+        #expect(combined.assisted)
+        #expect(combined.appending([],assisted:false,available:[b.id]).turns.map(\.id) == [b.id])
+    }
+    @Test func taskContextHasHardSizeAndCountBounds() {
+        let turns = (0..<20).map { LearningSystemReviewer.Turn(id:UUID(),text:"Message \($0)") }
+        let context = LearningChallengeContext().appending(turns,assisted:false,available:Set(turns.map(\.id)))
+        #expect(context.turns.map(\.id) == turns.suffix(8).map(\.id))
+        let large = (0..<5).map { _ in LearningSystemReviewer.Turn(id:UUID(),text:String(repeating:"a",count:1500)) }
+        let bounded = LearningChallengeContext().appending(large,assisted:false,available:Set(large.map(\.id)))
+        #expect(bounded.turns.count == 2)
+        #expect(bounded.turns.reduce(0) { $0 + $1.text.count } <= 4000)
+    }
+
 }

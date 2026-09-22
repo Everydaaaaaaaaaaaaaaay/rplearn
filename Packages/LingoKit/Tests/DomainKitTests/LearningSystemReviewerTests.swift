@@ -95,4 +95,22 @@ struct LearningSystemReviewerTests {
         #expect(result.assessments.first?.topic == "travel")
     }
 
+    @Test func originalScriptNamesRequireEnglishFraming() async throws {
+        for (text, choice, reason, names, accepted) in [
+            ("I choose 西湖 because it is quiet.", "I choose 西湖", "because it is quiet", ["西湖"], true),
+            ("I choose 西湖 because it is quiet.", "I choose 西湖", "because it is quiet", ["西湖","王老师"], true),
+            ("我选择公园 because it is quiet.", "我选择公园", "because it is quiet", ["我选择公园"], false),
+            ("I choose tea because那里安静。", "I choose tea", "because那里安静", ["那里安静"], false)
+        ] {
+            let supports: [[String:Any]] = [
+                ["requirement":"choice","quote":choice,"names":choice.contains("西湖") || choice.hasPrefix("我") ? names : []],
+                ["requirement":"reason","quote":reason,"names":reason.contains("那里") ? names : []]]
+            let raw = try JSONSerialization.data(withJSONObject:["paused":false,"assessments":[["skill":"preference","band":1,"topic":"travel","scores":[2,2,2,2],"messageIDs":["m1"],"quote":text,"explanation":"测试专名依据","supports":supports]]])
+            do {
+                _ = try await LearningSystemReviewer.assess(turns:[.init(id:UUID(),text:text)],context:"",llm:Client(output:String(decoding:raw,as:UTF8.self)))
+                #expect(accepted)
+            } catch { #expect(!accepted) }
+        }
+    }
+
 }

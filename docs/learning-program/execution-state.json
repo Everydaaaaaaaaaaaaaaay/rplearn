@@ -1,5 +1,5 @@
 {
-  "workflow_version": "WF-1.3",
+  "workflow_version": "WF-1.4",
   "tasks": [
     {
       "id": "SOURCE-WRITE",
@@ -208,6 +208,27 @@
         {
           "name": "Explicitly selected real favorites feed native pilot with missing-definition fallback, no account writes",
           "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "LEARNING-NATURAL-REVIEW",
+      "status": "complete",
+      "depends_on": [],
+      "checks": [
+        {
+          "name": "31 authored live-model scenarios with retained retry evidence",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/learning-system-cycle-natural-2026-09-22.md"
+          ]
+        },
+        {
+          "name": "17 real chat flow checkpoints and 41 core tests; rule migration preserves evidence and rewards",
+          "status": "passed",
+          "evidence": [
+            "docs/learning-program/learning-system-cycle-natural-2026-09-22.md"
+          ]
         }
       ]
     }

@@ -35,6 +35,7 @@ final class ConversationLearningSystem {
         let characterID: UUID
         let startedAt: Date
         let confirmation: Bool
+        var context: LearningChallengeContext? = nil
     }
     struct State: Codable {
         var enabled = false
@@ -71,6 +72,9 @@ final class ConversationLearningSystem {
         do {
             if let data = try await file.read() { state = try JSONDecoder().decode(State.self, from: data) }
             ready = true
+            if state.ledger.ruleRevision != LearningSystemPolicy.ruleRevision {
+                state.ledger.adoptCurrentRules(); persist()
+            }
         } catch { self.error = "学习记录暂时无法读取，原文件已保留。\(error.localizedDescription)" }
     }
     func persist() {
@@ -158,7 +162,7 @@ final class ConversationLearningSystem {
         }
         state.batches[day, default: 0] += 1
         guard await checkpoint() else { return }
-        let turns = count == 0 ? [] : batch.turns
+        var turns = count == 0 ? [] : batch.turns
         guard !turns.isEmpty else {
             state.pending.removeAll { $0.id == batch.id }
             error = "这条消息较长，本次不作能力判断。完整原文仍在聊天记录中。"; persist(); return
@@ -169,6 +173,12 @@ final class ConversationLearningSystem {
         guard turns.allSatisfy({ turn in messages.contains(where: { $0.id == turn.id }) }) else {
             error = "部分原消息已不可用，本次不作能力判断。"; return
         }
+        let previousContext: LearningChallengeContext?
+        if let challenge = batch.challenge, state.challenge?.task.id == challenge.task.id {
+            previousContext = state.challenge?.context
+        } else { previousContext = batch.challenge?.context }
+        let combined = (previousContext ?? LearningChallengeContext()).appending(turns, assisted: batch.assisted, available: Set(messages.map(\.id)))
+        if batch.challenge != nil { turns = combined.turns }
         let context = turns.enumerated().map { offset, turn in
             let index = messages.firstIndex(where: { $0.id == turn.id }) ?? 0
             let preceding = messages.prefix(index).suffix(3).filter { $0.role == .assistant }.map(\.text).joined(separator: " ")
@@ -185,17 +195,18 @@ final class ConversationLearningSystem {
                 guard !Task.isCancelled, state.enabled, case .signedIn(let current) = environment.authSession.phase, current.userID == owner else { return }
                 let items = result.paused ? [] : result.assessments.map { item in
                     LearningSystemPolicy.Evidence(batchID: batch.id, characterID: batch.characterID, date: batch.lastDate,
-                        skill: item.skill, band: item.band, topic: item.topic, scores: item.scores, quote: item.quote,
-                        explanation: item.explanation, independent: !batch.assisted,
+                        skill: item.skill, band: item.band, topic: item.topic, scores: item.scores, quote: LearningChallengeContext.evidenceQuote(item, turns: turns),
+                        explanation: item.explanation, independent: !(batch.challenge == nil ? batch.assisted : combined.assisted),
                         confirmation: batch.challenge.map { state.challenge?.task.id == $0.task.id && $0.confirmation && $0.task.skill == item.skill && $0.task.band == item.band && $0.task.topic == item.topic } ?? false)
                 }
                 guard state.ledger.record(items, batchID: batch.id, now: .now) else {
                     self.error = "记录时间异常或批次重复，原文已保留，未增加经验。"; return
                 }
                 state.pending.removeAll { $0.id == batch.id }
-                if let challenge = batch.challenge, state.challenge?.task.id == challenge.task.id,
-                   LearningReviewQueue.endsChallenge(paused: result.paused, assessments: result.assessments) {
-                    state.challenge = nil
+                if let challenge = batch.challenge, state.challenge?.task.id == challenge.task.id {
+                    if LearningReviewQueue.endsChallenge(paused: result.paused, assessments: result.assessments) {
+                        state.challenge = nil
+                    } else { state.challenge?.context = combined }
                 }
                 error = nil; persist(); return
             } catch {
