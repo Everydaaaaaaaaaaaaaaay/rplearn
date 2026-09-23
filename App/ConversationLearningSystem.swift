@@ -201,7 +201,12 @@ final class ConversationLearningSystem {
         }
     }
     private var candidates: [LearningReviewQueue.Candidate] {
-        state.pending.filter { !active.contains($0.id) }.map { .init(id: $0.id, count: $0.turns.count, lastDate: $0.lastDate, blocked: $0.failure != nil, idleSeconds: $0.challenge == nil ? LearningSystemPolicy.idleSeconds : 12) }
+        state.pending.filter { !active.contains($0.id) }.map {
+            .init(id: $0.id, count: $0.turns.count, lastDate: $0.lastDate,
+                  blocked: $0.failure != nil,
+                  idleSeconds: $0.challenge == nil ? LearningSystemPolicy.idleSeconds : 12,
+                  waitForIdleWhenFull: $0.challenge != nil)
+        }
     }
     func replyActivity(owner: UUID, active: Bool, environment: AppEnvironment) {
         if active { activeReplyOwners.insert(owner) } else { activeReplyOwners.remove(owner) }

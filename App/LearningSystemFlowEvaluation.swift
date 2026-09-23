@@ -54,6 +54,7 @@ import PersistenceKit
                 learning.replyActivity(owner: owner, active: active, environment: environment)
             }
             dependencies.learningEnabled = { true }
+            dependencies.learningInstruction = { characterID in learning.chatInstruction(characterID: characterID) }
             dependencies.learningRecorder = { character, conversation, event in
                 learning.observe(character: character, conversation: conversation, event: event, environment: environment)
             }
@@ -98,7 +99,16 @@ import PersistenceKit
             }
             let answer = split ? "Because it is quiet and close to home." : "For our weekend trip, I'd choose the park because it is quiet and close to home."
             guard await sendAndWait(answer) else { save(true); return }
-            await learning.review(environment: environment, force: true)
+            let reply = vm.messages.last(where: { $0.role == .assistant })?.text ?? ""
+            let lowerReply = reply.lowercased()
+            check("natural-reply-framing", !["homework", "paste", "test", "practice"].contains(where: lowerReply.contains), String(reply.prefix(300)))
+            // The idle timer may already have started a review after the NPC
+            // reply. Wait for that attempt before checking the durable state.
+            for _ in 0..<120 where learning.reviewing { try? await Task.sleep(for: .milliseconds(250)) }
+            if learning.state.pending.contains(where: { !$0.turns.isEmpty && $0.failure == nil }) {
+                await learning.review(environment: environment, force: true)
+            }
+            for _ in 0..<120 where learning.reviewing { try? await Task.sleep(for: .milliseconds(250)) }
             check("answer-completes-task", learning.state.challenge == nil, learning.error ?? "")
             check("independent-evidence-recorded", learning.state.ledger.evidence.contains { $0.successful && $0.independent })
             check("independent-status-visible", learning.state.ledger.status(skill:.preference,band:1,now:.now) == .independent)

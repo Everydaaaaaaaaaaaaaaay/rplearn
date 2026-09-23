@@ -218,6 +218,10 @@ targets:
     type: bundle.ui-testing
     platform: iOS
     deploymentTarget: "18.0"
+    info:
+      path: build/Generated-UITests-Info.plist
+      properties:
+        LingoTripLiveLearningUI: $(RUN_LIVE_LEARNING_UI)
     sources:
       - Tests/LingoTripUITests
     dependencies:
@@ -225,7 +229,6 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).uitests
-        INFOPLIST_KEY_LingoTripLiveLearningUI: $(RUN_LIVE_LEARNING_UI)
         TEST_TARGET_NAME: LingoTrip
         CODE_SIGN_STYLE: Automatic
         "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual

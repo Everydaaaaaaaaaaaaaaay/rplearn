@@ -164,11 +164,13 @@ private struct LearningRulesView: View {
 
 /// Options remain readable while interaction is locked until audio completes.
 private struct LearningListeningOptionStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundStyle(.primary)
-            .background(.primary.opacity(configuration.isPressed ? 0.12 : 0.06), in: RoundedRectangle(cornerRadius: 16))
-            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(.secondary.opacity(0.25)))
+            .background(isEnabled ? Color.teal.opacity(configuration.isPressed ? 0.2 : 0.1) : Color.primary.opacity(0.06),
+                        in: RoundedRectangle(cornerRadius: 16))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(isEnabled ? Color.teal.opacity(0.65) : Color.secondary.opacity(0.25)))
     }
 }
 
@@ -206,7 +208,10 @@ private struct LearningListeningView: View {
                                 .accessibilityHint(session.plays[item.id, default: 0] == 0 ? "完整听完音频后可选择" : "选择此答案")
                                 .disabled(playbackID != nil || session.plays[item.id, default: 0] == 0)
                         }
-                        Text("完整听完至少一遍后可作答。交卷前不显示台词与答案。") .font(.caption).foregroundStyle(.secondary)
+                        Text(session.plays[item.id, default: 0] == 0
+                             ? "完整听完至少一遍后可作答。交卷前不显示台词与答案。"
+                             : "现在可以选择答案。交卷前不显示台词与答案。")
+                            .font(.caption).foregroundStyle(.secondary)
                     } else if let session {
                         Text("本组 \(session.score)/6").font(.largeTitle.bold()).accessibilityIdentifier("learningListening.result")
                         if session.materialVersion != LearningListeningSession.currentMaterialVersion {

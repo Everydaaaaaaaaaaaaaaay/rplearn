@@ -158,3 +158,13 @@ Computer Use 的 Device Hub (`com.apple.dt.Devices`) 之前反复超时；不要
 6. 数据：断网后队列保留、失败不消费成功批限额、关闭学习取消回顾、退出/换账号隔离、CAS冲突与删除不复活、历史版本/时钟倒退、长期记录增长。
 7. 特别待审：练习长期不结束是否应过期；推荐题库耗尽与被冷却目标的回退；卡片错误全局/按角色归属；云端限额是否应跨设备统一；completed listening 同ID冲突；2MiB容量。先证据后改，别堆功能。
 8. 完成逻辑变更定向提交；更新验收记录；安装最新手机和模拟器版本。存在未完成真机项则如实保留，不称“可上线、完全无bug”。
+
+## 17:50 后续进度（阅读时以本节与验收记录末尾为准）
+
+- 真机已解锁、联网，XCTest 自动化可执行。修复测试 bundle 的 opt-in 读取后，正常聊天内开启练习、三句连发、真实 Ruby 回复、学习反馈、独立证据及 10 XP 的触屏闭环通过。证据 `build/learning-phone-round8-20260923.xcresult`，但该轮耗时约 227 秒；原因未定。测试账户当天已达 12/12 回顾请求上限，不得清零续测。
+- 真机草稿→学习详情→项目 TTS 播放中退出→返回聊天，草稿保持且临时草稿清理通过：`build/learning-phone-listening-round1-20260923.xcresult`。完整播放、答题交卷及中断恢复仍待测。
+- 随后真机完成首题两次完整 Supertonic-3 播放，答题选项按规则解锁，退出重进仍为 2/2；没有选择答案或生成听力成绩。修正解锁态样式后视觉复测通过：`build/learning-phone-listening-round3/4-20260923.xcresult`。交卷、跨日复习及系统中断仍待测。
+- 真实模型独立评估：显式任务 47/47、普通观察 31/31，预期技能和暂停标志一致；报告 `/tmp/learning-live-all-edges-final-r2.json`、`/tmp/learning-live-observation-final-r2.json`。这些不更改学习 ledger，也不替代真机触屏。
+- 已修复显式任务评分提示遗漏 rubric 导致的循环理由、无关反思和简洁澄清误判；无任务观察现选最高完整满足的档位。选中练习达到 4 条时仍等待 12 秒安静窗口。好友聊天提示避免把自然答复称作作业；隔离真实 ChatViewModel 重新验证通过，报告 `/tmp/learning-flow-round12.json`。
+- 最新 Xcode-hosted 集成测试 93 通过、0 失败、0 跳过：`build/DerivedData/VerificationResults/20260923T095908Z-97443.xcresult`。听力视觉修正后的最终 Release 构建及 `Scripts/preview.sh preview messages` 已完成；最新 Debug 版本也已安装真机。定向提交以 Git 状态为准。
+- 接下来：UTC 次日额度恢复后验证新提示的真实触屏回复和 4 条连发等待；扩展错误恢复、听力交卷与系统中断、跨设备冲突及长期增长测试。不要把有限测试描述为全面上线验收。

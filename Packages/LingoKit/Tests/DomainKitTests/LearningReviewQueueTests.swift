@@ -38,6 +38,16 @@ struct LearningReviewQueueTests {
         let ordinary = LearningReviewQueue.Candidate(id: UUID(), count: 2, lastDate: now)
         #expect(ordinary.delay(now: now.addingTimeInterval(12)) == 78)
     }
+    @Test func fullPracticeBatchStillWaitsForTheLastSentence() {
+        let practice = LearningReviewQueue.Candidate(id: UUID(), count: 4, lastDate: now,
+                                                     idleSeconds: 12, waitForIdleWhenFull: true)
+        let ordinary = LearningReviewQueue.Candidate(id: UUID(), count: 4, lastDate: now)
+        #expect(practice.delay(now: now.addingTimeInterval(3)) == 9)
+        #expect(LearningReviewQueue.next([practice], now: now.addingTimeInterval(3)) == nil)
+        #expect(LearningReviewQueue.next([ordinary, practice], now: now.addingTimeInterval(3)) == ordinary.id)
+        #expect(LearningReviewQueue.next([practice], now: now.addingTimeInterval(12)) == practice.id)
+        #expect(LearningReviewQueue.next([practice], now: now, force: true) == practice.id)
+    }
     @Test func readyConversationIsNotBlockedByFreshConversation() {
         let a = LearningReviewQueue.Candidate(id: UUID(), count: 1, lastDate: now)
         let b = LearningReviewQueue.Candidate(id: UUID(), count: 4, lastDate: now)
