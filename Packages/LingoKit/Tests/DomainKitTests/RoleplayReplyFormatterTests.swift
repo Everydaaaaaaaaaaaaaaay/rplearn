@@ -211,7 +211,7 @@ struct RoleplayTypingPaceTests {
         #expect(long <= pace.maximumDelay)
     }
 
-    @Test("首条消息只部分扣除生成时间并保留可感知输入时长")
+    @Test("首条消息扣除已展示输入时间并保留可感知输入时长")
     func creditsGenerationTimeToFirstMessage() {
         let target = pace.delay(
             for: "you alright",
@@ -234,6 +234,20 @@ struct RoleplayTypingPaceTests {
 
         #expect(partlyElapsed < target)
         #expect(fullyElapsed == pace.minimumFirstMessageDelay)
+    }
+
+    @Test("慢模型不再叠加完整打字等待，快模型补足剩余时间")
+    func slowGenerationDoesNotDoubleChargeTyping() {
+        let text = "I just got back from the coffee shop near home"
+        let target = pace.delay(for: text, messageIndex: 0,
+            elapsedSinceTypingBegan: 0, variation: 0.5)
+        for elapsed in [1.0, 3.0, 5.0, 10.0, 20.0] {
+            let remaining = pace.delay(for: text, messageIndex: 0,
+                elapsedSinceTypingBegan: elapsed, variation: 0.5)
+            #expect(abs(remaining - max(pace.minimumFirstMessageDelay, target - elapsed)) < 0.001)
+        }
+        #expect(pace.delay(for: text, messageIndex: 1,
+            elapsedSinceTypingBegan: 20, variation: 0.5) > 6)
     }
 
     @Test("后续气泡保留独立输入时间并限制随机范围")

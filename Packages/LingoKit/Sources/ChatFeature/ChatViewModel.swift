@@ -962,7 +962,9 @@ public final class ChatViewModel {
             let delay = RoleplayTypingPace.standard.delay(
                 for: text,
                 messageIndex: index,
-                elapsedSinceTypingBegan: 0,
+                elapsedSinceTypingBegan: typingBeganAt.map {
+                    deps.now().timeIntervalSince($0) / max(deps.replyDelayScale, 0.001)
+                } ?? 0,
                 variation: Double.random(in: 0...1)
             )
             let milliseconds = Int((delay * deps.replyDelayScale * 1_000).rounded())

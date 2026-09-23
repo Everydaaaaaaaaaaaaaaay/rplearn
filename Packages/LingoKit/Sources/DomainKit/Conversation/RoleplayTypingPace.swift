@@ -134,7 +134,7 @@ public struct RoleplayTurnTakingPolicy: Sendable {
 
 /// 将已经生成好的角色回复按接近真人打字的节奏逐条送达。
 ///
-/// 首条消息只会部分扣除模型已经用于思考和生成的时间，并保留最低可感知输入时间；
+/// 首条消息会扣除已经展示的输入时间，并保留最低可感知输入时间；
 /// 后续消息各自保留输入时间和换气停顿，让连续气泡不会机械地同时出现。
 public struct RoleplayTypingPace: Sendable {
     public static let standard = RoleplayTypingPace()
@@ -183,7 +183,7 @@ public struct RoleplayTypingPace: Sendable {
 
         guard messageIndex == 0 else { return target }
         let maximumCredit = max(0, target - minimumFirstMessageDelay)
-        let generationCredit = min(max(0, elapsedSinceTypingBegan) * 0.45, maximumCredit)
+        let generationCredit = min(max(0, elapsedSinceTypingBegan), maximumCredit)
         return max(minimumFirstMessageDelay, target - generationCredit)
     }
 }
