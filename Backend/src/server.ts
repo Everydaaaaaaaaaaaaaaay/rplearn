@@ -1,3 +1,5 @@
+import { registerLearningRoutes } from "./modules/learning/routes.js";
+import { createLearningService } from "./modules/learning/service.js";
 import { readServiceJournal } from "./infrastructure/journal-reader.js";
 import { DiagnosticsService } from "./modules/observability/diagnostics-service.js";
 import { registerDiagnosticsRoutes } from "./modules/observability/diagnostics-routes.js";
@@ -145,6 +147,11 @@ async function main(): Promise<void> {
       inactiveHours: config.appleBillingReconcileInactiveHours,
       retryMinutes: config.appleBillingReconcileRetryMinutes,
     },
+  );
+  registerLearningRoutes(
+    app,
+    authService,
+    createLearningService(dependencies.database),
   );
   registerBillingRoutes(app, authService, billingService, {
     appleBillingEnabled: config.appleBillingEnabled,

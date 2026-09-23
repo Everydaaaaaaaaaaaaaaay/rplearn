@@ -37,6 +37,7 @@ type BillingScope = "service" | "user";
 // reduce the user's displayed or enforceable credit balance.
 const SERVICE_TASKS = [
   "coach_review",
+  "learning_review",
   "memory_summary",
   "proactive_message",
   "quiz",

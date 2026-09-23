@@ -169,6 +169,9 @@ export class AccountRepository {
           });
         }
 
+        const learningRecords = await sql<
+          JsonRow[]
+        >`select revision, payload, updated_at as "updatedAt" from app.learning_states where user_id = ${userId}`;
         const identities = await sql<JsonRow[]>`
           select
             provider,
@@ -415,6 +418,7 @@ export class AccountRepository {
             transactions,
           },
           contentRecords,
+          learningRecords,
           economy: {
             coinLedger,
             tickets,

@@ -44,6 +44,7 @@ export type AccountExport = Readonly<{
     transactions: readonly unknown[];
   }>;
   contentRecords: readonly unknown[];
+  learningRecords: readonly unknown[];
   economy: Readonly<{
     coinLedger: readonly unknown[];
     tickets: readonly unknown[];
