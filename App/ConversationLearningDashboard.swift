@@ -1,4 +1,3 @@
-#if DEBUG
 import AVFoundation
 import DomainKit
 import PersistenceKit
@@ -19,7 +18,7 @@ struct ConversationLearningDashboard: View {
             if let model, model.ready { content(model) }
             else if let error = model?.error { ContentUnavailableView("记录暂不可用", systemImage: "externaldrive.badge.exclamationmark", description: Text(error)) }
             else if model != nil { ProgressView("正在读取学习记录") }
-            else { ContentUnavailableView("需要登录", systemImage: "person.crop.circle", description: Text("登录后在正常聊天中记录成长；这里不会使用固定回复模拟真人。")) }
+            else { ContentUnavailableView("需要登录", systemImage: "person.crop.circle", description: Text("登录后在正常聊天中记录成长；学习记录按账号保存。")) }
         }
         .navigationTitle("共同篇章")
         .navigationBarTitleDisplayMode(.inline)
@@ -58,11 +57,11 @@ struct ConversationLearningDashboard: View {
         Form {
             Section {
                 if case .signedIn = environment.authSession.phase { } else {
-                    Text("界面预览：真实模型回顾需要登录，未启用固定回复。") .font(.caption).foregroundStyle(.secondary)
+                    Text("登录后可记录聊天中的学习。") .font(.caption).foregroundStyle(.secondary)
                 }
                 Toggle("记录聊天中的学习", isOn: Binding(get: { model.state.enabled }, set: { model.setEnabled($0); model.resume(environment: environment) }))
                     .accessibilityIdentifier("learningSystem.enabled")
-                Text("只记录开启后新发出的内容。每日至多6批回顾、12次请求，会使用现有模型额度。关闭后停止新回顾。")
+                Text("只记录开启后新发出的内容。每日至多6批成功回顾、12次请求，后台回顾不扣可用积分。关闭后停止新回顾。")
                     .font(.caption).foregroundStyle(.secondary)
                 LabeledContent("全账号旅程 Lv.\(model.state.ledger.level)", value: "\(model.state.ledger.xp) XP")
                 Text("参与经验不代表英语等级。口语和发音不作评价。") .font(.caption).foregroundStyle(.secondary)
@@ -89,7 +88,7 @@ struct ConversationLearningDashboard: View {
                         model.startChallenge(skill: evidence.skill, band: evidence.band, characterID: character.id)
 
                     }.disabled(!model.state.enabled || model.state.challenge != nil)
-                    Button("今天先不练") { model.state.ledger.deferredUntil = Date.now.addingTimeInterval(86_400); model.persist() }
+                    Button("今天先不练") { model.deferLearning() }
                 } else { Text("没有到期任务，照常聊天就好。") .foregroundStyle(.secondary) }
                 if let challenge = model.state.challenge {
                     Text(challenge.task.instruction).font(.subheadline)
@@ -130,6 +129,12 @@ struct ConversationLearningDashboard: View {
                 if visibleEvidence.isEmpty {
                     Text(onlyThisCharacter ? "还没有与\(character.displayName)的表达记录。新的表达会在聊天后出现在这里。" : "新的表达会在聊天后自动出现在这里。")
                         .foregroundStyle(.secondary)
+                }
+            }
+            if let syncError = model.syncError {
+                Section("同步") {
+                    Text(syncError).font(.footnote).foregroundStyle(.secondary)
+                    Button("重试同步") { model.retrySync(environment: environment) }
                 }
             }
             if model.error != nil || model.state.pending.contains(where: { $0.failure != nil }) { Section { Text(model.error ?? "部分表达尚未完成回顾，已保留；其他聊天会正常记录。").foregroundStyle(.secondary); Button("重试待处理回顾") { Task { await model.review(environment: environment, force: true) } }.disabled(model.reviewing) } }
@@ -256,21 +261,3 @@ private struct LearningListeningView: View {
         Task { await environment.speech.stopSpeaking() }
     }
 }
-struct LearningChatAccessory: View {
-    let characterID: UUID
-    let environment: AppEnvironment
-    var body: some View {
-        if let model = environment.learningSystemInstance,
-           let challenge = model.state.challenge, challenge.characterID == characterID {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(challenge.confirmation ? "独立尝试 · 可随时结束" : "自选小练习").font(.caption.bold())
-                    Text(challenge.task.instruction).font(.subheadline)
-                    Text("直接在下面聊天；使用帮助也可以，会记作辅助练习。").font(.caption).foregroundStyle(.secondary)
-                }
-                Button("结束", systemImage: "xmark") { model.endChallenge() }.labelStyle(.iconOnly)
-            }.padding(12).background(.thinMaterial)
-        }
-    }
-}
-#endif

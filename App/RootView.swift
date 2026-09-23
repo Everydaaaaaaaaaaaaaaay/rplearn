@@ -226,12 +226,10 @@ struct RootView: View {
                 LearningSystemFlowEvaluation.runIfRequested(environment: environment)
                 #endif
                 guard environment.workspace != nil else { return }
-                #if DEBUG
                 if let learning = environment.learningSystem() {
                     await learning.load()
-                    Task { await learning.review(environment: environment) }
+                    learning.resume(environment: environment)
                 }
-                #endif
                 #if DEBUG
                 if ["chat", "profile", "learningLab", "learningSystem"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
                    ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
@@ -252,9 +250,7 @@ struct RootView: View {
             }
             .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")", priority: .utility) {
                 guard scenePhase == .active, environment.workspace != nil else { return }
-                #if DEBUG
-                if let learning = environment.learningSystem() { await learning.load(); await learning.review(environment: environment) }
-                #endif
+                if let learning = environment.learningSystem() { await learning.load(); learning.resume(environment: environment) }
                 switch environment.authSession.phase {
                 case .signedIn(let identity):
                     guard identity.userID == activeUserID else { return }
@@ -1063,21 +1059,21 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
-        #if DEBUG
-        let prototypeEnvironment = environment
-        dependencies.learningPrototypeDestination = { character in
-            AnyView(ConversationLearningDashboard(character: character, environment: prototypeEnvironment))
-        }
-        dependencies.learningAccessory = { character in
-            AnyView(LearningChatAccessory(characterID: character.id, environment: prototypeEnvironment))
+        let learningEnvironment = environment
+        dependencies.learningAccessory = { character, busy, composing in
+            AnyView(LearningChatAccessory(character: character, environment: learningEnvironment, busy: busy, composing: composing))
         }
         dependencies.learningReplyActivity = { owner, active in
-            prototypeEnvironment.learningSystem()?.replyActivity(owner: owner, active: active, environment: prototypeEnvironment)
+            learningEnvironment.learningSystem()?.replyActivity(owner: owner, active: active, environment: learningEnvironment)
         }
-        dependencies.learningEnabled = { prototypeEnvironment.learningSystemInstance?.state.enabled == true }
+        dependencies.learningEnabled = { learningEnvironment.learningSystemInstance?.state.enabled == true }
         dependencies.learningRecorder = { character, conversation, event in
-            prototypeEnvironment.learningSystem()?.observe(character: character, conversation: conversation, event: event, environment: prototypeEnvironment)
+            learningEnvironment.learningSystem()?.observe(character: character, conversation: conversation, event: event, environment: learningEnvironment)
         }
+        dependencies.learningInstruction = { characterID in
+            learningEnvironment.learningSystemInstance?.chatInstruction(characterID: characterID)
+        }
+        #if DEBUG
         dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
             && bypassesAuthenticationForUITesting
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"

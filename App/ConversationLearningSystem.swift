@@ -1,4 +1,4 @@
-#if DEBUG
+import BackendKit
 import Foundation
 import Observation
 import DomainKit
@@ -37,7 +37,14 @@ final class ConversationLearningSystem {
         let confirmation: Bool
         var context: LearningChallengeContext? = nil
     }
+    struct ReviewReceipt: Codable {
+        let id: UUID
+        let date: Date
+        let summary: String
+    }
     struct State: Codable {
+        var receipts: [UUID: ReviewReceipt]? = nil
+        var presentation: LearningChatPresentation? = nil
         var enabled = false
         var challenge: Challenge?
         var usedTasks: Set<String> = []
@@ -46,6 +53,7 @@ final class ConversationLearningSystem {
         var pending: [Pending] = []
         var calls: [Int: Int] = [:]
         var batches: [Int: Int] = [:]
+        var successfulBatches: [Int: Int]? = nil
     }
     let owner: UUID
     private let file: LearningSystemFile
@@ -59,6 +67,19 @@ final class ConversationLearningSystem {
     private var timer: Task<Void, Never>?
     private var reviewTask: Task<Void, Never>?
     private var saving: Task<Bool, Never>?
+    private var syncTask: Task<Void, Never>?
+    private weak var syncEnvironment: AppEnvironment?
+    private var syncRequested = false
+    private var lastSyncedPayload: Data?
+    var syncError: String?
+    private struct CloudSnapshot: Codable, Sendable { let revision: Int; let payload: String? }
+    private struct CloudWrite: Codable, Sendable { let revision: Int; let payload: String }
+    private struct CloudState: Codable {
+        let enabled: Bool
+        let ledger: LearningSystemPolicy.Ledger
+        let listening: [LearningListeningSession]
+        let pending: [Int] // Queued source messages and unfinished tasks stay device-local.
+    }
     private var active = Set<UUID>()
     private var activeReplyOwners = Set<UUID>()
     init(owner: UUID, evaluationID: UUID? = nil, sourceChatStore: ChatStore? = nil) {
@@ -66,7 +87,10 @@ final class ConversationLearningSystem {
     }
     func waitForPersistence() async -> Bool { await saving?.value ?? true }
     func load() async {
-        guard !ready, !loading else { return }
+        while loading {
+            do { try await Task.sleep(for: .milliseconds(10)) } catch { return }
+        }
+        guard !ready, !Task.isCancelled else { return }
         loading = true
         defer { loading = false }
         do {
@@ -75,16 +99,21 @@ final class ConversationLearningSystem {
                 try restored.ledger.validateStorageCompatibility()
                 state = restored
             }
+            // Existing opt-in remains opt-in; never silently enable a paid feature.
+            if state.presentation == nil, state.enabled {
+                presentation.hasChosenRecording = true
+            }
             ready = true
             if state.ledger.ruleRevision != LearningSystemPolicy.ruleRevision {
                 state.ledger.adoptCurrentRules(); persist()
             }
         } catch { self.error = "学习记录暂时无法读取，原文件已保留。\(error.localizedDescription)" }
     }
-    func persist() {
+    func persist(sync: Bool = true) {
         guard ready else { return }
         do {
             let data = try JSONEncoder().encode(state), previous = saving
+            if sync { requestSync() }
             saving = Task { [weak self, file] in
                 _ = await previous?.value
                 do {
@@ -100,7 +129,47 @@ final class ConversationLearningSystem {
         persist()
         return await saving?.value ?? false
     }
-    func setEnabled(_ value: Bool) { state.enabled = value; if !value { timer?.cancel(); reviewTask?.cancel() }; persist() }
+    var presentation: LearningChatPresentation {
+        get { state.presentation ?? LearningChatPresentation() }
+        set { state.presentation = newValue }
+    }
+    func deactivate() {
+        timer?.cancel(); reviewTask?.cancel(); syncTask?.cancel(); syncEnvironment = nil; activeReplyOwners.removeAll()
+    }
+    func setEnabled(_ value: Bool) {
+        state.enabled = value
+        presentation.hasChosenRecording = true
+        if !value { timer?.cancel(); reviewTask?.cancel(); state.challenge = nil }
+        persist()
+    }
+    func acknowledge(_ evidence: LearningSystemPolicy.Evidence?) {
+        if let evidence {
+            presentation.acknowledgedEvidence.formUnion(state.ledger.evidence.filter {
+                $0.characterID == evidence.characterID && $0.date <= evidence.date
+            }.map(\.id))
+        }
+        persist()
+    }
+    func unreadReceipt(characterID: UUID) -> ReviewReceipt? {
+        guard let receipt = state.receipts?[characterID], !presentation.acknowledgedEvidence.contains(receipt.id) else { return nil }
+        return receipt
+    }
+    func acknowledgeReceipt(characterID: UUID) {
+        if let receipt = state.receipts?[characterID] { presentation.acknowledgedEvidence.insert(receipt.id) }
+        persist()
+    }
+    func deferLearning() {
+        presentation.deferToday(now: .now)
+        state.ledger.deferredUntil = presentation.deferredUntil
+        persist()
+    }
+    func unreadEvidence(characterID: UUID) -> LearningSystemPolicy.Evidence? {
+        state.ledger.evidence.last { !$0.deleted && $0.characterID == characterID && !presentation.acknowledgedEvidence.contains($0.id) }
+    }
+    func chatInstruction(characterID: UUID) -> String? {
+        guard state.enabled, let challenge = state.challenge, challenge.characterID == characterID else { return nil }
+        return LearningChatPresentation.instruction(for: challenge.task)
+    }
     func observe(character: UUID, conversation: UUID, event: ConversationLearningObservation, environment: AppEnvironment) {
         guard ready, state.enabled else { return }
         let challenge = state.challenge?.characterID == character ? state.challenge : nil
@@ -122,7 +191,7 @@ final class ConversationLearningSystem {
     private func schedule(environment: AppEnvironment) {
         timer?.cancel()
         let day = LearningSystemPolicy.utcDay(.now)
-        guard state.enabled, !reviewing, activeReplyOwners.isEmpty, !storageFailed, state.batches[day, default: 0] < LearningSystemPolicy.dailyBatches, state.calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2 else { return }
+        guard state.enabled, !reviewing, activeReplyOwners.isEmpty, !storageFailed, (state.successfulBatches?[day] ?? 0) < LearningSystemPolicy.dailyBatches, state.calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2 else { return }
         let waits = candidates.compactMap { $0.delay(now: .now) }
         guard let delay = waits.min() else { return }
         timer = Task { [weak self, weak environment] in
@@ -132,19 +201,81 @@ final class ConversationLearningSystem {
         }
     }
     private var candidates: [LearningReviewQueue.Candidate] {
-        state.pending.filter { !active.contains($0.id) }.map { .init(id: $0.id, count: $0.turns.count, lastDate: $0.lastDate, blocked: $0.failure != nil) }
+        state.pending.filter { !active.contains($0.id) }.map { .init(id: $0.id, count: $0.turns.count, lastDate: $0.lastDate, blocked: $0.failure != nil, idleSeconds: $0.challenge == nil ? LearningSystemPolicy.idleSeconds : 12) }
     }
     func replyActivity(owner: UUID, active: Bool, environment: AppEnvironment) {
         if active { activeReplyOwners.insert(owner) } else { activeReplyOwners.remove(owner) }
         schedule(environment: environment)
     }
-    func resume(environment: AppEnvironment) { schedule(environment: environment) }
+    func resume(environment: AppEnvironment) {
+        syncEnvironment = environment
+        lastSyncedPayload = nil // Foreground recovery also pulls another device's completed evidence.
+        requestSync()
+        schedule(environment: environment)
+    }
+    func retrySync(environment: AppEnvironment) { syncEnvironment = environment; requestSync() }
+    private func requestSync() {
+        guard ready, syncEnvironment != nil else { return }
+        syncRequested = true
+        guard syncTask == nil else { return }
+        syncTask = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(2))
+            guard let self else { return }
+            defer { self.syncTask = nil }
+            while self.syncRequested && !Task.isCancelled {
+                self.syncRequested = false
+                await self.synchronize()
+            }
+        }
+    }
+    private func cloudPayload() throws -> Data {
+        let cloud = CloudState(enabled: state.enabled, ledger: state.ledger,
+            listening: state.listening.filter { $0.finishedAt != nil }, pending: [])
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.sortedKeys]
+        return try encoder.encode(cloud)
+    }
+    private func synchronize() async {
+        guard let environment = syncEnvironment,
+              case .signedIn(let identity) = environment.authSession.phase, identity.userID == owner else { return }
+        do {
+            let before = try cloudPayload()
+            if before == lastSyncedPayload { return }
+            for attempt in 0..<2 {
+                let remote: CloudSnapshot = try await environment.backendClient.get("/v1/learning/state")
+                guard !Task.isCancelled, case .signedIn(let current) = environment.authSession.phase, current.userID == owner else { return }
+                if let payload = remote.payload {
+                    let cloud = try JSONDecoder().decode(CloudState.self, from: Data(payload.utf8))
+                    try state.ledger.merge(cloud.ledger)
+                    // A completed attempt wins over a stale unfinished copy. Ongoing
+                    // audio sessions remain local, avoiding cross-device answer races.
+                    var sessions = Dictionary(state.listening.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+                    for session in cloud.listening where session.finishedAt != nil {
+                        if sessions[session.id]?.finishedAt == nil { sessions[session.id] = session }
+                    }
+                    state.listening = sessions.values.sorted { $0.startedAt < $1.startedAt }
+                }
+                let data = try cloudPayload()
+                let payload = String(decoding: data, as: UTF8.self)
+                do {
+                    let _: CloudSnapshot = try await environment.backendClient.send(path: "/v1/learning/state", method: "PUT", body: CloudWrite(revision: remote.revision, payload: payload))
+                    guard !Task.isCancelled else { return }
+                    syncError = nil
+                    lastSyncedPayload = data
+                    // Save the merged cache without scheduling another cloud write.
+                    persist(sync: false)
+                    return
+                } catch let error as BackendClientError where error.code == "LEARNING_STATE_CONFLICT" && attempt == 0 { continue }
+            }
+        } catch {
+            if !Task.isCancelled { syncError = "学习记录已保存在本机，暂未同步。联网后可重试。" }
+        }
+    }
     func review(environment: AppEnvironment, force: Bool = false) async {
         guard state.enabled, ready, !reviewing, activeReplyOwners.isEmpty,
               case .signedIn(let identity) = environment.authSession.phase, identity.userID == owner else { return }
         let day = LearningSystemPolicy.utcDay(.now)
         guard Date.now >= state.ledger.latestDate else { error = "设备时间早于已保存记录，请恢复正确时间后重试。"; return }
-        guard state.batches[day, default: 0] < LearningSystemPolicy.dailyBatches, state.calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2,
+        guard (state.successfulBatches?[day] ?? 0) < LearningSystemPolicy.dailyBatches, state.calls[day, default: 0] < LearningSystemPolicy.dailyBatches * 2,
               let batchID = LearningReviewQueue.next(candidates, now: .now, force: force),
               let index = state.pending.firstIndex(where: { $0.id == batchID }) else { schedule(environment: environment); return }
         var batch = state.pending[index]
@@ -207,12 +338,19 @@ final class ConversationLearningSystem {
                 guard state.ledger.record(items, batchID: batch.id, now: .now) else {
                     self.error = "记录时间异常或批次重复，原文已保留，未增加经验。"; return
                 }
+                if state.successfulBatches == nil { state.successfulBatches = [:] }
+                state.successfulBatches?[LearningSystemPolicy.utcDay(.now), default: 0] += 1
                 state.pending.removeAll { $0.id == batch.id }
                 if let challenge = batch.challenge, state.challenge?.task.id == challenge.task.id {
                     if LearningReviewQueue.endsChallenge(paused: result.paused, assessments: result.assessments) {
                         state.challenge = nil
                     } else { state.challenge?.context = combined }
                 }
+                if state.receipts == nil { state.receipts = [:] }
+                state.receipts?[batch.characterID] = ReviewReceipt(id: batch.id, date: .now,
+                    summary: result.paused ? "已结束这次练习，接下来照常聊天。" : items.isEmpty
+                        ? "这次聊天已回顾，暂未出现足够的能力证据。问候、简短回应也很自然，不需要刻意凑答案。"
+                        : "这次表达已记录。能力判断会结合不同日期和情境的表现。")
                 error = nil; persist(); return
             } catch {
                 if Task.isCancelled { return }
@@ -221,9 +359,15 @@ final class ConversationLearningSystem {
             }
         }
     }
+    var reviewLimitReached: Bool {
+        let day = LearningSystemPolicy.utcDay(.now)
+        return (state.successfulBatches?[day] ?? 0) >= LearningSystemPolicy.dailyBatches || state.calls[day, default: 0] >= LearningSystemPolicy.dailyBatches * 2
+    }
     func startRecommendedChallenge(characterID: UUID) {
+        guard !reviewLimitReached else { error = "今日学习回顾已达上限，新表达会保留到之后处理。正常聊天不受影响。"; return }
         for skill in LearningSystemPolicy.Skill.allCases {
-            for band in 1...3 where state.ledger.status(skill: skill, band: band, now: .now) == .ready {
+            for band in 1...3 where state.ledger.status(skill: skill, band: band, now: .now) == .ready
+                && (state.ledger.nextConfirmationDate(skill: skill, band: band, now: .now).map { $0 <= .now } ?? true) {
                 startChallenge(skill: skill, band: band, characterID: characterID); return
             }
         }
@@ -240,6 +384,7 @@ final class ConversationLearningSystem {
     }
     func startChallenge(skill: LearningSystemPolicy.Skill, band: Int, characterID: UUID) {
         guard state.enabled, state.challenge == nil else { return }
+        guard !reviewLimitReached else { error = "今日学习回顾已达上限，新表达会保留到之后处理。正常聊天不受影响。"; return }
         if let next = state.ledger.nextConfirmationDate(skill: skill, band: band, now: .now), next > .now {
             error = "下次独立确认可在\(next.formatted(date: .abbreviated, time: .shortened))开始。现在可以照常聊天。"; return
         }
@@ -282,14 +427,20 @@ extension AppEnvironment {
     func learningSystem() -> ConversationLearningSystem? {
         let owner: UUID
         if case .signedIn(let identity) = authSession.phase { owner = identity.userID }
-        else if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "learningSystem", let workspace {
+        else {
+            #if DEBUG
+            guard ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "learningSystem"
+                || (ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] == "1" && ProcessInfo.processInfo.environment["UI_TEST_LEARNING_CHAT_PREVIEW"] == "1"),
+                  let workspace else { return nil }
             owner = UUID(uuidString: ProcessInfo.processInfo.environment["UI_TEST_LEARNING_V1_OWNER"] ?? "") ?? workspace.userID
-        } else { return nil }
+            #else
+            return nil
+            #endif
+        }
         if let current = learningSystemInstance, current.owner == owner { return current }
+        learningSystemInstance?.deactivate()
         let model = ConversationLearningSystem(owner: owner)
         learningSystemInstance = model
-        Task { await model.load() }
         return model
     }
 }
-#endif

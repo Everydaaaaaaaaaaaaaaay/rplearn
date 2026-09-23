@@ -225,6 +225,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(LINGOTRIP_BUNDLE_ID).uitests
+        INFOPLIST_KEY_LingoTripLiveLearningUI: $(RUN_LIVE_LEARNING_UI)
         TEST_TARGET_NAME: LingoTrip
         CODE_SIGN_STYLE: Automatic
         "CODE_SIGN_STYLE[sdk=iphonesimulator*]": Manual

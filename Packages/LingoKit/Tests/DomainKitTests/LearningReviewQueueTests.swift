@@ -28,6 +28,16 @@ struct LearningReviewQueueTests {
         #expect(LearningReviewQueue.next([fresh], now: now.addingTimeInterval(89.999)) == nil)
         #expect(LearningReviewQueue.next([fresh], now: now.addingTimeInterval(90)) == fresh.id)
     }
+    @Test func practiceWaitsForUserPauseAndRestartsAfterNextSentence() {
+        let first = LearningReviewQueue.Candidate(id: UUID(), count: 1, lastDate: now, idleSeconds: 12)
+        #expect(first.delay(now: now.addingTimeInterval(11.9))! > 0)
+        #expect(first.delay(now: now.addingTimeInterval(12)) == 0)
+        let continued = LearningReviewQueue.Candidate(id: first.id, count: 2, lastDate: now.addingTimeInterval(10), idleSeconds: 12)
+        #expect(continued.delay(now: now.addingTimeInterval(12)) == 10)
+        #expect(continued.delay(now: now.addingTimeInterval(22)) == 0)
+        let ordinary = LearningReviewQueue.Candidate(id: UUID(), count: 2, lastDate: now)
+        #expect(ordinary.delay(now: now.addingTimeInterval(12)) == 78)
+    }
     @Test func readyConversationIsNotBlockedByFreshConversation() {
         let a = LearningReviewQueue.Candidate(id: UUID(), count: 1, lastDate: now)
         let b = LearningReviewQueue.Candidate(id: UUID(), count: 4, lastDate: now)

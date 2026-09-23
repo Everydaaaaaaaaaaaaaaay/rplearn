@@ -26,7 +26,7 @@ public final class LLMRouter: LLMClient, Sendable {
         let provider = try await currentClient()
         // Automatic learning tasks can retry on a later interaction; never amplify
         // one failed background review into several paid provider attempts.
-        let retryLimit = [.coachReview, .memorySummary, .quiz].contains(request.task) ? 0 : maxRetries
+        let retryLimit = [.coachReview, .learningReview, .memorySummary, .quiz].contains(request.task) ? 0 : maxRetries
         var attempt = 0
         while true {
             do {

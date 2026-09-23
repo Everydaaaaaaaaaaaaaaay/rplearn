@@ -47,7 +47,7 @@ extension ChatViewModel {
         }
         let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
-        return PromptBuilder.roleplayRequest(
+        var request = PromptBuilder.roleplayRequest(
             card: character.card,
             learner: learner,
             history: messages.filter { $0.id != retryingMessageID && (memoryCutoff == nil || $0.createdAt > memoryCutoff!) },
@@ -63,6 +63,10 @@ extension ChatViewModel {
             voiceMode: voiceMode,
             rawWindow: rawWindow
         )
+        if !voiceMode, let instruction = deps.learningInstruction?(characterID) {
+            request.system = [request.system, instruction].compactMap { $0 }.joined(separator: "\n\n")
+        }
+        return request
     }
 
     func notifyConversationChanged() {

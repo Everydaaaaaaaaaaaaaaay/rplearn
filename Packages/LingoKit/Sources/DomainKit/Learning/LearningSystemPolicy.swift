@@ -121,6 +121,34 @@ public enum LearningSystemPolicy {
             guard let i = evidence.firstIndex(where: { $0.id == id }) else { return }
             evidence[i].quote = ""; evidence[i].explanation = ""; evidence[i].deleted = true
         }
+        /// Union durable observations across devices. Deletion wins and rewards remain
+        /// bounded per day; syncing is never a new learning event.
+        public mutating func merge(_ other: Self) throws {
+            try other.validateStorageCompatibility()
+            var observations = Dictionary(evidence.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+            for item in other.evidence {
+                if let old = observations[item.id] {
+                    if item.deleted && !old.deleted { observations[item.id] = item }
+                } else { observations[item.id] = item }
+            }
+            evidence = observations.values.sorted { $0.date == $1.date ? $0.id.uuidString < $1.id.uuidString : $0.date < $1.date }
+            var awards = Dictionary(rewards.map { ($0.key, $0) }, uniquingKeysWith: { a, b in a.date <= b.date ? a : b })
+            for item in other.rewards {
+                if let old = awards[item.key], old.date < item.date || (old.date == item.date && old.xp >= item.xp) { continue }
+                awards[item.key] = item
+            }
+            var totals: [Int: Int] = [:]
+            rewards = awards.values.sorted { $0.date == $1.date ? $0.key < $1.key : $0.date < $1.date }.map { item in
+                let day = LearningSystemPolicy.utcDay(item.date)
+                let xp = min(max(0, item.xp), max(0, dailyXP - totals[day, default: 0]))
+                totals[day, default: 0] += xp
+                return Reward(key: item.key, date: item.date, xp: xp)
+            }
+            processed.formUnion(other.processed)
+            latestDate = max(latestDate, other.latestDate)
+            deferredUntil = [deferredUntil, other.deferredUntil].compactMap { $0 }.max()
+            adoptCurrentRules()
+        }
         public func independentEvidence(skill: Skill, band: Int, now: Date, maxAge: TimeInterval = 90 * LearningSystemPolicy.day, confirmation: Bool? = nil) -> [Evidence] {
             var fingerprints = Set<String>(), days = Set<Int>()
             var originalIDs: [String: UUID] = [:]

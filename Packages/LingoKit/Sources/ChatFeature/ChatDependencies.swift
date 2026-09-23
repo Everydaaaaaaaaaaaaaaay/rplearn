@@ -47,9 +47,9 @@ public struct ChatDependencies: Sendable {
     #if DEBUG
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
-    public var learningAccessory: (@MainActor @Sendable (CharacterDTO) -> AnyView)?
-    public var learningPrototypeDestination: (@MainActor @Sendable (CharacterDTO) -> AnyView)?
     #endif
+    public var learningAccessory: (@MainActor @Sendable (CharacterDTO, Bool, Bool) -> AnyView)?
+    public var learningInstruction: (@MainActor @Sendable (UUID) -> String?)?
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

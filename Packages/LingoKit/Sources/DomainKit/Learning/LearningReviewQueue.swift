@@ -16,11 +16,12 @@ public enum LearningReviewQueue {
         public let id: UUID
         public let count: Int
         public let lastDate: Date
+        public let idleSeconds: TimeInterval
         public let blocked: Bool
-        public init(id: UUID, count: Int, lastDate: Date, blocked: Bool = false) { self.id = id; self.count = count; self.lastDate = lastDate; self.blocked = blocked }
+        public init(id: UUID, count: Int, lastDate: Date, blocked: Bool = false, idleSeconds: TimeInterval = LearningSystemPolicy.idleSeconds) { self.id = id; self.count = count; self.lastDate = lastDate; self.blocked = blocked; self.idleSeconds = max(0, idleSeconds) }
         public func delay(now: Date) -> TimeInterval? {
             guard count > 0, !blocked else { return nil }
-            return count >= LearningSystemPolicy.batchSize ? 0 : max(0, LearningSystemPolicy.idleSeconds - now.timeIntervalSince(lastDate))
+            return count >= LearningSystemPolicy.batchSize ? 0 : max(0, idleSeconds - now.timeIntervalSince(lastDate))
         }
     }
     public static func next(_ candidates: [Candidate], now: Date, force: Bool = false) -> UUID? {

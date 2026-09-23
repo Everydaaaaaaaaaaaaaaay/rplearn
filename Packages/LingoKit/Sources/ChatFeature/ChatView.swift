@@ -79,11 +79,11 @@ public struct ChatView: View {
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
             }
-            #if DEBUG
             .safeAreaInset(edge: .top, spacing: 0) {
-                if let accessory = deps.learningAccessory { accessory(viewModel.character) }
+                if let accessory = deps.learningAccessory {
+                    accessory(viewModel.character, viewModel.isStreaming || viewModel.isWaitingForUserBurst, isKeyboardVisible || !viewModel.draft.isEmpty)
+                }
             }
-            #endif
             .ignoresSafeArea(.container, edges: .bottom)
         }
         .dsQuickNotice($viewModel.quickNotice)
