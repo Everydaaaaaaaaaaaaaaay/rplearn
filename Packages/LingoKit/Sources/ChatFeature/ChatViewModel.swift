@@ -774,7 +774,7 @@ public final class ChatViewModel {
         } catch is CancellationError {
             return
         } catch {
-            guard cycleID == replyCycleID else { return }
+            guard cycleID == replyCycleID, !Task.isCancelled else { return }
             Log.llm.error("流式回复失败：\(error)")
             if accumulated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 errorMessage = ChatErrorPresentation.assistantReply(error)
@@ -791,6 +791,9 @@ public final class ChatViewModel {
             return
         }
 
+        // AsyncThrowingStream may end normally on cancellation, without throwing.
+        // A superseded user turn must never publish an empty-response error.
+        guard cycleID == replyCycleID, !Task.isCancelled else { return }
         guard !accumulated.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             errorMessage = "暂时没有收到回复，请点重试。"
             return

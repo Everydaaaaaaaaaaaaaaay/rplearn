@@ -525,6 +525,34 @@ struct ChatWorkflowTests {
         #expect(first.messages.map(\.id) == second.messages.map(\.id))
     }
 
+    @Test("追加第三条消息取消旧流时不闪现空回复错误")
+    func supersededStreamDoesNotFlashEmptyResponse() async throws {
+        let provider = Provider(streamDelayMilliseconds: 500)
+        let f = try await fixture(provider)
+        defer { f.model.cancelPendingReply() }
+        for text in ["I went to the park.", "I listened to music."] {
+            f.model.draft = text
+            await f.model.sendDraft()
+        }
+        for _ in 0..<100 {
+            if await provider.tasks().contains(.conversation) { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(await provider.tasks().contains(.conversation))
+        f.model.draft = "And I met a friend there."
+        await f.model.sendDraft()
+        // Observe the transition, not just the final state: a later reply used to
+        // clear the stale error, hiding it from end-state-only assertions.
+        for _ in 0..<150 {
+            #expect(f.model.errorMessage == nil)
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        try await settle(f.model)
+        #expect(f.model.messages.filter { $0.role == .user }.count == 3)
+        #expect(f.model.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(f.model.errorMessage == nil)
+    }
+
     @Test("生成期间重新进入不误报中断也不重复生成")
     func reopenDuringActiveGeneration() async throws {
         let provider = Provider(streamDelayMilliseconds: 400)
