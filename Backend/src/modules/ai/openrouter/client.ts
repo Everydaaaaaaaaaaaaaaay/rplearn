@@ -36,7 +36,10 @@ const completionSchema = z.object({
 });
 const streamChunkSchema = z.object({
   choices: z.array(
-    z.object({ delta: z.object({ content: z.string().nullish() }).loose() }),
+    z.object({
+      delta: z.object({ content: z.string().nullish() }).loose(),
+      finish_reason: z.string().nullish(),
+    }),
   ),
   error: z.object({ code: z.union([z.number(), z.string()]).optional() }).optional(),
   id: z.string().optional(),
@@ -354,9 +357,18 @@ export function createOpenRouterClient(
       return (async function* (): AsyncGenerator<AiProviderStreamEvent> {
         let metadataSent = false;
         let doneSent = false;
+        let finishReason: string | null = null;
+        let hasVisibleContent = false;
         for await (const data of dataEvents(body)) {
           if (data === "[DONE]") {
             doneSent = true;
+            if (!hasVisibleContent && finishReason === "length") {
+              throw new AppError({
+                code: "AI_OUTPUT_LIMIT",
+                message: "模型在输出正文前耗尽生成额度，请重试。",
+                statusCode: 502,
+              });
+            }
             yield { type: "done" };
             break;
           }
@@ -378,8 +390,10 @@ export function createOpenRouterClient(
             };
           }
           for (const choice of chunk.data.choices) {
+            if (choice.finish_reason) finishReason = choice.finish_reason;
             const text = choice.delta.content;
             if (text !== undefined && text !== null && text.length > 0) {
+              if (text.trim()) hasVisibleContent = true;
               yield { text, type: "delta" };
             }
           }

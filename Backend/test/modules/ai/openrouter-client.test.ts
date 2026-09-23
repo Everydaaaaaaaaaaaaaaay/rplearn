@@ -4,6 +4,7 @@ import { loadConfig } from "../../../src/config/env.js";
 import { createOpenRouterClient } from "../../../src/modules/ai/openrouter/client.js";
 import type {
   AiProviderRequest,
+  AiProviderStreamEvent,
   AiRouteConfig,
 } from "../../../src/modules/ai/types.js";
 
@@ -46,6 +47,43 @@ function request(): AiProviderRequest {
 }
 
 describe("OpenRouter client", () => {
+  it("preserves usage but reports reasoning-only exhaustion instead of successful done", async () => {
+    const chunks = [
+      {
+        choices: [{ delta: { reasoning: "private thinking" }, finish_reason: null }],
+        id: "reasoning-only",
+      },
+      { choices: [{ delta: { content: " " }, finish_reason: "length" }] },
+      {
+        choices: [],
+        usage: { prompt_tokens: 3554, completion_tokens: 512, total_tokens: 4066 },
+      },
+    ];
+    const client = createOpenRouterClient(
+      config(),
+      vi
+        .fn<typeof fetch>()
+        .mockResolvedValue(
+          new Response(
+            chunks.map((chunk) => `data: ${JSON.stringify(chunk)}\n\n`).join("") +
+              "data: [DONE]\n\n",
+          ),
+        ),
+    );
+    const events: AiProviderStreamEvent[] = [];
+    await expect(
+      (async () => {
+        for await (const event of await client.stream(request())) events.push(event);
+      })(),
+    ).rejects.toMatchObject({ code: "AI_OUTPUT_LIMIT" });
+    expect(events.find((event) => event.type === "usage")).toMatchObject({
+      type: "usage",
+      usage: { outputTokens: 512 },
+    });
+    expect(events.some((event) => event.type === "done")).toBe(false);
+    expect(JSON.stringify(events)).not.toContain("private thinking");
+  });
+
   it("keeps sticky routing stable across turns and isolates users, tasks and models", async () => {
     const fetchMock = vi.fn<typeof fetch>().mockImplementation(() =>
       Promise.resolve(
@@ -105,9 +143,10 @@ describe("OpenRouter client", () => {
         maxOutputTokens: 1000,
       }),
     ).toBe(1000);
-    expect(outputTokenBudget(120, glmRoute)).toBe(512);
-    expect(outputTokenBudget(700, glmRoute)).toBe(700);
+    expect(outputTokenBudget(120, glmRoute)).toBe(800);
+    expect(outputTokenBudget(700, glmRoute)).toBe(800);
     expect(outputTokenBudget(120, { ...glmRoute, maxOutputTokens: 256 })).toBe(256);
+    expect(outputTokenBudget(120, { ...glmRoute, maxOutputTokens: 2400 })).toBe(2048);
     expect(outputTokenBudget(120, route)).toBe(120);
     expect(outputTokenBudget(72, { ...glmRoute, task: "proactive_message" })).toBe(512);
     // 单词讲解/语法解析的可见输出很短，但 GLM 思考必须同样装进预算，否则会空正文失败。
@@ -321,7 +360,7 @@ describe("OpenRouter client", () => {
         ),
       );
     const client = createOpenRouterClient(config(), fetchMock);
-    const events = [];
+    const events: AiProviderStreamEvent[] = [];
     for await (const event of await client.stream({
       ...request(),
       responseFormat: "text",
@@ -374,7 +413,7 @@ describe("OpenRouter client", () => {
       );
     });
     const client = createOpenRouterClient(config(), fetchMock);
-    const events = [];
+    const events: AiProviderStreamEvent[] = [];
     for await (const event of await client.stream({
       ...request(),
       signal: cancellation.signal,
