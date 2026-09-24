@@ -11,7 +11,7 @@ const message = z.object({
   characterId: z.uuid(), roleKey: role, messageId: z.uuid(),
   role: z.enum(["user", "assistant"]), characterCount: z.number().int().min(1).max(4000),
 });
-const start = z.object({ characterId: z.uuid(), roleKey: role });
+const start = z.object({ characterId: z.uuid(), roleKey: role, contentVersion: z.literal(2).optional() });
 const answer = z.object({ attemptId: z.uuid(), questionId: z.string().min(1).max(64), answer: z.string().min(1).max(200) });
 const level = z.object({ characterId: z.uuid(), roleKey: role, grade: z.number().int().min(1).max(12), acknowledge: z.literal(true) });
 
@@ -39,7 +39,7 @@ export function registerUnitLearningRoutes(app: FastifyInstance, auth: AuthServi
     const identity = await authenticateRequest(request, auth);
     const body = parse(start, request.body);
     reply.header("cache-control", "no-store");
-    return service.start(identity.userId, body.characterId, body.roleKey);
+    return service.start(identity.userId, body.characterId, body.roleKey, body.contentVersion ?? 1);
   });
   app.post("/v1/learning/units/answer", async (request, reply) => {
     const identity = await authenticateRequest(request, auth);
