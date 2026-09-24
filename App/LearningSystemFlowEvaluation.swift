@@ -53,7 +53,6 @@ import PersistenceKit
             dependencies.learningReplyActivity = { owner, active in
                 learning.replyActivity(owner: owner, active: active, environment: environment)
             }
-            dependencies.learningEnabled = { true }
             dependencies.learningInstruction = { characterID in learning.chatInstruction(characterID: characterID) }
             dependencies.learningRecorder = { character, conversation, event in
                 learning.observe(character: character, conversation: conversation, event: event, environment: environment)

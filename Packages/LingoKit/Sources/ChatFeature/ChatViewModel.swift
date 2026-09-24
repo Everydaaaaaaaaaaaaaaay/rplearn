@@ -1072,7 +1072,6 @@ public final class ChatViewModel {
 
     /// 双开关都开、且距上次出题已达阈值 → 本回合请求出题。
     private func shouldRequestQuiz(conversationID: UUID) async -> Bool {
-        guard deps.learningEnabled?() != true else { return false }
         let globallyEnabled = (try? await deps.economyStore.profile().quizGloballyEnabled) ?? true
         guard let conversation = try? await deps.chatStore.conversation(id: conversationID) else { return false }
         return QuizService.shouldRequestQuiz(

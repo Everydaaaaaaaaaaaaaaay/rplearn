@@ -167,9 +167,7 @@ struct RootView: View {
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
                 NavigationStack {
-                    if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "learningSystem" {
-                        ConversationLearningDashboard(character: character, environment: environment)
-                    } else if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "learningLab" {
+                    if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "learningLab" {
                         ConversationLearningPrototypeView(character: character, environment: environment)
                     } else if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "profile" {
                         CharacterProfileView(character: character,
@@ -220,18 +218,9 @@ struct RootView: View {
             }
             .task(id: authenticationTaskID) {
                 await handleAuthenticationPhase()
-                #if DEBUG
-                await ConversationLearningLiveEvaluation.runIfRequested(environment: environment)
-                LearningSystemLiveEvaluation.runIfRequested(environment: environment)
-                LearningSystemFlowEvaluation.runIfRequested(environment: environment)
-                #endif
                 guard environment.workspace != nil else { return }
-                if let learning = environment.learningSystem() {
-                    await learning.load()
-                    learning.resume(environment: environment)
-                }
                 #if DEBUG
-                if ["chat", "profile", "learningLab", "learningSystem"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
+                if ["chat", "profile", "learningLab"].contains(ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] ?? ""),
                    ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
                    bypassesAuthenticationForUITesting {
                     captureCharacter = try? await environment.rosterStore.allCharacters().first {
@@ -250,7 +239,6 @@ struct RootView: View {
             }
             .task(id: "\(authenticationTaskID)-\(scenePhase)-\(activeUserID?.uuidString ?? "none")", priority: .utility) {
                 guard scenePhase == .active, environment.workspace != nil else { return }
-                if let learning = environment.learningSystem() { await learning.load(); learning.resume(environment: environment) }
                 switch environment.authSession.phase {
                 case .signedIn(let identity):
                     guard identity.userID == activeUserID else { return }
@@ -1059,20 +1047,6 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
-        let learningEnvironment = environment
-        dependencies.learningAccessory = { character, busy, composing in
-            AnyView(LearningChatAccessory(character: character, environment: learningEnvironment, busy: busy, composing: composing))
-        }
-        dependencies.learningReplyActivity = { owner, active in
-            learningEnvironment.learningSystem()?.replyActivity(owner: owner, active: active, environment: learningEnvironment)
-        }
-        dependencies.learningEnabled = { learningEnvironment.learningSystemInstance?.state.enabled == true }
-        dependencies.learningRecorder = { character, conversation, event in
-            learningEnvironment.learningSystem()?.observe(character: character, conversation: conversation, event: event, environment: learningEnvironment)
-        }
-        dependencies.learningInstruction = { characterID in
-            learningEnvironment.learningSystemInstance?.chatInstruction(characterID: characterID)
-        }
         #if DEBUG
         dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
             && bypassesAuthenticationForUITesting

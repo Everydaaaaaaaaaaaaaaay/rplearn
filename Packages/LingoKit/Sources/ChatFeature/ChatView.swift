@@ -79,19 +79,10 @@ public struct ChatView: View {
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
             }
-            .safeAreaInset(edge: .top, spacing: 0) {
-                if let accessory = deps.learningAccessory {
-                    accessory(viewModel.character, viewModel.isStreaming || viewModel.isWaitingForUserBurst, isKeyboardVisible || !viewModel.draft.isEmpty)
-                }
-            }
             .ignoresSafeArea(.container, edges: .bottom)
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background(Color.dsBackground)
-        .onReceive(NotificationCenter.default.publisher(for: .learningChallengeDidBegin)) { notification in
-            guard notification.object as? UUID == viewModel.character.id else { return }
-            showsContactDetails = false
-        }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshMessages() }

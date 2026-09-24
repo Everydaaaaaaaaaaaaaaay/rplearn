@@ -218,10 +218,6 @@ targets:
     type: bundle.ui-testing
     platform: iOS
     deploymentTarget: "18.0"
-    info:
-      path: build/Generated-UITests-Info.plist
-      properties:
-        LingoTripLiveLearningUI: $(RUN_LIVE_LEARNING_UI)
     sources:
       - Tests/LingoTripUITests
     dependencies:

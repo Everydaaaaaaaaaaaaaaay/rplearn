@@ -38,7 +38,6 @@ public struct ChatTutorialConfiguration: Sendable {
 public struct ChatDependencies: Sendable {
     /// Per-view-model owner token; excludes distant scheduled replies until they become active.
     public var learningReplyActivity: (@MainActor @Sendable (UUID, Bool) -> Void)? = nil
-    public var learningEnabled: (@MainActor @Sendable () -> Bool)? = nil
     public var learningRecorder: (@MainActor @Sendable (UUID, UUID, ConversationLearningObservation) -> Void)? = nil
 
     /// Optional prototype telemetry; nil in normal app assembly.
@@ -48,7 +47,6 @@ public struct ChatDependencies: Sendable {
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
     #endif
-    public var learningAccessory: (@MainActor @Sendable (CharacterDTO, Bool, Bool) -> AnyView)?
     public var learningInstruction: (@MainActor @Sendable (UUID) -> String?)?
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
