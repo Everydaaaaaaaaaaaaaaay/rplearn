@@ -307,12 +307,17 @@ private struct UnitQuestionCard: View {
                             else { selectedTokens.append(index) }
                         }
                         .buttonStyle(.bordered)
-                        .disabled(selectedTokens.contains(index))
+                        .tint(selectedTokens.contains(index) ? .teal : .gray)
                     }
                 }
-                Button("提交排序") { submit(selectedTokens.map { question.options[$0] }.joined(separator: " ")) }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(selectedTokens.count != question.options.count)
+                HStack {
+                    Button("清空") { selectedTokens.removeAll() }
+                        .buttonStyle(.bordered)
+                        .disabled(selectedTokens.isEmpty)
+                    Button("提交排序") { submit(selectedTokens.map { question.options[$0] }.joined(separator: " ")) }
+                        .buttonStyle(.borderedProminent)
+                        .disabled(selectedTokens.count != question.options.count)
+                }
             } else {
                 TextField("输入英文答案", text: $written)
                     .textFieldStyle(.roundedBorder)
