@@ -66,7 +66,8 @@ export function validateGeneratedUnit(value: unknown, roleKey: string, grade: nu
       const tokens = question.answer.match(/[\p{L}\p{N}']+|[.!?]/gu) ?? [];
       const supplied = question.options.flatMap(option => option.match(/[\p{L}\p{N}']+|[.!?]/gu) ?? []);
       if (tokens.length < 3 || tokens.length > 12 ||
-          tokens.map(normalize).sort().join("|") !== supplied.map(normalize).sort().join("|"))
+          tokens.map(normalize).sort().join("|") !== supplied.map(normalize).sort().join("|") ||
+          normalize(question.options.join(" ")) === normalize(question.answer))
         reject("Generated ordering task does not match its answer.");
     } else if (question.options.length !== 0 || question.answer.includes("/") || question.answer.includes("或")) {
       reject("Generated written answer is not uniquely gradable.");
@@ -145,6 +146,13 @@ export function createUnitGenerator(
     try { reviewed = reviewSchema.parse(JSON.parse(second.content) as unknown); }
     catch { reject("Generated content review could not be parsed."); }
     if (!reviewed.approved) reject("Generated content was rejected by pedagogical review.");
+    const [duplicate] = await database.sql<{ id: string }[]>`select id from app.unit_learning_templates
+      where role_key=${roleKey} and grade=${grade}
+        and (scope_user_id is null or scope_user_id=${userId})
+        and (lower(payload->>'title')=lower(${candidate.title})
+          or lower(payload->'scene'->1->>'english')=lower(${candidate.scene[1]?.english ?? ""}))
+      limit 1`;
+    if (duplicate) reject("Generated content repeats an existing unit.");
     return { template: candidate, scopeUserId };
   };
 }

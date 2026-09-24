@@ -156,6 +156,130 @@ const lessons: readonly Lesson[] = [
   ] },
 ];
 
+// 第二组原创情境补充同一年级的不同交际任务，避免升星过度依赖同一种句型。
+const expandedLessons: readonly Lesson[] = [
+  { title: "借一张地图", objective: "礼貌请求与致谢", line: "Please show me the map. Thank you!", translation: "请把地图给我看看。谢谢！", questions: [
+    choice("q1", "说话者想看什么？", ["地图", "书包", "照片"], "地图", "show me the map 表示想看地图。"),
+    order("q2", "排成礼貌请求", ["me", "the", "map", "show", "Please", "."], "Please show me the map.", "Please 放在请求开头。"),
+    write("q3", "写出英语：谢谢", "thank you", "Thank you 是表示感谢的常用语。"),
+  ] },
+  { title: "窗边的小动物", objective: "数字与简单观察", line: "I see two birds and one cat by the window.", translation: "我看见窗边有两只鸟和一只猫。", questions: [
+    choice("q1", "鸟有几只？", ["一只", "两只", "三只"], "两只", "two birds 表示两只鸟。"),
+    order("q2", "排成“我看见两只鸟”", ["birds", "two", "see", "I", "."], "I see two birds.", "数字放在名词前，复数名词用 birds。"),
+    write("q3", "写出英语：猫", "cat", "cat 表示猫。"),
+  ] },
+  { title: "门边是谁的包", objective: "家庭成员与 her", line: "My mother is here. Her bag is by the door.", translation: "我妈妈在这里。她的包在门边。", questions: [
+    choice("q1", "门边的包是谁的？", ["妈妈的", "朋友的", "说话者的"], "妈妈的", "Her 回指前一句的 mother。"),
+    order("q2", "排成“她的包在门边”", ["door", "the", "by", "is", "bag", "Her", "."], "Her bag is by the door.", "her 表示“她的”。"),
+    write("q3", "写出英语：妈妈", "mother", "mother 表示妈妈。"),
+  ] },
+  { title: "椅子下面", objective: "物品位置与 under", line: "My keys are under the chair. Can you see them?", translation: "我的钥匙在椅子下面。你看见它们了吗？", questions: [
+    choice("q1", "钥匙在哪里？", ["椅子下面", "桌子上面", "门后面"], "椅子下面", "under the chair 表示在椅子下面。"),
+    order("q2", "排成“钥匙在椅子下面”", ["chair", "the", "under", "are", "keys", "The", "."], "The keys are under the chair.", "under 表示在下方。"),
+    write("q3", "写出英语：在……下面", "under", "under 表示位置在下方。"),
+  ] },
+  { title: "周五四点见", objective: "星期、时间与纠错", line: "Let's meet at four on Friday, not on Thursday.", translation: "我们周五四点见，不是周四。", questions: [
+    choice("q1", "约定是哪一天？", ["周四", "周五", "周六"], "周五", "not on Thursday 排除了周四。"),
+    order("q2", "排成“我们周五见”", ["Friday", "on", "meet", "We", "."], "We meet on Friday.", "星期前用 on。"),
+    write("q3", "写出英语数字：四", "four", "four 是约定的小时数。"),
+  ] },
+  { title: "画画的日子", objective: "一周安排与对比信息", line: "I read on Monday, but I paint on Wednesday.", translation: "我星期一阅读，星期三画画。", questions: [
+    choice("q1", "星期三做什么？", ["阅读", "画画", "跑步"], "画画", "I paint on Wednesday。"),
+    order("q2", "排成“我星期一阅读”", ["Monday", "on", "read", "I", "."], "I read on Monday.", "on Monday 表示在星期一。"),
+    write("q3", "写出英语：星期三", "Wednesday", "Wednesday 是星期三。"),
+  ] },
+  { title: "两本笔记本", objective: "价格、大小与比较", line: "The small notebook costs three dollars. The large one costs five.", translation: "小笔记本三美元，大笔记本五美元。", questions: [
+    choice("q1", "哪一本更便宜？", ["小笔记本", "大笔记本", "一样贵"], "小笔记本", "three dollars 少于 five dollars。"),
+    order("q2", "排成“小笔记本三美元”", ["dollars", "three", "costs", "notebook", "small", "The", "."], "The small notebook costs three dollars.", "单数主语搭配 costs。"),
+    write("q3", "写出英语：五", "five", "five 表示五。"),
+  ] },
+  { title: "天气要变了", objective: "天气预报与实用建议", line: "It's cloudy now, and the forecast says rain. Bring a jacket.", translation: "现在多云，预报说会下雨。带件外套吧。", questions: [
+    choice("q1", "为什么建议带外套？", ["可能下雨", "天气炎热", "要去游泳"], "可能下雨", "forecast says rain 提示天气会变。"),
+    order("q2", "排成“带件外套”", ["jacket", "a", "Bring", "."], "Bring a jacket.", "祈使句用动词原形开头。"),
+    write("q3", "写出英语：多云的", "cloudy", "cloudy 描述现在的天空。"),
+  ] },
+  { title: "找回车票", objective: "过去事件与转折", line: "I lost my ticket yesterday, but I found it in my bag.", translation: "我昨天弄丢车票，但后来在包里找到了。", questions: [
+    choice("q1", "车票最后在哪里找到？", ["包里", "地上", "车站"], "包里", "found it in my bag 说明结果。"),
+    order("q2", "排成“我在包里找到了它”", ["bag", "my", "in", "it", "found", "I", "."], "I found it in my bag.", "found 是 find 的过去式。"),
+    write("q3", "写出 lose 的过去式", "lost", "lose 的过去式是 lost。"),
+  ] },
+  { title: "下周去博物馆", objective: "将来计划与提前准备", line: "We're going to visit the museum next week. Let's buy tickets today.", translation: "我们下周打算去博物馆。今天先买票吧。", questions: [
+    choice("q1", "什么时候去博物馆？", ["今天", "下周", "上周"], "下周", "next week 是下周。"),
+    order("q2", "排成“今天买票”", ["today", "tickets", "buy", "Let's", "."], "Let's buy tickets today.", "Let's 后接动词原形表示提议。"),
+    write("q3", "写出英语：下周", "next week", "next week 指下一周。"),
+  ] },
+  { title: "地址已经改变", objective: "发现错误并礼貌求证", line: "The invitation has the old address, but the event moved. Could you send the new address?", translation: "邀请函上是旧地址，但活动换了地点。你能发一下新地址吗？", questions: [
+    choice("q1", "邀请函有什么问题？", ["写着旧地址", "日期缺失", "没有署名"], "写着旧地址", "old address 与 event moved 形成冲突。"),
+    order("q2", "排成“你能发新地址吗？”", ["address", "new", "the", "send", "you", "Could", "?"], "Could you send the new address?", "Could you ...? 是礼貌请求。"),
+    write("q3", "写出英语：邀请函", "invitation", "invitation 是邀请函。"),
+  ] },
+  { title: "两条不同的通知", objective: "比较来源并核对事实", line: "The website says the talk begins at seven, but the poster says six. Let's verify the time.", translation: "网站说讲座七点开始，海报却写六点。我们核对一下时间。", questions: [
+    choice("q1", "两个来源哪里不一致？", ["开始时间", "讲座地点", "讲者姓名"], "开始时间", "seven 与 six 是不同的开始时间。"),
+    order("q2", "排成“我们核对时间”", ["time", "the", "verify", "Let's", "."], "Let's verify the time.", "verify 表示核实信息。"),
+    write("q3", "写出英语：核实", "verify", "verify 是核对真实性。"),
+  ] },
+  { title: "今天与通常", objective: "习惯和此刻的不同", line: "I usually take photos on Saturdays, but today I'm drawing.", translation: "我通常星期六拍照，但今天正在画画。", questions: [
+    choice("q1", "今天正在做什么？", ["画画", "拍照", "散步"], "画画", "today I'm drawing 与通常的习惯不同。"),
+    order("q2", "排成“我今天正在画画”", ["today", "drawing", "am", "I", "."], "I am drawing today.", "am drawing 表示此刻的动作。"),
+    write("q3", "写出英语：通常", "usually", "usually 描述习惯频率。"),
+  ] },
+  { title: "靠窗的空桌", objective: "there are 与位置描述", line: "There are three tables near the window, and the largest one is free.", translation: "窗边有三张桌子，最大的一张空着。", questions: [
+    choice("q1", "哪张桌子空着？", ["最大的一张", "最小的一张", "三张都空着"], "最大的一张", "the largest one is free。"),
+    order("q2", "排成“这里有三张桌子”", ["tables", "three", "are", "There", "."], "There are three tables.", "复数名词前用 There are。"),
+    write("q3", "写出 large 的最高级", "largest", "large 以 e 结尾，最高级加 st。"),
+  ] },
+  { title: "电话响的时候", objective: "过去进行时与打断事件", line: "I was reading when the phone rang, so I missed the final sentence.", translation: "电话响时我正在阅读，所以漏看了最后一句。", questions: [
+    choice("q1", "电话响时说话者在做什么？", ["阅读", "打电话", "写字"], "阅读", "was reading 是当时正在进行的动作。"),
+    order("q2", "排成“电话响了”", ["rang", "phone", "The", "."], "The phone rang.", "rang 是 ring 的过去式。"),
+    write("q3", "写出 ring 的过去式", "rang", "rang 表示电话曾响起。"),
+  ] },
+  { title: "涨水时走哪边", objective: "条件与权衡安全", line: "If the street floods, we should take the higher road, even though it is longer.", translation: "如果街道积水，我们该走地势更高的路，虽然它更远。", questions: [
+    choice("q1", "积水时该选择哪条路？", ["地势更高的路", "更短的低路", "原地等待"], "地势更高的路", "take the higher road 是安全建议。"),
+    order("q2", "排成“我们应该走高处的路”", ["road", "higher", "the", "take", "should", "We", "."], "We should take the higher road.", "should 表示建议。"),
+    write("q3", "抄写台词中表示“虽然”的短语", "even though", "even though 引出与主句相对的情况。"),
+  ] },
+  { title: "志愿者写的通知", objective: "被动语态与关系从句", line: "The notice was written by volunteers who know the neighborhood well.", translation: "这份通知由熟悉社区的志愿者写成。", questions: [
+    choice("q1", "谁写了通知？", ["志愿者", "游客", "店主"], "志愿者", "was written by volunteers 指明作者。"),
+    order("q2", "排成“通知由志愿者写成”", ["volunteers", "by", "written", "was", "notice", "The", "."], "The notice was written by volunteers.", "was written 是被动语态。"),
+    write("q3", "写出英语：志愿者（复数）", "volunteers", "volunteers 是 volunteer 的复数。"),
+  ] },
+  { title: "海报上的照片", objective: "定语从句与署名义务", line: "The photo that was chosen for the poster must be credited to its maker.", translation: "选作海报的照片必须注明作者。", questions: [
+    choice("q1", "海报使用照片时必须做什么？", ["注明作者", "裁掉标题", "改变颜色"], "注明作者", "must be credited to its maker。"),
+    order("q2", "排成“照片必须署名”", ["credited", "be", "must", "photo", "The", "."], "The photo must be credited.", "must be credited 表示必须注明来源。"),
+    write("q3", "抄写台词中表示“创作者”的词", "maker", "maker 在此指照片的创作者。"),
+  ] },
+  { title: "节日期间的销量", objective: "区分同时发生与因果", line: "Sales rose during the festival, but the shop also changed its hours. We cannot tell which change mattered more.", translation: "节日期间销量上升，但商店同时调整了营业时间。无法断定哪项变化影响更大。", questions: [
+    choice("q1", "为什么不能断定节日是唯一原因？", ["营业时间也改变了", "销量没有上升", "没有举办节日"], "营业时间也改变了", "两个因素同时变化，不能只归因于节日。"),
+    order("q2", "排成“节日期间销量上升”", ["festival", "the", "during", "rose", "Sales", "."], "Sales rose during the festival.", "during 表示事件发生的期间。"),
+    write("q3", "抄写台词中表示“无法断定”的短语", "cannot tell", "cannot tell 表示证据不足以确定。"),
+  ] },
+  { title: "两组访客的偏好", objective: "比较群体并限定结论", line: "Visitors under twenty preferred the short tour, whereas older visitors preferred the full tour. Neither group represents everyone.", translation: "二十岁以下访客偏好短路线，年长访客偏好完整路线；两组都不能代表所有人。", questions: [
+    choice("q1", "哪项结论符合材料？", ["两组偏好不同", "所有人都喜欢短路线", "年长者没有参与"], "两组偏好不同", "whereas 对比了两组的选择。"),
+    order("q2", "排成“两组都不能代表所有人”", ["everyone", "represents", "group", "Neither", "."], "Neither group represents everyone.", "Neither 限定两组均不具有完全代表性。"),
+    write("q3", "抄写台词中的对比连接词", "whereas", "whereas 用来对比两种情况。"),
+  ] },
+  { title: "数字导览的代价", objective: "方案权衡与可及性", line: "A digital guide costs less to update, yet visitors without phones would need a printed option.", translation: "数字导览更新成本更低，但没有手机的访客仍需要纸质版本。", questions: [
+    choice("q1", "只提供数字导览会漏掉谁？", ["没有手机的访客", "所有工作人员", "会用手机的访客"], "没有手机的访客", "without phones 指这组可能被排除的人。"),
+    order("q2", "排成“有些访客需要纸质版本”", ["option", "printed", "a", "need", "visitors", "Some", "."], "Some visitors need a printed option.", "保留纸质选项照顾不同访客。"),
+    write("q3", "抄写台词中的转折词", "yet", "yet 引出数字方案的限制。"),
+  ] },
+  { title: "一段访谈与一份调查", objective: "评估证据覆盖范围", line: "The interview describes one visitor's experience; the survey covers two hundred. Both help, but neither alone explains why attendance changed.", translation: "访谈记录一位访客的经历，调查覆盖两百人。两者都有价值，但单独任何一个都不能解释到访人数变化的原因。", questions: [
+    choice("q1", "作者如何看待这两种证据？", ["都有价值但不足以单独解释原因", "访谈证明全部原因", "调查毫无用处"], "都有价值但不足以单独解释原因", "Both help, but neither alone explains why。"),
+    order("q2", "排成“调查覆盖两百人”", ["hundred", "two", "covers", "survey", "The", "."], "The survey covers two hundred.", "covers 说明调查范围。"),
+    write("q3", "写出英语：两者都不", "neither", "neither 指两者中没有一个。"),
+  ] },
+  { title: "不能直接比较的数字", objective: "综合证据与比较限制", line: "Three sites reported gains, but two did not track the same measure. The evidence suggests improvement, with a limit on direct comparison.", translation: "三个地点报告了改善，但其中两个使用的衡量指标不同。证据提示有改善，直接比较仍受限制。", questions: [
+    choice("q1", "最稳妥的结论是什么？", ["可能改善，但直接比较有限", "所有地点改善幅度相同", "没有任何改善"], "可能改善，但直接比较有限", "suggests improvement 同时限定 direct comparison。"),
+    order("q2", "排成“证据提示有改善”", ["improvement", "suggests", "evidence", "The", "."], "The evidence suggests improvement.", "suggests 比 proves 更审慎。"),
+    write("q3", "抄写台词中表示“比较”的名词", "comparison", "comparison 是比较。"),
+  ] },
+  { title: "写给新志愿者的摘要", objective: "按受众重组重要信息", line: "The technical report lists every method. For new volunteers, explain the safety steps first and link the full report for details.", translation: "技术报告列出所有方法。给新志愿者时，应先解释安全步骤，再附完整报告供查细节。", questions: [
+    choice("q1", "给新志愿者的摘要应先写什么？", ["安全步骤", "全部方法细节", "报告作者的履历"], "安全步骤", "safety steps first 指信息优先级。"),
+    order("q2", "排成“先解释安全步骤”", ["first", "steps", "safety", "the", "Explain", "."], "Explain the safety steps first.", "first 明确受众最需要的信息。"),
+    write("q3", "写出英语：志愿者（复数）", "volunteers", "volunteers 是新读者群体。"),
+  ] },
+];
+
 const roleSettings: Record<string, { name: string; places: string[]; placesZh: string[] }> = {
   oliver: { name: "Oliver", places: ["his second-hand bookshop", "a reading table"], placesZh: ["二手书店", "阅读桌旁"] },
   ruby: { name: "Ruby", places: ["her Melbourne café", "a beach rescue desk"], placesZh: ["墨尔本咖啡馆", "海滩救助站"] },
@@ -190,15 +314,42 @@ const sceneOpenings: readonly { english: string; chinese: string }[] = [
   { english: "{name} prepares two versions of a report for different readers.", chinese: "{name} 为不同读者准备两个版本的报告。" },
 ];
 
+const expandedSceneOpenings: readonly { english: string; chinese: string }[] = [
+  { english: "{name} has a map. Ask to see it.", chinese: "{name} 有一张地图。请对方拿给你看看。" },
+  { english: "{name} looks out of the window with you.", chinese: "{name} 和你一起望向窗外。" },
+  { english: "{name} points to a bag near the door.", chinese: "{name} 指着门边的包。" },
+  { english: "{name} looks for some keys beside a chair.", chinese: "{name} 在椅子旁找钥匙。" },
+  { english: "At {place}, {name} corrects the time on a meeting note.", chinese: "在{placeZh}，{name} 更正便条上的见面时间。" },
+  { english: "{name} shows you two activities written on a weekly calendar.", chinese: "{name} 给你看周历上写的两项活动。" },
+  { english: "At {place}, {name} compares the prices of two notebooks.", chinese: "在{placeZh}，{name} 比较两本笔记本的价格。" },
+  { english: "{name} checks the weather before going outside.", chinese: "出门前，{name} 查看天气。" },
+  { english: "{name} tells you how a missing ticket was found.", chinese: "{name} 告诉你丢失的票后来是怎么找到的。" },
+  { english: "At {place}, {name} makes a plan for next week.", chinese: "在{placeZh}，{name} 安排下周的行程。" },
+  { english: "{name} finds that an invitation has the wrong address.", chinese: "{name} 发现邀请函上的地址不对。" },
+  { english: "At {place}, {name} compares a website with a poster.", chinese: "在{placeZh}，{name} 对照网站与海报。" },
+  { english: "{name} explains how today's activity differs from the usual Saturday routine.", chinese: "{name} 解释今天的活动与平常星期六有什么不同。" },
+  { english: "At {place}, {name} checks which table is available.", chinese: "在{placeZh}，{name} 查看哪张桌子空着。" },
+  { english: "{name} describes what happened while reading.", chinese: "{name} 描述阅读时发生的事。" },
+  { english: "After heavy rain, {name} weighs two routes.", chinese: "大雨过后，{name} 权衡两条路线。" },
+  { english: "At {place}, {name} reads a notice from local volunteers.", chinese: "在{placeZh}，{name} 阅读本地志愿者写的通知。" },
+  { english: "{name} checks a photograph's credit before a poster is printed.", chinese: "印海报前，{name} 核查照片的署名。" },
+  { english: "At {place}, {name} examines a claim about festival sales.", chinese: "在{placeZh}，{name} 核查关于节日期间销量的说法。" },
+  { english: "{name} reads survey results from two groups of visitors.", chinese: "{name} 阅读两组访客的调查结果。" },
+  { english: "{name} compares a digital guide with a printed one.", chinese: "{name} 比较数字导览和纸质导览。" },
+  { english: "At {place}, {name} compares an interview with a larger survey.", chinese: "在{placeZh}，{name} 比较一段访谈和一份更大样本的调查。" },
+  { english: "{name} checks whether results from three sites can be compared fairly.", chinese: "{name} 核查三个地点的结果能否公平比较。" },
+  { english: "{name} prepares a concise safety note for new volunteers.", chinese: "{name} 为新志愿者准备简明的安全说明。" },
+];
+
 export const authoredUnitSeeds: readonly UnitTemplate[] = Object.entries(roleSettings).flatMap(([roleKey, role]) =>
-  lessons.map((lesson, index) => {
+  [lessons, expandedLessons].flatMap((group, batch) => group.map((lesson, index) => {
     const grade = Math.floor(index / 2) + 1;
     const place = role.places[index % 2] ?? "the meeting place";
     const placeZh = role.placesZh[index % 2] ?? "约定地点";
-    const opening = sceneOpenings[index];
+    const opening = (batch === 0 ? sceneOpenings : expandedSceneOpenings)[index];
     if (!opening) throw new Error(`Missing opening for authored lesson ${String(index)}`);
     return {
-      id: `unit-v1-${roleKey}-g${String(grade)}-${String(index % 2 + 1)}`,
+      id: `unit-v1-${roleKey}-g${String(grade)}-${String(batch * 2 + index % 2 + 1)}`,
       roleKey,
       grade,
       title: lesson.title,
@@ -209,5 +360,5 @@ export const authoredUnitSeeds: readonly UnitTemplate[] = Object.entries(roleSet
       ],
       questions: lesson.questions,
     };
-  }),
+  })),
 );
