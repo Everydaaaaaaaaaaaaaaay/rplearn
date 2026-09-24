@@ -18,6 +18,17 @@ import UIKit
 @Observable
 final class AppEnvironment {
     var learningSystemInstance: ConversationLearningSystem?
+    var unitLearningInstance: UnitLearningModel?
+
+    func unitLearning() -> UnitLearningModel? {
+        guard case .signedIn(let identity) = authSession.phase else { return nil }
+        if let unitLearningInstance { return unitLearningInstance }
+        let instance = UnitLearningModel(owner: identity.userID, client: backendClient) { [weak self] in
+            try? await self?.userState.synchronize()
+        }
+        unitLearningInstance = instance
+        return instance
+    }
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
@@ -229,6 +240,8 @@ final class AppEnvironment {
     func deactivateAccount() async {
         learningSystemInstance?.deactivate()
         learningSystemInstance = nil
+        unitLearningInstance?.deactivate()
+        unitLearningInstance = nil
         needsOnboarding = nil
         guard let current = workspace else { return }
         current.billing.deactivate()

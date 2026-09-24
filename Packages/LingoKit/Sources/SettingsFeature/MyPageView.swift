@@ -100,6 +100,7 @@ public struct MyPageView: View {
         }
         .background(Color.dsBackground.ignoresSafeArea())
         .task(id: reloadToken) { await reload() }
+        .onAppear { Task { await reload() } }
         .task(id: selectedAvatar) {
             guard let item = selectedAvatar, let userAvatar else { return }
             isSavingAvatar = true

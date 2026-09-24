@@ -1053,6 +1053,39 @@ struct RootView: View {
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1"
         #endif
+        dependencies.unitLearningMessage = { [weak environment] characterID, messageID, role, text in
+            guard let environment, let model = environment.unitLearning() else { return }
+            let roleKey: String
+            switch characterID.uuidString.uppercased() {
+            case "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E001": roleKey = "oliver"
+            case "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E002": roleKey = "ruby"
+            case "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E003": roleKey = "marcus"
+            default: roleKey = "other"
+            }
+            model.record(character: characterID, roleKey: roleKey, message: messageID, role: role, text: text)
+        }
+        dependencies.unitLearningPage = { [weak environment] character in
+            guard let environment else { return AnyView(EmptyView()) }
+            return AnyView(UnitLearningPage(character: character, environment: environment))
+        }
+        dependencies.unitLearningRefresh = { [weak environment] character in
+            guard let environment, let model = environment.unitLearning() else { return }
+            await model.refresh(character: character)
+        }
+        dependencies.unitLearningInstruction = { [weak environment] characterID in
+            guard let grade = environment?.unitLearning()?.currentGrade else { return nil }
+            let names = ["小学一年级", "小学二年级", "小学三年级", "小学四年级", "小学五年级", "小学六年级",
+                         "初中一年级", "初中二年级", "初中三年级", "高中一年级", "高中二年级", "高中三年级"]
+            guard names.indices.contains(grade - 1) else { return nil }
+            return "The learner's current in-app English learning stage is \(names[grade - 1]). Keep your natural character voice, but make vocabulary and sentence complexity accessible at this stage. Do not claim this is an external proficiency certification."
+        }
+        dependencies.unitLearningDifficulty = { [weak environment] characterID in
+            guard let grade = environment?.unitLearning()?.currentGrade else { return nil }
+            let levels: [DifficultyLevel] = [.primary1, .primary2, .primary3, .primary4, .primary5, .primary6,
+                                             .junior1, .junior2, .junior3, .senior1, .senior2, .senior3]
+            guard levels.indices.contains(grade - 1) else { return nil }
+            return levels[grade - 1]
+        }
         return dependencies
     }
 

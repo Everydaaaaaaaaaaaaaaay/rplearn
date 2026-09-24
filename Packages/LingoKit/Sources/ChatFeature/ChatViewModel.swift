@@ -115,6 +115,9 @@ public final class ChatViewModel {
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
             self.messages = try await deps.chatStore.messages(conversationID: conversation.id)
+            if let refresh = deps.unitLearningRefresh {
+                Task { await refresh(character) }
+            }
             if let profile = try? await deps.economyStore.profile() {
                 learnerDifficulty = profile.difficultyLevel
             }
@@ -273,6 +276,7 @@ public final class ChatViewModel {
             return
         }
         observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: true))
+        deps.unitLearningMessage?(character.id, userMessage.id, .user, userMessage.text)
         scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
@@ -302,6 +306,7 @@ public final class ChatViewModel {
         )
         persisted = true
         observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: true))
+        deps.unitLearningMessage?(character.id, userMessage.id, .user, userMessage.text)
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
@@ -445,6 +450,7 @@ public final class ChatViewModel {
             return false
         }
         observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: false))
+        deps.unitLearningMessage?(character.id, userMessage.id, .user, userMessage.text)
         // 辅助点评必须等主回复完成：免费额度下不能让后台任务抢走用户可见回复的预留。
         scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
@@ -999,6 +1005,7 @@ public final class ChatViewModel {
             delivered.append(message)
             messages.append(message)
             messages.sort { $0.orderIndex < $1.orderIndex }
+            deps.unitLearningMessage?(character.id, message.id, .assistant, message.text)
             notifyConversationChanged()
 
             // 关键词标注不阻塞下一条气泡的计时和显示。

@@ -39,12 +39,18 @@ extension ChatViewModel {
         let subscriptionTier = profile?.subscriptionTier ?? .free
         let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
-        let learner: LearnerContext
+        let baseLearner: LearnerContext
         if let profile {
-            learner = LearnerContext(profile: profile)
+            baseLearner = LearnerContext(profile: profile)
         } else {
-            learner = .fallback(difficulty: character.difficultyLevel)
+            baseLearner = .fallback(difficulty: character.difficultyLevel)
         }
+        let learner = LearnerContext(
+            nickname: baseLearner.nickname,
+            difficulty: deps.unitLearningDifficulty?(characterID) ?? baseLearner.difficulty,
+            goal: baseLearner.goal,
+            studyStage: baseLearner.studyStage
+        )
         let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
         var request = PromptBuilder.roleplayRequest(
@@ -64,6 +70,9 @@ extension ChatViewModel {
             rawWindow: rawWindow
         )
         if !voiceMode, let instruction = deps.learningInstruction?(characterID) {
+            request.system = [request.system, instruction].compactMap { $0 }.joined(separator: "\n\n")
+        }
+        if let instruction = deps.unitLearningInstruction?(characterID) {
             request.system = [request.system, instruction].compactMap { $0 }.joined(separator: "\n\n")
         }
         return request

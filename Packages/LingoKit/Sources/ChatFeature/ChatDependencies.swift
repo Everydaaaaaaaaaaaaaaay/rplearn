@@ -39,6 +39,9 @@ public struct ChatDependencies: Sendable {
     /// Per-view-model owner token; excludes distant scheduled replies until they become active.
     public var learningReplyActivity: (@MainActor @Sendable (UUID, Bool) -> Void)? = nil
     public var learningRecorder: (@MainActor @Sendable (UUID, UUID, ConversationLearningObservation) -> Void)? = nil
+    public var unitLearningMessage: (@MainActor @Sendable (UUID, UUID, MessageRole, String) -> Void)? = nil
+    public var unitLearningPage: (@MainActor @Sendable (CharacterDTO) -> AnyView)? = nil
+    public var unitLearningRefresh: (@MainActor @Sendable (CharacterDTO) async -> Void)? = nil
 
     /// Optional prototype telemetry; nil in normal app assembly.
     public var learningObserver: (@MainActor @Sendable (ConversationLearningObservation) -> Void)? = nil
@@ -48,6 +51,8 @@ public struct ChatDependencies: Sendable {
     public var marketingMotionCapture = false
     #endif
     public var learningInstruction: (@MainActor @Sendable (UUID) -> String?)?
+    public var unitLearningInstruction: (@MainActor @Sendable (UUID) -> String?)?
+    public var unitLearningDifficulty: (@MainActor @Sendable (UUID) -> DifficultyLevel?)?
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

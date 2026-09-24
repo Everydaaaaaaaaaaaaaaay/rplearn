@@ -44,6 +44,7 @@ public struct ChatView: View {
     @State var unseenIncomingMessageCount = 0
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
+    @State private var showsUnitLearning = false
     @State var highlightedMessageID: UUID?
     /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
     @State private var isKeyboardVisible = false
@@ -83,6 +84,18 @@ public struct ChatView: View {
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background(Color.dsBackground)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 35).onEnded { value in
+                guard deps.unitLearningPage != nil,
+                      value.translation.width < -85,
+                      abs(value.translation.width) > abs(value.translation.height) * 1.7,
+                      !isKeyboardVisible else { return }
+                showsUnitLearning = true
+            }
+        )
+        .navigationDestination(isPresented: $showsUnitLearning) {
+            deps.unitLearningPage?(viewModel.character)
+        }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshMessages() }
@@ -126,6 +139,15 @@ public struct ChatView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 0) {
+                    if deps.unitLearningPage != nil {
+                        Button { showsUnitLearning = true } label: {
+                            Image(systemName: "book.pages")
+                                .foregroundStyle(Color.accentColor)
+                                .frame(width: 44, height: 44)
+                        }
+                        .accessibilityLabel("学习页")
+                        .accessibilityIdentifier("chat.unitLearning.open")
+                    }
                     Button {
                         autoReadEnabled.toggle()
                     } label: {
