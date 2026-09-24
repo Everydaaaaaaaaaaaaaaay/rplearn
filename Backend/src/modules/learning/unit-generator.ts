@@ -20,7 +20,7 @@ const generatedSchema = z.object({
     speaker: z.enum(["narrator", "character"]),
     english: z.string().min(15).max(420),
     chinese: z.string().min(8).max(300),
-  })).min(2).max(4),
+  })).min(3).max(4),
   questions: z.array(questionSchema).length(3),
 });
 const reviewSchema = z.object({ approved: z.boolean(), reasons: z.array(z.string()).max(6) });
@@ -28,16 +28,16 @@ const reviewSchema = z.object({ approved: z.boolean(), reasons: z.array(z.string
 const curriculum = [
   "一年级：问候、姓名、颜色、身边物品；一句话读懂和作答。",
   "二年级：家庭、动物、教室用品、位置；he/she 与简单请求。",
-  "三年级：学校课程、星期、地点与路线；短句的信息定位。",
-  "四年级：购物、数量、价格、比较；简单理由。",
-  "五年级：过去经历、周末安排、条件变化；先后与因果。",
-  "六年级：信息冲突、澄清误会、简单推断与礼貌请求。",
-  "七年级：学校与日常生活、习惯频率、现在进行时；辨认当下与通常的区别。",
-  "八年级：过去进行时、条件句与可行建议；辨认事件关系和计划变化。",
-  "九年级：被动语态、定语从句；辨认事件受事与限定信息。",
-  "高一年级：描述趋势、比较观点，区分相关与因果。",
-  "高二年级：权衡方案、回应反驳、评价来源可靠性。",
-  "高三年级：综合证据、承认限制、按受众重述结论。",
+  "三年级：交友、家庭、动物、植物、颜色和数字；短对话后完成人物或物品信息卡。",
+  "四年级：家庭帮助、社区、天气、规则与购物；从两条线索判断并完成简单计划。",
+  "五年级：朋友与情绪、健康习惯、家乡和旅行；提取原因，给出有依据的建议。",
+  "六年级：聚会、健康、理财、自然与能源；整合时间、地点或资源约束并解释选择。",
+  "七年级：学校生活、健康饮食、规则和回忆；阅读短材料后提取事实、原因并写一条回应。",
+  "八年级：家庭与观点差异、计划、自然、阅读；比较两个人的理由与例子，再提出折中或建议。",
+  "九年级：社会变化、记忆、新闻和探索；记录多轮信息，区分事实、推测与证据缺口。",
+  "高一年级：青少年生活、旅行、文化与公共事务；整合两份信息，面向具体受众给出可执行表达。",
+  "高二年级：科学、文化、环境和职业；比较来源及利益相关者，说明方案前提与代价。",
+  "高三年级：综合不同语篇与证据；形成有界限的判断，并按受众重述结论。",
 ] as const;
 
 function reject(message: string): never {
@@ -76,7 +76,13 @@ export function validateGeneratedUnit(value: unknown, roleKey: string, grade: nu
   const maxWords = grade <= 2 ? 16 : grade <= 6 ? 28 : grade <= 9 ? 45 : 75;
   if (unit.scene.some(beat => beat.english.split(/\s+/u).length > maxWords))
     reject("Generated scene exceeds the grade reading limit.");
-  return { ...unit, id: `unit-v1-${roleKey}-g${String(grade)}-${randomUUID()}`, roleKey, grade };
+  const totalWords = unit.scene.reduce((sum, beat) => sum + beat.english.split(/\s+/u).length, 0);
+  if ((grade >= 10 && totalWords < 55) || (grade >= 7 && totalWords < 35))
+    reject("Generated scene is too short for its grade.");
+  const written = unit.questions.find(question => question.kind === "write");
+  if (grade >= 10 && (written?.answer.trim().split(/\s+/u).length ?? 0) < 2)
+    reject("Senior-level writing must test more than one word.");
+  return { ...unit, id: `unit-v2-${roleKey}-g${String(grade)}-${randomUUID()}`, roleKey, grade };
 }
 
 export function createUnitGenerator(
@@ -122,9 +128,10 @@ export function createUnitGenerator(
       `年级目标：${curriculum[grade - 1] ?? curriculum[0]}`,
       `角色：${JSON.stringify({ name, occupation, setting })}`,
       `已有题材（不能重复）：${JSON.stringify(prior)}`,
-      "JSON字段 title、objective、scene、questions。scene 2至4拍，每拍 speaker=narrator 或 character、english、chinese；角色台词贴合人设，中文是准确译文。",
-      "questions 恰好三题，id q1/q2/q3，kind 分别为 choice/order/write。choice 三个同类别合理选项，唯一答案必须是某选项；order 给打乱的词块，answer 是这些词块排成的唯一英文句；write 只问可唯一判分的一个英语词或固定短语，不问开放表达。每题有中文 prompt 和 explanation。",
-      "三题分别检查情境理解、目标句型、迁移词汇；所有答案必须由台词或年级所学知识支持，不依赖文化常识。不得复制教材课文、不得使用真实个人资料。低年级每拍英文不超过16词。",
+      "参考人教版公开教材的任务链：先从对话、便条或记录中获取信息，再比较或补全，最后给具体对象写出可执行回应。主题与活动方式可借鉴，文字、题目和人物事件必须原创。",
+      "JSON字段 title、objective、scene、questions。scene 3至4拍，至少一拍是信息材料、一拍是角色回应；每拍 speaker=narrator 或 character、english、chinese。角色必须有独特职业情境和实际行动，不能只替换姓名或地点；中文是准确译文。",
+      "questions 恰好三题，id q1/q2/q3，kind 分别为 choice/order/write。choice 需要结合至少两拍信息才可判断，三个同类别合理选项且唯一答案；order 排出对当前任务有用的英文句，词块必须打乱；write 补全一个可唯一判分的英语词组或短句，高中至少两个词，不问主观开放表达，也不让用户只抄台词中的单词。每题 explanation 指向具体英文证据和推理步骤。",
+      "三题构成同一个任务链，后一题使用前面的信息；答案必须由英文材料支持，不依赖文化常识。不得复制教材课文、不得使用真实个人资料。低年级每拍英文不超过16词。",
     ].join("\n");
     const first = await provider.complete({
       route, messages: [{ role: "system", content: "你是严谨的中国英语教材编者。输出合法 JSON 对象。" }, { role: "user", content: prompt }],

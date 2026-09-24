@@ -13,9 +13,18 @@ export type UnitTemplate = Readonly<{
   grade: number;
   title: string;
   objective: string;
+  learningReference?: Readonly<{
+    volumeId: string;
+    unitNumber: number;
+    evidenceUrl: string;
+    designFocus: string;
+    evidenceLevel: "sample-page";
+  }>;
   scene: readonly Readonly<{ speaker: "narrator" | "character"; english: string; chinese: string }>[];
   questions: readonly UnitQuestion[];
 }>;
+
+import { authoredUnitSeedsV2 } from "./unit-seeds-v2.js";
 
 type Lesson = Readonly<{
   title: string;
@@ -341,7 +350,7 @@ const expandedSceneOpenings: readonly { english: string; chinese: string }[] = [
   { english: "{name} prepares a concise safety note for new volunteers.", chinese: "{name} 为新志愿者准备简明的安全说明。" },
 ];
 
-export const authoredUnitSeeds: readonly UnitTemplate[] = Object.entries(roleSettings).flatMap(([roleKey, role]) =>
+const legacyAuthoredUnitSeeds: readonly UnitTemplate[] = Object.entries(roleSettings).flatMap(([roleKey, role]) =>
   [lessons, expandedLessons].flatMap((group, batch) => group.map((lesson, index) => {
     const grade = Math.floor(index / 2) + 1;
     const place = role.places[index % 2] ?? "the meeting place";
@@ -362,3 +371,5 @@ export const authoredUnitSeeds: readonly UnitTemplate[] = Object.entries(roleSet
     };
   })),
 );
+
+export const authoredUnitSeeds: readonly UnitTemplate[] = [...legacyAuthoredUnitSeeds, ...authoredUnitSeedsV2];

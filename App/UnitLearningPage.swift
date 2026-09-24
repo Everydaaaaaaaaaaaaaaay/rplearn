@@ -233,13 +233,19 @@ private struct UnitChallengeView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     Text(attempt.template.title).font(.largeTitle.bold())
                     Text(attempt.template.objective).foregroundStyle(.secondary)
+                    if attempt.template.id.hasPrefix("unit-v2-") && attempt.completedAt == nil {
+                        Text("先读英语完成本轮挑战；作答结束后可查看中文辅助和题目讲解。")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
                     ForEach(attempt.template.scene.indices, id: \.self) { index in
                         let beat = attempt.template.scene[index]
                         VStack(alignment: .leading, spacing: 5) {
                             Text(beat.speaker == "character" ? character.displayName : "剧情")
                                 .font(.caption.bold()).foregroundStyle(.teal)
                             Text(beat.english).font(.body)
-                            Text(beat.chinese).font(.footnote).foregroundStyle(.secondary)
+                            if !attempt.template.id.hasPrefix("unit-v2-") || attempt.completedAt != nil {
+                                Text(beat.chinese).font(.footnote).foregroundStyle(.secondary)
+                            }
                         }
                         .padding(16)
                         .frame(maxWidth: .infinity, alignment: .leading)

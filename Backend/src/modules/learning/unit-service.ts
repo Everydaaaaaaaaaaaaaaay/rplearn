@@ -92,8 +92,9 @@ export function createUnitLearningService(
   function ensureSeeds(): Promise<void> {
     seeded ??= (async () => {
       for (const template of authoredUnitSeeds) {
-        await sql`insert into app.unit_learning_templates(id,role_key,grade,source,payload)
-          values(${template.id},${template.roleKey},${template.grade},'authored',${JSON.stringify(template)}::jsonb)
+        const version = template.id.startsWith("unit-v2-") ? 2 : 1;
+        await sql`insert into app.unit_learning_templates(id,role_key,grade,source,version,payload)
+          values(${template.id},${template.roleKey},${template.grade},'authored',${version},${JSON.stringify(template)}::jsonb)
           on conflict(id) do nothing`;
       }
     })().catch((error: unknown) => { seeded = undefined; throw error; });
@@ -171,7 +172,7 @@ export function createUnitLearningService(
           and (t.scope_user_id is null or t.scope_user_id=${userId})
           and not exists(select 1 from app.unit_learning_attempts a where a.user_id=${userId}
             and a.character_id=${characterId} and a.template_id=t.id)
-        order by random() limit 1`;
+        order by t.version desc, random() limit 1`;
       const template = templates[0];
       if (!template) return null;
       const id = randomUUID();
@@ -188,8 +189,9 @@ export function createUnitLearningService(
       if (!account) fail("UNIT_STATE_UNAVAILABLE", "Learning state is unavailable.", 503);
       const key = roleKey(role, characterId);
       const generated = await generate(key, account.grade, characterId, userId);
-      await sql`insert into app.unit_learning_templates(id,role_key,grade,source,scope_user_id,payload)
-        values(${generated.template.id},${key},${account.grade},'generated',${generated.scopeUserId},${JSON.stringify(generated.template)}::jsonb)
+      const version = generated.template.id.startsWith("unit-v2-") ? 2 : 1;
+      await sql`insert into app.unit_learning_templates(id,role_key,grade,source,scope_user_id,version,payload)
+        values(${generated.template.id},${key},${account.grade},'generated',${generated.scopeUserId},${version},${JSON.stringify(generated.template)}::jsonb)
         on conflict(id) do nothing`;
       return start(userId, characterId, role, generatedCount + 1);
     }
