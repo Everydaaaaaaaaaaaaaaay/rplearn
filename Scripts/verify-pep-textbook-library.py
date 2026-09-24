@@ -29,12 +29,15 @@ def verify() -> None:
     data = json.loads(CATALOG.read_text())
     volumes = data["volumes"]
     require(data["schemaVersion"] == 1, "教材库格式版本不支持")
-    require(data["volumeCount"] == len(volumes) == 12, "教材册次不完整")
+    require((CATALOG.parent / data["studyNotes"]).is_file(), "逐册研读文档不存在")
+    require(data["volumeCount"] == len(volumes) == 19, "教材册次不完整")
+    expected_elementary = {(grade, term) for grade in range(3, 6) for term in ("upper", "lower")} | {(6, "upper")}
     expected_junior = {(7, "upper"), (7, "lower"), (8, "upper"), (8, "lower"), (9, "upper")}
     expected_senior = {("mandatory", n) for n in range(1, 4)} | {
         ("selective-mandatory", n) for n in range(1, 5)
     }
     seen_ids: set[str] = set()
+    elementary: set[tuple[int, str]] = set()
     junior: set[tuple[int, str]] = set()
     senior: set[tuple[str, int]] = set()
     audio_count = 0
@@ -49,21 +52,28 @@ def verify() -> None:
         require(official_url(ebook["catalogUrl"]) and official_url(ebook["readerUrl"]), f"电子教材入口无效：{identity}")
         require(ebook["readerUrl"].endswith("/mobile/index.html"), f"电子教材应使用 HTML5 阅读入口：{identity}")
         require(ebook["publisherListingTitle"].strip(), f"缺少人教社登记书名：{identity}")
-        require(ebook["contentReview"] in {"sample-page-reviewed", "not-reviewed"}, f"教材阅读状态无效：{identity}")
+        require(ebook["contentReview"] in {"sample-page-reviewed", "sample-content-reviewed", "not-reviewed"}, f"教材阅读状态无效：{identity}")
+        if ebook["contentReview"] != "not-reviewed":
+            require(official_url(ebook["samplePageEvidenceUrl"]) and ebook["sampleObservation"].strip(), f"缺少教材页样本证据：{identity}")
         numbers = [(unit["number"], unit.get("starter", False)) for unit in volume["units"]]
         require(len(numbers) == len(set(numbers)), f"重复单元编号：{identity}")
         require(all(unit["title"].strip() for unit in volume["units"]), f"单元题名为空：{identity}")
         unit_count += len(numbers)
-        if volume["stage"] == "junior":
-            junior.add((volume["grade"], volume["term"]))
-            require(volume["edition"] == "2022-curriculum-revision", f"初中版次不符：{identity}")
-            require(volume["coverage"] == "unit-titles-and-public-audio-links", f"初中证据状态不符：{identity}")
+        if volume["stage"] in {"elementary", "junior"}:
+            require(volume["studyReviewLevel"] == "publisher-activity-index", f"义务教育研读深度不符：{identity}")
+            if volume["stage"] == "elementary":
+                elementary.add((volume["grade"], volume["term"]))
+            else:
+                junior.add((volume["grade"], volume["term"]))
+            require(volume["edition"] == "2022-curriculum-revision", f"义务教育版次不符：{identity}")
+            require(volume["coverage"] == "unit-titles-and-public-audio-links", f"义务教育证据状态不符：{identity}")
             for unit in volume["units"]:
                 require(unit["audioResources"], f"缺少公开音频：{identity} {unit['title']}")
                 for resource in unit["audioResources"]:
                     require(resource["label"].strip() and official_url(resource["url"]), f"无效音频入口：{identity}")
                     audio_count += 1
         elif volume["stage"] == "senior":
+            require(volume["studyReviewLevel"] == "official-lesson-index", f"高中研读深度不符：{identity}")
             senior.add((volume["track"], volume["bookNumber"]))
             require(volume["edition"] == "2019", f"高中版次不符：{identity}")
             require(volume["coverage"] == "unit-titles-in-official-lesson-index", f"高中证据状态不符：{identity}")
@@ -72,10 +82,13 @@ def verify() -> None:
                 require(unit["exampleListedActivity"].strip(), f"单元缺课例活动样本：{identity} {unit['title']}")
         else:
             raise ValueError(f"未知学段：{identity}")
+    require(elementary == expected_elementary, "小学册次缺失或混入未核对册次")
     require(junior == expected_junior, "初中册次缺失或混入未核对册次")
     require(senior == expected_senior, "高中册次缺失")
-    require(unit_count == 78, "单元数量与已核对目录不一致")
-    require(audio_count == 288, "初中音频入口数量与已核对页面不一致")
+    gap_keys = {(gap["stage"], gap.get("grade"), gap.get("term")) for gap in data["knownGaps"]}
+    require({("elementary", 6, "lower"), ("junior", 9, "lower")} <= gap_keys, "缺少尚未公开册次的记录")
+    require(unit_count == 127, "单元数量与已核对目录不一致")
+    require(audio_count == 694, "小学和初中音频入口数量与已核对页面不一致")
     print(f"教材库校验通过：{len(volumes)} 册、{unit_count} 个单元、{audio_count} 个官方音频入口")
 
 
