@@ -9,13 +9,16 @@ function tokens(text: string): string[] {
 
 describe("authored unit library", () => {
   it("covers every school year four times for each main character with checkable questions", () => {
-    expect(authoredUnitSeeds).toHaveLength(159);
-    expect(new Set(authoredUnitSeeds.map(unit => unit.id)).size).toBe(159);
+    expect(authoredUnitSeeds).toHaveLength(144);
+    expect(new Set(authoredUnitSeeds.map(unit => unit.id)).size).toBe(144);
+    expect(authoredUnitSeeds.every(unit => unit.id.startsWith("unit-v2-"))).toBe(true);
     for (const role of ["oliver", "ruby", "marcus"])
       for (let grade = 1; grade <= 12; grade += 1) {
         const units = authoredUnitSeeds.filter(unit => unit.roleKey === role && unit.grade === grade);
-        expect(units).toHaveLength([3, 7, 8, 9, 10].includes(grade) ? 5 : 4);
+        expect(units).toHaveLength(4);
+        expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(4);
         for (const unit of units) {
+          expect(() => validateGeneratedUnit(unit, role, grade)).not.toThrow();
           expect(unit.scene.some(beat => beat.speaker === "character")).toBe(true);
           expect(unit.scene.every(beat => !beat.english.includes("{") && !beat.chinese.includes("{"))).toBe(true);
           if (grade <= 2) expect(unit.scene.every(beat => beat.english.split(/\s+/u).length <= 16)).toBe(true);
@@ -26,36 +29,39 @@ describe("authored unit library", () => {
               expect(question.options.filter(option => option === question.answer)).toHaveLength(1);
             } else if (question.kind === "order") {
               expect(tokens(question.options.join(" "))).toEqual(tokens(question.answer));
+              expect(question.options.join(" ")).not.toBe(question.answer);
             } else {
               expect(question.options).toHaveLength(0);
               expect(question.answer.length).toBeGreaterThan(1);
+              if (grade >= 10) expect(question.answer.trim().split(/\s+/u).length).toBeGreaterThan(1);
             }
           }
         }
       }
   });
 
-  it("keeps the new scenes distinct by character and traces their classroom task design to reviewed samples", () => {
+  it("keeps role scenes distinct and records the actual evidence depth of each textbook reference", () => {
     const catalog = JSON.parse(readFileSync(new URL("../../../../docs/learning-program/textbooks/pep/catalog.json", import.meta.url), "utf8")) as {
       volumes: { id: string; units: { number: number }[] }[];
     };
     const volumes = new Map(catalog.volumes.map(volume => [volume.id, volume]));
-    const newUnits = authoredUnitSeeds.filter(unit => unit.id.startsWith("unit-v2-"));
-    expect(newUnits).toHaveLength(15);
-    for (const grade of [3, 7, 8, 9, 10]) {
-      const units = newUnits.filter(unit => unit.grade === grade);
+    for (let grade = 1; grade <= 12; grade += 1) {
+      const units = authoredUnitSeeds.filter(unit => unit.grade === grade);
       expect(new Set(units.map(unit => unit.roleKey))).toEqual(new Set(["oliver", "ruby", "marcus"]));
-      expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(3);
-      expect(new Set(units.map(unit => unit.questions[0]?.answer)).size).toBe(3);
+      expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(12);
     }
-    for (const unit of newUnits) {
+    for (const unit of authoredUnitSeeds) {
       expect(unit.scene.length).toBeGreaterThanOrEqual(3);
-      expect(unit.learningReference?.evidenceLevel).toBe("sample-page");
-      expect(unit.learningReference?.evidenceUrl).toMatch(/^https:\/\/(www\.)?pep\.com\.cn\//);
+      expect(unit.learningReference?.evidenceUrl).toMatch(/^https:\/\/(www\.)?(pep\.com\.cn|moe\.gov\.cn)\//);
+      if (unit.grade <= 2) {
+        expect(unit.learningReference?.evidenceLevel).toBe("curriculum-introduction");
+        expect(unit.learningReference?.volumeId).toBe("pep-preparatory-unverified");
+        continue;
+      }
+      expect(["sample-page", "publisher-activity-index", "official-lesson-index"]).toContain(unit.learningReference?.evidenceLevel);
       const volume = volumes.get(unit.learningReference?.volumeId ?? "");
       expect(volume?.units.some(item => item.number === unit.learningReference?.unitNumber)).toBe(true);
       expect(unit.questions[0]?.explanation.length).toBeGreaterThanOrEqual(8);
-      if (unit.grade >= 10) expect(unit.questions[2]?.answer.trim().split(/\s+/u).length).toBeGreaterThan(1);
     }
   });
 

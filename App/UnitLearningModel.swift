@@ -76,11 +76,7 @@ final class UnitLearningModel {
         let role: String
         let characterCount: Int
     }
-    private struct StartBody: Encodable, Sendable {
-        let characterId: UUID
-        let roleKey: String
-        let contentVersion = 2
-    }
+    private struct StartBody: Encodable, Sendable { let characterId: UUID; let roleKey: String }
     private struct AnswerBody: Encodable, Sendable { let attemptId: UUID; let questionId: String; let answer: String }
     private struct LevelBody: Encodable, Sendable { let characterId: UUID; let roleKey: String; let grade: Int; let acknowledge: Bool }
     private let client: BackendClient

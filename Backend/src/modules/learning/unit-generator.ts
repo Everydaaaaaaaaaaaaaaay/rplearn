@@ -4,6 +4,7 @@ import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import type { AiProviderClient, AiRouteConfig } from "../ai/types.js";
 import type { UnitTemplate } from "./unit-seeds.js";
+import { sourceByGrade } from "./unit-seeds-v2-expanded.js";
 
 const questionSchema = z.object({
   id: z.enum(["q1", "q2", "q3"]),
@@ -36,8 +37,8 @@ const curriculum = [
   "八年级：家庭与观点差异、计划、自然、阅读；比较两个人的理由与例子，再提出折中或建议。",
   "九年级：社会变化、记忆、新闻和探索；记录多轮信息，区分事实、推测与证据缺口。",
   "高一年级：青少年生活、旅行、文化与公共事务；整合两份信息，面向具体受众给出可执行表达。",
-  "高二年级：科学、文化、环境和职业；比较来源及利益相关者，说明方案前提与代价。",
-  "高三年级：综合不同语篇与证据；形成有界限的判断，并按受众重述结论。",
+  "高二年级：未来预测、身体语言、跨文化解释与急救沟通；比较来源、语境和不确定性。",
+  "高三年级：环境保护、诗歌阐释、海洋议题与职业沟通；权衡利益，用文本证据作有界限的判断。",
 ] as const;
 
 function reject(message: string): never {
@@ -115,6 +116,9 @@ export function createUnitGenerator(
     const name = textField(card.name, 80);
     const occupation = textField(card.occupation, 150);
     const setting = textField(card.setting ?? card.background, 350);
+    const references = sourceByGrade[grade];
+    const reference = references?.[Math.floor(Math.random() * references.length)];
+    if (!reference) reject("Textbook reference is unavailable for this grade.");
     const route = await loadRoute();
     const provider = route.provider === "openrouter" ? providers.openRouter : providers.deepSeek;
     if (!provider.configured || !route.allowJsonResponse) reject("Content authoring model is unavailable.");
@@ -128,6 +132,7 @@ export function createUnitGenerator(
       `年级目标：${curriculum[grade - 1] ?? curriculum[0]}`,
       `角色：${JSON.stringify({ name, occupation, setting })}`,
       `已有题材（不能重复）：${JSON.stringify(prior)}`,
+      `本次教材参考：${JSON.stringify(reference)}。只借鉴该单元主题和任务方法；证据等级是 ${reference.evidenceLevel}，不得声称见过未公开的课文或习题。`,
       "参考人教版公开教材的任务链：先从对话、便条或记录中获取信息，再比较或补全，最后给具体对象写出可执行回应。主题与活动方式可借鉴，文字、题目和人物事件必须原创。",
       "JSON字段 title、objective、scene、questions。scene 3至4拍，至少一拍是信息材料、一拍是角色回应；每拍 speaker=narrator 或 character、english、chinese。角色必须有独特职业情境和实际行动，不能只替换姓名或地点；中文是准确译文。",
       "questions 恰好三题，id q1/q2/q3，kind 分别为 choice/order/write。choice 需要结合至少两拍信息才可判断，三个同类别合理选项且唯一答案；order 排出对当前任务有用的英文句，词块必须打乱；write 补全一个可唯一判分的英语词组或短句，高中至少两个词，不问主观开放表达，也不让用户只抄台词中的单词。每题 explanation 指向具体英文证据和推理步骤。",
@@ -139,7 +144,10 @@ export function createUnitGenerator(
       userReference: "unit-library", maxAttempts: 1,
     });
     let candidate: UnitTemplate;
-    try { candidate = validateGeneratedUnit(JSON.parse(first.content) as unknown, roleKey, grade); }
+    try {
+      candidate = { ...validateGeneratedUnit(JSON.parse(first.content) as unknown, roleKey, grade),
+        learningReference: reference };
+    }
     catch { reject("Generated content did not pass deterministic checks."); }
     const second = await provider.complete({
       route, messages: [

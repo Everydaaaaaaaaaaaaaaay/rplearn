@@ -92,9 +92,8 @@ export function createUnitLearningService(
   function ensureSeeds(): Promise<void> {
     seeded ??= (async () => {
       for (const template of authoredUnitSeeds) {
-        const version = template.id.startsWith("unit-v2-") ? 2 : 1;
         await sql`insert into app.unit_learning_templates(id,role_key,grade,source,version,payload)
-          values(${template.id},${template.roleKey},${template.grade},'authored',${version},${JSON.stringify(template)}::jsonb)
+          values(${template.id},${template.roleKey},${template.grade},'authored',2,${JSON.stringify(template)}::jsonb)
           on conflict(id) do nothing`;
       }
     })().catch((error: unknown) => { seeded = undefined; throw error; });
@@ -156,7 +155,7 @@ export function createUnitLearningService(
     });
   }
 
-  async function start(userId: string, characterId: string, role: string, contentVersion: 1 | 2 = 1, generatedCount = 0) {
+  async function start(userId: string, characterId: string, role: string, generatedCount = 0) {
     await ensureSeeds();
     await ensureRows(userId, characterId, role);
     const selected = await sql.begin(async tx => {
@@ -169,11 +168,11 @@ export function createUnitLearningService(
       if (character.chat_characters < challengeLength) fail("UNIT_NOT_READY", "Keep chatting to unlock a challenge.");
       const templates = await tx<{ id: string }[]>`select t.id from app.unit_learning_templates t
         where t.role_key=${character.role_key} and t.grade=${account.grade}
-          and t.version <= ${contentVersion}
+          and t.version = 2
           and (t.scope_user_id is null or t.scope_user_id=${userId})
           and not exists(select 1 from app.unit_learning_attempts a where a.user_id=${userId}
             and a.character_id=${characterId} and a.template_id=t.id)
-        order by t.version desc, random() limit 1`;
+        order by random() limit 1`;
       const template = templates[0];
       if (!template) return null;
       const id = randomUUID();
@@ -190,11 +189,10 @@ export function createUnitLearningService(
       if (!account) fail("UNIT_STATE_UNAVAILABLE", "Learning state is unavailable.", 503);
       const key = roleKey(role, characterId);
       const generated = await generate(key, account.grade, characterId, userId);
-      const version = contentVersion;
       await sql`insert into app.unit_learning_templates(id,role_key,grade,source,scope_user_id,version,payload)
-        values(${generated.template.id},${key},${account.grade},'generated',${generated.scopeUserId},${version},${JSON.stringify(generated.template)}::jsonb)
+        values(${generated.template.id},${key},${account.grade},'generated',${generated.scopeUserId},2,${JSON.stringify(generated.template)}::jsonb)
         on conflict(id) do nothing`;
-      return start(userId, characterId, role, contentVersion, generatedCount + 1);
+      return start(userId, characterId, role, generatedCount + 1);
     }
     const state = await read(userId, characterId, role);
     if (state.active?.id !== selected) fail("UNIT_STATE_UNAVAILABLE", "Challenge could not be loaded.", 503);

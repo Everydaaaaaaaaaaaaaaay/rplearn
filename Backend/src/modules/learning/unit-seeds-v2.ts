@@ -1,4 +1,5 @@
 import type { UnitQuestion, UnitTemplate } from "./unit-seeds.js";
+import { expandedUnitSeedsV2 } from "./unit-seeds-v2-expanded.js";
 
 type Role = "oliver" | "ruby" | "marcus";
 type Beat = Readonly<{ speaker: "narrator" | "character"; english: string; chinese: string }>;
@@ -209,7 +210,7 @@ const references: Record<Draft["grade"], NonNullable<UnitTemplate["learningRefer
     designFocus: "青少年活动的日程约束与面向受众的表达", evidenceLevel: "sample-page" },
 };
 
-export const authoredUnitSeedsV2: readonly UnitTemplate[] = drafts.map((draft) => {
+const initialUnitSeedsV2: readonly UnitTemplate[] = drafts.map((draft) => {
   const questions: readonly UnitQuestion[] = [
     { id: "q1", kind: "choice", ...draft.choice },
     { id: "q2", kind: "order", ...draft.order },
@@ -220,4 +221,53 @@ export const authoredUnitSeedsV2: readonly UnitTemplate[] = drafts.map((draft) =
     title: draft.title, objective: draft.objective, learningReference: references[draft.grade],
     scene: draft.scene, questions,
   };
+});
+
+const concludingBeats: Readonly<Record<string, readonly [english: string, chinese: string]>> = {
+  "unit-v2-oliver-g10-1": ["The club has already printed a draft timetable, so any change must be clear to everyone who plans to attend.", "读书社已经印出暂定时间表，任何改动都要明确告知准备参加的人。"],
+  "unit-v2-ruby-g10-1": ["Several students also need time to travel home after their shift, so the closing time matters to them.", "几名学生值班后还要赶路回家，因此结束时间也很重要。"],
+  "unit-v2-marcus-g10-1": ["The organiser will print the exhibition labels after selecting photographs, making the two deadlines important for different students.", "主办方选好照片后才印展签，因此两个截止日影响不同学生。"],
+  "unit-v2-oliver-g7-2": ["Oliver writes both times on the group notice so students can decide.", "Oliver 把两个时间都写在通知上，方便学生选择。"],
+  "unit-v2-ruby-g7-2": ["Ruby checks the timetable before inviting the student.", "Ruby 邀请学生前先核对课程表。"],
+  "unit-v2-marcus-g7-2": ["The group wants a clear reminder before the weekend.", "小组希望在周末前收到清楚提醒。"],
+  "unit-v2-oliver-g7-3": ["One student asks which activity fits the available hour.", "一名学生问空出的那一小时适合哪项活动。"],
+  "unit-v2-ruby-g7-3": ["The student can attend only one of the events.", "这名学生只能参加其中一项活动。"],
+  "unit-v2-marcus-g7-3": ["Marcus asks the student to check the meeting times first.", "Marcus 请学生先核对两项活动的时间。"],
+  "unit-v2-oliver-g7-4": ["A new visitor has not read the sign yet.", "一位新访客还没读到告示。"],
+  "unit-v2-ruby-g7-4": ["A family is waiting beside the quiet area.", "一家人正在安静区旁等候。"],
+  "unit-v2-marcus-g7-4": ["The wall sign also explains the rule near the photographs.", "照片旁的墙面告示也说明了这条规则。"],
+  "unit-v2-oliver-g8-2": ["Oliver must tell people who already reserved seats.", "Oliver 还得通知已经预订座位的人。"],
+  "unit-v2-marcus-g8-2": ["The group needs a safe replacement location.", "小组需要一个安全的替代拍摄地点。"],
+  "unit-v2-marcus-g8-3": ["He reads both reviews before deciding what to display.", "他决定展出什么之前先读两篇评论。"],
+  "unit-v2-oliver-g8-4": ["The incorrect note could confuse the next employee.", "错误便条可能误导下一位店员。"],
+  "unit-v2-ruby-g8-4": ["Several volunteers may rely on the copied note when planning their shift.", "几位志愿者安排值班时可能会依据转发便条。"],
+  "unit-v2-marcus-g8-4": ["The student wants to submit work before the deadline.", "学生希望在截止时间前交作品。"],
+  "unit-v2-ruby-g9-2": ["Ruby asks for the map of each survey before describing a trend.", "Ruby 在谈论趋势前要求核对每次调查的区域图。"],
+  "unit-v2-marcus-g9-2": ["Marcus cannot see the same stretch of road in both pictures.", "Marcus 在两张照片里看不到完全相同的路段。"],
+  "unit-v2-ruby-g9-3": ["Her message should give the public a reason to trust its numbers.", "她的消息需要让公众知道数字的核实范围。"],
+  "unit-v2-marcus-g9-3": ["The correction will appear beside the original photograph.", "更正说明会展示在原照片旁。"],
+  "unit-v2-oliver-g9-4": ["Oliver still wants to reduce the number of receipts he prints each week.", "Oliver 仍希望减少每周打印的收据数量。"],
+  "unit-v2-ruby-g9-4": ["The sign will stand where visitors make safety decisions.", "标牌将立在访客需要作出安全决定的地方。"],
+  "unit-v2-marcus-g9-4": ["Marcus wants every visitor to understand the basic story.", "Marcus 希望每位访客都能理解作品的基本故事。"],
+  "unit-v2-oliver-g10-2": ["The organiser says late arrivals may enter only after the opening reading. Oliver also has to bring a signed ticket, which he will keep in his bag.", "主办方说迟到者要等开场朗读结束才能入场。Oliver 还须携带已签名的票，并把票放在包里。"],
+  "unit-v2-ruby-g10-2": ["The registration desk closes just before the opening talk, and Ruby is introducing one speaker. She checks the bus plan against both the desk time and her own seating deadline.", "登记台在开幕发言前关闭，而 Ruby 要介绍一位发言人；她同时核对登记时间与自己的入座期限。"],
+  "unit-v2-marcus-g10-2": ["The workshop leader asks participants to be inside the hall when the demonstration begins. Marcus has no extra transfer time in this estimate, so a delay would make the plan less reliable.", "讲习班主持人要求学员在演示开始时已进场。这份估计未包含换乘余量，延误会降低行程可靠性。"],
+  "unit-v2-oliver-g10-3": ["A visitor with limited time asks to inspect every letter, but the owner has agreed to a short display of the original only. Oliver must explain why the digital version can support detailed reading.", "时间有限的访客想看清每个字母，但所有者只同意原件短时展出；Oliver 要解释数字图为何更适合细读。"],
+  "unit-v2-ruby-g10-3": ["The model shows the tower's old shape and the route of its light. Ruby can guide a large group there before offering a smaller, supervised upstairs visit when conditions allow.", "模型展示灯塔旧貌与灯光路线。Ruby 可先带大团体看模型，条件允许时再安排小规模上楼。"],
+  "unit-v2-marcus-g10-3": ["The gallery plans to place a label beside each photograph, including its date and whether visitors are seeing an original or a copy. This prevents a conservation decision from changing the historical claim.", "画廊计划在每张照片旁标注日期与原件或复制品身份，避免保存方式误导历史信息。"],
+  "unit-v2-oliver-g10-4": ["Several readers are still in the building, but none has reported a lost wallet yet. Oliver can record where and when he found it so staff have details to verify later.", "楼里还有读者，但尚无人报告丢钱包。Oliver 可记录发现地点和时间，供工作人员稍后核对。"],
+  "unit-v2-ruby-g10-4": ["The animal is close to the path, where curious visitors are gathering. Ruby can keep people back while giving the trained team a landmark they can recognise quickly.", "动物靠近人群聚集的小路。Ruby 可让访客后退，并给救助队报容易辨认的地标。"],
+  "unit-v2-marcus-g10-4": ["The child is not the subject of the photograph, and the street scene still makes sense without the foreground figure. Marcus can show the cropped version to the parent before sharing it.", "孩子并非照片主题；裁掉前景人物后街景仍完整。Marcus 可在分享前给家长看裁切版。"],
+  "unit-v2-ruby-g11-1": ["She records the patrol length beside the count so future volunteers can compare like with like.", "她把巡查长度与计数并列记录，方便以后按相同范围比较。"],
+  "unit-v2-marcus-g11-1": ["He keeps the untouched scan beside any edited copy so viewers can see which details were reconstructed.", "他把原始扫描件与修复版并列保存，让观众分辨哪些细节经过重建。"],
+  "unit-v2-ruby-g11-2": ["She offers a quieter place for the next instruction.", "她为下一条指示安排更安静的位置。"],
+  "unit-v2-marcus-g11-2": ["He prepares to ask permission before raising the camera again.", "他准备在再次举起相机前先征求同意。"],
+  "unit-v2-oliver-g11-3": ["He saves the original poster and the organiser's reply so readers can see why the description changed.", "他保存原海报和主办方回复，让读者看见说明修改的依据。"],
+  "unit-v2-ruby-g11-3": ["She asks whether the guest wants examples from both families.", "她询问客人是否想了解两个家庭的例子。"],
+  "unit-v2-marcus-g11-3": ["The corrected caption will credit the photographer and identify the school setting.", "更正后的图注会标明摄影师和学校场合。"],
+};
+
+export const authoredUnitSeedsV2: readonly UnitTemplate[] = [...initialUnitSeedsV2, ...expandedUnitSeedsV2].map(unit => {
+  const extra = concludingBeats[unit.id];
+  return extra ? { ...unit, scene: [...unit.scene, { speaker: "narrator", english: extra[0], chinese: extra[1] }] } : unit;
 });
