@@ -81,7 +81,7 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（英语旅程）、`review`（仅 Debug 的短复习内存预览）。产物固定取
 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
-脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备按既有工作树配置或已启动 iPhone 选择，
+脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备优先使用工作树绑定；未绑定时选择最新可用 iOS 运行时中的 iPhone，同一运行时优先复用已启动设备，
 可用 `LINGOTRIP_SIMULATOR_UDID` 显式指定；不创建 Clone，不关闭其他项目的设备。
 
 免登录参数通过 `SIMCTL_CHILD_` 传入：`UI_TEST_SKIP_ONBOARDING=1`、

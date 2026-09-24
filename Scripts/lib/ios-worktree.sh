@@ -165,10 +165,23 @@ lingotrip_simulator_udid() {
   fi
 
   local udid
-  udid="$(awk -F '[()]' '/iPhone/ && /\(Booted\)/ { gsub(/[[:space:]]/, "", $2); print $2; exit }' <<< "$devices")"
-  if [[ -z "$udid" ]]; then
-    udid="$(awk -F '[()]' '/iPhone/ { gsub(/[[:space:]]/, "", $2); print $2; exit }' <<< "$devices")"
-  fi
+  udid="$(awk -F '[()]' '
+    /^-- iOS [0-9]/ {
+      split($0, header, " ")
+      split(header[3], parts, ".")
+      runtime = parts[1] * 10000 + parts[2] * 100 + parts[3]
+      next
+    }
+    /iPhone/ {
+      booted = index($0, "(Booted)") > 0
+      if (runtime > best_runtime || (runtime == best_runtime && booted && !best_booted)) {
+        best_runtime = runtime
+        best_booted = booted
+        best_udid = $2
+      }
+    }
+    END { gsub(/[[:space:]]/, "", best_udid); print best_udid }
+  ' <<< "$devices")"
   if [[ -z "$udid" ]]; then
     echo "错误：没有可用的 iPhone 模拟器" >&2
     return 1
