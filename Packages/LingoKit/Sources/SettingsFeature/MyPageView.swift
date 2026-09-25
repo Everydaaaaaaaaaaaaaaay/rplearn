@@ -281,11 +281,11 @@ public struct MyPageView: View {
 
     private var learningHotspot: some View {
         Button {
-            sceneActions.perform(for: .learning, action: onCalibrateLevel)
+            onCalibrateLevel()
         } label: {
             learningSceneEntry
         }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .learning))
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: false))
         .accessibilityIdentifier("me.level")
         .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")

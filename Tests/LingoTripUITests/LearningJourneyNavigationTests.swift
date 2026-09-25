@@ -22,6 +22,9 @@ final class LearningJourneyNavigationTests: XCTestCase {
         XCTAssertTrue(choice.waitForExistence(timeout: 5))
         choice.tap()
         app.buttons["完成"].tap()
+        let confirmation = app.alerts["直接更改英语水平？"]
+        XCTAssertTrue(confirmation.waitForExistence(timeout: 5))
+        confirmation.buttons["确认更改"].tap()
         XCTAssertTrue(journey.waitForExistence(timeout: 10), "确认后应返回英语旅程")
         XCTAssertTrue(level.waitForExistence(timeout: 5))
         XCTAssertTrue(level.label.contains("启蒙"), "应显示刚保存的水平")

@@ -359,6 +359,7 @@ final class AppEnvironment {
 
     /// 自评或答题校准完成后，让角色显示、后续提示词与尚未发送的主动消息立即使用新等级。
     func applyLearnerProfile(_ profile: UserProfileDTO) async {
+        unitLearningInstance?.applyProfileDifficulty(profile.difficultyLevel)
         do {
             if profile.hasCompletedOnboarding {
                 try await reconcileMainCharacters(profile: profile)

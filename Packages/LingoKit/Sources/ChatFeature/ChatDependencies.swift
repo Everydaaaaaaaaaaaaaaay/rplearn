@@ -51,8 +51,6 @@ public struct ChatDependencies: Sendable {
     public var marketingMotionCapture = false
     #endif
     public var learningInstruction: (@MainActor @Sendable (UUID) -> String?)?
-    public var unitLearningInstruction: (@MainActor @Sendable (UUID) -> String?)?
-    public var unitLearningDifficulty: (@MainActor @Sendable (UUID) -> DifficultyLevel?)?
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

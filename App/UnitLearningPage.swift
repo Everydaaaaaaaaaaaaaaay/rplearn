@@ -6,7 +6,6 @@ struct UnitLearningPage: View {
     let environment: AppEnvironment
     @State private var model: UnitLearningModel?
     @State private var selectedAttemptID: UUID?
-    @State private var pendingGrade: Int?
 
     var body: some View {
         Group {
@@ -44,19 +43,6 @@ struct UnitLearningPage: View {
         }
         .navigationTitle("与\(character.displayName)学习")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("直接更改英语水平？", isPresented: Binding(
-            get: { pendingGrade != nil },
-            set: { if !$0 { pendingGrade = nil } }
-        )) {
-            Button("取消", role: .cancel) { pendingGrade = nil }
-            Button("确认更改", role: .destructive) {
-                guard let grade = pendingGrade, let model else { return }
-                pendingGrade = nil
-                Task { await model.changeGrade(character: character, to: grade) }
-            }
-        } message: {
-            Text("将所有角色的当前学习水平直接改为\(gradeName(pendingGrade ?? 1))，本级星星进度归零。已完成记录保留；旧年级正在进行的挑战可继续练习，但不能为新年级加分。新聊天和新挑战会使用所选水平。")
-        }
         .task(id: character.id) {
             model = environment.unitLearning()
             await model?.refresh(character: character)
@@ -93,13 +79,6 @@ struct UnitLearningPage: View {
             }
             Text("每答对 \(state.progress.correctPerStar) 道新题点亮一颗星；九颗星后进入下一年级。旧题重复答对不加分。")
                 .font(.caption).foregroundStyle(.secondary)
-            Menu("手动调整学习水平") {
-                ForEach(1...12, id: \.self) { grade in
-                    Button(gradeName(grade)) { pendingGrade = grade }
-                        .disabled(grade == state.progress.grade)
-                }
-            }
-            .font(.footnote.weight(.semibold))
         }
         .padding(18)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20))
@@ -117,6 +96,10 @@ struct UnitLearningPage: View {
             ProgressView(value: Double(state.progress.chatCharacters), total: Double(state.progress.challengeLength))
                 .tint(.teal)
                 .accessibilityIdentifier("unitLearning.chatProgress")
+            if model.pendingMessageCount(for: character.id) > 0 {
+                Text("聊天进度正在同步，数字会自动更新。")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
             if let active = state.active {
                 Text("正在进行：\(active.template.title)")
                     .font(.subheadline)
@@ -155,21 +138,23 @@ struct UnitLearningPage: View {
                 Text("完成的挑战会保存在这里，未答对的题可以回来重答。")
                     .font(.subheadline).foregroundStyle(.secondary)
             }
-            ForEach(state.history) { attempt in
-                Button { selectedAttemptID = attempt.id } label: {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(attempt.template.title).font(.headline)
-                            Text("\(gradeName(attempt.grade)) · 答对 \(attempt.correctCount) / \(attempt.questionCount)")
-                                .font(.caption).foregroundStyle(.secondary)
+            LazyVStack(spacing: 12) {
+                ForEach(state.history) { attempt in
+                    Button { selectedAttemptID = attempt.id } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(attempt.template.title).font(.headline)
+                                Text("\(gradeName(attempt.grade)) · 答对 \(attempt.correctCount) / \(attempt.questionCount)")
+                                    .font(.caption).foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right").foregroundStyle(.secondary)
                         }
-                        Spacer()
-                        Image(systemName: "chevron.right").foregroundStyle(.secondary)
+                        .padding(14)
+                        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
                     }
-                    .padding(14)
-                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
         }
     }

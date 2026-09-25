@@ -9,6 +9,7 @@ struct DifficultyLevelSelectionPage: View {
     @Binding var selection: DifficultyLevel
     let currentLevel: DifficultyLevel
     let recommendedLevel: DifficultyLevel?
+    let isApplying: Bool
     let onDone: () -> Void
 
     private let groups: [(String, [DifficultyLevel])] = [
@@ -21,7 +22,7 @@ struct DifficultyLevelSelectionPage: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: DSSpacing.lg) {
+            LazyVStack(alignment: .leading, spacing: DSSpacing.lg) {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("选择适合你的对话难度")
                         .font(.system(.title2, design: .rounded, weight: .bold))
@@ -51,8 +52,17 @@ struct DifficultyLevelSelectionPage: View {
                     Text("已选择：\(selection.displayName)")
                         .font(.caption)
                         .foregroundStyle(Color.dsPaperInkSecondary)
-                    Button("完成") { onDone() }
-                        .buttonStyle(.dsWorkbenchAction)
+                    Button(action: onDone) {
+                        if isApplying {
+                            ProgressView().tint(.white)
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            Text("完成")
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
+                    .buttonStyle(.dsWorkbenchAction)
+                    .accessibilityLabel(isApplying ? "正在保存水平" : "完成")
                 }
             }
             .padding(.horizontal, DSSpacing.lg)

@@ -59,7 +59,9 @@ public struct PlacementTestView: View {
     @State var selectedLevel: DifficultyLevel = .junior3
     @State var levelSelectionReturnPhase: Phase = .introduction
     @State var questionBankError: String?
+    @State var isPreparingQuestionBank = false
     @State var isApplying = false
+    @State var confirmsDirectLevelChange = false
     @State var errorMessage: String?
     @Environment(\.accessibilityReduceMotion) var reduceMotion
 
@@ -95,7 +97,8 @@ public struct PlacementTestView: View {
                         recommendedLevel: levelSelectionReturnPhase == .result
                             ? result?.difficultyLevel
                             : nil,
-                        onDone: { applySelectedLevel(testResult: levelSelectionReturnPhase == .result ? result : nil) }
+                        isApplying: isApplying,
+                        onDone: requestLevelChange
                     )
                     .disabled(isApplying)
                     .overlay(alignment: .top) {
@@ -128,6 +131,12 @@ public struct PlacementTestView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(usesNativeNavigation && phase == .introduction ? .visible : .hidden, for: .navigationBar)
         .task { await prepareIfNeeded() }
+        .alert("直接更改英语水平？", isPresented: $confirmsDirectLevelChange) {
+            Button("取消", role: .cancel) {}
+            Button("确认更改", role: .destructive) { applySelectedLevel(testResult: nil) }
+        } message: {
+            Text("所有角色的聊天难度和之后的单元挑战会使用新水平；当前等级的星星进度清零。已完成的挑战记录保留，正在进行的旧等级挑战不为新等级加分。")
+        }
         .onDisappear {
             listeningPlayer.stop()
             Task { await deps.speech.stopSpeaking() }
@@ -270,6 +279,10 @@ public struct PlacementTestView: View {
                                     .font(.caption)
                                     .foregroundStyle(Color.dsSunset)
                                     .fixedSize(horizontal: false, vertical: true)
+                            } else if isPreparingQuestionBank {
+                                Label("正在准备测试题库；选择水平无需等待。", systemImage: "clock")
+                                    .font(.caption)
+                                    .foregroundStyle(Color.dsPaperInkSecondary)
                             }
 
                             Button("开始水平测试") { start() }

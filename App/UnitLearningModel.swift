@@ -78,7 +78,6 @@ final class UnitLearningModel {
     }
     private struct StartBody: Encodable, Sendable { let characterId: UUID; let roleKey: String }
     private struct AnswerBody: Encodable, Sendable { let attemptId: UUID; let questionId: String; let answer: String }
-    private struct LevelBody: Encodable, Sendable { let characterId: UUID; let roleKey: String; let grade: Int; let acknowledge: Bool }
     private let client: BackendClient
     private let refreshProfile: @MainActor () async -> Void
     private let queueURL: URL
@@ -86,11 +85,18 @@ final class UnitLearningModel {
     private var flushing = false
     private var active = true
     private var flushTask: Task<Void, Never>?
+    private var progressRevision: [UUID: Int] = [:]
+    private var latestProgress: [UUID: UnitLearningProgress] = [:]
+    private var profileRevision = 0
+    private var appliedDifficulty: DifficultyLevel?
     private(set) var states: [UUID: UnitLearningState] = [:]
     private(set) var currentGrade: Int?
     private(set) var errors: [UUID: String] = [:]
     private(set) var busyCharacters: Set<UUID> = []
     private(set) var lastAnswer: (attemptID: UUID, questionID: String, correct: Bool, awarded: Bool, explanation: String?, levelAdvanced: Bool)?
+    func pendingMessageCount(for characterID: UUID) -> Int {
+        queue.count { $0.characterId == characterID }
+    }
 
     init(owner: UUID, client: BackendClient, refreshProfile: @escaping @MainActor () async -> Void) {
         self.client = client
@@ -156,15 +162,19 @@ final class UnitLearningModel {
         defer { flushing = false }
         while active && !Task.isCancelled, let first = queue.first {
             do {
+                let revisionAtSend = profileRevision
                 let progress: UnitLearningProgress = try await client.send(
                     path: "/v1/learning/units/messages", method: "POST", body: first)
                 guard active, !Task.isCancelled else { return }
                 queue.removeFirst(); saveQueue()
+                if profileRevision != revisionAtSend { continue }
+                latestProgress[first.characterId] = progress
+                progressRevision[first.characterId, default: 0] += 1
                 if let old = states[first.characterId] {
                     states[first.characterId] = UnitLearningState(progress: progress, active: old.active, history: old.history)
+                    errors[first.characterId] = nil
                 }
                 currentGrade = progress.grade
-                errors[first.characterId] = nil
             } catch {
                 guard active, !Task.isCancelled else { return }
                 errors[first.characterId] = "聊天进度暂未同步，联网后重新打开学习页会继续上传。"
@@ -175,14 +185,21 @@ final class UnitLearningModel {
 
     func refresh(character: CharacterDTO) async {
         busyCharacters.insert(character.id)
-        defer { busyCharacters.remove(character.id) }
-        await flush()
+        defer {
+            busyCharacters.remove(character.id)
+            scheduleFlush()
+        }
+        let revisionAtStart = progressRevision[character.id, default: 0]
+        let profileAtStart = profileRevision
         do {
             let state: UnitLearningState = try await client.get(
                 "/v1/learning/units/characters/\(character.id.uuidString)",
                 queryItems: [URLQueryItem(name: "roleKey", value: Self.roleKey(for: character))])
-            states[character.id] = state
-            currentGrade = state.progress.grade
+            guard profileRevision == profileAtStart else { return }
+            let progress = progressRevision[character.id, default: 0] == revisionAtStart
+                ? state.progress : (latestProgress[character.id] ?? state.progress)
+            states[character.id] = UnitLearningState(progress: progress, active: state.active, history: state.history)
+            currentGrade = progress.grade
             if queue.isEmpty { errors[character.id] = nil }
         } catch {
             errors[character.id] = "学习记录暂时无法读取，请检查网络或登录状态。"
@@ -224,20 +241,20 @@ final class UnitLearningModel {
         }
     }
 
-    func changeGrade(character: CharacterDTO, to grade: Int) async {
-        busyCharacters.insert(character.id)
-        defer { busyCharacters.remove(character.id) }
-        do {
-            let state: UnitLearningState = try await client.send(
-                path: "/v1/learning/units/level", method: "POST",
-                body: LevelBody(characterId: character.id, roleKey: Self.roleKey(for: character),
-                                grade: grade, acknowledge: true))
-            states[character.id] = state
-            currentGrade = state.progress.grade
-            errors[character.id] = nil
-            await refreshProfile()
-        } catch {
-            errors[character.id] = "水平调整失败，请检查网络后重试。"
+    func applyProfileDifficulty(_ difficulty: DifficultyLevel) {
+        let levels: [DifficultyLevel] = [.primary1, .primary2, .primary3, .primary4, .primary5, .primary6,
+                                         .junior1, .junior2, .junior3, .senior1, .senior2, .senior3]
+        let grade: Int
+        if let index = levels.firstIndex(of: difficulty) {
+            grade = index + 1
+        } else {
+            grade = [.undergraduate, .postgraduate, .advanced].contains(difficulty) ? 12 : 1
         }
+        guard currentGrade != grade || appliedDifficulty != difficulty else { return }
+        profileRevision += 1
+        appliedDifficulty = difficulty
+        currentGrade = grade
+        states.removeAll()
+        latestProgress.removeAll()
     }
 }

@@ -45,12 +45,7 @@ extension ChatViewModel {
         } else {
             baseLearner = .fallback(difficulty: character.difficultyLevel)
         }
-        let learner = LearnerContext(
-            nickname: baseLearner.nickname,
-            difficulty: deps.unitLearningDifficulty?(characterID) ?? baseLearner.difficulty,
-            goal: baseLearner.goal,
-            studyStage: baseLearner.studyStage
-        )
+        let learner = baseLearner
         let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
         var request = PromptBuilder.roleplayRequest(
@@ -70,9 +65,6 @@ extension ChatViewModel {
             rawWindow: rawWindow
         )
         if !voiceMode, let instruction = deps.learningInstruction?(characterID) {
-            request.system = [request.system, instruction].compactMap { $0 }.joined(separator: "\n\n")
-        }
-        if let instruction = deps.unitLearningInstruction?(characterID) {
             request.system = [request.system, instruction].compactMap { $0 }.joined(separator: "\n\n")
         }
         return request
