@@ -92,6 +92,8 @@ private struct UnitLearningAnswerResponse: Decodable, Sendable {
     let correct: Bool
     let newlyCorrect: Bool
     let awarded: Bool
+    let awardedPoints: Int?
+    let rewardPending: Bool?
     let completed: Bool
     let levelAdvanced: Bool
     let explanation: String?
@@ -128,7 +130,9 @@ final class UnitLearningModel {
     private(set) var globalError: String?
     private(set) var errors: [UUID: String] = [:]
     private(set) var busyCharacters: Set<UUID> = []
-    private(set) var lastAnswer: (attemptID: UUID, questionID: String, correct: Bool, awarded: Bool, explanation: String?, levelAdvanced: Bool)?
+    private(set) var lastAnswer: (attemptID: UUID, questionID: String, correct: Bool,
+                                  awardedPoints: Int, rewardPending: Bool,
+                                  explanation: String?, levelAdvanced: Bool)?
 
     private func applyGlobal(_ progress: UnitLearningProgress) {
         globalRevision += 1
@@ -321,7 +325,10 @@ final class UnitLearningModel {
                 body: AnswerBody(attemptId: attemptID, questionId: questionID, answer: text))
             states[character.id] = result.state
             applyGlobal(result.state.progress)
-            lastAnswer = (attemptID, questionID, result.correct, result.awarded, result.explanation, result.levelAdvanced)
+            lastAnswer = (attemptID, questionID, result.correct,
+                          result.awardedPoints ?? (result.awarded ? 1 : 0),
+                          result.rewardPending ?? false,
+                          result.explanation, result.levelAdvanced)
             errors[character.id] = nil
             if result.levelAdvanced { await refreshProfile() }
         } catch {

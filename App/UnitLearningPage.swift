@@ -412,11 +412,17 @@ private struct UnitQuestionCard: View {
             }
             if let feedback = model.lastAnswer,
                feedback.attemptID == attempt.id, feedback.questionID == question.id {
-                Text(feedback.awarded ? "答对了，获得 1 点水平进度。"
-                     : feedback.correct ? "答对了。这是旧年级的记录，当前水平不再重复计分。"
+                Text(feedback.rewardPending ? "答对了，完成本轮后统一结算。"
+                     : feedback.correct ? "答对了。"
                      : "还没答对，完成本轮后可以回练。")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(feedback.correct ? .green : .orange)
+                if feedback.awardedPoints > 0 {
+                    Text("本次结算 +\(feedback.awardedPoints) 点水平进度。")
+                        .font(.subheadline.weight(.semibold)).foregroundStyle(.teal)
+                } else if feedback.correct && !feedback.rewardPending {
+                    Text("当前水平未增加进度。").font(.footnote).foregroundStyle(.secondary)
+                }
                 if let explanation = feedback.explanation { Text(explanation).font(.footnote) }
                 if feedback.levelAdvanced { Text("水平进阶！新的挑战将按下一年级出题。") }
             }

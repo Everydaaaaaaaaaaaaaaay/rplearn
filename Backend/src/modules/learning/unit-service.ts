@@ -25,6 +25,7 @@ interface CharacterRow { chat_characters: number; active_attempt_id: string | nu
 interface AttemptRow {
   id: string; template_id: string; grade: number; answers: Record<string, string>;
   correct_question_ids: string[]; completed_at: string | null; started_at: string;
+  scoring_version: number;
   payload: UnitTemplate;
 }
 
@@ -137,7 +138,7 @@ export function createUnitLearningService(
     const [accounts, characters, attempts] = await Promise.all([
       sql<AccountRow[]>`select grade,grade_correct,completed_levels from app.unit_learning_accounts where user_id=${userId}`,
       sql<CharacterRow[]>`select chat_characters,active_attempt_id,role_key from app.unit_learning_characters where user_id=${userId} and character_id=${characterId}`,
-      sql<AttemptRow[]>`select a.id,a.template_id,a.grade,a.answers,a.correct_question_ids,a.completed_at,a.started_at,t.payload
+      sql<AttemptRow[]>`select a.id,a.template_id,a.grade,a.answers,a.correct_question_ids,a.completed_at,a.started_at,a.scoring_version,t.payload
         from app.unit_learning_attempts a join app.unit_learning_templates t on t.id=a.template_id
         where a.user_id=${userId} and a.character_id=${characterId} order by a.started_at desc`,
     ]);
@@ -195,8 +196,8 @@ export function createUnitLearningService(
       const template = templates[0];
       if (!template) return null;
       const id = randomUUID();
-      await tx`insert into app.unit_learning_attempts(id,user_id,character_id,template_id,grade)
-        values(${id},${userId},${characterId},${template.id},${account.grade})`;
+      await tx`insert into app.unit_learning_attempts(id,user_id,character_id,template_id,grade,scoring_version)
+        values(${id},${userId},${characterId},${template.id},${account.grade},2)`;
       await tx`update app.unit_learning_characters set active_attempt_id=${id}
         where user_id=${userId} and character_id=${characterId}`;
       return id;
@@ -221,7 +222,7 @@ export function createUnitLearningService(
   async function answer(userId: string, attemptId: string, questionId: string, answerText: string) {
     const result = await sql.begin(async tx => {
       const [attempt] = await tx<(AttemptRow & { character_id: string })[]>`select a.id,a.character_id,a.template_id,a.grade,a.answers,
-        a.correct_question_ids,a.completed_at,a.started_at,t.payload
+        a.correct_question_ids,a.completed_at,a.started_at,a.scoring_version,t.payload
         from app.unit_learning_attempts a join app.unit_learning_templates t on t.id=a.template_id
         where a.id=${attemptId} and a.user_id=${userId} for update of a`;
       if (!attempt) fail("UNIT_ATTEMPT_NOT_FOUND", "Challenge was not found.", 404);
@@ -245,9 +246,17 @@ export function createUnitLearningService(
         from app.unit_learning_accounts where user_id=${userId} for update`;
       if (!account) fail("UNIT_STATE_UNAVAILABLE", "Learning state is unavailable.", 503);
       let levelAdvanced = false;
-      const awarded = newlyCorrect && account.grade === attempt.grade;
-      if (awarded) {
-        const next = account.grade_correct + 1;
+      const eligible = account.grade === attempt.grade;
+      const earned = attempt.scoring_version === 2
+        ? (attempt.completed_at === null
+            ? completed ? correctIds.length : 0
+            : newlyCorrect ? 1 : 0)
+        : newlyCorrect ? 1 : 0;
+      const awardedPoints = eligible ? Math.min(earned, 90 - account.grade_correct) : 0;
+      const awarded = newlyCorrect && awardedPoints > 0;
+      const rewardPending = attempt.scoring_version === 2 && newlyCorrect && !completed && eligible;
+      if (awardedPoints > 0) {
+        const next = account.grade_correct + awardedPoints;
         levelAdvanced = next >= correctPerStar * starsPerGrade && account.grade < 12;
         const grade = levelAdvanced ? account.grade + 1 : account.grade;
         const gradeCorrect = levelAdvanced ? 0 : Math.min(90, next);
@@ -265,7 +274,8 @@ export function createUnitLearningService(
         await tx`update app.unit_learning_characters set active_attempt_id=null,chat_characters=0
           where user_id=${userId} and character_id=${attempt.character_id} and active_attempt_id=${attemptId}`;
       }
-      return { characterId: attempt.character_id, correct, newlyCorrect, awarded, completed, levelAdvanced,
+      return { characterId: attempt.character_id, correct, newlyCorrect, awarded,
+        awardedPoints, rewardPending, completed, levelAdvanced,
         explanation: completed || correct ? question.explanation : null,
         correctAnswer: completed || correct ? question.answer : null };
     });

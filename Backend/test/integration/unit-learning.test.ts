@@ -8,19 +8,19 @@ import { authoredUnitSeeds, type UnitTemplate } from "../../src/modules/learning
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning persistence", () => {
   let db: DatabaseResource, service: UnitLearningService;
-  const user = randomUUID(), other = randomUUID(), progressing = randomUUID();
+  const user = randomUUID(), other = randomUUID(), progressing = randomUUID(), settlement = randomUUID();
   const oliver = "8b3a2b24-8a4e-5a73-a2c4-0f5e8f05e001";
   const ruby = "8b3a2b24-8a4e-5a73-a2c4-0f5e8f05e002";
   beforeAll(async () => {
     db = createDatabase(integrationConfig());
     await runMigrations(db);
-    await db.sql`insert into app.users(id) values (${user}), (${other}), (${progressing})`;
+    await db.sql`insert into app.users(id) values (${user}), (${other}), (${progressing}), (${settlement})`;
     await db.sql`insert into app.user_profiles(user_id,difficulty)
-      values (${user},'primary1'), (${other},'primary1'), (${progressing},'primary1')`;
+      values (${user},'primary1'), (${other},'primary1'), (${progressing},'primary1'), (${settlement},'primary1')`;
     service = createUnitLearningService(db);
   });
   afterAll(async () => {
-    await db.sql`delete from app.users where id in (${user},${other},${progressing})`;
+    await db.sql`delete from app.users where id in (${user},${other},${progressing},${settlement})`;
     await db.close();
   });
   it("deduplicates chat, isolates characters, awards each question once and keeps missed answers", async () => {
@@ -45,8 +45,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     if (!wrong) throw Error("Missing distractor");
     expect((await service.answer(user, attempt.id, "q1", wrong)).awarded).toBe(false);
     await expect(service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).rejects.toMatchObject({ code: "UNIT_RETRY_AFTER_COMPLETION" });
-    for (const question of seed.questions.slice(1))
-      expect((await service.answer(user, attempt.id, question.id, question.answer)).awarded).toBe(true);
+    const second = await service.answer(user, attempt.id, "q2", seed.questions[1]?.answer ?? "");
+    expect(second).toMatchObject({ awarded: false, awardedPoints: 0, rewardPending: true });
+    expect(second.state.progress.gradeCorrect).toBe(0);
+    const final = await service.answer(user, attempt.id, "q3", seed.questions[2]?.answer ?? "");
+    expect(final).toMatchObject({ awarded: true, awardedPoints: 2, rewardPending: false, completed: true });
     const after = await service.read(user, oliver, "oliver");
     expect(after.progress.chatCharacters).toBe(0);
     expect(after.progress.gradeCorrect).toBe(2);
@@ -55,14 +58,41 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
       answer: seed.questions[0]?.answer,
       explanation: seed.questions[0]?.explanation,
     });
-    expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awarded).toBe(true);
-    expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awarded).toBe(false);
+    expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awardedPoints).toBe(1);
+    expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awardedPoints).toBe(0);
     expect((await service.read(user, oliver, "oliver")).progress.gradeCorrect).toBe(3);
     expect((await service.read(user, ruby, "ruby")).progress.gradeCorrect).toBe(3);
     expect((await service.readGlobal(user)).gradeCorrect).toBe(3);
     await service.recordMessage(user, { ...input, messageId: randomUUID() });
     const next = await service.start(user, oliver, "oliver");
     expect(next.active?.template.id).not.toBe(attempt.template.id);
+    if (!next.active) throw Error("Missing legacy attempt");
+    await db.sql`update app.unit_learning_attempts set scoring_version=1 where id=${next.active.id}`;
+    const [legacySeed] = await db.sql<{ payload: UnitTemplate }[]>`select payload
+      from app.unit_learning_templates where id=${next.active.template.id}`;
+    if (!legacySeed) throw Error("Missing legacy template");
+    expect((await service.answer(user, next.active.id, "q1", legacySeed.payload.questions[0]?.answer ?? "")).awardedPoints).toBe(1);
+    expect((await service.readGlobal(user)).gradeCorrect).toBe(4);
+  });
+  it("settles prior correct answers even when the final answer is wrong", async () => {
+    await service.recordMessage(settlement, {
+      characterId: ruby, roleKey: "ruby", messageId: randomUUID(), role: "user", characterCount: 1000,
+    });
+    const started = await service.start(settlement, ruby, "ruby");
+    if (!started.active) throw Error("Missing settlement attempt");
+    const [stored] = await db.sql<{ payload: UnitTemplate }[]>`select payload
+      from app.unit_learning_templates where id=${started.active.template.id}`;
+    if (!stored) throw Error("Missing settlement template");
+    const questions = stored.payload.questions;
+    for (const question of questions.slice(0, 2)) {
+      const result = await service.answer(settlement, started.active.id, question.id, question.answer);
+      expect(result).toMatchObject({ awardedPoints: 0, rewardPending: true });
+    }
+    const wrong = questions[2]?.answer === "wrong answer" ? "another wrong answer" : "wrong answer";
+    const final = await service.answer(settlement, started.active.id, "q3", wrong);
+    expect(final).toMatchObject({ correct: false, awarded: false, awardedPoints: 2, completed: true });
+    expect(final.state.progress.gradeCorrect).toBe(2);
+    expect((await service.answer(settlement, started.active.id, "q3", questions[2]?.answer ?? "")).awardedPoints).toBe(1);
   });
   it("does not share a private character's generated unit across accounts", async () => {
     const privateCharacter = randomUUID();
