@@ -51,14 +51,24 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     });
     expect(first.state.active?.template.questions[1]).not.toHaveProperty("answer");
     await expect(service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).rejects.toMatchObject({ code: "UNIT_RETRY_AFTER_COMPLETION" });
-    const second = await service.answer(user, attempt.id, "q2", seed.questions[1]?.answer ?? "");
+    const multi = seed.questions.find(question => question.kind === "multi");
+    if (!multi) throw Error("缺少多选题");
+    await expect(service.answer(user, attempt.id, multi.id, "不存在|错误选项"))
+      .rejects.toMatchObject({ code: "INVALID_UNIT_ANSWER" });
+    const answerFor = (question: UnitTemplate["questions"][number]) => question.kind === "multi"
+      ? question.answer.split("|").reverse().join("|") : question.answer;
+    const secondQuestion = seed.questions[1];
+    if (!secondQuestion) throw Error("缺少第二题");
+    const second = await service.answer(user, attempt.id, "q2", answerFor(secondQuestion));
     expect(second).toMatchObject({ awarded: false, awardedPoints: 0, rewardPending: true });
     expect(second.state.progress.gradeCorrect).toBe(0);
-    const final = await service.answer(user, attempt.id, "q3", seed.questions[2]?.answer ?? "");
-    expect(final).toMatchObject({ awarded: true, awardedPoints: 2, rewardPending: false, completed: true });
+    for (const question of seed.questions.slice(2, 5))
+      await service.answer(user, attempt.id, question.id, answerFor(question));
+    const final = await service.answer(user, attempt.id, "q6", seed.questions[5]?.answer ?? "");
+    expect(final).toMatchObject({ awarded: true, awardedPoints: 5, rewardPending: false, completed: true });
     const after = await service.read(user, oliver, "oliver");
     expect(after.progress.chatCharacters).toBe(0);
-    expect(after.progress.gradeCorrect).toBe(2);
+    expect(after.progress.gradeCorrect).toBe(5);
     expect(after.history).toHaveLength(1);
     expect(after.history[0]?.template.questions[0]).toMatchObject({
       answer: seed.questions[0]?.answer,
@@ -66,9 +76,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     });
     expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awardedPoints).toBe(1);
     expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awardedPoints).toBe(0);
-    expect((await service.read(user, oliver, "oliver")).progress.gradeCorrect).toBe(3);
-    expect((await service.read(user, ruby, "ruby")).progress.gradeCorrect).toBe(3);
-    expect((await service.readGlobal(user)).gradeCorrect).toBe(3);
+    expect((await service.read(user, oliver, "oliver")).progress.gradeCorrect).toBe(6);
+    expect((await service.read(user, ruby, "ruby")).progress.gradeCorrect).toBe(6);
+    expect((await service.readGlobal(user)).gradeCorrect).toBe(6);
     await service.recordMessage(user, { ...input, messageId: randomUUID() });
     const next = await service.start(user, oliver, "oliver");
     expect(next.active?.template.id).not.toBe(attempt.template.id);
@@ -78,7 +88,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
       from app.unit_learning_templates where id=${next.active.template.id}`;
     if (!legacySeed) throw Error("Missing legacy template");
     expect((await service.answer(user, next.active.id, "q1", legacySeed.payload.questions[0]?.answer ?? "")).awardedPoints).toBe(1);
-    expect((await service.readGlobal(user)).gradeCorrect).toBe(4);
+    expect((await service.readGlobal(user)).gradeCorrect).toBe(7);
   });
   it("settles prior correct answers even when the final answer is wrong", async () => {
     await service.recordMessage(settlement, {
@@ -90,15 +100,37 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
       from app.unit_learning_templates where id=${started.active.template.id}`;
     if (!stored) throw Error("Missing settlement template");
     const questions = stored.payload.questions;
-    for (const question of questions.slice(0, 2)) {
+    for (const question of questions.slice(0, 5)) {
       const result = await service.answer(settlement, started.active.id, question.id, question.answer);
       expect(result).toMatchObject({ awardedPoints: 0, rewardPending: true });
     }
-    const wrong = questions[2]?.answer === "wrong answer" ? "another wrong answer" : "wrong answer";
-    const final = await service.answer(settlement, started.active.id, "q3", wrong);
-    expect(final).toMatchObject({ correct: false, awarded: false, awardedPoints: 2, completed: true });
-    expect(final.state.progress.gradeCorrect).toBe(2);
-    expect((await service.answer(settlement, started.active.id, "q3", questions[2]?.answer ?? "")).awardedPoints).toBe(1);
+    const wrong = questions[5]?.answer === "wrong answer" ? "another wrong answer" : "wrong answer";
+    const final = await service.answer(settlement, started.active.id, "q6", wrong);
+    expect(final).toMatchObject({ correct: false, awarded: false, awardedPoints: 5, completed: true });
+    expect(final.state.progress.gradeCorrect).toBe(5);
+    expect((await service.answer(settlement, started.active.id, "q6", questions[5]?.answer ?? "")).awardedPoints).toBe(1);
+  });
+  it("accepts a curated equivalent written answer without awarding twice", async () => {
+    await service.changeGrade(other, oliver, "oliver", 10);
+    await service.recordMessage(other, {
+      characterId: oliver, roleKey: "oliver", messageId: randomUUID(),
+      role: "user", characterCount: 1000,
+    });
+    const started = await service.start(other, oliver, "oliver");
+    if (!started.active) throw Error("缺少挑战");
+    const [stored] = await db.sql<{ payload: UnitTemplate }[]>`select payload
+      from app.unit_learning_templates where id=${started.active.template.id}`;
+    if (!stored) throw Error("缺少挑战模板");
+    const written = stored.payload.questions.find(question => question.kind === "write");
+    const variant = written?.acceptedAnswers?.[0];
+    if (!written || !variant) throw Error("缺少等价短写答案");
+    expect((await service.answer(other, started.active.id, written.id, variant))).toMatchObject({
+      correct: true, newlyCorrect: true, rewardPending: true,
+    });
+    for (const question of stored.payload.questions.filter(question => question.id !== written.id))
+      await service.answer(other, started.active.id, question.id, question.answer);
+    expect((await service.answer(other, started.active.id, written.id, written.answer)).awardedPoints).toBe(0);
+    expect((await service.read(other, oliver, "oliver")).progress.gradeCorrect).toBe(6);
   });
   it("does not share a private character's generated unit across accounts", async () => {
     const privateCharacter = randomUUID();
@@ -125,7 +157,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
       template: { ...templateSource, id: `unit-progression-${randomUUID()}`, roleKey: key, grade },
       scopeUserId: null,
     }));
-    for (let index = 0; index < 30; index += 1) {
+    for (let index = 0; index < 15; index += 1) {
       await gradeService.recordMessage(progressing, {
         characterId: oliver, roleKey: "oliver", messageId: randomUUID(),
         role: "user", characterCount: 1000,
@@ -135,7 +167,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
       const seed = authoredUnitSeeds.find(unit => unit.id === started.active?.template.id) ?? templateSource;
       for (const question of seed.questions)
         await gradeService.answer(progressing, started.active.id, question.id, question.answer);
-      if (index === 3) {
+      if (index === 1) {
         const state = await gradeService.read(progressing, oliver, "oliver");
         expect(state.progress.stars).toBe(1);
         expect(state.progress.gradeCorrect).toBe(12);
@@ -156,7 +188,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     expect(moved.progress.grade).toBe(6);
     expect(moved.progress.gradeCorrect).toBe(0);
     expect(moved.progress.completedLevels).toBe(1);
-    expect(moved.history).toHaveLength(30);
+    expect(moved.history).toHaveLength(15);
     const [updatedProfile] = await db.sql<{ difficulty: string }[]>`select difficulty::text as difficulty
       from app.user_profiles where user_id=${progressing}`;
     expect(updatedProfile?.difficulty).toBe("primary6");

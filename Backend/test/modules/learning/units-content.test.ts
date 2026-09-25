@@ -8,32 +8,44 @@ function tokens(text: string): string[] {
 }
 
 describe("authored unit library", () => {
-  it("covers every school year four times for each main character with checkable questions", () => {
-    expect(authoredUnitSeeds).toHaveLength(144);
-    expect(new Set(authoredUnitSeeds.map(unit => unit.id)).size).toBe(144);
-    expect(authoredUnitSeeds.every(unit => unit.id.startsWith("unit-v2-"))).toBe(true);
+  it("covers every school year twice for each main character with six checkable questions", () => {
+    expect(authoredUnitSeeds).toHaveLength(72);
+    expect(new Set(authoredUnitSeeds.map(unit => unit.id)).size).toBe(72);
+    expect(authoredUnitSeeds.every(unit => unit.id.startsWith("unit-v3-"))).toBe(true);
     for (const role of ["oliver", "ruby", "marcus"])
       for (let grade = 1; grade <= 12; grade += 1) {
         const units = authoredUnitSeeds.filter(unit => unit.roleKey === role && unit.grade === grade);
-        expect(units).toHaveLength(4);
-        expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(4);
+        expect(units).toHaveLength(2);
+        expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(2);
         for (const unit of units) {
-          expect(() => validateGeneratedUnit(unit, role, grade, { legacyAuthored: true })).not.toThrow();
+          expect(() => validateGeneratedUnit(unit, role, grade)).not.toThrow();
           expect(unit.scene.some(beat => beat.speaker === "character")).toBe(true);
           expect(unit.scene.every(beat => !beat.english.includes("{") && !beat.chinese.includes("{"))).toBe(true);
           if (grade <= 2) expect(unit.scene.every(beat => beat.english.split(/\s+/u).length <= 16)).toBe(true);
-          expect(unit.questions.map(question => question.kind)).toEqual(["choice", "order", "write"]);
+          expect(unit.questions).toHaveLength(6);
+          expect(new Set(unit.questions.map(question => question.kind))).toEqual(new Set(["choice", "order", "write", "multi"]));
           for (const question of unit.questions) {
+            if (question.kind === "write") {
+              const count = /(?:填|写|填写|写出)([一二三四五六两])词/u.exec(question.prompt)?.[1];
+              if (count) {
+                const expected = ({ 一: 1, 二: 2, 两: 2, 三: 3, 四: 4, 五: 5, 六: 6 } as Record<string, number>)[count];
+                expect(question.answer.trim().split(/\s+/u).length, `${unit.id} 题干词数与答案不符`).toBe(expected);
+              }
+            }
             if (question.kind === "choice") {
               expect(question.options).toHaveLength(3);
               expect(question.options.filter(option => option === question.answer)).toHaveLength(1);
+            } else if (question.kind === "multi") {
+              expect(question.options).toHaveLength(4);
+              expect(question.answer.split("|")).toHaveLength(2);
+              expect(question.answer.split("|").every(answer => question.options.includes(answer))).toBe(true);
             } else if (question.kind === "order") {
               expect(tokens(question.options.join(" "))).toEqual(tokens(question.answer));
               expect(question.options.join(" ")).not.toBe(question.answer);
             } else {
               expect(question.options).toHaveLength(0);
               expect(question.answer.length).toBeGreaterThan(1);
-              if (grade >= 10) expect(question.answer.trim().split(/\s+/u).length).toBeGreaterThan(1);
+              if (grade >= 10) expect(question.answer.trim().split(/\s+/u).length).toBeGreaterThanOrEqual(4);
             }
           }
         }
@@ -48,7 +60,7 @@ describe("authored unit library", () => {
     for (let grade = 1; grade <= 12; grade += 1) {
       const units = authoredUnitSeeds.filter(unit => unit.grade === grade);
       expect(new Set(units.map(unit => unit.roleKey))).toEqual(new Set(["oliver", "ruby", "marcus"]));
-      expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(12);
+      expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(6);
     }
     for (const unit of authoredUnitSeeds) {
       expect(unit.scene.length).toBeGreaterThanOrEqual(3);
@@ -65,35 +77,30 @@ describe("authored unit library", () => {
     }
   });
 
-  it("rejects generated choices with no unique answer", () => {
-    const valid = {
-      title: "A library sign", objective: "Read a simple sign", scene: [
-        { speaker: "narrator", english: "You are standing near a library door.", chinese: "你站在图书馆门口。" },
-        { speaker: "character", english: "The library is open today.", chinese: "图书馆今天开放。" },
-        { speaker: "narrator", english: "A visitor wants to know whether to go inside.", chinese: "一位访客想知道是否能进去。" },
-      ],
-      questions: [
-        { id: "q1", kind: "choice", prompt: "图书馆今天怎样？", options: ["开放", "关闭", "搬走"], answer: "开放", explanation: "台词说今天开放。" },
-        { id: "q2", kind: "order", prompt: "排成今天开放", options: ["open", "library", "is", "The", "."], answer: "The library is open.", explanation: "be 动词连接主语和状态。" },
-        { id: "q3", kind: "write", prompt: "写出英语：开放的", options: [], answer: "open", explanation: "open 表示开放的。" },
-      ],
-    };
+  it("rejects generated choices and multi-select with invalid answers", () => {
+    const valid = authoredUnitSeeds[0];
+    if (!valid) throw Error("缺少原创题库样本");
     expect(() => validateGeneratedUnit(valid, "oliver", 1)).not.toThrow();
-    const ambiguous = { ...valid, questions: [{ ...valid.questions[0], options: ["开放", "开放", "关闭"] }, ...valid.questions.slice(1)] };
+    const first = valid.questions[0];
+    const multi = valid.questions[2];
+    if (!first || !multi) throw Error("缺少题目样本");
+    const ambiguous = { ...valid, questions: [{ ...first, options: [first.answer, first.answer, "其他"] }, ...valid.questions.slice(1)] };
     expect(() => validateGeneratedUnit(ambiguous, "oliver", 1)).toThrow();
-    const alreadyOrdered = { ...valid, questions: [valid.questions[0], { ...valid.questions[1], options: ["The", "library", "is", "open", "."] }, valid.questions[2]] };
+    const invalidMulti = { ...valid, questions: valid.questions.map(question => question.id === multi.id
+      ? { ...question, answer: "不存在|也不存在" } : question) };
+    expect(() => validateGeneratedUnit(invalidMulti, "oliver", 1)).toThrow();
+    const alreadyOrdered = { ...valid, questions: valid.questions.map(question => question.kind === "order"
+      ? { ...question, options: question.answer.match(/[\p{L}\p{N}']+|[.!?]/gu) ?? [] } : question) };
     expect(() => validateGeneratedUnit(alreadyOrdered, "oliver", 1)).toThrow();
-    const tooShortForSenior = { ...valid, questions: [valid.questions[0], valid.questions[1], { ...valid.questions[2], answer: "open today" }] };
-    expect(() => validateGeneratedUnit(tooShortForSenior, "oliver", 10)).toThrow();
   });
 
   it("requires generated secondary-school writing to synthesize rather than copy the scene", () => {
-    const senior = authoredUnitSeeds.find(unit => unit.id === "unit-v2-marcus-g10-1");
-    const copied = authoredUnitSeeds.find(unit => unit.id === "unit-v2-ruby-g12-1");
-    if (!senior || !copied) throw Error("Missing authored content fixtures");
+    const senior = authoredUnitSeeds.find(unit => unit.id === "unit-v3-marcus-g10-1");
+    if (!senior) throw Error("缺少高中题目样本");
     expect(() => validateGeneratedUnit(senior, "marcus", 10)).not.toThrow();
+    const copied = { ...senior, questions: senior.questions.map(question => question.kind === "write"
+      ? { ...question, answer: "A child is visible in the foreground" } : question) };
     expect(() => validateGeneratedUnit(copied, "ruby", 12)).toThrow();
-    expect(() => validateGeneratedUnit(copied, "ruby", 12, { legacyAuthored: true })).not.toThrow();
     const short = {
       ...senior,
       questions: senior.questions.map(question => question.kind === "write"

@@ -38,6 +38,16 @@ function normalized(answer: string): string {
     .replace(/[.!?。！？，,\s]+/gu, " ").trim();
 }
 
+function normalizedAnswer(question: UnitTemplate["questions"][number], answer: string): string {
+  if (question.kind !== "multi") return normalized(answer);
+  const selected = answer.split("|").map(normalized);
+  const available = question.options.map(normalized);
+  if (selected.length < 2 || selected.length > 3 || new Set(selected).size !== selected.length ||
+      selected.some(value => !available.includes(value)))
+    fail("INVALID_UNIT_ANSWER", "多选答案无效。", 400);
+  return selected.sort().join("|");
+}
+
 function publicTemplate(template: UnitTemplate, completed: boolean) {
   return {
     id: template.id, title: template.title, objective: template.objective,
@@ -99,11 +109,14 @@ export function createUnitLearningService(
   let seeded: Promise<void> | undefined;
   function ensureSeeds(): Promise<void> {
     seeded ??= (async () => {
-      for (const template of authoredUnitSeeds) {
-        await sql`insert into app.unit_learning_templates(id,role_key,grade,source,version,payload)
-          values(${template.id},${template.roleKey},${template.grade},'authored',2,${JSON.stringify(template)}::jsonb)
-          on conflict(id) do nothing`;
-      }
+      const rows = authoredUnitSeeds.map(template => ({
+        id: template.id, role_key: template.roleKey, grade: template.grade, payload: template,
+      }));
+      await sql`insert into app.unit_learning_templates(id,role_key,grade,source,version,payload)
+        select item.id,item.role_key,item.grade,'authored',3,item.payload
+        from jsonb_to_recordset(${JSON.stringify(rows)}::jsonb)
+          as item(id text,role_key text,grade smallint,payload jsonb)
+        on conflict(id) do nothing`;
     })().catch((error: unknown) => { seeded = undefined; throw error; });
     return seeded;
   }
@@ -188,7 +201,7 @@ export function createUnitLearningService(
       if (character.chat_characters < challengeLength) fail("UNIT_NOT_READY", "Keep chatting to unlock a challenge.");
       const templates = await tx<{ id: string }[]>`select t.id from app.unit_learning_templates t
         where t.role_key=${character.role_key} and t.grade=${account.grade}
-          and t.version = 2
+          and t.version = 3
           and (t.scope_user_id is null or t.scope_user_id=${userId})
           and not exists(select 1 from app.unit_learning_attempts a where a.user_id=${userId}
             and a.character_id=${characterId} and a.template_id=t.id)
@@ -197,7 +210,7 @@ export function createUnitLearningService(
       if (!template) return null;
       const id = randomUUID();
       await tx`insert into app.unit_learning_attempts(id,user_id,character_id,template_id,grade,scoring_version)
-        values(${id},${userId},${characterId},${template.id},${account.grade},2)`;
+        values(${id},${userId},${characterId},${template.id},${account.grade},3)`;
       await tx`update app.unit_learning_characters set active_attempt_id=${id}
         where user_id=${userId} and character_id=${characterId}`;
       return id;
@@ -210,7 +223,7 @@ export function createUnitLearningService(
       const key = roleKey(role, characterId);
       const generated = await generate(key, account.grade, characterId, userId);
       await sql`insert into app.unit_learning_templates(id,role_key,grade,source,scope_user_id,version,payload)
-        values(${generated.template.id},${key},${account.grade},'generated',${generated.scopeUserId},2,${JSON.stringify(generated.template)}::jsonb)
+        values(${generated.template.id},${key},${account.grade},'generated',${generated.scopeUserId},3,${JSON.stringify(generated.template)}::jsonb)
         on conflict(id) do nothing`;
       return start(userId, characterId, role, generatedCount + 1);
     }
@@ -230,10 +243,11 @@ export function createUnitLearningService(
       if (!question) fail("UNIT_QUESTION_NOT_FOUND", "Question was not found.", 404);
       if (attempt.answers[questionId] !== undefined && attempt.completed_at === null)
         fail("UNIT_RETRY_AFTER_COMPLETION", "Finish this unit before retrying missed questions.");
-      const value = normalized(answerText);
+      const value = normalizedAnswer(question, answerText);
       if (value.length < 1 || value.length > 200 || (question.kind === "choice" && !question.options.some(option => normalized(option) === value)))
         fail("INVALID_UNIT_ANSWER", "Answer is invalid.", 400);
-      const correct = value === normalized(question.answer);
+      const correct = [question.answer, ...(question.acceptedAnswers ?? [])]
+        .some(candidate => value === normalizedAnswer(question, candidate));
       const newlyCorrect = correct && !attempt.correct_question_ids.includes(questionId);
       const answers = { ...attempt.answers, [questionId]: answerText };
       const correctIds = newlyCorrect ? [...attempt.correct_question_ids, questionId] : attempt.correct_question_ids;
@@ -247,14 +261,14 @@ export function createUnitLearningService(
       if (!account) fail("UNIT_STATE_UNAVAILABLE", "Learning state is unavailable.", 503);
       let levelAdvanced = false;
       const eligible = account.grade === attempt.grade;
-      const earned = attempt.scoring_version === 2
+      const earned = attempt.scoring_version >= 2
         ? (attempt.completed_at === null
             ? completed ? correctIds.length : 0
             : newlyCorrect ? 1 : 0)
         : newlyCorrect ? 1 : 0;
       const awardedPoints = eligible ? Math.min(earned, 90 - account.grade_correct) : 0;
       const awarded = newlyCorrect && awardedPoints > 0;
-      const rewardPending = attempt.scoring_version === 2 && newlyCorrect && !completed && eligible;
+      const rewardPending = attempt.scoring_version >= 2 && newlyCorrect && !completed && eligible;
       if (awardedPoints > 0) {
         const next = account.grade_correct + awardedPoints;
         levelAdvanced = next >= correctPerStar * starsPerGrade && account.grade < 12;

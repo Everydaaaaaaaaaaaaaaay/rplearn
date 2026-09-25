@@ -7,11 +7,12 @@ import type { UnitTemplate } from "./unit-seeds.js";
 import { sourceByGrade } from "./unit-seeds-v2-expanded.js";
 
 const questionSchema = z.object({
-  id: z.enum(["q1", "q2", "q3"]),
-  kind: z.enum(["choice", "order", "write"]),
-  prompt: z.string().min(6).max(160),
+  id: z.enum(["q1", "q2", "q3", "q4", "q5", "q6"]),
+  kind: z.enum(["choice", "order", "write", "multi"]),
+  prompt: z.string().min(3).max(160),
   options: z.array(z.string().min(1).max(60)).max(12),
   answer: z.string().min(1).max(120),
+  acceptedAnswers: z.array(z.string().min(1).max(120)).max(6).optional(),
   explanation: z.string().min(8).max(220),
 });
 const generatedSchema = z.object({
@@ -22,7 +23,7 @@ const generatedSchema = z.object({
     english: z.string().min(15).max(420),
     chinese: z.string().min(8).max(300),
   })).min(3).max(4),
-  questions: z.array(questionSchema).length(3),
+  questions: z.array(questionSchema).min(3).max(6),
 });
 const reviewSchema = z.object({ approved: z.boolean(), reasons: z.array(z.string()).max(6) });
 
@@ -56,16 +57,30 @@ export function validateGeneratedUnit(
   const parsed = generatedSchema.safeParse(value);
   if (!parsed.success) reject("Generated unit failed schema validation.");
   const unit = parsed.data;
-  if (new Set(unit.questions.map(item => item.id)).size !== 3 ||
-      new Set(unit.questions.map(item => item.kind)).size !== 3 ||
+  const expectedCount = options.legacyAuthored ? 3 : 6;
+  const kinds = new Set(unit.questions.map(item => item.kind));
+  if (unit.questions.length !== expectedCount ||
+      unit.questions.some((item, index) => item.id !== `q${String(index + 1)}`) ||
+      !["choice", "order", "write"].every(kind => kinds.has(kind as UnitTemplate["questions"][number]["kind"])) ||
+      (!options.legacyAuthored && !kinds.has("multi")) ||
       unit.scene[0]?.speaker !== "narrator" ||
       !unit.scene.some(beat => beat.speaker === "character")) reject("Generated unit failed structure validation.");
   for (const question of unit.questions) {
+    if (question.acceptedAnswers?.some(answer => normalize(answer) === normalize(question.answer)) ||
+        new Set(question.acceptedAnswers?.map(normalize) ?? []).size !== (question.acceptedAnswers?.length ?? 0))
+      reject("Generated question has duplicate accepted answers.");
     if (question.kind === "choice") {
       if (question.options.length !== 3 ||
           new Set(question.options.map(normalize)).size !== 3 ||
           !question.options.some(option => normalize(option) === normalize(question.answer)))
         reject("Generated choice has ambiguous options.");
+    } else if (question.kind === "multi") {
+      const selected = question.answer.split("|").map(normalize);
+      const available = question.options.map(normalize);
+      if (question.options.length !== 4 || new Set(available).size !== 4 ||
+          selected.length < 2 || selected.length > 3 || new Set(selected).size !== selected.length ||
+          selected.some(value => !available.includes(value)))
+        reject("Generated multi-selection task has ambiguous options.");
     } else if (question.kind === "order") {
       const tokens = question.answer.match(/[\p{L}\p{N}']+|[.!?]/gu) ?? [];
       const supplied = question.options.flatMap(option => option.match(/[\p{L}\p{N}']+|[.!?]/gu) ?? []);
@@ -83,19 +98,19 @@ export function validateGeneratedUnit(
   const totalWords = unit.scene.reduce((sum, beat) => sum + beat.english.split(/\s+/u).length, 0);
   if ((grade >= 10 && totalWords < 55) || (grade >= 7 && totalWords < 35))
     reject("Generated scene is too short for its grade.");
-  const written = unit.questions.find(question => question.kind === "write");
-  if (grade >= 10 && (written?.answer.trim().split(/\s+/u).length ?? 0) < 2)
-    reject("Senior-level writing must test more than one word.");
-  if (grade >= 7 && !options.legacyAuthored && written) {
+  for (const written of unit.questions.filter(question => question.kind === "write")) {
     const answer = normalize(written.answer);
-    const minimumWords = grade >= 10 ? 4 : 2;
-    if (answer.split(" ").length < minimumWords)
-      reject("Written answer is too short for this school stage.");
-    const material = normalize(unit.scene.map(beat => beat.english).join(" "));
-    if (` ${material} `.includes(` ${answer} `))
-      reject("Written answer is copied verbatim from the scene.");
+    if (grade >= 10 && answer.split(" ").length < 4 && !options.legacyAuthored)
+      reject("Senior-level writing must contain at least four words.");
+    if (grade >= 7 && !options.legacyAuthored) {
+      if (answer.split(" ").length < 2)
+        reject("Written answer is too short for this school stage.");
+      const material = normalize(unit.scene.map(beat => beat.english).join(" "));
+      if (` ${material} `.includes(` ${answer} `))
+        reject("Written answer is copied verbatim from the scene.");
+    }
   }
-  return { ...unit, id: `unit-v2-${roleKey}-g${String(grade)}-${randomUUID()}`, roleKey, grade };
+  return { ...unit, id: `unit-v${options.legacyAuthored ? "2" : "3"}-${roleKey}-g${String(grade)}-${randomUUID()}`, roleKey, grade };
 }
 
 export function createUnitGenerator(
@@ -147,8 +162,8 @@ export function createUnitGenerator(
       `本次教材参考：${JSON.stringify(reference)}。只借鉴该单元主题和任务方法；证据等级是 ${reference.evidenceLevel}，不得声称见过未公开的课文或习题。`,
       "参考人教版公开教材的任务链：先从对话、便条或记录中获取信息，再比较或补全，最后给具体对象写出可执行回应。主题与活动方式可借鉴，文字、题目和人物事件必须原创。",
       "JSON字段 title、objective、scene、questions。scene 3至4拍，至少一拍是信息材料、一拍是角色回应；每拍 speaker=narrator 或 character、english、chinese。角色必须有独特职业情境和实际行动，不能只替换姓名或地点；中文是准确译文。",
-      "questions 恰好三题，id q1/q2/q3，kind 分别为 choice/order/write。choice 需要结合至少两拍信息才可判断，三个同类别合理选项且唯一答案；order 排出对当前任务有用的英文句，词块必须打乱；write 是根据至少两条英文线索完成的可唯一判分短句，初中答案至少两个词，高中至少四个词，完整答案不得连续出现在英文剧情中，不问主观开放表达。每题 explanation 指向具体英文证据和推理步骤。",
-      "三题构成同一个任务链，后一题使用前面的信息；答案必须由英文材料支持，不依赖文化常识。不得复制教材课文、不得使用真实个人资料。低年级每拍英文不超过16词。",
+      "questions 恰好六题，id 顺序为 q1 至 q6，kind 至少包括 choice、order、write、multi 四类。choice 有三个同类别合理选项和唯一答案；multi 有四个互异选项、答案由两至三个原选项以 | 连接，不能靠常识猜；order 的词块须打乱且可还原；write 是可明确判分的短语，初中至少两词、高中至少四词，完整答案不得连续出现在英文剧情中。若常见等价表述存在，逐题填写 acceptedAnswers，最多六项。每题 explanation 指向英文证据和推理。",
+      "六题要测量不同能力：定位信息、结合线索、选择合适语言、判断限制、组织表达和迁移应用，避免六道同义复述或照抄题。任务与角色剧情有关，但不强行把全部语言点塞进角色职业。答案必须由英文材料支持，不依赖文化常识。不得复制教材课文、不得使用真实个人资料。低年级每拍英文不超过16词。",
     ].join("\n");
     let candidate: UnitTemplate | undefined;
     let correction = "";
@@ -158,7 +173,7 @@ export function createUnitGenerator(
           { role: "system", content: "你是严谨的中国英语教材编者。输出合法 JSON 对象。" },
           { role: "user", content: correction ? `${prompt}\n上一稿未通过校验：${correction}。请重新创作，不要只改答案。` : prompt },
         ],
-        responseFormat: "json_object", maxOutputTokens: Math.min(2400, route.maxOutputTokens),
+        responseFormat: "json_object", maxOutputTokens: Math.min(4200, route.maxOutputTokens),
         userReference: "unit-library", maxAttempts: 1,
       });
       try {

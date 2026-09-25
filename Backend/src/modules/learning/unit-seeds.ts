@@ -1,11 +1,12 @@
-import { authoredUnitSeedsV2 } from "./unit-seeds-v2.js";
+import { authoredUnitSeedsV3 } from "./unit-seeds-v3.js";
 
 export type UnitQuestion = Readonly<{
   id: string;
-  kind: "choice" | "order" | "write";
+  kind: "choice" | "order" | "write" | "multi";
   prompt: string;
   options: readonly string[];
   answer: string;
+  acceptedAnswers?: readonly string[] | undefined;
   explanation: string;
 }>;
 
@@ -26,4 +27,4 @@ export type UnitTemplate = Readonly<{
   questions: readonly UnitQuestion[];
 }>;
 
-export const authoredUnitSeeds: readonly UnitTemplate[] = authoredUnitSeedsV2;
+export const authoredUnitSeeds: readonly UnitTemplate[] = authoredUnitSeedsV3;

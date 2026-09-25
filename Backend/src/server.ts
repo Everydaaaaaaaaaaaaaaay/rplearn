@@ -179,7 +179,7 @@ async function main(): Promise<void> {
     dependencies.database,
     createUnitGenerator(dependencies.database, {
       deepSeek: createDeepSeekClient(config), openRouter,
-    }, () => new AiRepository(dependencies.database).route("learning_review")),
+    }, () => new AiRepository(dependencies.database).route("unit_authoring")),
   ));
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,

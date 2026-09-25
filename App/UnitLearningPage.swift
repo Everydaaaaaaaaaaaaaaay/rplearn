@@ -177,6 +177,7 @@ private struct UnitChallengeView: View {
                             let question = attempt.template.questions[index]
                             UnitQuestionCard(character: character, attempt: attempt,
                                              question: question, model: model)
+                                .id("\(attempt.id.uuidString)-\(question.id)")
                             if attempt.answers[question.id] != nil {
                                 Button(attempt.completedAt != nil ? "返回结果" :
                                        index == attempt.template.questions.count - 1 ? "查看结果" : "下一题") {
@@ -311,7 +312,7 @@ private struct UnitChallengeView: View {
                         .foregroundStyle(correct ? .green : .orange)
                     Text(question.prompt).font(.subheadline)
                     if let answer = question.answer {
-                        Text("参考答案：\(answer)").font(.footnote)
+                        Text("参考答案：\(answer.replacingOccurrences(of: "|", with: "、"))").font(.footnote)
                     }
                     if let explanation = question.explanation {
                         Text(explanation).font(.footnote).foregroundStyle(.secondary)
@@ -348,6 +349,7 @@ private struct UnitQuestionCard: View {
     let question: UnitLearningQuestion
     let model: UnitLearningModel
     @State private var selectedTokens: [Int] = []
+    @State private var selectedOptions: Set<String> = []
     @State private var written = ""
 
     private var isCorrect: Bool { attempt.correctQuestionIds.contains(question.id) }
@@ -372,6 +374,26 @@ private struct UnitQuestionCard: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .disabled(isSubmitting)
                 }
+            } else if question.kind == "multi" {
+                Text("选择所有符合条件的选项")
+                    .font(.subheadline).foregroundStyle(.secondary)
+                ForEach(question.options, id: \.self) { option in
+                    Button {
+                        if selectedOptions.contains(option) { selectedOptions.remove(option) }
+                        else { selectedOptions.insert(option) }
+                    } label: {
+                        Label(option, systemImage: selectedOptions.contains(option) ? "checkmark.square.fill" : "square")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(selectedOptions.contains(option) ? .teal : .gray)
+                    .disabled(isSubmitting)
+                }
+                Button("提交选择") {
+                    submit(question.options.filter { selectedOptions.contains($0) }.joined(separator: "|"))
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(selectedOptions.count < 2 || selectedOptions.count > 3 || isSubmitting)
             } else if question.kind == "order" {
                 Text(selectedTokens.map { question.options[$0] }.joined(separator: " "))
                     .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
@@ -424,7 +446,7 @@ private struct UnitQuestionCard: View {
                     Text("当前水平未增加进度。").font(.footnote).foregroundStyle(.secondary)
                 }
                 if !feedback.correct, let answer = feedback.correctAnswer {
-                    Text("参考答案：\(answer)").font(.subheadline)
+                    Text("参考答案：\(answer.replacingOccurrences(of: "|", with: "、"))").font(.subheadline)
                 }
                 if let explanation = feedback.explanation { Text(explanation).font(.footnote) }
                 if feedback.levelAdvanced { Text("水平进阶！新的挑战将按下一年级出题。") }
