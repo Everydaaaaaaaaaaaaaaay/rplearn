@@ -22,6 +22,7 @@
     "maintenance:cleanup": "tsx src/cli/cleanup-operational-data.ts",
     "npc-avatars:import": "tsx src/cli/import-npc-avatars.ts",
     "architecture": "depcruise --config dependency-cruiser.cjs src",
+    "content:audit": "tsx src/cli/audit-unit-content.ts",
     "production:check": "tsx src/cli/check-production-readiness.ts",
     "start": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/server.js",
     "start:worker": "node --import ./dist/instrumentation-loader.js --import ./dist/instrumentation.js dist/worker.js",

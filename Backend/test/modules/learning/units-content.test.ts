@@ -18,7 +18,7 @@ describe("authored unit library", () => {
         expect(units).toHaveLength(4);
         expect(new Set(units.map(unit => unit.scene.map(beat => beat.english).join("\n"))).size).toBe(4);
         for (const unit of units) {
-          expect(() => validateGeneratedUnit(unit, role, grade)).not.toThrow();
+          expect(() => validateGeneratedUnit(unit, role, grade, { legacyAuthored: true })).not.toThrow();
           expect(unit.scene.some(beat => beat.speaker === "character")).toBe(true);
           expect(unit.scene.every(beat => !beat.english.includes("{") && !beat.chinese.includes("{"))).toBe(true);
           if (grade <= 2) expect(unit.scene.every(beat => beat.english.split(/\s+/u).length <= 16)).toBe(true);
@@ -85,5 +85,20 @@ describe("authored unit library", () => {
     expect(() => validateGeneratedUnit(alreadyOrdered, "oliver", 1)).toThrow();
     const tooShortForSenior = { ...valid, questions: [valid.questions[0], valid.questions[1], { ...valid.questions[2], answer: "open today" }] };
     expect(() => validateGeneratedUnit(tooShortForSenior, "oliver", 10)).toThrow();
+  });
+
+  it("requires generated secondary-school writing to synthesize rather than copy the scene", () => {
+    const senior = authoredUnitSeeds.find(unit => unit.id === "unit-v2-marcus-g10-1");
+    const copied = authoredUnitSeeds.find(unit => unit.id === "unit-v2-ruby-g12-1");
+    if (!senior || !copied) throw Error("Missing authored content fixtures");
+    expect(() => validateGeneratedUnit(senior, "marcus", 10)).not.toThrow();
+    expect(() => validateGeneratedUnit(copied, "ruby", 12)).toThrow();
+    expect(() => validateGeneratedUnit(copied, "ruby", 12, { legacyAuthored: true })).not.toThrow();
+    const short = {
+      ...senior,
+      questions: senior.questions.map(question => question.kind === "write"
+        ? { ...question, answer: "by Monday" } : question),
+    };
+    expect(() => validateGeneratedUnit(short, "marcus", 10)).toThrow();
   });
 });
