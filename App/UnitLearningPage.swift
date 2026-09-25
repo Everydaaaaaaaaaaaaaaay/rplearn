@@ -232,7 +232,22 @@ private struct UnitChallengeView: View {
                 .font(.caption.bold()).foregroundStyle(.teal)
             Text(beat.english).font(.title3)
             Button {
-                Task { await speech.speak(beat.english, language: "en-US") }
+                let request: SpeechRequest
+                if beat.speaker == "character" {
+                    request = SpeechRequest(
+                        text: beat.english,
+                        language: AccentMapper.language(forNationality: character.card.nationality),
+                        purpose: .characterDialogue,
+                        voiceHint: SpeechVoiceHint(
+                            stableID: character.id.uuidString.lowercased(),
+                            gender: character.card.gender.rawValue,
+                            nationality: character.card.nationality,
+                            supertonicVoice: character.card.resolvedReadingVoice
+                        ))
+                } else {
+                    request = SpeechRequest(text: beat.english, voiceHint: StoryVoiceCasting.narrator)
+                }
+                Task { await speech.speak(request) }
             } label: {
                 Label("听这一段", systemImage: "speaker.wave.2")
             }
