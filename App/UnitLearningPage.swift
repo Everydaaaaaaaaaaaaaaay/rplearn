@@ -152,6 +152,7 @@ private struct UnitChallengeView: View {
     let speech: AdaptiveSpeechService
     @Environment(\.dismiss) private var dismiss
     @State private var stage: Stage = .scene(0)
+    @State private var hasInitializedStage = false
 
     private var attempt: UnitLearningAttempt? {
         let state = model.states[character.id]
@@ -197,6 +198,18 @@ private struct UnitChallengeView: View {
         }
         .navigationTitle("单元挑战")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            guard !hasInitializedStage, let attempt else { return }
+            hasInitializedStage = true
+            if attempt.completedAt != nil {
+                stage = .summary
+            } else if attempt.answers.isEmpty == false,
+                      let first = attempt.template.questions.firstIndex(where: {
+                          attempt.answers[$0.id] == nil
+                      }) {
+                stage = .question(first)
+            }
+        }
     }
 
     @ViewBuilder
@@ -256,7 +269,9 @@ private struct UnitChallengeView: View {
             if attempt.completedAt != nil {
                 Text(beat.chinese).font(.footnote).foregroundStyle(.secondary)
             }
-            Button(index == attempt.template.scene.count - 1 ? "开始练习" : "下一段剧情") {
+            Button(index == attempt.template.scene.count - 1
+                   ? (attempt.completedAt == nil ? "开始练习" : "查看结果")
+                   : "下一段剧情") {
                 withAnimation {
                     if index + 1 < attempt.template.scene.count {
                         stage = .scene(index + 1)
@@ -285,6 +300,8 @@ private struct UnitChallengeView: View {
                 .font(.headline).foregroundStyle(.teal)
             Text("错题可以逐题回练；同一道题只有首次答对会增加水平进度。")
                 .font(.subheadline).foregroundStyle(.secondary)
+            Button("重看剧情") { withAnimation { stage = .scene(0) } }
+                .buttonStyle(.bordered)
             ForEach(attempt.template.questions.indices, id: \.self) { index in
                 let question = attempt.template.questions[index]
                 let correct = attempt.correctQuestionIds.contains(question.id)
