@@ -21,3 +21,9 @@
 - 定向内容测试、TypeScript 类型检查、独立临时 PostgreSQL 的六题结算/补答/等价答案测试通过；iOS Debug 产物已构建并安装。真实账号下的服务端生成入库和长期学习效果尚未验证。
 
 本批仍需教师逐题审校和真实学习者试测，尤其是题干能否独立理解、多选干扰项是否公平、短写可接受表达是否遗漏。当前短写只支持标准答案及有限人工列出的等价答案，不适合以一次精确判分代表自由写作能力。每角色每水平目前只有 2 个预设单元；预设用尽时仍按服务端规范生成六题并审查入库，预设量后续还需继续增加。
+
+## 发布与验证记录
+
+2026-09-26，提交 `45ba14f` 已发布到 `rplearn.haruyuki.cn`。发布前数据库有 30 条迁移，完整快照保存在服务器的 `/opt/lingotrip/migration-backups/unit-v3-45ba14f-20260926/lingotrip.dump`；旧服务端加新迁移清单的兼容回退版保存在 `/opt/lingotrip/releases/650de34-v3-fallback`。上线后迁移数为 31，`unit_authoring` 路由已启用且允许 JSON、输出上限 4800；API、Worker、Caddy 均 active，公网 `/health/ready` 返回 ready，未认证的单元进度接口返回 401。检查窗口内 API 与 Worker 无 error 级日志。六题预设在用户首次开启挑战时由服务端批量入库；这些只读探针没有代替真实账号的完整作答验收。
+
+iOS Debug 最新版本已由 `Scripts/preview.sh build learning` 安装并启动在 iOS 27 模拟器；模拟器截图显示英语旅程页面可正常打开。Device Hub 连接超时，故多选题点击、提交和反馈仍缺一次原生手势目视验收。当前改动没有发布 App Store 客户端。
