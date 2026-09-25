@@ -29,6 +29,7 @@ final class ChatLearningSwipeTests: XCTestCase {
         let finish = viewport.coordinate(withNormalizedOffset: CGVector(dx: 0.15, dy: 0.45))
         start.press(forDuration: 0.1, thenDragTo: finish)
         XCTAssertTrue(app.staticTexts["登录后开启学习页"].waitForExistence(timeout: 5), app.debugDescription)
+        XCTAssertFalse(app.staticTexts["旅行册 · 主线剧情"].exists)
         XCTAssertTrue(app.buttons["unitLearning.backToChat"].exists)
 
         let backStart = app.coordinate(withNormalizedOffset: CGVector(dx: 0.15, dy: 0.45))

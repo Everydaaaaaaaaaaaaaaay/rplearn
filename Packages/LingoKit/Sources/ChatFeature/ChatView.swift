@@ -354,6 +354,9 @@ public struct ChatView: View {
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
+        .onChange(of: showsUnitLearning) { _, learningVisible in
+            if !learningVisible { Task { await viewModel.refreshLearnerDifficulty() } }
+        }
         .onChange(of: showsRealtimeConversation || showsContactDetails || wordSelection != nil || grammarTermSelection != nil || grammarAnalysis != nil || isTextInputFocused) { _, presented in
             deps.tutorial?.onEvent(presented ? "presented" : "dismissed")
         }

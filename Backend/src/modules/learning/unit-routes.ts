@@ -22,6 +22,11 @@ function parse<T>(schema: z.ZodType<T>, value: unknown): T {
 }
 
 export function registerUnitLearningRoutes(app: FastifyInstance, auth: AuthService, service: UnitLearningService): void {
+  app.get("/v1/learning/units/progress", async (request, reply) => {
+    const identity = await authenticateRequest(request, auth);
+    reply.header("cache-control", "no-store");
+    return service.readGlobal(identity.userId);
+  });
   app.get("/v1/learning/units/characters/:characterId", async (request, reply) => {
     const identity = await authenticateRequest(request, auth);
     const { characterId } = parse(character, request.params);

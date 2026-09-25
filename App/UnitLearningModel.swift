@@ -3,6 +3,16 @@ import Foundation
 import Observation
 import PersistenceKit
 
+enum UnitLearningGrade {
+    static func name(_ grade: Int) -> String {
+        let years = ["一", "二", "三", "四", "五", "六"]
+        guard (1...12).contains(grade) else { return "英语学习" }
+        if grade <= 6 { return "小学\(years[grade - 1])年级" }
+        if grade <= 9 { return "初中\(years[grade - 7])年级" }
+        return "高中\(years[grade - 10])年级"
+    }
+}
+
 struct UnitLearningProgress: Decodable, Sendable {
     let grade: Int
     let gradeCorrect: Int
@@ -14,6 +24,26 @@ struct UnitLearningProgress: Decodable, Sendable {
     let chatCharacters: Int
     let challengeLength: Int
     let ready: Bool
+}
+
+struct UnitLearningGlobalProgress: Decodable, Sendable {
+    let grade: Int
+    let gradeCorrect: Int
+    let stars: Int
+    let correctPerStar: Int
+    let starsPerGrade: Int
+    let gradeTarget: Int
+    let completedLevels: Int
+
+    init(from progress: UnitLearningProgress) {
+        grade = progress.grade
+        gradeCorrect = progress.gradeCorrect
+        stars = progress.stars
+        correctPerStar = progress.correctPerStar
+        starsPerGrade = progress.starsPerGrade
+        gradeTarget = progress.gradeTarget
+        completedLevels = progress.completedLevels
+    }
 }
 
 struct UnitLearningSceneBeat: Decodable, Sendable {
@@ -87,13 +117,22 @@ final class UnitLearningModel {
     private var flushTask: Task<Void, Never>?
     private var progressRevision: [UUID: Int] = [:]
     private var latestProgress: [UUID: UnitLearningProgress] = [:]
+    private var globalRevision = 0
     private var profileRevision = 0
     private var appliedDifficulty: DifficultyLevel?
     private(set) var states: [UUID: UnitLearningState] = [:]
     private(set) var currentGrade: Int?
+    private(set) var globalProgress: UnitLearningGlobalProgress?
+    private(set) var globalError: String?
     private(set) var errors: [UUID: String] = [:]
     private(set) var busyCharacters: Set<UUID> = []
     private(set) var lastAnswer: (attemptID: UUID, questionID: String, correct: Bool, awarded: Bool, explanation: String?, levelAdvanced: Bool)?
+
+    private func applyGlobal(_ progress: UnitLearningProgress) {
+        globalRevision += 1
+        globalProgress = UnitLearningGlobalProgress(from: progress)
+        currentGrade = progress.grade
+    }
     func pendingMessageCount(for characterID: UUID) -> Int {
         queue.count { $0.characterId == characterID }
     }
@@ -163,6 +202,7 @@ final class UnitLearningModel {
         while active && !Task.isCancelled, let first = queue.first {
             do {
                 let revisionAtSend = profileRevision
+                let globalAtSend = globalRevision
                 let progress: UnitLearningProgress = try await client.send(
                     path: "/v1/learning/units/messages", method: "POST", body: first)
                 guard active, !Task.isCancelled else { return }
@@ -174,7 +214,7 @@ final class UnitLearningModel {
                     states[first.characterId] = UnitLearningState(progress: progress, active: old.active, history: old.history)
                     errors[first.characterId] = nil
                 }
-                currentGrade = progress.grade
+                if globalRevision == globalAtSend { applyGlobal(progress) }
             } catch {
                 guard active, !Task.isCancelled else { return }
                 errors[first.characterId] = "聊天进度暂未同步，联网后重新打开学习页会继续上传。"
@@ -191,6 +231,7 @@ final class UnitLearningModel {
         }
         let revisionAtStart = progressRevision[character.id, default: 0]
         let profileAtStart = profileRevision
+        let globalAtStart = globalRevision
         do {
             let state: UnitLearningState = try await client.get(
                 "/v1/learning/units/characters/\(character.id.uuidString)",
@@ -199,10 +240,27 @@ final class UnitLearningModel {
             let progress = progressRevision[character.id, default: 0] == revisionAtStart
                 ? state.progress : (latestProgress[character.id] ?? state.progress)
             states[character.id] = UnitLearningState(progress: progress, active: state.active, history: state.history)
-            currentGrade = progress.grade
+            if globalRevision == globalAtStart { applyGlobal(progress) }
             if queue.isEmpty { errors[character.id] = nil }
         } catch {
             errors[character.id] = "学习记录暂时无法读取，请检查网络或登录状态。"
+        }
+    }
+
+    func refreshGlobal() async {
+        let revisionAtStart = profileRevision
+        let globalAtStart = globalRevision
+        do {
+            let progress: UnitLearningGlobalProgress = try await client.get("/v1/learning/units/progress")
+            guard profileRevision == revisionAtStart else { return }
+            if globalRevision == globalAtStart {
+                globalRevision += 1
+                globalProgress = progress
+                currentGrade = progress.grade
+            }
+            globalError = nil
+        } catch {
+            globalError = "全局学习进度暂时无法读取，请检查网络或登录状态。"
         }
     }
 
@@ -224,7 +282,7 @@ final class UnitLearningModel {
             } else {
                 await refresh(character: character)
             }
-            currentGrade = progress.grade
+            applyGlobal(progress)
             errors[character.id] = nil
             return progress.ready
         } catch {
@@ -243,7 +301,7 @@ final class UnitLearningModel {
                 path: "/v1/learning/units/start", method: "POST",
                 body: StartBody(characterId: character.id, roleKey: Self.roleKey(for: character)))
             states[character.id] = state
-            currentGrade = state.progress.grade
+            applyGlobal(state.progress)
             errors[character.id] = nil
         } catch let error as BackendClientError where error.code == "UNIT_POOL_EXHAUSTED" {
             errors[character.id] = "这个年级的新单元正在补充，聊天进度已保留。"
@@ -260,7 +318,7 @@ final class UnitLearningModel {
                 path: "/v1/learning/units/answer", method: "POST",
                 body: AnswerBody(attemptId: attemptID, questionId: questionID, answer: text))
             states[character.id] = result.state
-            currentGrade = result.state.progress.grade
+            applyGlobal(result.state.progress)
             lastAnswer = (attemptID, questionID, result.correct, result.awarded, result.explanation, result.levelAdvanced)
             errors[character.id] = nil
             if result.levelAdvanced { await refreshProfile() }
@@ -280,8 +338,11 @@ final class UnitLearningModel {
         }
         guard currentGrade != grade || appliedDifficulty != difficulty else { return }
         profileRevision += 1
+        globalRevision += 1
         appliedDifficulty = difficulty
         currentGrade = grade
+        globalProgress = nil
+        globalError = nil
         states.removeAll()
         latestProgress.removeAll()
     }

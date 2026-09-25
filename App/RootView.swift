@@ -942,16 +942,7 @@ struct RootView: View {
 
     private func placementTestView(isOnboarding: Bool) -> some View {
         PlacementTestView(
-            deps: PlacementDependencies(
-                questionBankURL: Bundle.main.url(
-                    forResource: "placement_questions",
-                    withExtension: "json"
-                )!,
-                economyStore: environment.economyStore,
-                profileCommands: profileCommands,
-                speech: environment.speech,
-                audioSession: environment.audioSession
-            ),
+            deps: placementDependencies(isOnboarding: isOnboarding),
             usesNativeNavigation: !isOnboarding,
             onComplete: { updated in
                 stateRevision += 1
@@ -971,6 +962,25 @@ struct RootView: View {
                 }
             }
         )
+    }
+
+    private func placementDependencies(isOnboarding: Bool) -> PlacementDependencies {
+        let mainline: (@MainActor @Sendable (DifficultyLevel) -> AnyView)?
+        if isOnboarding {
+            mainline = nil
+        } else {
+            mainline = { [weak environment] difficulty in
+                guard let environment else { return AnyView(EmptyView()) }
+                return AnyView(EnglishJourneyProgressView(environment: environment, selectedDifficulty: difficulty))
+            }
+        }
+        return PlacementDependencies(
+            questionBankURL: Bundle.main.url(forResource: "placement_questions", withExtension: "json")!,
+            economyStore: environment.economyStore,
+            profileCommands: profileCommands,
+            speech: environment.speech,
+            audioSession: environment.audioSession,
+            journeyMainline: mainline)
     }
 
     private func storyView(storyID: String) -> some View {

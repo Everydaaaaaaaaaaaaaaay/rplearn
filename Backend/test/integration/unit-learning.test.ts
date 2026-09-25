@@ -30,6 +30,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     expect((await service.recordMessage(user, input)).chatCharacters).toBe(1000);
     expect((await service.read(user, ruby, "ruby")).progress.chatCharacters).toBe(0);
     expect((await service.read(other, oliver, "oliver")).progress.chatCharacters).toBe(0);
+    expect("chatCharacters" in await service.readGlobal(user)).toBe(false);
     const started = await service.start(user, oliver, "oliver");
     const attempt = started.active;
     expect(attempt).not.toBeNull();
@@ -51,6 +52,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awarded).toBe(true);
     expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awarded).toBe(false);
     expect((await service.read(user, oliver, "oliver")).progress.gradeCorrect).toBe(3);
+    expect((await service.read(user, ruby, "ruby")).progress.gradeCorrect).toBe(3);
+    expect((await service.readGlobal(user)).gradeCorrect).toBe(3);
     await service.recordMessage(user, { ...input, messageId: randomUUID() });
     const next = await service.start(user, oliver, "oliver");
     expect(next.active?.template.id).not.toBe(attempt.template.id);
@@ -101,6 +104,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     expect(state.progress.gradeCorrect).toBe(0);
     expect(state.progress.stars).toBe(0);
     expect(state.progress.completedLevels).toBe(1);
+    expect(await gradeService.readGlobal(progressing)).toMatchObject({
+      grade: 2, gradeCorrect: 0, stars: 0, completedLevels: 1,
+    });
     const [profile] = await db.sql<{ difficulty: string }[]>`select difficulty::text as difficulty
       from app.user_profiles where user_id=${progressing}`;
     expect(profile?.difficulty).toBe("primary2");

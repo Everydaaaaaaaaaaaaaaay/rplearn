@@ -8,82 +8,75 @@ struct UnitLearningMainlineScene: Identifiable {
     let lines: [(speaker: String, english: String, chinese: String)]
 }
 
+/// 全账号只有一条主线；章节由挑战取得的真实升级次数解锁，手动改级不会推进剧情。
 enum UnitLearningMainline {
-    static func scenes(role: String) -> [UnitLearningMainlineScene] {
-        switch role {
-        case "oliver": [
-            .init(id: 1, requiredCompletedLevels: 1, title: "书店角落的空白页", setup: "Oliver 邀请你试读他一直不敢拿出来的小说开头。", lines: [
-                ("Oliver", "I wrote this on a rainy Tuesday. It still feels unfinished.", "我在一个下雨的星期二写了它。现在看仍觉得没写完。"),
-                ("你", "A first page doesn't have to carry the whole book.", "第一页不用承载整本书。"),
-                ("Oliver", "That's annoyingly sensible. Could we read one more page tomorrow?", "你说得让人没法反驳。明天能再读一页吗？"),
-            ]),
-            .init(id: 2, requiredCompletedLevels: 3, title: "谁来读这段故事", setup: "书店准备一次小型朗读，Oliver 担心没人愿意听。", lines: [
-                ("Oliver", "The shop can fit eight people, if we move the atlas shelf.", "如果挪开地图册书架，店里能坐八个人。"),
-                ("你", "Then invite eight, and leave room for someone who changes their mind.", "那就邀请八个人，也给临时改变主意的人留点空间。"),
-                ("Oliver", "A reading with an empty chair. I rather like that.", "一场留着空椅子的朗读会。我挺喜欢。"),
-            ]),
-            .init(id: 3, requiredCompletedLevels: 6, title: "读者的不同结尾", setup: "朗读后，有读者对结尾提出相反的意见。", lines: [
-                ("Oliver", "One reader wants a happy ending. Another thinks that would be dishonest.", "一个读者想要圆满结局，另一个觉得那样不诚实。"),
-                ("你", "They can disagree about the ending and both care about the character.", "他们可以对结局有分歧，同时都关心这个人物。"),
-                ("Oliver", "So I should listen before rewriting. That's harder than it sounds.", "所以我得先听，再修改。说起来容易。"),
-            ]),
-            .init(id: 4, requiredCompletedLevels: 9, title: "小说仍在继续", setup: "Oliver 把完成的章节放上书架，但没有把它当成定稿。", lines: [
-                ("Oliver", "I used to call these pages unfinished as an excuse to hide them.", "我以前说它们没写完，其实是给自己找个藏起来的理由。"),
-                ("你", "Now they're open to readers, and open to change.", "现在它们既可以给读者看，也还可以继续改。"),
-                ("Oliver", "Exactly. Put the empty chair by the window again?", "正是。再把那把空椅子放到窗边，好吗？"),
-            ]),
-        ]
-        case "ruby": [
-            .init(id: 1, requiredCompletedLevels: 1, title: "咖啡杯上的海龟", setup: "Ruby 在咖啡馆收到一张关于海龟救助的留言。", lines: [
-                ("Ruby", "Someone saw a turtle near the pier, but they didn't touch it. Good call.", "有人在码头附近看到海龟，但没碰它。这做得对。"),
-                ("你", "We can note the place and ask the rescue team what to do.", "我们可以记下地点，再问救助团队怎么做。"),
-                ("Ruby", "No worries. I have their number right here.", "没问题。我这里就有他们的电话。"),
-            ]),
-            .init(id: 2, requiredCompletedLevels: 3, title: "潮汐表与时间", setup: "救助团队邀请你们协助记录海滩情况。", lines: [
-                ("Ruby", "Low tide is at four, but the team won't arrive until five.", "四点退潮，但团队五点才到。"),
-                ("你", "Let's record what we see from a safe distance and wait for them.", "我们先在安全距离记录观察，再等他们。"),
-                ("Ruby", "Exactly. Helping doesn't mean rushing in.", "正是。帮忙不等于冲上去。"),
-            ]),
-            .init(id: 3, requiredCompletedLevels: 6, title: "一张不完整的记录表", setup: "一周观察后，Ruby 发现记录里的空白比数字更多。", lines: [
-                ("Ruby", "We saw two turtles, but we missed three days of observations.", "我们看到了两只海龟，但有三天没有观察记录。"),
-                ("你", "Then the report should say what we know and what we don't.", "报告就该写清楚我们知道什么、不知道什么。"),
-                ("Ruby", "That's science. Honest gaps are better than invented certainty.", "这才是科学。坦诚的空白比编造的确定性好。"),
-            ]),
-            .init(id: 4, requiredCompletedLevels: 9, title: "把海岸交给更多双眼睛", setup: "Ruby 准备把观察方式教给新的志愿者。", lines: [
-                ("Ruby", "A good guide must be clear enough for someone who's never been here.", "好的指南应让从没来过的人也能看懂。"),
-                ("你", "Let's explain the safe distance first, then show how to record time and place.", "先讲安全距离，再教怎么记录时间地点。"),
-                ("Ruby", "Heaps good. We can help without making ourselves the heroes of the story.", "太好了。我们能帮忙，也不必把自己当成故事主角。"),
-            ]),
-        ]
-        case "marcus": [
-            .init(id: 1, requiredCompletedLevels: 1, title: "底片里的陌生人", setup: "Marcus 冲洗出一张很喜欢的街头照片，却停在了是否展示这一步。", lines: [
-                ("Marcus", "The light is perfect, but that person didn't ask to be in my show.", "光线完美，可照片里的人并没有答应进我的展览。"),
-                ("你", "We could ask before we put it on the wall.", "挂上墙前，我们可以先征求同意。"),
-                ("Marcus", "For real. A good picture isn't a free pass.", "真的。照片拍得好，不等于可以随便用。"),
-            ]),
-            .init(id: 2, requiredCompletedLevels: 3, title: "展览的第一张说明牌", setup: "同意展示的人想让观众知道照片背后的日常。", lines: [
-                ("Marcus", "She says the shop opened before sunrise because her father worked nights.", "她说店在日出前开门，是因为她父亲上夜班。"),
-                ("你", "Let's use her words, and check the caption with her.", "用她自己的话写说明，再请她确认。"),
-                ("Marcus", "Good. Her story, her say.", "好。她的故事，她说了算。"),
-            ]),
-            .init(id: 3, requiredCompletedLevels: 6, title: "两张相反的城市照片", setup: "观众对街道的变化提出不同看法。", lines: [
-                ("Marcus", "One photo shows a crowded market. Another shows an empty street after dark.", "一张照片是拥挤的市场，另一张是天黑后的空街。"),
-                ("你", "Both are true moments. Neither can stand for the whole neighborhood.", "两个瞬间都是真的，但都不能代表整个社区。"),
-                ("Marcus", "No cap. Let's hang them together and let people talk.", "真的。把它们放在一起，让大家谈谈。"),
-            ]),
-            .init(id: 4, requiredCompletedLevels: 9, title: "城市的手", setup: "Marcus 的第一场小型影展终于开放。", lines: [
-                ("Marcus", "I called it The City's Hands, but the captions name the people too.", "我把展览叫《城市的手》，但说明牌也写出了每个人的名字。"),
-                ("你", "The city is made by them, not by your camera alone.", "这座城市由他们构成，不只是由你的相机呈现。"),
-                ("Marcus", "That's the picture I was trying to take all along.", "这才是我一直想拍到的画面。"),
-            ]),
-        ]
-        default: []
-        }
-    }
+    static let scenes: [UnitLearningMainlineScene] = [
+        .init(id: 0, requiredCompletedLevels: 0, title: "空白的第一页", setup: "向导 Mira 交给你一本空白旅行册，邀请你一起为后来者写指南。", lines: [
+            ("Mira", "Hello! I'm Mira. What's your name?", "你好！我是 Mira。你叫什么名字？"),
+            ("你", "I'm ready to begin.", "我准备好出发了。"),
+            ("Mira", "Good. A journey starts with a hello.", "很好。一段旅程从一句问候开始。"),
+        ]),
+        .init(id: 1, requiredCompletedLevels: 1, title: "第一张路标", setup: "你们发现车站的指示牌褪了色，第一次尝试给陌生人指路。", lines: [
+            ("旅人", "Where is the library?", "图书馆在哪里？"),
+            ("你", "Go straight. It's next to the park.", "直走。它就在公园旁边。"),
+            ("Mira", "Let's draw the park too. A clear map helps more than one person.", "把公园也画上吧。清楚的地图能帮助更多人。"),
+        ]),
+        .init(id: 2, requiredCompletedLevels: 2, title: "谁需要这张地图", setup: "一位带着孩子的旅人看不懂你们画的路线。", lines: [
+            ("旅人", "My daughter can't walk far. Is there a shorter way?", "我女儿走不了太远。有更近的路吗？"),
+            ("你", "The small gate is near the bus stop.", "小门靠近公交站。"),
+            ("Mira", "Our first map missed that. Let's add the gate and the bus stop.", "第一张地图漏掉了这点。把小门和公交站加上。"),
+        ]),
+        .init(id: 3, requiredCompletedLevels: 3, title: "错过的末班车", setup: "旧时刻表让一位旅人错过了回程车。", lines: [
+            ("旅人", "The sign says six, but the last bus left at five thirty.", "牌子写六点，但末班车五点半就走了。"),
+            ("你", "Let's check the new timetable before we change the guide.", "先核对新时刻表，再修改指南。"),
+            ("Mira", "And write the date. A useful fact can become an old fact.", "还要写上日期。有用的信息也会过时。"),
+        ]),
+        .init(id: 4, requiredCompletedLevels: 4, title: "两条都正确的路", setup: "有人想省时间，也有人需要轮椅可通行的路线。", lines: [
+            ("Mira", "The bridge is faster, but it has stairs. The riverside path has a ramp.", "过桥更快，但有台阶；河边路有坡道。"),
+            ("你", "Let's show both routes and explain who each one helps.", "两条路线都标出来，说明各适合谁。"),
+            ("Mira", "A guide should offer a choice, not pretend one answer fits everyone.", "指南应给人选择，不该假装一种答案适合所有人。"),
+        ]),
+        .init(id: 5, requiredCompletedLevels: 5, title: "邀请函上的空格", setup: "社区邀请你们展示旅行册，但时间和地点仍未确定。", lines: [
+            ("志愿者", "Can you send the invitation today? People want to plan ahead.", "今天能发邀请吗？大家想提前安排。"),
+            ("你", "We can announce the event, but we must mark the time as unconfirmed.", "可以先预告活动，但必须注明时间未确定。"),
+            ("Mira", "Then we will update everyone once the hall is booked.", "等场地订好，我们再通知大家。"),
+        ]),
+        .init(id: 6, requiredCompletedLevels: 6, title: "没有写下来的声音", setup: "展示会上，一位居民指出指南只记录了游客的经验。", lines: [
+            ("居民", "Your guide calls this street quiet. It isn't quiet for the people who work here at dawn.", "指南说这条街很安静。对黎明就在这里工作的人来说并非如此。"),
+            ("你", "We described one visit as if it were true all day. Could we hear your account?", "我们把一次走访写成了全天情况。能听听您的经历吗？"),
+            ("Mira", "We'll keep the earlier note, add its time, and make room for another voice.", "保留先前记录，注明时间，也给另一种声音留位置。"),
+        ]),
+        .init(id: 7, requiredCompletedLevels: 7, title: "两份相反的记录", setup: "新旧观察记录对同一条街的变化给出了不同判断。", lines: [
+            ("Mira", "One survey says the market is busier; another says fewer shops are open. Can both be true?", "一份调查说市场更热闹，另一份说开门的店更少。两者可能都对吗？"),
+            ("你", "Yes. More visitors could be using fewer shops. We need dates and counts before claiming a trend.", "可能。更多访客也许集中在更少的店里。下结论前得核对日期和数量。"),
+            ("Mira", "Let's publish the question alongside the evidence, not hide it.", "把疑问连同证据一起呈现，不要藏起来。"),
+        ]),
+        .init(id: 8, requiredCompletedLevels: 8, title: "照片里的人", setup: "一张照片能让指南更生动，但照片中的人尚未同意公开。", lines: [
+            ("摄影者", "The image tells the story better than any paragraph. May I upload it?", "这张照片比文字更能讲故事。我能上传吗？"),
+            ("你", "Ask the people in it first. If they decline, we can describe the scene without showing their faces.", "先问照片里的人。如果他们不同意，我们可以只描述场景，不展示面孔。"),
+            ("Mira", "A compelling story doesn't cancel someone's right to choose.", "故事再动人，也不能取消别人选择的权利。"),
+        ]),
+        .init(id: 9, requiredCompletedLevels: 9, title: "地图边界上的争论", setup: "新版路线会带来客流，也可能打扰附近居民。", lines: [
+            ("店主", "The new route could help small shops survive.", "新路线可能帮助小店生存。"),
+            ("居民", "It could also send visitors past our homes late at night.", "也可能让游客深夜经过我们的住处。"),
+            ("你", "We'll compare daytime benefits with evening costs, then ask both groups to review the wording.", "我们会比较白天的收益与夜间的代价，再请双方核对措辞。"),
+        ]),
+        .init(id: 10, requiredCompletedLevels: 10, title: "写给还没到来的人", setup: "指南开始面向不同语言背景和出行需要的读者。", lines: [
+            ("Mira", "A visitor may read this in a hurry, on a small screen, with no local knowledge.", "访客可能在匆忙中，用小屏幕阅读，而且不熟悉当地。"),
+            ("你", "Then each instruction needs a clear action, a landmark, and a way to check whether it is still current.", "那每条指引都需要明确动作、地标，以及核对时效的办法。"),
+            ("Mira", "Let's ask new readers to test it before we call it finished.", "在称它完成之前，请新读者试用。"),
+        ]),
+        .init(id: 11, requiredCompletedLevels: 11, title: "仍然空白的最后一页", setup: "旅行册终于出版。Mira 却留下一页空白，等你决定如何继续。", lines: [
+            ("Mira", "We corrected routes, checked claims, and listened when people disagreed. This edition will still grow old.", "我们修正路线、核实说法，也在意见不同时认真倾听。但这一版仍会过时。"),
+            ("你", "Then the last page should explain how readers can question us and help improve the next one.", "那最后一页应该告诉读者如何提出疑问、帮助改进下一版。"),
+            ("Mira", "Exactly. Learning is not a final page. It's the habit of returning with better questions.", "正是。学习没有最后一页，它是带着更好的问题继续回来。"),
+        ]),
+    ]
 }
 
 struct UnitLearningMainlineView: View {
     let scene: UnitLearningMainlineScene
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -105,7 +98,8 @@ struct UnitLearningMainlineView: View {
             .frame(maxWidth: 720)
             .frame(maxWidth: .infinity)
         }
-        .navigationTitle("学习主线")
+        .navigationTitle("主线剧情")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.visible, for: .navigationBar)
     }
 }

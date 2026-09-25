@@ -139,6 +139,12 @@ public final class ChatViewModel {
         #endif
     }
 
+    func refreshLearnerDifficulty() async {
+        if let profile = try? await deps.economyStore.profile() {
+            learnerDifficulty = profile.difficultyLevel
+        }
+    }
+
     /// 正在翻译中的消息（气泡下方转圈）。
     public private(set) var translatingMessageIDs: Set<UUID> = []
 

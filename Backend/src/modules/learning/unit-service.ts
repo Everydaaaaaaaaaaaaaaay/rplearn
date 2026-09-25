@@ -59,7 +59,7 @@ function attemptView(attempt: AttemptRow) {
   };
 }
 
-function progress(account: AccountRow, character: CharacterRow) {
+function globalProgress(account: AccountRow) {
   return {
     grade: account.grade,
     gradeCorrect: account.grade_correct,
@@ -68,6 +68,12 @@ function progress(account: AccountRow, character: CharacterRow) {
     starsPerGrade,
     gradeTarget: correctPerStar * starsPerGrade,
     completedLevels: account.completed_levels,
+  };
+}
+
+function progress(account: AccountRow, character: CharacterRow) {
+  return {
+    ...globalProgress(account),
     chatCharacters: character.chat_characters,
     challengeLength,
     ready: character.chat_characters >= challengeLength && character.active_attempt_id === null,
@@ -100,7 +106,7 @@ export function createUnitLearningService(
     return seeded;
   }
 
-  async function ensureRows(userId: string, characterId: string, role: string) {
+  async function ensureAccount(userId: string) {
     const [profile] = await sql<{ difficulty: string }[]>`select difficulty::text as difficulty
       from app.user_profiles where user_id=${userId}`;
     const difficulty = profile?.difficulty ?? "primary1";
@@ -109,8 +115,20 @@ export function createUnitLearningService(
       on conflict(user_id) do update set grade=${initialGrade(difficulty)},grade_correct=0,
         source_difficulty=${difficulty},updated_at=now()
       where app.unit_learning_accounts.source_difficulty is distinct from ${difficulty}`;
+  }
+
+  async function ensureRows(userId: string, characterId: string, role: string) {
+    await ensureAccount(userId);
     await sql`insert into app.unit_learning_characters(user_id,character_id,role_key)
       values(${userId},${characterId},${roleKey(role, characterId)}) on conflict do nothing`;
+  }
+
+  async function readGlobal(userId: string) {
+    await ensureAccount(userId);
+    const [account] = await sql<AccountRow[]>`select grade,grade_correct,completed_levels
+      from app.unit_learning_accounts where user_id=${userId}`;
+    if (!account) fail("UNIT_STATE_UNAVAILABLE", "Learning state is unavailable.", 503);
+    return globalProgress(account);
   }
 
   async function read(userId: string, characterId: string, role: string) {
@@ -274,6 +292,6 @@ export function createUnitLearningService(
     return read(userId, characterId, role);
   }
 
-  return { read, recordMessage, start, answer, changeGrade };
+  return { readGlobal, read, recordMessage, start, answer, changeGrade };
 }
 export type UnitLearningService = ReturnType<typeof createUnitLearningService>;

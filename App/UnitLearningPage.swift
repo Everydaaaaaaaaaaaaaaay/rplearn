@@ -12,10 +12,8 @@ struct UnitLearningPage: View {
             if let model, let state = model.states[character.id] {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 22) {
-                        overview(state)
-                        levelCard(state)
+                        overview()
                         challengeCard(state, model: model)
-                        mainlineCard(state)
                         historyCard(state)
                     }
                     .padding(20)
@@ -54,7 +52,7 @@ struct UnitLearningPage: View {
         }
     }
 
-    private func overview(_ state: UnitLearningState) -> some View {
+    private func overview() -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("共同学习").font(.largeTitle.bold())
             Text("你和\(character.displayName)的聊天会积累单元挑战进度。每条双方发送的消息只计一次。")
@@ -62,32 +60,6 @@ struct UnitLearningPage: View {
             Text("角色挑战独立 · 英语水平全局共享")
                 .font(.caption.weight(.medium)).foregroundStyle(.teal)
         }
-    }
-
-    private func levelCard(_ state: UnitLearningState) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("当前水平").font(.caption).foregroundStyle(.secondary)
-                    Text(gradeName(state.progress.grade)).font(.title2.bold())
-                }
-                Spacer()
-                Text("\(state.progress.gradeCorrect) / \(state.progress.gradeTarget) 道新答对")
-                    .font(.subheadline.monospacedDigit())
-            }
-            HStack(spacing: 7) {
-                ForEach(0..<state.progress.starsPerGrade, id: \.self) { index in
-                    Image(systemName: index < state.progress.stars ? "star.fill" : "star")
-                        .foregroundStyle(index < state.progress.stars ? .yellow : .secondary)
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            Text("每答对 \(state.progress.correctPerStar) 道新题点亮一颗星；九颗星后进入下一年级。旧题重复答对不加分。")
-                .font(.caption).foregroundStyle(.secondary)
-        }
-        .padding(18)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20))
-        .accessibilityIdentifier("unitLearning.level")
     }
 
     private func challengeCard(_ state: UnitLearningState, model: UnitLearningModel) -> some View {
@@ -149,7 +121,7 @@ struct UnitLearningPage: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
                                 Text(attempt.template.title).font(.headline)
-                                Text("\(gradeName(attempt.grade)) · 答对 \(attempt.correctCount) / \(attempt.questionCount)")
+                                Text("\(UnitLearningGrade.name(attempt.grade)) · 答对 \(attempt.correctCount) / \(attempt.questionCount)")
                                     .font(.caption).foregroundStyle(.secondary)
                             }
                             Spacer()
@@ -164,45 +136,6 @@ struct UnitLearningPage: View {
         }
     }
 
-    private func mainlineCard(_ state: UnitLearningState) -> some View {
-        let scenes = UnitLearningMainline.scenes(role: UnitLearningModel.roleKey(for: character))
-        let unlocked = scenes.filter { $0.requiredCompletedLevels <= state.progress.completedLevels }
-        return VStack(alignment: .leading, spacing: 12) {
-            Text("学习主线").font(.title3.bold())
-            if scenes.isEmpty {
-                Text("这位角色的学习主线还在创作中。")
-                    .font(.subheadline).foregroundStyle(.secondary)
-            } else if unlocked.isEmpty {
-                Text("提升到下一个年级，开启与\(character.displayName)的新章节。")
-                    .font(.subheadline).foregroundStyle(.secondary)
-            }
-            ForEach(unlocked) { scene in
-                NavigationLink {
-                    UnitLearningMainlineView(scene: scene)
-                } label: {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(scene.title).font(.headline)
-                            Text(scene.setup).font(.caption).foregroundStyle(.secondary)
-                        }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                    }
-                    .padding(14)
-                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
-                }
-                .buttonStyle(.plain)
-            }
-        }
-    }
-
-    private func gradeName(_ grade: Int) -> String {
-        let years = ["一", "二", "三", "四", "五", "六"]
-        guard (1...12).contains(grade) else { return "英语学习" }
-        if grade <= 6 { return "小学\(years[grade - 1])年级" }
-        if grade <= 9 { return "初中\(years[grade - 7])年级" }
-        return "高中\(years[grade - 10])年级"
-    }
 }
 
 private struct UnitChallengeView: View {

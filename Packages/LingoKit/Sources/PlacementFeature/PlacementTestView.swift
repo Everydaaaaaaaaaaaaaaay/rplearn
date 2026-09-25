@@ -11,19 +11,22 @@ public struct PlacementDependencies: Sendable {
     public let profileCommands: any ProfileCommandGateway
     public let speech: any SpeechService
     public let audioSession: AudioSessionCoordinator
+    public let journeyMainline: (@MainActor @Sendable (DifficultyLevel) -> AnyView)?
 
     public init(
         questionBankURL: URL,
         economyStore: EconomyStore,
         profileCommands: any ProfileCommandGateway,
         speech: any SpeechService,
-        audioSession: AudioSessionCoordinator
+        audioSession: AudioSessionCoordinator,
+        journeyMainline: (@MainActor @Sendable (DifficultyLevel) -> AnyView)? = nil
     ) {
         self.questionBankURL = questionBankURL
         self.economyStore = economyStore
         self.profileCommands = profileCommands
         self.speech = speech
         self.audioSession = audioSession
+        self.journeyMainline = journeyMainline
     }
 }
 
@@ -299,6 +302,10 @@ public struct PlacementTestView: View {
                         }
                         .padding(DSSpacing.md)
                     }
+                }
+
+                if let journeyMainline = deps.journeyMainline {
+                    journeyMainline(currentLevel)
                 }
 
                 if let errorMessage {
