@@ -41,11 +41,16 @@ struct UnitLearningPage: View {
                 ProgressView("正在读取学习记录")
             }
         }
-        .navigationTitle("与\(character.displayName)学习")
-        .navigationBarTitleDisplayMode(.inline)
         .task(id: character.id) {
             model = environment.unitLearning()
-            await model?.refresh(character: character)
+            if model?.states[character.id] == nil,
+               model?.busyCharacters.contains(character.id) == false {
+                await model?.refresh(character: character)
+            }
+        }
+        .onChange(of: model?.currentGrade) { _, _ in
+            guard let model, model.states[character.id] == nil else { return }
+            Task { await model.refresh(character: character) }
         }
     }
 

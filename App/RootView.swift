@@ -1072,6 +1072,12 @@ struct RootView: View {
             guard let environment, let model = environment.unitLearning() else { return }
             await model.refresh(character: character)
         }
+        #if DEBUG
+        dependencies.unitLearningDebugFill = { [weak environment] character in
+            guard let environment, let model = environment.unitLearning() else { return false }
+            return await model.debugFill(character: character)
+        }
+        #endif
         return dependencies
     }
 

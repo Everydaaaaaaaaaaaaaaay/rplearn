@@ -42,6 +42,9 @@ public struct ChatDependencies: Sendable {
     public var unitLearningMessage: (@MainActor @Sendable (UUID, UUID, MessageRole, String) -> Void)? = nil
     public var unitLearningPage: (@MainActor @Sendable (CharacterDTO) -> AnyView)? = nil
     public var unitLearningRefresh: (@MainActor @Sendable (CharacterDTO) async -> Void)? = nil
+    #if DEBUG
+    public var unitLearningDebugFill: (@MainActor @Sendable (CharacterDTO) async -> Bool)? = nil
+    #endif
 
     /// Optional prototype telemetry; nil in normal app assembly.
     public var learningObserver: (@MainActor @Sendable (ConversationLearningObservation) -> Void)? = nil

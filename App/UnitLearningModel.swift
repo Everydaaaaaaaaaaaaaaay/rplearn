@@ -206,6 +206,34 @@ final class UnitLearningModel {
         }
     }
 
+    #if DEBUG
+    /// 开发构建的手动测试入口；使用当前账号的进度接口，不写入聊天记录。
+    func debugFill(character: CharacterDTO) async -> Bool {
+        guard active else { return false }
+        busyCharacters.insert(character.id)
+        defer { busyCharacters.remove(character.id) }
+        do {
+            let progress: UnitLearningProgress = try await client.send(
+                path: "/v1/learning/units/messages", method: "POST",
+                body: MessageBody(characterId: character.id, roleKey: Self.roleKey(for: character),
+                                  messageId: UUID(), role: MessageRole.user.rawValue, characterCount: 1000))
+            latestProgress[character.id] = progress
+            progressRevision[character.id, default: 0] += 1
+            if let old = states[character.id] {
+                states[character.id] = UnitLearningState(progress: progress, active: old.active, history: old.history)
+            } else {
+                await refresh(character: character)
+            }
+            currentGrade = progress.grade
+            errors[character.id] = nil
+            return progress.ready
+        } catch {
+            errors[character.id] = "开发版填满挑战进度失败，请检查网络或登录状态。"
+            return false
+        }
+    }
+    #endif
+
     func start(character: CharacterDTO) async {
         busyCharacters.insert(character.id)
         defer { busyCharacters.remove(character.id) }

@@ -45,6 +45,12 @@ public struct ChatView: View {
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
     @State private var showsUnitLearning = false
+    @State private var hasMountedUnitLearning = false
+    @State private var learningDragOffset: CGFloat = 0
+    @State private var learningSwipeIsHorizontal: Bool?
+    #if DEBUG
+    @State private var isFillingChallenge = false
+    #endif
     @State var highlightedMessageID: UUID?
     /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
     @State private var isKeyboardVisible = false
@@ -70,32 +76,35 @@ public struct ChatView: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            messageList
-            // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
-            // 而不是覆盖输入栏或当前可见消息。
-            //
-            // 底部安全区由输入栏自己接管（忽略容器的底部安全区再补进输入栏），
-            // 这样 iOS 26 与 iOS 27（后者不会把安全区算进 safeAreaInset 视图）都能
-            // 让输入栏材质贴住屏幕底边，消息列表也不会在输入栏下方露出。
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
+            let pageOffset = min(0, max(-proxy.size.width,
+                                        (showsUnitLearning ? -proxy.size.width : 0) + learningDragOffset))
+            ZStack(alignment: .leading) {
+                messageList
+                    // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口。
+                    .safeAreaInset(edge: .bottom, spacing: 0) {
+                        inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
+                    }
+                    .ignoresSafeArea(.container, edges: .bottom)
+                    .frame(width: proxy.size.width)
+                    .offset(x: pageOffset)
+                    .allowsHitTesting(!showsUnitLearning && learningDragOffset == 0)
+                    .accessibilityHidden(showsUnitLearning)
+
+                if hasMountedUnitLearning, let unitLearningPage = deps.unitLearningPage {
+                    unitLearningPage(viewModel.character)
+                        .frame(width: proxy.size.width)
+                        .offset(x: pageOffset + proxy.size.width)
+                        .allowsHitTesting(showsUnitLearning && learningDragOffset == 0)
+                        .accessibilityHidden(!showsUnitLearning)
+                }
             }
-            .ignoresSafeArea(.container, edges: .bottom)
+            .frame(width: proxy.size.width, height: proxy.size.height, alignment: .leading)
+            .contentShape(Rectangle())
+            .clipped()
+            .simultaneousGesture(learningPageGesture(width: proxy.size.width))
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background(Color.dsBackground)
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 35).onEnded { value in
-                guard deps.unitLearningPage != nil,
-                      value.translation.width < -85,
-                      abs(value.translation.width) > abs(value.translation.height) * 1.7,
-                      !isKeyboardVisible else { return }
-                showsUnitLearning = true
-            }
-        )
-        .navigationDestination(isPresented: $showsUnitLearning) {
-            deps.unitLearningPage?(viewModel.character)
-        }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshMessages() }
@@ -111,85 +120,120 @@ public struct ChatView: View {
             isKeyboardVisible = false
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(showsUnitLearning ? "与\(viewModel.character.displayName)学习" : "")
+        .navigationBarBackButtonHidden(showsUnitLearning)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                TimelineView(.periodic(from: .now, by: 15)) { context in
-                    let presence = viewModel.presence(at: context.date)
-                    ChatTitleView(
-                        title: viewModel.character.displayName,
-                        subtitle: chatStatus(presence, at: context.date)
-                    ) {
-                        ZStack(alignment: .bottomTrailing) {
-                            AvatarBadge(
-                                name: viewModel.character.displayName,
-                                size: 32,
-                                imageName: viewModel.character.card.avatarAssetName,
-                                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                                usesPendingPlaceholder: true
-                            )
-                            Circle()
-                                .fill(presenceColor(presence))
-                                .frame(width: 9, height: 9)
-                                .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
-                                .accessibilityHidden(true)
+                if !showsUnitLearning {
+                    TimelineView(.periodic(from: .now, by: 15)) { context in
+                        let presence = viewModel.presence(at: context.date)
+                        ChatTitleView(
+                            title: viewModel.character.displayName,
+                            subtitle: chatStatus(presence, at: context.date)
+                        ) {
+                            ZStack(alignment: .bottomTrailing) {
+                                AvatarBadge(
+                                    name: viewModel.character.displayName,
+                                    size: 32,
+                                    imageName: viewModel.character.card.avatarAssetName,
+                                    remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                                    usesPendingPlaceholder: true
+                                )
+                                Circle()
+                                    .fill(presenceColor(presence))
+                                    .frame(width: 9, height: 9)
+                                    .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
+                                    .accessibilityHidden(true)
+                            }
                         }
+                        .accessibilityElement(children: .combine)
                     }
-                    .accessibilityElement(children: .combine)
+                }
+            }
+            if showsUnitLearning {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        withAnimation(learningPageAnimation) { showsUnitLearning = false }
+                    } label: {
+                        Label("聊天", systemImage: "chevron.left")
+                    }
+                    .accessibilityIdentifier("unitLearning.backToChat")
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                HStack(spacing: 0) {
-                    if deps.unitLearningPage != nil {
-                        Button { showsUnitLearning = true } label: {
-                            Image(systemName: "book.pages")
+                if !showsUnitLearning {
+                    HStack(spacing: 0) {
+                        #if DEBUG
+                        if let debugFill = deps.unitLearningDebugFill {
+                            Button {
+                                guard !isFillingChallenge else { return }
+                                isFillingChallenge = true
+                                Task {
+                                    let filled = await debugFill(viewModel.character)
+                                    isFillingChallenge = false
+                                    viewModel.quickNotice = DSQuickNotice(
+                                        filled ? "挑战进度已填满，左滑进入学习页" : "填满失败，请检查登录、网络或当前挑战状态",
+                                        symbol: .finishPractice)
+                                }
+                            } label: {
+                                Image(systemName: "bolt.fill")
+                                    .foregroundStyle(Color.accentColor)
+                                    .frame(width: 44, height: 44)
+                            }
+                            .disabled(isFillingChallenge)
+                            .accessibilityLabel("开发版：填满挑战进度")
+                            .accessibilityIdentifier("chat.unitLearning.debugFill")
+                        }
+                        #endif
+                        Button {
+                            autoReadEnabled.toggle()
+                        } label: {
+                            Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                                .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
+                                .frame(width: 44, height: 44)
+                                .contentShape(Rectangle())
+                        }
+                        .accessibilityLabel("自动朗读新消息")
+                        .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                        .accessibilityHint("按顺序朗读你和旅伴的新消息")
+                        .accessibilityIdentifier("chat.autoRead")
+
+                        Button {
+                            isTextInputFocused = false
+                            voicePlayer.stop()
+                            // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
+                            showsRealtimeConversation = true
+                        } label: {
+                            Image(systemName: "phone.fill")
                                 .foregroundStyle(Color.accentColor)
                                 .frame(width: 44, height: 44)
+                                .contentShape(Rectangle())
                         }
-                        .accessibilityLabel("学习页")
-                        .accessibilityIdentifier("chat.unitLearning.open")
-                    }
-                    Button {
-                        autoReadEnabled.toggle()
-                    } label: {
-                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                            .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .accessibilityLabel("自动朗读新消息")
-                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                    .accessibilityHint("按顺序朗读你和旅伴的新消息")
-                    .accessibilityIdentifier("chat.autoRead")
+                        .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
 
-                    Button {
-                        isTextInputFocused = false
-                        voicePlayer.stop()
-                        // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
-                        showsRealtimeConversation = true
-                    } label: {
-                        Image(systemName: "phone.fill")
-                            .foregroundStyle(Color.accentColor)
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
+                        Button {
+                            isTextInputFocused = false
+                            voicePlayer.stop()
+                            showsContactDetails = true
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                                .foregroundStyle(Color.accentColor)
+                                .frame(width: 44, height: 44)
+                                .contentShape(Rectangle())
+                        }
+                        .accessibilityLabel("聊天设置")
                     }
-                    .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
-
-                    Button {
-                        isTextInputFocused = false
-                        voicePlayer.stop()
-                        showsContactDetails = true
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                            .foregroundStyle(Color.accentColor)
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .accessibilityLabel("聊天设置")
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
         }
+        .accessibilityAction(named: showsUnitLearning ? "返回聊天" : "打开学习页") {
+            guard deps.unitLearningPage != nil else { return }
+            hasMountedUnitLearning = true
+            withAnimation(learningPageAnimation) { showsUnitLearning.toggle() }
+        }
         .accessibilityAction(named: "聊天设置") {
+            guard !showsUnitLearning else { return }
             isTextInputFocused = false
             voicePlayer.stop()
             showsContactDetails = true
@@ -278,6 +322,8 @@ public struct ChatView: View {
             }
             await viewModel.load()
             guard !Task.isCancelled else { return }
+            // 在聊天加载后预先构建学习页，首次横滑不会承担页面创建成本。
+            hasMountedUnitLearning = deps.unitLearningPage != nil
             autoReadReady = true
             autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
             #if DEBUG
@@ -329,6 +375,43 @@ public struct ChatView: View {
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private var learningPageAnimation: Animation {
+        reduceMotion ? .easeOut(duration: 0.2) : .spring(response: 0.36, dampingFraction: 1)
+    }
+
+    private func learningPageGesture(width: CGFloat) -> some Gesture {
+        DragGesture(minimumDistance: 12)
+            .onChanged { value in
+                guard deps.unitLearningPage != nil,
+                      showsUnitLearning || !isKeyboardVisible else { return }
+                if learningSwipeIsHorizontal == nil {
+                    learningSwipeIsHorizontal = abs(value.translation.width) > abs(value.translation.height) * 1.25
+                }
+                guard learningSwipeIsHorizontal == true else { return }
+                let translation = value.translation.width
+                learningDragOffset = showsUnitLearning ? max(0, translation) : min(0, translation)
+                if learningDragOffset < 0 { hasMountedUnitLearning = true }
+            }
+            .onEnded { value in
+                defer { learningSwipeIsHorizontal = nil }
+                guard learningSwipeIsHorizontal == true else {
+                    learningDragOffset = 0
+                    return
+                }
+                let distance = showsUnitLearning
+                    ? max(0, value.translation.width) : max(0, -value.translation.width)
+                let projected = showsUnitLearning
+                    ? max(0, value.predictedEndTranslation.width)
+                    : max(0, -value.predictedEndTranslation.width)
+                let shouldTurnPage = distance > width * 0.33
+                    || (distance > 18 && projected > width * 0.5)
+                withAnimation(learningPageAnimation) {
+                    if shouldTurnPage { showsUnitLearning.toggle() }
+                    learningDragOffset = 0
+                }
+            }
     }
 
     private var autoReadSnapshot: ChatAutoReadQueue.Snapshot {
