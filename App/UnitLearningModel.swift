@@ -132,7 +132,8 @@ final class UnitLearningModel {
     private(set) var busyCharacters: Set<UUID> = []
     private(set) var lastAnswer: (attemptID: UUID, questionID: String, correct: Bool,
                                   awardedPoints: Int, rewardPending: Bool,
-                                  explanation: String?, levelAdvanced: Bool)?
+                                  explanation: String?, correctAnswer: String?,
+                                  levelAdvanced: Bool)?
 
     private func applyGlobal(_ progress: UnitLearningProgress) {
         globalRevision += 1
@@ -328,7 +329,7 @@ final class UnitLearningModel {
             lastAnswer = (attemptID, questionID, result.correct,
                           result.awardedPoints ?? (result.awarded ? 1 : 0),
                           result.rewardPending ?? false,
-                          result.explanation, result.levelAdvanced)
+                          result.explanation, result.correctAnswer, result.levelAdvanced)
             errors[character.id] = nil
             if result.levelAdvanced { await refreshProfile() }
         } catch {

@@ -423,6 +423,9 @@ private struct UnitQuestionCard: View {
                 } else if feedback.correct && !feedback.rewardPending {
                     Text("当前水平未增加进度。").font(.footnote).foregroundStyle(.secondary)
                 }
+                if !feedback.correct, let answer = feedback.correctAnswer {
+                    Text("参考答案：\(answer)").font(.subheadline)
+                }
                 if let explanation = feedback.explanation { Text(explanation).font(.footnote) }
                 if feedback.levelAdvanced { Text("水平进阶！新的挑战将按下一年级出题。") }
             }

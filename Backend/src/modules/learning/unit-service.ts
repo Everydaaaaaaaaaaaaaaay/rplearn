@@ -276,8 +276,8 @@ export function createUnitLearningService(
       }
       return { characterId: attempt.character_id, correct, newlyCorrect, awarded,
         awardedPoints, rewardPending, completed, levelAdvanced,
-        explanation: completed || correct ? question.explanation : null,
-        correctAnswer: completed || correct ? question.answer : null };
+        explanation: question.explanation,
+        correctAnswer: question.answer };
     });
     const state = await read(userId, result.characterId, "other");
     return { ...result, state };

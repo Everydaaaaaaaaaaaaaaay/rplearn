@@ -43,7 +43,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     if (!seed) throw Error("Missing unit template");
     const wrong = seed.questions[0]?.options.find(option => option !== seed.questions[0]?.answer);
     if (!wrong) throw Error("Missing distractor");
-    expect((await service.answer(user, attempt.id, "q1", wrong)).awarded).toBe(false);
+    const first = await service.answer(user, attempt.id, "q1", wrong);
+    expect(first).toMatchObject({
+      awarded: false,
+      correctAnswer: seed.questions[0]?.answer,
+      explanation: seed.questions[0]?.explanation,
+    });
+    expect(first.state.active?.template.questions[1]).not.toHaveProperty("answer");
     await expect(service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).rejects.toMatchObject({ code: "UNIT_RETRY_AFTER_COMPLETION" });
     const second = await service.answer(user, attempt.id, "q2", seed.questions[1]?.answer ?? "");
     expect(second).toMatchObject({ awarded: false, awardedPoints: 0, rewardPending: true });
