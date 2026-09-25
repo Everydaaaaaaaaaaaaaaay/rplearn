@@ -57,6 +57,8 @@ struct UnitLearningQuestion: Decodable, Identifiable, Sendable {
     let kind: String
     let prompt: String
     let options: [String]
+    let answer: String?
+    let explanation: String?
 }
 
 struct UnitLearningTemplate: Decodable, Sendable {

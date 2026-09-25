@@ -1,4 +1,5 @@
 import PersistenceKit
+import SpeechKit
 import SwiftUI
 
 struct UnitLearningPage: View {
@@ -21,7 +22,8 @@ struct UnitLearningPage: View {
                     .frame(maxWidth: .infinity)
                 }
                 .navigationDestination(item: $selectedAttemptID) { attemptID in
-                    UnitChallengeView(character: character, attemptID: attemptID, model: model)
+                    UnitChallengeView(character: character, attemptID: attemptID,
+                                      model: model, speech: environment.speech)
                 }
                 .refreshable { await model.refresh(character: character) }
             } else if let model, let error = model.errors[character.id] {
@@ -135,14 +137,21 @@ struct UnitLearningPage: View {
             }
         }
     }
-
 }
 
 private struct UnitChallengeView: View {
+    private enum Stage: Hashable {
+        case scene(Int)
+        case question(Int)
+        case summary
+    }
+
     let character: CharacterDTO
     let attemptID: UUID
     let model: UnitLearningModel
+    let speech: AdaptiveSpeechService
     @Environment(\.dismiss) private var dismiss
+    @State private var stage: Stage = .scene(0)
 
     private var attempt: UnitLearningAttempt? {
         let state = model.states[character.id]
@@ -156,43 +165,148 @@ private struct UnitChallengeView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     Text(attempt.template.title).font(.largeTitle.bold())
                     Text(attempt.template.objective).foregroundStyle(.secondary)
-                    if attempt.completedAt == nil {
-                        Text("先读英语完成本轮挑战；作答结束后可查看中文辅助和题目讲解。")
-                            .font(.footnote).foregroundStyle(.secondary)
-                    }
-                    ForEach(attempt.template.scene.indices, id: \.self) { index in
-                        let beat = attempt.template.scene[index]
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(beat.speaker == "character" ? character.displayName : "剧情")
-                                .font(.caption.bold()).foregroundStyle(.teal)
-                            Text(beat.english).font(.body)
-                            if attempt.completedAt != nil {
-                                Text(beat.chinese).font(.footnote).foregroundStyle(.secondary)
+                    stageProgress(attempt)
+                    switch stage {
+                    case .scene(let index):
+                        if attempt.template.scene.indices.contains(index) {
+                            sceneCard(attempt, index: index)
+                        }
+                    case .question(let index):
+                        if attempt.template.questions.indices.contains(index) {
+                            let question = attempt.template.questions[index]
+                            UnitQuestionCard(character: character, attempt: attempt,
+                                             question: question, model: model)
+                            if attempt.answers[question.id] != nil {
+                                Button(attempt.completedAt != nil ? "返回结果" :
+                                       index == attempt.template.questions.count - 1 ? "查看结果" : "下一题") {
+                                    advanceQuestion(attempt, after: index)
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .accessibilityIdentifier("unitLearning.next")
                             }
                         }
-                        .padding(16)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
-                    }
-                    ForEach(attempt.template.questions) { question in
-                        UnitQuestionCard(character: character, attempt: attempt,
-                                         question: question, model: model)
-                    }
-                    if attempt.completedAt != nil {
-                        Text("本轮已完成 · 答对 \(attempt.correctCount) / \(attempt.questionCount)")
-                            .font(.headline)
-                        Text("未答对的题可以在这里重答；同一道题只在首次答对时增加一次水平进度。")
-                            .font(.footnote).foregroundStyle(.secondary)
-                        Button("返回学习页") { dismiss() }.buttonStyle(.borderedProminent)
+                    case .summary:
+                        summaryCard(attempt)
                     }
                 }
                 .padding(20)
                 .frame(maxWidth: 720)
                 .frame(maxWidth: .infinity)
+                .animation(.easeInOut(duration: 0.22), value: stage)
             }
         }
         .navigationTitle("单元挑战")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    @ViewBuilder
+    private func stageProgress(_ attempt: UnitLearningAttempt) -> some View {
+        let sceneCount = attempt.template.scene.count
+        let questionCount = attempt.template.questions.count
+        let current: Int = switch stage {
+        case .scene(let index): index + 1
+        case .question(let index): sceneCount + index + 1
+        case .summary: sceneCount + questionCount
+        }
+        let label: String = switch stage {
+        case .scene(let index): "剧情 \(index + 1) / \(sceneCount)"
+        case .question(let index): "练习 \(index + 1) / \(questionCount)"
+        case .summary: "本轮结果"
+        }
+        HStack {
+            Text(label)
+            .font(.caption.weight(.semibold))
+            Spacer()
+            Text("\(attempt.correctCount) / \(questionCount) 题答对")
+                .font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+        }
+        ProgressView(value: Double(current), total: Double(max(1, sceneCount + questionCount)))
+            .tint(.teal)
+            .accessibilityIdentifier("unitLearning.lessonProgress")
+    }
+
+    private func sceneCard(_ attempt: UnitLearningAttempt, index: Int) -> some View {
+        let beat = attempt.template.scene[index]
+        return VStack(alignment: .leading, spacing: 14) {
+            Text(beat.speaker == "character" ? character.displayName : "剧情")
+                .font(.caption.bold()).foregroundStyle(.teal)
+            Text(beat.english).font(.title3)
+            Button {
+                Task { await speech.speak(beat.english, language: "en-US") }
+            } label: {
+                Label("听这一段", systemImage: "speaker.wave.2")
+            }
+            .buttonStyle(.bordered)
+            .accessibilityIdentifier("unitLearning.playScene")
+            if attempt.completedAt != nil {
+                Text(beat.chinese).font(.footnote).foregroundStyle(.secondary)
+            }
+            Button(index == attempt.template.scene.count - 1 ? "开始练习" : "下一段剧情") {
+                withAnimation {
+                    if index + 1 < attempt.template.scene.count {
+                        stage = .scene(index + 1)
+                    } else if attempt.completedAt != nil {
+                        stage = .summary
+                    } else if let first = attempt.template.questions.firstIndex(where: {
+                        attempt.answers[$0.id] == nil
+                    }) {
+                        stage = .question(first)
+                    } else {
+                        stage = .summary
+                    }
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18))
+    }
+
+    private func summaryCard(_ attempt: UnitLearningAttempt) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("本轮已完成").font(.title2.bold())
+            Text("答对 \(attempt.correctCount) / \(attempt.questionCount) 题")
+                .font(.headline).foregroundStyle(.teal)
+            Text("错题可以逐题回练；同一道题只有首次答对会增加水平进度。")
+                .font(.subheadline).foregroundStyle(.secondary)
+            ForEach(attempt.template.questions.indices, id: \.self) { index in
+                let question = attempt.template.questions[index]
+                let correct = attempt.correctQuestionIds.contains(question.id)
+                VStack(alignment: .leading, spacing: 6) {
+                    Label("第 \(index + 1) 题 · \(correct ? "已答对" : "待回练")",
+                          systemImage: correct ? "checkmark.circle.fill" : "arrow.counterclockwise.circle")
+                        .foregroundStyle(correct ? .green : .orange)
+                    Text(question.prompt).font(.subheadline)
+                    if let answer = question.answer {
+                        Text("参考答案：\(answer)").font(.footnote)
+                    }
+                    if let explanation = question.explanation {
+                        Text(explanation).font(.footnote).foregroundStyle(.secondary)
+                    }
+                    if !correct {
+                        Button("重答第 \(index + 1) 题") { withAnimation { stage = .question(index) } }
+                            .buttonStyle(.bordered)
+                    }
+                }
+                .padding(14)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
+            }
+            Button("返回学习页") { dismiss() }.buttonStyle(.borderedProminent)
+        }
+    }
+
+    private func advanceQuestion(_ attempt: UnitLearningAttempt, after index: Int) {
+        withAnimation {
+            if attempt.completedAt != nil {
+                stage = .summary
+            } else if index + 1 < attempt.template.questions.count {
+                stage = .question(index + 1)
+            } else {
+                stage = .summary
+            }
+        }
     }
 }
 
@@ -206,6 +320,7 @@ private struct UnitQuestionCard: View {
 
     private var isCorrect: Bool { attempt.correctQuestionIds.contains(question.id) }
     private var hasAnswered: Bool { attempt.answers[question.id] != nil }
+    private var isSubmitting: Bool { model.busyCharacters.contains(character.id) }
     private var canAnswer: Bool { !isCorrect && (!hasAnswered || attempt.completedAt != nil) }
 
     var body: some View {
@@ -223,6 +338,7 @@ private struct UnitQuestionCard: View {
                     Button(option) { submit(option) }
                         .buttonStyle(.bordered)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .disabled(isSubmitting)
                 }
             } else if question.kind == "order" {
                 Text(selectedTokens.map { question.options[$0] }.joined(separator: " "))
@@ -237,25 +353,28 @@ private struct UnitQuestionCard: View {
                         }
                         .buttonStyle(.bordered)
                         .tint(selectedTokens.contains(index) ? .teal : .gray)
+                        .disabled(isSubmitting)
                     }
                 }
                 HStack {
                     Button("清空") { selectedTokens.removeAll() }
                         .buttonStyle(.bordered)
-                        .disabled(selectedTokens.isEmpty)
+                        .disabled(selectedTokens.isEmpty || isSubmitting)
                     Button("提交排序") { submit(selectedTokens.map { question.options[$0] }.joined(separator: " ")) }
                         .buttonStyle(.borderedProminent)
-                        .disabled(selectedTokens.count != question.options.count)
+                        .disabled(selectedTokens.count != question.options.count || isSubmitting)
                 }
             } else {
                 TextField("输入英文答案", text: $written)
                     .textFieldStyle(.roundedBorder)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
+                    .disabled(isSubmitting)
                 Button("提交答案") { submit(written) }
                     .buttonStyle(.borderedProminent)
-                    .disabled(written.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    .disabled(written.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isSubmitting)
             }
+            if isSubmitting { ProgressView("正在判分") }
             if let previous = attempt.answers[question.id], !isCorrect {
                 Text("上次回答：\(previous)").font(.caption).foregroundStyle(.secondary)
             }
@@ -263,11 +382,14 @@ private struct UnitQuestionCard: View {
                feedback.attemptID == attempt.id, feedback.questionID == question.id {
                 Text(feedback.awarded ? "答对了，获得 1 点水平进度。"
                      : feedback.correct ? "答对了。这是旧年级的记录，当前水平不再重复计分。"
-                     : "还没答对，完成本轮后再来试试。")
+                     : "还没答对，完成本轮后可以回练。")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(feedback.correct ? .green : .orange)
                 if let explanation = feedback.explanation { Text(explanation).font(.footnote) }
                 if feedback.levelAdvanced { Text("水平进阶！新的挑战将按下一年级出题。") }
+            }
+            if let error = model.errors[character.id] {
+                Text(error).font(.footnote).foregroundStyle(.orange)
             }
         }
         .padding(16)
@@ -275,6 +397,7 @@ private struct UnitQuestionCard: View {
     }
 
     private func submit(_ answer: String) {
+        guard !isSubmitting else { return }
         Task { await model.answer(character: character, attemptID: attempt.id,
                                   questionID: question.id, text: answer) }
     }

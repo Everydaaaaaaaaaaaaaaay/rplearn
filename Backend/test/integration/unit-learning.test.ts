@@ -35,6 +35,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     const attempt = started.active;
     expect(attempt).not.toBeNull();
     if (!attempt) throw Error("Missing attempt");
+    expect(attempt.template.questions[0]).not.toHaveProperty("answer");
+    expect(attempt.template.questions[0]).not.toHaveProperty("explanation");
     const [stored] = await db.sql<{ payload: UnitTemplate }[]>`select payload
       from app.unit_learning_templates where id=${attempt.template.id}`;
     const seed = stored?.payload;
@@ -49,6 +51,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("unit learning pers
     expect(after.progress.chatCharacters).toBe(0);
     expect(after.progress.gradeCorrect).toBe(2);
     expect(after.history).toHaveLength(1);
+    expect(after.history[0]?.template.questions[0]).toMatchObject({
+      answer: seed.questions[0]?.answer,
+      explanation: seed.questions[0]?.explanation,
+    });
     expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awarded).toBe(true);
     expect((await service.answer(user, attempt.id, "q1", seed.questions[0]?.answer ?? "")).awarded).toBe(false);
     expect((await service.read(user, oliver, "oliver")).progress.gradeCorrect).toBe(3);

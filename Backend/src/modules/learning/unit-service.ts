@@ -37,12 +37,13 @@ function normalized(answer: string): string {
     .replace(/[.!?。！？，,\s]+/gu, " ").trim();
 }
 
-function publicTemplate(template: UnitTemplate) {
+function publicTemplate(template: UnitTemplate, completed: boolean) {
   return {
     id: template.id, title: template.title, objective: template.objective,
     grade: template.grade, scene: template.scene,
     questions: template.questions.map(question => ({
       id: question.id, kind: question.kind, prompt: question.prompt, options: question.options,
+      ...(completed ? { answer: question.answer, explanation: question.explanation } : {}),
     })),
   };
 }
@@ -51,7 +52,7 @@ function attemptView(attempt: AttemptRow) {
   return {
     id: attempt.id, grade: attempt.grade, startedAt: attempt.started_at,
     completedAt: attempt.completed_at,
-    template: publicTemplate(attempt.payload),
+    template: publicTemplate(attempt.payload, attempt.completed_at !== null),
     answers: attempt.answers,
     correctQuestionIds: attempt.correct_question_ids,
     correctCount: attempt.correct_question_ids.length,
