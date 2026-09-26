@@ -21,9 +21,7 @@ OPENROUTER_USD_TO_CNY=<经审核并固定的小数汇率>
 `ADMIN_API_KEYS` 中等号右侧的令牌，令牌只进入当前标签页的 `sessionStorage`。生产环境还应
 限制运维入口的网络访问；不要把管理员令牌放进 URL、截图、聊天、源码或日志。
 
-原生服务器部署将 `ADMIN_HOST`（当前为 `coovingo.com`）作为独立的 Caddy 站点，只代理
-AI 控制台、[挑战内容管理](../learning-program/admin-console-2026-09-26.md)及各自的内部 API；主 API 域名继续拒绝全部 `/internal/*` 路径，管理域名的其他路径
-返回 404。访问管理域名根路径会跳转到控制台。
+原生服务器部署将 `ADMIN_HOST`（当前为 `coovingo.com`）作为独立的 Caddy 站点。线上模型后台入口为 `/console`，旧 `/internal/admin/ai` 会跳转过去；[挑战内容管理](../learning-program/admin-console-2026-09-26.md)使用 `/internal/admin/learning`。两个后台的数据 API 均要求管理员鉴权。该站点同时保留公开介绍页；主 API 域名继续拒绝全部 `/internal/*` 路径。部署模板的根路径仍跳转模型控制台，更新线上网关时须保留现有介绍站点与 `/console` 规则。
 
 只配置 OpenRouter 密钥而没有结算汇率会阻止服务启动。这样可以避免同一次模型调用在不同
 时间按不同汇率回算，保证用户成本与总成本可复核。
