@@ -1,0 +1,224 @@
+{
+  "id": "ruby.senior2.visitor-board-debate",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "海岸信息牌，要不要换屏幕",
+  "summary": "承认利弊、组织理由，写出有边界的建议。",
+  "scene": "Ruby 的志愿小组在讨论把纸质信息牌换成电子屏。她带来两张便笺，一张记便利，一张记限制，想和你把建议说得清楚，也留出不同意见的位置。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.balanced-argument"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "Unit 2 Looking into the Future / Using Language",
+      "pages": "印刷第20–21页；PDF第27–28页",
+      "alignment": "参考观点、利弊、论据和篇章连接标志；改为独立微情景，不照搬课文立场与事实。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "I like a useful idea. I like knowing what it will ask of us, too.",
+      "translation": "好用的主意我喜欢。它需要我们付出什么，我也想弄清楚。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "We can take a concern seriously without dropping the whole conversation.",
+      "translation": "认真对待顾虑，不等于就把讨论停在这里。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "A small trial sounds like a fair next step. Let us explain why.",
+      "translation": "先小范围试用听起来挺合适。我们把理由说清楚。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "acknowledge-concern",
+      "goalId": "s2.balanced-argument",
+      "prompt": "同伴担心电子屏维修费用高。你要先承认这个顾虑，再建议只试用一块屏幕；不能声称成本一定低。哪句符合意图？ maintenance 指维修维护。",
+      "hint": "找同时保留对方顾虑和小规模建议的表达，不要把未证实的事说成事实。",
+      "explanation": "Maintenance may be costly; however, we could test just one screen first. 先承认成本可能高，再提出有限试用，未保证成本很低。",
+      "difficultyReason": "三个选项语法都成立，按明确交际目标判断；不是选择个人赞同的技术立场。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Maintenance is always cheap, so we should replace every board."
+        },
+        {
+          "id": "b",
+          "text": "Maintenance may be costly; however, we could test just one screen first."
+        },
+        {
+          "id": "c",
+          "text": "Maintenance may be costly, so we should reject screens without a trial."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "contrast-marker",
+      "goalId": "s2.balanced-argument",
+      "prompt": "要表达转折：“这个屏幕更新很快；然而，它需要供电。” The screen updates quickly; ___, it needs electricity. 只填 however 或 therefore。",
+      "hint": "后一句补充的是便利之外的限制，不是由更新快推出的结果。",
+      "explanation": "however 表示转折；therefore 表示因此，会把需要供电写成由更新快推出的结果，不符合给定意图。",
+      "difficultyReason": "中文锁定对比功能，避免英语两句事实在其他论证中可能建立因果造成多解。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["however"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "although-cost",
+      "goalId": "s2.balanced-argument",
+      "prompt": "组句：“虽然这个方案有用，但它仍需要检验。”以 Although 开头；不要额外添加 but。",
+      "hint": "从句承认优点，主句保留需要检验的判断。",
+      "explanation": "Although the plan is useful, it still needs testing. although 已引出让步从句，主句不再加 but。",
+      "difficultyReason": "明确句首与意图；needs testing 表示需要被检验，结构作为词块支架，不另考被动形式。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "is useful,"
+        },
+        {
+          "id": "t4",
+          "text": "it"
+        },
+        {
+          "id": "t5",
+          "text": "still"
+        },
+        {
+          "id": "t6",
+          "text": "needs testing."
+        },
+        {
+          "id": "t1",
+          "text": "Although"
+        },
+        {
+          "id": "t2",
+          "text": "the plan"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "argument-jobs",
+      "goalId": "s2.balanced-argument",
+      "prompt": "将三句话与它在建议中的作用配对。每句本身就能看出功能。",
+      "hint": "区别提出行动、给行动一个理由，以及主动说明现有信息的限制。",
+      "explanation": "I suggest… 提出建议；because 引出保留纸质地图的理由；only one test 标明证据范围，避免以一次结果下广泛结论。",
+      "difficultyReason": "不是从文章段落找答案，而是识别自足表达的交际功能；三项功能互不重复。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I suggest keeping one paper map beside the screen."
+        },
+        {
+          "id": "l2",
+          "text": "We should keep the map because it needs no electricity."
+        },
+        {
+          "id": "l3",
+          "text": "This is only one test, so we cannot judge every location yet."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "为一个建议给出明确理由。"
+        },
+        {
+          "id": "r3",
+          "text": "说明现有证据的范围限制。"
+        },
+        {
+          "id": "r1",
+          "text": "提出一个具体的行动建议。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "bounded-conclusion",
+      "goalId": "s2.balanced-argument",
+      "prompt": "本题仅知：一块屏幕在一个室内接待点试用了一周，访客能顺利看懂。你要写“结果有希望，但尚不能推及所有户外地点”。哪句最准确？",
+      "hint": "保留已有正面结果，也保留样本地点和时间的限制。",
+      "explanation": "The result is promising, but we need outdoor trials before drawing wider conclusions. 不否认本次效果，也没有把室内短期试用扩成所有户外场景的证明。",
+      "difficultyReason": "三句均通顺；题内给定结论意图与证据范围，不考统计术语或真实产品评估。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The result proves that screens work well in every outdoor location."
+        },
+        {
+          "id": "b",
+          "text": "The indoor result tells us that all outdoor screens will fail."
+        },
+        {
+          "id": "c",
+          "text": "The result is promising, but we need outdoor trials before drawing wider conclusions."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "another-side",
+      "goalId": "s2.balanced-argument",
+      "prompt": "要从便利转到限制：On the one hand, a screen is easy to update. On the ___ hand, it needs electricity. 只填一个单词，完成固定对比表达。",
+      "hint": "两个方面分别展开，后半句使用与 one 对应的固定搭配。",
+      "explanation": "填 other；on the one hand 与 on the other hand 用来组织事情的两个方面，不是指真实的手。",
+      "difficultyReason": "考篇章组织搭配而非环保知识；必须保留已有 the，不能再填 the other。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["other"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

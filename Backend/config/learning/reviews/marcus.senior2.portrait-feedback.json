@@ -1,0 +1,207 @@
+{
+  "unitId": "marcus.senior2.portrait-feedback",
+  "contentHash": "df811ca12de6c99f5257eee9913294dda5a6a53492607a0bf2a765ce0c055165",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "影展、照片与说明文字符合 Marcus 的创作活动；按给定感受改述，不规定用户必须欣赏某种艺术。",
+  "levelFit": "理解 -ing/-ed 表语的施加影响与体验状态，并反证“人都用 -ed”的错误简化。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "moving-portrait",
+      "standaloneContext": "本题独立给定的作答条件：访客想说“这张肖像很感人，我被打动了”。哪句准确？ moved 指受到感动；不是移动位置。",
+      "ambiguityReview": "题内明确情感义，排除 be moved 表被搬动的另一合法意义，保证唯一目标。",
+      "optionNotes": {
+        "a": "把作品和人的情感作用颠倒，也未表达指定意思。",
+        "b": "作品令人感动、人受到感动，两部分都准确。",
+        "c": "portrait is moved 不能在此表达作品令人感动的特点。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "confused-visitor",
+      "standaloneContext": "本题独立给定的作答条件：补全访客感受：“这个标题让我看不懂，我感到困惑。” I am ___ by this title. 只填 confused 或 confusing。",
+      "ambiguityReview": "明确体验者以及 by 结构，不能仅按主语是人这一表面线索推广规则。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "confused"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "CONFUSED"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "confusing"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "inspiring-work",
+      "standaloneContext": "本题独立给定的作答条件：组句：“这些作品很鼓舞人，我们深受鼓舞。”以 The works 开头，不添加词。",
+      "ambiguityReview": "提供形态成对对比并处理复数作品的 are，句意限定排除倒置。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6", "t7"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6", "t7"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "who-feels-what",
+      "standaloneContext": "本题独立给定的作答条件：把三条反馈与准确的中文意思配对。注意第二句主语也是人。",
+      "ambiguityReview": "专门包含人加 interesting，防止错误记成形容人一律 -ed；每句语义明确。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "person-can-interest",
+      "standaloneContext": "本题独立给定的作答条件：你想称赞“这位讲述者很有趣，听她说话我总能学到东西”，不只是说她本人感兴趣。哪句合适？",
+      "ambiguityReview": "两个形容词都可形容人，按明确交际目的而非机械人/物规则判断。",
+      "optionNotes": {
+        "a": "interested 说她本人感兴趣，不能表达指定的“她很有趣”。",
+        "b": "interesting 表示她引人兴趣，后句给出听众的体验。",
+        "c": "has no interest 表示她没有兴趣，与称赞讲述吸引人的意图不同。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "disappointing-result",
+      "standaloneContext": "本题独立给定的作答条件：要描述展板排版的效果令人失望，而不是说展板有情绪：The result is ___. 只填 disappointed 或 disappointing。",
+      "ambiguityReview": "给定 result 的评价义，不引入现实展板好坏判断；本题只考形容词语义。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "disappointing"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "DISAPPOINTING"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "disappointed"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

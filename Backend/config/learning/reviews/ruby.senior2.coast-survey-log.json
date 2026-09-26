@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.senior2.coast-survey-log",
+  "contentHash": "bbbb7f8a37320a667007c44d2df2433a3107b3a22c3c95921a9132170af10d3d",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "海岸观察符合 Ruby 的海洋生物学兴趣，所有时长和数量仅为题内虚构事实。",
+  "levelFit": "现在完成进行时强调从过去延续的动态活动，区分完成结果、主谓一致及 since/for；不套用到状态动词。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "counting-since-dawn",
+      "standaloneContext": "本题独立给定的作答条件：本题：从清晨到现在我们一直在统计鸟的数量，而且还在数。要用现在完成进行时突出持续过程，哪句正确？",
+      "ambiguityReview": "明确要求现在完成进行时，不否认现在完成时在其他语境可描述重复观察。",
+      "optionNotes": {
+        "a": "have been counting 连接过去开始的活动与现在。",
+        "b": "缺少 been，have 不能在此直接接 counting。",
+        "c": "had been 把参照点放在过去，不符本题直到现在的描述。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "ongoing-sorting",
+      "standaloneContext": "本题独立给定的作答条件：“Ruby 从午饭后一直在整理照片，现在还在整理。” Ruby ___ photos since lunch. 用 sort 的现在完成进行时填空，不缩写。",
+      "ambiguityReview": "显式要求完整时态；不把 has sorted 的其他合法使用说成语法错误。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "has been sorting"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "HAS BEEN SORTING"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "have been sorting"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "how-long",
+      "standaloneContext": "本题独立给定的作答条件：用全部词块询问“你们记录这些变化有多久了？”以 How long 开头，突出工作仍在持续。",
+      "ambiguityReview": "以问句获取协作记录时长，保持 been 和 recording 顺序；不用专业海洋词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "result-or-process",
+      "standaloneContext": "本题独立给定的作答条件：将三条工作更新与它重点传达的信息配对。两种时态都可能描述真实工作。",
+      "ambiguityReview": "不要求推断进行时是否已完成全部工作，只配其明确的焦点；避免把完成进行时一律理解为绝未结束。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "since-or-for",
+      "standaloneContext": "本题独立给定的作答条件：选择连接开始时点的词：We have been watching this area ___ last Monday. 只填 since 或 for；last Monday 表示上周一。",
+      "ambiguityReview": "题干单独限定起点，since/for 无歧义；不要求从真实日期计算天数。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "since"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "SINCE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "for"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "known-not-knowing",
+      "standaloneContext": "本题独立给定的作答条件：想说“我认识这位志愿者三年了，现在仍认识”。哪句自然且语法正确？注意 know 在这里表示认识的状态。",
+      "ambiguityReview": "有意设置持续过程规则的边界，不教成一见 for 就用完成进行；三个选项仅时态形式不同。",
+      "optionNotes": {
+        "a": "know 在这里表示认识状态，通常不采用进行形式。",
+        "b": "have known 正确表达认识状态延续至今。",
+        "c": "have 后需要过去分词 known，不是过去式 knew。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

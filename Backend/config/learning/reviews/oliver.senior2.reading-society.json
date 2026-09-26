@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.senior2.reading-society",
+  "contentHash": "522c8c0eba15ae7b744e55db6f40fc66ae6fb4b22ead01174b806e4edb459724",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "读书会协调与 Oliver 的阅读兴趣相符，重点是说准意图，不借角色偏好判断答案。",
+  "levelFit": "动词补语的形式与意义并重；尤其区分 stop doing 与 stop to do，不将双合法形式错判。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "stop-talking",
+      "standaloneContext": "本题独立给定的作答条件：讨论开始后，有人仍在聊天。你想礼貌请他“停止聊天”，不是“停下手里的事去聊天”。哪句准确？",
+      "ambiguityReview": "三项分别准确停止、改成去聊天、把 mind 后形式用错，中文排除另一合法意义。",
+      "optionNotes": {
+        "a": "stopping to talk 表示停下别的事去聊天，不符本题意图。",
+        "b": "mind 后用 -ing，stopping talking 准确表示停止聊天。",
+        "c": "mind 后不能在这个请求结构中直接接 to stop。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "decided-invite",
+      "standaloneContext": "本题独立给定的作答条件：补全决定：“我们决定邀请一位当地作者。” We decided ___ a local writer. 填 invite 的合适形式。",
+      "ambiguityReview": "固定动词结构，既定句架中 to invite 为目标；不开放改成名词宾语。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "to invite"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "TO INVITE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "inviting"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "enjoy-views",
+      "standaloneContext": "本题独立给定的作答条件：组句：“我喜欢听到不同的观点。”以 I 开头；不添加词。",
+      "ambiguityReview": "短句集中练习动词补语，opinion 与阅读讨论相关，不靠生僻词提升负担。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "stopped-why",
+      "standaloneContext": "本题独立给定的作答条件：将三句活动安排与准确意思配对。注意停止的到底是哪件事。",
+      "ambiguityReview": "三句共享 read 但意图不同，需分辨完整结构，不能只认词义。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "both-starts",
+      "standaloneContext": "本题独立给定的作答条件：要说“我们开始讨论结尾了”，下面哪一组列出的两句都可表达这个意思？本题不强调动作刚发生的瞬间。",
+      "ambiguityReview": "以成组选择明确接收 start 两种形式；两组干扰各含一个不合法结构。",
+      "optionNotes": {
+        "a": "start 在这一语境允许 discussing 和 to discuss。",
+        "b": "enjoyed to discuss 在此不合动词补语规则。",
+        "c": "decided discussing 在此不合动词补语规则。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "keep-trying",
+      "standaloneContext": "本题独立给定的作答条件：给同伴打气：“即使第一稿很难，我们也继续尝试。” We keep ___ even when the first draft is difficult. 填 try 的正确形式。",
+      "ambiguityReview": "题干关注持续活动及 try 的 -ing 拼写，first draft 已用中文解释，不测试文学理论。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "trying"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "TRYING"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "to try"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

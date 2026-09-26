@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.senior2.visitor-board-debate",
+  "contentHash": "aa3e407b2106df1e89e4da9319116c9937c59c415ff6e3167c7d4eb61b563fea",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "海岸志愿沟通和务实建议贴合 Ruby；不预设电子屏更环保，也不要求用户赞同某项政策。",
+  "levelFit": "依据题内给定意图选择让步、对比、理由与有边界结论；训练论证组织，不考专业技术事实。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "acknowledge-concern",
+      "standaloneContext": "本题独立给定的作答条件：同伴担心电子屏维修费用高。你要先承认这个顾虑，再建议只试用一块屏幕；不能声称成本一定低。哪句符合意图？ maintenance 指维修维护。",
+      "ambiguityReview": "三个选项语法都成立，按明确交际目标判断；不是选择个人赞同的技术立场。",
+      "optionNotes": {
+        "a": "无依据保证维修便宜，而且建议全部替换，偏离有限试用。",
+        "b": "同时承认成本顾虑和提出一块屏幕的试用，符合两项要求。",
+        "c": "承认了维修顾虑，但直接否定试用，不符合先小范围尝试的意图。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "contrast-marker",
+      "standaloneContext": "本题独立给定的作答条件：要表达转折：“这个屏幕更新很快；然而，它需要供电。” The screen updates quickly; ___, it needs electricity. 只填 however 或 therefore。",
+      "ambiguityReview": "中文锁定对比功能，避免英语两句事实在其他论证中可能建立因果造成多解。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "however"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "HOWEVER"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "therefore"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "although-cost",
+      "standaloneContext": "本题独立给定的作答条件：组句：“虽然这个方案有用，但它仍需要检验。”以 Although 开头；不要额外添加 but。",
+      "ambiguityReview": "明确句首与意图；needs testing 表示需要被检验，结构作为词块支架，不另考被动形式。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "argument-jobs",
+      "standaloneContext": "本题独立给定的作答条件：将三句话与它在建议中的作用配对。每句本身就能看出功能。",
+      "ambiguityReview": "不是从文章段落找答案，而是识别自足表达的交际功能；三项功能互不重复。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "bounded-conclusion",
+      "standaloneContext": "本题独立给定的作答条件：本题仅知：一块屏幕在一个室内接待点试用了一周，访客能顺利看懂。你要写“结果有希望，但尚不能推及所有户外地点”。哪句最准确？",
+      "ambiguityReview": "三句均通顺；题内给定结论意图与证据范围，不考统计术语或真实产品评估。",
+      "optionNotes": {
+        "a": "把一个室内结果推广到所有户外地点，超出给定证据。",
+        "b": "从室内成功直接推出户外全部失败，同样没有依据。",
+        "c": "承认结果有希望，并把户外效果留待试验，符合题意。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "another-side",
+      "standaloneContext": "本题独立给定的作答条件：要从便利转到限制：On the one hand, a screen is easy to update. On the ___ hand, it needs electricity. 只填一个单词，完成固定对比表达。",
+      "ambiguityReview": "考篇章组织搭配而非环保知识；必须保留已有 the，不能再填 the other。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "other"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "OTHER"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "another"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

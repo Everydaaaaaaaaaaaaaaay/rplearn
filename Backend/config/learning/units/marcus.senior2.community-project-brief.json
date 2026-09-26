@@ -1,0 +1,224 @@
+{
+  "id": "marcus.senior2.community-project-brief",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "给街区影像计划一个开头",
+  "summary": "把一项活动放在句子中心，说清它的作用与价值。",
+  "scene": "Marcus 想做一组街区小店的照片，邀请居民参与。他拿着一页项目简介，准备把“我们要做什么”和“为什么值得做”写得直接一点。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.ing-subject"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "Unit 3 Fascinating Parks / Discover useful structures",
+      "pages": "印刷第29页；PDF第36页",
+      "alignment": "参考 -ing 短语作主语与信息重心调整；题干明确形式约束，不误判合法不定式。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "I have the pictures in mind. Now the first sentence needs some focus.",
+      "translation": "照片我心里有数了。现在第一句话也得有个焦点。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Let us put the work itself up front. That makes the invitation clearer.",
+      "translation": "先把要做的事摆出来，邀请就清楚多了。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "That sounds like something the neighborhood can join in with.",
+      "translation": "这么说，街坊就知道自己怎么参与了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "collecting-stories",
+      "goalId": "s2.ing-subject",
+      "prompt": "想用 -ing 短语作主语表达“收集居民的故事需要时间”。哪句满足形式要求且语法正确？ residents 指居民。",
+      "hint": "整项活动作为一个主语时，谓语不要被后面的复数名词带偏。",
+      "explanation": "Collecting residents’ stories takes time. 整个 collecting… 活动短语作单数主语，因此用 takes。",
+      "difficultyReason": "任务显式限定 -ing 主语；to collect 的合法表达不是本题目标，也不作为错误英语处理。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Collecting residents’ stories take time."
+        },
+        {
+          "id": "b",
+          "text": "Collect residents’ stories takes time."
+        },
+        {
+          "id": "c",
+          "text": "Collecting residents’ stories takes time."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "comparing-viewpoints",
+      "goalId": "s2.ing-subject",
+      "prompt": "将“比较这些照片很有帮助”写成 -ing 短语作主语：___ these photographs is helpful. 只填 compare 的 -ing 形式。",
+      "hint": "保留句末的 is，句首只把活动变成主语。",
+      "explanation": "填 Comparing；compare 去掉不发音的 e 再加 ing。is 的主语是比较照片这项活动。",
+      "difficultyReason": "输出受控，明确形式防止将自然的 To compare 误当目标答案；照片内容无需给出。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["comparing"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "listening-value",
+      "goalId": "s2.ing-subject",
+      "prompt": "组句：“倾听不同的声音有助于我们提出更好的问题。”以 Listening 开头；voices 在这里指人的观点。",
+      "hint": "句首活动短语是主语，后面说明它带来的作用。",
+      "explanation": "Listening to different voices helps us ask better questions. 单项倾听活动作主语，谓语用 helps；help 后可用原形 ask。",
+      "difficultyReason": "语义是多听观点而非听力测验；指定句首和词块使结构唯一。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "helps"
+        },
+        {
+          "id": "t4",
+          "text": "us"
+        },
+        {
+          "id": "t5",
+          "text": "ask"
+        },
+        {
+          "id": "t6",
+          "text": "better questions."
+        },
+        {
+          "id": "t1",
+          "text": "Listening"
+        },
+        {
+          "id": "t2",
+          "text": "to different voices"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "activity-focus",
+      "goalId": "s2.ing-subject",
+      "prompt": "把三句简介与它放在句首谈论的活动配对。不要只看句末的效果词。",
+      "hint": "每句主语是完整活动短语，后面的时间、机会或问题是它的效果。",
+      "explanation": "Asking… 以征求许可为主题；Sharing… 以分享草稿为主题；Choosing… 以挑选照片为主题。",
+      "difficultyReason": "需要识别长主语的边界与意义，完整句子自足，不要求记住某个影展。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Asking permission first prevents misunderstandings."
+        },
+        {
+          "id": "l2",
+          "text": "Sharing rough drafts gives others a chance to comment."
+        },
+        {
+          "id": "l3",
+          "text": "Choosing the final photographs takes patience."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "分享尚未定稿的版本这项做法。"
+        },
+        {
+          "id": "r3",
+          "text": "挑选最终照片这项工作。"
+        },
+        {
+          "id": "r1",
+          "text": "先征得许可这项做法。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "activity-not-ongoing",
+      "goalId": "s2.ing-subject",
+      "prompt": "要强调“一起编辑照片是这个项目的一部分”，而不是说“我们此刻正在编辑”。哪句准确表达指定意思？",
+      "hint": "看 -ing 是被当作一项活动谈论，还是和 be 一起描述正在发生。",
+      "explanation": "Editing photographs together is part of the project. 整个活动短语是主语，后面说明它属于项目的一部分。",
+      "difficultyReason": "两个进行句语法可成立，但不表达题干指定的活动归属；按意义判分而非只查 -ing。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Editing photographs together is part of the project."
+        },
+        {
+          "id": "b",
+          "text": "We are editing photographs together now."
+        },
+        {
+          "id": "c",
+          "text": "The project is editing photographs for us now."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "single-activity-agreement",
+      "goalId": "s2.ing-subject",
+      "prompt": "补全项目简介：Working with local families ___ us new perspectives. 填 give 的一般现在时形式；perspectives 指看事情的角度。",
+      "hint": "谓语对应的是 Working with local families 整项活动，不是 families。",
+      "explanation": "填 gives。主语是与当地家庭合作这项活动，families 只是 with 后面的名词。",
+      "difficultyReason": "用复数邻近词检验真正主语定位，避免仅凭最近名词机械选谓语。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["gives"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

@@ -62,7 +62,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toHaveLength(2);
     });
 
-    it.each(["primary3", "primary4", "junior3"] as const)(
+    it.each(["primary3", "primary4", "junior3", "senior2"] as const)(
       "%s 的九个原创单元可独立分配，补答不重复得分，耗尽保持满条",
       async (level) => {
         const namespace = randomUUID();

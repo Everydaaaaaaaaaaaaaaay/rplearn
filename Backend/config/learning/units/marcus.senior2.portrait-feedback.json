@@ -1,0 +1,228 @@
+{
+  "id": "marcus.senior2.portrait-feedback",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "影展反馈，不把感受说反",
+  "summary": "区分令人产生感受的特点与人正在体验的感受。",
+  "scene": "Marcus 把几条影展反馈贴在桌边。有人觉得某张照片很打动人，有人对说明文字感到困惑。他想准确转述这些反馈，再决定改哪一部分。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.participle-feelings"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "Unit 4 Meeting the muse / Using language",
+      "pages": "印刷第41页；PDF第48页",
+      "alignment": "参考 -ing、-ed 表语的意义区别和创作目标表达；不套用人一律 -ed、物一律 -ing 的错误规则。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "Useful feedback does not have to sound grand. It has to mean what we mean.",
+      "translation": "有用的反馈不必说得很宏大，意思说准就行。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Let us keep the feeling and the thing that caused it separate.",
+      "translation": "我们把感受和引起这种感受的东西分清楚。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Good. Now I know what to keep and what to work on.",
+      "translation": "好。现在我知道该保留什么、改什么了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "moving-portrait",
+      "goalId": "s2.participle-feelings",
+      "prompt": "访客想说“这张肖像很感人，我被打动了”。哪句准确？ moved 指受到感动；不是移动位置。",
+      "hint": "一部分说作品产生什么作用，另一部分说访客的感受。",
+      "explanation": "The portrait is moving, and I am moved. moving 说明作品令人感动，moved 描述说话人受到感动。",
+      "difficultyReason": "题内明确情感义，排除 be moved 表被搬动的另一合法意义，保证唯一目标。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The portrait is moved, and I am moving."
+        },
+        {
+          "id": "b",
+          "text": "The portrait is moving, and I am moved."
+        },
+        {
+          "id": "c",
+          "text": "The portrait is moved, and I am moved."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "confused-visitor",
+      "goalId": "s2.participle-feelings",
+      "prompt": "补全访客感受：“这个标题让我看不懂，我感到困惑。” I am ___ by this title. 只填 confused 或 confusing。",
+      "hint": "句子主语在体验感受，by 后说明引起感受的对象。",
+      "explanation": "填 confused，表示我感到困惑；confusing 用来描述令人困惑的特征。",
+      "difficultyReason": "明确体验者以及 by 结构，不能仅按主语是人这一表面线索推广规则。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["confused"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "inspiring-work",
+      "goalId": "s2.participle-feelings",
+      "prompt": "组句：“这些作品很鼓舞人，我们深受鼓舞。”以 The works 开头，不添加词。",
+      "hint": "两部分分别描述作品的作用和观众的状态。",
+      "explanation": "The works are inspiring, and we feel inspired. 作品带来鼓舞，人因此受到鼓舞。",
+      "difficultyReason": "提供形态成对对比并处理复数作品的 are，句意限定排除倒置。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "inspiring,"
+        },
+        {
+          "id": "t4",
+          "text": "and"
+        },
+        {
+          "id": "t5",
+          "text": "we"
+        },
+        {
+          "id": "t6",
+          "text": "feel"
+        },
+        {
+          "id": "t7",
+          "text": "inspired."
+        },
+        {
+          "id": "t1",
+          "text": "The works"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]]
+    },
+    {
+      "id": "who-feels-what",
+      "goalId": "s2.participle-feelings",
+      "prompt": "把三条反馈与准确的中文意思配对。注意第二句主语也是人。",
+      "hint": "一个人可以对别人有吸引力，也可以自己感兴趣；两者不同。",
+      "explanation": "is interested 描述本人感兴趣；is interesting 描述本人使别人感到有趣；was bored 描述本人无聊。",
+      "difficultyReason": "专门包含人加 interesting，防止错误记成形容人一律 -ed；每句语义明确。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The visitor is interested in local history."
+        },
+        {
+          "id": "l2",
+          "text": "The speaker is interesting to listen to."
+        },
+        {
+          "id": "l3",
+          "text": "The visitor was bored by the long introduction."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "这位发言者讲得有趣，听起来吸引人。"
+        },
+        {
+          "id": "r3",
+          "text": "冗长的介绍让这位访客感到无聊。"
+        },
+        {
+          "id": "r1",
+          "text": "这位访客对当地历史感兴趣。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "person-can-interest",
+      "goalId": "s2.participle-feelings",
+      "prompt": "你想称赞“这位讲述者很有趣，听她说话我总能学到东西”，不只是说她本人感兴趣。哪句合适？",
+      "hint": "不要看到人的主语就自动选 -ed；先确认要描述哪一种意思。",
+      "explanation": "She is interesting; I always learn something when I listen to her. interesting 在这里描述她的讲述能引起听众兴趣。",
+      "difficultyReason": "两个形容词都可形容人，按明确交际目的而非机械人/物规则判断。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "She is interested; I always learn something when I listen to her."
+        },
+        {
+          "id": "b",
+          "text": "She is interesting; I always learn something when I listen to her."
+        },
+        {
+          "id": "c",
+          "text": "She has no interest; I always learn something when I listen to her."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "disappointing-result",
+      "goalId": "s2.participle-feelings",
+      "prompt": "要描述展板排版的效果令人失望，而不是说展板有情绪：The result is ___. 只填 disappointed 或 disappointing。",
+      "hint": "句子在评价结果造成的感受，不是在描述人的心理状态。",
+      "explanation": "填 disappointing，表示结果令人失望；disappointed 通常描述受到失望影响的体验者。",
+      "difficultyReason": "给定 result 的评价义，不引入现实展板好坏判断；本题只考形容词语义。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["disappointing"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

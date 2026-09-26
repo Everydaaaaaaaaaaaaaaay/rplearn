@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.senior2.volunteer-handover",
+  "contentHash": "1348d5766be87d57ece7845b05907c976501b2fd61ff97ec89963007d3f70999",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "志愿活动交接与 Ruby 的行动习惯贴合；不考救助流程或把虚构记录当真实事件。",
+  "levelFit": "以明确过去参照点表达过去的过去，处理 had、过去分词、否定和时间顺序。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "boxes-before-arrival",
+      "standaloneContext": "本题独立给定的作答条件：本题事实：昨天九点大家到达时，我已经检查完所有箱子。用过去完成时突出“检查在到达前完成”，选哪句？",
+      "ambiguityReview": "题干明确目标时态；不把一般过去时在某些叙述中的可能用法当作普遍错误。",
+      "optionNotes": {
+        "a": "本句过去参照点要求 had checked，不是连接现在的 have checked。",
+        "b": "had checked 准确突出到达前已经完成检查。",
+        "c": "had 后应接过去分词 checked，不是原形 check。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "sent-before-call",
+      "standaloneContext": "本题独立给定的作答条件：昨天电话打来前，Ruby 已经发出安排。Ruby ___ the plan before the call came yesterday. 用 send 的过去完成时填空，不缩写。",
+      "ambiguityReview": "同时限定过去完成时和过去时间，排除 has sent；不暗示所有 before 句都必须用过去完成时。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "had sent"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "HAD SENT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "had send"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "not-finished",
+      "standaloneContext": "本题独立给定的作答条件：组句：“交班时，我们还没有完成清单。”以 We 开头，用全部词块；handover 指交班。",
+      "ambiguityReview": "以过去完成否定表达未完成状态，不让用户猜交班清单内容。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "sequence-differences",
+      "standaloneContext": "本题独立给定的作答条件：将三种交接说明与它明确表达的先后关系配对。",
+      "ambiguityReview": "同一组动词承载三种不同时间关系，匹配不依赖其他题目或角色剧情。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "reversed-history",
+      "standaloneContext": "本题独立给定的作答条件：本题事实：我们周一检查了水箱，周二才发现漏水。哪句保持先后，并用过去完成时突出较早的检查？ tank 指水箱，leak 指漏水。",
+      "ambiguityReview": "三项均为可成立的英语结构；按给定顺序与指定时间角度排除颠倒和同时，不作事实阅读测验。",
+      "optionNotes": {
+        "a": "改成先发现再检查，与给定周一周二顺序相反。",
+        "b": "改成检查过程中发现，丢失相隔一天的先后关系。",
+        "c": "检查在先、发现在后，过去完成时用于较早事件。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "question-before-shift",
+      "standaloneContext": "本题独立给定的作答条件：询问同伴昨天交班前是否做完记录：___ you completed the notes before your shift ended yesterday? 用过去完成时，只填缺少的助动词。",
+      "ambiguityReview": "completed 已提供，不能用 Did 后再保留过去分词来替代该结构；不考 shift 的未知含义。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "had"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "HAD"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "have"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "id": "marcus.senior2.interview-worktable",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "采访桌前的协作约定",
+  "summary": "说明工作内容、提出调整，并清楚表达需要避免的做法。",
+  "scene": "Marcus 准备采访街区老店的店主。他把录音笔和几张问题卡放在桌上，希望你帮他把工作方式说清楚：认真听，也给对方把话说完的空间。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.ing-roles"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "Unit 4 Body Language / Discover useful structures",
+      "pages": "印刷第41页；PDF第48页",
+      "alignment": "参考 -ing 作宾语和表语的意义与语法功能，区别于正在进行的动作。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "The recorder is ready. The questions still need a human touch.",
+      "translation": "录音笔准备好了，问题还得再添一点人情味。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "A pause can be part of a good conversation. We do not have to fill every one.",
+      "translation": "停顿也是好对话的一部分，不必每一次都赶着填满。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "That feels more like a conversation than a checklist.",
+      "translation": "这样更像交谈，不只是照着清单问了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "avoid-interrupting",
+      "goalId": "s2.ing-roles",
+      "prompt": "想对采访伙伴说“我们应该避免打断店主”。哪句结构正确？ interrupt 指打断。",
+      "hint": "avoid 后需要表示活动的 -ing 形式，而不是另一个带 to 的动作。",
+      "explanation": "We should avoid interrupting the shop owner. avoid 后用 -ing 作宾语。should 修饰 avoid，不改变其后补语形式。",
+      "difficultyReason": "混合情态动词与动词宾语，避免把 should 后原形规则错误延伸到 interrupt。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We should avoid to interrupt the shop owner."
+        },
+        {
+          "id": "b",
+          "text": "We should avoid interrupting the shop owner."
+        },
+        {
+          "id": "c",
+          "text": "We should avoid interrupt the shop owner."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "job-not-action",
+      "goalId": "s2.ing-roles",
+      "prompt": "要说明职责“我的主要工作是认真倾听”，用 -ing 作表语：My main job is ___ carefully. 只填 listen 的 -ing 形式。",
+      "hint": "is 后在解释 job 的内容，不是把 job 当成正在倾听的人。",
+      "explanation": "填 listening。listening carefully 作表语，解释主要工作的内容；句子不声称说话人此刻正在听。",
+      "difficultyReason": "明确 -ing 形式，承认 My main job is to listen 也可成立但非本题限定，避免开放填空漏收变体。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["listening"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "consider-changing",
+      "goalId": "s2.ing-roles",
+      "prompt": "组句：“我们正在考虑调整问题的顺序。”以 We 开头，用全部词块。",
+      "hint": "外层说目前正在考虑，内层说考虑的具体活动；两个 -ing 职责不同。",
+      "explanation": "We are considering changing the order of the questions. are considering 是进行谓语；changing… 是 consider 的宾语。",
+      "difficultyReason": "两个连续 -ing 形式分别承担谓语和宾语功能，较简单词形识别进一步。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "considering"
+        },
+        {
+          "id": "t4",
+          "text": "changing"
+        },
+        {
+          "id": "t5",
+          "text": "the order"
+        },
+        {
+          "id": "t6",
+          "text": "of the questions."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "ing-functions",
+      "goalId": "s2.ing-roles",
+      "prompt": "将三句工作说明与它表达的意思配对。不是让你猜采访录音里的内容。",
+      "hint": "同样出现 listening，句子主语和前面的动词会改变它的作用。",
+      "explanation": "My task is… 说明职责；I am listening… 描述现在动作；I enjoy… 说明喜欢的活动。",
+      "difficultyReason": "用相同核心活动区分表语、进行谓语和宾语的实际意义，不要求背术语名称。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "My task is listening to the first recording."
+        },
+        {
+          "id": "l2",
+          "text": "I am listening to the first recording now."
+        },
+        {
+          "id": "l3",
+          "text": "I enjoy listening to the first recording."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "说明自己此刻正在听第一段录音。"
+        },
+        {
+          "id": "r3",
+          "text": "说明自己喜欢听第一段录音。"
+        },
+        {
+          "id": "r1",
+          "text": "说明自己的任务内容是听第一段录音。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "appreciate-waiting",
+      "goalId": "s2.ing-roles",
+      "prompt": "想感谢对方等候，使用给定开头 I appreciate…。哪句正确？ appreciate 在这里表示感谢、感激。",
+      "hint": "主语之后已经有一个动词，接下来要用名词性活动表达感谢的对象。",
+      "explanation": "I appreciate your waiting for me. your waiting for me 是名词性 -ing 短语，作为 appreciate 的宾语。",
+      "difficultyReason": "采用正式而自然的感谢结构；不否认 I appreciate you waiting 也合法，本题选项中只给出一个合法版本。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I appreciate your waiting for me."
+        },
+        {
+          "id": "b",
+          "text": "I appreciate your to wait for me."
+        },
+        {
+          "id": "c",
+          "text": "I appreciate that you waiting for me."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "by-checking",
+      "goalId": "s2.ing-roles",
+      "prompt": "补全方法说明：“我们通过检查录音来确认原话。” We confirm the exact words by ___ the recording. 填 check 的正确形式。",
+      "hint": "by 在这里是介词，后面接表示方法的活动形式。",
+      "explanation": "填 checking。by checking… 表示通过检查来做某事，介词后不能直接接 check 或 to check。",
+      "difficultyReason": "方法关系由中文给定，-ing 是介词宾语；不测试录音操作技术或事实真假。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["checking"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "id": "oliver.senior2.restoration-notice",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "一张不绕弯的修缮告示",
+  "summary": "补充地点、人物与事件信息，写清楚而不重复。",
+  "scene": "Oliver 要为旧书店的阅读室写一张修缮告示。工期已经安排妥当，他只想让客人一眼看明白，也别让说明比书架还曲折。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.nonrestrictive"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "Unit 1 People of Achievement / Discover useful structures",
+      "pages": "印刷第5页；PDF第12页",
+      "alignment": "参考补充信息的非限制性定语从句与改写；不用人物传记事实考阅读记忆。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "The room needs a little work. The notice should not need a guidebook.",
+      "translation": "房间需要修一修，告示就不必再配一本指南了。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "That detail is useful. Let us give it a place without losing the main point.",
+      "translation": "这个细节有用。我们给它留个位置，也别丢了重点。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "There. A short notice, and a little less confusion at the door.",
+      "translation": "好了。告示短一些，门口的困惑也少一些。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "named-room",
+      "goalId": "s2.nonrestrictive",
+      "prompt": "给定信息：阅读室名为 Cedar Room，周一重新开放；你要补充它位于楼上。哪句正确地用逗号从句补充信息？ Cedar Room 是专名。",
+      "hint": "先找被补充说明的对象，再看从句是不是已经有主语。",
+      "explanation": "The Cedar Room, which is upstairs, reopens on Monday. 用 which 指代房间并作从句主语；逗号非限制性从句不能用 that。",
+      "difficultyReason": "地点名词不意味着关系词总用 where：is upstairs 缺主语，需要 which。三项其他信息一致。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Cedar Room, where is upstairs, reopens on Monday."
+        },
+        {
+          "id": "b",
+          "text": "The Cedar Room, which is upstairs, reopens on Monday."
+        },
+        {
+          "id": "c",
+          "text": "The Cedar Room, that is upstairs, reopens on Monday."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "editor-person",
+      "goalId": "s2.nonrestrictive",
+      "prompt": "合并本题信息：Maya 编辑这本杂志；她今晚会来。Maya, ___ edits the magazine, is coming tonight. 只填 who、which 或 that。",
+      "hint": "从句描述的是人，而且逗号表示补充信息。",
+      "explanation": "who 指 Maya 并作 edits 的主语。which 不指人；that 不能引导这里的非限制性从句。",
+      "difficultyReason": "明确人名及标点排除 that；不把限制性从句中合法的 that 错误泛化为永远不指人。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["who"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "quiet-corner",
+      "goalId": "s2.nonrestrictive",
+      "prompt": "组句：“我们保留了那张桌子，它能坐下六个人。”以 We 开头，用逗号从句补充桌子的容量。seat 作动词表示容纳就座。",
+      "hint": "主句说保留了什么，从句补充它的容量；不要再加一个它。",
+      "explanation": "We kept the table, which seats six people. which 已作 seats 的主语，seats 与单数 table 对应。",
+      "difficultyReason": "提供完整动作、数量与词块；主句首词和逗号边界固定，避免把从句误当另一独立句。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "the table,"
+        },
+        {
+          "id": "t4",
+          "text": "which"
+        },
+        {
+          "id": "t5",
+          "text": "seats"
+        },
+        {
+          "id": "t6",
+          "text": "six people."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "kept"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "whole-event",
+      "goalId": "s2.nonrestrictive",
+      "prompt": "本题：我们把活动移到楼下，这一改变使进门更方便。哪句用 which 指代“把活动移到楼下这件事”，且不重复主语？",
+      "hint": "关系词本身在从句里承担句子成分。",
+      "explanation": "We moved the event downstairs, which made access easier. which 指代前面整件事，已经是 made 的主语，不再加 it。",
+      "difficultyReason": "将整句指代与名词指代区分；两项干扰分别为重复主语和错误连接，access 在题内译出。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We moved the event downstairs, which it made access easier."
+        },
+        {
+          "id": "b",
+          "text": "We moved the event downstairs, that made access easier."
+        },
+        {
+          "id": "c",
+          "text": "We moved the event downstairs, which made access easier."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "additional-details",
+      "goalId": "s2.nonrestrictive",
+      "prompt": "将三句话与它补充的那一项信息配对。三句均自足，无须知道真实的书店安排。",
+      "hint": "逗号里说明的是人、地点，还是前面整件事的结果？",
+      "explanation": "who 指人；where 在从句里表示活动发生的地点；which 可以指代前面整个延迟事件。",
+      "difficultyReason": "三种补充功能有不同语义，不以名词对应单词作为唯一线索。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Nora, who repairs old books, will join us."
+        },
+        {
+          "id": "l2",
+          "text": "We met in the hall, where the chairs were ready."
+        },
+        {
+          "id": "l3",
+          "text": "The talk started late, which upset some visitors."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "补充会面地点当时的布置情况。"
+        },
+        {
+          "id": "r3",
+          "text": "补充讲座晚开始带来的影响。"
+        },
+        {
+          "id": "r1",
+          "text": "补充来访者从事的工作。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "place-or-thing",
+      "goalId": "s2.nonrestrictive",
+      "prompt": "补充地点信息：The workshop is in our reading room, ___ we keep the large maps. 只填 where 或 which；从句原意是“我们在这里存放大幅地图”。",
+      "hint": "keep 已有主语和宾语，缺的是地点信息。",
+      "explanation": "这里从句 we keep the large maps 的主谓宾齐全，用 where 表示 in the reading room。若用 which，需改为 in which，不能只填 which。",
+      "difficultyReason": "题干限定单词候选；承认 in which 是另一完整表达，避免用地点名词机械选关系词。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["where"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

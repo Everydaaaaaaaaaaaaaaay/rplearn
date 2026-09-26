@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.senior2.evening-bookshop",
+  "contentHash": "f81c03202b26ed5c5b280da005691bf8061d311d7d2c5f3c10665f3056e5b00f",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "书店朗读与整理工作吻合 Oliver 的生活；幽默指向安排而非学习者。",
+  "levelFit": "在未来具体时点突出正在进行的活动，构建肯定、否定、问句并区分未来过程、一般计划与日常习惯。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "eight-thirty",
+      "standaloneContext": "本题独立给定的作答条件：本题安排：明晚八点到九点，我负责给访客读短篇故事。要用将来进行时说“八点半我正在读给访客听”，选哪句？",
+      "ambiguityReview": "题干明确要求时态；不以 will read 等合法未来表达作唯一错误理由。",
+      "optionNotes": {
+        "a": "will 后不能直接接 reading，缺少 be。",
+        "b": "will be reading 表示指定未来时刻正在朗读。",
+        "c": "will be read 是被动形式，改变了我作为朗读者的角色，也不是目标进行结构。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "shelf-work",
+      "standaloneContext": "本题独立给定的作答条件：用全部词块说：“明天这个时候，我们将正在整理书架。”以 This time 开头，sort 表示整理。",
+      "ambiguityReview": "时间置首明确，词块中保留 will、be、sorting 的组合以检验结构。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6", "t7"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6", "t7"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "phone-during-talk",
+      "standaloneContext": "本题独立给定的作答条件：明天七点半的电话可能打不通，因为我那时在主持活动。I ___ the event at seven thirty tomorrow. 用 host 的将来进行时填空，不缩写。",
+      "ambiguityReview": "明示将来进行时和不缩写，避免把 will host 或 am hosting 的自然未来用法误判为错误英语。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "will be hosting"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WILL BE HOSTING"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "will hosting"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "time-perspectives",
+      "standaloneContext": "本题独立给定的作答条件：把三句日程说明与它突出表达的时间角度配对。不要额外推断说话人的承诺程度。",
+      "ambiguityReview": "三种形式都合法，匹配其直接表达的时间角度，不把语气主观解读设为答案。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "future-question",
+      "standaloneContext": "本题独立给定的作答条件：想用将来进行时询问同事“明晚九点你会在使用楼上的房间吗？”哪句结构正确？",
+      "ambiguityReview": "用问句协商房间使用，三项只改变谓语结构，时间信息完整。",
+      "optionNotes": {
+        "a": "will 加主语再接 be using，结构正确。",
+        "b": "be 不和 will 一起移到主语前。",
+        "c": "缺少将来进行时中的 be，不能直接接 using。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "not-at-desk",
+      "standaloneContext": "本题独立给定的作答条件：用将来进行时补全“明天这个时候，她不会正在服务台工作”：She ___ at the desk this time tomorrow. 用 work 的否定形式，不缩写。",
+      "ambiguityReview": "形式被题干锁定；不接收缩写仅因本题显式练习完整结构，不否认缩写日常合法。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "will not be working"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WILL NOT BE WORKING"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "will not working"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

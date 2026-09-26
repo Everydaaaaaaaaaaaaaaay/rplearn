@@ -1,0 +1,228 @@
+{
+  "id": "oliver.senior2.evening-bookshop",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "闭店前的两个小时",
+  "summary": "用将来进行时说明某个时刻正在做的安排。",
+  "scene": "Oliver 在安排书店晚间活动：朗读、整理书架、留出安静的角落。你帮他把日程说得具体些，让想来帮忙的人知道何时能找到他。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.future-progressive"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "Unit 2 Looking into the Future / Discover useful structures",
+      "pages": "印刷第17页；PDF第24页",
+      "alignment": "参考将来进行时与时间表沟通；不把同语境的一般将来时一律判成语法错误。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A reading evening needs a timetable. Apparently, so do I.",
+      "translation": "朗读之夜需要时间表。看来我也需要一张。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "A time is helpful. What we will be doing then matters too.",
+      "translation": "时间有用，届时正在做什么也很重要。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "The evening looks less crowded on paper now.",
+      "translation": "现在纸上的这个晚上总算没那么挤了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "eight-thirty",
+      "goalId": "s2.future-progressive",
+      "prompt": "本题安排：明晚八点到九点，我负责给访客读短篇故事。要用将来进行时说“八点半我正在读给访客听”，选哪句？",
+      "hint": "目标不是已完成，也不是习惯；检查未来时点中的进行形式。",
+      "explanation": "At eight thirty tomorrow, I will be reading to visitors. will be 加 -ing 强调那个未来时点正在进行。",
+      "difficultyReason": "题干明确要求时态；不以 will read 等合法未来表达作唯一错误理由。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "At eight thirty tomorrow, I will reading to visitors."
+        },
+        {
+          "id": "b",
+          "text": "At eight thirty tomorrow, I will be reading to visitors."
+        },
+        {
+          "id": "c",
+          "text": "At eight thirty tomorrow, I will be read to visitors."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "shelf-work",
+      "goalId": "s2.future-progressive",
+      "prompt": "用全部词块说：“明天这个时候，我们将正在整理书架。”以 This time 开头，sort 表示整理。",
+      "hint": "时间短语放句首；随后给出主语与将来进行形式。",
+      "explanation": "This time tomorrow, we will be sorting the shelves. will be sorting 描述明天此时正在进行的工作。",
+      "difficultyReason": "时间置首明确，词块中保留 will、be、sorting 的组合以检验结构。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "we"
+        },
+        {
+          "id": "t4",
+          "text": "will"
+        },
+        {
+          "id": "t5",
+          "text": "be"
+        },
+        {
+          "id": "t6",
+          "text": "sorting"
+        },
+        {
+          "id": "t7",
+          "text": "the shelves."
+        },
+        {
+          "id": "t1",
+          "text": "This time"
+        },
+        {
+          "id": "t2",
+          "text": "tomorrow,"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]]
+    },
+    {
+      "id": "phone-during-talk",
+      "goalId": "s2.future-progressive",
+      "prompt": "明天七点半的电话可能打不通，因为我那时在主持活动。I ___ the event at seven thirty tomorrow. 用 host 的将来进行时填空，不缩写。",
+      "hint": "主语之后需要完整的三个部分来标记未来进行。",
+      "explanation": "填 will be hosting，突出明天七点半正在主持活动。host 作动词，不必额外添加 am。",
+      "difficultyReason": "明示将来进行时和不缩写，避免把 will host 或 am hosting 的自然未来用法误判为错误英语。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["will be hosting"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "time-perspectives",
+      "goalId": "s2.future-progressive",
+      "prompt": "把三句日程说明与它突出表达的时间角度配对。不要额外推断说话人的承诺程度。",
+      "hint": "注意未来某时的进行过程、一般的未来安排，以及平常做的事。",
+      "explanation": "will be packing 强调未来某时正在装箱；will pack 说明未来将做的事，不特别突出进行过程；pack on Fridays 描述习惯。",
+      "difficultyReason": "三种形式都合法，匹配其直接表达的时间角度，不把语气主观解读设为答案。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "At six tomorrow, we will be packing the books."
+        },
+        {
+          "id": "l2",
+          "text": "We will pack the books tomorrow."
+        },
+        {
+          "id": "l3",
+          "text": "We pack the books on Fridays."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "说明明天将装书，不特别突出某时正在进行。"
+        },
+        {
+          "id": "r3",
+          "text": "描述通常在星期五装书的习惯。"
+        },
+        {
+          "id": "r1",
+          "text": "突出明天六点正在装书的过程。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "future-question",
+      "goalId": "s2.future-progressive",
+      "prompt": "想用将来进行时询问同事“明晚九点你会在使用楼上的房间吗？”哪句结构正确？",
+      "hint": "疑问句把哪一个助动词提到主语前？其余部分应留在后面。",
+      "explanation": "Will you be using the upstairs room at nine tomorrow evening? 将 will 提到 you 前，be using 保留在主语后。",
+      "difficultyReason": "用问句协商房间使用，三项只改变谓语结构，时间信息完整。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Will you be using the upstairs room at nine tomorrow evening?"
+        },
+        {
+          "id": "b",
+          "text": "Will be you using the upstairs room at nine tomorrow evening?"
+        },
+        {
+          "id": "c",
+          "text": "Will you using the upstairs room at nine tomorrow evening?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "not-at-desk",
+      "goalId": "s2.future-progressive",
+      "prompt": "用将来进行时补全“明天这个时候，她不会正在服务台工作”：She ___ at the desk this time tomorrow. 用 work 的否定形式，不缩写。",
+      "hint": "把否定放在第一个助动词后，仍保留进行结构。",
+      "explanation": "will not be working 是完整否定形式；not 在 will 后面，working 前仍要有 be。",
+      "difficultyReason": "形式被题干锁定；不接收缩写仅因本题显式练习完整结构，不否认缩写日常合法。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["will not be working"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

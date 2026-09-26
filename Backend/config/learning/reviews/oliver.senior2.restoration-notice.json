@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.senior2.restoration-notice",
+  "contentHash": "ca01d6a450eea93ed4d38ee2053b81aceea1b12994c4bcad304d3a8d2bbe46a0",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "旧书店告示与克制的玩笑符合 Oliver，修缮信息只用于情景，不作为任何题目的隐藏条件。",
+  "levelFit": "在已明确对象上添加信息，处理关系词、从句成分及指代整件事；先修限制性从句。",
+  "limitations": "选择性必修教材相关语言功能；高二为产品教学排序，不等同于全国统一学期安排的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "named-room",
+      "standaloneContext": "本题独立给定的作答条件：给定信息：阅读室名为 Cedar Room，周一重新开放；你要补充它位于楼上。哪句正确地用逗号从句补充信息？ Cedar Room 是专名。",
+      "ambiguityReview": "地点名词不意味着关系词总用 where：is upstairs 缺主语，需要 which。三项其他信息一致。",
+      "optionNotes": {
+        "a": "where 是地点状语，不能在这里充当 is 的主语。",
+        "b": "which 作从句主语，并以逗号补充房间位置。",
+        "c": "that 不引导这种逗号隔开的非限制性从句。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "editor-person",
+      "standaloneContext": "本题独立给定的作答条件：合并本题信息：Maya 编辑这本杂志；她今晚会来。Maya, ___ edits the magazine, is coming tonight. 只填 who、which 或 that。",
+      "ambiguityReview": "明确人名及标点排除 that；不把限制性从句中合法的 that 错误泛化为永远不指人。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WHO"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "quiet-corner",
+      "standaloneContext": "本题独立给定的作答条件：组句：“我们保留了那张桌子，它能坐下六个人。”以 We 开头，用逗号从句补充桌子的容量。seat 作动词表示容纳就座。",
+      "ambiguityReview": "提供完整动作、数量与词块；主句首词和逗号边界固定，避免把从句误当另一独立句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "whole-event",
+      "standaloneContext": "本题独立给定的作答条件：本题：我们把活动移到楼下，这一改变使进门更方便。哪句用 which 指代“把活动移到楼下这件事”，且不重复主语？",
+      "ambiguityReview": "将整句指代与名词指代区分；两项干扰分别为重复主语和错误连接，access 在题内译出。",
+      "optionNotes": {
+        "a": "which 与 it 重复占据从句主语的位置。",
+        "b": "that 不能在这里用逗号连接前面整件事。",
+        "c": "which 指前面的改变并作 made 的主语，结构完整。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "additional-details",
+      "standaloneContext": "本题独立给定的作答条件：将三句话与它补充的那一项信息配对。三句均自足，无须知道真实的书店安排。",
+      "ambiguityReview": "三种补充功能有不同语义，不以名词对应单词作为唯一线索。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "place-or-thing",
+      "standaloneContext": "本题独立给定的作答条件：补充地点信息：The workshop is in our reading room, ___ we keep the large maps. 只填 where 或 which；从句原意是“我们在这里存放大幅地图”。",
+      "ambiguityReview": "题干限定单词候选；承认 in which 是另一完整表达，避免用地点名词机械选关系词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "where"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WHERE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "which"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

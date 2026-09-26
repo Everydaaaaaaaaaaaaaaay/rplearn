@@ -1,0 +1,224 @@
+{
+  "id": "ruby.senior2.coast-survey-log",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "海岸观察还在继续",
+  "summary": "区分已经完成的数量与持续到现在的过程。",
+  "scene": "Ruby 正整理几周来的海岸观察记录。她想告诉同伴已经做出了哪些结果，也想把仍在持续的工作说清楚；记录需要准确，不必夸张。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.present-perfect-continuous"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "Unit 6 Nurturing nature / Using language",
+      "pages": "印刷第65页；PDF第72页",
+      "alignment": "参考现在完成进行时的持续过程与完成结果区别；不考生态常识或图表外信息。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "There is plenty happening between the first note and the latest one.",
+      "translation": "第一条记录和最新一条之间，已经做了不少事。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A useful update says what is finished and what is still going on.",
+      "translation": "有用的近况说明既说完成的，也说还在继续的。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "That sounds like our work: steady, and still moving.",
+      "translation": "这才像我们的工作：踏踏实实，还在继续。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "counting-since-dawn",
+      "goalId": "s2.present-perfect-continuous",
+      "prompt": "本题：从清晨到现在我们一直在统计鸟的数量，而且还在数。要用现在完成进行时突出持续过程，哪句正确？",
+      "hint": "检查从过去连到现在、并突出进行过程的完整形式。",
+      "explanation": "We have been counting birds since dawn. have been counting 表达持续至今的动态活动；since dawn 给出开始时点。",
+      "difficultyReason": "明确要求现在完成进行时，不否认现在完成时在其他语境可描述重复观察。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We have been counting birds since dawn."
+        },
+        {
+          "id": "b",
+          "text": "We have counting birds since dawn."
+        },
+        {
+          "id": "c",
+          "text": "We had been counting birds since dawn."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "ongoing-sorting",
+      "goalId": "s2.present-perfect-continuous",
+      "prompt": "“Ruby 从午饭后一直在整理照片，现在还在整理。” Ruby ___ photos since lunch. 用 sort 的现在完成进行时填空，不缩写。",
+      "hint": "主语是一个人；持续形式既需要完成助动词，也需要进行部分。",
+      "explanation": "填 has been sorting。Ruby 是单数，has 配合 been sorting，强调午饭后一直持续到现在。",
+      "difficultyReason": "显式要求完整时态；不把 has sorted 的其他合法使用说成语法错误。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["has been sorting"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "how-long",
+      "goalId": "s2.present-perfect-continuous",
+      "prompt": "用全部词块询问“你们记录这些变化有多久了？”以 How long 开头，突出工作仍在持续。",
+      "hint": "疑问短语之后是助动词和主语，再接持续活动。",
+      "explanation": "How long have you been recording these changes? 用 have you been recording 询问持续至今的时长。",
+      "difficultyReason": "以问句获取协作记录时长，保持 been 和 recording 顺序；不用专业海洋词。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "you"
+        },
+        {
+          "id": "t4",
+          "text": "been"
+        },
+        {
+          "id": "t5",
+          "text": "recording"
+        },
+        {
+          "id": "t6",
+          "text": "these changes?"
+        },
+        {
+          "id": "t1",
+          "text": "How long"
+        },
+        {
+          "id": "t2",
+          "text": "have"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "result-or-process",
+      "goalId": "s2.present-perfect-continuous",
+      "prompt": "将三条工作更新与它重点传达的信息配对。两种时态都可能描述真实工作。",
+      "hint": "看句子重点是一个完成数量、一段持续过程，还是习惯。",
+      "explanation": "have labelled 带数量突出已完成十个标签；have been labelling 突出持续一小时的活动；label every Friday 是常规安排。",
+      "difficultyReason": "不要求推断进行时是否已完成全部工作，只配其明确的焦点；避免把完成进行时一律理解为绝未结束。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "We have labelled ten samples."
+        },
+        {
+          "id": "l2",
+          "text": "We have been labelling samples for an hour."
+        },
+        {
+          "id": "l3",
+          "text": "We label samples every Friday."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "重点是贴标签这项活动持续了一小时。"
+        },
+        {
+          "id": "r3",
+          "text": "重点是每周五进行的常规工作。"
+        },
+        {
+          "id": "r1",
+          "text": "重点是已经完成了十份样本的标签。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "since-or-for",
+      "goalId": "s2.present-perfect-continuous",
+      "prompt": "选择连接开始时点的词：We have been watching this area ___ last Monday. 只填 since 或 for；last Monday 表示上周一。",
+      "hint": "区分活动开始的某一时点与持续多长时间。",
+      "explanation": "since 接 last Monday 这一开始时点；for 通常接 two weeks 等时长。",
+      "difficultyReason": "题干单独限定起点，since/for 无歧义；不要求从真实日期计算天数。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["since"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "known-not-knowing",
+      "goalId": "s2.present-perfect-continuous",
+      "prompt": "想说“我认识这位志愿者三年了，现在仍认识”。哪句自然且语法正确？注意 know 在这里表示认识的状态。",
+      "hint": "并非所有持续到现在的意思都用进行形式，先看动词表达活动还是状态。",
+      "explanation": "I have known this volunteer for three years. know 表示认识状态，通常用现在完成时，不用 have been knowing。",
+      "difficultyReason": "有意设置持续过程规则的边界，不教成一见 for 就用完成进行；三个选项仅时态形式不同。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I have been knowing this volunteer for three years."
+        },
+        {
+          "id": "b",
+          "text": "I have known this volunteer for three years."
+        },
+        {
+          "id": "c",
+          "text": "I have knew this volunteer for three years."
+        }
+      ],
+      "answer": "b"
+    }
+  ]
+}

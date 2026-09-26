@@ -109,6 +109,36 @@
           "sha256": "9a05cbe618e0221342ce8caf32a4ff002af4045a9745ce7b06acc4938e0780b8"
         }
       ]
+    },
+    {
+      "id": "pep.senior.selective1.review2019",
+      "title": "人教版普通高中英语选择性必修第一册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%B8%80%E5%86%8C.pdf",
+      "edition": "封面标注国家教材委员会专家委员会审核通过2019；存档未提供完整版次与印次，不能等同当前学期用书",
+      "readAt": "2026-09-26",
+      "scope": "核读封面、出版信息页及PDF第12、24、27、28、36、48页；对应印刷第5、17、20、21、29、41页。",
+      "limitations": "本批核读公开社区存档，尚未与出版社同版完整PDF逐页核对。选择性必修册次与学校年级、学期不机械等同；只覆盖核读目标的原创文字练习，不复制课文、插图或习题。",
+      "evidence": [
+        {
+          "locator": "完整PDF共130页的SHA-256；实际目视核读页码见scope及单元references",
+          "sha256": "94ec493439239c436326e228e3d3ad78c7053ac5abc005db5739119f6a98c33d"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.senior.selective1.review2019",
+      "title": "外研版普通高中英语选择性必修第一册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88-%E5%A4%96%E8%AF%AD%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%B8%80%E5%86%8C.pdf",
+      "edition": "封面标注国家教材委员会专家委员会审核通过2019；存档未提供完整版次与印次，不能等同当前学期用书",
+      "readAt": "2026-09-26",
+      "scope": "核读封面、编辑页及PDF第24、48、60、72页；对应印刷第17、41、53、65页。",
+      "limitations": "本批核读公开社区存档，尚未与出版社同版完整PDF逐页核对。选择性必修册次与学校年级、学期不机械等同；只覆盖核读目标的原创文字练习，不复制课文、插图或习题。",
+      "evidence": [
+        {
+          "locator": "完整PDF共130页的SHA-256；实际目视核读页码见scope及单元references",
+          "sha256": "9dec766018882be74c858fa34e4cb43b30313a03d90a48b3dc9a27d9607dfe5f"
+        }
+      ]
     }
   ],
   "goals": [
@@ -300,6 +330,69 @@
       "canDo": "能用 because、so、so that 明确连接原因、结果与目的。",
       "boundaries": "题内明确意图与候选词；不把现实中可兼容的因果或目的关系强行设为唯一答案。",
       "sourceIds": ["fltrp.junior3.upper.review2013"]
+    },
+    {
+      "id": "s2.nonrestrictive",
+      "level": "senior2",
+      "canDo": "能用非限制性定语从句补充人物、地点和整个事件的信息，避免重复成分。",
+      "boundaries": "先修限制性从句；区别 which 作主语和 where 作地点状语，逗号从句不用 that；不要求文学传记背景。",
+      "sourceIds": ["pep.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.future-progressive",
+      "level": "senior2",
+      "canDo": "能围绕具体未来时点协调安排，用将来进行时说明届时正在进行的活动。",
+      "boundaries": "题内要求目标形式时才限定时态，不把一般将来时或现在进行时表将来的其他合法用法一律判错。",
+      "sourceIds": ["pep.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.verb-patterns",
+      "level": "senior2",
+      "canDo": "能区分停止活动与停下来做另一件事，正确表达决定、持续和喜欢。",
+      "boundaries": "以 stop、start、decide、enjoy、keep 等常用模式为限；保留 start 两种合法补语，不用罕见动词凑难度。",
+      "sourceIds": ["fltrp.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.past-perfect",
+      "level": "senior2",
+      "canDo": "能以过去事件为参照，说明更早完成或尚未完成的动作，并准确保留先后。",
+      "boundaries": "所有过去时间关系在题内明确；不宣称出现 before 就强制过去完成时，不含虚拟过去。",
+      "sourceIds": ["fltrp.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.present-perfect-continuous",
+      "level": "senior2",
+      "canDo": "能区分持续至今的工作过程和已完成数量，询问时长并给出近况。",
+      "boundaries": "限定动态活动的持续表达；认识 know 等状态动词的边界，不断言完成进行时一定仍未结束。",
+      "sourceIds": ["fltrp.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.balanced-argument",
+      "level": "senior2",
+      "canDo": "能承认顾虑、组织利弊、提供理由并提出不超出证据范围的建议。",
+      "boundaries": "题内明确沟通意图和事实；评分针对英语表达与给定意图，不评价用户的环保立场或专业知识。",
+      "sourceIds": ["pep.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.ing-subject",
+      "level": "senior2",
+      "canDo": "能把一项活动置于句首作为主语，说明它的作用并保持主谓一致。",
+      "boundaries": "形式练习显式要求 -ing，不误判合法不定式；不含复合多主语一致的争议情况。",
+      "sourceIds": ["pep.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.participle-feelings",
+      "level": "senior2",
+      "canDo": "能准确转述作品引起的感受和人的体验，区分 -ing 与 -ed 表语含义。",
+      "boundaries": "不采用人一律 -ed、物一律 -ing 的简化；题内明确情感义，不含被动移动等歧义。",
+      "sourceIds": ["fltrp.senior.selective1.review2019"]
+    },
+    {
+      "id": "s2.ing-roles",
+      "level": "senior2",
+      "canDo": "能以 -ing 表达工作内容、需避免的行为和行动方法，并区别正在发生的动作。",
+      "boundaries": "限常用动词和介词后的活动短语；明确接受的输出形式，避免开放句架遗漏不定式或代词变体。",
+      "sourceIds": ["pep.senior.selective1.review2019"]
     }
   ],
   "unitIds": [
@@ -329,7 +422,16 @@
     "ruby.junior3.reusable-cafe",
     "marcus.junior3.record-corner",
     "marcus.junior3.photo-caption-workshop",
-    "marcus.junior3.neighbourhood-invitations"
+    "marcus.junior3.neighbourhood-invitations",
+    "oliver.senior2.restoration-notice",
+    "oliver.senior2.evening-bookshop",
+    "oliver.senior2.reading-society",
+    "ruby.senior2.volunteer-handover",
+    "ruby.senior2.coast-survey-log",
+    "ruby.senior2.visitor-board-debate",
+    "marcus.senior2.community-project-brief",
+    "marcus.senior2.portrait-feedback",
+    "marcus.senior2.interview-worktable"
   ],
   "audioAssets": [
     {

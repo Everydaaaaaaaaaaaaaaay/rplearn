@@ -1,0 +1,224 @@
+{
+  "id": "ruby.senior2.volunteer-handover",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "交班时，把先后说清楚",
+  "summary": "回看一个过去时刻，说明在那之前已经完成或尚未完成的事。",
+  "scene": "Ruby 把海岸活动的交班本摊在咖啡馆桌上。几个时间点挤在一起，她想让下一班同伴一眼分清哪些事先做好了，哪些还要继续。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.past-perfect"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "Unit 5 Revealing nature / Using language",
+      "pages": "印刷第53页；PDF第60页",
+      "alignment": "参考以一个过去事件为参照解释更早动作；时间顺序由本题完整给出。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "The notes are all here. The order could do with a little help.",
+      "translation": "记录都在这里了。顺序还得整理一下。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A clear handover saves someone else a second trip.",
+      "translation": "交接说清楚，就能让同伴少跑一趟。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Right, that tells the next team where to begin.",
+      "translation": "好了，下一班知道从哪儿接着做了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "boxes-before-arrival",
+      "goalId": "s2.past-perfect",
+      "prompt": "本题事实：昨天九点大家到达时，我已经检查完所有箱子。用过去完成时突出“检查在到达前完成”，选哪句？",
+      "hint": "先确定到达是过去参照点，检查则发生得更早。",
+      "explanation": "I had checked all the boxes by the time everyone arrived. had checked 表示检查先于过去的到达事件完成。",
+      "difficultyReason": "题干明确目标时态；不把一般过去时在某些叙述中的可能用法当作普遍错误。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I have checked all the boxes by the time everyone arrived."
+        },
+        {
+          "id": "b",
+          "text": "I had checked all the boxes by the time everyone arrived."
+        },
+        {
+          "id": "c",
+          "text": "I had check all the boxes by the time everyone arrived."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "sent-before-call",
+      "goalId": "s2.past-perfect",
+      "prompt": "昨天电话打来前，Ruby 已经发出安排。Ruby ___ the plan before the call came yesterday. 用 send 的过去完成时填空，不缩写。",
+      "hint": "完整时态包含助动词；send 的过去分词不是规则加 ed。",
+      "explanation": "填 had sent。sent 是 send 的过去分词，had 把发送置于过去来电之前。",
+      "difficultyReason": "同时限定过去完成时和过去时间，排除 has sent；不暗示所有 before 句都必须用过去完成时。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["had sent"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "not-finished",
+      "goalId": "s2.past-perfect",
+      "prompt": "组句：“交班时，我们还没有完成清单。”以 We 开头，用全部词块；handover 指交班。",
+      "hint": "否定词在第一个助动词后，过去参照点放在句末。",
+      "explanation": "We had not finished the list at the handover. 表示以当时交班为参照，完成这件事尚未发生。",
+      "difficultyReason": "以过去完成否定表达未完成状态，不让用户猜交班清单内容。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "not"
+        },
+        {
+          "id": "t4",
+          "text": "finished"
+        },
+        {
+          "id": "t5",
+          "text": "the list"
+        },
+        {
+          "id": "t6",
+          "text": "at the handover."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "had"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "sequence-differences",
+      "goalId": "s2.past-perfect",
+      "prompt": "将三种交接说明与它明确表达的先后关系配对。",
+      "hint": "区分到达前已做完、到达后才做，以及到达时尚未做。",
+      "explanation": "had left 将离开放在到达之前；after 明示到达在先；had not left yet 表示到达时人还没走。",
+      "difficultyReason": "同一组动词承载三种不同时间关系，匹配不依赖其他题目或角色剧情。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The first team had left when we arrived."
+        },
+        {
+          "id": "l2",
+          "text": "The first team left after we arrived."
+        },
+        {
+          "id": "l3",
+          "text": "The first team had not left yet when we arrived."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我们到达之后，第一班才离开。"
+        },
+        {
+          "id": "r3",
+          "text": "我们到达时，第一班还没有离开。"
+        },
+        {
+          "id": "r1",
+          "text": "我们到达前，第一班已经离开。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "reversed-history",
+      "goalId": "s2.past-perfect",
+      "prompt": "本题事实：我们周一检查了水箱，周二才发现漏水。哪句保持先后，并用过去完成时突出较早的检查？ tank 指水箱，leak 指漏水。",
+      "hint": "选择语法成立且没有把先后倒过来的表达。",
+      "explanation": "We had checked the tank before we discovered the leak. 较早的检查用 had checked，较后的发现用 discovered。",
+      "difficultyReason": "三项均为可成立的英语结构；按给定顺序与指定时间角度排除颠倒和同时，不作事实阅读测验。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We had discovered the leak before we checked the tank."
+        },
+        {
+          "id": "b",
+          "text": "We discovered the leak while we were checking the tank."
+        },
+        {
+          "id": "c",
+          "text": "We had checked the tank before we discovered the leak."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "question-before-shift",
+      "goalId": "s2.past-perfect",
+      "prompt": "询问同伴昨天交班前是否做完记录：___ you completed the notes before your shift ended yesterday? 用过去完成时，只填缺少的助动词。",
+      "hint": "问句把该时态的助动词放到主语前。",
+      "explanation": "填 Had；Had you completed…? 以昨天班次结束为过去参照点，询问在此前是否完成。",
+      "difficultyReason": "completed 已提供，不能用 Did 后再保留过去分词来替代该结构；不考 shift 的未知含义。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["had"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

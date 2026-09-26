@@ -1,0 +1,220 @@
+{
+  "id": "oliver.senior2.reading-society",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "读书会说好的事",
+  "summary": "说清停止、继续、决定与喜欢，避免动词形式改变意思。",
+  "scene": "Oliver 正在和读书会成员商量下次活动。大家愿意尝试新安排，也有想停下来的旧习惯；几句准确的话能省去一串后续解释。",
+  "estimatedMinutes": 10,
+  "goalIds": ["s2.verb-patterns"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "Unit 2 Onwards and upwards / Using language",
+      "pages": "印刷第17页；PDF第24页",
+      "alignment": "参考动词后接 -ing 或不定式以及 stop 两种结构的意义区别；原创读书会沟通任务。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读选择性必修教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Everyone has an idea. That is promising, if slightly noisy.",
+      "translation": "人人都有主意。这是好事，只是稍微吵了点。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let us make sure we are agreeing to the same thing.",
+      "translation": "我们先确认一下，大家答应的是同一件事。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "A few clear decisions. Enough to start the next chapter.",
+      "translation": "几个清楚的决定，足够翻开下一章了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "stop-talking",
+      "goalId": "s2.verb-patterns",
+      "prompt": "讨论开始后，有人仍在聊天。你想礼貌请他“停止聊天”，不是“停下手里的事去聊天”。哪句准确？",
+      "hint": "注意 stop 后面两种形式所指的动作是否被停止。",
+      "explanation": "Would you mind stopping talking for a moment? 请求停止聊天。stop to talk 则是停下原活动去聊天，含义相反。",
+      "difficultyReason": "三项分别准确停止、改成去聊天、把 mind 后形式用错，中文排除另一合法意义。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Would you mind stopping to talk for a moment?"
+        },
+        {
+          "id": "b",
+          "text": "Would you mind stopping talking for a moment?"
+        },
+        {
+          "id": "c",
+          "text": "Would you mind to stop talking for a moment?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "decided-invite",
+      "goalId": "s2.verb-patterns",
+      "prompt": "补全决定：“我们决定邀请一位当地作者。” We decided ___ a local writer. 填 invite 的合适形式。",
+      "hint": "decide 后面连接一个尚待执行的动作。",
+      "explanation": "decide to do 表示决定做某事，所以填 to invite；这里不是介词后的动名词。",
+      "difficultyReason": "固定动词结构，既定句架中 to invite 为目标；不开放改成名词宾语。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["to invite"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "enjoy-views",
+      "goalId": "s2.verb-patterns",
+      "prompt": "组句：“我喜欢听到不同的观点。”以 I 开头；不添加词。",
+      "hint": "enjoy 后的活动形式要和后面的宾语连在一起。",
+      "explanation": "I enjoy hearing different opinions. enjoy 后用 -ing；hearing 的宾语是 different opinions。",
+      "difficultyReason": "短句集中练习动词补语，opinion 与阅读讨论相关，不靠生僻词提升负担。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "hearing"
+        },
+        {
+          "id": "t4",
+          "text": "different"
+        },
+        {
+          "id": "t5",
+          "text": "opinions."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "enjoy"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "stopped-why",
+      "goalId": "s2.verb-patterns",
+      "prompt": "将三句活动安排与准确意思配对。注意停止的到底是哪件事。",
+      "hint": "看到 to do 时判断它是不是停下原活动之后要做的事。",
+      "explanation": "stopped reading 停止阅读；stopped to read 停下其他活动去读；decided to read 是做出阅读决定。",
+      "difficultyReason": "三句共享 read 但意图不同，需分辨完整结构，不能只认词义。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "We stopped reading the messages."
+        },
+        {
+          "id": "l2",
+          "text": "We stopped to read the messages."
+        },
+        {
+          "id": "l3",
+          "text": "We decided to read the messages."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我们停下原来的活动，去阅读消息。"
+        },
+        {
+          "id": "r3",
+          "text": "我们决定阅读消息。"
+        },
+        {
+          "id": "r1",
+          "text": "我们停止了阅读消息这件事。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "both-starts",
+      "goalId": "s2.verb-patterns",
+      "prompt": "要说“我们开始讨论结尾了”，下面哪一组列出的两句都可表达这个意思？本题不强调动作刚发生的瞬间。",
+      "hint": "有些动词允许两种补语形式，不要把一条规则套给所有动词。",
+      "explanation": "started discussing 和 started to discuss 在此都成立；enjoy 通常接 -ing，decide 在此接 to do。",
+      "difficultyReason": "以成组选择明确接收 start 两种形式；两组干扰各含一个不合法结构。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We started discussing the ending. / We started to discuss the ending."
+        },
+        {
+          "id": "b",
+          "text": "We enjoyed discussing the ending. / We enjoyed to discuss the ending."
+        },
+        {
+          "id": "c",
+          "text": "We decided discussing the ending. / We decided to discuss the ending."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "keep-trying",
+      "goalId": "s2.verb-patterns",
+      "prompt": "给同伴打气：“即使第一稿很难，我们也继续尝试。” We keep ___ even when the first draft is difficult. 填 try 的正确形式。",
+      "hint": "keep 后面需要表示持续活动的形式。",
+      "explanation": "keep trying 表示继续尝试；try 去 y 后加 ing 会错，应直接写 trying。",
+      "difficultyReason": "题干关注持续活动及 try 的 -ing 拼写，first draft 已用中文解释，不测试文学理论。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["trying"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}
