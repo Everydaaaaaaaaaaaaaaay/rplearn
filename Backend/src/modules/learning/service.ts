@@ -45,13 +45,18 @@ export function createLearningService(
       return repository.inspect(userId, async (session) => {
         const currentLevel = await session.currentLevel();
         const progress = await session.progress();
+        const content = await session.publishedContent();
         return {
           currentLevel,
           policy: learningPolicy,
-          levels: levelKeys.map(
-            (level) =>
-              progress.find((p) => p.level === level) ?? { level, ...levelProgress(0) },
-          ),
+          levels: levelKeys.map((level) => ({
+            ...(progress.find((p) => p.level === level) ?? {
+              level,
+              ...levelProgress(0),
+            }),
+            publishedUnitCount:
+              content.find((entry) => entry.level === level)?.count ?? 0,
+          })),
         };
       });
     },

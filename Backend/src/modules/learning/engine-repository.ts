@@ -471,6 +471,11 @@ export class LearningSession {
     return this.attempt(id);
   }
 
+  async publishedContent() {
+    return this.sql<{ level: LearningLevel; count: number }[]>`
+      select level_key as level,count(*)::integer as count from app.learning_units where published group by level_key`;
+  }
+
   async progress() {
     const rows = await this.sql<
       { level_key: LearningLevel; points: number }[]

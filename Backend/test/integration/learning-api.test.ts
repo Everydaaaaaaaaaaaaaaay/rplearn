@@ -302,6 +302,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         Awaited<ReturnType<LearningService["journey"]>>
       >();
       expect(journey.levels.find((p) => p.level === "primary3")?.points).toBe(1);
+      expect(
+        journey.levels.find((p) => p.level === "primary3")?.publishedUnitCount,
+      ).toBe(3);
+      expect(
+        journey.levels.find((p) => p.level === "senior3")?.publishedUnitCount,
+      ).toBe(0);
       const exported = await createAccountService(config(), database).exportData(
         owner(),
       );
