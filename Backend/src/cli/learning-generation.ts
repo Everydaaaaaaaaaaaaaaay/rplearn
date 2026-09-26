@@ -2,6 +2,7 @@ import "dotenv/config";
 import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
 import { z } from "zod";
+import { unitSchema } from "../modules/learning/content.js";
 import { loadConfig } from "../config/env.js";
 import { createDatabase } from "../db/client.js";
 import { LearningGenerationRepository } from "../modules/learning/generation-repository.js";
@@ -14,11 +15,11 @@ async function main() {
   if (
     !command ||
     extra.length ||
-    !["list", "run", "inspect", "publish", "reject"].includes(command) ||
+    !["list", "run", "inspect", "publish", "reject", "revise"].includes(command) ||
     (["run", "list"].includes(command) ? value !== undefined : !value)
   )
     throw new Error(
-      "用法：learning-generation list；run；inspect 任务UUID；publish 审核JSON文件；reject 退回JSON文件。",
+      "用法：learning-generation list；run；inspect 任务UUID；publish 审核JSON文件；reject 退回JSON文件；revise 修订JSON文件。",
     );
   const config = loadConfig(),
     database = createDatabase(config);
@@ -46,6 +47,26 @@ async function main() {
         config.learningGenerationDailyJobs,
       ).runOnce();
       process.stdout.write(JSON.stringify({ result }) + "\n");
+      return;
+    }
+    if (command === "revise") {
+      const edit = z
+        .strictObject({
+          requestId: z.uuid(),
+          sourceJobId: z.uuid(),
+          candidateHash: z.string().regex(/^[a-f0-9]{64}$/),
+          editor: z.string().trim().min(2).max(60),
+          notes: z.string().trim().min(30).max(1000),
+          unit: unitSchema,
+        })
+        .parse(JSON.parse(await readFile(value ?? "", "utf8")) as unknown);
+      const source = await repository.inspect(edit.sourceJobId);
+      const blueprint = blueprints.find(
+        (b) => b.roleKey === source.role_key && b.level === source.level_key,
+      );
+      if (!blueprint) throw new Error("当前没有该角色与档位的审核蓝图。");
+      const revisedJobId = await repository.revise(edit, blueprint);
+      process.stdout.write(JSON.stringify({ result: "revise", revisedJobId }) + "\n");
       return;
     }
     const review = z

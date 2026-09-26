@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { generationFixture } from "../../helpers/learning-generation.js";
 import {
   generatedDraftSchema,
+  reviewSchemaForUnit,
   validateGeneratedUnit,
   validateIndependentReview,
 } from "../../../src/modules/learning/generation-content.js";
@@ -15,6 +16,27 @@ describe("补库内容硬门槛", () => {
       expect(schema).toContain(`"const":"${type}"`);
     for (const type of ["listeningChoice", "dictation"])
       expect(schema).not.toContain(`"const":"${type}"`);
+  });
+  it("盲审合同逐题限定真实标识，配对文字与跳过不能伪装成答案", async () => {
+    const { unit, report } = await generationFixture(randomUUID());
+    const schema = reviewSchemaForUnit(unit);
+    expect(schema.safeParse(report).success).toBe(true);
+    const q = unit.questions.find((q) => q.type === "matching");
+    const check = report.questions.find((c) => c.questionId === q?.id);
+    if (!q || !check) throw new Error("缺少配对夹具。");
+    check.solution = {
+      kind: "matching",
+      pairs: q.left.map((l, i) => ({
+        left: l.text,
+        right: q.right[i]?.text ?? "错误",
+      })),
+    };
+    expect(schema.safeParse(report).success).toBe(false);
+    check.solution = { kind: "skip" };
+    expect(schema.safeParse(report).success).toBe(false);
+    const encoded = JSON.stringify(z.toJSONSchema(schema));
+    expect(encoded).not.toContain('"const":"skip"');
+    expect(encoded).toContain(q.left[0]?.id);
   });
   it("合同通过仍需独立解题；拒绝错误答案、skip 反例和缺失题目", async () => {
     const { blueprint, unit, report } = await generationFixture(randomUUID());

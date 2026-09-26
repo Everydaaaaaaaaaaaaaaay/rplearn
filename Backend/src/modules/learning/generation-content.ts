@@ -10,7 +10,7 @@ import {
 } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
 
-export const generationPromptVersion = 3;
+export const generationPromptVersion = 4;
 const manifestSchema = z.strictObject({
   version: z.literal(1),
   roles: z
@@ -240,6 +240,60 @@ export const independentReviewSchema = z.strictObject({
     )
     .length(6),
 });
+/** 审题者只看到本题可用的标识，不提供正确答案，避免把配对文字误当成标识。 */
+export function reviewSchemaForUnit(unit: LearningUnit) {
+  const checks = unit.questions.map((q) => {
+    let answer: z.ZodType;
+    switch (q.type) {
+      case "choice":
+      case "listeningChoice":
+        answer = z.strictObject({
+          kind: z.literal("choice"),
+          optionId: z.enum(q.options.map((o) => o.id)),
+        });
+        break;
+      case "arrange":
+        answer = z.strictObject({
+          kind: z.literal("arrange"),
+          tokenIds: z
+            .array(z.enum(q.tokens.map((t) => t.id)))
+            .min(1)
+            .max(q.tokens.length),
+        });
+        break;
+      case "matching":
+        answer = z.strictObject({
+          kind: z.literal("matching"),
+          pairs: z
+            .array(
+              z.strictObject({
+                left: z.enum(q.left.map((o) => o.id)),
+                right: z.enum(q.right.map((o) => o.id)),
+              }),
+            )
+            .length(q.left.length),
+        });
+        break;
+      case "completion":
+      case "dictation":
+        answer = z.strictObject({
+          kind: z.literal("text"),
+          text: z.string().min(1).max(1000),
+        });
+        break;
+    }
+    return independentReviewSchema.shape.questions.element.extend({
+      questionId: z.literal(q.id),
+      solution: answer,
+      incorrectExample: answer,
+    });
+  });
+  const [first, second, ...rest] = checks;
+  if (!first || !second) throw new Error("独立审题缺少完整题目。");
+  return independentReviewSchema.extend({
+    questions: z.array(z.union([first, second, ...rest])).length(unit.questions.length),
+  });
+}
 export function validateIndependentReview(content: string, unit: LearningUnit) {
   const report = independentReviewSchema.parse(JSON.parse(content) as unknown);
   if (

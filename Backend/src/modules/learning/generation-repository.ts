@@ -15,6 +15,8 @@ export type GenerationLease = Readonly<{
   attempt: number;
   token: string;
   blueprint: GenerationBlueprint;
+  editorDraft?: LearningUnit;
+  editor?: string;
 }>;
 interface GenerationJob {
   id: string;
@@ -50,15 +52,34 @@ export class LearningGenerationRepository {
       if ((budget?.count ?? 0) >= dailyJobs) return undefined;
       for (const blueprint of blueprints) {
         const [job] = await sql<
-          { id: string; attempts: number }[]
-        >`select id,attempts from app.learning_generation_jobs where role_key=${blueprint.roleKey} and level_key=${blueprint.level} and available_at<=now() and attempts<3 and (status='pending' or (status='running' and lease_until<now())) order by created_at for update skip locked limit 1`;
+          {
+            id: string;
+            attempts: number;
+            editor_payload: unknown;
+            editor: string | null;
+            editor_blueprint_hash: string | null;
+          }[]
+        >`select j.id,j.attempts,e.payload as editor_payload,e.editor,e.blueprint_hash as editor_blueprint_hash from app.learning_generation_jobs j left join app.learning_generation_edits e on e.revised_job_id=j.id where j.role_key=${blueprint.roleKey} and j.level_key=${blueprint.level} and j.available_at<=now() and j.attempts<3 and (j.status='pending' or (j.status='running' and j.lease_until<now())) order by j.created_at for update of j skip locked limit 1`;
         if (!job) continue;
+        if (job.editor !== null && job.editor_blueprint_hash !== blueprint.hash) {
+          await sql`update app.learning_generation_runs set outcome='expired',finished_at=now(),error_code='EDITOR_BLUEPRINT_CHANGED' where job_id=${job.id} and outcome='running'`;
+          await sql`update app.learning_generation_jobs set status='failed',last_error_code='EDITOR_BLUEPRINT_CHANGED',lease_until=null,lease_token=null where id=${job.id}`;
+          continue;
+        }
         const token = randomUUID(),
           attempt = job.attempts + 1;
         await sql`update app.learning_generation_runs set outcome='expired',finished_at=now(),error_code='LEASE_EXPIRED' where job_id=${job.id} and outcome='running'`;
         await sql`update app.learning_generation_jobs set status='running',attempts=${attempt},lease_token=${token},lease_until=now()+interval '5 minutes',blueprint_hash=${blueprint.hash},candidate=null,candidate_hash=null,review_report=null where id=${job.id}`;
         await sql`insert into app.learning_generation_runs(job_id,attempt,lease_token,blueprint_hash,prompt_version) values(${job.id},${attempt},${token},${blueprint.hash},${generationPromptVersion})`;
-        return { id: job.id, attempt, token, blueprint };
+        return {
+          id: job.id,
+          attempt,
+          token,
+          blueprint,
+          ...(job.editor !== null
+            ? { editorDraft: unitSchema.parse(job.editor_payload), editor: job.editor }
+            : {}),
+        };
       }
       return undefined;
     });
@@ -146,7 +167,96 @@ export class LearningGenerationRepository {
     if (!row) throw new Error("找不到生成任务。");
     const runs = await this.database
       .sql`select attempt,prompt_version,blueprint_hash,author_model,review_model,author_usage,review_usage,outcome,error_code,candidate,review_report,created_at,finished_at from app.learning_generation_runs where job_id=${id} order by attempt`;
-    return { ...row, runs };
+    const edits = await this.database
+      .sql`select id,source_job_id,source_candidate_hash,revised_job_id,blueprint_hash,editor,notes,content_hash,created_at from app.learning_generation_edits where source_job_id=${id} or revised_job_id=${id} order by created_at`;
+    return { ...row, runs, edits };
+  }
+  /** 修订形成新的待审任务；原稿、尝试与失败报告保留，预算仍走同一领取入口。 */
+  async revise(
+    input: {
+      requestId: string;
+      sourceJobId: string;
+      candidateHash: string;
+      editor: string;
+      notes: string;
+      unit: unknown;
+    },
+    blueprint: GenerationBlueprint,
+  ): Promise<string> {
+    const requestHash = contentHash(input);
+    const editor = input.editor.trim(),
+      notes = input.notes.trim();
+    if (
+      editor.length < 2 ||
+      editor.length > 60 ||
+      notes.length < 30 ||
+      notes.length > 1000
+    )
+      throw new Error("修订必须填写实际编辑者及 30 至 1000 字符的具体变更说明。");
+    return await this.database.sql.begin(async (sql) => {
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-edit:${input.requestId}`},0))`;
+      const [receipt] = await sql<
+        { request_hash: string; revised_job_id: string }[]
+      >`select request_hash,revised_job_id from app.learning_generation_edits where id=${input.requestId}`;
+      if (receipt) {
+        if (receipt.request_hash !== requestHash)
+          throw new Error("修订请求标识已用于不同内容。");
+        return receipt.revised_job_id;
+      }
+      await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
+      const [source] = await sql<
+        GenerationJob[]
+      >`select * from app.learning_generation_jobs where id=${input.sourceJobId} for update`;
+      if (
+        !source ||
+        !["failed", "review", "pending"].includes(source.status) ||
+        source.candidate_hash !== input.candidateHash ||
+        source.blueprint_hash !== blueprint.hash
+      )
+        throw new Error("原稿已变更、正在处理或已经发布，不能直接修订。");
+      const [previous] =
+        await sql`select id from app.learning_generation_edits where source_job_id=${input.sourceJobId} and source_candidate_hash=${input.candidateHash}`;
+      if (previous) throw new Error("这个原稿已有修订任务，请继续处理其新版本。");
+      const old = unitSchema.parse(source.candidate),
+        proposed = unitSchema.parse(input.unit);
+      if (
+        old.id !== proposed.id ||
+        proposed.id !== `generated.${source.id}` ||
+        source.role_key !== blueprint.roleKey ||
+        source.level_key !== blueprint.level ||
+        proposed.roleKey !== old.roleKey ||
+        proposed.level !== old.level ||
+        proposed.version !== old.version
+      )
+        throw new Error("修订不能更换单元身份、角色或水平。");
+      const revisedJobId = randomUUID();
+      const unit = unitSchema.parse({
+        ...proposed,
+        id: `generated.${revisedJobId}`,
+        authorship: {
+          kind: "generated",
+          author: `服务端生成；${editor}修订`,
+          reviewedBy: "待重新审题与发布复核",
+          reviewedAt: new Date().toISOString().slice(0, 10),
+          reviewNotes: notes,
+        },
+      });
+      const rows = await sql<
+        { payload: unknown }[]
+      >`select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version where u.role_key=${blueprint.roleKey} and u.level_key=${blueprint.level}`;
+      validateGeneratedUnit(
+        unit,
+        blueprint,
+        rows.map((r) => unitSchema.parse(r.payload)),
+      );
+      const [busy] =
+        await sql`select id from app.learning_generation_jobs where role_key=${blueprint.roleKey} and level_key=${blueprint.level} and status in ('pending','running','review') and id<>${source.id}`;
+      if (busy) throw new Error("该角色与水平已有其他补库任务，请先处理现有任务。");
+      await sql`update app.learning_generation_jobs set status='failed',last_error_code='EDITOR_REVISED',lease_until=null,lease_token=null where id=${source.id}`;
+      await sql`insert into app.learning_generation_jobs(id,role_key,level_key,blueprint_hash) values(${revisedJobId},${blueprint.roleKey},${blueprint.level},${blueprint.hash})`;
+      await sql`insert into app.learning_generation_edits(id,request_hash,source_job_id,source_candidate_hash,revised_job_id,blueprint_hash,editor,notes,payload,content_hash) values(${input.requestId},${requestHash},${source.id},${input.candidateHash},${revisedJobId},${blueprint.hash},${editor},${notes},${JSON.stringify(unit)}::jsonb,${contentHash(unit)})`;
+      return revisedJobId;
+    });
   }
   async publish(
     id: string,
