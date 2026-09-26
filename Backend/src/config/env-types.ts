@@ -81,6 +81,7 @@ export type RuntimeConfig = Readonly<{
     keyBase64: string;
     keyVersion: string;
   }>[];
+  learningGenerationModel: string;
   learningGenerationEnabled: boolean;
   learningGenerationDailyJobs: number;
   jobPollIntervalMs: number;
