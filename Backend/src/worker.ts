@@ -1,3 +1,8 @@
+import { fileURLToPath } from "node:url";
+import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
+import { LearningGenerationRepository } from "./modules/learning/generation-repository.js";
+import { createLearningGenerationProcessor } from "./modules/learning/generation-processor.js";
+import { createLearningEditorialCompletion } from "./modules/ai/editorial-service.js";
 import { createLearningChatService } from "./modules/learning/chat-service.js";
 import { learningRoleKey } from "./modules/learning/context.js";
 import { createContentReadService } from "./modules/content/service.js";
@@ -147,6 +152,18 @@ async function main(): Promise<void> {
     },
     learningContent,
   );
+  const learningGeneration = config.learningGenerationEnabled
+    ? createLearningGenerationProcessor(
+        new LearningGenerationRepository(database),
+        await loadGenerationBlueprints(
+          fileURLToPath(new URL("../config/learning/", import.meta.url)),
+        ),
+        createLearningEditorialCompletion(config),
+        config.learningGenerationDailyJobs,
+      )
+    : undefined;
+  let learningGenerationTask: Promise<void> | undefined;
+  let nextGenerationPollAt = 0;
   let nextLearningPollAt = 0;
   const npcService = createNpcService(database);
   let nextAvatarPollAt = 0;
@@ -168,6 +185,24 @@ async function main(): Promise<void> {
     await assertMigrationsCurrent(database);
     logger.info({ workerId }, "Worker started");
     while (!controller.signal.aborted) {
+      if (
+        learningGeneration &&
+        !learningGenerationTask &&
+        Date.now() >= nextGenerationPollAt
+      ) {
+        nextGenerationPollAt = Date.now() + 30_000;
+        learningGenerationTask = learningGeneration
+          .runOnce(controller.signal)
+          .then((result) => {
+            if (result !== "idle") logger.info({ result }, "学习补库任务完成一轮处理");
+          })
+          .catch(() => {
+            logger.error("学习补库任务暂未完成，等待下轮重试");
+          })
+          .finally(() => {
+            learningGenerationTask = undefined;
+          });
+      }
       if (Date.now() >= nextLearningPollAt) {
         nextLearningPollAt = Date.now() + 5_000;
         try {
@@ -217,6 +252,7 @@ async function main(): Promise<void> {
       }
     }
   } finally {
+    await learningGenerationTask;
     await Promise.allSettled([redis.close(), database.close()]);
     logger.info({ workerId }, "Worker stopped");
     await shutdownTelemetry();

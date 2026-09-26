@@ -153,10 +153,12 @@ export class LearningEngineRepository {
     });
   }
 
-  private async publishInTransaction(
+  /** 仅供学习模块仓库在持有发布事务时调用。 */
+  async publishInTransaction(
     sql: TransactionSql,
     unit: LearningUnit,
   ): Promise<void> {
+    await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
     const hash = contentHash(unit);
     await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-unit:${unit.id}`}, 0))`;
     const [identity] = await sql<

@@ -71,6 +71,7 @@ const reviewSchema = z.strictObject({
 
 export type CuratedCatalog = Readonly<{
   hash: string;
+  registry: z.infer<typeof registrySchema>;
   audioAssets: readonly PreparedLearningAudio[];
   units: readonly LearningUnit[];
   summary: readonly {
@@ -235,6 +236,7 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     row.questions += unit.questions.length;
   }
   return {
+    registry,
     hash: contentHash({ registry, units, reviews }),
     units,
     audioAssets,

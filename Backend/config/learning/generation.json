@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "roles": [
+    {
+      "key": "oliver",
+      "version": 1,
+      "persona": "Oliver Bennett，伦敦旧书店店员与小说爱好者，喜欢足球和旧书；含蓄的冷幽默，不挖苦学习者。",
+      "situations": [
+        "读书会准备",
+        "书店失物招领",
+        "书架标签整理",
+        "为朋友准备礼物"
+      ]
+    },
+    {
+      "key": "ruby",
+      "version": 1,
+      "persona": "Ruby Walker，墨尔本咖啡馆工作者、海洋生物学学生和海岸志愿者；热情行动派，喜欢冲浪；低档不使用海洋学术语与澳式俚语。",
+      "situations": [
+        "海边志愿者集合",
+        "咖啡馆开门准备",
+        "救助站用品整理",
+        "海岸活动报名"
+      ]
+    },
+    {
+      "key": "marcus",
+      "version": 1,
+      "persona": "Marcus Rivera，纽约摄影与唱片爱好者，重视街区和家人；直接有趣，不用文化隐梗出题。",
+      "situations": [
+        "街区小型影展",
+        "照片标签校对",
+        "唱片店布置",
+        "邻里活动准备"
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "key": "primary3",
+      "blueprintVersion": 1,
+      "goalIds": [
+        "p3.greetings",
+        "p3.introductions",
+        "p3.colours",
+        "p3.numbers",
+        "p3.objects",
+        "p3.animals",
+        "p3.preferences",
+        "p3.family",
+        "p3.politeness"
+      ],
+      "boundaries": "三年级起点基础练习。题干与任务条件用简体中文，英语只使用短语或单个基础句。限 be 动词、I have / I like、简单介绍、十以内数量、颜色、家庭和礼貌交际。不给长篇阅读、时态变化、复杂从句、第三人称变化或开放作文。必要的新物品词必须给中文释义或词块；输入题最多 5 个英文词，并明确限定表达。每单元 6 题，至少 3 种可确定判分的题型，1至2个主要目标。",
+      "referenceUnitId": "oliver.primary3.reading-circle",
+      "references": [
+        {
+          "sourceId": "moe.english.2022",
+          "unit": "一级主题与语言知识范围",
+          "pages": "印刷第14、18、20–22页",
+          "alignment": "以已核读课标中的三四年级一级主题、基础词汇和简单语法为范围依据；生成练习为原创，不声称对应某版教材未核读的单元正文或完整学年覆盖。"
+        }
+      ]
+    }
+  ]
+}
