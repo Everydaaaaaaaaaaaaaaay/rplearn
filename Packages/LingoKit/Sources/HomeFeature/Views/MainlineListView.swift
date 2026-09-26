@@ -1,3 +1,4 @@
+import BackendKit
 import DesignSystem
 import DomainKit
 import PersistenceKit
@@ -7,8 +8,9 @@ public struct MainlineListView: View {
     private let deps: HomeDependencies
     private let onOpenChapter: @MainActor (MainlineChapter) -> Void
 
+    @State private var progress: BackendMainlineProgress?
+    @State private var progressError: String?
     @State private var profile: UserProfileDTO?
-    @State private var completed: Set<String> = []
 
     public init(
         deps: HomeDependencies,
@@ -53,46 +55,35 @@ public struct MainlineListView: View {
         .toolbarBackground(.hidden, for: .navigationBar)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .tint(.white)
+        .overlay(alignment: .bottom) {
+            if let progressError {
+                Button { Task { await reload() } } label: { Label(progressError, systemImage: "arrow.clockwise").font(.footnote).padding().background(.regularMaterial, in: Capsule()) }
+                    .padding().accessibilityLabel("旅程进度更新失败，点击重试")
+            }
+        }
         .task { await reload() }
-        .onAppear { Task { await reload() } }
     }
 
     private func coverItems(journey: MainlineJourney, profile: UserProfileDTO) -> [StoryCoverItem] {
         journey.stops.enumerated().map { index, stop in
-            coverItem(stop, index: index, status: stopStatus(index: index, journey: journey), profile: profile)
+            coverItem(stop, index: index, profile: profile)
         }
     }
 
     private func preferredItemID(journey: MainlineJourney) -> String? {
-        journey.stops.first(where: { !completed.contains($0.chapter.storyID) })?.chapter.storyID
+        let nextRegion = progress?.chapters.first(where: { $0.state != "completed" })?.regionId
+        return journey.stops.first(where: { $0.regionID == nextRegion })?.chapter.storyID
             ?? journey.stops.first?.chapter.storyID
-    }
-
-    private enum StopStatus: Equatable {
-        case completed
-        case next
-        case available
-    }
-
-    private func stopStatus(index: Int, journey: MainlineJourney) -> StopStatus {
-        let stop = journey.stops[index]
-        if completed.contains(stop.chapter.storyID) {
-            return .completed
-        }
-        let activeIndex = journey.stops.firstIndex {
-            !completed.contains($0.chapter.storyID)
-        } ?? journey.stops.count
-        return index == activeIndex ? .next : .available
     }
 
     private func coverItem(
         _ stop: MainlineStop,
         index: Int,
-        status: StopStatus,
         profile: UserProfileDTO
     ) -> StoryCoverItem {
         let chapter = stop.chapter
-        let isCompleted = status == .completed
+        let gate = progress?.chapters.first { $0.regionId == stop.regionID }
+        let isCompleted = gate?.state == "completed"
         let region = deps.regionCatalog.region(id: stop.regionID)
         let accent = DSScenePalette.city(chapter.regionID).accent
         let canOpenForIdentity = deps.access.allowsStory(
@@ -107,14 +98,10 @@ public struct MainlineListView: View {
             eyebrow: region?.nameZh ?? stop.regionID,
             title: stop.displayTitle,
             subtitle: chapter.subtitle,
-            statusText: canOpenForIdentity
-                ? (isCompleted ? "可重温" : "开展剧情")
-                : "登录后开展",
-            statusIcon: canOpenForIdentity
-                ? (isCompleted ? "checkmark.circle.fill" : "play.circle.fill")
-                : "person.crop.circle.badge.plus",
+            statusText: canOpenForIdentity ? (gate?.statusText ?? "联网确认旅程进度") : "登录后开展",
+            statusIcon: isCompleted ? "checkmark.circle.fill" : gate?.canOpen == true ? "play.circle.fill" : "lock.fill",
             accent: accent,
-            isEnabled: canOpenForIdentity,
+            isEnabled: canOpenForIdentity && gate?.canOpen == true,
             isCompleted: isCompleted,
             isDimmed: false
         )
@@ -125,13 +112,17 @@ public struct MainlineListView: View {
             deps.access.requestSignIn("游客可以体验起始城市的剧情首站，登录后即可继续后续旅程。")
             return
         }
+        guard progress?.chapters.first(where: { $0.regionId == stop.regionID })?.canOpen == true else { return }
         Haptics.impact(.light)
         onOpenChapter(stop.chapter)
     }
 
     private func reload() async {
         profile = try? await deps.economyStore.profile()
-        completed = (try? await deps.storyProgress.completedStoryIDs()) ?? []
+        do {
+            guard let mainline = deps.mainline else { progressError = "旅程进度暂不可用，点击重试"; return }
+            progress = try await mainline.mainlineProgress(); progressError = nil
+        } catch { progress = nil; progressError = "旅程进度更新失败，点击重试" }
     }
 
     private func padded(_ value: Int) -> String {

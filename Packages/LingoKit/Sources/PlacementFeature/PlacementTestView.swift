@@ -11,19 +11,22 @@ public struct PlacementDependencies: Sendable {
     public let profileCommands: any ProfileCommandGateway
     public let speech: any SpeechService
     public let audioSession: AudioSessionCoordinator
+    public let levelChangeSummary: @Sendable (DifficultyLevel) async throws -> String
 
     public init(
         questionBankURL: URL,
         economyStore: EconomyStore,
         profileCommands: any ProfileCommandGateway,
         speech: any SpeechService,
-        audioSession: AudioSessionCoordinator
+        audioSession: AudioSessionCoordinator,
+        levelChangeSummary: @escaping @Sendable (DifficultyLevel) async throws -> String
     ) {
         self.questionBankURL = questionBankURL
         self.economyStore = economyStore
         self.profileCommands = profileCommands
         self.speech = speech
         self.audioSession = audioSession
+        self.levelChangeSummary = levelChangeSummary
     }
 }
 
@@ -39,6 +42,7 @@ public struct PlacementTestView: View {
         case failure
     }
 
+    let startsWithLevelSelection: Bool
     let usesNativeNavigation: Bool
     let deps: PlacementDependencies
     let onComplete: (UserProfileDTO) -> Void
@@ -59,6 +63,13 @@ public struct PlacementTestView: View {
     @State var selectedLevel: DifficultyLevel = .junior3
     @State var levelSelectionReturnPhase: Phase = .introduction
     @State var questionBankError: String?
+    struct PendingLevelChange {
+        let level: DifficultyLevel
+        let result: PlacementResult?
+        let summary: String
+    }
+    @State var pendingLevelChange: PendingLevelChange?
+    @State var showLevelChangeConfirmation = false
     @State var isApplying = false
     @State var errorMessage: String?
     @Environment(\.accessibilityReduceMotion) var reduceMotion
@@ -66,9 +77,11 @@ public struct PlacementTestView: View {
     public init(
         deps: PlacementDependencies,
         usesNativeNavigation: Bool = false,
+        startsWithLevelSelection: Bool = false,
         onComplete: @escaping (UserProfileDTO) -> Void,
         onCancel: @escaping () -> Void
     ) {
+        self.startsWithLevelSelection = startsWithLevelSelection
         self.usesNativeNavigation = usesNativeNavigation
         self.deps = deps
         self.onComplete = onComplete
@@ -124,10 +137,17 @@ public struct PlacementTestView: View {
         }
         // The photographic workbench stays light in both system appearances.
         .foregroundStyle(Color.dsPaperInk)
-        .navigationTitle("英语旅程")
+        .navigationTitle("英语水平校准")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(usesNativeNavigation && phase == .introduction ? .visible : .hidden, for: .navigationBar)
         .task { await prepareIfNeeded() }
+        .alert("确认切换英语水平", isPresented: $showLevelChangeConfirmation) {
+            Button("保持当前水平", role: .cancel) { pendingLevelChange = nil }
+            Button("确认切换") {
+                if let pendingLevelChange { saveSelectedLevel(level: pendingLevelChange.level, testResult: pendingLevelChange.result) }
+                pendingLevelChange = nil
+            }
+        } message: { Text(pendingLevelChange?.summary ?? "") }
         .onDisappear {
             listeningPlayer.stop()
             Task { await deps.speech.stopSpeaking() }

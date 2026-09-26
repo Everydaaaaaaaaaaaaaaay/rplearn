@@ -299,6 +299,7 @@ extension PlacementTestView {
         guard !hasPrepared else { return }
         hasPrepared = true
         await prepare(force: false)
+        if startsWithLevelSelection && phase == .introduction { openLevelSelection() }
     }
 
     func prepare(force: Bool) async {
@@ -422,6 +423,23 @@ extension PlacementTestView {
 
     func applySelectedLevel(testResult: PlacementResult?) {
         let level = selectedLevel
+        guard level != currentLevel else {
+            saveSelectedLevel(level: level, testResult: testResult)
+            return
+        }
+        isApplying = true; errorMessage = nil
+        Task {
+            defer { isApplying = false }
+            do {
+                let summary = try await deps.levelChangeSummary(level)
+                pendingLevelChange = PendingLevelChange(level: level, result: testResult,
+                    summary: "从\(currentLevel.displayName)切换到\(level.displayName)。\n\n新对话和之后开启的挑战会采用新难度；已经开启的挑战保持原有难度。\n\n\(summary)\n\n切换不会赠送学习点数、星星或解锁主线。")
+                showLevelChangeConfirmation = true
+            } catch { errorMessage = "暂时无法确认目标水平的进度，请联网后重试。当前水平没有改变。" }
+        }
+    }
+
+    func saveSelectedLevel(level: DifficultyLevel, testResult: PlacementResult?) {
         isApplying = true
         errorMessage = nil
         Task {

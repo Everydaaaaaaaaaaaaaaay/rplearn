@@ -94,6 +94,7 @@ public struct LearningAttempt: Codable, Sendable, Equatable, Identifiable {
     public var remainingCount: Int { max(0, unit.questions.count - correctQuestionIds.count) }
 }
 public struct LearningLevelProgress: Codable, Sendable, Equatable {
+    public let publishedUnitCount: Int?
     public let level: String
     public let points: Int
     public let displayPoints: Int

@@ -28,7 +28,7 @@ struct DifficultyLevelSelectionPage: View {
                         .foregroundStyle(Color.dsPaperInk)
                         .shadow(color: Color.dsBrandCream.opacity(0.98), radius: 5)
                         .shadow(color: Color.white.opacity(0.72), radius: 1)
-                    Text("点击完成后立即生效，之后仍可随时修改。")
+                    Text("选择后会先说明切换的影响，确认才会生效。")
                         .font(.subheadline)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)

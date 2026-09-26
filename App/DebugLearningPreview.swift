@@ -1,19 +1,32 @@
 #if DEBUG
 import BackendKit
 import Foundation
+import PersistenceKit
 
 /// 仅免登录界面预览使用，不请求后端，不写账号或题库；没有虚构挑战记录。
-struct DebugLearningPreviewService: LearningServing {
+struct DebugLearningPreviewService: LearningServing, MainlineServing {
     let characterID: UUID
     let roleKey: String
+    var profile: EconomyStore? = nil
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter {
         try decode(["characterId": characterID.uuidString, "roleKey": roleKey, "cycleId": UUID().uuidString,
                     "characters": 720, "threshold": 1000, "revision": 1, "activeAttemptId": NSNull(), "level": "primary3",
                     "availableUnits": 0, "generationStatus": NSNull()])
     }
     func learningJourney() async throws -> LearningJourney {
-        try decode(["currentLevel": "primary3", "policy": ["version": 1, "characterThreshold": 1000, "pointsPerQuestion": 1, "pointsPerStar": 60, "starsPerLevel": 9],
-                    "levels": [["level": "primary3", "points": 0, "displayPoints": 0, "targetPoints": 540, "stars": 0, "currentStarPoints": 0, "pointsPerStar": 60]]])
+        let level = try await profile?.profile().difficultyLevel.rawValue ?? "primary3"
+        return try decode(["currentLevel": level, "policy": ["version": 1, "characterThreshold": 1000, "pointsPerQuestion": 1, "pointsPerStar": 60, "starsPerLevel": 9],
+                    "levels": DifficultyLevel.allCases.map { ["level": $0.rawValue, "points": 0, "displayPoints": 0, "targetPoints": 540, "stars": 0, "currentStarPoints": 0, "pointsPerStar": 60, "publishedUnitCount": 0] as [String: Any] }])
+    }
+    func mainlineProgress() async throws -> BackendMainlineProgress {
+        let cities = ["london", "capetown", "newyork", "melbourne", "singapore"]
+        let thresholds = [0, 3, 9, 18, 27]
+        return try decode(["earnedStars": 0, "chapters": cities.enumerated().map { index, city in
+            ["storyId": "mainline_\(city)", "regionId": city, "sequence": index + 1,
+             "requiredStars": thresholds[index], "missingStars": thresholds[index],
+             "previousStoryId": index == 0 ? NSNull() : "mainline_\(cities[index - 1])",
+             "state": index == 0 ? "available" : "locked", "lockReason": index == 0 ? NSNull() : "previousChapter"] as [String: Any]
+        }])
     }
     func learningHistory(_ characterID: UUID, cursor: String?) async throws -> LearningHistory { try decode(["items": [], "nextCursor": NSNull()]) }
     func learningAttempt(_ id: UUID) async throws -> LearningAttempt { throw unavailable }

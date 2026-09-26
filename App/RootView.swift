@@ -50,6 +50,13 @@ struct RootView: View {
     @State private var activeSceneActivity: SceneActivity?
     @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
+    @State private var showEnglishJourney = false
+    private enum JourneyPlacementDestination: String, Identifiable {
+        case selection, assessment
+        var id: String { rawValue }
+    }
+    @State private var journeyPlacement: JourneyPlacementDestination?
+    @State private var journeyChapter: MainlineChapter?
     @State private var showOnboardingPlacement = false
     private enum IntroductionMode: String, Identifiable {
         case introduction, tutorial
@@ -89,7 +96,7 @@ struct RootView: View {
             _mePath = State(initialValue: [.favorites])
         }
         if requested == "learning" {
-            _showPlacementTest = State(initialValue: true)
+            _showEnglishJourney = State(initialValue: true)
         }
         if requested == "subscription" {
             _mePath = State(initialValue: [.subscription])
@@ -652,6 +659,9 @@ struct RootView: View {
             activeActivityChat = nil
         case .me:
             showPlacementTest = false
+            showEnglishJourney = false
+            journeyPlacement = nil
+            journeyChapter = nil
             mePath.removeAll()
         }
     }
@@ -846,9 +856,8 @@ struct RootView: View {
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar(.visible, for: .navigationBar)
                 }
-                .navigationDestination(isPresented: $showPlacementTest) {
-                    placementTestView(isOnboarding: false)
-                }
+                .navigationDestination(isPresented: $showEnglishJourney) { englishJourneyView }
+                .navigationDestination(isPresented: $showPlacementTest) { placementTestView(isOnboarding: false) }
         }
     }
 
@@ -861,7 +870,7 @@ struct RootView: View {
             authSession: environment.authSession,
             billing: environment.billing,
             reloadToken: stateRevision,
-            onCalibrateLevel: { showPlacementTest = true },
+            onCalibrateLevel: { showEnglishJourney = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
             onOpenMemory: { openMe(.memory) },
@@ -945,7 +954,7 @@ struct RootView: View {
     }
 
 
-    private func placementTestView(isOnboarding: Bool) -> some View {
+    private func placementTestView(isOnboarding: Bool, chooseLevel: Bool = false) -> some View {
         PlacementTestView(
             deps: PlacementDependencies(
                 questionBankURL: Bundle.main.url(
@@ -955,16 +964,26 @@ struct RootView: View {
                 economyStore: environment.economyStore,
                 profileCommands: profileCommands,
                 speech: environment.speech,
-                audioSession: environment.audioSession
+                audioSession: environment.audioSession,
+                levelChangeSummary: { [client = environment.backendClient, preview = bypassesAuthenticationForUITesting] level in
+                    #if DEBUG
+                    if preview { return "界面预览：目标水平保留 0 颗星、0 点。此操作仅修改本地预览档案，不写入账号。" }
+                    #endif
+                    let journey = try await client.learningJourney()
+                    guard let target = journey.levels.first(where: { $0.level == level.rawValue }) else { throw URLError(.cannotParseResponse) }
+                    let supply = target.publishedUnitCount == 0 ? "该水平目前没有已发布单元，聊天满条后需等待题库准备。" : "各旅伴的可用挑战以角色学习页为准；题库不足时会保留聊天进度。"
+                    return "目标水平已保留 \(target.stars) 颗星、\(target.points) 点。其他水平的进度也会保留。\n\n\(supply)"
+                }
             ),
             usesNativeNavigation: !isOnboarding,
+            startsWithLevelSelection: !isOnboarding && chooseLevel,
             onComplete: { updated in
                 stateRevision += 1
                 Task {
                     if isOnboarding {
                         showOnboardingPlacement = false
                         placementCompletionRevision += 1
-                    }
+                    } else { showPlacementTest = false; journeyPlacement = nil }
                     await environment.applyLearnerProfile(updated)
                 }
             },
@@ -972,13 +991,47 @@ struct RootView: View {
                 if isOnboarding {
                     showOnboardingPlacement = false
                 } else {
-                    showPlacementTest = false
+                    showPlacementTest = false; journeyPlacement = nil
                 }
             }
         )
     }
 
+    private var englishJourneyView: some View {
+        englishJourneyContent
+            .navigationDestination(item: $journeyPlacement) { destination in placementTestView(isOnboarding: false, chooseLevel: destination == .selection) }
+            .navigationDestination(item: $journeyChapter) { chapter in storyView(storyID: chapter.storyID) }
+    }
+
+    @ViewBuilder private var englishJourneyContent: some View {
+        #if DEBUG
+        if bypassesAuthenticationForUITesting {
+            let preview = DebugLearningPreviewService(characterID: UUID(), roleKey: "oliver", profile: environment.economyStore)
+            EnglishJourneyView(learning: preview, mainline: preview,
+                onChooseLevel: { journeyPlacement = .selection },
+                onCalibrate: { journeyPlacement = .assessment },
+                onOpenChapter: { journeyChapter = $0 })
+                .safeAreaInset(edge: .bottom) { Text("界面预览 · 示例进度，不计入账号").font(.caption).padding(8).frame(maxWidth: .infinity).background(.regularMaterial) }
+        } else { productionEnglishJourneyView }
+        #else
+        productionEnglishJourneyView
+        #endif
+    }
+    private var productionEnglishJourneyView: some View {
+        EnglishJourneyView(learning: environment.backendClient, mainline: environment.backendClient,
+            onChooseLevel: { journeyPlacement = .selection },
+            onCalibrate: { journeyPlacement = .assessment },
+            onOpenChapter: { journeyChapter = $0 })
+    }
+
+    @ViewBuilder
     private func storyView(storyID: String) -> some View {
+        if MainlineCatalog.chapters.contains(where: { $0.storyID == storyID }) {
+            MainlineStoryGate(storyID: storyID, service: mainlineClient) { unguardedStoryView(storyID: storyID) }
+        } else { unguardedStoryView(storyID: storyID) }
+    }
+
+    private func unguardedStoryView(storyID: String) -> some View {
         LondonEpisodeView(
             deps: storyDeps,
             storageNamespace: activeUserID?.uuidString ?? "inactive",
@@ -987,6 +1040,13 @@ struct RootView: View {
             .navigationBarBackButtonHidden()
             .toolbar(.hidden, for: .tabBar)
             .dsTabBarHidden()
+    }
+
+    private var mainlineClient: any MainlineServing {
+        #if DEBUG
+        if bypassesAuthenticationForUITesting { return DebugLearningPreviewService(characterID: UUID(), roleKey: "oliver", profile: environment.economyStore) }
+        #endif
+        return environment.backendClient
     }
 
     private var homeDeps: HomeDependencies {
@@ -1004,6 +1064,7 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
             llm: environment.llmRouter,
+            mainline: mainlineClient,
             npcRegistry: environment.backendClient
         )
     }
