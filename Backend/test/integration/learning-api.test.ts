@@ -1,3 +1,6 @@
+import { registerDomainRoutes } from "../../src/modules/domain/routes.js";
+import type { MainlineProgress } from "../../src/modules/domain/mainline.js";
+import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import { randomUUID } from "node:crypto";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -74,6 +77,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       app = await buildApp(config(), { logger: false });
       registerAuthRoutes(app, auth);
       registerLearningRoutes(app, auth, service);
+      registerDomainRoutes(
+        app,
+        auth,
+        createDomainService(database, createLearningMilestoneReader()),
+        { enableDebugRoutes: false },
+      );
       registerContentRoutes(
         app,
         auth,
@@ -119,7 +128,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         });
         expect(login.statusCode).toBe(200);
         accounts.push(login.json<Tokens>());
-        await createDomainService(database).getSnapshot(login.json<Tokens>().userId);
+        await createDomainService(
+          database,
+          createLearningMilestoneReader(),
+        ).getSnapshot(login.json<Tokens>().userId);
       }
       const synced = await post("/v1/content/commands", {
         commands: [
@@ -155,7 +167,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(synced.json<{ results: { status: string }[] }>().results[0]?.status).toBe(
         "applied",
       );
-      const domain = createDomainService(database);
+      const domain = createDomainService(database, createLearningMilestoneReader());
       const snapshot = await domain.getSnapshot(owner());
       await domain.updateProfile(owner(), randomUUID(), {
         difficulty: "primary3",
@@ -337,6 +349,71 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         (await get(`/v1/learning/characters/${characterId}`)).json<Character>()
           .characters,
       ).toBe(1000);
+    });
+
+    it("主线由实得星星和前章控制，自选年级、重放和跨账号都不能绕过", async () => {
+      const domain = createDomainService(database, createLearningMilestoneReader());
+      await domain.completeOnboarding(owner(), randomUUID(), {
+        starterRegionId: "london",
+      });
+      const url = "/v1/progression/mainline";
+      expect((await app.inject({ url })).statusCode).toBe(401);
+      const status = async () => (await get(url)).json<MainlineProgress>();
+      const initial = await status();
+      expect(initial.earnedStars).toBe(0);
+      expect(initial.chapters[0]?.state).toBe("available");
+      expect((await get(url)).headers["cache-control"]).toBe("no-store");
+      const current = (await domain.getSnapshot(owner())).profile;
+      expect(
+        (
+          await app.inject({
+            method: "PATCH",
+            url: "/v1/me",
+            headers: { ...headers(), "idempotency-key": randomUUID() },
+            payload: { difficulty: "senior3", expectedVersion: current.version },
+          })
+        ).statusCode,
+      ).toBe(200);
+      expect(await status()).toEqual(initial);
+      const complete = (storyId: string, key = randomUUID()) =>
+        app.inject({
+          method: "POST",
+          url: `/v1/progression/stories/${storyId}/complete`,
+          headers: { ...headers(), "idempotency-key": key },
+        });
+      const blockedKey = randomUUID();
+      const blocked = await complete("mainline_capetown", blockedKey);
+      expect(blocked.statusCode).toBe(409);
+      expect(blocked.json<{ code: string }>().code).toBe("MAINLINE_LOCKED");
+      // 仅在隔离测试库设置里程碑，模拟不同年级累积；正式服务只由答题事务写入。
+      for (const [level, stars] of [
+        ["primary3", 2],
+        ["primary4", 1],
+      ] as const) {
+        for (let star = 1; star <= stars; star++)
+          await database.sql`insert into app.learning_milestones(user_id,level_key,star) values(${owner()},${level},${star})`;
+      }
+      expect((await status()).earnedStars).toBe(3);
+      expect((await status()).chapters[1]?.lockReason).toBe("previousChapter");
+      expect((await complete("mainline_capetown")).statusCode).toBe(409);
+      expect((await complete("mainline_london")).statusCode).toBe(200);
+      expect((await status()).chapters[1]?.state).toBe("available");
+      const finished = await complete("mainline_capetown", blockedKey);
+      expect(finished.statusCode).toBe(200);
+      expect((await complete("mainline_capetown", blockedKey)).json()).toEqual(
+        finished.json(),
+      );
+      expect((await complete("mainline_capetown")).statusCode).toBe(409);
+      expect((await status()).chapters[2]).toMatchObject({
+        state: "locked",
+        lockReason: "stars",
+        missingStars: 6,
+      });
+      expect((await get(url, 1)).json<MainlineProgress>().earnedStars).toBe(0);
+      // 旧的合法剧情领取凭据在新政策下仍可回看，且不再发奖。
+      await database.sql`insert into app.story_reward_claims(user_id,story_id,reward_coins) values(${owner()},'mainline_singapore',120)`;
+      expect((await status()).chapters[4]?.state).toBe("completed");
+      expect((await complete("mainline_singapore")).statusCode).toBe(409);
     });
   },
 );

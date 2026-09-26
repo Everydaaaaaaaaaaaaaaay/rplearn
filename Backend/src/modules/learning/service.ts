@@ -1,3 +1,4 @@
+import { countEarnedStars } from "./milestone-repository.js";
 import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -134,3 +135,6 @@ export function createLearningService(
   };
 }
 export type LearningService = ReturnType<typeof createLearningService>;
+
+/** 向组装层提供事务内读取合同，不暴露学习表。 */
+export const createLearningMilestoneReader = () => countEarnedStars;

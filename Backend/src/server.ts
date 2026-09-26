@@ -1,3 +1,4 @@
+import { createLearningMilestoneReader } from "./modules/learning/service.js";
 import { createLearningChatService } from "./modules/learning/chat-service.js";
 import type { LearningContextReader } from "./modules/learning/context.js";
 import { learningRoleKey } from "./modules/learning/context.js";
@@ -254,7 +255,10 @@ async function main(): Promise<void> {
       dictionaryTranslationService,
     );
   }
-  const domainService = createDomainService(dependencies.database);
+  const domainService = createDomainService(
+    dependencies.database,
+    createLearningMilestoneReader(),
+  );
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",
   });

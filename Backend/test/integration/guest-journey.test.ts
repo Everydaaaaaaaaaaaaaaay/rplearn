@@ -1,3 +1,4 @@
+import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -45,9 +46,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         createGuestClaim(runtime.database, config.authTokenHashPepper),
       );
       registerNpcRoutes(app, auth, createNpcService(runtime.database));
-      registerDomainRoutes(app, auth, createDomainService(runtime.database), {
-        enableDebugRoutes: false,
-      });
+      registerDomainRoutes(
+        app,
+        auth,
+        createDomainService(runtime.database, createLearningMilestoneReader()),
+        {
+          enableDebugRoutes: false,
+        },
+      );
       app.get("/test/account", async (request) => authenticateRequest(request, auth));
       await runtime.database
         .sql`insert into app.npc_avatars (id, image_url, tags) values (${avatarID}, ${`https://example.com/${avatarID}.png`}, '["gender:female","age:adult"]')`;
@@ -121,7 +127,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(first.statusCode).toBe(200);
       const repeated = await app.inject(request);
       expect(repeated.json()).toEqual(first.json());
-      const domain = createDomainService(runtime.database);
+      const domain = createDomainService(
+        runtime.database,
+        createLearningMilestoneReader(),
+      );
       await domain.completeOnboarding(guest.userId, newEntityId(), {
         starterRegionId: "london",
       });

@@ -1,3 +1,4 @@
+import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -54,7 +55,10 @@ describe.runIf(runIntegrationTests)("cross-device synchronization", () => {
     };
     const authService = await createAuthService(config, dependencies.database);
     const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
-    const domainService = createDomainService(dependencies.database);
+    const domainService = createDomainService(
+      dependencies.database,
+      createLearningMilestoneReader(),
+    );
     const syncService = createSyncService(
       dependencies.database,
       domainService,

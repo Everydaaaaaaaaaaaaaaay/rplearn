@@ -1,3 +1,4 @@
+import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -61,7 +62,10 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     };
     const authService = await createAuthService(config, dependencies.database);
     const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
-    const domainService = createDomainService(dependencies.database);
+    const domainService = createDomainService(
+      dependencies.database,
+      createLearningMilestoneReader(),
+    );
     app = await buildApp(config, { logger: false });
     registerAuthRoutes(app, authService);
     registerDomainRoutes(app, authService, domainService, {
@@ -381,7 +385,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const storyCompletion = await app.inject({
       headers: authenticated({ idempotencyKey: storyCommand }),
       method: "POST",
-      url: "/v1/progression/stories/mainline_london/complete",
+      url: "/v1/progression/stories/mainline_melbourne/complete",
     });
     expect(storyCompletion.statusCode).toBe(200);
     const reward = storyCompletion.json<{
@@ -395,13 +399,13 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
     const storyRetry = await app.inject({
       headers: authenticated({ idempotencyKey: storyCommand }),
       method: "POST",
-      url: "/v1/progression/stories/mainline_london/complete",
+      url: "/v1/progression/stories/mainline_melbourne/complete",
     });
     expect(storyRetry.json<unknown>()).toEqual(storyCompletion.json<unknown>());
     const duplicateStory = await app.inject({
       headers: authenticated({ idempotencyKey: newEntityId() }),
       method: "POST",
-      url: "/v1/progression/stories/mainline_london/complete",
+      url: "/v1/progression/stories/mainline_melbourne/complete",
     });
     expect(duplicateStory.statusCode).toBe(409);
     expect(duplicateStory.json<{ code: string }>().code).toBe(

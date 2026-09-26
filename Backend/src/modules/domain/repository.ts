@@ -1,3 +1,8 @@
+import {
+  mainlineProgress,
+  type EarnedStarsReader,
+  type MainlineProgress,
+} from "./mainline.js";
 import { awardCoins } from "../../infrastructure/coin-awards.js";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
@@ -200,11 +205,45 @@ export class DomainRepository {
     });
   }
 
+  async mainline(
+    userId: string,
+    earnedStars: EarnedStarsReader,
+  ): Promise<MainlineProgress> {
+    await this.ensureProfile(userId);
+    return this.resource.sql.begin(
+      "isolation level repeatable read read only",
+      async (sql) => this.mainlineInTransaction(sql, userId, earnedStars),
+    );
+  }
+
+  private async mainlineInTransaction(
+    sql: TransactionSql,
+    userId: string,
+    earnedStars: EarnedStarsReader,
+  ) {
+    const [profile] = await sql<
+      { starter_region_id: string | null; has_completed_onboarding: boolean }[]
+    >`
+      select starter_region_id,has_completed_onboarding from app.user_profiles where user_id=${userId}`;
+    const completed = await sql<{ story_id: string }[]>`
+      select story_id from app.story_reward_claims where user_id=${userId}
+      union select reference_id as story_id from app.coin_ledger
+      where user_id=${userId} and reference_type='story_completion'`;
+    return mainlineProgress({
+      starterRegionId: profile?.starter_region_id ?? null,
+      hasCompletedOnboarding: profile?.has_completed_onboarding ?? false,
+      earnedStars: await earnedStars(sql, userId),
+      completedStoryIds: completed.map((row) => row.story_id),
+      isGuest: (await loadAccessPolicy(sql, userId)).isGuest,
+    });
+  }
+
   async completeStory(
     userId: string,
     command: CommandIdentity,
     storyId: string,
     rewardCoins: number,
+    earnedStars: EarnedStarsReader,
   ): Promise<Readonly<{ coins: number; rewardCoins: number; storyId: string }>> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql) => {
@@ -245,6 +284,22 @@ export class DomainRepository {
           code: "STORY_ALREADY_COMPLETED",
           message: "This story reward was already granted.",
           statusCode: 409,
+        });
+      }
+      const chapter = (
+        await this.mainlineInTransaction(sql, userId, earnedStars)
+      ).chapters.find((chapter) => chapter.storyId === storyId);
+      if (chapter?.state === "locked") {
+        throw new AppError({
+          code: "MAINLINE_LOCKED",
+          message:
+            chapter.lockReason === "onboarding"
+              ? "请先选择你的起始旅伴。"
+              : chapter.lockReason === "previousChapter"
+                ? "请先完成前一章主线剧情。"
+                : `继续完成单元挑战，再获得 ${String(chapter.missingStars)} 颗星即可开启这一章。`,
+          statusCode: 409,
+          details: chapter,
         });
       }
       await sql`insert into app.story_reward_claims(user_id,story_id,reward_coins) values(${userId},${storyId},${rewardCoins})`;

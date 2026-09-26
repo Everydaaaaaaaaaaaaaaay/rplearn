@@ -1,3 +1,4 @@
+import type { EarnedStarsReader, MainlineProgress } from "./mainline.js";
 import type { TransactionSql } from "postgres";
 import { rollStoryReward } from "./story-rewards.js";
 import { createHash } from "node:crypto";
@@ -17,6 +18,7 @@ import type {
 } from "./types.js";
 
 export type DomainService = Readonly<{
+  mainline: (userId: string) => Promise<MainlineProgress>;
   claimStarterTicket: (userId: string, commandId: string) => Promise<Ticket>;
   completeOnboarding: (
     userId: string,
@@ -71,9 +73,13 @@ function command(commandId: string, route: string, payload: unknown): CommandIde
   };
 }
 
-export function createDomainService(database: DatabaseResource): DomainService {
+export function createDomainService(
+  database: DatabaseResource,
+  earnedStars: EarnedStarsReader,
+): DomainService {
   const repository = new DomainRepository(database);
   return {
+    mainline: (userId) => repository.mainline(userId, earnedStars),
     claimStarterTicket: (userId, commandId) =>
       repository.claimStarterTicket(
         userId,
@@ -113,6 +119,7 @@ export function createDomainService(database: DatabaseResource): DomainService {
         command(commandId, "progression.completeStory", { storyId }),
         storyId,
         rewardCoins,
+        earnedStars,
       );
     },
     getSnapshot: (userId) => repository.snapshot(userId),

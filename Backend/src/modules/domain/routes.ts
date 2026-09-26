@@ -143,6 +143,18 @@ export function registerDomainRoutes(
   options: Readonly<{ enableDebugRoutes: boolean }>,
 ): void {
   app.get(
+    "/v1/progression/mainline",
+    {
+      schema: { security: [{ bearerAuth: [] }], tags: ["progression"] },
+    },
+    async (request, reply) => {
+      const identity = await authenticateActorRequest(request, authService);
+      reply.header("cache-control", "no-store");
+      return domainService.mainline(identity.userId);
+    },
+  );
+
+  app.get(
     "/v1/me",
     {
       schema: {
