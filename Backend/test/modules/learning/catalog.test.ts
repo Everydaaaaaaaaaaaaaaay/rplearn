@@ -25,16 +25,16 @@ afterEach(async () => {
 });
 
 describe("原创课程发布门槛", () => {
-  it("四档完整样板与小一首批按角色独立统计，全部逐题样例通过且结果可复现", async () => {
+  it("五档样板按角色独立统计，全部逐题样例通过且结果可复现", async () => {
     const catalog = await loadCuratedCatalog(catalogPath);
-    expect(catalog.units).toHaveLength(39);
+    expect(catalog.units).toHaveLength(45);
     expect(catalog.summary).toEqual(
       ["primary3", "primary4", "junior3", "senior2", "primary1"].flatMap((level) =>
         ["oliver", "ruby", "marcus"].map((roleKey) => ({
           roleKey,
           level,
-          units: level === "primary1" ? 1 : 3,
-          questions: level === "primary1" ? 6 : 18,
+          units: 3,
+          questions: 18,
         })),
       ),
     );

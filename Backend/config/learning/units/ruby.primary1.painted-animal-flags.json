@@ -1,0 +1,255 @@
+{
+  "id": "ruby.primary1.painted-animal-flags",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "海边义卖的小画",
+  "summary": "把颜色和动物名称一起听清，找到对应的小画。",
+  "scene": "Ruby 为海边志愿活动整理小朋友画的幻想动物。猫和狗可以画成不同颜色，她把小画摆上桌，邀请你按声音找到指定的一张。",
+  "estimatedMinutes": 4,
+  "goalIds": [
+    "p1.colour-animal-listening"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "unit": "Module 4 Unit 2",
+      "pages": "印刷第23页；PDF第28页",
+      "alignment": "正文出现红狗、绿猫、蓝猫等幻想颜色组合；采用颜色加动物的听辨目标，自画角色情景。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题核对独立条件、唯一答案、干扰项及难度；原创图已目视检查，固定音频完成双模型识别和波形/摘要核验。只归一一至十数码/拼写，不混淆误听。作者自审，没有独立教研、人耳审听或学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Hello! Look at this.",
+      "translation": "你好，看看这些有趣的小画。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Listen again.",
+      "translation": "可以再听一遍，不着急。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Very good! Thank you.",
+      "translation": "真不错，谢谢你帮忙摆好小画。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听清颜色和动物，选出两个条件都符合的小画。",
+      "hint": "先听颜色，再听动物；只对上一项还不够。",
+      "explanation": "A red dog. 指红色的狗。红猫颜色对但动物不对，蓝狗动物对但颜色不对。",
+      "difficultyReason": "只用三种颜色与猫狗的简单名词短语及 It is a 描述；两个属性缺一不可。不要求物种现实毛色知识、阅读英文、拼写或造句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张幻想动物画：红色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.db19cacdab30585641b46b9cef4f393e85c8cdfa8c6861200b3558dd4a021fd6"
+        },
+        {
+          "id": "b",
+          "text": "一张幻想动物画：蓝色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.19655a8546a076c01ede38f5be42c4562c5cebea1755912434b7d698673b1751"
+        },
+        {
+          "id": "c",
+          "text": "一张幻想动物画：红色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.81403505d64e21c5a982a770aa43eeee37bf96465a935b6d66a2bc264e3f8e47"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.4003328b4b352a654fead91ed9eed534ad61a18cab7ad1ead13ade9039067091",
+        "text": "A red dog.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "录音描述了哪张幻想动物画？颜色和动物都要相同。",
+      "hint": "再听一次，分别核对前后两个词。",
+      "explanation": "A blue cat. 指蓝色的猫。蓝狗不是猫，绿猫不是蓝色。",
+      "difficultyReason": "只用三种颜色与猫狗的简单名词短语及 It is a 描述；两个属性缺一不可。不要求物种现实毛色知识、阅读英文、拼写或造句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张幻想动物画：蓝色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.4f66346a94b9a91137482700c4b9b37fe17033cc8c691a09d7c3dcb6c96dfd66"
+        },
+        {
+          "id": "b",
+          "text": "一张幻想动物画：蓝色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.19655a8546a076c01ede38f5be42c4562c5cebea1755912434b7d698673b1751"
+        },
+        {
+          "id": "c",
+          "text": "一张幻想动物画：绿色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.54d6ae5fb87d87622e91258eb2147510310ee015d6cee350714a2b128e4391ee"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.41bf7250e2b6f667bf08cf5fb186efa78e01943dcc7812bada1ba1d1b7bc1ad1",
+        "text": "A blue cat.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这一段声音对应哪一张小画？请核对颜色与动物。",
+      "hint": "不要只看毛色，也要看猫狗的轮廓。",
+      "explanation": "A green dog. 指绿色的狗。红狗颜色错，绿猫动物错；只有绿狗符合两个条件。",
+      "difficultyReason": "只用三种颜色与猫狗的简单名词短语及 It is a 描述；两个属性缺一不可。不要求物种现实毛色知识、阅读英文、拼写或造句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张幻想动物画：红色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.81403505d64e21c5a982a770aa43eeee37bf96465a935b6d66a2bc264e3f8e47"
+        },
+        {
+          "id": "b",
+          "text": "一张幻想动物画：绿色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.c401199fd133defe3c482fc48fa8c09351a83cfb6a02c9798cc4bab912054e6a"
+        },
+        {
+          "id": "c",
+          "text": "一张幻想动物画：绿色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.54d6ae5fb87d87622e91258eb2147510310ee015d6cee350714a2b128e4391ee"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.c9f7b6b0a702332a183950bc8b6c5d361871038780c6e2c0447e64dd0c3d20b7",
+        "text": "A green dog.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人指定了一种颜色的动物画。听完再选图。",
+      "hint": "确定动物后，还要确认它的主色。",
+      "explanation": "A red cat. 指红色的猫。蓝猫的颜色不符合，红狗的动物不符合。",
+      "difficultyReason": "只用三种颜色与猫狗的简单名词短语及 It is a 描述；两个属性缺一不可。不要求物种现实毛色知识、阅读英文、拼写或造句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张幻想动物画：蓝色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.4f66346a94b9a91137482700c4b9b37fe17033cc8c691a09d7c3dcb6c96dfd66"
+        },
+        {
+          "id": "b",
+          "text": "一张幻想动物画：红色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.81403505d64e21c5a982a770aa43eeee37bf96465a935b6d66a2bc264e3f8e47"
+        },
+        {
+          "id": "c",
+          "text": "一张幻想动物画：红色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.db19cacdab30585641b46b9cef4f393e85c8cdfa8c6861200b3558dd4a021fd6"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.660fff5b2faa23f818a31d0b30b4b640fe27d5865e4f0963a2dabd66b875e93d",
+        "text": "A red cat.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听颜色和名字，找到描述完全相符的动物画。",
+      "hint": "把完整短语再听一遍，不沿用上一题的选择。",
+      "explanation": "A blue dog. 指蓝色的狗。绿狗只符合动物，蓝猫只符合颜色。",
+      "difficultyReason": "只用三种颜色与猫狗的简单名词短语及 It is a 描述；两个属性缺一不可。不要求物种现实毛色知识、阅读英文、拼写或造句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张幻想动物画：蓝色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.19655a8546a076c01ede38f5be42c4562c5cebea1755912434b7d698673b1751"
+        },
+        {
+          "id": "b",
+          "text": "一张幻想动物画：绿色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.c401199fd133defe3c482fc48fa8c09351a83cfb6a02c9798cc4bab912054e6a"
+        },
+        {
+          "id": "c",
+          "text": "一张幻想动物画：蓝色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.4f66346a94b9a91137482700c4b9b37fe17033cc8c691a09d7c3dcb6c96dfd66"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.015ee37e1bf76da7536499fb5d5baf2dc591727a95cac3db0b9863e424de9411",
+        "text": "A blue dog.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人用短句介绍一张画。哪张画与这句话一致？",
+      "hint": "It is a 后面同时给出颜色和动物名称。",
+      "explanation": "It is a green cat. 表示“它是一只绿色的猫”。红猫颜色不同，绿狗动物不同，绿色猫才完全一致。",
+      "difficultyReason": "只用三种颜色与猫狗的简单名词短语及 It is a 描述；两个属性缺一不可。不要求物种现实毛色知识、阅读英文、拼写或造句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张幻想动物画：红色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.db19cacdab30585641b46b9cef4f393e85c8cdfa8c6861200b3558dd4a021fd6"
+        },
+        {
+          "id": "b",
+          "text": "一张幻想动物画：绿色的猫；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.54d6ae5fb87d87622e91258eb2147510310ee015d6cee350714a2b128e4391ee"
+        },
+        {
+          "id": "c",
+          "text": "一张幻想动物画：绿色的狗；主色覆盖头部及耳朵，五官轮廓不改变。",
+          "imageAssetId": "image.c401199fd133defe3c482fc48fa8c09351a83cfb6a02c9798cc4bab912054e6a"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.9174a870e18d6d260651063601aab926827de8fb46437b57bdc1e24ec3364f45",
+        "text": "It is a green cat.",
+        "voice": "F3"
+      }
+    }
+  ]
+}

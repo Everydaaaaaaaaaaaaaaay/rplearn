@@ -1,0 +1,261 @@
+{
+  "id": "marcus.primary1.studio-directions",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "街坊合影前的小指令",
+  "summary": "听懂坐下、起立、开门和开窗，选择动作完成后的样子。",
+  "scene": "街坊们准备来 Marcus 的小摄影角合影。他检查椅子和通风，请你先用图片演练几句简短指令，不用真的起身或开门窗。",
+  "estimatedMinutes": 4,
+  "goalIds": [
+    "p1.simple-directions-listening"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "unit": "Module 3 Unit 1",
+      "pages": "印刷第14–15页；PDF第19–20页",
+      "alignment": "正文坐下、起立、开门、开窗及 please 指令；改为安全的结果图选择。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    },
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 1 School，Lesson 1",
+      "pages": "印刷第6页；PDF第11页",
+      "alignment": "同年级正文同样出现 stand up、sit down，只对这两个指令做版本对照。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题核对独立条件、唯一答案、干扰项及难度；原创图已目视检查，固定音频完成双模型识别和波形/摘要核验。只归一一至十数码/拼写，不混淆误听。作者自审，没有独立教研、人耳审听或学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "Hello! Come in.",
+      "translation": "你好，进来看看摄影角吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Listen. Take your time.",
+      "translation": "听一听，慢慢选就好。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Thank you!",
+      "translation": "谢谢！合影前的准备完成了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听这句指令，选择完成动作后的样子。只选图，不用真的做。",
+      "hint": "留意是让人改变姿势，还是改变门窗状态。",
+      "explanation": "Sit down. 是“坐下”。坐在椅面、膝盖弯曲的图符合；站立和开门都不是坐下。",
+      "difficultyReason": "仅四种日常指令和 please；图片表示动作完成后的状态，不考动作时态、不要求实际活动或记住角色发令顺序。关门关窗图只作为状态干扰。",
+      "options": [
+        {
+          "id": "a",
+          "text": "同一个人在椅子旁站直，双腿伸直，臀部不接触椅面。",
+          "imageAssetId": "image.628679e4dc9c6141d7c09fb561c8f4b166b827ccf0c0736b2198ec69afecaf59"
+        },
+        {
+          "id": "b",
+          "text": "同一个人坐在椅面上，膝盖弯曲，脚落地；没有站立。",
+          "imageAssetId": "image.1778a39983e14460a3cb75fdcf36c5192bb2181d2d09c47a69115b5ac7b8a833"
+        },
+        {
+          "id": "c",
+          "text": "一扇向内打开的门，门板倾斜，右侧露出明显通道。",
+          "imageAssetId": "image.00c9203ff8fabdd60944c1f02f7eae6b672a74e8a1c41efb5672f1f071f89785"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.9e02f49ebbfe2e1be42457696a4849c585982a4ffc1bec67611b78525875b669",
+        "text": "Sit down.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听指令，哪张图表示照做后的结果？不用操作真正的门窗。",
+      "hint": "既要听清动作，也要听清说的是门还是窗。",
+      "explanation": "Open the door. 是“打开门”。门板打开、露出通道的图符合；关着的门和打开的窗都不符合。",
+      "difficultyReason": "仅四种日常指令和 please；图片表示动作完成后的状态，不考动作时态、不要求实际活动或记住角色发令顺序。关门关窗图只作为状态干扰。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一扇向内打开的门，门板倾斜，右侧露出明显通道。",
+          "imageAssetId": "image.00c9203ff8fabdd60944c1f02f7eae6b672a74e8a1c41efb5672f1f071f89785"
+        },
+        {
+          "id": "b",
+          "text": "一扇关严的门，门板填满门框，没有可通过的开口。",
+          "imageAssetId": "image.259d92aa82090a11ad2435635d490f3058191cb1245581a355ad2b0f3a9a1db0"
+        },
+        {
+          "id": "c",
+          "text": "一扇双扇窗向两侧打开，中间留有明显开口。",
+          "imageAssetId": "image.9a0ce036c6849f9418b94ba4e216bcd9343fdf7a80d32c88ed9cf58e7b70be17"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.996aeeb5d8ce46e5f7d78a7c265cc6f1f2461bdcc5528f4abace8695f5b31187",
+        "text": "Open the door.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这句话让人做什么？选择完成后姿势或状态相符的图。",
+      "hint": "先听完整句，再看人物的腿和椅子位置。",
+      "explanation": "Stand up. 是“站起来”。在椅旁站直、腿伸直的图符合；坐着或打开窗户都不是起立。",
+      "difficultyReason": "仅四种日常指令和 please；图片表示动作完成后的状态，不考动作时态、不要求实际活动或记住角色发令顺序。关门关窗图只作为状态干扰。",
+      "options": [
+        {
+          "id": "a",
+          "text": "同一个人坐在椅面上，膝盖弯曲，脚落地；没有站立。",
+          "imageAssetId": "image.1778a39983e14460a3cb75fdcf36c5192bb2181d2d09c47a69115b5ac7b8a833"
+        },
+        {
+          "id": "b",
+          "text": "一扇双扇窗向两侧打开，中间留有明显开口。",
+          "imageAssetId": "image.9a0ce036c6849f9418b94ba4e216bcd9343fdf7a80d32c88ed9cf58e7b70be17"
+        },
+        {
+          "id": "c",
+          "text": "同一个人在椅子旁站直，双腿伸直，臀部不接触椅面。",
+          "imageAssetId": "image.628679e4dc9c6141d7c09fb561c8f4b166b827ccf0c0736b2198ec69afecaf59"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.36b28e6a7103513c394cac0f86781d72098f2a2ccdae8393e3d2a5292e7d1094",
+        "text": "Stand up.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听清动作和物品，选择指令完成后的画面。",
+      "hint": "不要只注意 open，还要分清后面的物品名称。",
+      "explanation": "Open the window. 是“打开窗户”。窗扇打开、中间有开口的图符合；开门和关着的窗都不符合。",
+      "difficultyReason": "仅四种日常指令和 please；图片表示动作完成后的状态，不考动作时态、不要求实际活动或记住角色发令顺序。关门关窗图只作为状态干扰。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一扇向内打开的门，门板倾斜，右侧露出明显通道。",
+          "imageAssetId": "image.00c9203ff8fabdd60944c1f02f7eae6b672a74e8a1c41efb5672f1f071f89785"
+        },
+        {
+          "id": "b",
+          "text": "一扇双扇窗向两侧打开，中间留有明显开口。",
+          "imageAssetId": "image.9a0ce036c6849f9418b94ba4e216bcd9343fdf7a80d32c88ed9cf58e7b70be17"
+        },
+        {
+          "id": "c",
+          "text": "一扇双扇窗完全合拢，窗格填满窗框，没有中央开口。",
+          "imageAssetId": "image.272ba65c15eaedfc195dbcba88f22702591a457d2b8880b98e4ed8e38cc5425a"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.8131097ff3dc466eae90716994074df980b68e45e6c1014788cf89de019905bc",
+        "text": "Open the window.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人礼貌地给出一个指令。哪张图表示照做后的样子？",
+      "hint": "please 表示礼貌，动作仍由前面的词决定。",
+      "explanation": "Sit down, please. 是“请坐下”。please 不改变坐下这个动作；应选坐在椅子上的图。",
+      "difficultyReason": "仅四种日常指令和 please；图片表示动作完成后的状态，不考动作时态、不要求实际活动或记住角色发令顺序。关门关窗图只作为状态干扰。",
+      "options": [
+        {
+          "id": "a",
+          "text": "同一个人坐在椅面上，膝盖弯曲，脚落地；没有站立。",
+          "imageAssetId": "image.1778a39983e14460a3cb75fdcf36c5192bb2181d2d09c47a69115b5ac7b8a833"
+        },
+        {
+          "id": "b",
+          "text": "同一个人在椅子旁站直，双腿伸直，臀部不接触椅面。",
+          "imageAssetId": "image.628679e4dc9c6141d7c09fb561c8f4b166b827ccf0c0736b2198ec69afecaf59"
+        },
+        {
+          "id": "c",
+          "text": "一扇双扇窗完全合拢，窗格填满窗框，没有中央开口。",
+          "imageAssetId": "image.272ba65c15eaedfc195dbcba88f22702591a457d2b8880b98e4ed8e38cc5425a"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.20128dad6236dff0c998e26dd898386fcf4bf6cf796056ae9e235a034c432ae8",
+        "text": "Sit down, please.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "请听这句礼貌请求，选出完成后相符的图。",
+      "hint": "听完整句，确认对象以及最后应是开还是关。",
+      "explanation": "Please open the window. 是“请打开窗户”。要选打开的窗；关闭的窗和打开的门分别不符合状态或对象。",
+      "difficultyReason": "仅四种日常指令和 please；图片表示动作完成后的状态，不考动作时态、不要求实际活动或记住角色发令顺序。关门关窗图只作为状态干扰。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一扇双扇窗完全合拢，窗格填满窗框，没有中央开口。",
+          "imageAssetId": "image.272ba65c15eaedfc195dbcba88f22702591a457d2b8880b98e4ed8e38cc5425a"
+        },
+        {
+          "id": "b",
+          "text": "一扇向内打开的门，门板倾斜，右侧露出明显通道。",
+          "imageAssetId": "image.00c9203ff8fabdd60944c1f02f7eae6b672a74e8a1c41efb5672f1f071f89785"
+        },
+        {
+          "id": "c",
+          "text": "一扇双扇窗向两侧打开，中间留有明显开口。",
+          "imageAssetId": "image.9a0ce036c6849f9418b94ba4e216bcd9343fdf7a80d32c88ed9cf58e7b70be17"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.ff5e72649ed107dde784bc4f2ed8efc2b57021b3955e81d5cb25a68b64e9ffb6",
+        "text": "Please open the window.",
+        "voice": "M3"
+      }
+    }
+  ]
+}

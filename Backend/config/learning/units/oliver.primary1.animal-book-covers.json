@@ -1,0 +1,255 @@
+{
+  "id": "oliver.primary1.animal-book-covers",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "绘本封面的小动物",
+  "summary": "听清动物名字，认一认绘本角的封面小画。",
+  "scene": "Oliver 找出几本待整理的动物绘本。他在书桌上放了几张自己画的动物卡，准备给小读者做一个认图游戏。",
+  "estimatedMinutes": 4,
+  "goalIds": [
+    "p1.animals-listening"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 3 Animals，Lesson 1–2",
+      "pages": "印刷第22–23页；PDF第27–28页",
+      "alignment": "正文五种动物及 It is a 动物介绍，改成原创封面图听辨。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题核对独立条件、唯一答案、干扰项及难度；原创图已目视检查，固定音频完成双模型识别和波形/摘要核验。只归一一至十数码/拼写，不混淆误听。作者自审，没有独立教研、人耳审听或学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Hello! Look here.",
+      "translation": "你好！来看看绘本角。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Ready? Listen.",
+      "translation": "准备好了吗？再听一听。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Very good!",
+      "translation": "真不错，小动物都找到位置了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听动物名称，点出对应的那张小画。",
+      "hint": "看耳朵和脸部轮廓，再听一次。",
+      "explanation": "cat 是猫。A cat. 指一只猫；尖耳和胡须对应猫，垂耳的是狗，有喙和翅膀的是鸟。",
+      "difficultyReason": "限五种教材动物词和 It is a 的听辨；不考习性、生境、动物叫声或单复数变形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只狗的正面头像：下垂的长耳朵和突出的浅色口鼻部。",
+          "imageAssetId": "image.25e3d7c75e762ff150a2b17523024d528fc5f77de4219b71a13a9b5babbb52b7"
+        },
+        {
+          "id": "b",
+          "text": "一只侧面的鸟：尖喙、翅膀、尾巴和两条细腿。",
+          "imageAssetId": "image.2c7e0d930ef32a0403396435ccb2f8e652ace8557565e70c10fa4de7a8cd92a0"
+        },
+        {
+          "id": "c",
+          "text": "一只猫的正面头像：尖耳朵、胡须和猫鼻。",
+          "imageAssetId": "image.de43b2e1a93ae49feabbb65c51c6924ba2a6086452aca88df5f8e7457eb9910e"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.f7f91109acc045b7a57bea97f9d837eba566ed9338393755f3b98eab1a905e9c",
+        "text": "A cat.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "录音说的是哪种动物？选择它的图。",
+      "hint": "先听名称，再比较轮廓，不用猜叫声。",
+      "explanation": "bird 是鸟。A bird. 对应有尖喙、翅膀和细腿的鸟；monkey 是猴子，dog 是狗。",
+      "difficultyReason": "限五种教材动物词和 It is a 的听辨；不考习性、生境、动物叫声或单复数变形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只侧面的鸟：尖喙、翅膀、尾巴和两条细腿。",
+          "imageAssetId": "image.2c7e0d930ef32a0403396435ccb2f8e652ace8557565e70c10fa4de7a8cd92a0"
+        },
+        {
+          "id": "b",
+          "text": "一只猴子的正面头像：圆耳朵和浅色脸盘，没有尖耳或胡须。",
+          "imageAssetId": "image.9a849d93bbaea347e6047072b482629fb034b049e75898c0baa8d85874f3efb3"
+        },
+        {
+          "id": "c",
+          "text": "一只狗的正面头像：下垂的长耳朵和突出的浅色口鼻部。",
+          "imageAssetId": "image.25e3d7c75e762ff150a2b17523024d528fc5f77de4219b71a13a9b5babbb52b7"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.5af6828bdf0ec439c5c6ba6abf3b1d51633720e70a285cea2eff4104e12d65a6",
+        "text": "A bird.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这一段声音给哪只动物命名？",
+      "hint": "猫、狗和老虎不是同一个词，可以慢速听。",
+      "explanation": "dog 是狗。A dog. 对应垂耳的小狗；cat 是猫，tiger 是老虎。",
+      "difficultyReason": "限五种教材动物词和 It is a 的听辨；不考习性、生境、动物叫声或单复数变形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只猫的正面头像：尖耳朵、胡须和猫鼻。",
+          "imageAssetId": "image.de43b2e1a93ae49feabbb65c51c6924ba2a6086452aca88df5f8e7457eb9910e"
+        },
+        {
+          "id": "b",
+          "text": "一只狗的正面头像：下垂的长耳朵和突出的浅色口鼻部。",
+          "imageAssetId": "image.25e3d7c75e762ff150a2b17523024d528fc5f77de4219b71a13a9b5babbb52b7"
+        },
+        {
+          "id": "c",
+          "text": "一只老虎的正面头像：橙色脸、圆耳、黑条纹和浅色口鼻。",
+          "imageAssetId": "image.77d15d600d95b04cf76e15e8b4efb71defd7c458d0e620729adec3309d1f894a"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.f4317843c4bf8d9c314c8b71c7c2d18c20c1a96656358c64d0068d99fe39693f",
+        "text": "A dog.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人说出一个动物名字，请找到对应图片。",
+      "hint": "结合耳朵和脸盘辨认图形，不用记前一题。",
+      "explanation": "monkey 是猴子。A monkey. 对应圆耳、浅色脸盘的猴子；老虎的词是 tiger，鸟是 bird。",
+      "difficultyReason": "限五种教材动物词和 It is a 的听辨；不考习性、生境、动物叫声或单复数变形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只老虎的正面头像：橙色脸、圆耳、黑条纹和浅色口鼻。",
+          "imageAssetId": "image.77d15d600d95b04cf76e15e8b4efb71defd7c458d0e620729adec3309d1f894a"
+        },
+        {
+          "id": "b",
+          "text": "一只侧面的鸟：尖喙、翅膀、尾巴和两条细腿。",
+          "imageAssetId": "image.2c7e0d930ef32a0403396435ccb2f8e652ace8557565e70c10fa4de7a8cd92a0"
+        },
+        {
+          "id": "c",
+          "text": "一只猴子的正面头像：圆耳朵和浅色脸盘，没有尖耳或胡须。",
+          "imageAssetId": "image.9a849d93bbaea347e6047072b482629fb034b049e75898c0baa8d85874f3efb3"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.d9513b196d508ea8a7f71f4bd6684ad8f9917104efb973e849ad1ce111fea66c",
+        "text": "A monkey.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听清动物名称，选出相符的图。",
+      "hint": "先辨认声音，再看动物的形态特征。",
+      "explanation": "tiger 是老虎。A tiger. 对应圆耳、有黑条纹的老虎；猫和猴子都不符合。",
+      "difficultyReason": "限五种教材动物词和 It is a 的听辨；不考习性、生境、动物叫声或单复数变形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只老虎的正面头像：橙色脸、圆耳、黑条纹和浅色口鼻。",
+          "imageAssetId": "image.77d15d600d95b04cf76e15e8b4efb71defd7c458d0e620729adec3309d1f894a"
+        },
+        {
+          "id": "b",
+          "text": "一只猴子的正面头像：圆耳朵和浅色脸盘，没有尖耳或胡须。",
+          "imageAssetId": "image.9a849d93bbaea347e6047072b482629fb034b049e75898c0baa8d85874f3efb3"
+        },
+        {
+          "id": "c",
+          "text": "一只猫的正面头像：尖耳朵、胡须和猫鼻。",
+          "imageAssetId": "image.de43b2e1a93ae49feabbb65c51c6924ba2a6086452aca88df5f8e7457eb9910e"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.2caf371e9ad27d29c15aebb977de4b7014d9ab90ad463b2dd892695c75d8dea0",
+        "text": "A tiger.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人用一个短句介绍动物。听他说完，选出那只动物。",
+      "hint": "It is a 后面会说动物名字。",
+      "explanation": "It is a dog. 表示“它是一只狗”。听到的是 dog，不是 monkey 或 cat；整句仍在介绍一种动物。",
+      "difficultyReason": "限五种教材动物词和 It is a 的听辨；不考习性、生境、动物叫声或单复数变形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只猴子的正面头像：圆耳朵和浅色脸盘，没有尖耳或胡须。",
+          "imageAssetId": "image.9a849d93bbaea347e6047072b482629fb034b049e75898c0baa8d85874f3efb3"
+        },
+        {
+          "id": "b",
+          "text": "一只狗的正面头像：下垂的长耳朵和突出的浅色口鼻部。",
+          "imageAssetId": "image.25e3d7c75e762ff150a2b17523024d528fc5f77de4219b71a13a9b5babbb52b7"
+        },
+        {
+          "id": "c",
+          "text": "一只猫的正面头像：尖耳朵、胡须和猫鼻。",
+          "imageAssetId": "image.de43b2e1a93ae49feabbb65c51c6924ba2a6086452aca88df5f8e7457eb9910e"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.36367ba0dfcf07b1d4f87f0e5f0f4d1cecd56da23e00d1fe44e4ab12e8f7d03c",
+        "text": "It is a dog.",
+        "voice": "M5"
+      }
+    }
+  ]
+}

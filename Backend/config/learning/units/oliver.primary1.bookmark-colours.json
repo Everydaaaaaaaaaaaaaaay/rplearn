@@ -1,0 +1,261 @@
+{
+  "id": "oliver.primary1.bookmark-colours",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "雨天的彩色书签",
+  "summary": "听懂五种基本颜色，为阅读角选一张书签。",
+  "scene": "雨把书店门口的石阶打湿了。Oliver 留出一张干燥的桌子，把没有文字的彩色书签排开，邀请你听声音找颜色。",
+  "estimatedMinutes": 4,
+  "goalIds": [
+    "p1.basic-colours-listening"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 5 Colours，Lesson 1–2",
+      "pages": "印刷第40–41页；PDF第45–46页",
+      "alignment": "五种基本颜色和 Show me/It is 句中的颜色辨认。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    },
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "unit": "Module 4 Unit 1",
+      "pages": "印刷第20–21页；PDF第25–26页",
+      "alignment": "另一版本同册出现相同五色；不增加该册白色以外的未核实词。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题核对独立条件、唯一答案、干扰项及难度；原创图已目视检查，固定音频完成双模型识别和波形/摘要核验。只归一一至十数码/拼写，不混淆误听。作者自审，没有独立教研、人耳审听或学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Hello! Come in.",
+      "translation": "你好，进来躲躲雨吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Look and listen.",
+      "translation": "看看这些书签，再听一听。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Thank you!",
+      "translation": "谢谢！书签可以摆进阅读角了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "录音说的是哪种颜色？点出那张书签。",
+      "hint": "先听颜色词，再比较三张书签。",
+      "explanation": "red 是红色。It is red. 表示“它是红色的”，所以选择红书签。蓝色是 blue，黄色是 yellow。",
+      "difficultyReason": "只判断单一基本颜色；不要求拼写、读英文、混色或表达个人喜好。颜色是本任务的必要信息，辅助描述用中文报颜色；不声称完全不依赖视觉。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张蓝色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.32120b4c85807e12623f217c607c34dd0a9aef1471b2fe2bc21aaa98c77d1a71"
+        },
+        {
+          "id": "b",
+          "text": "一张红色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.019289d8415615c0f028ab26b66e493ff6b0616a1d3739cafb3a0dc799563db5"
+        },
+        {
+          "id": "c",
+          "text": "一张黄色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.2e2096c1e0f971f8bf5a51cee14258ecf4ec6673a3084c518797f12776cfbff6"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.3a9531ccccae7a6294696a763f24bf12a5aa0739c8462e657ae1911b098618a4",
+        "text": "It is red.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人介绍一张书签的颜色。听完后选出符合描述的图。",
+      "hint": "听清句末的颜色词，不根据喜欢的颜色选。",
+      "explanation": "blue 是蓝色。It is blue. 描述蓝色；绿色 green 和红色 red 都不符合。",
+      "difficultyReason": "只判断单一基本颜色；不要求拼写、读英文、混色或表达个人喜好。颜色是本任务的必要信息，辅助描述用中文报颜色；不声称完全不依赖视觉。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张蓝色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.32120b4c85807e12623f217c607c34dd0a9aef1471b2fe2bc21aaa98c77d1a71"
+        },
+        {
+          "id": "b",
+          "text": "一张绿色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.dd6902e348eb73263d4246f757dbf96d92af8b677903d874fa702a8d94e36373"
+        },
+        {
+          "id": "c",
+          "text": "一张红色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.019289d8415615c0f028ab26b66e493ff6b0616a1d3739cafb3a0dc799563db5"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.a89f40e58aca8613bc45863bed5c2e3b3cedf9ab8768646a0480f54afb80db71",
+        "text": "It is blue.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听这句颜色描述，找到对应的书签。",
+      "hint": "可以慢速重播，再对照主色。",
+      "explanation": "yellow 是黄色。It is yellow. 对应黄书签；green 是绿色，black 是黑色。",
+      "difficultyReason": "只判断单一基本颜色；不要求拼写、读英文、混色或表达个人喜好。颜色是本任务的必要信息，辅助描述用中文报颜色；不声称完全不依赖视觉。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张绿色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.dd6902e348eb73263d4246f757dbf96d92af8b677903d874fa702a8d94e36373"
+        },
+        {
+          "id": "b",
+          "text": "一张黑色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.d59dad3d138a72f1e47067e2ec04e0d3976af14369471dfc79313dc8454e870e"
+        },
+        {
+          "id": "c",
+          "text": "一张黄色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.2e2096c1e0f971f8bf5a51cee14258ecf4ec6673a3084c518797f12776cfbff6"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.63cc501901b853e858f9c03afb7dd6de262cb5dcb2d31a996f17815a97793ca4",
+        "text": "It is yellow.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这一段声音指的是哪张单色书签？",
+      "hint": "三个选项形状相同，本题只辨认颜色。",
+      "explanation": "black 是黑色。It is black. 对应黑书签，不是红色或蓝色。",
+      "difficultyReason": "只判断单一基本颜色；不要求拼写、读英文、混色或表达个人喜好。颜色是本任务的必要信息，辅助描述用中文报颜色；不声称完全不依赖视觉。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张红色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.019289d8415615c0f028ab26b66e493ff6b0616a1d3739cafb3a0dc799563db5"
+        },
+        {
+          "id": "b",
+          "text": "一张黑色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.d59dad3d138a72f1e47067e2ec04e0d3976af14369471dfc79313dc8454e870e"
+        },
+        {
+          "id": "c",
+          "text": "一张蓝色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.32120b4c85807e12623f217c607c34dd0a9aef1471b2fe2bc21aaa98c77d1a71"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.0a026bc8c6f0e8a15280f9c1180359d46babcf9860f0142352fa1d024ade373f",
+        "text": "It is black.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听清这一句，再点出它所说的颜色。",
+      "hint": "将注意力放在句末，不用数图中的边。",
+      "explanation": "green 是绿色。It is green. 对应绿书签；yellow 和 black 分别是黄色和黑色。",
+      "difficultyReason": "只判断单一基本颜色；不要求拼写、读英文、混色或表达个人喜好。颜色是本任务的必要信息，辅助描述用中文报颜色；不声称完全不依赖视觉。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张绿色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.dd6902e348eb73263d4246f757dbf96d92af8b677903d874fa702a8d94e36373"
+        },
+        {
+          "id": "b",
+          "text": "一张黄色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.2e2096c1e0f971f8bf5a51cee14258ecf4ec6673a3084c518797f12776cfbff6"
+        },
+        {
+          "id": "c",
+          "text": "一张黑色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.d59dad3d138a72f1e47067e2ec04e0d3976af14369471dfc79313dc8454e870e"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.eba0274747ffcff9ef2e839a41d9756b5d019b70c6e33fb4b8bc010beae766a3",
+        "text": "It is green.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人请你展示一种颜色。应该拿哪张书签？",
+      "hint": "请把整句听完，再确认要求的颜色。",
+      "explanation": "Show me blue, please. 表示“请给我看看蓝色”。please 表示礼貌，请求中的 blue 指蓝色书签。",
+      "difficultyReason": "只判断单一基本颜色；不要求拼写、读英文、混色或表达个人喜好。颜色是本任务的必要信息，辅助描述用中文报颜色；不声称完全不依赖视觉。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张黄色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.2e2096c1e0f971f8bf5a51cee14258ecf4ec6673a3084c518797f12776cfbff6"
+        },
+        {
+          "id": "b",
+          "text": "一张绿色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.dd6902e348eb73263d4246f757dbf96d92af8b677903d874fa702a8d94e36373"
+        },
+        {
+          "id": "c",
+          "text": "一张蓝色长书签，底部为燕尾形；没有数字、字母或其他主色。",
+          "imageAssetId": "image.32120b4c85807e12623f217c607c34dd0a9aef1471b2fe2bc21aaa98c77d1a71"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.9dfc3d84a5eaa786de3e73d73c6c8f3629521b7fc33b72f2160e68e7d5fb6717",
+        "text": "Show me blue, please.",
+        "voice": "M5"
+      }
+    }
+  ]
+}

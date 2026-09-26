@@ -1,0 +1,261 @@
+{
+  "id": "marcus.primary1.photo-count",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "晾片绳旁的小照片",
+  "summary": "听懂六到十，把数量和一组小照片对应起来。",
+  "scene": "Marcus 为街坊影像夜挑选小照片，把它们整齐放在桌面，准备夹到晾片绳上。你们先玩一个听数找照片组的小游戏。",
+  "estimatedMinutes": 4,
+  "goalIds": [
+    "p1.quantities-six-ten"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 4 Numbers，Lesson 1–2",
+      "pages": "印刷第32–33页；PDF第37–38页",
+      "alignment": "一到十数量与 Show me，本单元选择六到十；每张照片相当于一个可数物。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    },
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "unit": "Module 8 Unit 1",
+      "pages": "印刷第44–45页；PDF第49–50页",
+      "alignment": "同年级版本的一到十计数对应，未引入小学高年级运算。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题核对独立条件、唯一答案、干扰项及难度；原创图已目视检查，固定音频完成双模型识别和波形/摘要核验。只归一一至十数码/拼写，不混淆误听。作者自审，没有独立教研、人耳审听或学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "Hello! Look here.",
+      "translation": "你好！小照片都在桌上。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Take your time.",
+      "translation": "慢慢数，不着急。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Good! Thank you.",
+      "translation": "真好，谢谢你！可以布置影像夜了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听录音中的数量，选出小照片张数相同的一组。",
+      "hint": "每个带完整边框的小照片算一张，两排都要数。",
+      "explanation": "six 表示六。第一排五张、第二排一张，共六张；另外两组是八张和七张。",
+      "difficultyReason": "六至十的听音辨量；不考加减、数字拼写或照片内容记忆。每个选项都要数全部照片；中文数字描述仅作无障碍替代。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有8张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.327e08b4b98aaf393b9b3743a75b35025cb0d8d9718cc99ed0cfe7af020130e8"
+        },
+        {
+          "id": "b",
+          "text": "白底上有6张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.1f1aabb76aae666e77c9f12bbb5db9238e10ff92f480640a2c60658734e218c7"
+        },
+        {
+          "id": "c",
+          "text": "白底上有7张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.0eceb63e6d890adca0d5d0bc12c10308343bcc3cf7fffe1ad96e9b6d2233d6f4"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.712e4bee1900427a8744546746297482bbff2015ec743f51d8895c121ee6d9b0",
+        "text": "Six.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "录音说出一个数。哪组小照片与这个数量一致？",
+      "hint": "从左往右数，数完第一排再数第二排。",
+      "explanation": "eight 表示八。五张加第二排的三张，共八张；nine 是九，six 是六。",
+      "difficultyReason": "六至十的听音辨量；不考加减、数字拼写或照片内容记忆。每个选项都要数全部照片；中文数字描述仅作无障碍替代。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有8张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.327e08b4b98aaf393b9b3743a75b35025cb0d8d9718cc99ed0cfe7af020130e8"
+        },
+        {
+          "id": "b",
+          "text": "白底上有9张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.312773b6241b3606c3cf6328788ca1c602a225c6bfa1a9f19059aefb38bd24a3"
+        },
+        {
+          "id": "c",
+          "text": "白底上有6张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.1f1aabb76aae666e77c9f12bbb5db9238e10ff92f480640a2c60658734e218c7"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.be0001d937673743c4c328d91de77a4259bab4fecb9928ec592bac1c66e048f9",
+        "text": "Eight.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听完数量，找到小照片总张数相符的一组。",
+      "hint": "每张照片只数一次，不数照片里面的图案。",
+      "explanation": "ten 表示十。两排各有五张，共十张；七张和九张都不符合。",
+      "difficultyReason": "六至十的听音辨量；不考加减、数字拼写或照片内容记忆。每个选项都要数全部照片；中文数字描述仅作无障碍替代。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有7张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.0eceb63e6d890adca0d5d0bc12c10308343bcc3cf7fffe1ad96e9b6d2233d6f4"
+        },
+        {
+          "id": "b",
+          "text": "白底上有9张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.312773b6241b3606c3cf6328788ca1c602a225c6bfa1a9f19059aefb38bd24a3"
+        },
+        {
+          "id": "c",
+          "text": "白底上有10张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.98d1eb50dd9ac10d1191e354c81f42814c76f4c82fdc4201ea8673b257d2d7a0"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.c5a9001470c7b233cb9553fdd0c0d894d48654b3c9ccba6634682e019178b094",
+        "text": "Ten.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这一段声音对应哪一组照片的数量？",
+      "hint": "可以重播，再核对第二排也包含在总数里。",
+      "explanation": "seven 表示七。第一排五张、第二排两张，共七张；其余是六张和十张。",
+      "difficultyReason": "六至十的听音辨量；不考加减、数字拼写或照片内容记忆。每个选项都要数全部照片；中文数字描述仅作无障碍替代。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有6张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.1f1aabb76aae666e77c9f12bbb5db9238e10ff92f480640a2c60658734e218c7"
+        },
+        {
+          "id": "b",
+          "text": "白底上有7张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.0eceb63e6d890adca0d5d0bc12c10308343bcc3cf7fffe1ad96e9b6d2233d6f4"
+        },
+        {
+          "id": "c",
+          "text": "白底上有10张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.98d1eb50dd9ac10d1191e354c81f42814c76f4c82fdc4201ea8673b257d2d7a0"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.1c9fb61bee5202fe6937d0c2fe6d0d194ba7ff9e8339feecb615cbc566603d70",
+        "text": "Seven.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听这个数，选出刚好相同张数的照片组。",
+      "hint": "重点数总张数，不比较照片画的是什么。",
+      "explanation": "nine 表示九。第一排五张、第二排四张，共九张；不是十张或八张。",
+      "difficultyReason": "六至十的听音辨量；不考加减、数字拼写或照片内容记忆。每个选项都要数全部照片；中文数字描述仅作无障碍替代。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有9张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.312773b6241b3606c3cf6328788ca1c602a225c6bfa1a9f19059aefb38bd24a3"
+        },
+        {
+          "id": "b",
+          "text": "白底上有10张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.98d1eb50dd9ac10d1191e354c81f42814c76f4c82fdc4201ea8673b257d2d7a0"
+        },
+        {
+          "id": "c",
+          "text": "白底上有8张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.327e08b4b98aaf393b9b3743a75b35025cb0d8d9718cc99ed0cfe7af020130e8"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.e23769ba49aa40355f357327c4ab51a8bea2322cb819f547c674f17a7c6e3ea8",
+        "text": "Nine.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人请你展示指定数量。应该选择哪一组照片？",
+      "hint": "这次是一个短句，请留意句末的数量。",
+      "explanation": "Show me eight. 表示“给我看看八个”。放在本题照片情景里，就选八张照片的一组。",
+      "difficultyReason": "六至十的听音辨量；不考加减、数字拼写或照片内容记忆。每个选项都要数全部照片；中文数字描述仅作无障碍替代。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有10张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.98d1eb50dd9ac10d1191e354c81f42814c76f4c82fdc4201ea8673b257d2d7a0"
+        },
+        {
+          "id": "b",
+          "text": "白底上有7张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.0eceb63e6d890adca0d5d0bc12c10308343bcc3cf7fffe1ad96e9b6d2233d6f4"
+        },
+        {
+          "id": "c",
+          "text": "白底上有8张独立小照片，分两行整齐排列；没有叠放、数字或其他卡片。",
+          "imageAssetId": "image.327e08b4b98aaf393b9b3743a75b35025cb0d8d9718cc99ed0cfe7af020130e8"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.46b8723889ddfd9a1460fc390a2df451e41245b454c918a3b1f22ac2683a1b6f",
+        "text": "Show me eight.",
+        "voice": "M3"
+      }
+    }
+  ]
+}

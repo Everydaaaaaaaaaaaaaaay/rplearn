@@ -1,0 +1,261 @@
+{
+  "id": "ruby.primary1.shell-count",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "沙滩上的贝壳小堆",
+  "summary": "听懂一到五，把英文数量和整堆贝壳对应起来。",
+  "scene": "Ruby 在活动桌上摆好几堆可重复使用的贝壳模型。海风吹不走它们，她请你听一个数量，找到同样多的一堆。",
+  "estimatedMinutes": 4,
+  "goalIds": [
+    "p1.quantities-one-five"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 4 Numbers，Lesson 1–2",
+      "pages": "印刷第32–33页；PDF第37–38页",
+      "alignment": "一到十的听音指认和数量问答，本单元只用一到五与 Show me。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    },
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "unit": "Module 8 Unit 1",
+      "pages": "印刷第44–45页；PDF第49–50页",
+      "alignment": "同年级另一版本明确一到十计数；模型贝壳为原创情境，不照搬教材图。 仅借鉴教学目标，不使用教材原题、插图或录音。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题核对独立条件、唯一答案、干扰项及难度；原创图已目视检查，固定音频完成双模型识别和波形/摘要核验。只归一一至十数码/拼写，不混淆误听。作者自审，没有独立教研、人耳审听或学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Hello! Look here.",
+      "translation": "你好，看看这些小贝壳模型。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Listen. Take your time.",
+      "translation": "听一听，慢慢数就好。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Thank you!",
+      "translation": "谢谢！活动桌整理好了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听一个数量，选出贝壳个数与它相同的一堆。",
+      "hint": "每个完整贝壳算一个，不数壳面的线。",
+      "explanation": "one 表示一。录音 One. 对应只有一个贝壳的图；另外两堆分别有三个和两个。",
+      "difficultyReason": "一至五的听音辨量；不考英文拼写、加减、数字顺序背诵或数字字形。须能逐个数物；不把计数正确等同于已掌握问答句法。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有1个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.2b889f1ca5d68f815e88157fef0babc5a4fec6936b8e89f3c8f5575221e3b5e8"
+        },
+        {
+          "id": "b",
+          "text": "白底上有3个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.34b1ac741f141a96a920c8c4a89769c41436c6e183b09e444f7c847faa997929"
+        },
+        {
+          "id": "c",
+          "text": "白底上有2个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.06bae07d40880b777c672fd24c879ed57c952f4505475436da190cb6531f7c6a"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.0cedf12e3b7c414c349731931ccc6825ee074f34bf782e83d861c042425e7f43",
+        "text": "One.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这段录音说了一个数。哪一堆贝壳和它一样多？",
+      "hint": "从一边开始，一个一个数，不漏掉上面的贝壳。",
+      "explanation": "three 表示三。选有三个贝壳的图；两个是 two，五个是 five。",
+      "difficultyReason": "一至五的听音辨量；不考英文拼写、加减、数字顺序背诵或数字字形。须能逐个数物；不把计数正确等同于已掌握问答句法。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有2个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.06bae07d40880b777c672fd24c879ed57c952f4505475436da190cb6531f7c6a"
+        },
+        {
+          "id": "b",
+          "text": "白底上有5个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.1cba4403448606ee06c9021e2542eb6ccf813056197de6a0b956a354462623c1"
+        },
+        {
+          "id": "c",
+          "text": "白底上有3个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.34b1ac741f141a96a920c8c4a89769c41436c6e183b09e444f7c847faa997929"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.e9159a5b273327a1c83c749bea419f08eb62b04db0c1ae29a4303b22c86e526f",
+        "text": "Three.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听数量，再选择总数正确的一堆贝壳。",
+      "hint": "上排和下排都要数，每个贝壳只数一次。",
+      "explanation": "five 表示五。图中上排三个、下排两个，共五个；不是三或四。",
+      "difficultyReason": "一至五的听音辨量；不考英文拼写、加减、数字顺序背诵或数字字形。须能逐个数物；不把计数正确等同于已掌握问答句法。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有3个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.34b1ac741f141a96a920c8c4a89769c41436c6e183b09e444f7c847faa997929"
+        },
+        {
+          "id": "b",
+          "text": "白底上有5个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.1cba4403448606ee06c9021e2542eb6ccf813056197de6a0b956a354462623c1"
+        },
+        {
+          "id": "c",
+          "text": "白底上有4个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.a84f7a41b48c879a730b8b2a6928454e9658ea111acb2472204f43acd909abf8"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.f7e8ac4e142552e2de2555711d3a762342b535dfd9bc06bf21c0af10236279a2",
+        "text": "Five.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "录音要你找的数量是多少？点出相应的贝壳堆。",
+      "hint": "可以重播，再逐个点着数。",
+      "explanation": "two 表示二。两个分开的贝壳与录音一致；four 是四，one 是一。",
+      "difficultyReason": "一至五的听音辨量；不考英文拼写、加减、数字顺序背诵或数字字形。须能逐个数物；不把计数正确等同于已掌握问答句法。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有2个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.06bae07d40880b777c672fd24c879ed57c952f4505475436da190cb6531f7c6a"
+        },
+        {
+          "id": "b",
+          "text": "白底上有4个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.a84f7a41b48c879a730b8b2a6928454e9658ea111acb2472204f43acd909abf8"
+        },
+        {
+          "id": "c",
+          "text": "白底上有1个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.2b889f1ca5d68f815e88157fef0babc5a4fec6936b8e89f3c8f5575221e3b5e8"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.5c344d3dff8f54b30f27e3ff3168d390d282cff8e83c5403554aea75bb9fe261",
+        "text": "Two.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听完这个数，选出贝壳总个数相符的图。",
+      "hint": "只数完整的贝壳，不比较占了多大地方。",
+      "explanation": "four 表示四。四个贝壳分成两排；另外两幅分别是五个和三个。",
+      "difficultyReason": "一至五的听音辨量；不考英文拼写、加减、数字顺序背诵或数字字形。须能逐个数物；不把计数正确等同于已掌握问答句法。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有5个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.1cba4403448606ee06c9021e2542eb6ccf813056197de6a0b956a354462623c1"
+        },
+        {
+          "id": "b",
+          "text": "白底上有3个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.34b1ac741f141a96a920c8c4a89769c41436c6e183b09e444f7c847faa997929"
+        },
+        {
+          "id": "c",
+          "text": "白底上有4个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.a84f7a41b48c879a730b8b2a6928454e9658ea111acb2472204f43acd909abf8"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.6ffcca9e909bf48335490aad228623f48271480154608c4c1ff727e8a1876506",
+        "text": "Four.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人请你展示指定数量。应选哪一堆贝壳？",
+      "hint": "句末说的数决定要选哪一堆。",
+      "explanation": "Show me three. 表示“给我看看三个”。这里选三个贝壳，不需要计算或比较前面的题。",
+      "difficultyReason": "一至五的听音辨量；不考英文拼写、加减、数字顺序背诵或数字字形。须能逐个数物；不把计数正确等同于已掌握问答句法。",
+      "options": [
+        {
+          "id": "a",
+          "text": "白底上有4个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.a84f7a41b48c879a730b8b2a6928454e9658ea111acb2472204f43acd909abf8"
+        },
+        {
+          "id": "b",
+          "text": "白底上有3个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.34b1ac741f141a96a920c8c4a89769c41436c6e183b09e444f7c847faa997929"
+        },
+        {
+          "id": "c",
+          "text": "白底上有2个完整贝壳，彼此分开，没有文字或数字。",
+          "imageAssetId": "image.06bae07d40880b777c672fd24c879ed57c952f4505475436da190cb6531f7c6a"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.706c87a9c2ea8fb99b593a8324bc1e43eae36ed62981afdcd85446899bbe84a1",
+        "text": "Show me three.",
+        "voice": "F3"
+      }
+    }
+  ]
+}
