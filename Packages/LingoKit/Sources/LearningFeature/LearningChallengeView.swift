@@ -12,6 +12,7 @@ public struct LearningChallengeView: View {
     private let character: CharacterDTO
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var showsExit = false
     @State private var showsHint = false
     @State private var showsTranslation = false
@@ -121,17 +122,19 @@ public struct LearningChallengeView: View {
             Text(beat.text).font(.system(.title2, design: .serif)).lineSpacing(8).fixedSize(horizontal: false, vertical: true)
             Button(showsTranslation ? "收起中文" : "查看中文") { showsTranslation.toggle() }.font(.subheadline).padding(.vertical, 8)
             if showsTranslation { Text(beat.translation).font(.body).foregroundStyle(.secondary).lineSpacing(5) }
+            if dynamicTypeSize.isAccessibilitySize { skipStoryButton }
             Spacer(minLength: 24)
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
     private func questionBody(_ question: LearningQuestion) -> some View {
         VStack(alignment: .leading, spacing: 22) {
-            HStack {
+            let headingLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 10)) : AnyLayout(HStackLayout())
+            headingLayout {
                 Label(model.attempt.round.ordinal > 0 ? "补答 · 剩余题目" : "轮到你了", systemImage: "pencil.tip").font(.caption.bold()).foregroundStyle(theme.tint)
-                Spacer()
+                if !dynamicTypeSize.isAccessibilitySize { Spacer() }
                 Text(learningLevelName(model.attempt.level)).font(.caption).foregroundStyle(.secondary)
             }
-            Text(question.instruction).font(.title2.bold())
+            Text(question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : question.instruction).font(.title2.bold())
             Text(question.prompt).font(.system(.title3, design: .rounded)).lineSpacing(6).fixedSize(horizontal: false, vertical: true)
             if question.audio != nil {
                 listeningControls(question)
@@ -144,6 +147,7 @@ public struct LearningChallengeView: View {
                 Button(showsHint ? "收起提示" : "需要一点提示？") { showsHint.toggle() }
                     .font(.subheadline).padding(.vertical, 8).disabled(model.hasUnconfirmedAnswer)
                 if showsHint { Text(question.hint).font(.subheadline).foregroundStyle(.secondary) }
+                if dynamicTypeSize.isAccessibilitySize && !model.hasUnconfirmedAnswer { skipQuestionButton }
             }
         }
     }
@@ -220,15 +224,19 @@ public struct LearningChallengeView: View {
                 .accessibilityLabel("填写答案")
         case .matching:
             VStack(alignment: .leading, spacing: 14) {
-                Text("先点左侧，再点对应的右侧；再次选择可调整配对。").font(.caption).foregroundStyle(.secondary)
-                HStack(alignment: .top, spacing: 12) {
+                Text(dynamicTypeSize.isAccessibilitySize ? "先点第一组，再点第二组；再次选择可调整配对。" : "先点左侧，再点对应的右侧；再次选择可调整配对。")
+                    .font(.caption).foregroundStyle(.secondary)
+                let pairLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 24)) : AnyLayout(HStackLayout(alignment: .top, spacing: 12))
+                pairLayout {
                     VStack(spacing: 12) {
+                        if dynamicTypeSize.isAccessibilitySize { matchingGroupTitle("第一组") }
                         ForEach(Array((question.left ?? []).enumerated()), id: \.element.id) { index, option in
                             matchingButton(option, number: index + 1, selected: model.selectedLeft == option.id,
                                            paired: model.pairs.contains { $0.left == option.id }) { model.selectedLeft = option.id }
                         }
                     }.frame(maxWidth: .infinity)
                     VStack(spacing: 12) {
+                        if dynamicTypeSize.isAccessibilitySize { matchingGroupTitle("第二组") }
                         ForEach(question.right ?? []) { option in
                             let pair = model.pairs.first { $0.right == option.id }
                             let number = pair.flatMap { p in question.left?.firstIndex { $0.id == p.left } }.map { $0 + 1 }
@@ -238,6 +246,10 @@ public struct LearningChallengeView: View {
                 }
             }
         }
+    }
+    private func matchingGroupTitle(_ title: String) -> some View {
+        Text(title).font(.headline).frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityAddTraits(.isHeader)
     }
     private func tokenButton(_ text: String, selected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) { Text(text).font(.body.weight(.medium)).padding(.horizontal, 15).padding(.vertical, 13)
@@ -297,14 +309,13 @@ public struct LearningChallengeView: View {
                 primary("进入情景") { model.advance() }
             case .story:
                 primary("继续") { model.advance() }
-                Button("直接开始题目") { model.skipStory() }.font(.subheadline).padding(8)
+                if !dynamicTypeSize.isAccessibilitySize { skipStoryButton }
             case .question:
                 if model.feedback != nil { primary("继续") { model.advance() } }
                 else if model.hasUnconfirmedAnswer { primary("重新确认提交") { Task { await model.submit() } } }
                 else {
                     primary("检查", disabled: model.answer == nil || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
-                    Button("暂时跳过，留待补答") { inputFocused = false; audio.stop(); Task { await model.submit(skip: true) } }
-                        .font(.subheadline).padding(8).disabled(model.isBusy)
+                    if !dynamicTypeSize.isAccessibilitySize { skipQuestionButton }
                 }
             case .summary:
                 if model.attempt.firstCompletedAt == nil { primary("完成本轮挑战") { Task { await model.finish() } } }
@@ -312,6 +323,13 @@ public struct LearningChallengeView: View {
             }
         }.padding(.horizontal, 24).padding(.top, 16).padding(.bottom, 12).frame(maxWidth: 680).frame(maxWidth: .infinity)
             .background(.regularMaterial)
+    }
+    private var skipQuestionButton: some View {
+        Button("暂时跳过，留待补答") { inputFocused = false; audio.stop(); Task { await model.submit(skip: true) } }
+            .font(.subheadline).padding(8).disabled(model.isBusy)
+    }
+    private var skipStoryButton: some View {
+        Button("直接开始题目") { model.skipStory() }.font(.subheadline).padding(8)
     }
     private func primary(_ title: String, disabled: Bool = false, action: @escaping () -> Void) -> some View {
         LearningPrimaryButton(title: title, tint: theme.tint, busy: model.isBusy, disabled: disabled, action: action)

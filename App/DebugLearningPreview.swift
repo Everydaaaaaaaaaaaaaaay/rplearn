@@ -42,6 +42,21 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
         return try Data(contentsOf: url)
     }
     func previewAttempt(kind: String) throws -> LearningAttempt {
+        if let json = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_UNIT_JSON"] {
+            // 只在免登录 Debug 预览中接收公开题面；不提供答案、不提交到服务端。
+            let unit = try JSONDecoder().decode(LearningUnit.self, from: Data(json.utf8))
+            let questionID = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_QUESTION_ID"]
+            guard let question = unit.questions.first(where: { question in
+                if let questionID { return question.id == questionID }
+                return question.type.rawValue == kind
+            }) else { throw unavailable }
+            let publicUnit = try JSONSerialization.jsonObject(with: JSONEncoder().encode(unit))
+            return try decode(["id": UUID().uuidString, "characterId": characterID.uuidString,
+                "level": unit.level, "revision": 1, "startedAt": "2026-09-26T00:00:00Z",
+                "firstCompletedAt": "2026-09-26T00:00:00Z", "correctQuestionIds": [],
+                "round": ["id": UUID().uuidString, "ordinal": 1, "questionIds": [question.id], "completed": false, "answers": []],
+                "unit": publicUnit])
+        }
         let supported = ["choice", "arrange", "matching", "completion", "listeningChoice", "dictation"]
         let type = supported.contains(kind) ? kind : "choice"
         var question: [String: Any] = ["id": "preview.question", "type": type, "goalId": "preview.goal",

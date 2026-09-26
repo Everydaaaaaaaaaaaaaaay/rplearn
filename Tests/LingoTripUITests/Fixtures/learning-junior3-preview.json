@@ -1,0 +1,717 @@
+[
+  {
+    "sourceHash": "632cb0b88e541ba5c9f452aa0fae96ea4e3923827aaef8740c4d1db6b339b88f",
+    "questionId": "ask-room",
+    "unit": {
+      "id": "oliver.junior3.bookclub-enquiries",
+      "version": 1,
+      "schemaVersion": 1,
+      "roleKey": "oliver",
+      "level": "junior3",
+      "title": "读书会的第一封问询",
+      "summary": "向陌生联系人礼貌询问地点、时间和报名方式。",
+      "scene": "Oliver 收到一张没有写清地点的读书会海报。他摊开便笺，想把几个问题问得清楚，也让忙碌的组织者容易回答。",
+      "estimatedMinutes": 8,
+      "goalIds": [
+        "j3.indirect-questions"
+      ],
+      "beats": [
+        {
+          "id": "beat1",
+          "afterQuestion": 0,
+          "speaker": "Oliver",
+          "text": "A lovely poster. It tells us everything except where to go.",
+          "translation": "海报挺好看。除了该去哪儿，几乎什么都告诉我们了。"
+        },
+        {
+          "id": "beat2",
+          "afterQuestion": 3,
+          "speaker": "Oliver",
+          "text": "One clear question at a time. That should help.",
+          "translation": "一次问清一个问题。这样应该有帮助。"
+        },
+        {
+          "id": "beat3",
+          "afterQuestion": 6,
+          "speaker": "Oliver",
+          "text": "Now we can send the message and get back to the books.",
+          "translation": "现在可以发出消息，回到书本里了。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "ask-room",
+          "type": "choice",
+          "goalId": "j3.indirect-questions",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "给不熟悉的组织者留言，想用 Could you tell me 开头询问读书会在哪个房间。哪句正确？",
+          "hint": "礼貌开头后面还有一个小句，注意它内部的语序。",
+          "options": [
+            {
+              "id": "a",
+              "text": "Could you tell me which room is the book club in?"
+            },
+            {
+              "id": "b",
+              "text": "Could you tell me which room the book club is in?"
+            },
+            {
+              "id": "c",
+              "text": "Could you tell me which room does the book club in?"
+            }
+          ]
+        },
+        {
+          "id": "when-start",
+          "type": "arrange",
+          "goalId": "j3.indirect-questions",
+          "instruction": "使用全部词块，组成符合中文意思的句子。",
+          "prompt": "组句：“你知道这次会面什么时候开始吗？”以 Do 开头。meeting 表示会面。",
+          "hint": "外层问句和里面的时间从句，语序不完全相同。",
+          "tokens": [
+            {
+              "id": "t3",
+              "text": "know"
+            },
+            {
+              "id": "t4",
+              "text": "when"
+            },
+            {
+              "id": "t5",
+              "text": "the meeting"
+            },
+            {
+              "id": "t6",
+              "text": "starts?"
+            },
+            {
+              "id": "t1",
+              "text": "Do"
+            },
+            {
+              "id": "t2",
+              "text": "you"
+            }
+          ]
+        },
+        {
+          "id": "whether-seat",
+          "type": "completion",
+          "goalId": "j3.indirect-questions",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "填写表示“是否”的连接词：“我想知道是否还有空座。” I wonder ___ there is a seat left.\n只填 if 或 whether。",
+          "hint": "这里没有问时间或地点，而是在询问一个情况是否成立。"
+        },
+        {
+          "id": "booking-order",
+          "type": "choice",
+          "goalId": "j3.indirect-questions",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "组织者需要你的报名问题。请选择语法正确的“您能解释一下我怎样报名吗？” register 表示报名。",
+          "hint": "把“我怎样报名”放进另一个问句后，检查主语和动词的顺序。",
+          "options": [
+            {
+              "id": "a",
+              "text": "Could you explain how can I register?"
+            },
+            {
+              "id": "b",
+              "text": "Could you explain how I register can?"
+            },
+            {
+              "id": "c",
+              "text": "Could you explain how I can register?"
+            }
+          ]
+        },
+        {
+          "id": "enquiry-intentions",
+          "type": "matching",
+          "goalId": "j3.indirect-questions",
+          "instruction": "将左侧英语与右侧意思逐一配对。",
+          "prompt": "将三个完整问询与想获得的信息配对。",
+          "hint": "看从句里询问的是费用、时间还是许可。",
+          "left": [
+            {
+              "id": "l1",
+              "text": "Could you tell me how much a ticket costs?"
+            },
+            {
+              "id": "l2",
+              "text": "Do you know when the doors open?"
+            },
+            {
+              "id": "l3",
+              "text": "Could you tell me whether I can bring a friend?"
+            }
+          ],
+          "right": [
+            {
+              "id": "r2",
+              "text": "想知道开门时间。"
+            },
+            {
+              "id": "r3",
+              "text": "想知道能否带朋友。"
+            },
+            {
+              "id": "r1",
+              "text": "想知道票价。"
+            }
+          ]
+        },
+        {
+          "id": "start-form",
+          "type": "completion",
+          "goalId": "j3.indirect-questions",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "将直接问句 What time does the talk start? 放进礼貌问句：Could you tell me what time the talk ___?\n填 start 的一般现在时正确形式；talk 指讲座。",
+          "hint": "原来的助动词不在从句里了，再看主语是单数还是复数。"
+        }
+      ]
+    }
+  },
+  {
+    "sourceHash": "12a5cf50db9c73d0a2541cff98b46948981dd49f4e8cd745f370037752acc5b9",
+    "questionId": "if-two-jobs",
+    "unit": {
+      "id": "marcus.junior3.neighbourhood-invitations",
+      "version": 1,
+      "schemaVersion": 1,
+      "roleKey": "marcus",
+      "level": "junior3",
+      "title": "街坊相片夜的邀请",
+      "summary": "礼貌确认来访安排，并说明满足条件后的准备。",
+      "scene": "Marcus 想在街角小店办一次相片分享夜。他给邻居们准备邀请留言，要问清参加人数和时间，也留出调整安排的余地。",
+      "estimatedMinutes": 8,
+      "goalIds": [
+        "j3.indirect-questions",
+        "j3.conditions"
+      ],
+      "beats": [
+        {
+          "id": "beat1",
+          "afterQuestion": 0,
+          "speaker": "Marcus",
+          "text": "The photos are ready. Now we need to make room for the neighbours.",
+          "translation": "照片准备好了。现在得给邻居们留出位置。"
+        },
+        {
+          "id": "beat2",
+          "afterQuestion": 3,
+          "speaker": "Marcus",
+          "text": "A quick message can save someone a wasted trip.",
+          "translation": "一条简短消息，就能让人少白跑一趟。"
+        },
+        {
+          "id": "beat3",
+          "afterQuestion": 6,
+          "speaker": "Marcus",
+          "text": "Good company, a few photographs, and enough chairs. That is the plan.",
+          "translation": "有聊得来的朋友、几张照片，还有够坐的椅子。这就是计划。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "whether-come",
+          "type": "completion",
+          "goalId": "j3.indirect-questions",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "在邀请留言中补全“请告诉我你是否能在六点前来”：Please let me know ___ you can come before six.\n只填 if 或 whether。",
+          "hint": "这里请求一条“能或不能”的信息，并没有提出某个条件。"
+        },
+        {
+          "id": "how-many-come",
+          "type": "choice",
+          "goalId": "j3.indirect-questions",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "你想问邻居“你知道有多少朋友会来吗？”哪句正确？",
+          "hint": "how many 后的整个名词短语在从句里做什么成分？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Do you know how many friends are coming?"
+            },
+            {
+              "id": "b",
+              "text": "Do you know how many are friends coming?"
+            },
+            {
+              "id": "c",
+              "text": "Do you know how many friends coming are?"
+            }
+          ]
+        },
+        {
+          "id": "more-chairs",
+          "type": "arrange",
+          "goalId": "j3.conditions",
+          "instruction": "使用全部词块，组成符合中文意思的句子。",
+          "prompt": "组句：“如果更多人来，我们就会加椅子。”以 If 开头。",
+          "hint": "先写可能发生的情况，再写随后的准备。",
+          "tokens": [
+            {
+              "id": "t3",
+              "text": "come,"
+            },
+            {
+              "id": "t4",
+              "text": "we"
+            },
+            {
+              "id": "t5",
+              "text": "will"
+            },
+            {
+              "id": "t6",
+              "text": "add"
+            },
+            {
+              "id": "t7",
+              "text": "chairs."
+            },
+            {
+              "id": "t1",
+              "text": "If"
+            },
+            {
+              "id": "t2",
+              "text": "more people"
+            }
+          ]
+        },
+        {
+          "id": "if-two-jobs",
+          "type": "matching",
+          "goalId": "j3.indirect-questions",
+          "instruction": "将左侧英语与右侧意思逐一配对。",
+          "prompt": "将三条留言与其目的配对。",
+          "hint": "同一个 if 可以请求“是否”的信息，也可以提出“如果”的条件。",
+          "left": [
+            {
+              "id": "l1",
+              "text": "Please tell me if you need a seat."
+            },
+            {
+              "id": "l2",
+              "text": "If you need a seat, I will save one."
+            },
+            {
+              "id": "l3",
+              "text": "Please tell me what time you will arrive."
+            }
+          ],
+          "right": [
+            {
+              "id": "r2",
+              "text": "说明在需要座位的条件下会留一个。"
+            },
+            {
+              "id": "r3",
+              "text": "请对方告知预计到达的时刻。"
+            },
+            {
+              "id": "r1",
+              "text": "请对方告知是否需要座位。"
+            }
+          ]
+        },
+        {
+          "id": "finish-before",
+          "type": "completion",
+          "goalId": "j3.conditions",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "补全约定“如果活动在八点前结束，我就会打电话给你”：If the event ___ before eight, I will call you.\n填 finish 的正确形式；event 指活动。",
+          "hint": "这是可能发生的结束条件，先查看从句主语的数。"
+        },
+        {
+          "id": "polite-arrival",
+          "type": "choice",
+          "goalId": "j3.indirect-questions",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "给初次来访的邻居写“您能告诉我您几点会到吗？”哪句正确？",
+          "hint": "礼貌问询后的从句仍能谈将来，关键是内部语序。",
+          "options": [
+            {
+              "id": "a",
+              "text": "Could you tell me what time will you arrive?"
+            },
+            {
+              "id": "b",
+              "text": "Could you tell me what time you will arrive?"
+            },
+            {
+              "id": "c",
+              "text": "Could you tell me what time you arrive will?"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "sourceHash": "8edec5810f68b080fc11adabb19278f9c6c962f83f4e8dc41ccda8db578d1c90",
+    "questionId": "purpose-labels",
+    "unit": {
+      "id": "ruby.junior3.reusable-cafe",
+      "version": 1,
+      "schemaVersion": 1,
+      "roleKey": "ruby",
+      "level": "junior3",
+      "title": "咖啡馆的小循环",
+      "summary": "说明减少使用、再次利用和回收，并说清原因与目的。",
+      "scene": "Ruby 在咖啡馆整理活动剩下的纸袋和玻璃罐。她想给同伴留下几条容易执行的建议，每条都说清楚为什么这样做。",
+      "estimatedMinutes": 8,
+      "goalIds": [
+        "j3.environment",
+        "j3.reasons"
+      ],
+      "beats": [
+        {
+          "id": "beat1",
+          "afterQuestion": 0,
+          "speaker": "Ruby",
+          "text": "These jars still have a job to do. Let us give them one.",
+          "translation": "这些罐子还能派上用场。我们给它们安排个新任务吧。"
+        },
+        {
+          "id": "beat2",
+          "afterQuestion": 3,
+          "speaker": "Ruby",
+          "text": "A short explanation helps everyone understand the plan.",
+          "translation": "解释简短些，也能让大家明白计划。"
+        },
+        {
+          "id": "beat3",
+          "afterQuestion": 6,
+          "speaker": "Ruby",
+          "text": "Less to throw away, more space on the counter.",
+          "translation": "要扔的东西少一点，柜台上的地方就多一点。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "three-actions",
+          "type": "matching",
+          "goalId": "j3.environment",
+          "instruction": "将左侧英语与右侧意思逐一配对。",
+          "prompt": "将三个英语表达与准确含义配对。",
+          "hint": "区分少用、再次使用和把材料回收加工，不把它们当同义词。",
+          "left": [
+            {
+              "id": "l1",
+              "text": "reduce the number of paper bags used"
+            },
+            {
+              "id": "l2",
+              "text": "reuse a glass jar"
+            },
+            {
+              "id": "l3",
+              "text": "recycle waste paper"
+            }
+          ],
+          "right": [
+            {
+              "id": "r2",
+              "text": "把一个玻璃罐再次拿来使用"
+            },
+            {
+              "id": "r3",
+              "text": "把废纸回收处理以再利用"
+            },
+            {
+              "id": "r1",
+              "text": "减少使用的纸袋数量"
+            }
+          ]
+        },
+        {
+          "id": "jar-action",
+          "type": "choice",
+          "goalId": "j3.environment",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "本题做法：把洗净的旧玻璃罐直接拿来装铅笔，没有把玻璃加工成新材料。用哪个词准确描述这个做法？",
+          "hint": "判断是在直接再次使用物品，还是先处理材料。",
+          "options": [
+            {
+              "id": "a",
+              "text": "recycle"
+            },
+            {
+              "id": "b",
+              "text": "reuse"
+            },
+            {
+              "id": "c",
+              "text": "reduce"
+            }
+          ]
+        },
+        {
+          "id": "reason-paper",
+          "type": "completion",
+          "goalId": "j3.reasons",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "表达原因：“我们把这些纸留着，因为背面还是空白。” We keep this paper ___ the other side is blank.\n只填 because 或 so；blank 表示空白的。",
+          "hint": "横线后是在解释保留纸张的原因，还是在叙述结果？"
+        },
+        {
+          "id": "purpose-labels",
+          "type": "arrange",
+          "goalId": "j3.reasons",
+          "instruction": "使用全部词块，组成符合中文意思的句子。",
+          "prompt": "组句：“我们给箱子贴标签，以便大家能找到它们。”以 We 开头；label 在这里是动词“贴标签”。",
+          "hint": "后半句说明这样做的目的，并有自己的主语。",
+          "tokens": [
+            {
+              "id": "t3",
+              "text": "the boxes"
+            },
+            {
+              "id": "t4",
+              "text": "so that"
+            },
+            {
+              "id": "t5",
+              "text": "everyone"
+            },
+            {
+              "id": "t6",
+              "text": "can"
+            },
+            {
+              "id": "t7",
+              "text": "find"
+            },
+            {
+              "id": "t8",
+              "text": "them."
+            },
+            {
+              "id": "t1",
+              "text": "We"
+            },
+            {
+              "id": "t2",
+              "text": "label"
+            }
+          ]
+        },
+        {
+          "id": "so-result",
+          "type": "choice",
+          "goalId": "j3.reasons",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "本题事实：所有玻璃罐都装满了，因此我们用了一个盒子。哪句保持这个因果关系且语法正确？",
+          "hint": "先确认哪件事先构成原因，再检查连接词有没有重复。",
+          "options": [
+            {
+              "id": "a",
+              "text": "All the jars were full, so we used a box."
+            },
+            {
+              "id": "b",
+              "text": "Because all the jars were full, so we used a box."
+            },
+            {
+              "id": "c",
+              "text": "We used a box, so all the jars were full."
+            }
+          ]
+        },
+        {
+          "id": "purpose-note",
+          "type": "completion",
+          "goalId": "j3.reasons",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "补全“我们写这张便条，以便下一班同事能看懂计划”：We write this note ___ the next team can understand the plan.\n只填 so that 或 because。",
+          "hint": "题目说的是写便条想达到的目的。"
+        }
+      ]
+    }
+  },
+  {
+    "sourceHash": "8edec5810f68b080fc11adabb19278f9c6c962f83f4e8dc41ccda8db578d1c90",
+    "questionId": "purpose-note",
+    "unit": {
+      "id": "ruby.junior3.reusable-cafe",
+      "version": 1,
+      "schemaVersion": 1,
+      "roleKey": "ruby",
+      "level": "junior3",
+      "title": "咖啡馆的小循环",
+      "summary": "说明减少使用、再次利用和回收，并说清原因与目的。",
+      "scene": "Ruby 在咖啡馆整理活动剩下的纸袋和玻璃罐。她想给同伴留下几条容易执行的建议，每条都说清楚为什么这样做。",
+      "estimatedMinutes": 8,
+      "goalIds": [
+        "j3.environment",
+        "j3.reasons"
+      ],
+      "beats": [
+        {
+          "id": "beat1",
+          "afterQuestion": 0,
+          "speaker": "Ruby",
+          "text": "These jars still have a job to do. Let us give them one.",
+          "translation": "这些罐子还能派上用场。我们给它们安排个新任务吧。"
+        },
+        {
+          "id": "beat2",
+          "afterQuestion": 3,
+          "speaker": "Ruby",
+          "text": "A short explanation helps everyone understand the plan.",
+          "translation": "解释简短些，也能让大家明白计划。"
+        },
+        {
+          "id": "beat3",
+          "afterQuestion": 6,
+          "speaker": "Ruby",
+          "text": "Less to throw away, more space on the counter.",
+          "translation": "要扔的东西少一点，柜台上的地方就多一点。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "three-actions",
+          "type": "matching",
+          "goalId": "j3.environment",
+          "instruction": "将左侧英语与右侧意思逐一配对。",
+          "prompt": "将三个英语表达与准确含义配对。",
+          "hint": "区分少用、再次使用和把材料回收加工，不把它们当同义词。",
+          "left": [
+            {
+              "id": "l1",
+              "text": "reduce the number of paper bags used"
+            },
+            {
+              "id": "l2",
+              "text": "reuse a glass jar"
+            },
+            {
+              "id": "l3",
+              "text": "recycle waste paper"
+            }
+          ],
+          "right": [
+            {
+              "id": "r2",
+              "text": "把一个玻璃罐再次拿来使用"
+            },
+            {
+              "id": "r3",
+              "text": "把废纸回收处理以再利用"
+            },
+            {
+              "id": "r1",
+              "text": "减少使用的纸袋数量"
+            }
+          ]
+        },
+        {
+          "id": "jar-action",
+          "type": "choice",
+          "goalId": "j3.environment",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "本题做法：把洗净的旧玻璃罐直接拿来装铅笔，没有把玻璃加工成新材料。用哪个词准确描述这个做法？",
+          "hint": "判断是在直接再次使用物品，还是先处理材料。",
+          "options": [
+            {
+              "id": "a",
+              "text": "recycle"
+            },
+            {
+              "id": "b",
+              "text": "reuse"
+            },
+            {
+              "id": "c",
+              "text": "reduce"
+            }
+          ]
+        },
+        {
+          "id": "reason-paper",
+          "type": "completion",
+          "goalId": "j3.reasons",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "表达原因：“我们把这些纸留着，因为背面还是空白。” We keep this paper ___ the other side is blank.\n只填 because 或 so；blank 表示空白的。",
+          "hint": "横线后是在解释保留纸张的原因，还是在叙述结果？"
+        },
+        {
+          "id": "purpose-labels",
+          "type": "arrange",
+          "goalId": "j3.reasons",
+          "instruction": "使用全部词块，组成符合中文意思的句子。",
+          "prompt": "组句：“我们给箱子贴标签，以便大家能找到它们。”以 We 开头；label 在这里是动词“贴标签”。",
+          "hint": "后半句说明这样做的目的，并有自己的主语。",
+          "tokens": [
+            {
+              "id": "t3",
+              "text": "the boxes"
+            },
+            {
+              "id": "t4",
+              "text": "so that"
+            },
+            {
+              "id": "t5",
+              "text": "everyone"
+            },
+            {
+              "id": "t6",
+              "text": "can"
+            },
+            {
+              "id": "t7",
+              "text": "find"
+            },
+            {
+              "id": "t8",
+              "text": "them."
+            },
+            {
+              "id": "t1",
+              "text": "We"
+            },
+            {
+              "id": "t2",
+              "text": "label"
+            }
+          ]
+        },
+        {
+          "id": "so-result",
+          "type": "choice",
+          "goalId": "j3.reasons",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "本题事实：所有玻璃罐都装满了，因此我们用了一个盒子。哪句保持这个因果关系且语法正确？",
+          "hint": "先确认哪件事先构成原因，再检查连接词有没有重复。",
+          "options": [
+            {
+              "id": "a",
+              "text": "All the jars were full, so we used a box."
+            },
+            {
+              "id": "b",
+              "text": "Because all the jars were full, so we used a box."
+            },
+            {
+              "id": "c",
+              "text": "We used a box, so all the jars were full."
+            }
+          ]
+        },
+        {
+          "id": "purpose-note",
+          "type": "completion",
+          "goalId": "j3.reasons",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "补全“我们写这张便条，以便下一班同事能看懂计划”：We write this note ___ the next team can understand the plan.\n只填 so that 或 because。",
+          "hint": "题目说的是写便条想达到的目的。"
+        }
+      ]
+    }
+  }
+]
