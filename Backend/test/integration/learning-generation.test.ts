@@ -114,6 +114,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共学习补库
       "工程测试：逐题答案、题干独立性、反例、提示、解析和档位已按夹具核对。不可用于正式题库。",
     );
     unitIds.push(`generated.${id}`);
+    await enqueue(randomUUID(), role);
+    expect(
+      await engine.read(user1, (s) => s.availability(role, "primary3", char1)),
+    ).toMatchObject({ availableUnits: 1, generationStatus: null });
     for (const [user, character] of [
       [user0, char0],
       [user1, char1],
@@ -185,6 +189,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共学习补库
     const job = await repository.inspect(other);
     expect(job.status).toBe("pending");
     expect(job.candidate).toBeNull();
+    const [run] =
+      await database.sql`select candidate from app.learning_generation_runs where job_id=${other}`;
+    expect(run?.candidate).toMatchObject({ rawResponse: "{}", truncated: false });
   });
   it("发布时再次去重，复刻内容不能成为新共享题", async () => {
     const id = randomUUID(),

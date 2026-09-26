@@ -40,6 +40,11 @@ describe("补库内容硬门槛", () => {
         { ...unit, id: "other", title: "改名无效" },
       ]),
     ).toThrow();
+    const noImage = structuredClone(unit);
+    const hinted = noImage.questions[0];
+    if (!hinted) throw new Error("缺少测试题目。");
+    hinted.hint = "先看图旁的英文，再选择合适答案。";
+    expect(() => validateGeneratedUnit(noImage, blueprint, [])).toThrow();
     const changed = structuredClone(unit);
     const firstQuestion = changed.questions[0];
     if (!firstQuestion) throw new Error("缺少测试题目。");

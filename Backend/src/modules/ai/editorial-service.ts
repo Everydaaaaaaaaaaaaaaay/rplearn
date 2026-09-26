@@ -1,10 +1,12 @@
 import type { RuntimeConfig } from "../../config/env.js";
-import type { AiMessage } from "./types.js";
+import type { AiMessage, AiProviderClient } from "./types.js";
 import { createDeepSeekClient } from "./deepseek/client.js";
 
 /** 公共课程生产不经过用户聊天扣费；调用预算与审计由学习生成仓库持有。 */
-export function createLearningEditorialCompletion(config: RuntimeConfig) {
-  const provider = createDeepSeekClient(config);
+export function createLearningEditorialCompletion(
+  config: RuntimeConfig,
+  provider: AiProviderClient = createDeepSeekClient(config),
+) {
   const model = config.aiDeepSeekAllowedModels[0];
   if (!provider.configured || !model)
     throw new Error("学习内容生成尚未配置可用供应商。");
@@ -33,7 +35,7 @@ export function createLearningEditorialCompletion(config: RuntimeConfig) {
         maxInputCharacters: 180_000,
         maxMessages: 2,
         maxOutputTokens: 9000,
-        providerOptions: {},
+        providerOptions: { thinking: { type: "disabled" } },
         temperature: input.phase === "author" ? 0.65 : 0,
         timeoutMs: 90_000,
       },

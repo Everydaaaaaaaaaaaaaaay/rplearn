@@ -154,10 +154,7 @@ export class LearningEngineRepository {
   }
 
   /** 仅供学习模块仓库在持有发布事务时调用。 */
-  async publishInTransaction(
-    sql: TransactionSql,
-    unit: LearningUnit,
-  ): Promise<void> {
+  async publishInTransaction(sql: TransactionSql, unit: LearningUnit): Promise<void> {
     await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
     const hash = contentHash(unit);
     await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-unit:${unit.id}`}, 0))`;
@@ -241,7 +238,10 @@ export class LearningSession {
       { status: string }[]
     >`select status from app.learning_generation_jobs
       where role_key=${roleKey} and level_key=${level} and status in ('pending','running','review') limit 1`;
-    return { availableUnits: row?.count ?? 0, generationStatus: job?.status ?? null };
+    return {
+      availableUnits: row?.count ?? 0,
+      generationStatus: row?.count === 0 ? (job?.status ?? null) : null,
+    };
   }
 
   async history(

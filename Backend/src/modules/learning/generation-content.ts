@@ -5,7 +5,7 @@ import { loadCuratedCatalog } from "./catalog.js";
 import { contentHash, unitSchema, type LearningUnit } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
 
-export const generationPromptVersion = 1;
+export const generationPromptVersion = 2;
 const manifestSchema = z.strictObject({
   version: z.literal(1),
   roles: z
@@ -147,6 +147,8 @@ export function validateGeneratedUnit(
       JSON.stringify(q).includes('"imageAssetId"')
     )
       throw new Error("生成资源尚未验收，此批只开放文字题型。");
+    if (/看图|图中|图旁|上图|下图/.test([q.prompt, q.instruction, q.hint].join(" ")))
+      throw new Error("纯文字题不能指向未提供的图片。");
     if (
       /根据(?:上文|剧情|故事)|刚才|前文|上一题|故事中|in the story|according to the (?:story|passage)/i.test(
         q.prompt,

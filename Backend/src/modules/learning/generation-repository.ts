@@ -16,6 +16,21 @@ export type GenerationLease = Readonly<{
   token: string;
   blueprint: GenerationBlueprint;
 }>;
+interface GenerationJob {
+  id: string;
+  role_key: string;
+  level_key: LearningUnit["level"];
+  status: string;
+  attempts: number;
+  candidate_hash: string | null;
+  blueprint_hash: string | null;
+  candidate: unknown;
+  review_report: unknown;
+  last_error_code: string | null;
+  reviewed_by: string | null;
+  review_notes: string | null;
+  published_unit_id: string | null;
+}
 export class LearningGenerationRepository {
   constructor(private readonly database: DatabaseResource) {}
   async claim(
@@ -70,6 +85,22 @@ export class LearningGenerationRepository {
       await this.database
         .sql`update app.learning_generation_runs set review_model=${model},review_usage=${JSON.stringify(usage)}::jsonb where job_id=${lease.id} and attempt=${lease.attempt} and lease_token=${lease.token}`;
   }
+  async recordOutput(
+    lease: GenerationLease,
+    phase: "author" | "review",
+    content: string,
+  ): Promise<void> {
+    const evidence = JSON.stringify({
+      rawResponse: content.slice(0, 10000),
+      truncated: content.length > 10000,
+    });
+    if (phase === "author")
+      await this.database
+        .sql`update app.learning_generation_runs set candidate=${evidence}::jsonb where job_id=${lease.id} and attempt=${lease.attempt} and lease_token=${lease.token}`;
+    else
+      await this.database
+        .sql`update app.learning_generation_runs set review_report=${evidence}::jsonb where job_id=${lease.id} and attempt=${lease.attempt} and lease_token=${lease.token}`;
+  }
   async recordCandidate(lease: GenerationLease, unit: LearningUnit): Promise<boolean> {
     return await this.database.sql.begin(async (sql) => {
       const changed =
@@ -109,10 +140,13 @@ export class LearningGenerationRepository {
       .sql`select id,role_key,level_key,status,attempts,candidate_hash,last_error_code,created_at from app.learning_generation_jobs order by created_at desc limit 100`;
   }
   async inspect(id: string) {
-    const [row] = await this.database
-      .sql`select id,role_key,level_key,status,attempts,candidate_hash,blueprint_hash,candidate,review_report,last_error_code,reviewed_by,review_notes,published_unit_id from app.learning_generation_jobs where id=${id}`;
+    const [row] = await this.database.sql<
+      GenerationJob[]
+    >`select id,role_key,level_key,status,attempts,candidate_hash,blueprint_hash,candidate,review_report,last_error_code,reviewed_by,review_notes,published_unit_id from app.learning_generation_jobs where id=${id}`;
     if (!row) throw new Error("找不到生成任务。");
-    return row;
+    const runs = await this.database
+      .sql`select attempt,prompt_version,blueprint_hash,author_model,review_model,author_usage,review_usage,outcome,error_code,review_report,created_at,finished_at from app.learning_generation_runs where job_id=${id} order by attempt`;
+    return { ...row, runs };
   }
   async publish(
     id: string,
