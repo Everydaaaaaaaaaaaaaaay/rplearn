@@ -145,7 +145,7 @@ export class LearningGenerationRepository {
     >`select id,role_key,level_key,status,attempts,candidate_hash,blueprint_hash,candidate,review_report,last_error_code,reviewed_by,review_notes,published_unit_id from app.learning_generation_jobs where id=${id}`;
     if (!row) throw new Error("找不到生成任务。");
     const runs = await this.database
-      .sql`select attempt,prompt_version,blueprint_hash,author_model,review_model,author_usage,review_usage,outcome,error_code,review_report,created_at,finished_at from app.learning_generation_runs where job_id=${id} order by attempt`;
+      .sql`select attempt,prompt_version,blueprint_hash,author_model,review_model,author_usage,review_usage,outcome,error_code,candidate,review_report,created_at,finished_at from app.learning_generation_runs where job_id=${id} order by attempt`;
     return { ...row, runs };
   }
   async publish(

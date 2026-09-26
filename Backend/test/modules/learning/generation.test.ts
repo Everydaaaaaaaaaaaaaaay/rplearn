@@ -1,12 +1,21 @@
+import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { generationFixture } from "../../helpers/learning-generation.js";
 import {
+  generatedDraftSchema,
   validateGeneratedUnit,
   validateIndependentReview,
 } from "../../../src/modules/learning/generation-content.js";
 
 describe("补库内容硬门槛", () => {
+  it("供应商实际收到的 Schema 只允许四种已开放文字题型", () => {
+    const schema = JSON.stringify(z.toJSONSchema(generatedDraftSchema));
+    for (const type of ["choice", "arrange", "completion", "matching"])
+      expect(schema).toContain(`"const":"${type}"`);
+    for (const type of ["listeningChoice", "dictation"])
+      expect(schema).not.toContain(`"const":"${type}"`);
+  });
   it("合同通过仍需独立解题；拒绝错误答案、skip 反例和缺失题目", async () => {
     const { blueprint, unit, report } = await generationFixture(randomUUID());
     expect(validateGeneratedUnit(unit, blueprint, []).questions).toHaveLength(6);

@@ -27,8 +27,9 @@ export async function generationFixture(jobId: string) {
     beats: sample.beats,
     questions: sample.questions,
   });
-  const unit = makeGeneratedUnit(draft, blueprint, jobId);
-  return { blueprint, draft, unit, report: reviewFixture(unit) };
+  const testBlueprint = { ...blueprint, goalIds: sample.goalIds };
+  const unit = makeGeneratedUnit(draft, testBlueprint, jobId);
+  return { blueprint: testBlueprint, draft, unit, report: reviewFixture(unit) };
 }
 export function reviewFixture(unit: LearningUnit) {
   return {

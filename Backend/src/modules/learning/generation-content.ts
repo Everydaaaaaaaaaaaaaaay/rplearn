@@ -2,10 +2,15 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { z } from "zod";
 import { loadCuratedCatalog } from "./catalog.js";
-import { contentHash, unitSchema, type LearningUnit } from "./content.js";
+import {
+  contentHash,
+  questionSchema,
+  unitSchema,
+  type LearningUnit,
+} from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
 
-export const generationPromptVersion = 2;
+export const generationPromptVersion = 3;
 const manifestSchema = z.strictObject({
   version: z.literal(1),
   roles: z
@@ -96,7 +101,17 @@ export const generatedDraftSchema = z.strictObject({
   scene: unitSchema.shape.scene,
   goalIds: unitSchema.shape.goalIds.max(2),
   beats: unitSchema.shape.beats.min(3).max(5),
-  questions: unitSchema.shape.questions.length(6),
+  // 与实际可发布类型一致，不向作者展示尚未开放的听力分支。
+  questions: z
+    .array(
+      z.discriminatedUnion("type", [
+        questionSchema.options[0],
+        questionSchema.options[2],
+        questionSchema.options[3],
+        questionSchema.options[5],
+      ]),
+    )
+    .length(6),
 });
 export type UnitSummary = Pick<LearningUnit, "id" | "title" | "scene" | "questions">;
 export function questionFingerprint(q: LearningUnit["questions"][number]): string {
