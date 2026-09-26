@@ -1,5 +1,7 @@
 import type { DatabaseResource } from "../../db/client.js";
-import { unitSchema } from "./content.js";
+import { questionImageIds, unitSchema, type LearningUnit } from "./content.js";
+import { learningAudioSchema } from "./audio.js";
+import { learningImageSchema } from "./images.js";
 
 export type LearningAdminFilter = Readonly<{
   role?: string | undefined;
@@ -11,6 +13,29 @@ export type LearningAdminFilter = Readonly<{
 /** 后台只读取公开课程与生成记录，不读取用户聊天、作答或身份。 */
 export class LearningAdminRepository {
   constructor(private readonly database: DatabaseResource) {}
+  async media(unit: LearningUnit | null) {
+    if (!unit) return { audio: [], images: [] };
+    const imageIds = [...new Set(unit.questions.flatMap(questionImageIds))];
+    const audioIds = [
+      ...new Set(
+        unit.questions.flatMap((question) =>
+          question.type === "listeningChoice" || question.type === "dictation"
+            ? [question.audio.assetId]
+            : [],
+        ),
+      ),
+    ];
+    const [images, audio] = await Promise.all([
+      this.database
+        .sql`select metadata from app.learning_image_assets where id=any(${imageIds}::text[]) order by id`,
+      this.database
+        .sql`select metadata from app.learning_audio_assets where id=any(${audioIds}::text[]) order by id`,
+    ]);
+    return {
+      images: images.map((row) => learningImageSchema.parse(row.metadata)),
+      audio: audio.map((row) => learningAudioSchema.parse(row.metadata)),
+    };
+  }
   async units(filter: LearningAdminFilter) {
     const rows = await this.database
       .sql`select u.id,u.role_key,u.level_key,u.current_version,u.published,v.content_hash,v.payload->>'title' as title,v.payload->'authorship'->>'kind' as authorship,jsonb_array_length(v.payload->'questions') as questions,count(*) over()::int as total from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version where (${filter.role ?? null}::text is null or u.role_key=${filter.role ?? null}) and (${filter.level ?? null}::text is null or u.level_key=${filter.level ?? null}) order by u.role_key,u.level_key,u.id limit ${filter.limit} offset ${filter.offset}`;

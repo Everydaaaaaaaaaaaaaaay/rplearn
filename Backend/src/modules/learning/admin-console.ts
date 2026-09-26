@@ -12,7 +12,7 @@ export function registerLearningAdminConsole(app: FastifyInstance) {
   const headers = {
     "cache-control": "no-store",
     "content-security-policy":
-      "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' blob:; media-src 'self' blob:; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
     "referrer-policy": "no-referrer",
     "x-content-type-options": "nosniff",
   };

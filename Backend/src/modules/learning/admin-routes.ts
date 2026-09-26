@@ -62,6 +62,41 @@ export function registerLearningAdminRoutes(
     scope.get("/internal/admin/learning/jobs", { schema: { hide: true } }, (request) =>
       service.jobs(parse(filterSchema, request.query)),
     );
+    scope.get(
+      "/internal/admin/learning/:source/:id/media/:kind/:assetId",
+      { schema: { hide: true } },
+      async (request, reply) => {
+        const p = parse(
+          z.object({
+            source: z.enum(["units", "jobs"]),
+            id: z.string().regex(/^[a-z0-9][a-z0-9_.-]{0,119}$/),
+            kind: z.enum(["audio", "images"]),
+            assetId: z.string().regex(/^(audio|image)\.[a-f0-9]{64}$/),
+          }),
+          request.params,
+        );
+        if (p.source === "jobs") parse(z.uuid(), p.id);
+        const q = parse(
+          z.strictObject({
+            version: z.coerce.number().int().positive().optional(),
+            hash: z.string().regex(/^[a-f0-9]{64}$/),
+          }),
+          request.query,
+        );
+        const result = await service.media(
+          p.source,
+          p.id,
+          p.kind,
+          p.assetId,
+          q.hash,
+          q.version,
+        );
+        return reply
+          .header("x-content-type-options", "nosniff")
+          .type(result.contentType)
+          .send(result.bytes);
+      },
+    );
     const id = (value: unknown) => parse(z.object({ id: z.uuid() }), value).id;
     scope.get(
       "/internal/admin/learning/jobs/:id",

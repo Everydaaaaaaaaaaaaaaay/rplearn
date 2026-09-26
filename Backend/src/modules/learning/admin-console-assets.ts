@@ -565,6 +565,75 @@ dialog button {
 #loginError {
   color: var(--red);
 }
+
+.media-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.media-option {
+  min-width: 0;
+}
+.media-picture {
+  margin: 8px 0;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+.media-picture img {
+  width: 100%;
+  max-width: 190px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.media-picture .muted {
+  font-size: 12px;
+  text-align: center;
+}
+.media-audio {
+  padding: 16px;
+  margin: 16px 0;
+  background: #eef4fb;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+}
+.media-audio audio {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+}
+.media-audio label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+.media-audio select {
+  width: auto;
+}
+.media-review {
+  margin: 12px 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.media-review summary {
+  cursor: pointer;
+  color: var(--blue);
+}
+.media-review p {
+  margin: 8px 0;
+  line-height: 1.7;
+}
+.media-review code {
+  font-size: 11px;
+  word-break: break-all;
+}
+
 @media (max-width: 900px) {
   main {
     padding: 22px 14px;
@@ -729,18 +798,21 @@ export const learningAdminJavascript = String.raw`
       !state.dirty || window.confirm("离开会放弃尚未提交的修订，是否继续？")
     );
   }
-  async function api(path, method = "GET", body) {
+  async function api(path, method = "GET", body, binary = false, signal) {
     const r = await fetch("/internal/admin/learning" + path, {
       method,
+      signal,
       headers: {
         authorization: "Bearer " + state.token,
         ...(body ? { "content-type": "application/json" } : {}),
       },
       ...(body ? { body: JSON.stringify(body) } : {}),
     });
+    if (r.ok && binary) return r.blob();
     const data = await r.json();
     if (!r.ok) {
       if (r.status === 401) {
+        resetMedia();
         state.token = "";
         sessionStorage.removeItem("lingotrip-admin-token");
         $("connection").textContent = "连接已失效";
@@ -748,7 +820,10 @@ export const learningAdminJavascript = String.raw`
       }
       const detail = data.error?.details || data.details;
       let message =
-        (r.status === 401 ? "管理员凭据无效，请重新连接。" : data.error?.message || data.message) || "操作未完成，请刷新后重试。";
+        (r.status === 401
+          ? "管理员凭据无效，请重新连接。"
+          : data.error?.message || data.message) ||
+        "操作未完成，请刷新后重试。";
       if (Array.isArray(detail) && detail.length)
         message +=
           " " +
@@ -804,7 +879,9 @@ export const learningAdminJavascript = String.raw`
         badge(
           kind === "units"
             ? "第 " + item.current_version + " 版 · " + item.questions + " 题"
-            : item.is_revision && item.status === "pending" ? "等待复审" : statuses[item.status],
+            : item.is_revision && item.status === "pending"
+              ? "等待复审"
+              : statuses[item.status],
           kind === "units" ? "published" : item.status,
         ),
       );
@@ -821,6 +898,7 @@ export const learningAdminJavascript = String.raw`
   }
   async function select(id, version) {
     if (state.busy || !discard()) return;
+    resetMedia();
     const epoch = ++state.epoch;
     state.dirty = false;
     state.selected = id;
@@ -847,6 +925,7 @@ export const learningAdminJavascript = String.raw`
     await load();
   }
   function showMode(mode) {
+    if (mode !== "preview") stopAudio();
     state.mode = mode;
     for (const name of ["preview", "edit", "audit"]) {
       $(name === "edit" ? "editor" : name).hidden = name !== mode;
@@ -860,7 +939,11 @@ export const learningAdminJavascript = String.raw`
     $("document").hidden = false;
     $("detailTitle").textContent = u?.title || "尚未形成有效稿件";
     $("detailBadge").textContent =
-      state.kind === "units" ? "正式单元" : d.isRevision && d.status === "pending" ? "等待复审" : statuses[d.status];
+      state.kind === "units"
+        ? "正式单元"
+        : d.isRevision && d.status === "pending"
+          ? "等待复审"
+          : statuses[d.status];
     $("detailBadge").className =
       "badge " + (state.kind === "units" ? "published" : d.status);
     $("detailMeta").textContent =
@@ -884,24 +967,253 @@ export const learningAdminJavascript = String.raw`
           ? "独立审题已通过。发布前仍需逐题核对答案、提示与解析。"
           : d.isRevision && d.status === "pending"
             ? "修订稿已保存，等待服务端重新独立审题；可在审核记录中追溯原稿。"
-          : d.status === "running"
-            ? "服务端正在处理此稿件，完成后可刷新查看结果。"
-            : d.last_error_code === "EDITOR_REVISED"
-              ? "已有后继修订稿。请到审核记录中打开后继修订，继续处理新稿。"
-            : d.last_error_code
-              ? errorText(d.last_error_code) +
-                "。修改有效候选后可提交新的修订任务。"
-              : "候选还未通过完整审核，暂不能分配给用户。";
-    $("editMode").disabled =
-      state.kind !== "jobs" ||
-      !d.canRevise;
+            : d.status === "running"
+              ? "服务端正在处理此稿件，完成后可刷新查看结果。"
+              : d.last_error_code === "EDITOR_REVISED"
+                ? "已有后继修订稿。请到审核记录中打开后继修订，继续处理新稿。"
+                : d.last_error_code
+                  ? errorText(d.last_error_code) +
+                    "。修改有效候选后可提交新的修订任务。"
+                  : "候选还未通过完整审核，暂不能分配给用户。";
+    $("editMode").disabled = state.kind !== "jobs" || !d.canRevise;
     renderPreview();
     renderEditor();
     renderAudit();
     showMode("preview");
     updateActions();
   }
+  let mediaEpoch = 0;
+  const mediaCache = new Map(),
+    mediaURLs = new Set(),
+    mediaRequests = new Set();
+  function stopAudio() {
+    for (const audio of $("preview").querySelectorAll("audio")) audio.pause();
+  }
+  function resetMedia() {
+    mediaEpoch++;
+    stopAudio();
+    for (const request of mediaRequests) request.abort();
+    mediaRequests.clear();
+    for (const url of mediaURLs) URL.revokeObjectURL(url);
+    mediaURLs.clear();
+    mediaCache.clear();
+  }
+  async function mediaURL(kind, asset) {
+    if (mediaCache.has(asset.id)) return mediaCache.get(asset.id);
+    const epoch = mediaEpoch,
+      controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 20000);
+    mediaRequests.add(controller);
+    const query = new URLSearchParams({
+      hash: state.detail.contentHash || state.detail.mediaHash,
+    });
+    if (state.kind === "units")
+      query.set("version", String(state.detail.unit.version));
+    const path =
+      "/" +
+      state.kind +
+      "/" +
+      encodeURIComponent(state.selected) +
+      "/media/" +
+      kind +
+      "/" +
+      asset.id +
+      "?" +
+      query;
+    const promise = (async () => {
+      const blob = await api(path, "GET", undefined, true, controller.signal);
+      if (blob.size !== asset.byteSize || blob.type !== asset.contentType)
+        throw new Error("素材与登记信息不一致，请刷新后重试。");
+      const digest = Array.from(
+        new Uint8Array(
+          await crypto.subtle.digest("SHA-256", await blob.arrayBuffer()),
+        ),
+      )
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+      if (digest !== asset.sha256)
+        throw new Error("素材校验未通过，请刷新后重试。");
+      if (epoch !== mediaEpoch)
+        throw new DOMException("已切换内容", "AbortError");
+      const url = URL.createObjectURL(blob);
+      mediaURLs.add(url);
+      return url;
+    })();
+    mediaCache.set(asset.id, promise);
+    try {
+      return await promise;
+    } catch (error) {
+      if (epoch === mediaEpoch) mediaCache.delete(asset.id);
+      throw error;
+    } finally {
+      clearTimeout(timer);
+      mediaRequests.delete(controller);
+    }
+  }
+  function mediaReview(asset, kind) {
+    const detail = el("details", undefined, "media-review");
+    detail.append(el("summary", "素材来源与审核"));
+    if (kind === "images")
+      detail.append(
+        el("p", "图意：" + asset.description),
+        el("p", "来源：" + asset.source),
+        el("p", "审核者：" + asset.reviewedBy),
+      );
+    else
+      detail.append(
+        el(
+          "p",
+          "固定声音：" +
+            asset.voice +
+            "；时长 " +
+            (asset.durationMs / 1000).toFixed(2) +
+            " 秒",
+        ),
+      );
+    detail.append(
+      el("p", "审核日期：" + asset.reviewedAt),
+      el("p", asset.reviewNotes),
+      el("code", "SHA-256：" + asset.sha256),
+    );
+    return detail;
+  }
+  function pictureOption(option, label) {
+    const box = el("div", undefined, "option media-option");
+    box.append(el("b", label));
+    if (!option.imageAssetId) {
+      box.append(el("p", option.text));
+      return box;
+    }
+    const asset = state.detail.media?.images.find(
+      (item) => item.id === option.imageAssetId,
+    );
+    if (!asset) {
+      box.append(
+        el("p", "图片尚未登记，当前无法预览。", "muted"),
+        el("p", option.text),
+      );
+      return box;
+    }
+    const figure = el("figure", undefined, "media-picture"),
+      img = el("img"),
+      status = el("span", "正在载入图片…", "muted"),
+      retry = el("button", "重试图片");
+    img.alt = option.text;
+    img.hidden = true;
+    img.width = asset.width;
+    img.height = asset.height;
+    retry.type = "button";
+    retry.hidden = true;
+    figure.append(img, status, retry);
+    box.append(figure, el("p", option.text), mediaReview(asset, "images"));
+    const epoch = mediaEpoch;
+    const load = async () => {
+      if (epoch !== mediaEpoch) return;
+      retry.hidden = true;
+      status.hidden = false;
+      status.textContent = "正在载入图片…";
+      try {
+        const url = await mediaURL("images", asset);
+        if (epoch !== mediaEpoch) return;
+        img.src = url;
+        await img.decode();
+        if (epoch !== mediaEpoch) return;
+        img.hidden = false;
+        status.hidden = true;
+      } catch (error) {
+        if (epoch !== mediaEpoch) return;
+        status.textContent =
+          error.name === "AbortError"
+            ? "图片载入超时，请重试。"
+            : error.message;
+        retry.hidden = false;
+      }
+    };
+    retry.addEventListener("click", load);
+    void load();
+    return box;
+  }
+  function audioPreview(question) {
+    const box = el("div", undefined, "media-audio");
+    box.append(el("p", "听力原文（管理员可见）：" + question.audio.text));
+    const asset = state.detail.media?.audio.find(
+      (item) => item.id === question.audio.assetId,
+    );
+    if (!asset) {
+      box.append(el("p", "音频尚未登记，当前无法试听。", "muted"));
+      return box;
+    }
+    const load = el("button", "载入并试听"),
+      audio = el("audio"),
+      status = el("p", "点击后读取此版本录音，不会自动播放其他题目。", "muted");
+    load.type = "button";
+    audio.controls = true;
+    audio.preload = "none";
+    audio.hidden = true;
+    audio.setAttribute("aria-label", "题目 " + question.id + " 的听力录音");
+    const label = el("label", "播放速度"),
+      speed = el("select");
+    speed.setAttribute("aria-label", "播放速度");
+    for (const [value, title] of [
+      ["1", "正常"],
+      ["0.8", "慢速 0.8×"],
+    ]) {
+      const option = el("option", title);
+      option.value = value;
+      speed.append(option);
+    }
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+    label.append(speed);
+    label.hidden = true;
+    audio.addEventListener("play", () => {
+      for (const other of $("preview").querySelectorAll("audio"))
+        if (other !== audio) other.pause();
+    });
+    audio.addEventListener("error", () => {
+      status.textContent = "音频无法播放，请重试载入。";
+      load.hidden = false;
+    });
+    const epoch = mediaEpoch;
+    load.addEventListener("click", async () => {
+      if (epoch !== mediaEpoch) return;
+      load.disabled = true;
+      status.textContent = "正在载入录音…";
+      try {
+        const url = await mediaURL("audio", asset);
+        if (epoch !== mediaEpoch) return;
+        audio.src = url;
+        audio.hidden = false;
+        label.hidden = false;
+        load.hidden = true;
+        audio.playbackRate = Number(speed.value);
+        status.textContent = "可对照原文复核发音，也可切换慢速。";
+        if (state.mode === "preview") {
+          try {
+            await audio.play();
+          } catch {
+            status.textContent = "录音已载入，点击播放器开始试听。";
+          }
+        } else {
+          status.textContent = "录音已载入，点击播放器开始试听。";
+        }
+      } catch (error) {
+        if (epoch !== mediaEpoch) return;
+        status.textContent =
+          error.name === "AbortError"
+            ? "录音载入超时，请重试。"
+            : error.message;
+        load.textContent = "重试载入";
+      } finally {
+        load.disabled = false;
+      }
+    });
+    box.append(load, audio, label, status, mediaReview(asset, "audio"));
+    return box;
+  }
   function renderPreview() {
+    resetMedia();
     const root = $("preview");
     root.replaceChildren();
     const u = state.draft;
@@ -933,12 +1245,18 @@ export const learningAdminJavascript = String.raw`
         el("p", q.instruction, "instruction"),
         el("div", q.prompt, "prompt"),
       );
-      if (q.options)
-        q.options.forEach((o, j) =>
-          block.append(
-            el("div", String.fromCharCode(65 + j) + ". " + o.text, "option"),
-          ),
+      if (q.audio) block.append(audioPreview(q));
+      if (q.options) {
+        const options = el(
+          "div",
+          undefined,
+          q.options.some((o) => o.imageAssetId) ? "media-options" : "",
         );
+        q.options.forEach((o, j) =>
+          options.append(pictureOption(o, String.fromCharCode(65 + j))),
+        );
+        block.append(options);
+      }
       if (q.tokens) {
         const tokens = el("div", undefined, "tokens");
         q.tokens.forEach((o) => tokens.append(el("span", o.text, "token")));
@@ -948,15 +1266,14 @@ export const learningAdminJavascript = String.raw`
         const pairs = el("div", undefined, "pairs");
         for (const list of [q.left, q.right]) {
           const column = el("div");
-          list.forEach((o) => column.append(el("div", o.text, "option")));
+          list.forEach((o, index) =>
+            column.append(pictureOption(o, String(index + 1))),
+          );
           pairs.append(column);
         }
         block.append(pairs);
       }
-      if (q.audio)
-        block.append(
-          el("p", "听力原文（管理员可见）：" + q.audio.text, "muted"),
-        );
+
       block.append(el("p", "提示：" + q.hint, "hint"));
       const details = el("details");
       details.append(el("summary", "查看答案与解析"));
@@ -1317,7 +1634,12 @@ export const learningAdminJavascript = String.raw`
       el("p", d.id),
       el("p", "尝试次数：" + d.attempts + "；" + errorText(d.last_error_code)),
     );
-    if (d.reviewed_by) root.append(el("h3", "人工复核"), el("p", d.reviewed_by), el("p", d.review_notes));
+    if (d.reviewed_by)
+      root.append(
+        el("h3", "人工复核"),
+        el("p", d.reviewed_by),
+        el("p", d.review_notes),
+      );
     for (const edit of d.edits || []) {
       const section = el("section", undefined, "audit-entry");
       section.append(
@@ -1401,8 +1723,7 @@ export const learningAdminJavascript = String.raw`
       input.disabled = state.busy;
     const d = state.detail,
       isJob = state.kind === "jobs" && d;
-    const editable =
-      isJob && d.canRevise;
+    const editable = isJob && d.canRevise;
     $("actions").hidden = !isJob;
     const notes = $("notes").value.trim().length >= 30,
       confirmed = $("confirmed").checked;
@@ -1503,6 +1824,7 @@ export const learningAdminJavascript = String.raw`
     });
   async function switchKind(kind) {
     if (state.busy || !discard()) return;
+    resetMedia();
     state.epoch++;
     state.selected = null;
     state.detail = null;
@@ -1550,6 +1872,7 @@ export const learningAdminJavascript = String.raw`
   });
   $("disconnect").addEventListener("click", () => {
     if (!discard()) return;
+    resetMedia();
     state.dirty = false;
     sessionStorage.removeItem("lingotrip-admin-token");
     location.reload();
@@ -1569,6 +1892,7 @@ export const learningAdminJavascript = String.raw`
     }
   });
   $("login").addEventListener("cancel", (e) => e.preventDefault());
+  window.addEventListener("pagehide", resetMedia);
   window.addEventListener("beforeunload", (e) => {
     if (state.dirty) {
       e.preventDefault();

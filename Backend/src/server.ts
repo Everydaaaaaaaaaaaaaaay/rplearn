@@ -272,6 +272,7 @@ async function main(): Promise<void> {
         await loadGenerationBlueprints(
           fileURLToPath(new URL("../config/learning/", import.meta.url)),
         ),
+        mediaObjectStore,
       ),
     );
     registerLearningAdminConsole(app);
