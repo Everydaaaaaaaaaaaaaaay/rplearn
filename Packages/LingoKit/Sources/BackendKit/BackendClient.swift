@@ -25,6 +25,33 @@ public actor BackendClient {
         }
         return response.data
     }
+    /// 图片从挑战内申请短期授权，下载请求不携带账号令牌。
+    public func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        guard questionID.range(of: "^[a-z][a-z0-9_.-]{0,119}$", options: .regularExpression) != nil,
+              assetID.range(of: "^image\\.[a-f0-9]{64}$", options: .regularExpression) != nil else {
+            throw BackendClientError.invalidResponse
+        }
+        let grant: LearningImageDownload = try await get("/v1/learning/attempts/\(attemptID.uuidString.lowercased())/images/\(questionID)/\(assetID)")
+        guard grant.assetId == assetID, grant.assetId == "image.\(grant.sha256)",
+              grant.sha256.range(of: "^[a-f0-9]{64}$", options: .regularExpression) != nil,
+              (64...2_000_000).contains(grant.byteSize), (128...1024).contains(grant.width), (128...1024).contains(grant.height),
+              grant.contentType == "image/png", grant.url.scheme == "https", grant.url.host != nil,
+              grant.url.user == nil, grant.url.password == nil else { throw BackendClientError.invalidResponse }
+        try Task.checkCancellation()
+        var request = URLRequest(url: grant.url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 25)
+        request.httpMethod = "GET"
+        let response = try await transport.data(for: request)
+        try Task.checkCancellation()
+        let data = response.data
+        guard response.statusCode == 200, data.count == grant.byteSize,
+              SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined() == grant.sha256,
+              data.prefix(8) == Data([137, 80, 78, 71, 13, 10, 26, 10]),
+              Array(data[12..<16]) == Array("IHDR".utf8) else { throw BackendClientError.invalidResponse }
+        let width = data[16..<20].reduce(0) { ($0 << 8) | Int($1) }
+        let height = data[20..<24].reduce(0) { ($0 << 8) | Int($1) }
+        guard width == grant.width, height == grant.height else { throw BackendClientError.invalidResponse }
+        return data
+    }
     private struct RegisterBody: Encodable, Sendable {
         let email: String
         let password: String

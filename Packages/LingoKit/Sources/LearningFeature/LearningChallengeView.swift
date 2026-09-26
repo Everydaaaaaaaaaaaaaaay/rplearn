@@ -9,6 +9,7 @@ import SwiftUI
 public struct LearningChallengeView: View {
     @State private var model: LearningChallengeModel
     @State private var audio: LearningAudioModel
+    @State private var pictures: LearningImageModel
     private let character: CharacterDTO
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
@@ -22,6 +23,7 @@ public struct LearningChallengeView: View {
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 afterFinish: @escaping @Sendable () async -> Void = {}) {
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
+        _pictures = State(initialValue: LearningImageModel(service: service))
         _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback))
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
@@ -57,7 +59,8 @@ public struct LearningChallengeView: View {
         }
         .onChange(of: model.stage) { _, _ in showsHint = false; showsTranslation = false; inputFocused = false }
         .task(id: model.question?.id) { await audio.prepare(attemptID: model.attempt.id, question: model.question) }
-        .onDisappear { audio.reset() }
+        .task(id: model.question?.id) { await pictures.prepare(attemptID: model.attempt.id, question: model.question) }
+        .onDisappear { audio.reset(); pictures.reset() }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { audio.stop(interrupted: true) }
         }
@@ -139,8 +142,17 @@ public struct LearningChallengeView: View {
             if question.audio != nil {
                 listeningControls(question)
             }
+            if !question.imageAssetIDs.isEmpty {
+                if pictures.state == .failed {
+                    LearningErrorBanner(message: "图片暂时没能载入。可以重试，也可以先跳过，稍后补答。") {
+                        Task { await pictures.prepare(attemptID: model.attempt.id, question: question) }
+                    }.accessibilityIdentifier("learning.images.retry")
+                } else if !pictures.isReady(for: question) {
+                    ProgressView("正在准备图片…").font(.subheadline)
+                }
+            }
             answerControls(question)
-                .disabled(model.isBusy || model.feedback != nil || model.hasUnconfirmedAnswer)
+                .disabled(model.isBusy || model.feedback != nil || model.hasUnconfirmedAnswer || !pictures.isReady(for: question))
             if let feedback = model.feedback {
                 feedbackCard(feedback, question: question)
             } else {
@@ -181,18 +193,11 @@ public struct LearningChallengeView: View {
     private func answerControls(_ question: LearningQuestion) -> some View {
         switch question.type {
         case .choice, .listeningChoice:
-            VStack(spacing: 12) {
-                ForEach(question.options ?? []) { option in
-                    Button { model.choice = option.id } label: {
-                        HStack(spacing: 14) {
-                            Image(systemName: model.choice == option.id ? "checkmark.circle.fill" : "circle").font(.title3)
-                            Text(option.text).font(.body.weight(.medium)).multilineTextAlignment(.leading)
-                            Spacer(minLength: 0)
-                        }.padding(18).frame(maxWidth: .infinity, minHeight: 58, alignment: .leading)
-                            .foregroundStyle(model.choice == option.id ? theme.tint : Color.primary)
-                            .background(model.choice == option.id ? theme.tint.opacity(0.09) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
-                            .overlay { RoundedRectangle(cornerRadius: 18).stroke(model.choice == option.id ? theme.tint : Color.primary.opacity(0.08), lineWidth: model.choice == option.id ? 2 : 1) }
-                    }.buttonStyle(LearningPressStyle()).accessibilityAddTraits(model.choice == option.id ? [.isSelected] : [])
+            let hasPictures = !(question.options ?? []).isEmpty && (question.options ?? []).allSatisfy { $0.imageAssetId != nil }
+            let columns = hasPictures && !dynamicTypeSize.isAccessibilitySize ? 2 : 1
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: columns), spacing: 12) {
+                ForEach(Array((question.options ?? []).enumerated()), id: \.element.id) { index, option in
+                    choiceButton(option, number: index + 1)
                 }
             }
         case .arrange:
@@ -247,6 +252,35 @@ public struct LearningChallengeView: View {
             }
         }
     }
+    private func choiceButton(_ option: LearningOption, number: Int) -> some View {
+        Button { model.choice = option.id } label: {
+            VStack(alignment: .leading, spacing: 12) {
+                if option.imageAssetId != nil { optionPicture(option).frame(height: dynamicTypeSize.isAccessibilitySize ? 200 : 132) }
+                HStack(spacing: 14) {
+                    Image(systemName: model.choice == option.id ? "checkmark.circle.fill" : "circle").font(.title3)
+                    if option.imageAssetId == nil { Text(option.text).font(.body.weight(.medium)).multilineTextAlignment(.leading) }
+                    else { Text("图片 \(number)").font(.subheadline.weight(.medium)) }
+                    Spacer(minLength: 0)
+                }
+            }.padding(16).frame(maxWidth: .infinity, minHeight: 58, alignment: .leading)
+                .foregroundStyle(model.choice == option.id ? theme.tint : Color.primary)
+                .background(model.choice == option.id ? theme.tint.opacity(0.09) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
+                .overlay { RoundedRectangle(cornerRadius: 18).stroke(model.choice == option.id ? theme.tint : Color.primary.opacity(0.08), lineWidth: model.choice == option.id ? 2 : 1) }
+        }.buttonStyle(LearningPressStyle())
+            .accessibilityLabel(option.text)
+            .accessibilityIdentifier("learning.option.\(option.id)")
+            .accessibilityAddTraits(model.choice == option.id ? [.isSelected] : [])
+    }
+    private func optionPicture(_ option: LearningOption) -> some View {
+        ZStack {
+            Color.white
+            if let id = option.imageAssetId, let image = pictures.images[id] {
+                Image(uiImage: image).resizable().scaledToFit().padding(8)
+            } else {
+                Image(systemName: "photo").font(.largeTitle).foregroundStyle(.gray.opacity(0.4))
+            }
+        }.clipShape(RoundedRectangle(cornerRadius: 12)).accessibilityHidden(true)
+    }
     private func matchingGroupTitle(_ title: String) -> some View {
         Text(title).font(.headline).frame(maxWidth: .infinity, alignment: .leading)
             .accessibilityAddTraits(.isHeader)
@@ -262,11 +296,13 @@ public struct LearningChallengeView: View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 7) {
                 Text(number.map { "\($0)" } ?? "—").font(.caption.monospacedDigit().bold()).foregroundStyle(theme.tint)
-                Text(option.text).font(.subheadline.weight(.medium)).multilineTextAlignment(.leading)
+                if option.imageAssetId != nil { optionPicture(option).frame(height: 132) }
+                else { Text(option.text).font(.subheadline.weight(.medium)).multilineTextAlignment(.leading) }
             }.padding(15).frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
                 .background(paired ? theme.tint.opacity(0.09) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 15))
                 .overlay { RoundedRectangle(cornerRadius: 15).strokeBorder(selected ? theme.tint : Color.primary.opacity(0.08), lineWidth: selected ? 2 : 1) }
         }.buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
+            .accessibilityLabel(option.text)
             .accessibilityValue(paired ? "已配对 \(number ?? 0)" : selected ? "已选中" : "未配对")
     }
     private func feedbackCard(_ grade: LearningGrade, question: LearningQuestion) -> some View {
@@ -314,7 +350,7 @@ public struct LearningChallengeView: View {
                 if model.feedback != nil { primary("继续") { model.advance() } }
                 else if model.hasUnconfirmedAnswer { primary("重新确认提交") { Task { await model.submit() } } }
                 else {
-                    primary("检查", disabled: model.answer == nil || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
+                    primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
                     if !dynamicTypeSize.isAccessibilitySize { skipQuestionButton }
                 }
             case .summary:

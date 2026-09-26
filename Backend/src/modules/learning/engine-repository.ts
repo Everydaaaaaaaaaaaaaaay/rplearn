@@ -8,6 +8,7 @@ import { AppError } from "../../shared/errors.js";
 import {
   contentHash,
   publicUnit,
+  questionImageIds,
   unitSchema,
   type LearningLevel,
   type LearningUnit,
@@ -15,6 +16,8 @@ import {
 import { gradeAnswer, type LearningAnswer, type GradeResult } from "./grading.js";
 import { countChatCharacters, learningPolicy, levelProgress } from "./policy.js";
 import { learningAudioSchema, type LearningAudioAsset } from "./audio.js";
+
+import { learningImageSchema, type LearningImageAsset } from "./images.js";
 
 function reject(code: string, message: string, statusCode = 409): never {
   throw new AppError({ code, message, statusCode });
@@ -110,6 +113,7 @@ export class LearningEngineRepository {
   async publishBatch(
     values: readonly unknown[],
     audioAssets?: readonly LearningAudioAsset[],
+    imageAssets?: readonly LearningImageAsset[],
   ): Promise<void> {
     const units = values
       .map((value) => unitSchema.parse(value))
@@ -131,6 +135,18 @@ export class LearningEngineRepository {
         if (existing && contentHash(existing.metadata) !== contentHash(asset))
           reject("LEARNING_IMMUTABLE_AUDIO", "已发布音频的内容与审核信息不可改写。");
         await sql`insert into app.learning_audio_assets(id,sha256,metadata) values(${asset.id},${asset.sha256},${JSON.stringify(asset)}::jsonb) on conflict do nothing`;
+      }
+      for (const value of [...(imageAssets ?? [])].sort((a, b) =>
+        a.id.localeCompare(b.id),
+      )) {
+        const asset = learningImageSchema.parse(value);
+        await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-image:${asset.id}`}, 0))`;
+        const [existing] = await sql<
+          { metadata: unknown }[]
+        >`select metadata from app.learning_image_assets where id=${asset.id}`;
+        if (existing && contentHash(existing.metadata) !== contentHash(asset))
+          reject("LEARNING_IMMUTABLE_IMAGE", "已发布图片的内容与审核信息不可改写。");
+        await sql`insert into app.learning_image_assets(id,sha256,metadata) values(${asset.id},${asset.sha256},${JSON.stringify(asset)}::jsonb) on conflict do nothing`;
       }
       if (audioAssets !== undefined) {
         for (const unit of units)
@@ -158,6 +174,12 @@ export class LearningEngineRepository {
   /** 仅供学习模块仓库在持有发布事务时调用。 */
   async publishInTransaction(sql: TransactionSql, unit: LearningUnit): Promise<void> {
     await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
+    // 所有发布入口（包括后台审核与生成库）都必须验证资源归档，不能绕过目录发布器。
+    for (const imageId of new Set(unit.questions.flatMap(questionImageIds))) {
+      const [asset] =
+        await sql`select id from app.learning_image_assets where id=${imageId}`;
+      if (!asset) reject("LEARNING_IMAGE_NOT_READY", "图片未完成审核归档，不能发布。");
+    }
     const hash = contentHash(unit);
     await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-unit:${unit.id}`}, 0))`;
     const [identity] = await sql<
@@ -211,6 +233,25 @@ export class LearningSession {
     if (!row)
       reject("LEARNING_AUDIO_NOT_READY", "听力素材暂不可用，请重试或稍后补答。", 503);
     return learningAudioSchema.parse(row.metadata);
+  }
+
+  async imageAsset(
+    attemptId: string,
+    questionId: string,
+    assetId: string,
+  ): Promise<LearningImageAsset> {
+    const attempt = await this.rawAttempt(attemptId);
+    const question = unitSchema
+      .parse(attempt.payload)
+      .questions.find((q) => q.id === questionId);
+    if (!question || !questionImageIds(question).includes(assetId))
+      reject("LEARNING_IMAGE_NOT_FOUND", "这道题没有对应的图片素材。", 404);
+    const [row] = await this.sql<
+      { metadata: unknown }[]
+    >`select metadata from app.learning_image_assets where id=${assetId}`;
+    if (!row)
+      reject("LEARNING_IMAGE_NOT_READY", "图片素材暂不可用，请重试或稍后补答。", 503);
+    return learningImageSchema.parse(row.metadata);
   }
 
   promotions(courses: readonly PromotionCourse[]) {

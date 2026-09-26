@@ -1,7 +1,13 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { z } from "zod";
-import { contentHash, levelSchema, unitSchema, type LearningUnit } from "./content.js";
+import {
+  contentHash,
+  levelSchema,
+  unitSchema,
+  questionImageIds,
+  type LearningUnit,
+} from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
 import {
   learningAudioSchema,
@@ -9,12 +15,19 @@ import {
   type PreparedLearningAudio,
 } from "./audio.js";
 
+import {
+  learningImageSchema,
+  verifyLearningImage,
+  type PreparedLearningImage,
+} from "./images.js";
+
 const id = z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/);
 const note = z.string().trim().min(8).max(2000);
 const sha256 = z.string().regex(/^[a-f0-9]{64}$/);
 const registrySchema = z.strictObject({
   version: z.literal(1),
   audioAssets: z.array(learningAudioSchema).max(5000).optional(),
+  imageAssets: z.array(learningImageSchema).max(5000).optional(),
   sources: z
     .array(
       z.strictObject({
@@ -59,6 +72,7 @@ const reviewSchema = z.strictObject({
         questionId: id,
         standaloneContext: note,
         ambiguityReview: note,
+        imageReview: note.optional(),
         optionNotes: z.record(id, note),
         probes: z
           .array(z.strictObject({ answer: answerSchema, correct: z.boolean() }))
@@ -73,6 +87,7 @@ export type CuratedCatalog = Readonly<{
   hash: string;
   registry: z.infer<typeof registrySchema>;
   audioAssets: readonly PreparedLearningAudio[];
+  imageAssets: readonly PreparedLearningImage[];
   units: readonly LearningUnit[];
   summary: readonly {
     roleKey: string;
@@ -115,6 +130,16 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     const bytes = await readFile(join(directory, "audio", `${metadata.id}.wav`));
     verifyLearningAudio(metadata, bytes);
     audioAssets.push({ metadata, bytes });
+  }
+  const imageAssets: PreparedLearningImage[] = [];
+  requireUnique(
+    (registry.imageAssets ?? []).map((asset) => asset.id),
+    "图片资源",
+  );
+  for (const metadata of registry.imageAssets ?? []) {
+    const bytes = await readFile(join(directory, "images", `${metadata.id}.png`));
+    verifyLearningImage(metadata, bytes);
+    imageAssets.push({ metadata, bytes });
   }
   const reviews: z.infer<typeof reviewSchema>[] = [];
   const fingerprints = new Set<string>();
@@ -179,14 +204,15 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         )
           fail("听力题缺少已审核音频，或其原文和声音与资源不一致。");
       }
+      const images = questionImageIds(question);
       if (
-        ((question.type === "choice" || question.type === "listeningChoice") &&
-          question.options.some((o) => o.imageAssetId)) ||
-        (question.type === "arrange" && question.tokens.some((o) => o.imageAssetId)) ||
-        (question.type === "matching" &&
-          [...question.left, ...question.right].some((o) => o.imageAssetId))
+        images.some(
+          (imageId) => !imageAssets.some((asset) => asset.metadata.id === imageId),
+        )
       )
-        fail("当前手编发布器尚未接入图片资产验收，不能发布依赖图片的题。");
+        fail(`题目 ${question.id} 引用了未审核的图片。`);
+      if (images.length > 0 && !checked.imageReview)
+        fail(`题目 ${question.id} 缺少图片语义、替代描述及答案泄露审核。`);
       const fingerprint = contentHash({
         type: question.type,
         prompt: question.prompt.trim().toLowerCase(),
@@ -240,6 +266,7 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     hash: contentHash({ registry, units, reviews }),
     units,
     audioAssets,
+    imageAssets,
     summary,
   };
 }

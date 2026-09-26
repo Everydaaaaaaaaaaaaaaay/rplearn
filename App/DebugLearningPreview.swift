@@ -2,6 +2,7 @@
 import BackendKit
 import Foundation
 import PersistenceKit
+import UIKit
 
 /// 仅免登录界面预览使用，不请求后端，不写账号或题库；没有虚构挑战记录。
 struct DebugLearningPreviewService: LearningServing, MainlineServing {
@@ -35,6 +36,21 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
     func answerLearning(_ id: UUID, command: LearningAnswerCommand) async throws -> LearningAnswerReceipt { throw unavailable }
     func finishLearning(_ attempt: LearningAttempt, requestID: UUID, skipRemaining: Bool) async throws -> LearningAttempt { throw unavailable }
     func retryLearning(_ attempt: LearningAttempt, requestID: UUID) async throws -> LearningAttempt { throw unavailable }
+    func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        guard ProcessInfo.processInfo.environment["UI_TEST_LEARNING_IMAGES"] == "1",
+              ["preview.red", "preview.blue"].contains(assetID) else { throw unavailable }
+        if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_IMAGE_FAILURE"] == "1",
+           await DebugImageDownloadGate.shared.shouldFail(assetID) { throw unavailable }
+        return await MainActor.run {
+            UIGraphicsImageRenderer(size: CGSize(width: 256, height: 256)).pngData { context in
+                UIColor.white.setFill(); context.fill(CGRect(x: 0, y: 0, width: 256, height: 256))
+                (assetID == "preview.red" ? UIColor.systemRed : UIColor.systemBlue).setFill()
+                let rect = CGRect(x: 44, y: 44, width: 168, height: 168)
+                if assetID == "preview.red" { context.cgContext.fillEllipse(in: rect) }
+                else { context.fill(rect) }
+            }
+        }
+    }
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
         guard assetID == "preview.audio",
               let url = Bundle.main.url(forResource: "learning-preview", withExtension: "wav") else { throw unavailable }
@@ -65,6 +81,13 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
             "tokens": [["id": "i", "text": "I"], ["id": "would", "text": "would"], ["id": "like", "text": "like"], ["id": "to", "text": "to"], ["id": "read", "text": "read"], ["id": "books", "text": "books"]],
             "left": [["id": "l1", "text": "a book"], ["id": "l2", "text": "a pencil"], ["id": "l3", "text": "a bag"]],
             "right": [["id": "r1", "text": "一本书"], ["id": "r2", "text": "一个包"], ["id": "r3", "text": "一支铅笔"]]]
+        if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_IMAGES"] == "1" {
+            question["instruction"] = "图片选项 · 工程预览"
+            question["prompt"] = type == "matching" ? "把两组相同的图形配对。此题只检查图片展示与操作，不进入正式题库。" : "请选择红色圆形。此题只检查图片展示与操作，不进入正式题库。"
+            question["options"] = [["id": "a", "text": "红色圆形", "imageAssetId": "preview.red"], ["id": "b", "text": "蓝色方形", "imageAssetId": "preview.blue"]]
+            question["left"] = [["id": "l1", "text": "红色圆形", "imageAssetId": "preview.red"], ["id": "l2", "text": "蓝色方形", "imageAssetId": "preview.blue"]]
+            question["right"] = [["id": "r1", "text": "方形"], ["id": "r2", "text": "圆形"]]
+        }
         if ["listeningChoice", "dictation"].contains(type) { question["audio"] = ["assetId": "preview.audio"] }
         return try decode(["id": UUID().uuidString, "characterId": characterID.uuidString, "level": "primary3", "revision": 1,
             "startedAt": "2026-09-26T00:00:00Z", "firstCompletedAt": "2026-09-26T00:00:00Z", "correctQuestionIds": [],
@@ -75,5 +98,10 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
     private func decode<T: Decodable>(_ object: [String: Any]) throws -> T {
         try JSONDecoder().decode(T.self, from: JSONSerialization.data(withJSONObject: object))
     }
+}
+private actor DebugImageDownloadGate {
+    static let shared = DebugImageDownloadGate()
+    private var attempted: Set<String> = []
+    func shouldFail(_ id: String) -> Bool { attempted.insert(id).inserted }
 }
 #endif

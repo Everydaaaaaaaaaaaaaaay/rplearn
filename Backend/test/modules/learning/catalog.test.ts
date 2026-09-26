@@ -1,10 +1,12 @@
-import { cp, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it } from "vitest";
 import { loadCuratedCatalog } from "../../../src/modules/learning/catalog.js";
 import { contentHash, unitSchema } from "../../../src/modules/learning/content.js";
+
+import { learningImageFixture } from "../../helpers/learning-images.js";
 
 const catalogPath = fileURLToPath(
   new URL("../../../config/learning/", import.meta.url),
@@ -68,6 +70,43 @@ describe("原创课程发布门槛", () => {
     await expect(loadCuratedCatalog(directory)).rejects.toThrow(
       "判题结果不符合审核样例",
     );
+  });
+
+  it("图片题必须绑定已校验文件和逐题图片审核", async () => {
+    const directory = await copyCatalog();
+    const id = "oliver.primary3.reading-circle";
+    const unitPath = join(directory, "units", `${id}.json`);
+    const reviewPath = join(directory, "reviews", `${id}.json`);
+    const registryPath = join(directory, "catalog.json");
+    const unit = unitSchema.parse(JSON.parse(await readFile(unitPath, "utf8")));
+    const question = unit.questions.find((q) => q.type === "choice");
+    if (question?.type !== "choice" || !question.options[0])
+      throw new Error("缺少测试题。");
+    const asset = learningImageFixture();
+    question.options[0].imageAssetId = asset.metadata.id;
+    const review = JSON.parse(await readFile(reviewPath, "utf8")) as {
+      contentHash: string;
+      questions: { questionId: string; imageReview?: string }[];
+    };
+    review.contentHash = contentHash(unit);
+    await writeFile(unitPath, JSON.stringify(unit));
+    await writeFile(reviewPath, JSON.stringify(review));
+    await expect(loadCuratedCatalog(directory)).rejects.toThrow("未审核的图片");
+    const registry = JSON.parse(await readFile(registryPath, "utf8")) as Record<
+      string,
+      unknown
+    >;
+    registry.imageAssets = [asset.metadata];
+    await writeFile(registryPath, JSON.stringify(registry));
+    await mkdir(join(directory, "images"));
+    await writeFile(join(directory, "images", `${asset.metadata.id}.png`), asset.bytes);
+    await expect(loadCuratedCatalog(directory)).rejects.toThrow("缺少图片语义");
+    const checked = review.questions.find((q) => q.questionId === question.id);
+    if (!checked) throw new Error("缺少审核记录。");
+    checked.imageReview =
+      "这是工程样本，仅验证文件与审核记录绑定，不是教学图片质量结论。";
+    await writeFile(reviewPath, JSON.stringify(review));
+    expect((await loadCuratedCatalog(directory)).imageAssets).toHaveLength(1);
   });
 
   it("来源失联于登记表时不能发布", async () => {

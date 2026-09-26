@@ -133,3 +133,10 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 ## 启动速度与偶发慢启动
 
 测量口径、缓存启动策略和定向复测命令见 [启动性能记录](launch-performance.md)。
+
+### 学习图片工程预览
+
+`SIMCTL_CHILD_UI_TEST_LEARNING_IMAGES=1 SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=choice Scripts/preview.sh preview unit-challenge`
+显示两个本地工程图形；`matching` 检查图片配对，`UI_TEST_LEARNING_IMAGE_FAILURE=1` 每张图首次下载失败以验证重试。只在未登录 Debug 预览中有效，没有后端答题、奖励或正式题库写入。定向路径为 `Scripts/test-ui.sh -only-testing:LingoTripUITests/LearningImageUITests`。
+
+若预览题型与请求不一致，先以 `xcrun simctl getenv <本次设备> UI_TEST_LEARNING_QUESTION` 检查全局残留；本次发现残留值会覆盖应用启动环境。停止本次测试后重启专用模拟器可以清除，不能通过卸载 App、清空账号或修改题目逻辑掩盖环境污染。

@@ -119,6 +119,16 @@ export function registerLearningRoutes(
       );
       return service.audio(user(request), params.id, params.questionId);
     });
+    scope.get("/v1/learning/attempts/:id/images/:questionId/:assetId", (request) => {
+      const params = parse(
+        paramsSchema.extend({
+          questionId: z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/),
+          assetId: z.string().regex(/^image\.[a-f0-9]{64}$/),
+        }),
+        request.params,
+      );
+      return service.image(user(request), params.id, params.questionId, params.assetId);
+    });
     scope.post("/v1/learning/attempts/:id/answers", { bodyLimit: 8192 }, (request) => {
       const body = parse(
         revisionSchema.extend({

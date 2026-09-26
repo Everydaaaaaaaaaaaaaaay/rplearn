@@ -179,6 +179,8 @@ export const unitSchema = z
         if (!question.options.some((o) => o.id === question.answer))
           fail("正确答案必须是已有选项。");
       } else if (question.type === "arrange") {
+        if (question.tokens.some((token) => token.imageAssetId))
+          fail("词块组句只接收文字；图片请用于选择或配对。");
         unique(
           question.tokens.map((o) => o.id),
           "词块标识",
@@ -273,6 +275,20 @@ export function publicQuestion(question: LearningQuestion) {
     case "dictation":
       return { ...common, audio: { assetId: question.audio.assetId } };
   }
+}
+
+export function questionImageIds(question: LearningQuestion): string[] {
+  const options =
+    question.type === "choice" || question.type === "listeningChoice"
+      ? question.options
+      : question.type === "matching"
+        ? [...question.left, ...question.right]
+        : [];
+  return [
+    ...new Set(
+      options.flatMap((option) => (option.imageAssetId ? [option.imageAssetId] : [])),
+    ),
+  ];
 }
 
 export function publicUnit(unit: LearningUnit) {

@@ -19,6 +19,15 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
     public let left: [LearningOption]?
     public let right: [LearningOption]?
     public let audio: Audio?
+    public var imageAssetIDs: [String] {
+        let candidates: [LearningOption]
+        switch type {
+        case .choice, .listeningChoice: candidates = options ?? []
+        case .matching: candidates = (left ?? []) + (right ?? [])
+        default: candidates = []
+        }
+        return Array(Set(candidates.compactMap(\.imageAssetId))).sorted()
+    }
 }
 public struct LearningBeat: Codable, Sendable, Equatable, Identifiable {
     public let id: String
@@ -152,6 +161,7 @@ public struct LearningAnswerCommand: Encodable, Sendable {
     }
 }
 public protocol LearningServing: Sendable {
+    func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter
     func learningJourney() async throws -> LearningJourney
@@ -164,6 +174,10 @@ public protocol LearningServing: Sendable {
 }
 
 extension LearningServing {
+    public func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        throw BackendClientError.api(code: "LEARNING_IMAGE_NOT_READY", message: "图片素材暂不可用，请稍后重试。", requestID: nil, status: 503)
+    }
+
     public func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
         throw BackendClientError.api(code: "LEARNING_AUDIO_NOT_READY", message: "听力素材暂不可用，请稍后重试。", requestID: nil, status: 503)
     }
@@ -174,6 +188,17 @@ struct LearningAudioDownload: Decodable, Sendable {
     let sha256: String
     let byteSize: Int
     let durationMs: Int
+    let contentType: String
+    let url: URL
+    let expiresAt: String
+}
+
+struct LearningImageDownload: Decodable, Sendable {
+    let assetId: String
+    let sha256: String
+    let byteSize: Int
+    let width: Int
+    let height: Int
     let contentType: String
     let url: URL
     let expiresAt: String

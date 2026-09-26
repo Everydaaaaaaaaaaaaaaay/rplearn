@@ -7,6 +7,8 @@ import { LearningEngineRepository } from "../modules/learning/engine-repository.
 import { createMediaObjectStore } from "../modules/media/object-store.js";
 import { uploadLearningAudio } from "../modules/learning/audio.js";
 
+import { uploadLearningImages } from "../modules/learning/images.js";
+
 async function main(): Promise<void> {
   const [command, expectedHash, ...extra] = process.argv.slice(2);
   if (
@@ -24,16 +26,19 @@ async function main(): Promise<void> {
     if (expectedHash !== catalog.hash)
       throw new Error("发布哈希不匹配；请先验证当前目录，使用输出的完整哈希。");
     const config = loadConfig();
-    if (catalog.audioAssets.length > 0) {
+    if (catalog.audioAssets.length > 0 || catalog.imageAssets.length > 0) {
       if (!config.mediaStorageEnabled)
-        throw new Error("未启用对象存储，不能发布听力单元。");
-      await uploadLearningAudio(catalog.audioAssets, createMediaObjectStore(config));
+        throw new Error("未启用对象存储，不能发布视听单元。");
+      const store = createMediaObjectStore(config);
+      await uploadLearningAudio(catalog.audioAssets, store);
+      await uploadLearningImages(catalog.imageAssets, store);
     }
     const database = createDatabase(config);
     try {
       await new LearningEngineRepository(database).publishBatch(
         catalog.units,
         catalog.audioAssets.map((asset) => asset.metadata),
+        catalog.imageAssets.map((asset) => asset.metadata),
       );
     } finally {
       await database.close();

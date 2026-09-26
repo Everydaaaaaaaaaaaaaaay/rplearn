@@ -11,6 +11,8 @@ import type { LearningAnswer } from "./grading.js";
 import { learningPolicy, levelProgress } from "./policy.js";
 import { learningAudioObjectKey, type LearningAudioObjectStore } from "./audio.js";
 
+import { learningImageObjectKey } from "./images.js";
+
 const cursorSchema = z.strictObject({
   characterId: z.uuid(),
   startedAt: z
@@ -40,7 +42,7 @@ export function createLearningService(
   database: DatabaseResource,
   context: LearningContextReader,
   drainMessages?: (userId: string) => Promise<unknown>,
-  audioStore?: LearningAudioObjectStore,
+  assetStore?: LearningAudioObjectStore,
   courses: readonly PromotionCourse[] = [],
 ) {
   const repository = new LearningEngineRepository(database, context);
@@ -85,7 +87,7 @@ export function createLearningService(
       const asset = await repository.read(userId, (session) =>
         session.audioAsset(attemptId, questionId),
       );
-      if (!audioStore)
+      if (!assetStore)
         throw new AppError({
           code: "LEARNING_AUDIO_NOT_READY",
           message: "听力素材暂不可用，请重试或稍后补答。",
@@ -97,7 +99,33 @@ export function createLearningService(
         byteSize: asset.byteSize,
         durationMs: asset.durationMs,
         contentType: asset.contentType,
-        url: await audioStore.createDownloadUrl(learningAudioObjectKey(asset.id), 300),
+        url: await assetStore.createDownloadUrl(learningAudioObjectKey(asset.id), 300),
+        expiresAt: new Date(Date.now() + 300_000).toISOString(),
+      };
+    },
+    image: async (
+      userId: string,
+      attemptId: string,
+      questionId: string,
+      assetId: string,
+    ) => {
+      const asset = await repository.read(userId, (session) =>
+        session.imageAsset(attemptId, questionId, assetId),
+      );
+      if (!assetStore)
+        throw new AppError({
+          code: "LEARNING_IMAGE_NOT_READY",
+          message: "图片素材暂不可用，请重试或稍后补答。",
+          statusCode: 503,
+        });
+      return {
+        assetId: asset.id,
+        sha256: asset.sha256,
+        byteSize: asset.byteSize,
+        width: asset.width,
+        height: asset.height,
+        contentType: asset.contentType,
+        url: await assetStore.createDownloadUrl(learningImageObjectKey(asset.id), 300),
         expiresAt: new Date(Date.now() + 300_000).toISOString(),
       };
     },
