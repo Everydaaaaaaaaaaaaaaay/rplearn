@@ -39,13 +39,12 @@ extension ChatViewModel {
         let subscriptionTier = profile?.subscriptionTier ?? .free
         let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
-        let baseLearner: LearnerContext
+        let learner: LearnerContext
         if let profile {
-            baseLearner = LearnerContext(profile: profile)
+            learner = LearnerContext(profile: profile)
         } else {
-            baseLearner = .fallback(difficulty: character.difficultyLevel)
+            learner = .fallback(difficulty: character.difficultyLevel)
         }
-        let learner = baseLearner
         let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
         var request = PromptBuilder.roleplayRequest(

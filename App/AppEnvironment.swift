@@ -18,17 +18,6 @@ import UIKit
 @Observable
 final class AppEnvironment {
     var learningSystemInstance: ConversationLearningSystem?
-    var unitLearningInstance: UnitLearningModel?
-
-    func unitLearning() -> UnitLearningModel? {
-        guard case .signedIn(let identity) = authSession.phase else { return nil }
-        if let unitLearningInstance { return unitLearningInstance }
-        let instance = UnitLearningModel(owner: identity.userID, client: backendClient) { [weak self] in
-            try? await self?.userState.synchronize()
-        }
-        unitLearningInstance = instance
-        return instance
-    }
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
@@ -240,8 +229,6 @@ final class AppEnvironment {
     func deactivateAccount() async {
         learningSystemInstance?.deactivate()
         learningSystemInstance = nil
-        unitLearningInstance?.deactivate()
-        unitLearningInstance = nil
         needsOnboarding = nil
         guard let current = workspace else { return }
         current.billing.deactivate()
@@ -359,7 +346,6 @@ final class AppEnvironment {
 
     /// 自评或答题校准完成后，让角色显示、后续提示词与尚未发送的主动消息立即使用新等级。
     func applyLearnerProfile(_ profile: UserProfileDTO) async {
-        unitLearningInstance?.applyProfileDifficulty(profile.difficultyLevel)
         do {
             if profile.hasCompletedOnboarding {
                 try await reconcileMainCharacters(profile: profile)

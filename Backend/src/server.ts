@@ -1,9 +1,5 @@
 import { registerLearningRoutes } from "./modules/learning/routes.js";
 import { createLearningService } from "./modules/learning/service.js";
-import { registerUnitLearningRoutes } from "./modules/learning/unit-routes.js";
-import { createUnitLearningService } from "./modules/learning/unit-service.js";
-import { createUnitGenerator } from "./modules/learning/unit-generator.js";
-import { AiRepository } from "./modules/ai/repository.js";
 import { readServiceJournal } from "./infrastructure/journal-reader.js";
 import { DiagnosticsService } from "./modules/observability/diagnostics-service.js";
 import { registerDiagnosticsRoutes } from "./modules/observability/diagnostics-routes.js";
@@ -175,12 +171,6 @@ async function main(): Promise<void> {
     createDeepSeekClient(config),
     { catalog: aiCatalog, openRouter },
   );
-  registerUnitLearningRoutes(app, authService, createUnitLearningService(
-    dependencies.database,
-    createUnitGenerator(dependencies.database, {
-      deepSeek: createDeepSeekClient(config), openRouter,
-    }, () => new AiRepository(dependencies.database).route("unit_authoring")),
-  ));
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,
   });

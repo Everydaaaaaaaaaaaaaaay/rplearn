@@ -228,11 +228,15 @@ extension PlacementTestView {
 
     func openLevelSelection() {
         levelSelectionReturnPhase = phase == .result ? .result : .introduction
-        phase = .levelSelection
+        withAnimation(reduceMotion ? nil : .snappy) {
+            phase = .levelSelection
+        }
     }
 
     func closeLevelSelection() {
-        phase = levelSelectionReturnPhase
+        withAnimation(reduceMotion ? nil : .snappy) {
+            phase = levelSelectionReturnPhase
+        }
     }
 
     func optionButton(
@@ -308,20 +312,9 @@ extension PlacementTestView {
             let profile = try await deps.economyStore.profile()
             currentLevel = profile.difficultyLevel
             selectedLevel = profile.difficultyLevel
-            errorMessage = nil
-            #if DEBUG
-            let startsInQuestion = ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1"
-            if !startsInQuestion {
-                phase = ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_LEVEL_SELECTION"] == "1"
-                    ? .levelSelection : .introduction
-            }
-            #else
-            phase = .introduction
-            #endif
-            isPreparingQuestionBank = true
             do {
                 let questionBankURL = deps.questionBankURL
-                // 先显示可直接选级的页面；文件读取、JSON 解码和校验在后台完成。
+                // 文件读取、JSON 解码和完整题库校验不占用主线程。
                 questions = try await Task.detached(priority: .userInitiated) {
                     try PlacementQuestionBank.load(from: questionBankURL)
                 }.value
@@ -332,14 +325,23 @@ extension PlacementTestView {
                 engine = nil
                 questionBankError = "测试题库暂时无法载入，你仍可直接选择并应用水平。"
             }
-            isPreparingQuestionBank = false
+            errorMessage = nil
             #if DEBUG
-            if startsInQuestion {
+            if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1" {
                 start()
+                return
             }
+            let initialPhase: Phase =
+                ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_LEVEL_SELECTION"] == "1"
+                    ? .levelSelection
+                    : .introduction
+            #else
+            let initialPhase: Phase = .introduction
             #endif
+            withAnimation(reduceMotion ? nil : .snappy) {
+                phase = initialPhase
+            }
         } catch {
-            isPreparingQuestionBank = false
             errorMessage = "学习档案暂时无法载入，请稍后再试。"
             phase = .failure
         }
@@ -418,21 +420,7 @@ extension PlacementTestView {
         }
     }
 
-    func requestLevelChange() {
-        guard !isApplying else { return }
-        if usesNativeNavigation && levelSelectionReturnPhase != .result {
-            if selectedLevel == currentLevel {
-                closeLevelSelection()
-            } else {
-                confirmsDirectLevelChange = true
-            }
-            return
-        }
-        applySelectedLevel(testResult: levelSelectionReturnPhase == .result ? result : nil)
-    }
-
     func applySelectedLevel(testResult: PlacementResult?) {
-        guard !isApplying else { return }
         let level = selectedLevel
         isApplying = true
         errorMessage = nil

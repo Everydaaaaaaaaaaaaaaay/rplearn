@@ -17,16 +17,11 @@ final class LearningJourneyNavigationTests: XCTestCase {
         XCTAssertTrue(journey.waitForExistence(timeout: 10))
         let level = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "当前英语水平")).firstMatch
         XCTAssertTrue(level.waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["登录后查看学习进度"].waitForExistence(timeout: 5),
-                      "全局进度与主线应位于英语旅程，水平调整入口仍在原处")
         level.tap()
         let choice = app.buttons["placement.level.kindergarten"]
         XCTAssertTrue(choice.waitForExistence(timeout: 5))
         choice.tap()
         app.buttons["完成"].tap()
-        let confirmation = app.alerts["直接更改英语水平？"]
-        XCTAssertTrue(confirmation.waitForExistence(timeout: 5))
-        confirmation.buttons["确认更改"].tap()
         XCTAssertTrue(journey.waitForExistence(timeout: 10), "确认后应返回英语旅程")
         XCTAssertTrue(level.waitForExistence(timeout: 5))
         XCTAssertTrue(level.label.contains("启蒙"), "应显示刚保存的水平")

@@ -100,7 +100,6 @@ public struct MyPageView: View {
         }
         .background(Color.dsBackground.ignoresSafeArea())
         .task(id: reloadToken) { await reload() }
-        .onAppear { Task { await reload() } }
         .task(id: selectedAvatar) {
             guard let item = selectedAvatar, let userAvatar else { return }
             isSavingAvatar = true
@@ -281,11 +280,11 @@ public struct MyPageView: View {
 
     private var learningHotspot: some View {
         Button {
-            onCalibrateLevel()
+            sceneActions.perform(for: .learning, action: onCalibrateLevel)
         } label: {
             learningSceneEntry
         }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: false))
+        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .learning))
         .accessibilityIdentifier("me.level")
         .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")

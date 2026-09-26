@@ -942,7 +942,16 @@ struct RootView: View {
 
     private func placementTestView(isOnboarding: Bool) -> some View {
         PlacementTestView(
-            deps: placementDependencies(isOnboarding: isOnboarding),
+            deps: PlacementDependencies(
+                questionBankURL: Bundle.main.url(
+                    forResource: "placement_questions",
+                    withExtension: "json"
+                )!,
+                economyStore: environment.economyStore,
+                profileCommands: profileCommands,
+                speech: environment.speech,
+                audioSession: environment.audioSession
+            ),
             usesNativeNavigation: !isOnboarding,
             onComplete: { updated in
                 stateRevision += 1
@@ -962,25 +971,6 @@ struct RootView: View {
                 }
             }
         )
-    }
-
-    private func placementDependencies(isOnboarding: Bool) -> PlacementDependencies {
-        let mainline: (@MainActor @Sendable (DifficultyLevel) -> AnyView)?
-        if isOnboarding {
-            mainline = nil
-        } else {
-            mainline = { [weak environment] difficulty in
-                guard let environment else { return AnyView(EmptyView()) }
-                return AnyView(EnglishJourneyProgressView(environment: environment, selectedDifficulty: difficulty))
-            }
-        }
-        return PlacementDependencies(
-            questionBankURL: Bundle.main.url(forResource: "placement_questions", withExtension: "json")!,
-            economyStore: environment.economyStore,
-            profileCommands: profileCommands,
-            speech: environment.speech,
-            audioSession: environment.audioSession,
-            journeyMainline: mainline)
     }
 
     private func storyView(storyID: String) -> some View {
@@ -1062,31 +1052,6 @@ struct RootView: View {
             && bypassesAuthenticationForUITesting
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1"
-        #endif
-        dependencies.unitLearningMessage = { [weak environment] characterID, messageID, role, text in
-            guard let environment, let model = environment.unitLearning() else { return }
-            let roleKey: String
-            switch characterID.uuidString.uppercased() {
-            case "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E001": roleKey = "oliver"
-            case "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E002": roleKey = "ruby"
-            case "8B3A2B24-8A4E-5A73-A2C4-0F5E8F05E003": roleKey = "marcus"
-            default: roleKey = "other"
-            }
-            model.record(character: characterID, roleKey: roleKey, message: messageID, role: role, text: text)
-        }
-        dependencies.unitLearningPage = { [weak environment] character in
-            guard let environment else { return AnyView(EmptyView()) }
-            return AnyView(UnitLearningPage(character: character, environment: environment))
-        }
-        dependencies.unitLearningRefresh = { [weak environment] character in
-            guard let environment, let model = environment.unitLearning() else { return }
-            await model.refresh(character: character)
-        }
-        #if DEBUG
-        dependencies.unitLearningDebugFill = { [weak environment] character in
-            guard let environment, let model = environment.unitLearning() else { return false }
-            return await model.debugFill(character: character)
-        }
         #endif
         return dependencies
     }
