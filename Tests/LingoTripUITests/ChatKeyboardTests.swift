@@ -14,17 +14,20 @@ final class ChatKeyboardTests: XCTestCase {
         let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby Walker")).firstMatch
         XCTAssertTrue(ruby.waitForExistence(timeout: 15))
         ruby.tap()
+        app.buttons["chat.more"].tap()
         let toggle = app.buttons["chat.autoRead"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 15))
-        XCTAssertEqual(toggle.value as? String, "关闭")
+        XCTAssertTrue(toggle.label.contains("开启自动朗读"))
         toggle.tap()
-        XCTAssertEqual(toggle.value as? String, "开启")
+        app.buttons["chat.more"].tap()
+        XCTAssertTrue(toggle.label.contains("关闭自动朗读"))
         let image = XCTAttachment(screenshot: app.screenshot())
         image.name = "Chat automatic reading enabled"
         image.lifetime = .keepAlways
         add(image)
         toggle.tap()
-        XCTAssertEqual(toggle.value as? String, "关闭")
+        app.buttons["chat.more"].tap()
+        XCTAssertTrue(toggle.label.contains("开启自动朗读"))
     }
 
     func testDismissKeyboardPreservesDraft() throws {

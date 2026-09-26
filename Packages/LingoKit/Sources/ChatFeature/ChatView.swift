@@ -13,6 +13,7 @@ import UIKit
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
     @State var viewModel: ChatViewModel
+    @State private var learningSelected = false
     @State private var autoReadEnabled = false
     @State private var autoReadReady = false
     @State var autoReadQueue: ChatAutoReadQueue
@@ -64,19 +65,43 @@ public struct ChatView: View {
         self.deps = deps
     }
 
-    public var body: some View {
-        GeometryReader { proxy in
-            messageList
-            // 输入栏参与系统安全区布局；键盘出现时会缩小消息视口，
-            // 而不是覆盖输入栏或当前可见消息。
-            //
-            // 底部安全区由输入栏自己接管（忽略容器的底部安全区再补进输入栏），
-            // 这样 iOS 26 与 iOS 27（后者不会把安全区算进 safeAreaInset 视图）都能
-            // 让输入栏材质贴住屏幕底边，消息列表也不会在输入栏下方露出。
+    private func chatPage(bottomInset: CGFloat) -> some View {
+        messageList
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                inputBar(bottomInset: isKeyboardVisible ? 0 : proxy.safeAreaInsets.bottom)
+                inputBar(bottomInset: isKeyboardVisible ? 0 : bottomInset)
+                    .disabled(learningSelected)
             }
             .ignoresSafeArea(.container, edges: .bottom)
+    }
+
+    public var body: some View {
+        GeometryReader { proxy in
+            if let learningPage = deps.learningPage {
+                ChatLearningPager(learningSelected: $learningSelected,
+                                  enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
+                    chatPage(bottomInset: proxy.safeAreaInsets.bottom)
+                } learning: {
+                    learningPage(viewModel.character, learningSelected)
+                }
+            } else {
+                chatPage(bottomInset: proxy.safeAreaInsets.bottom)
+            }
+        }
+        .onChange(of: learningSelected) { _, selected in
+            isTextInputFocused = false; isChineseInputFocused = false
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            if selected {
+                voicePlayer.stop()
+            } else {
+                Task { await deps.learningChat?.refresh(characterID: viewModel.character.id) }
+            }
+        }
+        .task(id: learningSelected) {
+            // 分页提交后再清理一次 UIKit 焦点，避免恢复可交互性时还原旧 responder。
+            await Task.yield()
+            guard !Task.isCancelled else { return }
+            isTextInputFocused = false; isChineseInputFocused = false
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background(Color.dsBackground)
@@ -100,7 +125,7 @@ public struct ChatView: View {
                 TimelineView(.periodic(from: .now, by: 15)) { context in
                     let presence = viewModel.presence(at: context.date)
                     ChatTitleView(
-                        title: viewModel.character.displayName,
+                        title: learningSelected ? "角色学习" : viewModel.character.displayName,
                         subtitle: chatStatus(presence, at: context.date)
                     ) {
                         ZStack(alignment: .bottomTrailing) {
@@ -123,43 +148,37 @@ public struct ChatView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 0) {
-                    Button {
-                        autoReadEnabled.toggle()
-                    } label: {
-                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                            .foregroundStyle(autoReadEnabled ? Color.dsSkyDeep : Color.secondary)
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
+                    if deps.learningPage != nil {
+                        Button(learningSelected ? "聊天" : "学习") { learningSelected.toggle() }
+                            .font(.subheadline.weight(.semibold)).frame(minWidth: 44, minHeight: 44)
+                            .disabled(recorder.state != .idle || chineseRecorder.state != .idle)
+                            .accessibilityIdentifier("chat.learning")
                     }
-                    .accessibilityLabel("自动朗读新消息")
-                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                    .accessibilityHint("按顺序朗读你和旅伴的新消息")
-                    .accessibilityIdentifier("chat.autoRead")
-
-                    Button {
-                        isTextInputFocused = false
-                        voicePlayer.stop()
-                        // 先展示页面，让点击立即得到反馈；旧 TTS 在实时页启动阶段有序停止。
-                        showsRealtimeConversation = true
-                    } label: {
-                        Image(systemName: "phone.fill")
-                            .foregroundStyle(Color.accentColor)
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
+                    if !learningSelected {
+                        Button {
+                            isTextInputFocused = false
+                            voicePlayer.stop()
+                            showsRealtimeConversation = true
+                        } label: {
+                            Image(systemName: "phone.fill").frame(width: 44, height: 44)
+                        }.accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
+                        Menu {
+                            Button {
+                                autoReadEnabled.toggle()
+                            } label: {
+                                Label(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读", systemImage: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                            }
+                            .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                            .accessibilityIdentifier("chat.autoRead")
+                            Button {
+                                isTextInputFocused = false
+                                voicePlayer.stop()
+                                showsContactDetails = true
+                            } label: { Label("聊天设置", systemImage: "person.crop.circle") }
+                        } label: {
+                            Image(systemName: "ellipsis.circle").frame(width: 44, height: 44)
+                        }.accessibilityLabel("更多聊天操作").accessibilityIdentifier("chat.more")
                     }
-                    .accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
-
-                    Button {
-                        isTextInputFocused = false
-                        voicePlayer.stop()
-                        showsContactDetails = true
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                            .foregroundStyle(Color.accentColor)
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .accessibilityLabel("聊天设置")
                 }
                 .buttonStyle(.plain)
             }
@@ -322,7 +341,7 @@ public struct ChatView: View {
         case .recording, .transcribing: recording = true
         default: recording = false
         }
-        return autoReadReady && autoReadEnabled && scenePhase == .active
+        return autoReadReady && autoReadEnabled && !learningSelected && scenePhase == .active
             && !showsRealtimeConversation && !showsContactDetails && !recording
             && wordSelection == nil && grammarTermSelection == nil && grammarAnalysis == nil
             && voicePlayer.playingFileName == nil

@@ -230,6 +230,8 @@ struct BackendContentSyncCoordinatorTests {
         await transport.setLearningUnavailable()
         await learning.refresh(characterID: character)
         #expect(await learning.userOrigin(characterID: character) == .user(cycleID: second))
+        await learning.challengeCompleted(characterID: character)
+        #expect(await learning.userOrigin(characterID: character) == nil)
         let other = LearningChatCoordinator(accountID: UUID(), backend: backend, contentSync: content, defaultsSuiteName: suite)
         #expect(await other.userOrigin(characterID: character) == nil)
         await learning.deactivate()

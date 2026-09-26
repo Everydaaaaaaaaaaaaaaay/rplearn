@@ -78,7 +78,7 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 重新生成工程，补齐新增文件的编译成员，再构建安装。只更新源码而未重新生成 `.xcodeproj`
 会造成此类报错；不要删除调用或复制定义来绕过，生成的工程文件不提交。
 
-页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（英语旅程）。产物固定取
+页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（水平校准）、`role-learning`（角色学习页的只读预览）、`unit-challenge`（挑战控件的工程预览）。产物固定取
 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
 脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备优先使用工作树绑定；未绑定时选择最新可用 iOS 运行时中的 iPhone，同一运行时优先复用已启动设备，
@@ -118,6 +118,10 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 `SIMCTL_CHILD_UI_TEST_SUBSCRIPTION_PRICES=1 Scripts/preview.sh preview subscription` 查看。
 该 Debug 专用夹具明确显示“示例价格，不可购买”，不改变 StoreKit 商品、生产价格或权益。
 正常预览不设置该变量，缺少商店价格时显示重新加载入口并禁用购买。
+
+学习工程预览只在 Debug 内存账号启用，不连接后端、不产生奖励，也不导入公共题库。可用
+`SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=arrange Scripts/preview.sh preview unit-challenge`
+检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。
 
 ## 启动速度与偶发慢启动
 

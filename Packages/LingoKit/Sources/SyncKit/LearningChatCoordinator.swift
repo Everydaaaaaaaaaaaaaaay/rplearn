@@ -11,6 +11,7 @@ public actor LearningChatCoordinator: LearningChatTracking {
     private let contentSync: BackendContentSyncCoordinator
     private let defaults: UserDefaults
     private var revisions: [UUID: Int] = [:]
+    private var cycleEpochs: [UUID: Int] = [:]
     private var active = true
 
     public init(accountID: UUID, backend: BackendClient, contentSync: BackendContentSyncCoordinator,
@@ -29,11 +30,12 @@ public actor LearningChatCoordinator: LearningChatTracking {
 
     public func refresh(characterID: UUID) async {
         guard await ownsSession() else { return }
+        let epoch = cycleEpochs[characterID, default: 0]
         do {
             try await contentSync.synchronizeAndWait()
             guard await ownsSession() else { return }
             let state = try await backend.learningCharacter(characterID)
-            guard await ownsSession(), state.characterId == characterID else { return }
+            guard await ownsSession(), state.characterId == characterID, epoch == cycleEpochs[characterID, default: 0] else { return }
             guard state.revision >= revisions[characterID, default: 0] else { return }
             revisions[characterID] = state.revision
             defaults.set(state.cycleId.uuidString, forKey: key(characterID))
@@ -53,6 +55,13 @@ public actor LearningChatCoordinator: LearningChatTracking {
         try await contentSync.synchronizeAndWait()
         guard await ownsSession() else { throw CancellationError() }
         return LearningChatContext(conversationID: conversationID, userMessageID: userMessage.id, cycleID: cycleID)
+    }
+    /// 首轮结束后先撤销旧周期，避免快速返回聊天时把新消息签入旧周期。
+    public func challengeCompleted(characterID: UUID) async {
+        guard await ownsSession() else { return }
+        cycleEpochs[characterID, default: 0] += 1
+        defaults.removeObject(forKey: key(characterID))
+        await refresh(characterID: characterID)
     }
     public func messageSaved(characterID: UUID) async {
         await refresh(characterID: characterID)

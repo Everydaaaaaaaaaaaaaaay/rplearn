@@ -4,7 +4,7 @@
 
 ## 1. 模块结构
 
-客户端建议新增 `LearningFeature`，承载角色学习页、挑战演绎和英语旅程。App 负责把 ChatFeature 的第二页槽位与 LearningFeature 组装起来；两个 Feature 不互相导入。
+客户端已新增 `LearningFeature`，承载角色学习页和挑战演绎；英语旅程目前只有角色页内的进度摘要，完整全局页面继续实现。App 负责把 ChatFeature 的第二页槽位与 LearningFeature 组装起来；两个 Feature 不互相导入。
 
 | 模块 | 职责 |
 | --- | --- |

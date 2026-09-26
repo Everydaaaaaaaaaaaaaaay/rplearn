@@ -2,6 +2,7 @@ import AuthFeature
 import BackendKit
 import BillingKit
 import ChatFeature
+import LearningFeature
 import CoreKit
 import DesignSystem
 import DictKit
@@ -170,6 +171,17 @@ struct RootView: View {
                             rosterStore: environment.rosterStore,
                             chatBuilder: { AnyView(ChatView(character: $0, deps: chatDeps)) },
                             callBuilder: { AnyView(ChatView(character: $0, deps: chatDeps, startsInRealtimeConversation: true)) })
+                    } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "unit-challenge" {
+                        let preview = DebugLearningPreviewService(characterID: character.id, roleKey: "oliver")
+                        if let attempt = try? preview.previewAttempt(kind: ProcessInfo.processInfo.environment["UI_TEST_LEARNING_QUESTION"] ?? "choice") {
+                            LearningChallengeView(attempt: attempt, character: character, service: preview)
+                        }
+                    } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "role-learning" {
+                        Self.debugLearningPage(character)
+                            .navigationTitle("角色学习")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar(.visible, for: .navigationBar)
+                            .toolbar { ToolbarItem(placement: .topBarLeading) { Button("返回消息") { captureCharacter = nil } } }
                     } else {
                         ChatView(character: character, deps: chatDeps)
                     }
@@ -221,6 +233,11 @@ struct RootView: View {
                     captureCharacter = try? await environment.rosterStore.allCharacters().first {
                         $0.isMainCharacter && $0.card.regionID == "melbourne"
                     }
+                }
+                #endif
+                #if DEBUG
+                if ["role-learning", "unit-challenge"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""), bypassesAuthenticationForUITesting {
+                    captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
                 }
                 #endif
                 await reloadUnreadCount()
@@ -1035,7 +1052,22 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
+        #if DEBUG
+        if bypassesAuthenticationForUITesting {
+            dependencies.learningPage = { character, visible in AnyView(Self.debugLearningPage(character, isVisible: visible)) }
+        }
+        #endif
         dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
+        let backend = environment.backendClient
+        let sync = environment.workspace?.contentSync
+        let tracker = environment.workspace?.learningChat
+        if !bypassesAuthenticationForUITesting {
+            dependencies.learningPage = { character, visible in
+                AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
+                    synchronize: { try await sync?.synchronizeAndWait() },
+                    cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) }))
+            }
+        }
         #if DEBUG
         dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
             && bypassesAuthenticationForUITesting
@@ -1064,6 +1096,18 @@ struct RootView: View {
             grammarPoints: environment.grammarPoints,
             speech: environment.speech)
     }
+
+    #if DEBUG
+    private static func debugLearningPage(_ character: CharacterDTO, isVisible: Bool = true) -> some View {
+        CharacterLearningView(character: character, service: DebugLearningPreviewService(characterID: character.id,
+            roleKey: character.card.name.components(separatedBy: " ").first?.lowercased() ?? "oliver"), isVisible: isVisible)
+            .safeAreaInset(edge: .top, spacing: 0) {
+                Text("界面预览 · 示例进度，不计入账号")
+                    .font(.caption).foregroundStyle(.secondary).padding(8).frame(maxWidth: .infinity)
+                    .background(Color.dsBackground)
+            }
+    }
+    #endif
 
     private var journeyAccess: JourneyAccess {
         JourneyAccess()
