@@ -11,13 +11,22 @@ import {
 import type { LearningUnit } from "../../src/modules/learning/content.js";
 
 /** 复用已知内容仅验证生成协议，绝不能将此夹具发布到公共题库。 */
-export async function generationFixture(jobId: string) {
+export async function generationFixture(
+  jobId: string,
+  level: "primary3" | "primary4" = "primary3",
+) {
   const directory = fileURLToPath(new URL("../../config/learning/", import.meta.url));
   const catalog = await loadCuratedCatalog(directory);
   const blueprint = (await loadGenerationBlueprints(directory)).find(
-    (b) => b.roleKey === "oliver",
+    (b) => b.roleKey === "oliver" && b.level === level,
   );
-  const sample = catalog.units.find((u) => u.id === "oliver.primary3.colour-covers");
+  const sample = catalog.units.find(
+    (u) =>
+      u.id ===
+      (level === "primary3"
+        ? "oliver.primary3.colour-covers"
+        : "oliver.primary4.reading-clock"),
+  );
   if (!blueprint || !sample) throw new Error("缺少工程测试来源。");
   const draft = JSON.stringify({
     title: sample.title,

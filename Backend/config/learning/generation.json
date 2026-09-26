@@ -5,12 +5,7 @@
       "key": "oliver",
       "version": 1,
       "persona": "Oliver Bennett，伦敦旧书店店员与小说爱好者，喜欢足球和旧书；含蓄的冷幽默，不挖苦学习者。",
-      "situations": [
-        "读书会准备",
-        "书店失物招领",
-        "书架标签整理",
-        "为朋友准备礼物"
-      ]
+      "situations": ["读书会准备", "书店失物招领", "书架标签整理", "为朋友准备礼物"]
     },
     {
       "key": "ruby",
@@ -27,12 +22,7 @@
       "key": "marcus",
       "version": 1,
       "persona": "Marcus Rivera，纽约摄影与唱片爱好者，重视街区和家人；直接有趣，不用文化隐梗出题。",
-      "situations": [
-        "街区小型影展",
-        "照片标签校对",
-        "唱片店布置",
-        "邻里活动准备"
-      ]
+      "situations": ["街区小型影展", "照片标签校对", "唱片店布置", "邻里活动准备"]
     }
   ],
   "levels": [
@@ -58,6 +48,61 @@
           "unit": "一级主题与语言知识范围",
           "pages": "印刷第14、18、20–22页",
           "alignment": "以已核读课标中的三四年级一级主题、基础词汇和简单语法为范围依据；生成练习为原创，不声称对应某版教材未核读的单元正文或完整学年覆盖。"
+        }
+      ]
+    },
+    {
+      "key": "primary4",
+      "blueprintVersion": 1,
+      "goalIds": [
+        "p4.clock",
+        "p4.routines",
+        "p4.weather",
+        "p4.permission",
+        "p4.ownership",
+        "p4.clothes",
+        "p4.prices",
+        "p4.seasons",
+        "p4.ability"
+      ],
+      "boundaries": "四年级文字练习，依据本蓝图已核读的人教PEP、译林旧版四下正文，不声称新版逐课匹配。每单元六题，至少三种文字题型，仅一至两个主要目标，targetGoal 至少三题。允许：具体钟点与半点、at加钟点/in加时段或季节、time to加原形/time for加名词、I/you/we的一般现在时日常活动及When do you问句；It is天气句与简短天气问答；Can I许可和Can you能力问句、can/cannot加原形；whose、mine/yours及单个人名所有格；衣物单复数和be一致、too加大小长短形容词、try on代词宾语位置；How much单复数问价和明示数额；四季与简单活动；can see和已给定的可见事物。一个题目以一个主要操作为主，不叠加陌生语法。禁止过去时、将来时、完成时、被动语态、比较级、复杂从句、第三人称陈述变化教学、自由作文、价格运算或地区气候推断。剧情英文每幕一至两句短句，可配中文理解，避免俚语和专业术语；剧情不能直接提供接下来题目的答案。题干用简体中文重述全部条件，必要的具体名词给释义。填空至多两个英文词，指定词根、候选或清楚的目标词义；收录合法缩写与英美变体，如autumn/fall。组句须接受所有符合中文的合理语序，若固定句首应在题干明说；代词所有者、单复数、币种和标价范围要清楚。干扰项针对学习者可能混淆的意图、语序或词形，解析区别语法错与本情境不合，提示不得直接告诉所填词或唯一选项关键词。不能只将已有单元的时间、颜色、物品或姓名替换后当作新单元；允许同一目标的不同语言操作复现。",
+      "referenceUnitId": "oliver.primary4.reading-clock",
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "unit": "Unit 2 What time is it?",
+          "pages": "印刷第17页；PDF第22页",
+          "alignment": "参考当前钟点、time to动作与time for名词结构；具体时间在题内写明，不考时间换算。"
+        },
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "unit": "Unit 3 Weather",
+          "pages": "印刷第24、27页；PDF第29、32页",
+          "alignment": "参考天气状况问答与Can I许可请求；天气事实独立给出，不凭地点推测。"
+        },
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "unit": "Unit 5 My clothes；Unit 6 Shopping",
+          "pages": "印刷第48、51、58、61页；PDF第53、56、63、66页",
+          "alignment": "参考衣物归属、单复数、试穿、大小与价格问答；不复制教材对话，不做价格计算。"
+        },
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "unit": "Unit 3 My day",
+          "pages": "印刷第18–19页；PDF第21–22页",
+          "alignment": "参考第一、第二人称的日常活动及时间问答，限制在常用短句范围。"
+        },
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "unit": "Unit 4 Drawing in the park；Unit 5 Seasons",
+          "pages": "印刷第24–25、32–33页；PDF第27–28、35–36页",
+          "alignment": "参考可见事物、绘画能力、季节名称和简单活动；活动事实写进题内，不依赖图片或地理常识。"
+        },
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "unit": "Unit 6 Whose dress is this?",
+          "pages": "印刷第38–39页；PDF第41–42页",
+          "alignment": "参考衣物归属和试穿语言；说话者、拥有者及单复数在每道题明确。"
         }
       ]
     }
