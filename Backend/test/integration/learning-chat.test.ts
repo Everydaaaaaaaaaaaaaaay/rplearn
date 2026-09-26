@@ -212,7 +212,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const state = await learning.character(user, character);
       const userOrigin: LearningMessageOrigin = {
         source: "user",
-        cycleId: state.cycleId,
+        cycleId: state.cycleId.toUpperCase(),
       };
       function payload(
         text: string,
@@ -372,7 +372,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         method: "POST",
         url: "/v1/ai/completions",
         headers: s.headers,
-        payload: input,
+        payload: {
+          ...input,
+          learningChat: {
+            conversationId: input.learningChat.conversationId.toUpperCase(),
+            userMessageId: input.learningChat.userMessageId.toUpperCase(),
+            cycleId: input.learningChat.cycleId.toUpperCase(),
+          },
+        },
       });
       expect(response.statusCode, response.body).toBe(200);
       expect(await s.count()).toBe(5);
