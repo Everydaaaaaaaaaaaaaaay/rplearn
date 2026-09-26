@@ -4,6 +4,7 @@ import { AppError } from "../../shared/errors.js";
 import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
 import type {
   ContentCommand,
+  ContentCommitObserver,
   ContentDeleteCommand,
   ContentRecord,
   ContentResourceType,
@@ -68,7 +69,10 @@ function versionConflict(current: ContentRecord | undefined): AppError {
 }
 
 export class ContentRepository {
-  constructor(private readonly database: DatabaseResource) {}
+  constructor(
+    private readonly database: DatabaseResource,
+    private readonly observer?: ContentCommitObserver,
+  ) {}
 
   async readRecord(
     sql: TransactionSql,
@@ -176,6 +180,7 @@ export class ContentRepository {
         command.operation === "upsert"
           ? await this.upsert(sql, userId, command)
           : await this.delete(sql, userId, command);
+      if (this.observer) await this.observer(sql, userId, record);
       await appendSyncChange(sql, {
         commandId: command.commandId,
         eventType: `content.${command.resourceType}.${command.operation}`,

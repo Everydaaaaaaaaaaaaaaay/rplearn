@@ -1,3 +1,7 @@
+import { createLearningChatService } from "./modules/learning/chat-service.js";
+import { learningRoleKey } from "./modules/learning/context.js";
+import { createContentReadService } from "./modules/content/service.js";
+import { createDomainLearningContext } from "./modules/domain/service.js";
 import { DictionaryExampleGenerationRepository } from "./modules/dictionary-translation/generation-repository.js";
 import { DictionaryExampleCatalogRepository } from "./modules/dictionary-translation/catalog-repository.js";
 import { createDictionaryExampleCatalogService } from "./modules/dictionary-translation/catalog-service.js";
@@ -132,6 +136,18 @@ async function main(): Promise<void> {
     repository: new JobRepository(database),
     workerId,
   });
+  const learningContent = createContentReadService(database);
+  const learningProfile = createDomainLearningContext(database);
+  const learningChat = createLearningChatService(
+    database,
+    {
+      profile: learningProfile.difficulty,
+      character: async (sql, userId, characterId) =>
+        learningRoleKey(await learningContent.character(sql, userId, characterId)),
+    },
+    learningContent,
+  );
+  let nextLearningPollAt = 0;
   const npcService = createNpcService(database);
   let nextAvatarPollAt = 0;
   let closing = false;
@@ -152,6 +168,17 @@ async function main(): Promise<void> {
     await assertMigrationsCurrent(database);
     logger.info({ workerId }, "Worker started");
     while (!controller.signal.aborted) {
+      if (Date.now() >= nextLearningPollAt) {
+        nextLearningPollAt = Date.now() + 5_000;
+        try {
+          await learningChat.processPending();
+        } catch (error) {
+          logger.error(
+            { errorName: error instanceof Error ? error.name : "UnknownError" },
+            "学习消息计数暂未完成，下轮重放",
+          );
+        }
+      }
       if (Date.now() >= nextAvatarPollAt) {
         nextAvatarPollAt = Date.now() + 60_000;
         try {

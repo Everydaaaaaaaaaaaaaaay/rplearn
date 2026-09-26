@@ -1,3 +1,4 @@
+import type { TransactionSql } from "postgres";
 export type ContentResourceType =
   "character" | "conversation" | "favorite" | "memory" | "message" | "story_progress";
 
@@ -54,3 +55,10 @@ export type ContentPage = Readonly<{
   records: readonly ContentRecord[];
   syncCursor: string;
 }>;
+
+/** 保存事务内的创建事件；失败随消息一起回滚。 */
+export type ContentCommitObserver = (
+  sql: TransactionSql,
+  userId: string,
+  record: ContentRecord,
+) => Promise<void>;

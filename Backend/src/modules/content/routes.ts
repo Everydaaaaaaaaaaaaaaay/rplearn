@@ -1,3 +1,4 @@
+import { learningMessageOriginSchema } from "../learning/chat-contract.js";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
@@ -209,6 +210,7 @@ const conversationPayload = z
 
 const messagePayload = z
   .object({
+    learningOrigin: learningMessageOriginSchema.nullable().optional(),
     audioAssetId: uuid.nullable().optional(),
     audioDuration: z.number().min(0).max(3_600).nullable().optional(),
     coachReviewJson: nullableText(65_536),

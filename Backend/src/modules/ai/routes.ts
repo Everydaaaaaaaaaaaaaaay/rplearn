@@ -1,3 +1,4 @@
+import { learningChatContextSchema } from "../learning/chat-contract.js";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
@@ -8,6 +9,7 @@ import type { AiProviderStreamEvent, AiUsage } from "./types.js";
 import { writeSseEvent } from "./sse-writer.js";
 
 const aiRequestSchema = z.object({
+  learningChat: learningChatContextSchema.optional(),
   operationId: z.uuid().optional(),
   parentOperationId: z.uuid().optional(),
   voiceLeaseId: z.uuid().optional(),
@@ -125,6 +127,7 @@ export function registerAiRoutes(
         ...(body.parentOperationId === undefined
           ? {}
           : { parentOperationId: body.parentOperationId }),
+        ...(body.learningChat === undefined ? {} : { learningChat: body.learningChat }),
         messages: body.messages,
         responseFormat: body.responseFormat,
         task: body.task,
@@ -175,6 +178,7 @@ export function registerAiRoutes(
         ...(body.parentOperationId === undefined
           ? {}
           : { parentOperationId: body.parentOperationId }),
+        ...(body.learningChat === undefined ? {} : { learningChat: body.learningChat }),
         messages: body.messages,
         responseFormat: body.responseFormat,
         signal: cancellation.signal,

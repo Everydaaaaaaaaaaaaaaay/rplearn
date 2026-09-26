@@ -1,3 +1,4 @@
+import type { LearningChatContext } from "../learning/chat-contract.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import { outputTokenBudget } from "./output-budget.js";
 import type { RuntimeConfig } from "../../config/env.js";
@@ -22,6 +23,7 @@ import type {
 } from "./types.js";
 
 export type AiRequestInput = Readonly<{
+  learningChat?: LearningChatContext;
   operationId?: string;
   parentOperationId?: string;
   voiceLeaseId?: string;
@@ -121,6 +123,16 @@ export function createAiService(
   _billingService: BillingService,
   deepSeek: DeepSeekClient,
   options: Readonly<{
+    chatObserver?: Readonly<{
+      begin: (
+        userId: string,
+        operationId: string,
+        chat: LearningChatContext,
+        userText: string,
+        fingerprint: string,
+      ) => Promise<void>;
+      complete: (userId: string, operationId: string, body: string) => Promise<void>;
+    }>;
     catalog?: AiCatalogService;
     openRouter?: AiProviderClient;
   }> = {},
@@ -183,6 +195,19 @@ export function createAiService(
       startedAt: number;
     }>
   > => {
+    if (
+      input.learningChat !== undefined &&
+      (input.task !== "conversation" ||
+        input.responseFormat !== "text" ||
+        input.operationId === undefined ||
+        !options.chatObserver)
+    ) {
+      throw new AppError({
+        code: "LEARNING_CHAT_CONTEXT_INVALID",
+        message: "只有正式聊天请求可以关联学习计数。",
+        statusCode: 400,
+      });
+    }
     // Reject old clients before opening a ledger operation or contacting a provider.
     if (input.task === "speech_feedback") {
       throw new AppError({
@@ -229,7 +254,15 @@ export function createAiService(
       .update(
         JSON.stringify({
           task: input.task,
-          messages: input.messages,
+          messages: input.messages.map(({ content, role }) => ({ content, role })),
+          learningChat:
+            input.learningChat === undefined
+              ? undefined
+              : {
+                  conversationId: input.learningChat.conversationId,
+                  userMessageId: input.learningChat.userMessageId,
+                  cycleId: input.learningChat.cycleId,
+                },
           responseFormat: input.responseFormat,
           maxOutputTokens: input.maxOutputTokens ?? null,
           voiceLeaseId: input.voiceLeaseId ?? null,
@@ -237,6 +270,16 @@ export function createAiService(
         }),
       )
       .digest("hex");
+    if (input.learningChat && options.chatObserver) {
+      const latestUser = input.messages.findLast((message) => message.role === "user");
+      await options.chatObserver.begin(
+        userId,
+        operationId,
+        input.learningChat,
+        latestUser?.content ?? "",
+        hash,
+      );
+    }
     const quota = await credits.reserve(userId, operationId, hash, {
       task: input.task,
       provider: route.provider,
@@ -316,7 +359,15 @@ export function createAiService(
   return {
     complete: async (userId, input) => {
       const prepared = await prepare(userId, input);
-      if (prepared.replay) return { ...prepared.replay, requestId: prepared.requestId };
+      if (prepared.replay) {
+        if (input.learningChat)
+          await options.chatObserver?.complete(
+            userId,
+            prepared.operationId,
+            prepared.replay.content,
+          );
+        return { ...prepared.replay, requestId: prepared.requestId };
+      }
       let completion: AiCompletion;
       try {
         completion = await prepared.providerClient.complete(prepared.providerRequest);
@@ -376,6 +427,12 @@ export function createAiService(
         completion.providerRequestId,
       );
 
+      if (input.learningChat)
+        await options.chatObserver?.complete(
+          userId,
+          prepared.operationId,
+          completion.content,
+        );
       return {
         content: completion.content,
         model: completion.model,
@@ -387,6 +444,12 @@ export function createAiService(
       const prepared = await prepare(userId, input);
       if (prepared.replay) {
         const replay = prepared.replay;
+        if (input.learningChat)
+          await options.chatObserver?.complete(
+            userId,
+            prepared.operationId,
+            replay.content,
+          );
         return {
           requestId: prepared.requestId,
           events: (async function* (): AsyncGenerator<AiProviderStreamEvent> {
@@ -481,8 +544,15 @@ export function createAiService(
                 false,
               );
             finalized = true;
+            if (input.learningChat)
+              await options.chatObserver?.complete(
+                userId,
+                prepared.operationId,
+                content,
+              );
             yield { type: "done" };
           } catch (error) {
+            if (finalized) throw error;
             await credits.finish(
               userId,
               prepared.operationId,

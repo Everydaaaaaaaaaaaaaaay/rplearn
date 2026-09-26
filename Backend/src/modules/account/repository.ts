@@ -177,7 +177,11 @@ export class AccountRepository {
           union all select 'answer',to_jsonb(b) from app.learning_answers b join app.learning_rounds r on r.id=b.round_id join app.learning_attempts a on a.id=r.attempt_id where a.user_id=${userId}
           union all select 'reward',to_jsonb(r)-'user_id' from app.learning_rewards r where user_id=${userId}
           union all select 'level',to_jsonb(p)-'user_id' from app.learning_level_progress p where user_id=${userId}
-          union all select 'milestone',to_jsonb(m)-'user_id' from app.learning_milestones m where user_id=${userId}`;
+          union all select 'milestone',to_jsonb(m)-'user_id' from app.learning_milestones m where user_id=${userId}
+          union all select 'chat_event',to_jsonb(e)-'user_id' from app.learning_message_events e where user_id=${userId}
+          union all select 'chat_delivery',to_jsonb(o)-'user_id' from app.learning_chat_outbox o where user_id=${userId}
+          union all select 'chat_turn',to_jsonb(t)-'user_id' from app.learning_chat_turns t where user_id=${userId}
+          union all select 'chat_operation',to_jsonb(o)-'user_id' from app.learning_chat_operations o where user_id=${userId}`;
         const identities = await sql<JsonRow[]>`
           select
             provider,

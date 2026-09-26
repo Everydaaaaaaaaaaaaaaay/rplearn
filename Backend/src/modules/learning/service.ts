@@ -35,11 +35,13 @@ function decodeCursor(value: string | undefined, characterId: string) {
 export function createLearningService(
   database: DatabaseResource,
   context: LearningContextReader,
+  drainMessages?: (userId: string) => Promise<unknown>,
 ) {
   const repository = new LearningEngineRepository(database, context);
   return {
-    journey: (userId: string) =>
-      repository.inspect(userId, async (session) => {
+    journey: async (userId: string) => {
+      await drainMessages?.(userId);
+      return repository.inspect(userId, async (session) => {
         const currentLevel = await session.currentLevel();
         const progress = await session.progress();
         return {
@@ -50,9 +52,11 @@ export function createLearningService(
               progress.find((p) => p.level === level) ?? { level, ...levelProgress(0) },
           ),
         };
-      }),
-    character: (userId: string, characterId: string) =>
-      repository.inspect(userId, async (session) => {
+      });
+    },
+    character: async (userId: string, characterId: string) => {
+      await drainMessages?.(userId);
+      return repository.inspect(userId, async (session) => {
         const level = await session.currentLevel();
         const state = await session.resolveCharacter(characterId);
         return {
@@ -60,7 +64,8 @@ export function createLearningService(
           level,
           ...(await session.availability(state.roleKey, level, characterId)),
         };
-      }),
+      });
+    },
     history: (userId: string, characterId: string, limit: number, cursor?: string) => {
       const decoded = decodeCursor(cursor, characterId);
       return repository.inspect(userId, async (session) => {
@@ -77,8 +82,9 @@ export function createLearningService(
         };
       });
     },
-    start: (userId: string, requestId: string, characterId: string) =>
-      repository.command(
+    start: async (userId: string, requestId: string, characterId: string) => {
+      await drainMessages?.(userId);
+      return repository.command(
         userId,
         requestId,
         "start",
@@ -88,7 +94,8 @@ export function createLearningService(
           await session.resolveCharacter(characterId);
           return session.start(characterId, level);
         },
-      ),
+      );
+    },
     attempt: (userId: string, attemptId: string) =>
       repository.read(userId, (session) => session.attempt(attemptId)),
     answer: (

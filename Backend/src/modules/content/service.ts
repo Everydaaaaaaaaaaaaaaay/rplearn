@@ -5,7 +5,12 @@ import { AppError } from "../../shared/errors.js";
 import type { SyncCursorCodec } from "../sync/cursor.js";
 import type { ContentCursorCodec } from "./cursor.js";
 import { ContentRepository } from "./repository.js";
-import type { ContentCommand, ContentCommandResult, ContentPage } from "./types.js";
+import type {
+  ContentCommand,
+  ContentCommandResult,
+  ContentPage,
+  ContentCommitObserver,
+} from "./types.js";
 
 export type ContentService = Readonly<{
   executeCommands: (
@@ -23,8 +28,9 @@ export function createContentService(
   database: DatabaseResource,
   contentCursor: ContentCursorCodec,
   syncCursor: SyncCursorCodec,
+  observer?: ContentCommitObserver,
 ): ContentService {
-  const repository = new ContentRepository(database);
+  const repository = new ContentRepository(database, observer);
   return {
     executeCommands: async (userId, commands) => {
       const results: ContentCommandResult[] = [];
@@ -95,6 +101,8 @@ export function createContentService(
 export function createContentReadService(database: DatabaseResource) {
   const repository = new ContentRepository(database);
   return {
+    message: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "message", id),
     character: (sql: TransactionSql, userId: string, id: string) =>
       repository.readRecord(sql, userId, "character", id),
     conversation: (sql: TransactionSql, userId: string, id: string) =>

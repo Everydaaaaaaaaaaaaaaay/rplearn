@@ -1,3 +1,5 @@
+import { createLearningChatService } from "./modules/learning/chat-service.js";
+import type { LearningContextReader } from "./modules/learning/context.js";
 import { learningRoleKey } from "./modules/learning/context.js";
 import { registerLearningRoutes } from "./modules/learning/routes.js";
 import { createLearningService } from "./modules/learning/service.js";
@@ -157,11 +159,21 @@ async function main(): Promise<void> {
   );
   const learningContent = createContentReadService(dependencies.database);
   const learningProfile = createDomainLearningContext(dependencies.database);
-  const learningService = createLearningService(dependencies.database, {
+  const learningContext: LearningContextReader = {
     profile: learningProfile.difficulty,
     character: async (sql, userId, characterId) =>
       learningRoleKey(await learningContent.character(sql, userId, characterId)),
-  });
+  };
+  const learningChat = createLearningChatService(
+    dependencies.database,
+    learningContext,
+    learningContent,
+  );
+  const learningService = createLearningService(
+    dependencies.database,
+    learningContext,
+    learningChat.drain,
+  );
   registerLearningRoutes(app, authService, learningService);
   registerBillingRoutes(app, authService, billingService, {
     appleBillingEnabled: config.appleBillingEnabled,
@@ -179,7 +191,7 @@ async function main(): Promise<void> {
     dependencies.redis,
     billingService,
     createDeepSeekClient(config),
-    { catalog: aiCatalog, openRouter },
+    { catalog: aiCatalog, openRouter, chatObserver: learningChat },
   );
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,
@@ -251,6 +263,7 @@ async function main(): Promise<void> {
     dependencies.database,
     createContentCursorCodec(config.authTokenHashPepper),
     syncCursor,
+    learningChat.enqueue,
   );
   registerContentRoutes(app, authService, contentService);
   registerNpcRoutes(app, authService, createNpcService(dependencies.database));
