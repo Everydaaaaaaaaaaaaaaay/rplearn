@@ -1,0 +1,259 @@
+{
+  "id": "oliver.primary1.reading-bag",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "书店里的小书包",
+  "summary": "听清书和文具的名字，为阅读角认一认物品。",
+  "scene": "Oliver 把旧书店的一张小桌擦干净，摆上几件学习用品。门口雨声轻轻响，阅读角开始准备迎接小客人。",
+  "estimatedMinutes": 4,
+  "goalIds": ["p1.school-items-listening"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 1 School，Lesson 1–2",
+      "pages": "印刷第 6–7 页；PDF 第 11–12 页",
+      "alignment": "正文列出四种学习用品，并有听做指认和 I have 表达；只借鉴目标词与听辨活动，图画、情景和选择题均重新编写。"
+    },
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "unit": "Module 6 Unit 1–2",
+      "pages": "印刷第 32、35 页；PDF 第 37、40 页",
+      "alignment": "另一版本正文出现 book、schoolbag 和 ruler，支持具体物品指认；本单元 pencil 的依据是人教正文，不把两个版本词表视为完全一致。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐张检查原创插图，并逐题核对独立条件、候选图和解析。固定录音完成双模型识别与波形、时长、摘要检查；school bag/schoolbag仅合并分词。作者自审，没有独立教研、人耳音色或真人学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Hello! Come in.",
+      "translation": "你好，进来吧！"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Ready? Listen.",
+      "translation": "准备好了吗？听一听。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Thank you!",
+      "translation": "谢谢你！阅读角准备好了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听一听物品的名字，选出对应的图。",
+      "hint": "重点听物品的名字，不用数图中的细节。",
+      "explanation": "book 是“书”。录音 A book. 说的是一本书；带书页的图对应这个词。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一本青蓝色硬封面书，侧边有书页和书脊。",
+          "imageAssetId": "image.3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78"
+        },
+        {
+          "id": "b",
+          "text": "一把浅绿色直尺，上缘有长短刻度，没有字母。",
+          "imageAssetId": "image.72667a68d9d376ab3f01e947c7f5b74cdb2265d4013f59529d9b45b2229cfea2"
+        },
+        {
+          "id": "c",
+          "text": "一个紫色双肩书包，有提手、肩带和前口袋。",
+          "imageAssetId": "image.8c92a77720f04efb9787389951dfa0e09778afe77684e1b04386d6f0b44371de"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.f3a5b9bd96fead2975620b7693437b40aee4f8a45d34015357bb090205b0ff4b",
+        "text": "A book.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "桌上这件物品叫什么？听录音，点出相应的图。",
+      "hint": "可以再听一遍，再看每张图的形状。",
+      "explanation": "pencil 是“铅笔”。黄色笔杆、木质笔尖和橡皮头对应铅笔；ruler 是尺子。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一把浅绿色直尺，上缘有长短刻度，没有字母。",
+          "imageAssetId": "image.72667a68d9d376ab3f01e947c7f5b74cdb2265d4013f59529d9b45b2229cfea2"
+        },
+        {
+          "id": "b",
+          "text": "一支黄色铅笔，有木质笔尖和粉色橡皮头。",
+          "imageAssetId": "image.a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3"
+        },
+        {
+          "id": "c",
+          "text": "一本青蓝色硬封面书，侧边有书页和书脊。",
+          "imageAssetId": "image.3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.39054e1759190edec95461c8fea4ee722d20c46d2d80c462b38602fa33a061a3",
+        "text": "A pencil.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "录音在给一件学习用品命名。请选择那件用品。",
+      "hint": "听完整个词，不要根据物品能放在哪里猜。",
+      "explanation": "schoolbag 是“书包”。有双肩带和前口袋的图是书包，不是包里可能装的铅笔或尺子。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一支黄色铅笔，有木质笔尖和粉色橡皮头。",
+          "imageAssetId": "image.a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3"
+        },
+        {
+          "id": "b",
+          "text": "一把浅绿色直尺，上缘有长短刻度，没有字母。",
+          "imageAssetId": "image.72667a68d9d376ab3f01e947c7f5b74cdb2265d4013f59529d9b45b2229cfea2"
+        },
+        {
+          "id": "c",
+          "text": "一个紫色双肩书包，有提手、肩带和前口袋。",
+          "imageAssetId": "image.8c92a77720f04efb9787389951dfa0e09778afe77684e1b04386d6f0b44371de"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.9ae305a56b375da2be5df51f6378cf4bd5a80eea1d4494313982c6ce86bbcaf7",
+        "text": "A schoolbag.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听到的是哪件用品？点出它的图片。",
+      "hint": "慢速重播可以帮助你听清物品的名字。",
+      "explanation": "ruler 是“尺子”。有长直边和刻度的图是尺子；pencil 才是铅笔。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一本青蓝色硬封面书，侧边有书页和书脊。",
+          "imageAssetId": "image.3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78"
+        },
+        {
+          "id": "b",
+          "text": "一把浅绿色直尺，上缘有长短刻度，没有字母。",
+          "imageAssetId": "image.72667a68d9d376ab3f01e947c7f5b74cdb2265d4013f59529d9b45b2229cfea2"
+        },
+        {
+          "id": "c",
+          "text": "一支黄色铅笔，有木质笔尖和粉色橡皮头。",
+          "imageAssetId": "image.a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.fad9025c27f9d3f2688bef0e75be6bb848972fd385a488837ac290372b8d1e31",
+        "text": "A ruler.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人请你拿出一件用品给他看。听要求，选出要拿的东西。",
+      "hint": "先听完整句，再留意句末说的物品。",
+      "explanation": "Show me your book. 是“给我看看你的书”。句末的 book 决定要拿哪件物品，本题选书。",
+      "difficultyReason": "单个具体名词在简短日常句中的复现，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一个紫色双肩书包，有提手、肩带和前口袋。",
+          "imageAssetId": "image.8c92a77720f04efb9787389951dfa0e09778afe77684e1b04386d6f0b44371de"
+        },
+        {
+          "id": "b",
+          "text": "一支黄色铅笔，有木质笔尖和粉色橡皮头。",
+          "imageAssetId": "image.a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3"
+        },
+        {
+          "id": "c",
+          "text": "一本青蓝色硬封面书，侧边有书页和书脊。",
+          "imageAssetId": "image.3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.789231e0562a503e5688a2477617fadc0e2702e3b29af2cd96b5caa537ec9690",
+        "text": "Show me your book.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人介绍自己有的东西。听他说完，选出提到的那件。",
+      "hint": "这句话只提到一种物品，可以再听一次确认。",
+      "explanation": "I have a pencil. 是“我有一支铅笔”。have 表示“有”；这里说的是 pencil，不是书或书包。",
+      "difficultyReason": "单个具体名词在简短日常句中的复现，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一支黄色铅笔，有木质笔尖和粉色橡皮头。",
+          "imageAssetId": "image.a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3"
+        },
+        {
+          "id": "b",
+          "text": "一本青蓝色硬封面书，侧边有书页和书脊。",
+          "imageAssetId": "image.3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78"
+        },
+        {
+          "id": "c",
+          "text": "一个紫色双肩书包，有提手、肩带和前口袋。",
+          "imageAssetId": "image.8c92a77720f04efb9787389951dfa0e09778afe77684e1b04386d6f0b44371de"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.62e387775b4c168bb64395e3712b6e403db33ca680d3d08ae32918a89537caf3",
+        "text": "I have a pencil.",
+        "voice": "M5"
+      }
+    }
+  ]
+}

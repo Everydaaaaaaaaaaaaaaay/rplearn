@@ -1,0 +1,259 @@
+{
+  "id": "ruby.primary1.picnic-fruit",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "海风里的水果篮",
+  "summary": "听清四种水果的名字，帮野餐篮找到小伙伴。",
+  "scene": "Ruby 在海边活动结束后铺开野餐布。她把水果篮放到背风处，邀请你玩一个听音找水果的小游戏。",
+  "estimatedMinutes": 4,
+  "goalIds": ["p1.fruit-listening"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 6 Fruit，Lesson 1–2",
+      "pages": "印刷第 48–49 页；PDF 第 53–54 页",
+      "alignment": "已核读四种水果和 Show me 指认活动；只采用听音识物目标，不考本课后续 Do you like 的问答，更不复刻教材图画。"
+    },
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 6 Fruit，Lesson 2",
+      "pages": "印刷第49页；PDF第54页",
+      "alignment": "please 礼貌词在已读正文中出现；这里重新组合到梨的指认，不把组合练习声称为教材原题。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐张检查原创插图，并逐题核对独立条件、候选图和解析。固定录音完成双模型识别与波形、时长、摘要检查；school bag/schoolbag仅合并分词。作者自审，没有独立教研、人耳音色或真人学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Hello! Sit here.",
+      "translation": "你好，坐这儿吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Listen. Have a try!",
+      "translation": "听一听，试试看！"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Good! Thank you.",
+      "translation": "真好，谢谢！我们可以开动了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听一听水果的名字，点选对应的水果图。",
+      "hint": "只需听清水果的名字，不用读英文。",
+      "explanation": "apple 是“苹果”。录音 An apple. 说的是一个苹果；不要把有细长上部的梨认成苹果。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+          "imageAssetId": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51"
+        },
+        {
+          "id": "b",
+          "text": "一个红苹果，顶端有果柄和一片绿叶。",
+          "imageAssetId": "image.cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6"
+        },
+        {
+          "id": "c",
+          "text": "一根黄色弯香蕉，有完整果皮和深色果柄。",
+          "imageAssetId": "image.b19d3df9f16f78b7765d71f2a44d85009dccc6c5b6ade470c32d119afc0c0ef1"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.1282df8da4d71f2107ffc5b24a7aa0b880dbdcf41ec24572adcd6eb12c70b43f",
+        "text": "An apple.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这一段录音给哪种水果命名？选出图片。",
+      "hint": "三个选项都是水果，请根据录音选图。",
+      "explanation": "orange 在这里是“橙子”。录音 An orange. 说的是水果；圆形、有点状果皮的图是橙子。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一个红苹果，顶端有果柄和一片绿叶。",
+          "imageAssetId": "image.cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6"
+        },
+        {
+          "id": "b",
+          "text": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+          "imageAssetId": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51"
+        },
+        {
+          "id": "c",
+          "text": "一个橙色橙子，圆形果皮有小点，顶端带绿叶。",
+          "imageAssetId": "image.b92826b7178e3ee07ddc44740aa9c82a1e410306e8fb987d6ad29327577389e6"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.828e209cd364e2b7939558b29e8866c1f880f44c9f68627928018645db34b272",
+        "text": "An orange.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听水果名称，找到与声音相符的那一张图。",
+      "hint": "可以用慢速重播，听完整个水果名称。",
+      "explanation": "banana 是“香蕉”。细长弯曲的黄色水果是香蕉；pear 是梨，orange 是橙子。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一根黄色弯香蕉，有完整果皮和深色果柄。",
+          "imageAssetId": "image.b19d3df9f16f78b7765d71f2a44d85009dccc6c5b6ade470c32d119afc0c0ef1"
+        },
+        {
+          "id": "b",
+          "text": "一个橙色橙子，圆形果皮有小点，顶端带绿叶。",
+          "imageAssetId": "image.b92826b7178e3ee07ddc44740aa9c82a1e410306e8fb987d6ad29327577389e6"
+        },
+        {
+          "id": "c",
+          "text": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+          "imageAssetId": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.37d88798d3eb541e24041a77ce1845a3355ebdec1c04848e7fa839d0f7e63b23",
+        "text": "A banana.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人说出一种水果。听完后，点出他说的水果。",
+      "hint": "看一看不同水果的轮廓，再听一次。",
+      "explanation": "A pear. 指“一个梨”。pear 指梨；上部细、下部圆的图对应它，本题不靠颜色判断。",
+      "difficultyReason": "听辨 A pear 短语所指的水果；pear 与 pair 在标准英语中同音，但本题候选均为单个水果，不考拼写或同音词区别。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一个红苹果，顶端有果柄和一片绿叶。",
+          "imageAssetId": "image.cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6"
+        },
+        {
+          "id": "b",
+          "text": "一根黄色弯香蕉，有完整果皮和深色果柄。",
+          "imageAssetId": "image.b19d3df9f16f78b7765d71f2a44d85009dccc6c5b6ade470c32d119afc0c0ef1"
+        },
+        {
+          "id": "c",
+          "text": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+          "imageAssetId": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.6fa144d33e7bc37406e85b6d6b279cabce7f8739af2f5d662b72ec6aa7bc448e",
+        "text": "A pear.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人请你给他看一种水果。听这句话，选出要展示的水果。",
+      "hint": "注意这句话最后提到的水果。",
+      "explanation": "Show me an apple. 是“给我看看一个苹果”。句末的 apple 告诉我们要展示苹果。",
+      "difficultyReason": "单个具体名词在简短日常句中的复现，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一个红苹果，顶端有果柄和一片绿叶。",
+          "imageAssetId": "image.cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6"
+        },
+        {
+          "id": "b",
+          "text": "一个橙色橙子，圆形果皮有小点，顶端带绿叶。",
+          "imageAssetId": "image.b92826b7178e3ee07ddc44740aa9c82a1e410306e8fb987d6ad29327577389e6"
+        },
+        {
+          "id": "c",
+          "text": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+          "imageAssetId": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.68b383310f27d37af29f1e73a929468c0d8e0cbb9fdc8b5ab0430d0cc1a60e2b",
+        "text": "Show me an apple.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听到一个展示水果的请求。应该拿哪种水果给对方看？",
+      "hint": "先完整听一遍，再确认句末的名字。",
+      "explanation": "Show me a pear, please. 是“请给我看看一个梨”。pear 指梨，please 使请求更礼貌；本题仍只辨认水果。",
+      "difficultyReason": "单个具体名词在简短日常句中的复现，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一根黄色弯香蕉，有完整果皮和深色果柄。",
+          "imageAssetId": "image.b19d3df9f16f78b7765d71f2a44d85009dccc6c5b6ade470c32d119afc0c0ef1"
+        },
+        {
+          "id": "b",
+          "text": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+          "imageAssetId": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51"
+        },
+        {
+          "id": "c",
+          "text": "一个红苹果，顶端有果柄和一片绿叶。",
+          "imageAssetId": "image.cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.2a99d0c612797d255b05a2ff523193e8a1fcd946281dc63f3110c1f1e379a323",
+        "text": "Show me a pear, please.",
+        "voice": "F3"
+      }
+    }
+  ]
+}

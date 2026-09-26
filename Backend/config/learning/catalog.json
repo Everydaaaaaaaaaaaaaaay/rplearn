@@ -139,6 +139,36 @@
           "sha256": "9dec766018882be74c858fa34e4cb43b30313a03d90a48b3dc9a27d9607dfe5f"
         }
       ]
+    },
+    {
+      "id": "pep.primary1.upper.archive",
+      "title": "人教版英语（一年级起点）一年级上册公开存档",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%B8%80%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "版权页标注 Copyright 2012；具体出版印次未确认，不认定为当前新版",
+      "readAt": "2026-09-26",
+      "scope": "核读版权页PDF第3页及正文PDF第11–12、19–20、53–54页；对应印刷第6–7页文具、第14–15页五官、第48–49页水果。",
+      "limitations": "正文来自公开社区存档，实际核读页面已记录；不是出版社当前电子版下载，不代表2026版或全年级完整课程。不分发教材原文、录音或插图。",
+      "evidence": [
+        {
+          "locator": "已下载完整教材PDF的SHA-256；核读位置详见scope",
+          "sha256": "8a6237013cb04fd402d63c7285bfc63513c1c6537150edf0b17340f187d63bbf"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.primary1.upper.archive",
+      "title": "外研版英语（一年级起点）一年级上册公开存档",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E9%99%88%E7%90%B3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%B8%80%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "前言说明依据2011年课标修订；具体出版印次未确认",
+      "readAt": "2026-09-26",
+      "scope": "核读出版信息与前言PDF第3–4页、正文PDF第37与40页（印刷第32与35页）；文具识别用于跨版本对照。",
+      "limitations": "正文来自公开社区存档，实际核读页面已记录；不是出版社当前电子版下载，不代表2026版或全年级完整课程。不分发教材原文、录音或插图。",
+      "evidence": [
+        {
+          "locator": "已下载完整教材PDF的SHA-256；核读位置详见scope",
+          "sha256": "7b1eb1b3069a7b453b4db2f13821c1bea8b09b8b27670298be9b76c2c23aa67d"
+        }
+      ]
     }
   ],
   "goals": [
@@ -393,6 +423,27 @@
       "canDo": "能以 -ing 表达工作内容、需避免的行为和行动方法，并区别正在发生的动作。",
       "boundaries": "限常用动词和介词后的活动短语；明确接受的输出形式，避免开放句架遗漏不定式或代词变体。",
       "sourceIds": ["pep.senior.selective1.review2019"]
+    },
+    {
+      "id": "p1.school-items-listening",
+      "level": "primary1",
+      "canDo": "能听辨 book、pencil、ruler、schoolbag，并从三张图中指认短句提到的学习用品。",
+      "boundaries": "四个具体名词、冠词短语及 Show me / I have 短句中的名词辨认；不要求读写英文，不据此声称掌握所有祈使句或所属表达。",
+      "sourceIds": ["pep.primary1.upper.archive", "fltrp.primary1.upper.archive"]
+    },
+    {
+      "id": "p1.fruit-listening",
+      "level": "primary1",
+      "canDo": "能听辨 apple、orange、banana、pear，并从三张图中指认简短请求中提到的水果。",
+      "boundaries": "限四种水果的听音辨义及 Show me 短句中的名词辨认；不要求拼写、复数变形或偏好问答，不以颜色作为答案条件。",
+      "sourceIds": ["pep.primary1.upper.archive"]
+    },
+    {
+      "id": "p1.face-listening",
+      "level": "primary1",
+      "canDo": "能听辨 eye、ear、nose、mouth，并根据 Touch your 短指令辨认所说的身体部位。",
+      "boundaries": "仅听音指认单个眼、耳、鼻、嘴；不考生理知识，不要求触碰眼睛或他人，不把选图当作实际动作执行或口语能力证明。",
+      "sourceIds": ["pep.primary1.upper.archive"]
     }
   ],
   "unitIds": [
@@ -431,7 +482,10 @@
     "ruby.senior2.visitor-board-debate",
     "marcus.senior2.community-project-brief",
     "marcus.senior2.portrait-feedback",
-    "marcus.senior2.interview-worktable"
+    "marcus.senior2.interview-worktable",
+    "oliver.primary1.reading-bag",
+    "ruby.primary1.picnic-fruit",
+    "marcus.primary1.portrait-faces"
   ],
   "audioAssets": [
     {
@@ -499,6 +553,362 @@
       "voice": "F3",
       "reviewedAt": "2026-09-26",
       "reviewNotes": "本地 Supertonic3 固定声音生成；24 kHz 单声道 PCM16，最终文件 base.en 与 small.en 均无提示词逐字识别一致；峰值 13231，RMS 3000，无削波。当前工具不支持音频输入，未声称已做人耳音质试听。"
+    },
+    {
+      "id": "audio.3fc2dcd5694d5acae49f98ced3c46c9e27740c062d79c4957e7d7a24d0b5616b",
+      "sha256": "3fc2dcd5694d5acae49f98ced3c46c9e27740c062d79c4957e7d7a24d0b5616b",
+      "byteSize": 60242,
+      "durationMs": 1254,
+      "contentType": "audio/wav",
+      "transcript": "My eye.",
+      "voice": "M3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.d9c8963960c6afee4977a51460cbe5d847164dd8c6a9e05d30e3f8de1f10b2ee",
+      "sha256": "d9c8963960c6afee4977a51460cbe5d847164dd8c6a9e05d30e3f8de1f10b2ee",
+      "byteSize": 76376,
+      "durationMs": 1590,
+      "contentType": "audio/wav",
+      "transcript": "This is my ear.",
+      "voice": "M3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.3221e6a7966074bb6b59d43bfafd9deed36214d0c5b867c58415f208af1c26fb",
+      "sha256": "3221e6a7966074bb6b59d43bfafd9deed36214d0c5b867c58415f208af1c26fb",
+      "byteSize": 61278,
+      "durationMs": 1276,
+      "contentType": "audio/wav",
+      "transcript": "My nose.",
+      "voice": "M3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.a7600d60440759f7a1733870ff4d066d3b6580d82e70c4325b3d82ba6813a26f",
+      "sha256": "a7600d60440759f7a1733870ff4d066d3b6580d82e70c4325b3d82ba6813a26f",
+      "byteSize": 61228,
+      "durationMs": 1275,
+      "contentType": "audio/wav",
+      "transcript": "My mouth.",
+      "voice": "M3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.6044d5936d56cc6bf563b87160c448a7a0ad56881578d50e04068e46ad31e9a1",
+      "sha256": "6044d5936d56cc6bf563b87160c448a7a0ad56881578d50e04068e46ad31e9a1",
+      "byteSize": 71294,
+      "durationMs": 1484,
+      "contentType": "audio/wav",
+      "transcript": "Touch your nose.",
+      "voice": "M3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.8d4d06a4536456ecff534e68d05dcc9e0684fba78dfc930c236fb2267d8d82e0",
+      "sha256": "8d4d06a4536456ecff534e68d05dcc9e0684fba78dfc930c236fb2267d8d82e0",
+      "byteSize": 69024,
+      "durationMs": 1437,
+      "contentType": "audio/wav",
+      "transcript": "Touch your ear.",
+      "voice": "M3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.f3a5b9bd96fead2975620b7693437b40aee4f8a45d34015357bb090205b0ff4b",
+      "sha256": "f3a5b9bd96fead2975620b7693437b40aee4f8a45d34015357bb090205b0ff4b",
+      "byteSize": 67988,
+      "durationMs": 1416,
+      "contentType": "audio/wav",
+      "transcript": "A book.",
+      "voice": "M5",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.39054e1759190edec95461c8fea4ee722d20c46d2d80c462b38602fa33a061a3",
+      "sha256": "39054e1759190edec95461c8fea4ee722d20c46d2d80c462b38602fa33a061a3",
+      "byteSize": 69220,
+      "durationMs": 1441,
+      "contentType": "audio/wav",
+      "transcript": "A pencil.",
+      "voice": "M5",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.9ae305a56b375da2be5df51f6378cf4bd5a80eea1d4494313982c6ce86bbcaf7",
+      "sha256": "9ae305a56b375da2be5df51f6378cf4bd5a80eea1d4494313982c6ce86bbcaf7",
+      "byteSize": 73760,
+      "durationMs": 1536,
+      "contentType": "audio/wav",
+      "transcript": "A schoolbag.",
+      "voice": "M5",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.fad9025c27f9d3f2688bef0e75be6bb848972fd385a488837ac290372b8d1e31",
+      "sha256": "fad9025c27f9d3f2688bef0e75be6bb848972fd385a488837ac290372b8d1e31",
+      "byteSize": 68530,
+      "durationMs": 1427,
+      "contentType": "audio/wav",
+      "transcript": "A ruler.",
+      "voice": "M5",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.789231e0562a503e5688a2477617fadc0e2702e3b29af2cd96b5caa537ec9690",
+      "sha256": "789231e0562a503e5688a2477617fadc0e2702e3b29af2cd96b5caa537ec9690",
+      "byteSize": 79780,
+      "durationMs": 1661,
+      "contentType": "audio/wav",
+      "transcript": "Show me your book.",
+      "voice": "M5",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.62e387775b4c168bb64395e3712b6e403db33ca680d3d08ae32918a89537caf3",
+      "sha256": "62e387775b4c168bb64395e3712b6e403db33ca680d3d08ae32918a89537caf3",
+      "byteSize": 80570,
+      "durationMs": 1678,
+      "contentType": "audio/wav",
+      "transcript": "I have a pencil.",
+      "voice": "M5",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.1282df8da4d71f2107ffc5b24a7aa0b880dbdcf41ec24572adcd6eb12c70b43f",
+      "sha256": "1282df8da4d71f2107ffc5b24a7aa0b880dbdcf41ec24572adcd6eb12c70b43f",
+      "byteSize": 72084,
+      "durationMs": 1501,
+      "contentType": "audio/wav",
+      "transcript": "An apple.",
+      "voice": "F3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.828e209cd364e2b7939558b29e8866c1f880f44c9f68627928018645db34b272",
+      "sha256": "828e209cd364e2b7939558b29e8866c1f880f44c9f68627928018645db34b272",
+      "byteSize": 72132,
+      "durationMs": 1502,
+      "contentType": "audio/wav",
+      "transcript": "An orange.",
+      "voice": "F3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.37d88798d3eb541e24041a77ce1845a3355ebdec1c04848e7fa839d0f7e63b23",
+      "sha256": "37d88798d3eb541e24041a77ce1845a3355ebdec1c04848e7fa839d0f7e63b23",
+      "byteSize": 72084,
+      "durationMs": 1501,
+      "contentType": "audio/wav",
+      "transcript": "A banana.",
+      "voice": "F3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.6fa144d33e7bc37406e85b6d6b279cabce7f8739af2f5d662b72ec6aa7bc448e",
+      "sha256": "6fa144d33e7bc37406e85b6d6b279cabce7f8739af2f5d662b72ec6aa7bc448e",
+      "byteSize": 70800,
+      "durationMs": 1474,
+      "contentType": "audio/wav",
+      "transcript": "A pear.",
+      "voice": "F3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。 本声音直接合成pear时两种识别模型反复得到peer/pier，故生产输入采用标准同音词pair作读音辅助；文件的目标听力原文仍为pear，两模型核对实际输入pair。没有把peer/pier归一成pear。"
+    },
+    {
+      "id": "audio.68b383310f27d37af29f1e73a929468c0d8e0cbb9fdc8b5ab0430d0cc1a60e2b",
+      "sha256": "68b383310f27d37af29f1e73a929468c0d8e0cbb9fdc8b5ab0430d0cc1a60e2b",
+      "byteSize": 84418,
+      "durationMs": 1758,
+      "contentType": "audio/wav",
+      "transcript": "Show me an apple.",
+      "voice": "F3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。"
+    },
+    {
+      "id": "audio.2a99d0c612797d255b05a2ff523193e8a1fcd946281dc63f3110c1f1e379a323",
+      "sha256": "2a99d0c612797d255b05a2ff523193e8a1fcd946281dc63f3110c1f1e379a323",
+      "byteSize": 105044,
+      "durationMs": 2188,
+      "contentType": "audio/wav",
+      "transcript": "Show me a pear, please.",
+      "voice": "F3",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "本项目原创短语或短句，Supertonic3固定角色声音；24kHz单声道PCM16，统一电平后重新核对峰值、时长和SHA-256。无提示词的base.en与small.en最终识别通过；忽略大小写、标点，school bag与schoolbag仅合并分词。未声称完成人耳音色、口音或韵律审听。 本声音直接合成pear时两种识别模型反复得到peer/pier，故生产输入采用标准同音词pair作读音辅助；文件的目标听力原文仍为pear，两模型核对实际输入pair。没有把peer/pier归一成pear。"
+    }
+  ],
+  "imageAssets": [
+    {
+      "id": "image.3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78",
+      "sha256": "3ddf2642ce921da06e7152f8ad0fe2bd30a6aa83f77684a3c2b724329e473d78",
+      "byteSize": 7998,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一本青蓝色硬封面书，侧边有书页和书脊。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-book.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：书脊、封面和底部书页清楚；与尺子、铅笔、书包轮廓不同，封面无英文。"
+    },
+    {
+      "id": "image.a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3",
+      "sha256": "a7625f5cf89ccc99d878101216dcfae98b2ae8dff67b0b4aa7aa81e485e348b3",
+      "byteSize": 10573,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一支黄色铅笔，有木质笔尖和粉色橡皮头。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-pencil.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：木质笔尖、笔杆及橡皮头清楚，不是钢笔或蜡笔；斜放仍完整可见，无英文。"
+    },
+    {
+      "id": "image.72667a68d9d376ab3f01e947c7f5b74cdb2265d4013f59529d9b45b2229cfea2",
+      "sha256": "72667a68d9d376ab3f01e947c7f5b74cdb2265d4013f59529d9b45b2229cfea2",
+      "byteSize": 13585,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一把浅绿色直尺，上缘有长短刻度，没有字母。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-ruler.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：长直边和刻度共同指认直尺；不靠绿色判断，刻度不含英文或数字答案。"
+    },
+    {
+      "id": "image.8c92a77720f04efb9787389951dfa0e09778afe77684e1b04386d6f0b44371de",
+      "sha256": "8c92a77720f04efb9787389951dfa0e09778afe77684e1b04386d6f0b44371de",
+      "byteSize": 14607,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一个紫色双肩书包，有提手、肩带和前口袋。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-schoolbag.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：双肩带、提手、前袋共同指认书包；与手提袋或行李箱无明显混淆，无英文。"
+    },
+    {
+      "id": "image.cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6",
+      "sha256": "cc7d5f0bc2a14b4c17bac2821ca8bee836f887f81d9c9198aad0222e82ca9ea6",
+      "byteSize": 17816,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一个红苹果，顶端有果柄和一片绿叶。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-apple.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：果柄、顶端凹口和双圆轮廓呈苹果；与梨、香蕉、橙子的形状不同，无英文。"
+    },
+    {
+      "id": "image.b19d3df9f16f78b7765d71f2a44d85009dccc6c5b6ade470c32d119afc0c0ef1",
+      "sha256": "b19d3df9f16f78b7765d71f2a44d85009dccc6c5b6ade470c32d119afc0c0ef1",
+      "byteSize": 18837,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一根黄色弯香蕉，有完整果皮和深色果柄。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-banana.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：细长弯曲果皮与果柄可指认香蕉；没有剥皮造成的数量歧义，无英文。"
+    },
+    {
+      "id": "image.b92826b7178e3ee07ddc44740aa9c82a1e410306e8fb987d6ad29327577389e6",
+      "sha256": "b92826b7178e3ee07ddc44740aa9c82a1e410306e8fb987d6ad29327577389e6",
+      "byteSize": 15951,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一个橙色橙子，圆形果皮有小点，顶端带绿叶。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-orange.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：单个圆形橙子及点状果皮清楚；与苹果凹口、梨的细颈及香蕉弧形可区分，无英文。"
+    },
+    {
+      "id": "image.3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51",
+      "sha256": "3089bdd08b1b388648389dcac2f97aef83ccb617f2a4b2d4d3daeeae6ecc9b51",
+      "byteSize": 17277,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一个黄绿色梨，上部细、下部圆，有果柄和绿叶。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-pear.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：上细下圆的梨形清楚；并非仅凭绿色区分苹果，无英文。"
+    },
+    {
+      "id": "image.b5d80c4577d59b5d7b76a0e39c7bd6d1a2c7ed5ef531f7d994011e42eeb7eb50",
+      "sha256": "b5d80c4577d59b5d7b76a0e39c7bd6d1a2c7ed5ef531f7d994011e42eeb7eb50",
+      "byteSize": 19379,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一只睁开的眼睛，有眉毛、眼白和圆形瞳孔。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-eye.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：一只眼睛的眼白、虹膜、瞳孔清楚；眉毛作为附属线条，不以眉毛作选项，无英文。"
+    },
+    {
+      "id": "image.28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8",
+      "sha256": "28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8",
+      "byteSize": 18798,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一只人的耳朵，显示外耳轮廓和耳垂。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-ear.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：单只外耳有耳廓和耳垂，轮廓可辨；与眼、鼻、嘴不混淆，无英文。"
+    },
+    {
+      "id": "image.55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1",
+      "sha256": "55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1",
+      "byteSize": 13663,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一个人的鼻子，显示鼻梁、鼻翼和两个鼻孔。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-nose.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：单个正面鼻子的鼻梁、鼻翼与鼻孔清楚；不含眼睛嘴巴等其他待测部位，无英文。"
+    },
+    {
+      "id": "image.7ec92de3848519bce95b75df57efdaea1ea0c0a9826a71ab01f84be929f86b1e",
+      "sha256": "7ec92de3848519bce95b75df57efdaea1ea0c0a9826a71ab01f84be929f86b1e",
+      "byteSize": 17593,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "一张微笑的嘴，有上下嘴唇和牙齿。",
+      "source": "本项目逐项绘制的原创矢量插图：Backend/config/learning/image-sources/primary1-mouth.svg；没有使用教材或第三方图片。",
+      "reviewedBy": "Codex 作者自审",
+      "reviewedAt": "2026-09-26",
+      "reviewNotes": "已逐图目视检查：嘴唇与张口微笑轮廓清楚；牙齿作为附属细节，不以牙齿作选项，无英文。"
     }
   ]
 }

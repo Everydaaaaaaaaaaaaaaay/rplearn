@@ -25,16 +25,16 @@ afterEach(async () => {
 });
 
 describe("原创课程发布门槛", () => {
-  it("小学三、四年级及初三、高二各包含三个角色各三个不同单元，全部逐题样例通过且结果可复现", async () => {
+  it("四档完整样板与小一首批按角色独立统计，全部逐题样例通过且结果可复现", async () => {
     const catalog = await loadCuratedCatalog(catalogPath);
-    expect(catalog.units).toHaveLength(36);
+    expect(catalog.units).toHaveLength(39);
     expect(catalog.summary).toEqual(
-      ["primary3", "primary4", "junior3", "senior2"].flatMap((level) =>
+      ["primary3", "primary4", "junior3", "senior2", "primary1"].flatMap((level) =>
         ["oliver", "ruby", "marcus"].map((roleKey) => ({
           roleKey,
           level,
-          units: 3,
-          questions: 18,
+          units: level === "primary1" ? 1 : 3,
+          questions: level === "primary1" ? 6 : 18,
         })),
       ),
     );
@@ -96,9 +96,10 @@ describe("原创课程发布门槛", () => {
       string,
       unknown
     >;
-    registry.imageAssets = [asset.metadata];
+    const existingImages = registry.imageAssets as unknown[];
+    registry.imageAssets = [...existingImages, asset.metadata];
     await writeFile(registryPath, JSON.stringify(registry));
-    await mkdir(join(directory, "images"));
+    await mkdir(join(directory, "images"), { recursive: true });
     await writeFile(join(directory, "images", `${asset.metadata.id}.png`), asset.bytes);
     await expect(loadCuratedCatalog(directory)).rejects.toThrow("缺少图片语义");
     const checked = review.questions.find((q) => q.questionId === question.id);
@@ -106,7 +107,9 @@ describe("原创课程发布门槛", () => {
     checked.imageReview =
       "这是工程样本，仅验证文件与审核记录绑定，不是教学图片质量结论。";
     await writeFile(reviewPath, JSON.stringify(review));
-    expect((await loadCuratedCatalog(directory)).imageAssets).toHaveLength(1);
+    expect((await loadCuratedCatalog(directory)).imageAssets).toHaveLength(
+      existingImages.length + 1,
+    );
   });
 
   it("来源失联于登记表时不能发布", async () => {

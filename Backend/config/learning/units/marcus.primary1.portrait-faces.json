@@ -1,0 +1,253 @@
+{
+  "id": "marcus.primary1.portrait-faces",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary1",
+  "title": "相机旁的表情游戏",
+  "summary": "在小小人像工作台旁，听音认一认眼、耳、鼻、嘴。",
+  "scene": "Marcus 收好街头拍摄的相机，在桌上摆开几张手绘五官卡。他想先玩一个听音指认小游戏，再一起摆个有趣的表情。",
+  "estimatedMinutes": 4,
+  "goalIds": ["p1.face-listening"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "unit": "Unit 2 Face，Lesson 1–2",
+      "pages": "印刷第 14–15 页；PDF 第 19–20 页",
+      "alignment": "已核读四种五官词、Touch your 短指令和 This is my 描述。改为点击原创图片，只练听辨，不要求儿童做接触眼睛等动作。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐张检查原创插图，并逐题核对独立条件、候选图和解析。固定录音完成双模型识别与波形、时长、摘要检查；school bag/schoolbag仅合并分词。作者自审，没有独立教研、人耳音色或真人学习效果证据。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "Hello! Look here.",
+      "translation": "你好，看看这儿。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Listen. Take your time.",
+      "translation": "听一听，慢慢来。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Well done!",
+      "translation": "做得好！现在可以摆个喜欢的表情了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听到的是哪个五官？选出对应的图片。",
+      "hint": "眼睛和耳朵的英文听起来不同，可以再听一次。",
+      "explanation": "eye 是“眼睛”，my 是“我的”。My eye. 指“我的眼睛”；有眼白和圆形瞳孔的图对应它。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只人的耳朵，显示外耳轮廓和耳垂。",
+          "imageAssetId": "image.28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8"
+        },
+        {
+          "id": "b",
+          "text": "一个人的鼻子，显示鼻梁、鼻翼和两个鼻孔。",
+          "imageAssetId": "image.55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1"
+        },
+        {
+          "id": "c",
+          "text": "一只睁开的眼睛，有眉毛、眼白和圆形瞳孔。",
+          "imageAssetId": "image.b5d80c4577d59b5d7b76a0e39c7bd6d1a2c7ed5ef531f7d994011e42eeb7eb50"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.3fc2dcd5694d5acae49f98ced3c46c9e27740c062d79c4957e7d7a24d0b5616b",
+        "text": "My eye.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "有人在介绍自己的一个部位。听录音，找到对应的图。",
+      "hint": "请根据声音选图，不需要模仿动作。",
+      "explanation": "ear 是“耳朵”。This is my ear. 表示“这是我的耳朵”；有耳廓和耳垂的图对应耳朵，eye 才是眼睛。",
+      "difficultyReason": "在 This is my 简短描述中辨认 ear，选择原创图，不要求阅读英文句子或拼写。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只人的耳朵，显示外耳轮廓和耳垂。",
+          "imageAssetId": "image.28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8"
+        },
+        {
+          "id": "b",
+          "text": "一张微笑的嘴，有上下嘴唇和牙齿。",
+          "imageAssetId": "image.7ec92de3848519bce95b75df57efdaea1ea0c0a9826a71ab01f84be929f86b1e"
+        },
+        {
+          "id": "c",
+          "text": "一只睁开的眼睛，有眉毛、眼白和圆形瞳孔。",
+          "imageAssetId": "image.b5d80c4577d59b5d7b76a0e39c7bd6d1a2c7ed5ef531f7d994011e42eeb7eb50"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.d9c8963960c6afee4977a51460cbe5d847164dd8c6a9e05d30e3f8de1f10b2ee",
+        "text": "This is my ear.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这段声音说的是脸上的哪个部位？点图作答。",
+      "hint": "先听完整个短语，再辨认图的轮廓。",
+      "explanation": "nose 是“鼻子”。My nose. 指“我的鼻子”；有鼻梁和鼻孔的图对应鼻子。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张微笑的嘴，有上下嘴唇和牙齿。",
+          "imageAssetId": "image.7ec92de3848519bce95b75df57efdaea1ea0c0a9826a71ab01f84be929f86b1e"
+        },
+        {
+          "id": "b",
+          "text": "一个人的鼻子，显示鼻梁、鼻翼和两个鼻孔。",
+          "imageAssetId": "image.55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1"
+        },
+        {
+          "id": "c",
+          "text": "一只人的耳朵，显示外耳轮廓和耳垂。",
+          "imageAssetId": "image.28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.3221e6a7966074bb6b59d43bfafd9deed36214d0c5b867c58415f208af1c26fb",
+        "text": "My nose.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听一听，这次介绍的是哪个五官？",
+      "hint": "慢速重播后，对照三张图再作选择。",
+      "explanation": "mouth 是“嘴”。My mouth. 指“我的嘴”；画着上下嘴唇的图是嘴，眼睛和鼻子都不符合。",
+      "difficultyReason": "单个具体名词的短语，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一张微笑的嘴，有上下嘴唇和牙齿。",
+          "imageAssetId": "image.7ec92de3848519bce95b75df57efdaea1ea0c0a9826a71ab01f84be929f86b1e"
+        },
+        {
+          "id": "b",
+          "text": "一只睁开的眼睛，有眉毛、眼白和圆形瞳孔。",
+          "imageAssetId": "image.b5d80c4577d59b5d7b76a0e39c7bd6d1a2c7ed5ef531f7d994011e42eeb7eb50"
+        },
+        {
+          "id": "c",
+          "text": "一个人的鼻子，显示鼻梁、鼻翼和两个鼻孔。",
+          "imageAssetId": "image.55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.a7600d60440759f7a1733870ff4d066d3b6580d82e70c4325b3d82ba6813a26f",
+        "text": "My mouth.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "听一个小指令：它说要碰哪里？只需选图，不用做动作。",
+      "hint": "留意指令最后的部位名称。",
+      "explanation": "Touch your nose. 是“摸摸你的鼻子”。本题只点鼻子的图，不需要真的触碰脸。",
+      "difficultyReason": "单个具体名词在简短日常句中的复现，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只人的耳朵，显示外耳轮廓和耳垂。",
+          "imageAssetId": "image.28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8"
+        },
+        {
+          "id": "b",
+          "text": "一个人的鼻子，显示鼻梁、鼻翼和两个鼻孔。",
+          "imageAssetId": "image.55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1"
+        },
+        {
+          "id": "c",
+          "text": "一张微笑的嘴，有上下嘴唇和牙齿。",
+          "imageAssetId": "image.7ec92de3848519bce95b75df57efdaea1ea0c0a9826a71ab01f84be929f86b1e"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.6044d5936d56cc6bf563b87160c448a7a0ad56881578d50e04068e46ad31e9a1",
+        "text": "Touch your nose.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听录音，点选一张图。可以重播或慢速听。",
+      "prompt": "这个动作指令提到了哪个部位？听完后只点相应图片。",
+      "hint": "只根据这道题的录音判断，不沿用上一题的选择。",
+      "explanation": "Touch your ear. 是“摸摸你的耳朵”。要辨认的是 ear；图中的眼睛和鼻子分别是 eye 和 nose。",
+      "difficultyReason": "单个具体名词在简短日常句中的复现，三张无英文标签的图片供辨认；不要求英文阅读、拼写或记住剧情。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一只睁开的眼睛，有眉毛、眼白和圆形瞳孔。",
+          "imageAssetId": "image.b5d80c4577d59b5d7b76a0e39c7bd6d1a2c7ed5ef531f7d994011e42eeb7eb50"
+        },
+        {
+          "id": "b",
+          "text": "一个人的鼻子，显示鼻梁、鼻翼和两个鼻孔。",
+          "imageAssetId": "image.55ebd8bf5efae0f3169000c4ffbbff3249206eb5ce23cd61fa137180eacd79f1"
+        },
+        {
+          "id": "c",
+          "text": "一只人的耳朵，显示外耳轮廓和耳垂。",
+          "imageAssetId": "image.28fa73ed55b51311e0c18dfd4969364f50096e88b3afd40cd077d100c8c844d8"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.8d4d06a4536456ecff534e68d05dcc9e0684fba78dfc930c236fb2267d8d82e0",
+        "text": "Touch your ear.",
+        "voice": "M3"
+      }
+    }
+  ]
+}

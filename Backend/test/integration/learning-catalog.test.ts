@@ -62,8 +62,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toHaveLength(2);
     });
 
-    it.each(["primary3", "primary4", "junior3", "senior2"] as const)(
-      "%s 的九个原创单元可独立分配，补答不重复得分，耗尽保持满条",
+    it.each(["primary1", "primary3", "primary4", "junior3", "senior2"] as const)(
+      "%s 的实际原创池可独立分配，补答不重复得分，耗尽保持满条",
       async (level) => {
         const namespace = randomUUID();
         // 使用真实教学内容，仅隔离身份，避免影响并行用例的角色池。
@@ -76,8 +76,16 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           }));
         unitIds.push(...units.map((u) => u.id));
         testRoles.push(...new Set(units.map((u) => u.roleKey)));
-        await repository.publishBatch(units);
-        await repository.publishBatch(units);
+        await repository.publishBatch(
+          units,
+          catalog.audioAssets.map((a) => a.metadata),
+          catalog.imageAssets.map((a) => a.metadata),
+        );
+        await repository.publishBatch(
+          units,
+          catalog.audioAssets.map((a) => a.metadata),
+          catalog.imageAssets.map((a) => a.metadata),
+        );
         const user = randomUUID();
         users.push(user);
         await database.sql`insert into app.users(id) values(${user})`;
@@ -100,7 +108,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             await command(message, (s) => s.recordMessage(message));
           };
           const seen = new Set<string>();
-          for (let i = 0; i < 3; i++) {
+          const expectedCount = units.filter((u) => u.roleKey === role).length;
+          for (let i = 0; i < expectedCount; i++) {
             await fill();
             const started = await command({ start: character }, (s) =>
               s.start(character, level),
@@ -151,7 +160,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
                 .correctQuestionIds,
             ).toHaveLength(6);
           }
-          expect(seen.size).toBe(3);
+          expect(seen.size).toBe(expectedCount);
           await fill();
           expect(
             await command({ start: character }, (s) => s.start(character, level)),
@@ -161,11 +170,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           ).toBe(1000);
         }
         expect(await repository.read(user, (s) => s.progress())).toEqual([
-          expect.objectContaining({ level, points: 54, stars: 0 }),
+          expect.objectContaining({ level, points: units.length * 6, stars: 0 }),
         ]);
         expect(
           await database.sql`select question_id from app.learning_rewards where user_id=${user}`,
-        ).toHaveLength(54);
+        ).toHaveLength(units.length * 6);
       },
     );
   },
