@@ -112,6 +112,7 @@ public struct LearningJourney: Codable, Sendable, Equatable {
         public let starsPerLevel: Int
     }
     public let currentLevel: String
+    public let promotion: LearningPromotionEligibility?
     public let policy: Policy
     public let levels: [LearningLevelProgress]
     public var current: LearningLevelProgress? { levels.first { $0.level == currentLevel } }

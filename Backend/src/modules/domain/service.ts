@@ -7,6 +7,7 @@ import { AppError } from "../../shared/errors.js";
 import { DomainRepository } from "./repository.js";
 import type {
   CommandIdentity,
+  DifficultyLevel,
   OnboardingSelection,
   ProfilePatch,
   Ticket,
@@ -177,5 +178,16 @@ export function createDomainLearningContext(database: DatabaseResource) {
   return {
     difficulty: (sql: TransactionSql, userId: string) =>
       repository.currentDifficulty(sql, userId),
+    promotionProfile: (sql: TransactionSql, userId: string) =>
+      repository.promotionProfile(sql, userId),
+    promoteProfile: (
+      sql: TransactionSql,
+      userId: string,
+      requestId: string,
+      from: DifficultyLevel,
+      to: DifficultyLevel,
+      expectedVersion: number,
+    ) =>
+      repository.promoteDifficulty(sql, userId, requestId, from, to, expectedVersion),
   };
 }

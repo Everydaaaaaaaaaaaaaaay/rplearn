@@ -14,8 +14,9 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
                     "availableUnits": 0, "generationStatus": NSNull()])
     }
     func learningJourney() async throws -> LearningJourney {
+        if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PROMOTION"] == "1" { return try await DebugLearningPromotionService.shared.journey() }
         let level = try await profile?.profile().difficultyLevel.rawValue ?? "primary3"
-        return try decode(["currentLevel": level, "policy": ["version": 1, "characterThreshold": 1000, "pointsPerQuestion": 1, "pointsPerStar": 60, "starsPerLevel": 9],
+        return try decode(["currentLevel": level, "promotion": ["level": level, "nextLevel": NSNull(), "points": 0, "targetPoints": 540, "goals": [], "transferCompleted": false, "courseVersion": NSNull(), "courseHash": NSNull(), "ready": false, "completedPromotionId": NSNull(), "activePromotionId": NSNull(), "blockers": [["code": "course_unpublished", "message": "本级完整课程与进阶标准尚在准备，现有学习进度会保留。"]]], "policy": ["version": 1, "characterThreshold": 1000, "pointsPerQuestion": 1, "pointsPerStar": 60, "starsPerLevel": 9],
                     "levels": DifficultyLevel.allCases.map { ["level": $0.rawValue, "points": 0, "displayPoints": 0, "targetPoints": 540, "stars": 0, "currentStarPoints": 0, "pointsPerStar": 60, "publishedUnitCount": 0] as [String: Any] }])
     }
     func mainlineProgress() async throws -> BackendMainlineProgress {

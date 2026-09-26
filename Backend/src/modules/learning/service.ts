@@ -1,3 +1,5 @@
+import type { PromotionCourse } from "./promotion-content.js";
+import type { LearningLevel } from "./content.js";
 import { countEarnedStars } from "./milestone-repository.js";
 import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
@@ -39,9 +41,46 @@ export function createLearningService(
   context: LearningContextReader,
   drainMessages?: (userId: string) => Promise<unknown>,
   audioStore?: LearningAudioObjectStore,
+  courses: readonly PromotionCourse[] = [],
 ) {
   const repository = new LearningEngineRepository(database, context);
   return {
+    beginPromotion: (userId: string, requestId: string, level: LearningLevel) =>
+      repository.command(userId, requestId, "promotion.begin", { level }, (session) =>
+        session.promotions(courses).begin(level),
+      ),
+    promotion: (userId: string, id: string) =>
+      repository.read(userId, (session) => session.promotions(courses).read(id)),
+    advancePromotion: (
+      userId: string,
+      requestId: string,
+      id: string,
+      expectedRevision: number,
+    ) =>
+      repository.command(
+        userId,
+        requestId,
+        "promotion.advance",
+        { id, expectedRevision },
+        (session) => session.promotions(courses).advance(id, expectedRevision),
+      ),
+    completePromotion: (
+      userId: string,
+      requestId: string,
+      id: string,
+      expectedRevision: number,
+      expectedProfileVersion: number,
+    ) =>
+      repository.command(
+        userId,
+        requestId,
+        "promotion.complete",
+        { id, expectedRevision, expectedProfileVersion },
+        (session) =>
+          session
+            .promotions(courses)
+            .complete(id, expectedRevision, expectedProfileVersion, requestId),
+      ),
     audio: async (userId: string, attemptId: string, questionId: string) => {
       const asset = await repository.read(userId, (session) =>
         session.audioAsset(attemptId, questionId),
@@ -70,6 +109,7 @@ export function createLearningService(
         const content = await session.publishedContent();
         return {
           currentLevel,
+          promotion: await session.promotions(courses).eligibility(currentLevel),
           policy: learningPolicy,
           levels: levelKeys.map((level) => ({
             ...(progress.find((p) => p.level === level) ?? {

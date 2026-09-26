@@ -6,6 +6,11 @@ import SwiftUI
 
 /// 全局水平与剧情只读取服务端状态；调整水平由 App 接入既有档案流程。
 public struct EnglishJourneyView: View {
+    private let promotionService: (any LearningPromotionServing)?
+    private let onProfileChanged: @MainActor () async throws -> Void
+    @State private var activePromotion: LearningPromotion?
+    @State private var startingPromotion = false
+    @State private var startPromotionRequestID: UUID?
     private let learning: any LearningServing
     private let mainline: any MainlineServing
     private let onChooseLevel: () -> Void
@@ -18,8 +23,11 @@ public struct EnglishJourneyView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     public init(learning: any LearningServing, mainline: any MainlineServing,
+                promotionService: (any LearningPromotionServing)? = nil,
+                onProfileChanged: @escaping @MainActor () async throws -> Void = {},
                 onChooseLevel: @escaping () -> Void, onCalibrate: @escaping () -> Void,
                 onOpenChapter: @escaping (MainlineChapter) -> Void) {
+        self.promotionService = promotionService; self.onProfileChanged = onProfileChanged
         self.learning = learning; self.mainline = mainline
         self.onChooseLevel = onChooseLevel; self.onCalibrate = onCalibrate; self.onOpenChapter = onOpenChapter
     }
@@ -34,6 +42,7 @@ public struct EnglishJourneyView: View {
                 if let error { LearningErrorBanner(message: error) { Task { await load() } } }
                 if let journey, let progress = journey.current {
                     levelCard(journey, progress: progress)
+                    if let promotion = journey.promotion { promotionCard(promotion) }
                     if let route { routeCard(route) }
                     pastLevels(journey)
                 } else if isLoading { ProgressView("正在载入英语旅程…").frame(maxWidth: .infinity).padding(50) }
@@ -44,6 +53,12 @@ public struct EnglishJourneyView: View {
         .toolbar(.visible, for: .navigationBar)
         .task { await load() }.refreshable { await load() }
         .onChange(of: scenePhase) { _, value in if value == .active { Task { await load() } } }
+        .navigationDestination(item: $activePromotion) { promotion in
+            if let promotionService {
+                LearningPromotionView(promotion: promotion, service: promotionService, onProfileChanged: onProfileChanged)
+            }
+        }
+        .onChange(of: activePromotion == nil) { _, empty in if empty { Task { await load() } } }
         .accessibilityIdentifier("learning.journey")
     }
     private func levelCard(_ journey: LearningJourney, progress: LearningLevelProgress) -> some View {
@@ -72,6 +87,54 @@ public struct EnglishJourneyView: View {
                 VStack(alignment: .leading) { levelButton; calibrationButton }
             }
         }.modifier(LearningPaper())
+    }
+    private func promotionCard(_ eligibility: LearningPromotionEligibility) -> some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Label(eligibility.completedPromotionId == nil ? "下一次进阶" : "本级进阶已完成", systemImage: "book.pages")
+                .font(.headline)
+            if eligibility.ready, let next = eligibility.nextLevel {
+                Text("九星与本级学习目标已经完成，带着这段经历进入\(learningLevelName(next))。")
+                    .font(.subheadline).foregroundStyle(.secondary)
+                if promotionService != nil {
+                    Button(eligibility.activePromotionId == nil ? "开启进阶剧情" : "继续进阶剧情") { Task { await startPromotion(eligibility) } }
+                        .buttonStyle(.borderedProminent).disabled(startingPromotion).accessibilityIdentifier("learning.promotion.begin")
+                    if startingPromotion { ProgressView("正在打开…") }
+                }
+            } else if eligibility.completedPromotionId == nil {
+                ForEach(eligibility.blockers) { blocker in
+                    Label(blocker.message, systemImage: blocker.code == "course_unpublished" || blocker.code == "next_level_unavailable" ? "books.vertical" : "circle.dotted")
+                        .font(.subheadline).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                }
+            } else {
+                Text("这段成长已经记录。再次选择本级不会重复领取进阶，也不会自动改变当前水平。")
+                    .font(.subheadline).foregroundStyle(.secondary)
+            }
+            if !eligibility.goals.isEmpty {
+                DisclosureGroup("学习主题 · \(eligibility.goals.filter(\.complete).count) / \(eligibility.goals.count)") {
+                    ForEach(eligibility.goals) { goal in
+                        VStack(alignment: .leading, spacing: 6) {
+                            Label(goal.title, systemImage: goal.complete ? "checkmark.circle.fill" : "circle")
+                            Text("答对 \(goal.correct) / \(goal.minimumCorrect) 题 · 来自 \(goal.units) / \(goal.minimumUnits) 个单元")
+                                .font(.caption).foregroundStyle(.secondary)
+                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 7)
+                    }
+                }.font(.subheadline)
+            }
+        }.modifier(LearningPaper()).accessibilityElement(children: .contain)
+            .accessibilityIdentifier("learning.promotion.eligibility")
+    }
+    private func startPromotion(_ eligibility: LearningPromotionEligibility) async {
+        guard let promotionService, !startingPromotion else { return }
+        startingPromotion = true; defer { startingPromotion = false }
+        let id = startPromotionRequestID ?? UUID(); startPromotionRequestID = id
+        do {
+            activePromotion = try await promotionService.beginLearningPromotion(level: eligibility.level, requestID: id)
+            startPromotionRequestID = nil; error = nil
+        } catch {
+            if case BackendClientError.api(_, let message, _, let status) = error, status == 409 {
+                startPromotionRequestID = nil; self.error = message
+            } else { self.error = "进阶剧情暂时无法打开，请联网后重试。" }
+        }
     }
     private var levelButton: some View {
         Button("调整英语水平", systemImage: "slider.horizontal.3", action: onChooseLevel)

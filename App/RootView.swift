@@ -1008,6 +1008,7 @@ struct RootView: View {
         if bypassesAuthenticationForUITesting {
             let preview = DebugLearningPreviewService(characterID: UUID(), roleKey: "oliver", profile: environment.economyStore)
             EnglishJourneyView(learning: preview, mainline: preview,
+                promotionService: ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PROMOTION"] == "1" ? DebugLearningPromotionService.shared : nil,
                 onChooseLevel: { journeyPlacement = .selection },
                 onCalibrate: { journeyPlacement = .assessment },
                 onOpenChapter: { journeyChapter = $0 })
@@ -1019,6 +1020,14 @@ struct RootView: View {
     }
     private var productionEnglishJourneyView: some View {
         EnglishJourneyView(learning: environment.backendClient, mainline: environment.backendClient,
+            promotionService: environment.backendClient,
+            onProfileChanged: {
+                guard let account = environment.workspace, account.userID == activeUserID else { throw CancellationError() }
+                try await account.userState.synchronize()
+                guard environment.workspace === account else { throw CancellationError() }
+                try await environment.refreshAccountPresentation(account)
+                stateRevision += 1
+            },
             onChooseLevel: { journeyPlacement = .selection },
             onCalibrate: { journeyPlacement = .assessment },
             onOpenChapter: { journeyChapter = $0 })

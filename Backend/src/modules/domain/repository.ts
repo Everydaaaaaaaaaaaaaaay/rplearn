@@ -51,6 +51,60 @@ export class DomainRepository {
     return row.difficulty;
   }
 
+  /** 由学习事务调用；锁顺序为学习账号、领域账号、档案行。 */
+  async promotionProfile(sql: TransactionSql, userId: string) {
+    await sql`select pg_advisory_xact_lock(hashtextextended(${`domain:${userId}`},0))`;
+    if ((await loadAccessPolicy(sql, userId)).isGuest)
+      throw new AppError({
+        code: "LEARNING_ACCOUNT_REQUIRED",
+        message: "请登录后完成学习进阶。",
+        statusCode: 403,
+      });
+    const [row] = await sql<
+      { difficulty: DifficultyLevel; version: number }[]
+    >`select difficulty,version from app.user_profiles where user_id=${userId} for update`;
+    if (!row)
+      throw new AppError({
+        code: "PROFILE_NOT_READY",
+        message: "请先完成个人档案设置。",
+        statusCode: 409,
+      });
+    return row;
+  }
+
+  async promoteDifficulty(
+    sql: TransactionSql,
+    userId: string,
+    requestId: string,
+    from: DifficultyLevel,
+    to: DifficultyLevel,
+    expectedVersion: number,
+  ) {
+    await this.promotionProfile(sql, userId);
+    const [row] = await sql<
+      ProfileRow[]
+    >`update app.user_profiles set difficulty=${to}::app.difficulty_level,version=version+1,updated_at=now() where user_id=${userId} and difficulty=${from} and version=${expectedVersion} returning *`;
+    if (!row)
+      throw new AppError({
+        code: "PROFILE_VERSION_CONFLICT",
+        message: "个人档案已在其他设备更新，请重新确认进阶。",
+        statusCode: 409,
+      });
+    const unlocks = await sql<
+      { region_id: string }[]
+    >`select region_id from app.region_unlocks where user_id=${userId} order by unlocked_at,region_id`;
+    await appendSyncChange(sql, {
+      userId,
+      commandId: requestId,
+      eventType: "profile.update",
+      payload: mapProfile(
+        row,
+        unlocks.map((r) => r.region_id),
+      ),
+    });
+    return { difficulty: row.difficulty, version: row.version };
+  }
+
   async ensureProfile(userId: string): Promise<void> {
     await this.resource.sql`
       insert into app.user_profiles (user_id,friend_slot_limit)

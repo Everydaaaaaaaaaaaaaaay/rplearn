@@ -1,3 +1,4 @@
+import { levelSchema } from "./content.js";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { authenticateRequest } from "../auth/http.js";
@@ -39,6 +40,46 @@ export function registerLearningRoutes(
       if (!request.authUserId) throw new Error("学习请求尚未鉴权。");
       return request.authUserId;
     };
+    scope.post("/v1/learning/promotions", { bodyLimit: 1024 }, (request) => {
+      const body = parse(requestSchema.extend({ level: levelSchema }), request.body);
+      return service.beginPromotion(user(request), body.requestId, body.level);
+    });
+    scope.get("/v1/learning/promotions/:id", (request) =>
+      service.promotion(user(request), parse(paramsSchema, request.params).id),
+    );
+    scope.post(
+      "/v1/learning/promotions/:id/advance",
+      { bodyLimit: 1024 },
+      (request) => {
+        const body = parse(revisionSchema, request.body);
+        return service.advancePromotion(
+          user(request),
+          body.requestId,
+          parse(paramsSchema, request.params).id,
+          body.expectedRevision,
+        );
+      },
+    );
+    scope.post(
+      "/v1/learning/promotions/:id/complete",
+      { bodyLimit: 1024 },
+      (request) => {
+        const body = parse(
+          revisionSchema.extend({
+            expectedProfileVersion: z.number().int().positive(),
+            confirmed: z.literal(true),
+          }),
+          request.body,
+        );
+        return service.completePromotion(
+          user(request),
+          body.requestId,
+          parse(paramsSchema, request.params).id,
+          body.expectedRevision,
+          body.expectedProfileVersion,
+        );
+      },
+    );
     scope.get("/v1/learning/journey", (request) => service.journey(user(request)));
     scope.get("/v1/learning/characters/:id", (request) =>
       service.character(user(request), parse(paramsSchema, request.params).id),

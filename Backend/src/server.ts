@@ -1,3 +1,4 @@
+import { loadPromotionCourses } from "./modules/learning/promotion-content.js";
 import { fileURLToPath } from "node:url";
 import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
 import { LearningGenerationRepository } from "./modules/learning/generation-repository.js";
@@ -169,6 +170,8 @@ async function main(): Promise<void> {
   const learningProfile = createDomainLearningContext(dependencies.database);
   const learningContext: LearningContextReader = {
     profile: learningProfile.difficulty,
+    promotionProfile: learningProfile.promotionProfile,
+    promoteProfile: learningProfile.promoteProfile,
     character: async (sql, userId, characterId) =>
       learningRoleKey(await learningContent.character(sql, userId, characterId)),
   };
@@ -182,6 +185,9 @@ async function main(): Promise<void> {
     learningContext,
     learningChat.drain,
     mediaObjectStore,
+    await loadPromotionCourses(
+      fileURLToPath(new URL("../config/learning/", import.meta.url)),
+    ),
   );
   registerLearningRoutes(app, authService, learningService);
   registerBillingRoutes(app, authService, billingService, {

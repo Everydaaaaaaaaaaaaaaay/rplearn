@@ -1,3 +1,5 @@
+import { LearningPromotionSession } from "./promotion-repository.js";
+import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningContextReader } from "./context.js";
 import { randomUUID } from "node:crypto";
 import type { TransactionSql } from "postgres";
@@ -209,6 +211,10 @@ export class LearningSession {
     if (!row)
       reject("LEARNING_AUDIO_NOT_READY", "听力素材暂不可用，请重试或稍后补答。", 503);
     return learningAudioSchema.parse(row.metadata);
+  }
+
+  promotions(courses: readonly PromotionCourse[]) {
+    return new LearningPromotionSession(this.sql, this.userId, this.context, courses);
   }
 
   async currentLevel() {

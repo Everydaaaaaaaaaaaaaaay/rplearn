@@ -5,7 +5,17 @@ import type { LearningLevel } from "./content.js";
 import { AppError } from "../../shared/errors.js";
 
 /** 由组装层连接领域服务；学习仓库不越界读取聊天或档案表。 */
+export type PromotionProfile = Readonly<{ difficulty: LearningLevel; version: number }>;
 export interface LearningContextReader {
+  promotionProfile?: (sql: TransactionSql, userId: string) => Promise<PromotionProfile>;
+  promoteProfile?: (
+    sql: TransactionSql,
+    userId: string,
+    requestId: string,
+    from: LearningLevel,
+    to: LearningLevel,
+    expectedVersion: number,
+  ) => Promise<PromotionProfile>;
   profile: (sql: TransactionSql, userId: string) => Promise<LearningLevel>;
   character: (
     sql: TransactionSql,
