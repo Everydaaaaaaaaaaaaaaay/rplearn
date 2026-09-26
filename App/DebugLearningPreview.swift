@@ -1,5 +1,6 @@
 #if DEBUG
 import BackendKit
+import CryptoKit
 import Foundation
 import PersistenceKit
 import UIKit
@@ -37,6 +38,7 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
     func finishLearning(_ attempt: LearningAttempt, requestID: UUID, skipRemaining: Bool) async throws -> LearningAttempt { throw unavailable }
     func retryLearning(_ attempt: LearningAttempt, requestID: UUID) async throws -> LearningAttempt { throw unavailable }
     func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        if let data = try localMedia(questionID: questionID, assetID: assetID, kind: "image", extension: "png") { return data }
         guard ProcessInfo.processInfo.environment["UI_TEST_LEARNING_IMAGES"] == "1",
               ["preview.red", "preview.blue"].contains(assetID) else { throw unavailable }
         if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_IMAGE_FAILURE"] == "1",
@@ -52,10 +54,33 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
         }
     }
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        if let data = try localMedia(questionID: questionID, assetID: assetID, kind: "audio", extension: "wav") { return data }
         guard assetID == "preview.audio",
               let url = Bundle.main.url(forResource: "learning-preview", withExtension: "wav") else { throw unavailable }
         if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_AUDIO_FAILURE"] == "1" { throw unavailable }
         return try Data(contentsOf: url)
+    }
+    /// 仅离线 Debug：读取显式指定目录或应用文档目录，公开题面必须引用此内容摘要。
+    private func localMedia(questionID: String, assetID: String, kind: String, extension suffix: String) throws -> Data? {
+        guard ProcessInfo.processInfo.environment["UI_TEST_LEARNING_LOCAL_MEDIA"] == "1" else { return nil }
+        guard let json = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_UNIT_JSON"],
+              assetID.range(of: "^" + kind + "\\.[a-f0-9]{64}$", options: .regularExpression) != nil else { throw unavailable }
+        let unit = try JSONDecoder().decode(LearningUnit.self, from: Data(json.utf8))
+        guard let question = unit.questions.first(where: { $0.id == questionID }),
+              kind == "image" ? question.imageAssetIDs.contains(assetID) : question.audio?.assetId == assetID else { throw unavailable }
+        let directory: URL
+        if let path = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_MEDIA_DIRECTORY"], path.hasPrefix("/") {
+            directory = URL(fileURLWithPath: path, isDirectory: true).appending(path: kind == "image" ? "images" : "audio")
+        } else {
+            directory = URL.documentsDirectory.appending(path: "LearningPreviewMedia")
+        }
+        let url = directory.appending(path: assetID + "." + suffix)
+        let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+        guard size > 0, size <= (kind == "image" ? 2_000_000 : 3_000_000) else { throw unavailable }
+        let data = try Data(contentsOf: url)
+        let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+        guard assetID == kind + "." + digest else { throw unavailable }
+        return data
     }
     func previewAttempt(kind: String) throws -> LearningAttempt {
         if let json = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_UNIT_JSON"] {

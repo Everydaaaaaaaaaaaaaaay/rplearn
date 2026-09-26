@@ -140,3 +140,7 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 显示两个本地工程图形；`matching` 检查图片配对，`UI_TEST_LEARNING_IMAGE_FAILURE=1` 每张图首次下载失败以验证重试。只在未登录 Debug 预览中有效，没有后端答题、奖励或正式题库写入。定向路径为 `Scripts/test-ui.sh -only-testing:LingoTripUITests/LearningImageUITests`。
 
 若预览题型与请求不一致，先以 `xcrun simctl getenv <本次设备> UI_TEST_LEARNING_QUESTION` 检查全局残留；本次发现残留值会覆盖应用启动环境。停止本次测试后重启专用模拟器可以清除，不能通过卸载 App、清空账号或修改题目逻辑掩盖环境污染。
+
+小一真实视听素材预览（Debug、未登录、离线）：在已有 `UI_TEST_LEARNING_UNIT_JSON` / `UI_TEST_LEARNING_QUESTION_ID` 公开题面上，设置 `UI_TEST_LEARNING_LOCAL_MEDIA=1` 和绝对路径 `UI_TEST_LEARNING_MEDIA_DIRECTORY=<工作树>/Backend/config/learning`。预览服务只读取题目实际引用的 `images/image.<sha256>.png` 或 `audio/audio.<sha256>.wav`，限制长度并核对摘要；不向服务器提交或写成绩。省略目录时读取应用文档目录的 `LearningPreviewMedia/`。不要传入供应商信息、答案或真实账号数据。Release 不包含这段代码。
+
+`Scripts/test-ui.sh -only-testing:LingoTripUITests/PrimaryChallengeMediaUITests` 在本机模拟器读取工作树中三个小一正式单元及素材，验证实际音频播放结束、三张图可选择、听完且选图后检查按钮解锁，以及最大辅助字号深色布局。它不是人耳音质评定，也不验证服务器计分；不用于连接真机的测试运行。
