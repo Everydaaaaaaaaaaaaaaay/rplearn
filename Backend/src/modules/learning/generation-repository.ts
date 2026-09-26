@@ -1,3 +1,4 @@
+import { AppError } from "../../shared/errors.js";
 import { randomUUID } from "node:crypto";
 import type { DatabaseResource } from "../../db/client.js";
 import { contentHash, unitSchema, type LearningUnit } from "./content.js";
@@ -9,6 +10,14 @@ import {
   type GenerationBlueprint,
   type UnitSummary,
 } from "./generation-content.js";
+
+function editorialError(message: string) {
+  return new AppError({
+    code: "LEARNING_EDITORIAL_CONFLICT",
+    message,
+    statusCode: 409,
+  });
+}
 
 export type GenerationLease = Readonly<{
   id: string;
@@ -40,7 +49,7 @@ export class LearningGenerationRepository {
     dailyJobs: number,
   ): Promise<GenerationLease | undefined> {
     if (!Number.isInteger(dailyJobs) || dailyJobs < 1 || dailyJobs > 50)
-      throw new Error("生成预算必须在 1 至 50 之间。");
+      throw editorialError("生成预算必须在 1 至 50 之间。");
     return await this.database.sql.begin(async (sql) => {
       // 跨 Worker 共用预算锁；一次租约预留作者与审题两次请求，崩溃也不退预算。
       await sql`select pg_advisory_xact_lock(hashtextextended('learning-generation-budget',0))`;
@@ -164,7 +173,7 @@ export class LearningGenerationRepository {
     const [row] = await this.database.sql<
       GenerationJob[]
     >`select id,role_key,level_key,status,attempts,candidate_hash,blueprint_hash,candidate,review_report,last_error_code,reviewed_by,review_notes,published_unit_id from app.learning_generation_jobs where id=${id}`;
-    if (!row) throw new Error("找不到生成任务。");
+    if (!row) throw editorialError("找不到生成任务。");
     const runs = await this.database
       .sql`select attempt,prompt_version,blueprint_hash,author_model,review_model,author_usage,review_usage,outcome,error_code,candidate,review_report,created_at,finished_at from app.learning_generation_runs where job_id=${id} order by attempt`;
     const edits = await this.database
@@ -192,7 +201,7 @@ export class LearningGenerationRepository {
       notes.length < 30 ||
       notes.length > 1000
     )
-      throw new Error("修订必须填写实际编辑者及 30 至 1000 字符的具体变更说明。");
+      throw editorialError("修订必须填写实际编辑者及 30 至 1000 字符的具体变更说明。");
     return await this.database.sql.begin(async (sql) => {
       await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-edit:${input.requestId}`},0))`;
       const [receipt] = await sql<
@@ -200,7 +209,7 @@ export class LearningGenerationRepository {
       >`select request_hash,revised_job_id from app.learning_generation_edits where id=${input.requestId}`;
       if (receipt) {
         if (receipt.request_hash !== requestHash)
-          throw new Error("修订请求标识已用于不同内容。");
+          throw editorialError("修订请求标识已用于不同内容。");
         return receipt.revised_job_id;
       }
       await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
@@ -213,10 +222,10 @@ export class LearningGenerationRepository {
         source.candidate_hash !== input.candidateHash ||
         source.blueprint_hash !== blueprint.hash
       )
-        throw new Error("原稿已变更、正在处理或已经发布，不能直接修订。");
+        throw editorialError("原稿已变更、正在处理或已经发布，不能直接修订。");
       const [previous] =
         await sql`select id from app.learning_generation_edits where source_job_id=${input.sourceJobId} and source_candidate_hash=${input.candidateHash}`;
-      if (previous) throw new Error("这个原稿已有修订任务，请继续处理其新版本。");
+      if (previous) throw editorialError("这个原稿已有修订任务，请继续处理其新版本。");
       const old = unitSchema.parse(source.candidate),
         proposed = unitSchema.parse(input.unit);
       if (
@@ -228,7 +237,7 @@ export class LearningGenerationRepository {
         proposed.level !== old.level ||
         proposed.version !== old.version
       )
-        throw new Error("修订不能更换单元身份、角色或水平。");
+        throw editorialError("修订不能更换单元身份、角色或水平。");
       const revisedJobId = randomUUID();
       const unit = unitSchema.parse({
         ...proposed,
@@ -251,7 +260,8 @@ export class LearningGenerationRepository {
       );
       const [busy] =
         await sql`select id from app.learning_generation_jobs where role_key=${blueprint.roleKey} and level_key=${blueprint.level} and status in ('pending','running','review') and id<>${source.id}`;
-      if (busy) throw new Error("该角色与水平已有其他补库任务，请先处理现有任务。");
+      if (busy)
+        throw editorialError("该角色与水平已有其他补库任务，请先处理现有任务。");
       await sql`update app.learning_generation_jobs set status='failed',last_error_code='EDITOR_REVISED',lease_until=null,lease_token=null where id=${source.id}`;
       await sql`insert into app.learning_generation_jobs(id,role_key,level_key,blueprint_hash) values(${revisedJobId},${blueprint.roleKey},${blueprint.level},${blueprint.hash})`;
       await sql`insert into app.learning_generation_edits(id,request_hash,source_job_id,source_candidate_hash,revised_job_id,blueprint_hash,editor,notes,payload,content_hash) values(${input.requestId},${requestHash},${source.id},${input.candidateHash},${revisedJobId},${blueprint.hash},${editor},${notes},${JSON.stringify(unit)}::jsonb,${contentHash(unit)})`;
@@ -266,15 +276,15 @@ export class LearningGenerationRepository {
     notes: string,
   ): Promise<void> {
     if (reviewer.trim().length < 2 || notes.trim().length < 30)
-      throw new Error("必须登记实际复核者与逐题复核结论。");
+      throw editorialError("必须登记实际复核者与逐题复核结论。");
     await this.database.sql.begin(async (sql) => {
       await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
       const [job] =
         await sql`select * from app.learning_generation_jobs where id=${id} for update`;
       if (job?.candidate_hash !== expectedHash || job.blueprint_hash !== blueprint.hash)
-        throw new Error("候选或蓝图已变更，请重新复核当前哈希。");
+        throw editorialError("候选或蓝图已变更，请重新复核当前哈希。");
       if (job.status === "published") return;
-      if (job.status !== "review") throw new Error("只有待审候选可以发布。");
+      if (job.status !== "review") throw editorialError("只有待审候选可以发布。");
       const rows = await sql<
         { payload: unknown }[]
       >`select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version where u.role_key=${blueprint.roleKey} and u.level_key=${blueprint.level}`;
@@ -284,7 +294,7 @@ export class LearningGenerationRepository {
         rows.map((r) => unitSchema.parse(r.payload)),
       );
       if (contentHash(unit) !== expectedHash || unit.id !== `generated.${id}`)
-        throw new Error("候选身份或内容哈希不符。");
+        throw editorialError("候选身份或内容哈希不符。");
       validateIndependentReview(JSON.stringify(job.review_report), unit);
       unit.authorship.reviewedBy = reviewer.trim();
       unit.authorship.reviewedAt = new Date().toISOString().slice(0, 10);
@@ -304,9 +314,9 @@ export class LearningGenerationRepository {
     reviewer: string,
   ): Promise<void> {
     if (reviewer.trim().length < 2 || notes.trim().length < 15)
-      throw new Error("退回必须说明具体质量缺陷。");
+      throw editorialError("退回必须说明具体质量缺陷。");
     const rows = await this.database
       .sql`update app.learning_generation_jobs set status='failed',last_error_code='EDITOR_REJECTED',review_notes=${notes},reviewed_by=${reviewer} where id=${id} and status='review' and candidate_hash=${expectedHash} returning id`;
-    if (!rows.length) throw new Error("候选状态或哈希已改变。");
+    if (!rows.length) throw editorialError("候选状态或哈希已改变。");
   }
 }

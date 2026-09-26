@@ -20,6 +20,7 @@ const html = `<!doctype html>
     <header class="topbar">
       <div class="brand"><span class="brand-mark">L</span><div><b>LingoTrip</b><small>MODEL OPERATIONS</small></div></div>
       <div class="toolbar">
+        <a class="button ghost" href="/internal/admin/learning">挑战内容管理</a>
         <span id="connection" class="status">尚未连接</span>
         <select id="days" aria-label="统计周期"><option value="1">今天</option><option value="7" selected>近 7 天</option><option value="30">近 30 天</option><option value="90">近 90 天</option></select>
         <input id="userFilter" class="user-filter" placeholder="按用户 UUID 筛选" aria-label="用户筛选">

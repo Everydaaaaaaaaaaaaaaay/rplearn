@@ -1,3 +1,10 @@
+import { fileURLToPath } from "node:url";
+import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
+import { LearningGenerationRepository } from "./modules/learning/generation-repository.js";
+import { LearningAdminRepository } from "./modules/learning/admin-repository.js";
+import { LearningAdminService } from "./modules/learning/admin-service.js";
+import { registerLearningAdminRoutes } from "./modules/learning/admin-routes.js";
+import { registerLearningAdminConsole } from "./modules/learning/admin-console.js";
 import { createLearningMilestoneReader } from "./modules/learning/service.js";
 import { createLearningChatService } from "./modules/learning/chat-service.js";
 import type { LearningContextReader } from "./modules/learning/context.js";
@@ -250,6 +257,18 @@ async function main(): Promise<void> {
       new DiagnosticsService(readServiceJournal),
     );
     registerAiAdminConsoleRoutes(app);
+    registerLearningAdminRoutes(
+      app,
+      authenticateAdmin,
+      new LearningAdminService(
+        new LearningAdminRepository(dependencies.database),
+        new LearningGenerationRepository(dependencies.database),
+        await loadGenerationBlueprints(
+          fileURLToPath(new URL("../config/learning/", import.meta.url)),
+        ),
+      ),
+    );
+    registerLearningAdminConsole(app);
     registerDictionaryTranslationAdminRoutes(
       app,
       authenticateAdmin,

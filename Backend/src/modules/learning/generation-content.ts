@@ -1,3 +1,4 @@
+import { AppError } from "../../shared/errors.js";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { z } from "zod";
@@ -9,6 +10,10 @@ import {
   type LearningUnit,
 } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
+
+function contentError(message: string) {
+  return new AppError({ code: "LEARNING_CONTENT_INVALID", message, statusCode: 422 });
+}
 
 export const generationPromptVersion = 4;
 const manifestSchema = z.strictObject({
@@ -62,7 +67,7 @@ export async function loadGenerationBlueprints(
         (g) => level.goalIds.includes(g.id) && g.level === level.key,
       );
       if (!reference || goals.length !== level.goalIds.length)
-        throw new Error("生成蓝图缺少已核读的目标或参考单元。");
+        throw contentError("生成蓝图缺少已核读的目标或参考单元。");
       const sources = catalog.registry.sources.filter((s) =>
         goals.some((g) => g.sourceIds.includes(s.id)),
       );
@@ -71,7 +76,7 @@ export async function loadGenerationBlueprints(
           (ref) => !sources.some((source) => source.id === ref.sourceId),
         )
       )
-        throw new Error("生成蓝图引用了未登记课程来源。");
+        throw contentError("生成蓝图引用了未登记课程来源。");
       const guidance = {
         role,
         level,
@@ -91,7 +96,7 @@ export async function loadGenerationBlueprints(
       });
     }
   if (new Set(result.map((b) => `${b.roleKey}:${b.level}`)).size !== result.length)
-    throw new Error("生成蓝图角色与水平不能重复。");
+    throw contentError("生成蓝图角色与水平不能重复。");
   return result;
 }
 
@@ -171,7 +176,7 @@ export function validateGeneratedUnit(
     unit.goalIds.some((g) => !blueprint.goalIds.includes(g)) ||
     contentHash(unit.references) !== contentHash(blueprint.references)
   )
-    throw new Error("生成内容不符合角色、档位或来源蓝图。");
+    throw contentError("生成内容不符合角色、档位或来源蓝图。");
   const previous = existing.flatMap((u) => u.questions);
   const seen: LearningUnit["questions"] = [];
   for (const q of unit.questions) {
@@ -180,15 +185,15 @@ export function validateGeneratedUnit(
       q.type === "dictation" ||
       JSON.stringify(q).includes('"imageAssetId"')
     )
-      throw new Error("生成资源尚未验收，此批只开放文字题型。");
+      throw contentError("生成资源尚未验收，此批只开放文字题型。");
     if (/看图|图中|图旁|上图|下图/.test([q.prompt, q.instruction, q.hint].join(" ")))
-      throw new Error("纯文字题不能指向未提供的图片。");
+      throw contentError("纯文字题不能指向未提供的图片。");
     if (
       /根据(?:上文|剧情|故事)|刚才|前文|上一题|故事中|in the story|according to the (?:story|passage)/i.test(
         q.prompt,
       )
     )
-      throw new Error("题目不能依赖剧情或前题。");
+      throw contentError("题目不能依赖剧情或前题。");
     if (
       [...previous, ...seen].some(
         (old) =>
@@ -198,17 +203,17 @@ export function validateGeneratedUnit(
             similar(old.prompt, q.prompt)),
       )
     )
-      throw new Error("生成题目与已有内容重复或过于相似。");
+      throw contentError("生成题目与已有内容重复或过于相似。");
     seen.push(q);
   }
   if (new Set(unit.questions.map((q) => q.type)).size < 3)
-    throw new Error("本批单元至少包含三种文字题型。");
+    throw contentError("本批单元至少包含三种文字题型。");
   if (
     existing.some(
       (old) => similar(old.title, unit.title) && similar(old.scene, unit.scene),
     )
   )
-    throw new Error("生成情境与已有单元过于相似。");
+    throw contentError("生成情境与已有单元过于相似。");
   return unit;
 }
 export function makeGeneratedUnit(
@@ -310,7 +315,7 @@ export function reviewSchemaForUnit(unit: LearningUnit) {
     });
   });
   const [first, second, ...rest] = checks;
-  if (!first || !second) throw new Error("独立审题缺少完整题目。");
+  if (!first || !second) throw contentError("独立审题缺少完整题目。");
   return independentReviewSchema.extend({
     questions: z.array(z.union([first, second, ...rest])).length(unit.questions.length),
   });
@@ -324,7 +329,7 @@ export function validateIndependentReview(content: string, unit: LearningUnit) {
     !report.storyDoesNotLeakAnswers ||
     new Set(report.questions.map((q) => q.questionId)).size !== unit.questions.length
   )
-    throw new Error("独立审题未通过全局质量条件。");
+    throw contentError("独立审题未通过全局质量条件。");
   for (const question of unit.questions) {
     const check = report.questions.find((q) => q.questionId === question.id);
     if (
@@ -339,7 +344,7 @@ export function validateIndependentReview(content: string, unit: LearningUnit) {
       gradeAnswer(question, check.solution).outcome !== "correct" ||
       gradeAnswer(question, check.incorrectExample).outcome !== "incorrect"
     )
-      throw new Error("独立解题或答案反例未通过。");
+      throw contentError("独立解题或答案反例未通过。");
   }
   return report;
 }
