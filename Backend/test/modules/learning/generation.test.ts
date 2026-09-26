@@ -61,6 +61,43 @@ describe("补库内容硬门槛", () => {
     report.questions.pop();
     expect(() => validateIndependentReview(JSON.stringify(report), unit)).toThrow();
   });
+  it("配对按实际词句去重：同操作文案不同材料可用，改标识或顺序不能伪装新题", async () => {
+    const { blueprint, unit } = await generationFixture(randomUUID());
+    const current = unit.questions.find((q) => q.type === "matching");
+    if (!current) throw new Error("缺少配对测试题。");
+    const different = structuredClone(current);
+    different.left.forEach((o, i) => {
+      o.text = ["Hello!", "Goodbye!", "Thank you!"][i] ?? "Please.";
+    });
+    different.right.forEach((o, i) => {
+      o.text = ["问候", "告别", "感谢"][i] ?? "请求";
+    });
+    expect(() =>
+      validateGeneratedUnit(unit, blueprint, [
+        {
+          id: "existing",
+          title: "其他标题",
+          scene: "其他场景",
+          questions: [different],
+        },
+      ]),
+    ).not.toThrow();
+    const copied = structuredClone(current);
+    copied.prompt = "重新写过的操作文案，内容仍然一样。";
+    copied.left.reverse();
+    copied.right.reverse();
+    copied.left.forEach((o, i) => {
+      o.id = `other-left-${String(i)}`;
+    });
+    copied.right.forEach((o, i) => {
+      o.id = `other-right-${String(i)}`;
+    });
+    expect(() =>
+      validateGeneratedUnit(unit, blueprint, [
+        { id: "existing", title: "其他标题", scene: "其他场景", questions: [copied] },
+      ]),
+    ).toThrow("重复");
+  });
   it("禁止换档、未审媒体、剧情依赖及改名字伪新题", async () => {
     const { blueprint, unit } = await generationFixture(randomUUID());
     expect(() =>

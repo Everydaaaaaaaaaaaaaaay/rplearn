@@ -114,11 +114,30 @@ export const generatedDraftSchema = z.strictObject({
     .length(6),
 });
 export type UnitSummary = Pick<LearningUnit, "id" | "title" | "scene" | "questions">;
+function matchingMaterials(
+  q: Extract<LearningUnit["questions"][number], { type: "matching" }>,
+) {
+  const texts = (items: { text: string }[]) =>
+    items
+      .map((item) =>
+        item.text
+          .normalize("NFKC")
+          .replace(/[\s\p{P}]+/gu, "")
+          .toLowerCase(),
+      )
+      .sort();
+  return { left: texts(q.left), right: texts(q.right) };
+}
 export function questionFingerprint(q: LearningUnit["questions"][number]): string {
-  return contentHash({
-    type: q.type,
-    prompt: q.prompt.normalize("NFKC").replace(/\s+/g, "").toLowerCase(),
-  });
+  // 配对题的通用操作文案可以相同，真正的题目材料是两列词句；不依赖选项标识或顺序。
+  return contentHash(
+    q.type === "matching"
+      ? { type: q.type, materials: matchingMaterials(q) }
+      : {
+          type: q.type,
+          prompt: q.prompt.normalize("NFKC").replace(/\s+/g, "").toLowerCase(),
+        },
+  );
 }
 function similar(a: string, b: string): boolean {
   const grams = (s: string) => {
@@ -174,7 +193,9 @@ export function validateGeneratedUnit(
       [...previous, ...seen].some(
         (old) =>
           questionFingerprint(old) === questionFingerprint(q) ||
-          similar(old.prompt, q.prompt),
+          (old.type !== "matching" &&
+            q.type !== "matching" &&
+            similar(old.prompt, q.prompt)),
       )
     )
       throw new Error("生成题目与已有内容重复或过于相似。");
