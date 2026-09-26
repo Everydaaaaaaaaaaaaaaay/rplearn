@@ -9,6 +9,7 @@ import { mapProfile, mapTicket, type ProfileRow } from "./repository-mappers.js"
 import { loadDomainSnapshot } from "./snapshot-repository.js";
 import type {
   CommandIdentity,
+  DifficultyLevel,
   ProfilePatch,
   Ticket,
   TicketSource,
@@ -28,6 +29,22 @@ const MAINLINE_REGION_IDS = new Set([
 
 export class DomainRepository {
   constructor(private readonly resource: DatabaseResource) {}
+
+  async currentDifficulty(
+    sql: TransactionSql,
+    userId: string,
+  ): Promise<DifficultyLevel> {
+    const [row] = await sql<
+      { difficulty: DifficultyLevel }[]
+    >`select difficulty from app.user_profiles where user_id=${userId} for share`;
+    if (!row)
+      throw new AppError({
+        code: "PROFILE_NOT_READY",
+        message: "请先完成个人档案设置。",
+        statusCode: 409,
+      });
+    return row.difficulty;
+  }
 
   async ensureProfile(userId: string): Promise<void> {
     await this.resource.sql`

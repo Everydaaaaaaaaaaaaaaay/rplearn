@@ -1,3 +1,4 @@
+import type { LearningContextReader } from "./context.js";
 import { randomUUID } from "node:crypto";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
@@ -42,7 +43,10 @@ interface RoundRow {
 }
 
 export class LearningEngineRepository {
-  constructor(private readonly database: DatabaseResource) {}
+  constructor(
+    private readonly database: DatabaseResource,
+    private readonly context?: LearningContextReader,
+  ) {}
 
   /** 所有账号内写入同序串行；事务回滚时收据和奖励也一并回滚。 */
   async command<T>(
@@ -64,10 +68,22 @@ export class LearningEngineRepository {
           reject("LEARNING_REQUEST_CONFLICT", "这个请求标识已用于其他操作。");
         return existing.response;
       }
-      const response = await execute(new LearningSession(sql, userId));
+      const response = await execute(new LearningSession(sql, userId, this.context));
       await sql`insert into app.learning_receipts(user_id, request_id, operation, request_hash, response)
         values(${userId}, ${requestId}, ${operation}, ${hash}, ${JSON.stringify(response)}::jsonb)`;
       return response;
+    });
+    return result as T;
+  }
+
+  /** 页面首次打开可建立角色状态，不制造随机请求收据。 */
+  async inspect<T>(
+    userId: string,
+    query: (session: LearningSession) => Promise<T>,
+  ): Promise<T> {
+    const result = await this.database.sql.begin(async (sql) => {
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`learning:${userId}`}, 0))`;
+      return query(new LearningSession(sql, userId, this.context));
     });
     return result as T;
   }
@@ -78,7 +94,7 @@ export class LearningEngineRepository {
   ): Promise<T> {
     const result = await this.database.sql.begin(
       "isolation level repeatable read read only",
-      (sql) => query(new LearningSession(sql, userId)),
+      (sql) => query(new LearningSession(sql, userId, this.context)),
     );
     return result as T;
   }
@@ -121,7 +137,85 @@ export class LearningSession {
   constructor(
     private readonly sql: TransactionSql,
     private readonly userId: string,
+    private readonly context?: LearningContextReader,
   ) {}
+
+  async currentLevel() {
+    if (!this.context) throw new Error("未配置学习档案读取服务。");
+    return this.context.profile(this.sql, this.userId);
+  }
+
+  async resolveCharacter(characterId: string) {
+    if (!this.context) throw new Error("未配置学习角色读取服务。");
+    const role = await this.context.character(this.sql, this.userId, characterId);
+    return this.ensureCharacter(characterId, role);
+  }
+
+  async assertRevision(id: string, expectedRevision: number) {
+    const attempt = await this.rawAttempt(id);
+    if (attempt.revision !== expectedRevision)
+      reject("LEARNING_REVISION_CONFLICT", "挑战已在其他设备更新，请刷新后继续。");
+  }
+
+  async availability(roleKey: string, level: LearningLevel, characterId: string) {
+    const [row] = await this.sql<
+      { count: number }[]
+    >`select count(*)::integer as count from app.learning_units u
+      where u.published and u.role_key=${roleKey} and u.level_key=${level}
+      and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)`;
+    const [job] = await this.sql<
+      { status: string }[]
+    >`select status from app.learning_generation_jobs
+      where role_key=${roleKey} and level_key=${level} and status in ('pending','running','review') limit 1`;
+    return { availableUnits: row?.count ?? 0, generationStatus: job?.status ?? null };
+  }
+
+  async history(
+    characterId: string,
+    limit: number,
+    cursor?: { startedAt: string; id: string },
+  ) {
+    const rows = await this.sql<
+      {
+        id: string;
+        level_key: LearningLevel;
+        started_at: string;
+        first_completed_at: string | null;
+        title: string;
+        question_count: number;
+        correct_count: number;
+      }[]
+    >`
+      select a.id,a.level_key,a.started_at::text,a.first_completed_at::text,v.payload->>'title' as title,
+        jsonb_array_length(v.payload->'questions') as question_count,
+        (select count(*)::integer from app.learning_rewards r where r.attempt_id=a.id) as correct_count
+      from app.learning_attempts a join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+      where a.user_id=${this.userId} and a.character_id=${characterId}
+        and (${cursor === undefined} or (a.started_at,a.id)<(${cursor?.startedAt ?? "9999-01-01T00:00:00Z"}::timestamptz,${cursor?.id ?? "ffffffff-ffff-ffff-ffff-ffffffffffff"}::uuid))
+      order by a.started_at desc,a.id desc limit ${limit + 1}`;
+    const items = rows
+      .slice(0, limit)
+      .map((row) => ({
+        id: row.id,
+        title: row.title,
+        level: row.level_key,
+        startedAt: new Date(row.started_at).toISOString(),
+        firstCompletedAt:
+          row.first_completed_at === null
+            ? null
+            : new Date(row.first_completed_at).toISOString(),
+        correctCount: row.correct_count,
+        questionCount: row.question_count,
+      }));
+    const last = rows[limit - 1];
+    return {
+      items,
+      next:
+        rows.length > limit && last
+          ? { startedAt: last.started_at, id: last.id }
+          : null,
+    };
+  }
 
   async ensureCharacter(characterId: string, roleKey: string) {
     await this

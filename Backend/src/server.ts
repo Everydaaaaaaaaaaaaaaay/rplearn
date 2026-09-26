@@ -1,3 +1,4 @@
+import { learningRoleKey } from "./modules/learning/context.js";
 import { registerLearningRoutes } from "./modules/learning/routes.js";
 import { createLearningService } from "./modules/learning/service.js";
 import { readServiceJournal } from "./infrastructure/journal-reader.js";
@@ -38,7 +39,10 @@ import { registerBillingRoutes } from "./modules/billing/routes.js";
 import { createBillingService } from "./modules/billing/service.js";
 import { createAppleBillingStatusClient } from "./modules/billing/apple/server-api-client.js";
 import { registerDomainRoutes } from "./modules/domain/routes.js";
-import { createDomainService } from "./modules/domain/service.js";
+import {
+  createDomainService,
+  createDomainLearningContext,
+} from "./modules/domain/service.js";
 import { createSyncCursorCodec } from "./modules/sync/cursor.js";
 import { registerSyncRoutes } from "./modules/sync/routes.js";
 import { createSyncService } from "./modules/sync/service.js";
@@ -48,7 +52,10 @@ import { registerAccountRoutes } from "./modules/account/routes.js";
 import { createAccountService } from "./modules/account/service.js";
 import { createContentCursorCodec } from "./modules/content/cursor.js";
 import { registerContentRoutes } from "./modules/content/routes.js";
-import { createContentService } from "./modules/content/service.js";
+import {
+  createContentService,
+  createContentReadService,
+} from "./modules/content/service.js";
 import { registerHttpAbuseProtection } from "./modules/abuse/http-limiter.js";
 import { createMediaObjectStore } from "./modules/media/object-store.js";
 import { registerMediaRoutes } from "./modules/media/routes.js";
@@ -148,11 +155,14 @@ async function main(): Promise<void> {
       retryMinutes: config.appleBillingReconcileRetryMinutes,
     },
   );
-  registerLearningRoutes(
-    app,
-    authService,
-    createLearningService(dependencies.database),
-  );
+  const learningContent = createContentReadService(dependencies.database);
+  const learningProfile = createDomainLearningContext(dependencies.database);
+  const learningService = createLearningService(dependencies.database, {
+    profile: learningProfile.difficulty,
+    character: async (sql, userId, characterId) =>
+      learningRoleKey(await learningContent.character(sql, userId, characterId)),
+  });
+  registerLearningRoutes(app, authService, learningService);
   registerBillingRoutes(app, authService, billingService, {
     appleBillingEnabled: config.appleBillingEnabled,
     enableDebugRoutes: config.nodeEnv !== "production",

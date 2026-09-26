@@ -1,3 +1,4 @@
+import type { TransactionSql } from "postgres";
 import { rollStoryReward } from "./story-rewards.js";
 import { createHash } from "node:crypto";
 import type { DatabaseResource } from "../../db/client.js";
@@ -160,5 +161,14 @@ export function createDomainService(database: DatabaseResource): DomainService {
         command(commandId, "profile.update", patch),
         patch,
       ),
+  };
+}
+
+/** 学习开始与档案改档共享行锁，避免新挑战锁定过期水平。 */
+export function createDomainLearningContext(database: DatabaseResource) {
+  const repository = new DomainRepository(database);
+  return {
+    difficulty: (sql: TransactionSql, userId: string) =>
+      repository.currentDifficulty(sql, userId),
   };
 }

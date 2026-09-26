@@ -1,55 +1,129 @@
 import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
-import { LearningRepository } from "./repository.js";
-const stateSchema = z
-  .object({
-    enabled: z.boolean(),
-    ledger: z
-      .object({
-        version: z.literal(1),
-        ruleRevision: z.number().int().min(1).max(4).optional(),
-      })
-      .loose(),
-    pending: z.array(z.unknown()),
-    listening: z.array(z.unknown()),
-  })
-  .loose();
-export function validateLearningPayload(payload: string): void {
-  if (Buffer.byteLength(payload, "utf8") > 2_097_152)
-    throw new AppError({
-      code: "LEARNING_STATE_TOO_LARGE",
-      message: "Learning history exceeds the sync limit.",
-      statusCode: 413,
-    });
-  let value: unknown;
+import type { LearningContextReader } from "./context.js";
+import { LearningEngineRepository } from "./engine-repository.js";
+import { levelKeys } from "./content.js";
+import type { LearningAnswer } from "./grading.js";
+import { learningPolicy, levelProgress } from "./policy.js";
+
+const cursorSchema = z.strictObject({
+  characterId: z.uuid(),
+  startedAt: z
+    .string()
+    .max(64)
+    .refine((value) => Number.isFinite(Date.parse(value))),
+  id: z.uuid(),
+});
+function decodeCursor(value: string | undefined, characterId: string) {
+  if (value === undefined) return undefined;
   try {
-    value = JSON.parse(payload) as unknown;
+    const parsed = cursorSchema.parse(
+      JSON.parse(Buffer.from(value, "base64url").toString("utf8")) as unknown,
+    );
+    if (parsed.characterId !== characterId) throw new Error("游标角色不一致。");
+    return { startedAt: parsed.startedAt, id: parsed.id };
   } catch {
-    value = null;
-  }
-  if (!stateSchema.safeParse(value).success)
     throw new AppError({
-      code: "INVALID_LEARNING_STATE",
-      message: "Unsupported learning state.",
+      code: "LEARNING_INVALID_CURSOR",
+      message: "学习记录翻页位置已失效，请重新打开记录。",
       statusCode: 400,
     });
+  }
 }
-export function createLearningService(database: DatabaseResource) {
-  const repository = new LearningRepository(database);
+
+export function createLearningService(
+  database: DatabaseResource,
+  context: LearningContextReader,
+) {
+  const repository = new LearningEngineRepository(database, context);
   return {
-    read: (userId: string) => repository.read(userId),
-    save: async (userId: string, revision: number, payload: string) => {
-      validateLearningPayload(payload);
-      const saved = await repository.save(userId, revision, payload);
-      if (!saved)
-        throw new AppError({
-          code: "LEARNING_STATE_CONFLICT",
-          message: "Learning records changed on another device. Refresh before saving.",
-          statusCode: 409,
-        });
-      return saved;
+    journey: (userId: string) =>
+      repository.inspect(userId, async (session) => {
+        const currentLevel = await session.currentLevel();
+        const progress = await session.progress();
+        return {
+          currentLevel,
+          policy: learningPolicy,
+          levels: levelKeys.map(
+            (level) =>
+              progress.find((p) => p.level === level) ?? { level, ...levelProgress(0) },
+          ),
+        };
+      }),
+    character: (userId: string, characterId: string) =>
+      repository.inspect(userId, async (session) => {
+        const level = await session.currentLevel();
+        const state = await session.resolveCharacter(characterId);
+        return {
+          ...state,
+          level,
+          ...(await session.availability(state.roleKey, level, characterId)),
+        };
+      }),
+    history: (userId: string, characterId: string, limit: number, cursor?: string) => {
+      const decoded = decodeCursor(cursor, characterId);
+      return repository.inspect(userId, async (session) => {
+        await session.resolveCharacter(characterId);
+        const page = await session.history(characterId, limit, decoded);
+        return {
+          items: page.items,
+          nextCursor:
+            page.next === null
+              ? null
+              : Buffer.from(JSON.stringify({ characterId, ...page.next })).toString(
+                  "base64url",
+                ),
+        };
+      });
     },
+    start: (userId: string, requestId: string, characterId: string) =>
+      repository.command(
+        userId,
+        requestId,
+        "start",
+        { characterId },
+        async (session) => {
+          const level = await session.currentLevel();
+          await session.resolveCharacter(characterId);
+          return session.start(characterId, level);
+        },
+      ),
+    attempt: (userId: string, attemptId: string) =>
+      repository.read(userId, (session) => session.attempt(attemptId)),
+    answer: (
+      userId: string,
+      requestId: string,
+      input: {
+        attemptId: string;
+        roundId: string;
+        questionId: string;
+        expectedRevision: number;
+        answer: LearningAnswer;
+      },
+    ) =>
+      repository.command(userId, requestId, "answer", input, async (session) => {
+        await session.assertRevision(input.attemptId, input.expectedRevision);
+        return session.submit(input);
+      }),
+    finish: (
+      userId: string,
+      requestId: string,
+      input: { attemptId: string; expectedRevision: number; skipRemaining: boolean },
+    ) =>
+      repository.command(userId, requestId, "finish", input, async (session) => {
+        await session.assertRevision(input.attemptId, input.expectedRevision);
+        return session.finish(input.attemptId, input.skipRemaining);
+      }),
+    retry: (
+      userId: string,
+      requestId: string,
+      input: { attemptId: string; expectedRevision: number },
+    ) =>
+      repository.command(userId, requestId, "retry", input, async (session) => {
+        await session.assertRevision(input.attemptId, input.expectedRevision);
+        return session.retry(input.attemptId);
+      }),
   };
 }
 export type LearningService = ReturnType<typeof createLearningService>;

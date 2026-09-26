@@ -171,7 +171,13 @@ export class AccountRepository {
 
         const learningRecords = await sql<
           JsonRow[]
-        >`select revision, payload, updated_at as "updatedAt" from app.learning_states where user_id = ${userId}`;
+        >`select 'character' as "recordType",to_jsonb(c)-'user_id' as payload from app.learning_characters c where user_id=${userId}
+          union all select 'attempt',to_jsonb(a)-'user_id' from app.learning_attempts a where user_id=${userId}
+          union all select 'round',to_jsonb(r) from app.learning_rounds r join app.learning_attempts a on a.id=r.attempt_id where a.user_id=${userId}
+          union all select 'answer',to_jsonb(b) from app.learning_answers b join app.learning_rounds r on r.id=b.round_id join app.learning_attempts a on a.id=r.attempt_id where a.user_id=${userId}
+          union all select 'reward',to_jsonb(r)-'user_id' from app.learning_rewards r where user_id=${userId}
+          union all select 'level',to_jsonb(p)-'user_id' from app.learning_level_progress p where user_id=${userId}
+          union all select 'milestone',to_jsonb(m)-'user_id' from app.learning_milestones m where user_id=${userId}`;
         const identities = await sql<JsonRow[]>`
           select
             provider,

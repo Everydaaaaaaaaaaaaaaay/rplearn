@@ -1,3 +1,4 @@
+import type { TransactionSql } from "postgres";
 import { createHash } from "node:crypto";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -87,5 +88,16 @@ export function createContentService(
         syncCursor: syncCursor.encode(userId, snapshotSequence),
       };
     },
+  };
+}
+
+/** 供组装层在同一业务事务内校验资源归属。 */
+export function createContentReadService(database: DatabaseResource) {
+  const repository = new ContentRepository(database);
+  return {
+    character: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "character", id),
+    conversation: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "conversation", id),
   };
 }

@@ -71,6 +71,19 @@ function versionConflict(current: ContentRecord | undefined): AppError {
 export class ContentRepository {
   constructor(private readonly database: DatabaseResource) {}
 
+  async readRecord(
+    sql: TransactionSql,
+    userId: string,
+    resourceType: ContentResourceType,
+    resourceId: string,
+  ): Promise<ContentRecord | undefined> {
+    const [row] = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at
+      from app.content_records where user_id=${userId} and resource_type=${resourceType} and resource_id=${resourceId} and deleted_at is null for share`;
+    return row === undefined ? undefined : mapRecord(row);
+  }
+
   async currentSequence(userId: string): Promise<string> {
     const [head] = await this.database.sql<{ sequence: string }[]>`
       select coalesce(
