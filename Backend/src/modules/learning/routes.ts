@@ -69,6 +69,15 @@ export function registerLearningRoutes(
     scope.get("/v1/learning/attempts/:id", (request) =>
       service.attempt(user(request), parse(paramsSchema, request.params).id),
     );
+    scope.get("/v1/learning/attempts/:id/audio/:questionId", (request) => {
+      const params = parse(
+        paramsSchema.extend({
+          questionId: z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/),
+        }),
+        request.params,
+      );
+      return service.audio(user(request), params.id, params.questionId);
+    });
     scope.post("/v1/learning/attempts/:id/answers", { bodyLimit: 8192 }, (request) => {
       const body = parse(
         revisionSchema.extend({

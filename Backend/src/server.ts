@@ -174,6 +174,7 @@ async function main(): Promise<void> {
     dependencies.database,
     learningContext,
     learningChat.drain,
+    mediaObjectStore,
   );
   registerLearningRoutes(app, authService, learningService);
   registerBillingRoutes(app, authService, billingService, {

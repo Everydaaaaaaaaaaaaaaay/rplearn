@@ -7,6 +7,7 @@ import { LearningEngineRepository } from "./engine-repository.js";
 import { levelKeys } from "./content.js";
 import type { LearningAnswer } from "./grading.js";
 import { learningPolicy, levelProgress } from "./policy.js";
+import { learningAudioObjectKey, type LearningAudioObjectStore } from "./audio.js";
 
 const cursorSchema = z.strictObject({
   characterId: z.uuid(),
@@ -37,9 +38,30 @@ export function createLearningService(
   database: DatabaseResource,
   context: LearningContextReader,
   drainMessages?: (userId: string) => Promise<unknown>,
+  audioStore?: LearningAudioObjectStore,
 ) {
   const repository = new LearningEngineRepository(database, context);
   return {
+    audio: async (userId: string, attemptId: string, questionId: string) => {
+      const asset = await repository.read(userId, (session) =>
+        session.audioAsset(attemptId, questionId),
+      );
+      if (!audioStore)
+        throw new AppError({
+          code: "LEARNING_AUDIO_NOT_READY",
+          message: "听力素材暂不可用，请重试或稍后补答。",
+          statusCode: 503,
+        });
+      return {
+        assetId: asset.id,
+        sha256: asset.sha256,
+        byteSize: asset.byteSize,
+        durationMs: asset.durationMs,
+        contentType: asset.contentType,
+        url: await audioStore.createDownloadUrl(learningAudioObjectKey(asset.id), 300),
+        expiresAt: new Date(Date.now() + 300_000).toISOString(),
+      };
+    },
     journey: async (userId: string) => {
       await drainMessages?.(userId);
       return repository.inspect(userId, async (session) => {

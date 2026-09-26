@@ -34,15 +34,22 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
     func answerLearning(_ id: UUID, command: LearningAnswerCommand) async throws -> LearningAnswerReceipt { throw unavailable }
     func finishLearning(_ attempt: LearningAttempt, requestID: UUID, skipRemaining: Bool) async throws -> LearningAttempt { throw unavailable }
     func retryLearning(_ attempt: LearningAttempt, requestID: UUID) async throws -> LearningAttempt { throw unavailable }
+    func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        guard assetID == "preview.audio",
+              let url = Bundle.main.url(forResource: "learning-preview", withExtension: "wav") else { throw unavailable }
+        if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_AUDIO_FAILURE"] == "1" { throw unavailable }
+        return try Data(contentsOf: url)
+    }
     func previewAttempt(kind: String) throws -> LearningAttempt {
-        let supported = ["choice", "arrange", "matching", "completion"]
+        let supported = ["choice", "arrange", "matching", "completion", "listeningChoice", "dictation"]
         let type = supported.contains(kind) ? kind : "choice"
-        let question: [String: Any] = ["id": "preview.question", "type": type, "goalId": "preview.goal",
+        var question: [String: Any] = ["id": "preview.question", "type": type, "goalId": "preview.goal",
             "instruction": "界面预览：完成这个练习", "prompt": "这是一道工程检查题，用于观察题干换行和操作区域，不计入学习记录。", "hint": "示例提示。",
             "options": [["id": "a", "text": "First option"], ["id": "b", "text": "Second option"]],
             "tokens": [["id": "i", "text": "I"], ["id": "would", "text": "would"], ["id": "like", "text": "like"], ["id": "to", "text": "to"], ["id": "read", "text": "read"], ["id": "books", "text": "books"]],
             "left": [["id": "l1", "text": "a book"], ["id": "l2", "text": "a pencil"], ["id": "l3", "text": "a bag"]],
             "right": [["id": "r1", "text": "一本书"], ["id": "r2", "text": "一个包"], ["id": "r3", "text": "一支铅笔"]]]
+        if ["listeningChoice", "dictation"].contains(type) { question["audio"] = ["assetId": "preview.audio"] }
         return try decode(["id": UUID().uuidString, "characterId": characterID.uuidString, "level": "primary3", "revision": 1,
             "startedAt": "2026-09-26T00:00:00Z", "firstCompletedAt": "2026-09-26T00:00:00Z", "correctQuestionIds": [],
             "round": ["id": UUID().uuidString, "ordinal": 1, "questionIds": ["preview.question"], "completed": false, "answers": []],

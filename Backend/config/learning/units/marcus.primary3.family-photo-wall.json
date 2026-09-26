@@ -1,6 +1,6 @@
 {
   "id": "marcus.primary3.family-photo-wall",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "marcus",
@@ -15,8 +15,8 @@
   "references": [
     {
       "sourceId": "moe.english.2022",
-      "unit": "一级：主题、词汇与语法要求",
-      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "unit": "一级：主题、语音、词汇与语法要求",
+      "pages": "印刷第 14、18–22 页；PDF 第 21、25–29 页",
       "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
     },
     {
@@ -31,7 +31,7 @@
     "author": "Codex · 原创编写与逐题自审",
     "reviewedBy": "Codex · 原创编写与逐题自审",
     "reviewedAt": "2026-09-26",
-    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。"
   },
   "beats": [
     {
@@ -112,12 +112,12 @@
     {
       "id": "my-mother",
       "goalId": "p3.family",
-      "instruction": "按本题给出的情景作答。",
-      "prompt": "介绍自己妈妈的照片：“这是我的妈妈。”选哪一句？",
-      "hint": "检查人物称呼和 my、your 的区别。",
-      "explanation": "This is my mother. 同时说明是妈妈，也是说话者自己的妈妈。",
-      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
-      "type": "choice",
+      "instruction": "听一听，再选择符合题意的一项。",
+      "prompt": "听一句家庭介绍，选择你听到的句子。",
+      "hint": "先完整听一遍，留意说话者使用的关键词。",
+      "explanation": "录音是 This is my mother.，既要听清 mother，也要听清 my。",
+      "difficultyReason": "小学三年级基础交际语听辨；固定短句音频支持正常和慢速重播，题干不显示听力原文。",
+      "type": "listeningChoice",
       "options": [
         {
           "id": "a",
@@ -132,7 +132,12 @@
           "text": "This is your mother."
         }
       ],
-      "answer": "a"
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.456b0c6ac3694f5bd1d657064829ccabafb0e0041d79d75678dd5f85a273aa91",
+        "text": "This is my mother.",
+        "voice": "M3"
+      }
     },
     {
       "id": "my-brother",
@@ -166,16 +171,21 @@
     {
       "id": "sister-word",
       "goalId": "p3.family",
-      "instruction": "只填写横线处缺少的英文单词。",
-      "prompt": "“她是我的姐姐。”\nShe is my ___.\n请填写表示“姐姐或妹妹”的一个词。",
-      "hint": "英文这个词不区分姐姐和妹妹。",
-      "explanation": "sister 可以指姐姐或妹妹；brother 可以指哥哥或弟弟。",
-      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
-      "type": "completion",
-      "acceptedAnswers": ["sister"],
+      "instruction": "听一听，写出你听到的英文。",
+      "prompt": "可以先完整听一遍，再输入；需要时可用慢速重播。 这次写一句介绍家人的话。",
+      "hint": "注意亲属称呼；英文这个词不区分姐姐和妹妹。",
+      "explanation": "This is my sister. 表示这是我的姐姐或妹妹。sister 不区分年龄先后，brother 则改变了亲属称呼。",
+      "difficultyReason": "小学三年级短语或短句听写；不含专名，大小写与句末标点不单独扣分，允许正常及慢速重播。",
+      "type": "dictation",
+      "acceptedAnswers": ["This is my sister"],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.7a365bb1e118b5e659503a8483d843f82ac776a326122adc0e3299f9299b6cca",
+        "text": "This is my sister.",
+        "voice": "M3"
       }
     },
     {

@@ -4,6 +4,8 @@ import { loadConfig } from "../config/env.js";
 import { createDatabase } from "../db/client.js";
 import { loadCuratedCatalog } from "../modules/learning/catalog.js";
 import { LearningEngineRepository } from "../modules/learning/engine-repository.js";
+import { createMediaObjectStore } from "../modules/media/object-store.js";
+import { uploadLearningAudio } from "../modules/learning/audio.js";
 
 async function main(): Promise<void> {
   const [command, expectedHash, ...extra] = process.argv.slice(2);
@@ -21,9 +23,18 @@ async function main(): Promise<void> {
   if (command === "publish") {
     if (expectedHash !== catalog.hash)
       throw new Error("发布哈希不匹配；请先验证当前目录，使用输出的完整哈希。");
-    const database = createDatabase(loadConfig());
+    const config = loadConfig();
+    if (catalog.audioAssets.length > 0) {
+      if (!config.mediaStorageEnabled)
+        throw new Error("未启用对象存储，不能发布听力单元。");
+      await uploadLearningAudio(catalog.audioAssets, createMediaObjectStore(config));
+    }
+    const database = createDatabase(config);
     try {
-      await new LearningEngineRepository(database).publishBatch(catalog.units);
+      await new LearningEngineRepository(database).publishBatch(
+        catalog.units,
+        catalog.audioAssets.map((asset) => asset.metadata),
+      );
     } finally {
       await database.close();
     }

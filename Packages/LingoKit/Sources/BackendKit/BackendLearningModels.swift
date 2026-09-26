@@ -151,6 +151,7 @@ public struct LearningAnswerCommand: Encodable, Sendable {
     }
 }
 public protocol LearningServing: Sendable {
+    func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter
     func learningJourney() async throws -> LearningJourney
     func learningHistory(_ characterID: UUID, cursor: String?) async throws -> LearningHistory
@@ -159,4 +160,20 @@ public protocol LearningServing: Sendable {
     func answerLearning(_ id: UUID, command: LearningAnswerCommand) async throws -> LearningAnswerReceipt
     func finishLearning(_ attempt: LearningAttempt, requestID: UUID, skipRemaining: Bool) async throws -> LearningAttempt
     func retryLearning(_ attempt: LearningAttempt, requestID: UUID) async throws -> LearningAttempt
+}
+
+extension LearningServing {
+    public func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        throw BackendClientError.api(code: "LEARNING_AUDIO_NOT_READY", message: "听力素材暂不可用，请稍后重试。", requestID: nil, status: 503)
+    }
+}
+
+struct LearningAudioDownload: Decodable, Sendable {
+    let assetId: String
+    let sha256: String
+    let byteSize: Int
+    let durationMs: Int
+    let contentType: String
+    let url: URL
+    let expiresAt: String
 }

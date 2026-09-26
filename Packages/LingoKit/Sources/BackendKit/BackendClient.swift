@@ -1,7 +1,30 @@
 import CoreKit
+import CryptoKit
 import Foundation
 
 public actor BackendClient {
+    /// 签名资源请求不携带账号令牌；下载完成后核对不可变内容的长度与哈希。
+    public func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        guard questionID.range(of: "^[a-z][a-z0-9_.-]{0,119}$", options: .regularExpression) != nil else {
+            throw BackendClientError.invalidResponse
+        }
+        let grant: LearningAudioDownload = try await get("/v1/learning/attempts/\(attemptID.uuidString.lowercased())/audio/\(questionID)")
+        guard grant.assetId == assetID, grant.assetId == "audio.\(grant.sha256)",
+              grant.sha256.range(of: "^[a-f0-9]{64}$", options: .regularExpression) != nil,
+              (1000...3_000_000).contains(grant.byteSize), (300...60_000).contains(grant.durationMs),
+              grant.contentType == "audio/wav", grant.url.scheme == "https", grant.url.host != nil,
+              grant.url.user == nil, grant.url.password == nil else { throw BackendClientError.invalidResponse }
+        try Task.checkCancellation()
+        var request = URLRequest(url: grant.url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 25)
+        request.httpMethod = "GET"
+        let response = try await transport.data(for: request)
+        try Task.checkCancellation()
+        guard response.statusCode == 200, response.data.count == grant.byteSize,
+              SHA256.hash(data: response.data).map({ String(format: "%02x", $0) }).joined() == grant.sha256 else {
+            throw BackendClientError.invalidResponse
+        }
+        return response.data
+    }
     private struct RegisterBody: Encodable, Sendable {
         let email: String
         let password: String

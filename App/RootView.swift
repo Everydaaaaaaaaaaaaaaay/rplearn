@@ -1122,9 +1122,12 @@ struct RootView: View {
         let backend = environment.backendClient
         let sync = environment.workspace?.contentSync
         let tracker = environment.workspace?.learningChat
+        let learningAudioSession = environment.audioSession
+        let learningSpeech = environment.speech
         if !bypassesAuthenticationForUITesting {
             dependencies.learningPage = { character, visible in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
+                    audioSession: learningAudioSession, beforePlayback: { await learningSpeech.stopSpeaking() },
                     synchronize: { try await sync?.synchronizeAndWait() },
                     cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) }))
             }

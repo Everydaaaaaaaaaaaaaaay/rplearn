@@ -53,7 +53,8 @@ describe("原创课程发布门槛", () => {
     const reviewPath = join(directory, "reviews", `${id}.json`);
     const unit = unitSchema.parse(JSON.parse(await readFile(path, "utf8")));
     const question = unit.questions[0];
-    if (question?.type !== "choice") throw new Error("缺少预期选择题。");
+    if (question?.type !== "choice" && question?.type !== "listeningChoice")
+      throw new Error("缺少预期选择题。");
     question.answer = "a";
     const review = JSON.parse(await readFile(reviewPath, "utf8")) as Record<
       string,

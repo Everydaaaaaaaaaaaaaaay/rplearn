@@ -90,7 +90,7 @@ func feature(
 }
 
 let featureTargets: [Target] = [
-    feature("LearningFeature", dependencies: [module("BackendKit"), module("CoreKit"), module("DomainKit"), module("PersistenceKit")]),
+    feature("LearningFeature", dependencies: [module("BackendKit"), module("CoreKit"), module("DomainKit"), module("PersistenceKit"), module("SpeechKit")]),
     feature("AuthFeature", dependencies: [
         module("BackendKit"),
     ]),

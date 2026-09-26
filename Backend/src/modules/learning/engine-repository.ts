@@ -12,6 +12,7 @@ import {
 } from "./content.js";
 import { gradeAnswer, type LearningAnswer, type GradeResult } from "./grading.js";
 import { countChatCharacters, learningPolicy, levelProgress } from "./policy.js";
+import { learningAudioSchema, type LearningAudioAsset } from "./audio.js";
 
 function reject(code: string, message: string, statusCode = 409): never {
   throw new AppError({ code, message, statusCode });
@@ -104,7 +105,10 @@ export class LearningEngineRepository {
   }
 
   /** 完整目录共用一次事务；后面的版本冲突不能留下发布了一半的题库。 */
-  async publishBatch(values: readonly unknown[]): Promise<void> {
+  async publishBatch(
+    values: readonly unknown[],
+    audioAssets?: readonly LearningAudioAsset[],
+  ): Promise<void> {
     const units = values
       .map((value) => unitSchema.parse(value))
       .sort((a, b) => a.id.localeCompare(b.id));
@@ -114,6 +118,37 @@ export class LearningEngineRepository {
     )
       throw new Error("发布目录不能为空，也不能包含重复的单元标识。");
     await this.database.sql.begin(async (sql) => {
+      for (const value of [...(audioAssets ?? [])].sort((a, b) =>
+        a.id.localeCompare(b.id),
+      )) {
+        const asset = learningAudioSchema.parse(value);
+        await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-audio:${asset.id}`}, 0))`;
+        const [existing] = await sql<
+          { metadata: unknown }[]
+        >`select metadata from app.learning_audio_assets where id=${asset.id}`;
+        if (existing && contentHash(existing.metadata) !== contentHash(asset))
+          reject("LEARNING_IMMUTABLE_AUDIO", "已发布音频的内容与审核信息不可改写。");
+        await sql`insert into app.learning_audio_assets(id,sha256,metadata) values(${asset.id},${asset.sha256},${JSON.stringify(asset)}::jsonb) on conflict do nothing`;
+      }
+      if (audioAssets !== undefined) {
+        for (const unit of units)
+          for (const question of unit.questions) {
+            if (question.type !== "listeningChoice" && question.type !== "dictation")
+              continue;
+            const [row] = await sql<
+              { metadata: unknown }[]
+            >`select metadata from app.learning_audio_assets where id=${question.audio.assetId}`;
+            const asset = row ? learningAudioSchema.parse(row.metadata) : undefined;
+            if (
+              asset?.transcript !== question.audio.text ||
+              asset.voice !== question.audio.voice
+            )
+              reject(
+                "LEARNING_AUDIO_NOT_READY",
+                "听力原文、声音与已审核资源不一致，不能发布。",
+              );
+          }
+      }
       for (const unit of units) await this.publishInTransaction(sql, unit);
     });
   }
@@ -158,6 +193,24 @@ export class LearningSession {
     private readonly userId: string,
     private readonly context?: LearningContextReader,
   ) {}
+
+  async audioAsset(attemptId: string, questionId: string): Promise<LearningAudioAsset> {
+    const attempt = await this.rawAttempt(attemptId);
+    const question = unitSchema
+      .parse(attempt.payload)
+      .questions.find((q) => q.id === questionId);
+    if (
+      !question ||
+      (question.type !== "listeningChoice" && question.type !== "dictation")
+    )
+      reject("LEARNING_AUDIO_NOT_FOUND", "这道题没有可播放的听力素材。", 404);
+    const [row] = await this.sql<
+      { metadata: unknown }[]
+    >`select metadata from app.learning_audio_assets where id=${question.audio.assetId}`;
+    if (!row)
+      reject("LEARNING_AUDIO_NOT_READY", "听力素材暂不可用，请重试或稍后补答。", 503);
+    return learningAudioSchema.parse(row.metadata);
+  }
 
   async currentLevel() {
     if (!this.context) throw new Error("未配置学习档案读取服务。");

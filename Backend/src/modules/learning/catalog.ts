@@ -3,12 +3,18 @@ import { join } from "node:path";
 import { z } from "zod";
 import { contentHash, levelSchema, unitSchema, type LearningUnit } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
+import {
+  learningAudioSchema,
+  verifyLearningAudio,
+  type PreparedLearningAudio,
+} from "./audio.js";
 
 const id = z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/);
 const note = z.string().trim().min(8).max(2000);
 const sha256 = z.string().regex(/^[a-f0-9]{64}$/);
 const registrySchema = z.strictObject({
   version: z.literal(1),
+  audioAssets: z.array(learningAudioSchema).max(5000).optional(),
   sources: z
     .array(
       z.strictObject({
@@ -65,6 +71,7 @@ const reviewSchema = z.strictObject({
 
 export type CuratedCatalog = Readonly<{
   hash: string;
+  audioAssets: readonly PreparedLearningAudio[];
   units: readonly LearningUnit[];
   summary: readonly {
     roleKey: string;
@@ -98,6 +105,16 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
       throw new Error(`目标 ${goal.id} 引用了未知来源。`);
   }
   const units: LearningUnit[] = [];
+  const audioAssets: PreparedLearningAudio[] = [];
+  requireUnique(
+    (registry.audioAssets ?? []).map((asset) => asset.id),
+    "听力资源",
+  );
+  for (const metadata of registry.audioAssets ?? []) {
+    const bytes = await readFile(join(directory, "audio", `${metadata.id}.wav`));
+    verifyLearningAudio(metadata, bytes);
+    audioAssets.push({ metadata, bytes });
+  }
   const reviews: z.infer<typeof reviewSchema>[] = [];
   const fingerprints = new Set<string>();
   for (const unitId of registry.unitIds) {
@@ -151,11 +168,19 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     for (const question of unit.questions) {
       const checked = review.questions.find((q) => q.questionId === question.id);
       if (!checked) fail(`题目 ${question.id} 缺少审核。`);
-      // 听力上线需要真实音频资产检查；不能仅凭占位资产标识发布。
-      if (question.type === "listeningChoice" || question.type === "dictation")
-        fail("当前手编发布器尚未接入音频资产验收，不能发布听力题。");
+      if (question.type === "listeningChoice" || question.type === "dictation") {
+        const asset = audioAssets.find(
+          (asset) => asset.metadata.id === question.audio.assetId,
+        )?.metadata;
+        if (
+          asset?.transcript !== question.audio.text ||
+          asset.voice !== question.audio.voice
+        )
+          fail("听力题缺少已审核音频，或其原文和声音与资源不一致。");
+      }
       if (
-        (question.type === "choice" && question.options.some((o) => o.imageAssetId)) ||
+        ((question.type === "choice" || question.type === "listeningChoice") &&
+          question.options.some((o) => o.imageAssetId)) ||
         (question.type === "arrange" && question.tokens.some((o) => o.imageAssetId)) ||
         (question.type === "matching" &&
           [...question.left, ...question.right].some((o) => o.imageAssetId))
@@ -181,7 +206,7 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         )
           fail(`题目 ${question.id} 的判题结果不符合审核样例。`);
       }
-      if (question.type === "choice") {
+      if (question.type === "choice" || question.type === "listeningChoice") {
         if (
           Object.keys(checked.optionNotes).length !== question.options.length ||
           question.options.some((o) => !checked.optionNotes[o.id])
@@ -209,5 +234,10 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     row.units += 1;
     row.questions += unit.questions.length;
   }
-  return { hash: contentHash({ registry, units, reviews }), units, summary };
+  return {
+    hash: contentHash({ registry, units, reviews }),
+    units,
+    audioAssets,
+    summary,
+  };
 }

@@ -1,6 +1,6 @@
 {
   "id": "ruby.primary3.beach-welcome",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "ruby",
@@ -10,13 +10,13 @@
   "summary": "加入 Ruby 的海岸小队，练习问候、回应和道别。",
   "scene": "海风吹起活动桌上的纸。Ruby 压住签到表，朝刚到的伙伴挥手，笑着让大家围过来。",
   "estimatedMinutes": 5,
-  "goalIds": ["p3.greetings", "p3.introductions"],
+  "goalIds": ["p3.greetings"],
   "prerequisiteGoalIds": [],
   "references": [
     {
       "sourceId": "moe.english.2022",
-      "unit": "一级：主题、词汇与语法要求",
-      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "unit": "一级：主题、语音、词汇与语法要求",
+      "pages": "印刷第 14、18–22 页；PDF 第 21、25–29 页",
       "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
     },
     {
@@ -31,7 +31,7 @@
     "author": "Codex · 原创编写与逐题自审",
     "reviewedBy": "Codex · 原创编写与逐题自审",
     "reviewedAt": "2026-09-26",
-    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。"
   },
   "beats": [
     {
@@ -60,12 +60,12 @@
     {
       "id": "morning",
       "goalId": "p3.greetings",
-      "instruction": "按本题给出的情景作答。",
-      "prompt": "现在是早上，你刚到活动地点。哪一句最明确地表示“早上好”？",
-      "hint": "注意题目要求的时间。",
-      "explanation": "Good morning! 是早上的问候；Good night! 通常是晚间告别或睡前用语。",
-      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
-      "type": "choice",
+      "instruction": "听一听，再选择符合题意的一项。",
+      "prompt": "听 Ruby 的话，选择她使用的问候语。",
+      "hint": "先完整听一遍，留意说话者使用的关键词。",
+      "explanation": "录音中的 Good morning! 表示早上好；后面的自我介绍不是本题要判断的内容。",
+      "difficultyReason": "小学三年级基础交际语听辨；固定短句音频支持正常和慢速重播，题干不显示听力原文。",
+      "type": "listeningChoice",
       "options": [
         {
           "id": "a",
@@ -77,10 +77,15 @@
         },
         {
           "id": "c",
-          "text": "Goodbye!"
+          "text": "Good afternoon!"
         }
       ],
-      "answer": "b"
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.082b6d560e0a1e3ec807f97cdad9ab1b77537fd23fd9f428c4893f6341404fa2",
+        "text": "Good morning! I'm Ruby.",
+        "voice": "F3"
+      }
     },
     {
       "id": "meet-you",
@@ -190,17 +195,22 @@
     },
     {
       "id": "i-am",
-      "goalId": "p3.introductions",
-      "instruction": "只填写横线处缺少的英文单词。",
-      "prompt": "一位新伙伴自我介绍：“我是 Sam。”\nI ___ Sam.",
-      "hint": "句子的主语是 I。",
-      "explanation": "I am Sam. 中 I 与 am 搭配；is 常与 he、she、it 等搭配。",
-      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
-      "type": "completion",
-      "acceptedAnswers": ["am"],
+      "goalId": "p3.greetings",
+      "instruction": "听一听，写出你听到的英文。",
+      "prompt": "可以先完整听一遍，再输入；需要时可用慢速重播。 这次是一个告别用语。",
+      "hint": "这是离开时常用的一个告别用语。",
+      "explanation": "Goodbye! 表示再见。本题接受 goodbye、good-bye 及分写 good bye，不因正字法变体误判听懂的告别语。",
+      "difficultyReason": "小学三年级短语或短句听写；不含专名，大小写与句末标点不单独扣分，允许正常及慢速重播。",
+      "type": "dictation",
+      "acceptedAnswers": ["Goodbye", "Good-bye", "Good bye"],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.e22147ec8cbb8d0258385425499bc557a73ef3106870943b78734d9619c2ea36",
+        "text": "Goodbye!",
+        "voice": "F3"
       }
     },
     {

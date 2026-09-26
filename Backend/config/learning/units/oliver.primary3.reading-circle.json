@@ -1,6 +1,6 @@
 {
   "id": "oliver.primary3.reading-circle",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "oliver",
@@ -15,8 +15,8 @@
   "references": [
     {
       "sourceId": "moe.english.2022",
-      "unit": "一级：主题、词汇与语法要求",
-      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "unit": "一级：主题、语音、词汇与语法要求",
+      "pages": "印刷第 14、18–22 页；PDF 第 21、25–29 页",
       "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
     },
     {
@@ -37,7 +37,7 @@
     "author": "Codex · 原创编写与逐题自审",
     "reviewedBy": "Codex · 原创编写与逐题自审",
     "reviewedAt": "2026-09-26",
-    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。"
   },
   "beats": [
     {
@@ -66,27 +66,32 @@
     {
       "id": "hello",
       "goalId": "p3.greetings",
-      "instruction": "按本题给出的情景作答。",
-      "prompt": "第一次见面，想主动打招呼。你可以说哪一句？",
-      "hint": "想想见面和告别的区别。",
-      "explanation": "Hello! 用于打招呼；Goodbye! 用于告别；Thank you! 表示感谢。",
-      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
-      "type": "choice",
+      "instruction": "听一听，再选择符合题意的一项。",
+      "prompt": "听这段初次见面的问候，选出你听到的完整表达。",
+      "hint": "先完整听一遍，留意说话者使用的关键词。",
+      "explanation": "录音先问好，再表达很高兴认识对方。Hello! Nice to meet you. 对应这两个功能。",
+      "difficultyReason": "小学三年级基础交际语听辨；固定短句音频支持正常和慢速重播，题干不显示听力原文。",
+      "type": "listeningChoice",
       "options": [
         {
           "id": "a",
-          "text": "Goodbye!"
+          "text": "Goodbye! See you."
         },
         {
           "id": "b",
-          "text": "Hello!"
+          "text": "Hello! Nice to meet you."
         },
         {
           "id": "c",
-          "text": "Thank you!"
+          "text": "Thank you! You are kind."
         }
       ],
-      "answer": "b"
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.d1b50a10e39a2e12e75ed7412b1c4067ab3b0eeaa0268531189989a2d90a33b8",
+        "text": "Hello! Nice to meet you.",
+        "voice": "M5"
+      }
     },
     {
       "id": "ask-name",
@@ -197,16 +202,21 @@
     {
       "id": "name-link",
       "goalId": "p3.introductions",
-      "instruction": "只填写横线处缺少的英文单词。",
-      "prompt": "“我的名字是 Lily。”\nMy name ___ Lily.",
-      "hint": "主语是 My name，不是 I。",
-      "explanation": "My name is Lily. 中 My name 是单数主语，与 is 搭配。",
-      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
-      "type": "completion",
-      "acceptedAnswers": ["is"],
+      "instruction": "听一听，写出你听到的英文。",
+      "prompt": "可以先完整听一遍，再输入；需要时可用慢速重播。 这次写一句关于朋友的话。",
+      "hint": "留意说话者说的是“我”还是“你”。",
+      "explanation": "I am your friend. 表示“我是你的朋友”。本题也接受常用缩写 I'm your friend，不把同义缩写视为错误。",
+      "difficultyReason": "小学三年级短语或短句听写；不含专名，大小写与句末标点不单独扣分，允许正常及慢速重播。",
+      "type": "dictation",
+      "acceptedAnswers": ["I am your friend", "I'm your friend"],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.f11739ac727e3dfc518e2993dddd1333813d8c01e1222db1e96d110e5e9be34b",
+        "text": "I am your friend.",
+        "voice": "M5"
       }
     },
     {

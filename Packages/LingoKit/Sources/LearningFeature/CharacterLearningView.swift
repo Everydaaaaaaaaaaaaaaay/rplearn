@@ -9,12 +9,17 @@ public struct CharacterLearningView: View {
     @State private var model: CharacterLearningModel
     private let character: CharacterDTO
     private let isVisible: Bool
+    private let audioSession: AudioSessionCoordinator
+    private let beforePlayback: @Sendable () async -> Void
     @Environment(\.scenePhase) private var scenePhase
     @State private var showJourney = false
     public init(character: CharacterDTO, service: any LearningServing, isVisible: Bool = true,
+                audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
+                beforePlayback: @escaping @Sendable () async -> Void = {},
                 synchronize: @escaping @Sendable () async throws -> Void = {},
                 cycleChanged: @escaping @Sendable () async -> Void = {}) {
         self.character = character; self.isVisible = isVisible
+        self.audioSession = audioSession; self.beforePlayback = beforePlayback
         _model = State(initialValue: CharacterLearningModel(characterID: character.id, service: service,
                                                            synchronize: synchronize, cycleChanged: cycleChanged))
     }
@@ -46,7 +51,8 @@ public struct CharacterLearningView: View {
             if isVisible && notification.object as? UUID == character.id { Task { await model.load() } }
         }
         .fullScreenCover(item: $model.presentedAttempt, onDismiss: { Task { await model.challengeClosed() } }) { attempt in
-            LearningChallengeView(attempt: attempt, character: character, service: model.service, afterFinish: { await model.refreshCycle() })
+            LearningChallengeView(attempt: attempt, character: character, service: model.service, audioSession: audioSession,
+                                  beforePlayback: beforePlayback, afterFinish: { await model.refreshCycle() })
         }
         .sheet(isPresented: $showJourney) {
             NavigationStack {

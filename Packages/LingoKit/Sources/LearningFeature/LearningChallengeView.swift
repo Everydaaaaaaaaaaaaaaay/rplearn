@@ -1,18 +1,27 @@
 import BackendKit
+import AVFoundation
+import CoreKit
 import DesignSystem
 import PersistenceKit
+import SpeechKit
 import SwiftUI
 
 public struct LearningChallengeView: View {
     @State private var model: LearningChallengeModel
+    @State private var audio: LearningAudioModel
     private let character: CharacterDTO
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showsExit = false
     @State private var showsHint = false
     @State private var showsTranslation = false
     @FocusState private var inputFocused: Bool
-    public init(attempt: LearningAttempt, character: CharacterDTO, service: any LearningServing, afterFinish: @escaping @Sendable () async -> Void = {}) {
+    public init(attempt: LearningAttempt, character: CharacterDTO, service: any LearningServing,
+                audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
+                beforePlayback: @escaping @Sendable () async -> Void = {},
+                afterFinish: @escaping @Sendable () async -> Void = {}) {
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
+        _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback))
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
     public var body: some View {
@@ -46,6 +55,24 @@ public struct LearningChallengeView: View {
             Text("已提交的答案会保留。结束首轮会重置该角色的挑战进度条，未答对的题仍可从记录补答。")
         }
         .onChange(of: model.stage) { _, _ in showsHint = false; showsTranslation = false; inputFocused = false }
+        .task(id: model.question?.id) { await audio.prepare(attemptID: model.attempt.id, question: model.question) }
+        .onDisappear { audio.reset() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { audio.stop(interrupted: true) }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
+            if notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt == AVAudioSession.InterruptionType.began.rawValue {
+                audio.stop(interrupted: true)
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { notification in
+            if notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue {
+                audio.stop(interrupted: true)
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { notification in
+            if notification.object as? UUID != audio.playbackID, audio.state == .playing { audio.stop(interrupted: true) }
+        }
         .onChange(of: model.feedback?.outcome) { _, outcome in
             if outcome == .correct { Haptics.notify(.success) }
         }
@@ -107,10 +134,7 @@ public struct LearningChallengeView: View {
             Text(question.instruction).font(.title2.bold())
             Text(question.prompt).font(.system(.title3, design: .rounded)).lineSpacing(6).fixedSize(horizontal: false, vertical: true)
             if question.audio != nil {
-                Label("听力音频暂不可用，可先跳过，稍后从记录补答。", systemImage: "speaker.slash")
-                    .font(.subheadline).foregroundStyle(.secondary).padding(18)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(theme.tint.opacity(0.07), in: RoundedRectangle(cornerRadius: 18))
+                listeningControls(question)
             }
             answerControls(question)
                 .disabled(model.isBusy || model.feedback != nil || model.hasUnconfirmedAnswer)
@@ -122,6 +146,32 @@ public struct LearningChallengeView: View {
                 if showsHint { Text(question.hint).font(.subheadline).foregroundStyle(.secondary) }
             }
         }
+    }
+    private func listeningControls(_ question: LearningQuestion) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 14) {
+                Button {
+                    if audio.state == .playing { audio.stop() }
+                    else if audio.state == .failed || audio.state == .idle {
+                        Task { await audio.prepare(attemptID: model.attempt.id, question: question) }
+                    } else { audio.play(slow: false) }
+                } label: {
+                    HStack(spacing: 12) {
+                        if audio.state == .loading { ProgressView().tint(theme.tint) }
+                        else { Image(systemName: audio.state == .playing ? "stop.fill" : audio.state == .failed ? "arrow.clockwise" : "play.fill") }
+                        Text(audio.state == .loading ? "正在准备声音…" : audio.state == .playing ? "停止播放" : audio.state == .failed ? "重新载入" : audio.state == .idle ? "载入听力" : audio.hasListened ? "再听一遍" : "播放听力")
+                    }.font(.headline).frame(maxWidth: .infinity, minHeight: 52)
+                }.buttonStyle(LearningPressStyle()).disabled(audio.state == .loading || model.isBusy)
+                    .accessibilityIdentifier("learning.audio.play")
+                Button { audio.play(slow: true) } label: {
+                    Label("慢速", systemImage: "tortoise").font(.subheadline.weight(.semibold)).padding(.horizontal, 14).frame(minHeight: 52)
+                }.buttonStyle(LearningPressStyle())
+                    .disabled(![.ready, .playing, .interrupted].contains(audio.state) || model.isBusy)
+                    .accessibilityIdentifier("learning.audio.slow")
+            }
+            Text(audio.state == .failed ? "声音暂时没能载入。可以重试，或先跳过，稍后从记录补答。" : audio.state == .interrupted ? "播放已中断，轻点继续听。不会自动外放。" : audio.hasListened ? "可以正常或慢速重听，确认后再作答。" : "先完整听一遍，再选择或输入答案。暂时不方便听时可以跳过。")
+                .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+        }.padding(18).background(theme.tint.opacity(0.07), in: RoundedRectangle(cornerRadius: 18))
     }
     @ViewBuilder
     private func answerControls(_ question: LearningQuestion) -> some View {
@@ -252,8 +302,8 @@ public struct LearningChallengeView: View {
                 if model.feedback != nil { primary("继续") { model.advance() } }
                 else if model.hasUnconfirmedAnswer { primary("重新确认提交") { Task { await model.submit() } } }
                 else {
-                    primary("检查", disabled: model.answer == nil || model.question?.audio != nil) { inputFocused = false; Task { await model.submit() } }
-                    Button("暂时跳过，留待补答") { inputFocused = false; Task { await model.submit(skip: true) } }
+                    primary("检查", disabled: model.answer == nil || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
+                    Button("暂时跳过，留待补答") { inputFocused = false; audio.stop(); Task { await model.submit(skip: true) } }
                         .font(.subheadline).padding(8).disabled(model.isBusy)
                 }
             case .summary:

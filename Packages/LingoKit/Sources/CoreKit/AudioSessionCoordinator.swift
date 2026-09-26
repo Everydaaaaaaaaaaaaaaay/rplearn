@@ -10,12 +10,15 @@ public actor AudioSessionCoordinator {
     }
 
     public private(set) var mode: Mode = .idle
+    private var activationID = UUID()
 
     public init() {}
 
     /// 切换音频会话模式；重复激活同一模式为幂等。
-    public func activate(_ newMode: Mode) throws {
-        guard newMode != mode else { return }
+    public func activate(_ newMode: Mode, forceActivation: Bool = false) throws {
+        activationID = UUID()
+        // 系统中断后，逻辑模式可能未变，但实际会话需要重新激活。
+        guard newMode != mode || forceActivation else { return }
         let session = AVAudioSession.sharedInstance()
         switch newMode {
         case .playback:
@@ -40,7 +43,19 @@ public actor AudioSessionCoordinator {
     }
 
     public func deactivate() {
+        activationID = UUID()
         try? AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
         mode = .idle
+    }
+
+    /// 短音频只释放自己取得的会话；后来的录音或语音播放不会被旧回调关闭。
+    public func acquirePlayback() throws -> UUID {
+        try activate(.playback, forceActivation: true)
+        return activationID
+    }
+
+    public func releasePlayback(_ lease: UUID) {
+        guard lease == activationID, mode == .playback else { return }
+        deactivate()
     }
 }
