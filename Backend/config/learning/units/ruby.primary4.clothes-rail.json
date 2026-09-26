@@ -1,0 +1,232 @@
+{
+  "id": "ruby.primary4.clothes-rail",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "志愿者的衣物架",
+  "summary": "询问试穿，用简单英语说明衣物大小。",
+  "scene": "Ruby 把活动用的 T 恤挂上衣架，邀请伙伴们挑选合身的一件。旁边还有装着备用衣物的小箱子。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.clothes", "p4.permission"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 6 Shopping",
+      "pages": "印刷第58、61页；PDF第63、66页",
+      "alignment": "参考试穿、大小和价格问答；不用计算或消费常识决定正误。"
+    },
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 5 My clothes",
+      "pages": "印刷第48、51页；PDF第53、56页",
+      "alignment": "参考衣物归属、whose、mine/yours 和单复数指代。"
+    },
+    {
+      "sourceId": "yilin.primary4.lower.2013",
+      "unit": "Unit 6 Whose dress is this?",
+      "pages": "印刷第38–39页；PDF第41–42页",
+      "alignment": "参考衣物单复数、物主关系和试穿表达；每题明确拥有者或说话视角。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "The shirts are ready. Take your time.",
+      "translation": "T 恤都准备好了。慢慢挑。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A good fit makes the day easier.",
+      "translation": "衣服合身，忙起来也更轻松。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Now we are ready to work together.",
+      "translation": "现在我们可以一起开始工作了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "try-shirt",
+      "goalId": "p4.permission",
+      "prompt": "你想试穿一件 T 恤。T-shirt 表示 T 恤。哪句是在提出试穿请求？",
+      "hint": "试穿是先穿上看看是否合适，与直接购买或询价不同。",
+      "explanation": "Can I try on this T-shirt? 请求试穿；buy 是买，How much…? 问价格。",
+      "difficultyReason": "区别同一衣物的试穿、购买和询价三种意图，不靠主题名词猜选项。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Can I buy this T-shirt?"
+        },
+        {
+          "id": "b",
+          "text": "How much is this T-shirt?"
+        },
+        {
+          "id": "c",
+          "text": "Can I try on this T-shirt?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "too-small",
+      "goalId": "p4.clothes",
+      "prompt": "补全“这件外套太小了”：This coat is ___ small.\n从 too 和 two 中选一个填入。",
+      "hint": "留意读音相近的词在句子里作用不同。",
+      "explanation": "too small 表示太小；two 是数字二，不能修饰 small 表示程度。",
+      "difficultyReason": "从两个给定同音词中选程度副词，避免开放填空误拒近义词。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["too"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "shorts-big",
+      "goalId": "p4.clothes",
+      "prompt": "说明“这些短裤太大了”。shorts 表示短裤。",
+      "hint": "these 指复数物品，后面的 be 动词也要对应。",
+      "explanation": "These shorts are too big. 中 shorts 用复数形式，搭配 these 和 are。",
+      "difficultyReason": "将复数衣物、are 与 too big 合成描述，控制在五个词块。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "are"
+        },
+        {
+          "id": "t4",
+          "text": "too"
+        },
+        {
+          "id": "t5",
+          "text": "big."
+        },
+        {
+          "id": "t1",
+          "text": "These"
+        },
+        {
+          "id": "t2",
+          "text": "shorts"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "fit-words",
+      "goalId": "p4.clothes",
+      "prompt": "把试穿时描述大小或长度的短语与中文配对。",
+      "hint": "分别比较大小和长度，不按真实衣物图片猜测。",
+      "explanation": "too long 是太长；too short 是太短；just right 是正合适。",
+      "difficultyReason": "在试穿语境复现长度与合身表达，不加入比较级或数值尺码。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "too long"
+        },
+        {
+          "id": "l2",
+          "text": "too short"
+        },
+        {
+          "id": "l3",
+          "text": "just right"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "太短"
+        },
+        {
+          "id": "r3",
+          "text": "正合适"
+        },
+        {
+          "id": "r1",
+          "text": "太长"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "try-them",
+      "goalId": "p4.clothes",
+      "prompt": "你指着一双鞋，想说“我可以试穿它们吗？”请选正确句子。",
+      "hint": "一双鞋在英语中用复数指代；看看代词应放在哪里。",
+      "explanation": "Can I try them on? 中 them 指复数的鞋；try on 与代词连用时，代词放在 try 和 on 中间。",
+      "difficultyReason": "使用 try on 的代词宾语位置，同时核对复数鞋的指代。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Can I try on them?"
+        },
+        {
+          "id": "b",
+          "text": "Can I try them on?"
+        },
+        {
+          "id": "c",
+          "text": "Can I try it on?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "dress-is",
+      "goalId": "p4.clothes",
+      "prompt": "补全“这条连衣裙正合适”：This dress ___ just right.\n只填 be 动词的正确形式；dress 表示连衣裙。",
+      "hint": "不要仅凭单词最后的字母判断单复数，先看 this。",
+      "explanation": "This dress 是单数主语，搭配 is；dress 末尾的 ss 是单词的一部分。",
+      "difficultyReason": "this 提供单数线索，避免将 dress 结尾的 ss 误当作复数。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["is"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

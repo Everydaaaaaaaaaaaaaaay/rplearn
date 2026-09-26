@@ -1,0 +1,214 @@
+{
+  "unitId": "marcus.primary4.season-photos",
+  "contentHash": "9bfb8863f1c79ae51f6f7d17dd394500314a02ad295d93ef765f77e75fadae52",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Marcus 整理街头日常照片，以四季相册承载短标题；每题另给季节条件，不考图片记忆。",
+  "levelFit": "季节名、in + 季节、we 的简单活动表达及 hot/cold 词义；不假设南北半球天气规律。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "season-names",
+      "standaloneContext": "本题独立给定的作答条件：把相册目录中的三个季节名称与中文配对。",
+      "ambiguityReview": "词义配对无地理前提；不把任何一张未展示的照片作为答题条件。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "autumn-word",
+      "standaloneContext": "本题独立给定的作答条件：补全“这是一张秋天的照片”：This is a photo of ___.\n只填“秋天”的一个英文单词；英式或美式常用说法均可。",
+      "ambiguityReview": "明确收录秋天的英美两种常用词；不是把同义正确答案排除在词表外。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "autumn"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "fall"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "AUTUMN"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "spring"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "winter-caption",
+      "standaloneContext": "本题独立给定的作答条件：本题照片标注的是“在冬季”。哪一个英文短语可以作这个标题？",
+      "ambiguityReview": "只比较无特定日期的季节介词；不涉及 on a winter day 这类不同结构。",
+      "optionNotes": {
+        "a": "at 不与裸季节名 winter 构成本题时段表达。",
+        "b": "on 常用于具体日子，不用于这里的 winter。",
+        "c": "in winter 是表示在冬季的常用搭配。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "summer-swim",
+      "standaloneContext": "本题独立给定的作答条件：为活动照配句：“我们夏天游泳。”以 We 开头。",
+      "ambiguityReview": "题目明确以 We 开头，排除 In summer, we swim. 的另一个合法排列；活动条件直接给定。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cold-caption",
+      "standaloneContext": "本题独立给定的作答条件：本题中的那一天很冷。你想用形容词说明“那天很冷”，哪个词符合这个已知条件？",
+      "ambiguityReview": "“很冷”与“凉爽”作明确语义区分，不以冬季一定冷的常识替代条件。",
+      "optionNotes": {
+        "a": "hot 表示热，与已知很冷相反。",
+        "b": "cold 表示冷，符合题目指定的气温描述。",
+        "c": "cool 表示凉爽，未表达本题的很冷。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "we-fly",
+      "standaloneContext": "本题独立给定的作答条件：补全“我们春天放风筝”：We ___ kites in spring.\n只填 fly 的正确形式；fly kites 表示放风筝。",
+      "ambiguityReview": "只给 fly 的词形任务，不要求用户判断哪个地区何时适合放风筝。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "fly"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "FLY"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "flies"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

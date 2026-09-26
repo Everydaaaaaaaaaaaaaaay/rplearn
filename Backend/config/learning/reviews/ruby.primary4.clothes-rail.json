@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.primary4.clothes-rail",
+  "contentHash": "0525aeeec630d10983f17f2e510108835387d6035593b31d1ca2a0641cd05190",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "志愿者活动衣物准备符合 Ruby 爱组织活动的设定；聚焦试穿和大小而非书店失物所有者。",
+  "levelFit": "练习 try on、too + 形容词、单复数衣物及指代；不涉及比较级或尺码换算。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "try-shirt",
+      "standaloneContext": "本题独立给定的作答条件：你想试穿一件 T 恤。T-shirt 表示 T 恤。哪句是在提出试穿请求？",
+      "ambiguityReview": "购买和试穿可能相关，但题目明确只选提出试穿请求的句子。",
+      "optionNotes": {
+        "a": "请求购买，与本题试穿的当前目的不同。",
+        "b": "询问价格，并没有请求试穿。",
+        "c": "try on 表示试穿，正确提出试穿请求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "too-small",
+      "standaloneContext": "本题独立给定的作答条件：补全“这件外套太小了”：This coat is ___ small.\n从 too 和 two 中选一个填入。",
+      "ambiguityReview": "给出候选与明确程度意思，不允许把 very 等近义程度词列为唯一答案的遗漏。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "too"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "TOO"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "two"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "shorts-big",
+      "standaloneContext": "本题独立给定的作答条件：说明“这些短裤太大了”。shorts 表示短裤。",
+      "ambiguityReview": "中文表达这些短裤，句首 These 与末尾 big. 固定边界，无可交换状语。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "fit-words",
+      "standaloneContext": "本题独立给定的作答条件：把试穿时描述大小或长度的短语与中文配对。",
+      "ambiguityReview": "三个固定短语在衣物试穿语境下含义不同；short 这里译长度而非身高。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "try-them",
+      "standaloneContext": "本题独立给定的作答条件：你指着一双鞋，想说“我可以试穿它们吗？”请选正确句子。",
+      "ambiguityReview": "明确复数代词宾语；不把合法 try on the shoes 错判为语法问题，它未列为干扰。",
+      "optionNotes": {
+        "a": "代词 them 不能放在本题短语动词 try on 的后面。",
+        "b": "them 指鞋，置于 try 与 on 之间，结构正确。",
+        "c": "it 为单数，不能对应本题要求的复数它们。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "dress-is",
+      "standaloneContext": "本题独立给定的作答条件：补全“这条连衣裙正合适”：This dress ___ just right.\n只填 be 动词的正确形式；dress 表示连衣裙。",
+      "ambiguityReview": "专门检查 dress 虽以 s 结尾但为单数；this 给出明确数的信息。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "IS"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

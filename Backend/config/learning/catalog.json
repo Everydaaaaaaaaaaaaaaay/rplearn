@@ -49,6 +49,36 @@
           "sha256": "4f89a971ea4824c9637a994b9548c1fd1ec21bf1e0b8f413aa4ab3b17cebe88e"
         }
       ]
+    },
+    {
+      "id": "pep.primary4.lower.2013",
+      "title": "人教版PEP英语四年级下册（2013年版公开存档）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88PEP%EF%BC%89%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E5%9B%9B%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "2013年10月第1版；ISBN 978-7-107-27387-2；版权页未填具体印次",
+      "readAt": "2026-09-26",
+      "scope": "核读版权页PDF第3页及正文PDF第22、29、32、53、56、63、66页；对应时间、天气、衣物归属和购物。",
+      "limitations": "文件来自公开社区存档，版权页与实际正文已核对；不是出版社当前电子版下载。只对所列旧版页面作语言功能参考，不声称新课标教材逐课等价；不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；核读范围见scope与各单元references",
+          "sha256": "4246acec85ea322772dea89720ca82d5483f0e6509bf3b9a3559b7e9bd2976cd"
+        }
+      ]
+    },
+    {
+      "id": "yilin.primary4.lower.2013",
+      "title": "译林版英语四年级下册（三年级起点公开存档）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E8%AF%91%E6%9E%97%E7%89%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E5%9B%9B%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf.1",
+      "edition": "2013年10月第2版、2018年11月第6次印刷；ISBN 978-7-5447-4357-0",
+      "readAt": "2026-09-26",
+      "scope": "核读版权页PDF第3页及正文PDF第21、22、27、28、35、36、41、42页；对应日常活动、能力、季节和衣物。",
+      "limitations": "文件来自公开社区存档，版权页与实际正文已核对；不是出版社当前电子版下载。只对所列旧版页面作语言功能参考，不声称新课标教材逐课等价；不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；核读范围见scope与各单元references",
+          "sha256": "937f98de1f99733c6e3ec9056de569de464db84f2df969c7c41b12ba3aa713b0"
+        }
+      ]
     }
   ],
   "goals": [
@@ -114,6 +144,69 @@
       "canDo": "能在明确情景中提出简短礼貌请求，并对帮助或感谢作出合适回应。",
       "boundaries": "给定物品名称和目的；不考间接请求语气层级、文化常识或开放长句。",
       "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p4.clock",
+      "level": "primary4",
+      "canDo": "能询问当前钟点，表达整点或半点，并区分 time to 与 time for。",
+      "boundaries": "时间明示，不用指针图片、时区换算或数学推理；限简单当前表达。",
+      "sourceIds": ["pep.primary4.lower.2013", "yilin.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.routines",
+      "level": "primary4",
+      "canDo": "能询问和说明日常活动的时间，使用具体钟点和早晚时段表达。",
+      "boundaries": "限 I/you 的一般现在时及常见活动；不把第三人称变化作为新目标。",
+      "sourceIds": ["yilin.primary4.lower.2013", "pep.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.weather",
+      "level": "primary4",
+      "canDo": "能用简单 be 句描述已给定的天气，并进行天气状况问答。",
+      "boundaries": "天气事实在每题写明；不凭季节、地点猜气候，不引入将来时预报。",
+      "sourceIds": ["pep.primary4.lower.2013", "yilin.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.permission",
+      "level": "primary4",
+      "canDo": "能用 Can I…? 提出日常许可请求，并从正确人称视角回应。",
+      "boundaries": "许可与能力语境明确分开；不考隐含礼貌等级、职业权力或安全判断。",
+      "sourceIds": ["pep.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.ownership",
+      "level": "primary4",
+      "canDo": "能询问衣物所属，使用 mine/yours 和姓名所有格表达归属。",
+      "boundaries": "每题给定说话者和拥有者；衣物单复数明确，不要求推断未给出的家庭关系。",
+      "sourceIds": ["pep.primary4.lower.2013", "yilin.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.clothes",
+      "level": "primary4",
+      "canDo": "能识别常见衣物，用单复数短句描述大小、长度和试穿需求。",
+      "boundaries": "无图片辨色要求，不比较国际尺码；只在明确句架中使用代词和 be。",
+      "sourceIds": ["pep.primary4.lower.2013", "yilin.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.prices",
+      "level": "primary4",
+      "canDo": "能用 How much 询价，并按给定价签表达单件或复数物品价格。",
+      "boundaries": "只用常见整十数额，不考总价、折扣、找零或货币兑换；币种题内明确。",
+      "sourceIds": ["pep.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.seasons",
+      "level": "primary4",
+      "canDo": "能识别四季名称，并用 in 加季节描述给定的简单活动。",
+      "boundaries": "接收 autumn/fall 词汇变体；不把地理气候经验当作语言能力测量。",
+      "sourceIds": ["yilin.primary4.lower.2013"]
+    },
+    {
+      "id": "p4.ability",
+      "level": "primary4",
+      "canDo": "能描述能看到的事物，询问与回答简单活动能力，使用 can 后原形。",
+      "boundaries": "每题说明可见性和能力事实；不要求图片记忆、绘画或真实运动能力。",
+      "sourceIds": ["yilin.primary4.lower.2013"]
     }
   ],
   "unitIds": [
@@ -125,7 +218,16 @@
     "ruby.primary3.picnic-colours",
     "marcus.primary3.family-photo-wall",
     "marcus.primary3.street-colour-hunt",
-    "marcus.primary3.food-truck-stop"
+    "marcus.primary3.food-truck-stop",
+    "oliver.primary4.reading-clock",
+    "oliver.primary4.rainy-reading",
+    "oliver.primary4.lost-clothes",
+    "ruby.primary4.cafe-morning",
+    "ruby.primary4.indoor-volunteers",
+    "ruby.primary4.clothes-rail",
+    "marcus.primary4.market-price-tags",
+    "marcus.primary4.season-photos",
+    "marcus.primary4.park-sketches"
   ],
   "audioAssets": [
     {

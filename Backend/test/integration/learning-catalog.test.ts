@@ -62,105 +62,111 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toHaveLength(2);
     });
 
-    it("九个原创单元可独立分配，补答不重复得分，耗尽保持满条", async () => {
-      const namespace = randomUUID();
-      // 使用真实教学内容，仅隔离身份，避免影响并行用例的角色池。
-      const units = catalog.units.map((unit) => ({
-        ...unit,
-        id: `test.${namespace}.${unit.id}`,
-        roleKey: `test.${namespace}.${unit.roleKey}`,
-      }));
-      unitIds.push(...units.map((u) => u.id));
-      testRoles.push(...new Set(units.map((u) => u.roleKey)));
-      await repository.publishBatch(units);
-      await repository.publishBatch(units);
-      const user = randomUUID();
-      users.push(user);
-      await database.sql`insert into app.users(id) values(${user})`;
-      const command = <T>(
-        input: unknown,
-        execute: (session: LearningSession) => Promise<T>,
-        requestId = randomUUID(),
-      ) => repository.command(user, requestId, "catalog-test", input, execute);
-      for (const role of testRoles) {
-        const character = randomUUID();
-        await command({ character, role }, (s) => s.ensureCharacter(character, role));
-        const fill = async () => {
-          const state = await repository.read(user, (s) => s.character(character));
-          const message = {
-            characterId: character,
-            cycleId: state.cycleId,
-            messageId: randomUUID(),
-            text: "测".repeat(1000),
-          };
-          await command(message, (s) => s.recordMessage(message));
-        };
-        const seen = new Set<string>();
-        for (let i = 0; i < 3; i++) {
-          await fill();
-          const started = await command({ start: character }, (s) =>
-            s.start(character, "primary3"),
-          );
-          if (!started.attempt) throw new Error("原创题库分配失败。");
-          const attempt = started.attempt;
-          expect(seen.has(attempt.unit.id)).toBe(false);
-          seen.add(attempt.unit.id);
-          const unit = units.find((u) => u.id === attempt.unit.id);
-          if (!unit) throw new Error("抽到了目录以外的单元。");
-          const first = unit.questions[0];
-          if (!first) throw new Error("缺少原创题。");
-          const firstAnswer = {
-            attemptId: attempt.id,
-            roundId: attempt.round.id,
-            questionId: first.id,
-            answer: gradeAnswer(first, { kind: "skip" }).solution,
-          };
-          const requestId = randomUUID();
-          expect(
-            await command(firstAnswer, (s) => s.submit(firstAnswer), requestId),
-          ).toMatchObject({ awardedPoints: 1 });
-          expect(
-            await command(firstAnswer, (s) => s.submit(firstAnswer), requestId),
-          ).toMatchObject({ awardedPoints: 1 });
-          await command({ finish: attempt.id }, (s) => s.finish(attempt.id, true));
-          expect(
-            await repository.read(user, (s) => s.character(character)),
-          ).toMatchObject({ characters: 0, activeAttemptId: null });
-          const retry = await command({ retry: attempt.id }, (s) =>
-            s.retry(attempt.id),
-          );
-          expect(retry.round.questionIds).toHaveLength(5);
-          for (const question of unit.questions.slice(1)) {
-            const input = {
-              attemptId: attempt.id,
-              roundId: retry.round.id,
-              questionId: question.id,
-              answer: gradeAnswer(question, { kind: "skip" }).solution,
+    it.each(["primary3", "primary4"] as const)(
+      "%s 的九个原创单元可独立分配，补答不重复得分，耗尽保持满条",
+      async (level) => {
+        const namespace = randomUUID();
+        // 使用真实教学内容，仅隔离身份，避免影响并行用例的角色池。
+        const units = catalog.units
+          .filter((unit) => unit.level === level)
+          .map((unit) => ({
+            ...unit,
+            id: `test.${namespace}.${unit.id}`,
+            roleKey: `test.${namespace}.${unit.roleKey}`,
+          }));
+        unitIds.push(...units.map((u) => u.id));
+        testRoles.push(...new Set(units.map((u) => u.roleKey)));
+        await repository.publishBatch(units);
+        await repository.publishBatch(units);
+        const user = randomUUID();
+        users.push(user);
+        await database.sql`insert into app.users(id) values(${user})`;
+        const command = <T>(
+          input: unknown,
+          execute: (session: LearningSession) => Promise<T>,
+          requestId = randomUUID(),
+        ) => repository.command(user, requestId, "catalog-test", input, execute);
+        for (const role of new Set(units.map((unit) => unit.roleKey))) {
+          const character = randomUUID();
+          await command({ character, role }, (s) => s.ensureCharacter(character, role));
+          const fill = async () => {
+            const state = await repository.read(user, (s) => s.character(character));
+            const message = {
+              characterId: character,
+              cycleId: state.cycleId,
+              messageId: randomUUID(),
+              text: "测".repeat(1000),
             };
-            expect(await command(input, (s) => s.submit(input))).toMatchObject({
-              awardedPoints: 1,
-            });
+            await command(message, (s) => s.recordMessage(message));
+          };
+          const seen = new Set<string>();
+          for (let i = 0; i < 3; i++) {
+            await fill();
+            const started = await command({ start: character }, (s) =>
+              s.start(character, level),
+            );
+            if (!started.attempt) throw new Error("原创题库分配失败。");
+            const attempt = started.attempt;
+            expect(attempt.unit.level).toBe(level);
+            expect(seen.has(attempt.unit.id)).toBe(false);
+            seen.add(attempt.unit.id);
+            const unit = units.find((u) => u.id === attempt.unit.id);
+            if (!unit) throw new Error("抽到了目录以外的单元。");
+            const first = unit.questions[0];
+            if (!first) throw new Error("缺少原创题。");
+            const firstAnswer = {
+              attemptId: attempt.id,
+              roundId: attempt.round.id,
+              questionId: first.id,
+              answer: gradeAnswer(first, { kind: "skip" }).solution,
+            };
+            const requestId = randomUUID();
+            expect(
+              await command(firstAnswer, (s) => s.submit(firstAnswer), requestId),
+            ).toMatchObject({ awardedPoints: 1 });
+            expect(
+              await command(firstAnswer, (s) => s.submit(firstAnswer), requestId),
+            ).toMatchObject({ awardedPoints: 1 });
+            await command({ finish: attempt.id }, (s) => s.finish(attempt.id, true));
+            expect(
+              await repository.read(user, (s) => s.character(character)),
+            ).toMatchObject({ characters: 0, activeAttemptId: null });
+            const retry = await command({ retry: attempt.id }, (s) =>
+              s.retry(attempt.id),
+            );
+            expect(retry.round.questionIds).toHaveLength(5);
+            for (const question of unit.questions.slice(1)) {
+              const input = {
+                attemptId: attempt.id,
+                roundId: retry.round.id,
+                questionId: question.id,
+                answer: gradeAnswer(question, { kind: "skip" }).solution,
+              };
+              expect(await command(input, (s) => s.submit(input))).toMatchObject({
+                awardedPoints: 1,
+              });
+            }
+            expect(
+              (await repository.read(user, (s) => s.attempt(attempt.id)))
+                .correctQuestionIds,
+            ).toHaveLength(6);
           }
+          expect(seen.size).toBe(3);
+          await fill();
           expect(
-            (await repository.read(user, (s) => s.attempt(attempt.id)))
-              .correctQuestionIds,
-          ).toHaveLength(6);
+            await command({ start: character }, (s) => s.start(character, level)),
+          ).toEqual({ status: "preparing", attempt: null });
+          expect(
+            (await repository.read(user, (s) => s.character(character))).characters,
+          ).toBe(1000);
         }
-        expect(seen.size).toBe(3);
-        await fill();
+        expect(await repository.read(user, (s) => s.progress())).toEqual([
+          expect.objectContaining({ level, points: 54, stars: 0 }),
+        ]);
         expect(
-          await command({ start: character }, (s) => s.start(character, "primary3")),
-        ).toEqual({ status: "preparing", attempt: null });
-        expect(
-          (await repository.read(user, (s) => s.character(character))).characters,
-        ).toBe(1000);
-      }
-      expect(await repository.read(user, (s) => s.progress())).toEqual([
-        expect.objectContaining({ level: "primary3", points: 54, stars: 0 }),
-      ]);
-      expect(
-        await database.sql`select question_id from app.learning_rewards where user_id=${user}`,
-      ).toHaveLength(54);
-    });
+          await database.sql`select question_id from app.learning_rewards where user_id=${user}`,
+        ).toHaveLength(54);
+      },
+    );
   },
 );

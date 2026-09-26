@@ -1,0 +1,221 @@
+{
+  "unitId": "marcus.primary4.park-sketches",
+  "contentHash": "5af34abb3a5d6a205f9d3f820429e99a1b8f665014f0341814857e6e0b2c6100",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "摄影师尝试速写是 Marcus 观察街头细节的延伸；题目描述自己的可见物和能力，不重演教材对话。",
+  "levelFit": "练 can see、Can you draw…?、主语 you/I 对应与 can 否定；提供所有物品条件，无图片依赖。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "ask-visible",
+      "standaloneContext": "本题独立给定的作答条件：你想问同伴“你能看到什么？”哪个问句准确表达这个意思？",
+      "ambiguityReview": "题目问可见内容，不要求推断同伴所在地或曾看过的剧情图片。",
+      "optionNotes": {
+        "a": "询问能看见哪些事物，符合给定目的。",
+        "b": "询问能画什么，把观察改成了绘画能力。",
+        "c": "询问能否看见说话者，不能替代开放的看见什么。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "see-two-boats",
+      "standaloneContext": "本题独立给定的作答条件：本题已知湖上有两条船，你能看见它们。请说：“我能看见两条船。”",
+      "ambiguityReview": "数量和可见性均明示；无需数不存在的图片，也不考不规则复数。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "draw-question",
+      "standaloneContext": "本题独立给定的作答条件：补全“你会画一朵花吗？”：Can you ___ a flower?\n只填 draw 的正确形式。",
+      "ambiguityReview": "给出动词词根，只考能力问句结构；不是自由填 paint 等近义动词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "draw"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "DRAW"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "draws"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "park-nouns",
+      "standaloneContext": "本题独立给定的作答条件：为了描述公园里能看见的景物，把英语名称与中文配对。",
+      "ambiguityReview": "每个地物词有明确对应含义，不依赖地图或图片识别。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "can-draw-answer",
+      "standaloneContext": "本题独立给定的作答条件：朋友问“Can you draw a tree?”（你会画树吗？）。本题中你会画树，哪句是正确的肯定回答？",
+      "ambiguityReview": "能力事实明确，两个干扰项分别错用主语和否定已知能力。",
+      "optionNotes": {
+        "a": "把会画树的人说成对方，没有按问题回答自己的能力。",
+        "b": "否定自己会画树，与本题设定相反。",
+        "c": "从回答者自己的视角肯定能力，符合问题。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "cannot-see",
+      "standaloneContext": "本题独立给定的作答条件：补全“我看不见那只鸟”：I ___ see the bird.\n只填一个表示“不能”的词；可以用完整形式或缩写。",
+      "ambiguityReview": "接受 cannot、直撇号 can't 和弯撇号 can’t；题目明确一个词，不收两词 can not。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "cannot"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can't"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can’t"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "CANNOT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "id": "marcus.primary4.market-price-tags",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "街角小店的价签",
+  "summary": "看清标价，礼貌询问单件或多件物品的价格。",
+  "scene": "Marcus 逛到一家街角小店。店主正准备给橱窗拍照，他先帮忙摆正手写价签，让路过的人能看清价格。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.prices", "p4.permission"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 6 Shopping",
+      "pages": "印刷第58、61页；PDF第63、66页",
+      "alignment": "参考试穿、大小和价格问答；不用计算或消费常识决定正误。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "These little signs tell part of the shop’s story.",
+      "translation": "这些小小的价签，也在讲这家店的故事。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Let us make each sign easy to read.",
+      "translation": "我们让每张价签都清清楚楚。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "One photo, and the window is ready.",
+      "translation": "再拍一张照片，橱窗就准备好了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "price-hat",
+      "goalId": "p4.prices",
+      "prompt": "你想问“一顶帽子多少钱”。hat 表示帽子。哪句正确？",
+      "hint": "问价钱与问数量不同；一顶帽子是单数。",
+      "explanation": "How much is this hat? 询问这顶帽子的价格；How many 问数量，is 对应单数 hat。",
+      "difficultyReason": "价格问句同时要求 much 与单数 is，不额外计算商品价格。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "How many is this hat?"
+        },
+        {
+          "id": "b",
+          "text": "How much is this hat?"
+        },
+        {
+          "id": "c",
+          "text": "How much are this hat?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "twenty-yuan",
+      "goalId": "p4.prices",
+      "prompt": "一顶帽子的价签写着 20 元。请说：“它二十元。”",
+      "hint": "报出一件物品的价格，先确定相应的代词和动词。",
+      "explanation": "It is twenty yuan. 表示它的价格是二十元；yuan 在此不加 s。",
+      "difficultyReason": "直接把给定二十元价签说成完整句，词块提供 yuan 的拼写。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "twenty"
+        },
+        {
+          "id": "t4",
+          "text": "yuan."
+        },
+        {
+          "id": "t1",
+          "text": "It"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "shoes-price",
+      "goalId": "p4.prices",
+      "prompt": "补全“这些鞋多少钱？”：How much ___ these shoes?\n只填 be 动词的正确形式。",
+      "hint": "先判断 these shoes 是单数还是复数。",
+      "explanation": "these shoes 是复数，因此问 How much are these shoes?。",
+      "difficultyReason": "复数商品问价中使用 are，与单件物品的问句形成对照。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["are"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "price-labels",
+      "goalId": "p4.prices",
+      "prompt": "把小店价签上的英文数额与人民币数额配对。",
+      "hint": "只核对写出的数额，不需要计算折扣或找零。",
+      "explanation": "ten yuan 是 10 元；thirty yuan 是 30 元；forty yuan 是 40 元。",
+      "difficultyReason": "巩固购物需要的常见整十数额，只做词义配对而非算术。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "ten yuan"
+        },
+        {
+          "id": "l2",
+          "text": "thirty yuan"
+        },
+        {
+          "id": "l3",
+          "text": "forty yuan"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "30 元"
+        },
+        {
+          "id": "r3",
+          "text": "40 元"
+        },
+        {
+          "id": "r1",
+          "text": "10 元"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "pair-price",
+      "goalId": "p4.prices",
+      "prompt": "朋友问“How much are these gloves?”。本题中这副手套的标价是 30 元。gloves 表示手套。请选择完整回答。",
+      "hint": "价格要与标价一致，主语也要与复数 gloves 对应。",
+      "explanation": "They are thirty yuan. 中 They 对应 gloves，thirty 与题目给定的 30 相同。",
+      "difficultyReason": "从给定标价回答复数物品问价，区别 thirty/thirteen 并核对代词。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are thirty yuan."
+        },
+        {
+          "id": "b",
+          "text": "It is thirty yuan."
+        },
+        {
+          "id": "c",
+          "text": "They are thirteen yuan."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "try-hat",
+      "goalId": "p4.permission",
+      "prompt": "在购买前，你想问“我可以试戴这顶帽子吗？”以下哪句正确？",
+      "hint": "表示请求时，观察 can 后的动作形式。",
+      "explanation": "Can I try on this hat? 中 try 用原形；这里不在 can 后使用 trying 或 tries。",
+      "difficultyReason": "在明确试戴目的下区分 can 后的原形、分词和第三人称形式。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Can I trying on this hat?"
+        },
+        {
+          "id": "b",
+          "text": "Can I tries on this hat?"
+        },
+        {
+          "id": "c",
+          "text": "Can I try on this hat?"
+        }
+      ],
+      "answer": "c"
+    }
+  ]
+}

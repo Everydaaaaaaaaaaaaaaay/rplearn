@@ -1,0 +1,211 @@
+{
+  "unitId": "oliver.primary4.rainy-reading",
+  "contentHash": "52319d48fa0c43bfeb38ca3084c76bc7f12e8338f1309b9177581f3add84d9bf",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "围绕 Oliver 对书和读者的照料安排雨天室内阅读，许可请求有明确日常用途。",
+  "levelFit": "从天气词识别进入 weather 问句、be 结构与 can 请求；无天气预报将来时。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "weather-question",
+      "standaloneContext": "本题独立给定的作答条件：你想问朋友“你那里天气怎么样”，哪句合适？",
+      "ambiguityReview": "there 明确为对方所在地；三个候选问不同内容，没有需要剧情补充的信息。",
+      "optionNotes": {
+        "a": "问当地时间，不能直接得到天气状况。",
+        "b": "问对天气的喜好，不是问天气是什么样。",
+        "c": "询问那里天气状况，符合题目交际目的。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "cloudy-now",
+      "standaloneContext": "本题独立给定的作答条件：补全“现在是多云天气”：It ___ cloudy now.\n填写 be 动词的正确形式。",
+      "ambiguityReview": "指定 be 词形与现在天气，唯一使用 is；不用猜真实天气。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "IS"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "sit-request",
+      "standaloneContext": "本题独立给定的作答条件：你想坐在窗边，先询问：“我可以坐在这里吗？”",
+      "ambiguityReview": "中文限定第一人称请求，问号附在 here 上；不把 I can… 陈述句当成问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "permission-answer",
+      "standaloneContext": "本题独立给定的作答条件：朋友问你：“Can I open the window?”（我可以开窗吗？）你同意他开窗，应怎样回答？",
+      "ambiguityReview": "题干明确同意许可，排除不允许及错换主语的回答。",
+      "optionNotes": {
+        "a": "说明自己能做什么，没有正确回应对方请求。",
+        "b": "以 you 回应提出请求的人，明确表示允许。",
+        "c": "表示不允许，与题目规定的同意相反。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "weather-cards",
+      "standaloneContext": "本题独立给定的作答条件：给读书会的天气记录配中文标签。",
+      "ambiguityReview": "三项分别给词义，不要求它们在真实天气中互斥；每个词只有对应译义。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "not-cold",
+      "standaloneContext": "本题独立给定的作答条件：本题已知室内很暖和，并不冷。朋友问“Is it cold in here?”，哪个回答与事实相符？",
+      "ambiguityReview": "温度事实完全给定；No, I am not 主语改变，Yes 与给定事实矛盾。",
+      "optionNotes": {
+        "a": "否定室内冷这一判断，与本题条件相符。",
+        "b": "肯定室内冷，与已知暖和的条件相反。",
+        "c": "否定自己如何，不能对应天气环境主语 it。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

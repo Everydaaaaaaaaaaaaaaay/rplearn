@@ -1,0 +1,216 @@
+{
+  "id": "marcus.primary4.season-photos",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "照片里的四季",
+  "summary": "给四季照片写短标题，表达季节和简单活动。",
+  "scene": "Marcus 把四张不同季节拍的照片放在桌上。他想做一页小相册，记录人们在一年里做过的普通小事。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.seasons", "p4.weather"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "yilin.primary4.lower.2013",
+      "unit": "Unit 5 Seasons",
+      "pages": "印刷第32–33页；PDF第35–36页",
+      "alignment": "参考季节、温度形容词与季节活动短句；不要求某个地区特定季节必然对应特定气温。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "Four photos, four different days.",
+      "translation": "四张照片，四个不同的日子。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Small moments make a whole year.",
+      "translation": "小小的片刻，连成了一整年。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "There is room for your next photo too.",
+      "translation": "这里也留着位置，等你的下一张照片。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "season-names",
+      "goalId": "p4.seasons",
+      "prompt": "把相册目录中的三个季节名称与中文配对。",
+      "hint": "本题只看季节名称，不根据气温推断季节。",
+      "explanation": "spring 是春季；summer 是夏季；winter 是冬季。",
+      "difficultyReason": "复现季节基础名词，为季节活动句提供词汇支架，不推测气候。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "spring"
+        },
+        {
+          "id": "l2",
+          "text": "summer"
+        },
+        {
+          "id": "l3",
+          "text": "winter"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "夏季"
+        },
+        {
+          "id": "r3",
+          "text": "冬季"
+        },
+        {
+          "id": "r1",
+          "text": "春季"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "autumn-word",
+      "goalId": "p4.seasons",
+      "prompt": "补全“这是一张秋天的照片”：This is a photo of ___.\n只填“秋天”的一个英文单词；英式或美式常用说法均可。",
+      "hint": "同一个季节在不同英语地区可能有不同常用名称。",
+      "explanation": "autumn 和 fall 都可表示秋天，因此两种写法都接受。",
+      "difficultyReason": "输出一个常见季节词，同时接收英美两种正确名称。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["autumn", "fall"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "winter-caption",
+      "goalId": "p4.seasons",
+      "prompt": "本题照片标注的是“在冬季”。哪一个英文短语可以作这个标题？",
+      "hint": "表示某个季节时，留意季节名前的介词。",
+      "explanation": "in winter 表示在冬季；不用 at winter 或 on winter 表达这个一般时段。",
+      "difficultyReason": "比较一般季节时段的介词，题目没有具体日期或复杂修饰语。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "at winter"
+        },
+        {
+          "id": "b",
+          "text": "on winter"
+        },
+        {
+          "id": "c",
+          "text": "in winter"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "summer-swim",
+      "goalId": "p4.seasons",
+      "prompt": "为活动照配句：“我们夏天游泳。”以 We 开头。",
+      "hint": "先说我们做什么，再补说明发生的季节。",
+      "explanation": "We swim in summer. 用 in summer 表示活动发生的季节。",
+      "difficultyReason": "把季节与 we 的一般现在时活动相连，不涉及第三人称变形。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "in"
+        },
+        {
+          "id": "t4",
+          "text": "summer."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "swim"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "cold-caption",
+      "goalId": "p4.weather",
+      "prompt": "本题中的那一天很冷。你想用形容词说明“那天很冷”，哪个词符合这个已知条件？",
+      "hint": "只根据题目给出的冷暖选择，不看月份或城市。",
+      "explanation": "cold 表示冷的；cool 是凉爽的；hot 是热的。",
+      "difficultyReason": "区别三个温度形容词的语义，题目直接给出冷暖事实。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "hot"
+        },
+        {
+          "id": "b",
+          "text": "cold"
+        },
+        {
+          "id": "c",
+          "text": "cool"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "we-fly",
+      "goalId": "p4.seasons",
+      "prompt": "补全“我们春天放风筝”：We ___ kites in spring.\n只填 fly 的正确形式；fly kites 表示放风筝。",
+      "hint": "一般现在时中，主语 we 后的动词应使用哪种形式？",
+      "explanation": "We 后使用动词原形 fly：We fly kites in spring.；flies 用于第三人称单数。",
+      "difficultyReason": "在给定 fly kites 短语中选主语 we 所需词形，不考生活经验。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["fly"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.primary4.lost-clothes",
+  "contentHash": "fbdd6df2cc2e7b8d6c6d223e446c55513cf66a384ccc64117f40612de3c24199",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "书店散场后的失物整理是 Oliver 细心待客的延续；人物归属在每题重新说明。",
+  "levelFit": "区分 whose、mine/yours、名词所有格，以及 this/these 对应的 be 形式。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "whose-coat",
+      "standaloneContext": "本题独立给定的作答条件：你捡到一件外套，想问“这是谁的外套？” coat 表示外套。请选择正确问句。",
+      "ambiguityReview": "单件 coat 与 this 明确；其余选项保留常见 who/what 混淆而非依赖颜色记忆。",
+      "optionNotes": {
+        "a": "询问这个人是谁，没有询问外套归属。",
+        "b": "用 whose 询问这件外套的主人，满足目的。",
+        "c": "询问外套颜色，无法确定其所有者。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "mine-not-my",
+      "standaloneContext": "本题独立给定的作答条件：这顶帽子属于你。你向同伴说：“This hat is ___.”\n从 my 和 mine 中选一个填入，意思是“这顶帽子是我的”。",
+      "ambiguityReview": "指定说话者与两种候选，排除同义短语或其它拥有者；不存在根据剧情推断。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "mine"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "MINE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "my"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "these-yours",
+      "standaloneContext": "本题独立给定的作答条件：你拿着两件毛衣问同伴：“这些是你的吗？”",
+      "ambiguityReview": "两件毛衣明确复数；给定词块只组成直接的归属问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "basket-items",
+      "standaloneContext": "本题独立给定的作答条件：把失物篮里的衣物英文名称与中文意思配对。",
+      "ambiguityReview": "中文明确长短裤区别，避免把英美裤装泛称当作同一选项。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "ben-scarf",
+      "standaloneContext": "本题独立给定的作答条件：本题中一条围巾属于 Ben。scarf 表示围巾。哪一句正确表达“这是 Ben 的围巾”？",
+      "ambiguityReview": "没有其它 Ben 或复数所有者；三项只比较姓名所有格及 is 的结构。",
+      "optionNotes": {
+        "a": "缺少所有格撇号，不能表达这里的所属关系。",
+        "b": "人名后缺少所有格标记，不能构成题目要求的表达。",
+        "c": "Ben’s 明确表示 Ben 的，整句结构正确。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "these-are",
+      "standaloneContext": "本题独立给定的作答条件：补全“这些是我的鞋”：These ___ my shoes.\n填入 be 动词的正确形式。",
+      "ambiguityReview": "题干明确 be 词形；不将 shoes 的颜色、数量或所有者藏在剧情里。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "ARE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

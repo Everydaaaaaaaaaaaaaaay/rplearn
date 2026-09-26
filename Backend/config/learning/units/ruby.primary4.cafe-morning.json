@@ -1,0 +1,226 @@
+{
+  "id": "ruby.primary4.cafe-morning",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "咖啡馆的早班",
+  "summary": "询问日常安排，说清吃饭和出发的时间。",
+  "scene": "Ruby 到海边咖啡馆帮早班。她把小本子放在收银台旁，想和新来的伙伴安排好忙碌前的一顿早餐。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.routines", "p4.clock"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 2 What time is it?",
+      "pages": "印刷第17页；PDF第22页",
+      "alignment": "参考询问钟点及 time to + 动作、time for + 名词的表达，用书店活动另写任务。"
+    },
+    {
+      "sourceId": "yilin.primary4.lower.2013",
+      "unit": "Unit 3 My day",
+      "pages": "印刷第18–19页；PDF第21–22页",
+      "alignment": "参考日常活动、具体钟点及 When do you…? 问答；不复制教材人物或对话。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "The shop is quiet now. We have a little time.",
+      "translation": "店里现在很安静。我们还有一点时间。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A good morning starts with a small plan.",
+      "translation": "一个小计划，就能让早晨顺顺当当。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Ready for the first visitors!",
+      "translation": "准备迎接第一批客人！"
+    }
+  ],
+  "questions": [
+    {
+      "id": "ask-breakfast",
+      "goalId": "p4.routines",
+      "prompt": "你想问新同伴“你什么时候吃早饭？”哪句合适？",
+      "hint": "寻找同时包含“什么时候”和“吃早饭”的问句。",
+      "explanation": "When do you have breakfast? 询问对方吃早饭的时间；where 问地点，what 问吃什么。",
+      "difficultyReason": "在相同早餐主题下辨别 when/where/what 所问内容，超过单词直译。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Where do you have breakfast?"
+        },
+        {
+          "id": "b",
+          "text": "What do you have for breakfast?"
+        },
+        {
+          "id": "c",
+          "text": "When do you have breakfast?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "breakfast-seven",
+      "goalId": "p4.routines",
+      "prompt": "向伙伴说明：“我七点吃早饭。”以 I 开头。",
+      "hint": "先说自己的活动，再补具体钟点。",
+      "explanation": "I have breakfast at seven. 以 have breakfast 表示吃早饭，具体钟点前用 at。",
+      "difficultyReason": "把日常活动与具体钟点组合成短句，显式限制句首以避免多序歧义。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "breakfast"
+        },
+        {
+          "id": "t4",
+          "text": "at"
+        },
+        {
+          "id": "t5",
+          "text": "seven."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "have"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "morning-preposition",
+      "goalId": "p4.routines",
+      "prompt": "补全“我早上工作”：I work ___ the morning.\n填入合适的介词；work 表示工作。",
+      "hint": "一天中的时段与精确钟点使用的介词可能不同。",
+      "explanation": "in the morning 表示在早上；at 通常用于 at seven 这样的具体钟点。",
+      "difficultyReason": "辨别一天时段与精确钟点的介词搭配，只补一个词。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["in"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "daily-plan",
+      "goalId": "p4.routines",
+      "prompt": "把 Ruby 工作本中的三个日常短语与中文配对。",
+      "hint": "区分一天开始、上学与晚饭三个不同活动。",
+      "explanation": "get up 是起床；go to school 是去上学；have dinner 是吃晚饭。",
+      "difficultyReason": "复现起床、上学和晚饭的日常活动短语，为完整日程表达打底。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "get up"
+        },
+        {
+          "id": "l2",
+          "text": "go to school"
+        },
+        {
+          "id": "l3",
+          "text": "have dinner"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "去上学"
+        },
+        {
+          "id": "r3",
+          "text": "吃晚饭"
+        },
+        {
+          "id": "r1",
+          "text": "起床"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "when-answer",
+      "goalId": "p4.clock",
+      "prompt": "同伴问“When do you go home?”。本题已知你四点回家。哪句回答正确？",
+      "hint": "问题要求一个活动发生的时间，先核对钟点，再核对介词。",
+      "explanation": "I go home at four. 用 at 加具体钟点，完整回答四点回家。",
+      "difficultyReason": "根据已给回家时间选择完整答案，同时核对介词和数字词。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I go home at four."
+        },
+        {
+          "id": "b",
+          "text": "I go home in four."
+        },
+        {
+          "id": "c",
+          "text": "I go home at five."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "do-you-start",
+      "goalId": "p4.routines",
+      "prompt": "补全“你什么时候开始？”：When ___ you start?\n从 do 和 does 中选一个填入；start 表示开始。",
+      "hint": "先查看主语 you 与哪个助动词搭配。",
+      "explanation": "一般现在时中主语 you 用 do：When do you start?；does 常与 he/she/it 搭配。",
+      "difficultyReason": "在已读 When do you…? 结构中选择助动词，不考其它时态。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["do"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

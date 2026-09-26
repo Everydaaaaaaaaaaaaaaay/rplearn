@@ -1,0 +1,211 @@
+{
+  "unitId": "ruby.primary4.indoor-volunteers",
+  "contentHash": "2064db5a86aa2497b3b2924d6b6fc9df23dc6304716f5bce5ed3f4006a573fb9",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Ruby 的海边志愿活动转入室内，借分工练习能力和许可；不靠天气灾害知识判断安全。",
+  "levelFit": "明确区分 Can I 的许可与 Can you 的能力询问，练 can 后原形及否定短答。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "go-inside",
+      "standaloneContext": "本题独立给定的作答条件：你想问负责人“我可以进屋吗？”哪个表达是在请求允许自己进去？",
+      "ambiguityReview": "中文明确说话者自己请求许可；不以角色身份默认谁能批准。",
+      "optionNotes": {
+        "a": "询问对方能否进屋，不是请求允许自己进去。",
+        "b": "以 I 作为行动者，请求允许自己进屋。",
+        "c": "陈述自己能够进去，没有提出许可请求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "carry-box",
+      "standaloneContext": "本题独立给定的作答条件：你告诉伙伴“我能搬这个盒子”。carry 表示搬、拿。",
+      "ambiguityReview": "中文限定肯定能力陈述；this box 是单数对象，不需记住剧情盒子。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "can-draw",
+      "standaloneContext": "本题独立给定的作答条件：补全“我能画一棵树”：I can ___ a tree.\n只填 draw 的正确形式。",
+      "ambiguityReview": "给定词根 draw 和 can 句架，只测原形而非自由选择活动动词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "draw"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "DRAW"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "drawing"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "no-swimming",
+      "standaloneContext": "本题独立给定的作答条件：有人问“Can you swim?”（你会游泳吗？）。本题中你不会游泳，哪句回答合适？",
+      "ambiguityReview": "能力事实写在本题中；不是询问用户真实游泳能力，也不考海边安全规则。",
+      "optionNotes": {
+        "a": "否定自己会游泳，与题目条件相符。",
+        "b": "表示自己会游泳，与不会的条件矛盾。",
+        "c": "do not 回答一般现在时 do 问句，未正确回应 can。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "help-signs",
+      "standaloneContext": "本题独立给定的作答条件：将室内分工卡上的能力表达与中文配对；draw 表示画。",
+      "ambiguityReview": "三项采用不同动作对象和句式，每项中文完整保留主语、能力及肯否。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "rain-report",
+      "standaloneContext": "本题独立给定的作答条件：你向室内伙伴说明“外面正在下雨”。以下哪句语法正确、意思也正确？",
+      "ambiguityReview": "所有候选共享 rainy，避免仅凭雨天词汇匹配；考察天气句的完整形式。",
+      "optionNotes": {
+        "a": "I 指说话人，不能在这里充当天气主语。",
+        "b": "单数 It 不与 are 搭配，动词形式错误。",
+        "c": "It is rainy 正确描述下雨天气，outside 指外面。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

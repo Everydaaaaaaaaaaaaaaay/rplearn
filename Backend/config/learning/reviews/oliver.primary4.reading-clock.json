@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.primary4.reading-clock",
+  "contentHash": "fb7e51d48d42a241181ae344123ef074b38cd2b6fb3fa71c0961d9788c2e7aea",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "书店黑板与读书会的时间安排符合 Oliver 的书店工作；练习关注清楚、体贴的活动说明。",
+  "levelFit": "在基础数字上增加完整钟点问答、具体时间介词及 time to/for 的结构区别。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "ask-clock",
+      "standaloneContext": "本题独立给定的作答条件：你不知道现在几点，想向书店同伴询问当前时间。应该说哪一句？",
+      "ambiguityReview": "题目限定当前钟点；活动时间和年龄即使都可用数字回答，也不满足此目的。",
+      "optionNotes": {
+        "a": "询问读书发生的时间，不是当前钟点。",
+        "b": "直接询问现在的时间，满足本题目的。",
+        "c": "询问年龄，与当前钟点无关。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "four-thirty",
+      "standaloneContext": "本题独立给定的作答条件：电子钟显示 4:30。请说：“现在四点半了。”",
+      "ambiguityReview": "完整中文与数字时间均给出；不用辨认钟面，也不考时间换算。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "at-two",
+      "standaloneContext": "本题独立给定的作答条件：补全“我两点读书”：I read ___ two.\n填写表示具体钟点的介词。",
+      "ambiguityReview": "限定介词和具体钟点，at 唯一；about 等表示大约的词不符合指定意思。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "at"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "AT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "in"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "time-to-read",
+      "standaloneContext": "本题独立给定的作答条件：黑板要写“该读书了”。哪一句语法正确且意思相符？",
+      "ambiguityReview": "三项同一含义方向，检验 time to 后接原形；不以不相干语义充当全部干扰。",
+      "optionNotes": {
+        "a": "for 后不能直接接这里的动词原形 read。",
+        "b": "to 后应接动词原形，不能在本句用 reading。",
+        "c": "time to 后接 read，结构与中文意思均正确。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "break-labels",
+      "standaloneContext": "本题独立给定的作答条件：将读书会休息卡上的三个动作短语与中文配对。",
+      "ambiguityReview": "三个动作含义互不覆盖，不按某个角色的实际日程猜测。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "time-for-lunch",
+      "standaloneContext": "本题独立给定的作答条件：补全“该吃午饭了”：It is time ___ lunch.\n只填 to 或 for 中合适的一个。",
+      "ambiguityReview": "仅比较已给定的 to/for；与前题动作 read 形成独立结构迁移。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "for"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "FOR"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "to"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

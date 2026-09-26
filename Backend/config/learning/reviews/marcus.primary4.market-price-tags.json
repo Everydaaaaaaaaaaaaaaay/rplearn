@@ -1,0 +1,211 @@
+{
+  "unitId": "marcus.primary4.market-price-tags",
+  "contentHash": "e2c30f121c02424e7a4c2ba7565378bc270e49d9a88aa0e93c329321609bf9f0",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "街头摄影中的小店橱窗符合 Marcus 的观察兴趣；任务为真实价格沟通，不考购物算术。",
+  "levelFit": "使用 How much、is/are 与价格短答；数值给定，无货币兑换或总价计算。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "price-hat",
+      "standaloneContext": "本题独立给定的作答条件：你想问“一顶帽子多少钱”。hat 表示帽子。哪句正确？",
+      "ambiguityReview": "三项分别检查 much/many 和 is/are，无需知道帽子的真实价格。",
+      "optionNotes": {
+        "a": "How many 询问数量，不适用于本题价格问题。",
+        "b": "How much 询价，is 与单数 this hat 一致。",
+        "c": "this hat 为单数，不应搭配 are。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "twenty-yuan",
+      "standaloneContext": "本题独立给定的作答条件：一顶帽子的价签写着 20 元。请说：“它二十元。”",
+      "ambiguityReview": "明确单件商品与给定数值，只输出价签内容，不做加法或换算。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "shoes-price",
+      "standaloneContext": "本题独立给定的作答条件：补全“这些鞋多少钱？”：How much ___ these shoes?\n只填 be 动词的正确形式。",
+      "ambiguityReview": "给定名词组的复数与问价句架，不接受单数 is。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "ARE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "price-labels",
+      "standaloneContext": "本题独立给定的作答条件：把小店价签上的英文数额与人民币数额配对。",
+      "ambiguityReview": "三个不同整十数一一对应；无汇率和加总要求。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "pair-price",
+      "standaloneContext": "本题独立给定的作答条件：朋友问“How much are these gloves?”。本题中这副手套的标价是 30 元。gloves 表示手套。请选择完整回答。",
+      "ambiguityReview": "明确是一副手套的总标价，避免按单只或另一货币计算；另两项分别考数一致和数值。",
+      "optionNotes": {
+        "a": "They 对应复数手套，三十元与标价相符。",
+        "b": "It 是单数，不与问句中 these gloves 的复数指代一致。",
+        "c": "thirteen 是十三，不是标价三十。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "try-hat",
+      "standaloneContext": "本题独立给定的作答条件：在购买前，你想问“我可以试戴这顶帽子吗？”以下哪句正确？",
+      "ambiguityReview": "三个选项都涉及同一试戴请求，考 can 后的动词原形而非仅识别主题词。",
+      "optionNotes": {
+        "a": "can 后不能在此直接接 trying 形式。",
+        "b": "can 后接原形，不能使用第三人称单数 tries。",
+        "c": "try 为动词原形，完整表达试戴请求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

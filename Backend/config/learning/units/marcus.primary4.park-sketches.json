@@ -1,0 +1,220 @@
+{
+  "id": "marcus.primary4.park-sketches",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "相机旁的小速写",
+  "summary": "描述眼前能看见的物品，并交流能画什么。",
+  "scene": "Marcus 带着相机经过公园，发现速写本里还空着一页。他决定先放下相机，用几笔线条留下今天的一角。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.ability"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "yilin.primary4.lower.2013",
+      "unit": "Unit 4 Drawing in the park",
+      "pages": "印刷第24–25页；PDF第27–28页",
+      "alignment": "参考可见事物、Can you…? 与 can/cannot 的能力表达；题内明示事实，不把缺失图片作为线索。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "My camera can wait. Here is a clean page.",
+      "translation": "相机可以等一等。这里还有一张空白纸。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "A small drawing can hold a happy moment.",
+      "translation": "小小一幅画，也能留住开心的一刻。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "This page belongs to today.",
+      "translation": "这一页，就留给今天了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "ask-visible",
+      "goalId": "p4.ability",
+      "prompt": "你想问同伴“你能看到什么？”哪个问句准确表达这个意思？",
+      "hint": "区分“看见什么”和“能不能画某个东西”。",
+      "explanation": "What can you see? 询问对方能看见的事物；Can you draw…? 问绘画能力。",
+      "difficultyReason": "区别看见什么、能画什么与能否看见某人三个相近问法。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "What can you see?"
+        },
+        {
+          "id": "b",
+          "text": "What can you draw?"
+        },
+        {
+          "id": "c",
+          "text": "Can you see me?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "see-two-boats",
+      "goalId": "p4.ability",
+      "prompt": "本题已知湖上有两条船，你能看见它们。请说：“我能看见两条船。”",
+      "hint": "先说观察者，再说能看见的数量和物品。",
+      "explanation": "I can see two boats. 的 two boats 使用名词复数，can 后用 see 原形。",
+      "difficultyReason": "可见事实与数量明示，只组织 can see 加复数名词短语。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "see"
+        },
+        {
+          "id": "t4",
+          "text": "two"
+        },
+        {
+          "id": "t5",
+          "text": "boats."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "can"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "draw-question",
+      "goalId": "p4.ability",
+      "prompt": "补全“你会画一朵花吗？”：Can you ___ a flower?\n只填 draw 的正确形式。",
+      "hint": "能力问句中，can 后的动作仍使用什么形式？",
+      "explanation": "Can you draw a flower? 中 draw 为原形；主语 you 和问句形式都不会把它改成 draws。",
+      "difficultyReason": "能力疑问句仍使用动词原形，区别 draw/draws 而不考自由选词。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["draw"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "park-nouns",
+      "goalId": "p4.ability",
+      "prompt": "为了描述公园里能看见的景物，把英语名称与中文配对。",
+      "hint": "区分地形与两种不同的水域。",
+      "explanation": "hill 是小山；lake 是湖；river 是河流。",
+      "difficultyReason": "复现公园单元地物名称，为 can see 的宾语表达提供基础。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "hill"
+        },
+        {
+          "id": "l2",
+          "text": "lake"
+        },
+        {
+          "id": "l3",
+          "text": "river"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "湖"
+        },
+        {
+          "id": "r3",
+          "text": "河流"
+        },
+        {
+          "id": "r1",
+          "text": "小山"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "can-draw-answer",
+      "goalId": "p4.ability",
+      "prompt": "朋友问“Can you draw a tree?”（你会画树吗？）。本题中你会画树，哪句是正确的肯定回答？",
+      "hint": "问题中的 you 指向回答者，回答时要切换到自己的视角。",
+      "explanation": "Yes, I can. 用 I 从回答者视角回应能力；Yes, you can. 会把能力说成对方的。",
+      "difficultyReason": "由问句 you 转为回答者 I，并按给定能力选择肯定短答。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, you can."
+        },
+        {
+          "id": "b",
+          "text": "No, I cannot."
+        },
+        {
+          "id": "c",
+          "text": "Yes, I can."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cannot-see",
+      "goalId": "p4.ability",
+      "prompt": "补全“我看不见那只鸟”：I ___ see the bird.\n只填一个表示“不能”的词；可以用完整形式或缩写。",
+      "hint": "否定要与 see 前表示能力的结构搭配。",
+      "explanation": "cannot 与 can’t 都表示不能；完整形式 cannot 连写，缩写中的撇号要保留。",
+      "difficultyReason": "产出 can 的否定形式，显式接收完整写法与两种撇号缩写。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["cannot", "can't", "can’t"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

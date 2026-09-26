@@ -1,0 +1,236 @@
+{
+  "id": "ruby.primary4.indoor-volunteers",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "海边活动换到室内",
+  "summary": "根据明确的天气条件，询问许可并表达自己能做什么。",
+  "scene": "海风吹得纸牌四处跑。Ruby 抱住材料盒，提议先去旁边的小屋准备，再和志愿者分配简单任务。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.permission", "p4.ability", "p4.weather"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 3 Weather",
+      "pages": "印刷第24、27页；PDF第29、32页",
+      "alignment": "参考天气问答及 Can I…? 许可请求。题内直接提供天气事实，不要求查看图片或记忆剧情。"
+    },
+    {
+      "sourceId": "yilin.primary4.lower.2013",
+      "unit": "Unit 4 Drawing in the park",
+      "pages": "印刷第24–25页；PDF第27–28页",
+      "alignment": "参考可见事物、Can you…? 与 can/cannot 的能力表达；题内明示事实，不把缺失图片作为线索。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Hold the box, please! The little room is open.",
+      "translation": "请扶住盒子！旁边的小屋开着门。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Everyone can help in a different way.",
+      "translation": "每个人都能用不同的方法帮忙。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Our cards are safe. Thank you for your help.",
+      "translation": "纸牌都安稳放好了。谢谢你的帮忙。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "go-inside",
+      "goalId": "p4.permission",
+      "prompt": "你想问负责人“我可以进屋吗？”哪个表达是在请求允许自己进去？",
+      "hint": "关注问句是在问自己的许可，还是在问别人的能力。",
+      "explanation": "Can I go inside? 请求允许自己进屋；Can you…? 的主语是对方。",
+      "difficultyReason": "区分 Can I 许可请求、Can you 询问与肯定陈述的不同用途。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Can you go inside?"
+        },
+        {
+          "id": "b",
+          "text": "Can I go inside?"
+        },
+        {
+          "id": "c",
+          "text": "I can go inside."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "carry-box",
+      "goalId": "p4.ability",
+      "prompt": "你告诉伙伴“我能搬这个盒子”。carry 表示搬、拿。",
+      "hint": "表达能力时，先说谁，再接“能”和动作。",
+      "explanation": "I can carry this box. 中 can 后用动词原形 carry。",
+      "difficultyReason": "组合 can 加动词原形的能力陈述，任务对象由中文完整给出。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "carry"
+        },
+        {
+          "id": "t4",
+          "text": "this"
+        },
+        {
+          "id": "t5",
+          "text": "box."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "can"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "can-draw",
+      "goalId": "p4.ability",
+      "prompt": "补全“我能画一棵树”：I can ___ a tree.\n只填 draw 的正确形式。",
+      "hint": "观察表示能力的词后面，动词是否需要改变形式。",
+      "explanation": "can 后接动词原形，因此用 draw，不用 draws 或 drawing。",
+      "difficultyReason": "在给定词根和 can 句架内选择原形，不以生词拼写提升难度。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["draw"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "no-swimming",
+      "goalId": "p4.ability",
+      "prompt": "有人问“Can you swim?”（你会游泳吗？）。本题中你不会游泳，哪句回答合适？",
+      "hint": "区分“不会做”和“现在不做”，并保持回答主语为自己。",
+      "explanation": "No, I cannot. 表示自己没有这项能力；No, I do not. 不能直接对应 can 问句。",
+      "difficultyReason": "用 can 的否定短答回应能力问句，能力事实预先写明。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, I cannot."
+        },
+        {
+          "id": "b",
+          "text": "Yes, I can."
+        },
+        {
+          "id": "c",
+          "text": "No, I do not."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "help-signs",
+      "goalId": "p4.ability",
+      "prompt": "将室内分工卡上的能力表达与中文配对；draw 表示画。",
+      "hint": "看清肯定与否定，再核对动作对象。",
+      "explanation": "I can draw a tree. 表示我会画树；I cannot draw a boat. 表示我不会画船；Can you draw a flower? 询问对方会不会画花。",
+      "difficultyReason": "配对完整能力短句，同时保持主语、动作对象和肯否对应。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I can draw a tree."
+        },
+        {
+          "id": "l2",
+          "text": "I cannot draw a boat."
+        },
+        {
+          "id": "l3",
+          "text": "Can you draw a flower?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我不会画一条船。"
+        },
+        {
+          "id": "r3",
+          "text": "你会画一朵花吗？"
+        },
+        {
+          "id": "r1",
+          "text": "我会画一棵树。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "rain-report",
+      "goalId": "p4.weather",
+      "prompt": "你向室内伙伴说明“外面正在下雨”。以下哪句语法正确、意思也正确？",
+      "hint": "描述天气时要留意主语及其后面的动词。",
+      "explanation": "It is rainy outside. 用 It is 加天气形容词 rainy；I 指人，It 也不能搭配 are。",
+      "difficultyReason": "三个候选共享天气形容词，只比较环境主语及 be 搭配。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I am rainy outside."
+        },
+        {
+          "id": "b",
+          "text": "It are rainy outside."
+        },
+        {
+          "id": "c",
+          "text": "It is rainy outside."
+        }
+      ],
+      "answer": "c"
+    }
+  ]
+}

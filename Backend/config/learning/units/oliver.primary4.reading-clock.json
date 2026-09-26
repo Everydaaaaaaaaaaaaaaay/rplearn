@@ -1,0 +1,222 @@
+{
+  "id": "oliver.primary4.reading-clock",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "书店午后时间表",
+  "summary": "看懂钟点，为读书会说清开始时间与下一项活动。",
+  "scene": "Oliver 在旧书店门边摆好一块小黑板，想让来读书的人知道什么时候集合、什么时候休息。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.clock", "p4.routines"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 2 What time is it?",
+      "pages": "印刷第17页；PDF第22页",
+      "alignment": "参考询问钟点及 time to + 动作、time for + 名词的表达，用书店活动另写任务。"
+    },
+    {
+      "sourceId": "yilin.primary4.lower.2013",
+      "unit": "Unit 3 My day",
+      "pages": "印刷第18–19页；PDF第21–22页",
+      "alignment": "参考日常活动、具体钟点及 When do you…? 问答；不复制教材人物或对话。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "The chairs are ready. Here is our little board.",
+      "translation": "椅子摆好了。这是我们的小黑板。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "A short break is good for every reader.",
+      "translation": "每位读者都需要短暂休息。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Now our visitors can plan their afternoon.",
+      "translation": "现在来访的朋友可以安排自己的下午了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "ask-clock",
+      "goalId": "p4.clock",
+      "prompt": "你不知道现在几点，想向书店同伴询问当前时间。应该说哪一句？",
+      "hint": "区分“现在几点”和“某项活动何时开始”。",
+      "explanation": "What time is it? 问现在几点；When do you read? 问读书时间，How old are you? 问年龄。",
+      "difficultyReason": "在已学数字基础上辨认当前钟点问句，区别活动时间和年龄。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "When do you read?"
+        },
+        {
+          "id": "b",
+          "text": "What time is it?"
+        },
+        {
+          "id": "c",
+          "text": "How old are you?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "four-thirty",
+      "goalId": "p4.clock",
+      "prompt": "电子钟显示 4:30。请说：“现在四点半了。”",
+      "hint": "报时通常先交代“现在是”，再说钟点。",
+      "explanation": "It is four thirty. 用 four thirty 表示四点三十分，即四点半。",
+      "difficultyReason": "数字时间直接给出，练习半点的 four thirty 表达与完整报时句。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "four"
+        },
+        {
+          "id": "t4",
+          "text": "thirty."
+        },
+        {
+          "id": "t1",
+          "text": "It"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "at-two",
+      "goalId": "p4.routines",
+      "prompt": "补全“我两点读书”：I read ___ two.\n填写表示具体钟点的介词。",
+      "hint": "先判断横线后面是一个钟点，还是一天中的某个时段。",
+      "explanation": "具体钟点前用 at：I read at two.；in 常用于 in the morning 这样的时段。",
+      "difficultyReason": "通过具体钟点选择介词，不增加陌生日程或第三人称变化。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["at"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "time-to-read",
+      "goalId": "p4.clock",
+      "prompt": "黑板要写“该读书了”。哪一句语法正确且意思相符？",
+      "hint": "注意横线后若是动作，句子如何连接。",
+      "explanation": "It is time to read. 中 read 是动词原形。time for 后可接名词，如 time for lunch。",
+      "difficultyReason": "比较名词和动作的连接方式，检验 time to 后接动词原形。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is time for read."
+        },
+        {
+          "id": "b",
+          "text": "It is time to reading."
+        },
+        {
+          "id": "c",
+          "text": "It is time to read."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "break-labels",
+      "goalId": "p4.routines",
+      "prompt": "将读书会休息卡上的三个动作短语与中文配对。",
+      "hint": "看清每个短语表示吃饭、回家还是睡觉。",
+      "explanation": "have lunch 是吃午饭；go home 是回家；go to bed 是上床睡觉。",
+      "difficultyReason": "复现本册日常活动短语，为后续时间问答提供词汇基础。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "have lunch"
+        },
+        {
+          "id": "l2",
+          "text": "go home"
+        },
+        {
+          "id": "l3",
+          "text": "go to bed"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "回家"
+        },
+        {
+          "id": "r3",
+          "text": "上床睡觉"
+        },
+        {
+          "id": "r1",
+          "text": "吃午饭"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "time-for-lunch",
+      "goalId": "p4.clock",
+      "prompt": "补全“该吃午饭了”：It is time ___ lunch.\n只填 to 或 for 中合适的一个。",
+      "hint": "观察 lunch 在这个句子中直接表示一顿饭。",
+      "explanation": "It is time for lunch. 中 lunch 是名词；若使用动作 eat，则可说 time to eat。",
+      "difficultyReason": "在午餐名词语境选择 time for，与动作语境形成对照。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["for"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

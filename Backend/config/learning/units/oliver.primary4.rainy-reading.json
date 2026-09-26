@@ -1,0 +1,226 @@
+{
+  "id": "oliver.primary4.rainy-reading",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary4",
+  "title": "雨天读书会",
+  "summary": "描述天气，并在书店里提出清楚的许可请求。",
+  "scene": "雨点敲着书店的玻璃。Oliver 把门边的书移到里面，为提前到来的读者留出一张干燥的小桌。",
+  "estimatedMinutes": 6,
+  "goalIds": ["p4.weather", "p4.permission"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary4.lower.2013",
+      "unit": "Unit 3 Weather",
+      "pages": "印刷第24、27页；PDF第29、32页",
+      "alignment": "参考天气问答及 Can I…? 许可请求。题内直接提供天气事实，不要求查看图片或记忆剧情。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Come in. Your books can stay dry here.",
+      "translation": "进来吧。你的书放在这里不会淋湿。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "There is a small table by the window.",
+      "translation": "窗边有一张小桌子。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Rain outside, stories inside. A good afternoon.",
+      "translation": "窗外是雨，屋里是故事。真是个不错的下午。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "weather-question",
+      "goalId": "p4.weather",
+      "prompt": "你想问朋友“你那里天气怎么样”，哪句合适？",
+      "hint": "要问天气状况，不是询问时间或个人喜好。",
+      "explanation": "What is the weather like there? 询问对方所在地的天气。",
+      "difficultyReason": "使用本册天气问句询问状况，区分天气、喜好和钟点三个意图。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "What time is it there?"
+        },
+        {
+          "id": "b",
+          "text": "Do you like the weather there?"
+        },
+        {
+          "id": "c",
+          "text": "What is the weather like there?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cloudy-now",
+      "goalId": "p4.weather",
+      "prompt": "补全“现在是多云天气”：It ___ cloudy now.\n填写 be 动词的正确形式。",
+      "hint": "观察主语是单数还是复数。",
+      "explanation": "主语 It 搭配 is：It is cloudy now.。cloudy 表示多云的。",
+      "difficultyReason": "中文直接给出天气词义，只检查 It 与 be 的形式一致。",
+      "type": "completion",
+      "instruction": "只填写横线处缺少的一个英文单词。",
+      "acceptedAnswers": ["is"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "sit-request",
+      "goalId": "p4.permission",
+      "prompt": "你想坐在窗边，先询问：“我可以坐在这里吗？”",
+      "hint": "请求允许时，把表示“可以”的词放到问句前面。",
+      "explanation": "Can I sit here? 是询问自己能否坐在这里的许可请求。",
+      "difficultyReason": "由中文目的构建第一人称 can 许可问句，词块降低拼写负担。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "sit"
+        },
+        {
+          "id": "t4",
+          "text": "here?"
+        },
+        {
+          "id": "t1",
+          "text": "Can"
+        },
+        {
+          "id": "t2",
+          "text": "I"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "permission-answer",
+      "goalId": "p4.permission",
+      "prompt": "朋友问你：“Can I open the window?”（我可以开窗吗？）你同意他开窗，应怎样回答？",
+      "hint": "回答要对准提出请求的那个人。",
+      "explanation": "Yes, you can. 表示你允许对方做这件事；I can 说的是回答者自己。",
+      "difficultyReason": "许可答语需要由提问者 I 转为回答中的 you，考察实际交际视角。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, I can."
+        },
+        {
+          "id": "b",
+          "text": "Yes, you can."
+        },
+        {
+          "id": "c",
+          "text": "No, you cannot."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "weather-cards",
+      "goalId": "p4.weather",
+      "prompt": "给读书会的天气记录配中文标签。",
+      "hint": "区分降雨、天空有云与气温偏低。",
+      "explanation": "rainy 表示下雨的；cloudy 表示多云的；cool 表示凉爽的。",
+      "difficultyReason": "复现天气单元常见形容词，区分天空状况与温度的词义。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "rainy"
+        },
+        {
+          "id": "l2",
+          "text": "cloudy"
+        },
+        {
+          "id": "l3",
+          "text": "cool"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "多云的"
+        },
+        {
+          "id": "r3",
+          "text": "凉爽的"
+        },
+        {
+          "id": "r1",
+          "text": "下雨的"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "not-cold",
+      "goalId": "p4.weather",
+      "prompt": "本题已知室内很暖和，并不冷。朋友问“Is it cold in here?”，哪个回答与事实相符？",
+      "hint": "先看问句中的主语，再确认回答是肯定还是否定。",
+      "explanation": "No, it is not. 否定 Is it cold…?；题目已明确室内不冷。",
+      "difficultyReason": "已知温度支架下回答 Is it…?，同时核对肯否和主语。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, it is not."
+        },
+        {
+          "id": "b",
+          "text": "Yes, it is."
+        },
+        {
+          "id": "c",
+          "text": "No, I am not."
+        }
+      ],
+      "answer": "a"
+    }
+  ]
+}

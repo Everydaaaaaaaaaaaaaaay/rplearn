@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.primary4.cafe-morning",
+  "contentHash": "e29e00aa1a2d6b68f3adf7e47cba8fb7000ecbd3886a15d633c76c9c91085c93",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Ruby 的海边咖啡馆早班体现开朗、实际的合作；重点是个人规律与同伴询问，不重复书店活动黑板。",
+  "levelFit": "练习一般现在时 I/you 的日常问答、at 与 in；不引入第三人称单数变化。",
+  "limitations": "四年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "ask-breakfast",
+      "standaloneContext": "本题独立给定的作答条件：你想问新同伴“你什么时候吃早饭？”哪句合适？",
+      "ambiguityReview": "三个选项同为早餐主题，以时间、地点、食物区分意图。",
+      "optionNotes": {
+        "a": "问吃早餐的地点，不是时间。",
+        "b": "问早餐吃什么食物，没有问何时吃。",
+        "c": "用 when 询问早餐时间，符合任务。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "breakfast-seven",
+      "standaloneContext": "本题独立给定的作答条件：向伙伴说明：“我七点吃早饭。”以 I 开头。",
+      "ambiguityReview": "题干要求 I 开头，排除时间状语前置造成的另一合法语序；句末标点固定。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "morning-preposition",
+      "standaloneContext": "本题独立给定的作答条件：补全“我早上工作”：I work ___ the morning.\n填入合适的介词；work 表示工作。",
+      "ambiguityReview": "只要求表示时段的介词，中文没有“直到早晨”或“整个早晨”等其它关系。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "in"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "IN"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "at"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "daily-plan",
+      "standaloneContext": "本题独立给定的作答条件：把 Ruby 工作本中的三个日常短语与中文配对。",
+      "ambiguityReview": "不要求知道 Ruby 是否上学；本题只配短语词义，日常词表用于给伙伴示范。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "when-answer",
+      "standaloneContext": "本题独立给定的作答条件：同伴问“When do you go home?”。本题已知你四点回家。哪句回答正确？",
+      "ambiguityReview": "三句都围绕回家；两个干扰项分别为介词错用和活动时间不符。",
+      "optionNotes": {
+        "a": "回家活动与四点时间均符合，介词搭配正确。",
+        "b": "in four 缺少时间单位，也不是“四点”的表达。",
+        "c": "五点与题目给定的四点不同。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "do-you-start",
+      "standaloneContext": "本题独立给定的作答条件：补全“你什么时候开始？”：When ___ you start?\n从 do 和 does 中选一个填入；start 表示开始。",
+      "ambiguityReview": "限定一般现在时问句的两个候选；不接受表示过去或将来的助动词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "do"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "DO"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "does"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

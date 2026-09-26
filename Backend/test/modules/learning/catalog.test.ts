@@ -23,16 +23,18 @@ afterEach(async () => {
 });
 
 describe("原创课程发布门槛", () => {
-  it("真实题库包含三个角色各三个不同单元，全部逐题样例通过且结果可复现", async () => {
+  it("三、四年级各包含三个角色各三个不同单元，全部逐题样例通过且结果可复现", async () => {
     const catalog = await loadCuratedCatalog(catalogPath);
-    expect(catalog.units).toHaveLength(9);
+    expect(catalog.units).toHaveLength(18);
     expect(catalog.summary).toEqual(
-      ["oliver", "ruby", "marcus"].map((roleKey) => ({
-        roleKey,
-        level: "primary3",
-        units: 3,
-        questions: 18,
-      })),
+      ["primary3", "primary4"].flatMap((level) =>
+        ["oliver", "ruby", "marcus"].map((roleKey) => ({
+          roleKey,
+          level,
+          units: 3,
+          questions: 18,
+        })),
+      ),
     );
     expect((await loadCuratedCatalog(catalogPath)).hash).toBe(catalog.hash);
   });
@@ -71,8 +73,12 @@ describe("原创课程发布门槛", () => {
   it("来源失联于登记表时不能发布", async () => {
     const directory = await copyCatalog();
     const path = join(directory, "catalog.json");
-    const registry = JSON.parse(await readFile(path, "utf8")) as { sources: unknown[] };
-    registry.sources.pop();
+    const registry = JSON.parse(await readFile(path, "utf8")) as {
+      sources: { id: string }[];
+    };
+    registry.sources = registry.sources.filter(
+      (source) => source.id !== "jingtong.primary3.upper.2024",
+    );
     await writeFile(path, JSON.stringify(registry));
     await expect(loadCuratedCatalog(directory)).rejects.toThrow("未登记的教材来源");
   });
