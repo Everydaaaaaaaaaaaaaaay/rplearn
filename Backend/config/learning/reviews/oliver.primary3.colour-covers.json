@@ -1,0 +1,193 @@
+{
+  "unitId": "oliver.primary3.colour-covers",
+  "contentHash": "2588985b61c13d36a16eda676d22a3cdd5f078a5654c93399aaef5a0097b34f7",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "整理旧书与 Oliver 的工作相符；不用文学梗和莎士比亚台词增加三年级阅读负担。",
+  "levelFit": "以颜色词和 be 动词描述为主；文字中明确颜色，不把色觉辨认或未提供的图片当作语言测验。",
+  "limitations": "初批小学三年级文字练习；未验证真人教学效度，未覆盖听说。教材目录只作主题定位，不等同于相应单元全文核读。",
+  "questions": [
+    {
+      "questionId": "blue-cover",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "绿色不符合题目指定的蓝色。",
+        "b": "黑色不符合题目指定的蓝色。",
+        "c": "颜色和物品都与要求一致。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "red-book",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "给定词块限定不缩写，红色修饰书；其它排列不能完整表达中文。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "green-cover",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "中文已经给出颜色事实，不需要从剧情或图片判断；只接收目标词 green。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "green"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "blue"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "book-labels",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "三个基本颜色词意义明确；不依赖实际屏幕颜色，色觉差异不影响作答。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "colour-question",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "准确询问书的颜色，表达自然完整。",
+        "b": "询问姓名，与物品颜色无关。",
+        "c": "询问数量，改变了问题要获取的信息。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "two-colours",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "中文限定第二种颜色为白色，不要求回忆书店里某本书的外观。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "white"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "yellow"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

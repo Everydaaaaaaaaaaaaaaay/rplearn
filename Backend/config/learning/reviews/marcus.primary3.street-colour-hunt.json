@@ -1,0 +1,200 @@
+{
+  "unitId": "marcus.primary3.street-colour-hunt",
+  "contentHash": "8a64c58afdf8fb6f39d46724efc445e2afe51ad0d6817034051967a5258a7b27",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "以 Marcus 的街头摄影观察展开，不教授拍摄器材术语；最后形成看到物品并描述的微情景。",
+  "levelFit": "在已知颜色上加入简单问答和肯定短答；外延物品词显式释义，避免地理或摄影知识参与评分。",
+  "limitations": "初批小学三年级文字练习；未验证真人教学效度，未覆盖听说。教材目录只作主题定位，不等同于相应单元全文核读。",
+  "questions": [
+    {
+      "questionId": "what-colour",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "只说明它是袋子，没有回答颜色。",
+        "b": "准确回答它是黑色的，符合指定信息。",
+        "c": "说明说话者近况，与物品颜色无关。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "white-door",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "题目和提示提供 door 含义，目标是描述语序；不要求观察实际街景。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "blue-sky",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "sky 已释义；中文限定颜色，阴天、夜晚等常识不构成其它答案。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "blue"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "black"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "short-descriptions",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "三项同时区分颜色与物品；每个中文释义只有一个对应项，不依赖图片色值。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "red-question",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "肯定回答并保持 it，满足题目全部条件。",
+        "b": "是否定回答，与包是红色的事实矛盾。",
+        "c": "换成 I，不能回答关于包的这个问题。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "black-and-white",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "black and white 与 white and black 都可表达这两种颜色，两个词序均接受；词块去除固定末尾标点。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t5", "t4", "t3"]
+          },
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

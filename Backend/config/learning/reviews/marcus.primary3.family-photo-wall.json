@@ -1,0 +1,193 @@
+{
+  "unitId": "marcus.primary3.family-photo-wall",
+  "contentHash": "78dad54a2ca8c4f57fae6d9a902fbbcdb2de08bda468a011a2e6b18586550fc4",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Marcus 珍惜家人、以奶奶厨房为摄影起点；练习使用虚构指令，不要求用户披露个人家庭。",
+  "levelFit": "使用简单家庭称呼和 be 动词介绍，解释中英亲属词覆盖差异，避免文化性误判。",
+  "limitations": "初批小学三年级文字练习；未验证真人教学效度，未覆盖听说。教材目录只作主题定位，不等同于相应单元全文核读。",
+  "questions": [
+    {
+      "questionId": "family-words",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "明确 grandmother 覆盖父系和母系，不把外婆判错或要求从剧情识别。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "my-mother",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "亲属关系和所属都符合中文。",
+        "b": "father 是爸爸，亲属关系不符。",
+        "c": "your 指对方的，所有者不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "my-brother",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "中文有意使用兄弟而不限定哥哥或弟弟；给定词块形成完整陈述句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "sister-word",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "提示明确要求亲属词，接受 sister，不把 elder sister 等多词表达当本题目标。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "sister"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "brother"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "grandma-name",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "爸爸对应 father 或 dad，不是 Grandma。",
+        "b": "兄弟对应 brother，不是 Grandma。",
+        "c": "同时覆盖两种中文称谓，避免不准确的一对一翻译。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "she-is",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "题干直接给出性别和关系，不需要辨认照片；不给真实家庭情况设默认要求。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

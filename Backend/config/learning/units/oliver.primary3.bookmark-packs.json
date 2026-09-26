@@ -1,0 +1,222 @@
+{
+  "id": "oliver.primary3.bookmark-packs",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "书签装进小纸袋",
+  "summary": "为书店准备小礼袋，用英语表达数量和拥有的物品。",
+  "scene": "Oliver 想把书签送给来店里的小读者。桌上有小纸袋、铅笔和卡片，他邀请你一起准备。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.numbers", "p3.objects"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 6 Useful numbers",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Small bags. Big smiles. Ready?",
+      "translation": "小小的纸袋，大大的笑容。准备好了吗？"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "One bag for each new reader.",
+      "translation": "每位新读者都有一袋。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "All ready. The books have company now.",
+      "translation": "都准备好了。现在这些书有伴儿了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "six-cards",
+      "goalId": "p3.numbers",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "袋子里要放六张卡片。“六”应该用哪个词？",
+      "hint": "数字词要和题目给出的数量完全一致。",
+      "explanation": "six 表示六；three 表示三；nine 表示九。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "three"
+        },
+        {
+          "id": "b",
+          "text": "six"
+        },
+        {
+          "id": "c",
+          "text": "nine"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "three-pens",
+      "goalId": "p3.numbers",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "告诉同伴：“我有三支笔。”",
+      "hint": "先说谁拥有，再说数量和物品。",
+      "explanation": "I have three pens. 中 three 后的可数名词 pen 用复数 pens。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "three"
+        },
+        {
+          "id": "t4",
+          "text": "pens."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "have"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "number-labels",
+      "goalId": "p3.numbers",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "给纸袋贴数量标签，把英语数字与阿拉伯数字配对。",
+      "hint": "数字的写法不同，表示的数量不变。",
+      "explanation": "two 是 2，five 是 5，ten 是 10。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "two"
+        },
+        {
+          "id": "l2",
+          "text": "five"
+        },
+        {
+          "id": "l3",
+          "text": "ten"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "10"
+        },
+        {
+          "id": "r1",
+          "text": "2"
+        },
+        {
+          "id": "r2",
+          "text": "5"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "book-plural",
+      "goalId": "p3.objects",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“两本书”：two ___\n请把 book 改成正确形式。",
+      "hint": "数量超过一，看看 book 结尾需要什么。",
+      "explanation": "book 是可数名词，两本书说 two books，通常在词尾加 s。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["books"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "ask-quantity",
+      "goalId": "p3.numbers",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你想知道“有多少支笔”，哪一个简短问句合适？",
+      "hint": "数量问题要指向“多少”，并说明在数什么。",
+      "explanation": "How many pens? 是日常对话中询问笔的数量的简短问句。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "What colour?"
+        },
+        {
+          "id": "b",
+          "text": "How are you?"
+        },
+        {
+          "id": "c",
+          "text": "How many pens?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "one-bag",
+      "goalId": "p3.objects",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“一个袋子”：one ___\n只填 bag 的正确形式。",
+      "hint": "one 表示一个，名词用单数。",
+      "explanation": "one bag 表示一个袋子；one 后不用复数 bags。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["bag"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

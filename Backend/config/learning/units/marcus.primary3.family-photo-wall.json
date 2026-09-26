@@ -1,0 +1,236 @@
+{
+  "id": "marcus.primary3.family-photo-wall",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "奶奶厨房里的照片墙",
+  "summary": "陪 Marcus 整理家庭照片，练习家庭成员和人物介绍。",
+  "scene": "Marcus 从纸袋里取出几张家庭照片。奶奶的厨房里留了一小块墙面，他想把重要的人都放进去。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.family"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 2 Different families",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "These photos mean a lot to me.",
+      "translation": "这些照片对我很重要。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "A small wall. A big family.",
+      "translation": "小小一面墙，装着一个大家庭。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Now this wall feels like home.",
+      "translation": "现在，这面墙有家的感觉了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "family-words",
+      "goalId": "p3.family",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "把家庭成员称呼与中文意思配对。",
+      "hint": "英语称呼与中文亲属称谓不总是一一细分。",
+      "explanation": "mother 是母亲，father 是父亲；grandmother 可以指奶奶，也可以指外婆。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "mother"
+        },
+        {
+          "id": "l2",
+          "text": "father"
+        },
+        {
+          "id": "l3",
+          "text": "grandmother"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "奶奶或外婆"
+        },
+        {
+          "id": "r1",
+          "text": "妈妈"
+        },
+        {
+          "id": "r2",
+          "text": "爸爸"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "my-mother",
+      "goalId": "p3.family",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "介绍自己妈妈的照片：“这是我的妈妈。”选哪一句？",
+      "hint": "检查人物称呼和 my、your 的区别。",
+      "explanation": "This is my mother. 同时说明是妈妈，也是说话者自己的妈妈。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is my mother."
+        },
+        {
+          "id": "b",
+          "text": "This is my father."
+        },
+        {
+          "id": "c",
+          "text": "This is your mother."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "my-brother",
+      "goalId": "p3.family",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "指着你的兄弟，说：“他是我的兄弟。”",
+      "hint": "He 指男性；再接身份介绍。",
+      "explanation": "He is my brother. 中 brother 可指哥哥或弟弟，不区分年龄先后。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "my"
+        },
+        {
+          "id": "t4",
+          "text": "brother."
+        },
+        {
+          "id": "t1",
+          "text": "He"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "sister-word",
+      "goalId": "p3.family",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“她是我的姐姐。”\nShe is my ___.\n请填写表示“姐姐或妹妹”的一个词。",
+      "hint": "英文这个词不区分姐姐和妹妹。",
+      "explanation": "sister 可以指姐姐或妹妹；brother 可以指哥哥或弟弟。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["sister"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "grandma-name",
+      "goalId": "p3.family",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "“Grandma” 是对哪一类家人的常见亲昵称呼？",
+      "hint": "想想 grandmother 的日常简短说法。",
+      "explanation": "Grandma 是 grandmother 的亲昵称呼，可以用于奶奶或外婆。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "爸爸"
+        },
+        {
+          "id": "b",
+          "text": "哥哥或弟弟"
+        },
+        {
+          "id": "c",
+          "text": "奶奶或外婆"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "she-is",
+      "goalId": "p3.family",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "介绍照片里的女性：“她是我的妈妈。”",
+      "hint": "先放表示“她”的词。",
+      "explanation": "She is my mother. 中 She 与 is 搭配，my mother 表示我的妈妈。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "my"
+        },
+        {
+          "id": "t4",
+          "text": "mother."
+        },
+        {
+          "id": "t1",
+          "text": "She"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    }
+  ]
+}

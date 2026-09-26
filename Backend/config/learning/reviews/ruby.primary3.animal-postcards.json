@@ -1,0 +1,193 @@
+{
+  "unitId": "ruby.primary3.animal-postcards",
+  "contentHash": "ac36c1e30b0d6aee666af180d2083fc63d7cc0c1aa7c933d639912cd1261e682",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Ruby 从海洋志愿活动延伸到基础动物认知；不虚构专业救助操作，不把海洋生物术语压给初学者。",
+  "levelFit": "限常见动物名、This is 和 I like；鱼的类别含义在题干说明，不引入动物知识判断。",
+  "limitations": "初批小学三年级文字练习；未验证真人教学效度，未覆盖听说。教材目录只作主题定位，不等同于相应单元全文核读。",
+  "questions": [
+    {
+      "questionId": "animal-words",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "只识别基础动物词义，不需要动物学知识、图片猜测或阅读故事。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "dog-card",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "bird 是鸟，与指定动物不一致。",
+        "b": "cat 是猫，与指定动物不一致。",
+        "c": "dog 是狗，与指定动物一致。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "a-cat",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "题内直接给出动物与数量；只有此序列符合中文，a 不可遗漏。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "fish-word",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "中文明确是鱼，避免所有动物都能填入的开放空格；不涉及复数 fish。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "fish"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "bird"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "likes-birds",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "喜欢的对象与题目一致，like 正确表达喜好。",
+        "b": "表达喜欢猫，改变了题目指定的对象。",
+        "c": "把自己说成鸟，没有表达喜欢。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "like-fish",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "题目限定动物话题中的喜好，不引申为点餐；给定词块不能组成其它同义句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3"]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

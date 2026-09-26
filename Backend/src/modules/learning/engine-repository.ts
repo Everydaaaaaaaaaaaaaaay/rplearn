@@ -100,35 +100,54 @@ export class LearningEngineRepository {
   }
 
   async publish(value: unknown): Promise<void> {
-    const unit = unitSchema.parse(value);
-    const hash = contentHash(unit);
+    await this.publishBatch([value]);
+  }
+
+  /** 完整目录共用一次事务；后面的版本冲突不能留下发布了一半的题库。 */
+  async publishBatch(values: readonly unknown[]): Promise<void> {
+    const units = values
+      .map((value) => unitSchema.parse(value))
+      .sort((a, b) => a.id.localeCompare(b.id));
+    if (
+      units.length === 0 ||
+      new Set(units.map((unit) => unit.id)).size !== units.length
+    )
+      throw new Error("发布目录不能为空，也不能包含重复的单元标识。");
     await this.database.sql.begin(async (sql) => {
-      await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-unit:${unit.id}`}, 0))`;
-      const [identity] = await sql<
-        { role_key: string; level_key: string; current_version: number }[]
-      >`
+      for (const unit of units) await this.publishInTransaction(sql, unit);
+    });
+  }
+
+  private async publishInTransaction(
+    sql: TransactionSql,
+    unit: LearningUnit,
+  ): Promise<void> {
+    const hash = contentHash(unit);
+    await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-unit:${unit.id}`}, 0))`;
+    const [identity] = await sql<
+      { role_key: string; level_key: string; current_version: number }[]
+    >`
         select role_key, level_key, current_version from app.learning_units where id=${unit.id}`;
-      if (
-        identity &&
-        (identity.role_key !== unit.roleKey || identity.level_key !== unit.level)
-      )
-        reject("LEARNING_UNIT_IDENTITY_CONFLICT", "单元标识不能换成另一角色或水平。");
-      const [oldVersion] = await sql<
-        { content_hash: string }[]
-      >`select content_hash from app.learning_unit_versions where unit_id=${unit.id} and version=${unit.version}`;
-      if (oldVersion) {
-        if (oldVersion.content_hash !== hash)
-          reject("LEARNING_IMMUTABLE_CONTENT", "已发布版本不可改写，请创建新版本。");
-        return;
-      }
-      if (identity && unit.version <= identity.current_version)
-        reject("LEARNING_VERSION_ORDER", "新版本必须大于已发布版本。");
-      await sql`insert into app.learning_units(id, role_key, level_key, current_version, published)
+    if (
+      identity &&
+      (identity.role_key !== unit.roleKey || identity.level_key !== unit.level)
+    )
+      reject("LEARNING_UNIT_IDENTITY_CONFLICT", "单元标识不能换成另一角色或水平。");
+    const [oldVersion] = await sql<
+      { content_hash: string }[]
+    >`select content_hash from app.learning_unit_versions where unit_id=${unit.id} and version=${unit.version}`;
+    if (oldVersion) {
+      if (oldVersion.content_hash !== hash)
+        reject("LEARNING_IMMUTABLE_CONTENT", "已发布版本不可改写，请创建新版本。");
+      return;
+    }
+    if (identity && unit.version <= identity.current_version)
+      reject("LEARNING_VERSION_ORDER", "新版本必须大于已发布版本。");
+    await sql`insert into app.learning_units(id, role_key, level_key, current_version, published)
         values(${unit.id}, ${unit.roleKey}, ${unit.level}, ${unit.version}, true)
         on conflict(id) do update set current_version=excluded.current_version, published=true`;
-      await sql`insert into app.learning_unit_versions(unit_id, version, payload, content_hash)
+    await sql`insert into app.learning_unit_versions(unit_id, version, payload, content_hash)
         values(${unit.id}, ${unit.version}, ${JSON.stringify(unit)}::jsonb, ${hash})`;
-    });
   }
 }
 
@@ -193,20 +212,18 @@ export class LearningSession {
       where a.user_id=${this.userId} and a.character_id=${characterId}
         and (${cursor === undefined} or (a.started_at,a.id)<(${cursor?.startedAt ?? "9999-01-01T00:00:00Z"}::timestamptz,${cursor?.id ?? "ffffffff-ffff-ffff-ffff-ffffffffffff"}::uuid))
       order by a.started_at desc,a.id desc limit ${limit + 1}`;
-    const items = rows
-      .slice(0, limit)
-      .map((row) => ({
-        id: row.id,
-        title: row.title,
-        level: row.level_key,
-        startedAt: new Date(row.started_at).toISOString(),
-        firstCompletedAt:
-          row.first_completed_at === null
-            ? null
-            : new Date(row.first_completed_at).toISOString(),
-        correctCount: row.correct_count,
-        questionCount: row.question_count,
-      }));
+    const items = rows.slice(0, limit).map((row) => ({
+      id: row.id,
+      title: row.title,
+      level: row.level_key,
+      startedAt: new Date(row.started_at).toISOString(),
+      firstCompletedAt:
+        row.first_completed_at === null
+          ? null
+          : new Date(row.first_completed_at).toISOString(),
+      correctCount: row.correct_count,
+      questionCount: row.question_count,
+    }));
     const last = rows[limit - 1];
     return {
       items,

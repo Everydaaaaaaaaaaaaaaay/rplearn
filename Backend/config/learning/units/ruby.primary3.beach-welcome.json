@@ -1,0 +1,232 @@
+{
+  "id": "ruby.primary3.beach-welcome",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "海边集合的第一声问候",
+  "summary": "加入 Ruby 的海岸小队，练习问候、回应和道别。",
+  "scene": "海风吹起活动桌上的纸。Ruby 压住签到表，朝刚到的伙伴挥手，笑着让大家围过来。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.greetings", "p3.introductions"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 1 Making friends",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Hi! Come and join us!",
+      "translation": "嗨！快来加入我们！"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "New faces. Same blue sea.",
+      "translation": "新面孔，同一片蓝色大海。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Good work, team. See you!",
+      "translation": "大家做得不错。下次见！"
+    }
+  ],
+  "questions": [
+    {
+      "id": "morning",
+      "goalId": "p3.greetings",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "现在是早上，你刚到活动地点。哪一句最明确地表示“早上好”？",
+      "hint": "注意题目要求的时间。",
+      "explanation": "Good morning! 是早上的问候；Good night! 通常是晚间告别或睡前用语。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good night!"
+        },
+        {
+          "id": "b",
+          "text": "Good morning!"
+        },
+        {
+          "id": "c",
+          "text": "Goodbye!"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "meet-you",
+      "goalId": "p3.greetings",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "初次见面，你想说：“很高兴认识你。”",
+      "hint": "把这句常用交际用语作为一个词块组合。",
+      "explanation": "Nice to meet you. 是初次见面的常见礼貌用语。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "meet"
+        },
+        {
+          "id": "t4",
+          "text": "you."
+        },
+        {
+          "id": "t1",
+          "text": "Nice"
+        },
+        {
+          "id": "t2",
+          "text": "to"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "greeting-reply",
+      "goalId": "p3.greetings",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "有人第一次见你，说：“Nice to meet you.” 你想表达“我也很高兴认识你”。选哪一句？",
+      "hint": "留意表示“也”的词。",
+      "explanation": "Nice to meet you, too. 回应同样的见面喜悦；too 在句尾表示“也”。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nice to meet you, too."
+        },
+        {
+          "id": "b",
+          "text": "My name is Ben."
+        },
+        {
+          "id": "c",
+          "text": "Good night."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "social-purposes",
+      "goalId": "p3.greetings",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "把三句话与它们在这里的交际目的配对。",
+      "hint": "看说话者这句话想做什么。",
+      "explanation": "Hello! 用于问候，Goodbye! 用于告别，Thank you! 用于感谢。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Hello!"
+        },
+        {
+          "id": "l2",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "l3",
+          "text": "Thank you!"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "得到帮助后致谢"
+        },
+        {
+          "id": "r1",
+          "text": "见面时打招呼"
+        },
+        {
+          "id": "r2",
+          "text": "离开时告别"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "i-am",
+      "goalId": "p3.introductions",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "一位新伙伴自我介绍：“我是 Sam。”\nI ___ Sam.",
+      "hint": "句子的主语是 I。",
+      "explanation": "I am Sam. 中 I 与 am 搭配；is 常与 he、she、it 等搭配。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["am"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "leave",
+      "goalId": "p3.greetings",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你准备离开，想说“回头见”。选哪一句？",
+      "hint": "这是离开时的道别。",
+      "explanation": "See you! 是日常道别用语，表示“再见、回头见”。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good morning!"
+        },
+        {
+          "id": "b",
+          "text": "Thank you!"
+        },
+        {
+          "id": "c",
+          "text": "See you!"
+        }
+      ],
+      "answer": "c"
+    }
+  ]
+}

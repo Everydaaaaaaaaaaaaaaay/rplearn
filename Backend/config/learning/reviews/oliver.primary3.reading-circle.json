@@ -1,0 +1,193 @@
+{
+  "unitId": "oliver.primary3.reading-circle",
+  "contentHash": "1e69ff197753287c51bf48838a45f070fb2a7aed38e7379ddb03bf8ae291092b",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "旧书店读书会与 Oliver 的职业一致；轻微冷幽默只出现在剧情，题目不靠俚语设障。",
+  "levelFit": "聚焦短问候、人称与 be 动词；英文输出为三至五词块，符合初步自我介绍的文字练习范围。",
+  "limitations": "初批小学三年级文字练习；未验证真人教学效度，未覆盖听说。教材目录只作主题定位，不等同于相应单元全文核读。",
+  "questions": [
+    {
+      "questionId": "hello",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "这是告别语，不满足初次见面打招呼的目的。",
+        "b": "这是自然的见面问候，满足题目交际目的。",
+        "c": "这是感谢语，题目没有需要致谢的行为。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "ask-name",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "给定词块只能组成这一标准疑问句；没有缩写词块，不另要求输入缩写。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "self-introduction",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "逐一比较三个选项的语义与题目交际目的；只有标定选项满足题目全部条件。",
+      "optionNotes": {
+        "a": "主语和名字均与题目中的自己相符。",
+        "b": "把对方称作 Mei，改变了介绍对象。",
+        "c": "缺少 be 动词 is，句子不完整。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "whose-name",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "三项都是明确的人称或物主词，右侧没有近义重复。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "name-link",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "中文限定姓名陈述；空格只填 is，排除 am、are，大小写不影响此次目标。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "am"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "introduce-friend",
+      "standaloneContext": "所需人物、物品或交际目的已写在本题中；不需要记忆剧情。",
+      "ambiguityReview": "中文限定“我的朋友”；全部词块均需使用，没有其它语义相同的排列。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

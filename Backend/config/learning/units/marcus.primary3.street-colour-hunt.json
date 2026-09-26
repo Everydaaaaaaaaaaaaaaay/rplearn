@@ -1,0 +1,243 @@
+{
+  "id": "marcus.primary3.street-colour-hunt",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "街角颜色速写",
+  "summary": "跟 Marcus 观察街边颜色，练习询问、回答和准确描述。",
+  "scene": "Marcus 暂时收起相机，想先用眼睛记住街角。他指着街边的小物件，说今天从颜色开始找画面。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.colours"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 5 The colourful world",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "No camera yet. Just look around.",
+      "translation": "先不用相机，看看四周。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Small things can make a good photo.",
+      "translation": "小东西也能拍成好照片。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Good eyes. Now we can take a photo.",
+      "translation": "观察得不错，现在可以拍照了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "what-colour",
+      "goalId": "p3.colours",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "同伴问：“What colour is the bag?” 你要回答“它是黑色的”。选哪一句？",
+      "hint": "对方问颜色，你要提供颜色。",
+      "explanation": "It's black. 回答颜色；It's a bag. 回答物品是什么。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "It's a bag."
+        },
+        {
+          "id": "b",
+          "text": "It's black."
+        },
+        {
+          "id": "c",
+          "text": "I'm fine."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "white-door",
+      "goalId": "p3.colours",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "描述街边物品：“这扇门是白色的。”",
+      "hint": "先说物品，再说它的颜色；door 是门。",
+      "explanation": "The door is white. 中 The door 是主语，white 描述颜色。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "is"
+        },
+        {
+          "id": "t4",
+          "text": "white."
+        },
+        {
+          "id": "t1",
+          "text": "The"
+        },
+        {
+          "id": "t2",
+          "text": "door"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "blue-sky",
+      "goalId": "p3.colours",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“天空是蓝色的。”\nThe sky is ___.\nsky 的意思是天空。",
+      "hint": "只填中文指定的颜色，不判断今天的天气。",
+      "explanation": "blue 表示蓝色；此题练习英文表达，不要求根据剧情推断天空。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["blue"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "short-descriptions",
+      "goalId": "p3.colours",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "把拍照笔记中的短语与对应意思配对。",
+      "hint": "颜色和物品都要对上。",
+      "explanation": "描述短语通常把颜色放在物品前：red bag、blue cup、white book。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "a red bag"
+        },
+        {
+          "id": "l2",
+          "text": "a blue cup"
+        },
+        {
+          "id": "l3",
+          "text": "a white book"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "一本白色的书"
+        },
+        {
+          "id": "r1",
+          "text": "一个红色的袋子"
+        },
+        {
+          "id": "r2",
+          "text": "一个蓝色的杯子"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "red-question",
+      "goalId": "p3.colours",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "朋友指着一个包问：“Is it red?” 你已知包是红色的，应该怎样肯定回答？",
+      "hint": "问题的主语是 it，回答也要保持一致。",
+      "explanation": "Yes, it is. 是对 Is it…? 的肯定回答。Yes, I am. 换成了说话者自己。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, it is."
+        },
+        {
+          "id": "b",
+          "text": "No, it is not."
+        },
+        {
+          "id": "c",
+          "text": "Yes, I am."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "black-and-white",
+      "goalId": "p3.colours",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "描述一张照片：“它是黑白的。”",
+      "hint": "and 连接两种颜色。",
+      "explanation": "It is black and white. 表示它是黑白的。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "black"
+        },
+        {
+          "id": "t4",
+          "text": "and"
+        },
+        {
+          "id": "t5",
+          "text": "white"
+        },
+        {
+          "id": "t1",
+          "text": "It"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        ["t1", "t2", "t3", "t4", "t5"],
+        ["t1", "t2", "t5", "t4", "t3"]
+      ]
+    }
+  ]
+}

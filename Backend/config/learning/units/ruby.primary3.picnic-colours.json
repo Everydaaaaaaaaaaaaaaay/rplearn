@@ -1,0 +1,236 @@
+{
+  "id": "ruby.primary3.picnic-colours",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "野餐布上的小选择",
+  "summary": "帮 Ruby 选活动用品，练习颜色、物品和简单喜好。",
+  "scene": "活动结束后，Ruby 把杯子和小旗摆在野餐布上。她想让大家各选一件喜欢的东西，再一起收好场地。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.colours", "p3.objects", "p3.preferences"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 5 The colourful world；Unit 1 Making friends（交际主题）",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Pick a cup. Pick a colour.",
+      "translation": "选一个杯子，也选一种颜色。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "I like this little picnic.",
+      "translation": "我喜欢这样的小野餐。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "All packed. No cups on the beach!",
+      "translation": "都收好了。海滩上可不能留下杯子！"
+    }
+  ],
+  "questions": [
+    {
+      "id": "green-cup",
+      "goalId": "p3.colours",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你想要绿色的杯子。哪个词组符合要求？",
+      "hint": "三个选项的物品相同，注意颜色。",
+      "explanation": "a green cup 表示一个绿色的杯子；red 是红色，blue 是蓝色。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "a red cup"
+        },
+        {
+          "id": "b",
+          "text": "a green cup"
+        },
+        {
+          "id": "c",
+          "text": "a blue cup"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "picnic-items",
+      "goalId": "p3.objects",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "把活动用品的英文名称和中文名称配对。",
+      "hint": "看物品名称，不需要记住桌上放了什么。",
+      "explanation": "cup 是杯子，bag 是袋子，book 是书。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "cup"
+        },
+        {
+          "id": "l2",
+          "text": "bag"
+        },
+        {
+          "id": "l3",
+          "text": "book"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "书"
+        },
+        {
+          "id": "r1",
+          "text": "杯子"
+        },
+        {
+          "id": "r2",
+          "text": "袋子"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "like-blue",
+      "goalId": "p3.preferences",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "向伙伴表达：“我喜欢蓝色。”",
+      "hint": "blue 在这句话里表示蓝色。",
+      "explanation": "I like blue. 中 blue 可以直接作 like 的宾语，表示喜欢这种颜色。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "blue."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "like"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3"]]
+    },
+    {
+      "id": "red-flag",
+      "goalId": "p3.colours",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“这面小旗是红色的。”\nThe flag is ___.\nflag 的意思是旗子。",
+      "hint": "题目已解释物品词，只需填颜色。",
+      "explanation": "red 是红色；The flag is red. 说明旗子的颜色。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["red"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cup-description",
+      "goalId": "p3.objects",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "向别人介绍：“这是我的杯子。”选哪一句？",
+      "hint": "同时检查“谁的”和“什么物品”。",
+      "explanation": "This is my cup. 里 my 表示我的，cup 表示杯子。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is your cup."
+        },
+        {
+          "id": "b",
+          "text": "This is my bag."
+        },
+        {
+          "id": "c",
+          "text": "This is my cup."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "yellow-bag",
+      "goalId": "p3.colours",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "介绍用品：“这是一个黄色的袋子。”",
+      "hint": "颜色词紧挨着它描述的物品。",
+      "explanation": "This is a yellow bag. 中 yellow 位于名词 bag 前。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "a"
+        },
+        {
+          "id": "t4",
+          "text": "yellow"
+        },
+        {
+          "id": "t5",
+          "text": "bag."
+        },
+        {
+          "id": "t1",
+          "text": "This"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    }
+  ]
+}

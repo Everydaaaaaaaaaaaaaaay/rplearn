@@ -1,0 +1,246 @@
+{
+  "id": "oliver.primary3.reading-circle",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "旧书店的新朋友",
+  "summary": "给读书会写一张名牌，练习介绍自己和身边的人。",
+  "scene": "伦敦的雨落在书店玻璃上。Oliver 给圆桌添了一把椅子，旁边放着几张空白名牌。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.greetings", "p3.introductions"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 1 Making friends",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    },
+    {
+      "sourceId": "jingtong.primary3.upper.2024",
+      "unit": "Lesson 1",
+      "pages": "印刷第 4 页；电子第 10 页",
+      "alignment": "核对同年级问候、自我介绍与询问姓名功能；剧情与练习全部重新编写。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A new chair. A new friend. Come in!",
+      "translation": "多一把椅子，多一位朋友。进来吧！"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Books can wait. Friends first.",
+      "translation": "书可以等一等，先认识朋友。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "A good start. Now, a book for you.",
+      "translation": "开场不错。现在，给你一本书。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "hello",
+      "goalId": "p3.greetings",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "第一次见面，想主动打招呼。你可以说哪一句？",
+      "hint": "想想见面和告别的区别。",
+      "explanation": "Hello! 用于打招呼；Goodbye! 用于告别；Thank you! 表示感谢。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "b",
+          "text": "Hello!"
+        },
+        {
+          "id": "c",
+          "text": "Thank you!"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "ask-name",
+      "goalId": "p3.introductions",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "你想问新朋友：“你叫什么名字？”",
+      "hint": "先放询问词，再连接 be 动词。",
+      "explanation": "What is your name? 询问对方姓名；your 表示“你的”。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "your"
+        },
+        {
+          "id": "t4",
+          "text": "name?"
+        },
+        {
+          "id": "t1",
+          "text": "What"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "self-introduction",
+      "goalId": "p3.introductions",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你叫 Mei，正在介绍自己。哪一句表达正确？",
+      "hint": "分清“我”和“你”，并检查句子是否完整。",
+      "explanation": "I'm Mei. 表示“我是 Mei”。You're 说的是对方；My name 后还需要 is。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm Mei."
+        },
+        {
+          "id": "b",
+          "text": "You're Mei."
+        },
+        {
+          "id": "c",
+          "text": "My name Mei."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "whose-name",
+      "goalId": "p3.introductions",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "给名牌写字前，把这些人称词与意思连起来。",
+      "hint": "注意表示“谁的”和表示“谁”的词不同。",
+      "explanation": "my 和 your 表示所属；I 表示说话者本人，通常作主语。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "my"
+        },
+        {
+          "id": "l2",
+          "text": "your"
+        },
+        {
+          "id": "l3",
+          "text": "I"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "我"
+        },
+        {
+          "id": "r1",
+          "text": "我的"
+        },
+        {
+          "id": "r2",
+          "text": "你的"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "name-link",
+      "goalId": "p3.introductions",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“我的名字是 Lily。”\nMy name ___ Lily.",
+      "hint": "主语是 My name，不是 I。",
+      "explanation": "My name is Lily. 中 My name 是单数主语，与 is 搭配。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["is"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "introduce-friend",
+      "goalId": "p3.introductions",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "指着身边的 Tom，介绍：“这是我的朋友 Tom。”",
+      "hint": "先说明“这是”，再说身份和名字。",
+      "explanation": "This is my friend Tom. 用 This is… 介绍身边的人。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "my"
+        },
+        {
+          "id": "t4",
+          "text": "friend"
+        },
+        {
+          "id": "t5",
+          "text": "Tom."
+        },
+        {
+          "id": "t1",
+          "text": "This"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    }
+  ]
+}

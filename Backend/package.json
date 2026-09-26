@@ -19,6 +19,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
+    "learning:validate": "tsx src/cli/learning-catalog.ts validate",
+    "learning:publish": "tsx src/cli/learning-catalog.ts publish",
     "maintenance:cleanup": "tsx src/cli/cleanup-operational-data.ts",
     "npc-avatars:import": "tsx src/cli/import-npc-avatars.ts",
     "architecture": "depcruise --config dependency-cruiser.cjs src",

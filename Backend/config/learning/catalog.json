@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "moe.english.2022",
+      "title": "教育部《义务教育英语课程标准（2022年版）》",
+      "url": "https://www.moe.gov.cn/srcsite/A26/s8001/202204/W020220420582349487953.pdf",
+      "edition": "2022年版；完整下载201页，按实际核读页面记录",
+      "readAt": "2026-09-26",
+      "scope": "实际核读 PDF 第10、12、20、21、25、26、27、28、29页；三四年级一级要求、主题、语篇、语音、词汇和语法。",
+      "limitations": "课标规定学段要求，不直接等于十二个产品年级的精确排序；500词是二级要求，不用于给小学三年级设词汇量门槛。",
+      "evidence": [
+        {
+          "locator": "完整 PDF 文件；本批依据印刷第14、18、20–22页",
+          "sha256": "59ec3971e0dbd6ca487c4e4972cbc80effaf2fd62418d07e5f62c6698fa222fb"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary3.upper.2024",
+      "title": "人教版PEP英语三年级上册（官方电子阅读器）",
+      "url": "https://book.pep.com.cn/1212001301245/mobile/index.html",
+      "edition": "官方目录标记2024；ISBN与版权页尚未取得完整核验",
+      "readAt": "2026-09-26",
+      "scope": "实际核读前言、电子第6页目录与开篇印刷第3–4页；本批仅引用已读交友功能与其他单元的主题位置。",
+      "limitations": "家庭、动物、颜色、数字单元目前只核对目录；不把目录当作正文、完整词表或每课目标已经核读。",
+      "evidence": [
+        {
+          "locator": "电子第6页目录，标有六个单元主题",
+          "sha256": "f5bc8b7cf3385967e02bed3fd690dee07cb74be06c5a2f7062da37d7c6cc7a2a"
+        },
+        {
+          "locator": "印刷第3页，交友、问候与询问姓名",
+          "sha256": "f76658f92787e4f51f3a24dee0b7b7c83e98df77f86f1b8047a99ffc1cd4b610"
+        }
+      ]
+    },
+    {
+      "id": "jingtong.primary3.upper.2024",
+      "title": "人教精通英语三年级上册（官方电子阅读器）",
+      "url": "https://book.pep.com.cn/1212001301244/mobile/index.html",
+      "edition": "官方目录标记2024；ISBN与版权页尚未取得完整核验",
+      "readAt": "2026-09-26",
+      "scope": "实际核读前言、目录与第一课印刷第4页；核对问候、自我介绍、询问姓名的同年级安排。",
+      "limitations": "同出版社另一系列，不能代表外研、译林等出版社；未核读整册，不宣称跨全部教材等价。",
+      "evidence": [
+        {
+          "locator": "印刷第4页第一课，问候与自我介绍",
+          "sha256": "4f89a971ea4824c9637a994b9548c1fd1ec21bf1e0b8f413aa4ab3b17cebe88e"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "id": "p3.greetings",
+      "level": "primary3",
+      "canDo": "能按见面、晨间问候、告别、感谢等明确目的选择和构建短交际表达。",
+      "boundaries": "使用中文说明交际目的；不以俚语、社会推断或隐藏剧情事实判分。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.introductions",
+      "level": "primary3",
+      "canDo": "能用 I am、My name is、This is 介绍自己或朋友，并询问姓名。",
+      "boundaries": "人名已给定；只需基础人称、物主词和 be 动词，不要求长段自述。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.colours",
+      "level": "primary3",
+      "canDo": "能识别基础颜色词，用简单 be 句描述物品颜色，并进行简短颜色问答。",
+      "boundaries": "颜色事实在题干中明确；不依赖屏幕色值，外延物品词提供中文释义。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.numbers",
+      "level": "primary3",
+      "canDo": "能识别十以内数量，并用数量加具体物品表达拥有或请求。",
+      "boundaries": "不考算术；单复数限常见规则形式，使用给定词块降低拼写负担。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.objects",
+      "level": "primary3",
+      "canDo": "能识别常见具体物品，并用简单名词短语、单复数和 This is 介绍物品。",
+      "boundaries": "词义和任务目的明确给出；不要求未知物品的生活背景知识。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.animals",
+      "level": "primary3",
+      "canDo": "能识别常见动物名，并用 This is a… 介绍一种动物。",
+      "boundaries": "不考动物学事实；每题给出所指动物，避免缺图猜测和剧情记忆。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.preferences",
+      "level": "primary3",
+      "canDo": "能用 I like 加颜色或动物类别表达简单喜好。",
+      "boundaries": "本批只练肯定表达，不引入原因从句或一般现在时第三人称变化。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.family",
+      "level": "primary3",
+      "canDo": "能识别基础家庭称呼，并用简单短句介绍人物关系。",
+      "boundaries": "说明 grandmother、brother、sister 的中文覆盖差异；不要求用户披露家庭信息。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    },
+    {
+      "id": "p3.politeness",
+      "level": "primary3",
+      "canDo": "能在明确情景中提出简短礼貌请求，并对帮助或感谢作出合适回应。",
+      "boundaries": "给定物品名称和目的；不考间接请求语气层级、文化常识或开放长句。",
+      "sourceIds": ["moe.english.2022", "pep.primary3.upper.2024"]
+    }
+  ],
+  "unitIds": [
+    "oliver.primary3.reading-circle",
+    "oliver.primary3.colour-covers",
+    "oliver.primary3.bookmark-packs",
+    "ruby.primary3.beach-welcome",
+    "ruby.primary3.animal-postcards",
+    "ruby.primary3.picnic-colours",
+    "marcus.primary3.family-photo-wall",
+    "marcus.primary3.street-colour-hunt",
+    "marcus.primary3.food-truck-stop"
+  ]
+}

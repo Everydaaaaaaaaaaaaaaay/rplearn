@@ -1,0 +1,228 @@
+{
+  "id": "marcus.primary3.food-truck-stop",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "餐车前的礼貌小停留",
+  "summary": "和 Marcus 在餐车前歇脚，练习简单请求、数量与致谢。",
+  "scene": "拍完街角，Marcus 在餐车旁停下。他请你帮忙递一下纸袋，打算带点东西回去和家人分享。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.politeness", "p3.numbers", "p3.objects"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 1 Making friends（交际主题）；Unit 6 Useful numbers",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "A short stop. Then back to the photos.",
+      "translation": "停一小会儿，然后继续拍照。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Food tastes better with friends.",
+      "translation": "和朋友一起，食物更好吃。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Thanks for coming along.",
+      "translation": "谢谢你一路作伴。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "water-please",
+      "goalId": "p3.politeness",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "向店员礼貌地要水，哪一句明确表示“请给我水”？",
+      "hint": "请求要说明想要什么，也可以加礼貌用语。",
+      "explanation": "Water, please. 用物品名称加 please 提出简短礼貌请求。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Water, please."
+        },
+        {
+          "id": "b",
+          "text": "Thank you."
+        },
+        {
+          "id": "c",
+          "text": "Goodbye."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "two-bags",
+      "goalId": "p3.numbers",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "向店员说：“请给我两个袋子。”使用简短请求。",
+      "hint": "数量在物品前，please 表示礼貌。",
+      "explanation": "Two bags, please. 是点取物品时自然的简短请求；two 后使用复数 bags。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "please."
+        },
+        {
+          "id": "t1",
+          "text": "Two"
+        },
+        {
+          "id": "t2",
+          "text": "bags,"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3"]]
+    },
+    {
+      "id": "please-word",
+      "goalId": "p3.politeness",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“请给我一个杯子。”\nA cup, ___.\n只填表示“请”的词。",
+      "hint": "把请求物品和感谢收到物品区分开。",
+      "explanation": "A cup, please. 中 please 让请求更礼貌；thanks 表示感谢。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["please"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "counter-words",
+      "goalId": "p3.objects",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "把餐车旁用到的词与中文意思配对。",
+      "hint": "区分饮品和装东西的物品。",
+      "explanation": "water 是水，cup 是杯子，bag 是袋子。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "water"
+        },
+        {
+          "id": "l2",
+          "text": "cup"
+        },
+        {
+          "id": "l3",
+          "text": "bag"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "袋子"
+        },
+        {
+          "id": "r1",
+          "text": "水"
+        },
+        {
+          "id": "r2",
+          "text": "杯子"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "thank-response",
+      "goalId": "p3.politeness",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "别人对你说：“Thank you.” 你想回应“不客气”。选哪一句？",
+      "hint": "选能够回应感谢的礼貌表达。",
+      "explanation": "You're welcome. 是对感谢的常见回应，表示“不客气”。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good night."
+        },
+        {
+          "id": "b",
+          "text": "You're welcome."
+        },
+        {
+          "id": "c",
+          "text": "My name is Max."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "one-cup",
+      "goalId": "p3.objects",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "用给定词块表达：“一个杯子，谢谢（请）。”",
+      "hint": "一个物品用单数；句末保留礼貌词。",
+      "explanation": "One cup, please. 是自然的简短请求，one 后使用单数 cup。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "please."
+        },
+        {
+          "id": "t1",
+          "text": "One"
+        },
+        {
+          "id": "t2",
+          "text": "cup,"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3"]]
+    }
+  ]
+}

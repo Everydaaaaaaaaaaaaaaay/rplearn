@@ -1,0 +1,226 @@
+{
+  "id": "oliver.primary3.colour-covers",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "为书架找颜色",
+  "summary": "帮 Oliver 整理彩色封面，练习颜色词与短句描述。",
+  "scene": "书店靠窗的书架要换一排封面。Oliver 把旧书摊开，准备让这个雨天亮一点。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.colours"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 5 The colourful world",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Look at these books. So many colours!",
+      "translation": "看看这些书，这么多颜色！"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "My coat is old. These books are older.",
+      "translation": "我的外套很旧。这些书更旧。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "The shelf looks good. Thank you!",
+      "translation": "书架看起来不错，谢谢你！"
+    }
+  ],
+  "questions": [
+    {
+      "id": "blue-cover",
+      "goalId": "p3.colours",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你需要一本蓝色的书。哪一个词组表示“蓝色的书”？",
+      "hint": "先辨认颜色，再看物品。",
+      "explanation": "blue 是蓝色，green 是绿色，black 是黑色；三个词组中的 book 都是书。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "a green book"
+        },
+        {
+          "id": "b",
+          "text": "a black book"
+        },
+        {
+          "id": "c",
+          "text": "a blue book"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "red-book",
+      "goalId": "p3.colours",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "介绍手里的书：“它是一本红色的书。”",
+      "hint": "描述颜色的词放在物品名称前。",
+      "explanation": "It is a red book. 中 a red book 表示“一本红色的书”。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "a"
+        },
+        {
+          "id": "t4",
+          "text": "red"
+        },
+        {
+          "id": "t5",
+          "text": "book."
+        },
+        {
+          "id": "t1",
+          "text": "It"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "green-cover",
+      "goalId": "p3.colours",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“这本书是绿色的。”\nThe book is ___.",
+      "hint": "只填写中文指定的颜色。",
+      "explanation": "green 表示绿色；The book is green. 说明这本书的颜色。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["green"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "book-labels",
+      "goalId": "p3.colours",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "把三个书架颜色标签与中文意思配对。",
+      "hint": "每个标签都代表一种不同的颜色。",
+      "explanation": "yellow 是黄色，white 是白色，black 是黑色。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "yellow"
+        },
+        {
+          "id": "l2",
+          "text": "white"
+        },
+        {
+          "id": "l3",
+          "text": "black"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "黑色"
+        },
+        {
+          "id": "r1",
+          "text": "黄色"
+        },
+        {
+          "id": "r2",
+          "text": "白色"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "colour-question",
+      "goalId": "p3.colours",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你想问：“这本书是什么颜色的？”应该选哪一句？",
+      "hint": "题目要问颜色，不是姓名或数量。",
+      "explanation": "What colour…? 用来询问颜色。What is your name? 问姓名；How many books? 问书的数量。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "What colour is the book?"
+        },
+        {
+          "id": "b",
+          "text": "What is your name?"
+        },
+        {
+          "id": "c",
+          "text": "How many books?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "two-colours",
+      "goalId": "p3.colours",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“这本书是黑白两色的。”\nThe book is black and ___.",
+      "hint": "and 连接两种颜色，中文已经给出两种颜色。",
+      "explanation": "black and white 表示黑白两色；and 在这里是“和”。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["white"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

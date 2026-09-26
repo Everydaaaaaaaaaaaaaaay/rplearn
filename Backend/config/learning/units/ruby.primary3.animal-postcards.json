@@ -1,0 +1,232 @@
+{
+  "id": "ruby.primary3.animal-postcards",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary3",
+  "title": "送给海边朋友的明信片",
+  "summary": "和 Ruby 整理动物明信片，用简单英语辨认和介绍动物。",
+  "scene": "Ruby 把几张动物明信片摆在桌上。她想把它们送给参加海岸活动的小朋友，让大家从身边的动物开始认识自然。",
+  "estimatedMinutes": 5,
+  "goalIds": ["p3.animals", "p3.preferences"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "moe.english.2022",
+      "unit": "一级：主题、词汇与语法要求",
+      "pages": "印刷第 14、18、20–22 页；PDF 第 21、25、27–29 页",
+      "alignment": "短句交际、熟悉主题的人物与事物描述；用中文情景和给定词块提供支架。本单元仅为文字练习，不覆盖一级听说看全部要求。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "unit": "Unit 3 Our animal friends",
+      "pages": "电子第 6 页目录；交友单元另核读印刷第 3 页",
+      "alignment": "以已读目录核对主题所在年级；交友表达另参考已读开篇。不声称其他单元正文、词表或课时已逐项对齐。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题检查独立性、唯一性、答案变体与角色语境；属于作者自审，尚无独立教研专家或真实学习者校准。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Little cards. Lots of animals!",
+      "translation": "小小的卡片，上面有好多动物！"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Every animal has a home.",
+      "translation": "每一种动物都有自己的家。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "A card for you. Keep looking at the world!",
+      "translation": "这张卡片送给你。继续留意身边的世界吧！"
+    }
+  ],
+  "questions": [
+    {
+      "id": "animal-words",
+      "goalId": "p3.animals",
+      "instruction": "先点左侧，再点右侧，完成全部配对。",
+      "prompt": "明信片需要中英文标签，把动物名称配对。",
+      "hint": "这三个词分别表示不同的动物。",
+      "explanation": "cat 是猫，bird 是鸟，fish 是鱼。",
+      "difficultyReason": "三个基础词或短语的对应；中文释义提供支架，每项意义互不重叠。",
+      "type": "matching",
+      "left": [
+        {
+          "id": "l1",
+          "text": "cat"
+        },
+        {
+          "id": "l2",
+          "text": "bird"
+        },
+        {
+          "id": "l3",
+          "text": "fish"
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "鱼"
+        },
+        {
+          "id": "r1",
+          "text": "猫"
+        },
+        {
+          "id": "r2",
+          "text": "鸟"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "dog-card",
+      "goalId": "p3.animals",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "你要给“狗”的图片写英文标签。应该选哪个词？",
+      "hint": "题目已经给出动物名称，不用找剧情线索。",
+      "explanation": "dog 表示狗，bird 表示鸟，cat 表示猫。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "bird"
+        },
+        {
+          "id": "b",
+          "text": "cat"
+        },
+        {
+          "id": "c",
+          "text": "dog"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "a-cat",
+      "goalId": "p3.animals",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "向朋友介绍卡片：“这是一只猫。”",
+      "hint": "先说“这是”，再说动物。",
+      "explanation": "This is a cat. 中 This is… 用来介绍眼前的事物。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "a"
+        },
+        {
+          "id": "t4",
+          "text": "cat."
+        },
+        {
+          "id": "t1",
+          "text": "This"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "fish-word",
+      "goalId": "p3.animals",
+      "instruction": "只填写横线处缺少的英文单词。",
+      "prompt": "“这是一条鱼。”\nThis is a ___.\n请填写“鱼”的英文。",
+      "hint": "只填题目要求的动物名。",
+      "explanation": "fish 在这里是单数，a fish 表示一条鱼。",
+      "difficultyReason": "题内给出完整语境和句架，只填写一个基础词；不要求初学者写长句。",
+      "type": "completion",
+      "acceptedAnswers": ["fish"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "likes-birds",
+      "goalId": "p3.preferences",
+      "instruction": "按本题给出的情景作答。",
+      "prompt": "想表达“我喜欢鸟”，哪一句合适？",
+      "hint": "分清“喜欢”和“是”。",
+      "explanation": "I like birds. 表示喜欢鸟这一类动物；I am a bird. 说的是“我是一只鸟”。",
+      "difficultyReason": "小学三年级短句识别；中文给出交际目的，不用长段英文承载题干。",
+      "type": "choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "I like birds."
+        },
+        {
+          "id": "b",
+          "text": "I like cats."
+        },
+        {
+          "id": "c",
+          "text": "I am a bird."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "like-fish",
+      "goalId": "p3.preferences",
+      "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+      "prompt": "说一说自己的喜好：“我喜欢鱼。”",
+      "hint": "先放说话者，再放表示喜欢的词。",
+      "explanation": "I like fish. 在动物话题中可以表达喜欢鱼；fish 作这一类动物的名称。",
+      "difficultyReason": "只拼给定词块；输出不超过七个词块，目标是基础短句语序，不考生词拼写。",
+      "type": "arrange",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "fish."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "like"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3"]]
+    }
+  ]
+}
