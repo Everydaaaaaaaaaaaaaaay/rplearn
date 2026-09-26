@@ -36,18 +36,10 @@ public struct ChatTutorialConfiguration: Sendable {
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
-    /// Per-view-model owner token; excludes distant scheduled replies until they become active.
-    public var learningReplyActivity: (@MainActor @Sendable (UUID, Bool) -> Void)? = nil
-    public var learningRecorder: (@MainActor @Sendable (UUID, UUID, ConversationLearningObservation) -> Void)? = nil
-
-    /// Optional prototype telemetry; nil in normal app assembly.
-    public var learningObserver: (@MainActor @Sendable (ConversationLearningObservation) -> Void)? = nil
-
     #if DEBUG
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
     #endif
-    public var learningInstruction: (@MainActor @Sendable (UUID) -> String?)?
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

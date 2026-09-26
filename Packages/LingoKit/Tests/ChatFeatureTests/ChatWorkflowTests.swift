@@ -101,15 +101,13 @@ struct ChatWorkflowTests {
     private func fixture(_ provider: Provider = Provider(),
                          now: @escaping @Sendable () -> Date = { .now },
                          replyDelayScale: Double = 0,
-                         tutorial: ChatTutorialConfiguration? = nil,
-                         learningActivity: (@MainActor @Sendable (UUID, Bool) -> Void)? = nil) async throws -> Fixture {
+                         tutorial: ChatTutorialConfiguration? = nil) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let chat = ChatStore(modelContainer: container), roster = RosterStore(modelContainer: container)
         let economy = EconomyStore(modelContainer: container), items = ItemStore(modelContainer: container)
-        _ = try await economy.updateProfile { $0.quizGloballyEnabled = false }
         let llm = LLMRouter(client: provider, maxRetries: 0)
         let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!), credentialStore: NoCredentials())
-        var deps = ChatDependencies(
+        let deps = ChatDependencies(
             tutorial: tutorial, chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container),
             llm: llm,
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
@@ -122,28 +120,11 @@ struct ChatWorkflowTests {
             voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)),
             now: now, replyDelayScale: replyDelayScale
         )
-        deps.learningReplyActivity = learningActivity
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
         await model.load()
         return Fixture(model: model, deps: deps)
     }
-    @MainActor private final class LearningActivityRecorder { var values: [Bool] = [] }
-    @Test func learningWaitsForReplyAndReleasesAfterCompletionOrCancellation() async throws {
-        let recorder = LearningActivityRecorder()
-        let f = try await fixture(Provider(streamDelayMilliseconds: 100), learningActivity: { _, busy in recorder.values.append(busy) })
-        f.model.draft = "Hi!"
-        await f.model.sendDraft()
-        #expect(recorder.values.first == true)
-        try await settle(f.model)
-        #expect(recorder.values.last == false)
-        f.model.draft = "One more question"
-        await f.model.sendDraft()
-        #expect(recorder.values.last == true)
-        f.model.cancelPendingReply()
-        #expect(recorder.values.last == false)
-    }
-
     @Test("聊天角色使用存档音色，用户使用全局旁白音色")
     func readingVoiceRequests() async throws {
         let fixture = try await fixture()
@@ -386,29 +367,7 @@ struct ChatWorkflowTests {
         #expect(f.model.messages.contains { $0.role == .assistant })
     }
 
-    @Test("到期小测与点评共用一次请求，题目保存到 NPC 消息")
-    func quizSharesBackgroundReview() async throws {
-        let provider = Provider(reviewResponse: #"{"coach_review":{"has_issues":false,"issues":[]},"relationship":{"warmth":0,"responsiveness":0,"respect":0,"empathy":0,"reciprocity":0,"disclosure":0,"resonance":0,"engagement":0,"boundary_harm":0,"repair":0,"significance":0,"confidence":0.8,"reason_zh":""},"growth":null,"quiz":{"question":"Choose the greeting","options":["Hello","Blue","Train","Book"],"answer":0,"explanation_zh":"Hello 是问候语"}}"#)
-        let f = try await fixture(provider)
-        _ = try await f.deps.economyStore.updateProfile { $0.quizGloballyEnabled = true }
-        let conversation = try #require(f.model.conversation)
-        for _ in 0..<9 {
-            _ = try await f.deps.chatStore.appendAssistantReply(conversationID: conversation.id, texts: ["Hello there."])
-        }
-        f.model.draft = "Hello, how are you?"
-        await f.model.sendDraft()
-        try await settle(f.model)
-        for _ in 0..<50 {
-            let saved = try await f.deps.chatStore.messages(conversationID: conversation.id)
-            if saved.contains(where: { $0.quizJSON != nil }) { break }
-            try await Task.sleep(for: .milliseconds(20))
-        }
-        let saved = try await f.deps.chatStore.messages(conversationID: conversation.id)
-        #expect(await provider.tasks() == [.conversation, .coachReview])
-        let target = try #require(saved.last(where: { $0.role == .assistant }))
-        #expect(QuizService.decode(fromJSON: target.quizJSON)?.answer == 0)
-        #expect(try await f.deps.chatStore.conversation(id: conversation.id)?.turnsSinceQuiz == 0)
-    }
+
 
     @Test("退出或重启后会从未回复的最后一条用户消息恢复同一回复")
     func unansweredMessageResumesAfterReopen() async throws {

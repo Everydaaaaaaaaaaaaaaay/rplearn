@@ -73,9 +73,7 @@ extension ContentSyncStore {
                             lastMessageAt: entity.lastMessageAt,
                             lastReadAt: entity.lastReadAt,
                             lastSummarizedMessageIndex: entity.lastSummarizedMessageIndex,
-                            quizOptOut: entity.quizOptOut,
-                            turnCount: entity.turnCount,
-                            turnsSinceQuiz: entity.turnsSinceQuiz
+                            turnCount: entity.turnCount
                         )
                     )
                 )
@@ -99,8 +97,6 @@ extension ContentSyncStore {
                             keywordRangesJson: entity.keywordRangesJSON,
                             kind: entity.kindRaw,
                             orderIndex: entity.orderIndex,
-                            quizChosenIndex: entity.quizChosenIndex,
-                            quizJson: entity.quizJSON,
                             role: entity.roleRaw,
                             speechReviewJson: entity.speechReviewJSON,
                             text: entity.text,
@@ -171,32 +167,7 @@ extension ContentSyncStore {
                 )
             )
         }
-        for entity in try modelContext.fetch(FetchDescriptor<QuizRecordEntity>()) {
-            guard let chosenIndex = entity.chosenIndex else { continue }
-            let localKey = persistentKey(entity.persistentModelID)
-            let resourceID = try ContentMutationJournal.resourceID(
-                in: modelContext,
-                resourceType: .quizRecord,
-                localKey: localKey
-            )
-            records.append(
-                LocalContentRecord(
-                    resourceType: .quizRecord,
-                    resourceID: resourceID,
-                    parentID: nil,
-                    payloadJSON: try ContentMutationJournal.encode(
-                        ContentQuizRecordPayload(
-                            characterName: entity.characterName,
-                            chosenIndex: chosenIndex,
-                            correctIndex: entity.correctIndex,
-                            createdAt: entity.createdAt,
-                            optionsJson: entity.optionsJSON,
-                            question: entity.question
-                        )
-                    )
-                )
-            )
-        }
+
         return records
     }
 }

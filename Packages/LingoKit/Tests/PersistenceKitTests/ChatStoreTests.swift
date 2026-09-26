@@ -27,20 +27,7 @@ struct ChatStoreTests {
         )
     }
 
-    @Test("延迟返回的小测保留等待期间新增的出题计数")
-    func delayedQuizPreservesNewTurns() async throws {
-        let (chat, roster) = try makeStores()
-        let characterID = try await addCharacter(roster)
-        let conversation = try await chat.openConversation(characterID: characterID)
-        let messages = try await chat.appendAssistantReply(conversationID: conversation.id, texts: ["Hello"])
-        let target = try #require(messages.last)
-        try await chat.resetQuizCounter(conversationID: conversation.id)
-        _ = try await chat.appendAssistantReply(conversationID: conversation.id, texts: ["Another turn"])
-        try await chat.attachQuiz(messageID: target.id, quizJSON: "{}", conversationID: conversation.id, resetCounter: false)
-        #expect(try await chat.conversation(id: conversation.id)?.turnsSinceQuiz == 1)
-        try await chat.attachQuiz(messageID: target.id, quizJSON: "{}", conversationID: conversation.id)
-        #expect(try await chat.conversation(id: conversation.id)?.turnsSinceQuiz == 0)
-    }
+
 
     @Test("同一角色重复 open 返回同一会话")
     func openConversationReuses() async throws {
@@ -265,7 +252,7 @@ struct ChatStoreTests {
         ])
     }
 
-    @Test("assistant 消息递增 turnCount 与 turnsSinceQuiz")
+    @Test("assistant 消息递增 turnCount")
     func turnCounting() async throws {
         let (chat, roster) = try makeStores()
         let characterID = try await addCharacter(roster)
@@ -277,7 +264,6 @@ struct ChatStoreTests {
 
         let updated = try await chat.conversation(id: conversation.id)
         #expect(updated?.turnCount == 2)
-        #expect(updated?.turnsSinceQuiz == 2)
     }
 
     @Test("同一角色回复可保存多条气泡但只计一个回合")
@@ -295,7 +281,6 @@ struct ChatStoreTests {
         #expect(inserted.map(\.text) == ["hey mate", "you alright?"])
         #expect(inserted.map(\.orderIndex) == [0, 1])
         #expect(updated?.turnCount == 1)
-        #expect(updated?.turnsSinceQuiz == 1)
     }
 
     @Test("逐条送达的角色气泡仍只计一个回合")
@@ -320,7 +305,6 @@ struct ChatStoreTests {
         #expect(first.orderIndex == 0)
         #expect(second.orderIndex == 1)
         #expect(updated?.turnCount == 1)
-        #expect(updated?.turnsSinceQuiz == 1)
     }
 
     @Test("流式定稿：更新文本与中断标记")
@@ -403,7 +387,6 @@ struct ChatStoreTests {
         #expect(try await chat.messages(conversationID: conversation.id).isEmpty)
         let reset = try #require(try await chat.conversation(id: conversation.id))
         #expect(reset.turnCount == 0)
-        #expect(reset.turnsSinceQuiz == 0)
         #expect(reset.lastSummarizedMessageIndex == 0)
     }
 }

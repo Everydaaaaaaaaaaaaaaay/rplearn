@@ -95,10 +95,8 @@ struct ContentConversationPayload: Codable {
     let lastMessageAt: Date
     var lastReadAt: Date? = nil
     let lastSummarizedMessageIndex: Int
-    let quizOptOut: Bool
     var schemaVersion = 2
     let turnCount: Int
-    let turnsSinceQuiz: Int
 }
 
 struct ContentMessagePayload: Codable {
@@ -110,8 +108,6 @@ struct ContentMessagePayload: Codable {
     let keywordRangesJson: String?
     let kind: String
     let orderIndex: Int
-    let quizChosenIndex: Int?
-    let quizJson: String?
     let role: String
     var schemaVersion = 1
     let speechReviewJson: String?
@@ -146,15 +142,7 @@ struct ContentStoryProgressPayload: Codable {
     var schemaVersion = 1
 }
 
-struct ContentQuizRecordPayload: Codable {
-    let characterName: String?
-    let chosenIndex: Int
-    let correctIndex: Int
-    let createdAt: Date
-    let optionsJson: String
-    let question: String
-    var schemaVersion = 1
-}
+
 
 struct LocalContentRecord: Codable, Sendable {
     let resourceType: ContentResourceKind

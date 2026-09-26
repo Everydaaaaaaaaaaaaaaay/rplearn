@@ -27,8 +27,6 @@ extension ContentSyncStore {
             try applyMemory(record)
         case .message:
             try applyMessage(record)
-        case .quizRecord:
-            try applyQuizRecord(record)
         case .storyProgress:
             try applyStoryProgress(record)
         }
@@ -146,8 +144,6 @@ extension ContentSyncStore {
                 createdAt: payload.createdAt,
                 lastMessageAt: payload.lastMessageAt,
                 turnCount: payload.turnCount,
-                turnsSinceQuiz: payload.turnsSinceQuiz,
-                quizOptOut: payload.quizOptOut,
                 lastSummarizedMessageIndex: payload.lastSummarizedMessageIndex,
                 isEncounterSession: payload.isEncounterSession,
                 isArchived: payload.isArchived,
@@ -161,8 +157,6 @@ extension ContentSyncStore {
         entity.createdAt = payload.createdAt
         entity.lastMessageAt = payload.lastMessageAt
         entity.turnCount = payload.turnCount
-        entity.turnsSinceQuiz = payload.turnsSinceQuiz
-        entity.quizOptOut = payload.quizOptOut
         entity.lastSummarizedMessageIndex = payload.lastSummarizedMessageIndex
         entity.isEncounterSession = payload.isEncounterSession
         entity.isArchived = payload.isArchived
@@ -191,8 +185,6 @@ extension ContentSyncStore {
                 keywordRangesJSON: payload.keywordRangesJson,
                 coachReviewJSON: payload.coachReviewJson,
                 speechReviewJSON: payload.speechReviewJson,
-                quizJSON: payload.quizJson,
-                quizChosenIndex: payload.quizChosenIndex,
                 translationZh: payload.translationZh,
                 isInterrupted: payload.isInterrupted,
                 createdAt: payload.createdAt
@@ -230,8 +222,6 @@ extension ContentSyncStore {
         entity.keywordRangesJSON = payload.keywordRangesJson
         entity.coachReviewJSON = payload.coachReviewJson
         entity.speechReviewJSON = payload.speechReviewJson
-        entity.quizJSON = payload.quizJson
-        entity.quizChosenIndex = payload.quizChosenIndex
         entity.translationZh = payload.translationZh
         entity.isInterrupted = payload.isInterrupted
         entity.createdAt = payload.createdAt
@@ -318,36 +308,7 @@ extension ContentSyncStore {
         try upsertMetadata(record, localKey: record.resourceID)
     }
 
-    func applyQuizRecord(_ record: RemoteContentRecord) throws {
-        let payload: ContentQuizRecordPayload = try decode(record.payloadJSON)
-        let existingMetadata = try metadata(
-            resourceType: .quizRecord,
-            resourceID: record.resourceID
-        )
-        let existing = try existingMetadata.flatMap {
-            try quizRecord(localKey: $0.localKey)
-        }
-        let entity = existing ?? {
-            let created = QuizRecordEntity(
-                question: payload.question,
-                optionsJSON: payload.optionsJson,
-                correctIndex: payload.correctIndex,
-                chosenIndex: payload.chosenIndex,
-                characterName: payload.characterName,
-                createdAt: payload.createdAt
-            )
-            modelContext.insert(created)
-            return created
-        }()
-        entity.question = payload.question
-        entity.optionsJSON = payload.optionsJson
-        entity.correctIndex = payload.correctIndex
-        entity.chosenIndex = payload.chosenIndex
-        entity.characterName = payload.characterName
-        entity.createdAt = payload.createdAt
-        try modelContext.save()
-        try upsertMetadata(record, localKey: persistentKey(entity.persistentModelID))
-    }
+
 
     func deleteLocal(_ record: RemoteContentRecord) throws {
         switch record.resourceType {
@@ -388,13 +349,6 @@ extension ContentSyncStore {
                 if let entity = try message(id: id) {
                     modelContext.delete(entity)
                 }
-            }
-        case .quizRecord:
-            if let localKey = try metadata(
-                resourceType: .quizRecord,
-                resourceID: record.resourceID
-            )?.localKey, let entity = try quizRecord(localKey: localKey) {
-                modelContext.delete(entity)
             }
         case .storyProgress:
             let id = record.resourceID

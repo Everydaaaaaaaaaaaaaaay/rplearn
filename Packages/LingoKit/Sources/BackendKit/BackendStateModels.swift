@@ -14,7 +14,6 @@ public struct BackendUserProfile: Codable, Sendable, Equatable {
     public let placementCompletedAt: String?
     public let placementScore: Int?
     public let proficiencySource: String?
-    public let quizGloballyEnabled: Bool
     public let starterRegionId: String?
     public let studyStage: String?
     public let unlockedRegionIds: [String]

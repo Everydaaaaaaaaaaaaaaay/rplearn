@@ -188,10 +188,8 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
           isEncounterSession: false,
           lastMessageAt: now,
           lastSummarizedMessageIndex: 0,
-          quizOptOut: false,
           schemaVersion: 1,
           turnCount: 0,
-          turnsSinceQuiz: 0,
         },
         resourceId: conversationId,
         resourceType: "conversation",
@@ -210,8 +208,6 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
           keywordRangesJson: null,
           kind: "text",
           orderIndex: 0,
-          quizChosenIndex: null,
-          quizJson: null,
           role: "user",
           schemaVersion: 1,
           speechReviewJson: null,
@@ -325,7 +321,9 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     expect(firstPageResponse.statusCode).toBe(200);
     const firstPage = firstPageResponse.json<ContentPage>();
     expect(firstPage.records).toHaveLength(2);
-    expect(firstPage.records.find((record) => record.resourceId === characterId)?.payload).toMatchObject({
+    expect(
+      firstPage.records.find((record) => record.resourceId === characterId)?.payload,
+    ).toMatchObject({
       card: {
         activityProfile: {
           focusDurationMinutes: 8,

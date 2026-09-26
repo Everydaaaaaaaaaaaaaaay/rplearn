@@ -18,7 +18,6 @@ export const contentResourceType = applicationSchema.enum("content_resource_type
   "favorite",
   "memory",
   "message",
-  "quiz_record",
   "story_progress",
 ]);
 

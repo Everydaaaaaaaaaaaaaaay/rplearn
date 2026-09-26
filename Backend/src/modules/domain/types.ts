@@ -69,7 +69,6 @@ export type UserProfile = Readonly<{
   placementCompletedAt: string | null;
   placementScore: number | null;
   proficiencySource: ProficiencySource;
-  quizGloballyEnabled: boolean;
   starterRegionId: string | null;
   studyStage: StudyStage | null;
   unlockedRegionIds: readonly string[];
@@ -99,7 +98,6 @@ export type ProfilePatch = Readonly<{
   placementCompletedAt?: string;
   placementScore?: number;
   proficiencySource?: ProficiencySource;
-  quizGloballyEnabled?: boolean;
   studyStage?: StudyStage | null;
 }>;
 

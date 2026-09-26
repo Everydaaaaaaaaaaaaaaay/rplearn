@@ -29,10 +29,9 @@ public enum RoleplayReplyFormatter {
         return head + [remaining.joined(separator: " ")]
     }
 
-    /// 流式阶段仍使用一个临时气泡，但折叠模型输出的空行，并隐藏测验标记。
+    /// 流式阶段使用一个临时气泡，折叠模型输出的空行。
     public static func streamingPreview(from rawText: String) -> String {
-        let replyText = rawText.components(separatedBy: "<quiz>").first ?? rawText
-        return normalizeInlineWhitespace(replyText)
+        normalizeInlineWhitespace(rawText)
     }
 
     private static func messageChunks(from line: String) -> [String] {

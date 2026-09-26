@@ -1,11 +1,5 @@
 export type ContentResourceType =
-  | "character"
-  | "conversation"
-  | "favorite"
-  | "memory"
-  | "message"
-  | "quiz_record"
-  | "story_progress";
+  "character" | "conversation" | "favorite" | "memory" | "message" | "story_progress";
 
 export type ContentRecord = Readonly<{
   createdAt: string;

@@ -51,18 +51,16 @@ public struct InteractionReview: Sendable, Codable, Equatable {
     public var coachReview: CoachReview
     public var relationship: RelationshipSignal
     public var growth: CharacterGrowthSignal?
-    public var quiz: Quiz? = nil
     public var memoryFacts: [MemoryFact]? = nil
 }
 
 extension InteractionReview {
-    private enum ReviewKeys: String, CodingKey { case coachReview, relationship, growth, quiz, memoryFacts }
+    private enum ReviewKeys: String, CodingKey { case coachReview, relationship, growth, memoryFacts }
     public init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: ReviewKeys.self)
         coachReview = try c.decode(CoachReview.self, forKey: .coachReview)
         relationship = try c.decode(RelationshipSignal.self, forKey: .relationship)
         growth = try c.decodeIfPresent(CharacterGrowthSignal.self, forKey: .growth)
-        quiz = try? c.decode(Quiz.self, forKey: .quiz)
         memoryFacts = (try? c.decode([MemoryFact].self, forKey: .memoryFacts)).map { Array($0.prefix(2)) }
     }
 }

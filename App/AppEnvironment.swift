@@ -17,7 +17,6 @@ import UIKit
 @MainActor
 @Observable
 final class AppEnvironment {
-    var learningSystemInstance: ConversationLearningSystem?
     let keychain: KeychainStore
     let backendClient: BackendClient
     let authSession: AuthSession
@@ -227,8 +226,6 @@ final class AppEnvironment {
     }
 
     func deactivateAccount() async {
-        learningSystemInstance?.deactivate()
-        learningSystemInstance = nil
         needsOnboarding = nil
         guard let current = workspace else { return }
         current.billing.deactivate()

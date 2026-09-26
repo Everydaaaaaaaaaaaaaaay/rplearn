@@ -165,7 +165,7 @@ struct RoleplayReplyFormatterTests {
 
     @Test("流式预览折叠空白并隐藏测验内容")
     func streamingPreviewIsCompact() {
-        let raw = "hey there\n\n  how are you  \n<quiz>{\"question\":\"hidden\"}</quiz>"
+        let raw = "hey there\n\n  how are you  \n"
         #expect(RoleplayReplyFormatter.streamingPreview(from: raw) == "hey there how are you")
     }
 }

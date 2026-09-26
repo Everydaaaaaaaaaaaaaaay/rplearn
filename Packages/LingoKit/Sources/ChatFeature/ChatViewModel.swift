@@ -32,9 +32,6 @@ public final class ChatViewModel {
         didSet {
             if draft != oldValue {
                 composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now())
-                // Bulk insertion can be paste, dictation or a keyboard suggestion. Treat
-                // provenance conservatively; never inspect the system clipboard.
-                if draft.count - oldValue.count > 16 { observeLearning(.unattributed) }
             }
         }
     }
@@ -86,27 +83,16 @@ public final class ChatViewModel {
     }
 
     private var replyTask: Task<Void, Never>?
+    private let replyOwnerID = UUID()
     private var replyCycleID = UUID()
     private var pendingReplyPlan: NPCReplyPlan?
     private var typingBeganAt: Date?
-    private let replyOwnerID = UUID()
     var retryingMessageID: UUID?
-
-    /// 本会话下一次出题的阈值（N=6±2，每次出题后重掷）。
-    private var quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
-
-    /// 本会话「不再弹题」状态（供 UI 复选框读取）。
-    public var conversationOptedOut: Bool { conversation?.quizOptOut ?? false }
 
     public init(character: CharacterDTO, deps: ChatDependencies) {
         self.character = character
         self.learnerDifficulty = character.difficultyLevel
         self.deps = deps
-    }
-
-    func observeLearning(_ event: ConversationLearningObservation) {
-        deps.learningObserver?(event)
-        if let conversation { deps.learningRecorder?(character.id, conversation.id, event) }
     }
 
     public func load() async {
@@ -127,13 +113,6 @@ public final class ChatViewModel {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
         }
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["DEBUG_INJECT_QUIZ"] == "1" {
-            if !messages.contains(where: { $0.quizJSON != nil }) {
-                await debugInjectQuiz()
-            }
-        }
-        #endif
     }
 
     /// 正在翻译中的消息（气泡下方转圈）。
@@ -272,7 +251,6 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
-        observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: true))
         scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
@@ -301,14 +279,13 @@ public final class ChatViewModel {
             tokenEstimate: TokenEstimator.estimate(text)
         )
         persisted = true
-        observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: true))
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
         messages.append(userMessage)
         messages.sort { $0.orderIndex < $1.orderIndex }
         notifyConversationChanged()
 
         try Task.checkCancellation()
-        var request = await makeRoleplayRequest(quizRequested: false, voiceMode: true)
+        var request = await makeRoleplayRequest(voiceMode: true)
         try Task.checkCancellation()
         request.voiceLeaseID = voiceLeaseID
         let upstream = await deps.llm.stream(request)
@@ -389,7 +366,6 @@ public final class ChatViewModel {
     }
 
     public func cancelPendingReply() {
-        deps.learningReplyActivity?(replyOwnerID, false)
         replyTask?.cancel()
         replyTask = nil
         replyCycleID = UUID()
@@ -444,7 +420,6 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return false
         }
-        observeLearning(.sent(id: userMessage.id, text: userMessage.text, voice: false))
         // 辅助点评必须等主回复完成：免费额度下不能让后台任务抢走用户可见回复的预留。
         scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
@@ -453,17 +428,13 @@ public final class ChatViewModel {
     /// 一次后台调用同时完成语言点评与关系信号分析，避免每条消息额外消耗一轮模型请求。
     private func runInteractionReview(
         for message: MessageDTO,
-        source: RelationshipEventRecord.Source,
-        quizTarget: MessageDTO? = nil,
-        quizConversationID: UUID? = nil
+        source: RelationshipEventRecord.Source
     ) {
         let relationship = RelationshipService(llm: deps.llm, rosterStore: deps.rosterStore)
         let chatStore = deps.chatStore
         let character = character
         // 点评延后到主回复之后执行，但输入语境必须停在这条用户消息，不能把后生成的回复倒灌到它前面。
         let history = messages.filter { $0.orderIndex <= message.orderIndex }
-        let quizLevel = quizTarget == nil ? nil : learnerDifficulty
-        let economyStore = deps.economyStore
         let memoryStore = deps.memoryStore
         Task(priority: .utility) { [weak self] in
             let extractMemory = MemoryFact.shouldExtract(message.text)
@@ -477,7 +448,7 @@ public final class ChatViewModel {
             do {
                 result = try await relationship.reviewInteractionAndApply(
                     character: character, history: reviewHistory, userMessage: message,
-                    source: source, quizLevel: quizLevel, memoryContext: context, extractMemory: extractMemory
+                    source: source, memoryContext: context, extractMemory: extractMemory
                 )
             } catch {
                 Log.app.warning("互动审阅失败，本轮跳过辅助点评：\(error.localizedDescription)")
@@ -495,14 +466,6 @@ public final class ChatViewModel {
             }
             if result.coachReview.hasIssues, let json = CoachService.encode(result.coachReview) {
                 try? await chatStore.setCoachReview(messageID: message.id, json: json)
-            }
-            if let target = quizTarget, let conversationID = quizConversationID,
-               let quiz = result.quiz, quiz.isValid,
-               (try? await economyStore.profile().quizGloballyEnabled) == true,
-               let conversation = try? await chatStore.conversation(id: conversationID),
-               !conversation.quizOptOut, let json = QuizService.encode(quiz) {
-                try? await chatStore.attachQuiz(messageID: target.id, quizJSON: json,
-                    conversationID: conversationID, resetCounter: false)
             }
             await self?.reloadMessages()
         }
@@ -551,7 +514,6 @@ public final class ChatViewModel {
         replyCycleID = UUID()
         let cycleID = replyCycleID
         pendingReplyPlan = plan
-        deps.learningReplyActivity?(replyOwnerID, plan.generationStartsAt.timeIntervalSince(deps.now()) <= 60)
         typingBeganAt = nil
         isWaitingForUserBurst = true
         isStreaming = false
@@ -564,7 +526,6 @@ public final class ChatViewModel {
             do {
                 try await wait(until: plan.generationStartsAt)
                 guard cycleID == replyCycleID, !Task.isCancelled else { return }
-                deps.learningReplyActivity?(replyOwnerID, true)
                 try await waitForUserToFinish(plan: plan)
                 let wordCount = messages.last(where: { $0.role == .user })?.text.split(whereSeparator: \.isWhitespace).count ?? 0
                 // During an active conversation, preparation overlaps the quiet
@@ -660,7 +621,6 @@ public final class ChatViewModel {
 
     private func clearReplyState(cycleID: UUID) {
         guard cycleID == replyCycleID else { return }
-        deps.learningReplyActivity?(replyOwnerID, false)
         isWaitingForUserBurst = false
         isStreaming = false
         streamingText = nil
@@ -747,9 +707,7 @@ public final class ChatViewModel {
         }
 
         let memoryService = self.memoryService
-        let quizRequested = await shouldRequestQuiz(conversationID: conversation.id)
         var request = await makeRoleplayRequest(
-            quizRequested: false,
             voiceMode: false
         )
         request.system = Self.appendingSystemInstruction(
@@ -902,16 +860,9 @@ public final class ChatViewModel {
                 messages.removeAll { $0.id == replacedMessageID }
             }
             try? await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: false)
-            // 小测与点评共用后台请求，失败不追加调用，也不阻断已完成的回复。
-            if quizRequested {
-                try? await deps.chatStore.resetQuizCounter(conversationID: conversation.id)
-                quizThreshold = QuizService.nextThreshold(random: Int.random(in: -2...2))
-            }
             if let userMessage = messages.first(where: { $0.id == plan.userMessageID }) {
                 let source: RelationshipEventRecord.Source = userMessage.kind == .voice ? .voiceChat : .textChat
-                runInteractionReview(for: userMessage, source: source,
-                    quizTarget: quizRequested ? assistantMessages.last : nil,
-                    quizConversationID: conversation.id)
+                runInteractionReview(for: userMessage, source: source)
             }
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
@@ -1065,75 +1016,6 @@ public final class ChatViewModel {
                 cycleID: cycle, plan: plan, replacingAssistantMessageID: nil)
         } catch is CancellationError { }
         catch { errorMessage = "Capture playback failed: \(error.localizedDescription)" }
-    }
-    #endif
-
-    // MARK: - 语境出题
-
-    /// 双开关都开、且距上次出题已达阈值 → 本回合请求出题。
-    private func shouldRequestQuiz(conversationID: UUID) async -> Bool {
-        let globallyEnabled = (try? await deps.economyStore.profile().quizGloballyEnabled) ?? true
-        guard let conversation = try? await deps.chatStore.conversation(id: conversationID) else { return false }
-        return QuizService.shouldRequestQuiz(
-            globallyEnabled: globallyEnabled,
-            conversationOptedOut: conversation.quizOptOut,
-            turnsSinceQuiz: conversation.turnsSinceQuiz,
-            threshold: quizThreshold
-        )
-    }
-
-    /// 作答某道 quiz：本地判分、落库记录、答对奖励金币。
-    public func answerQuiz(message: MessageDTO, chosenIndex: Int) async {
-        guard message.quizChosenIndex == nil,
-              let quiz = QuizService.decode(fromJSON: message.quizJSON),
-              let optionsJSON = encodeOptions(quiz.options) else { return }
-        try? await deps.chatStore.recordQuizAnswer(
-            messageID: message.id,
-            chosenIndex: chosenIndex,
-            question: quiz.question,
-            optionsJSON: optionsJSON,
-            correctIndex: quiz.answer,
-            characterName: character.card.name
-        )
-        if chosenIndex == quiz.answer {
-            Haptics.notify(.success)
-            // 只有服务端签发的题目挑战才能产生资产奖励；本地题目只记录学习结果。
-        } else {
-            Haptics.notify(.error)
-        }
-        await reloadMessages()
-    }
-
-    /// 本会话「不再弹题」开关。
-    public func setQuizOptOut(_ optedOut: Bool) async {
-        guard let conversation else { return }
-        try? await deps.chatStore.setQuizOptOut(conversationID: conversation.id, optedOut: optedOut)
-        self.conversation = try? await deps.chatStore.conversation(id: conversation.id)
-    }
-
-    private func encodeOptions(_ options: [String]) -> String? {
-        guard let data = try? JSONEncoder().encode(options) else { return nil }
-        return String(decoding: data, as: UTF8.self)
-    }
-
-    #if DEBUG
-    /// 模拟器/调试用：直接注入一条带 quiz 的助手消息，验证出题 UI 全流程。
-    public func debugInjectQuiz() async {
-        guard let conversation else { return }
-        let sample = Quiz(
-            question: "Which word means \"very tired\"?",
-            options: ["keen", "exhausted", "brave", "tidy"],
-            answer: 1,
-            explanationZh: "exhausted 表示筋疲力尽；keen 是热衷的、brave 是勇敢的、tidy 是整洁的。"
-        )
-        guard let messages = try? await persistAssistantReply(
-            conversationID: conversation.id,
-            text: "Honestly I'm knackered after that shift 😴",
-            interrupted: false
-        ), let message = messages.last,
-           let json = QuizService.encode(sample) else { return }
-        try? await deps.chatStore.attachQuiz(messageID: message.id, quizJSON: json, conversationID: conversation.id)
-        await reloadMessages()
     }
     #endif
 

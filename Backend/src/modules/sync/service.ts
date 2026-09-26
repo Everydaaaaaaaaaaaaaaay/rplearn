@@ -33,7 +33,6 @@ export type SyncCommand =
         placementCompletedAt?: string;
         placementScore?: number;
         proficiencySource?: ProficiencySource;
-        quizGloballyEnabled?: boolean;
         studyStage?: StudyStage | null;
       }>;
       type: "profile.update";

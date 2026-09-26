@@ -318,7 +318,6 @@ public struct ConversationListView: View {
     private func summaryText(_ summary: ConversationSummaryDTO) -> String {
         switch summary.lastMessageKind {
         case .voice: "[语音]"
-        case .quiz: "[小测验]"
         default: summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : summary.lastMessageText
         }
     }

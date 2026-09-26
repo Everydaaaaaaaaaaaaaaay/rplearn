@@ -142,7 +142,6 @@ public enum MessageRole: String, Sendable, Codable {
 public enum MessageKind: String, Sendable, Codable {
     case text
     case voice
-    case quiz
     case storyLine
 }
 

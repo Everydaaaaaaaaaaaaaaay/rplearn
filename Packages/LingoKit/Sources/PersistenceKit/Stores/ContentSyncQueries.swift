@@ -109,11 +109,7 @@ extension ContentSyncStore {
         }
     }
 
-    func quizRecord(localKey: String) throws -> QuizRecordEntity? {
-        try modelContext.fetch(FetchDescriptor<QuizRecordEntity>()).first {
-            persistentKey($0.persistentModelID) == localKey
-        }
-    }
+
 
     func persistentKey(_ id: PersistentIdentifier) -> String {
         ContentMutationJournal.persistentKey(id)

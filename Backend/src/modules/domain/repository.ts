@@ -105,7 +105,6 @@ export class DomainRepository {
           placement_completed_at,
           placement_score,
           proficiency_source,
-          quiz_globally_enabled,
           starter_region_id,
           study_stage,
           updated_at,
@@ -376,10 +375,6 @@ export class DomainRepository {
                 ${patch.difficulty ?? null},
                 difficulty
               )::app.difficulty_level,
-              quiz_globally_enabled = coalesce(
-                ${patch.quizGloballyEnabled ?? null},
-                quiz_globally_enabled
-              ),
               has_completed_onboarding = coalesce(
                 ${patch.hasCompletedOnboarding ?? null},
                 has_completed_onboarding
@@ -426,7 +421,6 @@ export class DomainRepository {
             placement_completed_at,
             placement_score,
             proficiency_source,
-            quiz_globally_enabled,
             starter_region_id,
             study_stage,
             updated_at,

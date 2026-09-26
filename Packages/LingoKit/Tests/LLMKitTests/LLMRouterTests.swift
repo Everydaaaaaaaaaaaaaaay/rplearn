@@ -15,7 +15,7 @@ struct LLMRouterTests {
         }
     }
 
-    @Test("后台失败不放大请求，前台保留重试", arguments: [LLMTask.coachReview, .memorySummary, .quiz, .conversation])
+    @Test("后台失败不放大请求，前台保留重试", arguments: [LLMTask.coachReview, .memorySummary, .conversation])
     func boundedRetries(task: LLMTask) async {
         let client = FailingClient()
         let router = LLMRouter(client: client, maxRetries: 1)

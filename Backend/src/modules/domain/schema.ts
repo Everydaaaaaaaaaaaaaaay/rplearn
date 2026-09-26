@@ -120,7 +120,6 @@ export const userProfiles = applicationSchema.table(
     proficiencySource: proficiencySource("proficiency_source")
       .default("selfReported")
       .notNull(),
-    quizGloballyEnabled: boolean("quiz_globally_enabled").default(true).notNull(),
     starterRegionId: text("starter_region_id").references(() => regions.id),
     studyStage: studyStage("study_stage"),
     updatedAt: timestamp("updated_at", {

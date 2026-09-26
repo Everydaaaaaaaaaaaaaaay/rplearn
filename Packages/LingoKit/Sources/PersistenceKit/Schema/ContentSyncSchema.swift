@@ -7,7 +7,6 @@ public enum ContentResourceKind: String, Codable, CaseIterable, Sendable {
     case favorite
     case memory
     case message
-    case quizRecord = "quiz_record"
     case storyProgress = "story_progress"
 }
 

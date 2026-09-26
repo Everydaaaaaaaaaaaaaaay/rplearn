@@ -32,7 +32,6 @@ public actor BackendUserStateCoordinator:
         let placementCompletedAt: String?
         let placementScore: Int?
         let proficiencySource: String?
-        let quizGloballyEnabled: Bool?
         let studyStage: String?
     }
 
@@ -253,8 +252,6 @@ public actor BackendUserStateCoordinator:
             proficiencySource: desired.proficiencySource.rawValue
                 == (current.proficiencySource ?? ProficiencySource.selfReported.rawValue)
                 ? nil : desired.proficiencySource.rawValue,
-            quizGloballyEnabled: desired.quizGloballyEnabled
-                == current.quizGloballyEnabled ? nil : desired.quizGloballyEnabled,
             studyStage: desired.studyStage?.rawValue == current.studyStage
                 ? nil : desired.studyStage?.rawValue
         )
@@ -266,13 +263,11 @@ public actor BackendUserStateCoordinator:
             || patch.placementCompletedAt != nil
             || patch.placementScore != nil
             || patch.proficiencySource != nil
-            || patch.quizGloballyEnabled != nil
             || patch.studyStage != nil
         else {
             return desired
         }
         let onboardingValue = patch.hasCompletedOnboarding.map { String($0) } ?? "-"
-        let quizValue = patch.quizGloballyEnabled.map { String($0) } ?? "-"
         let intentParts: [String] = [
             "profile",
             String(current.version),
@@ -284,7 +279,6 @@ public actor BackendUserStateCoordinator:
             patch.placementCompletedAt ?? "-",
             patch.placementScore.map { String($0) } ?? "-",
             patch.proficiencySource ?? "-",
-            quizValue,
             patch.studyStage ?? "-",
         ]
         let intent = intentParts.joined(separator: ":")
@@ -578,7 +572,6 @@ public actor BackendUserStateCoordinator:
             coins: profile.coins,
             subscriptionTier: .free,
             friendSlotLimit: profile.friendSlotLimit,
-            quizGloballyEnabled: profile.quizGloballyEnabled,
             unlockedRegionIDs: profile.unlockedRegionIds,
             difficultyLevel: DifficultyLevel(rawValue: profile.difficulty) ?? .junior1,
             hasCompletedOnboarding: profile.hasCompletedOnboarding,

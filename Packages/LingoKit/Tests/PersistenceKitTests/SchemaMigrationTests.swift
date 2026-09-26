@@ -5,7 +5,7 @@ import Testing
 
 @Suite("SwiftData schema migration")
 struct SchemaMigrationTests {
-    @Test("1.0 角色、聊天和记忆升级到 1.1 时不丢失")
+    @Test("移除旧小测后，角色、聊天、档案和记忆仍保留")
     func migratesVersionOneStoreWithoutDataLoss() throws {
         let directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("lingotrip-migration-\(UUID().uuidString)", isDirectory: true)
@@ -58,6 +58,9 @@ struct SchemaMigrationTests {
             conversation.messages.append(message)
             character.memories.append(memory)
             context.insert(character)
+            context.insert(LingoSchemaV1.UserProfileEntity(displayName: "保留档案", quizGloballyEnabled: true, difficultyLevelRaw: "primary3"))
+            message.quizJSON = "旧学习题目"
+            context.insert(LingoSchemaV1.QuizRecordEntity(question: "旧小测", optionsJSON: "[]", correctIndex: 0))
             try context.save()
         }
 
@@ -69,6 +72,9 @@ struct SchemaMigrationTests {
             configurations: [currentConfiguration]
         )
         let context = ModelContext(migratedContainer)
+        let profiles = try context.fetch(FetchDescriptor<UserProfileEntity>())
+        #expect(profiles.first?.displayName == "保留档案")
+        #expect(profiles.first?.difficultyLevelRaw == "primary3")
         let characters = try context.fetch(FetchDescriptor<CharacterEntity>())
         let conversations = try context.fetch(FetchDescriptor<ConversationEntity>())
         let messages = try context.fetch(FetchDescriptor<MessageEntity>())

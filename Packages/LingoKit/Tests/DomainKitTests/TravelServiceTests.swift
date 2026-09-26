@@ -75,7 +75,7 @@ struct TravelServiceTests {
             coins: 0,
             subscriptionTier: .free,
             friendSlotLimit: 3,
-            quizGloballyEnabled: true,
+
             unlockedRegionIDs: ["london", "melbourne"],
             difficultyLevel: .junior3,
             hasCompletedOnboarding: true

@@ -15,7 +15,6 @@ extension ChatViewModel {
 
     /// 注入分级记忆、学习者档案与主线引导；文本聊天和实时语音共享同一角色事实来源。
     func makeRoleplayRequest(
-        quizRequested: Bool,
         voiceMode: Bool
     ) async -> LLMRequest {
         let memoryService = self.memoryService
@@ -47,7 +46,7 @@ extension ChatViewModel {
         }
         let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
-        var request = PromptBuilder.roleplayRequest(
+        let request = PromptBuilder.roleplayRequest(
             card: character.card,
             learner: learner,
             history: messages.filter { $0.id != retryingMessageID && (memoryCutoff == nil || $0.createdAt > memoryCutoff!) },
@@ -59,13 +58,9 @@ extension ChatViewModel {
                 currentCharacter?.growth ?? character.growth
             ),
             guidance: mainlineActive ? PromptBuilder.mainlineGuidance : nil,
-            quizRequested: quizRequested,
             voiceMode: voiceMode,
             rawWindow: rawWindow
         )
-        if !voiceMode, let instruction = deps.learningInstruction?(characterID) {
-            request.system = [request.system, instruction].compactMap { $0 }.joined(separator: "\n\n")
-        }
         return request
     }
 

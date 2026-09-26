@@ -94,9 +94,28 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await sql`insert into app.unit_learning_templates(id,role_key,grade,source,payload) values('old.unit','oliver',1,'authored','{}')`;
       await sql`insert into app.unit_learning_attempts(id,user_id,character_id,template_id,grade) values(${randomUUID()},${user},${character},'old.unit',1)`;
       const profileBefore =
-        await sql`select * from app.user_profiles where user_id=${user}`;
+        await sql`select to_jsonb(p)-'quiz_globally_enabled' as profile from app.user_profiles p where user_id=${user}`;
       const contentBefore =
         await sql`select * from app.content_records where user_id=${user} order by resource_id`;
+      const retiredQuizId = randomUUID();
+      await sql`insert into app.content_records(user_id,resource_type,resource_id,payload) values(${user},'quiz_record',${retiredQuizId},'{}')`;
+      await sql`update app.content_records set payload=payload || '{"quizJson":"旧附加小测","quizChosenIndex":1}'::jsonb where user_id=${user} and resource_id=${message}`;
+      await sql`update app.content_records set payload=payload || '{"quizOptOut":false,"turnsSinceQuiz":8}'::jsonb where user_id=${user} and resource_id=${conversation}`;
+      const retiredEvent = {
+        resourceType: "quiz_record",
+        resourceId: retiredQuizId,
+        payload: { question: "旧题" },
+      };
+      const retainedEvent = {
+        resourceType: "message",
+        resourceId: message,
+        payload: { text: "保留消息", quizJson: "旧附加小测" },
+      };
+      for (const [index, payload] of [retiredEvent, retainedEvent].entries()) {
+        const commandId = randomUUID();
+        await sql`insert into app.sync_changes(user_id,command_id,event_id,event_type,sequence,payload) values(${user},${commandId},${randomUUID()},'content.test',${index + 1},${JSON.stringify(payload)}::jsonb)`;
+        await sql`insert into app.command_receipts(user_id,command_id,route,request_hash,response) values(${user},${commandId},'content.command','test',${JSON.stringify(payload)}::jsonb)`;
+      }
       await runMigrations(database);
       await assertMigrationsCurrent(database);
       for (const name of [
@@ -112,12 +131,31 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         >`select to_regclass(${`app.${name}`})::text as relation`;
         expect(table?.relation).toBeNull();
       }
-      expect(await sql`select * from app.user_profiles where user_id=${user}`).toEqual(
-        profileBefore,
-      );
+      expect(
+        await sql`select to_jsonb(p)-'quiz_globally_enabled' as profile from app.user_profiles p where user_id=${user}`,
+      ).toEqual(profileBefore);
       expect(
         await sql`select * from app.content_records where user_id=${user} order by resource_id`,
       ).toEqual(contentBefore);
+      const events = await sql<
+        { payload: unknown }[]
+      >`select payload from app.sync_changes where user_id=${user}`;
+      expect(events).toEqual([
+        {
+          payload: {
+            resourceType: "message",
+            resourceId: message,
+            payload: { text: "保留消息" },
+          },
+        },
+      ]);
+      const receipts = await sql<
+        { response: unknown }[]
+      >`select response from app.command_receipts where user_id=${user}`;
+      expect(receipts).toEqual([{ response: events[0]?.payload }]);
+      const columns =
+        await sql`select column_name from information_schema.columns where table_schema='app' and table_name='user_profiles' and column_name='quiz_globally_enabled'`;
+      expect(columns).toHaveLength(0);
       expect(
         await sql`select * from app.learning_attempts where user_id=${user}`,
       ).toHaveLength(0);

@@ -161,31 +161,16 @@ public struct SettingsView: View {
     }
 
     private var reminderSummary: String {
-        let quizEnabled = profile?.quizGloballyEnabled == true
-        let activeCount = (quizEnabled ? 1 : 0) + (proactiveMessagesEnabled ? 1 : 0)
-        return switch activeCount {
-        case 0: "学习提醒已暂停"
-        case 1: "1 项学习提醒已开启"
-        default: "2 项学习提醒已开启"
-        }
+        proactiveMessagesEnabled ? "角色主动联系已开启" : "角色主动联系已暂停"
     }
 
     private var reminderSummaryIcon: String {
-        reminderSummary == "学习提醒已暂停" ? "pause.circle.fill" : "checkmark.circle.fill"
+        !proactiveMessagesEnabled ? "pause.circle.fill" : "checkmark.circle.fill"
     }
 
     private var learningAndReminderPanel: some View {
         VStack(alignment: .leading, spacing: 0) {
-            panelTitle("学习与提醒", systemImage: "bell.and.waves.left.and.right")
-
-            if profile != nil {
-                settingsToggle(
-                    "聊天中随机出题",
-                    detail: "在对话中偶尔加入一道轻量练习",
-                    isOn: quizEnabledBinding
-                )
-                panelDivider
-            }
+            panelTitle("消息提醒", systemImage: "bell.and.waves.left.and.right")
 
             settingsToggle(
                 "角色主动联系",
@@ -634,19 +619,6 @@ public struct SettingsView: View {
         let formatter = ByteCountFormatter()
         formatter.countStyle = .file
         return formatter.string(fromByteCount: count)
-    }
-
-    private var quizEnabledBinding: Binding<Bool> {
-        Binding(
-            get: { profile?.quizGloballyEnabled ?? true },
-            set: { newValue in
-                Task {
-                    profile = try? await profileCommands.updateProfile {
-                        $0.quizGloballyEnabled = newValue
-                    }
-                }
-            }
-        )
     }
 
     private func reloadProfile() async {

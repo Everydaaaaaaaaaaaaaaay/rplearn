@@ -33,9 +33,6 @@ public struct ChatView: View {
     @State var showSimulatorInjection = false
     @State var simulatorInjectionText = ""
     @State var appleTranslator = AppleTranslator()
-    @State var quizCelebrationTrigger = 0
-    @State var shakingMessageID: UUID?
-    @State var shakePhase = false
     @State var showsRealtimeConversation = false
     @State private var accessAfterVoice = false
     @State var isNearConversationBottom = true
@@ -182,7 +179,7 @@ public struct ChatView: View {
             favoriteActions: wordFavoriteActions,
             aiFallback: aiWordFallback)
         .onChange(of: wordSelection) { _, selection in
-            if selection != nil { deps.tutorial?.onEvent("word"); viewModel.observeLearning(.assistance) }
+            if selection != nil { deps.tutorial?.onEvent("word") }
         }
         .grammarTermLookupOverlay(
             selection: $grammarTermSelection,
@@ -643,7 +640,6 @@ public struct ChatView: View {
                     }
                     .buttonStyle(.borderless)
                 }
-                quizCard(message)
             }
         case .coach:
             // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位

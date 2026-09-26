@@ -16,7 +16,6 @@ public actor AccountCacheStore {
         try modelContext.delete(model: ContentOutboxEntity.self)
         try modelContext.delete(model: ContentSyncMetadataEntity.self)
         try modelContext.delete(model: ContentSyncOwnerEntity.self)
-        try modelContext.delete(model: QuizRecordEntity.self)
         try modelContext.delete(model: MessageEntity.self)
         try modelContext.delete(model: ConversationEntity.self)
         try modelContext.delete(model: MemoryEntity.self)

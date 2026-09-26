@@ -36,7 +36,6 @@ export async function loadDomainSnapshot(
       placement_completed_at,
       placement_score,
       proficiency_source,
-      quiz_globally_enabled,
       starter_region_id,
       study_stage,
       updated_at,

@@ -155,7 +155,7 @@ struct PromptBuilderTests {
             memorySections: ["[Things you remember]\n- user likes cats"]
         )
         #expect(prompt.contains("[Things you remember]\n- user likes cats"))
-        #expect(prompt.contains("before any optional quiz block."))
+        #expect(prompt.contains("in this reply."))
         #expect(prompt.hasSuffix("- user likes cats"))
         #expect(prompt.range(of: "## Final reply contract")!.lowerBound < prompt.range(of: "## Trusted present-time context")!.lowerBound)
     }
@@ -379,31 +379,7 @@ struct PromptBuilderTests {
         #expect(ordinary.system?.contains("## Current repair constraint") == false)
     }
 
-    @Test("出题回合：附加出题指令并放宽 maxTokens")
-    func quizRequestedAppendsInstruction() {
-        let plain = PromptBuilder.roleplaySystemPrompt(
-            card: card,
-            learner: learner(difficulty: .junior3)
-        )
-        #expect(!plain.contains("Optional pop quiz"))
 
-        let withQuiz = PromptBuilder.roleplaySystemPrompt(
-            card: card,
-            learner: learner(difficulty: .junior3),
-            quizRequested: true
-        )
-        #expect(withQuiz.contains("## Optional pop quiz"))
-        #expect(withQuiz.contains("<quiz>"))
-
-        let request = PromptBuilder.roleplayRequest(
-            card: card,
-            learner: learner(difficulty: .junior3),
-            history: [],
-            quizRequested: true
-        )
-        #expect(request.system?.contains("Optional pop quiz") == true)
-        #expect(request.maxTokens == 900)
-    }
 
     private func learner(difficulty: DifficultyLevel) -> LearnerContext {
         LearnerContext(

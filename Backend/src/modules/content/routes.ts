@@ -161,7 +161,9 @@ const characterPayload = z
         nationality: z.string().trim().min(1).max(80),
         occupation: z.string().trim().min(1).max(120),
         personality: z.string().trim().min(1).max(2_000),
-        readingVoice: z.enum(["M1", "M2", "M3", "M4", "M5", "F1", "F2", "F3", "F4", "F5"]).optional(),
+        readingVoice: z
+          .enum(["M1", "M2", "M3", "M4", "M5", "F1", "F2", "F3", "F4", "F5"])
+          .optional(),
         personaVoice: personaVoicePayload.optional(),
         activityProfile: activityProfilePayload.optional(),
         regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
@@ -200,10 +202,8 @@ const conversationPayload = z
     lastMessageAt: isoDate,
     lastReadAt: isoDate.nullable().optional(),
     lastSummarizedMessageIndex: z.number().int().min(0),
-    quizOptOut: z.boolean(),
     schemaVersion: z.union([z.literal(1), z.literal(2)]),
     turnCount: z.number().int().min(0),
-    turnsSinceQuiz: z.number().int().min(0),
   })
   .strict();
 
@@ -215,10 +215,8 @@ const messagePayload = z
     createdAt: isoDate,
     isInterrupted: z.boolean(),
     keywordRangesJson: nullableText(65_536),
-    kind: z.enum(["text", "voice", "quiz", "storyLine"]),
+    kind: z.enum(["text", "voice", "storyLine"]),
     orderIndex: z.number().int().min(0),
-    quizChosenIndex: z.number().int().min(0).max(20).nullable().optional(),
-    quizJson: nullableText(65_536),
     role: z.enum(["user", "assistant", "coach"]),
     schemaVersion,
     speechReviewJson: nullableText(65_536),
@@ -279,18 +277,6 @@ const storyProgressPayload = z
   .strict()
   .refine((value) => Object.keys(value.flags).length <= 200, "Too many story flags");
 
-const quizRecordPayload = z
-  .object({
-    characterName: nullableText(80),
-    chosenIndex: z.number().int().min(0).max(20),
-    correctIndex: z.number().int().min(0).max(20),
-    createdAt: isoDate,
-    optionsJson: z.string().max(16_000),
-    question: z.string().trim().min(1).max(4_000),
-    schemaVersion,
-  })
-  .strict();
-
 const commandBase = {
   commandId: uuid,
   expectedVersion: z.number().int().min(0),
@@ -336,13 +322,6 @@ const upsertCommandSchema = z.discriminatedUnion("resourceType", [
   z.object({
     ...commandBase,
     parentId: z.null().optional(),
-    payload: quizRecordPayload,
-    resourceId: uuid,
-    resourceType: z.literal("quiz_record"),
-  }),
-  z.object({
-    ...commandBase,
-    parentId: z.null().optional(),
     payload: storyProgressPayload,
     resourceId: z.string().regex(/^[a-z0-9_-]{1,128}$/),
     resourceType: z.literal("story_progress"),
@@ -355,7 +334,6 @@ const resourceType = z.enum([
   "favorite",
   "memory",
   "message",
-  "quiz_record",
   "story_progress",
 ]);
 

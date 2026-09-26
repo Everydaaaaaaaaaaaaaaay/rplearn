@@ -22,7 +22,6 @@ public actor EconomyStore {
         entity.currentRegionID = profile.currentRegionID
         entity.subscriptionTierRaw = profile.subscriptionTier.rawValue
         entity.friendSlotLimit = profile.friendSlotLimit
-        entity.quizGloballyEnabled = profile.quizGloballyEnabled
         entity.unlockedRegionIDs = profile.unlockedRegionIDs
         entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
         entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
@@ -100,7 +99,6 @@ public actor EconomyStore {
         entity.coins = profile.coins
         entity.subscriptionTierRaw = profile.subscriptionTier.rawValue
         entity.friendSlotLimit = profile.friendSlotLimit
-        entity.quizGloballyEnabled = profile.quizGloballyEnabled
         entity.unlockedRegionIDs = profile.unlockedRegionIDs
         entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
         entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
@@ -163,7 +161,6 @@ public actor EconomyStore {
             coins: entity.coins,
             subscriptionTier: SubscriptionTier(rawValue: entity.subscriptionTierRaw) ?? .free,
             friendSlotLimit: entity.friendSlotLimit,
-            quizGloballyEnabled: entity.quizGloballyEnabled,
             unlockedRegionIDs: entity.unlockedRegionIDs,
             difficultyLevel: DifficultyLevel(rawValue: entity.difficultyLevelRaw) ?? .junior3,
             hasCompletedOnboarding: entity.hasCompletedOnboarding,

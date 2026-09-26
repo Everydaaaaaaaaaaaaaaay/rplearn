@@ -187,7 +187,6 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       headers: authenticated({ idempotencyKey: newEntityId() }),
       method: "PATCH",
       payload: {
-        quizGloballyEnabled: false,
         expectedVersion: initialSnapshot.profile.version,
       },
       url: "/v1/me",

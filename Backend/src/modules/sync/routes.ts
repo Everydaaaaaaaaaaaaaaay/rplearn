@@ -74,7 +74,6 @@ const profileCommandSchema = z.object({
       placementCompletedAt: z.iso.datetime({ offset: true }).optional(),
       placementScore: z.number().int().min(0).max(100).optional(),
       proficiencySource: proficiencySourceSchema.optional(),
-      quizGloballyEnabled: z.boolean().optional(),
       studyStage: studyStageSchema.nullable().optional(),
     })
     .refine(
@@ -87,7 +86,6 @@ const profileCommandSchema = z.object({
         value.placementCompletedAt !== undefined ||
         value.placementScore !== undefined ||
         value.proficiencySource !== undefined ||
-        value.quizGloballyEnabled !== undefined ||
         value.studyStage !== undefined,
       "At least one profile field must be updated",
     ),

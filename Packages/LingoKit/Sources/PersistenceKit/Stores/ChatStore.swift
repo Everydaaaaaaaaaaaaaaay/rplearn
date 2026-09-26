@@ -134,7 +134,6 @@ public actor ChatStore {
                 modelContext.delete(message)
             }
             conversation.turnCount = 0
-            conversation.turnsSinceQuiz = 0
             conversation.lastSummarizedMessageIndex = 0
             conversation.lastMessageAt = conversation.createdAt
             try journal(conversation)
@@ -207,7 +206,6 @@ public actor ChatStore {
         modelContext.insert(message)
         conversation.lastMessageAt = message.createdAt
         conversation.turnCount += 1
-        conversation.turnsSinceQuiz += 1
         try journal(message)
         try journal(conversation)
         try modelContext.save()
@@ -285,7 +283,6 @@ public actor ChatStore {
         modelContext.insert(message)
         conversation.lastMessageAt = max(conversation.lastMessageAt, message.createdAt)
         conversation.turnCount += 1
-        conversation.turnsSinceQuiz += 1
         try journal(message)
         try journal(conversation)
         try modelContext.save()
@@ -325,7 +322,6 @@ public actor ChatStore {
         conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
         if role == .assistant {
             conversation.turnCount += 1
-            conversation.turnsSinceQuiz += 1
         }
         try journal(message)
         try journal(conversation)
@@ -370,7 +366,6 @@ public actor ChatStore {
 
         conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
         conversation.turnCount += 1
-        conversation.turnsSinceQuiz += 1
         try journal(conversation)
         try modelContext.save()
         return inserted.map(dto(from:))
@@ -404,7 +399,6 @@ public actor ChatStore {
         conversation.lastMessageAt = message.createdAt
         if startsNewReply {
             conversation.turnCount += 1
-            conversation.turnsSinceQuiz += 1
         }
         try journal(message)
         try journal(conversation)
@@ -570,63 +564,6 @@ public actor ChatStore {
         link.localFileName = fileName
         link.updatedAt = .now
         message.audioFileName = fileName
-        try modelContext.save()
-    }
-
-    // MARK: - 语境出题
-
-    /// 后台出题已在派发时重置计数，可保留等待期间新增的回合。
-    public func attachQuiz(
-        messageID: UUID, quizJSON: String, conversationID: UUID, resetCounter: Bool = true
-    ) throws {
-        guard let message = try fetchMessage(id: messageID) else { return }
-        message.quizJSON = quizJSON
-        if resetCounter, let conversation = try fetchConversation(id: conversationID) {
-            conversation.turnsSinceQuiz = 0
-            try journal(conversation)
-        }
-        try journal(message)
-        try modelContext.save()
-    }
-
-    /// 出题指令已发但模型未产出 quiz：仅清零计数，避免每轮重复追加指令。
-    public func resetQuizCounter(conversationID: UUID) throws {
-        guard let conversation = try fetchConversation(id: conversationID) else { return }
-        conversation.turnsSinceQuiz = 0
-        try journal(conversation)
-        try modelContext.save()
-    }
-
-    /// 本会话「不再弹题」开关。
-    public func setQuizOptOut(conversationID: UUID, optedOut: Bool) throws {
-        guard let conversation = try fetchConversation(id: conversationID) else { return }
-        conversation.quizOptOut = optedOut
-        try journal(conversation)
-        try modelContext.save()
-    }
-
-    /// 作答：记录选项到消息，并写一条出题记录（供后续统计）。
-    public func recordQuizAnswer(
-        messageID: UUID,
-        chosenIndex: Int,
-        question: String,
-        optionsJSON: String,
-        correctIndex: Int,
-        characterName: String?
-    ) throws {
-        guard let message = try fetchMessage(id: messageID), message.quizChosenIndex == nil else { return }
-        message.quizChosenIndex = chosenIndex
-        let record = QuizRecordEntity(
-            question: question,
-            optionsJSON: optionsJSON,
-            correctIndex: correctIndex,
-            chosenIndex: chosenIndex,
-            characterName: characterName
-        )
-        modelContext.insert(record)
-        try journal(message)
-        try modelContext.save()
-        try journal(record)
         try modelContext.save()
     }
 
@@ -810,9 +747,7 @@ public actor ChatStore {
                     lastMessageAt: conversation.lastMessageAt,
                     lastReadAt: conversation.lastReadAt,
                     lastSummarizedMessageIndex: conversation.lastSummarizedMessageIndex,
-                    quizOptOut: conversation.quizOptOut,
-                    turnCount: conversation.turnCount,
-                    turnsSinceQuiz: conversation.turnsSinceQuiz
+                    turnCount: conversation.turnCount
                 )
             )
         )
@@ -836,8 +771,6 @@ public actor ChatStore {
                     keywordRangesJson: message.keywordRangesJSON,
                     kind: message.kindRaw,
                     orderIndex: message.orderIndex,
-                    quizChosenIndex: message.quizChosenIndex,
-                    quizJson: message.quizJSON,
                     role: message.roleRaw,
                     speechReviewJson: message.speechReviewJSON,
                     text: message.text,
@@ -848,31 +781,7 @@ public actor ChatStore {
         )
     }
 
-    private func journal(_ quiz: QuizRecordEntity) throws {
-        guard let chosenIndex = quiz.chosenIndex else { return }
-        let localKey = ContentMutationJournal.persistentKey(quiz.persistentModelID)
-        let resourceID = try ContentMutationJournal.resourceID(
-            in: modelContext,
-            resourceType: .quizRecord,
-            localKey: localKey
-        )
-        try ContentMutationJournal.upsert(
-            in: modelContext,
-            resourceType: .quizRecord,
-            resourceID: resourceID,
-            parentID: nil,
-            payloadJSON: try ContentMutationJournal.encode(
-                ContentQuizRecordPayload(
-                    characterName: quiz.characterName,
-                    chosenIndex: chosenIndex,
-                    correctIndex: quiz.correctIndex,
-                    createdAt: quiz.createdAt,
-                    optionsJson: quiz.optionsJSON,
-                    question: quiz.question
-                )
-            )
-        )
-    }
+
 
     static func dto(from entity: ConversationEntity, characterID: UUID) -> ConversationDTO {
         ConversationDTO(
@@ -881,8 +790,6 @@ public actor ChatStore {
             createdAt: entity.createdAt,
             lastMessageAt: entity.lastMessageAt,
             turnCount: entity.turnCount,
-            turnsSinceQuiz: entity.turnsSinceQuiz,
-            quizOptOut: entity.quizOptOut,
             lastSummarizedMessageIndex: entity.lastSummarizedMessageIndex,
             isEncounterSession: entity.isEncounterSession,
             isArchived: entity.isArchived,
@@ -906,8 +813,6 @@ public actor ChatStore {
             keywordRangesJSON: entity.keywordRangesJSON,
             coachReviewJSON: entity.coachReviewJSON,
             speechReviewJSON: entity.speechReviewJSON,
-            quizJSON: entity.quizJSON,
-            quizChosenIndex: entity.quizChosenIndex,
             translationZh: entity.translationZh,
             isInterrupted: entity.isInterrupted,
             createdAt: entity.createdAt

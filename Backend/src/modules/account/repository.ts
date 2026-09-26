@@ -216,7 +216,6 @@ export class AccountRepository {
             experience_points as "experiencePoints",
             coins,
             friend_slot_limit as "friendSlotLimit",
-            quiz_globally_enabled as "quizGloballyEnabled",
             has_completed_onboarding as "hasCompletedOnboarding",
             starter_region_id as "starterRegionId",
             version,

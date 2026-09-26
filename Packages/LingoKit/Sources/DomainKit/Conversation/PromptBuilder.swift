@@ -25,7 +25,6 @@ public enum PromptBuilder {
         growthContext: String? = nil,
         conversationTimingContext: String? = nil,
         guidance: String? = nil,
-        quizRequested: Bool = false,
         voiceMode: Bool = false,
         currentDate: Date = .now
     ) -> String {
@@ -197,7 +196,7 @@ public enum PromptBuilder {
                 - Reply with plain spoken English in one or two short sentences, no more than 45 words total.
                 - Lead with the direct response; keep one idea at a time and leave room for the friend to speak.
                 - Do not use emoji, markdown, bullets, labels, stage directions, or text that only makes sense on screen.
-                - A newline is a speaking pause, not a separate notification. Never include a quiz block in voice mode.
+                - A newline is a speaking pause, not a separate notification.
                 """
             )
         } else {
@@ -211,14 +210,10 @@ public enum PromptBuilder {
                 the next bubble, sometimes beginning with and, but, so, because, or while. Mix complete short \
                 bubbles with these continuation fragments; do not split at every comma or repeat one fixed pattern.
                 Check this contract immediately before sending. These line and word limits apply to the chat messages \
-                before any optional quiz block.
+                in this reply.
                 """
             )
         }
-        if quizRequested {
-            sections.append(QuizService.promptInstruction)
-        }
-
         // Keep the reusable prefix before time, relationship, retrieved memory and turn-specific context.
         sections.append(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: currentDate, profile: NPCAttentionPolicy.activityProfile(for: card)))
         if let relationshipContext, !relationshipContext.isEmpty {
@@ -332,7 +327,6 @@ public enum PromptBuilder {
         relationshipContext: String? = nil,
         growthContext: String? = nil,
         guidance: String? = nil,
-        quizRequested: Bool = false,
         voiceMode: Bool = false,
         rawWindow: Int = 24,
         calendar: Calendar? = nil,
@@ -350,7 +344,6 @@ public enum PromptBuilder {
                 calendar: calendar ?? RoleplayTemporalContext.calendar(for: card.regionID)
             ),
             guidance: guidance,
-            quizRequested: quizRequested,
             voiceMode: voiceMode,
             currentDate: currentDate
         )
@@ -365,8 +358,7 @@ public enum PromptBuilder {
                 .compactMap { $0 }
                 .joined(separator: "\n\n"),
             messages: chatMessages(history: history, rawWindow: historyWindow),
-            // 出题时给足输出空间，避免 quiz JSON 被截断。
-            maxTokens: quizRequested ? 900 : 120,
+            maxTokens: 120,
             temperature: 0.8
         )
     }

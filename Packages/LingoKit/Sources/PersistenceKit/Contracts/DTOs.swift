@@ -187,8 +187,6 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var keywordRangesJSON: String?
     public var coachReviewJSON: String?
     public var speechReviewJSON: String?
-    public var quizJSON: String?
-    public var quizChosenIndex: Int?
     public var translationZh: String?
     public var isInterrupted: Bool
     public var createdAt: Date
@@ -206,8 +204,6 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         keywordRangesJSON: String? = nil,
         coachReviewJSON: String? = nil,
         speechReviewJSON: String? = nil,
-        quizJSON: String? = nil,
-        quizChosenIndex: Int? = nil,
         translationZh: String? = nil,
         isInterrupted: Bool = false,
         createdAt: Date = .now
@@ -224,8 +220,6 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.keywordRangesJSON = keywordRangesJSON
         self.coachReviewJSON = coachReviewJSON
         self.speechReviewJSON = speechReviewJSON
-        self.quizJSON = quizJSON
-        self.quizChosenIndex = quizChosenIndex
         self.translationZh = translationZh
         self.isInterrupted = isInterrupted
         self.createdAt = createdAt
@@ -239,8 +233,6 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
     public var createdAt: Date
     public var lastMessageAt: Date
     public var turnCount: Int
-    public var turnsSinceQuiz: Int
-    public var quizOptOut: Bool
     public var lastSummarizedMessageIndex: Int
     public var isEncounterSession: Bool
     public var isArchived: Bool
@@ -253,8 +245,6 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
         createdAt: Date,
         lastMessageAt: Date,
         turnCount: Int,
-        turnsSinceQuiz: Int,
-        quizOptOut: Bool,
         lastSummarizedMessageIndex: Int,
         isEncounterSession: Bool,
         isArchived: Bool,
@@ -266,8 +256,6 @@ public struct ConversationDTO: Sendable, Equatable, Identifiable {
         self.createdAt = createdAt
         self.lastMessageAt = lastMessageAt
         self.turnCount = turnCount
-        self.turnsSinceQuiz = turnsSinceQuiz
-        self.quizOptOut = quizOptOut
         self.lastSummarizedMessageIndex = lastSummarizedMessageIndex
         self.isEncounterSession = isEncounterSession
         self.isArchived = isArchived
@@ -285,7 +273,6 @@ public struct UserProfileDTO: Codable, Sendable, Equatable {
     public var coins: Int
     public var subscriptionTier: SubscriptionTier
     public var friendSlotLimit: Int
-    public var quizGloballyEnabled: Bool
     public var unlockedRegionIDs: [String]
     public var difficultyLevel: DifficultyLevel
     public var hasCompletedOnboarding: Bool
@@ -303,7 +290,6 @@ public struct UserProfileDTO: Codable, Sendable, Equatable {
         coins: Int,
         subscriptionTier: SubscriptionTier,
         friendSlotLimit: Int,
-        quizGloballyEnabled: Bool,
         unlockedRegionIDs: [String],
         difficultyLevel: DifficultyLevel,
         hasCompletedOnboarding: Bool,
@@ -320,7 +306,6 @@ public struct UserProfileDTO: Codable, Sendable, Equatable {
         self.coins = coins
         self.subscriptionTier = subscriptionTier
         self.friendSlotLimit = friendSlotLimit
-        self.quizGloballyEnabled = quizGloballyEnabled
         self.unlockedRegionIDs = unlockedRegionIDs
         self.difficultyLevel = difficultyLevel
         self.hasCompletedOnboarding = hasCompletedOnboarding

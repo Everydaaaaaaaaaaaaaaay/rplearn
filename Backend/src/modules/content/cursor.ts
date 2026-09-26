@@ -17,7 +17,6 @@ const RESOURCE_TYPES = new Set<ContentResourceType>([
   "favorite",
   "memory",
   "message",
-  "quiz_record",
   "story_progress",
 ]);
 

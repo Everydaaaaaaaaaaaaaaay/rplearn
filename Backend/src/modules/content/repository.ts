@@ -27,7 +27,6 @@ const RESOURCE_LIMITS: Readonly<Record<ContentResourceType, number>> = {
   favorite: 10_000,
   memory: 20_000,
   message: 100_000,
-  quiz_record: 50_000,
   story_progress: 2_000,
 };
 

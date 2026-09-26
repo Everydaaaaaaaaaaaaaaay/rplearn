@@ -23,7 +23,6 @@ export type ProfileRow = Readonly<{
   placement_completed_at: string | null;
   placement_score: number | null;
   proficiency_source: ProficiencySource;
-  quiz_globally_enabled: boolean;
   starter_region_id: string | null;
   study_stage: StudyStage | null;
   updated_at: string;
@@ -51,7 +50,6 @@ export function mapProfile(
         : new Date(row.placement_completed_at).toISOString(),
     placementScore: row.placement_score,
     proficiencySource: row.proficiency_source,
-    quizGloballyEnabled: row.quiz_globally_enabled,
     starterRegionId: row.starter_region_id,
     studyStage: row.study_stage,
     unlockedRegionIds,

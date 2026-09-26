@@ -56,7 +56,7 @@ struct CityStoryUnlockProgressTests {
             coins: 0,
             subscriptionTier: .free,
             friendSlotLimit: 3,
-            quizGloballyEnabled: true,
+
             unlockedRegionIDs: unlockedRegionIDs,
             difficultyLevel: .senior1,
             hasCompletedOnboarding: true

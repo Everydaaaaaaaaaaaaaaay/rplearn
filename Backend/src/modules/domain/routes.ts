@@ -58,7 +58,6 @@ const profilePatchSchema = z
     placementCompletedAt: isoDateSchema.optional(),
     placementScore: z.number().int().min(0).max(100).optional(),
     proficiencySource: proficiencySourceSchema.optional(),
-    quizGloballyEnabled: z.boolean().optional(),
     studyStage: studyStageSchema.nullable().optional(),
   })
   .refine(
@@ -71,7 +70,6 @@ const profilePatchSchema = z
       value.placementCompletedAt !== undefined ||
       value.placementScore !== undefined ||
       value.proficiencySource !== undefined ||
-      value.quizGloballyEnabled !== undefined ||
       value.studyStage !== undefined,
     "At least one profile field must be updated",
   );
@@ -193,9 +191,6 @@ export function registerDomainRoutes(
         ...(patch.proficiencySource === undefined
           ? {}
           : { proficiencySource: patch.proficiencySource }),
-        ...(patch.quizGloballyEnabled === undefined
-          ? {}
-          : { quizGloballyEnabled: patch.quizGloballyEnabled }),
         ...(patch.studyStage === undefined ? {} : { studyStage: patch.studyStage }),
       });
     },

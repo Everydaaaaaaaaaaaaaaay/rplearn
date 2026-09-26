@@ -163,9 +163,8 @@ struct ContentSyncStoreTests {
             lastMessageAt: now,
             lastReadAt: now,
             lastSummarizedMessageIndex: 0,
-            quizOptOut: false,
-            turnCount: 1,
-            turnsSinceQuiz: 1
+
+            turnCount: 1
         )
         let messagePayload = ContentMessagePayload(
             audioDuration: nil,
@@ -175,8 +174,6 @@ struct ContentSyncStoreTests {
             keywordRangesJson: nil,
             kind: MessageKind.text.rawValue,
             orderIndex: 0,
-            quizChosenIndex: nil,
-            quizJson: nil,
             role: MessageRole.assistant.rawValue,
             speechReviewJson: nil,
             text: "Welcome!",

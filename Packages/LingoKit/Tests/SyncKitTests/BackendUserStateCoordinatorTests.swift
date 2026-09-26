@@ -204,7 +204,6 @@ struct BackendUserStateCoordinatorTests {
               "placementCompletedAt":\(placementCompletedAtValue),
               "placementScore":\(placementScoreValue),
               "proficiencySource":"\(proficiencySource)",
-              "quizGloballyEnabled":true,
               "starterRegionId":\(starterRegionValue),
               "studyStage":\(studyStageValue),
               "unlockedRegionIds":["london"\(additionalRegion)],
@@ -456,7 +455,7 @@ struct BackendUserStateCoordinatorTests {
             coins: 0,
             subscriptionTier: .free,
             friendSlotLimit: 10,
-            quizGloballyEnabled: true,
+
             unlockedRegionIDs: [],
             difficultyLevel: .senior2,
             hasCompletedOnboarding: false,

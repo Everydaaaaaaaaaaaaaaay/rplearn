@@ -87,7 +87,6 @@ extension ChatViewModel {
         messages = []
         guard var conversation else { return }
         conversation.turnCount = 0
-        conversation.turnsSinceQuiz = 0
         conversation.lastSummarizedMessageIndex = 0
         conversation.lastMessageAt = conversation.createdAt
         self.conversation = conversation

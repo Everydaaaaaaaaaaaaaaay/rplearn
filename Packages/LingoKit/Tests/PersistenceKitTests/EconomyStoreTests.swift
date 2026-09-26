@@ -14,7 +14,6 @@ struct EconomyStoreTests {
         let profile = try await store.profile()
         #expect(profile.friendSlotLimit == 10)
         #expect(profile.subscriptionTier == .free)
-        #expect(profile.quizGloballyEnabled)
         #expect(profile.coins == 0)
         #expect(!profile.hasCompletedOnboarding)
     }

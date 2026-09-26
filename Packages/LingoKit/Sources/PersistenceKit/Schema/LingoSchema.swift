@@ -3,7 +3,7 @@ import SwiftData
 
 /// 当前 SwiftData Schema。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
 public enum LingoSchema: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(1, 1, 0) }
+    public static var versionIdentifier: Schema.Version { Schema.Version(1, 2, 0) }
 
     public static var models: [any PersistentModel.Type] {
         [
@@ -16,7 +16,6 @@ public enum LingoSchema: VersionedSchema {
             ItemEntity.self,
             TicketStubEntity.self,
             StoryProgressEntity.self,
-            QuizRecordEntity.self,
             ContentSyncOwnerEntity.self,
             ContentSyncMetadataEntity.self,
             ContentOutboxEntity.self,
@@ -37,7 +36,6 @@ extension LingoSchema {
         public var coins: Int
         public var subscriptionTierRaw: String
         public var friendSlotLimit: Int
-        public var quizGloballyEnabled: Bool
         public var unlockedRegionIDs: [String]
         public var difficultyLevelRaw: String
         public var hasCompletedOnboarding: Bool
@@ -55,7 +53,6 @@ extension LingoSchema {
             coins: Int = 0,
             subscriptionTierRaw: String = SubscriptionTier.free.rawValue,
             friendSlotLimit: Int = 10,
-            quizGloballyEnabled: Bool = true,
             unlockedRegionIDs: [String] = [],
             difficultyLevelRaw: String = DifficultyLevel.junior3.rawValue,
             hasCompletedOnboarding: Bool = false,
@@ -72,7 +69,6 @@ extension LingoSchema {
             self.coins = coins
             self.subscriptionTierRaw = subscriptionTierRaw
             self.friendSlotLimit = friendSlotLimit
-            self.quizGloballyEnabled = quizGloballyEnabled
             self.unlockedRegionIDs = unlockedRegionIDs
             self.difficultyLevelRaw = difficultyLevelRaw
             self.hasCompletedOnboarding = hasCompletedOnboarding
@@ -192,8 +188,6 @@ extension LingoSchema {
         public var createdAt: Date
         public var lastMessageAt: Date
         public var turnCount: Int
-        public var turnsSinceQuiz: Int
-        public var quizOptOut: Bool
         public var lastSummarizedMessageIndex: Int
         public var isEncounterSession: Bool
         /// 偶遇未加好友离开后归档只读。
@@ -213,8 +207,6 @@ extension LingoSchema {
             createdAt: Date = .now,
             lastMessageAt: Date = .now,
             turnCount: Int = 0,
-            turnsSinceQuiz: Int = 0,
-            quizOptOut: Bool = false,
             lastSummarizedMessageIndex: Int = 0,
             isEncounterSession: Bool = false,
             isArchived: Bool = false,
@@ -225,8 +217,6 @@ extension LingoSchema {
             self.createdAt = createdAt
             self.lastMessageAt = lastMessageAt
             self.turnCount = turnCount
-            self.turnsSinceQuiz = turnsSinceQuiz
-            self.quizOptOut = quizOptOut
             self.lastSummarizedMessageIndex = lastSummarizedMessageIndex
             self.isEncounterSession = isEncounterSession
             self.isArchived = isArchived
@@ -251,9 +241,6 @@ extension LingoSchema {
         public var coachReviewJSON: String?
         /// 口语点评（语音消息）。
         public var speechReviewJSON: String?
-        public var quizJSON: String?
-        /// 已作答的 quiz 选项下标（nil 表示未作答）。
-        public var quizChosenIndex: Int?
         /// 整句翻译缓存。
         public var translationZh: String?
         /// 流式中断标记（已收增量落库，气泡提供重试）。
@@ -274,8 +261,6 @@ extension LingoSchema {
             keywordRangesJSON: String? = nil,
             coachReviewJSON: String? = nil,
             speechReviewJSON: String? = nil,
-            quizJSON: String? = nil,
-            quizChosenIndex: Int? = nil,
             translationZh: String? = nil,
             isInterrupted: Bool = false,
             createdAt: Date = .now
@@ -291,8 +276,6 @@ extension LingoSchema {
             self.keywordRangesJSON = keywordRangesJSON
             self.coachReviewJSON = coachReviewJSON
             self.speechReviewJSON = speechReviewJSON
-            self.quizJSON = quizJSON
-            self.quizChosenIndex = quizChosenIndex
             self.translationZh = translationZh
             self.isInterrupted = isInterrupted
             self.createdAt = createdAt
@@ -427,32 +410,6 @@ extension LingoSchema {
         }
     }
 
-    /// 出题记录。
-    @Model
-    public final class QuizRecordEntity {
-        public var question: String
-        public var optionsJSON: String
-        public var correctIndex: Int
-        public var chosenIndex: Int?
-        public var characterName: String?
-        public var createdAt: Date
-
-        public init(
-            question: String,
-            optionsJSON: String,
-            correctIndex: Int,
-            chosenIndex: Int? = nil,
-            characterName: String? = nil,
-            createdAt: Date = .now
-        ) {
-            self.question = question
-            self.optionsJSON = optionsJSON
-            self.correctIndex = correctIndex
-            self.chosenIndex = chosenIndex
-            self.characterName = characterName
-            self.createdAt = createdAt
-        }
-    }
 }
 
 // 顶层别名，调用方免写 LingoSchema 前缀。
@@ -465,4 +422,3 @@ public typealias FavoriteEntity = LingoSchema.FavoriteEntity
 public typealias ItemEntity = LingoSchema.ItemEntity
 public typealias TicketStubEntity = LingoSchema.TicketStubEntity
 public typealias StoryProgressEntity = LingoSchema.StoryProgressEntity
-public typealias QuizRecordEntity = LingoSchema.QuizRecordEntity

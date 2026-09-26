@@ -29,7 +29,6 @@ struct LiveUsageCostWorkflowTests {
         let characters: [CharacterCard]?
         let switchEvery: Int?
         let reopenEvery: Int?
-        let quizEnabled: Bool?
         let voice: Bool
         let utterances: [String]
     }
@@ -130,7 +129,7 @@ struct LiveUsageCostWorkflowTests {
         evidence.startingCredits = access.credits?.remaining
         let level = DifficultyLevel(rawValue: persona.difficulty ?? "junior3") ?? .junior3
         try await economy.applyAuthoritativeEntitlement(tier: tier, friendSlotLimit: access.policy.friendSlotLimit)
-        _ = try await economy.updateProfile { profile in profile.displayName = "Mia"; profile.difficultyLevel = level; profile.learningGoal = .dailyConversation; profile.studyStage = .university; profile.quizGloballyEnabled = persona.quizEnabled ?? true; profile.currentRegionID = "london" }
+        _ = try await economy.updateProfile { profile in profile.displayName = "Mia"; profile.difficultyLevel = level; profile.learningGoal = .dailyConversation; profile.studyStage = .university; profile.currentRegionID = "london" }
         let memory = MemoryStore(modelContainer: container)
         let translator = TranslationService(llm: llm)
         let dictionary = try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite")))
