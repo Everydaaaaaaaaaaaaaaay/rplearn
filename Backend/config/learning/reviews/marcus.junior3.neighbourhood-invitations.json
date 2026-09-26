@@ -1,0 +1,214 @@
+{
+  "unitId": "marcus.junior3.neighbourhood-invitations",
+  "contentHash": "12a5cf50db9c73d0a2541cff98b46948981dd49f4e8cd745f370037752acc5b9",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Marcus 用街区摄影把邻居聚在一起，问询围绕人数与邀请安排，区别 Oliver 的书店报名。",
+  "levelFit": "把间接是否询问与真实将来条件明确区分，再进行人数语序和安排表达。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "whether-come",
+      "standaloneContext": "本题独立给定的作答条件：在邀请留言中补全“请告诉我你是否能在六点前来”：Please let me know ___ you can come before six.\n只填 if 或 whether。",
+      "ambiguityReview": "通过留言语义识别宾语从句而非条件，接收 if 和 whether 两种等价形式。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "if"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "whether"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "IF"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "when"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "how-many-come",
+      "standaloneContext": "本题独立给定的作答条件：你想问邻居“你知道有多少朋友会来吗？”哪句正确？",
+      "ambiguityReview": "专门检查疑问词短语作主语的情形，避免机械地把所有疑问词从句都搬动主语位置。",
+      "optionNotes": {
+        "a": "how many friends 为从句主语，后接 are coming。",
+        "b": "把 are 插入完整主语短语中，语序错误。",
+        "c": "are 不应移到 coming 后面，谓语结构被拆乱。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "more-chairs",
+      "standaloneContext": "本题独立给定的作答条件：组句：“如果更多人来，我们就会加椅子。”以 If 开头。",
+      "ambiguityReview": "在复数主语下组合真实条件与将来结果，避免将主将从现误记成从句总加 s。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6", "t7"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6", "t7"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "if-two-jobs",
+      "standaloneContext": "本题独立给定的作答条件：将三条留言与其目的配对。",
+      "ambiguityReview": "比较相同 if 在两个结构中的不同功能，第三项区分是否与何时，须读整句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "finish-before",
+      "standaloneContext": "本题独立给定的作答条件：补全约定“如果活动在八点前结束，我就会打电话给你”：If the event ___ before eight, I will call you.\n填 finish 的正确形式；event 指活动。",
+      "ambiguityReview": "产出以 sh 结尾动词的第三人称形式，前面已给完整将来结果以锁定条件用法。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "finishes"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "FINISHES"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "will finish"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "polite-arrival",
+      "standaloneContext": "本题独立给定的作答条件：给初次来访的邻居写“您能告诉我您几点会到吗？”哪句正确？",
+      "ambiguityReview": "区别宾语从句允许的将来时与条件句时态，防止将主将从现规则错误泛化。",
+      "optionNotes": {
+        "a": "内层仍用 will you 的倒装，不符合宾语从句语序。",
+        "b": "you will arrive 为陈述语序，适合询问预计到达时间。",
+        "c": "will 不能放在 arrive 后面，谓语顺序错误。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

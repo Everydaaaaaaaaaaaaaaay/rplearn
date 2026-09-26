@@ -1,0 +1,230 @@
+{
+  "id": "marcus.junior3.record-corner",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "街角唱片试听台",
+  "summary": "用定语从句说清喜欢怎样的音乐和音乐人。",
+  "scene": "Marcus 在街角唱片店挑一张给奶奶的唱片。他不急着看排行榜，而是想把自己喜欢的声音描述清楚，听听店员的建议。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.relative-clauses"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 9 I like music that I can dance to.",
+      "pages": "印刷第68页；PDF第82页",
+      "alignment": "参考定语从句描述事物和人物偏好，不扩展未核读的 prefer doing to doing。"
+    },
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 11 Photos / Unit 3",
+      "pages": "印刷第92页；PDF第99页",
+      "alignment": "参考 who/which/that 的先行词与从句功能；接收本题限制条件内的全部合法关系代词。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "I know the sound I want. Finding the words is the next step.",
+      "translation": "我知道自己想找什么声音。下一步是把它说清楚。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "My grandma always asks who is singing before she asks the title.",
+      "translation": "我奶奶总是先问谁唱的，再问歌名。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "A good description gets us closer to the right record.",
+      "translation": "描述得清楚，就离合适的唱片更近一步。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "singer-writes",
+      "goalId": "j3.relative-clauses",
+      "prompt": "你喜欢自己写歌的歌手。哪句语法正确并准确表达这个偏好？",
+      "hint": "被描述的是人，从句还需要一个能作主语的关系词。",
+      "explanation": "I like singers who write their own songs. 用 who 描述人，singers 为复数，从句谓语用 write。",
+      "difficultyReason": "同时检查人物关系词和复数一致；不把 that 当成人物从句的错误形式。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I like singers which write their own songs."
+        },
+        {
+          "id": "b",
+          "text": "I like singers who writes their own songs."
+        },
+        {
+          "id": "c",
+          "text": "I like singers who write their own songs."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "music-tells",
+      "goalId": "j3.relative-clauses",
+      "prompt": "补全“我喜欢能讲述故事的音乐”：I like music ___ tells a story.\n只填一个关系代词。",
+      "hint": "空格在从句里承担主语，先看它所指的是人还是事物。",
+      "explanation": "music 是事物，在限制性定语从句中可用 that 或 which；此处关系词作主语，不能省略。",
+      "difficultyReason": "同时接受事物从句的两个合法主语关系代词，避免将可替换形式误判。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["that", "which"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "band-live",
+      "goalId": "j3.relative-clauses",
+      "prompt": "组句：“这是一支现场演奏的乐队。”以 This 开头；play live 表示现场演奏。",
+      "hint": "主句介绍乐队，从句补充它的特点。",
+      "explanation": "This is a band that plays live. 本题给定单数 band，对应 plays；that 引出描述特点的从句。",
+      "difficultyReason": "将主句与关系从句连接，给定词块按单数 band 配 plays，不考音乐专业知识。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "a band"
+        },
+        {
+          "id": "t4",
+          "text": "that"
+        },
+        {
+          "id": "t5",
+          "text": "plays"
+        },
+        {
+          "id": "t6",
+          "text": "live."
+        },
+        {
+          "id": "t1",
+          "text": "This"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "preference-detail",
+      "goalId": "j3.relative-clauses",
+      "prompt": "将完整偏好表达与中文配对。lyrics 指歌词。",
+      "hint": "先看描述的是音乐人、歌曲还是歌词，再读从句的特点。",
+      "explanation": "musicians who listen 描述音乐人；songs that tell 描述歌曲；lyrics that are easy 描述歌词。",
+      "difficultyReason": "通过三个不同先行词和从句特点理解具体偏好，不能只做孤立关系词翻译。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I like musicians who listen to each other."
+        },
+        {
+          "id": "l2",
+          "text": "I like songs that tell funny stories."
+        },
+        {
+          "id": "l3",
+          "text": "I like lyrics that are easy to remember."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我喜欢讲有趣故事的歌曲。"
+        },
+        {
+          "id": "r3",
+          "text": "我喜欢容易记住的歌词。"
+        },
+        {
+          "id": "r1",
+          "text": "我喜欢会互相倾听的音乐人。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "no-extra-it",
+      "goalId": "j3.relative-clauses",
+      "prompt": "要说“我想要一张能在家播放的唱片”，哪句正确？ record 在这里指唱片。",
+      "hint": "关系词已代表唱片在从句中的位置，看看有没有多出来的宾语。",
+      "explanation": "I want a record that I can play at home. 中 that 已是 play 的宾语，不再加 it。",
+      "difficultyReason": "识别宾语关系词与代词重复的错误，另一干扰项把物误作人，超出单纯填关系词。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I want a record that I can play at home."
+        },
+        {
+          "id": "b",
+          "text": "I want a record that I can play it at home."
+        },
+        {
+          "id": "c",
+          "text": "I want a record who I can play at home."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "person-plays",
+      "goalId": "j3.relative-clauses",
+      "prompt": "补全“他就是在这里弹钢琴的人”：He is the person ___ plays the piano here.\n只填一个关系代词。",
+      "hint": "关系词指代 person，并在后面的小句里执行动作。",
+      "explanation": "person 指人，关系词作主语，who 和 that 均正确；不能省略，也不用 which。",
+      "difficultyReason": "人物主语关系代词接收两种常见正确形式，与事物从句形成对照。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["who", "that"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

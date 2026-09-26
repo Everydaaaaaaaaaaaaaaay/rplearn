@@ -1,0 +1,228 @@
+{
+  "id": "oliver.junior3.repair-labels",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "旧书修补台的标签",
+  "summary": "区分日常流程和已完成的往事，用被动语态写清说明。",
+  "scene": "Oliver 正整理修补台：一边是日常工作清单，一边是去年留下的修补记录。他希望标签说清书经历了什么。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.passive-present", "j3.passive-past"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 5 What are the shirts made of?",
+      "pages": "印刷第36页；PDF第50页",
+      "alignment": "参考一般现在时被动语态、主谓一致及动作承受者，不借用教材产品事实。"
+    },
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 7 Great books / Unit 3",
+      "pages": "印刷第60页；PDF第67页",
+      "alignment": "参考日常动作的主动与被动表达转换；所有动作条件在本题中独立给出。"
+    },
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 6 When was it invented?",
+      "pages": "印刷第44页；PDF第58页",
+      "alignment": "参考一般过去时被动语态和主动被动转换；日期与执行者均为本题明确给定的虚构事实。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Every old book has a story. Sometimes the cover needs a little help.",
+      "translation": "每本旧书都有故事。有时候，封面也需要一点帮助。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "A clear label saves us another search through the notebook.",
+      "translation": "标签写清楚，就不用再翻一遍笔记本了。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Back on the shelf. That is a good ending for today.",
+      "translation": "回到书架上了。今天有了个不错的结尾。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "daily-check",
+      "goalId": "j3.passive-present",
+      "prompt": "清单要说“这些书每天都被检查”。哪句正确？ check 表示检查。",
+      "hint": "先确认书是执行检查，还是接受检查。",
+      "explanation": "These books are checked every day. 用复数 are 加 checked 表示日常被动动作。",
+      "difficultyReason": "在日常频率下确定被动语态，并排除单复数错误和主动谓语误用。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "These books are checked every day."
+        },
+        {
+          "id": "b",
+          "text": "These books is checked every day."
+        },
+        {
+          "id": "c",
+          "text": "These books check every day."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "was-repaired",
+      "goalId": "j3.passive-past",
+      "prompt": "补全记录“这个封面昨天被修好了”：This cover ___ repaired yesterday.\n只填 was 或 were；cover 指封面。",
+      "hint": "明确的过去时间加上单数主语，决定这里的形式。",
+      "explanation": "yesterday 指过去，this cover 是单数，因此用 was repaired。",
+      "difficultyReason": "在明确过去时间的被动句中按单数主语选择 be，不要求认识修补技术。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["was"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "labels-written",
+      "goalId": "j3.passive-present",
+      "prompt": "组句：“这些标签是手写的。”以 The labels 开头，by hand 表示用手。",
+      "hint": "标签接受“写”这个动作，注意把被动结构保留完整。",
+      "explanation": "The labels are written by hand. 用 are written 说明通常的制作方式。",
+      "difficultyReason": "不规则过去分词 written 已提供，任务要求从主动词序转向动作承受者作主语。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "written"
+        },
+        {
+          "id": "t4",
+          "text": "by hand."
+        },
+        {
+          "id": "t1",
+          "text": "The labels"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "record-time",
+      "goalId": "j3.passive-past",
+      "prompt": "将修补记录与中文配对，注意时间与动作执行者。",
+      "hint": "同样是 cleaned，要区分谁清洁谁，以及是否已发生。",
+      "explanation": "was cleaned 是过去被清洁；cleaned the table 为主动；is cleaned every Friday 描述日常被动。",
+      "difficultyReason": "同一词根比较主动、过去被动与现在被动，不能仅凭 cleaned 一个词匹配。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The table was cleaned yesterday."
+        },
+        {
+          "id": "l2",
+          "text": "The helper cleaned the table yesterday."
+        },
+        {
+          "id": "l3",
+          "text": "The table is cleaned every Friday."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "帮手昨天清洁了桌子。"
+        },
+        {
+          "id": "r3",
+          "text": "桌子每周五都会被清洁。"
+        },
+        {
+          "id": "r1",
+          "text": "桌子昨天被清洁了。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "covers-last-week",
+      "goalId": "j3.passive-past",
+      "prompt": "本题已知：店员上周修好了三个封面。要以 Three covers 作主语，哪句保留事实且语法正确？",
+      "hint": "时间已经给定，还要让封面成为动作的承受者。",
+      "explanation": "Three covers were repaired by the assistant last week. 用 were repaired 表示复数对象过去被修好。",
+      "difficultyReason": "从明确主动事实改写过去被动，干扰项分别改变时态和漏掉被动助动词。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Three covers are repaired by the assistant last week."
+        },
+        {
+          "id": "b",
+          "text": "Three covers repaired by the assistant last week."
+        },
+        {
+          "id": "c",
+          "text": "Three covers were repaired by the assistant last week."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "sent-form",
+      "goalId": "j3.passive-present",
+      "prompt": "补全日常流程“这些书每月寄给读者”：The books are ___ to readers every month.\n只填 send 的正确形式。",
+      "hint": "主语接收动作，be 后需要什么动词形式？",
+      "explanation": "一般现在时被动用 are 加过去分词；send 的过去分词是 sent。",
+      "difficultyReason": "独立产出不规则过去分词，已给 be 与频率，控制到九年级基本被动结构。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["sent"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

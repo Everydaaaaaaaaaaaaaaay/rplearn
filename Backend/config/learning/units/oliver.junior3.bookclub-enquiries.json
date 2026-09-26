@@ -1,0 +1,224 @@
+{
+  "id": "oliver.junior3.bookclub-enquiries",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "读书会的第一封问询",
+  "summary": "向陌生联系人礼貌询问地点、时间和报名方式。",
+  "scene": "Oliver 收到一张没有写清地点的读书会海报。他摊开便笺，想把几个问题问得清楚，也让忙碌的组织者容易回答。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.indirect-questions"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 3 Could you please tell me where the restrooms are?",
+      "pages": "印刷第20、22页；PDF第34、36页",
+      "alignment": "参考礼貌请求中的宾语从句语序和语境适切性；直接问句本身并非语法错误。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A lovely poster. It tells us everything except where to go.",
+      "translation": "海报挺好看。除了该去哪儿，几乎什么都告诉我们了。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "One clear question at a time. That should help.",
+      "translation": "一次问清一个问题。这样应该有帮助。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Now we can send the message and get back to the books.",
+      "translation": "现在可以发出消息，回到书本里了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "ask-room",
+      "goalId": "j3.indirect-questions",
+      "prompt": "给不熟悉的组织者留言，想用 Could you tell me 开头询问读书会在哪个房间。哪句正确？",
+      "hint": "礼貌开头后面还有一个小句，注意它内部的语序。",
+      "explanation": "Could you tell me which room the book club is in? 中从句使用 the book club is 的陈述语序。",
+      "difficultyReason": "在给定礼貌句架内处理 which room 与主语、be 的位置，超出直接疑问句套用。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Could you tell me which room is the book club in?"
+        },
+        {
+          "id": "b",
+          "text": "Could you tell me which room the book club is in?"
+        },
+        {
+          "id": "c",
+          "text": "Could you tell me which room does the book club in?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "when-start",
+      "goalId": "j3.indirect-questions",
+      "prompt": "组句：“你知道这次会面什么时候开始吗？”以 Do 开头。meeting 表示会面。",
+      "hint": "外层问句和里面的时间从句，语序不完全相同。",
+      "explanation": "Do you know when the meeting starts? 外层用 Do you know，从句用 the meeting starts。",
+      "difficultyReason": "同时组织外层助动词疑问句与内层陈述语序，starts 已提供以控制拼写负担。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "know"
+        },
+        {
+          "id": "t4",
+          "text": "when"
+        },
+        {
+          "id": "t5",
+          "text": "the meeting"
+        },
+        {
+          "id": "t6",
+          "text": "starts?"
+        },
+        {
+          "id": "t1",
+          "text": "Do"
+        },
+        {
+          "id": "t2",
+          "text": "you"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+    },
+    {
+      "id": "whether-seat",
+      "goalId": "j3.indirect-questions",
+      "prompt": "填写表示“是否”的连接词：“我想知道是否还有空座。” I wonder ___ there is a seat left.\n只填 if 或 whether。",
+      "hint": "这里没有问时间或地点，而是在询问一个情况是否成立。",
+      "explanation": "if 和 whether 都可在此引导表示“是否”的宾语从句，两个答案都接受。",
+      "difficultyReason": "两个合法连接词均登记，区分是否询问与条件句，不靠偏好只判一种答案。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["if", "whether"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "booking-order",
+      "goalId": "j3.indirect-questions",
+      "prompt": "组织者需要你的报名问题。请选择语法正确的“您能解释一下我怎样报名吗？” register 表示报名。",
+      "hint": "把“我怎样报名”放进另一个问句后，检查主语和动词的顺序。",
+      "explanation": "Could you explain how I can register? 中 how 后是 I can register；不再把 can 放在 I 前。",
+      "difficultyReason": "使用情态动词从句判断语序，与前题 be 和一般现在时形成不同结构迁移。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Could you explain how can I register?"
+        },
+        {
+          "id": "b",
+          "text": "Could you explain how I register can?"
+        },
+        {
+          "id": "c",
+          "text": "Could you explain how I can register?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "enquiry-intentions",
+      "goalId": "j3.indirect-questions",
+      "prompt": "将三个完整问询与想获得的信息配对。",
+      "hint": "看从句里询问的是费用、时间还是许可。",
+      "explanation": "how much 问费用；when 问时间；whether I can bring… 问是否可以带某人来。",
+      "difficultyReason": "完整从句意义辨认，三项信息互不包含，不需要读书会的实际安排。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Could you tell me how much a ticket costs?"
+        },
+        {
+          "id": "l2",
+          "text": "Do you know when the doors open?"
+        },
+        {
+          "id": "l3",
+          "text": "Could you tell me whether I can bring a friend?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "想知道开门时间。"
+        },
+        {
+          "id": "r3",
+          "text": "想知道能否带朋友。"
+        },
+        {
+          "id": "r1",
+          "text": "想知道票价。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "start-form",
+      "goalId": "j3.indirect-questions",
+      "prompt": "将直接问句 What time does the talk start? 放进礼貌问句：Could you tell me what time the talk ___?\n填 start 的一般现在时正确形式；talk 指讲座。",
+      "hint": "原来的助动词不在从句里了，再看主语是单数还是复数。",
+      "explanation": "从句用陈述语序，the talk 为单数，一般现在时用 starts。",
+      "difficultyReason": "直接问句转换时同时处理 does 消失和动词第三人称单数，限定时态避免多解。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["starts"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

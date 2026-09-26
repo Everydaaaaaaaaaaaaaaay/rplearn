@@ -1,0 +1,214 @@
+{
+  "unitId": "oliver.junior3.bookclub-enquiries",
+  "contentHash": "632cb0b88e541ba5c9f452aa0fae96ea4e3923827aaef8740c4d1db6b339b88f",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Oliver 的书店读书会联络与轻微冷幽默提供真实问询用途，题目不要求记忆海报。",
+  "levelFit": "识别嵌入问句的陈述语序、助动词变化及疑问词表达的不同信息。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "ask-room",
+      "standaloneContext": "本题独立给定的作答条件：给不熟悉的组织者留言，想用 Could you tell me 开头询问读书会在哪个房间。哪句正确？",
+      "ambiguityReview": "在给定礼貌句架内处理 which room 与主语、be 的位置，超出直接疑问句套用。",
+      "optionNotes": {
+        "a": "从句仍用 is 提前的疑问语序，不符合本句结构。",
+        "b": "从句以主语再接 is，保留正确的地点信息。",
+        "c": "does 后缺少正确实义动词，不能替代这里的 is。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "when-start",
+      "standaloneContext": "本题独立给定的作答条件：组句：“你知道这次会面什么时候开始吗？”以 Do 开头。meeting 表示会面。",
+      "ambiguityReview": "同时组织外层助动词疑问句与内层陈述语序，starts 已提供以控制拼写负担。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "whether-seat",
+      "standaloneContext": "本题独立给定的作答条件：填写表示“是否”的连接词：“我想知道是否还有空座。” I wonder ___ there is a seat left.\n只填 if 或 whether。",
+      "ambiguityReview": "两个合法连接词均登记，区分是否询问与条件句，不靠偏好只判一种答案。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "if"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "whether"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "IF"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "when"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "booking-order",
+      "standaloneContext": "本题独立给定的作答条件：组织者需要你的报名问题。请选择语法正确的“您能解释一下我怎样报名吗？” register 表示报名。",
+      "ambiguityReview": "使用情态动词从句判断语序，与前题 be 和一般现在时形成不同结构迁移。",
+      "optionNotes": {
+        "a": "把从句 can 提到主语前，保留了直接问句语序。",
+        "b": "情态动词 can 不能放在 register 后面。",
+        "c": "how 后接主语和情态动词，完整表达报名询问。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "enquiry-intentions",
+      "standaloneContext": "本题独立给定的作答条件：将三个完整问询与想获得的信息配对。",
+      "ambiguityReview": "完整从句意义辨认，三项信息互不包含，不需要读书会的实际安排。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "start-form",
+      "standaloneContext": "本题独立给定的作答条件：将直接问句 What time does the talk start? 放进礼貌问句：Could you tell me what time the talk ___?\n填 start 的一般现在时正确形式；talk 指讲座。",
+      "ambiguityReview": "直接问句转换时同时处理 does 消失和动词第三人称单数，限定时态避免多解。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "starts"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "STARTS"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "start"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

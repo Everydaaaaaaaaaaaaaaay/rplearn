@@ -1,0 +1,228 @@
+{
+  "id": "marcus.junior3.photo-caption-workshop",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "街区照片的说明卡",
+  "summary": "写清照片何时拍摄，以及画面中是哪一个人或物。",
+  "scene": "Marcus 把街区照片摊在奶奶家的桌上。有的说明卡漏了时间，有的没有说清拍的是谁。他想让没有去过现场的人也能读懂。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.passive-past", "j3.relative-clauses"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 6 When was it invented?",
+      "pages": "印刷第44页；PDF第58页",
+      "alignment": "参考一般过去时被动语态和主动被动转换；日期与执行者均为本题明确给定的虚构事实。"
+    },
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 9 I like music that I can dance to.",
+      "pages": "印刷第68页；PDF第82页",
+      "alignment": "参考定语从句描述事物和人物偏好，不扩展未核读的 prefer doing to doing。"
+    },
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 11 Photos / Unit 3",
+      "pages": "印刷第92页；PDF第99页",
+      "alignment": "参考 who/which/that 的先行词与从句功能；接收本题限制条件内的全部合法关系代词。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "A picture can say a lot. A date underneath can help too.",
+      "translation": "照片能说很多话。下面加个日期，也很有用。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Let us make each caption clear enough for a new visitor.",
+      "translation": "把每张说明卡都写得让初次来的人看得懂吧。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Grandma has already picked her favourite. No surprise there.",
+      "translation": "奶奶已经选出她最喜欢的一张了。一点也不意外。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "photo-taken",
+      "goalId": "j3.passive-past",
+      "prompt": "补全照片说明“这张照片上星期六拍摄”：This photo was ___ last Saturday.\n填 take 的正确形式；take a photo 表示拍照。",
+      "hint": "was 后要表达照片被拍摄，不能直接用原形。",
+      "explanation": "过去被动结构是 was taken；take 的过去分词 taken 不等同于过去式 took。",
+      "difficultyReason": "在过去被动里区分 taken 与 took，日期只提供时态条件，不考照片记忆。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["taken"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "two-photos",
+      "goalId": "j3.passive-past",
+      "prompt": "本题事实：Marcus 昨天拍了两张照片。以 Two photos 为主语，哪句准确且语法正确？",
+      "hint": "把拍摄对象移到主语后，检查复数和过去时间。",
+      "explanation": "Two photos were taken by Marcus yesterday. 保留拍摄者、过去时间和两个拍摄对象。",
+      "difficultyReason": "主动转被动并维持事实，错误项分别漏 be 和误用单数 was。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Two photos taken by Marcus yesterday."
+        },
+        {
+          "id": "b",
+          "text": "Two photos were taken by Marcus yesterday."
+        },
+        {
+          "id": "c",
+          "text": "Two photos was taken by Marcus yesterday."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "wall-painted",
+      "goalId": "j3.passive-past",
+      "prompt": "组句：“这面墙去年被粉刷了。”以 The wall 开头，paint 在这里指粉刷。",
+      "hint": "墙接受这个动作，时间已经限定在过去。",
+      "explanation": "The wall was painted last year. 用 was painted 表示单数墙面在过去被粉刷。",
+      "difficultyReason": "从明确中文选择过去被动语序，所有词块给定，避免把摄影题变成历史常识。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "painted"
+        },
+        {
+          "id": "t4",
+          "text": "last year."
+        },
+        {
+          "id": "t1",
+          "text": "The wall"
+        },
+        {
+          "id": "t2",
+          "text": "was"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "woman-owns",
+      "goalId": "j3.relative-clauses",
+      "prompt": "补全“那就是拥有这家店的女士”：That is the woman ___ owns this shop.\n只填一个关系代词；owns 表示拥有。",
+      "hint": "观察被描述对象，以及空格是否在从句里作主语。",
+      "explanation": "woman 指人，who 和 that 都可作限制性定语从句主语，因此两种答案都接受。",
+      "difficultyReason": "人物身份识别关系从句中接收合法变体，owns 的意思给出以减少额外词汇负担。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["who", "that"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "which-building",
+      "goalId": "j3.relative-clauses",
+      "prompt": "说明卡要写“这是去年修好的那栋楼”。哪句语法正确且意思相符？",
+      "hint": "从句描述楼经历的事情，检查关系词后有没有完整谓语。",
+      "explanation": "This is the building that was repaired last year. 从句中 building 是修理的承受者，因此用 was repaired。",
+      "difficultyReason": "合并物的关系从句与过去被动，检验两项本单元目标共同运用。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is the building that repaired last year."
+        },
+        {
+          "id": "b",
+          "text": "This is the building who was repaired last year."
+        },
+        {
+          "id": "c",
+          "text": "This is the building that was repaired last year."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "caption-meanings",
+      "goalId": "j3.relative-clauses",
+      "prompt": "把三条独立照片说明与中文配对。 bridge 指桥。",
+      "hint": "从句可能说明位置、人物动作或过去发生的事情。",
+      "explanation": "stands by the river 说明桥的位置；woman who sells 说明人物；photo that was taken 说明照片拍摄时间。",
+      "difficultyReason": "从完整说明辨认关系从句修饰对象与细节，不要求看到实际照片。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "the bridge that stands by the river"
+        },
+        {
+          "id": "l2",
+          "text": "the woman who sells flowers"
+        },
+        {
+          "id": "l3",
+          "text": "the photo that was taken in winter"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "卖花的那位女士"
+        },
+        {
+          "id": "r3",
+          "text": "冬天拍摄的那张照片"
+        },
+        {
+          "id": "r1",
+          "text": "位于河边的那座桥"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    }
+  ]
+}

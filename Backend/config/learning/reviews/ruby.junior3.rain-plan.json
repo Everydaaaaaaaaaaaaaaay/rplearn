@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.junior3.rain-plan",
+  "contentHash": "cdc7d3a1ef0d29b40e90ed3bf28400a8c5b60fd253a7db9c562758d60be79d4c",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Ruby 主动组织海边社区活动并做备用安排，保持行动感与轻松语气。",
+  "levelFit": "真实将来条件中主将从现、否定、语序及条件结果关系；不考气象常识。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "tomorrow-rain",
+      "standaloneContext": "本题独立给定的作答条件：本题计划：如果明天下雨，我们就会在咖啡馆见面。哪句语法正确且意思相符？",
+      "ambiguityReview": "在明确将来真实条件中辨认主将从现，will 不是表示意愿的特殊用法。",
+      "optionNotes": {
+        "a": "本题普通将来天气条件从句不用 will rain。",
+        "b": "it 后一般现在时需要 rains，不能用 rain。",
+        "c": "rains 与主句 will meet 配合，准确表达计划。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "arrive-early",
+      "standaloneContext": "本题独立给定的作答条件：补全计划“如果她明天早到，她就会帮我们”：If she ___ early tomorrow, she will help us.\n填 arrive 的正确形式。",
+      "ambiguityReview": "产出真实条件从句的第三人称单数，不把明天一律转换成 will。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "arrives"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "ARRIVES"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "will arrive"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "bring-cups",
+      "standaloneContext": "本题独立给定的作答条件：组句：“如果你带杯子，我就带水。”以 If 开头。",
+      "ambiguityReview": "在两个不同主语之间维持条件和结果的方向，句首限定排除从句后置变体。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6", "t7", "t8"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "conditions-results",
+      "standaloneContext": "本题独立给定的作答条件：将三份完整备用计划与中文配对。 shelter 在这里指活动用的遮雨棚。",
+      "ambiguityReview": "以不同完整条件和结果检验意义连接，每项中文同时保留两部分信息。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "not-open",
+      "standaloneContext": "本题独立给定的作答条件：补全“如果这家咖啡馆明天不开门，我们就会在公园见面”：If the cafe ___ open tomorrow, we will meet in the park.\nopen 在这里是动词；只填 does not 或 do not。",
+      "ambiguityReview": "明确 open 为动词并限定候选，避免把 is not open 这一合法形容词表达误判。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "does not"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "DOES NOT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "do not"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "reversed-condition",
+      "standaloneContext": "本题独立给定的作答条件：本题约定：你需要帮忙时，我承诺留下来。选择准确表达“如果你需要帮忙，我就会留下来”的句子。",
+      "ambiguityReview": "比较语法均完整的不同条件方向，要求理解真实交际意义而非只找 will。",
+      "optionNotes": {
+        "a": "把留下变为条件、需要帮助变为结果，方向改变。",
+        "b": "需要帮助是条件，留下是承诺，符合题意。",
+        "c": "将条件改为不需要帮助，与给定约定不同。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

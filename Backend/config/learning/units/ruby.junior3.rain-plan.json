@@ -1,0 +1,232 @@
+{
+  "id": "ruby.junior3.rain-plan",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "海风里的备用计划",
+  "summary": "用真实条件句说明活动遇到变化时会怎么安排。",
+  "scene": "Ruby 和伙伴在准备海边的社区活动。天气可能改变，她把备用安排写在一张卡片上，希望每个人都知道下一步该怎么做。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.conditions"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 6 Problems / Unit 3",
+      "pages": "印刷第46页；PDF第53页",
+      "alignment": "参考真实将来条件中 if 从句一般现在时与主句 will；不把所有 if 从句一概禁用 will。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "A little planning now means less rushing later.",
+      "translation": "现在多做一点准备，等会儿就少一点手忙脚乱。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "We can change the place and still enjoy the afternoon.",
+      "translation": "换个地方，我们也能把这个下午过得开心。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Plan ready. Now, where did I put the markers?",
+      "translation": "计划好了。那么，我把记号笔放哪儿了？"
+    }
+  ],
+  "questions": [
+    {
+      "id": "tomorrow-rain",
+      "goalId": "j3.conditions",
+      "prompt": "本题计划：如果明天下雨，我们就会在咖啡馆见面。哪句语法正确且意思相符？",
+      "hint": "谈将来的真实条件时，if 部分与结果部分的时态需要分别考虑。",
+      "explanation": "If it rains tomorrow, we will meet at the cafe. 表示可能发生的条件及其将来结果。",
+      "difficultyReason": "在明确将来真实条件中辨认主将从现，will 不是表示意愿的特殊用法。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "If it will rain tomorrow, we will meet at the cafe."
+        },
+        {
+          "id": "b",
+          "text": "If it rain tomorrow, we will meet at the cafe."
+        },
+        {
+          "id": "c",
+          "text": "If it rains tomorrow, we will meet at the cafe."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "arrive-early",
+      "goalId": "j3.conditions",
+      "prompt": "补全计划“如果她明天早到，她就会帮我们”：If she ___ early tomorrow, she will help us.\n填 arrive 的正确形式。",
+      "hint": "先找 if 从句的主语，再决定动词形式。",
+      "explanation": "本题 if 从句用一般现在时；she 是第三人称单数，arrive 变为 arrives。",
+      "difficultyReason": "产出真实条件从句的第三人称单数，不把明天一律转换成 will。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["arrives"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "bring-cups",
+      "goalId": "j3.conditions",
+      "prompt": "组句：“如果你带杯子，我就带水。”以 If 开头。",
+      "hint": "用完整条件从句开头，后半句说明自己的安排。",
+      "explanation": "If you bring cups, I will bring water. 用一般现在时提出条件，再用 will 说明结果。",
+      "difficultyReason": "在两个不同主语之间维持条件和结果的方向，句首限定排除从句后置变体。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "bring"
+        },
+        {
+          "id": "t4",
+          "text": "cups,"
+        },
+        {
+          "id": "t5",
+          "text": "I"
+        },
+        {
+          "id": "t6",
+          "text": "will"
+        },
+        {
+          "id": "t7",
+          "text": "bring"
+        },
+        {
+          "id": "t8",
+          "text": "water."
+        },
+        {
+          "id": "t1",
+          "text": "If"
+        },
+        {
+          "id": "t2",
+          "text": "you"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]]
+    },
+    {
+      "id": "conditions-results",
+      "goalId": "j3.conditions",
+      "prompt": "将三份完整备用计划与中文配对。 shelter 在这里指活动用的遮雨棚。",
+      "hint": "每条都看清条件及其结果，不要只匹配活动地点。",
+      "explanation": "rains 对应下雨；is full 对应已满；is late 对应晚到；各句结果分别是用棚、在外等候和发消息。",
+      "difficultyReason": "以不同完整条件和结果检验意义连接，每项中文同时保留两部分信息。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "If it rains, we will use the shelter."
+        },
+        {
+          "id": "l2",
+          "text": "If the cafe is full, we will wait outside."
+        },
+        {
+          "id": "l3",
+          "text": "If the bus is late, I will send a message."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "如果咖啡馆满了，我们就在外面等。"
+        },
+        {
+          "id": "r3",
+          "text": "如果公交车晚到，我就发条消息。"
+        },
+        {
+          "id": "r1",
+          "text": "如果下雨，我们就用遮雨棚。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "not-open",
+      "goalId": "j3.conditions",
+      "prompt": "补全“如果这家咖啡馆明天不开门，我们就会在公园见面”：If the cafe ___ open tomorrow, we will meet in the park.\nopen 在这里是动词；只填 does not 或 do not。",
+      "hint": "判断 cafe 是单数还是复数；否定形式后保留 open 原形。",
+      "explanation": "the cafe 为单数，条件从句用 does not open，后接将来的计划结果。",
+      "difficultyReason": "明确 open 为动词并限定候选，避免把 is not open 这一合法形容词表达误判。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["does not"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "reversed-condition",
+      "goalId": "j3.conditions",
+      "prompt": "本题约定：你需要帮忙时，我承诺留下来。选择准确表达“如果你需要帮忙，我就会留下来”的句子。",
+      "hint": "先确认哪一部分是条件，哪一部分是承诺的结果。",
+      "explanation": "If you need help, I will stay. 条件是你需要帮助，结果是我留下；条件和结果不能随意交换。",
+      "difficultyReason": "比较语法均完整的不同条件方向，要求理解真实交际意义而非只找 will。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "If I stay, you will need help."
+        },
+        {
+          "id": "b",
+          "text": "If you need help, I will stay."
+        },
+        {
+          "id": "c",
+          "text": "If you do not need help, I will stay."
+        }
+      ],
+      "answer": "b"
+    }
+  ]
+}

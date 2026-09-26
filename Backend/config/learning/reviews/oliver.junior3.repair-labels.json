@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.junior3.repair-labels",
+  "contentHash": "4b69986a69c02b67934d018141d8d0d513da1782d0f2a8a98ec0cc4161273e44",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "旧书修补、记录与上架属于 Oliver 的书店生活，强调照料旧物而非工业常识。",
+  "levelFit": "比较一般现在和过去被动、复数一致与执行者，日期和动作均独立给定。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "daily-check",
+      "standaloneContext": "本题独立给定的作答条件：清单要说“这些书每天都被检查”。哪句正确？ check 表示检查。",
+      "ambiguityReview": "在日常频率下确定被动语态，并排除单复数错误和主动谓语误用。",
+      "optionNotes": {
+        "a": "书作为检查对象，复数 are checked 表达正确。",
+        "b": "these books 为复数，不能与 is 搭配。",
+        "c": "主动 check 把书写成执行者，未表达被检查。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "was-repaired",
+      "standaloneContext": "本题独立给定的作答条件：补全记录“这个封面昨天被修好了”：This cover ___ repaired yesterday.\n只填 was 或 were；cover 指封面。",
+      "ambiguityReview": "在明确过去时间的被动句中按单数主语选择 be，不要求认识修补技术。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "was"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WAS"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "were"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "labels-written",
+      "standaloneContext": "本题独立给定的作答条件：组句：“这些标签是手写的。”以 The labels 开头，by hand 表示用手。",
+      "ambiguityReview": "不规则过去分词 written 已提供，任务要求从主动词序转向动作承受者作主语。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "record-time",
+      "standaloneContext": "本题独立给定的作答条件：将修补记录与中文配对，注意时间与动作执行者。",
+      "ambiguityReview": "同一词根比较主动、过去被动与现在被动，不能仅凭 cleaned 一个词匹配。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "covers-last-week",
+      "standaloneContext": "本题独立给定的作答条件：本题已知：店员上周修好了三个封面。要以 Three covers 作主语，哪句保留事实且语法正确？",
+      "ambiguityReview": "从明确主动事实改写过去被动，干扰项分别改变时态和漏掉被动助动词。",
+      "optionNotes": {
+        "a": "are 与明确的 last week 不符合本题过去事实。",
+        "b": "缺少 were，不能形成完整的过去被动谓语。",
+        "c": "复数 were repaired 与上周的修补事实一致。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "sent-form",
+      "standaloneContext": "本题独立给定的作答条件：补全日常流程“这些书每月寄给读者”：The books are ___ to readers every month.\n只填 send 的正确形式。",
+      "ambiguityReview": "独立产出不规则过去分词，已给 be 与频率，控制到九年级基本被动结构。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "sent"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "SENT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "send"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

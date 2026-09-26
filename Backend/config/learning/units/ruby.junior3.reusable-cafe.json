@@ -1,0 +1,238 @@
+{
+  "id": "ruby.junior3.reusable-cafe",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "咖啡馆的小循环",
+  "summary": "说明减少使用、再次利用和回收，并说清原因与目的。",
+  "scene": "Ruby 在咖啡馆整理活动剩下的纸袋和玻璃罐。她想给同伴留下几条容易执行的建议，每条都说清楚为什么这样做。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.environment", "j3.reasons"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 12 Save our world / Unit 2",
+      "pages": "印刷第98页；PDF第105页",
+      "alignment": "参考 reduce、reuse、recycle 的含义与日常环保行动表达；另写咖啡馆情景，不考原文理解。"
+    },
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 3 Heroes / Unit 3",
+      "pages": "印刷第22页；PDF第29页",
+      "alignment": "参考 because、so、so that 连接原因、结果与目的；中文明确语义关系，避免开放连接词歧义。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "These jars still have a job to do. Let us give them one.",
+      "translation": "这些罐子还能派上用场。我们给它们安排个新任务吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A short explanation helps everyone understand the plan.",
+      "translation": "解释简短些，也能让大家明白计划。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Less to throw away, more space on the counter.",
+      "translation": "要扔的东西少一点，柜台上的地方就多一点。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "three-actions",
+      "goalId": "j3.environment",
+      "prompt": "将三个英语表达与准确含义配对。",
+      "hint": "区分少用、再次使用和把材料回收加工，不把它们当同义词。",
+      "explanation": "reduce 表示减少；reuse 表示再次使用；recycle 表示回收处理材料以再利用。",
+      "difficultyReason": "用明确功能释义建立三个近义主题动词的边界，避免按环保好坏评分。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "reduce the number of paper bags used"
+        },
+        {
+          "id": "l2",
+          "text": "reuse a glass jar"
+        },
+        {
+          "id": "l3",
+          "text": "recycle waste paper"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "把一个玻璃罐再次拿来使用"
+        },
+        {
+          "id": "r3",
+          "text": "把废纸回收处理以再利用"
+        },
+        {
+          "id": "r1",
+          "text": "减少使用的纸袋数量"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "jar-action",
+      "goalId": "j3.environment",
+      "prompt": "本题做法：把洗净的旧玻璃罐直接拿来装铅笔，没有把玻璃加工成新材料。用哪个词准确描述这个做法？",
+      "hint": "判断是在直接再次使用物品，还是先处理材料。",
+      "explanation": "reuse 表示再次使用现有物品；本题没有进行材料回收加工，不选 recycle。",
+      "difficultyReason": "明示是否加工的关键条件，防止现实宽泛环保分类造成 reuse 和 recycle 两解。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "recycle"
+        },
+        {
+          "id": "b",
+          "text": "reuse"
+        },
+        {
+          "id": "c",
+          "text": "reduce"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "reason-paper",
+      "goalId": "j3.reasons",
+      "prompt": "表达原因：“我们把这些纸留着，因为背面还是空白。” We keep this paper ___ the other side is blank.\n只填 because 或 so；blank 表示空白的。",
+      "hint": "横线后是在解释保留纸张的原因，还是在叙述结果？",
+      "explanation": "because 引出原因：背面仍空白，所以保留这些纸。so 在这里会颠倒因果关系。",
+      "difficultyReason": "在固定词序和两个候选下识别原因从句，不把其它合法原因连词一概排除。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["because"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "purpose-labels",
+      "goalId": "j3.reasons",
+      "prompt": "组句：“我们给箱子贴标签，以便大家能找到它们。”以 We 开头；label 在这里是动词“贴标签”。",
+      "hint": "后半句说明这样做的目的，并有自己的主语。",
+      "explanation": "We label the boxes so that everyone can find them. 用 so that 引出目的从句。",
+      "difficultyReason": "把行动与目的组成双主语句，区分目的从句和简单不定式，词块提供 so that。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "the boxes"
+        },
+        {
+          "id": "t4",
+          "text": "so that"
+        },
+        {
+          "id": "t5",
+          "text": "everyone"
+        },
+        {
+          "id": "t6",
+          "text": "can"
+        },
+        {
+          "id": "t7",
+          "text": "find"
+        },
+        {
+          "id": "t8",
+          "text": "them."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "label"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]]
+    },
+    {
+      "id": "so-result",
+      "goalId": "j3.reasons",
+      "prompt": "本题事实：所有玻璃罐都装满了，因此我们用了一个盒子。哪句保持这个因果关系且语法正确？",
+      "hint": "先确认哪件事先构成原因，再检查连接词有没有重复。",
+      "explanation": "All the jars were full, so we used a box. 前句给原因，so 引出结果；本题两个完整分句不同时用 because 和 so。",
+      "difficultyReason": "检验因果方向及 because 与 so 的重复搭配，过去事实已明示。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "All the jars were full, so we used a box."
+        },
+        {
+          "id": "b",
+          "text": "Because all the jars were full, so we used a box."
+        },
+        {
+          "id": "c",
+          "text": "We used a box, so all the jars were full."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "purpose-note",
+      "goalId": "j3.reasons",
+      "prompt": "补全“我们写这张便条，以便下一班同事能看懂计划”：We write this note ___ the next team can understand the plan.\n只填 so that 或 because。",
+      "hint": "题目说的是写便条想达到的目的。",
+      "explanation": "so that 引出目的：为了让下一班同事理解计划；because 会改成已经理解是写便条的原因。",
+      "difficultyReason": "用明确目的语义限制两个候选，接收两词答案并避免仅依据 can 猜测因果。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["so that"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "id": "oliver.junior3.bookshop-then-now",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "旧书店的前后两页",
+  "summary": "用 used to 说明过去的习惯与现在的变化。",
+  "scene": "Oliver 找到一张旧书店照片：门边曾经塞满纸箱，如今放着两把阅读椅。他想给照片墙写几句简短的今昔说明。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.used-to"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 4 I used to be afraid of the dark.",
+      "pages": "印刷第28页；PDF第42页",
+      "alignment": "参考 used to 表示过去习惯及 did 后 use 的形式，不扩展到 be used to doing。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "This corner used to be full of boxes. The chairs are an improvement.",
+      "translation": "这个角落以前堆满纸箱。换成椅子好多了。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "I still keep the old photos. They remind me how things change.",
+      "translation": "旧照片我还留着。它们让我想起这里经历的变化。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "A different room, with room for a few more stories.",
+      "translation": "屋子不一样了，也多容得下几个故事了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "former-shelf",
+      "goalId": "j3.used-to",
+      "prompt": "本题已知：这家书店以前卖报纸，现在不卖了。哪句准确表达这种变化？",
+      "hint": "寻找专门表达过去习惯、现在已改变的句式。",
+      "explanation": "The shop used to sell newspapers. 表示店里过去卖报纸；use to 不能直接作本句过去习惯表达。",
+      "difficultyReason": "给定明确今昔对照，辨析 used to 肯定结构，错误项分别为时态形式和事实不符。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The shop use to sell newspapers."
+        },
+        {
+          "id": "b",
+          "text": "The shop sells newspapers now."
+        },
+        {
+          "id": "c",
+          "text": "The shop used to sell newspapers."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "did-not-open",
+      "goalId": "j3.used-to",
+      "prompt": "补全“这家店以前星期天不营业”：The shop did not ___ to open on Sundays.\n只填 use 或 used。",
+      "hint": "过去时已经由前面的助动词承担。",
+      "explanation": "did not 后用动词原形 use：did not use to open。",
+      "difficultyReason": "在 used to 的否定结构中识别 did 后原形，避免机械保留 used。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["use"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "former-evening",
+      "goalId": "j3.used-to",
+      "prompt": "组句：“我以前晚上在这里看书。”以 I 开头。",
+      "hint": "先表达过去的习惯，再说明地点和时段。",
+      "explanation": "I used to read here in the evenings. 表示从前的规律行为；here 位于已给完整时间词块前。",
+      "difficultyReason": "固定句首与时间词块减少合法语序遗漏，同时要求组合 used to 加原形。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "read"
+        },
+        {
+          "id": "t4",
+          "text": "here"
+        },
+        {
+          "id": "t5",
+          "text": "in the evenings."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "used to"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "did-you-work",
+      "goalId": "j3.used-to",
+      "prompt": "你想问店员“你以前在这里工作吗？”哪句语法正确？",
+      "hint": "疑问句里的 did 会影响后面动词的形式。",
+      "explanation": "Did you use to work here? 中 did 后用 use，to 后用 work 原形。",
+      "difficultyReason": "两个干扰项分别保留 used 和使用 working，聚焦疑问结构而非陌生词。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Did you used to work here?"
+        },
+        {
+          "id": "b",
+          "text": "Did you use to work here?"
+        },
+        {
+          "id": "c",
+          "text": "Did you use to working here?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "then-now-labels",
+      "goalId": "j3.used-to",
+      "prompt": "将三条照片说明与准确中文配对。",
+      "hint": "注意过去是否发生，以及句子有没有交代现在。",
+      "explanation": "used to walk 表过去常步行；did not use to walk 表过去不常步行；walk now 表现在步行。",
+      "difficultyReason": "同一动作下区分过去肯定、过去否定与现在事实，不把过去否定自动推成现在肯定。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I used to walk to the shop."
+        },
+        {
+          "id": "l2",
+          "text": "I did not use to walk to the shop."
+        },
+        {
+          "id": "l3",
+          "text": "I walk to the shop now."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我以前不常步行去店里。"
+        },
+        {
+          "id": "r3",
+          "text": "我现在步行去店里。"
+        },
+        {
+          "id": "r1",
+          "text": "我以前常步行去店里。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "there-used",
+      "goalId": "j3.used-to",
+      "prompt": "旧照片说明“这里以前有一张桌子”：There ___ to be a table here.\n只填 use 或 used；这里如今没有那张桌子了。",
+      "hint": "这句话没有 did，需要完整表达过去的状态。",
+      "explanation": "There used to be… 表示过去有某物；本句没有 did，所以保留 used。",
+      "difficultyReason": "将过去习惯迁移到过去存在的状态，区别前两题 did 句架，事实全部在题内。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["used"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    }
+  ]
+}

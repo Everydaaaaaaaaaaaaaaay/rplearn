@@ -1,0 +1,234 @@
+{
+  "id": "marcus.junior3.neighbourhood-invitations",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "街坊相片夜的邀请",
+  "summary": "礼貌确认来访安排，并说明满足条件后的准备。",
+  "scene": "Marcus 想在街角小店办一次相片分享夜。他给邻居们准备邀请留言，要问清参加人数和时间，也留出调整安排的余地。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.indirect-questions", "j3.conditions"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 3 Could you please tell me where the restrooms are?",
+      "pages": "印刷第20、22页；PDF第34、36页",
+      "alignment": "参考礼貌请求中的宾语从句语序和语境适切性；直接问句本身并非语法错误。"
+    },
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 6 Problems / Unit 3",
+      "pages": "印刷第46页；PDF第53页",
+      "alignment": "参考真实将来条件中 if 从句一般现在时与主句 will；不把所有 if 从句一概禁用 will。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "The photos are ready. Now we need to make room for the neighbours.",
+      "translation": "照片准备好了。现在得给邻居们留出位置。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "A quick message can save someone a wasted trip.",
+      "translation": "一条简短消息，就能让人少白跑一趟。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Good company, a few photographs, and enough chairs. That is the plan.",
+      "translation": "有聊得来的朋友、几张照片，还有够坐的椅子。这就是计划。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "whether-come",
+      "goalId": "j3.indirect-questions",
+      "prompt": "在邀请留言中补全“请告诉我你是否能在六点前来”：Please let me know ___ you can come before six.\n只填 if 或 whether。",
+      "hint": "这里请求一条“能或不能”的信息，并没有提出某个条件。",
+      "explanation": "if 与 whether 在此都表示“是否”，两个答案都正确。",
+      "difficultyReason": "通过留言语义识别宾语从句而非条件，接收 if 和 whether 两种等价形式。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["if", "whether"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "how-many-come",
+      "goalId": "j3.indirect-questions",
+      "prompt": "你想问邻居“你知道有多少朋友会来吗？”哪句正确？",
+      "hint": "how many 后的整个名词短语在从句里做什么成分？",
+      "explanation": "Do you know how many friends are coming? 中 how many friends 本身是从句主语，are coming 跟在它后面。",
+      "difficultyReason": "专门检查疑问词短语作主语的情形，避免机械地把所有疑问词从句都搬动主语位置。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do you know how many friends are coming?"
+        },
+        {
+          "id": "b",
+          "text": "Do you know how many are friends coming?"
+        },
+        {
+          "id": "c",
+          "text": "Do you know how many friends coming are?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "more-chairs",
+      "goalId": "j3.conditions",
+      "prompt": "组句：“如果更多人来，我们就会加椅子。”以 If 开头。",
+      "hint": "先写可能发生的情况，再写随后的准备。",
+      "explanation": "If more people come, we will add chairs. 来访条件用一般现在时，准备安排用 will。",
+      "difficultyReason": "在复数主语下组合真实条件与将来结果，避免将主将从现误记成从句总加 s。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "come,"
+        },
+        {
+          "id": "t4",
+          "text": "we"
+        },
+        {
+          "id": "t5",
+          "text": "will"
+        },
+        {
+          "id": "t6",
+          "text": "add"
+        },
+        {
+          "id": "t7",
+          "text": "chairs."
+        },
+        {
+          "id": "t1",
+          "text": "If"
+        },
+        {
+          "id": "t2",
+          "text": "more people"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]]
+    },
+    {
+      "id": "if-two-jobs",
+      "goalId": "j3.indirect-questions",
+      "prompt": "将三条留言与其目的配对。",
+      "hint": "同一个 if 可以请求“是否”的信息，也可以提出“如果”的条件。",
+      "explanation": "Please tell me if… 请求是否的信息；If you… I will… 提出条件安排；what time 请求具体时刻。",
+      "difficultyReason": "比较相同 if 在两个结构中的不同功能，第三项区分是否与何时，须读整句。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Please tell me if you need a seat."
+        },
+        {
+          "id": "l2",
+          "text": "If you need a seat, I will save one."
+        },
+        {
+          "id": "l3",
+          "text": "Please tell me what time you will arrive."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "说明在需要座位的条件下会留一个。"
+        },
+        {
+          "id": "r3",
+          "text": "请对方告知预计到达的时刻。"
+        },
+        {
+          "id": "r1",
+          "text": "请对方告知是否需要座位。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "finish-before",
+      "goalId": "j3.conditions",
+      "prompt": "补全约定“如果活动在八点前结束，我就会打电话给你”：If the event ___ before eight, I will call you.\n填 finish 的正确形式；event 指活动。",
+      "hint": "这是可能发生的结束条件，先查看从句主语的数。",
+      "explanation": "the event 为单数，真实将来条件从句用一般现在时 finishes。",
+      "difficultyReason": "产出以 sh 结尾动词的第三人称形式，前面已给完整将来结果以锁定条件用法。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["finishes"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "polite-arrival",
+      "goalId": "j3.indirect-questions",
+      "prompt": "给初次来访的邻居写“您能告诉我您几点会到吗？”哪句正确？",
+      "hint": "礼貌问询后的从句仍能谈将来，关键是内部语序。",
+      "explanation": "Could you tell me what time you will arrive? 这是间接询问时间的宾语从句，可以用 will arrive；不是 if 条件从句。",
+      "difficultyReason": "区别宾语从句允许的将来时与条件句时态，防止将主将从现规则错误泛化。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Could you tell me what time will you arrive?"
+        },
+        {
+          "id": "b",
+          "text": "Could you tell me what time you will arrive?"
+        },
+        {
+          "id": "c",
+          "text": "Could you tell me what time you arrive will?"
+        }
+      ],
+      "answer": "b"
+    }
+  ]
+}

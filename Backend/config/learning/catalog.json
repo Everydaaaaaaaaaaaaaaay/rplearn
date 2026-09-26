@@ -79,6 +79,36 @@
           "sha256": "937f98de1f99733c6e3ec9056de569de464db84f2df969c7c41b12ba3aa713b0"
         }
       ]
+    },
+    {
+      "id": "pep.junior3.full.copyright2014",
+      "title": "人教版英语九年级全一册（公开存档正文）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%88%9D%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E4%B9%9D%E5%B9%B4%E7%BA%A7/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E4%B9%9D%E5%B9%B4%E7%BA%A7%E5%85%A8%E4%B8%80%E5%86%8C.pdf",
+      "edition": "封面教育部审定2013，版权标记2014；未核验具体版次和印次",
+      "readAt": "2026-09-26",
+      "scope": "核读封面、版权页及正文PDF第34、36、42、50、58、66、82页；对应印刷第20、22、28、36、44、52、68页。",
+      "limitations": "国家平台对应PDF访问受限，改读公开社区存档，已核对封面及指定正文。审定年份不是出版版次；不宣称当前新教材逐课等价，不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；正文核读范围见scope和各单元references",
+          "sha256": "9c4118021048d901610b673f590ed28c39c04cb2d4f7fd940f83a2d8b2741af7"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.junior3.upper.review2013",
+      "title": "外研版英语新标准九年级上册（公开存档正文）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%88%9D%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88-%E5%A4%96%E8%AF%AD%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%87%BA%E7%89%88%E7%A4%BE/%E4%B9%9D%E5%B9%B4%E7%BA%A7/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E4%B9%9D%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "封面及扉页教育部审定2013；未取得具体版次、印次与ISBN",
+      "readAt": "2026-09-26",
+      "scope": "核读封面、扉页、编辑页及正文PDF第29、45、53、67、99、105页；对应印刷第22、38、46、60、92、98页。",
+      "limitations": "国家平台对应PDF访问受限，改读公开社区存档，已核对封面及指定正文。审定年份不是出版版次；不宣称当前新教材逐课等价，不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；正文核读范围见scope和各单元references",
+          "sha256": "9a05cbe618e0221342ce8caf32a4ff002af4045a9745ce7b06acc4938e0780b8"
+        }
+      ]
     }
   ],
   "goals": [
@@ -207,6 +237,69 @@
       "canDo": "能描述能看到的事物，询问与回答简单活动能力，使用 can 后原形。",
       "boundaries": "每题说明可见性和能力事实；不要求图片记忆、绘画或真实运动能力。",
       "sourceIds": ["yilin.primary4.lower.2013"]
+    },
+    {
+      "id": "j3.indirect-questions",
+      "level": "junior3",
+      "canDo": "能用礼貌句架询问时间、地点、方式与是否，并使用宾语从句陈述语序。",
+      "boundaries": "区分直接问句与间接问句；是否从句接受 if/whether，不把宾语从句误按条件从句禁用将来时。",
+      "sourceIds": ["pep.junior3.full.copyright2014"]
+    },
+    {
+      "id": "j3.used-to",
+      "level": "junior3",
+      "canDo": "能描述过去习惯或状态与现在的变化，并构建 used to 的肯定、否定和疑问。",
+      "boundaries": "限 used to 加原形及 there used to be；不与 be/get used to doing 混教。",
+      "sourceIds": ["pep.junior3.full.copyright2014"]
+    },
+    {
+      "id": "j3.passive-present",
+      "level": "junior3",
+      "canDo": "能把日常流程的动作承受者作为主语，用一般现在时被动说明。",
+      "boundaries": "限 be 加过去分词和基本数一致；不含完成时被动、进行时被动或复杂双宾语。",
+      "sourceIds": ["pep.junior3.full.copyright2014", "fltrp.junior3.upper.review2013"]
+    },
+    {
+      "id": "j3.passive-past",
+      "level": "junior3",
+      "canDo": "能根据给定过去时间与执行者，把简单事件改写为一般过去时被动。",
+      "boundaries": "所有事件事实在题内提供；不考发明史、摄影知识或剧情记忆。",
+      "sourceIds": ["pep.junior3.full.copyright2014"]
+    },
+    {
+      "id": "j3.rules",
+      "level": "junior3",
+      "canDo": "能用禁止标志、否定祈使句和情态被动清楚转述给定规则。",
+      "boundaries": "不考规则价值判断或救援知识；区分 may、should、must 的不同语气。",
+      "sourceIds": ["pep.junior3.full.copyright2014", "fltrp.junior3.upper.review2013"]
+    },
+    {
+      "id": "j3.conditions",
+      "level": "junior3",
+      "canDo": "能用真实将来条件和 will 结果说明备用安排，并保持条件与结果方向。",
+      "boundaries": "只覆盖普通真实将来条件；不以简单规则否定 if 表意愿或宾语从句等其他用法。",
+      "sourceIds": ["fltrp.junior3.upper.review2013"]
+    },
+    {
+      "id": "j3.relative-clauses",
+      "level": "junior3",
+      "canDo": "能用限制性定语从句说明人物、事物的特点，选择合法关系代词并避免重复宾语。",
+      "boundaries": "主语关系词不可省略，人物接收 who/that，事物接收 which/that；不含非限制性和介词前置。",
+      "sourceIds": ["pep.junior3.full.copyright2014", "fltrp.junior3.upper.review2013"]
+    },
+    {
+      "id": "j3.environment",
+      "level": "junior3",
+      "canDo": "能区分减少使用、再次利用与材料回收的含义，准确描述题内给出的行动。",
+      "boundaries": "按题内的明确定义区分行为，不考现实回收政策、环境效果或道德态度。",
+      "sourceIds": ["fltrp.junior3.upper.review2013"]
+    },
+    {
+      "id": "j3.reasons",
+      "level": "junior3",
+      "canDo": "能用 because、so、so that 明确连接原因、结果与目的。",
+      "boundaries": "题内明确意图与候选词；不把现实中可兼容的因果或目的关系强行设为唯一答案。",
+      "sourceIds": ["fltrp.junior3.upper.review2013"]
     }
   ],
   "unitIds": [
@@ -227,7 +320,16 @@
     "ruby.primary4.clothes-rail",
     "marcus.primary4.market-price-tags",
     "marcus.primary4.season-photos",
-    "marcus.primary4.park-sketches"
+    "marcus.primary4.park-sketches",
+    "oliver.junior3.bookclub-enquiries",
+    "oliver.junior3.bookshop-then-now",
+    "oliver.junior3.repair-labels",
+    "ruby.junior3.visitor-station-rules",
+    "ruby.junior3.rain-plan",
+    "ruby.junior3.reusable-cafe",
+    "marcus.junior3.record-corner",
+    "marcus.junior3.photo-caption-workshop",
+    "marcus.junior3.neighbourhood-invitations"
   ],
   "audioAssets": [
     {

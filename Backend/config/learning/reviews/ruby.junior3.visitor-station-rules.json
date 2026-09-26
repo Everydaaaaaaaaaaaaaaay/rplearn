@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.junior3.visitor-station-rules",
+  "contentHash": "51470dd1ba97c62bcdda3323d651e199d94b20beca64e4e99b479813046e1981",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Ruby 的海边志愿接待工作提供规则说明场景；虚构场馆规则不构成救援或医疗建议。",
+  "levelFit": "整合 No doing、否定祈使句、情态被动和 if 加祈使句；规则均由题干指定。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "bags-rule",
+      "standaloneContext": "本题独立给定的作答条件：本题展厅规定：背包必须放在门口。哪句准确表达该规定？ backpack 表示背包。",
+      "ambiguityReview": "从给定规则选择情态被动，区别主动原形和缺少 be，不要求判断规则是否合理。",
+      "optionNotes": {
+        "a": "must 后缺少 be，无法构成被动结构。",
+        "b": "must be left 完整说明背包必须被放在门口。",
+        "c": "主动 leave 不能表示本题背包被放置的要求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "no-running",
+      "standaloneContext": "本题独立给定的作答条件：提示牌规定“禁止奔跑”：No ___.\n填 run 的正确形式。",
+      "ambiguityReview": "从给定动词产出 No doing 规则形式，包含九年级复现的不规则拼写变化。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "running"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "RUNNING"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "run"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "do-not-touch",
+      "standaloneContext": "本题独立给定的作答条件：组句：“不要碰这些模型。”models 指模型，以 Do 开头。",
+      "ambiguityReview": "把明示规则变成否定祈使句，为与情态被动对照保留较短的巩固题。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "rule-strength",
+      "standaloneContext": "本题独立给定的作答条件：将三条场馆规则与中文配对。",
+      "ambiguityReview": "相近被动结构中辨别情态意义，所有译文保留许可强弱而非互换 should 与 must。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "allowed-entry",
+      "standaloneContext": "本题独立给定的作答条件：本题规定访客必须先登记才能进房间。补全：“Visitors should not ___ allowed into the room before they sign in.”\n只填一个 be 动词；sign in 表示登记。",
+      "ambiguityReview": "在否定情态被动里补助动词原形，区别普通现在时 are allowed。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "be"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "BE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "ask-helper",
+      "standaloneContext": "本题独立给定的作答条件：要在提示牌上写“如果你需要帮助，请问一位志愿者”，哪句正确？ volunteer 指志愿者。",
+      "ambiguityReview": "在 if 条件配祈使句中区别主语一致与谓语完整，不依赖将来时机械套用。",
+      "optionNotes": {
+        "a": "条件从句与祈使主句都完整，意义符合。",
+        "b": "主语 you 不搭配第三人称单数 needs。",
+        "c": "asking 不能在此独立作祈使句谓语。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

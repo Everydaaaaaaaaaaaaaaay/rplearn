@@ -1,0 +1,222 @@
+{
+  "id": "ruby.junior3.visitor-station-rules",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "junior3",
+  "title": "海边访客站的提示牌",
+  "summary": "把给定的场馆规则写成清楚的英语提醒。",
+  "scene": "Ruby 在海边访客站帮忙布置小型展览。她拿着几块空白提示牌，想让第一次来的朋友知道哪些事可以做、哪些事需要先询问。",
+  "estimatedMinutes": 8,
+  "goalIds": ["j3.rules"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior3.full.copyright2014",
+      "unit": "Unit 7 Teenagers should be allowed to choose their own clothes.",
+      "pages": "印刷第52页；PDF第66页",
+      "alignment": "参考含情态动词的被动语态与规则表达，不要求赞同特定学校或社会规则。"
+    },
+    {
+      "sourceId": "fltrp.junior3.upper.review2013",
+      "unit": "Module 5 Museums / Unit 3",
+      "pages": "印刷第38页；PDF第45页",
+      "alignment": "参考 No doing、否定祈使句和 if 条件加祈使句；仅做给定规则的语言转换。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-26",
+    "reviewNotes": "逐题原创并自审独立条件、词汇语法、唯一答案、干扰项、提示与解析。依据已核读旧版教材正文；尚无独立教师审定或学习者效度验证。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Welcome in! A few clear signs will make the visit easier.",
+      "translation": "欢迎进来！几块清楚的指示牌会让参观更轻松。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Friendly words, clear rules. We can have both.",
+      "translation": "语气友好，规则明确。这两件事可以一起做到。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "The signs are ready. Let us put them where people can see them.",
+      "translation": "牌子做好了。我们把它们放到大家看得见的地方吧。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "bags-rule",
+      "goalId": "j3.rules",
+      "prompt": "本题展厅规定：背包必须放在门口。哪句准确表达该规定？ backpack 表示背包。",
+      "hint": "背包是被放置的物品，检查情态动词后的结构。",
+      "explanation": "Backpacks must be left by the door. 中 must 后接 be，再接 leave 的过去分词 left。",
+      "difficultyReason": "从给定规则选择情态被动，区别主动原形和缺少 be，不要求判断规则是否合理。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Backpacks must left by the door."
+        },
+        {
+          "id": "b",
+          "text": "Backpacks must be left by the door."
+        },
+        {
+          "id": "c",
+          "text": "Backpacks must leave by the door."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "no-running",
+      "goalId": "j3.rules",
+      "prompt": "提示牌规定“禁止奔跑”：No ___.\n填 run 的正确形式。",
+      "hint": "No 后直接接表示某种活动的形式，注意拼写变化。",
+      "explanation": "禁止某种活动可用 No 加动词 ing 形式；run 变为 running 时双写 n。",
+      "difficultyReason": "从给定动词产出 No doing 规则形式，包含九年级复现的不规则拼写变化。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["running"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "do-not-touch",
+      "goalId": "j3.rules",
+      "prompt": "组句：“不要碰这些模型。”models 指模型，以 Do 开头。",
+      "hint": "祈使句表达禁止时，否定词后接动词原形。",
+      "explanation": "Do not touch these models. 是清楚的否定祈使句，touch 使用原形。",
+      "difficultyReason": "把明示规则变成否定祈使句，为与情态被动对照保留较短的巩固题。",
+      "type": "arrange",
+      "instruction": "使用全部词块，组成符合中文意思的句子。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "touch"
+        },
+        {
+          "id": "t4",
+          "text": "these models."
+        },
+        {
+          "id": "t1",
+          "text": "Do"
+        },
+        {
+          "id": "t2",
+          "text": "not"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+    },
+    {
+      "id": "rule-strength",
+      "goalId": "j3.rules",
+      "prompt": "将三条场馆规则与中文配对。",
+      "hint": "区分允许、禁止和建议，不能只看相同的拍照词语。",
+      "explanation": "may be taken 表示可以拍；must not be taken 表示禁止；should be checked 表示应该检查。",
+      "difficultyReason": "相近被动结构中辨别情态意义，所有译文保留许可强弱而非互换 should 与 must。",
+      "type": "matching",
+      "instruction": "将左侧英语与右侧意思逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Photos may be taken here."
+        },
+        {
+          "id": "l2",
+          "text": "Photos must not be taken here."
+        },
+        {
+          "id": "l3",
+          "text": "Tickets should be checked here."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "这里禁止拍照。"
+        },
+        {
+          "id": "r3",
+          "text": "应该在这里检查票。"
+        },
+        {
+          "id": "r1",
+          "text": "这里可以拍照。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "allowed-entry",
+      "goalId": "j3.rules",
+      "prompt": "本题规定访客必须先登记才能进房间。补全：“Visitors should not ___ allowed into the room before they sign in.”\n只填一个 be 动词；sign in 表示登记。",
+      "hint": "Visitors 在这里是获得许可的人，观察 allowed 前需要补什么。",
+      "explanation": "情态动词 should 后的被动结构是 be allowed；not 不改变 be 的原形。",
+      "difficultyReason": "在否定情态被动里补助动词原形，区别普通现在时 are allowed。",
+      "type": "completion",
+      "instruction": "按题干限定，只填写横线处缺少的英语。",
+      "acceptedAnswers": ["be"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "ask-helper",
+      "goalId": "j3.rules",
+      "prompt": "要在提示牌上写“如果你需要帮助，请问一位志愿者”，哪句正确？ volunteer 指志愿者。",
+      "hint": "条件部分说什么情况下，后半句直接告诉读者做什么。",
+      "explanation": "If you need help, ask a volunteer. 用 if 加一般现在时条件，主句为 ask 开头的祈使句。",
+      "difficultyReason": "在 if 条件配祈使句中区别主语一致与谓语完整，不依赖将来时机械套用。",
+      "type": "choice",
+      "instruction": "选择符合本题情景的英语表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "If you need help, ask a volunteer."
+        },
+        {
+          "id": "b",
+          "text": "If you needs help, ask a volunteer."
+        },
+        {
+          "id": "c",
+          "text": "If you need help, asking a volunteer."
+        }
+      ],
+      "answer": "a"
+    }
+  ]
+}

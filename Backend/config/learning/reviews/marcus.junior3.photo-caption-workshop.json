@@ -1,0 +1,214 @@
+{
+  "unitId": "marcus.junior3.photo-caption-workshop",
+  "contentHash": "e89d7a4fedea0b769b5df038e3901ea49e0711cdf39f574c976c082772c8f070",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "街头摄影、给照片写说明和奶奶家桌面体现 Marcus 的街区观察与亲近感。",
+  "levelFit": "从主动事实改写过去被动，同时练人物或事物从句；题目提供所有时间与身份。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "photo-taken",
+      "standaloneContext": "本题独立给定的作答条件：补全照片说明“这张照片上星期六拍摄”：This photo was ___ last Saturday.\n填 take 的正确形式；take a photo 表示拍照。",
+      "ambiguityReview": "在过去被动里区分 taken 与 took，日期只提供时态条件，不考照片记忆。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "taken"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "TAKEN"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "took"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "two-photos",
+      "standaloneContext": "本题独立给定的作答条件：本题事实：Marcus 昨天拍了两张照片。以 Two photos 为主语，哪句准确且语法正确？",
+      "ambiguityReview": "主动转被动并维持事实，错误项分别漏 be 和误用单数 was。",
+      "optionNotes": {
+        "a": "缺少 were，句子没有完整的被动谓语。",
+        "b": "were taken 配复数照片，by 后保留拍摄者。",
+        "c": "Two photos 为复数，不能在此配 was。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "wall-painted",
+      "standaloneContext": "本题独立给定的作答条件：组句：“这面墙去年被粉刷了。”以 The wall 开头，paint 在这里指粉刷。",
+      "ambiguityReview": "从明确中文选择过去被动语序，所有词块给定，避免把摄影题变成历史常识。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "woman-owns",
+      "standaloneContext": "本题独立给定的作答条件：补全“那就是拥有这家店的女士”：That is the woman ___ owns this shop.\n只填一个关系代词；owns 表示拥有。",
+      "ambiguityReview": "人物身份识别关系从句中接收合法变体，owns 的意思给出以减少额外词汇负担。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WHO"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "which"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "which-building",
+      "standaloneContext": "本题独立给定的作答条件：说明卡要写“这是去年修好的那栋楼”。哪句语法正确且意思相符？",
+      "ambiguityReview": "合并物的关系从句与过去被动，检验两项本单元目标共同运用。",
+      "optionNotes": {
+        "a": "主动 repaired 没有表达楼被修理，也缺少所需宾语。",
+        "b": "building 是物，不能在本题用 who 指代。",
+        "c": "that 指楼，was repaired 说明去年被修好的特点。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "caption-meanings",
+      "standaloneContext": "本题独立给定的作答条件：把三条独立照片说明与中文配对。 bridge 指桥。",
+      "ambiguityReview": "从完整说明辨认关系从句修饰对象与细节，不要求看到实际照片。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

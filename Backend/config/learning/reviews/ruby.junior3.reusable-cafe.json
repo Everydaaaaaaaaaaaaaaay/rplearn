@@ -1,0 +1,207 @@
+{
+  "unitId": "ruby.junior3.reusable-cafe",
+  "contentHash": "8edec5810f68b080fc11adabb19278f9c6c962f83f4e8dc41ccda8db578d1c90",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Ruby 的咖啡馆工作把环境词汇落在纸袋与罐子的小行动上，不声称具体环保量化效果。",
+  "levelFit": "在明确事实下区分 reduce/reuse/recycle，并连接原因、结果与目的；非环境知识测验。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "three-actions",
+      "standaloneContext": "本题独立给定的作答条件：将三个英语表达与准确含义配对。",
+      "ambiguityReview": "用明确功能释义建立三个近义主题动词的边界，避免按环保好坏评分。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "jar-action",
+      "standaloneContext": "本题独立给定的作答条件：本题做法：把洗净的旧玻璃罐直接拿来装铅笔，没有把玻璃加工成新材料。用哪个词准确描述这个做法？",
+      "ambiguityReview": "明示是否加工的关键条件，防止现实宽泛环保分类造成 reuse 和 recycle 两解。",
+      "optionNotes": {
+        "a": "题内明确没有材料回收加工，不符合此处精确含义。",
+        "b": "旧罐直接换用途再次使用，符合 reuse。",
+        "c": "reduce 表减少数量，未直接命名旧罐再次使用的动作。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "reason-paper",
+      "standaloneContext": "本题独立给定的作答条件：表达原因：“我们把这些纸留着，因为背面还是空白。” We keep this paper ___ the other side is blank.\n只填 because 或 so；blank 表示空白的。",
+      "ambiguityReview": "在固定词序和两个候选下识别原因从句，不把其它合法原因连词一概排除。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "because"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "BECAUSE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "so"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "purpose-labels",
+      "standaloneContext": "本题独立给定的作答条件：组句：“我们给箱子贴标签，以便大家能找到它们。”以 We 开头；label 在这里是动词“贴标签”。",
+      "ambiguityReview": "把行动与目的组成双主语句，区分目的从句和简单不定式，词块提供 so that。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6", "t7", "t8"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "so-result",
+      "standaloneContext": "本题独立给定的作答条件：本题事实：所有玻璃罐都装满了，因此我们用了一个盒子。哪句保持这个因果关系且语法正确？",
+      "ambiguityReview": "检验因果方向及 because 与 so 的重复搭配，过去事实已明示。",
+      "optionNotes": {
+        "a": "罐子满是原因，用盒子是结果，连接正确。",
+        "b": "本题同一因果句同时使用 because 和 so，结构重复。",
+        "c": "把用盒子写成罐子满的原因，颠倒给定事实。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "purpose-note",
+      "standaloneContext": "本题独立给定的作答条件：补全“我们写这张便条，以便下一班同事能看懂计划”：We write this note ___ the next team can understand the plan.\n只填 so that 或 because。",
+      "ambiguityReview": "用明确目的语义限制两个候选，接收两词答案并避免仅依据 can 猜测因果。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "so that"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "SO THAT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "because"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

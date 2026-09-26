@@ -1,0 +1,207 @@
+{
+  "unitId": "oliver.junior3.bookshop-then-now",
+  "contentHash": "0db1d55909768005be74436924760ec3a20723533f85d5188ae24462fcf59c5e",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "书店旧照与空间改变符合 Oliver 的日常记忆，保留克制、幽默的语气。",
+  "levelFit": "过去习惯、did 否定和疑问、there used to be 及今昔对照；不混入习惯于结构。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "former-shelf",
+      "standaloneContext": "本题独立给定的作答条件：本题已知：这家书店以前卖报纸，现在不卖了。哪句准确表达这种变化？",
+      "ambiguityReview": "给定明确今昔对照，辨析 used to 肯定结构，错误项分别为时态形式和事实不符。",
+      "optionNotes": {
+        "a": "肯定句缺少 used 的过去形式，结构不正确。",
+        "b": "说现在卖报纸，与已给的现在不卖矛盾。",
+        "c": "used to sell 符合过去卖、现在不卖的变化。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "did-not-open",
+      "standaloneContext": "本题独立给定的作答条件：补全“这家店以前星期天不营业”：The shop did not ___ to open on Sundays.\n只填 use 或 used。",
+      "ambiguityReview": "在 used to 的否定结构中识别 did 后原形，避免机械保留 used。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "use"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "USE"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "used"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "former-evening",
+      "standaloneContext": "本题独立给定的作答条件：组句：“我以前晚上在这里看书。”以 I 开头。",
+      "ambiguityReview": "固定句首与时间词块减少合法语序遗漏，同时要求组合 used to 加原形。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "did-you-work",
+      "standaloneContext": "本题独立给定的作答条件：你想问店员“你以前在这里工作吗？”哪句语法正确？",
+      "ambiguityReview": "两个干扰项分别保留 used 和使用 working，聚焦疑问结构而非陌生词。",
+      "optionNotes": {
+        "a": "did 后不能在此保留 used 的过去形式。",
+        "b": "did 后 use、to 后 work，结构完整正确。",
+        "c": "used to 表过去习惯时后接动词原形，不用 working。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "then-now-labels",
+      "standaloneContext": "本题独立给定的作答条件：将三条照片说明与准确中文配对。",
+      "ambiguityReview": "同一动作下区分过去肯定、过去否定与现在事实，不把过去否定自动推成现在肯定。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "there-used",
+      "standaloneContext": "本题独立给定的作答条件：旧照片说明“这里以前有一张桌子”：There ___ to be a table here.\n只填 use 或 used；这里如今没有那张桌子了。",
+      "ambiguityReview": "将过去习惯迁移到过去存在的状态，区别前两题 did 句架，事实全部在题内。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "used"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "USED"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "use"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

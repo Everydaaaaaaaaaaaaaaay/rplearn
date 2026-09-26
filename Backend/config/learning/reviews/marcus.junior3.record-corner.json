@@ -1,0 +1,221 @@
+{
+  "unitId": "marcus.junior3.record-corner",
+  "contentHash": "cfbc2bfe05f777303a9931e4d7d3eeea9989322b6900b29eadfbba4d5c9fbbb0",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-26",
+  "roleFit": "Marcus 的唱片、街区与奶奶记忆结合，表达具体音乐偏好而非复制教材歌手内容。",
+  "levelFit": "限制性定语从句中人物与事物、关系词作主语及主谓一致；接收 who/that 和 which/that。",
+  "limitations": "九年级旧版教材相关语言功能的原创文字练习，不覆盖整册或听说能力；作者自审不等于独立教研审定。未据此开放全年级进阶。",
+  "questions": [
+    {
+      "questionId": "singer-writes",
+      "standaloneContext": "本题独立给定的作答条件：你喜欢自己写歌的歌手。哪句语法正确并准确表达这个偏好？",
+      "ambiguityReview": "同时检查人物关系词和复数一致；不把 that 当成人物从句的错误形式。",
+      "optionNotes": {
+        "a": "本题 which 不能指代作为人的 singers。",
+        "b": "先行词 singers 为复数，关系从句不用 writes。",
+        "c": "who 指人，write 与复数 singers 一致。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "music-tells",
+      "standaloneContext": "本题独立给定的作答条件：补全“我喜欢能讲述故事的音乐”：I like music ___ tells a story.\n只填一个关系代词。",
+      "ambiguityReview": "同时接受事物从句的两个合法主语关系代词，避免将可替换形式误判。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "which"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "THAT"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "band-live",
+      "standaloneContext": "本题独立给定的作答条件：组句：“这是一支现场演奏的乐队。”以 This 开头；play live 表示现场演奏。",
+      "ambiguityReview": "将主句与关系从句连接，给定词块按单数 band 配 plays，不考音乐专业知识。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t1", "t2", "t3", "t4", "t5", "t6"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t1", "t3", "t4", "t5", "t6"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "preference-detail",
+      "standaloneContext": "本题独立给定的作答条件：将完整偏好表达与中文配对。lyrics 指歌词。",
+      "ambiguityReview": "通过三个不同先行词和从句特点理解具体偏好，不能只做孤立关系词翻译。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "no-extra-it",
+      "standaloneContext": "本题独立给定的作答条件：要说“我想要一张能在家播放的唱片”，哪句正确？ record 在这里指唱片。",
+      "ambiguityReview": "识别宾语关系词与代词重复的错误，另一干扰项把物误作人，超出单纯填关系词。",
+      "optionNotes": {
+        "a": "that 充当 play 的宾语，句子没有重复代词。",
+        "b": "that 和 it 重复充当同一个宾语，不能同时保留。",
+        "c": "record 是物，本题不能使用指人的 who。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "person-plays",
+      "standaloneContext": "本题独立给定的作答条件：补全“他就是在这里弹钢琴的人”：He is the person ___ plays the piano here.\n只填一个关系代词。",
+      "ambiguityReview": "人物主语关系代词接收两种常见正确形式，与事物从句形成对照。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "WHO"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "which"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

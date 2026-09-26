@@ -23,11 +23,11 @@ afterEach(async () => {
 });
 
 describe("原创课程发布门槛", () => {
-  it("三、四年级各包含三个角色各三个不同单元，全部逐题样例通过且结果可复现", async () => {
+  it("三、四、九年级各包含三个角色各三个不同单元，全部逐题样例通过且结果可复现", async () => {
     const catalog = await loadCuratedCatalog(catalogPath);
-    expect(catalog.units).toHaveLength(18);
+    expect(catalog.units).toHaveLength(27);
     expect(catalog.summary).toEqual(
-      ["primary3", "primary4"].flatMap((level) =>
+      ["primary3", "primary4", "junior3"].flatMap((level) =>
         ["oliver", "ruby", "marcus"].map((roleKey) => ({
           roleKey,
           level,
