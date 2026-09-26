@@ -72,3 +72,9 @@ SHA-256：`467125e0c77173327cd750fcbd94dfa9ee8ba75a95d2f46676c5c16a58f6ee74`。
 - `Scripts/preview.sh preview me` 安装本次测试构建，留在 iPhone 18 Pro。Device Hub 直接连接与 Xcode 菜单入口均超时；`simctl` 截图确认“我的”首屏和英语旅程入口正常，未完成原生点击/手势检查。
 
 这一步尚不包含新学习页或新旅程 UI，也没有打通真实聊天计数。
+
+### 清理阶段发布
+
+`a7b4c07` 已通过标准空目录打包、原生发布和公网验证；34 条迁移，API/Worker active，readiness ready。包 SHA-256：`909cdf56067f870aeb4aa30ebcb9007024cea2b2117041f2c6d2f5aae0a42c1e`。受限回滚备份位于 `/opt/lingotrip/backups/learning-a7b4c07/`；恢复语句先在事务中执行并回滚验证，通过后才发布。第一次恢复演练发现 resource_id 为 text 的类型差异，修正后重跑通过；没有在错误状态下执行发布。发布成功，未执行恢复。
+
+公网合成账号通过 13 项 HTTP 检查：前述 9 项之外，验证无旧字段的会话/消息同步、旧 quiz_record 写入返回 400、档案不再包含旧小测开关。账号和关联记录已删除，没有调用模型、没有发布工程题目。证据脚本和输出保存在本地忽略目录 `build/learning-verification/`。
