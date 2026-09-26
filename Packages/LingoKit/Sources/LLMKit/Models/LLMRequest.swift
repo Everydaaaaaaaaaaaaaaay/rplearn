@@ -1,3 +1,4 @@
+import CoreKit
 import Foundation
 
 /// 一次 LLM 调用的全部参数，与具体供应商无关。
@@ -9,6 +10,7 @@ public struct LLMRequest: Sendable {
         case jsonSchema(name: String, schema: JSONValue)
     }
 
+    public var learningChat: LearningChatContext?
     public var operationID: UUID
     public var parentOperationID: UUID?
     public var voiceLeaseID: UUID?
@@ -23,6 +25,7 @@ public struct LLMRequest: Sendable {
 
     public init(
         operationID: UUID = UUID(),
+        learningChat: LearningChatContext? = nil,
         voiceLeaseID: UUID? = nil,
         parentOperationID: UUID? = nil,
         task: LLMTask,
@@ -34,6 +37,7 @@ public struct LLMRequest: Sendable {
         responseFormat: ResponseFormat = .text
     ) {
         self.operationID = operationID
+        self.learningChat = learningChat
         self.voiceLeaseID = voiceLeaseID
         self.parentOperationID = parentOperationID
         self.task = task

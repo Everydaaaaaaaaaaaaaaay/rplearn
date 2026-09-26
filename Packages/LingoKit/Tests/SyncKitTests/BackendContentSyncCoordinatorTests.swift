@@ -1,3 +1,5 @@
+import CoreKit
+import DomainKit
 import BackendKit
 import Foundation
 import PersistenceKit
@@ -34,6 +36,21 @@ struct BackendContentSyncCoordinatorTests {
     private actor ContentTransport: BackendTransport {
         private(set) var activityProfileAttempts: [Bool] = []
         private(set) var expectedVersions: [Int] = []
+        private var learningCycle = UUID()
+        private var learningRevision = 1
+        private var learningUnavailable = false
+        func setLearningCycle(_ cycle: UUID, revision: Int) { learningCycle = cycle; learningRevision = revision }
+        func setLearningUnavailable() { learningUnavailable = true }
+        private var heldPulls: [CheckedContinuation<Void, Never>] = []
+        private var shouldHoldPulls = false
+        private(set) var pullCount = 0
+        func holdPulls() { shouldHoldPulls = true }
+        func waitingPulls() -> Int { heldPulls.count }
+        func releasePulls() {
+            shouldHoldPulls = false
+            let waiting = heldPulls; heldPulls.removeAll()
+            for waiter in waiting { waiter.resume() }
+        }
         private var fault: String
         init(fault: String = "none") { self.fault = fault }
 
@@ -51,6 +68,9 @@ struct BackendContentSyncCoordinatorTests {
                         "userId": "019c0123-4567-789a-8bcd-ef0123456790",
                     ]
                 )
+            case ("GET", .some(let path)) where path.hasPrefix("/v1/learning/characters/"):
+                if learningUnavailable { throw URLError(.notConnectedToInternet) }
+                return json(["characterId": String(path.split(separator: "/").last!), "roleKey":"oliver", "cycleId":learningCycle.uuidString, "characters":0, "threshold":1000, "revision":learningRevision, "activeAttemptId":NSNull(), "level":"junior1", "availableUnits":0, "generationStatus":NSNull()])
             case ("GET", "/v1/content/records"):
                 return json(
                     [
@@ -117,6 +137,8 @@ struct BackendContentSyncCoordinatorTests {
                 }
                 return json(["results": results])
             case ("GET", "/v1/sync/changes"):
+                pullCount += 1
+                if shouldHoldPulls { await withCheckedContinuation { heldPulls.append($0) } }
                 return json(
                     [
                         "changes": [],
@@ -146,6 +168,73 @@ struct BackendContentSyncCoordinatorTests {
                 statusCode: status
             )
         }
+    }
+
+    private actor CompletionFlag {
+        private(set) var done = false
+        func finish() { done = true }
+    }
+    @Test("需要持久化保证的调用等待进行中的同步及下一轮，不提前放行模型请求")
+    func waitsForInFlightSynchronization() async throws {
+        let user = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = ContentTransport()
+        let backend = BackendClient(configuration: .init(baseURL: URL(string: "https://api.example.com")!), credentialStore: MemoryCredentials(userID: user), transport: transport)
+        let store = ContentSyncStore(modelContainer: try ModelContainerFactory.makeContainer(inMemory: true))
+        let coordinator = BackendContentSyncCoordinator(backend: backend, store: store)
+        _ = try await coordinator.activate(userID: user)
+        let before = await transport.pullCount
+        await transport.holdPulls()
+        let initial = Task { try await coordinator.synchronize() }
+        for _ in 0..<100 {
+            if await transport.waitingPulls() > 0 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await transport.waitingPulls() > 0)
+        let flag = CompletionFlag()
+        let waiting = Task { try await coordinator.synchronizeAndWait(); await flag.finish() }
+        try await Task.sleep(for: .milliseconds(30))
+        #expect(await flag.done == false)
+        await transport.releasePulls()
+        try await initial.value
+        try await waiting.value
+        #expect(await flag.done)
+        #expect(await transport.pullCount >= before + 2)
+        await coordinator.deactivate()
+    }
+
+    @Test("周期缓存按账号隔离，离线保留原周期，回复始终使用消息保存时的周期")
+    func learningCycleIsolationAndOfflineCapture() async throws {
+        let user = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let character = UUID(), first = UUID(), second = UUID()
+        let transport = ContentTransport()
+        await transport.setLearningCycle(first, revision: 1)
+        let backend = BackendClient(configuration: .init(baseURL: URL(string: "https://api.example.com")!), credentialStore: MemoryCredentials(userID: user), transport: transport)
+        let store = ContentSyncStore(modelContainer: try ModelContainerFactory.makeContainer(inMemory: true))
+        let content = BackendContentSyncCoordinator(backend: backend, store: store)
+        _ = try await content.activate(userID: user)
+        let suite = "learning-tests.\(UUID().uuidString)"
+        defer { UserDefaults.standard.removePersistentDomain(forName: suite) }
+        let learning = LearningChatCoordinator(accountID: user, backend: backend, contentSync: content, defaultsSuiteName: suite)
+        await learning.refresh(characterID: character)
+        let captured = try #require(await learning.userOrigin(characterID: character))
+        #expect(captured == .user(cycleID: first))
+        await transport.setLearningCycle(second, revision: 2)
+        await learning.refresh(characterID: character)
+        #expect(await learning.userOrigin(characterID: character) == .user(cycleID: second))
+        let message = MessageDTO(id: UUID(), role: .user, kind: .text, text: "Offline message", orderIndex: 0, learningOrigin: captured)
+        let context = try await learning.prepareReply(conversationID: UUID(), userMessage: message)
+        #expect(context?.cycleId == first)
+        await transport.setLearningCycle(first, revision: 1)
+        await learning.refresh(characterID: character)
+        #expect(await learning.userOrigin(characterID: character) == .user(cycleID: second))
+        await transport.setLearningUnavailable()
+        await learning.refresh(characterID: character)
+        #expect(await learning.userOrigin(characterID: character) == .user(cycleID: second))
+        let other = LearningChatCoordinator(accountID: UUID(), backend: backend, contentSync: content, defaultsSuiteName: suite)
+        #expect(await other.userOrigin(characterID: character) == nil)
+        await learning.deactivate()
+        #expect(await learning.userOrigin(characterID: character) == nil)
+        await content.deactivate()
     }
 
     @Test("同步异常回执可重试，成功后按服务器版本递增", arguments: ["none", "malformed", "wrongCommand", "wrongResource"])

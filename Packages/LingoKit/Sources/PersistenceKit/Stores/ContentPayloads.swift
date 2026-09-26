@@ -100,6 +100,7 @@ struct ContentConversationPayload: Codable {
 }
 
 struct ContentMessagePayload: Codable {
+    var learningOrigin: LearningChatOrigin? = nil
     var audioAssetId: UUID? = nil
     let audioDuration: Double?
     let coachReviewJson: String?

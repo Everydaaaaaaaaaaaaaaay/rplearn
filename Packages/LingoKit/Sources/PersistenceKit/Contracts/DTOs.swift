@@ -187,6 +187,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var keywordRangesJSON: String?
     public var coachReviewJSON: String?
     public var speechReviewJSON: String?
+    public var learningOrigin: LearningChatOrigin?
     public var translationZh: String?
     public var isInterrupted: Bool
     public var createdAt: Date
@@ -204,6 +205,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         keywordRangesJSON: String? = nil,
         coachReviewJSON: String? = nil,
         speechReviewJSON: String? = nil,
+        learningOrigin: LearningChatOrigin? = nil,
         translationZh: String? = nil,
         isInterrupted: Bool = false,
         createdAt: Date = .now
@@ -220,6 +222,7 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.keywordRangesJSON = keywordRangesJSON
         self.coachReviewJSON = coachReviewJSON
         self.speechReviewJSON = speechReviewJSON
+        self.learningOrigin = learningOrigin
         self.translationZh = translationZh
         self.isInterrupted = isInterrupted
         self.createdAt = createdAt

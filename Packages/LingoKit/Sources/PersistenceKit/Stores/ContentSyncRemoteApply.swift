@@ -224,6 +224,7 @@ extension ContentSyncStore {
         entity.speechReviewJSON = payload.speechReviewJson
         entity.translationZh = payload.translationZh
         entity.isInterrupted = payload.isInterrupted
+        entity.learningOriginJSON = try payload.learningOrigin?.encodedJSON()
         entity.createdAt = payload.createdAt
         try upsertMetadata(record, localKey: record.resourceID)
     }

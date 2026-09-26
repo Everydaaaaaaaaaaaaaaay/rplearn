@@ -1,3 +1,4 @@
+import CoreKit
 import BackendKit
 import Foundation
 
@@ -48,6 +49,7 @@ public struct BackendLLMProvider: LLMProvider {
     }
 
     private struct RequestBody: Encodable, Sendable {
+        let learningChat: LearningChatContext?
         let parentOperationId: UUID?
         let operationId: UUID
         let voiceLeaseId: UUID?
@@ -291,6 +293,7 @@ public struct BackendLLMProvider: LLMProvider {
             }
         )
         return RequestBody(
+            learningChat: request.learningChat,
             parentOperationId: request.parentOperationID,
             operationId: request.operationID,
             voiceLeaseId: request.voiceLeaseID,

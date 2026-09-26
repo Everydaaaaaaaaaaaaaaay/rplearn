@@ -26,6 +26,8 @@ struct ChatWorkflowTests {
         private var translationResult: String? = "完整的翻译。"
         private(set) var requestedTasks: [LLMTask] = []
         private(set) var streamedMessages: [LLMMessage] = []
+        private(set) var learningContexts: [LearningChatContext?] = []
+        private(set) var operationIDs: [UUID] = []
         init(
             response: String = "A complete answer.",
             reviewResponse: String = "{\"has_issues\":false,\"issues\":[]}",
@@ -50,6 +52,8 @@ struct ChatWorkflowTests {
         func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
             requestedTasks.append(request.task)
             streamedMessages = request.messages
+            learningContexts.append(request.learningChat)
+            operationIDs.append(request.operationID)
             let response = response
             let fails = fails
             let streamDelayMilliseconds = streamDelayMilliseconds
@@ -101,13 +105,14 @@ struct ChatWorkflowTests {
     private func fixture(_ provider: Provider = Provider(),
                          now: @escaping @Sendable () -> Date = { .now },
                          replyDelayScale: Double = 0,
-                         tutorial: ChatTutorialConfiguration? = nil) async throws -> Fixture {
+                         tutorial: ChatTutorialConfiguration? = nil,
+                         learning: (any LearningChatTracking)? = nil) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let chat = ChatStore(modelContainer: container), roster = RosterStore(modelContainer: container)
         let economy = EconomyStore(modelContainer: container), items = ItemStore(modelContainer: container)
         let llm = LLMRouter(client: provider, maxRetries: 0)
         let backend = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!), credentialStore: NoCredentials())
-        let deps = ChatDependencies(
+        var deps = ChatDependencies(
             tutorial: tutorial, chatStore: chat, rosterStore: roster, favorites: FavoritesStore(modelContainer: container),
             llm: llm,
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
@@ -120,11 +125,61 @@ struct ChatWorkflowTests {
             voiceMedia: VoiceMediaCoordinator(backend: backend, chatStore: chat, queueStore: VoiceMediaQueueStore(modelContainer: container)),
             now: now, replyDelayScale: replyDelayScale
         )
+        deps.learningChat = learning
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
         await model.load()
         return Fixture(model: model, deps: deps)
     }
+    private actor LearningTracker: LearningChatTracking {
+        let cycle = UUID()
+        private(set) var preparations: [UUID] = []
+        func refresh(characterID: UUID) {}
+        func userOrigin(characterID: UUID) -> LearningChatOrigin? { .user(cycleID: cycle) }
+        func prepareReply(conversationID: UUID, userMessage: MessageDTO) -> LearningChatContext? {
+            preparations.append(userMessage.id)
+            guard case .user(let cycle) = userMessage.learningOrigin else { return nil }
+            return LearningChatContext(conversationID: conversationID, userMessageID: userMessage.id, cycleID: cycle)
+        }
+        func messageSaved(characterID: UUID) {}
+    }
+
+    @Test("真实聊天工作流把周期与模型操作关联到所有最终气泡，并持久保留")
+    func preservesTrustedChatAttribution() async throws {
+        let tracker = LearningTracker()
+        let provider = Provider(response: "One short reply.\nAnother short reply.")
+        let f = try await fixture(provider, learning: tracker)
+        f.model.draft = "Tell me something interesting."
+        await f.model.sendDraft()
+        try await settle(f.model)
+        let user = try #require(f.model.messages.first(where: { $0.role == .user }))
+        let replies = f.model.messages.filter { $0.role == .assistant }
+        #expect(replies.count >= 2)
+        #expect(user.learningOrigin == .user(cycleID: await tracker.cycle))
+        let context = try #require(await provider.learningContexts.first ?? nil)
+        #expect(context.userMessageId == user.id)
+        #expect(context.cycleId == user.learningOrigin?.cycleID)
+        let operation = try #require(await provider.operationIDs.first)
+        for (index, message) in replies.enumerated() {
+            #expect(message.learningOrigin == context.assistantOrigin(operationID: operation, index: index, count: replies.count))
+        }
+        let reopened = await f.reopen()
+        #expect(reopened.messages.map(\.learningOrigin) == f.model.messages.map(\.learningOrigin))
+    }
+
+    @Test("失败流的已显示片段不附完成收据，用户正文仍保留周期")
+    func interruptedReplyHasNoLearningReceipt() async throws {
+        let provider = Provider(response: "Only part of a response", fails: true)
+        let f = try await fixture(provider, learning: LearningTracker())
+        f.model.draft = "Hello."
+        await f.model.sendDraft()
+        try await settle(f.model)
+        #expect(f.model.messages.first(where: { $0.role == .user })?.learningOrigin != nil)
+        let partial = try #require(f.model.messages.first(where: { $0.role == .assistant }))
+        #expect(partial.isInterrupted)
+        #expect(partial.learningOrigin == nil)
+    }
+
     @Test("聊天角色使用存档音色，用户使用全局旁白音色")
     func readingVoiceRequests() async throws {
         let fixture = try await fixture()

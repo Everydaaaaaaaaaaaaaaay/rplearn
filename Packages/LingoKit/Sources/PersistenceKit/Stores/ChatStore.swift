@@ -300,7 +300,8 @@ public actor ChatStore {
         audioFileName: String? = nil,
         audioDuration: Double? = nil,
         tokenEstimate: Int = 0,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        learningOrigin: LearningChatOrigin? = nil
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -317,6 +318,7 @@ public actor ChatStore {
             tokenEstimate: tokenEstimate,
             createdAt: createdAt
         )
+        message.learningOriginJSON = try learningOrigin?.encodedJSON()
         message.conversation = conversation
         modelContext.insert(message)
         conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
@@ -331,11 +333,12 @@ public actor ChatStore {
 
     /// 将模型的一次回复保存为多条连续气泡，但会话轮次只递增一次。
     ///
-    /// 角色可以像真人一样连续发送几条短消息，同时剧情进度、测验频率仍按一次
+    /// 角色可以像真人一样连续发送几条短消息，同时会话轮数仍按一次
     /// 用户与角色的往返计算。
     public func appendAssistantReply(
         conversationID: UUID,
         texts: [String],
+        learningSource: LearningReplySource? = nil,
         createdAt: Date = .now
     ) throws -> [MessageDTO] {
         guard let conversation = try fetchConversation(id: conversationID) else {
@@ -358,6 +361,7 @@ public actor ChatStore {
                 tokenEstimate: TokenEstimator.estimate(text),
                 createdAt: createdAt
             )
+            message.learningOriginJSON = try learningSource?.origin(index: offset, count: parts.count).encodedJSON()
             message.conversation = conversation
             modelContext.insert(message)
             try journal(message)
@@ -374,13 +378,14 @@ public actor ChatStore {
     /// 逐条保存同一次角色回复，供聊天页模拟真人连续输入的送达节奏。
     ///
     /// 第一条使用 `startsNewReply = true` 递增会话轮次；后续气泡传 false，
-    /// 从而使逐条出现的多条消息在剧情和测验统计上仍只算一次回复。
+    /// 从而使逐条出现的多条消息在会话轮数统计上仍只算一次回复。
     @discardableResult
     public func appendAssistantReplyPart(
         conversationID: UUID,
         text: String,
         startsNewReply: Bool,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        learningOrigin: LearningChatOrigin? = nil
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -394,6 +399,7 @@ public actor ChatStore {
             tokenEstimate: TokenEstimator.estimate(cleanedText),
             createdAt: createdAt
         )
+        message.learningOriginJSON = try learningOrigin?.encodedJSON()
         message.conversation = conversation
         modelContext.insert(message)
         conversation.lastMessageAt = message.createdAt
@@ -413,7 +419,8 @@ public actor ChatStore {
         text: String,
         respondingToMessageID: UUID,
         replacingAssistantMessageID: UUID? = nil,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        learningOrigin: LearningChatOrigin? = nil
     ) throws -> MessageDTO? {
         guard try isLatestUnansweredUserMessage(
             conversationID: conversationID,
@@ -424,7 +431,8 @@ public actor ChatStore {
             conversationID: conversationID,
             text: text,
             startsNewReply: true,
-            createdAt: createdAt
+            createdAt: createdAt,
+            learningOrigin: learningOrigin
         )
     }
 
@@ -763,6 +771,7 @@ public actor ChatStore {
             parentID: conversationID.uuidString.lowercased(),
             payloadJSON: try ContentMutationJournal.encode(
                 ContentMessagePayload(
+                    learningOrigin: LearningChatOrigin.decode(json: message.learningOriginJSON),
                     audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                     audioDuration: message.audioDuration,
                     coachReviewJson: message.coachReviewJSON,
@@ -813,6 +822,7 @@ public actor ChatStore {
             keywordRangesJSON: entity.keywordRangesJSON,
             coachReviewJSON: entity.coachReviewJSON,
             speechReviewJSON: entity.speechReviewJSON,
+            learningOrigin: LearningChatOrigin.decode(json: entity.learningOriginJSON),
             translationZh: entity.translationZh,
             isInterrupted: entity.isInterrupted,
             createdAt: entity.createdAt

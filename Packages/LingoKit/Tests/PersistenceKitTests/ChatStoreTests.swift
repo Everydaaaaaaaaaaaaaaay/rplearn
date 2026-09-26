@@ -1,3 +1,4 @@
+import CoreKit
 import Foundation
 import Testing
 @testable import PersistenceKit
@@ -28,6 +29,32 @@ struct ChatStoreTests {
     }
 
 
+
+    @Test("学习来源与消息一起保存并进入真实同步发件箱")
+    func learningOriginsPersistInOutbox() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let chat = ChatStore(modelContainer: container), roster = RosterStore(modelContainer: container)
+        let sync = ContentSyncStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let character = try await addCharacter(roster)
+        let conversation = try await chat.openConversation(characterID: character)
+        let origin = LearningChatOrigin.user(cycleID: UUID())
+        let user = try await chat.appendMessage(conversationID: conversation.id, role: .user, text: "Hello", learningOrigin: origin)
+        let source = LearningReplySource(context: .init(conversationID: conversation.id, userMessageID: user.id, cycleID: origin.cycleID), operationID: UUID())
+        let replies = try await chat.appendAssistantReply(conversationID: conversation.id, texts: ["Hello!", "Welcome back."], learningSource: source)
+        #expect(replies.map(\.learningOrigin) == [source.origin(index: 0, count: 2), source.origin(index: 1, count: 2)])
+        let mutations = try await sync.takePending(limit: 50).filter { $0.resourceType == .message }
+        #expect(mutations.count == 3)
+        for mutation in mutations {
+            let data = try #require(mutation.payloadJSON).data(using: .utf8)!
+            let object = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+            let value = try #require(object["learningOrigin"])
+            let decoded = try JSONDecoder().decode(LearningChatOrigin.self, from: JSONSerialization.data(withJSONObject: value))
+            #expect(decoded.cycleID == origin.cycleID)
+        }
+        let restored = try await ChatStore(modelContainer: container).messages(conversationID: conversation.id)
+        #expect(restored.map(\.learningOrigin) == [origin] + replies.map(\.learningOrigin))
+    }
 
     @Test("同一角色重复 open 返回同一会话")
     func openConversationReuses() async throws {

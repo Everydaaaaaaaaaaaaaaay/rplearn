@@ -229,6 +229,7 @@ final class AppEnvironment {
         needsOnboarding = nil
         guard let current = workspace else { return }
         current.billing.deactivate()
+        await current.learningChat.deactivate()
         await current.contentSync.deactivate()
         await current.voiceMedia.deactivate()
         await current.proactiveMessages.deactivate()
@@ -418,6 +419,7 @@ final class AccountWorkspace {
     let localEconomyService: EconomyService
     let travelService: TravelService
     let userState: BackendUserStateCoordinator
+    let learningChat: LearningChatCoordinator
     let contentSync: BackendContentSyncCoordinator
     let voiceMedia: VoiceMediaCoordinator
     let proactiveMessages: ProactiveMessageCoordinator
@@ -472,6 +474,7 @@ final class AccountWorkspace {
             backend: backend,
             store: contentSyncStore
         )
+        self.learningChat = LearningChatCoordinator(accountID: userID, backend: backend, contentSync: self.contentSync)
         self.voiceMedia = VoiceMediaCoordinator(
             backend: backend,
             chatStore: chatStore,

@@ -145,6 +145,7 @@ targets:
     info:
       path: build/Generated-Tests-Info.plist
       properties:
+        LingoTripLearningBackendConfig: $(LEARNING_BACKEND_CONFIG)
         LingoTripCostEvalConfig: $(COST_EVAL_CONFIG)
         LingoTripRoleplayE2EEnabled: $(RUN_ROLEPLAY_E2E)
         LingoTripRoleplayE2ECycle: $(ROLEPLAY_E2E_CYCLE)
@@ -199,6 +200,7 @@ targets:
         product: SettingsFeature
     settings:
       base:
+        LEARNING_BACKEND_CONFIG: ""
         COST_EVAL_CONFIG: ""
         RUN_ROLEPLAY_E2E: "0"
         RUN_SPEECH_SAMPLE: "0"

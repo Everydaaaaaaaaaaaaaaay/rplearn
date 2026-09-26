@@ -40,6 +40,7 @@ public struct ChatDependencies: Sendable {
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
     #endif
+    public var learningChat: (any LearningChatTracking)? = nil
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

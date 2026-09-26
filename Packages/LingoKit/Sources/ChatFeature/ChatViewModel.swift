@@ -82,6 +82,7 @@ public final class ChatViewModel {
         }
     }
 
+    private var realtimeLearningSource: LearningReplySource?
     private var replyTask: Task<Void, Never>?
     private let replyOwnerID = UUID()
     private var replyCycleID = UUID()
@@ -113,6 +114,7 @@ public final class ChatViewModel {
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
         }
+        await deps.learningChat?.refresh(characterID: character.id)
     }
 
     /// 正在翻译中的消息（气泡下方转圈）。
@@ -228,7 +230,8 @@ public final class ChatViewModel {
                 text: capture.transcript,
                 audioFileName: capture.fileName,
                 audioDuration: capture.duration,
-                tokenEstimate: TokenEstimator.estimate(capture.transcript)
+                tokenEstimate: TokenEstimator.estimate(capture.transcript),
+                learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
             )
             if let sourceFileName = capture.fileName {
                 // 语音发送是常用本地能力；仅在账号云空间已激活时追加备份。
@@ -251,6 +254,7 @@ public final class ChatViewModel {
             errorMessage = "发送失败：\(error.localizedDescription)"
             return
         }
+        Task { await deps.learningChat?.messageSaved(characterID: character.id) }
         scheduleAssistantReply(after: capture.transcript, userMessage: userMessage)
     }
 
@@ -276,7 +280,8 @@ public final class ChatViewModel {
             conversationID: conversation.id,
             role: .user,
             text: text,
-            tokenEstimate: TokenEstimator.estimate(text)
+            tokenEstimate: TokenEstimator.estimate(text),
+            learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
         )
         persisted = true
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
@@ -285,7 +290,11 @@ public final class ChatViewModel {
         notifyConversationChanged()
 
         try Task.checkCancellation()
+        realtimeLearningSource = nil
         var request = await makeRoleplayRequest(voiceMode: true)
+        request.learningChat = try await deps.learningChat?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
+        try Task.checkCancellation()
+        realtimeLearningSource = request.learningChat.map { LearningReplySource(context: $0, operationID: request.operationID) }
         try Task.checkCancellation()
         request.voiceLeaseID = voiceLeaseID
         let upstream = await deps.llm.stream(request)
@@ -327,8 +336,10 @@ public final class ChatViewModel {
             _ = try await persistAssistantReply(
                 conversationID: conversation.id,
                 text: spokenText,
-                interrupted: interrupted
+                interrupted: interrupted,
+                learningSource: interrupted ? nil : realtimeLearningSource
             )
+            Task { await deps.learningChat?.messageSaved(characterID: character.id) }
             await grantMainlineTicketIfEligible(conversationID: conversation.id)
             await reloadMessages()
             notifyConversationChanged()
@@ -412,7 +423,8 @@ public final class ChatViewModel {
                 conversationID: conversation.id,
                 role: .user,
                 text: userText,
-                tokenEstimate: TokenEstimator.estimate(userText)
+                tokenEstimate: TokenEstimator.estimate(userText),
+                learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
             )
             await reloadMessages()
             notifyConversationChanged()
@@ -421,6 +433,7 @@ public final class ChatViewModel {
             return false
         }
         // 辅助点评必须等主回复完成：免费额度下不能让后台任务抢走用户可见回复的预留。
+        Task { await deps.learningChat?.messageSaved(characterID: character.id) }
         scheduleAssistantReply(after: userText, userMessage: userMessage)
         return true
     }
@@ -720,6 +733,10 @@ public final class ChatViewModel {
 
         var accumulated = ""
         do {
+            if let userMessage = messages.first(where: { $0.id == plan.userMessageID }) {
+                request.learningChat = try await deps.learningChat?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
+            }
+            try Task.checkCancellation()
             try await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true)
             await reloadMessages()
             for try await event in await deps.llm.stream(request) {
@@ -761,6 +778,7 @@ public final class ChatViewModel {
             .filter { $0.role == .assistant }
             .suffix(12)
             .map(\.text)
+        var learningSource = request.learningChat.map { LearningReplySource(context: $0, operationID: request.operationID) }
         let firstReplyText = accumulated
         let tooSimilar = RoleplayReplyDiversityPolicy.isTooSimilar(
             firstReplyText,
@@ -805,6 +823,9 @@ public final class ChatViewModel {
                         reply: regenerated,
                         respondingTo: latestUserText
                     )
+                    learningSource = remainingViolations.isEmpty
+                        ? retryRequest.learningChat.map { LearningReplySource(context: $0, operationID: retryRequest.operationID) }
+                        : nil
                     accumulated = remainingViolations.isEmpty
                         ? regenerated
                         : RoleplayReplyContinuityPolicy.fallbackReply(
@@ -851,7 +872,8 @@ public final class ChatViewModel {
                 text: replyText,
                 cycleID: cycleID,
                 plan: plan,
-                replacingAssistantMessageID: replacedMessageID
+                replacingAssistantMessageID: replacedMessageID,
+                learningSource: learningSource
             )
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
@@ -903,7 +925,8 @@ public final class ChatViewModel {
         text: String,
         cycleID: UUID,
         plan: NPCReplyPlan,
-        replacingAssistantMessageID: UUID?
+        replacingAssistantMessageID: UUID?,
+        learningSource: LearningReplySource? = nil
     ) async throws -> [MessageDTO] {
         let texts = RoleplayReplyFormatter.messages(from: text)
         var delivered: [MessageDTO] = []
@@ -936,7 +959,8 @@ public final class ChatViewModel {
                     text: text,
                     respondingToMessageID: plan.userMessageID,
                     replacingAssistantMessageID: replacingAssistantMessageID,
-                    createdAt: deps.now()
+                    createdAt: deps.now(),
+                    learningOrigin: learningSource?.origin(index: index, count: texts.count)
                 ) else { throw CancellationError() }
                 message = first
             } else {
@@ -944,7 +968,8 @@ public final class ChatViewModel {
                     conversationID: conversationID,
                     text: text,
                     startsNewReply: false,
-                    createdAt: deps.now()
+                    createdAt: deps.now(),
+                    learningOrigin: learningSource?.origin(index: index, count: texts.count)
                 )
             }
             delivered.append(message)
@@ -958,6 +983,7 @@ public final class ChatViewModel {
                 await self?.reloadMessages()
             }
         }
+        if !delivered.isEmpty { Task { await deps.learningChat?.messageSaved(characterID: character.id) } }
         return delivered
     }
 
@@ -965,7 +991,8 @@ public final class ChatViewModel {
     private func persistAssistantReply(
         conversationID: UUID,
         text: String,
-        interrupted: Bool
+        interrupted: Bool,
+        learningSource: LearningReplySource? = nil
     ) async throws -> [MessageDTO] {
         if interrupted {
             let cleanedText = RoleplayReplyFormatter.streamingPreview(from: text)
@@ -988,7 +1015,8 @@ public final class ChatViewModel {
         let texts = RoleplayReplyFormatter.messages(from: text)
         let messages = try await deps.chatStore.appendAssistantReply(
             conversationID: conversationID,
-            texts: texts
+            texts: texts,
+            learningSource: learningSource
         )
         for message in messages {
             await annotateKeywords(message: message, text: message.text)

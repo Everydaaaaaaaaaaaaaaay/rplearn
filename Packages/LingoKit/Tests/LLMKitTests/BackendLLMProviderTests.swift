@@ -320,6 +320,23 @@ struct BackendLLMProviderTests {
         #expect(body["apiKey"] == nil)
     }
 
+    @Test("真实聊天关联同时通过普通与流式请求发送")
+    func forwardsLearningContext() async throws {
+        let transport = Transport(), context = LearningChatContext(conversationID: UUID(), userMessageID: UUID(), cycleID: UUID())
+        let provider = makeProvider(transport: transport)
+        let request = LLMRequest(learningChat: context, task: .conversation, tier: .balanced, messages: [.user("Hello")])
+        _ = try await provider.complete(request)
+        for try await _ in await provider.stream(request) {}
+        let bodies = await transport.aiBodies
+        #expect(bodies.count == 2)
+        for body in bodies {
+            let value = try #require(body["learningChat"]?.value as? [String: String])
+            #expect(value["conversationId"].flatMap(UUID.init(uuidString:)) == context.conversationId)
+            #expect(value["userMessageId"].flatMap(UUID.init(uuidString:)) == context.userMessageId)
+            #expect(value["cycleId"].flatMap(UUID.init(uuidString:)) == context.cycleId)
+        }
+    }
+
     @Test("schema 键顺序稳定且置于可变上下文之前")
     func stableSchemaPrefix() async throws {
         let transport = Transport()

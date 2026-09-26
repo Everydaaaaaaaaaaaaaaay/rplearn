@@ -1035,6 +1035,7 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
+        dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
         #if DEBUG
         dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
             && bypassesAuthenticationForUITesting

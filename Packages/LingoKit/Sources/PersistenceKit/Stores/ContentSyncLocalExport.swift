@@ -1,3 +1,4 @@
+import CoreKit
 import Foundation
 import SwiftData
 
@@ -89,6 +90,7 @@ extension ContentSyncStore {
                     parentID: parent.uuidString.lowercased(),
                     payloadJSON: try ContentMutationJournal.encode(
                         ContentMessagePayload(
+                            learningOrigin: LearningChatOrigin.decode(json: entity.learningOriginJSON),
                             audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                             audioDuration: entity.audioDuration,
                             coachReviewJson: entity.coachReviewJSON,

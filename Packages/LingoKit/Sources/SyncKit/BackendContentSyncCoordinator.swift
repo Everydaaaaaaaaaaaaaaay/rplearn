@@ -11,6 +11,7 @@ public enum ContentSyncActivation: Sendable, Equatable {
 public actor BackendContentSyncCoordinator {
     private let backend: BackendClient
     private let store: ContentSyncStore
+    private var synchronizationWaiters: [CheckedContinuation<Void, Error>] = []
     private var isSynchronizing = false
     private var needsAnotherPass = false
     private var listenerTask: Task<Void, Never>?
@@ -45,6 +46,7 @@ public actor BackendContentSyncCoordinator {
     }
 
     public func deactivate() {
+        finishWaiters(error: CancellationError())
         listenerTask?.cancel()
         listenerTask = nil
         userID = nil
@@ -58,11 +60,37 @@ public actor BackendContentSyncCoordinator {
         }
         isSynchronizing = true
         defer { isSynchronizing = false }
-        repeat {
-            needsAnotherPass = false
-            try await flushOutbox()
-            try await pullChanges()
-        } while needsAnotherPass
+        do {
+            repeat {
+                needsAnotherPass = false
+                try await flushOutbox()
+                try await pullChanges()
+            } while needsAnotherPass
+            finishWaiters(error: nil)
+        } catch {
+            finishWaiters(error: error)
+            throw error
+        }
+    }
+
+    /// 模型关联需要确认正文真正保存；普通 synchronize 在已有任务时只标记再跑一次。
+    public func synchronizeAndWait() async throws {
+        guard userID != nil else { throw BackendClientError.signedOut }
+        if isSynchronizing {
+            needsAnotherPass = true
+            try await withCheckedThrowingContinuation { synchronizationWaiters.append($0) }
+        } else {
+            try await synchronize()
+        }
+    }
+
+    private func finishWaiters(error: Error?) {
+        let waiting = synchronizationWaiters
+        synchronizationWaiters.removeAll()
+        for waiter in waiting {
+            if let error { waiter.resume(throwing: error) }
+            else { waiter.resume() }
+        }
     }
 
     private func bootstrap() async throws {
