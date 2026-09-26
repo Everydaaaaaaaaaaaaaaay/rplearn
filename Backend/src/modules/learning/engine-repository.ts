@@ -1,0 +1,386 @@
+import { randomUUID } from "node:crypto";
+import type { TransactionSql } from "postgres";
+import type { DatabaseResource } from "../../db/client.js";
+import { AppError } from "../../shared/errors.js";
+import {
+  contentHash,
+  publicUnit,
+  unitSchema,
+  type LearningLevel,
+  type LearningUnit,
+} from "./content.js";
+import { gradeAnswer, type LearningAnswer, type GradeResult } from "./grading.js";
+import { countChatCharacters, learningPolicy, levelProgress } from "./policy.js";
+
+function reject(code: string, message: string, statusCode = 409): never {
+  throw new AppError({ code, message, statusCode });
+}
+interface CharacterRow {
+  character_id: string;
+  role_key: string;
+  cycle_id: string;
+  characters: number;
+  revision: number;
+}
+interface AttemptRow {
+  id: string;
+  character_id: string;
+  cycle_id: string;
+  unit_id: string;
+  unit_version: number;
+  level_key: LearningLevel;
+  revision: number;
+  started_at: Date | string;
+  first_completed_at: Date | string | null;
+  payload: LearningUnit;
+}
+interface RoundRow {
+  id: string;
+  ordinal: number;
+  question_ids: string[];
+  completed_at: Date | null;
+}
+
+export class LearningEngineRepository {
+  constructor(private readonly database: DatabaseResource) {}
+
+  /** 所有账号内写入同序串行；事务回滚时收据和奖励也一并回滚。 */
+  async command<T>(
+    userId: string,
+    requestId: string,
+    operation: string,
+    input: unknown,
+    execute: (session: LearningSession) => Promise<T>,
+  ): Promise<T> {
+    const hash = contentHash(input);
+    const result = await this.database.sql.begin(async (sql) => {
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`learning:${userId}`}, 0))`;
+      const [existing] = await sql<
+        { operation: string; request_hash: string; response: T }[]
+      >`
+        select operation, request_hash, response from app.learning_receipts where user_id=${userId} and request_id=${requestId}`;
+      if (existing) {
+        if (existing.operation !== operation || existing.request_hash !== hash)
+          reject("LEARNING_REQUEST_CONFLICT", "这个请求标识已用于其他操作。");
+        return existing.response;
+      }
+      const response = await execute(new LearningSession(sql, userId));
+      await sql`insert into app.learning_receipts(user_id, request_id, operation, request_hash, response)
+        values(${userId}, ${requestId}, ${operation}, ${hash}, ${JSON.stringify(response)}::jsonb)`;
+      return response;
+    });
+    return result as T;
+  }
+
+  async read<T>(
+    userId: string,
+    query: (session: LearningSession) => Promise<T>,
+  ): Promise<T> {
+    const result = await this.database.sql.begin(
+      "isolation level repeatable read read only",
+      (sql) => query(new LearningSession(sql, userId)),
+    );
+    return result as T;
+  }
+
+  async publish(value: unknown): Promise<void> {
+    const unit = unitSchema.parse(value);
+    const hash = contentHash(unit);
+    await this.database.sql.begin(async (sql) => {
+      await sql`select pg_advisory_xact_lock(hashtextextended(${`learning-unit:${unit.id}`}, 0))`;
+      const [identity] = await sql<
+        { role_key: string; level_key: string; current_version: number }[]
+      >`
+        select role_key, level_key, current_version from app.learning_units where id=${unit.id}`;
+      if (
+        identity &&
+        (identity.role_key !== unit.roleKey || identity.level_key !== unit.level)
+      )
+        reject("LEARNING_UNIT_IDENTITY_CONFLICT", "单元标识不能换成另一角色或水平。");
+      const [oldVersion] = await sql<
+        { content_hash: string }[]
+      >`select content_hash from app.learning_unit_versions where unit_id=${unit.id} and version=${unit.version}`;
+      if (oldVersion) {
+        if (oldVersion.content_hash !== hash)
+          reject("LEARNING_IMMUTABLE_CONTENT", "已发布版本不可改写，请创建新版本。");
+        return;
+      }
+      if (identity && unit.version <= identity.current_version)
+        reject("LEARNING_VERSION_ORDER", "新版本必须大于已发布版本。");
+      await sql`insert into app.learning_units(id, role_key, level_key, current_version, published)
+        values(${unit.id}, ${unit.roleKey}, ${unit.level}, ${unit.version}, true)
+        on conflict(id) do update set current_version=excluded.current_version, published=true`;
+      await sql`insert into app.learning_unit_versions(unit_id, version, payload, content_hash)
+        values(${unit.id}, ${unit.version}, ${JSON.stringify(unit)}::jsonb, ${hash})`;
+    });
+  }
+}
+
+/** 仅在仓库拥有的事务中使用；可信消息入口由服务层组装，不公开字数写接口。 */
+export class LearningSession {
+  constructor(
+    private readonly sql: TransactionSql,
+    private readonly userId: string,
+  ) {}
+
+  async ensureCharacter(characterId: string, roleKey: string) {
+    await this
+      .sql`insert into app.learning_characters(user_id, character_id, role_key, cycle_id)
+      values(${this.userId},${characterId},${roleKey},${randomUUID()}) on conflict(user_id, character_id) do nothing`;
+    const state = await this.character(characterId);
+    if (state.roleKey !== roleKey)
+      reject("LEARNING_CHARACTER_CONFLICT", "角色学习身份不一致。");
+    return state;
+  }
+
+  async character(characterId: string) {
+    const [row] = await this.sql<
+      CharacterRow[]
+    >`select character_id,role_key,cycle_id,characters,revision
+      from app.learning_characters where user_id=${this.userId} and character_id=${characterId}`;
+    if (!row) reject("LEARNING_CHARACTER_NOT_FOUND", "找不到这个角色的学习记录。", 404);
+    const [active] = await this.sql<
+      { id: string }[]
+    >`select id from app.learning_attempts
+      where user_id=${this.userId} and character_id=${characterId} and first_completed_at is null`;
+    return {
+      characterId: row.character_id,
+      roleKey: row.role_key,
+      cycleId: row.cycle_id,
+      characters: row.characters,
+      threshold: learningPolicy.characterThreshold,
+      revision: row.revision,
+      activeAttemptId: active?.id ?? null,
+    };
+  }
+
+  async recordMessage(input: {
+    characterId: string;
+    cycleId: string;
+    messageId: string;
+    text: string;
+  }) {
+    const state = await this.character(input.characterId);
+    const count = countChatCharacters(input.text);
+    const accepted =
+      state.cycleId === input.cycleId &&
+      state.activeAttemptId === null &&
+      state.characters < learningPolicy.characterThreshold;
+    const inserted = await this
+      .sql`insert into app.learning_message_events(user_id,message_id,character_id,cycle_id,character_count,accepted)
+      values(${this.userId},${input.messageId},${input.characterId},${input.cycleId},${count},${accepted})
+      on conflict(user_id,message_id) do nothing returning message_id`;
+    if (inserted.length > 0 && accepted && count > 0) {
+      await this
+        .sql`update app.learning_characters set characters=least(1000, characters+${count}), revision=revision+1
+        where user_id=${this.userId} and character_id=${input.characterId}`;
+    }
+    return this.character(input.characterId);
+  }
+
+  async start(characterId: string, level: LearningLevel) {
+    const state = await this.character(characterId);
+    if (state.activeAttemptId)
+      return {
+        status: "started" as const,
+        attempt: await this.attempt(state.activeAttemptId),
+      };
+    if (state.characters < learningPolicy.characterThreshold)
+      reject("LEARNING_NOT_READY", "再聊一会儿，进度满后就能开启挑战。");
+    const [candidate] = await this.sql<{ payload: LearningUnit }[]>`
+      select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
+      where u.published and u.role_key=${state.roleKey} and u.level_key=${level}
+        and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)
+      order by random() limit 1`;
+    if (!candidate) {
+      await this.sql`insert into app.learning_generation_jobs(id, role_key, level_key)
+        values(${randomUUID()},${state.roleKey},${level}) on conflict do nothing`;
+      return { status: "preparing" as const, attempt: null };
+    }
+    const unit = unitSchema.parse(candidate.payload);
+    const attemptId = randomUUID();
+    await this
+      .sql`insert into app.learning_attempts(id,user_id,character_id,cycle_id,unit_id,unit_version,level_key)
+      values(${attemptId},${this.userId},${characterId},${state.cycleId},${unit.id},${unit.version},${level})`;
+    await this.sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids)
+      values(${randomUUID()},${attemptId},0,${unit.questions.map((q) => q.id)})`;
+    await this
+      .sql`update app.learning_characters set revision=revision+1 where user_id=${this.userId} and character_id=${characterId}`;
+    return { status: "started" as const, attempt: await this.attempt(attemptId) };
+  }
+
+  private async rawAttempt(id: string): Promise<AttemptRow> {
+    const [row] = await this.sql<
+      AttemptRow[]
+    >`select a.*, v.payload from app.learning_attempts a
+      join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+      where a.id=${id} and a.user_id=${this.userId}`;
+    if (!row) reject("LEARNING_ATTEMPT_NOT_FOUND", "找不到这次挑战。", 404);
+    return row;
+  }
+
+  async attempt(id: string) {
+    const row = await this.rawAttempt(id);
+    const [round] = await this.sql<
+      RoundRow[]
+    >`select id,ordinal,question_ids,completed_at from app.learning_rounds
+      where attempt_id=${id} order by ordinal desc limit 1`;
+    if (!round) throw new Error("挑战缺少作答轮次。");
+    const answers = await this.sql<
+      { question_id: string; answer: LearningAnswer; result: GradeResult }[]
+    >`
+      select question_id,answer,result from app.learning_answers where round_id=${round.id} order by created_at,question_id`;
+    const rewarded = await this.sql<
+      { question_id: string }[]
+    >`select question_id from app.learning_rewards where attempt_id=${id}`;
+    return {
+      id,
+      characterId: row.character_id,
+      level: row.level_key,
+      revision: row.revision,
+      startedAt: new Date(row.started_at).toISOString(),
+      firstCompletedAt:
+        row.first_completed_at === null
+          ? null
+          : new Date(row.first_completed_at).toISOString(),
+      unit: publicUnit(unitSchema.parse(row.payload)),
+      correctQuestionIds: rewarded.map((r) => r.question_id),
+      round: {
+        id: round.id,
+        ordinal: round.ordinal,
+        questionIds: round.question_ids,
+        completed: round.completed_at !== null,
+        answers: answers.map((a) => ({
+          questionId: a.question_id,
+          answer: a.answer,
+          result: a.result,
+        })),
+      },
+    };
+  }
+
+  async submit(input: {
+    attemptId: string;
+    roundId: string;
+    questionId: string;
+    answer: LearningAnswer;
+  }) {
+    const attempt = await this.rawAttempt(input.attemptId);
+    const [round] = await this.sql<
+      RoundRow[]
+    >`select id,ordinal,question_ids,completed_at from app.learning_rounds
+      where id=${input.roundId} and attempt_id=${input.attemptId}`;
+    if (round?.completed_at !== null || !round.question_ids.includes(input.questionId))
+      reject("LEARNING_ROUND_CONFLICT", "这道题已不在当前作答轮，请刷新挑战。");
+    const [answered] = await this
+      .sql`select question_id from app.learning_answers where round_id=${input.roundId} and question_id=${input.questionId}`;
+    if (answered)
+      reject("LEARNING_ALREADY_ANSWERED", "这一轮已经提交过这道题，请继续或稍后补答。");
+    const unit = unitSchema.parse(attempt.payload);
+    const question = unit.questions.find((q) => q.id === input.questionId);
+    if (!question) reject("LEARNING_QUESTION_NOT_FOUND", "找不到这道题。", 404);
+    const result = gradeAnswer(question, input.answer);
+    await this.sql`insert into app.learning_answers(round_id,question_id,answer,result)
+      values(${input.roundId},${input.questionId},${JSON.stringify(input.answer)}::jsonb,${JSON.stringify(result)}::jsonb)`;
+    let awardedPoints = 0;
+    if (result.outcome === "correct") {
+      const award = await this
+        .sql`insert into app.learning_rewards(attempt_id,question_id,user_id,level_key,goal_id,points)
+        values(${input.attemptId},${input.questionId},${this.userId},${attempt.level_key},${question.goalId},1)
+        on conflict(attempt_id,question_id) do nothing returning points`;
+      if (award.length > 0) {
+        awardedPoints = 1;
+        const [progress] = await this.sql<
+          { points: number }[]
+        >`insert into app.learning_level_progress(user_id,level_key,points)
+          values(${this.userId},${attempt.level_key},1) on conflict(user_id,level_key)
+          do update set points=app.learning_level_progress.points+1 returning points`;
+        if (!progress) throw new Error("学习进度写入失败。");
+        for (let star = 1; star <= levelProgress(progress.points).stars; star++) {
+          await this
+            .sql`insert into app.learning_milestones(user_id,level_key,star) values(${this.userId},${attempt.level_key},${star}) on conflict do nothing`;
+        }
+      }
+    }
+    await this
+      .sql`update app.learning_attempts set revision=revision+1 where id=${input.attemptId}`;
+    // 补答轮自动收束；首轮等待用户确认，才能重置角色进度。
+    if (round.ordinal > 0) {
+      await this
+        .sql`update app.learning_rounds set completed_at=now() where id=${input.roundId}
+        and cardinality(question_ids)=(select count(*) from app.learning_answers where round_id=${input.roundId})`;
+    }
+    return {
+      result,
+      awardedPoints,
+      attempt: await this.attempt(input.attemptId),
+      progress: await this.progress(),
+    };
+  }
+
+  async finish(id: string, skipRemaining: boolean) {
+    const attempt = await this.rawAttempt(id);
+    if (attempt.first_completed_at !== null) return this.attempt(id);
+    const [round] = await this.sql<
+      RoundRow[]
+    >`select id,ordinal,question_ids,completed_at from app.learning_rounds where attempt_id=${id} and ordinal=0`;
+    if (!round) throw new Error("首轮记录不存在。");
+    const answered = await this.sql<
+      { question_id: string }[]
+    >`select question_id from app.learning_answers where round_id=${round.id}`;
+    const remaining = round.question_ids.filter(
+      (q) => !answered.some((a) => a.question_id === q),
+    );
+    if (remaining.length > 0 && !skipRemaining)
+      reject(
+        "LEARNING_ROUND_INCOMPLETE",
+        "还有题目未完成，可以继续或明确跳过剩余题目。",
+      );
+    for (const questionId of remaining) {
+      await this.submit({
+        attemptId: id,
+        roundId: round.id,
+        questionId,
+        answer: { kind: "skip" },
+      });
+    }
+    await this
+      .sql`update app.learning_rounds set completed_at=now() where id=${round.id}`;
+    await this
+      .sql`update app.learning_attempts set first_completed_at=now(),revision=revision+1 where id=${id}`;
+    await this
+      .sql`update app.learning_characters set cycle_id=${randomUUID()}, characters=0, revision=revision+1
+      where user_id=${this.userId} and character_id=${attempt.character_id} and cycle_id=${attempt.cycle_id}`;
+    return this.attempt(id);
+  }
+
+  async retry(id: string) {
+    const attempt = await this.rawAttempt(id);
+    if (attempt.first_completed_at === null)
+      reject("LEARNING_FIRST_ROUND_ACTIVE", "请先结束当前首轮挑战。");
+    const [lastRound] = await this.sql<
+      RoundRow[]
+    >`select id,ordinal,question_ids,completed_at from app.learning_rounds where attempt_id=${id} order by ordinal desc limit 1`;
+    if (!lastRound) throw new Error("找不到历史轮次。");
+    if (lastRound.completed_at === null) return this.attempt(id);
+    const rewarded = await this.sql<
+      { question_id: string }[]
+    >`select question_id from app.learning_rewards where attempt_id=${id}`;
+    const remaining = unitSchema
+      .parse(attempt.payload)
+      .questions.map((q) => q.id)
+      .filter((q) => !rewarded.some((r) => r.question_id === q));
+    if (remaining.length === 0) return this.attempt(id);
+    await this
+      .sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids) values(${randomUUID()},${id},${lastRound.ordinal + 1},${remaining})`;
+    await this.sql`update app.learning_attempts set revision=revision+1 where id=${id}`;
+    return this.attempt(id);
+  }
+
+  async progress() {
+    const rows = await this.sql<
+      { level_key: LearningLevel; points: number }[]
+    >`select level_key,points from app.learning_level_progress where user_id=${this.userId} order by level_key`;
+    return rows.map((row) => ({ level: row.level_key, ...levelProgress(row.points) }));
+  }
+}
