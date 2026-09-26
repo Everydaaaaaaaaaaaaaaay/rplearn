@@ -23,3 +23,17 @@ Worker 领取修订任务时使用原有每日预算、租约和三次重试上�
 生成与审题共用已配置的 OpenRouter，模型为 `openai/gpt-6-luna`，可通过 `LEARNING_GENERATION_MODEL` 指定。2026-09-26 从部署服务器使用现有客户端核实凭据和实时目录，确认模型存在并支持 JSON。官方目录：[OpenRouter 模型接口](https://openrouter.ai/api/v1/models)。
 
 该模型目录未声明支持 temperature，因此请求不发送温度；推理等级 medium，输出上限 16000 token，单次请求 120 秒，仍由五分钟租约与统一日预算控制。缺失 OpenRouter 凭据时失败，不回退到原模型。42 项学习与配置测试、类型、ESLint、架构检查通过。后续真实调用记录用于确认模型实际返回与内容质量，不凭型号宣称解决全部质量问题。
+
+## Luna 可达性与 DeepSeek 评估
+
+Luna 配置在 `a9b816a` 上线后，真实 OpenRouter 请求返回 403：`This model is not available in your region.`。首次 Worker 审题尚未取得模型答案，额外一次最小诊断请求确认同一拒绝。候选 `e36015a6-7ddf-4f9f-aae7-b2f8aa54ebc5` 保留但停止无效重试；25 项公网检查验证原有三单元耗尽与满条保留，临时账号已经删除。共享发布仍未完成。
+
+用户随后指定评估 DeepSeek V4.1 Flash。官方文档确认 `deepseek-flash` 是当前 ID，旧 `deepseek-v4-flash` 已映射到同一新版，不能把改名视作升级。本轮明确使用官方现有凭据、`thinking: enabled`、`reasoning_effort: high`，生成与审题都保留 16000 token 上限及 120 秒超时；此前主要使用非推理配置。供应商和模型用 `LEARNING_GENERATION_PROVIDER` / `LEARNING_GENERATION_MODEL` 显式配置，不暗中回退。
+
+参考：[官方更新记录](https://api-docs.deepseek.com/zh-cn/updates/)、[推理参数说明](https://api-docs.deepseek.com/guides/thinking_mode/)。
+
+`learning-evaluate --live 证据目录` 是独立、有界的真实模型评估：最多八次请求，三角色各一个小学三年级新单元和两份审题控制样本。它读取公开题库比较重复，使用相同生成处理器和审题合同，但以仅保存在文件中的评估仓库代替生产写入。正例为本次逐题修订稿；负例注入六类明确错误，预先登记预期拒绝字段。只保存最终答案、公开输入、模型、用量及耗时，不保存推理过程、凭据或用户聊天。该评估调用上限独立于生产补库租约预算，不扣用户聊天额度。
+
+供应商明确的权限、配置或模型拒绝现在一次即终止任务；临时故障仍保留既有退避。新增隔离数据库测试确认候选保留、不会重复请求或进入发布；该轮生成与修订共 9 项通过，证据 `build/learning-engine-db-1790402838/result.json`。
+
+切换及评估入口的 43 项学习/配置测试、类型、改动文件 ESLint 和架构检查通过。部署服务器已用现有 DeepSeek 客户端确认 `deepseek-flash` 在可用模型列表中；真实输出质量待以下评估结果记录，不把目录可用当成能力达标。

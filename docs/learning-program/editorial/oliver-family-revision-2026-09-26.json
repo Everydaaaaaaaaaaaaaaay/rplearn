@@ -1,0 +1,244 @@
+{
+  "requestId": "d24e186e-2441-47e7-b358-472585ad13f2",
+  "sourceJobId": "c76014ca-6e3c-455d-ad9f-4fa018b9171a",
+  "candidateHash": "cf9ef7ea6af70500a8ffd141b6a7f1e3dde0b5a2c18abbcc42d721ca48588c0f",
+  "editor": "Codex 内容编辑",
+  "notes": "逐题修订：把照片墙改成 Oliver 旧书店的家庭书礼物；保留家庭称呼、配对和介绍目标；替换泄露答案且偏离目标的 people 复数题；重写直接给出 he/she 的提示，去除人物代词判断争议；剧情不再提前给出家人介绍答案；解析区分语义不符与语法错误。不是对原审核结论改标，而是提交新稿重新盲审。",
+  "unit": {
+    "id": "generated.c76014ca-6e3c-455d-ad9f-4fa018b9171a",
+    "beats": [
+      {
+        "id": "beat-open",
+        "afterQuestion": 0,
+        "speaker": "Oliver",
+        "text": "Books for everyone. Big bags, small cards. Ready?",
+        "translation": "人人都有书礼物。大袋子，小卡片。准备好了吗？"
+      },
+      {
+        "id": "beat-labels",
+        "afterQuestion": 2,
+        "speaker": "Oliver",
+        "text": "A card for each bag. No guessing today.",
+        "translation": "每个袋子都要有卡片。今天可不能靠猜。"
+      },
+      {
+        "id": "beat-table",
+        "afterQuestion": 4,
+        "speaker": "Oliver",
+        "text": "The cards are here. The bags are there. Nearly ready.",
+        "translation": "卡片在这里，袋子在那里。快准备好了。"
+      },
+      {
+        "id": "beat-end",
+        "afterQuestion": 6,
+        "speaker": "Oliver",
+        "text": "All ready. Tea for us now?",
+        "translation": "都准备好了。现在轮到我们喝杯茶了吧？"
+      }
+    ],
+    "level": "primary3",
+    "scene": "旧书店的木柜台上放着包好的书、纸袋和空白卡片。Oliver 想让每份礼物都送到对的人手里，便把小卡片递给你。",
+    "title": "给家人的书与小标签",
+    "goalIds": [
+      "p3.family",
+      "p3.introductions"
+    ],
+    "roleKey": "oliver",
+    "summary": "Oliver 在旧书店准备几份送给家人的书礼物，邀你练习辨认家庭称呼、填写收礼人标签和介绍身边的家人。",
+    "version": 1,
+    "questions": [
+      {
+        "id": "grandmother-label",
+        "hint": "先想家庭称呼的中文意思，再看哪一个词和它对应。",
+        "type": "choice",
+        "answer": "a",
+        "goalId": "p3.family",
+        "prompt": "一份书礼物要送给你的奶奶。卡片上的收礼人称呼应选哪个词？",
+        "options": [
+          {
+            "id": "a",
+            "text": "grandmother"
+          },
+          {
+            "id": "b",
+            "text": "mother"
+          },
+          {
+            "id": "c",
+            "text": "sister"
+          }
+        ],
+        "explanation": "grandmother 可以指奶奶或外婆。本题说送给奶奶，因此选 grandmother；mother 指妈妈，sister 指姐妹，这两项改变了收礼人与自己的关系。",
+        "instruction": "按本题给出的情景作答。",
+        "difficultyReason": "三个选项都是常见家庭词，需要准确区分称呼对象。"
+      },
+      {
+        "id": "family-pairs",
+        "hint": "先确认每个词的含义，再逐一配对。不要根据左右两列的位置猜答案。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "father"
+          },
+          {
+            "id": "l2",
+            "text": "brother"
+          },
+          {
+            "id": "l3",
+            "text": "sister"
+          }
+        ],
+        "type": "matching",
+        "right": [
+          {
+            "id": "r1",
+            "text": "爸爸"
+          },
+          {
+            "id": "r2",
+            "text": "兄弟"
+          },
+          {
+            "id": "r3",
+            "text": "姐妹"
+          }
+        ],
+        "goalId": "p3.family",
+        "prompt": "在家庭称呼词卡上，把英文与对应的中文意思连起来。",
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r1"
+          },
+          {
+            "left": "l2",
+            "right": "r2"
+          },
+          {
+            "left": "l3",
+            "right": "r3"
+          }
+        ],
+        "explanation": "本题考查家庭称呼的认读。father 是爸爸，brother 是兄弟，sister 是姐妹。配对时先确认每个词指的是哪一位家人。",
+        "instruction": "先点左侧，再点右侧，完成全部配对。",
+        "difficultyReason": "三个词都属于家庭称呼，需要逐一辨认而不是靠位置猜。"
+      },
+      {
+        "id": "my-mother",
+        "hint": "对照中文检查：你是否交代了这是谁，以及她和自己的关系？",
+        "type": "arrange",
+        "goalId": "p3.introductions",
+        "prompt": "你的妈妈来到柜台前。向店员介绍她：“这是我的妈妈。”",
+        "tokens": [
+          {
+            "id": "t1",
+            "text": "This"
+          },
+          {
+            "id": "t2",
+            "text": "is"
+          },
+          {
+            "id": "t3",
+            "text": "my"
+          },
+          {
+            "id": "t4",
+            "text": "mother."
+          }
+        ],
+        "explanation": "This is my mother. 表达“这是我的妈妈”。This is 用来介绍眼前的人，my mother 表示“我的妈妈”。这里只用给出的四个词块，不加入其他词。",
+        "instruction": "按顺序点选词块，组成符合中文意思的句子。",
+        "acceptedOrders": [
+          [
+            "t1",
+            "t2",
+            "t3",
+            "t4"
+          ]
+        ],
+        "difficultyReason": "需要同时安排 This、is、my、mother 四个词块，并保持英语基本语序。"
+      },
+      {
+        "id": "mother-card",
+        "hint": "看清卡片指定的家庭称呼，再从三个备选词中选择。",
+        "type": "completion",
+        "goalId": "p3.family",
+        "prompt": "卡片要写“我的妈妈”：my ___\n从 mother、brother、sister 中选词，只填一个。",
+        "explanation": "my mother 表示“我的妈妈”。brother 指兄弟，sister 指姐妹，不能表达本题指定的称呼。my 在这里说明与“我”的关系，不改变后面称呼的拼写。",
+        "instruction": "只填写横线处缺少的英文单词。",
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "acceptedAnswers": [
+          "mother"
+        ],
+        "difficultyReason": "在给定的三个家庭词中选出符合中文的一个，并准确输入；不引入词形变化。"
+      },
+      {
+        "id": "father-label",
+        "hint": "逐项核对卡片上的两点：是哪位家人，以及是谁的家人。",
+        "type": "choice",
+        "answer": "a",
+        "goalId": "p3.family",
+        "prompt": "卡片要表达“这是我的爸爸”。哪一句意思完全相同？",
+        "options": [
+          {
+            "id": "a",
+            "text": "This is my father."
+          },
+          {
+            "id": "b",
+            "text": "This is my brother."
+          },
+          {
+            "id": "c",
+            "text": "This is your father."
+          }
+        ],
+        "explanation": "This is my father. 与“这是我的爸爸”一致。第二句把爸爸变成了兄弟，第三句把“我的”变成了“你的”。三个选项都可以组成合法句子，本题判断的是意思是否符合要求。",
+        "instruction": "按本题给出的情景作答。",
+        "difficultyReason": "在相同句型中辨认家庭词与所属关系；干扰项只改变一处意思，避免叠加新语法。"
+      },
+      {
+        "id": "sister-link",
+        "type": "completion",
+        "goalId": "p3.introductions",
+        "instruction": "只填写横线处缺少的英文单词。",
+        "prompt": "介绍妹妹：“这是我的妹妹。”\nThis ___ my sister.\n从 am、is、are 中选词，只填一个。",
+        "hint": "先确定这句话从哪个词开始，再检查后面的词是否与它搭配。",
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "acceptedAnswers": [
+          "is"
+        ],
+        "explanation": "This is my sister. 表示“这是我的妹妹”。用 This 介绍一个人时搭配 is；本题不使用 am 或 are。sister 也可表示姐姐，这里由题干明确为妹妹。",
+        "difficultyReason": "在给定的三种 be 动词形式中选择与 This 搭配的一种，输入一个词。"
+      }
+    ],
+    "authorship": {
+      "kind": "generated",
+      "author": "服务端内容生成",
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "待逐题复核",
+      "reviewNotes": "候选内容，仅通过合同检查尚不可分配；须完成独立审题和首批作者逐题复核。"
+    },
+    "references": [
+      {
+        "unit": "一级主题与语言知识范围",
+        "pages": "印刷第14、18、20–22页",
+        "sourceId": "moe.english.2022",
+        "alignment": "以已核读课标中的三四年级一级主题、基础词汇和简单语法为范围依据；生成练习为原创，不声称对应某版教材未核读的单元正文或完整学年覆盖。"
+      }
+    ],
+    "roleVersion": 1,
+    "schemaVersion": 1,
+    "scoringVersion": 1,
+    "estimatedMinutes": 6,
+    "prerequisiteGoalIds": []
+  }
+}

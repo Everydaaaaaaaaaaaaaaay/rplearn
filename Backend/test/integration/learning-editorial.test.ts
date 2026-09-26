@@ -1,3 +1,4 @@
+import { AppError } from "../../src/shared/errors.js";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
@@ -167,6 +168,34 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect((await repository.inspect(revised)).last_error_code).toBe(
         "EDITOR_BLUEPRINT_CHANGED",
       );
+    });
+    it("供应商明确拒绝不反复重试，保留候选且不能发布", async () => {
+      const { fixture, input } = await failedDraft();
+      const revised = await repository.revise(input, fixture.blueprint);
+      ids.push(revised);
+      const complete = vi.fn(() =>
+        Promise.reject(
+          new AppError({
+            code: "AI_UPSTREAM_REJECTED",
+            message: "供应商拒绝测试请求。",
+            statusCode: 502,
+          }),
+        ),
+      );
+      const processor = createLearningGenerationProcessor(
+        repository,
+        [fixture.blueprint],
+        complete,
+        50,
+      );
+      expect(await processor.runOnce()).toBe("failed");
+      const job = await repository.inspect(revised);
+      expect(job.status).toBe("failed");
+      expect(job.attempts).toBe(1);
+      expect(job.candidate).not.toBeNull();
+      expect(job.last_error_code).toBe("REVIEW_REQUEST_FAILED:AI_UPSTREAM_REJECTED");
+      expect(await processor.runOnce()).toBe("idle");
+      expect(complete).toHaveBeenCalledTimes(1);
     });
     it("人工修订仍会因新审题不通过而失败，不能直接发布", async () => {
       const { fixture, input } = await failedDraft();

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { AppError } from "../../shared/errors.js";
 import { publicQuestion } from "./content.js";
 import type { LearningGenerationRepository } from "./generation-repository.js";
 import {
@@ -19,7 +20,17 @@ export type LearningEditorialCompletion = (
   }>,
 ) => Promise<{ content: string; model: string; usage: unknown }>;
 export function createLearningGenerationProcessor(
-  repository: LearningGenerationRepository,
+  repository: Pick<
+    LearningGenerationRepository,
+    | "claim"
+    | "existing"
+    | "recordCall"
+    | "recordOutput"
+    | "recordCandidate"
+    | "recordReview"
+    | "stage"
+    | "fail"
+  >,
   blueprints: readonly GenerationBlueprint[],
   complete: LearningEditorialCompletion,
   dailyJobs: number,
@@ -135,10 +146,24 @@ export function createLearningGenerationProcessor(
         await repository.recordReview(lease, decoded);
         const report = validateIndependentReview(JSON.stringify(decoded), unit);
         return (await repository.stage(lease, unit, report)) ? "review" : "superseded";
-      } catch {
+      } catch (error) {
+        // 凭据、模型权限或地区拒绝不会因相同请求重试而恢复；保留安全错误分类。
+        const permanentlyRejected =
+          error instanceof AppError &&
+          [
+            "AI_UPSTREAM_REJECTED",
+            "AI_PROVIDER_NOT_CONFIGURED",
+            "AI_MODEL_NOT_ALLOWED",
+            "AI_MODEL_CAPABILITY_MISSING",
+          ].includes(error.code);
         await repository.fail(
           lease,
-          signal?.aborted ? "GENERATION_INTERRUPTED" : errorCode,
+          signal?.aborted
+            ? "GENERATION_INTERRUPTED"
+            : permanentlyRejected
+              ? `${errorCode}:${error.code}`
+              : errorCode,
+          !permanentlyRejected,
         );
         return "failed";
       }

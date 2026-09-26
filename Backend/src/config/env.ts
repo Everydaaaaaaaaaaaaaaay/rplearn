@@ -68,12 +68,13 @@ const rawEnvironmentSchema = z.object({
   APPLE_REVOCATION_ENDPOINT: z.url().default("https://appleid.apple.com/auth/revoke"),
   APPLE_TEAM_ID: optionalSecret,
   APPLE_TOKEN_ENDPOINT: z.url().default("https://appleid.apple.com/auth/token"),
+  LEARNING_GENERATION_PROVIDER: z.enum(["deepseek", "openrouter"]).default("deepseek"),
   LEARNING_GENERATION_MODEL: z
     .string()
     .trim()
     .min(1)
     .max(200)
-    .default("openai/gpt-6-luna"),
+    .default("deepseek-flash"),
   LEARNING_GENERATION_ENABLED: booleanFromString.default(false),
   LEARNING_GENERATION_DAILY_JOBS: z.coerce.number().int().min(1).max(50).default(6),
   AI_RETRY_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(3).default(2),
@@ -719,6 +720,7 @@ export function loadConfig(
       developmentJobKey(result.data.AUTH_TOKEN_HASH_PEPPER ?? DEVELOPMENT_AUTH_PEPPER),
     jobPayloadKeyVersion: result.data.JOB_PAYLOAD_KEY_VERSION ?? "local-v1",
     jobPayloadPreviousKeys,
+    learningGenerationProvider: result.data.LEARNING_GENERATION_PROVIDER,
     learningGenerationModel: result.data.LEARNING_GENERATION_MODEL,
     learningGenerationEnabled: result.data.LEARNING_GENERATION_ENABLED,
     learningGenerationDailyJobs: result.data.LEARNING_GENERATION_DAILY_JOBS,

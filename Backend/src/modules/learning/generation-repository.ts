@@ -148,10 +148,10 @@ export class LearningGenerationRepository {
       return true;
     });
   }
-  async fail(lease: GenerationLease, code: string): Promise<void> {
+  async fail(lease: GenerationLease, code: string, retryable = true): Promise<void> {
     await this.database.sql.begin(async (sql) => {
       const changed =
-        await sql`update app.learning_generation_jobs set status=${lease.attempt >= 3 ? "failed" : "pending"},last_error_code=${code},available_at=now()+${String(60 * 5 ** lease.attempt)}::int*interval '1 second',lease_until=null,lease_token=null where id=${lease.id} and status='running' and lease_token=${lease.token} returning id`;
+        await sql`update app.learning_generation_jobs set status=${!retryable || lease.attempt >= 3 ? "failed" : "pending"},last_error_code=${code},available_at=now()+${String(60 * 5 ** lease.attempt)}::int*interval '1 second',lease_until=null,lease_token=null where id=${lease.id} and status='running' and lease_token=${lease.token} returning id`;
       if (changed.length)
         await sql`update app.learning_generation_runs set outcome='failed',error_code=${code},finished_at=now() where job_id=${lease.id} and attempt=${lease.attempt}`;
     });
