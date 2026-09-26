@@ -242,11 +242,6 @@ struct RootView: View {
                     }
                 }
                 #endif
-                #if DEBUG
-                if ["role-learning", "unit-challenge"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""), bypassesAuthenticationForUITesting {
-                    captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
-                }
-                #endif
                 await reloadUnreadCount()
                 if environment.needsOnboarding != nil,
                    selectedTab != .home || activeHomeDestination != nil || !homePath.isEmpty {
@@ -535,6 +530,14 @@ struct RootView: View {
         if let accountID = activeUserID,
            environment.workspace?.userID == accountID {
             tabs
+            #if DEBUG
+            .task(id: accountID) {
+                // 等主界面挂载后再展示学习预览，避免启动页切换吞掉全屏展示。
+                guard ["role-learning", "unit-challenge"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""),
+                      bypassesAuthenticationForUITesting else { return }
+                captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
+            }
+            #endif
             .fullScreenCover(item: $introductionMode) { mode in
                 JourneyIntroductionView(deps: OnboardingDependencies(
                     economyStore: environment.economyStore,

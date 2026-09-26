@@ -44,7 +44,7 @@ final class ChallengeLayoutUITests: XCTestCase {
         XCTAssertTrue(app.buttons["停止播放"].waitForExistence(timeout: 5))
         XCUIDevice.shared.press(.home)
         app.activate()
-        XCTAssertTrue(app.staticTexts["播放已中断，轻点继续听。不会自动外放。"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["播放已中断，轻点重听。"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["停止播放"].exists)
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "听力播放与中断"; attachment.lifetime = .keepAlways; add(attachment)

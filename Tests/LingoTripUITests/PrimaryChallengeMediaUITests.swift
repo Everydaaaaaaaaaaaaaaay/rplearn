@@ -10,7 +10,7 @@ final class PrimaryChallengeMediaUITests: XCTestCase {
         continueAfterFailure = false
         let repository = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let directory = repository.appending(path: "Backend/config/learning")
-        for id in ["oliver.primary1.reading-bag", "ruby.primary1.picnic-fruit", "marcus.primary1.portrait-faces"] {
+        for id in ["oliver.primary1.bookmark-colours", "oliver.primary1.animal-book-covers", "ruby.primary1.shell-count", "ruby.primary1.painted-animal-flags", "marcus.primary1.photo-count", "marcus.primary1.studio-directions"] {
             let raw = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: directory.appending(path: "units/\(id).json"))) as? [String: Any])
             let questions = try XCTUnwrap(raw["questions"] as? [[String: Any]])
             let question = try XCTUnwrap(questions.first)
@@ -38,6 +38,12 @@ final class PrimaryChallengeMediaUITests: XCTestCase {
             let play = app.buttons["learning.audio.play"]
             reveal(play, in: app)
             XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "播放听力"), object: play)], timeout: 10) == .completed)
+            if !large {
+                let controls = app.otherElements["learning.audio.controls"]
+                XCTAssertTrue(controls.exists)
+                XCTAssertLessThanOrEqual(controls.frame.height, 64, "普通字号音频区应为紧凑单行")
+                XCTAssertGreaterThanOrEqual(play.frame.height, 44, "保留足够的触控高度")
+            }
             play.tap()
             XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "再听一遍"), object: play)], timeout: 10) == .completed)
             for option in ["a", "b", "c"] {

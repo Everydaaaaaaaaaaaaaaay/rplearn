@@ -163,31 +163,72 @@ public struct LearningChallengeView: View {
             }
         }
     }
+    private var audioControlTitle: String {
+        switch audio.state {
+        case .loading: "准备声音…"
+        case .playing: "停止播放"
+        case .failed: "重新载入"
+        case .idle: "载入听力"
+        case .ready, .interrupted: audio.hasListened ? "再听一遍" : "播放听力"
+        }
+    }
     private func listeningControls(_ question: LearningQuestion) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(spacing: 14) {
+        VStack(alignment: .leading, spacing: 8) {
+            let layout = dynamicTypeSize.isAccessibilitySize
+                ? AnyLayout(VStackLayout(alignment: .leading, spacing: 4))
+                : AnyLayout(HStackLayout(spacing: 12))
+            layout {
                 Button {
                     if audio.state == .playing { audio.stop() }
                     else if audio.state == .failed || audio.state == .idle {
                         Task { await audio.prepare(attemptID: model.attempt.id, question: question) }
                     } else { audio.play(slow: false) }
                 } label: {
-                    HStack(spacing: 12) {
-                        if audio.state == .loading { ProgressView().tint(theme.tint) }
-                        else { Image(systemName: audio.state == .playing ? "stop.fill" : audio.state == .failed ? "arrow.clockwise" : "play.fill") }
-                        Text(audio.state == .loading ? "正在准备声音…" : audio.state == .playing ? "停止播放" : audio.state == .failed ? "重新载入" : audio.state == .idle ? "载入听力" : audio.hasListened ? "再听一遍" : "播放听力")
-                    }.font(.headline).frame(maxWidth: .infinity, minHeight: 52)
-                }.buttonStyle(LearningPressStyle()).disabled(audio.state == .loading || model.isBusy)
+                    HStack(spacing: 10) {
+                        ZStack {
+                            Circle().fill(theme.tint.opacity(0.1))
+                            if audio.state == .loading { ProgressView().tint(theme.tint) }
+                            else {
+                                Image(systemName: audio.state == .playing ? "stop.fill" : audio.state == .failed ? "arrow.clockwise" : "play.fill")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(theme.tint)
+                            }
+                        }.frame(width: 38, height: 38).accessibilityHidden(true)
+                        Text(audioControlTitle).font(.subheadline.weight(.semibold))
+                            .foregroundStyle(Color.primary)
+                            .fixedSize(horizontal: false, vertical: true)
+                        if audio.hasListened {
+                            Image(systemName: "checkmark.circle.fill").font(.caption)
+                                .foregroundStyle(theme.tint).accessibilityHidden(true)
+                        }
+                        Spacer(minLength: 0)
+                    }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }.buttonStyle(LearningPressStyle())
+                    .disabled(audio.state == .loading || model.isBusy)
+                    .accessibilityLabel(audioControlTitle)
+                    .accessibilityHint(audio.hasListened ? "已完整听过，可以重听。" : "完整听一遍后可检查答案。")
                     .accessibilityIdentifier("learning.audio.play")
                 Button { audio.play(slow: true) } label: {
-                    Label("慢速", systemImage: "tortoise").font(.subheadline.weight(.semibold)).padding(.horizontal, 14).frame(minHeight: 52)
+                    HStack(spacing: 5) {
+                        Image(systemName: "tortoise").font(.subheadline)
+                        Text("慢速").font(.subheadline.weight(.medium))
+                    }.foregroundStyle(theme.tint).padding(.horizontal, 10)
+                        .frame(minHeight: 44).contentShape(Rectangle())
                 }.buttonStyle(LearningPressStyle())
                     .disabled(![.ready, .playing, .interrupted].contains(audio.state) || model.isBusy)
+                    .accessibilityLabel("慢速播放")
+                    .accessibilityHint("以四分之三速度从头播放。")
                     .accessibilityIdentifier("learning.audio.slow")
             }
-            Text(audio.state == .failed ? "声音暂时没能载入。可以重试，或先跳过，稍后从记录补答。" : audio.state == .interrupted ? "播放已中断，轻点继续听。不会自动外放。" : audio.hasListened ? "可以正常或慢速重听，确认后再作答。" : "先完整听一遍，再选择或输入答案。暂时不方便听时可以跳过。")
-                .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
-        }.padding(18).background(theme.tint.opacity(0.07), in: RoundedRectangle(cornerRadius: 18))
+            if audio.state == .failed || audio.state == .interrupted {
+                Text(audio.state == .failed ? "声音暂时无法载入，请重试；也可先跳过。" : "播放已中断，轻点重听。")
+                    .font(.caption).foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }.padding(.vertical, 2)
+            .accessibilityElement(children: .contain)
+            .accessibilityIdentifier("learning.audio.controls")
     }
     @ViewBuilder
     private func answerControls(_ question: LearningQuestion) -> some View {
