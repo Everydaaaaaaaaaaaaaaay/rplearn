@@ -33,3 +33,15 @@
 - 两端架构检查通过；服务端 246 模块、668 依赖无越界。TypeScript 与改动文件 ESLint 作为本次提交检查，未将全库已有 lint 问题算作通过。
 - 通过 `Scripts/preview.sh preview learning` 复用刚测试的构建，安装至“LingoTrip 学习验收”iPhone 18 Pro / iOS 27。已目视核对普通旅程首屏及 UI 测试导出的进阶完成画面。
 - Computer Use 直接连接 Device Hub、通过 Xcode 菜单重试均超时。此次交互证据来自原生 UI 测试，画面来自测试附件和 `simctl` 截图；不宣称完成额外的人工手势、VoiceOver 或真实设备验收。
+
+最终测试断言类型整理后，TypeScript 与该文件 ESLint 再次通过；进阶事务 3 项定向复测通过，证据 `build/learning-engine-db-1790407525/result.json`。其余三个数据库套件在相同生产实现上已有上述通过证据。
+
+## 生产发布与核验
+
+实现提交及当前服务版本：`6b24c0e`；前一版本：`08fb06c`。标准原子部署成功，迁移数量由 38 增至 39，API、Worker、Caddy 均 active，公网 `/health/ready` 返回 ready。
+
+发布包 SHA-256：`f86a677752a3b2a97d2d5fd096e90d7d877b55cdb3eff3f04596ba8290155249`。发布包装脚本为失败准备了保留数据库记录、对齐实际迁移账本的旧代码恢复目录；此次成功，没有执行回退，也没有删除旧迁移或用户数据。
+
+通过临时账号和公网 HTTPS 完成 6 项检查：未登录旅程 401、已登录旅程显示课程未发布及缺少点数、未达标开启 409、不存在剧情 404、未明确确认完成 400、未登录开启 401。进一步查询确认测试档案仍为原等级和版本，没有创建进阶或奖励记录；正式已发布的 9 个单元及其版本保持不变。测试账号已删除。
+
+证据：`build/learning-verification/promotion-production-6b24c0e.jsonl`、`promotion-deploy-6b24c0e.log`。本次没有调用 AI、发布新单元或植入正式课程标准；线上真实升级仍等待合格课程清单，不以拒绝路径核验冒充正式学年升级成功。
