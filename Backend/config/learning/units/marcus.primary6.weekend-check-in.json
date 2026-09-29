@@ -1,0 +1,229 @@
+{
+  "id": "marcus.primary6.weekend-check-in",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary6",
+  "title": "冲洗照片前的周末闲聊",
+  "summary": "能用 did 提问和否定过去动作，并给出一致的简短回答。",
+  "scene": "Marcus 等待照片晾干时问起你的周末，让一个平常日子也有被记住的机会。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary6.weekend-check-in"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary6.archive20260929",
+      "unit": "Unit 2 Last weekend / Let’s learn",
+      "pages": "印刷第17页；PDF第22页",
+      "alignment": "过去活动问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "While these prints dry, tell me about your weekend.",
+      "translation": "照片还在晾，聊聊你的周末吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "An ordinary day can still make a good memory.",
+      "translation": "平常的一天也能留下好回忆。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Thanks for sharing a little of your day.",
+      "translation": "谢谢你分享这一天的小片段。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary6.weekend-check-in",
+      "prompt": "你想问朋友昨晚是否看了电影。选择正确问句。",
+      "difficultyReason": "六年级 did＋原形；明确肯定或否定事实，避免仅凭生活常识猜答。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Did you see a film last night?"
+        },
+        {
+          "id": "b",
+          "text": "Did you saw a film last night?"
+        },
+        {
+          "id": "c",
+          "text": "Do you see a film last night?"
+        }
+      ],
+      "answer": "a",
+      "hint": "过去时由疑问句中的哪个词承担？",
+      "explanation": "Did 后接原形 see。 Did 后不能再用过去式 saw。 Do 与明确的过去时间 last night 不一致。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary6.weekend-check-in",
+      "prompt": "用 read 的适当形式补全：I didn’t ___ a book yesterday.",
+      "difficultyReason": "六年级 did＋原形；明确肯定或否定事实，避免仅凭生活常识猜答。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "read"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "不需要 -ing 词尾。",
+      "explanation": "didn’t 后用原形 read；拼写相同不表示这里读音是过去式。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary6.weekend-check-in",
+      "prompt": "以 Did 开头，问“她昨天打扫房间了吗”？",
+      "difficultyReason": "六年级 did＋原形；明确肯定或否定事实，避免仅凭生活常识猜答。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "clean"
+        },
+        {
+          "id": "t4",
+          "text": "her room yesterday?"
+        },
+        {
+          "id": "t1",
+          "text": "Did"
+        },
+        {
+          "id": "t2",
+          "text": "she"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "主语放在 Did 和 clean 中间。",
+      "explanation": "Did she clean…? 使用过去助动词和动词原形。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary6.weekend-check-in",
+      "prompt": "问题是“Did you wash your clothes?”，你确实洗了。选择简短回答。",
+      "difficultyReason": "六年级 did＋原形；明确肯定或否定事实，避免仅凭生活常识猜答。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, I did."
+        },
+        {
+          "id": "b",
+          "text": "Yes, I do."
+        },
+        {
+          "id": "c",
+          "text": "No, I didn’t."
+        }
+      ],
+      "answer": "a",
+      "hint": "同时核对时态和事实。",
+      "explanation": "did 与问题的过去助动词对应。 do 是现在时，不对应该过去问句。 否定回答与确实洗了矛盾。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary6.weekend-check-in",
+      "prompt": "只填 did 或 didn’t：你昨天没有看电视。I ___ watch TV yesterday.",
+      "difficultyReason": "六年级 did＋原形；明确肯定或否定事实，避免仅凭生活常识猜答。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "didn’t"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "题干明确说没有。",
+      "explanation": "didn’t 否定过去动作；did watch 则是强调确实看了。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary6.weekend-check-in",
+      "prompt": "把关于昨天的问句与所问信息配对。",
+      "difficultyReason": "六年级 did＋原形；明确肯定或否定事实，避免仅凭生活常识猜答。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "What did you do?"
+        },
+        {
+          "id": "l2",
+          "text": "Where did you go?"
+        },
+        {
+          "id": "l3",
+          "text": "Did you enjoy it?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "去过哪里"
+        },
+        {
+          "id": "r3",
+          "text": "是否觉得愉快"
+        },
+        {
+          "id": "r1",
+          "text": "做过什么"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "注意问句开头的词。",
+      "explanation": "前两句是特殊疑问句，第三句可用 yes/no 回答。"
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "id": "marcus.primary2.photo-time",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary2",
+  "title": "拍照前，听清几点",
+  "summary": "能听辨整点与直接读时法表达的简单时刻。",
+  "scene": "Marcus 给邻居拍合影，准备几张钟点卡帮助大家确认时间。",
+  "estimatedMinutes": 5,
+  "goalIds": [
+    "primary2.photo-time"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary2.archive20260929",
+      "unit": "Unit 4 Time / Lesson 1–2",
+      "pages": "印刷第30–31页；PDF第34–35页",
+      "alignment": "整点和数字读时；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "What time is it?",
+      "translation": "现在几点？"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "We have time.",
+      "translation": "我们还有时间。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Time for a photo.",
+      "translation": "该拍照了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary2.photo-time",
+      "prompt": "第一条录音报出的时刻是？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "11:00"
+        },
+        {
+          "id": "b",
+          "text": "12:00"
+        },
+        {
+          "id": "c",
+          "text": "1:00"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "eleven o’clock 是十一点整。 本项“12:00”与录音的完整意思不符。 本项“1:00”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.0f22a58963f2f85a39a5e602d3c14bc0ea9c7cd87448b101200f57b45cc65418",
+        "text": "It is eleven o'clock.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "primary2.photo-time",
+      "prompt": "听清这次是几点整。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "2:00"
+        },
+        {
+          "id": "b",
+          "text": "11:00"
+        },
+        {
+          "id": "c",
+          "text": "12:00"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "twelve o’clock 是十二点整。 本项“2:00”与录音的完整意思不符。 本项“11:00”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.f2d3c75eb6d17e9bb8f3910deebfe2d480e9e028ff405d583b63f0b3fe5655a2",
+        "text": "It is twelve o'clock.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "primary2.photo-time",
+      "prompt": "录音按数字直接读时，选择对应时刻。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "5:13"
+        },
+        {
+          "id": "b",
+          "text": "3:15"
+        },
+        {
+          "id": "c",
+          "text": "3:50"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "three fifteen 表示三点十五分。 本项“3:50”与录音的完整意思不符。 本项“5:13”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.753436290932801689fcd7e49233adbc4c466658b46fca1649c374f926dc6f36",
+        "text": "It is three fifteen.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "primary2.photo-time",
+      "prompt": "注意分钟部分，录音对应哪个钟点？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "2:50"
+        },
+        {
+          "id": "b",
+          "text": "2:15"
+        },
+        {
+          "id": "c",
+          "text": "5:20"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "two fifty 表示两点五十分，不是两点十五。 本项“2:15”与录音的完整意思不符。 本项“5:20”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.cee349795f4eb8c86bdaf00824579f68f487950f83132ffadead62fa9d9d1c44",
+        "text": "It is two fifty now.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "primary2.photo-time",
+      "prompt": "这条时间消息说的是？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "6:13"
+        },
+        {
+          "id": "b",
+          "text": "3:06"
+        },
+        {
+          "id": "c",
+          "text": "6:30"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "six thirty 表示六点三十分。 本项“6:13”与录音的完整意思不符。 本项“3:06”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.2b627dda80613815826665937329717f579b73fe8cd64bbeae9ca2b96dbd8cc8",
+        "text": "It is six thirty.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "primary2.photo-time",
+      "prompt": "最后一次报时，对应哪个数字时刻？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "2:08"
+        },
+        {
+          "id": "b",
+          "text": "8:20"
+        },
+        {
+          "id": "c",
+          "text": "8:12"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "eight twenty 表示八点二十分。 本项“8:12”与录音的完整意思不符。 本项“2:08”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.f8cbce779e86cbf9b587b5c5fe35ef65afe1cef52a8b9f51c76adab6f53d19e2",
+        "text": "It is eight twenty.",
+        "voice": "M3"
+      }
+    }
+  ]
+}

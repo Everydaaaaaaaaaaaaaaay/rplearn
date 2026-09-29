@@ -1,0 +1,229 @@
+{
+  "id": "oliver.primary6.old-shop-now",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary6",
+  "title": "旧照片里的书店",
+  "summary": "能用 there was、there were 及否定形式描述过去的设施。",
+  "scene": "Oliver 找到一张书店以前的照片，想给新来的朋友说明这些年的变化。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary6.old-shop-now"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary6.archive20260929",
+      "unit": "Unit 4 Then and now / Let’s learn",
+      "pages": "印刷第35页；PDF第40页",
+      "alignment": "过去设施与 there be；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "This photo is older than the reading table.",
+      "translation": "这张照片比阅读桌还老。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Some changes are easy to miss.",
+      "translation": "有些变化不仔细看还真发现不了。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "The old shop still has new stories to tell.",
+      "translation": "老书店还会有新的故事。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary6.old-shop-now",
+      "prompt": "十年前这里没有阅览室，现在有一个。选择准确说法。",
+      "difficultyReason": "六年级过去与现在；时间和设施数量由每题明确给定。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "There was no reading room here ten years ago."
+        },
+        {
+          "id": "b",
+          "text": "There is no reading room here now."
+        },
+        {
+          "id": "c",
+          "text": "There were no reading room here ten years ago."
+        }
+      ],
+      "answer": "a",
+      "hint": "先找过去时间，再看名词数量。",
+      "explanation": "过去没有单数设施，使用 There was no。 此句说现在没有，与现在已有矛盾。 单数 reading room 与 were 不一致。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary6.old-shop-now",
+      "prompt": "只填 was 或 were：There ___ two small desks here last year.",
+      "difficultyReason": "六年级过去与现在；时间和设施数量由每题明确给定。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "were"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "不是只有一张桌子。",
+      "explanation": "two small desks 是复数，过去使用 were。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary6.old-shop-now",
+      "prompt": "以 There 开头，表达“过去这里有一扇窗”。",
+      "difficultyReason": "六年级过去与现在；时间和设施数量由每题明确给定。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "a window"
+        },
+        {
+          "id": "t4",
+          "text": "here before."
+        },
+        {
+          "id": "t1",
+          "text": "There"
+        },
+        {
+          "id": "t2",
+          "text": "was"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "单数设施使用 was。",
+      "explanation": "There was a window here before. 表示过去存在一扇窗。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary6.old-shop-now",
+      "prompt": "过去这里有三盏灯，现在有六盏。哪句只准确描述过去？",
+      "difficultyReason": "六年级过去与现在；时间和设施数量由每题明确给定。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "There were three lamps here before."
+        },
+        {
+          "id": "b",
+          "text": "There were six lamps here before."
+        },
+        {
+          "id": "c",
+          "text": "There are three lamps here now."
+        }
+      ],
+      "answer": "a",
+      "hint": "选择与 before 对应的信息。",
+      "explanation": "three lamps 为复数，过去用 were。 把现在的六盏误写成过去的数量。 把过去的数量误用于现在。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary6.old-shop-now",
+      "prompt": "用 have 的适当形式补全：We didn’t ___ a computer in the shop then.",
+      "difficultyReason": "六年级过去与现在；时间和设施数量由每题明确给定。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "have"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "过去信息已经由 didn’t 承担。",
+      "explanation": "didn’t 已表示过去，后面使用动词原形 have。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary6.old-shop-now",
+      "prompt": "区分介绍书店变化的时间表达。",
+      "difficultyReason": "六年级过去与现在；时间和设施数量由每题明确给定。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "ten years ago"
+        },
+        {
+          "id": "l2",
+          "text": "last year"
+        },
+        {
+          "id": "l3",
+          "text": "now"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "去年"
+        },
+        {
+          "id": "r3",
+          "text": "现在"
+        },
+        {
+          "id": "r1",
+          "text": "十年前"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "找出过去与现在的标记。",
+      "explanation": "ago 与 last year 指过去，now 指现在；不能把它们当成相同时间。"
+    }
+  ]
+}

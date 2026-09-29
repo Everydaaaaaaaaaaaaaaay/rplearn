@@ -1,0 +1,201 @@
+{
+  "unitId": "ruby.junior1.market-price-talk",
+  "contentHash": "4e5f123c3894d28fe8b1be17d24e83838d92c6d6a5458e271d8393a54c45e37e",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 为海边义卖核对价签，向摊主询问杯子和围巾的价格。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：你想问这两个杯子的价格。哪句语法正确？",
+      "optionNotes": {
+        "a": "复数 cups 与 these、are 一致。",
+        "b": "is 与复数 cups 不一致。",
+        "c": "How many 问数量，不能这样询问价格。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：复数 cups 与 these、are 一致。 is 与复数 cups 不一致。 How many 问数量，不能这样询问价格。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填 is 或 are：How much ___ this scarf?",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：this scarf 是单数，用 is。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 These 开头，说“这些卡片的价格是五美元”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：These cards are five dollars. 是复数商品的价格表达。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：顾客问“How much is the cup?”，价签为 $3。选择切题且单复数一致的回答。",
+      "optionNotes": {
+        "a": "单数 cup 用 It’s；three dollars 给出价格。",
+        "b": "They 与单数 cup 不一致。",
+        "c": "只说杯子数量，没有回答价格。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：单数 cup 用 It’s；three dollars 给出价格。 They 与单数 cup 不一致。 只说杯子数量，没有回答价格。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填 dollar 的正确形式：The bag is one ___.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "dollar"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "dollars"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：one 后的计价单位为单数 dollar。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把摊位上的询问与所问内容配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：分别询问价格、颜色、归属；不把所有问句都当成购物价格问题。"
+    }
+  ]
+}

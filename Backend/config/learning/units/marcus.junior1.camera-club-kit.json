@@ -1,0 +1,229 @@
+{
+  "id": "marcus.junior1.camera-club-kit",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior1",
+  "title": "摄影小组带了什么",
+  "summary": "能用 have、has、do、does 询问及报告个人与群体拥有的物品。",
+  "scene": "Marcus 准备一次街区拍摄，先确认小组成员有没有相机和背包。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior1.camera-club-kit"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior1.archive20260929",
+      "unit": "Unit 5 Do you have a soccer ball? / Grammar Focus",
+      "pages": "印刷第27页；PDF第50页",
+      "alignment": "have 的第三人称和问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "We can share ideas, but first let’s check the bags.",
+      "translation": "点子可以分享，先看看大家带了什么吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "A small kit can still make a great afternoon.",
+      "translation": "装备不多，也可以度过很棒的下午。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Everyone is ready for a first picture.",
+      "translation": "每个人都准备好拍第一张了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior1.camera-club-kit",
+      "prompt": "你想问 Leo 有没有相机。哪句正确？",
+      "difficultyReason": "初一一般现在时拥有关系；不混淆 be 动词与 have。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Does Leo have a camera?"
+        },
+        {
+          "id": "b",
+          "text": "Does Leo has a camera?"
+        },
+        {
+          "id": "c",
+          "text": "Is Leo have a camera?"
+        }
+      ],
+      "answer": "a",
+      "hint": "有助动词 does 时，have 保持原形。",
+      "explanation": "Does 后用 have 原形。 Does 后不能再用 has。 拥有物品用 have，不把 is 直接放在 have 前。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior1.camera-club-kit",
+      "prompt": "用 have 的正确形式：Mia ___ two cameras.",
+      "difficultyReason": "初一一般现在时拥有关系；不混淆 be 动词与 have。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "has"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "此句没有疑问助动词。",
+      "explanation": "Mia 是第三人称单数，肯定句使用 has。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior1.camera-club-kit",
+      "prompt": "以 They 开头，表达“他们没有背包”。",
+      "difficultyReason": "初一一般现在时拥有关系；不混淆 be 动词与 have。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "have"
+        },
+        {
+          "id": "t4",
+          "text": "backpacks."
+        },
+        {
+          "id": "t1",
+          "text": "They"
+        },
+        {
+          "id": "t2",
+          "text": "don’t"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "否定拥有不使用 aren’t have。",
+      "explanation": "复数 They 搭配 don’t have。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior1.camera-club-kit",
+      "prompt": "问句是“Does Eva have a bag?”，她确实有。选择正确简短回答。",
+      "difficultyReason": "初一一般现在时拥有关系；不混淆 be 动词与 have。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, she does."
+        },
+        {
+          "id": "b",
+          "text": "Yes, she has."
+        },
+        {
+          "id": "c",
+          "text": "Yes, they do."
+        }
+      ],
+      "answer": "a",
+      "hint": "保持问句中的人称和助动词。",
+      "explanation": "Does 问句使用 she does 作肯定回答。 这里的助动词问答结构应呼应 does。 they 将 Eva 改为复数人物。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior1.camera-club-kit",
+      "prompt": "只填 do 或 does：___ you and Mia have notebooks?",
+      "difficultyReason": "初一一般现在时拥有关系；不混淆 be 动词与 have。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "do"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "主语包含两个人。",
+      "explanation": "you and Mia 合起来是复数，使用 do。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior1.camera-club-kit",
+      "prompt": "把装备确认中的三种表达与意思配对。",
+      "difficultyReason": "初一一般现在时拥有关系；不混淆 be 动词与 have。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "He has a camera."
+        },
+        {
+          "id": "l2",
+          "text": "He doesn’t have a camera."
+        },
+        {
+          "id": "l3",
+          "text": "Does he have a camera?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "他没有相机。"
+        },
+        {
+          "id": "r3",
+          "text": "他有相机吗？"
+        },
+        {
+          "id": "r1",
+          "text": "他有一台相机。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "核对肯定、否定、疑问三种功能。",
+      "explanation": "肯定句用 has；doesn’t 和 Does 后用 have。"
+    }
+  ]
+}

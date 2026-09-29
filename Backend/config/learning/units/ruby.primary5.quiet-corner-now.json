@@ -1,0 +1,229 @@
+{
+  "id": "ruby.primary5.quiet-corner-now",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary5",
+  "title": "午后的安静角落",
+  "summary": "能用现在进行时准确描述单数、复数人物此刻的活动。",
+  "scene": "Ruby 给咖啡馆留出一个安静角落，客人可以看书、听音乐或写字。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary5.quiet-corner-now"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary5.archive20260929",
+      "unit": "Unit 6 Work quietly! / Let’s learn",
+      "pages": "印刷第59页；PDF第64页",
+      "alignment": "正在进行的活动；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "This corner is for a slower afternoon.",
+      "translation": "这个角落留给慢一点的午后。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Everyone has a different way to rest.",
+      "translation": "每个人都有不同的休息方式。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "We can keep the room peaceful together.",
+      "translation": "我们可以一起让这里保持安静。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary5.quiet-corner-now",
+      "prompt": "客人们此刻正在读书。选出正确描述。",
+      "difficultyReason": "五年级 be＋动词-ing；题干给定动作，不把人物职业当线索。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are reading books now."
+        },
+        {
+          "id": "b",
+          "text": "They is reading books now."
+        },
+        {
+          "id": "c",
+          "text": "They are read books now."
+        }
+      ],
+      "answer": "a",
+      "hint": "同时核对 be 动词和动作形式。",
+      "explanation": "复数 They 搭配 are reading，描述现在的动作。 They 不能与 is 搭配。 are 后此处需要 reading 构成进行时。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary5.quiet-corner-now",
+      "prompt": "用 listen 的进行时形式补全：I am ___ to music now.",
+      "difficultyReason": "五年级 be＋动词-ing；题干给定动作，不把人物职业当线索。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "listening"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "只填写动词的 -ing 形式。",
+      "explanation": "am 后接 listening；listen to music 中的 to 已给出。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary5.quiet-corner-now",
+      "prompt": "以 The girl 开头，描述“那个女孩正在写一张卡片”。",
+      "difficultyReason": "五年级 be＋动词-ing；题干给定动作，不把人物职业当线索。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "writing"
+        },
+        {
+          "id": "t4",
+          "text": "a card."
+        },
+        {
+          "id": "t1",
+          "text": "The girl"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "先放人物，再放正在做的动作。",
+      "explanation": "单数 The girl 搭配 is writing；write 去掉不发音的 e 再加 ing。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary5.quiet-corner-now",
+      "prompt": "问题是“Is he eating lunch now?”，实际他正在吃午饭。选择对应的简短肯定回答。",
+      "difficultyReason": "五年级 be＋动词-ing；题干给定动作，不把人物职业当线索。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, he is."
+        },
+        {
+          "id": "b",
+          "text": "Yes, he does."
+        },
+        {
+          "id": "c",
+          "text": "Yes, they are."
+        }
+      ],
+      "answer": "a",
+      "hint": "简短回答沿用问句中的主语与 be 动词。",
+      "explanation": "回答保留问句的 he 和 is。 does 用于一般现在时助动词问句，不对应这里的 is。 they 改变了题干中的人物数量。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary5.quiet-corner-now",
+      "prompt": "只填 am、is 或 are：Two children ___ drawing now.",
+      "difficultyReason": "五年级 be＋动词-ing；题干给定动作，不把人物职业当线索。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "are"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "注意是两个孩子。",
+      "explanation": "Two children 是复数，使用 are。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary5.quiet-corner-now",
+      "prompt": "把此刻的动作与中文意思配对。",
+      "difficultyReason": "五年级 be＋动词-ing；题干给定动作，不把人物职业当线索。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "She is reading."
+        },
+        {
+          "id": "l2",
+          "text": "They are eating."
+        },
+        {
+          "id": "l3",
+          "text": "I am writing."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "他们正在吃东西。"
+        },
+        {
+          "id": "r3",
+          "text": "我正在写字。"
+        },
+        {
+          "id": "r1",
+          "text": "她正在阅读。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "先找人物，再看动作。",
+      "explanation": "三个句子分别使用 is、are、am，人物与动作都要对应。"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "id": "marcus.senior1.project-time-notes",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "senior1",
+  "title": "给摄影项目标清时间",
+  "summary": "能结合时间线索区分一般过去时、现在完成时和现在进行时。",
+  "scene": "Marcus 整理项目便笺，分别标出已经完成、此刻进行和习惯性发生的事情。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior1.project-time-notes"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior1.archive20260929",
+      "unit": "Unit 3 Family matters / Using language",
+      "pages": "印刷第29页；PDF第36页",
+      "alignment": "基础时态复习；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "These notes need a timeline before they need a title.",
+      "translation": "这些便笺得先理清时间，再想标题。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Finished, ongoing, and regular are different kinds of news.",
+      "translation": "完成、进行中和惯常发生，是不同的信息。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Now the next person can see where we are.",
+      "translation": "现在接手的人能看清进度了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior1.project-time-notes",
+      "prompt": "题目要求叙述昨天已经结束的动作：“我昨天打印了照片。”选符合这一时间的一句。",
+      "difficultyReason": "高一必修时态复习；明确限定叙述视角，避免把可能成立的另一时态一概判错。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I printed the photos yesterday."
+        },
+        {
+          "id": "b",
+          "text": "I have printed the photos yesterday."
+        },
+        {
+          "id": "c",
+          "text": "I am printing the photos yesterday."
+        }
+      ],
+      "answer": "a",
+      "hint": "看时间段是否已经结束。",
+      "explanation": "明确结束的昨天用一般过去时 printed。 本题标准用法中现在完成时不与已结束的 yesterday 连用。 现在进行时与 yesterday 冲突。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior1.project-time-notes",
+      "prompt": "用 work 的 -ing 形式补全眼前动作：Look! Mia is ___ on the poster.",
+      "difficultyReason": "高一必修时态复习；明确限定叙述视角，避免把可能成立的另一时态一概判错。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "working"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "此题已给定进行时结构。",
+      "explanation": "is working 与 Look 一起描述眼前进行的活动。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior1.project-time-notes",
+      "prompt": "以 We 开头，用现在完成时表达“我们已经选好了照片”。",
+      "difficultyReason": "高一必修时态复习；明确限定叙述视角，避免把可能成立的另一时态一概判错。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "already chosen"
+        },
+        {
+          "id": "t4",
+          "text": "the photos."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "have"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "题目要求现在完成时。",
+      "explanation": "have already chosen 表示到现在已经完成选择，结果与当前相关。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior1.project-time-notes",
+      "prompt": "每周五都会整理相机。选择描述这一习惯的句子。",
+      "difficultyReason": "高一必修时态复习；明确限定叙述视角，避免把可能成立的另一时态一概判错。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I check the camera every Friday."
+        },
+        {
+          "id": "b",
+          "text": "I checked the camera last Friday."
+        },
+        {
+          "id": "c",
+          "text": "I am checking the camera right now."
+        }
+      ],
+      "answer": "a",
+      "hint": "时间信息是每周，而非上周或现在。",
+      "explanation": "一般现在时加 every Friday 表示常规习惯。 此句只描述上周五一次过去事件。 此句只描述此刻正在进行的动作。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior1.project-time-notes",
+      "prompt": "题目指定现在完成时。用 finish 的正确形式补全：She has just ___ the captions.",
+      "difficultyReason": "高一必修时态复习；明确限定叙述视角，避免把可能成立的另一时态一概判错。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "finished"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "注意题目指定的时态结构。",
+      "explanation": "has 后接过去分词 finished；本题的 just 表示刚刚完成。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior1.project-time-notes",
+      "prompt": "把便笺中的时间表达与意义配对。",
+      "difficultyReason": "高一必修时态复习；明确限定叙述视角，避免把可能成立的另一时态一概判错。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I sent it yesterday."
+        },
+        {
+          "id": "l2",
+          "text": "I am sending it now."
+        },
+        {
+          "id": "l3",
+          "text": "I have already sent it."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "现在正在发送"
+        },
+        {
+          "id": "r3",
+          "text": "到现在已经发出"
+        },
+        {
+          "id": "r1",
+          "text": "昨天发出了"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "结合助动词和时间词。",
+      "explanation": "三句都完整，但时间视角不同；不能只凭 send 的共同含义认为相同。"
+    }
+  ]
+}

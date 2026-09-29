@@ -1,0 +1,224 @@
+{
+  "id": "ruby.junior2.invitation-replies",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "junior2",
+  "title": "给海边活动回一条消息",
+  "summary": "能提出邀请、接受或婉拒，并区分义务与可能性。",
+  "scene": "Ruby 邀请朋友参加周末活动，也希望无法到场的人能轻松说清安排。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior2.invitation-replies"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior2.archive20260929",
+      "unit": "Unit 9 Can you come to my party? / Grammar Focus",
+      "pages": "印刷第67页；PDF第78页",
+      "alignment": "邀请与义务回应；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "An invitation should leave room for an honest answer.",
+      "translation": "发出邀请，也要给真实的回答留位置。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "It is fine to say you already have a plan.",
+      "translation": "已经有安排，就坦率说出来。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "We can find another day to meet.",
+      "translation": "我们还可以另找一天见面。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior2.invitation-replies",
+      "prompt": "你想参加，但周六必须照顾弟弟。哪句明确婉拒并给出原因？",
+      "difficultyReason": "初二 can 邀请、have to 和 might；每题明确意愿与条件。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I’d love to, but I have to look after my brother."
+        },
+        {
+          "id": "b",
+          "text": "Sure, I’ll be there on Saturday."
+        },
+        {
+          "id": "c",
+          "text": "I don’t know where your brother is."
+        }
+      ],
+      "answer": "a",
+      "hint": "回答应同时包含意愿和实际限制。",
+      "explanation": "先表达愿意，再用 but 和 have to 说明无法参加。 此句确认出席，与不能参加矛盾。 此句谈弟弟位置，没有回应邀请。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior2.invitation-replies",
+      "prompt": "用 join 的适当形式补全邀请：Can you ___ us on Sunday?",
+      "difficultyReason": "初二 can 邀请、have to 和 might；每题明确意愿与条件。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "join"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "情态动词之后检查动词形式。",
+      "explanation": "can 后接原形 join；join us 表示加入我们。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior2.invitation-replies",
+      "prompt": "以 I 开头，表达“我可能得上班”，不要说成已确定。",
+      "difficultyReason": "初二 can 邀请、have to 和 might；每题明确意愿与条件。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "have to work."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "might"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "hint": "可能性词放在 have to 前。",
+      "explanation": "might have to 保留可能性，不能改成一定上班。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior2.invitation-replies",
+      "prompt": "你已经确认有空，并愿意接受“Can you come?”的邀请。哪句最符合？",
+      "difficultyReason": "初二 can 邀请、have to 和 might；每题明确意愿与条件。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sure, I’d love to."
+        },
+        {
+          "id": "b",
+          "text": "I’m afraid I can’t."
+        },
+        {
+          "id": "c",
+          "text": "Maybe, but I’m not sure."
+        }
+      ],
+      "answer": "a",
+      "hint": "区分接受、拒绝和未定。",
+      "explanation": "明确接受并表达愿意。 此句明确拒绝邀请，与已经愿意接受的条件不符。 这是尚未确定，不符合已经确认。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior2.invitation-replies",
+      "prompt": "用 reply 的适当形式：Please ___ to the invitation by Friday.",
+      "difficultyReason": "初二 can 邀请、have to 和 might；每题明确意愿与条件。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "reply"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "这里不是第三人称陈述句。",
+      "explanation": "祈使句 Please 后使用 reply 原形；reply to 表示回复。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior2.invitation-replies",
+      "prompt": "把邀请回复与确定程度配对。",
+      "difficultyReason": "初二 can 邀请、have to 和 might；每题明确意愿与条件。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I’ll be there."
+        },
+        {
+          "id": "l2",
+          "text": "I might come."
+        },
+        {
+          "id": "l3",
+          "text": "I’m sorry, I can’t come."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "可能出席，尚未确定"
+        },
+        {
+          "id": "r3",
+          "text": "明确不能出席"
+        },
+        {
+          "id": "r1",
+          "text": "确认出席"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "不要把可能当成已经答应。",
+      "explanation": "will 在这里作承诺，might 保留不确定，can’t 表示无法参加。"
+    }
+  ]
+}

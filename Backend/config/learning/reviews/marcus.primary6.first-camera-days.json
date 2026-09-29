@@ -1,0 +1,203 @@
+{
+  "unitId": "marcus.primary6.first-camera-days",
+  "contentHash": "48c5d5cec3f11ad36ff8582956485c888db94c0c3837ba01831f3d1595b204c8",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Marcus 拿出一张旧合影，聊起小时候会做和不会做的事情。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：你小时候不会骑车，现在会了。哪句准确描述过去？",
+      "optionNotes": {
+        "a": "couldn’t ride 表示当时不会。",
+        "b": "说现在不会，与给定事实相反。",
+        "c": "could 后应用原形 ride，且肯定意义也不符合。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：couldn’t ride 表示当时不会。 说现在不会，与给定事实相反。 could 后应用原形 ride，且肯定意义也不符合。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 swim 的适当形式补全：He could ___ when he was six.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "swim"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "swam"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：could 后接原形 swim，不接过去式 swam。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 I 开头，表达“我以前不会滑冰”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：couldn’t skate before 表达过去缺少这种能力。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：小时候你会画画。有人问“Could you draw then?”，选正确的简短回答。",
+      "optionNotes": {
+        "a": "肯定事实与过去能力 could 一致。",
+        "b": "can 回答现在能力，没有对应 then。",
+        "c": "否定与题干会画画矛盾。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：肯定事实与过去能力 could 一致。 can 回答现在能力，没有对应 then。 否定与题干会画画矛盾。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填 can 或 could：此题描述现在，你现在会游泳。I ___ swim now.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "could"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：now 在本题明确指现在能力，使用 can。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把能力变化句与意思配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：could、couldn’t、can 与 then、before、now 一起确定时间和肯否。"
+    }
+  ]
+}

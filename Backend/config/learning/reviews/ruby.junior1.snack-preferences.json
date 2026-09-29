@@ -1,0 +1,203 @@
+{
+  "unitId": "ruby.junior1.snack-preferences",
+  "contentHash": "2c3fa10c373e00c1c5d1ce40628ac74ac958d4d9dde6ef8e09ddb5ffcfe9cd90",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 准备咖啡馆的点心清单，先问朋友喜欢什么，再决定准备哪些食物。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：你想问 Eva 是否喜欢西红柿。选择正确问句。",
+      "optionNotes": {
+        "a": "单数 Eva 使用 Does，之后用 like 原形。",
+        "b": "Does 后不再给 like 加 s。",
+        "c": "第三人称单数 Eva 不使用 Do。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：单数 Eva 使用 Does，之后用 like 原形。 Does 后不再给 like 加 s。 第三人称单数 Eva 不使用 Do。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 like 的正确形式补全习惯：Leo ___ oranges.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "likes"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "like"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：第三人称单数 Leo 的肯定句用 likes。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 She 开头，说“她不喜欢沙拉”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：doesn’t 后接 like 原形，表示第三人称否定偏好。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：Ben 喜欢面包，但不喜欢牛奶。哪句完整保留了这两个信息？",
+      "optionNotes": {
+        "a": "likes 与 doesn’t like 都符合第三人称和题意。",
+        "b": "把不喜欢牛奶改成也喜欢牛奶。",
+        "c": "两个喜好方向都反了。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：likes 与 doesn’t like 都符合第三人称和题意。 把不喜欢牛奶改成也喜欢牛奶。 两个喜好方向都反了。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填 do 或 does：___ your friends like rice?",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "do"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "does"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：your friends 为复数，疑问句用 do。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：区分三种食物偏好表达。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：同样的食物与人物，通过助动词和标点形成陈述、否定、提问。"
+    }
+  ]
+}

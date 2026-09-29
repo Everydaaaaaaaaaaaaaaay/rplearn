@@ -1,0 +1,229 @@
+{
+  "id": "ruby.senior3.coastal-display-captions",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "海岸展板上，修饰的是谁",
+  "summary": "能判断过去分词的被动修饰对象，避免悬垂修饰和主动被动混淆。",
+  "scene": "Ruby 为社区海岸展板校对说明，检查省略的从句会不会让动作对象变得模糊。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior3.coastal-display-captions"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "unit": "Unit 2 Iconic Attractions / Review useful structures",
+      "pages": "印刷第17页；PDF第24页",
+      "alignment": "过去分词的功能与改写；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "A caption can be short and still be precise.",
+      "translation": "说明文字可以很短，也可以很准确。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "We should know who did the work and what received it.",
+      "translation": "得弄清谁做了这件事，又是谁接受了这个动作。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "The display can now tell its story more clearly.",
+      "translation": "展板现在能把事情讲得更清楚了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior3.coastal-display-captions",
+      "prompt": "志愿者上周收集了这些瓶子。选择表示“被志愿者收集的瓶子”的名词短语。",
+      "difficultyReason": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "the bottles collected by volunteers"
+        },
+        {
+          "id": "b",
+          "text": "the bottles collecting volunteers"
+        },
+        {
+          "id": "c",
+          "text": "the volunteers collected by bottles"
+        }
+      ],
+      "answer": "a",
+      "hint": "核对收集者与被收集物。",
+      "explanation": "collected 作为过去分词后置修饰 bottles，表示被收集。 collecting 把瓶子写成主动收集志愿者。 交换了修饰对象，变成志愿者被瓶子收集。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior3.coastal-display-captions",
+      "prompt": "用 collect 的过去分词补全后置修饰：The shells ___ yesterday are now on display.",
+      "difficultyReason": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "collected"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "修饰部分描述贝壳受到的动作。",
+      "explanation": "shells 是被收集物，collected yesterday 相当于 that were collected yesterday。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior3.coastal-display-captions",
+      "prompt": "以 Built 开头，表达“这座为当地居民建的亭子向所有人开放”。",
+      "difficultyReason": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "is open"
+        },
+        {
+          "id": "t4",
+          "text": "to everyone."
+        },
+        {
+          "id": "t1",
+          "text": "Built for local residents,"
+        },
+        {
+          "id": "t2",
+          "text": "the shelter"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "过去分词短语之后应接真正被建造的事物。",
+      "explanation": "Built 的逻辑受事是紧随的主语 the shelter；人物并不是被建造的对象。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior3.coastal-display-captions",
+      "prompt": "要求开头“Designed for children,”修饰后面的主语。哪句没有悬垂修饰？",
+      "difficultyReason": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Designed for children, the activity uses simple materials."
+        },
+        {
+          "id": "b",
+          "text": "Designed for children, we chose simple materials."
+        },
+        {
+          "id": "c",
+          "text": "Designed for children, the volunteers arrived early."
+        }
+      ],
+      "answer": "a",
+      "hint": "看逗号后主语能否承受 designed。",
+      "explanation": "被设计的是 activity，修饰对象与主语一致。 语法上开头修饰 we，误把我们说成被设计给孩子的对象。 开头会修饰 volunteers，不是题目要表达的活动设计。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior3.coastal-display-captions",
+      "prompt": "用 close 的过去分词补全，表示活动期间让门保持关闭：Please leave the gate ___ during the event.",
+      "difficultyReason": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "closed"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "以 gate 的结果状态为判断依据。",
+      "explanation": "leave the gate closed 描述让门保持关闭的状态；close 的过去分词为 closed。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior3.coastal-display-captions",
+      "prompt": "把过去分词片段与在对应句中的作用配对。",
+      "difficultyReason": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "the photos taken yesterday"
+        },
+        {
+          "id": "l2",
+          "text": "The door is closed."
+        },
+        {
+          "id": "l3",
+          "text": "Built in 1990, the café is still open."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "说明 door 的状态"
+        },
+        {
+          "id": "r3",
+          "text": "补充主语 café 的建造背景"
+        },
+        {
+          "id": "r1",
+          "text": "后置修饰名词 photos"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "不要仅凭 -ed 词尾猜功能。",
+      "explanation": "同为过去分词，具体功能取决于位置与句子结构；is closed 在这里按门的状态解读。"
+    }
+  ]
+}

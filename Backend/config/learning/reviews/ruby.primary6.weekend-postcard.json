@@ -1,0 +1,203 @@
+{
+  "unitId": "ruby.primary6.weekend-postcard",
+  "contentHash": "315fcbcbce633e09bf52943a8496e0cd89ce58a27c8876778e245790e6ae49c5",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 把海边周末写在明信片背面，分享去过哪里和做过什么。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：昨天你去海边游泳了。选择符合过去时间的表达。",
+      "optionNotes": {
+        "a": "went 是 go 的过去式，符合 yesterday。",
+        "b": "go 未体现已给定的过去时间。",
+        "c": "will 表将来，与 yesterday 冲突。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：went 是 go 的过去式，符合 yesterday。 go 未体现已给定的过去时间。 will 表将来，与 yesterday 冲突。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 buy 的过去式补全：We ___ some gifts last Saturday.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "bought"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "buyed"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：buy 的过去式是不规则形式 bought。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 We 开头，说“我们拍了许多照片”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：took pictures 是 take pictures 的过去表达。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：对方问“How did you go to the beach?”，你乘公交去的。哪个回答切题？",
+      "optionNotes": {
+        "a": "How 在此询问交通方式，by bus 给出答案。",
+        "b": "只回答时间，没有说明交通方式。",
+        "c": "只回答同行者，没有说明交通方式。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：How 在此询问交通方式，by bus 给出答案。 只回答时间，没有说明交通方式。 只回答同行者，没有说明交通方式。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 eat 的过去式补全：I ___ fresh fruit at the picnic yesterday.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "ate"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "eated"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：eat 的过去式为 ate，不是 eated。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把出游叙述中的过去动作与意思配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：三个短语分别使用 bought、took、went，不依赖前面的明信片。"
+    }
+  ]
+}

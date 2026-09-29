@@ -1,0 +1,229 @@
+{
+  "id": "oliver.primary5.bookshop-calendar",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary5",
+  "title": "书店墙上的活动月历",
+  "summary": "能区别月份、星期和时刻前的 in、on、at，并询问活动月份。",
+  "scene": "Oliver 把诗歌夜和旧书交换日写进月历，想让来客一眼看懂日期。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary5.bookshop-calendar"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary5.archive20260929",
+      "unit": "Unit 3 My school calendar / Let’s wrap it up",
+      "pages": "印刷第30页；PDF第35页",
+      "alignment": "月份、星期与时刻介词；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "The calendar is ready for a few good plans.",
+      "translation": "月历准备好迎接几个好计划了。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let’s leave room for the next meeting.",
+      "translation": "给下一次聚会留一点位置吧。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "A date on paper becomes something to look forward to.",
+      "translation": "写下的日期，变成了一份期待。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary5.bookshop-calendar",
+      "prompt": "你只知道诗歌夜在五月，具体日期未定。选择正确表达。",
+      "difficultyReason": "五年级日历表达；不要求计算日期或记忆真实节假日。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The poetry night is in May."
+        },
+        {
+          "id": "b",
+          "text": "The poetry night is on May."
+        },
+        {
+          "id": "c",
+          "text": "The poetry night is at May."
+        }
+      ],
+      "answer": "a",
+      "hint": "先判断信息精确到月份还是某一天。",
+      "explanation": "只有月份时用 in May。 on 通常接具体某一天，不能只接这里的 May。 at 用于此类时间表达中的时刻，不接月份。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary5.bookshop-calendar",
+      "prompt": "只填时间介词：The book swap starts ___ six o’clock.",
+      "difficultyReason": "五年级日历表达；不要求计算日期或记忆真实节假日。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "at"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "这是钟表上的时刻。",
+      "explanation": "明确时刻 six o’clock 前使用 at。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary5.bookshop-calendar",
+      "prompt": "以 When 开头询问“读书会在什么时候”？",
+      "difficultyReason": "五年级日历表达；不要求计算日期或记忆真实节假日。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "the reading club"
+        },
+        {
+          "id": "t4",
+          "text": "meeting?"
+        },
+        {
+          "id": "t1",
+          "text": "When"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "先用询问时间的词，再接 is。",
+      "explanation": "这里 meeting 是名词，“the reading club meeting”表示读书会聚会。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary5.bookshop-calendar",
+      "prompt": "活动每周二举行。哪一句符合这一安排？",
+      "difficultyReason": "五年级日历表达；不要求计算日期或记忆真实节假日。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We meet on Tuesdays."
+        },
+        {
+          "id": "b",
+          "text": "We meet in Tuesdays."
+        },
+        {
+          "id": "c",
+          "text": "We meet at Tuesdays."
+        }
+      ],
+      "answer": "a",
+      "hint": "一周中的某天有自己的常用介词。",
+      "explanation": "on Tuesdays 表示每逢周二。 星期前不用这里的 in。 星期前不用这里的 at。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary5.bookshop-calendar",
+      "prompt": "只填月份英文：新一期书展在十月。The book show is in ___.",
+      "difficultyReason": "五年级日历表达；不要求计算日期或记忆真实节假日。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "October"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "想一想十月的英文名称。",
+      "explanation": "October 是十月；November 是十一月。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary5.bookshop-calendar",
+      "prompt": "为日程上的三种时间精度配对。",
+      "difficultyReason": "五年级日历表达；不要求计算日期或记忆真实节假日。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "in June"
+        },
+        {
+          "id": "l2",
+          "text": "on Friday"
+        },
+        {
+          "id": "l3",
+          "text": "at nine o’clock"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "在星期五"
+        },
+        {
+          "id": "r3",
+          "text": "在九点"
+        },
+        {
+          "id": "r1",
+          "text": "在六月"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "不要把一天的名称当成钟点。",
+      "explanation": "月份用 in，星期用 on，明确钟点用 at。"
+    }
+  ]
+}

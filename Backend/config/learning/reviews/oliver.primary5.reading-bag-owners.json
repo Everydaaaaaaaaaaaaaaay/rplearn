@@ -1,0 +1,203 @@
+{
+  "unitId": "oliver.primary5.reading-bag-owners",
+  "contentHash": "1ad65263e046745ba12a1bbb9e406ec87e1ac4d7238a730d5344849a01083c53",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Oliver 在伦敦旧书店整理读书会留下的布袋，给每位读者留出认领的位置。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：你正在认领自己的读书袋。哪句表示“这个袋子是我的”？",
+      "optionNotes": {
+        "a": "mine 可独立表示“我的东西”。",
+        "b": "my 后还需要名词，不能在这里独立使用。",
+        "c": "me 表示“我”这个人，不表示归属。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：mine 可独立表示“我的东西”。 my 后还需要名词，不能在这里独立使用。 me 表示“我”这个人，不表示归属。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：Eva 的书袋在桌上。用 she 对应的物主代词补全：The bag is ___.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "hers"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "her"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：hers 独立表示“她的”；her bag 中的 her 需要后接名词。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 These 开头表达“这些是我们的书”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：our 放在复数名词 books 前，These are 对应复数。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：你和朋友共同拥有几支笔。哪句既表示“共同拥有”，又结构完整？",
+      "optionNotes": {
+        "a": "ours 表示包括说话人在内的“我们的”。",
+        "b": "theirs 指“他们的”，不符合说话人共同拥有。",
+        "c": "our 不能在这里脱离名词独立使用。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：ours 表示包括说话人在内的“我们的”。 theirs 指“他们的”，不符合说话人共同拥有。 our 不能在这里脱离名词独立使用。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填 you 对应的限定词：Is this ___ notebook?",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "your"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "yours"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：名词 notebook 前使用 your；yours 可以单独代替 your notebook。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把认领时使用的独立物主代词与意思配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：三词都能独立替代“限定词＋物品名词”；yours 的单复数由语境确定。"
+    }
+  ]
+}

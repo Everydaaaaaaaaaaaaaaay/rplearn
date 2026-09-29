@@ -1,0 +1,229 @@
+{
+  "id": "oliver.primary6.shelf-comparisons",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary6",
+  "title": "给旧书选一个合适的架子",
+  "summary": "能根据题内给定信息用比较级描述大小、长短与重量。",
+  "scene": "Oliver 想把沉重的画册移到低处，先和你比较书架与书本的尺寸。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary6.shelf-comparisons"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary6.archive20260929",
+      "unit": "Unit 1 How tall are you? / Let’s learn",
+      "pages": "印刷第7页；PDF第12页",
+      "alignment": "比较级与 than；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "The biggest book has found the smallest gap.",
+      "translation": "最大的书偏偏碰上了最小的空隙。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let’s compare before we move anything.",
+      "translation": "先比一比，再搬动吧。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "That shelf looks much happier now.",
+      "translation": "这样摆，书架看起来舒服多了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary6.shelf-comparisons",
+      "prompt": "A 书重两千克，B 书重一千克。选择正确的比较。",
+      "difficultyReason": "六年级形容词比较级；只比较两个明确对象，不涉及最高级和单位换算。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Book A is heavier than Book B."
+        },
+        {
+          "id": "b",
+          "text": "Book A is lighter than Book B."
+        },
+        {
+          "id": "c",
+          "text": "Book A is heavy than Book B."
+        }
+      ],
+      "answer": "a",
+      "hint": "比较两件物品时留意词尾。",
+      "explanation": "A 比 B 重，因此用 heavier than。 lighter 表示更轻，与题内重量相反。 than 前需要比较级 heavier，不能直接用 heavy。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary6.shelf-comparisons",
+      "prompt": "用 long 的比较级补全：红书签 20 厘米，蓝书签 10 厘米。The red bookmark is ___ than the blue one.",
+      "difficultyReason": "六年级形容词比较级；只比较两个明确对象，不涉及最高级和单位换算。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "longer"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "比较的是长度，不是颜色。",
+      "explanation": "longer 表示更长；长度已在题干给定，不需看图。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary6.shelf-comparisons",
+      "prompt": "以 This box 开头，说“这个箱子比那个小”。",
+      "difficultyReason": "六年级形容词比较级；只比较两个明确对象，不涉及最高级和单位换算。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "smaller"
+        },
+        {
+          "id": "t4",
+          "text": "than that one."
+        },
+        {
+          "id": "t1",
+          "text": "This box"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "比较对象在 than 后。",
+      "explanation": "smaller than 连接两个箱子；one 代替 box。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary6.shelf-comparisons",
+      "prompt": "两个书架高度分别为一米和两米。一米的书架应怎样描述？",
+      "difficultyReason": "六年级形容词比较级；只比较两个明确对象，不涉及最高级和单位换算。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is shorter than the two-metre shelf."
+        },
+        {
+          "id": "b",
+          "text": "It is taller than the two-metre shelf."
+        },
+        {
+          "id": "c",
+          "text": "It is the same height as the two-metre shelf."
+        }
+      ],
+      "answer": "a",
+      "hint": "先确定比较方向。",
+      "explanation": "一米的书架比两米的矮，使用 shorter。 taller 表示更高，方向相反。 两者高度不同，不能说一样高。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary6.shelf-comparisons",
+      "prompt": "只填 big 的比较级：The new reading room is ___ than the old one.",
+      "difficultyReason": "六年级形容词比较级；只比较两个明确对象，不涉及最高级和单位换算。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "bigger"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "留意词尾辅音是否双写。",
+      "explanation": "big 的比较级双写 g 后加 er，成为 bigger。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary6.shelf-comparisons",
+      "prompt": "把比较两本书的表达与意思配对。",
+      "difficultyReason": "六年级形容词比较级；只比较两个明确对象，不涉及最高级和单位换算。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "thinner than"
+        },
+        {
+          "id": "l2",
+          "text": "heavier than"
+        },
+        {
+          "id": "l3",
+          "text": "smaller than"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "比……重"
+        },
+        {
+          "id": "r3",
+          "text": "比……小"
+        },
+        {
+          "id": "r1",
+          "text": "比……薄"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "辨认每个形容词的基本意思。",
+      "explanation": "thin、heavy、small 比较的是不同属性，不根据书的颜色推断。"
+    }
+  ]
+}

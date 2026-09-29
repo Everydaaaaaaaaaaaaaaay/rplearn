@@ -1,0 +1,211 @@
+{
+  "unitId": "ruby.primary2.cafe-actions",
+  "contentHash": "71d298af46032eba0708841f113c082907403d19777c609010dd93b602b5063b",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 给咖啡馆留出一块休息角，大家可以读书、画画或听音乐。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：录音中的“我”此刻正在做什么？",
+      "optionNotes": {
+        "a": "am reading a book 表示正在读书。",
+        "b": "本项“画画”与录音的完整意思不符。",
+        "c": "本项“吃东西”与录音的完整意思不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：am reading a book 表示正在读书。 本项“画画”与录音的完整意思不符。 本项“吃东西”与录音的完整意思不符。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：这次录音描述的动作是什么？",
+      "optionNotes": {
+        "a": "本项“唱歌”与录音的完整意思不符。",
+        "b": "本项“走路”与录音的完整意思不符。",
+        "c": "drawing a picture 表示正在画画。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：drawing a picture 表示正在画画。 本项“唱歌”与录音的完整意思不符。 本项“走路”与录音的完整意思不符。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：听这句，选择正在进行的事情。",
+      "optionNotes": {
+        "a": "本项“读书”与录音的完整意思不符。",
+        "b": "listening to music 是听音乐，不是自己唱歌。",
+        "c": "本项“唱歌”与录音的完整意思不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：listening to music 是听音乐，不是自己唱歌。 本项“唱歌”与录音的完整意思不符。 本项“读书”与录音的完整意思不符。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：注意录音中的否定词，哪项准确？",
+      "optionNotes": {
+        "a": "am not eating 表示没有在吃东西；not 不能漏听。",
+        "b": "本项“我正在吃东西”与录音的完整意思不符。",
+        "c": "本项“我没有在画画”与录音的完整意思不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：am not eating 表示没有在吃东西；not 不能漏听。 本项“我正在吃东西”与录音的完整意思不符。 本项“我没有在画画”与录音的完整意思不符。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：这句说她正在做哪一种活动？",
+      "optionNotes": {
+        "a": "本项“听音乐”与录音的完整意思不符。",
+        "b": "本项“睡觉”与录音的完整意思不符。",
+        "c": "singing 是正在唱歌，不能仅凭音乐联想选听音乐。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：singing 是正在唱歌，不能仅凭音乐联想选听音乐。 本项“听音乐”与录音的完整意思不符。 本项“睡觉”与录音的完整意思不符。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：最后一句明确否定了哪种动作？",
+      "optionNotes": {
+        "a": "本项“读书”与录音的完整意思不符。",
+        "b": "not sleeping 否定正在睡觉；录音没有说他一定在做另外哪件事。",
+        "c": "本项“走路”与录音的完整意思不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：not sleeping 否定正在睡觉；录音没有说他一定在做另外哪件事。 本项“走路”与录音的完整意思不符。 本项“读书”与录音的完整意思不符。"
+    }
+  ]
+}

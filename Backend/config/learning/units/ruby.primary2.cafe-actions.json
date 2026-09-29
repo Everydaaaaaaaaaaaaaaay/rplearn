@@ -1,0 +1,237 @@
+{
+  "id": "ruby.primary2.cafe-actions",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary2",
+  "title": "咖啡馆里正在做什么",
+  "summary": "能听辨正在进行的常见动作及简单否定。",
+  "scene": "Ruby 给咖啡馆留出一块休息角，大家可以读书、画画或听音乐。",
+  "estimatedMinutes": 5,
+  "goalIds": [
+    "primary2.cafe-actions"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary2.archive20260929",
+      "unit": "Module 2–4 / 日常动作",
+      "pages": "印刷第13–14、20–21页；PDF第18–19、25–26页",
+      "alignment": "现在进行时听辨；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "It is quiet here.",
+      "translation": "这里很安静。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "What are you doing?",
+      "translation": "你正在做什么？"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Enjoy your afternoon.",
+      "translation": "享受这个下午吧。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary2.cafe-actions",
+      "prompt": "录音中的“我”此刻正在做什么？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "读书"
+        },
+        {
+          "id": "b",
+          "text": "画画"
+        },
+        {
+          "id": "c",
+          "text": "吃东西"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "am reading a book 表示正在读书。 本项“画画”与录音的完整意思不符。 本项“吃东西”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.863fbf2d5155b4485a5838947b88a816d7318bc2805bdf1653036777e57ada4a",
+        "text": "I am reading a book.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "primary2.cafe-actions",
+      "prompt": "这次录音描述的动作是什么？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "唱歌"
+        },
+        {
+          "id": "b",
+          "text": "走路"
+        },
+        {
+          "id": "c",
+          "text": "画画"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "drawing a picture 表示正在画画。 本项“唱歌”与录音的完整意思不符。 本项“走路”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.8ca2634ccf3cf18197c396657d238c5027291de891ac0e994945d88b543550cb",
+        "text": "She is drawing a picture.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "primary2.cafe-actions",
+      "prompt": "听这句，选择正在进行的事情。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "读书"
+        },
+        {
+          "id": "b",
+          "text": "听音乐"
+        },
+        {
+          "id": "c",
+          "text": "唱歌"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "listening to music 是听音乐，不是自己唱歌。 本项“唱歌”与录音的完整意思不符。 本项“读书”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.bc0c109cece260712e5949c9c4b48ac66b358d830c43ff17ddf728810aa8308f",
+        "text": "He is listening to music.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "primary2.cafe-actions",
+      "prompt": "注意录音中的否定词，哪项准确？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "我没有在吃东西"
+        },
+        {
+          "id": "b",
+          "text": "我正在吃东西"
+        },
+        {
+          "id": "c",
+          "text": "我没有在画画"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "am not eating 表示没有在吃东西；not 不能漏听。 本项“我正在吃东西”与录音的完整意思不符。 本项“我没有在画画”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.245ed09c058ea54f84042f264dbf702ae69fb2416905a4fcd64353298ec8bf12",
+        "text": "I am not eating.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "primary2.cafe-actions",
+      "prompt": "这句说她正在做哪一种活动？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "听音乐"
+        },
+        {
+          "id": "b",
+          "text": "睡觉"
+        },
+        {
+          "id": "c",
+          "text": "唱歌"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "singing 是正在唱歌，不能仅凭音乐联想选听音乐。 本项“听音乐”与录音的完整意思不符。 本项“睡觉”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.9d2efb224676b9f1e8a0a7508118e736b4b733226956ba988e6d36a76b4847b7",
+        "text": "She is singing.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "primary2.cafe-actions",
+      "prompt": "最后一句明确否定了哪种动作？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "读书"
+        },
+        {
+          "id": "b",
+          "text": "睡觉"
+        },
+        {
+          "id": "c",
+          "text": "走路"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "not sleeping 否定正在睡觉；录音没有说他一定在做另外哪件事。 本项“走路”与录音的完整意思不符。 本项“读书”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.b0097681f30d41c76229117c634416425785520bf306a0a945bf183d9c150c04",
+        "text": "He is not sleeping.",
+        "voice": "F3"
+      }
+    }
+  ]
+}

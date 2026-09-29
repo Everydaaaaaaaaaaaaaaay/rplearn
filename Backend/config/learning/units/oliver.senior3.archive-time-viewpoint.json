@@ -1,0 +1,229 @@
+{
+  "id": "oliver.senior3.archive-time-viewpoint",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "档案里的两个时间点",
+  "summary": "能以过去事件为参照使用过去完成时，并区分持续、当时进行和过去视角的将来。",
+  "scene": "Oliver 把书店口述史整理成时间线，避免让先后顺序在改写时发生变化。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior3.archive-time-viewpoint"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "unit": "Unit 1 Looking forwards / Using language",
+      "pages": "印刷第5页；PDF第12页",
+      "alignment": "综合时态与时间视角；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A timeline can keep a memory from quietly changing shape.",
+      "translation": "理清时间线，能避免记忆在叙述中悄悄变样。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let’s check which moment the sentence is looking from.",
+      "translation": "看看这句话是站在哪个时刻说的。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Now the events can keep their proper order.",
+      "translation": "现在事情的先后就不会弄乱了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior3.archive-time-viewpoint",
+      "prompt": "文件先送到，Oliver 后来才到店。题目要求用过去完成时突出“早于到店”。选符合要求的句子。",
+      "difficultyReason": "高三综合时态；每题明确时间线和指定形式，不仅凭一个时间词机械判题。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The files had arrived before Oliver reached the shop."
+        },
+        {
+          "id": "b",
+          "text": "The files have arrived before Oliver reached the shop."
+        },
+        {
+          "id": "c",
+          "text": "The files will arrive before Oliver reached the shop."
+        }
+      ],
+      "answer": "a",
+      "hint": "参照点是 Oliver 到店的过去时刻。",
+      "explanation": "had arrived 以 reached 的过去时点为参照，突出更早到达。 have arrived 未按指定过去视角构成过去完成时。 will 与给定的两个已结束过去事件不一致。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior3.archive-time-viewpoint",
+      "prompt": "使用 finish 的过去完成时补全：By the time the meeting started, we ___ the list.",
+      "difficultyReason": "高三综合时态；每题明确时间线和指定形式，不仅凭一个时间词机械判题。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "had finished"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "这里的参照点不在现在。",
+      "explanation": "过去的 started 是参照点，题目要求此前完成，使用 had finished。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior3.archive-time-viewpoint",
+      "prompt": "以 She 开头，保留过去视角，说“她说她第二天会回来”。",
+      "difficultyReason": "高三综合时态；每题明确时间线和指定形式，不仅凭一个时间词机械判题。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "would return"
+        },
+        {
+          "id": "t4",
+          "text": "the next day."
+        },
+        {
+          "id": "t1",
+          "text": "She said"
+        },
+        {
+          "id": "t2",
+          "text": "she"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "不要把明天直接按现在的日历解释。",
+      "explanation": "would return 表示从 said 的过去时点看将来，the next day 跟随该视角。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior3.archive-time-viewpoint",
+      "prompt": "“At eight yesterday, I was sorting the papers.” 明确表达什么？",
+      "difficultyReason": "高三综合时态；每题明确时间线和指定形式，不仅凭一个时间词机械判题。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "昨天八点时，整理文件的动作正在进行。"
+        },
+        {
+          "id": "b",
+          "text": "文件在昨天八点之前已经全部整理完。"
+        },
+        {
+          "id": "c",
+          "text": "以后每天八点都会整理文件。"
+        }
+      ],
+      "answer": "a",
+      "hint": "进行状态不等于完成结果。",
+      "explanation": "过去进行时描述过去某时刻的进行状态。 原句没有表达此前全部完成。 原句不是将来的重复习惯。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior3.archive-time-viewpoint",
+      "prompt": "题目要求强调从过去持续到现在、仍未结束的整理过程，使用现在完成进行时：We ___ these letters for two hours.（sort）",
+      "difficultyReason": "高三综合时态；每题明确时间线和指定形式，不仅凭一个时间词机械判题。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "have been sorting"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "本题明确要求完成进行时。",
+      "explanation": "have been sorting 符合持续至今的过程及指定形式；不据此声称现在完成时在所有语境都错误。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior3.archive-time-viewpoint",
+      "prompt": "把叙述片段与其时间关系配对。",
+      "difficultyReason": "高三综合时态；每题明确时间线和指定形式，不仅凭一个时间词机械判题。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "had left before I arrived"
+        },
+        {
+          "id": "l2",
+          "text": "was leaving when I arrived"
+        },
+        {
+          "id": "l3",
+          "text": "would leave the following day"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我到达时正在离开"
+        },
+        {
+          "id": "r3",
+          "text": "从过去看第二天将离开"
+        },
+        {
+          "id": "r1",
+          "text": "离开早于我到达"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "用我到达或叙述时点作参照。",
+      "explanation": "had、was -ing、would 分别突出更早、当时进行和过去视角的未来。"
+    }
+  ]
+}

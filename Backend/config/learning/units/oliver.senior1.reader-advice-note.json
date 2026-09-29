@@ -1,0 +1,229 @@
+{
+  "id": "oliver.senior1.reader-advice-note",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior1",
+  "title": "给新读者的一张建议便笺",
+  "summary": "能将具体建议与相关理由连接，并区别建议、责备和无依据保证。",
+  "scene": "Oliver 收到一位读者的留言：书很多，却不知道从哪里开始。他想写一段友善又具体的建议。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior1.reader-advice-note"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 1 Teenage Life / Write a letter of advice",
+      "pages": "印刷第19页；PDF第26页",
+      "alignment": "建议与理由组织；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Advice should make a first step feel possible.",
+      "translation": "建议应该让第一步变得可行。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "A useful reason matters more than a grand promise.",
+      "translation": "有用的理由，比宏大的保证更重要。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Let’s leave the reader a choice as well as an idea.",
+      "translation": "留给读者一个建议，也留一份选择。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior1.reader-advice-note",
+      "prompt": "读者说难以坚持阅读。你要提出可执行的小建议，并说明它怎样降低负担。选最符合目的的一句。",
+      "difficultyReason": "高一必修阶段建议表达；每题明确交际目的，不把礼貌偏好当普遍语法规则。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Try reading one page a day so that the task feels manageable."
+        },
+        {
+          "id": "b",
+          "text": "You never try hard enough, so this is your fault."
+        },
+        {
+          "id": "c",
+          "text": "Read this book and you will certainly become fluent tomorrow."
+        }
+      ],
+      "answer": "a",
+      "hint": "寻找明确行动及与之相关的理由。",
+      "explanation": "每天一页是具体行动，so that 后说明降低负担的目的。 此句责备读者，未给出可执行步骤。 此句给出缺乏依据的次日流利保证。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior1.reader-advice-note",
+      "prompt": "用 join 的适当形式：I recommend ___ a small reading group.",
+      "difficultyReason": "高一必修阶段建议表达；每题明确交际目的，不把礼貌偏好当普遍语法规则。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "joining"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "观察 recommend 后有没有 that 或宾语。",
+      "explanation": "recommend 后直接接动词时可用 -ing 形式 joining；此题不是 recommend that 从句。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior1.reader-advice-note",
+      "prompt": "以 Why 开头，用问句建议“为什么不先从短篇故事开始呢”？",
+      "difficultyReason": "高一必修阶段建议表达；每题明确交际目的，不把礼貌偏好当普遍语法规则。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "start with"
+        },
+        {
+          "id": "t4",
+          "text": "a short story?"
+        },
+        {
+          "id": "t1",
+          "text": "Why"
+        },
+        {
+          "id": "t2",
+          "text": "not"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "这是建议句，不是追问过去的原因。",
+      "explanation": "Why not 后接动词原形，形成建议。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior1.reader-advice-note",
+      "prompt": "你不确定哪种方法适合对方，要温和提出一种可能有帮助的做法。选符合这份不确定性的一句。",
+      "difficultyReason": "高一必修阶段建议表达；每题明确交际目的，不把礼貌偏好当普遍语法规则。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "You could try keeping a short reading diary."
+        },
+        {
+          "id": "b",
+          "text": "This method is guaranteed to work for everyone."
+        },
+        {
+          "id": "c",
+          "text": "You must use my method and no other one."
+        }
+      ],
+      "answer": "a",
+      "hint": "注意语气是否给对方保留选择。",
+      "explanation": "could try 表达可尝试的建议，未保证效果。 guaranteed 与 everyone 作出题干没有依据的保证。 此句强制唯一方法，不符合温和试探。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior1.reader-advice-note",
+      "prompt": "只填 because 或 although：建议从短文开始，理由是容易安排时间。Start with short texts ___ they are easier to fit into your day.",
+      "difficultyReason": "高一必修阶段建议表达；每题明确交际目的，不把礼貌偏好当普遍语法规则。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "because"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "两部分是支持关系。",
+      "explanation": "后半句支持建议的理由，用 because；although 会改成让步关系。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior1.reader-advice-note",
+      "prompt": "把建议便笺的片段与功能配对。",
+      "difficultyReason": "高一必修阶段建议表达；每题明确交际目的，不把礼貌偏好当普遍语法规则。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "You said long books feel overwhelming."
+        },
+        {
+          "id": "l2",
+          "text": "You could begin with a short story."
+        },
+        {
+          "id": "l3",
+          "text": "This gives you a smaller task to finish."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "提出具体建议"
+        },
+        {
+          "id": "r3",
+          "text": "解释建议的作用"
+        },
+        {
+          "id": "r1",
+          "text": "回应对方提出的困难"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "判断每句话承担的沟通任务。",
+      "explanation": "先回应困难，再提出行动，最后解释作用；不依赖一封外部信件。"
+    }
+  ]
+}

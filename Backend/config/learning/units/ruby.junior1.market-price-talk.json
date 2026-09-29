@@ -1,0 +1,224 @@
+{
+  "id": "ruby.junior1.market-price-talk",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "junior1",
+  "title": "周末摊位的价签",
+  "summary": "能区分单复数商品的价格问答，准确表达给定价格。",
+  "scene": "Ruby 为海边义卖核对价签，向摊主询问杯子和围巾的价格。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior1.market-price-talk"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior1.archive20260929",
+      "unit": "Unit 7 How much are these socks? / Grammar Focus",
+      "pages": "印刷第39页；PDF第62页",
+      "alignment": "价格问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Let’s ask before we choose a gift.",
+      "translation": "挑礼物前，先问清楚价格。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A clear price makes the choice easier.",
+      "translation": "价格说清楚，选择也容易些。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Now we can finish the little stall.",
+      "translation": "现在可以把小摊位准备好了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior1.market-price-talk",
+      "prompt": "你想问这两个杯子的价格。哪句语法正确？",
+      "difficultyReason": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "How much are these cups?"
+        },
+        {
+          "id": "b",
+          "text": "How much is these cups?"
+        },
+        {
+          "id": "c",
+          "text": "How many are these cups?"
+        }
+      ],
+      "answer": "a",
+      "hint": "价格与数量使用不同问法。",
+      "explanation": "复数 cups 与 these、are 一致。 is 与复数 cups 不一致。 How many 问数量，不能这样询问价格。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior1.market-price-talk",
+      "prompt": "只填 is 或 are：How much ___ this scarf?",
+      "difficultyReason": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "is"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "先看是这条还是这些。",
+      "explanation": "this scarf 是单数，用 is。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior1.market-price-talk",
+      "prompt": "以 These 开头，说“这些卡片的价格是五美元”。",
+      "difficultyReason": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "five dollars."
+        },
+        {
+          "id": "t1",
+          "text": "These cards"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "hint": "不要把价格里的数字当成商品数量。",
+      "explanation": "These cards are five dollars. 是复数商品的价格表达。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior1.market-price-talk",
+      "prompt": "顾客问“How much is the cup?”，价签为 $3。选择切题且单复数一致的回答。",
+      "difficultyReason": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "It’s three dollars."
+        },
+        {
+          "id": "b",
+          "text": "They’re three dollars."
+        },
+        {
+          "id": "c",
+          "text": "There are three cups."
+        }
+      ],
+      "answer": "a",
+      "hint": "回答中先用对应物品的代词。",
+      "explanation": "单数 cup 用 It’s；three dollars 给出价格。 They 与单数 cup 不一致。 只说杯子数量，没有回答价格。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior1.market-price-talk",
+      "prompt": "只填 dollar 的正确形式：The bag is one ___.",
+      "difficultyReason": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "dollar"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "数量是一。",
+      "explanation": "one 后的计价单位为单数 dollar。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior1.market-price-talk",
+      "prompt": "把摊位上的询问与所问内容配对。",
+      "difficultyReason": "初一 how much 与 be 一致；只读给定价格，不考汇率或心算。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "How much is the bag?"
+        },
+        {
+          "id": "l2",
+          "text": "What colour is the bag?"
+        },
+        {
+          "id": "l3",
+          "text": "Whose bag is this?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "包的颜色"
+        },
+        {
+          "id": "r3",
+          "text": "包的所有者"
+        },
+        {
+          "id": "r1",
+          "text": "包的价格"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "从疑问词判断信息类型。",
+      "explanation": "分别询问价格、颜色、归属；不把所有问句都当成购物价格问题。"
+    }
+  ]
+}

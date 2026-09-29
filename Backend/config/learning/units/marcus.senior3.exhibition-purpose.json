@@ -1,0 +1,229 @@
+{
+  "id": "marcus.senior3.exhibition-purpose",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "影展介绍中的目的与机会",
+  "summary": "能根据主被动关系与句子功能使用不定式，区别目的、修饰和补足语。",
+  "scene": "Marcus 在给社区影展写介绍，想让“为什么做”和“还有什么要做”都表达准确。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior3.exhibition-purpose"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "unit": "Unit 3 Sea Exploration / Review useful structures",
+      "pages": "印刷第29页；PDF第36页",
+      "alignment": "不定式的功能与主动被动；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "An exhibition needs a purpose before it needs a slogan.",
+      "translation": "影展先要有目的，才需要一句口号。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Let’s give the next person a clear way to take part.",
+      "translation": "给下一位参与者留一条清楚的路。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "The introduction now invites action, not just attention.",
+      "translation": "这段介绍现在不仅吸引注意，也邀请人们参与。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior3.exhibition-purpose",
+      "prompt": "你想表达“这些照片需要被检查”，不是照片去检查别人。选择语义正确的被动不定式。",
+      "difficultyReason": "高三不定式综合；给出明确形式和逻辑主语，避免开放改写的误判。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "These photos need to be checked."
+        },
+        {
+          "id": "b",
+          "text": "These photos need to check visitors."
+        },
+        {
+          "id": "c",
+          "text": "These photos need to be checking visitors."
+        }
+      ],
+      "answer": "a",
+      "hint": "确定照片在检查动作中的角色。",
+      "explanation": "to be checked 让 photos 成为被检查对象。 主动 check 把照片变成检查来客的施事。 进行形式仍把照片写成主动检查者。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior3.exhibition-purpose",
+      "prompt": "只用 show 的不定式：We arranged the photos carefully ___ the changes clearly.",
+      "difficultyReason": "高三不定式综合；给出明确形式和逻辑主语，避免开放改写的误判。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "to show"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "回答为什么这样排列。",
+      "explanation": "to show 在这里表达仔细排列照片的目的；题目明确要求不定式。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior3.exhibition-purpose",
+      "prompt": "以 I 开头，表达“我很高兴受邀参加影展”。",
+      "difficultyReason": "高三不定式综合；给出明确形式和逻辑主语，避免开放改写的误判。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "to be invited"
+        },
+        {
+          "id": "t4",
+          "text": "to the exhibition."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "am pleased"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "先确定是主动邀请还是受邀。",
+      "explanation": "to be invited 表示 I 是被邀请者，to the exhibition 说明活动。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior3.exhibition-purpose",
+      "prompt": "“She was the first person to arrive.” 中 to arrive 的主要功能是什么？",
+      "difficultyReason": "高三不定式综合；给出明确形式和逻辑主语，避免开放改写的误判。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "修饰 person，说明她是第一个到达的人。"
+        },
+        {
+          "id": "b",
+          "text": "说明她为了到达而成为一个人。"
+        },
+        {
+          "id": "c",
+          "text": "证明她现在正在到达。"
+        }
+      ],
+      "answer": "a",
+      "hint": "结合 first person 判断功能。",
+      "explanation": "不定式后置修饰含序数意义的名词短语。 错误把修饰关系理解成成为人的目的。 不定式本身不能证明此刻正在进行。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior3.exhibition-purpose",
+      "prompt": "使用 help 的不定式，完成 encouraged 的常用结构：The organiser encouraged us ___ with the display.",
+      "difficultyReason": "高三不定式综合；给出明确形式和逻辑主语，避免开放改写的误判。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "to help"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "注意动作的逻辑执行者是 us。",
+      "explanation": "encourage somebody to do something 中使用 to help。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior3.exhibition-purpose",
+      "prompt": "把影展介绍中的不定式片段与作用配对。",
+      "difficultyReason": "高三不定式综合；给出明确形式和逻辑主语，避免开放改写的误判。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "We came to help."
+        },
+        {
+          "id": "l2",
+          "text": "a chance to help"
+        },
+        {
+          "id": "l3",
+          "text": "They asked us to help."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "修饰机会，说明机会内容"
+        },
+        {
+          "id": "r3",
+          "text": "补充要求 us 做的动作"
+        },
+        {
+          "id": "r1",
+          "text": "说明来这里的目的"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "看不定式依附的是哪部分。",
+      "explanation": "同一个 to help 在不同结构中分别表达目的、名词修饰和宾语补足。"
+    }
+  ]
+}

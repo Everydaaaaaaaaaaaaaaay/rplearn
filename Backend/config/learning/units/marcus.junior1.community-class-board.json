@@ -1,0 +1,224 @@
+{
+  "id": "marcus.junior1.community-class-board",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior1",
+  "title": "社区课表上的三种问题",
+  "summary": "能用 what、who、when、why 区分课程沟通中的信息类型。",
+  "scene": "Marcus 在社区中心教摄影入门，帮新朋友区分课程、老师和时间。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior1.community-class-board"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior1.archive20260929",
+      "unit": "Unit 9 My favorite subject is science. / Grammar Focus",
+      "pages": "印刷第51页；PDF第74页",
+      "alignment": "课程信息与原因问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "The noticeboard is full. Let’s make it easier to read.",
+      "translation": "公告栏满满当当，得让它更好读一点。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "The right question opens the right door.",
+      "translation": "问对问题，才好找到要去的门。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "See you at the next class.",
+      "translation": "下次上课见。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior1.community-class-board",
+      "prompt": "你想知道摄影课由谁来教。哪个问句切题？",
+      "difficultyReason": "初一特殊疑问词与 because 原因；独立微情景，不考整张课表记忆。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Who is the photography teacher?"
+        },
+        {
+          "id": "b",
+          "text": "When is the photography class?"
+        },
+        {
+          "id": "c",
+          "text": "Why do you like photography?"
+        }
+      ],
+      "answer": "a",
+      "hint": "题目要找一个人。",
+      "explanation": "Who 询问老师是谁。 When 询问时间，不是老师。 Why 询问喜欢的原因。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior1.community-class-board",
+      "prompt": "只填疑问词：___ do you like art? — Because it is interesting.",
+      "difficultyReason": "初一特殊疑问词与 because 原因；独立微情景，不考整张课表记忆。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "why"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "从回答的信息类型倒推问法。",
+      "explanation": "Because 后的回答给出原因，对应用 Why 提问。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior1.community-class-board",
+      "prompt": "以 When 开头，问“你的音乐课是什么时候”？",
+      "difficultyReason": "初一特殊疑问词与 because 原因；独立微情景，不考整张课表记忆。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "your music class?"
+        },
+        {
+          "id": "t1",
+          "text": "When"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "hint": "这里不是询问最喜欢哪门课。",
+      "explanation": "When is your music class? 询问上课时间。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior1.community-class-board",
+      "prompt": "你想表达“我喜欢历史，因为它有趣”。选择完整一致的表达。",
+      "difficultyReason": "初一特殊疑问词与 because 原因；独立微情景，不考整张课表记忆。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I like history because it is interesting."
+        },
+        {
+          "id": "b",
+          "text": "I like history, but it is boring."
+        },
+        {
+          "id": "c",
+          "text": "I like history when it is Monday."
+        }
+      ],
+      "answer": "a",
+      "hint": "连接词决定两部分的关系。",
+      "explanation": "because 引出喜欢历史的原因。 此句给出相反的评价，并非题干原因。 此句限制时间，不表达给定原因。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior1.community-class-board",
+      "prompt": "只填 who、when 或 what：___ is your favourite subject? — Music.",
+      "difficultyReason": "初一特殊疑问词与 because 原因；独立微情景，不考整张课表记忆。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "what"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "回答不是老师姓名或日期。",
+      "explanation": "Music 是课程名称，用 what 询问。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior1.community-class-board",
+      "prompt": "把社区中心的问答线索配对。",
+      "difficultyReason": "初一特殊疑问词与 because 原因；独立微情景，不考整张课表记忆。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Who teaches art?"
+        },
+        {
+          "id": "l2",
+          "text": "When is the art class?"
+        },
+        {
+          "id": "l3",
+          "text": "Why do you like art?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "On Tuesday."
+        },
+        {
+          "id": "r3",
+          "text": "Because it is relaxing."
+        },
+        {
+          "id": "r1",
+          "text": "Ms Green does."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "先判断回答属于哪一类。",
+      "explanation": "人物、时间、原因各有对应回答；这里的 Ms Green 是题内信息。"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "id": "ruby.primary6.weekend-postcard",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary6",
+  "title": "野餐后的一张明信片",
+  "summary": "能用常见不规则过去式叙述一次已结束的出游。",
+  "scene": "Ruby 把海边周末写在明信片背面，分享去过哪里和做过什么。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary6.weekend-postcard"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary6.archive20260929",
+      "unit": "Unit 3 Where did you go? / Let’s learn",
+      "pages": "印刷第27页；PDF第32页",
+      "alignment": "过去出游活动与不规则动词；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "There is sand in my bag and a story on this card.",
+      "translation": "包里还有沙子，卡片上已经有了故事。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A short note can keep a good day close.",
+      "translation": "短短的几句话，也能留住美好的一天。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "I’ll leave a little space for your name.",
+      "translation": "我给你的名字留一点地方。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary6.weekend-postcard",
+      "prompt": "昨天你去海边游泳了。选择符合过去时间的表达。",
+      "difficultyReason": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I went swimming yesterday."
+        },
+        {
+          "id": "b",
+          "text": "I go swimming yesterday."
+        },
+        {
+          "id": "c",
+          "text": "I will go swimming yesterday."
+        }
+      ],
+      "answer": "a",
+      "hint": "先找昨天，再检查动词。",
+      "explanation": "went 是 go 的过去式，符合 yesterday。 go 未体现已给定的过去时间。 will 表将来，与 yesterday 冲突。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary6.weekend-postcard",
+      "prompt": "用 buy 的过去式补全：We ___ some gifts last Saturday.",
+      "difficultyReason": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "bought"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "这个动词不能直接加 ed。",
+      "explanation": "buy 的过去式是不规则形式 bought。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary6.weekend-postcard",
+      "prompt": "以 We 开头，说“我们拍了许多照片”。",
+      "difficultyReason": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "lots of"
+        },
+        {
+          "id": "t4",
+          "text": "pictures."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "took"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "动作已经完成。",
+      "explanation": "took pictures 是 take pictures 的过去表达。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary6.weekend-postcard",
+      "prompt": "对方问“How did you go to the beach?”，你乘公交去的。哪个回答切题？",
+      "difficultyReason": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I went there by bus."
+        },
+        {
+          "id": "b",
+          "text": "I went there last Sunday."
+        },
+        {
+          "id": "c",
+          "text": "I went there with my sister."
+        }
+      ],
+      "answer": "a",
+      "hint": "问的是怎么去，而非何时或和谁。",
+      "explanation": "How 在此询问交通方式，by bus 给出答案。 只回答时间，没有说明交通方式。 只回答同行者，没有说明交通方式。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary6.weekend-postcard",
+      "prompt": "用 eat 的过去式补全：I ___ fresh fruit at the picnic yesterday.",
+      "difficultyReason": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "ate"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "注意常见不规则过去式。",
+      "explanation": "eat 的过去式为 ate，不是 eated。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary6.weekend-postcard",
+      "prompt": "把出游叙述中的过去动作与意思配对。",
+      "difficultyReason": "六年级一般过去时；每题自带时间和活动，不考明信片细节记忆。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "bought a gift"
+        },
+        {
+          "id": "l2",
+          "text": "took a photo"
+        },
+        {
+          "id": "l3",
+          "text": "went swimming"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "拍了一张照片"
+        },
+        {
+          "id": "r3",
+          "text": "去游泳了"
+        },
+        {
+          "id": "r1",
+          "text": "买了一件礼物"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "同时核对动作和宾语。",
+      "explanation": "三个短语分别使用 bought、took、went，不依赖前面的明信片。"
+    }
+  ]
+}

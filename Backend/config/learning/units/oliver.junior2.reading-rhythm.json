@@ -1,0 +1,229 @@
+{
+  "id": "oliver.junior2.reading-rhythm",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "junior2",
+  "title": "读书会的阅读节奏",
+  "summary": "能区分频率与持续时间，准确使用次数短语和频率副词。",
+  "scene": "Oliver 想让读书会适合不同作息，先聊聊大家多久读一次书。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior2.reading-rhythm"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior2.archive20260929",
+      "unit": "Unit 2 How often do you exercise? / Grammar Focus",
+      "pages": "印刷第11页；PDF第22页",
+      "alignment": "频率与次数表达；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A reading habit should fit the person, not the clock.",
+      "translation": "阅读习惯要适合人，不必追着时钟跑。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "A few regular pages can be a good start.",
+      "translation": "规律地读几页，就是不错的开始。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "We can build a rhythm that lasts.",
+      "translation": "我们可以慢慢找到能坚持的节奏。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior2.reading-rhythm",
+      "prompt": "你想问朋友“多久来一次读书会”，不是每次待多久。应选哪句？",
+      "difficultyReason": "初二频率问答；不将 often 等词强行换算为百分比。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "How often do you come to the reading club?"
+        },
+        {
+          "id": "b",
+          "text": "How long do you stay at the reading club?"
+        },
+        {
+          "id": "c",
+          "text": "How far is the reading club?"
+        }
+      ],
+      "answer": "a",
+      "hint": "先区分频率、时长和距离。",
+      "explanation": "How often 询问发生频率。 How long 询问持续时间。 How far 询问距离。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior2.reading-rhythm",
+      "prompt": "用一次的英文补全：每个月只来一回。I come here ___ a month.",
+      "difficultyReason": "初二频率问答；不将 often 等词强行换算为百分比。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "once"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "需要一个表示次数的词。",
+      "explanation": "once a month 表示每月一次；one 不能单独在此表示次数。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior2.reading-rhythm",
+      "prompt": "以 She 开头，表达“她几乎从不熬夜”，频率短语放在 stays 前。",
+      "difficultyReason": "初二频率问答；不将 often 等词强行换算为百分比。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "stays up"
+        },
+        {
+          "id": "t4",
+          "text": "late."
+        },
+        {
+          "id": "t1",
+          "text": "She"
+        },
+        {
+          "id": "t2",
+          "text": "hardly ever"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "频率词修饰熬夜这个习惯。",
+      "explanation": "hardly ever 表示几乎从不；She 搭配 stays。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior2.reading-rhythm",
+      "prompt": "你每周二和周五各读一次，其他日子不读。哪句准确描述频率？",
+      "difficultyReason": "初二频率问答；不将 often 等词强行换算为百分比。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I read twice a week."
+        },
+        {
+          "id": "b",
+          "text": "I read every two weeks."
+        },
+        {
+          "id": "c",
+          "text": "I read for two weeks."
+        }
+      ],
+      "answer": "a",
+      "hint": "用次数概括给定安排，不计算阅读时长。",
+      "explanation": "一周两次，对应 twice a week。 every two weeks 表示每两周一次。 for two weeks 表示持续两周，不是每周次数。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior2.reading-rhythm",
+      "prompt": "只填 do 或 does：How often ___ your brother visit the library?",
+      "difficultyReason": "初二频率问答；不将 often 等词强行换算为百分比。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "does"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "先看主语，再选择助动词。",
+      "explanation": "your brother 是第三人称单数，使用 does。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior2.reading-rhythm",
+      "prompt": "将阅读安排的时间表达与意思配对。",
+      "difficultyReason": "初二频率问答；不将 often 等词强行换算为百分比。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "three times a week"
+        },
+        {
+          "id": "l2",
+          "text": "every three weeks"
+        },
+        {
+          "id": "l3",
+          "text": "for three weeks"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "每三周一次"
+        },
+        {
+          "id": "r3",
+          "text": "持续三周"
+        },
+        {
+          "id": "r1",
+          "text": "每周三次"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "注意数字周围的词。",
+      "explanation": "times a、every 与 for 表达不同关系；数字相同并不代表意义相同。"
+    }
+  ]
+}

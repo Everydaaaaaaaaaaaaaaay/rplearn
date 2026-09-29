@@ -1,0 +1,224 @@
+{
+  "id": "marcus.junior2.photo-day-sandwiches",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior2",
+  "title": "拍摄日的简易午餐",
+  "summary": "能区分可数与不可数数量问法，并用顺序词组织操作。",
+  "scene": "Marcus 在外拍前准备冷三明治，把材料与步骤写得简单清楚。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior2.photo-day-sandwiches"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior2.archive20260929",
+      "unit": "Unit 8 How do you make a banana milk shake? / Grammar Focus",
+      "pages": "印刷第59页；PDF第70页",
+      "alignment": "数量与步骤顺序；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "A few sandwiches will keep us going between pictures.",
+      "translation": "几份三明治，能让拍摄间隙不饿肚子。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Clear steps leave more time for the walk.",
+      "translation": "步骤清楚，就能多留点时间散步。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Lunch is ready. Let’s pack the cameras.",
+      "translation": "午餐好了，来收拾相机吧。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior2.photo-day-sandwiches",
+      "prompt": "你要问需要多少片面包，题目用 slices of bread 表达可数单位。选正确问句。",
+      "difficultyReason": "初二程序说明；使用无需加热的准备场景，不考烹饪常识。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "How many slices of bread do we need?"
+        },
+        {
+          "id": "b",
+          "text": "How much slices of bread do we need?"
+        },
+        {
+          "id": "c",
+          "text": "How many bread do we need?"
+        }
+      ],
+      "answer": "a",
+      "hint": "判断被计数的是面包还是面包的片数。",
+      "explanation": "问可数的 slices 用 How many。 slices 为复数可数单位，不搭配此处的 much。 bread 在这里不可数，不能直接与 many 连用。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior2.photo-day-sandwiches",
+      "prompt": "只填 much 或 many：How ___ cheese do we need?",
+      "difficultyReason": "初二程序说明；使用无需加热的准备场景，不考烹饪常识。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "much"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "题干没有给出可数的包装单位。",
+      "explanation": "cheese 在此为不可数名词，用 much。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior2.photo-day-sandwiches",
+      "prompt": "以 First 开头，表达“首先，把西红柿洗干净”。",
+      "difficultyReason": "初二程序说明；使用无需加热的准备场景，不考烹饪常识。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "the tomatoes."
+        },
+        {
+          "id": "t1",
+          "text": "First,"
+        },
+        {
+          "id": "t2",
+          "text": "wash"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "hint": "不要额外加主语。",
+      "explanation": "祈使句用动词原形 wash，First 表示第一步。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior2.photo-day-sandwiches",
+      "prompt": "前两步已完成，现在写最后一步“把三明治放进盒子”。选择明确表示收尾的一句。",
+      "difficultyReason": "初二程序说明；使用无需加热的准备场景，不考烹饪常识。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Finally, put the sandwiches in the box."
+        },
+        {
+          "id": "b",
+          "text": "First, put the sandwiches in the box."
+        },
+        {
+          "id": "c",
+          "text": "Before we start, put the sandwiches in the box."
+        }
+      ],
+      "answer": "a",
+      "hint": "本题要求最后一步的连接词。",
+      "explanation": "Finally 明确标记最后一步。 First 把此步写成开始，与最后一步矛盾。 Before we start 将步骤放到开始之前。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior2.photo-day-sandwiches",
+      "prompt": "用 tomato 的复数形式：We need two ___.",
+      "difficultyReason": "初二程序说明；使用无需加热的准备场景，不考烹饪常识。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "tomatoes"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "two 后使用复数。",
+      "explanation": "tomato 的复数为 tomatoes。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior2.photo-day-sandwiches",
+      "prompt": "把操作说明中的顺序词与功能配对。",
+      "difficultyReason": "初二程序说明；使用无需加热的准备场景，不考烹饪常识。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "First"
+        },
+        {
+          "id": "l2",
+          "text": "Next"
+        },
+        {
+          "id": "l3",
+          "text": "Finally"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "引出接下来的一步"
+        },
+        {
+          "id": "r3",
+          "text": "引出最后一步"
+        },
+        {
+          "id": "r1",
+          "text": "引出第一步"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "顺序词说明步骤关系，不是材料数量。",
+      "explanation": "Next 不自动表示最终一步，Finally 才明确标记收尾。"
+    }
+  ]
+}

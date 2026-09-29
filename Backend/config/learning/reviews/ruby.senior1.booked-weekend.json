@@ -1,0 +1,203 @@
+{
+  "unitId": "ruby.senior1.booked-weekend",
+  "contentHash": "9b0a1d1a8ba736e7b4061d6f1f3f9412b240f46297464ea62a66b1c2e82acf5d",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 已经和朋友约好周末的短途出行，正在写消息确认时间和安排。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：题目要求用现在进行时表达“我们已约好明天见向导”。选符合指定形式且语法正确的一句。",
+      "optionNotes": {
+        "a": "are meeting 加未来时间，可表达已安排的会面。",
+        "b": "缺少构成现在进行时的 are。",
+        "c": "are 后这里应为 meeting，而非 meet。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：are meeting 加未来时间，可表达已安排的会面。 缺少构成现在进行时的 are。 are 后这里应为 meeting，而非 meet。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 leave 的 -ing 形式补全已安排的行程：I am ___ on Friday.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "leaving"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "leaveing"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：leave 去掉词尾不发音的 e 后加 ing，成为 leaving。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 What time 开头，用现在进行时问“我们明天几点集合”？",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：What time are we meeting tomorrow? 询问已安排的未来会面。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：“I’m meeting Eva at six tomorrow.” 在已约好会面的语境中主要表达什么？",
+      "optionNotes": {
+        "a": "tomorrow 与已约好这一条件说明是未来安排。",
+        "b": "不能忽略 tomorrow，把进行时一律当成此刻动作。",
+        "c": "tomorrow 不是过去时间。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：tomorrow 与已约好这一条件说明是未来安排。 不能忽略 tomorrow，把进行时一律当成此刻动作。 tomorrow 不是过去时间。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填 am、is 或 are：Leo and I ___ taking the early train tomorrow.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：Leo and I 为复数主语，使用 are taking。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：根据明确时间线索，配对表达与意义。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：同样的进行形式可结合时间表达现在或未来；过去式结合 last night 指已完成事件。"
+    }
+  ]
+}

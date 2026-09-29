@@ -62,7 +62,20 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toHaveLength(2);
     });
 
-    it.each(["primary1", "primary3", "primary4", "junior3", "senior2"] as const)(
+    it.each([
+      "primary1",
+      "primary2",
+      "primary3",
+      "primary4",
+      "primary5",
+      "primary6",
+      "junior1",
+      "junior2",
+      "junior3",
+      "senior1",
+      "senior2",
+      "senior3",
+    ] as const)(
       "%s 的实际原创池可独立分配，补答不重复得分，耗尽保持满条",
       async (level) => {
         const namespace = randomUUID();

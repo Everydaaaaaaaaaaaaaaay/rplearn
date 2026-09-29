@@ -1,0 +1,230 @@
+{
+  "id": "oliver.senior3.repair-report-focus",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "修缮报告里，该把谁放在前面",
+  "summary": "能在报告中结合时间与信息重点选择被动语态，不丢失施事和完成状态。",
+  "scene": "Oliver 为旧书店整理修缮报告，希望把读者最关心的进度放在句子开头。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior3.repair-report-focus"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "unit": "Unit 1 Science Fiction / Review useful structures",
+      "pages": "印刷第5页；PDF第12页",
+      "alignment": "被动语态与报告重点；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "The report should tell readers what has changed, without making them hunt for it.",
+      "translation": "报告该让读者直接看到变化，而不是到处找信息。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "We can change the focus without changing the facts.",
+      "translation": "我们可以改变重点，同时保持事实不变。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "That is a clearer record of the work.",
+      "translation": "这样留下的工作记录就清楚多了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior3.repair-report-focus",
+      "prompt": "已知志愿者昨天修好了三本书。要求以 Three books 开头，保留过去时间与完成事实。选正确改写。",
+      "difficultyReason": "高三综合被动复习；关注信息重心与时态，不把所有主动句都判错。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Three books were repaired by volunteers yesterday."
+        },
+        {
+          "id": "b",
+          "text": "Three books are being repaired by volunteers yesterday."
+        },
+        {
+          "id": "c",
+          "text": "Three books repaired volunteers yesterday."
+        }
+      ],
+      "answer": "a",
+      "hint": "改变主语后仍要保持谁做、何时做。",
+      "explanation": "were repaired 与昨天的已完成修复一致，by 保留施事。 are being repaired 与 yesterday 的时态冲突，还改成进行中。 主动结构将书错误地变成修理志愿者的施事。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior3.repair-report-focus",
+      "prompt": "题目指定现在完成时的被动语态。用 repair 补全：The damaged cover has ___.",
+      "difficultyReason": "高三综合被动复习；关注信息重心与时态，不把所有主动句都判错。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "been repaired"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "has 后需要完整的被动结构。",
+      "explanation": "has been repaired 由 has＋been＋过去分词构成，表示修复到现在已完成。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior3.repair-report-focus",
+      "prompt": "以 The notice 开头，用情态动词被动结构说“通知必须在周五之前发出”。",
+      "difficultyReason": "高三综合被动复习；关注信息重心与时态，不把所有主动句都判错。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "be sent"
+        },
+        {
+          "id": "t4",
+          "text": "before Friday."
+        },
+        {
+          "id": "t1",
+          "text": "The notice"
+        },
+        {
+          "id": "t2",
+          "text": "must"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "must 后先用 be 原形，再用过去分词。",
+      "explanation": "must be sent 保留必须的语气，并将 notice 放在信息重点。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior3.repair-report-focus",
+      "prompt": "报告说“The windows are being replaced.” 哪项只复述了这句话明确表达的信息？",
+      "difficultyReason": "高三综合被动复习；关注信息重心与时态，不把所有主动句都判错。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "更换窗户的工作正在进行。"
+        },
+        {
+          "id": "b",
+          "text": "所有窗户已经更换完毕。"
+        },
+        {
+          "id": "c",
+          "text": "窗户将于明年才开始更换。"
+        }
+      ],
+      "answer": "a",
+      "hint": "区别过程与完成结果。",
+      "explanation": "are being replaced 表示正在进行的被动过程。 原句没有宣布全部完成。 原句表达进行中，没有给出明年才开始。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior3.repair-report-focus",
+      "prompt": "用 invite 的被动不定式补全：The young volunteer was pleased ___ to the meeting.",
+      "difficultyReason": "高三综合被动复习；关注信息重心与时态，不把所有主动句都判错。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "to be invited",
+        "to have been invited"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "先判断志愿者是邀请者还是被邀请者。",
+      "explanation": "志愿者是被邀请者，可用 to be invited；若突出邀请先于高兴，也接受 to have been invited。to invite 则表示他主动邀请别人。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior3.repair-report-focus",
+      "prompt": "把三种被动报告与进度含义配对。",
+      "difficultyReason": "高三综合被动复习；关注信息重心与时态，不把所有主动句都判错。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The sign was repaired yesterday."
+        },
+        {
+          "id": "l2",
+          "text": "The sign is being repaired."
+        },
+        {
+          "id": "l3",
+          "text": "The sign will be repaired tomorrow."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "正在进行的修复"
+        },
+        {
+          "id": "r3",
+          "text": "计划明天进行的修复"
+        },
+        {
+          "id": "r1",
+          "text": "昨天完成的修复"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "先看 repaired 前的助动词。",
+      "explanation": "was、is being、will be 分别提供过去、进行中和未来视角；共同的 repaired 不抹平区别。"
+    }
+  ]
+}

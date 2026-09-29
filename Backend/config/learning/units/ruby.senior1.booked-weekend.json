@@ -1,0 +1,229 @@
+{
+  "id": "ruby.senior1.booked-weekend",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "senior1",
+  "title": "订好之后，告诉朋友计划",
+  "summary": "能区分正在发生的动作与用现在进行时表达的已安排未来活动。",
+  "scene": "Ruby 已经和朋友约好周末的短途出行，正在写消息确认时间和安排。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior1.booked-weekend"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 2 Travelling Around / Discovering Useful Structures",
+      "pages": "印刷第28页；PDF第35页",
+      "alignment": "现在进行时表达已安排计划；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "The tickets are booked. Now let’s tell everyone the plan.",
+      "translation": "票订好了，现在把安排告诉大家。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A clear message saves a lot of last-minute questions.",
+      "translation": "消息写清楚，临时问题就少一些。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "That leaves more time to enjoy the trip.",
+      "translation": "这样就能多留些时间享受旅途。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior1.booked-weekend",
+      "prompt": "题目要求用现在进行时表达“我们已约好明天见向导”。选符合指定形式且语法正确的一句。",
+      "difficultyReason": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We are meeting the guide tomorrow."
+        },
+        {
+          "id": "b",
+          "text": "We meeting the guide tomorrow."
+        },
+        {
+          "id": "c",
+          "text": "We are meet the guide tomorrow."
+        }
+      ],
+      "answer": "a",
+      "hint": "既要符合指定时态，也要有完整谓语。",
+      "explanation": "are meeting 加未来时间，可表达已安排的会面。 缺少构成现在进行时的 are。 are 后这里应为 meeting，而非 meet。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior1.booked-weekend",
+      "prompt": "用 leave 的 -ing 形式补全已安排的行程：I am ___ on Friday.",
+      "difficultyReason": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "leaving"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "此处只检查已经指定的动词形式。",
+      "explanation": "leave 去掉词尾不发音的 e 后加 ing，成为 leaving。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior1.booked-weekend",
+      "prompt": "以 What time 开头，用现在进行时问“我们明天几点集合”？",
+      "difficultyReason": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "we"
+        },
+        {
+          "id": "t4",
+          "text": "meeting tomorrow?"
+        },
+        {
+          "id": "t1",
+          "text": "What time"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "are 在疑问句里放到 we 前。",
+      "explanation": "What time are we meeting tomorrow? 询问已安排的未来会面。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior1.booked-weekend",
+      "prompt": "“I’m meeting Eva at six tomorrow.” 在已约好会面的语境中主要表达什么？",
+      "difficultyReason": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一个已经安排的未来会面。"
+        },
+        {
+          "id": "b",
+          "text": "说话此刻一定正在见 Eva。"
+        },
+        {
+          "id": "c",
+          "text": "昨天六点发生过的一次见面。"
+        }
+      ],
+      "answer": "a",
+      "hint": "时间词和语境共同决定用法。",
+      "explanation": "tomorrow 与已约好这一条件说明是未来安排。 不能忽略 tomorrow，把进行时一律当成此刻动作。 tomorrow 不是过去时间。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior1.booked-weekend",
+      "prompt": "只填 am、is 或 are：Leo and I ___ taking the early train tomorrow.",
+      "difficultyReason": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "are"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "主语包含说话人和另一个人。",
+      "explanation": "Leo and I 为复数主语，使用 are taking。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior1.booked-weekend",
+      "prompt": "根据明确时间线索，配对表达与意义。",
+      "difficultyReason": "高一将来安排；明确要求现在进行时的题才限定形式，不否认 will 或 going to 的其他合法用途。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I am packing right now."
+        },
+        {
+          "id": "l2",
+          "text": "I am flying there next Tuesday."
+        },
+        {
+          "id": "l3",
+          "text": "I packed last night."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "已安排下周二出发"
+        },
+        {
+          "id": "r3",
+          "text": "昨晚完成了收拾"
+        },
+        {
+          "id": "r1",
+          "text": "此刻正在收拾"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "不要仅凭一个动词词尾判断时间。",
+      "explanation": "同样的进行形式可结合时间表达现在或未来；过去式结合 last night 指已完成事件。"
+    }
+  ]
+}

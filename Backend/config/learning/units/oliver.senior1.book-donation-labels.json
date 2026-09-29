@@ -1,0 +1,230 @@
+{
+  "id": "oliver.senior1.book-donation-labels",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "senior1",
+  "title": "捐书箱旁的说明牌",
+  "summary": "能用限制性定语从句明确人或物，并处理关系词的主宾与所属关系。",
+  "scene": "Oliver 想把捐书活动的说明写准确，让读者知道哪些书适合带来。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior1.book-donation-labels"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 4 Natural Disasters / Discovering Useful Structures",
+      "pages": "印刷第52页；PDF第59页",
+      "alignment": "限制性定语从句；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A short description can prevent a box of confusion.",
+      "translation": "一句准确说明，能少一箱误会。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let’s say exactly which books we mean.",
+      "translation": "把我们要说的是哪些书讲清楚。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Now the label is ready to do its quiet work.",
+      "translation": "现在让这张说明牌静静发挥作用吧。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior1.book-donation-labels",
+      "prompt": "要表达“我们欢迎封面完好的书”，哪句明确说明封面属于书？",
+      "difficultyReason": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We welcome books whose covers are complete."
+        },
+        {
+          "id": "b",
+          "text": "We welcome books who covers are complete."
+        },
+        {
+          "id": "c",
+          "text": "We welcome books which covers are complete."
+        }
+      ],
+      "answer": "a",
+      "hint": "关系词后紧跟 covers，需要表达所属。",
+      "explanation": "whose 连接 books 与其 covers，表达所属关系。 who 不承担 covers 前的所属限定作用。 which 不能直接替代这里的 whose 来限定 covers。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior1.book-donation-labels",
+      "prompt": "补全限制性定语从句，可填写任何合乎标准语法的一个关系词：The volunteer ___ helps at the desk is new.",
+      "difficultyReason": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "who",
+        "that"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "从句里缺少 helps 的主语。",
+      "explanation": "先行词 volunteer 是人，关系词在从句中作主语，可用 who 或 that，不能省略。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior1.book-donation-labels",
+      "prompt": "以 The book 开头，表达“我昨天买的那本书在这里”。",
+      "difficultyReason": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "is"
+        },
+        {
+          "id": "t4",
+          "text": "here."
+        },
+        {
+          "id": "t1",
+          "text": "The book"
+        },
+        {
+          "id": "t2",
+          "text": "that I bought yesterday"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "先把修饰 book 的部分接在名词后。",
+      "explanation": "that I bought yesterday 限定 book；主句的谓语是 is。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior1.book-donation-labels",
+      "prompt": "先行词是 the books，关系词在从句中作主语。哪个表达完整正确？",
+      "difficultyReason": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "the books that are on the shelf"
+        },
+        {
+          "id": "b",
+          "text": "the books are on the shelf are mine"
+        },
+        {
+          "id": "c",
+          "text": "the books that is on the shelf"
+        }
+      ],
+      "answer": "a",
+      "hint": "检查从句是否有主语，以及谓语单复数。",
+      "explanation": "that 在从句中作 are 的主语，不能直接省去。 两个完整谓语没有关系词连接，句子结构冲突。 books 是复数，从句应使用 are。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior1.book-donation-labels",
+      "prompt": "用一个关系词表达所属：The reader ___ bag was left here has returned.",
+      "difficultyReason": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "whose"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "横线后的名词属于前面的 reader。",
+      "explanation": "whose bag 表示该读者的包，who 不能直接限定 bag。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior1.book-donation-labels",
+      "prompt": "把关系词所在片段与本题中的功能配对。",
+      "difficultyReason": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "who helps us"
+        },
+        {
+          "id": "l2",
+          "text": "whose book is missing"
+        },
+        {
+          "id": "l3",
+          "text": "that I bought"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "whose 表示 book 的所属"
+        },
+        {
+          "id": "r3",
+          "text": "that 作 bought 的宾语"
+        },
+        {
+          "id": "r1",
+          "text": "who 作从句主语"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "查从句中缺少的是谁做、做什么，还是谁的。",
+      "explanation": "功能由每个具体从句决定，不是说同一个关系词永远只承担一种功能。"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "id": "marcus.junior2.photo-project-plans",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "junior2",
+  "title": "给摄影计划找一个起点",
+  "summary": "能用 be going to 表达行动计划，并区分 what、how、where、when 的提问。",
+  "scene": "Marcus 帮朋友把“想成为摄影师”拆成学习、练习和投稿的小计划。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior2.photo-project-plans"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior2.archive20260929",
+      "unit": "Unit 6 I’m going to study computer science. / Grammar Focus",
+      "pages": "印刷第43页；PDF第54页",
+      "alignment": "目标和实现计划；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "A dream becomes easier to see when we give it a first step.",
+      "translation": "给梦想一个起点，它就清楚一些了。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "You do not need to plan every year today.",
+      "translation": "今天不用把未来每一年都安排好。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "One small step is enough to begin.",
+      "translation": "一个小步骤，就够开始了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior2.photo-project-plans",
+      "prompt": "有人问“How are you going to improve your photography?”，哪个回答给出实现方法？",
+      "difficultyReason": "初二职业与计划；重点在目标和行动的区别，不要求职业知识。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I’m going to practise taking portraits."
+        },
+        {
+          "id": "b",
+          "text": "I want to be a photographer."
+        },
+        {
+          "id": "c",
+          "text": "I’m going to start next month."
+        }
+      ],
+      "answer": "a",
+      "hint": "区分梦想、方法与开始时间。",
+      "explanation": "练习拍人像是实现改进的行动方法。 只说目标身份，没有给出实现方法。 只说开始时间，没有回答 how。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior2.photo-project-plans",
+      "prompt": "只填 am、is 或 are：My friends ___ going to take a course.",
+      "difficultyReason": "初二职业与计划；重点在目标和行动的区别，不要求职业知识。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "are"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "主语不止一个人。",
+      "explanation": "My friends 为复数，使用 are going to。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior2.photo-project-plans",
+      "prompt": "以 Where 开头，询问“你准备去哪里学习”？",
+      "difficultyReason": "初二职业与计划；重点在目标和行动的区别，不要求职业知识。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "you"
+        },
+        {
+          "id": "t4",
+          "text": "going to study?"
+        },
+        {
+          "id": "t1",
+          "text": "Where"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "地点问题从 Where 开始。",
+      "explanation": "Where are you going to study? 询问计划中的学习地点。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior2.photo-project-plans",
+      "prompt": "你想说“我想成为摄影师”，并使用 want。选择正确表达。",
+      "difficultyReason": "初二职业与计划；重点在目标和行动的区别，不要求职业知识。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I want to be a photographer."
+        },
+        {
+          "id": "b",
+          "text": "I want be a photographer."
+        },
+        {
+          "id": "c",
+          "text": "I want to a photographer."
+        }
+      ],
+      "answer": "a",
+      "hint": "want 后需要一个完整的不定式。",
+      "explanation": "want to be 后接职业名词短语。 want 后此处缺少不定式标记 to。 to 后缺少动词 be。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior2.photo-project-plans",
+      "prompt": "只填 how、when 或 where：___ are you going to start? — Next Monday.",
+      "difficultyReason": "初二职业与计划；重点在目标和行动的区别，不要求职业知识。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "when"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "从回答辨认信息类型。",
+      "explanation": "Next Monday 给出时间，使用 when 提问。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior2.photo-project-plans",
+      "prompt": "把项目计划的问句与合适回答配对。",
+      "difficultyReason": "初二职业与计划；重点在目标和行动的区别，不要求职业知识。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "What do you want to be?"
+        },
+        {
+          "id": "l2",
+          "text": "How will you practise?"
+        },
+        {
+          "id": "l3",
+          "text": "Where will you study?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "By taking pictures every week."
+        },
+        {
+          "id": "r3",
+          "text": "At the community centre."
+        },
+        {
+          "id": "r1",
+          "text": "A photographer."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "看回答表达的是人、方式还是地点。",
+      "explanation": "身份、方法、地点分别对应不同疑问词。"
+    }
+  ]
+}

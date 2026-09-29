@@ -1,0 +1,224 @@
+{
+  "id": "marcus.senior1.confirm-the-details",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "senior1",
+  "title": "拍摄前，再确认一句",
+  "summary": "能依据主句助动词、人称和肯否构成附加问句，并按事实回答。",
+  "scene": "Marcus 在街区拍摄前核对安排，用简短的附加问句让交流更自然。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior1.confirm-the-details"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 3 Sports and Fitness / Discovering Useful Structures",
+      "pages": "印刷第40页；PDF第47页",
+      "alignment": "附加问句和事实回答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "A quick check now can save a missed meeting later.",
+      "translation": "现在确认一下，待会儿就不容易错过。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Let’s make sure we heard the same plan.",
+      "translation": "确认我们听到的是同一个安排。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Good. We can put our attention back on the pictures.",
+      "translation": "好，现在可以把注意力放回照片了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior1.confirm-the-details",
+      "prompt": "补全常规附加问句：“The light is good, ___?”",
+      "difficultyReason": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "isn’t it"
+        },
+        {
+          "id": "b",
+          "text": "doesn’t it"
+        },
+        {
+          "id": "c",
+          "text": "isn’t he"
+        }
+      ],
+      "answer": "a",
+      "hint": "先找主句的谓语，再找代词。",
+      "explanation": "主句肯定、be 动词 is，附加部分否定且代词为 it。 主句谓语是 is，不能换成 does。 the light 对应 it，不是 he。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior1.confirm-the-details",
+      "prompt": "只填附加部分：You can help, ___?",
+      "difficultyReason": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "can’t you"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "沿用情态动词。",
+      "explanation": "主句使用 can，常规附加问句为 can’t you。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior1.confirm-the-details",
+      "prompt": "以 She 开头，表达“她住在附近，对吧”？使用常规附加问句。",
+      "difficultyReason": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "doesn’t she?"
+        },
+        {
+          "id": "t1",
+          "text": "She"
+        },
+        {
+          "id": "t2",
+          "text": "lives nearby,"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "hint": "主句没有 be 或情态动词。",
+      "explanation": "lives 是一般现在时第三人称单数，附加部分使用 doesn’t she。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior1.confirm-the-details",
+      "prompt": "对方说“He isn’t coming, is he?”，你知道他确定会来。哪个回答与事实一致？",
+      "difficultyReason": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, he is."
+        },
+        {
+          "id": "b",
+          "text": "No, he isn’t."
+        },
+        {
+          "id": "c",
+          "text": "Yes, he isn’t."
+        }
+      ],
+      "answer": "a",
+      "hint": "根据事实回答，不机械翻译中文的“对”。",
+      "explanation": "英语 yes 回答肯定事实：他会来。 此句表示他不会来，与给定事实相反。 常规回答中 yes 与后面的肯定助动词对应，不与这里的 isn’t 搭配。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior1.confirm-the-details",
+      "prompt": "只填附加部分：They arrived early, ___?",
+      "difficultyReason": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "didn’t they"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "注意主句的过去时间形式。",
+      "explanation": "arrived 是一般过去时，使用 didn’t they。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior1.confirm-the-details",
+      "prompt": "把主句与常规附加问句配对。",
+      "difficultyReason": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "She is ready,"
+        },
+        {
+          "id": "l2",
+          "text": "They can stay,"
+        },
+        {
+          "id": "l3",
+          "text": "He likes it,"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "can’t they?"
+        },
+        {
+          "id": "r3",
+          "text": "doesn’t he?"
+        },
+        {
+          "id": "r1",
+          "text": "isn’t she?"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "先匹配助动词，再匹配人称。",
+      "explanation": "分别沿用 is、can，或用 does 代替一般现在时实义动词。"
+    }
+  ]
+}

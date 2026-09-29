@@ -1,0 +1,224 @@
+{
+  "id": "oliver.junior1.lost-found-desk",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "junior1",
+  "title": "失物桌前，先问清是谁的",
+  "summary": "能在认领对话中结合指示词、名词单复数和物主代词。",
+  "scene": "Oliver 把读者遗落的物品放在柜台一角，认领前先问清所有者。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior1.lost-found-desk"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior1.archive20260929",
+      "unit": "Unit 3 Is this your pencil? / Grammar Focus",
+      "pages": "印刷第15页；PDF第38页",
+      "alignment": "物主代词与认领问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A lost thing deserves a careful question.",
+      "translation": "认领一件失物，值得多问清一句。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let’s make sure the right person gets it.",
+      "translation": "要确保交到真正的主人手里。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "One less thing for someone to worry about.",
+      "translation": "这样就有人可以少担心一件事了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior1.lost-found-desk",
+      "prompt": "你拿着一把钥匙，想问它是否属于对方。选出单复数正确的问句。",
+      "difficultyReason": "初一名词与代词一致；题内给出归属，不根据人物关系猜测。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Is this key yours?"
+        },
+        {
+          "id": "b",
+          "text": "Are this key yours?"
+        },
+        {
+          "id": "c",
+          "text": "Is this key your?"
+        }
+      ],
+      "answer": "a",
+      "hint": "同时检查钥匙数量和代词位置。",
+      "explanation": "this key 是单数，使用 Is；yours 独立表归属。 Are 与单数 this key 不一致。 your 后缺少名词，不能独立作这里的表语。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior1.lost-found-desk",
+      "prompt": "只填 hers 或 her：This is Eva’s notebook. It is ___.",
+      "difficultyReason": "初一名词与代词一致；题内给出归属，不根据人物关系猜测。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "hers"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "横线之后没有 notebook。",
+      "explanation": "名词不重复时用 hers；her notebook 中用 her。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior1.lost-found-desk",
+      "prompt": "以 Are 开头，询问“这些铅笔是你的吗”？",
+      "difficultyReason": "初一名词与代词一致；题内给出归属，不根据人物关系猜测。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "yours?"
+        },
+        {
+          "id": "t1",
+          "text": "Are"
+        },
+        {
+          "id": "t2",
+          "text": "these pencils"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "hint": "these 与复数 pencils 一起使用。",
+      "explanation": "Are these pencils yours? 对复数物品询问归属。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior1.lost-found-desk",
+      "prompt": "问题是“Are these your glasses?”，眼镜确实是你的。选择完整而一致的简短回答。",
+      "difficultyReason": "初一名词与代词一致；题内给出归属，不根据人物关系猜测。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, they are."
+        },
+        {
+          "id": "b",
+          "text": "Yes, it is."
+        },
+        {
+          "id": "c",
+          "text": "No, they aren’t."
+        }
+      ],
+      "answer": "a",
+      "hint": "一副眼镜的英语名词仍采用复数形式。",
+      "explanation": "glasses 在该表达中为复数，用 they are 回答。 it is 不对应复数 glasses。 否定回答与题内确实属于你矛盾。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior1.lost-found-desk",
+      "prompt": "用 I 对应的独立物主代词填空：This pen belongs to me. It’s ___.",
+      "difficultyReason": "初一名词与代词一致；题内给出归属，不根据人物关系猜测。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "mine"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "这里不再重复 pen。",
+      "explanation": "mine 代替 my pen；my 不能在句末独立表示物品。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior1.lost-found-desk",
+      "prompt": "认领物品时，配对问句与所查信息。",
+      "difficultyReason": "初一名词与代词一致；题内给出归属，不根据人物关系猜测。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Whose bag is this?"
+        },
+        {
+          "id": "l2",
+          "text": "Is this your bag?"
+        },
+        {
+          "id": "l3",
+          "text": "Where is your bag?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "这个包是否属于你"
+        },
+        {
+          "id": "r3",
+          "text": "你的包在哪里"
+        },
+        {
+          "id": "r1",
+          "text": "这个包属于谁"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "不要把地点与归属混淆。",
+      "explanation": "Whose 查所有者，Is…your 查是否属于对方，Where 查位置。"
+    }
+  ]
+}

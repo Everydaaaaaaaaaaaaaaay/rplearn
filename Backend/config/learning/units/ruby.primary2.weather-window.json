@@ -1,0 +1,237 @@
+{
+  "id": "ruby.primary2.weather-window",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary2",
+  "title": "先听天气，再看窗外",
+  "summary": "能听懂基础天气词和含两个天气特征的短句。",
+  "scene": "Ruby 准备去海边散步，在出门前聊起不同天气。",
+  "estimatedMinutes": 5,
+  "goalIds": [
+    "primary2.weather-window"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary2.archive20260929",
+      "unit": "Module 1 Unit 1 What’s the weather like?",
+      "pages": "印刷第2–4页；PDF第7–9页",
+      "alignment": "天气形容词与 raining；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Let’s look outside.",
+      "translation": "看看外面吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Take your time. Listen again.",
+      "translation": "慢慢来，再听一遍。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "We are ready to go.",
+      "translation": "我们准备好出门了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary2.weather-window",
+      "prompt": "录音给出了两种天气特征，哪项都符合？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "炎热而且晴朗"
+        },
+        {
+          "id": "b",
+          "text": "寒冷而且晴朗"
+        },
+        {
+          "id": "c",
+          "text": "炎热而且有风"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "hot 是炎热，sunny 是晴朗；两个条件都要符合。 本项“寒冷而且晴朗”与录音的完整意思不符。 本项“炎热而且有风”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.eb27751f9761291e7dc611646b2f25095b9ad17702e06b38a214502fd140c8dc",
+        "text": "It is hot and sunny.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "primary2.weather-window",
+      "prompt": "听这次的天气，选择同时符合的两个特征。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "炎热而且有风"
+        },
+        {
+          "id": "b",
+          "text": "寒冷而且晴朗"
+        },
+        {
+          "id": "c",
+          "text": "寒冷而且有风"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "cold 是寒冷，windy 是有风。 本项“炎热而且有风”与录音的完整意思不符。 本项“寒冷而且晴朗”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.9a3130fbafbb4d9f296d961faf9c56fd7147c22679436b5f8808d93a6c5eb408",
+        "text": "It is cold and windy.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "primary2.weather-window",
+      "prompt": "录音说现在正在发生什么天气？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "天晴了"
+        },
+        {
+          "id": "b",
+          "text": "正在下雨"
+        },
+        {
+          "id": "c",
+          "text": "正在下雪"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "raining 表示正在下雨；now 表示现在。 本项“正在下雪”与录音的完整意思不符。 本项“天晴了”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.183d1ddc2e38bda6c3af91ab42bec68203071f308d96369a659a33a51d0f5243",
+        "text": "It is raining now.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "primary2.weather-window",
+      "prompt": "录音在确认哪一种天气情况？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "是否晴朗"
+        },
+        {
+          "id": "b",
+          "text": "是否下雨"
+        },
+        {
+          "id": "c",
+          "text": "是否寒冷"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Is it sunny? 询问是否晴朗。 本项“是否下雨”与录音的完整意思不符。 本项“是否寒冷”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.96497d5af0806a296b9c8a48d342c737eb90959e8aaf96cc980853c3bf1a1bc5",
+        "text": "Is it sunny?",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "primary2.weather-window",
+      "prompt": "这句现在的天气报告强调哪一点？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "炎热"
+        },
+        {
+          "id": "b",
+          "text": "下雨"
+        },
+        {
+          "id": "c",
+          "text": "有风"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "windy 是有风，不自动说明炎热或下雨。 本项“炎热”与录音的完整意思不符。 本项“下雨”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.4a74b024c8979a7257890942df938e2c9629b83385666a296aeeb7f68b3be94f",
+        "text": "It is windy now.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "primary2.weather-window",
+      "prompt": "根据录音，今天的气温感受是什么？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "没有提到冷或热"
+        },
+        {
+          "id": "b",
+          "text": "冷"
+        },
+        {
+          "id": "c",
+          "text": "热"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "cold 明确表示冷，today 表示今天。 本项“热”与录音的完整意思不符。 本项“没有提到冷或热”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.e607a521d4704a1380e8800b6b7edd7f851b3e5c26c5678466ea6a0204933765",
+        "text": "It is cold today.",
+        "voice": "F3"
+      }
+    }
+  ]
+}

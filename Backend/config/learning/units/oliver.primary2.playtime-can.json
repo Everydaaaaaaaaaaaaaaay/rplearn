@@ -1,0 +1,237 @@
+{
+  "id": "oliver.primary2.playtime-can",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary2",
+  "title": "绘本里的小本领",
+  "summary": "能听懂 can 与 cannot 表达的简单能力。",
+  "scene": "Oliver 翻开一本活动绘本，邀请你用一句话说说会做的事情。",
+  "estimatedMinutes": 5,
+  "goalIds": [
+    "primary2.playtime-can"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary2.archive20260929",
+      "unit": "Unit 1 Playtime / Lesson 1–2",
+      "pages": "印刷第4–5页；PDF第8–9页",
+      "alignment": "能力问答与游戏动作；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Can you fly a kite?",
+      "translation": "你会放风筝吗？"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Let’s try something new.",
+      "translation": "试试新事情吧。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "That was fun.",
+      "translation": "真有趣。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary2.playtime-can",
+      "prompt": "听这句本领介绍，选出说话者会做的事。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "会放风筝"
+        },
+        {
+          "id": "b",
+          "text": "会游泳"
+        },
+        {
+          "id": "c",
+          "text": "会骑车"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "can 表示会；fly a kite 是放风筝。 本项“会游泳”与录音的完整意思不符。 本项“会骑车”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.798c64cdb2f888daf39219b5d9af875d60e374c17ef96db37df042f9d8ebdee9",
+        "text": "I can fly a kite.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "primary2.playtime-can",
+      "prompt": "这次说话者介绍的是什么本领？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "会踢足球"
+        },
+        {
+          "id": "b",
+          "text": "会做雪人"
+        },
+        {
+          "id": "c",
+          "text": "会骑车"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "ride a bike 表示骑车，can 表示会。 本项“会踢足球”与录音的完整意思不符。 本项“会做雪人”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.53b014e6c96cea41429f80637bc5107a1d3fcd0f5a2f81ee2399a54a540ba359",
+        "text": "I can ride a bike.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "primary2.playtime-can",
+      "prompt": "听清这句，选择准确的完整意思。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "不会骑车"
+        },
+        {
+          "id": "b",
+          "text": "不会游泳"
+        },
+        {
+          "id": "c",
+          "text": "会游泳"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "cannot 表示不会；本句说的是 swim 游泳。 本项“会游泳”与录音的完整意思不符。 本项“不会骑车”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.bdd25d5b4399d4dd158142eb33c360d4fd0b56cf91afce325b7d821a87798c01",
+        "text": "I cannot swim.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "primary2.playtime-can",
+      "prompt": "录音在询问对方什么？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "是否会踢足球"
+        },
+        {
+          "id": "b",
+          "text": "是否正在踢足球"
+        },
+        {
+          "id": "c",
+          "text": "是否喜欢看足球"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Can you…? 在本题询问能力，play football 是踢足球。 本项“是否正在踢足球”与录音的完整意思不符。 本项“是否喜欢看足球”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.658ff4f95e7b3cc910f9bef285dacf64d4b3687e207b088493bc7593f733ef7b",
+        "text": "Can you play football?",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "primary2.playtime-can",
+      "prompt": "选出录音中说话者会做的物品。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "会放风筝"
+        },
+        {
+          "id": "b",
+          "text": "会做雪人"
+        },
+        {
+          "id": "c",
+          "text": "会做飞机模型"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "make a model plane 是做飞机模型，不是放风筝或做雪人。 本项“会放风筝”与录音的完整意思不符。 本项“会做雪人”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.c532302dd52ed0008b7dc3455e3b40a55486e401be71bb9b4cc1d48e9cdd3669",
+        "text": "I can make a model plane.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "primary2.playtime-can",
+      "prompt": "最后一句说了哪种尚不会的本领？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "不会游泳"
+        },
+        {
+          "id": "b",
+          "text": "不会做雪人"
+        },
+        {
+          "id": "c",
+          "text": "会做雪人"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "cannot make a snowman 表示不会做雪人。 本项“会做雪人”与录音的完整意思不符。 本项“不会游泳”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.e6596761acfb3b37b05c560821a967fee74f7983564c3782128a4efd2e80921b",
+        "text": "I cannot make a snowman.",
+        "voice": "M5"
+      }
+    }
+  ]
+}

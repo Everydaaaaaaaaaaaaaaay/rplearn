@@ -1,0 +1,229 @@
+{
+  "id": "marcus.primary6.first-camera-days",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary6",
+  "title": "第一台相机的旧故事",
+  "summary": "能用 could、couldn’t 和 can 表达过去与现在的能力变化。",
+  "scene": "Marcus 拿出一张旧合影，聊起小时候会做和不会做的事情。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary6.first-camera-days"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary6.archive20260929",
+      "unit": "Unit 4 Then and now / Let’s learn",
+      "pages": "印刷第35页；PDF第40页",
+      "alignment": "过去能力与变化；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "My first camera was heavier than I expected.",
+      "translation": "我的第一台相机比想象中重。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "We all have a first try at something.",
+      "translation": "每件事都有第一次尝试。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "There is always one more thing we can learn.",
+      "translation": "总还有一件新事情可以学。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary6.first-camera-days",
+      "prompt": "你小时候不会骑车，现在会了。哪句准确描述过去？",
+      "difficultyReason": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I couldn’t ride a bike when I was little."
+        },
+        {
+          "id": "b",
+          "text": "I can’t ride a bike now."
+        },
+        {
+          "id": "c",
+          "text": "I could rode a bike when I was little."
+        }
+      ],
+      "answer": "a",
+      "hint": "过去的不会与现在的不会要区分。",
+      "explanation": "couldn’t ride 表示当时不会。 说现在不会，与给定事实相反。 could 后应用原形 ride，且肯定意义也不符合。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary6.first-camera-days",
+      "prompt": "用 swim 的适当形式补全：He could ___ when he was six.",
+      "difficultyReason": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "swim"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "情态动词已经给出。",
+      "explanation": "could 后接原形 swim，不接过去式 swam。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary6.first-camera-days",
+      "prompt": "以 I 开头，表达“我以前不会滑冰”。",
+      "difficultyReason": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "skate"
+        },
+        {
+          "id": "t4",
+          "text": "before."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "couldn’t"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "否定能力放在动作前。",
+      "explanation": "couldn’t skate before 表达过去缺少这种能力。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary6.first-camera-days",
+      "prompt": "小时候你会画画。有人问“Could you draw then?”，选正确的简短回答。",
+      "difficultyReason": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, I could."
+        },
+        {
+          "id": "b",
+          "text": "Yes, I can."
+        },
+        {
+          "id": "c",
+          "text": "No, I couldn’t."
+        }
+      ],
+      "answer": "a",
+      "hint": "回答过去那时的能力。",
+      "explanation": "肯定事实与过去能力 could 一致。 can 回答现在能力，没有对应 then。 否定与题干会画画矛盾。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary6.first-camera-days",
+      "prompt": "只填 can 或 could：此题描述现在，你现在会游泳。I ___ swim now.",
+      "difficultyReason": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "can"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "不要被单元的过去主题带偏。",
+      "explanation": "now 在本题明确指现在能力，使用 can。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary6.first-camera-days",
+      "prompt": "把能力变化句与意思配对。",
+      "difficultyReason": "六年级能力变化；不用推测或委婉请求的 could，题内明确时间。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I could run fast then."
+        },
+        {
+          "id": "l2",
+          "text": "I couldn’t swim before."
+        },
+        {
+          "id": "l3",
+          "text": "I can ride a bike now."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "我以前不会游泳。"
+        },
+        {
+          "id": "r3",
+          "text": "我现在会骑车。"
+        },
+        {
+          "id": "r1",
+          "text": "那时我能跑得快。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "同时检查时间、动作和否定词。",
+      "explanation": "could、couldn’t、can 与 then、before、now 一起确定时间和肯否。"
+    }
+  ]
+}

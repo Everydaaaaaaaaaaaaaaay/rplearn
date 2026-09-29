@@ -1,0 +1,201 @@
+{
+  "unitId": "marcus.senior1.confirm-the-details",
+  "contentHash": "4057a3cca86a87413eecc8b8b224d7264d323b2c6c65104fba114c63d7522f14",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Marcus 在街区拍摄前核对安排，用简短的附加问句让交流更自然。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "高一常规附加问句；不扩展反意疑问的语调和特殊例外。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：补全常规附加问句：“The light is good, ___?”",
+      "optionNotes": {
+        "a": "主句肯定、be 动词 is，附加部分否定且代词为 it。",
+        "b": "主句谓语是 is，不能换成 does。",
+        "c": "the light 对应 it，不是 he。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：主句肯定、be 动词 is，附加部分否定且代词为 it。 主句谓语是 is，不能换成 does。 the light 对应 it，不是 he。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填附加部分：You can help, ___?",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can’t you"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "don’t you"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：主句使用 can，常规附加问句为 can’t you。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 She 开头，表达“她住在附近，对吧”？使用常规附加问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：lives 是一般现在时第三人称单数，附加部分使用 doesn’t she。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：对方说“He isn’t coming, is he?”，你知道他确定会来。哪个回答与事实一致？",
+      "optionNotes": {
+        "a": "英语 yes 回答肯定事实：他会来。",
+        "b": "此句表示他不会来，与给定事实相反。",
+        "c": "常规回答中 yes 与后面的肯定助动词对应，不与这里的 isn’t 搭配。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：英语 yes 回答肯定事实：他会来。 此句表示他不会来，与给定事实相反。 常规回答中 yes 与后面的肯定助动词对应，不与这里的 isn’t 搭配。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：只填附加部分：They arrived early, ___?",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "didn’t they"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "don’t they"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：arrived 是一般过去时，使用 didn’t they。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把主句与常规附加问句配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：分别沿用 is、can，或用 does 代替一般现在时实义动词。"
+    }
+  ]
+}

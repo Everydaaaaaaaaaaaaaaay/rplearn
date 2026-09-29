@@ -1,0 +1,229 @@
+{
+  "id": "oliver.junior2.two-reading-spaces",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "junior2",
+  "title": "两处阅读空间怎么选",
+  "summary": "能区别形容词与副词比较，并使用 as…as 表达相同程度。",
+  "scene": "Oliver 在为读书会比较两个房间，希望讨论保持安静、清楚又具体。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior2.two-reading-spaces"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior2.archive20260929",
+      "unit": "Unit 3 I’m more outgoing than my sister. / Grammar Focus",
+      "pages": "印刷第19页；PDF第30页",
+      "alignment": "比较级和 as…as；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "Both rooms have a good corner. Let’s compare what matters.",
+      "translation": "两个房间都有不错的角落，看看哪些差别重要。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "Quieter is useful when everyone wants to read.",
+      "translation": "大家想阅读时，安静一点很有用。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "The best choice is the one that suits this meeting.",
+      "translation": "适合这次聚会的，就是好选择。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior2.two-reading-spaces",
+      "prompt": "题内两间房同样安静。选择准确比较。",
+      "difficultyReason": "初二比较结构；描述明确属性，不给人物贴价值标签。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Room A is as quiet as Room B."
+        },
+        {
+          "id": "b",
+          "text": "Room A is quieter than Room B."
+        },
+        {
+          "id": "c",
+          "text": "Room A is as quieter as Room B."
+        }
+      ],
+      "answer": "a",
+      "hint": "相同程度使用原级。",
+      "explanation": "as quiet as 表示安静程度相同。 quieter than 表示更安静，不是相同程度。 as…as 中此处应使用原级 quiet。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior2.two-reading-spaces",
+      "prompt": "用 clearly 的比较级：请表达“说得更清楚”。Please speak ___ than before.",
+      "difficultyReason": "初二比较结构；描述明确属性，不给人物贴价值标签。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "more clearly"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "此处比较的是说话方式。",
+      "explanation": "clearly 的比较级为 more clearly；这里修饰 speak。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior2.two-reading-spaces",
+      "prompt": "以 This room 开头，说“这个房间比那个更明亮”。",
+      "difficultyReason": "初二比较结构；描述明确属性，不给人物贴价值标签。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "brighter"
+        },
+        {
+          "id": "t4",
+          "text": "than that one."
+        },
+        {
+          "id": "t1",
+          "text": "This room"
+        },
+        {
+          "id": "t2",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "比较方向由中文给定。",
+      "explanation": "brighter 是 bright 的比较级；one 代替 room。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior2.two-reading-spaces",
+      "prompt": "你想说“两人读得一样认真”。哪句正确？",
+      "difficultyReason": "初二比较结构；描述明确属性，不给人物贴价值标签。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "They read as carefully as each other."
+        },
+        {
+          "id": "b",
+          "text": "They read as careful as each other."
+        },
+        {
+          "id": "c",
+          "text": "They read more carefully as each other."
+        }
+      ],
+      "answer": "a",
+      "hint": "先看被修饰的是人还是动作。",
+      "explanation": "read 需要副词 carefully；as…as 内用原级。 careful 是形容词，不能在此修饰 read。 more carefully 的比较搭配为 than，不是这里的 as。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior2.two-reading-spaces",
+      "prompt": "用 good 的比较级：This lamp is ___ than the old one.",
+      "difficultyReason": "初二比较结构；描述明确属性，不给人物贴价值标签。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "better"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "不是所有比较级都直接加 er。",
+      "explanation": "good 的不规则比较级是 better。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior2.two-reading-spaces",
+      "prompt": "区分三句比较的程度关系。",
+      "difficultyReason": "初二比较结构；描述明确属性，不给人物贴价值标签。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "A is quieter than B."
+        },
+        {
+          "id": "l2",
+          "text": "A is as quiet as B."
+        },
+        {
+          "id": "l3",
+          "text": "A is not as quiet as B."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "A 和 B 一样安静。"
+        },
+        {
+          "id": "r3",
+          "text": "A 不如 B 安静。"
+        },
+        {
+          "id": "r1",
+          "text": "A 比 B 更安静。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "不要忽略 not。",
+      "explanation": "比较级、同级比较及其否定分别表达更高、相同和较低程度。"
+    }
+  ]
+}

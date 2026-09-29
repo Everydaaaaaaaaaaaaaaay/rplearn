@@ -1,0 +1,229 @@
+{
+  "id": "marcus.primary5.print-helper",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary5",
+  "title": "装裱台旁的小帮手",
+  "summary": "能用 Will you…? 请求帮助，用 I will 表达回应和意愿。",
+  "scene": "Marcus 正给街坊的照片装框，邀请朋友帮忙拿胶带、摆好相框。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary5.print-helper"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary5.archive20260929",
+      "unit": "Module 8 Unit 1 Will you help me?",
+      "pages": "印刷第45页；PDF第50页",
+      "alignment": "请求帮助与 will 回应；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "These frames could use another pair of hands.",
+      "translation": "这些相框还需要一双帮忙的手。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "Small jobs are easier when we share them.",
+      "translation": "把小活儿分一分，做起来更轻松。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Thanks. Let’s put the last print up together.",
+      "translation": "谢谢。一起把最后一张照片挂上去吧。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary5.print-helper",
+      "prompt": "你想请朋友帮忙拿相框。选择请求帮助的问句。",
+      "difficultyReason": "参考外研五下帮助与未来表达；短句沟通，不要求复杂将来时比较。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Will you help me with the frames?"
+        },
+        {
+          "id": "b",
+          "text": "I will help you with the frames."
+        },
+        {
+          "id": "c",
+          "text": "You helped me with the frames."
+        }
+      ],
+      "answer": "a",
+      "hint": "分清谁在请求、谁将帮忙。",
+      "explanation": "Will you help me…? 在此用来请求对方帮助。 此句是主动帮助对方，不是向对方请求。 此句讲过去已经发生的帮助。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary5.print-helper",
+      "prompt": "用 help 的适当形式补全：Will you ___ me with this box?",
+      "difficultyReason": "参考外研五下帮助与未来表达；短句沟通，不要求复杂将来时比较。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "help"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "情态动词后不加第三人称词尾。",
+      "explanation": "will 后接动词原形 help。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary5.print-helper",
+      "prompt": "以 I 开头，答应“我会把照片带来”。",
+      "difficultyReason": "参考外研五下帮助与未来表达；短句沟通，不要求复杂将来时比较。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "bring"
+        },
+        {
+          "id": "t4",
+          "text": "the photos."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "will"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "will 放在主语之后、动作之前。",
+      "explanation": "I will bring the photos. 表达说话人的承诺。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary5.print-helper",
+      "prompt": "朋友问“Will you help me?”，你愿意。哪个回答与意愿一致？",
+      "difficultyReason": "参考外研五下帮助与未来表达；短句沟通，不要求复杂将来时比较。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Of course I will."
+        },
+        {
+          "id": "b",
+          "text": "Sorry, I won’t."
+        },
+        {
+          "id": "c",
+          "text": "I helped yesterday."
+        }
+      ],
+      "answer": "a",
+      "hint": "回答当前请求，而非过去经历。",
+      "explanation": "Of course I will 表示当然愿意。 won’t 表示不愿或不会，与愿意不符。 只说昨天帮过忙，没有答应这次请求。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary5.print-helper",
+      "prompt": "只填 will 或 won’t：你明确答应参加明天的布展。I ___ come tomorrow.",
+      "difficultyReason": "参考外研五下帮助与未来表达；短句沟通，不要求复杂将来时比较。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "will"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "判断是肯定承诺还是拒绝。",
+      "explanation": "承诺会来使用 will；won’t 表示不会来。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary5.print-helper",
+      "prompt": "把帮助时的三句话与其作用配对。",
+      "difficultyReason": "参考外研五下帮助与未来表达；短句沟通，不要求复杂将来时比较。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Will you hold this?"
+        },
+        {
+          "id": "l2",
+          "text": "I will carry it."
+        },
+        {
+          "id": "l3",
+          "text": "Thank you for your help."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "主动承诺搬运"
+        },
+        {
+          "id": "r3",
+          "text": "感谢对方帮忙"
+        },
+        {
+          "id": "r1",
+          "text": "请求对方拿住物品"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "注意问号、主语和感谢词。",
+      "explanation": "问句提出请求，I will 句给出承诺，Thank you 表达感谢。"
+    }
+  ]
+}

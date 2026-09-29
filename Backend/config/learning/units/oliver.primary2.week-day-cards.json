@@ -1,0 +1,237 @@
+{
+  "id": "oliver.primary2.week-day-cards",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary2",
+  "title": "书店门口的星期卡",
+  "summary": "能听辨星期名称与今天是星期几的短句。",
+  "scene": "Oliver 把星期卡放在柜台旁，每天开门时换上一张。",
+  "estimatedMinutes": 5,
+  "goalIds": [
+    "primary2.week-day-cards"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary2.archive20260929",
+      "unit": "Unit 6 My Week / Lesson 1–2",
+      "pages": "印刷第46–47页；PDF第50–51页",
+      "alignment": "星期词汇与问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "A new day. A new card.",
+      "translation": "新的一天，换一张卡。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "What day is it today?",
+      "translation": "今天星期几？"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "See you another day.",
+      "translation": "改天见。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary2.week-day-cards",
+      "prompt": "听开头这句，今天是哪一天？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "星期一"
+        },
+        {
+          "id": "b",
+          "text": "星期二"
+        },
+        {
+          "id": "c",
+          "text": "星期五"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Monday 是星期一，today 表示今天。 本项“星期二”与录音的完整意思不符。 本项“星期五”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.6a33a33c8f633b7b9cbc726608b26922b461f848374f884e973325411ab3c988",
+        "text": "Today is Monday.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "primary2.week-day-cards",
+      "prompt": "录音说的是一周中的哪一天？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "星期四"
+        },
+        {
+          "id": "b",
+          "text": "星期二"
+        },
+        {
+          "id": "c",
+          "text": "星期三"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Wednesday 是星期三。 本项“星期四”与录音的完整意思不符。 本项“星期二”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.4d11d46e49dbc220f8a5793b365bd16f3b74c1c47091e509609738b99bcb927c",
+        "text": "It is Wednesday.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "primary2.week-day-cards",
+      "prompt": "选择这句报出的星期。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "星期六"
+        },
+        {
+          "id": "b",
+          "text": "星期五"
+        },
+        {
+          "id": "c",
+          "text": "星期四"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Friday 是星期五。 本项“星期四”与录音的完整意思不符。 本项“星期六”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.a1f26d4d4045764d70986d3d7997c30df0ea7680ef3110618c824ff70b7366b9",
+        "text": "Today is Friday.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "primary2.week-day-cards",
+      "prompt": "这句需要对应哪张中文星期卡？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "星期日"
+        },
+        {
+          "id": "b",
+          "text": "星期一"
+        },
+        {
+          "id": "c",
+          "text": "星期六"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Sunday 是星期日，不是 Saturday 星期六。 本项“星期一”与录音的完整意思不符。 本项“星期六”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.2035b1e0a4006bf1f10775a02369342fce4a4d4606a7317e5cac26554237e221",
+        "text": "It is Sunday.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "primary2.week-day-cards",
+      "prompt": "听清中间的星期词，选择对应的一天。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "星期二"
+        },
+        {
+          "id": "b",
+          "text": "星期三"
+        },
+        {
+          "id": "c",
+          "text": "星期四"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Thursday 是星期四，Tuesday 是星期二。 本项“星期二”与录音的完整意思不符。 本项“星期三”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.d40d941deee2079835310c2537a85710a2f448f39ee8bbf17ec951cf8f003357",
+        "text": "Today is Thursday.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "primary2.week-day-cards",
+      "prompt": "最后这条录音说的是哪一天？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "星期五"
+        },
+        {
+          "id": "b",
+          "text": "星期二"
+        },
+        {
+          "id": "c",
+          "text": "星期四"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Tuesday 是星期二，不要与 Thursday 混淆。 本项“星期四”与录音的完整意思不符。 本项“星期五”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.c02a856f1d5bff62fcfe037f8805e93bc28dacc1f646fc4c9c927b4a9898e39d",
+        "text": "It is Tuesday.",
+        "voice": "M5"
+      }
+    }
+  ]
+}

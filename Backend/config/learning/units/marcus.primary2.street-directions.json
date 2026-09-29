@@ -1,0 +1,243 @@
+{
+  "id": "marcus.primary2.street-directions",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary2",
+  "title": "街角的一步指路",
+  "summary": "能听辨左、右、直行、返回，以及两步有序指令。",
+  "scene": "Marcus 在街角约朋友见面，用简单方向帮助对方找到附近的路口。",
+  "estimatedMinutes": 5,
+  "goalIds": [
+    "primary2.street-directions"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary2.archive20260929",
+      "unit": "Module 9 Unit 1 Turn left!",
+      "pages": "印刷第50–51页；PDF第55–56页",
+      "alignment": "方向指令与顺序；仅参考语言目标，情景、题干和答案均为原创。"
+    },
+    {
+      "sourceId": "fltrp.primary2.archive20260929",
+      "unit": "Module 10 Unit 1 It’s next to the park.",
+      "pages": "印刷第57页；PDF第62页",
+      "alignment": "返回指令与指路；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "Let’s go this way.",
+      "translation": "我们走这边吧。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "One step at a time.",
+      "translation": "一步一步来。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "Here we are.",
+      "translation": "我们到了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary2.street-directions",
+      "prompt": "听这条礼貌指令，应该往哪边转？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "左转"
+        },
+        {
+          "id": "b",
+          "text": "右转"
+        },
+        {
+          "id": "c",
+          "text": "往回走"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Turn left 是左转，please 表示礼貌。 本项“右转”与录音的完整意思不符。 本项“往回走”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.afaa19027be5ea428dc4ecbdea487fc37de5ee3225b77bcb6a4ce418bb94e79e",
+        "text": "Turn left, please.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q2",
+      "goalId": "primary2.street-directions",
+      "prompt": "这条录音要求现在做什么？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "左转"
+        },
+        {
+          "id": "b",
+          "text": "一直向前"
+        },
+        {
+          "id": "c",
+          "text": "右转"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Turn right 是右转；now 表示现在。 本项“左转”与录音的完整意思不符。 本项“一直向前”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.d367c651430b66a090b806b817878da77510dbe005054b0ca028937c7401a59f",
+        "text": "Turn right now.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q3",
+      "goalId": "primary2.street-directions",
+      "prompt": "这一条指令要求怎样走？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "返回"
+        },
+        {
+          "id": "b",
+          "text": "直行"
+        },
+        {
+          "id": "c",
+          "text": "左转"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Go straight on 表示继续直行。 本项“左转”与录音的完整意思不符。 本项“返回”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.9f7f58d2c08a9df2fdff805500ec34de2273adb501dae9a813195e243b80b189",
+        "text": "Go straight on.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q4",
+      "goalId": "primary2.street-directions",
+      "prompt": "录音要求改变行进方向，具体是哪一种？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "往回走"
+        },
+        {
+          "id": "b",
+          "text": "继续直行"
+        },
+        {
+          "id": "c",
+          "text": "右转"
+        }
+      ],
+      "answer": "a",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "Turn back 表示返回，不是仅向左或右转。 本项“继续直行”与录音的完整意思不符。 本项“右转”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.d671d98a52d756c0b2631c8be86b7bebefd80cfae3f03e49c2115f3dad15163e",
+        "text": "Turn back, please.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q5",
+      "goalId": "primary2.street-directions",
+      "prompt": "听完整条指令，选择正确的两步顺序。",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "先左转，再直行"
+        },
+        {
+          "id": "b",
+          "text": "先直行，再右转"
+        },
+        {
+          "id": "c",
+          "text": "先直行，再左转"
+        }
+      ],
+      "answer": "c",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "then 表示然后；直行在前，左转在后。 本项“先左转，再直行”与录音的完整意思不符。 本项“先直行，再右转”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.dfcf5ccba4d626159590865aafe63833b8b4a9d6b4839597fc86da31b00c053a",
+        "text": "Go straight on, then turn left.",
+        "voice": "M3"
+      }
+    },
+    {
+      "id": "q6",
+      "goalId": "primary2.street-directions",
+      "prompt": "最后这条两步指令，先后顺序是什么？",
+      "difficultyReason": "小学二年级一年级起点的基础短句听辨；中文选项降低英语阅读负担，尚需照料者按需协助读中文。不考英文拼写、长篇记忆或真实导航。",
+      "type": "listeningChoice",
+      "instruction": "听录音，选择符合意思的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "先左转，再直行"
+        },
+        {
+          "id": "b",
+          "text": "先右转，再直行"
+        },
+        {
+          "id": "c",
+          "text": "先直行，再右转"
+        }
+      ],
+      "answer": "b",
+      "hint": "先完整听一遍，留意关键词；可以慢速重听。",
+      "explanation": "right 是右，then 后才是 go straight on。 本项“先直行，再右转”与录音的完整意思不符。 本项“先左转，再直行”与录音的完整意思不符。",
+      "audio": {
+        "assetId": "audio.946a0fec22cd9e86e9518c15aeb255722f3d028886b4c3abdf3c93db628dd460",
+        "text": "Turn right, then go straight on.",
+        "voice": "M3"
+      }
+    }
+  ]
+}

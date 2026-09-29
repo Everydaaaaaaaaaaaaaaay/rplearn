@@ -1,0 +1,229 @@
+{
+  "id": "oliver.primary5.reading-bag-owners",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "oliver",
+  "roleVersion": 1,
+  "level": "primary5",
+  "title": "读书袋上的小标签",
+  "summary": "能用物主代词说明物品归属并区别代词与名词前的限定词。",
+  "scene": "Oliver 在伦敦旧书店整理读书会留下的布袋，给每位读者留出认领的位置。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary5.reading-bag-owners"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary5.archive20260929",
+      "unit": "Unit 5 Whose dog is it? / Let’s wrap it up",
+      "pages": "印刷第54页；PDF第59页",
+      "alignment": "物主代词与限定词；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Oliver",
+      "text": "These bags need names, not guesses.",
+      "translation": "这些袋子需要名字，不能靠猜。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Oliver",
+      "text": "A small label can save a long search.",
+      "translation": "小标签能省去长时间的寻找。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Oliver",
+      "text": "Now every reader can find a bag.",
+      "translation": "现在每位读者都能找到袋子了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary5.reading-bag-owners",
+      "prompt": "你正在认领自己的读书袋。哪句表示“这个袋子是我的”？",
+      "difficultyReason": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "This bag is mine."
+        },
+        {
+          "id": "b",
+          "text": "This bag is my."
+        },
+        {
+          "id": "c",
+          "text": "This bag is me."
+        }
+      ],
+      "answer": "a",
+      "hint": "看横线后是否还有物品名词。",
+      "explanation": "mine 可独立表示“我的东西”。 my 后还需要名词，不能在这里独立使用。 me 表示“我”这个人，不表示归属。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary5.reading-bag-owners",
+      "prompt": "Eva 的书袋在桌上。用 she 对应的物主代词补全：The bag is ___.",
+      "difficultyReason": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "hers"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "此处不再重复 bag。",
+      "explanation": "hers 独立表示“她的”；her bag 中的 her 需要后接名词。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary5.reading-bag-owners",
+      "prompt": "以 These 开头表达“这些是我们的书”。",
+      "difficultyReason": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "our"
+        },
+        {
+          "id": "t4",
+          "text": "books."
+        },
+        {
+          "id": "t1",
+          "text": "These"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "先安排这些，再说归谁所有。",
+      "explanation": "our 放在复数名词 books 前，These are 对应复数。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary5.reading-bag-owners",
+      "prompt": "你和朋友共同拥有几支笔。哪句既表示“共同拥有”，又结构完整？",
+      "difficultyReason": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "These pens are ours."
+        },
+        {
+          "id": "b",
+          "text": "These pens are theirs."
+        },
+        {
+          "id": "c",
+          "text": "These pens are our."
+        }
+      ],
+      "answer": "a",
+      "hint": "注意说话人是否也在拥有者中。",
+      "explanation": "ours 表示包括说话人在内的“我们的”。 theirs 指“他们的”，不符合说话人共同拥有。 our 不能在这里脱离名词独立使用。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary5.reading-bag-owners",
+      "prompt": "只填 you 对应的限定词：Is this ___ notebook?",
+      "difficultyReason": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "your"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "后面已经给出 notebook。",
+      "explanation": "名词 notebook 前使用 your；yours 可以单独代替 your notebook。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary5.reading-bag-owners",
+      "prompt": "把认领时使用的独立物主代词与意思配对。",
+      "difficultyReason": "五年级物品归属；人称与单复数明确，不要求理解所有格嵌套。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "mine"
+        },
+        {
+          "id": "l2",
+          "text": "yours"
+        },
+        {
+          "id": "l3",
+          "text": "theirs"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "你的／你们的"
+        },
+        {
+          "id": "r3",
+          "text": "他们的／她们的／它们的"
+        },
+        {
+          "id": "r1",
+          "text": "我的"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "根据拥有者的人称配对。",
+      "explanation": "三词都能独立替代“限定词＋物品名词”；yours 的单复数由语境确定。"
+    }
+  ]
+}

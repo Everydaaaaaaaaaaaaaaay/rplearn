@@ -1,0 +1,229 @@
+{
+  "id": "ruby.primary6.picnic-next-week",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary6",
+  "title": "下周野餐的小计划",
+  "summary": "能用 be going to 询问和表达已作出的近期计划。",
+  "scene": "Ruby 和朋友把下周的海边野餐写在便笺上，先确认准备和出发安排。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary6.picnic-next-week"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.primary6.archive20260929",
+      "unit": "Module 2 Unit 1 When are we going to eat?",
+      "pages": "印刷第10页；PDF第15页",
+      "alignment": "未来计划的时间问答；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "A picnic starts with a plan and an empty basket.",
+      "translation": "野餐从一个计划和一只空篮子开始。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "We can decide the small things together.",
+      "translation": "小细节可以一起商量。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Now we have something to look forward to.",
+      "translation": "现在有一件值得期待的事了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary6.picnic-next-week",
+      "prompt": "题目要求用 be going to，说“我们明天准备带水”。选出符合指定形式的句子。",
+      "difficultyReason": "六年级明确未来时间与计划；不把合理的 will 表达普遍判错，形式限定写在题干。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We are going to bring water tomorrow."
+        },
+        {
+          "id": "b",
+          "text": "We is going to bring water tomorrow."
+        },
+        {
+          "id": "c",
+          "text": "We are going to brought water tomorrow."
+        }
+      ],
+      "answer": "a",
+      "hint": "检查主语与 be、to 后的动词。",
+      "explanation": "We 搭配 are going to，bring 使用原形。 We 不能搭配 is。 to 后这里应接 bring，而非过去式 brought。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary6.picnic-next-week",
+      "prompt": "只填 am、is 或 are：Ruby ___ going to pack the cups tonight.",
+      "difficultyReason": "六年级明确未来时间与计划；不把合理的 will 表达普遍判错，形式限定写在题干。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "is"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "先判断主语是一个人还是多个人。",
+      "explanation": "Ruby 是单数人物，使用 is going to。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary6.picnic-next-week",
+      "prompt": "以 When 开头，询问“我们准备什么时候出发”？",
+      "difficultyReason": "六年级明确未来时间与计划；不把合理的 will 表达普遍判错，形式限定写在题干。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "we"
+        },
+        {
+          "id": "t4",
+          "text": "going to leave?"
+        },
+        {
+          "id": "t1",
+          "text": "When"
+        },
+        {
+          "id": "t2",
+          "text": "are"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "疑问词后将 are 放在主语前。",
+      "explanation": "When are we going to leave? 询问计划的出发时间。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary6.picnic-next-week",
+      "prompt": "你已经计划周日带水果。对方问“What are you going to bring?”，哪个回答切题？",
+      "difficultyReason": "六年级明确未来时间与计划；不把合理的 will 表达普遍判错，形式限定写在题干。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I’m going to bring some fruit."
+        },
+        {
+          "id": "b",
+          "text": "I’m going to leave on Sunday."
+        },
+        {
+          "id": "c",
+          "text": "I brought some fruit yesterday."
+        }
+      ],
+      "answer": "a",
+      "hint": "抓住 what 和未来计划。",
+      "explanation": "问题问带什么，回答水果。 只回答离开的日期，没有回答带什么。 说的是昨天，不是将来的计划。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary6.picnic-next-week",
+      "prompt": "用 take 的适当形式补全：We are going to ___ a bus on Sunday.",
+      "difficultyReason": "六年级明确未来时间与计划；不把合理的 will 表达普遍判错，形式限定写在题干。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "take"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "此处不是描述此刻正在乘车。",
+      "explanation": "be going to 后接原形 take。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary6.picnic-next-week",
+      "prompt": "把野餐计划的问句与所问信息配对。",
+      "difficultyReason": "六年级明确未来时间与计划；不把合理的 will 表达普遍判错，形式限定写在题干。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "When are you going to leave?"
+        },
+        {
+          "id": "l2",
+          "text": "What are you going to bring?"
+        },
+        {
+          "id": "l3",
+          "text": "Where are you going to meet?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "计划携带物品"
+        },
+        {
+          "id": "r3",
+          "text": "计划集合地点"
+        },
+        {
+          "id": "r1",
+          "text": "计划出发时间"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "先看句首疑问词。",
+      "explanation": "When、What、Where 分别指时间、事物、地点。"
+    }
+  ]
+}

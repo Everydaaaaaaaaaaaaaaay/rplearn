@@ -1,0 +1,239 @@
+{
+  "id": "ruby.senior3.project-conditions",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "合作邮件里的条件与让步",
+  "summary": "能区分条件、让步、原因与目的，保留改写中的逻辑范围。",
+  "scene": "Ruby 与社区伙伴讨论一次海岸活动，要把条件、理由和目的写得彼此分明。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "senior3.project-conditions"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "unit": "Unit 3 The world meets China / Using language",
+      "pages": "印刷第29页；PDF第36页",
+      "alignment": "状语从句综合复习；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "A friendly email can still be exact about its conditions.",
+      "translation": "友好的邮件，也能把条件说准确。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Let’s keep a reason from turning into a promise.",
+      "translation": "别让一个理由，在改写后变成一项承诺。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "Now both sides can understand the same plan.",
+      "translation": "现在双方能对计划有同样的理解了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "senior3.project-conditions",
+      "prompt": "即使下雨，室内工作坊也照常进行。选择保留“即使”的让步关系的一句。",
+      "difficultyReason": "高三状语从句综合；因果和条件由题内明示，不使用未经证实的现实承诺。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Even if it rains, the indoor workshop will go ahead."
+        },
+        {
+          "id": "b",
+          "text": "Only if it rains will the indoor workshop go ahead."
+        },
+        {
+          "id": "c",
+          "text": "The indoor workshop will go ahead because it rains."
+        }
+      ],
+      "answer": "a",
+      "hint": "让步、必要条件和原因不相同。",
+      "explanation": "Even if 表示即使条件出现，结果仍然保持。 Only if 改成必须下雨才进行，改变原意。 because 改成下雨是活动进行的原因。"
+    },
+    {
+      "id": "q2",
+      "goalId": "senior3.project-conditions",
+      "prompt": "只用 unless 或 although：除非得到许可，否则我们不会展示照片。We won’t display the photos ___ we receive permission.",
+      "difficultyReason": "高三状语从句综合；因果和条件由题内明示，不使用未经证实的现实承诺。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "unless"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "将 unless 换成 if…not 检查意思。",
+      "explanation": "not…unless 表示除非得到许可，否则不展示；许可是必要条件。"
+    },
+    {
+      "id": "q3",
+      "goalId": "senior3.project-conditions",
+      "prompt": "以 We 开头，表达“我们把时间写下来，以便大家提前规划”。",
+      "difficultyReason": "高三状语从句综合；因果和条件由题内明示，不使用未经证实的现实承诺。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "the times"
+        },
+        {
+          "id": "t4",
+          "text": "so that"
+        },
+        {
+          "id": "t5",
+          "text": "everyone"
+        },
+        {
+          "id": "t6",
+          "text": "can plan ahead."
+        },
+        {
+          "id": "t1",
+          "text": "We"
+        },
+        {
+          "id": "t2",
+          "text": "write down"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5",
+          "t6"
+        ]
+      ],
+      "hint": "先放行动，再说明目的。",
+      "explanation": "so that 引出写下时间的目的，而不是已经证实的必然结果。"
+    },
+    {
+      "id": "q4",
+      "goalId": "senior3.project-conditions",
+      "prompt": "“Although the room is small, it is suitable for this group.” 哪项保留原句关系？",
+      "difficultyReason": "高三状语从句综合；因果和条件由题内明示，不使用未经证实的现实承诺。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The room is small, but it suits this group."
+        },
+        {
+          "id": "b",
+          "text": "The room suits this group because it is small."
+        },
+        {
+          "id": "c",
+          "text": "The room is too small for this group."
+        }
+      ],
+      "answer": "a",
+      "hint": "改写不应自行添加原因。",
+      "explanation": "but 保留小与仍适合之间的转折让步。 把让步改成小是适合的原因。 直接否定适合，与原句相反。"
+    },
+    {
+      "id": "q5",
+      "goalId": "senior3.project-conditions",
+      "prompt": "只填 because 或 so that：我们缩短活动时长，目的是让大家赶上末班车。We shortened the event ___ everyone could catch the last bus.",
+      "difficultyReason": "高三状语从句综合；因果和条件由题内明示，不使用未经证实的现实承诺。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "so that"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "已给定目的，不是要求推测原因。",
+      "explanation": "题目明确后半句是目的，so that 表示为了让大家赶上车。"
+    },
+    {
+      "id": "q6",
+      "goalId": "senior3.project-conditions",
+      "prompt": "把合作邮件中的连接片段与逻辑关系配对。",
+      "difficultyReason": "高三状语从句综合；因果和条件由题内明示，不使用未经证实的现实承诺。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "provided that we get permission"
+        },
+        {
+          "id": "l2",
+          "text": "although the budget is small"
+        },
+        {
+          "id": "l3",
+          "text": "because the venue is closed"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "承认预算少但引出相反方向信息"
+        },
+        {
+          "id": "r3",
+          "text": "给出场地关闭这一原因"
+        },
+        {
+          "id": "r1",
+          "text": "以获得许可为条件"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "关注逻辑关系，而非单个名词。",
+      "explanation": "provided that 给条件，although 给让步，because 给原因；三者不能直接互换。"
+    }
+  ]
+}

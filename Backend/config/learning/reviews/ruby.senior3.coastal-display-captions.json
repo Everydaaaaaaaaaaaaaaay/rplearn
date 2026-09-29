@@ -1,0 +1,203 @@
+{
+  "unitId": "ruby.senior3.coastal-display-captions",
+  "contentHash": "6824d697e3a16fe95cc458adbf5c9cac4a6a0c22e3f9c2421636c63908e7b6b7",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 为社区海岸展板校对说明，检查省略的从句会不会让动作对象变得模糊。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "高三非谓语综合；明确施事与受事，词汇有中文支架，不凭环保常识答题。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：志愿者上周收集了这些瓶子。选择表示“被志愿者收集的瓶子”的名词短语。",
+      "optionNotes": {
+        "a": "collected 作为过去分词后置修饰 bottles，表示被收集。",
+        "b": "collecting 把瓶子写成主动收集志愿者。",
+        "c": "交换了修饰对象，变成志愿者被瓶子收集。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：collected 作为过去分词后置修饰 bottles，表示被收集。 collecting 把瓶子写成主动收集志愿者。 交换了修饰对象，变成志愿者被瓶子收集。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 collect 的过去分词补全后置修饰：The shells ___ yesterday are now on display.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "collected"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "collecting"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：shells 是被收集物，collected yesterday 相当于 that were collected yesterday。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 Built 开头，表达“这座为当地居民建的亭子向所有人开放”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：Built 的逻辑受事是紧随的主语 the shelter；人物并不是被建造的对象。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：要求开头“Designed for children,”修饰后面的主语。哪句没有悬垂修饰？",
+      "optionNotes": {
+        "a": "被设计的是 activity，修饰对象与主语一致。",
+        "b": "语法上开头修饰 we，误把我们说成被设计给孩子的对象。",
+        "c": "开头会修饰 volunteers，不是题目要表达的活动设计。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：被设计的是 activity，修饰对象与主语一致。 语法上开头修饰 we，误把我们说成被设计给孩子的对象。 开头会修饰 volunteers，不是题目要表达的活动设计。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用 close 的过去分词补全，表示活动期间让门保持关闭：Please leave the gate ___ during the event.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "closed"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "closing"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：leave the gate closed 描述让门保持关闭的状态；close 的过去分词为 closed。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把过去分词片段与在对应句中的作用配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：同为过去分词，具体功能取决于位置与句子结构；is closed 在这里按门的状态解读。"
+    }
+  ]
+}

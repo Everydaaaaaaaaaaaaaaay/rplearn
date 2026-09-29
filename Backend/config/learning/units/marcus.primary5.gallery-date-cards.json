@@ -1,0 +1,229 @@
+{
+  "id": "marcus.primary5.gallery-date-cards",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "marcus",
+  "roleVersion": 1,
+  "level": "primary5",
+  "title": "照片展的日期卡",
+  "summary": "能区分数量与日期序数，用 on 表达给定的月日。",
+  "scene": "Marcus 为街坊小影展制作日期卡，避免把几张相邻日子的卡贴反。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary5.gallery-date-cards"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary5.archive20260929",
+      "unit": "Unit 4 When is the art show? / Let’s wrap it up",
+      "pages": "印刷第44页；PDF第49页",
+      "alignment": "基数词与日期序数；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Marcus",
+      "text": "A date card is part of the picture too.",
+      "translation": "日期卡也是照片展示的一部分。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Marcus",
+      "text": "One clear number makes a difference.",
+      "translation": "一个清楚的数字就能带来不同。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Marcus",
+      "text": "The wall is ready for our visitors.",
+      "translation": "这面墙准备好迎接来客了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary5.gallery-date-cards",
+      "prompt": "展览在六月二日开幕。哪句日期表达正确？",
+      "difficultyReason": "五年级日期序数；只用已给定日期，不要求日历推算。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The show opens on June 2nd."
+        },
+        {
+          "id": "b",
+          "text": "The show opens on June 3rd."
+        },
+        {
+          "id": "c",
+          "text": "The show opens in June 2nd."
+        }
+      ],
+      "answer": "a",
+      "hint": "核对日数和日期前的介词。",
+      "explanation": "June 2nd 是六月二日，日期前用 on。 June 3rd 是六月三日，与给定日期不同。 具体日期前此处应为 on，而非 in。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary5.gallery-date-cards",
+      "prompt": "只填 two 的序数词英文：The ___ photo is mine.",
+      "difficultyReason": "五年级日期序数；只用已给定日期，不要求日历推算。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "second"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "句子在说明排列次序。",
+      "explanation": "second 表示第二张，two 表示数量二。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary5.gallery-date-cards",
+      "prompt": "以 My 开头，表达“我的生日在三月一日”。",
+      "difficultyReason": "五年级日期序数；只用已给定日期，不要求日历推算。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "is"
+        },
+        {
+          "id": "t4",
+          "text": "on March 1st."
+        },
+        {
+          "id": "t1",
+          "text": "My"
+        },
+        {
+          "id": "t2",
+          "text": "birthday"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "生日是主语，日期放在 is 后。",
+      "explanation": "on March 1st 表达具体的三月一日，不是泛指三月。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary5.gallery-date-cards",
+      "prompt": "你要说“桌上有三张照片”，不是“第三张”。应选哪句？",
+      "difficultyReason": "五年级日期序数；只用已给定日期，不要求日历推算。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "There are three photos on the table."
+        },
+        {
+          "id": "b",
+          "text": "There are third photos on the table."
+        },
+        {
+          "id": "c",
+          "text": "There is three photos on the table."
+        }
+      ],
+      "answer": "a",
+      "hint": "先区分有多少张和排第几张。",
+      "explanation": "three 表示三张的数量，photos 用复数。 third 表示第三，不能表达这里三张的数量。 three photos 是复数，应使用 are。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary5.gallery-date-cards",
+      "prompt": "日期卡写着第五天。只填 five 的序数词：the ___ day。",
+      "difficultyReason": "五年级日期序数；只用已给定日期，不要求日历推算。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "fifth"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "注意 five 变为序数词时的拼写。",
+      "explanation": "five 的序数词为 fifth，不能直接写成 fiveth。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary5.gallery-date-cards",
+      "prompt": "把展览日程中的日期与中文配对。",
+      "difficultyReason": "五年级日期序数；只用已给定日期，不要求日历推算。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "April 1st"
+        },
+        {
+          "id": "l2",
+          "text": "April 3rd"
+        },
+        {
+          "id": "l3",
+          "text": "April 5th"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "四月三日"
+        },
+        {
+          "id": "r3",
+          "text": "四月五日"
+        },
+        {
+          "id": "r1",
+          "text": "四月一日"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "月份相同，留意日数。",
+      "explanation": "月份均为四月，应按后面的序数区分。"
+    }
+  ]
+}

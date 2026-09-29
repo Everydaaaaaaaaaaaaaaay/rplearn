@@ -1,0 +1,210 @@
+{
+  "unitId": "oliver.senior1.book-donation-labels",
+  "contentHash": "866d81d6ad4f3868521488a067ee6dc1a08de7d47a07c0b773bcd520715e2a14",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Oliver 想把捐书活动的说明写准确，让读者知道哪些书适合带来。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "高一 who、which、that、whose；宾语关系词允许合法变体，不涉及非限制性用法。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：要表达“我们欢迎封面完好的书”，哪句明确说明封面属于书？",
+      "optionNotes": {
+        "a": "whose 连接 books 与其 covers，表达所属关系。",
+        "b": "who 不承担 covers 前的所属限定作用。",
+        "c": "which 不能直接替代这里的 whose 来限定 covers。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：whose 连接 books 与其 covers，表达所属关系。 who 不承担 covers 前的所属限定作用。 which 不能直接替代这里的 whose 来限定 covers。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：补全限制性定语从句，可填写任何合乎标准语法的一个关系词：The volunteer ___ helps at the desk is new.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "which"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：先行词 volunteer 是人，关系词在从句中作主语，可用 who 或 that，不能省略。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 The book 开头，表达“我昨天买的那本书在这里”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：that I bought yesterday 限定 book；主句的谓语是 is。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：先行词是 the books，关系词在从句中作主语。哪个表达完整正确？",
+      "optionNotes": {
+        "a": "that 在从句中作 are 的主语，不能直接省去。",
+        "b": "两个完整谓语没有关系词连接，句子结构冲突。",
+        "c": "books 是复数，从句应使用 are。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：that 在从句中作 are 的主语，不能直接省去。 两个完整谓语没有关系词连接，句子结构冲突。 books 是复数，从句应使用 are。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：用一个关系词表达所属：The reader ___ bag was left here has returned.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "whose"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：whose bag 表示该读者的包，who 不能直接限定 bag。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把关系词所在片段与本题中的功能配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：功能由每个具体从句决定，不是说同一个关系词永远只承担一种功能。"
+    }
+  ]
+}

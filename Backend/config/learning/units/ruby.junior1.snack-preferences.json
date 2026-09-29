@@ -1,0 +1,229 @@
+{
+  "id": "ruby.junior1.snack-preferences",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "junior1",
+  "title": "点心小调查",
+  "summary": "能用第三人称一般现在时表达食物偏好，并用 does 提问。",
+  "scene": "Ruby 准备咖啡馆的点心清单，先问朋友喜欢什么，再决定准备哪些食物。",
+  "estimatedMinutes": 9,
+  "goalIds": [
+    "junior1.snack-preferences"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.junior1.archive20260929",
+      "unit": "Unit 6 Do you like bananas? / Grammar Focus",
+      "pages": "印刷第33页；PDF第56页",
+      "alignment": "第三人称喜好与否定；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "Before I fill the tray, I want to hear what people like.",
+      "translation": "装满托盘前，我想先听听大家喜欢什么。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "Different tastes can share the same table.",
+      "translation": "口味不同，也可以坐在同一张桌旁。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "That gives us a better shopping list.",
+      "translation": "这样购物清单就更合适了。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "junior1.snack-preferences",
+      "prompt": "你想问 Eva 是否喜欢西红柿。选择正确问句。",
+      "difficultyReason": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Does Eva like tomatoes?"
+        },
+        {
+          "id": "b",
+          "text": "Does Eva likes tomatoes?"
+        },
+        {
+          "id": "c",
+          "text": "Do Eva like tomatoes?"
+        }
+      ],
+      "answer": "a",
+      "hint": "助动词和实义动词不要重复标记单数。",
+      "explanation": "单数 Eva 使用 Does，之后用 like 原形。 Does 后不再给 like 加 s。 第三人称单数 Eva 不使用 Do。"
+    },
+    {
+      "id": "q2",
+      "goalId": "junior1.snack-preferences",
+      "prompt": "用 like 的正确形式补全习惯：Leo ___ oranges.",
+      "difficultyReason": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "likes"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "这里没有 does 来承担单数变化。",
+      "explanation": "第三人称单数 Leo 的肯定句用 likes。"
+    },
+    {
+      "id": "q3",
+      "goalId": "junior1.snack-preferences",
+      "prompt": "以 She 开头，说“她不喜欢沙拉”。",
+      "difficultyReason": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "like"
+        },
+        {
+          "id": "t4",
+          "text": "salad."
+        },
+        {
+          "id": "t1",
+          "text": "She"
+        },
+        {
+          "id": "t2",
+          "text": "doesn’t"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "否定结构中动词不加 s。",
+      "explanation": "doesn’t 后接 like 原形，表示第三人称否定偏好。"
+    },
+    {
+      "id": "q4",
+      "goalId": "junior1.snack-preferences",
+      "prompt": "Ben 喜欢面包，但不喜欢牛奶。哪句完整保留了这两个信息？",
+      "difficultyReason": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ben likes bread, but he doesn’t like milk."
+        },
+        {
+          "id": "b",
+          "text": "Ben likes bread and milk."
+        },
+        {
+          "id": "c",
+          "text": "Ben doesn’t like bread, but he likes milk."
+        }
+      ],
+      "answer": "a",
+      "hint": "but 两边的喜好方向不同。",
+      "explanation": "likes 与 doesn’t like 都符合第三人称和题意。 把不喜欢牛奶改成也喜欢牛奶。 两个喜好方向都反了。"
+    },
+    {
+      "id": "q5",
+      "goalId": "junior1.snack-preferences",
+      "prompt": "只填 do 或 does：___ your friends like rice?",
+      "difficultyReason": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "do"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "不要只看到 your 就猜单数。",
+      "explanation": "your friends 为复数，疑问句用 do。"
+    },
+    {
+      "id": "q6",
+      "goalId": "junior1.snack-preferences",
+      "prompt": "区分三种食物偏好表达。",
+      "difficultyReason": "初一喜好表达；不引入食物健康判断，明确第三人称肯否。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "She likes pears."
+        },
+        {
+          "id": "l2",
+          "text": "She doesn’t like pears."
+        },
+        {
+          "id": "l3",
+          "text": "Does she like pears?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "她不喜欢梨。"
+        },
+        {
+          "id": "r3",
+          "text": "她喜欢梨吗？"
+        },
+        {
+          "id": "r1",
+          "text": "她喜欢梨。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "留意 doesn’t 与 Does。",
+      "explanation": "同样的食物与人物，通过助动词和标点形成陈述、否定、提问。"
+    }
+  ]
+}

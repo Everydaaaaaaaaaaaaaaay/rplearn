@@ -1,0 +1,203 @@
+{
+  "unitId": "ruby.senior1.meeting-place-details",
+  "contentHash": "86fa56612e7e8d3fe8a59ade4c25353e27a30708ac65897e1181ce6ee0d56f24",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex · 原创编写与逐题自审",
+  "reviewedAt": "2026-09-29",
+  "roleFit": "Ruby 发现“在咖啡馆见”还不够清楚，想补充地点和时间，减少误会。 情景服务于该角色的日常活动，答题无需记忆角色事实。",
+  "levelFit": "高一关系副词；不能机械地见 place 就填 where，接受宾语关系词合法变体。",
+  "limitations": "本单元覆盖一个明确语言目标群；教材版本和产品年级编排有边界，不能据此证明整个学年、九星课程或真人教学效果。未做独立教师审校。",
+  "questions": [
+    {
+      "questionId": "q1",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：需要补充“我们经常见面的那个地方”。哪句自然完整？",
+      "optionNotes": {
+        "a": "where 在此表示 meet 的地点。",
+        "b": "此处 meet 没有宾语缺口，缺的是地点关系。",
+        "c": "it 多出一个没有所指的宾语，改变了这里的见面含义。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：where 在此表示 meet 的地点。 此处 meet 没有宾语缺口，缺的是地点关系。 it 多出一个没有所指的宾语，改变了这里的见面含义。"
+    },
+    {
+      "questionId": "q2",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：使用一个关系副词：Friday is the day ___ we usually meet.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "when"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "where"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：此题要求关系副词，先行词 day 表示时间，使用 when。"
+    },
+    {
+      "questionId": "q3",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：以 This is 开头，表达“这就是我们休息的地方”。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t4",
+              "t3",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：where 从句补充 rest 的地点，不额外添加 in it。"
+    },
+    {
+      "questionId": "q4",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：“This is the café ___ I visited yesterday.” 从句的 visited 缺宾语。选可用的词。",
+      "optionNotes": {
+        "a": "that 可以代替 café 作 visited 的宾语；which 也可用，但本题选项中只有 that。",
+        "b": "where 只提供地点状语，不能补 visited 所缺的宾语。",
+        "c": "when 表示时间，既不对应 café，也不作 visited 的宾语。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：that 可以代替 café 作 visited 的宾语；which 也可用，但本题选项中只有 that。 where 只提供地点状语，不能补 visited 所缺的宾语。 when 表示时间，既不对应 café，也不作 visited 的宾语。"
+    },
+    {
+      "questionId": "q5",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：按本题要求填一个关系副词：That is the reason ___ we changed the meeting time.",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "why"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "where"
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：reason 后说明改变时间的原因，使用关系副词 why。"
+    },
+    {
+      "questionId": "q6",
+      "standaloneContext": "题干已独立给出作答条件，不读取剧情或其他题目的信息：把地点、时间、原因从句片段与意义配对。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "ambiguityReview": "逐项核对本题的限定及语义：where、when、why 分别提供地点、时间、原因；meet 的宾语问题不在这三句中。"
+    }
+  ]
+}

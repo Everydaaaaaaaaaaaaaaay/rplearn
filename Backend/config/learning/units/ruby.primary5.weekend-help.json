@@ -1,0 +1,229 @@
+{
+  "id": "ruby.primary5.weekend-help",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "ruby",
+  "roleVersion": 1,
+  "level": "primary5",
+  "title": "咖啡馆之外的周末",
+  "summary": "能用 often、usually、sometimes 表达习惯并询问周末活动。",
+  "scene": "Ruby 把围裙挂回钩子，聊起周末的家务与海边散步。",
+  "estimatedMinutes": 7,
+  "goalIds": [
+    "primary5.weekend-help"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.primary5.archive20260929",
+      "unit": "Unit 1 My day / Let’s talk",
+      "pages": "印刷第7页；PDF第12页",
+      "alignment": "周末活动与频率副词；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Codex · 原创编写与逐题自审",
+    "reviewedBy": "Codex · 原创编写与逐题自审",
+    "reviewedAt": "2026-09-29",
+    "reviewNotes": "逐题编写并自审题意、答案范围、干扰项、提示和解析；依据实际核读页面。作者自审不等于独立教师审定或全年课程覆盖。"
+  },
+  "beats": [
+    {
+      "id": "beat1",
+      "afterQuestion": 0,
+      "speaker": "Ruby",
+      "text": "My apron gets a rest on Sunday.",
+      "translation": "周日，我的围裙也放个假。"
+    },
+    {
+      "id": "beat2",
+      "afterQuestion": 3,
+      "speaker": "Ruby",
+      "text": "A quiet walk can be a good plan too.",
+      "translation": "安静地散散步也是个好计划。"
+    },
+    {
+      "id": "beat3",
+      "afterQuestion": 6,
+      "speaker": "Ruby",
+      "text": "There is room for chores and a little fun.",
+      "translation": "家务和一点乐趣都能安排进去。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "goalId": "primary5.weekend-help",
+      "prompt": "你想问朋友周末通常做什么。应选哪句？",
+      "difficultyReason": "五年级日常活动；频率词只按语言意义比较，不虚构百分比。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "What do you usually do on weekends?"
+        },
+        {
+          "id": "b",
+          "text": "What are you doing now?"
+        },
+        {
+          "id": "c",
+          "text": "Where is your weekend?"
+        }
+      ],
+      "answer": "a",
+      "hint": "问的是习惯，不是眼前动作。",
+      "explanation": "What do you usually do 询问惯常活动。 此句问此刻正在做什么，不问周末习惯。 Where 问地点，不能这样询问周末活动。"
+    },
+    {
+      "id": "q2",
+      "goalId": "primary5.weekend-help",
+      "prompt": "用 wash 的正确形式描述习惯：I often ___ my clothes on Sundays.",
+      "difficultyReason": "五年级日常活动；频率词只按语言意义比较，不虚构百分比。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "wash"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "often 提示重复发生的事情。",
+      "explanation": "主语 I 的一般现在时肯定句用 wash；这里没有进行时的 am。"
+    },
+    {
+      "id": "q3",
+      "goalId": "primary5.weekend-help",
+      "prompt": "以 I 开头，说“我有时在家做晚饭”。将 sometimes 放在 cook 前。",
+      "difficultyReason": "五年级日常活动；频率词只按语言意义比较，不虚构百分比。",
+      "type": "arrange",
+      "instruction": "使用全部词块，按题干要求组成一句话。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "cook dinner"
+        },
+        {
+          "id": "t4",
+          "text": "at home."
+        },
+        {
+          "id": "t1",
+          "text": "I"
+        },
+        {
+          "id": "t2",
+          "text": "sometimes"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ],
+      "hint": "频率词放在题干指定的位置。",
+      "explanation": "I sometimes cook dinner at home. 描述偶尔做饭的习惯。"
+    },
+    {
+      "id": "q4",
+      "goalId": "primary5.weekend-help",
+      "prompt": "你偶尔去购物，但不是每次周末都去。哪一句最符合？",
+      "difficultyReason": "五年级日常活动；频率词只按语言意义比较，不虚构百分比。",
+      "type": "choice",
+      "instruction": "选择符合本题条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I sometimes go shopping on weekends."
+        },
+        {
+          "id": "b",
+          "text": "I always go shopping on weekends."
+        },
+        {
+          "id": "c",
+          "text": "I never go shopping on weekends."
+        }
+      ],
+      "answer": "a",
+      "hint": "既不是每次，也不是从不。",
+      "explanation": "sometimes 表示有时，符合偶尔发生。 always 表示总是，强于给定情况。 never 表示从不，与偶尔去矛盾。"
+    },
+    {
+      "id": "q5",
+      "goalId": "primary5.weekend-help",
+      "prompt": "用 play 补全：We usually ___ music after lunch.",
+      "difficultyReason": "五年级日常活动；频率词只按语言意义比较，不虚构百分比。",
+      "type": "completion",
+      "instruction": "按本题要求，只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "play"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "先看动作由谁来做。",
+      "explanation": "主语 We 后用 play，不加第三人称单数词尾。"
+    },
+    {
+      "id": "q6",
+      "goalId": "primary5.weekend-help",
+      "prompt": "把周末活动短语与中文意思配对。",
+      "difficultyReason": "五年级日常活动；频率词只按语言意义比较，不虚构百分比。",
+      "type": "matching",
+      "instruction": "将两侧意思对应的内容逐一配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "clean my room"
+        },
+        {
+          "id": "l2",
+          "text": "wash my clothes"
+        },
+        {
+          "id": "l3",
+          "text": "go shopping"
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "洗我的衣服"
+        },
+        {
+          "id": "r3",
+          "text": "去购物"
+        },
+        {
+          "id": "r1",
+          "text": "打扫我的房间"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ],
+      "hint": "留意动词与后面的对象。",
+      "explanation": "clean、wash 和 go 分别与这里的对象搭配，不能只按共同的 my 猜测。"
+    }
+  ]
+}
