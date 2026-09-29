@@ -104,4 +104,71 @@ describe("content routes", () => {
     expect(executeCommands).toHaveBeenCalledTimes(1);
     await app.close();
   });
+  it("校验诊断只记录字段位置，不记录内容、未知键名或剧情标记", async () => {
+    const app = await buildApp(loadConfig({ NODE_ENV: "test" }), { logger: false });
+    const logged: unknown[] = [];
+    app.addHook("onRequest", (request, _reply, done) => {
+      request.log.warn = (...args: unknown[]) => {
+        logged.push(args[0]);
+      };
+      done();
+    });
+    const executeCommands = vi.fn<ContentService["executeCommands"]>();
+    registerContentRoutes(app, authService(), { executeCommands, getPage: vi.fn() });
+    const command = characterCommand("SECRET_BAD_ZONE");
+    const response = await app.inject({
+      method: "POST",
+      url: "/v1/content/commands",
+      headers: { authorization: "Bearer valid-access-token" },
+      payload: {
+        commands: [
+          {
+            ...command,
+            payload: {
+              ...command.payload,
+              SECRET_UNKNOWN_KEY: "SECRET_VALUE",
+              quizOptOut: false,
+            },
+          },
+          {
+            commandId: command.commandId,
+            resourceId: "test_story",
+            resourceType: "story_progress",
+            operation: "upsert",
+            expectedVersion: 0,
+            payload: { schemaVersion: 1, flags: { SECRET_FLAG: "SECRET_TEXT" } },
+          },
+        ],
+      },
+    });
+    expect(response.statusCode).toBe(400);
+    expect(executeCommands).not.toHaveBeenCalled();
+    const diagnostic = logged.find(
+      (row) =>
+        (row as { event?: string }).event === "content.command.validation_failed",
+    );
+    expect((diagnostic as { issues: unknown[] }).issues).toEqual(
+      expect.arrayContaining([
+        {
+          code: "custom",
+          path: [
+            "commands",
+            0,
+            "payload",
+            "card",
+            "activityProfile",
+            "timeZoneIdentifier",
+          ],
+        },
+        {
+          code: "unrecognized_keys",
+          path: ["commands", 0, "payload"],
+          knownLegacyKeys: ["quizOptOut"],
+        },
+        { code: "invalid_type", path: ["commands", 1, "payload", "flags", "<flag>"] },
+      ]),
+    );
+    expect(JSON.stringify(diagnostic)).not.toContain("SECRET");
+    await app.close();
+  });
 });

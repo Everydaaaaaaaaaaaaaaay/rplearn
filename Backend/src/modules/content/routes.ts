@@ -375,9 +375,14 @@ const pageQuerySchema = z.object({
   limit: z.coerce.number().int().min(1).max(500).default(200),
 });
 
-function parse<T>(schema: ZodType<T>, value: unknown): T {
+function parse<T>(
+  schema: ZodType<T>,
+  value: unknown,
+  onInvalid?: (issues: z.ZodError["issues"]) => void,
+): T {
   const result = schema.safeParse(value);
   if (!result.success) {
+    onInvalid?.(result.error.issues);
     throw new AppError({
       code: "INVALID_REQUEST",
       details: result.error.issues.map((issue) => ({
@@ -422,7 +427,35 @@ export function registerContentRoutes(
     },
     async (request) => {
       const identity = await authenticateRequest(request, authService);
-      const body = parse(commandBatchSchema, request.body);
+      const body = parse(commandBatchSchema, request.body, (issues) => {
+        // 只记录校验位置和类型，不记录正文、字段值或任意剧情标记名。
+        request.log.warn(
+          {
+            event: "content.command.validation_failed",
+            issues: issues.slice(0, 20).map((issue) => ({
+              code: issue.code,
+              path: issue.path.map((part, index, path) =>
+                path.includes("flags") && index > path.indexOf("flags")
+                  ? "<flag>"
+                  : part,
+              ),
+              ...(issue.code === "unrecognized_keys"
+                ? {
+                    knownLegacyKeys: issue.keys.filter((key) =>
+                      [
+                        "quizOptOut",
+                        "quizJson",
+                        "quizChosenIndex",
+                        "quizGloballyEnabled",
+                      ].includes(key),
+                    ),
+                  }
+                : {}),
+            })),
+          },
+          "内容同步校验失败",
+        );
+      });
       return {
         results: await contentService.executeCommands(
           identity.userId,
