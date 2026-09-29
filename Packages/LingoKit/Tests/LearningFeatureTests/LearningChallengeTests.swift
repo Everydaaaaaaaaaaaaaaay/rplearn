@@ -45,6 +45,25 @@ private actor ChallengeService: LearningServing {
 
 @Suite("单元挑战恢复与交互状态") @MainActor
 struct LearningChallengeTests {
+    @Test("同步校验失败明确说明阶段，不误报断网或读取未同步的学习状态")
+    func synchronizationValidationFailure() async throws {
+        let model = CharacterLearningModel(characterID: characterID, service: try ChallengeService(), synchronize: {
+            throw BackendClientError.api(code: "INVALID_REQUEST", message: "The request is invalid.", requestID: nil, status: 400)
+        })
+        await model.load()
+        #expect(model.error == "聊天记录同步失败：请求未能通过服务器校验。")
+        #expect(model.state == nil)
+        #expect(!model.isBusy)
+    }
+    @Test("取消同步不显示失败提示")
+    func synchronizationCancelled() async throws {
+        let model = CharacterLearningModel(characterID: characterID, service: try ChallengeService(), synchronize: { throw CancellationError() })
+        await model.load()
+        #expect(model.error == nil)
+        #expect(model.state == nil)
+        #expect(!model.isBusy)
+    }
+
     @Test("响应丢失后冻结答案并复用请求标识，反馈来自服务端")
     func retryLostResponse() async throws {
         let service = try ChallengeService()

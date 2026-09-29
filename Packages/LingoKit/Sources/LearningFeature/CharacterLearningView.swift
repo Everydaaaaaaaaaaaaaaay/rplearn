@@ -36,7 +36,7 @@ public struct CharacterLearningView: View {
                 } else if model.isBusy {
                     ProgressView("正在打开活动册…").frame(maxWidth: .infinity).padding(60)
                 } else {
-                    ContentUnavailableView("暂时无法打开学习页", systemImage: "book.closed", description: Text("联网后重新载入。聊天记录仍会保存在设备中。"))
+                    ContentUnavailableView("暂时无法打开学习页", systemImage: "book.closed", description: Text("请重新载入。聊天记录仍会保存在设备中。"))
                 }
             }.padding(20).frame(maxWidth: 680).frame(maxWidth: .infinity)
         }

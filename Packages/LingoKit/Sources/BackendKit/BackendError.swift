@@ -17,6 +17,7 @@ extension BackendClientError: LocalizedError {
         switch self {
         case .api(let code, let message, _, _):
             switch code {
+            case "INVALID_REQUEST": "请求未能通过服务器校验。"
             case "EMAIL_NOT_VERIFIED": "请先完成邮箱验证。"
             case "INVALID_CREDENTIALS": "邮箱或密码不正确。"
             case "ACCOUNT_UNAVAILABLE": "这个账号目前不可用。"

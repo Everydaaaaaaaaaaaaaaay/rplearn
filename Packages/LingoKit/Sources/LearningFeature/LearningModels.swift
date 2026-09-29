@@ -29,7 +29,14 @@ public final class CharacterLearningModel {
         isBusy = true; error = nil
         defer { isBusy = false }
         do {
-            try await synchronize()
+            do {
+                try await synchronize()
+            } catch is CancellationError {
+                return
+            } catch {
+                self.error = "聊天记录同步失败：\(error.localizedDescription)"
+                return
+            }
             async let character = service.learningCharacter(characterID)
             async let global = service.learningJourney()
             async let page = service.learningHistory(characterID, cursor: nil)
