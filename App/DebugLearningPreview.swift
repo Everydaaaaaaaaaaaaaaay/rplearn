@@ -5,15 +5,20 @@ import Foundation
 import PersistenceKit
 import UIKit
 
-/// 仅免登录界面预览使用，不请求后端，不写账号或题库；没有虚构挑战记录。
+/// 仅免登录界面预览使用；显式场景可展示示例记录，不请求后端、不写账号或题库。
 struct DebugLearningPreviewService: LearningServing, MainlineServing {
     let characterID: UUID
     let roleKey: String
     var profile: EconomyStore? = nil
+    private var pageState: String { ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PAGE_STATE"] ?? "empty" }
+    private var previewRecordID: String { "20000000-0000-4000-8000-000000000001" }
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter {
-        try decode(["characterId": characterID.uuidString, "roleKey": roleKey, "cycleId": UUID().uuidString,
-                    "characters": 720, "threshold": 1000, "revision": 1, "activeAttemptId": NSNull(), "level": "primary3",
-                    "availableUnits": 0, "generationStatus": NSNull()])
+        if pageState == "error" { throw BackendClientError.transport("学习数据暂时无法载入") }
+        return try decode(["characterId": characterID.uuidString, "roleKey": roleKey, "cycleId": UUID().uuidString,
+                    "characters": ["ready", "active", "preparing"].contains(pageState) ? 1000 : 720,
+                    "threshold": 1000, "revision": 1,
+                    "activeAttemptId": pageState == "active" ? previewRecordID : NSNull(), "level": "primary3",
+                    "availableUnits": 3, "generationStatus": pageState == "preparing" ? "running" : NSNull()])
     }
     func learningJourney() async throws -> LearningJourney {
         if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PROMOTION"] == "1" { return try await DebugLearningPromotionService.shared.journey() }
@@ -31,7 +36,20 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
              "state": index == 0 ? "available" : "locked", "lockReason": index == 0 ? NSNull() : "previousChapter"] as [String: Any]
         }])
     }
-    func learningHistory(_ characterID: UUID, cursor: String?) async throws -> LearningHistory { try decode(["items": [], "nextCursor": NSNull()]) }
+    func learningHistory(_ characterID: UUID, cursor: String?) async throws -> LearningHistory {
+        guard ["records", "ready", "active", "preparing"].contains(pageState) else {
+            return try decode(["items": [], "nextCursor": NSNull()])
+        }
+        let titles = ["在书店挑选一本新书", "周末集市：询价、比较与表达偏好", "去车站的路上"]
+        let items: [[String: Any]] = titles.enumerated().map { index, title in
+            ["id": index == 0 ? previewRecordID : "20000000-0000-4000-8000-00000000000\(index + 1)",
+             "title": title, "level": index == 1 ? "junior3" : "primary3",
+             "startedAt": "2026-09-29T00:00:00Z",
+             "firstCompletedAt": index == 0 && pageState == "active" ? NSNull() : "2026-09-29T00:10:00Z",
+             "correctCount": [2, 4, 6][index], "questionCount": 6]
+        }
+        return try decode(["items": items, "nextCursor": NSNull()])
+    }
     func learningAttempt(_ id: UUID) async throws -> LearningAttempt { throw unavailable }
     func startLearning(_ characterID: UUID, requestID: UUID) async throws -> LearningStart { throw unavailable }
     func answerLearning(_ id: UUID, command: LearningAnswerCommand) async throws -> LearningAnswerReceipt { throw unavailable }
