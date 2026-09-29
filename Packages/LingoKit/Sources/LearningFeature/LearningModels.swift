@@ -14,29 +14,19 @@ public final class CharacterLearningModel {
     public var presentedAttempt: LearningAttempt?
     public let characterID: UUID
     let service: any LearningServing
-    private let synchronize: @Sendable () async throws -> Void
     private let cycleChanged: @Sendable () async -> Void
     private var startRequestID = UUID()
 
     public init(characterID: UUID, service: any LearningServing,
-                synchronize: @escaping @Sendable () async throws -> Void = {},
                 cycleChanged: @escaping @Sendable () async -> Void = {}) {
         self.characterID = characterID; self.service = service
-        self.synchronize = synchronize; self.cycleChanged = cycleChanged
+        self.cycleChanged = cycleChanged
     }
     public func load() async {
         guard !isBusy else { return }
         isBusy = true; error = nil
         defer { isBusy = false }
         do {
-            do {
-                try await synchronize()
-            } catch is CancellationError {
-                return
-            } catch {
-                self.error = "聊天记录同步失败：\(error.localizedDescription)"
-                return
-            }
             async let character = service.learningCharacter(characterID)
             async let global = service.learningJourney()
             async let page = service.learningHistory(characterID, cursor: nil)

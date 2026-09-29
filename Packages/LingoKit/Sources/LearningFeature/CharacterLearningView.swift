@@ -16,12 +16,11 @@ public struct CharacterLearningView: View {
     public init(character: CharacterDTO, service: any LearningServing, isVisible: Bool = true,
                 audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
                 beforePlayback: @escaping @Sendable () async -> Void = {},
-                synchronize: @escaping @Sendable () async throws -> Void = {},
                 cycleChanged: @escaping @Sendable () async -> Void = {}) {
         self.character = character; self.isVisible = isVisible
         self.audioSession = audioSession; self.beforePlayback = beforePlayback
         _model = State(initialValue: CharacterLearningModel(characterID: character.id, service: service,
-                                                           synchronize: synchronize, cycleChanged: cycleChanged))
+                                                           cycleChanged: cycleChanged))
     }
     private var theme: LearningTheme { LearningTheme(role: model.state?.roleKey ?? character.card.name.components(separatedBy: " ").first?.lowercased() ?? "") }
     public var body: some View {

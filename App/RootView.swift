@@ -1132,7 +1132,6 @@ struct RootView: View {
         #endif
         dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
         let backend = environment.backendClient
-        let sync = environment.workspace?.contentSync
         let tracker = environment.workspace?.learningChat
         let learningAudioSession = environment.audioSession
         let learningSpeech = environment.speech
@@ -1140,7 +1139,6 @@ struct RootView: View {
             dependencies.learningPage = { character, visible in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
                     audioSession: learningAudioSession, beforePlayback: { await learningSpeech.stopSpeaking() },
-                    synchronize: { try await sync?.synchronizeAndWait() },
                     cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) }))
             }
         }

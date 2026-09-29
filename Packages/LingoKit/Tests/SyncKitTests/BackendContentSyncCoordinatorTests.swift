@@ -95,13 +95,13 @@ struct BackendContentSyncCoordinatorTests {
                     return card["activityProfile"] != nil
                 }
                 activityProfileAttempts.append(hasActivityProfile)
-                if fault == "legacyActivityProfile", hasActivityProfile {
+                if fault == "validationFailure", hasActivityProfile {
                     fault = "none"
                     return json(
                         [
                             "code": "INVALID_REQUEST",
                             "message": "The request is invalid.",
-                            "requestId": "legacy-content-schema",
+                            "requestId": "content-validation-test",
                         ],
                         status: 400
                     )
@@ -294,10 +294,10 @@ struct BackendContentSyncCoordinatorTests {
         await coordinator.deactivate()
     }
 
-    @Test("旧服务端不识别作息字段时登录同步降级重试且保留本地设定")
-    func retriesAgainstLegacyActivityProfileSchema() async throws {
+    @Test("校验失败不删字段降级，待同步内容按完整合同重试")
+    func preservesRejectedPayloadForRetry() async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
-        let transport = ContentTransport(fault: "legacyActivityProfile")
+        let transport = ContentTransport(fault: "validationFailure")
         let backend = BackendClient(
             configuration: BackendConfiguration(
                 baseURL: URL(string: "https://api.example.com")!
@@ -334,9 +334,17 @@ struct BackendContentSyncCoordinatorTests {
             store: syncStore
         )
 
-        _ = try await coordinator.activate(userID: userID)
+        do {
+            _ = try await coordinator.activate(userID: userID)
+            Issue.record("校验失败应向调用方报告")
+        } catch let error as BackendClientError {
+            #expect(error.code == "INVALID_REQUEST")
+        }
+        #expect(await transport.activityProfileAttempts == [true])
+        #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
 
-        #expect(await transport.activityProfileAttempts == [true, false])
+        try await coordinator.synchronize()
+        #expect(await transport.activityProfileAttempts == [true, true])
         #expect(try await syncStore.takePending().isEmpty)
         #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
         await coordinator.deactivate()

@@ -116,18 +116,7 @@ public actor BackendContentSyncCoordinator {
             guard !pending.isEmpty else { return }
             do {
                 let commands = try pending.map(Self.command)
-                let results: [BackendContentCommandResult]
-                do {
-                    results = try await backend.submitContentCommands(commands)
-                } catch let error as BackendClientError {
-                    // During a rolling backend upgrade, an older strict content schema rejects
-                    // the newly optional activity profile before applying any command. Keep login
-                    // usable by retrying that same idempotent batch without only the new field.
-                    guard error.code == "INVALID_REQUEST",
-                          let compatible = Self.withoutActivityProfiles(commands)
-                    else { throw error }
-                    results = try await backend.submitContentCommands(compatible)
-                }
+                let results = try await backend.submitContentCommands(commands)
                 let expected = Dictionary(uniqueKeysWithValues: pending.map { ($0.commandID, $0) })
                 // A matching count alone cannot prove these receipts acknowledge this batch.
                 guard results.count == pending.count,
@@ -221,31 +210,6 @@ public actor BackendContentSyncCoordinator {
             resourceID: mutation.resourceID,
             resourceType: mutation.resourceType.rawValue
         )
-    }
-
-    private static func withoutActivityProfiles(
-        _ commands: [BackendContentCommand]
-    ) -> [BackendContentCommand]? {
-        var removedAny = false
-        let compatible = commands.map { command in
-            guard command.resourceType == ContentResourceKind.character.rawValue,
-                  case .object(var payload)? = command.payload,
-                  case .object(var card)? = payload["card"],
-                  card.removeValue(forKey: "activityProfile") != nil
-            else { return command }
-            removedAny = true
-            payload["card"] = .object(card)
-            return BackendContentCommand(
-                commandID: command.commandId,
-                expectedVersion: command.expectedVersion,
-                operation: command.operation,
-                parentID: command.parentId,
-                payload: .object(payload),
-                resourceID: command.resourceId,
-                resourceType: command.resourceType
-            )
-        }
-        return removedAny ? compatible : nil
     }
 
     private static func currentRecord(
