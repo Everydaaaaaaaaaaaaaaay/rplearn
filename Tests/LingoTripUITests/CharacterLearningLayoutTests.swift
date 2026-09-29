@@ -9,17 +9,17 @@ final class CharacterLearningLayoutTests: XCTestCase {
         let complete = app.buttons["learning.history.20000000-0000-4000-8000-000000000003"]
         XCTAssertTrue(ongoing.waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons["learning.start"].label.contains("继续挑战"))
-        app.segmentedControls["learning.history.filter"].buttons["待补答"].tap()
+        app.buttons["learning.history.filter"].tap()
         XCTAssertTrue(retry.exists)
         XCTAssertFalse(ongoing.exists)
         XCTAssertFalse(complete.exists)
         capture(app, name: "待补答筛选")
-        app.segmentedControls["learning.history.filter"].buttons["全部"].tap()
+        app.buttons["learning.history.filter"].tap()
         XCTAssertTrue(complete.exists)
         app.buttons["learning.journey"].tap()
         XCTAssertTrue(app.navigationBars["英语旅程"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["0/60 点"].exists)
-        app.buttons["完成"].tap()
+        app.buttons["关闭英语旅程"].tap()
         XCTAssertTrue(app.buttons["learning.journey"].waitForExistence(timeout: 5))
     }
 

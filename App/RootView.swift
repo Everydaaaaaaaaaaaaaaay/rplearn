@@ -188,7 +188,12 @@ struct RootView: View {
                             .navigationTitle("角色学习")
                             .navigationBarTitleDisplayMode(.inline)
                             .toolbar(.visible, for: .navigationBar)
-                            .toolbar { ToolbarItem(placement: .topBarLeading) { Button("返回消息") { captureCharacter = nil } } }
+                            .toolbar {
+                                ToolbarItem(placement: .topBarLeading) {
+                                    Button { captureCharacter = nil } label: { Image(systemName: "chevron.left") }
+                                        .accessibilityLabel("返回消息")
+                                }
+                            }
                     } else {
                         ChatView(character: character, deps: chatDeps)
                     }

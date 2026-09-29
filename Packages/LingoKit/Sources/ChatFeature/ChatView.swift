@@ -149,10 +149,13 @@ public struct ChatView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 0) {
                     if deps.learningPage != nil {
-                        Button(learningSelected ? "聊天" : "学习") { learningSelected.toggle() }
-                            .font(.subheadline.weight(.semibold)).frame(minWidth: 44, minHeight: 44)
-                            .disabled(recorder.state != .idle || chineseRecorder.state != .idle)
-                            .accessibilityIdentifier("chat.learning")
+                        Button { learningSelected.toggle() } label: {
+                            Image(systemName: learningSelected ? "bubble.left.and.bubble.right" : "book.closed")
+                                .font(.system(size: 18, weight: .medium)).frame(minWidth: 44, minHeight: 44)
+                        }
+                        .accessibilityLabel(learningSelected ? "返回聊天" : "角色学习")
+                        .disabled(recorder.state != .idle || chineseRecorder.state != .idle)
+                        .accessibilityIdentifier("chat.learning")
                     }
                     if !learningSelected {
                         Button {
