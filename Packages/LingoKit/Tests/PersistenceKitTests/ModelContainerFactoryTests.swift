@@ -3,30 +3,26 @@ import SwiftData
 import Testing
 @testable import PersistenceKit
 
-@Suite("SwiftData schema migration")
-struct SchemaMigrationTests {
-    @Test("移除旧小测后，角色、聊天、档案和记忆仍保留")
-    func migratesVersionOneStoreWithoutDataLoss() throws {
+@Suite("当前 SwiftData 存储")
+struct ModelContainerFactoryTests {
+    @Test("当前模型创建与重开后保留角色、聊天、档案和记忆")
+    func reopensCurrentStore() throws {
         let directory = FileManager.default.temporaryDirectory
-            .appendingPathComponent("lingotrip-migration-\(UUID().uuidString)", isDirectory: true)
+            .appendingPathComponent("lingotrip-current-store-\(UUID().uuidString)", isDirectory: true)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let storeURL = directory.appendingPathComponent("LingoTrip.store")
         let characterID = UUID()
         let conversationID = UUID()
         let messageID = UUID()
+        var travelerID: String?
 
         do {
-            let oldSchema = Schema(versionedSchema: LingoSchemaV1.self)
-            let oldConfiguration = ModelConfiguration(schema: oldSchema, url: storeURL)
-            let oldContainer = try ModelContainer(
-                for: oldSchema,
-                configurations: [oldConfiguration]
-            )
-            let context = ModelContext(oldContainer)
-            let character = LingoSchemaV1.CharacterEntity(
+            let container = try ModelContainerFactory.makeContainer(storeURL: storeURL)
+            let context = ModelContext(container)
+            let character = CharacterEntity(
                 characterID: characterID,
-                name: "Migration Friend",
+                name: "Current Friend",
                 age: 27,
                 genderRaw: CharacterGender.other.rawValue,
                 nationality: "British",
@@ -38,18 +34,19 @@ struct SchemaMigrationTests {
                 difficultyLevelRaw: DifficultyLevel.junior3.rawValue,
                 isFriend: true
             )
-            let conversation = LingoSchemaV1.ConversationEntity(
+            travelerID = character.travelerID
+            let conversation = ConversationEntity(
                 conversationID: conversationID,
                 turnCount: 1
             )
-            let message = LingoSchemaV1.MessageEntity(
+            let message = MessageEntity(
                 messageID: messageID,
                 roleRaw: MessageRole.assistant.rawValue,
                 text: "I remember our walk.",
                 orderIndex: 0,
                 tokenEstimate: 6
             )
-            let memory = LingoSchemaV1.MemoryEntity(
+            let memory = MemoryEntity(
                 tierRaw: MemoryTier.long.rawValue,
                 content: "They walked through the market together.",
                 importance: 4
@@ -58,20 +55,12 @@ struct SchemaMigrationTests {
             conversation.messages.append(message)
             character.memories.append(memory)
             context.insert(character)
-            context.insert(LingoSchemaV1.UserProfileEntity(displayName: "保留档案", quizGloballyEnabled: true, difficultyLevelRaw: "primary3"))
-            message.quizJSON = "旧学习题目"
-            context.insert(LingoSchemaV1.QuizRecordEntity(question: "旧小测", optionsJSON: "[]", correctIndex: 0))
+            context.insert(UserProfileEntity(displayName: "保留档案", difficultyLevelRaw: "primary3"))
             try context.save()
         }
 
-        let currentSchema = Schema(versionedSchema: LingoSchema.self)
-        let currentConfiguration = ModelConfiguration(schema: currentSchema, url: storeURL)
-        let migratedContainer = try ModelContainer(
-            for: currentSchema,
-            migrationPlan: LingoMigrationPlan.self,
-            configurations: [currentConfiguration]
-        )
-        let context = ModelContext(migratedContainer)
+        let container = try ModelContainerFactory.makeContainer(storeURL: storeURL)
+        let context = ModelContext(container)
         let profiles = try context.fetch(FetchDescriptor<UserProfileEntity>())
         #expect(profiles.first?.displayName == "保留档案")
         #expect(profiles.first?.difficultyLevelRaw == "primary3")
@@ -81,10 +70,11 @@ struct SchemaMigrationTests {
         let memories = try context.fetch(FetchDescriptor<MemoryEntity>())
 
         let character = try #require(characters.first { $0.characterID == characterID })
-        #expect(character.name == "Migration Friend")
+        #expect(character.name == "Current Friend")
         #expect(character.isFriend)
-        #expect(character.travelerID == nil)
-        #expect(character.contactStatusRaw == nil)
+        #expect(travelerID != nil)
+        #expect(character.travelerID == travelerID)
+        #expect(character.contactStatusRaw == ContactStatus.friend.rawValue)
         #expect(character.proactiveMessagesEnabled)
         #expect(character.relationshipJSON == RelationshipSnapshot.initial.encodedJSON())
         #expect(character.growthJSON == CharacterGrowthSnapshot.initial.encodedJSON())
