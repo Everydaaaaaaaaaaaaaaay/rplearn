@@ -439,18 +439,6 @@ export function registerContentRoutes(
                   ? "<flag>"
                   : part,
               ),
-              ...(issue.code === "unrecognized_keys"
-                ? {
-                    knownLegacyKeys: issue.keys.filter((key) =>
-                      [
-                        "quizOptOut",
-                        "quizJson",
-                        "quizChosenIndex",
-                        "quizGloballyEnabled",
-                      ].includes(key),
-                    ),
-                  }
-                : {}),
             })),
           },
           "内容同步校验失败",

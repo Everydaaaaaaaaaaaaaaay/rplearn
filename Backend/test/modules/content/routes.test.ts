@@ -127,7 +127,6 @@ describe("content routes", () => {
             payload: {
               ...command.payload,
               SECRET_UNKNOWN_KEY: "SECRET_VALUE",
-              quizOptOut: false,
             },
           },
           {
@@ -163,7 +162,6 @@ describe("content routes", () => {
         {
           code: "unrecognized_keys",
           path: ["commands", 0, "payload"],
-          knownLegacyKeys: ["quizOptOut"],
         },
         { code: "invalid_type", path: ["commands", 1, "payload", "flags", "<flag>"] },
       ]),
