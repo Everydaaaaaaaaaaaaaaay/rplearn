@@ -6,11 +6,15 @@ final class PrimaryChallengeMediaUITests: XCTestCase {
     func testPrimaryPicturesAndRecordedAudio() throws { try exercise(large: false) }
     func testPrimaryPicturesLargeTextDark() throws { try exercise(large: true) }
 
-    private func exercise(large: Bool) throws {
+    func testSecondGradeRecordedAudio() throws { try exercise(large: false, secondGrade: true) }
+    func testSecondGradeLargeTextDark() throws { try exercise(large: true, secondGrade: true) }
+
+    private func exercise(large: Bool, secondGrade: Bool = false) throws {
         continueAfterFailure = false
         let repository = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let directory = repository.appending(path: "Backend/config/learning")
-        for id in ["oliver.primary1.bookmark-colours", "oliver.primary1.animal-book-covers", "ruby.primary1.shell-count", "ruby.primary1.painted-animal-flags", "marcus.primary1.photo-count", "marcus.primary1.studio-directions"] {
+        let ids = secondGrade ? ["oliver.primary2.playtime-can", "oliver.primary2.week-day-cards", "ruby.primary2.weather-window", "ruby.primary2.cafe-actions", "marcus.primary2.photo-time", "marcus.primary2.street-directions"] : ["oliver.primary1.bookmark-colours", "oliver.primary1.animal-book-covers", "ruby.primary1.shell-count", "ruby.primary1.painted-animal-flags", "marcus.primary1.photo-count", "marcus.primary1.studio-directions"]
+        for id in ids {
             let raw = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: directory.appending(path: "units/\(id).json"))) as? [String: Any])
             let questions = try XCTUnwrap(raw["questions"] as? [[String: Any]])
             let question = try XCTUnwrap(questions.first)
@@ -32,7 +36,7 @@ final class PrimaryChallengeMediaUITests: XCTestCase {
             }
             app.launch()
             XCTAssertTrue(app.buttons["退出挑战"].waitForExistence(timeout: 15))
-            XCTAssertTrue(app.staticTexts["小学一年级"].exists)
+            XCTAssertTrue(app.staticTexts[secondGrade ? "小学二年级" : "小学一年级"].exists)
             let check = app.buttons["检查"]
             XCTAssertFalse(check.isEnabled)
             let play = app.buttons["learning.audio.play"]

@@ -70,3 +70,12 @@
 - Node 24.19.0 下 TypeScript、修改测试文件 ESLint 通过。旧45套单元、逐题审核及原登记来源/目标/素材逐项与提交前比对一致；没有新增迁移或修改生成蓝图、晋级清单。
 - 音频生产通过 Xcode 托管测试；首轮36段中一段未过双识别，补录后最终36段全过。一次补录命令误将开关放在环境变量而被测试明确跳过，随后用显式构建设置重跑通过；未将跳过算作成功。
 - 本地证据：`build/learning-all-grades-20260929/` 内的 `catalog-validation.log`、`unit-results.json`、`integration-results.json`、`audio/masters.json`。原生UI与部署结果完成后单独补记。
+
+
+## 原生页面验收
+
+新增两条定向 UI 路径，分别遍历小二六套正式单元的首题：普通字号浅色、最大辅助字号深色。最终2通过、0失败、0跳过；播放完真实文件后才能检查答案，三个候选均能选择，大字时可滚动至操作区，常规音频区不超过64点、播放触控高度不少于44点。12张导出截图已目视核对，不把单张滚动后的截图当成全页不可滚动。
+
+结果包：`build/DerivedData/VerificationResults/20260929T142113Z-6091.xcresult`；截图及拼图：`build/learning-all-grades-20260929/native-evidence/`。首次误用普通单测scheme导致UI目标不在计划中，未执行测试；改用仓库 `Scripts/test-ui.sh` 后通过。Xcode末尾另报诊断采集找不到simctl，测试结果明确通过，未将诊断警告当作应用失败。
+
+`Scripts/preview.sh` 已复用最新Debug安装到现有iOS27设备 `68758C59-4CAD-4A9C-81B3-1289B0B6EF2A`，没有改设备名称或删除账号。Computer Use 本轮成功连接Device Hub，手动播放Oliver小二录音，观察到停止播放→再听一遍，选择“会放风筝”后检查按钮启用；停在这个可查看的题面。最终截图 `final-preview.png` 先因simctl无权直接写数据卷失败，改写临时目录后复制成功。尚未做真人设备、真实账号原生全链路或VoiceOver验收；文本题复用原题型，本批未重新逐道执行全部文本题的UI自动化。
