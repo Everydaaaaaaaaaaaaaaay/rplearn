@@ -32,7 +32,7 @@ export type ProfileRow = Readonly<{
 export function mapProfile(
   row: ProfileRow,
   unlockedRegionIds: readonly string[],
-): UserProfile {
+): UserProfile & Readonly<{ quizGloballyEnabled: false }> {
   return {
     coins: row.coins,
     currentRegionId: row.current_region_id,
@@ -50,6 +50,8 @@ export function mapProfile(
         : new Date(row.placement_completed_at).toISOString(),
     placementScore: row.placement_score,
     proficiencySource: row.proficiency_source,
+    // 旧版 iOS 必须解码此字段；仅保留关闭状态的响应兼容，不恢复旧小测业务或数据库字段。
+    quizGloballyEnabled: false,
     starterRegionId: row.starter_region_id,
     studyStage: row.study_stage,
     unlockedRegionIds,
