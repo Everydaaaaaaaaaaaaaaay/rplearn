@@ -4,6 +4,12 @@
 Caddy 是唯一公网入口；`PUBLIC_HOST` 提供 App API，`ADMIN_HOST` 仅提供受管理员鉴权保护的
 AI 控制台。API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机监听。
 
+## 2026-10-01 旧端普通聊天同步临时兼容
+
+北京时间 07:47:40 已激活 `762d7114859e`，上一版本 `5af370ab04fd` 保留用于回滚。
+旧会话下载补齐关闭的小测字段，旧端上传的已知废弃字段在入库前剥离；增量同步、幂等重放和
+冲突回执同步兼容。没有新增迁移。公网隔离账号和旧版 Swift 解码验证通过，详见[验证记录](../verification/legacy-content-sync-compatibility-20261001.md)。
+
 ## 2026-10-01 Apple 登录后旅程加载兼容修复
 
 已发布 `5af370ab04fd`，上一版本 `b87cda3da1cb` 保留用于回滚。用户资料响应补回固定为
