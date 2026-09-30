@@ -3,6 +3,7 @@ import { z, type ZodType } from "zod";
 import { AppError } from "../../shared/errors.js";
 import { authenticateActorRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
+import { withLegacyContentChange } from "../content/service.js";
 import type { SyncCommand, SyncService } from "./service.js";
 
 const difficultySchema = z.enum([
@@ -166,7 +167,18 @@ export function registerSyncRoutes(
     async (request) => {
       const identity = await authenticateActorRequest(request, authService);
       const query = parse(changesQuerySchema, request.query);
-      return syncService.getChanges(identity.userId, query.cursor, query.limit);
+      const page = await syncService.getChanges(
+        identity.userId,
+        query.cursor,
+        query.limit,
+      );
+      return {
+        ...page,
+        changes: page.changes.map((change) => ({
+          ...change,
+          payload: withLegacyContentChange(change.payload),
+        })),
+      };
     },
   );
 

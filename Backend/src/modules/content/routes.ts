@@ -5,6 +5,7 @@ import { AppError } from "../../shared/errors.js";
 import { authenticateRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
 import type { ContentService } from "./service.js";
+import { withLegacyContentRecord, withLegacyContentResult } from "./service.js";
 import type { ContentCommand } from "./types.js";
 
 const uuid = z.uuid();
@@ -203,8 +204,11 @@ const conversationPayload = z
     lastMessageAt: isoDate,
     lastReadAt: isoDate.nullable().optional(),
     lastSummarizedMessageIndex: z.number().int().min(0),
+    // 仅接收旧端字段以保持同步及幂等请求兼容，服务层会在入库前剥离。
+    quizOptOut: z.boolean().optional(),
     schemaVersion: z.union([z.literal(1), z.literal(2)]),
     turnCount: z.number().int().min(0),
+    turnsSinceQuiz: z.number().int().min(0).optional(),
   })
   .strict();
 
@@ -219,6 +223,8 @@ const messagePayload = z
     keywordRangesJson: nullableText(65_536),
     kind: z.enum(["text", "voice", "storyLine"]),
     orderIndex: z.number().int().min(0),
+    quizChosenIndex: z.number().int().min(0).max(20).nullable().optional(),
+    quizJson: nullableText(65_536),
     role: z.enum(["user", "assistant", "coach"]),
     schemaVersion,
     speechReviewJson: nullableText(65_536),
@@ -413,7 +419,12 @@ export function registerContentRoutes(
     async (request) => {
       const identity = await authenticateRequest(request, authService);
       const query = parse(pageQuerySchema, request.query);
-      return contentService.getPage(identity.userId, query.cursor, query.limit);
+      const page = await contentService.getPage(
+        identity.userId,
+        query.cursor,
+        query.limit,
+      );
+      return { ...page, records: page.records.map(withLegacyContentRecord) };
     },
   );
 
@@ -444,17 +455,16 @@ export function registerContentRoutes(
           "内容同步校验失败",
         );
       });
-      return {
-        results: await contentService.executeCommands(
-          identity.userId,
-          body.commands.map((command) => ({
-            ...command,
-            ...(command.operation === "upsert"
-              ? { parentId: command.parentId ?? null }
-              : {}),
-          })) as readonly ContentCommand[],
-        ),
-      };
+      const results = await contentService.executeCommands(
+        identity.userId,
+        body.commands.map((command) => ({
+          ...command,
+          ...(command.operation === "upsert"
+            ? { parentId: command.parentId ?? null }
+            : {}),
+        })) as readonly ContentCommand[],
+      );
+      return { results: results.map(withLegacyContentResult) };
     },
   );
 }

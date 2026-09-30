@@ -5,12 +5,19 @@ import { AppError } from "../../shared/errors.js";
 import type { SyncCursorCodec } from "../sync/cursor.js";
 import type { ContentCursorCodec } from "./cursor.js";
 import { ContentRepository } from "./repository.js";
+import { stripLegacyContentCommand } from "./legacy-compatibility.js";
 import type {
   ContentCommand,
   ContentCommandResult,
   ContentPage,
   ContentCommitObserver,
 } from "./types.js";
+
+export {
+  withLegacyContentChange,
+  withLegacyContentRecord,
+  withLegacyContentResult,
+} from "./legacy-compatibility.js";
 
 export type ContentService = Readonly<{
   executeCommands: (
@@ -41,7 +48,12 @@ export function createContentService(
             .digest("hex");
           results.push({
             commandId: command.commandId,
-            record: await repository.execute(userId, command, requestHash),
+            // 先按原请求计算幂等哈希，再剥离废弃字段，保证旧请求重放仍匹配已有回执。
+            record: await repository.execute(
+              userId,
+              stripLegacyContentCommand(command),
+              requestHash,
+            ),
             status: "applied",
           });
         } catch (error) {

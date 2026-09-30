@@ -58,6 +58,52 @@ function characterCommand(timeZoneIdentifier: string) {
 }
 
 describe("content routes", () => {
+  it("仅接收已知旧会话字段，仍拒绝未知字段、错误类型及旧小测资源", async () => {
+    const executeCommands = vi.fn<ContentService["executeCommands"]>(() =>
+      Promise.resolve([]),
+    );
+    const app = await buildApp(loadConfig({ NODE_ENV: "test" }), { logger: false });
+    registerContentRoutes(app, authService(), { executeCommands, getPage: vi.fn() });
+    const command = {
+      commandId: "019c0123-4567-789a-8bcd-ef0123456790",
+      expectedVersion: 0,
+      operation: "upsert",
+      parentId: "019c0123-4567-789a-8bcd-ef0123456791",
+      payload: {
+        createdAt: "2026-10-01T00:00:00.000Z",
+        isArchived: false,
+        isEncounterSession: false,
+        lastMessageAt: "2026-10-01T00:00:00.000Z",
+        lastSummarizedMessageIndex: 0,
+        quizOptOut: false,
+        schemaVersion: 2,
+        turnCount: 4,
+        turnsSinceQuiz: 4,
+      },
+      resourceId: "019c0123-4567-789a-8bcd-ef0123456792",
+      resourceType: "conversation",
+    };
+    try {
+      for (const [candidate, expectedStatus] of [
+        [command, 200],
+        [{ ...command, payload: { ...command.payload, unknownField: true } }, 400],
+        [{ ...command, payload: { ...command.payload, quizOptOut: "false" } }, 400],
+        [{ ...command, resourceType: "quiz_record" }, 400],
+      ] as const) {
+        const response = await app.inject({
+          method: "POST",
+          url: "/v1/content/commands",
+          headers: { authorization: "Bearer valid-access-token" },
+          payload: { commands: [candidate] },
+        });
+        expect(response.statusCode).toBe(expectedStatus);
+      }
+      expect(executeCommands).toHaveBeenCalledTimes(1);
+      expect(executeCommands.mock.calls[0]?.[1][0]).toMatchObject(command);
+    } finally {
+      await app.close();
+    }
+  });
   it("accepts and validates the NPC activity profile used by iOS sync", async () => {
     const executeCommands = vi.fn<ContentService["executeCommands"]>(() =>
       Promise.resolve([]),
