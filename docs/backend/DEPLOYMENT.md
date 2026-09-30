@@ -4,6 +4,12 @@
 Caddy 是唯一公网入口；`PUBLIC_HOST` 提供 App API，`ADMIN_HOST` 仅提供受管理员鉴权保护的
 AI 控制台。API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机监听。
 
+## 2026-10-01 Apple 登录后旅程加载兼容修复
+
+已发布 `5af370ab04fd`，上一版本 `b87cda3da1cb` 保留用于回滚。用户资料响应补回固定为
+`false` 的 `quizGloballyEnabled`，满足旧版 iOS 的必选字段解码约束。公网状态接口和旧版
+Swift 解码器验证通过，未新增迁移或恢复旧小测业务。详见[验证记录](../verification/apple-login-snapshot-compatibility-20261001.md)。
+
 ## 2026-09-26 学习基础接口发布
 
 当前后端为 `ff75b75`，上一版本 `643bc4e`。新学习事务引擎与鉴权接口已上线，迁移 0031/0032 新建学习表并按业主授权删除六张旧学习专属表；不删除聊天、档案、角色关系、收藏或剧情记录。API/Worker active，公网 readiness 正常，9 项线上 HTTP 检查通过。定向回滚备份位于服务器受限目录 `/opt/lingotrip/backups/learning-ff75b75/`。这只是新学习系统的后端基础阶段，题库、聊天计数和客户端尚待实现。完整范围、校验和及回滚边界见[验证记录](../learning-program/unit-learning-verification-2026-09-26.md)。
