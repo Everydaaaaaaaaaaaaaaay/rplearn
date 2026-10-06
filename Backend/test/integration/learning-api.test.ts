@@ -388,7 +388,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toBe(200);
       const url = `/v1/dev/learning/characters/${target}/fill`;
       const state = (await get(`/v1/learning/characters/${target}`)).json<Character>();
-      const command = { requestId: randomUUID(), cycleId: state.cycleId };
+      // Foundation 的 UUID 编码为大写，必须与数据库的小写 UUID 视为同一循环。
+      const command = { requestId: randomUUID(), cycleId: state.cycleId.toUpperCase() };
       const before = (await get("/v1/learning/journey")).json<unknown>();
       expect(
         (await app.inject({ method: "POST", url, payload: command })).statusCode,
@@ -407,6 +408,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(filled.statusCode).toBe(200);
       expect(filled.json<Character>().characters).toBe(1000);
       expect((await post(url, command)).json()).toEqual(filled.json());
+      expect(
+        (await post(url, { ...command, cycleId: state.cycleId.toLowerCase() })).json(),
+      ).toEqual(filled.json());
       expect((await post(url, { ...command, requestId: randomUUID() })).json()).toEqual(
         filled.json(),
       );

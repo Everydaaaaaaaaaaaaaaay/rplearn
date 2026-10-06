@@ -52,15 +52,17 @@ export function createLearningService(
       characterId: string,
       cycleId: string,
     ) => {
+      // UUID 大小写不影响身份；在幂等负载和循环比较前统一为数据库格式。
+      const normalizedCycleId = cycleId.toLowerCase();
       await drainMessages?.(userId);
       return repository.command(
         userId,
         requestId,
         "debug.fill",
-        { characterId, cycleId },
+        { characterId, cycleId: normalizedCycleId },
         async (session) => {
           await session.resolveCharacter(characterId);
-          const state = await session.debugFill(characterId, cycleId);
+          const state = await session.debugFill(characterId, normalizedCycleId);
           const level = await session.currentLevel();
           return {
             ...state,
