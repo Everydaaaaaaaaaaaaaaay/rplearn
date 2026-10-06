@@ -433,7 +433,7 @@ extension PlacementTestView {
             do {
                 let summary = try await deps.levelChangeSummary(level)
                 pendingLevelChange = PendingLevelChange(level: level, result: testResult,
-                    summary: "从\(currentLevel.displayName)切换到\(level.displayName)。\n\n新对话和之后开启的挑战会采用新难度；已经开启的挑战保持原有难度。\n\n\(summary)\n\n切换不会赠送学习点数、星星或解锁主线。")
+                    summary: "从\(currentLevel.displayName)切换到\(level.displayName)。\n\n新对话和之后开启的挑战会采用新难度；已经开启的挑战保持原有难度。\n\n\(summary)\n\n切换不会赠送学习点数或星星。")
                 showLevelChangeConfirmation = true
             } catch { errorMessage = "暂时无法确认目标水平的进度，请联网后重试。当前水平没有改变。" }
         }

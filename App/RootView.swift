@@ -51,12 +51,6 @@ struct RootView: View {
     @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
     @State private var showEnglishJourney = false
-    private enum JourneyPlacementDestination: String, Identifiable {
-        case selection, assessment
-        var id: String { rawValue }
-    }
-    @State private var journeyPlacement: JourneyPlacementDestination?
-    @State private var journeyChapter: MainlineChapter?
     @State private var showOnboardingPlacement = false
     private enum IntroductionMode: String, Identifiable {
         case introduction, tutorial
@@ -668,8 +662,6 @@ struct RootView: View {
         case .me:
             showPlacementTest = false
             showEnglishJourney = false
-            journeyPlacement = nil
-            journeyChapter = nil
             mePath.removeAll()
         }
     }
@@ -991,7 +983,7 @@ struct RootView: View {
                     if isOnboarding {
                         showOnboardingPlacement = false
                         placementCompletionRevision += 1
-                    } else { showPlacementTest = false; journeyPlacement = nil }
+                    } else { showPlacementTest = false; showEnglishJourney = false }
                     await environment.applyLearnerProfile(updated)
                 }
             },
@@ -999,46 +991,14 @@ struct RootView: View {
                 if isOnboarding {
                     showOnboardingPlacement = false
                 } else {
-                    showPlacementTest = false; journeyPlacement = nil
+                    showPlacementTest = false; showEnglishJourney = false
                 }
             }
         )
     }
 
     private var englishJourneyView: some View {
-        englishJourneyContent
-            .navigationDestination(item: $journeyPlacement) { destination in placementTestView(isOnboarding: false, chooseLevel: destination == .selection) }
-            .navigationDestination(item: $journeyChapter) { chapter in storyView(storyID: chapter.storyID) }
-    }
-
-    @ViewBuilder private var englishJourneyContent: some View {
-        #if DEBUG
-        if bypassesAuthenticationForUITesting {
-            let preview = DebugLearningPreviewService(characterID: UUID(), roleKey: "oliver", profile: environment.economyStore)
-            EnglishJourneyView(learning: preview, mainline: preview,
-                promotionService: ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PROMOTION"] == "1" ? DebugLearningPromotionService.shared : nil,
-                onChooseLevel: { journeyPlacement = .selection },
-                onCalibrate: { journeyPlacement = .assessment },
-                onOpenChapter: { journeyChapter = $0 })
-                .safeAreaInset(edge: .bottom) { Text("界面预览 · 示例进度，不计入账号").font(.caption).padding(8).frame(maxWidth: .infinity).background(.regularMaterial) }
-        } else { productionEnglishJourneyView }
-        #else
-        productionEnglishJourneyView
-        #endif
-    }
-    private var productionEnglishJourneyView: some View {
-        EnglishJourneyView(learning: environment.backendClient, mainline: environment.backendClient,
-            promotionService: environment.backendClient,
-            onProfileChanged: {
-                guard let account = environment.workspace, account.userID == activeUserID else { throw CancellationError() }
-                try await account.userState.synchronize()
-                guard environment.workspace === account else { throw CancellationError() }
-                try await environment.refreshAccountPresentation(account)
-                stateRevision += 1
-            },
-            onChooseLevel: { journeyPlacement = .selection },
-            onCalibrate: { journeyPlacement = .assessment },
-            onOpenChapter: { journeyChapter = $0 })
+        placementTestView(isOnboarding: false)
     }
 
     @ViewBuilder
@@ -1148,6 +1108,15 @@ struct RootView: View {
             }
         }
         #if DEBUG
+        dependencies.debugFillLearning = { [preview = bypassesAuthenticationForUITesting] characterID in
+            if preview {
+                await DebugLearningFillStore.shared.fill(characterID)
+            } else {
+                let state = try await backend.learningCharacter(characterID)
+                try await backend.debugFillLearning(characterID, cycleID: state.cycleId, requestID: UUID())
+                await tracker?.refresh(characterID: characterID)
+            }
+        }
         dependencies.marketingMotionCapture = activeUserID == UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")
             && bypassesAuthenticationForUITesting
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"

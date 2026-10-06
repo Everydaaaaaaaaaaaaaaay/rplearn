@@ -5,8 +5,6 @@ public struct BackendMainlineProgress: Codable, Sendable, Equatable {
         public let storyId: String
         public let regionId: String
         public let sequence: Int
-        public let requiredStars: Int
-        public let missingStars: Int
         public let previousStoryId: String?
         public let state: String
         public let lockReason: String?
@@ -19,12 +17,10 @@ public struct BackendMainlineProgress: Codable, Sendable, Equatable {
             case "onboarding": return "先选择起始旅伴"
             case "login": return "登录后继续旅程"
             case "previousChapter": return "先完成前一章"
-            case "stars": return "再获得 \(missingStars) 颗星"
             default: return "暂未解锁"
             }
         }
     }
-    public let earnedStars: Int
     public let chapters: [Chapter]
 }
 public protocol MainlineServing: Sendable {

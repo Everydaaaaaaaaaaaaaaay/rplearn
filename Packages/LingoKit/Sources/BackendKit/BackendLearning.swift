@@ -44,3 +44,15 @@ extension BackendClient: LearningServing {
                        body: Request(requestId: requestID, expectedRevision: attempt.revision))
     }
 }
+
+#if DEBUG
+extension BackendClient {
+    /// 仅 Debug 编译入口；服务端验证角色归属与循环，不增加水平成绩。
+    public func debugFillLearning(_ characterID: UUID, cycleID: UUID, requestID: UUID) async throws {
+        struct Command: Encodable, Sendable { let requestId: UUID; let cycleId: UUID }
+        let _: BackendLearningCharacter = try await send(
+            path: "/v1/dev/learning/characters/\(characterID.uuidString.lowercased())/fill",
+            method: "POST", body: Command(requestId: requestID, cycleId: cycleID))
+    }
+}
+#endif

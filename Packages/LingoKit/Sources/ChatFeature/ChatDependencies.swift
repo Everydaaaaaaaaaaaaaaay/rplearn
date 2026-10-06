@@ -39,6 +39,7 @@ public struct ChatDependencies: Sendable {
     #if DEBUG
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
+    public var debugFillLearning: (@MainActor @Sendable (UUID) async throws -> Void)? = nil
     #endif
     public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool) -> AnyView)? = nil
     public var learningChat: (any LearningChatTracking)? = nil

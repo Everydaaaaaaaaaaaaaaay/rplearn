@@ -69,7 +69,7 @@ public struct CharacterLearningView: View {
                     .toolbar {
                         ToolbarItem(placement: .confirmationAction) {
                             Button { showJourney = false } label: { Image(systemName: "xmark") }
-                                .accessibilityLabel("关闭英语旅程")
+                                .accessibilityLabel("关闭学习进度")
                         }
                     }
             }
@@ -175,7 +175,7 @@ public struct CharacterLearningView: View {
             }.padding(.vertical, 18).contentShape(Rectangle())
         }
         .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
-        .accessibilityHint("查看英语旅程")
+        .accessibilityHint("查看学习进度")
         .accessibilityIdentifier("learning.journey")
     }
     private func nextStar(_ current: LearningLevelProgress?) -> some View {
@@ -262,7 +262,7 @@ public struct CharacterLearningView: View {
 
 }
 
-/// 角色页的全局摘要；完整英语旅程的主线和改档入口由 App 装配。
+/// 角色页的全局摘要；英语水平调整入口由 App 装配。
 public struct LearningProgressOverview: View {
     private let service: any LearningServing
     @State private var journey: LearningJourney?
@@ -296,7 +296,7 @@ public struct LearningProgressOverview: View {
                 }
             }.padding(16).frame(maxWidth: 600).frame(maxWidth: .infinity)
         }
-        .background(Color.dsBackground).navigationTitle("英语旅程").navigationBarTitleDisplayMode(.inline)
+        .background(Color.dsBackground).navigationTitle("学习进度").navigationBarTitleDisplayMode(.inline)
         .task { await load() }
     }
     private func load() async {

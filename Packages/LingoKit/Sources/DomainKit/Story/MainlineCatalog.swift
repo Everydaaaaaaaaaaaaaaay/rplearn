@@ -15,7 +15,7 @@ public struct MainlineChapter: Sendable, Equatable, Hashable, Identifiable {
     }
 }
 
-/// 一条主线中的城市章节。序号由路线决定，实际开放状态由服务端学习里程碑控制。
+/// 一条主线中的城市章节。序号由路线决定，实际开放状态由服务端前章完成记录控制。
 public struct MainlineStop: Sendable, Equatable, Hashable, Identifiable {
     public let chapter: MainlineChapter
     public let objective: String

@@ -23,7 +23,6 @@ public struct MainlineStoryGate<Content: View>: View {
                     Label(error == nil ? "故事在前方等你" : "暂时无法打开剧情", systemImage: error == nil ? "lock.open.rotation" : "wifi.exclamationmark")
                 } description: {
                     Text(error ?? chapter?.statusText ?? "暂时无法确认这一章的状态。")
-                    if let chapter, error == nil { Text("需要累计 \(chapter.requiredStars) 颗星，并完成前一章。请回到角色学习页继续挑战。") }
                 } actions: { Button("刷新进度") { Task { await load() } } }
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsBackground)
@@ -35,6 +34,6 @@ public struct MainlineStoryGate<Content: View>: View {
             let status = try await service.mainlineProgress()
             chapter = status.chapters.first { $0.storyId == DepartureStoryIdentity.rewardID(for: storyID) }
             error = chapter == nil ? "没有找到这一章的进度，请更新后重试。" : nil
-        } catch { self.error = "请联网后重试，已获得的星星不会丢失。" }
+        } catch { self.error = "请联网后重试，已完成的章节会保留。" }
     }
 }

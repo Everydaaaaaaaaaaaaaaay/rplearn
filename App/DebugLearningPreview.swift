@@ -6,6 +6,13 @@ import PersistenceKit
 import UIKit
 
 /// 仅免登录界面预览使用；显式场景可展示示例记录，不请求后端、不写账号或题库。
+actor DebugLearningFillStore {
+    static let shared = DebugLearningFillStore()
+    private var filled: Set<UUID> = []
+    func fill(_ id: UUID) { filled.insert(id) }
+    func contains(_ id: UUID) -> Bool { filled.contains(id) }
+}
+
 struct DebugLearningPreviewService: LearningServing, MainlineServing {
     let characterID: UUID
     let roleKey: String
@@ -14,8 +21,9 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
     private var previewRecordID: String { "20000000-0000-4000-8000-000000000001" }
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter {
         if pageState == "error" { throw BackendClientError.transport("学习数据暂时无法载入") }
+        let filled = await DebugLearningFillStore.shared.contains(characterID)
         return try decode(["characterId": characterID.uuidString, "roleKey": roleKey, "cycleId": UUID().uuidString,
-                    "characters": ["ready", "active", "preparing"].contains(pageState) ? 1000 : 720,
+                    "characters": (filled || ["ready", "active", "preparing"].contains(pageState)) ? 1000 : 720,
                     "threshold": 1000, "revision": 1,
                     "activeAttemptId": pageState == "active" ? previewRecordID : NSNull(), "level": "primary3",
                     "availableUnits": 3, "generationStatus": pageState == "preparing" ? "running" : NSNull()])
@@ -28,10 +36,8 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
     }
     func mainlineProgress() async throws -> BackendMainlineProgress {
         let cities = ["london", "capetown", "newyork", "melbourne", "singapore"]
-        let thresholds = [0, 3, 9, 18, 27]
-        return try decode(["earnedStars": 0, "chapters": cities.enumerated().map { index, city in
+        return try decode(["chapters": cities.enumerated().map { index, city in
             ["storyId": "mainline_\(city)", "regionId": city, "sequence": index + 1,
-             "requiredStars": thresholds[index], "missingStars": thresholds[index],
              "previousStoryId": index == 0 ? NSNull() : "mainline_\(cities[index - 1])",
              "state": index == 0 ? "available" : "locked", "lockReason": index == 0 ? NSNull() : "previousChapter"] as [String: Any]
         }])

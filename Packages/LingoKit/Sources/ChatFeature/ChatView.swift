@@ -14,6 +14,10 @@ import UIKit
 public struct ChatView: View {
     @State var viewModel: ChatViewModel
     @State private var learningSelected = false
+    #if DEBUG
+    @State private var fillingLearning = false
+    @State private var learningDebugError: String?
+    #endif
     @State private var autoReadEnabled = false
     @State private var autoReadReady = false
     @State var autoReadQueue: ChatAutoReadQueue
@@ -119,6 +123,11 @@ public struct ChatView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
             isKeyboardVisible = false
         }
+        #if DEBUG
+        .alert("无法填满挑战进度", isPresented: Binding(get: { learningDebugError != nil }, set: { if !$0 { learningDebugError = nil } })) {
+            Button("知道了", role: .cancel) { learningDebugError = nil }
+        } message: { Text(learningDebugError ?? "") }
+        #endif
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -148,14 +157,30 @@ public struct ChatView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 0) {
-                    if deps.learningPage != nil {
-                        Button { learningSelected.toggle() } label: {
-                            Image(systemName: learningSelected ? "bubble.left.and.bubble.right" : "book.closed")
-                                .font(.system(size: 18, weight: .medium)).frame(minWidth: 44, minHeight: 44)
+                    #if DEBUG
+                    if let fill = deps.debugFillLearning {
+                        Button {
+                            fillingLearning = true
+                            Task {
+                                defer { fillingLearning = false }
+                                do {
+                                    try await fill(viewModel.character.id)
+                                    learningSelected = true
+                                    NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
+                                } catch { learningDebugError = error.localizedDescription }
+                            }
+                        } label: {
+                            Image(systemName: "bolt.fill").frame(width: 44, height: 44)
                         }
-                        .accessibilityLabel(learningSelected ? "返回聊天" : "角色学习")
-                        .disabled(recorder.state != .idle || chineseRecorder.state != .idle)
-                        .accessibilityIdentifier("chat.learning")
+                        .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
+                        .accessibilityLabel("填满单元挑战进度（开发者）")
+                        .accessibilityIdentifier("chat.debugFillLearning")
+                    }
+                    #endif
+                    if learningSelected {
+                        Button { learningSelected = false } label: {
+                            Image(systemName: "bubble.left.and.bubble.right").frame(width: 44, height: 44)
+                        }.accessibilityLabel("返回聊天")
                     }
                     if !learningSelected {
                         Button {

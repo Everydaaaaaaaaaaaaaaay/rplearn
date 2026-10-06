@@ -17,9 +17,9 @@ final class CharacterLearningLayoutTests: XCTestCase {
         app.buttons["learning.history.filter"].tap()
         XCTAssertTrue(complete.exists)
         app.buttons["learning.journey"].tap()
-        XCTAssertTrue(app.navigationBars["英语旅程"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["学习进度"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["0/60 点"].exists)
-        app.buttons["关闭英语旅程"].tap()
+        app.buttons["关闭学习进度"].tap()
         XCTAssertTrue(app.buttons["learning.journey"].waitForExistence(timeout: 5))
     }
 
